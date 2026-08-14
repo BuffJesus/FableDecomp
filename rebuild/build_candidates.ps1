@@ -67496,6 +67496,1553 @@ $catalog = @(
         TestSource = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e96e10_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e985c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e985c0.cpp'
+        TestSource = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e985c0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e98680'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e98680.cpp'
+        TestSource = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e98680_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e987a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e987a0.cpp'
+        TestSource = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e987a0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e997c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e997c0.cpp'
+        TestSource = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e997c0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e998d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e998d0.cpp'
+        TestSource = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e998d0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9c340'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e9c340.cpp'
+        TestSource = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e9c340_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9d7e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e9d7e0.cpp'
+        TestSource = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e9d7e0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9d9b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e9d9b0.cpp'
+        TestSource = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e9d9b0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9e090'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e9e090.cpp'
+        TestSource = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e9e090_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9fcb0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e9fcb0.cpp'
+        TestSource = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e9fcb0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea0070'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea0070.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea0070_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea0af0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea0af0.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea0af0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea5130'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea5130.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea5130_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea5210'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea5210.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea5210_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea58e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea58e0.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea58e0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea76c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea76c0.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea76c0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea7a40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea7a40.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea7a40_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea7b20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea7b20.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea7b20_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea8050'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea8050.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea8050_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eaaef0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00eaaef0.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00eaaef0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eac590'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00eac590.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00eac590_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eacee0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00eacee0.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00eacee0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ead7e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ead7e0.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ead7e0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb64d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00eb64d0.cpp'
+        TestSource = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00eb64d0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb6a90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00eb6a90.cpp'
+        TestSource = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00eb6a90_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb6d50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00eb6d50.cpp'
+        TestSource = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00eb6d50_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb79d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00eb79d0.cpp'
+        TestSource = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00eb79d0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb88e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00eb88e0.cpp'
+        TestSource = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00eb88e0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ebe600'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00ebe600.cpp'
+        TestSource = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00ebe600_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ebed50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00ebed50.cpp'
+        TestSource = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00ebed50_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ebee70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00ebee70.cpp'
+        TestSource = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00ebee70_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec0a30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec0a30.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec0a30_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec0b80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec0b80.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec0b80_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec1160'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec1160.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec1160_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec11f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec11f0.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec11f0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec14c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec14c0.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec14c0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec15b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec15b0.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec15b0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec1730'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec1730.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec1730_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec17c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec17c0.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec17c0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec18f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec18f0.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec18f0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec3c00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec3c00.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec3c00_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec42d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec42d0.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec42d0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec45a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec45a0.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec45a0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec4690'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec4690.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec4690_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec4920'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec4920.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec4920_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec53a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec53a0.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec53a0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec80a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec80a0.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec80a0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ecd510'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ecd510.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ecd510_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ecd760'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ecd760.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ecd760_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed39d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed39d0.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed39d0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed41b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed41b0.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed41b0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed4580'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed4580.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed4580_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed4870'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed4870.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed4870_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed49f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed49f0.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed49f0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed4a80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed4a80.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed4a80_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed5240'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed5240.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed5240_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed5320'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed5320.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed5320_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed7620'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed7620.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed7620_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed7db0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed7db0.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed7db0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed8100'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed8100.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed8100_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed8370'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed8370.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed8370_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edacf0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00edacf0.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00edacf0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edc430'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00edc430.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00edc430_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edeb80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00edeb80.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00edeb80_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edf380'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00edf380.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00edf380_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edf9e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00edf9e0.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00edf9e0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee0040'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee0040.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee0040_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee0130'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee0130.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee0130_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee04b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee04b0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee04b0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee05a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee05a0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee05a0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee0690'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee0690.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee0690_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee0a00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee0a00.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee0a00_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee14e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee14e0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee14e0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee1bc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee1bc0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee1bc0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee1d70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee1d70.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee1d70_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee40d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee40d0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee40d0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee4cd0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee4cd0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee4cd0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee4db0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee4db0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee4db0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee56d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee56d0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee56d0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee6c30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee6c30.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee6c30_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee7410'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee7410.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee7410_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee7520'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee7520.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee7520_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee76a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee76a0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee76a0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee80e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee80e0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee80e0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee8c10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee8c10.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee8c10_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee90d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee90d0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee90d0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee91c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee91c0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee91c0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee9480'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee9480.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee9480_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee9f30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee9f30.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee9f30_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eea410'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eea410.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eea410_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eea770'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eea770.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eea770_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeaea0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeaea0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeaea0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeb760'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeb760.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeb760_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eebda0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eebda0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eebda0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eec3c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eec3c0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eec3c0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eec780'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eec780.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eec780_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eec870'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eec870.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eec870_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeced0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeced0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeced0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eed090'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed090.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed090_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eed200'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed200.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed200_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eed260'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed260.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed260_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eed5b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed5b0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed5b0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eed690'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed690.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed690_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eed890'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed890.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed890_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eedba0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eedba0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eedba0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eee710'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eee710.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eee710_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eee920'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eee920.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eee920_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eee980'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eee980.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eee980_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeea70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeea70.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeea70_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeee80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeee80.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeee80_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eef520'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eef520.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eef520_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eef580'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eef580.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eef580_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eef6b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eef6b0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eef6b0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eef710'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eef710.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eef710_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eef840'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eef840.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eef840_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eef8a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eef8a0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eef8a0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eef9a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eef9a0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eef9a0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefa00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eefa00.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eefa00_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefb00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eefb00.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eefb00_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefb60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eefb60.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eefb60_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefc60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eefc60.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eefc60_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefcc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eefcc0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eefcc0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefdc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eefdc0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eefdc0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eefe20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eefe20.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eefe20_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeff20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeff20.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeff20_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeff80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeff80.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeff80_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef0070'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef0070.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef0070_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef1110'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef1110.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef1110_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef11f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef11f0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef11f0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef12d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef12d0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef12d0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef1670'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef1670.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef1670_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef1c30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef1c30.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef1c30_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef1d10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef1d10.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef1d10_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef1df0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef1df0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef1df0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef2050'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef2050.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef2050_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef2130'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef2130.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef2130_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef2270'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef2270.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef2270_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef24e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef24e0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef24e0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef25c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef25c0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef25c0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef28e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef28e0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef28e0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef29c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef29c0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef29c0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef2b80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef2b80.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef2b80_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef2fe0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef2fe0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef2fe0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef31e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef31e0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef31e0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3480'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef3480.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef3480_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3720'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef3720.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef3720_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3820'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef3820.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef3820_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3a80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef3a80.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef3a80_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3d20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef3d20.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef3d20_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3e00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef3e00.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef3e00_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3ee0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef3ee0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef3ee0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef41f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef41f0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef41f0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef4300'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef4300.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef4300_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef4590'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef4590.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef4590_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef4880'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef4880.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef4880_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef6ea0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef6ea0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef6ea0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef9170'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef9170.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef9170_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef9f20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef9f20.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef9f20_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efa1f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efa1f0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efa1f0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efa370'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efa370.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efa370_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efa400'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efa400.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efa400_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efab20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efab20.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efab20_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efaee0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efaee0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efaee0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efaf70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efaf70.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efaf70_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb090'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efb090.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efb090_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb0f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efb0f0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efb0f0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb340'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efb340.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efb340_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb5c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efb5c0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efb5c0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb650'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efb650.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efb650_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb8a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efb8a0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efb8a0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efbb20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efbb20.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efbb20_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efbbb0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efbbb0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efbbb0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efbe00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efbe00.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efbe00_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efc0e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efc0e0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efc0e0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efc170'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efc170.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efc170_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efc440'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efc440.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efc440_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efc4a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efc4a0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efc4a0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efc910'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efc910.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efc910_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efd9a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efd9a0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efd9a0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efda70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efda70.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efda70_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efdbf0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efdbf0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efdbf0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efe3c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efe3c0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efe3c0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efe6e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efe6e0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efe6e0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efe8b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efe8b0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efe8b0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efeb40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efeb40.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efeb40_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efefb0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efefb0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efefb0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eff040'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00eff040.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00eff040_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eff4b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00eff4b0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00eff4b0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eff720'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00eff720.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00eff720_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eff7b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00eff7b0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00eff7b0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00effcb0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00effcb0.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00effcb0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00effd10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00effd10.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00effd10_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f00ac0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f00ac0.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f00ac0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f00c70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f00c70.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f00c70_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f012b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f012b0.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f012b0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f01370'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f01370.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f01370_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f01460'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f01460.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f01460_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f017a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f017a0.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f017a0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f01890'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f01890.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f01890_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f01c30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f01c30.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f01c30_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f024a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f024a0.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f024a0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f03960'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f03960.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f03960_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f03fe0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f03fe0.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f03fe0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f04340'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f04340.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f04340_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f044f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f044f0.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f044f0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f045c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f045c0.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f045c0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f04ca0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f04ca0.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f04ca0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f051b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f051b0.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f051b0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f057c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f057c0.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f057c0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f058b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f058b0.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f058b0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f14650'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f14650.cpp'
+        TestSource = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f14650_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f14750'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f14750.cpp'
+        TestSource = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f14750_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f1b200'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f1b200.cpp'
+        TestSource = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f1b200_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f1b670'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f1b670.cpp'
+        TestSource = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f1b670_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f1b8c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f1b8c0.cpp'
+        TestSource = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f1b8c0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f1cb30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f1cb30.cpp'
+        TestSource = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f1cb30_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f25e20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f25e20.cpp'
+        TestSource = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f25e20_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f270b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f270b0.cpp'
+        TestSource = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f270b0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f29510'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f29510.cpp'
+        TestSource = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f29510_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f29ce0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f29ce0.cpp'
+        TestSource = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f29ce0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f29da0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f29da0.cpp'
+        TestSource = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f29da0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
