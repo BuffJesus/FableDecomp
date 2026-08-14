@@ -8345,12 +8345,17 @@ shipped reconstruction.
   [[skeleton-clone-harvester]].
 - Authored via Workflow: **gen_batch135 = 14** byte-exact (CopyBackBufferToTexture forwarder
   family, IsTimeForFullUpdate, _Umove, _Dest_val). Durable `gen_tried` 2745 -> **4518**.
-- **gen_batch136 = IN FLIGHT** (workflow task w5ndii377, 24 targets). LAND WHEN IT RETURNS:
-  read `tasks/w5ndii377.output` result.results; merge WINs (status=='WIN') into a land.json +
-  land_oracle (join name/length/bytes from `scratchpad/gen_batch136_oracle.tsv`), run
-  `verify_and_land.py <land.json> <oracle.tsv> --land`, append all 24 addrs to durable
-  gen_tried, lean commit "Binary-wide parity crawl gen_batch136: N functions landed".
-  (Merge recipe = same python I used for batch135; see this session's scratchpad.)
+- **gen_batch136 = LANDED 2026-08-14** (commit 4024574, 19/24 = 3 MATCH + 16 RELOCATION_MATCH).
+  The prior session's in-flight workflow (w5ndii377) did NOT survive into the new session and was
+  never landed (ledger stayed 4518); batch136 was re-assembled fresh and re-run. Durable gen_tried
+  4518 -> **4542**. The 5 DEFERRED are all `CDisplayManager::CopyBackBufferToTexture` twin-temp
+  variants (00594803/005b2706/005b2e6c/005bb3b3/005bb3d1): retail emits two identical `lea [ebp-1]`
+  args that VC7.1 CSE's to one slot -> DIFFER(~24-28v25). Same twin-`lea [ebp-1]` CSE class the
+  batch135 notes hit; needs the disjoint-scope two-temp trick or a permuter pass. Reusable helpers
+  rebuilt this session (batch136 scratchpad): `build_targets.py` (capstone), `land_batch.py`
+  (merge->verify_and_land->durable-ledger union), `extract_wins.py`, `patch_wins.py`.
+  GOTCHA: workflow agents can return a `// see above` placeholder in source_cpp — recover the real
+  source from the agent's `scratchpad/lv_<addr>/s.cpp` (patch_wins.py did this for 3 wins).
 - CRAWL AUTHORING GOTCHA (new): retail's two identical `lea eax,[ebp-1]` call args need TWO
   1-byte temps in DISJOINT `{}` scopes (VC7.1 overlays them on one slot but keeps a separate
   lea each); `&flag,&flag` gets CSE'd to `push eax;push eax` (DIFFER). In-source
