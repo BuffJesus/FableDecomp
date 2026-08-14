@@ -70142,6 +70142,153 @@ $catalog = @(
         TestSource = '00/a0/CHandleBasedMemoryPool_Lock_00a026f0_test.cpp'
         PassPattern = 'LOCK_OK'
     }
+    [pscustomobject]@{
+        Address = '00a02710'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a0/CHandleBasedMemoryPool_Unlock_00a02710.cpp'
+        TestSource = '00/a0/CHandleBasedMemoryPool_Unlock_00a02710_test.cpp'
+        PassPattern = 'UNLOCK_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a3b1a0'
+        Module = 'CVideoSys'
+        Source = '00/a3/CVideoSys_AttemptToPlay_00a3b1a0.cpp'
+        TestSource = '00/a3/CVideoSys_AttemptToPlay_00a3b1a0_test.cpp'
+        PassPattern = 'VERIFY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b2aa50'
+        Module = 'CTCInventoryItem'
+        Source = '00/b2/CTCInventoryItem_OnDie_00b2aa50.cpp'
+        TestSource = '00/b2/CTCInventoryItem_OnDie_00b2aa50_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b56670'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_PeekSceneFilterFlags_00b56670.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_PeekSceneFilterFlags_00b56670_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00baf9e0'
+        Module = 'CEnginePrimitiveManagerSprites'
+        Source = '00/ba/CEnginePrimitiveManagerSprites_RenderPrimitive_00baf9e0.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerSprites_RenderPrimitive_00baf9e0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bdd980'
+        Module = 'CObjectCacheGroupCollection'
+        Source = '00/bd/CObjectCacheGroupCollection_ClearLoadRequest_00bdd980.cpp'
+        TestSource = '00/bd/CObjectCacheGroupCollection_ClearLoadRequest_00bdd980_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK_bdd980'
+    }
+    [pscustomobject]@{
+        Address = '00bdda30'
+        Module = 'CObjectCacheGroupCollection'
+        Source = '00/bd/CObjectCacheGroupCollection_ClearLoadRequest_00bdda30.cpp'
+        TestSource = '00/bd/CObjectCacheGroupCollection_ClearLoadRequest_00bdda30_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bdfd60'
+        Module = 'CEngineSubPrimitiveGameMesh'
+        Source = '00/bd/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00bdfd60.cpp'
+        TestSource = '00/bd/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00bdfd60_test.cpp'
+        PassPattern = 'VDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c0a860'
+        Module = 'CAnimateThing'
+        Source = '00/c0/CAnimateThing_SetAsFinished_00c0a860.cpp'
+        TestSource = '00/c0/CAnimateThing_SetAsFinished_00c0a860_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c0a880'
+        Module = 'CAnimateThing'
+        Source = '00/c0/CAnimateThing_SetAsFinished_00c0a880.cpp'
+        TestSource = '00/c0/CAnimateThing_SetAsFinished_00c0a880_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c19ee0'
+        Module = 'CMap'
+        Source = '00/c1/CMap_GetWorldMapNumber_00c19ee0.cpp'
+        TestSource = '00/c1/CMap_GetWorldMapNumber_00c19ee0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c26500'
+        Module = 'CGameScriptInterface'
+        Source = '00/c2/CGameScriptInterface_SetDebugCameraType_00c26500.cpp'
+        TestSource = '00/c2/CGameScriptInterface_SetDebugCameraType_00c26500_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c2a600'
+        Module = 'CEngineResourceManager'
+        Source = '00/c2/CEngineResourceManager_Render_00c2a600.cpp'
+        TestSource = '00/c2/CEngineResourceManager_Render_00c2a600_test.cpp'
+        PassPattern = 'RENDER_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c2d2b0'
+        Module = 'CNavSwitchableLeafNode'
+        Source = '00/c2/CNavSwitchableLeafNode_GetRegion_00c2d2b0.cpp'
+        TestSource = '00/c2/CNavSwitchableLeafNode_GetRegion_00c2d2b0_test.cpp'
+        PassPattern = 'GETREGION_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c38a20'
+        Module = 'CTCActivationReceptorBase'
+        Source = '00/c3/CTCActivationReceptorBase_AddTrigger_00c38a20.cpp'
+        TestSource = '00/c3/CTCActivationReceptorBase_AddTrigger_00c38a20_test.cpp'
+        PassPattern = 'AddTrigger_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3c5d0'
+        Module = 'CCreatureAction_FireMissileWeapon'
+        Source = '00/c3/CCreatureActionFireMissileWeapon_FrameUpdate_00c3c5d0.cpp'
+        TestSource = '00/c3/CCreatureActionFireMissileWeapon_FrameUpdate_00c3c5d0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c42fe0'
+        Module = 'CEngine'
+        Source = '00/c4/CEngine_Enable2DSceneRendering_00c42fe0.cpp'
+        TestSource = '00/c4/CEngine_Enable2DSceneRendering_00c42fe0_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c918a0'
+        Module = '_Cons_val<std'
+        Source = '00/c9/Consvalstd_allocatorC3DGeneratorObjectC3DGeneratorObjectC3D_00c918a0.cpp'
+        TestSource = '00/c9/Consvalstd_allocatorC3DGeneratorObjectC3DGeneratorObjectC3D_00c918a0_test.cpp'
+        PassPattern = 'CONSVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c9ec00'
+        Module = '_Cons_val<std'
+        Source = '00/c9/Consvalstd_allocatorC3DGeneratorObjectC3DGeneratorObjectC3D_00c9ec00.cpp'
+        TestSource = '00/c9/Consvalstd_allocatorC3DGeneratorObjectC3DGeneratorObjectC3D_00c9ec00_test.cpp'
+        PassPattern = 'PARITY_OK_C9EC00'
+    }
+    [pscustomobject]@{
+        Address = '00c9fdd0'
+        Module = '_Cons_val<std'
+        Source = '00/c9/Consvalstd_allocatorC3DGeneratorObjectC3DGeneratorObjectC3D_00c9fdd0.cpp'
+        TestSource = '00/c9/Consvalstd_allocatorC3DGeneratorObjectC3DGeneratorObjectC3D_00c9fdd0_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK_c9fdd0'
+    }
+    [pscustomobject]@{
+        Address = '00ca3580'
+        Module = '_Cons_val<std'
+        Source = '00/ca/Consvalstd_allocatorC3DGeneratorObjectC3DGeneratorObjectC3D_00ca3580.cpp'
+        TestSource = '00/ca/Consvalstd_allocatorC3DGeneratorObjectC3DGeneratorObjectC3D_00ca3580_test.cpp'
+        PassPattern = 'CONSVAL_OK'
+    }
 )
 
 $requestedAddresses = @(

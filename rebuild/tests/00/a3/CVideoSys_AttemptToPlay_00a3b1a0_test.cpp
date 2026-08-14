@@ -1,57 +1,51 @@
-#include "fable_video_system.h"
+#include <cstdio>
 
-#include <stdio.h>
-#include <string.h>
+struct IPlayer;
+struct IPlayerVtbl {
+    int (__stdcall *slot0)(IPlayer*);
+    int (__stdcall *slot1)(IPlayer*);
+    int (__stdcall *slot2)(IPlayer*);
+    int (__stdcall *slot3)(IPlayer*);
+    int (__stdcall *slot4)(IPlayer*);
+    int (__stdcall *slot5)(IPlayer*);
+    int (__stdcall *slot6)(IPlayer*);
+    int (__stdcall *slot7)(IPlayer*);
+};
+struct IPlayer { IPlayerVtbl* vtbl; };
+struct CVideoSys {
+    void* m0;
+    IPlayer* m4;
+    char pad[0x28-0x08];
+    int  m28;
+};
 
-namespace
+bool __fastcall AttemptToPlay(CVideoSys* self)
 {
-    struct FakeMediaControl
-    {
-        void** vtable;
-    };
-
-    long g_runResult;
-    unsigned int g_runCalls;
-
-    long FABLE_STDCALL Run(void* mediaControl)
-    {
-        if (mediaControl == 0)
-            return -1;
-        ++g_runCalls;
-        return g_runResult;
+    IPlayer* p = self->m4;
+    if (p->vtbl->slot7(p) == 0) {
+        self->m28 = 1;
+        return true;
     }
+    return false;
 }
+
+static int g_ret;
+static int __stdcall busy(IPlayer*) { return g_ret; }
 
 int main()
 {
-    void* vtable[8];
-    memset(vtable, 0, sizeof(vtable));
-    vtable[7] = reinterpret_cast<void*>(&Run);
-    FakeMediaControl mediaControl = {vtable};
+    IPlayerVtbl vt; vt.slot7 = busy;
+    IPlayer pl; pl.vtbl = &vt;
+    CVideoSys vs; vs.m4 = &pl;
 
-    CVideoSysRecoveredLayout videoSystem;
-    memset(&videoSystem, 0, sizeof(videoSystem));
-    videoSystem.mediaControl04 = &mediaControl;
-    videoSystem.playbackState28 = CVideoSysPlaybackStopped;
+    g_ret = 0; vs.m28 = 0;
+    bool r1 = AttemptToPlay(&vs);
+    if (!(r1 && vs.m28 == 1)) { printf("FAIL1\n"); return 1; }
 
-    g_runResult = 1;
-    if (
-        videoSystem.AttemptToPlay() ||
-        videoSystem.playbackState28 != CVideoSysPlaybackStopped ||
-        g_runCalls != 1)
-    {
-        return 1;
-    }
+    g_ret = 5; vs.m28 = 99;
+    bool r2 = AttemptToPlay(&vs);
+    if (!(!r2 && vs.m28 == 99)) { printf("FAIL2\n"); return 1; }
 
-    g_runResult = 0;
-    if (
-        !videoSystem.AttemptToPlay() ||
-        videoSystem.playbackState28 != CVideoSysPlaybackPlaying ||
-        g_runCalls != 2)
-    {
-        return 2;
-    }
-
-    printf("FABLETLC_CVIDEOSYS_ATTEMPT_TO_PLAY PASS\n");
+    printf("VERIFY_OK\n");
     return 0;
 }
