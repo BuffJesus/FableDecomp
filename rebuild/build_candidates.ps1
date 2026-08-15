@@ -72049,6 +72049,118 @@ $catalog = @(
         TestSource = '00/64/CDrawMiniMap_ClearPrimitivesIfNecessary_00643de5_test.cpp'
         PassPattern = 'CLEARPRIM_OK'
     }
+    [pscustomobject]@{
+        Address = '0045a133'
+        Module = 'CTCInventoryItem'
+        Source = '00/45/CTCInventoryItem_OnDie_0045a133.cpp'
+        TestSource = '00/45/CTCInventoryItem_OnDie_0045a133_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0045ce22'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/45/CAIStateGroupHoverHornetQueen_CAIStateGroupHoverHornetQueen_0045ce22.cpp'
+        TestSource = '00/45/CAIStateGroupHoverHornetQueen_CAIStateGroupHoverHornetQueen_0045ce22_test.cpp'
+        PassPattern = 'HHQDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0045e2e9'
+        Module = 'COpinionDeedMaskDef'
+        Source = '00/45/COpinionDeedMaskDef_TransferCOpinionDeedMaskDefUAEXAAVCPersistContex_0045e2e9.cpp'
+        TestSource = '00/45/COpinionDeedMaskDef_TransferCOpinionDeedMaskDefUAEXAAVCPersistContex_0045e2e9_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0046b81d'
+        Module = '_global'
+        Source = '00/46/global_fillC3DClothQuadC3DClothQuad_0046b81d.cpp'
+        TestSource = '00/46/global_fillC3DClothQuadC3DClothQuad_0046b81d_test.cpp'
+        PassPattern = 'FILLQUAD_OK'
+    }
+    [pscustomobject]@{
+        Address = '004717a1'
+        Module = 'CFactionDef'
+        Source = '00/47/CFactionDef_TransferCFactionDefUAEXAAVCPersistContextZ_004717a1.cpp'
+        TestSource = '00/47/CFactionDef_TransferCFactionDefUAEXAAVCPersistContextZ_004717a1_test.cpp'
+        PassPattern = 'TRANSFER_OK'
+    }
+    [pscustomobject]@{
+        Address = '00471c79'
+        Module = '_global'
+        Source = '00/47/global_Alloc_00471c79.cpp'
+        TestSource = '00/47/global_Alloc_00471c79_test.cpp'
+        PassPattern = 'ALLOC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00477cb1'
+        Module = 'CEngineLocalDetailLayerDef'
+        Source = '00/47/CEngineLocalDetailLayerDef_TransferCEngineLocalDetailLayerDefUAEXAAVCPersis_00477cb1.cpp'
+        TestSource = '00/47/CEngineLocalDetailLayerDef_TransferCEngineLocalDetailLayerDefUAEXAAVCPersis_00477cb1_test.cpp'
+        PassPattern = 'PARITY_OK_477cb1'
+    }
+    [pscustomobject]@{
+        Address = '00478722'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/47/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00478722.cpp'
+        TestSource = '00/47/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00478722_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '0047b300'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/47/CLandscapeBackgroundPatch_vectordeletingdestructor_0047b300.cpp'
+        TestSource = '00/47/CLandscapeBackgroundPatch_vectordeletingdestructor_0047b300_test.cpp'
+        PassPattern = 'VECDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00493cf5'
+        Module = 'CEnginePrimitiveRenderer2D'
+        Source = '00/49/CEnginePrimitiveRenderer2D_AddPrimitive_00493cf5.cpp'
+        TestSource = '00/49/CEnginePrimitiveRenderer2D_AddPrimitive_00493cf5_test.cpp'
+        PassPattern = 'PARITY_OK_493cf5'
+    }
+    [pscustomobject]@{
+        Address = '004942a2'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/49/CLandscapeBackgroundPatch_vectordeletingdestructor_004942a2.cpp'
+        TestSource = '00/49/CLandscapeBackgroundPatch_vectordeletingdestructor_004942a2_test.cpp'
+        PassPattern = 'VDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004c9c10'
+        Module = 'CThing'
+        Source = '00/4c/CThing_SetAsGameStatePersisted_004c9c10.cpp'
+        TestSource = '00/4c/CThing_SetAsGameStatePersisted_004c9c10_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d26f0'
+        Module = '_Destroy_range<std'
+        Source = '00/4d/Destroyrangestd_allocatorCSpeechFrame_004d26f0.cpp'
+        TestSource = '00/4d/Destroyrangestd_allocatorCSpeechFrame_004d26f0_test.cpp'
+        PassPattern = 'DESTROY_RANGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '004dbee7'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004dbee7.cpp'
+        TestSource = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004dbee7_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004dd7ea'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004dd7ea.cpp'
+        TestSource = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004dd7ea_test.cpp'
+        PassPattern = 'VDD_OK'
+    }
+    [pscustomobject]@{
+        Address = '0064dfde'
+        Module = 'CDrawMiniMap'
+        Source = '00/64/CDrawMiniMap_SetRegion_0064dfde.cpp'
+        TestSource = '00/64/CDrawMiniMap_SetRegion_0064dfde_test.cpp'
+        PassPattern = 'SETREGION_OK'
+    }
 )
 
 $requestedAddresses = @(
