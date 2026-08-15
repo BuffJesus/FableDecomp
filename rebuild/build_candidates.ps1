@@ -71895,6 +71895,153 @@ $catalog = @(
         TestSource = '00/c1/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00c1d4e0_test.cpp'
         PassPattern = 'DESTVAL_OK'
     }
+    [pscustomobject]@{
+        Address = '00a73c80'
+        Module = 'CTCVillage'
+        Source = '00/a7/CTCVillage_OnInitialActivate_00a73c80.cpp'
+        TestSource = '00/a7/CTCVillage_OnInitialActivate_00a73c80_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a73ca0'
+        Module = 'CTCVillage'
+        Source = '00/a7/CTCVillage_OnInitialActivate_00a73ca0.cpp'
+        TestSource = '00/a7/CTCVillage_OnInitialActivate_00a73ca0_test.cpp'
+        PassPattern = 'OIA_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a84b60'
+        Module = 'CTCVillage'
+        Source = '00/a8/CTCVillage_OnInitialActivate_00a84b60.cpp'
+        TestSource = '00/a8/CTCVillage_OnInitialActivate_00a84b60_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK_a84b60'
+    }
+    [pscustomobject]@{
+        Address = '00a98620'
+        Module = 'vector<EWeaponClass'
+        Source = '00/a9/vectorEWeaponClass_UmoveEWeaponClass_00a98620.cpp'
+        TestSource = '00/a9/vectorEWeaponClass_UmoveEWeaponClass_00a98620_test.cpp'
+        PassPattern = 'UMOVE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b25d00'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_OnPostDeviceReset_00b25d00.cpp'
+        TestSource = '00/b2/CEngine_OnPostDeviceReset_00b25d00_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b597e0'
+        Module = 'CEngineLocalDetailGenerator'
+        Source = '00/b5/CEngineLocalDetailGenerator_ModifyFadeDistanceForVideoOptions_00b597e0.cpp'
+        TestSource = '00/b5/CEngineLocalDetailGenerator_ModifyFadeDistanceForVideoOptions_00b597e0_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c22a00'
+        Module = 'CGraphicDataBank'
+        Source = '00/c2/CGraphicDataBank_ChangeScene_00c22a00.cpp'
+        TestSource = '00/c2/CGraphicDataBank_ChangeScene_00c22a00_test.cpp'
+        PassPattern = 'CHANGESCENE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c23be0'
+        Module = 'CWorldMap'
+        Source = '00/c2/CWorldMap_GetNextRegionOnRouteTo_00c23be0.cpp'
+        TestSource = '00/c2/CWorldMap_GetNextRegionOnRouteTo_00c23be0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c23dd0'
+        Module = 'CWorldMap'
+        Source = '00/c2/CWorldMap_GetNextRegionOnRouteTo_00c23dd0.cpp'
+        TestSource = '00/c2/CWorldMap_GetNextRegionOnRouteTo_00c23dd0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c24020'
+        Module = 'CWorldMap'
+        Source = '00/c2/CWorldMap_GetNextRegionOnRouteTo_00c24020.cpp'
+        TestSource = '00/c2/CWorldMap_GetNextRegionOnRouteTo_00c24020_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c24280'
+        Module = 'CWorldMap'
+        Source = '00/c2/CWorldMap_GetNextRegionOnRouteTo_00c24280.cpp'
+        TestSource = '00/c2/CWorldMap_GetNextRegionOnRouteTo_00c24280_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c283c0'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/c2/CHandleBasedMemoryPool_Lock_00c283c0.cpp'
+        TestSource = '00/c2/CHandleBasedMemoryPool_Lock_00c283c0_test.cpp'
+        PassPattern = 'LOCK_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c283e0'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/c2/CHandleBasedMemoryPool_Unlock_00c283e0.cpp'
+        TestSource = '00/c2/CHandleBasedMemoryPool_Unlock_00c283e0_test.cpp'
+        PassPattern = 'UNLOCK_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c5e420'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c5/CLandscapeBackgroundPatch_ClearTextures_00c5e420.cpp'
+        TestSource = '00/c5/CLandscapeBackgroundPatch_ClearTextures_00c5e420_test.cpp'
+        PassPattern = 'CLEARTEX_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c5e480'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c5/CLandscapeBackgroundPatch_ClearTextures_00c5e480.cpp'
+        TestSource = '00/c5/CLandscapeBackgroundPatch_ClearTextures_00c5e480_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00c5e480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c739a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c7/CLandscapeBackgroundPatch_ClearTextures_00c739a0.cpp'
+        TestSource = '00/c7/CLandscapeBackgroundPatch_ClearTextures_00c739a0_test.cpp'
+        PassPattern = 'CLEARTEX_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c89b40'
+        Module = 'CTCActivationReceptorBase'
+        Source = '00/c8/CTCActivationReceptorBase_AddTrigger_00c89b40.cpp'
+        TestSource = '00/c8/CTCActivationReceptorBase_AddTrigger_00c89b40_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ca4d60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ca/CLandscapeBackgroundPatch_ClearTextures_00ca4d60.cpp'
+        TestSource = '00/ca/CLandscapeBackgroundPatch_ClearTextures_00ca4d60_test.cpp'
+        PassPattern = 'CLEARTEX_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cbe010'
+        Module = 'CTCVillage'
+        Source = '00/cb/CTCVillage_OnInitialActivate_00cbe010.cpp'
+        TestSource = '00/cb/CTCVillage_OnInitialActivate_00cbe010_test.cpp'
+        PassPattern = 'BEHAVIOR_PASS_cbe010'
+    }
+    [pscustomobject]@{
+        Address = '00cd2770'
+        Module = 'CMemoryDataOutputStream'
+        Source = '00/cd/CMemoryDataOutputStream_Clear_00cd2770.cpp'
+        TestSource = '00/cd/CMemoryDataOutputStream_Clear_00cd2770_test.cpp'
+        PassPattern = 'CLEAR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00459582'
+        Module = 'CPlayerDef'
+        Source = '00/45/CPlayerDef_TransferCPlayerDefUAEXAAVCPersistContextZ_00459582.cpp'
+        TestSource = '00/45/CPlayerDef_TransferCPlayerDefUAEXAAVCPersistContextZ_00459582_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
 )
 
 $requestedAddresses = @(
