@@ -5,13 +5,21 @@ byte-exact (the north-star follow-up to the functional `frontend_minimap.cpp`
 oracle — see docs/HANDOFF.md and memory `byte-purity-policy`). Small accessors
 are authored + locally verified with `verify_and_land.py` (no workflow agents).
 
-## Landed (byte-exact)
+## Landed (byte-exact) — 14 functions
+Hand-authored (local verify_and_land):
 - **`CDrawMiniMap::ClearPrimitivesIfNecessary` @ 0x00643de5** (RELOCATION_MATCH):
   `if (this->f_18 == 0) this->sub_0x28.Clear(); if (this->f_eb == 0) this->vslot4();`
   — the second (void member) call is the LAST statement so VC7.1 tail-jmps it
-  (`mov ecx,esi; pop esi; jmp [vptr+4]`), matching retail. Sub-helper at 0x82a1d0
-  is a thiscall method on the subobject at this+0x28. Needs in-source
-  `#pragma optimize("s",on)`.
+  (`mov ecx,esi; pop esi; jmp [vptr+4]`). Needs `#pragma optimize("s",on)`.
+- **`CDrawMiniMap::SetRegion` @ 0x0064dfde** (RELOCATION_MATCH): forwarder →
+  disp.SetRegionDisp(r) / (if ds:0x13b8780) disp.InitialiseOnRegionLoad(f_c+0x84)
+  / this->ApplyRegion(r).
+
+Landed via the minimap decomp workflow (wg5w1pyu3): SetAsActive (MATCH),
+Initialise, InitialiseSurface, InitialiseOnRegionLoad, InitialiseRegionMinimapSize,
+GetRelativePosOnMap, GetRelativeMapSize, GetRingAlpha, RemoveAllDeadMarkers,
+ClearPrimitiveHandles (×2 @0xa46d90/0x443cf0), **LoadRegionMinimapTGAFile**
+(the byte-pure region-TGA asset read — high value).
 
 ## Semantics recovered, byte-match DEFERRED (flag-comparison idiom class)
 These behave identically to retail (verify_and_land behaviour PASS) but VC7.1 RTM
@@ -47,5 +55,15 @@ CMiniMapDisplay: Initialise 0x82a310, GetRelativePosOnMap 0x829ce0,
 SetMarkerGraphic 0x82a340, InitialiseOnRegionLoad 0x82a180, GetNonAutoMarkers
 0x82a390, UpdateMarkersInternal 0x82a960, RemoveAllDeadMarkers 0x82a2a0,
 GetRelativeMapSize 0x829c70, ClearPrimitiveHandles 0xa46d90 / 0x443cf0.
-`CRegionMinimap::LoadRegionMinimapTGAFile` is the highest-value next target (the
-byte-pure region-TGA asset read the functional oracle currently hand-ports).
+Remaining small minimap fns are all the DEFERRED codegen-idiom class (FPU x87
+schedule / shared-xor flag idiom that VC7.1 RTM 3077 won't emit): IsActive
+0x643e09, IsFinishedClosing 0x6441be, IsFinishedOpening 0x644179, SetMarkerGraphic
+0x82a340, GetNonAutoMarkers 0x82a390, UpdateMarkersInternal 0x82a960,
+InitialiseRegionBox 0x66c7b0, GetWorldCoordinatesFromTGAPosition 0x66c810,
+GetRegionMapExtents 0x49c700, SetRegionMapExtents 0x66c630, ToggleCentering
+0x64e019. Semantics recovered (behaviour PASS) — need a full-regalloc permuter or
+QFE-4035 compiler to close the byte match.
+
+Next frontend RE lane: the 2D-render core (CShaderRenderManager 56 fns,
+CEnginePrimitiveRenderer2D, CEnginePrimitive2DViewportManager) — the byte-pure
+Render2D path underlying the whole frontend.
