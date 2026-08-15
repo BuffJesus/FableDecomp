@@ -67,3 +67,16 @@ QFE-4035 compiler to close the byte match.
 Next frontend RE lane: the 2D-render core (CShaderRenderManager 56 fns,
 CEnginePrimitiveRenderer2D, CEnginePrimitive2DViewportManager) — the byte-pure
 Render2D path underlying the whole frontend.
+
+## Frontend lane resume point (2026-08-14 EOD)
+Session landed 29 frontend byte-exact fns: 14 minimap + 15 Render2D
+(CShaderRenderManager/CEnginePrimitiveRenderer2D/CShaderResource). Commits
+717b711, 9208c2b, 74d6201 (+ SetRegion in d073a48).
+WALL HIT: CGuiControlTreePane's 202 "SortTreeRecursively" are a mislabeled
+std::list::clear clone family — loop-alignment + regalloc idiom sensitive
+(got 47v47 same-length but not byte-exact), same class the crawl defers. Skip it.
+RESUME lane 2 at the real frontend UI logic (not STL-clone families):
+CTCInGameMenu (22), CNewFrontendGameComponent (9), CFrontEndManager (8),
+CEnginePrimitive2DViewportManager (13), remaining CShaderRenderManager setters.
+Recipe: build targets+oracle (Render2D python in scratchpad), run the bpc_*.js
+minimap/render2d-style workflow, extract/recover-placeholders/land vs oracle.
