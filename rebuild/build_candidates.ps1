@@ -72042,6 +72042,13 @@ $catalog = @(
         TestSource = '00/45/CPlayerDef_TransferCPlayerDefUAEXAAVCPersistContextZ_00459582_test.cpp'
         PassPattern = 'PARITY_OK'
     }
+    [pscustomobject]@{
+        Address = '00643de5'
+        Module = 'CDrawMiniMap'
+        Source = '00/64/CDrawMiniMap_ClearPrimitivesIfNecessary_00643de5.cpp'
+        TestSource = '00/64/CDrawMiniMap_ClearPrimitivesIfNecessary_00643de5_test.cpp'
+        PassPattern = 'CLEARPRIM_OK'
+    }
 )
 
 $requestedAddresses = @(
