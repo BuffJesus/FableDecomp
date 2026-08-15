@@ -72161,6 +72161,1483 @@ $catalog = @(
         TestSource = '00/64/CDrawMiniMap_SetRegion_0064dfde_test.cpp'
         PassPattern = 'SETREGION_OK'
     }
+    [pscustomobject]@{
+        Address = '00534760'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/53/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00534760.cpp'
+        TestSource = '00/53/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00534760_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '0054a140'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/54/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_0054a140.cpp'
+        TestSource = '00/54/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_0054a140_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '0067fcf0'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/67/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_0067fcf0.cpp'
+        TestSource = '00/67/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_0067fcf0_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00695b90'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/69/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00695b90.cpp'
+        TestSource = '00/69/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00695b90_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '006efe10'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/6e/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_006efe10.cpp'
+        TestSource = '00/6e/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_006efe10_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '006efe80'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/6e/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_006efe80.cpp'
+        TestSource = '00/6e/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_006efe80_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00763e70'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/76/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00763e70.cpp'
+        TestSource = '00/76/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00763e70_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00764550'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/76/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00764550.cpp'
+        TestSource = '00/76/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00764550_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '007f37e0'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/7f/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_007f37e0.cpp'
+        TestSource = '00/7f/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_007f37e0_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '0084eb90'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/84/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_0084eb90.cpp'
+        TestSource = '00/84/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_0084eb90_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '008b24f0'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/8b/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_008b24f0.cpp'
+        TestSource = '00/8b/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_008b24f0_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '008b2580'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/8b/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_008b2580.cpp'
+        TestSource = '00/8b/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_008b2580_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '0098bff0'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/98/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_0098bff0.cpp'
+        TestSource = '00/98/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_0098bff0_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00a2a610'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/a2/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a2a610.cpp'
+        TestSource = '00/a2/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a2a610_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00a45e60'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/a4/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a45e60.cpp'
+        TestSource = '00/a4/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a45e60_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00a5fca0'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/a5/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a5fca0.cpp'
+        TestSource = '00/a5/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a5fca0_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00a95750'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/a9/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a95750.cpp'
+        TestSource = '00/a9/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a95750_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00a95820'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/a9/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a95820.cpp'
+        TestSource = '00/a9/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a95820_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00a95ac0'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/a9/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a95ac0.cpp'
+        TestSource = '00/a9/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a95ac0_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00aa8e40'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/aa/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00aa8e40.cpp'
+        TestSource = '00/aa/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00aa8e40_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00aa8f00'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/aa/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00aa8f00.cpp'
+        TestSource = '00/aa/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00aa8f00_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00ab0fc0'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/ab/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00ab0fc0.cpp'
+        TestSource = '00/ab/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00ab0fc0_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00ab1030'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/ab/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00ab1030.cpp'
+        TestSource = '00/ab/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00ab1030_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00ab1120'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/ab/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00ab1120.cpp'
+        TestSource = '00/ab/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00ab1120_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00ad1ae0'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/ad/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00ad1ae0.cpp'
+        TestSource = '00/ad/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00ad1ae0_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00af0a60'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/af/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00af0a60.cpp'
+        TestSource = '00/af/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00af0a60_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00b384c0'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/b3/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00b384c0.cpp'
+        TestSource = '00/b3/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00b384c0_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00b82cc0'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/b8/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00b82cc0.cpp'
+        TestSource = '00/b8/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00b82cc0_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00b82df0'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/b8/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00b82df0.cpp'
+        TestSource = '00/b8/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00b82df0_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00b95f60'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/b9/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00b95f60.cpp'
+        TestSource = '00/b9/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00b95f60_test.cpp'
+        PassPattern = 'PASS_004477c0'
+    }
+    [pscustomobject]@{
+        Address = '00463f6a'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryOutfloat_00463f6a.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryOutfloat_00463f6a_test.cpp'
+        PassPattern = 'GFSERIALISE_VECTOR_FLOAT_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046486f'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryOutfloat_0046486f.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryOutfloat_0046486f_test.cpp'
+        PassPattern = 'GFSERIALISE_VECTOR_FLOAT_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00465820'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryOutfloat_00465820.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryOutfloat_00465820_test.cpp'
+        PassPattern = 'GFSERIALISE_VECTOR_FLOAT_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00466a75'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryOutfloat_00466a75.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryOutfloat_00466a75_test.cpp'
+        PassPattern = 'GFSERIALISE_VECTOR_FLOAT_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00469728'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryOutfloat_00469728.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryOutfloat_00469728_test.cpp'
+        PassPattern = 'GFSERIALISE_VECTOR_FLOAT_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046cac2'
+        Module = '_global'
+        Source = '00/46/global_GFSerialiseVectorBinaryOutfloat_0046cac2.cpp'
+        TestSource = '00/46/global_GFSerialiseVectorBinaryOutfloat_0046cac2_test.cpp'
+        PassPattern = 'GFSERIALISE_VECTOR_FLOAT_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e85dc'
+        Module = '_global'
+        Source = '00/4e/global_GFSerialiseVectorBinaryOutfloat_004e85dc.cpp'
+        TestSource = '00/4e/global_GFSerialiseVectorBinaryOutfloat_004e85dc_test.cpp'
+        PassPattern = 'GFSERIALISE_VECTOR_FLOAT_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e89c5'
+        Module = '_global'
+        Source = '00/4e/global_GFSerialiseVectorBinaryOutfloat_004e89c5.cpp'
+        TestSource = '00/4e/global_GFSerialiseVectorBinaryOutfloat_004e89c5_test.cpp'
+        PassPattern = 'GFSERIALISE_VECTOR_FLOAT_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e95f5'
+        Module = '_global'
+        Source = '00/4e/global_GFSerialiseVectorBinaryOutfloat_004e95f5.cpp'
+        TestSource = '00/4e/global_GFSerialiseVectorBinaryOutfloat_004e95f5_test.cpp'
+        PassPattern = 'GFSERIALISE_VECTOR_FLOAT_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d9ff0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005d9ff0.cpp'
+        TestSource = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005d9ff0_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '005e0130'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005e0130.cpp'
+        TestSource = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005e0130_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '006ade10'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ade10.cpp'
+        TestSource = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ade10_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '006b0f70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b0f70.cpp'
+        TestSource = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b0f70_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '007a31d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a31d0.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a31d0_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '00a29a90'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29a90.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29a90_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '00a29ae0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29ae0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29ae0_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '00a29b30'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29b30.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29b30_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '00a94f70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a94f70.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a94f70_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '00abfa70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/ab/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00abfa70.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00abfa70_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '00ac6240'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/ac/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00ac6240.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00ac6240_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '00af19f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/af/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00af19f0.cpp'
+        TestSource = '00/af/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00af19f0_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '00ba7cc0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/ba/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00ba7cc0.cpp'
+        TestSource = '00/ba/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00ba7cc0_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '00469e00'
+        Module = 'CArray<std::pair<long'
+        Source = '00/46/CArraystdpairlong_pushback_00469e00.cpp'
+        TestSource = '00/46/CArraystdpairlong_pushback_00469e00_test.cpp'
+        PassPattern = 'CARRAY_PAIR_RESIZE_00475E92_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046b144'
+        Module = 'CArray<std::pair<long'
+        Source = '00/46/CArraystdpairlong_pushback_0046b144.cpp'
+        TestSource = '00/46/CArraystdpairlong_pushback_0046b144_test.cpp'
+        PassPattern = 'CARRAY_PAIR_RESIZE_00475E92_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046c430'
+        Module = 'CArray<std::pair<long'
+        Source = '00/46/CArraystdpairlong_pushback_0046c430.cpp'
+        TestSource = '00/46/CArraystdpairlong_pushback_0046c430_test.cpp'
+        PassPattern = 'CARRAY_PAIR_RESIZE_00475E92_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00470a28'
+        Module = 'CArray<std::pair<long'
+        Source = '00/47/CArraystdpairlong_pushback_00470a28.cpp'
+        TestSource = '00/47/CArraystdpairlong_pushback_00470a28_test.cpp'
+        PassPattern = 'CARRAY_PAIR_RESIZE_00475E92_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00656d20'
+        Module = 'CArray<std::pair<long'
+        Source = '00/65/CArraystdpairlong_pushback_00656d20.cpp'
+        TestSource = '00/65/CArraystdpairlong_pushback_00656d20_test.cpp'
+        PassPattern = 'CARRAY_PAIR_RESIZE_00475E92_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00656f6d'
+        Module = 'CArray<std::pair<long'
+        Source = '00/65/CArraystdpairlong_pushback_00656f6d.cpp'
+        TestSource = '00/65/CArraystdpairlong_pushback_00656f6d_test.cpp'
+        PassPattern = 'CARRAY_PAIR_RESIZE_00475E92_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00656fab'
+        Module = 'CArray<std::pair<long'
+        Source = '00/65/CArraystdpairlong_pushback_00656fab.cpp'
+        TestSource = '00/65/CArraystdpairlong_pushback_00656fab_test.cpp'
+        PassPattern = 'CARRAY_PAIR_RESIZE_00475E92_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b8da0'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/6b/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_006b8da0.cpp'
+        TestSource = '00/6b/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_006b8da0_test.cpp'
+        PassPattern = 'PASS_00448280'
+    }
+    [pscustomobject]@{
+        Address = '00827ec0'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/82/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00827ec0.cpp'
+        TestSource = '00/82/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00827ec0_test.cpp'
+        PassPattern = 'PASS_00448280'
+    }
+    [pscustomobject]@{
+        Address = '00a13580'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/a1/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a13580.cpp'
+        TestSource = '00/a1/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a13580_test.cpp'
+        PassPattern = 'PASS_00448280'
+    }
+    [pscustomobject]@{
+        Address = '00a7f920'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/a7/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a7f920.cpp'
+        TestSource = '00/a7/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a7f920_test.cpp'
+        PassPattern = 'PASS_00448280'
+    }
+    [pscustomobject]@{
+        Address = '00ae9860'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/ae/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00ae9860.cpp'
+        TestSource = '00/ae/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00ae9860_test.cpp'
+        PassPattern = 'PASS_00448280'
+    }
+    [pscustomobject]@{
+        Address = '00b8ede0'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/b8/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00b8ede0.cpp'
+        TestSource = '00/b8/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00b8ede0_test.cpp'
+        PassPattern = 'PASS_00448280'
+    }
+    [pscustomobject]@{
+        Address = '004dd999'
+        Module = 'CBedDef'
+        Source = '00/4d/CBedDef_TransferCBedDefUAEXAAVCPersistContextZ_004dd999.cpp'
+        TestSource = '00/4d/CBedDef_TransferCBedDefUAEXAAVCPersistContextZ_004dd999_test.cpp'
+        PassPattern = 'CContextSensitiveItemDef_004526b3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004de36b'
+        Module = 'COpinionOfHeroDef'
+        Source = '00/4d/COpinionOfHeroDef_TransferCOpinionOfHeroDefUAEXAAVCPersistContextZ_004de36b.cpp'
+        TestSource = '00/4d/COpinionOfHeroDef_TransferCOpinionOfHeroDefUAEXAAVCPersistContextZ_004de36b_test.cpp'
+        PassPattern = 'CContextSensitiveItemDef_004526b3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004df107'
+        Module = 'CFishingRodDef'
+        Source = '00/4d/CFishingRodDef_TransferCFishingRodDefUAEXAAVCPersistContextZ_004df107.cpp'
+        TestSource = '00/4d/CFishingRodDef_TransferCFishingRodDefUAEXAAVCPersistContextZ_004df107_test.cpp'
+        PassPattern = 'CContextSensitiveItemDef_004526b3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004df6f4'
+        Module = 'CFireheartMinigameDef'
+        Source = '00/4d/CFireheartMinigameDef_TransferCFireheartMinigameDefUAEXAAVCPersistCont_004df6f4.cpp'
+        TestSource = '00/4d/CFireheartMinigameDef_TransferCFireheartMinigameDefUAEXAAVCPersistCont_004df6f4_test.cpp'
+        PassPattern = 'CContextSensitiveItemDef_004526b3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004df738'
+        Module = 'CLightningOrbDef'
+        Source = '00/4d/CLightningOrbDef_TransferCLightningOrbDefUAEXAAVCPersistContextZ_004df738.cpp'
+        TestSource = '00/4d/CLightningOrbDef_TransferCLightningOrbDefUAEXAAVCPersistContextZ_004df738_test.cpp'
+        PassPattern = 'CContextSensitiveItemDef_004526b3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e599d'
+        Module = 'CFlammableDef'
+        Source = '00/4e/CFlammableDef_TransferCFlammableDefUAEXAAVCPersistContextZ_004e599d.cpp'
+        TestSource = '00/4e/CFlammableDef_TransferCFlammableDefUAEXAAVCPersistContextZ_004e599d_test.cpp'
+        PassPattern = 'CContextSensitiveItemDef_004526b3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd9dd'
+        Module = 'CSmokeGeneratorDef'
+        Source = '00/4d/CSmokeGeneratorDef_TransferCSmokeGeneratorDefUAEXAAVCPersistContext_004dd9dd.cpp'
+        TestSource = '00/4d/CSmokeGeneratorDef_TransferCSmokeGeneratorDefUAEXAAVCPersistContext_004dd9dd_test.cpp'
+        PassPattern = 'CGuildMasterDef_004530bb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ddeaa'
+        Module = 'CHeroDef'
+        Source = '00/4d/CHeroDef_TransferCHeroDefUAEXAAVCPersistContextZ_004ddeaa.cpp'
+        TestSource = '00/4d/CHeroDef_TransferCHeroDefUAEXAAVCPersistContextZ_004ddeaa_test.cpp'
+        PassPattern = 'CGuildMasterDef_004530bb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004de545'
+        Module = 'CGiftDef'
+        Source = '00/4d/CGiftDef_TransferCGiftDefUAEXAAVCPersistContextZ_004de545.cpp'
+        TestSource = '00/4d/CGiftDef_TransferCGiftDefUAEXAAVCPersistContextZ_004de545_test.cpp'
+        PassPattern = 'CGuildMasterDef_004530bb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004de891'
+        Module = 'CSummonableCreatureDef'
+        Source = '00/4d/CSummonableCreatureDef_TransferCSummonableCreatureDefUAEXAAVCPersistCon_004de891.cpp'
+        TestSource = '00/4d/CSummonableCreatureDef_TransferCSummonableCreatureDefUAEXAAVCPersistCon_004de891_test.cpp'
+        PassPattern = 'CGuildMasterDef_004530bb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ded4e'
+        Module = 'CDecapitationDef'
+        Source = '00/4d/CDecapitationDef_TransferCDecapitationDefUAEXAAVCPersistContextZ_004ded4e.cpp'
+        TestSource = '00/4d/CDecapitationDef_TransferCDecapitationDefUAEXAAVCPersistContextZ_004ded4e_test.cpp'
+        PassPattern = 'CGuildMasterDef_004530bb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004eac7b'
+        Module = 'CPrizeScoreDef'
+        Source = '00/4e/CPrizeScoreDef_TransferCPrizeScoreDefUAEXAAVCPersistContextZ_004eac7b.cpp'
+        TestSource = '00/4e/CPrizeScoreDef_TransferCPrizeScoreDefUAEXAAVCPersistContextZ_004eac7b_test.cpp'
+        PassPattern = 'CGuildMasterDef_004530bb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e281f'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e281f.cpp'
+        TestSource = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e281f_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00454647_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e3210'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e3210.cpp'
+        TestSource = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e3210_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00454647_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e32f9'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e32f9.cpp'
+        TestSource = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e32f9_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00454647_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e4552'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e4552.cpp'
+        TestSource = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e4552_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00454647_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e5eec'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e5eec.cpp'
+        TestSource = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e5eec_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00454647_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004eba84'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004eba84.cpp'
+        TestSource = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004eba84_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00454647_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00459704'
+        Module = 'CSimBuildingDef'
+        Source = '00/45/CSimBuildingDef_TransferCSimBuildingDefUAEXAAVCPersistContextZ_00459704.cpp'
+        TestSource = '00/45/CSimBuildingDef_TransferCSimBuildingDefUAEXAAVCPersistContextZ_00459704_test.cpp'
+        PassPattern = 'CVillagerInteractionsDef_00456f27_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046a7e0'
+        Module = 'CSpecialAbilitiesCreatureTintDef'
+        Source = '00/46/CSpecialAbilitiesCreatureTintDef_TransferCSpecialAbilitiesCreatureTintDefUAEXAAVC_0046a7e0.cpp'
+        TestSource = '00/46/CSpecialAbilitiesCreatureTintDef_TransferCSpecialAbilitiesCreatureTintDefUAEXAAVC_0046a7e0_test.cpp'
+        PassPattern = 'CVillagerInteractionsDef_00456f27_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004784e4'
+        Module = 'CAppearanceModifierScalingDef'
+        Source = '00/47/CAppearanceModifierScalingDef_TransferCAppearanceModifierScalingDefUAEXAAVCPer_004784e4.cpp'
+        TestSource = '00/47/CAppearanceModifierScalingDef_TransferCAppearanceModifierScalingDefUAEXAAVCPer_004784e4_test.cpp'
+        PassPattern = 'CVillagerInteractionsDef_00456f27_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00478827'
+        Module = 'CAbilityTrackLevelDef'
+        Source = '00/47/CAbilityTrackLevelDef_TransferCAbilityTrackLevelDefUAEXAAVCPersistCont_00478827.cpp'
+        TestSource = '00/47/CAbilityTrackLevelDef_TransferCAbilityTrackLevelDefUAEXAAVCPersistCont_00478827_test.cpp'
+        PassPattern = 'CVillagerInteractionsDef_00456f27_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e3c24'
+        Module = 'CBalverineBattleDef'
+        Source = '00/4e/CBalverineBattleDef_TransferCBalverineBattleDefUAEXAAVCPersistContex_004e3c24.cpp'
+        TestSource = '00/4e/CBalverineBattleDef_TransferCBalverineBattleDefUAEXAAVCPersistContex_004e3c24_test.cpp'
+        PassPattern = 'CVillagerInteractionsDef_00456f27_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069c380'
+        Module = 'CCountedPointer<CDiskFileWin32>'
+        Source = '00/69/CCountedPointerCDiskFileWin32_operator_0069c380.cpp'
+        TestSource = '00/69/CCountedPointerCDiskFileWin32_operator_0069c380_test.cpp'
+        PassPattern = 'PASS_009a9bf0'
+    }
+    [pscustomobject]@{
+        Address = '008ab1e0'
+        Module = 'CCountedPointer<CDiskFileWin32>'
+        Source = '00/8a/CCountedPointerCDiskFileWin32_operator_008ab1e0.cpp'
+        TestSource = '00/8a/CCountedPointerCDiskFileWin32_operator_008ab1e0_test.cpp'
+        PassPattern = 'PASS_009a9bf0'
+    }
+    [pscustomobject]@{
+        Address = '009a4440'
+        Module = 'CCountedPointer<CDiskFileWin32>'
+        Source = '00/9a/CCountedPointerCDiskFileWin32_operator_009a4440.cpp'
+        TestSource = '00/9a/CCountedPointerCDiskFileWin32_operator_009a4440_test.cpp'
+        PassPattern = 'PASS_009a9bf0'
+    }
+    [pscustomobject]@{
+        Address = '00a2acc0'
+        Module = 'CCountedPointer<CDiskFileWin32>'
+        Source = '00/a2/CCountedPointerCDiskFileWin32_operator_00a2acc0.cpp'
+        TestSource = '00/a2/CCountedPointerCDiskFileWin32_operator_00a2acc0_test.cpp'
+        PassPattern = 'PASS_009a9bf0'
+    }
+    [pscustomobject]@{
+        Address = '00b8ebc0'
+        Module = 'CCountedPointer<CDiskFileWin32>'
+        Source = '00/b8/CCountedPointerCDiskFileWin32_operator_00b8ebc0.cpp'
+        TestSource = '00/b8/CCountedPointerCDiskFileWin32_operator_00b8ebc0_test.cpp'
+        PassPattern = 'PASS_009a9bf0'
+    }
+    [pscustomobject]@{
+        Address = '004dfb8f'
+        Module = 'LTextTreeWalkThrough'
+        Source = '00/4d/LTextTreeWalkThrough_BuildTreeArray_004dfb8f.cpp'
+        TestSource = '00/4d/LTextTreeWalkThrough_BuildTreeArray_004dfb8f_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_00451b4b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e6e0c'
+        Module = 'LTextTreeWalkThrough'
+        Source = '00/4e/LTextTreeWalkThrough_BuildTreeArray_004e6e0c.cpp'
+        TestSource = '00/4e/LTextTreeWalkThrough_BuildTreeArray_004e6e0c_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_00451b4b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00579d97'
+        Module = 'LTextTreeWalkThrough'
+        Source = '00/57/LTextTreeWalkThrough_BuildTreeArray_00579d97.cpp'
+        TestSource = '00/57/LTextTreeWalkThrough_BuildTreeArray_00579d97_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_00451b4b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b1e23'
+        Module = 'LTextTreeWalkThrough'
+        Source = '00/5b/LTextTreeWalkThrough_BuildTreeArray_005b1e23.cpp'
+        TestSource = '00/5b/LTextTreeWalkThrough_BuildTreeArray_005b1e23_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_00451b4b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd9fe'
+        Module = 'CCreatureNavigationDef'
+        Source = '00/4d/CCreatureNavigationDef_TransferCCreatureNavigationDefUAEXAAVCPersistCon_004dd9fe.cpp'
+        TestSource = '00/4d/CCreatureNavigationDef_TransferCCreatureNavigationDefUAEXAAVCPersistCon_004dd9fe_test.cpp'
+        PassPattern = 'CCarrySlotDef_00452256_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004de50c'
+        Module = 'CTimeAppearanceFadeDef'
+        Source = '00/4d/CTimeAppearanceFadeDef_TransferCTimeAppearanceFadeDefUAEXAAVCPersistCon_004de50c.cpp'
+        TestSource = '00/4d/CTimeAppearanceFadeDef_TransferCTimeAppearanceFadeDefUAEXAAVCPersistCon_004de50c_test.cpp'
+        PassPattern = 'CCarrySlotDef_00452256_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004def3d'
+        Module = 'CHeroSpecialMovementDef'
+        Source = '00/4d/CHeroSpecialMovementDef_TransferCHeroSpecialMovementDefUAEXAAVCPersistCo_004def3d.cpp'
+        TestSource = '00/4d/CHeroSpecialMovementDef_TransferCHeroSpecialMovementDefUAEXAAVCPersistCo_004def3d_test.cpp'
+        PassPattern = 'CCarrySlotDef_00452256_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e7ea7'
+        Module = 'CCreatureModeDef'
+        Source = '00/4e/CCreatureModeDef_TransferCCreatureModeDefUAEXAAVCPersistContextZ_004e7ea7.cpp'
+        TestSource = '00/4e/CCreatureModeDef_TransferCCreatureModeDefUAEXAAVCPersistContextZ_004e7ea7_test.cpp'
+        PassPattern = 'CCarrySlotDef_00452256_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046a742'
+        Module = 'CSpecialAbilitiesBurntEffectDef'
+        Source = '00/46/CSpecialAbilitiesBurntEffectDef_TransferCSpecialAbilitiesBurntEffectDefUAEXAAVCP_0046a742.cpp'
+        TestSource = '00/46/CSpecialAbilitiesBurntEffectDef_TransferCSpecialAbilitiesBurntEffectDefUAEXAAVCP_0046a742_test.cpp'
+        PassPattern = 'CCameraManagerSetDef_00456818_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e38e4'
+        Module = 'CThunderBattleDef'
+        Source = '00/4e/CThunderBattleDef_TransferCThunderBattleDefUAEXAAVCPersistContextZ_004e38e4.cpp'
+        TestSource = '00/4e/CThunderBattleDef_TransferCThunderBattleDefUAEXAAVCPersistContextZ_004e38e4_test.cpp'
+        PassPattern = 'CCameraManagerSetDef_00456818_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e3f7b'
+        Module = 'CAreaOfEffectAttackDef'
+        Source = '00/4e/CAreaOfEffectAttackDef_TransferCAreaOfEffectAttackDefUAEXAAVCPersistCon_004e3f7b.cpp'
+        TestSource = '00/4e/CAreaOfEffectAttackDef_TransferCAreaOfEffectAttackDefUAEXAAVCPersistCon_004e3f7b_test.cpp'
+        PassPattern = 'CCameraManagerSetDef_00456818_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00594c33'
+        Module = '_global'
+        Source = '00/59/global_makeheapCThingCThingCompareBestForTargeting2_00594c33.cpp'
+        TestSource = '00/59/global_makeheapCThingCThingCompareBestForTargeting2_00594c33_test.cpp'
+        PassPattern = 'PASS_004711f5_OK'
+    }
+    [pscustomobject]@{
+        Address = '005fa03b'
+        Module = '_global'
+        Source = '00/5f/global_makeheapCThingCThingCompareBestForTargeting2_005fa03b.cpp'
+        TestSource = '00/5f/global_makeheapCThingCThingCompareBestForTargeting2_005fa03b_test.cpp'
+        PassPattern = 'PASS_004711f5_OK'
+    }
+    [pscustomobject]@{
+        Address = '005fa07f'
+        Module = '_global'
+        Source = '00/5f/global_makeheapCThingCThingCompareBestForTargeting2_005fa07f.cpp'
+        TestSource = '00/5f/global_makeheapCThingCThingCompareBestForTargeting2_005fa07f_test.cpp'
+        PassPattern = 'PASS_004711f5_OK'
+    }
+    [pscustomobject]@{
+        Address = '004a88a0'
+        Module = 'CCountedPointer'
+        Source = '00/4a/CCountedPointer_ShareData_004a88a0.cpp'
+        TestSource = '00/4a/CCountedPointer_ShareData_004a88a0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0050d340'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050d340.cpp'
+        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050d340_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0050d740'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050d740.cpp'
+        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050d740_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0050d890'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050d890.cpp'
+        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050d890_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0050d9c0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050d9c0.cpp'
+        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050d9c0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0050da50'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050da50.cpp'
+        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050da50_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0050dae0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050dae0.cpp'
+        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050dae0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0050db70'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050db70.cpp'
+        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050db70_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0050dc00'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050dc00.cpp'
+        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050dc00_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0050dc90'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050dc90.cpp'
+        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050dc90_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00668700'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/66/CCountedPointerCScriptThing_ShareData_00668700.cpp'
+        TestSource = '00/66/CCountedPointerCScriptThing_ShareData_00668700_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0069be10'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/69/CCountedPointerCScriptThing_ShareData_0069be10.cpp'
+        TestSource = '00/69/CCountedPointerCScriptThing_ShareData_0069be10_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0069be60'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/69/CCountedPointerCScriptThing_ShareData_0069be60.cpp'
+        TestSource = '00/69/CCountedPointerCScriptThing_ShareData_0069be60_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00754d30'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/75/CCountedPointerCScriptThing_ShareData_00754d30.cpp'
+        TestSource = '00/75/CCountedPointerCScriptThing_ShareData_00754d30_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00763d30'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/76/CCountedPointerCScriptThing_ShareData_00763d30.cpp'
+        TestSource = '00/76/CCountedPointerCScriptThing_ShareData_00763d30_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00822ff0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/82/CCountedPointerCScriptThing_ShareData_00822ff0.cpp'
+        TestSource = '00/82/CCountedPointerCScriptThing_ShareData_00822ff0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00823080'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/82/CCountedPointerCScriptThing_ShareData_00823080.cpp'
+        TestSource = '00/82/CCountedPointerCScriptThing_ShareData_00823080_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00823110'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/82/CCountedPointerCScriptThing_ShareData_00823110.cpp'
+        TestSource = '00/82/CCountedPointerCScriptThing_ShareData_00823110_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '008231a0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/82/CCountedPointerCScriptThing_ShareData_008231a0.cpp'
+        TestSource = '00/82/CCountedPointerCScriptThing_ShareData_008231a0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00823230'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/82/CCountedPointerCScriptThing_ShareData_00823230.cpp'
+        TestSource = '00/82/CCountedPointerCScriptThing_ShareData_00823230_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '008232c0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/82/CCountedPointerCScriptThing_ShareData_008232c0.cpp'
+        TestSource = '00/82/CCountedPointerCScriptThing_ShareData_008232c0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '008aa8e0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/8a/CCountedPointerCScriptThing_ShareData_008aa8e0.cpp'
+        TestSource = '00/8a/CCountedPointerCScriptThing_ShareData_008aa8e0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '008c2e00'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/8c/CCountedPointerCScriptThing_ShareData_008c2e00.cpp'
+        TestSource = '00/8c/CCountedPointerCScriptThing_ShareData_008c2e00_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00991f60'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/99/CCountedPointerCScriptThing_ShareData_00991f60.cpp'
+        TestSource = '00/99/CCountedPointerCScriptThing_ShareData_00991f60_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00991ff0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/99/CCountedPointerCScriptThing_ShareData_00991ff0.cpp'
+        TestSource = '00/99/CCountedPointerCScriptThing_ShareData_00991ff0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009a4300'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/9a/CCountedPointerCScriptThing_ShareData_009a4300.cpp'
+        TestSource = '00/9a/CCountedPointerCScriptThing_ShareData_009a4300_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009a95e0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/9a/CCountedPointerCScriptThing_ShareData_009a95e0.cpp'
+        TestSource = '00/9a/CCountedPointerCScriptThing_ShareData_009a95e0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009d6c60'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/9d/CCountedPointerCScriptThing_ShareData_009d6c60.cpp'
+        TestSource = '00/9d/CCountedPointerCScriptThing_ShareData_009d6c60_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a28920'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a2/CCountedPointerCScriptThing_ShareData_00a28920.cpp'
+        TestSource = '00/a2/CCountedPointerCScriptThing_ShareData_00a28920_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a289b0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a2/CCountedPointerCScriptThing_ShareData_00a289b0.cpp'
+        TestSource = '00/a2/CCountedPointerCScriptThing_ShareData_00a289b0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a28a40'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a2/CCountedPointerCScriptThing_ShareData_00a28a40.cpp'
+        TestSource = '00/a2/CCountedPointerCScriptThing_ShareData_00a28a40_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a28b90'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a2/CCountedPointerCScriptThing_ShareData_00a28b90.cpp'
+        TestSource = '00/a2/CCountedPointerCScriptThing_ShareData_00a28b90_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a28c60'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a2/CCountedPointerCScriptThing_ShareData_00a28c60.cpp'
+        TestSource = '00/a2/CCountedPointerCScriptThing_ShareData_00a28c60_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a293a0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a2/CCountedPointerCScriptThing_ShareData_00a293a0.cpp'
+        TestSource = '00/a2/CCountedPointerCScriptThing_ShareData_00a293a0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a30bd0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a3/CCountedPointerCScriptThing_ShareData_00a30bd0.cpp'
+        TestSource = '00/a3/CCountedPointerCScriptThing_ShareData_00a30bd0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a30c60'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a3/CCountedPointerCScriptThing_ShareData_00a30c60.cpp'
+        TestSource = '00/a3/CCountedPointerCScriptThing_ShareData_00a30c60_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a30cf0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a3/CCountedPointerCScriptThing_ShareData_00a30cf0.cpp'
+        TestSource = '00/a3/CCountedPointerCScriptThing_ShareData_00a30cf0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a30ee0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a3/CCountedPointerCScriptThing_ShareData_00a30ee0.cpp'
+        TestSource = '00/a3/CCountedPointerCScriptThing_ShareData_00a30ee0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a30f30'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a3/CCountedPointerCScriptThing_ShareData_00a30f30.cpp'
+        TestSource = '00/a3/CCountedPointerCScriptThing_ShareData_00a30f30_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a457c0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a4/CCountedPointerCScriptThing_ShareData_00a457c0.cpp'
+        TestSource = '00/a4/CCountedPointerCScriptThing_ShareData_00a457c0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a51670'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a5/CCountedPointerCScriptThing_ShareData_00a51670.cpp'
+        TestSource = '00/a5/CCountedPointerCScriptThing_ShareData_00a51670_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a517c0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a5/CCountedPointerCScriptThing_ShareData_00a517c0.cpp'
+        TestSource = '00/a5/CCountedPointerCScriptThing_ShareData_00a517c0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a51e90'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a5/CCountedPointerCScriptThing_ShareData_00a51e90.cpp'
+        TestSource = '00/a5/CCountedPointerCScriptThing_ShareData_00a51e90_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a5fbe0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a5/CCountedPointerCScriptThing_ShareData_00a5fbe0.cpp'
+        TestSource = '00/a5/CCountedPointerCScriptThing_ShareData_00a5fbe0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a6e1d0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a6/CCountedPointerCScriptThing_ShareData_00a6e1d0.cpp'
+        TestSource = '00/a6/CCountedPointerCScriptThing_ShareData_00a6e1d0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a6e260'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a6/CCountedPointerCScriptThing_ShareData_00a6e260.cpp'
+        TestSource = '00/a6/CCountedPointerCScriptThing_ShareData_00a6e260_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a8cdb0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a8/CCountedPointerCScriptThing_ShareData_00a8cdb0.cpp'
+        TestSource = '00/a8/CCountedPointerCScriptThing_ShareData_00a8cdb0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a8cf70'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a8/CCountedPointerCScriptThing_ShareData_00a8cf70.cpp'
+        TestSource = '00/a8/CCountedPointerCScriptThing_ShareData_00a8cf70_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a93f60'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a93f60.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a93f60_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a93ff0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a93ff0.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a93ff0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a940c0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a940c0.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a940c0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a941d0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a941d0.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a941d0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a94660'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a94660.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a94660_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a946b0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a946b0.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a946b0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a94700'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a94700.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a94700_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a94750'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a94750.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a94750_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a947a0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a947a0.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a947a0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a9a170'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a9a170.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a9a170_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a9a1c0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a9a1c0.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a9a1c0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a9a210'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a9a210.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a9a210_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a9ccc0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a9ccc0.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a9ccc0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a9cd10'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a9cd10.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a9cd10_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a9cd60'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a9cd60.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a9cd60_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a9cdb0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/a9/CCountedPointerCScriptThing_ShareData_00a9cdb0.cpp'
+        TestSource = '00/a9/CCountedPointerCScriptThing_ShareData_00a9cdb0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aaaf90'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/aa/CCountedPointerCScriptThing_ShareData_00aaaf90.cpp'
+        TestSource = '00/aa/CCountedPointerCScriptThing_ShareData_00aaaf90_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aaafe0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/aa/CCountedPointerCScriptThing_ShareData_00aaafe0.cpp'
+        TestSource = '00/aa/CCountedPointerCScriptThing_ShareData_00aaafe0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aaece0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/aa/CCountedPointerCScriptThing_ShareData_00aaece0.cpp'
+        TestSource = '00/aa/CCountedPointerCScriptThing_ShareData_00aaece0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aaed30'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/aa/CCountedPointerCScriptThing_ShareData_00aaed30.cpp'
+        TestSource = '00/aa/CCountedPointerCScriptThing_ShareData_00aaed30_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aaed80'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/aa/CCountedPointerCScriptThing_ShareData_00aaed80.cpp'
+        TestSource = '00/aa/CCountedPointerCScriptThing_ShareData_00aaed80_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aaedd0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/aa/CCountedPointerCScriptThing_ShareData_00aaedd0.cpp'
+        TestSource = '00/aa/CCountedPointerCScriptThing_ShareData_00aaedd0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aaee20'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/aa/CCountedPointerCScriptThing_ShareData_00aaee20.cpp'
+        TestSource = '00/aa/CCountedPointerCScriptThing_ShareData_00aaee20_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ab0970'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ab/CCountedPointerCScriptThing_ShareData_00ab0970.cpp'
+        TestSource = '00/ab/CCountedPointerCScriptThing_ShareData_00ab0970_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ab09c0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ab/CCountedPointerCScriptThing_ShareData_00ab09c0.cpp'
+        TestSource = '00/ab/CCountedPointerCScriptThing_ShareData_00ab09c0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00abdc90'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ab/CCountedPointerCScriptThing_ShareData_00abdc90.cpp'
+        TestSource = '00/ab/CCountedPointerCScriptThing_ShareData_00abdc90_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00abdce0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ab/CCountedPointerCScriptThing_ShareData_00abdce0.cpp'
+        TestSource = '00/ab/CCountedPointerCScriptThing_ShareData_00abdce0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00abdd30'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ab/CCountedPointerCScriptThing_ShareData_00abdd30.cpp'
+        TestSource = '00/ab/CCountedPointerCScriptThing_ShareData_00abdd30_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00abdd80'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ab/CCountedPointerCScriptThing_ShareData_00abdd80.cpp'
+        TestSource = '00/ab/CCountedPointerCScriptThing_ShareData_00abdd80_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00abddd0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ab/CCountedPointerCScriptThing_ShareData_00abddd0.cpp'
+        TestSource = '00/ab/CCountedPointerCScriptThing_ShareData_00abddd0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00abde20'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ab/CCountedPointerCScriptThing_ShareData_00abde20.cpp'
+        TestSource = '00/ab/CCountedPointerCScriptThing_ShareData_00abde20_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00abde70'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ab/CCountedPointerCScriptThing_ShareData_00abde70.cpp'
+        TestSource = '00/ab/CCountedPointerCScriptThing_ShareData_00abde70_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00abdec0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ab/CCountedPointerCScriptThing_ShareData_00abdec0.cpp'
+        TestSource = '00/ab/CCountedPointerCScriptThing_ShareData_00abdec0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00abdf10'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ab/CCountedPointerCScriptThing_ShareData_00abdf10.cpp'
+        TestSource = '00/ab/CCountedPointerCScriptThing_ShareData_00abdf10_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00abdf60'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ab/CCountedPointerCScriptThing_ShareData_00abdf60.cpp'
+        TestSource = '00/ab/CCountedPointerCScriptThing_ShareData_00abdf60_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00abdfb0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ab/CCountedPointerCScriptThing_ShareData_00abdfb0.cpp'
+        TestSource = '00/ab/CCountedPointerCScriptThing_ShareData_00abdfb0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ac1630'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ac/CCountedPointerCScriptThing_ShareData_00ac1630.cpp'
+        TestSource = '00/ac/CCountedPointerCScriptThing_ShareData_00ac1630_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ac1770'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ac/CCountedPointerCScriptThing_ShareData_00ac1770.cpp'
+        TestSource = '00/ac/CCountedPointerCScriptThing_ShareData_00ac1770_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ac17c0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ac/CCountedPointerCScriptThing_ShareData_00ac17c0.cpp'
+        TestSource = '00/ac/CCountedPointerCScriptThing_ShareData_00ac17c0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ac1810'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ac/CCountedPointerCScriptThing_ShareData_00ac1810.cpp'
+        TestSource = '00/ac/CCountedPointerCScriptThing_ShareData_00ac1810_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ac1860'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ac/CCountedPointerCScriptThing_ShareData_00ac1860.cpp'
+        TestSource = '00/ac/CCountedPointerCScriptThing_ShareData_00ac1860_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ac18b0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ac/CCountedPointerCScriptThing_ShareData_00ac18b0.cpp'
+        TestSource = '00/ac/CCountedPointerCScriptThing_ShareData_00ac18b0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00acfda0'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/ac/CCountedPointerCScriptThing_ShareData_00acfda0.cpp'
+        TestSource = '00/ac/CCountedPointerCScriptThing_ShareData_00acfda0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00af0830'
+        Module = 'CCountedPointer<CScriptThing>'
+        Source = '00/af/CCountedPointerCScriptThing_ShareData_00af0830.cpp'
+        TestSource = '00/af/CCountedPointerCScriptThing_ShareData_00af0830_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00643e2e'
+        Module = 'CDrawMiniMap'
+        Source = '00/64/CDrawMiniMap_SetAsActive_00643e2e.cpp'
+        TestSource = '00/64/CDrawMiniMap_SetAsActive_00643e2e_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0082a310'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_Initialise_0082a310.cpp'
+        TestSource = '00/82/CMiniMapDisplay_Initialise_0082a310_test.cpp'
+        PassPattern = 'INIT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00829ce0'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_GetRelativePosOnMap_00829ce0.cpp'
+        TestSource = '00/82/CMiniMapDisplay_GetRelativePosOnMap_00829ce0_test.cpp'
+        PassPattern = 'BEHAVIOR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066c750'
+        Module = 'CRegionMinimap'
+        Source = '00/66/CRegionMinimap_InitialiseSurface_0066c750.cpp'
+        TestSource = '00/66/CRegionMinimap_InitialiseSurface_0066c750_test.cpp'
+        PassPattern = 'SURFACE_OK'
+    }
+    [pscustomobject]@{
+        Address = '0082a180'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_InitialiseOnRegionLoad_0082a180.cpp'
+        TestSource = '00/82/CMiniMapDisplay_InitialiseOnRegionLoad_0082a180_test.cpp'
+        PassPattern = 'PARITY_OK_0082a180'
+    }
+    [pscustomobject]@{
+        Address = '00643e52'
+        Module = 'CDrawMiniMap'
+        Source = '00/64/CDrawMiniMap_GetRingAlpha_00643e52.cpp'
+        TestSource = '00/64/CDrawMiniMap_GetRingAlpha_00643e52_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0082a2a0'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_RemoveAllDeadMarkers_0082a2a0.cpp'
+        TestSource = '00/82/CMiniMapDisplay_RemoveAllDeadMarkers_0082a2a0_test.cpp'
+        PassPattern = 'PARITY_OK_82a2a0'
+    }
+    [pscustomobject]@{
+        Address = '0066ca80'
+        Module = 'CRegionMinimap'
+        Source = '00/66/CRegionMinimap_LoadRegionMinimapTGAFile_0066ca80.cpp'
+        TestSource = '00/66/CRegionMinimap_LoadRegionMinimapTGAFile_0066ca80_test.cpp'
+        PassPattern = 'OK_MINIMAP'
+    }
+    [pscustomobject]@{
+        Address = '00a46d90'
+        Module = 'CMiniMapDisplay'
+        Source = '00/a4/CMiniMapDisplay_ClearPrimitiveHandles_00a46d90.cpp'
+        TestSource = '00/a4/CMiniMapDisplay_ClearPrimitiveHandles_00a46d90_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00829c70'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_GetRelativeMapSize_00829c70.cpp'
+        TestSource = '00/82/CMiniMapDisplay_GetRelativeMapSize_00829c70_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0066cc40'
+        Module = 'CRegionMinimap'
+        Source = '00/66/CRegionMinimap_InitialiseRegionMinimapSize_0066cc40.cpp'
+        TestSource = '00/66/CRegionMinimap_InitialiseRegionMinimapSize_0066cc40_test.cpp'
+        PassPattern = 'PARITYOK_66cc40'
+    }
+    [pscustomobject]@{
+        Address = '00443cf0'
+        Module = 'CMiniMapDisplay'
+        Source = '00/44/CMiniMapDisplay_ClearPrimitiveHandles_00443cf0.cpp'
+        TestSource = '00/44/CMiniMapDisplay_ClearPrimitiveHandles_00443cf0_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
 )
 
 $requestedAddresses = @(
