@@ -73638,6 +73638,111 @@ $catalog = @(
         TestSource = '00/44/CMiniMapDisplay_ClearPrimitiveHandles_00443cf0_test.cpp'
         PassPattern = 'BEHAVIOUR_OK'
     }
+    [pscustomobject]@{
+        Address = '00c3d460'
+        Module = 'CShaderRenderManager'
+        Source = '00/c3/CShaderRenderManager_OnPostViewportChanged_00c3d460.cpp'
+        TestSource = '00/c3/CShaderRenderManager_OnPostViewportChanged_00c3d460_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00655fe9'
+        Module = 'CEnginePrimitiveRenderer2D'
+        Source = '00/65/CEnginePrimitiveRenderer2D_AddPrimitive_00655fe9.cpp'
+        TestSource = '00/65/CEnginePrimitiveRenderer2D_AddPrimitive_00655fe9_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c26520'
+        Module = 'CShaderRenderManager'
+        Source = '00/c2/CShaderRenderManager_SetShadowFadeTransform_00c26520.cpp'
+        TestSource = '00/c2/CShaderRenderManager_SetShadowFadeTransform_00c26520_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a5d5f0'
+        Module = 'CShaderResource'
+        Source = '00/a5/CShaderResource_GetPixelShader_00a5d5f0.cpp'
+        TestSource = '00/a5/CShaderResource_GetPixelShader_00a5d5f0_test.cpp'
+        PassPattern = 'PARITY_OK_a5d5f0'
+    }
+    [pscustomobject]@{
+        Address = '00a5d720'
+        Module = 'CShaderResource'
+        Source = '00/a5/CShaderResource_GetPixelShader_00a5d720.cpp'
+        TestSource = '00/a5/CShaderResource_GetPixelShader_00a5d720_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b4a670'
+        Module = 'CEnginePrimitiveRenderer2D'
+        Source = '00/b4/CEnginePrimitiveRenderer2D_AddPrimitive_00b4a670.cpp'
+        TestSource = '00/b4/CEnginePrimitiveRenderer2D_AddPrimitive_00b4a670_test.cpp'
+        PassPattern = 'PARITY_OK_b4a670'
+    }
+    [pscustomobject]@{
+        Address = '00988600'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetFogColour_00988600.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetFogColour_00988600_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '009886c0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetFogColour_009886c0.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetFogColour_009886c0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '006724b0'
+        Module = 'CEnginePrimitiveRenderer2D'
+        Source = '00/67/CEnginePrimitiveRenderer2D_AddPrimitive_006724b0.cpp'
+        TestSource = '00/67/CEnginePrimitiveRenderer2D_AddPrimitive_006724b0_test.cpp'
+        PassPattern = 'PARITY_OK_006724b0'
+    }
+    [pscustomobject]@{
+        Address = '0098b280'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_UnregisterVertexShaderConstantLayouts_0098b280.cpp'
+        TestSource = '00/98/CShaderRenderManager_UnregisterVertexShaderConstantLayouts_0098b280_test.cpp'
+        PassPattern = 'PARITY_OK_0098b280'
+    }
+    [pscustomobject]@{
+        Address = '00988640'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_ResetLight_00988640.cpp'
+        TestSource = '00/98/CShaderRenderManager_ResetLight_00988640_test.cpp'
+        PassPattern = 'RESETLIGHT_OK'
+    }
+    [pscustomobject]@{
+        Address = '0098c510'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetXBoxUserVertexShaderConstant_0098c510.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetXBoxUserVertexShaderConstant_0098c510_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0098c470'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetXBoxUserVertexShaderConstant_0098c470.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetXBoxUserVertexShaderConstant_0098c470_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0098c4c0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetXBoxUserVertexShaderConstant_0098c4c0.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetXBoxUserVertexShaderConstant_0098c4c0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00989ba0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetXBoxUserVertexShaderConstant_00989ba0.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetXBoxUserVertexShaderConstant_00989ba0_test.cpp'
+        PassPattern = 'PARITY_OK_989ba0'
+    }
 )
 
 $requestedAddresses = @(
