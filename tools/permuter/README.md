@@ -37,14 +37,36 @@ python tools/permuter/permuter.py 00405ba0 examples/stdmovebackward_00405ba0.cpp
   -> BEST score=4 (30-byte fn, 4 differing bytes = the mov;sub / sub;mov swap)
 ```
 
-## Scope & roadmap
-- **Now (manual mode):** you supply the 2-3 uncertain spellings as `PERM(...)`; the search finds
-  the byte-matching combination. Ideal when you know *where* the ambiguity is (idiom, pragma,
-  signedness, operand order).
-- **Next (random/AST mode):** the piece that cracks pure regalloc coin-flips — automatic
-  AST mutations (introduce/inline temps, reassociate, retype, reorder independent statements)
-  à la upstream decomp-permuter. Needs a C/C++ AST layer (pycparser or libclang); the scorer
-  here is already the objective function it would hill-climb on.
+## Full-regalloc mode (`anneal.py`) — no annotation
+`python anneal.py <hexaddr> <plain.cpp> [--name leaf] [--oracle t.tsv] [--iters N]
+[--seed S] [--t0 4.0] [--tend 0.3] [--restart 120]`
+
+The upstream-decomp-permuter loop: a **simulated-annealing** random walk over the whole
+mutation library, biased downhill by a cooling Metropolis criterion so it can accept a
+lateral/worse move to reach a spelling several mutations away that finally flips the
+register allocation. Pipeline per run:
+1. **seed** flag×pragma sweep on the untouched source;
+2. **greedy 1-hop sweep** — every single mutation × a small flag/pragma subset
+   (deterministic; guarantees a match one mutation away is found regardless of seed);
+3. **anneal** — multi-hop SA with restart-from-best, memoized scoring.
+
+Mutation library (all semantics-preserving by construction; byte-match is still
+behaviour-re-checked at land time):
+- `clang_mutations.py` — materialize-earlier levers: **temp introduction**, operand
+  **reassociation**, **decl splitting** (`T x=a op b;` → `T x=a; x op= b;`).
+- `regalloc_mutations.py` — regalloc/scheduling levers: **temp inlining** (fold a
+  single-use local back into its use — the inverse of temp-intro, forces re-materialize/
+  reload), **decl reordering**, **adjacent independent statement reordering**,
+  **block-scope insertion** (`{ }` to shorten local lifetimes → stack-slot reuse), and
+  **local retyping** (value-equivalent integer width/spelling).
+
+Validated: reproduces the `optimize("s")` pragma match (seed); auto-discovers a
+statement-reorder fix on a flag-immune same-length gap (greedy + SA); and stays honest
+on genuine QFE-4035-gated dead-ends (`stdmovebackward` score 4, `Init` score 19) without
+false-claiming. Needs `libclang` (see `requirements.txt`).
+
+- **Manual mode (`permuter.py`):** when you know *where* the ambiguity is, annotate the
+  2-3 uncertain spellings as `PERM(...)`/`PERMPRAGMA(...)` and it searches the cross-product.
 - **Integration:** pairs with [reccmp](https://github.com/isledecomp/reccmp) (the LEGO Island
   MSVC-x86 matching-decomp toolchain) for source annotations + per-function match tracking; our
   relocation-masked compare already reimplements reccmp's core comparison.
