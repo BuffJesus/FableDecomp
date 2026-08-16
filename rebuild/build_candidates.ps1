@@ -75792,6 +75792,27 @@ $catalog = @(
         TestSource = '00/a7/global_SetBlockedNode_00a76340_test.cpp'
         PassPattern = 'OK_00a76340'
     }
+    [pscustomobject]@{
+        Address = '00a632f0'
+        Module = 'CFontBankStateBlock'
+        Source = '00/a6/CFontBankStateBlock_Set_00a632f0.cpp'
+        TestSource = '00/a6/CFontBankStateBlock_Set_00a632f0_test.cpp'
+        PassPattern = 'OK_00a632f0'
+    }
+    [pscustomobject]@{
+        Address = '00a5ee40'
+        Module = 'CStreamingFontBankStateBlock'
+        Source = '00/a5/CStreamingFontBankStateBlock_Set_00a5ee40.cpp'
+        TestSource = '00/a5/CStreamingFontBankStateBlock_Set_00a5ee40_test.cpp'
+        PassPattern = 'OK_00a5ee40'
+    }
+    [pscustomobject]@{
+        Address = '00bf3700'
+        Module = 'Initialise'
+        Source = '00/bf/Initialise_Initialise_00bf3700.cpp'
+        TestSource = '00/bf/Initialise_Initialise_00bf3700_test.cpp'
+        PassPattern = 'OK_00bf3700'
+    }
 )
 
 $requestedAddresses = @(

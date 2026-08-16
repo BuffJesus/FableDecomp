@@ -1,0 +1,2 @@
+struct C { char a[4]; int f4; char b[0x38-8]; unsigned short f38,f3a; void Init(int a, unsigned short b, unsigned short c); };
+void C::Init(int a, unsigned short b, unsigned short c){ this->f4=a; this->f38=b; this->f3a=c; }
