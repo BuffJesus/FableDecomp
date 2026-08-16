@@ -29,3 +29,14 @@ out-of-line block). Pattern:
     for (int i=0;i<count;i++){ if (this->begin[i]->field==target){ n=this->begin[i]; break; } }
     Use(n);
 This was the "one regalloc artifact in LoopB" that CONTINUE_GAME_PATH flagged as not-matchable.
+
+### Find-loop coordinator landscape (2026-08-16)
+Only TWO functions binary-wide carry the out-of-line find-loop idiom: AddStatUpdate 0x647457
+and DestroyPlayers 0x44a070 (both CPlayerManager-family). CQuestManager::LoadGameState is NOT
+a find-loop (it's a version-dispatched string-read + CStringParser + delegate — temp-scheduling
+tier). Applying the idiom: the find-loops MATCH, but each function has a SECONDARY blocker:
+- CPlayerManager::LoadGameState 0x449e60: local stack-slot ordering (VC vs retail slot assignment).
+- DestroyPlayers 0x44a070: a std::vector::erase(begin,end) clear (cmp end,end + memmove template) —
+  the STL-clone class; manual erase models get optimized away (compiler proves last==end).
+So the find-loop idiom is proven+reusable, but the functions that use it are gated by slot-layout /
+STL-erase, not the find-loop itself.
