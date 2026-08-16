@@ -46,6 +46,28 @@ fresh world state:
   path reuses new's 0 (no extra xor), the CCharString lives in a block so its dtor fires
   before the vtbl call, and the progress arg is a `bool` (`xor dl,dl`) with a non-zero float.
 - `InitPlayerManager @ 0x0041732a` (already MATCH).
+
+### `CWorld::PostInit @ 0x004a6550` (625B, __thiscall(CDisplayEngine&))  [DECODED — DEFER]
+The **New Game subsystem bring-up**, called after the world exists. Structure: ~5 repeated
+blocks, each = `CCharString("loading label", -1)` → `$E2 0x9d8240` (register?) → dtor →
+`CCharString` again → `DisplayProgress(label, false, -1.0f, 0)` → dtor → `operator new(N)` +
+ctor + store. The display-engine arg is kept in `ebx` (`[esp+0x18]`). Subsystems created,
+with their CWorld field slots:
+- `+0x24` ← combat-animation set (`new 0x20`, `GetCombatAnimationSet` 0x6b1960; `Reset` 0x4ab300)
+- `+0x38` ← `CGameScriptInterface` (`new 0x50`, ctor 0x6e7740 with this->f8/fc/f10 + world + displayEng);
+  the prior `+0x38` value is released via its vtbl[0] with arg 1
+- `+0x58` ← `CScriptInfoManager` (`new 0x20`, 0xcb5c70; `Reset` 0x4ab370; then `Init` 0xcb5d80);
+  a `CQuestManager` (`new 0xb4`, ctor 0x4b4590 with world + scriptinfo + f38) registered via
+  `Reset` on the global manager `0x13b89fc` (0x4a9a10)
+- calls `displayEng->f2c->vtbl[7](&world->f4)` — hands the world region/params to the display engine
+- `+0x6c` ← engine/render subsystem (`new 0x40`, 0x6be300; `Reset` 0x4ae650)
+- tail: the render manager `g @ 0x13b8394` gets `vtbl[0x2e](0x10,0,0)`, `(0x40,0,0)`, `(0x80,0,0)`
+  — three render-layer/pass setups.
+
+**Parity: DEFER (temp-scheduling tier).** 15+ `CCharString` temp ctor/dtor pairs interleaved
+with the subsystem `new`s — the exact temp scheduling is the documented not-byte-matchable class
+(CONTINUE_GAME_PATH.md tier-1 finding). Semantics fully recovered above. Try `/O1 /Oy-` if
+revisited, but the CCharString scheduling is the real blocker.
 - `CWorld::PostInit @ 0x004a6550(CDisplayEngine&)`, `CWorld::PostLoadInit @ 0x0049d970`
 - The child-mode flag: **`GetHeroAge` returns 18 in the child prologue** (a special mode
   set for new games; CONTINUE_GAME_PATH.md / memory fable-level-modding-gotchas).
