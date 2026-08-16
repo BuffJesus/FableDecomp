@@ -74216,6 +74216,20 @@ $catalog = @(
         TestSource = '00/4f/CWorldMap_IsMapChangeable_004fb2e0_test.cpp'
         PassPattern = 'OK_004fb2e0'
     }
+    [pscustomobject]@{
+        Address = '004fb280'
+        Module = 'DrawGetFrame'
+        Source = '00/4f/DrawGetFrame_DrawGetFrameCWorldMapUBEJXZ_004fb280.cpp'
+        TestSource = '00/4f/DrawGetFrame_DrawGetFrameCWorldMapUBEJXZ_004fb280_test.cpp'
+        PassPattern = 'OK_004fb280'
+    }
+    [pscustomobject]@{
+        Address = '004ff8a0'
+        Module = 'ForceUnload'
+        Source = '00/4f/ForceUnload_ForceUnloadCWorldMapUAEXJZ_004ff8a0.cpp'
+        TestSource = '00/4f/ForceUnload_ForceUnloadCWorldMapUAEXJZ_004ff8a0_test.cpp'
+        PassPattern = 'OK_004ff8a0'
+    }
 )
 
 $requestedAddresses = @(
