@@ -8455,3 +8455,112 @@ BYTE-PURITY POLICY going forward: reconstruct + call the engine's own functions 
 AddRegionAndTimeInfo 0x00597228 + ConstructFileDescription 0x00595CC1 + HEADER deserialize).
 The big 2-3KB LoadGameState deserializers stay the documented compiler-gated DEFER class
 (QFE-4035) per memory retail-compiler-build. Functional modules are scaffolding/oracles only.
+
+---
+## 2026-08-16 — quest/scripting lane: FROM-SCRATCH quest cards (no clone) — RESUME HERE
+
+New lane (parallel to the crawl/frontend sessions): custom content authoring WITHOUT cloning.
+Started from a 4-pillar gap analysis (quest cards+art / quest logic / character behaviour /
+events); architecture recap: quest+entity LOGIC is native-code-bound (ForgeFSE Lua host is the
+sanctioned no-clone path); cards/text/events are data+tooling. Roadmap top items 1-2 SHIPPED.
+
+### RE landed (this repo)
+- **docs/QUEST_CARD_BYTE_LAYOUT.md** — full 18-field CQuestCardDef Transfer order + crc0 tags
+  (byte-measured off WASP_MENACE); OBJECT back-refs @81 (card link) / @85 (self) both retarget;
+  OBJECT payload proven card-content-invariant across all shipped cards except name+81+85+the
+  shared world-drop-mesh Graphic @0x174. Engine ships **OBJECT_QUEST_CARD_TEMPLATE** (idx 327,
+  card def 9196) = neutral blank base.
+- **docs/QUEST_CARD_TEXTURE_BINDING.md** — card ART is 3 SHARED orb sprites (textures.big
+  GBANK_MAIN_PC 5892/5894/5896) picked by IsCore/IsVignette in ConstructQuestList @0x0061B610
+  (PC twin @0x0061E6D0) → CUIDef.GraphicIndex. **No per-card art field.** Per-card art = a
+  ForgeFSE detour on 0x0061B610 (branch already decompiled); shared re-skin = data
+  (texture_build.py). Deferred per user (content-first).
+
+### Tooling landed (FableForge, branch gui-m4-start, UNCOMMITTED)
+- `forge quest card <root> <schema> <NAME> --from-scratch` → `questcard::authorFromScratch()`
+  clones the neutral TEMPLATE, patches all quest fields, appends card+OBJECT, clears the
+  template marker byte (offset 1), retargets 81/85. No shipped-quest content inherited.
+- `--title-text/--summary-text/--objective-text` auto-mint text.big TEXT_QUEST_CARD_<STEM>_*.
+- Default-emits a companion FSE quest under `<out>/FSE/<NAME>/` (`generateCompanionScript()`):
+  AddQuestCard + SetQuestCardObjective/SetQuestGoldReward/SetQuestRenownReward +
+  KickOffQuestStartScreen + OnPersist (the runtime setters the Logbook reads —
+  QUEST_CARD_EMPTY_FIX.md), + prints FinalAlbion.qst / FSE_Master wiring. All Lua verified vs
+  real ForgeFSE bindings. Flags: --no-emit-quest, --quest-script-name, --region, --quest-id.
+- Tests: test_formats.cpp testQuestCardFromScratch + testQuestCardCompanionScript (all pass);
+  byte-verified end-to-end (defdecode + game.bin roundtrip OK).
+
+### Steam .qst integrity-wipe — FIXED (ForgeFSE self-heal)
+`EnsureQuestRegistryFile()` in `D:\Code\ForgeFSE\FableScriptExtender\dllmain.cpp` (called from
+InjectCustomScripts right after quests.lua parse; runs at RegisterAllScripts BEFORE "Load
+Quests") appends a missing `AddQuest("<name>", TRUE);` for EVERY quest in FSE/quests.lua
+(incl. FSE_Master — live-tested requirement, memory fse-quest-qst-enable), idempotent +
+non-destructive. So a Steam verify is auto-recovered next launch; no manual .qst edit needed.
+Built Release|Win32 clean (MSVC 2022; build the .vcxproj with `/p:SolutionDir=D:\Code\ForgeFSE\`
+since IncludePath uses $(SolutionDir)). Logic validated vs retail .qst (no AddTestQuest/prefix
+false-matches, idempotent). Card CLI now prints the .qst line as auto-handled. In-game verify
+is USER-driven.
+
+### OPEN / next
+- **In-game verify (USER-driven):** (a) appended-def engine acceptance for the new card+OBJECT
+  (fallback: `--overwrite-donor --donor OBJECT_QUEST_CARD_TEMPLATE`, no append); (b) the .qst
+  self-heal firing before Load Quests on a real Steam-verified install.
+- Then (gap-analysis roadmap): per-card-art ForgeFSE detour (branch @0x0061B610 decompiled),
+  from-scratch cutscenes (script.bin addEntry + fire via RunCutsceneMacro), custom-NPC
+  scripted-behaviour case study (LuaEntityHost, 88 verbs), region-triggered events
+  (CRegionScriptDef RE). See the 12-item roadmap in this session's summary.
+- Memory: [[from-scratch-quest-card]], [[fse-quest-qst-enable]].
+
+## 2026-08-16 — terrain lane: WLD/BWD in FableForge, region-142 SOLVED-for-resolution, crash pinned, custom-texture pipeline PROVEN (RESUME HERE)
+
+Parallel to the quest lane above. FableForge repo = D:\Code\FableForge (commits 7d89d2c, 6685789,
+0db4fae, d767564, c6f8117; CLI impl in apps/forge/main.cpp is entangled/working-tree, not committed).
+
+### WLD/BWD authoring absorbed into FableForge (no more manual wld_bwd.py)
+- `forge::bwd::File` — byte-exact compiled-world reader/writer (oracle-tested vs 3 real FinalAlbion.bwd;
+  mirrors CMapInfo::LoadBinary 0x4fb4f0 / CRegion::LoadBinary 0x6bc510). `File::addLevel` synthesizes a
+  fresh map+region (NO clone).
+- `forge wld compile <wld> <stb> <out.bwd>` — **byte-exact text→BWD compiler** (compiling retail .wld+STB
+  reproduces retail .bwd byte-for-byte, 64382 B / 399 maps / 142 regions).
+- `forge world add-level <root> ...` (WLD+BWD in sync), `forge world install-level` (ATOMIC full package
+  WLD+BWD+WAD+STB, stage-then-commit), `forge world attach-map <root> <lvl> --region <host>` (membership),
+  `forge stb settex` (retexture), `forge validate` now cross-checks BWD↔WLD counts + BWD↔STB bounds.
+
+### Region-142 blocker: RESOLUTION SOLVED; truncation REFUTED; crash is the new gate
+- Host-region attach (slot 399 → in-range region 55 "Darkwood3", via attach-map) made
+  `GetRegionNumberMapIsIn(399)` resolve **0 → 55**, and for the FIRST time the full teleport chain
+  completed (LoadRegion→ground-Z 74.07→SetPlayerPos→ActivateNavMap→EntityTeleportToPosition→ok=true).
+  Live FSE log 2026-08-16 (probe DLL).
+- **"141 cap / truncation" theory is DEAD:** FSE probe measured runtime `region_vector_size=142`; stock
+  Fable = 398 maps / 141 regions, ForgeTest adds 1+1 → 399/142 and all 142 load. The original resolve-to-0
+  was the dedicated-region membership not being found at runtime, not a cap.
+- **NEW blocker = a hard CRASH during the transition**, `0x7dd1d3` = **CEngineLandscapeMap::OpenStaticMap
+  @0x00BDD0E0**. DISASSEMBLED (capstone on Fable.exe): the fault instr at 0xBDD1D3 is `rep stosd`
+  zero-filling `malloc(field_04)` **with NO null check** (field_04 = landscape-block-header alloc size at
+  this+0x28). Garbage field_04 → malloc NULL → write to 0 → AV. NOT a texture fault (verified: real
+  CLandscapeLayerMesh::LoadForeground @0x00bfe050 bounds-checks textures gracefully; foreground textures are
+  always GLOBAL-pool-resolved, DirectMode only toggles palette-indirection). **DECISIVE NEXT (user/live):**
+  x32dbg BP `0xBDD1B2`, read `[esi+0x28]` (field_04) + the 0x14 header — is field_04 garbage in the chunk
+  (bake defect, fixable) or only via host-region load (stream mis-position)?
+
+### Custom terrain textures: pipeline PROVEN end-to-end OFFLINE (render gated on the crash)
+- Terrain foreground texture triple values == `GBANK_MAIN_PC` entry **ids** in
+  `<install>/data/graphics/pc/textures.big` (6290 world textures; confirmed id4185=UNASSIGNED_CLIFF_LAYERED_01,
+  4173/4/5=LANDSCAPE_DW_02/03/04, 4226=BW_LEAVES_GRASS, 4304=..._BUMP). **156 UNASSIGNED_* slots** to repurpose.
+- Pipeline (no new risky tooling; slots are 512×512): (1) `python tools/texture_build.py replace textures.big
+  out.big <UNASSIGNED_slot> <custom.png> --format dxt1` (reuses validated bigb_write.py); (2) `forge stb
+  settex <chunk> <out> --map <oldId>:<slotId>`. Verified: T_TLC_Grass1 → UNASSIGNED_GRASS_PLAIN (id 4216),
+  DXT1 512², roundtrip 58.71 dB, decoded-back = the grass; settex 4185→4216 on ForgeTest (128 refs, valid).
+- **User texture library FOUND:** `C:\Users\Cornelio\Documents\FableStaging\AIUpscale\` (T_TLC_Grass1-4,
+  GrassBlades, PoppyFlower, DandelionFlower, batch_out/ many; export_src/ = sources).
+- Staged artifact (deploy once crash fixed): scratchpad `textures_grass1.big` + `ft_customtex.bin`.
+
+### FSE probe (built, DLL compiled, staged)
+ForgeFSE `ProbeRegionVectorSize` + `ProbeRegionContainsSlot(399)` (LuaQuestState.cpp/.h + LuaManager.cpp,
+Release|x86 DLL). Staged run bundle: work/heightmap_test/region142_probe_20260816/ (README_PROBE.md).
+
+### Resume order
+1. USER: debugger one-shot BP 0xBDD1B2 → field_04 root cause → fix baker or load path (unblocks ALL terrain render).
+2. Then deploy the staged custom-grass artifact → first custom terrain texture in-game.
+3. Then P3 paint brush (per-layer settex + blend bytes at foreground vertex +12/+13/+14).
+Full write-ups: D:\Code\FableForge\docs\{TERRAIN_TEXTURE_PAINT_PLAN,BWD_INTEGRATION}.md.
+Memory: [[wldbwd-into-fableforge]], [[custom-terrain-texture-painting]].

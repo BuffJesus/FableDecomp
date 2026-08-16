@@ -99,6 +99,20 @@ of a clean PE32 at ImageBase `0x400000`.
   CTD 0xA2428A on miss. Writer + chunk layout: work/newlevel_experiment/
   assemble_forgetest_stage2.py; post-mortem NEW_LEVEL_ASSEMBLY.md par.9. WER Application-log
   fault offsets are the fastest crash triage (offset+0x400000 = Ghidra VA).
+- WLD/BWD authoring is now in FableForge (no more manual tools/wld_bwd.py): `forge wld compile`
+  (byte-exact text→BWD), `forge world add-level` / `install-level` (atomic full package) /
+  `attach-map` (region membership), `forge stb settex` (retexture); `forge validate` cross-checks
+  BWD↔WLD↔STB bounds+counts. Docs: D:\Code\FableForge\docs\{BWD_INTEGRATION,TERRAIN_TEXTURE_PAINT_PLAN}.md.
+- ForgeTest region-142 teleport: NOT a 141-region cap (runtime region_vector_size=142; stock=141reg/398map).
+  Resolution is fixed by attaching slot 399 to an in-range (≤141) region (`forge world attach-map`).
+  The remaining blocker is a CRASH at `0x7dd1d3` = CEngineLandscapeMap::OpenStaticMap @0x00BDD0E0:
+  `rep stosd` zero-filling `malloc(field_04)` with NO null check (field_04=landscape header alloc size,
+  this+0x28) → garbage field_04 → NULL malloc → AV. NOT textures (LoadForeground @0xbfe050 bounds-checks
+  gracefully). Debugger BP 0xBDD1B2 reads field_04 to settle chunk-defect vs stream-misposition.
+- Custom terrain textures: foreground triple values are GBANK_MAIN_PC entry IDs in data/graphics/pc/
+  textures.big (156 UNASSIGNED_* 512² slots to repurpose; NOT inline). Pipeline = `texture_build.py
+  replace <big> <out> <UNASSIGNED_slot> <png>` + `forge stb settex <chunk> <out> --map old:slotId`.
+  User texture library: C:\Users\Cornelio\Documents\FableStaging\AIUpscale\.
 - Adding a D3D9 frontend texture (visual_boot_d3d9.cpp) requires registering it in BOTH the
   `FableInitialiseVisualD3D9` upload chain AND the `VisualRender2DAdapter`
   `RENDER2D_ADAPTER_ATTACH_TEXTURE` pointer->selectedTexture chain (~L1024-1101). Miss the attach
