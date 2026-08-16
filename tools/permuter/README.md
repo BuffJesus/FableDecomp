@@ -50,6 +50,27 @@ register allocation. Pipeline per run:
    (deterministic; guarantees a match one mutation away is found regardless of seed);
 3. **anneal** — multi-hop SA with restart-from-best, memoized scoring.
 
+### Register-level mode (`reg_mutations.py`) — and its measured ceiling
+Added the register-allocator levers upstream relies on for the residuals source *shape* can't
+reach: **`permute_decl`** (full permutations of each contiguous local-declaration run — the
+dominant input to VC's stack-slot + first-fit register assignment) and **`pressure`** (inject a
+live dummy local to raise register pressure and shift keep-in-reg vs reload/spill). The anneal
+flag grid now also sweeps **`/Oy-`** (keep frame pointer) — retail TUs use both `/Oy` and `/Oy-`,
+and the frame choice dominates the whole layout (this is what closed `InitWorld` and `AddStatUpdate`
+reached its near-match).
+
+**Measured ceiling (2026-08-16):** on the three canonical residual classes these levers do NOT
+reach the byte-match — `ApplyScriptBrush` eax↔edx register-choice (stays score 4), `AddStatUpdate`
+reload-vs-cache (list-find matches; 2-byte reload residual unmoved), `CPlayerManager::LoadGameState`
+stack-slot ordering (decl-permute changes the layout but never to retail's). The reason is
+fundamental: **C++ exposes no register control**, and VC7.1's allocator (proven identical across
+RTM 3077 / QFE 4035 / SP1 — see QFE4035_COMPILER_GATE.md) is robust to source perturbation for
+these choices. The `/Oy-` sweep and `permute_decl` genuinely help *discovery* (frame-pointer TUs,
+some slot layouts), but the reload-vs-cache / exact-register / exact-slot residuals are
+source-unreachable for MSVC x86. Closing them would require asm-level editing (which breaks
+byte-purity — the source would no longer produce the bytes) or the exact original source. This
+is a real limit of byte-pure reconstruction for this compiler, not a gap in the search.
+
 Mutation library (all semantics-preserving by construction; byte-match is still
 behaviour-re-checked at land time):
 - `clang_mutations.py` — materialize-earlier levers: **temp introduction**, operand

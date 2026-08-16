@@ -37,8 +37,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from permuter_score import score_source, DEFAULT_ORACLE, COMPILE_FAIL, _read_tsv  # noqa: E402
 
-FLAG_SUBSET = [["/O2", "/Oy"], ["/O1", "/Oy"], ["/Ox", "/Oy"], ["/Os", "/Oy"],
-               ["/Ot", "/Oy"], ["/O2", "/Oy", "/Ob1"], ["/O2", "/Oy", "/Gy"]]
+# Both /Oy (frame-pointer omission) and /Oy- (keep frame) are swept — retail TUs use BOTH,
+# and the frame choice dominates the whole layout (proven: InitWorld/AddStatUpdate are /Oy-).
+FLAG_SUBSET = [["/O2", "/Oy"], ["/O2", "/Oy-"], ["/O1", "/Oy"], ["/O1", "/Oy-"],
+               ["/Ox", "/Oy"], ["/Ox", "/Oy-"], ["/Os", "/Oy"], ["/Ot", "/Oy"],
+               ["/O2", "/Oy", "/Ob1"], ["/O2", "/Oy", "/Gy"]]
 PRAGMA_SUBSET = ["", '#pragma optimize("s",on)', '#pragma optimize("t",on)',
                  '#pragma optimize("g",on)', '#pragma optimize("gs",on)',
                  '#pragma optimize("a",on)', '#pragma optimize("y",on)']
@@ -56,6 +59,11 @@ def _load_mutlibs():
         libs.append(("rm", rm.all_regalloc_variants))
     except Exception as e:
         print(f"  (regalloc_mutations unavailable: {e})")
+    try:
+        import reg_mutations as rg
+        libs.append(("rg", rg.all_reg_variants))
+    except Exception as e:
+        print(f"  (reg_mutations unavailable: {e})")
     return libs
 
 
