@@ -17,6 +17,28 @@
 > forms; retail's 37/36/47 forms are a source/flag puzzle. Everything below is retained as the
 > evidence trail that led here; read it as history, not current strategy.
 
+> ## Case study: ApplyScriptBrush @ 0x0088f480 — the "gate" is a register-alloc coin-flip
+> Reconstructed one of the canonical "4035-gated" functions (memory named it) to see what the
+> gap actually is. Semantics are exact (25v25 bytes, behaviour-correct); the reloc-masked
+> diff is **4 bytes** — a pure `eax↔edx` swap: retail loads `name→eax, vptr→edx` and does
+> `call [edx+0x30]`; VC71 picks `name→edx, vptr→eax` / `call [eax+0x30]`. Same instructions,
+> same order, opposite register assignment. We threw everything at it:
+> - **1680 flag combos** (opt levels × `/G5/G6/G7/GB` CPU targets × `/Op/Oa/Ow/GS/Gy/GF` × 6 pragmas) → best still 4.
+> - **4 hand structural variants** (chained call, temp-sub, ptr-name) → all 4.
+> - **anneal**, 343 mutation compiles (temp-intro/inline/reorder/block/retype) → still 4.
+>
+> So this function is **not** compiler-version-gated (4035≡3077), **not** flag-gated, and
+> **not** reachable by any source spelling we can express — it's a fixed allocator tiebreak,
+> the same class as `examples/stdmovebackward` (score 4). The retail bytes were produced by
+> 3077/4035 from *some* source, but the allocation is a coin-flip our reconstruction can't
+> land on. Cracking these needs either the exact original source or a **register-level**
+> permuter (assign specific SSA values to specific registers) — a lever beyond source
+> mutation. Fixture kept at `examples/qfe/applyscriptbrush.cpp` as a regalloc dead-end test.
+>
+> **Bottom line for the whole thread:** the ~11 "unmatchable" functions are register-allocation
+> / scheduling coin-flips, not a compiler-version problem. Neither a different compiler nor
+> flags nor source search closes them; only exact-source fidelity or a register-level permuter would.
+
 ---
 
 Some behaviour-correct, fully-reversed functions cannot be made byte-exact with our
