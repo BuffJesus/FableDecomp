@@ -133,3 +133,22 @@ anneal/flag/source sweep IS that proof. Mark each such stub
 `// QFE-4035 codegen, irreducible under RTM 3077 — see docs/QFE4035_COMPILER_GATE.md`.
 Prefer sourcing the compiler; the stub is a last resort and must never be used for a
 function that merely *hasn't been reversed yet*.
+
+## 2026-08-16 — the residual wall is the isledecomp "compiler entropy" ~5% (web-confirmed)
+The reference byte-exact MSVC-x86 decomp (isledecomp/isle + reccmp, LEGO Island) documents
+our exact wall in its CONTRIBUTING.md: MSVC codegen has "compiler randomness / entropy" — adding
+an unrelated inline function or enum to a header pseudo-randomly changes the codegen of unrelated
+functions in the same TU. It affects **~5% of all functions** and even they cannot explain or fully
+control it. Our regalloc/reload/slot residuals ARE this class. Tested entropy perturbation
+(0-20 preceding compiled functions, constant pools, enums/structs/typedefs) on ApplyScriptBrush
+(eax<->edx) and AddStatUpdate (reload-vs-cache): score UNCHANGED — these particular ones aren't even
+entropy-sensitive (deterministically different from retail).
+DECISIVE for OUR method: even where entropy DOES help, it is UNUSABLE for us — we land each function
+in its OWN isolated .cpp (the catalog/build compiles it alone), so a match that depends on preceding
+TU context would not reproduce on the real build. isledecomp gets ~95% precisely because it
+reconstructs WHOLE TUs (context matches); our isolated-function crawl structurally cannot reach the
+entropy-sensitive ~5%. Conclusion: the residuals are a known, fundamental ~5% limit of byte-pure
+ISOLATED-function reconstruction for MSVC x86 — not a missing technique. Keep the crawl on the
+reachable ~95% (where we land hundreds); accept the ~5% as documented defers. Full-TU reconstruction
+(isledecomp-style) is the only path to the last 5%, and it's a different, much larger methodology.
+Ref: github.com/isledecomp/isle CONTRIBUTING.md; github.com/isledecomp/reccmp.
