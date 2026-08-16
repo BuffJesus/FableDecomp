@@ -1,0 +1,2 @@
+struct C00a3df00 { unsigned long f0; unsigned long f4; unsigned long f8; unsigned long fc; unsigned long f10; unsigned long f14; void M(); };
+void C00a3df00::M(){ this->f4 = 0u; this->f0 = 0u; this->f8 = 1732584193u; this->fc = 4023233417u; this->f10 = 2562383102u; this->f14 = 271733878u; }

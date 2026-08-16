@@ -1,0 +1,2 @@
+struct C00c744e0 { char pad0[0x4]; unsigned long f4; unsigned long f8; unsigned long fc; unsigned long f10; void M(); };
+void C00c744e0::M(){ this->f4 = 1065353216u; this->f8 = 1065353216u; this->fc = 1065353216u; this->f10 = 1065353216u; }

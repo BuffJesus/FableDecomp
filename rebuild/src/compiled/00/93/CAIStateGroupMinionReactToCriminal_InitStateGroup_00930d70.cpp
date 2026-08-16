@@ -1,0 +1,2 @@
+struct C00930d70 { char pad0[0x24]; unsigned long f24; char pad1[0x4]; unsigned char f2c; unsigned char f2d; unsigned char f2e; void M(int p0, int p1); };
+void C00930d70::M(int p0, int p1){ this->f24 = 0u; this->f2c = 0; this->f2d = 0; this->f2e = 0; }
