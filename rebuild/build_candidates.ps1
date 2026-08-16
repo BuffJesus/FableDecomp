@@ -74160,6 +74160,13 @@ $catalog = @(
         TestSource = '00/bc/CEngineInternalPrimitive2DText_Update_00bc6860_test.cpp'
         PassPattern = 'OK_00bc6860'
     }
+    [pscustomobject]@{
+        Address = '00bbbe60'
+        Module = 'CEngineInternalPrimitiveParticleGroup'
+        Source = '00/bb/CEngineInternalPrimitiveParticleGroup_Update_00bbbe60.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleGroup_Update_00bbbe60_test.cpp'
+        PassPattern = 'OK_00bbbe60'
+    }
 )
 
 $requestedAddresses = @(
