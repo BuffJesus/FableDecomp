@@ -1,5 +1,24 @@
 # The VC7.1 QFE-4035 codegen gate (and how to close it)
 
+> ## ⚠ CORRECTION (2026-08-16): 13.10.4035 codegen == 13.10.3077. The "gate" is a misdiagnosis.
+> We acquired the real 13.10.4035 compiler (WinDDK 3790.1830, verified `FileVersion 13.10.4035`)
+> and A/B-tested it against our RTM 3077 with `tools/permuter/qfe_codegen_diff.py`:
+> **128/128 functions produced byte-identical `.text`** (120 random real landed functions +
+> 8 synthetic probes including the x87 `fmul [mem]`-fold shapes the gate was blamed on). The
+> QFE 3077→4035 hotfix was a **non-codegen fix** (crash/ICE/security), not a codegen change —
+> so the ~11 objects stamped 4035 in retail's Rich header are **not** unmatchable *because* of
+> the compiler build (correlation, not causation). The `--qfe` harness works and is retained
+> (harmless), but swapping to 4035 buys nothing over 3077.
+>
+> **Redirected conclusion:** the truly-unmatchable functions differ by **per-TU compiler FLAGS**
+> or **source structure**, not compiler version. Both are attackable with `tools/permuter/anneal.py`
+> (source/flag search) — this is the productive lane, not chasing a compiler. The selfcheck trio
+> (IsActive/SetAsActive/Init) was *never* 4035-gated: 3077 and 4035 both emit their 42/41/47-byte
+> forms; retail's 37/36/47 forms are a source/flag puzzle. Everything below is retained as the
+> evidence trail that led here; read it as history, not current strategy.
+
+---
+
 Some behaviour-correct, fully-reversed functions cannot be made byte-exact with our
 compiler no matter the source spelling or flags. This documents *why* (hard evidence),
 *which* functions, and the *workaround*.
