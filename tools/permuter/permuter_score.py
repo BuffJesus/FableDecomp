@@ -12,6 +12,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 VC = Path(r"D:\Tools\vc71")
+# Alternate VC7.1 QFE-4035 toolset (13.10.4035 c1xx.dll+c2.dll from WinDDK 3790.1830).
+# Only the compiler *binaries* differ; headers/libs (INCLUDE/LIB) stay RTM-compatible.
+# See docs/QFE4035_COMPILER_GATE.md. Override the location with $VC71_QFE.
+QFE = Path(os.environ.get("VC71_QFE", r"D:\Tools\vc71-qfe4035"))
 OBJDUMP = os.environ.get("OBJDUMP",
     r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe")
 DEFAULT_ORACLE = ROOT / "rebuild" / "oracles" / "auto-re-candidates.tsv"
@@ -77,9 +81,27 @@ def _mask(payload, offs):
     return bytes(r)
 
 
-def _env():
+def resolve_toolset(qfe: bool):
+    """(cl.exe path, bin dir) for the requested toolset. The QFE compiler binaries live in
+    their own bin dir (cl.exe auto-loads c1xx.dll/c2.dll from beside itself); headers/libs
+    are always the RTM VC's. Fails loudly if --qfe is requested but not installed."""
+    if qfe:
+        clexe = QFE / "bin" / "cl.exe"
+        if not clexe.exists():
+            raise FileNotFoundError(
+                f"QFE-4035 toolset not found: {clexe}\n"
+                f"Install the 13.10.4035 compiler (c1xx.dll+c2.dll+cl.exe from WinDDK "
+                f"3790.1830) there, or set $VC71_QFE. See docs/QFE4035_COMPILER_GATE.md")
+        return clexe, QFE / "bin"
+    return VC / "bin" / "cl.exe", VC / "bin"
+
+
+def _env(bin_dir: Path | None = None):
     e = dict(os.environ)
-    e["PATH"] = str(VC / "bin") + ";" + e["PATH"]
+    # the chosen compiler's bin first, then RTM bin (helper DLLs), then the rest.
+    parts = [str(bin_dir)] if bin_dir else []
+    parts += [str(VC / "bin"), e["PATH"]]
+    e["PATH"] = ";".join(parts)
     e["INCLUDE"] = f"{VC/'include'};{ROOT/'rebuild'/'include'}"
     e["LIB"] = str(VC / "lib")
     return e
@@ -96,7 +118,7 @@ DEFAULT_FLAGS = ["/O2", "/Oy"]
 
 def score_source(cpp: Path, addr: str, name: str | None = None,
                  oracle: Path = DEFAULT_ORACLE, workdir: Path | None = None,
-                 flags: list | None = None, prepend: str = "") -> dict:
+                 flags: list | None = None, prepend: str = "", qfe: bool = False) -> dict:
     addr = addr.lower().replace("0x", "")
     workdir = workdir or (cpp.parent / "_score")
     workdir.mkdir(parents=True, exist_ok=True)
@@ -112,9 +134,10 @@ def score_source(cpp: Path, addr: str, name: str | None = None,
     obj = workdir / f"{addr}.obj"
     if obj.exists():
         obj.unlink()
-    cp = subprocess.run([str(VC / "bin" / "cl.exe"), "/nologo", "/c", "/W3"]
+    clexe, bin_dir = resolve_toolset(qfe)
+    cp = subprocess.run([str(clexe), "/nologo", "/c", "/W3"]
                         + (flags or DEFAULT_FLAGS) + [f"/Fo{obj}", str(src)],
-                        capture_output=True, text=True, env=_env())
+                        capture_output=True, text=True, env=_env(bin_dir))
     if cp.returncode != 0 or not obj.exists():
         return {"score": COMPILE_FAIL, "status": "COMPILE_FAIL",
                 "detail": cp.stdout[-400:] + cp.stderr[-200:]}
@@ -142,8 +165,9 @@ def main():
     ap.add_argument("addr"); ap.add_argument("cpp", type=Path)
     ap.add_argument("--oracle", type=Path, default=DEFAULT_ORACLE)
     ap.add_argument("--name", default=None)
+    ap.add_argument("--qfe", action="store_true", help="compile with the 13.10.4035 QFE toolset")
     a = ap.parse_args()
-    r = score_source(a.cpp, a.addr, a.name, a.oracle)
+    r = score_source(a.cpp, a.addr, a.name, a.oracle, qfe=a.qfe)
     print(r)
     return 0 if r["status"] in ("MATCH", "RELOCATION_MATCH") else 1
 

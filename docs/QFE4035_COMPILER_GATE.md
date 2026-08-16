@@ -47,17 +47,25 @@ free driver kit carried a full VC7.1 C/C++ compiler at that QFE level (the plain
 DDK is 13.10.2190; the *SP1* 3790.1830 DDK is 4035). Community mirrors:
 `github.com/9176324/WinDDK` (tree `3790.1830/bin`) and the archive.org Server 2003 SP1 ISO.
 
-Steps:
-1. Obtain `c1xx.dll` (C++ frontend) + `c2.dll` (codegen backend) from WinDDK 3790.1830's
-   x86 `bin` tree. Rich shows the QFE objects used the 4035 **frontend** (prodID 0x5d/0x5f/
-   0x60) *and* backend, so swap BOTH c1xx.dll and c2.dll — keep our `cl.exe` driver + headers.
-2. Verify: `(Get-Item c2.dll).VersionInfo.FileVersion` == `13.10.4035.0`.
-3. Stand it up as an alternate toolset dir (e.g. `D:\Tools\vc71-qfe4035\bin`) and add a
-   `--qfe` switch to `permuter_score.py` / `verify_and_land.py` that points `PATH`/the cl
-   invocation at it (INCLUDE/LIB unchanged — headers/libs are RTM-compatible).
-4. Confirm the loop: compile `IsActive` with the 4035 toolset → expect the exact 37-byte
-   match `33c03881eb…40c3`. If it matches, re-run the deferred frontend targets under `--qfe`
-   and land them; tag their catalog entries with the QFE toolset so the real build reproduces.
+**The harness is already wired (2026-08-16).** The `--qfe` switch exists end-to-end; it just
+needs the binaries dropped in place:
+- `tools/permuter/permuter_score.py --qfe`, `tools/permuter/anneal.py --qfe`,
+  `tools/decomp_pipeline/verify_and_land.py --qfe` — all route the *parity* compile to
+  `$VC71_QFE\bin\cl.exe` (default `D:\Tools\vc71-qfe4035\bin`), keeping RTM INCLUDE/LIB.
+  They fail loudly if the toolset is absent (no silent RTM fallback).
+- `verify_and_land.py --qfe` stamps each landed entry `Compiler = 'qfe4035'`; the build
+  driver `rebuild/build_candidates.ps1` honors that tag and compiles those TUs with
+  `$vcQfeRoot` (`$env:VC71_QFE`) instead of `$vcRoot`. So a QFE win reproduces on the real build.
+
+Remaining steps (need the binaries):
+1. Obtain `cl.exe` + `c1xx.dll` (C++ frontend) + `c2.dll` (codegen backend) from WinDDK
+   3790.1830's x86 `bin` tree. Rich shows the QFE objects used the 4035 **frontend** (prodID
+   0x5d/0x5f/0x60) *and* backend, so take BOTH c1xx.dll and c2.dll.
+2. Drop them in `D:\Tools\vc71-qfe4035\bin` (or set `$env:VC71_QFE`); verify
+   `(Get-Item …\c2.dll).VersionInfo.FileVersion` == `13.10.4035.0`.
+3. Confirm the loop: `python tools/permuter/permuter_score.py 00643e09 <isactive.cpp>
+   --name IsActive --qfe` → expect score 0 (the exact 37-byte match `33c03881eb…40c3`).
+   Then re-author/verify the deferred frontend targets under `--qfe` and land them.
 
 ## Fallback if 4035 cannot be sourced
 For the confirmed-gated functions ONLY, a documented `__declspec(naked)` byte-stub is

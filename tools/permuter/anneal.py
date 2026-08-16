@@ -71,6 +71,7 @@ def main():
     ap.add_argument("--restart", type=int, default=120,
                     help="steps without global improvement before hopping back to best")
     ap.add_argument("--flag-move-p", type=float, default=0.15)
+    ap.add_argument("--qfe", action="store_true", help="compile with the 13.10.4035 QFE toolset")
     ap.add_argument("--quiet", action="store_true")
     a = ap.parse_args()
 
@@ -95,7 +96,8 @@ def main():
         if key in cache:
             return cache[key]
         vp.write_text(text, encoding="utf-8")
-        r = score_source(vp, addr, a.name, a.oracle, workdir=work, flags=flags, prepend=pragma)
+        r = score_source(vp, addr, a.name, a.oracle, workdir=work, flags=flags,
+                         prepend=pragma, qfe=a.qfe)
         cache[key] = r
         evals += 1
         return r

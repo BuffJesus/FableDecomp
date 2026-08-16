@@ -8,6 +8,10 @@ param(
 $ErrorActionPreference = 'Stop'
 $rebuildRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $vcRoot = 'D:\Tools\vc71'
+# Alternate 13.10.4035 QFE toolset (WinDDK 3790.1830). Entries tagged Compiler='qfe4035'
+# (~11 retail objects RTM 3077 cannot reproduce) compile with this cl.exe; headers/libs stay
+# RTM. Override with $env:VC71_QFE. See docs/QFE4035_COMPILER_GATE.md.
+$vcQfeRoot = if ($env:VC71_QFE) { $env:VC71_QFE } else { 'D:\Tools\vc71-qfe4035' }
 $sourceRoot = Join-Path $rebuildRoot 'src\compiled'
 $outDir = Join-Path $rebuildRoot "build\candidates-$Configuration"
 $reportDir = Join-Path $rebuildRoot 'compile-gate'
@@ -73855,7 +73859,14 @@ try {
         $entryFlags = if ($entry.PSObject.Properties['CompilerFlags'] -and $entry.CompilerFlags) {
             $entry.CompilerFlags -split '\s+'
         } else { @('/O2','/Oy','/W3') }
-        $output = & (Join-Path $vcRoot 'bin\cl.exe') /nologo /c @entryFlags /Fo$object $source 2>&1
+        # Entries tagged Compiler='qfe4035' need the 13.10.4035 backend to reproduce their bytes.
+        $entryCompilerRoot = if ($entry.PSObject.Properties['Compiler'] -and $entry.Compiler -eq 'qfe4035') {
+            if (-not (Test-Path -LiteralPath (Join-Path $vcQfeRoot 'bin\cl.exe'))) {
+                throw "Entry $($entry.Address) needs the QFE-4035 toolset but $vcQfeRoot\bin\cl.exe is missing (see docs/QFE4035_COMPILER_GATE.md)"
+            }
+            $vcQfeRoot
+        } else { $vcRoot }
+        $output = & (Join-Path $entryCompilerRoot 'bin\cl.exe') /nologo /c @entryFlags /Fo$object $source 2>&1
         $exitCode = $LASTEXITCODE
         $output | Set-Content -LiteralPath $log -Encoding UTF8
         $passed = $exitCode -eq 0 -and (Test-Path -LiteralPath $object)

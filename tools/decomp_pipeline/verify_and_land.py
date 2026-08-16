@@ -10,6 +10,11 @@ from pathlib import Path
 
 ROOT = Path(r"D:\Documents\FableTLC")
 VC = Path(r"D:\Tools\vc71")
+# Alternate 13.10.4035 QFE toolset (WinDDK 3790.1830 c1xx.dll+c2.dll). --qfe swaps the
+# compiler binaries only; headers/libs stay RTM. See docs/QFE4035_COMPILER_GATE.md.
+QFE = Path(os.environ.get("VC71_QFE", r"D:\Tools\vc71-qfe4035"))
+CL_EXE = VC / "bin" / "cl.exe"   # active compiler (reset by use_qfe())
+CC_BIN = VC / "bin"             # active compiler's bin dir (for PATH)
 SP = ROOT / "rebuild" / "build"
 WORK_ROOT = SP / "landverify"; WORK_ROOT.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -62,11 +67,22 @@ def mask(p,offs):
         for i in range(o,min(o+4,len(r))): r[i]=0
     return bytes(r)
 
+def use_qfe():
+    """Switch the parity compiler to the 13.10.4035 QFE toolset. Fails loudly if absent."""
+    global CL_EXE, CC_BIN
+    clexe = QFE / "bin" / "cl.exe"
+    if not clexe.exists():
+        raise FileNotFoundError(
+            f"QFE-4035 toolset not found: {clexe}\nInstall the 13.10.4035 compiler "
+            f"(c1xx.dll+c2.dll+cl.exe from WinDDK 3790.1830) there, or set $VC71_QFE. "
+            f"See docs/QFE4035_COMPILER_GATE.md")
+    CL_EXE, CC_BIN = clexe, QFE / "bin"
+
 def env():
-    e=dict(os.environ);e["PATH"]=str(VC/"bin")+";"+e["PATH"]
+    e=dict(os.environ);e["PATH"]=str(CC_BIN)+";"+str(VC/"bin")+";"+e["PATH"]
     e["INCLUDE"]=f"{VC/'include'};{ROOT/'rebuild'/'include'}";e["LIB"]=str(VC/"lib");return e
 
-def cl(args,e): return subprocess.run([str(VC/"bin"/"cl.exe")]+args,capture_output=True,text=True,env=e)
+def cl(args,e): return subprocess.run([str(CL_EXE)]+args,capture_output=True,text=True,env=e)
 
 def sanitize(s): return re.sub(r"[^A-Za-z0-9]","",s)
 
@@ -165,6 +181,9 @@ def prune_outside_manifest(addresses, catp):
 def main():
     outf=Path(sys.argv[1]); oraclef=Path(sys.argv[2]); land="--land" in sys.argv
     prune="--prune-outside-manifest" in sys.argv
+    qfe="--qfe" in sys.argv
+    if qfe:
+        use_qfe(); print(f"[toolset] QFE-4035 compiler: {CL_EXE}")
     data=json.loads(outf.read_text(encoding="utf-8"))["result"]["authored"]
     orc={r["address"].lower():r for r in csv.DictReader(open(oraclef,encoding="utf-8-sig"),delimiter="\t")}
     e=env(); wins=[]
@@ -272,10 +291,13 @@ def main():
             flagline=""
             if w.get("flags"):
                 flagline=f"        CompilerFlags = '{' '.join(BASE_FLAGS+w['flags'])}'\n"
+            # Record the toolset so the real build recompiles QFE wins with 13.10.4035
+            # (RTM cannot reproduce their bytes). See docs/QFE4035_COMPILER_GATE.md.
+            compilerline="        Compiler = 'qfe4035'\n" if qfe else ""
             entries.append("    [pscustomobject]@{\n"
                 f"        Address = '{w['addr']}'\n        Module = '{w['module']}'\n"
                 f"        Source = '{source_rel}'\n        TestSource = '{test_rel}'\n"
-                f"{flagline}        PassPattern = '{w['pass']}'\n    }}")
+                f"{flagline}{compilerline}        PassPattern = '{w['pass']}'\n    }}")
         # Insert into the $catalog array itself.  The build driver declares
         # other arrays after the catalog, so searching backwards from a later
         # marker can accidentally splice entries into $requestedAddresses.
