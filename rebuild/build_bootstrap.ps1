@@ -4886,6 +4886,7 @@ try {
         $visualBootObject $visualBootD3D9Object $retailVideoBridgeObject `
         $videoFrameConversionObject $videoFramePublicationObject `
         $frontendStartupSequenceObject `
+        $frontendSaveRowsObject $fableInflateObject `
         $render2DBatchPlanObject $render2DDrawListAdapterObject `
         $attachTextureToStageObject $realiseRenderStateObject `
         $soldStateBlockObject `
@@ -4924,6 +4925,7 @@ try {
         $visualBootObject $visualBootD3D9Object $retailVideoBridgeObject `
         $videoFrameConversionObject $videoFramePublicationObject `
         $frontendStartupSequenceObject `
+        $frontendSaveRowsObject $fableInflateObject `
         $render2DBatchPlanObject $render2DDrawListAdapterObject `
         $attachTextureToStageObject $realiseRenderStateObject `
         $soldStateBlockObject `
