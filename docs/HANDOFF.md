@@ -8564,3 +8564,59 @@ Release|x86 DLL). Staged run bundle: work/heightmap_test/region142_probe_2026081
 3. Then P3 paint brush (per-layer settex + blend bytes at foreground vertex +12/+13/+14).
 Full write-ups: D:\Code\FableForge\docs\{TERRAIN_TEXTURE_PAINT_PLAN,BWD_INTEGRATION}.md.
 Memory: [[wldbwd-into-fableforge]], [[custom-terrain-texture-painting]].
+
+---
+
+## 2026-08-16 — Frontend build repair + Hero-in-World roadmap + crawl (session handoff)
+
+This lane is separate from the terrain/region-142 lane above. Three things happened.
+
+### A. NORTH-STAR PLAN: controllable hero in Oakvale — read `docs/HERO_IN_WORLD_ROADMAP.md`
+Canonical, decision-grade plan (ultracode workflow: 10 subsystem mappers + architect synthesis,
+grounded in the current reconstruction). Memory: [[hero-in-world-roadmap]]. Highlights:
+- We enter real GFInitialise + 10 GFMain phase coordinators, then the `FABLETLC_ENABLE_VISUAL_BOOT`
+  branch (`rebuild/integration/stage2_engine_boundary.cpp` ~L1285) forks to the AUTHORED frontend
+  `FableRunVisualBootCheckpoint` instead of retail `CGame::Play @ 0x412f90`. We never enter the
+  real game loop, never build a live CWorld, and have ZERO 3D scene renderer / D3D9 device layer.
+- **The seam** = `FableGFMainPhase10PlayBoundary` (`stage2_engine_boundary.cpp:1034`), a stub that
+  never calls Play. Macro-gated idiom to copy: `FableGFMainPhase10GFUninitialiseBoundary` (L1045,
+  `#if FABLETLC_EXECUTE_EXACT_GFUNINITIALISE`).
+- **CGame::Play 0x412f90 is a `__declspec(naked)` asm BAKE** (`_emit` bytes) — byte-exact but a purity
+  debt, NOT genuine C++. Its adapter ring (8 `FableGame*_00412f90` externs + globals
+  g_FableStartMainGame_013B8605 / g_FableCompileFrontendDefinitions_013B8648 /
+  g_FableRetiredGameComponent_013B7D58 / g_FableUseLegacyFrontend_013B8642 /
+  g_FableMainGameStartupPath_013B7D5C) is defined ONLY in its source + fixture stub — NOT wired to
+  real engine code, and there is no constructed CGame `this`.
+- **Phase A first step (evidence-first, INTERACTIVE — needs user + game):** attach Ghidra/x32dbg to
+  retail Fable.exe, BP `0x00412f90`, start New Game; capture (a) the CGame* in ecx GFMain passes to
+  Play, (b) each adapter call's real target, (c) the 5 gating globals. THEN wire the ring + a real
+  CGame this and flip the stub behind a new `FABLETLC_EXECUTE_EXACT_PLAY` macro (default visual build
+  unaffected). Expect the first run to then fault in streaming (the 0x7dd1d3 OpenStaticMap crash — same
+  one as the terrain lane) — that fault is PROOF the seam was crossed, and is Phase B's start.
+- Biggest wall = 3D scene renderer + D3D9 device layer (XL/months; protos exist — RenderCellClipped
+  0xb92500, RenderPrimitiveList 0xb91760, DoRender 0x435530 — but no bodies, device layer zero).
+
+### B. Visual build pipeline REPAIRED (was broken by accumulated drift) — now green
+`rebuild/build_bootstrap.ps1` builds the checkpoint again (`VISUAL_BOOT_CHECKPOINT PASS`). Fixed 4
+breakages this session (all committed): (1) restored 2 bootstrap-owned fixtures my crawl clobbered
+(CMovie::IsPlaying 0x548520, CVideoSys::GetTexture 0xa3b320); (2) fixed a pre-existing
+CVideoSys::AttemptToPlay fixture (LNK2005 + wrong pass pattern); (3) the WinMain behavior fixture
+fails `code=2` **whenever retail Fable.exe is running** (real single-instance mutex) — CLOSE FABLE
+before building (memory [[winmain-fixture-needs-fable-closed]]); (4) added frontend_save_rows.obj +
+fable_inflate.obj to the two behavior-exe links. Navigate+capture harness works:
+`scratchpad/vnav.ps1` (title→profile→main→Options→Redefine; scroll = down-arrow clicks at client 640,548).
+
+### C. Crawl + Redefine finding
+- 256 byte-exact leaf reconstructions landed this session across shape classes (getters/setters/const/
+  movzx/arith/multi-store). The crawl now EXCLUDES the 147 `build_bootstrap.ps1`-referenced fixture
+  addresses (`scratchpad/bootstrap_addrs.py`) so auto-landing can't re-clobber the build. Memory
+  [[autoland-clobbers-bootstrap-fixtures]].
+- Redefine baked-scroll (visual purity+parity) fully decoded — see `docs/VISUAL_PARITY_STATUS.md`
+  2026-08-16 section. Only blocker to native conversion: FE_SCROLL 379..382 arrow-sprite atlas UVs
+  (need frontend.big sprite-descriptor RE).
+
+### Resume order (this lane)
+1. **Hero-in-world Phase A** (highest leverage): the debugger live-oracle capture of GFMain→CGame::Play
+   (§A above / `docs/HERO_IN_WORLD_ROADMAP.md` §6). USER-driven (needs retail Fable + debugger).
+2. Optionally continue safe byte-exact crawl throughput (clobber-guarded) or the Redefine native-scroll
+   arrow-sprite RE — both are non-blocking.
