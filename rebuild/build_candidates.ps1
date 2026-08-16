@@ -74230,6 +74230,83 @@ $catalog = @(
         TestSource = '00/4f/ForceUnload_ForceUnloadCWorldMapUAEXJZ_004ff8a0_test.cpp'
         PassPattern = 'OK_004ff8a0'
     }
+    [pscustomobject]@{
+        Address = '00405fa0'
+        Module = 'CDataInputStream'
+        Source = '00/40/CDataInputStream_GetPosition_00405fa0.cpp'
+        TestSource = '00/40/CDataInputStream_GetPosition_00405fa0_test.cpp'
+        PassPattern = 'OK_00405fa0'
+    }
+    [pscustomobject]@{
+        Address = '00689b00'
+        Module = 'CInputProcessInventoryQuestsScreen'
+        Source = '00/68/CInputProcessInventoryQuestsScreen_GetPInventory_00689b00.cpp'
+        TestSource = '00/68/CInputProcessInventoryQuestsScreen_GetPInventory_00689b00_test.cpp'
+        PassPattern = 'OK_00689b00'
+    }
+    [pscustomobject]@{
+        Address = '006a98d0'
+        Module = 'DrawGetEnvironment'
+        Source = '00/6a/DrawGetEnvironment_DrawGetEnvironment_006a98d0.cpp'
+        TestSource = '00/6a/DrawGetEnvironment_DrawGetEnvironment_006a98d0_test.cpp'
+        PassPattern = 'OK_006a98d0'
+    }
+    [pscustomobject]@{
+        Address = '009f1f10'
+        Module = 'DrawGetEnvironment'
+        Source = '00/9f/DrawGetEnvironment_DrawGetEnvironment_009f1f10.cpp'
+        TestSource = '00/9f/DrawGetEnvironment_DrawGetEnvironment_009f1f10_test.cpp'
+        PassPattern = 'OK_009f1f10'
+    }
+    [pscustomobject]@{
+        Address = '00c1e750'
+        Module = 'DrawGetEnvironment'
+        Source = '00/c1/DrawGetEnvironment_DrawGetEnvironment_00c1e750.cpp'
+        TestSource = '00/c1/DrawGetEnvironment_DrawGetEnvironment_00c1e750_test.cpp'
+        PassPattern = 'OK_00c1e750'
+    }
+    [pscustomobject]@{
+        Address = '00c4bfc0'
+        Module = 'DrawGetEnvironment'
+        Source = '00/c4/DrawGetEnvironment_DrawGetEnvironment_00c4bfc0.cpp'
+        TestSource = '00/c4/DrawGetEnvironment_DrawGetEnvironment_00c4bfc0_test.cpp'
+        PassPattern = 'OK_00c4bfc0'
+    }
+    [pscustomobject]@{
+        Address = '00c62c20'
+        Module = 'DrawGetEnvironment'
+        Source = '00/c6/DrawGetEnvironment_DrawGetEnvironment_00c62c20.cpp'
+        TestSource = '00/c6/DrawGetEnvironment_DrawGetEnvironment_00c62c20_test.cpp'
+        PassPattern = 'OK_00c62c20'
+    }
+    [pscustomobject]@{
+        Address = '008c0620'
+        Module = 'CCreatureAction_WhisperSommersaultBackward'
+        Source = '00/8c/CCreatureActionWhisperSommersaultBackward_PerformAction_008c0620.cpp'
+        TestSource = '00/8c/CCreatureActionWhisperSommersaultBackward_PerformAction_008c0620_test.cpp'
+        PassPattern = 'OK_008c0620'
+    }
+    [pscustomobject]@{
+        Address = '00914ef0'
+        Module = 'CAIStateGroup_KidHurtSelfRunToMother'
+        Source = '00/91/CAIStateGroupKidHurtSelfRunToMother_OnActivate_00914ef0.cpp'
+        TestSource = '00/91/CAIStateGroupKidHurtSelfRunToMother_OnActivate_00914ef0_test.cpp'
+        PassPattern = 'OK_00914ef0'
+    }
+    [pscustomobject]@{
+        Address = '00915880'
+        Module = 'CAIStateGroup_MoveGoodsBase'
+        Source = '00/91/CAIStateGroupMoveGoodsBase_OnActivate_00915880.cpp'
+        TestSource = '00/91/CAIStateGroupMoveGoodsBase_OnActivate_00915880_test.cpp'
+        PassPattern = 'OK_00915880'
+    }
+    [pscustomobject]@{
+        Address = '00a19ad0'
+        Module = 'CNavigatorBase'
+        Source = '00/a1/CNavigatorBase_Interrupt_00a19ad0.cpp'
+        TestSource = '00/a1/CNavigatorBase_Interrupt_00a19ad0_test.cpp'
+        PassPattern = 'OK_00a19ad0'
+    }
 )
 
 $requestedAddresses = @(
