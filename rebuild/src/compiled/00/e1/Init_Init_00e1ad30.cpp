@@ -1,0 +1,2 @@
+struct C { char pad[0x48]; unsigned char f48,f49,f4a,f4b,f4c,f4d,f4e,f4f; int f50,f54; void Init(); };
+void C::Init(){ this->f48=0;this->f49=0;this->f4a=0;this->f4b=0;this->f4c=0;this->f4d=0;this->f4e=0; this->f50=-1; this->f54=0; this->f4f=0; }
