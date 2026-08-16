@@ -74174,6 +74174,48 @@ $catalog = @(
         TestSource = '00/bb/CEngineInternalPrimitiveWeatherMask_Update_00bb6980_test.cpp'
         PassPattern = 'OK_00bb6980'
     }
+    [pscustomobject]@{
+        Address = '0049e1b0'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_GetThingManager_0049e1b0.cpp'
+        TestSource = '00/49/CWorld_GetThingManager_0049e1b0_test.cpp'
+        PassPattern = 'OK_0049e1b0'
+    }
+    [pscustomobject]@{
+        Address = '0049e1c0'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_PeekThingManager_0049e1c0.cpp'
+        TestSource = '00/49/CWorld_PeekThingManager_0049e1c0_test.cpp'
+        PassPattern = 'OK_0049e1c0'
+    }
+    [pscustomobject]@{
+        Address = '004ae8b0'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_GetWorldMap_004ae8b0.cpp'
+        TestSource = '00/4a/CWorld_GetWorldMap_004ae8b0_test.cpp'
+        PassPattern = 'OK_004ae8b0'
+    }
+    [pscustomobject]@{
+        Address = '004ae8c0'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_PeekWorldMap_004ae8c0.cpp'
+        TestSource = '00/4a/CWorld_PeekWorldMap_004ae8c0_test.cpp'
+        PassPattern = 'OK_004ae8c0'
+    }
+    [pscustomobject]@{
+        Address = '0049d970'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_PostLoadInit_0049d970.cpp'
+        TestSource = '00/49/CWorld_PostLoadInit_0049d970_test.cpp'
+        PassPattern = 'OK_0049d970'
+    }
+    [pscustomobject]@{
+        Address = '004fb2e0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_IsMapChangeable_004fb2e0.cpp'
+        TestSource = '00/4f/CWorldMap_IsMapChangeable_004fb2e0_test.cpp'
+        PassPattern = 'OK_004fb2e0'
+    }
 )
 
 $requestedAddresses = @(
