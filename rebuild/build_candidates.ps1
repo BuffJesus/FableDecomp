@@ -74125,6 +74125,41 @@ $catalog = @(
         TestSource = '00/bb/CEngineInternalPrimitiveParticleDecal_Update_00bb6ce0_test.cpp'
         PassPattern = 'OK_00bb6ce0'
     }
+    [pscustomobject]@{
+        Address = '00b9e570'
+        Module = 'CEngineInternalPrimitiveMorphedStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitiveMorphedStaticMesh_Update_00b9e570.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitiveMorphedStaticMesh_Update_00b9e570_test.cpp'
+        PassPattern = 'OK_00b9e570'
+    }
+    [pscustomobject]@{
+        Address = '00bd2d50'
+        Module = 'CEngineInternalPrimitive2DMorphedAnimatedMesh'
+        Source = '00/bd/CEngineInternalPrimitive2DMorphedAnimatedMesh_Update_00bd2d50.cpp'
+        TestSource = '00/bd/CEngineInternalPrimitive2DMorphedAnimatedMesh_Update_00bd2d50_test.cpp'
+        PassPattern = 'OK_00bd2d50'
+    }
+    [pscustomobject]@{
+        Address = '00bd2b70'
+        Module = 'CEngineInternalPrimitiveMorphedAnimatedMesh'
+        Source = '00/bd/CEngineInternalPrimitiveMorphedAnimatedMesh_Update_00bd2b70.cpp'
+        TestSource = '00/bd/CEngineInternalPrimitiveMorphedAnimatedMesh_Update_00bd2b70_test.cpp'
+        PassPattern = 'OK_00bd2b70'
+    }
+    [pscustomobject]@{
+        Address = '00bc6810'
+        Module = 'CEngineInternalPrimitiveText'
+        Source = '00/bc/CEngineInternalPrimitiveText_Update_00bc6810.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveText_Update_00bc6810_test.cpp'
+        PassPattern = 'OK_00bc6810'
+    }
+    [pscustomobject]@{
+        Address = '00bc6860'
+        Module = 'CEngineInternalPrimitive2DText'
+        Source = '00/bc/CEngineInternalPrimitive2DText_Update_00bc6860.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitive2DText_Update_00bc6860_test.cpp'
+        PassPattern = 'OK_00bc6860'
+    }
 )
 
 $requestedAddresses = @(
