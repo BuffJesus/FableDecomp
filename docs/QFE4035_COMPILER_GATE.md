@@ -38,6 +38,23 @@
 > **Bottom line for the whole thread:** the ~11 "unmatchable" functions are register-allocation
 > / scheduling coin-flips, not a compiler-version problem. Neither a different compiler nor
 > flags nor source search closes them; only exact-source fidelity or a register-level permuter would.
+>
+> ### Does this risk scale to substantial functions? No — it's inversely correlated with size.
+> Measured on the current landed corpus: **113 non-clone real-logic functions >256 bytes are
+> byte-exact** (InitialiseConsoleVariables 4160B, ScrollDown 3664B, CBankFileManager::OpenRetailBank
+> 1568B, the Action input handler 1723B, many 1-2.5KB SuspendableProcess). Coin-flips need allocator
+> *slack* — ApplyScriptBrush (25B) has 2 live values and 4 free registers, so the choice is free and
+> our source can't bias it. Large functions have high register pressure + dense data deps that
+> *force* the allocation, so matching source reproduces matching registers. The 25-byte leaf is the
+> worst case, not a preview of big-function risk.
+>
+> **If a substantial function ever IS blocked** (data-driven trigger: a >256B function whose only
+> residual is a same-length regalloc DIFFER that survives anneal), the escalation ladder is:
+> (1) anneal source search [have it]; (2) build a register-level permuter against that concrete
+> target [justified only when one appears — don't build speculatively]; (3) last resort per
+> faithful-decomp-policy, an inline-asm island for *only* the divergent basic block, not the whole
+> function (keeps the surrounding C++ genuine). Until such a function appears, this stays a
+> tiny-leaf-only defer.
 
 ---
 
