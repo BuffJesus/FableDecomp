@@ -75848,6 +75848,20 @@ $catalog = @(
         TestSource = '00/c2/OnPostParentRelocation_OnPostParentRelocation_00c25a20_test.cpp'
         PassPattern = 'OK_00c25a20'
     }
+    [pscustomobject]@{
+        Address = '00c1dd50'
+        Module = 'InitStateGroup'
+        Source = '00/c1/InitStateGroup_InitStateGroup_00c1dd50.cpp'
+        TestSource = '00/c1/InitStateGroup_InitStateGroup_00c1dd50_test.cpp'
+        PassPattern = 'OK_00c1dd50'
+    }
+    [pscustomobject]@{
+        Address = '00c77770'
+        Module = 'Clear'
+        Source = '00/c7/Clear_Clear_00c77770.cpp'
+        TestSource = '00/c7/Clear_Clear_00c77770_test.cpp'
+        PassPattern = 'OK_00c77770'
+    }
 )
 
 $requestedAddresses = @(
