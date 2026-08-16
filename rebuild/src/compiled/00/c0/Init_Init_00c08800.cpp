@@ -1,0 +1,2 @@
+struct C { unsigned short f0,f2; int f4,f8,fc,f10,f14,f18; C* Init(); };
+C* C::Init(){ this->f0=0; this->f2=0; this->f4=4; this->f8=0x1000; this->fc=2; this->f10=0x800; this->f14=3; this->f18=1; return this; }

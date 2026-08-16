@@ -75827,6 +75827,27 @@ $catalog = @(
         TestSource = '00/a3/Init_Init_00a3aa10_test.cpp'
         PassPattern = 'OK_00a3aa10'
     }
+    [pscustomobject]@{
+        Address = '00c08800'
+        Module = 'Init'
+        Source = '00/c0/Init_Init_00c08800.cpp'
+        TestSource = '00/c0/Init_Init_00c08800_test.cpp'
+        PassPattern = 'OK_00c08800'
+    }
+    [pscustomobject]@{
+        Address = '00c2c6b0'
+        Module = 'Init'
+        Source = '00/c2/Init_Init_00c2c6b0.cpp'
+        TestSource = '00/c2/Init_Init_00c2c6b0_test.cpp'
+        PassPattern = 'OK_00c2c6b0'
+    }
+    [pscustomobject]@{
+        Address = '00c25a20'
+        Module = 'OnPostParentRelocation'
+        Source = '00/c2/OnPostParentRelocation_OnPostParentRelocation_00c25a20.cpp'
+        TestSource = '00/c2/OnPostParentRelocation_OnPostParentRelocation_00c25a20_test.cpp'
+        PassPattern = 'OK_00c25a20'
+    }
 )
 
 $requestedAddresses = @(
