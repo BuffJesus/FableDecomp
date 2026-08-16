@@ -74566,6 +74566,335 @@ $catalog = @(
         TestSource = '00/a7/CNavNavigableLeafNode_GetPreferabilityCost_00a75a90_test.cpp'
         PassPattern = 'OK_00a75a90'
     }
+    [pscustomobject]@{
+        Address = '0066caf0'
+        Module = 'GetAnimFilter'
+        Source = '00/66/GetAnimFilter_GetAnimFilter_0066caf0.cpp'
+        TestSource = '00/66/GetAnimFilter_GetAnimFilter_0066caf0_test.cpp'
+        PassPattern = 'OK_0066caf0'
+    }
+    [pscustomobject]@{
+        Address = '006b7310'
+        Module = 'CEnvironment'
+        Source = '00/6b/CEnvironment_PeekWindDirection_006b7310.cpp'
+        TestSource = '00/6b/CEnvironment_PeekWindDirection_006b7310_test.cpp'
+        PassPattern = 'OK_006b7310'
+    }
+    [pscustomobject]@{
+        Address = '006b7330'
+        Module = 'CEnvironment'
+        Source = '00/6b/CEnvironment_PeekSunVector_006b7330.cpp'
+        TestSource = '00/6b/CEnvironment_PeekSunVector_006b7330_test.cpp'
+        PassPattern = 'OK_006b7330'
+    }
+    [pscustomobject]@{
+        Address = '006b7340'
+        Module = 'CEnvironment'
+        Source = '00/6b/CEnvironment_PeekMoonVector_006b7340.cpp'
+        TestSource = '00/6b/CEnvironment_PeekMoonVector_006b7340_test.cpp'
+        PassPattern = 'OK_006b7340'
+    }
+    [pscustomobject]@{
+        Address = '006b7350'
+        Module = 'CEnvironment'
+        Source = '00/6b/CEnvironment_PeekInterpolatedParams_006b7350.cpp'
+        TestSource = '00/6b/CEnvironment_PeekInterpolatedParams_006b7350_test.cpp'
+        PassPattern = 'OK_006b7350'
+    }
+    [pscustomobject]@{
+        Address = '0082e250'
+        Module = 'GetAnimFilter'
+        Source = '00/82/GetAnimFilter_GetAnimFilter_0082e250.cpp'
+        TestSource = '00/82/GetAnimFilter_GetAnimFilter_0082e250_test.cpp'
+        PassPattern = 'OK_0082e250'
+    }
+    [pscustomobject]@{
+        Address = '0082e280'
+        Module = 'GetAnimFilter'
+        Source = '00/82/GetAnimFilter_GetAnimFilter_0082e280.cpp'
+        TestSource = '00/82/GetAnimFilter_GetAnimFilter_0082e280_test.cpp'
+        PassPattern = 'OK_0082e280'
+    }
+    [pscustomobject]@{
+        Address = '008cfdf0'
+        Module = 'CGameScriptThing'
+        Source = '00/8c/CGameScriptThing_GetName_008cfdf0.cpp'
+        TestSource = '00/8c/CGameScriptThing_GetName_008cfdf0_test.cpp'
+        PassPattern = 'OK_008cfdf0'
+    }
+    [pscustomobject]@{
+        Address = '008cfe20'
+        Module = 'CGameScriptThing'
+        Source = '00/8c/CGameScriptThing_GetPos_008cfe20.cpp'
+        TestSource = '00/8c/CGameScriptThing_GetPos_008cfe20_test.cpp'
+        PassPattern = 'OK_008cfe20'
+    }
+    [pscustomobject]@{
+        Address = '00a19b00'
+        Module = 'CNavigatorFlyer'
+        Source = '00/a1/CNavigatorFlyer_GetCurrentDestination_00a19b00.cpp'
+        TestSource = '00/a1/CNavigatorFlyer_GetCurrentDestination_00a19b00_test.cpp'
+        PassPattern = 'OK_00a19b00'
+    }
+    [pscustomobject]@{
+        Address = '00a224c0'
+        Module = 'CNavigatorAStar'
+        Source = '00/a2/CNavigatorAStar_GetCurrentDestination_00a224c0.cpp'
+        TestSource = '00/a2/CNavigatorAStar_GetCurrentDestination_00a224c0_test.cpp'
+        PassPattern = 'OK_00a224c0'
+    }
+    [pscustomobject]@{
+        Address = '00a7f290'
+        Module = 'CNavNavigableLeafNode'
+        Source = '00/a7/CNavNavigableLeafNode_GetNeighbours_00a7f290.cpp'
+        TestSource = '00/a7/CNavNavigableLeafNode_GetNeighbours_00a7f290_test.cpp'
+        PassPattern = 'OK_00a7f290'
+    }
+    [pscustomobject]@{
+        Address = '00a7f2a0'
+        Module = 'CNavNavigableLeafNode'
+        Source = '00/a7/CNavNavigableLeafNode_GetNeighbours_00a7f2a0.cpp'
+        TestSource = '00/a7/CNavNavigableLeafNode_GetNeighbours_00a7f2a0_test.cpp'
+        PassPattern = 'OK_00a7f2a0'
+    }
+    [pscustomobject]@{
+        Address = '00c3c4a0'
+        Module = 'GetAnimFilter'
+        Source = '00/c3/GetAnimFilter_GetAnimFilter_00c3c4a0.cpp'
+        TestSource = '00/c3/GetAnimFilter_GetAnimFilter_00c3c4a0_test.cpp'
+        PassPattern = 'OK_00c3c4a0'
+    }
+    [pscustomobject]@{
+        Address = '00c47ec0'
+        Module = 'GetAnimFilter'
+        Source = '00/c4/GetAnimFilter_GetAnimFilter_00c47ec0.cpp'
+        TestSource = '00/c4/GetAnimFilter_GetAnimFilter_00c47ec0_test.cpp'
+        PassPattern = 'OK_00c47ec0'
+    }
+    [pscustomobject]@{
+        Address = '00c47ed0'
+        Module = 'GetAnimFilter'
+        Source = '00/c4/GetAnimFilter_GetAnimFilter_00c47ed0.cpp'
+        TestSource = '00/c4/GetAnimFilter_GetAnimFilter_00c47ed0_test.cpp'
+        PassPattern = 'OK_00c47ed0'
+    }
+    [pscustomobject]@{
+        Address = '00c47ee0'
+        Module = 'GetAnimFilter'
+        Source = '00/c4/GetAnimFilter_GetAnimFilter_00c47ee0.cpp'
+        TestSource = '00/c4/GetAnimFilter_GetAnimFilter_00c47ee0_test.cpp'
+        PassPattern = 'OK_00c47ee0'
+    }
+    [pscustomobject]@{
+        Address = '00c47ef0'
+        Module = 'GetAnimFilter'
+        Source = '00/c4/GetAnimFilter_GetAnimFilter_00c47ef0.cpp'
+        TestSource = '00/c4/GetAnimFilter_GetAnimFilter_00c47ef0_test.cpp'
+        PassPattern = 'OK_00c47ef0'
+    }
+    [pscustomobject]@{
+        Address = '00733230'
+        Module = 'EnableNavigator'
+        Source = '00/73/EnableNavigator_EnableNavigator_00733230.cpp'
+        TestSource = '00/73/EnableNavigator_EnableNavigator_00733230_test.cpp'
+        PassPattern = 'OK_00733230'
+    }
+    [pscustomobject]@{
+        Address = '00749800'
+        Module = 'AddExclusiveObserver'
+        Source = '00/74/AddExclusiveObserver_AddExclusiveObserver_00749800.cpp'
+        TestSource = '00/74/AddExclusiveObserver_AddExclusiveObserver_00749800_test.cpp'
+        PassPattern = 'OK_00749800'
+    }
+    [pscustomobject]@{
+        Address = '0077b070'
+        Module = 'AddExclusiveObserver'
+        Source = '00/77/AddExclusiveObserver_AddExclusiveObserver_0077b070.cpp'
+        TestSource = '00/77/AddExclusiveObserver_AddExclusiveObserver_0077b070_test.cpp'
+        PassPattern = 'OK_0077b070'
+    }
+    [pscustomobject]@{
+        Address = '0079f680'
+        Module = 'AddExclusiveObserver'
+        Source = '00/79/AddExclusiveObserver_AddExclusiveObserver_0079f680.cpp'
+        TestSource = '00/79/AddExclusiveObserver_AddExclusiveObserver_0079f680_test.cpp'
+        PassPattern = 'OK_0079f680'
+    }
+    [pscustomobject]@{
+        Address = '007bed30'
+        Module = 'EnableNavigator'
+        Source = '00/7b/EnableNavigator_EnableNavigator_007bed30.cpp'
+        TestSource = '00/7b/EnableNavigator_EnableNavigator_007bed30_test.cpp'
+        PassPattern = 'OK_007bed30'
+    }
+    [pscustomobject]@{
+        Address = '007bed40'
+        Module = 'EnableNavigator'
+        Source = '00/7b/EnableNavigator_EnableNavigator_007bed40.cpp'
+        TestSource = '00/7b/EnableNavigator_EnableNavigator_007bed40_test.cpp'
+        PassPattern = 'OK_007bed40'
+    }
+    [pscustomobject]@{
+        Address = '007bed50'
+        Module = 'EnableNavigator'
+        Source = '00/7b/EnableNavigator_EnableNavigator_007bed50.cpp'
+        TestSource = '00/7b/EnableNavigator_EnableNavigator_007bed50_test.cpp'
+        PassPattern = 'OK_007bed50'
+    }
+    [pscustomobject]@{
+        Address = '007c3ea0'
+        Module = 'AddExclusiveObserver'
+        Source = '00/7c/AddExclusiveObserver_AddExclusiveObserver_007c3ea0.cpp'
+        TestSource = '00/7c/AddExclusiveObserver_AddExclusiveObserver_007c3ea0_test.cpp'
+        PassPattern = 'OK_007c3ea0'
+    }
+    [pscustomobject]@{
+        Address = '007c5440'
+        Module = 'AddExclusiveObserver'
+        Source = '00/7c/AddExclusiveObserver_AddExclusiveObserver_007c5440.cpp'
+        TestSource = '00/7c/AddExclusiveObserver_AddExclusiveObserver_007c5440_test.cpp'
+        PassPattern = 'OK_007c5440'
+    }
+    [pscustomobject]@{
+        Address = '007ea270'
+        Module = 'AddExclusiveObserver'
+        Source = '00/7e/AddExclusiveObserver_AddExclusiveObserver_007ea270.cpp'
+        TestSource = '00/7e/AddExclusiveObserver_AddExclusiveObserver_007ea270_test.cpp'
+        PassPattern = 'OK_007ea270'
+    }
+    [pscustomobject]@{
+        Address = '00868590'
+        Module = 'AddExclusiveObserver'
+        Source = '00/86/AddExclusiveObserver_AddExclusiveObserver_00868590.cpp'
+        TestSource = '00/86/AddExclusiveObserver_AddExclusiveObserver_00868590_test.cpp'
+        PassPattern = 'OK_00868590'
+    }
+    [pscustomobject]@{
+        Address = '00933300'
+        Module = 'CAIStateGroup_MinionGuardReactToBribe'
+        Source = '00/93/CAIStateGroupMinionGuardReactToBribe_InitStateGroup_00933300.cpp'
+        TestSource = '00/93/CAIStateGroupMinionGuardReactToBribe_InitStateGroup_00933300_test.cpp'
+        PassPattern = 'OK_00933300'
+    }
+    [pscustomobject]@{
+        Address = '0096f490'
+        Module = 'CAIStateGroup_MinionBehaviourPodiumEmoteNeutral'
+        Source = '00/96/CAIStateGroupMinionBehaviourPodiumEmoteNeutral_InitLeaf_0096f490.cpp'
+        TestSource = '00/96/CAIStateGroupMinionBehaviourPodiumEmoteNeutral_InitLeaf_0096f490_test.cpp'
+        PassPattern = 'OK_0096f490'
+    }
+    [pscustomobject]@{
+        Address = '00994500'
+        Module = 'CBufferedFileDataOutputStream'
+        Source = '00/99/CBufferedFileDataOutputStream_SetPosition_00994500.cpp'
+        TestSource = '00/99/CBufferedFileDataOutputStream_SetPosition_00994500_test.cpp'
+        PassPattern = 'OK_00994500'
+    }
+    [pscustomobject]@{
+        Address = '009f0140'
+        Module = 'EnableNavigator'
+        Source = '00/9f/EnableNavigator_EnableNavigator_009f0140.cpp'
+        TestSource = '00/9f/EnableNavigator_EnableNavigator_009f0140_test.cpp'
+        PassPattern = 'OK_009f0140'
+    }
+    [pscustomobject]@{
+        Address = '00a39bf0'
+        Module = 'CWADFile'
+        Source = '00/a3/CWADFile_SetPosition_00a39bf0.cpp'
+        TestSource = '00/a3/CWADFile_SetPosition_00a39bf0_test.cpp'
+        PassPattern = 'OK_00a39bf0'
+    }
+    [pscustomobject]@{
+        Address = '00a4be00'
+        Module = 'AddExclusiveObserver'
+        Source = '00/a4/AddExclusiveObserver_AddExclusiveObserver_00a4be00.cpp'
+        TestSource = '00/a4/AddExclusiveObserver_AddExclusiveObserver_00a4be00_test.cpp'
+        PassPattern = 'OK_00a4be00'
+    }
+    [pscustomobject]@{
+        Address = '00a5d4d0'
+        Module = 'AddExclusiveObserver'
+        Source = '00/a5/AddExclusiveObserver_AddExclusiveObserver_00a5d4d0.cpp'
+        TestSource = '00/a5/AddExclusiveObserver_AddExclusiveObserver_00a5d4d0_test.cpp'
+        PassPattern = 'OK_00a5d4d0'
+    }
+    [pscustomobject]@{
+        Address = '00a5d4e0'
+        Module = 'AddExclusiveObserver'
+        Source = '00/a5/AddExclusiveObserver_AddExclusiveObserver_00a5d4e0.cpp'
+        TestSource = '00/a5/AddExclusiveObserver_AddExclusiveObserver_00a5d4e0_test.cpp'
+        PassPattern = 'OK_00a5d4e0'
+    }
+    [pscustomobject]@{
+        Address = '00ab9f70'
+        Module = 'AddExclusiveObserver'
+        Source = '00/ab/AddExclusiveObserver_AddExclusiveObserver_00ab9f70.cpp'
+        TestSource = '00/ab/AddExclusiveObserver_AddExclusiveObserver_00ab9f70_test.cpp'
+        PassPattern = 'OK_00ab9f70'
+    }
+    [pscustomobject]@{
+        Address = '00b2fbf0'
+        Module = 'AddExclusiveObserver'
+        Source = '00/b2/AddExclusiveObserver_AddExclusiveObserver_00b2fbf0.cpp'
+        TestSource = '00/b2/AddExclusiveObserver_AddExclusiveObserver_00b2fbf0_test.cpp'
+        PassPattern = 'OK_00b2fbf0'
+    }
+    [pscustomobject]@{
+        Address = '00b2fc00'
+        Module = 'AddExclusiveObserver'
+        Source = '00/b2/AddExclusiveObserver_AddExclusiveObserver_00b2fc00.cpp'
+        TestSource = '00/b2/AddExclusiveObserver_AddExclusiveObserver_00b2fc00_test.cpp'
+        PassPattern = 'OK_00b2fc00'
+    }
+    [pscustomobject]@{
+        Address = '00b5bd00'
+        Module = 'CEngineScreenEffectRadialBlurRenderer'
+        Source = '00/b5/CEngineScreenEffectRadialBlurRenderer_OnReleaseDefaultPoolResources_00b5bd00.cpp'
+        TestSource = '00/b5/CEngineScreenEffectRadialBlurRenderer_OnReleaseDefaultPoolResources_00b5bd00_test.cpp'
+        PassPattern = 'OK_00b5bd00'
+    }
+    [pscustomobject]@{
+        Address = '00b5ec60'
+        Module = 'CEngineScreenEffectGlowRenderer'
+        Source = '00/b5/CEngineScreenEffectGlowRenderer_OnReleaseDefaultPoolResources_00b5ec60.cpp'
+        TestSource = '00/b5/CEngineScreenEffectGlowRenderer_OnReleaseDefaultPoolResources_00b5ec60_test.cpp'
+        PassPattern = 'OK_00b5ec60'
+    }
+    [pscustomobject]@{
+        Address = '00b86970'
+        Module = 'CEngineScreenEffectDisplacementRenderer'
+        Source = '00/b8/CEngineScreenEffectDisplacementRenderer_OnReleaseDefaultPoolResources_00b86970.cpp'
+        TestSource = '00/b8/CEngineScreenEffectDisplacementRenderer_OnReleaseDefaultPoolResources_00b86970_test.cpp'
+        PassPattern = 'OK_00b86970'
+    }
+    [pscustomobject]@{
+        Address = '00c25e80'
+        Module = 'AddExclusiveObserver'
+        Source = '00/c2/AddExclusiveObserver_AddExclusiveObserver_00c25e80.cpp'
+        TestSource = '00/c2/AddExclusiveObserver_AddExclusiveObserver_00c25e80_test.cpp'
+        PassPattern = 'OK_00c25e80'
+    }
+    [pscustomobject]@{
+        Address = '00c59710'
+        Module = 'Clear'
+        Source = '00/c5/Clear_Clear_00c59710.cpp'
+        TestSource = '00/c5/Clear_Clear_00c59710_test.cpp'
+        PassPattern = 'OK_00c59710'
+    }
+    [pscustomobject]@{
+        Address = '00c77780'
+        Module = 'AddExclusiveObserver'
+        Source = '00/c7/AddExclusiveObserver_AddExclusiveObserver_00c77780.cpp'
+        TestSource = '00/c7/AddExclusiveObserver_AddExclusiveObserver_00c77780_test.cpp'
+        PassPattern = 'OK_00c77780'
+    }
+    [pscustomobject]@{
+        Address = '00f359f0'
+        Module = 'EnableNavigator'
+        Source = '00/f3/EnableNavigator_EnableNavigator_00f359f0.cpp'
+        TestSource = '00/f3/EnableNavigator_EnableNavigator_00f359f0_test.cpp'
+        PassPattern = 'OK_00f359f0'
+    }
 )
 
 $requestedAddresses = @(
