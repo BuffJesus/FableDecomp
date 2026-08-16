@@ -19,15 +19,10 @@ struct CVideoSys {
     int  m28;
 };
 
-bool __fastcall AttemptToPlay(CVideoSys* self)
-{
-    IPlayer* p = self->m4;
-    if (p->vtbl->slot7(p) == 0) {
-        self->m28 = 1;
-        return true;
-    }
-    return false;
-}
+// Exercise the reconstructed function from the linked source object; the
+// behavior exe links this test obj together with CVideoSys_AttemptToPlay_
+// 00a3b1a0.cpp (Invoke-VerifiedLeaf), so redefining it here collides (LNK2005).
+bool __fastcall AttemptToPlay(CVideoSys* self);
 
 static int g_ret;
 static int __stdcall busy(IPlayer*) { return g_ret; }
@@ -46,6 +41,6 @@ int main()
     bool r2 = AttemptToPlay(&vs);
     if (!(!r2 && vs.m28 == 99)) { printf("FAIL2\n"); return 1; }
 
-    printf("VERIFY_OK\n");
+    printf("FABLETLC_CVIDEOSYS_ATTEMPT_TO_PLAY PASS\n");
     return 0;
 }
