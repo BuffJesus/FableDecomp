@@ -68,6 +68,33 @@ Next frontend RE lane: the 2D-render core (CShaderRenderManager 56 fns,
 CEnginePrimitiveRenderer2D, CEnginePrimitive2DViewportManager) — the byte-pure
 Render2D path underlying the whole frontend.
 
+## Frontend lane increment (2026-08-16)
+Landed 2 byte-exact Render2D/frontend fns (local verify_and_land, artifacts on
+disk in rebuild/src+tests + build_candidates.ps1 catalog + oracle rows; NOT yet
+committed — working tree was mid-flight from a concurrent crawl session rewriting
+`auto-re-candidates.tsv`, so a clean scoped commit was deferred to avoid
+entangling that work):
+- **`CEnginePrimitive2DViewportManager::RenderPrimitive` @ 0x00be1b90** (MATCH):
+  bare virtual stub `xor eax,eax / ret 0xC` — `ERendered(prim&, layer, chain&)`
+  returning 0.
+- **`CTCInGameMenu::Construct` @ 0x004d559d** (RELOCATION_MATCH, `/O1 s`): factory
+  `p = operator new(0xF8); if (p) return p->Ctor(parent); return 0;`. Modeled the
+  ctor as a real member (implicit __thiscall) so no `xor edx,edx` is emitted, and
+  the value-returning forwarder keeps retail's `call;ret`.
+DEFERRED (compiler-gated, same-length DIFFER 47v47) — the QFE-4035 class:
+- **`CNewFrontendGameComponent::Init` @ 0x0042f75e**: semantics fully recovered
+  (behaviour PASS) = `g_frontendComponent=this; Step1(); Step2();
+  this->f_b1=1; s=MakeSub(0x60,0x29,this->f_10); s->Activate();`. VC7.1 RTM 3077
+  tail-jmps the final void member call (`pop esi; jmp`) and load-hoists the
+  `push [esi+0x10]` arg; retail (QFE-4035) keeps `mov ecx,eax; call; pop esi; ret`
+  and pushes the memory operand directly. Not recoverable under RTM — needs the
+  permuter or QFE compiler. Fields: field10 @+0x10, initialised byte @+0xb1;
+  global `g_frontendComponent` @ 0x013b871c.
+Remaining small targets in these classes are destructors (fragile member-cleanup
+chains) or 900B+ fns; Render2DPrimitive (factory+FPU), RenderSubPrimitive
+(dead-store local idiom), GetSupportedTypes (STL vector push_back) are the
+fragile idiom class — defer.
+
 ## Frontend lane resume point (2026-08-14 EOD)
 Session landed 29 frontend byte-exact fns: 14 minimap + 15 Render2D
 (CShaderRenderManager/CEnginePrimitiveRenderer2D/CShaderResource). Commits

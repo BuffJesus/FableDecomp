@@ -73743,6 +73743,20 @@ $catalog = @(
         TestSource = '00/98/CShaderRenderManager_SetXBoxUserVertexShaderConstant_00989ba0_test.cpp'
         PassPattern = 'PARITY_OK_989ba0'
     }
+    [pscustomobject]@{
+        Address = '00be1b90'
+        Module = 'CEnginePrimitive2DViewportManager'
+        Source = '00/be/CEnginePrimitive2DViewportManager_RenderPrimitive_00be1b90.cpp'
+        TestSource = '00/be/CEnginePrimitive2DViewportManager_RenderPrimitive_00be1b90_test.cpp'
+        PassPattern = 'RENDERPRIM_STUB_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d559d'
+        Module = 'CTCInGameMenu'
+        Source = '00/4d/CTCInGameMenu_Construct_004d559d.cpp'
+        TestSource = '00/4d/CTCInGameMenu_Construct_004d559d_test.cpp'
+        PassPattern = 'MENU_CONSTRUCT_OK'
+    }
 )
 
 $requestedAddresses = @(
