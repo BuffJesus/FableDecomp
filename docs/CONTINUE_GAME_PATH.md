@@ -33,6 +33,28 @@ CWorld::LoadGameState                  0x004a3200  (752B)   world-level load coo
 (*) real body length after trimming manifest over-capture; all rows currently
 `retail_parity = -` except LoadGame which is `DIFFER`.
 
+## 2026-08-16 — find-loop blocker SOLVED; CPlayerManager reduced to slot-layout near-match
+
+The "one register-allocator artifact in LoopB" below is **cracked**. Retail's find-loops keep
+`begin` in a BASE register + a separate INDEX and emit the found-case element load OUT-OF-LINE
+(`je found; …; found: mov reg,[base+idx*4]; jmp use`). The prior probe used a **pointer walk**
+(`++p`), which folds the deref into one shared `mov` and misses the out-of-line block. Using
+**index-based access** (`this->begin[i]`) reproduces retail's exact idiom:
+```
+T* n = this->begin[this->defaultIdx];
+for (int i=0;i<count;i++){ if (this->begin[i]->field==target){ n=this->begin[i]; break; } }
+Use(n);
+```
+With this, a full reconstruction of `CPlayerManager::LoadGameState` (0x449e60) reproduces the
+**entire 297-byte instruction sequence byte-for-byte** (both find-loops now match) — the residual
+is only local-*slot* displacement bytes (VC allocates the CCharString/Transfer-output locals to
+different `[esp+X]` slots than retail: retail puts the char-transfer output at +0x10, localStr at
++0x20; VC reverses them). Behaviour PASS, /O2 /Oy (esp-relative, no frame ptr), 297–299B. That
+last gap is a compiler stack-slot-ordering detail (needs a slot-allocation-aware permuter or the
+exact retail declaration order), NOT the regalloc blocker — a large step forward. Idiom documented
+in `tools/decomp_pipeline/crawl/README.md`; the near-complete source shape is above. This idiom
+applies to the other find-loop coordinators (CQuestManager/CWorldMap load paths).
+
 ## 2026-08-11 — tier-1 byte-parity PROBE result (important scoping finding)
 
 `CPlayerManager::LoadGameState` 0x449e60 (smallest coordinator, 297B, 13 calls) was
