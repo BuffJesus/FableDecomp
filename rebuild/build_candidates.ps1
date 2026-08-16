@@ -74062,6 +74062,27 @@ $catalog = @(
         TestSource = '00/ca/CEngineInternalPrimitiveBase_AddChildPrimitive_00ca8090_test.cpp'
         PassPattern = 'OK_00b38810'
     }
+    [pscustomobject]@{
+        Address = '00b98d70'
+        Module = 'CEngineInternalPrimitiveRepeatedStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitiveRepeatedStaticMesh_GetBoundingBoxWorldSpace_00b98d70.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitiveRepeatedStaticMesh_GetBoundingBoxWorldSpace_00b98d70_test.cpp'
+        PassPattern = 'OK_00b98d70'
+    }
+    [pscustomobject]@{
+        Address = '00baa430'
+        Module = 'CEngineInternalPrimitiveRepeatedZSprite'
+        Source = '00/ba/CEngineInternalPrimitiveRepeatedZSprite_GetBoundingBoxWorldSpace_00baa430.cpp'
+        TestSource = '00/ba/CEngineInternalPrimitiveRepeatedZSprite_GetBoundingBoxWorldSpace_00baa430_test.cpp'
+        PassPattern = 'OK_00baa430'
+    }
+    [pscustomobject]@{
+        Address = '00bbbe10'
+        Module = 'CEngineInternalPrimitiveParticleGroup'
+        Source = '00/bb/CEngineInternalPrimitiveParticleGroup_GetBoundingSphereWorldSpace_00bbbe10.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleGroup_GetBoundingSphereWorldSpace_00bbbe10_test.cpp'
+        PassPattern = 'OK_00bbbe10'
+    }
 )
 
 $requestedAddresses = @(
