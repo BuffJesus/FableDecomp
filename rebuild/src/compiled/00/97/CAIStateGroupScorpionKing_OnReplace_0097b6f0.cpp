@@ -1,0 +1,1 @@
+void __fastcall CAIStateGroup_ScorpionKing_OnReplace() {}

@@ -1,0 +1,1 @@
+void __stdcall CClassFactory_OnDeleteClass(int arg0) {}

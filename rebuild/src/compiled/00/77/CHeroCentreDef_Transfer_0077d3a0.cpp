@@ -1,0 +1,1 @@
+void __stdcall CHeroCentreDef_Transfer(int arg0) {}

@@ -1,0 +1,1 @@
+void __stdcall CHandleBasedMemoryPool_ValidateResource(int arg0) {}

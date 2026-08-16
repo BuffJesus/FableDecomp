@@ -1,0 +1,1 @@
+void __stdcall CAProgressDisplay_SetToDisplayText(int arg0) {}

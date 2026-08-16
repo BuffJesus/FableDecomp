@@ -1,0 +1,1 @@
+void __stdcall CJoystick_SetHasInputFocus(int arg0) {}
