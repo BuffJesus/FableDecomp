@@ -75763,6 +75763,20 @@ $catalog = @(
         TestSource = '00/ef/SuspendableProcess_SuspendableProcess_00effe00_test.cpp'
         PassPattern = 'AUTO_TINY_00effe00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005bc2d7'
+        Module = 'OnReadFinished'
+        Source = '00/5b/OnReadFinished_OnReadFinished_005bc2d7.cpp'
+        TestSource = '00/5b/OnReadFinished_OnReadFinished_005bc2d7_test.cpp'
+        PassPattern = 'AUTO_TINY_005bc2d7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122aef0'
+        Module = 'CreateCRC'
+        Source = '01/22/CreateCRC_CreateCRC_0122aef0.cpp'
+        TestSource = '01/22/CreateCRC_CreateCRC_0122aef0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122aef0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
