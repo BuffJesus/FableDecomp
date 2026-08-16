@@ -114,6 +114,55 @@ v1 -= 0.5/OptionsHeight` (and mirror in the detail-title outline path if it regr
 doesn't fully clear it, confirm the ENG_ARIAL atlas has zero inter-cell gutter and add a 1px gutter
 to the atlas bake instead. Verify against resources/UIScreenshots(Retail)/ContinueGameScreen.png.
 
+## 2026-08-16 — visual build pipeline repaired + Redefine baked-scroll fully mapped
+
+**Build pipeline was broken by accumulated drift; now green again** (checkpoint exe
+rebuilds, `VISUAL_BOOT_CHECKPOINT PASS`). Four independent breakages fixed this session:
+1. Leaf-sweep auto-landing clobbered two `build_bootstrap.ps1`-owned fixtures
+   (`CMovie::IsPlaying` 0x548520, `CVideoSys::GetTexture` 0xa3b320) — restored
+   (commit "restore bootstrap-owned CMovie/CVideoSys fixtures").
+2. Pre-existing `CVideoSys::AttemptToPlay` behavior fixture (from 5500606) redefined
+   the free function the linked source obj defines (always-LNK2005) and printed the
+   wrong pass pattern — never build-validated because upstream was already broken.
+   Fixed the test to forward-declare + emit `FABLETLC_CVIDEOSYS_ATTEMPT_TO_PLAY PASS`.
+3. `FABLETLC_WINMAIN_BEHAVIOR FAIL code=2` when **retail Fable.exe is running** — WinMain
+   calls the real `OpenMutexW` single-instance guard; the fixture is non-hermetic w.r.t.
+   the OS mutex. Close Fable before building. See memory `winmain-fixture-needs-fable-closed`.
+4. `frontend_save_rows.obj` + its `fable_inflate.obj` (FableZlibInflate) dep were missing
+   from the two behavior-exe links that link the checkpoint obj (`VisualBoot-Behavior`,
+   `SaveViewportQuads-Behavior`) after the checkpoint driver gained a SaveRows call —
+   added them (commit "link frontend_save_rows + fable_inflate into visual behavior exes").
+
+Navigate+capture harness confirmed working (`scratchpad/vnav.ps1`): title → Select Profile
+→ profile → main menu → Options → Redefine Keys; scroll via down-arrow clicks at client
+(640,548). Captures: `cap_redef_page0.png` (matches retail RedefineKeys1),
+`cap_redef_scroll4.png` (scrolled).
+
+**Redefine baked-scroll (task #11) — structure fully decoded; ONE datum blocks native.**
+The scrolled list (`g_RedefineListSelection > 0`) blits a baked 3200×3360 page atlas
+(`g_RedefineScrollPagesTexture`, visual_boot_d3d9.cpp ~L4076) — a bake AND the "flash on
+scroll" cause. Decode:
+- The 9 grey row **pills are STATIC** across all pages (retail RedefineKeys1 vs 5 pixel-
+  identical; confirmed live) and come from the **static detail component overlay** quad
+  (~L3597, drawn for all detail screens regardless of selection). So the baked page is
+  redundant for the pills.
+- Action + key **text already renders natively** at the scroll offset (AppendRedefineAction
+  Text/AppendRedefineKeyText, L1334-1337/1386-1389 use `RedefineScrollPageOffset`).
+- The **only content unique to the baked page is the up/down scroll arrows.** The down
+  arrow on page 0 is baked into the static overlay at design (304,350) and gets erased by
+  a forest-frame repaint on scrolled pages (~L4037-4064); the **up arrow exists only inside
+  the baked page atlas**.
+
+**Native-conversion plan (remaining):** drop the baked-page blit (L4076-4091); rely on the
+static overlay for pills + native text; draw the scroll arrows natively per
+`kFableFrontendRedefineListArrowLayout` (frontend_list_layout.h): arrowX=304, upY=80,
+downY=350, 32×32; up when selection>0, down when not last page; keep the page-0 down-arrow
+erase. **Blocker:** the arrow sprite **atlas UVs** are unmapped — the layout gives dimensions/
+positions and names FE_SCROLL_*_SPRITE entries 379..382 (UI defs UP=417 DOWN=420) but NOT
+their atlas region. Next step is frontend.big sprite-descriptor RE to resolve 379..382 →
+(texture, UV), then the native draw is straightforward and screenshot-verifiable. Deferred
+rather than shipped half-native (dropping arrows would be a parity regression).
+
 ### RESOLVED 2026-08-10 (visual-QA verified)
 
 FIXED via the half-texel UV inset in `AppendProfileNameText` (sample from texel
