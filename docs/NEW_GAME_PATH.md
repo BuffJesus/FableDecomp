@@ -31,10 +31,21 @@ the `CFrontEndManager::Action` switch — see below). LoadGame itself is a docum
   creation screen — see docs/NEW_PROFILE_SCREEN.md.**
 - `CFrontEndManager::GotoProfileMenu @ 0x00597b20`, `GotoNextScreen @ 0x00596763`.
 
-## World init (New Game ≠ Load)  [INFERRED]
+## World init (New Game ≠ Load)  [DECODED — byte-exact landed]
 New Game does **not** call `CWorld::LoadGameState` (that deserializes a save). It creates
-fresh world state, then streams the prologue region. Candidate chain (verify):
-- `CMainGameComponent::InitWorld @ 0x0041735a` → `InitPlayerManager @ 0x0041732a`
+fresh world state:
+- **`CMainGameComponent::InitWorld @ 0x0041735a` (190B) — LANDED byte-exact (RELOCATION_MATCH).**
+  Builds a 0x14-byte context `{this, this->f1c, &CGameDefinitionManager::Get()}`, then
+  `w = operator new(0x198); if (w) w = w->CWorld::ctor(&ctx);` (the CWorld is 0x198=408
+  bytes), stores it in the CCountedPointer at `this->+0x24` (`DeleteData(w)` = assign),
+  conditionally calls `InitEventPackageLoading`/`InitEventPackageSaving` (globals
+  0x13b85f8/0x13b85f7 gate them, def-mgr singleton 0x13b8660), shows a progress line
+  (`DisplayProgress(CCharString("...",-1), false, 0.5f, 0)`), then calls `world->vtbl[9]()`.
+  **TU flags: `/O1 /Oy-`** (size-opt + frame pointer — NOT the usual /O2 /Oy; catalog entry
+  records this). Reconstruction keys: the ctor is a real member (no edx), the null-`new`
+  path reuses new's 0 (no extra xor), the CCharString lives in a block so its dtor fires
+  before the vtbl call, and the progress arg is a `bool` (`xor dl,dl`) with a non-zero float.
+- `InitPlayerManager @ 0x0041732a` (already MATCH).
 - `CWorld::PostInit @ 0x004a6550(CDisplayEngine&)`, `CWorld::PostLoadInit @ 0x0049d970`
 - The child-mode flag: **`GetHeroAge` returns 18 in the child prologue** (a special mode
   set for new games; CONTINUE_GAME_PATH.md / memory fable-level-modding-gotchas).

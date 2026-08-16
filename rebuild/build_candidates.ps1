@@ -75777,6 +75777,14 @@ $catalog = @(
         TestSource = '01/22/CreateCRC_CreateCRC_0122aef0_test.cpp'
         PassPattern = 'AUTO_TINY_0122aef0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0041735a'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_InitWorld_0041735a.cpp'
+        TestSource = '00/41/CMainGameComponent_InitWorld_0041735a_test.cpp'
+        CompilerFlags = '/O1 /Oy- /W3'
+        PassPattern = 'INITWORLD_OK'
+    }
 )
 
 $requestedAddresses = @(
