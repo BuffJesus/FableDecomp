@@ -73757,6 +73757,13 @@ $catalog = @(
         TestSource = '00/4d/CTCInGameMenu_Construct_004d559d_test.cpp'
         PassPattern = 'MENU_CONSTRUCT_OK'
     }
+    [pscustomobject]@{
+        Address = '00baced0'
+        Module = 'CEnginePrimitiveManager2DSprites'
+        Source = '00/ba/CEnginePrimitiveManager2DSprites_Render2DPrimitive_00baced0.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManager2DSprites_Render2DPrimitive_00baced0_test.cpp'
+        PassPattern = 'SPRITE_R2D_OK'
+    }
 )
 
 $requestedAddresses = @(

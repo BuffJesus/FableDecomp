@@ -68,6 +68,28 @@ Next frontend RE lane: the 2D-render core (CShaderRenderManager 56 fns,
 CEnginePrimitiveRenderer2D, CEnginePrimitive2DViewportManager) — the byte-pure
 Render2D path underlying the whole frontend.
 
+## Frontend lane increment (2026-08-16, round 2)
+- **`CEnginePrimitiveManager2DSprites::Render2DPrimitive` @ 0x00baced0** (MATCH):
+  virtual-dispatch forwarder — `if (this->active) { prim->f8==0x23 ? vslot13 :
+  vslot14 }(prim, chain, subtype)`. Modeled the two targets as virtuals at slots
+  13/14 (13 padding virtuals) so VC7.1 emits `call [vptr+0x34]` / `[vptr+0x38]`
+  thiscall with no edx. Fields: active byte @+0x08; prim->f8 @+0x08.
+DEFERRED (compiler-gated aliasing class, 24-instance clone family):
+- **`std::_Move<CCountedPointer<CGuiVarTransferBase>*>` @ 0x00448300** (+23 more:
+  535000 6962c0 6f1410 7646c0 764bc0 7f3ce0 84f330 8b2140 8b25c0 a2b340 a46460
+  a5fda0 a95c00 a95d90 a96430 aa8f40 …). Semantics fully recovered (behaviour
+  PASS) = std::copy over CCountedPointer with release(old)/addref(new):
+  `for (n=last-first; n>0; --n,++first,++dest) if (dest->ctr!=first->ctr){
+  release dest->ctr (--count==0 → ctr->destroy(ctr->self); operator delete);
+  dest->obj=first->obj; dest->ctr=first->ctr; if(dest->ctr) ++count; }`.
+  Counter{count@0, destroy@4 (thiscall via ecx=self@8)}; CountedPtr{obj@0,ctr@4};
+  the two trailing STL iterator-category tags make it `ret 0xC` (3 stack args).
+  BLOCKER: retail RELOADS `dest->ctr` from memory 3× (conservative aliasing —
+  it treats `--dest->ctr->count` as possibly clobbering the pointer); VC7.1 RTM
+  3077 at /O2 caches it in a register (DIFFER 102v115). The /GS,/Oa flag sweep
+  can't force *more* reloads. Needs QFE-4035 or a full-regalloc permuter. Best
+  source in scratchpad. If ever landed, clone-sweep the 23 via harvest_skeleton.py.
+
 ## Frontend lane increment (2026-08-16)
 Landed 2 byte-exact Render2D/frontend fns (local verify_and_land, artifacts on
 disk in rebuild/src+tests + build_candidates.ps1 catalog + oracle rows; NOT yet
