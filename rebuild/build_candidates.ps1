@@ -74083,6 +74083,48 @@ $catalog = @(
         TestSource = '00/bb/CEngineInternalPrimitiveParticleGroup_GetBoundingSphereWorldSpace_00bbbe10_test.cpp'
         PassPattern = 'OK_00bbbe10'
     }
+    [pscustomobject]@{
+        Address = '00bbf320'
+        Module = 'CEngineInternalPrimitiveParticleSpriteGroup'
+        Source = '00/bb/CEngineInternalPrimitiveParticleSpriteGroup_Update_00bbf320.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleSpriteGroup_Update_00bbf320_test.cpp'
+        PassPattern = 'OK_00bbf320'
+    }
+    [pscustomobject]@{
+        Address = '00bc3db0'
+        Module = 'CEngineInternalPrimitiveParticleLineGroup'
+        Source = '00/bc/CEngineInternalPrimitiveParticleLineGroup_Update_00bc3db0.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveParticleLineGroup_Update_00bc3db0_test.cpp'
+        PassPattern = 'OK_00bc3db0'
+    }
+    [pscustomobject]@{
+        Address = '00bbf2b0'
+        Module = 'CEngineInternalPrimitiveParticleSprite'
+        Source = '00/bb/CEngineInternalPrimitiveParticleSprite_Update_00bbf2b0.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleSprite_Update_00bbf2b0_test.cpp'
+        PassPattern = 'OK_00bbf2b0'
+    }
+    [pscustomobject]@{
+        Address = '00bb6d70'
+        Module = 'CEngineInternalPrimitiveParticleDecalGroup'
+        Source = '00/bb/CEngineInternalPrimitiveParticleDecalGroup_Update_00bb6d70.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleDecalGroup_Update_00bb6d70_test.cpp'
+        PassPattern = 'OK_00bb6d70'
+    }
+    [pscustomobject]@{
+        Address = '00bc3d00'
+        Module = 'CEngineInternalPrimitiveParticleLine'
+        Source = '00/bc/CEngineInternalPrimitiveParticleLine_Update_00bc3d00.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveParticleLine_Update_00bc3d00_test.cpp'
+        PassPattern = 'OK_00bc3d00'
+    }
+    [pscustomobject]@{
+        Address = '00bb6ce0'
+        Module = 'CEngineInternalPrimitiveParticleDecal'
+        Source = '00/bb/CEngineInternalPrimitiveParticleDecal_Update_00bb6ce0.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleDecal_Update_00bb6ce0_test.cpp'
+        PassPattern = 'OK_00bb6ce0'
+    }
 )
 
 $requestedAddresses = @(

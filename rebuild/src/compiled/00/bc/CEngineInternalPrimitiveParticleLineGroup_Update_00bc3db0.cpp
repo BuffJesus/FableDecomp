@@ -1,0 +1,3 @@
+struct P { char a[0xc]; unsigned long fc; unsigned short f10; char _[2]; unsigned long f14; unsigned long f18; };
+struct C { char a[0xc]; unsigned long fc; char b[0xac-0x10]; unsigned long fac; unsigned short fb0; char c[2]; unsigned long fb4; unsigned long fb8; void U(P const& p, unsigned long k); };
+void C::U(P const& p, unsigned long k){ this->fc=k; this->fac=p.fc; this->fb4=p.f14; this->fb0=p.f10; this->fb8=p.f18; }
