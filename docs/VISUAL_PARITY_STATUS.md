@@ -157,11 +157,39 @@ scroll" cause. Decode:
 static overlay for pills + native text; draw the scroll arrows natively per
 `kFableFrontendRedefineListArrowLayout` (frontend_list_layout.h): arrowX=304, upY=80,
 downY=350, 32×32; up when selection>0, down when not last page; keep the page-0 down-arrow
-erase. **Blocker:** the arrow sprite **atlas UVs** are unmapped — the layout gives dimensions/
-positions and names FE_SCROLL_*_SPRITE entries 379..382 (UI defs UP=417 DOWN=420) but NOT
-their atlas region. Next step is frontend.big sprite-descriptor RE to resolve 379..382 →
-(texture, UV), then the native draw is straightforward and screenshot-verifiable. Deferred
-rather than shipped half-native (dropping arrows would be a parity regression).
+erase.
+
+**RESOLVED 2026-08-16 (RE):** the "arrow sprite atlas UVs" premise was a misdiagnosis —
+there is **no shared atlas** for these arrows. `FE_SCROLL_*_SPRITE` entries 379..382 are each a
+**standalone 32×32 A8R8G8B8 texture entry** in `frontend.big` sub-bank `GBANK_FRONT_END_PC`
+(entry ids 379/380/381/382, matching front_end_bank.h `FE_SCROLL_UP_SPRITE=379`,
+`_DOWN_SPRITE=380`, `_UP_HOVERED_SPRITE=381`, `_DOWN_HOVERED_SPRITE=382`; also 383/384 = CLICKED
+variants). The frontend graphic-index → frontend.big entry-id mapping is direct (same number),
+so each arrow's **UV is simply full-frame (0,0)→(1,1)** of its own texture — no sub-rect lookup.
+Format is uncompressed A8R8G8B8; on disk mip0 is chunked-LZO (MipSize0≈1165 B), mips 1–3 raw —
+a normal frontend.big texture, decodable with the proven pipeline
+(`python tools/texture_build.py decode <frontend.big> FE_SCROLL_UP_SPRITE out.png --crop-real`).
+Decoded glyphs verified: up = grey circle + up-triangle; hovered = tan-highlighted circle.
+
+**IMPLEMENTED + visual-QA verified 2026-08-16** (`visual_boot_d3d9.cpp`): the full-page baked
+blit (was L4076-4091) is dropped. On scrolled pages (`g_RedefineListSelection > 0`) the renderer
+now draws the up/down arrows as **two discrete 32×32 quads** at their authored
+`kFableFrontendRedefineListArrowLayout` positions (up (304,80), down (304,350)); the nine grey row
+pills come from the static detail-component overlay and the action/key text renders natively below,
+so nothing baked is lost. The arrow pixels are the real FE_SCROLL sprites the subscreen renderer
+already bakes into each page cell (at the same (304,80)/(304,350)), so this needed **zero texture
+plumbing** — no new upload/attach/init-param/BMP. The up arrow is always present while scrolled; the
+down-arrow footprint is transparent on the final page, so its quad draws nothing (matching retail's
+"no down arrow on the last page"); the page-0 down-arrow forest-repaint erase is retained so the
+static overlay's baked down arrow is removed on the final page. Verified headlessly (`scratchpad/
+vnav.ps1`): page 0 = down only; middle scrolled page = both arrows; last page = up only. Captures:
+`scratchpad/nav_redef_page0.png` / `nav_redef_scroll3.png` / `nav_redef_scrollend.png`.
+
+Follow-up (optional, not blocking): the 3200×3360 `g_RedefineScrollPagesTexture` atlas is still
+generated/loaded purely as the arrow pixel source. A later cleanup can retire it in favour of a
+small dedicated arrows texture (FE_SCROLL 379..382 packed into a ~128×32 sprite) threaded through
+the `FableInitialiseVisualD3D9` upload chain + `RENDER2D_ADAPTER_ATTACH_TEXTURE` attach chain, which
+would drop the 43 MB atlas BMP entirely.
 
 ### RESOLVED 2026-08-10 (visual-QA verified)
 

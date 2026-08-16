@@ -243,6 +243,10 @@ namespace
     const fable_u32 kRedefineScrollPageHeight = 480;
     const fable_u32 kRedefineScrollPageColumns = 5;
     const fable_u32 kRedefineScrollArrowDesignX = 304;
+    // Down arrow authored Y; up arrow sits at the top of the list viewport.
+    // Both from kFableFrontendRedefineListArrowLayout (frontend_list_layout.h):
+    // arrowX=304, upY=80, downY=350, 32x32.
+    const fable_u32 kRedefineScrollArrowUpDesignY = 80;
     const fable_u32 kRedefineScrollArrowDesignY = 350;
     const fable_u32 kRedefineScrollArrowWidth = 32;
     const fable_u32 kRedefineScrollArrowHeight = 32;
@@ -4073,20 +4077,70 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             static_cast<float>(pageColumn * kRedefineScrollPageWidth);
         const float atlasTop =
             static_cast<float>(pageRow * kRedefineScrollPageHeight);
+        // Native scroll arrows.  The full baked page was redundant: the nine
+        // grey row pills come from the static detail-component overlay and the
+        // action/key text renders natively below.  The ONLY content unique to
+        // the baked page is the up/down arrows -- FE_SCROLL_*_SPRITE, each a
+        // standalone 32x32 sprite (frontend.big ids 379/380).  Draw them as two
+        // discrete 32x32 quads at their authored kFableFrontendRedefineListArrow
+        // Layout positions, sampling the arrow footprint the renderer already
+        // baked into this page cell at design (304,80)/(304,350).  The up arrow
+        // is always present while scrolled; the down-arrow footprint is
+        // transparent on the final page (so its quad draws nothing), matching
+        // retail's "no down arrow on the last page" affordance without a blit.
+        const float upArrowTop =
+            titleTop +
+            static_cast<float>(kRedefineScrollArrowUpDesignY) * designScaleY;
         AppendVisualQuad(
             vertices, vertexCount, records, recordCount,
             g_RedefineScrollPagesTexture,
-            titleLeft,
-            titleTop,
-            titleRight,
-            titleBottom,
-            atlasLeft /
+            arrowLeft,
+            upArrowTop,
+            arrowLeft +
+                static_cast<float>(kRedefineScrollArrowWidth) * designScaleX,
+            upArrowTop +
+                static_cast<float>(kRedefineScrollArrowHeight) * designScaleY,
+            (atlasLeft +
+                static_cast<float>(kRedefineScrollArrowDesignX)) /
                 static_cast<float>(kRedefineScrollPageAtlasWidth),
-            atlasTop /
+            (atlasTop +
+                static_cast<float>(kRedefineScrollArrowUpDesignY)) /
                 static_cast<float>(kRedefineScrollPageAtlasHeight),
-            (atlasLeft + kRedefineScrollPageWidth) /
+            (atlasLeft +
+                static_cast<float>(
+                    kRedefineScrollArrowDesignX +
+                    kRedefineScrollArrowWidth)) /
                 static_cast<float>(kRedefineScrollPageAtlasWidth),
-            (atlasTop + kRedefineScrollPageHeight) /
+            (atlasTop +
+                static_cast<float>(
+                    kRedefineScrollArrowUpDesignY +
+                    kRedefineScrollArrowHeight)) /
+                static_cast<float>(kRedefineScrollPageAtlasHeight),
+            0xFFFFFFFFu);
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_RedefineScrollPagesTexture,
+            arrowLeft,
+            arrowTop,
+            arrowLeft +
+                static_cast<float>(kRedefineScrollArrowWidth) * designScaleX,
+            arrowTop +
+                static_cast<float>(kRedefineScrollArrowHeight) * designScaleY,
+            (atlasLeft +
+                static_cast<float>(kRedefineScrollArrowDesignX)) /
+                static_cast<float>(kRedefineScrollPageAtlasWidth),
+            (atlasTop +
+                static_cast<float>(kRedefineScrollArrowDesignY)) /
+                static_cast<float>(kRedefineScrollPageAtlasHeight),
+            (atlasLeft +
+                static_cast<float>(
+                    kRedefineScrollArrowDesignX +
+                    kRedefineScrollArrowWidth)) /
+                static_cast<float>(kRedefineScrollPageAtlasWidth),
+            (atlasTop +
+                static_cast<float>(
+                    kRedefineScrollArrowDesignY +
+                    kRedefineScrollArrowHeight)) /
                 static_cast<float>(kRedefineScrollPageAtlasHeight),
             0xFFFFFFFFu);
         if (
