@@ -73852,6 +73852,90 @@ $catalog = @(
         TestSource = '00/b9/CEngineInternalPrimitiveStaticMeshFromFile_Update_00b9d0f0_test.cpp'
         PassPattern = 'OK_00b9d0f0'
     }
+    [pscustomobject]@{
+        Address = '00b4b6b0'
+        Module = 'CEnginePrimitiveManager2DParticleGroup'
+        Source = '00/b4/CEnginePrimitiveManager2DParticleGroup_RenderPrimitive_00b4b6b0.cpp'
+        TestSource = '00/b4/CEnginePrimitiveManager2DParticleGroup_RenderPrimitive_00b4b6b0_test.cpp'
+        PassPattern = 'OK_00b4b6b0'
+    }
+    [pscustomobject]@{
+        Address = '00bb18d0'
+        Module = 'CEnginePrimitiveManager2DSprites'
+        Source = '00/bb/CEnginePrimitiveManager2DSprites_RenderPrimitive_00bb18d0.cpp'
+        TestSource = '00/bb/CEnginePrimitiveManager2DSprites_RenderPrimitive_00bb18d0_test.cpp'
+        PassPattern = 'OK_00bb18d0'
+    }
+    [pscustomobject]@{
+        Address = '00bbf370'
+        Module = 'CEnginePrimitiveManagerParticleSpriteGroup'
+        Source = '00/bb/CEnginePrimitiveManagerParticleSpriteGroup_RenderPrimitive_00bbf370.cpp'
+        TestSource = '00/bb/CEnginePrimitiveManagerParticleSpriteGroup_RenderPrimitive_00bbf370_test.cpp'
+        PassPattern = 'OK_00bbf370'
+    }
+    [pscustomobject]@{
+        Address = '00bc2470'
+        Module = 'CEnginePrimitiveManagerParticleMeshGroup'
+        Source = '00/bc/CEnginePrimitiveManagerParticleMeshGroup_RenderPrimitive_00bc2470.cpp'
+        TestSource = '00/bc/CEnginePrimitiveManagerParticleMeshGroup_RenderPrimitive_00bc2470_test.cpp'
+        PassPattern = 'OK_00bc2470'
+    }
+    [pscustomobject]@{
+        Address = '00bc3e00'
+        Module = 'CEnginePrimitiveManagerParticleLineGroup'
+        Source = '00/bc/CEnginePrimitiveManagerParticleLineGroup_RenderPrimitive_00bc3e00.cpp'
+        TestSource = '00/bc/CEnginePrimitiveManagerParticleLineGroup_RenderPrimitive_00bc3e00_test.cpp'
+        PassPattern = 'OK_00bc3e00'
+    }
+    [pscustomobject]@{
+        Address = '00bcdf10'
+        Module = 'CEnginePrimitiveManagerFlareSprites'
+        Source = '00/bc/CEnginePrimitiveManagerFlareSprites_RenderPrimitive_00bcdf10.cpp'
+        TestSource = '00/bc/CEnginePrimitiveManagerFlareSprites_RenderPrimitive_00bcdf10_test.cpp'
+        PassPattern = 'OK_00bcdf10'
+    }
+    [pscustomobject]@{
+        Address = '00b9d060'
+        Module = 'CEngineInternalPrimitive2DStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitive2DStaticMesh_IsInsideFrustum_00b9d060.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitive2DStaticMesh_IsInsideFrustum_00b9d060_test.cpp'
+        PassPattern = 'OK_00b9d060'
+    }
+    [pscustomobject]@{
+        Address = '00bcea40'
+        Module = 'CEngineInternalPrimitive2DAnimatedMesh'
+        Source = '00/bc/CEngineInternalPrimitive2DAnimatedMesh_IsInsideFrustum_00bcea40.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitive2DAnimatedMesh_IsInsideFrustum_00bcea40_test.cpp'
+        PassPattern = 'OK_00bcea40'
+    }
+    [pscustomobject]@{
+        Address = '00bd93c0'
+        Module = 'CEngineInternalPrimitiveAnimatedMesh'
+        Source = '00/bd/CEngineInternalPrimitiveAnimatedMesh_PeekRenderInfoMeshBase_00bd93c0.cpp'
+        TestSource = '00/bd/CEngineInternalPrimitiveAnimatedMesh_PeekRenderInfoMeshBase_00bd93c0_test.cpp'
+        PassPattern = 'OK_00bd93c0'
+    }
+    [pscustomobject]@{
+        Address = '00bd9820'
+        Module = 'CEngineInternalPrimitive2DMorphedAnimatedMesh'
+        Source = '00/bd/CEngineInternalPrimitive2DMorphedAnimatedMesh_GetMorphInfo_00bd9820.cpp'
+        TestSource = '00/bd/CEngineInternalPrimitive2DMorphedAnimatedMesh_GetMorphInfo_00bd9820_test.cpp'
+        PassPattern = 'OK_00bd9820'
+    }
+    [pscustomobject]@{
+        Address = '00bd9a30'
+        Module = 'CEngineInternalPrimitiveMorphedAnimatedMesh'
+        Source = '00/bd/CEngineInternalPrimitiveMorphedAnimatedMesh_GetMorphInfo_00bd9a30.cpp'
+        TestSource = '00/bd/CEngineInternalPrimitiveMorphedAnimatedMesh_GetMorphInfo_00bd9a30_test.cpp'
+        PassPattern = 'OK_00bd9a30'
+    }
+    [pscustomobject]@{
+        Address = '00bb16e0'
+        Module = 'CEngineInternalPrimitive2DStaticMesh'
+        Source = '00/bb/CEngineInternalPrimitive2DStaticMesh_GetWorldPosition_00bb16e0.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitive2DStaticMesh_GetWorldPosition_00bb16e0_test.cpp'
+        PassPattern = 'OK_00bb16e0'
+    }
 )
 
 $requestedAddresses = @(
