@@ -75785,6 +75785,13 @@ $catalog = @(
         CompilerFlags = '/O1 /Oy- /W3'
         PassPattern = 'INITWORLD_OK'
     }
+    [pscustomobject]@{
+        Address = '00a76340'
+        Module = '_global'
+        Source = '00/a7/global_SetBlockedNode_00a76340.cpp'
+        TestSource = '00/a7/global_SetBlockedNode_00a76340_test.cpp'
+        PassPattern = 'OK_00a76340'
+    }
 )
 
 $requestedAddresses = @(
