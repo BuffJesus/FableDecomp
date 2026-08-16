@@ -74895,6 +74895,90 @@ $catalog = @(
         TestSource = '00/f3/EnableNavigator_EnableNavigator_00f359f0_test.cpp'
         PassPattern = 'OK_00f359f0'
     }
+    [pscustomobject]@{
+        Address = '0051e490'
+        Module = 'CountReferences'
+        Source = '00/51/CountReferences_CountReferences_0051e490.cpp'
+        TestSource = '00/51/CountReferences_CountReferences_0051e490_test.cpp'
+        PassPattern = 'OK_0051e490'
+    }
+    [pscustomobject]@{
+        Address = '00765d90'
+        Module = 'CountReferences'
+        Source = '00/76/CountReferences_CountReferences_00765d90.cpp'
+        TestSource = '00/76/CountReferences_CountReferences_00765d90_test.cpp'
+        PassPattern = 'OK_00765d90'
+    }
+    [pscustomobject]@{
+        Address = '0078bed0'
+        Module = 'CountReferences'
+        Source = '00/78/CountReferences_CountReferences_0078bed0.cpp'
+        TestSource = '00/78/CountReferences_CountReferences_0078bed0_test.cpp'
+        PassPattern = 'OK_0078bed0'
+    }
+    [pscustomobject]@{
+        Address = '0078bee0'
+        Module = 'CountReferences'
+        Source = '00/78/CountReferences_CountReferences_0078bee0.cpp'
+        TestSource = '00/78/CountReferences_CountReferences_0078bee0_test.cpp'
+        PassPattern = 'OK_0078bee0'
+    }
+    [pscustomobject]@{
+        Address = '0079a610'
+        Module = 'CountReferences'
+        Source = '00/79/CountReferences_CountReferences_0079a610.cpp'
+        TestSource = '00/79/CountReferences_CountReferences_0079a610_test.cpp'
+        PassPattern = 'OK_0079a610'
+    }
+    [pscustomobject]@{
+        Address = '007eac00'
+        Module = 'CountReferences'
+        Source = '00/7e/CountReferences_CountReferences_007eac00.cpp'
+        TestSource = '00/7e/CountReferences_CountReferences_007eac00_test.cpp'
+        PassPattern = 'OK_007eac00'
+    }
+    [pscustomobject]@{
+        Address = '007fde60'
+        Module = 'CountReferences'
+        Source = '00/7f/CountReferences_CountReferences_007fde60.cpp'
+        TestSource = '00/7f/CountReferences_CountReferences_007fde60_test.cpp'
+        PassPattern = 'OK_007fde60'
+    }
+    [pscustomobject]@{
+        Address = '008b0660'
+        Module = 'CCombatSequenceGeneric'
+        Source = '00/8b/CCombatSequenceGeneric_GetZone_008b0660.cpp'
+        TestSource = '00/8b/CCombatSequenceGeneric_GetZone_008b0660_test.cpp'
+        PassPattern = 'OK_008b0660'
+    }
+    [pscustomobject]@{
+        Address = '008b0670'
+        Module = 'CCombatSequenceGeneric'
+        Source = '00/8b/CCombatSequenceGeneric_GetCombatSequenceType_008b0670.cpp'
+        TestSource = '00/8b/CCombatSequenceGeneric_GetCombatSequenceType_008b0670_test.cpp'
+        PassPattern = 'OK_008b0670'
+    }
+    [pscustomobject]@{
+        Address = '008b0680'
+        Module = 'CCombatSequenceGeneric'
+        Source = '00/8b/CCombatSequenceGeneric_GetCombatSequenceInterruptionType_008b0680.cpp'
+        TestSource = '00/8b/CCombatSequenceGeneric_GetCombatSequenceInterruptionType_008b0680_test.cpp'
+        PassPattern = 'OK_008b0680'
+    }
+    [pscustomobject]@{
+        Address = '00a47100'
+        Module = 'CountReferences'
+        Source = '00/a4/CountReferences_CountReferences_00a47100.cpp'
+        TestSource = '00/a4/CountReferences_CountReferences_00a47100_test.cpp'
+        PassPattern = 'OK_00a47100'
+    }
+    [pscustomobject]@{
+        Address = '00c8f050'
+        Module = 'CountReferences'
+        Source = '00/c8/CountReferences_CountReferences_00c8f050.cpp'
+        TestSource = '00/c8/CountReferences_CountReferences_00c8f050_test.cpp'
+        PassPattern = 'OK_00c8f050'
+    }
 )
 
 $requestedAddresses = @(
