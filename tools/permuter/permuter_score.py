@@ -160,13 +160,59 @@ def score_source(cpp: Path, addr: str, name: str | None = None,
             "retail": len(retail), "prefix": prefix}
 
 
+# Known QFE-4035-gated fixtures: (addr, source file, leaf). RTM 3077 cannot byte-match
+# these; the 13.10.4035 toolset should. See docs/QFE4035_COMPILER_GATE.md.
+QFE_FIXTURES = [
+    ("00643e09", "isactive.cpp",    "IsActive"),
+    ("00643e2e", "setasactive.cpp", "SetAsActive"),
+    ("0042f75e", "init.cpp",        "FrontendInit"),
+]
+
+
+def selfcheck(qfe: bool) -> int:
+    """Score the known QFE-gated trio under RTM (and, if --qfe, the 4035 toolset) and
+    report which now byte-match. Used to verify a fresh 13.10.4035 drop-in."""
+    fixdir = ROOT / "tools" / "permuter" / "examples" / "qfe"
+    oracle = fixdir / "oracle.tsv"
+    if qfe:
+        clexe, _ = resolve_toolset(True)  # fail loudly early if absent
+        print(f"[toolset] QFE-4035: {clexe}")
+    hdr = f"{'addr':10} {'name':14} {'RTM 3077':22}"
+    if qfe:
+        hdr += f" {'QFE 4035':22}"
+    print(hdr)
+    matched = 0
+    for addr, fname, leaf in QFE_FIXTURES:
+        cpp = fixdir / fname
+        rtm = score_source(cpp, addr, leaf, oracle, qfe=False)
+        row = f"{addr:10} {leaf:14} {rtm['status']}({rtm.get('built')}v{rtm.get('retail')})".ljust(46)
+        if qfe:
+            q = score_source(cpp, addr, leaf, oracle, qfe=True)
+            tag = f"{q['status']}({q.get('built')}v{q.get('retail')})"
+            row += f" {tag}"
+            if q["status"] in ("MATCH", "RELOCATION_MATCH"):
+                matched += 1
+        print(row)
+    if qfe:
+        print(f"\nQFE-4035 matched {matched}/{len(QFE_FIXTURES)} fixtures")
+        return 0 if matched == len(QFE_FIXTURES) else 1
+    print("\n(run with --qfe once the 13.10.4035 toolset is installed to see it close these)")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("addr"); ap.add_argument("cpp", type=Path)
+    ap.add_argument("addr", nargs="?"); ap.add_argument("cpp", nargs="?", type=Path)
     ap.add_argument("--oracle", type=Path, default=DEFAULT_ORACLE)
     ap.add_argument("--name", default=None)
     ap.add_argument("--qfe", action="store_true", help="compile with the 13.10.4035 QFE toolset")
+    ap.add_argument("--selfcheck", action="store_true",
+                    help="score the known QFE-gated fixture trio and report matches")
     a = ap.parse_args()
+    if a.selfcheck:
+        return selfcheck(a.qfe)
+    if not a.addr or not a.cpp:
+        ap.error("addr and cpp are required (unless --selfcheck)")
     r = score_source(a.cpp, a.addr, a.name, a.oracle, qfe=a.qfe)
     print(r)
     return 0 if r["status"] in ("MATCH", "RELOCATION_MATCH") else 1
