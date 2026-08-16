@@ -73936,6 +73936,132 @@ $catalog = @(
         TestSource = '00/bb/CEngineInternalPrimitive2DStaticMesh_GetWorldPosition_00bb16e0_test.cpp'
         PassPattern = 'OK_00bb16e0'
     }
+    [pscustomobject]@{
+        Address = '004df3e6'
+        Module = 'CObstacleNavigatorExternalInterface'
+        Source = '00/4d/CObstacleNavigatorExternalInterface_GetNavigationLevelAt_004df3e6.cpp'
+        TestSource = '00/4d/CObstacleNavigatorExternalInterface_GetNavigationLevelAt_004df3e6_test.cpp'
+        PassPattern = 'OK_00b38810'
+    }
+    [pscustomobject]@{
+        Address = '00692590'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_GetWeaponTrailUsedInStrikeAction_00692590.cpp'
+        TestSource = '00/69/CCreatureActionBase_GetWeaponTrailUsedInStrikeAction_00692590_test.cpp'
+        PassPattern = 'OK_00b38810'
+    }
+    [pscustomobject]@{
+        Address = '0081e220'
+        Module = 'CIDrawMap'
+        Source = '00/81/CIDrawMap_DrawGetEngineThemeAt_0081e220.cpp'
+        TestSource = '00/81/CIDrawMap_DrawGetEngineThemeAt_0081e220_test.cpp'
+        PassPattern = 'OK_00b4b6b0'
+    }
+    [pscustomobject]@{
+        Address = '0081e230'
+        Module = 'CIDrawMap'
+        Source = '00/81/CIDrawMap_DrawGetEngineBlendAt_0081e230.cpp'
+        TestSource = '00/81/CIDrawMap_DrawGetEngineBlendAt_0081e230_test.cpp'
+        PassPattern = 'OK_00b38820'
+    }
+    [pscustomobject]@{
+        Address = '009a0b20'
+        Module = 'CFontBank'
+        Source = '00/9a/CFontBank_Preload_009a0b20.cpp'
+        TestSource = '00/9a/CFontBank_Preload_009a0b20_test.cpp'
+        PassPattern = 'OK_00b9d060'
+    }
+    [pscustomobject]@{
+        Address = '009cbc40'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_IsDiskFile_009cbc40.cpp'
+        TestSource = '00/9c/CBankFile_IsDiskFile_009cbc40_test.cpp'
+        PassPattern = 'OK_00b9d060'
+    }
+    [pscustomobject]@{
+        Address = '00a03a40'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a0/CHandleBasedMemoryPool_CanMoveResource_00a03a40.cpp'
+        TestSource = '00/a0/CHandleBasedMemoryPool_CanMoveResource_00a03a40_test.cpp'
+        PassPattern = 'OK_00b9d060'
+    }
+    [pscustomobject]@{
+        Address = '00a18ef0'
+        Module = 'CNavigatorFlyer'
+        Source = '00/a1/CNavigatorFlyer_GetNearestNavigablePosTo_00a18ef0.cpp'
+        TestSource = '00/a1/CNavigatorFlyer_GetNearestNavigablePosTo_00a18ef0_test.cpp'
+        PassPattern = 'OK_00b38820'
+    }
+    [pscustomobject]@{
+        Address = '00a18f10'
+        Module = 'CNavigatorFlyer'
+        Source = '00/a1/CNavigatorFlyer_IsNewDestinationGoingToCauseRestart_00a18f10.cpp'
+        TestSource = '00/a1/CNavigatorFlyer_IsNewDestinationGoingToCauseRestart_00a18f10_test.cpp'
+        PassPattern = 'OK_00b9d060'
+    }
+    [pscustomobject]@{
+        Address = '00ab7910'
+        Module = 'CJoystickDX'
+        Source = '00/ab/CJoystickDX_GetRumbleWithID_00ab7910.cpp'
+        TestSource = '00/ab/CJoystickDX_GetRumbleWithID_00ab7910_test.cpp'
+        PassPattern = 'OK_00b38810'
+    }
+    [pscustomobject]@{
+        Address = '00ab7920'
+        Module = 'CJoystickDX'
+        Source = '00/ab/CJoystickDX_PeekRumbleWithID_00ab7920.cpp'
+        TestSource = '00/ab/CJoystickDX_PeekRumbleWithID_00ab7920_test.cpp'
+        PassPattern = 'OK_00b38810'
+    }
+    [pscustomobject]@{
+        Address = '00b23350'
+        Module = 'CIEngine'
+        Source = '00/b2/CIEngine_CheckPrimitiveVisibility_00b23350.cpp'
+        TestSource = '00/b2/CIEngine_CheckPrimitiveVisibility_00b23350_test.cpp'
+        PassPattern = 'OK_00b9d060'
+    }
+    [pscustomobject]@{
+        Address = '00b233c0'
+        Module = 'CIEngine'
+        Source = '00/b2/CIEngine_AddChildPrimitive_00b233c0.cpp'
+        TestSource = '00/b2/CIEngine_AddChildPrimitive_00b233c0_test.cpp'
+        PassPattern = 'OK_00b4b6b0'
+    }
+    [pscustomobject]@{
+        Address = '00b23450'
+        Module = 'CIEngine'
+        Source = '00/b2/CIEngine_GetEditorAnimation_00b23450.cpp'
+        TestSource = '00/b2/CIEngine_GetEditorAnimation_00b23450_test.cpp'
+        PassPattern = 'OK_00b38810'
+    }
+    [pscustomobject]@{
+        Address = '00b23460'
+        Module = 'CIEngine'
+        Source = '00/b2/CIEngine_AddCustomMorphTexture_00b23460.cpp'
+        TestSource = '00/b2/CIEngine_AddCustomMorphTexture_00b23460_test.cpp'
+        PassPattern = 'OK_00b8fd90'
+    }
+    [pscustomobject]@{
+        Address = '00b23490'
+        Module = 'CIEngine'
+        Source = '00/b2/CIEngine_IsStaticMapNeedingUpdate_00b23490.cpp'
+        TestSource = '00/b2/CIEngine_IsStaticMapNeedingUpdate_00b23490_test.cpp'
+        PassPattern = 'OK_00b38820'
+    }
+    [pscustomobject]@{
+        Address = '00b23d90'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_IsStaticMapNeedingUpdate_00b23d90.cpp'
+        TestSource = '00/b2/CEngine_IsStaticMapNeedingUpdate_00b23d90_test.cpp'
+        PassPattern = 'OK_00b38820'
+    }
+    [pscustomobject]@{
+        Address = '00ca8090'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/ca/CEngineInternalPrimitiveBase_AddChildPrimitive_00ca8090.cpp'
+        TestSource = '00/ca/CEngineInternalPrimitiveBase_AddChildPrimitive_00ca8090_test.cpp'
+        PassPattern = 'OK_00b38810'
+    }
 )
 
 $requestedAddresses = @(
