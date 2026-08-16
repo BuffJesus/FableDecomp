@@ -74307,6 +74307,265 @@ $catalog = @(
         TestSource = '00/a1/CNavigatorBase_Interrupt_00a19ad0_test.cpp'
         PassPattern = 'OK_00a19ad0'
     }
+    [pscustomobject]@{
+        Address = '00405d30'
+        Module = 'CMemoryFile'
+        Source = '00/40/CMemoryFile_IsOpen_00405d30.cpp'
+        TestSource = '00/40/CMemoryFile_IsOpen_00405d30_test.cpp'
+        PassPattern = 'OK_00405d30'
+    }
+    [pscustomobject]@{
+        Address = '00625930'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/62/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_00625930.cpp'
+        TestSource = '00/62/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_00625930_test.cpp'
+        PassPattern = 'OK_00625930'
+    }
+    [pscustomobject]@{
+        Address = '00625940'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/62/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_00625940.cpp'
+        TestSource = '00/62/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_00625940_test.cpp'
+        PassPattern = 'OK_00625940'
+    }
+    [pscustomobject]@{
+        Address = '006925a0'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/69/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_006925a0.cpp'
+        TestSource = '00/69/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_006925a0_test.cpp'
+        PassPattern = 'OK_006925a0'
+    }
+    [pscustomobject]@{
+        Address = '007331e0'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/73/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_007331e0.cpp'
+        TestSource = '00/73/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_007331e0_test.cpp'
+        PassPattern = 'OK_007331e0'
+    }
+    [pscustomobject]@{
+        Address = '00744430'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/74/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_00744430.cpp'
+        TestSource = '00/74/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_00744430_test.cpp'
+        PassPattern = 'OK_00744430'
+    }
+    [pscustomobject]@{
+        Address = '0074db70'
+        Module = 'CCreatureAction_RiseUp'
+        Source = '00/74/CCreatureActionRiseUp_IsToFaceTargetAtStart_0074db70.cpp'
+        TestSource = '00/74/CCreatureActionRiseUp_IsToFaceTargetAtStart_0074db70_test.cpp'
+        PassPattern = 'OK_0074db70'
+    }
+    [pscustomobject]@{
+        Address = '0074dce0'
+        Module = 'CCreatureAction_UndeadRiseUp'
+        Source = '00/74/CCreatureActionUndeadRiseUp_IsToEvadeAllHits_0074dce0.cpp'
+        TestSource = '00/74/CCreatureActionUndeadRiseUp_IsToEvadeAllHits_0074dce0_test.cpp'
+        PassPattern = 'OK_0074dce0'
+    }
+    [pscustomobject]@{
+        Address = '007bed60'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/7b/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_007bed60.cpp'
+        TestSource = '00/7b/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_007bed60_test.cpp'
+        PassPattern = 'OK_007bed60'
+    }
+    [pscustomobject]@{
+        Address = '007bed70'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/7b/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_007bed70.cpp'
+        TestSource = '00/7b/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_007bed70_test.cpp'
+        PassPattern = 'OK_007bed70'
+    }
+    [pscustomobject]@{
+        Address = '007bed80'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/7b/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_007bed80.cpp'
+        TestSource = '00/7b/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_007bed80_test.cpp'
+        PassPattern = 'OK_007bed80'
+    }
+    [pscustomobject]@{
+        Address = '008263f0'
+        Module = 'CCachedFile'
+        Source = '00/82/CCachedFile_IsOpen_008263f0.cpp'
+        TestSource = '00/82/CCachedFile_IsOpen_008263f0_test.cpp'
+        PassPattern = 'OK_008263f0'
+    }
+    [pscustomobject]@{
+        Address = '00842720'
+        Module = 'CCreatureAction_PlayAnimation'
+        Source = '00/84/CCreatureActionPlayAnimation_IsMovementUsingPhysics_00842720.cpp'
+        TestSource = '00/84/CCreatureActionPlayAnimation_IsMovementUsingPhysics_00842720_test.cpp'
+        PassPattern = 'OK_00842720'
+    }
+    [pscustomobject]@{
+        Address = '00842730'
+        Module = 'CCreatureAction_PlayAnimation'
+        Source = '00/84/CCreatureActionPlayAnimation_IsUsingAnimationMovement_00842730.cpp'
+        TestSource = '00/84/CCreatureActionPlayAnimation_IsUsingAnimationMovement_00842730_test.cpp'
+        PassPattern = 'OK_00842730'
+    }
+    [pscustomobject]@{
+        Address = '00842a10'
+        Module = 'CCreatureAction_ActivateQuest'
+        Source = '00/84/CCreatureActionActivateQuest_IsActionReadyForInterruption_00842a10.cpp'
+        TestSource = '00/84/CCreatureActionActivateQuest_IsActionReadyForInterruption_00842a10_test.cpp'
+        PassPattern = 'OK_00842a10'
+    }
+    [pscustomobject]@{
+        Address = '0084a840'
+        Module = 'CCreatureAction_PlayAnimation'
+        Source = '00/84/CCreatureActionPlayAnimation_IsAllowingAnimationMovementToMoveSpeakAndWaitCam_0084a840.cpp'
+        TestSource = '00/84/CCreatureActionPlayAnimation_IsAllowingAnimationMovementToMoveSpeakAndWaitCam_0084a840_test.cpp'
+        PassPattern = 'OK_0084a840'
+    }
+    [pscustomobject]@{
+        Address = '0084a860'
+        Module = 'CCreatureAction_PlayIntoLoopOutOfAnimation'
+        Source = '00/84/CCreatureActionPlayIntoLoopOutOfAnimation_IsUsingAnimationMovement_0084a860.cpp'
+        TestSource = '00/84/CCreatureActionPlayIntoLoopOutOfAnimation_IsUsingAnimationMovement_0084a860_test.cpp'
+        PassPattern = 'OK_0084a860'
+    }
+    [pscustomobject]@{
+        Address = '00855d50'
+        Module = 'CCreatureAction_BlockRespond'
+        Source = '00/85/CCreatureActionBlockRespond_IsToFaceTargetAtStart_00855d50.cpp'
+        TestSource = '00/85/CCreatureActionBlockRespond_IsToFaceTargetAtStart_00855d50_test.cpp'
+        PassPattern = 'OK_00855d50'
+    }
+    [pscustomobject]@{
+        Address = '0088e9e0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_IsInMovieSequence_0088e9e0.cpp'
+        TestSource = '00/88/CGameScriptInterface_IsInMovieSequence_0088e9e0_test.cpp'
+        PassPattern = 'OK_0088e9e0'
+    }
+    [pscustomobject]@{
+        Address = '008b8660'
+        Module = 'CCreatureAction_PlayCombatAnimation'
+        Source = '00/8b/CCreatureActionPlayCombatAnimation_IsToFaceTarget_008b8660.cpp'
+        TestSource = '00/8b/CCreatureActionPlayCombatAnimation_IsToFaceTarget_008b8660_test.cpp'
+        PassPattern = 'OK_008b8660'
+    }
+    [pscustomobject]@{
+        Address = '008b8670'
+        Module = 'CCreatureAction_PlayCombatAnimation'
+        Source = '00/8b/CCreatureActionPlayCombatAnimation_IsMovementUsingPhysics_008b8670.cpp'
+        TestSource = '00/8b/CCreatureActionPlayCombatAnimation_IsMovementUsingPhysics_008b8670_test.cpp'
+        PassPattern = 'OK_008b8670'
+    }
+    [pscustomobject]@{
+        Address = '008b8680'
+        Module = 'CCreatureAction_PlayCombatAnimation'
+        Source = '00/8b/CCreatureActionPlayCombatAnimation_IsAlwaysUseAnimationMovement_008b8680.cpp'
+        TestSource = '00/8b/CCreatureActionPlayCombatAnimation_IsAlwaysUseAnimationMovement_008b8680_test.cpp'
+        PassPattern = 'OK_008b8680'
+    }
+    [pscustomobject]@{
+        Address = '008c9610'
+        Module = 'CCreatureAction_BanditKingUnstuck'
+        Source = '00/8c/CCreatureActionBanditKingUnstuck_IsKnockdownStrike_008c9610.cpp'
+        TestSource = '00/8c/CCreatureActionBanditKingUnstuck_IsKnockdownStrike_008c9610_test.cpp'
+        PassPattern = 'OK_008c9610'
+    }
+    [pscustomobject]@{
+        Address = '008f55f0'
+        Module = 'CCreatureAction_DragonFlight'
+        Source = '00/8f/CCreatureActionDragonFlight_IsToFaceTarget_008f55f0.cpp'
+        TestSource = '00/8f/CCreatureActionDragonFlight_IsToFaceTarget_008f55f0_test.cpp'
+        PassPattern = 'OK_008f55f0'
+    }
+    [pscustomobject]@{
+        Address = '008fe87c'
+        Module = 'CAIStateGroup_ApprenticeHero'
+        Source = '00/8f/CAIStateGroupApprenticeHero_IsTimingCritical_008fe87c.cpp'
+        TestSource = '00/8f/CAIStateGroupApprenticeHero_IsTimingCritical_008fe87c_test.cpp'
+        PassPattern = 'OK_008fe87c'
+    }
+    [pscustomobject]@{
+        Address = '00902f92'
+        Module = 'CAIStateGroup_CreatureUseCoverBase'
+        Source = '00/90/CAIStateGroupCreatureUseCoverBase_IsTimingCritical_00902f92.cpp'
+        TestSource = '00/90/CAIStateGroupCreatureUseCoverBase_IsTimingCritical_00902f92_test.cpp'
+        PassPattern = 'OK_00902f92'
+    }
+    [pscustomobject]@{
+        Address = '0090313b'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/90/CAIStateGroupHoverHornetQueen_IsTimingCritical_0090313b.cpp'
+        TestSource = '00/90/CAIStateGroupHoverHornetQueen_IsTimingCritical_0090313b_test.cpp'
+        PassPattern = 'OK_0090313b'
+    }
+    [pscustomobject]@{
+        Address = '00905320'
+        Module = 'CScriptGameResourceObjectScriptedThing'
+        Source = '00/90/CScriptGameResourceObjectScriptedThing_IsNull_00905320.cpp'
+        TestSource = '00/90/CScriptGameResourceObjectScriptedThing_IsNull_00905320_test.cpp'
+        PassPattern = 'OK_00905320'
+    }
+    [pscustomobject]@{
+        Address = '0097d0e0'
+        Module = 'CCreatureAction_VillagerAttackKnockdown'
+        Source = '00/97/CCreatureActionVillagerAttackKnockdown_IsBlockable_0097d0e0.cpp'
+        TestSource = '00/97/CCreatureActionVillagerAttackKnockdown_IsBlockable_0097d0e0_test.cpp'
+        PassPattern = 'OK_0097d0e0'
+    }
+    [pscustomobject]@{
+        Address = '009a4fb0'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/9a/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_009a4fb0.cpp'
+        TestSource = '00/9a/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_009a4fb0_test.cpp'
+        PassPattern = 'OK_009a4fb0'
+    }
+    [pscustomobject]@{
+        Address = '009a4fc0'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/9a/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_009a4fc0.cpp'
+        TestSource = '00/9a/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_009a4fc0_test.cpp'
+        PassPattern = 'OK_009a4fc0'
+    }
+    [pscustomobject]@{
+        Address = '009a4fd0'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/9a/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_009a4fd0.cpp'
+        TestSource = '00/9a/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_009a4fd0_test.cpp'
+        PassPattern = 'OK_009a4fd0'
+    }
+    [pscustomobject]@{
+        Address = '009a4fe0'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/9a/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_009a4fe0.cpp'
+        TestSource = '00/9a/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_009a4fe0_test.cpp'
+        PassPattern = 'OK_009a4fe0'
+    }
+    [pscustomobject]@{
+        Address = '009a4ff0'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/9a/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_009a4ff0.cpp'
+        TestSource = '00/9a/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_009a4ff0_test.cpp'
+        PassPattern = 'OK_009a4ff0'
+    }
+    [pscustomobject]@{
+        Address = '009c32b0'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/9c/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_009c32b0.cpp'
+        TestSource = '00/9c/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_009c32b0_test.cpp'
+        PassPattern = 'OK_009c32b0'
+    }
+    [pscustomobject]@{
+        Address = '00a73ce0'
+        Module = 'GetCanItemBeQuickAssigned'
+        Source = '00/a7/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_00a73ce0.cpp'
+        TestSource = '00/a7/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_00a73ce0_test.cpp'
+        PassPattern = 'OK_00a73ce0'
+    }
+    [pscustomobject]@{
+        Address = '00a75a90'
+        Module = 'CNavNavigableLeafNode'
+        Source = '00/a7/CNavNavigableLeafNode_GetPreferabilityCost_00a75a90.cpp'
+        TestSource = '00/a7/CNavNavigableLeafNode_GetPreferabilityCost_00a75a90_test.cpp'
+        PassPattern = 'OK_00a75a90'
+    }
 )
 
 $requestedAddresses = @(
