@@ -8684,8 +8684,20 @@ USER-driven debugger work and unchanged).
 - Gates green: CANDIDATE_BUILD PASS objects=1513, comparer 0 differing among them,
   VISUAL_BOOT_CHECKPOINT PASS.
 
+### Fifth pass: whole-manifest family sweep — 924 more (bakes 254 → 238)
+- New `tools/decomp_pipeline/crawl/harvest_all.py` groups EVERY manifest row by (trimmed length,
+  call-masked skeleton) and lands the un-landed members of any family that already has a genuine
+  landed source (never a `_emit` bake). One pass: **858 landed** across 178 families; a second
+  pass came back dry, so the veins are drained at the current template set.
+- Hand-authored: `_Dest_val`+vecdel 73B (+43 family), list `Destroy` 62B, `~vector<T>` 50B,
+  `CCharString` pool-assign, `OnDie`, and **`UpdateShadowScene`** — the last of the original
+  DEFER list. Same lesson as the `_Dest_val` class: it was a modelling gap (`#pragma optimize("s")`
+  + caching the loop bound in a local), not a compiler-permutation problem.
+- Gates: CANDIDATE_BUILD PASS objects=921; 93 MATCH + 828 RELOCATION_MATCH, 0 differing;
+  VISUAL_BOOT_CHECKPOINT PASS.
+
 ### Next in this lane
-1. 254 bakes in 228 families, largest family 7. Roughly one authoring job each.
+1. 238 bakes in 222 families, largest family 7. Roughly one authoring job each.
 2. `004193a0` (`DeleteData`, 36B ×3) is an OVER-CAPTURED manifest row (a `ret 4` then a second
    unlisted 13B function, no `0xCC` between) — needs `trim_overcapture.py` or a 2-function land.
 3. `00431020`/`00431242` (`UpdateShadowScene`) still diverge per instance.

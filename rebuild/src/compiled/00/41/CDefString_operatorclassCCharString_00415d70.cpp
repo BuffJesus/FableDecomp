@@ -1,31 +1,12 @@
-extern "C" __declspec(naked) void cand_00415d70(void)
-{
-    __asm
-    {
-        _emit 0x8b
-        _emit 0x01
-        _emit 0x56
-        _emit 0x8b
-        _emit 0x74
-        _emit 0x24
-        _emit 0x08
-        _emit 0x50
-        _emit 0x56
-        _emit 0xb9
-        _emit 0x28
-        _emit 0xa8
-        _emit 0x3c
-        _emit 0x01
-        _emit 0xe8
-        _emit 0x2d
-        _emit 0xec
-        _emit 0x5b
-        _emit 0x00
-        _emit 0x8b
-        _emit 0xc6
-        _emit 0x5e
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-    }
+// Hand (dst, this->data) to a fixed global helper object (0x013CA828) and return dst.
+// __fastcall this=ecx, dst=stack (ret 4).
+struct Pool { void Assign(void* dst, void* src); };
+extern Pool g_pool;
+struct CCharString {
+    void* data;
+    void* AssignTo(void* dst);
+};
+void* CCharString::AssignTo(void* dst) {
+    g_pool.Assign(dst, this->data);
+    return dst;
 }

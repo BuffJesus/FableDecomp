@@ -1,68 +1,17 @@
-extern "C" __declspec(naked) void cand_0043fcf0(void)
-{
-    __asm
-    {
-        _emit 0x56
-        _emit 0x57
-        _emit 0x8B
-        _emit 0xF9
-        _emit 0x8B
-        _emit 0x07
-        _emit 0x8B
-        _emit 0x30
-        _emit 0x3B
-        _emit 0xF0
-        _emit 0x74
-        _emit 0x17
-        _emit 0x8D
-        _emit 0x64
-        _emit 0x24
-        _emit 0x00
-        _emit 0x8B
-        _emit 0xC6
-        _emit 0x8B
-        _emit 0x36
-        _emit 0x50
-        _emit 0xE8
-        _emit 0x0A
-        _emit 0xED
-        _emit 0x7B
-        _emit 0x00
-        _emit 0x8B
-        _emit 0x07
-        _emit 0x83
-        _emit 0xC4
-        _emit 0x04
-        _emit 0x3B
-        _emit 0xF0
-        _emit 0x75
-        _emit 0xED
-        _emit 0x8B
-        _emit 0x07
-        _emit 0x89
-        _emit 0x00
-        _emit 0x8B
-        _emit 0x07
-        _emit 0x89
-        _emit 0x40
-        _emit 0x04
-        _emit 0x8B
-        _emit 0x3F
-        _emit 0x85
-        _emit 0xFF
-        _emit 0x74
-        _emit 0x09
-        _emit 0x57
-        _emit 0xE8
-        _emit 0xEC
-        _emit 0xEC
-        _emit 0x7B
-        _emit 0x00
-        _emit 0x83
-        _emit 0xC4
-        _emit 0x04
-        _emit 0x5F
-        _emit 0x5E
-        _emit 0xC3
+// Circular-list teardown: free every node, re-point the sentinel at itself, then free
+// the sentinel. __fastcall this=ecx, no args.
+struct Node { Node* next; Node* prev; };
+struct List { Node* head; void Destroy(); };
+extern "C" void __cdecl Free2(void* p);   // 0x00bfea14
+void List::Destroy() {
+    Node* n = this->head->next;
+    while (n != this->head) {
+        Node* cur = n;
+        n = n->next;
+        Free2(cur);
     }
+    this->head->next = this->head;
+    this->head->prev = this->head;
+    Node* h = this->head;
+    if (h) Free2(h);
 }

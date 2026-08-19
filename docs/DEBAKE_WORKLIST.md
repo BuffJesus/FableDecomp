@@ -4,8 +4,8 @@
 `__declspec(naked)` `_emit` byte-bakes. Bakes are byte-exact oracles at best; they
 are not faithful reconstructions. See memory `byte-purity-policy` / `faithful-decomp-policy`.
 
-As of 2026-08-19 (fourth pass) the landed set is ~98% genuine: **254 baked** functions
-remain (696 on 2026-08-14 → 599 → 401 → 342 → 254). A family shares (length, call-masked skeleton), so
+As of 2026-08-19 (fifth pass) the landed set is ~98.3% genuine: **238 baked** functions
+remain (696 on 2026-08-14 → 599 → 401 → 342 → 254 → 238). A family shares (length, call-masked skeleton), so
 authoring ONE genuine head byte-exact lets `harvest_skeleton.py` / `debake_family.py`
 clone-sweep the rest as genuine RELOCATION_MATCH.
 
@@ -34,6 +34,40 @@ Result (each re-verified byte-exact by the harness, MATCH or RELOCATION_MATCH):
 Gates re-run after landing: `build_candidates.ps1 -Address <107>` → CANDIDATE_BUILD PASS
 objects=107; `compare_candidate_objects.py` → all 107 MATCH/RELOCATION_MATCH (0 differing);
 `build_bootstrap.ps1` → VISUAL_BOOT_CHECKPOINT PASS.
+
+## 2026-08-19 (fifth pass) — whole-manifest family sweep + the last DEFER falls
+
+New `tools/decomp_pipeline/crawl/harvest_all.py`: instead of harvesting one template at a
+time, it groups **every** manifest row by (trimmed length, call-masked skeleton), and for each
+group that already has a landed GENUINE source it emits the un-landed members as candidates
+with that source. It never propagates a `_emit` bake (the template source must be genuine).
+One pass landed **858** functions across 178 families; a second pass came back dry (2 DIFFERs),
+so the family veins are now drained at the current template set.
+
+Hand-authored this pass (all MATCH or RELOCATION_MATCH):
+
+| addr | function | model |
+|------|----------|-------|
+| 00436a20 | `_Dest_val` + vector-deleting-destructor (73B) | release slot, clear both words, `if(flags&1) Free1(this)`; +43 family |
+| 0043fcf0 | list `Destroy` (62B) | Clear loop, re-point sentinel, free sentinel |
+| 00431020 | **`UpdateShadowScene` (65B)** | profiled two-case switch with a zero-init local handle |
+| 004406d0 | `~vector<T>` (50B) | destroy each element via vtable slot 0 (stride 8), free block |
+| 00415d70 | `CCharString` assign-through-pool (25B) | `g_pool.Assign(dst, this->data); return dst;` |
+| 0041bd80 | `OnDie` (23B) | `if (p) { p->Cleanup(); Free1(p); }` |
+
+**`UpdateShadowScene` was the last of the original DEFER list** — "per-instance immediate
+divergence" was, like the `_Dest_val` class, a modelling gap: it needed `#pragma optimize("s")`
+plus caching the loop bound in a local (`~vector` likewise: cache `last`, or VC re-reads it).
+
+Round total 924 (921 landed + 3 that stayed unlanded as DIFFER). Gates: CANDIDATE_BUILD PASS
+objects=921; comparer 93 MATCH + 828 RELOCATION_MATCH, 0 differing; VISUAL_BOOT_CHECKPOINT PASS.
+
+### Still parked
+- `0042bf35` CopyBackBufferToTexture (25B ×7) — retail recomputes `lea eax,[ebp-1]` for both
+  out-params; VC7.1 CSEs it. Permuter.
+- `00429418` `_Find` (34B ×3) — retail re-reads `last` from the stack each iteration and keeps
+  the sret pointer in eax; hand models cache it. Permuter.
+- The 4 IAT thunks; the two `call;ret` void sub-object forwarders; the sret wrapper at 0042b6dc.
 
 ## 2026-08-19 (fourth pass) — ROW TRIMMING unlocks 1,513 landings
 

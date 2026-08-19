@@ -1,71 +1,34 @@
-extern "C" __declspec(naked) void F_00431020(void)
-{
-    __asm
-    {
-        _emit 0x55
-        _emit 0x8b
-        _emit 0xec
-        _emit 0x51
-        _emit 0x56
-        _emit 0x68
-        _emit 0x0e
-        _emit 0xd7
-        _emit 0x22
-        _emit 0x01
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0xe8
-        _emit 0xcf
-        _emit 0x34
-        _emit 0xfd
-        _emit 0xff
-        _emit 0x83
-        _emit 0x65
-        _emit 0xfc
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x46
-        _emit 0x18
-        _emit 0x48
-        _emit 0x48
-        _emit 0x74
-        _emit 0x12
-        _emit 0x48
-        _emit 0x75
-        _emit 0x1d
-        _emit 0x8b
-        _emit 0x45
-        _emit 0x08
-        _emit 0xff
-        _emit 0x30
-        _emit 0x8b
-        _emit 0x4e
-        _emit 0x28
-        _emit 0xe8
-        _emit 0x64
-        _emit 0x2e
-        _emit 0x56
-        _emit 0x00
-        _emit 0xeb
-        _emit 0x0e
-        _emit 0xff
-        _emit 0x75
-        _emit 0x08
-        _emit 0x8d
-        _emit 0x4d
-        _emit 0xfc
-        _emit 0xff
-        _emit 0x76
-        _emit 0x24
-        _emit 0xe8
-        _emit 0x44
-        _emit 0xe8
-        _emit 0xfd
-        _emit 0xff
-        _emit 0x5e
-        _emit 0xc9
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
+#pragma optimize("s",on)
+// Profiled two-case dispatch with a zero-initialised local handle.
+// __fastcall this=ecx, arg=stack (ret 4).
+struct Ctx { int value; };
+struct Sink { void Take(int value); };
+struct Handle {
+    int value;
+    void Fill(void* source, Ctx* arg);
+};
+#pragma pack(push,1)
+struct T {
+    char pad00[0x18];
+    int mode;
+    char pad1c[0x08];
+    void* source;    // this+0x24
+    Sink* sink;      // this+0x28
+    void UpdateShadowScene(Ctx* arg);
+};
+#pragma pack(pop)
+extern "C" void __stdcall BeginProfile(const char* tag);
+extern const char g_profileTag[];
+void T::UpdateShadowScene(Ctx* arg) {
+    BeginProfile(g_profileTag);
+    Handle local;
+    local.value = 0;
+    switch (this->mode) {
+    case 2:
+        local.Fill(this->source, arg);
+        break;
+    case 3:
+        this->sink->Take(arg->value);
+        break;
     }
 }
