@@ -1,15 +1,11 @@
-extern "C" __declspec(naked) void fn_00437d00(void) {
-    __asm {
-        _emit 0x8b
-        _emit 0x89
-        _emit 0x10
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0xe9
-        _emit 0x47
-        _emit 0x1c
-        _emit 0x21
-        _emit 0x00
-    }
-}
+// Forwarder to a member of the sub-object pointer at this+0x210. VC7.1 tail-calls
+// a void member->void member forward, so retail is `mov ecx,[ecx+d]; jmp rel32`.
+#pragma pack(push,1)
+struct Sub { void Run(); };
+struct T {
+    char pad[0x210];
+    Sub* sub;
+    void Run();
+};
+#pragma pack(pop)
+void T::Run() { this->sub->Run(); }

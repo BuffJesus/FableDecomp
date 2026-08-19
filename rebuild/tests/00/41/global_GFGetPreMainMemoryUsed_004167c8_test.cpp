@@ -1,6 +1,2 @@
 #include <stdio.h>
-int main()
-{
-    puts("PASS_004167c8");
-    return 0;
-}
+int main(void){ printf("PASS_004167c8\n"); return 0; }

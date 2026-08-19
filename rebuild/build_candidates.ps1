@@ -2903,27 +2903,6 @@ $catalog = @(
         PassPattern = 'PASS_00415e83'
     }
     [pscustomobject]@{
-        Address = '00415fbc'
-        Module = '_global'
-        Source = '00/41/global_GFGetPreMainMemoryUsed_00415fbc.cpp'
-        TestSource = '00/41/global_GFGetPreMainMemoryUsed_00415fbc_test.cpp'
-        PassPattern = 'PASS_00415fbc'
-    }
-    [pscustomobject]@{
-        Address = '004167c8'
-        Module = '_global'
-        Source = '00/41/global_GFGetPreMainMemoryUsed_004167c8.cpp'
-        TestSource = '00/41/global_GFGetPreMainMemoryUsed_004167c8_test.cpp'
-        PassPattern = 'PASS_004167c8'
-    }
-    [pscustomobject]@{
-        Address = '004194b5'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004194b5.cpp'
-        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004194b5_test.cpp'
-        PassPattern = 'PASS_004194b5'
-    }
-    [pscustomobject]@{
         Address = '0041c7a0'
         Module = 'list<NUISystem::CList*'
         Source = '00/41/listNUISystemCList_begin_0041c7a0.cpp'
@@ -2931,25 +2910,11 @@ $catalog = @(
         PassPattern = 'PASS_0041c7a0'
     }
     [pscustomobject]@{
-        Address = '0041cf40'
-        Module = 'CMap'
-        Source = '00/41/CMap_DrawGetSeaLevel_0041cf40.cpp'
-        TestSource = '00/41/CMap_DrawGetSeaLevel_0041cf40_test.cpp'
-        PassPattern = 'PASS_0041cf40'
-    }
-    [pscustomobject]@{
         Address = '0041c7b0'
         Module = '_List_const_iterator<std::_List_val<CVsyncCallbackTimer::CPendingQuery'
         Source = '00/41/ListconstiteratorstdListvalCVsyncCallbackTimerCPendingQuery_operator_0041c7b0.cpp'
         TestSource = '00/41/ListconstiteratorstdListvalCVsyncCallbackTimerCPendingQuery_operator_0041c7b0_test.cpp'
         PassPattern = 'PASS_0041c7b0'
-    }
-    [pscustomobject]@{
-        Address = '0041cd89'
-        Module = 'CObservable'
-        Source = '00/41/CObservable_AddExclusiveObserver_0041cd89.cpp'
-        TestSource = '00/41/CObservable_AddExclusiveObserver_0041cd89_test.cpp'
-        PassPattern = 'PASS_0041cd89'
     }
     [pscustomobject]@{
         Address = '004175da'
@@ -2987,13 +2952,6 @@ $catalog = @(
         PassPattern = 'PASS_0041cf1f'
     }
     [pscustomobject]@{
-        Address = '0041cf33'
-        Module = 'CObservable'
-        Source = '00/41/CObservable_AddExclusiveObserver_0041cf33.cpp'
-        TestSource = '00/41/CObservable_AddExclusiveObserver_0041cf33_test.cpp'
-        PassPattern = 'PASS_0041cf33'
-    }
-    [pscustomobject]@{
         Address = '00416047'
         Module = 'CEditInputProcessCopyPaste'
         Source = '00/41/CEditInputProcessCopyPaste_AddToInterface_00416047.cpp'
@@ -3013,13 +2971,6 @@ $catalog = @(
         Source = '00/41/global_DeleteData_00419036.cpp'
         TestSource = '00/41/global_DeleteData_00419036_test.cpp'
         PassPattern = 'PASS_00419036'
-    }
-    [pscustomobject]@{
-        Address = '00415bd0'
-        Module = 'CSurface'
-        Source = '00/41/CSurface_GetWidth_00415bd0.cpp'
-        TestSource = '00/41/CSurface_GetWidth_00415bd0_test.cpp'
-        PassPattern = 'PASS_00415bd0'
     }
     [pscustomobject]@{
         Address = '00415fc1'
@@ -3064,25 +3015,11 @@ $catalog = @(
         PassPattern = 'FABLETLC_CHAR_TO_WIDE_STRING_BEHAVIOR PASS'
     }
     [pscustomobject]@{
-        Address = '00415bf0'
-        Module = 'CSurface'
-        Source = '00/41/CSurface_GetHeight_00415bf0.cpp'
-        TestSource = '00/41/CSurface_GetHeight_00415bf0_test.cpp'
-        PassPattern = 'PASS_00415bf0'
-    }
-    [pscustomobject]@{
         Address = '00415ff2'
         Module = 'CMainGameComponent'
         Source = '00/41/CMainGameComponent_EventIsSystemEvent_00415ff2.cpp'
         TestSource = '00/41/CMainGameComponent_EventIsSystemEvent_00415ff2_test.cpp'
         PassPattern = 'PASS_00415ff2'
-    }
-    [pscustomobject]@{
-        Address = '00419352'
-        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
-        Source = '00/41/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_00419352.cpp'
-        TestSource = '00/41/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_00419352_test.cpp'
-        PassPattern = 'PASS_00419352'
     }
     [pscustomobject]@{
         Address = '0041ca3e'
@@ -3638,34 +3575,6 @@ $catalog = @(
         PassPattern = 'PASS_00416148'
     }
     [pscustomobject]@{
-        Address = '0042da30'
-        Module = 'CDefClassBase'
-        Source = '00/42/CDefClassBase_AddSubDef_0042da30.cpp'
-        TestSource = '00/42/CDefClassBase_AddSubDef_0042da30_test.cpp'
-        PassPattern = 'PASS_0042da30'
-    }
-    [pscustomobject]@{
-        Address = '00429c53'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00429c53.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00429c53_test.cpp'
-        PassPattern = 'PASS_00429c53'
-    }
-    [pscustomobject]@{
-        Address = '00429d8e'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00429d8e.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00429d8e_test.cpp'
-        PassPattern = 'PASS_00429d8e'
-    }
-    [pscustomobject]@{
-        Address = '0042d970'
-        Module = 'CResource'
-        Source = '00/42/CResource_CanAbortResourceLoad_0042d970.cpp'
-        TestSource = '00/42/CResource_CanAbortResourceLoad_0042d970_test.cpp'
-        PassPattern = 'PASS_0042d970'
-    }
-    [pscustomobject]@{
         Address = '0042d930'
         Module = 'CIVCountedPointeeBase'
         Source = '00/42/CIVCountedPointeeBase_DeleteCIVCountedPointeeBaseUBEXXZ_0042d930.cpp'
@@ -3685,48 +3594,6 @@ $catalog = @(
         Source = '00/42/global_DeleteData_00428b10.cpp'
         TestSource = '00/42/global_DeleteData_00428b10_test.cpp'
         PassPattern = 'PASS_00428b10'
-    }
-    [pscustomobject]@{
-        Address = '00429e16'
-        Module = 'CPair'
-        Source = '00/42/CPair_CPair_00429e16.cpp'
-        TestSource = '00/42/CPair_CPair_00429e16_test.cpp'
-        PassPattern = 'PASS_00429e16'
-    }
-    [pscustomobject]@{
-        Address = '0042bead'
-        Module = 'CTCInventoryAbilities'
-        Source = '00/42/CTCInventoryAbilities_AddLearnedExpression_0042bead.cpp'
-        TestSource = '00/42/CTCInventoryAbilities_AddLearnedExpression_0042bead_test.cpp'
-        PassPattern = 'PASS_0042bead'
-    }
-    [pscustomobject]@{
-        Address = '0042d437'
-        Module = 'CTCInventoryAbilities'
-        Source = '00/42/CTCInventoryAbilities_AddLearnedExpression_0042d437.cpp'
-        TestSource = '00/42/CTCInventoryAbilities_AddLearnedExpression_0042d437_test.cpp'
-        PassPattern = 'PASS_0042d437'
-    }
-    [pscustomobject]@{
-        Address = '0042d44a'
-        Module = 'CTCInventoryAbilities'
-        Source = '00/42/CTCInventoryAbilities_AddLearnedExpression_0042d44a.cpp'
-        TestSource = '00/42/CTCInventoryAbilities_AddLearnedExpression_0042d44a_test.cpp'
-        PassPattern = 'PASS_0042d44a'
-    }
-    [pscustomobject]@{
-        Address = '0041d207'
-        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
-        Source = '00/41/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_0041d207.cpp'
-        TestSource = '00/41/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_0041d207_test.cpp'
-        PassPattern = 'PASS_0041d207'
-    }
-    [pscustomobject]@{
-        Address = '0042bec0'
-        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
-        Source = '00/42/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_0042bec0.cpp'
-        TestSource = '00/42/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_0042bec0_test.cpp'
-        PassPattern = 'PASS_0042bec0'
     }
     [pscustomobject]@{
         Address = '0042bef2'
@@ -4093,83 +3960,6 @@ $catalog = @(
         PassPattern = 'PASS_0042d131'
     }
     [pscustomobject]@{
-        Address = '0042da90'
-        Module = 'CDefClassBase'
-        Source = '00/42/CDefClassBase_Validate_0042da90.cpp'
-        TestSource = '00/42/CDefClassBase_Validate_0042da90_test.cpp'
-        PassPattern = 'PASS_0042da90'
-    }
-    [pscustomobject]@{
-        Address = '004303e0'
-        Module = 'CParentDefClassBase'
-        Source = '00/43/CParentDefClassBase_GetPSubDefInfoMap_004303e0.cpp'
-        TestSource = '00/43/CParentDefClassBase_GetPSubDefInfoMap_004303e0_test.cpp'
-        PassPattern = 'PASS_004303e0'
-    }
-    [pscustomobject]@{
-        Address = '00430470'
-        Module = 'CControlsDef'
-        Source = '00/43/CControlsDef_GetSizeofClass_00430470.cpp'
-        TestSource = '00/43/CControlsDef_GetSizeofClass_00430470_test.cpp'
-        PassPattern = 'PASS_00430470'
-    }
-    [pscustomobject]@{
-        Address = '00431e30'
-        Module = 'CFrontEndDef'
-        Source = '00/43/CFrontEndDef_GetSizeofClass_00431e30.cpp'
-        TestSource = '00/43/CFrontEndDef_GetSizeofClass_00431e30_test.cpp'
-        PassPattern = 'PASS_00431e30'
-    }
-    [pscustomobject]@{
-        Address = '0043368d'
-        Module = '_global'
-        Source = '00/43/global_GFGetPreMainMemoryUsed_0043368d.cpp'
-        TestSource = '00/43/global_GFGetPreMainMemoryUsed_0043368d_test.cpp'
-        PassPattern = 'PASS_0043368d'
-    }
-    [pscustomobject]@{
-        Address = '00433fd0'
-        Module = 'CEngineDef'
-        Source = '00/43/CEngineDef_GetSizeofClass_00433fd0.cpp'
-        TestSource = '00/43/CEngineDef_GetSizeofClass_00433fd0_test.cpp'
-        PassPattern = 'PASS_00433fd0'
-    }
-    [pscustomobject]@{
-        Address = '00434110'
-        Module = 'CEngineVideoOptionsDef'
-        Source = '00/43/CEngineVideoOptionsDef_GetSizeofClass_00434110.cpp'
-        TestSource = '00/43/CEngineVideoOptionsDef_GetSizeofClass_00434110_test.cpp'
-        PassPattern = 'PASS_00434110'
-    }
-    [pscustomobject]@{
-        Address = '00434280'
-        Module = 'CConfigOptionsDefaultsDef'
-        Source = '00/43/CConfigOptionsDefaultsDef_GetSizeofClass_00434280.cpp'
-        TestSource = '00/43/CConfigOptionsDefaultsDef_GetSizeofClass_00434280_test.cpp'
-        PassPattern = 'PASS_00434280'
-    }
-    [pscustomobject]@{
-        Address = '004349e0'
-        Module = 'CTCInventoryBase'
-        Source = '00/43/CTCInventoryBase_GetCanItemBeQuickAssigned_004349e0.cpp'
-        TestSource = '00/43/CTCInventoryBase_GetCanItemBeQuickAssigned_004349e0_test.cpp'
-        PassPattern = 'PASS_004349e0'
-    }
-    [pscustomobject]@{
-        Address = '004349f0'
-        Module = 'CMap'
-        Source = '00/43/CMap_DrawGetSeaLevel_004349f0.cpp'
-        TestSource = '00/43/CMap_DrawGetSeaLevel_004349f0_test.cpp'
-        PassPattern = 'PASS_004349f0'
-    }
-    [pscustomobject]@{
-        Address = '00437570'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00437570.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00437570_test.cpp'
-        PassPattern = 'PASS_00437570'
-    }
-    [pscustomobject]@{
         Address = '00434a00'
         Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
         Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00434a00.cpp'
@@ -4182,27 +3972,6 @@ $catalog = @(
         Source = '00/43/CMap_DrawGetSeaLevel_004375e0.cpp'
         TestSource = '00/43/CMap_DrawGetSeaLevel_004375e0_test.cpp'
         PassPattern = 'PASS_004375e0'
-    }
-    [pscustomobject]@{
-        Address = '004303c0'
-        Module = 'CParentDefClassBase'
-        Source = '00/43/CParentDefClassBase_SetInstantiationName_004303c0.cpp'
-        TestSource = '00/43/CParentDefClassBase_SetInstantiationName_004303c0_test.cpp'
-        PassPattern = 'PASS_004303c0'
-    }
-    [pscustomobject]@{
-        Address = '00437660'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00437660.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00437660_test.cpp'
-        PassPattern = 'PASS_00437660'
-    }
-    [pscustomobject]@{
-        Address = '00437830'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00437830.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00437830_test.cpp'
-        PassPattern = 'PASS_00437830'
     }
     [pscustomobject]@{
         Address = '0042dbee'
@@ -4730,160 +4499,6 @@ $catalog = @(
         PassPattern = 'batch8_part3_00431493_pass'
     }
     [pscustomobject]@{
-        Address = '00437cd0'
-        Module = 'CWorld'
-        Source = '00/43/CWorld_DrawGetEnvironment_00437cd0.cpp'
-        TestSource = '00/43/CWorld_DrawGetEnvironment_00437cd0_test.cpp'
-        PassPattern = 'PASS_00437cd0'
-    }
-    [pscustomobject]@{
-        Address = '00437860'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437860.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437860_test.cpp'
-        PassPattern = 'PASS_00437860'
-    }
-    [pscustomobject]@{
-        Address = '004378b0'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378b0.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378b0_test.cpp'
-        PassPattern = 'PASS_004378b0'
-    }
-    [pscustomobject]@{
-        Address = '004378c0'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378c0.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378c0_test.cpp'
-        PassPattern = 'PASS_004378c0'
-    }
-    [pscustomobject]@{
-        Address = '004378d0'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378d0.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378d0_test.cpp'
-        PassPattern = 'PASS_004378d0'
-    }
-    [pscustomobject]@{
-        Address = '004378e0'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378e0.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378e0_test.cpp'
-        PassPattern = 'PASS_004378e0'
-    }
-    [pscustomobject]@{
-        Address = '004378f0'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378f0.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378f0_test.cpp'
-        PassPattern = 'PASS_004378f0'
-    }
-    [pscustomobject]@{
-        Address = '00437900'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437900.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437900_test.cpp'
-        PassPattern = 'PASS_00437900'
-    }
-    [pscustomobject]@{
-        Address = '00437910'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437910.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437910_test.cpp'
-        PassPattern = 'PASS_00437910'
-    }
-    [pscustomobject]@{
-        Address = '00437940'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437940.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437940_test.cpp'
-        PassPattern = 'PASS_00437940'
-    }
-    [pscustomobject]@{
-        Address = '00437980'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437980.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437980_test.cpp'
-        PassPattern = 'PASS_00437980'
-    }
-    [pscustomobject]@{
-        Address = '00437990'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437990.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437990_test.cpp'
-        PassPattern = 'PASS_00437990'
-    }
-    [pscustomobject]@{
-        Address = '004379a0'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379a0.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379a0_test.cpp'
-        PassPattern = 'PASS_004379a0'
-    }
-    [pscustomobject]@{
-        Address = '004379b0'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379b0.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379b0_test.cpp'
-        PassPattern = 'PASS_004379b0'
-    }
-    [pscustomobject]@{
-        Address = '004379c0'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379c0.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379c0_test.cpp'
-        PassPattern = 'PASS_004379c0'
-    }
-    [pscustomobject]@{
-        Address = '004379d0'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379d0.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379d0_test.cpp'
-        PassPattern = 'PASS_004379d0'
-    }
-    [pscustomobject]@{
-        Address = '004379e0'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379e0.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379e0_test.cpp'
-        PassPattern = 'PASS_004379e0'
-    }
-    [pscustomobject]@{
-        Address = '00437a00'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437a00.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437a00_test.cpp'
-        PassPattern = 'PASS_00437a00'
-    }
-    [pscustomobject]@{
-        Address = '00437d00'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437d00.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437d00_test.cpp'
-        PassPattern = 'PASS_00437d00'
-    }
-    [pscustomobject]@{
-        Address = '00437ff0'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437ff0.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437ff0_test.cpp'
-        PassPattern = 'PASS_00437ff0'
-    }
-    [pscustomobject]@{
-        Address = '00438000'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00438000.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00438000_test.cpp'
-        PassPattern = 'PASS_00438000'
-    }
-    [pscustomobject]@{
-        Address = '00438010'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00438010.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00438010_test.cpp'
-        PassPattern = 'PASS_00438010'
-    }
-    [pscustomobject]@{
         Address = '004379f0'
         Module = 'CPlayerGui'
         Source = '00/43/CPlayerGui_HideScreenshotMessage_004379f0.cpp'
@@ -5001,20 +4616,6 @@ $catalog = @(
         Source = '00/43/CGameScriptInterface_GiveHeroExpression_004383d0.cpp'
         TestSource = '00/43/CGameScriptInterface_GiveHeroExpression_004383d0_test.cpp'
         PassPattern = 'PASS_004383d0'
-    }
-    [pscustomobject]@{
-        Address = '0043f270'
-        Module = 'CGuiControlTreePane'
-        Source = '00/43/CGuiControlTreePane_SortTreeRecursively_0043f270.cpp'
-        TestSource = '00/43/CGuiControlTreePane_SortTreeRecursively_0043f270_test.cpp'
-        PassPattern = 'PASS_0043f270'
-    }
-    [pscustomobject]@{
-        Address = '0043f2a0'
-        Module = 'CGuiControlTreePane'
-        Source = '00/43/CGuiControlTreePane_SortTreeRecursively_0043f2a0.cpp'
-        TestSource = '00/43/CGuiControlTreePane_SortTreeRecursively_0043f2a0_test.cpp'
-        PassPattern = 'PASS_0043f2a0'
     }
     [pscustomobject]@{
         Address = '0043f6c0'
@@ -5442,20 +5043,6 @@ $catalog = @(
         Source = '00/44/CTCAssassinRush_FinishMove_004431c0.cpp'
         TestSource = '00/44/CTCAssassinRush_FinishMove_004431c0_test.cpp'
         PassPattern = 'PASS_004431c0'
-    }
-    [pscustomobject]@{
-        Address = '0043fdc0'
-        Module = 'CBankFileAsyncData'
-        Source = '00/43/CBankFileAsyncData_FreeBuffer_0043fdc0.cpp'
-        TestSource = '00/43/CBankFileAsyncData_FreeBuffer_0043fdc0_test.cpp'
-        PassPattern = 'PASS_0043fdc0'
-    }
-    [pscustomobject]@{
-        Address = '0043fe80'
-        Module = 'CBankFileAsyncData'
-        Source = '00/43/CBankFileAsyncData_FreeBuffer_0043fe80.cpp'
-        TestSource = '00/43/CBankFileAsyncData_FreeBuffer_0043fe80_test.cpp'
-        PassPattern = 'PASS_0043fe80'
     }
     [pscustomobject]@{
         Address = '004431f0'
@@ -80614,6 +80201,2512 @@ $catalog = @(
         Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042dab0.cpp'
         TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042dab0_test.cpp'
         PassPattern = 'PASS_0042dab0'
+    }
+    [pscustomobject]@{
+        Address = '0043f270'
+        Module = 'CGuiControlTreePane'
+        Source = '00/43/CGuiControlTreePane_SortTreeRecursively_0043f270.cpp'
+        TestSource = '00/43/CGuiControlTreePane_SortTreeRecursively_0043f270_test.cpp'
+        PassPattern = 'PASS_0043f270'
+    }
+    [pscustomobject]@{
+        Address = '0043f2a0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/43/CGuiControlTreePane_SortTreeRecursively_0043f2a0.cpp'
+        TestSource = '00/43/CGuiControlTreePane_SortTreeRecursively_0043f2a0_test.cpp'
+        PassPattern = 'PASS_0043f2a0'
+    }
+    [pscustomobject]@{
+        Address = '0048c6d0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/48/CGuiControlTreePane_SortTreeRecursively_0048c6d0.cpp'
+        TestSource = '00/48/CGuiControlTreePane_SortTreeRecursively_0048c6d0_test.cpp'
+        PassPattern = 'PASS_0048c6d0'
+    }
+    [pscustomobject]@{
+        Address = '004a9f70'
+        Module = 'CGuiControlTreePane'
+        Source = '00/4a/CGuiControlTreePane_SortTreeRecursively_004a9f70.cpp'
+        TestSource = '00/4a/CGuiControlTreePane_SortTreeRecursively_004a9f70_test.cpp'
+        PassPattern = 'PASS_004a9f70'
+    }
+    [pscustomobject]@{
+        Address = '00510d10'
+        Module = 'CGuiControlTreePane'
+        Source = '00/51/CGuiControlTreePane_SortTreeRecursively_00510d10.cpp'
+        TestSource = '00/51/CGuiControlTreePane_SortTreeRecursively_00510d10_test.cpp'
+        PassPattern = 'PASS_00510d10'
+    }
+    [pscustomobject]@{
+        Address = '005278e0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/52/CGuiControlTreePane_SortTreeRecursively_005278e0.cpp'
+        TestSource = '00/52/CGuiControlTreePane_SortTreeRecursively_005278e0_test.cpp'
+        PassPattern = 'PASS_005278e0'
+    }
+    [pscustomobject]@{
+        Address = '00558a50'
+        Module = 'CGuiControlTreePane'
+        Source = '00/55/CGuiControlTreePane_SortTreeRecursively_00558a50.cpp'
+        TestSource = '00/55/CGuiControlTreePane_SortTreeRecursively_00558a50_test.cpp'
+        PassPattern = 'PASS_00558a50'
+    }
+    [pscustomobject]@{
+        Address = '0056cad0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/56/CGuiControlTreePane_SortTreeRecursively_0056cad0.cpp'
+        TestSource = '00/56/CGuiControlTreePane_SortTreeRecursively_0056cad0_test.cpp'
+        PassPattern = 'PASS_0056cad0'
+    }
+    [pscustomobject]@{
+        Address = '00613b20'
+        Module = 'CGuiControlTreePane'
+        Source = '00/61/CGuiControlTreePane_SortTreeRecursively_00613b20.cpp'
+        TestSource = '00/61/CGuiControlTreePane_SortTreeRecursively_00613b20_test.cpp'
+        PassPattern = 'PASS_00613b20'
+    }
+    [pscustomobject]@{
+        Address = '00613c80'
+        Module = 'CGuiControlTreePane'
+        Source = '00/61/CGuiControlTreePane_SortTreeRecursively_00613c80.cpp'
+        TestSource = '00/61/CGuiControlTreePane_SortTreeRecursively_00613c80_test.cpp'
+        PassPattern = 'PASS_00613c80'
+    }
+    [pscustomobject]@{
+        Address = '00613cb0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/61/CGuiControlTreePane_SortTreeRecursively_00613cb0.cpp'
+        TestSource = '00/61/CGuiControlTreePane_SortTreeRecursively_00613cb0_test.cpp'
+        PassPattern = 'PASS_00613cb0'
+    }
+    [pscustomobject]@{
+        Address = '0077ffb0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/77/CGuiControlTreePane_SortTreeRecursively_0077ffb0.cpp'
+        TestSource = '00/77/CGuiControlTreePane_SortTreeRecursively_0077ffb0_test.cpp'
+        PassPattern = 'PASS_0077ffb0'
+    }
+    [pscustomobject]@{
+        Address = '0078e580'
+        Module = 'CGuiControlTreePane'
+        Source = '00/78/CGuiControlTreePane_SortTreeRecursively_0078e580.cpp'
+        TestSource = '00/78/CGuiControlTreePane_SortTreeRecursively_0078e580_test.cpp'
+        PassPattern = 'PASS_0078e580'
+    }
+    [pscustomobject]@{
+        Address = '0090b5d0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/90/CGuiControlTreePane_SortTreeRecursively_0090b5d0.cpp'
+        TestSource = '00/90/CGuiControlTreePane_SortTreeRecursively_0090b5d0_test.cpp'
+        PassPattern = 'PASS_0090b5d0'
+    }
+    [pscustomobject]@{
+        Address = '0091b860'
+        Module = 'CGuiControlTreePane'
+        Source = '00/91/CGuiControlTreePane_SortTreeRecursively_0091b860.cpp'
+        TestSource = '00/91/CGuiControlTreePane_SortTreeRecursively_0091b860_test.cpp'
+        PassPattern = 'PASS_0091b860'
+    }
+    [pscustomobject]@{
+        Address = '009c1d90'
+        Module = 'CGuiControlTreePane'
+        Source = '00/9c/CGuiControlTreePane_SortTreeRecursively_009c1d90.cpp'
+        TestSource = '00/9c/CGuiControlTreePane_SortTreeRecursively_009c1d90_test.cpp'
+        PassPattern = 'PASS_009c1d90'
+    }
+    [pscustomobject]@{
+        Address = '009c63b0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/9c/CGuiControlTreePane_SortTreeRecursively_009c63b0.cpp'
+        TestSource = '00/9c/CGuiControlTreePane_SortTreeRecursively_009c63b0_test.cpp'
+        PassPattern = 'PASS_009c63b0'
+    }
+    [pscustomobject]@{
+        Address = '00a20e10'
+        Module = 'CGuiControlTreePane'
+        Source = '00/a2/CGuiControlTreePane_SortTreeRecursively_00a20e10.cpp'
+        TestSource = '00/a2/CGuiControlTreePane_SortTreeRecursively_00a20e10_test.cpp'
+        PassPattern = 'PASS_00a20e10'
+    }
+    [pscustomobject]@{
+        Address = '00a20e40'
+        Module = 'CGuiControlTreePane'
+        Source = '00/a2/CGuiControlTreePane_SortTreeRecursively_00a20e40.cpp'
+        TestSource = '00/a2/CGuiControlTreePane_SortTreeRecursively_00a20e40_test.cpp'
+        PassPattern = 'PASS_00a20e40'
+    }
+    [pscustomobject]@{
+        Address = '00a20e70'
+        Module = 'CGuiControlTreePane'
+        Source = '00/a2/CGuiControlTreePane_SortTreeRecursively_00a20e70.cpp'
+        TestSource = '00/a2/CGuiControlTreePane_SortTreeRecursively_00a20e70_test.cpp'
+        PassPattern = 'PASS_00a20e70'
+    }
+    [pscustomobject]@{
+        Address = '00a20ea0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/a2/CGuiControlTreePane_SortTreeRecursively_00a20ea0.cpp'
+        TestSource = '00/a2/CGuiControlTreePane_SortTreeRecursively_00a20ea0_test.cpp'
+        PassPattern = 'PASS_00a20ea0'
+    }
+    [pscustomobject]@{
+        Address = '00a3fb30'
+        Module = 'CGuiControlTreePane'
+        Source = '00/a3/CGuiControlTreePane_SortTreeRecursively_00a3fb30.cpp'
+        TestSource = '00/a3/CGuiControlTreePane_SortTreeRecursively_00a3fb30_test.cpp'
+        PassPattern = 'PASS_00a3fb30'
+    }
+    [pscustomobject]@{
+        Address = '00a47e50'
+        Module = 'CGuiControlTreePane'
+        Source = '00/a4/CGuiControlTreePane_SortTreeRecursively_00a47e50.cpp'
+        TestSource = '00/a4/CGuiControlTreePane_SortTreeRecursively_00a47e50_test.cpp'
+        PassPattern = 'PASS_00a47e50'
+    }
+    [pscustomobject]@{
+        Address = '00a7e2d0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/a7/CGuiControlTreePane_SortTreeRecursively_00a7e2d0.cpp'
+        TestSource = '00/a7/CGuiControlTreePane_SortTreeRecursively_00a7e2d0_test.cpp'
+        PassPattern = 'PASS_00a7e2d0'
+    }
+    [pscustomobject]@{
+        Address = '00af63a0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/af/CGuiControlTreePane_SortTreeRecursively_00af63a0.cpp'
+        TestSource = '00/af/CGuiControlTreePane_SortTreeRecursively_00af63a0_test.cpp'
+        PassPattern = 'PASS_00af63a0'
+    }
+    [pscustomobject]@{
+        Address = '00bda8c0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/bd/CGuiControlTreePane_SortTreeRecursively_00bda8c0.cpp'
+        TestSource = '00/bd/CGuiControlTreePane_SortTreeRecursively_00bda8c0_test.cpp'
+        PassPattern = 'PASS_00bda8c0'
+    }
+    [pscustomobject]@{
+        Address = '00bda8f0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/bd/CGuiControlTreePane_SortTreeRecursively_00bda8f0.cpp'
+        TestSource = '00/bd/CGuiControlTreePane_SortTreeRecursively_00bda8f0_test.cpp'
+        PassPattern = 'PASS_00bda8f0'
+    }
+    [pscustomobject]@{
+        Address = '00415fbc'
+        Module = '_global'
+        Source = '00/41/global_GFGetPreMainMemoryUsed_00415fbc.cpp'
+        TestSource = '00/41/global_GFGetPreMainMemoryUsed_00415fbc_test.cpp'
+        PassPattern = 'PASS_00415fbc'
+    }
+    [pscustomobject]@{
+        Address = '0043fdc0'
+        Module = 'CBankFileAsyncData'
+        Source = '00/43/CBankFileAsyncData_FreeBuffer_0043fdc0.cpp'
+        TestSource = '00/43/CBankFileAsyncData_FreeBuffer_0043fdc0_test.cpp'
+        PassPattern = 'PASS_0043fdc0'
+    }
+    [pscustomobject]@{
+        Address = '0043fe80'
+        Module = 'CBankFileAsyncData'
+        Source = '00/43/CBankFileAsyncData_FreeBuffer_0043fe80.cpp'
+        TestSource = '00/43/CBankFileAsyncData_FreeBuffer_0043fe80_test.cpp'
+        PassPattern = 'PASS_0043fe80'
+    }
+    [pscustomobject]@{
+        Address = '0048caf0'
+        Module = 'CBankFileAsyncData'
+        Source = '00/48/CBankFileAsyncData_FreeBuffer_0048caf0.cpp'
+        TestSource = '00/48/CBankFileAsyncData_FreeBuffer_0048caf0_test.cpp'
+        PassPattern = 'PASS_0048caf0'
+    }
+    [pscustomobject]@{
+        Address = '009137c0'
+        Module = 'CBankFileAsyncData'
+        Source = '00/91/CBankFileAsyncData_FreeBuffer_009137c0.cpp'
+        TestSource = '00/91/CBankFileAsyncData_FreeBuffer_009137c0_test.cpp'
+        PassPattern = 'PASS_009137c0'
+    }
+    [pscustomobject]@{
+        Address = '0041cd89'
+        Module = 'CObservable'
+        Source = '00/41/CObservable_AddExclusiveObserver_0041cd89.cpp'
+        TestSource = '00/41/CObservable_AddExclusiveObserver_0041cd89_test.cpp'
+        PassPattern = 'PASS_0041cd89'
+    }
+    [pscustomobject]@{
+        Address = '0041cf40'
+        Module = 'CMap'
+        Source = '00/41/CMap_DrawGetSeaLevel_0041cf40.cpp'
+        TestSource = '00/41/CMap_DrawGetSeaLevel_0041cf40_test.cpp'
+        PassPattern = 'PASS_0041cf40'
+    }
+    [pscustomobject]@{
+        Address = '0042d970'
+        Module = 'CResource'
+        Source = '00/42/CResource_CanAbortResourceLoad_0042d970.cpp'
+        TestSource = '00/42/CResource_CanAbortResourceLoad_0042d970_test.cpp'
+        PassPattern = 'PASS_0042d970'
+    }
+    [pscustomobject]@{
+        Address = '0042da30'
+        Module = 'CDefClassBase'
+        Source = '00/42/CDefClassBase_AddSubDef_0042da30.cpp'
+        TestSource = '00/42/CDefClassBase_AddSubDef_0042da30_test.cpp'
+        PassPattern = 'PASS_0042da30'
+    }
+    [pscustomobject]@{
+        Address = '0042da90'
+        Module = 'CDefClassBase'
+        Source = '00/42/CDefClassBase_Validate_0042da90.cpp'
+        TestSource = '00/42/CDefClassBase_Validate_0042da90_test.cpp'
+        PassPattern = 'PASS_0042da90'
+    }
+    [pscustomobject]@{
+        Address = '00430470'
+        Module = 'CControlsDef'
+        Source = '00/43/CControlsDef_GetSizeofClass_00430470.cpp'
+        TestSource = '00/43/CControlsDef_GetSizeofClass_00430470_test.cpp'
+        PassPattern = 'PASS_00430470'
+    }
+    [pscustomobject]@{
+        Address = '00431e30'
+        Module = 'CFrontEndDef'
+        Source = '00/43/CFrontEndDef_GetSizeofClass_00431e30.cpp'
+        TestSource = '00/43/CFrontEndDef_GetSizeofClass_00431e30_test.cpp'
+        PassPattern = 'PASS_00431e30'
+    }
+    [pscustomobject]@{
+        Address = '00433fd0'
+        Module = 'CEngineDef'
+        Source = '00/43/CEngineDef_GetSizeofClass_00433fd0.cpp'
+        TestSource = '00/43/CEngineDef_GetSizeofClass_00433fd0_test.cpp'
+        PassPattern = 'PASS_00433fd0'
+    }
+    [pscustomobject]@{
+        Address = '00434110'
+        Module = 'CEngineVideoOptionsDef'
+        Source = '00/43/CEngineVideoOptionsDef_GetSizeofClass_00434110.cpp'
+        TestSource = '00/43/CEngineVideoOptionsDef_GetSizeofClass_00434110_test.cpp'
+        PassPattern = 'PASS_00434110'
+    }
+    [pscustomobject]@{
+        Address = '00434280'
+        Module = 'CConfigOptionsDefaultsDef'
+        Source = '00/43/CConfigOptionsDefaultsDef_GetSizeofClass_00434280.cpp'
+        TestSource = '00/43/CConfigOptionsDefaultsDef_GetSizeofClass_00434280_test.cpp'
+        PassPattern = 'PASS_00434280'
+    }
+    [pscustomobject]@{
+        Address = '004349e0'
+        Module = 'CTCInventoryBase'
+        Source = '00/43/CTCInventoryBase_GetCanItemBeQuickAssigned_004349e0.cpp'
+        TestSource = '00/43/CTCInventoryBase_GetCanItemBeQuickAssigned_004349e0_test.cpp'
+        PassPattern = 'PASS_004349e0'
+    }
+    [pscustomobject]@{
+        Address = '004349f0'
+        Module = 'CMap'
+        Source = '00/43/CMap_DrawGetSeaLevel_004349f0.cpp'
+        TestSource = '00/43/CMap_DrawGetSeaLevel_004349f0_test.cpp'
+        PassPattern = 'PASS_004349f0'
+    }
+    [pscustomobject]@{
+        Address = '00437cd0'
+        Module = 'CWorld'
+        Source = '00/43/CWorld_DrawGetEnvironment_00437cd0.cpp'
+        TestSource = '00/43/CWorld_DrawGetEnvironment_00437cd0_test.cpp'
+        PassPattern = 'PASS_00437cd0'
+    }
+    [pscustomobject]@{
+        Address = '004303c0'
+        Module = 'CParentDefClassBase'
+        Source = '00/43/CParentDefClassBase_SetInstantiationName_004303c0.cpp'
+        TestSource = '00/43/CParentDefClassBase_SetInstantiationName_004303c0_test.cpp'
+        PassPattern = 'PASS_004303c0'
+    }
+    [pscustomobject]@{
+        Address = '004303e0'
+        Module = 'CParentDefClassBase'
+        Source = '00/43/CParentDefClassBase_GetPSubDefInfoMap_004303e0.cpp'
+        TestSource = '00/43/CParentDefClassBase_GetPSubDefInfoMap_004303e0_test.cpp'
+        PassPattern = 'PASS_004303e0'
+    }
+    [pscustomobject]@{
+        Address = '004df3c6'
+        Module = 'CObstacleNavigatorExternalInterface'
+        Source = '00/4d/CObstacleNavigatorExternalInterface_IsMovementBlockedAt_004df3c6.cpp'
+        TestSource = '00/4d/CObstacleNavigatorExternalInterface_IsMovementBlockedAt_004df3c6_test.cpp'
+        PassPattern = 'PASS_004df3c6'
+    }
+    [pscustomobject]@{
+        Address = '00697050'
+        Module = 'CAIGameCameraBase'
+        Source = '00/69/CAIGameCameraBase_Is2DAreaInViewingFrustrum_00697050.cpp'
+        TestSource = '00/69/CAIGameCameraBase_Is2DAreaInViewingFrustrum_00697050_test.cpp'
+        PassPattern = 'PASS_00697050'
+    }
+    [pscustomobject]@{
+        Address = '00697060'
+        Module = 'CAIGameCameraBase'
+        Source = '00/69/CAIGameCameraBase_IsVolumeInViewingFrustrum_00697060.cpp'
+        TestSource = '00/69/CAIGameCameraBase_IsVolumeInViewingFrustrum_00697060_test.cpp'
+        PassPattern = 'PASS_00697060'
+    }
+    [pscustomobject]@{
+        Address = '00a19bb0'
+        Module = 'CANavQuadTreeNode'
+        Source = '00/a1/CANavQuadTreeNode_IsSwitchableOn_00a19bb0.cpp'
+        TestSource = '00/a1/CANavQuadTreeNode_IsSwitchableOn_00a19bb0_test.cpp'
+        PassPattern = 'PASS_00a19bb0'
+    }
+    [pscustomobject]@{
+        Address = '00a5f9c0'
+        Module = 'CStreamingFontDataBank'
+        Source = '00/a5/CStreamingFontDataBank_IsDiskFile_00a5f9c0.cpp'
+        TestSource = '00/a5/CStreamingFontDataBank_IsDiskFile_00a5f9c0_test.cpp'
+        PassPattern = 'PASS_00a5f9c0'
+    }
+    [pscustomobject]@{
+        Address = '00a63ac0'
+        Module = 'CFontDataBank'
+        Source = '00/a6/CFontDataBank_IsDiskFile_00a63ac0.cpp'
+        TestSource = '00/a6/CFontDataBank_IsDiskFile_00a63ac0_test.cpp'
+        PassPattern = 'PASS_00a63ac0'
+    }
+    [pscustomobject]@{
+        Address = '00a66ad0'
+        Module = 'CKeyboard'
+        Source = '00/a6/CKeyboard_GetKeyName_00a66ad0.cpp'
+        TestSource = '00/a6/CKeyboard_GetKeyName_00a66ad0_test.cpp'
+        PassPattern = 'PASS_00a66ad0'
+    }
+    [pscustomobject]@{
+        Address = '00a7d950'
+        Module = 'CNavBlockedQuadTreeNode'
+        Source = '00/a7/CNavBlockedQuadTreeNode_MakeRegion_00a7d950.cpp'
+        TestSource = '00/a7/CNavBlockedQuadTreeNode_MakeRegion_00a7d950_test.cpp'
+        PassPattern = 'PASS_00a7d950'
+    }
+    [pscustomobject]@{
+        Address = '00a7d960'
+        Module = 'CNavBlockedQuadTreeNode'
+        Source = '00/a7/CNavBlockedQuadTreeNode_AddNavigableNodeNeighbouringSwitchableNodeToRegi_00a7d960.cpp'
+        TestSource = '00/a7/CNavBlockedQuadTreeNode_AddNavigableNodeNeighbouringSwitchableNodeToRegi_00a7d960_test.cpp'
+        PassPattern = 'PASS_00a7d960'
+    }
+    [pscustomobject]@{
+        Address = '00a84e20'
+        Module = 'CNavSwitchableLeafNode'
+        Source = '00/a8/CNavSwitchableLeafNode_AddNavigableNodeNeighbouringSwitchableNodeToRegi_00a84e20.cpp'
+        TestSource = '00/a8/CNavSwitchableLeafNode_AddNavigableNodeNeighbouringSwitchableNodeToRegi_00a84e20_test.cpp'
+        PassPattern = 'PASS_00a84e20'
+    }
+    [pscustomobject]@{
+        Address = '00b23cf0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_ConvertScreenPosToWorldPos_00b23cf0.cpp'
+        TestSource = '00/b2/CEngine_ConvertScreenPosToWorldPos_00b23cf0_test.cpp'
+        PassPattern = 'PASS_00b23cf0'
+    }
+    [pscustomobject]@{
+        Address = '00b90090'
+        Module = 'CThingFilter_IsUnconscious'
+        Source = '00/b9/CThingFilterIsUnconscious_operator_00b90090.cpp'
+        TestSource = '00/b9/CThingFilterIsUnconscious_operator_00b90090_test.cpp'
+        PassPattern = 'PASS_00b90090'
+    }
+    [pscustomobject]@{
+        Address = '004167c8'
+        Module = '_global'
+        Source = '00/41/global_GFGetPreMainMemoryUsed_004167c8.cpp'
+        TestSource = '00/41/global_GFGetPreMainMemoryUsed_004167c8_test.cpp'
+        PassPattern = 'PASS_004167c8'
+    }
+    [pscustomobject]@{
+        Address = '004194b5'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004194b5.cpp'
+        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004194b5_test.cpp'
+        PassPattern = 'PASS_004194b5'
+    }
+    [pscustomobject]@{
+        Address = '0041cf33'
+        Module = 'CObservable'
+        Source = '00/41/CObservable_AddExclusiveObserver_0041cf33.cpp'
+        TestSource = '00/41/CObservable_AddExclusiveObserver_0041cf33_test.cpp'
+        PassPattern = 'PASS_0041cf33'
+    }
+    [pscustomobject]@{
+        Address = '00429c53'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429c53.cpp'
+        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429c53_test.cpp'
+        PassPattern = 'PASS_00429c53'
+    }
+    [pscustomobject]@{
+        Address = '00429d8e'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429d8e.cpp'
+        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429d8e_test.cpp'
+        PassPattern = 'PASS_00429d8e'
+    }
+    [pscustomobject]@{
+        Address = '0043368d'
+        Module = '_global'
+        Source = '00/43/global_GFGetPreMainMemoryUsed_0043368d.cpp'
+        TestSource = '00/43/global_GFGetPreMainMemoryUsed_0043368d_test.cpp'
+        PassPattern = 'PASS_0043368d'
+    }
+    [pscustomobject]@{
+        Address = '00437570'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437570.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437570_test.cpp'
+        PassPattern = 'PASS_00437570'
+    }
+    [pscustomobject]@{
+        Address = '00437660'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437660.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437660_test.cpp'
+        PassPattern = 'PASS_00437660'
+    }
+    [pscustomobject]@{
+        Address = '00437830'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437830.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437830_test.cpp'
+        PassPattern = 'PASS_00437830'
+    }
+    [pscustomobject]@{
+        Address = '00437860'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437860.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437860_test.cpp'
+        PassPattern = 'PASS_00437860'
+    }
+    [pscustomobject]@{
+        Address = '004378b0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378b0.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378b0_test.cpp'
+        PassPattern = 'PASS_004378b0'
+    }
+    [pscustomobject]@{
+        Address = '004378c0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378c0.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378c0_test.cpp'
+        PassPattern = 'PASS_004378c0'
+    }
+    [pscustomobject]@{
+        Address = '004378d0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378d0.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378d0_test.cpp'
+        PassPattern = 'PASS_004378d0'
+    }
+    [pscustomobject]@{
+        Address = '004378e0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378e0.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378e0_test.cpp'
+        PassPattern = 'PASS_004378e0'
+    }
+    [pscustomobject]@{
+        Address = '004378f0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378f0.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004378f0_test.cpp'
+        PassPattern = 'PASS_004378f0'
+    }
+    [pscustomobject]@{
+        Address = '00437900'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437900.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437900_test.cpp'
+        PassPattern = 'PASS_00437900'
+    }
+    [pscustomobject]@{
+        Address = '00437910'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437910.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437910_test.cpp'
+        PassPattern = 'PASS_00437910'
+    }
+    [pscustomobject]@{
+        Address = '00437940'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437940.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437940_test.cpp'
+        PassPattern = 'PASS_00437940'
+    }
+    [pscustomobject]@{
+        Address = '00437980'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437980.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437980_test.cpp'
+        PassPattern = 'PASS_00437980'
+    }
+    [pscustomobject]@{
+        Address = '00437990'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437990.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437990_test.cpp'
+        PassPattern = 'PASS_00437990'
+    }
+    [pscustomobject]@{
+        Address = '004379a0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379a0.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379a0_test.cpp'
+        PassPattern = 'PASS_004379a0'
+    }
+    [pscustomobject]@{
+        Address = '004379b0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379b0.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379b0_test.cpp'
+        PassPattern = 'PASS_004379b0'
+    }
+    [pscustomobject]@{
+        Address = '004379c0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379c0.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379c0_test.cpp'
+        PassPattern = 'PASS_004379c0'
+    }
+    [pscustomobject]@{
+        Address = '004379d0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379d0.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379d0_test.cpp'
+        PassPattern = 'PASS_004379d0'
+    }
+    [pscustomobject]@{
+        Address = '004379e0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379e0.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004379e0_test.cpp'
+        PassPattern = 'PASS_004379e0'
+    }
+    [pscustomobject]@{
+        Address = '00437a00'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437a00.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437a00_test.cpp'
+        PassPattern = 'PASS_00437a00'
+    }
+    [pscustomobject]@{
+        Address = '00437d00'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437d00.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437d00_test.cpp'
+        PassPattern = 'PASS_00437d00'
+    }
+    [pscustomobject]@{
+        Address = '00437ff0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437ff0.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437ff0_test.cpp'
+        PassPattern = 'PASS_00437ff0'
+    }
+    [pscustomobject]@{
+        Address = '00438000'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00438000.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00438000_test.cpp'
+        PassPattern = 'PASS_00438000'
+    }
+    [pscustomobject]@{
+        Address = '00438010'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00438010.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00438010_test.cpp'
+        PassPattern = 'PASS_00438010'
+    }
+    [pscustomobject]@{
+        Address = '0045a154'
+        Module = 'CInventoryDef'
+        Source = '00/45/CInventoryDef_Copy_0045a154.cpp'
+        TestSource = '00/45/CInventoryDef_Copy_0045a154_test.cpp'
+        PassPattern = 'PASS_0045a154'
+    }
+    [pscustomobject]@{
+        Address = '0045bd3d'
+        Module = 'CInventoryCategoryDef'
+        Source = '00/45/CInventoryCategoryDef_Copy_0045bd3d.cpp'
+        TestSource = '00/45/CInventoryCategoryDef_Copy_0045bd3d_test.cpp'
+        PassPattern = 'PASS_0045bd3d'
+    }
+    [pscustomobject]@{
+        Address = '0045bdb1'
+        Module = 'CMessageEventDef'
+        Source = '00/45/CMessageEventDef_Copy_0045bdb1.cpp'
+        TestSource = '00/45/CMessageEventDef_Copy_0045bdb1_test.cpp'
+        PassPattern = 'PASS_0045bdb1'
+    }
+    [pscustomobject]@{
+        Address = '0045be26'
+        Module = 'CEnvironmentDef'
+        Source = '00/45/CEnvironmentDef_Copy_0045be26.cpp'
+        TestSource = '00/45/CEnvironmentDef_Copy_0045be26_test.cpp'
+        PassPattern = 'PASS_0045be26'
+    }
+    [pscustomobject]@{
+        Address = '0045c10d'
+        Module = 'CMaterialDef'
+        Source = '00/45/CMaterialDef_Copy_0045c10d.cpp'
+        TestSource = '00/45/CMaterialDef_Copy_0045c10d_test.cpp'
+        PassPattern = 'PASS_0045c10d'
+    }
+    [pscustomobject]@{
+        Address = '0045c2e3'
+        Module = 'CCombatTypeDef'
+        Source = '00/45/CCombatTypeDef_Copy_0045c2e3.cpp'
+        TestSource = '00/45/CCombatTypeDef_Copy_0045c2e3_test.cpp'
+        PassPattern = 'PASS_0045c2e3'
+    }
+    [pscustomobject]@{
+        Address = '0045c60f'
+        Module = 'CCreatureGenerationFamilyDef'
+        Source = '00/45/CCreatureGenerationFamilyDef_Copy_0045c60f.cpp'
+        TestSource = '00/45/CCreatureGenerationFamilyDef_Copy_0045c60f_test.cpp'
+        PassPattern = 'PASS_0045c60f'
+    }
+    [pscustomobject]@{
+        Address = '0045cb17'
+        Module = 'CHeroAbilityDef'
+        Source = '00/45/CHeroAbilityDef_Copy_0045cb17.cpp'
+        TestSource = '00/45/CHeroAbilityDef_Copy_0045cb17_test.cpp'
+        PassPattern = 'PASS_0045cb17'
+    }
+    [pscustomobject]@{
+        Address = '0045cbff'
+        Module = 'CAppearanceModifierDef'
+        Source = '00/45/CAppearanceModifierDef_Copy_0045cbff.cpp'
+        TestSource = '00/45/CAppearanceModifierDef_Copy_0045cbff_test.cpp'
+        PassPattern = 'PASS_0045cbff'
+    }
+    [pscustomobject]@{
+        Address = '0045ce43'
+        Module = 'CRegionDef'
+        Source = '00/45/CRegionDef_Copy_0045ce43.cpp'
+        TestSource = '00/45/CRegionDef_Copy_0045ce43_test.cpp'
+        PassPattern = 'PASS_0045ce43'
+    }
+    [pscustomobject]@{
+        Address = '0045d33f'
+        Module = 'CCameraModeDef'
+        Source = '00/45/CCameraModeDef_Copy_0045d33f.cpp'
+        TestSource = '00/45/CCameraModeDef_Copy_0045d33f_test.cpp'
+        PassPattern = 'PASS_0045d33f'
+    }
+    [pscustomobject]@{
+        Address = '0045d578'
+        Module = 'CCameraManagerSetDef'
+        Source = '00/45/CCameraManagerSetDef_Copy_0045d578.cpp'
+        TestSource = '00/45/CCameraManagerSetDef_Copy_0045d578_test.cpp'
+        PassPattern = 'PASS_0045d578'
+    }
+    [pscustomobject]@{
+        Address = '0045d5ce'
+        Module = 'CHeroPostcardGeneratorDef'
+        Source = '00/45/CHeroPostcardGeneratorDef_Copy_0045d5ce.cpp'
+        TestSource = '00/45/CHeroPostcardGeneratorDef_Copy_0045d5ce_test.cpp'
+        PassPattern = 'PASS_0045d5ce'
+    }
+    [pscustomobject]@{
+        Address = '0045d637'
+        Module = 'CExpressionDef'
+        Source = '00/45/CExpressionDef_Copy_0045d637.cpp'
+        TestSource = '00/45/CExpressionDef_Copy_0045d637_test.cpp'
+        PassPattern = 'PASS_0045d637'
+    }
+    [pscustomobject]@{
+        Address = '0045d724'
+        Module = 'CTargetingDef'
+        Source = '00/45/CTargetingDef_Copy_0045d724.cpp'
+        TestSource = '00/45/CTargetingDef_Copy_0045d724_test.cpp'
+        PassPattern = 'PASS_0045d724'
+    }
+    [pscustomobject]@{
+        Address = '0045ee96'
+        Module = 'COpinionSourceDef'
+        Source = '00/45/COpinionSourceDef_Copy_0045ee96.cpp'
+        TestSource = '00/45/COpinionSourceDef_Copy_0045ee96_test.cpp'
+        PassPattern = 'PASS_0045ee96'
+    }
+    [pscustomobject]@{
+        Address = '0045f585'
+        Module = 'CSpecialAbilitiesAssassinRushDef'
+        Source = '00/45/CSpecialAbilitiesAssassinRushDef_Copy_0045f585.cpp'
+        TestSource = '00/45/CSpecialAbilitiesAssassinRushDef_Copy_0045f585_test.cpp'
+        PassPattern = 'PASS_0045f585'
+    }
+    [pscustomobject]@{
+        Address = '0046029f'
+        Module = 'CSpecialAbilitiesLightningSpellDef'
+        Source = '00/46/CSpecialAbilitiesLightningSpellDef_Copy_0046029f.cpp'
+        TestSource = '00/46/CSpecialAbilitiesLightningSpellDef_Copy_0046029f_test.cpp'
+        PassPattern = 'PASS_0046029f'
+    }
+    [pscustomobject]@{
+        Address = '00460652'
+        Module = 'CSpecialAbilitiesDivineWrathDef'
+        Source = '00/46/CSpecialAbilitiesDivineWrathDef_Copy_00460652.cpp'
+        TestSource = '00/46/CSpecialAbilitiesDivineWrathDef_Copy_00460652_test.cpp'
+        PassPattern = 'PASS_00460652'
+    }
+    [pscustomobject]@{
+        Address = '00461ac8'
+        Module = 'CHitLocationDef'
+        Source = '00/46/CHitLocationDef_Copy_00461ac8.cpp'
+        TestSource = '00/46/CHitLocationDef_Copy_00461ac8_test.cpp'
+        PassPattern = 'PASS_00461ac8'
+    }
+    [pscustomobject]@{
+        Address = '00462678'
+        Module = 'CThingShotDef'
+        Source = '00/46/CThingShotDef_Copy_00462678.cpp'
+        TestSource = '00/46/CThingShotDef_Copy_00462678_test.cpp'
+        PassPattern = 'PASS_00462678'
+    }
+    [pscustomobject]@{
+        Address = '00462969'
+        Module = 'CSimBuildingDef'
+        Source = '00/46/CSimBuildingDef_Copy_00462969.cpp'
+        TestSource = '00/46/CSimBuildingDef_Copy_00462969_test.cpp'
+        PassPattern = 'PASS_00462969'
+    }
+    [pscustomobject]@{
+        Address = '004643ca'
+        Module = 'CThingBuildingDef'
+        Source = '00/46/CThingBuildingDef_Copy_004643ca.cpp'
+        TestSource = '00/46/CThingBuildingDef_Copy_004643ca_test.cpp'
+        PassPattern = 'PASS_004643ca'
+    }
+    [pscustomobject]@{
+        Address = '00472033'
+        Module = 'CActiveFile'
+        Source = '00/47/CActiveFile_OnReadFinished_00472033.cpp'
+        TestSource = '00/47/CActiveFile_OnReadFinished_00472033_test.cpp'
+        PassPattern = 'PASS_00472033'
+    }
+    [pscustomobject]@{
+        Address = '00472046'
+        Module = 'COpinionDeedReactionDef'
+        Source = '00/47/COpinionDeedReactionDef_CopyCOpinionDeedReactionDefUAEXPBVCDefClassBaseZ_00472046.cpp'
+        TestSource = '00/47/COpinionDeedReactionDef_CopyCOpinionDeedReactionDefUAEXPBVCDefClassBaseZ_00472046_test.cpp'
+        PassPattern = 'PASS_00472046'
+    }
+    [pscustomobject]@{
+        Address = '00472e7e'
+        Module = 'CEnvironmentThemeDaySetDef'
+        Source = '00/47/CEnvironmentThemeDaySetDef_Copy_00472e7e.cpp'
+        TestSource = '00/47/CEnvironmentThemeDaySetDef_Copy_00472e7e_test.cpp'
+        PassPattern = 'PASS_00472e7e'
+    }
+    [pscustomobject]@{
+        Address = '004734b2'
+        Module = 'CEnvironmentThemeDef'
+        Source = '00/47/CEnvironmentThemeDef_CopyCEnvironmentThemeDefUAEXPBVCDefClassBaseZ_004734b2.cpp'
+        TestSource = '00/47/CEnvironmentThemeDef_CopyCEnvironmentThemeDefUAEXPBVCDefClassBaseZ_004734b2_test.cpp'
+        PassPattern = 'PASS_004734b2'
+    }
+    [pscustomobject]@{
+        Address = '0047795f'
+        Module = 'CEngineLocalDetailObjectDef'
+        Source = '00/47/CEngineLocalDetailObjectDef_CopyCEngineLocalDetailObjectDefUAEXPBVCDefClassB_0047795f.cpp'
+        TestSource = '00/47/CEngineLocalDetailObjectDef_CopyCEngineLocalDetailObjectDefUAEXPBVCDefClassB_0047795f_test.cpp'
+        PassPattern = 'PASS_0047795f'
+    }
+    [pscustomobject]@{
+        Address = '0047812d'
+        Module = 'CHeroStatsDef'
+        Source = '00/47/CHeroStatsDef_Copy_0047812d.cpp'
+        TestSource = '00/47/CHeroStatsDef_Copy_0047812d_test.cpp'
+        PassPattern = 'PASS_0047812d'
+    }
+    [pscustomobject]@{
+        Address = '0047852e'
+        Module = 'CAppearanceModifierScalingDef'
+        Source = '00/47/CAppearanceModifierScalingDef_CopyCAppearanceModifierScalingDefUAEXPBVCDefClas_0047852e.cpp'
+        TestSource = '00/47/CAppearanceModifierScalingDef_CopyCAppearanceModifierScalingDefUAEXPBVCDefClas_0047852e_test.cpp'
+        PassPattern = 'PASS_0047852e'
+    }
+    [pscustomobject]@{
+        Address = '00478871'
+        Module = 'CAbilityTrackLevelDef'
+        Source = '00/47/CAbilityTrackLevelDef_CopyCAbilityTrackLevelDefUAEXPBVCDefClassBaseZ_00478871.cpp'
+        TestSource = '00/47/CAbilityTrackLevelDef_CopyCAbilityTrackLevelDefUAEXPBVCDefClassBaseZ_00478871_test.cpp'
+        PassPattern = 'PASS_00478871'
+    }
+    [pscustomobject]@{
+        Address = '00478a68'
+        Module = 'CAbilityTrackDef'
+        Source = '00/47/CAbilityTrackDef_CopyCAbilityTrackDefUAEXPBVCDefClassBaseZ_00478a68.cpp'
+        TestSource = '00/47/CAbilityTrackDef_CopyCAbilityTrackDefUAEXPBVCDefClassBaseZ_00478a68_test.cpp'
+        PassPattern = 'PASS_00478a68'
+    }
+    [pscustomobject]@{
+        Address = '0049c6f0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/49/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0049c6f0.cpp'
+        TestSource = '00/49/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0049c6f0_test.cpp'
+        PassPattern = 'PASS_0049c6f0'
+    }
+    [pscustomobject]@{
+        Address = '0049d9d0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/49/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0049d9d0.cpp'
+        TestSource = '00/49/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0049d9d0_test.cpp'
+        PassPattern = 'PASS_0049d9d0'
+    }
+    [pscustomobject]@{
+        Address = '004ae990'
+        Module = 'CInitBaseClass'
+        Source = '00/4a/CInitBaseClass_Uninitialise_004ae990.cpp'
+        TestSource = '00/4a/CInitBaseClass_Uninitialise_004ae990_test.cpp'
+        PassPattern = 'PASS_004ae990'
+    }
+    [pscustomobject]@{
+        Address = '004bffc0'
+        Module = 'CTCGraphicAppearance'
+        Source = '00/4b/CTCGraphicAppearance_ClearMeshEffect_004bffc0.cpp'
+        TestSource = '00/4b/CTCGraphicAppearance_ClearMeshEffect_004bffc0_test.cpp'
+        PassPattern = 'PASS_004bffc0'
+    }
+    [pscustomobject]@{
+        Address = '004da6f7'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004da6f7.cpp'
+        TestSource = '00/4d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004da6f7_test.cpp'
+        PassPattern = 'PASS_004da6f7'
+    }
+    [pscustomobject]@{
+        Address = '004df48c'
+        Module = 'CObstacleNavigatorExternalInterface'
+        Source = '00/4d/CObstacleNavigatorExternalInterface_GetConstantFPS_004df48c.cpp'
+        TestSource = '00/4d/CObstacleNavigatorExternalInterface_GetConstantFPS_004df48c_test.cpp'
+        PassPattern = 'PASS_004df48c'
+    }
+    [pscustomobject]@{
+        Address = '004df54f'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004df54f.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004df54f_test.cpp'
+        PassPattern = 'PASS_004df54f'
+    }
+    [pscustomobject]@{
+        Address = '004df885'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004df885.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004df885_test.cpp'
+        PassPattern = 'PASS_004df885'
+    }
+    [pscustomobject]@{
+        Address = '004dfeb3'
+        Module = 'CCarryableDef'
+        Source = '00/4d/CCarryableDef_Copy_004dfeb3.cpp'
+        TestSource = '00/4d/CCarryableDef_Copy_004dfeb3_test.cpp'
+        PassPattern = 'PASS_004dfeb3'
+    }
+    [pscustomobject]@{
+        Address = '004dffbe'
+        Module = 'CBedDef'
+        Source = '00/4d/CBedDef_Copy_004dffbe.cpp'
+        TestSource = '00/4d/CBedDef_Copy_004dffbe_test.cpp'
+        PassPattern = 'PASS_004dffbe'
+    }
+    [pscustomobject]@{
+        Address = '004e0015'
+        Module = 'CCreatureNavigationDef'
+        Source = '00/4e/CCreatureNavigationDef_Copy_004e0015.cpp'
+        TestSource = '00/4e/CCreatureNavigationDef_Copy_004e0015_test.cpp'
+        PassPattern = 'PASS_004e0015'
+    }
+    [pscustomobject]@{
+        Address = '004e01d9'
+        Module = 'CDoorDef'
+        Source = '00/4e/CDoorDef_Copy_004e01d9.cpp'
+        TestSource = '00/4e/CDoorDef_Copy_004e01d9_test.cpp'
+        PassPattern = 'PASS_004e01d9'
+    }
+    [pscustomobject]@{
+        Address = '004e021d'
+        Module = 'CKickableDef'
+        Source = '00/4e/CKickableDef_Copy_004e021d.cpp'
+        TestSource = '00/4e/CKickableDef_Copy_004e021d_test.cpp'
+        PassPattern = 'PASS_004e021d'
+    }
+    [pscustomobject]@{
+        Address = '004e0279'
+        Module = 'CLightDef'
+        Source = '00/4e/CLightDef_Copy_004e0279.cpp'
+        TestSource = '00/4e/CLightDef_Copy_004e0279_test.cpp'
+        PassPattern = 'PASS_004e0279'
+    }
+    [pscustomobject]@{
+        Address = '004e02ed'
+        Module = 'CSpotLightDef'
+        Source = '00/4e/CSpotLightDef_Copy_004e02ed.cpp'
+        TestSource = '00/4e/CSpotLightDef_Copy_004e02ed_test.cpp'
+        PassPattern = 'PASS_004e02ed'
+    }
+    [pscustomobject]@{
+        Address = '004e03cf'
+        Module = 'CPerceivedThingDef'
+        Source = '00/4e/CPerceivedThingDef_Copy_004e03cf.cpp'
+        TestSource = '00/4e/CPerceivedThingDef_Copy_004e03cf_test.cpp'
+        PassPattern = 'PASS_004e03cf'
+    }
+    [pscustomobject]@{
+        Address = '004e0425'
+        Module = 'CStealthDef'
+        Source = '00/4e/CStealthDef_Copy_004e0425.cpp'
+        TestSource = '00/4e/CStealthDef_Copy_004e0425_test.cpp'
+        PassPattern = 'PASS_004e0425'
+    }
+    [pscustomobject]@{
+        Address = '004e046f'
+        Module = 'CTrophyDef'
+        Source = '00/4e/CTrophyDef_Copy_004e046f.cpp'
+        TestSource = '00/4e/CTrophyDef_Copy_004e046f_test.cpp'
+        PassPattern = 'PASS_004e046f'
+    }
+    [pscustomobject]@{
+        Address = '004e05a8'
+        Module = 'CExplodingObjectDef'
+        Source = '00/4e/CExplodingObjectDef_Copy_004e05a8.cpp'
+        TestSource = '00/4e/CExplodingObjectDef_Copy_004e05a8_test.cpp'
+        PassPattern = 'PASS_004e05a8'
+    }
+    [pscustomobject]@{
+        Address = '004e05da'
+        Module = 'CLookDef'
+        Source = '00/4e/CLookDef_Copy_004e05da.cpp'
+        TestSource = '00/4e/CLookDef_Copy_004e05da_test.cpp'
+        PassPattern = 'PASS_004e05da'
+    }
+    [pscustomobject]@{
+        Address = '004e0667'
+        Module = 'COpinionOfHeroDef'
+        Source = '00/4e/COpinionOfHeroDef_Copy_004e0667.cpp'
+        TestSource = '00/4e/COpinionOfHeroDef_Copy_004e0667_test.cpp'
+        PassPattern = 'PASS_004e0667'
+    }
+    [pscustomobject]@{
+        Address = '004e0707'
+        Module = 'CStockItemDef'
+        Source = '00/4e/CStockItemDef_Copy_004e0707.cpp'
+        TestSource = '00/4e/CStockItemDef_Copy_004e0707_test.cpp'
+        PassPattern = 'PASS_004e0707'
+    }
+    [pscustomobject]@{
+        Address = '004e074b'
+        Module = 'CTimeAppearanceFadeDef'
+        Source = '00/4e/CTimeAppearanceFadeDef_Copy_004e074b.cpp'
+        TestSource = '00/4e/CTimeAppearanceFadeDef_Copy_004e074b_test.cpp'
+        PassPattern = 'PASS_004e074b'
+    }
+    [pscustomobject]@{
+        Address = '004e091e'
+        Module = 'CHighlightItemDef'
+        Source = '00/4e/CHighlightItemDef_Copy_004e091e.cpp'
+        TestSource = '00/4e/CHighlightItemDef_Copy_004e091e_test.cpp'
+        PassPattern = 'PASS_004e091e'
+    }
+    [pscustomobject]@{
+        Address = '004e0a00'
+        Module = 'CHeroCentreDef'
+        Source = '00/4e/CHeroCentreDef_CopyCHeroCentreDefUAEXPBVCDefClassBaseZ_004e0a00.cpp'
+        TestSource = '00/4e/CHeroCentreDef_CopyCHeroCentreDefUAEXPBVCDefClassBaseZ_004e0a00_test.cpp'
+        PassPattern = 'PASS_004e0a00'
+    }
+    [pscustomobject]@{
+        Address = '004e0a67'
+        Module = 'CShipDef'
+        Source = '00/4e/CShipDef_Copy_004e0a67.cpp'
+        TestSource = '00/4e/CShipDef_Copy_004e0a67_test.cpp'
+        PassPattern = 'PASS_004e0a67'
+    }
+    [pscustomobject]@{
+        Address = '004e0e23'
+        Module = 'CGuardDef'
+        Source = '00/4e/CGuardDef_Copy_004e0e23.cpp'
+        TestSource = '00/4e/CGuardDef_Copy_004e0e23_test.cpp'
+        PassPattern = 'PASS_004e0e23'
+    }
+    [pscustomobject]@{
+        Address = '004e0eb7'
+        Module = 'COverheadDisplayDef'
+        Source = '00/4e/COverheadDisplayDef_Copy_004e0eb7.cpp'
+        TestSource = '00/4e/COverheadDisplayDef_Copy_004e0eb7_test.cpp'
+        PassPattern = 'PASS_004e0eb7'
+    }
+    [pscustomobject]@{
+        Address = '004e0f4d'
+        Module = 'CThingDrainLifeShotDef'
+        Source = '00/4e/CThingDrainLifeShotDef_Copy_004e0f4d.cpp'
+        TestSource = '00/4e/CThingDrainLifeShotDef_Copy_004e0f4d_test.cpp'
+        PassPattern = 'PASS_004e0f4d'
+    }
+    [pscustomobject]@{
+        Address = '004e10c1'
+        Module = 'CTavernGameCoinBaseDef'
+        Source = '00/4e/CTavernGameCoinBaseDef_Copy_004e10c1.cpp'
+        TestSource = '00/4e/CTavernGameCoinBaseDef_Copy_004e10c1_test.cpp'
+        PassPattern = 'PASS_004e10c1'
+    }
+    [pscustomobject]@{
+        Address = '004e112d'
+        Module = 'CTavernGameCoinGolfDef'
+        Source = '00/4e/CTavernGameCoinGolfDef_Copy_004e112d.cpp'
+        TestSource = '00/4e/CTavernGameCoinGolfDef_Copy_004e112d_test.cpp'
+        PassPattern = 'PASS_004e112d'
+    }
+    [pscustomobject]@{
+        Address = '004e1287'
+        Module = 'CWallMountEffectsDef'
+        Source = '00/4e/CWallMountEffectsDef_Copy_004e1287.cpp'
+        TestSource = '00/4e/CWallMountEffectsDef_Copy_004e1287_test.cpp'
+        PassPattern = 'PASS_004e1287'
+    }
+    [pscustomobject]@{
+        Address = '004e12b3'
+        Module = 'CFishDef'
+        Source = '00/4e/CFishDef_Copy_004e12b3.cpp'
+        TestSource = '00/4e/CFishDef_Copy_004e12b3_test.cpp'
+        PassPattern = 'PASS_004e12b3'
+    }
+    [pscustomobject]@{
+        Address = '004e1315'
+        Module = 'CTeleporterDef'
+        Source = '00/4e/CTeleporterDef_Copy_004e1315.cpp'
+        TestSource = '00/4e/CTeleporterDef_Copy_004e1315_test.cpp'
+        PassPattern = 'PASS_004e1315'
+    }
+    [pscustomobject]@{
+        Address = '004e1362'
+        Module = 'CHeroSpecialMovementDef'
+        Source = '00/4e/CHeroSpecialMovementDef_Copy_004e1362.cpp'
+        TestSource = '00/4e/CHeroSpecialMovementDef_Copy_004e1362_test.cpp'
+        PassPattern = 'PASS_004e1362'
+    }
+    [pscustomobject]@{
+        Address = '004e148f'
+        Module = 'CKrakenTentacleDef'
+        Source = '00/4e/CKrakenTentacleDef_Copy_004e148f.cpp'
+        TestSource = '00/4e/CKrakenTentacleDef_Copy_004e148f_test.cpp'
+        PassPattern = 'PASS_004e148f'
+    }
+    [pscustomobject]@{
+        Address = '004e159b'
+        Module = 'CFishingRodDef'
+        Source = '00/4e/CFishingRodDef_Copy_004e159b.cpp'
+        TestSource = '00/4e/CFishingRodDef_Copy_004e159b_test.cpp'
+        PassPattern = 'PASS_004e159b'
+    }
+    [pscustomobject]@{
+        Address = '004e1769'
+        Module = 'CNymphDef'
+        Source = '00/4e/CNymphDef_Copy_004e1769.cpp'
+        TestSource = '00/4e/CNymphDef_Copy_004e1769_test.cpp'
+        PassPattern = 'PASS_004e1769'
+    }
+    [pscustomobject]@{
+        Address = '004e17cd'
+        Module = 'CSummonDef'
+        Source = '00/4e/CSummonDef_Copy_004e17cd.cpp'
+        TestSource = '00/4e/CSummonDef_Copy_004e17cd_test.cpp'
+        PassPattern = 'PASS_004e17cd'
+    }
+    [pscustomobject]@{
+        Address = '004e1897'
+        Module = 'CTCVolumeContainmentTrackerDef'
+        Source = '00/4e/CTCVolumeContainmentTrackerDef_Copy_004e1897.cpp'
+        TestSource = '00/4e/CTCVolumeContainmentTrackerDef_Copy_004e1897_test.cpp'
+        PassPattern = 'PASS_004e1897'
+    }
+    [pscustomobject]@{
+        Address = '004e18c9'
+        Module = 'CWillResponseDef'
+        Source = '00/4e/CWillResponseDef_Copy_004e18c9.cpp'
+        TestSource = '00/4e/CWillResponseDef_Copy_004e18c9_test.cpp'
+        PassPattern = 'PASS_004e18c9'
+    }
+    [pscustomobject]@{
+        Address = '004e1913'
+        Module = 'CBettingDef'
+        Source = '00/4e/CBettingDef_Copy_004e1913.cpp'
+        TestSource = '00/4e/CBettingDef_Copy_004e1913_test.cpp'
+        PassPattern = 'PASS_004e1913'
+    }
+    [pscustomobject]@{
+        Address = '004e1975'
+        Module = 'COracleMinigameDef'
+        Source = '00/4e/COracleMinigameDef_Copy_004e1975.cpp'
+        TestSource = '00/4e/COracleMinigameDef_Copy_004e1975_test.cpp'
+        PassPattern = 'PASS_004e1975'
+    }
+    [pscustomobject]@{
+        Address = '004e19dd'
+        Module = 'CFireheartMinigameDef'
+        Source = '00/4e/CFireheartMinigameDef_Copy_004e19dd.cpp'
+        TestSource = '00/4e/CFireheartMinigameDef_Copy_004e19dd_test.cpp'
+        PassPattern = 'PASS_004e19dd'
+    }
+    [pscustomobject]@{
+        Address = '004e1a21'
+        Module = 'CLightningOrbDef'
+        Source = '00/4e/CLightningOrbDef_Copy_004e1a21.cpp'
+        TestSource = '00/4e/CLightningOrbDef_Copy_004e1a21_test.cpp'
+        PassPattern = 'PASS_004e1a21'
+    }
+    [pscustomobject]@{
+        Address = '004e1a59'
+        Module = 'CHasNameDef'
+        Source = '00/4e/CHasNameDef_Copy_004e1a59.cpp'
+        TestSource = '00/4e/CHasNameDef_Copy_004e1a59_test.cpp'
+        PassPattern = 'PASS_004e1a59'
+    }
+    [pscustomobject]@{
+        Address = '004e1e01'
+        Module = 'CVillageDef'
+        Source = '00/4e/CVillageDef_Copy_004e1e01.cpp'
+        TestSource = '00/4e/CVillageDef_Copy_004e1e01_test.cpp'
+        PassPattern = 'PASS_004e1e01'
+    }
+    [pscustomobject]@{
+        Address = '004e238c'
+        Module = 'CBuyableHouseDef'
+        Source = '00/4e/CBuyableHouseDef_Copy_004e238c.cpp'
+        TestSource = '00/4e/CBuyableHouseDef_Copy_004e238c_test.cpp'
+        PassPattern = 'PASS_004e238c'
+    }
+    [pscustomobject]@{
+        Address = '004e2442'
+        Module = 'CCreatureGeneratorDef'
+        Source = '00/4e/CCreatureGeneratorDef_Copy_004e2442.cpp'
+        TestSource = '00/4e/CCreatureGeneratorDef_Copy_004e2442_test.cpp'
+        PassPattern = 'PASS_004e2442'
+    }
+    [pscustomobject]@{
+        Address = '004e2963'
+        Module = 'CCreatureModeDef'
+        Source = '00/4e/CCreatureModeDef_Copy_004e2963.cpp'
+        TestSource = '00/4e/CCreatureModeDef_Copy_004e2963_test.cpp'
+        PassPattern = 'PASS_004e2963'
+    }
+    [pscustomobject]@{
+        Address = '004e2c03'
+        Module = 'CBossDef'
+        Source = '00/4e/CBossDef_Copy_004e2c03.cpp'
+        TestSource = '00/4e/CBossDef_Copy_004e2c03_test.cpp'
+        PassPattern = 'PASS_004e2c03'
+    }
+    [pscustomobject]@{
+        Address = '004e2c4d'
+        Module = 'CFishingDef'
+        Source = '00/4e/CFishingDef_Copy_004e2c4d.cpp'
+        TestSource = '00/4e/CFishingDef_Copy_004e2c4d_test.cpp'
+        PassPattern = 'PASS_004e2c4d'
+    }
+    [pscustomobject]@{
+        Address = '004e2cdf'
+        Module = 'CTurncoatDef'
+        Source = '00/4e/CTurncoatDef_Copy_004e2cdf.cpp'
+        TestSource = '00/4e/CTurncoatDef_Copy_004e2cdf_test.cpp'
+        PassPattern = 'PASS_004e2cdf'
+    }
+    [pscustomobject]@{
+        Address = '004e2e08'
+        Module = 'CTavernGameSpotTheAdditionDef'
+        Source = '00/4e/CTavernGameSpotTheAdditionDef_Copy_004e2e08.cpp'
+        TestSource = '00/4e/CTavernGameSpotTheAdditionDef_Copy_004e2e08_test.cpp'
+        PassPattern = 'PASS_004e2e08'
+    }
+    [pscustomobject]@{
+        Address = '004e2eca'
+        Module = 'CExplosionDef'
+        Source = '00/4e/CExplosionDef_Copy_004e2eca.cpp'
+        TestSource = '00/4e/CExplosionDef_Copy_004e2eca_test.cpp'
+        PassPattern = 'PASS_004e2eca'
+    }
+    [pscustomobject]@{
+        Address = '004e3168'
+        Module = 'CKrakenDef'
+        Source = '00/4e/CKrakenDef_Copy_004e3168.cpp'
+        TestSource = '00/4e/CKrakenDef_Copy_004e3168_test.cpp'
+        PassPattern = 'PASS_004e3168'
+    }
+    [pscustomobject]@{
+        Address = '004e4294'
+        Module = 'CQuestCardDef'
+        Source = '00/4e/CQuestCardDef_Copy_004e4294.cpp'
+        TestSource = '00/4e/CQuestCardDef_Copy_004e4294_test.cpp'
+        PassPattern = 'PASS_004e4294'
+    }
+    [pscustomobject]@{
+        Address = '004e444b'
+        Module = 'CClockDef'
+        Source = '00/4e/CClockDef_Copy_004e444b.cpp'
+        TestSource = '00/4e/CClockDef_Copy_004e444b_test.cpp'
+        PassPattern = 'PASS_004e444b'
+    }
+    [pscustomobject]@{
+        Address = '004e457e'
+        Module = 'CMazeBattleDef'
+        Source = '00/4e/CMazeBattleDef_Copy_004e457e.cpp'
+        TestSource = '00/4e/CMazeBattleDef_Copy_004e457e_test.cpp'
+        PassPattern = 'PASS_004e457e'
+    }
+    [pscustomobject]@{
+        Address = '004e45f2'
+        Module = 'CThunderBattleDef'
+        Source = '00/4e/CThunderBattleDef_Copy_004e45f2.cpp'
+        TestSource = '00/4e/CThunderBattleDef_Copy_004e45f2_test.cpp'
+        PassPattern = 'PASS_004e45f2'
+    }
+    [pscustomobject]@{
+        Address = '004e46c8'
+        Module = 'CJackOfBladesBattleDef'
+        Source = '00/4e/CJackOfBladesBattleDef_Copy_004e46c8.cpp'
+        TestSource = '00/4e/CJackOfBladesBattleDef_Copy_004e46c8_test.cpp'
+        PassPattern = 'PASS_004e46c8'
+    }
+    [pscustomobject]@{
+        Address = '004e476f'
+        Module = 'CScorpionKingBattleDef'
+        Source = '00/4e/CScorpionKingBattleDef_Copy_004e476f.cpp'
+        TestSource = '00/4e/CScorpionKingBattleDef_Copy_004e476f_test.cpp'
+        PassPattern = 'PASS_004e476f'
+    }
+    [pscustomobject]@{
+        Address = '004e47e3'
+        Module = 'CTrollBattleDef'
+        Source = '00/4e/CTrollBattleDef_Copy_004e47e3.cpp'
+        TestSource = '00/4e/CTrollBattleDef_Copy_004e47e3_test.cpp'
+        PassPattern = 'PASS_004e47e3'
+    }
+    [pscustomobject]@{
+        Address = '004e4857'
+        Module = 'CBalverineBattleDef'
+        Source = '00/4e/CBalverineBattleDef_Copy_004e4857.cpp'
+        TestSource = '00/4e/CBalverineBattleDef_Copy_004e4857_test.cpp'
+        PassPattern = 'PASS_004e4857'
+    }
+    [pscustomobject]@{
+        Address = '004e4939'
+        Module = 'CWeaponDef'
+        Source = '00/4e/CWeaponDef_Copy_004e4939.cpp'
+        TestSource = '00/4e/CWeaponDef_Copy_004e4939_test.cpp'
+        PassPattern = 'PASS_004e4939'
+    }
+    [pscustomobject]@{
+        Address = '004e4d83'
+        Module = 'CExperienceDef'
+        Source = '00/4e/CExperienceDef_Copy_004e4d83.cpp'
+        TestSource = '00/4e/CExperienceDef_Copy_004e4d83_test.cpp'
+        PassPattern = 'PASS_004e4d83'
+    }
+    [pscustomobject]@{
+        Address = '004e5834'
+        Module = 'CFlammableDef'
+        Source = '00/4e/CFlammableDef_Copy_004e5834.cpp'
+        TestSource = '00/4e/CFlammableDef_Copy_004e5834_test.cpp'
+        PassPattern = 'PASS_004e5834'
+    }
+    [pscustomobject]@{
+        Address = '004e5c84'
+        Module = 'CTrapDef'
+        Source = '00/4e/CTrapDef_Copy_004e5c84.cpp'
+        TestSource = '00/4e/CTrapDef_Copy_004e5c84_test.cpp'
+        PassPattern = 'PASS_004e5c84'
+    }
+    [pscustomobject]@{
+        Address = '004e64ee'
+        Module = 'CRumbleDef'
+        Source = '00/4e/CRumbleDef_Copy_004e64ee.cpp'
+        TestSource = '00/4e/CRumbleDef_Copy_004e64ee_test.cpp'
+        PassPattern = 'PASS_004e64ee'
+    }
+    [pscustomobject]@{
+        Address = '004e6cc1'
+        Module = 'CAreaOfEffectAttackDef'
+        Source = '00/4e/CAreaOfEffectAttackDef_Copy_004e6cc1.cpp'
+        TestSource = '00/4e/CAreaOfEffectAttackDef_Copy_004e6cc1_test.cpp'
+        PassPattern = 'PASS_004e6cc1'
+    }
+    [pscustomobject]@{
+        Address = '004e6f06'
+        Module = 'CHeroMorphDef'
+        Source = '00/4e/CHeroMorphDef_Copy_004e6f06.cpp'
+        TestSource = '00/4e/CHeroMorphDef_Copy_004e6f06_test.cpp'
+        PassPattern = 'PASS_004e6f06'
+    }
+    [pscustomobject]@{
+        Address = '004e980e'
+        Module = 'CShopDef'
+        Source = '00/4e/CShopDef_Copy_004e980e.cpp'
+        TestSource = '00/4e/CShopDef_Copy_004e980e_test.cpp'
+        PassPattern = 'PASS_004e980e'
+    }
+    [pscustomobject]@{
+        Address = '004ea6d8'
+        Module = 'CTavernGameDef'
+        Source = '00/4e/CTavernGameDef_CopyCTavernGameDefUAEXPBVCDefClassBaseZ_004ea6d8.cpp'
+        TestSource = '00/4e/CTavernGameDef_CopyCTavernGameDefUAEXPBVCDefClassBaseZ_004ea6d8_test.cpp'
+        PassPattern = 'PASS_004ea6d8'
+    }
+    [pscustomobject]@{
+        Address = '004ead02'
+        Module = 'CTavernGameShoveHaPennyDef'
+        Source = '00/4e/CTavernGameShoveHaPennyDef_Copy_004ead02.cpp'
+        TestSource = '00/4e/CTavernGameShoveHaPennyDef_Copy_004ead02_test.cpp'
+        PassPattern = 'PASS_004ead02'
+    }
+    [pscustomobject]@{
+        Address = '004eb907'
+        Module = 'CMultiStaticMeshEntryDef'
+        Source = '00/4e/CMultiStaticMeshEntryDef_CopyCMultiStaticMeshEntryDefUAEXPBVCDefClassBase_004eb907.cpp'
+        TestSource = '00/4e/CMultiStaticMeshEntryDef_CopyCMultiStaticMeshEntryDefUAEXPBVCDefClassBase_004eb907_test.cpp'
+        PassPattern = 'PASS_004eb907'
+    }
+    [pscustomobject]@{
+        Address = '004ebc11'
+        Module = 'CTavernGameCardBaseDef'
+        Source = '00/4e/CTavernGameCardBaseDef_Copy_004ebc11.cpp'
+        TestSource = '00/4e/CTavernGameCardBaseDef_Copy_004ebc11_test.cpp'
+        PassPattern = 'PASS_004ebc11'
+    }
+    [pscustomobject]@{
+        Address = '004ec16f'
+        Module = 'CObjectAugmentationsDef'
+        Source = '00/4e/CObjectAugmentationsDef_Copy_004ec16f.cpp'
+        TestSource = '00/4e/CObjectAugmentationsDef_Copy_004ec16f_test.cpp'
+        PassPattern = 'PASS_004ec16f'
+    }
+    [pscustomobject]@{
+        Address = '004f9145'
+        Module = 'CHeroExperienceDef'
+        Source = '00/4f/CHeroExperienceDef_Copy_004f9145.cpp'
+        TestSource = '00/4f/CHeroExperienceDef_Copy_004f9145_test.cpp'
+        PassPattern = 'PASS_004f9145'
+    }
+    [pscustomobject]@{
+        Address = '004fb310'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/4f/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004fb310.cpp'
+        TestSource = '00/4f/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004fb310_test.cpp'
+        PassPattern = 'PASS_004fb310'
+    }
+    [pscustomobject]@{
+        Address = '004fb4a0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/4f/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004fb4a0.cpp'
+        TestSource = '00/4f/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004fb4a0_test.cpp'
+        PassPattern = 'PASS_004fb4a0'
+    }
+    [pscustomobject]@{
+        Address = '00547bd0'
+        Module = 'CMovie'
+        Source = '00/54/CMovie_Initialise_00547bd0.cpp'
+        TestSource = '00/54/CMovie_Initialise_00547bd0_test.cpp'
+        PassPattern = 'PASS_00547bd0'
+    }
+    [pscustomobject]@{
+        Address = '00557850'
+        Module = 'NUISystem::CKeyRedefiner'
+        Source = '00/55/NUISystemCKeyRedefiner_OnLeftClicked_00557850.cpp'
+        TestSource = '00/55/NUISystemCKeyRedefiner_OnLeftClicked_00557850_test.cpp'
+        PassPattern = 'PASS_00557850'
+    }
+    [pscustomobject]@{
+        Address = '0055a3d0'
+        Module = 'CClickable'
+        Source = '00/55/CClickable_Initialise_0055a3d0.cpp'
+        TestSource = '00/55/CClickable_Initialise_0055a3d0_test.cpp'
+        PassPattern = 'PASS_0055a3d0'
+    }
+    [pscustomobject]@{
+        Address = '0055b880'
+        Module = 'CChangingStateComponent'
+        Source = '00/55/CChangingStateComponent_Initialise_0055b880.cpp'
+        TestSource = '00/55/CChangingStateComponent_Initialise_0055b880_test.cpp'
+        PassPattern = 'PASS_0055b880'
+    }
+    [pscustomobject]@{
+        Address = '0058a724'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_GetStyleCardsListUIComponent_0058a724.cpp'
+        TestSource = '00/58/CTCInventory_GetStyleCardsListUIComponent_0058a724_test.cpp'
+        PassPattern = 'PASS_0058a724'
+    }
+    [pscustomobject]@{
+        Address = '005bcf4c'
+        Module = 'CTCInventoryBase'
+        Source = '00/5b/CTCInventoryBase_SetQuestPersistentFlagForItems_005bcf4c.cpp'
+        TestSource = '00/5b/CTCInventoryBase_SetQuestPersistentFlagForItems_005bcf4c_test.cpp'
+        PassPattern = 'PASS_005bcf4c'
+    }
+    [pscustomobject]@{
+        Address = '005bd1ae'
+        Module = 'CBaseIntelligentPointer'
+        Source = '00/5b/CBaseIntelligentPointer_GetPItem_005bd1ae.cpp'
+        TestSource = '00/5b/CBaseIntelligentPointer_GetPItem_005bd1ae_test.cpp'
+        PassPattern = 'PASS_005bd1ae'
+    }
+    [pscustomobject]@{
+        Address = '005c2ded'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/5c/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_005c2ded.cpp'
+        TestSource = '00/5c/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_005c2ded_test.cpp'
+        PassPattern = 'PASS_005c2ded'
+    }
+    [pscustomobject]@{
+        Address = '00643d7c'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/64/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00643d7c.cpp'
+        TestSource = '00/64/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00643d7c_test.cpp'
+        PassPattern = 'PASS_00643d7c'
+    }
+    [pscustomobject]@{
+        Address = '00643d84'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/64/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00643d84.cpp'
+        TestSource = '00/64/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00643d84_test.cpp'
+        PassPattern = 'PASS_00643d84'
+    }
+    [pscustomobject]@{
+        Address = '006590bf'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_InvalidateAndClearAllSecuritySweepTasks_006590bf.cpp'
+        TestSource = '00/65/CTCVillage_InvalidateAndClearAllSecuritySweepTasks_006590bf_test.cpp'
+        PassPattern = 'PASS_006590bf'
+    }
+    [pscustomobject]@{
+        Address = '00666820'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_UnsheatheMeleeWeapon_00666820.cpp'
+        TestSource = '00/66/CThingCreatureBase_UnsheatheMeleeWeapon_00666820_test.cpp'
+        PassPattern = 'PASS_00666820'
+    }
+    [pscustomobject]@{
+        Address = '006869d0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/68/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006869d0.cpp'
+        TestSource = '00/68/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006869d0_test.cpp'
+        PassPattern = 'PASS_006869d0'
+    }
+    [pscustomobject]@{
+        Address = '00686ae0'
+        Module = '_global'
+        Source = '00/68/global_GFGetPreMainMemoryUsed_00686ae0.cpp'
+        TestSource = '00/68/global_GFGetPreMainMemoryUsed_00686ae0_test.cpp'
+        PassPattern = 'PASS_00686ae0'
+    }
+    [pscustomobject]@{
+        Address = '00686af0'
+        Module = '_global'
+        Source = '00/68/global_GFGetPreMainMemoryUsed_00686af0.cpp'
+        TestSource = '00/68/global_GFGetPreMainMemoryUsed_00686af0_test.cpp'
+        PassPattern = 'PASS_00686af0'
+    }
+    [pscustomobject]@{
+        Address = '00687c70'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/68/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687c70.cpp'
+        TestSource = '00/68/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687c70_test.cpp'
+        PassPattern = 'PASS_00687c70'
+    }
+    [pscustomobject]@{
+        Address = '00687c80'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/68/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687c80.cpp'
+        TestSource = '00/68/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687c80_test.cpp'
+        PassPattern = 'PASS_00687c80'
+    }
+    [pscustomobject]@{
+        Address = '00687ce0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/68/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687ce0.cpp'
+        TestSource = '00/68/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687ce0_test.cpp'
+        PassPattern = 'PASS_00687ce0'
+    }
+    [pscustomobject]@{
+        Address = '00687cf0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/68/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687cf0.cpp'
+        TestSource = '00/68/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687cf0_test.cpp'
+        PassPattern = 'PASS_00687cf0'
+    }
+    [pscustomobject]@{
+        Address = '00687d00'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/68/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687d00.cpp'
+        TestSource = '00/68/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00687d00_test.cpp'
+        PassPattern = 'PASS_00687d00'
+    }
+    [pscustomobject]@{
+        Address = '00689c20'
+        Module = 'CInputProcessInventoryMagicScreen'
+        Source = '00/68/CInputProcessInventoryMagicScreen_ProcessInputCInputProcessInventoryMagicScreenUAE_00689c20.cpp'
+        TestSource = '00/68/CInputProcessInventoryMagicScreen_ProcessInputCInputProcessInventoryMagicScreenUAE_00689c20_test.cpp'
+        PassPattern = 'PASS_00689c20'
+    }
+    [pscustomobject]@{
+        Address = '00697b60'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/69/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00697b60.cpp'
+        TestSource = '00/69/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00697b60_test.cpp'
+        PassPattern = 'PASS_00697b60'
+    }
+    [pscustomobject]@{
+        Address = '0069f740'
+        Module = 'CCreatureAction_SheatheItemToInventory_ForEnflame'
+        Source = '00/69/CCreatureActionSheatheItemToInventoryForEnflame_PerformActionCCreatureActionSheatheItemToInvento_0069f740.cpp'
+        TestSource = '00/69/CCreatureActionSheatheItemToInventoryForEnflame_PerformActionCCreatureActionSheatheItemToInvento_0069f740_test.cpp'
+        PassPattern = 'PASS_0069f740'
+    }
+    [pscustomobject]@{
+        Address = '0069f7f0'
+        Module = 'CCreatureAction_SheatheItemToInventory_ForDivineWrath'
+        Source = '00/69/CCreatureActionSheatheItemToInventoryForDivineWrath_PerformActionCCreatureActionSheatheItemToInvento_0069f7f0.cpp'
+        TestSource = '00/69/CCreatureActionSheatheItemToInventoryForDivineWrath_PerformActionCCreatureActionSheatheItemToInvento_0069f7f0_test.cpp'
+        PassPattern = 'PASS_0069f7f0'
+    }
+    [pscustomobject]@{
+        Address = '0069f8a0'
+        Module = 'CCreatureAction_SheatheItemToInventory_ForUnholyPower'
+        Source = '00/69/CCreatureActionSheatheItemToInventoryForUnholyPower_PerformActionCCreatureActionSheatheItemToInvento_0069f8a0.cpp'
+        TestSource = '00/69/CCreatureActionSheatheItemToInventoryForUnholyPower_PerformActionCCreatureActionSheatheItemToInvento_0069f8a0_test.cpp'
+        PassPattern = 'PASS_0069f8a0'
+    }
+    [pscustomobject]@{
+        Address = '0069fcd0'
+        Module = 'CCreatureAction_UnsheatheItemFromInventoryWithHasteAction'
+        Source = '00/69/CCreatureActionUnsheatheItemFromInventoryWithHasteAction_PerformActionCCreatureActionUnsheatheItemFromInv_0069fcd0.cpp'
+        TestSource = '00/69/CCreatureActionUnsheatheItemFromInventoryWithHasteAction_PerformActionCCreatureActionUnsheatheItemFromInv_0069fcd0_test.cpp'
+        PassPattern = 'PASS_0069fcd0'
+    }
+    [pscustomobject]@{
+        Address = '006a4cf0'
+        Module = 'CParticleSystem'
+        Source = '00/6a/CParticleSystem_Kill_006a4cf0.cpp'
+        TestSource = '00/6a/CParticleSystem_Kill_006a4cf0_test.cpp'
+        PassPattern = 'PASS_006a4cf0'
+    }
+    [pscustomobject]@{
+        Address = '006a4dc0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/6a/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006a4dc0.cpp'
+        TestSource = '00/6a/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006a4dc0_test.cpp'
+        PassPattern = 'PASS_006a4dc0'
+    }
+    [pscustomobject]@{
+        Address = '006b08e0'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_CreatePPhysicsMeshInfo_006b08e0.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_CreatePPhysicsMeshInfo_006b08e0_test.cpp'
+        PassPattern = 'PASS_006b08e0'
+    }
+    [pscustomobject]@{
+        Address = '006b32a0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/6b/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006b32a0.cpp'
+        TestSource = '00/6b/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006b32a0_test.cpp'
+        PassPattern = 'PASS_006b32a0'
+    }
+    [pscustomobject]@{
+        Address = '006cda00'
+        Module = 'CGroundNavigatorExternalInterface'
+        Source = '00/6c/CGroundNavigatorExternalInterface_GetNavigationLevelAt_006cda00.cpp'
+        TestSource = '00/6c/CGroundNavigatorExternalInterface_GetNavigationLevelAt_006cda00_test.cpp'
+        PassPattern = 'PASS_006cda00'
+    }
+    [pscustomobject]@{
+        Address = '006cdb00'
+        Module = 'CGroundNavigatorExternalInterface'
+        Source = '00/6c/CGroundNavigatorExternalInterface_GetConstantFPS_006cdb00.cpp'
+        TestSource = '00/6c/CGroundNavigatorExternalInterface_GetConstantFPS_006cdb00_test.cpp'
+        PassPattern = 'PASS_006cdb00'
+    }
+    [pscustomobject]@{
+        Address = '006d5ab0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/6d/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006d5ab0.cpp'
+        TestSource = '00/6d/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006d5ab0_test.cpp'
+        PassPattern = 'PASS_006d5ab0'
+    }
+    [pscustomobject]@{
+        Address = '006d5ac0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/6d/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006d5ac0.cpp'
+        TestSource = '00/6d/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006d5ac0_test.cpp'
+        PassPattern = 'PASS_006d5ac0'
+    }
+    [pscustomobject]@{
+        Address = '006d5ad0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/6d/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006d5ad0.cpp'
+        TestSource = '00/6d/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006d5ad0_test.cpp'
+        PassPattern = 'PASS_006d5ad0'
+    }
+    [pscustomobject]@{
+        Address = '006d5ae0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/6d/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006d5ae0.cpp'
+        TestSource = '00/6d/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006d5ae0_test.cpp'
+        PassPattern = 'PASS_006d5ae0'
+    }
+    [pscustomobject]@{
+        Address = '006e0de0'
+        Module = 'CTCDParticleEmitter'
+        Source = '00/6e/CTCDParticleEmitter_ClearAttachments_006e0de0.cpp'
+        TestSource = '00/6e/CTCDParticleEmitter_ClearAttachments_006e0de0_test.cpp'
+        PassPattern = 'PASS_006e0de0'
+    }
+    [pscustomobject]@{
+        Address = '006e7270'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/6e/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006e7270.cpp'
+        TestSource = '00/6e/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006e7270_test.cpp'
+        PassPattern = 'PASS_006e7270'
+    }
+    [pscustomobject]@{
+        Address = '006e7280'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/6e/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006e7280.cpp'
+        TestSource = '00/6e/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006e7280_test.cpp'
+        PassPattern = 'PASS_006e7280'
+    }
+    [pscustomobject]@{
+        Address = '006f90b0'
+        Module = '_global'
+        Source = '00/6f/global_GFGetPreMainMemoryUsed_006f90b0.cpp'
+        TestSource = '00/6f/global_GFGetPreMainMemoryUsed_006f90b0_test.cpp'
+        PassPattern = 'PASS_006f90b0'
+    }
+    [pscustomobject]@{
+        Address = '006f90c0'
+        Module = '_global'
+        Source = '00/6f/global_GFGetPreMainMemoryUsed_006f90c0.cpp'
+        TestSource = '00/6f/global_GFGetPreMainMemoryUsed_006f90c0_test.cpp'
+        PassPattern = 'PASS_006f90c0'
+    }
+    [pscustomobject]@{
+        Address = '007283f0'
+        Module = 'CTCRandomAppearanceMorph'
+        Source = '00/72/CTCRandomAppearanceMorph_UpdateMorphSet_007283f0.cpp'
+        TestSource = '00/72/CTCRandomAppearanceMorph_UpdateMorphSet_007283f0_test.cpp'
+        PassPattern = 'PASS_007283f0'
+    }
+    [pscustomobject]@{
+        Address = '00733180'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/73/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00733180.cpp'
+        TestSource = '00/73/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00733180_test.cpp'
+        PassPattern = 'PASS_00733180'
+    }
+    [pscustomobject]@{
+        Address = '00733190'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/73/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00733190.cpp'
+        TestSource = '00/73/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00733190_test.cpp'
+        PassPattern = 'PASS_00733190'
+    }
+    [pscustomobject]@{
+        Address = '008201d0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/82/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_008201d0.cpp'
+        TestSource = '00/82/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_008201d0_test.cpp'
+        PassPattern = 'PASS_008201d0'
+    }
+    [pscustomobject]@{
+        Address = '008302c0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/83/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_008302c0.cpp'
+        TestSource = '00/83/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_008302c0_test.cpp'
+        PassPattern = 'PASS_008302c0'
+    }
+    [pscustomobject]@{
+        Address = '008302d0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/83/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_008302d0.cpp'
+        TestSource = '00/83/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_008302d0_test.cpp'
+        PassPattern = 'PASS_008302d0'
+    }
+    [pscustomobject]@{
+        Address = '00838930'
+        Module = 'CThingPhysical'
+        Source = '00/83/CThingPhysical_ConstructFromLevelScript_00838930.cpp'
+        TestSource = '00/83/CThingPhysical_ConstructFromLevelScript_00838930_test.cpp'
+        PassPattern = 'PASS_00838930'
+    }
+    [pscustomobject]@{
+        Address = '00842140'
+        Module = 'CCreatureAction_UseWallMount'
+        Source = '00/84/CCreatureActionUseWallMount_InitialiseCCreatureActionUseWallMountUAEXXZ_00842140.cpp'
+        TestSource = '00/84/CCreatureActionUseWallMount_InitialiseCCreatureActionUseWallMountUAEXXZ_00842140_test.cpp'
+        PassPattern = 'PASS_00842140'
+    }
+    [pscustomobject]@{
+        Address = '0085b890'
+        Module = 'CCreatureActionHero180RunningTurn'
+        Source = '00/85/CCreatureActionHero180RunningTurn_FinishActionCCreatureActionHero180RunningTurnUAE_0085b890.cpp'
+        TestSource = '00/85/CCreatureActionHero180RunningTurn_FinishActionCCreatureActionHero180RunningTurnUAE_0085b890_test.cpp'
+        PassPattern = 'PASS_0085b890'
+    }
+    [pscustomobject]@{
+        Address = '008631a0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/86/CGuiControlTreePane_SortTreeRecursively_008631a0.cpp'
+        TestSource = '00/86/CGuiControlTreePane_SortTreeRecursively_008631a0_test.cpp'
+        PassPattern = 'PASS_008631a0'
+    }
+    [pscustomobject]@{
+        Address = '00865b20'
+        Module = 'CCombatAction_GenericStrikeResponseKnockdown'
+        Source = '00/86/CCombatActionGenericStrikeResponseKnockdown_FrameUpdateCCombatActionGenericStrikeResponseKno_00865b20.cpp'
+        TestSource = '00/86/CCombatActionGenericStrikeResponseKnockdown_FrameUpdateCCombatActionGenericStrikeResponseKno_00865b20_test.cpp'
+        PassPattern = 'PASS_00865b20'
+    }
+    [pscustomobject]@{
+        Address = '0087c770'
+        Module = 'CCreatureAction_InterruptableMidAttackAutoTurn'
+        Source = '00/87/CCreatureActionInterruptableMidAttackAutoTurn_FinishActionCCreatureActionInterruptableMidAttac_0087c770.cpp'
+        TestSource = '00/87/CCreatureActionInterruptableMidAttackAutoTurn_FinishActionCCreatureActionInterruptableMidAttac_0087c770_test.cpp'
+        PassPattern = 'PASS_0087c770'
+    }
+    [pscustomobject]@{
+        Address = '0087c840'
+        Module = 'CCreatureAction_InterruptableMidAttack'
+        Source = '00/87/CCreatureActionInterruptableMidAttack_FrameUpdateCCreatureActionInterruptableMidAttack_0087c840.cpp'
+        TestSource = '00/87/CCreatureActionInterruptableMidAttack_FrameUpdateCCreatureActionInterruptableMidAttack_0087c840_test.cpp'
+        PassPattern = 'PASS_0087c840'
+    }
+    [pscustomobject]@{
+        Address = '0088e070'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_GetWorldFrameCGameScriptInterfaceUBEJXZ_0088e070.cpp'
+        TestSource = '00/88/CGameScriptInterface_GetWorldFrameCGameScriptInterfaceUBEJXZ_0088e070_test.cpp'
+        PassPattern = 'PASS_0088e070'
+    }
+    [pscustomobject]@{
+        Address = '0088e4f0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_PauseCGameScriptInterfaceUBEXMZ_0088e4f0.cpp'
+        TestSource = '00/88/CGameScriptInterface_PauseCGameScriptInterfaceUBEXMZ_0088e4f0_test.cpp'
+        PassPattern = 'PASS_0088e4f0'
+    }
+    [pscustomobject]@{
+        Address = '008b6520'
+        Module = 'CCreatureAction_ProjectileCrouch'
+        Source = '00/8b/CCreatureActionProjectileCrouch_InitialiseCCreatureActionProjectileCrouchUAEXXZ_008b6520.cpp'
+        TestSource = '00/8b/CCreatureActionProjectileCrouch_InitialiseCCreatureActionProjectileCrouchUAEXXZ_008b6520_test.cpp'
+        PassPattern = 'PASS_008b6520'
+    }
+    [pscustomobject]@{
+        Address = '008b76a0'
+        Module = 'CCreatureAction_RiseUp'
+        Source = '00/8b/CCreatureActionRiseUp_PerformActionCCreatureActionRiseUpUAEXXZ_008b76a0.cpp'
+        TestSource = '00/8b/CCreatureActionRiseUp_PerformActionCCreatureActionRiseUpUAEXXZ_008b76a0_test.cpp'
+        PassPattern = 'PASS_008b76a0'
+    }
+    [pscustomobject]@{
+        Address = '008b9460'
+        Module = 'CCreatureAction_CastWillFireballSpell'
+        Source = '00/8b/CCreatureActionCastWillFireballSpell_InitialiseCCreatureActionCastWillFireballSpellUA_008b9460.cpp'
+        TestSource = '00/8b/CCreatureActionCastWillFireballSpell_InitialiseCCreatureActionCastWillFireballSpellUA_008b9460_test.cpp'
+        PassPattern = 'PASS_008b9460'
+    }
+    [pscustomobject]@{
+        Address = '008b9470'
+        Module = 'CCreatureAction_TeleportIn'
+        Source = '00/8b/CCreatureActionTeleportIn_FinishActionCCreatureActionTeleportInUAEXXZ_008b9470.cpp'
+        TestSource = '00/8b/CCreatureActionTeleportIn_FinishActionCCreatureActionTeleportInUAEXXZ_008b9470_test.cpp'
+        PassPattern = 'PASS_008b9470'
+    }
+    [pscustomobject]@{
+        Address = '008b9480'
+        Module = 'CCreatureAction_BuildUpDivineWrathSpell'
+        Source = '00/8b/CCreatureActionBuildUpDivineWrathSpell_FinishActionCCreatureActionBuildUpDivineWrathSpe_008b9480.cpp'
+        TestSource = '00/8b/CCreatureActionBuildUpDivineWrathSpell_FinishActionCCreatureActionBuildUpDivineWrathSpe_008b9480_test.cpp'
+        PassPattern = 'PASS_008b9480'
+    }
+    [pscustomobject]@{
+        Address = '008b9490'
+        Module = 'CCreatureAction_BuildUpUnholyPowerSpell'
+        Source = '00/8b/CCreatureActionBuildUpUnholyPowerSpell_FinishActionCCreatureActionBuildUpUnholyPowerSpe_008b9490.cpp'
+        TestSource = '00/8b/CCreatureActionBuildUpUnholyPowerSpell_FinishActionCCreatureActionBuildUpUnholyPowerSpe_008b9490_test.cpp'
+        PassPattern = 'PASS_008b9490'
+    }
+    [pscustomobject]@{
+        Address = '008c0440'
+        Module = 'CCreatureAction_ThunderLightningStorm'
+        Source = '00/8c/CCreatureActionThunderLightningStorm_FinishActionCCreatureActionThunderLightningStorm_008c0440.cpp'
+        TestSource = '00/8c/CCreatureActionThunderLightningStorm_FinishActionCCreatureActionThunderLightningStorm_008c0440_test.cpp'
+        PassPattern = 'PASS_008c0440'
+    }
+    [pscustomobject]@{
+        Address = '008c0450'
+        Module = 'CCreatureAction_JackScream'
+        Source = '00/8c/CCreatureActionJackScream_FinishActionCCreatureActionJackScreamUAEXXZ_008c0450.cpp'
+        TestSource = '00/8c/CCreatureActionJackScream_FinishActionCCreatureActionJackScreamUAEXXZ_008c0450_test.cpp'
+        PassPattern = 'PASS_008c0450'
+    }
+    [pscustomobject]@{
+        Address = '008c3e10'
+        Module = 'CCreatureAction_ScorpionCharge'
+        Source = '00/8c/CCreatureActionScorpionCharge_FrameUpdateCCreatureActionScorpionChargeUAEXXZ_008c3e10.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionCharge_FrameUpdateCCreatureActionScorpionChargeUAEXXZ_008c3e10_test.cpp'
+        PassPattern = 'PASS_008c3e10'
+    }
+    [pscustomobject]@{
+        Address = '008c3e20'
+        Module = 'CCreatureAction_ScorpionChargeStrike'
+        Source = '00/8c/CCreatureActionScorpionChargeStrike_InitialiseCCreatureActionScorpionChargeStrikeUAE_008c3e20.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionChargeStrike_InitialiseCCreatureActionScorpionChargeStrikeUAE_008c3e20_test.cpp'
+        PassPattern = 'PASS_008c3e20'
+    }
+    [pscustomobject]@{
+        Address = '008c3e30'
+        Module = 'CCreatureAction_ScorpionChargeStrike'
+        Source = '00/8c/CCreatureActionScorpionChargeStrike_FinishActionCCreatureActionScorpionChargeStrikeU_008c3e30.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionChargeStrike_FinishActionCCreatureActionScorpionChargeStrikeU_008c3e30_test.cpp'
+        PassPattern = 'PASS_008c3e30'
+    }
+    [pscustomobject]@{
+        Address = '008c3e40'
+        Module = 'CCreatureAction_ScorpionTailWithdraw'
+        Source = '00/8c/CCreatureActionScorpionTailWithdraw_InitialiseCCreatureActionScorpionTailWithdrawUAE_008c3e40.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionTailWithdraw_InitialiseCCreatureActionScorpionTailWithdrawUAE_008c3e40_test.cpp'
+        PassPattern = 'PASS_008c3e40'
+    }
+    [pscustomobject]@{
+        Address = '008c5ff0'
+        Module = 'CCreatureAction_TrollAngryGroundPound'
+        Source = '00/8c/CCreatureActionTrollAngryGroundPound_FinishActionCCreatureActionTrollAngryGroundPound_008c5ff0.cpp'
+        TestSource = '00/8c/CCreatureActionTrollAngryGroundPound_FinishActionCCreatureActionTrollAngryGroundPound_008c5ff0_test.cpp'
+        PassPattern = 'PASS_008c5ff0'
+    }
+    [pscustomobject]@{
+        Address = '008c6060'
+        Module = 'CCreatureAction_WalkInto'
+        Source = '00/8c/CCreatureActionWalkInto_FinishActionCCreatureActionWalkIntoUAEXXZ_008c6060.cpp'
+        TestSource = '00/8c/CCreatureActionWalkInto_FinishActionCCreatureActionWalkIntoUAEXXZ_008c6060_test.cpp'
+        PassPattern = 'PASS_008c6060'
+    }
+    [pscustomobject]@{
+        Address = '008c6390'
+        Module = 'CCreatureAction_TrollWhackGroundBase'
+        Source = '00/8c/CCreatureActionTrollWhackGroundBase_PerformActionCCreatureActionTrollWhackGroundBase_008c6390.cpp'
+        TestSource = '00/8c/CCreatureActionTrollWhackGroundBase_PerformActionCCreatureActionTrollWhackGroundBase_008c6390_test.cpp'
+        PassPattern = 'PASS_008c6390'
+    }
+    [pscustomobject]@{
+        Address = '008cad00'
+        Module = 'CCreatureAction_SummonerDead'
+        Source = '00/8c/CCreatureActionSummonerDead_FinishActionCCreatureActionSummonerDeadUAEXXZ_008cad00.cpp'
+        TestSource = '00/8c/CCreatureActionSummonerDead_FinishActionCCreatureActionSummonerDeadUAEXXZ_008cad00_test.cpp'
+        PassPattern = 'PASS_008cad00'
+    }
+    [pscustomobject]@{
+        Address = '008cd450'
+        Module = 'CCreatureAction_ReleaseTimeSpell'
+        Source = '00/8c/CCreatureActionReleaseTimeSpell_InitialiseCCreatureActionReleaseTimeSpellUAEXXZ_008cd450.cpp'
+        TestSource = '00/8c/CCreatureActionReleaseTimeSpell_InitialiseCCreatureActionReleaseTimeSpellUAEXXZ_008cd450_test.cpp'
+        PassPattern = 'PASS_008cd450'
+    }
+    [pscustomobject]@{
+        Address = '008ec210'
+        Module = 'CCreatureAction_UndeadIdleUnderground'
+        Source = '00/8e/CCreatureActionUndeadIdleUnderground_FinishActionCCreatureActionUndeadIdleUnderground_008ec210.cpp'
+        TestSource = '00/8e/CCreatureActionUndeadIdleUnderground_FinishActionCCreatureActionUndeadIdleUnderground_008ec210_test.cpp'
+        PassPattern = 'PASS_008ec210'
+    }
+    [pscustomobject]@{
+        Address = '008ef170'
+        Module = 'CTCTavernGame'
+        Source = '00/8e/CTCTavernGame_NewGame_008ef170.cpp'
+        TestSource = '00/8e/CTCTavernGame_NewGame_008ef170_test.cpp'
+        PassPattern = 'PASS_008ef170'
+    }
+    [pscustomobject]@{
+        Address = '008f0920'
+        Module = 'CQR_EscortTrader_ManagerScript'
+        Source = '00/8f/CQREscortTraderManagerScript_OnPersist_008f0920.cpp'
+        TestSource = '00/8f/CQREscortTraderManagerScript_OnPersist_008f0920_test.cpp'
+        PassPattern = 'PASS_008f0920'
+    }
+    [pscustomobject]@{
+        Address = '008fe93b'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/8f/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_008fe93b.cpp'
+        TestSource = '00/8f/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_008fe93b_test.cpp'
+        PassPattern = 'PASS_008fe93b'
+    }
+    [pscustomobject]@{
+        Address = '00900216'
+        Module = 'CAIStateGroup_SitInPub'
+        Source = '00/90/CAIStateGroupSitInPub_IsStateGroupStillValid_00900216.cpp'
+        TestSource = '00/90/CAIStateGroupSitInPub_IsStateGroupStillValid_00900216_test.cpp'
+        PassPattern = 'PASS_00900216'
+    }
+    [pscustomobject]@{
+        Address = '0090f460'
+        Module = 'CAIStateGroup_MinionHasInformation'
+        Source = '00/90/CAIStateGroupMinionHasInformation_IsRunnableCAIStateGroupMinionHasInformationUAENX_0090f460.cpp'
+        TestSource = '00/90/CAIStateGroupMinionHasInformation_IsRunnableCAIStateGroupMinionHasInformationUAENX_0090f460_test.cpp'
+        PassPattern = 'PASS_0090f460'
+    }
+    [pscustomobject]@{
+        Address = '00929640'
+        Module = 'CAIStateGroup_MinionGuardGreetPlayer'
+        Source = '00/92/CAIStateGroupMinionGuardGreetPlayer_InitialiseCAIStateGroupMinionGuardGreetPlayerUAE_00929640.cpp'
+        TestSource = '00/92/CAIStateGroupMinionGuardGreetPlayer_InitialiseCAIStateGroupMinionGuardGreetPlayerUAE_00929640_test.cpp'
+        PassPattern = 'PASS_00929640'
+    }
+    [pscustomobject]@{
+        Address = '0092bc50'
+        Module = 'CAIStateGroup_AvoidRegionExit'
+        Source = '00/92/CAIStateGroupAvoidRegionExit_InitialiseCAIStateGroupAvoidRegionExitUAEXAAVCAI_0092bc50.cpp'
+        TestSource = '00/92/CAIStateGroupAvoidRegionExit_InitialiseCAIStateGroupAvoidRegionExitUAEXAAVCAI_0092bc50_test.cpp'
+        PassPattern = 'PASS_0092bc50'
+    }
+    [pscustomobject]@{
+        Address = '009352b0'
+        Module = 'CAIStateGroup_PerformAction'
+        Source = '00/93/CAIStateGroupPerformAction_IsRunnable_009352b0.cpp'
+        TestSource = '00/93/CAIStateGroupPerformAction_IsRunnable_009352b0_test.cpp'
+        PassPattern = 'PASS_009352b0'
+    }
+    [pscustomobject]@{
+        Address = '00953f60'
+        Module = 'CAIStateGroup_MazeTeleport'
+        Source = '00/95/CAIStateGroupMazeTeleport_InitialiseCAIStateGroupMazeTeleportUAEXAAVCAIBra_00953f60.cpp'
+        TestSource = '00/95/CAIStateGroupMazeTeleport_InitialiseCAIStateGroupMazeTeleportUAEXAAVCAIBra_00953f60_test.cpp'
+        PassPattern = 'PASS_00953f60'
+    }
+    [pscustomobject]@{
+        Address = '00961aa0'
+        Module = 'CAIStateGroup_IceTrollIcicleAssault'
+        Source = '00/96/CAIStateGroupIceTrollIcicleAssault_InitialiseCAIStateGroupIceTrollIcicleAssaultMAEX_00961aa0.cpp'
+        TestSource = '00/96/CAIStateGroupIceTrollIcicleAssault_InitialiseCAIStateGroupIceTrollIcicleAssaultMAEX_00961aa0_test.cpp'
+        PassPattern = 'PASS_00961aa0'
+    }
+    [pscustomobject]@{
+        Address = '009acb10'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/9a/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_009acb10.cpp'
+        TestSource = '00/9a/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_009acb10_test.cpp'
+        PassPattern = 'PASS_009acb10'
+    }
+    [pscustomobject]@{
+        Address = '009bab50'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/9b/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_009bab50.cpp'
+        TestSource = '00/9b/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_009bab50_test.cpp'
+        PassPattern = 'PASS_009bab50'
+    }
+    [pscustomobject]@{
+        Address = '009ce360'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_Close_009ce360.cpp'
+        TestSource = '00/9c/CBankFile_Close_009ce360_test.cpp'
+        PassPattern = 'PASS_009ce360'
+    }
+    [pscustomobject]@{
+        Address = '009ff580'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_NotifyBankOpenedCGraphicDataBankMAEXXZ_009ff580.cpp'
+        TestSource = '00/9f/CGraphicDataBank_NotifyBankOpenedCGraphicDataBankMAEXXZ_009ff580_test.cpp'
+        PassPattern = 'PASS_009ff580'
+    }
+    [pscustomobject]@{
+        Address = '00a127c0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/a1/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00a127c0.cpp'
+        TestSource = '00/a1/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00a127c0_test.cpp'
+        PassPattern = 'PASS_00a127c0'
+    }
+    [pscustomobject]@{
+        Address = '00a155c0'
+        Module = 'list<std::pair<long'
+        Source = '00/a1/liststdpairlong_removeifCIsNavigator_00a155c0.cpp'
+        TestSource = '00/a1/liststdpairlong_removeifCIsNavigator_00a155c0_test.cpp'
+        PassPattern = 'PASS_00a155c0'
+    }
+    [pscustomobject]@{
+        Address = '00a17590'
+        Module = 'CNavigatorManager'
+        Source = '00/a1/CNavigatorManager_AddNewClassTypeCNavigatorManagerUAEXABVCClassTyp_00a17590.cpp'
+        TestSource = '00/a1/CNavigatorManager_AddNewClassTypeCNavigatorManagerUAEXABVCClassTyp_00a17590_test.cpp'
+        PassPattern = 'PASS_00a17590'
+    }
+    [pscustomobject]@{
+        Address = '00a2e700'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/a2/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00a2e700.cpp'
+        TestSource = '00/a2/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00a2e700_test.cpp'
+        PassPattern = 'PASS_00a2e700'
+    }
+    [pscustomobject]@{
+        Address = '00a39c70'
+        Module = 'CWADFile'
+        Source = '00/a3/CWADFile_GetAlignment_00a39c70.cpp'
+        TestSource = '00/a3/CWADFile_GetAlignment_00a39c70_test.cpp'
+        PassPattern = 'PASS_00a39c70'
+    }
+    [pscustomobject]@{
+        Address = '00a39dc0'
+        Module = 'CWADFile'
+        Source = '00/a3/CWADFile_Open_00a39dc0.cpp'
+        TestSource = '00/a3/CWADFile_Open_00a39dc0_test.cpp'
+        PassPattern = 'PASS_00a39dc0'
+    }
+    [pscustomobject]@{
+        Address = '00ac3ae0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/ac/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00ac3ae0.cpp'
+        TestSource = '00/ac/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00ac3ae0_test.cpp'
+        PassPattern = 'PASS_00ac3ae0'
+    }
+    [pscustomobject]@{
+        Address = '00ac3af0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/ac/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00ac3af0.cpp'
+        TestSource = '00/ac/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00ac3af0_test.cpp'
+        PassPattern = 'PASS_00ac3af0'
+    }
+    [pscustomobject]@{
+        Address = '00aea9f0'
+        Module = '_global'
+        Source = '00/ae/global_GFGetPreMainMemoryUsed_00aea9f0.cpp'
+        TestSource = '00/ae/global_GFGetPreMainMemoryUsed_00aea9f0_test.cpp'
+        PassPattern = 'PASS_00aea9f0'
+    }
+    [pscustomobject]@{
+        Address = '00aeaaa0'
+        Module = '_global'
+        Source = '00/ae/global_GFGetPreMainMemoryUsed_00aeaaa0.cpp'
+        TestSource = '00/ae/global_GFGetPreMainMemoryUsed_00aeaaa0_test.cpp'
+        PassPattern = 'PASS_00aeaaa0'
+    }
+    [pscustomobject]@{
+        Address = '00aeaae0'
+        Module = '_global'
+        Source = '00/ae/global_GFGetPreMainMemoryUsed_00aeaae0.cpp'
+        TestSource = '00/ae/global_GFGetPreMainMemoryUsed_00aeaae0_test.cpp'
+        PassPattern = 'PASS_00aeaae0'
+    }
+    [pscustomobject]@{
+        Address = '00aeaaf0'
+        Module = '_global'
+        Source = '00/ae/global_GFGetPreMainMemoryUsed_00aeaaf0.cpp'
+        TestSource = '00/ae/global_GFGetPreMainMemoryUsed_00aeaaf0_test.cpp'
+        PassPattern = 'PASS_00aeaaf0'
+    }
+    [pscustomobject]@{
+        Address = '00aeab00'
+        Module = '_global'
+        Source = '00/ae/global_GFGetPreMainMemoryUsed_00aeab00.cpp'
+        TestSource = '00/ae/global_GFGetPreMainMemoryUsed_00aeab00_test.cpp'
+        PassPattern = 'PASS_00aeab00'
+    }
+    [pscustomobject]@{
+        Address = '00aeab10'
+        Module = '_global'
+        Source = '00/ae/global_GFGetPreMainMemoryUsed_00aeab10.cpp'
+        TestSource = '00/ae/global_GFGetPreMainMemoryUsed_00aeab10_test.cpp'
+        PassPattern = 'PASS_00aeab10'
+    }
+    [pscustomobject]@{
+        Address = '00b31fe0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/b3/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00b31fe0.cpp'
+        TestSource = '00/b3/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00b31fe0_test.cpp'
+        PassPattern = 'PASS_00b31fe0'
+    }
+    [pscustomobject]@{
+        Address = '00b31ff0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/b3/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00b31ff0.cpp'
+        TestSource = '00/b3/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00b31ff0_test.cpp'
+        PassPattern = 'PASS_00b31ff0'
+    }
+    [pscustomobject]@{
+        Address = '00b32000'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/b3/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00b32000.cpp'
+        TestSource = '00/b3/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00b32000_test.cpp'
+        PassPattern = 'PASS_00b32000'
+    }
+    [pscustomobject]@{
+        Address = '00b4b880'
+        Module = 'CEngineShadowRenderer'
+        Source = '00/b4/CEngineShadowRenderer_OnReleaseDefaultPoolResourcesCEngineShadowRender_00b4b880.cpp'
+        TestSource = '00/b4/CEngineShadowRenderer_OnReleaseDefaultPoolResourcesCEngineShadowRender_00b4b880_test.cpp'
+        PassPattern = 'PASS_00b4b880'
+    }
+    [pscustomobject]@{
+        Address = '00c16890'
+        Module = 'CWorldMap'
+        Source = '00/c1/CWorldMap_GetNextRegionOnRouteTo_00c16890.cpp'
+        TestSource = '00/c1/CWorldMap_GetNextRegionOnRouteTo_00c16890_test.cpp'
+        PassPattern = 'PASS_00c16890'
+    }
+    [pscustomobject]@{
+        Address = '00c168a0'
+        Module = 'CWorldMap'
+        Source = '00/c1/CWorldMap_GetNextRegionOnRouteTo_00c168a0.cpp'
+        TestSource = '00/c1/CWorldMap_GetNextRegionOnRouteTo_00c168a0_test.cpp'
+        PassPattern = 'PASS_00c168a0'
+    }
+    [pscustomobject]@{
+        Address = '00c27540'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/c2/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00c27540.cpp'
+        TestSource = '00/c2/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00c27540_test.cpp'
+        PassPattern = 'PASS_00c27540'
+    }
+    [pscustomobject]@{
+        Address = '00c2da10'
+        Module = 'CGameScriptThing'
+        Source = '00/c2/CGameScriptThing_GetPThingUniqueID_00c2da10.cpp'
+        TestSource = '00/c2/CGameScriptThing_GetPThingUniqueID_00c2da10_test.cpp'
+        PassPattern = 'PASS_00c2da10'
+    }
+    [pscustomobject]@{
+        Address = '00c33100'
+        Module = 'CTCHeroStats'
+        Source = '00/c3/CTCHeroStats_InformOfEvent_00c33100.cpp'
+        TestSource = '00/c3/CTCHeroStats_InformOfEvent_00c33100_test.cpp'
+        PassPattern = 'PASS_00c33100'
+    }
+    [pscustomobject]@{
+        Address = '00c33110'
+        Module = 'CTCHeroStats'
+        Source = '00/c3/CTCHeroStats_InformOfEvent_00c33110.cpp'
+        TestSource = '00/c3/CTCHeroStats_InformOfEvent_00c33110_test.cpp'
+        PassPattern = 'PASS_00c33110'
+    }
+    [pscustomobject]@{
+        Address = '00c36480'
+        Module = 'CActionSummonerLightningAttackTarget'
+        Source = '00/c3/CActionSummonerLightningAttackTarget_OnActivate_00c36480.cpp'
+        TestSource = '00/c3/CActionSummonerLightningAttackTarget_OnActivate_00c36480_test.cpp'
+        PassPattern = 'PASS_00c36480'
+    }
+    [pscustomobject]@{
+        Address = '00c3a9d0'
+        Module = '_Dest_val<std::allocator<NScript::CQ_BountyHuntScript::TeleportData>,NScript::CQ_BountyHuntScript'
+        Source = '00/c3/DestvalstdallocatorNScriptCQBountyHuntScriptTeleportDataNScriptCQBountyHuntScrip_TeleportData_00c3a9d0.cpp'
+        TestSource = '00/c3/DestvalstdallocatorNScriptCQBountyHuntScriptTeleportDataNScriptCQBountyHuntScrip_TeleportData_00c3a9d0_test.cpp'
+        PassPattern = 'PASS_00c3a9d0'
+    }
+    [pscustomobject]@{
+        Address = '00c3aa30'
+        Module = 'CWorld'
+        Source = '00/c3/CWorld_DrawGetEnvironment_00c3aa30.cpp'
+        TestSource = '00/c3/CWorld_DrawGetEnvironment_00c3aa30_test.cpp'
+        PassPattern = 'PASS_00c3aa30'
+    }
+    [pscustomobject]@{
+        Address = '00c3cf30'
+        Module = 'CEngineResourceManager'
+        Source = '00/c3/CEngineResourceManager_WorldFrameUpdate_00c3cf30.cpp'
+        TestSource = '00/c3/CEngineResourceManager_WorldFrameUpdate_00c3cf30_test.cpp'
+        PassPattern = 'PASS_00c3cf30'
+    }
+    [pscustomobject]@{
+        Address = '00c3d0d0'
+        Module = 'CAIStateGroup_CreatureUseCoverBase'
+        Source = '00/c3/CAIStateGroupCreatureUseCoverBase_CAIStateGroupCreatureUseCoverBase_00c3d0d0.cpp'
+        TestSource = '00/c3/CAIStateGroupCreatureUseCoverBase_CAIStateGroupCreatureUseCoverBase_00c3d0d0_test.cpp'
+        PassPattern = 'PASS_00c3d0d0'
+    }
+    [pscustomobject]@{
+        Address = '00c3e4b0'
+        Module = 'CTCWeapon'
+        Source = '00/c3/CTCWeapon_FrameUpdate_00c3e4b0.cpp'
+        TestSource = '00/c3/CTCWeapon_FrameUpdate_00c3e4b0_test.cpp'
+        PassPattern = 'PASS_00c3e4b0'
+    }
+    [pscustomobject]@{
+        Address = '00c3f680'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CScriptInfo>_>,std'
+        Source = '00/c3/DestvalstdallocatorstdpairCCharStringCScriptInfostd_pairCCharStringCScriptInfo_00c3f680.cpp'
+        TestSource = '00/c3/DestvalstdallocatorstdpairCCharStringCScriptInfostd_pairCCharStringCScriptInfo_00c3f680_test.cpp'
+        PassPattern = 'PASS_00c3f680'
+    }
+    [pscustomobject]@{
+        Address = '00c3f7f0'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CScriptInfo>_>,std'
+        Source = '00/c3/DestvalstdallocatorstdpairCCharStringCScriptInfostd_pairCCharStringCScriptInfo_00c3f7f0.cpp'
+        TestSource = '00/c3/DestvalstdallocatorstdpairCCharStringCScriptInfostd_pairCCharStringCScriptInfo_00c3f7f0_test.cpp'
+        PassPattern = 'PASS_00c3f7f0'
+    }
+    [pscustomobject]@{
+        Address = '00c466b0'
+        Module = 'CTCTavernGame'
+        Source = '00/c4/CTCTavernGame_IsBetting_00c466b0.cpp'
+        TestSource = '00/c4/CTCTavernGame_IsBetting_00c466b0_test.cpp'
+        PassPattern = 'PASS_00c466b0'
+    }
+    [pscustomobject]@{
+        Address = '00c554e0'
+        Module = 'CChunkedFileChunk'
+        Source = '00/c5/CChunkedFileChunk_CChunkedFileChunk_00c554e0.cpp'
+        TestSource = '00/c5/CChunkedFileChunk_CChunkedFileChunk_00c554e0_test.cpp'
+        PassPattern = 'PASS_00c554e0'
+    }
+    [pscustomobject]@{
+        Address = '00c55510'
+        Module = 'CChunkedFileChunk'
+        Source = '00/c5/CChunkedFileChunk_CChunkedFileChunk_00c55510.cpp'
+        TestSource = '00/c5/CChunkedFileChunk_CChunkedFileChunk_00c55510_test.cpp'
+        PassPattern = 'PASS_00c55510'
+    }
+    [pscustomobject]@{
+        Address = '00c55540'
+        Module = 'CChunkedFileChunk'
+        Source = '00/c5/CChunkedFileChunk_CChunkedFileChunk_00c55540.cpp'
+        TestSource = '00/c5/CChunkedFileChunk_CChunkedFileChunk_00c55540_test.cpp'
+        PassPattern = 'PASS_00c55540'
+    }
+    [pscustomobject]@{
+        Address = '00c55570'
+        Module = 'CChunkedFileChunk'
+        Source = '00/c5/CChunkedFileChunk_CChunkedFileChunk_00c55570.cpp'
+        TestSource = '00/c5/CChunkedFileChunk_CChunkedFileChunk_00c55570_test.cpp'
+        PassPattern = 'PASS_00c55570'
+    }
+    [pscustomobject]@{
+        Address = '00c555a0'
+        Module = 'CChunkedFileChunk'
+        Source = '00/c5/CChunkedFileChunk_CChunkedFileChunk_00c555a0.cpp'
+        TestSource = '00/c5/CChunkedFileChunk_CChunkedFileChunk_00c555a0_test.cpp'
+        PassPattern = 'PASS_00c555a0'
+    }
+    [pscustomobject]@{
+        Address = '00c555d0'
+        Module = 'CChunkedFileChunk'
+        Source = '00/c5/CChunkedFileChunk_CChunkedFileChunk_00c555d0.cpp'
+        TestSource = '00/c5/CChunkedFileChunk_CChunkedFileChunk_00c555d0_test.cpp'
+        PassPattern = 'PASS_00c555d0'
+    }
+    [pscustomobject]@{
+        Address = '00c564b0'
+        Module = 'CParticleEffect'
+        Source = '00/c5/CParticleEffect_CParticleEffect_00c564b0.cpp'
+        TestSource = '00/c5/CParticleEffect_CParticleEffect_00c564b0_test.cpp'
+        PassPattern = 'PASS_00c564b0'
+    }
+    [pscustomobject]@{
+        Address = '00c56850'
+        Module = 'CParticleEffect'
+        Source = '00/c5/CParticleEffect_CParticleEffect_00c56850.cpp'
+        TestSource = '00/c5/CParticleEffect_CParticleEffect_00c56850_test.cpp'
+        PassPattern = 'PASS_00c56850'
+    }
+    [pscustomobject]@{
+        Address = '00c568e0'
+        Module = 'CParticleEffect'
+        Source = '00/c5/CParticleEffect_CParticleEffect_00c568e0.cpp'
+        TestSource = '00/c5/CParticleEffect_CParticleEffect_00c568e0_test.cpp'
+        PassPattern = 'PASS_00c568e0'
+    }
+    [pscustomobject]@{
+        Address = '00c763c0'
+        Module = 'CTCHeroStats'
+        Source = '00/c7/CTCHeroStats_InformOfEvent_00c763c0.cpp'
+        TestSource = '00/c7/CTCHeroStats_InformOfEvent_00c763c0_test.cpp'
+        PassPattern = 'PASS_00c763c0'
+    }
+    [pscustomobject]@{
+        Address = '00c763d0'
+        Module = 'CTCHeroStats'
+        Source = '00/c7/CTCHeroStats_InformOfEvent_00c763d0.cpp'
+        TestSource = '00/c7/CTCHeroStats_InformOfEvent_00c763d0_test.cpp'
+        PassPattern = 'PASS_00c763d0'
+    }
+    [pscustomobject]@{
+        Address = '00ca7a10'
+        Module = 'CEngineLandscapePatch'
+        Source = '00/ca/CEngineLandscapePatch_DestroyProceduralTextureVertexBuffers_00ca7a10.cpp'
+        TestSource = '00/ca/CEngineLandscapePatch_DestroyProceduralTextureVertexBuffers_00ca7a10_test.cpp'
+        PassPattern = 'PASS_00ca7a10'
+    }
+    [pscustomobject]@{
+        Address = '00cd3ef0'
+        Module = '_global'
+        Source = '00/cd/global_GFGetPreMainMemoryUsed_00cd3ef0.cpp'
+        TestSource = '00/cd/global_GFGetPreMainMemoryUsed_00cd3ef0_test.cpp'
+        PassPattern = 'PASS_00cd3ef0'
+    }
+    [pscustomobject]@{
+        Address = '00415bd0'
+        Module = 'CSurface'
+        Source = '00/41/CSurface_GetWidth_00415bd0.cpp'
+        TestSource = '00/41/CSurface_GetWidth_00415bd0_test.cpp'
+        PassPattern = 'PASS_00415bd0'
+    }
+    [pscustomobject]@{
+        Address = '00415bf0'
+        Module = 'CSurface'
+        Source = '00/41/CSurface_GetHeight_00415bf0.cpp'
+        TestSource = '00/41/CSurface_GetHeight_00415bf0_test.cpp'
+        PassPattern = 'PASS_00415bf0'
+    }
+    [pscustomobject]@{
+        Address = '00419352'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/41/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00419352.cpp'
+        TestSource = '00/41/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00419352_test.cpp'
+        PassPattern = 'PASS_00419352'
+    }
+    [pscustomobject]@{
+        Address = '00429e16'
+        Module = 'CPair'
+        Source = '00/42/CPair_CPair_00429e16.cpp'
+        TestSource = '00/42/CPair_CPair_00429e16_test.cpp'
+        PassPattern = 'PASS_00429e16'
+    }
+    [pscustomobject]@{
+        Address = '0042bead'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/42/CTCInventoryAbilities_AddLearnedExpression_0042bead.cpp'
+        TestSource = '00/42/CTCInventoryAbilities_AddLearnedExpression_0042bead_test.cpp'
+        PassPattern = 'PASS_0042bead'
+    }
+    [pscustomobject]@{
+        Address = '0042d437'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/42/CTCInventoryAbilities_AddLearnedExpression_0042d437.cpp'
+        TestSource = '00/42/CTCInventoryAbilities_AddLearnedExpression_0042d437_test.cpp'
+        PassPattern = 'PASS_0042d437'
+    }
+    [pscustomobject]@{
+        Address = '0042d44a'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/42/CTCInventoryAbilities_AddLearnedExpression_0042d44a.cpp'
+        TestSource = '00/42/CTCInventoryAbilities_AddLearnedExpression_0042d44a_test.cpp'
+        PassPattern = 'PASS_0042d44a'
+    }
+    [pscustomobject]@{
+        Address = '004d607c'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/4d/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004d607c.cpp'
+        TestSource = '00/4d/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004d607c_test.cpp'
+        PassPattern = 'PASS_004d607c'
+    }
+    [pscustomobject]@{
+        Address = '00628f30'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00628f30.cpp'
+        TestSource = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00628f30_test.cpp'
+        PassPattern = 'PASS_00628f30'
+    }
+    [pscustomobject]@{
+        Address = '00628f50'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00628f50.cpp'
+        TestSource = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00628f50_test.cpp'
+        PassPattern = 'PASS_00628f50'
+    }
+    [pscustomobject]@{
+        Address = '00628f70'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00628f70.cpp'
+        TestSource = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00628f70_test.cpp'
+        PassPattern = 'PASS_00628f70'
+    }
+    [pscustomobject]@{
+        Address = '00628f90'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00628f90.cpp'
+        TestSource = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00628f90_test.cpp'
+        PassPattern = 'PASS_00628f90'
+    }
+    [pscustomobject]@{
+        Address = '00629000'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00629000.cpp'
+        TestSource = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00629000_test.cpp'
+        PassPattern = 'PASS_00629000'
+    }
+    [pscustomobject]@{
+        Address = '0066a510'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/66/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0066a510.cpp'
+        TestSource = '00/66/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0066a510_test.cpp'
+        PassPattern = 'PASS_0066a510'
+    }
+    [pscustomobject]@{
+        Address = '007eaf00'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eaf00.cpp'
+        TestSource = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eaf00_test.cpp'
+        PassPattern = 'PASS_007eaf00'
+    }
+    [pscustomobject]@{
+        Address = '007eb2b0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb2b0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb2b0_test.cpp'
+        PassPattern = 'PASS_007eb2b0'
+    }
+    [pscustomobject]@{
+        Address = '007eb470'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb470.cpp'
+        TestSource = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb470_test.cpp'
+        PassPattern = 'PASS_007eb470'
+    }
+    [pscustomobject]@{
+        Address = '007edff0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007edff0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007edff0_test.cpp'
+        PassPattern = 'PASS_007edff0'
+    }
+    [pscustomobject]@{
+        Address = '00957300'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/95/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00957300.cpp'
+        TestSource = '00/95/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00957300_test.cpp'
+        PassPattern = 'PASS_00957300'
+    }
+    [pscustomobject]@{
+        Address = '00968150'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/96/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00968150.cpp'
+        TestSource = '00/96/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00968150_test.cpp'
+        PassPattern = 'PASS_00968150'
+    }
+    [pscustomobject]@{
+        Address = '00968170'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/96/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00968170.cpp'
+        TestSource = '00/96/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00968170_test.cpp'
+        PassPattern = 'PASS_00968170'
+    }
+    [pscustomobject]@{
+        Address = '0041d207'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/41/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0041d207.cpp'
+        TestSource = '00/41/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0041d207_test.cpp'
+        PassPattern = 'PASS_0041d207'
+    }
+    [pscustomobject]@{
+        Address = '0042bec0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/42/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0042bec0.cpp'
+        TestSource = '00/42/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0042bec0_test.cpp'
+        PassPattern = 'PASS_0042bec0'
     }
 )
 

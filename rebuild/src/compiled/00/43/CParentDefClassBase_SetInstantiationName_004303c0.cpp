@@ -1,15 +1,9 @@
-extern "C" __declspec(naked) void candidate_004303c0(void)
-{
-    __asm {
-        _emit 0x8b
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0x89
-        _emit 0x41
-        _emit 0x25
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-    }
-}
+// Member setter at this+0x25: one stack arg, `ret 4`. __fastcall this=ecx.
+#pragma pack(push,1)
+struct T {
+    char pad[0x25];
+    int field;
+    void Set(int value);
+};
+#pragma pack(pop)
+void T::Set(int value) { this->field = value; }

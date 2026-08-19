@@ -1,13 +1,7 @@
-extern "C" __declspec(naked) void fn_0041cf40(void)
-{
-    __asm
-    {
-        _emit 0xD9
-        _emit 0x81
-        _emit 0xC4
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0xC3
-    }
-}
+// Member getter at this+0xc4. __fastcall this=ecx.
+struct T {
+    char pad[0xc4];
+    float field;
+    float Get();
+};
+float T::Get() { return this->field; }

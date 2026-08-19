@@ -8661,8 +8661,18 @@ USER-driven debugger work and unchanged).
 - Live family table any time: `scratchpad/bake_families.py` (regroups landed `_emit` sources
   by length + call-masked skeleton from the catalog).
 
+### Third pass: shape-class authoring — 358 more landed (bakes 401 → 342)
+- New `tools/decomp_pipeline/crawl/shape_author.py` classifies a **parameterised instruction
+  shape** (getter/setter/const-return/empty hook/sub-object forwarder/pair `_Dest_val`/…) and
+  emits a per-address genuine source with the right offset, constant and arg count. 358 landed
+  (59 de-bakes + 299 previously-unlanded manifest fns), 125 MATCH + 233 RELOCATION_MATCH.
+- `#pragma pack(push,1)` on every emitted struct is mandatory — natural alignment shifts odd
+  member offsets (`lea eax,[ecx+0x29]` → `+0x2c`) and silently fails parity.
+- The 4 IAT thunks (`ff25 <iat>`: initterm/__dllonexit/malloc/strstr) are linker-generated and
+  can never be genuine C++ — leave them baked.
+
 ### Next in this lane
-1. The tail is flat — 401 bakes in 386 families, largest family 3. Roughly one authoring job each.
+1. The tail is flat — 342 bakes in 329 families, largest family 3. Roughly one authoring job each.
 2. `004193a0` (`DeleteData`, 36B ×3) is an OVER-CAPTURED manifest row (a `ret 4` then a second
    unlisted 13B function, no `0xCC` between) — needs `trim_overcapture.py` or a 2-function land.
 3. `00431020`/`00431242` (`UpdateShadowScene`) still diverge per instance.

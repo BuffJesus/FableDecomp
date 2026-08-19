@@ -4,8 +4,8 @@
 `__declspec(naked)` `_emit` byte-bakes. Bakes are byte-exact oracles at best; they
 are not faithful reconstructions. See memory `byte-purity-policy` / `faithful-decomp-policy`.
 
-As of 2026-08-19 (second pass) the landed set is ~96.5% genuine: **401 baked** functions
-remain (696 on 2026-08-14 → 599 → 401). A family shares (length, call-masked skeleton), so
+As of 2026-08-19 (third pass) the landed set is ~97% genuine: **342 baked** functions
+remain (696 on 2026-08-14 → 599 → 401 → 342). A family shares (length, call-masked skeleton), so
 authoring ONE genuine head byte-exact lets `harvest_skeleton.py` / `debake_family.py`
 clone-sweep the rest as genuine RELOCATION_MATCH.
 
@@ -34,6 +34,38 @@ Result (each re-verified byte-exact by the harness, MATCH or RELOCATION_MATCH):
 Gates re-run after landing: `build_candidates.ps1 -Address <107>` → CANDIDATE_BUILD PASS
 objects=107; `compare_candidate_objects.py` → all 107 MATCH/RELOCATION_MATCH (0 differing);
 `build_bootstrap.ps1` → VISUAL_BOOT_CHECKPOINT PASS.
+
+## 2026-08-19 (third pass) — shape-class authoring: 358 more landed
+
+New tool `tools/decomp_pipeline/crawl/shape_author.py`. Where `debake_family.py` needs one
+byte-identical family per template, this recognises a **parameterised instruction shape** and
+emits a per-address source with the right member offset / constant / argument count, so a
+whole class of tiny functions lands from one classifier. Shapes recognised today:
+
+| shape | model |
+|-------|-------|
+| `ret` / `ret N` | empty member hook |
+| `xor al,al` / `mov al,1` / `xor eax,eax` / `mov eax,imm` + ret | constant-return member |
+| `mov/movzx/fld eax,[ecx+d]` + ret | int / char / float member getter (pack(1)) |
+| `lea eax,[ecx+d]` + ret | address-of-member accessor |
+| `mov eax,[esp+4]; mov [ecx+d],eax; ret 4` | member setter |
+| `mov ecx,[ecx+d]; jmp` | forward to a member of a sub-object pointer (VC7.1 tail-call) |
+| `jmp rel32` | free-function forwarder |
+| `mov eax,[global]; ret` | global getter |
+| `push esi; mov esi,ecx; lea ecx,[esi+o2]; call; …; pop esi; jmp` | std::pair `_Dest_val` (release second, tail-call first) |
+| `lea eax,[esp+4]; push eax; add ecx,d; call; ret 4` | forward the ADDRESS of the stack arg to a sub-object |
+| `sub esp,8; lea eax,[esp]; push eax; call; mov eax,[eax(+4)]; add esp,8; ret` | out-param temp getter |
+
+358 landed (59 de-baked + 299 previously-unlanded manifest functions), all MATCH (125) or
+RELOCATION_MATCH (233). Gates: CANDIDATE_BUILD PASS objects=358; comparer 0 differing;
+build_bootstrap VISUAL_BOOT_CHECKPOINT PASS.
+
+**`#pragma pack(push,1)` is required** on every emitted struct: retail member offsets are
+byte-exact and natural alignment silently shifts an odd one (`lea eax,[ecx+0x29]` became
+`+0x2c` and failed parity until packed).
+
+**Not de-bakeable:** the 4 IAT thunks (`initterm`, `__dllonexit`, `malloc`, `strstr` at
+`ff25 <iat>`) are linker-generated, not compiler output — they stay `_emit` by nature.
 
 ## 2026-08-19 (second pass) — `_Dest_val` class SOLVED, 401 bakes left
 
