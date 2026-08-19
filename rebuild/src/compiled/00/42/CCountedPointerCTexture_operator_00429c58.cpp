@@ -1,28 +1,6 @@
-extern "C" __declspec(naked) void candidate_00429c58(void)
-{
-    __asm {
-        _emit 0x8b
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0x56
-        _emit 0xff
-        _emit 0x70
-        _emit 0x04
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0xff
-        _emit 0x30
-        _emit 0xe8
-        _emit 0xa1
-        _emit 0xf5
-        _emit 0xff
-        _emit 0xff
-        _emit 0x8b
-        _emit 0xc6
-        _emit 0x5e
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-    }
-}
+#pragma optimize("s",on)
+// CCountedPointer<CTexture>::operator= -> forwards to ShareData(0x4190e2), returns this.
+// family len23 x4 (template 00419463). Authored as AssignFrom so the .obj symbol carries a
+// matchable leaf ("operator=" mangles to ??4 which obj_text can't leaf-match); bytes identical.
+struct CCPtr { void* info; long* p; CCPtr& AssignFrom(const CCPtr& o); void ShareData(void* ni, long* np); };
+CCPtr& CCPtr::AssignFrom(const CCPtr& o) { this->ShareData(o.info, o.p); return *this; }

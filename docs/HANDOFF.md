@@ -8620,3 +8620,35 @@ fable_inflate.obj to the two behavior-exe links. Navigate+capture harness works:
    (§A above / `docs/HERO_IN_WORLD_ROADMAP.md` §6). USER-driven (needs retail Fable + debugger).
 2. Optionally continue safe byte-exact crawl throughput (clobber-guarded) or the Redefine native-scroll
    arrow-sprite RE — both are non-blocking.
+
+---
+
+## 2026-08-19 — de-bake lane: all 8 staged templates landed (91 bakes → genuine C++)
+
+Non-blocking lane picked up from the 2026-08-16 handoff (the two top items there are
+USER-driven debugger work and unchanged).
+
+- New tool `tools/decomp_pipeline/crawl/debake_family.py` — one-shot family de-bake:
+  computes a template's call-masked skeleton, finds every manifest fn sharing it,
+  un-lands the members whose landed source is an `_emit` bake (catalog block + oracle
+  row + src/test files), and emits a `verify_and_land --land` payload that re-lands the
+  whole family from the genuine source. Never touches `build_bootstrap.ps1` fixture
+  addresses; leaves already-genuine members alone. Dry-run by default.
+- Landed **107 functions genuine** (91 replaced bakes + 16 previously unlanded family
+  members) across the 8 staged templates: `_Uninit_copy` 50B (31), `vector_deleting_
+  destructor` 30B (22), `OnReadFinished` (19), `ShareData`-38 (12), `_Uninit_copy` 56B (7),
+  `OnKill` (6), `BuildTreeArray` (5), `operator=` (5). Table in `docs/DEBAKE_WORKLIST.md`.
+- Baked functions remaining: **696 → 599** (~94% of the landed set is now genuine C++).
+- Gates green after landing: `build_candidates.ps1 -Address <107>` CANDIDATE_BUILD PASS
+  objects=107; `compare_candidate_objects.py` → 107/107 MATCH or RELOCATION_MATCH, 0
+  differing (repo-wide: 4367 MATCH / 6574 RELOCATION_MATCH / 56 DIFFER, all 56 pre-existing);
+  `build_bootstrap.ps1` → VISUAL_BOOT_CHECKPOINT PASS.
+- Gotcha: `build_candidates.ps1 -Address a,b,c` through `powershell -File` binds the whole
+  comma list as ONE string ("not in the catalog"); pass a real array via `-Command` or a
+  variable. Unquoted hex like `004190e2` is also parsed as scientific notation (→ 419000).
+
+### Next in this lane
+1. `GetMeshEffect` (47B ×7) — permuter pass, 49v47 (one `mov ecx,eax`; retail keeps `cur` in ecx).
+2. `_Dest_val<…>` class (~130 across variants) + `UpdateShadowScene` (3) / `SortTreeRecursively` (4)
+   — DEFER class, needs the permuter.
+3. Everything else in `docs/DEBAKE_WORKLIST.md`'s family table (599 bakes left, 432 families).

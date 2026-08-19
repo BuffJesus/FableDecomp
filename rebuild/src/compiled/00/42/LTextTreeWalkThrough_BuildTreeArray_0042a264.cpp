@@ -1,50 +1,13 @@
-extern "C" __declspec(naked) void candidate_0042a264(void)
-{
-    __asm {
-        _emit 0x53
-        _emit 0x56
-        _emit 0x8b
-        _emit 0x74
-        _emit 0x24
-        _emit 0x0c
-        _emit 0x85
-        _emit 0xf6
-        _emit 0x8b
-        _emit 0xd9
-        _emit 0x74
-        _emit 0x1c
-        _emit 0x57
-        _emit 0xff
-        _emit 0x76
-        _emit 0x0c
-        _emit 0x8b
-        _emit 0xcb
-        _emit 0xe8
-        _emit 0xe9
-        _emit 0xff
-        _emit 0xff
-        _emit 0xff
-        _emit 0x8b
-        _emit 0x7e
-        _emit 0x08
-        _emit 0x56
-        _emit 0xe8
-        _emit 0x90
-        _emit 0x47
-        _emit 0x7d
-        _emit 0x00
-        _emit 0x85
-        _emit 0xff
-        _emit 0x59
-        _emit 0x8b
-        _emit 0xf7
-        _emit 0x75
-        _emit 0xe6
-        _emit 0x5f
-        _emit 0x5e
-        _emit 0x5b
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
+#pragma optimize("s",on)
+// __fastcall this=ecx, node=stack. family len45 x5 (template 0042a1b6). self-recursive tree free.
+struct Node { char pad[8]; Node* m8; Node* mc; };
+struct Tree { void BuildTreeArray(Node* node); };
+extern "C" void __cdecl Free1(void* p);   // 0xbfea14
+void Tree::BuildTreeArray(Node* node) {
+    while (node) {
+        this->BuildTreeArray(node->mc);
+        Node* next = node->m8;
+        Free1(node);
+        node = next;
     }
 }

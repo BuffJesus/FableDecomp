@@ -1,43 +1,5 @@
-extern "C" __declspec(naked) void __fastcall candidate_0042943a(void)
-{
-    __asm {
-        _emit 0x56
-        _emit 0x57
-        _emit 0x8b
-        _emit 0x7c
-        _emit 0x24
-        _emit 0x10
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0x39
-        _emit 0x7e
-        _emit 0x04
-        _emit 0x74
-        _emit 0x14
-        _emit 0xe8
-        _emit 0xe4
-        _emit 0xfd
-        _emit 0xff
-        _emit 0xff
-        _emit 0x85
-        _emit 0xff
-        _emit 0x8b
-        _emit 0x44
-        _emit 0x24
-        _emit 0x0c
-        _emit 0x89
-        _emit 0x06
-        _emit 0x89
-        _emit 0x7e
-        _emit 0x04
-        _emit 0x74
-        _emit 0x02
-        _emit 0xff
-        _emit 0x07
-        _emit 0x5f
-        _emit 0x5e
-        _emit 0xc2
-        _emit 0x08
-        _emit 0x00
-    }
-}
+#pragma optimize("s",on)
+// CCountedPointer<T>::ShareData helper-release variant. factors old-ptr release into ReleaseCur (0x4057a0).
+// pragma s. family len38 x8 (004190e2).
+struct CCPtr { void* info; long* p; void ShareData(void* n, long* np); void ReleaseCur(); };
+void CCPtr::ShareData(void* n, long* np){ if(this->p!=np){ this->ReleaseCur(); this->info=n; this->p=np; if(np) ++*np; } }
