@@ -1,26 +1,12 @@
-extern "C" __declspec(naked) void candidate_00429f43(void)
-{
-    __asm {
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0x85
-        _emit 0xf6
-        _emit 0x74
-        _emit 0x0c
-        _emit 0xe8
-        _emit 0xb1
-        _emit 0x5d
-        _emit 0x11
-        _emit 0x00
-        _emit 0x56
-        _emit 0xe8
-        _emit 0x67
-        _emit 0x4a
-        _emit 0x7d
-        _emit 0x00
-        _emit 0x59
-        _emit 0x5e
-        _emit 0xc3
-    }
+#pragma optimize("s",on)
+#include "rebuild_abi.h"
+// CTCMapwho::OnDie @ 0x005c281c
+struct CTCMapwho;
+extern "C" void FABLE_FASTCALL FableH1_5c281c(CTCMapwho *self);
+extern "C" void FABLE_CDECL FableH2_5c281c(CTCMapwho *self);
+struct CTCMapwho { char dummy; void OnDie(); };
+void CTCMapwho::OnDie(){
+    if (!this) return;
+    FableH1_5c281c(this);
+    FableH2_5c281c(this);
 }

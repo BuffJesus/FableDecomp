@@ -8696,8 +8696,21 @@ USER-driven debugger work and unchanged).
 - Gates: CANDIDATE_BUILD PASS objects=921; 93 MATCH + 828 RELOCATION_MATCH, 0 differing;
   VISUAL_BOOT_CHECKPOINT PASS.
 
+### Sixth pass: cross-family pairing — 29 more (bakes 238 → 209)
+- `tools/decomp_pipeline/crawl/crossfam.py`: many remaining bakes are the same C++ shape under a
+  different `#pragma optimize`, so retail's size peepholes put them in a different (length,
+  skeleton) family than the genuine source that reproduces them. crossfam pairs each baked row
+  with the nearest-length genuine family source, strips in-source pragmas, and lets
+  verify_and_land's pragma sweep decide. 27 landed; rounds 2-3 dry, so the vein is exhausted.
+- **⚠ SAFETY RULE:** de-bake tools must PRE-VERIFY before un-landing. The first crossfam build
+  un-landed all 245 attempts up-front and was interrupted mid-run, leaving 245 addresses sourceless
+  (recovered with `git checkout` — catalog/oracle/sources are all git-tracked). crossfam now
+  compiles and keeps only byte-exact pairings before touching the catalog.
+- Remaining near-misses are genuine REGALLOC permutations (model confirmed, length matches):
+  `GetPBaseDef` 19v19, iterator `Begin` 13v13, CopyBackBufferToTexture ×7, `_Find` ×3.
+
 ### Next in this lane
-1. 238 bakes in 222 families, largest family 7. Roughly one authoring job each.
+1. 209 bakes in 202 families, largest family 3. Roughly one authoring job each.
 2. `004193a0` (`DeleteData`, 36B ×3) is an OVER-CAPTURED manifest row (a `ret 4` then a second
    unlisted 13B function, no `0xCC` between) — needs `trim_overcapture.py` or a 2-function land.
 3. `00431020`/`00431242` (`UpdateShadowScene`) still diverge per instance.

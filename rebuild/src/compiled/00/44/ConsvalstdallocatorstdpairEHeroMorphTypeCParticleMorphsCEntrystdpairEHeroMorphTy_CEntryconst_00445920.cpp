@@ -1,17 +1,42 @@
-extern "C" __declspec(naked) void __fastcall candidate_00445920(void)
+enum EHeroMorphType { MORPH_A_DUMMY };
+
+class CParticleMorphs
 {
-    __asm {
-        _emit 0x8b
-        _emit 0x4c
-        _emit 0x24
-        _emit 0x04
-        _emit 0xe8
-        _emit 0x87
-        _emit 0xe2
-        _emit 0x5b
-        _emit 0x00
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-    }
+public:
+    class CEntry;
+};
+
+class CParticleMorphs::CEntry
+{
+public:
+    CEntry();
+    int field;
+};
+
+template<class _Ty1, class _Ty2>
+struct fpair
+{
+    fpair();
+    _Ty1 first;
+    _Ty2 second;
+};
+
+typedef fpair<EHeroMorphType, CParticleMorphs::CEntry> PairT;
+
+// Not defined in this TU: forces a real call, matching retail (the default
+// constructor is a separately compiled function, not inlined here).
+template<> fpair<EHeroMorphType, CParticleMorphs::CEntry>::fpair();
+
+// VC7.1 STL <xmemory> stateless allocator: Cons_val is a member function
+// (this = the allocator instance, in ecx, unused because the type carries
+// no state) taking the single pointer to default-construct as its only
+// real (stack) argument.
+struct DummyAllocator
+{
+    void Cons_val_pair_morph_a(PairT* _Ptr);
+};
+
+void DummyAllocator::Cons_val_pair_morph_a(PairT* _Ptr)
+{
+    _Ptr->fpair<EHeroMorphType, CParticleMorphs::CEntry>::fpair();
 }

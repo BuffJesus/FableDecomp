@@ -1,30 +1,18 @@
-extern "C" __declspec(naked) void __fastcall candidate_00449630(void)
+#include "rebuild_abi.h"
+
+struct CGuiVarTransferBool {
+    void*        field_0;   // +0x00 -> ecx for callee
+    int          field_4;   // +0x04 -> edx for callee
+    char         pad_8[4];  // +0x08
+    unsigned char value;    // +0x0c -> pushed byte arg
+    unsigned char flag;     // +0x0d -> cleared to 0
+};
+
+// Callee: ecx = this->field_0, edx = this->field_4, one stack byte arg.
+extern void __fastcall CGuiVarTransferBool_Sink(void* ecx, int edx, unsigned char val);
+
+void __fastcall CGuiVarTransferBool_TransferToGui(CGuiVarTransferBool* thisptr)
 {
-    __asm {
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0x8b
-        _emit 0x56
-        _emit 0x04
-        _emit 0x8b
-        _emit 0x0e
-        _emit 0x33
-        _emit 0xc0
-        _emit 0x8a
-        _emit 0x46
-        _emit 0x0c
-        _emit 0x50
-        _emit 0xe8
-        _emit 0x8d
-        _emit 0xff
-        _emit 0xff
-        _emit 0xff
-        _emit 0xc6
-        _emit 0x46
-        _emit 0x0d
-        _emit 0x00
-        _emit 0x5e
-        _emit 0xc3
-    }
+    CGuiVarTransferBool_Sink(thisptr->field_0, thisptr->field_4, (unsigned char)thisptr->value);
+    thisptr->flag = 0;
 }

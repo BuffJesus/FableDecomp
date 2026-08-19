@@ -1,58 +1,35 @@
-extern "C" __declspec(naked) void candidate_0042b8fc(void)
+#pragma optimize("s",on)
+
+// Sub-object embedded at TreeNode+0x10.  Its cleanup is an out-of-line
+// __fastcall member (this in ecx) taking no arguments -> emits
+//   lea ecx,[esi+0x10]
+//   call <Sub::Cleanup>
+struct SubObject {
+    void Cleanup();
+};
+
+struct TreeNode {
+    char pad0[8];
+    TreeNode* next;      // +0x8
+    TreeNode* child;     // +0xc
+    SubObject sub;       // +0x10
+};
+
+extern void __cdecl ProcessTreeNode(TreeNode* node);
+
+struct CTextTreeWalkThrough {
+    void BuildTreeArray(TreeNode* node);
+};
+
+void CTextTreeWalkThrough::BuildTreeArray(TreeNode* node)
 {
-    __asm {
-        _emit 0x53
-        _emit 0x56
-        _emit 0x8b
-        _emit 0x74
-        _emit 0x24
-        _emit 0x0c
-        _emit 0x85
-        _emit 0xf6
-        _emit 0x8b
-        _emit 0xd9
-        _emit 0x74
-        _emit 0x24
-        _emit 0x57
-        _emit 0xff
-        _emit 0x76
-        _emit 0x0c
-        _emit 0x8b
-        _emit 0xcb
-        _emit 0xe8
-        _emit 0xe9
-        _emit 0xff
-        _emit 0xff
-        _emit 0xff
-        _emit 0x8b
-        _emit 0x7e
-        _emit 0x08
-        _emit 0x8d
-        _emit 0x4e
-        _emit 0x10
-        _emit 0xe8
-        _emit 0xf8
-        _emit 0xe4
-        _emit 0xff
-        _emit 0xff
-        _emit 0x56
-        _emit 0xe8
-        _emit 0xf0
-        _emit 0x30
-        _emit 0x7d
-        _emit 0x00
-        _emit 0x85
-        _emit 0xff
-        _emit 0x59
-        _emit 0x8b
-        _emit 0xf7
-        _emit 0x75
-        _emit 0xde
-        _emit 0x5f
-        _emit 0x5e
-        _emit 0x5b
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
+    if (node) {
+        do {
+            this->BuildTreeArray(node->child);
+            TreeNode* next = node->next;
+            node->sub.Cleanup();
+            ProcessTreeNode(node);
+            node = next;
+        } while (node);
     }
 }

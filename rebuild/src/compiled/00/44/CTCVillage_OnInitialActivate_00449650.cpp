@@ -1,38 +1,28 @@
-extern "C" __declspec(naked) void cand_00449650(void)
+// Byte-exact reconstruction of CTCVillage::OnInitialActivate @ 0x004bbbe0
+
+struct CInner;
+
+// __fastcall/__fastcall member on the inner object:
+//   ecx = inner (self->m0), edx = self->m4, stack = byte value.
+extern void __fastcall InnerActivate(CInner* self, void* p, unsigned char flag);
+
+struct CTCVillage
 {
-    __asm
+    CInner* m0;        // +0x00  -> ecx for the call
+    void*   m4;        // +0x04  -> edx for the call
+    unsigned char m8;  // +0x08
+    unsigned char m9;  // +0x09
+    unsigned char ma;  // +0x0a
+    unsigned char mb;  // +0x0b
+    unsigned char mc;  // +0x0c  pushed byte arg
+    unsigned char md;  // +0x0d  guard flag
+};
+
+void __fastcall OnInitialActivate(CTCVillage* self)
+{
+    if (self->md)
     {
-        _emit 0x56
-        _emit 0x8B
-        _emit 0xF1
-        _emit 0x8A
-        _emit 0x46
-        _emit 0x0D
-        _emit 0x84
-        _emit 0xC0
-        _emit 0x74
-        _emit 0x14
-        _emit 0x8B
-        _emit 0x56
-        _emit 0x04
-        _emit 0x8B
-        _emit 0x0E
-        _emit 0x33
-        _emit 0xC0
-        _emit 0x8A
-        _emit 0x46
-        _emit 0x0C
-        _emit 0x50
-        _emit 0xE8
-        _emit 0x66
-        _emit 0xFF
-        _emit 0xFF
-        _emit 0xFF
-        _emit 0xC6
-        _emit 0x46
-        _emit 0x0D
-        _emit 0x00
-        _emit 0x5E
-        _emit 0xC3
+        InnerActivate(self->m0, self->m4, self->mc);
+        self->md = 0;
     }
 }

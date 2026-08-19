@@ -4,8 +4,8 @@
 `__declspec(naked)` `_emit` byte-bakes. Bakes are byte-exact oracles at best; they
 are not faithful reconstructions. See memory `byte-purity-policy` / `faithful-decomp-policy`.
 
-As of 2026-08-19 (fifth pass) the landed set is ~98.3% genuine: **238 baked** functions
-remain (696 on 2026-08-14 → 599 → 401 → 342 → 254 → 238). A family shares (length, call-masked skeleton), so
+As of 2026-08-19 (sixth pass) the landed set is ~98.6% genuine: **209 baked** functions
+remain (696 on 2026-08-14 → 599 → 401 → 342 → 254 → 238 → 209). A family shares (length, call-masked skeleton), so
 authoring ONE genuine head byte-exact lets `harvest_skeleton.py` / `debake_family.py`
 clone-sweep the rest as genuine RELOCATION_MATCH.
 
@@ -34,6 +34,39 @@ Result (each re-verified byte-exact by the harness, MATCH or RELOCATION_MATCH):
 Gates re-run after landing: `build_candidates.ps1 -Address <107>` → CANDIDATE_BUILD PASS
 objects=107; `compare_candidate_objects.py` → all 107 MATCH/RELOCATION_MATCH (0 differing);
 `build_bootstrap.ps1` → VISUAL_BOOT_CHECKPOINT PASS.
+
+## 2026-08-19 (sixth pass) — cross-family pairing (29)
+
+`harvest_all.py` only reuses a source inside its exact (length, skeleton) family, but many
+remaining bakes are the SAME C++ shape compiled under a different `#pragma optimize` — retail's
+size peepholes (`pop ecx` vs `add esp,4`, `and [m],0` vs `mov [m],0`) change the byte length, so
+the row lands in a different family even though one source reproduces both.
+
+New `tools/decomp_pipeline/crawl/crossfam.py` pairs each remaining baked row with the genuine
+source of the **nearest-length** family (|Δlen|, then masked-prefix similarity), strips any
+in-source `#pragma optimize` (verify_and_land sweeps the matrix itself), and lands what matches.
+27 landed; rounds 2 and 3 (next-nearest sources) came back completely dry, so the nearest-length
+neighbour is the only one that ever works and this vein is exhausted.
+
+Plus 2 hand-authored: `DoSizeof` (`&this->sub->field`) and a `fabs` getter (`(float)fabs(member)`
+with `#pragma intrinsic(fabs)` — the intrinsic is what emits `fld member; fabs`).
+
+**⚠ SAFETY RULE learned the hard way:** a de-bake tool must **pre-verify before un-landing**.
+The first crossfam build un-landed all 245 attempts up-front and was interrupted mid-run, leaving
+245 addresses with no source at all (recovered with `git checkout` — the catalog, oracle and
+sources are all tracked). `crossfam.py` now compiles every pairing and keeps only the byte-exact
+ones *before* touching the catalog. `debake_family.py`/`shape_author.py` are lower-risk (their
+sources are known-good for the family) but the same rule should be applied if they are extended.
+
+Gates: CANDIDATE_BUILD PASS objects=29; 6 MATCH + 23 RELOCATION_MATCH, 0 differing;
+VISUAL_BOOT_CHECKPOINT PASS.
+
+### Known regalloc near-misses (permuter, not modelling)
+Unlike the old DEFER list, these really are register-allocation permutations — the model is
+confirmed correct and the byte length matches:
+- `00419650` `GetPBaseDef` 19v19 — retail keeps `cur` in ecx, our model picks eax.
+- `00429a85` iterator `Begin` 13v13 — same swap.
+- `0042bf35` CopyBackBufferToTexture 25B ×7, `00429418` `_Find` 34B ×3 (see fifth pass).
 
 ## 2026-08-19 (fifth pass) — whole-manifest family sweep + the last DEFER falls
 

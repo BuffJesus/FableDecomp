@@ -1,29 +1,14 @@
-extern "C" __declspec(naked) void candidate_0042b44a(void)
+#pragma optimize("s",on)
+// CEngineSceneGrid::GetCellBoundingBox  retail 005b1975 (24 bytes)
+// EBP frame, one local bool, forward to __cdecl helper(a,b,&local),
+// add esp,0xc (helper cleans its 3 args), leave; ret (bare -> caller-clean).
+
+struct CEngineSceneGrid;
+
+extern "C" char __cdecl helper_5b155a(unsigned long a, unsigned long b, char* out);
+
+char __cdecl GetCellBoundingBox(unsigned long a, unsigned long b)
 {
-    __asm {
-        _emit 0x55
-        _emit 0x8b
-        _emit 0xec
-        _emit 0x51
-        _emit 0x8d
-        _emit 0x45
-        _emit 0xff
-        _emit 0x50
-        _emit 0xff
-        _emit 0x75
-        _emit 0x0c
-        _emit 0xff
-        _emit 0x75
-        _emit 0x08
-        _emit 0xe8
-        _emit 0x60
-        _emit 0xf4
-        _emit 0xff
-        _emit 0xff
-        _emit 0x83
-        _emit 0xc4
-        _emit 0x0c
-        _emit 0xc9
-        _emit 0xc3
-    }
+    char r;
+    return helper_5b155a(a, b, &r);
 }

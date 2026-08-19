@@ -1,73 +1,50 @@
-extern "C" __declspec(naked) void F_0043314a(void)
+#pragma optimize("s",on)
+
+// CEngineLightingManager::UpdateShadowScene @ 0x00473593  (__fastcall, ret 4)
+//
+// Retail idiom:
+//   push ebp; mov ebp,esp; push ecx          -> 1 local byte at [ebp-4]
+//   push esi; push 0x122d70e; mov esi,ecx     -> save this=esi; push tag
+//   call <Prep>                               -> __stdcall Prep(0x122d70e)
+//   mov eax,[esi+0x18]; dec eax; dec eax       -> switch(this->mode)
+//   mov byte[ebp-4],0                          -> local.flag = 0
+//   je case2; dec eax; jne end                 -> case 2 / case 3 dispatch
+//   case3: movzx eax,byte[p]; ecx=[esi+0x28]; push; call  -> sink28->Take((unsigned char)*p)
+//   case2: push p; lea ecx,[ebp-4]; push [esi+0x24]; call -> local.Fill(this->obj24, p)
+//   pop esi; leave; ret 4
+
+struct Sink {
+    void Take(int v);            // __fastcall, ecx=this, one dword arg
+};
+
+struct Local {
+    unsigned char flag;          // [ebp-4] byte, set to 0
+    void Fill(int a, void* b);   // __fastcall, ecx=&local, two dword args
+};
+
+class CEngineLightingManager {
+public:
+    char  pad00[0x18];
+    int   mode;                  // +0x18
+    char  pad1C[0x08];
+    int   obj24;                 // +0x24
+    Sink* sink28;                // +0x28
+    void UpdateShadowScene(unsigned char* p);
+};
+
+extern void __stdcall Prep(unsigned int tag);   // push 0x122d70e; call
+
+void CEngineLightingManager::UpdateShadowScene(unsigned char* p)
 {
-    __asm
-    {
-        _emit 0x55
-        _emit 0x8b
-        _emit 0xec
-        _emit 0x51
-        _emit 0x56
-        _emit 0x68
-        _emit 0x0e
-        _emit 0xd7
-        _emit 0x22
-        _emit 0x01
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0xe8
-        _emit 0xa5
-        _emit 0x13
-        _emit 0xfd
-        _emit 0xff
-        _emit 0x8b
-        _emit 0x46
-        _emit 0x18
-        _emit 0x48
-        _emit 0x48
-        _emit 0xc6
-        _emit 0x45
-        _emit 0xfc
-        _emit 0x00
-        _emit 0x74
-        _emit 0x14
-        _emit 0x48
-        _emit 0x75
-        _emit 0x1f
-        _emit 0x8b
-        _emit 0x45
-        _emit 0x08
-        _emit 0x0f
-        _emit 0xb6
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x4e
-        _emit 0x28
-        _emit 0x50
-        _emit 0xe8
-        _emit 0xb8
-        _emit 0x0c
-        _emit 0x56
-        _emit 0x00
-        _emit 0xeb
-        _emit 0x0e
-        _emit 0xff
-        _emit 0x75
-        _emit 0x08
-        _emit 0x8d
-        _emit 0x4d
-        _emit 0xfc
-        _emit 0xff
-        _emit 0x76
-        _emit 0x24
-        _emit 0xe8
-        _emit 0x28
-        _emit 0x0d
-        _emit 0xfd
-        _emit 0xff
-        _emit 0x5e
-        _emit 0xc9
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
+    Local h;
+    Prep(0x122d70eU);
+    h.flag = 0;
+    switch (this->mode) {
+    case 2:
+        h.Fill(this->obj24, p);
+        break;
+    case 3:
+        this->sink28->Take(*p);
+        break;
     }
 }

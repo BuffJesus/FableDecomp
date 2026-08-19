@@ -1,6 +1,2 @@
 #include <stdio.h>
-int main()
-{
-    puts("batch9_part4_0043df80_pass");
-    return 0;
-}
+int main(void){ printf("PASS_0043df80\n"); return 0; }

@@ -1,57 +1,27 @@
-extern "C" __declspec(naked) void f_00431493(void) {
-__asm {
-_emit 0x56
-_emit 0x68
-_emit 0x0e
-_emit 0xd7
-_emit 0x22
-_emit 0x01
-_emit 0x8b
-_emit 0xf1
-_emit 0xe8
-_emit 0x60
-_emit 0x30
-_emit 0xfd
-_emit 0xff
-_emit 0x8b
-_emit 0x46
-_emit 0x18
-_emit 0x48
-_emit 0x48
-_emit 0x74
-_emit 0x11
-_emit 0x48
-_emit 0x75
-_emit 0x1a
-_emit 0x8b
-_emit 0x54
-_emit 0x24
-_emit 0x08
-_emit 0x8b
-_emit 0x4e
-_emit 0x28
-_emit 0xe8
-_emit 0x12
-_emit 0x00
-_emit 0x00
-_emit 0x00
-_emit 0xeb
-_emit 0x0c
-_emit 0x8b
-_emit 0x54
-_emit 0x24
-_emit 0x08
-_emit 0x8b
-_emit 0x4e
-_emit 0x24
-_emit 0xe8
-_emit 0x59
-_emit 0x00
-_emit 0x00
-_emit 0x00
-_emit 0x5e
-_emit 0xc2
-_emit 0x04
-_emit 0x00
-}
+#pragma optimize("s",on)
+extern "C" void __stdcall Profile_Enter(int marker);
+
+extern void __fastcall LM_ShadowApply24(void* self24, void* arg);
+extern void __fastcall LM_ShadowApply28(void* self28, void* arg);
+
+struct CEngineLightingManager {
+    char pad[0x18];
+    int mode;                  /* +0x18 */
+    char pad2[0x24 - 0x1c];
+    void* p24;                 /* +0x24 */
+    void* p28;                 /* +0x28 */
+};
+
+void __fastcall CEngineLightingManager_UpdateShadowScene(
+    CEngineLightingManager* self, void* /*edx*/, void* arg)
+{
+    Profile_Enter(0x122d70e);
+    switch (self->mode) {
+    case 2:
+        LM_ShadowApply24(self->p24, arg);
+        break;
+    case 3:
+        LM_ShadowApply28(self->p28, arg);
+        break;
+    }
 }

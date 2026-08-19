@@ -1,55 +1,28 @@
-extern "C" __declspec(naked) void F_00448410(void)
+extern "C" void __cdecl fable_op_delete(void* p);
+
+struct CtrlBlock {
+    long refcount;      /* +0x0 */
+    void (__fastcall* dtor)(void* self); /* +0x4 */
+    void* obj;          /* +0x8 */
+};
+
+struct Pair {
+    unsigned long first; /* +0x0 */
+    void* dummy;         /* +0x4 */
+    CtrlBlock* ctrl;     /* +0x8 : CCountedPointer control block */
+};
+
+void __fastcall Dest_val(Pair* self)
 {
-    __asm
-    {
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0x8b
-        _emit 0x46
-        _emit 0x08
-        _emit 0x57
-        _emit 0x33
-        _emit 0xff
-        _emit 0x3b
-        _emit 0xc7
-        _emit 0x74
-        _emit 0x1b
-        _emit 0xff
-        _emit 0x08
-        _emit 0x8b
-        _emit 0x46
-        _emit 0x08
-        _emit 0x39
-        _emit 0x38
-        _emit 0x75
-        _emit 0x12
-        _emit 0x8b
-        _emit 0x48
-        _emit 0x08
-        _emit 0xff
-        _emit 0x50
-        _emit 0x04
-        _emit 0x8b
-        _emit 0x46
-        _emit 0x08
-        _emit 0x50
-        _emit 0xe8
-        _emit 0x87
-        _emit 0x65
-        _emit 0x7b
-        _emit 0x00
-        _emit 0x83
-        _emit 0xc4
-        _emit 0x04
-        _emit 0x89
-        _emit 0x7e
-        _emit 0x04
-        _emit 0x89
-        _emit 0x7e
-        _emit 0x08
-        _emit 0x5f
-        _emit 0x5e
-        _emit 0xc3
+    CtrlBlock* cb = self->ctrl;
+    if (cb != 0) {
+        --cb->refcount;
+        cb = self->ctrl;
+        if (cb->refcount == 0) {
+            cb->dtor(cb->obj);
+            fable_op_delete(self->ctrl);
+        }
     }
+    self->dummy = 0;
+    self->ctrl = 0;
 }

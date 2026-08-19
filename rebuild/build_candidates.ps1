@@ -2987,13 +2987,6 @@ $catalog = @(
         PassPattern = 'PASS_0041d198'
     }
     [pscustomobject]@{
-        Address = '00412c50'
-        Module = 'vector<EWeaponClass'
-        Source = '00/41/vectorEWeaponClass_UmoveEWeaponClass_00412c50.cpp'
-        TestSource = '00/41/vectorEWeaponClass_UmoveEWeaponClass_00412c50_test.cpp'
-        PassPattern = 'PASS_00412c50'
-    }
-    [pscustomobject]@{
         Address = '00416296'
         Module = 'CMainGameComponent'
         Source = '00/41/CMainGameComponent_IsControllerDisconnected_00416296.cpp'
@@ -3330,13 +3323,6 @@ $catalog = @(
         PassPattern = 'PASS_00416148'
     }
     [pscustomobject]@{
-        Address = '0042bef2'
-        Module = 'CRegion'
-        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_0042bef2.cpp'
-        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_0042bef2_test.cpp'
-        PassPattern = 'PASS_0042bef2'
-    }
-    [pscustomobject]@{
         Address = '0042d405'
         Module = 'CTCInventoryClothing'
         Source = '00/42/CTCInventoryClothing_SetClothingMappingToMenuEntry_0042d405.cpp'
@@ -3358,13 +3344,6 @@ $catalog = @(
         PassPattern = 'PASS_00429bf9'
     }
     [pscustomobject]@{
-        Address = '0042b44a'
-        Module = 'CEngineSceneGrid'
-        Source = '00/42/CEngineSceneGrid_GetCellBoundingBox_0042b44a.cpp'
-        TestSource = '00/42/CEngineSceneGrid_GetCellBoundingBox_0042b44a_test.cpp'
-        PassPattern = 'PASS_0042b44a'
-    }
-    [pscustomobject]@{
         Address = '0042be11'
         Module = 'CSurface'
         Source = '00/42/CSurface_GetHeight_0042be11.cpp'
@@ -3377,20 +3356,6 @@ $catalog = @(
         Source = '00/42/CBankFile_GetBankHandle_0042bed4.cpp'
         TestSource = '00/42/CBankFile_GetBankHandle_0042bed4_test.cpp'
         PassPattern = 'PASS_0042bed4'
-    }
-    [pscustomobject]@{
-        Address = '0042bf67'
-        Module = 'CDisplayManager'
-        Source = '00/42/CDisplayManager_CopyBackBufferToTexture_0042bf67.cpp'
-        TestSource = '00/42/CDisplayManager_CopyBackBufferToTexture_0042bf67_test.cpp'
-        PassPattern = 'PASS_0042bf67'
-    }
-    [pscustomobject]@{
-        Address = '0042d28b'
-        Module = 'CDisplayManager'
-        Source = '00/42/CDisplayManager_CopyBackBufferToTexture_0042d28b.cpp'
-        TestSource = '00/42/CDisplayManager_CopyBackBufferToTexture_0042d28b_test.cpp'
-        PassPattern = 'PASS_0042d28b'
     }
     [pscustomobject]@{
         Address = '0042b587'
@@ -3428,13 +3393,6 @@ $catalog = @(
         PassPattern = 'PASS_0042a77f'
     }
     [pscustomobject]@{
-        Address = '0042b707'
-        Module = '_global'
-        Source = '00/42/global_CalcStringLength_0042b707.cpp'
-        TestSource = '00/42/global_CalcStringLength_0042b707_test.cpp'
-        PassPattern = 'PASS_0042b707'
-    }
-    [pscustomobject]@{
         Address = '004294ac'
         Module = '_Find<std::_List_unchecked_iterator<std::_List_val<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>,NUISystem'
         Source = '00/42/FindstdListuncheckediteratorstdListvalNUISystemCComponentstdallocatorNUISystemCComponentNUISystem_CComponent_004294ac.cpp'
@@ -3463,25 +3421,11 @@ $catalog = @(
         PassPattern = 'PASS_0042c058'
     }
     [pscustomobject]@{
-        Address = '0042b6dc'
-        Module = 'CRegion'
-        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_0042b6dc.cpp'
-        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_0042b6dc_test.cpp'
-        PassPattern = 'PASS_0042b6dc'
-    }
-    [pscustomobject]@{
         Address = '0042b4c3'
         Module = '_Insert<std::_List_const_iterator<std::_List_val<CClass*,std'
         Source = '00/42/InsertstdListconstiteratorstdListvalCClassstd_allocatorCClass_0042b4c3.cpp'
         TestSource = '00/42/InsertstdListconstiteratorstdListvalCClassstd_allocatorCClass_0042b4c3_test.cpp'
         PassPattern = 'PASS_0042b4c3'
-    }
-    [pscustomobject]@{
-        Address = '0042bf35'
-        Module = 'CDisplayManager'
-        Source = '00/42/CDisplayManager_CopyBackBufferToTexture_0042bf35.cpp'
-        TestSource = '00/42/CDisplayManager_CopyBackBufferToTexture_0042bf35_test.cpp'
-        PassPattern = 'PASS_0042bf35'
     }
     [pscustomobject]@{
         Address = '00429a2f'
@@ -3554,13 +3498,6 @@ $catalog = @(
         PassPattern = 'PASS_0042b402'
     }
     [pscustomobject]@{
-        Address = '0042b8fc'
-        Module = '_global'
-        Source = '00/42/global_ClearPrimitiveList_0042b8fc.cpp'
-        TestSource = '00/42/global_ClearPrimitiveList_0042b8fc_test.cpp'
-        PassPattern = 'PASS_0042b8fc'
-    }
-    [pscustomobject]@{
         Address = '0042d1b7'
         Module = 'map<NUISystem::CComponent*'
         Source = '00/42/mapNUISystemCComponent_operator_0042d1b7.cpp'
@@ -3573,13 +3510,6 @@ $catalog = @(
         Source = '00/42/CBasicStringchar_operator_00429950.cpp'
         TestSource = '00/42/CBasicStringchar_operator_00429950_test.cpp'
         PassPattern = 'PASS_00429950'
-    }
-    [pscustomobject]@{
-        Address = '00429f43'
-        Module = 'CTCMapwho'
-        Source = '00/42/CTCMapwho_OnDie_00429f43.cpp'
-        TestSource = '00/42/CTCMapwho_OnDie_00429f43_test.cpp'
-        PassPattern = 'PASS_00429f43'
     }
     [pscustomobject]@{
         Address = '0041e16e'
@@ -3601,13 +3531,6 @@ $catalog = @(
         Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00434a00.cpp'
         TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00434a00_test.cpp'
         PassPattern = 'PASS_00434a00'
-    }
-    [pscustomobject]@{
-        Address = '004375e0'
-        Module = 'CMap'
-        Source = '00/43/CMap_DrawGetSeaLevel_004375e0.cpp'
-        TestSource = '00/43/CMap_DrawGetSeaLevel_004375e0_test.cpp'
-        PassPattern = 'PASS_004375e0'
     }
     [pscustomobject]@{
         Address = '0042dbee'
@@ -3673,13 +3596,6 @@ $catalog = @(
         PassPattern = 'PASS_004354a0'
     }
     [pscustomobject]@{
-        Address = '00430345'
-        Module = 'CDisplayManager'
-        Source = '00/43/CDisplayManager_CopyBackBufferToTexture_00430345.cpp'
-        TestSource = '00/43/CDisplayManager_CopyBackBufferToTexture_00430345_test.cpp'
-        PassPattern = 'PASS_00430345'
-    }
-    [pscustomobject]@{
         Address = '0042fc66'
         Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
         Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0042fc66.cpp'
@@ -3743,32 +3659,11 @@ $catalog = @(
         PassPattern = 'PASS_0042f722'
     }
     [pscustomobject]@{
-        Address = '0043332c'
-        Module = 'CArray<std::pair<long'
-        Source = '00/43/CArraystdpairlong_pushback_0043332c.cpp'
-        TestSource = '00/43/CArraystdpairlong_pushback_0043332c_test.cpp'
-        PassPattern = 'PASS_0043332c'
-    }
-    [pscustomobject]@{
         Address = '00430300'
         Module = 'CTCInventoryItem'
         Source = '00/43/CTCInventoryItem_OnDie_00430300.cpp'
         TestSource = '00/43/CTCInventoryItem_OnDie_00430300_test.cpp'
         PassPattern = 'PASS_00430300'
-    }
-    [pscustomobject]@{
-        Address = '0043314a'
-        Module = 'CEngineLightingManager'
-        Source = '00/43/CEngineLightingManager_UpdateShadowScene_0043314a.cpp'
-        TestSource = '00/43/CEngineLightingManager_UpdateShadowScene_0043314a_test.cpp'
-        PassPattern = 'PASS_0043314a'
-    }
-    [pscustomobject]@{
-        Address = '0043020a'
-        Module = 'LTextTreeWalkThrough'
-        Source = '00/43/LTextTreeWalkThrough_BuildTreeArray_0043020a.cpp'
-        TestSource = '00/43/LTextTreeWalkThrough_BuildTreeArray_0043020a_test.cpp'
-        PassPattern = 'PASS_0043020a'
     }
     [pscustomobject]@{
         Address = '00436560'
@@ -3876,13 +3771,6 @@ $catalog = @(
         PassPattern = 'batch8_part3_00433d8a_pass'
     }
     [pscustomobject]@{
-        Address = '0043024e'
-        Module = 'CDisplayManager'
-        Source = '00/43/CDisplayManager_CopyBackBufferToTexture_0043024e.cpp'
-        TestSource = '00/43/CDisplayManager_CopyBackBufferToTexture_0043024e_test.cpp'
-        PassPattern = 'batch8_part3_0043024e_pass'
-    }
-    [pscustomobject]@{
         Address = '00434840'
         Module = 'CEngine'
         Source = '00/43/CEngine_StartNewScene_00434840.cpp'
@@ -3981,34 +3869,6 @@ $catalog = @(
         PassPattern = 'batch8_part3_004364c0_pass'
     }
     [pscustomobject]@{
-        Address = '00431242'
-        Module = 'CEngineLightingManager'
-        Source = '00/43/CEngineLightingManager_UpdateShadowScene_00431242.cpp'
-        TestSource = '00/43/CEngineLightingManager_UpdateShadowScene_00431242_test.cpp'
-        PassPattern = 'batch8_part3_00431242_pass'
-    }
-    [pscustomobject]@{
-        Address = '00431493'
-        Module = 'CEngineLightingManager'
-        Source = '00/43/CEngineLightingManager_UpdateShadowScene_00431493.cpp'
-        TestSource = '00/43/CEngineLightingManager_UpdateShadowScene_00431493_test.cpp'
-        PassPattern = 'batch8_part3_00431493_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043dbd0'
-        Module = '_global'
-        Source = '00/43/global_ISTHINGALIVECThingBuilding_0043dbd0.cpp'
-        TestSource = '00/43/global_ISTHINGALIVECThingBuilding_0043dbd0_test.cpp'
-        PassPattern = 'PASS_0043dbd0'
-    }
-    [pscustomobject]@{
-        Address = '00437ce0'
-        Module = 'CVertexBufferWin32'
-        Source = '00/43/CVertexBufferWin32_DoSizeof_00437ce0.cpp'
-        TestSource = '00/43/CVertexBufferWin32_DoSizeof_00437ce0_test.cpp'
-        PassPattern = 'PASS_00437ce0'
-    }
-    [pscustomobject]@{
         Address = '00438440'
         Module = 'CPlayerGui'
         Source = '00/43/CPlayerGui_ForceClose_00438440.cpp'
@@ -4037,13 +3897,6 @@ $catalog = @(
         PassPattern = 'PASS_0043f720'
     }
     [pscustomobject]@{
-        Address = '0043dd10'
-        Module = 'CEngineSubPrimitiveText'
-        Source = '00/43/CEngineSubPrimitiveText_scalardeletingdestructor_0043dd10.cpp'
-        TestSource = '00/43/CEngineSubPrimitiveText_scalardeletingdestructor_0043dd10_test.cpp'
-        PassPattern = 'PASS_0043dd10'
-    }
-    [pscustomobject]@{
         Address = '004382e0'
         Module = 'CPlayerGui'
         Source = '00/43/CPlayerGui_SetButtonAlpha_004382e0.cpp'
@@ -4070,13 +3923,6 @@ $catalog = @(
         Source = '00/43/CPlayerGui_Close_00438400.cpp'
         TestSource = '00/43/CPlayerGui_Close_00438400_test.cpp'
         PassPattern = 'batch9_part4_00438400_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043df80'
-        Module = '_global'
-        Source = '00/43/global_fillENavigatorTypeENavigatorType_0043df80.cpp'
-        TestSource = '00/43/global_fillENavigatorTypeENavigatorType_0043df80_test.cpp'
-        PassPattern = 'batch9_part4_0043df80_pass'
     }
     [pscustomobject]@{
         Address = '0043f230'
@@ -4345,25 +4191,11 @@ $catalog = @(
         PassPattern = 'PASS_004456d0'
     }
     [pscustomobject]@{
-        Address = '00449630'
-        Module = 'CGuiVarTransferBool'
-        Source = '00/44/CGuiVarTransferBool_TransferToGui_00449630.cpp'
-        TestSource = '00/44/CGuiVarTransferBool_TransferToGui_00449630_test.cpp'
-        PassPattern = 'PASS_00449630'
-    }
-    [pscustomobject]@{
         Address = '00449b20'
         Module = 'CSpellContainerList'
         Source = '00/44/CSpellContainerList_AddChild_00449b20.cpp'
         TestSource = '00/44/CSpellContainerList_AddChild_00449b20_test.cpp'
         PassPattern = 'PASS_00449b20'
-    }
-    [pscustomobject]@{
-        Address = '00445920'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/44/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00445920.cpp'
-        TestSource = '00/44/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00445920_test.cpp'
-        PassPattern = 'PASS_00445920'
     }
     [pscustomobject]@{
         Address = '004497c0'
@@ -4441,13 +4273,6 @@ $catalog = @(
         Source = '00/44/CCombatWheel_ResetRings_00442870.cpp'
         TestSource = '00/44/CCombatWheel_ResetRings_00442870_test.cpp'
         PassPattern = 'PASS_00442870'
-    }
-    [pscustomobject]@{
-        Address = '00448410'
-        Module = '_Dest_val<std::allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_>,std'
-        Source = '00/44/DestvalstdallocatorstdpairunsignedlongCCountedPointerCFactionstd_pairunsignedlongCCountedPointerCFaction_00448410.cpp'
-        TestSource = '00/44/DestvalstdallocatorstdpairunsignedlongCCountedPointerCFactionstd_pairunsignedlongCCountedPointerCFaction_00448410_test.cpp'
-        PassPattern = 'PASS_00448410'
     }
     [pscustomobject]@{
         Address = '0044a530'
@@ -4651,13 +4476,6 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_IsEventGameAction_00445bd0.cpp'
         TestSource = '00/44/CGamePlayerInterface_IsEventGameAction_00445bd0_test.cpp'
         PassPattern = 'batch10_part4_00445bd0_pass'
-    }
-    [pscustomobject]@{
-        Address = '00449650'
-        Module = 'CTCVillage'
-        Source = '00/44/CTCVillage_OnInitialActivate_00449650.cpp'
-        TestSource = '00/44/CTCVillage_OnInitialActivate_00449650_test.cpp'
-        PassPattern = 'batch10_part4_00449650_pass'
     }
     [pscustomobject]@{
         Address = '00445ae0'
@@ -5876,13 +5694,6 @@ $catalog = @(
         Source = '00/45/CDisplayManager_CopyBackBufferToTexture_004534a6.cpp'
         TestSource = '00/45/CDisplayManager_CopyBackBufferToTexture_004534a6_test.cpp'
         PassPattern = 'CDisplayManager_004534a6_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00453536'
-        Module = 'CDisplayManager'
-        Source = '00/45/CDisplayManager_CopyBackBufferToTexture_00453536.cpp'
-        TestSource = '00/45/CDisplayManager_CopyBackBufferToTexture_00453536_test.cpp'
-        PassPattern = 'CDisplayManager_00453536_CopyBackBufferToTexture_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00451c83'
@@ -35364,13 +35175,6 @@ $catalog = @(
         Source = '00/50/global_DeleteData_0050be40.cpp'
         TestSource = '00/50/global_DeleteData_0050be40_test.cpp'
         PassPattern = 'OK_0x0050be40'
-    }
-    [pscustomobject]@{
-        Address = '005143e0'
-        Module = 'CGuiControlTreePane'
-        Source = '00/51/CGuiControlTreePane_SortTreeRecursively_005143e0.cpp'
-        TestSource = '00/51/CGuiControlTreePane_SortTreeRecursively_005143e0_test.cpp'
-        PassPattern = 'OK_0x005143e0'
     }
     [pscustomobject]@{
         Address = '0051ce20'
@@ -67114,13 +66918,6 @@ $catalog = @(
         Source = '00/57/global_CopyBackBufferToTexture_0057986e.cpp'
         TestSource = '00/57/global_CopyBackBufferToTexture_0057986e_test.cpp'
         PassPattern = 'PARITY_OK'
-    }
-    [pscustomobject]@{
-        Address = '0057a106'
-        Module = '_global'
-        Source = '00/57/global_CopyBackBufferToTexture_0057a106.cpp'
-        TestSource = '00/57/global_CopyBackBufferToTexture_0057a106_test.cpp'
-        PassPattern = 'CDisplayManager_0057a106_CopyBackBufferToTexture_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0057f407'
@@ -99017,6 +98814,209 @@ $catalog = @(
         Source = '00/44/CTCMapwho_OnDie_004454e0.cpp'
         TestSource = '00/44/CTCMapwho_OnDie_004454e0_test.cpp'
         PassPattern = 'PASS_004454e0'
+    }
+    [pscustomobject]@{
+        Address = '00437ce0'
+        Module = 'CVertexBufferWin32'
+        Source = '00/43/CVertexBufferWin32_DoSizeof_00437ce0.cpp'
+        TestSource = '00/43/CVertexBufferWin32_DoSizeof_00437ce0_test.cpp'
+        PassPattern = 'PASS_00437ce0'
+    }
+    [pscustomobject]@{
+        Address = '004375e0'
+        Module = 'CMap'
+        Source = '00/43/CMap_DrawGetSeaLevel_004375e0.cpp'
+        TestSource = '00/43/CMap_DrawGetSeaLevel_004375e0_test.cpp'
+        PassPattern = 'PASS_004375e0'
+    }
+    [pscustomobject]@{
+        Address = '00412c50'
+        Module = 'vector<EWeaponClass'
+        Source = '00/41/vectorEWeaponClass_UmoveEWeaponClass_00412c50.cpp'
+        TestSource = '00/41/vectorEWeaponClass_UmoveEWeaponClass_00412c50_test.cpp'
+        PassPattern = 'PASS_00412c50'
+    }
+    [pscustomobject]@{
+        Address = '00429f43'
+        Module = 'CTCMapwho'
+        Source = '00/42/CTCMapwho_OnDie_00429f43.cpp'
+        TestSource = '00/42/CTCMapwho_OnDie_00429f43_test.cpp'
+        PassPattern = 'PASS_00429f43'
+    }
+    [pscustomobject]@{
+        Address = '0042b44a'
+        Module = 'CEngineSceneGrid'
+        Source = '00/42/CEngineSceneGrid_GetCellBoundingBox_0042b44a.cpp'
+        TestSource = '00/42/CEngineSceneGrid_GetCellBoundingBox_0042b44a_test.cpp'
+        PassPattern = 'PASS_0042b44a'
+    }
+    [pscustomobject]@{
+        Address = '0042b6dc'
+        Module = 'CRegion'
+        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_0042b6dc.cpp'
+        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_0042b6dc_test.cpp'
+        PassPattern = 'PASS_0042b6dc'
+    }
+    [pscustomobject]@{
+        Address = '0042b707'
+        Module = '_global'
+        Source = '00/42/global_CalcStringLength_0042b707.cpp'
+        TestSource = '00/42/global_CalcStringLength_0042b707_test.cpp'
+        PassPattern = 'PASS_0042b707'
+    }
+    [pscustomobject]@{
+        Address = '0042b8fc'
+        Module = '_global'
+        Source = '00/42/global_ClearPrimitiveList_0042b8fc.cpp'
+        TestSource = '00/42/global_ClearPrimitiveList_0042b8fc_test.cpp'
+        PassPattern = 'PASS_0042b8fc'
+    }
+    [pscustomobject]@{
+        Address = '0042bef2'
+        Module = 'CRegion'
+        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_0042bef2.cpp'
+        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_0042bef2_test.cpp'
+        PassPattern = 'PASS_0042bef2'
+    }
+    [pscustomobject]@{
+        Address = '0042bf35'
+        Module = 'CDisplayManager'
+        Source = '00/42/CDisplayManager_CopyBackBufferToTexture_0042bf35.cpp'
+        TestSource = '00/42/CDisplayManager_CopyBackBufferToTexture_0042bf35_test.cpp'
+        PassPattern = 'PASS_0042bf35'
+    }
+    [pscustomobject]@{
+        Address = '0042bf67'
+        Module = 'CDisplayManager'
+        Source = '00/42/CDisplayManager_CopyBackBufferToTexture_0042bf67.cpp'
+        TestSource = '00/42/CDisplayManager_CopyBackBufferToTexture_0042bf67_test.cpp'
+        PassPattern = 'PASS_0042bf67'
+    }
+    [pscustomobject]@{
+        Address = '0042d28b'
+        Module = 'CDisplayManager'
+        Source = '00/42/CDisplayManager_CopyBackBufferToTexture_0042d28b.cpp'
+        TestSource = '00/42/CDisplayManager_CopyBackBufferToTexture_0042d28b_test.cpp'
+        PassPattern = 'PASS_0042d28b'
+    }
+    [pscustomobject]@{
+        Address = '0043020a'
+        Module = 'LTextTreeWalkThrough'
+        Source = '00/43/LTextTreeWalkThrough_BuildTreeArray_0043020a.cpp'
+        TestSource = '00/43/LTextTreeWalkThrough_BuildTreeArray_0043020a_test.cpp'
+        PassPattern = 'PASS_0043020a'
+    }
+    [pscustomobject]@{
+        Address = '0043024e'
+        Module = 'CDisplayManager'
+        Source = '00/43/CDisplayManager_CopyBackBufferToTexture_0043024e.cpp'
+        TestSource = '00/43/CDisplayManager_CopyBackBufferToTexture_0043024e_test.cpp'
+        PassPattern = 'PASS_0043024e'
+    }
+    [pscustomobject]@{
+        Address = '00430345'
+        Module = 'CDisplayManager'
+        Source = '00/43/CDisplayManager_CopyBackBufferToTexture_00430345.cpp'
+        TestSource = '00/43/CDisplayManager_CopyBackBufferToTexture_00430345_test.cpp'
+        PassPattern = 'PASS_00430345'
+    }
+    [pscustomobject]@{
+        Address = '00431242'
+        Module = 'CEngineLightingManager'
+        Source = '00/43/CEngineLightingManager_UpdateShadowScene_00431242.cpp'
+        TestSource = '00/43/CEngineLightingManager_UpdateShadowScene_00431242_test.cpp'
+        PassPattern = 'PASS_00431242'
+    }
+    [pscustomobject]@{
+        Address = '00431493'
+        Module = 'CEngineLightingManager'
+        Source = '00/43/CEngineLightingManager_UpdateShadowScene_00431493.cpp'
+        TestSource = '00/43/CEngineLightingManager_UpdateShadowScene_00431493_test.cpp'
+        PassPattern = 'PASS_00431493'
+    }
+    [pscustomobject]@{
+        Address = '0043314a'
+        Module = 'CEngineLightingManager'
+        Source = '00/43/CEngineLightingManager_UpdateShadowScene_0043314a.cpp'
+        TestSource = '00/43/CEngineLightingManager_UpdateShadowScene_0043314a_test.cpp'
+        PassPattern = 'PASS_0043314a'
+    }
+    [pscustomobject]@{
+        Address = '0043332c'
+        Module = 'CArray<std::pair<long'
+        Source = '00/43/CArraystdpairlong_pushback_0043332c.cpp'
+        TestSource = '00/43/CArraystdpairlong_pushback_0043332c_test.cpp'
+        PassPattern = 'PASS_0043332c'
+    }
+    [pscustomobject]@{
+        Address = '0043dbd0'
+        Module = '_global'
+        Source = '00/43/global_ISTHINGALIVECThingBuilding_0043dbd0.cpp'
+        TestSource = '00/43/global_ISTHINGALIVECThingBuilding_0043dbd0_test.cpp'
+        PassPattern = 'PASS_0043dbd0'
+    }
+    [pscustomobject]@{
+        Address = '0043dd10'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/43/CEngineSubPrimitiveText_scalardeletingdestructor_0043dd10.cpp'
+        TestSource = '00/43/CEngineSubPrimitiveText_scalardeletingdestructor_0043dd10_test.cpp'
+        PassPattern = 'PASS_0043dd10'
+    }
+    [pscustomobject]@{
+        Address = '0043df80'
+        Module = '_global'
+        Source = '00/43/global_fillENavigatorTypeENavigatorType_0043df80.cpp'
+        TestSource = '00/43/global_fillENavigatorTypeENavigatorType_0043df80_test.cpp'
+        PassPattern = 'PASS_0043df80'
+    }
+    [pscustomobject]@{
+        Address = '00445920'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/44/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00445920.cpp'
+        TestSource = '00/44/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00445920_test.cpp'
+        PassPattern = 'PASS_00445920'
+    }
+    [pscustomobject]@{
+        Address = '00448410'
+        Module = '_Dest_val<std::allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_>,std'
+        Source = '00/44/DestvalstdallocatorstdpairunsignedlongCCountedPointerCFactionstd_pairunsignedlongCCountedPointerCFaction_00448410.cpp'
+        TestSource = '00/44/DestvalstdallocatorstdpairunsignedlongCCountedPointerCFactionstd_pairunsignedlongCCountedPointerCFaction_00448410_test.cpp'
+        PassPattern = 'PASS_00448410'
+    }
+    [pscustomobject]@{
+        Address = '00449630'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/44/CGuiVarTransferBool_TransferToGui_00449630.cpp'
+        TestSource = '00/44/CGuiVarTransferBool_TransferToGui_00449630_test.cpp'
+        PassPattern = 'PASS_00449630'
+    }
+    [pscustomobject]@{
+        Address = '00449650'
+        Module = 'CTCVillage'
+        Source = '00/44/CTCVillage_OnInitialActivate_00449650.cpp'
+        TestSource = '00/44/CTCVillage_OnInitialActivate_00449650_test.cpp'
+        PassPattern = 'PASS_00449650'
+    }
+    [pscustomobject]@{
+        Address = '00453536'
+        Module = 'CDisplayManager'
+        Source = '00/45/CDisplayManager_CopyBackBufferToTexture_00453536.cpp'
+        TestSource = '00/45/CDisplayManager_CopyBackBufferToTexture_00453536_test.cpp'
+        PassPattern = 'PASS_00453536'
+    }
+    [pscustomobject]@{
+        Address = '005143e0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/51/CGuiControlTreePane_SortTreeRecursively_005143e0.cpp'
+        TestSource = '00/51/CGuiControlTreePane_SortTreeRecursively_005143e0_test.cpp'
+        PassPattern = 'PASS_005143e0'
+    }
+    [pscustomobject]@{
+        Address = '0057a106'
+        Module = 'CDisplayManager'
+        Source = '00/57/CDisplayManager_CopyBackBufferToTexture_0057a106.cpp'
+        TestSource = '00/57/CDisplayManager_CopyBackBufferToTexture_0057a106_test.cpp'
+        PassPattern = 'PASS_0057a106'
     }
 )
 

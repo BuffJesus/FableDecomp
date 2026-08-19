@@ -1,68 +1,66 @@
-extern "C" __declspec(naked) void F_0043332c(void)
+#pragma optimize("s",on)
+// Byte-exact GENUINE-C++ reconstruction of retail 0x004721b3
+// CArray<T>::resize (manifest labels it "push_back"; the body is the classic
+// resize(_Newsize, const T&) dispatch).  Element stride is 4 bytes here, so
+// T is a single 4-byte word (one `long`) -> pointer arithmetic scales by 4 and
+// the size() shift the compiler emits is `sar edi,2`.
+//
+// This is the exact same source shape as the already-landed byte-matching
+// sibling 0x00475e92 (which is stride 8, `sar edi,3`); the only change is the
+// element size, which the compiler turns into the /4 stride automatically.
+//
+// Retail disasm:
+//   mov edx,[ecx]          ; _First   (this+0x00)
+//   mov eax,[esp+4]        ; _Newsize (stack arg 1, unsigned)
+//   push esi; push edi
+//   mov esi,[ecx+4]        ; _Last    (this+0x04)
+//   mov edi,esi; sub edi,edx; sar edi,2   ; size() = (_Last-_First)/4
+//   cmp eax,edi; jae INSERT               ; _Newsize < size() -> ERASE, else INSERT
+// ERASE:
+//   push esi               ; end()
+//   lea eax,[edx+eax*4]    ; begin()+_Newsize
+//   push eax
+//   call erase(begin()+_Newsize, end())   ; this in ecx (kept)
+//   jmp END
+// INSERT:
+//   mov esi,[ecx+4]        ; _Last reloaded (end())
+//   push [esp+0x10]        ; &_Val (const T& reference, one dword)
+//   mov edi,esi; sub edi,edx; sar edi,2   ; size() recomputed
+//   sub eax,edi            ; _Newsize - size()
+//   push eax
+//   push esi               ; end()
+//   call _Insert_n(end(), _Newsize-size(), _Val)   ; this in ecx (kept)
+// END:
+//   pop edi; pop esi; ret 8
+//
+// _Val is passed by const reference (single dword pushed; ret 8).  erase /
+// _Insert_n are members of the same container (this in ecx), declared but not
+// defined here so cl emits the direct relocation-masked calls with ecx
+// preserved as `this`.
+
+struct Elem {
+    long value;   // +0
+};                // sizeof == 4
+
+struct CArrayElem {
+    Elem* _First;  // +0x00
+    Elem* _Last;   // +0x04
+
+    Elem* begin() const { return _First; }
+    Elem* end() const   { return _Last; }
+    unsigned int size() const { return (unsigned int)(_Last - _First); }
+
+    // Out-of-line members -> direct __fastcall calls, ecx = this.
+    void erase(Elem* _F, Elem* _L);
+    void _Insert_n(Elem* _Where, unsigned int _Count, const Elem& _Val);
+
+    void resize(unsigned int _Newsize, const Elem& _Val);
+};
+
+void CArrayElem::resize(unsigned int _Newsize, const Elem& _Val)
 {
-    __asm
-    {
-        _emit 0x8b
-        _emit 0x11
-        _emit 0x8b
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0x56
-        _emit 0x8b
-        _emit 0x71
-        _emit 0x04
-        _emit 0x57
-        _emit 0x8b
-        _emit 0xfe
-        _emit 0x2b
-        _emit 0xfa
-        _emit 0xc1
-        _emit 0xff
-        _emit 0x02
-        _emit 0x3b
-        _emit 0xc7
-        _emit 0x73
-        _emit 0x0c
-        _emit 0x56
-        _emit 0x8d
-        _emit 0x04
-        _emit 0x82
-        _emit 0x50
-        _emit 0xe8
-        _emit 0x1e
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0xeb
-        _emit 0x17
-        _emit 0x8b
-        _emit 0x71
-        _emit 0x04
-        _emit 0xff
-        _emit 0x74
-        _emit 0x24
-        _emit 0x10
-        _emit 0x8b
-        _emit 0xfe
-        _emit 0x2b
-        _emit 0xfa
-        _emit 0xc1
-        _emit 0xff
-        _emit 0x02
-        _emit 0x2b
-        _emit 0xc7
-        _emit 0x50
-        _emit 0x56
-        _emit 0xe8
-        _emit 0x4e
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x5f
-        _emit 0x5e
-        _emit 0xc2
-        _emit 0x08
-        _emit 0x00
-    }
+    if (_Newsize < size())
+        erase(begin() + _Newsize, end());
+    else
+        _Insert_n(end(), _Newsize - size(), _Val);
 }
