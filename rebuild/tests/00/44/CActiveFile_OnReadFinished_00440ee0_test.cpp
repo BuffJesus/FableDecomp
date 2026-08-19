@@ -1,7 +1,2 @@
-#include <cstdio>
-
-int main()
-{
-    std::printf("PASS_00440ee0\n");
-    return 0;
-}
+#include <stdio.h>
+int main(void){ printf("PASS_00440ee0\n"); return 0; }

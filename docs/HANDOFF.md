@@ -8647,8 +8647,22 @@ USER-driven debugger work and unchanged).
   comma list as ONE string ("not in the catalog"); pass a real array via `-Command` or a
   variable. Unquoted hex like `004190e2` is also parsed as scientific notation (→ 419000).
 
+### Second pass (same day): the DEFER class fell too — 594 more landed, 401 bakes left
+- `GetMeshEffect` was never a permuter case: the 49v47 miss was the `this->p = 0` sitting
+  outside the release branch. Moved inside (retail's `je` skips the zero store when the
+  pointer is null) → exact MATCH under `#pragma optimize("s")`.
+- Same insight solved the whole `_Dest_val` / `CIVCountedPointer` class: templates 00413310
+  (53B), 004190b6 (44B), 0041bcd0 (45B), 00419554 (24B), 0041bae0 (27B) — **461 + 30 + 15 +
+  13 + 7** landed, of which 407 were previously UNLANDED family members, not just de-bakes.
+- Plus 18 small families (list `Clear`/`Count`, tail-jmp forwarder, empty/constant hooks,
+  `operator!=`, SetStaticCast, vecdel+vptr, BeginInputLoading…).
+- Totals for the day: **701 functions landed genuine, 278 `_emit` bakes removed** (696 → 401).
+  Gates re-run green after each round (CANDIDATE_BUILD, parity comparer 0 differing, bootstrap).
+- Live family table any time: `scratchpad/bake_families.py` (regroups landed `_emit` sources
+  by length + call-masked skeleton from the catalog).
+
 ### Next in this lane
-1. `GetMeshEffect` (47B ×7) — permuter pass, 49v47 (one `mov ecx,eax`; retail keeps `cur` in ecx).
-2. `_Dest_val<…>` class (~130 across variants) + `UpdateShadowScene` (3) / `SortTreeRecursively` (4)
-   — DEFER class, needs the permuter.
-3. Everything else in `docs/DEBAKE_WORKLIST.md`'s family table (599 bakes left, 432 families).
+1. The tail is flat — 401 bakes in 386 families, largest family 3. Roughly one authoring job each.
+2. `004193a0` (`DeleteData`, 36B ×3) is an OVER-CAPTURED manifest row (a `ret 4` then a second
+   unlisted 13B function, no `0xCC` between) — needs `trim_overcapture.py` or a 2-function land.
+3. `00431020`/`00431242` (`UpdateShadowScene`) still diverge per instance.

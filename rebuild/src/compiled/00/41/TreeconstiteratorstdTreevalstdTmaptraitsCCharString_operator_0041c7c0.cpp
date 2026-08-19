@@ -1,28 +1,7 @@
-extern "C" __declspec(naked) void fn_0041c7c0(void)
-{
-    __asm
-    {
-        _emit 0x8B
-        _emit 0x01
-        _emit 0x8B
-        _emit 0x54
-        _emit 0x24
-        _emit 0x04
-        _emit 0x56
-        _emit 0x8B
-        _emit 0x32
-        _emit 0x33
-        _emit 0xC9
-        _emit 0x3B
-        _emit 0xC6
-        _emit 0x0F
-        _emit 0x95
-        _emit 0xC1
-        _emit 0x8A
-        _emit 0xC1
-        _emit 0x5E
-        _emit 0xC2
-        _emit 0x04
-        _emit 0x00
-    }
-}
+// CCountedPointer<T>::operator!= — compare the held raw pointers.
+// __fastcall this=ecx, other=stack (ret 4).
+struct CP {
+    void* p;
+    bool NotEqual(const CP* o) const;
+};
+bool CP::NotEqual(const CP* o) const { return this->p != o->p; }

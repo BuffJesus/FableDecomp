@@ -1,59 +1,26 @@
-extern "C" __declspec(naked) void cand_0043e9a0(void)
-{
-    __asm
-    {
-        _emit 0x56
-        _emit 0x8B
-        _emit 0xF1
-        _emit 0x8B
-        _emit 0x46
-        _emit 0x04
-        _emit 0x85
-        _emit 0xC0
-        _emit 0x74
-        _emit 0x1C
-        _emit 0xFF
-        _emit 0x08
-        _emit 0x8B
-        _emit 0x46
-        _emit 0x04
-        _emit 0x83
-        _emit 0x38
-        _emit 0x00
-        _emit 0x75
-        _emit 0x12
-        _emit 0x8B
-        _emit 0x48
-        _emit 0x08
-        _emit 0xFF
-        _emit 0x50
-        _emit 0x04
-        _emit 0x8B
-        _emit 0x46
-        _emit 0x04
-        _emit 0x50
-        _emit 0xE8
-        _emit 0xF9
-        _emit 0xFF
-        _emit 0x7B
-        _emit 0x00
-        _emit 0x83
-        _emit 0xC4
-        _emit 0x04
-        _emit 0xC7
-        _emit 0x06
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0xC7
-        _emit 0x46
-        _emit 0x04
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x5E
-        _emit 0xC3
+// _Dest_val<allocator<CCountedPointer<...>>> — destroy one counted-pointer slot.
+// __fastcall this=ecx (no args). this+0 = object ptr, this+4 = refcount block.
+// Block layout: [0]=refcount, [4]=releaser member-fn ptr, [8]=releaser `this`.
+struct Owner;
+struct Info {
+    long rc;
+    void (__fastcall *release)(Owner* self);
+    Owner* owner;
+};
+struct Slot {
+    void* p;
+    Info* info;
+    void DestVal();
+};
+extern "C" void __cdecl Free1(void* p);   // 0x00bfe9bc
+void Slot::DestVal() {
+    if (this->info) {
+        --this->info->rc;
+        if (this->info->rc == 0) {
+            this->info->release(this->info->owner);
+            Free1(this->info);
+        }
     }
+    this->p = 0;
+    this->info = 0;
 }

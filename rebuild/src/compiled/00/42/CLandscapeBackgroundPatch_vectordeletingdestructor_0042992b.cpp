@@ -1,33 +1,10 @@
-extern "C" __declspec(naked) void candidate_0042992b(void)
-{
-    __asm {
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0xe8
-        _emit 0xbd
-        _emit 0x33
-        _emit 0x10
-        _emit 0x00
-        _emit 0xf6
-        _emit 0x44
-        _emit 0x24
-        _emit 0x08
-        _emit 0x01
-        _emit 0x74
-        _emit 0x07
-        _emit 0x56
-        _emit 0xe8
-        _emit 0x7c
-        _emit 0x50
-        _emit 0x7d
-        _emit 0x00
-        _emit 0x59
-        _emit 0x8b
-        _emit 0xc6
-        _emit 0x5e
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-    }
+#pragma optimize("s",on)
+// vector deleting destructor whose deallocator is the engine free helper (0x00bfe9bc),
+// cleaned with `pop ecx` (size peephole). __fastcall this=ecx, flags=stack (ret 4).
+struct T { void Dtor(); void* VecDel(unsigned flags); };
+extern "C" void __cdecl Free1(void* p);
+void* T::VecDel(unsigned flags) {
+    this->Dtor();
+    if (flags & 1) Free1(this);
+    return this;
 }

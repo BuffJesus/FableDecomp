@@ -1,21 +1,12 @@
-extern "C" __declspec(naked) void candidate_0042b636(void)
-{
-    __asm {
-        _emit 0x8b
-        _emit 0x11
-        _emit 0x8b
-        _emit 0x0a
-        _emit 0x33
-        _emit 0xc0
-        _emit 0xeb
-        _emit 0x03
-        _emit 0x8b
-        _emit 0x09
-        _emit 0x40
-        _emit 0x3b
-        _emit 0xca
-        _emit 0x75
-        _emit 0xf9
-        _emit 0xc3
-    }
+#pragma optimize("s",on)
+// Circular-list length (manifest name `CalcStringLength`): walk from head->next back
+// to the sentinel. __fastcall this=ecx, no args.
+struct Node { Node* next; };
+struct List { Node* head; int Count() const; };
+int List::Count() const {
+    Node* h = this->head;
+    Node* n = h->next;
+    int count = 0;
+    while (n != h) { n = n->next; ++count; }
+    return count;
 }

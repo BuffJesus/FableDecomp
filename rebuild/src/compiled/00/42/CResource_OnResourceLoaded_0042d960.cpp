@@ -1,6 +1,4 @@
-extern "C" __declspec(naked) void candidate_0042d960(void)
-{
-    __asm {
-        _emit 0xc3
-    }
-}
+// Empty virtual hook (CGameComponent::Init and friends): __fastcall this=ecx, no args,
+// no cleanup -> a bare `ret`.
+struct T { void Init(); };
+void T::Init() {}

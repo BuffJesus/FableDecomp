@@ -1,10 +1,3 @@
-extern "C" __declspec(naked) void candidate_0042da50(void)
-{
-    __asm {
-        _emit 0x33
-        _emit 0xc0
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-    }
-}
+// Constant-null one-argument getter: `xor eax,eax; ret 4`.
+struct T { void* GetPSubDefInfo(int index); };
+void* T::GetPSubDefInfo(int index) { return 0; }

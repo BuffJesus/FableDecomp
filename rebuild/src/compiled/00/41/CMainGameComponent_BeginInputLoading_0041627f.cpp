@@ -1,29 +1,8 @@
-extern "C" __declspec(naked) void cand_0041627f(void)
-{
-    __asm
-    {
-        _emit 0xff
-        _emit 0x74
-        _emit 0x24
-        _emit 0x04
-        _emit 0x8b
-        _emit 0x0d
-        _emit 0x88
-        _emit 0x83
-        _emit 0x3b
-        _emit 0x01
-        _emit 0x68
-        _emit 0xe4
-        _emit 0x85
-        _emit 0x3b
-        _emit 0x01
-        _emit 0xe8
-        _emit 0x7d
-        _emit 0xfb
-        _emit 0x5d
-        _emit 0x00
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-    }
-}
+#pragma optimize("s",on)
+// BeginInputLoading — forwards to a member of a fixed global object with a fixed
+// name argument. __stdcall, one stack arg (ret 4); ecx comes from the global, so the
+// function ignores any incoming this.
+struct CLoader { void Begin(const char* name, int arg); };
+extern CLoader* g_Loader;    // 0x013B8388
+extern const char g_Name[];  // 0x013B85E4
+void __stdcall BeginInputLoading(int arg) { g_Loader->Begin(g_Name, arg); }

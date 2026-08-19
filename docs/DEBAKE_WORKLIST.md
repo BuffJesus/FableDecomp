@@ -4,8 +4,8 @@
 `__declspec(naked)` `_emit` byte-bakes. Bakes are byte-exact oracles at best; they
 are not faithful reconstructions. See memory `byte-purity-policy` / `faithful-decomp-policy`.
 
-As of 2026-08-19 the landed set is ~94% genuine: **599 baked** functions remain
-(was 696 on 2026-08-14). A family shares (length, call-masked skeleton), so
+As of 2026-08-19 (second pass) the landed set is ~96.5% genuine: **401 baked** functions
+remain (696 on 2026-08-14 → 599 → 401). A family shares (length, call-masked skeleton), so
 authoring ONE genuine head byte-exact lets `harvest_skeleton.py` / `debake_family.py`
 clone-sweep the rest as genuine RELOCATION_MATCH.
 
@@ -34,6 +34,42 @@ Result (each re-verified byte-exact by the harness, MATCH or RELOCATION_MATCH):
 Gates re-run after landing: `build_candidates.ps1 -Address <107>` → CANDIDATE_BUILD PASS
 objects=107; `compare_candidate_objects.py` → all 107 MATCH/RELOCATION_MATCH (0 differing);
 `build_bootstrap.ps1` → VISUAL_BOOT_CHECKPOINT PASS.
+
+## 2026-08-19 (second pass) — `_Dest_val` class SOLVED, 401 bakes left
+
+The whole DEFER class fell to plain C++ once the `this->p = 0` was placed **inside** the
+release branch (retail's `je` skips the zero store when the pointer is null) and the
+`o->p` reload was left un-hoisted (o may alias this). No permuter needed.
+
+| template | family | de-baked | +new | landed | model |
+|----------|--------|---------:|-----:|-------:|-------|
+| 00413310 | `_Dest_val` 53B | 83 | 378 | 461 | release-block: `--rc; if(!rc){ blk->release(blk->owner); Free1(blk); }` then clear both words |
+| 004190b6 | `_Dest_val` 44B | 10 | 20 | 30 | same source, `#pragma optimize("s")` (`and`/`pop ecx` peepholes) |
+| 0041bcd0 | `CIVCP::Adopt` 45B | 15 | 0 | 15 | release then take raw ptr, no addref |
+| 00419554 | `CIVCP::Release` 24B | 13 | 0 | 13 | same as 27B with pragma `s` |
+| 0042a6c3 | `GetMeshEffect` 47B | 7 | 0 | 7 | CIVCP assign; was the "49v47 permuter near-miss" — actually one `je` displacement |
+| 0041bae0 | `CIVCP::Release` 27B | 7 | 0 | 7 | `if(cur){ if(--rc==0) cur->v1(); this->p=0; }` |
+| 0042a141 | list `Clear` 39B | 4 | 6 | 10 | circular list free loop (manifest calls it `SortTreeRecursively`) |
+| 00431e70 | tail-jmp forwarder 5B | 5 | 3 | 8 | void member → void member, VC7.1 tail-calls it |
+| 00415920 / 00415e67 / 00440ec0 | empty `ret` / vecdel-28 / OnReadFinished-25 | 6+6+6 | 0 | 18 | |
+| 004197b0 / 0042dc60 / 0042da20 / 004197a0 / 0042da50 | `return false` / `return true` / empty `ret 4` / byte-flag setter / `return 0` | 3+2+3+2+2 | 0 | 12 | |
+| 0042a2b9 / 0041c7c0 / 00416268 / 0042b636 / 004293f2 / 0042d9a0 | SetStaticCast / `operator!=` / BeginInputLoading / list `Count` / helper-fixup / vecdel+vptr | 3+2+2+2+2+2 | 0 | 13 | |
+| **total** | | **187** | **407** | **594** | |
+
+Gates: CANDIDATE_BUILD PASS objects=594; `compare_candidate_objects.py` → 64 MATCH +
+530 RELOCATION_MATCH, 0 differing; `build_bootstrap.ps1` VISUAL_BOOT_CHECKPOINT PASS.
+
+**Bakes remaining: 401 in 386 families — the tail is flat (largest family is 3).** Clone
+leverage is spent; from here each bake is roughly one authoring job. Regenerate the live
+family table any time with `scratchpad/bake_families.py` (groups landed `_emit` sources by
+length + call-masked skeleton straight from the catalog).
+
+### Still open
+- `004193a0` (`DeleteData`, 36B ×3) — the manifest row is **over-captured**: it spans a
+  `ret 4` at +0x14 and then a second, unlisted 13-byte function. Needs `trim_overcapture.py`
+  (no `0xCC` between them) or a two-function land, not a single source.
+- `00431020` / `00431242` (`UpdateShadowScene`, 65B/53B) — per-instance immediate divergence.
+- Everything else: 386 families of 1–3.
 
 ## Method (proven this session)
 1. Disassemble the head; model as genuine C++ (real members, `__fastcall(self,…)` for

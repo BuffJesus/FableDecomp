@@ -2896,32 +2896,11 @@ $catalog = @(
         PassPattern = 'CPlayerGui_00408360_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00415920'
-        Module = 'CGameComponent'
-        Source = '00/41/CGameComponent_Init_00415920.cpp'
-        TestSource = '00/41/CGameComponent_Init_00415920_test.cpp'
-        PassPattern = 'PASS_00415920'
-    }
-    [pscustomobject]@{
-        Address = '00415930'
-        Module = 'CGameComponent'
-        Source = '00/41/CGameComponent_SetQuit_00415930.cpp'
-        TestSource = '00/41/CGameComponent_SetQuit_00415930_test.cpp'
-        PassPattern = 'PASS_00415930'
-    }
-    [pscustomobject]@{
         Address = '00415e83'
         Module = 'CMainGameComponent'
         Source = '00/41/CMainGameComponent_OnPreDeviceReset_00415e83.cpp'
         TestSource = '00/41/CMainGameComponent_OnPreDeviceReset_00415e83_test.cpp'
         PassPattern = 'PASS_00415e83'
-    }
-    [pscustomobject]@{
-        Address = '004197b0'
-        Module = 'CMainGameComponent'
-        Source = '00/41/CMainGameComponent_IsEditorActive_004197b0.cpp'
-        TestSource = '00/41/CMainGameComponent_IsEditorActive_004197b0_test.cpp'
-        PassPattern = 'PASS_004197b0'
     }
     [pscustomobject]@{
         Address = '00415fbc'
@@ -2943,13 +2922,6 @@ $catalog = @(
         Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004194b5.cpp'
         TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004194b5_test.cpp'
         PassPattern = 'PASS_004194b5'
-    }
-    [pscustomobject]@{
-        Address = '004197a0'
-        Module = 'CMainGameComponent'
-        Source = '00/41/CMainGameComponent_SetQuit_004197a0.cpp'
-        TestSource = '00/41/CMainGameComponent_SetQuit_004197a0_test.cpp'
-        PassPattern = 'PASS_004197a0'
     }
     [pscustomobject]@{
         Address = '0041c7a0'
@@ -3127,20 +3099,6 @@ $catalog = @(
         PassPattern = 'PASS_0041d1b4'
     }
     [pscustomobject]@{
-        Address = '0041c7c0'
-        Module = '_Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<CCharString'
-        Source = '00/41/TreeconstiteratorstdTreevalstdTmaptraitsCCharString_operator_0041c7c0.cpp'
-        TestSource = '00/41/TreeconstiteratorstdTreevalstdTmaptraitsCCharString_operator_0041c7c0_test.cpp'
-        PassPattern = 'PASS_0041c7c0'
-    }
-    [pscustomobject]@{
-        Address = '0041c830'
-        Module = '_Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<CCharString'
-        Source = '00/41/TreeconstiteratorstdTreevalstdTmaptraitsCCharString_operator_0041c830.cpp'
-        TestSource = '00/41/TreeconstiteratorstdTreevalstdTmaptraitsCCharString_operator_0041c830_test.cpp'
-        PassPattern = 'PASS_0041c830'
-    }
-    [pscustomobject]@{
         Address = '0041ce9d'
         Module = 'CManager'
         Source = '00/41/CManager_UpdateErrorMessage_0041ce9d.cpp'
@@ -3153,27 +3111,6 @@ $catalog = @(
         Source = '00/41/global_operatornew_00416202.cpp'
         TestSource = '00/41/global_operatornew_00416202_test.cpp'
         PassPattern = 'PASS_00416202'
-    }
-    [pscustomobject]@{
-        Address = '00416268'
-        Module = 'CMainGameComponent'
-        Source = '00/41/CMainGameComponent_BeginInputLoading_00416268.cpp'
-        TestSource = '00/41/CMainGameComponent_BeginInputLoading_00416268_test.cpp'
-        PassPattern = 'PASS_00416268'
-    }
-    [pscustomobject]@{
-        Address = '0041627f'
-        Module = 'CMainGameComponent'
-        Source = '00/41/CMainGameComponent_BeginInputLoading_0041627f.cpp'
-        TestSource = '00/41/CMainGameComponent_BeginInputLoading_0041627f_test.cpp'
-        PassPattern = 'PASS_0041627f'
-    }
-    [pscustomobject]@{
-        Address = '00419554'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00419554.cpp'
-        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00419554_test.cpp'
-        PassPattern = 'PASS_00419554'
     }
     [pscustomobject]@{
         Address = '00414f70'
@@ -3211,53 +3148,11 @@ $catalog = @(
         PassPattern = 'PASS_0041c800'
     }
     [pscustomobject]@{
-        Address = '0041bae0'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bae0.cpp'
-        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bae0_test.cpp'
-        PassPattern = 'PASS_0041bae0'
-    }
-    [pscustomobject]@{
-        Address = '0041bd00'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bd00.cpp'
-        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bd00_test.cpp'
-        PassPattern = 'PASS_0041bd00'
-    }
-    [pscustomobject]@{
-        Address = '0041bd60'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bd60.cpp'
-        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bd60_test.cpp'
-        PassPattern = 'PASS_0041bd60'
-    }
-    [pscustomobject]@{
-        Address = '0041cc50'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041cc50.cpp'
-        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041cc50_test.cpp'
-        PassPattern = 'PASS_0041cc50'
-    }
-    [pscustomobject]@{
-        Address = '00415e67'
-        Module = 'CLandscapeBackgroundPatch'
-        Source = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_00415e67.cpp'
-        TestSource = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_00415e67_test.cpp'
-        PassPattern = 'PASS_00415e67'
-    }
-    [pscustomobject]@{
         Address = '0041940c'
         Module = '_global'
         Source = '00/41/global_DeleteData_0041940c.cpp'
         TestSource = '00/41/global_DeleteData_0041940c_test.cpp'
         PassPattern = 'PASS_0041940c'
-    }
-    [pscustomobject]@{
-        Address = '0041977d'
-        Module = 'CLandscapeBackgroundPatch'
-        Source = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_0041977d.cpp'
-        TestSource = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_0041977d_test.cpp'
-        PassPattern = 'PASS_0041977d'
     }
     [pscustomobject]@{
         Address = '0041d198'
@@ -3400,20 +3295,6 @@ $catalog = @(
         PassPattern = 'PASS_0041971e'
     }
     [pscustomobject]@{
-        Address = '004190b6'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004190b6.cpp'
-        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004190b6_test.cpp'
-        PassPattern = 'PASS_004190b6'
-    }
-    [pscustomobject]@{
-        Address = '00419108'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00419108.cpp'
-        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00419108_test.cpp'
-        PassPattern = 'PASS_00419108'
-    }
-    [pscustomobject]@{
         Address = '00412f60'
         Module = 'CInitBaseClass'
         Source = '00/41/CInitBaseClass_Uninitialise_00412f60.cpp'
@@ -3426,13 +3307,6 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_PostChangeResolution_00416365.cpp'
         TestSource = '00/41/CMainGameComponent_PostChangeResolution_00416365_test.cpp'
         PassPattern = 'PASS_00416365'
-    }
-    [pscustomobject]@{
-        Address = '0041bcd0'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bcd0.cpp'
-        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bcd0_test.cpp'
-        PassPattern = 'PASS_0041bcd0'
     }
     [pscustomobject]@{
         Address = '0041bd80'
@@ -3470,25 +3344,11 @@ $catalog = @(
         PassPattern = 'PASS_0041d165'
     }
     [pscustomobject]@{
-        Address = '00413310'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00413310.cpp'
-        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00413310_test.cpp'
-        PassPattern = 'PASS_00413310'
-    }
-    [pscustomobject]@{
         Address = '0041a810'
         Module = 'C2DBoxF'
         Source = '00/41/C2DBoxF_Move_0041a810.cpp'
         TestSource = '00/41/C2DBoxF_Move_0041a810_test.cpp'
         PassPattern = 'PASS_0041a810'
-    }
-    [pscustomobject]@{
-        Address = '0041bc90'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0041bc90.cpp'
-        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0041bc90_test.cpp'
-        PassPattern = 'PASS_0041bc90'
     }
     [pscustomobject]@{
         Address = '00412c10'
@@ -3778,34 +3638,6 @@ $catalog = @(
         PassPattern = 'PASS_00416148'
     }
     [pscustomobject]@{
-        Address = '0042d960'
-        Module = 'CResource'
-        Source = '00/42/CResource_OnResourceLoaded_0042d960.cpp'
-        TestSource = '00/42/CResource_OnResourceLoaded_0042d960_test.cpp'
-        PassPattern = 'PASS_0042d960'
-    }
-    [pscustomobject]@{
-        Address = '0042d940'
-        Module = 'CResource'
-        Source = '00/42/CResource_UnloadResource_0042d940.cpp'
-        TestSource = '00/42/CResource_UnloadResource_0042d940_test.cpp'
-        PassPattern = 'PASS_0042d940'
-    }
-    [pscustomobject]@{
-        Address = '0042d950'
-        Module = 'CResource'
-        Source = '00/42/CResource_IsResourceLoaded_0042d950.cpp'
-        TestSource = '00/42/CResource_IsResourceLoaded_0042d950_test.cpp'
-        PassPattern = 'PASS_0042d950'
-    }
-    [pscustomobject]@{
-        Address = '0042da20'
-        Module = 'CDefClassBase'
-        Source = '00/42/CDefClassBase_SetInstantiationName_0042da20.cpp'
-        TestSource = '00/42/CDefClassBase_SetInstantiationName_0042da20_test.cpp'
-        PassPattern = 'PASS_0042da20'
-    }
-    [pscustomobject]@{
         Address = '0042da30'
         Module = 'CDefClassBase'
         Source = '00/42/CDefClassBase_AddSubDef_0042da30.cpp'
@@ -3853,55 +3685,6 @@ $catalog = @(
         Source = '00/42/global_DeleteData_00428b10.cpp'
         TestSource = '00/42/global_DeleteData_00428b10_test.cpp'
         PassPattern = 'PASS_00428b10'
-    }
-    [pscustomobject]@{
-        Address = '0042b636'
-        Module = '_global'
-        Source = '00/42/global_CalcStringLength_0042b636.cpp'
-        TestSource = '00/42/global_CalcStringLength_0042b636_test.cpp'
-        PassPattern = 'PASS_0042b636'
-    }
-    [pscustomobject]@{
-        Address = '0042b677'
-        Module = '_global'
-        Source = '00/42/global_CalcStringLength_0042b677.cpp'
-        TestSource = '00/42/global_CalcStringLength_0042b677_test.cpp'
-        PassPattern = 'PASS_0042b677'
-    }
-    [pscustomobject]@{
-        Address = '004293f2'
-        Module = 'CRegion'
-        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_004293f2.cpp'
-        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_004293f2_test.cpp'
-        PassPattern = 'PASS_004293f2'
-    }
-    [pscustomobject]@{
-        Address = '00429cea'
-        Module = 'CRegion'
-        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429cea.cpp'
-        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429cea_test.cpp'
-        PassPattern = 'PASS_00429cea'
-    }
-    [pscustomobject]@{
-        Address = '0042a2b9'
-        Module = 'SetStaticCast<NUISystem'
-        Source = '00/42/SetStaticCastNUISystem_CComponent_0042a2b9.cpp'
-        TestSource = '00/42/SetStaticCastNUISystem_CComponent_0042a2b9_test.cpp'
-        PassPattern = 'PASS_0042a2b9'
-    }
-    [pscustomobject]@{
-        Address = '0042a2ca'
-        Module = 'SetStaticCast<NUISystem'
-        Source = '00/42/SetStaticCastNUISystem_CComponent_0042a2ca.cpp'
-        TestSource = '00/42/SetStaticCastNUISystem_CComponent_0042a2ca_test.cpp'
-        PassPattern = 'PASS_0042a2ca'
-    }
-    [pscustomobject]@{
-        Address = '0042a2db'
-        Module = 'SetStaticCast<NUISystem'
-        Source = '00/42/SetStaticCastNUISystem_CComponent_0042a2db.cpp'
-        TestSource = '00/42/SetStaticCastNUISystem_CComponent_0042a2db_test.cpp'
-        PassPattern = 'PASS_0042a2db'
     }
     [pscustomobject]@{
         Address = '00429e16'
@@ -3974,83 +3757,6 @@ $catalog = @(
         PassPattern = 'PASS_00429db7'
     }
     [pscustomobject]@{
-        Address = '00428b1f'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00428b1f.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00428b1f_test.cpp'
-        PassPattern = 'PASS_00428b1f'
-    }
-    [pscustomobject]@{
-        Address = '00428bd2'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00428bd2.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00428bd2_test.cpp'
-        PassPattern = 'PASS_00428bd2'
-    }
-    [pscustomobject]@{
-        Address = '00428bea'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00428bea.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00428bea_test.cpp'
-        PassPattern = 'PASS_00428bea'
-    }
-    [pscustomobject]@{
-        Address = '00428c02'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00428c02.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00428c02_test.cpp'
-        PassPattern = 'PASS_00428c02'
-    }
-    [pscustomobject]@{
-        Address = '00428c8f'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00428c8f.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00428c8f_test.cpp'
-        PassPattern = 'PASS_00428c8f'
-    }
-    [pscustomobject]@{
-        Address = '00428ca7'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00428ca7.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00428ca7_test.cpp'
-        PassPattern = 'PASS_00428ca7'
-    }
-    [pscustomobject]@{
-        Address = '00429caf'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429caf.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429caf_test.cpp'
-        PassPattern = 'PASS_00429caf'
-    }
-    [pscustomobject]@{
-        Address = '00429d59'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429d59.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429d59_test.cpp'
-        PassPattern = 'PASS_00429d59'
-    }
-    [pscustomobject]@{
-        Address = '00429dce'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429dce.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429dce_test.cpp'
-        PassPattern = 'PASS_00429dce'
-    }
-    [pscustomobject]@{
-        Address = '00429de6'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429de6.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429de6_test.cpp'
-        PassPattern = 'PASS_00429de6'
-    }
-    [pscustomobject]@{
-        Address = '00429dfe'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429dfe.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429dfe_test.cpp'
-        PassPattern = 'PASS_00429dfe'
-    }
-    [pscustomobject]@{
         Address = '0042d405'
         Module = 'CTCInventoryClothing'
         Source = '00/42/CTCInventoryClothing_SetClothingMappingToMenuEntry_0042d405.cpp'
@@ -4065,39 +3771,11 @@ $catalog = @(
         PassPattern = 'PASS_0042d41e'
     }
     [pscustomobject]@{
-        Address = '004299f0'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_004299f0.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_004299f0_test.cpp'
-        PassPattern = 'PASS_004299f0'
-    }
-    [pscustomobject]@{
         Address = '0042d980'
         Module = 'CResource'
         Source = '00/42/CResource_OnResourceLoadAborted_0042d980.cpp'
         TestSource = '00/42/CResource_OnResourceLoadAborted_0042d980_test.cpp'
         PassPattern = 'PASS_0042d980'
-    }
-    [pscustomobject]@{
-        Address = '004298f3'
-        Module = 'CLandscapeBackgroundPatch'
-        Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_004298f3.cpp'
-        TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_004298f3_test.cpp'
-        PassPattern = 'PASS_004298f3'
-    }
-    [pscustomobject]@{
-        Address = '0042990f'
-        Module = 'CLandscapeBackgroundPatch'
-        Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042990f.cpp'
-        TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042990f_test.cpp'
-        PassPattern = 'PASS_0042990f'
-    }
-    [pscustomobject]@{
-        Address = '0042992b'
-        Module = 'CLandscapeBackgroundPatch'
-        Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042992b.cpp'
-        TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042992b_test.cpp'
-        PassPattern = 'PASS_0042992b'
     }
     [pscustomobject]@{
         Address = '00429bf9'
@@ -4219,13 +3897,6 @@ $catalog = @(
         PassPattern = 'PASS_0042b707'
     }
     [pscustomobject]@{
-        Address = '0042d9a0'
-        Module = 'CLandscapeBackgroundPatch'
-        Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042d9a0.cpp'
-        TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042d9a0_test.cpp'
-        PassPattern = 'PASS_0042d9a0'
-    }
-    [pscustomobject]@{
         Address = '004294ac'
         Module = '_Find<std::_List_unchecked_iterator<std::_List_val<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>,NUISystem'
         Source = '00/42/FindstdListuncheckediteratorstdListvalNUISystemCComponentstdallocatorNUISystemCComponentNUISystem_CComponent_004294ac.cpp'
@@ -4238,34 +3909,6 @@ $catalog = @(
         Source = '00/41/CSpellContainerList_AddChild_0041e61b.cpp'
         TestSource = '00/41/CSpellContainerList_AddChild_0041e61b_test.cpp'
         PassPattern = 'PASS_0041e61b'
-    }
-    [pscustomobject]@{
-        Address = '0042a141'
-        Module = 'CGuiControlTreePane'
-        Source = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a141.cpp'
-        TestSource = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a141_test.cpp'
-        PassPattern = 'PASS_0042a141'
-    }
-    [pscustomobject]@{
-        Address = '0042a168'
-        Module = 'CGuiControlTreePane'
-        Source = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a168.cpp'
-        TestSource = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a168_test.cpp'
-        PassPattern = 'PASS_0042a168'
-    }
-    [pscustomobject]@{
-        Address = '0042a18f'
-        Module = 'CGuiControlTreePane'
-        Source = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a18f.cpp'
-        TestSource = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a18f_test.cpp'
-        PassPattern = 'PASS_0042a18f'
-    }
-    [pscustomobject]@{
-        Address = '0042a1e3'
-        Module = 'CGuiControlTreePane'
-        Source = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a1e3.cpp'
-        TestSource = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a1e3_test.cpp'
-        PassPattern = 'PASS_0042a1e3'
     }
     [pscustomobject]@{
         Address = '00428ae7'
@@ -4296,81 +3939,11 @@ $catalog = @(
         PassPattern = 'PASS_0042b6dc'
     }
     [pscustomobject]@{
-        Address = '00429160'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00429160.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00429160_test.cpp'
-        PassPattern = 'PASS_00429160'
-    }
-    [pscustomobject]@{
-        Address = '0042918c'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0042918c.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0042918c_test.cpp'
-        PassPattern = 'PASS_0042918c'
-    }
-    [pscustomobject]@{
-        Address = '004291de'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004291de.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004291de_test.cpp'
-        PassPattern = 'PASS_004291de'
-    }
-    [pscustomobject]@{
-        Address = '00429230'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00429230.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00429230_test.cpp'
-        PassPattern = 'PASS_00429230'
-    }
-    [pscustomobject]@{
-        Address = '0042925c'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0042925c.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0042925c_test.cpp'
-        PassPattern = 'PASS_0042925c'
-    }
-    [pscustomobject]@{
         Address = '0042ac25'
         Module = 'CActiveFile'
         Source = '00/42/CActiveFile_OnReadFinished_0042ac25.cpp'
         TestSource = '00/42/CActiveFile_OnReadFinished_0042ac25_test.cpp'
         PassPattern = 'PASS_0042ac25'
-    }
-    [pscustomobject]@{
-        Address = '0042a6c3'
-        Module = 'CEngineInternalPrimitiveMeshBase'
-        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a6c3.cpp'
-        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a6c3_test.cpp'
-        PassPattern = 'PASS_0042a6c3'
-    }
-    [pscustomobject]@{
-        Address = '0042a6f2'
-        Module = 'CEngineInternalPrimitiveMeshBase'
-        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a6f2.cpp'
-        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a6f2_test.cpp'
-        PassPattern = 'PASS_0042a6f2'
-    }
-    [pscustomobject]@{
-        Address = '0042a721'
-        Module = 'CEngineInternalPrimitiveMeshBase'
-        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a721.cpp'
-        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a721_test.cpp'
-        PassPattern = 'PASS_0042a721'
-    }
-    [pscustomobject]@{
-        Address = '0042a750'
-        Module = 'CEngineInternalPrimitiveMeshBase'
-        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a750.cpp'
-        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a750_test.cpp'
-        PassPattern = 'PASS_0042a750'
-    }
-    [pscustomobject]@{
-        Address = '0042a7a1'
-        Module = 'CEngineInternalPrimitiveMeshBase'
-        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a7a1.cpp'
-        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a7a1_test.cpp'
-        PassPattern = 'PASS_0042a7a1'
     }
     [pscustomobject]@{
         Address = '0042b4c3'
@@ -4520,34 +4093,6 @@ $catalog = @(
         PassPattern = 'PASS_0042d131'
     }
     [pscustomobject]@{
-        Address = '0042da80'
-        Module = 'CDefClassBase'
-        Source = '00/42/CDefClassBase_PostTransfer_0042da80.cpp'
-        TestSource = '00/42/CDefClassBase_PostTransfer_0042da80_test.cpp'
-        PassPattern = 'PASS_0042da80'
-    }
-    [pscustomobject]@{
-        Address = '0042dc5f'
-        Module = 'CNewFrontendGameComponent'
-        Source = '00/42/CNewFrontendGameComponent_OnPreDeviceReset_0042dc5f.cpp'
-        TestSource = '00/42/CNewFrontendGameComponent_OnPreDeviceReset_0042dc5f_test.cpp'
-        PassPattern = 'PASS_0042dc5f'
-    }
-    [pscustomobject]@{
-        Address = '0043368b'
-        Module = 'CStartupDefinitionManager'
-        Source = '00/43/CStartupDefinitionManager_InitAndCompile_0043368b.cpp'
-        TestSource = '00/43/CStartupDefinitionManager_InitAndCompile_0043368b_test.cpp'
-        PassPattern = 'PASS_0043368b'
-    }
-    [pscustomobject]@{
-        Address = '0042da40'
-        Module = 'CDefClassBase'
-        Source = '00/42/CDefClassBase_RemoveSubDef_0042da40.cpp'
-        TestSource = '00/42/CDefClassBase_RemoveSubDef_0042da40_test.cpp'
-        PassPattern = 'PASS_0042da40'
-    }
-    [pscustomobject]@{
         Address = '0042da90'
         Module = 'CDefClassBase'
         Source = '00/42/CDefClassBase_Validate_0042da90.cpp'
@@ -4555,88 +4100,11 @@ $catalog = @(
         PassPattern = 'PASS_0042da90'
     }
     [pscustomobject]@{
-        Address = '0042dc5c'
-        Module = 'CNewFrontendGameComponent'
-        Source = '00/42/CNewFrontendGameComponent_ChangeTextureColourDepth_0042dc5c.cpp'
-        TestSource = '00/42/CNewFrontendGameComponent_ChangeTextureColourDepth_0042dc5c_test.cpp'
-        PassPattern = 'PASS_0042dc5c'
-    }
-    [pscustomobject]@{
-        Address = '0042dc60'
-        Module = 'CNewFrontendGameComponent'
-        Source = '00/42/CNewFrontendGameComponent_OnPostDeviceReset_0042dc60.cpp'
-        TestSource = '00/42/CNewFrontendGameComponent_OnPostDeviceReset_0042dc60_test.cpp'
-        PassPattern = 'PASS_0042dc60'
-    }
-    [pscustomobject]@{
-        Address = '004303d0'
-        Module = 'CParentDefClassBase'
-        Source = '00/43/CParentDefClassBase_IsParentDef_004303d0.cpp'
-        TestSource = '00/43/CParentDefClassBase_IsParentDef_004303d0_test.cpp'
-        PassPattern = 'PASS_004303d0'
-    }
-    [pscustomobject]@{
         Address = '004303e0'
         Module = 'CParentDefClassBase'
         Source = '00/43/CParentDefClassBase_GetPSubDefInfoMap_004303e0.cpp'
         TestSource = '00/43/CParentDefClassBase_GetPSubDefInfoMap_004303e0_test.cpp'
         PassPattern = 'PASS_004303e0'
-    }
-    [pscustomobject]@{
-        Address = '0042da50'
-        Module = 'CDefClassBase'
-        Source = '00/42/CDefClassBase_GetPSubDefInfo_0042da50.cpp'
-        TestSource = '00/42/CDefClassBase_GetPSubDefInfo_0042da50_test.cpp'
-        PassPattern = 'PASS_0042da50'
-    }
-    [pscustomobject]@{
-        Address = '0042da60'
-        Module = 'CDefClassBase'
-        Source = '00/42/CDefClassBase_GetPSubDefInfo_0042da60.cpp'
-        TestSource = '00/42/CDefClassBase_GetPSubDefInfo_0042da60_test.cpp'
-        PassPattern = 'PASS_0042da60'
-    }
-    [pscustomobject]@{
-        Address = '00430340'
-        Module = 'CNewFrontendGameComponent'
-        Source = '00/43/CNewFrontendGameComponent_SetQuit_00430340.cpp'
-        TestSource = '00/43/CNewFrontendGameComponent_SetQuit_00430340_test.cpp'
-        PassPattern = 'PASS_00430340'
-    }
-    [pscustomobject]@{
-        Address = '00431e70'
-        Module = 'CControlsDef'
-        Source = '00/43/CControlsDef_Copy_00431e70.cpp'
-        TestSource = '00/43/CControlsDef_Copy_00431e70_test.cpp'
-        PassPattern = 'PASS_00431e70'
-    }
-    [pscustomobject]@{
-        Address = '00432e50'
-        Module = 'CFrontEndDef'
-        Source = '00/43/CFrontEndDef_CopyCFrontEndDefUAEXPBVCDefClassBase_00432e50.cpp'
-        TestSource = '00/43/CFrontEndDef_CopyCFrontEndDefUAEXPBVCDefClassBase_00432e50_test.cpp'
-        PassPattern = 'PASS_00432e50'
-    }
-    [pscustomobject]@{
-        Address = '00434360'
-        Module = 'CEngineDef'
-        Source = '00/43/CEngineDef_Copy_00434360.cpp'
-        TestSource = '00/43/CEngineDef_Copy_00434360_test.cpp'
-        PassPattern = 'PASS_00434360'
-    }
-    [pscustomobject]@{
-        Address = '00434440'
-        Module = 'CEngineVideoOptionsDef'
-        Source = '00/43/CEngineVideoOptionsDef_CopyCEngineVideoOptionsDefUAEXPBVCDe_00434440.cpp'
-        TestSource = '00/43/CEngineVideoOptionsDef_CopyCEngineVideoOptionsDefUAEXPBVCDe_00434440_test.cpp'
-        PassPattern = 'PASS_00434440'
-    }
-    [pscustomobject]@{
-        Address = '00434590'
-        Module = 'CConfigOptionsDefaultsDef'
-        Source = '00/43/CConfigOptionsDefaultsDef_CopyCConfigOptionsDefaultsDefUAEXPBV_00434590.cpp'
-        TestSource = '00/43/CConfigOptionsDefaultsDef_CopyCConfigOptionsDefaultsDefUAEXPBV_00434590_test.cpp'
-        PassPattern = 'PASS_00434590'
     }
     [pscustomobject]@{
         Address = '00430470'
@@ -4828,13 +4296,6 @@ $catalog = @(
         PassPattern = 'PASS_0042f70b'
     }
     [pscustomobject]@{
-        Address = '0042fc4e'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0042fc4e.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0042fc4e_test.cpp'
-        PassPattern = 'PASS_0042fc4e'
-    }
-    [pscustomobject]@{
         Address = '004374d0'
         Module = 'CPlayerGui'
         Source = '00/43/CPlayerGui_ForceOpen_004374d0.cpp'
@@ -4861,13 +4322,6 @@ $catalog = @(
         Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00437800.cpp'
         TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00437800_test.cpp'
         PassPattern = 'PASS_00437800'
-    }
-    [pscustomobject]@{
-        Address = '004330d2'
-        Module = 'CLandscapeBackgroundPatch'
-        Source = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_004330d2.cpp'
-        TestSource = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_004330d2_test.cpp'
-        PassPattern = 'PASS_004330d2'
     }
     [pscustomobject]@{
         Address = '004354a0'
@@ -4903,20 +4357,6 @@ $catalog = @(
         Source = '00/43/CTCInventoryItem_OnDie_00437040.cpp'
         TestSource = '00/43/CTCInventoryItem_OnDie_00437040_test.cpp'
         PassPattern = 'PASS_00437040'
-    }
-    [pscustomobject]@{
-        Address = '0042dab0'
-        Module = 'CLandscapeBackgroundPatch'
-        Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042dab0.cpp'
-        TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042dab0_test.cpp'
-        PassPattern = 'PASS_0042dab0'
-    }
-    [pscustomobject]@{
-        Address = '004368a0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004368a0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004368a0_test.cpp'
-        PassPattern = 'PASS_004368a0'
     }
     [pscustomobject]@{
         Address = '00437160'
@@ -5157,32 +4597,11 @@ $catalog = @(
         PassPattern = 'batch8_part3_00433d8a_pass'
     }
     [pscustomobject]@{
-        Address = '0042f948'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0042f948.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0042f948_test.cpp'
-        PassPattern = 'batch8_part3_0042f948_pass'
-    }
-    [pscustomobject]@{
-        Address = '0042f974'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0042f974.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0042f974_test.cpp'
-        PassPattern = 'batch8_part3_0042f974_pass'
-    }
-    [pscustomobject]@{
         Address = '0043024e'
         Module = 'CDisplayManager'
         Source = '00/43/CDisplayManager_CopyBackBufferToTexture_0043024e.cpp'
         TestSource = '00/43/CDisplayManager_CopyBackBufferToTexture_0043024e_test.cpp'
         PassPattern = 'batch8_part3_0043024e_pass'
-    }
-    [pscustomobject]@{
-        Address = '00433cc0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00433cc0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00433cc0_test.cpp'
-        PassPattern = 'batch8_part3_00433cc0_pass'
     }
     [pscustomobject]@{
         Address = '00434840'
@@ -5232,20 +4651,6 @@ $catalog = @(
         Source = '00/43/CCreatureActionFireMissileWeapon_FrameUpdate_004331f9.cpp'
         TestSource = '00/43/CCreatureActionFireMissileWeapon_FrameUpdate_004331f9_test.cpp'
         PassPattern = 'batch8_part3_004331f9_pass'
-    }
-    [pscustomobject]@{
-        Address = '0042fe4e'
-        Module = 'CEngineInternalPrimitiveMeshBase'
-        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042fe4e.cpp'
-        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042fe4e_test.cpp'
-        PassPattern = 'batch8_part3_0042fe4e_pass'
-    }
-    [pscustomobject]@{
-        Address = '0042fe7d'
-        Module = 'CEngineInternalPrimitiveMeshBase'
-        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042fe7d.cpp'
-        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042fe7d_test.cpp'
-        PassPattern = 'batch8_part3_0042fe7d_pass'
     }
     [pscustomobject]@{
         Address = '0042dc63'
@@ -5323,27 +4728,6 @@ $catalog = @(
         Source = '00/43/CEngineLightingManager_UpdateShadowScene_00431493.cpp'
         TestSource = '00/43/CEngineLightingManager_UpdateShadowScene_00431493_test.cpp'
         PassPattern = 'batch8_part3_00431493_pass'
-    }
-    [pscustomobject]@{
-        Address = '004362c0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004362c0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004362c0_test.cpp'
-        PassPattern = 'batch8_part3_004362c0_pass'
-    }
-    [pscustomobject]@{
-        Address = '00436300'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00436300.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00436300_test.cpp'
-        PassPattern = 'batch8_part3_00436300_pass'
-    }
-    [pscustomobject]@{
-        Address = '00436340'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00436340.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00436340_test.cpp'
-        PassPattern = 'batch8_part3_00436340_pass'
     }
     [pscustomobject]@{
         Address = '00437cd0'
@@ -5542,13 +4926,6 @@ $catalog = @(
         PassPattern = 'PASS_00437ce0'
     }
     [pscustomobject]@{
-        Address = '0043eea0'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043eea0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043eea0_test.cpp'
-        PassPattern = 'PASS_0043eea0'
-    }
-    [pscustomobject]@{
         Address = '00437840'
         Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
         Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437840.cpp'
@@ -5619,13 +4996,6 @@ $catalog = @(
         PassPattern = 'PASS_004382e0'
     }
     [pscustomobject]@{
-        Address = '0043eec0'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043eec0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043eec0_test.cpp'
-        PassPattern = 'PASS_0043eec0'
-    }
-    [pscustomobject]@{
         Address = '004383d0'
         Module = 'CGameScriptInterface'
         Source = '00/43/CGameScriptInterface_GiveHeroExpression_004383d0.cpp'
@@ -5652,531 +5022,6 @@ $catalog = @(
         Source = '00/43/Uninitfillnstdpairunsignedint64CCountedPointerCActiveEntityScriptBaseunsignedint_pairunsignedint64classCCountedPointerclassCActiv_0043f6c0.cpp'
         TestSource = '00/43/Uninitfillnstdpairunsignedint64CCountedPointerCActiveEntityScriptBaseunsignedint_pairunsignedint64classCCountedPointerclassCActiv_0043f6c0_test.cpp'
         PassPattern = 'PASS_0043f6c0'
-    }
-    [pscustomobject]@{
-        Address = '0043d200'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d200.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d200_test.cpp'
-        PassPattern = 'PASS_0043d200'
-    }
-    [pscustomobject]@{
-        Address = '0043d240'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d240.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d240_test.cpp'
-        PassPattern = 'PASS_0043d240'
-    }
-    [pscustomobject]@{
-        Address = '0043d280'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d280.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d280_test.cpp'
-        PassPattern = 'PASS_0043d280'
-    }
-    [pscustomobject]@{
-        Address = '0043d2c0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d2c0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d2c0_test.cpp'
-        PassPattern = 'PASS_0043d2c0'
-    }
-    [pscustomobject]@{
-        Address = '0043d300'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d300.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d300_test.cpp'
-        PassPattern = 'PASS_0043d300'
-    }
-    [pscustomobject]@{
-        Address = '0043d340'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d340.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d340_test.cpp'
-        PassPattern = 'PASS_0043d340'
-    }
-    [pscustomobject]@{
-        Address = '0043d380'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d380.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d380_test.cpp'
-        PassPattern = 'PASS_0043d380'
-    }
-    [pscustomobject]@{
-        Address = '0043d3c0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d3c0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d3c0_test.cpp'
-        PassPattern = 'PASS_0043d3c0'
-    }
-    [pscustomobject]@{
-        Address = '0043d400'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d400.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d400_test.cpp'
-        PassPattern = 'PASS_0043d400'
-    }
-    [pscustomobject]@{
-        Address = '0043d440'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d440.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d440_test.cpp'
-        PassPattern = 'PASS_0043d440'
-    }
-    [pscustomobject]@{
-        Address = '0043d480'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d480.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d480_test.cpp'
-        PassPattern = 'PASS_0043d480'
-    }
-    [pscustomobject]@{
-        Address = '0043d4c0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d4c0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d4c0_test.cpp'
-        PassPattern = 'PASS_0043d4c0'
-    }
-    [pscustomobject]@{
-        Address = '0043d500'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d500.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d500_test.cpp'
-        PassPattern = 'PASS_0043d500'
-    }
-    [pscustomobject]@{
-        Address = '0043d540'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d540.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d540_test.cpp'
-        PassPattern = 'PASS_0043d540'
-    }
-    [pscustomobject]@{
-        Address = '0043d580'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d580.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d580_test.cpp'
-        PassPattern = 'PASS_0043d580'
-    }
-    [pscustomobject]@{
-        Address = '0043d5c0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d5c0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d5c0_test.cpp'
-        PassPattern = 'PASS_0043d5c0'
-    }
-    [pscustomobject]@{
-        Address = '0043d600'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d600.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d600_test.cpp'
-        PassPattern = 'PASS_0043d600'
-    }
-    [pscustomobject]@{
-        Address = '0043d640'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d640.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d640_test.cpp'
-        PassPattern = 'PASS_0043d640'
-    }
-    [pscustomobject]@{
-        Address = '0043d680'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d680.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d680_test.cpp'
-        PassPattern = 'PASS_0043d680'
-    }
-    [pscustomobject]@{
-        Address = '0043d6c0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d6c0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d6c0_test.cpp'
-        PassPattern = 'PASS_0043d6c0'
-    }
-    [pscustomobject]@{
-        Address = '0043d700'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d700.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d700_test.cpp'
-        PassPattern = 'PASS_0043d700'
-    }
-    [pscustomobject]@{
-        Address = '0043d740'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d740.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d740_test.cpp'
-        PassPattern = 'PASS_0043d740'
-    }
-    [pscustomobject]@{
-        Address = '0043d780'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d780.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d780_test.cpp'
-        PassPattern = 'PASS_0043d780'
-    }
-    [pscustomobject]@{
-        Address = '0043d7c0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d7c0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d7c0_test.cpp'
-        PassPattern = 'PASS_0043d7c0'
-    }
-    [pscustomobject]@{
-        Address = '0043d800'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d800.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d800_test.cpp'
-        PassPattern = 'PASS_0043d800'
-    }
-    [pscustomobject]@{
-        Address = '0043d840'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d840.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d840_test.cpp'
-        PassPattern = 'PASS_0043d840'
-    }
-    [pscustomobject]@{
-        Address = '0043d880'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d880.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d880_test.cpp'
-        PassPattern = 'PASS_0043d880'
-    }
-    [pscustomobject]@{
-        Address = '0043d8c0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d8c0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d8c0_test.cpp'
-        PassPattern = 'PASS_0043d8c0'
-    }
-    [pscustomobject]@{
-        Address = '0043d900'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d900.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d900_test.cpp'
-        PassPattern = 'PASS_0043d900'
-    }
-    [pscustomobject]@{
-        Address = '0043d940'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d940.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d940_test.cpp'
-        PassPattern = 'PASS_0043d940'
-    }
-    [pscustomobject]@{
-        Address = '0043d980'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d980.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d980_test.cpp'
-        PassPattern = 'PASS_0043d980'
-    }
-    [pscustomobject]@{
-        Address = '0043d9c0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d9c0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d9c0_test.cpp'
-        PassPattern = 'PASS_0043d9c0'
-    }
-    [pscustomobject]@{
-        Address = '0043da00'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043da00.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043da00_test.cpp'
-        PassPattern = 'PASS_0043da00'
-    }
-    [pscustomobject]@{
-        Address = '0043da40'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043da40.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043da40_test.cpp'
-        PassPattern = 'PASS_0043da40'
-    }
-    [pscustomobject]@{
-        Address = '0043da80'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043da80.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043da80_test.cpp'
-        PassPattern = 'PASS_0043da80'
-    }
-    [pscustomobject]@{
-        Address = '0043dac0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043dac0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043dac0_test.cpp'
-        PassPattern = 'PASS_0043dac0'
-    }
-    [pscustomobject]@{
-        Address = '0043db00'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043db00.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043db00_test.cpp'
-        PassPattern = 'PASS_0043db00'
-    }
-    [pscustomobject]@{
-        Address = '0043e5e0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e5e0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e5e0_test.cpp'
-        PassPattern = 'PASS_0043e5e0'
-    }
-    [pscustomobject]@{
-        Address = '0043e620'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e620.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e620_test.cpp'
-        PassPattern = 'PASS_0043e620'
-    }
-    [pscustomobject]@{
-        Address = '0043e660'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e660.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e660_test.cpp'
-        PassPattern = 'PASS_0043e660'
-    }
-    [pscustomobject]@{
-        Address = '0043e6a0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e6a0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e6a0_test.cpp'
-        PassPattern = 'PASS_0043e6a0'
-    }
-    [pscustomobject]@{
-        Address = '0043e6e0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e6e0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e6e0_test.cpp'
-        PassPattern = 'PASS_0043e6e0'
-    }
-    [pscustomobject]@{
-        Address = '0043e720'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e720.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e720_test.cpp'
-        PassPattern = 'PASS_0043e720'
-    }
-    [pscustomobject]@{
-        Address = '0043e760'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e760.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e760_test.cpp'
-        PassPattern = 'PASS_0043e760'
-    }
-    [pscustomobject]@{
-        Address = '0043e7a0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e7a0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e7a0_test.cpp'
-        PassPattern = 'PASS_0043e7a0'
-    }
-    [pscustomobject]@{
-        Address = '0043e7e0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e7e0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e7e0_test.cpp'
-        PassPattern = 'PASS_0043e7e0'
-    }
-    [pscustomobject]@{
-        Address = '0043e820'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e820.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e820_test.cpp'
-        PassPattern = 'PASS_0043e820'
-    }
-    [pscustomobject]@{
-        Address = '0043e860'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e860.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e860_test.cpp'
-        PassPattern = 'PASS_0043e860'
-    }
-    [pscustomobject]@{
-        Address = '0043e8a0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e8a0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e8a0_test.cpp'
-        PassPattern = 'PASS_0043e8a0'
-    }
-    [pscustomobject]@{
-        Address = '0043e8e0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e8e0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e8e0_test.cpp'
-        PassPattern = 'PASS_0043e8e0'
-    }
-    [pscustomobject]@{
-        Address = '0043e920'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e920.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e920_test.cpp'
-        PassPattern = 'PASS_0043e920'
-    }
-    [pscustomobject]@{
-        Address = '0043e960'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e960.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e960_test.cpp'
-        PassPattern = 'PASS_0043e960'
-    }
-    [pscustomobject]@{
-        Address = '0043e9a0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e9a0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e9a0_test.cpp'
-        PassPattern = 'batch9_part4_0043e9a0_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043e9e0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e9e0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e9e0_test.cpp'
-        PassPattern = 'batch9_part4_0043e9e0_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043ea20'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ea20.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ea20_test.cpp'
-        PassPattern = 'batch9_part4_0043ea20_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043ea60'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ea60.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ea60_test.cpp'
-        PassPattern = 'batch9_part4_0043ea60_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043eaa0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eaa0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eaa0_test.cpp'
-        PassPattern = 'batch9_part4_0043eaa0_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043eae0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eae0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eae0_test.cpp'
-        PassPattern = 'batch9_part4_0043eae0_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043eb20'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eb20.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eb20_test.cpp'
-        PassPattern = 'batch9_part4_0043eb20_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043eb60'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eb60.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eb60_test.cpp'
-        PassPattern = 'batch9_part4_0043eb60_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043eba0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eba0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eba0_test.cpp'
-        PassPattern = 'batch9_part4_0043eba0_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043ebe0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ebe0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ebe0_test.cpp'
-        PassPattern = 'batch9_part4_0043ebe0_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043ec20'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ec20.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ec20_test.cpp'
-        PassPattern = 'batch9_part4_0043ec20_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043ec60'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ec60.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ec60_test.cpp'
-        PassPattern = 'batch9_part4_0043ec60_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043eca0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eca0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eca0_test.cpp'
-        PassPattern = 'batch9_part4_0043eca0_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043ece0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ece0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ece0_test.cpp'
-        PassPattern = 'batch9_part4_0043ece0_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043ed20'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ed20.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ed20_test.cpp'
-        PassPattern = 'batch9_part4_0043ed20_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043ed60'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ed60.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ed60_test.cpp'
-        PassPattern = 'batch9_part4_0043ed60_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043eda0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eda0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eda0_test.cpp'
-        PassPattern = 'batch9_part4_0043eda0_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043ede0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ede0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ede0_test.cpp'
-        PassPattern = 'batch9_part4_0043ede0_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043ee20'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ee20.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ee20_test.cpp'
-        PassPattern = 'batch9_part4_0043ee20_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043ee60'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ee60.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ee60_test.cpp'
-        PassPattern = 'batch9_part4_0043ee60_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043eef0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eef0.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eef0_test.cpp'
-        PassPattern = 'batch9_part4_0043eef0_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043ef30'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ef30.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ef30_test.cpp'
-        PassPattern = 'batch9_part4_0043ef30_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043ef70'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ef70.cpp'
-        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ef70_test.cpp'
-        PassPattern = 'batch9_part4_0043ef70_pass'
     }
     [pscustomobject]@{
         Address = '0043f2d0'
@@ -6466,48 +5311,6 @@ $catalog = @(
         PassPattern = 'PASS_00440e40'
     }
     [pscustomobject]@{
-        Address = '00440ec0'
-        Module = 'CActiveFile'
-        Source = '00/44/CActiveFile_OnReadFinished_00440ec0.cpp'
-        TestSource = '00/44/CActiveFile_OnReadFinished_00440ec0_test.cpp'
-        PassPattern = 'PASS_00440ec0'
-    }
-    [pscustomobject]@{
-        Address = '00440ee0'
-        Module = 'CActiveFile'
-        Source = '00/44/CActiveFile_OnReadFinished_00440ee0.cpp'
-        TestSource = '00/44/CActiveFile_OnReadFinished_00440ee0_test.cpp'
-        PassPattern = 'PASS_00440ee0'
-    }
-    [pscustomobject]@{
-        Address = '004422f0'
-        Module = 'CActiveFile'
-        Source = '00/44/CActiveFile_OnReadFinished_004422f0.cpp'
-        TestSource = '00/44/CActiveFile_OnReadFinished_004422f0_test.cpp'
-        PassPattern = 'PASS_004422f0'
-    }
-    [pscustomobject]@{
-        Address = '00442310'
-        Module = 'CActiveFile'
-        Source = '00/44/CActiveFile_OnReadFinished_00442310.cpp'
-        TestSource = '00/44/CActiveFile_OnReadFinished_00442310_test.cpp'
-        PassPattern = 'PASS_00442310'
-    }
-    [pscustomobject]@{
-        Address = '00442330'
-        Module = 'CActiveFile'
-        Source = '00/44/CActiveFile_OnReadFinished_00442330.cpp'
-        TestSource = '00/44/CActiveFile_OnReadFinished_00442330_test.cpp'
-        PassPattern = 'PASS_00442330'
-    }
-    [pscustomobject]@{
-        Address = '00443290'
-        Module = 'CActiveFile'
-        Source = '00/44/CActiveFile_OnReadFinished_00443290.cpp'
-        TestSource = '00/44/CActiveFile_OnReadFinished_00443290_test.cpp'
-        PassPattern = 'PASS_00443290'
-    }
-    [pscustomobject]@{
         Address = '00445650'
         Module = 'CInputTypeXboxPadButtonEvent'
         Source = '00/44/CInputTypeXboxPadButtonEvent_IsInputTypeWithMouseButton_00445650.cpp'
@@ -6569,13 +5372,6 @@ $catalog = @(
         Source = '00/44/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00445920.cpp'
         TestSource = '00/44/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00445920_test.cpp'
         PassPattern = 'PASS_00445920'
-    }
-    [pscustomobject]@{
-        Address = '0044b930'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/44/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044b930.cpp'
-        TestSource = '00/44/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044b930_test.cpp'
-        PassPattern = 'PASS_0044b930'
     }
     [pscustomobject]@{
         Address = '004497c0'
@@ -6730,20 +5526,6 @@ $catalog = @(
         Source = '00/44/CTCMapwho_OnDie_004454e0.cpp'
         TestSource = '00/44/CTCMapwho_OnDie_004454e0_test.cpp'
         PassPattern = 'PASS_004454e0'
-    }
-    [pscustomobject]@{
-        Address = '00447d50'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00447d50.cpp'
-        TestSource = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00447d50_test.cpp'
-        PassPattern = 'PASS_00447d50'
-    }
-    [pscustomobject]@{
-        Address = '004483d0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004483d0.cpp'
-        TestSource = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004483d0_test.cpp'
-        PassPattern = 'PASS_004483d0'
     }
     [pscustomobject]@{
         Address = '00445b40'
@@ -71844,97 +70626,6 @@ $catalog = @(
         PassPattern = 'GFSERIALISE_VECTOR_FLOAT_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '005d9ff0'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005d9ff0.cpp'
-        TestSource = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005d9ff0_test.cpp'
-        PassPattern = 'PASS_0041bcd0'
-    }
-    [pscustomobject]@{
-        Address = '005e0130'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005e0130.cpp'
-        TestSource = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005e0130_test.cpp'
-        PassPattern = 'PASS_0041bcd0'
-    }
-    [pscustomobject]@{
-        Address = '006ade10'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ade10.cpp'
-        TestSource = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ade10_test.cpp'
-        PassPattern = 'PASS_0041bcd0'
-    }
-    [pscustomobject]@{
-        Address = '006b0f70'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b0f70.cpp'
-        TestSource = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b0f70_test.cpp'
-        PassPattern = 'PASS_0041bcd0'
-    }
-    [pscustomobject]@{
-        Address = '007a31d0'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a31d0.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a31d0_test.cpp'
-        PassPattern = 'PASS_0041bcd0'
-    }
-    [pscustomobject]@{
-        Address = '00a29a90'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29a90.cpp'
-        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29a90_test.cpp'
-        PassPattern = 'PASS_0041bcd0'
-    }
-    [pscustomobject]@{
-        Address = '00a29ae0'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29ae0.cpp'
-        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29ae0_test.cpp'
-        PassPattern = 'PASS_0041bcd0'
-    }
-    [pscustomobject]@{
-        Address = '00a29b30'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29b30.cpp'
-        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29b30_test.cpp'
-        PassPattern = 'PASS_0041bcd0'
-    }
-    [pscustomobject]@{
-        Address = '00a94f70'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a94f70.cpp'
-        TestSource = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a94f70_test.cpp'
-        PassPattern = 'PASS_0041bcd0'
-    }
-    [pscustomobject]@{
-        Address = '00abfa70'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/ab/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00abfa70.cpp'
-        TestSource = '00/ab/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00abfa70_test.cpp'
-        PassPattern = 'PASS_0041bcd0'
-    }
-    [pscustomobject]@{
-        Address = '00ac6240'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/ac/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00ac6240.cpp'
-        TestSource = '00/ac/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00ac6240_test.cpp'
-        PassPattern = 'PASS_0041bcd0'
-    }
-    [pscustomobject]@{
-        Address = '00af19f0'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/af/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00af19f0.cpp'
-        TestSource = '00/af/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00af19f0_test.cpp'
-        PassPattern = 'PASS_0041bcd0'
-    }
-    [pscustomobject]@{
-        Address = '00ba7cc0'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/ba/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00ba7cc0.cpp'
-        TestSource = '00/ba/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00ba7cc0_test.cpp'
-        PassPattern = 'PASS_0041bcd0'
-    }
-    [pscustomobject]@{
         Address = '00469e00'
         Module = 'CArray<std::pair<long'
         Source = '00/46/CArraystdpairlong_pushback_00469e00.cpp'
@@ -77765,6 +76456,4164 @@ $catalog = @(
         Source = '00/b9/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00b95f60.cpp'
         TestSource = '00/b9/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00b95f60_test.cpp'
         PassPattern = 'PASS_00b95f60'
+    }
+    [pscustomobject]@{
+        Address = '0042a6c3'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a6c3.cpp'
+        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a6c3_test.cpp'
+        PassPattern = 'PASS_0042a6c3'
+    }
+    [pscustomobject]@{
+        Address = '0042a6f2'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a6f2.cpp'
+        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a6f2_test.cpp'
+        PassPattern = 'PASS_0042a6f2'
+    }
+    [pscustomobject]@{
+        Address = '0042a721'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a721.cpp'
+        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a721_test.cpp'
+        PassPattern = 'PASS_0042a721'
+    }
+    [pscustomobject]@{
+        Address = '0042a750'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a750.cpp'
+        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a750_test.cpp'
+        PassPattern = 'PASS_0042a750'
+    }
+    [pscustomobject]@{
+        Address = '0042a7a1'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a7a1.cpp'
+        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a7a1_test.cpp'
+        PassPattern = 'PASS_0042a7a1'
+    }
+    [pscustomobject]@{
+        Address = '0042fe4e'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042fe4e.cpp'
+        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042fe4e_test.cpp'
+        PassPattern = 'PASS_0042fe4e'
+    }
+    [pscustomobject]@{
+        Address = '0042fe7d'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042fe7d.cpp'
+        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042fe7d_test.cpp'
+        PassPattern = 'PASS_0042fe7d'
+    }
+    [pscustomobject]@{
+        Address = '00413310'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00413310.cpp'
+        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00413310_test.cpp'
+        PassPattern = 'PASS_00413310'
+    }
+    [pscustomobject]@{
+        Address = '0041bc90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0041bc90.cpp'
+        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0041bc90_test.cpp'
+        PassPattern = 'PASS_0041bc90'
+    }
+    [pscustomobject]@{
+        Address = '004362c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004362c0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004362c0_test.cpp'
+        PassPattern = 'PASS_004362c0'
+    }
+    [pscustomobject]@{
+        Address = '00436300'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00436300.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00436300_test.cpp'
+        PassPattern = 'PASS_00436300'
+    }
+    [pscustomobject]@{
+        Address = '00436340'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00436340.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00436340_test.cpp'
+        PassPattern = 'PASS_00436340'
+    }
+    [pscustomobject]@{
+        Address = '004368a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004368a0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004368a0_test.cpp'
+        PassPattern = 'PASS_004368a0'
+    }
+    [pscustomobject]@{
+        Address = '0043d200'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d200.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d200_test.cpp'
+        PassPattern = 'PASS_0043d200'
+    }
+    [pscustomobject]@{
+        Address = '0043d240'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d240.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d240_test.cpp'
+        PassPattern = 'PASS_0043d240'
+    }
+    [pscustomobject]@{
+        Address = '0043d280'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d280.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d280_test.cpp'
+        PassPattern = 'PASS_0043d280'
+    }
+    [pscustomobject]@{
+        Address = '0043d2c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d2c0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d2c0_test.cpp'
+        PassPattern = 'PASS_0043d2c0'
+    }
+    [pscustomobject]@{
+        Address = '0043d300'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d300.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d300_test.cpp'
+        PassPattern = 'PASS_0043d300'
+    }
+    [pscustomobject]@{
+        Address = '0043d340'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d340.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d340_test.cpp'
+        PassPattern = 'PASS_0043d340'
+    }
+    [pscustomobject]@{
+        Address = '0043d380'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d380.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d380_test.cpp'
+        PassPattern = 'PASS_0043d380'
+    }
+    [pscustomobject]@{
+        Address = '0043d3c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d3c0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d3c0_test.cpp'
+        PassPattern = 'PASS_0043d3c0'
+    }
+    [pscustomobject]@{
+        Address = '0043d400'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d400.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d400_test.cpp'
+        PassPattern = 'PASS_0043d400'
+    }
+    [pscustomobject]@{
+        Address = '0043d440'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d440.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d440_test.cpp'
+        PassPattern = 'PASS_0043d440'
+    }
+    [pscustomobject]@{
+        Address = '0043d480'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d480.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d480_test.cpp'
+        PassPattern = 'PASS_0043d480'
+    }
+    [pscustomobject]@{
+        Address = '0043d4c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d4c0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d4c0_test.cpp'
+        PassPattern = 'PASS_0043d4c0'
+    }
+    [pscustomobject]@{
+        Address = '0043d500'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d500.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d500_test.cpp'
+        PassPattern = 'PASS_0043d500'
+    }
+    [pscustomobject]@{
+        Address = '0043d540'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d540.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d540_test.cpp'
+        PassPattern = 'PASS_0043d540'
+    }
+    [pscustomobject]@{
+        Address = '0043d580'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d580.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d580_test.cpp'
+        PassPattern = 'PASS_0043d580'
+    }
+    [pscustomobject]@{
+        Address = '0043d5c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d5c0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d5c0_test.cpp'
+        PassPattern = 'PASS_0043d5c0'
+    }
+    [pscustomobject]@{
+        Address = '0043d600'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d600.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d600_test.cpp'
+        PassPattern = 'PASS_0043d600'
+    }
+    [pscustomobject]@{
+        Address = '0043d640'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d640.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d640_test.cpp'
+        PassPattern = 'PASS_0043d640'
+    }
+    [pscustomobject]@{
+        Address = '0043d680'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d680.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d680_test.cpp'
+        PassPattern = 'PASS_0043d680'
+    }
+    [pscustomobject]@{
+        Address = '0043d6c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d6c0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d6c0_test.cpp'
+        PassPattern = 'PASS_0043d6c0'
+    }
+    [pscustomobject]@{
+        Address = '0043d700'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d700.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d700_test.cpp'
+        PassPattern = 'PASS_0043d700'
+    }
+    [pscustomobject]@{
+        Address = '0043d740'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d740.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d740_test.cpp'
+        PassPattern = 'PASS_0043d740'
+    }
+    [pscustomobject]@{
+        Address = '0043d780'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d780.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d780_test.cpp'
+        PassPattern = 'PASS_0043d780'
+    }
+    [pscustomobject]@{
+        Address = '0043d7c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d7c0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d7c0_test.cpp'
+        PassPattern = 'PASS_0043d7c0'
+    }
+    [pscustomobject]@{
+        Address = '0043d800'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d800.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d800_test.cpp'
+        PassPattern = 'PASS_0043d800'
+    }
+    [pscustomobject]@{
+        Address = '0043d840'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d840.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d840_test.cpp'
+        PassPattern = 'PASS_0043d840'
+    }
+    [pscustomobject]@{
+        Address = '0043d880'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d880.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d880_test.cpp'
+        PassPattern = 'PASS_0043d880'
+    }
+    [pscustomobject]@{
+        Address = '0043d8c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d8c0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d8c0_test.cpp'
+        PassPattern = 'PASS_0043d8c0'
+    }
+    [pscustomobject]@{
+        Address = '0043d900'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d900.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d900_test.cpp'
+        PassPattern = 'PASS_0043d900'
+    }
+    [pscustomobject]@{
+        Address = '0043d940'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d940.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d940_test.cpp'
+        PassPattern = 'PASS_0043d940'
+    }
+    [pscustomobject]@{
+        Address = '0043d980'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d980.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d980_test.cpp'
+        PassPattern = 'PASS_0043d980'
+    }
+    [pscustomobject]@{
+        Address = '0043d9c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d9c0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043d9c0_test.cpp'
+        PassPattern = 'PASS_0043d9c0'
+    }
+    [pscustomobject]@{
+        Address = '0043da00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043da00.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043da00_test.cpp'
+        PassPattern = 'PASS_0043da00'
+    }
+    [pscustomobject]@{
+        Address = '0043da40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043da40.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043da40_test.cpp'
+        PassPattern = 'PASS_0043da40'
+    }
+    [pscustomobject]@{
+        Address = '0043da80'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043da80.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043da80_test.cpp'
+        PassPattern = 'PASS_0043da80'
+    }
+    [pscustomobject]@{
+        Address = '0043dac0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043dac0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043dac0_test.cpp'
+        PassPattern = 'PASS_0043dac0'
+    }
+    [pscustomobject]@{
+        Address = '0043db00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043db00.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043db00_test.cpp'
+        PassPattern = 'PASS_0043db00'
+    }
+    [pscustomobject]@{
+        Address = '0043e5e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e5e0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e5e0_test.cpp'
+        PassPattern = 'PASS_0043e5e0'
+    }
+    [pscustomobject]@{
+        Address = '0043e620'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e620.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e620_test.cpp'
+        PassPattern = 'PASS_0043e620'
+    }
+    [pscustomobject]@{
+        Address = '0043e660'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e660.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e660_test.cpp'
+        PassPattern = 'PASS_0043e660'
+    }
+    [pscustomobject]@{
+        Address = '0043e6a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e6a0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e6a0_test.cpp'
+        PassPattern = 'PASS_0043e6a0'
+    }
+    [pscustomobject]@{
+        Address = '0043e6e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e6e0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e6e0_test.cpp'
+        PassPattern = 'PASS_0043e6e0'
+    }
+    [pscustomobject]@{
+        Address = '0043e720'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e720.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e720_test.cpp'
+        PassPattern = 'PASS_0043e720'
+    }
+    [pscustomobject]@{
+        Address = '0043e760'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e760.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e760_test.cpp'
+        PassPattern = 'PASS_0043e760'
+    }
+    [pscustomobject]@{
+        Address = '0043e7a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e7a0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e7a0_test.cpp'
+        PassPattern = 'PASS_0043e7a0'
+    }
+    [pscustomobject]@{
+        Address = '0043e7e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e7e0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e7e0_test.cpp'
+        PassPattern = 'PASS_0043e7e0'
+    }
+    [pscustomobject]@{
+        Address = '0043e820'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e820.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e820_test.cpp'
+        PassPattern = 'PASS_0043e820'
+    }
+    [pscustomobject]@{
+        Address = '0043e860'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e860.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e860_test.cpp'
+        PassPattern = 'PASS_0043e860'
+    }
+    [pscustomobject]@{
+        Address = '0043e8a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e8a0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e8a0_test.cpp'
+        PassPattern = 'PASS_0043e8a0'
+    }
+    [pscustomobject]@{
+        Address = '0043e8e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e8e0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e8e0_test.cpp'
+        PassPattern = 'PASS_0043e8e0'
+    }
+    [pscustomobject]@{
+        Address = '0043e920'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e920.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e920_test.cpp'
+        PassPattern = 'PASS_0043e920'
+    }
+    [pscustomobject]@{
+        Address = '0043e960'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e960.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e960_test.cpp'
+        PassPattern = 'PASS_0043e960'
+    }
+    [pscustomobject]@{
+        Address = '0043e9a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e9a0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e9a0_test.cpp'
+        PassPattern = 'PASS_0043e9a0'
+    }
+    [pscustomobject]@{
+        Address = '0043e9e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e9e0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e9e0_test.cpp'
+        PassPattern = 'PASS_0043e9e0'
+    }
+    [pscustomobject]@{
+        Address = '0043ea20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ea20.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ea20_test.cpp'
+        PassPattern = 'PASS_0043ea20'
+    }
+    [pscustomobject]@{
+        Address = '0043ea60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ea60.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ea60_test.cpp'
+        PassPattern = 'PASS_0043ea60'
+    }
+    [pscustomobject]@{
+        Address = '0043eaa0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eaa0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eaa0_test.cpp'
+        PassPattern = 'PASS_0043eaa0'
+    }
+    [pscustomobject]@{
+        Address = '0043eae0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eae0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eae0_test.cpp'
+        PassPattern = 'PASS_0043eae0'
+    }
+    [pscustomobject]@{
+        Address = '0043eb20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eb20.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eb20_test.cpp'
+        PassPattern = 'PASS_0043eb20'
+    }
+    [pscustomobject]@{
+        Address = '0043eb60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eb60.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eb60_test.cpp'
+        PassPattern = 'PASS_0043eb60'
+    }
+    [pscustomobject]@{
+        Address = '0043eba0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eba0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eba0_test.cpp'
+        PassPattern = 'PASS_0043eba0'
+    }
+    [pscustomobject]@{
+        Address = '0043ebe0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ebe0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ebe0_test.cpp'
+        PassPattern = 'PASS_0043ebe0'
+    }
+    [pscustomobject]@{
+        Address = '0043ec20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ec20.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ec20_test.cpp'
+        PassPattern = 'PASS_0043ec20'
+    }
+    [pscustomobject]@{
+        Address = '0043ec60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ec60.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ec60_test.cpp'
+        PassPattern = 'PASS_0043ec60'
+    }
+    [pscustomobject]@{
+        Address = '0043eca0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eca0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eca0_test.cpp'
+        PassPattern = 'PASS_0043eca0'
+    }
+    [pscustomobject]@{
+        Address = '0043ece0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ece0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ece0_test.cpp'
+        PassPattern = 'PASS_0043ece0'
+    }
+    [pscustomobject]@{
+        Address = '0043ed20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ed20.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ed20_test.cpp'
+        PassPattern = 'PASS_0043ed20'
+    }
+    [pscustomobject]@{
+        Address = '0043ed60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ed60.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ed60_test.cpp'
+        PassPattern = 'PASS_0043ed60'
+    }
+    [pscustomobject]@{
+        Address = '0043eda0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eda0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eda0_test.cpp'
+        PassPattern = 'PASS_0043eda0'
+    }
+    [pscustomobject]@{
+        Address = '0043ede0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ede0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ede0_test.cpp'
+        PassPattern = 'PASS_0043ede0'
+    }
+    [pscustomobject]@{
+        Address = '0043ee20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ee20.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ee20_test.cpp'
+        PassPattern = 'PASS_0043ee20'
+    }
+    [pscustomobject]@{
+        Address = '0043ee60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ee60.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ee60_test.cpp'
+        PassPattern = 'PASS_0043ee60'
+    }
+    [pscustomobject]@{
+        Address = '0043eef0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eef0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043eef0_test.cpp'
+        PassPattern = 'PASS_0043eef0'
+    }
+    [pscustomobject]@{
+        Address = '0043ef30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ef30.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ef30_test.cpp'
+        PassPattern = 'PASS_0043ef30'
+    }
+    [pscustomobject]@{
+        Address = '0043ef70'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ef70.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043ef70_test.cpp'
+        PassPattern = 'PASS_0043ef70'
+    }
+    [pscustomobject]@{
+        Address = '00447d50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00447d50.cpp'
+        TestSource = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00447d50_test.cpp'
+        PassPattern = 'PASS_00447d50'
+    }
+    [pscustomobject]@{
+        Address = '004483d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004483d0.cpp'
+        TestSource = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004483d0_test.cpp'
+        PassPattern = 'PASS_004483d0'
+    }
+    [pscustomobject]@{
+        Address = '00403750'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403750.cpp'
+        TestSource = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403750_test.cpp'
+        PassPattern = 'PASS_00403750'
+    }
+    [pscustomobject]@{
+        Address = '00403d70'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403d70.cpp'
+        TestSource = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403d70_test.cpp'
+        PassPattern = 'PASS_00403d70'
+    }
+    [pscustomobject]@{
+        Address = '00405900'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00405900.cpp'
+        TestSource = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00405900_test.cpp'
+        PassPattern = 'PASS_00405900'
+    }
+    [pscustomobject]@{
+        Address = '0040dca0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0040dca0.cpp'
+        TestSource = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0040dca0_test.cpp'
+        PassPattern = 'PASS_0040dca0'
+    }
+    [pscustomobject]@{
+        Address = '0040f170'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0040f170.cpp'
+        TestSource = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0040f170_test.cpp'
+        PassPattern = 'PASS_0040f170'
+    }
+    [pscustomobject]@{
+        Address = '0049bc30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/49/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0049bc30.cpp'
+        TestSource = '00/49/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0049bc30_test.cpp'
+        PassPattern = 'PASS_0049bc30'
+    }
+    [pscustomobject]@{
+        Address = '0049bca0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/49/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0049bca0.cpp'
+        TestSource = '00/49/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0049bca0_test.cpp'
+        PassPattern = 'PASS_0049bca0'
+    }
+    [pscustomobject]@{
+        Address = '004a8660'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a8660.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a8660_test.cpp'
+        PassPattern = 'PASS_004a8660'
+    }
+    [pscustomobject]@{
+        Address = '004a86a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a86a0.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a86a0_test.cpp'
+        PassPattern = 'PASS_004a86a0'
+    }
+    [pscustomobject]@{
+        Address = '004a86e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a86e0.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a86e0_test.cpp'
+        PassPattern = 'PASS_004a86e0'
+    }
+    [pscustomobject]@{
+        Address = '004a8720'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a8720.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a8720_test.cpp'
+        PassPattern = 'PASS_004a8720'
+    }
+    [pscustomobject]@{
+        Address = '004a8760'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a8760.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a8760_test.cpp'
+        PassPattern = 'PASS_004a8760'
+    }
+    [pscustomobject]@{
+        Address = '004a87a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a87a0.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a87a0_test.cpp'
+        PassPattern = 'PASS_004a87a0'
+    }
+    [pscustomobject]@{
+        Address = '004a87e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a87e0.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a87e0_test.cpp'
+        PassPattern = 'PASS_004a87e0'
+    }
+    [pscustomobject]@{
+        Address = '004a8820'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a8820.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a8820_test.cpp'
+        PassPattern = 'PASS_004a8820'
+    }
+    [pscustomobject]@{
+        Address = '004a8860'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a8860.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a8860_test.cpp'
+        PassPattern = 'PASS_004a8860'
+    }
+    [pscustomobject]@{
+        Address = '004a90b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a90b0.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a90b0_test.cpp'
+        PassPattern = 'PASS_004a90b0'
+    }
+    [pscustomobject]@{
+        Address = '004a95a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a95a0.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a95a0_test.cpp'
+        PassPattern = 'PASS_004a95a0'
+    }
+    [pscustomobject]@{
+        Address = '004a95e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a95e0.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a95e0_test.cpp'
+        PassPattern = 'PASS_004a95e0'
+    }
+    [pscustomobject]@{
+        Address = '004a9620'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a9620.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a9620_test.cpp'
+        PassPattern = 'PASS_004a9620'
+    }
+    [pscustomobject]@{
+        Address = '004a96b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a96b0.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a96b0_test.cpp'
+        PassPattern = 'PASS_004a96b0'
+    }
+    [pscustomobject]@{
+        Address = '004aa7b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004aa7b0.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004aa7b0_test.cpp'
+        PassPattern = 'PASS_004aa7b0'
+    }
+    [pscustomobject]@{
+        Address = '004b70e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b70e0.cpp'
+        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b70e0_test.cpp'
+        PassPattern = 'PASS_004b70e0'
+    }
+    [pscustomobject]@{
+        Address = '004b7120'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7120.cpp'
+        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7120_test.cpp'
+        PassPattern = 'PASS_004b7120'
+    }
+    [pscustomobject]@{
+        Address = '004b7160'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7160.cpp'
+        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7160_test.cpp'
+        PassPattern = 'PASS_004b7160'
+    }
+    [pscustomobject]@{
+        Address = '004b7b30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7b30.cpp'
+        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7b30_test.cpp'
+        PassPattern = 'PASS_004b7b30'
+    }
+    [pscustomobject]@{
+        Address = '004b8d30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b8d30.cpp'
+        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b8d30_test.cpp'
+        PassPattern = 'PASS_004b8d30'
+    }
+    [pscustomobject]@{
+        Address = '004c1b20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004c1b20.cpp'
+        TestSource = '00/4c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004c1b20_test.cpp'
+        PassPattern = 'PASS_004c1b20'
+    }
+    [pscustomobject]@{
+        Address = '0050d240'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d240.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d240_test.cpp'
+        PassPattern = 'PASS_0050d240'
+    }
+    [pscustomobject]@{
+        Address = '0050d280'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d280.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d280_test.cpp'
+        PassPattern = 'PASS_0050d280'
+    }
+    [pscustomobject]@{
+        Address = '0050d2c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d2c0.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d2c0_test.cpp'
+        PassPattern = 'PASS_0050d2c0'
+    }
+    [pscustomobject]@{
+        Address = '0050d300'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d300.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d300_test.cpp'
+        PassPattern = 'PASS_0050d300'
+    }
+    [pscustomobject]@{
+        Address = '0050d570'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d570.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d570_test.cpp'
+        PassPattern = 'PASS_0050d570'
+    }
+    [pscustomobject]@{
+        Address = '0050d700'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d700.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d700_test.cpp'
+        PassPattern = 'PASS_0050d700'
+    }
+    [pscustomobject]@{
+        Address = '0050d790'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d790.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d790_test.cpp'
+        PassPattern = 'PASS_0050d790'
+    }
+    [pscustomobject]@{
+        Address = '0050d850'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d850.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d850_test.cpp'
+        PassPattern = 'PASS_0050d850'
+    }
+    [pscustomobject]@{
+        Address = '0050d8e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d8e0.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d8e0_test.cpp'
+        PassPattern = 'PASS_0050d8e0'
+    }
+    [pscustomobject]@{
+        Address = '0050d980'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d980.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d980_test.cpp'
+        PassPattern = 'PASS_0050d980'
+    }
+    [pscustomobject]@{
+        Address = '0050da10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050da10.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050da10_test.cpp'
+        PassPattern = 'PASS_0050da10'
+    }
+    [pscustomobject]@{
+        Address = '0050daa0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050daa0.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050daa0_test.cpp'
+        PassPattern = 'PASS_0050daa0'
+    }
+    [pscustomobject]@{
+        Address = '0050db30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050db30.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050db30_test.cpp'
+        PassPattern = 'PASS_0050db30'
+    }
+    [pscustomobject]@{
+        Address = '0050dbc0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050dbc0.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050dbc0_test.cpp'
+        PassPattern = 'PASS_0050dbc0'
+    }
+    [pscustomobject]@{
+        Address = '0050dc50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050dc50.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050dc50_test.cpp'
+        PassPattern = 'PASS_0050dc50'
+    }
+    [pscustomobject]@{
+        Address = '0050dce0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050dce0.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050dce0_test.cpp'
+        PassPattern = 'PASS_0050dce0'
+    }
+    [pscustomobject]@{
+        Address = '0050f270'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f270.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f270_test.cpp'
+        PassPattern = 'PASS_0050f270'
+    }
+    [pscustomobject]@{
+        Address = '005353a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/53/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005353a0.cpp'
+        TestSource = '00/53/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005353a0_test.cpp'
+        PassPattern = 'PASS_005353a0'
+    }
+    [pscustomobject]@{
+        Address = '005353e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/53/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005353e0.cpp'
+        TestSource = '00/53/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005353e0_test.cpp'
+        PassPattern = 'PASS_005353e0'
+    }
+    [pscustomobject]@{
+        Address = '0056c7e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/56/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0056c7e0.cpp'
+        TestSource = '00/56/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0056c7e0_test.cpp'
+        PassPattern = 'PASS_0056c7e0'
+    }
+    [pscustomobject]@{
+        Address = '0056d6a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/56/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0056d6a0.cpp'
+        TestSource = '00/56/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0056d6a0_test.cpp'
+        PassPattern = 'PASS_0056d6a0'
+    }
+    [pscustomobject]@{
+        Address = '005ecf90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/5e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005ecf90.cpp'
+        TestSource = '00/5e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005ecf90_test.cpp'
+        PassPattern = 'PASS_005ecf90'
+    }
+    [pscustomobject]@{
+        Address = '005ed2c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/5e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005ed2c0.cpp'
+        TestSource = '00/5e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005ed2c0_test.cpp'
+        PassPattern = 'PASS_005ed2c0'
+    }
+    [pscustomobject]@{
+        Address = '0062d9a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/62/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0062d9a0.cpp'
+        TestSource = '00/62/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0062d9a0_test.cpp'
+        PassPattern = 'PASS_0062d9a0'
+    }
+    [pscustomobject]@{
+        Address = '0062e270'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/62/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0062e270.cpp'
+        TestSource = '00/62/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0062e270_test.cpp'
+        PassPattern = 'PASS_0062e270'
+    }
+    [pscustomobject]@{
+        Address = '00641e70'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/64/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00641e70.cpp'
+        TestSource = '00/64/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00641e70_test.cpp'
+        PassPattern = 'PASS_00641e70'
+    }
+    [pscustomobject]@{
+        Address = '006686c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/66/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006686c0.cpp'
+        TestSource = '00/66/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006686c0_test.cpp'
+        PassPattern = 'PASS_006686c0'
+    }
+    [pscustomobject]@{
+        Address = '00668750'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/66/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00668750.cpp'
+        TestSource = '00/66/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00668750_test.cpp'
+        PassPattern = 'PASS_00668750'
+    }
+    [pscustomobject]@{
+        Address = '00672b90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00672b90.cpp'
+        TestSource = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00672b90_test.cpp'
+        PassPattern = 'PASS_00672b90'
+    }
+    [pscustomobject]@{
+        Address = '00672bd0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00672bd0.cpp'
+        TestSource = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00672bd0_test.cpp'
+        PassPattern = 'PASS_00672bd0'
+    }
+    [pscustomobject]@{
+        Address = '00672c10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00672c10.cpp'
+        TestSource = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00672c10_test.cpp'
+        PassPattern = 'PASS_00672c10'
+    }
+    [pscustomobject]@{
+        Address = '00673400'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00673400.cpp'
+        TestSource = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00673400_test.cpp'
+        PassPattern = 'PASS_00673400'
+    }
+    [pscustomobject]@{
+        Address = '00673440'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00673440.cpp'
+        TestSource = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00673440_test.cpp'
+        PassPattern = 'PASS_00673440'
+    }
+    [pscustomobject]@{
+        Address = '00673480'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00673480.cpp'
+        TestSource = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00673480_test.cpp'
+        PassPattern = 'PASS_00673480'
+    }
+    [pscustomobject]@{
+        Address = '006734c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006734c0.cpp'
+        TestSource = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006734c0_test.cpp'
+        PassPattern = 'PASS_006734c0'
+    }
+    [pscustomobject]@{
+        Address = '00695160'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00695160.cpp'
+        TestSource = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00695160_test.cpp'
+        PassPattern = 'PASS_00695160'
+    }
+    [pscustomobject]@{
+        Address = '006964d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006964d0.cpp'
+        TestSource = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006964d0_test.cpp'
+        PassPattern = 'PASS_006964d0'
+    }
+    [pscustomobject]@{
+        Address = '0069beb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0069beb0.cpp'
+        TestSource = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0069beb0_test.cpp'
+        PassPattern = 'PASS_0069beb0'
+    }
+    [pscustomobject]@{
+        Address = '0069bef0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0069bef0.cpp'
+        TestSource = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0069bef0_test.cpp'
+        PassPattern = 'PASS_0069bef0'
+    }
+    [pscustomobject]@{
+        Address = '006c2a60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/6c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006c2a60.cpp'
+        TestSource = '00/6c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006c2a60_test.cpp'
+        PassPattern = 'PASS_006c2a60'
+    }
+    [pscustomobject]@{
+        Address = '006d5a50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/6d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006d5a50.cpp'
+        TestSource = '00/6d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006d5a50_test.cpp'
+        PassPattern = 'PASS_006d5a50'
+    }
+    [pscustomobject]@{
+        Address = '006e7ab0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e7ab0.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e7ab0_test.cpp'
+        PassPattern = 'PASS_006e7ab0'
+    }
+    [pscustomobject]@{
+        Address = '006fad10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/6f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006fad10.cpp'
+        TestSource = '00/6f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006fad10_test.cpp'
+        PassPattern = 'PASS_006fad10'
+    }
+    [pscustomobject]@{
+        Address = '00718280'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00718280.cpp'
+        TestSource = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00718280_test.cpp'
+        PassPattern = 'PASS_00718280'
+    }
+    [pscustomobject]@{
+        Address = '007182c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007182c0.cpp'
+        TestSource = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007182c0_test.cpp'
+        PassPattern = 'PASS_007182c0'
+    }
+    [pscustomobject]@{
+        Address = '00718900'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00718900.cpp'
+        TestSource = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00718900_test.cpp'
+        PassPattern = 'PASS_00718900'
+    }
+    [pscustomobject]@{
+        Address = '0071e8a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0071e8a0.cpp'
+        TestSource = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0071e8a0_test.cpp'
+        PassPattern = 'PASS_0071e8a0'
+    }
+    [pscustomobject]@{
+        Address = '00732390'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00732390.cpp'
+        TestSource = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00732390_test.cpp'
+        PassPattern = 'PASS_00732390'
+    }
+    [pscustomobject]@{
+        Address = '00737120'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00737120.cpp'
+        TestSource = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00737120_test.cpp'
+        PassPattern = 'PASS_00737120'
+    }
+    [pscustomobject]@{
+        Address = '00737de0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00737de0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00737de0_test.cpp'
+        PassPattern = 'PASS_00737de0'
+    }
+    [pscustomobject]@{
+        Address = '0073d1d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073d1d0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073d1d0_test.cpp'
+        PassPattern = 'PASS_0073d1d0'
+    }
+    [pscustomobject]@{
+        Address = '0073e750'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073e750.cpp'
+        TestSource = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073e750_test.cpp'
+        PassPattern = 'PASS_0073e750'
+    }
+    [pscustomobject]@{
+        Address = '00763cf0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/76/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00763cf0.cpp'
+        TestSource = '00/76/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00763cf0_test.cpp'
+        PassPattern = 'PASS_00763cf0'
+    }
+    [pscustomobject]@{
+        Address = '00764280'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/76/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00764280.cpp'
+        TestSource = '00/76/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00764280_test.cpp'
+        PassPattern = 'PASS_00764280'
+    }
+    [pscustomobject]@{
+        Address = '00771900'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/77/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00771900.cpp'
+        TestSource = '00/77/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00771900_test.cpp'
+        PassPattern = 'PASS_00771900'
+    }
+    [pscustomobject]@{
+        Address = '00786cb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/78/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00786cb0.cpp'
+        TestSource = '00/78/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00786cb0_test.cpp'
+        PassPattern = 'PASS_00786cb0'
+    }
+    [pscustomobject]@{
+        Address = '007a3660'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/7a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007a3660.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007a3660_test.cpp'
+        PassPattern = 'PASS_007a3660'
+    }
+    [pscustomobject]@{
+        Address = '007e7130'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/7e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007e7130.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007e7130_test.cpp'
+        PassPattern = 'PASS_007e7130'
+    }
+    [pscustomobject]@{
+        Address = '00822f20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822f20.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822f20_test.cpp'
+        PassPattern = 'PASS_00822f20'
+    }
+    [pscustomobject]@{
+        Address = '00822fb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822fb0.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822fb0_test.cpp'
+        PassPattern = 'PASS_00822fb0'
+    }
+    [pscustomobject]@{
+        Address = '00823040'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823040.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823040_test.cpp'
+        PassPattern = 'PASS_00823040'
+    }
+    [pscustomobject]@{
+        Address = '008230d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008230d0.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008230d0_test.cpp'
+        PassPattern = 'PASS_008230d0'
+    }
+    [pscustomobject]@{
+        Address = '00823160'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823160.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823160_test.cpp'
+        PassPattern = 'PASS_00823160'
+    }
+    [pscustomobject]@{
+        Address = '008231f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008231f0.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008231f0_test.cpp'
+        PassPattern = 'PASS_008231f0'
+    }
+    [pscustomobject]@{
+        Address = '00823280'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823280.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823280_test.cpp'
+        PassPattern = 'PASS_00823280'
+    }
+    [pscustomobject]@{
+        Address = '00823310'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823310.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823310_test.cpp'
+        PassPattern = 'PASS_00823310'
+    }
+    [pscustomobject]@{
+        Address = '00834b50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00834b50.cpp'
+        TestSource = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00834b50_test.cpp'
+        PassPattern = 'PASS_00834b50'
+    }
+    [pscustomobject]@{
+        Address = '00834cf0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00834cf0.cpp'
+        TestSource = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00834cf0_test.cpp'
+        PassPattern = 'PASS_00834cf0'
+    }
+    [pscustomobject]@{
+        Address = '00834da0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00834da0.cpp'
+        TestSource = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00834da0_test.cpp'
+        PassPattern = 'PASS_00834da0'
+    }
+    [pscustomobject]@{
+        Address = '00836540'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00836540.cpp'
+        TestSource = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00836540_test.cpp'
+        PassPattern = 'PASS_00836540'
+    }
+    [pscustomobject]@{
+        Address = '0085a640'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/85/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0085a640.cpp'
+        TestSource = '00/85/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0085a640_test.cpp'
+        PassPattern = 'PASS_0085a640'
+    }
+    [pscustomobject]@{
+        Address = '0085a890'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/85/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0085a890.cpp'
+        TestSource = '00/85/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0085a890_test.cpp'
+        PassPattern = 'PASS_0085a890'
+    }
+    [pscustomobject]@{
+        Address = '008aa930'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008aa930.cpp'
+        TestSource = '00/8a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008aa930_test.cpp'
+        PassPattern = 'PASS_008aa930'
+    }
+    [pscustomobject]@{
+        Address = '008aa970'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008aa970.cpp'
+        TestSource = '00/8a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008aa970_test.cpp'
+        PassPattern = 'PASS_008aa970'
+    }
+    [pscustomobject]@{
+        Address = '008b2be0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008b2be0.cpp'
+        TestSource = '00/8b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008b2be0_test.cpp'
+        PassPattern = 'PASS_008b2be0'
+    }
+    [pscustomobject]@{
+        Address = '008c2dc0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c2dc0.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c2dc0_test.cpp'
+        PassPattern = 'PASS_008c2dc0'
+    }
+    [pscustomobject]@{
+        Address = '008c32b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c32b0.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c32b0_test.cpp'
+        PassPattern = 'PASS_008c32b0'
+    }
+    [pscustomobject]@{
+        Address = '008c5940'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c5940.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c5940_test.cpp'
+        PassPattern = 'PASS_008c5940'
+    }
+    [pscustomobject]@{
+        Address = '00991f20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/99/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00991f20.cpp'
+        TestSource = '00/99/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00991f20_test.cpp'
+        PassPattern = 'PASS_00991f20'
+    }
+    [pscustomobject]@{
+        Address = '00991fb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/99/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00991fb0.cpp'
+        TestSource = '00/99/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00991fb0_test.cpp'
+        PassPattern = 'PASS_00991fb0'
+    }
+    [pscustomobject]@{
+        Address = '009921e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/99/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009921e0.cpp'
+        TestSource = '00/99/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009921e0_test.cpp'
+        PassPattern = 'PASS_009921e0'
+    }
+    [pscustomobject]@{
+        Address = '009a42c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a42c0.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a42c0_test.cpp'
+        PassPattern = 'PASS_009a42c0'
+    }
+    [pscustomobject]@{
+        Address = '009a4400'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a4400.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a4400_test.cpp'
+        PassPattern = 'PASS_009a4400'
+    }
+    [pscustomobject]@{
+        Address = '009a4e00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a4e00.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a4e00_test.cpp'
+        PassPattern = 'PASS_009a4e00'
+    }
+    [pscustomobject]@{
+        Address = '009a6c30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6c30.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6c30_test.cpp'
+        PassPattern = 'PASS_009a6c30'
+    }
+    [pscustomobject]@{
+        Address = '009a6c70'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6c70.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6c70_test.cpp'
+        PassPattern = 'PASS_009a6c70'
+    }
+    [pscustomobject]@{
+        Address = '009a6cb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6cb0.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6cb0_test.cpp'
+        PassPattern = 'PASS_009a6cb0'
+    }
+    [pscustomobject]@{
+        Address = '009a6cf0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6cf0.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6cf0_test.cpp'
+        PassPattern = 'PASS_009a6cf0'
+    }
+    [pscustomobject]@{
+        Address = '009a6d30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6d30.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6d30_test.cpp'
+        PassPattern = 'PASS_009a6d30'
+    }
+    [pscustomobject]@{
+        Address = '009a6d70'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6d70.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6d70_test.cpp'
+        PassPattern = 'PASS_009a6d70'
+    }
+    [pscustomobject]@{
+        Address = '009a6db0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6db0.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6db0_test.cpp'
+        PassPattern = 'PASS_009a6db0'
+    }
+    [pscustomobject]@{
+        Address = '009a6df0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6df0.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6df0_test.cpp'
+        PassPattern = 'PASS_009a6df0'
+    }
+    [pscustomobject]@{
+        Address = '009a6ea0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6ea0.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6ea0_test.cpp'
+        PassPattern = 'PASS_009a6ea0'
+    }
+    [pscustomobject]@{
+        Address = '009a6f50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6f50.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6f50_test.cpp'
+        PassPattern = 'PASS_009a6f50'
+    }
+    [pscustomobject]@{
+        Address = '009a6f90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6f90.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6f90_test.cpp'
+        PassPattern = 'PASS_009a6f90'
+    }
+    [pscustomobject]@{
+        Address = '009a7040'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a7040.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a7040_test.cpp'
+        PassPattern = 'PASS_009a7040'
+    }
+    [pscustomobject]@{
+        Address = '009a7080'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a7080.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a7080_test.cpp'
+        PassPattern = 'PASS_009a7080'
+    }
+    [pscustomobject]@{
+        Address = '009a70c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a70c0.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a70c0_test.cpp'
+        PassPattern = 'PASS_009a70c0'
+    }
+    [pscustomobject]@{
+        Address = '009a7100'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a7100.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a7100_test.cpp'
+        PassPattern = 'PASS_009a7100'
+    }
+    [pscustomobject]@{
+        Address = '009a7140'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a7140.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a7140_test.cpp'
+        PassPattern = 'PASS_009a7140'
+    }
+    [pscustomobject]@{
+        Address = '009a95a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a95a0.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a95a0_test.cpp'
+        PassPattern = 'PASS_009a95a0'
+    }
+    [pscustomobject]@{
+        Address = '009a9630'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a9630.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a9630_test.cpp'
+        PassPattern = 'PASS_009a9630'
+    }
+    [pscustomobject]@{
+        Address = '009a9670'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a9670.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a9670_test.cpp'
+        PassPattern = 'PASS_009a9670'
+    }
+    [pscustomobject]@{
+        Address = '009a9c40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a9c40.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a9c40_test.cpp'
+        PassPattern = 'PASS_009a9c40'
+    }
+    [pscustomobject]@{
+        Address = '009aa8c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009aa8c0.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009aa8c0_test.cpp'
+        PassPattern = 'PASS_009aa8c0'
+    }
+    [pscustomobject]@{
+        Address = '009b1f10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009b1f10.cpp'
+        TestSource = '00/9b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009b1f10_test.cpp'
+        PassPattern = 'PASS_009b1f10'
+    }
+    [pscustomobject]@{
+        Address = '009c6090'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c6090.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c6090_test.cpp'
+        PassPattern = 'PASS_009c6090'
+    }
+    [pscustomobject]@{
+        Address = '009c6980'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c6980.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c6980_test.cpp'
+        PassPattern = 'PASS_009c6980'
+    }
+    [pscustomobject]@{
+        Address = '009d1f50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d1f50.cpp'
+        TestSource = '00/9d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d1f50_test.cpp'
+        PassPattern = 'PASS_009d1f50'
+    }
+    [pscustomobject]@{
+        Address = '009d6cb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d6cb0.cpp'
+        TestSource = '00/9d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d6cb0_test.cpp'
+        PassPattern = 'PASS_009d6cb0'
+    }
+    [pscustomobject]@{
+        Address = '009d6cf0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d6cf0.cpp'
+        TestSource = '00/9d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d6cf0_test.cpp'
+        PassPattern = 'PASS_009d6cf0'
+    }
+    [pscustomobject]@{
+        Address = '009d7030'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d7030.cpp'
+        TestSource = '00/9d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d7030_test.cpp'
+        PassPattern = 'PASS_009d7030'
+    }
+    [pscustomobject]@{
+        Address = '009e29c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009e29c0.cpp'
+        TestSource = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009e29c0_test.cpp'
+        PassPattern = 'PASS_009e29c0'
+    }
+    [pscustomobject]@{
+        Address = '009e3050'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009e3050.cpp'
+        TestSource = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009e3050_test.cpp'
+        PassPattern = 'PASS_009e3050'
+    }
+    [pscustomobject]@{
+        Address = '009edfa0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009edfa0.cpp'
+        TestSource = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009edfa0_test.cpp'
+        PassPattern = 'PASS_009edfa0'
+    }
+    [pscustomobject]@{
+        Address = '009ee500'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009ee500.cpp'
+        TestSource = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009ee500_test.cpp'
+        PassPattern = 'PASS_009ee500'
+    }
+    [pscustomobject]@{
+        Address = '009f6660'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009f6660.cpp'
+        TestSource = '00/9f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009f6660_test.cpp'
+        PassPattern = 'PASS_009f6660'
+    }
+    [pscustomobject]@{
+        Address = '009ffdc0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009ffdc0.cpp'
+        TestSource = '00/9f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009ffdc0_test.cpp'
+        PassPattern = 'PASS_009ffdc0'
+    }
+    [pscustomobject]@{
+        Address = '009ffe00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009ffe00.cpp'
+        TestSource = '00/9f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009ffe00_test.cpp'
+        PassPattern = 'PASS_009ffe00'
+    }
+    [pscustomobject]@{
+        Address = '00a001a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a001a0.cpp'
+        TestSource = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a001a0_test.cpp'
+        PassPattern = 'PASS_00a001a0'
+    }
+    [pscustomobject]@{
+        Address = '00a018e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a018e0.cpp'
+        TestSource = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a018e0_test.cpp'
+        PassPattern = 'PASS_00a018e0'
+    }
+    [pscustomobject]@{
+        Address = '00a0bb50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a0bb50.cpp'
+        TestSource = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a0bb50_test.cpp'
+        PassPattern = 'PASS_00a0bb50'
+    }
+    [pscustomobject]@{
+        Address = '00a0bb90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a0bb90.cpp'
+        TestSource = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a0bb90_test.cpp'
+        PassPattern = 'PASS_00a0bb90'
+    }
+    [pscustomobject]@{
+        Address = '00a0bbd0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a0bbd0.cpp'
+        TestSource = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a0bbd0_test.cpp'
+        PassPattern = 'PASS_00a0bbd0'
+    }
+    [pscustomobject]@{
+        Address = '00a0bc10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a0bc10.cpp'
+        TestSource = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a0bc10_test.cpp'
+        PassPattern = 'PASS_00a0bc10'
+    }
+    [pscustomobject]@{
+        Address = '00a0bc50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a0bc50.cpp'
+        TestSource = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a0bc50_test.cpp'
+        PassPattern = 'PASS_00a0bc50'
+    }
+    [pscustomobject]@{
+        Address = '00a28970'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28970.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28970_test.cpp'
+        PassPattern = 'PASS_00a28970'
+    }
+    [pscustomobject]@{
+        Address = '00a28a00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28a00.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28a00_test.cpp'
+        PassPattern = 'PASS_00a28a00'
+    }
+    [pscustomobject]@{
+        Address = '00a28a90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28a90.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28a90_test.cpp'
+        PassPattern = 'PASS_00a28a90'
+    }
+    [pscustomobject]@{
+        Address = '00a28ad0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28ad0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28ad0_test.cpp'
+        PassPattern = 'PASS_00a28ad0'
+    }
+    [pscustomobject]@{
+        Address = '00a28b10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28b10.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28b10_test.cpp'
+        PassPattern = 'PASS_00a28b10'
+    }
+    [pscustomobject]@{
+        Address = '00a28b50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28b50.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28b50_test.cpp'
+        PassPattern = 'PASS_00a28b50'
+    }
+    [pscustomobject]@{
+        Address = '00a28be0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28be0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28be0_test.cpp'
+        PassPattern = 'PASS_00a28be0'
+    }
+    [pscustomobject]@{
+        Address = '00a28c20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28c20.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28c20_test.cpp'
+        PassPattern = 'PASS_00a28c20'
+    }
+    [pscustomobject]@{
+        Address = '00a28e40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28e40.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28e40_test.cpp'
+        PassPattern = 'PASS_00a28e40'
+    }
+    [pscustomobject]@{
+        Address = '00a297c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a297c0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a297c0_test.cpp'
+        PassPattern = 'PASS_00a297c0'
+    }
+    [pscustomobject]@{
+        Address = '00a29870'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a29870.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a29870_test.cpp'
+        PassPattern = 'PASS_00a29870'
+    }
+    [pscustomobject]@{
+        Address = '00a298b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a298b0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a298b0_test.cpp'
+        PassPattern = 'PASS_00a298b0'
+    }
+    [pscustomobject]@{
+        Address = '00a29980'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a29980.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a29980_test.cpp'
+        PassPattern = 'PASS_00a29980'
+    }
+    [pscustomobject]@{
+        Address = '00a29de0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a29de0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a29de0_test.cpp'
+        PassPattern = 'PASS_00a29de0'
+    }
+    [pscustomobject]@{
+        Address = '00a29eb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a29eb0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a29eb0_test.cpp'
+        PassPattern = 'PASS_00a29eb0'
+    }
+    [pscustomobject]@{
+        Address = '00a30ad0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30ad0.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30ad0_test.cpp'
+        PassPattern = 'PASS_00a30ad0'
+    }
+    [pscustomobject]@{
+        Address = '00a30b10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30b10.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30b10_test.cpp'
+        PassPattern = 'PASS_00a30b10'
+    }
+    [pscustomobject]@{
+        Address = '00a30b50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30b50.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30b50_test.cpp'
+        PassPattern = 'PASS_00a30b50'
+    }
+    [pscustomobject]@{
+        Address = '00a30b90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30b90.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30b90_test.cpp'
+        PassPattern = 'PASS_00a30b90'
+    }
+    [pscustomobject]@{
+        Address = '00a30c20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30c20.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30c20_test.cpp'
+        PassPattern = 'PASS_00a30c20'
+    }
+    [pscustomobject]@{
+        Address = '00a30cb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30cb0.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30cb0_test.cpp'
+        PassPattern = 'PASS_00a30cb0'
+    }
+    [pscustomobject]@{
+        Address = '00a30d40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30d40.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30d40_test.cpp'
+        PassPattern = 'PASS_00a30d40'
+    }
+    [pscustomobject]@{
+        Address = '00a31920'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a31920.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a31920_test.cpp'
+        PassPattern = 'PASS_00a31920'
+    }
+    [pscustomobject]@{
+        Address = '00a31960'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a31960.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a31960_test.cpp'
+        PassPattern = 'PASS_00a31960'
+    }
+    [pscustomobject]@{
+        Address = '00a319a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a319a0.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a319a0_test.cpp'
+        PassPattern = 'PASS_00a319a0'
+    }
+    [pscustomobject]@{
+        Address = '00a319e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a319e0.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a319e0_test.cpp'
+        PassPattern = 'PASS_00a319e0'
+    }
+    [pscustomobject]@{
+        Address = '00a31c00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a31c00.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a31c00_test.cpp'
+        PassPattern = 'PASS_00a31c00'
+    }
+    [pscustomobject]@{
+        Address = '00a3a3d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a3a3d0.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a3a3d0_test.cpp'
+        PassPattern = 'PASS_00a3a3d0'
+    }
+    [pscustomobject]@{
+        Address = '00a45780'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a45780.cpp'
+        TestSource = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a45780_test.cpp'
+        PassPattern = 'PASS_00a45780'
+    }
+    [pscustomobject]@{
+        Address = '00a46260'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a46260.cpp'
+        TestSource = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a46260_test.cpp'
+        PassPattern = 'PASS_00a46260'
+    }
+    [pscustomobject]@{
+        Address = '00a515b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a515b0.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a515b0_test.cpp'
+        PassPattern = 'PASS_00a515b0'
+    }
+    [pscustomobject]@{
+        Address = '00a515f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a515f0.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a515f0_test.cpp'
+        PassPattern = 'PASS_00a515f0'
+    }
+    [pscustomobject]@{
+        Address = '00a51630'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51630.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51630_test.cpp'
+        PassPattern = 'PASS_00a51630'
+    }
+    [pscustomobject]@{
+        Address = '00a516c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a516c0.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a516c0_test.cpp'
+        PassPattern = 'PASS_00a516c0'
+    }
+    [pscustomobject]@{
+        Address = '00a51700'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51700.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51700_test.cpp'
+        PassPattern = 'PASS_00a51700'
+    }
+    [pscustomobject]@{
+        Address = '00a51740'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51740.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51740_test.cpp'
+        PassPattern = 'PASS_00a51740'
+    }
+    [pscustomobject]@{
+        Address = '00a51780'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51780.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51780_test.cpp'
+        PassPattern = 'PASS_00a51780'
+    }
+    [pscustomobject]@{
+        Address = '00a51810'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51810.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51810_test.cpp'
+        PassPattern = 'PASS_00a51810'
+    }
+    [pscustomobject]@{
+        Address = '00a51850'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51850.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51850_test.cpp'
+        PassPattern = 'PASS_00a51850'
+    }
+    [pscustomobject]@{
+        Address = '00a518f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a518f0.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a518f0_test.cpp'
+        PassPattern = 'PASS_00a518f0'
+    }
+    [pscustomobject]@{
+        Address = '00a52ba0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52ba0.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52ba0_test.cpp'
+        PassPattern = 'PASS_00a52ba0'
+    }
+    [pscustomobject]@{
+        Address = '00a52d50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52d50.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52d50_test.cpp'
+        PassPattern = 'PASS_00a52d50'
+    }
+    [pscustomobject]@{
+        Address = '00a52e20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52e20.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52e20_test.cpp'
+        PassPattern = 'PASS_00a52e20'
+    }
+    [pscustomobject]@{
+        Address = '00a52e60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52e60.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52e60_test.cpp'
+        PassPattern = 'PASS_00a52e60'
+    }
+    [pscustomobject]@{
+        Address = '00a52f40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52f40.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52f40_test.cpp'
+        PassPattern = 'PASS_00a52f40'
+    }
+    [pscustomobject]@{
+        Address = '00a52f80'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52f80.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52f80_test.cpp'
+        PassPattern = 'PASS_00a52f80'
+    }
+    [pscustomobject]@{
+        Address = '00a52fc0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52fc0.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52fc0_test.cpp'
+        PassPattern = 'PASS_00a52fc0'
+    }
+    [pscustomobject]@{
+        Address = '00a53000'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a53000.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a53000_test.cpp'
+        PassPattern = 'PASS_00a53000'
+    }
+    [pscustomobject]@{
+        Address = '00a53040'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a53040.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a53040_test.cpp'
+        PassPattern = 'PASS_00a53040'
+    }
+    [pscustomobject]@{
+        Address = '00a6e150'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6e150.cpp'
+        TestSource = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6e150_test.cpp'
+        PassPattern = 'PASS_00a6e150'
+    }
+    [pscustomobject]@{
+        Address = '00a6e190'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6e190.cpp'
+        TestSource = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6e190_test.cpp'
+        PassPattern = 'PASS_00a6e190'
+    }
+    [pscustomobject]@{
+        Address = '00a6e220'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6e220.cpp'
+        TestSource = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6e220_test.cpp'
+        PassPattern = 'PASS_00a6e220'
+    }
+    [pscustomobject]@{
+        Address = '00a6e2b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6e2b0.cpp'
+        TestSource = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6e2b0_test.cpp'
+        PassPattern = 'PASS_00a6e2b0'
+    }
+    [pscustomobject]@{
+        Address = '00a6e960'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6e960.cpp'
+        TestSource = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6e960_test.cpp'
+        PassPattern = 'PASS_00a6e960'
+    }
+    [pscustomobject]@{
+        Address = '00a6eb30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6eb30.cpp'
+        TestSource = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6eb30_test.cpp'
+        PassPattern = 'PASS_00a6eb30'
+    }
+    [pscustomobject]@{
+        Address = '00a7dee0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a7/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a7dee0.cpp'
+        TestSource = '00/a7/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a7dee0_test.cpp'
+        PassPattern = 'PASS_00a7dee0'
+    }
+    [pscustomobject]@{
+        Address = '00a8cd30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8cd30.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8cd30_test.cpp'
+        PassPattern = 'PASS_00a8cd30'
+    }
+    [pscustomobject]@{
+        Address = '00a8cd70'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8cd70.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8cd70_test.cpp'
+        PassPattern = 'PASS_00a8cd70'
+    }
+    [pscustomobject]@{
+        Address = '00a8ce00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8ce00.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8ce00_test.cpp'
+        PassPattern = 'PASS_00a8ce00'
+    }
+    [pscustomobject]@{
+        Address = '00a8ce40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8ce40.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8ce40_test.cpp'
+        PassPattern = 'PASS_00a8ce40'
+    }
+    [pscustomobject]@{
+        Address = '00a8cf30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8cf30.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8cf30_test.cpp'
+        PassPattern = 'PASS_00a8cf30'
+    }
+    [pscustomobject]@{
+        Address = '00a8d1c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d1c0.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d1c0_test.cpp'
+        PassPattern = 'PASS_00a8d1c0'
+    }
+    [pscustomobject]@{
+        Address = '00a8d3c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d3c0.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d3c0_test.cpp'
+        PassPattern = 'PASS_00a8d3c0'
+    }
+    [pscustomobject]@{
+        Address = '00a8d940'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d940.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d940_test.cpp'
+        PassPattern = 'PASS_00a8d940'
+    }
+    [pscustomobject]@{
+        Address = '00a8dfc0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8dfc0.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8dfc0_test.cpp'
+        PassPattern = 'PASS_00a8dfc0'
+    }
+    [pscustomobject]@{
+        Address = '00a8e000'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8e000.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8e000_test.cpp'
+        PassPattern = 'PASS_00a8e000'
+    }
+    [pscustomobject]@{
+        Address = '00a93ea0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a93ea0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a93ea0_test.cpp'
+        PassPattern = 'PASS_00a93ea0'
+    }
+    [pscustomobject]@{
+        Address = '00a93ee0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a93ee0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a93ee0_test.cpp'
+        PassPattern = 'PASS_00a93ee0'
+    }
+    [pscustomobject]@{
+        Address = '00a93f20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a93f20.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a93f20_test.cpp'
+        PassPattern = 'PASS_00a93f20'
+    }
+    [pscustomobject]@{
+        Address = '00a93fb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a93fb0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a93fb0_test.cpp'
+        PassPattern = 'PASS_00a93fb0'
+    }
+    [pscustomobject]@{
+        Address = '00a94040'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94040.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94040_test.cpp'
+        PassPattern = 'PASS_00a94040'
+    }
+    [pscustomobject]@{
+        Address = '00a94080'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94080.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94080_test.cpp'
+        PassPattern = 'PASS_00a94080'
+    }
+    [pscustomobject]@{
+        Address = '00a94110'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94110.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94110_test.cpp'
+        PassPattern = 'PASS_00a94110'
+    }
+    [pscustomobject]@{
+        Address = '00a94190'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94190.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94190_test.cpp'
+        PassPattern = 'PASS_00a94190'
+    }
+    [pscustomobject]@{
+        Address = '00a94220'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94220.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94220_test.cpp'
+        PassPattern = 'PASS_00a94220'
+    }
+    [pscustomobject]@{
+        Address = '00a942c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a942c0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a942c0_test.cpp'
+        PassPattern = 'PASS_00a942c0'
+    }
+    [pscustomobject]@{
+        Address = '00a94300'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94300.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94300_test.cpp'
+        PassPattern = 'PASS_00a94300'
+    }
+    [pscustomobject]@{
+        Address = '00a94db0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94db0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94db0_test.cpp'
+        PassPattern = 'PASS_00a94db0'
+    }
+    [pscustomobject]@{
+        Address = '00a95030'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a95030.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a95030_test.cpp'
+        PassPattern = 'PASS_00a95030'
+    }
+    [pscustomobject]@{
+        Address = '00a95100'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a95100.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a95100_test.cpp'
+        PassPattern = 'PASS_00a95100'
+    }
+    [pscustomobject]@{
+        Address = '00a951d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a951d0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a951d0_test.cpp'
+        PassPattern = 'PASS_00a951d0'
+    }
+    [pscustomobject]@{
+        Address = '00a95210'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a95210.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a95210_test.cpp'
+        PassPattern = 'PASS_00a95210'
+    }
+    [pscustomobject]@{
+        Address = '00a95250'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a95250.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a95250_test.cpp'
+        PassPattern = 'PASS_00a95250'
+    }
+    [pscustomobject]@{
+        Address = '00a96540'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a96540.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a96540_test.cpp'
+        PassPattern = 'PASS_00a96540'
+    }
+    [pscustomobject]@{
+        Address = '00a9a030'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a030.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a030_test.cpp'
+        PassPattern = 'PASS_00a9a030'
+    }
+    [pscustomobject]@{
+        Address = '00a9a130'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a130.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a130_test.cpp'
+        PassPattern = 'PASS_00a9a130'
+    }
+    [pscustomobject]@{
+        Address = '00a9a3e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a3e0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a3e0_test.cpp'
+        PassPattern = 'PASS_00a9a3e0'
+    }
+    [pscustomobject]@{
+        Address = '00a9a530'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a530.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a530_test.cpp'
+        PassPattern = 'PASS_00a9a530'
+    }
+    [pscustomobject]@{
+        Address = '00a9cc80'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9cc80.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9cc80_test.cpp'
+        PassPattern = 'PASS_00a9cc80'
+    }
+    [pscustomobject]@{
+        Address = '00a9ce90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9ce90.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9ce90_test.cpp'
+        PassPattern = 'PASS_00a9ce90'
+    }
+    [pscustomobject]@{
+        Address = '00a9d020'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9d020.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9d020_test.cpp'
+        PassPattern = 'PASS_00a9d020'
+    }
+    [pscustomobject]@{
+        Address = '00a9d060'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9d060.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9d060_test.cpp'
+        PassPattern = 'PASS_00a9d060'
+    }
+    [pscustomobject]@{
+        Address = '00aa4320'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aa4320.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aa4320_test.cpp'
+        PassPattern = 'PASS_00aa4320'
+    }
+    [pscustomobject]@{
+        Address = '00aa43e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aa43e0.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aa43e0_test.cpp'
+        PassPattern = 'PASS_00aa43e0'
+    }
+    [pscustomobject]@{
+        Address = '00aa4420'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aa4420.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aa4420_test.cpp'
+        PassPattern = 'PASS_00aa4420'
+    }
+    [pscustomobject]@{
+        Address = '00aab1e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aab1e0.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aab1e0_test.cpp'
+        PassPattern = 'PASS_00aab1e0'
+    }
+    [pscustomobject]@{
+        Address = '00aab220'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aab220.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aab220_test.cpp'
+        PassPattern = 'PASS_00aab220'
+    }
+    [pscustomobject]@{
+        Address = '00aaec00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaec00.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaec00_test.cpp'
+        PassPattern = 'PASS_00aaec00'
+    }
+    [pscustomobject]@{
+        Address = '00aaeca0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaeca0.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaeca0_test.cpp'
+        PassPattern = 'PASS_00aaeca0'
+    }
+    [pscustomobject]@{
+        Address = '00aaef00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaef00.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaef00_test.cpp'
+        PassPattern = 'PASS_00aaef00'
+    }
+    [pscustomobject]@{
+        Address = '00aaef40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaef40.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaef40_test.cpp'
+        PassPattern = 'PASS_00aaef40'
+    }
+    [pscustomobject]@{
+        Address = '00ab0930'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab0930.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab0930_test.cpp'
+        PassPattern = 'PASS_00ab0930'
+    }
+    [pscustomobject]@{
+        Address = '00ab0ef0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab0ef0.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab0ef0_test.cpp'
+        PassPattern = 'PASS_00ab0ef0'
+    }
+    [pscustomobject]@{
+        Address = '00ab2b00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab2b00.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab2b00_test.cpp'
+        PassPattern = 'PASS_00ab2b00'
+    }
+    [pscustomobject]@{
+        Address = '00ab5e00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab5e00.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab5e00_test.cpp'
+        PassPattern = 'PASS_00ab5e00'
+    }
+    [pscustomobject]@{
+        Address = '00ab5e40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab5e40.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab5e40_test.cpp'
+        PassPattern = 'PASS_00ab5e40'
+    }
+    [pscustomobject]@{
+        Address = '00abd8a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abd8a0.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abd8a0_test.cpp'
+        PassPattern = 'PASS_00abd8a0'
+    }
+    [pscustomobject]@{
+        Address = '00abda20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abda20.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abda20_test.cpp'
+        PassPattern = 'PASS_00abda20'
+    }
+    [pscustomobject]@{
+        Address = '00abdac0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abdac0.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abdac0_test.cpp'
+        PassPattern = 'PASS_00abdac0'
+    }
+    [pscustomobject]@{
+        Address = '00abdb00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abdb00.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abdb00_test.cpp'
+        PassPattern = 'PASS_00abdb00'
+    }
+    [pscustomobject]@{
+        Address = '00abdb40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abdb40.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abdb40_test.cpp'
+        PassPattern = 'PASS_00abdb40'
+    }
+    [pscustomobject]@{
+        Address = '00abdb80'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abdb80.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abdb80_test.cpp'
+        PassPattern = 'PASS_00abdb80'
+    }
+    [pscustomobject]@{
+        Address = '00abe1c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe1c0.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe1c0_test.cpp'
+        PassPattern = 'PASS_00abe1c0'
+    }
+    [pscustomobject]@{
+        Address = '00abe200'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe200.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe200_test.cpp'
+        PassPattern = 'PASS_00abe200'
+    }
+    [pscustomobject]@{
+        Address = '00abe240'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe240.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe240_test.cpp'
+        PassPattern = 'PASS_00abe240'
+    }
+    [pscustomobject]@{
+        Address = '00abe280'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe280.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe280_test.cpp'
+        PassPattern = 'PASS_00abe280'
+    }
+    [pscustomobject]@{
+        Address = '00abe2c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe2c0.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe2c0_test.cpp'
+        PassPattern = 'PASS_00abe2c0'
+    }
+    [pscustomobject]@{
+        Address = '00abe300'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe300.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe300_test.cpp'
+        PassPattern = 'PASS_00abe300'
+    }
+    [pscustomobject]@{
+        Address = '00abe340'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe340.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe340_test.cpp'
+        PassPattern = 'PASS_00abe340'
+    }
+    [pscustomobject]@{
+        Address = '00abe380'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe380.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe380_test.cpp'
+        PassPattern = 'PASS_00abe380'
+    }
+    [pscustomobject]@{
+        Address = '00abe3c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe3c0.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe3c0_test.cpp'
+        PassPattern = 'PASS_00abe3c0'
+    }
+    [pscustomobject]@{
+        Address = '00abe400'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe400.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe400_test.cpp'
+        PassPattern = 'PASS_00abe400'
+    }
+    [pscustomobject]@{
+        Address = '00ac1470'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1470.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1470_test.cpp'
+        PassPattern = 'PASS_00ac1470'
+    }
+    [pscustomobject]@{
+        Address = '00ac1570'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1570.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1570_test.cpp'
+        PassPattern = 'PASS_00ac1570'
+    }
+    [pscustomobject]@{
+        Address = '00ac15b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac15b0.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac15b0_test.cpp'
+        PassPattern = 'PASS_00ac15b0'
+    }
+    [pscustomobject]@{
+        Address = '00ac15f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac15f0.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac15f0_test.cpp'
+        PassPattern = 'PASS_00ac15f0'
+    }
+    [pscustomobject]@{
+        Address = '00ac1680'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1680.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1680_test.cpp'
+        PassPattern = 'PASS_00ac1680'
+    }
+    [pscustomobject]@{
+        Address = '00ac1990'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1990.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1990_test.cpp'
+        PassPattern = 'PASS_00ac1990'
+    }
+    [pscustomobject]@{
+        Address = '00ac19d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac19d0.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac19d0_test.cpp'
+        PassPattern = 'PASS_00ac19d0'
+    }
+    [pscustomobject]@{
+        Address = '00ac1a10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1a10.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1a10_test.cpp'
+        PassPattern = 'PASS_00ac1a10'
+    }
+    [pscustomobject]@{
+        Address = '00ac1a50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1a50.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1a50_test.cpp'
+        PassPattern = 'PASS_00ac1a50'
+    }
+    [pscustomobject]@{
+        Address = '00acfd60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00acfd60.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00acfd60_test.cpp'
+        PassPattern = 'PASS_00acfd60'
+    }
+    [pscustomobject]@{
+        Address = '00ad0c00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ad/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ad0c00.cpp'
+        TestSource = '00/ad/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ad0c00_test.cpp'
+        PassPattern = 'PASS_00ad0c00'
+    }
+    [pscustomobject]@{
+        Address = '00ad2c30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ad/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ad2c30.cpp'
+        TestSource = '00/ad/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ad2c30_test.cpp'
+        PassPattern = 'PASS_00ad2c30'
+    }
+    [pscustomobject]@{
+        Address = '00ae9270'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae9270.cpp'
+        TestSource = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae9270_test.cpp'
+        PassPattern = 'PASS_00ae9270'
+    }
+    [pscustomobject]@{
+        Address = '00ae92b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae92b0.cpp'
+        TestSource = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae92b0_test.cpp'
+        PassPattern = 'PASS_00ae92b0'
+    }
+    [pscustomobject]@{
+        Address = '00ae93a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae93a0.cpp'
+        TestSource = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae93a0_test.cpp'
+        PassPattern = 'PASS_00ae93a0'
+    }
+    [pscustomobject]@{
+        Address = '00ae94a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae94a0.cpp'
+        TestSource = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae94a0_test.cpp'
+        PassPattern = 'PASS_00ae94a0'
+    }
+    [pscustomobject]@{
+        Address = '00aec120'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aec120.cpp'
+        TestSource = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aec120_test.cpp'
+        PassPattern = 'PASS_00aec120'
+    }
+    [pscustomobject]@{
+        Address = '00aec160'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aec160.cpp'
+        TestSource = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aec160_test.cpp'
+        PassPattern = 'PASS_00aec160'
+    }
+    [pscustomobject]@{
+        Address = '00aec1a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aec1a0.cpp'
+        TestSource = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aec1a0_test.cpp'
+        PassPattern = 'PASS_00aec1a0'
+    }
+    [pscustomobject]@{
+        Address = '00aec300'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aec300.cpp'
+        TestSource = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aec300_test.cpp'
+        PassPattern = 'PASS_00aec300'
+    }
+    [pscustomobject]@{
+        Address = '00aec340'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aec340.cpp'
+        TestSource = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aec340_test.cpp'
+        PassPattern = 'PASS_00aec340'
+    }
+    [pscustomobject]@{
+        Address = '00aec660'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aec660.cpp'
+        TestSource = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aec660_test.cpp'
+        PassPattern = 'PASS_00aec660'
+    }
+    [pscustomobject]@{
+        Address = '00af0760'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/af/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00af0760.cpp'
+        TestSource = '00/af/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00af0760_test.cpp'
+        PassPattern = 'PASS_00af0760'
+    }
+    [pscustomobject]@{
+        Address = '00af0cc0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/af/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00af0cc0.cpp'
+        TestSource = '00/af/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00af0cc0_test.cpp'
+        PassPattern = 'PASS_00af0cc0'
+    }
+    [pscustomobject]@{
+        Address = '00af5e10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/af/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00af5e10.cpp'
+        TestSource = '00/af/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00af5e10_test.cpp'
+        PassPattern = 'PASS_00af5e10'
+    }
+    [pscustomobject]@{
+        Address = '00af5fd0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/af/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00af5fd0.cpp'
+        TestSource = '00/af/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00af5fd0_test.cpp'
+        PassPattern = 'PASS_00af5fd0'
+    }
+    [pscustomobject]@{
+        Address = '00b09830'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b09830.cpp'
+        TestSource = '00/b0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b09830_test.cpp'
+        PassPattern = 'PASS_00b09830'
+    }
+    [pscustomobject]@{
+        Address = '00b09c40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b09c40.cpp'
+        TestSource = '00/b0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b09c40_test.cpp'
+        PassPattern = 'PASS_00b09c40'
+    }
+    [pscustomobject]@{
+        Address = '00b2dfd0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b2dfd0.cpp'
+        TestSource = '00/b2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b2dfd0_test.cpp'
+        PassPattern = 'PASS_00b2dfd0'
+    }
+    [pscustomobject]@{
+        Address = '00b2e010'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b2e010.cpp'
+        TestSource = '00/b2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b2e010_test.cpp'
+        PassPattern = 'PASS_00b2e010'
+    }
+    [pscustomobject]@{
+        Address = '00b2e210'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b2e210.cpp'
+        TestSource = '00/b2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b2e210_test.cpp'
+        PassPattern = 'PASS_00b2e210'
+    }
+    [pscustomobject]@{
+        Address = '00b2e250'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b2e250.cpp'
+        TestSource = '00/b2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b2e250_test.cpp'
+        PassPattern = 'PASS_00b2e250'
+    }
+    [pscustomobject]@{
+        Address = '00b36280'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36280.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36280_test.cpp'
+        PassPattern = 'PASS_00b36280'
+    }
+    [pscustomobject]@{
+        Address = '00b362c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b362c0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b362c0_test.cpp'
+        PassPattern = 'PASS_00b362c0'
+    }
+    [pscustomobject]@{
+        Address = '00b36300'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36300.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36300_test.cpp'
+        PassPattern = 'PASS_00b36300'
+    }
+    [pscustomobject]@{
+        Address = '00b36340'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36340.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36340_test.cpp'
+        PassPattern = 'PASS_00b36340'
+    }
+    [pscustomobject]@{
+        Address = '00b36380'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36380.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36380_test.cpp'
+        PassPattern = 'PASS_00b36380'
+    }
+    [pscustomobject]@{
+        Address = '00b363c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b363c0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b363c0_test.cpp'
+        PassPattern = 'PASS_00b363c0'
+    }
+    [pscustomobject]@{
+        Address = '00b36400'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36400.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36400_test.cpp'
+        PassPattern = 'PASS_00b36400'
+    }
+    [pscustomobject]@{
+        Address = '00b36440'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36440.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36440_test.cpp'
+        PassPattern = 'PASS_00b36440'
+    }
+    [pscustomobject]@{
+        Address = '00b36480'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36480.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36480_test.cpp'
+        PassPattern = 'PASS_00b36480'
+    }
+    [pscustomobject]@{
+        Address = '00b364c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b364c0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b364c0_test.cpp'
+        PassPattern = 'PASS_00b364c0'
+    }
+    [pscustomobject]@{
+        Address = '00b36500'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36500.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36500_test.cpp'
+        PassPattern = 'PASS_00b36500'
+    }
+    [pscustomobject]@{
+        Address = '00b36540'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36540.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36540_test.cpp'
+        PassPattern = 'PASS_00b36540'
+    }
+    [pscustomobject]@{
+        Address = '00b36580'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36580.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36580_test.cpp'
+        PassPattern = 'PASS_00b36580'
+    }
+    [pscustomobject]@{
+        Address = '00b365c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b365c0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b365c0_test.cpp'
+        PassPattern = 'PASS_00b365c0'
+    }
+    [pscustomobject]@{
+        Address = '00b36600'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36600.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36600_test.cpp'
+        PassPattern = 'PASS_00b36600'
+    }
+    [pscustomobject]@{
+        Address = '00b36640'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36640.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36640_test.cpp'
+        PassPattern = 'PASS_00b36640'
+    }
+    [pscustomobject]@{
+        Address = '00b36680'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36680.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36680_test.cpp'
+        PassPattern = 'PASS_00b36680'
+    }
+    [pscustomobject]@{
+        Address = '00b366c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b366c0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b366c0_test.cpp'
+        PassPattern = 'PASS_00b366c0'
+    }
+    [pscustomobject]@{
+        Address = '00b36700'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36700.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36700_test.cpp'
+        PassPattern = 'PASS_00b36700'
+    }
+    [pscustomobject]@{
+        Address = '00b36740'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36740.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36740_test.cpp'
+        PassPattern = 'PASS_00b36740'
+    }
+    [pscustomobject]@{
+        Address = '00b36780'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36780.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36780_test.cpp'
+        PassPattern = 'PASS_00b36780'
+    }
+    [pscustomobject]@{
+        Address = '00b367c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b367c0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b367c0_test.cpp'
+        PassPattern = 'PASS_00b367c0'
+    }
+    [pscustomobject]@{
+        Address = '00b36800'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36800.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36800_test.cpp'
+        PassPattern = 'PASS_00b36800'
+    }
+    [pscustomobject]@{
+        Address = '00b37430'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37430.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37430_test.cpp'
+        PassPattern = 'PASS_00b37430'
+    }
+    [pscustomobject]@{
+        Address = '00b374e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b374e0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b374e0_test.cpp'
+        PassPattern = 'PASS_00b374e0'
+    }
+    [pscustomobject]@{
+        Address = '00b37590'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37590.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37590_test.cpp'
+        PassPattern = 'PASS_00b37590'
+    }
+    [pscustomobject]@{
+        Address = '00b37640'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37640.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37640_test.cpp'
+        PassPattern = 'PASS_00b37640'
+    }
+    [pscustomobject]@{
+        Address = '00b376f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b376f0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b376f0_test.cpp'
+        PassPattern = 'PASS_00b376f0'
+    }
+    [pscustomobject]@{
+        Address = '00b377a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b377a0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b377a0_test.cpp'
+        PassPattern = 'PASS_00b377a0'
+    }
+    [pscustomobject]@{
+        Address = '00b37850'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37850.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37850_test.cpp'
+        PassPattern = 'PASS_00b37850'
+    }
+    [pscustomobject]@{
+        Address = '00b37900'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37900.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37900_test.cpp'
+        PassPattern = 'PASS_00b37900'
+    }
+    [pscustomobject]@{
+        Address = '00b379b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b379b0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b379b0_test.cpp'
+        PassPattern = 'PASS_00b379b0'
+    }
+    [pscustomobject]@{
+        Address = '00b37a60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37a60.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37a60_test.cpp'
+        PassPattern = 'PASS_00b37a60'
+    }
+    [pscustomobject]@{
+        Address = '00b37b10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37b10.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37b10_test.cpp'
+        PassPattern = 'PASS_00b37b10'
+    }
+    [pscustomobject]@{
+        Address = '00b37b50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37b50.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37b50_test.cpp'
+        PassPattern = 'PASS_00b37b50'
+    }
+    [pscustomobject]@{
+        Address = '00b37c00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37c00.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37c00_test.cpp'
+        PassPattern = 'PASS_00b37c00'
+    }
+    [pscustomobject]@{
+        Address = '00b37cb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37cb0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37cb0_test.cpp'
+        PassPattern = 'PASS_00b37cb0'
+    }
+    [pscustomobject]@{
+        Address = '00b37d60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37d60.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37d60_test.cpp'
+        PassPattern = 'PASS_00b37d60'
+    }
+    [pscustomobject]@{
+        Address = '00b37e10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37e10.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37e10_test.cpp'
+        PassPattern = 'PASS_00b37e10'
+    }
+    [pscustomobject]@{
+        Address = '00b37ec0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37ec0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37ec0_test.cpp'
+        PassPattern = 'PASS_00b37ec0'
+    }
+    [pscustomobject]@{
+        Address = '00b37f70'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37f70.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b37f70_test.cpp'
+        PassPattern = 'PASS_00b37f70'
+    }
+    [pscustomobject]@{
+        Address = '00b38020'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b38020.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b38020_test.cpp'
+        PassPattern = 'PASS_00b38020'
+    }
+    [pscustomobject]@{
+        Address = '00b380d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b380d0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b380d0_test.cpp'
+        PassPattern = 'PASS_00b380d0'
+    }
+    [pscustomobject]@{
+        Address = '00b38180'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b38180.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b38180_test.cpp'
+        PassPattern = 'PASS_00b38180'
+    }
+    [pscustomobject]@{
+        Address = '00b38230'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b38230.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b38230_test.cpp'
+        PassPattern = 'PASS_00b38230'
+    }
+    [pscustomobject]@{
+        Address = '00b382e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b382e0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b382e0_test.cpp'
+        PassPattern = 'PASS_00b382e0'
+    }
+    [pscustomobject]@{
+        Address = '00b38740'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b38740.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b38740_test.cpp'
+        PassPattern = 'PASS_00b38740'
+    }
+    [pscustomobject]@{
+        Address = '00b4b070'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b070.cpp'
+        TestSource = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b070_test.cpp'
+        PassPattern = 'PASS_00b4b070'
+    }
+    [pscustomobject]@{
+        Address = '00b4b0b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b0b0.cpp'
+        TestSource = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b0b0_test.cpp'
+        PassPattern = 'PASS_00b4b0b0'
+    }
+    [pscustomobject]@{
+        Address = '00b4b0f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b0f0.cpp'
+        TestSource = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b0f0_test.cpp'
+        PassPattern = 'PASS_00b4b0f0'
+    }
+    [pscustomobject]@{
+        Address = '00b4b130'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b130.cpp'
+        TestSource = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b130_test.cpp'
+        PassPattern = 'PASS_00b4b130'
+    }
+    [pscustomobject]@{
+        Address = '00b4b320'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b320.cpp'
+        TestSource = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b320_test.cpp'
+        PassPattern = 'PASS_00b4b320'
+    }
+    [pscustomobject]@{
+        Address = '00b4b3d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b3d0.cpp'
+        TestSource = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b3d0_test.cpp'
+        PassPattern = 'PASS_00b4b3d0'
+    }
+    [pscustomobject]@{
+        Address = '00b4b480'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b480.cpp'
+        TestSource = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b480_test.cpp'
+        PassPattern = 'PASS_00b4b480'
+    }
+    [pscustomobject]@{
+        Address = '00b4b530'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b530.cpp'
+        TestSource = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b530_test.cpp'
+        PassPattern = 'PASS_00b4b530'
+    }
+    [pscustomobject]@{
+        Address = '00b4b5e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b5e0.cpp'
+        TestSource = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b5e0_test.cpp'
+        PassPattern = 'PASS_00b4b5e0'
+    }
+    [pscustomobject]@{
+        Address = '00b826a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b826a0.cpp'
+        TestSource = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b826a0_test.cpp'
+        PassPattern = 'PASS_00b826a0'
+    }
+    [pscustomobject]@{
+        Address = '00b826e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b826e0.cpp'
+        TestSource = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b826e0_test.cpp'
+        PassPattern = 'PASS_00b826e0'
+    }
+    [pscustomobject]@{
+        Address = '00b82b60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b82b60.cpp'
+        TestSource = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b82b60_test.cpp'
+        PassPattern = 'PASS_00b82b60'
+    }
+    [pscustomobject]@{
+        Address = '00b8e770'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b8e770.cpp'
+        TestSource = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b8e770_test.cpp'
+        PassPattern = 'PASS_00b8e770'
+    }
+    [pscustomobject]@{
+        Address = '00b8eb80'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b8eb80.cpp'
+        TestSource = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b8eb80_test.cpp'
+        PassPattern = 'PASS_00b8eb80'
+    }
+    [pscustomobject]@{
+        Address = '00b953e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b953e0.cpp'
+        TestSource = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b953e0_test.cpp'
+        PassPattern = 'PASS_00b953e0'
+    }
+    [pscustomobject]@{
+        Address = '00b959f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b959f0.cpp'
+        TestSource = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b959f0_test.cpp'
+        PassPattern = 'PASS_00b959f0'
+    }
+    [pscustomobject]@{
+        Address = '00cb8fe0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/cb/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cb8fe0.cpp'
+        TestSource = '00/cb/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cb8fe0_test.cpp'
+        PassPattern = 'PASS_00cb8fe0'
+    }
+    [pscustomobject]@{
+        Address = '00cb9020'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/cb/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cb9020.cpp'
+        TestSource = '00/cb/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cb9020_test.cpp'
+        PassPattern = 'PASS_00cb9020'
+    }
+    [pscustomobject]@{
+        Address = '00cb9680'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/cb/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cb9680.cpp'
+        TestSource = '00/cb/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cb9680_test.cpp'
+        PassPattern = 'PASS_00cb9680'
+    }
+    [pscustomobject]@{
+        Address = '00cd42f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/cd/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cd42f0.cpp'
+        TestSource = '00/cd/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cd42f0_test.cpp'
+        PassPattern = 'PASS_00cd42f0'
+    }
+    [pscustomobject]@{
+        Address = '00cd4360'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/cd/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cd4360.cpp'
+        TestSource = '00/cd/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cd4360_test.cpp'
+        PassPattern = 'PASS_00cd4360'
+    }
+    [pscustomobject]@{
+        Address = '00cdd4f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/cd/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cdd4f0.cpp'
+        TestSource = '00/cd/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cdd4f0_test.cpp'
+        PassPattern = 'PASS_00cdd4f0'
+    }
+    [pscustomobject]@{
+        Address = '00ce1000'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ce/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ce1000.cpp'
+        TestSource = '00/ce/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ce1000_test.cpp'
+        PassPattern = 'PASS_00ce1000'
+    }
+    [pscustomobject]@{
+        Address = '0041bcd0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041bcd0.cpp'
+        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041bcd0_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '0043eec0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043eec0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043eec0_test.cpp'
+        PassPattern = 'PASS_0043eec0'
+    }
+    [pscustomobject]@{
+        Address = '005d9ff0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005d9ff0.cpp'
+        TestSource = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005d9ff0_test.cpp'
+        PassPattern = 'PASS_005d9ff0'
+    }
+    [pscustomobject]@{
+        Address = '005e0130'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005e0130.cpp'
+        TestSource = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005e0130_test.cpp'
+        PassPattern = 'PASS_005e0130'
+    }
+    [pscustomobject]@{
+        Address = '006ade10'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ade10.cpp'
+        TestSource = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ade10_test.cpp'
+        PassPattern = 'PASS_006ade10'
+    }
+    [pscustomobject]@{
+        Address = '006b0f70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b0f70.cpp'
+        TestSource = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b0f70_test.cpp'
+        PassPattern = 'PASS_006b0f70'
+    }
+    [pscustomobject]@{
+        Address = '007a31d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a31d0.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a31d0_test.cpp'
+        PassPattern = 'PASS_007a31d0'
+    }
+    [pscustomobject]@{
+        Address = '00a29a90'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29a90.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29a90_test.cpp'
+        PassPattern = 'PASS_00a29a90'
+    }
+    [pscustomobject]@{
+        Address = '00a29ae0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29ae0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29ae0_test.cpp'
+        PassPattern = 'PASS_00a29ae0'
+    }
+    [pscustomobject]@{
+        Address = '00a29b30'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29b30.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29b30_test.cpp'
+        PassPattern = 'PASS_00a29b30'
+    }
+    [pscustomobject]@{
+        Address = '00a94f70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a94f70.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a94f70_test.cpp'
+        PassPattern = 'PASS_00a94f70'
+    }
+    [pscustomobject]@{
+        Address = '00abfa70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/ab/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00abfa70.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00abfa70_test.cpp'
+        PassPattern = 'PASS_00abfa70'
+    }
+    [pscustomobject]@{
+        Address = '00ac6240'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/ac/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00ac6240.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00ac6240_test.cpp'
+        PassPattern = 'PASS_00ac6240'
+    }
+    [pscustomobject]@{
+        Address = '00af19f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/af/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00af19f0.cpp'
+        TestSource = '00/af/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00af19f0_test.cpp'
+        PassPattern = 'PASS_00af19f0'
+    }
+    [pscustomobject]@{
+        Address = '00ba7cc0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/ba/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00ba7cc0.cpp'
+        TestSource = '00/ba/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00ba7cc0_test.cpp'
+        PassPattern = 'PASS_00ba7cc0'
+    }
+    [pscustomobject]@{
+        Address = '0041bae0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041bae0.cpp'
+        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041bae0_test.cpp'
+        PassPattern = 'PASS_0041bae0'
+    }
+    [pscustomobject]@{
+        Address = '0041bd00'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041bd00.cpp'
+        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041bd00_test.cpp'
+        PassPattern = 'PASS_0041bd00'
+    }
+    [pscustomobject]@{
+        Address = '0041bd60'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041bd60.cpp'
+        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041bd60_test.cpp'
+        PassPattern = 'PASS_0041bd60'
+    }
+    [pscustomobject]@{
+        Address = '0041cc50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041cc50.cpp'
+        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041cc50_test.cpp'
+        PassPattern = 'PASS_0041cc50'
+    }
+    [pscustomobject]@{
+        Address = '004299f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004299f0.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004299f0_test.cpp'
+        PassPattern = 'PASS_004299f0'
+    }
+    [pscustomobject]@{
+        Address = '0043eea0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043eea0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043eea0_test.cpp'
+        PassPattern = 'PASS_0043eea0'
+    }
+    [pscustomobject]@{
+        Address = '0044b930'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/44/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044b930.cpp'
+        TestSource = '00/44/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044b930_test.cpp'
+        PassPattern = 'PASS_0044b930'
+    }
+    [pscustomobject]@{
+        Address = '00419554'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00419554.cpp'
+        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00419554_test.cpp'
+        PassPattern = 'PASS_00419554'
+    }
+    [pscustomobject]@{
+        Address = '00428b1f'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00428b1f.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00428b1f_test.cpp'
+        PassPattern = 'PASS_00428b1f'
+    }
+    [pscustomobject]@{
+        Address = '00428bd2'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00428bd2.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00428bd2_test.cpp'
+        PassPattern = 'PASS_00428bd2'
+    }
+    [pscustomobject]@{
+        Address = '00428bea'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00428bea.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00428bea_test.cpp'
+        PassPattern = 'PASS_00428bea'
+    }
+    [pscustomobject]@{
+        Address = '00428c02'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00428c02.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00428c02_test.cpp'
+        PassPattern = 'PASS_00428c02'
+    }
+    [pscustomobject]@{
+        Address = '00428c8f'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00428c8f.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00428c8f_test.cpp'
+        PassPattern = 'PASS_00428c8f'
+    }
+    [pscustomobject]@{
+        Address = '00428ca7'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00428ca7.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00428ca7_test.cpp'
+        PassPattern = 'PASS_00428ca7'
+    }
+    [pscustomobject]@{
+        Address = '00429caf'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429caf.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429caf_test.cpp'
+        PassPattern = 'PASS_00429caf'
+    }
+    [pscustomobject]@{
+        Address = '00429d59'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429d59.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429d59_test.cpp'
+        PassPattern = 'PASS_00429d59'
+    }
+    [pscustomobject]@{
+        Address = '00429dce'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429dce.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429dce_test.cpp'
+        PassPattern = 'PASS_00429dce'
+    }
+    [pscustomobject]@{
+        Address = '00429de6'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429de6.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429de6_test.cpp'
+        PassPattern = 'PASS_00429de6'
+    }
+    [pscustomobject]@{
+        Address = '00429dfe'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429dfe.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429dfe_test.cpp'
+        PassPattern = 'PASS_00429dfe'
+    }
+    [pscustomobject]@{
+        Address = '0042fc4e'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0042fc4e.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0042fc4e_test.cpp'
+        PassPattern = 'PASS_0042fc4e'
+    }
+    [pscustomobject]@{
+        Address = '004190b6'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004190b6.cpp'
+        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004190b6_test.cpp'
+        PassPattern = 'PASS_004190b6'
+    }
+    [pscustomobject]@{
+        Address = '00419108'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00419108.cpp'
+        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00419108_test.cpp'
+        PassPattern = 'PASS_00419108'
+    }
+    [pscustomobject]@{
+        Address = '00429160'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429160.cpp'
+        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429160_test.cpp'
+        PassPattern = 'PASS_00429160'
+    }
+    [pscustomobject]@{
+        Address = '0042918c'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0042918c.cpp'
+        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0042918c_test.cpp'
+        PassPattern = 'PASS_0042918c'
+    }
+    [pscustomobject]@{
+        Address = '004291de'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004291de.cpp'
+        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004291de_test.cpp'
+        PassPattern = 'PASS_004291de'
+    }
+    [pscustomobject]@{
+        Address = '00429230'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429230.cpp'
+        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429230_test.cpp'
+        PassPattern = 'PASS_00429230'
+    }
+    [pscustomobject]@{
+        Address = '0042925c'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0042925c.cpp'
+        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0042925c_test.cpp'
+        PassPattern = 'PASS_0042925c'
+    }
+    [pscustomobject]@{
+        Address = '0042f948'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0042f948.cpp'
+        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0042f948_test.cpp'
+        PassPattern = 'PASS_0042f948'
+    }
+    [pscustomobject]@{
+        Address = '0042f974'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0042f974.cpp'
+        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0042f974_test.cpp'
+        PassPattern = 'PASS_0042f974'
+    }
+    [pscustomobject]@{
+        Address = '00433cc0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00433cc0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00433cc0_test.cpp'
+        PassPattern = 'PASS_00433cc0'
+    }
+    [pscustomobject]@{
+        Address = '004850f9'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/48/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004850f9.cpp'
+        TestSource = '00/48/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004850f9_test.cpp'
+        PassPattern = 'PASS_004850f9'
+    }
+    [pscustomobject]@{
+        Address = '004d799a'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004d799a.cpp'
+        TestSource = '00/4d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004d799a_test.cpp'
+        PassPattern = 'PASS_004d799a'
+    }
+    [pscustomobject]@{
+        Address = '005ba0cc'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/5b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005ba0cc.cpp'
+        TestSource = '00/5b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005ba0cc_test.cpp'
+        PassPattern = 'PASS_005ba0cc'
+    }
+    [pscustomobject]@{
+        Address = '005ba0f8'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/5b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005ba0f8.cpp'
+        TestSource = '00/5b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005ba0f8_test.cpp'
+        PassPattern = 'PASS_005ba0f8'
+    }
+    [pscustomobject]@{
+        Address = '005c04bf'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/5c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005c04bf.cpp'
+        TestSource = '00/5c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005c04bf_test.cpp'
+        PassPattern = 'PASS_005c04bf'
+    }
+    [pscustomobject]@{
+        Address = '005c0511'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/5c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005c0511.cpp'
+        TestSource = '00/5c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005c0511_test.cpp'
+        PassPattern = 'PASS_005c0511'
+    }
+    [pscustomobject]@{
+        Address = '005c0563'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/5c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005c0563.cpp'
+        TestSource = '00/5c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005c0563_test.cpp'
+        PassPattern = 'PASS_005c0563'
+    }
+    [pscustomobject]@{
+        Address = '00654b0a'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654b0a.cpp'
+        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654b0a_test.cpp'
+        PassPattern = 'PASS_00654b0a'
+    }
+    [pscustomobject]@{
+        Address = '00654b4f'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654b4f.cpp'
+        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654b4f_test.cpp'
+        PassPattern = 'PASS_00654b4f'
+    }
+    [pscustomobject]@{
+        Address = '00654b94'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654b94.cpp'
+        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654b94_test.cpp'
+        PassPattern = 'PASS_00654b94'
+    }
+    [pscustomobject]@{
+        Address = '00654bd9'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654bd9.cpp'
+        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654bd9_test.cpp'
+        PassPattern = 'PASS_00654bd9'
+    }
+    [pscustomobject]@{
+        Address = '00654c1e'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654c1e.cpp'
+        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654c1e_test.cpp'
+        PassPattern = 'PASS_00654c1e'
+    }
+    [pscustomobject]@{
+        Address = '00654c63'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654c63.cpp'
+        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00654c63_test.cpp'
+        PassPattern = 'PASS_00654c63'
+    }
+    [pscustomobject]@{
+        Address = '0065d507'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d507.cpp'
+        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d507_test.cpp'
+        PassPattern = 'PASS_0065d507'
+    }
+    [pscustomobject]@{
+        Address = '0065d533'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d533.cpp'
+        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d533_test.cpp'
+        PassPattern = 'PASS_0065d533'
+    }
+    [pscustomobject]@{
+        Address = '0065d574'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d574.cpp'
+        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d574_test.cpp'
+        PassPattern = 'PASS_0065d574'
+    }
+    [pscustomobject]@{
+        Address = '0065d5a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d5a0.cpp'
+        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d5a0_test.cpp'
+        PassPattern = 'PASS_0065d5a0'
+    }
+    [pscustomobject]@{
+        Address = '0065d5cc'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d5cc.cpp'
+        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d5cc_test.cpp'
+        PassPattern = 'PASS_0065d5cc'
+    }
+    [pscustomobject]@{
+        Address = '0065d5f8'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d5f8.cpp'
+        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065d5f8_test.cpp'
+        PassPattern = 'PASS_0065d5f8'
+    }
+    [pscustomobject]@{
+        Address = '0065da6b'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065da6b.cpp'
+        TestSource = '00/65/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0065da6b_test.cpp'
+        PassPattern = 'PASS_0065da6b'
+    }
+    [pscustomobject]@{
+        Address = '00415920'
+        Module = 'CGameComponent'
+        Source = '00/41/CGameComponent_Init_00415920.cpp'
+        TestSource = '00/41/CGameComponent_Init_00415920_test.cpp'
+        PassPattern = 'PASS_00415920'
+    }
+    [pscustomobject]@{
+        Address = '00415930'
+        Module = 'CGameComponent'
+        Source = '00/41/CGameComponent_SetQuit_00415930.cpp'
+        TestSource = '00/41/CGameComponent_SetQuit_00415930_test.cpp'
+        PassPattern = 'PASS_00415930'
+    }
+    [pscustomobject]@{
+        Address = '0042d960'
+        Module = 'CResource'
+        Source = '00/42/CResource_OnResourceLoaded_0042d960.cpp'
+        TestSource = '00/42/CResource_OnResourceLoaded_0042d960_test.cpp'
+        PassPattern = 'PASS_0042d960'
+    }
+    [pscustomobject]@{
+        Address = '0042da80'
+        Module = 'CDefClassBase'
+        Source = '00/42/CDefClassBase_PostTransfer_0042da80.cpp'
+        TestSource = '00/42/CDefClassBase_PostTransfer_0042da80_test.cpp'
+        PassPattern = 'PASS_0042da80'
+    }
+    [pscustomobject]@{
+        Address = '0042dc5f'
+        Module = 'CNewFrontendGameComponent'
+        Source = '00/42/CNewFrontendGameComponent_OnPreDeviceReset_0042dc5f.cpp'
+        TestSource = '00/42/CNewFrontendGameComponent_OnPreDeviceReset_0042dc5f_test.cpp'
+        PassPattern = 'PASS_0042dc5f'
+    }
+    [pscustomobject]@{
+        Address = '0043368b'
+        Module = 'CStartupDefinitionManager'
+        Source = '00/43/CStartupDefinitionManager_InitAndCompile_0043368b.cpp'
+        TestSource = '00/43/CStartupDefinitionManager_InitAndCompile_0043368b_test.cpp'
+        PassPattern = 'PASS_0043368b'
+    }
+    [pscustomobject]@{
+        Address = '00415e67'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_00415e67.cpp'
+        TestSource = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_00415e67_test.cpp'
+        PassPattern = 'PASS_00415e67'
+    }
+    [pscustomobject]@{
+        Address = '0041977d'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_0041977d.cpp'
+        TestSource = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_0041977d_test.cpp'
+        PassPattern = 'PASS_0041977d'
+    }
+    [pscustomobject]@{
+        Address = '004298f3'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_004298f3.cpp'
+        TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_004298f3_test.cpp'
+        PassPattern = 'PASS_004298f3'
+    }
+    [pscustomobject]@{
+        Address = '0042990f'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042990f.cpp'
+        TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042990f_test.cpp'
+        PassPattern = 'PASS_0042990f'
+    }
+    [pscustomobject]@{
+        Address = '0042992b'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042992b.cpp'
+        TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042992b_test.cpp'
+        PassPattern = 'PASS_0042992b'
+    }
+    [pscustomobject]@{
+        Address = '004330d2'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_004330d2.cpp'
+        TestSource = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_004330d2_test.cpp'
+        PassPattern = 'PASS_004330d2'
+    }
+    [pscustomobject]@{
+        Address = '00440ec0'
+        Module = 'CActiveFile'
+        Source = '00/44/CActiveFile_OnReadFinished_00440ec0.cpp'
+        TestSource = '00/44/CActiveFile_OnReadFinished_00440ec0_test.cpp'
+        PassPattern = 'PASS_00440ec0'
+    }
+    [pscustomobject]@{
+        Address = '00440ee0'
+        Module = 'CActiveFile'
+        Source = '00/44/CActiveFile_OnReadFinished_00440ee0.cpp'
+        TestSource = '00/44/CActiveFile_OnReadFinished_00440ee0_test.cpp'
+        PassPattern = 'PASS_00440ee0'
+    }
+    [pscustomobject]@{
+        Address = '004422f0'
+        Module = 'CActiveFile'
+        Source = '00/44/CActiveFile_OnReadFinished_004422f0.cpp'
+        TestSource = '00/44/CActiveFile_OnReadFinished_004422f0_test.cpp'
+        PassPattern = 'PASS_004422f0'
+    }
+    [pscustomobject]@{
+        Address = '00442310'
+        Module = 'CActiveFile'
+        Source = '00/44/CActiveFile_OnReadFinished_00442310.cpp'
+        TestSource = '00/44/CActiveFile_OnReadFinished_00442310_test.cpp'
+        PassPattern = 'PASS_00442310'
+    }
+    [pscustomobject]@{
+        Address = '00442330'
+        Module = 'CActiveFile'
+        Source = '00/44/CActiveFile_OnReadFinished_00442330.cpp'
+        TestSource = '00/44/CActiveFile_OnReadFinished_00442330_test.cpp'
+        PassPattern = 'PASS_00442330'
+    }
+    [pscustomobject]@{
+        Address = '00443290'
+        Module = 'CActiveFile'
+        Source = '00/44/CActiveFile_OnReadFinished_00443290.cpp'
+        TestSource = '00/44/CActiveFile_OnReadFinished_00443290_test.cpp'
+        PassPattern = 'PASS_00443290'
+    }
+    [pscustomobject]@{
+        Address = '00431e70'
+        Module = 'CControlsDef'
+        Source = '00/43/CControlsDef_Copy_00431e70.cpp'
+        TestSource = '00/43/CControlsDef_Copy_00431e70_test.cpp'
+        PassPattern = 'PASS_00431e70'
+    }
+    [pscustomobject]@{
+        Address = '00432e50'
+        Module = 'CFrontEndDef'
+        Source = '00/43/CFrontEndDef_CopyCFrontEndDefUAEXPBVCDefClassBaseZ_00432e50.cpp'
+        TestSource = '00/43/CFrontEndDef_CopyCFrontEndDefUAEXPBVCDefClassBaseZ_00432e50_test.cpp'
+        PassPattern = 'PASS_00432e50'
+    }
+    [pscustomobject]@{
+        Address = '00434360'
+        Module = 'CEngineDef'
+        Source = '00/43/CEngineDef_Copy_00434360.cpp'
+        TestSource = '00/43/CEngineDef_Copy_00434360_test.cpp'
+        PassPattern = 'PASS_00434360'
+    }
+    [pscustomobject]@{
+        Address = '00434440'
+        Module = 'CEngineVideoOptionsDef'
+        Source = '00/43/CEngineVideoOptionsDef_CopyCEngineVideoOptionsDefUAEXPBVCDefClassBaseZ_00434440.cpp'
+        TestSource = '00/43/CEngineVideoOptionsDef_CopyCEngineVideoOptionsDefUAEXPBVCDefClassBaseZ_00434440_test.cpp'
+        PassPattern = 'PASS_00434440'
+    }
+    [pscustomobject]@{
+        Address = '00434590'
+        Module = 'CConfigOptionsDefaultsDef'
+        Source = '00/43/CConfigOptionsDefaultsDef_CopyCConfigOptionsDefaultsDefUAEXPBVCDefClassBas_00434590.cpp'
+        TestSource = '00/43/CConfigOptionsDefaultsDef_CopyCConfigOptionsDefaultsDefUAEXPBVCDefClassBas_00434590_test.cpp'
+        PassPattern = 'PASS_00434590'
+    }
+    [pscustomobject]@{
+        Address = '00671150'
+        Module = 'CThingCreatureDef'
+        Source = '00/67/CThingCreatureDef_Copy_00671150.cpp'
+        TestSource = '00/67/CThingCreatureDef_Copy_00671150_test.cpp'
+        PassPattern = 'PASS_00671150'
+    }
+    [pscustomobject]@{
+        Address = '0067ce40'
+        Module = 'COpinionReactionManagerDef'
+        Source = '00/67/COpinionReactionManagerDef_Copy_0067ce40.cpp'
+        TestSource = '00/67/COpinionReactionManagerDef_Copy_0067ce40_test.cpp'
+        PassPattern = 'PASS_0067ce40'
+    }
+    [pscustomobject]@{
+        Address = '007adef0'
+        Module = 'CAIScratchpadDef'
+        Source = '00/7a/CAIScratchpadDef_Copy_007adef0.cpp'
+        TestSource = '00/7a/CAIScratchpadDef_Copy_007adef0_test.cpp'
+        PassPattern = 'PASS_007adef0'
+    }
+    [pscustomobject]@{
+        Address = '004197b0'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_IsEditorActive_004197b0.cpp'
+        TestSource = '00/41/CMainGameComponent_IsEditorActive_004197b0_test.cpp'
+        PassPattern = 'PASS_004197b0'
+    }
+    [pscustomobject]@{
+        Address = '0042d940'
+        Module = 'CResource'
+        Source = '00/42/CResource_UnloadResource_0042d940.cpp'
+        TestSource = '00/42/CResource_UnloadResource_0042d940_test.cpp'
+        PassPattern = 'PASS_0042d940'
+    }
+    [pscustomobject]@{
+        Address = '0042d950'
+        Module = 'CResource'
+        Source = '00/42/CResource_IsResourceLoaded_0042d950.cpp'
+        TestSource = '00/42/CResource_IsResourceLoaded_0042d950_test.cpp'
+        PassPattern = 'PASS_0042d950'
+    }
+    [pscustomobject]@{
+        Address = '0042dc60'
+        Module = 'CNewFrontendGameComponent'
+        Source = '00/42/CNewFrontendGameComponent_OnPostDeviceReset_0042dc60.cpp'
+        TestSource = '00/42/CNewFrontendGameComponent_OnPostDeviceReset_0042dc60_test.cpp'
+        PassPattern = 'PASS_0042dc60'
+    }
+    [pscustomobject]@{
+        Address = '004303d0'
+        Module = 'CParentDefClassBase'
+        Source = '00/43/CParentDefClassBase_IsParentDef_004303d0.cpp'
+        TestSource = '00/43/CParentDefClassBase_IsParentDef_004303d0_test.cpp'
+        PassPattern = 'PASS_004303d0'
+    }
+    [pscustomobject]@{
+        Address = '0042da20'
+        Module = 'CDefClassBase'
+        Source = '00/42/CDefClassBase_SetInstantiationName_0042da20.cpp'
+        TestSource = '00/42/CDefClassBase_SetInstantiationName_0042da20_test.cpp'
+        PassPattern = 'PASS_0042da20'
+    }
+    [pscustomobject]@{
+        Address = '0042da40'
+        Module = 'CDefClassBase'
+        Source = '00/42/CDefClassBase_RemoveSubDef_0042da40.cpp'
+        TestSource = '00/42/CDefClassBase_RemoveSubDef_0042da40_test.cpp'
+        PassPattern = 'PASS_0042da40'
+    }
+    [pscustomobject]@{
+        Address = '0042dc5c'
+        Module = 'CNewFrontendGameComponent'
+        Source = '00/42/CNewFrontendGameComponent_ChangeTextureColourDepth_0042dc5c.cpp'
+        TestSource = '00/42/CNewFrontendGameComponent_ChangeTextureColourDepth_0042dc5c_test.cpp'
+        PassPattern = 'PASS_0042dc5c'
+    }
+    [pscustomobject]@{
+        Address = '004197a0'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_SetQuit_004197a0.cpp'
+        TestSource = '00/41/CMainGameComponent_SetQuit_004197a0_test.cpp'
+        PassPattern = 'PASS_004197a0'
+    }
+    [pscustomobject]@{
+        Address = '00430340'
+        Module = 'CNewFrontendGameComponent'
+        Source = '00/43/CNewFrontendGameComponent_SetQuit_00430340.cpp'
+        TestSource = '00/43/CNewFrontendGameComponent_SetQuit_00430340_test.cpp'
+        PassPattern = 'PASS_00430340'
+    }
+    [pscustomobject]@{
+        Address = '0042da50'
+        Module = 'CDefClassBase'
+        Source = '00/42/CDefClassBase_GetPSubDefInfo_0042da50.cpp'
+        TestSource = '00/42/CDefClassBase_GetPSubDefInfo_0042da50_test.cpp'
+        PassPattern = 'PASS_0042da50'
+    }
+    [pscustomobject]@{
+        Address = '0042da60'
+        Module = 'CDefClassBase'
+        Source = '00/42/CDefClassBase_GetPSubDefInfo_0042da60.cpp'
+        TestSource = '00/42/CDefClassBase_GetPSubDefInfo_0042da60_test.cpp'
+        PassPattern = 'PASS_0042da60'
+    }
+    [pscustomobject]@{
+        Address = '0042a141'
+        Module = 'CGuiControlTreePane'
+        Source = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a141.cpp'
+        TestSource = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a141_test.cpp'
+        PassPattern = 'PASS_0042a141'
+    }
+    [pscustomobject]@{
+        Address = '0042a168'
+        Module = 'CGuiControlTreePane'
+        Source = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a168.cpp'
+        TestSource = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a168_test.cpp'
+        PassPattern = 'PASS_0042a168'
+    }
+    [pscustomobject]@{
+        Address = '0042a18f'
+        Module = 'CGuiControlTreePane'
+        Source = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a18f.cpp'
+        TestSource = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a18f_test.cpp'
+        PassPattern = 'PASS_0042a18f'
+    }
+    [pscustomobject]@{
+        Address = '0042a1e3'
+        Module = 'CGuiControlTreePane'
+        Source = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a1e3.cpp'
+        TestSource = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a1e3_test.cpp'
+        PassPattern = 'PASS_0042a1e3'
+    }
+    [pscustomobject]@{
+        Address = '004da1a4'
+        Module = 'CGuiControlTreePane'
+        Source = '00/4d/CGuiControlTreePane_SortTreeRecursively_004da1a4.cpp'
+        TestSource = '00/4d/CGuiControlTreePane_SortTreeRecursively_004da1a4_test.cpp'
+        PassPattern = 'PASS_004da1a4'
+    }
+    [pscustomobject]@{
+        Address = '004da3e7'
+        Module = 'CGuiControlTreePane'
+        Source = '00/4d/CGuiControlTreePane_SortTreeRecursively_004da3e7.cpp'
+        TestSource = '00/4d/CGuiControlTreePane_SortTreeRecursively_004da3e7_test.cpp'
+        PassPattern = 'PASS_004da3e7'
+    }
+    [pscustomobject]@{
+        Address = '0053c8a9'
+        Module = 'CGuiControlTreePane'
+        Source = '00/53/CGuiControlTreePane_SortTreeRecursively_0053c8a9.cpp'
+        TestSource = '00/53/CGuiControlTreePane_SortTreeRecursively_0053c8a9_test.cpp'
+        PassPattern = 'PASS_0053c8a9'
+    }
+    [pscustomobject]@{
+        Address = '00578fce'
+        Module = 'CGuiControlTreePane'
+        Source = '00/57/CGuiControlTreePane_SortTreeRecursively_00578fce.cpp'
+        TestSource = '00/57/CGuiControlTreePane_SortTreeRecursively_00578fce_test.cpp'
+        PassPattern = 'PASS_00578fce'
+    }
+    [pscustomobject]@{
+        Address = '00592ba7'
+        Module = 'CGuiControlTreePane'
+        Source = '00/59/CGuiControlTreePane_SortTreeRecursively_00592ba7.cpp'
+        TestSource = '00/59/CGuiControlTreePane_SortTreeRecursively_00592ba7_test.cpp'
+        PassPattern = 'PASS_00592ba7'
+    }
+    [pscustomobject]@{
+        Address = '005f8197'
+        Module = 'CGuiControlTreePane'
+        Source = '00/5f/CGuiControlTreePane_SortTreeRecursively_005f8197.cpp'
+        TestSource = '00/5f/CGuiControlTreePane_SortTreeRecursively_005f8197_test.cpp'
+        PassPattern = 'PASS_005f8197'
+    }
+    [pscustomobject]@{
+        Address = '0042a2b9'
+        Module = 'SetStaticCast<NUISystem'
+        Source = '00/42/SetStaticCastNUISystem_CComponent_0042a2b9.cpp'
+        TestSource = '00/42/SetStaticCastNUISystem_CComponent_0042a2b9_test.cpp'
+        PassPattern = 'PASS_0042a2b9'
+    }
+    [pscustomobject]@{
+        Address = '0042a2ca'
+        Module = 'SetStaticCast<NUISystem'
+        Source = '00/42/SetStaticCastNUISystem_CComponent_0042a2ca.cpp'
+        TestSource = '00/42/SetStaticCastNUISystem_CComponent_0042a2ca_test.cpp'
+        PassPattern = 'PASS_0042a2ca'
+    }
+    [pscustomobject]@{
+        Address = '0042a2db'
+        Module = 'SetStaticCast<NUISystem'
+        Source = '00/42/SetStaticCastNUISystem_CComponent_0042a2db.cpp'
+        TestSource = '00/42/SetStaticCastNUISystem_CComponent_0042a2db_test.cpp'
+        PassPattern = 'PASS_0042a2db'
+    }
+    [pscustomobject]@{
+        Address = '0041c7c0'
+        Module = '_Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<CCharString'
+        Source = '00/41/TreeconstiteratorstdTreevalstdTmaptraitsCCharString_operator_0041c7c0.cpp'
+        TestSource = '00/41/TreeconstiteratorstdTreevalstdTmaptraitsCCharString_operator_0041c7c0_test.cpp'
+        PassPattern = 'PASS_0041c7c0'
+    }
+    [pscustomobject]@{
+        Address = '0041c830'
+        Module = '_Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<CCharString'
+        Source = '00/41/TreeconstiteratorstdTreevalstdTmaptraitsCCharString_operator_0041c830.cpp'
+        TestSource = '00/41/TreeconstiteratorstdTreevalstdTmaptraitsCCharString_operator_0041c830_test.cpp'
+        PassPattern = 'PASS_0041c830'
+    }
+    [pscustomobject]@{
+        Address = '00416268'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_BeginInputLoading_00416268.cpp'
+        TestSource = '00/41/CMainGameComponent_BeginInputLoading_00416268_test.cpp'
+        PassPattern = 'PASS_00416268'
+    }
+    [pscustomobject]@{
+        Address = '0041627f'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_BeginInputLoading_0041627f.cpp'
+        TestSource = '00/41/CMainGameComponent_BeginInputLoading_0041627f_test.cpp'
+        PassPattern = 'PASS_0041627f'
+    }
+    [pscustomobject]@{
+        Address = '0042b636'
+        Module = '_global'
+        Source = '00/42/global_CalcStringLength_0042b636.cpp'
+        TestSource = '00/42/global_CalcStringLength_0042b636_test.cpp'
+        PassPattern = 'PASS_0042b636'
+    }
+    [pscustomobject]@{
+        Address = '0042b677'
+        Module = '_global'
+        Source = '00/42/global_CalcStringLength_0042b677.cpp'
+        TestSource = '00/42/global_CalcStringLength_0042b677_test.cpp'
+        PassPattern = 'PASS_0042b677'
+    }
+    [pscustomobject]@{
+        Address = '004293f2'
+        Module = 'CRegion'
+        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_004293f2.cpp'
+        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_004293f2_test.cpp'
+        PassPattern = 'PASS_004293f2'
+    }
+    [pscustomobject]@{
+        Address = '00429cea'
+        Module = 'CRegion'
+        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429cea.cpp'
+        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429cea_test.cpp'
+        PassPattern = 'PASS_00429cea'
+    }
+    [pscustomobject]@{
+        Address = '0042d9a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042d9a0.cpp'
+        TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042d9a0_test.cpp'
+        PassPattern = 'PASS_0042d9a0'
+    }
+    [pscustomobject]@{
+        Address = '0042dab0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042dab0.cpp'
+        TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042dab0_test.cpp'
+        PassPattern = 'PASS_0042dab0'
     }
 )
 

@@ -1,22 +1,6 @@
-extern "C" __declspec(naked) void candidate_004293f2(void)
-{
-    __asm {
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0xff
-        _emit 0x36
-        _emit 0xe8
-        _emit 0xc4
-        _emit 0xfe
-        _emit 0xff
-        _emit 0xff
-        _emit 0x89
-        _emit 0x06
-        _emit 0x59
-        _emit 0x8b
-        _emit 0xc6
-        _emit 0x5e
-        _emit 0xc3
-    }
-}
+#pragma optimize("s",on)
+// Rewrites this->p through a cdecl helper (cleaned with `pop ecx`) and returns this.
+// __fastcall this=ecx, no args.
+struct T { void* p; T* Fixup(); };
+extern "C" void* __cdecl Helper(void* p);
+T* T::Fixup() { this->p = Helper(this->p); return this; }

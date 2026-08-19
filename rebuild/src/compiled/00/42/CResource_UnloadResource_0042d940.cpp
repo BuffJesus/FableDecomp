@@ -1,8 +1,3 @@
-extern "C" __declspec(naked) void candidate_0042d940(void)
-{
-    __asm {
-        _emit 0x32
-        _emit 0xc0
-        _emit 0xc3
-    }
-}
+// Constant-false predicate: `xor al,al; ret`. __fastcall this=ecx, no args.
+struct T { bool IsEditorActive(); };
+bool T::IsEditorActive() { return false; }

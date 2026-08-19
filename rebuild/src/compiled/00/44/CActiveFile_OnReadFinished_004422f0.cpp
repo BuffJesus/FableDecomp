@@ -1,30 +1,9 @@
-extern "C" __declspec(naked) void __fastcall candidate_004422f0(void)
-{
-    __asm {
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0xe8
-        _emit 0x78
-        _emit 0xe4
-        _emit 0xff
-        _emit 0xff
-        _emit 0x8b
-        _emit 0x36
-        _emit 0x85
-        _emit 0xf6
-        _emit 0x74
-        _emit 0x09
-        _emit 0x56
-        _emit 0xe8
-        _emit 0x10
-        _emit 0xc7
-        _emit 0x7b
-        _emit 0x00
-        _emit 0x83
-        _emit 0xc4
-        _emit 0x04
-        _emit 0x5e
-        _emit 0xc3
-    }
+// OnReadFinished variant that frees this->m0 through the alternate heap helper (0xbfea14)
+// with `add esp,4` cleanup. __fastcall this=ecx, no args.
+struct CActiveFile { void* m0; void OnReadFinished(); void Base(); };
+extern "C" void __cdecl Free2(void* p);
+void CActiveFile::OnReadFinished() {
+    this->Base();
+    void* p = this->m0;
+    if (p) Free2(p);
 }

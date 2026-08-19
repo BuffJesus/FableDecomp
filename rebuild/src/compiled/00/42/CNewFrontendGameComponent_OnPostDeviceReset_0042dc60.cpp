@@ -1,8 +1,3 @@
-extern "C" __declspec(naked) void candidate_0042dc60(void)
-{
-    __asm {
-        _emit 0xb0
-        _emit 0x01
-        _emit 0xc3
-    }
-}
+// Constant-true predicate: `mov al,1; ret`. __fastcall this=ecx, no args.
+struct T { bool OnPostDeviceReset(); };
+bool T::OnPostDeviceReset() { return true; }

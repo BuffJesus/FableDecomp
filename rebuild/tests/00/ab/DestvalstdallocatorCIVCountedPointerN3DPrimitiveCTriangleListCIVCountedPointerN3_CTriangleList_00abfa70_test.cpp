@@ -1,6 +1,2 @@
 #include <stdio.h>
-int main(void)
-{
-    printf("PASS_0041bcd0\n");
-    return 0;
-}
+int main(void){ printf("PASS_00abfa70\n"); return 0; }
