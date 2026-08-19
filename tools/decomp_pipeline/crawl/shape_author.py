@@ -14,6 +14,11 @@ Usage: python shape_author.py <out_prefix> [--baked] [--unlanded] [--limit N] [-
 """
 import csv, json, re, struct, sys
 from pathlib import Path
+
+sys_path_hack = Path(__file__).resolve().parent
+import sys as _sys
+_sys.path.insert(0, str(sys_path_hack))
+from rowtrim import trim_body   # over-captured manifest rows are cut to their real body
 from collections import Counter
 
 ROOT = Path(r"D:\Documents\FableTLC")
@@ -56,7 +61,8 @@ def body(va):
     raw = data[o:o + (nx - va)]; ee = len(raw)
     while ee > 0 and raw[ee - 1] in (0xCC, 0x90):
         ee -= 1
-    return raw[:ee]
+    body_bytes = raw[:ee]
+    return trim_body(body_bytes, va)[0]
 
 # ---------------- shape classification ----------------
 def pad(n):
@@ -131,17 +137,24 @@ def emit_global_getter(b):
 
 def emit_pair_destroy(b, o1, o2):
     """destroy the member at o2, then TAIL-call the one at o1 (std::pair _Dest_val)."""
-    first = ("    Part first;\n" if o1 == 0
-             else "    char lead[0x%x];\n    Part first;\n" % o1)
-    gap = o2 - o1 - 1
-    return ("// std::pair _Dest_val: release the second member, then tail-call the first\n"
-            "// (this+0x%x and this+0x%x). __fastcall this=ecx. pack(1) pins the offsets.\n"
+    # o2 is released first, o1 is tail-called; either may sit lower in the object.
+    if o1 < o2:
+        lo_off, lo_name, hi_off, hi_name = o1, "first", o2, "second"
+    else:
+        lo_off, lo_name, hi_off, hi_name = o2, "second", o1, "first"
+    layout = ("    char lead[0x%x];\n" % lo_off if lo_off else "")
+    layout += "    Part %s;\n" % lo_name
+    gap = hi_off - lo_off - 1
+    layout += ("    char gap[0x%x];\n" % gap if gap else "")
+    layout += "    Part %s;\n" % hi_name
+    return ("// std::pair _Dest_val: release the member at this+0x%x, then TAIL-call the one\n"
+            "// at this+0x%x. __fastcall this=ecx. pack(1) pins both offsets.\n"
             "#pragma pack(push,1)\n"
             "struct Part { void Release(); };\n"
-            "struct Pair {\n%s%s    Part second;\n    void Destroy();\n};\n"
+            "struct Pair {\n%s    void Destroy();\n};\n"
             "#pragma pack(pop)\n"
             "void Pair::Destroy() {\n    this->second.Release();\n    this->first.Release();\n}\n"
-            % (o1, o2, first, pad(gap))), "Destroy"
+            % (o2, o1, layout)), "Destroy"
 
 def emit_addr_of_arg(b, disp):
     return ("// Forward the ADDRESS of the stack argument to a member of the sub-object at\n"
@@ -160,7 +173,62 @@ def emit_outparam_getter(b, word):
             "struct T {\n    Rect* GetRect(Rect* out);\n    int Get();\n};\n"
             "int T::Get() {\n    Rect r;\n    return this->GetRect(&r)->%s;\n}\n" % field), "Get"
 
+def emit_char_setter(b, disp):
+    return ("// Byte-member setter at this+0x%x from a stack arg. __fastcall this=ecx (ret 4).\n"
+            "#pragma pack(push,1)\n"
+            "struct T {\n%s    char field;\n    void Set(char value);\n};\n"
+            "#pragma pack(pop)\n"
+            "void T::Set(char value) { this->field = value; }\n" % (disp, pad(disp))), "Set"
+
+def emit_subptr_setter(b, d1, d2):
+    return ("// Store a stack arg into a field of the sub-object POINTER at this+0x%x\n"
+            "// (field at sub+0x%x). __fastcall this=ecx (ret 4).\n"
+            "#pragma pack(push,1)\n"
+            "struct Sub {\n%s    int field;\n};\n"
+            "struct T {\n%s    Sub* sub;\n    void Set(int value);\n};\n"
+            "#pragma pack(pop)\n"
+            "void T::Set(int value) { this->sub->field = value; }\n"
+            % (d1, d2, pad(d2), pad(d1))), "Set"
+
+def emit_iter_step(b, disp):
+    what = "next" if disp == 0 else "prev"
+    return ("// List iterator step: `this->node = this->node->%s;`. __fastcall this=ecx.\n"
+            "#pragma pack(push,1)\n"
+            "struct Node {\n%s    Node* link;\n};\n"
+            "struct Iter { Node* node; void Step(); };\n"
+            "#pragma pack(pop)\n"
+            "void Iter::Step() { this->node = this->node->link; }\n" % (what, pad(disp))), "Step"
+
+def emit_delete_if_set(b):
+    return ("// Null-guarded virtual destroy (vtable slot 0, flag arg 1).\n"
+            "// __fastcall pointer=ecx; the callee is the object's own slot 0.\n"
+            "struct Obj { virtual void Destroy(int flags); };\n"
+            "extern \"C\" void __fastcall DeleteIfSet(Obj* p) { if (p) p->Destroy(1); }\n"), "DeleteIfSet"
+
 def classify(b):
+    # byte setter: mov al,[esp+4]; mov [ecx+d],al; ret 4
+    if b[0:4] == b"\x8a\x44\x24\x04" and b[4] == 0x88 and b[5] in (0x41, 0x81) and b[-3] == 0xc2:
+        core = b[4:-3]
+        if (b[5] == 0x41 and len(core) == 3) or (b[5] == 0x81 and len(core) == 6):
+            return emit_char_setter(b, core[2] if b[5] == 0x41 else struct.unpack_from("<I", core, 2)[0])
+    # sub-pointer setter: mov eax,[ecx+d1]; mov ecx,[esp+4]; mov [eax+d2],ecx; ret 4
+    if b[0] == 0x8b and b[1] in (0x41, 0x81) and b[-3] == 0xc2:
+        i = 3 if b[1] == 0x41 else 6
+        d1 = b[2] if b[1] == 0x41 else struct.unpack_from("<I", b, 2)[0]
+        if b[i:i + 4] == b"\x8b\x4c\x24\x04" and b[i + 4] == 0x89 and b[i + 5] in (0x48, 0x88):
+            j = i + 6
+            d2 = b[j] if b[i + 5] == 0x48 else struct.unpack_from("<I", b, j)[0]
+            j += 1 if b[i + 5] == 0x48 else 4
+            if j == len(b) - 3:
+                return emit_subptr_setter(b, d1, d2)
+    # iterator step: mov eax,[ecx]; mov edx,[eax+d]; mov [ecx],edx; ret
+    if b[0:2] == b"\x8b\x01" and b[2] == 0x8b and b[3] in (0x10, 0x50) and b.endswith(b"\x89\x11\xc3"):
+        if b[3] == 0x10 and len(b) == 7:
+            return emit_iter_step(b, 0)
+        if b[3] == 0x50 and len(b) == 8:
+            return emit_iter_step(b, b[4])
+    if b == b"\x85\xc9\x74\x06\x8b\x01\x6a\x01\xff\x10\xc3":
+        return emit_delete_if_set(b)
     # pair _Dest_val: push esi; mov esi,ecx; lea ecx,[esi+o2]; call; <first>; pop esi; jmp
     if len(b) >= 19 and b[0:3] == b"\x56\x8b\xf1" and b[3] == 0x8d and b[4] in (0x4e, 0x8e):
         o2 = b[5] if b[4] == 0x4e else struct.unpack_from("<I", b, 5)[0]

@@ -1,13 +1,8 @@
-extern "C" __declspec(naked) void fn_0041c7a0(void)
-{
-    __asm
-    {
-        _emit 0x8B
-        _emit 0x01
-        _emit 0x8B
-        _emit 0x10
-        _emit 0x89
-        _emit 0x11
-        _emit 0xC3
-    }
-}
+// List iterator step: `this->node = this->node->next;`. __fastcall this=ecx.
+#pragma pack(push,1)
+struct Node {
+    Node* link;
+};
+struct Iter { Node* node; void Step(); };
+#pragma pack(pop)
+void Iter::Step() { this->node = this->node->link; }

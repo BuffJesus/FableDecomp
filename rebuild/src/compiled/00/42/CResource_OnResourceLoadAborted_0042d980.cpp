@@ -1,6 +1,3 @@
-extern "C" __declspec(naked) void candidate_0042d980(void)
-{
-    __asm {
-        _emit 0xc3
-    }
-}
+// Empty member hook. __fastcall this=ecx.
+struct T { void Hook(); };
+void T::Hook() {}

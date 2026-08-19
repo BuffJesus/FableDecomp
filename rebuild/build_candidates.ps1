@@ -2896,27 +2896,6 @@ $catalog = @(
         PassPattern = 'CPlayerGui_00408360_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00415e83'
-        Module = 'CMainGameComponent'
-        Source = '00/41/CMainGameComponent_OnPreDeviceReset_00415e83.cpp'
-        TestSource = '00/41/CMainGameComponent_OnPreDeviceReset_00415e83_test.cpp'
-        PassPattern = 'PASS_00415e83'
-    }
-    [pscustomobject]@{
-        Address = '0041c7a0'
-        Module = 'list<NUISystem::CList*'
-        Source = '00/41/listNUISystemCList_begin_0041c7a0.cpp'
-        TestSource = '00/41/listNUISystemCList_begin_0041c7a0_test.cpp'
-        PassPattern = 'PASS_0041c7a0'
-    }
-    [pscustomobject]@{
-        Address = '0041c7b0'
-        Module = '_List_const_iterator<std::_List_val<CVsyncCallbackTimer::CPendingQuery'
-        Source = '00/41/ListconstiteratorstdListvalCVsyncCallbackTimerCPendingQuery_operator_0041c7b0.cpp'
-        TestSource = '00/41/ListconstiteratorstdListvalCVsyncCallbackTimerCPendingQuery_operator_0041c7b0_test.cpp'
-        PassPattern = 'PASS_0041c7b0'
-    }
-    [pscustomobject]@{
         Address = '004175da'
         Module = 'CMainGameComponent'
         Source = '00/41/CMainGameComponent_OnPostDeviceReset_004175da.cpp'
@@ -2929,62 +2908,6 @@ $catalog = @(
         Source = '00/41/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00416219.cpp'
         TestSource = '00/41/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00416219_test.cpp'
         PassPattern = 'PASS_00416219'
-    }
-    [pscustomobject]@{
-        Address = '00416225'
-        Module = 'CWorld'
-        Source = '00/41/CWorld_DrawGetEnvironment_00416225.cpp'
-        TestSource = '00/41/CWorld_DrawGetEnvironment_00416225_test.cpp'
-        PassPattern = 'PASS_00416225'
-    }
-    [pscustomobject]@{
-        Address = '00416359'
-        Module = 'CWorld'
-        Source = '00/41/CWorld_DrawGetEnvironment_00416359.cpp'
-        TestSource = '00/41/CWorld_DrawGetEnvironment_00416359_test.cpp'
-        PassPattern = 'PASS_00416359'
-    }
-    [pscustomobject]@{
-        Address = '0041cf1f'
-        Module = 'CTCPhysicsNavigator'
-        Source = '00/41/CTCPhysicsNavigator_EnableNavigator_0041cf1f.cpp'
-        TestSource = '00/41/CTCPhysicsNavigator_EnableNavigator_0041cf1f_test.cpp'
-        PassPattern = 'PASS_0041cf1f'
-    }
-    [pscustomobject]@{
-        Address = '00416047'
-        Module = 'CEditInputProcessCopyPaste'
-        Source = '00/41/CEditInputProcessCopyPaste_AddToInterface_00416047.cpp'
-        TestSource = '00/41/CEditInputProcessCopyPaste_AddToInterface_00416047_test.cpp'
-        PassPattern = 'PASS_00416047'
-    }
-    [pscustomobject]@{
-        Address = '0041c820'
-        Module = 'CPixelFormat'
-        Source = '00/41/CPixelFormat_IsEquivalent_0041c820.cpp'
-        TestSource = '00/41/CPixelFormat_IsEquivalent_0041c820_test.cpp'
-        PassPattern = 'PASS_0041c820'
-    }
-    [pscustomobject]@{
-        Address = '00419036'
-        Module = '_global'
-        Source = '00/41/global_DeleteData_00419036.cpp'
-        TestSource = '00/41/global_DeleteData_00419036_test.cpp'
-        PassPattern = 'PASS_00419036'
-    }
-    [pscustomobject]@{
-        Address = '00415fc1'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/41/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00415fc1.cpp'
-        TestSource = '00/41/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00415fc1_test.cpp'
-        PassPattern = 'PASS_00415fc1'
-    }
-    [pscustomobject]@{
-        Address = '00415fe0'
-        Module = 'CMainGameComponent'
-        Source = '00/41/CMainGameComponent_ProcessEvent_00415fe0.cpp'
-        TestSource = '00/41/CMainGameComponent_ProcessEvent_00415fe0_test.cpp'
-        PassPattern = 'PASS_00415fe0'
     }
     [pscustomobject]@{
         Address = '00415530'
@@ -3013,27 +2936,6 @@ $catalog = @(
         Source = '00/99/CCharString_ToWideString_0099e480.cpp'
         TestSource = '00/99/CCharString_ToWideString_0099e480_test.cpp'
         PassPattern = 'FABLETLC_CHAR_TO_WIDE_STRING_BEHAVIOR PASS'
-    }
-    [pscustomobject]@{
-        Address = '00415ff2'
-        Module = 'CMainGameComponent'
-        Source = '00/41/CMainGameComponent_EventIsSystemEvent_00415ff2.cpp'
-        TestSource = '00/41/CMainGameComponent_EventIsSystemEvent_00415ff2_test.cpp'
-        PassPattern = 'PASS_00415ff2'
-    }
-    [pscustomobject]@{
-        Address = '0041ca3e'
-        Module = 'CObservable'
-        Source = '00/41/CObservable_AddExclusiveObserver_0041ca3e.cpp'
-        TestSource = '00/41/CObservable_AddExclusiveObserver_0041ca3e_test.cpp'
-        PassPattern = 'PASS_0041ca3e'
-    }
-    [pscustomobject]@{
-        Address = '0041d1b4'
-        Module = 'CBankFile'
-        Source = '00/41/CBankFile_GetBankHandle_0041d1b4.cpp'
-        TestSource = '00/41/CBankFile_GetBankHandle_0041d1b4_test.cpp'
-        PassPattern = 'PASS_0041d1b4'
     }
     [pscustomobject]@{
         Address = '0041ce9d'
@@ -3085,13 +2987,6 @@ $catalog = @(
         PassPattern = 'PASS_0041c800'
     }
     [pscustomobject]@{
-        Address = '0041940c'
-        Module = '_global'
-        Source = '00/41/global_DeleteData_0041940c.cpp'
-        TestSource = '00/41/global_DeleteData_0041940c_test.cpp'
-        PassPattern = 'PASS_0041940c'
-    }
-    [pscustomobject]@{
         Address = '0041d198'
         Module = 'CManager'
         Source = '00/41/CManager_SetGraphicsBank_0041d198.cpp'
@@ -3134,34 +3029,6 @@ $catalog = @(
         PassPattern = 'PASS_004131d0'
     }
     [pscustomobject]@{
-        Address = '0041bb00'
-        Module = 'CLandscapeBackgroundPatch'
-        Source = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_0041bb00.cpp'
-        TestSource = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_0041bb00_test.cpp'
-        PassPattern = 'PASS_0041bb00'
-    }
-    [pscustomobject]@{
-        Address = '004193a0'
-        Module = '_global'
-        Source = '00/41/global_DeleteData_004193a0.cpp'
-        TestSource = '00/41/global_DeleteData_004193a0_test.cpp'
-        PassPattern = 'PASS_004193a0'
-    }
-    [pscustomobject]@{
-        Address = '004193c4'
-        Module = '_global'
-        Source = '00/41/global_DeleteData_004193c4.cpp'
-        TestSource = '00/41/global_DeleteData_004193c4_test.cpp'
-        PassPattern = 'PASS_004193c4'
-    }
-    [pscustomobject]@{
-        Address = '004193e8'
-        Module = '_global'
-        Source = '00/41/global_DeleteData_004193e8.cpp'
-        TestSource = '00/41/global_DeleteData_004193e8_test.cpp'
-        PassPattern = 'PASS_004193e8'
-    }
-    [pscustomobject]@{
         Address = '00416392'
         Module = 'CMainGameComponent'
         Source = '00/41/CMainGameComponent_PeekWorldChecksum_00416392.cpp'
@@ -3197,13 +3064,6 @@ $catalog = @(
         PassPattern = 'PASS_00416122'
     }
     [pscustomobject]@{
-        Address = '00419047'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00419047.cpp'
-        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00419047_test.cpp'
-        PassPattern = 'PASS_00419047'
-    }
-    [pscustomobject]@{
         Address = '00419650'
         Module = 'CThing'
         Source = '00/41/CThing_GetPBaseDef_00419650.cpp'
@@ -3211,25 +3071,11 @@ $catalog = @(
         PassPattern = 'PASS_00419650'
     }
     [pscustomobject]@{
-        Address = '0041ba70'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041ba70.cpp'
-        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041ba70_test.cpp'
-        PassPattern = 'PASS_0041ba70'
-    }
-    [pscustomobject]@{
         Address = '00414f90'
         Module = 'CCompressedMemoryDataInputStream'
         Source = '00/41/CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_00414f90.cpp'
         TestSource = '00/41/CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_00414f90_test.cpp'
         PassPattern = 'PASS_00414f90'
-    }
-    [pscustomobject]@{
-        Address = '0041971e'
-        Module = 'CActiveFile'
-        Source = '00/41/CActiveFile_OnReadFinished_0041971e.cpp'
-        TestSource = '00/41/CActiveFile_OnReadFinished_0041971e_test.cpp'
-        PassPattern = 'PASS_0041971e'
     }
     [pscustomobject]@{
         Address = '00412f60'
@@ -3265,13 +3111,6 @@ $catalog = @(
         Source = '00/41/CBulletTimeManager_IsBulletTimeActive_00419680.cpp'
         TestSource = '00/41/CBulletTimeManager_IsBulletTimeActive_00419680_test.cpp'
         PassPattern = 'PASS_00419680'
-    }
-    [pscustomobject]@{
-        Address = '0041baa0'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041baa0.cpp'
-        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041baa0_test.cpp'
-        PassPattern = 'PASS_0041baa0'
     }
     [pscustomobject]@{
         Address = '0041d165'
@@ -3323,13 +3162,6 @@ $catalog = @(
         PassPattern = 'PASS_004166a8'
     }
     [pscustomobject]@{
-        Address = '00419365'
-        Module = 'CAssoc'
-        Source = '00/41/CAssoc_scalardeletingdestructor_00419365.cpp'
-        TestSource = '00/41/CAssoc_scalardeletingdestructor_00419365_test.cpp'
-        PassPattern = 'PASS_00419365'
-    }
-    [pscustomobject]@{
         Address = '00419428'
         Module = 'CCountedPointer<std::vector<CCharString'
         Source = '00/41/CCountedPointerstdvectorCCharString_Reset_00419428.cpp'
@@ -3344,13 +3176,6 @@ $catalog = @(
         PassPattern = 'PASS_0041947a'
     }
     [pscustomobject]@{
-        Address = '00419518'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00419518.cpp'
-        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00419518_test.cpp'
-        PassPattern = 'PASS_00419518'
-    }
-    [pscustomobject]@{
         Address = '0041bdb0'
         Module = 'CGraphicFrameData'
         Source = '00/41/CGraphicFrameData_scalardeletingdestructor_0041bdb0.cpp'
@@ -3358,25 +3183,11 @@ $catalog = @(
         PassPattern = 'PASS_0041bdb0'
     }
     [pscustomobject]@{
-        Address = '0041bd20'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bd20.cpp'
-        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bd20_test.cpp'
-        PassPattern = 'PASS_0041bd20'
-    }
-    [pscustomobject]@{
         Address = '0041d1c8'
         Module = 'CTCBoastingCrowdControl'
         Source = '00/41/CTCBoastingCrowdControl_OnKillCrowd_0041d1c8.cpp'
         TestSource = '00/41/CTCBoastingCrowdControl_OnKillCrowd_0041d1c8_test.cpp'
         PassPattern = 'PASS_0041d1c8'
-    }
-    [pscustomobject]@{
-        Address = '00413350'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00413350.cpp'
-        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00413350_test.cpp'
-        PassPattern = 'PASS_00413350'
     }
     [pscustomobject]@{
         Address = '00412b20'
@@ -3391,13 +3202,6 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_InitDefinitions_00416005.cpp'
         TestSource = '00/41/CMainGameComponent_InitDefinitions_00416005_test.cpp'
         PassPattern = 'PASS_00416005'
-    }
-    [pscustomobject]@{
-        Address = '0041915a'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0041915a.cpp'
-        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0041915a_test.cpp'
-        PassPattern = 'PASS_0041915a'
     }
     [pscustomobject]@{
         Address = '0041d122'
@@ -3435,20 +3239,6 @@ $catalog = @(
         PassPattern = 'PASS_004194d1'
     }
     [pscustomobject]@{
-        Address = '00413230'
-        Module = 'CLandscapeBackgroundPatch'
-        Source = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_00413230.cpp'
-        TestSource = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_00413230_test.cpp'
-        PassPattern = 'PASS_00413230'
-    }
-    [pscustomobject]@{
-        Address = '0041906e'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041906e.cpp'
-        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041906e_test.cpp'
-        PassPattern = 'PASS_0041906e'
-    }
-    [pscustomobject]@{
         Address = '00412a50'
         Module = 'vector<unsigned_int'
         Source = '00/41/vectorunsignedint_resize_00412a50.cpp'
@@ -3475,13 +3265,6 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_ChangeTextureColourDepthCMainGameCom_0041799b.cpp'
         TestSource = '00/41/CMainGameComponent_ChangeTextureColourDepthCMainGameCom_0041799b_test.cpp'
         PassPattern = 'PASS_0041799b'
-    }
-    [pscustomobject]@{
-        Address = '00415830'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00415830.cpp'
-        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00415830_test.cpp'
-        PassPattern = 'PASS_00415830'
     }
     [pscustomobject]@{
         Address = '004195af'
@@ -3554,13 +3337,6 @@ $catalog = @(
         PassPattern = 'PASS_0041c4a0'
     }
     [pscustomobject]@{
-        Address = '004191c1'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004191c1.cpp'
-        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004191c1_test.cpp'
-        PassPattern = 'PASS_004191c1'
-    }
-    [pscustomobject]@{
         Address = '0041c700'
         Module = 'CGraphicFrame'
         Source = '00/41/CGraphicFrame_UnInitialise_0041c700.cpp'
@@ -3575,53 +3351,11 @@ $catalog = @(
         PassPattern = 'PASS_00416148'
     }
     [pscustomobject]@{
-        Address = '0042d930'
-        Module = 'CIVCountedPointeeBase'
-        Source = '00/42/CIVCountedPointeeBase_DeleteCIVCountedPointeeBaseUBEXXZ_0042d930.cpp'
-        TestSource = '00/42/CIVCountedPointeeBase_DeleteCIVCountedPointeeBaseUBEXXZ_0042d930_test.cpp'
-        PassPattern = 'PASS_0042d930'
-    }
-    [pscustomobject]@{
-        Address = '00429a79'
-        Module = 'CSmallVector<CANavQuadTreeNode_const*'
-        Source = '00/42/CSmallVectorCANavQuadTreeNodeconst_operator_00429a79.cpp'
-        TestSource = '00/42/CSmallVectorCANavQuadTreeNodeconst_operator_00429a79_test.cpp'
-        PassPattern = 'PASS_00429a79'
-    }
-    [pscustomobject]@{
-        Address = '00428b10'
-        Module = '_global'
-        Source = '00/42/global_DeleteData_00428b10.cpp'
-        TestSource = '00/42/global_DeleteData_00428b10_test.cpp'
-        PassPattern = 'PASS_00428b10'
-    }
-    [pscustomobject]@{
         Address = '0042bef2'
         Module = 'CRegion'
         Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_0042bef2.cpp'
         TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_0042bef2_test.cpp'
         PassPattern = 'PASS_0042bef2'
-    }
-    [pscustomobject]@{
-        Address = '00429403'
-        Module = 'CRegion'
-        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429403.cpp'
-        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429403_test.cpp'
-        PassPattern = 'PASS_00429403'
-    }
-    [pscustomobject]@{
-        Address = '004293db'
-        Module = 'CRegion'
-        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_004293db.cpp'
-        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_004293db_test.cpp'
-        PassPattern = 'PASS_004293db'
-    }
-    [pscustomobject]@{
-        Address = '00429db7'
-        Module = 'CRegion'
-        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429db7.cpp'
-        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429db7_test.cpp'
-        PassPattern = 'PASS_00429db7'
     }
     [pscustomobject]@{
         Address = '0042d405'
@@ -3638,32 +3372,11 @@ $catalog = @(
         PassPattern = 'PASS_0042d41e'
     }
     [pscustomobject]@{
-        Address = '0042d980'
-        Module = 'CResource'
-        Source = '00/42/CResource_OnResourceLoadAborted_0042d980.cpp'
-        TestSource = '00/42/CResource_OnResourceLoadAborted_0042d980_test.cpp'
-        PassPattern = 'PASS_0042d980'
-    }
-    [pscustomobject]@{
         Address = '00429bf9'
         Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
         Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00429bf9.cpp'
         TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00429bf9_test.cpp'
         PassPattern = 'PASS_00429bf9'
-    }
-    [pscustomobject]@{
-        Address = '00429d3c'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429d3c.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429d3c_test.cpp'
-        PassPattern = 'PASS_00429d3c'
-    }
-    [pscustomobject]@{
-        Address = '00429d71'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429d71.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429d71_test.cpp'
-        PassPattern = 'PASS_00429d71'
     }
     [pscustomobject]@{
         Address = '0042b44a'
@@ -3701,13 +3414,6 @@ $catalog = @(
         PassPattern = 'PASS_0042d28b'
     }
     [pscustomobject]@{
-        Address = '00429a10'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429a10.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429a10_test.cpp'
-        PassPattern = 'PASS_00429a10'
-    }
-    [pscustomobject]@{
         Address = '0042b587'
         Module = '_global'
         Source = '00/42/global_Alloc_0042b587.cpp'
@@ -3743,20 +3449,6 @@ $catalog = @(
         PassPattern = 'PASS_0042a77f'
     }
     [pscustomobject]@{
-        Address = '00429cc7'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429cc7.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429cc7_test.cpp'
-        PassPattern = 'PASS_00429cc7'
-    }
-    [pscustomobject]@{
-        Address = '00429d93'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429d93.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00429d93_test.cpp'
-        PassPattern = 'PASS_00429d93'
-    }
-    [pscustomobject]@{
         Address = '0042b707'
         Module = '_global'
         Source = '00/42/global_CalcStringLength_0042b707.cpp'
@@ -3778,13 +3470,6 @@ $catalog = @(
         PassPattern = 'PASS_0041e61b'
     }
     [pscustomobject]@{
-        Address = '00428ae7'
-        Module = '_global'
-        Source = '00/42/global_DeleteData_00428ae7.cpp'
-        TestSource = '00/42/global_DeleteData_00428ae7_test.cpp'
-        PassPattern = 'PASS_00428ae7'
-    }
-    [pscustomobject]@{
         Address = '0042aab3'
         Module = 'less<CCharString>'
         Source = '00/42/lessCCharString_operator_0042aab3.cpp'
@@ -3804,13 +3489,6 @@ $catalog = @(
         Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_0042b6dc.cpp'
         TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_0042b6dc_test.cpp'
         PassPattern = 'PASS_0042b6dc'
-    }
-    [pscustomobject]@{
-        Address = '0042ac25'
-        Module = 'CActiveFile'
-        Source = '00/42/CActiveFile_OnReadFinished_0042ac25.cpp'
-        TestSource = '00/42/CActiveFile_OnReadFinished_0042ac25_test.cpp'
-        PassPattern = 'PASS_0042ac25'
     }
     [pscustomobject]@{
         Address = '0042b4c3'
@@ -3841,13 +3519,6 @@ $catalog = @(
         PassPattern = 'PASS_00429a85'
     }
     [pscustomobject]@{
-        Address = '00429288'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00429288.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00429288_test.cpp'
-        PassPattern = 'PASS_00429288'
-    }
-    [pscustomobject]@{
         Address = '004299a8'
         Module = '_global'
         Source = '00/42/global_SetIsUsingRelativeCoords_004299a8.cpp'
@@ -3874,13 +3545,6 @@ $catalog = @(
         Source = '00/42/CCountedPointerstdvectorCCharString_Reset_00429c6f.cpp'
         TestSource = '00/42/CCountedPointerstdvectorCCharString_Reset_00429c6f_test.cpp'
         PassPattern = 'PASS_00429c6f'
-    }
-    [pscustomobject]@{
-        Address = '00429cfb'
-        Module = 'CRegion'
-        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429cfb.cpp'
-        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429cfb_test.cpp'
-        PassPattern = 'PASS_00429cfb'
     }
     [pscustomobject]@{
         Address = '0042d201'
@@ -3939,13 +3603,6 @@ $catalog = @(
         PassPattern = 'PASS_00429f43'
     }
     [pscustomobject]@{
-        Address = '0042a7d0'
-        Module = 'CEngineInternalPrimitiveMeshBase'
-        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a7d0.cpp'
-        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a7d0_test.cpp'
-        PassPattern = 'PASS_0042a7d0'
-    }
-    [pscustomobject]@{
         Address = '0041e16e'
         Module = 'CManager'
         Source = '00/41/CManager_IsKeyHeld_0041e16e.cpp'
@@ -3981,13 +3638,6 @@ $catalog = @(
         PassPattern = 'PASS_0042dbee'
     }
     [pscustomobject]@{
-        Address = '004336b0'
-        Module = '_global'
-        Source = '00/43/global_operatornew_004336b0.cpp'
-        TestSource = '00/43/global_operatornew_004336b0_test.cpp'
-        PassPattern = 'PASS_004336b0'
-    }
-    [pscustomobject]@{
         Address = '00437820'
         Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
         Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00437820.cpp'
@@ -3995,53 +3645,11 @@ $catalog = @(
         PassPattern = 'PASS_00437820'
     }
     [pscustomobject]@{
-        Address = '0043211d'
-        Module = 'CActiveFile'
-        Source = '00/43/CActiveFile_OnReadFinished_0043211d.cpp'
-        TestSource = '00/43/CActiveFile_OnReadFinished_0043211d_test.cpp'
-        PassPattern = 'PASS_0043211d'
-    }
-    [pscustomobject]@{
-        Address = '004374f0'
-        Module = 'C3DMeshInfo'
-        Source = '00/43/C3DMeshInfo_HasPhysicsMesh_004374f0.cpp'
-        TestSource = '00/43/C3DMeshInfo_HasPhysicsMesh_004374f0_test.cpp'
-        PassPattern = 'PASS_004374f0'
-    }
-    [pscustomobject]@{
         Address = '0042dec5'
         Module = 'CNewFrontendGameComponent'
         Source = '00/42/CNewFrontendGameComponent_InitialiseInput_0042dec5.cpp'
         TestSource = '00/42/CNewFrontendGameComponent_InitialiseInput_0042dec5_test.cpp'
         PassPattern = 'PASS_0042dec5'
-    }
-    [pscustomobject]@{
-        Address = '004349d0'
-        Module = 'CTCCreditsUI'
-        Source = '00/43/CTCCreditsUI_Deactivate_004349d0.cpp'
-        TestSource = '00/43/CTCCreditsUI_Deactivate_004349d0_test.cpp'
-        PassPattern = 'PASS_004349d0'
-    }
-    [pscustomobject]@{
-        Address = '00437650'
-        Module = 'CPlayerGui'
-        Source = '00/43/CPlayerGui_AddMoralityChange_00437650.cpp'
-        TestSource = '00/43/CPlayerGui_AddMoralityChange_00437650_test.cpp'
-        PassPattern = 'PASS_00437650'
-    }
-    [pscustomobject]@{
-        Address = '00437470'
-        Module = 'CUserProfileManager'
-        Source = '00/43/CUserProfileManager_GetCameraSensitivity_00437470.cpp'
-        TestSource = '00/43/CUserProfileManager_GetCameraSensitivity_00437470_test.cpp'
-        PassPattern = 'PASS_00437470'
-    }
-    [pscustomobject]@{
-        Address = '00437490'
-        Module = 'CUserProfileManager'
-        Source = '00/43/CUserProfileManager_GetCameraSensitivity_00437490.cpp'
-        TestSource = '00/43/CUserProfileManager_GetCameraSensitivity_00437490_test.cpp'
-        PassPattern = 'PASS_00437490'
     }
     [pscustomobject]@{
         Address = '004374b0'
@@ -4072,25 +3680,11 @@ $catalog = @(
         PassPattern = 'PASS_004374d0'
     }
     [pscustomobject]@{
-        Address = '0042fe34'
-        Module = 'CCountedPointer<CTexture>'
-        Source = '00/42/CCountedPointerCTexture_operator_0042fe34.cpp'
-        TestSource = '00/42/CCountedPointerCTexture_operator_0042fe34_test.cpp'
-        PassPattern = 'PASS_0042fe34'
-    }
-    [pscustomobject]@{
         Address = '004372a0'
         Module = 'CSubtitleRenderer'
         Source = '00/43/CSubtitleRenderer_GetTextWidthFromText_004372a0.cpp'
         TestSource = '00/43/CSubtitleRenderer_GetTextWidthFromText_004372a0_test.cpp'
         PassPattern = 'PASS_004372a0'
-    }
-    [pscustomobject]@{
-        Address = '00437800'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00437800.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00437800_test.cpp'
-        PassPattern = 'PASS_00437800'
     }
     [pscustomobject]@{
         Address = '004354a0'
@@ -4112,13 +3706,6 @@ $catalog = @(
         Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0042fc66.cpp'
         TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0042fc66_test.cpp'
         PassPattern = 'PASS_0042fc66'
-    }
-    [pscustomobject]@{
-        Address = '00433d19'
-        Module = 'CLandscapeBackgroundPatch'
-        Source = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_00433d19.cpp'
-        TestSource = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_00433d19_test.cpp'
-        PassPattern = 'PASS_00433d19'
     }
     [pscustomobject]@{
         Address = '00437040'
@@ -4212,13 +3799,6 @@ $catalog = @(
         PassPattern = 'PASS_0043119e'
     }
     [pscustomobject]@{
-        Address = '0042db60'
-        Module = 'CLandscapeBackgroundPatch'
-        Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042db60.cpp'
-        TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042db60_test.cpp'
-        PassPattern = 'PASS_0042db60'
-    }
-    [pscustomobject]@{
         Address = '0043314a'
         Module = 'CEngineLightingManager'
         Source = '00/43/CEngineLightingManager_UpdateShadowScene_0043314a.cpp'
@@ -4289,20 +3869,6 @@ $catalog = @(
         PassPattern = 'PASS_00437580'
     }
     [pscustomobject]@{
-        Address = '0042f9a0'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0042f9a0.cpp'
-        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0042f9a0_test.cpp'
-        PassPattern = 'PASS_0042f9a0'
-    }
-    [pscustomobject]@{
-        Address = '0043027a'
-        Module = 'CTCCarryable'
-        Source = '00/43/CTCCarryable_OnKill_0043027a.cpp'
-        TestSource = '00/43/CTCCarryable_OnKill_0043027a_test.cpp'
-        PassPattern = 'PASS_0043027a'
-    }
-    [pscustomobject]@{
         Address = '00434ba0'
         Module = 'CDisplayEngine'
         Source = '00/43/CDisplayEngine_StartLetterBoxMode_00434ba0.cpp'
@@ -4350,13 +3916,6 @@ $catalog = @(
         Source = '00/43/global_Fillnunsignedlongunsignedintunsigned_00433504.cpp'
         TestSource = '00/43/global_Fillnunsignedlongunsignedintunsigned_00433504_test.cpp'
         PassPattern = 'batch8_part3_00433504_pass'
-    }
-    [pscustomobject]@{
-        Address = '0042dbb0'
-        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
-        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0042dbb0.cpp'
-        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0042dbb0_test.cpp'
-        PassPattern = 'batch8_part3_0042dbb0_pass'
     }
     [pscustomobject]@{
         Address = '00433d8a'
@@ -4429,13 +3988,6 @@ $catalog = @(
         PassPattern = 'batch8_part3_0042dc63_pass'
     }
     [pscustomobject]@{
-        Address = '004302cd'
-        Module = 'CActiveFile'
-        Source = '00/43/CActiveFile_OnReadFinished_004302cd.cpp'
-        TestSource = '00/43/CActiveFile_OnReadFinished_004302cd_test.cpp'
-        PassPattern = 'batch8_part3_004302cd_pass'
-    }
-    [pscustomobject]@{
         Address = '004304a0'
         Module = 'CCompressedMemoryDataInputStream'
         Source = '00/43/CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_004304a0.cpp'
@@ -4448,13 +4000,6 @@ $catalog = @(
         Source = '00/43/CParentDefClassBase_operator_00431ed0.cpp'
         TestSource = '00/43/CParentDefClassBase_operator_00431ed0_test.cpp'
         PassPattern = 'batch8_part3_00431ed0_pass'
-    }
-    [pscustomobject]@{
-        Address = '0042f9f2'
-        Module = 'CCountedPointer<NUISystem::CAction>'
-        Source = '00/42/CCountedPointerNUISystemCAction_ShareData_0042f9f2.cpp'
-        TestSource = '00/42/CCountedPointerNUISystemCAction_ShareData_0042f9f2_test.cpp'
-        PassPattern = 'batch8_part3_0042f9f2_pass'
     }
     [pscustomobject]@{
         Address = '00437670'
@@ -4499,27 +4044,6 @@ $catalog = @(
         PassPattern = 'batch8_part3_00431493_pass'
     }
     [pscustomobject]@{
-        Address = '004379f0'
-        Module = 'CPlayerGui'
-        Source = '00/43/CPlayerGui_HideScreenshotMessage_004379f0.cpp'
-        TestSource = '00/43/CPlayerGui_HideScreenshotMessage_004379f0_test.cpp'
-        PassPattern = 'PASS_004379f0'
-    }
-    [pscustomobject]@{
-        Address = '00437920'
-        Module = 'CPlayerGui'
-        Source = '00/43/CPlayerGui_AddMoralityChange_00437920.cpp'
-        TestSource = '00/43/CPlayerGui_AddMoralityChange_00437920_test.cpp'
-        PassPattern = 'PASS_00437920'
-    }
-    [pscustomobject]@{
-        Address = '00437930'
-        Module = 'CPlayerGui'
-        Source = '00/43/CPlayerGui_AddMoralityChange_00437930.cpp'
-        TestSource = '00/43/CPlayerGui_AddMoralityChange_00437930_test.cpp'
-        PassPattern = 'PASS_00437930'
-    }
-    [pscustomobject]@{
         Address = '0043dbd0'
         Module = '_global'
         Source = '00/43/global_ISTHINGALIVECThingBuilding_0043dbd0.cpp'
@@ -4527,25 +4051,11 @@ $catalog = @(
         PassPattern = 'PASS_0043dbd0'
     }
     [pscustomobject]@{
-        Address = '00437a10'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437a10.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437a10_test.cpp'
-        PassPattern = 'PASS_00437a10'
-    }
-    [pscustomobject]@{
         Address = '00437ce0'
         Module = 'CVertexBufferWin32'
         Source = '00/43/CVertexBufferWin32_DoSizeof_00437ce0.cpp'
         TestSource = '00/43/CVertexBufferWin32_DoSizeof_00437ce0_test.cpp'
         PassPattern = 'PASS_00437ce0'
-    }
-    [pscustomobject]@{
-        Address = '00437840'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437840.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437840_test.cpp'
-        PassPattern = 'PASS_00437840'
     }
     [pscustomobject]@{
         Address = '00438440'
@@ -4576,27 +4086,6 @@ $catalog = @(
         PassPattern = 'PASS_0043f720'
     }
     [pscustomobject]@{
-        Address = '00437880'
-        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
-        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437880.cpp'
-        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437880_test.cpp'
-        PassPattern = 'PASS_00437880'
-    }
-    [pscustomobject]@{
-        Address = '0043e520'
-        Module = 'CLandscapeBackgroundPatch'
-        Source = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_0043e520.cpp'
-        TestSource = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_0043e520_test.cpp'
-        PassPattern = 'PASS_0043e520'
-    }
-    [pscustomobject]@{
-        Address = '0043c3c0'
-        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
-        Source = '00/43/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0043c3c0.cpp'
-        TestSource = '00/43/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0043c3c0_test.cpp'
-        PassPattern = 'PASS_0043c3c0'
-    }
-    [pscustomobject]@{
         Address = '0043dd10'
         Module = 'CEngineSubPrimitiveText'
         Source = '00/43/CEngineSubPrimitiveText_scalardeletingdestructor_0043dd10.cpp'
@@ -4623,13 +4112,6 @@ $catalog = @(
         Source = '00/43/Uninitfillnstdpairunsignedint64CCountedPointerCActiveEntityScriptBaseunsignedint_pairunsignedint64classCCountedPointerclassCActiv_0043f6c0.cpp'
         TestSource = '00/43/Uninitfillnstdpairunsignedint64CCountedPointerCActiveEntityScriptBaseunsignedint_pairunsignedint64classCCountedPointerclassCActiv_0043f6c0_test.cpp'
         PassPattern = 'PASS_0043f6c0'
-    }
-    [pscustomobject]@{
-        Address = '0043f2d0'
-        Module = 'CGuiControlTreePane'
-        Source = '00/43/CGuiControlTreePane_SortTreeRecursively_0043f2d0.cpp'
-        TestSource = '00/43/CGuiControlTreePane_SortTreeRecursively_0043f2d0_test.cpp'
-        PassPattern = 'batch9_part4_0043f2d0_pass'
     }
     [pscustomobject]@{
         Address = '00438400'
@@ -4672,13 +4154,6 @@ $catalog = @(
         Source = '00/43/Destvalstd_allocatorCMacroCMacro_0043e3d0.cpp'
         TestSource = '00/43/Destvalstd_allocatorCMacroCMacro_0043e3d0_test.cpp'
         PassPattern = 'batch9_part4_0043e3d0_pass'
-    }
-    [pscustomobject]@{
-        Address = '0043f3a0'
-        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
-        Source = '00/43/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0043f3a0.cpp'
-        TestSource = '00/43/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0043f3a0_test.cpp'
-        PassPattern = 'batch9_part4_0043f3a0_pass'
     }
     [pscustomobject]@{
         Address = '00445680'
@@ -4912,46 +4387,11 @@ $catalog = @(
         PassPattern = 'PASS_00440e40'
     }
     [pscustomobject]@{
-        Address = '00445650'
-        Module = 'CInputTypeXboxPadButtonEvent'
-        Source = '00/44/CInputTypeXboxPadButtonEvent_IsInputTypeWithMouseButton_00445650.cpp'
-        TestSource = '00/44/CInputTypeXboxPadButtonEvent_IsInputTypeWithMouseButton_00445650_test.cpp'
-        PassPattern = 'PASS_00445650'
-    }
-    [pscustomobject]@{
-        Address = '00445690'
-        Module = 'CInputTypeXboxPadLeftStickEvent'
-        Source = '00/44/CInputTypeXboxPadLeftStickEvent_IsInputTypeWithMouseButton_00445690.cpp'
-        TestSource = '00/44/CInputTypeXboxPadLeftStickEvent_IsInputTypeWithMouseButton_00445690_test.cpp'
-        PassPattern = 'PASS_00445690'
-    }
-    [pscustomobject]@{
         Address = '004456d0'
         Module = 'CInputTypeXboxPadRightStickEvent'
         Source = '00/44/CInputTypeXboxPadRightStickEvent_IsInputTypeWithMouseButton_004456d0.cpp'
         TestSource = '00/44/CInputTypeXboxPadRightStickEvent_IsInputTypeWithMouseButton_004456d0_test.cpp'
         PassPattern = 'PASS_004456d0'
-    }
-    [pscustomobject]@{
-        Address = '00445710'
-        Module = 'CInputTypeMouseMovementEvent'
-        Source = '00/44/CInputTypeMouseMovementEvent_IsInputTypeWithMouseButton_00445710.cpp'
-        TestSource = '00/44/CInputTypeMouseMovementEvent_IsInputTypeWithMouseButton_00445710_test.cpp'
-        PassPattern = 'PASS_00445710'
-    }
-    [pscustomobject]@{
-        Address = '00445750'
-        Module = 'CInputTypeMouseWheelMovementEvent'
-        Source = '00/44/CInputTypeMouseWheelMovementEvent_IsInputTypeWithMouseButton_00445750.cpp'
-        TestSource = '00/44/CInputTypeMouseWheelMovementEvent_IsInputTypeWithMouseButton_00445750_test.cpp'
-        PassPattern = 'PASS_00445750'
-    }
-    [pscustomobject]@{
-        Address = '00445790'
-        Module = 'CInputTypeMouseWheelMovementUpEvent'
-        Source = '00/44/CInputTypeMouseWheelMovementUpEvent_IsInputTypeWithMouseButton_00445790.cpp'
-        TestSource = '00/44/CInputTypeMouseWheelMovementUpEvent_IsInputTypeWithMouseButton_00445790_test.cpp'
-        PassPattern = 'PASS_00445790'
     }
     [pscustomobject]@{
         Address = '00449630'
@@ -5010,20 +4450,6 @@ $catalog = @(
         PassPattern = 'PASS_00440bd0'
     }
     [pscustomobject]@{
-        Address = '00449700'
-        Module = 'CWorld'
-        Source = '00/44/CWorld_DrawGetEnvironment_00449700.cpp'
-        TestSource = '00/44/CWorld_DrawGetEnvironment_00449700_test.cpp'
-        PassPattern = 'PASS_00449700'
-    }
-    [pscustomobject]@{
-        Address = '004406a0'
-        Module = 'CActiveFile'
-        Source = '00/44/CActiveFile_OnReadFinished_004406a0.cpp'
-        TestSource = '00/44/CActiveFile_OnReadFinished_004406a0_test.cpp'
-        PassPattern = 'PASS_004406a0'
-    }
-    [pscustomobject]@{
         Address = '00446b10'
         Module = 'CGamePlayerInterface'
         Source = '00/44/CGamePlayerInterface_IsGameActionEventInQueue_00446b10.cpp'
@@ -5057,13 +4483,6 @@ $catalog = @(
         Source = '00/44/UninitcopyCFeatDefCFeatDefstd_allocatorCFeatDef_0044b120.cpp'
         TestSource = '00/44/UninitcopyCFeatDefCFeatDefstd_allocatorCFeatDef_0044b120_test.cpp'
         PassPattern = 'PASS_0044b120'
-    }
-    [pscustomobject]@{
-        Address = '00447a10'
-        Module = 'CInputTypeKeyboardKeyEvent'
-        Source = '00/44/CInputTypeKeyboardKeyEvent_IsInputTypeWithMouseButton_00447a10.cpp'
-        TestSource = '00/44/CInputTypeKeyboardKeyEvent_IsInputTypeWithMouseButton_00447a10_test.cpp'
-        PassPattern = 'PASS_00447a10'
     }
     [pscustomobject]@{
         Address = '00442870'
@@ -5178,13 +4597,6 @@ $catalog = @(
         PassPattern = 'PASS_0043fd80'
     }
     [pscustomobject]@{
-        Address = '00440080'
-        Module = 'CActiveFile'
-        Source = '00/44/CActiveFile_OnReadFinished_00440080.cpp'
-        TestSource = '00/44/CActiveFile_OnReadFinished_00440080_test.cpp'
-        PassPattern = 'PASS_00440080'
-    }
-    [pscustomobject]@{
         Address = '00448910'
         Module = '_global'
         Source = '00/44/global_CopyimplCNavigationPositionCNavigationPosition_00448910.cpp'
@@ -5211,13 +4623,6 @@ $catalog = @(
         Source = '00/44/CEngineSubPrimitiveText_scalardeletingdestructor_00443ca0.cpp'
         TestSource = '00/44/CEngineSubPrimitiveText_scalardeletingdestructor_00443ca0_test.cpp'
         PassPattern = 'PASS_00443ca0'
-    }
-    [pscustomobject]@{
-        Address = '00440650'
-        Module = 'CActiveFile'
-        Source = '00/44/CActiveFile_OnReadFinished_00440650.cpp'
-        TestSource = '00/44/CActiveFile_OnReadFinished_00440650_test.cpp'
-        PassPattern = 'PASS_00440650'
     }
     [pscustomobject]@{
         Address = '0043fdf0'
@@ -5374,13 +4779,6 @@ $catalog = @(
         PassPattern = 'batch10_part4_00445ae0_pass'
     }
     [pscustomobject]@{
-        Address = '00447760'
-        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
-        Source = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00447760.cpp'
-        TestSource = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00447760_test.cpp'
-        PassPattern = 'batch10_part4_00447760_pass'
-    }
-    [pscustomobject]@{
         Address = '004488b0'
         Module = '_Destroy_range<std::allocator<std'
         Source = '00/44/Destroyrangestdallocatorstd_pairlongCCountedPointerCRegionConnectionNode_004488b0.cpp'
@@ -5435,13 +4833,6 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_IsEventContextSensitiveItemButton_00446000.cpp'
         TestSource = '00/44/CGamePlayerInterface_IsEventContextSensitiveItemButton_00446000_test.cpp'
         PassPattern = 'batch10_part4_00446000_pass'
-    }
-    [pscustomobject]@{
-        Address = '00440e60'
-        Module = 'CActiveFile'
-        Source = '00/44/CActiveFile_OnReadFinished_00440e60.cpp'
-        TestSource = '00/44/CActiveFile_OnReadFinished_00440e60_test.cpp'
-        PassPattern = 'batch10_part4_00440e60_pass'
     }
     [pscustomobject]@{
         Address = '00446060'
@@ -70129,13 +69520,6 @@ $catalog = @(
         PassPattern = 'DESTROY_RANGE_OK'
     }
     [pscustomobject]@{
-        Address = '004dbee7'
-        Module = 'CLandscapeBackgroundPatch'
-        Source = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004dbee7.cpp'
-        TestSource = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004dbee7_test.cpp'
-        PassPattern = 'VDD_PARITY_OK'
-    }
-    [pscustomobject]@{
         Address = '004dd7ea'
         Module = 'CLandscapeBackgroundPatch'
         Source = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004dd7ea.cpp'
@@ -82707,6 +82091,10597 @@ $catalog = @(
         Source = '00/42/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0042bec0.cpp'
         TestSource = '00/42/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0042bec0_test.cpp'
         PassPattern = 'PASS_0042bec0'
+    }
+    [pscustomobject]@{
+        Address = '0041c7a0'
+        Module = 'list<NUISystem::CList*'
+        Source = '00/41/listNUISystemCList_begin_0041c7a0.cpp'
+        TestSource = '00/41/listNUISystemCList_begin_0041c7a0_test.cpp'
+        PassPattern = 'PASS_0041c7a0'
+    }
+    [pscustomobject]@{
+        Address = '0041c7b0'
+        Module = '_List_const_iterator<std::_List_val<CVsyncCallbackTimer::CPendingQuery'
+        Source = '00/41/ListconstiteratorstdListvalCVsyncCallbackTimerCPendingQuery_operator_0041c7b0.cpp'
+        TestSource = '00/41/ListconstiteratorstdListvalCVsyncCallbackTimerCPendingQuery_operator_0041c7b0_test.cpp'
+        PassPattern = 'PASS_0041c7b0'
+    }
+    [pscustomobject]@{
+        Address = '0041cf1f'
+        Module = 'CTCPhysicsNavigator'
+        Source = '00/41/CTCPhysicsNavigator_EnableNavigator_0041cf1f.cpp'
+        TestSource = '00/41/CTCPhysicsNavigator_EnableNavigator_0041cf1f_test.cpp'
+        PassPattern = 'PASS_0041cf1f'
+    }
+    [pscustomobject]@{
+        Address = '0042d930'
+        Module = 'CIVCountedPointeeBase'
+        Source = '00/42/CIVCountedPointeeBase_DeleteCIVCountedPointeeBaseUBEXXZ_0042d930.cpp'
+        TestSource = '00/42/CIVCountedPointeeBase_DeleteCIVCountedPointeeBaseUBEXXZ_0042d930_test.cpp'
+        PassPattern = 'PASS_0042d930'
+    }
+    [pscustomobject]@{
+        Address = '00437650'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_AddMoralityChange_00437650.cpp'
+        TestSource = '00/43/CPlayerGui_AddMoralityChange_00437650_test.cpp'
+        PassPattern = 'PASS_00437650'
+    }
+    [pscustomobject]@{
+        Address = '00437920'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_AddMoralityChange_00437920.cpp'
+        TestSource = '00/43/CPlayerGui_AddMoralityChange_00437920_test.cpp'
+        PassPattern = 'PASS_00437920'
+    }
+    [pscustomobject]@{
+        Address = '00437930'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_AddMoralityChange_00437930.cpp'
+        TestSource = '00/43/CPlayerGui_AddMoralityChange_00437930_test.cpp'
+        PassPattern = 'PASS_00437930'
+    }
+    [pscustomobject]@{
+        Address = '004374f0'
+        Module = 'C3DMeshInfo'
+        Source = '00/43/C3DMeshInfo_HasPhysicsMesh_004374f0.cpp'
+        TestSource = '00/43/C3DMeshInfo_HasPhysicsMesh_004374f0_test.cpp'
+        PassPattern = 'PASS_004374f0'
+    }
+    [pscustomobject]@{
+        Address = '0043211d'
+        Module = 'CActiveFile'
+        Source = '00/43/CActiveFile_OnReadFinished_0043211d.cpp'
+        TestSource = '00/43/CActiveFile_OnReadFinished_0043211d_test.cpp'
+        PassPattern = 'PASS_0043211d'
+    }
+    [pscustomobject]@{
+        Address = '004379f0'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_HideScreenshotMessage_004379f0.cpp'
+        TestSource = '00/43/CPlayerGui_HideScreenshotMessage_004379f0_test.cpp'
+        PassPattern = 'PASS_004379f0'
+    }
+    [pscustomobject]@{
+        Address = '0041c820'
+        Module = 'CPixelFormat'
+        Source = '00/41/CPixelFormat_IsEquivalent_0041c820.cpp'
+        TestSource = '00/41/CPixelFormat_IsEquivalent_0041c820_test.cpp'
+        PassPattern = 'PASS_0041c820'
+    }
+    [pscustomobject]@{
+        Address = '004349d0'
+        Module = 'CTCCreditsUI'
+        Source = '00/43/CTCCreditsUI_Deactivate_004349d0.cpp'
+        TestSource = '00/43/CTCCreditsUI_Deactivate_004349d0_test.cpp'
+        PassPattern = 'PASS_004349d0'
+    }
+    [pscustomobject]@{
+        Address = '00429a79'
+        Module = 'CSmallVector<CANavQuadTreeNode_const*'
+        Source = '00/42/CSmallVectorCANavQuadTreeNodeconst_operator_00429a79.cpp'
+        TestSource = '00/42/CSmallVectorCANavQuadTreeNodeconst_operator_00429a79_test.cpp'
+        PassPattern = 'PASS_00429a79'
+    }
+    [pscustomobject]@{
+        Address = '004336b0'
+        Module = '_global'
+        Source = '00/43/global_operatornew_004336b0.cpp'
+        TestSource = '00/43/global_operatornew_004336b0_test.cpp'
+        PassPattern = 'PASS_004336b0'
+    }
+    [pscustomobject]@{
+        Address = '00437470'
+        Module = 'CUserProfileManager'
+        Source = '00/43/CUserProfileManager_GetCameraSensitivity_00437470.cpp'
+        TestSource = '00/43/CUserProfileManager_GetCameraSensitivity_00437470_test.cpp'
+        PassPattern = 'PASS_00437470'
+    }
+    [pscustomobject]@{
+        Address = '00415fe0'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_ProcessEvent_00415fe0.cpp'
+        TestSource = '00/41/CMainGameComponent_ProcessEvent_00415fe0_test.cpp'
+        PassPattern = 'PASS_00415fe0'
+    }
+    [pscustomobject]@{
+        Address = '00415ff2'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_EventIsSystemEvent_00415ff2.cpp'
+        TestSource = '00/41/CMainGameComponent_EventIsSystemEvent_00415ff2_test.cpp'
+        PassPattern = 'PASS_00415ff2'
+    }
+    [pscustomobject]@{
+        Address = '0041d1b4'
+        Module = 'CBankFile'
+        Source = '00/41/CBankFile_GetBankHandle_0041d1b4.cpp'
+        TestSource = '00/41/CBankFile_GetBankHandle_0041d1b4_test.cpp'
+        PassPattern = 'PASS_0041d1b4'
+    }
+    [pscustomobject]@{
+        Address = '00437490'
+        Module = 'CUserProfileManager'
+        Source = '00/43/CUserProfileManager_GetCameraSensitivity_00437490.cpp'
+        TestSource = '00/43/CUserProfileManager_GetCameraSensitivity_00437490_test.cpp'
+        PassPattern = 'PASS_00437490'
+    }
+    [pscustomobject]@{
+        Address = '00416047'
+        Module = 'CEditInputProcessCopyPaste'
+        Source = '00/41/CEditInputProcessCopyPaste_AddToInterface_00416047.cpp'
+        TestSource = '00/41/CEditInputProcessCopyPaste_AddToInterface_00416047_test.cpp'
+        PassPattern = 'PASS_00416047'
+    }
+    [pscustomobject]@{
+        Address = '00415fc1'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/41/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00415fc1.cpp'
+        TestSource = '00/41/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00415fc1_test.cpp'
+        PassPattern = 'PASS_00415fc1'
+    }
+    [pscustomobject]@{
+        Address = '00401377'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/40/CEngineInternalPrimitiveBase_AddChildPrimitive_00401377.cpp'
+        TestSource = '00/40/CEngineInternalPrimitiveBase_AddChildPrimitive_00401377_test.cpp'
+        PassPattern = 'PASS_00401377'
+    }
+    [pscustomobject]@{
+        Address = '00415e83'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_OnPreDeviceReset_00415e83.cpp'
+        TestSource = '00/41/CMainGameComponent_OnPreDeviceReset_00415e83_test.cpp'
+        PassPattern = 'PASS_00415e83'
+    }
+    [pscustomobject]@{
+        Address = '00416225'
+        Module = 'CWorld'
+        Source = '00/41/CWorld_DrawGetEnvironment_00416225.cpp'
+        TestSource = '00/41/CWorld_DrawGetEnvironment_00416225_test.cpp'
+        PassPattern = 'PASS_00416225'
+    }
+    [pscustomobject]@{
+        Address = '00416359'
+        Module = 'CWorld'
+        Source = '00/41/CWorld_DrawGetEnvironment_00416359.cpp'
+        TestSource = '00/41/CWorld_DrawGetEnvironment_00416359_test.cpp'
+        PassPattern = 'PASS_00416359'
+    }
+    [pscustomobject]@{
+        Address = '00419036'
+        Module = '_global'
+        Source = '00/41/global_DeleteData_00419036.cpp'
+        TestSource = '00/41/global_DeleteData_00419036_test.cpp'
+        PassPattern = 'PASS_00419036'
+    }
+    [pscustomobject]@{
+        Address = '0041ca3e'
+        Module = 'CObservable'
+        Source = '00/41/CObservable_AddExclusiveObserver_0041ca3e.cpp'
+        TestSource = '00/41/CObservable_AddExclusiveObserver_0041ca3e_test.cpp'
+        PassPattern = 'PASS_0041ca3e'
+    }
+    [pscustomobject]@{
+        Address = '00428ae7'
+        Module = '_global'
+        Source = '00/42/global_DeleteData_00428ae7.cpp'
+        TestSource = '00/42/global_DeleteData_00428ae7_test.cpp'
+        PassPattern = 'PASS_00428ae7'
+    }
+    [pscustomobject]@{
+        Address = '00428b10'
+        Module = '_global'
+        Source = '00/42/global_DeleteData_00428b10.cpp'
+        TestSource = '00/42/global_DeleteData_00428b10_test.cpp'
+        PassPattern = 'PASS_00428b10'
+    }
+    [pscustomobject]@{
+        Address = '00429b72'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429b72.cpp'
+        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429b72_test.cpp'
+        PassPattern = 'PASS_00429b72'
+    }
+    [pscustomobject]@{
+        Address = '0042d980'
+        Module = 'CResource'
+        Source = '00/42/CResource_OnResourceLoadAborted_0042d980.cpp'
+        TestSource = '00/42/CResource_OnResourceLoadAborted_0042d980_test.cpp'
+        PassPattern = 'PASS_0042d980'
+    }
+    [pscustomobject]@{
+        Address = '00435f70'
+        Module = 'CDisplayEngine'
+        Source = '00/43/CDisplayEngine_DoRender_00435f70.cpp'
+        TestSource = '00/43/CDisplayEngine_DoRender_00435f70_test.cpp'
+        PassPattern = 'PASS_00435f70'
+    }
+    [pscustomobject]@{
+        Address = '00437800'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437800.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437800_test.cpp'
+        PassPattern = 'PASS_00437800'
+    }
+    [pscustomobject]@{
+        Address = '00437840'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437840.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437840_test.cpp'
+        PassPattern = 'PASS_00437840'
+    }
+    [pscustomobject]@{
+        Address = '00437880'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437880.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437880_test.cpp'
+        PassPattern = 'PASS_00437880'
+    }
+    [pscustomobject]@{
+        Address = '00437a10'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437a10.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437a10_test.cpp'
+        PassPattern = 'PASS_00437a10'
+    }
+    [pscustomobject]@{
+        Address = '00437a30'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437a30.cpp'
+        TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00437a30_test.cpp'
+        PassPattern = 'PASS_00437a30'
+    }
+    [pscustomobject]@{
+        Address = '0043c3c0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/43/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0043c3c0.cpp'
+        TestSource = '00/43/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0043c3c0_test.cpp'
+        PassPattern = 'PASS_0043c3c0'
+    }
+    [pscustomobject]@{
+        Address = '0043f3a0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/43/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0043f3a0.cpp'
+        TestSource = '00/43/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0043f3a0_test.cpp'
+        PassPattern = 'PASS_0043f3a0'
+    }
+    [pscustomobject]@{
+        Address = '00445650'
+        Module = 'CInputTypeXboxPadButtonEvent'
+        Source = '00/44/CInputTypeXboxPadButtonEvent_IsInputTypeWithMouseButton_00445650.cpp'
+        TestSource = '00/44/CInputTypeXboxPadButtonEvent_IsInputTypeWithMouseButton_00445650_test.cpp'
+        PassPattern = 'PASS_00445650'
+    }
+    [pscustomobject]@{
+        Address = '00445690'
+        Module = 'CInputTypeXboxPadLeftStickEvent'
+        Source = '00/44/CInputTypeXboxPadLeftStickEvent_IsInputTypeWithMouseButton_00445690.cpp'
+        TestSource = '00/44/CInputTypeXboxPadLeftStickEvent_IsInputTypeWithMouseButton_00445690_test.cpp'
+        PassPattern = 'PASS_00445690'
+    }
+    [pscustomobject]@{
+        Address = '00445710'
+        Module = 'CInputTypeMouseMovementEvent'
+        Source = '00/44/CInputTypeMouseMovementEvent_IsInputTypeWithMouseButton_00445710.cpp'
+        TestSource = '00/44/CInputTypeMouseMovementEvent_IsInputTypeWithMouseButton_00445710_test.cpp'
+        PassPattern = 'PASS_00445710'
+    }
+    [pscustomobject]@{
+        Address = '00445750'
+        Module = 'CInputTypeMouseWheelMovementEvent'
+        Source = '00/44/CInputTypeMouseWheelMovementEvent_IsInputTypeWithMouseButton_00445750.cpp'
+        TestSource = '00/44/CInputTypeMouseWheelMovementEvent_IsInputTypeWithMouseButton_00445750_test.cpp'
+        PassPattern = 'PASS_00445750'
+    }
+    [pscustomobject]@{
+        Address = '00445790'
+        Module = 'CInputTypeMouseWheelMovementUpEvent'
+        Source = '00/44/CInputTypeMouseWheelMovementUpEvent_IsInputTypeWithMouseButton_00445790.cpp'
+        TestSource = '00/44/CInputTypeMouseWheelMovementUpEvent_IsInputTypeWithMouseButton_00445790_test.cpp'
+        PassPattern = 'PASS_00445790'
+    }
+    [pscustomobject]@{
+        Address = '00447a10'
+        Module = 'CInputTypeKeyboardKeyEvent'
+        Source = '00/44/CInputTypeKeyboardKeyEvent_IsInputTypeWithMouseButton_00447a10.cpp'
+        TestSource = '00/44/CInputTypeKeyboardKeyEvent_IsInputTypeWithMouseButton_00447a10_test.cpp'
+        PassPattern = 'PASS_00447a10'
+    }
+    [pscustomobject]@{
+        Address = '00449700'
+        Module = 'CWorld'
+        Source = '00/44/CWorld_DrawGetEnvironment_00449700.cpp'
+        TestSource = '00/44/CWorld_DrawGetEnvironment_00449700_test.cpp'
+        PassPattern = 'PASS_00449700'
+    }
+    [pscustomobject]@{
+        Address = '004a8fb0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/4a/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004a8fb0.cpp'
+        TestSource = '00/4a/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004a8fb0_test.cpp'
+        PassPattern = 'PASS_004a8fb0'
+    }
+    [pscustomobject]@{
+        Address = '004abc00'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/4a/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004abc00.cpp'
+        TestSource = '00/4a/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004abc00_test.cpp'
+        PassPattern = 'PASS_004abc00'
+    }
+    [pscustomobject]@{
+        Address = '004af240'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/4a/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004af240.cpp'
+        TestSource = '00/4a/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004af240_test.cpp'
+        PassPattern = 'PASS_004af240'
+    }
+    [pscustomobject]@{
+        Address = '004b65c0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/4b/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004b65c0.cpp'
+        TestSource = '00/4b/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004b65c0_test.cpp'
+        PassPattern = 'PASS_004b65c0'
+    }
+    [pscustomobject]@{
+        Address = '004b83b0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/4b/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004b83b0.cpp'
+        TestSource = '00/4b/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004b83b0_test.cpp'
+        PassPattern = 'PASS_004b83b0'
+    }
+    [pscustomobject]@{
+        Address = '004e3c6e'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/4e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004e3c6e.cpp'
+        TestSource = '00/4e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004e3c6e_test.cpp'
+        PassPattern = 'PASS_004e3c6e'
+    }
+    [pscustomobject]@{
+        Address = '004fad50'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/4f/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004fad50.cpp'
+        TestSource = '00/4f/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_004fad50_test.cpp'
+        PassPattern = 'PASS_004fad50'
+    }
+    [pscustomobject]@{
+        Address = '00525df0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/52/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00525df0.cpp'
+        TestSource = '00/52/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00525df0_test.cpp'
+        PassPattern = 'PASS_00525df0'
+    }
+    [pscustomobject]@{
+        Address = '00526010'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/52/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00526010.cpp'
+        TestSource = '00/52/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00526010_test.cpp'
+        PassPattern = 'PASS_00526010'
+    }
+    [pscustomobject]@{
+        Address = '00564890'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/56/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00564890.cpp'
+        TestSource = '00/56/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00564890_test.cpp'
+        PassPattern = 'PASS_00564890'
+    }
+    [pscustomobject]@{
+        Address = '00566550'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/56/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00566550.cpp'
+        TestSource = '00/56/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00566550_test.cpp'
+        PassPattern = 'PASS_00566550'
+    }
+    [pscustomobject]@{
+        Address = '0056d6e0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/56/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0056d6e0.cpp'
+        TestSource = '00/56/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0056d6e0_test.cpp'
+        PassPattern = 'PASS_0056d6e0'
+    }
+    [pscustomobject]@{
+        Address = '00591f62'
+        Module = 'CPair'
+        Source = '00/59/CPair_CPair_00591f62.cpp'
+        TestSource = '00/59/CPair_CPair_00591f62_test.cpp'
+        PassPattern = 'PASS_00591f62'
+    }
+    [pscustomobject]@{
+        Address = '005c2df5'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/5c/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_005c2df5.cpp'
+        TestSource = '00/5c/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_005c2df5_test.cpp'
+        PassPattern = 'PASS_005c2df5'
+    }
+    [pscustomobject]@{
+        Address = '00628fb0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00628fb0.cpp'
+        TestSource = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00628fb0_test.cpp'
+        PassPattern = 'PASS_00628fb0'
+    }
+    [pscustomobject]@{
+        Address = '006290e0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_006290e0.cpp'
+        TestSource = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_006290e0_test.cpp'
+        PassPattern = 'PASS_006290e0'
+    }
+    [pscustomobject]@{
+        Address = '00643ff6'
+        Module = 'CObservable'
+        Source = '00/64/CObservable_AddExclusiveObserver_00643ff6.cpp'
+        TestSource = '00/64/CObservable_AddExclusiveObserver_00643ff6_test.cpp'
+        PassPattern = 'PASS_00643ff6'
+    }
+    [pscustomobject]@{
+        Address = '0065688f'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/65/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0065688f.cpp'
+        TestSource = '00/65/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0065688f_test.cpp'
+        PassPattern = 'PASS_0065688f'
+    }
+    [pscustomobject]@{
+        Address = '00661a60'
+        Module = 'CThingPhysical'
+        Source = '00/66/CThingPhysical_Save_00661a60.cpp'
+        TestSource = '00/66/CThingPhysical_Save_00661a60_test.cpp'
+        PassPattern = 'PASS_00661a60'
+    }
+    [pscustomobject]@{
+        Address = '00676a50'
+        Module = 'CCreatureDef'
+        Source = '00/67/CCreatureDef_Copy_00676a50.cpp'
+        TestSource = '00/67/CCreatureDef_Copy_00676a50_test.cpp'
+        PassPattern = 'PASS_00676a50'
+    }
+    [pscustomobject]@{
+        Address = '00677390'
+        Module = 'CThingBaseDef'
+        Source = '00/67/CThingBaseDef_CopyCThingBaseDefUAEXPBVCDefClassBaseZ_00677390.cpp'
+        TestSource = '00/67/CThingBaseDef_CopyCThingBaseDefUAEXPBVCDefClassBaseZ_00677390_test.cpp'
+        PassPattern = 'PASS_00677390'
+    }
+    [pscustomobject]@{
+        Address = '00677740'
+        Module = 'CReactionMatch_MRPyramid'
+        Source = '00/67/CReactionMatchMRPyramid_GetMatchType_00677740.cpp'
+        TestSource = '00/67/CReactionMatchMRPyramid_GetMatchType_00677740_test.cpp'
+        PassPattern = 'PASS_00677740'
+    }
+    [pscustomobject]@{
+        Address = '006c27d0'
+        Module = 'CLevelLoader'
+        Source = '00/6c/CLevelLoader_SuspendableProcess_006c27d0.cpp'
+        TestSource = '00/6c/CLevelLoader_SuspendableProcess_006c27d0_test.cpp'
+        PassPattern = 'PASS_006c27d0'
+    }
+    [pscustomobject]@{
+        Address = '006f8fc0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/6f/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_006f8fc0.cpp'
+        TestSource = '00/6f/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_006f8fc0_test.cpp'
+        PassPattern = 'PASS_006f8fc0'
+    }
+    [pscustomobject]@{
+        Address = '007120d0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/71/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007120d0.cpp'
+        TestSource = '00/71/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007120d0_test.cpp'
+        PassPattern = 'PASS_007120d0'
+    }
+    [pscustomobject]@{
+        Address = '0073cf70'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/73/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0073cf70.cpp'
+        TestSource = '00/73/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0073cf70_test.cpp'
+        PassPattern = 'PASS_0073cf70'
+    }
+    [pscustomobject]@{
+        Address = '0073dec0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/73/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0073dec0.cpp'
+        TestSource = '00/73/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0073dec0_test.cpp'
+        PassPattern = 'PASS_0073dec0'
+    }
+    [pscustomobject]@{
+        Address = '00754b90'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/75/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00754b90.cpp'
+        TestSource = '00/75/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00754b90_test.cpp'
+        PassPattern = 'PASS_00754b90'
+    }
+    [pscustomobject]@{
+        Address = '007699e0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/76/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007699e0.cpp'
+        TestSource = '00/76/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007699e0_test.cpp'
+        PassPattern = 'PASS_007699e0'
+    }
+    [pscustomobject]@{
+        Address = '0078df30'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/78/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0078df30.cpp'
+        TestSource = '00/78/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0078df30_test.cpp'
+        PassPattern = 'PASS_0078df30'
+    }
+    [pscustomobject]@{
+        Address = '007936c0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/79/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007936c0.cpp'
+        TestSource = '00/79/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007936c0_test.cpp'
+        PassPattern = 'PASS_007936c0'
+    }
+    [pscustomobject]@{
+        Address = '007df380'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/7d/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007df380.cpp'
+        TestSource = '00/7d/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007df380_test.cpp'
+        PassPattern = 'PASS_007df380'
+    }
+    [pscustomobject]@{
+        Address = '007e7fa0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007e7fa0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007e7fa0_test.cpp'
+        PassPattern = 'PASS_007e7fa0'
+    }
+    [pscustomobject]@{
+        Address = '007eb990'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb990.cpp'
+        TestSource = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb990_test.cpp'
+        PassPattern = 'PASS_007eb990'
+    }
+    [pscustomobject]@{
+        Address = '007ed420'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007ed420.cpp'
+        TestSource = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007ed420_test.cpp'
+        PassPattern = 'PASS_007ed420'
+    }
+    [pscustomobject]@{
+        Address = '007ee7a0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007ee7a0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007ee7a0_test.cpp'
+        PassPattern = 'PASS_007ee7a0'
+    }
+    [pscustomobject]@{
+        Address = '00815870'
+        Module = 'CTCHitLocations'
+        Source = '00/81/CTCHitLocations_GetPCombatFirstHitLocationPosInside_00815870.cpp'
+        TestSource = '00/81/CTCHitLocations_GetPCombatFirstHitLocationPosInside_00815870_test.cpp'
+        PassPattern = 'PASS_00815870'
+    }
+    [pscustomobject]@{
+        Address = '0081e240'
+        Module = 'CIDrawMap'
+        Source = '00/81/CIDrawMap_DrawFindLastUnblockedPosition_0081e240.cpp'
+        TestSource = '00/81/CIDrawMap_DrawFindLastUnblockedPosition_0081e240_test.cpp'
+        PassPattern = 'PASS_0081e240'
+    }
+    [pscustomobject]@{
+        Address = '0081e920'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/81/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0081e920.cpp'
+        TestSource = '00/81/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0081e920_test.cpp'
+        PassPattern = 'PASS_0081e920'
+    }
+    [pscustomobject]@{
+        Address = '0082c060'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_DrawMap_0082c060.cpp'
+        TestSource = '00/82/CMiniMapDisplay_DrawMap_0082c060_test.cpp'
+        PassPattern = 'PASS_0082c060'
+    }
+    [pscustomobject]@{
+        Address = '00830130'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/83/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00830130.cpp'
+        TestSource = '00/83/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00830130_test.cpp'
+        PassPattern = 'PASS_00830130'
+    }
+    [pscustomobject]@{
+        Address = '008302e0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/83/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_008302e0.cpp'
+        TestSource = '00/83/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_008302e0_test.cpp'
+        PassPattern = 'PASS_008302e0'
+    }
+    [pscustomobject]@{
+        Address = '008e8c20'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/8e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_008e8c20.cpp'
+        TestSource = '00/8e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_008e8c20_test.cpp'
+        PassPattern = 'PASS_008e8c20'
+    }
+    [pscustomobject]@{
+        Address = '008fd3dc'
+        Module = 'CAIStateGroup_MinionGossip'
+        Source = '00/8f/CAIStateGroupMinionGossip_IsTimingCritical_008fd3dc.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionGossip_IsTimingCritical_008fd3dc_test.cpp'
+        PassPattern = 'PASS_008fd3dc'
+    }
+    [pscustomobject]@{
+        Address = '008fda24'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/8f/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_008fda24.cpp'
+        TestSource = '00/8f/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_008fda24_test.cpp'
+        PassPattern = 'PASS_008fda24'
+    }
+    [pscustomobject]@{
+        Address = '008fe7d5'
+        Module = 'CAIStateGroup_BanditPlayDice'
+        Source = '00/8f/CAIStateGroupBanditPlayDice_PutWeaponAway_008fe7d5.cpp'
+        TestSource = '00/8f/CAIStateGroupBanditPlayDice_PutWeaponAway_008fe7d5_test.cpp'
+        PassPattern = 'PASS_008fe7d5'
+    }
+    [pscustomobject]@{
+        Address = '009106b0'
+        Module = 'CAIStateGroup_MinionListenToStory'
+        Source = '00/91/CAIStateGroupMinionListenToStory_OnReplace_009106b0.cpp'
+        TestSource = '00/91/CAIStateGroupMinionListenToStory_OnReplace_009106b0_test.cpp'
+        PassPattern = 'PASS_009106b0'
+    }
+    [pscustomobject]@{
+        Address = '00910b20'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/91/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00910b20.cpp'
+        TestSource = '00/91/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00910b20_test.cpp'
+        PassPattern = 'PASS_00910b20'
+    }
+    [pscustomobject]@{
+        Address = '00922eb0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/92/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00922eb0.cpp'
+        TestSource = '00/92/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00922eb0_test.cpp'
+        PassPattern = 'PASS_00922eb0'
+    }
+    [pscustomobject]@{
+        Address = '00935970'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/93/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00935970.cpp'
+        TestSource = '00/93/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00935970_test.cpp'
+        PassPattern = 'PASS_00935970'
+    }
+    [pscustomobject]@{
+        Address = '00966890'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/96/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00966890.cpp'
+        TestSource = '00/96/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00966890_test.cpp'
+        PassPattern = 'PASS_00966890'
+    }
+    [pscustomobject]@{
+        Address = '0097d280'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/97/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0097d280.cpp'
+        TestSource = '00/97/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0097d280_test.cpp'
+        PassPattern = 'PASS_0097d280'
+    }
+    [pscustomobject]@{
+        Address = '0098c8a0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/98/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0098c8a0.cpp'
+        TestSource = '00/98/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0098c8a0_test.cpp'
+        PassPattern = 'PASS_0098c8a0'
+    }
+    [pscustomobject]@{
+        Address = '009a9010'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/9a/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009a9010.cpp'
+        TestSource = '00/9a/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009a9010_test.cpp'
+        PassPattern = 'PASS_009a9010'
+    }
+    [pscustomobject]@{
+        Address = '009aa470'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/9a/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009aa470.cpp'
+        TestSource = '00/9a/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009aa470_test.cpp'
+        PassPattern = 'PASS_009aa470'
+    }
+    [pscustomobject]@{
+        Address = '009c5be0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/9c/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009c5be0.cpp'
+        TestSource = '00/9c/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009c5be0_test.cpp'
+        PassPattern = 'PASS_009c5be0'
+    }
+    [pscustomobject]@{
+        Address = '009d47c0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/9d/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009d47c0.cpp'
+        TestSource = '00/9d/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009d47c0_test.cpp'
+        PassPattern = 'PASS_009d47c0'
+    }
+    [pscustomobject]@{
+        Address = '009ea320'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/9e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009ea320.cpp'
+        TestSource = '00/9e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009ea320_test.cpp'
+        PassPattern = 'PASS_009ea320'
+    }
+    [pscustomobject]@{
+        Address = '009f0080'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/9f/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009f0080.cpp'
+        TestSource = '00/9f/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009f0080_test.cpp'
+        PassPattern = 'PASS_009f0080'
+    }
+    [pscustomobject]@{
+        Address = '009f00f0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/9f/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009f00f0.cpp'
+        TestSource = '00/9f/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009f00f0_test.cpp'
+        PassPattern = 'PASS_009f00f0'
+    }
+    [pscustomobject]@{
+        Address = '009ffb20'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/9f/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_009ffb20.cpp'
+        TestSource = '00/9f/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_009ffb20_test.cpp'
+        PassPattern = 'PASS_009ffb20'
+    }
+    [pscustomobject]@{
+        Address = '00a11820'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/a1/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00a11820.cpp'
+        TestSource = '00/a1/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00a11820_test.cpp'
+        PassPattern = 'PASS_00a11820'
+    }
+    [pscustomobject]@{
+        Address = '00a1bfc0'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_CreateLineList_00a1bfc0.cpp'
+        TestSource = '00/a1/CNavigatorAStar_CreateLineList_00a1bfc0_test.cpp'
+        PassPattern = 'PASS_00a1bfc0'
+    }
+    [pscustomobject]@{
+        Address = '00a2e730'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/a2/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00a2e730.cpp'
+        TestSource = '00/a2/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00a2e730_test.cpp'
+        PassPattern = 'PASS_00a2e730'
+    }
+    [pscustomobject]@{
+        Address = '00a377a0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/a3/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00a377a0.cpp'
+        TestSource = '00/a3/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00a377a0_test.cpp'
+        PassPattern = 'PASS_00a377a0'
+    }
+    [pscustomobject]@{
+        Address = '00a3f470'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/a3/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00a3f470.cpp'
+        TestSource = '00/a3/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00a3f470_test.cpp'
+        PassPattern = 'PASS_00a3f470'
+    }
+    [pscustomobject]@{
+        Address = '00a62ed0'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a6/CHandleBasedMemoryPool_Free_00a62ed0.cpp'
+        TestSource = '00/a6/CHandleBasedMemoryPool_Free_00a62ed0_test.cpp'
+        PassPattern = 'PASS_00a62ed0'
+    }
+    [pscustomobject]@{
+        Address = '00a6c120'
+        Module = 'CInitBaseClass'
+        Source = '00/a6/CInitBaseClass_Uninitialise_00a6c120.cpp'
+        TestSource = '00/a6/CInitBaseClass_Uninitialise_00a6c120_test.cpp'
+        PassPattern = 'PASS_00a6c120'
+    }
+    [pscustomobject]@{
+        Address = '00a989a0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/a9/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00a989a0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00a989a0_test.cpp'
+        PassPattern = 'PASS_00a989a0'
+    }
+    [pscustomobject]@{
+        Address = '00a989e0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/a9/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00a989e0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00a989e0_test.cpp'
+        PassPattern = 'PASS_00a989e0'
+    }
+    [pscustomobject]@{
+        Address = '00a9c8c0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/a9/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00a9c8c0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00a9c8c0_test.cpp'
+        PassPattern = 'PASS_00a9c8c0'
+    }
+    [pscustomobject]@{
+        Address = '00a9c930'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/a9/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00a9c930.cpp'
+        TestSource = '00/a9/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00a9c930_test.cpp'
+        PassPattern = 'PASS_00a9c930'
+    }
+    [pscustomobject]@{
+        Address = '00aec550'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/ae/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00aec550.cpp'
+        TestSource = '00/ae/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00aec550_test.cpp'
+        PassPattern = 'PASS_00aec550'
+    }
+    [pscustomobject]@{
+        Address = '00aec8a0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/ae/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00aec8a0.cpp'
+        TestSource = '00/ae/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00aec8a0_test.cpp'
+        PassPattern = 'PASS_00aec8a0'
+    }
+    [pscustomobject]@{
+        Address = '00c26aa0'
+        Module = 'CChunkedFileChunk'
+        Source = '00/c2/CChunkedFileChunk_CChunkedFileChunk_00c26aa0.cpp'
+        TestSource = '00/c2/CChunkedFileChunk_CChunkedFileChunk_00c26aa0_test.cpp'
+        PassPattern = 'PASS_00c26aa0'
+    }
+    [pscustomobject]@{
+        Address = '00c26f00'
+        Module = 'CChunkedFileChunk'
+        Source = '00/c2/CChunkedFileChunk_CChunkedFileChunk_00c26f00.cpp'
+        TestSource = '00/c2/CChunkedFileChunk_CChunkedFileChunk_00c26f00_test.cpp'
+        PassPattern = 'PASS_00c26f00'
+    }
+    [pscustomobject]@{
+        Address = '00c36c70'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/c3/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00c36c70.cpp'
+        TestSource = '00/c3/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00c36c70_test.cpp'
+        PassPattern = 'PASS_00c36c70'
+    }
+    [pscustomobject]@{
+        Address = '00c3d0e0'
+        Module = 'CAIStateGroup_CreatureUseCoverBase'
+        Source = '00/c3/CAIStateGroupCreatureUseCoverBase_CAIStateGroupCreatureUseCoverBase_00c3d0e0.cpp'
+        TestSource = '00/c3/CAIStateGroupCreatureUseCoverBase_CAIStateGroupCreatureUseCoverBase_00c3d0e0_test.cpp'
+        PassPattern = 'PASS_00c3d0e0'
+    }
+    [pscustomobject]@{
+        Address = '00ca7200'
+        Module = 'CVolume'
+        Source = '00/ca/CVolume_ReleaseVolume_00ca7200.cpp'
+        TestSource = '00/ca/CVolume_ReleaseVolume_00ca7200_test.cpp'
+        PassPattern = 'PASS_00ca7200'
+    }
+    [pscustomobject]@{
+        Address = '00ca85e0'
+        Module = 'WaypointData'
+        Source = '00/ca/WaypointData_WaypointData_00ca85e0.cpp'
+        TestSource = '00/ca/WaypointData_WaypointData_00ca85e0_test.cpp'
+        PassPattern = 'PASS_00ca85e0'
+    }
+    [pscustomobject]@{
+        Address = '00caeea0'
+        Module = 'CEngineLandscapePatch'
+        Source = '00/ca/CEngineLandscapePatch_DestroyProceduralTextureVertexBuffers_00caeea0.cpp'
+        TestSource = '00/ca/CEngineLandscapePatch_DestroyProceduralTextureVertexBuffers_00caeea0_test.cpp'
+        PassPattern = 'PASS_00caeea0'
+    }
+    [pscustomobject]@{
+        Address = '00cb0ca0'
+        Module = 'CEngineLandscapePatch'
+        Source = '00/cb/CEngineLandscapePatch_DestroyProceduralTextureVertexBuffers_00cb0ca0.cpp'
+        TestSource = '00/cb/CEngineLandscapePatch_DestroyProceduralTextureVertexBuffers_00cb0ca0_test.cpp'
+        PassPattern = 'PASS_00cb0ca0'
+    }
+    [pscustomobject]@{
+        Address = '00cb2020'
+        Module = 'CTCObstacle'
+        Source = '00/cb/CTCObstacle_OnKill_00cb2020.cpp'
+        TestSource = '00/cb/CTCObstacle_OnKill_00cb2020_test.cpp'
+        PassPattern = 'PASS_00cb2020'
+    }
+    [pscustomobject]@{
+        Address = '00cb6000'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/cb/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00cb6000.cpp'
+        TestSource = '00/cb/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00cb6000_test.cpp'
+        PassPattern = 'PASS_00cb6000'
+    }
+    [pscustomobject]@{
+        Address = '0064464c'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/64/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0064464c.cpp'
+        TestSource = '00/64/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0064464c_test.cpp'
+        PassPattern = 'PASS_0064464c'
+    }
+    [pscustomobject]@{
+        Address = '0070d510'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/70/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0070d510.cpp'
+        TestSource = '00/70/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0070d510_test.cpp'
+        PassPattern = 'PASS_0070d510'
+    }
+    [pscustomobject]@{
+        Address = '00419047'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00419047.cpp'
+        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00419047_test.cpp'
+        PassPattern = 'PASS_00419047'
+    }
+    [pscustomobject]@{
+        Address = '0041906e'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041906e.cpp'
+        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041906e_test.cpp'
+        PassPattern = 'PASS_0041906e'
+    }
+    [pscustomobject]@{
+        Address = '00419518'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00419518.cpp'
+        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00419518_test.cpp'
+        PassPattern = 'PASS_00419518'
+    }
+    [pscustomobject]@{
+        Address = '00429cc7'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429cc7.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429cc7_test.cpp'
+        PassPattern = 'PASS_00429cc7'
+    }
+    [pscustomobject]@{
+        Address = '00429d3c'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429d3c.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429d3c_test.cpp'
+        PassPattern = 'PASS_00429d3c'
+    }
+    [pscustomobject]@{
+        Address = '00429d71'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429d71.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429d71_test.cpp'
+        PassPattern = 'PASS_00429d71'
+    }
+    [pscustomobject]@{
+        Address = '00429d93'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429d93.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429d93_test.cpp'
+        PassPattern = 'PASS_00429d93'
+    }
+    [pscustomobject]@{
+        Address = '00428b37'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00428b37.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00428b37_test.cpp'
+        PassPattern = 'PASS_00428b37'
+    }
+    [pscustomobject]@{
+        Address = '0042f86f'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0042f86f.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0042f86f_test.cpp'
+        PassPattern = 'PASS_0042f86f'
+    }
+    [pscustomobject]@{
+        Address = '0048548b'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/48/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0048548b.cpp'
+        TestSource = '00/48/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0048548b_test.cpp'
+        PassPattern = 'PASS_0048548b'
+    }
+    [pscustomobject]@{
+        Address = '004d9bd4'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004d9bd4.cpp'
+        TestSource = '00/4d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004d9bd4_test.cpp'
+        PassPattern = 'PASS_004d9bd4'
+    }
+    [pscustomobject]@{
+        Address = '0057f38c'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/57/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0057f38c.cpp'
+        TestSource = '00/57/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0057f38c_test.cpp'
+        PassPattern = 'PASS_0057f38c'
+    }
+    [pscustomobject]@{
+        Address = '0057f3e3'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/57/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0057f3e3.cpp'
+        TestSource = '00/57/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0057f3e3_test.cpp'
+        PassPattern = 'PASS_0057f3e3'
+    }
+    [pscustomobject]@{
+        Address = '0057f454'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/57/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0057f454.cpp'
+        TestSource = '00/57/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0057f454_test.cpp'
+        PassPattern = 'PASS_0057f454'
+    }
+    [pscustomobject]@{
+        Address = '00592099'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/59/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00592099.cpp'
+        TestSource = '00/59/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00592099_test.cpp'
+        PassPattern = 'PASS_00592099'
+    }
+    [pscustomobject]@{
+        Address = '005929ae'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/59/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005929ae.cpp'
+        TestSource = '00/59/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005929ae_test.cpp'
+        PassPattern = 'PASS_005929ae'
+    }
+    [pscustomobject]@{
+        Address = '005929f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/59/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005929f0.cpp'
+        TestSource = '00/59/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005929f0_test.cpp'
+        PassPattern = 'PASS_005929f0'
+    }
+    [pscustomobject]@{
+        Address = '005b121d'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005b121d.cpp'
+        TestSource = '00/5b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005b121d_test.cpp'
+        PassPattern = 'PASS_005b121d'
+    }
+    [pscustomobject]@{
+        Address = '005b16be'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005b16be.cpp'
+        TestSource = '00/5b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005b16be_test.cpp'
+        PassPattern = 'PASS_005b16be'
+    }
+    [pscustomobject]@{
+        Address = '005b9d8c'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005b9d8c.cpp'
+        TestSource = '00/5b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005b9d8c_test.cpp'
+        PassPattern = 'PASS_005b9d8c'
+    }
+    [pscustomobject]@{
+        Address = '005ba54a'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005ba54a.cpp'
+        TestSource = '00/5b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005ba54a_test.cpp'
+        PassPattern = 'PASS_005ba54a'
+    }
+    [pscustomobject]@{
+        Address = '005c03f7'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005c03f7.cpp'
+        TestSource = '00/5c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005c03f7_test.cpp'
+        PassPattern = 'PASS_005c03f7'
+    }
+    [pscustomobject]@{
+        Address = '005cbd65'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005cbd65.cpp'
+        TestSource = '00/5c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005cbd65_test.cpp'
+        PassPattern = 'PASS_005cbd65'
+    }
+    [pscustomobject]@{
+        Address = '005cbf0a'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005cbf0a.cpp'
+        TestSource = '00/5c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005cbf0a_test.cpp'
+        PassPattern = 'PASS_005cbf0a'
+    }
+    [pscustomobject]@{
+        Address = '005f7efa'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5f/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005f7efa.cpp'
+        TestSource = '00/5f/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005f7efa_test.cpp'
+        PassPattern = 'PASS_005f7efa'
+    }
+    [pscustomobject]@{
+        Address = '00654871'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/65/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00654871.cpp'
+        TestSource = '00/65/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00654871_test.cpp'
+        PassPattern = 'PASS_00654871'
+    }
+    [pscustomobject]@{
+        Address = '0065d1ce'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/65/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0065d1ce.cpp'
+        TestSource = '00/65/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0065d1ce_test.cpp'
+        PassPattern = 'PASS_0065d1ce'
+    }
+    [pscustomobject]@{
+        Address = '0065d278'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/65/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0065d278.cpp'
+        TestSource = '00/65/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0065d278_test.cpp'
+        PassPattern = 'PASS_0065d278'
+    }
+    [pscustomobject]@{
+        Address = '0065d2c7'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/65/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0065d2c7.cpp'
+        TestSource = '00/65/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0065d2c7_test.cpp'
+        PassPattern = 'PASS_0065d2c7'
+    }
+    [pscustomobject]@{
+        Address = '00788b55'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00788b55.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00788b55_test.cpp'
+        PassPattern = 'PASS_00788b55'
+    }
+    [pscustomobject]@{
+        Address = '00788cba'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00788cba.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00788cba_test.cpp'
+        PassPattern = 'PASS_00788cba'
+    }
+    [pscustomobject]@{
+        Address = '007be66a'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007be66a.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007be66a_test.cpp'
+        PassPattern = 'PASS_007be66a'
+    }
+    [pscustomobject]@{
+        Address = '00cd20eb'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/cd/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00cd20eb.cpp'
+        TestSource = '00/cd/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00cd20eb_test.cpp'
+        PassPattern = 'PASS_00cd20eb'
+    }
+    [pscustomobject]@{
+        Address = '00cd2427'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/cd/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00cd2427.cpp'
+        TestSource = '00/cd/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00cd2427_test.cpp'
+        PassPattern = 'PASS_00cd2427'
+    }
+    [pscustomobject]@{
+        Address = '00415830'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00415830.cpp'
+        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00415830_test.cpp'
+        PassPattern = 'PASS_00415830'
+    }
+    [pscustomobject]@{
+        Address = '0041ba70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041ba70.cpp'
+        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041ba70_test.cpp'
+        PassPattern = 'PASS_0041ba70'
+    }
+    [pscustomobject]@{
+        Address = '0041baa0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041baa0.cpp'
+        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041baa0_test.cpp'
+        PassPattern = 'PASS_0041baa0'
+    }
+    [pscustomobject]@{
+        Address = '00429a10'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429a10.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429a10_test.cpp'
+        PassPattern = 'PASS_00429a10'
+    }
+    [pscustomobject]@{
+        Address = '0042dbb0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0042dbb0.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0042dbb0_test.cpp'
+        PassPattern = 'PASS_0042dbb0'
+    }
+    [pscustomobject]@{
+        Address = '004044d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/40/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004044d0.cpp'
+        TestSource = '00/40/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004044d0_test.cpp'
+        PassPattern = 'PASS_004044d0'
+    }
+    [pscustomobject]@{
+        Address = '0040d850'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/40/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0040d850.cpp'
+        TestSource = '00/40/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0040d850_test.cpp'
+        PassPattern = 'PASS_0040d850'
+    }
+    [pscustomobject]@{
+        Address = '0040e090'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/40/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0040e090.cpp'
+        TestSource = '00/40/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0040e090_test.cpp'
+        PassPattern = 'PASS_0040e090'
+    }
+    [pscustomobject]@{
+        Address = '0040f230'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/40/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0040f230.cpp'
+        TestSource = '00/40/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0040f230_test.cpp'
+        PassPattern = 'PASS_0040f230'
+    }
+    [pscustomobject]@{
+        Address = '0040f290'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/40/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0040f290.cpp'
+        TestSource = '00/40/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0040f290_test.cpp'
+        PassPattern = 'PASS_0040f290'
+    }
+    [pscustomobject]@{
+        Address = '0042fb80'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0042fb80.cpp'
+        TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0042fb80_test.cpp'
+        PassPattern = 'PASS_0042fb80'
+    }
+    [pscustomobject]@{
+        Address = '00437300'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00437300.cpp'
+        TestSource = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00437300_test.cpp'
+        PassPattern = 'PASS_00437300'
+    }
+    [pscustomobject]@{
+        Address = '0043cc20'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043cc20.cpp'
+        TestSource = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043cc20_test.cpp'
+        PassPattern = 'PASS_0043cc20'
+    }
+    [pscustomobject]@{
+        Address = '0043e550'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043e550.cpp'
+        TestSource = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043e550_test.cpp'
+        PassPattern = 'PASS_0043e550'
+    }
+    [pscustomobject]@{
+        Address = '0043f050'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043f050.cpp'
+        TestSource = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043f050_test.cpp'
+        PassPattern = 'PASS_0043f050'
+    }
+    [pscustomobject]@{
+        Address = '0043f160'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043f160.cpp'
+        TestSource = '00/43/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0043f160_test.cpp'
+        PassPattern = 'PASS_0043f160'
+    }
+    [pscustomobject]@{
+        Address = '0044b620'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/44/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044b620.cpp'
+        TestSource = '00/44/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044b620_test.cpp'
+        PassPattern = 'PASS_0044b620'
+    }
+    [pscustomobject]@{
+        Address = '004a9810'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a9810.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a9810_test.cpp'
+        PassPattern = 'PASS_004a9810'
+    }
+    [pscustomobject]@{
+        Address = '004a9850'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a9850.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a9850_test.cpp'
+        PassPattern = 'PASS_004a9850'
+    }
+    [pscustomobject]@{
+        Address = '004a9940'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a9940.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a9940_test.cpp'
+        PassPattern = 'PASS_004a9940'
+    }
+    [pscustomobject]@{
+        Address = '004a99b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a99b0.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a99b0_test.cpp'
+        PassPattern = 'PASS_004a99b0'
+    }
+    [pscustomobject]@{
+        Address = '004b7d40'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004b7d40.cpp'
+        TestSource = '00/4b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004b7d40_test.cpp'
+        PassPattern = 'PASS_004b7d40'
+    }
+    [pscustomobject]@{
+        Address = '004c15f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004c15f0.cpp'
+        TestSource = '00/4c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004c15f0_test.cpp'
+        PassPattern = 'PASS_004c15f0'
+    }
+    [pscustomobject]@{
+        Address = '004c16d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004c16d0.cpp'
+        TestSource = '00/4c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004c16d0_test.cpp'
+        PassPattern = 'PASS_004c16d0'
+    }
+    [pscustomobject]@{
+        Address = '004c2450'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004c2450.cpp'
+        TestSource = '00/4c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004c2450_test.cpp'
+        PassPattern = 'PASS_004c2450'
+    }
+    [pscustomobject]@{
+        Address = '0050bd90'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050bd90.cpp'
+        TestSource = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050bd90_test.cpp'
+        PassPattern = 'PASS_0050bd90'
+    }
+    [pscustomobject]@{
+        Address = '0050be90'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050be90.cpp'
+        TestSource = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050be90_test.cpp'
+        PassPattern = 'PASS_0050be90'
+    }
+    [pscustomobject]@{
+        Address = '0050f620'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050f620.cpp'
+        TestSource = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050f620_test.cpp'
+        PassPattern = 'PASS_0050f620'
+    }
+    [pscustomobject]@{
+        Address = '0050f790'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050f790.cpp'
+        TestSource = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050f790_test.cpp'
+        PassPattern = 'PASS_0050f790'
+    }
+    [pscustomobject]@{
+        Address = '0050f820'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050f820.cpp'
+        TestSource = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050f820_test.cpp'
+        PassPattern = 'PASS_0050f820'
+    }
+    [pscustomobject]@{
+        Address = '00527450'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/52/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00527450.cpp'
+        TestSource = '00/52/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00527450_test.cpp'
+        PassPattern = 'PASS_00527450'
+    }
+    [pscustomobject]@{
+        Address = '0056c100'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/56/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0056c100.cpp'
+        TestSource = '00/56/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0056c100_test.cpp'
+        PassPattern = 'PASS_0056c100'
+    }
+    [pscustomobject]@{
+        Address = '0056c920'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/56/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0056c920.cpp'
+        TestSource = '00/56/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0056c920_test.cpp'
+        PassPattern = 'PASS_0056c920'
+    }
+    [pscustomobject]@{
+        Address = '005d9ef0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005d9ef0.cpp'
+        TestSource = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005d9ef0_test.cpp'
+        PassPattern = 'PASS_005d9ef0'
+    }
+    [pscustomobject]@{
+        Address = '005ed330'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005ed330.cpp'
+        TestSource = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005ed330_test.cpp'
+        PassPattern = 'PASS_005ed330'
+    }
+    [pscustomobject]@{
+        Address = '0063f010'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/63/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0063f010.cpp'
+        TestSource = '00/63/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0063f010_test.cpp'
+        PassPattern = 'PASS_0063f010'
+    }
+    [pscustomobject]@{
+        Address = '006684e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006684e0.cpp'
+        TestSource = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006684e0_test.cpp'
+        PassPattern = 'PASS_006684e0'
+    }
+    [pscustomobject]@{
+        Address = '00668560'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00668560.cpp'
+        TestSource = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00668560_test.cpp'
+        PassPattern = 'PASS_00668560'
+    }
+    [pscustomobject]@{
+        Address = '006685b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006685b0.cpp'
+        TestSource = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006685b0_test.cpp'
+        PassPattern = 'PASS_006685b0'
+    }
+    [pscustomobject]@{
+        Address = '00670ac0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/67/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00670ac0.cpp'
+        TestSource = '00/67/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00670ac0_test.cpp'
+        PassPattern = 'PASS_00670ac0'
+    }
+    [pscustomobject]@{
+        Address = '006853b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006853b0.cpp'
+        TestSource = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006853b0_test.cpp'
+        PassPattern = 'PASS_006853b0'
+    }
+    [pscustomobject]@{
+        Address = '006855e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006855e0.cpp'
+        TestSource = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006855e0_test.cpp'
+        PassPattern = 'PASS_006855e0'
+    }
+    [pscustomobject]@{
+        Address = '00695980'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/69/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00695980.cpp'
+        TestSource = '00/69/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00695980_test.cpp'
+        PassPattern = 'PASS_00695980'
+    }
+    [pscustomobject]@{
+        Address = '0069bb30'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/69/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0069bb30.cpp'
+        TestSource = '00/69/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0069bb30_test.cpp'
+        PassPattern = 'PASS_0069bb30'
+    }
+    [pscustomobject]@{
+        Address = '006adef0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006adef0.cpp'
+        TestSource = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006adef0_test.cpp'
+        PassPattern = 'PASS_006adef0'
+    }
+    [pscustomobject]@{
+        Address = '006c47c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006c47c0.cpp'
+        TestSource = '00/6c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006c47c0_test.cpp'
+        PassPattern = 'PASS_006c47c0'
+    }
+    [pscustomobject]@{
+        Address = '006c4e40'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006c4e40.cpp'
+        TestSource = '00/6c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006c4e40_test.cpp'
+        PassPattern = 'PASS_006c4e40'
+    }
+    [pscustomobject]@{
+        Address = '006cd0a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006cd0a0.cpp'
+        TestSource = '00/6c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006cd0a0_test.cpp'
+        PassPattern = 'PASS_006cd0a0'
+    }
+    [pscustomobject]@{
+        Address = '006d33a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d33a0.cpp'
+        TestSource = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d33a0_test.cpp'
+        PassPattern = 'PASS_006d33a0'
+    }
+    [pscustomobject]@{
+        Address = '006d36a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d36a0.cpp'
+        TestSource = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d36a0_test.cpp'
+        PassPattern = 'PASS_006d36a0'
+    }
+    [pscustomobject]@{
+        Address = '006d3710'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d3710.cpp'
+        TestSource = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d3710_test.cpp'
+        PassPattern = 'PASS_006d3710'
+    }
+    [pscustomobject]@{
+        Address = '006d93a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d93a0.cpp'
+        TestSource = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d93a0_test.cpp'
+        PassPattern = 'PASS_006d93a0'
+    }
+    [pscustomobject]@{
+        Address = '006da000'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006da000.cpp'
+        TestSource = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006da000_test.cpp'
+        PassPattern = 'PASS_006da000'
+    }
+    [pscustomobject]@{
+        Address = '006ee220'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ee220.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ee220_test.cpp'
+        PassPattern = 'PASS_006ee220'
+    }
+    [pscustomobject]@{
+        Address = '006ee280'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ee280.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ee280_test.cpp'
+        PassPattern = 'PASS_006ee280'
+    }
+    [pscustomobject]@{
+        Address = '006ef810'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ef810.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ef810_test.cpp'
+        PassPattern = 'PASS_006ef810'
+    }
+    [pscustomobject]@{
+        Address = '007082c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007082c0.cpp'
+        TestSource = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007082c0_test.cpp'
+        PassPattern = 'PASS_007082c0'
+    }
+    [pscustomobject]@{
+        Address = '007085c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007085c0.cpp'
+        TestSource = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007085c0_test.cpp'
+        PassPattern = 'PASS_007085c0'
+    }
+    [pscustomobject]@{
+        Address = '007090f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007090f0.cpp'
+        TestSource = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007090f0_test.cpp'
+        PassPattern = 'PASS_007090f0'
+    }
+    [pscustomobject]@{
+        Address = '0070f740'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0070f740.cpp'
+        TestSource = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0070f740_test.cpp'
+        PassPattern = 'PASS_0070f740'
+    }
+    [pscustomobject]@{
+        Address = '0070f7d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0070f7d0.cpp'
+        TestSource = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0070f7d0_test.cpp'
+        PassPattern = 'PASS_0070f7d0'
+    }
+    [pscustomobject]@{
+        Address = '0071e4a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/71/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0071e4a0.cpp'
+        TestSource = '00/71/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0071e4a0_test.cpp'
+        PassPattern = 'PASS_0071e4a0'
+    }
+    [pscustomobject]@{
+        Address = '0071ef40'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/71/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0071ef40.cpp'
+        TestSource = '00/71/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0071ef40_test.cpp'
+        PassPattern = 'PASS_0071ef40'
+    }
+    [pscustomobject]@{
+        Address = '00722960'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/72/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00722960.cpp'
+        TestSource = '00/72/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00722960_test.cpp'
+        PassPattern = 'PASS_00722960'
+    }
+    [pscustomobject]@{
+        Address = '0072e600'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/72/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0072e600.cpp'
+        TestSource = '00/72/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0072e600_test.cpp'
+        PassPattern = 'PASS_0072e600'
+    }
+    [pscustomobject]@{
+        Address = '00737650'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00737650.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00737650_test.cpp'
+        PassPattern = 'PASS_00737650'
+    }
+    [pscustomobject]@{
+        Address = '00745d70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00745d70.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00745d70_test.cpp'
+        PassPattern = 'PASS_00745d70'
+    }
+    [pscustomobject]@{
+        Address = '00745fd0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00745fd0.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00745fd0_test.cpp'
+        PassPattern = 'PASS_00745fd0'
+    }
+    [pscustomobject]@{
+        Address = '007484d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007484d0.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007484d0_test.cpp'
+        PassPattern = 'PASS_007484d0'
+    }
+    [pscustomobject]@{
+        Address = '0074cc20'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074cc20.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074cc20_test.cpp'
+        PassPattern = 'PASS_0074cc20'
+    }
+    [pscustomobject]@{
+        Address = '0074f480'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074f480.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074f480_test.cpp'
+        PassPattern = 'PASS_0074f480'
+    }
+    [pscustomobject]@{
+        Address = '00750b40'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/75/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00750b40.cpp'
+        TestSource = '00/75/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00750b40_test.cpp'
+        PassPattern = 'PASS_00750b40'
+    }
+    [pscustomobject]@{
+        Address = '007799f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007799f0.cpp'
+        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007799f0_test.cpp'
+        PassPattern = 'PASS_007799f0'
+    }
+    [pscustomobject]@{
+        Address = '0077def0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0077def0.cpp'
+        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0077def0_test.cpp'
+        PassPattern = 'PASS_0077def0'
+    }
+    [pscustomobject]@{
+        Address = '0077e1d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0077e1d0.cpp'
+        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0077e1d0_test.cpp'
+        PassPattern = 'PASS_0077e1d0'
+    }
+    [pscustomobject]@{
+        Address = '00786cf0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00786cf0.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00786cf0_test.cpp'
+        PassPattern = 'PASS_00786cf0'
+    }
+    [pscustomobject]@{
+        Address = '0078d950'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0078d950.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0078d950_test.cpp'
+        PassPattern = 'PASS_0078d950'
+    }
+    [pscustomobject]@{
+        Address = '0078df90'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0078df90.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0078df90_test.cpp'
+        PassPattern = 'PASS_0078df90'
+    }
+    [pscustomobject]@{
+        Address = '0078e3c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0078e3c0.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0078e3c0_test.cpp'
+        PassPattern = 'PASS_0078e3c0'
+    }
+    [pscustomobject]@{
+        Address = '007984b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007984b0.cpp'
+        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007984b0_test.cpp'
+        PassPattern = 'PASS_007984b0'
+    }
+    [pscustomobject]@{
+        Address = '0079bbf0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079bbf0.cpp'
+        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079bbf0_test.cpp'
+        PassPattern = 'PASS_0079bbf0'
+    }
+    [pscustomobject]@{
+        Address = '0079daf0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079daf0.cpp'
+        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079daf0_test.cpp'
+        PassPattern = 'PASS_0079daf0'
+    }
+    [pscustomobject]@{
+        Address = '0079ee50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079ee50.cpp'
+        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079ee50_test.cpp'
+        PassPattern = 'PASS_0079ee50'
+    }
+    [pscustomobject]@{
+        Address = '007a2df0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a2df0.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a2df0_test.cpp'
+        PassPattern = 'PASS_007a2df0'
+    }
+    [pscustomobject]@{
+        Address = '007a8e50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a8e50.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a8e50_test.cpp'
+        PassPattern = 'PASS_007a8e50'
+    }
+    [pscustomobject]@{
+        Address = '007a9000'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a9000.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a9000_test.cpp'
+        PassPattern = 'PASS_007a9000'
+    }
+    [pscustomobject]@{
+        Address = '007ab420'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ab420.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ab420_test.cpp'
+        PassPattern = 'PASS_007ab420'
+    }
+    [pscustomobject]@{
+        Address = '007ac7a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ac7a0.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ac7a0_test.cpp'
+        PassPattern = 'PASS_007ac7a0'
+    }
+    [pscustomobject]@{
+        Address = '007af750'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007af750.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007af750_test.cpp'
+        PassPattern = 'PASS_007af750'
+    }
+    [pscustomobject]@{
+        Address = '007af890'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007af890.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007af890_test.cpp'
+        PassPattern = 'PASS_007af890'
+    }
+    [pscustomobject]@{
+        Address = '007b23e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b23e0.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b23e0_test.cpp'
+        PassPattern = 'PASS_007b23e0'
+    }
+    [pscustomobject]@{
+        Address = '007b3e70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b3e70.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b3e70_test.cpp'
+        PassPattern = 'PASS_007b3e70'
+    }
+    [pscustomobject]@{
+        Address = '007b55f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b55f0.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b55f0_test.cpp'
+        PassPattern = 'PASS_007b55f0'
+    }
+    [pscustomobject]@{
+        Address = '007b82f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b82f0.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b82f0_test.cpp'
+        PassPattern = 'PASS_007b82f0'
+    }
+    [pscustomobject]@{
+        Address = '007c3960'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c3960.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c3960_test.cpp'
+        PassPattern = 'PASS_007c3960'
+    }
+    [pscustomobject]@{
+        Address = '007c4e20'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c4e20.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c4e20_test.cpp'
+        PassPattern = 'PASS_007c4e20'
+    }
+    [pscustomobject]@{
+        Address = '007c6570'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c6570.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c6570_test.cpp'
+        PassPattern = 'PASS_007c6570'
+    }
+    [pscustomobject]@{
+        Address = '007c7640'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7640.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7640_test.cpp'
+        PassPattern = 'PASS_007c7640'
+    }
+    [pscustomobject]@{
+        Address = '007c7f50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7f50.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7f50_test.cpp'
+        PassPattern = 'PASS_007c7f50'
+    }
+    [pscustomobject]@{
+        Address = '007c7f80'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7f80.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7f80_test.cpp'
+        PassPattern = 'PASS_007c7f80'
+    }
+    [pscustomobject]@{
+        Address = '007cc850'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cc850.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cc850_test.cpp'
+        PassPattern = 'PASS_007cc850'
+    }
+    [pscustomobject]@{
+        Address = '007cd6d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cd6d0.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cd6d0_test.cpp'
+        PassPattern = 'PASS_007cd6d0'
+    }
+    [pscustomobject]@{
+        Address = '007cd8c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cd8c0.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cd8c0_test.cpp'
+        PassPattern = 'PASS_007cd8c0'
+    }
+    [pscustomobject]@{
+        Address = '007ce340'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ce340.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ce340_test.cpp'
+        PassPattern = 'PASS_007ce340'
+    }
+    [pscustomobject]@{
+        Address = '007cf250'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cf250.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cf250_test.cpp'
+        PassPattern = 'PASS_007cf250'
+    }
+    [pscustomobject]@{
+        Address = '007d1160'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d1160.cpp'
+        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d1160_test.cpp'
+        PassPattern = 'PASS_007d1160'
+    }
+    [pscustomobject]@{
+        Address = '007d4b30'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d4b30.cpp'
+        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d4b30_test.cpp'
+        PassPattern = 'PASS_007d4b30'
+    }
+    [pscustomobject]@{
+        Address = '007d5c00'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d5c00.cpp'
+        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d5c00_test.cpp'
+        PassPattern = 'PASS_007d5c00'
+    }
+    [pscustomobject]@{
+        Address = '007d9850'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d9850.cpp'
+        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d9850_test.cpp'
+        PassPattern = 'PASS_007d9850'
+    }
+    [pscustomobject]@{
+        Address = '007df950'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007df950.cpp'
+        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007df950_test.cpp'
+        PassPattern = 'PASS_007df950'
+    }
+    [pscustomobject]@{
+        Address = '007e0460'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e0460.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e0460_test.cpp'
+        PassPattern = 'PASS_007e0460'
+    }
+    [pscustomobject]@{
+        Address = '007e4ce0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e4ce0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e4ce0_test.cpp'
+        PassPattern = 'PASS_007e4ce0'
+    }
+    [pscustomobject]@{
+        Address = '007e6ad0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e6ad0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e6ad0_test.cpp'
+        PassPattern = 'PASS_007e6ad0'
+    }
+    [pscustomobject]@{
+        Address = '007e6bd0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e6bd0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e6bd0_test.cpp'
+        PassPattern = 'PASS_007e6bd0'
+    }
+    [pscustomobject]@{
+        Address = '007ebd40'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ebd40.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ebd40_test.cpp'
+        PassPattern = 'PASS_007ebd40'
+    }
+    [pscustomobject]@{
+        Address = '007f9250'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7f/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007f9250.cpp'
+        TestSource = '00/7f/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007f9250_test.cpp'
+        PassPattern = 'PASS_007f9250'
+    }
+    [pscustomobject]@{
+        Address = '00801290'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/80/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00801290.cpp'
+        TestSource = '00/80/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00801290_test.cpp'
+        PassPattern = 'PASS_00801290'
+    }
+    [pscustomobject]@{
+        Address = '00801460'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/80/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00801460.cpp'
+        TestSource = '00/80/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00801460_test.cpp'
+        PassPattern = 'PASS_00801460'
+    }
+    [pscustomobject]@{
+        Address = '0083ce90'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083ce90.cpp'
+        TestSource = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083ce90_test.cpp'
+        PassPattern = 'PASS_0083ce90'
+    }
+    [pscustomobject]@{
+        Address = '0083e040'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083e040.cpp'
+        TestSource = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083e040_test.cpp'
+        PassPattern = 'PASS_0083e040'
+    }
+    [pscustomobject]@{
+        Address = '0085a8d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/85/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0085a8d0.cpp'
+        TestSource = '00/85/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0085a8d0_test.cpp'
+        PassPattern = 'PASS_0085a8d0'
+    }
+    [pscustomobject]@{
+        Address = '008c57c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c57c0.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c57c0_test.cpp'
+        PassPattern = 'PASS_008c57c0'
+    }
+    [pscustomobject]@{
+        Address = '008c77a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c77a0.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c77a0_test.cpp'
+        PassPattern = 'PASS_008c77a0'
+    }
+    [pscustomobject]@{
+        Address = '008cbf60'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cbf60.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cbf60_test.cpp'
+        PassPattern = 'PASS_008cbf60'
+    }
+    [pscustomobject]@{
+        Address = '008e2c70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008e2c70.cpp'
+        TestSource = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008e2c70_test.cpp'
+        PassPattern = 'PASS_008e2c70'
+    }
+    [pscustomobject]@{
+        Address = '008efdf0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008efdf0.cpp'
+        TestSource = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008efdf0_test.cpp'
+        PassPattern = 'PASS_008efdf0'
+    }
+    [pscustomobject]@{
+        Address = '008eff00'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008eff00.cpp'
+        TestSource = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008eff00_test.cpp'
+        PassPattern = 'PASS_008eff00'
+    }
+    [pscustomobject]@{
+        Address = '009564f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009564f0.cpp'
+        TestSource = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009564f0_test.cpp'
+        PassPattern = 'PASS_009564f0'
+    }
+    [pscustomobject]@{
+        Address = '0095c450'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0095c450.cpp'
+        TestSource = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0095c450_test.cpp'
+        PassPattern = 'PASS_0095c450'
+    }
+    [pscustomobject]@{
+        Address = '00978100'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/97/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00978100.cpp'
+        TestSource = '00/97/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00978100_test.cpp'
+        PassPattern = 'PASS_00978100'
+    }
+    [pscustomobject]@{
+        Address = '009c98c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c98c0.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c98c0_test.cpp'
+        PassPattern = 'PASS_009c98c0'
+    }
+    [pscustomobject]@{
+        Address = '009c98f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c98f0.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c98f0_test.cpp'
+        PassPattern = 'PASS_009c98f0'
+    }
+    [pscustomobject]@{
+        Address = '009ca3b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009ca3b0.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009ca3b0_test.cpp'
+        PassPattern = 'PASS_009ca3b0'
+    }
+    [pscustomobject]@{
+        Address = '009ffc50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/9f/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009ffc50.cpp'
+        TestSource = '00/9f/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009ffc50_test.cpp'
+        PassPattern = 'PASS_009ffc50'
+    }
+    [pscustomobject]@{
+        Address = '00a001e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a0/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a001e0.cpp'
+        TestSource = '00/a0/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a001e0_test.cpp'
+        PassPattern = 'PASS_00a001e0'
+    }
+    [pscustomobject]@{
+        Address = '00a00350'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a0/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a00350.cpp'
+        TestSource = '00/a0/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a00350_test.cpp'
+        PassPattern = 'PASS_00a00350'
+    }
+    [pscustomobject]@{
+        Address = '00a281f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a281f0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a281f0_test.cpp'
+        PassPattern = 'PASS_00a281f0'
+    }
+    [pscustomobject]@{
+        Address = '00a28230'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a28230.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a28230_test.cpp'
+        PassPattern = 'PASS_00a28230'
+    }
+    [pscustomobject]@{
+        Address = '00a28260'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a28260.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a28260_test.cpp'
+        PassPattern = 'PASS_00a28260'
+    }
+    [pscustomobject]@{
+        Address = '00a28290'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a28290.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a28290_test.cpp'
+        PassPattern = 'PASS_00a28290'
+    }
+    [pscustomobject]@{
+        Address = '00a28300'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a28300.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a28300_test.cpp'
+        PassPattern = 'PASS_00a28300'
+    }
+    [pscustomobject]@{
+        Address = '00a43190'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a4/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a43190.cpp'
+        TestSource = '00/a4/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a43190_test.cpp'
+        PassPattern = 'PASS_00a43190'
+    }
+    [pscustomobject]@{
+        Address = '00a93b30'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a93b30.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a93b30_test.cpp'
+        PassPattern = 'PASS_00a93b30'
+    }
+    [pscustomobject]@{
+        Address = '00a93b90'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a93b90.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a93b90_test.cpp'
+        PassPattern = 'PASS_00a93b90'
+    }
+    [pscustomobject]@{
+        Address = '00a9cfb0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a9cfb0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a9cfb0_test.cpp'
+        PassPattern = 'PASS_00a9cfb0'
+    }
+    [pscustomobject]@{
+        Address = '00abf010'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/ab/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00abf010.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00abf010_test.cpp'
+        PassPattern = 'PASS_00abf010'
+    }
+    [pscustomobject]@{
+        Address = '00af18d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/af/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00af18d0.cpp'
+        TestSource = '00/af/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00af18d0_test.cpp'
+        PassPattern = 'PASS_00af18d0'
+    }
+    [pscustomobject]@{
+        Address = '00b82b30'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/b8/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b82b30.cpp'
+        TestSource = '00/b8/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b82b30_test.cpp'
+        PassPattern = 'PASS_00b82b30'
+    }
+    [pscustomobject]@{
+        Address = '00b83110'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/b8/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b83110.cpp'
+        TestSource = '00/b8/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b83110_test.cpp'
+        PassPattern = 'PASS_00b83110'
+    }
+    [pscustomobject]@{
+        Address = '00b91430'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/b9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b91430.cpp'
+        TestSource = '00/b9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b91430_test.cpp'
+        PassPattern = 'PASS_00b91430'
+    }
+    [pscustomobject]@{
+        Address = '0041915a'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0041915a.cpp'
+        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0041915a_test.cpp'
+        PassPattern = 'PASS_0041915a'
+    }
+    [pscustomobject]@{
+        Address = '004191c1'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004191c1.cpp'
+        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004191c1_test.cpp'
+        PassPattern = 'PASS_004191c1'
+    }
+    [pscustomobject]@{
+        Address = '00429288'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429288.cpp'
+        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00429288_test.cpp'
+        PassPattern = 'PASS_00429288'
+    }
+    [pscustomobject]@{
+        Address = '0042f9a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0042f9a0.cpp'
+        TestSource = '00/42/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0042f9a0_test.cpp'
+        PassPattern = 'PASS_0042f9a0'
+    }
+    [pscustomobject]@{
+        Address = '0044f3de'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044f3de.cpp'
+        TestSource = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044f3de_test.cpp'
+        PassPattern = 'PASS_0044f3de'
+    }
+    [pscustomobject]@{
+        Address = '004d76b8'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004d76b8.cpp'
+        TestSource = '00/4d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004d76b8_test.cpp'
+        PassPattern = 'PASS_004d76b8'
+    }
+    [pscustomobject]@{
+        Address = '004d78ed'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004d78ed.cpp'
+        TestSource = '00/4d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004d78ed_test.cpp'
+        PassPattern = 'PASS_004d78ed'
+    }
+    [pscustomobject]@{
+        Address = '00535ebb'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/53/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00535ebb.cpp'
+        TestSource = '00/53/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00535ebb_test.cpp'
+        PassPattern = 'PASS_00535ebb'
+    }
+    [pscustomobject]@{
+        Address = '00578a8d'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/57/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00578a8d.cpp'
+        TestSource = '00/57/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00578a8d_test.cpp'
+        PassPattern = 'PASS_00578a8d'
+    }
+    [pscustomobject]@{
+        Address = '00413230'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_00413230.cpp'
+        TestSource = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_00413230_test.cpp'
+        PassPattern = 'PASS_00413230'
+    }
+    [pscustomobject]@{
+        Address = '0041bb00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_0041bb00.cpp'
+        TestSource = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_0041bb00_test.cpp'
+        PassPattern = 'PASS_0041bb00'
+    }
+    [pscustomobject]@{
+        Address = '0042db60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042db60.cpp'
+        TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042db60_test.cpp'
+        PassPattern = 'PASS_0042db60'
+    }
+    [pscustomobject]@{
+        Address = '0043e520'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_0043e520.cpp'
+        TestSource = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_0043e520_test.cpp'
+        PassPattern = 'PASS_0043e520'
+    }
+    [pscustomobject]@{
+        Address = '0040ec50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/40/CLandscapeBackgroundPatch_vectordeletingdestructor_0040ec50.cpp'
+        TestSource = '00/40/CLandscapeBackgroundPatch_vectordeletingdestructor_0040ec50_test.cpp'
+        PassPattern = 'PASS_0040ec50'
+    }
+    [pscustomobject]@{
+        Address = '004192b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_004192b0.cpp'
+        TestSource = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_004192b0_test.cpp'
+        PassPattern = 'PASS_004192b0'
+    }
+    [pscustomobject]@{
+        Address = '00437070'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_00437070.cpp'
+        TestSource = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_00437070_test.cpp'
+        PassPattern = 'PASS_00437070'
+    }
+    [pscustomobject]@{
+        Address = '004426e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_004426e0.cpp'
+        TestSource = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_004426e0_test.cpp'
+        PassPattern = 'PASS_004426e0'
+    }
+    [pscustomobject]@{
+        Address = '00444f20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_00444f20.cpp'
+        TestSource = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_00444f20_test.cpp'
+        PassPattern = 'PASS_00444f20'
+    }
+    [pscustomobject]@{
+        Address = '00445390'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_00445390.cpp'
+        TestSource = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_00445390_test.cpp'
+        PassPattern = 'PASS_00445390'
+    }
+    [pscustomobject]@{
+        Address = '0044aa60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_0044aa60.cpp'
+        TestSource = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_0044aa60_test.cpp'
+        PassPattern = 'PASS_0044aa60'
+    }
+    [pscustomobject]@{
+        Address = '0048a4f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048a4f0.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048a4f0_test.cpp'
+        PassPattern = 'PASS_0048a4f0'
+    }
+    [pscustomobject]@{
+        Address = '0048b3d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b3d0.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b3d0_test.cpp'
+        PassPattern = 'PASS_0048b3d0'
+    }
+    [pscustomobject]@{
+        Address = '0048b7a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b7a0.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b7a0_test.cpp'
+        PassPattern = 'PASS_0048b7a0'
+    }
+    [pscustomobject]@{
+        Address = '0048b880'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b880.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b880_test.cpp'
+        PassPattern = 'PASS_0048b880'
+    }
+    [pscustomobject]@{
+        Address = '004a83a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4a/CLandscapeBackgroundPatch_vectordeletingdestructor_004a83a0.cpp'
+        TestSource = '00/4a/CLandscapeBackgroundPatch_vectordeletingdestructor_004a83a0_test.cpp'
+        PassPattern = 'PASS_004a83a0'
+    }
+    [pscustomobject]@{
+        Address = '004aca70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4a/CLandscapeBackgroundPatch_vectordeletingdestructor_004aca70.cpp'
+        TestSource = '00/4a/CLandscapeBackgroundPatch_vectordeletingdestructor_004aca70_test.cpp'
+        PassPattern = 'PASS_004aca70'
+    }
+    [pscustomobject]@{
+        Address = '004ae8d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4a/CLandscapeBackgroundPatch_vectordeletingdestructor_004ae8d0.cpp'
+        TestSource = '00/4a/CLandscapeBackgroundPatch_vectordeletingdestructor_004ae8d0_test.cpp'
+        PassPattern = 'PASS_004ae8d0'
+    }
+    [pscustomobject]@{
+        Address = '004ba740'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4b/CLandscapeBackgroundPatch_vectordeletingdestructor_004ba740.cpp'
+        TestSource = '00/4b/CLandscapeBackgroundPatch_vectordeletingdestructor_004ba740_test.cpp'
+        PassPattern = 'PASS_004ba740'
+    }
+    [pscustomobject]@{
+        Address = '004c2130'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4c/CLandscapeBackgroundPatch_vectordeletingdestructor_004c2130.cpp'
+        TestSource = '00/4c/CLandscapeBackgroundPatch_vectordeletingdestructor_004c2130_test.cpp'
+        PassPattern = 'PASS_004c2130'
+    }
+    [pscustomobject]@{
+        Address = '004c7000'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4c/CLandscapeBackgroundPatch_vectordeletingdestructor_004c7000.cpp'
+        TestSource = '00/4c/CLandscapeBackgroundPatch_vectordeletingdestructor_004c7000_test.cpp'
+        PassPattern = 'PASS_004c7000'
+    }
+    [pscustomobject]@{
+        Address = '004cb450'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4c/CLandscapeBackgroundPatch_vectordeletingdestructor_004cb450.cpp'
+        TestSource = '00/4c/CLandscapeBackgroundPatch_vectordeletingdestructor_004cb450_test.cpp'
+        PassPattern = 'PASS_004cb450'
+    }
+    [pscustomobject]@{
+        Address = '004cb780'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4c/CLandscapeBackgroundPatch_vectordeletingdestructor_004cb780.cpp'
+        TestSource = '00/4c/CLandscapeBackgroundPatch_vectordeletingdestructor_004cb780_test.cpp'
+        PassPattern = 'PASS_004cb780'
+    }
+    [pscustomobject]@{
+        Address = '0050f3a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/50/CLandscapeBackgroundPatch_vectordeletingdestructor_0050f3a0.cpp'
+        TestSource = '00/50/CLandscapeBackgroundPatch_vectordeletingdestructor_0050f3a0_test.cpp'
+        PassPattern = 'PASS_0050f3a0'
+    }
+    [pscustomobject]@{
+        Address = '00511d40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/51/CLandscapeBackgroundPatch_vectordeletingdestructor_00511d40.cpp'
+        TestSource = '00/51/CLandscapeBackgroundPatch_vectordeletingdestructor_00511d40_test.cpp'
+        PassPattern = 'PASS_00511d40'
+    }
+    [pscustomobject]@{
+        Address = '0051a3d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/51/CLandscapeBackgroundPatch_vectordeletingdestructor_0051a3d0.cpp'
+        TestSource = '00/51/CLandscapeBackgroundPatch_vectordeletingdestructor_0051a3d0_test.cpp'
+        PassPattern = 'PASS_0051a3d0'
+    }
+    [pscustomobject]@{
+        Address = '0051adc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/51/CLandscapeBackgroundPatch_vectordeletingdestructor_0051adc0.cpp'
+        TestSource = '00/51/CLandscapeBackgroundPatch_vectordeletingdestructor_0051adc0_test.cpp'
+        PassPattern = 'PASS_0051adc0'
+    }
+    [pscustomobject]@{
+        Address = '00526050'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/52/CLandscapeBackgroundPatch_vectordeletingdestructor_00526050.cpp'
+        TestSource = '00/52/CLandscapeBackgroundPatch_vectordeletingdestructor_00526050_test.cpp'
+        PassPattern = 'PASS_00526050'
+    }
+    [pscustomobject]@{
+        Address = '0052ae40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/52/CLandscapeBackgroundPatch_vectordeletingdestructor_0052ae40.cpp'
+        TestSource = '00/52/CLandscapeBackgroundPatch_vectordeletingdestructor_0052ae40_test.cpp'
+        PassPattern = 'PASS_0052ae40'
+    }
+    [pscustomobject]@{
+        Address = '00535c10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/53/CLandscapeBackgroundPatch_vectordeletingdestructor_00535c10.cpp'
+        TestSource = '00/53/CLandscapeBackgroundPatch_vectordeletingdestructor_00535c10_test.cpp'
+        PassPattern = 'PASS_00535c10'
+    }
+    [pscustomobject]@{
+        Address = '0053e880'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/53/CLandscapeBackgroundPatch_vectordeletingdestructor_0053e880.cpp'
+        TestSource = '00/53/CLandscapeBackgroundPatch_vectordeletingdestructor_0053e880_test.cpp'
+        PassPattern = 'PASS_0053e880'
+    }
+    [pscustomobject]@{
+        Address = '0053e8e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/53/CLandscapeBackgroundPatch_vectordeletingdestructor_0053e8e0.cpp'
+        TestSource = '00/53/CLandscapeBackgroundPatch_vectordeletingdestructor_0053e8e0_test.cpp'
+        PassPattern = 'PASS_0053e8e0'
+    }
+    [pscustomobject]@{
+        Address = '005455f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/54/CLandscapeBackgroundPatch_vectordeletingdestructor_005455f0.cpp'
+        TestSource = '00/54/CLandscapeBackgroundPatch_vectordeletingdestructor_005455f0_test.cpp'
+        PassPattern = 'PASS_005455f0'
+    }
+    [pscustomobject]@{
+        Address = '0054a440'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/54/CLandscapeBackgroundPatch_vectordeletingdestructor_0054a440.cpp'
+        TestSource = '00/54/CLandscapeBackgroundPatch_vectordeletingdestructor_0054a440_test.cpp'
+        PassPattern = 'PASS_0054a440'
+    }
+    [pscustomobject]@{
+        Address = '0054e1c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/54/CLandscapeBackgroundPatch_vectordeletingdestructor_0054e1c0.cpp'
+        TestSource = '00/54/CLandscapeBackgroundPatch_vectordeletingdestructor_0054e1c0_test.cpp'
+        PassPattern = 'PASS_0054e1c0'
+    }
+    [pscustomobject]@{
+        Address = '0054ec70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/54/CLandscapeBackgroundPatch_vectordeletingdestructor_0054ec70.cpp'
+        TestSource = '00/54/CLandscapeBackgroundPatch_vectordeletingdestructor_0054ec70_test.cpp'
+        PassPattern = 'PASS_0054ec70'
+    }
+    [pscustomobject]@{
+        Address = '00550030'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/55/CLandscapeBackgroundPatch_vectordeletingdestructor_00550030.cpp'
+        TestSource = '00/55/CLandscapeBackgroundPatch_vectordeletingdestructor_00550030_test.cpp'
+        PassPattern = 'PASS_00550030'
+    }
+    [pscustomobject]@{
+        Address = '00550c30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/55/CLandscapeBackgroundPatch_vectordeletingdestructor_00550c30.cpp'
+        TestSource = '00/55/CLandscapeBackgroundPatch_vectordeletingdestructor_00550c30_test.cpp'
+        PassPattern = 'PASS_00550c30'
+    }
+    [pscustomobject]@{
+        Address = '00555140'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/55/CLandscapeBackgroundPatch_vectordeletingdestructor_00555140.cpp'
+        TestSource = '00/55/CLandscapeBackgroundPatch_vectordeletingdestructor_00555140_test.cpp'
+        PassPattern = 'PASS_00555140'
+    }
+    [pscustomobject]@{
+        Address = '005562f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/55/CLandscapeBackgroundPatch_vectordeletingdestructor_005562f0.cpp'
+        TestSource = '00/55/CLandscapeBackgroundPatch_vectordeletingdestructor_005562f0_test.cpp'
+        PassPattern = 'PASS_005562f0'
+    }
+    [pscustomobject]@{
+        Address = '005595c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/55/CLandscapeBackgroundPatch_vectordeletingdestructor_005595c0.cpp'
+        TestSource = '00/55/CLandscapeBackgroundPatch_vectordeletingdestructor_005595c0_test.cpp'
+        PassPattern = 'PASS_005595c0'
+    }
+    [pscustomobject]@{
+        Address = '0055a3a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/55/CLandscapeBackgroundPatch_vectordeletingdestructor_0055a3a0.cpp'
+        TestSource = '00/55/CLandscapeBackgroundPatch_vectordeletingdestructor_0055a3a0_test.cpp'
+        PassPattern = 'PASS_0055a3a0'
+    }
+    [pscustomobject]@{
+        Address = '0055b850'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/55/CLandscapeBackgroundPatch_vectordeletingdestructor_0055b850.cpp'
+        TestSource = '00/55/CLandscapeBackgroundPatch_vectordeletingdestructor_0055b850_test.cpp'
+        PassPattern = 'PASS_0055b850'
+    }
+    [pscustomobject]@{
+        Address = '00565530'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/56/CLandscapeBackgroundPatch_vectordeletingdestructor_00565530.cpp'
+        TestSource = '00/56/CLandscapeBackgroundPatch_vectordeletingdestructor_00565530_test.cpp'
+        PassPattern = 'PASS_00565530'
+    }
+    [pscustomobject]@{
+        Address = '0056a740'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/56/CLandscapeBackgroundPatch_vectordeletingdestructor_0056a740.cpp'
+        TestSource = '00/56/CLandscapeBackgroundPatch_vectordeletingdestructor_0056a740_test.cpp'
+        PassPattern = 'PASS_0056a740'
+    }
+    [pscustomobject]@{
+        Address = '0056e1f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/56/CLandscapeBackgroundPatch_vectordeletingdestructor_0056e1f0.cpp'
+        TestSource = '00/56/CLandscapeBackgroundPatch_vectordeletingdestructor_0056e1f0_test.cpp'
+        PassPattern = 'PASS_0056e1f0'
+    }
+    [pscustomobject]@{
+        Address = '0056e410'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/56/CLandscapeBackgroundPatch_vectordeletingdestructor_0056e410.cpp'
+        TestSource = '00/56/CLandscapeBackgroundPatch_vectordeletingdestructor_0056e410_test.cpp'
+        PassPattern = 'PASS_0056e410'
+    }
+    [pscustomobject]@{
+        Address = '005d9f50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/5d/CLandscapeBackgroundPatch_vectordeletingdestructor_005d9f50.cpp'
+        TestSource = '00/5d/CLandscapeBackgroundPatch_vectordeletingdestructor_005d9f50_test.cpp'
+        PassPattern = 'PASS_005d9f50'
+    }
+    [pscustomobject]@{
+        Address = '00628610'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/62/CLandscapeBackgroundPatch_vectordeletingdestructor_00628610.cpp'
+        TestSource = '00/62/CLandscapeBackgroundPatch_vectordeletingdestructor_00628610_test.cpp'
+        PassPattern = 'PASS_00628610'
+    }
+    [pscustomobject]@{
+        Address = '0062d920'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/62/CLandscapeBackgroundPatch_vectordeletingdestructor_0062d920.cpp'
+        TestSource = '00/62/CLandscapeBackgroundPatch_vectordeletingdestructor_0062d920_test.cpp'
+        PassPattern = 'PASS_0062d920'
+    }
+    [pscustomobject]@{
+        Address = '00631510'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/63/CLandscapeBackgroundPatch_vectordeletingdestructor_00631510.cpp'
+        TestSource = '00/63/CLandscapeBackgroundPatch_vectordeletingdestructor_00631510_test.cpp'
+        PassPattern = 'PASS_00631510'
+    }
+    [pscustomobject]@{
+        Address = '00637830'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/63/CLandscapeBackgroundPatch_vectordeletingdestructor_00637830.cpp'
+        TestSource = '00/63/CLandscapeBackgroundPatch_vectordeletingdestructor_00637830_test.cpp'
+        PassPattern = 'PASS_00637830'
+    }
+    [pscustomobject]@{
+        Address = '00642670'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/64/CLandscapeBackgroundPatch_vectordeletingdestructor_00642670.cpp'
+        TestSource = '00/64/CLandscapeBackgroundPatch_vectordeletingdestructor_00642670_test.cpp'
+        PassPattern = 'PASS_00642670'
+    }
+    [pscustomobject]@{
+        Address = '00668850'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/66/CLandscapeBackgroundPatch_vectordeletingdestructor_00668850.cpp'
+        TestSource = '00/66/CLandscapeBackgroundPatch_vectordeletingdestructor_00668850_test.cpp'
+        PassPattern = 'PASS_00668850'
+    }
+    [pscustomobject]@{
+        Address = '0066c0e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/66/CLandscapeBackgroundPatch_vectordeletingdestructor_0066c0e0.cpp'
+        TestSource = '00/66/CLandscapeBackgroundPatch_vectordeletingdestructor_0066c0e0_test.cpp'
+        PassPattern = 'PASS_0066c0e0'
+    }
+    [pscustomobject]@{
+        Address = '00670c50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/67/CLandscapeBackgroundPatch_vectordeletingdestructor_00670c50.cpp'
+        TestSource = '00/67/CLandscapeBackgroundPatch_vectordeletingdestructor_00670c50_test.cpp'
+        PassPattern = 'PASS_00670c50'
+    }
+    [pscustomobject]@{
+        Address = '0067c570'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/67/CLandscapeBackgroundPatch_vectordeletingdestructor_0067c570.cpp'
+        TestSource = '00/67/CLandscapeBackgroundPatch_vectordeletingdestructor_0067c570_test.cpp'
+        PassPattern = 'PASS_0067c570'
+    }
+    [pscustomobject]@{
+        Address = '006953c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/69/CLandscapeBackgroundPatch_vectordeletingdestructor_006953c0.cpp'
+        TestSource = '00/69/CLandscapeBackgroundPatch_vectordeletingdestructor_006953c0_test.cpp'
+        PassPattern = 'PASS_006953c0'
+    }
+    [pscustomobject]@{
+        Address = '006954d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/69/CLandscapeBackgroundPatch_vectordeletingdestructor_006954d0.cpp'
+        TestSource = '00/69/CLandscapeBackgroundPatch_vectordeletingdestructor_006954d0_test.cpp'
+        PassPattern = 'PASS_006954d0'
+    }
+    [pscustomobject]@{
+        Address = '00695540'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/69/CLandscapeBackgroundPatch_vectordeletingdestructor_00695540.cpp'
+        TestSource = '00/69/CLandscapeBackgroundPatch_vectordeletingdestructor_00695540_test.cpp'
+        PassPattern = 'PASS_00695540'
+    }
+    [pscustomobject]@{
+        Address = '006955b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/69/CLandscapeBackgroundPatch_vectordeletingdestructor_006955b0.cpp'
+        TestSource = '00/69/CLandscapeBackgroundPatch_vectordeletingdestructor_006955b0_test.cpp'
+        PassPattern = 'PASS_006955b0'
+    }
+    [pscustomobject]@{
+        Address = '0069baf0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/69/CLandscapeBackgroundPatch_vectordeletingdestructor_0069baf0.cpp'
+        TestSource = '00/69/CLandscapeBackgroundPatch_vectordeletingdestructor_0069baf0_test.cpp'
+        PassPattern = 'PASS_0069baf0'
+    }
+    [pscustomobject]@{
+        Address = '0069e790'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/69/CLandscapeBackgroundPatch_vectordeletingdestructor_0069e790.cpp'
+        TestSource = '00/69/CLandscapeBackgroundPatch_vectordeletingdestructor_0069e790_test.cpp'
+        PassPattern = 'PASS_0069e790'
+    }
+    [pscustomobject]@{
+        Address = '0069eed0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/69/CLandscapeBackgroundPatch_vectordeletingdestructor_0069eed0.cpp'
+        TestSource = '00/69/CLandscapeBackgroundPatch_vectordeletingdestructor_0069eed0_test.cpp'
+        PassPattern = 'PASS_0069eed0'
+    }
+    [pscustomobject]@{
+        Address = '006a0990'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6a/CLandscapeBackgroundPatch_vectordeletingdestructor_006a0990.cpp'
+        TestSource = '00/6a/CLandscapeBackgroundPatch_vectordeletingdestructor_006a0990_test.cpp'
+        PassPattern = 'PASS_006a0990'
+    }
+    [pscustomobject]@{
+        Address = '006a2900'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6a/CLandscapeBackgroundPatch_vectordeletingdestructor_006a2900.cpp'
+        TestSource = '00/6a/CLandscapeBackgroundPatch_vectordeletingdestructor_006a2900_test.cpp'
+        PassPattern = 'PASS_006a2900'
+    }
+    [pscustomobject]@{
+        Address = '006a6ba0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6a/CLandscapeBackgroundPatch_vectordeletingdestructor_006a6ba0.cpp'
+        TestSource = '00/6a/CLandscapeBackgroundPatch_vectordeletingdestructor_006a6ba0_test.cpp'
+        PassPattern = 'PASS_006a6ba0'
+    }
+    [pscustomobject]@{
+        Address = '006b2ad0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6b/CLandscapeBackgroundPatch_vectordeletingdestructor_006b2ad0.cpp'
+        TestSource = '00/6b/CLandscapeBackgroundPatch_vectordeletingdestructor_006b2ad0_test.cpp'
+        PassPattern = 'PASS_006b2ad0'
+    }
+    [pscustomobject]@{
+        Address = '006b5d50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6b/CLandscapeBackgroundPatch_vectordeletingdestructor_006b5d50.cpp'
+        TestSource = '00/6b/CLandscapeBackgroundPatch_vectordeletingdestructor_006b5d50_test.cpp'
+        PassPattern = 'PASS_006b5d50'
+    }
+    [pscustomobject]@{
+        Address = '006b6340'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6b/CLandscapeBackgroundPatch_vectordeletingdestructor_006b6340.cpp'
+        TestSource = '00/6b/CLandscapeBackgroundPatch_vectordeletingdestructor_006b6340_test.cpp'
+        PassPattern = 'PASS_006b6340'
+    }
+    [pscustomobject]@{
+        Address = '006b6e70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6b/CLandscapeBackgroundPatch_vectordeletingdestructor_006b6e70.cpp'
+        TestSource = '00/6b/CLandscapeBackgroundPatch_vectordeletingdestructor_006b6e70_test.cpp'
+        PassPattern = 'PASS_006b6e70'
+    }
+    [pscustomobject]@{
+        Address = '006ba760'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6b/CLandscapeBackgroundPatch_vectordeletingdestructor_006ba760.cpp'
+        TestSource = '00/6b/CLandscapeBackgroundPatch_vectordeletingdestructor_006ba760_test.cpp'
+        PassPattern = 'PASS_006ba760'
+    }
+    [pscustomobject]@{
+        Address = '006bbee0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6b/CLandscapeBackgroundPatch_vectordeletingdestructor_006bbee0.cpp'
+        TestSource = '00/6b/CLandscapeBackgroundPatch_vectordeletingdestructor_006bbee0_test.cpp'
+        PassPattern = 'PASS_006bbee0'
+    }
+    [pscustomobject]@{
+        Address = '006c3130'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6c/CLandscapeBackgroundPatch_vectordeletingdestructor_006c3130.cpp'
+        TestSource = '00/6c/CLandscapeBackgroundPatch_vectordeletingdestructor_006c3130_test.cpp'
+        PassPattern = 'PASS_006c3130'
+    }
+    [pscustomobject]@{
+        Address = '006c9c30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6c/CLandscapeBackgroundPatch_vectordeletingdestructor_006c9c30.cpp'
+        TestSource = '00/6c/CLandscapeBackgroundPatch_vectordeletingdestructor_006c9c30_test.cpp'
+        PassPattern = 'PASS_006c9c30'
+    }
+    [pscustomobject]@{
+        Address = '006cd7f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6c/CLandscapeBackgroundPatch_vectordeletingdestructor_006cd7f0.cpp'
+        TestSource = '00/6c/CLandscapeBackgroundPatch_vectordeletingdestructor_006cd7f0_test.cpp'
+        PassPattern = 'PASS_006cd7f0'
+    }
+    [pscustomobject]@{
+        Address = '006e1ad0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6e/CLandscapeBackgroundPatch_vectordeletingdestructor_006e1ad0.cpp'
+        TestSource = '00/6e/CLandscapeBackgroundPatch_vectordeletingdestructor_006e1ad0_test.cpp'
+        PassPattern = 'PASS_006e1ad0'
+    }
+    [pscustomobject]@{
+        Address = '006e44e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6e/CLandscapeBackgroundPatch_vectordeletingdestructor_006e44e0.cpp'
+        TestSource = '00/6e/CLandscapeBackgroundPatch_vectordeletingdestructor_006e44e0_test.cpp'
+        PassPattern = 'PASS_006e44e0'
+    }
+    [pscustomobject]@{
+        Address = '006e4a80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6e/CLandscapeBackgroundPatch_vectordeletingdestructor_006e4a80.cpp'
+        TestSource = '00/6e/CLandscapeBackgroundPatch_vectordeletingdestructor_006e4a80_test.cpp'
+        PassPattern = 'PASS_006e4a80'
+    }
+    [pscustomobject]@{
+        Address = '006e7180'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6e/CLandscapeBackgroundPatch_vectordeletingdestructor_006e7180.cpp'
+        TestSource = '00/6e/CLandscapeBackgroundPatch_vectordeletingdestructor_006e7180_test.cpp'
+        PassPattern = 'PASS_006e7180'
+    }
+    [pscustomobject]@{
+        Address = '006e7c90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6e/CLandscapeBackgroundPatch_vectordeletingdestructor_006e7c90.cpp'
+        TestSource = '00/6e/CLandscapeBackgroundPatch_vectordeletingdestructor_006e7c90_test.cpp'
+        PassPattern = 'PASS_006e7c90'
+    }
+    [pscustomobject]@{
+        Address = '006ef050'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6e/CLandscapeBackgroundPatch_vectordeletingdestructor_006ef050.cpp'
+        TestSource = '00/6e/CLandscapeBackgroundPatch_vectordeletingdestructor_006ef050_test.cpp'
+        PassPattern = 'PASS_006ef050'
+    }
+    [pscustomobject]@{
+        Address = '006f5120'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/6f/CLandscapeBackgroundPatch_vectordeletingdestructor_006f5120.cpp'
+        TestSource = '00/6f/CLandscapeBackgroundPatch_vectordeletingdestructor_006f5120_test.cpp'
+        PassPattern = 'PASS_006f5120'
+    }
+    [pscustomobject]@{
+        Address = '00701ad0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/70/CLandscapeBackgroundPatch_vectordeletingdestructor_00701ad0.cpp'
+        TestSource = '00/70/CLandscapeBackgroundPatch_vectordeletingdestructor_00701ad0_test.cpp'
+        PassPattern = 'PASS_00701ad0'
+    }
+    [pscustomobject]@{
+        Address = '00702bf0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/70/CLandscapeBackgroundPatch_vectordeletingdestructor_00702bf0.cpp'
+        TestSource = '00/70/CLandscapeBackgroundPatch_vectordeletingdestructor_00702bf0_test.cpp'
+        PassPattern = 'PASS_00702bf0'
+    }
+    [pscustomobject]@{
+        Address = '00709970'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/70/CLandscapeBackgroundPatch_vectordeletingdestructor_00709970.cpp'
+        TestSource = '00/70/CLandscapeBackgroundPatch_vectordeletingdestructor_00709970_test.cpp'
+        PassPattern = 'PASS_00709970'
+    }
+    [pscustomobject]@{
+        Address = '0070b680'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/70/CLandscapeBackgroundPatch_vectordeletingdestructor_0070b680.cpp'
+        TestSource = '00/70/CLandscapeBackgroundPatch_vectordeletingdestructor_0070b680_test.cpp'
+        PassPattern = 'PASS_0070b680'
+    }
+    [pscustomobject]@{
+        Address = '00718020'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/71/CLandscapeBackgroundPatch_vectordeletingdestructor_00718020.cpp'
+        TestSource = '00/71/CLandscapeBackgroundPatch_vectordeletingdestructor_00718020_test.cpp'
+        PassPattern = 'PASS_00718020'
+    }
+    [pscustomobject]@{
+        Address = '0071ea90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/71/CLandscapeBackgroundPatch_vectordeletingdestructor_0071ea90.cpp'
+        TestSource = '00/71/CLandscapeBackgroundPatch_vectordeletingdestructor_0071ea90_test.cpp'
+        PassPattern = 'PASS_0071ea90'
+    }
+    [pscustomobject]@{
+        Address = '00723450'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/72/CLandscapeBackgroundPatch_vectordeletingdestructor_00723450.cpp'
+        TestSource = '00/72/CLandscapeBackgroundPatch_vectordeletingdestructor_00723450_test.cpp'
+        PassPattern = 'PASS_00723450'
+    }
+    [pscustomobject]@{
+        Address = '00727a10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/72/CLandscapeBackgroundPatch_vectordeletingdestructor_00727a10.cpp'
+        TestSource = '00/72/CLandscapeBackgroundPatch_vectordeletingdestructor_00727a10_test.cpp'
+        PassPattern = 'PASS_00727a10'
+    }
+    [pscustomobject]@{
+        Address = '00728590'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/72/CLandscapeBackgroundPatch_vectordeletingdestructor_00728590.cpp'
+        TestSource = '00/72/CLandscapeBackgroundPatch_vectordeletingdestructor_00728590_test.cpp'
+        PassPattern = 'PASS_00728590'
+    }
+    [pscustomobject]@{
+        Address = '0072dd30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/72/CLandscapeBackgroundPatch_vectordeletingdestructor_0072dd30.cpp'
+        TestSource = '00/72/CLandscapeBackgroundPatch_vectordeletingdestructor_0072dd30_test.cpp'
+        PassPattern = 'PASS_0072dd30'
+    }
+    [pscustomobject]@{
+        Address = '00731a00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/73/CLandscapeBackgroundPatch_vectordeletingdestructor_00731a00.cpp'
+        TestSource = '00/73/CLandscapeBackgroundPatch_vectordeletingdestructor_00731a00_test.cpp'
+        PassPattern = 'PASS_00731a00'
+    }
+    [pscustomobject]@{
+        Address = '00732690'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/73/CLandscapeBackgroundPatch_vectordeletingdestructor_00732690.cpp'
+        TestSource = '00/73/CLandscapeBackgroundPatch_vectordeletingdestructor_00732690_test.cpp'
+        PassPattern = 'PASS_00732690'
+    }
+    [pscustomobject]@{
+        Address = '00739cc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/73/CLandscapeBackgroundPatch_vectordeletingdestructor_00739cc0.cpp'
+        TestSource = '00/73/CLandscapeBackgroundPatch_vectordeletingdestructor_00739cc0_test.cpp'
+        PassPattern = 'PASS_00739cc0'
+    }
+    [pscustomobject]@{
+        Address = '00739d20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/73/CLandscapeBackgroundPatch_vectordeletingdestructor_00739d20.cpp'
+        TestSource = '00/73/CLandscapeBackgroundPatch_vectordeletingdestructor_00739d20_test.cpp'
+        PassPattern = 'PASS_00739d20'
+    }
+    [pscustomobject]@{
+        Address = '0073e5f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/73/CLandscapeBackgroundPatch_vectordeletingdestructor_0073e5f0.cpp'
+        TestSource = '00/73/CLandscapeBackgroundPatch_vectordeletingdestructor_0073e5f0_test.cpp'
+        PassPattern = 'PASS_0073e5f0'
+    }
+    [pscustomobject]@{
+        Address = '0073eb70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/73/CLandscapeBackgroundPatch_vectordeletingdestructor_0073eb70.cpp'
+        TestSource = '00/73/CLandscapeBackgroundPatch_vectordeletingdestructor_0073eb70_test.cpp'
+        PassPattern = 'PASS_0073eb70'
+    }
+    [pscustomobject]@{
+        Address = '0073ebc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/73/CLandscapeBackgroundPatch_vectordeletingdestructor_0073ebc0.cpp'
+        TestSource = '00/73/CLandscapeBackgroundPatch_vectordeletingdestructor_0073ebc0_test.cpp'
+        PassPattern = 'PASS_0073ebc0'
+    }
+    [pscustomobject]@{
+        Address = '00748370'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/74/CLandscapeBackgroundPatch_vectordeletingdestructor_00748370.cpp'
+        TestSource = '00/74/CLandscapeBackgroundPatch_vectordeletingdestructor_00748370_test.cpp'
+        PassPattern = 'PASS_00748370'
+    }
+    [pscustomobject]@{
+        Address = '00755460'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/75/CLandscapeBackgroundPatch_vectordeletingdestructor_00755460.cpp'
+        TestSource = '00/75/CLandscapeBackgroundPatch_vectordeletingdestructor_00755460_test.cpp'
+        PassPattern = 'PASS_00755460'
+    }
+    [pscustomobject]@{
+        Address = '00755830'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/75/CLandscapeBackgroundPatch_vectordeletingdestructor_00755830.cpp'
+        TestSource = '00/75/CLandscapeBackgroundPatch_vectordeletingdestructor_00755830_test.cpp'
+        PassPattern = 'PASS_00755830'
+    }
+    [pscustomobject]@{
+        Address = '0075c950'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/75/CLandscapeBackgroundPatch_vectordeletingdestructor_0075c950.cpp'
+        TestSource = '00/75/CLandscapeBackgroundPatch_vectordeletingdestructor_0075c950_test.cpp'
+        PassPattern = 'PASS_0075c950'
+    }
+    [pscustomobject]@{
+        Address = '00765810'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/76/CLandscapeBackgroundPatch_vectordeletingdestructor_00765810.cpp'
+        TestSource = '00/76/CLandscapeBackgroundPatch_vectordeletingdestructor_00765810_test.cpp'
+        PassPattern = 'PASS_00765810'
+    }
+    [pscustomobject]@{
+        Address = '00765b10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/76/CLandscapeBackgroundPatch_vectordeletingdestructor_00765b10.cpp'
+        TestSource = '00/76/CLandscapeBackgroundPatch_vectordeletingdestructor_00765b10_test.cpp'
+        PassPattern = 'PASS_00765b10'
+    }
+    [pscustomobject]@{
+        Address = '0076c790'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/76/CLandscapeBackgroundPatch_vectordeletingdestructor_0076c790.cpp'
+        TestSource = '00/76/CLandscapeBackgroundPatch_vectordeletingdestructor_0076c790_test.cpp'
+        PassPattern = 'PASS_0076c790'
+    }
+    [pscustomobject]@{
+        Address = '0076d980'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/76/CLandscapeBackgroundPatch_vectordeletingdestructor_0076d980.cpp'
+        TestSource = '00/76/CLandscapeBackgroundPatch_vectordeletingdestructor_0076d980_test.cpp'
+        PassPattern = 'PASS_0076d980'
+    }
+    [pscustomobject]@{
+        Address = '0076fde0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/76/CLandscapeBackgroundPatch_vectordeletingdestructor_0076fde0.cpp'
+        TestSource = '00/76/CLandscapeBackgroundPatch_vectordeletingdestructor_0076fde0_test.cpp'
+        PassPattern = 'PASS_0076fde0'
+    }
+    [pscustomobject]@{
+        Address = '00771250'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/77/CLandscapeBackgroundPatch_vectordeletingdestructor_00771250.cpp'
+        TestSource = '00/77/CLandscapeBackgroundPatch_vectordeletingdestructor_00771250_test.cpp'
+        PassPattern = 'PASS_00771250'
+    }
+    [pscustomobject]@{
+        Address = '00779990'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/77/CLandscapeBackgroundPatch_vectordeletingdestructor_00779990.cpp'
+        TestSource = '00/77/CLandscapeBackgroundPatch_vectordeletingdestructor_00779990_test.cpp'
+        PassPattern = 'PASS_00779990'
+    }
+    [pscustomobject]@{
+        Address = '0077fed0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/77/CLandscapeBackgroundPatch_vectordeletingdestructor_0077fed0.cpp'
+        TestSource = '00/77/CLandscapeBackgroundPatch_vectordeletingdestructor_0077fed0_test.cpp'
+        PassPattern = 'PASS_0077fed0'
+    }
+    [pscustomobject]@{
+        Address = '00782700'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/78/CLandscapeBackgroundPatch_vectordeletingdestructor_00782700.cpp'
+        TestSource = '00/78/CLandscapeBackgroundPatch_vectordeletingdestructor_00782700_test.cpp'
+        PassPattern = 'PASS_00782700'
+    }
+    [pscustomobject]@{
+        Address = '00782b20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/78/CLandscapeBackgroundPatch_vectordeletingdestructor_00782b20.cpp'
+        TestSource = '00/78/CLandscapeBackgroundPatch_vectordeletingdestructor_00782b20_test.cpp'
+        PassPattern = 'PASS_00782b20'
+    }
+    [pscustomobject]@{
+        Address = '00784ce0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/78/CLandscapeBackgroundPatch_vectordeletingdestructor_00784ce0.cpp'
+        TestSource = '00/78/CLandscapeBackgroundPatch_vectordeletingdestructor_00784ce0_test.cpp'
+        PassPattern = 'PASS_00784ce0'
+    }
+    [pscustomobject]@{
+        Address = '00798cc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/79/CLandscapeBackgroundPatch_vectordeletingdestructor_00798cc0.cpp'
+        TestSource = '00/79/CLandscapeBackgroundPatch_vectordeletingdestructor_00798cc0_test.cpp'
+        PassPattern = 'PASS_00798cc0'
+    }
+    [pscustomobject]@{
+        Address = '0079f510'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/79/CLandscapeBackgroundPatch_vectordeletingdestructor_0079f510.cpp'
+        TestSource = '00/79/CLandscapeBackgroundPatch_vectordeletingdestructor_0079f510_test.cpp'
+        PassPattern = 'PASS_0079f510'
+    }
+    [pscustomobject]@{
+        Address = '007a40b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7a/CLandscapeBackgroundPatch_vectordeletingdestructor_007a40b0.cpp'
+        TestSource = '00/7a/CLandscapeBackgroundPatch_vectordeletingdestructor_007a40b0_test.cpp'
+        PassPattern = 'PASS_007a40b0'
+    }
+    [pscustomobject]@{
+        Address = '007a6be0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7a/CLandscapeBackgroundPatch_vectordeletingdestructor_007a6be0.cpp'
+        TestSource = '00/7a/CLandscapeBackgroundPatch_vectordeletingdestructor_007a6be0_test.cpp'
+        PassPattern = 'PASS_007a6be0'
+    }
+    [pscustomobject]@{
+        Address = '007a6df0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7a/CLandscapeBackgroundPatch_vectordeletingdestructor_007a6df0.cpp'
+        TestSource = '00/7a/CLandscapeBackgroundPatch_vectordeletingdestructor_007a6df0_test.cpp'
+        PassPattern = 'PASS_007a6df0'
+    }
+    [pscustomobject]@{
+        Address = '007ab5e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7a/CLandscapeBackgroundPatch_vectordeletingdestructor_007ab5e0.cpp'
+        TestSource = '00/7a/CLandscapeBackgroundPatch_vectordeletingdestructor_007ab5e0_test.cpp'
+        PassPattern = 'PASS_007ab5e0'
+    }
+    [pscustomobject]@{
+        Address = '007ab8e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7a/CLandscapeBackgroundPatch_vectordeletingdestructor_007ab8e0.cpp'
+        TestSource = '00/7a/CLandscapeBackgroundPatch_vectordeletingdestructor_007ab8e0_test.cpp'
+        PassPattern = 'PASS_007ab8e0'
+    }
+    [pscustomobject]@{
+        Address = '007bad80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7b/CLandscapeBackgroundPatch_vectordeletingdestructor_007bad80.cpp'
+        TestSource = '00/7b/CLandscapeBackgroundPatch_vectordeletingdestructor_007bad80_test.cpp'
+        PassPattern = 'PASS_007bad80'
+    }
+    [pscustomobject]@{
+        Address = '007c66b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007c66b0.cpp'
+        TestSource = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007c66b0_test.cpp'
+        PassPattern = 'PASS_007c66b0'
+    }
+    [pscustomobject]@{
+        Address = '007c77d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007c77d0.cpp'
+        TestSource = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007c77d0_test.cpp'
+        PassPattern = 'PASS_007c77d0'
+    }
+    [pscustomobject]@{
+        Address = '007c8100'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007c8100.cpp'
+        TestSource = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007c8100_test.cpp'
+        PassPattern = 'PASS_007c8100'
+    }
+    [pscustomobject]@{
+        Address = '007c95c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007c95c0.cpp'
+        TestSource = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007c95c0_test.cpp'
+        PassPattern = 'PASS_007c95c0'
+    }
+    [pscustomobject]@{
+        Address = '007cbea0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007cbea0.cpp'
+        TestSource = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007cbea0_test.cpp'
+        PassPattern = 'PASS_007cbea0'
+    }
+    [pscustomobject]@{
+        Address = '007cd810'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007cd810.cpp'
+        TestSource = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007cd810_test.cpp'
+        PassPattern = 'PASS_007cd810'
+    }
+    [pscustomobject]@{
+        Address = '007ce1b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007ce1b0.cpp'
+        TestSource = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007ce1b0_test.cpp'
+        PassPattern = 'PASS_007ce1b0'
+    }
+    [pscustomobject]@{
+        Address = '007ced40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007ced40.cpp'
+        TestSource = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007ced40_test.cpp'
+        PassPattern = 'PASS_007ced40'
+    }
+    [pscustomobject]@{
+        Address = '007cf390'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007cf390.cpp'
+        TestSource = '00/7c/CLandscapeBackgroundPatch_vectordeletingdestructor_007cf390_test.cpp'
+        PassPattern = 'PASS_007cf390'
+    }
+    [pscustomobject]@{
+        Address = '007d4d90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7d/CLandscapeBackgroundPatch_vectordeletingdestructor_007d4d90.cpp'
+        TestSource = '00/7d/CLandscapeBackgroundPatch_vectordeletingdestructor_007d4d90_test.cpp'
+        PassPattern = 'PASS_007d4d90'
+    }
+    [pscustomobject]@{
+        Address = '007d5f10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7d/CLandscapeBackgroundPatch_vectordeletingdestructor_007d5f10.cpp'
+        TestSource = '00/7d/CLandscapeBackgroundPatch_vectordeletingdestructor_007d5f10_test.cpp'
+        PassPattern = 'PASS_007d5f10'
+    }
+    [pscustomobject]@{
+        Address = '007e0600'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7e/CLandscapeBackgroundPatch_vectordeletingdestructor_007e0600.cpp'
+        TestSource = '00/7e/CLandscapeBackgroundPatch_vectordeletingdestructor_007e0600_test.cpp'
+        PassPattern = 'PASS_007e0600'
+    }
+    [pscustomobject]@{
+        Address = '007e5b10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7e/CLandscapeBackgroundPatch_vectordeletingdestructor_007e5b10.cpp'
+        TestSource = '00/7e/CLandscapeBackgroundPatch_vectordeletingdestructor_007e5b10_test.cpp'
+        PassPattern = 'PASS_007e5b10'
+    }
+    [pscustomobject]@{
+        Address = '007eba90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7e/CLandscapeBackgroundPatch_vectordeletingdestructor_007eba90.cpp'
+        TestSource = '00/7e/CLandscapeBackgroundPatch_vectordeletingdestructor_007eba90_test.cpp'
+        PassPattern = 'PASS_007eba90'
+    }
+    [pscustomobject]@{
+        Address = '007ed040'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7e/CLandscapeBackgroundPatch_vectordeletingdestructor_007ed040.cpp'
+        TestSource = '00/7e/CLandscapeBackgroundPatch_vectordeletingdestructor_007ed040_test.cpp'
+        PassPattern = 'PASS_007ed040'
+    }
+    [pscustomobject]@{
+        Address = '007eef60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7e/CLandscapeBackgroundPatch_vectordeletingdestructor_007eef60.cpp'
+        TestSource = '00/7e/CLandscapeBackgroundPatch_vectordeletingdestructor_007eef60_test.cpp'
+        PassPattern = 'PASS_007eef60'
+    }
+    [pscustomobject]@{
+        Address = '007f05f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7f/CLandscapeBackgroundPatch_vectordeletingdestructor_007f05f0.cpp'
+        TestSource = '00/7f/CLandscapeBackgroundPatch_vectordeletingdestructor_007f05f0_test.cpp'
+        PassPattern = 'PASS_007f05f0'
+    }
+    [pscustomobject]@{
+        Address = '007f5620'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7f/CLandscapeBackgroundPatch_vectordeletingdestructor_007f5620.cpp'
+        TestSource = '00/7f/CLandscapeBackgroundPatch_vectordeletingdestructor_007f5620_test.cpp'
+        PassPattern = 'PASS_007f5620'
+    }
+    [pscustomobject]@{
+        Address = '007f7a50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7f/CLandscapeBackgroundPatch_vectordeletingdestructor_007f7a50.cpp'
+        TestSource = '00/7f/CLandscapeBackgroundPatch_vectordeletingdestructor_007f7a50_test.cpp'
+        PassPattern = 'PASS_007f7a50'
+    }
+    [pscustomobject]@{
+        Address = '00811e90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/81/CLandscapeBackgroundPatch_vectordeletingdestructor_00811e90.cpp'
+        TestSource = '00/81/CLandscapeBackgroundPatch_vectordeletingdestructor_00811e90_test.cpp'
+        PassPattern = 'PASS_00811e90'
+    }
+    [pscustomobject]@{
+        Address = '00826420'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/82/CLandscapeBackgroundPatch_vectordeletingdestructor_00826420.cpp'
+        TestSource = '00/82/CLandscapeBackgroundPatch_vectordeletingdestructor_00826420_test.cpp'
+        PassPattern = 'PASS_00826420'
+    }
+    [pscustomobject]@{
+        Address = '008278b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/82/CLandscapeBackgroundPatch_vectordeletingdestructor_008278b0.cpp'
+        TestSource = '00/82/CLandscapeBackgroundPatch_vectordeletingdestructor_008278b0_test.cpp'
+        PassPattern = 'PASS_008278b0'
+    }
+    [pscustomobject]@{
+        Address = '0083b0f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/83/CLandscapeBackgroundPatch_vectordeletingdestructor_0083b0f0.cpp'
+        TestSource = '00/83/CLandscapeBackgroundPatch_vectordeletingdestructor_0083b0f0_test.cpp'
+        PassPattern = 'PASS_0083b0f0'
+    }
+    [pscustomobject]@{
+        Address = '0084ac70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/84/CLandscapeBackgroundPatch_vectordeletingdestructor_0084ac70.cpp'
+        TestSource = '00/84/CLandscapeBackgroundPatch_vectordeletingdestructor_0084ac70_test.cpp'
+        PassPattern = 'PASS_0084ac70'
+    }
+    [pscustomobject]@{
+        Address = '0085ecf0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/85/CLandscapeBackgroundPatch_vectordeletingdestructor_0085ecf0.cpp'
+        TestSource = '00/85/CLandscapeBackgroundPatch_vectordeletingdestructor_0085ecf0_test.cpp'
+        PassPattern = 'PASS_0085ecf0'
+    }
+    [pscustomobject]@{
+        Address = '00873b60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/87/CLandscapeBackgroundPatch_vectordeletingdestructor_00873b60.cpp'
+        TestSource = '00/87/CLandscapeBackgroundPatch_vectordeletingdestructor_00873b60_test.cpp'
+        PassPattern = 'PASS_00873b60'
+    }
+    [pscustomobject]@{
+        Address = '0087fe80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/87/CLandscapeBackgroundPatch_vectordeletingdestructor_0087fe80.cpp'
+        TestSource = '00/87/CLandscapeBackgroundPatch_vectordeletingdestructor_0087fe80_test.cpp'
+        PassPattern = 'PASS_0087fe80'
+    }
+    [pscustomobject]@{
+        Address = '00884be0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/88/CLandscapeBackgroundPatch_vectordeletingdestructor_00884be0.cpp'
+        TestSource = '00/88/CLandscapeBackgroundPatch_vectordeletingdestructor_00884be0_test.cpp'
+        PassPattern = 'PASS_00884be0'
+    }
+    [pscustomobject]@{
+        Address = '008aaf30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8a/CLandscapeBackgroundPatch_vectordeletingdestructor_008aaf30.cpp'
+        TestSource = '00/8a/CLandscapeBackgroundPatch_vectordeletingdestructor_008aaf30_test.cpp'
+        PassPattern = 'PASS_008aaf30'
+    }
+    [pscustomobject]@{
+        Address = '008b3500'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3500.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3500_test.cpp'
+        PassPattern = 'PASS_008b3500'
+    }
+    [pscustomobject]@{
+        Address = '008b3570'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3570.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3570_test.cpp'
+        PassPattern = 'PASS_008b3570'
+    }
+    [pscustomobject]@{
+        Address = '008b35f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b35f0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b35f0_test.cpp'
+        PassPattern = 'PASS_008b35f0'
+    }
+    [pscustomobject]@{
+        Address = '008b3660'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3660.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3660_test.cpp'
+        PassPattern = 'PASS_008b3660'
+    }
+    [pscustomobject]@{
+        Address = '008b36d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b36d0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b36d0_test.cpp'
+        PassPattern = 'PASS_008b36d0'
+    }
+    [pscustomobject]@{
+        Address = '008b3750'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3750.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3750_test.cpp'
+        PassPattern = 'PASS_008b3750'
+    }
+    [pscustomobject]@{
+        Address = '008b37d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b37d0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b37d0_test.cpp'
+        PassPattern = 'PASS_008b37d0'
+    }
+    [pscustomobject]@{
+        Address = '008b3850'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3850.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3850_test.cpp'
+        PassPattern = 'PASS_008b3850'
+    }
+    [pscustomobject]@{
+        Address = '008b38d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b38d0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b38d0_test.cpp'
+        PassPattern = 'PASS_008b38d0'
+    }
+    [pscustomobject]@{
+        Address = '008b3940'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3940.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3940_test.cpp'
+        PassPattern = 'PASS_008b3940'
+    }
+    [pscustomobject]@{
+        Address = '008b39b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b39b0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b39b0_test.cpp'
+        PassPattern = 'PASS_008b39b0'
+    }
+    [pscustomobject]@{
+        Address = '008b3a30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3a30.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3a30_test.cpp'
+        PassPattern = 'PASS_008b3a30'
+    }
+    [pscustomobject]@{
+        Address = '008b3ac0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3ac0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3ac0_test.cpp'
+        PassPattern = 'PASS_008b3ac0'
+    }
+    [pscustomobject]@{
+        Address = '008b3b40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3b40.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3b40_test.cpp'
+        PassPattern = 'PASS_008b3b40'
+    }
+    [pscustomobject]@{
+        Address = '008b3bc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3bc0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3bc0_test.cpp'
+        PassPattern = 'PASS_008b3bc0'
+    }
+    [pscustomobject]@{
+        Address = '008b3c40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3c40.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3c40_test.cpp'
+        PassPattern = 'PASS_008b3c40'
+    }
+    [pscustomobject]@{
+        Address = '008b3cc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3cc0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3cc0_test.cpp'
+        PassPattern = 'PASS_008b3cc0'
+    }
+    [pscustomobject]@{
+        Address = '008b3d40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3d40.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3d40_test.cpp'
+        PassPattern = 'PASS_008b3d40'
+    }
+    [pscustomobject]@{
+        Address = '008b3dc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3dc0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3dc0_test.cpp'
+        PassPattern = 'PASS_008b3dc0'
+    }
+    [pscustomobject]@{
+        Address = '008b3e60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3e60.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3e60_test.cpp'
+        PassPattern = 'PASS_008b3e60'
+    }
+    [pscustomobject]@{
+        Address = '008b3f10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3f10.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3f10_test.cpp'
+        PassPattern = 'PASS_008b3f10'
+    }
+    [pscustomobject]@{
+        Address = '008b3fb0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3fb0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b3fb0_test.cpp'
+        PassPattern = 'PASS_008b3fb0'
+    }
+    [pscustomobject]@{
+        Address = '008b4030'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4030.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4030_test.cpp'
+        PassPattern = 'PASS_008b4030'
+    }
+    [pscustomobject]@{
+        Address = '008b40b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b40b0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b40b0_test.cpp'
+        PassPattern = 'PASS_008b40b0'
+    }
+    [pscustomobject]@{
+        Address = '008b4140'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4140.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4140_test.cpp'
+        PassPattern = 'PASS_008b4140'
+    }
+    [pscustomobject]@{
+        Address = '008b41c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b41c0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b41c0_test.cpp'
+        PassPattern = 'PASS_008b41c0'
+    }
+    [pscustomobject]@{
+        Address = '008b4230'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4230.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4230_test.cpp'
+        PassPattern = 'PASS_008b4230'
+    }
+    [pscustomobject]@{
+        Address = '008b42a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b42a0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b42a0_test.cpp'
+        PassPattern = 'PASS_008b42a0'
+    }
+    [pscustomobject]@{
+        Address = '008b4310'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4310.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4310_test.cpp'
+        PassPattern = 'PASS_008b4310'
+    }
+    [pscustomobject]@{
+        Address = '008b4390'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4390.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4390_test.cpp'
+        PassPattern = 'PASS_008b4390'
+    }
+    [pscustomobject]@{
+        Address = '008b4400'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4400.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4400_test.cpp'
+        PassPattern = 'PASS_008b4400'
+    }
+    [pscustomobject]@{
+        Address = '008b4490'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4490.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4490_test.cpp'
+        PassPattern = 'PASS_008b4490'
+    }
+    [pscustomobject]@{
+        Address = '008b4500'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4500.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4500_test.cpp'
+        PassPattern = 'PASS_008b4500'
+    }
+    [pscustomobject]@{
+        Address = '008b4570'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4570.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4570_test.cpp'
+        PassPattern = 'PASS_008b4570'
+    }
+    [pscustomobject]@{
+        Address = '008b45f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b45f0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b45f0_test.cpp'
+        PassPattern = 'PASS_008b45f0'
+    }
+    [pscustomobject]@{
+        Address = '008b4660'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4660.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4660_test.cpp'
+        PassPattern = 'PASS_008b4660'
+    }
+    [pscustomobject]@{
+        Address = '008b46e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b46e0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b46e0_test.cpp'
+        PassPattern = 'PASS_008b46e0'
+    }
+    [pscustomobject]@{
+        Address = '008b4760'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4760.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4760_test.cpp'
+        PassPattern = 'PASS_008b4760'
+    }
+    [pscustomobject]@{
+        Address = '008b47e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b47e0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b47e0_test.cpp'
+        PassPattern = 'PASS_008b47e0'
+    }
+    [pscustomobject]@{
+        Address = '008b4860'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4860.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4860_test.cpp'
+        PassPattern = 'PASS_008b4860'
+    }
+    [pscustomobject]@{
+        Address = '008b48e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b48e0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b48e0_test.cpp'
+        PassPattern = 'PASS_008b48e0'
+    }
+    [pscustomobject]@{
+        Address = '008b4960'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4960.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4960_test.cpp'
+        PassPattern = 'PASS_008b4960'
+    }
+    [pscustomobject]@{
+        Address = '008b49e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b49e0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b49e0_test.cpp'
+        PassPattern = 'PASS_008b49e0'
+    }
+    [pscustomobject]@{
+        Address = '008b4a60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4a60.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4a60_test.cpp'
+        PassPattern = 'PASS_008b4a60'
+    }
+    [pscustomobject]@{
+        Address = '008b4ae0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4ae0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4ae0_test.cpp'
+        PassPattern = 'PASS_008b4ae0'
+    }
+    [pscustomobject]@{
+        Address = '008b4b60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4b60.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4b60_test.cpp'
+        PassPattern = 'PASS_008b4b60'
+    }
+    [pscustomobject]@{
+        Address = '008b4be0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4be0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4be0_test.cpp'
+        PassPattern = 'PASS_008b4be0'
+    }
+    [pscustomobject]@{
+        Address = '008b4c60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4c60.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4c60_test.cpp'
+        PassPattern = 'PASS_008b4c60'
+    }
+    [pscustomobject]@{
+        Address = '008b4ce0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4ce0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4ce0_test.cpp'
+        PassPattern = 'PASS_008b4ce0'
+    }
+    [pscustomobject]@{
+        Address = '008b4d50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4d50.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4d50_test.cpp'
+        PassPattern = 'PASS_008b4d50'
+    }
+    [pscustomobject]@{
+        Address = '008b4dd0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4dd0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4dd0_test.cpp'
+        PassPattern = 'PASS_008b4dd0'
+    }
+    [pscustomobject]@{
+        Address = '008b4e50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4e50.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4e50_test.cpp'
+        PassPattern = 'PASS_008b4e50'
+    }
+    [pscustomobject]@{
+        Address = '008b4ed0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4ed0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4ed0_test.cpp'
+        PassPattern = 'PASS_008b4ed0'
+    }
+    [pscustomobject]@{
+        Address = '008b4f50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4f50.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4f50_test.cpp'
+        PassPattern = 'PASS_008b4f50'
+    }
+    [pscustomobject]@{
+        Address = '008b4fd0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4fd0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b4fd0_test.cpp'
+        PassPattern = 'PASS_008b4fd0'
+    }
+    [pscustomobject]@{
+        Address = '008b5050'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b5050.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b5050_test.cpp'
+        PassPattern = 'PASS_008b5050'
+    }
+    [pscustomobject]@{
+        Address = '008b50e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b50e0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b50e0_test.cpp'
+        PassPattern = 'PASS_008b50e0'
+    }
+    [pscustomobject]@{
+        Address = '008b5190'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b5190.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b5190_test.cpp'
+        PassPattern = 'PASS_008b5190'
+    }
+    [pscustomobject]@{
+        Address = '008b5250'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b5250.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b5250_test.cpp'
+        PassPattern = 'PASS_008b5250'
+    }
+    [pscustomobject]@{
+        Address = '008b5310'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b5310.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b5310_test.cpp'
+        PassPattern = 'PASS_008b5310'
+    }
+    [pscustomobject]@{
+        Address = '008b53d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b53d0.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b53d0_test.cpp'
+        PassPattern = 'PASS_008b53d0'
+    }
+    [pscustomobject]@{
+        Address = '008b5480'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b5480.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008b5480_test.cpp'
+        PassPattern = 'PASS_008b5480'
+    }
+    [pscustomobject]@{
+        Address = '008bd570'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008bd570.cpp'
+        TestSource = '00/8b/CLandscapeBackgroundPatch_vectordeletingdestructor_008bd570_test.cpp'
+        PassPattern = 'PASS_008bd570'
+    }
+    [pscustomobject]@{
+        Address = '008d6140'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8d/CLandscapeBackgroundPatch_vectordeletingdestructor_008d6140.cpp'
+        TestSource = '00/8d/CLandscapeBackgroundPatch_vectordeletingdestructor_008d6140_test.cpp'
+        PassPattern = 'PASS_008d6140'
+    }
+    [pscustomobject]@{
+        Address = '008e3570'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8e/CLandscapeBackgroundPatch_vectordeletingdestructor_008e3570.cpp'
+        TestSource = '00/8e/CLandscapeBackgroundPatch_vectordeletingdestructor_008e3570_test.cpp'
+        PassPattern = 'PASS_008e3570'
+    }
+    [pscustomobject]@{
+        Address = '008ece80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/8e/CLandscapeBackgroundPatch_vectordeletingdestructor_008ece80.cpp'
+        TestSource = '00/8e/CLandscapeBackgroundPatch_vectordeletingdestructor_008ece80_test.cpp'
+        PassPattern = 'PASS_008ece80'
+    }
+    [pscustomobject]@{
+        Address = '0090bb50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/90/CLandscapeBackgroundPatch_vectordeletingdestructor_0090bb50.cpp'
+        TestSource = '00/90/CLandscapeBackgroundPatch_vectordeletingdestructor_0090bb50_test.cpp'
+        PassPattern = 'PASS_0090bb50'
+    }
+    [pscustomobject]@{
+        Address = '00911200'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/91/CLandscapeBackgroundPatch_vectordeletingdestructor_00911200.cpp'
+        TestSource = '00/91/CLandscapeBackgroundPatch_vectordeletingdestructor_00911200_test.cpp'
+        PassPattern = 'PASS_00911200'
+    }
+    [pscustomobject]@{
+        Address = '00913490'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/91/CLandscapeBackgroundPatch_vectordeletingdestructor_00913490.cpp'
+        TestSource = '00/91/CLandscapeBackgroundPatch_vectordeletingdestructor_00913490_test.cpp'
+        PassPattern = 'PASS_00913490'
+    }
+    [pscustomobject]@{
+        Address = '00916540'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/91/CLandscapeBackgroundPatch_vectordeletingdestructor_00916540.cpp'
+        TestSource = '00/91/CLandscapeBackgroundPatch_vectordeletingdestructor_00916540_test.cpp'
+        PassPattern = 'PASS_00916540'
+    }
+    [pscustomobject]@{
+        Address = '0091a570'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/91/CLandscapeBackgroundPatch_vectordeletingdestructor_0091a570.cpp'
+        TestSource = '00/91/CLandscapeBackgroundPatch_vectordeletingdestructor_0091a570_test.cpp'
+        PassPattern = 'PASS_0091a570'
+    }
+    [pscustomobject]@{
+        Address = '00927da0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/92/CLandscapeBackgroundPatch_vectordeletingdestructor_00927da0.cpp'
+        TestSource = '00/92/CLandscapeBackgroundPatch_vectordeletingdestructor_00927da0_test.cpp'
+        PassPattern = 'PASS_00927da0'
+    }
+    [pscustomobject]@{
+        Address = '009704b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/97/CLandscapeBackgroundPatch_vectordeletingdestructor_009704b0.cpp'
+        TestSource = '00/97/CLandscapeBackgroundPatch_vectordeletingdestructor_009704b0_test.cpp'
+        PassPattern = 'PASS_009704b0'
+    }
+    [pscustomobject]@{
+        Address = '0098c390'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/98/CLandscapeBackgroundPatch_vectordeletingdestructor_0098c390.cpp'
+        TestSource = '00/98/CLandscapeBackgroundPatch_vectordeletingdestructor_0098c390_test.cpp'
+        PassPattern = 'PASS_0098c390'
+    }
+    [pscustomobject]@{
+        Address = '0098d990'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/98/CLandscapeBackgroundPatch_vectordeletingdestructor_0098d990.cpp'
+        TestSource = '00/98/CLandscapeBackgroundPatch_vectordeletingdestructor_0098d990_test.cpp'
+        PassPattern = 'PASS_0098d990'
+    }
+    [pscustomobject]@{
+        Address = '0098de90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/98/CLandscapeBackgroundPatch_vectordeletingdestructor_0098de90.cpp'
+        TestSource = '00/98/CLandscapeBackgroundPatch_vectordeletingdestructor_0098de90_test.cpp'
+        PassPattern = 'PASS_0098de90'
+    }
+    [pscustomobject]@{
+        Address = '009971e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/99/CLandscapeBackgroundPatch_vectordeletingdestructor_009971e0.cpp'
+        TestSource = '00/99/CLandscapeBackgroundPatch_vectordeletingdestructor_009971e0_test.cpp'
+        PassPattern = 'PASS_009971e0'
+    }
+    [pscustomobject]@{
+        Address = '009a4e40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9a/CLandscapeBackgroundPatch_vectordeletingdestructor_009a4e40.cpp'
+        TestSource = '00/9a/CLandscapeBackgroundPatch_vectordeletingdestructor_009a4e40_test.cpp'
+        PassPattern = 'PASS_009a4e40'
+    }
+    [pscustomobject]@{
+        Address = '009a6bb0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9a/CLandscapeBackgroundPatch_vectordeletingdestructor_009a6bb0.cpp'
+        TestSource = '00/9a/CLandscapeBackgroundPatch_vectordeletingdestructor_009a6bb0_test.cpp'
+        PassPattern = 'PASS_009a6bb0'
+    }
+    [pscustomobject]@{
+        Address = '009a75a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9a/CLandscapeBackgroundPatch_vectordeletingdestructor_009a75a0.cpp'
+        TestSource = '00/9a/CLandscapeBackgroundPatch_vectordeletingdestructor_009a75a0_test.cpp'
+        PassPattern = 'PASS_009a75a0'
+    }
+    [pscustomobject]@{
+        Address = '009ac870'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9a/CLandscapeBackgroundPatch_vectordeletingdestructor_009ac870.cpp'
+        TestSource = '00/9a/CLandscapeBackgroundPatch_vectordeletingdestructor_009ac870_test.cpp'
+        PassPattern = 'PASS_009ac870'
+    }
+    [pscustomobject]@{
+        Address = '009bdc30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9b/CLandscapeBackgroundPatch_vectordeletingdestructor_009bdc30.cpp'
+        TestSource = '00/9b/CLandscapeBackgroundPatch_vectordeletingdestructor_009bdc30_test.cpp'
+        PassPattern = 'PASS_009bdc30'
+    }
+    [pscustomobject]@{
+        Address = '009be1b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9b/CLandscapeBackgroundPatch_vectordeletingdestructor_009be1b0.cpp'
+        TestSource = '00/9b/CLandscapeBackgroundPatch_vectordeletingdestructor_009be1b0_test.cpp'
+        PassPattern = 'PASS_009be1b0'
+    }
+    [pscustomobject]@{
+        Address = '009c1810'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9c/CLandscapeBackgroundPatch_vectordeletingdestructor_009c1810.cpp'
+        TestSource = '00/9c/CLandscapeBackgroundPatch_vectordeletingdestructor_009c1810_test.cpp'
+        PassPattern = 'PASS_009c1810'
+    }
+    [pscustomobject]@{
+        Address = '009c30b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9c/CLandscapeBackgroundPatch_vectordeletingdestructor_009c30b0.cpp'
+        TestSource = '00/9c/CLandscapeBackgroundPatch_vectordeletingdestructor_009c30b0_test.cpp'
+        PassPattern = 'PASS_009c30b0'
+    }
+    [pscustomobject]@{
+        Address = '009c3100'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9c/CLandscapeBackgroundPatch_vectordeletingdestructor_009c3100.cpp'
+        TestSource = '00/9c/CLandscapeBackgroundPatch_vectordeletingdestructor_009c3100_test.cpp'
+        PassPattern = 'PASS_009c3100'
+    }
+    [pscustomobject]@{
+        Address = '009c65c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9c/CLandscapeBackgroundPatch_vectordeletingdestructor_009c65c0.cpp'
+        TestSource = '00/9c/CLandscapeBackgroundPatch_vectordeletingdestructor_009c65c0_test.cpp'
+        PassPattern = 'PASS_009c65c0'
+    }
+    [pscustomobject]@{
+        Address = '009c6ee0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9c/CLandscapeBackgroundPatch_vectordeletingdestructor_009c6ee0.cpp'
+        TestSource = '00/9c/CLandscapeBackgroundPatch_vectordeletingdestructor_009c6ee0_test.cpp'
+        PassPattern = 'PASS_009c6ee0'
+    }
+    [pscustomobject]@{
+        Address = '009c7900'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9c/CLandscapeBackgroundPatch_vectordeletingdestructor_009c7900.cpp'
+        TestSource = '00/9c/CLandscapeBackgroundPatch_vectordeletingdestructor_009c7900_test.cpp'
+        PassPattern = 'PASS_009c7900'
+    }
+    [pscustomobject]@{
+        Address = '009cb840'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9c/CLandscapeBackgroundPatch_vectordeletingdestructor_009cb840.cpp'
+        TestSource = '00/9c/CLandscapeBackgroundPatch_vectordeletingdestructor_009cb840_test.cpp'
+        PassPattern = 'PASS_009cb840'
+    }
+    [pscustomobject]@{
+        Address = '009d81a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9d/CLandscapeBackgroundPatch_vectordeletingdestructor_009d81a0.cpp'
+        TestSource = '00/9d/CLandscapeBackgroundPatch_vectordeletingdestructor_009d81a0_test.cpp'
+        PassPattern = 'PASS_009d81a0'
+    }
+    [pscustomobject]@{
+        Address = '009e16e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9e/CLandscapeBackgroundPatch_vectordeletingdestructor_009e16e0.cpp'
+        TestSource = '00/9e/CLandscapeBackgroundPatch_vectordeletingdestructor_009e16e0_test.cpp'
+        PassPattern = 'PASS_009e16e0'
+    }
+    [pscustomobject]@{
+        Address = '009e4980'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9e/CLandscapeBackgroundPatch_vectordeletingdestructor_009e4980.cpp'
+        TestSource = '00/9e/CLandscapeBackgroundPatch_vectordeletingdestructor_009e4980_test.cpp'
+        PassPattern = 'PASS_009e4980'
+    }
+    [pscustomobject]@{
+        Address = '009efff0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9e/CLandscapeBackgroundPatch_vectordeletingdestructor_009efff0.cpp'
+        TestSource = '00/9e/CLandscapeBackgroundPatch_vectordeletingdestructor_009efff0_test.cpp'
+        PassPattern = 'PASS_009efff0'
+    }
+    [pscustomobject]@{
+        Address = '009f4a30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9f/CLandscapeBackgroundPatch_vectordeletingdestructor_009f4a30.cpp'
+        TestSource = '00/9f/CLandscapeBackgroundPatch_vectordeletingdestructor_009f4a30_test.cpp'
+        PassPattern = 'PASS_009f4a30'
+    }
+    [pscustomobject]@{
+        Address = '009fc750'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9f/CLandscapeBackgroundPatch_vectordeletingdestructor_009fc750.cpp'
+        TestSource = '00/9f/CLandscapeBackgroundPatch_vectordeletingdestructor_009fc750_test.cpp'
+        PassPattern = 'PASS_009fc750'
+    }
+    [pscustomobject]@{
+        Address = '009ffb80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/9f/CLandscapeBackgroundPatch_vectordeletingdestructor_009ffb80.cpp'
+        TestSource = '00/9f/CLandscapeBackgroundPatch_vectordeletingdestructor_009ffb80_test.cpp'
+        PassPattern = 'PASS_009ffb80'
+    }
+    [pscustomobject]@{
+        Address = '00a00620'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a0/CLandscapeBackgroundPatch_vectordeletingdestructor_00a00620.cpp'
+        TestSource = '00/a0/CLandscapeBackgroundPatch_vectordeletingdestructor_00a00620_test.cpp'
+        PassPattern = 'PASS_00a00620'
+    }
+    [pscustomobject]@{
+        Address = '00a010a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a0/CLandscapeBackgroundPatch_vectordeletingdestructor_00a010a0.cpp'
+        TestSource = '00/a0/CLandscapeBackgroundPatch_vectordeletingdestructor_00a010a0_test.cpp'
+        PassPattern = 'PASS_00a010a0'
+    }
+    [pscustomobject]@{
+        Address = '00a0a8a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a0/CLandscapeBackgroundPatch_vectordeletingdestructor_00a0a8a0.cpp'
+        TestSource = '00/a0/CLandscapeBackgroundPatch_vectordeletingdestructor_00a0a8a0_test.cpp'
+        PassPattern = 'PASS_00a0a8a0'
+    }
+    [pscustomobject]@{
+        Address = '00a19b20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a1/CLandscapeBackgroundPatch_vectordeletingdestructor_00a19b20.cpp'
+        TestSource = '00/a1/CLandscapeBackgroundPatch_vectordeletingdestructor_00a19b20_test.cpp'
+        PassPattern = 'PASS_00a19b20'
+    }
+    [pscustomobject]@{
+        Address = '00a224d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a2/CLandscapeBackgroundPatch_vectordeletingdestructor_00a224d0.cpp'
+        TestSource = '00/a2/CLandscapeBackgroundPatch_vectordeletingdestructor_00a224d0_test.cpp'
+        PassPattern = 'PASS_00a224d0'
+    }
+    [pscustomobject]@{
+        Address = '00a294b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a2/CLandscapeBackgroundPatch_vectordeletingdestructor_00a294b0.cpp'
+        TestSource = '00/a2/CLandscapeBackgroundPatch_vectordeletingdestructor_00a294b0_test.cpp'
+        PassPattern = 'PASS_00a294b0'
+    }
+    [pscustomobject]@{
+        Address = '00a2bd70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a2/CLandscapeBackgroundPatch_vectordeletingdestructor_00a2bd70.cpp'
+        TestSource = '00/a2/CLandscapeBackgroundPatch_vectordeletingdestructor_00a2bd70_test.cpp'
+        PassPattern = 'PASS_00a2bd70'
+    }
+    [pscustomobject]@{
+        Address = '00a2d770'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a2/CLandscapeBackgroundPatch_vectordeletingdestructor_00a2d770.cpp'
+        TestSource = '00/a2/CLandscapeBackgroundPatch_vectordeletingdestructor_00a2d770_test.cpp'
+        PassPattern = 'PASS_00a2d770'
+    }
+    [pscustomobject]@{
+        Address = '00a2db10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a2/CLandscapeBackgroundPatch_vectordeletingdestructor_00a2db10.cpp'
+        TestSource = '00/a2/CLandscapeBackgroundPatch_vectordeletingdestructor_00a2db10_test.cpp'
+        PassPattern = 'PASS_00a2db10'
+    }
+    [pscustomobject]@{
+        Address = '00a2e370'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a2/CLandscapeBackgroundPatch_vectordeletingdestructor_00a2e370.cpp'
+        TestSource = '00/a2/CLandscapeBackgroundPatch_vectordeletingdestructor_00a2e370_test.cpp'
+        PassPattern = 'PASS_00a2e370'
+    }
+    [pscustomobject]@{
+        Address = '00a353f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a3/CLandscapeBackgroundPatch_vectordeletingdestructor_00a353f0.cpp'
+        TestSource = '00/a3/CLandscapeBackgroundPatch_vectordeletingdestructor_00a353f0_test.cpp'
+        PassPattern = 'PASS_00a353f0'
+    }
+    [pscustomobject]@{
+        Address = '00a46fa0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a4/CLandscapeBackgroundPatch_vectordeletingdestructor_00a46fa0.cpp'
+        TestSource = '00/a4/CLandscapeBackgroundPatch_vectordeletingdestructor_00a46fa0_test.cpp'
+        PassPattern = 'PASS_00a46fa0'
+    }
+    [pscustomobject]@{
+        Address = '00a47e80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a4/CLandscapeBackgroundPatch_vectordeletingdestructor_00a47e80.cpp'
+        TestSource = '00/a4/CLandscapeBackgroundPatch_vectordeletingdestructor_00a47e80_test.cpp'
+        PassPattern = 'PASS_00a47e80'
+    }
+    [pscustomobject]@{
+        Address = '00a51d90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a5/CLandscapeBackgroundPatch_vectordeletingdestructor_00a51d90.cpp'
+        TestSource = '00/a5/CLandscapeBackgroundPatch_vectordeletingdestructor_00a51d90_test.cpp'
+        PassPattern = 'PASS_00a51d90'
+    }
+    [pscustomobject]@{
+        Address = '00a52170'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a5/CLandscapeBackgroundPatch_vectordeletingdestructor_00a52170.cpp'
+        TestSource = '00/a5/CLandscapeBackgroundPatch_vectordeletingdestructor_00a52170_test.cpp'
+        PassPattern = 'PASS_00a52170'
+    }
+    [pscustomobject]@{
+        Address = '00a555c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a5/CLandscapeBackgroundPatch_vectordeletingdestructor_00a555c0.cpp'
+        TestSource = '00/a5/CLandscapeBackgroundPatch_vectordeletingdestructor_00a555c0_test.cpp'
+        PassPattern = 'PASS_00a555c0'
+    }
+    [pscustomobject]@{
+        Address = '00a5f800'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a5/CLandscapeBackgroundPatch_vectordeletingdestructor_00a5f800.cpp'
+        TestSource = '00/a5/CLandscapeBackgroundPatch_vectordeletingdestructor_00a5f800_test.cpp'
+        PassPattern = 'PASS_00a5f800'
+    }
+    [pscustomobject]@{
+        Address = '00a5fa30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a5/CLandscapeBackgroundPatch_vectordeletingdestructor_00a5fa30.cpp'
+        TestSource = '00/a5/CLandscapeBackgroundPatch_vectordeletingdestructor_00a5fa30_test.cpp'
+        PassPattern = 'PASS_00a5fa30'
+    }
+    [pscustomobject]@{
+        Address = '00a606f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a6/CLandscapeBackgroundPatch_vectordeletingdestructor_00a606f0.cpp'
+        TestSource = '00/a6/CLandscapeBackgroundPatch_vectordeletingdestructor_00a606f0_test.cpp'
+        PassPattern = 'PASS_00a606f0'
+    }
+    [pscustomobject]@{
+        Address = '00a63970'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a6/CLandscapeBackgroundPatch_vectordeletingdestructor_00a63970.cpp'
+        TestSource = '00/a6/CLandscapeBackgroundPatch_vectordeletingdestructor_00a63970_test.cpp'
+        PassPattern = 'PASS_00a63970'
+    }
+    [pscustomobject]@{
+        Address = '00a673b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a6/CLandscapeBackgroundPatch_vectordeletingdestructor_00a673b0.cpp'
+        TestSource = '00/a6/CLandscapeBackgroundPatch_vectordeletingdestructor_00a673b0_test.cpp'
+        PassPattern = 'PASS_00a673b0'
+    }
+    [pscustomobject]@{
+        Address = '00a6e590'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a6/CLandscapeBackgroundPatch_vectordeletingdestructor_00a6e590.cpp'
+        TestSource = '00/a6/CLandscapeBackgroundPatch_vectordeletingdestructor_00a6e590_test.cpp'
+        PassPattern = 'PASS_00a6e590'
+    }
+    [pscustomobject]@{
+        Address = '00a758e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a7/CLandscapeBackgroundPatch_vectordeletingdestructor_00a758e0.cpp'
+        TestSource = '00/a7/CLandscapeBackgroundPatch_vectordeletingdestructor_00a758e0_test.cpp'
+        PassPattern = 'PASS_00a758e0'
+    }
+    [pscustomobject]@{
+        Address = '00a81030'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a8/CLandscapeBackgroundPatch_vectordeletingdestructor_00a81030.cpp'
+        TestSource = '00/a8/CLandscapeBackgroundPatch_vectordeletingdestructor_00a81030_test.cpp'
+        PassPattern = 'PASS_00a81030'
+    }
+    [pscustomobject]@{
+        Address = '00a8d700'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a8/CLandscapeBackgroundPatch_vectordeletingdestructor_00a8d700.cpp'
+        TestSource = '00/a8/CLandscapeBackgroundPatch_vectordeletingdestructor_00a8d700_test.cpp'
+        PassPattern = 'PASS_00a8d700'
+    }
+    [pscustomobject]@{
+        Address = '00a96000'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a9/CLandscapeBackgroundPatch_vectordeletingdestructor_00a96000.cpp'
+        TestSource = '00/a9/CLandscapeBackgroundPatch_vectordeletingdestructor_00a96000_test.cpp'
+        PassPattern = 'PASS_00a96000'
+    }
+    [pscustomobject]@{
+        Address = '00a9a2e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a9/CLandscapeBackgroundPatch_vectordeletingdestructor_00a9a2e0.cpp'
+        TestSource = '00/a9/CLandscapeBackgroundPatch_vectordeletingdestructor_00a9a2e0_test.cpp'
+        PassPattern = 'PASS_00a9a2e0'
+    }
+    [pscustomobject]@{
+        Address = '00a9a730'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a9/CLandscapeBackgroundPatch_vectordeletingdestructor_00a9a730.cpp'
+        TestSource = '00/a9/CLandscapeBackgroundPatch_vectordeletingdestructor_00a9a730_test.cpp'
+        PassPattern = 'PASS_00a9a730'
+    }
+    [pscustomobject]@{
+        Address = '00a9ce20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a9/CLandscapeBackgroundPatch_vectordeletingdestructor_00a9ce20.cpp'
+        TestSource = '00/a9/CLandscapeBackgroundPatch_vectordeletingdestructor_00a9ce20_test.cpp'
+        PassPattern = 'PASS_00a9ce20'
+    }
+    [pscustomobject]@{
+        Address = '00a9d2c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/a9/CLandscapeBackgroundPatch_vectordeletingdestructor_00a9d2c0.cpp'
+        TestSource = '00/a9/CLandscapeBackgroundPatch_vectordeletingdestructor_00a9d2c0_test.cpp'
+        PassPattern = 'PASS_00a9d2c0'
+    }
+    [pscustomobject]@{
+        Address = '00aa4a20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aa4a20.cpp'
+        TestSource = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aa4a20_test.cpp'
+        PassPattern = 'PASS_00aa4a20'
+    }
+    [pscustomobject]@{
+        Address = '00aa70b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aa70b0.cpp'
+        TestSource = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aa70b0_test.cpp'
+        PassPattern = 'PASS_00aa70b0'
+    }
+    [pscustomobject]@{
+        Address = '00aa7160'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aa7160.cpp'
+        TestSource = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aa7160_test.cpp'
+        PassPattern = 'PASS_00aa7160'
+    }
+    [pscustomobject]@{
+        Address = '00aa9600'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aa9600.cpp'
+        TestSource = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aa9600_test.cpp'
+        PassPattern = 'PASS_00aa9600'
+    }
+    [pscustomobject]@{
+        Address = '00aab1a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aab1a0.cpp'
+        TestSource = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aab1a0_test.cpp'
+        PassPattern = 'PASS_00aab1a0'
+    }
+    [pscustomobject]@{
+        Address = '00aab6e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aab6e0.cpp'
+        TestSource = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aab6e0_test.cpp'
+        PassPattern = 'PASS_00aab6e0'
+    }
+    [pscustomobject]@{
+        Address = '00aab9a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aab9a0.cpp'
+        TestSource = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aab9a0_test.cpp'
+        PassPattern = 'PASS_00aab9a0'
+    }
+    [pscustomobject]@{
+        Address = '00aacf70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aacf70.cpp'
+        TestSource = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aacf70_test.cpp'
+        PassPattern = 'PASS_00aacf70'
+    }
+    [pscustomobject]@{
+        Address = '00aad0d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aad0d0.cpp'
+        TestSource = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aad0d0_test.cpp'
+        PassPattern = 'PASS_00aad0d0'
+    }
+    [pscustomobject]@{
+        Address = '00aafff0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aafff0.cpp'
+        TestSource = '00/aa/CLandscapeBackgroundPatch_vectordeletingdestructor_00aafff0_test.cpp'
+        PassPattern = 'PASS_00aafff0'
+    }
+    [pscustomobject]@{
+        Address = '00ab4690'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ab/CLandscapeBackgroundPatch_vectordeletingdestructor_00ab4690.cpp'
+        TestSource = '00/ab/CLandscapeBackgroundPatch_vectordeletingdestructor_00ab4690_test.cpp'
+        PassPattern = 'PASS_00ab4690'
+    }
+    [pscustomobject]@{
+        Address = '00ab9990'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ab/CLandscapeBackgroundPatch_vectordeletingdestructor_00ab9990.cpp'
+        TestSource = '00/ab/CLandscapeBackgroundPatch_vectordeletingdestructor_00ab9990_test.cpp'
+        PassPattern = 'PASS_00ab9990'
+    }
+    [pscustomobject]@{
+        Address = '00abeeb0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ab/CLandscapeBackgroundPatch_vectordeletingdestructor_00abeeb0.cpp'
+        TestSource = '00/ab/CLandscapeBackgroundPatch_vectordeletingdestructor_00abeeb0_test.cpp'
+        PassPattern = 'PASS_00abeeb0'
+    }
+    [pscustomobject]@{
+        Address = '00ac69d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ac/CLandscapeBackgroundPatch_vectordeletingdestructor_00ac69d0.cpp'
+        TestSource = '00/ac/CLandscapeBackgroundPatch_vectordeletingdestructor_00ac69d0_test.cpp'
+        PassPattern = 'PASS_00ac69d0'
+    }
+    [pscustomobject]@{
+        Address = '00ad0870'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ad/CLandscapeBackgroundPatch_vectordeletingdestructor_00ad0870.cpp'
+        TestSource = '00/ad/CLandscapeBackgroundPatch_vectordeletingdestructor_00ad0870_test.cpp'
+        PassPattern = 'PASS_00ad0870'
+    }
+    [pscustomobject]@{
+        Address = '00ad5c30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ad/CLandscapeBackgroundPatch_vectordeletingdestructor_00ad5c30.cpp'
+        TestSource = '00/ad/CLandscapeBackgroundPatch_vectordeletingdestructor_00ad5c30_test.cpp'
+        PassPattern = 'PASS_00ad5c30'
+    }
+    [pscustomobject]@{
+        Address = '00ad8770'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ad/CLandscapeBackgroundPatch_vectordeletingdestructor_00ad8770.cpp'
+        TestSource = '00/ad/CLandscapeBackgroundPatch_vectordeletingdestructor_00ad8770_test.cpp'
+        PassPattern = 'PASS_00ad8770'
+    }
+    [pscustomobject]@{
+        Address = '00af2360'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/af/CLandscapeBackgroundPatch_vectordeletingdestructor_00af2360.cpp'
+        TestSource = '00/af/CLandscapeBackgroundPatch_vectordeletingdestructor_00af2360_test.cpp'
+        PassPattern = 'PASS_00af2360'
+    }
+    [pscustomobject]@{
+        Address = '00af2af0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/af/CLandscapeBackgroundPatch_vectordeletingdestructor_00af2af0.cpp'
+        TestSource = '00/af/CLandscapeBackgroundPatch_vectordeletingdestructor_00af2af0_test.cpp'
+        PassPattern = 'PASS_00af2af0'
+    }
+    [pscustomobject]@{
+        Address = '00af7cc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/af/CLandscapeBackgroundPatch_vectordeletingdestructor_00af7cc0.cpp'
+        TestSource = '00/af/CLandscapeBackgroundPatch_vectordeletingdestructor_00af7cc0_test.cpp'
+        PassPattern = 'PASS_00af7cc0'
+    }
+    [pscustomobject]@{
+        Address = '00b05ad0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b0/CLandscapeBackgroundPatch_vectordeletingdestructor_00b05ad0.cpp'
+        TestSource = '00/b0/CLandscapeBackgroundPatch_vectordeletingdestructor_00b05ad0_test.cpp'
+        PassPattern = 'PASS_00b05ad0'
+    }
+    [pscustomobject]@{
+        Address = '00b28cf0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b2/CLandscapeBackgroundPatch_vectordeletingdestructor_00b28cf0.cpp'
+        TestSource = '00/b2/CLandscapeBackgroundPatch_vectordeletingdestructor_00b28cf0_test.cpp'
+        PassPattern = 'PASS_00b28cf0'
+    }
+    [pscustomobject]@{
+        Address = '00b2ab10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b2/CLandscapeBackgroundPatch_vectordeletingdestructor_00b2ab10.cpp'
+        TestSource = '00/b2/CLandscapeBackgroundPatch_vectordeletingdestructor_00b2ab10_test.cpp'
+        PassPattern = 'PASS_00b2ab10'
+    }
+    [pscustomobject]@{
+        Address = '00b2ee00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b2/CLandscapeBackgroundPatch_vectordeletingdestructor_00b2ee00.cpp'
+        TestSource = '00/b2/CLandscapeBackgroundPatch_vectordeletingdestructor_00b2ee00_test.cpp'
+        PassPattern = 'PASS_00b2ee00'
+    }
+    [pscustomobject]@{
+        Address = '00b2f6e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b2/CLandscapeBackgroundPatch_vectordeletingdestructor_00b2f6e0.cpp'
+        TestSource = '00/b2/CLandscapeBackgroundPatch_vectordeletingdestructor_00b2f6e0_test.cpp'
+        PassPattern = 'PASS_00b2f6e0'
+    }
+    [pscustomobject]@{
+        Address = '00b31c70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b3/CLandscapeBackgroundPatch_vectordeletingdestructor_00b31c70.cpp'
+        TestSource = '00/b3/CLandscapeBackgroundPatch_vectordeletingdestructor_00b31c70_test.cpp'
+        PassPattern = 'PASS_00b31c70'
+    }
+    [pscustomobject]@{
+        Address = '00b31dc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b3/CLandscapeBackgroundPatch_vectordeletingdestructor_00b31dc0.cpp'
+        TestSource = '00/b3/CLandscapeBackgroundPatch_vectordeletingdestructor_00b31dc0_test.cpp'
+        PassPattern = 'PASS_00b31dc0'
+    }
+    [pscustomobject]@{
+        Address = '00b36c20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b3/CLandscapeBackgroundPatch_vectordeletingdestructor_00b36c20.cpp'
+        TestSource = '00/b3/CLandscapeBackgroundPatch_vectordeletingdestructor_00b36c20_test.cpp'
+        PassPattern = 'PASS_00b36c20'
+    }
+    [pscustomobject]@{
+        Address = '00b38d10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b3/CLandscapeBackgroundPatch_vectordeletingdestructor_00b38d10.cpp'
+        TestSource = '00/b3/CLandscapeBackgroundPatch_vectordeletingdestructor_00b38d10_test.cpp'
+        PassPattern = 'PASS_00b38d10'
+    }
+    [pscustomobject]@{
+        Address = '00b3ab80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b3/CLandscapeBackgroundPatch_vectordeletingdestructor_00b3ab80.cpp'
+        TestSource = '00/b3/CLandscapeBackgroundPatch_vectordeletingdestructor_00b3ab80_test.cpp'
+        PassPattern = 'PASS_00b3ab80'
+    }
+    [pscustomobject]@{
+        Address = '00b43320'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b4/CLandscapeBackgroundPatch_vectordeletingdestructor_00b43320.cpp'
+        TestSource = '00/b4/CLandscapeBackgroundPatch_vectordeletingdestructor_00b43320_test.cpp'
+        PassPattern = 'PASS_00b43320'
+    }
+    [pscustomobject]@{
+        Address = '00b44440'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b4/CLandscapeBackgroundPatch_vectordeletingdestructor_00b44440.cpp'
+        TestSource = '00/b4/CLandscapeBackgroundPatch_vectordeletingdestructor_00b44440_test.cpp'
+        PassPattern = 'PASS_00b44440'
+    }
+    [pscustomobject]@{
+        Address = '00b499e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b4/CLandscapeBackgroundPatch_vectordeletingdestructor_00b499e0.cpp'
+        TestSource = '00/b4/CLandscapeBackgroundPatch_vectordeletingdestructor_00b499e0_test.cpp'
+        PassPattern = 'PASS_00b499e0'
+    }
+    [pscustomobject]@{
+        Address = '00b4b6c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b4/CLandscapeBackgroundPatch_vectordeletingdestructor_00b4b6c0.cpp'
+        TestSource = '00/b4/CLandscapeBackgroundPatch_vectordeletingdestructor_00b4b6c0_test.cpp'
+        PassPattern = 'PASS_00b4b6c0'
+    }
+    [pscustomobject]@{
+        Address = '00b4b720'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b4/CLandscapeBackgroundPatch_vectordeletingdestructor_00b4b720.cpp'
+        TestSource = '00/b4/CLandscapeBackgroundPatch_vectordeletingdestructor_00b4b720_test.cpp'
+        PassPattern = 'PASS_00b4b720'
+    }
+    [pscustomobject]@{
+        Address = '00b50b80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b5/CLandscapeBackgroundPatch_vectordeletingdestructor_00b50b80.cpp'
+        TestSource = '00/b5/CLandscapeBackgroundPatch_vectordeletingdestructor_00b50b80_test.cpp'
+        PassPattern = 'PASS_00b50b80'
+    }
+    [pscustomobject]@{
+        Address = '00b56690'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b5/CLandscapeBackgroundPatch_vectordeletingdestructor_00b56690.cpp'
+        TestSource = '00/b5/CLandscapeBackgroundPatch_vectordeletingdestructor_00b56690_test.cpp'
+        PassPattern = 'PASS_00b56690'
+    }
+    [pscustomobject]@{
+        Address = '00b59d10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b5/CLandscapeBackgroundPatch_vectordeletingdestructor_00b59d10.cpp'
+        TestSource = '00/b5/CLandscapeBackgroundPatch_vectordeletingdestructor_00b59d10_test.cpp'
+        PassPattern = 'PASS_00b59d10'
+    }
+    [pscustomobject]@{
+        Address = '00b5bb00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b5/CLandscapeBackgroundPatch_vectordeletingdestructor_00b5bb00.cpp'
+        TestSource = '00/b5/CLandscapeBackgroundPatch_vectordeletingdestructor_00b5bb00_test.cpp'
+        PassPattern = 'PASS_00b5bb00'
+    }
+    [pscustomobject]@{
+        Address = '00b5eb00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b5/CLandscapeBackgroundPatch_vectordeletingdestructor_00b5eb00.cpp'
+        TestSource = '00/b5/CLandscapeBackgroundPatch_vectordeletingdestructor_00b5eb00_test.cpp'
+        PassPattern = 'PASS_00b5eb00'
+    }
+    [pscustomobject]@{
+        Address = '00b61a20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b6/CLandscapeBackgroundPatch_vectordeletingdestructor_00b61a20.cpp'
+        TestSource = '00/b6/CLandscapeBackgroundPatch_vectordeletingdestructor_00b61a20_test.cpp'
+        PassPattern = 'PASS_00b61a20'
+    }
+    [pscustomobject]@{
+        Address = '00b66e70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b6/CLandscapeBackgroundPatch_vectordeletingdestructor_00b66e70.cpp'
+        TestSource = '00/b6/CLandscapeBackgroundPatch_vectordeletingdestructor_00b66e70_test.cpp'
+        PassPattern = 'PASS_00b66e70'
+    }
+    [pscustomobject]@{
+        Address = '00b67070'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b6/CLandscapeBackgroundPatch_vectordeletingdestructor_00b67070.cpp'
+        TestSource = '00/b6/CLandscapeBackgroundPatch_vectordeletingdestructor_00b67070_test.cpp'
+        PassPattern = 'PASS_00b67070'
+    }
+    [pscustomobject]@{
+        Address = '00b6cab0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b6/CLandscapeBackgroundPatch_vectordeletingdestructor_00b6cab0.cpp'
+        TestSource = '00/b6/CLandscapeBackgroundPatch_vectordeletingdestructor_00b6cab0_test.cpp'
+        PassPattern = 'PASS_00b6cab0'
+    }
+    [pscustomobject]@{
+        Address = '00b7a8b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b7/CLandscapeBackgroundPatch_vectordeletingdestructor_00b7a8b0.cpp'
+        TestSource = '00/b7/CLandscapeBackgroundPatch_vectordeletingdestructor_00b7a8b0_test.cpp'
+        PassPattern = 'PASS_00b7a8b0'
+    }
+    [pscustomobject]@{
+        Address = '00b7ae00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b7/CLandscapeBackgroundPatch_vectordeletingdestructor_00b7ae00.cpp'
+        TestSource = '00/b7/CLandscapeBackgroundPatch_vectordeletingdestructor_00b7ae00_test.cpp'
+        PassPattern = 'PASS_00b7ae00'
+    }
+    [pscustomobject]@{
+        Address = '00b7ee60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b7/CLandscapeBackgroundPatch_vectordeletingdestructor_00b7ee60.cpp'
+        TestSource = '00/b7/CLandscapeBackgroundPatch_vectordeletingdestructor_00b7ee60_test.cpp'
+        PassPattern = 'PASS_00b7ee60'
+    }
+    [pscustomobject]@{
+        Address = '00b829d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b8/CLandscapeBackgroundPatch_vectordeletingdestructor_00b829d0.cpp'
+        TestSource = '00/b8/CLandscapeBackgroundPatch_vectordeletingdestructor_00b829d0_test.cpp'
+        PassPattern = 'PASS_00b829d0'
+    }
+    [pscustomobject]@{
+        Address = '00b866a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b8/CLandscapeBackgroundPatch_vectordeletingdestructor_00b866a0.cpp'
+        TestSource = '00/b8/CLandscapeBackgroundPatch_vectordeletingdestructor_00b866a0_test.cpp'
+        PassPattern = 'PASS_00b866a0'
+    }
+    [pscustomobject]@{
+        Address = '00b8b5b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b8/CLandscapeBackgroundPatch_vectordeletingdestructor_00b8b5b0.cpp'
+        TestSource = '00/b8/CLandscapeBackgroundPatch_vectordeletingdestructor_00b8b5b0_test.cpp'
+        PassPattern = 'PASS_00b8b5b0'
+    }
+    [pscustomobject]@{
+        Address = '00b8b600'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b8/CLandscapeBackgroundPatch_vectordeletingdestructor_00b8b600.cpp'
+        TestSource = '00/b8/CLandscapeBackgroundPatch_vectordeletingdestructor_00b8b600_test.cpp'
+        PassPattern = 'PASS_00b8b600'
+    }
+    [pscustomobject]@{
+        Address = '00b8cfd0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b8/CLandscapeBackgroundPatch_vectordeletingdestructor_00b8cfd0.cpp'
+        TestSource = '00/b8/CLandscapeBackgroundPatch_vectordeletingdestructor_00b8cfd0_test.cpp'
+        PassPattern = 'PASS_00b8cfd0'
+    }
+    [pscustomobject]@{
+        Address = '00b970f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b9/CLandscapeBackgroundPatch_vectordeletingdestructor_00b970f0.cpp'
+        TestSource = '00/b9/CLandscapeBackgroundPatch_vectordeletingdestructor_00b970f0_test.cpp'
+        PassPattern = 'PASS_00b970f0'
+    }
+    [pscustomobject]@{
+        Address = '00b98a10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b9/CLandscapeBackgroundPatch_vectordeletingdestructor_00b98a10.cpp'
+        TestSource = '00/b9/CLandscapeBackgroundPatch_vectordeletingdestructor_00b98a10_test.cpp'
+        PassPattern = 'PASS_00b98a10'
+    }
+    [pscustomobject]@{
+        Address = '00b9c710'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/b9/CLandscapeBackgroundPatch_vectordeletingdestructor_00b9c710.cpp'
+        TestSource = '00/b9/CLandscapeBackgroundPatch_vectordeletingdestructor_00b9c710_test.cpp'
+        PassPattern = 'PASS_00b9c710'
+    }
+    [pscustomobject]@{
+        Address = '00ba80f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ba/CLandscapeBackgroundPatch_vectordeletingdestructor_00ba80f0.cpp'
+        TestSource = '00/ba/CLandscapeBackgroundPatch_vectordeletingdestructor_00ba80f0_test.cpp'
+        PassPattern = 'PASS_00ba80f0'
+    }
+    [pscustomobject]@{
+        Address = '00ba8210'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ba/CLandscapeBackgroundPatch_vectordeletingdestructor_00ba8210.cpp'
+        TestSource = '00/ba/CLandscapeBackgroundPatch_vectordeletingdestructor_00ba8210_test.cpp'
+        PassPattern = 'PASS_00ba8210'
+    }
+    [pscustomobject]@{
+        Address = '00ba92b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ba/CLandscapeBackgroundPatch_vectordeletingdestructor_00ba92b0.cpp'
+        TestSource = '00/ba/CLandscapeBackgroundPatch_vectordeletingdestructor_00ba92b0_test.cpp'
+        PassPattern = 'PASS_00ba92b0'
+    }
+    [pscustomobject]@{
+        Address = '00bac6e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ba/CLandscapeBackgroundPatch_vectordeletingdestructor_00bac6e0.cpp'
+        TestSource = '00/ba/CLandscapeBackgroundPatch_vectordeletingdestructor_00bac6e0_test.cpp'
+        PassPattern = 'PASS_00bac6e0'
+    }
+    [pscustomobject]@{
+        Address = '00bacde0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ba/CLandscapeBackgroundPatch_vectordeletingdestructor_00bacde0.cpp'
+        TestSource = '00/ba/CLandscapeBackgroundPatch_vectordeletingdestructor_00bacde0_test.cpp'
+        PassPattern = 'PASS_00bacde0'
+    }
+    [pscustomobject]@{
+        Address = '00bb1df0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/bb/CLandscapeBackgroundPatch_vectordeletingdestructor_00bb1df0.cpp'
+        TestSource = '00/bb/CLandscapeBackgroundPatch_vectordeletingdestructor_00bb1df0_test.cpp'
+        PassPattern = 'PASS_00bb1df0'
+    }
+    [pscustomobject]@{
+        Address = '00bbd660'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/bb/CLandscapeBackgroundPatch_vectordeletingdestructor_00bbd660.cpp'
+        TestSource = '00/bb/CLandscapeBackgroundPatch_vectordeletingdestructor_00bbd660_test.cpp'
+        PassPattern = 'PASS_00bbd660'
+    }
+    [pscustomobject]@{
+        Address = '00bc5e10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/bc/CLandscapeBackgroundPatch_vectordeletingdestructor_00bc5e10.cpp'
+        TestSource = '00/bc/CLandscapeBackgroundPatch_vectordeletingdestructor_00bc5e10_test.cpp'
+        PassPattern = 'PASS_00bc5e10'
+    }
+    [pscustomobject]@{
+        Address = '00bce630'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/bc/CLandscapeBackgroundPatch_vectordeletingdestructor_00bce630.cpp'
+        TestSource = '00/bc/CLandscapeBackgroundPatch_vectordeletingdestructor_00bce630_test.cpp'
+        PassPattern = 'PASS_00bce630'
+    }
+    [pscustomobject]@{
+        Address = '00bd86a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/bd/CLandscapeBackgroundPatch_vectordeletingdestructor_00bd86a0.cpp'
+        TestSource = '00/bd/CLandscapeBackgroundPatch_vectordeletingdestructor_00bd86a0_test.cpp'
+        PassPattern = 'PASS_00bd86a0'
+    }
+    [pscustomobject]@{
+        Address = '00bdb220'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/bd/CLandscapeBackgroundPatch_vectordeletingdestructor_00bdb220.cpp'
+        TestSource = '00/bd/CLandscapeBackgroundPatch_vectordeletingdestructor_00bdb220_test.cpp'
+        PassPattern = 'PASS_00bdb220'
+    }
+    [pscustomobject]@{
+        Address = '00bdb310'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/bd/CLandscapeBackgroundPatch_vectordeletingdestructor_00bdb310.cpp'
+        TestSource = '00/bd/CLandscapeBackgroundPatch_vectordeletingdestructor_00bdb310_test.cpp'
+        PassPattern = 'PASS_00bdb310'
+    }
+    [pscustomobject]@{
+        Address = '00bdb5a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/bd/CLandscapeBackgroundPatch_vectordeletingdestructor_00bdb5a0.cpp'
+        TestSource = '00/bd/CLandscapeBackgroundPatch_vectordeletingdestructor_00bdb5a0_test.cpp'
+        PassPattern = 'PASS_00bdb5a0'
+    }
+    [pscustomobject]@{
+        Address = '00bdbf20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/bd/CLandscapeBackgroundPatch_vectordeletingdestructor_00bdbf20.cpp'
+        TestSource = '00/bd/CLandscapeBackgroundPatch_vectordeletingdestructor_00bdbf20_test.cpp'
+        PassPattern = 'PASS_00bdbf20'
+    }
+    [pscustomobject]@{
+        Address = '00bdd640'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/bd/CLandscapeBackgroundPatch_vectordeletingdestructor_00bdd640.cpp'
+        TestSource = '00/bd/CLandscapeBackgroundPatch_vectordeletingdestructor_00bdd640_test.cpp'
+        PassPattern = 'PASS_00bdd640'
+    }
+    [pscustomobject]@{
+        Address = '00bdf740'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/bd/CLandscapeBackgroundPatch_vectordeletingdestructor_00bdf740.cpp'
+        TestSource = '00/bd/CLandscapeBackgroundPatch_vectordeletingdestructor_00bdf740_test.cpp'
+        PassPattern = 'PASS_00bdf740'
+    }
+    [pscustomobject]@{
+        Address = '00be32d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/be/CLandscapeBackgroundPatch_vectordeletingdestructor_00be32d0.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_vectordeletingdestructor_00be32d0_test.cpp'
+        PassPattern = 'PASS_00be32d0'
+    }
+    [pscustomobject]@{
+        Address = '00be8d20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/be/CLandscapeBackgroundPatch_vectordeletingdestructor_00be8d20.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_vectordeletingdestructor_00be8d20_test.cpp'
+        PassPattern = 'PASS_00be8d20'
+    }
+    [pscustomobject]@{
+        Address = '00bea760'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/be/CLandscapeBackgroundPatch_vectordeletingdestructor_00bea760.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_vectordeletingdestructor_00bea760_test.cpp'
+        PassPattern = 'PASS_00bea760'
+    }
+    [pscustomobject]@{
+        Address = '00beda90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/be/CLandscapeBackgroundPatch_vectordeletingdestructor_00beda90.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_vectordeletingdestructor_00beda90_test.cpp'
+        PassPattern = 'PASS_00beda90'
+    }
+    [pscustomobject]@{
+        Address = '00bf34b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/bf/CLandscapeBackgroundPatch_vectordeletingdestructor_00bf34b0.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundPatch_vectordeletingdestructor_00bf34b0_test.cpp'
+        PassPattern = 'PASS_00bf34b0'
+    }
+    [pscustomobject]@{
+        Address = '00bfbd20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/bf/CLandscapeBackgroundPatch_vectordeletingdestructor_00bfbd20.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundPatch_vectordeletingdestructor_00bfbd20_test.cpp'
+        PassPattern = 'PASS_00bfbd20'
+    }
+    [pscustomobject]@{
+        Address = '00c09830'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c09830.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c09830_test.cpp'
+        PassPattern = 'PASS_00c09830'
+    }
+    [pscustomobject]@{
+        Address = '00c09ae0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c09ae0.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c09ae0_test.cpp'
+        PassPattern = 'PASS_00c09ae0'
+    }
+    [pscustomobject]@{
+        Address = '00c09b20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c09b20.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c09b20_test.cpp'
+        PassPattern = 'PASS_00c09b20'
+    }
+    [pscustomobject]@{
+        Address = '00c09dc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c09dc0.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c09dc0_test.cpp'
+        PassPattern = 'PASS_00c09dc0'
+    }
+    [pscustomobject]@{
+        Address = '00c09e00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c09e00.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c09e00_test.cpp'
+        PassPattern = 'PASS_00c09e00'
+    }
+    [pscustomobject]@{
+        Address = '00c0a470'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0a470.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0a470_test.cpp'
+        PassPattern = 'PASS_00c0a470'
+    }
+    [pscustomobject]@{
+        Address = '00c0a4b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0a4b0.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0a4b0_test.cpp'
+        PassPattern = 'PASS_00c0a4b0'
+    }
+    [pscustomobject]@{
+        Address = '00c0a4f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0a4f0.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0a4f0_test.cpp'
+        PassPattern = 'PASS_00c0a4f0'
+    }
+    [pscustomobject]@{
+        Address = '00c0a530'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0a530.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0a530_test.cpp'
+        PassPattern = 'PASS_00c0a530'
+    }
+    [pscustomobject]@{
+        Address = '00c0ef10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0ef10.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0ef10_test.cpp'
+        PassPattern = 'PASS_00c0ef10'
+    }
+    [pscustomobject]@{
+        Address = '00c0f160'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0f160.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0f160_test.cpp'
+        PassPattern = 'PASS_00c0f160'
+    }
+    [pscustomobject]@{
+        Address = '00c0f270'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0f270.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0f270_test.cpp'
+        PassPattern = 'PASS_00c0f270'
+    }
+    [pscustomobject]@{
+        Address = '00c0f380'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0f380.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0f380_test.cpp'
+        PassPattern = 'PASS_00c0f380'
+    }
+    [pscustomobject]@{
+        Address = '00c0fbc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0fbc0.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0fbc0_test.cpp'
+        PassPattern = 'PASS_00c0fbc0'
+    }
+    [pscustomobject]@{
+        Address = '00c0fd10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0fd10.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0fd10_test.cpp'
+        PassPattern = 'PASS_00c0fd10'
+    }
+    [pscustomobject]@{
+        Address = '00c0fd50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0fd50.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0fd50_test.cpp'
+        PassPattern = 'PASS_00c0fd50'
+    }
+    [pscustomobject]@{
+        Address = '00c0fd90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0fd90.cpp'
+        TestSource = '00/c0/CLandscapeBackgroundPatch_vectordeletingdestructor_00c0fd90_test.cpp'
+        PassPattern = 'PASS_00c0fd90'
+    }
+    [pscustomobject]@{
+        Address = '00c10860'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c10860.cpp'
+        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c10860_test.cpp'
+        PassPattern = 'PASS_00c10860'
+    }
+    [pscustomobject]@{
+        Address = '00c109b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c109b0.cpp'
+        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c109b0_test.cpp'
+        PassPattern = 'PASS_00c109b0'
+    }
+    [pscustomobject]@{
+        Address = '00c135b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c135b0.cpp'
+        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c135b0_test.cpp'
+        PassPattern = 'PASS_00c135b0'
+    }
+    [pscustomobject]@{
+        Address = '00c14740'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c14740.cpp'
+        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c14740_test.cpp'
+        PassPattern = 'PASS_00c14740'
+    }
+    [pscustomobject]@{
+        Address = '00c150b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c150b0.cpp'
+        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c150b0_test.cpp'
+        PassPattern = 'PASS_00c150b0'
+    }
+    [pscustomobject]@{
+        Address = '00c15110'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c15110.cpp'
+        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c15110_test.cpp'
+        PassPattern = 'PASS_00c15110'
+    }
+    [pscustomobject]@{
+        Address = '00c15270'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c15270.cpp'
+        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c15270_test.cpp'
+        PassPattern = 'PASS_00c15270'
+    }
+    [pscustomobject]@{
+        Address = '00c15660'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c15660.cpp'
+        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c15660_test.cpp'
+        PassPattern = 'PASS_00c15660'
+    }
+    [pscustomobject]@{
+        Address = '00c158a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c158a0.cpp'
+        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c158a0_test.cpp'
+        PassPattern = 'PASS_00c158a0'
+    }
+    [pscustomobject]@{
+        Address = '00c15a10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c15a10.cpp'
+        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c15a10_test.cpp'
+        PassPattern = 'PASS_00c15a10'
+    }
+    [pscustomobject]@{
+        Address = '00c162c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c162c0.cpp'
+        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c162c0_test.cpp'
+        PassPattern = 'PASS_00c162c0'
+    }
+    [pscustomobject]@{
+        Address = '00c18a20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c18a20.cpp'
+        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c18a20_test.cpp'
+        PassPattern = 'PASS_00c18a20'
+    }
+    [pscustomobject]@{
+        Address = '00c1e230'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c1e230.cpp'
+        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c1e230_test.cpp'
+        PassPattern = 'PASS_00c1e230'
+    }
+    [pscustomobject]@{
+        Address = '00c1ec40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c1ec40.cpp'
+        TestSource = '00/c1/CLandscapeBackgroundPatch_vectordeletingdestructor_00c1ec40_test.cpp'
+        PassPattern = 'PASS_00c1ec40'
+    }
+    [pscustomobject]@{
+        Address = '00c23510'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c23510.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c23510_test.cpp'
+        PassPattern = 'PASS_00c23510'
+    }
+    [pscustomobject]@{
+        Address = '00c23620'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c23620.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c23620_test.cpp'
+        PassPattern = 'PASS_00c23620'
+    }
+    [pscustomobject]@{
+        Address = '00c23730'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c23730.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c23730_test.cpp'
+        PassPattern = 'PASS_00c23730'
+    }
+    [pscustomobject]@{
+        Address = '00c23840'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c23840.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c23840_test.cpp'
+        PassPattern = 'PASS_00c23840'
+    }
+    [pscustomobject]@{
+        Address = '00c23950'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c23950.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c23950_test.cpp'
+        PassPattern = 'PASS_00c23950'
+    }
+    [pscustomobject]@{
+        Address = '00c24c40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c24c40.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c24c40_test.cpp'
+        PassPattern = 'PASS_00c24c40'
+    }
+    [pscustomobject]@{
+        Address = '00c24da0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c24da0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c24da0_test.cpp'
+        PassPattern = 'PASS_00c24da0'
+    }
+    [pscustomobject]@{
+        Address = '00c24f00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c24f00.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c24f00_test.cpp'
+        PassPattern = 'PASS_00c24f00'
+    }
+    [pscustomobject]@{
+        Address = '00c25050'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c25050.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c25050_test.cpp'
+        PassPattern = 'PASS_00c25050'
+    }
+    [pscustomobject]@{
+        Address = '00c25090'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c25090.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c25090_test.cpp'
+        PassPattern = 'PASS_00c25090'
+    }
+    [pscustomobject]@{
+        Address = '00c250d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c250d0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c250d0_test.cpp'
+        PassPattern = 'PASS_00c250d0'
+    }
+    [pscustomobject]@{
+        Address = '00c25110'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c25110.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c25110_test.cpp'
+        PassPattern = 'PASS_00c25110'
+    }
+    [pscustomobject]@{
+        Address = '00c25150'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c25150.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c25150_test.cpp'
+        PassPattern = 'PASS_00c25150'
+    }
+    [pscustomobject]@{
+        Address = '00c25190'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c25190.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c25190_test.cpp'
+        PassPattern = 'PASS_00c25190'
+    }
+    [pscustomobject]@{
+        Address = '00c251d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c251d0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c251d0_test.cpp'
+        PassPattern = 'PASS_00c251d0'
+    }
+    [pscustomobject]@{
+        Address = '00c259c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c259c0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c259c0_test.cpp'
+        PassPattern = 'PASS_00c259c0'
+    }
+    [pscustomobject]@{
+        Address = '00c2aab0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2aab0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2aab0_test.cpp'
+        PassPattern = 'PASS_00c2aab0'
+    }
+    [pscustomobject]@{
+        Address = '00c2ab50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2ab50.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2ab50_test.cpp'
+        PassPattern = 'PASS_00c2ab50'
+    }
+    [pscustomobject]@{
+        Address = '00c2abe0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2abe0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2abe0_test.cpp'
+        PassPattern = 'PASS_00c2abe0'
+    }
+    [pscustomobject]@{
+        Address = '00c2ac30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2ac30.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2ac30_test.cpp'
+        PassPattern = 'PASS_00c2ac30'
+    }
+    [pscustomobject]@{
+        Address = '00c2adf0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2adf0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2adf0_test.cpp'
+        PassPattern = 'PASS_00c2adf0'
+    }
+    [pscustomobject]@{
+        Address = '00c2af00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2af00.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2af00_test.cpp'
+        PassPattern = 'PASS_00c2af00'
+    }
+    [pscustomobject]@{
+        Address = '00c2b680'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2b680.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2b680_test.cpp'
+        PassPattern = 'PASS_00c2b680'
+    }
+    [pscustomobject]@{
+        Address = '00c2b810'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2b810.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2b810_test.cpp'
+        PassPattern = 'PASS_00c2b810'
+    }
+    [pscustomobject]@{
+        Address = '00c2b850'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2b850.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2b850_test.cpp'
+        PassPattern = 'PASS_00c2b850'
+    }
+    [pscustomobject]@{
+        Address = '00c2b890'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2b890.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2b890_test.cpp'
+        PassPattern = 'PASS_00c2b890'
+    }
+    [pscustomobject]@{
+        Address = '00c2ba80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2ba80.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2ba80_test.cpp'
+        PassPattern = 'PASS_00c2ba80'
+    }
+    [pscustomobject]@{
+        Address = '00c2bea0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2bea0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2bea0_test.cpp'
+        PassPattern = 'PASS_00c2bea0'
+    }
+    [pscustomobject]@{
+        Address = '00c2bef0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2bef0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2bef0_test.cpp'
+        PassPattern = 'PASS_00c2bef0'
+    }
+    [pscustomobject]@{
+        Address = '00c2c2d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2c2d0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2c2d0_test.cpp'
+        PassPattern = 'PASS_00c2c2d0'
+    }
+    [pscustomobject]@{
+        Address = '00c2c420'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2c420.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2c420_test.cpp'
+        PassPattern = 'PASS_00c2c420'
+    }
+    [pscustomobject]@{
+        Address = '00c2cd50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2cd50.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2cd50_test.cpp'
+        PassPattern = 'PASS_00c2cd50'
+    }
+    [pscustomobject]@{
+        Address = '00c2de70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2de70.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2de70_test.cpp'
+        PassPattern = 'PASS_00c2de70'
+    }
+    [pscustomobject]@{
+        Address = '00c2e080'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2e080.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2e080_test.cpp'
+        PassPattern = 'PASS_00c2e080'
+    }
+    [pscustomobject]@{
+        Address = '00c2ef90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2ef90.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2ef90_test.cpp'
+        PassPattern = 'PASS_00c2ef90'
+    }
+    [pscustomobject]@{
+        Address = '00c2efc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2efc0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2efc0_test.cpp'
+        PassPattern = 'PASS_00c2efc0'
+    }
+    [pscustomobject]@{
+        Address = '00c2eff0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2eff0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2eff0_test.cpp'
+        PassPattern = 'PASS_00c2eff0'
+    }
+    [pscustomobject]@{
+        Address = '00c2f420'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2f420.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2f420_test.cpp'
+        PassPattern = 'PASS_00c2f420'
+    }
+    [pscustomobject]@{
+        Address = '00c2f590'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2f590.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2f590_test.cpp'
+        PassPattern = 'PASS_00c2f590'
+    }
+    [pscustomobject]@{
+        Address = '00c2f6a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2f6a0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2f6a0_test.cpp'
+        PassPattern = 'PASS_00c2f6a0'
+    }
+    [pscustomobject]@{
+        Address = '00c2fea0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2fea0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2fea0_test.cpp'
+        PassPattern = 'PASS_00c2fea0'
+    }
+    [pscustomobject]@{
+        Address = '00c2fff0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2fff0.cpp'
+        TestSource = '00/c2/CLandscapeBackgroundPatch_vectordeletingdestructor_00c2fff0_test.cpp'
+        PassPattern = 'PASS_00c2fff0'
+    }
+    [pscustomobject]@{
+        Address = '00c30140'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c30140.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c30140_test.cpp'
+        PassPattern = 'PASS_00c30140'
+    }
+    [pscustomobject]@{
+        Address = '00c30a50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c30a50.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c30a50_test.cpp'
+        PassPattern = 'PASS_00c30a50'
+    }
+    [pscustomobject]@{
+        Address = '00c30c60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c30c60.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c30c60_test.cpp'
+        PassPattern = 'PASS_00c30c60'
+    }
+    [pscustomobject]@{
+        Address = '00c32f10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c32f10.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c32f10_test.cpp'
+        PassPattern = 'PASS_00c32f10'
+    }
+    [pscustomobject]@{
+        Address = '00c33170'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c33170.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c33170_test.cpp'
+        PassPattern = 'PASS_00c33170'
+    }
+    [pscustomobject]@{
+        Address = '00c34b00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c34b00.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c34b00_test.cpp'
+        PassPattern = 'PASS_00c34b00'
+    }
+    [pscustomobject]@{
+        Address = '00c34cd0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c34cd0.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c34cd0_test.cpp'
+        PassPattern = 'PASS_00c34cd0'
+    }
+    [pscustomobject]@{
+        Address = '00c350d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c350d0.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c350d0_test.cpp'
+        PassPattern = 'PASS_00c350d0'
+    }
+    [pscustomobject]@{
+        Address = '00c36650'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c36650.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c36650_test.cpp'
+        PassPattern = 'PASS_00c36650'
+    }
+    [pscustomobject]@{
+        Address = '00c366a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c366a0.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c366a0_test.cpp'
+        PassPattern = 'PASS_00c366a0'
+    }
+    [pscustomobject]@{
+        Address = '00c366e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c366e0.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c366e0_test.cpp'
+        PassPattern = 'PASS_00c366e0'
+    }
+    [pscustomobject]@{
+        Address = '00c36940'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c36940.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c36940_test.cpp'
+        PassPattern = 'PASS_00c36940'
+    }
+    [pscustomobject]@{
+        Address = '00c373a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c373a0.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c373a0_test.cpp'
+        PassPattern = 'PASS_00c373a0'
+    }
+    [pscustomobject]@{
+        Address = '00c376c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c376c0.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c376c0_test.cpp'
+        PassPattern = 'PASS_00c376c0'
+    }
+    [pscustomobject]@{
+        Address = '00c37e80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c37e80.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c37e80_test.cpp'
+        PassPattern = 'PASS_00c37e80'
+    }
+    [pscustomobject]@{
+        Address = '00c37ed0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c37ed0.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c37ed0_test.cpp'
+        PassPattern = 'PASS_00c37ed0'
+    }
+    [pscustomobject]@{
+        Address = '00c380f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c380f0.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c380f0_test.cpp'
+        PassPattern = 'PASS_00c380f0'
+    }
+    [pscustomobject]@{
+        Address = '00c38300'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c38300.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c38300_test.cpp'
+        PassPattern = 'PASS_00c38300'
+    }
+    [pscustomobject]@{
+        Address = '00c3ae70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3ae70.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3ae70_test.cpp'
+        PassPattern = 'PASS_00c3ae70'
+    }
+    [pscustomobject]@{
+        Address = '00c3b400'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3b400.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3b400_test.cpp'
+        PassPattern = 'PASS_00c3b400'
+    }
+    [pscustomobject]@{
+        Address = '00c3b620'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3b620.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3b620_test.cpp'
+        PassPattern = 'PASS_00c3b620'
+    }
+    [pscustomobject]@{
+        Address = '00c3c600'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3c600.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3c600_test.cpp'
+        PassPattern = 'PASS_00c3c600'
+    }
+    [pscustomobject]@{
+        Address = '00c3cb00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3cb00.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3cb00_test.cpp'
+        PassPattern = 'PASS_00c3cb00'
+    }
+    [pscustomobject]@{
+        Address = '00c3cbb0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3cbb0.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3cbb0_test.cpp'
+        PassPattern = 'PASS_00c3cbb0'
+    }
+    [pscustomobject]@{
+        Address = '00c3e380'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3e380.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3e380_test.cpp'
+        PassPattern = 'PASS_00c3e380'
+    }
+    [pscustomobject]@{
+        Address = '00c3e3e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3e3e0.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3e3e0_test.cpp'
+        PassPattern = 'PASS_00c3e3e0'
+    }
+    [pscustomobject]@{
+        Address = '00c3f090'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3f090.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3f090_test.cpp'
+        PassPattern = 'PASS_00c3f090'
+    }
+    [pscustomobject]@{
+        Address = '00c3f5a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3f5a0.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3f5a0_test.cpp'
+        PassPattern = 'PASS_00c3f5a0'
+    }
+    [pscustomobject]@{
+        Address = '00c3f690'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3f690.cpp'
+        TestSource = '00/c3/CLandscapeBackgroundPatch_vectordeletingdestructor_00c3f690_test.cpp'
+        PassPattern = 'PASS_00c3f690'
+    }
+    [pscustomobject]@{
+        Address = '00c45030'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c45030.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c45030_test.cpp'
+        PassPattern = 'PASS_00c45030'
+    }
+    [pscustomobject]@{
+        Address = '00c450b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c450b0.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c450b0_test.cpp'
+        PassPattern = 'PASS_00c450b0'
+    }
+    [pscustomobject]@{
+        Address = '00c45400'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c45400.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c45400_test.cpp'
+        PassPattern = 'PASS_00c45400'
+    }
+    [pscustomobject]@{
+        Address = '00c46500'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c46500.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c46500_test.cpp'
+        PassPattern = 'PASS_00c46500'
+    }
+    [pscustomobject]@{
+        Address = '00c46b70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c46b70.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c46b70_test.cpp'
+        PassPattern = 'PASS_00c46b70'
+    }
+    [pscustomobject]@{
+        Address = '00c474d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c474d0.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c474d0_test.cpp'
+        PassPattern = 'PASS_00c474d0'
+    }
+    [pscustomobject]@{
+        Address = '00c47520'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c47520.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c47520_test.cpp'
+        PassPattern = 'PASS_00c47520'
+    }
+    [pscustomobject]@{
+        Address = '00c47570'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c47570.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c47570_test.cpp'
+        PassPattern = 'PASS_00c47570'
+    }
+    [pscustomobject]@{
+        Address = '00c476f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c476f0.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c476f0_test.cpp'
+        PassPattern = 'PASS_00c476f0'
+    }
+    [pscustomobject]@{
+        Address = '00c47960'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c47960.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c47960_test.cpp'
+        PassPattern = 'PASS_00c47960'
+    }
+    [pscustomobject]@{
+        Address = '00c47ab0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c47ab0.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c47ab0_test.cpp'
+        PassPattern = 'PASS_00c47ab0'
+    }
+    [pscustomobject]@{
+        Address = '00c47e70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c47e70.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c47e70_test.cpp'
+        PassPattern = 'PASS_00c47e70'
+    }
+    [pscustomobject]@{
+        Address = '00c49ac0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c49ac0.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c49ac0_test.cpp'
+        PassPattern = 'PASS_00c49ac0'
+    }
+    [pscustomobject]@{
+        Address = '00c4a170'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c4a170.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c4a170_test.cpp'
+        PassPattern = 'PASS_00c4a170'
+    }
+    [pscustomobject]@{
+        Address = '00c4cf80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c4cf80.cpp'
+        TestSource = '00/c4/CLandscapeBackgroundPatch_vectordeletingdestructor_00c4cf80_test.cpp'
+        PassPattern = 'PASS_00c4cf80'
+    }
+    [pscustomobject]@{
+        Address = '00c54780'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c54780.cpp'
+        TestSource = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c54780_test.cpp'
+        PassPattern = 'PASS_00c54780'
+    }
+    [pscustomobject]@{
+        Address = '00c55820'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c55820.cpp'
+        TestSource = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c55820_test.cpp'
+        PassPattern = 'PASS_00c55820'
+    }
+    [pscustomobject]@{
+        Address = '00c57440'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c57440.cpp'
+        TestSource = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c57440_test.cpp'
+        PassPattern = 'PASS_00c57440'
+    }
+    [pscustomobject]@{
+        Address = '00c57d60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c57d60.cpp'
+        TestSource = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c57d60_test.cpp'
+        PassPattern = 'PASS_00c57d60'
+    }
+    [pscustomobject]@{
+        Address = '00c59250'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c59250.cpp'
+        TestSource = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c59250_test.cpp'
+        PassPattern = 'PASS_00c59250'
+    }
+    [pscustomobject]@{
+        Address = '00c5d0c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c5d0c0.cpp'
+        TestSource = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c5d0c0_test.cpp'
+        PassPattern = 'PASS_00c5d0c0'
+    }
+    [pscustomobject]@{
+        Address = '00c5da40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c5da40.cpp'
+        TestSource = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c5da40_test.cpp'
+        PassPattern = 'PASS_00c5da40'
+    }
+    [pscustomobject]@{
+        Address = '00c5edf0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c5edf0.cpp'
+        TestSource = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c5edf0_test.cpp'
+        PassPattern = 'PASS_00c5edf0'
+    }
+    [pscustomobject]@{
+        Address = '00c5ef40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c5ef40.cpp'
+        TestSource = '00/c5/CLandscapeBackgroundPatch_vectordeletingdestructor_00c5ef40_test.cpp'
+        PassPattern = 'PASS_00c5ef40'
+    }
+    [pscustomobject]@{
+        Address = '00c62f30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c6/CLandscapeBackgroundPatch_vectordeletingdestructor_00c62f30.cpp'
+        TestSource = '00/c6/CLandscapeBackgroundPatch_vectordeletingdestructor_00c62f30_test.cpp'
+        PassPattern = 'PASS_00c62f30'
+    }
+    [pscustomobject]@{
+        Address = '00c696a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c6/CLandscapeBackgroundPatch_vectordeletingdestructor_00c696a0.cpp'
+        TestSource = '00/c6/CLandscapeBackgroundPatch_vectordeletingdestructor_00c696a0_test.cpp'
+        PassPattern = 'PASS_00c696a0'
+    }
+    [pscustomobject]@{
+        Address = '00c69800'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c6/CLandscapeBackgroundPatch_vectordeletingdestructor_00c69800.cpp'
+        TestSource = '00/c6/CLandscapeBackgroundPatch_vectordeletingdestructor_00c69800_test.cpp'
+        PassPattern = 'PASS_00c69800'
+    }
+    [pscustomobject]@{
+        Address = '00c69a10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c6/CLandscapeBackgroundPatch_vectordeletingdestructor_00c69a10.cpp'
+        TestSource = '00/c6/CLandscapeBackgroundPatch_vectordeletingdestructor_00c69a10_test.cpp'
+        PassPattern = 'PASS_00c69a10'
+    }
+    [pscustomobject]@{
+        Address = '00c6e6d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c6/CLandscapeBackgroundPatch_vectordeletingdestructor_00c6e6d0.cpp'
+        TestSource = '00/c6/CLandscapeBackgroundPatch_vectordeletingdestructor_00c6e6d0_test.cpp'
+        PassPattern = 'PASS_00c6e6d0'
+    }
+    [pscustomobject]@{
+        Address = '00c70a30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c7/CLandscapeBackgroundPatch_vectordeletingdestructor_00c70a30.cpp'
+        TestSource = '00/c7/CLandscapeBackgroundPatch_vectordeletingdestructor_00c70a30_test.cpp'
+        PassPattern = 'PASS_00c70a30'
+    }
+    [pscustomobject]@{
+        Address = '00c72910'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c7/CLandscapeBackgroundPatch_vectordeletingdestructor_00c72910.cpp'
+        TestSource = '00/c7/CLandscapeBackgroundPatch_vectordeletingdestructor_00c72910_test.cpp'
+        PassPattern = 'PASS_00c72910'
+    }
+    [pscustomobject]@{
+        Address = '00c73f80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c7/CLandscapeBackgroundPatch_vectordeletingdestructor_00c73f80.cpp'
+        TestSource = '00/c7/CLandscapeBackgroundPatch_vectordeletingdestructor_00c73f80_test.cpp'
+        PassPattern = 'PASS_00c73f80'
+    }
+    [pscustomobject]@{
+        Address = '00c754a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c7/CLandscapeBackgroundPatch_vectordeletingdestructor_00c754a0.cpp'
+        TestSource = '00/c7/CLandscapeBackgroundPatch_vectordeletingdestructor_00c754a0_test.cpp'
+        PassPattern = 'PASS_00c754a0'
+    }
+    [pscustomobject]@{
+        Address = '00c77650'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c7/CLandscapeBackgroundPatch_vectordeletingdestructor_00c77650.cpp'
+        TestSource = '00/c7/CLandscapeBackgroundPatch_vectordeletingdestructor_00c77650_test.cpp'
+        PassPattern = 'PASS_00c77650'
+    }
+    [pscustomobject]@{
+        Address = '00c88900'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c8/CLandscapeBackgroundPatch_vectordeletingdestructor_00c88900.cpp'
+        TestSource = '00/c8/CLandscapeBackgroundPatch_vectordeletingdestructor_00c88900_test.cpp'
+        PassPattern = 'PASS_00c88900'
+    }
+    [pscustomobject]@{
+        Address = '00ca73d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ca/CLandscapeBackgroundPatch_vectordeletingdestructor_00ca73d0.cpp'
+        TestSource = '00/ca/CLandscapeBackgroundPatch_vectordeletingdestructor_00ca73d0_test.cpp'
+        PassPattern = 'PASS_00ca73d0'
+    }
+    [pscustomobject]@{
+        Address = '00caaf90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ca/CLandscapeBackgroundPatch_vectordeletingdestructor_00caaf90.cpp'
+        TestSource = '00/ca/CLandscapeBackgroundPatch_vectordeletingdestructor_00caaf90_test.cpp'
+        PassPattern = 'PASS_00caaf90'
+    }
+    [pscustomobject]@{
+        Address = '00cabc60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ca/CLandscapeBackgroundPatch_vectordeletingdestructor_00cabc60.cpp'
+        TestSource = '00/ca/CLandscapeBackgroundPatch_vectordeletingdestructor_00cabc60_test.cpp'
+        PassPattern = 'PASS_00cabc60'
+    }
+    [pscustomobject]@{
+        Address = '00cd4a90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cd4a90.cpp'
+        TestSource = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cd4a90_test.cpp'
+        PassPattern = 'PASS_00cd4a90'
+    }
+    [pscustomobject]@{
+        Address = '00cd4af0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cd4af0.cpp'
+        TestSource = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cd4af0_test.cpp'
+        PassPattern = 'PASS_00cd4af0'
+    }
+    [pscustomobject]@{
+        Address = '00cd4b50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cd4b50.cpp'
+        TestSource = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cd4b50_test.cpp'
+        PassPattern = 'PASS_00cd4b50'
+    }
+    [pscustomobject]@{
+        Address = '00cd4bb0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cd4bb0.cpp'
+        TestSource = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cd4bb0_test.cpp'
+        PassPattern = 'PASS_00cd4bb0'
+    }
+    [pscustomobject]@{
+        Address = '00cdebf0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cdebf0.cpp'
+        TestSource = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cdebf0_test.cpp'
+        PassPattern = 'PASS_00cdebf0'
+    }
+    [pscustomobject]@{
+        Address = '00cdfe10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cdfe10.cpp'
+        TestSource = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cdfe10_test.cpp'
+        PassPattern = 'PASS_00cdfe10'
+    }
+    [pscustomobject]@{
+        Address = '00ce7650'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ce/CLandscapeBackgroundPatch_vectordeletingdestructor_00ce7650.cpp'
+        TestSource = '00/ce/CLandscapeBackgroundPatch_vectordeletingdestructor_00ce7650_test.cpp'
+        PassPattern = 'PASS_00ce7650'
+    }
+    [pscustomobject]@{
+        Address = '00cf0540'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf0540.cpp'
+        TestSource = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf0540_test.cpp'
+        PassPattern = 'PASS_00cf0540'
+    }
+    [pscustomobject]@{
+        Address = '00cf0d00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf0d00.cpp'
+        TestSource = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf0d00_test.cpp'
+        PassPattern = 'PASS_00cf0d00'
+    }
+    [pscustomobject]@{
+        Address = '00cf18b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf18b0.cpp'
+        TestSource = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf18b0_test.cpp'
+        PassPattern = 'PASS_00cf18b0'
+    }
+    [pscustomobject]@{
+        Address = '00cf2b50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf2b50.cpp'
+        TestSource = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf2b50_test.cpp'
+        PassPattern = 'PASS_00cf2b50'
+    }
+    [pscustomobject]@{
+        Address = '00cf3d00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf3d00.cpp'
+        TestSource = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf3d00_test.cpp'
+        PassPattern = 'PASS_00cf3d00'
+    }
+    [pscustomobject]@{
+        Address = '00cf4ea0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf4ea0.cpp'
+        TestSource = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf4ea0_test.cpp'
+        PassPattern = 'PASS_00cf4ea0'
+    }
+    [pscustomobject]@{
+        Address = '00cf91a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf91a0.cpp'
+        TestSource = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf91a0_test.cpp'
+        PassPattern = 'PASS_00cf91a0'
+    }
+    [pscustomobject]@{
+        Address = '00cf95f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf95f0.cpp'
+        TestSource = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf95f0_test.cpp'
+        PassPattern = 'PASS_00cf95f0'
+    }
+    [pscustomobject]@{
+        Address = '00cfaaf0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cfaaf0.cpp'
+        TestSource = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cfaaf0_test.cpp'
+        PassPattern = 'PASS_00cfaaf0'
+    }
+    [pscustomobject]@{
+        Address = '00cfaf50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cfaf50.cpp'
+        TestSource = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cfaf50_test.cpp'
+        PassPattern = 'PASS_00cfaf50'
+    }
+    [pscustomobject]@{
+        Address = '00cfbdd0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cfbdd0.cpp'
+        TestSource = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cfbdd0_test.cpp'
+        PassPattern = 'PASS_00cfbdd0'
+    }
+    [pscustomobject]@{
+        Address = '00d00a70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d00a70.cpp'
+        TestSource = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d00a70_test.cpp'
+        PassPattern = 'PASS_00d00a70'
+    }
+    [pscustomobject]@{
+        Address = '00d01570'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d01570.cpp'
+        TestSource = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d01570_test.cpp'
+        PassPattern = 'PASS_00d01570'
+    }
+    [pscustomobject]@{
+        Address = '00d04a40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d04a40.cpp'
+        TestSource = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d04a40_test.cpp'
+        PassPattern = 'PASS_00d04a40'
+    }
+    [pscustomobject]@{
+        Address = '00d059c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d059c0.cpp'
+        TestSource = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d059c0_test.cpp'
+        PassPattern = 'PASS_00d059c0'
+    }
+    [pscustomobject]@{
+        Address = '00d06090'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d06090.cpp'
+        TestSource = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d06090_test.cpp'
+        PassPattern = 'PASS_00d06090'
+    }
+    [pscustomobject]@{
+        Address = '00d072a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d072a0.cpp'
+        TestSource = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d072a0_test.cpp'
+        PassPattern = 'PASS_00d072a0'
+    }
+    [pscustomobject]@{
+        Address = '00d073f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d073f0.cpp'
+        TestSource = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d073f0_test.cpp'
+        PassPattern = 'PASS_00d073f0'
+    }
+    [pscustomobject]@{
+        Address = '00d08ff0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d08ff0.cpp'
+        TestSource = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d08ff0_test.cpp'
+        PassPattern = 'PASS_00d08ff0'
+    }
+    [pscustomobject]@{
+        Address = '00d0b3c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d0b3c0.cpp'
+        TestSource = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d0b3c0_test.cpp'
+        PassPattern = 'PASS_00d0b3c0'
+    }
+    [pscustomobject]@{
+        Address = '00d0c370'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d0c370.cpp'
+        TestSource = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d0c370_test.cpp'
+        PassPattern = 'PASS_00d0c370'
+    }
+    [pscustomobject]@{
+        Address = '00d12c00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d1/CLandscapeBackgroundPatch_vectordeletingdestructor_00d12c00.cpp'
+        TestSource = '00/d1/CLandscapeBackgroundPatch_vectordeletingdestructor_00d12c00_test.cpp'
+        PassPattern = 'PASS_00d12c00'
+    }
+    [pscustomobject]@{
+        Address = '00d13110'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d1/CLandscapeBackgroundPatch_vectordeletingdestructor_00d13110.cpp'
+        TestSource = '00/d1/CLandscapeBackgroundPatch_vectordeletingdestructor_00d13110_test.cpp'
+        PassPattern = 'PASS_00d13110'
+    }
+    [pscustomobject]@{
+        Address = '00d1cfa0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d1/CLandscapeBackgroundPatch_vectordeletingdestructor_00d1cfa0.cpp'
+        TestSource = '00/d1/CLandscapeBackgroundPatch_vectordeletingdestructor_00d1cfa0_test.cpp'
+        PassPattern = 'PASS_00d1cfa0'
+    }
+    [pscustomobject]@{
+        Address = '00d1e190'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d1/CLandscapeBackgroundPatch_vectordeletingdestructor_00d1e190.cpp'
+        TestSource = '00/d1/CLandscapeBackgroundPatch_vectordeletingdestructor_00d1e190_test.cpp'
+        PassPattern = 'PASS_00d1e190'
+    }
+    [pscustomobject]@{
+        Address = '00d2a9f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d2/CLandscapeBackgroundPatch_vectordeletingdestructor_00d2a9f0.cpp'
+        TestSource = '00/d2/CLandscapeBackgroundPatch_vectordeletingdestructor_00d2a9f0_test.cpp'
+        PassPattern = 'PASS_00d2a9f0'
+    }
+    [pscustomobject]@{
+        Address = '00d34700'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d34700.cpp'
+        TestSource = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d34700_test.cpp'
+        PassPattern = 'PASS_00d34700'
+    }
+    [pscustomobject]@{
+        Address = '00d36600'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d36600.cpp'
+        TestSource = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d36600_test.cpp'
+        PassPattern = 'PASS_00d36600'
+    }
+    [pscustomobject]@{
+        Address = '00d37480'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d37480.cpp'
+        TestSource = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d37480_test.cpp'
+        PassPattern = 'PASS_00d37480'
+    }
+    [pscustomobject]@{
+        Address = '00d37ce0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d37ce0.cpp'
+        TestSource = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d37ce0_test.cpp'
+        PassPattern = 'PASS_00d37ce0'
+    }
+    [pscustomobject]@{
+        Address = '00d3bbf0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d3bbf0.cpp'
+        TestSource = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d3bbf0_test.cpp'
+        PassPattern = 'PASS_00d3bbf0'
+    }
+    [pscustomobject]@{
+        Address = '00d3d130'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d3d130.cpp'
+        TestSource = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d3d130_test.cpp'
+        PassPattern = 'PASS_00d3d130'
+    }
+    [pscustomobject]@{
+        Address = '00d3e2c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d3e2c0.cpp'
+        TestSource = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d3e2c0_test.cpp'
+        PassPattern = 'PASS_00d3e2c0'
+    }
+    [pscustomobject]@{
+        Address = '00d40cd0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d4/CLandscapeBackgroundPatch_vectordeletingdestructor_00d40cd0.cpp'
+        TestSource = '00/d4/CLandscapeBackgroundPatch_vectordeletingdestructor_00d40cd0_test.cpp'
+        PassPattern = 'PASS_00d40cd0'
+    }
+    [pscustomobject]@{
+        Address = '00d41ce0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d4/CLandscapeBackgroundPatch_vectordeletingdestructor_00d41ce0.cpp'
+        TestSource = '00/d4/CLandscapeBackgroundPatch_vectordeletingdestructor_00d41ce0_test.cpp'
+        PassPattern = 'PASS_00d41ce0'
+    }
+    [pscustomobject]@{
+        Address = '00d43430'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d4/CLandscapeBackgroundPatch_vectordeletingdestructor_00d43430.cpp'
+        TestSource = '00/d4/CLandscapeBackgroundPatch_vectordeletingdestructor_00d43430_test.cpp'
+        PassPattern = 'PASS_00d43430'
+    }
+    [pscustomobject]@{
+        Address = '00d51500'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d5/CLandscapeBackgroundPatch_vectordeletingdestructor_00d51500.cpp'
+        TestSource = '00/d5/CLandscapeBackgroundPatch_vectordeletingdestructor_00d51500_test.cpp'
+        PassPattern = 'PASS_00d51500'
+    }
+    [pscustomobject]@{
+        Address = '00d56770'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d5/CLandscapeBackgroundPatch_vectordeletingdestructor_00d56770.cpp'
+        TestSource = '00/d5/CLandscapeBackgroundPatch_vectordeletingdestructor_00d56770_test.cpp'
+        PassPattern = 'PASS_00d56770'
+    }
+    [pscustomobject]@{
+        Address = '00d62460'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d6/CLandscapeBackgroundPatch_vectordeletingdestructor_00d62460.cpp'
+        TestSource = '00/d6/CLandscapeBackgroundPatch_vectordeletingdestructor_00d62460_test.cpp'
+        PassPattern = 'PASS_00d62460'
+    }
+    [pscustomobject]@{
+        Address = '00d67870'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d6/CLandscapeBackgroundPatch_vectordeletingdestructor_00d67870.cpp'
+        TestSource = '00/d6/CLandscapeBackgroundPatch_vectordeletingdestructor_00d67870_test.cpp'
+        PassPattern = 'PASS_00d67870'
+    }
+    [pscustomobject]@{
+        Address = '00d69430'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d6/CLandscapeBackgroundPatch_vectordeletingdestructor_00d69430.cpp'
+        TestSource = '00/d6/CLandscapeBackgroundPatch_vectordeletingdestructor_00d69430_test.cpp'
+        PassPattern = 'PASS_00d69430'
+    }
+    [pscustomobject]@{
+        Address = '00d6f460'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d6/CLandscapeBackgroundPatch_vectordeletingdestructor_00d6f460.cpp'
+        TestSource = '00/d6/CLandscapeBackgroundPatch_vectordeletingdestructor_00d6f460_test.cpp'
+        PassPattern = 'PASS_00d6f460'
+    }
+    [pscustomobject]@{
+        Address = '00d706c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d7/CLandscapeBackgroundPatch_vectordeletingdestructor_00d706c0.cpp'
+        TestSource = '00/d7/CLandscapeBackgroundPatch_vectordeletingdestructor_00d706c0_test.cpp'
+        PassPattern = 'PASS_00d706c0'
+    }
+    [pscustomobject]@{
+        Address = '00d785c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d7/CLandscapeBackgroundPatch_vectordeletingdestructor_00d785c0.cpp'
+        TestSource = '00/d7/CLandscapeBackgroundPatch_vectordeletingdestructor_00d785c0_test.cpp'
+        PassPattern = 'PASS_00d785c0'
+    }
+    [pscustomobject]@{
+        Address = '00d7ae10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d7/CLandscapeBackgroundPatch_vectordeletingdestructor_00d7ae10.cpp'
+        TestSource = '00/d7/CLandscapeBackgroundPatch_vectordeletingdestructor_00d7ae10_test.cpp'
+        PassPattern = 'PASS_00d7ae10'
+    }
+    [pscustomobject]@{
+        Address = '00d7c7e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d7/CLandscapeBackgroundPatch_vectordeletingdestructor_00d7c7e0.cpp'
+        TestSource = '00/d7/CLandscapeBackgroundPatch_vectordeletingdestructor_00d7c7e0_test.cpp'
+        PassPattern = 'PASS_00d7c7e0'
+    }
+    [pscustomobject]@{
+        Address = '00d7e0a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d7/CLandscapeBackgroundPatch_vectordeletingdestructor_00d7e0a0.cpp'
+        TestSource = '00/d7/CLandscapeBackgroundPatch_vectordeletingdestructor_00d7e0a0_test.cpp'
+        PassPattern = 'PASS_00d7e0a0'
+    }
+    [pscustomobject]@{
+        Address = '00d80df0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d8/CLandscapeBackgroundPatch_vectordeletingdestructor_00d80df0.cpp'
+        TestSource = '00/d8/CLandscapeBackgroundPatch_vectordeletingdestructor_00d80df0_test.cpp'
+        PassPattern = 'PASS_00d80df0'
+    }
+    [pscustomobject]@{
+        Address = '00d83580'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d8/CLandscapeBackgroundPatch_vectordeletingdestructor_00d83580.cpp'
+        TestSource = '00/d8/CLandscapeBackgroundPatch_vectordeletingdestructor_00d83580_test.cpp'
+        PassPattern = 'PASS_00d83580'
+    }
+    [pscustomobject]@{
+        Address = '00d84cc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d8/CLandscapeBackgroundPatch_vectordeletingdestructor_00d84cc0.cpp'
+        TestSource = '00/d8/CLandscapeBackgroundPatch_vectordeletingdestructor_00d84cc0_test.cpp'
+        PassPattern = 'PASS_00d84cc0'
+    }
+    [pscustomobject]@{
+        Address = '00d87c40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d8/CLandscapeBackgroundPatch_vectordeletingdestructor_00d87c40.cpp'
+        TestSource = '00/d8/CLandscapeBackgroundPatch_vectordeletingdestructor_00d87c40_test.cpp'
+        PassPattern = 'PASS_00d87c40'
+    }
+    [pscustomobject]@{
+        Address = '00d88690'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d8/CLandscapeBackgroundPatch_vectordeletingdestructor_00d88690.cpp'
+        TestSource = '00/d8/CLandscapeBackgroundPatch_vectordeletingdestructor_00d88690_test.cpp'
+        PassPattern = 'PASS_00d88690'
+    }
+    [pscustomobject]@{
+        Address = '00d8dca0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d8/CLandscapeBackgroundPatch_vectordeletingdestructor_00d8dca0.cpp'
+        TestSource = '00/d8/CLandscapeBackgroundPatch_vectordeletingdestructor_00d8dca0_test.cpp'
+        PassPattern = 'PASS_00d8dca0'
+    }
+    [pscustomobject]@{
+        Address = '00d8fd70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d8/CLandscapeBackgroundPatch_vectordeletingdestructor_00d8fd70.cpp'
+        TestSource = '00/d8/CLandscapeBackgroundPatch_vectordeletingdestructor_00d8fd70_test.cpp'
+        PassPattern = 'PASS_00d8fd70'
+    }
+    [pscustomobject]@{
+        Address = '00d9a140'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d9/CLandscapeBackgroundPatch_vectordeletingdestructor_00d9a140.cpp'
+        TestSource = '00/d9/CLandscapeBackgroundPatch_vectordeletingdestructor_00d9a140_test.cpp'
+        PassPattern = 'PASS_00d9a140'
+    }
+    [pscustomobject]@{
+        Address = '00d9b880'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d9/CLandscapeBackgroundPatch_vectordeletingdestructor_00d9b880.cpp'
+        TestSource = '00/d9/CLandscapeBackgroundPatch_vectordeletingdestructor_00d9b880_test.cpp'
+        PassPattern = 'PASS_00d9b880'
+    }
+    [pscustomobject]@{
+        Address = '00d9bef0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/d9/CLandscapeBackgroundPatch_vectordeletingdestructor_00d9bef0.cpp'
+        TestSource = '00/d9/CLandscapeBackgroundPatch_vectordeletingdestructor_00d9bef0_test.cpp'
+        PassPattern = 'PASS_00d9bef0'
+    }
+    [pscustomobject]@{
+        Address = '00da3440'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/da/CLandscapeBackgroundPatch_vectordeletingdestructor_00da3440.cpp'
+        TestSource = '00/da/CLandscapeBackgroundPatch_vectordeletingdestructor_00da3440_test.cpp'
+        PassPattern = 'PASS_00da3440'
+    }
+    [pscustomobject]@{
+        Address = '00daad80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/da/CLandscapeBackgroundPatch_vectordeletingdestructor_00daad80.cpp'
+        TestSource = '00/da/CLandscapeBackgroundPatch_vectordeletingdestructor_00daad80_test.cpp'
+        PassPattern = 'PASS_00daad80'
+    }
+    [pscustomobject]@{
+        Address = '00daf060'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/da/CLandscapeBackgroundPatch_vectordeletingdestructor_00daf060.cpp'
+        TestSource = '00/da/CLandscapeBackgroundPatch_vectordeletingdestructor_00daf060_test.cpp'
+        PassPattern = 'PASS_00daf060'
+    }
+    [pscustomobject]@{
+        Address = '00db5310'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/db/CLandscapeBackgroundPatch_vectordeletingdestructor_00db5310.cpp'
+        TestSource = '00/db/CLandscapeBackgroundPatch_vectordeletingdestructor_00db5310_test.cpp'
+        PassPattern = 'PASS_00db5310'
+    }
+    [pscustomobject]@{
+        Address = '00db6c40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/db/CLandscapeBackgroundPatch_vectordeletingdestructor_00db6c40.cpp'
+        TestSource = '00/db/CLandscapeBackgroundPatch_vectordeletingdestructor_00db6c40_test.cpp'
+        PassPattern = 'PASS_00db6c40'
+    }
+    [pscustomobject]@{
+        Address = '00db8270'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/db/CLandscapeBackgroundPatch_vectordeletingdestructor_00db8270.cpp'
+        TestSource = '00/db/CLandscapeBackgroundPatch_vectordeletingdestructor_00db8270_test.cpp'
+        PassPattern = 'PASS_00db8270'
+    }
+    [pscustomobject]@{
+        Address = '00dc2750'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/dc/CLandscapeBackgroundPatch_vectordeletingdestructor_00dc2750.cpp'
+        TestSource = '00/dc/CLandscapeBackgroundPatch_vectordeletingdestructor_00dc2750_test.cpp'
+        PassPattern = 'PASS_00dc2750'
+    }
+    [pscustomobject]@{
+        Address = '00dc4d50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/dc/CLandscapeBackgroundPatch_vectordeletingdestructor_00dc4d50.cpp'
+        TestSource = '00/dc/CLandscapeBackgroundPatch_vectordeletingdestructor_00dc4d50_test.cpp'
+        PassPattern = 'PASS_00dc4d50'
+    }
+    [pscustomobject]@{
+        Address = '00dc7470'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/dc/CLandscapeBackgroundPatch_vectordeletingdestructor_00dc7470.cpp'
+        TestSource = '00/dc/CLandscapeBackgroundPatch_vectordeletingdestructor_00dc7470_test.cpp'
+        PassPattern = 'PASS_00dc7470'
+    }
+    [pscustomobject]@{
+        Address = '00dcc700'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/dc/CLandscapeBackgroundPatch_vectordeletingdestructor_00dcc700.cpp'
+        TestSource = '00/dc/CLandscapeBackgroundPatch_vectordeletingdestructor_00dcc700_test.cpp'
+        PassPattern = 'PASS_00dcc700'
+    }
+    [pscustomobject]@{
+        Address = '00dd2c60'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/dd/CLandscapeBackgroundPatch_vectordeletingdestructor_00dd2c60.cpp'
+        TestSource = '00/dd/CLandscapeBackgroundPatch_vectordeletingdestructor_00dd2c60_test.cpp'
+        PassPattern = 'PASS_00dd2c60'
+    }
+    [pscustomobject]@{
+        Address = '00dd4ab0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/dd/CLandscapeBackgroundPatch_vectordeletingdestructor_00dd4ab0.cpp'
+        TestSource = '00/dd/CLandscapeBackgroundPatch_vectordeletingdestructor_00dd4ab0_test.cpp'
+        PassPattern = 'PASS_00dd4ab0'
+    }
+    [pscustomobject]@{
+        Address = '00dd6a40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/dd/CLandscapeBackgroundPatch_vectordeletingdestructor_00dd6a40.cpp'
+        TestSource = '00/dd/CLandscapeBackgroundPatch_vectordeletingdestructor_00dd6a40_test.cpp'
+        PassPattern = 'PASS_00dd6a40'
+    }
+    [pscustomobject]@{
+        Address = '00de1b40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00de1b40.cpp'
+        TestSource = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00de1b40_test.cpp'
+        PassPattern = 'PASS_00de1b40'
+    }
+    [pscustomobject]@{
+        Address = '00de1ca0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00de1ca0.cpp'
+        TestSource = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00de1ca0_test.cpp'
+        PassPattern = 'PASS_00de1ca0'
+    }
+    [pscustomobject]@{
+        Address = '00de1e00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00de1e00.cpp'
+        TestSource = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00de1e00_test.cpp'
+        PassPattern = 'PASS_00de1e00'
+    }
+    [pscustomobject]@{
+        Address = '00de1f50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00de1f50.cpp'
+        TestSource = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00de1f50_test.cpp'
+        PassPattern = 'PASS_00de1f50'
+    }
+    [pscustomobject]@{
+        Address = '00de20a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00de20a0.cpp'
+        TestSource = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00de20a0_test.cpp'
+        PassPattern = 'PASS_00de20a0'
+    }
+    [pscustomobject]@{
+        Address = '00de25b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00de25b0.cpp'
+        TestSource = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00de25b0_test.cpp'
+        PassPattern = 'PASS_00de25b0'
+    }
+    [pscustomobject]@{
+        Address = '00dee2c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00dee2c0.cpp'
+        TestSource = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00dee2c0_test.cpp'
+        PassPattern = 'PASS_00dee2c0'
+    }
+    [pscustomobject]@{
+        Address = '00df1810'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/df/CLandscapeBackgroundPatch_vectordeletingdestructor_00df1810.cpp'
+        TestSource = '00/df/CLandscapeBackgroundPatch_vectordeletingdestructor_00df1810_test.cpp'
+        PassPattern = 'PASS_00df1810'
+    }
+    [pscustomobject]@{
+        Address = '00df22f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/df/CLandscapeBackgroundPatch_vectordeletingdestructor_00df22f0.cpp'
+        TestSource = '00/df/CLandscapeBackgroundPatch_vectordeletingdestructor_00df22f0_test.cpp'
+        PassPattern = 'PASS_00df22f0'
+    }
+    [pscustomobject]@{
+        Address = '00df2a20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/df/CLandscapeBackgroundPatch_vectordeletingdestructor_00df2a20.cpp'
+        TestSource = '00/df/CLandscapeBackgroundPatch_vectordeletingdestructor_00df2a20_test.cpp'
+        PassPattern = 'PASS_00df2a20'
+    }
+    [pscustomobject]@{
+        Address = '00df41f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/df/CLandscapeBackgroundPatch_vectordeletingdestructor_00df41f0.cpp'
+        TestSource = '00/df/CLandscapeBackgroundPatch_vectordeletingdestructor_00df41f0_test.cpp'
+        PassPattern = 'PASS_00df41f0'
+    }
+    [pscustomobject]@{
+        Address = '00df5ff0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/df/CLandscapeBackgroundPatch_vectordeletingdestructor_00df5ff0.cpp'
+        TestSource = '00/df/CLandscapeBackgroundPatch_vectordeletingdestructor_00df5ff0_test.cpp'
+        PassPattern = 'PASS_00df5ff0'
+    }
+    [pscustomobject]@{
+        Address = '00dfb190'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/df/CLandscapeBackgroundPatch_vectordeletingdestructor_00dfb190.cpp'
+        TestSource = '00/df/CLandscapeBackgroundPatch_vectordeletingdestructor_00dfb190_test.cpp'
+        PassPattern = 'PASS_00dfb190'
+    }
+    [pscustomobject]@{
+        Address = '00e00cc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e0/CLandscapeBackgroundPatch_vectordeletingdestructor_00e00cc0.cpp'
+        TestSource = '00/e0/CLandscapeBackgroundPatch_vectordeletingdestructor_00e00cc0_test.cpp'
+        PassPattern = 'PASS_00e00cc0'
+    }
+    [pscustomobject]@{
+        Address = '00e04b30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e0/CLandscapeBackgroundPatch_vectordeletingdestructor_00e04b30.cpp'
+        TestSource = '00/e0/CLandscapeBackgroundPatch_vectordeletingdestructor_00e04b30_test.cpp'
+        PassPattern = 'PASS_00e04b30'
+    }
+    [pscustomobject]@{
+        Address = '00e0b140'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e0/CLandscapeBackgroundPatch_vectordeletingdestructor_00e0b140.cpp'
+        TestSource = '00/e0/CLandscapeBackgroundPatch_vectordeletingdestructor_00e0b140_test.cpp'
+        PassPattern = 'PASS_00e0b140'
+    }
+    [pscustomobject]@{
+        Address = '00e0e980'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e0/CLandscapeBackgroundPatch_vectordeletingdestructor_00e0e980.cpp'
+        TestSource = '00/e0/CLandscapeBackgroundPatch_vectordeletingdestructor_00e0e980_test.cpp'
+        PassPattern = 'PASS_00e0e980'
+    }
+    [pscustomobject]@{
+        Address = '00e13ec0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e1/CLandscapeBackgroundPatch_vectordeletingdestructor_00e13ec0.cpp'
+        TestSource = '00/e1/CLandscapeBackgroundPatch_vectordeletingdestructor_00e13ec0_test.cpp'
+        PassPattern = 'PASS_00e13ec0'
+    }
+    [pscustomobject]@{
+        Address = '00e17820'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e1/CLandscapeBackgroundPatch_vectordeletingdestructor_00e17820.cpp'
+        TestSource = '00/e1/CLandscapeBackgroundPatch_vectordeletingdestructor_00e17820_test.cpp'
+        PassPattern = 'PASS_00e17820'
+    }
+    [pscustomobject]@{
+        Address = '00e1dcd0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e1/CLandscapeBackgroundPatch_vectordeletingdestructor_00e1dcd0.cpp'
+        TestSource = '00/e1/CLandscapeBackgroundPatch_vectordeletingdestructor_00e1dcd0_test.cpp'
+        PassPattern = 'PASS_00e1dcd0'
+    }
+    [pscustomobject]@{
+        Address = '00e25730'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e2/CLandscapeBackgroundPatch_vectordeletingdestructor_00e25730.cpp'
+        TestSource = '00/e2/CLandscapeBackgroundPatch_vectordeletingdestructor_00e25730_test.cpp'
+        PassPattern = 'PASS_00e25730'
+    }
+    [pscustomobject]@{
+        Address = '00e26bb0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e2/CLandscapeBackgroundPatch_vectordeletingdestructor_00e26bb0.cpp'
+        TestSource = '00/e2/CLandscapeBackgroundPatch_vectordeletingdestructor_00e26bb0_test.cpp'
+        PassPattern = 'PASS_00e26bb0'
+    }
+    [pscustomobject]@{
+        Address = '00e2ad30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e2/CLandscapeBackgroundPatch_vectordeletingdestructor_00e2ad30.cpp'
+        TestSource = '00/e2/CLandscapeBackgroundPatch_vectordeletingdestructor_00e2ad30_test.cpp'
+        PassPattern = 'PASS_00e2ad30'
+    }
+    [pscustomobject]@{
+        Address = '00e389c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e3/CLandscapeBackgroundPatch_vectordeletingdestructor_00e389c0.cpp'
+        TestSource = '00/e3/CLandscapeBackgroundPatch_vectordeletingdestructor_00e389c0_test.cpp'
+        PassPattern = 'PASS_00e389c0'
+    }
+    [pscustomobject]@{
+        Address = '00e3af10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e3/CLandscapeBackgroundPatch_vectordeletingdestructor_00e3af10.cpp'
+        TestSource = '00/e3/CLandscapeBackgroundPatch_vectordeletingdestructor_00e3af10_test.cpp'
+        PassPattern = 'PASS_00e3af10'
+    }
+    [pscustomobject]@{
+        Address = '00e3b040'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e3/CLandscapeBackgroundPatch_vectordeletingdestructor_00e3b040.cpp'
+        TestSource = '00/e3/CLandscapeBackgroundPatch_vectordeletingdestructor_00e3b040_test.cpp'
+        PassPattern = 'PASS_00e3b040'
+    }
+    [pscustomobject]@{
+        Address = '00e46ce0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e4/CLandscapeBackgroundPatch_vectordeletingdestructor_00e46ce0.cpp'
+        TestSource = '00/e4/CLandscapeBackgroundPatch_vectordeletingdestructor_00e46ce0_test.cpp'
+        PassPattern = 'PASS_00e46ce0'
+    }
+    [pscustomobject]@{
+        Address = '00e4f7d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e4/CLandscapeBackgroundPatch_vectordeletingdestructor_00e4f7d0.cpp'
+        TestSource = '00/e4/CLandscapeBackgroundPatch_vectordeletingdestructor_00e4f7d0_test.cpp'
+        PassPattern = 'PASS_00e4f7d0'
+    }
+    [pscustomobject]@{
+        Address = '00e57d00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e5/CLandscapeBackgroundPatch_vectordeletingdestructor_00e57d00.cpp'
+        TestSource = '00/e5/CLandscapeBackgroundPatch_vectordeletingdestructor_00e57d00_test.cpp'
+        PassPattern = 'PASS_00e57d00'
+    }
+    [pscustomobject]@{
+        Address = '00e58d20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e5/CLandscapeBackgroundPatch_vectordeletingdestructor_00e58d20.cpp'
+        TestSource = '00/e5/CLandscapeBackgroundPatch_vectordeletingdestructor_00e58d20_test.cpp'
+        PassPattern = 'PASS_00e58d20'
+    }
+    [pscustomobject]@{
+        Address = '00e5b390'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e5/CLandscapeBackgroundPatch_vectordeletingdestructor_00e5b390.cpp'
+        TestSource = '00/e5/CLandscapeBackgroundPatch_vectordeletingdestructor_00e5b390_test.cpp'
+        PassPattern = 'PASS_00e5b390'
+    }
+    [pscustomobject]@{
+        Address = '00e62980'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e6/CLandscapeBackgroundPatch_vectordeletingdestructor_00e62980.cpp'
+        TestSource = '00/e6/CLandscapeBackgroundPatch_vectordeletingdestructor_00e62980_test.cpp'
+        PassPattern = 'PASS_00e62980'
+    }
+    [pscustomobject]@{
+        Address = '00e690d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e6/CLandscapeBackgroundPatch_vectordeletingdestructor_00e690d0.cpp'
+        TestSource = '00/e6/CLandscapeBackgroundPatch_vectordeletingdestructor_00e690d0_test.cpp'
+        PassPattern = 'PASS_00e690d0'
+    }
+    [pscustomobject]@{
+        Address = '00e70ba0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e70ba0.cpp'
+        TestSource = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e70ba0_test.cpp'
+        PassPattern = 'PASS_00e70ba0'
+    }
+    [pscustomobject]@{
+        Address = '00e72610'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e72610.cpp'
+        TestSource = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e72610_test.cpp'
+        PassPattern = 'PASS_00e72610'
+    }
+    [pscustomobject]@{
+        Address = '00e740a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e740a0.cpp'
+        TestSource = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e740a0_test.cpp'
+        PassPattern = 'PASS_00e740a0'
+    }
+    [pscustomobject]@{
+        Address = '00e75770'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e75770.cpp'
+        TestSource = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e75770_test.cpp'
+        PassPattern = 'PASS_00e75770'
+    }
+    [pscustomobject]@{
+        Address = '00e76680'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e76680.cpp'
+        TestSource = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e76680_test.cpp'
+        PassPattern = 'PASS_00e76680'
+    }
+    [pscustomobject]@{
+        Address = '00e7e1f0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e7e1f0.cpp'
+        TestSource = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e7e1f0_test.cpp'
+        PassPattern = 'PASS_00e7e1f0'
+    }
+    [pscustomobject]@{
+        Address = '00e82170'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e8/CLandscapeBackgroundPatch_vectordeletingdestructor_00e82170.cpp'
+        TestSource = '00/e8/CLandscapeBackgroundPatch_vectordeletingdestructor_00e82170_test.cpp'
+        PassPattern = 'PASS_00e82170'
+    }
+    [pscustomobject]@{
+        Address = '00e82920'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e8/CLandscapeBackgroundPatch_vectordeletingdestructor_00e82920.cpp'
+        TestSource = '00/e8/CLandscapeBackgroundPatch_vectordeletingdestructor_00e82920_test.cpp'
+        PassPattern = 'PASS_00e82920'
+    }
+    [pscustomobject]@{
+        Address = '00e83880'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e8/CLandscapeBackgroundPatch_vectordeletingdestructor_00e83880.cpp'
+        TestSource = '00/e8/CLandscapeBackgroundPatch_vectordeletingdestructor_00e83880_test.cpp'
+        PassPattern = 'PASS_00e83880'
+    }
+    [pscustomobject]@{
+        Address = '00e8b940'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e8/CLandscapeBackgroundPatch_vectordeletingdestructor_00e8b940.cpp'
+        TestSource = '00/e8/CLandscapeBackgroundPatch_vectordeletingdestructor_00e8b940_test.cpp'
+        PassPattern = 'PASS_00e8b940'
+    }
+    [pscustomobject]@{
+        Address = '00e8bed0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e8/CLandscapeBackgroundPatch_vectordeletingdestructor_00e8bed0.cpp'
+        TestSource = '00/e8/CLandscapeBackgroundPatch_vectordeletingdestructor_00e8bed0_test.cpp'
+        PassPattern = 'PASS_00e8bed0'
+    }
+    [pscustomobject]@{
+        Address = '00e90980'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e90980.cpp'
+        TestSource = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e90980_test.cpp'
+        PassPattern = 'PASS_00e90980'
+    }
+    [pscustomobject]@{
+        Address = '00e93e40'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e93e40.cpp'
+        TestSource = '00/e9/CLandscapeBackgroundPatch_vectordeletingdestructor_00e93e40_test.cpp'
+        PassPattern = 'PASS_00e93e40'
+    }
+    [pscustomobject]@{
+        Address = '00ea3690'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea3690.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea3690_test.cpp'
+        PassPattern = 'PASS_00ea3690'
+    }
+    [pscustomobject]@{
+        Address = '00ea87e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea87e0.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea87e0_test.cpp'
+        PassPattern = 'PASS_00ea87e0'
+    }
+    [pscustomobject]@{
+        Address = '00ea8f20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea8f20.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00ea8f20_test.cpp'
+        PassPattern = 'PASS_00ea8f20'
+    }
+    [pscustomobject]@{
+        Address = '00eaafc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00eaafc0.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00eaafc0_test.cpp'
+        PassPattern = 'PASS_00eaafc0'
+    }
+    [pscustomobject]@{
+        Address = '00eabb10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00eabb10.cpp'
+        TestSource = '00/ea/CLandscapeBackgroundPatch_vectordeletingdestructor_00eabb10_test.cpp'
+        PassPattern = 'PASS_00eabb10'
+    }
+    [pscustomobject]@{
+        Address = '00eb7ae0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00eb7ae0.cpp'
+        TestSource = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00eb7ae0_test.cpp'
+        PassPattern = 'PASS_00eb7ae0'
+    }
+    [pscustomobject]@{
+        Address = '00ebcf50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00ebcf50.cpp'
+        TestSource = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00ebcf50_test.cpp'
+        PassPattern = 'PASS_00ebcf50'
+    }
+    [pscustomobject]@{
+        Address = '00ebfcf0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00ebfcf0.cpp'
+        TestSource = '00/eb/CLandscapeBackgroundPatch_vectordeletingdestructor_00ebfcf0_test.cpp'
+        PassPattern = 'PASS_00ebfcf0'
+    }
+    [pscustomobject]@{
+        Address = '00ec5c70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec5c70.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec5c70_test.cpp'
+        PassPattern = 'PASS_00ec5c70'
+    }
+    [pscustomobject]@{
+        Address = '00ec5d80'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec5d80.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec5d80_test.cpp'
+        PassPattern = 'PASS_00ec5d80'
+    }
+    [pscustomobject]@{
+        Address = '00ec6880'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec6880.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec6880_test.cpp'
+        PassPattern = 'PASS_00ec6880'
+    }
+    [pscustomobject]@{
+        Address = '00ec82e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec82e0.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec82e0_test.cpp'
+        PassPattern = 'PASS_00ec82e0'
+    }
+    [pscustomobject]@{
+        Address = '00ec9d10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec9d10.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ec9d10_test.cpp'
+        PassPattern = 'PASS_00ec9d10'
+    }
+    [pscustomobject]@{
+        Address = '00ecb0c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ecb0c0.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ecb0c0_test.cpp'
+        PassPattern = 'PASS_00ecb0c0'
+    }
+    [pscustomobject]@{
+        Address = '00ecbd30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ecbd30.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ecbd30_test.cpp'
+        PassPattern = 'PASS_00ecbd30'
+    }
+    [pscustomobject]@{
+        Address = '00ecca10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ecca10.cpp'
+        TestSource = '00/ec/CLandscapeBackgroundPatch_vectordeletingdestructor_00ecca10_test.cpp'
+        PassPattern = 'PASS_00ecca10'
+    }
+    [pscustomobject]@{
+        Address = '00ed0ff0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed0ff0.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed0ff0_test.cpp'
+        PassPattern = 'PASS_00ed0ff0'
+    }
+    [pscustomobject]@{
+        Address = '00ed17b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed17b0.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed17b0_test.cpp'
+        PassPattern = 'PASS_00ed17b0'
+    }
+    [pscustomobject]@{
+        Address = '00ed4c30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed4c30.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed4c30_test.cpp'
+        PassPattern = 'PASS_00ed4c30'
+    }
+    [pscustomobject]@{
+        Address = '00edaf10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00edaf10.cpp'
+        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00edaf10_test.cpp'
+        PassPattern = 'PASS_00edaf10'
+    }
+    [pscustomobject]@{
+        Address = '00ee0220'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee0220.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee0220_test.cpp'
+        PassPattern = 'PASS_00ee0220'
+    }
+    [pscustomobject]@{
+        Address = '00ee0c30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee0c30.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee0c30_test.cpp'
+        PassPattern = 'PASS_00ee0c30'
+    }
+    [pscustomobject]@{
+        Address = '00ee82b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee82b0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee82b0_test.cpp'
+        PassPattern = 'PASS_00ee82b0'
+    }
+    [pscustomobject]@{
+        Address = '00ee9080'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee9080.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee9080_test.cpp'
+        PassPattern = 'PASS_00ee9080'
+    }
+    [pscustomobject]@{
+        Address = '00ee9570'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee9570.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00ee9570_test.cpp'
+        PassPattern = 'PASS_00ee9570'
+    }
+    [pscustomobject]@{
+        Address = '00eea3c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eea3c0.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eea3c0_test.cpp'
+        PassPattern = 'PASS_00eea3c0'
+    }
+    [pscustomobject]@{
+        Address = '00eea720'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eea720.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eea720_test.cpp'
+        PassPattern = 'PASS_00eea720'
+    }
+    [pscustomobject]@{
+        Address = '00eeae50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeae50.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeae50_test.cpp'
+        PassPattern = 'PASS_00eeae50'
+    }
+    [pscustomobject]@{
+        Address = '00eeb710'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeb710.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eeb710_test.cpp'
+        PassPattern = 'PASS_00eeb710'
+    }
+    [pscustomobject]@{
+        Address = '00eebd50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eebd50.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eebd50_test.cpp'
+        PassPattern = 'PASS_00eebd50'
+    }
+    [pscustomobject]@{
+        Address = '00eec370'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eec370.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eec370_test.cpp'
+        PassPattern = 'PASS_00eec370'
+    }
+    [pscustomobject]@{
+        Address = '00eec730'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eec730.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eec730_test.cpp'
+        PassPattern = 'PASS_00eec730'
+    }
+    [pscustomobject]@{
+        Address = '00eed010'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed010.cpp'
+        TestSource = '00/ee/CLandscapeBackgroundPatch_vectordeletingdestructor_00eed010_test.cpp'
+        PassPattern = 'PASS_00eed010'
+    }
+    [pscustomobject]@{
+        Address = '00ef4b20'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef4b20.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef4b20_test.cpp'
+        PassPattern = 'PASS_00ef4b20'
+    }
+    [pscustomobject]@{
+        Address = '00ef9260'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef9260.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00ef9260_test.cpp'
+        PassPattern = 'PASS_00ef9260'
+    }
+    [pscustomobject]@{
+        Address = '00efc880'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efc880.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efc880_test.cpp'
+        PassPattern = 'PASS_00efc880'
+    }
+    [pscustomobject]@{
+        Address = '00efcc30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efcc30.cpp'
+        TestSource = '00/ef/CLandscapeBackgroundPatch_vectordeletingdestructor_00efcc30_test.cpp'
+        PassPattern = 'PASS_00efcc30'
+    }
+    [pscustomobject]@{
+        Address = '00f000c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f000c0.cpp'
+        TestSource = '00/f0/CLandscapeBackgroundPatch_vectordeletingdestructor_00f000c0_test.cpp'
+        PassPattern = 'PASS_00f000c0'
+    }
+    [pscustomobject]@{
+        Address = '00f14a70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f14a70.cpp'
+        TestSource = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f14a70_test.cpp'
+        PassPattern = 'PASS_00f14a70'
+    }
+    [pscustomobject]@{
+        Address = '00f15640'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f15640.cpp'
+        TestSource = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f15640_test.cpp'
+        PassPattern = 'PASS_00f15640'
+    }
+    [pscustomobject]@{
+        Address = '00f16290'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f16290.cpp'
+        TestSource = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f16290_test.cpp'
+        PassPattern = 'PASS_00f16290'
+    }
+    [pscustomobject]@{
+        Address = '00f170a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f170a0.cpp'
+        TestSource = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f170a0_test.cpp'
+        PassPattern = 'PASS_00f170a0'
+    }
+    [pscustomobject]@{
+        Address = '00f17c50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f17c50.cpp'
+        TestSource = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f17c50_test.cpp'
+        PassPattern = 'PASS_00f17c50'
+    }
+    [pscustomobject]@{
+        Address = '00f19b90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f19b90.cpp'
+        TestSource = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f19b90_test.cpp'
+        PassPattern = 'PASS_00f19b90'
+    }
+    [pscustomobject]@{
+        Address = '00f1a8d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f1a8d0.cpp'
+        TestSource = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f1a8d0_test.cpp'
+        PassPattern = 'PASS_00f1a8d0'
+    }
+    [pscustomobject]@{
+        Address = '00f1b9a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f1b9a0.cpp'
+        TestSource = '00/f1/CLandscapeBackgroundPatch_vectordeletingdestructor_00f1b9a0_test.cpp'
+        PassPattern = 'PASS_00f1b9a0'
+    }
+    [pscustomobject]@{
+        Address = '00f388d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f3/CLandscapeBackgroundPatch_vectordeletingdestructor_00f388d0.cpp'
+        TestSource = '00/f3/CLandscapeBackgroundPatch_vectordeletingdestructor_00f388d0_test.cpp'
+        PassPattern = 'PASS_00f388d0'
+    }
+    [pscustomobject]@{
+        Address = '00f39d10'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/f3/CLandscapeBackgroundPatch_vectordeletingdestructor_00f39d10.cpp'
+        TestSource = '00/f3/CLandscapeBackgroundPatch_vectordeletingdestructor_00f39d10_test.cpp'
+        PassPattern = 'PASS_00f39d10'
+    }
+    [pscustomobject]@{
+        Address = '004293db'
+        Module = 'CRegion'
+        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_004293db.cpp'
+        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_004293db_test.cpp'
+        PassPattern = 'PASS_004293db'
+    }
+    [pscustomobject]@{
+        Address = '00429403'
+        Module = 'CRegion'
+        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429403.cpp'
+        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429403_test.cpp'
+        PassPattern = 'PASS_00429403'
+    }
+    [pscustomobject]@{
+        Address = '00429cfb'
+        Module = 'CRegion'
+        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429cfb.cpp'
+        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429cfb_test.cpp'
+        PassPattern = 'PASS_00429cfb'
+    }
+    [pscustomobject]@{
+        Address = '00429db7'
+        Module = 'CRegion'
+        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429db7.cpp'
+        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_00429db7_test.cpp'
+        PassPattern = 'PASS_00429db7'
+    }
+    [pscustomobject]@{
+        Address = '004295fa'
+        Module = 'CRegion'
+        Source = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_004295fa.cpp'
+        TestSource = '00/42/CRegion_SetMiniMapRegionExitTextOffsetX_004295fa_test.cpp'
+        PassPattern = 'PASS_004295fa'
+    }
+    [pscustomobject]@{
+        Address = '00578dda'
+        Module = 'CRegion'
+        Source = '00/57/CRegion_SetMiniMapRegionExitTextOffsetX_00578dda.cpp'
+        TestSource = '00/57/CRegion_SetMiniMapRegionExitTextOffsetX_00578dda_test.cpp'
+        PassPattern = 'PASS_00578dda'
+    }
+    [pscustomobject]@{
+        Address = '00578e22'
+        Module = 'CRegion'
+        Source = '00/57/CRegion_SetMiniMapRegionExitTextOffsetX_00578e22.cpp'
+        TestSource = '00/57/CRegion_SetMiniMapRegionExitTextOffsetX_00578e22_test.cpp'
+        PassPattern = 'PASS_00578e22'
+    }
+    [pscustomobject]@{
+        Address = '00578e39'
+        Module = 'CRegion'
+        Source = '00/57/CRegion_SetMiniMapRegionExitTextOffsetX_00578e39.cpp'
+        TestSource = '00/57/CRegion_SetMiniMapRegionExitTextOffsetX_00578e39_test.cpp'
+        PassPattern = 'PASS_00578e39'
+    }
+    [pscustomobject]@{
+        Address = '0057f1f6'
+        Module = 'CRegion'
+        Source = '00/57/CRegion_SetMiniMapRegionExitTextOffsetX_0057f1f6.cpp'
+        TestSource = '00/57/CRegion_SetMiniMapRegionExitTextOffsetX_0057f1f6_test.cpp'
+        PassPattern = 'PASS_0057f1f6'
+    }
+    [pscustomobject]@{
+        Address = '0057f425'
+        Module = 'CRegion'
+        Source = '00/57/CRegion_SetMiniMapRegionExitTextOffsetX_0057f425.cpp'
+        TestSource = '00/57/CRegion_SetMiniMapRegionExitTextOffsetX_0057f425_test.cpp'
+        PassPattern = 'PASS_0057f425'
+    }
+    [pscustomobject]@{
+        Address = '005b167f'
+        Module = 'CRegion'
+        Source = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b167f.cpp'
+        TestSource = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b167f_test.cpp'
+        PassPattern = 'PASS_005b167f'
+    }
+    [pscustomobject]@{
+        Address = '005b16e8'
+        Module = 'CRegion'
+        Source = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b16e8.cpp'
+        TestSource = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b16e8_test.cpp'
+        PassPattern = 'PASS_005b16e8'
+    }
+    [pscustomobject]@{
+        Address = '005b172e'
+        Module = 'CRegion'
+        Source = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b172e.cpp'
+        TestSource = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b172e_test.cpp'
+        PassPattern = 'PASS_005b172e'
+    }
+    [pscustomobject]@{
+        Address = '005ba1cc'
+        Module = 'CRegion'
+        Source = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005ba1cc.cpp'
+        TestSource = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005ba1cc_test.cpp'
+        PassPattern = 'PASS_005ba1cc'
+    }
+    [pscustomobject]@{
+        Address = '005ba3e4'
+        Module = 'CRegion'
+        Source = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005ba3e4.cpp'
+        TestSource = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005ba3e4_test.cpp'
+        PassPattern = 'PASS_005ba3e4'
+    }
+    [pscustomobject]@{
+        Address = '005c0822'
+        Module = 'CRegion'
+        Source = '00/5c/CRegion_SetMiniMapRegionExitTextOffsetX_005c0822.cpp'
+        TestSource = '00/5c/CRegion_SetMiniMapRegionExitTextOffsetX_005c0822_test.cpp'
+        PassPattern = 'PASS_005c0822'
+    }
+    [pscustomobject]@{
+        Address = '005cbf2e'
+        Module = 'CRegion'
+        Source = '00/5c/CRegion_SetMiniMapRegionExitTextOffsetX_005cbf2e.cpp'
+        TestSource = '00/5c/CRegion_SetMiniMapRegionExitTextOffsetX_005cbf2e_test.cpp'
+        PassPattern = 'PASS_005cbf2e'
+    }
+    [pscustomobject]@{
+        Address = '005d80f3'
+        Module = 'CRegion'
+        Source = '00/5d/CRegion_SetMiniMapRegionExitTextOffsetX_005d80f3.cpp'
+        TestSource = '00/5d/CRegion_SetMiniMapRegionExitTextOffsetX_005d80f3_test.cpp'
+        PassPattern = 'PASS_005d80f3'
+    }
+    [pscustomobject]@{
+        Address = '005d82bd'
+        Module = 'CRegion'
+        Source = '00/5d/CRegion_SetMiniMapRegionExitTextOffsetX_005d82bd.cpp'
+        TestSource = '00/5d/CRegion_SetMiniMapRegionExitTextOffsetX_005d82bd_test.cpp'
+        PassPattern = 'PASS_005d82bd'
+    }
+    [pscustomobject]@{
+        Address = '005f7aa6'
+        Module = 'CRegion'
+        Source = '00/5f/CRegion_SetMiniMapRegionExitTextOffsetX_005f7aa6.cpp'
+        TestSource = '00/5f/CRegion_SetMiniMapRegionExitTextOffsetX_005f7aa6_test.cpp'
+        PassPattern = 'PASS_005f7aa6'
+    }
+    [pscustomobject]@{
+        Address = '00cd2247'
+        Module = 'CRegion'
+        Source = '00/cd/CRegion_SetMiniMapRegionExitTextOffsetX_00cd2247.cpp'
+        TestSource = '00/cd/CRegion_SetMiniMapRegionExitTextOffsetX_00cd2247_test.cpp'
+        PassPattern = 'PASS_00cd2247'
+    }
+    [pscustomobject]@{
+        Address = '00cd2290'
+        Module = 'CRegion'
+        Source = '00/cd/CRegion_SetMiniMapRegionExitTextOffsetX_00cd2290.cpp'
+        TestSource = '00/cd/CRegion_SetMiniMapRegionExitTextOffsetX_00cd2290_test.cpp'
+        PassPattern = 'PASS_00cd2290'
+    }
+    [pscustomobject]@{
+        Address = '0041971e'
+        Module = 'CActiveFile'
+        Source = '00/41/CActiveFile_OnReadFinished_0041971e.cpp'
+        TestSource = '00/41/CActiveFile_OnReadFinished_0041971e_test.cpp'
+        PassPattern = 'PASS_0041971e'
+    }
+    [pscustomobject]@{
+        Address = '00440080'
+        Module = 'CActiveFile'
+        Source = '00/44/CActiveFile_OnReadFinished_00440080.cpp'
+        TestSource = '00/44/CActiveFile_OnReadFinished_00440080_test.cpp'
+        PassPattern = 'PASS_00440080'
+    }
+    [pscustomobject]@{
+        Address = '00440e60'
+        Module = 'CActiveFile'
+        Source = '00/44/CActiveFile_OnReadFinished_00440e60.cpp'
+        TestSource = '00/44/CActiveFile_OnReadFinished_00440e60_test.cpp'
+        PassPattern = 'PASS_00440e60'
+    }
+    [pscustomobject]@{
+        Address = '0045019a'
+        Module = 'CActiveFile'
+        Source = '00/45/CActiveFile_OnReadFinished_0045019a.cpp'
+        TestSource = '00/45/CActiveFile_OnReadFinished_0045019a_test.cpp'
+        PassPattern = 'PASS_0045019a'
+    }
+    [pscustomobject]@{
+        Address = '00456389'
+        Module = 'CActiveFile'
+        Source = '00/45/CActiveFile_OnReadFinished_00456389.cpp'
+        TestSource = '00/45/CActiveFile_OnReadFinished_00456389_test.cpp'
+        PassPattern = 'PASS_00456389'
+    }
+    [pscustomobject]@{
+        Address = '0045cde2'
+        Module = 'CActiveFile'
+        Source = '00/45/CActiveFile_OnReadFinished_0045cde2.cpp'
+        TestSource = '00/45/CActiveFile_OnReadFinished_0045cde2_test.cpp'
+        PassPattern = 'PASS_0045cde2'
+    }
+    [pscustomobject]@{
+        Address = '0045d2aa'
+        Module = 'CActiveFile'
+        Source = '00/45/CActiveFile_OnReadFinished_0045d2aa.cpp'
+        TestSource = '00/45/CActiveFile_OnReadFinished_0045d2aa_test.cpp'
+        PassPattern = 'PASS_0045d2aa'
+    }
+    [pscustomobject]@{
+        Address = '0046089a'
+        Module = 'CActiveFile'
+        Source = '00/46/CActiveFile_OnReadFinished_0046089a.cpp'
+        TestSource = '00/46/CActiveFile_OnReadFinished_0046089a_test.cpp'
+        PassPattern = 'PASS_0046089a'
+    }
+    [pscustomobject]@{
+        Address = '0046117a'
+        Module = 'CActiveFile'
+        Source = '00/46/CActiveFile_OnReadFinished_0046117a.cpp'
+        TestSource = '00/46/CActiveFile_OnReadFinished_0046117a_test.cpp'
+        PassPattern = 'PASS_0046117a'
+    }
+    [pscustomobject]@{
+        Address = '00462e04'
+        Module = 'CActiveFile'
+        Source = '00/46/CActiveFile_OnReadFinished_00462e04.cpp'
+        TestSource = '00/46/CActiveFile_OnReadFinished_00462e04_test.cpp'
+        PassPattern = 'PASS_00462e04'
+    }
+    [pscustomobject]@{
+        Address = '004cffb0'
+        Module = 'CActiveFile'
+        Source = '00/4c/CActiveFile_OnReadFinished_004cffb0.cpp'
+        TestSource = '00/4c/CActiveFile_OnReadFinished_004cffb0_test.cpp'
+        PassPattern = 'PASS_004cffb0'
+    }
+    [pscustomobject]@{
+        Address = '004d9c5d'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004d9c5d.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004d9c5d_test.cpp'
+        PassPattern = 'PASS_004d9c5d'
+    }
+    [pscustomobject]@{
+        Address = '004dcfbb'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dcfbb.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dcfbb_test.cpp'
+        PassPattern = 'PASS_004dcfbb'
+    }
+    [pscustomobject]@{
+        Address = '004e212d'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004e212d.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004e212d_test.cpp'
+        PassPattern = 'PASS_004e212d'
+    }
+    [pscustomobject]@{
+        Address = '004e25c8'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004e25c8.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004e25c8_test.cpp'
+        PassPattern = 'PASS_004e25c8'
+    }
+    [pscustomobject]@{
+        Address = '004e2aec'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004e2aec.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004e2aec_test.cpp'
+        PassPattern = 'PASS_004e2aec'
+    }
+    [pscustomobject]@{
+        Address = '004e3088'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004e3088.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004e3088_test.cpp'
+        PassPattern = 'PASS_004e3088'
+    }
+    [pscustomobject]@{
+        Address = '004e60ca'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004e60ca.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004e60ca_test.cpp'
+        PassPattern = 'PASS_004e60ca'
+    }
+    [pscustomobject]@{
+        Address = '00b6d250'
+        Module = 'CActiveFile'
+        Source = '00/b6/CActiveFile_OnReadFinished_00b6d250.cpp'
+        TestSource = '00/b6/CActiveFile_OnReadFinished_00b6d250_test.cpp'
+        PassPattern = 'PASS_00b6d250'
+    }
+    [pscustomobject]@{
+        Address = '00b800f0'
+        Module = 'CActiveFile'
+        Source = '00/b8/CActiveFile_OnReadFinished_00b800f0.cpp'
+        TestSource = '00/b8/CActiveFile_OnReadFinished_00b800f0_test.cpp'
+        PassPattern = 'PASS_00b800f0'
+    }
+    [pscustomobject]@{
+        Address = '00b80550'
+        Module = 'CActiveFile'
+        Source = '00/b8/CActiveFile_OnReadFinished_00b80550.cpp'
+        TestSource = '00/b8/CActiveFile_OnReadFinished_00b80550_test.cpp'
+        PassPattern = 'PASS_00b80550'
+    }
+    [pscustomobject]@{
+        Address = '00a5ad80'
+        Module = '_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std'
+        Source = '00/a5/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a5ad80.cpp'
+        TestSource = '00/a5/UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a5ad80_test.cpp'
+        PassPattern = 'PASS_00a5ad80'
+    }
+    [pscustomobject]@{
+        Address = '0042f9f2'
+        Module = 'CCountedPointer<NUISystem::CAction>'
+        Source = '00/42/CCountedPointerNUISystemCAction_ShareData_0042f9f2.cpp'
+        TestSource = '00/42/CCountedPointerNUISystemCAction_ShareData_0042f9f2_test.cpp'
+        PassPattern = 'PASS_0042f9f2'
+    }
+    [pscustomobject]@{
+        Address = '00461b5c'
+        Module = 'CCountedPointer<NUISystem::CAction>'
+        Source = '00/46/CCountedPointerNUISystemCAction_ShareData_00461b5c.cpp'
+        TestSource = '00/46/CCountedPointerNUISystemCAction_ShareData_00461b5c_test.cpp'
+        PassPattern = 'PASS_00461b5c'
+    }
+    [pscustomobject]@{
+        Address = '0053ceae'
+        Module = 'CCountedPointer<NUISystem::CAction>'
+        Source = '00/53/CCountedPointerNUISystemCAction_ShareData_0053ceae.cpp'
+        TestSource = '00/53/CCountedPointerNUISystemCAction_ShareData_0053ceae_test.cpp'
+        PassPattern = 'PASS_0053ceae'
+    }
+    [pscustomobject]@{
+        Address = '005c058f'
+        Module = 'CCountedPointer<NUISystem::CAction>'
+        Source = '00/5c/CCountedPointerNUISystemCAction_ShareData_005c058f.cpp'
+        TestSource = '00/5c/CCountedPointerNUISystemCAction_ShareData_005c058f_test.cpp'
+        PassPattern = 'PASS_005c058f'
+    }
+    [pscustomobject]@{
+        Address = '0042ac25'
+        Module = 'CActiveFile'
+        Source = '00/42/CActiveFile_OnReadFinished_0042ac25.cpp'
+        TestSource = '00/42/CActiveFile_OnReadFinished_0042ac25_test.cpp'
+        PassPattern = 'PASS_0042ac25'
+    }
+    [pscustomobject]@{
+        Address = '004302cd'
+        Module = 'CActiveFile'
+        Source = '00/43/CActiveFile_OnReadFinished_004302cd.cpp'
+        TestSource = '00/43/CActiveFile_OnReadFinished_004302cd_test.cpp'
+        PassPattern = 'PASS_004302cd'
+    }
+    [pscustomobject]@{
+        Address = '0045180f'
+        Module = 'CActiveFile'
+        Source = '00/45/CActiveFile_OnReadFinished_0045180f.cpp'
+        TestSource = '00/45/CActiveFile_OnReadFinished_0045180f_test.cpp'
+        PassPattern = 'PASS_0045180f'
+    }
+    [pscustomobject]@{
+        Address = '004db5bb'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004db5bb.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004db5bb_test.cpp'
+        PassPattern = 'PASS_004db5bb'
+    }
+    [pscustomobject]@{
+        Address = '004db68f'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004db68f.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004db68f_test.cpp'
+        PassPattern = 'PASS_004db68f'
+    }
+    [pscustomobject]@{
+        Address = '004dd2b1'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd2b1.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd2b1_test.cpp'
+        PassPattern = 'PASS_004dd2b1'
+    }
+    [pscustomobject]@{
+        Address = '004dd4db'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd4db.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd4db_test.cpp'
+        PassPattern = 'PASS_004dd4db'
+    }
+    [pscustomobject]@{
+        Address = '004dd5ee'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd5ee.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd5ee_test.cpp'
+        PassPattern = 'PASS_004dd5ee'
+    }
+    [pscustomobject]@{
+        Address = '0053c9bc'
+        Module = 'CActiveFile'
+        Source = '00/53/CActiveFile_OnReadFinished_0053c9bc.cpp'
+        TestSource = '00/53/CActiveFile_OnReadFinished_0053c9bc_test.cpp'
+        PassPattern = 'PASS_0053c9bc'
+    }
+    [pscustomobject]@{
+        Address = '005792da'
+        Module = 'CActiveFile'
+        Source = '00/57/CActiveFile_OnReadFinished_005792da.cpp'
+        TestSource = '00/57/CActiveFile_OnReadFinished_005792da_test.cpp'
+        PassPattern = 'PASS_005792da'
+    }
+    [pscustomobject]@{
+        Address = '005796ab'
+        Module = 'CActiveFile'
+        Source = '00/57/CActiveFile_OnReadFinished_005796ab.cpp'
+        TestSource = '00/57/CActiveFile_OnReadFinished_005796ab_test.cpp'
+        PassPattern = 'PASS_005796ab'
+    }
+    [pscustomobject]@{
+        Address = '0057fdbd'
+        Module = 'CActiveFile'
+        Source = '00/57/CActiveFile_OnReadFinished_0057fdbd.cpp'
+        TestSource = '00/57/CActiveFile_OnReadFinished_0057fdbd_test.cpp'
+        PassPattern = 'PASS_0057fdbd'
+    }
+    [pscustomobject]@{
+        Address = '005931f5'
+        Module = 'CActiveFile'
+        Source = '00/59/CActiveFile_OnReadFinished_005931f5.cpp'
+        TestSource = '00/59/CActiveFile_OnReadFinished_005931f5_test.cpp'
+        PassPattern = 'PASS_005931f5'
+    }
+    [pscustomobject]@{
+        Address = '005932a3'
+        Module = 'CActiveFile'
+        Source = '00/59/CActiveFile_OnReadFinished_005932a3.cpp'
+        TestSource = '00/59/CActiveFile_OnReadFinished_005932a3_test.cpp'
+        PassPattern = 'PASS_005932a3'
+    }
+    [pscustomobject]@{
+        Address = '0059b098'
+        Module = 'CActiveFile'
+        Source = '00/59/CActiveFile_OnReadFinished_0059b098.cpp'
+        TestSource = '00/59/CActiveFile_OnReadFinished_0059b098_test.cpp'
+        PassPattern = 'PASS_0059b098'
+    }
+    [pscustomobject]@{
+        Address = '005b2847'
+        Module = 'CActiveFile'
+        Source = '00/5b/CActiveFile_OnReadFinished_005b2847.cpp'
+        TestSource = '00/5b/CActiveFile_OnReadFinished_005b2847_test.cpp'
+        PassPattern = 'PASS_005b2847'
+    }
+    [pscustomobject]@{
+        Address = '005d864b'
+        Module = 'CActiveFile'
+        Source = '00/5d/CActiveFile_OnReadFinished_005d864b.cpp'
+        TestSource = '00/5d/CActiveFile_OnReadFinished_005d864b_test.cpp'
+        PassPattern = 'PASS_005d864b'
+    }
+    [pscustomobject]@{
+        Address = '005f8fe6'
+        Module = 'CActiveFile'
+        Source = '00/5f/CActiveFile_OnReadFinished_005f8fe6.cpp'
+        TestSource = '00/5f/CActiveFile_OnReadFinished_005f8fe6_test.cpp'
+        PassPattern = 'PASS_005f8fe6'
+    }
+    [pscustomobject]@{
+        Address = '005f900a'
+        Module = 'CActiveFile'
+        Source = '00/5f/CActiveFile_OnReadFinished_005f900a.cpp'
+        TestSource = '00/5f/CActiveFile_OnReadFinished_005f900a_test.cpp'
+        PassPattern = 'PASS_005f900a'
+    }
+    [pscustomobject]@{
+        Address = '00cd31d2'
+        Module = 'CActiveFile'
+        Source = '00/cd/CActiveFile_OnReadFinished_00cd31d2.cpp'
+        TestSource = '00/cd/CActiveFile_OnReadFinished_00cd31d2_test.cpp'
+        PassPattern = 'PASS_00cd31d2'
+    }
+    [pscustomobject]@{
+        Address = '004da4c2'
+        Module = 'LTextTreeWalkThrough'
+        Source = '00/4d/LTextTreeWalkThrough_BuildTreeArray_004da4c2.cpp'
+        TestSource = '00/4d/LTextTreeWalkThrough_BuildTreeArray_004da4c2_test.cpp'
+        PassPattern = 'PASS_004da4c2'
+    }
+    [pscustomobject]@{
+        Address = '00578ff5'
+        Module = 'LTextTreeWalkThrough'
+        Source = '00/57/LTextTreeWalkThrough_BuildTreeArray_00578ff5.cpp'
+        TestSource = '00/57/LTextTreeWalkThrough_BuildTreeArray_00578ff5_test.cpp'
+        PassPattern = 'PASS_00578ff5'
+    }
+    [pscustomobject]@{
+        Address = '0059ad64'
+        Module = 'LTextTreeWalkThrough'
+        Source = '00/59/LTextTreeWalkThrough_BuildTreeArray_0059ad64.cpp'
+        TestSource = '00/59/LTextTreeWalkThrough_BuildTreeArray_0059ad64_test.cpp'
+        PassPattern = 'PASS_0059ad64'
+    }
+    [pscustomobject]@{
+        Address = '0042fe34'
+        Module = 'CCountedPointer<CTexture>'
+        Source = '00/42/CCountedPointerCTexture_operator_0042fe34.cpp'
+        TestSource = '00/42/CCountedPointerCTexture_operator_0042fe34_test.cpp'
+        PassPattern = 'PASS_0042fe34'
+    }
+    [pscustomobject]@{
+        Address = '005c0800'
+        Module = 'CCountedPointer<CTexture>'
+        Source = '00/5c/CCountedPointerCTexture_operator_005c0800.cpp'
+        TestSource = '00/5c/CCountedPointerCTexture_operator_005c0800_test.cpp'
+        PassPattern = 'PASS_005c0800'
+    }
+    [pscustomobject]@{
+        Address = '0043027a'
+        Module = 'CTCCarryable'
+        Source = '00/43/CTCCarryable_OnKill_0043027a.cpp'
+        TestSource = '00/43/CTCCarryable_OnKill_0043027a_test.cpp'
+        PassPattern = 'PASS_0043027a'
+    }
+    [pscustomobject]@{
+        Address = '004db853'
+        Module = 'CTCCarryable'
+        Source = '00/4d/CTCCarryable_OnKill_004db853.cpp'
+        TestSource = '00/4d/CTCCarryable_OnKill_004db853_test.cpp'
+        PassPattern = 'PASS_004db853'
+    }
+    [pscustomobject]@{
+        Address = '004e4108'
+        Module = 'CTCCarryable'
+        Source = '00/4e/CTCCarryable_OnKill_004e4108.cpp'
+        TestSource = '00/4e/CTCCarryable_OnKill_004e4108_test.cpp'
+        PassPattern = 'PASS_004e4108'
+    }
+    [pscustomobject]@{
+        Address = '0058060d'
+        Module = 'CTCCarryable'
+        Source = '00/58/CTCCarryable_OnKill_0058060d.cpp'
+        TestSource = '00/58/CTCCarryable_OnKill_0058060d_test.cpp'
+        PassPattern = 'PASS_0058060d'
+    }
+    [pscustomobject]@{
+        Address = '00593b99'
+        Module = 'CTCCarryable'
+        Source = '00/59/CTCCarryable_OnKill_00593b99.cpp'
+        TestSource = '00/59/CTCCarryable_OnKill_00593b99_test.cpp'
+        PassPattern = 'PASS_00593b99'
+    }
+    [pscustomobject]@{
+        Address = '00cd2d8b'
+        Module = 'CTCCarryable'
+        Source = '00/cd/CTCCarryable_OnKill_00cd2d8b.cpp'
+        TestSource = '00/cd/CTCCarryable_OnKill_00cd2d8b_test.cpp'
+        PassPattern = 'PASS_00cd2d8b'
+    }
+    [pscustomobject]@{
+        Address = '00cd2ddc'
+        Module = 'CTCCarryable'
+        Source = '00/cd/CTCCarryable_OnKill_00cd2ddc.cpp'
+        TestSource = '00/cd/CTCCarryable_OnKill_00cd2ddc_test.cpp'
+        PassPattern = 'PASS_00cd2ddc'
+    }
+    [pscustomobject]@{
+        Address = '0042a7d0'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a7d0.cpp'
+        TestSource = '00/42/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0042a7d0_test.cpp'
+        PassPattern = 'PASS_0042a7d0'
+    }
+    [pscustomobject]@{
+        Address = '0045098c'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/45/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0045098c.cpp'
+        TestSource = '00/45/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0045098c_test.cpp'
+        PassPattern = 'PASS_0045098c'
+    }
+    [pscustomobject]@{
+        Address = '0057f875'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/57/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0057f875.cpp'
+        TestSource = '00/57/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0057f875_test.cpp'
+        PassPattern = 'PASS_0057f875'
+    }
+    [pscustomobject]@{
+        Address = '00592e9e'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/59/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592e9e.cpp'
+        TestSource = '00/59/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592e9e_test.cpp'
+        PassPattern = 'PASS_00592e9e'
+    }
+    [pscustomobject]@{
+        Address = '00592f41'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/59/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592f41.cpp'
+        TestSource = '00/59/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592f41_test.cpp'
+        PassPattern = 'PASS_00592f41'
+    }
+    [pscustomobject]@{
+        Address = '005cc010'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/5c/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005cc010.cpp'
+        TestSource = '00/5c/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005cc010_test.cpp'
+        PassPattern = 'PASS_005cc010'
+    }
+    [pscustomobject]@{
+        Address = '006557a0'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/65/CEngineInternalPrimitiveMeshBase_GetMeshEffect_006557a0.cpp'
+        TestSource = '00/65/CEngineInternalPrimitiveMeshBase_GetMeshEffect_006557a0_test.cpp'
+        PassPattern = 'PASS_006557a0'
+    }
+    [pscustomobject]@{
+        Address = '0065e5b7'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/65/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0065e5b7.cpp'
+        TestSource = '00/65/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0065e5b7_test.cpp'
+        PassPattern = 'PASS_0065e5b7'
+    }
+    [pscustomobject]@{
+        Address = '007be798'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/7b/CEngineInternalPrimitiveMeshBase_GetMeshEffect_007be798.cpp'
+        TestSource = '00/7b/CEngineInternalPrimitiveMeshBase_GetMeshEffect_007be798_test.cpp'
+        PassPattern = 'PASS_007be798'
+    }
+    [pscustomobject]@{
+        Address = '00413350'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00413350.cpp'
+        TestSource = '00/41/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00413350_test.cpp'
+        PassPattern = 'PASS_00413350'
+    }
+    [pscustomobject]@{
+        Address = '00447760'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00447760.cpp'
+        TestSource = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00447760_test.cpp'
+        PassPattern = 'PASS_00447760'
+    }
+    [pscustomobject]@{
+        Address = '00403700'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403700.cpp'
+        TestSource = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403700_test.cpp'
+        PassPattern = 'PASS_00403700'
+    }
+    [pscustomobject]@{
+        Address = '00403790'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403790.cpp'
+        TestSource = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403790_test.cpp'
+        PassPattern = 'PASS_00403790'
+    }
+    [pscustomobject]@{
+        Address = '00403cb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403cb0.cpp'
+        TestSource = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403cb0_test.cpp'
+        PassPattern = 'PASS_00403cb0'
+    }
+    [pscustomobject]@{
+        Address = '004057a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004057a0.cpp'
+        TestSource = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004057a0_test.cpp'
+        PassPattern = 'PASS_004057a0'
+    }
+    [pscustomobject]@{
+        Address = '00436620'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00436620.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00436620_test.cpp'
+        PassPattern = 'PASS_00436620'
+    }
+    [pscustomobject]@{
+        Address = '0043db40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043db40.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043db40_test.cpp'
+        PassPattern = 'PASS_0043db40'
+    }
+    [pscustomobject]@{
+        Address = '0043e1c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e1c0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043e1c0_test.cpp'
+        PassPattern = 'PASS_0043e1c0'
+    }
+    [pscustomobject]@{
+        Address = '0043efb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043efb0.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043efb0_test.cpp'
+        PassPattern = 'PASS_0043efb0'
+    }
+    [pscustomobject]@{
+        Address = '0043f780'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043f780.cpp'
+        TestSource = '00/43/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0043f780_test.cpp'
+        PassPattern = 'PASS_0043f780'
+    }
+    [pscustomobject]@{
+        Address = '0044ab10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044ab10.cpp'
+        TestSource = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044ab10_test.cpp'
+        PassPattern = 'PASS_0044ab10'
+    }
+    [pscustomobject]@{
+        Address = '0044b190'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044b190.cpp'
+        TestSource = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044b190_test.cpp'
+        PassPattern = 'PASS_0044b190'
+    }
+    [pscustomobject]@{
+        Address = '0048afb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/48/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0048afb0.cpp'
+        TestSource = '00/48/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0048afb0_test.cpp'
+        PassPattern = 'PASS_0048afb0'
+    }
+    [pscustomobject]@{
+        Address = '0048c5c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/48/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0048c5c0.cpp'
+        TestSource = '00/48/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0048c5c0_test.cpp'
+        PassPattern = 'PASS_0048c5c0'
+    }
+    [pscustomobject]@{
+        Address = '004a9160'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a9160.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a9160_test.cpp'
+        PassPattern = 'PASS_004a9160'
+    }
+    [pscustomobject]@{
+        Address = '004a9470'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a9470.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a9470_test.cpp'
+        PassPattern = 'PASS_004a9470'
+    }
+    [pscustomobject]@{
+        Address = '004a9660'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a9660.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a9660_test.cpp'
+        PassPattern = 'PASS_004a9660'
+    }
+    [pscustomobject]@{
+        Address = '004a9780'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a9780.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004a9780_test.cpp'
+        PassPattern = 'PASS_004a9780'
+    }
+    [pscustomobject]@{
+        Address = '004aa700'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004aa700.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004aa700_test.cpp'
+        PassPattern = 'PASS_004aa700'
+    }
+    [pscustomobject]@{
+        Address = '004b71a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b71a0.cpp'
+        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b71a0_test.cpp'
+        PassPattern = 'PASS_004b71a0'
+    }
+    [pscustomobject]@{
+        Address = '004b7a10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7a10.cpp'
+        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7a10_test.cpp'
+        PassPattern = 'PASS_004b7a10'
+    }
+    [pscustomobject]@{
+        Address = '004b7aa0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7aa0.cpp'
+        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7aa0_test.cpp'
+        PassPattern = 'PASS_004b7aa0'
+    }
+    [pscustomobject]@{
+        Address = '004b7b70'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7b70.cpp'
+        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7b70_test.cpp'
+        PassPattern = 'PASS_004b7b70'
+    }
+    [pscustomobject]@{
+        Address = '004b7d80'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7d80.cpp'
+        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7d80_test.cpp'
+        PassPattern = 'PASS_004b7d80'
+    }
+    [pscustomobject]@{
+        Address = '004c24c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/4c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004c24c0.cpp'
+        TestSource = '00/4c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004c24c0_test.cpp'
+        PassPattern = 'PASS_004c24c0'
+    }
+    [pscustomobject]@{
+        Address = '0050d390'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d390.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d390_test.cpp'
+        PassPattern = 'PASS_0050d390'
+    }
+    [pscustomobject]@{
+        Address = '0050d5b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d5b0.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d5b0_test.cpp'
+        PassPattern = 'PASS_0050d5b0'
+    }
+    [pscustomobject]@{
+        Address = '0050ecc0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050ecc0.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050ecc0_test.cpp'
+        PassPattern = 'PASS_0050ecc0'
+    }
+    [pscustomobject]@{
+        Address = '0050f140'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f140.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f140_test.cpp'
+        PassPattern = 'PASS_0050f140'
+    }
+    [pscustomobject]@{
+        Address = '0050f1f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f1f0.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f1f0_test.cpp'
+        PassPattern = 'PASS_0050f1f0'
+    }
+    [pscustomobject]@{
+        Address = '0050f4c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f4c0.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f4c0_test.cpp'
+        PassPattern = 'PASS_0050f4c0'
+    }
+    [pscustomobject]@{
+        Address = '0050f6a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f6a0.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f6a0_test.cpp'
+        PassPattern = 'PASS_0050f6a0'
+    }
+    [pscustomobject]@{
+        Address = '0050ff40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050ff40.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050ff40_test.cpp'
+        PassPattern = 'PASS_0050ff40'
+    }
+    [pscustomobject]@{
+        Address = '0050ff90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050ff90.cpp'
+        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050ff90_test.cpp'
+        PassPattern = 'PASS_0050ff90'
+    }
+    [pscustomobject]@{
+        Address = '005101b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005101b0.cpp'
+        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005101b0_test.cpp'
+        PassPattern = 'PASS_005101b0'
+    }
+    [pscustomobject]@{
+        Address = '00510250'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510250.cpp'
+        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510250_test.cpp'
+        PassPattern = 'PASS_00510250'
+    }
+    [pscustomobject]@{
+        Address = '00510400'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510400.cpp'
+        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510400_test.cpp'
+        PassPattern = 'PASS_00510400'
+    }
+    [pscustomobject]@{
+        Address = '005104a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005104a0.cpp'
+        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005104a0_test.cpp'
+        PassPattern = 'PASS_005104a0'
+    }
+    [pscustomobject]@{
+        Address = '005105f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005105f0.cpp'
+        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005105f0_test.cpp'
+        PassPattern = 'PASS_005105f0'
+    }
+    [pscustomobject]@{
+        Address = '00510690'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510690.cpp'
+        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510690_test.cpp'
+        PassPattern = 'PASS_00510690'
+    }
+    [pscustomobject]@{
+        Address = '005107f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005107f0.cpp'
+        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005107f0_test.cpp'
+        PassPattern = 'PASS_005107f0'
+    }
+    [pscustomobject]@{
+        Address = '005108f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005108f0.cpp'
+        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005108f0_test.cpp'
+        PassPattern = 'PASS_005108f0'
+    }
+    [pscustomobject]@{
+        Address = '00510a10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510a10.cpp'
+        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510a10_test.cpp'
+        PassPattern = 'PASS_00510a10'
+    }
+    [pscustomobject]@{
+        Address = '00510b00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510b00.cpp'
+        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510b00_test.cpp'
+        PassPattern = 'PASS_00510b00'
+    }
+    [pscustomobject]@{
+        Address = '00510bf0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510bf0.cpp'
+        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510bf0_test.cpp'
+        PassPattern = 'PASS_00510bf0'
+    }
+    [pscustomobject]@{
+        Address = '005120c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005120c0.cpp'
+        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005120c0_test.cpp'
+        PassPattern = 'PASS_005120c0'
+    }
+    [pscustomobject]@{
+        Address = '0056c4a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/56/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0056c4a0.cpp'
+        TestSource = '00/56/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0056c4a0_test.cpp'
+        PassPattern = 'PASS_0056c4a0'
+    }
+    [pscustomobject]@{
+        Address = '0056c8d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/56/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0056c8d0.cpp'
+        TestSource = '00/56/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0056c8d0_test.cpp'
+        PassPattern = 'PASS_0056c8d0'
+    }
+    [pscustomobject]@{
+        Address = '0056cea0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/56/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0056cea0.cpp'
+        TestSource = '00/56/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0056cea0_test.cpp'
+        PassPattern = 'PASS_0056cea0'
+    }
+    [pscustomobject]@{
+        Address = '005df1c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/5d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005df1c0.cpp'
+        TestSource = '00/5d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005df1c0_test.cpp'
+        PassPattern = 'PASS_005df1c0'
+    }
+    [pscustomobject]@{
+        Address = '005df9e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/5d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005df9e0.cpp'
+        TestSource = '00/5d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005df9e0_test.cpp'
+        PassPattern = 'PASS_005df9e0'
+    }
+    [pscustomobject]@{
+        Address = '006126a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/61/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006126a0.cpp'
+        TestSource = '00/61/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006126a0_test.cpp'
+        PassPattern = 'PASS_006126a0'
+    }
+    [pscustomobject]@{
+        Address = '00613580'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/61/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00613580.cpp'
+        TestSource = '00/61/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00613580_test.cpp'
+        PassPattern = 'PASS_00613580'
+    }
+    [pscustomobject]@{
+        Address = '0062d6f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/62/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0062d6f0.cpp'
+        TestSource = '00/62/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0062d6f0_test.cpp'
+        PassPattern = 'PASS_0062d6f0'
+    }
+    [pscustomobject]@{
+        Address = '00640170'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/64/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00640170.cpp'
+        TestSource = '00/64/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00640170_test.cpp'
+        PassPattern = 'PASS_00640170'
+    }
+    [pscustomobject]@{
+        Address = '006409d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/64/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006409d0.cpp'
+        TestSource = '00/64/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006409d0_test.cpp'
+        PassPattern = 'PASS_006409d0'
+    }
+    [pscustomobject]@{
+        Address = '00668ba0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/66/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00668ba0.cpp'
+        TestSource = '00/66/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00668ba0_test.cpp'
+        PassPattern = 'PASS_00668ba0'
+    }
+    [pscustomobject]@{
+        Address = '00669a10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/66/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00669a10.cpp'
+        TestSource = '00/66/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00669a10_test.cpp'
+        PassPattern = 'PASS_00669a10'
+    }
+    [pscustomobject]@{
+        Address = '00672c50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00672c50.cpp'
+        TestSource = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00672c50_test.cpp'
+        PassPattern = 'PASS_00672c50'
+    }
+    [pscustomobject]@{
+        Address = '0067fe10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0067fe10.cpp'
+        TestSource = '00/67/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0067fe10_test.cpp'
+        PassPattern = 'PASS_0067fe10'
+    }
+    [pscustomobject]@{
+        Address = '00695830'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00695830.cpp'
+        TestSource = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00695830_test.cpp'
+        PassPattern = 'PASS_00695830'
+    }
+    [pscustomobject]@{
+        Address = '00695920'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00695920.cpp'
+        TestSource = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00695920_test.cpp'
+        PassPattern = 'PASS_00695920'
+    }
+    [pscustomobject]@{
+        Address = '0069c600'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0069c600.cpp'
+        TestSource = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0069c600_test.cpp'
+        PassPattern = 'PASS_0069c600'
+    }
+    [pscustomobject]@{
+        Address = '0069c690'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0069c690.cpp'
+        TestSource = '00/69/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0069c690_test.cpp'
+        PassPattern = 'PASS_0069c690'
+    }
+    [pscustomobject]@{
+        Address = '006c2fb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/6c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006c2fb0.cpp'
+        TestSource = '00/6c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006c2fb0_test.cpp'
+        PassPattern = 'PASS_006c2fb0'
+    }
+    [pscustomobject]@{
+        Address = '006e1960'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e1960.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e1960_test.cpp'
+        PassPattern = 'PASS_006e1960'
+    }
+    [pscustomobject]@{
+        Address = '006e1b90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e1b90.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e1b90_test.cpp'
+        PassPattern = 'PASS_006e1b90'
+    }
+    [pscustomobject]@{
+        Address = '006e4410'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e4410.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e4410_test.cpp'
+        PassPattern = 'PASS_006e4410'
+    }
+    [pscustomobject]@{
+        Address = '006e46f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e46f0.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e46f0_test.cpp'
+        PassPattern = 'PASS_006e46f0'
+    }
+    [pscustomobject]@{
+        Address = '006e7af0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e7af0.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e7af0_test.cpp'
+        PassPattern = 'PASS_006e7af0'
+    }
+    [pscustomobject]@{
+        Address = '006eec90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006eec90.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006eec90_test.cpp'
+        PassPattern = 'PASS_006eec90'
+    }
+    [pscustomobject]@{
+        Address = '006ef740'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006ef740.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006ef740_test.cpp'
+        PassPattern = 'PASS_006ef740'
+    }
+    [pscustomobject]@{
+        Address = '006f16b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/6f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006f16b0.cpp'
+        TestSource = '00/6f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006f16b0_test.cpp'
+        PassPattern = 'PASS_006f16b0'
+    }
+    [pscustomobject]@{
+        Address = '006f8db0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/6f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006f8db0.cpp'
+        TestSource = '00/6f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006f8db0_test.cpp'
+        PassPattern = 'PASS_006f8db0'
+    }
+    [pscustomobject]@{
+        Address = '00718300'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00718300.cpp'
+        TestSource = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00718300_test.cpp'
+        PassPattern = 'PASS_00718300'
+    }
+    [pscustomobject]@{
+        Address = '00718a50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00718a50.cpp'
+        TestSource = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00718a50_test.cpp'
+        PassPattern = 'PASS_00718a50'
+    }
+    [pscustomobject]@{
+        Address = '00718ae0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00718ae0.cpp'
+        TestSource = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00718ae0_test.cpp'
+        PassPattern = 'PASS_00718ae0'
+    }
+    [pscustomobject]@{
+        Address = '00718f60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00718f60.cpp'
+        TestSource = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00718f60_test.cpp'
+        PassPattern = 'PASS_00718f60'
+    }
+    [pscustomobject]@{
+        Address = '0071ee70'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0071ee70.cpp'
+        TestSource = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0071ee70_test.cpp'
+        PassPattern = 'PASS_0071ee70'
+    }
+    [pscustomobject]@{
+        Address = '00732340'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00732340.cpp'
+        TestSource = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00732340_test.cpp'
+        PassPattern = 'PASS_00732340'
+    }
+    [pscustomobject]@{
+        Address = '00737540'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00737540.cpp'
+        TestSource = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00737540_test.cpp'
+        PassPattern = 'PASS_00737540'
+    }
+    [pscustomobject]@{
+        Address = '0073ce20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073ce20.cpp'
+        TestSource = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073ce20_test.cpp'
+        PassPattern = 'PASS_0073ce20'
+    }
+    [pscustomobject]@{
+        Address = '0073cef0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073cef0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073cef0_test.cpp'
+        PassPattern = 'PASS_0073cef0'
+    }
+    [pscustomobject]@{
+        Address = '0073d630'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073d630.cpp'
+        TestSource = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073d630_test.cpp'
+        PassPattern = 'PASS_0073d630'
+    }
+    [pscustomobject]@{
+        Address = '0073dd10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073dd10.cpp'
+        TestSource = '00/73/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073dd10_test.cpp'
+        PassPattern = 'PASS_0073dd10'
+    }
+    [pscustomobject]@{
+        Address = '0075f060'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/75/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0075f060.cpp'
+        TestSource = '00/75/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0075f060_test.cpp'
+        PassPattern = 'PASS_0075f060'
+    }
+    [pscustomobject]@{
+        Address = '0075f2b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/75/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0075f2b0.cpp'
+        TestSource = '00/75/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0075f2b0_test.cpp'
+        PassPattern = 'PASS_0075f2b0'
+    }
+    [pscustomobject]@{
+        Address = '00763d80'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/76/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00763d80.cpp'
+        TestSource = '00/76/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00763d80_test.cpp'
+        PassPattern = 'PASS_00763d80'
+    }
+    [pscustomobject]@{
+        Address = '00764380'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/76/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00764380.cpp'
+        TestSource = '00/76/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00764380_test.cpp'
+        PassPattern = 'PASS_00764380'
+    }
+    [pscustomobject]@{
+        Address = '00764910'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/76/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00764910.cpp'
+        TestSource = '00/76/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00764910_test.cpp'
+        PassPattern = 'PASS_00764910'
+    }
+    [pscustomobject]@{
+        Address = '00764c90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/76/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00764c90.cpp'
+        TestSource = '00/76/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00764c90_test.cpp'
+        PassPattern = 'PASS_00764c90'
+    }
+    [pscustomobject]@{
+        Address = '00771890'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/77/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00771890.cpp'
+        TestSource = '00/77/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00771890_test.cpp'
+        PassPattern = 'PASS_00771890'
+    }
+    [pscustomobject]@{
+        Address = '00786aa0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/78/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00786aa0.cpp'
+        TestSource = '00/78/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00786aa0_test.cpp'
+        PassPattern = 'PASS_00786aa0'
+    }
+    [pscustomobject]@{
+        Address = '007a2e80'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/7a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007a2e80.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007a2e80_test.cpp'
+        PassPattern = 'PASS_007a2e80'
+    }
+    [pscustomobject]@{
+        Address = '007a3200'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/7a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007a3200.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007a3200_test.cpp'
+        PassPattern = 'PASS_007a3200'
+    }
+    [pscustomobject]@{
+        Address = '007e70e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/7e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007e70e0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007e70e0_test.cpp'
+        PassPattern = 'PASS_007e70e0'
+    }
+    [pscustomobject]@{
+        Address = '008119f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/81/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008119f0.cpp'
+        TestSource = '00/81/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008119f0_test.cpp'
+        PassPattern = 'PASS_008119f0'
+    }
+    [pscustomobject]@{
+        Address = '00811aa0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/81/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00811aa0.cpp'
+        TestSource = '00/81/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00811aa0_test.cpp'
+        PassPattern = 'PASS_00811aa0'
+    }
+    [pscustomobject]@{
+        Address = '00822eb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822eb0.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822eb0_test.cpp'
+        PassPattern = 'PASS_00822eb0'
+    }
+    [pscustomobject]@{
+        Address = '00822f60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822f60.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822f60_test.cpp'
+        PassPattern = 'PASS_00822f60'
+    }
+    [pscustomobject]@{
+        Address = '00823b00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823b00.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823b00_test.cpp'
+        PassPattern = 'PASS_00823b00'
+    }
+    [pscustomobject]@{
+        Address = '00823d30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823d30.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823d30_test.cpp'
+        PassPattern = 'PASS_00823d30'
+    }
+    [pscustomobject]@{
+        Address = '00823d80'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823d80.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823d80_test.cpp'
+        PassPattern = 'PASS_00823d80'
+    }
+    [pscustomobject]@{
+        Address = '00823e90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823e90.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823e90_test.cpp'
+        PassPattern = 'PASS_00823e90'
+    }
+    [pscustomobject]@{
+        Address = '00823f30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823f30.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823f30_test.cpp'
+        PassPattern = 'PASS_00823f30'
+    }
+    [pscustomobject]@{
+        Address = '00824090'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824090.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824090_test.cpp'
+        PassPattern = 'PASS_00824090'
+    }
+    [pscustomobject]@{
+        Address = '00824180'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824180.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824180_test.cpp'
+        PassPattern = 'PASS_00824180'
+    }
+    [pscustomobject]@{
+        Address = '008242a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008242a0.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008242a0_test.cpp'
+        PassPattern = 'PASS_008242a0'
+    }
+    [pscustomobject]@{
+        Address = '00824390'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824390.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824390_test.cpp'
+        PassPattern = 'PASS_00824390'
+    }
+    [pscustomobject]@{
+        Address = '00824480'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824480.cpp'
+        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824480_test.cpp'
+        PassPattern = 'PASS_00824480'
+    }
+    [pscustomobject]@{
+        Address = '00834b90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00834b90.cpp'
+        TestSource = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00834b90_test.cpp'
+        PassPattern = 'PASS_00834b90'
+    }
+    [pscustomobject]@{
+        Address = '00834de0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00834de0.cpp'
+        TestSource = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00834de0_test.cpp'
+        PassPattern = 'PASS_00834de0'
+    }
+    [pscustomobject]@{
+        Address = '008364c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008364c0.cpp'
+        TestSource = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008364c0_test.cpp'
+        PassPattern = 'PASS_008364c0'
+    }
+    [pscustomobject]@{
+        Address = '008ab320'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008ab320.cpp'
+        TestSource = '00/8a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008ab320_test.cpp'
+        PassPattern = 'PASS_008ab320'
+    }
+    [pscustomobject]@{
+        Address = '008ab3d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008ab3d0.cpp'
+        TestSource = '00/8a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008ab3d0_test.cpp'
+        PassPattern = 'PASS_008ab3d0'
+    }
+    [pscustomobject]@{
+        Address = '008b2200'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008b2200.cpp'
+        TestSource = '00/8b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008b2200_test.cpp'
+        PassPattern = 'PASS_008b2200'
+    }
+    [pscustomobject]@{
+        Address = '008c2e50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c2e50.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c2e50_test.cpp'
+        PassPattern = 'PASS_008c2e50'
+    }
+    [pscustomobject]@{
+        Address = '008c31d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c31d0.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c31d0_test.cpp'
+        PassPattern = 'PASS_008c31d0'
+    }
+    [pscustomobject]@{
+        Address = '008c5800'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c5800.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c5800_test.cpp'
+        PassPattern = 'PASS_008c5800'
+    }
+    [pscustomobject]@{
+        Address = '008c5860'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c5860.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c5860_test.cpp'
+        PassPattern = 'PASS_008c5860'
+    }
+    [pscustomobject]@{
+        Address = '008c59d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c59d0.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c59d0_test.cpp'
+        PassPattern = 'PASS_008c59d0'
+    }
+    [pscustomobject]@{
+        Address = '008eb810'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008eb810.cpp'
+        TestSource = '00/8e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008eb810_test.cpp'
+        PassPattern = 'PASS_008eb810'
+    }
+    [pscustomobject]@{
+        Address = '008eb9a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/8e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008eb9a0.cpp'
+        TestSource = '00/8e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008eb9a0_test.cpp'
+        PassPattern = 'PASS_008eb9a0'
+    }
+    [pscustomobject]@{
+        Address = '0098be60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/98/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0098be60.cpp'
+        TestSource = '00/98/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0098be60_test.cpp'
+        PassPattern = 'PASS_0098be60'
+    }
+    [pscustomobject]@{
+        Address = '0098c600'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/98/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0098c600.cpp'
+        TestSource = '00/98/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0098c600_test.cpp'
+        PassPattern = 'PASS_0098c600'
+    }
+    [pscustomobject]@{
+        Address = '0098cbe0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/98/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0098cbe0.cpp'
+        TestSource = '00/98/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0098cbe0_test.cpp'
+        PassPattern = 'PASS_0098cbe0'
+    }
+    [pscustomobject]@{
+        Address = '009920e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/99/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009920e0.cpp'
+        TestSource = '00/99/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009920e0_test.cpp'
+        PassPattern = 'PASS_009920e0'
+    }
+    [pscustomobject]@{
+        Address = '009a6e30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6e30.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a6e30_test.cpp'
+        PassPattern = 'PASS_009a6e30'
+    }
+    [pscustomobject]@{
+        Address = '009a9d60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a9d60.cpp'
+        TestSource = '00/9a/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009a9d60_test.cpp'
+        PassPattern = 'PASS_009a9d60'
+    }
+    [pscustomobject]@{
+        Address = '009b1400'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009b1400.cpp'
+        TestSource = '00/9b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009b1400_test.cpp'
+        PassPattern = 'PASS_009b1400'
+    }
+    [pscustomobject]@{
+        Address = '009c5d40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c5d40.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c5d40_test.cpp'
+        PassPattern = 'PASS_009c5d40'
+    }
+    [pscustomobject]@{
+        Address = '009c60d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c60d0.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c60d0_test.cpp'
+        PassPattern = 'PASS_009c60d0'
+    }
+    [pscustomobject]@{
+        Address = '009c9ac0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c9ac0.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c9ac0_test.cpp'
+        PassPattern = 'PASS_009c9ac0'
+    }
+    [pscustomobject]@{
+        Address = '009c9fc0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c9fc0.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c9fc0_test.cpp'
+        PassPattern = 'PASS_009c9fc0'
+    }
+    [pscustomobject]@{
+        Address = '009d19a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d19a0.cpp'
+        TestSource = '00/9d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d19a0_test.cpp'
+        PassPattern = 'PASS_009d19a0'
+    }
+    [pscustomobject]@{
+        Address = '009d7070'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d7070.cpp'
+        TestSource = '00/9d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d7070_test.cpp'
+        PassPattern = 'PASS_009d7070'
+    }
+    [pscustomobject]@{
+        Address = '009d7940'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d7940.cpp'
+        TestSource = '00/9d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009d7940_test.cpp'
+        PassPattern = 'PASS_009d7940'
+    }
+    [pscustomobject]@{
+        Address = '009e2a00'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009e2a00.cpp'
+        TestSource = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009e2a00_test.cpp'
+        PassPattern = 'PASS_009e2a00'
+    }
+    [pscustomobject]@{
+        Address = '009e3000'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009e3000.cpp'
+        TestSource = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009e3000_test.cpp'
+        PassPattern = 'PASS_009e3000'
+    }
+    [pscustomobject]@{
+        Address = '009e4ee0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009e4ee0.cpp'
+        TestSource = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009e4ee0_test.cpp'
+        PassPattern = 'PASS_009e4ee0'
+    }
+    [pscustomobject]@{
+        Address = '009ee400'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009ee400.cpp'
+        TestSource = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009ee400_test.cpp'
+        PassPattern = 'PASS_009ee400'
+    }
+    [pscustomobject]@{
+        Address = '009f0990'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009f0990.cpp'
+        TestSource = '00/9f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009f0990_test.cpp'
+        PassPattern = 'PASS_009f0990'
+    }
+    [pscustomobject]@{
+        Address = '009f61e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009f61e0.cpp'
+        TestSource = '00/9f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009f61e0_test.cpp'
+        PassPattern = 'PASS_009f61e0'
+    }
+    [pscustomobject]@{
+        Address = '009f6400'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/9f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009f6400.cpp'
+        TestSource = '00/9f/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009f6400_test.cpp'
+        PassPattern = 'PASS_009f6400'
+    }
+    [pscustomobject]@{
+        Address = '00a00250'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a00250.cpp'
+        TestSource = '00/a0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a00250_test.cpp'
+        PassPattern = 'PASS_00a00250'
+    }
+    [pscustomobject]@{
+        Address = '00a16400'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a1/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a16400.cpp'
+        TestSource = '00/a1/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a16400_test.cpp'
+        PassPattern = 'PASS_00a16400'
+    }
+    [pscustomobject]@{
+        Address = '00a16800'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a1/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a16800.cpp'
+        TestSource = '00/a1/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a16800_test.cpp'
+        PassPattern = 'PASS_00a16800'
+    }
+    [pscustomobject]@{
+        Address = '00a28cb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28cb0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28cb0_test.cpp'
+        PassPattern = 'PASS_00a28cb0'
+    }
+    [pscustomobject]@{
+        Address = '00a28dc0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28dc0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28dc0_test.cpp'
+        PassPattern = 'PASS_00a28dc0'
+    }
+    [pscustomobject]@{
+        Address = '00a28e80'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28e80.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a28e80_test.cpp'
+        PassPattern = 'PASS_00a28e80'
+    }
+    [pscustomobject]@{
+        Address = '00a293f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a293f0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a293f0_test.cpp'
+        PassPattern = 'PASS_00a293f0'
+    }
+    [pscustomobject]@{
+        Address = '00a295d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a295d0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a295d0_test.cpp'
+        PassPattern = 'PASS_00a295d0'
+    }
+    [pscustomobject]@{
+        Address = '00a296c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a296c0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a296c0_test.cpp'
+        PassPattern = 'PASS_00a296c0'
+    }
+    [pscustomobject]@{
+        Address = '00a298f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a298f0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a298f0_test.cpp'
+        PassPattern = 'PASS_00a298f0'
+    }
+    [pscustomobject]@{
+        Address = '00a29bc0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a29bc0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a29bc0_test.cpp'
+        PassPattern = 'PASS_00a29bc0'
+    }
+    [pscustomobject]@{
+        Address = '00a29e20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a29e20.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a29e20_test.cpp'
+        PassPattern = 'PASS_00a29e20'
+    }
+    [pscustomobject]@{
+        Address = '00a2a090'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a2a090.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a2a090_test.cpp'
+        PassPattern = 'PASS_00a2a090'
+    }
+    [pscustomobject]@{
+        Address = '00a2b5b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a2b5b0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a2b5b0_test.cpp'
+        PassPattern = 'PASS_00a2b5b0'
+    }
+    [pscustomobject]@{
+        Address = '00a30a70'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30a70.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30a70_test.cpp'
+        PassPattern = 'PASS_00a30a70'
+    }
+    [pscustomobject]@{
+        Address = '00a30d80'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30d80.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30d80_test.cpp'
+        PassPattern = 'PASS_00a30d80'
+    }
+    [pscustomobject]@{
+        Address = '00a31a20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a31a20.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a31a20_test.cpp'
+        PassPattern = 'PASS_00a31a20'
+    }
+    [pscustomobject]@{
+        Address = '00a31ae0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a31ae0.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a31ae0_test.cpp'
+        PassPattern = 'PASS_00a31ae0'
+    }
+    [pscustomobject]@{
+        Address = '00a31b70'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a31b70.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a31b70_test.cpp'
+        PassPattern = 'PASS_00a31b70'
+    }
+    [pscustomobject]@{
+        Address = '00a31c40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a31c40.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a31c40_test.cpp'
+        PassPattern = 'PASS_00a31c40'
+    }
+    [pscustomobject]@{
+        Address = '00a36ec0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a36ec0.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a36ec0_test.cpp'
+        PassPattern = 'PASS_00a36ec0'
+    }
+    [pscustomobject]@{
+        Address = '00a3a300'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a3a300.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a3a300_test.cpp'
+        PassPattern = 'PASS_00a3a300'
+    }
+    [pscustomobject]@{
+        Address = '00a43240'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a43240.cpp'
+        TestSource = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a43240_test.cpp'
+        PassPattern = 'PASS_00a43240'
+    }
+    [pscustomobject]@{
+        Address = '00a43380'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a43380.cpp'
+        TestSource = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a43380_test.cpp'
+        PassPattern = 'PASS_00a43380'
+    }
+    [pscustomobject]@{
+        Address = '00a45810'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a45810.cpp'
+        TestSource = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a45810_test.cpp'
+        PassPattern = 'PASS_00a45810'
+    }
+    [pscustomobject]@{
+        Address = '00a45d20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a45d20.cpp'
+        TestSource = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a45d20_test.cpp'
+        PassPattern = 'PASS_00a45d20'
+    }
+    [pscustomobject]@{
+        Address = '00a45db0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a45db0.cpp'
+        TestSource = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a45db0_test.cpp'
+        PassPattern = 'PASS_00a45db0'
+    }
+    [pscustomobject]@{
+        Address = '00a48220'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a48220.cpp'
+        TestSource = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a48220_test.cpp'
+        PassPattern = 'PASS_00a48220'
+    }
+    [pscustomobject]@{
+        Address = '00a48520'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a48520.cpp'
+        TestSource = '00/a4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a48520_test.cpp'
+        PassPattern = 'PASS_00a48520'
+    }
+    [pscustomobject]@{
+        Address = '00a51890'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51890.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51890_test.cpp'
+        PassPattern = 'PASS_00a51890'
+    }
+    [pscustomobject]@{
+        Address = '00a51930'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51930.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a51930_test.cpp'
+        PassPattern = 'PASS_00a51930'
+    }
+    [pscustomobject]@{
+        Address = '00a519b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a519b0.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a519b0_test.cpp'
+        PassPattern = 'PASS_00a519b0'
+    }
+    [pscustomobject]@{
+        Address = '00a52b50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52b50.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52b50_test.cpp'
+        PassPattern = 'PASS_00a52b50'
+    }
+    [pscustomobject]@{
+        Address = '00a52c50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52c50.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52c50_test.cpp'
+        PassPattern = 'PASS_00a52c50'
+    }
+    [pscustomobject]@{
+        Address = '00a52ea0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52ea0.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a52ea0_test.cpp'
+        PassPattern = 'PASS_00a52ea0'
+    }
+    [pscustomobject]@{
+        Address = '00a530b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a530b0.cpp'
+        TestSource = '00/a5/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a530b0_test.cpp'
+        PassPattern = 'PASS_00a530b0'
+    }
+    [pscustomobject]@{
+        Address = '00a6e2f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6e2f0.cpp'
+        TestSource = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6e2f0_test.cpp'
+        PassPattern = 'PASS_00a6e2f0'
+    }
+    [pscustomobject]@{
+        Address = '00a6ea10'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6ea10.cpp'
+        TestSource = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6ea10_test.cpp'
+        PassPattern = 'PASS_00a6ea10'
+    }
+    [pscustomobject]@{
+        Address = '00a6eaa0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6eaa0.cpp'
+        TestSource = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6eaa0_test.cpp'
+        PassPattern = 'PASS_00a6eaa0'
+    }
+    [pscustomobject]@{
+        Address = '00a6eb70'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6eb70.cpp'
+        TestSource = '00/a6/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a6eb70_test.cpp'
+        PassPattern = 'PASS_00a6eb70'
+    }
+    [pscustomobject]@{
+        Address = '00a7c9a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a7/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a7c9a0.cpp'
+        TestSource = '00/a7/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a7c9a0_test.cpp'
+        PassPattern = 'PASS_00a7c9a0'
+    }
+    [pscustomobject]@{
+        Address = '00a7cb90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a7/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a7cb90.cpp'
+        TestSource = '00/a7/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a7cb90_test.cpp'
+        PassPattern = 'PASS_00a7cb90'
+    }
+    [pscustomobject]@{
+        Address = '00a7de50'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a7/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a7de50.cpp'
+        TestSource = '00/a7/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a7de50_test.cpp'
+        PassPattern = 'PASS_00a7de50'
+    }
+    [pscustomobject]@{
+        Address = '00a7f7d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a7/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a7f7d0.cpp'
+        TestSource = '00/a7/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a7f7d0_test.cpp'
+        PassPattern = 'PASS_00a7f7d0'
+    }
+    [pscustomobject]@{
+        Address = '00a8cfc0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8cfc0.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8cfc0_test.cpp'
+        PassPattern = 'PASS_00a8cfc0'
+    }
+    [pscustomobject]@{
+        Address = '00a8d200'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d200.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d200_test.cpp'
+        PassPattern = 'PASS_00a8d200'
+    }
+    [pscustomobject]@{
+        Address = '00a8d2a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d2a0.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d2a0_test.cpp'
+        PassPattern = 'PASS_00a8d2a0'
+    }
+    [pscustomobject]@{
+        Address = '00a8d330'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d330.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d330_test.cpp'
+        PassPattern = 'PASS_00a8d330'
+    }
+    [pscustomobject]@{
+        Address = '00a8d4e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d4e0.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d4e0_test.cpp'
+        PassPattern = 'PASS_00a8d4e0'
+    }
+    [pscustomobject]@{
+        Address = '00a8d980'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d980.cpp'
+        TestSource = '00/a8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8d980_test.cpp'
+        PassPattern = 'PASS_00a8d980'
+    }
+    [pscustomobject]@{
+        Address = '00a94260'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94260.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94260_test.cpp'
+        PassPattern = 'PASS_00a94260'
+    }
+    [pscustomobject]@{
+        Address = '00a94c70'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94c70.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94c70_test.cpp'
+        PassPattern = 'PASS_00a94c70'
+    }
+    [pscustomobject]@{
+        Address = '00a94ec0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94ec0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94ec0_test.cpp'
+        PassPattern = 'PASS_00a94ec0'
+    }
+    [pscustomobject]@{
+        Address = '00a94fa0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94fa0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a94fa0_test.cpp'
+        PassPattern = 'PASS_00a94fa0'
+    }
+    [pscustomobject]@{
+        Address = '00a95070'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a95070.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a95070_test.cpp'
+        PassPattern = 'PASS_00a95070'
+    }
+    [pscustomobject]@{
+        Address = '00a95140'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a95140.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a95140_test.cpp'
+        PassPattern = 'PASS_00a95140'
+    }
+    [pscustomobject]@{
+        Address = '00a95290'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a95290.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a95290_test.cpp'
+        PassPattern = 'PASS_00a95290'
+    }
+    [pscustomobject]@{
+        Address = '00a965a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a965a0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a965a0_test.cpp'
+        PassPattern = 'PASS_00a965a0'
+    }
+    [pscustomobject]@{
+        Address = '00a9a070'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a070.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a070_test.cpp'
+        PassPattern = 'PASS_00a9a070'
+    }
+    [pscustomobject]@{
+        Address = '00a9a0d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a0d0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a0d0_test.cpp'
+        PassPattern = 'PASS_00a9a0d0'
+    }
+    [pscustomobject]@{
+        Address = '00a9a350'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a350.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a350_test.cpp'
+        PassPattern = 'PASS_00a9a350'
+    }
+    [pscustomobject]@{
+        Address = '00a9a570'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a570.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9a570_test.cpp'
+        PassPattern = 'PASS_00a9a570'
+    }
+    [pscustomobject]@{
+        Address = '00a9cb60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9cb60.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9cb60_test.cpp'
+        PassPattern = 'PASS_00a9cb60'
+    }
+    [pscustomobject]@{
+        Address = '00a9cbc0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9cbc0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9cbc0_test.cpp'
+        PassPattern = 'PASS_00a9cbc0'
+    }
+    [pscustomobject]@{
+        Address = '00a9cc20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9cc20.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9cc20_test.cpp'
+        PassPattern = 'PASS_00a9cc20'
+    }
+    [pscustomobject]@{
+        Address = '00a9d0a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9d0a0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a9d0a0_test.cpp'
+        PassPattern = 'PASS_00a9d0a0'
+    }
+    [pscustomobject]@{
+        Address = '00aa4360'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aa4360.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aa4360_test.cpp'
+        PassPattern = 'PASS_00aa4360'
+    }
+    [pscustomobject]@{
+        Address = '00aa90a0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aa90a0.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aa90a0_test.cpp'
+        PassPattern = 'PASS_00aa90a0'
+    }
+    [pscustomobject]@{
+        Address = '00aaae30'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaae30.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaae30_test.cpp'
+        PassPattern = 'PASS_00aaae30'
+    }
+    [pscustomobject]@{
+        Address = '00aaae90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaae90.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaae90_test.cpp'
+        PassPattern = 'PASS_00aaae90'
+    }
+    [pscustomobject]@{
+        Address = '00aaaef0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaaef0.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaaef0_test.cpp'
+        PassPattern = 'PASS_00aaaef0'
+    }
+    [pscustomobject]@{
+        Address = '00aab260'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aab260.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aab260_test.cpp'
+        PassPattern = 'PASS_00aab260'
+    }
+    [pscustomobject]@{
+        Address = '00aac760'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aac760.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aac760_test.cpp'
+        PassPattern = 'PASS_00aac760'
+    }
+    [pscustomobject]@{
+        Address = '00aac870'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aac870.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aac870_test.cpp'
+        PassPattern = 'PASS_00aac870'
+    }
+    [pscustomobject]@{
+        Address = '00aacab0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aacab0.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aacab0_test.cpp'
+        PassPattern = 'PASS_00aacab0'
+    }
+    [pscustomobject]@{
+        Address = '00aaec40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaec40.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaec40_test.cpp'
+        PassPattern = 'PASS_00aaec40'
+    }
+    [pscustomobject]@{
+        Address = '00aaef80'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaef80.cpp'
+        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaef80_test.cpp'
+        PassPattern = 'PASS_00aaef80'
+    }
+    [pscustomobject]@{
+        Address = '00ab0a40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab0a40.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab0a40_test.cpp'
+        PassPattern = 'PASS_00ab0a40'
+    }
+    [pscustomobject]@{
+        Address = '00ab1280'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab1280.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab1280_test.cpp'
+        PassPattern = 'PASS_00ab1280'
+    }
+    [pscustomobject]@{
+        Address = '00ab2b40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab2b40.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab2b40_test.cpp'
+        PassPattern = 'PASS_00ab2b40'
+    }
+    [pscustomobject]@{
+        Address = '00abd8e0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abd8e0.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abd8e0_test.cpp'
+        PassPattern = 'PASS_00abd8e0'
+    }
+    [pscustomobject]@{
+        Address = '00abd960'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abd960.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abd960_test.cpp'
+        PassPattern = 'PASS_00abd960'
+    }
+    [pscustomobject]@{
+        Address = '00abd9c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abd9c0.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abd9c0_test.cpp'
+        PassPattern = 'PASS_00abd9c0'
+    }
+    [pscustomobject]@{
+        Address = '00abda60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abda60.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abda60_test.cpp'
+        PassPattern = 'PASS_00abda60'
+    }
+    [pscustomobject]@{
+        Address = '00abdbc0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abdbc0.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abdbc0_test.cpp'
+        PassPattern = 'PASS_00abdbc0'
+    }
+    [pscustomobject]@{
+        Address = '00abe440'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe440.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00abe440_test.cpp'
+        PassPattern = 'PASS_00abe440'
+    }
+    [pscustomobject]@{
+        Address = '00ac14b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac14b0.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac14b0_test.cpp'
+        PassPattern = 'PASS_00ac14b0'
+    }
+    [pscustomobject]@{
+        Address = '00ac1510'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1510.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1510_test.cpp'
+        PassPattern = 'PASS_00ac1510'
+    }
+    [pscustomobject]@{
+        Address = '00ac1a90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1a90.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1a90_test.cpp'
+        PassPattern = 'PASS_00ac1a90'
+    }
+    [pscustomobject]@{
+        Address = '00ac1b20'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1b20.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1b20_test.cpp'
+        PassPattern = 'PASS_00ac1b20'
+    }
+    [pscustomobject]@{
+        Address = '00ac1bb0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1bb0.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac1bb0_test.cpp'
+        PassPattern = 'PASS_00ac1bb0'
+    }
+    [pscustomobject]@{
+        Address = '00ac3850'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac3850.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ac3850_test.cpp'
+        PassPattern = 'PASS_00ac3850'
+    }
+    [pscustomobject]@{
+        Address = '00acfdf0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00acfdf0.cpp'
+        TestSource = '00/ac/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00acfdf0_test.cpp'
+        PassPattern = 'PASS_00acfdf0'
+    }
+    [pscustomobject]@{
+        Address = '00ad0ad0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ad/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ad0ad0.cpp'
+        TestSource = '00/ad/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ad0ad0_test.cpp'
+        PassPattern = 'PASS_00ad0ad0'
+    }
+    [pscustomobject]@{
+        Address = '00ad1f60'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ad/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ad1f60.cpp'
+        TestSource = '00/ad/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ad1f60_test.cpp'
+        PassPattern = 'PASS_00ad1f60'
+    }
+    [pscustomobject]@{
+        Address = '00ad2c70'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ad/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ad2c70.cpp'
+        TestSource = '00/ad/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ad2c70_test.cpp'
+        PassPattern = 'PASS_00ad2c70'
+    }
+    [pscustomobject]@{
+        Address = '00ae4c90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae4c90.cpp'
+        TestSource = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae4c90_test.cpp'
+        PassPattern = 'PASS_00ae4c90'
+    }
+    [pscustomobject]@{
+        Address = '00ae53b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae53b0.cpp'
+        TestSource = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ae53b0_test.cpp'
+        PassPattern = 'PASS_00ae53b0'
+    }
+    [pscustomobject]@{
+        Address = '00aec380'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aec380.cpp'
+        TestSource = '00/ae/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aec380_test.cpp'
+        PassPattern = 'PASS_00aec380'
+    }
+    [pscustomobject]@{
+        Address = '00af09b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/af/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00af09b0.cpp'
+        TestSource = '00/af/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00af09b0_test.cpp'
+        PassPattern = 'PASS_00af09b0'
+    }
+    [pscustomobject]@{
+        Address = '00b09870'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b09870.cpp'
+        TestSource = '00/b0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b09870_test.cpp'
+        PassPattern = 'PASS_00b09870'
+    }
+    [pscustomobject]@{
+        Address = '00b09c80'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b09c80.cpp'
+        TestSource = '00/b0/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b09c80_test.cpp'
+        PassPattern = 'PASS_00b09c80'
+    }
+    [pscustomobject]@{
+        Address = '00b2e050'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b2e050.cpp'
+        TestSource = '00/b2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b2e050_test.cpp'
+        PassPattern = 'PASS_00b2e050'
+    }
+    [pscustomobject]@{
+        Address = '00b2e390'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b2e390.cpp'
+        TestSource = '00/b2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b2e390_test.cpp'
+        PassPattern = 'PASS_00b2e390'
+    }
+    [pscustomobject]@{
+        Address = '00b2e870'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b2e870.cpp'
+        TestSource = '00/b2/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b2e870_test.cpp'
+        PassPattern = 'PASS_00b2e870'
+    }
+    [pscustomobject]@{
+        Address = '00b36840'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36840.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b36840_test.cpp'
+        PassPattern = 'PASS_00b36840'
+    }
+    [pscustomobject]@{
+        Address = '00b383b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b383b0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b383b0_test.cpp'
+        PassPattern = 'PASS_00b383b0'
+    }
+    [pscustomobject]@{
+        Address = '00b3e2b0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b3e2b0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b3e2b0_test.cpp'
+        PassPattern = 'PASS_00b3e2b0'
+    }
+    [pscustomobject]@{
+        Address = '00b3e5d0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b3e5d0.cpp'
+        TestSource = '00/b3/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b3e5d0_test.cpp'
+        PassPattern = 'PASS_00b3e5d0'
+    }
+    [pscustomobject]@{
+        Address = '00b43160'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b43160.cpp'
+        TestSource = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b43160_test.cpp'
+        PassPattern = 'PASS_00b43160'
+    }
+    [pscustomobject]@{
+        Address = '00b434c0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b434c0.cpp'
+        TestSource = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b434c0_test.cpp'
+        PassPattern = 'PASS_00b434c0'
+    }
+    [pscustomobject]@{
+        Address = '00b4b170'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b170.cpp'
+        TestSource = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b4b170_test.cpp'
+        PassPattern = 'PASS_00b4b170'
+    }
+    [pscustomobject]@{
+        Address = '00b82ba0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b82ba0.cpp'
+        TestSource = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b82ba0_test.cpp'
+        PassPattern = 'PASS_00b82ba0'
+    }
+    [pscustomobject]@{
+        Address = '00b83200'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b83200.cpp'
+        TestSource = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b83200_test.cpp'
+        PassPattern = 'PASS_00b83200'
+    }
+    [pscustomobject]@{
+        Address = '00b83440'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b83440.cpp'
+        TestSource = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b83440_test.cpp'
+        PassPattern = 'PASS_00b83440'
+    }
+    [pscustomobject]@{
+        Address = '00b95420'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b95420.cpp'
+        TestSource = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b95420_test.cpp'
+        PassPattern = 'PASS_00b95420'
+    }
+    [pscustomobject]@{
+        Address = '00b95c40'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b95c40.cpp'
+        TestSource = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b95c40_test.cpp'
+        PassPattern = 'PASS_00b95c40'
+    }
+    [pscustomobject]@{
+        Address = '00b96660'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b96660.cpp'
+        TestSource = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b96660_test.cpp'
+        PassPattern = 'PASS_00b96660'
+    }
+    [pscustomobject]@{
+        Address = '00cb9060'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/cb/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cb9060.cpp'
+        TestSource = '00/cb/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cb9060_test.cpp'
+        PassPattern = 'PASS_00cb9060'
+    }
+    [pscustomobject]@{
+        Address = '00cb9560'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/cb/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cb9560.cpp'
+        TestSource = '00/cb/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cb9560_test.cpp'
+        PassPattern = 'PASS_00cb9560'
+    }
+    [pscustomobject]@{
+        Address = '00cb95f0'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/cb/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cb95f0.cpp'
+        TestSource = '00/cb/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cb95f0_test.cpp'
+        PassPattern = 'PASS_00cb95f0'
+    }
+    [pscustomobject]@{
+        Address = '00cba320'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/cb/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cba320.cpp'
+        TestSource = '00/cb/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cba320_test.cpp'
+        PassPattern = 'PASS_00cba320'
+    }
+    [pscustomobject]@{
+        Address = '0041bd20'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041bd20.cpp'
+        TestSource = '00/41/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041bd20_test.cpp'
+        PassPattern = 'PASS_0041bd20'
+    }
+    [pscustomobject]@{
+        Address = '005d9e50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005d9e50.cpp'
+        TestSource = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005d9e50_test.cpp'
+        PassPattern = 'PASS_005d9e50'
+    }
+    [pscustomobject]@{
+        Address = '005e00d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005e00d0.cpp'
+        TestSource = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005e00d0_test.cpp'
+        PassPattern = 'PASS_005e00d0'
+    }
+    [pscustomobject]@{
+        Address = '005e8ad0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005e8ad0.cpp'
+        TestSource = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005e8ad0_test.cpp'
+        PassPattern = 'PASS_005e8ad0'
+    }
+    [pscustomobject]@{
+        Address = '0069c5c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/69/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0069c5c0.cpp'
+        TestSource = '00/69/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0069c5c0_test.cpp'
+        PassPattern = 'PASS_0069c5c0'
+    }
+    [pscustomobject]@{
+        Address = '006ade40'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ade40.cpp'
+        TestSource = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ade40_test.cpp'
+        PassPattern = 'PASS_006ade40'
+    }
+    [pscustomobject]@{
+        Address = '006ca6c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ca6c0.cpp'
+        TestSource = '00/6c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ca6c0_test.cpp'
+        PassPattern = 'PASS_006ca6c0'
+    }
+    [pscustomobject]@{
+        Address = '006ef4c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ef4c0.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ef4c0_test.cpp'
+        PassPattern = 'PASS_006ef4c0'
+    }
+    [pscustomobject]@{
+        Address = '00732550'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732550.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732550_test.cpp'
+        PassPattern = 'PASS_00732550'
+    }
+    [pscustomobject]@{
+        Address = '00779b10'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00779b10.cpp'
+        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00779b10_test.cpp'
+        PassPattern = 'PASS_00779b10'
+    }
+    [pscustomobject]@{
+        Address = '00781280'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00781280.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00781280_test.cpp'
+        PassPattern = 'PASS_00781280'
+    }
+    [pscustomobject]@{
+        Address = '009b1ed0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/9b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009b1ed0.cpp'
+        TestSource = '00/9b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009b1ed0_test.cpp'
+        PassPattern = 'PASS_009b1ed0'
+    }
+    [pscustomobject]@{
+        Address = '009c9ee0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c9ee0.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c9ee0_test.cpp'
+        PassPattern = 'PASS_009c9ee0'
+    }
+    [pscustomobject]@{
+        Address = '009c9f40'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c9f40.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c9f40_test.cpp'
+        PassPattern = 'PASS_009c9f40'
+    }
+    [pscustomobject]@{
+        Address = '00a29b80'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29b80.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29b80_test.cpp'
+        PassPattern = 'PASS_00a29b80'
+    }
+    [pscustomobject]@{
+        Address = '00a29ce0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29ce0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29ce0_test.cpp'
+        PassPattern = 'PASS_00a29ce0'
+    }
+    [pscustomobject]@{
+        Address = '00a3c900'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a3/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a3c900.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a3c900_test.cpp'
+        PassPattern = 'PASS_00a3c900'
+    }
+    [pscustomobject]@{
+        Address = '00a3c990'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a3/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a3c990.cpp'
+        TestSource = '00/a3/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a3c990_test.cpp'
+        PassPattern = 'PASS_00a3c990'
+    }
+    [pscustomobject]@{
+        Address = '00a433f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a4/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a433f0.cpp'
+        TestSource = '00/a4/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a433f0_test.cpp'
+        PassPattern = 'PASS_00a433f0'
+    }
+    [pscustomobject]@{
+        Address = '00a6af40'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a6/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a6af40.cpp'
+        TestSource = '00/a6/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a6af40_test.cpp'
+        PassPattern = 'PASS_00a6af40'
+    }
+    [pscustomobject]@{
+        Address = '00b91480'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/b9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b91480.cpp'
+        TestSource = '00/b9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b91480_test.cpp'
+        PassPattern = 'PASS_00b91480'
+    }
+    [pscustomobject]@{
+        Address = '004855a3'
+        Module = 'CGuiControlTreePane'
+        Source = '00/48/CGuiControlTreePane_SortTreeRecursively_004855a3.cpp'
+        TestSource = '00/48/CGuiControlTreePane_SortTreeRecursively_004855a3_test.cpp'
+        PassPattern = 'PASS_004855a3'
+    }
+    [pscustomobject]@{
+        Address = '00493911'
+        Module = 'CGuiControlTreePane'
+        Source = '00/49/CGuiControlTreePane_SortTreeRecursively_00493911.cpp'
+        TestSource = '00/49/CGuiControlTreePane_SortTreeRecursively_00493911_test.cpp'
+        PassPattern = 'PASS_00493911'
+    }
+    [pscustomobject]@{
+        Address = '0057f58e'
+        Module = 'CGuiControlTreePane'
+        Source = '00/57/CGuiControlTreePane_SortTreeRecursively_0057f58e.cpp'
+        TestSource = '00/57/CGuiControlTreePane_SortTreeRecursively_0057f58e_test.cpp'
+        PassPattern = 'PASS_0057f58e'
+    }
+    [pscustomobject]@{
+        Address = '0057f5e1'
+        Module = 'CGuiControlTreePane'
+        Source = '00/57/CGuiControlTreePane_SortTreeRecursively_0057f5e1.cpp'
+        TestSource = '00/57/CGuiControlTreePane_SortTreeRecursively_0057f5e1_test.cpp'
+        PassPattern = 'PASS_0057f5e1'
+    }
+    [pscustomobject]@{
+        Address = '00592ccd'
+        Module = 'CGuiControlTreePane'
+        Source = '00/59/CGuiControlTreePane_SortTreeRecursively_00592ccd.cpp'
+        TestSource = '00/59/CGuiControlTreePane_SortTreeRecursively_00592ccd_test.cpp'
+        PassPattern = 'PASS_00592ccd'
+    }
+    [pscustomobject]@{
+        Address = '0043f2d0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/43/CGuiControlTreePane_SortTreeRecursively_0043f2d0.cpp'
+        TestSource = '00/43/CGuiControlTreePane_SortTreeRecursively_0043f2d0_test.cpp'
+        PassPattern = 'PASS_0043f2d0'
+    }
+    [pscustomobject]@{
+        Address = '004042d0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/40/CGuiControlTreePane_SortTreeRecursively_004042d0.cpp'
+        TestSource = '00/40/CGuiControlTreePane_SortTreeRecursively_004042d0_test.cpp'
+        PassPattern = 'PASS_004042d0'
+    }
+    [pscustomobject]@{
+        Address = '0044b770'
+        Module = 'CGuiControlTreePane'
+        Source = '00/44/CGuiControlTreePane_SortTreeRecursively_0044b770.cpp'
+        TestSource = '00/44/CGuiControlTreePane_SortTreeRecursively_0044b770_test.cpp'
+        PassPattern = 'PASS_0044b770'
+    }
+    [pscustomobject]@{
+        Address = '0048c700'
+        Module = 'CGuiControlTreePane'
+        Source = '00/48/CGuiControlTreePane_SortTreeRecursively_0048c700.cpp'
+        TestSource = '00/48/CGuiControlTreePane_SortTreeRecursively_0048c700_test.cpp'
+        PassPattern = 'PASS_0048c700'
+    }
+    [pscustomobject]@{
+        Address = '004a9d30'
+        Module = 'CGuiControlTreePane'
+        Source = '00/4a/CGuiControlTreePane_SortTreeRecursively_004a9d30.cpp'
+        TestSource = '00/4a/CGuiControlTreePane_SortTreeRecursively_004a9d30_test.cpp'
+        PassPattern = 'PASS_004a9d30'
+    }
+    [pscustomobject]@{
+        Address = '004a9fa0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/4a/CGuiControlTreePane_SortTreeRecursively_004a9fa0.cpp'
+        TestSource = '00/4a/CGuiControlTreePane_SortTreeRecursively_004a9fa0_test.cpp'
+        PassPattern = 'PASS_004a9fa0'
+    }
+    [pscustomobject]@{
+        Address = '004c2990'
+        Module = 'CGuiControlTreePane'
+        Source = '00/4c/CGuiControlTreePane_SortTreeRecursively_004c2990.cpp'
+        TestSource = '00/4c/CGuiControlTreePane_SortTreeRecursively_004c2990_test.cpp'
+        PassPattern = 'PASS_004c2990'
+    }
+    [pscustomobject]@{
+        Address = '004cbaa0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/4c/CGuiControlTreePane_SortTreeRecursively_004cbaa0.cpp'
+        TestSource = '00/4c/CGuiControlTreePane_SortTreeRecursively_004cbaa0_test.cpp'
+        PassPattern = 'PASS_004cbaa0'
+    }
+    [pscustomobject]@{
+        Address = '00510df0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/51/CGuiControlTreePane_SortTreeRecursively_00510df0.cpp'
+        TestSource = '00/51/CGuiControlTreePane_SortTreeRecursively_00510df0_test.cpp'
+        PassPattern = 'PASS_00510df0'
+    }
+    [pscustomobject]@{
+        Address = '0052d520'
+        Module = 'CGuiControlTreePane'
+        Source = '00/52/CGuiControlTreePane_SortTreeRecursively_0052d520.cpp'
+        TestSource = '00/52/CGuiControlTreePane_SortTreeRecursively_0052d520_test.cpp'
+        PassPattern = 'PASS_0052d520'
+    }
+    [pscustomobject]@{
+        Address = '00554ef0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/55/CGuiControlTreePane_SortTreeRecursively_00554ef0.cpp'
+        TestSource = '00/55/CGuiControlTreePane_SortTreeRecursively_00554ef0_test.cpp'
+        PassPattern = 'PASS_00554ef0'
+    }
+    [pscustomobject]@{
+        Address = '00557520'
+        Module = 'CGuiControlTreePane'
+        Source = '00/55/CGuiControlTreePane_SortTreeRecursively_00557520.cpp'
+        TestSource = '00/55/CGuiControlTreePane_SortTreeRecursively_00557520_test.cpp'
+        PassPattern = 'PASS_00557520'
+    }
+    [pscustomobject]@{
+        Address = '0055c280'
+        Module = 'CGuiControlTreePane'
+        Source = '00/55/CGuiControlTreePane_SortTreeRecursively_0055c280.cpp'
+        TestSource = '00/55/CGuiControlTreePane_SortTreeRecursively_0055c280_test.cpp'
+        PassPattern = 'PASS_0055c280'
+    }
+    [pscustomobject]@{
+        Address = '00613b50'
+        Module = 'CGuiControlTreePane'
+        Source = '00/61/CGuiControlTreePane_SortTreeRecursively_00613b50.cpp'
+        TestSource = '00/61/CGuiControlTreePane_SortTreeRecursively_00613b50_test.cpp'
+        PassPattern = 'PASS_00613b50'
+    }
+    [pscustomobject]@{
+        Address = '00613b90'
+        Module = 'CGuiControlTreePane'
+        Source = '00/61/CGuiControlTreePane_SortTreeRecursively_00613b90.cpp'
+        TestSource = '00/61/CGuiControlTreePane_SortTreeRecursively_00613b90_test.cpp'
+        PassPattern = 'PASS_00613b90'
+    }
+    [pscustomobject]@{
+        Address = '00613c00'
+        Module = 'CGuiControlTreePane'
+        Source = '00/61/CGuiControlTreePane_SortTreeRecursively_00613c00.cpp'
+        TestSource = '00/61/CGuiControlTreePane_SortTreeRecursively_00613c00_test.cpp'
+        PassPattern = 'PASS_00613c00'
+    }
+    [pscustomobject]@{
+        Address = '00613c40'
+        Module = 'CGuiControlTreePane'
+        Source = '00/61/CGuiControlTreePane_SortTreeRecursively_00613c40.cpp'
+        TestSource = '00/61/CGuiControlTreePane_SortTreeRecursively_00613c40_test.cpp'
+        PassPattern = 'PASS_00613c40'
+    }
+    [pscustomobject]@{
+        Address = '0063f0e0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/63/CGuiControlTreePane_SortTreeRecursively_0063f0e0.cpp'
+        TestSource = '00/63/CGuiControlTreePane_SortTreeRecursively_0063f0e0_test.cpp'
+        PassPattern = 'PASS_0063f0e0'
+    }
+    [pscustomobject]@{
+        Address = '0069c800'
+        Module = 'CGuiControlTreePane'
+        Source = '00/69/CGuiControlTreePane_SortTreeRecursively_0069c800.cpp'
+        TestSource = '00/69/CGuiControlTreePane_SortTreeRecursively_0069c800_test.cpp'
+        PassPattern = 'PASS_0069c800'
+    }
+    [pscustomobject]@{
+        Address = '006da430'
+        Module = 'CGuiControlTreePane'
+        Source = '00/6d/CGuiControlTreePane_SortTreeRecursively_006da430.cpp'
+        TestSource = '00/6d/CGuiControlTreePane_SortTreeRecursively_006da430_test.cpp'
+        PassPattern = 'PASS_006da430'
+    }
+    [pscustomobject]@{
+        Address = '006efd40'
+        Module = 'CGuiControlTreePane'
+        Source = '00/6e/CGuiControlTreePane_SortTreeRecursively_006efd40.cpp'
+        TestSource = '00/6e/CGuiControlTreePane_SortTreeRecursively_006efd40_test.cpp'
+        PassPattern = 'PASS_006efd40'
+    }
+    [pscustomobject]@{
+        Address = '006fe550'
+        Module = 'CGuiControlTreePane'
+        Source = '00/6f/CGuiControlTreePane_SortTreeRecursively_006fe550.cpp'
+        TestSource = '00/6f/CGuiControlTreePane_SortTreeRecursively_006fe550_test.cpp'
+        PassPattern = 'PASS_006fe550'
+    }
+    [pscustomobject]@{
+        Address = '0070a2e0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/70/CGuiControlTreePane_SortTreeRecursively_0070a2e0.cpp'
+        TestSource = '00/70/CGuiControlTreePane_SortTreeRecursively_0070a2e0_test.cpp'
+        PassPattern = 'PASS_0070a2e0'
+    }
+    [pscustomobject]@{
+        Address = '00718be0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/71/CGuiControlTreePane_SortTreeRecursively_00718be0.cpp'
+        TestSource = '00/71/CGuiControlTreePane_SortTreeRecursively_00718be0_test.cpp'
+        PassPattern = 'PASS_00718be0'
+    }
+    [pscustomobject]@{
+        Address = '00729860'
+        Module = 'CGuiControlTreePane'
+        Source = '00/72/CGuiControlTreePane_SortTreeRecursively_00729860.cpp'
+        TestSource = '00/72/CGuiControlTreePane_SortTreeRecursively_00729860_test.cpp'
+        PassPattern = 'PASS_00729860'
+    }
+    [pscustomobject]@{
+        Address = '00758670'
+        Module = 'CGuiControlTreePane'
+        Source = '00/75/CGuiControlTreePane_SortTreeRecursively_00758670.cpp'
+        TestSource = '00/75/CGuiControlTreePane_SortTreeRecursively_00758670_test.cpp'
+        PassPattern = 'PASS_00758670'
+    }
+    [pscustomobject]@{
+        Address = '00784ed0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/78/CGuiControlTreePane_SortTreeRecursively_00784ed0.cpp'
+        TestSource = '00/78/CGuiControlTreePane_SortTreeRecursively_00784ed0_test.cpp'
+        PassPattern = 'PASS_00784ed0'
+    }
+    [pscustomobject]@{
+        Address = '007a6090'
+        Module = 'CGuiControlTreePane'
+        Source = '00/7a/CGuiControlTreePane_SortTreeRecursively_007a6090.cpp'
+        TestSource = '00/7a/CGuiControlTreePane_SortTreeRecursively_007a6090_test.cpp'
+        PassPattern = 'PASS_007a6090'
+    }
+    [pscustomobject]@{
+        Address = '007b7430'
+        Module = 'CGuiControlTreePane'
+        Source = '00/7b/CGuiControlTreePane_SortTreeRecursively_007b7430.cpp'
+        TestSource = '00/7b/CGuiControlTreePane_SortTreeRecursively_007b7430_test.cpp'
+        PassPattern = 'PASS_007b7430'
+    }
+    [pscustomobject]@{
+        Address = '007e6ca0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/7e/CGuiControlTreePane_SortTreeRecursively_007e6ca0.cpp'
+        TestSource = '00/7e/CGuiControlTreePane_SortTreeRecursively_007e6ca0_test.cpp'
+        PassPattern = 'PASS_007e6ca0'
+    }
+    [pscustomobject]@{
+        Address = '00814760'
+        Module = 'CGuiControlTreePane'
+        Source = '00/81/CGuiControlTreePane_SortTreeRecursively_00814760.cpp'
+        TestSource = '00/81/CGuiControlTreePane_SortTreeRecursively_00814760_test.cpp'
+        PassPattern = 'PASS_00814760'
+    }
+    [pscustomobject]@{
+        Address = '008245c0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/82/CGuiControlTreePane_SortTreeRecursively_008245c0.cpp'
+        TestSource = '00/82/CGuiControlTreePane_SortTreeRecursively_008245c0_test.cpp'
+        PassPattern = 'PASS_008245c0'
+    }
+    [pscustomobject]@{
+        Address = '00827c80'
+        Module = 'CGuiControlTreePane'
+        Source = '00/82/CGuiControlTreePane_SortTreeRecursively_00827c80.cpp'
+        TestSource = '00/82/CGuiControlTreePane_SortTreeRecursively_00827c80_test.cpp'
+        PassPattern = 'PASS_00827c80'
+    }
+    [pscustomobject]@{
+        Address = '00850190'
+        Module = 'CGuiControlTreePane'
+        Source = '00/85/CGuiControlTreePane_SortTreeRecursively_00850190.cpp'
+        TestSource = '00/85/CGuiControlTreePane_SortTreeRecursively_00850190_test.cpp'
+        PassPattern = 'PASS_00850190'
+    }
+    [pscustomobject]@{
+        Address = '00874bd0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/87/CGuiControlTreePane_SortTreeRecursively_00874bd0.cpp'
+        TestSource = '00/87/CGuiControlTreePane_SortTreeRecursively_00874bd0_test.cpp'
+        PassPattern = 'PASS_00874bd0'
+    }
+    [pscustomobject]@{
+        Address = '008f9de0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/8f/CGuiControlTreePane_SortTreeRecursively_008f9de0.cpp'
+        TestSource = '00/8f/CGuiControlTreePane_SortTreeRecursively_008f9de0_test.cpp'
+        PassPattern = 'PASS_008f9de0'
+    }
+    [pscustomobject]@{
+        Address = '0090b600'
+        Module = 'CGuiControlTreePane'
+        Source = '00/90/CGuiControlTreePane_SortTreeRecursively_0090b600.cpp'
+        TestSource = '00/90/CGuiControlTreePane_SortTreeRecursively_0090b600_test.cpp'
+        PassPattern = 'PASS_0090b600'
+    }
+    [pscustomobject]@{
+        Address = '00936890'
+        Module = 'CGuiControlTreePane'
+        Source = '00/93/CGuiControlTreePane_SortTreeRecursively_00936890.cpp'
+        TestSource = '00/93/CGuiControlTreePane_SortTreeRecursively_00936890_test.cpp'
+        PassPattern = 'PASS_00936890'
+    }
+    [pscustomobject]@{
+        Address = '009c63e0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/9c/CGuiControlTreePane_SortTreeRecursively_009c63e0.cpp'
+        TestSource = '00/9c/CGuiControlTreePane_SortTreeRecursively_009c63e0_test.cpp'
+        PassPattern = 'PASS_009c63e0'
+    }
+    [pscustomobject]@{
+        Address = '009f9690'
+        Module = 'CGuiControlTreePane'
+        Source = '00/9f/CGuiControlTreePane_SortTreeRecursively_009f9690.cpp'
+        TestSource = '00/9f/CGuiControlTreePane_SortTreeRecursively_009f9690_test.cpp'
+        PassPattern = 'PASS_009f9690'
+    }
+    [pscustomobject]@{
+        Address = '00a168e0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/a1/CGuiControlTreePane_SortTreeRecursively_00a168e0.cpp'
+        TestSource = '00/a1/CGuiControlTreePane_SortTreeRecursively_00a168e0_test.cpp'
+        PassPattern = 'PASS_00a168e0'
+    }
+    [pscustomobject]@{
+        Address = '00a20ed0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/a2/CGuiControlTreePane_SortTreeRecursively_00a20ed0.cpp'
+        TestSource = '00/a2/CGuiControlTreePane_SortTreeRecursively_00a20ed0_test.cpp'
+        PassPattern = 'PASS_00a20ed0'
+    }
+    [pscustomobject]@{
+        Address = '00a375d0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/a3/CGuiControlTreePane_SortTreeRecursively_00a375d0.cpp'
+        TestSource = '00/a3/CGuiControlTreePane_SortTreeRecursively_00a375d0_test.cpp'
+        PassPattern = 'PASS_00a375d0'
+    }
+    [pscustomobject]@{
+        Address = '00a61c40'
+        Module = 'CGuiControlTreePane'
+        Source = '00/a6/CGuiControlTreePane_SortTreeRecursively_00a61c40.cpp'
+        TestSource = '00/a6/CGuiControlTreePane_SortTreeRecursively_00a61c40_test.cpp'
+        PassPattern = 'PASS_00a61c40'
+    }
+    [pscustomobject]@{
+        Address = '00a7e3b0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/a7/CGuiControlTreePane_SortTreeRecursively_00a7e3b0.cpp'
+        TestSource = '00/a7/CGuiControlTreePane_SortTreeRecursively_00a7e3b0_test.cpp'
+        PassPattern = 'PASS_00a7e3b0'
+    }
+    [pscustomobject]@{
+        Address = '00af63d0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/af/CGuiControlTreePane_SortTreeRecursively_00af63d0.cpp'
+        TestSource = '00/af/CGuiControlTreePane_SortTreeRecursively_00af63d0_test.cpp'
+        PassPattern = 'PASS_00af63d0'
+    }
+    [pscustomobject]@{
+        Address = '00b09d50'
+        Module = 'CGuiControlTreePane'
+        Source = '00/b0/CGuiControlTreePane_SortTreeRecursively_00b09d50.cpp'
+        TestSource = '00/b0/CGuiControlTreePane_SortTreeRecursively_00b09d50_test.cpp'
+        PassPattern = 'PASS_00b09d50'
+    }
+    [pscustomobject]@{
+        Address = '00b43620'
+        Module = 'CGuiControlTreePane'
+        Source = '00/b4/CGuiControlTreePane_SortTreeRecursively_00b43620.cpp'
+        TestSource = '00/b4/CGuiControlTreePane_SortTreeRecursively_00b43620_test.cpp'
+        PassPattern = 'PASS_00b43620'
+    }
+    [pscustomobject]@{
+        Address = '00bda920'
+        Module = 'CGuiControlTreePane'
+        Source = '00/bd/CGuiControlTreePane_SortTreeRecursively_00bda920.cpp'
+        TestSource = '00/bd/CGuiControlTreePane_SortTreeRecursively_00bda920_test.cpp'
+        PassPattern = 'PASS_00bda920'
+    }
+    [pscustomobject]@{
+        Address = '007b3fa0'
+        Module = 'CBankFileAsyncData'
+        Source = '00/7b/CBankFileAsyncData_FreeBuffer_007b3fa0.cpp'
+        TestSource = '00/7b/CBankFileAsyncData_FreeBuffer_007b3fa0_test.cpp'
+        PassPattern = 'PASS_007b3fa0'
+    }
+    [pscustomobject]@{
+        Address = '00419365'
+        Module = 'CAssoc'
+        Source = '00/41/CAssoc_scalardeletingdestructor_00419365.cpp'
+        TestSource = '00/41/CAssoc_scalardeletingdestructor_00419365_test.cpp'
+        PassPattern = 'PASS_00419365'
+    }
+    [pscustomobject]@{
+        Address = '00433d19'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_00433d19.cpp'
+        TestSource = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_00433d19_test.cpp'
+        PassPattern = 'PASS_00433d19'
+    }
+    [pscustomobject]@{
+        Address = '004dbee7'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004dbee7.cpp'
+        TestSource = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004dbee7_test.cpp'
+        PassPattern = 'PASS_004dbee7'
+    }
+    [pscustomobject]@{
+        Address = '00428d39'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_00428d39.cpp'
+        TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_00428d39_test.cpp'
+        PassPattern = 'PASS_00428d39'
+    }
+    [pscustomobject]@{
+        Address = '0042feac'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042feac.cpp'
+        TestSource = '00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042feac_test.cpp'
+        PassPattern = 'PASS_0042feac'
+    }
+    [pscustomobject]@{
+        Address = '004549ce'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/45/CLandscapeBackgroundPatch_vectordeletingdestructor_004549ce.cpp'
+        TestSource = '00/45/CLandscapeBackgroundPatch_vectordeletingdestructor_004549ce_test.cpp'
+        PassPattern = 'PASS_004549ce'
+    }
+    [pscustomobject]@{
+        Address = '0045896b'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/45/CLandscapeBackgroundPatch_vectordeletingdestructor_0045896b.cpp'
+        TestSource = '00/45/CLandscapeBackgroundPatch_vectordeletingdestructor_0045896b_test.cpp'
+        PassPattern = 'PASS_0045896b'
+    }
+    [pscustomobject]@{
+        Address = '004592ec'
+        Module = 'CAssoc'
+        Source = '00/45/CAssoc_scalardeletingdestructor_004592ec.cpp'
+        TestSource = '00/45/CAssoc_scalardeletingdestructor_004592ec_test.cpp'
+        PassPattern = 'PASS_004592ec'
+    }
+    [pscustomobject]@{
+        Address = '00459407'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/45/CLandscapeBackgroundPatch_vectordeletingdestructor_00459407.cpp'
+        TestSource = '00/45/CLandscapeBackgroundPatch_vectordeletingdestructor_00459407_test.cpp'
+        PassPattern = 'PASS_00459407'
+    }
+    [pscustomobject]@{
+        Address = '0045943c'
+        Module = 'CAssoc'
+        Source = '00/45/CAssoc_scalardeletingdestructor_0045943c.cpp'
+        TestSource = '00/45/CAssoc_scalardeletingdestructor_0045943c_test.cpp'
+        PassPattern = 'PASS_0045943c'
+    }
+    [pscustomobject]@{
+        Address = '004594b1'
+        Module = 'CAssoc'
+        Source = '00/45/CAssoc_scalardeletingdestructor_004594b1.cpp'
+        TestSource = '00/45/CAssoc_scalardeletingdestructor_004594b1_test.cpp'
+        PassPattern = 'PASS_004594b1'
+    }
+    [pscustomobject]@{
+        Address = '004594e6'
+        Module = 'CAssoc'
+        Source = '00/45/CAssoc_scalardeletingdestructor_004594e6.cpp'
+        TestSource = '00/45/CAssoc_scalardeletingdestructor_004594e6_test.cpp'
+        PassPattern = 'PASS_004594e6'
+    }
+    [pscustomobject]@{
+        Address = '004852d1'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_004852d1.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_004852d1_test.cpp'
+        PassPattern = 'PASS_004852d1'
+    }
+    [pscustomobject]@{
+        Address = '004d6931'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004d6931.cpp'
+        TestSource = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004d6931_test.cpp'
+        PassPattern = 'PASS_004d6931'
+    }
+    [pscustomobject]@{
+        Address = '004d796e'
+        Module = 'CAssoc'
+        Source = '00/4d/CAssoc_scalardeletingdestructor_004d796e.cpp'
+        TestSource = '00/4d/CAssoc_scalardeletingdestructor_004d796e_test.cpp'
+        PassPattern = 'PASS_004d796e'
+    }
+    [pscustomobject]@{
+        Address = '004e2d54'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e2d54.cpp'
+        TestSource = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e2d54_test.cpp'
+        PassPattern = 'PASS_004e2d54'
+    }
+    [pscustomobject]@{
+        Address = '00578cb2'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/57/CLandscapeBackgroundPatch_vectordeletingdestructor_00578cb2.cpp'
+        TestSource = '00/57/CLandscapeBackgroundPatch_vectordeletingdestructor_00578cb2_test.cpp'
+        PassPattern = 'PASS_00578cb2'
+    }
+    [pscustomobject]@{
+        Address = '0057a28b'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/57/CLandscapeBackgroundPatch_vectordeletingdestructor_0057a28b.cpp'
+        TestSource = '00/57/CLandscapeBackgroundPatch_vectordeletingdestructor_0057a28b_test.cpp'
+        PassPattern = 'PASS_0057a28b'
+    }
+    [pscustomobject]@{
+        Address = '0057f1c7'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/57/CLandscapeBackgroundPatch_vectordeletingdestructor_0057f1c7.cpp'
+        TestSource = '00/57/CLandscapeBackgroundPatch_vectordeletingdestructor_0057f1c7_test.cpp'
+        PassPattern = 'PASS_0057f1c7'
+    }
+    [pscustomobject]@{
+        Address = '0059b641'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/59/CLandscapeBackgroundPatch_vectordeletingdestructor_0059b641.cpp'
+        TestSource = '00/59/CLandscapeBackgroundPatch_vectordeletingdestructor_0059b641_test.cpp'
+        PassPattern = 'PASS_0059b641'
+    }
+    [pscustomobject]@{
+        Address = '005d8135'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/5d/CLandscapeBackgroundPatch_vectordeletingdestructor_005d8135.cpp'
+        TestSource = '00/5d/CLandscapeBackgroundPatch_vectordeletingdestructor_005d8135_test.cpp'
+        PassPattern = 'PASS_005d8135'
+    }
+    [pscustomobject]@{
+        Address = '00656ecc'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/65/CLandscapeBackgroundPatch_vectordeletingdestructor_00656ecc.cpp'
+        TestSource = '00/65/CLandscapeBackgroundPatch_vectordeletingdestructor_00656ecc_test.cpp'
+        PassPattern = 'PASS_00656ecc'
+    }
+    [pscustomobject]@{
+        Address = '0065e3a3'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/65/CLandscapeBackgroundPatch_vectordeletingdestructor_0065e3a3.cpp'
+        TestSource = '00/65/CLandscapeBackgroundPatch_vectordeletingdestructor_0065e3a3_test.cpp'
+        PassPattern = 'PASS_0065e3a3'
+    }
+    [pscustomobject]@{
+        Address = '007be696'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/7b/CLandscapeBackgroundPatch_vectordeletingdestructor_007be696.cpp'
+        TestSource = '00/7b/CLandscapeBackgroundPatch_vectordeletingdestructor_007be696_test.cpp'
+        PassPattern = 'PASS_007be696'
+    }
+    [pscustomobject]@{
+        Address = '00cd2ccc'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cd2ccc.cpp'
+        TestSource = '00/cd/CLandscapeBackgroundPatch_vectordeletingdestructor_00cd2ccc_test.cpp'
+        PassPattern = 'PASS_00cd2ccc'
+    }
+    [pscustomobject]@{
+        Address = '00440650'
+        Module = 'CActiveFile'
+        Source = '00/44/CActiveFile_OnReadFinished_00440650.cpp'
+        TestSource = '00/44/CActiveFile_OnReadFinished_00440650_test.cpp'
+        PassPattern = 'PASS_00440650'
+    }
+    [pscustomobject]@{
+        Address = '004406a0'
+        Module = 'CActiveFile'
+        Source = '00/44/CActiveFile_OnReadFinished_004406a0.cpp'
+        TestSource = '00/44/CActiveFile_OnReadFinished_004406a0_test.cpp'
+        PassPattern = 'PASS_004406a0'
+    }
+    [pscustomobject]@{
+        Address = '004ab610'
+        Module = 'CActiveFile'
+        Source = '00/4a/CActiveFile_OnReadFinished_004ab610.cpp'
+        TestSource = '00/4a/CActiveFile_OnReadFinished_004ab610_test.cpp'
+        PassPattern = 'PASS_004ab610'
+    }
+    [pscustomobject]@{
+        Address = '004ad5a0'
+        Module = 'CActiveFile'
+        Source = '00/4a/CActiveFile_OnReadFinished_004ad5a0.cpp'
+        TestSource = '00/4a/CActiveFile_OnReadFinished_004ad5a0_test.cpp'
+        PassPattern = 'PASS_004ad5a0'
+    }
+    [pscustomobject]@{
+        Address = '004b96f0'
+        Module = 'CActiveFile'
+        Source = '00/4b/CActiveFile_OnReadFinished_004b96f0.cpp'
+        TestSource = '00/4b/CActiveFile_OnReadFinished_004b96f0_test.cpp'
+        PassPattern = 'PASS_004b96f0'
+    }
+    [pscustomobject]@{
+        Address = '004b9a40'
+        Module = 'CActiveFile'
+        Source = '00/4b/CActiveFile_OnReadFinished_004b9a40.cpp'
+        TestSource = '00/4b/CActiveFile_OnReadFinished_004b9a40_test.cpp'
+        PassPattern = 'PASS_004b9a40'
+    }
+    [pscustomobject]@{
+        Address = '004b9af0'
+        Module = 'CActiveFile'
+        Source = '00/4b/CActiveFile_OnReadFinished_004b9af0.cpp'
+        TestSource = '00/4b/CActiveFile_OnReadFinished_004b9af0_test.cpp'
+        PassPattern = 'PASS_004b9af0'
+    }
+    [pscustomobject]@{
+        Address = '004b9b60'
+        Module = 'CActiveFile'
+        Source = '00/4b/CActiveFile_OnReadFinished_004b9b60.cpp'
+        TestSource = '00/4b/CActiveFile_OnReadFinished_004b9b60_test.cpp'
+        PassPattern = 'PASS_004b9b60'
+    }
+    [pscustomobject]@{
+        Address = '004bae00'
+        Module = 'CActiveFile'
+        Source = '00/4b/CActiveFile_OnReadFinished_004bae00.cpp'
+        TestSource = '00/4b/CActiveFile_OnReadFinished_004bae00_test.cpp'
+        PassPattern = 'PASS_004bae00'
+    }
+    [pscustomobject]@{
+        Address = '004bae90'
+        Module = 'CActiveFile'
+        Source = '00/4b/CActiveFile_OnReadFinished_004bae90.cpp'
+        TestSource = '00/4b/CActiveFile_OnReadFinished_004bae90_test.cpp'
+        PassPattern = 'PASS_004bae90'
+    }
+    [pscustomobject]@{
+        Address = '004bb140'
+        Module = 'CActiveFile'
+        Source = '00/4b/CActiveFile_OnReadFinished_004bb140.cpp'
+        TestSource = '00/4b/CActiveFile_OnReadFinished_004bb140_test.cpp'
+        PassPattern = 'PASS_004bb140'
+    }
+    [pscustomobject]@{
+        Address = '004cc8b0'
+        Module = 'CActiveFile'
+        Source = '00/4c/CActiveFile_OnReadFinished_004cc8b0.cpp'
+        TestSource = '00/4c/CActiveFile_OnReadFinished_004cc8b0_test.cpp'
+        PassPattern = 'PASS_004cc8b0'
+    }
+    [pscustomobject]@{
+        Address = '004ccc30'
+        Module = 'CActiveFile'
+        Source = '00/4c/CActiveFile_OnReadFinished_004ccc30.cpp'
+        TestSource = '00/4c/CActiveFile_OnReadFinished_004ccc30_test.cpp'
+        PassPattern = 'PASS_004ccc30'
+    }
+    [pscustomobject]@{
+        Address = '00535950'
+        Module = 'CActiveFile'
+        Source = '00/53/CActiveFile_OnReadFinished_00535950.cpp'
+        TestSource = '00/53/CActiveFile_OnReadFinished_00535950_test.cpp'
+        PassPattern = 'PASS_00535950'
+    }
+    [pscustomobject]@{
+        Address = '00567800'
+        Module = 'CActiveFile'
+        Source = '00/56/CActiveFile_OnReadFinished_00567800.cpp'
+        TestSource = '00/56/CActiveFile_OnReadFinished_00567800_test.cpp'
+        PassPattern = 'PASS_00567800'
+    }
+    [pscustomobject]@{
+        Address = '00568010'
+        Module = 'CActiveFile'
+        Source = '00/56/CActiveFile_OnReadFinished_00568010.cpp'
+        TestSource = '00/56/CActiveFile_OnReadFinished_00568010_test.cpp'
+        PassPattern = 'PASS_00568010'
+    }
+    [pscustomobject]@{
+        Address = '00669df0'
+        Module = 'CActiveFile'
+        Source = '00/66/CActiveFile_OnReadFinished_00669df0.cpp'
+        TestSource = '00/66/CActiveFile_OnReadFinished_00669df0_test.cpp'
+        PassPattern = 'PASS_00669df0'
+    }
+    [pscustomobject]@{
+        Address = '006c82e0'
+        Module = 'CActiveFile'
+        Source = '00/6c/CActiveFile_OnReadFinished_006c82e0.cpp'
+        TestSource = '00/6c/CActiveFile_OnReadFinished_006c82e0_test.cpp'
+        PassPattern = 'PASS_006c82e0'
+    }
+    [pscustomobject]@{
+        Address = '006e4d10'
+        Module = 'CActiveFile'
+        Source = '00/6e/CActiveFile_OnReadFinished_006e4d10.cpp'
+        TestSource = '00/6e/CActiveFile_OnReadFinished_006e4d10_test.cpp'
+        PassPattern = 'PASS_006e4d10'
+    }
+    [pscustomobject]@{
+        Address = '006e4e60'
+        Module = 'CActiveFile'
+        Source = '00/6e/CActiveFile_OnReadFinished_006e4e60.cpp'
+        TestSource = '00/6e/CActiveFile_OnReadFinished_006e4e60_test.cpp'
+        PassPattern = 'PASS_006e4e60'
+    }
+    [pscustomobject]@{
+        Address = '007193a0'
+        Module = 'CActiveFile'
+        Source = '00/71/CActiveFile_OnReadFinished_007193a0.cpp'
+        TestSource = '00/71/CActiveFile_OnReadFinished_007193a0_test.cpp'
+        PassPattern = 'PASS_007193a0'
+    }
+    [pscustomobject]@{
+        Address = '0072d510'
+        Module = 'CActiveFile'
+        Source = '00/72/CActiveFile_OnReadFinished_0072d510.cpp'
+        TestSource = '00/72/CActiveFile_OnReadFinished_0072d510_test.cpp'
+        PassPattern = 'PASS_0072d510'
+    }
+    [pscustomobject]@{
+        Address = '0072d910'
+        Module = 'CActiveFile'
+        Source = '00/72/CActiveFile_OnReadFinished_0072d910.cpp'
+        TestSource = '00/72/CActiveFile_OnReadFinished_0072d910_test.cpp'
+        PassPattern = 'PASS_0072d910'
+    }
+    [pscustomobject]@{
+        Address = '00742260'
+        Module = 'CActiveFile'
+        Source = '00/74/CActiveFile_OnReadFinished_00742260.cpp'
+        TestSource = '00/74/CActiveFile_OnReadFinished_00742260_test.cpp'
+        PassPattern = 'PASS_00742260'
+    }
+    [pscustomobject]@{
+        Address = '00743220'
+        Module = 'CActiveFile'
+        Source = '00/74/CActiveFile_OnReadFinished_00743220.cpp'
+        TestSource = '00/74/CActiveFile_OnReadFinished_00743220_test.cpp'
+        PassPattern = 'PASS_00743220'
+    }
+    [pscustomobject]@{
+        Address = '0075f6c0'
+        Module = 'CActiveFile'
+        Source = '00/75/CActiveFile_OnReadFinished_0075f6c0.cpp'
+        TestSource = '00/75/CActiveFile_OnReadFinished_0075f6c0_test.cpp'
+        PassPattern = 'PASS_0075f6c0'
+    }
+    [pscustomobject]@{
+        Address = '007a3a50'
+        Module = 'CActiveFile'
+        Source = '00/7a/CActiveFile_OnReadFinished_007a3a50.cpp'
+        TestSource = '00/7a/CActiveFile_OnReadFinished_007a3a50_test.cpp'
+        PassPattern = 'PASS_007a3a50'
+    }
+    [pscustomobject]@{
+        Address = '007c4f20'
+        Module = 'CActiveFile'
+        Source = '00/7c/CActiveFile_OnReadFinished_007c4f20.cpp'
+        TestSource = '00/7c/CActiveFile_OnReadFinished_007c4f20_test.cpp'
+        PassPattern = 'PASS_007c4f20'
+    }
+    [pscustomobject]@{
+        Address = '007c5010'
+        Module = 'CActiveFile'
+        Source = '00/7c/CActiveFile_OnReadFinished_007c5010.cpp'
+        TestSource = '00/7c/CActiveFile_OnReadFinished_007c5010_test.cpp'
+        PassPattern = 'PASS_007c5010'
+    }
+    [pscustomobject]@{
+        Address = '007cbc80'
+        Module = 'CActiveFile'
+        Source = '00/7c/CActiveFile_OnReadFinished_007cbc80.cpp'
+        TestSource = '00/7c/CActiveFile_OnReadFinished_007cbc80_test.cpp'
+        PassPattern = 'PASS_007cbc80'
+    }
+    [pscustomobject]@{
+        Address = '00824b60'
+        Module = 'CActiveFile'
+        Source = '00/82/CActiveFile_OnReadFinished_00824b60.cpp'
+        TestSource = '00/82/CActiveFile_OnReadFinished_00824b60_test.cpp'
+        PassPattern = 'PASS_00824b60'
+    }
+    [pscustomobject]@{
+        Address = '008254c0'
+        Module = 'CActiveFile'
+        Source = '00/82/CActiveFile_OnReadFinished_008254c0.cpp'
+        TestSource = '00/82/CActiveFile_OnReadFinished_008254c0_test.cpp'
+        PassPattern = 'PASS_008254c0'
+    }
+    [pscustomobject]@{
+        Address = '00883360'
+        Module = 'CActiveFile'
+        Source = '00/88/CActiveFile_OnReadFinished_00883360.cpp'
+        TestSource = '00/88/CActiveFile_OnReadFinished_00883360_test.cpp'
+        PassPattern = 'PASS_00883360'
+    }
+    [pscustomobject]@{
+        Address = '008fbd80'
+        Module = 'CActiveFile'
+        Source = '00/8f/CActiveFile_OnReadFinished_008fbd80.cpp'
+        TestSource = '00/8f/CActiveFile_OnReadFinished_008fbd80_test.cpp'
+        PassPattern = 'PASS_008fbd80'
+    }
+    [pscustomobject]@{
+        Address = '008fbea0'
+        Module = 'CActiveFile'
+        Source = '00/8f/CActiveFile_OnReadFinished_008fbea0.cpp'
+        TestSource = '00/8f/CActiveFile_OnReadFinished_008fbea0_test.cpp'
+        PassPattern = 'PASS_008fbea0'
+    }
+    [pscustomobject]@{
+        Address = '009c7020'
+        Module = 'CActiveFile'
+        Source = '00/9c/CActiveFile_OnReadFinished_009c7020.cpp'
+        TestSource = '00/9c/CActiveFile_OnReadFinished_009c7020_test.cpp'
+        PassPattern = 'PASS_009c7020'
+    }
+    [pscustomobject]@{
+        Address = '009c7760'
+        Module = 'CActiveFile'
+        Source = '00/9c/CActiveFile_OnReadFinished_009c7760.cpp'
+        TestSource = '00/9c/CActiveFile_OnReadFinished_009c7760_test.cpp'
+        PassPattern = 'PASS_009c7760'
+    }
+    [pscustomobject]@{
+        Address = '009d80e0'
+        Module = 'CActiveFile'
+        Source = '00/9d/CActiveFile_OnReadFinished_009d80e0.cpp'
+        TestSource = '00/9d/CActiveFile_OnReadFinished_009d80e0_test.cpp'
+        PassPattern = 'PASS_009d80e0'
+    }
+    [pscustomobject]@{
+        Address = '009e48f0'
+        Module = 'CActiveFile'
+        Source = '00/9e/CActiveFile_OnReadFinished_009e48f0.cpp'
+        TestSource = '00/9e/CActiveFile_OnReadFinished_009e48f0_test.cpp'
+        PassPattern = 'PASS_009e48f0'
+    }
+    [pscustomobject]@{
+        Address = '009eebb0'
+        Module = 'CActiveFile'
+        Source = '00/9e/CActiveFile_OnReadFinished_009eebb0.cpp'
+        TestSource = '00/9e/CActiveFile_OnReadFinished_009eebb0_test.cpp'
+        PassPattern = 'PASS_009eebb0'
+    }
+    [pscustomobject]@{
+        Address = '009eef20'
+        Module = 'CActiveFile'
+        Source = '00/9e/CActiveFile_OnReadFinished_009eef20.cpp'
+        TestSource = '00/9e/CActiveFile_OnReadFinished_009eef20_test.cpp'
+        PassPattern = 'PASS_009eef20'
+    }
+    [pscustomobject]@{
+        Address = '00a54130'
+        Module = 'CActiveFile'
+        Source = '00/a5/CActiveFile_OnReadFinished_00a54130.cpp'
+        TestSource = '00/a5/CActiveFile_OnReadFinished_00a54130_test.cpp'
+        PassPattern = 'PASS_00a54130'
+    }
+    [pscustomobject]@{
+        Address = '00a81470'
+        Module = 'CActiveFile'
+        Source = '00/a8/CActiveFile_OnReadFinished_00a81470.cpp'
+        TestSource = '00/a8/CActiveFile_OnReadFinished_00a81470_test.cpp'
+        PassPattern = 'PASS_00a81470'
+    }
+    [pscustomobject]@{
+        Address = '00a82230'
+        Module = 'CActiveFile'
+        Source = '00/a8/CActiveFile_OnReadFinished_00a82230.cpp'
+        TestSource = '00/a8/CActiveFile_OnReadFinished_00a82230_test.cpp'
+        PassPattern = 'PASS_00a82230'
+    }
+    [pscustomobject]@{
+        Address = '00a84640'
+        Module = 'CActiveFile'
+        Source = '00/a8/CActiveFile_OnReadFinished_00a84640.cpp'
+        TestSource = '00/a8/CActiveFile_OnReadFinished_00a84640_test.cpp'
+        PassPattern = 'PASS_00a84640'
+    }
+    [pscustomobject]@{
+        Address = '00a84be0'
+        Module = 'CActiveFile'
+        Source = '00/a8/CActiveFile_OnReadFinished_00a84be0.cpp'
+        TestSource = '00/a8/CActiveFile_OnReadFinished_00a84be0_test.cpp'
+        PassPattern = 'PASS_00a84be0'
+    }
+    [pscustomobject]@{
+        Address = '00aacd00'
+        Module = 'CActiveFile'
+        Source = '00/aa/CActiveFile_OnReadFinished_00aacd00.cpp'
+        TestSource = '00/aa/CActiveFile_OnReadFinished_00aacd00_test.cpp'
+        PassPattern = 'PASS_00aacd00'
+    }
+    [pscustomobject]@{
+        Address = '00adc830'
+        Module = 'CActiveFile'
+        Source = '00/ad/CActiveFile_OnReadFinished_00adc830.cpp'
+        TestSource = '00/ad/CActiveFile_OnReadFinished_00adc830_test.cpp'
+        PassPattern = 'PASS_00adc830'
+    }
+    [pscustomobject]@{
+        Address = '00adc950'
+        Module = 'CActiveFile'
+        Source = '00/ad/CActiveFile_OnReadFinished_00adc950.cpp'
+        TestSource = '00/ad/CActiveFile_OnReadFinished_00adc950_test.cpp'
+        PassPattern = 'PASS_00adc950'
+    }
+    [pscustomobject]@{
+        Address = '00aec910'
+        Module = 'CActiveFile'
+        Source = '00/ae/CActiveFile_OnReadFinished_00aec910.cpp'
+        TestSource = '00/ae/CActiveFile_OnReadFinished_00aec910_test.cpp'
+        PassPattern = 'PASS_00aec910'
+    }
+    [pscustomobject]@{
+        Address = '00aec980'
+        Module = 'CActiveFile'
+        Source = '00/ae/CActiveFile_OnReadFinished_00aec980.cpp'
+        TestSource = '00/ae/CActiveFile_OnReadFinished_00aec980_test.cpp'
+        PassPattern = 'PASS_00aec980'
+    }
+    [pscustomobject]@{
+        Address = '00b0f790'
+        Module = 'CActiveFile'
+        Source = '00/b0/CActiveFile_OnReadFinished_00b0f790.cpp'
+        TestSource = '00/b0/CActiveFile_OnReadFinished_00b0f790_test.cpp'
+        PassPattern = 'PASS_00b0f790'
+    }
+    [pscustomobject]@{
+        Address = '00b0f810'
+        Module = 'CActiveFile'
+        Source = '00/b0/CActiveFile_OnReadFinished_00b0f810.cpp'
+        TestSource = '00/b0/CActiveFile_OnReadFinished_00b0f810_test.cpp'
+        PassPattern = 'PASS_00b0f810'
+    }
+    [pscustomobject]@{
+        Address = '00b2ebb0'
+        Module = 'CActiveFile'
+        Source = '00/b2/CActiveFile_OnReadFinished_00b2ebb0.cpp'
+        TestSource = '00/b2/CActiveFile_OnReadFinished_00b2ebb0_test.cpp'
+        PassPattern = 'PASS_00b2ebb0'
+    }
+    [pscustomobject]@{
+        Address = '00b2ec50'
+        Module = 'CActiveFile'
+        Source = '00/b2/CActiveFile_OnReadFinished_00b2ec50.cpp'
+        TestSource = '00/b2/CActiveFile_OnReadFinished_00b2ec50_test.cpp'
+        PassPattern = 'PASS_00b2ec50'
+    }
+    [pscustomobject]@{
+        Address = '00b3a850'
+        Module = 'CActiveFile'
+        Source = '00/b3/CActiveFile_OnReadFinished_00b3a850.cpp'
+        TestSource = '00/b3/CActiveFile_OnReadFinished_00b3a850_test.cpp'
+        PassPattern = 'PASS_00b3a850'
+    }
+    [pscustomobject]@{
+        Address = '00b3a8c0'
+        Module = 'CActiveFile'
+        Source = '00/b3/CActiveFile_OnReadFinished_00b3a8c0.cpp'
+        TestSource = '00/b3/CActiveFile_OnReadFinished_00b3a8c0_test.cpp'
+        PassPattern = 'PASS_00b3a8c0'
+    }
+    [pscustomobject]@{
+        Address = '00b83820'
+        Module = 'CActiveFile'
+        Source = '00/b8/CActiveFile_OnReadFinished_00b83820.cpp'
+        TestSource = '00/b8/CActiveFile_OnReadFinished_00b83820_test.cpp'
+        PassPattern = 'PASS_00b83820'
+    }
+    [pscustomobject]@{
+        Address = '00cbb680'
+        Module = 'CActiveFile'
+        Source = '00/cb/CActiveFile_OnReadFinished_00cbb680.cpp'
+        TestSource = '00/cb/CActiveFile_OnReadFinished_00cbb680_test.cpp'
+        PassPattern = 'PASS_00cbb680'
+    }
+    [pscustomobject]@{
+        Address = '00cbbd40'
+        Module = 'CActiveFile'
+        Source = '00/cb/CActiveFile_OnReadFinished_00cbbd40.cpp'
+        TestSource = '00/cb/CActiveFile_OnReadFinished_00cbbd40_test.cpp'
+        PassPattern = 'PASS_00cbbd40'
+    }
+    [pscustomobject]@{
+        Address = '004193a0'
+        Module = '_global'
+        Source = '00/41/global_DeleteData_004193a0.cpp'
+        TestSource = '00/41/global_DeleteData_004193a0_test.cpp'
+        PassPattern = 'PASS_004193a0'
+    }
+    [pscustomobject]@{
+        Address = '004193c4'
+        Module = '_global'
+        Source = '00/41/global_DeleteData_004193c4.cpp'
+        TestSource = '00/41/global_DeleteData_004193c4_test.cpp'
+        PassPattern = 'PASS_004193c4'
+    }
+    [pscustomobject]@{
+        Address = '004193e8'
+        Module = '_global'
+        Source = '00/41/global_DeleteData_004193e8.cpp'
+        TestSource = '00/41/global_DeleteData_004193e8_test.cpp'
+        PassPattern = 'PASS_004193e8'
+    }
+    [pscustomobject]@{
+        Address = '0041940c'
+        Module = '_global'
+        Source = '00/41/global_DeleteData_0041940c.cpp'
+        TestSource = '00/41/global_DeleteData_0041940c_test.cpp'
+        PassPattern = 'PASS_0041940c'
     }
 )
 

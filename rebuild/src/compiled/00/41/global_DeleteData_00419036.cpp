@@ -1,17 +1,4 @@
-extern "C" __declspec(naked) void fn_00419036(void)
-{
-    __asm
-    {
-        _emit 0x85
-        _emit 0xC9
-        _emit 0x74
-        _emit 0x06
-        _emit 0x8B
-        _emit 0x01
-        _emit 0x6A
-        _emit 0x01
-        _emit 0xFF
-        _emit 0x10
-        _emit 0xC3
-    }
-}
+// Null-guarded virtual destroy (vtable slot 0, flag arg 1).
+// __fastcall pointer=ecx; the callee is the object's own slot 0.
+struct Obj { virtual void Destroy(int flags); };
+extern "C" void __fastcall DeleteIfSet(Obj* p) { if (p) p->Destroy(1); }

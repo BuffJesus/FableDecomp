@@ -1,9 +1,10 @@
-extern "C" __declspec(naked) void __fastcall candidate_00449700(void)
-{
-    __asm {
-        _emit 0x8b
-        _emit 0x41
-        _emit 0x1c
-        _emit 0xc3
-    }
-}
+// Member getter at this+0x1c. __fastcall this=ecx. pack(1) keeps the field at
+// the retail byte offset (natural alignment would shift an odd one).
+#pragma pack(push,1)
+struct T {
+    char pad[0x1c];
+    int field;
+    int Get();
+};
+#pragma pack(pop)
+int T::Get() { return this->field; }

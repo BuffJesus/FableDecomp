@@ -1,17 +1,5 @@
-extern "C" __declspec(naked) void candidate_004336b0(void)
-{
-    __asm {
-        _emit 0x51
-        _emit 0xb9
-        _emit 0x60
-        _emit 0x87
-        _emit 0x3b
-        _emit 0x01
-        _emit 0xe8
-        _emit 0x7f
-        _emit 0x06
-        _emit 0x00
-        _emit 0x00
-        _emit 0xc3
-    }
-}
+// operator new: forward the size to a fixed global allocator object (0x013B8760).
+// __fastcall size=ecx; the pool method cleans its own stack arg.
+struct Pool { void* Alloc(unsigned size); };
+extern Pool g_pool;
+extern "C" void* __fastcall OperatorNew(unsigned size) { return g_pool.Alloc(size); }

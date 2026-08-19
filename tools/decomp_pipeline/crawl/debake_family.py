@@ -19,6 +19,11 @@ Usage: python debake_family.py <template_addr> <staged_src.cpp> <out_prefix> [--
 import csv, struct, re, json, sys, glob
 from pathlib import Path
 
+sys_path_hack = Path(__file__).resolve().parent
+import sys as _sys
+_sys.path.insert(0, str(sys_path_hack))
+from rowtrim import trim_body   # over-captured manifest rows are cut to their real body
+
 ROOT = Path(r"D:\Documents\FableTLC")
 SCR  = Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\7fcf5fa1-31b0-4034-8e81-be42686888b3\scratchpad")
 EXE  = Path(r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe")
@@ -54,7 +59,8 @@ def body(va):
     if o is None or nx is None: return b""
     raw = data[o:o + (nx - va)]; ee = len(raw)
     while ee > 0 and raw[ee - 1] in (0xCC, 0x90): ee -= 1
-    return raw[:ee]
+    body_bytes = raw[:ee]
+    return trim_body(body_bytes, va)[0]
 def maskcalls(b):
     m = bytearray(b); i = 0
     while i < len(m):

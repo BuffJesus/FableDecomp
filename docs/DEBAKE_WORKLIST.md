@@ -4,8 +4,8 @@
 `__declspec(naked)` `_emit` byte-bakes. Bakes are byte-exact oracles at best; they
 are not faithful reconstructions. See memory `byte-purity-policy` / `faithful-decomp-policy`.
 
-As of 2026-08-19 (third pass) the landed set is ~97% genuine: **342 baked** functions
-remain (696 on 2026-08-14 → 599 → 401 → 342). A family shares (length, call-masked skeleton), so
+As of 2026-08-19 (fourth pass) the landed set is ~98% genuine: **254 baked** functions
+remain (696 on 2026-08-14 → 599 → 401 → 342 → 254). A family shares (length, call-masked skeleton), so
 authoring ONE genuine head byte-exact lets `harvest_skeleton.py` / `debake_family.py`
 clone-sweep the rest as genuine RELOCATION_MATCH.
 
@@ -34,6 +34,42 @@ Result (each re-verified byte-exact by the harness, MATCH or RELOCATION_MATCH):
 Gates re-run after landing: `build_candidates.ps1 -Address <107>` → CANDIDATE_BUILD PASS
 objects=107; `compare_candidate_objects.py` → all 107 MATCH/RELOCATION_MATCH (0 differing);
 `build_bootstrap.ps1` → VISUAL_BOOT_CHECKPOINT PASS.
+
+## 2026-08-19 (fourth pass) — ROW TRIMMING unlocks 1,513 landings
+
+The biggest remaining blocker was not authoring difficulty, it was **over-captured manifest
+rows**: 125 of the 342 remaining bakes (and thousands of never-landed rows) spanned their own
+body *plus* one or more unlisted neighbours, because VC7.1 packs tiny functions with no `0xCC`
+padding between them. `trim_overcapture.py` only handles the padded case.
+
+New `tools/decomp_pipeline/crawl/rowtrim.py` handles the unpadded case by control-flow
+analysis: decode the row, track the furthest forward branch target that lands *inside* the row,
+and cut at the first `ret`/`ret N`/`jmp` that nothing branches past. Branches out of the row are
+tail calls, not internal flow. It refuses to cut when the decode does not cover the row, so
+`true_body()` is safe to call unconditionally — `debake_family.py`, `shape_author.py` and
+`bake_families.py` all use it now.
+
+With trimming on, previously-unreachable rows became landable and the existing genuine
+templates swept them up:
+
+| step | landed |
+|------|-------:|
+| trim-aware re-run of the 6 matching genuine templates (vecdel 30B alone: 667) | 903 |
+| trim-aware re-run of all 19 staged templates (`_Dest_val` 53B: 267, OnReadFinished-25: 60, list Clear 47B: 49) | 474 |
+| `shape_author` with trimming (54 pair-`_Dest_val`, 20 forwarders, …) | 111 |
+| hand-authored this pass (Deactivate, operator[], operator new, flag-selected float getter ×2, ProcessEvent, IsSystemEvent, GetBankHandle, AddToInterface, ScaleToInt, DeleteData ×4, PtrEqual, FreeIfSet, HasPhysicsMesh, SubPtrConst, iter ++/--, char/sub-ptr setters, DeleteIfSet) | 25 |
+| **total** | **1513** |
+
+256 MATCH + 1257 RELOCATION_MATCH, 0 differing. Gates: CANDIDATE_BUILD PASS objects=1513;
+build_bootstrap VISUAL_BOOT_CHECKPOINT PASS.
+
+### Known near-misses (parked)
+- `0042bf35` CopyBackBufferToTexture (25B ×7): retail recomputes `lea eax,[ebp-1]` for BOTH
+  out-params; VC7.1 CSEs the address into `push eax; push eax` (22B) whatever the source shape
+  (one local, two locals, struct+member aliasing all tried). Needs the permuter.
+- `00434a00` / `004175da` (`add ecx,imm; call; ret`, ×2): retail keeps `call;ret` where VC7.1
+  tail-jumps a void sub-object forwarder — the known non-recoverable idiom.
+- `0042bef2` sret struct-return forwarder: VC7.1 tail-jumps the whole thing.
 
 ## 2026-08-19 (third pass) — shape-class authoring: 358 more landed
 

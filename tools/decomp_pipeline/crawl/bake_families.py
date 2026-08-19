@@ -1,6 +1,9 @@
 import csv,struct,re
 from pathlib import Path
 from collections import defaultdict
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+from rowtrim import trim_body
 ROOT=Path(r"D:\Documents\FableTLC")
 EXE=Path(r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe")
 d=EXE.read_bytes();e=struct.unpack_from("<I",d,0x3C)[0];coff=e+4
@@ -24,7 +27,7 @@ def body(va):
     if o is None or n is None: return b""
     raw=d[o:o+(n-va)];ee=len(raw)
     while ee>0 and raw[ee-1] in (0xCC,0x90): ee-=1
-    return raw[:ee]
+    return trim_body(raw[:ee], va)[0]
 def mask(b):
     m=bytearray(b);i=0
     while i<len(m):

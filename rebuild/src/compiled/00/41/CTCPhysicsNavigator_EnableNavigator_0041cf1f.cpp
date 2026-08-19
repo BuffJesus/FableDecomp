@@ -1,19 +1,9 @@
-extern "C" __declspec(naked) void fn_0041cf1f(void)
-{
-    __asm
-    {
-        _emit 0x8A
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0x88
-        _emit 0x81
-        _emit 0xC8
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0xC2
-        _emit 0x04
-        _emit 0x00
-    }
-}
+// Byte-member setter at this+0xc8 from a stack arg. __fastcall this=ecx (ret 4).
+#pragma pack(push,1)
+struct T {
+    char pad[0xc8];
+    char field;
+    void Set(char value);
+};
+#pragma pack(pop)
+void T::Set(char value) { this->field = value; }

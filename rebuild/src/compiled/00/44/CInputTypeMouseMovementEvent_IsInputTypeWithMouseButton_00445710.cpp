@@ -1,10 +1,3 @@
-extern "C" __declspec(naked) void __fastcall candidate_00445710(void)
-{
-    __asm {
-        _emit 0x32
-        _emit 0xc0
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-    }
-}
+// Constant-return member: returns false. __fastcall this=ecx.
+struct T { bool Get(int a0); };
+bool T::Get(int a0) { return false; }

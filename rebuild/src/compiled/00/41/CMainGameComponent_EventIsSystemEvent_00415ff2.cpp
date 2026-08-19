@@ -1,25 +1,12 @@
-extern "C" __declspec(naked) void fn_00415ff2(void)
-{
-    __asm
-    {
-        _emit 0x8B
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0x8B
-        _emit 0x00
-        _emit 0x48
-        _emit 0x48
-        _emit 0x74
-        _emit 0x04
-        _emit 0x32
-        _emit 0xC0
-        _emit 0xEB
-        _emit 0x02
-        _emit 0xB0
-        _emit 0x01
-        _emit 0xC2
-        _emit 0x04
-        _emit 0x00
+#pragma optimize("s",on)
+// `switch` form of "is this the system event kind": VC7.1 lowers the single case to
+// `dec eax; dec eax; je`. __fastcall this=ecx, event=stack (ret 4).
+struct Event { int type; };
+struct T { bool IsSystemEvent(const Event* e); };
+bool T::IsSystemEvent(const Event* e) {
+    switch (e->type) {
+    case 2:
+        return true;
     }
+    return false;
 }

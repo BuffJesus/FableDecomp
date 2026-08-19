@@ -1,21 +1,14 @@
-extern "C" __declspec(naked) void __fastcall candidate_00437650(void)
-{
-    __asm {
-        _emit 0x8b
-        _emit 0x81
-        _emit 0x20
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x4c
-        _emit 0x24
-        _emit 0x04
-        _emit 0x89
-        _emit 0x48
-        _emit 0x40
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-    }
-}
+// Store a stack arg into a field of the sub-object POINTER at this+0x220
+// (field at sub+0x40). __fastcall this=ecx (ret 4).
+#pragma pack(push,1)
+struct Sub {
+    char pad[0x40];
+    int field;
+};
+struct T {
+    char pad[0x220];
+    Sub* sub;
+    void Set(int value);
+};
+#pragma pack(pop)
+void T::Set(int value) { this->sub->field = value; }

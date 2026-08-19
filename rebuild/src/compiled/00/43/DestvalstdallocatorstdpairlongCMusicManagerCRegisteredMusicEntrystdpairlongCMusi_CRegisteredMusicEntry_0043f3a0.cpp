@@ -1,25 +1,15 @@
-extern "C" __declspec(naked) void cand_0043f3a0(void)
-{
-    __asm
-    {
-        _emit 0x56
-        _emit 0x8B
-        _emit 0xF1
-        _emit 0x8D
-        _emit 0x4E
-        _emit 0x10
-        _emit 0xE8
-        _emit 0x35
-        _emit 0xF7
-        _emit 0x55
-        _emit 0x00
-        _emit 0x8B
-        _emit 0xCE
-        _emit 0x5E
-        _emit 0xE9
-        _emit 0x5D
-        _emit 0xC1
-        _emit 0x55
-        _emit 0x00
-    }
+// std::pair _Dest_val: release the second member, then tail-call the first
+// (this+0x0 and this+0x10). __fastcall this=ecx. pack(1) pins the offsets.
+#pragma pack(push,1)
+struct Part { void Release(); };
+struct Pair {
+    Part first;
+    char pad[0xf];
+    Part second;
+    void Destroy();
+};
+#pragma pack(pop)
+void Pair::Destroy() {
+    this->second.Release();
+    this->first.Release();
 }

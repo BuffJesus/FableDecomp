@@ -19,7 +19,7 @@ import csv, struct, re, json, sys, glob
 from pathlib import Path
 
 ROOT = Path(r"D:\Documents\FableTLC")
-SCR  = Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\78ee60a6-b0e0-43fa-a126-1b2d399e2fca\scratchpad")
+SCR  = Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\d9037860-7095-40c8-8a12-a018c1d9a369\scratchpad")
 EXE  = Path(r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe")
 
 TMPL_ADDR = sys.argv[1].lower().replace("0x", "").rjust(8, "0")

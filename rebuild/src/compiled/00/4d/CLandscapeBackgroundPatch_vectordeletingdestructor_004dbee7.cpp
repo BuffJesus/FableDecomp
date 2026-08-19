@@ -1,20 +1,10 @@
 #pragma optimize("s",on)
-// Byte-exact reconstruction of CLandscapeBackgroundPatch::`vector deleting destructor'
-// retail 0x004dbee7. Synthesized by the compiler for a class with a virtual dtor;
-// a delete site forces emission. The scalar dtor is noinline (retail 0x4d799a) so the
-// synthesized vector deleting destructor keeps its `call` instead of inlining.
-
-struct CLandscapeBackgroundPatch
-{
-    virtual ~CLandscapeBackgroundPatch();
-};
-
-__declspec(noinline) CLandscapeBackgroundPatch::~CLandscapeBackgroundPatch()
-{
-}
-
-// force emission of the synthesized `vector deleting destructor'
-void force_emit(CLandscapeBackgroundPatch *p)
-{
-    delete p;
+// vector deleting destructor whose deallocator is the engine free helper (0x00bfe9bc),
+// cleaned with `pop ecx` (size peephole). __fastcall this=ecx, flags=stack (ret 4).
+struct T { void Dtor(); void* VecDel(unsigned flags); };
+extern "C" void __cdecl Free1(void* p);
+void* T::VecDel(unsigned flags) {
+    this->Dtor();
+    if (flags & 1) Free1(this);
+    return this;
 }

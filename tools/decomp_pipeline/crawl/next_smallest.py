@@ -8,7 +8,7 @@ N=int(sys.argv[1]) if len(sys.argv)>1 else 16
 PREFIX=sys.argv[2] if len(sys.argv)>2 else "gen_batch"
 MINLEN=int(sys.argv[3]) if len(sys.argv)>3 else 12
 ROOT=Path(r"D:\Documents\FableTLC")
-SCR=Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\cd25bb1d-05b9-4eed-aa52-a5ad845ddf18\scratchpad")
+SCR=Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\d9037860-7095-40c8-8a12-a018c1d9a369\scratchpad")
 EXE=Path(r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe")
 data=EXE.read_bytes()
 e_lfanew=struct.unpack_from("<I",data,0x3C)[0]; coff=e_lfanew+4

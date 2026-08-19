@@ -1,21 +1,17 @@
-extern "C" __declspec(naked) void __fastcall candidate_004349d0(void)
-{
-    __asm {
-        _emit 0x8a
-        _emit 0x41
-        _emit 0x70
-        _emit 0x84
-        _emit 0xc0
-        _emit 0x74
-        _emit 0x08
-        _emit 0xc6
-        _emit 0x41
-        _emit 0x7d
-        _emit 0x00
-        _emit 0xc6
-        _emit 0x41
-        _emit 0x7c
-        _emit 0x01
-        _emit 0xc3
+// Guarded two-flag clear. __fastcall this=ecx, no args.
+#pragma pack(push,1)
+struct T {
+    char pad00[0x70];
+    char active;
+    char pad71[0x0b];
+    char shown;     // this+0x7c
+    char pending;   // this+0x7d
+    void Deactivate();
+};
+#pragma pack(pop)
+void T::Deactivate() {
+    if (this->active) {
+        this->pending = 0;
+        this->shown = 1;
     }
 }

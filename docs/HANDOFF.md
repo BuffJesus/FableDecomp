@@ -8671,8 +8671,21 @@ USER-driven debugger work and unchanged).
 - The 4 IAT thunks (`ff25 <iat>`: initterm/__dllonexit/malloc/strstr) are linker-generated and
   can never be genuine C++ — leave them baked.
 
+### Fourth pass: ROW TRIMMING — 1,513 more landed (bakes 342 → 254)
+- The real blocker was **over-captured manifest rows** (a row spanning its body *plus* unlisted
+  neighbours, no `0xCC` between them — `trim_overcapture.py` only handles the padded case).
+- New `tools/decomp_pipeline/crawl/rowtrim.py`: control-flow trim — decode the row, track the
+  furthest forward branch target *inside* it, cut at the first `ret`/`jmp` nothing branches past
+  (a branch out of the row is a tail call). Refuses to cut on an incomplete decode, so it is safe
+  to call unconditionally; `debake_family.py`, `shape_author.py`, `bake_families.py` all use it.
+- Re-running the existing genuine templates with trimming on landed **1,377** rows that were
+  previously unreachable (vecdel 30B alone: 667; `_Dest_val` 53B: 267), plus 111 from
+  `shape_author` and 25 hand-authored → **1,513 total**, 256 MATCH + 1,257 RELOCATION_MATCH.
+- Gates green: CANDIDATE_BUILD PASS objects=1513, comparer 0 differing among them,
+  VISUAL_BOOT_CHECKPOINT PASS.
+
 ### Next in this lane
-1. The tail is flat — 342 bakes in 329 families, largest family 3. Roughly one authoring job each.
+1. 254 bakes in 228 families, largest family 7. Roughly one authoring job each.
 2. `004193a0` (`DeleteData`, 36B ×3) is an OVER-CAPTURED manifest row (a `ret 4` then a second
    unlisted 13B function, no `0xCC` between) — needs `trim_overcapture.py` or a 2-function land.
 3. `00431020`/`00431242` (`UpdateShadowScene`) still diverge per instance.

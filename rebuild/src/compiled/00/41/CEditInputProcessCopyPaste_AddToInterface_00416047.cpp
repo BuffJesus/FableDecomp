@@ -1,21 +1,11 @@
-extern "C" __declspec(naked) void fn_00416047(void)
-{
-    __asm
-    {
-        _emit 0xC6
-        _emit 0x41
-        _emit 0x44
-        _emit 0x00
-        _emit 0x8B
-        _emit 0x0D
-        _emit 0x90
-        _emit 0xAA
-        _emit 0x3C
-        _emit 0x01
-        _emit 0xE9
-        _emit 0x7A
-        _emit 0xC6
-        _emit 0x5D
-        _emit 0x00
-    }
+// Clear a byte flag, then tail-call a member of a fixed global object (0x013CAA90).
+// __fastcall this=ecx, no args.
+struct Iface { void Add(); };
+extern Iface* g_iface;
+#pragma pack(push,1)
+struct T { char pad[0x44]; char flag; void AddToInterface(); };
+#pragma pack(pop)
+void T::AddToInterface() {
+    this->flag = 0;
+    g_iface->Add();
 }
