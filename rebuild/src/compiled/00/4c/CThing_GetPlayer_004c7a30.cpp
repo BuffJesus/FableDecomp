@@ -1,17 +1,11 @@
-struct CThing;
 struct CPlayer;
-extern "C" void* g_manager;
-extern "C" void* CThing_Lookup_target();
-__declspec(naked) CPlayer* __fastcall CThing_GetPlayer(CThing* self)
+struct CThing { char pad[0x90]; signed char idx; };
+struct CInner { CPlayer* Get(int idx); };
+struct COuter { char pad[0x30]; CInner* inner; };
+extern COuter* g_outer;
+
+CPlayer* __fastcall CThing_GetPlayer(CThing* self)
 {
-    (void)self;
-    __asm {
-        mov eax, ecx
-        movsx edx, byte ptr [eax+0x90]
-        mov ecx, dword ptr [g_manager]
-        mov ecx, dword ptr [ecx+0x30]
-        push edx
-        call CThing_Lookup_target
-        ret
-    }
+    CInner* p = g_outer->inner;
+    return p->Get(self->idx);
 }

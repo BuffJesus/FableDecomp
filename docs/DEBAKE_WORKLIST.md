@@ -4,8 +4,16 @@
 `__declspec(naked)` `_emit` byte-bakes. Bakes are byte-exact oracles at best; they
 are not faithful reconstructions. See memory `byte-purity-policy` / `faithful-decomp-policy`.
 
-As of 2026-08-19 (sixth pass) the landed set is ~98.6% genuine: **209 baked** functions
-remain (696 on 2026-08-14 → 599 → 401 → 342 → 254 → 238 → 209). A family shares (length, call-masked skeleton), so
+**⚠ CORRECTED 2026-08-19 (seventh pass): the purity metric was measuring the wrong thing.**
+The check was `"_emit" in source`, but **585 landed sources are `__declspec(naked)` / `__asm`
+blocks written with real MNEMONICS** rather than `_emit` byte lists. They are equally
+hand-written machine code and equally a purity debt — and they were invisible to every count
+reported before this line. True remaining non-genuine total was **689**, not 209 (corrected genuine share 94.3%, not
+98.6%). After the seventh pass it is **452**.
+
+`tools/decomp_pipeline/crawl/purity.py` is now the single source of truth (`is_genuine` /
+`classify`), wired into `bake_families`, `debake_family`, `shape_author`, `harvest_all` and
+`crossfam` — so none of them can silently propagate a naked-asm source as a family template. A family shares (length, call-masked skeleton), so
 authoring ONE genuine head byte-exact lets `harvest_skeleton.py` / `debake_family.py`
 clone-sweep the rest as genuine RELOCATION_MATCH.
 
@@ -34,6 +42,45 @@ Result (each re-verified byte-exact by the harness, MATCH or RELOCATION_MATCH):
 Gates re-run after landing: `build_candidates.ps1 -Address <107>` → CANDIDATE_BUILD PASS
 objects=107; `compare_candidate_objects.py` → all 107 MATCH/RELOCATION_MATCH (0 differing);
 `build_bootstrap.ps1` → VISUAL_BOOT_CHECKPOINT PASS.
+
+## 2026-08-19 (seventh pass) — the purity metric was wrong; big families reappear
+
+Correcting the detector (see the note at the top) put **469 families** back on the board,
+several of them large and several already solved by an existing genuine source:
+
+| template | family | shape | status |
+|----------|-------:|-------|--------|
+| 0042bf35 | 53 | CopyBackBufferToTexture | permuter (retail recomputes `lea eax,[ebp-1]` twice) |
+| 004852fb | 31 | zero-init one-byte aggregate returned by value | modelled, `xor eax,eax; lea edi; stosb` not yet reproduced |
+| 0044f65a | 23 | vecdel + vptr re-seat, `pop ecx` cleanup | **solved** — existing `VecDelVptr_36_0042d9a0.cpp` under `#pragma optimize("s")` |
+| 00443500 | 20 | `OnDie` (`add esp,4` variant) | **landed 20** with existing `OnDie_23_0041bd80.cpp` |
+| 00c09e60 | 16 | forward to sub-object virtual slot 7, passing `this` | **landed 16** (new source) |
+| 00c0f0d0 | 10 | same shape, different offsets | separate source needed |
+
+### Landed against the corrected set (239, all gated)
+`OnDie` 20 · sub-object virtual forwarder 16 · cross-family pass 1 121 · vecdel+vptr 34B 23 ·
+cross-family pass 2 (reloc-tolerant) 28 · `AddChildPrimitive` zero-local-byte 31.
+82 MATCH + 157 RELOCATION_MATCH, 0 differing; repo-wide DIFFER 56 → 55.
+
+**Authoring note:** the `AddChildPrimitive` shape returns **`char`, not `bool`** — a `bool`
+return adds VC7.1's `neg/sbb/neg` normalisation and the bytes stop matching. Source:
+`volatile char flag; memset((void*)&flag,0,1); return flag;` with `#pragma intrinsic(memset)`.
+
+### ⚠ Guards must be relocation-tolerant, or they refuse correct sources
+The first pre-verify guards masked only `call rel32`, so any source whose sole difference was a
+**data relocation** (`mov [esi], offset g_vtable` -> `c706 <imm32>`) was falsely refused — common
+in destructors and vptr re-seats. That is why cross-family pass 1 found only 121, and why the
+23-member vecdel+vptr family was rejected despite a correct source. New
+`tools/decomp_pipeline/crawl/bytematch.py` (`relaxed_equal`) accepts a candidate when every
+differing dword in the freshly compiled object is all-zero — exactly the relocation signature.
+Sound for a guard: `verify_and_land` still does the authoritative reloc-masked compare.
+
+**⚠ Second safety incident, same root cause.** `debake_family.py` un-landed a 10-member family
+before discovering the source did not reproduce it (`WINS: 0`), leaving 10 addresses sourceless.
+Recovered by restoring the deleted (tracked) files and re-inserting the catalog blocks + oracle
+rows from `git show HEAD:`. `debake_family.py` now **pre-verifies the template source against the
+family's real bytes and refuses to un-land anything if it does not reproduce them** — verified to
+refuse a wrong source and permit a correct one. Every de-bake tool now pre-verifies.
 
 ## 2026-08-19 (sixth pass) — cross-family pairing (29)
 

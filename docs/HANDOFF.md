@@ -8709,8 +8709,28 @@ USER-driven debugger work and unchanged).
 - Remaining near-misses are genuine REGALLOC permutations (model confirmed, length matches):
   `GetPBaseDef` 19v19, iterator `Begin` 13v13, CopyBackBufferToTexture ×7, `_Find` ×3.
 
+### Seventh pass: THE PURITY METRIC WAS WRONG — corrected, then 239 more landed
+- **The de-bake count was measuring `_emit` only.** 585 landed sources are `__declspec(naked)` /
+  `__asm` blocks written with real MNEMONICS — equally hand-written machine code, equally a
+  purity debt, invisible to every count reported earlier. True remaining: **689, not 209**;
+  genuine share **94.3%, not 98.6%**. `tools/decomp_pipeline/crawl/purity.py` is now the single
+  source of truth, wired into all five de-bake tools.
+- Correcting it put 469 families back on the board, several solvable with sources already
+  written. Landed 239 (82 MATCH + 157 RELOCATION_MATCH): OnDie 20, sub-object virtual forwarder
+  16, cross-family 121 + 28, vecdel+vptr 34B 23, AddChildPrimitive 31. **Non-genuine 689 → 452.**
+- **Guards must be relocation-tolerant.** The pre-verify guards masked only `call rel32`, so any
+  source differing only by a DATA relocation was falsely refused (that alone cost ~an entire
+  cross-family pass and the 23-member family). `crawl/bytematch.py::relaxed_equal` accepts a
+  candidate when every differing dword in the fresh object is all-zero — the reloc signature.
+- Second un-land-before-verify incident (`debake_family`, 10 rows) — recovered via `git checkout`
+  + `git show HEAD:`; that tool now pre-verifies too. See [[debake-preverify-rule]].
+- **Next highest-value item (measured):** 5,388 un-landed manifest rows — **26.3% of the whole
+  remaining pool** — are over-captured and can never reach parity until `rowtrim` is wired into
+  the crawl's oracle generation (`next_smallest.py`, `pe_oracle.py`). rowtrim is now validated
+  against all 14,043 proven rows (14,039 untouched; the 4 it cuts are genuinely over-captured).
+
 ### Next in this lane
-1. 209 bakes in 202 families, largest family 3. Roughly one authoring job each.
+1. 452 non-genuine in 412 families, largest family 10. Mostly one authoring job each.
 2. `004193a0` (`DeleteData`, 36B ×3) is an OVER-CAPTURED manifest row (a `ret 4` then a second
    unlisted 13B function, no `0xCC` between) — needs `trim_overcapture.py` or a 2-function land.
 3. `00431020`/`00431242` (`UpdateShadowScene`) still diverge per instance.

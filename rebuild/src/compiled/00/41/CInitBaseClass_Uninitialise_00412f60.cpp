@@ -1,8 +1,3 @@
-extern "C" void fn_0069a360(void);
-
-extern "C" __declspec(naked) void fn_00412f60(void)
-{
-    __asm {
-        jmp fn_0069a360
-    }
-}
+// Free-function forwarder VC7.1 tail-calls (`jmp rel32`): same signature, no cleanup.
+extern "C" void ForwardTarget();
+extern "C" void Forward() { ForwardTarget(); }

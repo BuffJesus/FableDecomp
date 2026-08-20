@@ -1,24 +1,23 @@
 struct C3DVector { float x, y, z; };
 struct CTCCreatureNavigation;
 
-// Forwarder: reads sub-object at this+4, dispatches vtable slot 6 (offset 0x18)
-// with (this, vec) pushed; callee is __stdcall (cleans its own 8 bytes), outer
-// cleans the single stack arg (vec) via ret 4. VC7.1 tail-call-optimizes the
-// genuine-C++ form to a jmp (22B); retail keeps push/push/call/pop/ret (21B),
-// so this irreducible byte layout is authored as a naked thunk.
-__declspec(naked) bool __fastcall IsNewDestinationGoingToResetNavigation(
-    CTCCreatureNavigation* /*ecx=self*/, int /*edx*/, C3DVector* /*vec*/, float /*f*/)
+struct Helper {
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual bool v6(CTCCreatureNavigation* nav, C3DVector* dest);
+};
+
+struct CTCCreatureNavigation {
+    void* field_0;
+    Helper* field_4;
+    bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);
+};
+
+bool CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation(C3DVector* dest)
 {
-    __asm {
-        push esi
-        mov esi, dword ptr [esp+8]
-        mov eax, ecx
-        mov ecx, dword ptr [eax+4]
-        mov edx, dword ptr [ecx]
-        push esi
-        push eax
-        call dword ptr [edx+0x18]
-        pop esi
-        ret 4
-    }
+    return this->field_4->v6(this, dest);
 }

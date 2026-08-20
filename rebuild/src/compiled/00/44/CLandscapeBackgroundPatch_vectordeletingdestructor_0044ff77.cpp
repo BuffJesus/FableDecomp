@@ -1,22 +1,13 @@
-extern "C" void dtor1();
-extern "C" void opdelete();
-extern int vtbl1;
-
-__declspec(naked) void* vector_deleting_destructor()
-{
-    __asm {
-        push esi
-        mov  esi, ecx
-        mov  dword ptr [esi], offset vtbl1
-        call dtor1
-        test byte ptr [esp+8], 1
-        je   L1c
-        push esi
-        call opdelete
-        pop  ecx
-    L1c:
-        mov  eax, esi
-        pop  esi
-        ret  4
-    }
+#pragma optimize("s",on)
+// vector deleting destructor that first re-seats the vptr (the compiler-generated
+// destructor prologue for a polymorphic class), then destroys and optionally frees.
+// __fastcall this=ecx, flags=stack (ret 4).
+extern void* g_vtable[];              // 0x01230BA0
+struct T { void** vptr; void Dtor(); void* VecDel(unsigned flags); };
+extern "C" void __cdecl Free1(void* p);
+void* T::VecDel(unsigned flags) {
+    this->vptr = g_vtable;
+    this->Dtor();
+    if (flags & 1) Free1(this);
+    return this;
 }

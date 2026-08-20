@@ -1,24 +1,13 @@
-extern "C" __declspec(naked) void __fastcall
-Fill_n_(unsigned long *destination, unsigned long count, const unsigned long *value)
+#pragma optimize("s",on)
+// std::_Fill_n<unsigned long*, unsigned int, unsigned long>
+// __fastcall(dest in ecx, count in edx, const val& on stack); ret 4.
+// Writes _Val into _Count consecutive slots starting at _First, skipping a
+// store when the slot address is null. VC7.1 /O2 with size-favoring reaches
+// byte parity (index form pins dest into eax + per-iteration value reload).
+void __fastcall Fill_n_unsigned_long(unsigned long *_First, unsigned int _Count, unsigned long &_Val)
 {
-    __asm
-    {
-        test edx, edx
-        mov eax, ecx
-        jbe done
-
-    fill:
-        test eax, eax
-        je skip
-        mov ecx, [esp + 4]
-        mov ecx, [ecx]
-        mov [eax], ecx
-    skip:
-        add eax, 4
-        dec edx
-        jne fill
-
-    done:
-        ret 4
-    }
+    unsigned int i;
+    for (i = 0; i < _Count; ++i)
+        if (_First + i != 0)
+            _First[i] = _Val;
 }

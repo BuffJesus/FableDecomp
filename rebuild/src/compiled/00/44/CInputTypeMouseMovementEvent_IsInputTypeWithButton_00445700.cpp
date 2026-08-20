@@ -1,4 +1,3 @@
-extern "C" __declspec(naked) bool IsInputTypeWithButton(void *, int) {
-    __asm { xor al, al }
-    __asm { ret 4 }
-}
+// Constant-return member: returns false. __fastcall this=ecx.
+struct T { bool Get(int a0); };
+bool T::Get(int a0) { return false; }

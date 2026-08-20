@@ -26,6 +26,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rowtrim import trim_body
 from purity import is_genuine
+from bytematch import relaxed_equal
 
 ROOT = Path(r"D:\Documents\FableTLC")
 SCR = Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\7fcf5fa1-31b0-4034-8e81-be42686888b3\scratchpad")
@@ -217,12 +218,12 @@ def compiled_bytes(text, flags, pragma):
 
 survivors, srows = [], []
 for cand, orow in zip(authored, out_rows):
-    want = maskcalls(bytes.fromhex(orow[3]))
+    want = bytes.fromhex(orow[3])
     hit = False
     for flags in ("/O2 /Oy", "/O1 /Oy", "/Ox /Oy"):
         for pragma in ("", "s", "t", "g", "gs"):
             for got in compiled_bytes(cand["source_cpp"], flags, pragma):
-                if len(got) == len(want) and maskcalls(got) == want:
+                if relaxed_equal(got, want):
                     hit = True
                     break
             if hit:

@@ -1,14 +1,15 @@
-extern "C" { void __fastcall MemberDtor_af8bc0(void* self); void __fastcall BaseDtor_f36c90(void* self); }
-__declspec(naked) void __fastcall DtorIPM_C(void* self)
+extern "C" void __fastcall MemberDtor_686df0(void* self);
+extern "C" void __fastcall BaseDtor_686830(void* self);
+
+struct CInputProcessManager {
+    void** vtbl;
+};
+
+extern const void* const g_vtbl_CInputProcessManager[];
+
+extern "C" void __fastcall DtorInputProcessManager(CInputProcessManager* self, int /*edx*/)
 {
-    (void)self;
-    __asm {
-        push esi
-        mov  esi, ecx
-        mov  dword ptr [esi], 0x129f650
-        call MemberDtor_af8bc0
-        mov  ecx, esi
-        pop  esi
-        jmp  BaseDtor_f36c90
-    }
+    self->vtbl = (void**)&g_vtbl_CInputProcessManager;
+    MemberDtor_686df0(self);
+    BaseDtor_686830(self);
 }

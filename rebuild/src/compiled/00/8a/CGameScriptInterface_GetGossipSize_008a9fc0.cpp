@@ -1,43 +1,28 @@
-struct CCharString
-{
-    void CopyCtor();
-    void Dtor();
+// CGameScriptInterface::GetGossipVillagesSize @ 008aa220
+// __fastcall int GetGossipVillagesSize(CCharString name) ; name by value
+
+struct CCharString {
+    void* p;
+    CCharString(const CCharString& o);
+    ~CCharString();
 };
 
-class CGameScriptInterface
-{
-public:
-    virtual int GetGossipSize(CCharString* gossip) const;
+struct CArrayHdr {
+    int* first; // +0
+    int* last;  // +4
 };
 
-extern "C" void map_gossip_subscript();
+struct GossipMap {
+    CArrayHdr& op_index(const CCharString& key);
+};
 
-__declspec(naked)
-int CGameScriptInterface::GetGossipSize(CCharString* gossip) const
+extern GossipMap g_gossipVillagesMap; // at 0x13bae50 (reloc-masked)
+
+int __fastcall CGameScriptInterface_GetGossipVillagesSize(void* self, CCharString name)
 {
-    __asm
-    {
-        push ecx
-        push esi
-        lea eax, [esp + 0Ch]
-        push eax
-        lea ecx, [esp + 8]
-        call CCharString::CopyCtor
-        lea ecx, [esp + 4]
-        push ecx
-        mov ecx, 013BAE44h
-        call map_gossip_subscript
-        mov ecx, dword ptr [eax]
-        mov esi, dword ptr [eax + 4]
-        sub esi, ecx
-        lea ecx, [esp + 4]
-        sar esi, 2
-        call CCharString::Dtor
-        lea ecx, [esp + 0Ch]
-        call CCharString::Dtor
-        mov eax, esi
-        pop esi
-        pop ecx
-        ret 4
-    }
+    CCharString key(name);
+    CArrayHdr& e = g_gossipVillagesMap.op_index(key);
+    int first = (int)e.first;
+    int last = (int)e.last;
+    return (last - first) >> 2;
 }

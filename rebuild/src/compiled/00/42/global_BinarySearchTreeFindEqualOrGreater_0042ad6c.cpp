@@ -1,28 +1,28 @@
-// Retail 0x0042ad6c: std::_Tree lower_bound (find first node with key >= *keyptr).
-// this=ecx (tree); single stack arg = pointer to key; ret 4.
-// head at [ecx]; root at [head+4]; node key at +0x10; +0xc=greater child,
-// +0x8=lesser-or-equal child; result = last node where node->key >= key
-// (head sentinel if none). __declspec(naked) exact transcription.
-__declspec(naked) void BinarySearchTree_FindEqualOrGreater(){
-    __asm {
-        mov     eax, dword ptr [ecx]
-        mov     ecx, dword ptr [eax+4]
-        test    ecx, ecx
-        je      done
-        mov     edx, dword ptr [esp+4]
-        mov     edx, dword ptr [edx]
-    loop_top:
-        cmp     dword ptr [ecx+0x10], edx
-        jb      go_right
-        mov     eax, ecx
-        mov     ecx, dword ptr [ecx+8]
-        jmp     test_node
-    go_right:
-        mov     ecx, dword ptr [ecx+0xc]
-    test_node:
-        test    ecx, ecx
-        jne     loop_top
-    done:
-        ret     4
+#pragma optimize("s",on)
+struct RBNode {
+    unsigned int _pad0;   // 0x00
+    RBNode* parent;       // 0x04
+    RBNode* left;         // 0x08
+    RBNode* right;        // 0x0C
+    unsigned int key;     // 0x10
+};
+
+struct RBTree {
+    RBNode* header;       // 0x00
+};
+
+// __fastcall: ecx=self, edx=dummy, key on stack -> ret 4
+RBNode* __fastcall UInt_RBTreeFindGreaterOrEqual(RBTree* self, int /*edx*/, unsigned int* key)
+{
+    RBNode* result = self->header;
+    RBNode* node = result->parent;
+    while (node != 0) {
+        if (node->key >= *key) {
+            result = node;
+            node = node->left;
+        } else {
+            node = node->right;
+        }
     }
+    return result;
 }

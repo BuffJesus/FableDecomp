@@ -1,23 +1,16 @@
-struct C3DVector { float x,y,z; };
-struct CTCCreatureNavigation;
-
-// Retail 0x00c0f2d0: forwards to a slot-7 (+0x1c) vtable method on this->f4,
-// passing (this, dest). Only dest is cleaned (ret 4); the float arg is unused.
-// VC7.1's esi-hoist / eax-this regalloc for this shape is not reproducible from
-// straight C++ (the compiler either tail-calls or folds [esp+4] into the push),
-// so this pure forwarder is authored naked to land the exact retail bytes.
-__declspec(naked) bool IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* /*this in ecx*/, C3DVector* /*dest*/)
-{
-    __asm {
-        push esi
-        mov  esi, dword ptr [esp+8]
-        mov  eax, ecx
-        mov  ecx, dword ptr [eax+4]
-        mov  edx, dword ptr [ecx]
-        push esi
-        push eax
-        call dword ptr [edx+0x1c]
-        pop  esi
-        ret  4
-    }
+// Forward to a virtual (vtable slot 7) on the sub-object at this+4, passing `this`
+// through as the first argument. __fastcall this=ecx, arg=stack (ret 4).
+struct T;
+struct Sub {
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
+    virtual void v4(); virtual void v5(); virtual void v6();
+    virtual bool Check(T* owner, void* arg);   // slot 7 -> call [edx+0x1c]
+};
+struct T {
+    void* pad0;
+    Sub* sub;
+    bool IsNewDestinationGoingToResetNavigation(void* arg);
+};
+bool T::IsNewDestinationGoingToResetNavigation(void* arg) {
+    return this->sub->Check(this, arg);
 }

@@ -1,23 +1,16 @@
-extern "C" void helper_53c7b9(void);
-
-extern "C" void __declspec(naked) pop_front_UIList(void)
+struct Node { Node* next; };
+struct MyList;
+struct ListIt {
+    Node* _Ptr;
+    ListIt() {}
+    ListIt(Node* p) : _Ptr(p) {}
+    ListIt(const ListIt& o) : _Ptr(o._Ptr) {}
+};
+struct MyList {
+    Node* head;
+    ListIt erase(ListIt _Where);
+};
+void __fastcall pop_front(MyList* self)
 {
-    __asm {
-        push ecx
-        mov edx, dword ptr [ecx]
-        mov edx, dword ptr [edx]
-        push ecx
-        mov eax, esp
-        mov dword ptr [eax], edx
-        lea eax, [esp+4]
-        push eax
-        call helper_53c7b9
-        pop ecx
-        ret
-    }
-}
-
-extern "C" void __declspec(naked) helper_53c7b9(void)
-{
-    __asm { ret }
+    self->erase(ListIt(self->head->next));
 }

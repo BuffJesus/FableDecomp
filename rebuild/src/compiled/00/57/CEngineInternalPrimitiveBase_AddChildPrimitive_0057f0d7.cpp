@@ -1,20 +1,13 @@
-// CEngineInternalPrimitiveBase::AddChildPrimitive
-// Retail 0x0057f0d7 (MSVC VC7.1). Body zero-initializes a single-byte local via
-// STOS and returns it in AL. /O2 collapses the idiomatic C++ form, so this is a
-// naked transcription of the exact retail instruction stream (RELOCATION_MATCH).
-__declspec(naked) bool AddChildPrimitive()
-{
-    __asm {
-        push ebp
-        mov  ebp, esp
-        push ecx
-        push edi
-        xor  eax, eax
-        lea  edi, [ebp-1]
-        stosb
-        mov  al, byte ptr [ebp-1]
-        pop  edi
-        leave
-        ret
-    }
+#pragma optimize("s",on)
+// One-byte local zeroed through the intrinsic memset path and read straight back.
+// VC7.1 emits `push edi; xor eax,eax; lea edi,[ebp-1]; stosb; mov al,[ebp-1]`.
+// The return type is `char`, NOT `bool` — a bool return adds the `neg/sbb/neg`
+// normalisation and the bytes no longer match. __fastcall this=ecx, no args.
+#include <string.h>
+#pragma intrinsic(memset)
+struct T { char AddChildPrimitive(); };
+char T::AddChildPrimitive() {
+    volatile char flag;
+    memset((void*)&flag, 0, 1);
+    return flag;
 }

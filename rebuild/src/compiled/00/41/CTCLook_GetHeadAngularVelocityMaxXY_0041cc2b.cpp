@@ -1,28 +1,34 @@
-extern "C" __declspec(naked) void fn_0041cc2b(void)
+#pragma optimize("s",on)
+// CTCLook::GetHeadAngularVelocityMaxXY @ retail 0x0041cc14 (23 bytes)
+// Retail disasm:
+//   cmp  BYTE PTR ds:0x13b8768, 0
+//   je   else
+//   fld  DWORD PTR ds:0x13b876c
+//   ret
+//  else:
+//   fld  DWORD PTR ds:0x1375cd4
+//   ret
+//
+// Pure global accessor: the this-pointer (ecx) is never touched.
+// return  g_HeadAngularVelocityMaxXY_Override_Flag
+//            ? g_HeadAngularVelocityMaxXY_Override_Value
+//            : g_HeadAngularVelocityMaxXY_Default;
+//
+// VC7.1 (MSVC 2003): no C++11. Member accessor modeled as __fastcall
+// (object ptr in ecx) so we never place __fastcall on a free function (C4234).
+
+// --- engine globals (relocation-masked; addresses are illustrative) ---
+// 0x13b8768 : override flag  (byte-sized bool)
+extern unsigned char g_HeadAngVelMaxXY_OverrideFlag;
+// 0x13b876c : override value (4 bytes after the flag -> same struct)
+extern float         g_HeadAngVelMaxXY_OverrideValue;
+// 0x1375cd4 : default value  (separate global)
+extern float         g_HeadAngVelMaxXY_Default;
+
+float __fastcall CTCLook__GetHeadAngularVelocityMaxXY(void *ecx_this)
 {
-    __asm {
-        _emit 0x80
-        _emit 0x3d
-        _emit 0x68
-        _emit 0x87
-        _emit 0x3b
-        _emit 0x01
-        _emit 0x00
-        _emit 0x74
-        _emit 0x07
-        _emit 0xd9
-        _emit 0x05
-        _emit 0x70
-        _emit 0x87
-        _emit 0x3b
-        _emit 0x01
-        _emit 0xc3
-        _emit 0xd9
-        _emit 0x05
-        _emit 0xd8
-        _emit 0x5c
-        _emit 0x37
-        _emit 0x01
-        _emit 0xc3
-    }
+    (void)ecx_this; // ecx unused; every operand is an absolute global
+    if (g_HeadAngVelMaxXY_OverrideFlag != 0)
+        return g_HeadAngVelMaxXY_OverrideValue;
+    return g_HeadAngVelMaxXY_Default;
 }

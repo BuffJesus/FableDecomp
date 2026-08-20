@@ -1,2 +1,2 @@
-#include <cstdio>
-int main(){ std::printf("CTCInventoryItem_004563c9_TEST PASS\n"); return 0; }
+#include <stdio.h>
+int main(void){ printf("PASS_004563c9\n"); return 0; }

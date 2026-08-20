@@ -1,31 +1,27 @@
+#pragma optimize("s",on)
+// CDisplayManager::CopyBackBufferToTexture @ 0x004df7ff
+// __fastcall CTexture* (CDisplayManager*)
+//
+// The retail body forms two 1-byte stack temporaries in disjoint lifetimes
+// (so both reuse the same [ebp-1] slot), takes the address of each, passes
+// the pair to a __fastcall member helper (call 0x004dd12f), keeps `this` in a
+// callee-saved register (esi) across the call, and returns `this` cast to
+// CTexture*. VC7.1 emits two separate `lea eax,[ebp-1]` because the two temps
+// are distinct source objects that happen to share the reused slot.
+
 struct CTexture;
+
 struct CDisplayManager {
-    unsigned char _pad_0x0[0x54];
-    void*** obj54;
-    unsigned int f5c;
-    unsigned int f60;
-    unsigned int f1c4;
-    int field1c4;
+    void Grab(char* a, char* b);
+    CTexture* CopyBackBufferToTexture();
 };
 
-extern void DM_Helper(void);
-
-__declspec(naked) CTexture* __fastcall CDisplayManager_CopyBackBufferToTexture(CDisplayManager* self)
+CTexture* CDisplayManager::CopyBackBufferToTexture()
 {
-    __asm {
-        push ebp
-        mov  ebp, esp
-        push ecx
-        push esi
-        lea  eax, [ebp-1]
-        push eax
-        lea  eax, [ebp-1]
-        push eax
-        mov  esi, ecx
-        call DM_Helper
-        mov  eax, esi
-        pop  esi
-        leave
-        ret
-    }
+    char* p;
+    char* q;
+    { char a; p = &a; }
+    { char b; q = &b; }
+    Grab(p, q);
+    return (CTexture*)this;
 }

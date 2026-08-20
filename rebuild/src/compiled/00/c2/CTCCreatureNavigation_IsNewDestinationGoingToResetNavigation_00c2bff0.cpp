@@ -1,26 +1,16 @@
-struct C3DVector { float x,y,z; };
-struct Nav;
-struct NavInner {
-    unsigned char (__fastcall **vtbl)(void*, int, C3DVector*, Nav*);
+// Forward to a virtual (vtable slot 7) on the sub-object at this+4, passing `this`
+// through as the first argument. __fastcall this=ecx, arg=stack (ret 4).
+struct T;
+struct Sub {
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
+    virtual void v4(); virtual void v5(); virtual void v6();
+    virtual bool Check(T* owner, void* arg);   // slot 7 -> call [edx+0x1c]
 };
-struct Nav {
-    void* f0;
-    NavInner* f4;
+struct T {
+    void* pad0;
+    Sub* sub;
+    bool IsNewDestinationGoingToResetNavigation(void* arg);
 };
-
-__declspec(naked) bool __fastcall IsNewDestinationGoingToResetNavigation(Nav* self, int /*edx*/, C3DVector* dest)
-{
-    (void)self; (void)dest;
-    __asm {
-        push esi
-        mov esi, dword ptr [esp+8]
-        mov eax, ecx
-        mov ecx, dword ptr [eax+4]
-        mov edx, dword ptr [ecx]
-        push esi
-        push eax
-        call dword ptr [edx+0x1c]
-        pop esi
-        ret 4
-    }
+bool T::IsNewDestinationGoingToResetNavigation(void* arg) {
+    return this->sub->Check(this, arg);
 }

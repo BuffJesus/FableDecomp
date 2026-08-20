@@ -1,19 +1,15 @@
-extern "C" void __fastcall sub_a01c10(void* self);
-extern "C" void __fastcall sub_693ef0(void* self);
-
-__declspec(naked) void __fastcall DestVal_A8_A(void* a, void* b)
-{
-    (void)a; (void)b;
-    __asm {
-        push esi
-        mov esi, ecx
-        lea ecx, [esi + 0xa8]
-        call sub_a01c10
-        mov ecx, esi
-        pop esi
-        jmp sub_693ef0
-    }
+// std::pair _Dest_val: release the second member, then tail-call the first
+// (this+0x0 and this+0xa8). __fastcall this=ecx. pack(1) pins the offsets.
+#pragma pack(push,1)
+struct Part { void Release(); };
+struct Pair {
+    Part first;
+    char pad[0xa7];
+    Part second;
+    void Destroy();
+};
+#pragma pack(pop)
+void Pair::Destroy() {
+    this->second.Release();
+    this->first.Release();
 }
-
-extern "C" __declspec(noinline) void __fastcall sub_a01c10(void* self){ (void)self; }
-extern "C" __declspec(noinline) void __fastcall sub_693ef0(void* self){ (void)self; }

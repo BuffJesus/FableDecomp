@@ -1,15 +1,10 @@
-extern "C" void NotifyBeforeDie(void);
-extern "C" void ReleaseMapwho(void *);
-extern "C" __declspec(naked) void OnDie(void *) {
-    __asm { push esi }
-    __asm { mov esi, ecx }
-    __asm { test esi, esi }
-    __asm { je done }
-    __asm { call NotifyBeforeDie }
-    __asm { push esi }
-    __asm { call ReleaseMapwho }
-    __asm { add esp, 4 }
-    __asm { done: }
-    __asm { pop esi }
-    __asm { ret }
+// Null-guarded teardown: run the cleanup member, then free the object.
+// __fastcall object=ecx, no args.
+struct T { void Cleanup(); };
+extern "C" void __cdecl Free1(void* p);   // 0x00bfe9bc
+extern "C" void __fastcall OnDie(T* p) {
+    if (p) {
+        p->Cleanup();
+        Free1(p);
+    }
 }

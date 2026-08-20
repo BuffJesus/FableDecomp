@@ -1,29 +1,23 @@
 struct C3DVector { float x, y, z; };
+struct CTCCreatureNavigation;
 
-struct IDelegate {
-    // vtable-based
+struct Helper {
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual bool v6(CTCCreatureNavigation* nav, C3DVector* dest);
 };
 
 struct CTCCreatureNavigation {
-    void* vtbl;      // +0
-    IDelegate* f4;   // +4
+    void* field_0;
+    Helper* field_4;
+    bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);
 };
 
-// __fastcall bool IsNewDestinationGoingToResetNavigation(this, C3DVector*, float)
-// forwards to this->f4->vtbl[6](this, dst)  (returns bool)
-__declspec(naked) bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int /*edx*/, C3DVector* dst, float f)
+bool CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation(C3DVector* dest)
 {
-    (void)self; (void)dst; (void)f;
-    __asm {
-        push esi
-        mov  esi, dword ptr [esp+8]
-        mov  eax, ecx
-        mov  ecx, dword ptr [eax+4]
-        mov  edx, dword ptr [ecx]
-        push esi
-        push eax
-        call dword ptr [edx+0x18]
-        pop  esi
-        ret  4
-    }
+    return this->field_4->v6(this, dest);
 }

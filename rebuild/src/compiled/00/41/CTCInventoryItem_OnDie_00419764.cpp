@@ -1,31 +1,19 @@
-extern "C" __declspec(naked) void cand_00419764(void)
+#pragma optimize("s",on)
+struct CTCInventoryItem {
+    unsigned char _pad_0x0[0x8];
+    void* ptr8;
+    unsigned char _pad_0xc[0x4];
+    void* ptr10;
+    unsigned char _pad_0x14[0xc];
+    char sub20;
+};
+extern "C" void __cdecl eng_free(void* p);
+void __fastcall CTCInventoryItem_base_OnDie(CTCInventoryItem* self);
+
+void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* self)
 {
-    __asm
-    {
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0x8b
-        _emit 0x46
-        _emit 0x08
-        _emit 0x85
-        _emit 0xc0
-        _emit 0x74
-        _emit 0x07
-        _emit 0x50
-        _emit 0xe8
-        _emit 0xa0
-        _emit 0x52
-        _emit 0x7e
-        _emit 0x00
-        _emit 0x59
-        _emit 0x8b
-        _emit 0xce
-        _emit 0x5e
-        _emit 0xe9
-        _emit 0x93
-        _emit 0x0c
-        _emit 0x58
-        _emit 0x00
-    }
+    void* p = self->ptr8;
+    if (p)
+        eng_free(p);
+    CTCInventoryItem_base_OnDie(self);
 }

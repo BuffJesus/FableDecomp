@@ -23,7 +23,8 @@ sys_path_hack = Path(__file__).resolve().parent
 import sys as _sys
 _sys.path.insert(0, str(sys_path_hack))
 from rowtrim import trim_body
-from purity import is_genuine   # over-captured manifest rows are cut to their real body
+from purity import is_genuine
+from bytematch import relaxed_equal
 
 ROOT = Path(r"D:\Documents\FableTLC")
 SCR  = Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\7fcf5fa1-31b0-4034-8e81-be42686888b3\scratchpad")
@@ -114,6 +115,59 @@ print(f"  already genuine    : {len(fam_genuine)}")
 print(f"  unlanded (bonus)   : {len(fam_new)}")
 for e in fam_skipped: print(f"  SKIP {e[0]} {e[4]}")
 targets = fam_baked + fam_new
+
+# --- PRE-VERIFY the template source against the family's real bytes BEFORE un-landing.
+# A source that cannot reproduce the template cannot reproduce its clones either, so
+# un-landing first would strip working entries for nothing. See debake-preverify-rule.
+if fam_baked:
+    import os
+    import subprocess
+    _VC = Path(r"D:\Tools\vc71")
+    _OBJD = (r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages"
+             r"\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe")
+    _env = dict(os.environ)
+    _env["PATH"] = str(_VC / "bin") + ";" + _env["PATH"]
+    _env["INCLUDE"] = str(_VC / "include") + ";" + str(ROOT / "rebuild" / "include")
+    _env["LIB"] = str(_VC / "lib")
+    _wk = SCR / "dfverify"
+    _wk.mkdir(parents=True, exist_ok=True)
+    _want = tb
+    _ok = False
+    for _flags in ("/O2 /Oy", "/O1 /Oy", "/Ox /Oy"):
+        for _pr in ("", "s", "t", "g", "gs"):
+            _cpp = _wk / "c.cpp"
+            _head = ('#pragma optimize("%s",on)' % _pr) + chr(10) if _pr else ""
+            _cpp.write_text(_head + SRC, encoding="utf-8")
+            _obj = _wk / "c.obj"
+            _obj.unlink(missing_ok=True)
+            _cp = subprocess.run([str(_VC / "bin" / "cl.exe"), "/nologo", "/c"] + _flags.split() +
+                                 ["/W3", "/Fo%s" % _obj, str(_cpp)], capture_output=True, text=True, env=_env)
+            if _cp.returncode or not _obj.exists():
+                continue
+            _dd = subprocess.run([_OBJD, "-d", str(_obj)], capture_output=True, text=True).stdout
+            _fns, _cur = [], None
+            for _line in _dd.splitlines():
+                if re.match(r"^[0-9a-f]+ <(.+)>:$", _line.strip()):
+                    _cur = bytearray()
+                    _fns.append(_cur)
+                    continue
+                if _cur is not None:
+                    _m = re.match(r"^\s+[0-9a-f]+:\s+((?:[0-9a-fA-F]{2} )+)", _line)
+                    if _m:
+                        _cur.extend(bytes.fromhex(_m.group(1)))
+            for _f in _fns:
+                if relaxed_equal(bytes(_f), _want):
+                    _ok = True
+                    break
+            if _ok:
+                break
+        if _ok:
+            break
+    if not _ok:
+        raise SystemExit("PRE-VERIFY FAILED: %s does not reproduce template %s -- refusing to "
+                         "un-land %d entries" % (sys.argv[2], TMPL, len(fam_baked)))
+    print("pre-verify OK: source reproduces the template")
+
 if not APPLY:
     print("(dry run; pass --apply to unland bakes and emit land payload)")
     sys.exit(0)

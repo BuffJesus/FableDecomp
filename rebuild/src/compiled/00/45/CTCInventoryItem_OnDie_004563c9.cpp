@@ -1,22 +1,17 @@
-extern "C" void freex(void*);
-extern "C" void basedie(void);
-extern "C" void* g_vtbl;
+#pragma optimize("s",on)
+extern void __cdecl engine_free(void* p);
+extern void __fastcall CTCInventoryItem_base(void* self);
 
-__declspec(naked) void __fastcall CTCInventoryItem_OnDie(void* self)
+struct CTCInventoryItem {
+    void* vptr;                    // +0x00
+    unsigned char _pad_0x4[0x24];  // to 0x28
+    void* ptr28;                   // +0x28
+};
+
+void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* self)
 {
-    __asm {
-        push esi
-        mov esi, ecx
-        mov eax, [esi+0x28]
-        test eax, eax
-        je short L1
-        push eax
-        call freex
-        pop ecx
-    L1:
-        mov dword ptr [esi], offset g_vtbl
-        mov ecx, esi
-        pop esi
-        jmp basedie
-    }
+    if (self->ptr28)
+        engine_free(self->ptr28);
+    self->vptr = (void*)0x1230ba0;
+    CTCInventoryItem_base(self);
 }

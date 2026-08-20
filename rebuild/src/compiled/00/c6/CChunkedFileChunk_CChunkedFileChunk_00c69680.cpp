@@ -1,10 +1,4 @@
-extern const int CChunkedFileChunk_vftable;
-void __fastcall BaseDtor(void* self);
-__declspec(naked) void __fastcall CChunkedFileChunk_DtorChunk(void* self)
-{
-    (void)self;
-    __asm {
-        mov dword ptr [ecx], offset CChunkedFileChunk_vftable
-        jmp BaseDtor
-    }
-}
+struct C {};
+extern int g_vtbl;
+extern void __fastcall base_dtor(C*);
+void __fastcall Dtor(C* self){ *(void**)self = &g_vtbl; base_dtor(self); }

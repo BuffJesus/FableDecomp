@@ -1,23 +1,13 @@
-struct CLandscapeBackgroundPatch { void* vtbl; };
-extern "C" void __fastcall eng_dtor(void*);
-extern "C" void __cdecl eng_delete(void*);
-extern void* g_vtbl;
-
-__declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int, unsigned char flags)
-{
-    __asm {
-        push esi
-        mov  esi, ecx
-        mov  dword ptr [esi], offset g_vtbl
-        call eng_dtor
-        test byte ptr [esp+8], 1
-        je   skip
-        push esi
-        call eng_delete
-        pop  ecx
-    skip:
-        mov  eax, esi
-        pop  esi
-        ret  4
-    }
+#pragma optimize("s",on)
+// vector deleting destructor that first re-seats the vptr (the compiler-generated
+// destructor prologue for a polymorphic class), then destroys and optionally frees.
+// __fastcall this=ecx, flags=stack (ret 4).
+extern void* g_vtable[];              // 0x01230BA0
+struct T { void** vptr; void Dtor(); void* VecDel(unsigned flags); };
+extern "C" void __cdecl Free1(void* p);
+void* T::VecDel(unsigned flags) {
+    this->vptr = g_vtable;
+    this->Dtor();
+    if (flags & 1) Free1(this);
+    return this;
 }

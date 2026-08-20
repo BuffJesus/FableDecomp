@@ -1,13 +1,6 @@
-struct CObservable {
-    unsigned char _pad_0x0[0x13c];
-    void* exclusiveObserver; /* +0x13c */
-};
+struct CObservable { void* pad[0x50]; void* exclusiveObserver; };
 
-__declspec(naked) void __fastcall CObservable_AddExclusiveObserver(CObservable* self, void* observer) {
-    (void)self; (void)observer;
-    __asm {
-        mov eax, dword ptr [esp+4]
-        mov dword ptr [ecx+0x13c], eax
-        ret 4
-    }
+void __fastcall CObservable_AddExclusiveObserver(CObservable* self, void* /*edx*/, void* observer)
+{
+    *(void**)((char*)self + 0x13c) = observer;
 }

@@ -1,14 +1,8 @@
-typedef void (__cdecl* InitTermFunction)();
-
-extern "C" __declspec(naked) void __cdecl initterm(
-    InitTermFunction*, InitTermFunction*)
+extern "C" void __cdecl free(void*);
+typedef void (__cdecl *FreeFn)(void*);
+extern FreeFn __imp_free;
+FreeFn __imp_free = &free;
+void __cdecl operator_delete(void* p)
 {
-    __asm {
-        _emit 0xff
-        _emit 0x25
-        _emit 0x90
-        _emit 0x01
-        _emit 0x44
-        _emit 0x01
-    }
+    __imp_free(p);
 }

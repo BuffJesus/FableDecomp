@@ -3,11 +3,11 @@ namespace NPlayerGui
 class CDrawQuestInfo
 {
 public:
-    void UpdateTimer(long questId, float timeValue);
+    void UpdateTick(long questId, bool enabled);
 };
 }
 
-struct CGSIUpdateQuestInfoTimer_GuiOwner
+struct CGSIUpdateQuestInfoTick_GuiOwner
 {
     unsigned char m_Unused[0x1C8];
     NPlayerGui::CDrawQuestInfo* m_QuestInfo;
@@ -16,25 +16,18 @@ struct CGSIUpdateQuestInfoTimer_GuiOwner
 class CGameScriptInterface
 {
 public:
-    virtual void UpdateQuestInfoTimer(
+    virtual void UpdateQuestInfoTick(
         long questId,
-        float timeValue) const;
+        bool enabled) const;
 };
 
-extern CGSIUpdateQuestInfoTimer_GuiOwner*
-    CGSIUpdateQuestInfoTimer_Gui;
+extern CGSIUpdateQuestInfoTick_GuiOwner*
+    CGSIUpdateQuestInfoTick_Gui;
 
-__declspec(naked) void CGameScriptInterface::UpdateQuestInfoTimer(
+void CGameScriptInterface::UpdateQuestInfoTick(
     long questId,
-    float timeValue) const
+    bool enabled) const
 {
-    __asm
-    {
-        mov edx, dword ptr [CGSIUpdateQuestInfoTimer_Gui]
-        mov ecx, dword ptr [edx + 1C8h]
-        jmp NPlayerGui::CDrawQuestInfo::UpdateTimer
-        int 3
-        int 3
-        int 3
-    }
+    CGSIUpdateQuestInfoTick_Gui->m_QuestInfo
+        ->UpdateTick(questId, enabled);
 }

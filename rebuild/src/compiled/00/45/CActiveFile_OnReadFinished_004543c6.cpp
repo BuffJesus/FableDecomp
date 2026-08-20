@@ -1,20 +1,4 @@
-extern "C" void __fastcall CActiveFile_Cleanup(void* self);
-extern "C" void __cdecl engine_free(void* p);
-
-__declspec(naked) void __fastcall CActiveFile_OnReadFinished(void* self)
-{
-    __asm {
-        push esi
-        mov esi, ecx
-        call CActiveFile_Cleanup
-        mov esi, dword ptr [esi]
-        test esi, esi
-        je short L1
-        push esi
-        call engine_free
-        pop ecx
-    L1:
-        pop esi
-        ret
-    }
-}
+#pragma optimize("s",on)
+struct CActiveFile { void* m0; void OnReadFinished(); void Base(); };
+extern "C" void __cdecl Free1(void* p);
+void CActiveFile::OnReadFinished(){ this->Base(); if(this->m0) Free1(this->m0); }

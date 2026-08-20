@@ -1,9 +1,8 @@
-extern "C" void (__cdecl* g_FableFreeThunkTarget_00440154)();
-
-extern "C" __declspec(naked) void __cdecl free_00bfea14(void* p)
+extern "C" void __cdecl free(void*);
+typedef void (__cdecl *FreeFn)(void*);
+extern FreeFn __imp_free;
+FreeFn __imp_free = &free;
+void __cdecl operator_delete(void* p)
 {
-    __asm
-    {
-        jmp dword ptr [g_FableFreeThunkTarget_00440154]
-    }
+    __imp_free(p);
 }

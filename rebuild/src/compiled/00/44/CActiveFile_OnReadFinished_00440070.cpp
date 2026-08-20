@@ -1,11 +1,6 @@
-extern "C" void ReleaseReadToken(void *);
-extern "C" __declspec(naked) void OnReadFinished(void *) {
-    __asm { mov eax, dword ptr [ecx] }
-    __asm { test eax, eax }
-    __asm { je done }
-    __asm { push eax }
-    __asm { call ReleaseReadToken }
-    __asm { pop ecx }
-    __asm { done: }
-    __asm { ret }
-}
+// `if (this->p) Free1(this->p);` with `pop ecx` cleanup. __fastcall this=ecx.
+#pragma pack(push,1)
+struct T { void* p; void OnReadFinished(); };
+#pragma pack(pop)
+extern "C" void __cdecl Free1(void* p);
+void T::OnReadFinished() { if (this->p) Free1(this->p); }

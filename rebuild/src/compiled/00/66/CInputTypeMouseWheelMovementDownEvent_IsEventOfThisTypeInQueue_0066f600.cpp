@@ -1,10 +1,2 @@
-extern "C" __declspec(naked) unsigned char __fastcall
-CInputTypeMouseWheelMovementDownEvent_IsEventOfThisTypeInQueue_0066f600(
-    void* input_type, void*, long event_type, long index, float* strength)
-{
-    __asm
-    {
-        xor al, al
-        ret 0ch
-    }
-}
+struct C_00b38820 { bool M(int a0, int a1, int a2); };
+bool C_00b38820::M(int a0, int a1, int a2) { return false; }

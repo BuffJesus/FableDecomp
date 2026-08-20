@@ -1,22 +1,15 @@
-// CInputProcessManager destructor at 0x00cd3ec0 (VC7.1)
-// retail:
-//   push esi; mov esi,ecx; mov [esi],0x012c2648; call 0xcbeeb0;
-//   mov ecx,esi; pop esi; jmp 0x9b02e0
+extern "C" void __fastcall MemberDtor_686df0(void* self);
+extern "C" void __fastcall BaseDtor_686830(void* self);
 
-extern "C" void member_dtor_cbeeb0(void);  // call target 0xcbeeb0
-extern "C" void base_dtor_9b02e0(void);     // jmp target 0x9b02e0
+struct CInputProcessManager {
+    void** vtbl;
+};
 
-extern const unsigned int IPM_vtable_012c2648;
+extern const void* const g_vtbl_CInputProcessManager[];
 
-__declspec(naked) void DtorIPM_H(void* /*ecx=this*/)
+extern "C" void __fastcall DtorInputProcessManager(CInputProcessManager* self, int /*edx*/)
 {
-    __asm {
-        push esi
-        mov  esi, ecx
-        mov  dword ptr [esi], offset IPM_vtable_012c2648
-        call member_dtor_cbeeb0
-        mov  ecx, esi
-        pop  esi
-        jmp  base_dtor_9b02e0
-    }
+    self->vtbl = (void**)&g_vtbl_CInputProcessManager;
+    MemberDtor_686df0(self);
+    BaseDtor_686830(self);
 }
