@@ -18,7 +18,8 @@ from pathlib import Path
 sys_path_hack = Path(__file__).resolve().parent
 import sys as _sys
 _sys.path.insert(0, str(sys_path_hack))
-from rowtrim import trim_body   # over-captured manifest rows are cut to their real body
+from rowtrim import trim_body
+from purity import is_genuine   # over-captured manifest rows are cut to their real body
 from collections import Counter
 
 ROOT = Path(r"D:\Documents\FableTLC")
@@ -318,7 +319,7 @@ def is_baked(a):
     if not rel:
         return False
     p = ROOT / "rebuild/src/compiled" / rel
-    return p.exists() and "_emit" in p.read_text(encoding="utf-8", errors="ignore")
+    return p.exists() and not is_genuine(p.read_text(encoding="utf-8", errors="ignore"))
 
 targets, kill, kinds = [], set(), Counter()
 for r in rows:

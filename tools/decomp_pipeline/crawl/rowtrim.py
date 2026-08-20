@@ -48,6 +48,12 @@ def trim_body(body, va=0x400000):
                 if 0 <= target < len(body) and target > reach:
                     reach = target
         if insn.mnemonic in _TERMINATORS and end > reach and end < len(body):
+            # Everything after a terminator is a different function ONLY if it is
+            # actually code. A tail of int3/nop is this function's own alignment
+            # padding, which the compiled object carries too -- cutting it would
+            # truncate a correct oracle.
+            if all(c in (0xCC, 0x90) for c in body[end:]):
+                return body, None
             return body[:end], end
     if consumed != len(body):
         return body, None      # decode did not cover the row -> do not touch it

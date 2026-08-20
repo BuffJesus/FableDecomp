@@ -25,6 +25,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rowtrim import trim_body
+from purity import is_genuine
 
 ROOT = Path(r"D:\Documents\FableTLC")
 SCR = Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\7fcf5fa1-31b0-4034-8e81-be42686888b3\scratchpad")
@@ -109,7 +110,7 @@ def is_baked(a):
     if not rel:
         return False
     p = ROOT / "rebuild/src/compiled" / rel
-    return p.exists() and "_emit" in p.read_text(encoding="utf-8", errors="ignore")
+    return p.exists() and not is_genuine(p.read_text(encoding="utf-8", errors="ignore"))
 
 
 # genuine sources keyed by their family (len, skeleton); keep one per family
@@ -131,7 +132,7 @@ for r in rows:
     elif key not in genuine:
         p = ROOT / "rebuild/src/compiled" / catentry[ah]
         text = p.read_text(encoding="utf-8", errors="ignore")
-        if "_emit" not in text:
+        if is_genuine(text):
             # strip any in-source pragma: verify_and_land sweeps the matrix itself, and a
             # baked-in pragma would pin the wrong variant for a different-length sibling.
             stripped = "\n".join(l for l in text.splitlines() if not l.startswith("#pragma optimize"))

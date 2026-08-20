@@ -21,6 +21,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rowtrim import trim_body
+from purity import is_genuine
 
 ROOT = Path(r"D:\Documents\FableTLC")
 SCR = Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\7fcf5fa1-31b0-4034-8e81-be42686888b3\scratchpad")
@@ -133,7 +134,7 @@ for key, g in sorted(groups.items(), key=lambda kv: -len(kv[1]["new"])):
         if not sp.exists():
             continue
         text = sp.read_text(encoding="utf-8", errors="ignore")
-        if "_emit" in text:          # never propagate a bake
+        if not is_genuine(text):     # never propagate a bake / naked-asm source
             continue
         src_text, pass_pat = text, pp
         tp = ROOT / "rebuild/tests" / trel if trel else None

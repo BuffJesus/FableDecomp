@@ -4,6 +4,7 @@ from collections import defaultdict
 import sys as _sys
 _sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rowtrim import trim_body
+from purity import is_genuine
 ROOT=Path(r"D:\Documents\FableTLC")
 EXE=Path(r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe")
 d=EXE.read_bytes();e=struct.unpack_from("<I",d,0x3C)[0];coff=e+4
@@ -41,7 +42,7 @@ baked=0
 for a,src in blocks:
     p=ROOT/"rebuild/src/compiled"/src
     if not p.exists(): continue
-    if "_emit" not in p.read_text(encoding="utf-8",errors="ignore"): continue
+    if is_genuine(p.read_text(encoding="utf-8",errors="ignore")): continue
     baked+=1
     b=body(int(a,16))
     groups[(len(b),mask(b))].append(a.lower())

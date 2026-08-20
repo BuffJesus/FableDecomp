@@ -22,7 +22,8 @@ from pathlib import Path
 sys_path_hack = Path(__file__).resolve().parent
 import sys as _sys
 _sys.path.insert(0, str(sys_path_hack))
-from rowtrim import trim_body   # over-captured manifest rows are cut to their real body
+from rowtrim import trim_body
+from purity import is_genuine   # over-captured manifest rows are cut to their real body
 
 ROOT = Path(r"D:\Documents\FableTLC")
 SCR  = Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\7fcf5fa1-31b0-4034-8e81-be42686888b3\scratchpad")
@@ -88,7 +89,7 @@ def is_baked(addr):
     rel = catsrc.get(addr)
     if not rel: return False
     p = ROOT / "rebuild/src/compiled" / rel
-    return p.exists() and "_emit" in p.read_text(encoding="utf-8", errors="ignore")
+    return p.exists() and not is_genuine(p.read_text(encoding="utf-8", errors="ignore"))
 
 # ---- family scan ----
 fam_baked, fam_genuine, fam_new, fam_skipped = [], [], [], []
