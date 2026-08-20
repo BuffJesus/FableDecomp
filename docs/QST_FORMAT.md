@@ -132,8 +132,14 @@ python tools/parse_qst.py diff <vanilla> <modded>   # entry-level diff
    stray `+` junk on line 213, so it is at least lenient with unknown tokens.)
 3. **Exact loader function address + quest-manager structure**: which class consumes these
    (likely near "Init Quests"/"Load Quests" progress strings) and where the registered
-   name→active-flag table lives in memory — needed for runtime (FSE) quest injection without
-   file edits.
+   name→active-flag table lives in memory — needed for a *true* in-memory runtime quest
+   injection without file edits. NOTE: the Steam-verify-wipe problem is already SOLVED
+   pragmatically without this RE — ForgeFSE self-heals `FinalAlbion.qst` on every load
+   (`EnsureQuestRegistryFile()` in dllmain.cpp: appends a missing `AddQuest("<name>", TRUE);`
+   for each quest in FSE/quests.lua, runs at RegisterAllScripts before "Load Quests",
+   idempotent, non-destructive, skips the FSE_Master master script). So a modder never edits
+   the .qst by hand and a Steam verify is auto-recovered on next launch. The in-memory
+   AddQuest call remains a nice-to-have (fully file-free) but is no longer a blocker.
 4. **`GlobalQuests.qst` load timing**: file exists and only uses `AddQuest`; presumed loaded
    once at startup (vs per-world for `FinalAlbion.qst`) — unconfirmed without debugger/Ghidra.
 5. **Semantics of TRUE beyond WLD initial-quests**: `ChapterAndSceneManager` and `NPCDeath` are

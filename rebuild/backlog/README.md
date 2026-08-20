@@ -1,6 +1,6 @@
 # Reconstruction backlog
 
-Generated: `2026-08-11T17:35:25-06:00`
+Generated: `2026-08-16T14:26:16-06:00`
 
 The order favors generated candidate clusters first, then extension of proven modules, small prototype closures, and finally bulk signature work.
 
@@ -40,21 +40,21 @@ Uncompiled auto-RE candidates ordered by authoritative retail function size, the
 
 | Rank | Address | Module | Retail bytes | Candidate bytes | Blocker |
 |---:|---|---|---:|---:|---|
-| 1 | `00434dc0` | `_global` | 0 | 53 |  |
-| 2 | `00434dd0` | `_global` | 0 | 60 |  |
-| 3 | `00c9cb60` | `_global` | 0 | 93 |  |
-| 4 | `0041c780` | `_global` | 0 | 123 |  |
-| 5 | `0042a59e` | `_global` | 0 | 133 | 'RBTree__GetMaxNode' was not declared in this scope |
-| 6 | `0042a5c0` | `_global` | 0 | 133 | 'RBTree__GetMaxNode' was not declared in this scope |
-| 7 | `0042b687` | `_global` | 0 | 134 | 'LinkedList_Insert_Before' was not declared in this scope |
-| 8 | `0042ac52` | `_global` | 0 | 135 |  |
-| 9 | `0042ac9f` | `_global` | 0 | 135 |  |
-| 10 | `0042ad10` | `_global` | 0 | 139 |  |
-| 11 | `00451303` | `_global` | 0 | 139 |  |
-| 12 | `0043006f` | `_global` | 0 | 144 |  |
-| 13 | `00451022` | `_global` | 0 | 149 |  |
-| 14 | `0045121c` | `_global` | 0 | 152 |  |
-| 15 | `004502eb` | `_global` | 0 | 155 |  |
+| 1 | `00c9cb60` | `_global` | 0 | 93 |  |
+| 2 | `0041c780` | `_global` | 0 | 123 |  |
+| 3 | `0042a59e` | `_global` | 0 | 133 | 'RBTree__GetMaxNode' was not declared in this scope |
+| 4 | `0042a5c0` | `_global` | 0 | 133 | 'RBTree__GetMaxNode' was not declared in this scope |
+| 5 | `0042b687` | `_global` | 0 | 134 | 'LinkedList_Insert_Before' was not declared in this scope |
+| 6 | `0042ac52` | `_global` | 0 | 135 |  |
+| 7 | `0042ac9f` | `_global` | 0 | 135 |  |
+| 8 | `0042ad10` | `_global` | 0 | 139 |  |
+| 9 | `00451303` | `_global` | 0 | 139 |  |
+| 10 | `0043006f` | `_global` | 0 | 144 |  |
+| 11 | `00451022` | `_global` | 0 | 149 |  |
+| 12 | `0045121c` | `_global` | 0 | 152 |  |
+| 13 | `004502eb` | `_global` | 0 | 155 |  |
+| 14 | `0045036f` | `_global` | 0 | 155 |  |
+| 15 | `00450e6e` | `_global` | 0 | 164 |  |
 
 ## First function queue
 

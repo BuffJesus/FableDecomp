@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-19T20:21:45-06:00",
-  "compared": 14165,
-  "matching": 4528,
-  "relocation_matching": 9454,
+  "generated_at": "2026-08-19T21:24:47-06:00",
+  "compared": 17100,
+  "matching": 7341,
+  "relocation_matching": 9576,
   "differing": 55,
   "oracle_missing": 128
 }

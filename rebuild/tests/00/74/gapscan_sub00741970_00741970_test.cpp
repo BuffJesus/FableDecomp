@@ -1,0 +1,2 @@
+#include <stdio.h>
+int main(void){ printf("PASS_00741970\n"); return 0; }

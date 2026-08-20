@@ -8755,9 +8755,38 @@ The over-capture defect is now fixed at the source, not just in the de-bake lane
   ~7.0 MB of unlisted code**, of which **7,636 gaps are 4-64 bytes** and immediately authorable.
   That is the next crawl fuel, and real RE output for Ghidra/coverage/FableForge.
 
+### Ninth pass: the gaps ARE fed into the crawl — manifest 49,568 -> 57,097 rows
+Full write-up: **`docs/MANIFEST_GAP_RECOVERY.md`**.
+
+`verify_and_land` rejects any candidate without an authoritative manifest start (by design),
+so feeding gaps in meant teaching the MANIFEST the boundaries. That is also the structural
+fix: once a discovered start is a row, the host row's span ENDS there, so its oracle is the
+real body with no trimming needed.
+
+- `crawl/gap_author.py` splits each gap region into its successive functions -> **49,668
+  recovered** (more than the manifest's own 49,568 rows).
+- **`crawl/xrefs.py` is the honesty gate.** Byte parity cannot confirm a discovered start --
+  a 1-byte `c3` matches its oracle trivially whether or not it begins a function. So index
+  every address actually ENTERED (`call`/`jmp rel32` targets + every stored dword landing in
+  `.text`: vtables, fn-pointer tables). Calibration: **83.7% of KNOWN manifest functions are
+  entered**, so requiring an xref is conservative. It **rejected 43,780 of 49,668 (88%)**.
+- `crawl/manifest_add_gaps.py --write` appended the **7,529 xref-confirmed starts** (1.60 MB
+  newly attributed), tagged `module=_gapscan` / `agent_source=gapscan`, with **no invented
+  prototypes**. Manifest **49,568 -> 57,097**.
+- `shape_author.py` now works `_gapscan` rows: for these the **shape IS the prototype** (the
+  classifier derives the signature from the bytes, verify_and_land proves it byte-for-byte).
+  Ordinary rows still require a complete Ghidra prototype.
+- Classifiers extracted to `crawl/shapes.py`, shared by `shape_author` and `gap_author`
+  (verified identical output after the extraction).
+- Post-merge validation: `pe_oracle` self-check held at 13,986/14,047 (no regression);
+  remaining over-capture **13,996 -> 11,582 rows** (7.0 -> 5.3 MB).
+
 ### Next in this lane
-1. Feed `manifest-gaps.tsv` (7,636 small gaps) into the crawl as new manifest rows.
+1. The other **11,582** over-captured rows: mostly gap starts with no xref (indirect-call-only
+   entry points). A vtable/RTTI-aware xref pass would confirm more of them.
 2. 452 non-genuine in 412 families, largest family 10. Mostly one authoring job each.
+3. Remaining regalloc near-misses need the permuter (`GetPBaseDef` 19v19, iterator `Begin`
+   13v13, CopyBackBufferToTexture x53, `_Find` x3, `00be5bb0` x10).
 2. `004193a0` (`DeleteData`, 36B ×3) is an OVER-CAPTURED manifest row (a `ret 4` then a second
    unlisted 13B function, no `0xCC` between) — needs `trim_overcapture.py` or a 2-function land.
 3. `00431020`/`00431242` (`UpdateShadowScene`) still diverge per instance.

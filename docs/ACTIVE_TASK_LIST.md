@@ -3,6 +3,99 @@
 *Reconciled 2026-08-05 from the canonical rebuild, focused frontend tests, and
 strict visual/retail parity gates.*
 
+## Active ForgeTest 64x64 transition lane (2026-08-13)
+
+The game install is currently restored to the stable retail baseline. The next
+implementation/probe sequence is deliberately narrow:
+
+1. **Restore the proven native bridge** in ForgeFSE:
+   `GetRegionNumberMapIsIn` → `LoadRegion(immediate, force)` → `SetPlayerPos`
+   → `ActivateNavMap` → `EntityTeleportToPosition`.
+2. **Build the Release Win32 DLL** and verify `git diff --check`.
+3. **Run one controlled ForgeTest probe** using the actual runtime BWD at
+   `data/Levels/FinalAlbion.bwd`. Slot 399 must resolve to the proven
+   `Filler_Darkwood_03` region 95; the region-141 substitution was a bad test
+   because the engine reads the nested data copy, not only the game-root copy.
+4. **Accept only a real arrival**: FSE must report `map=ForgeTest` and
+   `in_target_bounds=true`; a successful API return or unchanged Greatwood
+   position is insufficient.
+5. **Restore the stable DLL/BWD/config** after the probe and preserve the
+   resulting log and hashes under `work/heightmap_test/`.
+
+Current evidence: with the correct nested BWD, the rebuilt bridge resolves slot
+399 to region 95, force-loads it, snaps ground Z to `74.0727` (`spawn=75.0727`),
+and completes `SetPlayerPos` plus `ActivateNavMap`. The current 64x64 run still
+exits after the final `EntityTeleportToPosition` call before arrival verification;
+the older 32x32/archived run survives and reports `map=ForgeTest`. The stable
+install is restored after each probe. The next engineering target is therefore
+the 64x64 final-hero-handoff crash, not BWD ownership or Lua startup.
+
+### 2026-08-13 probe results
+
+- Added and built `GoToMapSlotPrepare`, which performs synchronous region
+  preparation but defers hero movement. A source-thread frame yield terminates
+  at the region handoff; a destination-owner Lua teleport returns but is a
+  no-op and leaves the hero on `GreatwoodTeleport`.
+- Added `GoToMapSlotRetailTransition` as a diagnostic wrapper around the exact
+  retail `CWorld::SetAsLoadingRegion` primitive. The corrected probe passed the
+  supplied target `(3360,2328,74)` and reached the native primitive, but retail
+  exits immediately after that call returns from the Lua callback.
+- These probes confirm the remaining implementation requirement: schedule the
+  retail transition from a safe engine-owned callback/frame, rather than
+  synchronously inside the quest callback. The installed game was restored to
+  the stable DLL, original Lua, matching root/data BWD hashes, and baseline
+  config after each run. Preserved logs are under
+  `work/heightmap_test/deferred_prepare_probe_20260813/` and
+  `work/heightmap_test/retail_transition_probe_20260813/`.
+
+### 2026-08-13 queued update-boundary implementation
+
+- Added a one-shot `GoToMapSlotRetailTransition` queue. The Lua binding now
+  records the live `CWorld*` and target vector and returns; it does not call
+  `SetAsLoadingRegion` while the quest callback is still on the stack.
+- Added a six-byte trampoline at retail `CMainGameComponent::Update`
+  (`0x00418289`). At the next engine-owned update boundary it consumes the
+  request and calls the retail `CWorld::SetAsLoadingRegion` state-machine
+  primitive, then lets the original update continue.
+- Release Win32 build succeeds with zero warnings/errors. A live injection
+  probe installed the update hook at `0x418289` and remained responsive, but
+  automated frontend input did not reach the gameplay smoke-test thread, so
+  this probe is not teleport-arrival evidence.
+- The game was restored after the probe to the stable DLL hash
+  `80A04F9B3D0C4B341C9964D3A68655BABFE78C36927050F9E05F6F4A859C8BC1`, stable
+  nested/root BWD hash
+  `7F403163EEDCEA936E0E1FC424757ECBF6E21F468F04765E414EC9FEFA1D74C6`, and
+  baseline Lua hash
+  `C2B81942CF6E6716E97785B43DC869BA32C93C806C91492D71AA636D621BF766`.
+
+### 2026-08-13 adult-save transition probes
+
+- The queued implementation was exercised from the real adult/free-roam
+  `Cornelio\Manual - Save1` through the normal frontend. The first ordering
+  armed `SetAsLoadingRegion` before the original main update and terminated
+  shortly afterward; no arrival was recorded.
+- Changed the detour to run the original `CMainGameComponent::Update` first,
+  then arm the queued transition after that update returns. The second run
+  survived the arm and remained in the retail loading splash for roughly 90
+  seconds before exiting. Its log contains both the queued marker and the
+  engine-boundary arm marker, but no `ForgeTest` arrival. This is a real
+  improvement and aligns with the reported `Filler_Greatwood` loading screen:
+  the retail state machine is advancing farther, not being ignored.
+- Preserved probe artifacts under
+  `work/heightmap_test/retail_transition_postupdate_probe_20260813/` and
+  restored the stable DLL/BWD/config/Lua install afterward.
+
+### 2026-08-13 queued probe follow-up
+
+- Re-ran the queued DLL with a temporary `SetSkipFrontend(TRUE)` config. The
+  update hook installed at `0x418289` and the process stayed responsive for
+  60 seconds, but no quest host or `ForgeTestEnter` thread was created. This
+  is consistent with the documented skip-frontend child/prologue path: it is
+  not an adult/free-roam save and cannot produce a valid transition request.
+- Restored the normal frontend config, baseline Lua, stable DLL, and verified
+  the stable BWD hash. The queued implementation remains source-only until a
+  proper adult-save gameplay run can exercise it.
+
 ## Current verified state
 
 - Curated reconstruction: **5,795** VC7.1-compiled candidates, with the
