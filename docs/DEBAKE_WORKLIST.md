@@ -4,6 +4,10 @@
 `__declspec(naked)` `_emit` byte-bakes. Bakes are byte-exact oracles at best; they
 are not faithful reconstructions. See memory `byte-purity-policy` / `faithful-decomp-policy`.
 
+**STATUS 2026-08-19 (end of session): 452 non-genuine remain across 412 families
+(largest 10). Regenerate the live table any time with
+`python tools/decomp_pipeline/crawl/bake_families.py`.**
+
 **⚠ CORRECTED 2026-08-19 (seventh pass): the purity metric was measuring the wrong thing.**
 The check was `"_emit" in source`, but **585 landed sources are `__declspec(naked)` / `__asm`
 blocks written with real MNEMONICS** rather than `_emit` byte lists. They are equally

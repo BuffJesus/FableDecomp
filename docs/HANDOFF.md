@@ -8781,12 +8781,75 @@ real body with no trimming needed.
 - Post-merge validation: `pe_oracle` self-check held at 13,986/14,047 (no regression);
   remaining over-capture **13,996 -> 11,582 rows** (7.0 -> 5.3 MB).
 
-### Next in this lane
-1. The other **11,582** over-captured rows: mostly gap starts with no xref (indirect-call-only
-   entry points). A vtable/RTTI-aware xref pass would confirm more of them.
-2. 452 non-genuine in 412 families, largest family 10. Mostly one authoring job each.
-3. Remaining regalloc near-misses need the permuter (`GetPBaseDef` 19v19, iterator `Begin`
-   13v13, CopyBackBufferToTexture x53, `_Find` x3, `00be5bb0` x10).
-2. `004193a0` (`DeleteData`, 36B ×3) is an OVER-CAPTURED manifest row (a `ret 4` then a second
-   unlisted 13B function, no `0xCC` between) — needs `trim_overcapture.py` or a 2-function land.
-3. `00431020`/`00431242` (`UpdateShadowScene`) still diverge per instance.
+### RTTI/vtable pass — done, 0 new xrefs (see docs/MANIFEST_GAP_RECOVERY.md)
+`crawl/rtti.py`: 2,665 vtables / 13,993 virtual-fn targets; 98.3% already known manifest
+functions (the parser's own correctness check) and 3,239 are `_gapscan` discoveries
+(independent corroboration of the gap recovery). **As an xref source it adds nothing** —
+vtables are aligned dword arrays, already covered: `slots not already in the index: 0`.
+No `.reloc` in the binary either (fixed base, stripped). Code immediates measured and
+REJECTED as evidence: 39.1% precision vs 83.7% recall for the dword scan.
+What it IS worth: **`crawl/name_gapscan.py` named 3,239 discovered rows**
+`sub_<addr>` -> `<Class>::vfunc_<slot>`, provenance preserved.
+
+---
+
+# RESUME HERE — 2026-08-19 session wrap (decomp / parity lane)
+
+## State
+| | |
+|---|---:|
+| landed catalog entries | **17,100** (was 11,135 at session start) |
+| parity | 7,341 MATCH + 9,576 RELOCATION_MATCH, **55 DIFFER** (was 56) |
+| manifest rows | **57,097** (was 49,568) |
+| non-genuine sources (`_emit` + naked `__asm`) | **452** (was 689 once measured correctly) |
+| gates | CANDIDATE_BUILD PASS · comparer 0 new differing · VISUAL_BOOT_CHECKPOINT PASS |
+
+11 commits, `6fe27c5`..`3bf41b2`. Working tree also carries other lanes' edits (textures,
+ghidra_out, lift, permuter examples) that were already modified at session start — untouched.
+
+## The two corrections that matter most (don't re-derive these)
+1. **The purity metric was wrong all day until `70776a8`.** It checked `"_emit" in source`, but
+   585 landed sources are `__declspec(naked)`/`__asm` with real MNEMONICS. `crawl/purity.py`
+   is now the single source of truth. Any number reported before that commit understated the
+   remaining work.
+2. **rowtrim must never trim past an indirect jump.** Caught before shipping: the two documented
+   jump-table functions would have been truncated 120->102 (`00557ca0`) and 147->56 (`005578a0`),
+   and the crawl would have authored against truncated oracles. Audit confirmed **0 of 3,655
+   session landings used a truncated oracle**.
+
+## Standing rules earned the hard way
+- **Pre-verify before un-landing.** Two incidents (crossfam 245 rows, debake_family 10 rows)
+  left addresses sourceless mid-run. Recovery is `git checkout --` on catalog/oracle/src/tests
+  plus `git show HEAD:` for individual blocks. All de-bake tools now pre-verify. Commit before
+  a large batch so `git checkout` is a clean undo. See memory `debake-preverify-rule`.
+- **Guards must be relocation-tolerant** (`crawl/bytematch.py`). Masking only `call rel32`
+  falsely refuses any source differing by a DATA relocation (`c706 <imm32>`) — cost a whole
+  cross-family pass and a 23-member family before it was found.
+- **A discovered function start needs an xref.** Byte parity cannot confirm one.
+
+## Pick up here (highest value first)
+1. **Author the remaining `_gapscan` rows.** 4,290 discovered rows are still unnamed/unlanded and
+   ~7,600 gap regions are 4-64 bytes. `crawl/shape_author.py --unlanded` drains anything matching
+   a known shape; the rest need hand-authoring one at a time.
+2. **452 non-genuine sources**, 412 families, largest 10. `crawl/bake_families.py` lists them
+   live; `crawl/debake_family.py <tmpl> <src> <prefix> --apply` lands a family once one genuine
+   head verifies.
+3. **The permuter is now the real blocker** for what is left — these are confirmed-correct models
+   at exactly the right length, differing only in register choice: `GetPBaseDef` 19v19, iterator
+   `Begin` 13v13, `CopyBackBufferToTexture` x53, `_Find` x3, `00be5bb0` x10. A permuter kit
+   already exists at `tools/permuter/`.
+4. **~11.5k over-captured rows remain unconfirmable statically** (indirect-call-only entry points,
+   no static pointer anywhere). Needs a live trace or Ghidra analysis — do NOT write a third
+   static scanner; rtti/immediates were both measured and came up empty.
+
+## Unchanged, still USER-driven (other lanes)
+- Hero-in-world Phase A: debugger live-oracle capture of GFMain->CGame::Play (`docs/HERO_IN_WORLD_ROADMAP.md` §6).
+- Terrain: x32dbg BP `0xBDD1B2` to root-cause the OpenStaticMap `field_04` crash.
+
+## Tool map (all under tools/decomp_pipeline/crawl/)
+`purity.py` genuine-vs-baked · `rowtrim.py` control-flow row trim · `bytematch.py` reloc-tolerant
+compare · `bake_families.py` remaining non-genuine by family · `debake_family.py` one family from
+one head · `shape_author.py` + `shapes.py` parameterised shape authoring · `harvest_all.py`
+whole-manifest family sweep · `crossfam.py` nearest-length source pairing · `manifest_gaps.py`
+over-capture report · `xrefs.py` entered-address index · `manifest_add_gaps.py` merge discovered
+starts · `gap_author.py` author from gap regions · `rtti.py` vtables · `name_gapscan.py` naming.
