@@ -58,3 +58,49 @@ Measured on 2026-08-19: **26.3% of the un-landed pool (5,388 rows)** was in this
   "empty function" matches its oracle trivially whether or not that byte begins a function.
 - **Provenance stays visible.** `_gapscan` rows are always distinguishable from Ghidra-derived
   ones, and they carry no invented prototype.
+
+## The vtable / RTTI pass (2026-08-19) — and what it did *not* do
+
+Run to try to confirm more of the 11,582 still-over-captured rows. `crawl/rtti.py` parses the
+MSVC RTTI graph (TypeDescriptor -> CompleteObjectLocator -> vftable) and enumerates every class
+vtable and slot.
+
+| | |
+|---|---:|
+| TypeDescriptors | 2,558 |
+| CompleteObjectLocators / vtables | 2,665 |
+| unique virtual-function targets | 13,993 |
+| …already known manifest functions | 13,762 (**98.3%**) |
+| …that are `_gapscan` discoveries | **3,239** |
+
+The 98.3% hit rate is the parser's own correctness check: a broken RTTI walk yields garbage
+addresses, not known function starts. And 3,239 of the gap-recovered starts turning out to be
+class vtable slots is *independent corroboration* of the gap recovery itself.
+
+**But as an xref source it adds nothing: 0 new confirmations.** Vtables are aligned dword
+arrays, so every slot was already caught by the existing "stored dword landing in .text" scan.
+The measurement, plainly: `vtable slots not already in the xref index: 0`, and
+`unconfirmed gap starts that RTTI would newly confirm: 0`.
+
+**Code immediates were measured and rejected too.** `push imm32` / `mov r32,imm32` operands are
+unaligned and therefore invisible to the dword scan, so they looked like the missing signal:
+2,764 candidate targets, 2,181 of them new. But only **39.1%** are known manifest starts, versus
+83.7% recall for the dword index — most are ordinary large constants that happen to land in
+`.text`. Admitting them would trade a conservative filter for a noisy one. Don't re-try this
+without a second corroborating signal (alignment + a real prologue, say).
+
+### What the pass IS worth: names
+A vtable slot tells you what the function *is*. `crawl/name_gapscan.py` renames the discovered
+rows from `sub_<addr>` to `<Class>::vfunc_<slot>` and sets their module to the class —
+**3,239 rows named**, provenance preserved (`agent_source=gapscan`,
+`agent_source_path=rtti-vtables.tsv`), Ghidra-derived names never overwritten. Full table in
+`rebuild/manifest/rtti-vtables.tsv`.
+
+Template names need care: the type-descriptor name for a template class reverses into nonsense
+(`_N::?$CPersistContext_TransferableComponent`), so `demangle_class` keeps the template base
+name and drops the argument soup -> `CPersistContext_TransferableComponent`.
+
+### Remaining
+11,582 over-captured rows still hold unconfirmed starts. They are reached only through indirect
+calls with no static pointer anywhere, so no static evidence source will confirm them — that
+needs either a live trace or Ghidra's own analysis, not another scan.
