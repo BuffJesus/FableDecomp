@@ -99018,6 +99018,34 @@ $catalog = @(
         TestSource = '00/65/CEngineInternalPrimitiveBase_AddChildPrimitive_0065d966_test.cpp'
         PassPattern = 'PASS_0065d966'
     }
+    [pscustomobject]@{
+        Address = '00c334f0'
+        Module = '_global'
+        Source = '00/c3/global_operator_00c334f0.cpp'
+        TestSource = '00/c3/global_operator_00c334f0_test.cpp'
+        PassPattern = 'PASS_00c334f0'
+    }
+    [pscustomobject]@{
+        Address = '00830100'
+        Module = '_global'
+        Source = '00/83/global_CanCollideWithLandscape_00830100.cpp'
+        TestSource = '00/83/global_CanCollideWithLandscape_00830100_test.cpp'
+        PassPattern = 'PASS_00830100'
+    }
+    [pscustomobject]@{
+        Address = '00a4c1c0'
+        Module = '_global'
+        Source = '00/a4/global_Sizeof_00a4c1c0.cpp'
+        TestSource = '00/a4/global_Sizeof_00a4c1c0_test.cpp'
+        PassPattern = 'PASS_00a4c1c0'
+    }
+    [pscustomobject]@{
+        Address = '00690ac0'
+        Module = '_global'
+        Source = '00/69/global_ProcessWhilePaused_00690ac0.cpp'
+        TestSource = '00/69/global_ProcessWhilePaused_00690ac0_test.cpp'
+        PassPattern = 'PASS_00690ac0'
+    }
 )
 
 $requestedAddresses = @(

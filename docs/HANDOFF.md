@@ -8729,8 +8729,35 @@ USER-driven debugger work and unchanged).
   the crawl's oracle generation (`next_smallest.py`, `pe_oracle.py`). rowtrim is now validated
   against all 14,043 proven rows (14,039 untouched; the 4 it cuts are genuinely over-captured).
 
+### Eighth pass: rowtrim WIRED INTO THE CRAWL ORACLE (the structural fix)
+The over-capture defect is now fixed at the source, not just in the de-bake lane.
+
+- `pe_oracle.py` and `crawl/next_smallest.py` both run `crawl/rowtrim.py` on every row.
+  `pe_oracle`'s own validation against the 14k proven oracle rows went **13,198 -> 13,985
+  matching (845 -> 62 mismatches)**: a 93% reduction in oracle-boundary defects.
+- `next_smallest.py` also had a **stale scratchpad path** from an old session (it wrote its
+  oracle to a dead directory); fixed.
+- **⚠ CAUGHT A BUG BEFORE IT SHIPPED: rowtrim over-trimmed jump-table functions.** Capstone
+  cannot resolve `jmp [table+eax*4]`, so every switch case after it looked unreachable and the
+  first `ret` was taken as the end — the two documented jump-table functions would have been cut
+  120 -> 102 (`00557ca0`) and 147 -> 56 (`005578a0`). rowtrim now sets an `unresolved` flag on
+  ANY indirect jump and refuses to trim after it. Deliberately conservative: a too-long oracle
+  fails loudly, a too-short one lands a wrong body silently.
+- **Integrity audit of the whole day: all 3,655 session landings re-checked against the guarded
+  trim — ZERO used a truncated oracle.** (The de-bake work targeted small functions, which do
+  not carry jump tables.) Proven-row disagreements are down to 3, all genuinely over-captured
+  stored oracles.
+- End-to-end proof: regenerated a crawl batch — **10 of the first 12 rows were over-captured**,
+  some catastrophically (441->12, 221->12, 209->12), i.e. arithmetically impossible before.
+  Authored and landed 4 of them (2 MATCH + 2 RELOCATION_MATCH).
+- New `crawl/manifest_gaps.py` -> `rebuild/manifest/manifest-gaps.tsv`: every trim point is a
+  function start the manifest does not know about. **13,996 newly discovered function starts,
+  ~7.0 MB of unlisted code**, of which **7,636 gaps are 4-64 bytes** and immediately authorable.
+  That is the next crawl fuel, and real RE output for Ghidra/coverage/FableForge.
+
 ### Next in this lane
-1. 452 non-genuine in 412 families, largest family 10. Mostly one authoring job each.
+1. Feed `manifest-gaps.tsv` (7,636 small gaps) into the crawl as new manifest rows.
+2. 452 non-genuine in 412 families, largest family 10. Mostly one authoring job each.
 2. `004193a0` (`DeleteData`, 36B ×3) is an OVER-CAPTURED manifest row (a `ret 4` then a second
    unlisted 13B function, no `0xCC` between) — needs `trim_overcapture.py` or a 2-function land.
 3. `00431020`/`00431242` (`UpdateShadowScene`) still diverge per instance.

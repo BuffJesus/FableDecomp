@@ -5,6 +5,9 @@ Validates against the 94 known oracle rows before trusting."""
 import csv, struct, sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent / "crawl"))
+from rowtrim import trim_body
+
 ROOT = Path(r"D:\Documents\FableTLC")
 EXE = Path(r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe")
 IMAGE_BASE = 0x400000
@@ -67,9 +70,13 @@ def main():
             if rl and i+rl<L and raw[i+rl]==0xCC:
                 j=i+rl
                 while j<L and raw[j]==0xCC: j+=1
-                if j<L: return raw[:i+rl]
+                if j<L: return trim_body(raw[:i+rl], va)[0]
             i+=1
-        return raw
+        # No padded boundary found. The next real function can still be packed in
+        # with NO int3 between it and this one, so fall back to the control-flow
+        # trim (crawl/rowtrim.py), which cuts at the first terminator nothing
+        # branches past. It refuses to cut on an incomplete decode.
+        return trim_body(raw, va)[0]
     # validate vs known oracle
     oracle={r["address"].lower():r for r in read_tsv(ROOT/"rebuild/oracles/auto-re-candidates.tsv")}
     ok=bad=0; mism=[]

@@ -14042,3 +14042,7 @@ address	name	length	bytes
 00654f46	AddChildPrimitive	17	558bec515733c08d7dffaa8a45ff5fc9c3
 00654f57	AddChildPrimitive	17	558bec515733c08d7dffaa8a45ff5fc9c3
 0065d966	AddChildPrimitive	17	558bec515733c08d7dffaa8a45ff5fc9c3
+00c334f0	operator()	12	8b4c24048b01ff5004c20400
+00830100	CanCollideWithLandscape	12	8a81c8010000c0e8052401c3
+00a4c1c0	Sizeof	12	8b4930e81804010083c07cc3
+00690ac0	CInputProcessCutScene::ProcessWhilePaused	12	a190873b018a80f9000000c3

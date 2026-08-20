@@ -36,6 +36,7 @@ def trim_body(body, va=0x400000):
         return body, None
     reach = 0          # furthest byte offset any branch inside the row targets
     consumed = 0
+    unresolved = False  # saw a computed branch whose targets we cannot enumerate
     for insn in _MD.disasm(body, va):
         end = insn.address - va + insn.size
         consumed = end
@@ -47,6 +48,17 @@ def trim_body(body, va=0x400000):
                 # a branch out of the row is a tail call, not internal control flow.
                 if 0 <= target < len(body) and target > reach:
                     reach = target
+            else:
+                # An INDIRECT jump -- `jmp [table + eax*4]` from a dense switch, or
+                # `jmp reg`. Its targets live in a relocated jump table we cannot read
+                # here, so every later `ret` may still be a reachable switch case.
+                # Refuse to trim anything after this point: over-trimming would hand
+                # the crawl a truncated oracle that can never match the real function.
+                # (Proven on the two documented jump-table functions: 00557ca0 would
+                # be cut 120 -> 102 and 005578a0 147 -> 56 without this guard.)
+                unresolved = True
+        if unresolved:
+            continue
         if insn.mnemonic in _TERMINATORS and end > reach and end < len(body):
             # Everything after a terminator is a different function ONLY if it is
             # actually code. A tail of int3/nop is this function's own alignment

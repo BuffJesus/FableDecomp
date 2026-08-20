@@ -4,11 +4,14 @@ functions that have a complete prototype + known calling convention.
 Usage: python next_smallest.py <N> <out_prefix> [min_len]"""
 import csv, struct, re, json, glob, sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from rowtrim import trim_body   # cut over-captured rows to their real body
 N=int(sys.argv[1]) if len(sys.argv)>1 else 16
 PREFIX=sys.argv[2] if len(sys.argv)>2 else "gen_batch"
 MINLEN=int(sys.argv[3]) if len(sys.argv)>3 else 12
 ROOT=Path(r"D:\Documents\FableTLC")
-SCR=Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\d9037860-7095-40c8-8a12-a018c1d9a369\scratchpad")
+SCR=Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\7fcf5fa1-31b0-4034-8e81-be42686888b3\scratchpad")
 EXE=Path(r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe")
 data=EXE.read_bytes()
 e_lfanew=struct.unpack_from("<I",data,0x3C)[0]; coff=e_lfanew+4
@@ -40,7 +43,10 @@ def body(va):
     if o is None or nx is None: return b""
     raw=data[o:o+(nx-va)]; e=len(raw)
     while e>0 and raw[e-1] in (0xCC,0x90): e-=1
-    return raw[:e]
+    # A manifest row spans [addr, next_manifest_addr); when the next real function is
+    # missing from the manifest the row swallows it, so the oracle can never reach
+    # parity. rowtrim cuts at the first terminator nothing branches past.
+    return trim_body(raw[:e], va)[0]
 cand=[]
 for r in rows:
     a=r.get("address"); 
