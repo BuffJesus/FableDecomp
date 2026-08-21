@@ -188,6 +188,31 @@ This is not promoted as the runtime candidate yet: the same recovered normal
 also controls five direction-face booleans used during layer topology creation,
 and the current donor topology has not been rebuilt.
 
+## Retail layer-topology rule
+
+Direct decompilation of retail `ReadThemesAndCreateLayers` (`0x009c0c30`) and
+`AddPolysSurroundingPointWithMask` (`0x009bf060`) confirms the topology sequence:
+
+1. Read three theme IDs and the first two blend bytes from the map owner.
+2. Zero unavailable theme levels and renormalize the surviving three weights to
+   integer values summing to 255.
+3. Merge identical base texture tuples and identical cliff texture tuples in
+   separate passes, adding their weights.
+4. Ignore a merged contribution unless its weight is strictly greater than
+   `0x10`.
+5. Base textures request mapping direction 0. Each cliff contribution requests
+   directions 1 through 4 independently.
+6. For each contributing vertex, visit its four surrounding cells. Under the
+   parity-selected triangle split, add a triangle only if the contributing
+   point is one of its three vertices and at least one of those vertices has
+   the requested direction's `BuildMapDirMask` face boolean set.
+
+Consequently, simple layer-vertex presence is not an oracle for the face mask:
+a vertex with zero direction blend can still be emitted as a supporting corner
+of a triangle activated by either of its neighbours. A valid topology comparator
+must decode per-layer index buffers and reconstruct triangles, not compare the
+TSV vertex set directly.
+
 ## Next terrain step
 
 The corrected ForgeTest WLD at `(2784,2560)` automatically resolves
