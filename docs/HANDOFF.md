@@ -9089,3 +9089,37 @@ either mask (24 / 24), re-reading the member instead of caching (26), swapping t
 declarations (136 — it perturbs codegen 500 bytes earlier), and 390 annealer compiles (24).
 Whatever fixes it has to change the accumulator choice without disturbing the surrounding
 block; nothing tried does that.
+
+## Round 8 — the "unattributed writer" is the repo's OWN 15-minute automation
+
+Two shared ledgers kept reverting mid-session. The cause is not a rogue process: this repo is
+driven by **five Windows scheduled tasks**, and **`FableTLC Rebuild Refresh` runs
+`tools/run_rebuild_refresh.ps1` every 15 minutes** (`FableTLC Auto RE Wave 2` every 15 min,
+`FableTLC Local Parity Queue` hourly, plus two logon-triggered ones). The clobber times
+19:23 / 19:54 / 20:23 are just that cadence. Peer sessions and Syncthing were both excluded
+(different repos; `git reflog` shows no stray checkout).
+
+**One root cause, two places — and it is the defining hazard of this lane.** Ghidra can only
+export an oracle, or emit a manifest row, for an address it already knows is a function.
+Thousands of landed candidates sit at starts DISCOVERED from the binary
+(`manifest_gaps -> xrefs -> manifest_add_gaps`), which the Ghidra DB has never heard of. So
+every regeneration silently discarded them:
+
+| ledger | regenerator | what was lost |
+|---|---|---|
+| `rebuild/manifest/functions.tsv` | `bootstrap_rebuild_tree.py` | 7,529 discovered starts (57,097 -> 49,568) **and** 3,239 RTTI names |
+| `rebuild/oracles/auto-re-candidates.tsv` | `ExportCandidateOracles.ps1` | 3,584 rows -> those functions revert to "compiled but never byte-compared" |
+
+Both failures are **silently wrong, never loud**: the crawl rejects good work as
+`OUTSIDE_MANIFEST`, and the parity totals quietly shrink. Fixed at the source — the manifest
+regenerator now re-runs `manifest_add_gaps.py` then `name_gapscan.py` (order matters), and the
+oracle exporter now runs `backfill_oracles.py --write`. All are idempotent (~32 s/cycle), and a
+full regeneration was verified to reproduce the manifest exactly: 0 rows lost, 0 names changed.
+Guards were added too, since neither failure announced itself: `verify_and_land.py` refuses to
+run on a manifest missing its `_gapscan` rows, and the comparer warns when a landed
+manifest-start candidate has no oracle row.
+
+**Working in this repo means sharing it with that pipeline.** It rebuilds candidates, exports
+oracles, re-compares parity, and regenerates the manifest and dashboards every 15 minutes. Any
+measurement taken while it is mid-cycle is suspect — check `wc -l rebuild/manifest/functions.tsv`
+(57,098) and `rebuild/oracles/auto-re-candidates.tsv` (18,071) before trusting a number.
