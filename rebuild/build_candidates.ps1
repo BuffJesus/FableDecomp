@@ -126640,6 +126640,426 @@ $catalog = @(
         TestSource = '00/f3/CBase_CBase_00f36c90_test.cpp'
         PassPattern = 'PASS_00f36c90'
     }
+    [pscustomobject]@{
+        Address = '00418fbc'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/41/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00418fbc.cpp'
+        TestSource = '00/41/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00418fbc_test.cpp'
+        PassPattern = 'PASS_00418fbc'
+    }
+    [pscustomobject]@{
+        Address = '0041ba30'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/41/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0041ba30.cpp'
+        TestSource = '00/41/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0041ba30_test.cpp'
+        PassPattern = 'PASS_0041ba30'
+    }
+    [pscustomobject]@{
+        Address = '00428905'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/42/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00428905.cpp'
+        TestSource = '00/42/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00428905_test.cpp'
+        PassPattern = 'PASS_00428905'
+    }
+    [pscustomobject]@{
+        Address = '00428928'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/42/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00428928.cpp'
+        TestSource = '00/42/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00428928_test.cpp'
+        PassPattern = 'PASS_00428928'
+    }
+    [pscustomobject]@{
+        Address = '004c5d70'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4c/NGraphicAppearanceCTCGraphicAppearance_vfunc10_004c5d70.cpp'
+        TestSource = '00/4c/NGraphicAppearanceCTCGraphicAppearance_vfunc10_004c5d70_test.cpp'
+        PassPattern = 'PASS_004c5d70'
+    }
+    [pscustomobject]@{
+        Address = '0056c050'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/56/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0056c050.cpp'
+        TestSource = '00/56/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0056c050_test.cpp'
+        PassPattern = 'PASS_0056c050'
+    }
+    [pscustomobject]@{
+        Address = '005ba124'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/5b/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_005ba124.cpp'
+        TestSource = '00/5b/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_005ba124_test.cpp'
+        PassPattern = 'PASS_005ba124'
+    }
+    [pscustomobject]@{
+        Address = '005c05d5'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/5c/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_005c05d5.cpp'
+        TestSource = '00/5c/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_005c05d5_test.cpp'
+        PassPattern = 'PASS_005c05d5'
+    }
+    [pscustomobject]@{
+        Address = '00654b36'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654b36.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654b36_test.cpp'
+        PassPattern = 'PASS_00654b36'
+    }
+    [pscustomobject]@{
+        Address = '00654b7b'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654b7b.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654b7b_test.cpp'
+        PassPattern = 'PASS_00654b7b'
+    }
+    [pscustomobject]@{
+        Address = '00654bc0'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654bc0.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654bc0_test.cpp'
+        PassPattern = 'PASS_00654bc0'
+    }
+    [pscustomobject]@{
+        Address = '00654c05'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654c05.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654c05_test.cpp'
+        PassPattern = 'PASS_00654c05'
+    }
+    [pscustomobject]@{
+        Address = '00654c4a'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654c4a.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654c4a_test.cpp'
+        PassPattern = 'PASS_00654c4a'
+    }
+    [pscustomobject]@{
+        Address = '00654c8f'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654c8f.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654c8f_test.cpp'
+        PassPattern = 'PASS_00654c8f'
+    }
+    [pscustomobject]@{
+        Address = '00654dfd'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654dfd.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00654dfd_test.cpp'
+        PassPattern = 'PASS_00654dfd'
+    }
+    [pscustomobject]@{
+        Address = '0065d806'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065d806.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065d806_test.cpp'
+        PassPattern = 'PASS_0065d806'
+    }
+    [pscustomobject]@{
+        Address = '0065d822'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065d822.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065d822_test.cpp'
+        PassPattern = 'PASS_0065d822'
+    }
+    [pscustomobject]@{
+        Address = '0065d87f'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065d87f.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065d87f_test.cpp'
+        PassPattern = 'PASS_0065d87f'
+    }
+    [pscustomobject]@{
+        Address = '0065d89b'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065d89b.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065d89b_test.cpp'
+        PassPattern = 'PASS_0065d89b'
+    }
+    [pscustomobject]@{
+        Address = '0065d8d0'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065d8d0.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065d8d0_test.cpp'
+        PassPattern = 'PASS_0065d8d0'
+    }
+    [pscustomobject]@{
+        Address = '0065d8f6'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065d8f6.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065d8f6_test.cpp'
+        PassPattern = 'PASS_0065d8f6'
+    }
+    [pscustomobject]@{
+        Address = '0065da52'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065da52.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065da52_test.cpp'
+        PassPattern = 'PASS_0065da52'
+    }
+    [pscustomobject]@{
+        Address = '0065db2a'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db2a.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db2a_test.cpp'
+        PassPattern = 'PASS_0065db2a'
+    }
+    [pscustomobject]@{
+        Address = '0065db43'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db43.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db43_test.cpp'
+        PassPattern = 'PASS_0065db43'
+    }
+    [pscustomobject]@{
+        Address = '0065db5c'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db5c.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db5c_test.cpp'
+        PassPattern = 'PASS_0065db5c'
+    }
+    [pscustomobject]@{
+        Address = '0065db75'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db75.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db75_test.cpp'
+        PassPattern = 'PASS_0065db75'
+    }
+    [pscustomobject]@{
+        Address = '0065db8e'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db8e.cpp'
+        TestSource = '00/65/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0065db8e_test.cpp'
+        PassPattern = 'PASS_0065db8e'
+    }
+    [pscustomobject]@{
+        Address = '0066a910'
+        Module = 'CTCSoundPlayer'
+        Source = '00/66/CTCSoundPlayer_vfunc10_0066a910.cpp'
+        TestSource = '00/66/CTCSoundPlayer_vfunc10_0066a910_test.cpp'
+        PassPattern = 'PASS_0066a910'
+    }
+    [pscustomobject]@{
+        Address = '00704430'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/70/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00704430.cpp'
+        TestSource = '00/70/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00704430_test.cpp'
+        PassPattern = 'PASS_00704430'
+    }
+    [pscustomobject]@{
+        Address = '0079dcb0'
+        Module = 'C3DMeshInfo'
+        Source = '00/79/C3DMeshInfo_HasPhysicsMesh_0079dcb0.cpp'
+        TestSource = '00/79/C3DMeshInfo_HasPhysicsMesh_0079dcb0_test.cpp'
+        PassPattern = 'PASS_0079dcb0'
+    }
+    [pscustomobject]@{
+        Address = '007bed00'
+        Module = 'NThingShot::CTCShotDefinitionThrow'
+        Source = '00/7b/NThingShotCTCShotDefinitionThrow_vfunc14_007bed00.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionThrow_vfunc14_007bed00_test.cpp'
+        PassPattern = 'PASS_007bed00'
+    }
+    [pscustomobject]@{
+        Address = '007f8bd0'
+        Module = 'CTCAnimatingObject'
+        Source = '00/7f/CTCAnimatingObject_vfunc10_007f8bd0.cpp'
+        TestSource = '00/7f/CTCAnimatingObject_vfunc10_007f8bd0_test.cpp'
+        PassPattern = 'PASS_007f8bd0'
+    }
+    [pscustomobject]@{
+        Address = '008562d0'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_IsBlockCounter_008562d0.cpp'
+        TestSource = '00/85/CCombatActionBase_IsBlockCounter_008562d0_test.cpp'
+        PassPattern = 'PASS_008562d0'
+    }
+    [pscustomobject]@{
+        Address = '008aa6a0'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/8a/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_008aa6a0.cpp'
+        TestSource = '00/8a/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_008aa6a0_test.cpp'
+        PassPattern = 'PASS_008aa6a0'
+    }
+    [pscustomobject]@{
+        Address = '008aa9b0'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/8a/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_008aa9b0.cpp'
+        TestSource = '00/8a/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_008aa9b0_test.cpp'
+        PassPattern = 'PASS_008aa9b0'
+    }
+    [pscustomobject]@{
+        Address = '008fcf30'
+        Module = 'CThingFilter_IsValid'
+        Source = '00/8f/CThingFilterIsValid_operator_008fcf30.cpp'
+        TestSource = '00/8f/CThingFilterIsValid_operator_008fcf30_test.cpp'
+        PassPattern = 'PASS_008fcf30'
+    }
+    [pscustomobject]@{
+        Address = '009d69a0'
+        Module = 'CCountedPointer<CBankFileAsyncEntry>'
+        Source = '00/9d/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_009d69a0.cpp'
+        TestSource = '00/9d/CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_009d69a0_test.cpp'
+        PassPattern = 'PASS_009d69a0'
+    }
+    [pscustomobject]@{
+        Address = '009e9ab0'
+        Module = 'CDateAndTime'
+        Source = '00/9e/CDateAndTime_CDateAndTime_009e9ab0.cpp'
+        TestSource = '00/9e/CDateAndTime_CDateAndTime_009e9ab0_test.cpp'
+        PassPattern = 'PASS_009e9ab0'
+    }
+    [pscustomobject]@{
+        Address = '009e9c60'
+        Module = 'C3DMeshInfo'
+        Source = '00/9e/C3DMeshInfo_HasPhysicsMesh_009e9c60.cpp'
+        TestSource = '00/9e/C3DMeshInfo_HasPhysicsMesh_009e9c60_test.cpp'
+        PassPattern = 'PASS_009e9c60'
+    }
+    [pscustomobject]@{
+        Address = '009f76b0'
+        Module = '_global'
+        Source = '00/9f/global_E2_009f76b0.cpp'
+        TestSource = '00/9f/global_E2_009f76b0_test.cpp'
+        PassPattern = 'PASS_009f76b0'
+    }
+    [pscustomobject]@{
+        Address = '009f76e0'
+        Module = '_global'
+        Source = '00/9f/global_E2_009f76e0.cpp'
+        TestSource = '00/9f/global_E2_009f76e0_test.cpp'
+        PassPattern = 'PASS_009f76e0'
+    }
+    [pscustomobject]@{
+        Address = '009f7740'
+        Module = '_global'
+        Source = '00/9f/global_E2_009f7740.cpp'
+        TestSource = '00/9f/global_E2_009f7740_test.cpp'
+        PassPattern = 'PASS_009f7740'
+    }
+    [pscustomobject]@{
+        Address = '009f77a0'
+        Module = '_global'
+        Source = '00/9f/global_E2_009f77a0.cpp'
+        TestSource = '00/9f/global_E2_009f77a0_test.cpp'
+        PassPattern = 'PASS_009f77a0'
+    }
+    [pscustomobject]@{
+        Address = '00a18f00'
+        Module = 'CNavigatorFlyer'
+        Source = '00/a1/CNavigatorFlyer_MoveToNavLineOfSightProximity_00a18f00.cpp'
+        TestSource = '00/a1/CNavigatorFlyer_MoveToNavLineOfSightProximity_00a18f00_test.cpp'
+        PassPattern = 'PASS_00a18f00'
+    }
+    [pscustomobject]@{
+        Address = '00a39de0'
+        Module = 'CWADFile'
+        Source = '00/a3/CWADFile_IsOpen_00a39de0.cpp'
+        TestSource = '00/a3/CWADFile_IsOpen_00a39de0_test.cpp'
+        PassPattern = 'PASS_00a39de0'
+    }
+    [pscustomobject]@{
+        Address = '00a3a7e0'
+        Module = 'C3DMeshInfo'
+        Source = '00/a3/C3DMeshInfo_HasPhysicsMesh_00a3a7e0.cpp'
+        TestSource = '00/a3/C3DMeshInfo_HasPhysicsMesh_00a3a7e0_test.cpp'
+        PassPattern = 'PASS_00a3a7e0'
+    }
+    [pscustomobject]@{
+        Address = '00a5f220'
+        Module = 'CStreamingFontDataBankEntry'
+        Source = '00/a5/CStreamingFontDataBankEntry_IsLoaded_00a5f220.cpp'
+        TestSource = '00/a5/CStreamingFontDataBankEntry_IsLoaded_00a5f220_test.cpp'
+        PassPattern = 'PASS_00a5f220'
+    }
+    [pscustomobject]@{
+        Address = '00a63550'
+        Module = 'CFontDataBankEntry'
+        Source = '00/a6/CFontDataBankEntry_IsLoaded_00a63550.cpp'
+        TestSource = '00/a6/CFontDataBankEntry_IsLoaded_00a63550_test.cpp'
+        PassPattern = 'PASS_00a63550'
+    }
+    [pscustomobject]@{
+        Address = '00ac20a0'
+        Module = 'CThingFilter_IsValid'
+        Source = '00/ac/CThingFilterIsValid_operator_00ac20a0.cpp'
+        TestSource = '00/ac/CThingFilterIsValid_operator_00ac20a0_test.cpp'
+        PassPattern = 'PASS_00ac20a0'
+    }
+    [pscustomobject]@{
+        Address = '00ac20b0'
+        Module = 'CThingFilter_IsValid'
+        Source = '00/ac/CThingFilterIsValid_operator_00ac20b0.cpp'
+        TestSource = '00/ac/CThingFilterIsValid_operator_00ac20b0_test.cpp'
+        PassPattern = 'PASS_00ac20b0'
+    }
+    [pscustomobject]@{
+        Address = '00ac20c0'
+        Module = 'CThingFilter_IsValid'
+        Source = '00/ac/CThingFilterIsValid_operator_00ac20c0.cpp'
+        TestSource = '00/ac/CThingFilterIsValid_operator_00ac20c0_test.cpp'
+        PassPattern = 'PASS_00ac20c0'
+    }
+    [pscustomobject]@{
+        Address = '00c1df30'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c1df30_00c1df30.cpp'
+        TestSource = '00/c1/gapscan_sub00c1df30_00c1df30_test.cpp'
+        PassPattern = 'PASS_00c1df30'
+    }
+    [pscustomobject]@{
+        Address = '00c31960'
+        Module = 'CGraphicFrame'
+        Source = '00/c3/CGraphicFrame_IsInitialised_00c31960.cpp'
+        TestSource = '00/c3/CGraphicFrame_IsInitialised_00c31960_test.cpp'
+        PassPattern = 'PASS_00c31960'
+    }
+    [pscustomobject]@{
+        Address = '00c35130'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c35130_00c35130.cpp'
+        TestSource = '00/c3/gapscan_sub00c35130_00c35130_test.cpp'
+        PassPattern = 'PASS_00c35130'
+    }
+    [pscustomobject]@{
+        Address = '00c39ef0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c39ef0_00c39ef0.cpp'
+        TestSource = '00/c3/gapscan_sub00c39ef0_00c39ef0_test.cpp'
+        PassPattern = 'PASS_00c39ef0'
+    }
+    [pscustomobject]@{
+        Address = '00c3a0f0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c3a0f0_00c3a0f0.cpp'
+        TestSource = '00/c3/gapscan_sub00c3a0f0_00c3a0f0_test.cpp'
+        PassPattern = 'PASS_00c3a0f0'
+    }
+    [pscustomobject]@{
+        Address = '00c3a2f0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c3a2f0_00c3a2f0.cpp'
+        TestSource = '00/c3/gapscan_sub00c3a2f0_00c3a2f0_test.cpp'
+        PassPattern = 'PASS_00c3a2f0'
+    }
+    [pscustomobject]@{
+        Address = '00c3a500'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c3a500_00c3a500.cpp'
+        TestSource = '00/c3/gapscan_sub00c3a500_00c3a500_test.cpp'
+        PassPattern = 'PASS_00c3a500'
+    }
+    [pscustomobject]@{
+        Address = '00c3a6e0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c3a6e0_00c3a6e0.cpp'
+        TestSource = '00/c3/gapscan_sub00c3a6e0_00c3a6e0_test.cpp'
+        PassPattern = 'PASS_00c3a6e0'
+    }
+    [pscustomobject]@{
+        Address = '00c5d600'
+        Module = '_gapscan'
+        Source = '00/c5/gapscan_sub00c5d600_00c5d600.cpp'
+        TestSource = '00/c5/gapscan_sub00c5d600_00c5d600_test.cpp'
+        PassPattern = 'PASS_00c5d600'
+    }
 )
 
 $requestedAddresses = @(

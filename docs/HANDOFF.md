@@ -8922,3 +8922,25 @@ Same as the 2026-08-19 list: 452 non-genuine sources, the permuter blockers (sam
 register-choice DIFFERs), and ~11.5k over-captured rows that need a live trace. Also 3 rows
 of `mov ecx,[ecx]; mov eax,[esp+4]; mov [ecx],eax; ret 4` DIFFER same-length (11v11) —
 retail loads the pointer BEFORE the argument and no straightforward model reorders it.
+
+## Round 4 (same session) — 60 more, and a manifest hazard worth knowing
+Landed 60 more (catalog **18,179**, gate `CANDIDATE_BUILD PASS objects=18177`). New classes:
+intelligent-pointer copy (30 rows: copy target + refcount block, bump the count when the
+block exists — VC7.1 schedules the second store ahead of the branch), `setne` is-not-null,
+tail call through the object's OWN vtable, and the unoptimised-TU empty member.
+
+**`verify_and_land.py` now sweeps `#pragma optimize("",off)`.** Retail is not uniformly /O2:
+**396** of the un-landed bodies <=64 bytes are frame-pointer shapes (`push ebp; mov ebp,esp;
+push ecx; mov [ebp-4],ecx; ...`) from unoptimised translation units, and the sweep had no way
+to turn optimisation off. Worth remembering when hand-authoring: if a body keeps a frame
+pointer and spills `this`, stop trying to coax /O2 into it.
+
+**⚠ HAZARD: something regenerated `rebuild/manifest/functions.tsv` mid-session** (19:23,
+57,097 -> 49,568 rows) and the merged `_gapscan` starts vanished. Not the compile gate (it
+makes no such call) — `tools/bootstrap_rebuild_tree.py` rebuilds the manifest from the Ghidra
+exports, and the gap merge is NOT reproducible from those, so any run of it silently drops
+7,529 discovered starts. The symptom is verify_and_land rejecting valid rows as
+`OUTSIDE_MANIFEST` (15 of 63 here). Recovery: `git checkout HEAD -- rebuild/manifest/
+functions.tsv`, or re-run `crawl/manifest_add_gaps.py --write`. **Check the row count
+(57,097) before trusting a crawl run**, and if the regenerator is ever made authoritative,
+teach it to re-merge the gaps.

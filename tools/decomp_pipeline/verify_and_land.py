@@ -187,7 +187,11 @@ def main():
     data=json.loads(outf.read_text(encoding="utf-8"))["result"]["authored"]
     orc={r["address"].lower():r for r in csv.DictReader(open(oraclef,encoding="utf-8-sig"),delimiter="\t")}
     e=env(); wins=[]
-    PRAGMAS=["", '#pragma optimize("s",on)', '#pragma optimize("t",on)', '#pragma optimize("g",on)']
+    # Retail is not uniformly /O2: some TUs shipped unoptimised, which shows up as
+    # frame-pointer bodies (`push ebp; mov ebp,esp; ...`). 396 of the un-landed bodies
+    # <=64 bytes have that shape, so the sweep has to be able to turn optimisation OFF.
+    PRAGMAS=["", '#pragma optimize("s",on)', '#pragma optimize("t",on)',
+             '#pragma optimize("g",on)', '#pragma optimize("",off)']
     catp = ROOT/"rebuild"/"build_candidates.ps1"
     known_manifest = manifest_addresses()
     outside_manifest = {

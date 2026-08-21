@@ -351,6 +351,50 @@ def emit_guarded_virt(b, slot, arg):
             "extern \"C\" void __fastcall CallIfSet(Obj* p) { if (p) p->Call(%d); }\n"
             % (slot // 4, arg, _vdecls(slot), arg)), "CallIfSet"
 
+def emit_refptr_copy(b):
+    """`mov eax,ecx; mov ecx,[esp+4]; mov edx,[ecx]; mov [eax],edx; mov edx,[ecx+4];
+    test edx,edx; mov [eax+4],edx; je +2; inc dword [edx]` -- copy an intelligent
+    pointer (target + refcount) and bump the refcount when there is one."""
+    return ("// Intelligent-pointer copy: take the target and the refcount block from the\n"
+            "// source, then bump the count when the block exists. VC7.1 schedules the\n"
+            "// second store ahead of the branch. __fastcall this=ecx (ret 4).\n"
+            "struct RefCount { int count; };\n"
+            "struct Ptr {\n    void* target;\n    RefCount* refs;\n};\n"
+            "struct T {\n    void* target;\n    RefCount* refs;\n"
+            "    T* Copy(const Ptr& other);\n};\n"
+            "T* T::Copy(const Ptr& other) {\n"
+            "    this->target = other.target;\n"
+            "    this->refs = other.refs;\n"
+            "    if (this->refs) ++this->refs->count;\n"
+            "    return this;\n}\n"), "Copy"
+
+def emit_is_not_null(b, disp):
+    return ("// `return this->ptr != 0;` (xor/test/setne). __fastcall this=ecx.\n"
+            "#pragma pack(push,1)\n"
+            "struct T {\n%s    bool IsSet();\n};\n"
+            "#pragma pack(pop)\n"
+            "bool T::IsSet() { return this->ptr != 0; }\n"
+            % _layout([(disp, "int", "ptr")])), "IsSet"
+
+def emit_self_virtual_tail(b, slot):
+    """`mov eax,[ecx]; jmp [eax+slot]` -- a non-virtual member whose whole body is a call
+    to one of its OWN virtuals, which VC7.1 tail-calls."""
+    return ("// Non-virtual member whose entire body calls one of its own virtuals; VC7.1\n"
+            "// tail-jumps through the vtable (slot %d). __fastcall this=ecx.\n"
+            "struct T {\n%s    virtual void Target();\n    void Run();\n};\n"
+            "void T::Run() { this->Target(); }\n"
+            % (slot // 4, _vdecls(slot))), "Run"
+
+def emit_empty_noopt(b):
+    """`push ebp; mov ebp,esp; push ecx; mov [ebp-4],ecx; mov esp,ebp; pop ebp; ret`
+    -- an empty member from an UNOPTIMISED translation unit."""
+    return ("// Empty member function from an unoptimised TU: retail keeps the frame and\n"
+            "// the `this` spill. Needs `#pragma optimize(\"\",off)`, which the verifier's\n"
+            "// pragma sweep supplies. __fastcall this=ecx.\n"
+            "#pragma optimize(\"\",off)\n"
+            "struct T { void Hook(); };\n"
+            "void T::Hook() {}\n"), "Hook"
+
 def emit_vtbl_dtor(b):
     """`mov dword [ecx], offset vftable; ret` -- the destructor of a polymorphic class
     with nothing to destroy still re-installs the vptr. The vtable address is a DATA
@@ -436,6 +480,23 @@ def emit_subptr_setter0(b):
 
 
 def classify(b):
+    # ---- 2026-08-20 classes, fourth round ----
+    # intelligent-pointer copy (target + refcount, bump when present)
+    if b == b"\x8b\xc1\x8b\x4c\x24\x04\x8b\x11\x89\x10\x8b\x51\x04\x85\xd2\x89\x50\x04" \
+            b"\x74\x02\xff\x02\xc2\x04\x00":
+        return emit_refptr_copy(b)
+    # mov edx,[ecx+d]; xor eax,eax; test edx,edx; setne al; ret
+    if b[0] == 0x8b and b[1] in (0x11, 0x51, 0x91) and b.endswith(b"\x33\xc0\x85\xd2\x0f\x95\xc0\xc3"):
+        d = 0 if b[1] == 0x11 else (b[2] if b[1] == 0x51 else struct.unpack_from("<I", b, 2)[0])
+        i = 2 if b[1] == 0x11 else (3 if b[1] == 0x51 else 6)
+        if len(b) == i + 8:
+            return emit_is_not_null(b, d)
+    # mov eax,[ecx]; jmp [eax+slot]  -- tail call through this object's own vtable
+    if len(b) == 5 and b[0:2] == b"\x8b\x01" and b[2:4] == b"\xff\x60":
+        return emit_self_virtual_tail(b, b[4])
+    # push ebp; mov ebp,esp; push ecx; mov [ebp-4],ecx; mov esp,ebp; pop ebp; ret
+    if b == b"\x55\x8b\xec\x51\x89\x4d\xfc\x8b\xe5\x5d\xc3":
+        return emit_empty_noopt(b)
     # ---- 2026-08-20 classes, third round ----
     # mov dword [ecx], offset vftable; ret   -- dtor of a polymorphic class
     if len(b) == 7 and b[0:2] == b"\xc7\x01" and b[6] == 0xc3:

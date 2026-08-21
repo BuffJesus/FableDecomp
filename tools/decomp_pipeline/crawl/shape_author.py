@@ -11,6 +11,7 @@ Usage: python shape_author.py <out_prefix> [--baked] [--unlanded] [--limit N] [-
   --baked     include currently-landed `_emit` bakes (un-landed on --apply)   [default]
   --unlanded  also include manifest functions that were never landed
   --apply     write the payload (and un-land the bakes); otherwise report only
+  --max-len N required body cap (default 22; verification gates either way)
   --shape-is-prototype  also take rows whose Ghidra prototype is INCOMPLETE
               (same rationale as `_gapscan`: the bytes are the only evidence)
 """
@@ -37,6 +38,7 @@ WANT_BAKED = "--unlanded" not in sys.argv or "--baked" in sys.argv
 WANT_NEW = "--unlanded" in sys.argv
 LIMIT = int(sys.argv[sys.argv.index("--limit") + 1]) if "--limit" in sys.argv else 0
 SHAPE_PROTO = "--shape-is-prototype" in sys.argv
+MAXLEN = int(sys.argv[sys.argv.index("--max-len") + 1]) if "--max-len" in sys.argv else 22
 
 data = EXE.read_bytes()
 e = struct.unpack_from("<I", data, 0x3C)[0]; coff = e + 4
@@ -119,7 +121,7 @@ for r in rows:
                 if not SHAPE_PROTO:
                     continue
     b = body(int(a, 16))
-    if not b or len(b) > 22:
+    if not b or len(b) > MAXLEN:
         continue
     got = classify(b)
     if not got:
