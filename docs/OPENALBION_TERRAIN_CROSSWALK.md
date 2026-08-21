@@ -255,6 +255,17 @@ All have zero self-illumination and zero maximum-size overrides. These are
 exactly the seven distinct texture/mapping pass keys present across the four
 retail patches; no unexplained material layer remains.
 
+`compare_retail_layer_membership.py` now executes the full recovered upstream
+path: read the three LEV slots, suppress unavailable definitions, renormalize
+with retail integer division, merge matching base/cliff tuples, apply the strict
+`> 0x10` threshold, combine contributing vertices with the recovered direction
+mask, and emit the parity-split cell triangles. With the five decoded theme
+tuples above it matches all 23 inline retail layers with zero missing or extra
+triangles. It also produces all 512 triangles for the remaining top-left base
+layer, matching retail's full-patch shared-index-buffer selection. Thus all
+24 patch/material membership masks are exact; feeding the 23 non-shared masks
+through the strip oracle reproduces all 6,980 inline indices byte-for-byte.
+
 ## Next terrain step
 
 The corrected ForgeTest WLD at `(2784,2560)` automatically resolves
@@ -273,8 +284,8 @@ The offline 425-entry container copy is
 re-extracting its ForgeTest entry reproduces the chunk hash exactly.
 
 Use the donor-mask WLD-driven container for the staged ForgeTest runtime probe.
-Next, reconstruct the theme-weight and texture-tuple contribution sets, then
-compare exact per-layer triangle membership against retail; strip ordering is
-now an exact downstream oracle once those membership masks are available.
-Only after that should regenerated `CliffU`/`CliffV` be promoted into a
-full-topology authored candidate.
+Next, port these now-exact membership and strip builders into the native baker,
+including selection of the known full-patch shared index buffer. Then regenerate
+complete foreground layer bodies and compare their uncompressed bytes with the
+retail donor before promoting regenerated `CliffU`/`CliffV` into an authored
+runtime candidate.
