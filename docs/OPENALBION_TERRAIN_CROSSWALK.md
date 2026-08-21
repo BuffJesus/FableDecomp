@@ -224,6 +224,19 @@ a necessary topology oracle, not yet a sufficient reconstruction: theme weight,
 texture-tuple merge, and `> 0x10` contribution tests still select which eligible
 triangles belong to each material layer.
 
+Direct reconstruction of retail `BuildLayerMesh` (`0x009c0190`) also recovers
+the exact non-shared index-buffer algorithm. Cells scan X-major over the 16x16
+patch, visiting parity-selected triangle 0 then 1. Vertex indices are allocated
+on first encounter. A compatible triangle whose number differs from the current
+strip-length parity appends only its third index. An incompatible triangle
+normally appends `[last,a,a,b,c]`; when its number equals strip parity it appends
+`[last,a,a,a,b,c]`. The initial short-vector path is special: triangle 1 starts
+with `[a,b,c]`, while a parity-equal continuation below four indices appends
+`[a,a,b,c]`. `compare_retail_strip_order.py` rebuilds this stream from decoded
+triangles and compares it with a raw `foregroundinfo --indices` TSV. On the
+donor it reproduces 23/23 non-shared layers and all 6,980 indices exactly,
+including degenerates and vertex-number assignment.
+
 ## Next terrain step
 
 The corrected ForgeTest WLD at `(2784,2560)` automatically resolves
@@ -243,6 +256,7 @@ re-extracting its ForgeTest entry reproduces the chunk hash exactly.
 
 Use the donor-mask WLD-driven container for the staged ForgeTest runtime probe.
 Next, reconstruct the theme-weight and texture-tuple contribution sets, then
-compare exact per-layer triangle membership and strip ordering against retail.
+compare exact per-layer triangle membership against retail; strip ordering is
+now an exact downstream oracle once those membership masks are available.
 Only after that should regenerated `CliffU`/`CliffV` be promoted into a
 full-topology authored candidate.
