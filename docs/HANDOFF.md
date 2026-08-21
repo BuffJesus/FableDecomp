@@ -9061,3 +9061,13 @@ turns these into matches — at least not with its current mutation library.
   `sub eax,edi`; we re-read from `[esp+8]`. Retail's signed `% 4` is the `cdq; and edx,3`
   idiom on a value already in eax, ours is `mov edx,ecx; sar edx,31` on ecx. Structural
   enough that a different source shape may fix it.
+
+**Second annealer confirmation (and a gotcha):** `anneal.py` on `009df060` — 390 compiles,
+never improved on the seed score of 24 either. Two independent targets, two flat runs: treat
+the annealer as unproven on this codebase's regalloc tail until its mutation library learns
+moves that actually flip register assignment.
+
+**Gotcha: `anneal.py` writes `<name>.best.cpp` and a `_anneal/` workdir NEXT TO ITS INPUT.**
+Pointing it at a landed source therefore litters `rebuild/src/compiled/...` with files that
+are not landed sources (inert for the gate, which works off the catalog, but they pollute any
+directory glob). Copy the source to the scratchpad and anneal the copy.
