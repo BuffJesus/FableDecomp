@@ -296,6 +296,9 @@ the same 132,632-byte chunk as the former implementation, SHA-256
 All four compressed foreground spans are unchanged, topology remains 23/23,
 and frame round-trip remains 4/4. The purity refactor therefore introduces no
 artifact drift while making generated-layer integration field-structured.
+The structured artifact also passes `stbvalidate` S1, S2 (26/26), S7 (4/4),
+D1 frame-count parity, and D2 quadtree-shape parity against the retail chunk;
+only the donor's existing S3 alignment warning remains.
 
 ## Next terrain step
 
