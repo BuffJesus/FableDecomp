@@ -5522,7 +5522,8 @@ build-from-user-copy is the legally-defensible pattern.
   mapping constants from ForgeTest's `2784..2816,2560..2592` patch bounds. That geometry/constant
   mismatch explains the black silhouette without invoking missing textures or self illumination.
 - `forge stb bake-heightfield` now edits both formats. It retargets every foreground XY, samples
-  foreground Z from the authored LEV, writes compact 6/6/5 height-gradient packed normals, and
+  foreground Z from the authored LEV, writes signed 11/11/10 packed normals with low-bit
+  quantization for the fixed donor compression budget, and
   preserves the donor Blend/CliffU/CliffV bytes plus indices. The four recompressed foreground
   spans are `2386, 5945, 6781, 7335` bytes. They fit together inside the original bounded leading
   allocation, are emitted as a contiguous valid LZO run, and rewrite the four directory offset/span
