@@ -9071,3 +9071,21 @@ moves that actually flip register assignment.
 Pointing it at a landed source therefore litters `rebuild/src/compiled/...` with files that
 are not landed sources (inert for the gate, which works off the catalog, but they pollute any
 directory glob). Copy the source to the scratchpad and anneal the copy.
+
+**`009df060` pinned exactly (for whoever takes the prize).** Disassembling both sides around
+the first divergence (0x211) shows everything from `or edx, esi` onward is **byte-identical**;
+the only differing bytes are the two LOAD instructions' modrm bytes:
+
+    retail:  mov edx,[eax+0x2814]   ; activeCaptureMask -> EDX  (loaded FIRST)
+             mov esi,[ecx+8]        ; stateCaptureMask  -> ESI  (loaded SECOND)
+    ours:    mov esi,[eax+0x2814]   ; activeCaptureMask -> ESI
+             mov edx,[ecx+8]        ; stateCaptureMask  -> EDX
+
+`test esi,edx` and `or edx,esi` are the same bytes either way (both operations are
+symmetric/commutative), so the ONLY thing to flip is which value the allocator makes the
+accumulator: retail gives `edx` to the FIRST load, VC7.1 gives it to the SECOND. Tried and
+rejected: commutative flip of the `&` (24), of the `|` (24), of both (24), mutate-in-place on
+either mask (24 / 24), re-reading the member instead of caching (26), swapping the two
+declarations (136 — it perturbs codegen 500 bytes earlier), and 390 annealer compiles (24).
+Whatever fixes it has to change the accumulator choice without disturbing the surrounding
+block; nothing tried does that.
