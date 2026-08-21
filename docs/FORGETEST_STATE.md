@@ -1,5 +1,15 @@
 # ForgeTest — Authoritative State
 
+> **2026-08-21 terrain update:** The older `5b7e6c1f` corrected-foreground
+> artifact below is superseded for the next offline/runtime candidate by the
+> WLD-aware OpenAlbion-cross-checked bake. The new chunk is
+> `tmp/ForgeTest_chunk_wldnormal.bin` (SHA-256 `DFDED201...F19999`) and the
+> 425-entry container is `tmp/FinalAlbion_RT_wldnormal.stb` (SHA-256
+> `9EEECE65...6246766`). WLD discovery used `Darkwood_Filler_18` and `_19` for
+> the east seam; S1/S2/S7 pass, the extracted container entry matches the chunk,
+> and nothing has been deployed. Quest/DLL/runtime caveats in this document
+> remain unresolved.
+
 _Reconciled from six subsystem reports. Date of reconciliation: 2026-07-22. All SHAs are sha256 prefixes. Anything not directly verified in a report is marked **[unverified]**._
 
 ---
@@ -31,7 +41,7 @@ _Note: the 22:02 session's lua was the **donor-alias** variant `e7141d3c` (10,10
 - **Next action:** copy `work/terrain_runtime_probe/stage/data/Levels/FinalAlbion_RT.stb` (`5b7e6c1f`) over the deployed STB, re-run the FSE terrain smoke, confirm install hash becomes `5b7e6c1f`.
 
 ### 2. Black authored-hill render — root cause + corrected bake — confidence 0.90
-- **Current (root cause PROVEN, per `docs/HANDOFF.md:3540-3579`):** all four real foreground frames held **unchanged donor geometry** at X=2816..2848, Y=2368..2400, Z=37.69..43, while `RenderForeground` (`0x00BF4570`) computed mapping constants from ForgeTest's registered patch bounds 2784..2816, 2560..2592. That geometry-vs-constant mismatch (not missing textures) produces the black silhouette. The fix (`forge stb bake-heightfield`) retargets foreground XY to 2784..2816,2560..2592, samples Z from the authored LEV (37.685..56.198), repacks 6/6/5 normals, preserves donor Blend/CliffU/CliffV+indices, rewrites the four directory offset/span pairs → `5b7e6c1f`. Offline validation green (26/26 LZO frames, 4/4 directory entries, 24 layers, full CTest).
+- **Current (root cause PROVEN, per `docs/HANDOFF.md:3540-3579`):** all four real foreground frames held **unchanged donor geometry** at X=2816..2848, Y=2368..2400, Z=37.69..43, while `RenderForeground` (`0x00BF4570`) computed mapping constants from ForgeTest's registered patch bounds 2784..2816, 2560..2592. That geometry/constant mismatch (not missing textures) produces the black silhouette. The fix (`forge stb bake-heightfield`) retargets foreground XY to 2784..2816,2560..2592, samples Z from the authored LEV (37.685..56.198), writes signed 11/11/10 packed normals with low-bit quantization for the donor compression budget, preserves donor Blend/CliffU/CliffV+indices, and rewrites the four directory offset/span pairs. The original corrected artifact is `5b7e6c1f`; the OpenAlbion cross-check later corrected the normal-generation algorithm without changing this serialization contract. Offline validation remains green (26/26 LZO frames, 4/4 directory entries, 24 layers).
 - **Contradiction w/ older notes:** `docs/TERRAIN_RENDER_FIX.md` (dated 2026-07-20) describes the editor-bake / FSE name-alias route and **predates / does not mention** the 13:43 corrected-foreground-bake root cause. Authoritative root cause = `HANDOFF.md:3540`, **not** `TERRAIN_RENDER_FIX.md`.
 - **[unverified]:** No ForgeTest-scope foreground frame has ever been captured live — in the 22:02 log all 8 `LandscapeForegroundDecodeProbe` frames and all 345 background-render lines are **retail-control** scope (map=0x14dba010), because that session used the donor-alias route against the old STB. The corrected STB has **not** been exercised in-game.
 - **Next action:** deploy ONLY `work/terrain_runtime_probe` (corrected `5b7e6c1f` STB + `ce869710` probe DLL + FSE_Master.lua), Fable closed; launch via FSE, teleport to slot 399, capture log + screenshot, then revert. First live test of the fix.
