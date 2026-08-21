@@ -17,6 +17,7 @@ import csv
 import re
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -81,7 +82,10 @@ def main():
             if p.split("(")[0] in text and p in text:
                 continue                      # already carries exactly this pragma
             try:
-                got = score_source(cpp, addr, prepend=p)
+                # Never create `_score` beside a landed source. Besides polluting source
+                # globs, those objects can outlive the experiment and confuse later audits.
+                with tempfile.TemporaryDirectory(prefix="fable-pragma-sweep-") as temporary:
+                    got = score_source(cpp, addr, prepend=p, workdir=Path(temporary))
             except Exception as exc:          # a source that needs headers we do not stage
                 got = {"score": -1, "status": "ERR:%s" % exc}
             if got.get("status") in ("MATCH", "RELOCATION_MATCH"):

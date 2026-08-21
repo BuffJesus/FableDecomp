@@ -18,7 +18,7 @@ DISASM_SYMBOL = re.compile(r"^\s*[0-9a-fA-F]+\s+<(.+)>:$")
 DISASM_BYTES = re.compile(
     r"^\s*([0-9a-fA-F]+):\s+((?:[0-9a-fA-F]{2}\s+)+)"
 )
-CACHE_VERSION = 1
+CACHE_VERSION = 5
 
 
 def read_tsv(path: Path) -> list[dict[str, str]]:
@@ -139,7 +139,11 @@ def object_text(
                 if not str(item["symbol"]).startswith(("??_G", "??_E"))]
         pool = real or pool
     selected = max(pool, key=lambda item: len(item["bytes"]))
-    if expected_size is not None:
+    # Objdump can split one source function at an internal symbol, leaving `selected` shorter
+    # than the actual contiguous body. In that one direction, recover bytes from the section.
+    # Never slice a LONGER selected function down to retail's expected size: doing so hides a
+    # real length mismatch and can falsely call an overlong reconstruction a byte match.
+    if expected_size is not None and len(selected["bytes"]) < expected_size:
         start = int(selected["start"])
         byte_map = section_bytes[int(selected["section"])]
         sliced = bytes(
@@ -206,7 +210,14 @@ def main() -> int:
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--objdump", default="objdump")
     parser.add_argument("--force", action="store_true", help="ignore the local object parity cache")
+    parser.add_argument(
+        "--address",
+        action="append",
+        default=[],
+        help="recompute this address even when its local cache fingerprint matches (repeatable)",
+    )
     args = parser.parse_args()
+    forced_addresses = {value.lower().replace("0x", "") for value in args.address}
     root = args.root.resolve()
     gate = root / "rebuild" / "compile-gate"
     compiled_path = gate / "vc71-compiled.tsv"
@@ -231,7 +242,7 @@ def main() -> int:
     prior_report_path = gate / "retail-parity.tsv"
     prior_rows = (
         {row["address"].lower(): row for row in read_tsv(prior_report_path)}
-        if not args.force and not cache and prior_report_path.exists()
+        if not args.force and not cache and not cache_path.exists() and prior_report_path.exists()
         else {}
     )
     prior_report_mtime_ns = (
@@ -258,7 +269,7 @@ def main() -> int:
             "oracle_name": oracle["name"] if oracle else "",
         }
         cached = cache.get(address)
-        if cached and cached.get("fingerprint") == fingerprint:
+        if address not in forced_addresses and cached and cached.get("fingerprint") == fingerprint:
             row = dict(cached["row"])
             row["module"] = item["module"]
             rows.append(row)
@@ -267,7 +278,8 @@ def main() -> int:
             continue
         prior = prior_rows.get(address)
         if (
-            prior
+            address not in forced_addresses
+            and prior
             and prior_report_mtime_ns >= object_stat.st_mtime_ns
             and prior_report_mtime_ns >= oracle_mtime_ns
         ):
