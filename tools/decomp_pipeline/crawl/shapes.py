@@ -363,6 +363,30 @@ def emit_outparam_pair_copy(b, d1, d2):
             "void T::Get(Out* out) {\n    out->a = this->first;\n    out->b = this->second;\n}\n"
             % (d1, d2, _layout([(d1, "int", "first"), (d2, "int", "second")]))), "Get"
 
+def emit_sret_vector3(b, disp):
+    """`mov edx,[ecx+d]; mov eax,[esp+4]; mov [eax],edx; ...` -- a by-value 3-field struct
+    return (sret).
+
+    The ordering is the whole trick: retail loads the SOURCE MEMBERS first and the sret
+    pointer second. `return m_Pos;` and a by-VALUE constructor both load the sret pointer
+    first and cannot match. A constructor taking const REFERENCES does match -- each member
+    is read through its reference before the store. Proven on CGameScriptThing::GetHomePos
+    (008cfe30), 24/24 exact.
+    """
+    return ("// By-value 3-field struct return built from the members at this+0x%x/+0x%x/+0x%x.\n"
+            "// The const-REFERENCE constructor is what pins retail's order (members loaded\n"
+            "// before the sret pointer); `return m_Field;` loads the sret pointer first.\n"
+            "#pragma pack(push,1)\n"
+            "struct Vec3 {\n    float x, y, z;\n"
+            "    Vec3(const float& xx, const float& yy, const float& zz)"
+            " : x(xx), y(yy), z(zz) {}\n};\n"
+            "struct T {\n%s    Vec3 Get() const;\n};\n"
+            "#pragma pack(pop)\n"
+            "Vec3 T::Get() const { return Vec3(this->m_x, this->m_y, this->m_z); }\n"
+            % (disp, disp + 4, disp + 8,
+               _layout([(disp, "float", "m_x"), (disp + 4, "float", "m_y"),
+                        (disp + 8, "float", "m_z")]))), "Get"
+
 def emit_global_times_ten(b):
     """`mov eax,[g]; lea eax,[eax+eax*4]; add eax,eax` -- the strength-reduced `g * 10`."""
     return ("// `return g * 10;` -- VC7.1 strength-reduces to `lea eax,[eax+eax*4]; add eax,eax`.\n"
@@ -509,6 +533,16 @@ def classify(b):
             j = i + 9 if b[i + 7] == 0x49 else i + 12
             if j == len(b) - 6:
                 return emit_outparam_pair_copy(b, d1, d2)
+    # sret 3-field copy: mov edx,[ecx+d]; mov eax,[esp+4]; mov [eax],edx;
+    #                    mov edx,[ecx+d+4]; mov [eax+4],edx; mov ecx,[ecx+d+8];
+    #                    mov [eax+8],ecx; ret 4
+    if len(b) == 24 and b[0] == 0x8b and b[1] == 0x51 and b[3:7] == b"\x8b\x44\x24\x04" \
+            and b[7:9] == b"\x89\x10" and b[9] == 0x8b and b[10] == 0x51 \
+            and b[12:15] == b"\x89\x50\x04" and b[15] == 0x8b and b[16] == 0x49 \
+            and b[18:21] == b"\x89\x48\x08" and b[21] == 0xc2:
+        d = b[2]
+        if b[11] == d + 4 and b[17] == d + 8:
+            return emit_sret_vector3(b, d)
     # mov eax,[g]; lea eax,[eax+eax*4]; add eax,eax; ret   -> g * 10
     if len(b) == 11 and b[0] == 0xa1 and b[5:11] == b"\x8d\x04\x80\xd1\xe0\xc3":
         return emit_global_times_ten(b)

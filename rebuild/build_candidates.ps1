@@ -127060,6 +127060,132 @@ $catalog = @(
         TestSource = '00/c5/gapscan_sub00c5d600_00c5d600_test.cpp'
         PassPattern = 'PASS_00c5d600'
     }
+    [pscustomobject]@{
+        Address = '0052e780'
+        Module = 'NUISystem::CSprite'
+        Source = '00/52/NUISystemCSprite_vfunc12_0052e780.cpp'
+        TestSource = '00/52/NUISystemCSprite_vfunc12_0052e780_test.cpp'
+        PassPattern = 'PASS_0052e780'
+    }
+    [pscustomobject]@{
+        Address = '0052e7f0'
+        Module = 'NUISystem::CSprite'
+        Source = '00/52/NUISystemCSprite_vfunc55_0052e7f0.cpp'
+        TestSource = '00/52/NUISystemCSprite_vfunc55_0052e7f0_test.cpp'
+        PassPattern = 'PASS_0052e7f0'
+    }
+    [pscustomobject]@{
+        Address = '0052e810'
+        Module = 'NUISystem::CSprite'
+        Source = '00/52/NUISystemCSprite_vfunc57_0052e810.cpp'
+        TestSource = '00/52/NUISystemCSprite_vfunc57_0052e810_test.cpp'
+        PassPattern = 'PASS_0052e810'
+    }
+    [pscustomobject]@{
+        Address = '0052e8b0'
+        Module = 'NUISystem::CSprite'
+        Source = '00/52/NUISystemCSprite_vfunc17_0052e8b0.cpp'
+        TestSource = '00/52/NUISystemCSprite_vfunc17_0052e8b0_test.cpp'
+        PassPattern = 'PASS_0052e8b0'
+    }
+    [pscustomobject]@{
+        Address = '0052e8f0'
+        Module = 'NUISystem::CSprite'
+        Source = '00/52/NUISystemCSprite_vfunc19_0052e8f0.cpp'
+        TestSource = '00/52/NUISystemCSprite_vfunc19_0052e8f0_test.cpp'
+        PassPattern = 'PASS_0052e8f0'
+    }
+    [pscustomobject]@{
+        Address = '00543a40'
+        Module = 'NUISystem::CIconText'
+        Source = '00/54/NUISystemCIconText_vfunc23_00543a40.cpp'
+        TestSource = '00/54/NUISystemCIconText_vfunc23_00543a40_test.cpp'
+        PassPattern = 'PASS_00543a40'
+    }
+    [pscustomobject]@{
+        Address = '00543a60'
+        Module = 'NUISystem::CIconText'
+        Source = '00/54/NUISystemCIconText_vfunc111_00543a60.cpp'
+        TestSource = '00/54/NUISystemCIconText_vfunc111_00543a60_test.cpp'
+        PassPattern = 'PASS_00543a60'
+    }
+    [pscustomobject]@{
+        Address = '00546be0'
+        Module = 'NUISystem::CZoomingComponent'
+        Source = '00/54/NUISystemCZoomingComponent_vfunc146_00546be0.cpp'
+        TestSource = '00/54/NUISystemCZoomingComponent_vfunc146_00546be0_test.cpp'
+        PassPattern = 'PASS_00546be0'
+    }
+    [pscustomobject]@{
+        Address = '0054ff30'
+        Module = 'NUISystem::CText'
+        Source = '00/54/NUISystemCText_vfunc23_0054ff30.cpp'
+        TestSource = '00/54/NUISystemCText_vfunc23_0054ff30_test.cpp'
+        PassPattern = 'PASS_0054ff30'
+    }
+    [pscustomobject]@{
+        Address = '0054ff50'
+        Module = 'NUISystem::CText'
+        Source = '00/54/NUISystemCText_vfunc111_0054ff50.cpp'
+        TestSource = '00/54/NUISystemCText_vfunc111_0054ff50_test.cpp'
+        PassPattern = 'PASS_0054ff50'
+    }
+    [pscustomobject]@{
+        Address = '00724d30'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/72/CTCPhysicsStandard_vfunc28_00724d30.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_vfunc28_00724d30_test.cpp'
+        PassPattern = 'PASS_00724d30'
+    }
+    [pscustomobject]@{
+        Address = '0075bff0'
+        Module = 'CTCPhysicsRigidBody'
+        Source = '00/75/CTCPhysicsRigidBody_vfunc28_0075bff0.cpp'
+        TestSource = '00/75/CTCPhysicsRigidBody_vfunc28_0075bff0_test.cpp'
+        PassPattern = 'PASS_0075bff0'
+    }
+    [pscustomobject]@{
+        Address = '00810ea0'
+        Module = 'NEntityEvents::CEventHeroHasBeenSpokenToByVillagers'
+        Source = '00/81/NEntityEventsCEventHeroHasBeenSpokenToByVillagers_vfunc3_00810ea0.cpp'
+        TestSource = '00/81/NEntityEventsCEventHeroHasBeenSpokenToByVillagers_vfunc3_00810ea0_test.cpp'
+        PassPattern = 'PASS_00810ea0'
+    }
+    [pscustomobject]@{
+        Address = '00810eb0'
+        Module = 'NEntityEvents::CEventHeroHasBeenSpottedPickpocketing'
+        Source = '00/81/NEntityEventsCEventHeroHasBeenSpottedPickpocketing_vfunc3_00810eb0.cpp'
+        TestSource = '00/81/NEntityEventsCEventHeroHasBeenSpottedPickpocketing_vfunc3_00810eb0_test.cpp'
+        PassPattern = 'PASS_00810eb0'
+    }
+    [pscustomobject]@{
+        Address = '00810ec0'
+        Module = 'NEntityEvents::CEventHeroHasBeenSpottedPickingLock'
+        Source = '00/81/NEntityEventsCEventHeroHasBeenSpottedPickingLock_vfunc3_00810ec0.cpp'
+        TestSource = '00/81/NEntityEventsCEventHeroHasBeenSpottedPickingLock_vfunc3_00810ec0_test.cpp'
+        PassPattern = 'PASS_00810ec0'
+    }
+    [pscustomobject]@{
+        Address = '00810ed0'
+        Module = 'NEntityEvents::CEventHeroHasBeenSpottedStealing'
+        Source = '00/81/NEntityEventsCEventHeroHasBeenSpottedStealing_vfunc3_00810ed0.cpp'
+        TestSource = '00/81/NEntityEventsCEventHeroHasBeenSpottedStealing_vfunc3_00810ed0_test.cpp'
+        PassPattern = 'PASS_00810ed0'
+    }
+    [pscustomobject]@{
+        Address = '00810ee0'
+        Module = 'NEntityEvents::CEventExpressionPerformedTo'
+        Source = '00/81/NEntityEventsCEventExpressionPerformedTo_vfunc3_00810ee0.cpp'
+        TestSource = '00/81/NEntityEventsCEventExpressionPerformedTo_vfunc3_00810ee0_test.cpp'
+        PassPattern = 'PASS_00810ee0'
+    }
+    [pscustomobject]@{
+        Address = '00a04380'
+        Module = 'CMessageEventFilter_IsOriginatedByThing'
+        Source = '00/a0/CMessageEventFilterIsOriginatedByThing_CMessageEventFilterIsOriginatedByThing_00a04380.cpp'
+        TestSource = '00/a0/CMessageEventFilterIsOriginatedByThing_CMessageEventFilterIsOriginatedByThing_00a04380_test.cpp'
+        PassPattern = 'PASS_00a04380'
+    }
 )
 
 $requestedAddresses = @(

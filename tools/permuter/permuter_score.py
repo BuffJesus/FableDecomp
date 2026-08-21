@@ -10,6 +10,9 @@ from __future__ import annotations
 import csv, re, subprocess, os, sys, argparse
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from compare_candidate_objects import symbol_leaf as _symbol_leaf  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[2]
 VC = Path(r"D:\Tools\vc71")
 # Alternate VC7.1 QFE-4035 toolset (13.10.4035 c1xx.dll+c2.dll from WinDDK 3790.1830).
@@ -45,7 +48,15 @@ def _obj_text(obj, leaf):
     if not fns:
         raise RuntimeError("no functions in object")
     named = [f for f in fns if leaf and leaf in str(f["symbol"])]
-    sel = max(named or fns, key=lambda f: len(f["bytes"]))
+    pool = named or fns
+    # Same rule as the comparer: `??_G`/`??_E` are compiler-generated scalar/vector DELETING
+    # destructors, emitted only because the source declares a dtor, and they are often the
+    # same length as the real body -- so "longest wins" scores the wrong function and
+    # reports a difference for a byte-exact source.
+    if "deleting_destructor" not in (leaf or ""):
+        real = [f for f in pool if not str(f["symbol"]).startswith(("??_G", "??_E"))]
+        pool = real or pool
+    sel = max(pool, key=lambda f: len(f["bytes"]))
     return bytes(sel["bytes"]), int(sel["section"]), str(sel["symbol"])
 
 
@@ -126,7 +137,11 @@ def score_source(cpp: Path, addr: str, name: str | None = None,
     o = orc.get(addr)
     if o is None:
         return {"score": COMPILE_FAIL, "status": "NO_ORACLE"}
-    leaf = (name or o["name"]).rsplit("::", 1)[-1].lstrip("~")
+    # Same leaf rule as tools/compare_candidate_objects.py: manifest names come in mangled
+    # (`?Foo@C@@UBE...`) and templated (`std::_Dest_val<...A::B...>`) shapes, and a naive
+    # rsplit("::") yields garbage for both -- which silently scores the WRONG function in
+    # the object (a ctor, or a ??_G destructor thunk of the same length).
+    leaf = _symbol_leaf(name or o["name"])
     src = cpp
     if prepend:
         src = workdir / f"{addr}.pre.cpp"

@@ -1,12 +1,14 @@
 #include <cstdio>
 
+// Declares only -- the behaviour exe links this test object together with
+// CGameScriptThing_GetHomePos_008cfe30.cpp, so the reconstruction itself is what runs.
+// (The previous version of this test DEFINED its own GetHomePos and therefore proved
+// nothing about the landed source.)
+
 struct C3DVector
 {
-    float x;
-    float y;
-    float z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) { x = o.x; y = o.y; z = o.z; }
+    float x, y, z;
+    C3DVector(const float& xx, const float& yy, const float& zz);
 };
 
 class CGameScriptThing
@@ -14,20 +16,15 @@ class CGameScriptThing
 public:
     virtual C3DVector GetHomePos() const;
     char m_Pad[0x30];
-    C3DVector m_Pos;
+    float m_x, m_y, m_z;
 };
-
-C3DVector CGameScriptThing::GetHomePos() const
-{
-    return m_Pos;
-}
 
 int main()
 {
     CGameScriptThing t;
-    t.m_Pos.x = 1.5f;
-    t.m_Pos.y = 2.5f;
-    t.m_Pos.z = 3.5f;
+    t.m_x = 1.5f;
+    t.m_y = 2.5f;
+    t.m_z = 3.5f;
     C3DVector r = t.GetHomePos();
     if (r.x == 1.5f && r.y == 2.5f && r.z == 3.5f)
         printf("GETHOMEPOS_OK\n");
