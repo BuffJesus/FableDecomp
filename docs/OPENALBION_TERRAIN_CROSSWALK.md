@@ -279,6 +279,15 @@ independent base/cliff merges, the strict threshold, and retail slot/direction
 ordering. Unit fixtures include the donor's shared spooky-cliff merge and a
 suppressed-slot `100:55 -> 164:90` normalization case.
 
+FableForge now also has a structured `ForegroundFrame` codec covering layer
+headers, the 15-byte vertex records, shared versus inline indices, and the
+trailing water flag/payload. Parsing and reserializing the four retail donor
+foreground bodies is byte-identical 4/4 while the same inspection run retains
+23/23 native topology parity. A synthetic codec fixture is part of
+`forge_tests`. This retires the foreground-body write grammar as a blocker;
+the remaining integration work is assembling newly generated passes and vertex
+attributes into these proven structures.
+
 ## Next terrain step
 
 The corrected ForgeTest WLD at `(2784,2560)` automatically resolves
