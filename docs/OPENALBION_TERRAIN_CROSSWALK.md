@@ -237,6 +237,24 @@ triangles and compares it with a raw `foregroundinfo --indices` TSV. On the
 donor it reproduces 23/23 non-shared layers and all 6,980 indices exactly,
 including degenerates and vertex-number assignment.
 
+The LEV ground-theme palette is also a direct definition bridge rather than an
+opaque identifier table. For this donor its five used slots resolve to
+`ENGINE_THEME` definitions: spooky trees `1599`, spooky test03 `1608`, dark
+sand path `1541`, spooky ground `1598`, and spooky test02 `1607`. Schema decode
+of those definitions predicts every retail pass tuple:
+
+- spooky trees/ground base `(4175,4175,0)`;
+- test03 base `(4174,4174,0)`;
+- test02 base `(4173,4173,0)`;
+- dark sand base `(4232,4232,4325)`;
+- all spooky cliffs `(4185,4185,4304)`, merged by tuple and emitted in the
+  active directions;
+- dark sand cliffs `(4184,4184,4304)`, of which this donor emits only mapping 4.
+
+All have zero self-illumination and zero maximum-size overrides. These are
+exactly the seven distinct texture/mapping pass keys present across the four
+retail patches; no unexplained material layer remains.
+
 ## Next terrain step
 
 The corrected ForgeTest WLD at `(2784,2560)` automatically resolves
