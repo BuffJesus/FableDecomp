@@ -8853,3 +8853,72 @@ one head · `shape_author.py` + `shapes.py` parameterised shape authoring · `ha
 whole-manifest family sweep · `crossfam.py` nearest-length source pairing · `manifest_gaps.py`
 over-capture report · `xrefs.py` entered-address index · `manifest_add_gaps.py` merge discovered
 starts · `gap_author.py` author from gap regions · `rtti.py` vtables · `name_gapscan.py` naming.
+
+---
+
+# RESUME HERE — 2026-08-20 session (decomp / parity lane, shape drain)
+
+Continued straight from the 2026-08-19 pick-up list, item 1 ("author the remaining
+`_gapscan` rows").
+
+## What happened
+`shape_author.py --unlanded` reported **0** candidates: the shape lane was drained for the
+classes it already knew, not for the work that was left. The fix was to measure what it did
+NOT recognise and teach it, in three rounds:
+
+| round | authored | landed | what it taught |
+|---|---:|---:|---|
+| 1 | 247 | 221 + 26 re-authored | disp-0 getters, member clears, virtual forwarders, comparators |
+| 2 | 98 | 95 | vtable-slot forwarders w/ sub-object arg, zero-init-return-this, is-null, member advance, counter bump |
+| 3 | 142 | 139 | polymorphic-dtor vptr restore, construct helpers, float globals, pair init, vector size |
+| 3b (widened pool) | 527 | 524 | same classes over rows with INCOMPLETE Ghidra prototypes |
+
+**1,005 functions landed, catalog 17,110 -> 18,119.** Every one byte-verified by
+`verify_and_land` (MATCH / RELOCATION_MATCH); nothing hand-baked.
+
+## New tool: `crawl/shape_census.py`
+This is the loop driver — it ranks the un-landed bodies the classifier misses, biggest
+family first, so each round has an evidence-picked target instead of a guess. Run it before
+touching `shapes.py`:
+
+    python shape_census.py --top 30 [--max-len N] [--gapscan-only]
+
+## Corrections worth keeping
+1. **`cmp` + `sbb eax,eax` + `neg eax` is UNSIGNED LESS-THAN, not `!=`.** It materialises CF.
+   The equality idiom is `sub; neg; sbb; inc`. And the return type must be `int` — a `bool`
+   return compiles to `setb` and misses by 3 bytes. That one correction turned 26 DIFFERs
+   into 26 MATCHes.
+2. **A polymorphic class's destructor re-installs the vptr** (`mov dword ptr [ecx], offset
+   vftable; ret`), which is the whole body when there is nothing to release. 191 rows landed
+   off one model; the vtable address is a data relocation so a single source serves them all.
+3. **`shape_author.py --shape-is-prototype`** extends the `_gapscan` rationale to ordinary
+   rows whose Ghidra prototype is INCOMPLETE: nothing known is contradicted, the bytes are
+   the only evidence, and parity still has to be proven. Rows that DO carry a complete
+   prototype are never shape-authored against it. That flag alone unlocked 524 landings.
+
+## Gate defect fixed (was failing on correct functions)
+`CANDIDATE_BUILD` failed at `00a3b1a0`, then `00548520`. Neither was a bad reconstruction:
+the catalog entries named a `PassPattern` their test never prints — residue of the
+bootstrap-fixture restore in `a74ea81` and two old crawl batches. Audited all 17,456 entries
+against their test sources; **exactly three** were wrong (`00a3b1a0`, `00548520`, `00a3b320`)
+and all three now pass. Beware the audit's false positives: most patterns are RUNTIME
+formatted output (`PEEK_RADIUS_OK 12.500000` from `printf("PEEK_RADIUS_OK %f\n", r)`), so
+compare against the literal's prefix up to the first `%`, not the whole string.
+
+## Known gap: MI adjustor thunks (96 rows) — do NOT re-attempt the same way
+`sub ecx,4; jmp Derived::M` (and the `sub ecx,0x18` variant) are multiple-inheritance
+adjustor thunks. Three source models were tried and all failed: plain MI override, MI +
+forced instantiation (`static D g;`), MI + all virtuals defined inline. VC7.1 emits the
+override and both ctors but **never the thunk** into the .obj, so the harness has nothing
+to compare (`DIFFER(1v8)` — it extracts the 1-byte override). Next idea if someone picks it
+up: the thunk probably only materialises in the TU that emits the DERIVED vftable with all
+slots resolvable, or it needs a raw-COFF symbol-selecting lander like
+`verify_land_jumptable.py` (select `?M@D@@W3AE...`, the `W3` adjustor mangling) rather than
+objdump's longest-block heuristic. Also unresolved: the `sub dword [esp+4],4; jmp` stack-this
+variant (6 rows).
+
+## Still open, unchanged
+Same as the 2026-08-19 list: 452 non-genuine sources, the permuter blockers (same-length
+register-choice DIFFERs), and ~11.5k over-captured rows that need a live trace. Also 3 rows
+of `mov ecx,[ecx]; mov eax,[esp+4]; mov [ecx],eax; ret 4` DIFFER same-length (11v11) —
+retail loads the pointer BEFORE the argument and no straightforward model reorders it.

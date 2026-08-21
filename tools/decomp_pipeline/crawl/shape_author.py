@@ -11,6 +11,8 @@ Usage: python shape_author.py <out_prefix> [--baked] [--unlanded] [--limit N] [-
   --baked     include currently-landed `_emit` bakes (un-landed on --apply)   [default]
   --unlanded  also include manifest functions that were never landed
   --apply     write the payload (and un-land the bakes); otherwise report only
+  --shape-is-prototype  also take rows whose Ghidra prototype is INCOMPLETE
+              (same rationale as `_gapscan`: the bytes are the only evidence)
 """
 import csv, json, re, struct, sys
 from pathlib import Path
@@ -34,6 +36,7 @@ APPLY = "--apply" in sys.argv
 WANT_BAKED = "--unlanded" not in sys.argv or "--baked" in sys.argv
 WANT_NEW = "--unlanded" in sys.argv
 LIMIT = int(sys.argv[sys.argv.index("--limit") + 1]) if "--limit" in sys.argv else 0
+SHAPE_PROTO = "--shape-is-prototype" in sys.argv
 
 data = EXE.read_bytes()
 e = struct.unpack_from("<I", data, 0x3C)[0]; coff = e + 4
@@ -107,9 +110,14 @@ for r in rows:
         # SHAPE is the prototype -- the classifier derives the signature from the bytes
         # and verify_and_land proves it byte-for-byte. Ordinary rows still need a
         # complete Ghidra prototype.
+        # --shape-is-prototype extends that same reasoning to ordinary rows whose Ghidra
+        # prototype is INCOMPLETE: there too nothing is known to contradict, the shape is
+        # all the evidence there is, and parity still has to be proven. A row that DOES
+        # carry a complete prototype is never shape-authored against it.
         if r.get("module") != "_gapscan":
             if r.get("prototype_complete") != "1" or r.get("calling_convention", "") in ("", "unknown"):
-                continue
+                if not SHAPE_PROTO:
+                    continue
     b = body(int(a, 16))
     if not b or len(b) > 22:
         continue

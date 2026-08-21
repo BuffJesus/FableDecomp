@@ -351,6 +351,81 @@ def emit_guarded_virt(b, slot, arg):
             "extern \"C\" void __fastcall CallIfSet(Obj* p) { if (p) p->Call(%d); }\n"
             % (slot // 4, arg, _vdecls(slot), arg)), "CallIfSet"
 
+def emit_vtbl_dtor(b):
+    """`mov dword [ecx], offset vftable; ret` -- the destructor of a polymorphic class
+    with nothing to destroy still re-installs the vptr. The vtable address is a DATA
+    relocation, so one source serves every class in the family."""
+    return ("// Destructor of a polymorphic class with no members to release: MSVC still\n"
+            "// re-installs the vptr (`mov dword ptr [ecx], offset vftable`). The vtable\n"
+            "// address is a data relocation. __fastcall this=ecx.\n"
+            "struct T {\n    virtual void Method() {}\n    ~T();\n};\n"
+            "T::~T() {}\n"), "~T"
+
+def emit_virt_forward_this_arg(b, disp, slot):
+    """`this->sub->Virt(this, a)` -- as emit_virt_forward_this but with one stack arg,
+    which retail parks in esi across the call."""
+    return ("// Forward to vtable slot %d of the sub-object pointer at this+0x%x, passing\n"
+            "// `this` and the stack argument. __fastcall this=ecx (ret 4).\n"
+            "#pragma pack(push,1)\n"
+            "struct T;\n"
+            "struct Sub {\n%s    virtual void Do(T* p, int a);\n};\n"
+            "struct T {\n%s    void Run(int a);\n};\n"
+            "#pragma pack(pop)\n"
+            "void T::Run(int a) { this->sub->Do(this, a); }\n"
+            % (slot // 4, disp, _vdecls(slot), _sub_layout(disp))), "Run"
+
+def emit_construct_helper(b):
+    """`mov ecx,[esp+4]; call Init; mov eax,[esp+4]; ret 4` -- run a member on the
+    argument and hand the argument back."""
+    return ("// Construct-and-return helper: run a member function on the argument and\n"
+            "// return the argument. __stdcall (ret 4); the callee takes this in ecx.\n"
+            "struct T { void Init(); };\n"
+            "extern \"C\" T* __stdcall Construct(T* p) { p->Init(); return p; }\n"), "Construct"
+
+def emit_float_global_getter(b):
+    return ("// Float global getter: `fld dword ptr [g]; ret`. Free function, no `this`.\n"
+            "extern float g_value;\n"
+            "extern \"C\" float GetGlobal() { return g_value; }\n"), "GetGlobal"
+
+def emit_free_zero_init(b, count):
+    fields = "".join("    int f%d;\n" % i for i in range(count))
+    body = "".join("    p->f%d = 0;\n" % i for i in range(count))
+    return ("// __stdcall free initialiser: zero the first %d dword members of the argument.\n"
+            "#pragma pack(push,1)\n"
+            "struct T {\n%s};\n"
+            "#pragma pack(pop)\n"
+            "extern \"C\" void __stdcall Init(T* p) {\n%s}\n"
+            % (count, fields, body)), "Init"
+
+def emit_assign_arg2_ret_self(b):
+    return ("// Store the SECOND stack argument at this+0 and return `this`; the first is\n"
+            "// unused. __fastcall this=ecx (ret 8).\n"
+            "struct T {\n    int field;\n    T* Init(int unused, int value);\n};\n"
+            "T* T::Init(int unused, int value) { this->field = value; return this; }\n"), "Init"
+
+def emit_pair_init(b):
+    return ("// Store both stack arguments at this+0 / this+4 and return `this`.\n"
+            "// __fastcall this=ecx (ret 8).\n"
+            "struct T {\n    int first;\n    int second;\n    T* Init(int a, int b);\n};\n"
+            "T* T::Init(int a, int b) {\n    this->first = a;\n    this->second = b;\n"
+            "    return this;\n}\n"), "Init"
+
+def emit_member_vector_size(b, disp):
+    """`mov ecx,[ecx+d]; mov eax,[ecx+4]; sub eax,[ecx]; sar eax,2` -- element count of a
+    vector reached through a member pointer."""
+    return ("// Element count of the vector reached through the member pointer at this+0x%x\n"
+            "// (`(last - first) >> 2`). __fastcall this=ecx.\n"
+            "#pragma pack(push,1)\n"
+            "struct Vec { int* first; int* last; };\n"
+            "struct T {\n%s    int Size();\n};\n"
+            "#pragma pack(pop)\n"
+            "int T::Size() { return this->vec->last - this->vec->first; }\n"
+            % (disp, _layout([(disp, "Vec*", "vec")]))), "Size"
+
+def emit_free_byte_clear(b):
+    return ("// __stdcall free function: clear the byte pointed to by the SECOND argument.\n"
+            "extern \"C\" void __stdcall Clear(int unused, char* p) { *p = 0; }\n"), "Clear"
+
 def emit_subptr_setter0(b):
     """`mov ecx,[ecx]; mov eax,[esp+4]; mov [ecx],eax; ret 4` -- store through this->p."""
     return ("// Store the stack argument through the pointer at this+0 (`this->p->field`).\n"
@@ -361,6 +436,50 @@ def emit_subptr_setter0(b):
 
 
 def classify(b):
+    # ---- 2026-08-20 classes, third round ----
+    # mov dword [ecx], offset vftable; ret   -- dtor of a polymorphic class
+    if len(b) == 7 and b[0:2] == b"\xc7\x01" and b[6] == 0xc3:
+        return emit_vtbl_dtor(b)
+    # xor eax,eax; inc eax; ret   -- `return 1;` (size-optimised)
+    if b == b"\x33\xc0\x40\xc3":
+        return emit_const(b, "1", "int")
+    # push imm8; pop eax; ret   -- small constant return
+    if len(b) == 4 and b[0] == 0x6a and b[2] == 0x58 and b[3] == 0xc3:
+        return emit_const(b, "%d" % b[1], "int")
+    # push esi; mov esi,[esp+8]; mov eax,ecx; mov ecx,[eax+d]; mov edx,[ecx];
+    # push esi; push eax; call [edx+slot]; pop esi; ret 4
+    if len(b) == 21 and b[0] == 0x56 and b[1:5] == b"\x8b\x74\x24\x08" \
+            and b[5:7] == b"\x8b\xc1" and b[7] == 0x8b and b[8] == 0x48 \
+            and b[10:14] == b"\x8b\x11\x56\x50" and b[14:16] == b"\xff\x52" \
+            and b[17] == 0x5e and b[18] == 0xc2:
+        return emit_virt_forward_this_arg(b, b[9], b[16])
+    # mov ecx,[esp+4]; call rel32; mov eax,[esp+4]; ret 4  -- construct-and-return helper
+    if len(b) == 16 and b[0:4] == b"\x8b\x4c\x24\x04" and b[4] == 0xe8 \
+            and b[9:13] == b"\x8b\x44\x24\x04" and b[13] == 0xc2:
+        return emit_construct_helper(b)
+    # fld dword [global]; ret
+    if len(b) == 7 and b[0:2] == b"\xd9\x05" and b[6] == 0xc3:
+        return emit_float_global_getter(b)
+    # mov eax,[esp+4]; xor ecx,ecx; zero 3 dwords through it; ret 4
+    if b == b"\x8b\x44\x24\x04\x33\xc9\x89\x08\x89\x48\x04\x89\x48\x08\xc2\x04\x00":
+        return emit_free_zero_init(b, 3)
+    # mov eax,ecx; mov ecx,[esp+8]; mov [eax],ecx; ret 8  -- keep 2nd arg, return this
+    if b == b"\x8b\xc1\x8b\x4c\x24\x08\x89\x08\xc2\x08\x00":
+        return emit_assign_arg2_ret_self(b)
+    # mov edx,[esp+8]; mov eax,ecx; mov ecx,[esp+4]; mov [eax],ecx; mov [eax+4],edx; ret 8
+    if b == b"\x8b\x54\x24\x08\x8b\xc1\x8b\x4c\x24\x04\x89\x08\x89\x50\x04\xc2\x08\x00":
+        return emit_pair_init(b)
+    # mov ecx,[ecx+d]; mov eax,[ecx+4]; sub eax,[ecx]; sar eax,2  -- vector size via a member
+    if len(b) == 11 and b[0] == 0x8b and b[1] == 0x49 and b[3:5] == b"\x8b\x41" \
+            and b[5] == 0x04 and b[6:8] == b"\x2b\x01" and b[8:11] == b"\xc1\xf8\x02" \
+            or (len(b) == 12 and b[0] == 0x8b and b[1] == 0x49 and b[3:5] == b"\x8b\x41"
+                and b[5] == 0x04 and b[6:8] == b"\x2b\x01" and b[8:11] == b"\xc1\xf8\x02"
+                and b[11] == 0xc3):
+        if len(b) == 12:
+            return emit_member_vector_size(b, b[2])
+    # mov eax,[esp+8]; mov byte [eax],0; ret 8
+    if b == b"\x8b\x44\x24\x08\xc6\x00\x00\xc2\x08\x00":
+        return emit_free_byte_clear(b)
     # ---- 2026-08-20 classes, second round ----
     # mov eax,ecx; mov ecx,[eax+d]; mov edx,[ecx]; push 0; add eax,part; push eax;
     # call [edx+slot32]; ret
