@@ -8944,3 +8944,48 @@ exports, and the gap merge is NOT reproducible from those, so any run of it sile
 functions.tsv`, or re-run `crawl/manifest_add_gaps.py --write`. **Check the row count
 (57,097) before trusting a crawl run**, and if the regenerator is ever made authoritative,
 teach it to re-merge the gaps.
+
+## Round 5 — the parity REPORT was lying, and 19% of the catalog was never checked
+
+Two integrity defects found by pointing the permuter at the "parked" DIFFER list and finding
+the list itself was wrong.
+
+**1. `tools/compare_candidate_objects.py` selected the wrong function in the object.** Its
+leaf came from `expected_name.rsplit("::")[-1]`, which fails on the two name shapes the
+manifest actually carries:
+- MANGLED (`?PeekGlobalDiffuseColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ`) — no `::` at all,
+  and the retail mangling encodes the RETAIL signature, so it never matches ours literally.
+- TEMPLATED (`std::_Dest_val<std::allocator<std::pair<A,B::C>_>,...>`) — the last `::` lands
+  inside the template arguments and yields garbage like `CSymbolInfo>_>`.
+
+With no leaf match it fell back to "longest function in the object" and compared against a
+constructor or a `??_G` scalar-deleting-destructor thunk — often the SAME LENGTH as the real
+body, so it reported `DIFFER` for byte-exact reconstructions. `symbol_leaf()` now handles
+mangled and templated names, and `??_G`/`??_E` thunks are deprioritised unless the target
+itself is a deleting destructor. Verified by hand first: `00b28b40` and `004e74f8` both build
+bytes identical to their oracle while the report called them DIFFER.
+
+**Lesson worth keeping: score a "parked" function before believing the worklist.**
+`0042bf35 CopyBackBufferToTexture` was listed as the 53-member permuter blocker; the landed
+source scores **0 (RELOCATION_MATCH)** today. `docs/DEBAKE_WORKLIST.md` is stale on this point.
+
+**2. 3,392 of 18,177 catalog entries (19%) had NO oracle row** — compiled and behaviour-tested,
+never byte-compared, and silently excluded from the headline parity numbers. New tool
+`tools/decomp_pipeline/backfill_oracles.py` extracts retail bytes for the **3,267 that ARE
+authoritative manifest starts** (same boundary + `rowtrim` trim as `pe_oracle.py`).
+
+The other **125 cannot be verified at all** and every one of them falls INSIDE a known
+manifest function — mid-function fragments (the `misbounded-manifest-fragments` hazard) whose
+"reconstructions" are stubs like `return 20695152;` or an empty body. They are listed with
+their containing function in `rebuild/backlog/midfunction-fragment-entries.md`.
+**Recommendation: prune them** (`verify_and_land.py --prune-outside-manifest`, or drop the
+catalog blocks plus src/tests). Left in place here because they belong to an earlier lane and
+deleting 125 landed entries is the owner's call.
+
+**New tool `tools/permuter/pragma_sweep.py`** — sweeps in-source `#pragma optimize` over
+landed-but-differing candidates. Pragmas only, deliberately: `build_candidates.ps1` compiles
+every candidate with one fixed flag set and has no per-entry flag field, so a command-line
+win cannot be carried into the gate but a pragma lives in the source. It fixed `00454690`
+(retail `push 0x34; pop eax` vs our `mov eax,0x34` — `optimize("s",on)` matches exactly) and
+honestly reported "no pragma helps" for ten others, which are genuine regalloc/scheduling
+differences.

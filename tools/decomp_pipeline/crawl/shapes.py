@@ -351,6 +351,24 @@ def emit_guarded_virt(b, slot, arg):
             "extern \"C\" void __fastcall CallIfSet(Obj* p) { if (p) p->Call(%d); }\n"
             % (slot // 4, arg, _vdecls(slot), arg)), "CallIfSet"
 
+def emit_outparam_pair_copy(b, d1, d2):
+    """`mov edx,[ecx+d1]; mov eax,[esp+4]; mov [eax],edx; mov ecx,[ecx+d2]; mov [eax+4],ecx`
+    -- copy two members into a caller-supplied 2-dword struct."""
+    return ("// Copy the members at this+0x%x / this+0x%x into the caller's 2-dword struct.\n"
+            "// __fastcall this=ecx, out=stack (ret 4).\n"
+            "#pragma pack(push,1)\n"
+            "struct Out { int a; int b; };\n"
+            "struct T {\n%s    void Get(Out* out);\n};\n"
+            "#pragma pack(pop)\n"
+            "void T::Get(Out* out) {\n    out->a = this->first;\n    out->b = this->second;\n}\n"
+            % (d1, d2, _layout([(d1, "int", "first"), (d2, "int", "second")]))), "Get"
+
+def emit_global_times_ten(b):
+    """`mov eax,[g]; lea eax,[eax+eax*4]; add eax,eax` -- the strength-reduced `g * 10`."""
+    return ("// `return g * 10;` -- VC7.1 strength-reduces to `lea eax,[eax+eax*4]; add eax,eax`.\n"
+            "extern int g_value;\n"
+            "extern \"C\" int TimesTen() { return g_value * 10; }\n"), "TimesTen"
+
 def emit_refptr_copy(b):
     """`mov eax,ecx; mov ecx,[esp+4]; mov edx,[ecx]; mov [eax],edx; mov edx,[ecx+4];
     test edx,edx; mov [eax+4],edx; je +2; inc dword [edx]` -- copy an intelligent
@@ -481,6 +499,19 @@ def emit_subptr_setter0(b):
 
 def classify(b):
     # ---- 2026-08-20 classes, fourth round ----
+    # mov edx,[ecx+d1]; mov eax,[esp+4]; mov [eax],edx; mov ecx,[ecx+d2]; mov [eax+4],ecx; ret 4
+    if b[0] == 0x8b and b[1] in (0x51, 0x91) and b.endswith(b"\x89\x48\x04\xc2\x04\x00"):
+        d1 = b[2] if b[1] == 0x51 else struct.unpack_from("<I", b, 2)[0]
+        i = 3 if b[1] == 0x51 else 6
+        if b[i:i + 4] == b"\x8b\x44\x24\x04" and b[i + 4:i + 6] == b"\x89\x10" \
+                and b[i + 6] == 0x8b and b[i + 7] in (0x49, 0x89):
+            d2 = b[i + 8] if b[i + 7] == 0x49 else struct.unpack_from("<I", b, i + 8)[0]
+            j = i + 9 if b[i + 7] == 0x49 else i + 12
+            if j == len(b) - 6:
+                return emit_outparam_pair_copy(b, d1, d2)
+    # mov eax,[g]; lea eax,[eax+eax*4]; add eax,eax; ret   -> g * 10
+    if len(b) == 11 and b[0] == 0xa1 and b[5:11] == b"\x8d\x04\x80\xd1\xe0\xc3":
+        return emit_global_times_ten(b)
     # intelligent-pointer copy (target + refcount, bump when present)
     if b == b"\x8b\xc1\x8b\x4c\x24\x04\x8b\x11\x89\x10\x8b\x51\x04\x85\xd2\x89\x50\x04" \
             b"\x74\x02\xff\x02\xc2\x04\x00":

@@ -111,11 +111,38 @@ def insert_catalog_entries(text, entries):
 
 def manifest_addresses():
     path = ROOT / "rebuild" / "manifest" / "functions.tsv"
+    rows = list(csv.DictReader(open(path, encoding="utf-8-sig"), delimiter="\t"))
+    check_manifest_intact(rows)
     return {
         row["address"].lower().replace("0x", "")
-        for row in csv.DictReader(open(path, encoding="utf-8-sig"), delimiter="\t")
+        for row in rows
         if row.get("address")
     }
+
+def check_manifest_intact(rows):
+    """Refuse to run against a manifest that lost its merged `_gapscan` starts.
+
+    `tools/bootstrap_rebuild_tree.py` rebuilds functions.tsv from the Ghidra exports, and the
+    7,529 xref-confirmed starts merged by `crawl/manifest_add_gaps.py` are NOT reproducible
+    from those -- so a regeneration silently drops them (57,097 -> 49,568 rows). The failure
+    is silent and wrong rather than loud: candidates at perfectly good addresses get rejected
+    as OUTSIDE_MANIFEST and their work is thrown away.
+
+    The invariant is self-updating: if any LANDED source is a gapscan reconstruction, the
+    manifest must still carry `_gapscan` rows.
+    """
+    if any(row.get("module") == "_gapscan" for row in rows):
+        return
+    catalog = ROOT / "rebuild" / "build_candidates.ps1"
+    if not catalog.exists() or "gapscan_sub" not in catalog.read_text(encoding="utf-8"):
+        return
+    raise SystemExit(
+        "MANIFEST REGRESSED: rebuild/manifest/functions.tsv has no `_gapscan` rows, but the\n"
+        "catalog contains landed gapscan reconstructions. Something regenerated the manifest\n"
+        "from the Ghidra exports and dropped the merged function starts, so this run would\n"
+        "reject valid candidates as OUTSIDE_MANIFEST.\n"
+        "Recover with:  git checkout HEAD -- rebuild/manifest/functions.tsv\n"
+        "or re-merge:   python tools/decomp_pipeline/crawl/manifest_add_gaps.py --write")
 
 def prune_catalog_blocks(text, addresses):
     """Remove simple top-level catalog object blocks for the specified addresses."""

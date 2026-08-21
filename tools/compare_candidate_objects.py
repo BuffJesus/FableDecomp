@@ -26,6 +26,31 @@ def read_tsv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(stream, delimiter="\t"))
 
 
+def symbol_leaf(expected_name: str) -> str:
+    """The identifier to look for inside the built object's symbols.
+
+    Manifest names arrive in three shapes and the naive `rsplit("::")` only handles one:
+      * MANGLED (`?PeekGlobalDiffuseColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ`) -- the
+        retail mangling encodes the retail signature, which never matches ours character
+        for character, so match on the identifier between `?` and the first `@`.
+      * TEMPLATED (`std::_Dest_val<std::allocator<std::pair<A,B::C>_>,...>`) -- splitting on
+        the LAST `::` lands inside the template arguments and yields garbage; cut the
+        argument list off first.
+      * plain (`CFoo::Bar`) -- the original behaviour.
+    When the leaf is wrong the caller silently falls back to "longest function in the
+    object", which compares against a constructor or a destructor thunk and reports a
+    DIFFER for a byte-exact reconstruction.
+    """
+    name = (expected_name or "").strip()
+    if name.startswith("?"):
+        return name[1:].split("@", 1)[0]
+    leaf = name.rsplit("::", 1)[-1].lstrip("~")
+    if "<" in name:
+        head = name.split("<", 1)[0]
+        leaf = head.rsplit("::", 1)[-1].lstrip("~")
+    return leaf
+
+
 def object_text(
     objdump: str,
     path: Path,
@@ -64,9 +89,21 @@ def object_text(
             )
     if not functions:
         raise RuntimeError(f"no disassembled functions in {path}")
-    leaf = expected_name.rsplit("::", 1)[-1].lstrip("~")
+    leaf = symbol_leaf(expected_name)
     named = [item for item in functions if leaf and leaf in str(item["symbol"])]
-    selected = max(named or functions, key=lambda item: len(item["bytes"]))
+    pool = named or functions
+    # `??_G` / `??_E` are the compiler-generated scalar / vector DELETING destructors. They
+    # exist only because the source declares a dtor, they are never the reconstruction
+    # target unless the manifest name says the target IS one -- and they are frequently the
+    # SAME LENGTH as the real body, so "longest wins" silently compares the wrong function
+    # and reports a DIFFER for a byte-exact reconstruction (12 `_Dest_val` rows did exactly
+    # that). Template leaf names make this worse: `std::_Dest_val<...pair<A,B::C>_>` splits
+    # on the last `::` into garbage that matches no symbol, so the fallback always fires.
+    if "deleting_destructor" not in expected_name:
+        real = [item for item in pool
+                if not str(item["symbol"]).startswith(("??_G", "??_E"))]
+        pool = real or pool
+    selected = max(pool, key=lambda item: len(item["bytes"]))
     if expected_size is not None:
         start = int(selected["start"])
         byte_map = section_bytes[int(selected["section"])]
