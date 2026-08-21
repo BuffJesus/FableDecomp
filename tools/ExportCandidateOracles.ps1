@@ -80,6 +80,29 @@ try {
         )
     }
     Move-Item -LiteralPath $temp -Destination $output -Force
+
+    # Ghidra can only export an oracle for an address it knows is a function. Thousands of
+    # landed candidates sit at starts DISCOVERED from the binary itself (crawl/manifest_gaps
+    # -> crawl/xrefs -> crawl/manifest_add_gaps), which the Ghidra DB has never heard of, so
+    # this regeneration silently drops their rows -- 3,584 of them on 2026-08-20, which
+    # quietly reverted those functions to "compiled but never byte-compared" and deflated the
+    # parity totals with no error anywhere.
+    #
+    # backfill_oracles.py re-derives those rows straight from Fable.exe using the manifest
+    # boundaries. It is idempotent and never invents an oracle for an address that is not an
+    # authoritative function start, so it is safe on every refresh. A failure here is logged
+    # and tolerated: a thinner ledger is recoverable, a broken refresh is worse.
+    $backfill = Join-Path $root 'tools\decomp_pipeline\backfill_oracles.py'
+    $python = 'C:\Users\Cornelio\AppData\Local\Programs\Python\Python314\python.exe'
+    if ((Test-Path -LiteralPath $backfill) -and (Test-Path -LiteralPath $python)) {
+        $backfillOutput = & $python $backfill '--write'
+        if ($LASTEXITCODE -ne 0) {
+            Write-Output "WARNING: oracle backfill failed; landed candidates at discovered function starts are NOT byte-compared this cycle"
+        }
+        $backfillOutput | Where-Object { $_ -match 'APPENDED|oracle_missing' } | ForEach-Object {
+            Write-Output "  backfill: $_"
+        }
+    }
 }
 finally {
     Remove-Item -LiteralPath $addressFile -Force -ErrorAction SilentlyContinue

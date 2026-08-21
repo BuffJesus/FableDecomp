@@ -26,6 +26,41 @@ def read_tsv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(stream, delimiter="\t"))
 
 
+def warn_if_oracle_ledger_pruned(root: Path, rows: list) -> None:
+    """Say so when landed functions have silently stopped being byte-compared.
+
+    A candidate with no oracle row is compiled and behaviour-tested but never compared with
+    retail, and it drops out of the parity totals without any error. Every catalog entry that
+    IS an authoritative manifest function start has an oracle row (backfill_oracles.py); the
+    only legitimate `ORACLE_MISSING` entries are the mid-function fragments that are not
+    function starts at all. So a manifest-start entry without an oracle means the ledger lost
+    rows -- which happened on 2026-08-20, when 3,584 rows vanished and `oracle_missing` jumped
+    125 -> 3,709 while every other number still looked plausible.
+    """
+    manifest = root / "rebuild" / "manifest" / "functions.tsv"
+    if not manifest.exists():
+        return
+    starts = {
+        "%08x" % int(row["address"], 16)
+        for row in csv.DictReader(open(manifest, encoding="utf-8-sig"), delimiter="\t")
+        if row.get("address")
+    }
+    orphans = [
+        row["address"] for row in rows
+        if row["status"] == "ORACLE_MISSING" and row["address"].lower() in starts
+    ]
+    if not orphans:
+        return
+    print(
+        f"WARNING: {len(orphans)} landed candidates are authoritative manifest function "
+        "starts but have NO oracle row, so they were NOT byte-compared and are missing from "
+        "the totals above. The oracle ledger looks pruned.\n"
+        "  recover: git checkout HEAD -- rebuild/oracles/auto-re-candidates.tsv\n"
+        "  or rebuild it: python tools/decomp_pipeline/backfill_oracles.py --write\n"
+        f"  first few: {', '.join(orphans[:6])}"
+    )
+
+
 def symbol_leaf(expected_name: str) -> str:
     """The identifier to look for inside the built object's symbols.
 
@@ -309,6 +344,7 @@ def main() -> int:
     temp.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     temp.replace(gate / "retail-parity.json")
     print(json.dumps(summary, indent=2))
+    warn_if_oracle_ledger_pruned(root, rows)
     print(f"parity_cache reused={cache_reused} recomputed={len(rows) - cache_reused}")
     return 0
 
