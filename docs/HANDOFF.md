@@ -8989,3 +8989,75 @@ win cannot be carried into the gate but a pragma lives in the source. It fixed `
 (retail `push 0x34; pop eax` vs our `mov eax,0x34` — `optimize("s",on)` matches exactly) and
 honestly reported "no pragma helps" for ten others, which are genuine regalloc/scheduling
 differences.
+
+## Round 6 — three real DIFFERs fixed, and every landed function is now byte-checked
+
+**Fixes, each with a reusable lesson:**
+- `008cfe30 CGameScriptThing::GetHomePos` — by-value 3-field struct return (sret). Retail
+  loads the **source members first and the sret pointer second**. `return m_Pos;` and a
+  by-VALUE constructor both load the sret pointer first and can never match; a constructor
+  taking **const references** matches exactly (24/24). Now a shape class — 8 more rows share
+  the pattern.
+- `00401296 __onexit` — it RETURNS its result, so the `_onexit` branch is a TAIL JUMP, and it
+  goes **through the import table** (`jmp dword ptr [__imp__onexit]`), i.e. the msvcr71 export
+  rather than a statically linked copy. A void model gives `call; ret` and never matches.
+  `optimize("s",on)` is also required, for `push dword ptr [esp+0x0c]` instead of hoisting the
+  argument into ecx.
+- `00454690 GetSizeofClass` — retail `push 0x34; pop eax`; the size pragma reproduces it.
+
+**Both behaviour tests were rewritten to LINK AGAINST the reconstruction.** The old GetHomePos
+test defined its own `GetHomePos` and therefore proved nothing about the landed source. The new
+`__onexit` test reaches BOTH branches by defining the import slot the source jumps through —
+a C symbol spelled `_imp__CrtOnExit` is emitted as `__imp__CrtOnExit`, which is exactly what
+`__declspec(dllimport) CrtOnExit` resolves to. Worth reusing whenever a reconstruction calls
+through an import.
+
+**`permuter_score.py` had BOTH of the comparer's selection bugs**, so it was silently scoring
+destructor thunks and constructors instead of the target — every "score" taken before this fix
+is suspect unless `--name` was passed explicitly. It now shares `symbol_leaf()` and the
+`??_G`/`??_E` rule. Re-scoring all 56 old DIFFERs with the corrected scorer: **16 are already
+byte-exact** (false reports), **40 genuinely differ** — mostly the landscape lane's incomplete
+large functions (length mismatches), plus a few same-length regalloc cases worth the annealer:
+`009df060` (24 differing bytes of 1736), `00989760` (27 of 85), `009e15e0` (46 of 99),
+`0081f170` (125 of 143).
+
+**Oracle coverage is now complete.** `backfill_oracles.py --write` appended **3,567** rows
+(18,071 total): every catalog entry that is an authoritative manifest start is byte-compared.
+The only entries without an oracle are the **125 mid-function fragments**, listed in
+`rebuild/backlog/midfunction-fragment-entries.md` with a prune recommendation.
+
+**A guard now exists for the manifest regression** — `verify_and_land.py` refuses to run when
+functions.tsv has no `_gapscan` rows while the catalog contains landed gapscan
+reconstructions. The clobber happened TWICE today (19:23, 19:54); peer sessions were notified,
+and `code-42` confirmed it is not them (different repo).
+
+## Round 7 — the regalloc tail, measured honestly (and the annealer does NOT crack it)
+
+New triage tool **`tools/permuter/diffcat.py <addr>...`** — splits a candidate's differing
+byte runs into relocation slots (noise; the comparer masks them) and REAL runs, printing each
+with context so the failure mode is visible at a glance. A raw diff badly overstates the
+problem: `009df060` looks like 80 differing bytes and is actually 24.
+
+**Annealer result: negative, and worth knowing.** `anneal.py` on `00989760`
+(CShaderRenderManager::UpdateAmbient, 85 B, 27 differing) ran **635 compiles over 350
+iterations and never improved on the seed score of 27**. Six hand-built structural variants
+(evaluate the argument early, cache the layout/device pointer, reorder the field stores,
+const-reference constructor, value constructor) all landed on exactly 27 as well. The
+difference is *where VC7.1 places the `push` of the second argument relative to the local
+struct's stores*, and no source spelling tried moves it. So the handoff's standing claim that
+"the permuter is the real blocker" should be read narrowly: the permuter is not a lever that
+turns these into matches — at least not with its current mutation library.
+
+**What the remaining same-length differs actually are** (all class 2, register allocation):
+- `009df060` CStateBlockFunctionSold::Apply (1736 B, **24** differing) — a pure **edx↔esi
+  swap** repeated at ~12 sites, all from one `__forceinline` helper inlined that many times.
+  Both operands load in retail's order; only the register assignment differs. Commutative
+  flips of the `&` and `|` change nothing; reordering the two local declarations makes it
+  worse (24 → 136). One correct spelling would fix all twelve sites at once — the best
+  remaining single-function prize in the DIFFER set.
+- `009e15e0` vector `Erase` (99 B, 46) — **ebx↔ebp swap**, plus retail loads an argument
+  after the register saves while we load it before.
+- `0081f170 CMap::GetEngineBlendAt` (143 B, 125) — retail keeps a value in **edi** and does
+  `sub eax,edi`; we re-read from `[esp+8]`. Retail's signed `% 4` is the `cdq; and edx,3`
+  idiom on a value already in eax, ours is `mov edx,ecx; sar edx,31` on ecx. Structural
+  enough that a different source shape may fix it.
