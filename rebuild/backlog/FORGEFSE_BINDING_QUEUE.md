@@ -4,14 +4,14 @@ Generated from `rebuild/sdk/fse_native_overlay.json`. Rows are reverse-engineeri
 prototype-review targets, not executable bindings. The unattended agent may advance a row
 to structural review; it cannot set `hookApproved`.
 
-- FSE recommendations: 481
-- Unique retail target addresses: 481
+- FSE recommendations: 482
+- Unique retail target addresses: 482
 - Needs reversal: 0
-- Agent reviewed: 139
-- Implementation verified: 339
+- Agent reviewed: 136
+- Implementation verified: 342
 - Hook approved: 0
 - Direct wrapper/retail signatures: 174
-- Wrapper adapters required: 281
+- Wrapper adapters required: 282
 - Signature/arity review required: 26
 
 | Rank | FSE API | Retail candidate | Address | Bridge | Match | Owner | Prototype | Stage | Score |
@@ -63,56 +63,56 @@ to structural review; it cannot set `hookApproved`.
 | 45 | `Quest.CreateLight` | `CGameScriptInterface::CreateLight` | `0x0089FAA0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
 | 46 | `Quest.CreatePhysicalBarrier` | `CGameScriptInterface::CreatePhysicalBarrier` | `0x0089FD20` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
 | 47 | `Quest.CreateRumble` | `CGameScriptInterface::CreateRumble` | `0x0089FDA0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 48 | `Quest.CreatureGeneratorAddTriggerer` | `CGameScriptInterface::CreatureGeneratorAddTriggerer` | `0x0089EC60` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 49 | `Quest.DeregisterTimer` | `CGameScriptInterface::DeregisterTimer` | `0x006E7690` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 50 | `Quest.EntityFollowThing` | `CGameScriptInterface::EntityFollowThing` | `0x008954A0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 51 | `Quest.EntityPostOpinionDeedKeepSearchingForWitnesses` | `CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses` | `0x0089C7B0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 52 | `Quest.EntityPostOpinionDeedToAll` | `CGameScriptInterface::EntityPostOpinionDeedToAll` | `0x0089C560` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 53 | `Quest.EntityPostOpinionDeedToRecipient` | `CGameScriptInterface::EntityPostOpinionDeedToRecipient` | `0x0089C670` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 54 | `Quest.EntityPostOpinionDeedToRecipientVillage` | `CGameScriptInterface::EntityPostOpinionDeedToRecipientVillage` | `0x0089C710` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 55 | `Quest.EntitySetAppearanceSeed` | `CGameScriptInterface::EntitySetAppearanceSeed` | `0x008A0BC0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 56 | `Quest.EntitySetAsAbleToRegionFollowWhenMarried` | `CGameScriptInterface::EntitySetAsAbleToRegionFollowWhenMarried` | `0x008978E0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 57 | `Quest.EntitySetAsDamageable` | `CGameScriptInterface::EntitySetAsDamageable` | `0x0088EAD0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 58 | `Quest.EntitySetAsMarryable` | `CGameScriptInterface::EntitySetAsMarryable` | `0x00894DD0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 59 | `Quest.EntitySetAsSittingOnFloor` | `CGameScriptInterface::EntitySetAsSittingOnFloor` | `0x008A8C60` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 60 | `Quest.EntitySetCombatEnabled` | `CGameScriptInterface::EntitySetCombatEnabled` | `0x0088F710` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 61 | `Quest.EntitySetInLimbo` | `CGameScriptInterface::EntitySetInLimbo` | `0x0088FD00` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 62 | `Quest.EntitySetMaxNumberOfAttackers` | `CGameScriptInterface::EntitySetMaxNumberOfAttackers` | `0x0089E130` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 63 | `Quest.EntitySetOpinionAttitudeEnabled` | `CGameScriptInterface::EntitySetOpinionAttitudeEnabled` | `0x0089C380` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 64 | `Quest.EntitySetOpinionDeedTypeEnabled` | `CGameScriptInterface::EntitySetOpinionDeedTypeEnabled` | `0x0089C330` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 65 | `Quest.EntitySetOpinionReactionEnabled` | `CGameScriptInterface::EntitySetOpinionReactionEnabled` | `0x0089C3D0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 66 | `Quest.EntityStopFollowing` | `CGameScriptInterface::EntityStopFollowing` | `0x008A7980` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 67 | `Quest.EntityWillTeleportToArea` | `CGameScriptInterface::EntityWillTeleportToArea` | `0x008A93A0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 68 | `Quest.GetBestScoreBlackjack` | `CGameScriptInterface::GetBestScoreBlackjack` | `0x008A1650` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 69 | `Quest.GetBestScoreCoinGolfOakVale` | `CGameScriptInterface::GetBestScoreCoinGolfOakVale` | `0x008A16B0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 70 | `Quest.GetBestScoreCoinGolfSnowSpire` | `CGameScriptInterface::GetBestScoreCoinGolfSnowSpire` | `0x008A1710` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 71 | `Quest.GetBestScoreShoveHaPenny` | `CGameScriptInterface::GetBestScoreShoveHaPenny` | `0x008A1770` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 72 | `Quest.GetHero` | `CGameScriptInterface::GetHero` | `0x00891CA0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 73 | `Quest.GetHeroGold` | `CGameScriptInterface::GetHeroGold` | `0x00898FA0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 74 | `Quest.GetHeroTitle` | `CGameScriptInterface::GetHeroTitle` | `0x00897880` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 75 | `Quest.GetNumberOfTimesHeroHasHadSex` | `CGameScriptInterface::GetNumberOfTimesHeroHasHadSex` | `0x00897C90` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 76 | `Quest.GetNumHousesOwned` | `CGameScriptInterface::GetNumHousesOwned` | `0x008A12A0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 77 | `Quest.GiveHeroExperience` | `CGameScriptInterface::GiveHeroExperience` | `0x00899000` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 78 | `Quest.GiveThingBestEnemyTarget` | `CGameScriptInterface::GiveThingBestEnemyTarget` | `0x008A0260` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 79 | `Quest.GiveThingItemInSlot` | `CGameScriptInterface::GiveThingItemInSlot` | `0x00895190` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 80 | `Quest.HeroHasExpression` | `CGameScriptInterface::HeroHasExpression` | `0x0088FC90` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 81 | `Quest.IsEntityFollowingHero` | `CGameScriptInterface::IsEntityFollowingHero` | `0x008955C0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 82 | `Quest.IsGiftFriendly` | `CGameScriptInterface::IsGiftFriendly` | `0x00894C90` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 83 | `Quest.IsGiftOffensive` | `CGameScriptInterface::IsGiftOffensive` | `0x00894D30` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 84 | `Quest.IsGiftRomantic` | `CGameScriptInterface::IsGiftRomantic` | `0x00894BF0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 85 | `Quest.IsHeroPerformingExpression` | `CGameScriptInterface::IsHeroPerformingExpression` | `0x008953A0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 86 | `Quest.IsLevelLoaded` | `CGameScriptInterface::IsLevelLoaded` | `0x0088E2A0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 87 | `Quest.IsPlayerCarryingItemOfType` | `CGameScriptInterface::IsPlayerCarryingItemOfType` | `0x008973A0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 88 | `Quest.IsSoundPlaying` | `CGameScriptInterface::IsSoundPlaying` | `0x0088F610` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 89 | `Quest.KickOffQuestStartScreen` | `CGameScriptInterface::KickOffQuestStartScreen` | `0x00896B60` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 90 | `Quest.ManuallyResetTrap` | `CGameScriptInterface::ManuallyResetTrap` | `0x008950E0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 91 | `Quest.MiniMapAllowRouteBetweenRegions` | `CGameScriptInterface::MiniMapAllowRouteBetweenRegions` | `0x0088E3D0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 92 | `Quest.MsgIsLevelLoaded` | `CGameScriptInterface::MsgIsLevelLoaded` | `0x008931B0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 93 | `Quest.MsgIsLevelUnloaded` | `CGameScriptInterface::MsgIsLevelUnloaded` | `0x00893240` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 94 | `Quest.OpenChest` | `CGameScriptInterface::OpenChest` | `0x00896390` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 95 | `Quest.OpinionSourceSetAsAttentionGrabbing` | `CGameScriptInterface::OpinionSourceSetAsAttentionGrabbing` | `0x0089C510` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 96 | `Quest.Play2DSound` | `CGameScriptInterface::Play2DSound` | `0x0088F570` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 97 | `Quest.PlaySoundAtPos` | `CGameScriptInterface::PlaySoundAtPos` | `0x00891170` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 98 | `Quest.RemoveOpinionDeedStillSearchingForWitnesses` | `CGameScriptInterface::RemoveOpinionDeedStillSearchingForWitnesses` | `0x0089C850` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 99 | `Quest.SetCreatureGeneratorsEnabled` | `CGameScriptInterface::SetCreatureGeneratorsEnabled` | `0x00892CF0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
-| 100 | `Quest.SetHeroAsWearing` | `CGameScriptInterface::SetHeroAsWearing` | `0x0089B3F0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 48 | `Quest.DeregisterTimer` | `CGameScriptInterface::DeregisterTimer` | `0x006E7690` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 49 | `Quest.EntityFollowThing` | `CGameScriptInterface::EntityFollowThing` | `0x008954A0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 50 | `Quest.EntityPostOpinionDeedKeepSearchingForWitnesses` | `CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses` | `0x0089C7B0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 51 | `Quest.EntityPostOpinionDeedToAll` | `CGameScriptInterface::EntityPostOpinionDeedToAll` | `0x0089C560` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 52 | `Quest.EntityPostOpinionDeedToRecipient` | `CGameScriptInterface::EntityPostOpinionDeedToRecipient` | `0x0089C670` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 53 | `Quest.EntityPostOpinionDeedToRecipientVillage` | `CGameScriptInterface::EntityPostOpinionDeedToRecipientVillage` | `0x0089C710` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 54 | `Quest.EntitySetAppearanceSeed` | `CGameScriptInterface::EntitySetAppearanceSeed` | `0x008A0BC0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 55 | `Quest.EntitySetAsAbleToRegionFollowWhenMarried` | `CGameScriptInterface::EntitySetAsAbleToRegionFollowWhenMarried` | `0x008978E0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 56 | `Quest.EntitySetAsDamageable` | `CGameScriptInterface::EntitySetAsDamageable` | `0x0088EAD0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 57 | `Quest.EntitySetAsMarryable` | `CGameScriptInterface::EntitySetAsMarryable` | `0x00894DD0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 58 | `Quest.EntitySetAsSittingOnFloor` | `CGameScriptInterface::EntitySetAsSittingOnFloor` | `0x008A8C60` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 59 | `Quest.EntitySetCombatEnabled` | `CGameScriptInterface::EntitySetCombatEnabled` | `0x0088F710` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 60 | `Quest.EntitySetInLimbo` | `CGameScriptInterface::EntitySetInLimbo` | `0x0088FD00` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 61 | `Quest.EntitySetMaxNumberOfAttackers` | `CGameScriptInterface::EntitySetMaxNumberOfAttackers` | `0x0089E130` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 62 | `Quest.EntitySetOpinionAttitudeEnabled` | `CGameScriptInterface::EntitySetOpinionAttitudeEnabled` | `0x0089C380` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 63 | `Quest.EntitySetOpinionDeedTypeEnabled` | `CGameScriptInterface::EntitySetOpinionDeedTypeEnabled` | `0x0089C330` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 64 | `Quest.EntitySetOpinionReactionEnabled` | `CGameScriptInterface::EntitySetOpinionReactionEnabled` | `0x0089C3D0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 65 | `Quest.EntityStopFollowing` | `CGameScriptInterface::EntityStopFollowing` | `0x008A7980` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 66 | `Quest.EntityWillTeleportToArea` | `CGameScriptInterface::EntityWillTeleportToArea` | `0x008A93A0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 67 | `Quest.GetBestScoreBlackjack` | `CGameScriptInterface::GetBestScoreBlackjack` | `0x008A1650` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 68 | `Quest.GetBestScoreCoinGolfOakVale` | `CGameScriptInterface::GetBestScoreCoinGolfOakVale` | `0x008A16B0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 69 | `Quest.GetBestScoreCoinGolfSnowSpire` | `CGameScriptInterface::GetBestScoreCoinGolfSnowSpire` | `0x008A1710` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 70 | `Quest.GetBestScoreShoveHaPenny` | `CGameScriptInterface::GetBestScoreShoveHaPenny` | `0x008A1770` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 71 | `Quest.GetHero` | `CGameScriptInterface::GetHero` | `0x00891CA0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 72 | `Quest.GetHeroGold` | `CGameScriptInterface::GetHeroGold` | `0x00898FA0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 73 | `Quest.GetHeroTitle` | `CGameScriptInterface::GetHeroTitle` | `0x00897880` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 74 | `Quest.GetNumberOfTimesHeroHasHadSex` | `CGameScriptInterface::GetNumberOfTimesHeroHasHadSex` | `0x00897C90` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 75 | `Quest.GetNumHousesOwned` | `CGameScriptInterface::GetNumHousesOwned` | `0x008A12A0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 76 | `Quest.GiveHeroExperience` | `CGameScriptInterface::GiveHeroExperience` | `0x00899000` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 77 | `Quest.GiveThingBestEnemyTarget` | `CGameScriptInterface::GiveThingBestEnemyTarget` | `0x008A0260` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 78 | `Quest.GiveThingItemInSlot` | `CGameScriptInterface::GiveThingItemInSlot` | `0x00895190` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 79 | `Quest.HeroHasExpression` | `CGameScriptInterface::HeroHasExpression` | `0x0088FC90` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 80 | `Quest.IsEntityFollowingHero` | `CGameScriptInterface::IsEntityFollowingHero` | `0x008955C0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 81 | `Quest.IsGiftFriendly` | `CGameScriptInterface::IsGiftFriendly` | `0x00894C90` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 82 | `Quest.IsGiftOffensive` | `CGameScriptInterface::IsGiftOffensive` | `0x00894D30` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 83 | `Quest.IsGiftRomantic` | `CGameScriptInterface::IsGiftRomantic` | `0x00894BF0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 84 | `Quest.IsHeroPerformingExpression` | `CGameScriptInterface::IsHeroPerformingExpression` | `0x008953A0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 85 | `Quest.IsLevelLoaded` | `CGameScriptInterface::IsLevelLoaded` | `0x0088E2A0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 86 | `Quest.IsPlayerCarryingItemOfType` | `CGameScriptInterface::IsPlayerCarryingItemOfType` | `0x008973A0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 87 | `Quest.IsSoundPlaying` | `CGameScriptInterface::IsSoundPlaying` | `0x0088F610` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 88 | `Quest.KickOffQuestStartScreen` | `CGameScriptInterface::KickOffQuestStartScreen` | `0x00896B60` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 89 | `Quest.MiniMapAllowRouteBetweenRegions` | `CGameScriptInterface::MiniMapAllowRouteBetweenRegions` | `0x0088E3D0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 90 | `Quest.MsgIsLevelLoaded` | `CGameScriptInterface::MsgIsLevelLoaded` | `0x008931B0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 91 | `Quest.MsgIsLevelUnloaded` | `CGameScriptInterface::MsgIsLevelUnloaded` | `0x00893240` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 92 | `Quest.OpenChest` | `CGameScriptInterface::OpenChest` | `0x00896390` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 93 | `Quest.OpinionSourceSetAsAttentionGrabbing` | `CGameScriptInterface::OpinionSourceSetAsAttentionGrabbing` | `0x0089C510` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 94 | `Quest.Play2DSound` | `CGameScriptInterface::Play2DSound` | `0x0088F570` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 95 | `Quest.PlaySoundAtPos` | `CGameScriptInterface::PlaySoundAtPos` | `0x00891170` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 96 | `Quest.RemoveOpinionDeedStillSearchingForWitnesses` | `CGameScriptInterface::RemoveOpinionDeedStillSearchingForWitnesses` | `0x0089C850` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 97 | `Quest.SetCreatureGeneratorsEnabled` | `CGameScriptInterface::SetCreatureGeneratorsEnabled` | `0x00892CF0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 98 | `Quest.SetHeroAsWearing` | `CGameScriptInterface::SetHeroAsWearing` | `0x0089B3F0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 99 | `Quest.SetNumberOfTimesHeroHasHadSex` | `CGameScriptInterface::SetNumberOfTimesHeroHasHadSex` | `0x00897CF0` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |
+| 100 | `Quest.SetPreferredQuickAccessItem` | `CGameScriptInterface::SetPreferredQuickAccessItem` | `0x00896E60` | wrapper-adapter | unique | strong | yes | agent-reviewed | 245 |

@@ -227,6 +227,63 @@ def verified_lifts(root: Path) -> dict[str, tuple[str, str]]:
     return {address: (grade, str(path.resolve())) for address, (grade, path) in rows.items()}
 
 
+def manifest_row_count(manifest: Path) -> int:
+    """Data rows actually in functions.tsv (Ghidra-derived + re-merged discovered starts)."""
+    if not manifest.exists():
+        return 0
+    with manifest.open("r", encoding="utf-8-sig", errors="replace", newline="") as stream:
+        return max(0, sum(1 for _ in stream) - 1)
+
+
+def remerge_discovered_starts(root: Path, manifest: Path) -> None:
+    """Re-append the xref-confirmed function starts this regeneration cannot derive.
+
+    The manifest is rebuilt here from the Ghidra exports, but 7,529 of its rows are function
+    starts DISCOVERED inside over-captured rows and confirmed by the xref index
+    (`crawl/manifest_gaps.py` -> `crawl/xrefs.py` -> `crawl/manifest_add_gaps.py`). Nothing in
+    the Ghidra exports knows about them, so a plain regeneration silently drops all of them
+    (57,097 -> 49,568 rows).
+
+    That failure is silent and WRONG rather than loud: `verify_and_land.py` rejects any
+    candidate whose address is not a manifest function start, so a crawl running against the
+    shrunk manifest throws away perfectly good reconstructions as OUTSIDE_MANIFEST. It bit
+    twice on 2026-08-20 before anyone noticed.
+
+    The merge is idempotent -- run against an intact manifest it adds nothing -- so calling it
+    here is safe. A failure is reported and tolerated: a manifest missing its discovered rows
+    is recoverable (`git checkout HEAD -- rebuild/manifest/functions.tsv`), but a regeneration
+    that dies half-way is not.
+    """
+    import subprocess
+    import sys as _sys
+    crawl = root / "tools" / "decomp_pipeline" / "crawl"
+    # Order matters: merge the rows back, THEN re-apply the RTTI naming pass. The naming pass
+    # renames `_gapscan` / `sub_<addr>` rows to `<Class>::vfunc_<slot>`, and it too is derived
+    # from the binary rather than the Ghidra exports -- a regeneration that only re-merged the
+    # rows would restore all 7,529 addresses but silently lose 3,239 of their names.
+    for name, label in (("manifest_add_gaps.py", "gap re-merge"),
+                        ("name_gapscan.py", "rtti naming")):
+        tool = crawl / name
+        if not tool.exists():
+            continue
+        try:
+            done = subprocess.run([_sys.executable, str(tool), "--write"],
+                                  capture_output=True, text=True, cwd=str(crawl))
+        except Exception as exc:                              # pragma: no cover
+            print(f"WARNING: {label} could not run: {exc}")
+            continue
+        if done.returncode != 0:
+            print(f"WARNING: {label} FAILED; the manifest is missing its discovered starts "
+                  "and/or their names. Recover with `git checkout HEAD -- "
+                  f"rebuild/manifest/functions.tsv`, or run {name} --write by hand.\n"
+                  f"{done.stdout[-400:]}{done.stderr[-400:]}")
+            continue
+        for line in done.stdout.splitlines():
+            if any(k in line for k in ("discovered starts", "manifest rows", "APPEND",
+                                       "named", "renamed")):
+                print(f"  {label}: {line.strip()}")
+
+
 def write_tsv(path: Path, fieldnames: list[str], rows: list[dict[str, object]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temp = path.with_suffix(path.suffix + ".tmp")
@@ -377,6 +434,7 @@ def main() -> int:
         function_rows.append(data)
     function_fields = list(function_rows[0].keys()) if function_rows else []
     write_tsv(manifest_dir / "functions.tsv", function_fields, function_rows)
+    remerge_discovered_starts(root, manifest_dir / "functions.tsv")
 
     declared_modules: dict[str, int] = {}
     scaffold = root / "ghidra_out" / "decomp_module_scaffold.tsv"
@@ -414,7 +472,11 @@ def main() -> int:
 
     materialize_tier0(root, rebuild)
     summary = {
+        # Ghidra-derived rows only. The manifest ALSO carries the xref-confirmed starts
+        # re-merged by remerge_discovered_starts(), so functions.tsv is legitimately longer
+        # than this -- `manifest_rows` below is the file's real size.
         "catalog_functions": len(functions),
+        "manifest_rows": manifest_row_count(manifest_dir / "functions.tsv"),
         "modules": len(declared_modules),
         "calling_convention_known": sum(row.calling_convention not in ("", "unknown") for row in functions),
         "prototype_complete": sum(row.prototype_complete for row in functions),

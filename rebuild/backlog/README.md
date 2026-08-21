@@ -1,6 +1,6 @@
 # Reconstruction backlog
 
-Generated: `2026-08-16T14:26:16-06:00`
+Generated: `2026-08-20T19:54:42-06:00`
 
 The order favors generated candidate clusters first, then extension of proven modules, small prototype closures, and finally bulk signature work.
 
@@ -9,7 +9,7 @@ The order favors generated candidate clusters first, then extension of proven mo
 | Rank | Track | Module | Functions | Prototype gaps | Agent candidates | Verified lifts |
 |---:|---|---|---:|---:|---:|---:|
 | 1 | candidate-cluster | `CGameScriptInterface` | 953 | 5 | 440 | 0 |
-| 2 | candidate-cluster | `_global` | 11362 | 9365 | 322 | 0 |
+| 2 | candidate-cluster | `_global` | 11362 | 9365 | 324 | 0 |
 | 3 | candidate-cluster | `CMouseDX` | 24 | 0 | 14 | 10 |
 | 4 | candidate-cluster | `CScriptThing` | 103 | 2 | 15 | 0 |
 | 5 | candidate-cluster | `CMemoryAllocatorFixedSize` | 21 | 0 | 11 | 7 |
@@ -41,20 +41,20 @@ Uncompiled auto-RE candidates ordered by authoritative retail function size, the
 | Rank | Address | Module | Retail bytes | Candidate bytes | Blocker |
 |---:|---|---|---:|---:|---|
 | 1 | `00c9cb60` | `_global` | 0 | 93 |  |
-| 2 | `0041c780` | `_global` | 0 | 123 |  |
-| 3 | `0042a59e` | `_global` | 0 | 133 | 'RBTree__GetMaxNode' was not declared in this scope |
-| 4 | `0042a5c0` | `_global` | 0 | 133 | 'RBTree__GetMaxNode' was not declared in this scope |
-| 5 | `0042b687` | `_global` | 0 | 134 | 'LinkedList_Insert_Before' was not declared in this scope |
-| 6 | `0042ac52` | `_global` | 0 | 135 |  |
-| 7 | `0042ac9f` | `_global` | 0 | 135 |  |
-| 8 | `0042ad10` | `_global` | 0 | 139 |  |
-| 9 | `00451303` | `_global` | 0 | 139 |  |
-| 10 | `0043006f` | `_global` | 0 | 144 |  |
-| 11 | `00451022` | `_global` | 0 | 149 |  |
-| 12 | `0045121c` | `_global` | 0 | 152 |  |
-| 13 | `004502eb` | `_global` | 0 | 155 |  |
-| 14 | `0045036f` | `_global` | 0 | 155 |  |
-| 15 | `00450e6e` | `_global` | 0 | 164 |  |
+| 2 | `0042a59e` | `_global` | 0 | 133 | 'RBTree__GetMaxNode' was not declared in this scope |
+| 3 | `0042a5c0` | `_global` | 0 | 133 | 'RBTree__GetMaxNode' was not declared in this scope |
+| 4 | `0042b687` | `_global` | 0 | 134 | 'LinkedList_Insert_Before' was not declared in this scope |
+| 5 | `0042ac52` | `_global` | 0 | 135 |  |
+| 6 | `0042ac9f` | `_global` | 0 | 135 |  |
+| 7 | `0042ad10` | `_global` | 0 | 139 |  |
+| 8 | `00451303` | `_global` | 0 | 139 |  |
+| 9 | `0043006f` | `_global` | 0 | 144 |  |
+| 10 | `00451022` | `_global` | 0 | 149 |  |
+| 11 | `0045121c` | `_global` | 0 | 152 |  |
+| 12 | `00450e6e` | `_global` | 0 | 164 |  |
+| 13 | `0042acec` | `_global` | 0 | 172 |  |
+| 14 | `00450ebb` | `_global` | 0 | 174 |  |
+| 15 | `00450f08` | `_global` | 0 | 174 |  |
 
 ## First function queue
 
@@ -77,26 +77,26 @@ Uncompiled auto-RE candidates ordered by authoritative retail function size, the
 | 15 | `008aeac0` | `CGameScriptInterface` | signature-audit | static assertion failed |
 | 16 | `006e79e0` | `CGameScriptInterface` | compiled-needs-parity |  |
 | 17 | `00891310` | `CGameScriptInterface` | compiled-needs-parity |  |
-| 18 | `006e7690` | `CGameScriptInterface` | candidate-compile |  |
-| 19 | `006e7820` | `CGameScriptInterface` | candidate-compile |  |
-| 20 | `006e7920` | `CGameScriptInterface` | candidate-compile |  |
-| 21 | `0088e2a0` | `CGameScriptInterface` | candidate-compile | static assertion failed |
-| 22 | `0088e3d0` | `CGameScriptInterface` | candidate-compile | invalid use of incomplete type 'class CGameScriptInterface' |
-| 23 | `0088ead0` | `CGameScriptInterface` | candidate-compile | invalid use of incomplete type 'class CGameScriptInterface' |
-| 24 | `0088f480` | `CGameScriptInterface` | candidate-compile |  |
-| 25 | `0088f570` | `CGameScriptInterface` | candidate-compile |  |
-| 26 | `0088f610` | `CGameScriptInterface` | candidate-compile |  |
-| 27 | `0088f710` | `CGameScriptInterface` | candidate-compile |  |
-| 28 | `0088fc90` | `CGameScriptInterface` | candidate-compile |  |
-| 29 | `0088fd00` | `CGameScriptInterface` | candidate-compile |  |
-| 30 | `0088fdc0` | `CGameScriptInterface` | candidate-compile |  |
-| 31 | `0088fe90` | `CGameScriptInterface` | candidate-compile |  |
-| 32 | `00890820` | `CGameScriptInterface` | candidate-compile | 'CRGBColour' was not declared in this scope |
-| 33 | `00890ff0` | `CGameScriptInterface` | candidate-compile | 'field48' was not declared in this scope |
-| 34 | `00891070` | `CGameScriptInterface` | candidate-compile |  |
-| 35 | `00891170` | `CGameScriptInterface` | candidate-compile | 'reinterpret_cast' from integer to pointer |
-| 36 | `00891720` | `CGameScriptInterface` | candidate-compile |  |
-| 37 | `00891940` | `CGameScriptInterface` | candidate-compile | 'CGameScriptInterface' has not been declared |
-| 38 | `00891a00` | `CGameScriptInterface` | candidate-compile | static assertion failed |
-| 39 | `00891ca0` | `CGameScriptInterface` | candidate-compile | 'CScriptThing* NScript::operator&&(GetHeroPredicate5*, CIsThingAlive*)' must have an argument of class or enumerated type |
-| 40 | `00892850` | `CGameScriptInterface` | candidate-compile |  |
+| 18 | `00891bb0` | `CGameScriptInterface` | compiled-needs-parity |  |
+| 19 | `006e7690` | `CGameScriptInterface` | candidate-compile |  |
+| 20 | `006e7820` | `CGameScriptInterface` | candidate-compile |  |
+| 21 | `006e7920` | `CGameScriptInterface` | candidate-compile |  |
+| 22 | `0088e2a0` | `CGameScriptInterface` | candidate-compile | static assertion failed |
+| 23 | `0088e3d0` | `CGameScriptInterface` | candidate-compile | invalid use of incomplete type 'class CGameScriptInterface' |
+| 24 | `0088ead0` | `CGameScriptInterface` | candidate-compile | invalid use of incomplete type 'class CGameScriptInterface' |
+| 25 | `0088f480` | `CGameScriptInterface` | candidate-compile |  |
+| 26 | `0088f570` | `CGameScriptInterface` | candidate-compile |  |
+| 27 | `0088f610` | `CGameScriptInterface` | candidate-compile |  |
+| 28 | `0088f710` | `CGameScriptInterface` | candidate-compile |  |
+| 29 | `0088fc90` | `CGameScriptInterface` | candidate-compile |  |
+| 30 | `0088fd00` | `CGameScriptInterface` | candidate-compile |  |
+| 31 | `0088fdc0` | `CGameScriptInterface` | candidate-compile |  |
+| 32 | `0088fe90` | `CGameScriptInterface` | candidate-compile |  |
+| 33 | `00890820` | `CGameScriptInterface` | candidate-compile | 'CRGBColour' was not declared in this scope |
+| 34 | `00890ff0` | `CGameScriptInterface` | candidate-compile | 'field48' was not declared in this scope |
+| 35 | `00891070` | `CGameScriptInterface` | candidate-compile |  |
+| 36 | `00891170` | `CGameScriptInterface` | candidate-compile | 'reinterpret_cast' from integer to pointer |
+| 37 | `00891720` | `CGameScriptInterface` | candidate-compile |  |
+| 38 | `00891940` | `CGameScriptInterface` | candidate-compile | 'CGameScriptInterface' has not been declared |
+| 39 | `00891a00` | `CGameScriptInterface` | candidate-compile | static assertion failed |
+| 40 | `00891ca0` | `CGameScriptInterface` | candidate-compile | 'CScriptThing* NScript::operator&&(GetHeroPredicate5*, CIsThingAlive*)' must have an argument of class or enumerated type |
