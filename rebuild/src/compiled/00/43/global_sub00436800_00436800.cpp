@@ -1,1 +1,0 @@
-void __stdcall sub_00436800(int) {}

@@ -2,9 +2,11 @@
 """Verify authored candidates (byte-match + behaviour) and auto-land the wins.
 Usage: python verify_and_land.py <workflow_output.json> <oracle.tsv>
        [--land] [--prune-outside-manifest]
+       python verify_and_land.py --prune-fragment-report <report.md>
 Without --land: dry-run report only. With --land: writes src/tests/catalog/oracle for wins.
 Candidates without an authoritative manifest function start are always rejected. The prune
-flag removes already-landed outside-manifest rows from this specific authoring payload."""
+flag removes already-landed outside-manifest rows from this specific authoring payload. The
+report mode strictly validates and prunes a saved mid-function-fragment audit."""
 import csv, json, re, subprocess, os, html, sys
 from pathlib import Path
 
@@ -205,7 +207,52 @@ def prune_outside_manifest(addresses, catp):
         f"catalog_blocks={removed_blocks} files={removed_files}"
     )
 
+def prune_fragment_report(report_path, catp):
+    """Prune the addresses listed in a mid-function-fragment Markdown report.
+
+    This is deliberately strict: a stale report must not be able to remove a function that
+    has since become an authoritative manifest start, or an address no longer in the catalog.
+    """
+    report = report_path.read_text(encoding="utf-8")
+    addresses = {
+        match.group(1).lower()
+        for match in re.finditer(r"^\|\s*([0-9a-fA-F]{8})\s*\|", report, re.MULTILINE)
+    }
+    if not addresses:
+        raise SystemExit(f"no fragment addresses found in {report_path}")
+
+    manifest = manifest_addresses()
+    now_authoritative = sorted(addresses & manifest)
+    if now_authoritative:
+        raise SystemExit(
+            "REFUSING PRUNE: report contains authoritative manifest starts: "
+            + ", ".join(now_authoritative[:10])
+        )
+
+    cataloged = cataloged_addresses(catp)
+    missing = sorted(addresses - cataloged)
+    if missing:
+        raise SystemExit(
+            "REFUSING PRUNE: report contains addresses absent from the catalog: "
+            + ", ".join(missing[:10])
+        )
+
+    print(
+        f"FRAGMENT REPORT OK addresses={len(addresses)} "
+        "authoritative=0 missing_from_catalog=0"
+    )
+    prune_outside_manifest(addresses, catp)
+
 def main():
+    catp = ROOT/"rebuild"/"build_candidates.ps1"
+    if "--prune-fragment-report" in sys.argv:
+        index = sys.argv.index("--prune-fragment-report")
+        try:
+            report_path = Path(sys.argv[index + 1])
+        except IndexError:
+            raise SystemExit("--prune-fragment-report requires a Markdown report path")
+        prune_fragment_report(report_path, catp)
+        return
     outf=Path(sys.argv[1]); oraclef=Path(sys.argv[2]); land="--land" in sys.argv
     prune="--prune-outside-manifest" in sys.argv
     qfe="--qfe" in sys.argv
@@ -219,7 +266,6 @@ def main():
     # <=64 bytes have that shape, so the sweep has to be able to turn optimisation OFF.
     PRAGMAS=["", '#pragma optimize("s",on)', '#pragma optimize("t",on)',
              '#pragma optimize("g",on)', '#pragma optimize("",off)']
-    catp = ROOT/"rebuild"/"build_candidates.ps1"
     known_manifest = manifest_addresses()
     outside_manifest = {
         c["address"].lower().replace("0x", "")

@@ -1,4 +1,12 @@
-# Mid-function fragment catalog entries (unverifiable)
+# Mid-function fragment catalog entries (pruned)
+
+**Resolved 2026-08-20:** all 125 entries below were removed from the candidate catalog,
+compiled source tree, and test tree with the strict report-driven prune mode in
+`tools/decomp_pipeline/verify_and_land.py`. Preflight confirmed that none was an authoritative
+manifest start and all 125 were still cataloged. The full gate then passed with 18,070 objects;
+parity is 8,059 exact + 9,971 relocation matches, 40 differing, and 0 missing oracles.
+
+The table is retained as the deletion audit trail.
 
 Found 2026-08-20 while closing the `ORACLE_MISSING` gap (`tools/decomp_pipeline/backfill_oracles.py`).
 
@@ -9,9 +17,8 @@ fragments (the `misbounded-manifest-fragments` hazard), and their sources are tr
 authoritative start, so no oracle can honestly be extracted, so the comparer has never
 compared them -- yet they count toward the landed total.
 
-Recommendation: prune them. `verify_and_land.py --prune-outside-manifest` exists for exactly
-this, or remove the catalog blocks plus their src/tests files. Not done here: they belong to
-an earlier lane and removing 125 landed entries is the owner's call.
+Pruned with:
+`python tools/decomp_pipeline/verify_and_land.py --prune-fragment-report rebuild/backlog/midfunction-fragment-entries.md`.
 
 | address | containing function starts at | source |
 |---|---|---|

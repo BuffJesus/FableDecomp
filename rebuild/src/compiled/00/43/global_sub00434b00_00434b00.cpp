@@ -1,1 +1,0 @@
-void __fastcall sub_00434b00() {}

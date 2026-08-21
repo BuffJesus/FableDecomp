@@ -9123,3 +9123,21 @@ manifest-start candidate has no oracle row.
 oracles, re-compares parity, and regenerates the manifest and dashboards every 15 minutes. Any
 measurement taken while it is mid-cycle is suspect — check `wc -l rebuild/manifest/functions.tsv`
 (57,098) and `rebuild/oracles/auto-re-candidates.tsv` (18,071) before trusting a number.
+
+## Round 9 — unverifiable fragment entries pruned
+
+The 125 catalog entries documented in
+`rebuild/backlog/midfunction-fragment-entries.md` were pruned after explicit owner approval.
+Strict preflight confirmed all 125 were outside the authoritative manifest and still present
+in the catalog. Removed exactly 125 catalog blocks plus 125 compiled sources and 125 tests;
+the oracle ledger had no rows for them and therefore remains complete for every retained
+candidate.
+
+`verify_and_land.py` now has a durable standalone
+`--prune-fragment-report <report.md>` mode. It refuses to act if a report address has since
+become an authoritative manifest start or is absent from the catalog, preventing stale audit
+reports from deleting valid work.
+
+Validated after pruning: `CANDIDATE_BUILD PASS objects=18070`; parity comparison reports
+8,059 `MATCH` + 9,971 `RELOCATION_MATCH`, 40 `DIFFER`, and **0 `oracle_missing`**. The catalog
+now counts only candidates that can be checked against an authoritative retail function start.
