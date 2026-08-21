@@ -23,6 +23,8 @@ def main() -> int:
     parser.add_argument("--origin", nargs=2, type=int, required=True, metavar=("X", "Y"))
     parser.add_argument("--neighbor", action="append", nargs=3, default=[],
                         metavar=("LEV", "WORLD_X", "WORLD_Y"))
+    parser.add_argument("--triangles", type=Path,
+                        help="foregroundinfo --triangles TSV")
     args = parser.parse_args()
 
     lev = lev_rw.parse(args.lev.read_bytes())
@@ -107,6 +109,57 @@ def main() -> int:
     for error, coord, stored, packed in worst[:8]:
         print(f"worst x={coord[0]} y={coord[1]} error={error} "
               f"stored={stored} computed={packed}")
+
+    if args.triangles:
+        directions = [(0.0, 0.0), (0.0, -1.0), (0.0, 1.0),
+                      (-1.0, 0.0), (1.0, 0.0)]
+
+        def direction_active(direction: int, normal: tuple[float, float, float]) -> bool:
+            topness = min(1.0, max(0.0,
+                (math.asin(min(1.0, max(-1.0, normal[2]))) / (math.pi / 2.0) - 0.5) * 4.0))
+            if direction == 0:
+                return topness > 0.0
+            if topness == 1.0:
+                return False
+            length = math.hypot(normal[0], normal[1])
+            if length == 0.0:
+                return False
+            dx, dy = directions[direction]
+            dot = min(1.0, max(-1.0,
+                normal[0] / length * dx + normal[1] / length * dy))
+            sideness = min(1.0, max(0.0,
+                1.0 - 2.0 * (math.acos(dot) / (math.pi / 2.0) - 0.25)))
+            return (1.0 - topness) * sideness > 0.0
+
+        with args.triangles.open(newline="", encoding="utf-8") as stream:
+            triangles = list(csv.DictReader(stream, delimiter="\t"))
+        accepted = 0
+        violations: list[dict[str, str]] = []
+        by_direction = {direction: [0, 0] for direction in range(5)}
+        for triangle in triangles:
+            direction = int(triangle["mapping"])
+            coords = [
+                (int(triangle[f"{name}x"]) - origin_x,
+                 int(triangle[f"{name}y"]) - origin_y)
+                for name in "abc"
+            ]
+            active = any(direction_active(direction, mask_normal(*coord))
+                         for coord in coords)
+            by_direction[direction][0] += 1
+            by_direction[direction][1] += active
+            if active:
+                accepted += 1
+            else:
+                violations.append(triangle)
+        print(f"triangles_mask_accepted={accepted}/{len(triangles)} "
+              f"violations={len(violations)}")
+        for direction, (total, matches) in by_direction.items():
+            print(f"  mapping={direction} accepted={matches}/{total}")
+        for triangle in violations[:8]:
+            print("mask_violation " + " ".join(
+                f"{key}={triangle[key]}" for key in
+                ("frame", "layer", "mapping", "strip_triangle",
+                 "ax", "ay", "bx", "by", "cx", "cy")))
     return 0
 
 
