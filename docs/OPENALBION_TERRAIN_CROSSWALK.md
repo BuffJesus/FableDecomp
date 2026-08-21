@@ -213,6 +213,17 @@ of a triangle activated by either of its neighbours. A valid topology comparator
 must decode per-layer index buffers and reconstruct triangles, not compare the
 TSV vertex set directly.
 
+The retail `Darkwood9_Leadout_01` donor confirms this necessary triangle-level
+invariant exactly. Decoding every non-shared layer strip produced 2,901
+nondegenerate triangles, and every triangle contains at least one vertex whose
+recovered `GetMappingDirectionBlend` value is positive for that layer's mapping:
+1,757/1,757 top, 348/348 front, 301/301 back, 127/127 left, and 368/368 right.
+`compare_retail_direction_mask.py --triangles <foregroundinfo.tsv>` performs
+this check in addition to its byte-exact `CliffU`/`CliffV` comparison. This is
+a necessary topology oracle, not yet a sufficient reconstruction: theme weight,
+texture-tuple merge, and `> 0x10` contribution tests still select which eligible
+triangles belong to each material layer.
+
 ## Next terrain step
 
 The corrected ForgeTest WLD at `(2784,2560)` automatically resolves
@@ -231,7 +242,7 @@ The offline 425-entry container copy is
 re-extracting its ForgeTest entry reproduces the chunk hash exactly.
 
 Use the donor-mask WLD-driven container for the staged ForgeTest runtime probe.
-Next, feed the recovered direction normal through the already-understood five
-`GetMappingDirectionBlend` tests and compare the resulting face booleans and
-layer membership against retail. Only then promote regenerated `CliffU`/
-`CliffV` into a full-topology authored candidate.
+Next, reconstruct the theme-weight and texture-tuple contribution sets, then
+compare exact per-layer triangle membership and strip ordering against retail.
+Only after that should regenerated `CliffU`/`CliffV` be promoted into a
+full-topology authored candidate.
