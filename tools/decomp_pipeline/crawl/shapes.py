@@ -160,7 +160,7 @@ def _layout(fields, ptr_types=None):
         if o > cur:
             out += "    char pad_%x[0x%x];\n" % (cur, o - cur)
         out += "    %s %s;\n" % (ty, nm)
-        cur = o + _SIZE.get(ty.rstrip("*"), 4)
+        cur = o + _SIZE.get(ty.rstrip("* "), 4)
     return out
 
 def emit_zero_store(b, disp, ty):
@@ -220,30 +220,46 @@ def emit_ptr_compare(b, ne):
             "extern \"C\" bool __stdcall Compare(void* a, void* b) { return a %s b; }\n"
             % (op, op)), "Compare"
 
-def emit_int_compare(b, ne):
-    op = "!=" if ne else "=="
-    return ("// Free int comparison, __stdcall (`ret 8`): returns a %s b.\n"
-            "extern \"C\" bool __stdcall Compare(int a, int b) { return a %s b; }\n"
-            % (op, op)), "Compare"
+def emit_int_compare(b, lt):
+    """`cmp; sbb eax,eax; neg eax` is UNSIGNED LESS-THAN (it materialises CF), NOT `!=`.
+    The equality idiom is `sub; neg; sbb; inc`. The return type must be `int`: a `bool`
+    return compiles to `setb` instead of the sbb/neg pair."""
+    if lt:
+        return ("// Free unsigned comparison, __stdcall (`ret 8`): returns a < b.\n"
+                "extern \"C\" int __stdcall Compare(unsigned int a, unsigned int b)"
+                " { return a < b; }\n"), "Compare"
+    return ("// Free int comparison, __stdcall (`ret 8`): returns a == b.\n"
+            "extern \"C\" bool __stdcall Compare(int a, int b) { return a == b; }\n"), "Compare"
 
-def emit_field_compare(b, disp, ne):
-    op = "!=" if ne else "=="
-    return ("// Free __stdcall comparison of the member at +0x%x of two objects: a %s b.\n"
+def emit_field_compare(b, disp, lt, disp_b=None):
+    """lt: `cmp; sbb; neg` == UNSIGNED `a->f < b->f` (int return; bool gives `setb`).
+    else: `sub; neg; sbb; inc` == `a->f == b->f`.
+    The two operands often sit at DIFFERENT offsets (comparing unlike types, e.g. an
+    iterator against a container end), so each side gets its own struct."""
+    if disp_b is None:
+        disp_b = disp
+    ty = "unsigned int" if lt else "int"
+    op = "<" if lt else "=="
+    ret = "int" if lt else "bool"
+    return ("// Free __stdcall comparison: a->[0x%x] %s b->[0x%x].\n"
             "#pragma pack(push,1)\n"
-            "struct T {\n%s};\n"
+            "struct A {\n%s};\n"
+            "struct B {\n%s};\n"
             "#pragma pack(pop)\n"
-            "extern \"C\" bool __stdcall Compare(T* a, T* b) { return a->field %s b->field; }\n"
-            % (disp, op, _layout([(disp, "int", "field")]), op)), "Compare"
+            "extern \"C\" %s __stdcall Compare(A* a, B* b)"
+            " { return a->field %s b->field; }\n"
+            % (disp, op, disp_b, _layout([(disp, ty, "field")]),
+               _layout([(disp_b, ty, "field")]), ret, op)), "Compare"
 
 def emit_self_field_ge(b, d1, d2):
-    """`cmp` + `sbb eax,eax` + `inc eax` == unsigned >= of two members."""
+    """`cmp` + `sbb eax,eax` + `inc eax` == unsigned >= of two members (int return)."""
     return ("// `return this->[0x%x] >= this->[0x%x];` (unsigned: cmp / sbb / inc).\n"
             "#pragma pack(push,1)\n"
-            "struct T {\n%s    bool AtLeast();\n};\n"
+            "struct T {\n%s    int AtLeast();\n};\n"
             "#pragma pack(pop)\n"
-            "bool T::AtLeast() { return this->f_%x >= this->f_%x; }\n"
-            % (d1, d2, _layout([(d1, "int", "f_%x" % d1), (d2, "int", "f_%x" % d2)]),
-               d1, d2)), "AtLeast"
+            "int T::AtLeast() { return this->f_%x >= this->f_%x; }\n"
+            % (d1, d2, _layout([(d1, "unsigned int", "f_%x" % d1),
+                                (d2, "unsigned int", "f_%x" % d2)]), d1, d2)), "AtLeast"
 
 def emit_assign_ret_self(b):
     """`mov eax,ecx; mov ecx,[esp+4]; mov [eax],ecx; ret 4` -- store then return *this."""
@@ -259,7 +275,148 @@ def emit_return_this(b):
             "T* T::Self(%s) { return this; }\n" % (p, p)), "Self"
 
 
+# ---------------- second gapscan round ----------------
+def emit_virt_forward_subobj(b, disp, part, slot):
+    """`this->sub->Virt(&this->part, 0)` -- sub-object POINTER at this+disp, the
+    argument is the ADDRESS of an embedded member (`add eax,part`), plus a 0 flag."""
+    return ("// Forward to vtable slot %d of the sub-object pointer at this+0x%x, passing\n"
+            "// the address of the embedded member at this+0x%x and a 0 flag.\n"
+            "#pragma pack(push,1)\n"
+            "struct Part { int dummy; };\n"
+            "struct Sub {\n%s    virtual void Do(Part* p, int flag);\n};\n"
+            "struct T {\n%s    void Run();\n};\n"
+            "#pragma pack(pop)\n"
+            "void T::Run() { this->sub->Do(&this->part, 0); }\n"
+            % (slot // 4, disp, part, _vdecls(slot),
+               _layout([(disp, "Sub*", "sub"), (part, "Part", "part")]))), "Run"
+
+def emit_zero_init_ret_this(b, count, nargs):
+    """`mov eax,ecx; mov [eax+k],0 ...; ret` -- zero N leading dwords and return this."""
+    fields = "".join("    int f%d;\n" % i for i in range(count))
+    body = "".join("    this->f%d = 0;\n" % i for i in range(count))
+    p = ", ".join("int a%d" % i for i in range(nargs))
+    return ("// Zero the first %d dword members and return `this`. __fastcall this=ecx.\n"
+            "#pragma pack(push,1)\n"
+            "struct T {\n%s    T* Init(%s);\n};\n"
+            "#pragma pack(pop)\n"
+            "T* T::Init(%s) {\n%s    return this;\n}\n"
+            % (count, fields, p, p, body)), "Init"
+
+def emit_is_null(b, disp):
+    return ("// `return this->ptr == 0;` (xor/test/sete). __fastcall this=ecx.\n"
+            "#pragma pack(push,1)\n"
+            "struct T {\n%s    bool IsNull();\n};\n"
+            "#pragma pack(pop)\n"
+            "bool T::IsNull() { return this->ptr == 0; }\n"
+            % _layout([(disp, "int", "ptr")])), "IsNull"
+
+def emit_member_add(b, disp, delta):
+    """`mov eax,[ecx+d]; add eax,k` -- pointer member advanced by a constant."""
+    return ("// `return this->[0x%x] + 0x%x;` -- member pointer advanced by a constant.\n"
+            "#pragma pack(push,1)\n"
+            "struct T {\n%s    char* Advance();\n};\n"
+            "#pragma pack(pop)\n"
+            "char* T::Advance() { return this->ptr + 0x%x; }\n"
+            % (disp, delta, _layout([(disp, "int", "ptr")]).replace("int ptr", "char* ptr"),
+               delta)), "Advance"
+
+def emit_arg_add(b, delta):
+    return ("// Free __fastcall-free adder: `return (char*)a + 0x%x;` (`ret`, cdecl).\n"
+            "extern \"C\" char* Advance(char* a) { return a + 0x%x; }\n"
+            % (delta, delta)), "Advance"
+
+def emit_subptr_inc(b, d1, d2):
+    """`mov eax,[ecx+d1]; inc dword [eax+d2]` -- bump a counter through a member ptr."""
+    return ("// `++this->sub->counter;` -- sub-object pointer at this+0x%x, counter at\n"
+            "// sub+0x%x. __fastcall this=ecx.\n"
+            "#pragma pack(push,1)\n"
+            "struct Sub {\n%s};\n"
+            "struct T {\n%s    void Bump();\n};\n"
+            "#pragma pack(pop)\n"
+            "void T::Bump() { ++this->sub->counter; }\n"
+            % (d1, d2, _layout([(d2, "int", "counter")]),
+               _layout([(d1, "Sub*", "sub")]))), "Bump"
+
+def emit_int_and_byte_clear(b, d1, d2):
+    return ("// Clear the dword at this+0x%x and the byte flag at this+0x%x.\n"
+            "#pragma pack(push,1)\n"
+            "struct T {\n%s    void Clear();\n};\n"
+            "#pragma pack(pop)\n"
+            "void T::Clear() { this->count = 0; this->flag = false; }\n"
+            % (d1, d2, _layout([(d1, "int", "count"), (d2, "bool", "flag")]))), "Clear"
+
+def emit_guarded_virt(b, slot, arg):
+    return ("// Null-guarded virtual call: `if (p) p->Slot%d(%d);` __fastcall p=ecx.\n"
+            "struct Obj {\n%s    virtual void Call(int flags);\n};\n"
+            "extern \"C\" void __fastcall CallIfSet(Obj* p) { if (p) p->Call(%d); }\n"
+            % (slot // 4, arg, _vdecls(slot), arg)), "CallIfSet"
+
+def emit_subptr_setter0(b):
+    """`mov ecx,[ecx]; mov eax,[esp+4]; mov [ecx],eax; ret 4` -- store through this->p."""
+    return ("// Store the stack argument through the pointer at this+0 (`this->p->field`).\n"
+            "// __fastcall this=ecx (ret 4).\n"
+            "struct Sub { int field; };\n"
+            "struct T { Sub* sub; void Set(int value); };\n"
+            "void T::Set(int value) { this->sub->field = value; }\n"), "Set"
+
+
 def classify(b):
+    # ---- 2026-08-20 classes, second round ----
+    # mov eax,ecx; mov ecx,[eax+d]; mov edx,[ecx]; push 0; add eax,part; push eax;
+    # call [edx+slot32]; ret
+    if len(b) == 20 and b[0:2] == b"\x8b\xc1" and b[2] == 0x8b and b[3] == 0x48 \
+            and b[5:9] == b"\x8b\x11\x6a\x00" and b[9:11] == b"\x83\xc0" \
+            and b[12] == 0x50 and b[13:15] == b"\xff\x92" and b[19] == 0xc3:
+        return emit_virt_forward_subobj(b, b[4], b[11], struct.unpack_from("<I", b, 15)[0])
+    # mov eax,ecx; [xor ecx,ecx;] zero N consecutive dwords; ret [imm16]
+    if b[0:2] == b"\x8b\xc1":
+        reg = b[2:4] == b"\x33\xc9"      # xor ecx,ecx + `mov [eax+k],ecx` stores
+        i, n, expect = (4 if reg else 2), 0, 0
+        while i < len(b):
+            if reg and expect == 0 and b[i:i + 2] == b"\x89\x08":
+                i += 2
+            elif reg and expect and b[i:i + 3] == b"\x89\x48" + bytes([expect]):
+                i += 3
+            elif not reg and expect == 0 and b[i:i + 6] == b"\xc7\x00\x00\x00\x00\x00":
+                i += 6
+            elif not reg and expect and b[i:i + 7] == b"\xc7\x40" + bytes([expect]) + b"\x00\x00\x00\x00":
+                i += 7
+            else:
+                break
+            n += 1; expect += 4
+        if n >= 1 and i < len(b) and (b[i:] == b"\xc3" or (b[i] == 0xc2 and len(b) == i + 3)):
+            return emit_zero_init_ret_this(b, n, 0 if b[i] == 0xc3
+                                           else struct.unpack_from("<H", b, i + 1)[0] // 4)
+    # mov edx,[ecx+d]; xor eax,eax; test edx,edx; sete al; ret
+    if b[0] == 0x8b and b[1] in (0x11, 0x51, 0x91) and b.endswith(b"\x33\xc0\x85\xd2\x0f\x94\xc0\xc3"):
+        d = 0 if b[1] == 0x11 else (b[2] if b[1] == 0x51 else struct.unpack_from("<I", b, 2)[0])
+        i = 2 if b[1] == 0x11 else (3 if b[1] == 0x51 else 6)
+        if len(b) == i + 8:
+            return emit_is_null(b, d)
+    # mov eax,[ecx+d]; add eax,imm8; ret
+    if len(b) in (6, 7) and b[0] == 0x8b and b[1] in (0x01, 0x41):
+        d = 0 if b[1] == 0x01 else b[2]
+        i = 2 if b[1] == 0x01 else 3
+        if b[i:i + 2] == b"\x83\xc0" and len(b) == i + 4 and b[i + 3] == 0xc3:
+            return emit_member_add(b, d, b[i + 2])
+    # mov eax,[esp+4]; add eax,imm8; ret
+    if len(b) == 8 and b[0:4] == b"\x8b\x44\x24\x04" and b[4:6] == b"\x83\xc0" and b[7] == 0xc3:
+        return emit_arg_add(b, b[6])
+    # mov eax,[ecx+d1]; inc dword [eax+d2]; ret
+    if len(b) == 7 and b[0] == 0x8b and b[1] == 0x41 and b[3] == 0xff and b[4] == 0x40 \
+            and b[6] == 0xc3:
+        return emit_subptr_inc(b, b[2], b[5])
+    # xor eax,eax; mov [ecx+d1],eax; mov [ecx+d2],al; ret
+    if len(b) == 9 and b[0:2] == b"\x33\xc0" and b[2] == 0x89 and b[3] == 0x41 \
+            and b[5] == 0x88 and b[6] == 0x41 and b[8] == 0xc3:
+        return emit_int_and_byte_clear(b, b[4], b[7])
+    # test ecx,ecx; je +7; mov eax,[ecx]; push 1; call [eax+slot]; ret
+    if len(b) == 12 and b[0:4] == b"\x85\xc9\x74\x07" and b[4:8] == b"\x8b\x01\x6a\x01" \
+            and b[8] == 0xff and b[9] == 0x50 and b[11] == 0xc3:
+        return emit_guarded_virt(b, b[10], 1)
+    # mov ecx,[ecx]; mov eax,[esp+4]; mov [ecx],eax; ret 4
+    if b == b"\x8b\x09\x8b\x44\x24\x04\x89\x08\xc2\x04\x00":
+        return emit_subptr_setter0(b)
     # ---- 2026-08-20 classes ----
     # `mov byte [ecx+d], 0` / `mov dword [ecx+d], 0`
     if b[0] in (0xc6, 0xc7) and b[1] in (0x41, 0x81) and b.endswith(b"\xc3"):
@@ -297,8 +454,8 @@ def classify(b):
         if b[i:i + 4] == b"\x8b\x4c\x24\x08" and b[i + 4] == 0x2b and b[i + 5] in (0x01, 0x41):
             d2 = 0 if b[i + 5] == 0x01 else b[i + 6]
             j = i + 6 if b[i + 5] == 0x01 else i + 7
-            if d == d2 and b[j:] == b"\xf7\xd8\x1b\xc0\x40\xc2\x08\x00":
-                return emit_field_compare(b, d, False)
+            if b[j:] == b"\xf7\xd8\x1b\xc0\x40\xc2\x08\x00":
+                return emit_field_compare(b, d, False, d2)
     # a->f != b->f: mov eax,[esp+4]; mov ecx,[eax+d]; mov edx,[esp+8]; cmp ecx,[edx+d];
     #               sbb eax,eax; neg eax; ret 8
     if b[0:4] == b"\x8b\x44\x24\x04" and len(b) > 8 and b[4] == 0x8b and b[5] in (0x08, 0x48):
@@ -307,8 +464,8 @@ def classify(b):
         if b[i:i + 4] == b"\x8b\x54\x24\x08" and b[i + 4] == 0x3b and b[i + 5] in (0x0a, 0x4a):
             d2 = 0 if b[i + 5] == 0x0a else b[i + 6]
             j = i + 6 if b[i + 5] == 0x0a else i + 7
-            if d == d2 and b[j:] == b"\x1b\xc0\xf7\xd8\xc2\x08\x00":
-                return emit_field_compare(b, d, True)
+            if b[j:] == b"\x1b\xc0\xf7\xd8\xc2\x08\x00":
+                return emit_field_compare(b, d, True, d2)
     # mov eax,[ecx+d1]; cmp eax,[ecx+d2]; sbb eax,eax; inc eax; ret
     if len(b) == 10 and b[0] == 0x8b and b[1] == 0x41 and b[3] == 0x3b and b[4] == 0x41 \
             and b[6:10] == b"\x1b\xc0\x40\xc3":

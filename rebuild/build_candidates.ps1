@@ -66280,7 +66280,7 @@ $catalog = @(
         Module = 'CVideoSys'
         Source = '00/a3/CVideoSys_AttemptToPlay_00a3b1a0.cpp'
         TestSource = '00/a3/CVideoSys_AttemptToPlay_00a3b1a0_test.cpp'
-        PassPattern = 'VERIFY_OK'
+        PassPattern = 'FABLETLC_CVIDEOSYS_ATTEMPT_TO_PLAY PASS'
     }
     [pscustomobject]@{
         Address = '00b2aa50'
@@ -71933,7 +71933,7 @@ $catalog = @(
         Module = 'CMovie'
         Source = '00/54/CMovie_IsPlaying_00548520.cpp'
         TestSource = '00/54/CMovie_IsPlaying_00548520_test.cpp'
-        PassPattern = 'OK_00548520'
+        PassPattern = 'FABLETLC_CMOVIE_IS_PLAYING PASS'
     }
     [pscustomobject]@{
         Address = '0057a5b6'
@@ -72101,7 +72101,7 @@ $catalog = @(
         Module = 'CVideoSys'
         Source = '00/a3/CVideoSys_GetTexture_00a3b320.cpp'
         TestSource = '00/a3/CVideoSys_GetTexture_00a3b320_test.cpp'
-        PassPattern = 'OK_00a3b320'
+        PassPattern = 'FABLETLC_CVIDEOSYS_GET_TEXTURE PASS'
     }
     [pscustomobject]@{
         Address = '00a66760'
@@ -119590,6 +119590,2414 @@ $catalog = @(
         Source = '00/f3/gapscan_sub00f38920_00f38920.cpp'
         TestSource = '00/f3/gapscan_sub00f38920_00f38920_test.cpp'
         PassPattern = 'PASS_00f38920'
+    }
+    [pscustomobject]@{
+        Address = '00854500'
+        Module = 'CThingSwitch'
+        Source = '00/85/CThingSwitch_vectordeletingdestructor_00854500.cpp'
+        TestSource = '00/85/CThingSwitch_vectordeletingdestructor_00854500_test.cpp'
+        PassPattern = 'AUTO_TINY_00854500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00854540'
+        Module = 'CThingSwitch'
+        Source = '00/85/CThingSwitch_vectordeletingdestructor_00854540.cpp'
+        TestSource = '00/85/CThingSwitch_vectordeletingdestructor_00854540_test.cpp'
+        PassPattern = 'AUTO_TINY_00854540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00405730'
+        Module = '_gapscan'
+        Source = '00/40/gapscan_sub00405730_00405730.cpp'
+        TestSource = '00/40/gapscan_sub00405730_00405730_test.cpp'
+        PassPattern = 'PASS_00405730'
+    }
+    [pscustomobject]@{
+        Address = '0040d870'
+        Module = '_gapscan'
+        Source = '00/40/gapscan_sub0040d870_0040d870.cpp'
+        TestSource = '00/40/gapscan_sub0040d870_0040d870_test.cpp'
+        PassPattern = 'PASS_0040d870'
+    }
+    [pscustomobject]@{
+        Address = '0040e480'
+        Module = '_gapscan'
+        Source = '00/40/gapscan_sub0040e480_0040e480.cpp'
+        TestSource = '00/40/gapscan_sub0040e480_0040e480_test.cpp'
+        PassPattern = 'PASS_0040e480'
+    }
+    [pscustomobject]@{
+        Address = '00428ef4'
+        Module = '_gapscan'
+        Source = '00/42/gapscan_sub00428ef4_00428ef4.cpp'
+        TestSource = '00/42/gapscan_sub00428ef4_00428ef4_test.cpp'
+        PassPattern = 'PASS_00428ef4'
+    }
+    [pscustomobject]@{
+        Address = '0042f804'
+        Module = '_gapscan'
+        Source = '00/42/gapscan_sub0042f804_0042f804.cpp'
+        TestSource = '00/42/gapscan_sub0042f804_0042f804_test.cpp'
+        PassPattern = 'PASS_0042f804'
+    }
+    [pscustomobject]@{
+        Address = '00436140'
+        Module = '_gapscan'
+        Source = '00/43/gapscan_sub00436140_00436140.cpp'
+        TestSource = '00/43/gapscan_sub00436140_00436140_test.cpp'
+        PassPattern = 'PASS_00436140'
+    }
+    [pscustomobject]@{
+        Address = '004361b0'
+        Module = '_gapscan'
+        Source = '00/43/gapscan_sub004361b0_004361b0.cpp'
+        TestSource = '00/43/gapscan_sub004361b0_004361b0_test.cpp'
+        PassPattern = 'PASS_004361b0'
+    }
+    [pscustomobject]@{
+        Address = '0043c4d0'
+        Module = '_gapscan'
+        Source = '00/43/gapscan_sub0043c4d0_0043c4d0.cpp'
+        TestSource = '00/43/gapscan_sub0043c4d0_0043c4d0_test.cpp'
+        PassPattern = 'PASS_0043c4d0'
+    }
+    [pscustomobject]@{
+        Address = '0043c590'
+        Module = '_gapscan'
+        Source = '00/43/gapscan_sub0043c590_0043c590.cpp'
+        TestSource = '00/43/gapscan_sub0043c590_0043c590_test.cpp'
+        PassPattern = 'PASS_0043c590'
+    }
+    [pscustomobject]@{
+        Address = '0043c6b0'
+        Module = '_gapscan'
+        Source = '00/43/gapscan_sub0043c6b0_0043c6b0.cpp'
+        TestSource = '00/43/gapscan_sub0043c6b0_0043c6b0_test.cpp'
+        PassPattern = 'PASS_0043c6b0'
+    }
+    [pscustomobject]@{
+        Address = '0043c740'
+        Module = '_gapscan'
+        Source = '00/43/gapscan_sub0043c740_0043c740.cpp'
+        TestSource = '00/43/gapscan_sub0043c740_0043c740_test.cpp'
+        PassPattern = 'PASS_0043c740'
+    }
+    [pscustomobject]@{
+        Address = '0043ccb0'
+        Module = '_gapscan'
+        Source = '00/43/gapscan_sub0043ccb0_0043ccb0.cpp'
+        TestSource = '00/43/gapscan_sub0043ccb0_0043ccb0_test.cpp'
+        PassPattern = 'PASS_0043ccb0'
+    }
+    [pscustomobject]@{
+        Address = '004a78f0'
+        Module = '_gapscan'
+        Source = '00/4a/gapscan_sub004a78f0_004a78f0.cpp'
+        TestSource = '00/4a/gapscan_sub004a78f0_004a78f0_test.cpp'
+        PassPattern = 'PASS_004a78f0'
+    }
+    [pscustomobject]@{
+        Address = '004a8490'
+        Module = '_gapscan'
+        Source = '00/4a/gapscan_sub004a8490_004a8490.cpp'
+        TestSource = '00/4a/gapscan_sub004a8490_004a8490_test.cpp'
+        PassPattern = 'PASS_004a8490'
+    }
+    [pscustomobject]@{
+        Address = '004d744a'
+        Module = '_gapscan'
+        Source = '00/4d/gapscan_sub004d744a_004d744a.cpp'
+        TestSource = '00/4d/gapscan_sub004d744a_004d744a_test.cpp'
+        PassPattern = 'PASS_004d744a'
+    }
+    [pscustomobject]@{
+        Address = '004fae90'
+        Module = '_gapscan'
+        Source = '00/4f/gapscan_sub004fae90_004fae90.cpp'
+        TestSource = '00/4f/gapscan_sub004fae90_004fae90_test.cpp'
+        PassPattern = 'PASS_004fae90'
+    }
+    [pscustomobject]@{
+        Address = '00564bb0'
+        Module = '_gapscan'
+        Source = '00/56/gapscan_sub00564bb0_00564bb0.cpp'
+        TestSource = '00/56/gapscan_sub00564bb0_00564bb0_test.cpp'
+        PassPattern = 'PASS_00564bb0'
+    }
+    [pscustomobject]@{
+        Address = '00592424'
+        Module = '_gapscan'
+        Source = '00/59/gapscan_sub00592424_00592424.cpp'
+        TestSource = '00/59/gapscan_sub00592424_00592424_test.cpp'
+        PassPattern = 'PASS_00592424'
+    }
+    [pscustomobject]@{
+        Address = '005db340'
+        Module = 'CAnimComponentCombatMisc'
+        Source = '00/5d/CAnimComponentCombatMisc_SetDefaultValueCAnimComponentCombatMiscUAEXXZ_005db340.cpp'
+        TestSource = '00/5d/CAnimComponentCombatMisc_SetDefaultValueCAnimComponentCombatMiscUAEXXZ_005db340_test.cpp'
+        PassPattern = 'PASS_005db340'
+    }
+    [pscustomobject]@{
+        Address = '00637140'
+        Module = '_gapscan'
+        Source = '00/63/gapscan_sub00637140_00637140.cpp'
+        TestSource = '00/63/gapscan_sub00637140_00637140_test.cpp'
+        PassPattern = 'PASS_00637140'
+    }
+    [pscustomobject]@{
+        Address = '0066bfb0'
+        Module = '_gapscan'
+        Source = '00/66/gapscan_sub0066bfb0_0066bfb0.cpp'
+        TestSource = '00/66/gapscan_sub0066bfb0_0066bfb0_test.cpp'
+        PassPattern = 'PASS_0066bfb0'
+    }
+    [pscustomobject]@{
+        Address = '00685130'
+        Module = '_gapscan'
+        Source = '00/68/gapscan_sub00685130_00685130.cpp'
+        TestSource = '00/68/gapscan_sub00685130_00685130_test.cpp'
+        PassPattern = 'PASS_00685130'
+    }
+    [pscustomobject]@{
+        Address = '00685150'
+        Module = '_gapscan'
+        Source = '00/68/gapscan_sub00685150_00685150.cpp'
+        TestSource = '00/68/gapscan_sub00685150_00685150_test.cpp'
+        PassPattern = 'PASS_00685150'
+    }
+    [pscustomobject]@{
+        Address = '00685250'
+        Module = '_gapscan'
+        Source = '00/68/gapscan_sub00685250_00685250.cpp'
+        TestSource = '00/68/gapscan_sub00685250_00685250_test.cpp'
+        PassPattern = 'PASS_00685250'
+    }
+    [pscustomobject]@{
+        Address = '00685500'
+        Module = '_gapscan'
+        Source = '00/68/gapscan_sub00685500_00685500.cpp'
+        TestSource = '00/68/gapscan_sub00685500_00685500_test.cpp'
+        PassPattern = 'PASS_00685500'
+    }
+    [pscustomobject]@{
+        Address = '007443e0'
+        Module = '_gapscan'
+        Source = '00/74/gapscan_sub007443e0_007443e0.cpp'
+        TestSource = '00/74/gapscan_sub007443e0_007443e0_test.cpp'
+        PassPattern = 'PASS_007443e0'
+    }
+    [pscustomobject]@{
+        Address = '007a6bc0'
+        Module = '_gapscan'
+        Source = '00/7a/gapscan_sub007a6bc0_007a6bc0.cpp'
+        TestSource = '00/7a/gapscan_sub007a6bc0_007a6bc0_test.cpp'
+        PassPattern = 'PASS_007a6bc0'
+    }
+    [pscustomobject]@{
+        Address = '0092ecc0'
+        Module = 'CAIStateGroup_MinionReactToPlayerInteraction'
+        Source = '00/92/CAIStateGroupMinionReactToPlayerInteraction_OnReplace_0092ecc0.cpp'
+        TestSource = '00/92/CAIStateGroupMinionReactToPlayerInteraction_OnReplace_0092ecc0_test.cpp'
+        PassPattern = 'PASS_0092ecc0'
+    }
+    [pscustomobject]@{
+        Address = '009c1220'
+        Module = '_gapscan'
+        Source = '00/9c/gapscan_sub009c1220_009c1220.cpp'
+        TestSource = '00/9c/gapscan_sub009c1220_009c1220_test.cpp'
+        PassPattern = 'PASS_009c1220'
+    }
+    [pscustomobject]@{
+        Address = '009f1750'
+        Module = 'CInputEvent'
+        Source = '00/9f/CInputEvent_GetKey_009f1750.cpp'
+        TestSource = '00/9f/CInputEvent_GetKey_009f1750_test.cpp'
+        PassPattern = 'PASS_009f1750'
+    }
+    [pscustomobject]@{
+        Address = '00a03b70'
+        Module = 'CInputEvent'
+        Source = '00/a0/CInputEvent_GetKey_00a03b70.cpp'
+        TestSource = '00/a0/CInputEvent_GetKey_00a03b70_test.cpp'
+        PassPattern = 'PASS_00a03b70'
+    }
+    [pscustomobject]@{
+        Address = '00a5afa0'
+        Module = 'CCachedFile'
+        Source = '00/a5/CCachedFile_CloseCCachedFileUAEXXZ_00a5afa0.cpp'
+        TestSource = '00/a5/CCachedFile_CloseCCachedFileUAEXXZ_00a5afa0_test.cpp'
+        PassPattern = 'PASS_00a5afa0'
+    }
+    [pscustomobject]@{
+        Address = '00aad110'
+        Module = '_gapscan'
+        Source = '00/aa/gapscan_sub00aad110_00aad110.cpp'
+        TestSource = '00/aa/gapscan_sub00aad110_00aad110_test.cpp'
+        PassPattern = 'PASS_00aad110'
+    }
+    [pscustomobject]@{
+        Address = '00c09bc0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c09bc0_00c09bc0.cpp'
+        TestSource = '00/c0/gapscan_sub00c09bc0_00c09bc0_test.cpp'
+        PassPattern = 'PASS_00c09bc0'
+    }
+    [pscustomobject]@{
+        Address = '00c09bd0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c09bd0_00c09bd0.cpp'
+        TestSource = '00/c0/gapscan_sub00c09bd0_00c09bd0_test.cpp'
+        PassPattern = 'PASS_00c09bd0'
+    }
+    [pscustomobject]@{
+        Address = '00c09e40'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c09e40_00c09e40.cpp'
+        TestSource = '00/c0/gapscan_sub00c09e40_00c09e40_test.cpp'
+        PassPattern = 'PASS_00c09e40'
+    }
+    [pscustomobject]@{
+        Address = '00c09e50'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c09e50_00c09e50.cpp'
+        TestSource = '00/c0/gapscan_sub00c09e50_00c09e50_test.cpp'
+        PassPattern = 'PASS_00c09e50'
+    }
+    [pscustomobject]@{
+        Address = '00c0a120'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0a120_00c0a120.cpp'
+        TestSource = '00/c0/gapscan_sub00c0a120_00c0a120_test.cpp'
+        PassPattern = 'PASS_00c0a120'
+    }
+    [pscustomobject]@{
+        Address = '00c0a220'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0a220_00c0a220.cpp'
+        TestSource = '00/c0/gapscan_sub00c0a220_00c0a220_test.cpp'
+        PassPattern = 'PASS_00c0a220'
+    }
+    [pscustomobject]@{
+        Address = '00c0a410'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0a410_00c0a410.cpp'
+        TestSource = '00/c0/gapscan_sub00c0a410_00c0a410_test.cpp'
+        PassPattern = 'PASS_00c0a410'
+    }
+    [pscustomobject]@{
+        Address = '00c0f090'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f090_00c0f090.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f090_00c0f090_test.cpp'
+        PassPattern = 'PASS_00c0f090'
+    }
+    [pscustomobject]@{
+        Address = '00c0f0a0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f0a0_00c0f0a0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f0a0_00c0f0a0_test.cpp'
+        PassPattern = 'PASS_00c0f0a0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f1a0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f1a0_00c0f1a0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f1a0_00c0f1a0_test.cpp'
+        PassPattern = 'PASS_00c0f1a0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f1b0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f1b0_00c0f1b0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f1b0_00c0f1b0_test.cpp'
+        PassPattern = 'PASS_00c0f1b0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f2b0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f2b0_00c0f2b0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f2b0_00c0f2b0_test.cpp'
+        PassPattern = 'PASS_00c0f2b0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f2c0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f2c0_00c0f2c0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f2c0_00c0f2c0_test.cpp'
+        PassPattern = 'PASS_00c0f2c0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f3c0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f3c0_00c0f3c0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f3c0_00c0f3c0_test.cpp'
+        PassPattern = 'PASS_00c0f3c0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f3d0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f3d0_00c0f3d0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f3d0_00c0f3d0_test.cpp'
+        PassPattern = 'PASS_00c0f3d0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f540'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f540_00c0f540.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f540_00c0f540_test.cpp'
+        PassPattern = 'PASS_00c0f540'
+    }
+    [pscustomobject]@{
+        Address = '00c0f660'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f660_00c0f660.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f660_00c0f660_test.cpp'
+        PassPattern = 'PASS_00c0f660'
+    }
+    [pscustomobject]@{
+        Address = '00c0f740'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f740_00c0f740.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f740_00c0f740_test.cpp'
+        PassPattern = 'PASS_00c0f740'
+    }
+    [pscustomobject]@{
+        Address = '00c0f860'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f860_00c0f860.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f860_00c0f860_test.cpp'
+        PassPattern = 'PASS_00c0f860'
+    }
+    [pscustomobject]@{
+        Address = '00c0f8a0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f8a0_00c0f8a0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f8a0_00c0f8a0_test.cpp'
+        PassPattern = 'PASS_00c0f8a0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f940'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f940_00c0f940.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f940_00c0f940_test.cpp'
+        PassPattern = 'PASS_00c0f940'
+    }
+    [pscustomobject]@{
+        Address = '00c0fa60'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0fa60_00c0fa60.cpp'
+        TestSource = '00/c0/gapscan_sub00c0fa60_00c0fa60_test.cpp'
+        PassPattern = 'PASS_00c0fa60'
+    }
+    [pscustomobject]@{
+        Address = '00c0fb40'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0fb40_00c0fb40.cpp'
+        TestSource = '00/c0/gapscan_sub00c0fb40_00c0fb40_test.cpp'
+        PassPattern = 'PASS_00c0fb40'
+    }
+    [pscustomobject]@{
+        Address = '00c0fc90'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0fc90_00c0fc90.cpp'
+        TestSource = '00/c0/gapscan_sub00c0fc90_00c0fc90_test.cpp'
+        PassPattern = 'PASS_00c0fc90'
+    }
+    [pscustomobject]@{
+        Address = '00c151a0'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c151a0_00c151a0.cpp'
+        TestSource = '00/c1/gapscan_sub00c151a0_00c151a0_test.cpp'
+        PassPattern = 'PASS_00c151a0'
+    }
+    [pscustomobject]@{
+        Address = '00c151b0'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c151b0_00c151b0.cpp'
+        TestSource = '00/c1/gapscan_sub00c151b0_00c151b0_test.cpp'
+        PassPattern = 'PASS_00c151b0'
+    }
+    [pscustomobject]@{
+        Address = '00c152b0'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c152b0_00c152b0.cpp'
+        TestSource = '00/c1/gapscan_sub00c152b0_00c152b0_test.cpp'
+        PassPattern = 'PASS_00c152b0'
+    }
+    [pscustomobject]@{
+        Address = '00c152c0'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c152c0_00c152c0.cpp'
+        TestSource = '00/c1/gapscan_sub00c152c0_00c152c0_test.cpp'
+        PassPattern = 'PASS_00c152c0'
+    }
+    [pscustomobject]@{
+        Address = '00c15400'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c15400_00c15400.cpp'
+        TestSource = '00/c1/gapscan_sub00c15400_00c15400_test.cpp'
+        PassPattern = 'PASS_00c15400'
+    }
+    [pscustomobject]@{
+        Address = '00c154b0'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c154b0_00c154b0.cpp'
+        TestSource = '00/c1/gapscan_sub00c154b0_00c154b0_test.cpp'
+        PassPattern = 'PASS_00c154b0'
+    }
+    [pscustomobject]@{
+        Address = '00c155d0'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c155d0_00c155d0.cpp'
+        TestSource = '00/c1/gapscan_sub00c155d0_00c155d0_test.cpp'
+        PassPattern = 'PASS_00c155d0'
+    }
+    [pscustomobject]@{
+        Address = '00c15710'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c15710_00c15710.cpp'
+        TestSource = '00/c1/gapscan_sub00c15710_00c15710_test.cpp'
+        PassPattern = 'PASS_00c15710'
+    }
+    [pscustomobject]@{
+        Address = '00c1bd40'
+        Module = 'CHeightMapCell'
+        Source = '00/c1/CHeightMapCell_GetHeight_00c1bd40.cpp'
+        TestSource = '00/c1/CHeightMapCell_GetHeight_00c1bd40_test.cpp'
+        PassPattern = 'PASS_00c1bd40'
+    }
+    [pscustomobject]@{
+        Address = '00c1bec0'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/c1/CEngineInternalPrimitiveBase_AddChildPrimitive_00c1bec0.cpp'
+        TestSource = '00/c1/CEngineInternalPrimitiveBase_AddChildPrimitive_00c1bec0_test.cpp'
+        PassPattern = 'PASS_00c1bec0'
+    }
+    [pscustomobject]@{
+        Address = '00c1e210'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c1e210_00c1e210.cpp'
+        TestSource = '00/c1/gapscan_sub00c1e210_00c1e210_test.cpp'
+        PassPattern = 'PASS_00c1e210'
+    }
+    [pscustomobject]@{
+        Address = '00c1ea50'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c1ea50_00c1ea50.cpp'
+        TestSource = '00/c1/gapscan_sub00c1ea50_00c1ea50_test.cpp'
+        PassPattern = 'PASS_00c1ea50'
+    }
+    [pscustomobject]@{
+        Address = '00c1edc0'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c1edc0_00c1edc0.cpp'
+        TestSource = '00/c1/gapscan_sub00c1edc0_00c1edc0_test.cpp'
+        PassPattern = 'PASS_00c1edc0'
+    }
+    [pscustomobject]@{
+        Address = '00c1edd0'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c1edd0_00c1edd0.cpp'
+        TestSource = '00/c1/gapscan_sub00c1edd0_00c1edd0_test.cpp'
+        PassPattern = 'PASS_00c1edd0'
+    }
+    [pscustomobject]@{
+        Address = '00c22f40'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c22f40_00c22f40.cpp'
+        TestSource = '00/c2/gapscan_sub00c22f40_00c22f40_test.cpp'
+        PassPattern = 'PASS_00c22f40'
+    }
+    [pscustomobject]@{
+        Address = '00c22f50'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c22f50_00c22f50.cpp'
+        TestSource = '00/c2/gapscan_sub00c22f50_00c22f50_test.cpp'
+        PassPattern = 'PASS_00c22f50'
+    }
+    [pscustomobject]@{
+        Address = '00c230a0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c230a0_00c230a0.cpp'
+        TestSource = '00/c2/gapscan_sub00c230a0_00c230a0_test.cpp'
+        PassPattern = 'PASS_00c230a0'
+    }
+    [pscustomobject]@{
+        Address = '00c23200'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c23200_00c23200.cpp'
+        TestSource = '00/c2/gapscan_sub00c23200_00c23200_test.cpp'
+        PassPattern = 'PASS_00c23200'
+    }
+    [pscustomobject]@{
+        Address = '00c23340'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c23340_00c23340.cpp'
+        TestSource = '00/c2/gapscan_sub00c23340_00c23340_test.cpp'
+        PassPattern = 'PASS_00c23340'
+    }
+    [pscustomobject]@{
+        Address = '00c23550'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c23550_00c23550.cpp'
+        TestSource = '00/c2/gapscan_sub00c23550_00c23550_test.cpp'
+        PassPattern = 'PASS_00c23550'
+    }
+    [pscustomobject]@{
+        Address = '00c23560'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c23560_00c23560.cpp'
+        TestSource = '00/c2/gapscan_sub00c23560_00c23560_test.cpp'
+        PassPattern = 'PASS_00c23560'
+    }
+    [pscustomobject]@{
+        Address = '00c23660'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c23660_00c23660.cpp'
+        TestSource = '00/c2/gapscan_sub00c23660_00c23660_test.cpp'
+        PassPattern = 'PASS_00c23660'
+    }
+    [pscustomobject]@{
+        Address = '00c23670'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c23670_00c23670.cpp'
+        TestSource = '00/c2/gapscan_sub00c23670_00c23670_test.cpp'
+        PassPattern = 'PASS_00c23670'
+    }
+    [pscustomobject]@{
+        Address = '00c23770'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c23770_00c23770.cpp'
+        TestSource = '00/c2/gapscan_sub00c23770_00c23770_test.cpp'
+        PassPattern = 'PASS_00c23770'
+    }
+    [pscustomobject]@{
+        Address = '00c23780'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c23780_00c23780.cpp'
+        TestSource = '00/c2/gapscan_sub00c23780_00c23780_test.cpp'
+        PassPattern = 'PASS_00c23780'
+    }
+    [pscustomobject]@{
+        Address = '00c23880'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c23880_00c23880.cpp'
+        TestSource = '00/c2/gapscan_sub00c23880_00c23880_test.cpp'
+        PassPattern = 'PASS_00c23880'
+    }
+    [pscustomobject]@{
+        Address = '00c23890'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c23890_00c23890.cpp'
+        TestSource = '00/c2/gapscan_sub00c23890_00c23890_test.cpp'
+        PassPattern = 'PASS_00c23890'
+    }
+    [pscustomobject]@{
+        Address = '00c24380'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c24380_00c24380.cpp'
+        TestSource = '00/c2/gapscan_sub00c24380_00c24380_test.cpp'
+        PassPattern = 'PASS_00c24380'
+    }
+    [pscustomobject]@{
+        Address = '00c24430'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c24430_00c24430.cpp'
+        TestSource = '00/c2/gapscan_sub00c24430_00c24430_test.cpp'
+        PassPattern = 'PASS_00c24430'
+    }
+    [pscustomobject]@{
+        Address = '00c244e0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c244e0_00c244e0.cpp'
+        TestSource = '00/c2/gapscan_sub00c244e0_00c244e0_test.cpp'
+        PassPattern = 'PASS_00c244e0'
+    }
+    [pscustomobject]@{
+        Address = '00c24600'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c24600_00c24600.cpp'
+        TestSource = '00/c2/gapscan_sub00c24600_00c24600_test.cpp'
+        PassPattern = 'PASS_00c24600'
+    }
+    [pscustomobject]@{
+        Address = '00c248c0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c248c0_00c248c0.cpp'
+        TestSource = '00/c2/gapscan_sub00c248c0_00c248c0_test.cpp'
+        PassPattern = 'PASS_00c248c0'
+    }
+    [pscustomobject]@{
+        Address = '00c249a0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c249a0_00c249a0.cpp'
+        TestSource = '00/c2/gapscan_sub00c249a0_00c249a0_test.cpp'
+        PassPattern = 'PASS_00c249a0'
+    }
+    [pscustomobject]@{
+        Address = '00c24ac0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c24ac0_00c24ac0.cpp'
+        TestSource = '00/c2/gapscan_sub00c24ac0_00c24ac0_test.cpp'
+        PassPattern = 'PASS_00c24ac0'
+    }
+    [pscustomobject]@{
+        Address = '00c24b00'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c24b00_00c24b00.cpp'
+        TestSource = '00/c2/gapscan_sub00c24b00_00c24b00_test.cpp'
+        PassPattern = 'PASS_00c24b00'
+    }
+    [pscustomobject]@{
+        Address = '00c24ba0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c24ba0_00c24ba0.cpp'
+        TestSource = '00/c2/gapscan_sub00c24ba0_00c24ba0_test.cpp'
+        PassPattern = 'PASS_00c24ba0'
+    }
+    [pscustomobject]@{
+        Address = '00c24fd0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c24fd0_00c24fd0.cpp'
+        TestSource = '00/c2/gapscan_sub00c24fd0_00c24fd0_test.cpp'
+        PassPattern = 'PASS_00c24fd0'
+    }
+    [pscustomobject]@{
+        Address = '00c25c60'
+        Module = 'CInputEvent'
+        Source = '00/c2/CInputEvent_GetKey_00c25c60.cpp'
+        TestSource = '00/c2/CInputEvent_GetKey_00c25c60_test.cpp'
+        PassPattern = 'PASS_00c25c60'
+    }
+    [pscustomobject]@{
+        Address = '00c2ad20'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2ad20_00c2ad20.cpp'
+        TestSource = '00/c2/gapscan_sub00c2ad20_00c2ad20_test.cpp'
+        PassPattern = 'PASS_00c2ad20'
+    }
+    [pscustomobject]@{
+        Address = '00c2ad30'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2ad30_00c2ad30.cpp'
+        TestSource = '00/c2/gapscan_sub00c2ad30_00c2ad30_test.cpp'
+        PassPattern = 'PASS_00c2ad30'
+    }
+    [pscustomobject]@{
+        Address = '00c2ae30'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2ae30_00c2ae30.cpp'
+        TestSource = '00/c2/gapscan_sub00c2ae30_00c2ae30_test.cpp'
+        PassPattern = 'PASS_00c2ae30'
+    }
+    [pscustomobject]@{
+        Address = '00c2ae40'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2ae40_00c2ae40.cpp'
+        TestSource = '00/c2/gapscan_sub00c2ae40_00c2ae40_test.cpp'
+        PassPattern = 'PASS_00c2ae40'
+    }
+    [pscustomobject]@{
+        Address = '00c2af40'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2af40_00c2af40.cpp'
+        TestSource = '00/c2/gapscan_sub00c2af40_00c2af40_test.cpp'
+        PassPattern = 'PASS_00c2af40'
+    }
+    [pscustomobject]@{
+        Address = '00c2af50'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2af50_00c2af50.cpp'
+        TestSource = '00/c2/gapscan_sub00c2af50_00c2af50_test.cpp'
+        PassPattern = 'PASS_00c2af50'
+    }
+    [pscustomobject]@{
+        Address = '00c2b090'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2b090_00c2b090.cpp'
+        TestSource = '00/c2/gapscan_sub00c2b090_00c2b090_test.cpp'
+        PassPattern = 'PASS_00c2b090'
+    }
+    [pscustomobject]@{
+        Address = '00c2b130'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2b130_00c2b130.cpp'
+        TestSource = '00/c2/gapscan_sub00c2b130_00c2b130_test.cpp'
+        PassPattern = 'PASS_00c2b130'
+    }
+    [pscustomobject]@{
+        Address = '00c2b1e0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2b1e0_00c2b1e0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2b1e0_00c2b1e0_test.cpp'
+        PassPattern = 'PASS_00c2b1e0'
+    }
+    [pscustomobject]@{
+        Address = '00c2b300'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2b300_00c2b300.cpp'
+        TestSource = '00/c2/gapscan_sub00c2b300_00c2b300_test.cpp'
+        PassPattern = 'PASS_00c2b300'
+    }
+    [pscustomobject]@{
+        Address = '00c2b460'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2b460_00c2b460.cpp'
+        TestSource = '00/c2/gapscan_sub00c2b460_00c2b460_test.cpp'
+        PassPattern = 'PASS_00c2b460'
+    }
+    [pscustomobject]@{
+        Address = '00c2b5c0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2b5c0_00c2b5c0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2b5c0_00c2b5c0_test.cpp'
+        PassPattern = 'PASS_00c2b5c0'
+    }
+    [pscustomobject]@{
+        Address = '00c2bfd0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2bfd0_00c2bfd0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2bfd0_00c2bfd0_test.cpp'
+        PassPattern = 'PASS_00c2bfd0'
+    }
+    [pscustomobject]@{
+        Address = '00c2bfe0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2bfe0_00c2bfe0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2bfe0_00c2bfe0_test.cpp'
+        PassPattern = 'PASS_00c2bfe0'
+    }
+    [pscustomobject]@{
+        Address = '00c2c130'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2c130_00c2c130.cpp'
+        TestSource = '00/c2/gapscan_sub00c2c130_00c2c130_test.cpp'
+        PassPattern = 'PASS_00c2c130'
+    }
+    [pscustomobject]@{
+        Address = '00c2c3a0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2c3a0_00c2c3a0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2c3a0_00c2c3a0_test.cpp'
+        PassPattern = 'PASS_00c2c3a0'
+    }
+    [pscustomobject]@{
+        Address = '00c2ce30'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2ce30_00c2ce30.cpp'
+        TestSource = '00/c2/gapscan_sub00c2ce30_00c2ce30_test.cpp'
+        PassPattern = 'PASS_00c2ce30'
+    }
+    [pscustomobject]@{
+        Address = '00c2d0f0'
+        Module = 'CInputEvent'
+        Source = '00/c2/CInputEvent_GetKey_00c2d0f0.cpp'
+        TestSource = '00/c2/CInputEvent_GetKey_00c2d0f0_test.cpp'
+        PassPattern = 'PASS_00c2d0f0'
+    }
+    [pscustomobject]@{
+        Address = '00c2dcf0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2dcf0_00c2dcf0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2dcf0_00c2dcf0_test.cpp'
+        PassPattern = 'PASS_00c2dcf0'
+    }
+    [pscustomobject]@{
+        Address = '00c2dd00'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2dd00_00c2dd00.cpp'
+        TestSource = '00/c2/gapscan_sub00c2dd00_00c2dd00_test.cpp'
+        PassPattern = 'PASS_00c2dd00'
+    }
+    [pscustomobject]@{
+        Address = '00c2de50'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2de50_00c2de50.cpp'
+        TestSource = '00/c2/gapscan_sub00c2de50_00c2de50_test.cpp'
+        PassPattern = 'PASS_00c2de50'
+    }
+    [pscustomobject]@{
+        Address = '00c2f4c0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2f4c0_00c2f4c0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2f4c0_00c2f4c0_test.cpp'
+        PassPattern = 'PASS_00c2f4c0'
+    }
+    [pscustomobject]@{
+        Address = '00c2f5d0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2f5d0_00c2f5d0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2f5d0_00c2f5d0_test.cpp'
+        PassPattern = 'PASS_00c2f5d0'
+    }
+    [pscustomobject]@{
+        Address = '00c2f6e0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2f6e0_00c2f6e0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2f6e0_00c2f6e0_test.cpp'
+        PassPattern = 'PASS_00c2f6e0'
+    }
+    [pscustomobject]@{
+        Address = '00c2f9e0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2f9e0_00c2f9e0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2f9e0_00c2f9e0_test.cpp'
+        PassPattern = 'PASS_00c2f9e0'
+    }
+    [pscustomobject]@{
+        Address = '00c2fc30'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2fc30_00c2fc30.cpp'
+        TestSource = '00/c2/gapscan_sub00c2fc30_00c2fc30_test.cpp'
+        PassPattern = 'PASS_00c2fc30'
+    }
+    [pscustomobject]@{
+        Address = '00c2fe80'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2fe80_00c2fe80.cpp'
+        TestSource = '00/c2/gapscan_sub00c2fe80_00c2fe80_test.cpp'
+        PassPattern = 'PASS_00c2fe80'
+    }
+    [pscustomobject]@{
+        Address = '00c2ff70'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2ff70_00c2ff70.cpp'
+        TestSource = '00/c2/gapscan_sub00c2ff70_00c2ff70_test.cpp'
+        PassPattern = 'PASS_00c2ff70'
+    }
+    [pscustomobject]@{
+        Address = '00c2ffb0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2ffb0_00c2ffb0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2ffb0_00c2ffb0_test.cpp'
+        PassPattern = 'PASS_00c2ffb0'
+    }
+    [pscustomobject]@{
+        Address = '00c300c0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c300c0_00c300c0.cpp'
+        TestSource = '00/c3/gapscan_sub00c300c0_00c300c0_test.cpp'
+        PassPattern = 'PASS_00c300c0'
+    }
+    [pscustomobject]@{
+        Address = '00c30100'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c30100_00c30100.cpp'
+        TestSource = '00/c3/gapscan_sub00c30100_00c30100_test.cpp'
+        PassPattern = 'PASS_00c30100'
+    }
+    [pscustomobject]@{
+        Address = '00c30ae0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c30ae0_00c30ae0.cpp'
+        TestSource = '00/c3/gapscan_sub00c30ae0_00c30ae0_test.cpp'
+        PassPattern = 'PASS_00c30ae0'
+    }
+    [pscustomobject]@{
+        Address = '00c30af0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c30af0_00c30af0.cpp'
+        TestSource = '00/c3/gapscan_sub00c30af0_00c30af0_test.cpp'
+        PassPattern = 'PASS_00c30af0'
+    }
+    [pscustomobject]@{
+        Address = '00c30c40'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c30c40_00c30c40.cpp'
+        TestSource = '00/c3/gapscan_sub00c30c40_00c30c40_test.cpp'
+        PassPattern = 'PASS_00c30c40'
+    }
+    [pscustomobject]@{
+        Address = '00c30d30'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c30d30_00c30d30.cpp'
+        TestSource = '00/c3/gapscan_sub00c30d30_00c30d30_test.cpp'
+        PassPattern = 'PASS_00c30d30'
+    }
+    [pscustomobject]@{
+        Address = '00c35440'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c35440_00c35440.cpp'
+        TestSource = '00/c3/gapscan_sub00c35440_00c35440_test.cpp'
+        PassPattern = 'PASS_00c35440'
+    }
+    [pscustomobject]@{
+        Address = '00c367c0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c367c0_00c367c0.cpp'
+        TestSource = '00/c3/gapscan_sub00c367c0_00c367c0_test.cpp'
+        PassPattern = 'PASS_00c367c0'
+    }
+    [pscustomobject]@{
+        Address = '00c367d0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c367d0_00c367d0.cpp'
+        TestSource = '00/c3/gapscan_sub00c367d0_00c367d0_test.cpp'
+        PassPattern = 'PASS_00c367d0'
+    }
+    [pscustomobject]@{
+        Address = '00c36920'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c36920_00c36920.cpp'
+        TestSource = '00/c3/gapscan_sub00c36920_00c36920_test.cpp'
+        PassPattern = 'PASS_00c36920'
+    }
+    [pscustomobject]@{
+        Address = '00c36a10'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c36a10_00c36a10.cpp'
+        TestSource = '00/c3/gapscan_sub00c36a10_00c36a10_test.cpp'
+        PassPattern = 'PASS_00c36a10'
+    }
+    [pscustomobject]@{
+        Address = '00c37530'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c37530_00c37530.cpp'
+        TestSource = '00/c3/gapscan_sub00c37530_00c37530_test.cpp'
+        PassPattern = 'PASS_00c37530'
+    }
+    [pscustomobject]@{
+        Address = '00c37f70'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c37f70_00c37f70.cpp'
+        TestSource = '00/c3/gapscan_sub00c37f70_00c37f70_test.cpp'
+        PassPattern = 'PASS_00c37f70'
+    }
+    [pscustomobject]@{
+        Address = '00c37f80'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c37f80_00c37f80.cpp'
+        TestSource = '00/c3/gapscan_sub00c37f80_00c37f80_test.cpp'
+        PassPattern = 'PASS_00c37f80'
+    }
+    [pscustomobject]@{
+        Address = '00c380d0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c380d0_00c380d0.cpp'
+        TestSource = '00/c3/gapscan_sub00c380d0_00c380d0_test.cpp'
+        PassPattern = 'PASS_00c380d0'
+    }
+    [pscustomobject]@{
+        Address = '00c381c0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c381c0_00c381c0.cpp'
+        TestSource = '00/c3/gapscan_sub00c381c0_00c381c0_test.cpp'
+        PassPattern = 'PASS_00c381c0'
+    }
+    [pscustomobject]@{
+        Address = '00c3acf0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c3acf0_00c3acf0.cpp'
+        TestSource = '00/c3/gapscan_sub00c3acf0_00c3acf0_test.cpp'
+        PassPattern = 'PASS_00c3acf0'
+    }
+    [pscustomobject]@{
+        Address = '00c3ad00'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c3ad00_00c3ad00.cpp'
+        TestSource = '00/c3/gapscan_sub00c3ad00_00c3ad00_test.cpp'
+        PassPattern = 'PASS_00c3ad00'
+    }
+    [pscustomobject]@{
+        Address = '00c3ae50'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c3ae50_00c3ae50.cpp'
+        TestSource = '00/c3/gapscan_sub00c3ae50_00c3ae50_test.cpp'
+        PassPattern = 'PASS_00c3ae50'
+    }
+    [pscustomobject]@{
+        Address = '00c3b280'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c3b280_00c3b280.cpp'
+        TestSource = '00/c3/gapscan_sub00c3b280_00c3b280_test.cpp'
+        PassPattern = 'PASS_00c3b280'
+    }
+    [pscustomobject]@{
+        Address = '00c3b290'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c3b290_00c3b290.cpp'
+        TestSource = '00/c3/gapscan_sub00c3b290_00c3b290_test.cpp'
+        PassPattern = 'PASS_00c3b290'
+    }
+    [pscustomobject]@{
+        Address = '00c3b3e0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c3b3e0_00c3b3e0.cpp'
+        TestSource = '00/c3/gapscan_sub00c3b3e0_00c3b3e0_test.cpp'
+        PassPattern = 'PASS_00c3b3e0'
+    }
+    [pscustomobject]@{
+        Address = '00c45120'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c45120_00c45120.cpp'
+        TestSource = '00/c4/gapscan_sub00c45120_00c45120_test.cpp'
+        PassPattern = 'PASS_00c45120'
+    }
+    [pscustomobject]@{
+        Address = '00c45130'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c45130_00c45130.cpp'
+        TestSource = '00/c4/gapscan_sub00c45130_00c45130_test.cpp'
+        PassPattern = 'PASS_00c45130'
+    }
+    [pscustomobject]@{
+        Address = '00c45280'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c45280_00c45280.cpp'
+        TestSource = '00/c4/gapscan_sub00c45280_00c45280_test.cpp'
+        PassPattern = 'PASS_00c45280'
+    }
+    [pscustomobject]@{
+        Address = '00c45380'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c45380_00c45380.cpp'
+        TestSource = '00/c4/gapscan_sub00c45380_00c45380_test.cpp'
+        PassPattern = 'PASS_00c45380'
+    }
+    [pscustomobject]@{
+        Address = '00c454b0'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c454b0_00c454b0.cpp'
+        TestSource = '00/c4/gapscan_sub00c454b0_00c454b0_test.cpp'
+        PassPattern = 'PASS_00c454b0'
+    }
+    [pscustomobject]@{
+        Address = '00c469f0'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c469f0_00c469f0.cpp'
+        TestSource = '00/c4/gapscan_sub00c469f0_00c469f0_test.cpp'
+        PassPattern = 'PASS_00c469f0'
+    }
+    [pscustomobject]@{
+        Address = '00c46a00'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c46a00_00c46a00.cpp'
+        TestSource = '00/c4/gapscan_sub00c46a00_00c46a00_test.cpp'
+        PassPattern = 'PASS_00c46a00'
+    }
+    [pscustomobject]@{
+        Address = '00c46b50'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c46b50_00c46b50.cpp'
+        TestSource = '00/c4/gapscan_sub00c46b50_00c46b50_test.cpp'
+        PassPattern = 'PASS_00c46b50'
+    }
+    [pscustomobject]@{
+        Address = '00c47620'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c47620_00c47620.cpp'
+        TestSource = '00/c4/gapscan_sub00c47620_00c47620_test.cpp'
+        PassPattern = 'PASS_00c47620'
+    }
+    [pscustomobject]@{
+        Address = '00c47630'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c47630_00c47630.cpp'
+        TestSource = '00/c4/gapscan_sub00c47630_00c47630_test.cpp'
+        PassPattern = 'PASS_00c47630'
+    }
+    [pscustomobject]@{
+        Address = '00c47730'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c47730_00c47730.cpp'
+        TestSource = '00/c4/gapscan_sub00c47730_00c47730_test.cpp'
+        PassPattern = 'PASS_00c47730'
+    }
+    [pscustomobject]@{
+        Address = '00c47740'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c47740_00c47740.cpp'
+        TestSource = '00/c4/gapscan_sub00c47740_00c47740_test.cpp'
+        PassPattern = 'PASS_00c47740'
+    }
+    [pscustomobject]@{
+        Address = '00c47890'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c47890_00c47890.cpp'
+        TestSource = '00/c4/gapscan_sub00c47890_00c47890_test.cpp'
+        PassPattern = 'PASS_00c47890'
+    }
+    [pscustomobject]@{
+        Address = '00c47940'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c47940_00c47940.cpp'
+        TestSource = '00/c4/gapscan_sub00c47940_00c47940_test.cpp'
+        PassPattern = 'PASS_00c47940'
+    }
+    [pscustomobject]@{
+        Address = '00c47a30'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c47a30_00c47a30.cpp'
+        TestSource = '00/c4/gapscan_sub00c47a30_00c47a30_test.cpp'
+        PassPattern = 'PASS_00c47a30'
+    }
+    [pscustomobject]@{
+        Address = '00c47b60'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c47b60_00c47b60.cpp'
+        TestSource = '00/c4/gapscan_sub00c47b60_00c47b60_test.cpp'
+        PassPattern = 'PASS_00c47b60'
+    }
+    [pscustomobject]@{
+        Address = '00c61bc0'
+        Module = 'CInputEvent'
+        Source = '00/c6/CInputEvent_GetKey_00c61bc0.cpp'
+        TestSource = '00/c6/CInputEvent_GetKey_00c61bc0_test.cpp'
+        PassPattern = 'PASS_00c61bc0'
+    }
+    [pscustomobject]@{
+        Address = '00c888b0'
+        Module = '_gapscan'
+        Source = '00/c8/gapscan_sub00c888b0_00c888b0.cpp'
+        TestSource = '00/c8/gapscan_sub00c888b0_00c888b0_test.cpp'
+        PassPattern = 'PASS_00c888b0'
+    }
+    [pscustomobject]@{
+        Address = '00c888c0'
+        Module = '_gapscan'
+        Source = '00/c8/gapscan_sub00c888c0_00c888c0.cpp'
+        TestSource = '00/c8/gapscan_sub00c888c0_00c888c0_test.cpp'
+        PassPattern = 'PASS_00c888c0'
+    }
+    [pscustomobject]@{
+        Address = '00c888d0'
+        Module = '_gapscan'
+        Source = '00/c8/gapscan_sub00c888d0_00c888d0.cpp'
+        TestSource = '00/c8/gapscan_sub00c888d0_00c888d0_test.cpp'
+        PassPattern = 'PASS_00c888d0'
+    }
+    [pscustomobject]@{
+        Address = '00c888e0'
+        Module = '_gapscan'
+        Source = '00/c8/gapscan_sub00c888e0_00c888e0.cpp'
+        TestSource = '00/c8/gapscan_sub00c888e0_00c888e0_test.cpp'
+        PassPattern = 'PASS_00c888e0'
+    }
+    [pscustomobject]@{
+        Address = '00cdeec0'
+        Module = '_gapscan'
+        Source = '00/cd/gapscan_sub00cdeec0_00cdeec0.cpp'
+        TestSource = '00/cd/gapscan_sub00cdeec0_00cdeec0_test.cpp'
+        PassPattern = 'PASS_00cdeec0'
+    }
+    [pscustomobject]@{
+        Address = '00cdf9e0'
+        Module = '_gapscan'
+        Source = '00/cd/gapscan_sub00cdf9e0_00cdf9e0.cpp'
+        TestSource = '00/cd/gapscan_sub00cdf9e0_00cdf9e0_test.cpp'
+        PassPattern = 'PASS_00cdf9e0'
+    }
+    [pscustomobject]@{
+        Address = '00cf0c10'
+        Module = '_gapscan'
+        Source = '00/cf/gapscan_sub00cf0c10_00cf0c10.cpp'
+        TestSource = '00/cf/gapscan_sub00cf0c10_00cf0c10_test.cpp'
+        PassPattern = 'PASS_00cf0c10'
+    }
+    [pscustomobject]@{
+        Address = '00cfbbd0'
+        Module = '_gapscan'
+        Source = '00/cf/gapscan_sub00cfbbd0_00cfbbd0.cpp'
+        TestSource = '00/cf/gapscan_sub00cfbbd0_00cfbbd0_test.cpp'
+        PassPattern = 'PASS_00cfbbd0'
+    }
+    [pscustomobject]@{
+        Address = '00d06760'
+        Module = '_gapscan'
+        Source = '00/d0/gapscan_sub00d06760_00d06760.cpp'
+        TestSource = '00/d0/gapscan_sub00d06760_00d06760_test.cpp'
+        PassPattern = 'PASS_00d06760'
+    }
+    [pscustomobject]@{
+        Address = '00d129b0'
+        Module = '_gapscan'
+        Source = '00/d1/gapscan_sub00d129b0_00d129b0.cpp'
+        TestSource = '00/d1/gapscan_sub00d129b0_00d129b0_test.cpp'
+        PassPattern = 'PASS_00d129b0'
+    }
+    [pscustomobject]@{
+        Address = '00d1dd70'
+        Module = '_gapscan'
+        Source = '00/d1/gapscan_sub00d1dd70_00d1dd70.cpp'
+        TestSource = '00/d1/gapscan_sub00d1dd70_00d1dd70_test.cpp'
+        PassPattern = 'PASS_00d1dd70'
+    }
+    [pscustomobject]@{
+        Address = '00d3d110'
+        Module = '_gapscan'
+        Source = '00/d3/gapscan_sub00d3d110_00d3d110.cpp'
+        TestSource = '00/d3/gapscan_sub00d3d110_00d3d110_test.cpp'
+        PassPattern = 'PASS_00d3d110'
+    }
+    [pscustomobject]@{
+        Address = '00d50a80'
+        Module = '_gapscan'
+        Source = '00/d5/gapscan_sub00d50a80_00d50a80.cpp'
+        TestSource = '00/d5/gapscan_sub00d50a80_00d50a80_test.cpp'
+        PassPattern = 'PASS_00d50a80'
+    }
+    [pscustomobject]@{
+        Address = '00d51ed0'
+        Module = '_gapscan'
+        Source = '00/d5/gapscan_sub00d51ed0_00d51ed0.cpp'
+        TestSource = '00/d5/gapscan_sub00d51ed0_00d51ed0_test.cpp'
+        PassPattern = 'PASS_00d51ed0'
+    }
+    [pscustomobject]@{
+        Address = '00d56670'
+        Module = '_gapscan'
+        Source = '00/d5/gapscan_sub00d56670_00d56670.cpp'
+        TestSource = '00/d5/gapscan_sub00d56670_00d56670_test.cpp'
+        PassPattern = 'PASS_00d56670'
+    }
+    [pscustomobject]@{
+        Address = '00d70190'
+        Module = '_gapscan'
+        Source = '00/d7/gapscan_sub00d70190_00d70190.cpp'
+        TestSource = '00/d7/gapscan_sub00d70190_00d70190_test.cpp'
+        PassPattern = 'PASS_00d70190'
+    }
+    [pscustomobject]@{
+        Address = '00d7f430'
+        Module = '_gapscan'
+        Source = '00/d7/gapscan_sub00d7f430_00d7f430.cpp'
+        TestSource = '00/d7/gapscan_sub00d7f430_00d7f430_test.cpp'
+        PassPattern = 'PASS_00d7f430'
+    }
+    [pscustomobject]@{
+        Address = '00d816e0'
+        Module = '_gapscan'
+        Source = '00/d8/gapscan_sub00d816e0_00d816e0.cpp'
+        TestSource = '00/d8/gapscan_sub00d816e0_00d816e0_test.cpp'
+        PassPattern = 'PASS_00d816e0'
+    }
+    [pscustomobject]@{
+        Address = '00d86050'
+        Module = '_gapscan'
+        Source = '00/d8/gapscan_sub00d86050_00d86050.cpp'
+        TestSource = '00/d8/gapscan_sub00d86050_00d86050_test.cpp'
+        PassPattern = 'PASS_00d86050'
+    }
+    [pscustomobject]@{
+        Address = '00d8f3c0'
+        Module = '_gapscan'
+        Source = '00/d8/gapscan_sub00d8f3c0_00d8f3c0.cpp'
+        TestSource = '00/d8/gapscan_sub00d8f3c0_00d8f3c0_test.cpp'
+        PassPattern = 'PASS_00d8f3c0'
+    }
+    [pscustomobject]@{
+        Address = '00d8fee0'
+        Module = '_gapscan'
+        Source = '00/d8/gapscan_sub00d8fee0_00d8fee0.cpp'
+        TestSource = '00/d8/gapscan_sub00d8fee0_00d8fee0_test.cpp'
+        PassPattern = 'PASS_00d8fee0'
+    }
+    [pscustomobject]@{
+        Address = '00dc3f90'
+        Module = '_gapscan'
+        Source = '00/dc/gapscan_sub00dc3f90_00dc3f90.cpp'
+        TestSource = '00/dc/gapscan_sub00dc3f90_00dc3f90_test.cpp'
+        PassPattern = 'PASS_00dc3f90'
+    }
+    [pscustomobject]@{
+        Address = '00dc4cf0'
+        Module = '_gapscan'
+        Source = '00/dc/gapscan_sub00dc4cf0_00dc4cf0.cpp'
+        TestSource = '00/dc/gapscan_sub00dc4cf0_00dc4cf0_test.cpp'
+        PassPattern = 'PASS_00dc4cf0'
+    }
+    [pscustomobject]@{
+        Address = '00dc5f00'
+        Module = '_gapscan'
+        Source = '00/dc/gapscan_sub00dc5f00_00dc5f00.cpp'
+        TestSource = '00/dc/gapscan_sub00dc5f00_00dc5f00_test.cpp'
+        PassPattern = 'PASS_00dc5f00'
+    }
+    [pscustomobject]@{
+        Address = '00dc8590'
+        Module = '_gapscan'
+        Source = '00/dc/gapscan_sub00dc8590_00dc8590.cpp'
+        TestSource = '00/dc/gapscan_sub00dc8590_00dc8590_test.cpp'
+        PassPattern = 'PASS_00dc8590'
+    }
+    [pscustomobject]@{
+        Address = '00de3cb0'
+        Module = '_gapscan'
+        Source = '00/de/gapscan_sub00de3cb0_00de3cb0.cpp'
+        TestSource = '00/de/gapscan_sub00de3cb0_00de3cb0_test.cpp'
+        PassPattern = 'PASS_00de3cb0'
+    }
+    [pscustomobject]@{
+        Address = '00debe40'
+        Module = '_gapscan'
+        Source = '00/de/gapscan_sub00debe40_00debe40.cpp'
+        TestSource = '00/de/gapscan_sub00debe40_00debe40_test.cpp'
+        PassPattern = 'PASS_00debe40'
+    }
+    [pscustomobject]@{
+        Address = '00df8040'
+        Module = '_gapscan'
+        Source = '00/df/gapscan_sub00df8040_00df8040.cpp'
+        TestSource = '00/df/gapscan_sub00df8040_00df8040_test.cpp'
+        PassPattern = 'PASS_00df8040'
+    }
+    [pscustomobject]@{
+        Address = '00df8940'
+        Module = '_gapscan'
+        Source = '00/df/gapscan_sub00df8940_00df8940.cpp'
+        TestSource = '00/df/gapscan_sub00df8940_00df8940_test.cpp'
+        PassPattern = 'PASS_00df8940'
+    }
+    [pscustomobject]@{
+        Address = '00e03a20'
+        Module = '_gapscan'
+        Source = '00/e0/gapscan_sub00e03a20_00e03a20.cpp'
+        TestSource = '00/e0/gapscan_sub00e03a20_00e03a20_test.cpp'
+        PassPattern = 'PASS_00e03a20'
+    }
+    [pscustomobject]@{
+        Address = '00e0f4b0'
+        Module = '_gapscan'
+        Source = '00/e0/gapscan_sub00e0f4b0_00e0f4b0.cpp'
+        TestSource = '00/e0/gapscan_sub00e0f4b0_00e0f4b0_test.cpp'
+        PassPattern = 'PASS_00e0f4b0'
+    }
+    [pscustomobject]@{
+        Address = '00e11b80'
+        Module = '_gapscan'
+        Source = '00/e1/gapscan_sub00e11b80_00e11b80.cpp'
+        TestSource = '00/e1/gapscan_sub00e11b80_00e11b80_test.cpp'
+        PassPattern = 'PASS_00e11b80'
+    }
+    [pscustomobject]@{
+        Address = '00e16c00'
+        Module = '_gapscan'
+        Source = '00/e1/gapscan_sub00e16c00_00e16c00.cpp'
+        TestSource = '00/e1/gapscan_sub00e16c00_00e16c00_test.cpp'
+        PassPattern = 'PASS_00e16c00'
+    }
+    [pscustomobject]@{
+        Address = '00e1b1b0'
+        Module = '_gapscan'
+        Source = '00/e1/gapscan_sub00e1b1b0_00e1b1b0.cpp'
+        TestSource = '00/e1/gapscan_sub00e1b1b0_00e1b1b0_test.cpp'
+        PassPattern = 'PASS_00e1b1b0'
+    }
+    [pscustomobject]@{
+        Address = '00e1b710'
+        Module = '_gapscan'
+        Source = '00/e1/gapscan_sub00e1b710_00e1b710.cpp'
+        TestSource = '00/e1/gapscan_sub00e1b710_00e1b710_test.cpp'
+        PassPattern = 'PASS_00e1b710'
+    }
+    [pscustomobject]@{
+        Address = '00e1bc30'
+        Module = '_gapscan'
+        Source = '00/e1/gapscan_sub00e1bc30_00e1bc30.cpp'
+        TestSource = '00/e1/gapscan_sub00e1bc30_00e1bc30_test.cpp'
+        PassPattern = 'PASS_00e1bc30'
+    }
+    [pscustomobject]@{
+        Address = '00e1e930'
+        Module = '_gapscan'
+        Source = '00/e1/gapscan_sub00e1e930_00e1e930.cpp'
+        TestSource = '00/e1/gapscan_sub00e1e930_00e1e930_test.cpp'
+        PassPattern = 'PASS_00e1e930'
+    }
+    [pscustomobject]@{
+        Address = '00e24e00'
+        Module = '_gapscan'
+        Source = '00/e2/gapscan_sub00e24e00_00e24e00.cpp'
+        TestSource = '00/e2/gapscan_sub00e24e00_00e24e00_test.cpp'
+        PassPattern = 'PASS_00e24e00'
+    }
+    [pscustomobject]@{
+        Address = '00e25a00'
+        Module = '_gapscan'
+        Source = '00/e2/gapscan_sub00e25a00_00e25a00.cpp'
+        TestSource = '00/e2/gapscan_sub00e25a00_00e25a00_test.cpp'
+        PassPattern = 'PASS_00e25a00'
+    }
+    [pscustomobject]@{
+        Address = '00e26810'
+        Module = '_gapscan'
+        Source = '00/e2/gapscan_sub00e26810_00e26810.cpp'
+        TestSource = '00/e2/gapscan_sub00e26810_00e26810_test.cpp'
+        PassPattern = 'PASS_00e26810'
+    }
+    [pscustomobject]@{
+        Address = '00e27870'
+        Module = '_gapscan'
+        Source = '00/e2/gapscan_sub00e27870_00e27870.cpp'
+        TestSource = '00/e2/gapscan_sub00e27870_00e27870_test.cpp'
+        PassPattern = 'PASS_00e27870'
+    }
+    [pscustomobject]@{
+        Address = '00e29a70'
+        Module = '_gapscan'
+        Source = '00/e2/gapscan_sub00e29a70_00e29a70.cpp'
+        TestSource = '00/e2/gapscan_sub00e29a70_00e29a70_test.cpp'
+        PassPattern = 'PASS_00e29a70'
+    }
+    [pscustomobject]@{
+        Address = '00e3ab60'
+        Module = '_gapscan'
+        Source = '00/e3/gapscan_sub00e3ab60_00e3ab60.cpp'
+        TestSource = '00/e3/gapscan_sub00e3ab60_00e3ab60_test.cpp'
+        PassPattern = 'PASS_00e3ab60'
+    }
+    [pscustomobject]@{
+        Address = '00e46c30'
+        Module = '_gapscan'
+        Source = '00/e4/gapscan_sub00e46c30_00e46c30.cpp'
+        TestSource = '00/e4/gapscan_sub00e46c30_00e46c30_test.cpp'
+        PassPattern = 'PASS_00e46c30'
+    }
+    [pscustomobject]@{
+        Address = '00e4a240'
+        Module = '_gapscan'
+        Source = '00/e4/gapscan_sub00e4a240_00e4a240.cpp'
+        TestSource = '00/e4/gapscan_sub00e4a240_00e4a240_test.cpp'
+        PassPattern = 'PASS_00e4a240'
+    }
+    [pscustomobject]@{
+        Address = '00e83830'
+        Module = '_gapscan'
+        Source = '00/e8/gapscan_sub00e83830_00e83830.cpp'
+        TestSource = '00/e8/gapscan_sub00e83830_00e83830_test.cpp'
+        PassPattern = 'PASS_00e83830'
+    }
+    [pscustomobject]@{
+        Address = '00e95740'
+        Module = '_gapscan'
+        Source = '00/e9/gapscan_sub00e95740_00e95740.cpp'
+        TestSource = '00/e9/gapscan_sub00e95740_00e95740_test.cpp'
+        PassPattern = 'PASS_00e95740'
+    }
+    [pscustomobject]@{
+        Address = '00e96e60'
+        Module = '_gapscan'
+        Source = '00/e9/gapscan_sub00e96e60_00e96e60.cpp'
+        TestSource = '00/e9/gapscan_sub00e96e60_00e96e60_test.cpp'
+        PassPattern = 'PASS_00e96e60'
+    }
+    [pscustomobject]@{
+        Address = '00e9cf90'
+        Module = '_gapscan'
+        Source = '00/e9/gapscan_sub00e9cf90_00e9cf90.cpp'
+        TestSource = '00/e9/gapscan_sub00e9cf90_00e9cf90_test.cpp'
+        PassPattern = 'PASS_00e9cf90'
+    }
+    [pscustomobject]@{
+        Address = '00ea7750'
+        Module = '_gapscan'
+        Source = '00/ea/gapscan_sub00ea7750_00ea7750.cpp'
+        TestSource = '00/ea/gapscan_sub00ea7750_00ea7750_test.cpp'
+        PassPattern = 'PASS_00ea7750'
+    }
+    [pscustomobject]@{
+        Address = '00ebe5f0'
+        Module = '_gapscan'
+        Source = '00/eb/gapscan_sub00ebe5f0_00ebe5f0.cpp'
+        TestSource = '00/eb/gapscan_sub00ebe5f0_00ebe5f0_test.cpp'
+        PassPattern = 'PASS_00ebe5f0'
+    }
+    [pscustomobject]@{
+        Address = '00ee0490'
+        Module = '_gapscan'
+        Source = '00/ee/gapscan_sub00ee0490_00ee0490.cpp'
+        TestSource = '00/ee/gapscan_sub00ee0490_00ee0490_test.cpp'
+        PassPattern = 'PASS_00ee0490'
+    }
+    [pscustomobject]@{
+        Address = '00ee0c10'
+        Module = '_gapscan'
+        Source = '00/ee/gapscan_sub00ee0c10_00ee0c10.cpp'
+        TestSource = '00/ee/gapscan_sub00ee0c10_00ee0c10_test.cpp'
+        PassPattern = 'PASS_00ee0c10'
+    }
+    [pscustomobject]@{
+        Address = '00ee4da0'
+        Module = '_gapscan'
+        Source = '00/ee/gapscan_sub00ee4da0_00ee4da0.cpp'
+        TestSource = '00/ee/gapscan_sub00ee4da0_00ee4da0_test.cpp'
+        PassPattern = 'PASS_00ee4da0'
+    }
+    [pscustomobject]@{
+        Address = '00eecf10'
+        Module = '_gapscan'
+        Source = '00/ee/gapscan_sub00eecf10_00eecf10.cpp'
+        TestSource = '00/ee/gapscan_sub00eecf10_00eecf10_test.cpp'
+        PassPattern = 'PASS_00eecf10'
+    }
+    [pscustomobject]@{
+        Address = '00efc4f0'
+        Module = '_gapscan'
+        Source = '00/ef/gapscan_sub00efc4f0_00efc4f0.cpp'
+        TestSource = '00/ef/gapscan_sub00efc4f0_00efc4f0_test.cpp'
+        PassPattern = 'PASS_00efc4f0'
+    }
+    [pscustomobject]@{
+        Address = '00effd60'
+        Module = '_gapscan'
+        Source = '00/ef/gapscan_sub00effd60_00effd60.cpp'
+        TestSource = '00/ef/gapscan_sub00effd60_00effd60_test.cpp'
+        PassPattern = 'PASS_00effd60'
+    }
+    [pscustomobject]@{
+        Address = '00f000b0'
+        Module = '_gapscan'
+        Source = '00/f0/gapscan_sub00f000b0_00f000b0.cpp'
+        TestSource = '00/f0/gapscan_sub00f000b0_00f000b0_test.cpp'
+        PassPattern = 'PASS_00f000b0'
+    }
+    [pscustomobject]@{
+        Address = '00c0a240'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0a240_00c0a240.cpp'
+        TestSource = '00/c0/gapscan_sub00c0a240_00c0a240_test.cpp'
+        PassPattern = 'PASS_00c0a240'
+    }
+    [pscustomobject]@{
+        Address = '00c0f880'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f880_00c0f880.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f880_00c0f880_test.cpp'
+        PassPattern = 'PASS_00c0f880'
+    }
+    [pscustomobject]@{
+        Address = '00c0f8c0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f8c0_00c0f8c0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f8c0_00c0f8c0_test.cpp'
+        PassPattern = 'PASS_00c0f8c0'
+    }
+    [pscustomobject]@{
+        Address = '00c0fa80'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0fa80_00c0fa80.cpp'
+        TestSource = '00/c0/gapscan_sub00c0fa80_00c0fa80_test.cpp'
+        PassPattern = 'PASS_00c0fa80'
+    }
+    [pscustomobject]@{
+        Address = '00c0fcb0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0fcb0_00c0fcb0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0fcb0_00c0fcb0_test.cpp'
+        PassPattern = 'PASS_00c0fcb0'
+    }
+    [pscustomobject]@{
+        Address = '00c15730'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c15730_00c15730.cpp'
+        TestSource = '00/c1/gapscan_sub00c15730_00c15730_test.cpp'
+        PassPattern = 'PASS_00c15730'
+    }
+    [pscustomobject]@{
+        Address = '00c1afc0'
+        Module = '_gapscan'
+        Source = '00/c1/gapscan_sub00c1afc0_00c1afc0.cpp'
+        TestSource = '00/c1/gapscan_sub00c1afc0_00c1afc0_test.cpp'
+        PassPattern = 'PASS_00c1afc0'
+    }
+    [pscustomobject]@{
+        Address = '00c230c0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c230c0_00c230c0.cpp'
+        TestSource = '00/c2/gapscan_sub00c230c0_00c230c0_test.cpp'
+        PassPattern = 'PASS_00c230c0'
+    }
+    [pscustomobject]@{
+        Address = '00c23360'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c23360_00c23360.cpp'
+        TestSource = '00/c2/gapscan_sub00c23360_00c23360_test.cpp'
+        PassPattern = 'PASS_00c23360'
+    }
+    [pscustomobject]@{
+        Address = '00c24ae0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c24ae0_00c24ae0.cpp'
+        TestSource = '00/c2/gapscan_sub00c24ae0_00c24ae0_test.cpp'
+        PassPattern = 'PASS_00c24ae0'
+    }
+    [pscustomobject]@{
+        Address = '00c24b20'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c24b20_00c24b20.cpp'
+        TestSource = '00/c2/gapscan_sub00c24b20_00c24b20_test.cpp'
+        PassPattern = 'PASS_00c24b20'
+    }
+    [pscustomobject]@{
+        Address = '00c2b320'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2b320_00c2b320.cpp'
+        TestSource = '00/c2/gapscan_sub00c2b320_00c2b320_test.cpp'
+        PassPattern = 'PASS_00c2b320'
+    }
+    [pscustomobject]@{
+        Address = '00c2b480'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2b480_00c2b480.cpp'
+        TestSource = '00/c2/gapscan_sub00c2b480_00c2b480_test.cpp'
+        PassPattern = 'PASS_00c2b480'
+    }
+    [pscustomobject]@{
+        Address = '00c2ce50'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2ce50_00c2ce50.cpp'
+        TestSource = '00/c2/gapscan_sub00c2ce50_00c2ce50_test.cpp'
+        PassPattern = 'PASS_00c2ce50'
+    }
+    [pscustomobject]@{
+        Address = '00c2ff90'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2ff90_00c2ff90.cpp'
+        TestSource = '00/c2/gapscan_sub00c2ff90_00c2ff90_test.cpp'
+        PassPattern = 'PASS_00c2ff90'
+    }
+    [pscustomobject]@{
+        Address = '00c2ffd0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2ffd0_00c2ffd0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2ffd0_00c2ffd0_test.cpp'
+        PassPattern = 'PASS_00c2ffd0'
+    }
+    [pscustomobject]@{
+        Address = '00c300e0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c300e0_00c300e0.cpp'
+        TestSource = '00/c3/gapscan_sub00c300e0_00c300e0_test.cpp'
+        PassPattern = 'PASS_00c300e0'
+    }
+    [pscustomobject]@{
+        Address = '00c30120'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c30120_00c30120.cpp'
+        TestSource = '00/c3/gapscan_sub00c30120_00c30120_test.cpp'
+        PassPattern = 'PASS_00c30120'
+    }
+    [pscustomobject]@{
+        Address = '00c36a30'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c36a30_00c36a30.cpp'
+        TestSource = '00/c3/gapscan_sub00c36a30_00c36a30_test.cpp'
+        PassPattern = 'PASS_00c36a30'
+    }
+    [pscustomobject]@{
+        Address = '00c37550'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c37550_00c37550.cpp'
+        TestSource = '00/c3/gapscan_sub00c37550_00c37550_test.cpp'
+        PassPattern = 'PASS_00c37550'
+    }
+    [pscustomobject]@{
+        Address = '00c381e0'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c381e0_00c381e0.cpp'
+        TestSource = '00/c3/gapscan_sub00c381e0_00c381e0_test.cpp'
+        PassPattern = 'PASS_00c381e0'
+    }
+    [pscustomobject]@{
+        Address = '00c454d0'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c454d0_00c454d0.cpp'
+        TestSource = '00/c4/gapscan_sub00c454d0_00c454d0_test.cpp'
+        PassPattern = 'PASS_00c454d0'
+    }
+    [pscustomobject]@{
+        Address = '00c47b80'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c47b80_00c47b80.cpp'
+        TestSource = '00/c4/gapscan_sub00c47b80_00c47b80_test.cpp'
+        PassPattern = 'PASS_00c47b80'
+    }
+    [pscustomobject]@{
+        Address = '00c48df0'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c48df0_00c48df0.cpp'
+        TestSource = '00/c4/gapscan_sub00c48df0_00c48df0_test.cpp'
+        PassPattern = 'PASS_00c48df0'
+    }
+    [pscustomobject]@{
+        Address = '00c49b20'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c49b20_00c49b20.cpp'
+        TestSource = '00/c4/gapscan_sub00c49b20_00c49b20_test.cpp'
+        PassPattern = 'PASS_00c49b20'
+    }
+    [pscustomobject]@{
+        Address = '00c4bc10'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c4bc10_00c4bc10.cpp'
+        TestSource = '00/c4/gapscan_sub00c4bc10_00c4bc10_test.cpp'
+        PassPattern = 'PASS_00c4bc10'
+    }
+    [pscustomobject]@{
+        Address = '0040e010'
+        Module = '_gapscan'
+        Source = '00/40/gapscan_sub0040e010_0040e010.cpp'
+        TestSource = '00/40/gapscan_sub0040e010_0040e010_test.cpp'
+        PassPattern = 'PASS_0040e010'
+    }
+    [pscustomobject]@{
+        Address = '0043c560'
+        Module = '_gapscan'
+        Source = '00/43/gapscan_sub0043c560_0043c560.cpp'
+        TestSource = '00/43/gapscan_sub0043c560_0043c560_test.cpp'
+        PassPattern = 'PASS_0043c560'
+    }
+    [pscustomobject]@{
+        Address = '0043c620'
+        Module = '_gapscan'
+        Source = '00/43/gapscan_sub0043c620_0043c620.cpp'
+        TestSource = '00/43/gapscan_sub0043c620_0043c620_test.cpp'
+        PassPattern = 'PASS_0043c620'
+    }
+    [pscustomobject]@{
+        Address = '0043c660'
+        Module = '_gapscan'
+        Source = '00/43/gapscan_sub0043c660_0043c660.cpp'
+        TestSource = '00/43/gapscan_sub0043c660_0043c660_test.cpp'
+        PassPattern = 'PASS_0043c660'
+    }
+    [pscustomobject]@{
+        Address = '0043c7d0'
+        Module = '_gapscan'
+        Source = '00/43/gapscan_sub0043c7d0_0043c7d0.cpp'
+        TestSource = '00/43/gapscan_sub0043c7d0_0043c7d0_test.cpp'
+        PassPattern = 'PASS_0043c7d0'
+    }
+    [pscustomobject]@{
+        Address = '0043c850'
+        Module = '_gapscan'
+        Source = '00/43/gapscan_sub0043c850_0043c850.cpp'
+        TestSource = '00/43/gapscan_sub0043c850_0043c850_test.cpp'
+        PassPattern = 'PASS_0043c850'
+    }
+    [pscustomobject]@{
+        Address = '0047b970'
+        Module = '_gapscan'
+        Source = '00/47/gapscan_sub0047b970_0047b970.cpp'
+        TestSource = '00/47/gapscan_sub0047b970_0047b970_test.cpp'
+        PassPattern = 'PASS_0047b970'
+    }
+    [pscustomobject]@{
+        Address = '0049ac80'
+        Module = '_gapscan'
+        Source = '00/49/gapscan_sub0049ac80_0049ac80.cpp'
+        TestSource = '00/49/gapscan_sub0049ac80_0049ac80_test.cpp'
+        PassPattern = 'PASS_0049ac80'
+    }
+    [pscustomobject]@{
+        Address = '004a8430'
+        Module = '_gapscan'
+        Source = '00/4a/gapscan_sub004a8430_004a8430.cpp'
+        TestSource = '00/4a/gapscan_sub004a8430_004a8430_test.cpp'
+        PassPattern = 'PASS_004a8430'
+    }
+    [pscustomobject]@{
+        Address = '004a8aa0'
+        Module = '_gapscan'
+        Source = '00/4a/gapscan_sub004a8aa0_004a8aa0.cpp'
+        TestSource = '00/4a/gapscan_sub004a8aa0_004a8aa0_test.cpp'
+        PassPattern = 'PASS_004a8aa0'
+    }
+    [pscustomobject]@{
+        Address = '004c3830'
+        Module = '_gapscan'
+        Source = '00/4c/gapscan_sub004c3830_004c3830.cpp'
+        TestSource = '00/4c/gapscan_sub004c3830_004c3830_test.cpp'
+        PassPattern = 'PASS_004c3830'
+    }
+    [pscustomobject]@{
+        Address = '004db70f'
+        Module = '_gapscan'
+        Source = '00/4d/gapscan_sub004db70f_004db70f.cpp'
+        TestSource = '00/4d/gapscan_sub004db70f_004db70f_test.cpp'
+        PassPattern = 'PASS_004db70f'
+    }
+    [pscustomobject]@{
+        Address = '00578e1c'
+        Module = '_gapscan'
+        Source = '00/57/gapscan_sub00578e1c_00578e1c.cpp'
+        TestSource = '00/57/gapscan_sub00578e1c_00578e1c_test.cpp'
+        PassPattern = 'PASS_00578e1c'
+    }
+    [pscustomobject]@{
+        Address = '005b1255'
+        Module = '_gapscan'
+        Source = '00/5b/gapscan_sub005b1255_005b1255.cpp'
+        TestSource = '00/5b/gapscan_sub005b1255_005b1255_test.cpp'
+        PassPattern = 'PASS_005b1255'
+    }
+    [pscustomobject]@{
+        Address = '005b1424'
+        Module = '_gapscan'
+        Source = '00/5b/gapscan_sub005b1424_005b1424.cpp'
+        TestSource = '00/5b/gapscan_sub005b1424_005b1424_test.cpp'
+        PassPattern = 'PASS_005b1424'
+    }
+    [pscustomobject]@{
+        Address = '00685230'
+        Module = '_gapscan'
+        Source = '00/68/gapscan_sub00685230_00685230.cpp'
+        TestSource = '00/68/gapscan_sub00685230_00685230_test.cpp'
+        PassPattern = 'PASS_00685230'
+    }
+    [pscustomobject]@{
+        Address = '00685240'
+        Module = '_gapscan'
+        Source = '00/68/gapscan_sub00685240_00685240.cpp'
+        TestSource = '00/68/gapscan_sub00685240_00685240_test.cpp'
+        PassPattern = 'PASS_00685240'
+    }
+    [pscustomobject]@{
+        Address = '00685310'
+        Module = '_gapscan'
+        Source = '00/68/gapscan_sub00685310_00685310.cpp'
+        TestSource = '00/68/gapscan_sub00685310_00685310_test.cpp'
+        PassPattern = 'PASS_00685310'
+    }
+    [pscustomobject]@{
+        Address = '006d9e70'
+        Module = '_gapscan'
+        Source = '00/6d/gapscan_sub006d9e70_006d9e70.cpp'
+        TestSource = '00/6d/gapscan_sub006d9e70_006d9e70_test.cpp'
+        PassPattern = 'PASS_006d9e70'
+    }
+    [pscustomobject]@{
+        Address = '0071f0c0'
+        Module = '_gapscan'
+        Source = '00/71/gapscan_sub0071f0c0_0071f0c0.cpp'
+        TestSource = '00/71/gapscan_sub0071f0c0_0071f0c0_test.cpp'
+        PassPattern = 'PASS_0071f0c0'
+    }
+    [pscustomobject]@{
+        Address = '00720070'
+        Module = '_gapscan'
+        Source = '00/72/gapscan_sub00720070_00720070.cpp'
+        TestSource = '00/72/gapscan_sub00720070_00720070_test.cpp'
+        PassPattern = 'PASS_00720070'
+    }
+    [pscustomobject]@{
+        Address = '00750b30'
+        Module = '_gapscan'
+        Source = '00/75/gapscan_sub00750b30_00750b30.cpp'
+        TestSource = '00/75/gapscan_sub00750b30_00750b30_test.cpp'
+        PassPattern = 'PASS_00750b30'
+    }
+    [pscustomobject]@{
+        Address = '00800080'
+        Module = '_gapscan'
+        Source = '00/80/gapscan_sub00800080_00800080.cpp'
+        TestSource = '00/80/gapscan_sub00800080_00800080_test.cpp'
+        PassPattern = 'PASS_00800080'
+    }
+    [pscustomobject]@{
+        Address = '008364b0'
+        Module = '_gapscan'
+        Source = '00/83/gapscan_sub008364b0_008364b0.cpp'
+        TestSource = '00/83/gapscan_sub008364b0_008364b0_test.cpp'
+        PassPattern = 'PASS_008364b0'
+    }
+    [pscustomobject]@{
+        Address = '0084e900'
+        Module = '_gapscan'
+        Source = '00/84/gapscan_sub0084e900_0084e900.cpp'
+        TestSource = '00/84/gapscan_sub0084e900_0084e900_test.cpp'
+        PassPattern = 'PASS_0084e900'
+    }
+    [pscustomobject]@{
+        Address = '008aecb0'
+        Module = '_gapscan'
+        Source = '00/8a/gapscan_sub008aecb0_008aecb0.cpp'
+        TestSource = '00/8a/gapscan_sub008aecb0_008aecb0_test.cpp'
+        PassPattern = 'PASS_008aecb0'
+    }
+    [pscustomobject]@{
+        Address = '008ebe80'
+        Module = '_gapscan'
+        Source = '00/8e/gapscan_sub008ebe80_008ebe80.cpp'
+        TestSource = '00/8e/gapscan_sub008ebe80_008ebe80_test.cpp'
+        PassPattern = 'PASS_008ebe80'
+    }
+    [pscustomobject]@{
+        Address = '00a200b0'
+        Module = '_gapscan'
+        Source = '00/a2/gapscan_sub00a200b0_00a200b0.cpp'
+        TestSource = '00/a2/gapscan_sub00a200b0_00a200b0_test.cpp'
+        PassPattern = 'PASS_00a200b0'
+    }
+    [pscustomobject]@{
+        Address = '00a6dd80'
+        Module = '_gapscan'
+        Source = '00/a6/gapscan_sub00a6dd80_00a6dd80.cpp'
+        TestSource = '00/a6/gapscan_sub00a6dd80_00a6dd80_test.cpp'
+        PassPattern = 'PASS_00a6dd80'
+    }
+    [pscustomobject]@{
+        Address = '00c08b70'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c08b70_00c08b70.cpp'
+        TestSource = '00/c0/gapscan_sub00c08b70_00c08b70_test.cpp'
+        PassPattern = 'PASS_00c08b70'
+    }
+    [pscustomobject]@{
+        Address = '00c0f6a0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f6a0_00c0f6a0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f6a0_00c0f6a0_test.cpp'
+        PassPattern = 'PASS_00c0f6a0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f6c0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0f6c0_00c0f6c0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0f6c0_00c0f6c0_test.cpp'
+        PassPattern = 'PASS_00c0f6c0'
+    }
+    [pscustomobject]@{
+        Address = '00c0faa0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0faa0_00c0faa0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0faa0_00c0faa0_test.cpp'
+        PassPattern = 'PASS_00c0faa0'
+    }
+    [pscustomobject]@{
+        Address = '00c0fac0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0fac0_00c0fac0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0fac0_00c0fac0_test.cpp'
+        PassPattern = 'PASS_00c0fac0'
+    }
+    [pscustomobject]@{
+        Address = '00c0fcd0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0fcd0_00c0fcd0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0fcd0_00c0fcd0_test.cpp'
+        PassPattern = 'PASS_00c0fcd0'
+    }
+    [pscustomobject]@{
+        Address = '00c0fcf0'
+        Module = '_gapscan'
+        Source = '00/c0/gapscan_sub00c0fcf0_00c0fcf0.cpp'
+        TestSource = '00/c0/gapscan_sub00c0fcf0_00c0fcf0_test.cpp'
+        PassPattern = 'PASS_00c0fcf0'
+    }
+    [pscustomobject]@{
+        Address = '00c230e0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c230e0_00c230e0.cpp'
+        TestSource = '00/c2/gapscan_sub00c230e0_00c230e0_test.cpp'
+        PassPattern = 'PASS_00c230e0'
+    }
+    [pscustomobject]@{
+        Address = '00c23100'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c23100_00c23100.cpp'
+        TestSource = '00/c2/gapscan_sub00c23100_00c23100_test.cpp'
+        PassPattern = 'PASS_00c23100'
+    }
+    [pscustomobject]@{
+        Address = '00c23240'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c23240_00c23240.cpp'
+        TestSource = '00/c2/gapscan_sub00c23240_00c23240_test.cpp'
+        PassPattern = 'PASS_00c23240'
+    }
+    [pscustomobject]@{
+        Address = '00c23260'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c23260_00c23260.cpp'
+        TestSource = '00/c2/gapscan_sub00c23260_00c23260_test.cpp'
+        PassPattern = 'PASS_00c23260'
+    }
+    [pscustomobject]@{
+        Address = '00c24640'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c24640_00c24640.cpp'
+        TestSource = '00/c2/gapscan_sub00c24640_00c24640_test.cpp'
+        PassPattern = 'PASS_00c24640'
+    }
+    [pscustomobject]@{
+        Address = '00c24660'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c24660_00c24660.cpp'
+        TestSource = '00/c2/gapscan_sub00c24660_00c24660_test.cpp'
+        PassPattern = 'PASS_00c24660'
+    }
+    [pscustomobject]@{
+        Address = '00c24900'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c24900_00c24900.cpp'
+        TestSource = '00/c2/gapscan_sub00c24900_00c24900_test.cpp'
+        PassPattern = 'PASS_00c24900'
+    }
+    [pscustomobject]@{
+        Address = '00c24920'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c24920_00c24920.cpp'
+        TestSource = '00/c2/gapscan_sub00c24920_00c24920_test.cpp'
+        PassPattern = 'PASS_00c24920'
+    }
+    [pscustomobject]@{
+        Address = '00c25010'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c25010_00c25010.cpp'
+        TestSource = '00/c2/gapscan_sub00c25010_00c25010_test.cpp'
+        PassPattern = 'PASS_00c25010'
+    }
+    [pscustomobject]@{
+        Address = '00c25030'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c25030_00c25030.cpp'
+        TestSource = '00/c2/gapscan_sub00c25030_00c25030_test.cpp'
+        PassPattern = 'PASS_00c25030'
+    }
+    [pscustomobject]@{
+        Address = '00c2b340'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2b340_00c2b340.cpp'
+        TestSource = '00/c2/gapscan_sub00c2b340_00c2b340_test.cpp'
+        PassPattern = 'PASS_00c2b340'
+    }
+    [pscustomobject]@{
+        Address = '00c2b360'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2b360_00c2b360.cpp'
+        TestSource = '00/c2/gapscan_sub00c2b360_00c2b360_test.cpp'
+        PassPattern = 'PASS_00c2b360'
+    }
+    [pscustomobject]@{
+        Address = '00c2b4a0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2b4a0_00c2b4a0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2b4a0_00c2b4a0_test.cpp'
+        PassPattern = 'PASS_00c2b4a0'
+    }
+    [pscustomobject]@{
+        Address = '00c2b4c0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2b4c0_00c2b4c0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2b4c0_00c2b4c0_test.cpp'
+        PassPattern = 'PASS_00c2b4c0'
+    }
+    [pscustomobject]@{
+        Address = '00c2b600'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2b600_00c2b600.cpp'
+        TestSource = '00/c2/gapscan_sub00c2b600_00c2b600_test.cpp'
+        PassPattern = 'PASS_00c2b600'
+    }
+    [pscustomobject]@{
+        Address = '00c2b620'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2b620_00c2b620.cpp'
+        TestSource = '00/c2/gapscan_sub00c2b620_00c2b620_test.cpp'
+        PassPattern = 'PASS_00c2b620'
+    }
+    [pscustomobject]@{
+        Address = '00c2c3e0'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2c3e0_00c2c3e0.cpp'
+        TestSource = '00/c2/gapscan_sub00c2c3e0_00c2c3e0_test.cpp'
+        PassPattern = 'PASS_00c2c3e0'
+    }
+    [pscustomobject]@{
+        Address = '00c2c400'
+        Module = '_gapscan'
+        Source = '00/c2/gapscan_sub00c2c400_00c2c400.cpp'
+        TestSource = '00/c2/gapscan_sub00c2c400_00c2c400_test.cpp'
+        PassPattern = 'PASS_00c2c400'
+    }
+    [pscustomobject]@{
+        Address = '00c30d70'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c30d70_00c30d70.cpp'
+        TestSource = '00/c3/gapscan_sub00c30d70_00c30d70_test.cpp'
+        PassPattern = 'PASS_00c30d70'
+    }
+    [pscustomobject]@{
+        Address = '00c30d90'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c30d90_00c30d90.cpp'
+        TestSource = '00/c3/gapscan_sub00c30d90_00c30d90_test.cpp'
+        PassPattern = 'PASS_00c30d90'
+    }
+    [pscustomobject]@{
+        Address = '00c36a50'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c36a50_00c36a50.cpp'
+        TestSource = '00/c3/gapscan_sub00c36a50_00c36a50_test.cpp'
+        PassPattern = 'PASS_00c36a50'
+    }
+    [pscustomobject]@{
+        Address = '00c36a70'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c36a70_00c36a70.cpp'
+        TestSource = '00/c3/gapscan_sub00c36a70_00c36a70_test.cpp'
+        PassPattern = 'PASS_00c36a70'
+    }
+    [pscustomobject]@{
+        Address = '00c38200'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c38200_00c38200.cpp'
+        TestSource = '00/c3/gapscan_sub00c38200_00c38200_test.cpp'
+        PassPattern = 'PASS_00c38200'
+    }
+    [pscustomobject]@{
+        Address = '00c38220'
+        Module = '_gapscan'
+        Source = '00/c3/gapscan_sub00c38220_00c38220.cpp'
+        TestSource = '00/c3/gapscan_sub00c38220_00c38220_test.cpp'
+        PassPattern = 'PASS_00c38220'
+    }
+    [pscustomobject]@{
+        Address = '00c453c0'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c453c0_00c453c0.cpp'
+        TestSource = '00/c4/gapscan_sub00c453c0_00c453c0_test.cpp'
+        PassPattern = 'PASS_00c453c0'
+    }
+    [pscustomobject]@{
+        Address = '00c453e0'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c453e0_00c453e0.cpp'
+        TestSource = '00/c4/gapscan_sub00c453e0_00c453e0_test.cpp'
+        PassPattern = 'PASS_00c453e0'
+    }
+    [pscustomobject]@{
+        Address = '00c47a70'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c47a70_00c47a70.cpp'
+        TestSource = '00/c4/gapscan_sub00c47a70_00c47a70_test.cpp'
+        PassPattern = 'PASS_00c47a70'
+    }
+    [pscustomobject]@{
+        Address = '00c47a90'
+        Module = '_gapscan'
+        Source = '00/c4/gapscan_sub00c47a90_00c47a90.cpp'
+        TestSource = '00/c4/gapscan_sub00c47a90_00c47a90_test.cpp'
+        PassPattern = 'PASS_00c47a90'
+    }
+    [pscustomobject]@{
+        Address = '00cdff30'
+        Module = '_gapscan'
+        Source = '00/cd/gapscan_sub00cdff30_00cdff30.cpp'
+        TestSource = '00/cd/gapscan_sub00cdff30_00cdff30_test.cpp'
+        PassPattern = 'PASS_00cdff30'
+    }
+    [pscustomobject]@{
+        Address = '00ce0330'
+        Module = '_gapscan'
+        Source = '00/ce/gapscan_sub00ce0330_00ce0330.cpp'
+        TestSource = '00/ce/gapscan_sub00ce0330_00ce0330_test.cpp'
+        PassPattern = 'PASS_00ce0330'
+    }
+    [pscustomobject]@{
+        Address = '00cfcb10'
+        Module = '_gapscan'
+        Source = '00/cf/gapscan_sub00cfcb10_00cfcb10.cpp'
+        TestSource = '00/cf/gapscan_sub00cfcb10_00cfcb10_test.cpp'
+        PassPattern = 'PASS_00cfcb10'
+    }
+    [pscustomobject]@{
+        Address = '00cfd680'
+        Module = '_gapscan'
+        Source = '00/cf/gapscan_sub00cfd680_00cfd680.cpp'
+        TestSource = '00/cf/gapscan_sub00cfd680_00cfd680_test.cpp'
+        PassPattern = 'PASS_00cfd680'
+    }
+    [pscustomobject]@{
+        Address = '00cfdd50'
+        Module = '_gapscan'
+        Source = '00/cf/gapscan_sub00cfdd50_00cfdd50.cpp'
+        TestSource = '00/cf/gapscan_sub00cfdd50_00cfdd50_test.cpp'
+        PassPattern = 'PASS_00cfdd50'
+    }
+    [pscustomobject]@{
+        Address = '00d1f9c0'
+        Module = '_gapscan'
+        Source = '00/d1/gapscan_sub00d1f9c0_00d1f9c0.cpp'
+        TestSource = '00/d1/gapscan_sub00d1f9c0_00d1f9c0_test.cpp'
+        PassPattern = 'PASS_00d1f9c0'
+    }
+    [pscustomobject]@{
+        Address = '00d25d10'
+        Module = '_gapscan'
+        Source = '00/d2/gapscan_sub00d25d10_00d25d10.cpp'
+        TestSource = '00/d2/gapscan_sub00d25d10_00d25d10_test.cpp'
+        PassPattern = 'PASS_00d25d10'
+    }
+    [pscustomobject]@{
+        Address = '00d25ee0'
+        Module = '_gapscan'
+        Source = '00/d2/gapscan_sub00d25ee0_00d25ee0.cpp'
+        TestSource = '00/d2/gapscan_sub00d25ee0_00d25ee0_test.cpp'
+        PassPattern = 'PASS_00d25ee0'
+    }
+    [pscustomobject]@{
+        Address = '00d2c4e0'
+        Module = '_gapscan'
+        Source = '00/d2/gapscan_sub00d2c4e0_00d2c4e0.cpp'
+        TestSource = '00/d2/gapscan_sub00d2c4e0_00d2c4e0_test.cpp'
+        PassPattern = 'PASS_00d2c4e0'
+    }
+    [pscustomobject]@{
+        Address = '00d2d810'
+        Module = '_gapscan'
+        Source = '00/d2/gapscan_sub00d2d810_00d2d810.cpp'
+        TestSource = '00/d2/gapscan_sub00d2d810_00d2d810_test.cpp'
+        PassPattern = 'PASS_00d2d810'
+    }
+    [pscustomobject]@{
+        Address = '00d7dd40'
+        Module = '_gapscan'
+        Source = '00/d7/gapscan_sub00d7dd40_00d7dd40.cpp'
+        TestSource = '00/d7/gapscan_sub00d7dd40_00d7dd40_test.cpp'
+        PassPattern = 'PASS_00d7dd40'
+    }
+    [pscustomobject]@{
+        Address = '00d7f0d0'
+        Module = '_gapscan'
+        Source = '00/d7/gapscan_sub00d7f0d0_00d7f0d0.cpp'
+        TestSource = '00/d7/gapscan_sub00d7f0d0_00d7f0d0_test.cpp'
+        PassPattern = 'PASS_00d7f0d0'
+    }
+    [pscustomobject]@{
+        Address = '00d81c10'
+        Module = '_gapscan'
+        Source = '00/d8/gapscan_sub00d81c10_00d81c10.cpp'
+        TestSource = '00/d8/gapscan_sub00d81c10_00d81c10_test.cpp'
+        PassPattern = 'PASS_00d81c10'
+    }
+    [pscustomobject]@{
+        Address = '00d86440'
+        Module = '_gapscan'
+        Source = '00/d8/gapscan_sub00d86440_00d86440.cpp'
+        TestSource = '00/d8/gapscan_sub00d86440_00d86440_test.cpp'
+        PassPattern = 'PASS_00d86440'
+    }
+    [pscustomobject]@{
+        Address = '00d86610'
+        Module = '_gapscan'
+        Source = '00/d8/gapscan_sub00d86610_00d86610.cpp'
+        TestSource = '00/d8/gapscan_sub00d86610_00d86610_test.cpp'
+        PassPattern = 'PASS_00d86610'
+    }
+    [pscustomobject]@{
+        Address = '00d884d0'
+        Module = '_gapscan'
+        Source = '00/d8/gapscan_sub00d884d0_00d884d0.cpp'
+        TestSource = '00/d8/gapscan_sub00d884d0_00d884d0_test.cpp'
+        PassPattern = 'PASS_00d884d0'
+    }
+    [pscustomobject]@{
+        Address = '00d89150'
+        Module = '_gapscan'
+        Source = '00/d8/gapscan_sub00d89150_00d89150.cpp'
+        TestSource = '00/d8/gapscan_sub00d89150_00d89150_test.cpp'
+        PassPattern = 'PASS_00d89150'
+    }
+    [pscustomobject]@{
+        Address = '00d91520'
+        Module = '_gapscan'
+        Source = '00/d9/gapscan_sub00d91520_00d91520.cpp'
+        TestSource = '00/d9/gapscan_sub00d91520_00d91520_test.cpp'
+        PassPattern = 'PASS_00d91520'
+    }
+    [pscustomobject]@{
+        Address = '00da4df0'
+        Module = '_gapscan'
+        Source = '00/da/gapscan_sub00da4df0_00da4df0.cpp'
+        TestSource = '00/da/gapscan_sub00da4df0_00da4df0_test.cpp'
+        PassPattern = 'PASS_00da4df0'
+    }
+    [pscustomobject]@{
+        Address = '00da5450'
+        Module = '_gapscan'
+        Source = '00/da/gapscan_sub00da5450_00da5450.cpp'
+        TestSource = '00/da/gapscan_sub00da5450_00da5450_test.cpp'
+        PassPattern = 'PASS_00da5450'
+    }
+    [pscustomobject]@{
+        Address = '00da5850'
+        Module = '_gapscan'
+        Source = '00/da/gapscan_sub00da5850_00da5850.cpp'
+        TestSource = '00/da/gapscan_sub00da5850_00da5850_test.cpp'
+        PassPattern = 'PASS_00da5850'
+    }
+    [pscustomobject]@{
+        Address = '00dcf480'
+        Module = '_gapscan'
+        Source = '00/dc/gapscan_sub00dcf480_00dcf480.cpp'
+        TestSource = '00/dc/gapscan_sub00dcf480_00dcf480_test.cpp'
+        PassPattern = 'PASS_00dcf480'
+    }
+    [pscustomobject]@{
+        Address = '00ddeea0'
+        Module = '_gapscan'
+        Source = '00/dd/gapscan_sub00ddeea0_00ddeea0.cpp'
+        TestSource = '00/dd/gapscan_sub00ddeea0_00ddeea0_test.cpp'
+        PassPattern = 'PASS_00ddeea0'
+    }
+    [pscustomobject]@{
+        Address = '00e03f30'
+        Module = '_gapscan'
+        Source = '00/e0/gapscan_sub00e03f30_00e03f30.cpp'
+        TestSource = '00/e0/gapscan_sub00e03f30_00e03f30_test.cpp'
+        PassPattern = 'PASS_00e03f30'
+    }
+    [pscustomobject]@{
+        Address = '00e7baf0'
+        Module = '_gapscan'
+        Source = '00/e7/gapscan_sub00e7baf0_00e7baf0.cpp'
+        TestSource = '00/e7/gapscan_sub00e7baf0_00e7baf0_test.cpp'
+        PassPattern = 'PASS_00e7baf0'
+    }
+    [pscustomobject]@{
+        Address = '00e8bec0'
+        Module = '_gapscan'
+        Source = '00/e8/gapscan_sub00e8bec0_00e8bec0.cpp'
+        TestSource = '00/e8/gapscan_sub00e8bec0_00e8bec0_test.cpp'
+        PassPattern = 'PASS_00e8bec0'
+    }
+    [pscustomobject]@{
+        Address = '00e8cb10'
+        Module = '_gapscan'
+        Source = '00/e8/gapscan_sub00e8cb10_00e8cb10.cpp'
+        TestSource = '00/e8/gapscan_sub00e8cb10_00e8cb10_test.cpp'
+        PassPattern = 'PASS_00e8cb10'
+    }
+    [pscustomobject]@{
+        Address = '00e9d7b0'
+        Module = '_gapscan'
+        Source = '00/e9/gapscan_sub00e9d7b0_00e9d7b0.cpp'
+        TestSource = '00/e9/gapscan_sub00e9d7b0_00e9d7b0_test.cpp'
+        PassPattern = 'PASS_00e9d7b0'
+    }
+    [pscustomobject]@{
+        Address = '00e9d990'
+        Module = '_gapscan'
+        Source = '00/e9/gapscan_sub00e9d990_00e9d990.cpp'
+        TestSource = '00/e9/gapscan_sub00e9d990_00e9d990_test.cpp'
+        PassPattern = 'PASS_00e9d990'
+    }
+    [pscustomobject]@{
+        Address = '00eb88c0'
+        Module = '_gapscan'
+        Source = '00/eb/gapscan_sub00eb88c0_00eb88c0.cpp'
+        TestSource = '00/eb/gapscan_sub00eb88c0_00eb88c0_test.cpp'
+        PassPattern = 'PASS_00eb88c0'
+    }
+    [pscustomobject]@{
+        Address = '00f35a90'
+        Module = '_gapscan'
+        Source = '00/f3/gapscan_sub00f35a90_00f35a90.cpp'
+        TestSource = '00/f3/gapscan_sub00f35a90_00f35a90_test.cpp'
+        PassPattern = 'PASS_00f35a90'
     }
 )
 
