@@ -9164,3 +9164,17 @@ and fails loudly if an exported length changes unexpectedly.
 End-to-end exporter validation passed: Ghidra regeneration, 3,584-row discovered-start
 backfill, then five boundary corrections. Corrected parity is 8,059 `MATCH` + 9,976
 `RELOCATION_MATCH`, **35 `DIFFER`**, and 0 missing oracles across 18,070 candidates.
+
+## Round 11 — `009f9ee0 CTexture::CalcByteLength` reaches byte parity
+
+`CalcByteLength` moved from 134 vs 143 bytes to score 0 / `RELOCATION_MATCH` at 143 bytes.
+The retail instruction order proved that the packed `flags04` value is loaded before
+`GetColourDepth()` and kept in `edi` across that call. Materialising `previousFlags` and the
+byte count, then expressing the 28-bit field update explicitly, reproduced retail's
+`add; xor; and; xor` bitfield sequence and its late `push edi`. That left exactly two differing
+bytes: retail multiplies width before height, so flipping the commutative source operands
+closed the match.
+
+Validation: selected candidate gate PASS (including the existing behavior test), independent
+permuter score 0, canonical comparison 8,059 `MATCH` + 9,977 `RELOCATION_MATCH`, **34
+`DIFFER`**, 0 missing oracles, and `purity.py` PASS (no assembly/naked sources).

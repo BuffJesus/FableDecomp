@@ -65,10 +65,13 @@ void CTexturePreallocatedView::CalcByteLength()
 
         CPixelFormatByteLengthView pixelFormat;
         pixelFormat.Initialise(baseDescription.format00);
-        ByteLength +=
+        const fable_u32 previousFlags = flags04;
+        const fable_u32 byteCount =
             pixelFormat.GetColourDepth() *
-            levelDescription.height1C *
-            levelDescription.width18 >>
+            levelDescription.width18 *
+            levelDescription.height1C >>
             3;
+        flags04 = previousFlags ^
+            ((previousFlags ^ (previousFlags + byteCount)) & 0x0FFFFFFF);
     }
 }
