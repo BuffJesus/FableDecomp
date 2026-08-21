@@ -273,6 +273,11 @@ inline layers, including exact vertex allocation and indices. The all-enabled
 unit fixture produces the retail shared-buffer contract of 289 vertices and
 1,087 strip indices (`polygonCount + 2`). This establishes the native topology
 primitive needed by the foreground writer; it is no longer Python-only proof.
+The native `buildThemeContributions` primitive now covers the preceding stage
+as well: unavailable-theme suppression, truncating integer renormalization,
+independent base/cliff merges, the strict threshold, and retail slot/direction
+ordering. Unit fixtures include the donor's shared spooky-cliff merge and a
+suppressed-slot `100:55 -> 164:90` normalization case.
 
 ## Next terrain step
 
