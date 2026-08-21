@@ -266,6 +266,14 @@ layer, matching retail's full-patch shared-index-buffer selection. Thus all
 24 patch/material membership masks are exact; feeding the 23 non-shared masks
 through the strip oracle reproduces all 6,980 inline indices byte-for-byte.
 
+The recovered strip builder has also been ported into FableForge's native
+terrain library as `buildLayerTopology`. Its retail-chunk verification path
+reconstructs masks from decoded layer geometry and independently matches 23/23
+inline layers, including exact vertex allocation and indices. The all-enabled
+unit fixture produces the retail shared-buffer contract of 289 vertices and
+1,087 strip indices (`polygonCount + 2`). This establishes the native topology
+primitive needed by the foreground writer; it is no longer Python-only proof.
+
 ## Next terrain step
 
 The corrected ForgeTest WLD at `(2784,2560)` automatically resolves
