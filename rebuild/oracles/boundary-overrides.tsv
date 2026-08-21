@@ -1,0 +1,6 @@
+address	exported_length	corrected_length	reason
+00594f36	38	31	ret 4 at +0x1b; exported suffix is the next function
+0059aa86	46	38	ret 8 at +0x22; exported suffix is the next accessor
+00744f80	17	16	tail jmp ends at +0x10; exported final 0x56 is the next prologue
+00891310	14	11	tail jmp ends at +0x0b; exported suffix is int3 alignment
+00891bb0	20	17	tail jmp ends at +0x11; exported suffix is int3 alignment

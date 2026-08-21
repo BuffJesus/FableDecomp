@@ -103,6 +103,17 @@ try {
             Write-Output "  backfill: $_"
         }
     }
+
+    # Some Ghidra function bodies include trailing alignment or the beginning of the next
+    # function. Apply only reviewed, length-guarded corrections; never run the generic tail
+    # heuristic over the whole ledger (0059aa64 is a legitimate counterexample).
+    $boundaryFixups = Join-Path $root 'tools\decomp_pipeline\apply_oracle_boundary_overrides.py'
+    if ((Test-Path -LiteralPath $boundaryFixups) -and (Test-Path -LiteralPath $python)) {
+        & $python $boundaryFixups $output '--write'
+        if ($LASTEXITCODE -ne 0) {
+            throw 'oracle boundary override validation failed'
+        }
+    }
 }
 finally {
     Remove-Item -LiteralPath $addressFile -Force -ErrorAction SilentlyContinue

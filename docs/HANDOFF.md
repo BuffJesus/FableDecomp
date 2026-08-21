@@ -9141,3 +9141,26 @@ reports from deleting valid work.
 Validated after pruning: `CANDIDATE_BUILD PASS objects=18070`; parity comparison reports
 8,059 `MATCH` + 9,971 `RELOCATION_MATCH`, 40 `DIFFER`, and **0 `oracle_missing`**. The catalog
 now counts only candidates that can be checked against an authoritative retail function start.
+
+## Round 10 — five false DIFFERs were oracle boundary errors
+
+Five of the 40 remaining `DIFFER` rows were byte-exact reconstructions compared against
+misbounded retail bodies. `diffcat.py` showed no real differing bytes in their overlapping
+spans; the exported suffixes were alignment or the next function:
+
+- `00594f36` 38 -> 31 (next function after `ret 4`)
+- `0059aa86` 46 -> 38 (next accessor after `ret 8`)
+- `00744f80` 17 -> 16 (next prologue byte after a tail jump)
+- `00891310` 14 -> 11 (three `int3` alignment bytes after a tail jump)
+- `00891bb0` 20 -> 17 (three `int3` alignment bytes after a tail jump)
+
+The generic `trim_tailjmp.py` is NOT safe to run blindly over the ledger: its dry run also
+shortened `0059aa64`, which is already a legitimate 34-byte relocation match whose final
+`ret` belongs to the reconstructed symbol. The durable fix is therefore an explicit reviewed
+ledger, `rebuild/oracles/boundary-overrides.tsv`, applied by the length-guarded
+`apply_oracle_boundary_overrides.py`. The scheduled Ghidra exporter invokes it after backfill
+and fails loudly if an exported length changes unexpectedly.
+
+End-to-end exporter validation passed: Ghidra regeneration, 3,584-row discovered-start
+backfill, then five boundary corrections. Corrected parity is 8,059 `MATCH` + 9,976
+`RELOCATION_MATCH`, **35 `DIFFER`**, and 0 missing oracles across 18,070 candidates.
