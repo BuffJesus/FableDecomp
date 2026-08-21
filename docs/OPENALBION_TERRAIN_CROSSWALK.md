@@ -288,6 +288,15 @@ foreground bodies is byte-identical 4/4 while the same inspection run retains
 the remaining integration work is assembling newly generated passes and vertex
 attributes into these proven structures.
 
+The native heightfield baker now mutates those structured foreground objects
+and serializes them through the codec instead of patching anonymous body
+offsets. Re-running the neighbour-aware donor bake through this path produces
+the same 132,632-byte chunk as the former implementation, SHA-256
+`F7F5649E8F0E84F226B20D3150AFDF4E1C9EC58D57EA4CD85C095C879A36C067`.
+All four compressed foreground spans are unchanged, topology remains 23/23,
+and frame round-trip remains 4/4. The purity refactor therefore introduces no
+artifact drift while making generated-layer integration field-structured.
+
 ## Next terrain step
 
 The corrected ForgeTest WLD at `(2784,2560)` automatically resolves
