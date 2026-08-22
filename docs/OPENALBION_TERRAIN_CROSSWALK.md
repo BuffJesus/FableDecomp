@@ -300,6 +300,28 @@ The structured artifact also passes `stbvalidate` S1, S2 (26/26), S7 (4/4),
 D1 frame-count parity, and D2 quadtree-shape parity against the retail chunk;
 only the donor's existing S3 alignment warning remains.
 
+## Fully generated ForgeTest candidate
+
+The native stages are now integrated behind explicit `--rebuild-topology` and
+`--theme-material` inputs. Rebuilding the retail donor from its LEV regenerates
+every foreground pass yet produces the same chunk as the earlier donor-topology
+path, SHA-256
+`F7F5649E8F0E84F226B20D3150AFDF4E1C9EC58D57EA4CD85C095C879A36C067`;
+the inline streams remain 6,980/6,980 exact. This proves the integrated path is
+not silently retaining donor layer masks or indices.
+
+Applying it to the authored ForgeTest LEV creates 27 slope/theme-driven layers
+(rather than the donor's 24), all 27/27 topology-exact and 4/4 frame-roundtrip
+exact. The fixed allocation requires normal `clearBits=0xff`; the four generated
+foreground frames total 21,677 bytes within the 22,077-byte donor budget. The
+132,632-byte chunk is
+`tmp/ForgeTest_chunk_generated_topology.bin`, SHA-256
+`0854EB780FCF609D181A24DEA8EE0144E2114F98DBA678A990A596FCE977BB4A`.
+It passes S1, S2 (26/26), S7 (4/4), D1, and D2. The offline 425-entry container
+is `tmp/FinalAlbion_RT_generated_topology.stb`, SHA-256
+`2DA87031579B6B59BD55DE45F1E464569D0FE94C52908D37537036DFDD2F273B`;
+re-extraction reproduces the chunk hash exactly. Neither artifact is deployed.
+
 ## Next terrain step
 
 The corrected ForgeTest WLD at `(2784,2560)` automatically resolves
