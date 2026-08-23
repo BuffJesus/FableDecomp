@@ -888,12 +888,49 @@ Exact permutation parity requires original authoring order or an instrumented ge
 ### 11.7 Cache-group and file-block constants recovered
 
 `CEngineLocalDetailGenerator::BuildThemes` (`0x02D29100`) fills the CacheGroupInfo array at
-`generator+0x38`. It repeatedly takes the lowest fade end among collection types whose CacheGroup
-is still -1, sets `cutoff = lowest - 16.0`, assigns every unassigned type at or above the cutoff,
-ORs their primitive masks, and appends `CCacheGroup{cutoff, lowest, mask}`. Consumers use +4
-(`lowest`, the group fade) and +8 (`mask`). The observed five-row stock table is derived data, not
+`generator+0x38`. It repeatedly takes the highest fade end among collection types whose CacheGroup
+is still -1, sets `cutoff = highest - 16.0`, assigns every unassigned type at or above the cutoff,
+ORs their primitive masks, and appends `CCacheGroup{cutoff, highest, mask}`. Consumers use +4
+(`highest`, the group fade) and +8 (`mask`). The observed five-row stock table is derived data, not
 a generator-def constant.
 
 The same audit closes the local-detail maximum file-block-size assumption: the generator
 constructor writes `0x8000` directly to `generator+0x80` at `0x02D27014`. The writer's 32768 value
 is now disassembly-proven as well as independently bracketed by retail node sizes.
+
+`CObjectCacheGroupCollection::GetSaveSize` (`0x02E3D7A0`) is also recovered. It serializes each
+collection into an empty temporary stream, omits the group payload's leading u32 collection count,
+and returns `streamLength + 0x28`. Given Forge's complete uncompressed payload, the exact formula is
+`payloadSize + 0x24`; the former `+0x28` proxy overestimated every group by four bytes.
+
+### 11.8 Quadtree node sphere fold recovered and gated
+
+`CQuadTreeElement::CalcBoundingSphereAndFadeDistanceFromChildren` (`0x02E39420`) clears a temporary
+sphere array, recursively adds non-empty child spheres first, then adds non-empty directly attached
+group spheres, and calls `C3DBoundingSphere::BuildFromSubSpheres` (`0x0338B200`). That callee builds
+the radius-inflated AABB, takes its midpoint, then sets the radius to
+`max(distance(inputCentre, centre) + inputRadius)`.
+
+`tools/localdetail_node_sphere_check.py` independently replays that algorithm from retail headers.
+All **198 / 198** nodes across Darkwood_3, Darkwood_9, Darkwood_Filler_15 and StartOakValeWest match
+within 0.00035; worst absolute component error is 0.000231715, consistent with Python/double versus
+retail x87 evaluation. The Forge writer now uses the recovered child-first order and its x87-like
+midpoint/magnitude helpers. It also no longer overwrites the calculated root object sphere with the
+caller's map-wide seed.
+
+### 11.9 `PeekPolyCount` and the subsection leaf threshold recovered
+
+`CLocalDetailObjectCollectionType::PeekPolyCount` (`0x02EE1C40`) returns the dword at collection
+type `+0x10`. The generator-side constructor initializes it at `0x02E4B31C..0x02E4B4E9` to
+`1 + C3DMesh2::GetTriangleCount()`. `GetTriangleCount` (`0x03365370`) sums
+`C3DPrimitive2::GetTriangleCount()` for the loaded mesh's primitives; the latter is the primitive
+dword at `+0x64` (`0x02E8E4B0`).
+
+Forge now reads the compiled primitive headers from the first mesh LOD, sums their triangle counts,
+adds one, and uses the engine formula `T = min(4, max(1, 128 / PeekPolyCount))`. If the mesh payload
+cannot supply a polygon count, it emits the proven-legal null subsection table instead of assuming
+`T=4`. `MESH_GRASSBLADES_02` has four triangles, hence `PeekPolyCount=5` and `T=4`.
+
+The backend-only v34 re-bake is SHA-256 identical to v33, as expected for this grass mesh. Its
+structural gate reports 21 nodes, 16 groups, 24 primitives, 610 instances, batch maximum 32, all 24
+subsection tables present, and `OK`. No packaging or visual/runtime check was performed.

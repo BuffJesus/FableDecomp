@@ -9622,12 +9622,15 @@ can be deleted.
 
 ## Where to pick up
 
-1. The permutation inside the ported worker (`0x02EDFB20`) — the only thing left between the
-   subsection port and byte parity. See section 11.5 of
-   `docs/FORGETEST64_DARK_TERRAIN_AND_FOLIAGE.md` for what is settled and must not be re-opened.
-2. Then, or independently, RUN v33 — both today's terrain fix and the conformant foliage are in it.
-   Copy the FSE log into `runtime_evidence\<stage>\` first; it is single-attach with no rotation.
-3. A small correction worth making when convenient: section 7's "black fraction" metric is the L1
+1. Continue backend parity work. Do not tune the subsection permutation against baked arrays:
+   section 11.6 proves that replay applies a second permutation. Exact permutation parity needs
+   original authoring order or an instrumented generator.
+2. Extend the remaining writer/file-block byte gates against retail. The quadtree node sphere fold
+   is now recovered and gated on all 198 nodes in the four-map oracle; use
+   `tools/localdetail_node_sphere_check.py` as the regression gate.
+3. Visual/runtime checks are explicitly deferred until the backend is complete. Do not package,
+   install, launch, or ask for an in-game check yet.
+4. A small correction worth making when convenient: section 7's "black fraction" metric is the L1
    form `w = 1 - |u| - |v|` (4.52%); the Euclidean form reads 0.00% and would look like a false
    regression to the next person.
 
@@ -9638,5 +9641,17 @@ needs original authoring order or an instrumented generator.
 
 Further offline closures: type-2 ZSpriteBatch Save is `44 + count*84` bytes after its tag and the
 four-map parser now walks 527/527 groups (commit `c24320d`). CacheGroupInfo is built by
-`BuildThemes` (`0x02D29100`) from collection fade ends in 16-unit groups; the local-detail file
+`BuildThemes` (`0x02D29100`) by descending collection fade ends in 16-unit groups; the local-detail file
 block maximum is constructor literal `0x8000` at `0x02D27014`, not an assumption.
+
+Latest offline closure: `BuildFromSubSpheres` (`0x0338B200`) and the caller's child-first contributor
+sequence are ported. The retail gate matches 198/198 node spheres within 0.00035 (worst
+0.000231715). Forge unit tests pass; the direction-mask fixture gate skips when its environment
+fixture list is unset. No visual/runtime checks were performed.
+
+`PeekPolyCount` is also closed: collection `+0x10` is initialized to one plus the loaded mesh's
+summed primitive triangle count. Forge reads that from the first compiled mesh LOD and derives the
+subsection threshold with the retail formula; unknown geometry produces no table rather than an
+assumed threshold. ForgeTest grass is 4 triangles -> polyCount 5 -> T=4. Backend-only v34 is
+SHA-256 identical to v33 and passes `localdetail_verify.py` (21 nodes / 16 groups / 24 primitives /
+610 instances / max batch 32 / OK). No visual checks were performed.

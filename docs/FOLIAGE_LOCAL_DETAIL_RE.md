@@ -429,8 +429,11 @@ instances** — which is why our structurally-legal 1-lane table is not itself t
 Superseded from the earlier list: items 3 (type-1 tail) and 4 (instance-array semantics) are now
 CLOSED. Still open:
 
-1. `CObjectCacheGroupCollection::SaveHeader` write path from `0x02E3D6B9`; `SaveContents`
-   `0x02E3D850`; `GetSaveSize` `0x02E3D7A0`.
+1. **CLOSED 2026-08-23:** `GetSaveSize` (`0x02E3D7A0`) serializes each collection into an empty
+   temporary stream (without the payload's leading u32 collection count), then returns its length
+   +0x28. For an already-built uncompressed group payload the exact size is therefore
+   `payloadSize + 0x24`. `SaveContents` (`0x02E3D850`) confirms the leading count and same per-
+   collection serializer.
 2. **CLOSED 2026-08-23:** type-2 `CLocalDetailPrimitiveMeshZSpriteBatch::Save` at `0x02EE2420`
    writes bbox[6], sphere[4], u32 count, then count records of 0x44 bytes, followed by count
    float4 auxiliary records: `44 + count*84` bytes after the primitive tag. The four-map oracle
@@ -444,7 +447,8 @@ CLOSED. Still open:
 6. Byte-exact subsection centres need the true transformed mesh sphere, not `B[i].xyz`
    (current approximation leaves ~0.67 residual).
 7. **CLOSED 2026-08-23:** `CEngineLocalDetailGenerator::BuildThemes` (`0x02D29100`) fills
-   `generator+0x38`. It repeatedly finds the lowest fade end among collection types whose
-   CacheGroup is still -1, sets `cutoff = lowest - 16.0`, assigns every unassigned type at or above
-   that cutoff, ORs their primitive masks, and appends `CCacheGroup{cutoff, lowest, mask}`.
-   Consumers use +4 (`lowest`) and +8 (`mask`).
+   `generator+0x38`. It repeatedly finds the highest fade end among collection types whose
+   CacheGroup is still -1, sets `cutoff = highest - 16.0`, assigns every unassigned type at or above
+   that cutoff, ORs their primitive masks, and appends `CCacheGroup{cutoff, highest, mask}`.
+   Consumers use +4 (`highest`) and +8 (`mask`). This descending pass yields stock ids
+   0..4 = fades 210, 118, 85, 48, 23.
