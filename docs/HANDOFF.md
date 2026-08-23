@@ -9630,3 +9630,8 @@ can be deleted.
 3. A small correction worth making when convenient: section 7's "black fraction" metric is the L1
    form `w = 1 - |u| - |v|` (4.52%); the Euclidean form reads 0.00% and would look like a false
    regression to the next person.
+
+Correction after the pause: do not tune the subsection permutation against the baked replay.
+Retail's arrays are already remapped, so replay applies a second permutation. Section 11.6 records
+the valid range gate: all 8,159 populated lanes reproduce within 0.00035. Exact permutation parity
+needs original authoring order or an instrumented generator.

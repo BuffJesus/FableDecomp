@@ -863,3 +863,21 @@ the port and byte parity.
 lane-to-instance pairing (whenever any instance reproduces a lane it is the one at `startIndex` —
 683 of 683, zero exceptions). The next work is the cell scan order, the LIFO push order and the
 tie-break inside the ported worker (`0x02EDFB20`).
+
+### 11.6 Correction: the baked oracle cannot test the original permutation
+
+The claim above that the remaining float residual proves a permutation defect is **withdrawn**.
+Retail stores A, B, normals and wind after applying the builder remap. Replaying the builder on
+those serialized arrays applies a second permutation. The table has final ranges but no source
+indices from which the original `AddObject` order can be inverted.
+
+The transcription was rechecked at `0x02EE01E1..0x02EE03C1`: mirrored quadrant scan,
+`gridCount[x][y]`, bucket LIFO and the triangular `(i,j)` walk match the port. No code change is
+justified by the double-permuted replay.
+
+`tools/subsection_range_sphere_check.py` instead aggregates each retail lane over its own stored
+`[startIndex,startIndex+count)` range. Across the four-map oracle, all **8,159 / 8,159** populated
+lanes reproduce within 0.00035. Worst absolute errors are X 0.000335501, Y 0.000311292,
+Z 0.000016138 and radius 0.000337709, consistent with Python/double versus retail x87 evaluation.
+The baked evidence proves the integer lanes exactly and the sphere inputs/formula numerically.
+Exact permutation parity requires original authoring order or an instrumented generator.
