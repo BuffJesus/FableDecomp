@@ -9344,3 +9344,101 @@ real terrain normals, 1 fabricated subsection table -> 0, group fade/mask/cacheG
    `BuildSubSectionsAndObjectRemapTable` (`0x02EDF740` outer / `0x02EDFB20` inner) and gate it by
    emitting for a retail batch's instance set and byte-diffing against that batch's retail bytes.
 3. Attach groups to 16x16 leaf nodes rather than one root group (culling granularity, parity).
+
+
+---
+
+# 2026-08-23 (latest) — subsection builder + leaf attachment ported; byte-diff FAILS 0/1524
+
+Continues the same session. Still no runtime test — the game was not launched.
+
+**Read this first: the port does NOT reproduce retail bytes. 0 of 1,524 retail subsection tables
+match, 0.00%.** Scored over `0x00..0x4B` the byte match rate is 70,593/151,012 = **46.75%**, and
+every matching byte is in the integer lanes. The float lanes are 63.2% wrong. The tree *shape* is
+proven; the emitted *bytes* are not. Do not describe this as byte-exact anywhere.
+
+## What changed
+
+Two engine subsystems ported into `D:\Code\FableForge\libs\forgecore\src\stbbake.cpp`
+(uncommitted there, as always), each statement carrying its FableWin VA:
+
+1. **`BuildSubSectionsAndObjectRemapTable`** — public driver `0x02EDF740`, recursive worker
+   `0x02EDFB20`. Grid bin over the XY extent of the sphere **centres**
+   (`N = clamp(ceilToInt(sqrtf(count)),1,8)`), four-corner drain in expanding-L shell order, LIFO
+   per cell, quota `remaining/(4-q)` escalating by `T*4^k`, strict pre-order emission, relative
+   `childOffset`, absolute `startIndex`, per-section sphere = radius-inflated-AABB midpoint with
+   `radius = max(|c_i - centre| + r_i)`. Both bail-outs (`count <= T`, `nonEmpty <= 1`) take the
+   retail-legal null-table path. The instance arrays (`A`, `B`, the three normal lanes) are now
+   written `dst[i] = src[remap[i]]`, matching `BuildFromSourceMeshes 0x02EE17F8`.
+2. **The quadtree + file-block saver** — `buildType0LocalDetailSection` went from one root group to
+   a port of `UpdateDynamicArea 0x02E3F400` (split to 16x16 leaves), the Morton cell sweep
+   `0x02E3DF76`, the attachment rule `0x02E3CB62` (match CacheGroup, `< 64` source objects, else
+   new group pushed on the FRONT), MAX-fade / OR-mask folds `0x02E39420`,
+   `AssignFileBlocks 0x02E3F230`, and the two-pass `SaveTree/SaveFileBlock/SaveSubFileBlocks`
+   with 2048-byte zero-padded block alignment and no padding inside a block. A group's
+   `(fbPos,fbSize)` is now its owning node's.
+
+New FableTLC tooling: `tools/subsection_oracle.py` (retail oracle dumper, imports
+`localdetail_verify.py` and aborts on parser drift), `tools/subsection_bytediff.{py,cpp}` +
+`subsection_bytediff_report.py` (per-record classified byte diff), `tools/subsection_float_solve.cpp`
+(solves the mesh-sphere unknowns from retail bytes, tests the permutation independently).
+`tools/subsection_port_check.{py,cpp}` were committed earlier as `f51fd73`.
+
+## Evidence
+
+- Oracle `tmp/subsection_oracle/oracle.jsonl` — 1,965 type-1 records over Darkwood_3 +
+  StartOakValeWest, 1,524 with a subsection table. **elementCount is NOT a function of
+  ObjectCount** (15 ObjectCounts map to 2+ elementCounts), which is what forced a real spatial port
+  rather than a count table.
+- Byte diff `tmp/subsection_diff/{two,four}.result.tsv`: **0/1524 full matches.** 1524/1524 match
+  the integer lanes; 0/1524 match the floats.
+- **The split is clean.** Under a per-collectionType `T` (the physically correct model) 1516/1524
+  (99.5%) integer lanes match; a single global `T=4` gets 1403/1524 (92.1%). 16 of 17 collection
+  types admit one common `T` and it is only ever **1 or 4** — exactly what
+  `T = min(4, max(1, 128/polyCount))` predicts. collectionType 11 (8 records) admits none.
+- **The permutation is wrong in 36.6% of sections** (430/1175 quadrants place the wrong instance),
+  clustered — 33.1% wrong at `objects<=4` rising monotonically to 51.6% at `<=32`. Binning uses
+  centres only, so this does **not** depend on any unknown: the inputs are fully known and the port
+  still assigns them differently. The integer-lane test structurally cannot detect this.
+- **The mesh radius is now RECOVERED, not guessed.** `count==1` quadrants give
+  `retailRadius / scale` directly; 468/468 records with >=2 samples are explained by one constant
+  per collectionType — ctype 0/1/2/3 = 28.2843 (= 20*sqrt(2)), 7 = 59.9947, 8 = 88.1004,
+  9 = 99.0810, 18 = 143.9263, 19 = 145.9899. The shipped `kAssumedFoliageMeshRadius = 100.0f` is
+  wrong for every sampled collection.
+- Adversarial review could not refute the transcription itself (permutation direction, relative
+  childOffset, pre-order, both rounding helpers, N and the shell walk all re-disassembled and
+  confirmed). It did find that the earlier "1524/1524" headline was obtained by fitting `T` per
+  record, that the R sweep is a tautology (binning never reads the radius), that the remap was
+  never diffed, and that three unrecovered inputs (`R=100`, `T=4`, "sphere centre = placement
+  position") were shipped as concrete values. Full write-up: section 9 of
+  `docs/FORGETEST64_DARK_TERRAIN_AND_FOLIAGE.md`.
+- Regression clean: retail Darkwood_3 still 21/41/394/848/37/13; dirmask retail parity 3/3;
+  section-7 foreground metrics all reproduce (corr(cliffU,nx) 0.9973, black 4.52%); v32 re-bake is
+  byte-identical to v31 (`cmp` clean). Only `forge_bwd_tests` fails — the pre-existing phase-3
+  assert, untouched.
+- Chunk: `work/no_donor_terrain_pack/ForgeTest64_terrain_v31.{chunk,info,common}.bin` — 21 quadtree
+  nodes (1+4+16, retail Darkwood_3's exact 64x64 topology; v30 had 1), 16 groups, 24 primitives,
+  610 instances, all 24 with a builder-emitted table. `localdetail_verify.py`: OK.
+
+## Do next
+
+1. **Fix the permutation.** 36.6% of sections place the wrong instance, and it is fully determined
+   by known inputs (centres only). Suspects, in order: the cell scan order, the LIFO push order,
+   the shell-walk tie-break. The free regression the review named: replay the builder on an oracle
+   row's `B` array — which is already in destination order — and assert `remap` comes back as the
+   **identity**. That test was never run and it is the cheapest signal available.
+2. **Delete `kAssumedFoliageMeshRadius = 100.0f`** and use the radii solved out of retail
+   (`tools/subsection_float_solve.cpp`), after settling whether collectionType is a unique mesh
+   identity — types 4/5/6/10/11 show multiple distinct constants, so probably it is not.
+3. **Model the sphere centre.** `dz` is systematically +0.19..+0.58 per type; the engine uses
+   `objectMatrix.TransformPoint(mesh.boundingSphere.centre)` and the port collapses that to the
+   placement position. This perturbs X and Y, i.e. the bucket indices, i.e. the integer lanes too.
+4. **Recover `PeekPolyCount`** so `T` stops being an assumed 4, and resolve collectionType 11's
+   `T` inconsistency (8 records, a genuine counterexample — do not wave it away).
+5. Read the **x87 control word** live at the bake site before any claim of byte-exact float parity.
+6. Only then re-run `tools/subsection_bytediff.py` and report the number. Accept that element bytes
+   `0x4C..0x4F` (93.2% non-zero in retail, uninitialised stack residue) and group-header byte
+   `0x27` are **not derivable** and will always diff unless copied from a donor.
+7. **Running v31 is still worth doing** and is independent of all of the above — a wrong subsection
+   sphere degrades culling (pop-in / over-draw), it does not stop a draw. Copy the FSE log into
+   `runtime_evidence\<stage>\` FIRST; it is single-attach with no rotation.

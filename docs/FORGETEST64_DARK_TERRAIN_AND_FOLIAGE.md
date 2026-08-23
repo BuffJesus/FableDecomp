@@ -453,3 +453,218 @@ assumptions) and pass.
 - The built-in catalog's CacheGroup for near-mesh types looks off by one (entry 14 carries
   CacheGroup 0 while its fadeStart 118 is CacheGroup 1's fade). The writer honours the palette
   field; the catalog itself needs re-harvesting.
+
+---
+
+## 9. Subsection builder + leaf attachment ported — and the byte-diff FAILS (2026-08-23)
+
+**Headline, stated first: 0 of 1,524 retail subsection tables match. 0.00%.** Over the scored byte
+range `0x00..0x4B` the port reproduces **70,593 / 151,012 = 46.75%** of bytes, and every single
+matching byte is in the integer lanes (`count[4]`, `startIndex[4]`, `childOffset[4]`). The float
+lanes are 80,419 / 127,168 bytes wrong (63.2%). The tree *shape* is right; the emitted *bytes* are
+not. **This port is not done and must not be described as byte-exact.**
+
+| map | retail tables | FULL MATCH | int lanes OK, floats wrong | count OK, int lanes wrong | element count wrong |
+|---|---|---|---|---|---|
+| Darkwood_3 | 37 | **0 (0.00%)** | 37 (100%) | 0 | 0 |
+| StartOakValeWest | 1487 | **0 (0.00%)** | 1487 (100%) | 0 | 0 |
+| ALL | 1524 | **0 (0.00%)** | 1524 (100%) | 0 | 0 |
+
+(The 4-map set adds Darkwood_9's 56 tables: same picture, 0 full matches, 56/56 int-lane.
+Darkwood_Filler_15 contributes no type-1 tables at all.)
+
+### 9.1 What was ported
+
+Two engine subsystems, both transcribed statement-by-statement from the FableWin debug build with
+the source VA carried in a comment on each statement. All of it lives in
+`D:\Code\FableForge\libs\forgecore\src\stbbake.cpp` (declarations in `include\forge\stbbake.hpp`).
+
+**a. The subsection-table builder** — `CLocalDetailPrimitiveRepeatedMesh::BuildSubSectionsAndObjectRemapTable`,
+public driver `0x02EDF740` + recursive worker `0x02EDFB20`.
+
+- It is **not** a geometric quadrant test. It bins the range's instances into an `N x N` grid
+  (`N = clamp(ceilToInt(sqrtf(count)), 1, 8)`) over the XY extent of the bounding-sphere
+  **centres**, then drains that one shared grid from each of the four grid corners
+  (`q&1` mirrors X, `q&2` mirrors Y) in expanding-L shell order, LIFO within a cell.
+- Per-quadrant quota `remaining/(4-q)`, escalating to `T*4^k` when that exceeds `T`; `q==3` takes
+  the remainder.
+- Strict pre-order emission: the element is claimed and the cursor advanced *before* the quadrant
+  loop; `childOffset[q]` is **relative** (elements from this element to the child), `startIndex[q]`
+  is **absolute** in the remap array.
+- Two bail-outs return "no table": `count <= T`, and fewer than two non-empty sections. The driver
+  then leaves the identity remap and emits nothing — the retail-legal null-table path.
+- `ceilToInt` reproduces `0x01CDAB50` (`fistp(x+0.5f)` + bit-compare decrement), `roundToInt`
+  reproduces `0x018C4020` (bare `fistp`, round-half-to-even).
+- Per-section sphere: midpoint of the radius-inflated 3-axis AABB; radius = `max(|c_i - centre| + r_i)`.
+  **Not** a minimal enclosing sphere, and **not** the AABB half-diagonal.
+- Element layout `0x50` bytes, structure-of-arrays:
+  `float centreX[4]@0x00, centreY[4]@0x10, centreZ[4]@0x20, radius[4]@0x30,`
+  `u8 count[4]@0x40, startIndex[4]@0x44, childOffset[4]@0x48, 4 tail bytes @0x4C`.
+- The permutation is applied the way `BuildFromSourceMeshes` (`0x02EE17F8`) applies it:
+  `dst[i] = src[remap[i]]`, i.e. `i` is the **destination** slot, across `A`, `B` and the three
+  landscape-normal lanes. `WindDelay` is genuinely *not* permuted by the engine either
+  (`0x02EDDC70` reads only the already-permuted `+0x4C` array).
+
+**b. The quadtree + file-block writer** — `buildType0LocalDetailSection` was rewritten from
+"one root node, one group, one payload" into a port of the engine's own tree builder and saver:
+`UpdateDynamicArea 0x02E3F400` (split until the cell equals the 16x16 request,
+`half = 1 << HighestSetBitIndex(extent-1)`, quadrant bit0=+X bit1=+Y), the Morton leaf cell sweep
+(`0x02E3DF76`), the attachment rule from `AddObjectsFromLayerElement 0x02E3CB62` (first group in
+the leaf's list with a matching CacheGroup and `< 64` source objects, else a new group **pushed on
+the front**), the MAX-fade / OR-mask folds (`0x02E39420`), `AssignFileBlocks 0x02E3F230` with its
+`+0x40` node-table term and forced root, and the two-pass `SaveTree / SaveFileBlock /
+SaveSubFileBlocks` with 2048-byte zero-padded block alignment and **no padding inside a block**.
+A group's `(fbPos,fbSize)` is now its owning **node's**, with `offIn` pointing at its payload —
+the retail-confirmed form (0 violations in 612 retail groups across 4 maps).
+
+### 9.2 The retail oracle
+
+`tools/subsection_oracle.py` dumps, for every type-1 primitive in a map, the full builder input
+(ObjectCount, maxScale, the `A`/`B` arrays, the normal SoA including pad lanes, the wind bytes) and
+the builder output (elementCount + the raw `elementCount*0x50` table as opaque hex). It does not
+re-derive the grammar: it imports `tools/localdetail_verify.py` and fatally aborts on any counter
+disagreement. Output: `tmp/subsection_oracle/oracle.jsonl` (1,965 records, Darkwood_3 +
+StartOakValeWest) and `oracle_4maps.jsonl` (2,033).
+
+Its decisive result, established before any port existed: **elementCount is not a function of
+ObjectCount** — 15 ObjectCounts map to more than one elementCount over two maps, 16 over four. Any
+implementation that computes the table size from the instance count, or from a hand-made
+count-to-count table, is wrong by construction. That is what forced a real spatial port.
+
+### 9.3 What the adversarial review found
+
+The transcription itself survived attack. Permutation direction, relative `childOffset`, pre-order
+emission, both rounding helpers, `N` and the shell walk were each re-disassembled and could not be
+refuted. The defects are all at the **boundary**, where unrecovered inputs were shipped as concrete
+values, plus two structural weaknesses in the gate that was offered as proof:
+
+- **F1 — `kAssumedFoliageMeshRadius = 100.0f` is fabricated.** The engine's instance radius is
+  `mesh.boundingSphere.radius * scale` (`0x02EE1364..0x02EE1384`); the formula is proven, the
+  100 was chosen so authored scales "land near one world unit". It flows into `radius[4]` and,
+  through the radius-inflated AABB, into all three centre lanes — 64 of every 80 scored bytes.
+- **F2 — `kLocalDetailLeafThreshold = 4` is asserted, not recovered.** Retail computes
+  `T = min(4, max(1, 128/PeekPolyCount()))`; nobody read the mesh's polygon count. Unlike F1 this
+  changes the **integer** lanes: it gates `count > T` and the quota.
+- **F3 — the first byte-diff's evidence was partly vacuous.** The "flat across a three-decade sweep
+  of R" result is a tautology (binning reads only `[s+0]`/`[s+4]`, so the integer lanes are
+  mathematically independent of the radius), and the "1524/1524 integer lanes" headline was
+  obtained by **fitting `T` per record** (1..4, first match wins), not by testing the writer's
+  fixed `T=4`.
+- **F4 — the remap was never diffed.** The oracle's `B` array is already in destination order, so a
+  faithful builder replayed on it must return the identity permutation. That free test was
+  available and was not run.
+- **F5 — sphere centre is taken as the placement position**, but the engine uses
+  `objectMatrix.TransformPoint(mesh.boundingSphere.centre)`. Unlike F1 this perturbs X and Y, i.e.
+  the bucket indices, i.e. the integer lanes.
+- **F6** — a report/comment mismatch: `WindDelay` is documented as permuted, and is not (the
+  behaviour is correct; the claim was not).
+- **F7** — the port evaluates the bucket coordinate in `double` where the engine evaluates in x87
+  extended and never rounds `s.x - boxMinX` to float. Low risk at terrain scale, but a deviation.
+
+### 9.4 What the honest byte-diff then showed
+
+Re-run under `tools/subsection_bytediff.{py,cpp}` + `subsection_bytediff_report.py`
+(results in `tmp/subsection_diff/{two,four}.result.tsv`):
+
+- **The split is clean.** Every retail table's `elementCount` is reproduced, and under a
+  per-collectionType `T` (the physically correct model — `T` is a per-mesh constant)
+  **1516/1524 = 99.5%** of the integer lanes match; a single global `T=4` gets 1403/1524 = 92.1%.
+  16 of 17 collection types admit one common `T`, and it is only ever **1 or 4** — exactly what
+  `T = min(4, max(1, 128/polyCount))` predicts. That is a confirmed prediction, not a fit.
+  The exception is collectionType 11 (8 records), which admits no common `T`.
+- **The mesh radius is now RECOVERED from retail bytes, not guessed.** Any retail quadrant with
+  `count == 1` has a section sphere equal to that instance's sphere, so `retailRadius / scale`
+  solves for the mesh radius directly. Over 1,792 such quadrants, all 468 records with >=2 samples
+  are explained exactly by a single constant `C` (468/468, zero failures). Recovered values:
+  ctype 0/1/2/3 = **28.2843** (= 20*sqrt(2)), 7 = 59.9947, 8 = 88.1004, 9 = 99.0810,
+  18 = 143.9263, 19 = 145.9899. `100.0f` is wrong for every sampled collection.
+- **The permutation is WRONG in ~36% of sections, and the integer-lane test cannot see it.**
+  `count[]`/`startIndex[]`/`childOffset[]` encode section sizes and shape only, never *which*
+  instance landed in *which* slot. Testing identity directly (`retailRadius / C` vs the scale of
+  the instance our `remap` put there, restricted to the 9 collection types with an exactly
+  constant `C`, 1,175 quadrants): **745/1175 correct (63.4%), 430/1175 wrong (36.6%)**. It is
+  clustered, not noise — 33.1% wrong at `objects<=4` rising monotonically to 51.6% at `<=32` —
+  and uniform across collection types (16.7%-45.4%). Binning uses centres only, so this does
+  **not** depend on the unknown radius: the positions are fully known inputs and the port still
+  assigns them differently. This is a defect in the ported worker's cell scan order / LIFO push
+  order / tie-break, reachable and fixable today. Because the instance arrays are written through
+  `remap`, a wrong remap corrupts `A`/`B`/normals too, not just the table.
+
+**So the dominant residual class is ORDER/PERMUTATION — masked by an integer-lane test that
+cannot detect it — plus a sphere class that is now recoverable. The split algorithm is the one
+part that is genuinely clean.**
+
+### 9.5 UNRECOVERED
+
+- **Element tail bytes `0x4C..0x4F`.** Never written by either engine overload; they are
+  uninitialised stack residue memcpy'd out of `0x02EDF740`'s frame. Retail is non-zero in
+  7,405 / 7,948 of them (93.2%; Darkwood_3 36.3%, StartOakValeWest 94.7%, Darkwood_9 15.1%). The
+  port writes zeros. **Not derivable** — a byte-exact writer must copy them from a donor or accept
+  a 4-byte-per-element diff. Likewise group-header byte `0x27` (`0x02E3D5B0` writes only `0x00..0x26`).
+- **Sphere centre offset.** `dz` is systematically positive (mean +0.19 to +0.58 per type) with
+  small `dx`/`dy` scatter, consistent with a mesh sphere centred above the origin and tilted by the
+  landscape normal. Not solved. The port's "centre = placement position" is measurably wrong.
+- **`PeekPolyCount` per collection type**, hence the authoritative `T`. And collectionType 11's
+  `T` inconsistency.
+- **Whether collectionType is a globally unique mesh identity.** Types 4/5/6/10/11 show multiple
+  distinct `C` values, so probably not — this must be settled before the recovered radii can be
+  used as a table.
+- **The x87 control word at bake time.** Both `roundToInt` sites and `ceilToInt`'s `fistp` use the
+  current rounding mode, and every `fdiv`/`fadd` the current precision control. Nothing in the
+  traced path sets it; round-half-to-even / 53-bit is the working assumption, but a D3D device
+  creation elsewhere can set PC=24. Must be settled with a live FPU-CW read before claiming
+  byte-exact float parity.
+- **Max file-block size** = `CEngineLocalDetailGenerator + 0x80`, never traced to a writer. Retail
+  data brackets it to `(30289, 33513]`; `kLocalDetailMaxFileBlockSize = 32768` is a documented
+  assumption. It only decides how a bake *partitions* blocks, never whether it loads.
+- **File-block alignment** measured as 2048 from 27 retail block positions; the constant's
+  initialiser (`fileBlockMgr[0x4C]`) was not traced.
+- **`GetSaveSize` accounting** (`0x017C1EC4` per-collection size) not decoded; the port uses
+  uncompressed payload length + `0x28` as a proxy.
+- **Node bounding sphere.** Only the fade (MAX) and mask (OR) folds of `0x02E39420` are recovered;
+  the float sequence producing the sphere is not. Internal/leaf spheres use a conservative
+  inflated-AABB merge, marked UNRECOVERED in the code — safe for culling, **not** byte-identical.
+- **`NLocalDetailCache::CCacheGroup` layout** and its authoring source. Only `+0x04` = fade and
+  `+0x08` = mask are known (retail: cg1 -> 118.0/5, cg3 -> 48.0/3, cg4 -> 23.0/3). A writer that
+  invents a new CacheGroup id must find this table — **do not fabricate fade/mask pairs**.
+- **`IsValid` polarity** (`0x02E3A730`) for the empty-child delete: inferred from context.
+- **Type-2 `CLocalDetailPrimitiveZSpriteBatch` on-disk layout** — still unrecovered, so any type-1
+  sequenced after a type-2 in the same group is unreachable by any parser we have. Cost zero in
+  the four sampled maps (0 records lost) but the oracle is not provably complete.
+- **A group taking its own file block** exists in code (`0x02E3F292`) but 0 of 612 retail groups
+  exceeded the limit, so that shape has no retail oracle.
+
+### 9.6 What remains for parity
+
+1. **Fix the permutation** (36.6% wrong). Highest consequence and fully determined by known
+   inputs. Diff `remap` against the identity on the oracle rows — the free test F4 named — because
+   retail's `B` array is already in destination order.
+2. **Solve the mesh sphere centre and radius per collection type** from the same oracle
+   (`count==1` quadrants give the radius exactly; the centre needs the transform modelled), then
+   delete `kAssumedFoliageMeshRadius`.
+3. **Recover `PeekPolyCount`** so `T` stops being an assumed 4, and resolve collectionType 11.
+4. **Settle whether collectionType identifies a mesh** before tabulating the recovered radii.
+5. Read the x87 control word live at the bake site.
+6. Only then re-run the byte diff and report the number again. Until steps 1 and 2 land, the
+   correct description of this work is "tree shape proven, bytes not reproduced".
+
+### 9.7 Current artifacts and state
+
+- `work/no_donor_terrain_pack/ForgeTest64_terrain_v31.{chunk,info,common}.bin` — 21 quadtree nodes
+  (1+4+16, the exact topology of retail Darkwood_3's 64x64 map; was 1 node in v30), 16 groups,
+  24 primitives, all 610 instances preserved, **all 24 primitives carry a builder-emitted
+  subsection table** (v30 had 19/20, v29 had 0). One file block at `0xE4000`, 2048-aligned; all 16
+  groups' `(fbPos,fbSize)` identical to their owning node's; every `offIn < fbSize`; zero
+  violations. `tools/localdetail_verify.py` verdict: `OK: structure and engine constraints hold`.
+- `ForgeTest64_terrain_v32.{chunk,info}.bin` — a fresh re-bake from the committed inputs,
+  **byte-identical to v31** (`cmp` clean). The bake is deterministic; no hidden state.
+- Regression: retail Darkwood_3 still reads 21/41/394/848/37/13 exactly; the dirmask retail-parity
+  gate is 3/3 (`4205/4225`, `1089/1089`, `9409/9409`); the section-7 foreground metrics all
+  reproduce (corr(cliffU,nx) 0.9973, corr(cliffV,ny) 0.9893, black 4.52%). The only failing
+  FableForge test is the pre-existing `forge_bwd_tests` phase-3 assert.
+
+**Clarification for section 7's "black fraction".** The documented 4.5% is the **L1** form
+`w = 1 - |u| - |v| <= 0`, which measures 4.52%. The Euclidean form `w = sqrt(1 - u^2 - v^2)` gives
+**0.00%** (0/10404 — every stored (u,v) is inside the unit disc), and the raw-unsigned-byte variant
+gives 9.27%. Section 7 does not name the formula and the three differ by ~2000x at the low end;
+use L1 when re-running that gate.
