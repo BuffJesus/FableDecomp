@@ -763,3 +763,103 @@ determine which scale feeds `CMatrix3x4::Set` versus which is serialised into A 
 
 Current honest standing: **7.03% byte-exact (111/1,580)**, integer lanes 100%, radius lanes exact,
 centre lanes the sole remaining defect, with a named next probe.
+
+
+---
+
+## 11. The probe: TiltToSlope, and why the file cannot carry it (2026-08-23)
+
+Section 10 left a named probe. It is answered, and the answer is a second matrix branch nobody
+had read.
+
+### 11.1 There are TWO object matrices, and the flag is per collection type
+
+`CQuadTreeElement<CLocalDetailCacheMap>::AddObjectsFromLayerElement` (FableWin `0x02E3C5D0`)
+builds each instance's transform in two steps:
+
+1. `0x02E3C6FF` sets the matrix to identity, and `0x02E3C988` fills it through `CMatrix3x4::Set`
+   (`0x02CE96F0`) with a plain scaled Z rotation
+   `[c*s, s*s, 0][-s*s, c*s, 0][0, 0, s]`.
+2. `0x02E3C990-0x02E3C996` tests a layer flag at `+0x18`. **If it is set**, a ground basis is built
+   and post-multiplied in at `0x02E3CAED`:
+   - `x = normalise(worldY x n)` — cross `0x02E3C9F9`, normalise `0x02E3CA1E`
+   - `y = n x x` — cross `0x02E3CA37`, normalise `0x02E3CA5C`
+   - `z = n`, the instance's landscape normal
+
+Then the translation is set (`0x02E3CB5D` -> `0x02D78EA0`), so position is unaffected.
+
+**The tilt cannot survive into the file.** A serialised type-1 instance is only
+`A = (cos*scale, sin*scale, 0, 0)` and `B = (x, y, z, scale)`. Retail's baked subsection spheres
+were therefore computed from a transform the baked file no longer carries, which is why no
+reconstruction from A and B alone could ever reproduce them.
+
+### 11.2 Measured
+
+Over 1,855 single-instance leaf lanes (where a lane's sphere must be exactly one instance's):
+
+| model | lanes reproduced |
+|---|---|
+| flat only | 683 (36.8%) |
+| tilted only | 1,242 (67.0%) |
+| both agree (flat ground) | 70 (3.8%) |
+| **either** | **1,855 (100.0%)** |
+| neither | **0** |
+
+And the choice is **consistent per collection type** — every type votes unanimously (e.g.
+StartOakValeWest type 18: 0 flat / 273 tilted; type 6: 180 flat / 0 tilted), with exactly one
+anomalous lane in 1,855. Tilted in StartOakValeWest: types 0-3 (grass blades), 7 (dandelion),
+9 (bramble), 10, 18 and 19 (bracken). Flat: 4, 5, 6, 8, 11, 12, 13, and every sampled Darkwood
+type.
+
+### 11.3 Independent corroboration
+
+Both external reimplementations were checked, and they converge on this:
+
+- **OpenAlbion** (`AGENTS.md:980-987`, `local_detail/place.rs:373-410`) had already concluded
+  "**TiltToSlope has no effect on a repeated mesh** — the tilt basis `AddObjectsFromLayerElement`
+  composes into the placement matrix cannot survive into four floats, however many defs set the
+  flag — and grass, bracken and dandelions all set it." Its basis is
+  `u = normalize(Y x n) = (n.z, 0, -n.x)`, `w = normalize(n x u)` — identical to the disassembly.
+  It also **rules out** the placement-jitter family of explanations: its placement position and
+  its serialised position are the same vector, with no snapping and no half-cell offset.
+- **EgoCore** has nothing on local detail (it only unpacks the level WAD), but independently
+  confirms the mesh `Info` split: `MeshParser.h:386-390` reads
+  `BoundingSphereCenter[3], BoundingSphereRadius, BoundingBoxMin[3], BoundingBoxMax[3]`.
+  OpenAlbion's `mesh.rs:115-141` agrees. Three independent sources now.
+
+Caveat recorded: OpenAlbion's citations point at a private decompile absent from its repository,
+so it was treated as a lead, not an oracle — the disassembly above is the evidence.
+
+### 11.4 The quadrant sphere rule, confirmed
+
+`0x02EE0690-0x02EE0A5F`: accumulate an AABB over each member's `centre +/- radius`, take
+`centre = (min + max) / 2` per axis (`0x02EE08E7`, `0x02EE0909`, `0x02EE092B`, all `fdiv 2.0`),
+then `radius = max over members of (|member.centre - centre| + member.radius)` (`fldz`
+`0x02EE0958`, running max `0x02EE0A0D`). For a single member this collapses to that member's own
+sphere, which is what makes the 11.2 test valid. **Our port already implements exactly this** and
+cites the same addresses.
+
+### 11.5 Where the gate stands now
+
+With the tilt applied in the oracle (`tools/subsection_spheres.py` infers it per collection type
+from unambiguous lanes and prints the vote):
+
+| | before section 10 | after 10 | after the tilt |
+|---|---|---|---|
+| tables byte-exact | 0 / 1,524 (0.00%) | 111 / 1,580 (7.03%) | **114 / 1,580 (7.22%)** |
+| float-lane bytes wrong | 63.2% | 35.4% | **25.9%** |
+| integer lanes | 100% | 100% | 100% |
+| element counts wrong | 0 | 0 | 0 |
+
+The split algorithm, the tree links, the leaf threshold, the sphere formula and the sphere inputs
+are now all settled. **The entire remaining residual is the PERMUTATION**: `count[]`,
+`startIndex[]` and `childOffset[]` encode only the sizes and shape of the split, so our worker can
+agree with retail on every integer lane while putting different instances in different quadrants —
+and a multi-member quadrant's sphere then differs. This is the defect the first byte-diff already
+named (wrong instance in ~36% of sections); it is reachable, and it is now the only thing between
+the port and byte parity.
+
+**Do not re-litigate** the mesh sphere, the object matrix, the sphere aggregation rule, or the
+lane-to-instance pairing (whenever any instance reproduces a lane it is the one at `startIndex` —
+683 of 683, zero exceptions). The next work is the cell scan order, the LIFO push order and the
+tie-break inside the ported worker (`0x02EDFB20`).

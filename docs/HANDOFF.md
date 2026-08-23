@@ -9498,3 +9498,62 @@ subsection table, verifier OK).
    then `tools/subsection_spheres.py`, then `bytediff --spheres`, then
    `tools/subsection_bytediff_report.py`.
 3. Only then consider running the game.
+
+
+---
+
+# 2026-08-23 (probe) — TiltToSlope found; residual is now only the permutation
+
+The probe named in the previous section is answered. Full argument:
+`docs/FORGETEST64_DARK_TERRAIN_AND_FOLIAGE.md` section 11.
+
+## What the probe found
+
+`AddObjectsFromLayerElement` (FableWin `0x02E3C5D0`) builds the instance matrix TWICE. First a
+plain scaled Z rotation (`CMatrix3x4::Set` at `0x02E3C988`). Then, if the layer flag at `+0x18` is
+set (`0x02E3C990`), it builds a ground basis — `x = normalise(worldY x n)`, `y = n x x`, `z = n`,
+the landscape normal — and post-multiplies it in at `0x02E3CAED`.
+
+**That tilt cannot survive into the file**: a serialised instance is only
+`A = (cos*scale, sin*scale, 0, 0)` and `B = (x, y, z, scale)`. Retail's baked subsection spheres
+were built from a transform the file no longer carries.
+
+Measured over 1,855 single-instance leaf lanes: flat explains 683, tilted explains 1,242, and
+**together they explain 1,855 — 100.0%, none left over**. The choice is unanimous per collection
+type (one anomalous lane in 1,855).
+
+Corroboration: OpenAlbion reached the same conclusion independently (`AGENTS.md:980-987`,
+`place.rs:373-410`, same basis formula) and rules out placement jitter; EgoCore has nothing on
+local detail but independently confirms the mesh Info sphere/bbox split (`MeshParser.h:386-390`),
+as does OpenAlbion (`mesh.rs:115-141`).
+
+Also confirmed by disassembly (`0x02EE0690-0x02EE0A5F`): a quadrant's sphere is the AABB midpoint
+over members' `centre +/- radius`, with `radius = max(|member.centre - centre| + member.radius)`.
+Our port already implements exactly this.
+
+## Gate
+
+| | start of day | after the mesh sphere | after the tilt |
+|---|---|---|---|
+| tables byte-exact | 0 / 1,524 | 111 / 1,580 (7.03%) | **114 / 1,580 (7.22%)** |
+| float-lane bytes wrong | 63.2% | 35.4% | **25.9%** |
+| integer lanes / element counts | 100% / exact | 100% / exact | 100% / exact |
+
+## Do next — one thing only
+
+**The permutation.** `count[]`, `startIndex[]` and `childOffset[]` encode only the SIZES and shape
+of the split, so the port can match every integer lane while placing different instances in
+different quadrants; a multi-member quadrant's sphere then differs. That is the whole remaining
+residual. Work the cell scan order, the LIFO push order and the tie-break inside the ported worker
+(`0x02EDFB20`).
+
+Settled — do NOT re-open: the mesh bounding sphere source, the object matrix (both branches), the
+quadrant sphere aggregation rule, and the lane-to-instance pairing (whenever any instance
+reproduces a lane it is the one at `startIndex`, 683/683).
+
+Re-run the gate with:
+
+    python tools/mesh_sphere_table.py <graphics.big> tmp/subsection_diff/mesh_spheres.tsv         Darkwood_3=<rec> StartOakValeWest=<rec> Darkwood_9=<rec>
+    python tools/subsection_spheres.py tmp/subsection_oracle/oracle_4maps.jsonl         tmp/subsection_diff/mesh_spheres.tsv tmp/subsection_diff/spheres_tilt.tsv
+    ./tmp/subsection_diff/bytediff2.exe tmp/subsection_diff/spheres_tilt.tsv <out.tsv> --spheres
+    python tools/subsection_bytediff_report.py <out.tsv>
