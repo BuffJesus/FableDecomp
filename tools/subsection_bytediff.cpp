@@ -30,22 +30,31 @@
 namespace {
 struct Row {
     std::string map; long id = 0; int ctype = 0; int n = 0;
-    std::vector<float> b;
+    std::vector<float> b;          // B (x,y,z,scale), or final spheres in sphere mode
+    bool spheresAreFinal = false;
     std::vector<uint8_t> table;
 };
 
-std::vector<Row> load(const char* p) {
+// spheresAreFinal selects the sphere-mode input from
+// tools/subsection_spheres.py: column 5 already holds the engine's own
+// per-instance bounding spheres, built from the referenced mesh's AUTHORED
+// sphere (mesh bank Info origin[0..3]) rather than a swept radius, so
+// nothing is fitted.
+std::vector<Row> load(const char* p, bool spheresAreFinal) {
     std::ifstream in(p);
     if (!in) { std::fprintf(stderr, "cannot open %s\n", p); std::exit(2); }
     std::vector<Row> rows; std::string line;
+    bool first = true;
     while (std::getline(in, line)) {
+        if (!line.empty() && line.back() == '\r') line.pop_back();
+        if (first) { first = false; if (line.rfind("map\t", 0) == 0) continue; }
         if (line.empty()) continue;
         std::istringstream ls(line);
         std::string mp, id, ct, nn, bs, hex;
         std::getline(ls, mp, '\t'); std::getline(ls, id, '\t');
         std::getline(ls, ct, '\t'); std::getline(ls, nn, '\t');
         std::getline(ls, bs, '\t'); std::getline(ls, hex, '\t');
-        Row r; r.map = mp; r.id = std::atol(id.c_str());
+        Row r; r.spheresAreFinal = spheresAreFinal; r.map = mp; r.id = std::atol(id.c_str());
         r.ctype = std::atoi(ct.c_str()); r.n = std::atoi(nn.c_str());
         std::istringstream b(bs); double v;
         while (b >> v) r.b.push_back(float(v));
@@ -76,11 +85,14 @@ Res judge(const Row& r, const std::vector<float>& Rs) {
     for (size_t k = 0; k < elems; ++k)
         for (size_t o = 0x4c; o < 0x50; ++o)
             if (r.table[k * 0x50 + o]) ++best.tailNonZeroRetail;
-    for (float R : Rs) {
+    const std::vector<float> single{1.0f};
+    for (float R : (r.spheresAreFinal ? single : Rs)) {
         std::vector<forge::stbbake::SubsectionSphere> sph;
         sph.reserve(size_t(r.n));
         for (int i = 0; i < r.n; ++i)
-            sph.push_back({r.b[i*4], r.b[i*4+1], r.b[i*4+2], R * r.b[i*4+3]});
+            sph.push_back(r.spheresAreFinal
+                ? forge::stbbake::SubsectionSphere{r.b[i*4], r.b[i*4+1], r.b[i*4+2], r.b[i*4+3]}
+                : forge::stbbake::SubsectionSphere{r.b[i*4], r.b[i*4+1], r.b[i*4+2], R * r.b[i*4+3]});
         for (int T = 1; T <= 4; ++T) {
             forge::stbbake::SubsectionTable t;
             try { t = forge::stbbake::buildSubSectionsAndObjectRemapTable(sph, T); }
@@ -115,8 +127,14 @@ Res judge(const Row& r, const std::vector<float>& Rs) {
 } // namespace
 
 int main(int argc, char** argv) {
-    if (argc < 3) { std::fprintf(stderr, "usage: bytediff <in.tsv> <out.tsv>\n"); return 2; }
-    const auto rows = load(argv[1]);
+    if (argc < 3) {
+        std::fprintf(stderr, "usage: bytediff <in.tsv> <out.tsv> [--spheres]\n");
+        return 2;
+    }
+    bool spheresAreFinal = false;
+    for (int i = 3; i < argc; ++i)
+        if (std::string(argv[i]) == "--spheres") spheresAreFinal = true;
+    const auto rows = load(argv[1], spheresAreFinal);
     std::vector<float> Rs;
     for (int s = 0; s < 13; ++s) Rs.push_back(float(std::pow(10.0, -1.0 + 0.25 * s)));
     // put R=1 first so the T histogram is reported at the canonical radius

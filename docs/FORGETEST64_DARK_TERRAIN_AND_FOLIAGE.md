@@ -668,3 +668,98 @@ part that is genuinely clean.**
 **0.00%** (0/10404 — every stored (u,v) is inside the unit disc), and the raw-unsigned-byte variant
 gives 9.27%. Section 7 does not name the formula and the three differ by ~2000x at the low end;
 use L1 when re-running that gate.
+
+
+---
+
+## 10. The mesh sphere is real data, and the invented radius is gone (2026-08-23, later)
+
+Section 9 reported the ported subsection builder at **0 of 1,524 retail tables byte-exact**, with
+the residual blamed on two "unrecoverable" authoring inputs. One of them was not unrecoverable at
+all, and removing it moves the gate to **111 of 1,580 (7.03%)** with the float-lane byte error
+falling from 63.2% to 35.4%. Integer lanes (count / startIndex / childOffset) stay at 100%.
+
+### 10.1 `kAssumedFoliageMeshRadius = 100.0f` is deleted
+
+The instance sphere the engine feeds the builder is
+`centre = objectMatrix.TransformPoint(mesh.boundingSphere.centre)`,
+`radius = mesh.boundingSphere.radius * scale`. Both mesh values are **authored data in the mesh
+bank**, not derivable and not constant: `MBANK_ALLMESHES` entry Info is `u32 flags` then
+`f32 origin[10]`, where `origin[0..2]` is the sphere centre, `origin[3]` the radius, and
+`origin[4..9]` the bounding box.
+
+Proof that this is the right field, from two independent directions:
+
+| collection | mesh | `origin[3]` | radius recovered from retail's baked bytes |
+|---|---|---|---|
+| SOVW type 0-3 | MESH_GRASSBLADES_01..04 | 28.2843 | 28.2843 |
+| SOVW type 7 | MESH_DANDELIONFLOWERS_01 | 59.9947 | 59.9947 |
+| SOVW type 8 | MESH_POPPY_01 | 88.1004 | 88.1004 |
+| SOVW type 9 | MESH_BRAMBLE_THICK | 99.0810 | 99.0810 |
+| SOVW type 18 | MESH_BRACKEN_FLATBUSH_GREEN_01 | 143.9263 | 143.9263 |
+| SOVW type 19 | MESH_BRACKEN_BUSH_GREEN | 145.9899 | 145.9899 |
+
+The right-hand column was solved out of retail's own subsection spheres (`radius / scale` on
+single-instance quadrants) before anyone looked at the mesh bank. `origin[3]` is stored, not
+derived: the best bounding-box formula reproduces it on 5.3% of the 3,295 compiled meshes.
+
+This also closes a documented `[hypothesis]` in `docs/BIG_MESH_FORMAT.md`: `origin[10]`'s split is
+centre(3) + radius(1) + bboxMin(3) + bboxMax(3), and `bboxMin <= bboxMax` holds on all 3,295.
+
+**Writer consequence.** `forge::foliage::readMeshBoundingSpheres` reads the bank;
+`FoliageType::meshSphere` carries it; `forge stb create-terrain --mesh-bank <graphics.big>` supplies
+it. **With no mesh bank the writer emits no subsection table at all** rather than substituting a
+guess -- a null table is a proven-legal retail configuration.
+
+### 10.2 The object matrix has NO terrain tilt -- disassembly-settled
+
+A tilt-to-landscape-normal model fitted better than flat (51% vs 36% on single-instance quadrants),
+which is exactly the kind of plausible-but-unproven story the project standard exists to stop. The
+generator settles it. `CQuadTreeElement<CLocalDetailCacheMap>::AddObjectsFromLayerElement`
+(`0x02E3C5D0`) builds each instance's matrix and hands it to
+`CObjectCacheGroupCollection::AddObject` (`0x02E3E370`, taking `const CMatrix3x4&`):
+
+- `0x02E3C6FF` sets the matrix to identity;
+- `0x02E3C8BE..0x02E3C988` pushes twelve floats into `CMatrix3x4::Set` (`0x02CE96F0`), and reading
+  the pushes back-to-front gives
+  `[c*s, s*s, 0][-s*s, c*s, 0][0, 0, s]` -- a pure Z rotation scaled uniformly, **no normal, no
+  tilt**;
+- `0x02E3CD5D` then sets the translation via `0x02D78EA0`.
+
+The landscape normal reaches the format only through the separate `LandscapeNormalArray`, which
+`ProcessLightingSW` uses for lighting. The tilt hypothesis is REFUTED; do not revisit it.
+
+### 10.3 What is still wrong -- stated precisely
+
+On single-instance quadrants (where the lane's sphere must be exactly one instance's sphere), with
+the true mesh sphere and the proven matrix:
+
+- radius reproduces **exactly on 74 of 74** sampled lanes;
+- centre reproduces exactly on **27 of 74**; the rest differ in both the XY offset magnitude and its
+  angle;
+- of 37 two-instance records, 13 reproduce both spheres, **0** reproduce them under the swapped
+  lane/instance pairing, and 24 reproduce under neither -- so this is **not** a lane-ordering error;
+- searching the entire 3,295-mesh bank for any mesh that fits every lane of a failing collection
+  finds none, so it is **not** a palette-to-mesh identity error either (where it is one, the search
+  finds the mesh: SOVW type 8 resolves uniquely to MESH_POPPY_01, and Darkwood_9 type 17 to its own
+  palette entry 8099).
+
+The one concrete lead: at `0x02E3C6E8..0x02E3C6F9` the per-instance scale is built as
+`(rand*2-1)*variance + base` and then **multiplied by a further constant** at `0x408BCF0`. If the
+matrix and the serialised `B.w` receive that scale at different points, the mesh-centre offset scales
+by that constant while `radius = meshRadius * B.w` still matches -- which is the exact shape of the
+observed residual (one failing lane had |offset| 0.1396 observed vs 0.1055 predicted, ratio 1.32,
+while other lanes of the same type were exact). **Next probe: read `0x02E3C704..0x02E3C860` and
+determine which scale feeds `CMatrix3x4::Set` versus which is serialised into A and B.**
+
+### 10.4 Gate tooling added
+
+- `tools/mesh_sphere_table.py` -- map/type -> mesh id -> authored sphere, from the palette in the
+  STB common record plus `graphics.big`.
+- `tools/subsection_spheres.py` -- flattens the retail oracle into the engine's own per-instance
+  spheres, so nothing is fitted.
+- `tools/subsection_bytediff.cpp --spheres` -- replays the port over those spheres with **no radius
+  sweep at all** (the previous run swept a radius per record and kept the best, which flattered it).
+
+Current honest standing: **7.03% byte-exact (111/1,580)**, integer lanes 100%, radius lanes exact,
+centre lanes the sole remaining defect, with a named next probe.

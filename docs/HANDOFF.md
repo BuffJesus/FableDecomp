@@ -9442,3 +9442,59 @@ New FableTLC tooling: `tools/subsection_oracle.py` (retail oracle dumper, import
 7. **Running v31 is still worth doing** and is independent of all of the above — a wrong subsection
    sphere degrades culling (pop-in / over-draw), it does not stop a draw. Copy the FSE log into
    `runtime_evidence\<stage>\` FIRST; it is single-attach with no rotation.
+
+
+---
+
+# 2026-08-23 (latest) — foliage subsection spheres: invented constant deleted, 0% -> 7.03%
+
+Continues the same session; still no runtime test, the game was never launched.
+
+Read `docs/FORGETEST64_DARK_TERRAIN_AND_FOLIAGE.md` section 10 for the full argument.
+
+## Headline
+
+The ported subsection builder went from **0 of 1,524** retail tables byte-exact to **111 of 1,580
+(7.03%)**, with float-lane byte error 63.2% -> 35.4% and integer lanes still 100%. The gain came
+from deleting `kAssumedFoliageMeshRadius = 100.0f` and reading the real value.
+
+## What was actually found
+
+1. **The mesh bounding sphere is authored data in the mesh bank.** `MBANK_ALLMESHES` entry Info is
+   `u32 flags` + `f32 origin[10]`: centre(3), radius(1), bboxMin(3), bboxMax(3). Six collections'
+   radii solved out of retail's baked subsection bytes match `origin[3]` exactly (grass 28.2843,
+   dandelion 59.9947, poppy 88.1004, bramble 99.0810, bracken 143.9263 / 145.9899). This also
+   settles the `[hypothesis]` on `origin[10]` in docs/BIG_MESH_FORMAT.md.
+2. **The foliage object matrix has no terrain tilt.** `AddObjectsFromLayerElement` (`0x02E3C5D0`)
+   sets identity at `0x02E3C6FF`, pushes twelve floats into `CMatrix3x4::Set` (`0x02CE96F0`) at
+   `0x02E3C8BE..0x02E3C988` giving `[c*s, s*s, 0][-s*s, c*s, 0][0, 0, s]`, then sets the
+   translation. A tilt-to-normal model FIT BETTER (51% vs 36%) and is nevertheless REFUTED by the
+   disassembly — a good reminder of why the fit-is-not-a-port rule exists.
+3. **The remaining centre error is not ordering and not mesh identity.** Of 37 two-instance
+   records, 13 reproduce, 0 reproduce swapped, 24 reproduce under neither; and no mesh in the
+   3,295-mesh bank fits every lane of a failing collection.
+
+## Writer changes (FableForge, uncommitted as always)
+
+`forge::foliage::readMeshBoundingSpheres` + `FoliageType::meshSphere`; `forge stb create-terrain
+--mesh-bank <graphics.big>`; the subsection sphere is now
+`rotate(meshCentre)*scale + placement`, `meshRadius*scale`. **Without a mesh bank the writer emits
+no subsection table rather than guess** (a null table is proven-legal retail). `forge_tests` updated
+to the new contract and passing; only the pre-existing `forge_bwd_tests` failure remains.
+
+Newest chunk: `work/no_donor_terrain_pack/ForgeTest64_terrain_v33.{chunk,info,common}.bin`
+(16 quadtree nodes, 24 primitives, 610 instances, batch max 32, every primitive with a real
+subsection table, verifier OK).
+
+## Do next
+
+1. **The named probe:** read `0x02E3C704..0x02E3C860` and determine which scale feeds
+   `CMatrix3x4::Set` versus which is serialised into A and B. At `0x02E3C6E8..0x02E3C6F9` the
+   per-instance scale is `(rand*2-1)*variance + base` multiplied by a further constant at
+   `0x408BCF0`; if the matrix and `B.w` get it at different points, the mesh-centre offset scales by
+   that constant while the radius still matches — exactly the observed residual shape.
+2. Re-run the gate after that fix:
+   `python tools/mesh_sphere_table.py <graphics.big> <out.tsv> <map>=<record.bin> ...`
+   then `tools/subsection_spheres.py`, then `bytediff --spheres`, then
+   `tools/subsection_bytediff_report.py`.
+3. Only then consider running the game.
