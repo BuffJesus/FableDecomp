@@ -9635,3 +9635,8 @@ Correction after the pause: do not tune the subsection permutation against the b
 Retail's arrays are already remapped, so replay applies a second permutation. Section 11.6 records
 the valid range gate: all 8,159 populated lanes reproduce within 0.00035. Exact permutation parity
 needs original authoring order or an instrumented generator.
+
+Further offline closures: type-2 ZSpriteBatch Save is `44 + count*84` bytes after its tag and the
+four-map parser now walks 527/527 groups (commit `c24320d`). CacheGroupInfo is built by
+`BuildThemes` (`0x02D29100`) from collection fade ends in 16-unit groups; the local-detail file
+block maximum is constructor literal `0x8000` at `0x02D27014`, not an assumption.

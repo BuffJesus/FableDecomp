@@ -884,3 +884,16 @@ lanes reproduce within 0.00035. Worst absolute errors are X 0.000335501, Y 0.000
 Z 0.000016138 and radius 0.000337709, consistent with Python/double versus retail x87 evaluation.
 The baked evidence proves the integer lanes exactly and the sphere inputs/formula numerically.
 Exact permutation parity requires original authoring order or an instrumented generator.
+
+### 11.7 Cache-group and file-block constants recovered
+
+`CEngineLocalDetailGenerator::BuildThemes` (`0x02D29100`) fills the CacheGroupInfo array at
+`generator+0x38`. It repeatedly takes the lowest fade end among collection types whose CacheGroup
+is still -1, sets `cutoff = lowest - 16.0`, assigns every unassigned type at or above the cutoff,
+ORs their primitive masks, and appends `CCacheGroup{cutoff, lowest, mask}`. Consumers use +4
+(`lowest`, the group fade) and +8 (`mask`). The observed five-row stock table is derived data, not
+a generator-def constant.
+
+The same audit closes the local-detail maximum file-block-size assumption: the generator
+constructor writes `0x8000` directly to `generator+0x80` at `0x02D27014`. The writer's 32768 value
+is now disassembly-proven as well as independently bracketed by retail node sizes.

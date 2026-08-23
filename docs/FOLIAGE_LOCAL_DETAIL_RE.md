@@ -443,6 +443,8 @@ CLOSED. Still open:
    `T`); needs mesh triangle counts out of GBANK.
 6. Byte-exact subsection centres need the true transformed mesh sphere, not `B[i].xyz`
    (current approximation leaves ~0.67 residual).
-7. Provenance of the CacheGroup -> (fade, mask) table: read empirically from 15,418 groups with
-   zero exceptions, engine read proven via `GetCacheGroupInfo`, but the loader that fills
-   `generator+0x38` was not disassembled. Probably a `CEngineLocalDetailGeneratorDef` in game.bin.
+7. **CLOSED 2026-08-23:** `CEngineLocalDetailGenerator::BuildThemes` (`0x02D29100`) fills
+   `generator+0x38`. It repeatedly finds the lowest fade end among collection types whose
+   CacheGroup is still -1, sets `cutoff = lowest - 16.0`, assigns every unassigned type at or above
+   that cutoff, ORs their primitive masks, and appends `CCacheGroup{cutoff, lowest, mask}`.
+   Consumers use +4 (`lowest`) and +8 (`mask`).
