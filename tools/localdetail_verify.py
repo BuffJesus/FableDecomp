@@ -74,7 +74,8 @@ class Reader:
 def decode_contents(payload: bytes, problems: list[str]) -> dict:
     reader = Reader(payload)
     summary = {"collections": [], "primitives": 0, "instances": 0,
-               "batchSizes": [], "withSubsections": 0, "skippedZSprite": 0}
+               "batchSizes": [], "withSubsections": 0, "skippedZSprite": 0,
+               "zsprite": 0}
     collection_count = reader.u32()
     for _ in range(collection_count):
         enabled = reader.u32()
@@ -154,12 +155,22 @@ def decode_contents(payload: bytes, problems: list[str]) -> dict:
                 reader.f32(12)
                 reader.f32()
             elif primitive_type == 2:
-                # CLocalDetailPrimitiveZSpriteBatch. Its on-disk layout is not
-                # recovered yet (docs/FORGETEST64_DARK_TERRAIN_AND_FOLIAGE.md
-                # section 5, open unknown 6), so the rest of this group cannot be
-                # walked. Counted, not reported as a defect.
-                summary["skippedZSprite"] += 1
-                return summary
+                # CLocalDetailPrimitiveMeshZSpriteBatch::Save, 0x02EE2420:
+                # bbox[6], sphere[4], u32 count, then count records made from
+                # source[0x00..0x2f], source+0x30 float, source[0x34..0x43]
+                # (0x44 bytes total), followed by count auxiliary float4s.
+                collection.setdefault("zsprite", 0)
+                collection["zsprite"] += 1
+                summary["zsprite"] += 1
+                reader.f32(6)
+                reader.f32(4)
+                count = reader.u32()
+                summary["instances"] += count
+                for _ in range(count):
+                    reader.f32(12)
+                    reader.f32()
+                    reader.f32(4)
+                reader.f32(count * 4)
             else:
                 problems.append("unknown primitive type %d" % primitive_type)
                 return summary

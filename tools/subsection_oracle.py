@@ -23,11 +23,8 @@ parse_quad_header, parse_group_header) and its own decode_contents is run over
 every payload as a cross-check, so this file cannot silently drift into being a
 second, different parser.  Decompression is tools/lionhead_lz.py.
 
-Type-2 (CLocalDetailPrimitiveZSpriteBatch) has an unrecovered on-disk layout,
-so exactly as in localdetail_verify.py it STOPS the parse of its group.  Such
-groups are counted and reported, never silently dropped: whatever type-1
-primitives preceded the type-2 in that group are emitted, and each emitted
-record carries groupTruncatedByZSprite.
+Type-2 (CLocalDetailPrimitiveMeshZSpriteBatch) is skipped using its exact Save
+grammar so later collections and type-1 primitives in the group remain visible.
 
 Usage
 -----
@@ -63,6 +60,7 @@ def extract_primitives(payload: bytes):
     reader = Reader(payload)
     captured = []
     stats = {"collections": 0, "primitives": 0, "type0": 0, "type1": 0,
+             "type2": 0,
              "truncatedByZSprite": False, "unknownType": None,
              "trailingBytes": None}
     collection_count = reader.u32()
@@ -130,8 +128,17 @@ def extract_primitives(payload: bytes):
                 reader.f32(12)
                 reader.f32()
             elif primitive_type == 2:
-                stats["truncatedByZSprite"] = True
-                return captured, stats
+                # Save @0x02EE2420: bbox[6], sphere[4], count, count*0x44-byte
+                # source records, then count*float4 auxiliary records.
+                stats["type2"] += 1
+                reader.f32(6)
+                reader.f32(4)
+                count = reader.u32()
+                for _ in range(count):
+                    reader.f32(12)
+                    reader.f32()
+                    reader.f32(4)
+                reader.f32(count * 4)
             else:
                 stats["unknownType"] = primitive_type
                 return captured, stats
@@ -170,6 +177,7 @@ def dump_map(name, chunk, record, header_offset, out, totals):
                                              uncompressed)
             totals["groups"] += 1
             captured, stats = extract_primitives(payload)
+            totals["type2"] += stats["type2"]
             drift = cross_check(payload, captured, stats)
             if drift:
                 raise SystemExit("%s group @0x%x: parser drift vs "
@@ -220,7 +228,8 @@ def main():
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
 
-    totals = {"groups": 0, "type1": 0, "withTable": 0, "withoutTable": 0,
+    totals = {"groups": 0, "type1": 0, "type2": 0,
+              "withTable": 0, "withoutTable": 0,
               "unparsable": 0, "groupsTruncatedByZSprite": 0,
               "groupsUnknownType": 0, "pairs": Counter(),
               "objectCounts": Counter(), "noTableCounts": Counter()}
@@ -250,10 +259,10 @@ def main():
 
     print("oracle: %s" % args.out)
     print("groups walked            : %d" % totals["groups"])
-    print("  truncated by ZSprite   : %d (type-2 layout UNRECOVERED; type-1 "
-          "primitives before it were captured)" % totals["groupsTruncatedByZSprite"])
+    print("  truncated by ZSprite   : %d" % totals["groupsTruncatedByZSprite"])
     print("  stopped, unknown type  : %d" % totals["groupsUnknownType"])
     print("type-1 records captured  : %d" % totals["type1"])
+    print("type-2 records skipped   : %d (exact grammar; parsing continued)" % totals["type2"])
     print("  with subsection table  : %d" % totals["withTable"])
     print("  table ABSENT           : %d" % totals["withoutTable"])
     print("  unparsable ObjectCount : %d" % totals["unparsable"])

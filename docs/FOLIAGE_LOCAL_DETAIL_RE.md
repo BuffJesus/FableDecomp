@@ -431,9 +431,10 @@ CLOSED. Still open:
 
 1. `CObjectCacheGroupCollection::SaveHeader` write path from `0x02E3D6B9`; `SaveContents`
    `0x02E3D850`; `GetSaveSize` `0x02E3D7A0`.
-2. Type-2 `CLocalDetailPrimitiveMeshZSpriteBatch::Save` `0x02EE2420` / Load (vtable `+0x24`, ctor
-   `0x02EE36D0`, `BuildFromSourceMeshes 0x02EE2060`). The 92-byte guess mis-sizes it and is the
-   sole cause of 2,406 failed group parses.
+2. **CLOSED 2026-08-23:** type-2 `CLocalDetailPrimitiveMeshZSpriteBatch::Save` at `0x02EE2420`
+   writes bbox[6], sphere[4], u32 count, then count records of 0x44 bytes, followed by count
+   float4 auxiliary records: `44 + count*84` bytes after the primitive tag. The four-map oracle
+   now walks all 527 groups with zero type-2 truncations or unknown primitives.
 3. The 32-vs-255 `ObjectCount` cap contradiction.
 4. Frustum-flag bit semantics inside the traversal (`0x02ECFDFC..0x02ECFE60`); bit `0x40` =
    rejected is proven, the individual plane bits `0x04/0x08/0x10/0x20` are not. Does not affect

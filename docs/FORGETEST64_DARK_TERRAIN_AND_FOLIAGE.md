@@ -271,6 +271,9 @@ A least-squares fit to retail output is an oracle for checking a port, never a s
 6. **Type-2 (ZSpriteBatch) on-disk layout** still unknown; the 92-byte guess mis-sizes it, which is
    the sole cause of 2,406 failed group parses. Type-0-only and type-1-only groups parse with zero
    residue, so no number above is contaminated.
+   **CLOSED 2026-08-23:** Save `0x02EE2420` proves `44 + count*84` bytes after the primitive tag:
+   bbox[6], sphere[4], count, count 0x44-byte source records, then count float4 records. The updated
+   parsers walk all 527 groups in the four-map oracle with zero truncations or unknown primitives.
 7. **`VSHADER_LANDSCAPE_FOREGROUND_BLACKOUT_PASS`** selection condition (last resort only).
 8. **Blend-table runtime texel content** — deliberately deferred; step 1's offline gate is cheaper.
 
