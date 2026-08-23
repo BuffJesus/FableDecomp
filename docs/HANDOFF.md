@@ -9655,3 +9655,12 @@ subsection threshold with the retail formula; unknown geometry produces no table
 assumed threshold. ForgeTest grass is 4 triangles -> polyCount 5 -> T=4. Backend-only v34 is
 SHA-256 identical to v33 and passes `localdetail_verify.py` (21 nodes / 16 groups / 24 primitives /
 610 instances / max batch 32 / OK). No visual checks were performed.
+
+File-block alignment provenance is closed too: `CEngineWorldMap::GetBankFileAlignment`
+(`0x02CCBF30`) delegates to `CBankFile::GetAlignment` (`0x02F989D0`), which returns bank field
+`+0xc0`. The stock FinalAlbion_RT.stb value is 2048; this is an archive property, not a foliage
+constant. Forge's standalone writer still intentionally requires that stock-bank value.
+
+`CQuadTreeElement::IsValid` polarity is closed offline: it returns true for static load info
+(`+0x34 > 0`), any child, or a cache-group collection (`+0x04`), and false only for a completely
+empty node. Forge's authoring-time subtree prune is therefore the native delete-on-false rule.

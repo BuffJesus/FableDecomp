@@ -597,59 +597,54 @@ Re-run under `tools/subsection_bytediff.{py,cpp}` + `subsection_bytediff_report.
 cannot detect it — plus a sphere class that is now recoverable. The split algorithm is the one
 part that is genuinely clean.**
 
-### 9.5 UNRECOVERED
+### 9.5 Historical unknown list (current status annotated)
 
 - **Element tail bytes `0x4C..0x4F`.** Never written by either engine overload; they are
   uninitialised stack residue memcpy'd out of `0x02EDF740`'s frame. Retail is non-zero in
   7,405 / 7,948 of them (93.2%; Darkwood_3 36.3%, StartOakValeWest 94.7%, Darkwood_9 15.1%). The
   port writes zeros. **Not derivable** — a byte-exact writer must copy them from a donor or accept
   a 4-byte-per-element diff. Likewise group-header byte `0x27` (`0x02E3D5B0` writes only `0x00..0x26`).
-- **Sphere centre offset.** `dz` is systematically positive (mean +0.19 to +0.58 per type) with
-  small `dx`/`dy` scatter, consistent with a mesh sphere centred above the origin and tilted by the
-  landscape normal. Not solved. The port's "centre = placement position" is measurably wrong.
-- **`PeekPolyCount` per collection type**, hence the authoritative `T`. And collectionType 11's
-  `T` inconsistency.
-- **Whether collectionType is a globally unique mesh identity.** Types 4/5/6/10/11 show multiple
-  distinct `C` values, so probably not — this must be settled before the recovered radii can be
-  used as a table.
+- **CLOSED in sections 10–11 — sphere centre offset.** The writer transforms the authored mesh
+  bounding-sphere centre by the instance's scaled Z-rotation matrix; it no longer substitutes the
+  placement position.
+- **CLOSED in 11.9 — `PeekPolyCount` per collection type.** It is one plus the loaded mesh's summed
+  primitive triangle count, and the authoritative `T` is derived from it.
+- **CLOSED by palette-to-mesh resolution — collection identity.** A map-local collection type
+  resolves through its palette entry to a dense MBANK_ALLMESHES id; the mesh id, not the local type
+  number, selects sphere and polygon data.
 - **The x87 control word at bake time.** Both `roundToInt` sites and `ceilToInt`'s `fistp` use the
   current rounding mode, and every `fdiv`/`fadd` the current precision control. Nothing in the
   traced path sets it; round-half-to-even / 53-bit is the working assumption, but a D3D device
   creation elsewhere can set PC=24. Must be settled with a live FPU-CW read before claiming
   byte-exact float parity.
-- **Max file-block size** = `CEngineLocalDetailGenerator + 0x80`, never traced to a writer. Retail
-  data brackets it to `(30289, 33513]`; `kLocalDetailMaxFileBlockSize = 32768` is a documented
-  assumption. It only decides how a bake *partitions* blocks, never whether it loads.
-- **File-block alignment** measured as 2048 from 27 retail block positions; the constant's
-  initialiser (`fileBlockMgr[0x4C]`) was not traced.
-- **`GetSaveSize` accounting** (`0x017C1EC4` per-collection size) not decoded; the port uses
-  uncompressed payload length + `0x28` as a proxy.
-- **Node bounding sphere.** Only the fade (MAX) and mask (OR) folds of `0x02E39420` are recovered;
-  the float sequence producing the sphere is not. Internal/leaf spheres use a conservative
-  inflated-AABB merge, marked UNRECOVERED in the code — safe for culling, **not** byte-identical.
-- **`NLocalDetailCache::CCacheGroup` layout** and its authoring source. Only `+0x04` = fade and
-  `+0x08` = mask are known (retail: cg1 -> 118.0/5, cg3 -> 48.0/3, cg4 -> 23.0/3). A writer that
-  invents a new CacheGroup id must find this table — **do not fabricate fade/mask pairs**.
-- **`IsValid` polarity** (`0x02E3A730`) for the empty-child delete: inferred from context.
-- **Type-2 `CLocalDetailPrimitiveZSpriteBatch` on-disk layout** — still unrecovered, so any type-1
-  sequenced after a type-2 in the same group is unreachable by any parser we have. Cost zero in
-  the four sampled maps (0 records lost) but the oracle is not provably complete.
+- **CLOSED in 11.7 — max file-block size.** The generator constructor writes the literal `0x8000`
+  to `CEngineLocalDetailGenerator+0x80` at `0x02D27014`.
+- **CLOSED in 11.10 — file-block alignment** is the enclosing bank's `CBankFile+0xc0` property;
+  stock FinalAlbion_RT.stb supplies 2048.
+- **CLOSED in 11.7 — `GetSaveSize` accounting.** For a complete uncompressed group payload the
+  exact estimate is `payloadSize + 0x24`.
+- **CLOSED in 11.8 — node bounding sphere.** Fade, mask, contributor order, AABB midpoint and
+  containing-radius folds are recovered and match all 198 retail nodes within 0.00035.
+- **CLOSED in 11.7 — `NLocalDetailCache::CCacheGroup` authoring.** `BuildThemes` derives the groups
+  globally from fade ends in descending 16-unit bands and ORs their primitive masks.
+- **CLOSED — `IsValid` polarity** (`0x02E3A730`). It returns true for static load info, any child,
+  or a local cache-group collection, and false only for a completely empty node. Therefore
+  UpdateDynamicArea's delete-on-false branch prunes empty children exactly as Forge does.
+- **CLOSED — type-2 `CLocalDetailPrimitiveZSpriteBatch` on-disk layout** is `44 + count*84` after
+  its primitive tag. The four-map parser walks 527/527 groups with no unknown primitive types.
 - **A group taking its own file block** exists in code (`0x02E3F292`) but 0 of 612 retail groups
   exceeded the limit, so that shape has no retail oracle.
 
-### 9.6 What remains for parity
+### 9.6 What remains for parity (corrected)
 
-1. **Fix the permutation** (36.6% wrong). Highest consequence and fully determined by known
-   inputs. Diff `remap` against the identity on the oracle rows — the free test F4 named — because
-   retail's `B` array is already in destination order.
-2. **Solve the mesh sphere centre and radius per collection type** from the same oracle
-   (`count==1` quadrants give the radius exactly; the centre needs the transform modelled), then
-   delete `kAssumedFoliageMeshRadius`.
-3. **Recover `PeekPolyCount`** so `T` stops being an assumed 4, and resolve collectionType 11.
-4. **Settle whether collectionType identifies a mesh** before tabulating the recovered radii.
-5. Read the x87 control word live at the bake site.
-6. Only then re-run the byte diff and report the number again. Until steps 1 and 2 land, the
-   correct description of this work is "tree shape proven, bytes not reproduced".
+1. Settle the x87 control word at bake time before claiming exact float-byte parity.
+2. Obtain or synthesize an oracle for a group large enough to take its own file block.
+3. Accept that subsection element tail bytes `0x4c..0x4f` and group-header byte `0x27` are
+   uninitialized native residue; deterministic Forge output intentionally writes zero there.
+
+The earlier permutation defect claim is withdrawn by section 11.6: retail arrays are already
+remapped, so replaying the builder applies a second permutation. The valid stored-range gate passes
+all 8,159 populated lanes.
 
 ### 9.7 Current artifacts and state
 
@@ -934,3 +929,12 @@ cannot supply a polygon count, it emits the proven-legal null subsection table i
 The backend-only v34 re-bake is SHA-256 identical to v33, as expected for this grass mesh. Its
 structural gate reports 21 nodes, 16 groups, 24 primitives, 610 instances, batch maximum 32, all 24
 subsection tables present, and `OK`. No packaging or visual/runtime check was performed.
+
+### 11.10 File-block alignment provenance
+
+The 2048-byte alignment is no longer merely a 27-block observation. Native terrain save paths call
+`CEngineWorldMap::GetBankFileAlignment` (`0x02CCBF30`), which delegates through the bank object at
+world-map `+0x4c` to `CBankFile::GetAlignment` (`0x02F989D0`). That accessor returns the archive
+field at `CBankFile+0xc0`. Thus alignment is a bank property; retail FinalAlbion_RT.stb supplies
+2048. The standalone Forge terrain writer now describes and diagnoses its 2048 requirement in
+those terms rather than presenting it as a local-detail constant.
