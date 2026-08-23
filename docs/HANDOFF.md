@@ -9557,3 +9557,76 @@ Re-run the gate with:
     python tools/subsection_spheres.py tmp/subsection_oracle/oracle_4maps.jsonl         tmp/subsection_diff/mesh_spheres.tsv tmp/subsection_diff/spheres_tilt.tsv
     ./tmp/subsection_diff/bytediff2.exe tmp/subsection_diff/spheres_tilt.tsv <out.tsv> --spheres
     python tools/subsection_bytediff_report.py <out.tsv>
+
+
+---
+
+# 2026-08-23 — SESSION PAUSE: state of both worktrees
+
+## FableTLC (this repo) — committed
+
+Four commits today, all scoped to the files each touched:
+
+- `8e29b36` terrain: BuildMapDirMask ported into the bakers (docs)
+- `afc7ecb` foliage: type-1 instance cap resolved, writer fixed, `tools/localdetail_verify.py`
+- `e576b3c` subsection-builder port recorded with its failing byte-diff (workflow output)
+- `3515178` the real mesh sphere read, assumed radius deleted
+- `be3ed90` TiltToSlope found; residual narrowed to the permutation
+
+New tools, all in `tools/`: `localdetail_verify.py`, `subsection_oracle.py`,
+`subsection_spheres.py`, `mesh_sphere_table.py`, `subsection_bytediff.{py,cpp}`,
+`subsection_bytediff_report.py`, `subsection_float_solve.cpp`.
+
+Working tree still carries a large set of PRE-EXISTING modified files from earlier sessions
+(`rebuild/`, `lift/`, `ghidra_out/`, `README.md`, ...). Those are NOT from today and were
+deliberately left alone — do not sweep them into a future commit without reviewing them.
+
+## FableForge (`D:\Code\FableForge`) — UNCOMMITTED, as that worktree always is
+
+Everything below is uncommitted there. If that tree is ever reset, today's engine work is lost;
+this is the list to re-apply from.
+
+`libs/forgecore/include/forge/stbbake.hpp` + `src/stbbake.cpp`
+- `buildMapDirMask`, `packDirMaskByte`, `mapNormal`, `packMapNormal`, `quantizeEngineHeight`,
+  `clampedHeightSampler` — the terrain direction-mask / PeekMapNormal ports.
+- `buildLayeredForeground`, `buildSingleMaterialForeground`, `buildBackgroundPatchRect` use them;
+  the invented `0.45f` normal damping is deleted.
+- Type-1 foliage: <=32-instance batches (`kRepeatedMeshMaxBatch`), whole-array SoA
+  `LandscapeNormalArray` with `0xCDCDCDCD` pad, group fade/mask/CacheGroup from the
+  `GetCacheGroupInfo` table, collection EBOOL = NeedsRenderUpdate (0 for type-1).
+- `buildSubSectionsAndObjectRemapTable` + `serializeSubsectionElements` — the ported subsection
+  builder. `kAssumedFoliageMeshRadius` is DELETED; spheres come from the mesh bank.
+- `buildTerrainChunk64` takes a `meshBank` path; with no bank it emits NO subsection table.
+
+`libs/forgecore/include/forge/foliage.hpp` + `src/foliage.cpp`
+- `MeshSphere`, `FoliageType::meshSphere`, `readMeshBoundingSpheres`.
+
+`apps/forge/main.cpp`
+- `forge stb create-terrain ... [--mesh-bank <graphics.big>]`; the `--rebuild-direction-mask`
+  lambdas delegate to the shared ports.
+
+`tests/` — `test_dirmask.cpp` (new, registered in CMakeLists), `fixtures_dirmask_cases.example.tsv`
+(new, machine-specific absolute paths), and `test_formats.cpp` updated where it encoded the old
+(disproven) foliage contract.
+
+Test state: `forge_tests`, `forge_dirmask_tests` and the rest pass; **`forge_bwd_tests` fails for a
+pre-existing unrelated reason** (phase-3 text->bwd compile, region slot 141 ForgeTest64_Region) —
+confirmed by stashing today's changes.
+
+## Chunks produced today
+
+`work/no_donor_terrain_pack/ForgeTest64_terrain_v{26..33}.*`. **v33 is the current one**
+(`--mesh-bank`, real subsection tables, 16 quadtree nodes, 24 primitives, 610 instances, batch max
+32, verifier OK). v32 is a byte-identical duplicate of v31 made during a reproducibility check and
+can be deleted.
+
+## Where to pick up
+
+1. The permutation inside the ported worker (`0x02EDFB20`) — the only thing left between the
+   subsection port and byte parity. See section 11.5 of
+   `docs/FORGETEST64_DARK_TERRAIN_AND_FOLIAGE.md` for what is settled and must not be re-opened.
+2. Then, or independently, RUN v33 — both today's terrain fix and the conformant foliage are in it.
+   Copy the FSE log into `runtime_evidence\<stage>\` first; it is single-attach with no rotation.
+3. A small correction worth making when convenient: section 7's "black fraction" metric is the L1
+   form `w = 1 - |u| - |v|` (4.52%); the Euclidean form reads 0.00% and would look like a false
+   regression to the next person.
