@@ -1401,3 +1401,391 @@ relocation-masked/UNKNOWN. (2) UpdateFromEventPackageSet's world forward is `0x0
 `0x0049E0B0`. (3) the package/event loop accessors are structural GetCount/GetAt but engine_api.tsv only
 BSim-mislabels them (no TSV name confirms). Raw-poking +0x2662 without InitialiseAsLocal storing +0x2678 can
 CTD (forwarder null-deref) — enable via InitialiseAsLocal, not a bare poke.
+
+## Map origins are 32-aligned across all 398 retail maps (2026-08-21)
+
+**Claim.** Every shipped `FinalAlbion` map origin is a multiple of 32 in both axes.
+Measured over all 398 maps via `forge world inspect` on pristine retail
+`FinalAlbion.wld`/`.bwd`: **0 off-grid at mod-32, 0 off-grid at mod-16.**
+
+**Consequence for custom levels.** `ForgeTest64` had been registered at
+`(3328, 2296)`; `2296 % 32 = 24`, `2296 % 16 = 8`. Retargeting the donor terrain
+chunk to an off-grid origin slides every 16-cell landscape patch off the patch
+grid. Measured with the same LEV and same donor chunk, origin the only variable
+(`forge stb foregroundinfo --verify-topology`):
+
+| origin | donor→target shift | topology exact |
+|---|---|---|
+| (3328, 2296) | dy = −264 (not a multiple of 16) | 25/105 |
+| (3328, 2304) | dy = −256 (16×16) | 105/105 |
+
+Control: the untouched donor chunk scores 105/105, so the degradation is caused by
+the off-grid retarget, not inherited from the donor.
+
+**Open question, not a claim.** `CEngineLandscapeMap::OpenStaticMap` (`0x00BDD0E0`)
+faults at `0xBDD1D3` on a landscape-block-header allocation size (`field_04` at
+`this+0x28`). An origin that breaks the patch grid is a *plausible* source of a
+garbage `field_04`, but this has **not** been demonstrated — the competing
+texture-residency triage in `FableForge/docs/TERRAIN_TEXTURE_PAINT_PLAN.md` remains
+untested too. Adopting 32-alignment is justified on the invariant alone.
+
+Evidence: `work/terrain_runtime_probe_20260821/README.md`.
+
+## ForgeTest teleport fault relocates to CBankFile's packed entry table (2026-08-21)
+
+**Measured, not inferred.** Live capture via pybag/dbgeng attached to retail
+Fable.exe with the regenerated ForgeTest64 package deployed:
+
+```
+(16c0.624c): Access violation - code c0000005
+Fable+0x662a21
+0a62a21   8b5500   mov edx, dword ptr [ebp]
+```
+
+Fault VA = **`0x00A62A21`**, inside `CPackedUIntArray::operator[]`
+(`0x00A629F0`). This is **not** the historical `0x00BDD1D3`
+(`CEngineLandscapeMap::OpenStaticMap`). The same run logged
+`[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ForgeTest64.lev'` and kept
+running, and `GoToMapSlotPrepare: slot 399 -> resolved region 55` (previous run:
+`resolved region 0` + "destination slot has no owning region"). So the
+32-alignment + host-region attach moved the failure downstream.
+
+Disassembly of the faulting routine (capstone over retail Fable.exe):
+
+```
+bl  = this->bitsPerEntry  [this+8]    ; if 0 -> return this->bias [this+0xC]
+eax = bitsPerEntry * index            ; bit offset
+ecx = eax >> 5                        ; dword index
+edx = this->data          [this+0]
+ebp = data + ecx*4
+edx = *ebp                            ; <-- FAULT: no bounds check, no null check
+```
+
+Failure requires `this->data` NULL/garbage, or `index` far out of range.
+
+**All 50 direct callers of `0x00A629F0` are `CBankFile` methods** (E8-relative
+scan of `.text`): `EntryExists`, `ReadEntryData`, `GetMaxEntryIndex`,
+`CountEntries`, `GetTotalDataSize`, `CreateSymbolMap`, `FindIndexByFilename`,
+`FindEmptyBlockOffset`, `GetAllocatedBlockSize`, `UpdateEntry`,
+`CompareDataOffset::operator()`, `InsertionSort_PackedEntry`,
+`QuicksortPartition`, `_Push_heap`/`_Adjust_heap`/`heapsort_and_extract_min`.
+`CPackedUIntArray` is therefore the **bank-file packed entry table**, not
+terrain or navigation data.
+
+**Lead (unconfirmed).** Retail entry offsets ascend with index; our appended STB
+does not:
+
+| | index | entry | offset |
+|---|---:|---|---:|
+| retail | 424 / 425 | `PrisonCells_3.lev` / `__STATIC_MAP_COMMON_HEADER__` | 597,426,176 → 597,624,832 |
+| ours | 425 / 426 | `__STATIC_MAP_COMMON_HEADER__` / `ForgeTest64.lev` | 598,794,240 → **597,981,184** |
+
+The rewritten (larger) common header moved to the end while the new chunk landed
+in reclaimed space, so index order no longer tracks offset order. Given
+`CBankFile` maintains offset-sorted structures and free-block bookkeeping, this
+is a plausible source of the bad index/pointer — **but the owning bank has not
+yet been identified from a stack trace**, so this remains a hypothesis.
+
+Next: `work/terrain_runtime_probe_20260821/crash_probe.py` (fixed to dump `k`,
+`edi` fields and the index arg) to name the bank definitively.
+
+### Update (same session): WAD alignment ruled out; stack attribution corrected
+
+**WAD 2048-byte alignment is a real retail invariant but NOT this crash's cause.**
+All 796 retail `FinalAlbion.wad` entries are 2048-aligned (0 exceptions); the
+package produced by `forge world install-level` had exactly one misaligned entry
+(`ForgeTest64.tng`, packed with no padding after the `.lev`) plus a misaligned
+footer offset. Realigning both (payload byte-identical, `validate` CLEAN) and
+re-running produced a **bit-identical fault**: same `0x00A62A21`, same index -1,
+same 798-entry object, same stack. Fix it in `forge::wad::appendClonedEntries`
+on invariant grounds, but it is not the fault.
+
+**Correction.** The outer stack frames `0x008F7219` / `0x008F7245` were reported
+by WinDbg with "Stack unwind information not available. Following frames may be
+wrong," and they are wrong. `0x008F71A0` is `CMap::InitializePalette` and
+`0x008F70F0` is `CMap::AddThemeDefIndexToPalette`; disassembly shows neither
+calls `CAFile::ReadVar<int>` (they call `ZeroAllUnusedThemePaletteEntries` and
+`ResetMusicEntriesOffsets`). Any earlier statement that the fault is reached via
+palette initialisation is retracted.
+
+**What remains solid** (register-derived, not stack-derived):
+- fault `0x00A62A21` in `CPackedUIntArray::operator[]`;
+- `bitsPerEntry = 22`, and `22 * 0xFFFFFFFF = 0xFFFFFFEA` matches the register
+  state exactly, so the **index is -1** -- a not-found sentinel used unchecked;
+- the object's entry count is `0x31E = 798` = the modified `FinalAlbion.wad`;
+- immediate caller (top return address) `0x00A39C2C` = `CWADFile::GetLength`.
+
+So a WAD entry lookup returned -1 and the result was used as an index. The open
+failed; the name it failed on is still unknown.
+
+**Decisive next probe:** breakpoint `CBankFile::FindIndexByFilename`
+(`0x009CCDF0`), log the requested filename and return value, and capture the
+call that returns -1. That names the missing entry directly instead of inferring
+it from an unreliable stack.
+
+### ROOT CAUSE: the WAD header carries two entry counts; forge updated only one (2026-08-21)
+
+Live capture (`CCachedFile::OpenFromFile` call-site log, retail Fable.exe) shows
+the first argument is a **`CWADFile`**, not a name, and it arrives with its entry
+index already set. The last three map opens before the fault:
+
+```
+0129cf8c 12e46640 00000049 ...   ; entry index 73   (ok)
+0129cf8c 12e46640 00000143 ...   ; entry index 323  (ok)
+0129cf8c 12e46640 00000000 ...   ; entry index 0    <- ForgeTest64
+```
+
+So the open is not what fails: the name -> index resolution upstream already
+returned **0**, the 1-based not-found sentinel.
+
+`FinalAlbion.wad`'s header holds **two** counts, which retail always keeps equal:
+
+| offset | retail | forge output |
+|---|---|---|
+| 20 (entryCount) | `0x31C` = 796 | `0x31E` = 798 (updated) |
+| 24 (second count) | `0x31C` = 796 | `0x31C` = 796 (**stale**) |
+| footer stats pair `(type,count)` | `(0, 796)` | `(0, 796)` (**stale**) |
+
+`forge::wad::appendClonedEntries` wrote only offset 20. Entries 797/798 therefore
+fall outside whatever the engine sizes from the secondary count / stats block,
+the lookup misses, and the resulting index 0 flows unchecked through three
+layers:
+
+1. `CMap::LoadFromFile` calls `CCachedFile::OpenFromFile` and **never checks the
+   return value**, then reads immediately;
+2. `CBankFile::GetEntryDataSize` does `dec eax` (indices are 1-based), turning 0
+   into `-1`;
+3. `CPackedUIntArray::operator[]` has **no bounds check and no null check**, so
+   it dereferences `data + (22 * -1 >> 5) * 4` -> AV at `0x00A62A21`.
+
+Retail never trips this because the open never fails for shipped maps.
+
+**Fixed** in `libs/forgecore/src/wad.cpp`: write the count to offsets 20 *and*
+24, bump the matching per-type stats entry, and pad every appended payload (and
+the footer) to the retail 2048-byte boundary.
+
+**Ruled out along the way** (real invariant violations, but not this fault --
+each was fixed and the crash reproduced bit-identically):
+- WAD 2048-byte entry alignment (796/796 in retail; ours had 1 misaligned entry);
+- per-map loose `.tng` (397/397 present in retail; ours was WAD-only).
+
+The map-origin 32-alignment finding *was* load-bearing: it moved the failure past
+`CEngineLandscapeMap::OpenStaticMap` and took chunk topology from 25/105 to
+105/105 exact.
+
+## FableForge container-writer audit — 6 further defects (2026-08-21)
+
+Multi-agent audit of every container writer against zero-exception retail
+invariants, each finding independently re-measured by a separate verifier.
+Full report: `work/terrain_runtime_probe_20260821/FORGE_WRITER_AUDIT.md`.
+
+**Fixed this session (both measured, both verified against the donor as control):**
+
+1. **Quad-directory AABBs kept donor world coordinates.** Retail: every live
+   quad-dir AABB lies inside its own map's InfoBlock box — 10257/10257 live
+   entries across 332 maps, zero exceptions. The bake relocated vertices and
+   patches but never the directory AABBs, so a chunk baked to (3328,2304) still
+   carried Darkwood_3's (3104,2560) box: 16/16 outside. Added
+   `forge::stbbake::translateQuadDirXY` and call it after
+   `updateQuadDirZBounds` (which by contract writes only minZ/maxZ).
+   After: 16/17 inside the declared box, matching the donor's own 16/17.
+
+2. **Repacked foreground frames packed byte-tight.** Retail: 10257/10257 live
+   `frameOffset` values are multiples of 2048, zero exceptions, each frame
+   padded to the next boundary. The repack loop advanced by the raw compressed
+   length. Before: 15/16 misaligned. After: 0/16. The comment at
+   `apps/forge/main.cpp` claiming "retail packs frames tightly, not
+   page-aligned" is factually wrong and is now corrected in code.
+
+**Still open (measured and verified, not yet fixed):**
+
+3. `wad::repack` does not align resized payloads or the footer (same class as
+   the fixed `appendClonedEntries`; live path — `install-level` calls it
+   whenever `--lev/--tng` custom bytes differ in size from the donor).
+4. Appended STB chunk lands physically before the relocated common header,
+   breaking offset/index monotonicity (retail: 0 violations across 423 pairs).
+5. New WLD region omits 7 layout keys retail writes 141/141 times
+   (`MiniMapScale`, `MiniMap/WorldMap/NameGraphic` offsets); two of them have no
+   parse branch or struct member at all.
+6. A map ends up owned by TWO regions. Retail map->region containment is a
+   strict partition (BWD owner histogram `{1: 398}`); ours is `{1: 398, 2: 1}`
+   because `--also-contain-in-region` adds to `containsMaps` rather than
+   `seesMaps`. This is the host-region attach we rely on, so it needs care.
+
+Cosmetic (measured, no plausible fault path): STB common-header name index
+appended at tail instead of sorted position (consumer builds a red-black map, so
+insertion order is irrelevant); appended STB entry writes dev-header `type=0`
+where retail is `{1: 424}`; appended STB entry name length includes a NUL where
+retail stores lengths without one.
+
+Caveat on `stbvalidate` S3: it flags frames "neither page-aligned nor run-on"
+using a 4096 page. Only 5414 of retail's 10257 frames are 4096-aligned, so
+retail itself would trip this warning — S3 is a heuristic, not an invariant.
+
+## Inline background patch textures store ONE mip, not a chain (2026-08-22)
+
+`CLandscapeBackgroundPatch::Load @0x00BE7D70` allocates each patch texture with a
+literal level count of **1** (`push 1` at `0x00BE81D0`) and a hard-coded `'DXT1'`
+fourcc (`push 0x31545844` at `0x00BE8197`, taken whenever the patch header's
+`isDXT` byte is set).
+
+`CTexture::LoadFromDataStreamToPreallocatedSurface @0x009FB750` reads a 19-byte
+(`0x13`) header, then loops over mip levels bounded by the **surface's** level
+count — `surface->vtable[+0x34]()`, compared at `0x009FBA4D`. It never reads the
+header's `levels` field back. For the compressed branch each level consumes
+exactly `bpp * w * h / 8` **raw** stream bytes (`0x009FB865`: `imul` width,
+`imul` height, `shr eax,3`) copied with `rep movsd` directly off the stream —
+no LZO framing and no per-mip length prefix on this path.
+
+Consequence: an inline background texture must store exactly one mip. Retail does.
+Darkwood_9 frame 4's header is `4000 4000 01 e3040000 ...` (64x64, levels=1) and
+its texture spans `19 + 2048 = 2067` bytes; every retail patch checked spans
+`19 + mip0`.
+
+**The defect this caused.** FableForge emitted a six-level chain
+(`8000 8000 06 ...`, 128x128, span `19 + 10920 = 10939`) while the engine consumed
+`19 + 8192 = 8211`. The 2728 unconsumed bytes left the stream cursor short of the
+vertex block, so the loader read the four edge-strip counts and the trailing
+`hasWater` EBOOL out of mip-1 texture data. A garbage `hasWater` entered
+`CEngineWaterBackgroundSubPatch::Load`, which read an `s32` element count from
+texture bytes and passed it to `CRangeCompressor::Decompress` — producing a
+31,171,392-byte `rep movsd` and the ForgeTest64 stage20 access violation at
+`Fable.exe+0xb39f25`.
+
+Note the diagnostic shape: the fault surfaced in the **water** code, several
+layers from the actual mistake, because the only stream fields large enough to
+reach 31 MB are the `s32` counts in the water loaders. The `u16`-bounded counts
+in the mesh loaders cap out near 1 MB.
+
+Fixed by `forge::stbbake::singleLevelBackgroundTexture`.
+
+## Patch body tail grammar (2026-08-22)
+
+Both the mesh path and the water-only path of `CLandscapeBackgroundPatch::Load`
+converge at `0x00BE8803`:
+
+```
+0x00BE8810  4x  call 0xBFC600   ; CPatchTesselationEdgeStrip::Load, this += 0x2C
+0x00BE8872      u8 hasWater     ; != 0 -> allocate 0x60 and
+                                ;   CEngineWaterBackgroundSubPatch::Load @0xBFD7C0
+```
+
+`CPatchTesselationEdgeStrip::Load @0x00BFC600` reads `[u16 -> +4][u16 -> +6]
+[u8 -> +0x29]`, then four `LoadVerts` bodies (`0xBFC880 / 0xBFCA20 / 0xBFCBC0 /
+0xBFCD60`, element stride `0x14`). Each `LoadVerts` reads one `s32` and passes it
+to the vector resize at `0x00BFBE40`; **a zero consumes exactly 4 bytes and
+returns**, because the `newCount == 0` branch at `0x00BFBE56` reports success and
+the following `[vector+4] <= 0` test exits before any block read. An empty strip
+is therefore 21 bytes: `[u16][u16][u8][4 x s32 zero]`.
+
+Patch header bytes 8 and 9 are **not** interchangeable and are **not** swapped in
+FableForge: byte 8 lands at `[edi+0x11a]` and is the flag reloaded at
+`0x00BE7FC1` to skip the mesh (`isWaterOnly`); byte 9 lands at `[edi+0x118]`
+(`detailMode`). Retail and authored bodies both carry `b[8]=0x00, b[9]=0x01`.
+
+## Runtime region vector is hard-capped at 142 (2026-08-22)
+
+Measured live via the ForgeFSE probe across three deploys of the same world:
+
+| BWD regions | runtime `region_vector_size` | region owning slot 399 | `GetRegionNumberMapIsIn(399)` |
+|---|---|---|---|
+| 143 | 142 | 142 | **0** |
+| 145 | **142** | 142 | **0** |
+| 145 | 142 | **141** | **141** |
+
+Adding regions past 142 changes nothing: the vector stayed at 142 while the BWD
+grew from 143 to 145. All three installed BWD copies (`FinalAlbion.bwd`,
+`data\Levels\FinalAlbion.bwd`, `data\Levels\FinalAlbion\FinalAlbion.bwd`) were
+confirmed to hold 145 regions, and `forge wad list` shows the WAD contains no
+shadow BWD the engine could be reading instead.
+
+Region index **142 itself never answers containment lookups** — a map owned by
+it resolves to 0 (no region). Ownership by region 141 resolves correctly.
+
+**Consequence: a custom map must be owned by a region at index <= 141.**
+Appending a new region for it cannot work; an existing under-cap region has to be
+repurposed. ForgeTest64 now uses retail region 141 `Filler_NorthernWastes_02`,
+which was inert (`contains=0 sees=0`, referenced nowhere else in the WLD).
+
+This **retires** the earlier note that "the hard-cap theory is refuted: the FSE
+probe measured all 142 regions loaded". That conclusion came from a single data
+point — BWD 143 producing vector 142 — read as "everything loaded". It also means
+the `ForgeTerminalSentinel` region added at stage9 never had any effect.
+
+## Inline-texture mip fix confirmed in-game (2026-08-22)
+
+`LandscapeBackgroundRenderProbe` over the authored ForgeTest64 patches:
+
+```
+map=(32,0) size=(16,16) z=(72,83.962) vertices=289 polys=512 lod=1
+  texBytes=8192 ibBytes=2174 vbBytes=6936 sharedIB=1 water=0 result=1 safe=1
+```
+
+`texBytes=8192` is exactly one 128x128 DXT1 mip (17 of 18 patches; the last is a
+64x64 at 2048), and `water=0` holds on all 18. That is the runtime confirmation
+of the single-mip rule above: with the correct stream length the `hasWater` EBOOL
+is read from the right offset, the loader never enters
+`CEngineWaterBackgroundSubPatch::Load`, and the 31 MB `CRangeCompressor::Decompress`
+fault does not occur. The map streams and renders with no access violation, where
+stage20 faulted at precisely this point.
+
+## Background patch contract — three defects found in-game (2026-08-22)
+
+All three were in `forge::stbbake::buildBackgroundPatchRect`, each masked by the
+one before it. Retail evidence throughout is Darkwood_3 extracted from the retail
+STB.
+
+**1. `pw`/`ph` are SUBDIVISION counts capped at 16, not world extents.**
+`CLandscapeBackgroundPatch::Load` at `0x00BE860A` reads them and indexes a shared
+index-buffer table as `table[pw*17 + ph]` whenever `detailMode == 1`. A 16x16
+patch is the largest entry (16*17+16 = 288). Emitting `pw=ph=64` for the root gave
+index 64*17+64 = 1152, read past the table, and crashed at `0x00BE8626` — the
+faulting address computed exactly. Retail contains only 16x16 (289 verts) and
+16x8 (153 verts) patches; a node covering a 32x32 world rectangle still stores a
+17x17 vertex grid. **Parent LOD nodes must be stride-decimated.**
+
+**2. Vertex order is part of the contract.** Background triangles come from a
+shared index buffer, so the VB must be stored in the engine's canonical serpentine
+first-touch strip order:
+
+```
+(0,0) (1,0) (1,1) (0,1) (0,2) (1,2) (1,3) (0,3) (0,4) (1,4) ... (1,16) (2,0) (2,1) ...
+```
+
+Retail Darkwood_3 frame 35 and `buildLayerTopology` agree byte-for-byte across 44
+vertices including the column-pair seam. Row-major order gives correct AABBs but
+scrambled triangles — giant spanning wedges and holes.
+
+**3. `indexCount` is the STRIP length, not the triangle count.** Retail's 16x16
+patch stores **1085** — exactly `buildLayerTopology`'s strip size minus its two
+priming indices, the same value the foreground layer writes as `polygonCount`.
+Writing `16*16*2 = 512` made the engine walk under half the strip: terrain
+rendered as bands with gaps between them.
+
+Dumping a patch VB in stored order is now `forge stb patchverts <chunk> <frame>`.
+
+## Foreground layer texture ids must be global bank ids (2026-08-22)
+
+`LandscapeTextureProbe` on retail patches reports ids like 4185/4304/4192/4307;
+ours reported `1` and `3`. Cause: `forge stb create-terrain` accepts the triple as
+either numeric ids or symbol names, and the name path silently substitutes a
+hard-coded placeholder `material.textures = {1,2,3}`. Foreground terrain textures
+are always GLOBAL GBANK_MAIN_PC ids in `textures.big` — never inline — so custom
+art must be written into an `UNASSIGNED_*` slot and referenced by id.
+
+Retail composites multiple layers per patch (Darkwood_3 frame 0 has four, with
+`mapping` 0/2/4 and different tuples) blended through the per-vertex `blend` byte,
+varying `cliffU`/`cliffV` per vertex. A single layer with `blend=255` flat paints
+the whole map one texture.
+## 2026-08-22 — why stages 34-44 never produced grass
+
+The early writer serialized each grass placement as primitive type 0 while the
+retail grass palette declares primitive type 1 (`RepeatedMesh`). Changing the
+palette discriminator to zero only satisfied the loader's exact-type check; it
+did not change which renderer the grass mesh requires.
+
+Retail type-1 data proves its paired vectors are orientation/scale followed by
+world position/scale. Stage45 now emits the native representation and validates
+300/300 authored grass instances with zero unbound records. A separate bug in
+`foliage instances` skipped later frames whenever a compressed size changed the
+scanner's modulo-four alignment; that validation bug is fixed as well.

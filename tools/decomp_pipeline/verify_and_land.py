@@ -259,7 +259,27 @@ def main():
     if qfe:
         use_qfe(); print(f"[toolset] QFE-4035 compiler: {CL_EXE}")
     data=json.loads(outf.read_text(encoding="utf-8"))["result"]["authored"]
-    orc={r["address"].lower():r for r in csv.DictReader(open(oraclef,encoding="utf-8-sig"),delimiter="\t")}
+    oracle_rows=list(csv.DictReader(open(oraclef,encoding="utf-8-sig"),delimiter="\t"))
+    required_oracle_fields={"address", "name", "length", "bytes"}
+    missing_fields=required_oracle_fields-set(oracle_rows[0] if oracle_rows else ())
+    if missing_fields:
+        raise SystemExit(
+            "oracle TSV is missing required columns: " + ", ".join(sorted(missing_fields))
+        )
+    malformed=[]
+    for row in oracle_rows:
+        address=row["address"].lower().replace("0x", "")
+        try:
+            payload=bytes.fromhex(row["bytes"])
+            declared_length=int(row["length"])
+        except (TypeError, ValueError):
+            malformed.append(address or "<blank>")
+            continue
+        if len(payload) != declared_length:
+            malformed.append(address or "<blank>")
+    if malformed:
+        raise SystemExit("oracle TSV has malformed rows: " + ", ".join(malformed[:10]))
+    orc={r["address"].lower():r for r in oracle_rows}
     e=env(); wins=[]
     # Retail is not uniformly /O2: some TUs shipped unoptimised, which shows up as
     # frame-pointer bodies (`push ebp; mov ebp,esp; ...`). 396 of the un-landed bodies

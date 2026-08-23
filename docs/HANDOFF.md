@@ -9292,3 +9292,55 @@ Unrelated pre-existing failure seen while running the suite: `forge_bwd_tests` a
 "phase 3 text->bwd compile not byte-exact" (region slot 141 ForgeTest64_Region). It fails
 identically with this session's changes stashed, so it belongs to the installed BWD fixture, not to
 this work.
+
+
+---
+
+# 2026-08-23 (later) — foliage writer: instance cap resolved, writer conformant
+
+Continues the same session. Still no runtime test — the game was not launched.
+
+## The 32-vs-255 cap contradiction is resolved (was open unknown #1)
+
+`RenderSubPrimitive`'s draw loop CHUNKS by `layout+0x174` (`0x02ED12B9-0x02ED1333`), so >32
+instances draw fine when nothing is culled. The operative bound is the CULL-COMPACTION path: when
+`total != ObjectCount` the survivors go into manager lane arrays whose stores are strided 0x80
+bytes = 32 floats apart (`0x02ED0B54/0B78/0BA0`), so instance 32 lands in the next lane array.
+255 is only the u8 field width. Retail's measured max over Darkwood_3's 45 type-1 records is 30.
+**Writer rule: split at <=32.** Full argument in `docs/FORGETEST64_DARK_TERRAIN_AND_FOLIAGE.md`
+section 8.1. This also corrects an earlier claim: our 240-instance batch was out of contract but
+was NOT by itself what stopped the draw.
+
+## Writer changes (FableForge stbbake.cpp, uncommitted with the rest of that worktree)
+
+Batch splitting to <=32; whole-array SoA `LandscapeNormalArray` with real terrain normals from the
+`mapNormal` port and `0xCDCDCDCD` pad; fabricated subsection table deleted (a null table is a
+proven-legal retail configuration - 8 of 45 retail records have none); group header fade/mask/
+CacheGroup now come from the `GetCacheGroupInfo` table (grass -> 23.0 / 3 / 4, byte-identical to
+retail's grass groups); the collection EBOOL is NeedsRenderUpdate and is now 0 (retail carries 0);
+the 240-instance truncation removed and the scatter grid tightened to step 2. `forge_tests`' two
+local-detail writer tests were updated to the corrected contract and pass.
+
+## New gate: tools/localdetail_verify.py
+
+Walks the local-detail quadtree from the root header in the map's STB common record, decompresses
+each group, parses the collection/primitive grammar and enforces the engine's constraints.
+**It validates retail first**: Darkwood_3 gives 21 nodes / 41 groups / 394 primitives / 848
+instances / 37 subsection tables with zero problems (13 groups stop early at a type-2 ZSpriteBatch,
+whose layout is still unrecovered - reported as a skip, not hidden).
+
+    python tools/localdetail_verify.py <chunk.bin> --record <common-record.bin>
+
+ForgeTest64 v25 -> v29: ObjectCount max 240 -> 32, instances 240 -> 610, degenerate normals -> unit
+real terrain normals, 1 fabricated subsection table -> 0, group fade/mask/cacheGroup 20.0/2/0 ->
+23.0/3/4, verifier 2 problems -> OK.
+
+## Do next
+
+1. **Run it.** `work/no_donor_terrain_pack/ForgeTest64_terrain_v29.{chunk,info,common}.bin` carries
+   both this session's fixes (lit terrain + conformant foliage). Copy the FSE log into
+   `runtime_evidence\<stage>\` before relaunching - it is single-attach with no rotation.
+2. Fix-plan step 4 if grass still does not appear: port
+   `BuildSubSectionsAndObjectRemapTable` (`0x02EDF740` outer / `0x02EDFB20` inner) and gate it by
+   emitting for a retail batch's instance set and byte-diffing against that batch's retail bytes.
+3. Attach groups to 16x16 leaf nodes rather than one root group (culling granularity, parity).

@@ -41,6 +41,17 @@ busy. Install or update its hourly scheduled task with:
 powershell -NoProfile -ExecutionPolicy Bypass -File tools/InstallLocalParityTask.ps1
 ```
 
+For a newly arrived Wave batch, avoid forcing the full candidate syntax gate just to inspect a
+handful of changed sources. `gate_re_agent_candidates.py` accepts repeatable `--address` arguments
+and writes a separate `candidates-focused` report by default:
+
+```powershell
+python tools/gate_re_agent_candidates.py --address 0045c4d2 --address 0045c442
+```
+
+Use `--report-prefix <name>` to retain multiple focused reports. A focused run never overwrites
+the canonical `candidates.tsv`, `summary.json`, or compile-gate `README.md`.
+
 ## VC7.1 gotchas (baked into the tooling)
 - `__thiscall` on a free function is illegal (C4234) — model member accessors as `__fastcall(objptr)`
   (byte-identical for a this-only accessor).

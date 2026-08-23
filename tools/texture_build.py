@@ -37,8 +37,13 @@ see docs/TEXTURE_WRITER.md; answer key = EgoCore TextureParser.h/TextureBuilder.
 CLI:
   python texture_build.py build     <image> <out_prefix> [--format dxt1|dxt3|argb8888]
                                     [--mips N] [--dims WxH]
+  python texture_build.py build-inline <image> <out.bin> [--format dxt1|dxt3|argb8888]
+                                    [--mips N] [--dims WxH] [--pool N]
   python texture_build.py replace   <src.big> <out.big> <entry_name> <image>
                                     [--sub SUBBANK] [--format ...] [--raw-mip0]
+  python texture_build.py add       <src.big> <out.big> <sub> <name> <image>
+                                    [--format dxt3] [--dims WxH] [--id N]
+                                    (adds a NEW texture; prints the id to reference)
   python texture_build.py roundtrip <src.big> [--entry NAME] [--samples N]
   python texture_build.py decode    <src.big> <entry_name> <out.png> [--crop-real]
   python texture_build.py selftest
@@ -527,6 +532,41 @@ def cmd_build(argv):
                                         real_h, d["mips"], len(payload), p))
 
 
+def cmd_build_inline(argv):
+    """Build CTexture::SaveToDataStream bytes: 19-byte header + raw mip chain."""
+    img_path, out_path = argv[0], argv[1]
+    fmt = FMT_BY_NAME[_opt(argv, "--format", "dxt1").lower()]
+    dims = _opt(argv, "--dims", None)
+    rgba = load_image_rgba(img_path)
+    real_h, real_w = rgba.shape[:2]
+    if dims:
+        aw, ah = (int(x) for x in dims.lower().split("x"))
+    else:
+        aw, ah = _pow2_up(real_w), _pow2_up(real_h)
+    rgba = fit_to_alloc(rgba, aw, ah)
+    levels_opt = _opt(argv, "--mips", None)
+    levels = int(levels_opt) if levels_opt else full_mip_count(aw, ah, fmt)
+    pool = int(_opt(argv, "--pool", "1"), 0)
+    chain = [rgba]
+    for _ in range(levels - 1):
+        chain.append(downsample(chain[-1]))
+    encoded_mips = [encode_mip(fmt, mip) for mip in chain]
+    raw_mips = b"".join(encoded_mips)
+    # CTexture::LoadFromDataStream @ FableWin 0x030dc890 reads:
+    # u16 width, u16 height, u8 levels, CPixelFormatInit[6], u32 usage,
+    # u32 ESurfacePool, followed by GetLevelByteLength(level) raw bytes.
+    header = struct.pack("<HHB", aw, ah, levels) + FMT_META[fmt][1]
+    header += struct.pack("<II", 0, pool)
+    assert len(header) == 19
+    open(out_path, "wb").write(header + raw_mips)
+    decoded0 = parse_texture.decode_mip(fmt, encoded_mips[0], aw, ah)
+    quality = psnr(rgba, decoded0)
+    print("built inline %s %dx%d mips=%d header=19 B raw=%d B total=%d B "
+          "self-decode PSNR=%.2f dB -> %s"
+          % (FMT_META[fmt][0], aw, ah, levels, len(raw_mips),
+             len(header) + len(raw_mips), quality, out_path))
+
+
 def cmd_replace(argv):
     src, out, name, img_path = argv[:4]
     sub = _opt(argv, "--sub", None)
@@ -553,6 +593,54 @@ def cmd_replace(argv):
     print("replaced [%s] %r in %s -> %s (%s %dx%d mips=%d payload %d -> %d B)"
           % (sub_name, name, src, out, FMT_META[fmt][0], old["alloc_w"],
              old["alloc_h"], old["mipcount"], e["size"], len(payload)))
+
+
+def cmd_add(argv):
+    """Add a NEW texture entry to a .big sub-bank (does not replace an existing one).
+    The new entry's id (reported) is what a CUIDef GraphicIndex / def references."""
+    src, out, sub, name, img_path = argv[:5]
+    fmt = FMT_BY_NAME[_opt(argv, "--format", "dxt3").lower()]
+    dims = _opt(argv, "--dims", None)
+    want_id = _opt(argv, "--id", None)
+    rgba = load_image_rgba(img_path)
+    real_h, real_w = rgba.shape[:2]
+    if dims:
+        aw, ah = (int(x) for x in dims.lower().split("x"))
+    else:
+        aw, ah = _pow2_up(real_w), _pow2_up(real_h)
+    rgba = fit_to_alloc(rgba, aw, ah)
+    payload, info = build_entry(rgba, fmt, real_w=real_w, real_h=real_h)
+
+    buf, parsed = load_big(src)
+    subnames = {s["name"] for s, _ in parsed}
+    if sub not in subnames:
+        raise SystemExit("sub-bank %r not found; banks: %s"
+                         % (sub, ", ".join(sorted(subnames))))
+    for s, entries in parsed:
+        if s["name"] == sub and any(e["name"] == name for e in entries):
+            raise SystemExit("entry %r already exists in %s (use 'replace')"
+                             % (name, sub))
+
+    add = {"sub": sub, "name": name, "payload": payload, "type": 0, "info": info}
+    if want_id is not None:
+        add["id"] = int(want_id)
+    out_bytes = big_write.rebuild(buf, adds=[add])
+    with open(out, "wb") as f:
+        f.write(out_bytes)
+
+    # Report the assigned id (what defs/CUIDefs must reference) by reloading.
+    _, nparsed = load_big(out)
+    new_id = None
+    for s, entries in nparsed:
+        if s["name"] == sub:
+            for e in entries:
+                if e["name"] == name:
+                    new_id = e["id"]
+    print("added [%s] %r -> %s (%s %dx%d, real %dx%d, payload %d B) id=%s"
+          % (sub, name, out, FMT_META[fmt][0], aw, ah, real_w, real_h,
+             len(payload), new_id))
+    print("  reference this texture by id %s (CUIDef GraphicIndex / forge ui "
+          "add-sprite --graphic %s)" % (new_id, new_id))
 
 
 def cmd_decode(argv):
@@ -660,8 +748,12 @@ def main():
     argv = sys.argv[2:]
     if cmd == "build":
         cmd_build(argv)
+    elif cmd == "build-inline":
+        cmd_build_inline(argv)
     elif cmd == "replace":
         cmd_replace(argv)
+    elif cmd == "add":
+        cmd_add(argv)
     elif cmd == "decode":
         cmd_decode(argv)
     elif cmd == "roundtrip":

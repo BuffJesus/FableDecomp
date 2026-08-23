@@ -61,7 +61,7 @@ def write_tsv(path: Path, rows: list[dict[str, object]]) -> None:
     temp.replace(path)
 
 
-def discover(root: Path) -> list[Candidate]:
+def discover(root: Path, addresses: set[str] | None = None) -> list[Candidate]:
     # Later directories win, so a retry snapshot supersedes its primary draft.
     selected: dict[str, Candidate] = {}
     locations = (
@@ -76,7 +76,9 @@ def discover(root: Path) -> list[Candidate]:
         for source in sorted(directory.rglob("*.cpp")):
             match = ADDRESS_RE.match(source.name)
             if match:
-                selected[match.group(1).lower()] = Candidate(match.group(1).lower(), source.resolve(), origin)
+                address = match.group(1).lower()
+                if addresses is None or address in addresses:
+                    selected[address] = Candidate(address, source.resolve(), origin)
     return [selected[key] for key in sorted(selected)]
 
 
@@ -165,6 +167,8 @@ def main() -> int:
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--compiler", default="g++")
     parser.add_argument("--timeout", type=int, default=45)
+    parser.add_argument("--address", action="append", default=[], help="gate only this address (repeatable)")
+    parser.add_argument("--report-prefix", help="output basename under rebuild/compile-gate")
     args = parser.parse_args()
 
     root = args.root.resolve()
@@ -184,9 +188,23 @@ def main() -> int:
         with manifest.open("r", encoding="utf-8-sig", newline="") as stream:
             manifest_rows = {row["address"].lower(): row for row in csv.DictReader(stream, delimiter="\t")}
 
+    requested: set[str] = set()
+    for value in args.address:
+        match = re.fullmatch(r"(?:0x)?([0-9a-fA-F]{8})", value)
+        if not match:
+            raise SystemExit(f"invalid --address: {value!r}")
+        requested.add(match.group(1).lower())
+    report_prefix = args.report_prefix or ("candidates-focused" if requested else "candidates")
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+", report_prefix):
+        raise SystemExit("invalid --report-prefix")
+
     rows: list[dict[str, object]] = []
     dependency_counts: Counter[str] = Counter()
-    for candidate in discover(root):
+    candidates = discover(root, requested or None)
+    missing_requested = requested - {candidate.address for candidate in candidates}
+    if missing_requested:
+        raise SystemExit(f"requested candidates not found: {', '.join(sorted(missing_requested))}")
+    for candidate in candidates:
         payload = candidate.source.read_bytes()
         text = payload.decode("utf-8-sig", errors="replace")
         digest = hashlib.sha256(payload).hexdigest()
@@ -247,7 +265,7 @@ def main() -> int:
             }
         )
 
-    write_tsv(gate_dir / "candidates.tsv", rows)
+    write_tsv(gate_dir / f"{report_prefix}.tsv", rows)
     summary = {
         "generated_at": datetime.now().astimezone().isoformat(timespec="seconds"),
         "compiler": compiler,
@@ -259,9 +277,10 @@ def main() -> int:
         "semantic_quarantine": sum(bool(row["semantic_hazards"]) for row in rows),
         "unique_missing_dependencies": len(dependency_counts),
     }
-    temp_json = gate_dir / "summary.json.tmp"
+    summary_name = "summary.json" if report_prefix == "candidates" else f"{report_prefix}-summary.json"
+    temp_json = gate_dir / f"{summary_name}.tmp"
     temp_json.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
-    temp_json.replace(gate_dir / "summary.json")
+    temp_json.replace(gate_dir / summary_name)
 
     lines = [
         "# Auto-RE candidate compile gate",
@@ -283,10 +302,11 @@ def main() -> int:
         "|---|---:|",
     ]
     lines.extend(f"| `{name}` | {count} |" for name, count in dependency_counts.most_common(30))
-    lines.extend(["", "Full per-candidate results are in `candidates.tsv`.", ""])
-    temp_md = gate_dir / "README.md.tmp"
+    lines.extend(["", f"Full per-candidate results are in `{report_prefix}.tsv`.", ""])
+    readme_name = "README.md" if report_prefix == "candidates" else f"{report_prefix}.md"
+    temp_md = gate_dir / f"{readme_name}.tmp"
     temp_md.write_text("\n".join(lines), encoding="utf-8")
-    temp_md.replace(gate_dir / "README.md")
+    temp_md.replace(gate_dir / readme_name)
     print(json.dumps(summary, indent=2))
     return 0
 

@@ -1,5 +1,528 @@
 # Active task list — decomp, frontend parity, and downstream tools
 
+## ACTIVE — donor-free ForgeTest64 runtime package (2026-08-21)
+
+Shutdown handoff: `docs/SESSION_HANDOFF_2026-08-21_NO_DONOR.md` holds the
+authored artifacts, hashes, corrected binary layouts, verification commands, and
+dirty-worktree warning. Its runtime state and continuation order stop at stage7
+and are SUPERSEDED — see "Runtime stage ledger — stage7 through stage21" below
+for the actual frontier, the stage20 reference result, and the crash diagnosis.
+
+Objective: ship the authored 64x64 ForgeTest heightmap as a genuinely new map.
+Darkwood-derived LEV/TNG/STB topology is not an acceptable final artifact.
+
+Acceptance gates:
+
+1. **Source identity.** Use `D:\Downloads\penis_terrain_pack.zip` (SHA-256
+   `e902e642e4c61bd36e811844ed4c31a064e1125a95c83a5df487a56d1a45eeef`):
+   its normalized 64x64 float heightmap and three authored diffuse/bump/cliff
+   texture families. The current imported LEV is 64x64 with a 65x65 vertex
+   grid, heights 72.000..83.962 and center 81.949. Emit an empty 12-byte
+   `ForgeTest64.tng`; the test NPC is
+   created only by ForgeFSE after arrival.
+2. **World identity.** Slot 399 has one containing region (retail-style strict
+   partition), in a dedicated ForgeTest region whose only contained map is
+   ForgeTest64. Region 55 remains a diagnostic fallback, not the final owner.
+   WLD/BWD/STB bounds remain
+   `(3328,2304)..(3392,2368)` and `forge validate` is CLEAN.
+3. **No donor package command.** The package build must not accept or invoke
+   `--from-donor`, `level create-from-donor`, or a donor map/chunk path.
+4. **Fresh STB terrain.** Generate the InfoBlock, texture/material palette,
+   foreground patch-header directory, background tree/composed frames, foreground frames, and
+   local-detail-empty section from authored inputs. Do not retain donor frame
+   allocation, layer membership, indices, textures, scenery, or opaque tails.
+5. **Structural gates.** Every emitted frame starts on a 2048-byte boundary;
+   all quad AABBs lie inside the map box; all offsets/spans are in range;
+   foreground codec round-trip and generated topology pass; STB table offsets
+   are monotonic and the common-header name index is sorted.
+6. **Runtime gates.** Teleport survives, reports
+   `map=ForgeTest64 pos=(3360,2328,...) in_target_bounds=true`, renders the
+   authored terrain under the hero, contains no donor ruins/entities, and the
+   scripted NPC spawns/interacts successfully.
+
+Execution order:
+
+1. **DONE — background tree/file blocks.** Generate the 4x4 leaf patches,
+   parent/root LOD frames, AABBs, band records, and page-aligned file-block
+   references entirely from the authored heightfield and inline textures.
+2. **DONE — canonical empty local detail.** The native empty root is a 20-byte
+   aligned file block (`groupCount=0` plus four absent-child markers), followed
+   by the wired 0x2C quadtree header and five-byte empty object palette. The
+   12-byte descriptor and every absolute span/offset are now assembled and
+   regression-tested by `buildEmptyLocalDetailSection`.
+3. **DONE — pure chunk builder.** Add `forge stb create-terrain` consuming the
+   final LEV, placement, and nine inline texture blobs without opening a donor
+   chunk. Assemble all control, geometry, palette and directory sections.
+4. **DONE — offline adversarial gates.** Prove deterministic output, 2048-byte
+   frame alignment, in-box AABBs, pointer closure, codec round-trips, generated
+   topology, and absence of donor names/chunk bytes.
+5. **DONE — dedicated-region installer.** Create slot 399 plus one dedicated
+   region whose only contained map is ForgeTest64. No region-55 attachment and
+   no dual ownership.
+6. **ACTIVE — corrected-control runtime smoke.** Deploy only stage8 through
+   the proven rollback harness. Confirm static-map loading survives before
+   evaluating region ownership, teleport, rendering, or NPC interaction.
+7. **NEXT — smoke automation.** Derive teleport Z from the authored center
+   height plus clearance, deploy through the rollback harness, launch, monitor
+   logs automatically, and retain screenshot/log/hash evidence.
+
+Live implementation checklist (2026-08-22):
+
+- [x] Recover native background and local-detail header/file-block write order.
+- [x] Assemble canonical empty local detail with closed absolute pointers.
+- [x] Model the 64x64 background split tree and parent/root LOD payloads. The
+  deterministic tree has 31 nodes, 16 leaves, and one full-quality authored
+  payload per node; higher bands reuse it through native remap records.
+- [x] Lay out and backpatch background root/child file blocks. Tree headers use
+  native postorder, all 31 payloads are page-aligned, and recursive reparse
+  closes every pointer and child partition.
+- [x] Assemble the pure terrain chunk and generated common-header InfoBlock.
+  `forge stb create-terrain` now emits the authored chunk and 0x5C InfoBlock;
+  ForgeTest64 produces 16 foreground frames, 31 background payloads, and closed
+  local-detail/background pointers without opening a donor chunk.
+- [~] Run deterministic, alignment, bounds, pointer, codec, and donor-absence
+  gates. Double-build hashes, foreground round-trip, 31-node recursive tree
+  parse, page alignment, and in-box AABBs pass; explicit donor-byte/name scanning
+  remains active.
+- [ ] Install dedicated region ownership and run rollback-safe runtime smoke.
+
+Constructor checkpoint: the global texture palette, empty local-detail object
+palette, and variable-length background tree-node header now have donor-free
+serializers in `forge::stbbake`; focused regression tests pass.
+
+The nine 128x128 custom PNGs compile to DXT1 and native 19-byte-header inline
+texture streams with successful self-decode checks. `lev import-heightmap` now
+resamples the supplied 64x64 float raster onto Fable's required 65x65 vertex
+grid. `lev author-surface` replaced every inherited cell theme, walkability and
+preferred-path flag, then navigation was rebuilt against the empty TNG. Current
+output: `work/no_donor_terrain_pack/ForgeTest64_final.lev`, SHA-256
+`efcb8b52da97d5a146759f064b961ad9f105fb40fc536198bfebc9e4e2abbb46`.
+Smoke-test Z must still come from the authored center height rather than 74.
+
+The deterministic section planner and InfoBlock constructor are complete, as is
+the minimal 64x64 foreground generator. The authored background path now emits
+sixteen fresh 16x16 mesh frames from the supplied heightfield and inline DXT,
+LZO-frames them on 2048-byte boundaries, and generates matching retail-form
+foreground patch headers/AABBs at directory base `0x800`. Artifact:
+`work/no_donor_terrain_pack/ForgeTest64_background.*`;
+`stb patchinfo` decodes 16/16 mesh patches at the intended bounds. Remaining STB
+work is root control-header/file-block integration and canonical empty local detail.
+
+Retail-oracle correction: the 0x24-byte array begins at `0x800`, not `0x7FC`,
+and its records are `CEngineLandscapePatch::SaveHeader` values ordered as
+`frameOffset, frameSpan, AABB[6], flags`. All 16 live flags are `0x00C92E01`
+and the following terminator is entirely zero. The parser, writer, retarget
+rewiring, XY/Z bound mutation, synthetic fixtures, and generated artifact now
+use that contract. A background-tree header parser/round-trip gate and the
+native 12-byte local-detail root descriptor writer are also complete.
+
+Current clone-based stage4 remains a diagnostic artifact only. It proved the
+WAD crash fix, correct hero placement, and the duplicate-region failure mode;
+it must not be promoted as the custom-map deliverable. Stage5 was not deployed.
+
+### Offline container checkpoint (2026-08-22)
+
+- [x] Background tree/file blocks and canonical empty local detail.
+- [x] Pure `forge stb create-terrain` donor-free chunk builder.
+- [x] Determinism, alignment, bounds, pointer, codec, topology, and known
+  donor-name absence gates.
+- [x] Canonical 0x80-byte common record plus isolated STB append. The stage has
+  425 entries / 399 static maps; ForgeTest64 is id 426 at aligned offset
+  598276096. Its five rebased stream pointers close exactly, and the complete
+  597,979,518-byte source prefix matches except the three intentional archive
+  header dwords.
+- [x] Assemble slot 399 and a dedicated ForgeTest64-only region, then validate
+  WLD/BWD/WAD/STB ownership without deploying. `stage7_region` is CLEAN:
+  ForgeTest64 has exactly one owning/visible region, no region-55 attachment,
+  authored loose LEV/TNG sources, and zero bounds/reference/static-map issues.
+
+### Runtime stage ledger — stage7 through stage21 (2026-08-22)
+
+The stage7 entry that used to close this section is SUPERSEDED. Fourteen further
+runtime packages were built and deployed on 2026-08-22; the notes below are
+reconstructed from `work/no_donor_terrain_pack/runtime_evidence/` and the stage
+package hashes. Read this before touching the ForgeTest64 lane.
+
+| Stage | STB size | Outcome |
+|---|---|---|
+| 7-10 | 599,214,598 | `OpenRetailStaticMap(ForgeTest64)` reached; crash at `Fable.exe+0x59EC13` before quest startup. Rollback set `20260822_090312`. |
+| 11 | 599,214,598 | `host95` probe. Measured `region_vector_size=142`, `slot_399_owner_region=95`. |
+| 12 | 599,214,598 | Retail `EntityTeleportToPosition(3360,2328,82.949)` returned ok=true; crashed post-teleport. |
+| 13-15 | (build dirs only) | `*_lodfix_host95` iterations, never packaged for deploy. |
+| 16 | 600,218,118 | LOD fix. Background render probes fire, but all are retail-scope. |
+| 17 | 600,238,598 | Local-coords fix. Foreground/texture probes fire, retail-scope only. |
+| 18 | 600,238,598 | Local detail removed — no change in failure class. |
+| 19 | 600,238,598 | Landscape section removed — no change in failure class. |
+| 20 | 600,238,598 | **Best result to date.** See below. |
+| 21 | 601,668,102 | `edge_cursor`. Differs from stage20 ONLY in the STB. Crash is debugger-heap noise, not terrain — see the diagnosis section. |
+
+**Stage 20 is the reference result.** Its FSE log
+(`runtime_evidence/20260822_stage20_wad_registered/FableScriptExtender.log`) shows:
+
+- `[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ForgeTest64.lev'`
+- `[StaticMapProbe] opened state=1 bankIndex=426 bounds=(3328,2304,72)..(3392,2368,83.962)`
+- `FORGE: arrival verification map=ForgeTest64 in_target_bounds=true`
+- `FORGE: spawned ForgeNPC (CREATURE_GHOST_VILLAGER_FEMALE) at (3364.0,2330.0,78.7) -> OK`
+- Hero handle acquired and released with clean refcounting.
+
+That satisfies acceptance gates 1-5 and the first clauses of gate 6. **Zero
+ForgeTest-scope terrain render probes fired** before the crash, so the authored
+terrain has still never been drawn.
+
+**Gate 2 is NOT met by any deployed stage.** Every stage from 11 onward reports
+`slot_399_owner_region=95` — the packages host ForgeTest64 in retail region 95,
+not the dedicated ForgeTest region validated offline in `stage7_region`. The
+dedicated-region installer exists but was not carried into the live packages.
+
+### Crash diagnosis (2026-08-22 session)
+
+**Stage 20 — `Fable.exe+0xb39f25` is `CRangeCompressor::Decompress @ 0x00F39ED0`,
+RAW/stored path.**
+
+```
+00f39f11  cmp byte ptr [edi],0     ; edi = arg1 = input, 0 => RAW/stored block
+00f39f18  shr ecx,2                ; ecx = total/4
+00f39f25  rep movsd                ; <-- AV reading 0x09b5e000
+```
+
+At the fault `eax = 0x01DCA540` = **31,171,392 bytes** total, and the source
+region ends about 1.5 MB in. Some block header declares a 31 MB payload.
+
+Both multiplicands are `[esp+0xC4] * [esp+0xC8]` = arg2 (count) * arg3 (stride).
+All 14 call sites of `0x00F39ED0` were enumerated from the retail `.text`:
+
+| Caller | stride | count source |
+|---|---|---|
+| `Load CLandscapeBackgroundPatch @0xBE7D70` (x2) | 0x10 / 2 | `u16` |
+| `LoadVerts<CPatchTesselationEdgeStrip::CFanBaseVertex>` (x4) | 0x14 | `s32` from vector |
+| `Load CWaterPatchMesh @0xBEAE50` | 0x42 | literal 0x121 |
+| `LoadSea CWaterSeaGenerator @0xBE91E0` (x2) | 0xC / 2 | **`s32` from stream** |
+| `LoadCompressedBuffer CEngineWaterRenderer @0xB6D940` | param | **caller-supplied** |
+| `Load CEngineWaterBackgroundSubPatch @0xBFD7C0` (x2) | param / 2 | **stream / caller** |
+| `Load CWaterSeaStaticMapInfoBlock @0xB6D6E0` | 2 | `s32` |
+| `RangeCompressor_Compress @0xF3AE50` | n/a | not a load path |
+
+The `u16`-bounded sites cap out near 1 MB (65535 x 0x14) and **cannot** reach
+31 MB. Only the sites reading an `s32` count out of the stream can. Every one of
+those is in the **water/sea** path. That is the working hypothesis for stage20:
+the sea loader is being entered against a zero or garbage offset rather than
+being skipped, and consumes a bogus element count.
+
+Supporting evidence: our generated 0x5C InfoBlock
+(`ForgeTest64_terrain_v5.info.bin`) writes `EdgeHeightFilePtr=0`,
+`EdgeHeightFileSize=0`, `ShorePointArraySize=0`, `ShorePointArrayStart=0`.
+
+**Stage 21 — `Fable.exe+0x59EC33` is a red herring; do not chase it.**
+`0x0099EC33` is the `CCharString` default ctor writing `[esi]=0` with
+`this = 0x10`. The `_Buynode` at `0x0042B587` did `operator new(0x18)`, got NULL,
+then `lea ecx,[esi+0x10]` and `test ecx,ecx` — the classic MSVC null check that
+cannot fail because of the +0x10 offset. The allocation returned NULL despite
+1.5 GB of free address space. `!heap -h 01940000 -v` on the dump reports:
+
+```
+Free Heap block 163470c0 modified at 163470d4 after it was freed
+```
+
+A one-byte use-after-free write. It is only fatal because a process launched
+under procdump inherits debug heap flags (tail checking / free checking /
+validate parameters — confirmed by the dump's `NtGlobalFlag`; there is **no**
+IFEO or gflags entry for `Fable.exe`), which make `RtlAllocateHeap` return NULL
+on a corrupt free list instead of ignoring it. Retail without a debugger would
+walk past this. Stage21 differs from stage20 only in the STB file, so it
+probably got no further than stage20 and its dump says nothing about terrain.
+
+### Recovered grammar — `CLandscapeBackgroundPatch::Load @0x00BE7D70` (2026-08-22)
+
+Read directly from retail `.text`. The body is read in this order:
+
+| # | size | stored at | meaning |
+|---|---|---|---|
+| 1 | u16 | `[edi+0x110]` | pw |
+| 2 | u16 | `[edi+0x112]` | ph |
+| 3 | u16 | `[edi+0x10c]` | coord0 |
+| 4 | u16 | `[edi+0x10e]` | coord1 |
+| 5 | u8  | `[edi+0x11a]` | **gates the mesh** |
+| 6 | u8  | `[edi+0x118]` | second flag |
+
+At `0x00BE7FC1` the engine reloads `al` from `[edi+0x11a]` — **stream byte 8** —
+and `jne 0x00BE8803` skips all mesh loading. So byte 8 is `isWaterOnly` and byte
+9 is `detailMode`, exactly as `forge::stbbake::parsePatchHeader` has it. A
+retail-derived frame body (`tmp/Darkwood9_directionmask_rebake.bin` frame 4) and
+an authored ForgeTest64 frame both carry `b[8]=0x00, b[9]=0x01`. **Forge's header
+byte order is correct — an early "swapped bytes 8/9" hypothesis was tested and
+disproved. Do not re-open it.**
+
+Both the mesh path and the water-only path converge on a common tail at
+`0x00BE8803`:
+
+```
+0x00BE8810  4x  call 0xBFC600   ; CPatchTesselationEdgeStrip::Load, this += 0x2C
+0x00BE8872      u8 hasWater     ; if != 0 -> allocate 0x60 (0xBFD160) and
+                                ;   CEngineWaterBackgroundSubPatch::Load @0xBFD7C0
+```
+
+`CPatchTesselationEdgeStrip::Load @0x00BFC600` reads
+`[u16 -> +4][u16 -> +6][u8 -> +0x29]` then calls four `LoadVerts` bodies
+(`0xBFC880 / 0xBFCA20 / 0xBFCBC0 / 0xBFCD60`, element stride `0x14`). Each
+`LoadVerts` reads one `s32` and passes it to the vector resize at `0x00BFBE40`
+(element size `0x14`); **a zero consumes exactly 4 bytes and returns** — the
+`newCount == 0` branch at `0x00BFBE56` frees and reports success, then
+`[vector+4] <= 0` makes `LoadVerts` return before reading a block.
+
+So forge's 21-byte empty strip (`[u16][u16][u8][4 x s32 zero]`) and its 85-byte
+`serializeEmptyPatchTrailer` **do** parse cleanly under the retail grammar, and
+an authored frame's `17 + texLen + vbLen + 85` consumes the body exactly. The
+128x128 six-mip DXT1 inline texture length also checks out
+(8192+2048+512+128+32+8 = 10920, +19-byte header = 10939, matching forge).
+
+**Known cosmetic divergence, cause unproven:** retail strip headers carry real
+values — Darkwood frame 4's first strip is `[u16 0x0940 = 2368][u16 0x0010 = 16][u8 1]`,
+i.e. world Y and patch size — while forge passes the patch header's
+`coord0/coord1`, which is `(0,0)` for ForgeTest64. Those two words are only
+stored to `[edi+4]/[edi+6]`; they do not size any read, so they cannot by
+themselves shift the cursor.
+
+**ROOT CAUSE FOUND — the inline background texture wrote a full mip chain.**
+
+`CLandscapeBackgroundPatch::Load` allocates the patch texture with a literal
+level count of **1** (`push 1` at `0x00BE81D0`, format = the hard-coded `'DXT1'`
+fourcc pushed at `0x00BE8197`). `CTexture::LoadFromDataStreamToPreallocatedSurface
+@0x009FB750` then reads a 19-byte (`0x13`) header and loops over mips bounded by
+the **surface's** level count (vtable `+0x34`, compared at `0x009FBA4D`) — it
+never reads back the header's `levels` field. Each level consumes exactly
+`bpp*w*h/8` **raw** stream bytes (`0x009FB865`: `imul` width, `imul` height,
+`shr eax,3`), copied with `rep movsd` straight off the stream. So the engine
+reads mip 0 and stops.
+
+Retail matches that exactly. Darkwood frame 4's inline texture header is
+`4000 4000 01 e3040000 ...` — 64x64, **levels=1** — and its texture span is
+`19 + 2048 = 2067` bytes, which is mip 0 alone. Every retail patch checked spans
+`19 + mip0`.
+
+Forge emitted `8000 8000 06 ...` — 128x128, **levels=6** — spanning
+`19 + 10920 = 10939` bytes, while the engine consumes only `19 + 8192 = 8211`.
+That leaves **2728 unconsumed bytes** per patch. The stream cursor lands 2728
+bytes short of the vertex block, so the loader reads the edge-strip counts and
+the `hasWater` EBOOL out of mip-1 texture data. A garbage `hasWater` enters
+`CEngineWaterBackgroundSubPatch::Load`, which reads an `s32` element count from
+texture bytes and hands it to `CRangeCompressor::Decompress` — the observed
+31,171,392-byte `rep movsd` and the stage20 AV.
+
+This also explains why **zero ForgeTest-scope terrain render probes ever fired**:
+no authored background patch ever finished loading.
+
+**Fixed in FableForge.** `forge::stbbake::singleLevelBackgroundTexture` reduces a
+DXT1 background texture to the single mip the engine reads, and
+`buildBackgroundPatchRect` now serializes through it. Non-DXT textures are
+returned unchanged rather than guessed at. `forge_tests` passes 1/1.
+
+Regenerated artifact `work/no_donor_terrain_pack/ForgeTest64_terrain_v6.chunk.bin`
+(1,216,581 bytes, SHA-256 `170b10306f1e36f8...`, byte-identical across two
+builds). Every one of the 31 background payloads now reports
+`layout=17+8211+<vb>+0+85`, and a regenerated frame's texture header reads
+`8000 8000 01 ...`. The 2728-byte drift is gone chunk-wide.
+
+**Not yet deployed.** This is an offline fix verified offline only; it has never
+been run.
+
+### stage22-24 runtime results (2026-08-22) — BOTH BLOCKERS CLEARED
+
+Full evidence under `work/no_donor_terrain_pack/runtime_evidence/20260822_stage2{2,3,4}_*`,
+each with a `RESULTS.md`. Run sheet: `work/no_donor_terrain_pack/STAGE22_RUN_SHEET.md`.
+
+**The runtime region vector is hard-capped at 142.**
+
+| stage | BWD regions | runtime vector | owning region | lookup |
+|---|---|---|---|---|
+| 22 | 143 | 142 | 142 | 0 |
+| 23 | 145 | **142** | 142 | 0 |
+| 24 | 145 | 142 | **141** | **141** |
+
+stage23 proved the cap by adding two more regions and measuring no change; all
+three installed BWD copies were confirmed to hold 145 regions and the WAD holds
+no shadow BWD. Region index 142 never answers containment lookups. **A custom
+map must be owned by a region at index <= 141** — appending a new region for it
+cannot work, an existing under-cap region must be repurposed.
+
+This RETIRES the earlier claim (in this file and in memory) that "the hard-cap
+theory is refuted: the FSE probe measured all 142 regions loaded". That rested
+on one data point, BWD 143 -> vector 142, misread as "everything loaded". It also
+means the `ForgeTerminalSentinel` region added at stage9 never did anything.
+
+stage24 repurposes retail region 141 `Filler_NorthernWastes_02` — inert
+(`contains=0 sees=0`, referenced nowhere else in the WLD). It now owns slot 399
+and nothing else, so single-map ownership and the strict partition both hold.
+
+**stage24 reached the acceptance gates that had never passed:**
+
+```
+slot_399_owner_region=141
+arrival verification map=ForgeTest64 in_target_bounds=true
+spawned ForgeNPC (CREATURE_GHOST_VILLAGER_FEMALE) at (3364.0,2330.0,78.7) -> OK
+```
+
+**The inline-texture mip fix is VALIDATED at runtime.** Background render probes
+over the authored patches report `texBytes=8192` (exactly one 128x128 DXT1 mip;
+17 of 18 patches, the last a 64x64 at 2048), `water=0` on all 18, `vertices=289`,
+`z=(72,83.962)`, and **no access violation** — stage20 faulted at precisely this
+point. `water=0` is the direct refutation of the drifted-cursor fault.
+
+**ACTIVE — the terrain renders incorrectly.** Screenshot
+`runtime_evidence/20260822_stage24_region141/stage24_screen.png`: the hero is on
+ForgeTest64 with a correct minimap, but the surface is a flat featureless grey
+plane with black fan-shaped polygon artifacts, and no height relief despite the
+patches carrying z=72..83.962. Two leads:
+
+1. **Foreground layer texture IDs are wrong.** `LandscapeTextureProbe` on
+   ForgeTest patches reports `values=[1:0,3:0]` / `[1:3,3:3]` — indices **1 and
+   3**. Retail patches in the same log report real GBANK_MAIN_PC ids
+   (`4185/4304/4192/4307/4226`). Ours look like unresolved local palette symbol
+   indices. `missing=0`, so the engine binds whatever 1 and 3 are. Likely cause
+   of the flat grey.
+2. **Foreground geometry is malformed.** All 16 foreground render probes are
+   structurally clean (`layers=1 truncatedOrCycle=0 safe=1`, per-patch bounds
+   correct), so the black fans are probably bad vertex/index data inside the
+   layer meshes rather than a broken layer list.
+
+### stage30-33 (2026-08-22 later) — terrain DONE, presentation in progress
+
+Deployed now: **stage33** (`work/no_donor_terrain_pack/stage33_mmfill_runtime_package`).
+Rollback set `20260822_160324`. Each stage has its own backup set under
+`work/terrain_runtime_probe_20260821/backups/`.
+
+**CONFIRMED WORKING IN-GAME** (operator-verified): map streams, hero teleports and
+arrives in bounds, terrain renders with correct relief and no holes, surface is
+walkable, textures display, NPC spawns reachable (`drop=0.00`), minimap shows the
+authored terrain at the correct orientation.
+
+Three background-patch bugs were found and fixed in sequence, each hidden behind
+the previous — full detail in `docs/FINDINGS.md`:
+
+1. **Oversized patches** -> the LOD crash. `detailMode==1` makes the loader index a
+   shared index-buffer table as `table[pw*17+ph]` (`0x00BE860A`), so pw and ph must
+   both be <= 16. Retail Darkwood_3 contains only 16x16 and 16x8 patches. Parents
+   must be stride-DECIMATED, never full-resolution.
+2. **Row-major vertex order** -> giant spanning wedges. The VB must be in the
+   engine's serpentine first-touch strip order (what `buildLayerTopology` already
+   produced for foreground layers); verified byte-identical to retail across the
+   column-pair seam via the new `forge stb patchverts`.
+3. **indexCount as raw triangle count** -> terrain rendered as bands with gaps. It
+   is the shared-IB STRIP length: retail 16x16 stores **1085**, not 16*16*2=512.
+
+Two test assertions encoded the wrong values (1 and 3) and were corrected with the
+retail evidence in comments so they are not reverted.
+
+**Textures.** The foreground triple must be GBANK_MAIN_PC ids.
+`forge stb create-terrain` silently substitutes a placeholder `{1,2,3}` when given
+symbol NAMES instead of numeric ids — that was the flat-grey terrain. Custom art
+goes into `UNASSIGNED_*` slots via `tools/texture_build.py replace`. Multi-layer
+terrain now works via `buildLayeredForeground`: opaque base + slope-blended +
+height-blended layers with `mapping=0/2/4` and per-vertex `blend`/`cliffU`/`cliffV`,
+matching retail's multi-layer patch composition. Currently
+4216 (SPOOKYGROUND) base, 4188 (SPOOKY_TEST03) slope, 4212 (SPOOKYTREES) height.
+
+**Presentation layer** — see `docs/FORGETEST64_UI_AND_REGION.md` for the full
+write-up: minimap working, transition screen staged but black, exit signpost
+spawn failing silently, minimap zoom unresolved.
+
+**Foliage** — RE done, writer not built. See `docs/FOLIAGE_LOCAL_DETAIL_RE.md`.
+The important strategic note there: **author with primitive type 0 only**. It is
+fully specified (fixed 92 bytes, one transform, no arrays), so a first writer can
+skip the two unpinned 16-byte type-1 instance arrays entirely.
+
+### Next actions
+
+1. **Foliage writer**, type-0 primitives only. Remaining structural RE needed:
+   `CObjectCacheGroupCollection::SaveHeader` write path from `0x02E3D6B9`,
+   plus `SaveContents` and `GetSaveSize`.
+2. **Exit signpost**: restructure the Lua so failures are logged (the current
+   pcall swallows them), and try a concrete signpost def rather than
+   `OBJECT_SIGNPOST_TEMPLATE`, which is probably abstract.
+3. **Transition screen**: add `--worldmap-offset` to `forge bwd set-region-name`
+   and give the region a real `WorldMapOffsetX/Y` (currently 0,0; retail values
+   are ~(963,1239)).
+4. **Minimap zoom**: reverse the minimap render path in `Fable.exe`. Two blind
+   attempts have been spent; get the mapping from the code.
+5. Region display name / `REGION_FORGETEST64` def, so the transition screen has a
+   proper caption instead of a borrowed `REGION_BATTLE`.
+
+### Install state warning (2026-08-22)
+
+The game install is **not** rolled back to retail. `FinalAlbion_RT.stb` is
+599,214,598 bytes (the stage7-12 build, mtime 09:13) against retail's
+597,979,518, and `FinalAlbion.bwd` is modified (mtime 09:50). Restore before any
+measurement that assumes a clean install.
+
+## 2026-08-21 ultracode decomp lane
+
+1. **DONE — focused candidate gating.** Added repeatable `--address` selection and isolated
+   `--report-prefix` outputs to `tools/gate_re_agent_candidates.py`. The newest twelve Wave 3
+   candidates now gate in about eight seconds without rescanning all 910 candidates or replacing
+   the canonical reports. Focused report: `rebuild/compile-gate/wave3-0045-new.tsv`.
+2. **DONE — triage newest Wave 3 PASS batch.** All 12 pass source-integrity checks; 8/12 pass the
+   host C++20 syntax shim; 0/12 are directly VC7.1-compatible; 0/12 trigger semantic quarantine.
+   Agent PASS is therefore treated as structural evidence only.
+3. **ACTIVE — `TreeNode_AllocData @ 0x0045C4D2`.** Retail is a 34-byte stdcall-like allocation and
+   two-dword copy (`ret 4`). The first readable VC7.1 spelling is behaviorally equivalent but
+   compiles to 32 bytes (`add esp,4` / `add eax,0x10` and different copy registers), so it remains
+   an honest `DIFFER(32v34)` residue and is not landed. Iteration evidence is under
+   `work/decomp_0045c4d2/`.
+4. **NEXT — promote the lowest-friction members of the batch.** Start with `Copy_MemoryStepped
+   @ 0x0045493E` and `CActiveFile_CopyRange @ 0x0045BCC1`, which already pass the host syntax gate
+   and need only fixed-width-type downgrades before the VC7.1 byte/behavior gate.
+5. **NEXT — canonical refresh.** Run the full refresh without `-Force` after a candidate actually
+   lands or the Wave queue changes the fingerprint; do not spend a full scan on focused triage.
+
+### 2026-08-21 continuation result
+
+- **LANDED — `CActiveFile_AllocateAndCopy @ 0x0045BCF2`.** Readable VC7.1 source plus retained frame
+  pointer and size optimization reproduces all 50 retail bytes after masking the two call
+  relocations. The focused behavior fixture passes, the selected canonical build passes, and the
+  parity ledger reports `RELOCATION_MATCH` with zero missing oracle rows.
+- **BOUNDED RESIDUE — `Copy_MemoryStepped @ 0x0045493E` and `CActiveFile_CopyRange @ 0x0045BCC1`.**
+  These are byte-identical 35-byte specializations apart from the `memmove` relocation. Their
+  corrected four-parameter fastcall sources have the right `ret 8` behavior, but VC7.1 canonicalizes
+  both to the same 30-byte body. Both behavior fixtures pass; neither is falsely landed.
+- **TOOLING FIX — transactional oracle validation.** `verify_and_land.py` now validates the required
+  TSV schema, hex payloads, and declared lengths before compiling or writing landed artifacts. This
+  prevents malformed focused oracles from failing only after source/catalog mutation.
+
+### 2026-08-21 continuation queue 2
+
+1. **LANDED — `CActiveFile::AllocateArray @ 0x00454961`.** Reused the proven allocation/copy source
+   shape from `0x0045BCF2`; selected VC7.1 build and behavior fixture pass, with 50/50 retail bytes,
+   two masked call relocations, and canonical `RELOCATION_MATCH`.
+2. **BOUNDED — `Vector_AllocateAndCopyRGB @ 0x0045BBC5`.** Recovered the retail
+   destination-minus-source offset loop and reached 68/68 bytes with behavior PASS. The remaining
+   miss is a stable ESI/EDI allocation swap across two source formulations, so it is queued as a
+   register-allocation residue rather than falsely landed.
+3. **BOUNDED — `CTCCarryable_AssignTreeStructure @ 0x0045C19F`.** The typed overlay and tail-walk
+   behavior pass, but the current VC7.1 body is 129 bytes versus retail's 115. Its sibling
+   `0x0045C3CF` has the same 115-byte body apart from call relocations, so one future source-shape
+   recovery should promote both.
+4. **NEXT — template sibling harvesting.** After each exact landing, search the manifest and retail
+   disassembly for byte-identical/template-specialized siblings before selecting a new shape. This
+   pass turned the `0x0045BCF2` solution directly into the `0x00454961` landing.
+5. **NEXT — resume fresh small shapes.** Prefer candidates outside the three bounded residues above;
+   return to them only with a new compiler flag, type signature, or register-allocation hypothesis.
+
+### 2026-08-21 continuation queue 3
+
+1. **LANDED — `Math_ComputeByteChunkCount @ 0x00C9CB60`.** The signed divide-by-255 expression
+   compiles to an exact 24/24-byte `MATCH`; boundary fixtures cover zero, 254, 255, and -255.
+2. **LANDED — fixed-size allocator family.** `Allocator_Alloc_56bytes @ 0x0042AC52`,
+   `Allocator_Alloc_24bytes @ 0x0042AC9F`, and `Allocator_Alloc_28bytes @ 0x0042AD10` each reproduce
+   all 22 retail bytes after masking only the `malloc` relocation. Their selected behavior and
+   canonical builds pass.
+3. **LANDED — `ListNode_AllocateNode @ 0x00450E6E`.** Reused the fixed-size allocator shape for
+   another 22/22-byte relocation match, with behavior and selected canonical build passing.
+4. **NEXT — drain allocator siblings.** Addresses `0x00450EBB` through `0x00451303` contain fifteen
+   nearby allocator specializations (mostly 0x18-byte nodes, plus 0x24 and 0x14 variants). Verify
+   each retail boundary and hidden stack parameter, then batch-land the byte-identical shapes.
+5. **NEXT — return to semantic leaves after the allocator drain.** The current small-shape queue
+   begins with RB-tree iterator wrappers and linked-list insertion forwarders; keep their real
+   helper declarations rather than adding compile-only stubs.
+
 *Reconciled 2026-08-05 from the canonical rebuild, focused frontend tests, and
 strict visual/retail parity gates.*
 
@@ -766,3 +1289,59 @@ another agent wave.
 - Keep behavior-only `DIFFER` functions out of byte-match totals.
 - Preserve automation-owned dirty files and commit scoped changes only.
 - Update the three generated TSVs after every landing wave so completed addresses disappear.
+### stage45 — native repeated-mesh grass runtime result (2026-08-22, FAILED VISUAL GATE)
+
+- [x] Replaced the failed type-0 grass shortcut with the retail type-1 grammar.
+- [x] Recovered paired instance vectors from a real retail batch:
+  orientation/scale followed by world position/scale.
+- [x] Authored 300 grass instances over ForgeTest64; corrected scanner reports
+  300 bound, 0 unbound, X 3329..3391, Y 2306..2367, Z 72..84.
+- [x] Fixed the scanner's post-frame four-byte alignment bug.
+- [x] Added a byte-level repeated-grass regression test; full test suite passes.
+- [x] Assembled `stage45_repeated_grass_bright_runtime_package`; `forge validate`
+  reports CLEAN. Terrain chunk hash prefix `F91FAF8D5B2DC2B6`, STB hash prefix
+  `9D6EC9E93C109765`.
+- [x] Raised local-detail probe retention from 512 to 5000 calls so the custom
+  map remains observable after retail startup streaming (probe DLL `C06F9D9F2D1859B2`).
+- [x] Deployed and run. ForgeTest64 loads and the hero arrives in bounds, but no
+  grass is visible. The installed live log reaches `arrival verification
+  map=ForgeTest64 in_target_bounds=true`.
+- [x] Offline structure remains internally consistent: the extracted stage45
+  chunk scans as 300 bound instances, zero unbound, in X 3329..3391 / Y
+  2306..2367 / Z 72..84.
+- [ ] **ACTIVE BLOCKER:** the authored collection payload is never opened at
+  runtime. The retained hook logs many retail `CObjectTypeCollection::Load`
+  calls around the transition, but no custom repeated-mesh stream (decoded size
+  approximately 9.7 KiB) after ForgeTest activation. Therefore the failure is
+  before primitive parsing/rendering, in local-detail root/group spatial update
+  or file-block selection. Do not change the now-proven paired instance arrays
+  again; instrument `CLocalDetailCacheMap::StaticUpdate` and
+  `CObjectCacheGroupCollection` selection/culling next.
+- [ ] **SEPARATE VISUAL BLOCKER:** the stage45 screenshot has near-black terrain
+  faces. Textures and relief are present, so treat this as foreground packed-
+  normal/environment-lighting input, not as a foliage or missing-texture fault.
+  Compare authored foreground normals against a retail patch in the same world
+  light before applying another texture-brightness workaround.
+
+### stage46 — local-detail group sphere fix (2026-08-22, READY FOR RUNTIME)
+
+- [x] Recovered the decisive `CObjectCacheGroupCollection::LoadHeader` /
+  `StaticUpdate @ 0x00BDEB50` contract directly from retail instructions.
+  Group-header bytes `+0x0C..+0x1B` are `(sphereCenterX, sphereCenterY,
+  sphereCenterZ, sphereRadius)`, not `(minX,minY,maxX,maxY)`.
+- [x] Corrected `buildType0LocalDetailSection` to derive a world-space sphere
+  enclosing every authored placement, including its vertical extent. This
+  removes the pre-payload cull that prevented stage45's ~9.7 KiB repeated-mesh
+  stream from ever reaching `CObjectTypeCollection::Load`.
+- [x] Added byte-level assertions for both native type-0 and repeated-mesh
+  group spheres. `forge_tests` passes, and the complete 10-target CTest run is
+  9/10 with only the pre-existing dirty-worktree `forge_bwd_tests` phase-3
+  byte-exact fixture mismatch.
+- [x] Built `ForgeTest64_terrain_v22.chunk.bin` (300 bound / zero unbound grass
+  instances) and assembled
+  `stage46_foliage_spherefix_runtime_package`. `forge validate` is CLEAN; its
+  STB SHA-256 is
+  `AECB64707DD6234240B082559C2F5557A44E2A0D4670A8F2AF1BAD0609C231B6`.
+- [ ] Runtime gate: after the current Fable process is closed, deploy stage46
+  through the rollback harness and require both the custom collection-load
+  probe and visible grass before promotion.

@@ -4,8 +4,10 @@ Both defects in the stage49 screenshot are diagnosed. They are **separate bugs w
 root causes**; they share only a theme — in each case FableForge synthesised auxiliary
 normal-derived data from its own model instead of porting the engine's algorithm.
 
-**Status 2026-08-23: fix-plan step 1 (cliffU/cliffV) is IMPLEMENTED and gated** — see section 7.
-Steps 2-6 (foliage) are still diagnosis only.
+**Status 2026-08-23: fix-plan steps 1, 2, 3, 5 and most of 6 are IMPLEMENTED and gated** — see
+sections 7 (terrain) and 8 (foliage). Step 4 (porting the subsection builder) is deliberately
+deferred: the fabricated table was deleted rather than kept, and a null table is a proven-legal
+retail configuration. Open unknown 1 (the 32-vs-255 cap) is RESOLVED in section 8.
 
 Raw agent output backing every claim below:
 `work/no_donor_terrain_pack/RE_NOTES_20260822_subsections_manager_palette.md` (92 KB).
@@ -343,3 +345,111 @@ Darkwood_3's own 15.3%, so nothing is being masked.
 **Not yet done:** v26 has not been packaged, installed, or run. The runtime check of the dark
 terrain is the next action and needs the game, as does the section-5 open unknown #2 (walk to
 ~(3360, 2320) and look down for grass). Foliage steps 2-6 are untouched.
+
+
+---
+
+## 8. The instance cap resolved, and the foliage writer fixed (2026-08-23)
+
+### 8.1 The 32-vs-255 contradiction — resolved
+
+Both figures are real; they bound different things, and the disassembly of
+`RenderSubPrimitive` (FableWin `0x02ED0610`) settles which one a writer must obey.
+
+- **255 is the format bound.** `ObjectCount > 0 && < 256` (assert at `0x02EDF851`) exists because
+  the subsection element's `objCount[4]` / `startIndex[4]` are `u8`.
+- **The draw loop does not cap at 32.** At `0x02ED12B9-0x02ED1333` the renderer *chunks*:
+  `batch = layout+0x174`, then for `b = 0, 1, ...` it draws
+  `n = min(batch, total - b*batch)` instances starting at `b*batch`, stopping when `n <= 0`.
+  So a primitive with more than 32 instances is drawn correctly **when nothing is culled**
+  (`0x02ED09C3`: `total == ObjectCount` takes the fast path straight off the primitive's own
+  arrays). This refutes the earlier claim that our 240-instance batch was "undrawable on that
+  alone" — it was out of contract, but it was not the thing stopping the draw.
+- **32 is the cull-compaction bound, and it is the operative one.** When `total != ObjectCount`
+  the survivors are compacted into the manager's lane arrays at `mgr+0x90`, and the stores at
+  `0x02ED0B54` / `0x02ED0B78` / `0x02ED0BA0` are `base[i*4]`, `base[i*4+0x80]`, `base[i*4+0x100]` —
+  **the lanes are strided 0x80 bytes = 32 floats apart**. Instance 32 writes into lane array Y.
+  In the debug build the assert at `0x02ED08DF` (`cmp total, 0x20; jle`) catches it; retail has no
+  assert and silently corrupts.
+- **Retail never gets near it.** Independently measured on retail Darkwood_3 with
+  `tools/localdetail_verify.py`: 45 type-1 records, `ObjectCount` min 1, **max 30**, mean 11.4.
+
+**Writer rule:** split at <= 32 instances per type-1 primitive. Emitting more is only safe for a
+primitive that can never be partially culled (no subsection table), which is a worse trade than
+splitting.
+
+### 8.2 Also settled from retail bytes
+
+- **A null subsection table is legal, not a degraded mode.** 8 of Darkwood_3's 45 type-1 records
+  carry none, and `RenderSubPrimitive` has an explicit no-table path (`0x02ED0E25`) that draws
+  `[0, ObjectCount)`. So deleting our fabricated single-lane element loses per-quadrant culling and
+  nothing else.
+- **The collection's leading EBOOL is NeedsRenderUpdate, not "enabled".** Every type-1 grass
+  collection sampled out of retail (groups `0xb87ee`, `0xb9140`, `0xbbb27`, all CacheGroup 4)
+  carries **0** and renders. Our writer had it at 1.
+
+### 8.3 What changed in the writer
+
+In `stbbake.cpp`, all gated by `tools/localdetail_verify.py` below:
+
+1. **Batch splitting** — type-1 instances are emitted as `ceil(n/32)` primitives instead of one
+   oversized primitive (`kRepeatedMeshMaxBatch`).
+2. **`LandscapeNormalArray` is whole-array SoA** — `X[P] | Y[P] | Z[P]`, `P = (count+3)&~3`, pad
+   slots `0xCDCDCDCD`, populated with the real terrain normal under each instance from the engine's
+   own `CMap::PeekMapNormal` port (`mapNormal`). It was an interleaved `(0,0,1)` triple per
+   instance, which decodes as degenerate under the engine's SoA read.
+3. **The fabricated subsection table is deleted** (presence byte 0) rather than kept until
+   `BuildSubSectionsAndObjectRemapTable` is ported.
+4. **Group header fade/mask/CacheGroup come from the `GetCacheGroupInfo` table**, not from the
+   palette's own fade and a synthesised mask; the node's quad header takes the OR/MAX of its
+   subtree. For grass that is CacheGroup 4 -> fade 23.0, mask 3 — byte-identical to what retail's
+   grass groups carry.
+5. **Coverage and density** — the 240-instance truncation is gone (it had confined grass to the
+   southern third of a map whose draw radius is ~21 units) and the scatter grid went from step 3 to
+   step 2, ~0.25 candidates/u2 before slope rejection against retail Darkwood_3's 0.215/u2.
+   Placements are ordered by 8x8-cell tile so each 32-instance batch has a tight bounding sphere
+   instead of a map-wide one.
+6. The collection EBOOL is now 0 for everything but z-sprite batches.
+
+### 8.4 Gate — `tools/localdetail_verify.py`
+
+New structural decoder and checker for baked local-detail sections. It walks the quadtree from the
+root header in the map's STB common record, decompresses each group, parses the collection and
+primitive grammar, and enforces the engine's constraints: `0 < ObjectCount <= 32`, normal array
+present and unit length, `|A.xy| == B.w`, instances inside their primitive's sphere and bbox, and
+contents consumed exactly.
+
+**It validates retail first.** On retail Darkwood_3 (extracted from `FinalAlbion_RT.stb`): 21
+quadtree nodes, 41 groups, 394 primitives, 848 instances, 37 subsection tables, zero problems. The
+only thing it cannot walk is a type-2 ZSpriteBatch (13 groups stop early), which is a documented
+open unknown, reported as a skip rather than silently.
+
+ForgeTest64, same tool, before and after:
+
+| | v25 (before) | v29 (after) | retail Darkwood_3 |
+|---|---|---|---|
+| type-1 primitives | 1 | 20 | 45 |
+| instances | 240 | 610 | 848 |
+| ObjectCount max | **240** (violates the cap) | **32** | 30 |
+| normals | degenerate (AoS misread as SoA) | unit, real terrain normals | unit |
+| fabricated subsection tables | 1 | 0 | n/a (37 real ones) |
+| group fade / mask / CacheGroup | 20.0 / 2 / 0 | **23.0 / 3 / 4** | 23.0 / 3 / 4 |
+| collection EBOOL | 1 | 0 | 0 |
+| verifier verdict | 2 problems | **OK** | OK |
+
+Chunk: `work/no_donor_terrain_pack/ForgeTest64_terrain_v29.{chunk,info,common}.bin`. FableForge's
+own `forge_tests` writer tests were updated to the corrected contract (they had encoded the old
+assumptions) and pass.
+
+### 8.5 Known remaining gaps (not defects that block a draw)
+
+- **One quadtree node.** Retail attaches groups to 16x16 leaf nodes (Darkwood_3: 21 nodes); we
+  still emit a single root group covering the map. Culling granularity only.
+- **No subsection tables** — legal, but not parity. This is fix-plan step 4, still open, and it is
+  the one place where a byte-diff against a retail batch's bytes is the right gate.
+- **Group file-block triple** is our own block rather than the owning node's.
+- **Palette slot order (Mesh/ShadowMesh/ZSpriteMesh)** is still swapped on both the writer and the
+  reader; they cancel today and must be fixed together.
+- The built-in catalog's CacheGroup for near-mesh types looks off by one (entry 14 carries
+  CacheGroup 0 while its fadeStart 118 is CacheGroup 1's fade). The writer honours the palette
+  field; the catalog itself needs re-harvesting.

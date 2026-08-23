@@ -1,0 +1,1 @@
+call "D:\Subuwu\tools\ghidra-public\support\analyzeHeadless.bat" "D:\Documents\FableTLC\ghidra_proj" FableTLC -process Fable.exe -noanalysis -readOnly -scriptPath "D:\Documents\FableTLC\tools\ghidra_scripts" -postScript DecompByName.java CompositeSurfaceCache DiskCache GFIntToCharString SurfaceCache UpdateDiskCacheTexture
