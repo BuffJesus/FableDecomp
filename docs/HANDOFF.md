@@ -9179,3 +9179,116 @@ closed the match.
 Validation: selected candidate gate PASS (including the existing behavior test), independent
 permuter score 0, canonical comparison 8,059 `MATCH` + 9,977 `RELOCATION_MATCH`, **34
 `DIFFER`**, 0 missing oracles, and `purity.py` PASS (no assembly/naked sources).
+
+---
+
+# 2026-08-22 (late) — ForgeTest64 black terrain + invisible foliage: DIAGNOSED, not yet fixed
+
+Resume point for the ForgeTest64 visual work. **No code was changed this session.** The FableForge
+worktree is exactly as it was; nothing was deployed; the game was never launched.
+
+Read first: `docs/FORGETEST64_DARK_TERRAIN_AND_FOLIAGE.md` (full diagnosis, evidence chains, fix
+plan, open unknowns). Engine grammar appended to `docs/FOLIAGE_LOCAL_DETAIL_RE.md` "Session 3".
+Raw agent output preserved at
+`work/no_donor_terrain_pack/RE_NOTES_20260822_subsections_manager_palette.md` (92 KB).
+
+## The two root causes, in one line each
+
+1. **Dark terrain.** `stbbake.cpp:780-781` writes `cliffU`/`cliffV` as slope and normalised height;
+   the engine reads them as the direction-mask normal's X/Y, `int((n*0.5+0.5)*255)` truncating, and
+   feeds them to a blend table whose alpha is 0 outside a diamond mask. 91.6% of our vertices fall
+   outside it (retail Darkwood_3: 15.3%); the surviving 8.4% is the one lit wedge. Entered at chunk
+   v11 when the bake switched to `buildLayeredForeground`.
+2. **Missing foliage.** Not the normals — that hypothesis is REFUTED (degenerate normals make an
+   instance ambient-only, never invisible). The blocker is that our single batch has **240
+   instances** against a retail max of 32, plus a **~21 world-unit draw radius** (fade 20/22,
+   alpha-ref 130) against a placement that covers only y in [2306, 2339].
+
+## Do next, in order
+
+1. **Cheapest test in the whole plan, do it before writing any code:** load the existing stage49
+   package, walk to about **(3360, 2320)** and look down. The draw radius is ~21 units and our grass
+   only occupies the southern third of the map. If blades appear, the writer is much closer to
+   correct than the last four stages assumed.
+2. Resolve the **32 vs 255 ObjectCount cap** contradiction (assert at `0x02EDF851` says <256;
+   `MAX_BATCH_SIZE` is 0x20 and retail's observed max is exactly 32). Everything about batch
+   splitting depends on which is real.
+3. Implement the fix plan in `docs/FORGETEST64_DARK_TERRAIN_AND_FOLIAGE.md` section 4, in order.
+   Step 1 (cliffU/cliffV) is independent of all the foliage work and fixes the dominant visual
+   defect on its own — ship it alone for a clean signal.
+
+## Parity and purity apply to the data writers, not just decomp
+
+Owner restated this as the governing standard for this work. Port the engine function that produces
+a value (`BuildMapDirMask` `0x02CAE270`, `BuildSubSectionsAndObjectRemapTable` `0x02EDF740`,
+`PackVertexNormal`) from its disassembly, and prove it by diffing emitted bytes against retail's.
+The least-squares fit `cU = 126.98 + 113.82*nx` is an ORACLE FOR CHECKING A PORT, never a
+substitute for one. Invented damping factors and hand-made tables are the defect class itself — the
+`0.45f` slope damping in `normalAt()` and the fabricated 1-lane subsection table were both symptom
+patches that masked real bugs, and both are slated for deletion rather than tuning.
+
+## Traps re-confirmed this session
+
+- **Never write a float at group-header disk `+0x20`.** It is an integer band index into a stride-8
+  table (`LoadHeader 0x02E370D0` -> obj `+0x1C` at `0x02E3721B`, no FPU; indexed at retail
+  `0x00B597E0` with an index<8 assert). Float `22.0f` gave `0x0D000000` -> AV at `0x00B597E8`.
+  That was the stage47/48 crash. Both `+0x1C` fade and `+0x20` mask come from the CacheGroup table;
+  for ForgeTest64, CacheGroup 4 -> fade 23.0, mask 3.
+- **Stage46's group bounding sphere fix is what made the collection load. Keep it.**
+- **Stage45 is void as evidence** — it wrote presence=0 for the normal array, which would have
+  AV'd at `RenderSubPrimitive`; since it did not crash, it never got there.
+- The FSE log is single-attach with no rotation (why stages 46-48 have no evidence). Copy it into
+  `runtime_evidence\<stage>\` before every relaunch. And the FSE foreground decode probe
+  (`ForgeFSE\FableScriptExtender\FableAPI.cpp:1713-1810`) is misaligned by +4 bytes, so every
+  per-vertex number it has logged is shifted one field — fix before trusting it.
+
+
+---
+
+# 2026-08-23 — ForgeTest64 dark terrain FIXED in the writer (step 1 of the fix plan)
+
+Resume point. The dominant ForgeTest64 visual defect (black terrain) is fixed at its root in
+FableForge's bakers and gated against retail. Foliage (steps 2-6) is still diagnosis only, and
+nothing has been packaged, installed, or run — the game was never launched this session.
+
+Full write-up with both gate tables: `docs/FORGETEST64_DARK_TERRAIN_AND_FOLIAGE.md` section 7.
+
+## What changed (FableForge, still UNCOMMITTED like the rest of that worktree)
+
+- New shared engine ports in forgecore `stbbake`: `buildMapDirMask` (retail `0x009BF540` /
+  FableWin `0x02CAE270`), `packDirMaskByte`, `packMapNormal` (CMap::PeekMapNormal),
+  `quantizeEngineHeight`, `clampedHeightSampler`.
+- `buildLayeredForeground` now writes cliffU/cliffV as the direction-mask normal's X/Y instead of
+  slope/normalised-height; `buildSingleMaterialForeground` writes them per vertex instead of a
+  pinned 128/128. All three bakers (those two plus `buildBackgroundPatchRect`) take their packed
+  normal from `packMapNormal`, and the invented `0.45f` upward damping is deleted.
+- `apps/forge/main.cpp`'s `--rebuild-direction-mask` lambdas delegate to the shared ports, so the
+  algorithm exists once.
+- New CTest `forge_dirmask_tests` (`tests/test_dirmask.cpp`) — retail parity gate, fixture list via
+  `FORGE_DIRMASK_CASES`, SKIPs without it. Example list:
+  `tests/fixtures_dirmask_cases.example.tsv`.
+
+## Evidence
+
+- Retail parity: Darkwood9_Leadout_01 1,089/1,089 exact, Darkwood_Filler_15 9,409/9,409 exact,
+  Darkwood_9 4,205/4,225. The 20 misses are +/-1 LSB, reproduced identically by the independent
+  Python oracle `tools/compare_retail_direction_mask.py`, and NOT closed by recomputing in
+  `long double` (x87 width is not the cause) — the test carries an explicit `allow=20` for that case.
+- ForgeTest64 re-bake `work/no_donor_terrain_pack/ForgeTest64_terrain_v26.{chunk,info}.bin`:
+  corr(cliffU,nx) 0.000 -> 0.997, corr(cliffV,ny) 0.012 -> 0.989, black (`w<=0`) fraction
+  91.6% -> 4.5% (retail Darkwood_3 is 15.3%), normals still unit length.
+
+## Do next
+
+1. Package v26 and run it. Dark terrain should be gone; that is a clean single-variable signal
+   because no foliage code changed. Copy the FSE log into `runtime_evidence\<stage>\` FIRST — it
+   is single-attach with no rotation.
+2. While in there, do the cheapest open question in the plan: walk to about (3360, 2320) and look
+   down. Draw radius is ~21 units and the grass only covers the southern third.
+3. Then fix-plan steps 2-6 (foliage), starting with the 32-vs-255 ObjectCount cap contradiction,
+   which gates the batch split.
+
+Unrelated pre-existing failure seen while running the suite: `forge_bwd_tests` asserts on
+"phase 3 text->bwd compile not byte-exact" (region slot 141 ForgeTest64_Region). It fails
+identically with this session's changes stashed, so it belongs to the installed BWD fixture, not to
+this work.
