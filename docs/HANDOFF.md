@@ -9673,6 +9673,13 @@ source objects. Fixed-size type-1 and type-2 serialization cannot approach the 3
 adding collection types creates more groups rather than enlarging one. Forge keeps the generic
 branch, but no synthetic oversized foliage oracle is needed.
 
+The x87 bake-state question is closed offline. FableWin's `__setdefaultprecision` at `0x0186B630`
+sets PC=53 through `_controlfp_s`, retaining round-to-nearest/even. Device creation starts its D3D
+behavior flags at `0x6` (therefore includes `D3DCREATE_FPU_PRESERVE=0x2`) and preserves that bit in
+both hardware/software branches. No later control-word setter lies on the bake path. The writer's
+53-bit/nearest helpers therefore match the editor contract; a visual or live instrumentation pass
+is not required for this backend conclusion.
+
 `CQuadTreeElement::IsValid` polarity is closed offline: it returns true for static load info
 (`+0x34 > 0`), any child, or a cache-group collection (`+0x04`), and false only for a completely
 empty node. Forge's authoring-time subtree prune is therefore the native delete-on-false rule.

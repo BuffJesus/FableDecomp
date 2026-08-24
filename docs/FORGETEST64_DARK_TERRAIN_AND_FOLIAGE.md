@@ -612,11 +612,13 @@ part that is genuinely clean.**
 - **CLOSED by palette-to-mesh resolution — collection identity.** A map-local collection type
   resolves through its palette entry to a dense MBANK_ALLMESHES id; the mesh id, not the local type
   number, selects sphere and polygon data.
-- **The x87 control word at bake time.** Both `roundToInt` sites and `ceilToInt`'s `fistp` use the
-  current rounding mode, and every `fdiv`/`fadd` the current precision control. Nothing in the
-  traced path sets it; round-half-to-even / 53-bit is the working assumption, but a D3D device
-  creation elsewhere can set PC=24. Must be settled with a live FPU-CW read before claiming
-  byte-exact float parity.
+- **CLOSED offline — x87 control state.** `__setdefaultprecision` (`0x0186B630`) calls
+  `_controlfp_s(nullptr, 0x10000, 0x30000)`, selecting PC=53 while leaving the default
+  round-to-nearest mode intact. `CDisplayManager::CreateDevice` (`0x0301B7A0`) initializes its D3D
+  behavior flags to `0x6`, so `D3DCREATE_FPU_PRESERVE` (`0x2`) is present; both branches retain it
+  while ORing `0x50` or `0x20`. The only direct `_controlfp_s` call in the executable is the PC=53
+  setter, and no setter occurs on the traced bake path. Thus D3D does not collapse the editor to
+  PC=24: the bake contract is PC=53, round-to-nearest/even.
 - **CLOSED in 11.7 — max file-block size.** The generator constructor writes the literal `0x8000`
   to `CEngineLocalDetailGenerator+0x80` at `0x02D27014`.
 - **CLOSED in 11.10 — file-block alignment** is the enclosing bank's `CBankFile+0xc0` property;
@@ -640,8 +642,7 @@ part that is genuinely clean.**
 
 ### 9.6 What remains for parity (corrected)
 
-1. Settle the x87 control word at bake time before claiming exact float-byte parity.
-2. Accept that subsection element tail bytes `0x4c..0x4f` and group-header byte `0x27` are
+1. Accept that subsection element tail bytes `0x4c..0x4f` and group-header byte `0x27` are
    uninitialized native residue; deterministic Forge output intentionally writes zero there.
 
 The earlier permutation defect claim is withdrawn by section 11.6: retail arrays are already
