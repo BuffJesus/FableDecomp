@@ -9688,3 +9688,42 @@ excluded). v36 is another byte-identical deterministic bake with the established
 `CQuadTreeElement::IsValid` polarity is closed offline: it returns true for static load info
 (`+0x34 > 0`), any child, or a cache-group collection (`+0x04`), and false only for a completely
 empty node. Forge's authoring-time subtree prune is therefore the native delete-on-false rule.
+
+## RESUME 2026-08-23 (late) — FableForge Things editor
+
+Read `docs/THINGS_EDITOR.md` first; it is the resume point for level-object editing.
+`docs/CUSTOM_LEVEL_AUTHORING_UX.md` is the whole authoring journey around it.
+
+Shipped this session, all GUI-verified by driving the app:
+
+- **Shipped levels are editable at all.** Retail levels live in FinalAlbion.wad, so opening one
+  dead-ended. The Landscape panel now offers "Check Out & Edit": it extracts the .lev AND .tng into
+  a folder of the user's choosing and edits those; the install is never written to.
+- **Things is its own editor** (own rail entry, own UI), split from Landscape per user direction.
+  Both share `App::BeginTerrainViewport` / `ProjectPoint`, so the camera and ground are the same.
+  Greatwood_1 renders 304/313 things as colour-coded pins; the 9 missing have no CTCPhysicsStandard.
+  LMB select, drag to move (re-snaps Z), inspector for position/facing, filter, Save .tng.
+- **Ground-theme palette rebase** landed in the writer (`forge::lev` audit/rebase +
+  `forge::themepalette`), in `forge validate`, in the GUI Verify panel, and on the Landscape save
+  path. `forge lev themecheck|themerebase`. Retail audits clean; our authored terrain was 18/18
+  wrong (pointing at CREATURE defs) and is now clean.
+- **Validate is real**: the header button was a disabled placeholder; it now runs and shows results,
+  follows the folder open in World, and treats a project as an OVERLAY on its base install
+  (816 phantom "missing level" problems -> 18 real ones).
+
+Corrections made this session (do not re-inherit the old claims):
+
+- There is **no 142-region cap**. The runtime vector is sized from world data; the install runs at
+  145 regions. The real rule is that every map needs an owning region that contains it.
+- Only **8** UNASSIGNED_* texture slots are free, not 156 (148 are referenced by themes). Bank
+  append is therefore the main road, not an escape hatch — but whether the engine texture pool grows
+  with the bank is UNVERIFIED in game.
+- A ground theme **is** the material: ENGINE_THEME defs carry BaseTexture/Cliff*/BumpMap ids plus
+  LocalDetailGeneratorDef, MaterialDef, MinimapTheme, Friction, water.
+- Region atmosphere: REGION def -> EnvironmentTheme -> ENVIRONMENT_THEME_DAY (7 time-of-day entries,
+  sun/moon angles). There is exactly ONE SKY_DEF, so editing it repaints all of Albion.
+
+Still outstanding, in order: mesh previews for things (both links now closed — def Graphic.modelId,
+and `_prim_geometry` in the Blender addon as the geometry decoder to port), an entity palette with
+drag-to-place, a CTC property inspector, thing->node-graph->ForgeFSE script binding, and then the
+in-game test that has never been run: repack the WAD, install, launch, read the sign in Greatwood_1.
