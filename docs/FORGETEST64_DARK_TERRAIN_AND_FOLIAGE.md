@@ -961,3 +961,19 @@ Backend-only v35 is SHA-256 identical to v34/v33
 grass already used the simple three-indices-per-face form. `localdetail_verify.py` reports 21
 nodes, 16 groups, 24 primitives, 610 instances, all 24 subsection tables present, maximum batch
 32, and `OK`. No packaging, installation, launch, or visual check was performed.
+
+### 11.12 Polygon decoder cross-implementation regression gate
+
+`tools/mesh_polycount_audit.py` turns the former one-off probe into a repeatable failure gate. It
+takes `graphics.big` plus any tab-separated foliage oracle containing `meshIdx`, decodes every
+referenced primitive through `tools/parse_mesh.py`, prints the triangle totals, and exits non-zero
+for an absent mesh, descriptor, or primitive header.
+
+Forge now also exposes its production reader through
+`forge foliage meshinfo <graphics.big> [--json]`. Comparing that JSON to the independent Python
+audit gives **44 / 44 exact polygon-count matches**. A whole-bank parser pass accepts 3,295 / 3,296
+compiled descriptors; the sole exception is the already-special `MESH_ENGINE_UNIT_BOX`, and none
+of the 44 foliage references use it. `forge_tests` remains fully green.
+
+Backend-only v36 is a second deterministic rebuild after adding this gate. Its chunk hash remains
+`AFE2769890B0AE8596B6BD98BEBCC5E4CFF1310C6B55BC67424FE7953C5C94BC`, identical to v33-v35.

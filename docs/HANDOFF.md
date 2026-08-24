@@ -9615,7 +9615,7 @@ confirmed by stashing today's changes.
 
 ## Chunks produced today
 
-`work/no_donor_terrain_pack/ForgeTest64_terrain_v{26..35}.*`. **v35 is the current one**
+`work/no_donor_terrain_pack/ForgeTest64_terrain_v{26..36}.*`. **v36 is the current one**
 (`--mesh-bank`, real subsection tables, 16 quadtree nodes, 24 primitives, 610 instances, batch max
 32, verifier OK). v32 is a byte-identical duplicate of v31 made during a reproducibility check and
 can be deleted.
@@ -9679,6 +9679,12 @@ behavior flags at `0x6` (therefore includes `D3DCREATE_FPU_PRESERVE=0x2`) and pr
 both hardware/software branches. No later control-word setter lies on the bake path. The writer's
 53-bit/nearest helpers therefore match the editor contract; a visual or live instrumentation pass
 is not required for this backend conclusion.
+
+The polygon-count check is now durable rather than a scratch command:
+`tools/mesh_polycount_audit.py <graphics.big> <mesh-spheres.tsv>`. Production exposes the same data
+with `forge foliage meshinfo <graphics.big> --json`; the independent implementations agree 44/44.
+The whole mesh bank parses 3,295/3,296 compiled descriptors (only the special engine unit box is
+excluded). v36 is another byte-identical deterministic bake with the established SHA-256.
 
 `CQuadTreeElement::IsValid` polarity is closed offline: it returns true for static load info
 (`+0x34 > 0`), any child, or a cache-group collection (`+0x04`), and false only for a completely
