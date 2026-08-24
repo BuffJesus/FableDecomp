@@ -632,14 +632,16 @@ part that is genuinely clean.**
   UpdateDynamicArea's delete-on-false branch prunes empty children exactly as Forge does.
 - **CLOSED — type-2 `CLocalDetailPrimitiveZSpriteBatch` on-disk layout** is `44 + count*84` after
   its primitive tag. The four-map parser walks 527/527 groups with no unknown primitive types.
-- **A group taking its own file block** exists in code (`0x02E3F292`) but 0 of 612 retail groups
-  exceeded the limit, so that shape has no retail oracle.
+- **CLOSED as unreachable for generated type-1/type-2 groups.** The own-file-block branch exists
+  at `0x02E3F292`, but the recovered generator caps the whole cache group at 64 source objects
+  (`GetSourceObjectCount < 0x40`), not 64 per collection. Fixed-size repeated-mesh and z-sprite
+  records therefore stay far below 32 KiB. The generic native branch remains preserved for other
+  loaded/static collection shapes; 0 of 612 sampled retail groups used it.
 
 ### 9.6 What remains for parity (corrected)
 
 1. Settle the x87 control word at bake time before claiming exact float-byte parity.
-2. Obtain or synthesize an oracle for a group large enough to take its own file block.
-3. Accept that subsection element tail bytes `0x4c..0x4f` and group-header byte `0x27` are
+2. Accept that subsection element tail bytes `0x4c..0x4f` and group-header byte `0x27` are
    uninitialized native residue; deterministic Forge output intentionally writes zero there.
 
 The earlier permutation defect claim is withdrawn by section 11.6: retail arrays are already

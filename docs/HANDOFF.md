@@ -9667,6 +9667,12 @@ known `sVert` values and `flags <= 3`. The reader and `tools/parse_mesh.py` deco
 referenced mesh IDs. Backend-only v35 is byte-identical to v34/v33 and passes the structural gate;
 no visual/runtime work was done.
 
+The oversized-group file-block question is also closed for generated foliage. The native branch
+at `0x02E3F292` is generic, but `AddObjectsFromLayerElement` caps the entire cache group at 64
+source objects. Fixed-size type-1 and type-2 serialization cannot approach the 32 KiB threshold;
+adding collection types creates more groups rather than enlarging one. Forge keeps the generic
+branch, but no synthetic oversized foliage oracle is needed.
+
 `CQuadTreeElement::IsValid` polarity is closed offline: it returns true for static load info
 (`+0x34 > 0`), any child, or a cache-group collection (`+0x04`), and false only for a completely
 empty node. Forge's authoring-time subtree prune is therefore the native delete-on-false rule.
