@@ -148,20 +148,20 @@ def parse_compiled_header(pay):
     return dict(name=name, skel_flag=skel_flag, origin=origin, header_end=p)
 
 
-def find_subm_headers(pay, lod_off):
-    """Heuristically locate SUBM sub-headers within a LOD block.
+def find_subm_headers(pay, first_lod_span):
+    """Heuristically locate primitive sub-headers before the first LOD boundary.
     A SUBM header is 5 consecutive dwords (nVerts, nFaces, nFaceVertexIndices,
-    sVert, flag) where nFaceVertexIndices == 3*nFaces and sVert in {4,6,20,22}.
+    sVert, flag). Simple meshes have nFaceVertexIndices == 3*nFaces; compiled
+    strip/degenerate representations may use fewer, bounded by nFaces..3*nFaces.
     Returns list of dicts. (Detection only; the geometry after it is compressed.)"""
     out = []
-    n = len(pay)
-    end = min(n, lod_off + (pay.find(b'MESH_', lod_off + 5) - lod_off
-                            if pay.find(b'MESH_', lod_off + 5) > 0 else n - lod_off) + lod_off)
-    p = lod_off
-    while p + 20 <= n:
+    end = min(len(pay), first_lod_span)
+    p = 0
+    while p + 20 <= end:
         nVerts, nFaces, nFVI, sVert, flag = struct.unpack_from('<5I', pay, p)
-        if (0 < nFaces < 100000 and nFVI == 3 * nFaces and 0 < nVerts <= 65535
-                and sVert in (4, 6, 20, 22)):
+        if (0 < nFaces < 100000 and nFaces <= nFVI <= 3 * nFaces
+                and 0 < nVerts <= 65535 and sVert in (4, 6, 20, 22)
+                and flag <= 3):
             out.append(dict(off=p, nVerts=nVerts, nFaces=nFaces,
                             nFaceVertexIndices=nFVI, sVert=sVert, flag=flag))
             p += 20
@@ -251,7 +251,7 @@ def cmd_entry(b, ents, name):
               f"origin={['%.3f' % x for x in h['origin']]}")
         if d:
             sm = find_subm_headers(pay, d['lod'][0])
-            print(f"  LOD0 @0x{d['lod'][0]:x}: {len(sm)} SUBM sub-headers")
+            print(f"  first LOD span 0x{d['lod'][0]:x}: {len(sm)} primitive sub-headers")
             for s in sm[:8]:
                 strides = SVERT_TABLE.get(s['sVert'], [('?', '?')])
                 print(f"    @0x{s['off']:x} nVerts={s['nVerts']} nFaces={s['nFaces']} "

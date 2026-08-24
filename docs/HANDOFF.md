@@ -9615,7 +9615,7 @@ confirmed by stashing today's changes.
 
 ## Chunks produced today
 
-`work/no_donor_terrain_pack/ForgeTest64_terrain_v{26..33}.*`. **v33 is the current one**
+`work/no_donor_terrain_pack/ForgeTest64_terrain_v{26..35}.*`. **v35 is the current one**
 (`--mesh-bank`, real subsection tables, 16 quadtree nodes, 24 primitives, 610 instances, batch max
 32, verifier OK). v32 is a byte-identical duplicate of v31 made during a reproducibility check and
 can be deleted.
@@ -9660,6 +9660,12 @@ File-block alignment provenance is closed too: `CEngineWorldMap::GetBankFileAlig
 (`0x02CCBF30`) delegates to `CBankFile::GetAlignment` (`0x02F989D0`), which returns bank field
 `+0xc0`. The stock FinalAlbion_RT.stb value is 2048; this is an archive property, not a foliage
 constant. Forge's standalone writer still intentionally requires that stock-bank value.
+
+Compiled-mesh polygon coverage is now complete for the retail foliage oracle. Primitive headers
+permit `faceCount <= faceVertexIndexCount <= 3*faceCount` (not only equality), constrained by the
+known `sVert` values and `flags <= 3`. The reader and `tools/parse_mesh.py` decode all 44/44 unique
+referenced mesh IDs. Backend-only v35 is byte-identical to v34/v33 and passes the structural gate;
+no visual/runtime work was done.
 
 `CQuadTreeElement::IsValid` polarity is closed offline: it returns true for static load info
 (`+0x34 > 0`), any child, or a cache-group collection (`+0x04`), and false only for a completely

@@ -938,3 +938,23 @@ world-map `+0x4c` to `CBankFile::GetAlignment` (`0x02F989D0`). That accessor ret
 field at `CBankFile+0xc0`. Thus alignment is a bank property; retail FinalAlbion_RT.stb supplies
 2048. The standalone Forge terrain writer now describes and diagnoses its 2048 requirement in
 those terms rather than presenting it as a local-detail constant.
+
+### 11.11 Compiled primitive grammar broadened across the foliage palette
+
+The compiled `C3DPrimitive2` prefix remains five dwords:
+`{vertexCount, triangleCount, faceVertexIndexCount, sVert, flags}`. The original decoder accepted
+only `faceVertexIndexCount == 3 * triangleCount`, which covers simple triangle-list grass but drops
+trees and several complex foliage meshes. Retail compiled meshes also use strip/degenerate index
+representations whose count is smaller. Across every foliage mesh referenced by the four-map
+oracle, the proven discriminator is `triangleCount <= faceVertexIndexCount <= 3*triangleCount`,
+with `sVert` in `{4,6,20,22}` and `flags <= 3`.
+
+The production reader and `tools/parse_mesh.py` now share that grammar. The coverage gate resolves
+all **44 / 44** unique referenced mesh IDs, including multi-primitive trees (Silver Birch: 4,212
+triangles; Oak variants: 2,700) and the four-triangle grass meshes. `forge_tests` passes.
+
+Backend-only v35 is SHA-256 identical to v34/v33
+(`AFE2769890B0AE8596B6BD98BEBCC5E4CFF1310C6B55BC67424FE7953C5C94BC`), as expected because its
+grass already used the simple three-indices-per-face form. `localdetail_verify.py` reports 21
+nodes, 16 groups, 24 primitives, 610 instances, all 24 subsection tables present, maximum batch
+32, and `OK`. No packaging, installation, launch, or visual check was performed.
