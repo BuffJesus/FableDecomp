@@ -651,14 +651,16 @@ all 8,159 populated lanes.
 
 ### 9.7 Current artifacts and state
 
-- `work/no_donor_terrain_pack/ForgeTest64_terrain_v31.{chunk,info,common}.bin` — 21 quadtree nodes
+- `work/no_donor_terrain_pack/ForgeTest64_terrain_v36.{chunk,info,common}.bin` — current backend artifact;
+  21 quadtree nodes
   (1+4+16, the exact topology of retail Darkwood_3's 64x64 map; was 1 node in v30), 16 groups,
   24 primitives, all 610 instances preserved, **all 24 primitives carry a builder-emitted
   subsection table** (v30 had 19/20, v29 had 0). One file block at `0xE4000`, 2048-aligned; all 16
   groups' `(fbPos,fbSize)` identical to their owning node's; every `offIn < fbSize`; zero
   violations. `tools/localdetail_verify.py` verdict: `OK: structure and engine constraints hold`.
-- `ForgeTest64_terrain_v32.{chunk,info}.bin` — a fresh re-bake from the committed inputs,
-  **byte-identical to v31** (`cmp` clean). The bake is deterministic; no hidden state.
+- v33 through v36 are repeated backend re-bakes and are SHA-256 identical
+  (`AFE2769890B0AE8596B6BD98BEBCC5E4CFF1310C6B55BC67424FE7953C5C94BC`). The bake is
+  deterministic; no hidden state.
 - Regression: retail Darkwood_3 still reads 21/41/394/848/37/13 exactly; the dirmask retail-parity
   gate is 3/3 (`4205/4225`, `1089/1089`, `9409/9409`); the section-7 foreground metrics all
   reproduce (corr(cliffU,nx) 0.9973, corr(cliffV,ny) 0.9893, black 4.52%). The only failing

@@ -9622,17 +9622,16 @@ can be deleted.
 
 ## Where to pick up
 
-1. Continue backend parity work. Do not tune the subsection permutation against baked arrays:
-   section 11.6 proves that replay applies a second permutation. Exact permutation parity needs
-   original authoring order or an instrumented generator.
-2. Extend the remaining writer/file-block byte gates against retail. The quadtree node sphere fold
-   is now recovered and gated on all 198 nodes in the four-map oracle; use
-   `tools/localdetail_node_sphere_check.py` as the regression gate.
-3. Visual/runtime checks are explicitly deferred until the backend is complete. Do not package,
-   install, launch, or ask for an in-game check yet.
-4. A small correction worth making when convenient: section 7's "black fraction" metric is the L1
-   form `w = 1 - |u| - |v|` (4.52%); the Euclidean form reads 0.00% and would look like a false
-   regression to the next person.
+1. Backend foliage legality and every recoverable offline input are complete. Keep the regression
+   gates (`localdetail_verify.py`, `localdetail_node_sphere_check.py`,
+   `subsection_range_sphere_check.py`, and `mesh_polycount_audit.py`) green.
+2. Do not tune the subsection permutation against baked arrays: section 11.6 proves that replay
+   applies a second permutation. Exact original-order parity requires an authoring-order capture;
+   deterministic Forge output is already structurally and numerically gated without it.
+3. Native subsection tail bytes and group-header byte `0x27` are uninitialized residue. Forge
+   intentionally writes zero. Do not invent or randomize them for superficial byte parity.
+4. Visual/runtime checks remain explicitly deferred by the user. Do not package, install, launch,
+   or request an in-game check until that instruction changes.
 
 Correction after the pause: do not tune the subsection permutation against the baked replay.
 Retail's arrays are already remapped, so replay applies a second permutation. Section 11.6 records
