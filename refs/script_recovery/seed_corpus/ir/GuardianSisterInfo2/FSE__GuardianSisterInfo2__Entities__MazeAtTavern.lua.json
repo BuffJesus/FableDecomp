@@ -1,0 +1,277 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 5,
+      "calls": []
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 10,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "SetIsPushableByHero",
+          "line": 17
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingHasInformation",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 30
+        },
+        {
+          "receiver": "me",
+          "name": "PlayAnimation",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 37
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 38
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 42
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 43
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetThingAsAllyOfThing",
+          "line": 46
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetThingAsAllyOfThing",
+          "line": 47
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 49
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 50
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 57
+        },
+        {
+          "receiver": "quest",
+          "name": "ForceShipsVisible",
+          "line": 59
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 61
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 62
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 63
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 64
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 66
+        },
+        {
+          "receiver": "quest",
+          "name": "ClearThingHasInformation",
+          "line": 69
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 72
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 76
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 77
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 78
+        },
+        {
+          "receiver": "me",
+          "name": "ClearCommands",
+          "line": 84
+        },
+        {
+          "receiver": "me",
+          "name": "PlayAnimation",
+          "line": 85
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateEffectAtPos",
+          "line": 86
+        },
+        {
+          "receiver": "me",
+          "name": "GetPos",
+          "line": 86
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeOutAndKillEntity",
+          "line": 87
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 88
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 90
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestAsCompleted",
+          "line": 91
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 92
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 94
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "GuardianSpokeToHero",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_027_MAZE_CALL_HERO_OVER_10",
+      "TEXT_QST_076_MAZE_ON_HIT_10"
+    ],
+    "cutscenes": [
+      "CS_GUARDIAN_SISTER_2"
+    ],
+    "regions": []
+  }
+}

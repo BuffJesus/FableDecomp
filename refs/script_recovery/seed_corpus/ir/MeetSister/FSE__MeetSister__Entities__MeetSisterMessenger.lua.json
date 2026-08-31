@@ -1,0 +1,78 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 2,
+      "calls": []
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 5,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 23
+        }
+      ]
+    }
+  ],
+  "state": [],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [
+      "CS_ARENA_LEAVE_THERESA_01"
+    ],
+    "regions": [
+      "ArenaExterior"
+    ]
+  }
+}

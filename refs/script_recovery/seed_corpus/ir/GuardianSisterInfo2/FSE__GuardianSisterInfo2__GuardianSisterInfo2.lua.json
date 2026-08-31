@@ -1,0 +1,151 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 4,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 10,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "FinalizeEntityBindings",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetQuestCardObjective",
+          "line": 12
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 13
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 15
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 16
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetThingWithScriptName",
+          "line": 21
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 24
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 33
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetQuestAsCompleted",
+          "line": 34
+        },
+        {
+          "receiver": "Quest",
+          "name": "DeactivateQuestLater",
+          "line": 35
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 46,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 6
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "GuardianSpokeToHero",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "MazeAtTavern",
+      "script": "GuardianSisterInfo2/Entities/MazeAtTavern",
+      "line": 15
+    }
+  ],
+  "references": {
+    "textTags": [
+      "TEXT_QUEST_GUARDIAN_SISTER_INFO_SECOND_OBJECTIVE_01"
+    ],
+    "cutscenes": [],
+    "regions": [
+      "OakBay"
+    ]
+  }
+}

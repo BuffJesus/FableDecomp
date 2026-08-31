@@ -1,0 +1,345 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/HerosOldHouse/HerosOldHouse.lua",
+  "kind": "quest",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 4,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 16,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 12
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 13
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 14
+        }
+      ]
+    },
+    {
+      "name": "WatchForBooty",
+      "parameters": [
+        "quest"
+      ],
+      "line": 31,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDiggingSpotEnabled",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestCardObjective",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 53,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "IsRegionLoaded",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 12
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 13
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 14
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 15
+        },
+        {
+          "receiver": "Quest",
+          "name": "FinalizeEntityBindings",
+          "line": 16
+        },
+        {
+          "receiver": "Quest",
+          "name": "CreateThread",
+          "line": 18
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 23
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 24
+        },
+        {
+          "receiver": "Quest",
+          "name": "IsRegionLoaded",
+          "line": 28
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 28
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 29
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 30
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetQuestAsFailed",
+          "line": 31
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 33
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 34
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 40
+        },
+        {
+          "receiver": "Quest",
+          "name": "DeactivateQuestLater",
+          "line": 41
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 42
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "BootyDugUp",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "Helped",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "Helping",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "MissionAborted",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "WifeAttacked",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "WifeAttackedAndLeft",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "GhostFisherman",
+      "script": "HerosOldHouse/Entities/GhostFisherman",
+      "line": 65
+    },
+    {
+      "name": "FishermansWife",
+      "script": "HerosOldHouse/Entities/FishermansWife",
+      "line": 66
+    },
+    {
+      "name": "ExtraBooty",
+      "script": "HerosOldHouse/Entities/ExtraBooty",
+      "line": 67
+    }
+  ],
+  "references": {
+    "textTags": [
+      "TEXT_QUEST_HEROS_OLD_HOUSE_OBJECTIVE_02"
+    ],
+    "cutscenes": [],
+    "regions": [
+      "OakBay"
+    ]
+  }
+}

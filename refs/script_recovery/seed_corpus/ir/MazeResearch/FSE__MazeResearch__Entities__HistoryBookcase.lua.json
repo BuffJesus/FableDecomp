@@ -1,0 +1,145 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/MazeResearch/Entities/HistoryBookcase.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 2,
+      "calls": []
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 5,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingAsUsable",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 15
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsUsedByHero",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestCardObjective",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapRemoveMarker",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 37
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 40
+        },
+        {
+          "receiver": "quest",
+          "name": "DisplayGameInfo",
+          "line": 51
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgIsGameInfoClickedPast",
+          "line": 52
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 53
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 59
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "BookRead",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_B01_JOURNAL_ENTRY_10",
+      "TEXT_QST_B01_JOURNAL_ENTRY_20",
+      "TEXT_QST_B01_JOURNAL_ENTRY_30",
+      "TEXT_QST_B01_JOURNAL_ENTRY_40",
+      "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_02"
+    ],
+    "cutscenes": [],
+    "regions": [
+      "HeroGuildComplexInside"
+    ]
+  }
+}

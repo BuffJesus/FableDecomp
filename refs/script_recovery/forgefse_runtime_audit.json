@@ -1,0 +1,988 @@
+{
+  "schema": "forgefse-runtime-script-audit/0.1",
+  "source": "D:\\Code\\ForgeFSE\\FableScriptExtender\\LuaManager.cpp",
+  "summary": {
+    "registeredQuestBindings": 881,
+    "registeredEntityBindings": 89,
+    "requiredCalls": 84,
+    "callable": 77,
+    "missing": 6,
+    "wrongScope": 1
+  },
+  "calls": [
+    {
+      "scope": "Quest",
+      "name": "RunCutscene",
+      "count": 11,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Quest",
+      "name": "EndCutscene",
+      "count": 8,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Quest",
+      "name": "FadeOutAndKillEntity",
+      "count": 6,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Quest",
+      "name": "StartCutscene",
+      "count": 5,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Entity",
+      "name": "GetAngleXY",
+      "count": 2,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddLogbookStoryEntry",
+      "count": 1,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Entity",
+      "name": "SetIsPushableByHero",
+      "count": 1,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "wrong-scope"
+    },
+    {
+      "scope": "Quest",
+      "name": "Log",
+      "count": 50,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
+        "MeetSister:FSE/MeetSister/MeetSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetStateBool",
+      "count": 33,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetStateBool",
+      "count": 33,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "NewScriptFrame",
+      "count": 26,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "ReleaseControl",
+      "count": 24,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetActiveQuestName",
+      "count": 23,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
+        "MeetSister:FSE/MeetSister/MeetSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetThingWithScriptName",
+      "count": 20,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "AcquireControl",
+      "count": 16,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "SpeakAndWait",
+      "count": 13,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "DeregisterTimer",
+      "count": 12,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetTargetingType",
+      "count": 11,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "MiniMapAddMarker",
+      "count": 11,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "PersistTransferBool",
+      "count": 11,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetQuestCardObjective",
+      "count": 11,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "MeetSister:FSE/MeetSister/MeetSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddEntityBinding",
+      "count": 10,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "MeetSister:FSE/MeetSister/MeetSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetThingHasInformation",
+      "count": 9,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "DeactivateQuestLater",
+      "count": 8,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetHero",
+      "count": 8,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "IsTalkedToByHero",
+      "count": 7,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "PlayCutscene",
+      "count": 7,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetQuestAsCompleted",
+      "count": 7,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetThingAsAllyOfThing",
+      "count": 6,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "FinalizeEntityBindings",
+      "count": 6,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "MeetSister:FSE/MeetSister/MeetSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "MiniMapRemoveMarker",
+      "count": 6,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "MsgIsHitByAnySpecialAbilityFromHero",
+      "count": 6,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "MsgIsHitByHealLifeFromHero",
+      "count": 6,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "MsgIsHitByHero",
+      "count": 6,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetTimer",
+      "count": 6,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddLineToConversation",
+      "count": 5,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetAsKillable",
+      "count": 5,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "IsDiggingSpotEnabled",
+      "count": 5,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "IsDistanceBetweenThingsUnder",
+      "count": 5,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "IsRegionLoaded",
+      "count": 5,
+      "consumers": [
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "StartAmbientConversation",
+      "count": 5,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "ClearThingHasInformation",
+      "count": 4,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetFacingAngle",
+      "count": 4,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetFacingAngleTowardsThing",
+      "count": 4,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetHealth",
+      "count": 4,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetTimer",
+      "count": 4,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "MoveToPosition",
+      "count": 4,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "RemoveThing",
+      "count": 4,
+      "consumers": [
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetMasterGameState",
+      "count": 3,
+      "consumers": [
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GiveHeroYesNoQuestion",
+      "count": 3,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GiveQuestCardDirectly",
+      "count": 3,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "IsPerformingScriptTask",
+      "count": 3,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "PlayAnimation",
+      "count": 3,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "RegisterTimer",
+      "count": 3,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetIsPushableByHero",
+      "count": 3,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "CreateEffectAtPos",
+      "count": 2,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetAsDamageable",
+      "count": 2,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetAsOpinionSourceByString",
+      "count": 2,
+      "consumers": [
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetInLimbo",
+      "count": 2,
+      "consumers": [
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "FadeScreenIn",
+      "count": 2,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "GetPos",
+      "count": 2,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GiveHeroMorality",
+      "count": 2,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "MsgIsUsedByHero",
+      "count": 2,
+      "consumers": [
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddItemToContainer",
+      "count": 1,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddQuestCard",
+      "count": 1,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "ClearCommands",
+      "count": 1,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "ClearThingBestEnemyTarget",
+      "count": 1,
+      "consumers": [
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "CreateThread",
+      "count": 1,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "DisplayGameInfo",
+      "count": 1,
+      "consumers": [
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetAlpha",
+      "count": 1,
+      "consumers": [
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetAsAbleToWalkThroughSolidObjects",
+      "count": 1,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "ForceShipsVisible",
+      "count": 1,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetHeroGold",
+      "count": 1,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GiveHeroGold",
+      "count": 1,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "KickOffQuestStartScreen",
+      "count": 1,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "MsgIsGameInfoClickedPast",
+      "count": 1,
+      "consumers": [
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "MsgIsKilledBy",
+      "count": 1,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "SetFriendsWithEverythingFlag",
+      "count": 1,
+      "consumers": [
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetIsThingForcePushable",
+      "count": 1,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetQuestAsFailed",
+      "count": 1,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetTeleporterAsActive",
+      "count": 1,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetTeleportingAsActive",
+      "count": 1,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetThingAsUsable",
+      "count": 1,
+      "consumers": [
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetTimeOfDay",
+      "count": 1,
+      "consumers": [
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua"
+      ],
+      "status": "callable"
+    }
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "schema": "fable-script-corpus/0.1",
+  "packages": [
+    {
+      "name": "GuardianSisterInfo",
+      "sourceArchive": "D:\\Downloads\\GuardianSisterInfo.zip",
+      "archiveSha256": "1E12163524B438020CC37B95D7A529D785E825F125247CB2C2D889C214E92838",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "QS_GuardianSisterInfo",
+          "name": "GuardianSisterInfo",
+          "file": "GuardianSisterInfo/GuardianSisterInfo",
+          "id": 1006,
+          "kind": "quest",
+          "entities": [
+            {
+              "name": "MazeAtTavern",
+              "file": "GuardianSisterInfo/Entities/MazeAtTavern",
+              "id": 70
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+          "sha256": "CB80ED0506A8FB64B3252390150C991D7379D1EC8E1B735B9A481806BC1F0640",
+          "size": 3158,
+          "ir": "ir/GuardianSisterInfo/FSE__GuardianSisterInfo__Entities__MazeAtTavern.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+          "sha256": "FCF0FE6543A33F0C56EC1C33B4A0B3EF9313C14FFFAD2A99366F8D14748EDC3F",
+          "size": 1980,
+          "ir": "ir/GuardianSisterInfo/FSE__GuardianSisterInfo__GuardianSisterInfo.lua.json",
+          "kind": "quest"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "B10065EF98B0C6AF2A19CE0DA46A1A3E9AD7A2F7D64F1BA1B3C42E1046D38F65",
+          "size": 454
+        }
+      ]
+    },
+    {
+      "name": "GuardianSisterInfo2",
+      "sourceArchive": "D:\\Downloads\\GuardianSisterInfo2.zip",
+      "archiveSha256": "5CBFFFF5A8A3ADB5F7CF155269DFEC2299CD8A5F1CDA8CE82A6918115DAE8BDB",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "GuardianSisterInfo2",
+          "name": "GuardianSisterInfo2",
+          "file": "GuardianSisterInfo2/GuardianSisterInfo2",
+          "id": 1004,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "MazeAtTavern",
+              "file": "GuardianSisterInfo2/Entities/MazeAtTavern",
+              "id": 68
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+          "sha256": "3015363DE58F792577E8317C949D2F58C2CCD8A08D8FC58B1D63A974C65DC009",
+          "size": 3693,
+          "ir": "ir/GuardianSisterInfo2/FSE__GuardianSisterInfo2__Entities__MazeAtTavern.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+          "sha256": "534ED3877E23EF84ACC02E70BB55ADB0AE9936DADE86A2DAB28DD48F07B07234",
+          "size": 2111,
+          "ir": "ir/GuardianSisterInfo2/FSE__GuardianSisterInfo2__GuardianSisterInfo2.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "BBBCC10DC72E14657E82B5EC3702DCEC9B22A0C6357D5AA5726E2F2E48C9F498",
+          "size": 457
+        }
+      ]
+    },
+    {
+      "name": "MeetSister",
+      "sourceArchive": "D:\\Downloads\\MeetSister.zip",
+      "archiveSha256": "4B0AA00054047316A905477CE9469AC3C36AB35609EABA1C1B4ADDB9F775B631",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "QS_MeetSister",
+          "name": "MeetSister",
+          "file": "MeetSister/MeetSister",
+          "id": 1003,
+          "kind": "quest",
+          "entities": [
+            {
+              "name": "MeetSisterMessenger",
+              "file": "MeetSister/Entities/MeetSisterMessenger",
+              "id": 66
+            },
+            {
+              "name": "MeetSisterSister",
+              "file": "MeetSister/Entities/MeetSisterSister",
+              "id": 67
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+          "sha256": "A78BFACA66CA91D985B25308425CDECBBB166EB9F247DA85FF518CDD8BF68958",
+          "size": 773,
+          "ir": "ir/MeetSister/FSE__MeetSister__Entities__MeetSisterMessenger.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/MeetSister/Entities/MeetSisterSister.lua",
+          "sha256": "6D3BF1464C57EA9ED4451D3483384296E274EA74B80413CDF8BAE7D07EA11631",
+          "size": 823,
+          "ir": "ir/MeetSister/FSE__MeetSister__Entities__MeetSisterSister.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/MeetSister/MeetSister.lua",
+          "sha256": "2F9F61757F0A9D80B8E272B1D3153409D8213E5BD3EB92CF1EE667AD5AEAC3FC",
+          "size": 749,
+          "ir": "ir/MeetSister/FSE__MeetSister__MeetSister.lua.json",
+          "kind": "quest"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "718F881C7D1B6DFF98A718B6A642FCF1B9C4A58B05FECDBFE568567E98D13266",
+          "size": 474
+        }
+      ]
+    },
+    {
+      "name": "MazeResearch",
+      "sourceArchive": "D:\\Downloads\\MazeResearch.zip",
+      "archiveSha256": "35A4B74EC1E5A50F336BEEA131E0E07276F2C71BE507F0540A13D9ED2FF91EC2",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "MazeResearch",
+          "name": "MazeResearch",
+          "file": "MazeResearch/MazeResearch",
+          "id": 1002,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "EmptyGrave",
+              "file": "MazeResearch/Entities/EmptyGrave",
+              "id": 64
+            },
+            {
+              "name": "HistoryBookcase",
+              "file": "MazeResearch/Entities/HistoryBookcase",
+              "id": 65
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/MazeResearch/Entities/EmptyGrave.lua",
+          "sha256": "448BC588F0144FE666BD3216BE5D6DE2FC3F99B9A1E86E2674E7E81E36DD67EF",
+          "size": 2328,
+          "ir": "ir/MazeResearch/FSE__MazeResearch__Entities__EmptyGrave.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/MazeResearch/Entities/HistoryBookcase.lua",
+          "sha256": "B48BB2857167AC2A909D3A6D8264D4E6F52673F47CF3BA009E9B115BAFCC13F6",
+          "size": 1885,
+          "ir": "ir/MazeResearch/FSE__MazeResearch__Entities__HistoryBookcase.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/MazeResearch/MazeResearch.lua",
+          "sha256": "D6CF51AF31F1907FDE44D8211F6DE8F9E2398DBF533C9B987A7BB80CC8970CAB",
+          "size": 1158,
+          "ir": "ir/MazeResearch/FSE__MazeResearch__MazeResearch.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "54FB01DF0EA049A0E6145B449A859C209A74D2F4DD73CC5B14A0878375A16988",
+          "size": 516
+        }
+      ]
+    },
+    {
+      "name": "HerosOldHouse",
+      "sourceArchive": "D:\\Downloads\\HerosOldHouse.zip",
+      "archiveSha256": "DDF2CAC0063024DFEA9CA6D0977A7579DFD136028732C71399107DDB1FF1C61A",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "Q_HerosOldHouseScript",
+          "name": "HerosOldHouse",
+          "file": "HerosOldHouse/HerosOldHouse",
+          "id": 1007,
+          "kind": "quest",
+          "entities": [
+            {
+              "name": "GhostFisherman",
+              "file": "HerosOldHouse/Entities/GhostFisherman",
+              "id": 71
+            },
+            {
+              "name": "FishermansWife",
+              "file": "HerosOldHouse/Entities/FishermansWife",
+              "id": 72
+            },
+            {
+              "name": "ExtraBooty",
+              "file": "HerosOldHouse/Entities/ExtraBooty",
+              "id": 73
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+          "sha256": "A2ADB3006F57569FFF7796836F078C4D97BB425CF1F41517D0E17E48CFDCF5C5",
+          "size": 703,
+          "ir": "ir/HerosOldHouse/FSE__HerosOldHouse__Entities__ExtraBooty.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
+          "sha256": "2BEC7243756E96F37D8F1B3A0012C7493BC869C9DDFA35A72124F9146872034B",
+          "size": 9172,
+          "ir": "ir/HerosOldHouse/FSE__HerosOldHouse__Entities__FishermansWife.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+          "sha256": "EAE62610ACAF9A01A171B0CA978432182E6838F5B40DF2AB02C1605FF982AD2D",
+          "size": 7451,
+          "ir": "ir/HerosOldHouse/FSE__HerosOldHouse__Entities__GhostFisherman.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/HerosOldHouse/HerosOldHouse.lua",
+          "sha256": "0B21ED36B8142143CDCF5CBB6775CA95E5F8F9619AE0272C41C50327B3E393A8",
+          "size": 3446,
+          "ir": "ir/HerosOldHouse/FSE__HerosOldHouse__HerosOldHouse.lua.json",
+          "kind": "quest"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "6A47624063360AB281E3C48D95D2055B91AD5F9F52539CD918EA7933A62643FD",
+          "size": 627
+        }
+      ]
+    },
+    {
+      "name": "GuardianTrophyDealerInfo",
+      "sourceArchive": "D:\\Downloads\\GuardianTrophyDealerInfo.zip",
+      "archiveSha256": "0A0D254C1516CBCCE2644F1FC946A22AB6D8C3CDA0EBBFFFAFA2F376C951F5AE",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "QS_GuardianTrophyDealerInfo",
+          "name": "GuardianTrophyDealerInfo",
+          "file": "GuardianTrophyDealerInfo/GuardianTrophyDealerInfo",
+          "id": 1005,
+          "kind": "quest",
+          "entities": [
+            {
+              "name": "GTDI_Maze",
+              "file": "GuardianTrophyDealerInfo/Entities/GTDI_Maze",
+              "id": 69
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+          "sha256": "D80808673082FBADBF74FC3F025F73F9D44B01B3B0DF1B77F6548B80D2BC02CD",
+          "size": 3762,
+          "ir": "ir/GuardianTrophyDealerInfo/FSE__GuardianTrophyDealerInfo__Entities__GTDI_Maze.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+          "sha256": "62573209B4AD0B02654710A0E7A446A92C996073A678E26DFABAB1E377047A18",
+          "size": 1620,
+          "ir": "ir/GuardianTrophyDealerInfo/FSE__GuardianTrophyDealerInfo__GuardianTrophyDealerInfo.lua.json",
+          "kind": "quest"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "E21871D4B7380E25E26F38C1B5B03A148128418EF7309E04DFAD456986078FC9",
+          "size": 477
+        }
+      ]
+    }
+  ]
+}

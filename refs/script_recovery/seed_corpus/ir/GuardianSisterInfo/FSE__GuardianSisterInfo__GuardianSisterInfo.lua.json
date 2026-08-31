@@ -1,0 +1,166 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+  "kind": "quest",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 4,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 10,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "FinalizeEntityBindings",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetQuestCardObjective",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "IsRegionLoaded",
+          "line": 14
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 15
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetTimeOfDay",
+          "line": 20
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 23
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 24
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetThingWithScriptName",
+          "line": 30
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 33
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 40
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetQuestAsCompleted",
+          "line": 41
+        },
+        {
+          "receiver": "Quest",
+          "name": "DeactivateQuestLater",
+          "line": 42
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 53,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 6
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "GuardianSpokeToHero",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "MazeAtTavern",
+      "script": "GuardianSisterInfo/Entities/MazeAtTavern",
+      "line": 15
+    }
+  ],
+  "references": {
+    "textTags": [
+      "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01"
+    ],
+    "cutscenes": [],
+    "regions": [
+      "BowerstoneSlums"
+    ]
+  }
+}

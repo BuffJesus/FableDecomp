@@ -1,0 +1,146 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+  "kind": "quest",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 4,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 10,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "FinalizeEntityBindings",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetQuestCardObjective",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 14
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 15
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetThingWithScriptName",
+          "line": 21
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 24
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 30
+        },
+        {
+          "receiver": "Quest",
+          "name": "DeactivateQuestLater",
+          "line": 31
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 42,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 6
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "PieceOver",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "GTDI_Maze",
+      "script": "GuardianTrophyDealerInfo/Entities/GTDI_Maze",
+      "line": 15
+    }
+  ],
+  "references": {
+    "textTags": [
+      "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01"
+    ],
+    "cutscenes": [],
+    "regions": [
+      "HeroGuildComplexInside"
+    ]
+  }
+}

@@ -1,0 +1,716 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 6,
+      "calls": [
+        {
+          "receiver": "me",
+          "name": "GetAngleXY",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetTargetingType",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingHasInformation",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 10
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "quest",
+        "me",
+        "context"
+      ],
+      "line": 18,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "PersistTransferBool",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferBool",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "name": "OnPredicateFail",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 23,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsKilledBy",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroMorality",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 32,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 12
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsKillable",
+          "line": 15
+        },
+        {
+          "receiver": "me",
+          "name": "SetIsPushableByHero",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetTargetingType",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingHasInformation",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 21
+        },
+        {
+          "receiver": "me",
+          "name": "MoveToPosition",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 34
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 35
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 39
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 40
+        },
+        {
+          "receiver": "me",
+          "name": "MoveToPosition",
+          "line": 42
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 47
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 48
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 48
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 51
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsKillable",
+          "line": 52
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 53
+        },
+        {
+          "receiver": "me",
+          "name": "MoveToPosition",
+          "line": 55
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 56
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 57
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 58
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 59
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 64
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeOutAndKillEntity",
+          "line": 65
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 66
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 67
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 72
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeOutAndKillEntity",
+          "line": 73
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 74
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 75
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 79
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 80
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 81
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 89
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 89
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 90
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 91
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 92
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 96
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 97
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 98
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngle",
+          "line": 99
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetTargetingType",
+          "line": 100
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 102
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDiggingSpotEnabled",
+          "line": 102
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHeroGold",
+          "line": 102
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 103
+        },
+        {
+          "receiver": "quest",
+          "name": "StartCutscene",
+          "line": 104
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroYesNoQuestion",
+          "line": 106
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 108
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 109
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 110
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 111
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroMorality",
+          "line": 113
+        },
+        {
+          "receiver": "quest",
+          "name": "AddItemToContainer",
+          "line": 114
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroGold",
+          "line": 115
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 117
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestCardObjective",
+          "line": 118
+        },
+        {
+          "receiver": "quest",
+          "name": "ClearThingHasInformation",
+          "line": 120
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapRemoveMarker",
+          "line": 121
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 123
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 125
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeScreenIn",
+          "line": 128
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 132
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 133
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 134
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 136
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 137
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 138
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngle",
+          "line": 141
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetTargetingType",
+          "line": 142
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 146
+        },
+        {
+          "receiver": "quest",
+          "name": "StartCutscene",
+          "line": 147
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 148
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 149
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 150
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 153
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngle",
+          "line": 155
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetTargetingType",
+          "line": 156
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 161
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 162
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 162
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 165
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsKillable",
+          "line": 166
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 167
+        },
+        {
+          "receiver": "me",
+          "name": "MoveToPosition",
+          "line": 169
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 170
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 171
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 172
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 173
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 178
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeOutAndKillEntity",
+          "line": 179
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 180
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 181
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 185
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 186
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 187
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "Helped",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "Helping",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "LeavingHappy",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "TalkedTo",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "WifeAttacked",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "WifeAttackedAndLeft",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_OBJECT_HERO_ANSWER_NO",
+      "TEXT_OBJECT_HERO_ANSWER_YES",
+      "TEXT_QST_032_FISHERWIFE_ATTACKED",
+      "TEXT_QST_032_FISHERWIFE_ATTACKED_AFTER",
+      "TEXT_QST_032_FISHERWIFE_CRY",
+      "TEXT_QST_032_FISHERWIFE_GOLD_QUESTION",
+      "TEXT_QST_032_FISHERWIFE_REPEAT_GREET",
+      "TEXT_QST_032_FISHERWIFE_SHOPPING",
+      "TEXT_QST_032_FISHERWIFE_SHOPPING_ASIDE",
+      "TEXT_QST_032_FISHERWIFE_THANKS",
+      "TEXT_QUEST_HEROS_OLD_HOUSE_OBJECTIVE_03"
+    ],
+    "cutscenes": [
+      "CS_GHOSTFISH_WIFE_INTRO",
+      "CS_GHOSTFISH_WIFE_SUCCESS"
+    ],
+    "regions": [
+      "OakBay"
+    ]
+  }
+}

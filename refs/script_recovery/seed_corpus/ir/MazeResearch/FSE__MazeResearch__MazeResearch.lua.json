@@ -1,0 +1,143 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/MazeResearch/MazeResearch.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 4,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 9,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "FinalizeEntityBindings",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetQuestCardObjective",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 12
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 22,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 10
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "BookRead",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "SwordTaken",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "EmptyGrave",
+      "script": "MazeResearch/Entities/EmptyGrave",
+      "line": 14
+    },
+    {
+      "name": "HistoryBookcase",
+      "script": "MazeResearch/Entities/HistoryBookcase",
+      "line": 15
+    }
+  ],
+  "references": {
+    "textTags": [
+      "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_01"
+    ],
+    "cutscenes": [],
+    "regions": [
+      "HeroGuildComplexInside"
+    ]
+  }
+}

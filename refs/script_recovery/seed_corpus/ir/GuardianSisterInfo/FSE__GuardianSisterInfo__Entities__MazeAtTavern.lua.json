@@ -1,0 +1,217 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 6,
+      "calls": []
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 12,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 11
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsOpinionSourceByString",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingHasInformation",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "SetIsPushableByHero",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 31
+        },
+        {
+          "receiver": "me",
+          "name": "PlayAnimation",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 39
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 43
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 44
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 44
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 47
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 48
+        },
+        {
+          "receiver": "me",
+          "name": "SetFriendsWithEverythingFlag",
+          "line": 51
+        },
+        {
+          "receiver": "quest",
+          "name": "ClearThingBestEnemyTarget",
+          "line": 52
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 57
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 59
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 60
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 61
+        },
+        {
+          "receiver": "quest",
+          "name": "ClearThingHasInformation",
+          "line": 62
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 64
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestAsCompleted",
+          "line": 65
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 66
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 67
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 71
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 72
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "GuardianSpokeToHero",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_027_MAZE_CALL_HERO_OVER_10",
+      "TEXT_QST_027_MAZE_ON_HIT_10"
+    ],
+    "cutscenes": [
+      "CS_GUARDIANSISTER_BOWERSTONE"
+    ],
+    "regions": []
+  }
+}

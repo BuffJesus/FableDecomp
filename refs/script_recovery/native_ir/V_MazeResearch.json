@@ -1,0 +1,106 @@
+{
+  "schema": "fable-native-script-ir/0.1",
+  "name": "V_MazeResearch",
+  "kind": "village",
+  "section": "S_VMR",
+  "evidenceLevel": "native-decompile",
+  "allocator": {
+    "address": "0x00EA8690",
+    "objectSize": 100,
+    "constructorAddress": "0x00EA76E0",
+    "note": "Existing imported constructor symbol is incorrect; ownership is established by the registry allocator and vtable."
+  },
+  "vtable": {
+    "address": "0x012EE444",
+    "slots": [
+      {"slot": 0, "role": "destructor", "address": "0x00EA86C0"},
+      {"slot": 1, "role": "RegisterMain", "address": "0x00EA7760"},
+      {"slot": 2, "role": "Main", "address": "0x00EA7800"},
+      {"slot": 3, "role": "Init", "address": "0x00EA7750"},
+      {"slot": 4, "role": "OnPersist", "address": "0x00EA80A0"}
+    ]
+  },
+  "state": [
+    {"name": "SwordTaken", "type": "bool", "offset": "0x48", "persistOrder": 0},
+    {"name": "BookRead", "type": "bool", "offset": "0x49", "persistOrder": 1},
+    {"name": "GoodSword", "type": "scriptThing", "offset": "0x4C", "confidence": "high"},
+    {"name": "cutsceneEntities", "type": "map", "offset": "0x58", "confidence": "high"}
+  ],
+  "functions": [
+    {
+      "name": "Init",
+      "address": "0x00EA7750",
+      "operations": [
+        {"op": "SetState", "name": "SwordTaken", "value": false},
+        {"op": "SetState", "name": "BookRead", "value": false}
+      ]
+    },
+    {
+      "name": "Main",
+      "address": "0x00EA7800",
+      "operations": [
+        {"op": "AddEntityBinding", "name": "EmptyGrave"},
+        {"op": "AddEntityBinding", "name": "HistoryBookcase"},
+        {"op": "FinalizeEntityBindings"},
+        {"op": "SetQuestCardObjective", "text": "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_01", "location": "HeroGuildComplexInside", "extra": ""}
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "address": "0x00EA80A0",
+      "operations": [
+        {"op": "PersistTransferBool", "name": "SwordTaken"},
+        {"op": "PersistTransferBool", "name": "BookRead"}
+      ]
+    },
+    {
+      "name": "HistoryBookcase.Main",
+      "address": "0x00EA7B40",
+      "operations": [
+        {"op": "Branch", "condition": "BookRead", "true": "yield-until-terminated"},
+        {"op": "SetThingAsUsable", "value": true},
+        {"op": "MiniMapAddMarker", "marker": "HUD_ORB_QUEST_VIGNETTE"},
+        {"op": "WaitForUsedByHero"},
+        {"op": "SetQuestCardObjective", "text": "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_02", "location": "HeroGuildComplexInside", "extra": ""},
+        {"op": "MiniMapRemoveMarker", "target": "self"},
+        {"op": "MiniMapAddMarker", "target": "EmptyGrave", "marker": "HUD_ORB_QUEST_VIGNETTE"},
+        {"op": "SetState", "name": "BookRead", "value": true},
+        {"op": "DisplayGameInfoSequence", "items": ["TEXT_QST_B01_JOURNAL_ENTRY_10", "TEXT_QST_B01_JOURNAL_ENTRY_20", "TEXT_QST_B01_JOURNAL_ENTRY_30", "TEXT_QST_B01_JOURNAL_ENTRY_40"], "waitForClickPastEach": true},
+        {"op": "YieldUntilTerminated"}
+      ]
+    },
+    {
+      "name": "EmptyGrave.Main",
+      "address": "0x00EA8130",
+      "operations": [
+        {"op": "ConditionalMarker", "condition": "BookRead", "marker": "HUD_ORB_QUEST_VIGNETTE"},
+        {"op": "CacheThing", "name": "GoodSword"},
+        {"op": "EntitySetInLimbo", "target": "GoodSword", "value": true},
+        {"op": "WaitForUsedByHero"},
+        {"op": "Gate", "condition": "BookRead && !SwordTaken && PostSavePosition > 1700 && JackBossBattleResult == 2"},
+        {"op": "CreateCutsceneEntityMap", "entries": {"HERO": "Hero"}},
+        {"op": "CreateCutsceneFlagMap", "entries": {"UNLIMBO": false}},
+        {"op": "CreateThread", "name": "UnLimboSword", "address": "0x00EA85E0"},
+        {"op": "SelectCutscene", "condition": "JackBossBattleHeroGoodAtEnd", "true": "CS_GET_SWORD_OF_AEONS_SAINT", "false": "CS_GET_SWORD_OF_AEONS_REDEEM"},
+        {"op": "RunCutsceneMacro", "entityMap": "shared", "flagMap": "shared", "blocking": true},
+        {"op": "MiniMapRemoveMarker", "target": "self"},
+        {"op": "SetState", "name": "SwordTaken", "value": true},
+        {"op": "DeactivateActiveQuest"}
+      ]
+    },
+    {
+      "name": "UnLimboSword",
+      "address": "0x00EA85E0",
+      "operations": [
+        {"op": "WaitForCutsceneFlag", "name": "UNLIMBO", "value": true},
+        {"op": "EntitySetInLimbo", "target": "GoodSword", "value": false},
+        {"op": "EntityVisibilityTransition", "target": "GoodSword", "nativeVtableOffset": "0x7F8", "arguments": [0, true], "semanticName": "unverified"}
+      ]
+    }
+  ],
+  "unresolved": [
+    "Exact semantic name of CGameScriptInterface vtable offset 0x7F8.",
+    "Exact internal cutscene-map types are decompiler-noisy but map ownership and flag polling are clear."
+  ]
+}
+

@@ -1,0 +1,315 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 4,
+      "calls": [
+        {
+          "receiver": "me",
+          "name": "GetAngleXY",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 8,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingHasInformation",
+          "line": 16
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsKillable",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsDamageable",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "SetIsPushableByHero",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "KickOffQuestStartScreen",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 26
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 30
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 31
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetThingAsAllyOfThing",
+          "line": 34
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetThingAsAllyOfThing",
+          "line": 35
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 39
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 40
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 44
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 45
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 46
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 47
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 51
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 52
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 58
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 60
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTeleporterAsActive",
+          "line": 62
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 64
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTeleportingAsActive",
+          "line": 66
+        },
+        {
+          "receiver": "quest",
+          "name": "ClearThingHasInformation",
+          "line": 68
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapRemoveMarker",
+          "line": 69
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngle",
+          "line": 70
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 71
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 73
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestAsCompleted",
+          "line": 74
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 75
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 79
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 80
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 80
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetThingAsAllyOfThing",
+          "line": 83
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetThingAsAllyOfThing",
+          "line": 84
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 85
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 87
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 88
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 90
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 91
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 92
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 93
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 97
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 98
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "PieceOver",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_077_MAZE_ON_HIT",
+      "TEXT_QST_077_MAZE_REPEAT"
+    ],
+    "cutscenes": [
+      "CS_MAZE_TROPHY_INFO",
+      "CS_MAZE_TROPHY_INFO_HITME",
+      "CS_MAZE_TROPHY_INFO_SETUP"
+    ],
+    "regions": []
+  }
+}

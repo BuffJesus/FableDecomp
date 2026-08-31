@@ -1,0 +1,172 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/MazeResearch/Entities/EmptyGrave.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 3,
+      "calls": []
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 5,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetInLimbo",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 14
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsUsedByHero",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetInLimbo",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAlpha",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 36
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapRemoveMarker",
+          "line": 37
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 39
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 40
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 45
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "BookRead",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SwordTaken",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [
+      "CS_GET_SWORD_OF_AEONS_REDEEM",
+      "CS_GET_SWORD_OF_AEONS_SAINT"
+    ],
+    "regions": []
+  }
+}

@@ -1,0 +1,162 @@
+priority	name	kind	section	allocatorAddress	seedPackage	stage	evidence	requiredGates
+0	V_MazeResearch	village	S_VMR	0x00EA8690	MazeResearch	resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+5	QS_GuardianSisterInfo	quest	S_QSGSI		GuardianSisterInfo	resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+5	QS_GuardianSisterInfo2_SisterInBanditCamp	quest	S_QSGSI2		GuardianSisterInfo2	resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+5	QS_GuardianTrophyDealerInfo	quest	S_QSGTDI		GuardianTrophyDealerInfo	resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+5	QS_MeetSister	quest	S_QSMS		MeetSister	resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+5	Q_HerosOldHouse	quest	S_QHOH		HerosOldHouse	resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	QS_ScytheInfo	quest	S_QSSI	0x00E2AB00		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_AmbushTraders	quest	S_QAT	0x00CFA2F0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_Arena	quest	S_QA	0x00CFABF0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_AwakeningTheOracle	quest	S_QATO	0x00D00590		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_BountyHunt	quest	S_QBH	0x00D1CBA0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_DragonBossFight	quest	S_QDBF	0x00D27240		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_EndGameBossBattle	quest	S_QEGBB	0x00D34410		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_EndGameFocalSites	quest	S_QEGFS	0x00D2F5F0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_FireHeart	quest	S_QFHT	0x00D3AFC0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_HangingTreeEvil	quest	S_QHTE	0x00D6ED10		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_HangingTreeGood	quest	S_QHTG	0x00D78290		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_HeroSoulsArena	quest	S_QHSA	0x00D80BA0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_HeroSoulsBriar	quest	S_QHSB	0x00D83300		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_HeroSoulsGuildmaster	quest	S_QHSG	0x00D87A80		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_HeroSoulsMother	quest	S_QHSM	0x00D84AF0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_HeroSoulsThunder	quest	S_QHST	0x00D7C6A0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_MinionCamp	quest	S_QMC	0x00DA2F40		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_NewOakValeIntro	quest	S_QNOVI	0x00DBEF70		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_OpeningGraveyardSecretPassage	quest	S_QOGSP	0x00DCBFD0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_OrchardFarmRaid	quest	S_QOFR	0x00DD1EF0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_RansomVictim	quest	S_QRV	0x00DEBC60		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_SecretPassage	quest	S_QSP	0x00DF1080		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+20	Q_WizardBattle	quest	S_QWZB	0x00E1D9F0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	QR_EscortTrader	repeatable_quest	S_QRET	0x00E24C30		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_ArenaHoldingScript	quest	S_AHS			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_BanditCamp	quest	S_QBC			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_BanditCampBossBattle	quest	S_QBCBB			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_BanditCampHoldingScript	quest	S_QBCHS			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_BowerstoneTownLifeIntro	quest	S_QBTLI			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_BreakSiege	quest	S_QBS			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_CinemaTest	quest				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_EndGame	quest	S_QEG			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_GuildTraining	quest	S_QGT			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_GuildTrainingDeparture	quest	S_QGTD			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_GuildTrainingMelee	quest	S_QGTM			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_GuildTrainingPreMelee	quest	S_QGTPM			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_GuildTrainingSkill	quest	S_QGTS			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_GuildTrainingWill	quest	S_QGTW			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_GuildTrainingWoodsDeparture	quest	S_QGTWD			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_GuildTrainingWoodsMelee	quest	S_QGTWM			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_GuildTrainingWoodsWill	quest	S_QGTWW			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_HeroSouls	quest	S_QHSS			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_HeroSoulsNostro	quest	S_QHSN			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_HobbeCave	quest	S_QHC			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_HobbeToothContest	quest	S_QHTC			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_MinionClifftopChase	quest	S_QMCC			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_OakValeBanditRaid	quest	S_QOVBR			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_OrchardFarmRaidEvil	quest	S_QOFRE			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_OrchardFarmRaidGood	quest	S_QOFRG			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_PrisonEscapeRescueMother	quest	S_QPERM			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_PrisonRace	quest	S_QPR			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_PrisonWardenGame	quest	S_QPWG			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_RansomVictimChiefsHouse	quest	S_QRVCH			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_SummoningTheShip	quest	S_QSTS			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_TentacleKrakenBossFight	quest	S_QTKBF			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_TraderConflictEvil	quest	S_QTCE			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_TraderConflictGood	quest	S_QTCG			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_TraderEscort	quest	S_QTE			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_UndeadRising	quest	S_QUR			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_WaspBoss	quest	S_QWB			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_WhiteBalverineKnotholeGlade	quest	S_QWBKG			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+25	Q_WhiteBalverineWW	quest	S_QWBW			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	QR_EscortTrader_Manager	repeatable_quest	S_QRETM			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_AmbushScam	village	S_VAS	0x00E322C0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_ArcheryCompetition	village	S_VAC	0x00E37630		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_AssassinAttacks	village	S_VAA	0x00E39850		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_BanditCampPath	village	S_VBCP	0x00E477A0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_BeardyBaldy	village	S_VBB	0x00E54260		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_BodyGuard	village	S_VBGu	0x00E62730		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_BookCollecting	village	S_VBC	0x00E57A50		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_Bordello	village	S_VB	0x00E46A00		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_ChickenKicking	village	S_VCK	0x00E68E60		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_ExposeMayor	village	S_VEM	0x00E7B290		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_FisticuffsClub	village	S_VFCC	0x00E8B700		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_MurderTwistFinal	village	S_VMTF	0x00EB6A60		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_SickChild	village	S_VSC	0x00ED0E00		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_SingingStones	village	S_VSS	0x00ED39A0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_SwordInTheStone	village	S_VSITS	0x00ED75F0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_TalentlessBard	village	S_VTB	0x00EDACC0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_TourGuide	village	S_VTG	0x00EE6C00		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+30	V_TravellingHeroes	village	S_VTH	0x00EE40A0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_BanditToll	village	S_VBT			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_BeggarAndChild	village	S_VBAC			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_ChapelOfEvil	village	S_VCOE			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_DemonDoors	village	S_DDRS			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_Fisherman	village	S_VFM			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_FishingCompetition	village	S_VFC			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_GhostGrannyNecklace	village	S_VGGN			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_GuildMaster	village	S_VGM			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_HauntedHouse	village	S_VHH			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_HeroDolls	village	S_VHDS			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_HeroDuel	village	S_VHD			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_HiddenBooty	village	S_VHB			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_IntroductionToTrophies	village	S_VITT			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_KnotholeGladeGates	village	S_VKGG			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_LostTrader	village	S_VLT			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_MayorsInvitation	village	S_VMI			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_MurderTwist	village	S_VMT			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_Oracle	village	S_VO			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_ParanoidWhispers	village	S_VPW			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_PicnicAreaAfterWaspBoss	village	S_VPAAWB			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_RandomPopulationSim	village	S_VRPS			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_RockTrollFirstEncounter	village	S_VRTFE			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_StatueMaster	village	S_VSM			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_TempleOfLight	village	S_VTOL			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+35	V_TrophyDealer	village	S_VTD			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+40	Global_DebugCycleThroughSpeech	global		0x00EE9450		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+40	Global_GiveHeroItemsFromRewardChest	global		0x00EEC750		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+40	Global_OpenChest	global		0x00EECEA0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+40	Global_ToggleTimeDisplay	global		0x00EED060		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+40	Global_WatchForHeroDeath	global		0x00EE90A0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+42	Expression_Dig	expression		0x00EEAE70		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+42	Expression_Fish	expression		0x00EE9F00		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+42	Expression_Follow	expression		0x00EEA3E0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+42	Expression_Picklock	expression		0x00EEBD70		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+42	Expression_Pickpocket	expression		0x00EEB730		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+42	Expression_Steal	expression		0x00EEC390		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+42	Expression_Wait	expression		0x00EEA740		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+45	Gameflow	global	S_GF			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+45	GameflowAssistance	global	S_GFA			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+45	Global_TeleportToHeroGuild	global				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+48	CS_OakValeRevisited	cutscene_host	CS_OVR	0x00EE8BE0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+50	PersonalScriptMain	personal	S_PSM			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+50	PersonalScript_Aardvark	personal				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+50	PersonalScript_Empty	personal				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+50	PersonalScript_GlobalThings	personal	S_PSGT			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+50	PersonalScript_alextest	personal				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+53	CS_PlayCutscene	cutscene_host				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+55	DanyalTestScripts	master				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+55	Empty	master				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+55	Q_SunnyvaleMaster	master				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+55	alextest	master				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+55	joss_test_scripts	master				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+60	LadyGreyWifeManager	script	S_LGWM	0x00CF91C0		resolve-object-boundaries	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+65	HeroBoasts	script	S_HB			resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+65	bandit_level_cutscene	script				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+65	guy_script	script				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	BenTestScripts	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	GuildSealTriggerTest	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	HeroTurningDebugger	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	HitSwitchTest	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	MarkTestScripts	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	OracleMinigameTest	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	ProximityPodiumTest	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	ShowTargetedThingHealth	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	TestNewNav1	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	TestNewNav2	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	TestNewNav3	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	TestNewNav4	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	TestNewNav5	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	TestQuestCard1	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	TestQuestCard2	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	TestQuestCard3	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	TestTheInventory	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
+95	TonyTestScripts	test				resolve-allocator-address	registry-fact	typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review
