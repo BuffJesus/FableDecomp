@@ -92,8 +92,9 @@ roles come from vtable position so a false donor name cannot silently redefine t
 Pass a script-specific string as the optional fourth argument whenever one is known. The exporter
 rejects candidates whose recovered cluster lacks that anchor. This guard caught an initially
 plausible `QS_MeetSister` address whose body was actually `QS_GuardianTrophyDealerInfo`; the corrected
-cluster is retained under the trophy-dealer identity, while MeetSister remains unresolved instead of
-receiving false evidence.
+cluster is retained under the trophy-dealer identity. A string xref then resolved the actual
+MeetSister allocator at `0x00E29990`, and the same guard accepted it only after its lifecycle cluster
+contained `TEXT_QUEST_THERESA_MOTHER_INFO_2_SUMMARY`.
 
 Non-native macro scripts use a parallel parser and converge on the same operation/reference IR.
 
