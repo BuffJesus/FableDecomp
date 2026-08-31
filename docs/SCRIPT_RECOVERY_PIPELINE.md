@@ -83,6 +83,18 @@ For each row in `ghidra_out/quest_registry_table.tsv`:
 9. compare a deterministic Lua event trace with native runtime observations;
 10. promote to `verified-port` only after explicit review.
 
+`tools/ghidra_scripts/ExportNativeScriptCluster.java` automates the first object-boundary step. Given
+a registry allocator, it follows the allocator's constructor call, detects the constructor-assigned
+five-slot lifecycle vtable, and exports address-cited decompilation for destructor, `RegisterMain`,
+`Main`, `Init`, and `OnPersist`. Imported symbol names are recorded only as `currentName`; lifecycle
+roles come from vtable position so a false donor name cannot silently redefine the contract.
+
+Pass a script-specific string as the optional fourth argument whenever one is known. The exporter
+rejects candidates whose recovered cluster lacks that anchor. This guard caught an initially
+plausible `QS_MeetSister` address whose body was actually `QS_GuardianTrophyDealerInfo`; the corrected
+cluster is retained under the trophy-dealer identity, while MeetSister remains unresolved instead of
+receiving false evidence.
+
 Non-native macro scripts use a parallel parser and converge on the same operation/reference IR.
 
 ## Safe retail integration
@@ -98,3 +110,8 @@ Do not replace retail registrations merely because generated Lua loads. The inte
 Retail names must be preserved during a true override because `.qst`, WLD, saves, and other scripts
 use those names as join keys. New-name copies are useful tests but cannot demonstrate full replacement
 compatibility.
+
+`tools/script_recovery/build_override_manifest.py` enforces the evidence gate mechanically:
+`reconstructed-source` packages can be emitted in `shadow` mode, while `override` requires the exact
+`verified-port` label. The ForgeFSE runtime contract is specified in
+`docs/FORGEFSE_RETAIL_SCRIPT_RUNTIME.md`.
