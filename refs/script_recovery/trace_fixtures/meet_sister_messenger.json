@@ -1,0 +1,19 @@
+{
+  "Quest.GetHero": [
+    {
+      "handle": "hero"
+    }
+  ],
+  "Quest.GetThingWithScriptName": [
+    {
+      "handle": "messenger"
+    }
+  ],
+  "Quest.IsRegionLoaded": [
+    false,
+    true
+  ],
+  "Quest.NewScriptFrame": [
+    true
+  ]
+}

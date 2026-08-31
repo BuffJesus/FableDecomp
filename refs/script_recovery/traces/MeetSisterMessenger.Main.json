@@ -1,0 +1,106 @@
+{
+  "events": [
+    {
+      "arguments": [
+        "MeetSisterMessenger"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "ArenaExterior"
+      ],
+      "event": "api-call",
+      "name": "IsRegionLoaded",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "ArenaExterior"
+      ],
+      "event": "api-call",
+      "name": "IsRegionLoaded",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "CS_ARENA_LEAVE_THERESA_01",
+        {
+          "Hero": {
+            "handle": "hero",
+            "scope": "Entity"
+          },
+          "Messenger": {
+            "handle": "me",
+            "scope": "Entity"
+          }
+        },
+        {}
+      ],
+      "event": "api-call",
+      "name": "PlayCutscene",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "messenger",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "RemoveThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Quest.GetHero": [
+      {
+        "handle": "hero"
+      }
+    ],
+    "Quest.GetThingWithScriptName": [
+      {
+        "handle": "messenger"
+      }
+    ],
+    "Quest.IsRegionLoaded": [
+      false,
+      true
+    ],
+    "Quest.NewScriptFrame": [
+      true
+    ]
+  },
+  "function": "Main",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/seed_corpus/sources/MeetSister/FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+  "sourceSha256": "a78bfaca66ca91d985b25308425cdecbbb166eb9f247da85ff518cdd8bf68958"
+}

@@ -60,6 +60,17 @@ into a ranked ForgeFSE capability backlog. It also emits deterministic lexical t
 templates intentionally leave arguments, branches, and results unresolved until decompile or runtime
 evidence supplies them.
 
+`tools/script_recovery/run_lua_trace.py` complements those templates by executing the actual recovered
+Lua inside an isolated mock host. JSON fixtures control API return sequences, opaque quest/entity
+handles preserve actor identity, and a VM instruction budget stops accidental infinite loops. Its
+normalized event JSON records concrete arguments and branch-driven call order without mutating the
+game. `compare_event_traces.py` provides exact regression comparison and ordered-subsequence comparison
+for native shadow logs containing extra telemetry. MeetSister fixtures and checked-in traces exercise
+both a quest main and an entity wait/yield/cutscene path.
+
+The executable harness requires Python `lupa` (Lua embedded in Python); it does not load ForgeFSE or
+retail DLLs. Checked-in traces include the source SHA-256 so stale fixtures can be detected reliably.
+
 `tools/script_recovery/build_conversion_queue.py` produces a deterministic native conversion queue.
 Seed-correlated scripts are prioritized, but remain labeled `registry-fact`; possessing reconstructed
 Lua never skips the typed-decompile, API, state, persistence, static-validation, or trace-review gates.

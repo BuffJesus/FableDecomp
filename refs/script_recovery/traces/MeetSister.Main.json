@@ -1,0 +1,78 @@
+{
+  "events": [
+    {
+      "arguments": [
+        "MeetSister: Main() started. Setting up entity bindings..."
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "MeetSisterMessenger",
+        "MeetSister/Entities/MeetSisterMessenger"
+      ],
+      "event": "api-call",
+      "name": "AddEntityBinding",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "MeetSisterSister",
+        "MeetSister/Entities/MeetSisterSister"
+      ],
+      "event": "api-call",
+      "name": "AddEntityBinding",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "FinalizeEntityBindings",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetActiveQuestName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "QS_MeetSister",
+        "TEXT_QUEST_THERESA_MOTHER_INFO_2_SUMMARY",
+        "HauntedHouse",
+        "BarrowFields"
+      ],
+      "event": "api-call",
+      "name": "SetQuestCardObjective",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "MeetSister: Initial objective set."
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Quest.GetActiveQuestName": [
+      "QS_MeetSister"
+    ]
+  },
+  "function": "Main",
+  "kind": "quest",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/seed_corpus/sources/MeetSister/FSE/MeetSister/MeetSister.lua",
+  "sourceSha256": "2f9f61757f0a9d80b8e272b1d3153409d8213e5bd3eb92cf1ee667ad5aeac3fc"
+}
