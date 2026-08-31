@@ -2,23 +2,14 @@
   "schema": "forgefse-runtime-script-audit/0.1",
   "source": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaManager.cpp",
   "summary": {
-    "registeredQuestBindings": 885,
+    "registeredQuestBindings": 886,
     "registeredEntityBindings": 91,
     "requiredCalls": 84,
-    "callable": 83,
-    "missing": 1,
+    "callable": 84,
+    "missing": 0,
     "wrongScope": 0
   },
   "calls": [
-    {
-      "scope": "Quest",
-      "name": "AddLogbookStoryEntry",
-      "count": 1,
-      "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
-      ],
-      "status": "missing"
-    },
     {
       "scope": "Quest",
       "name": "Log",
@@ -792,6 +783,15 @@
       "count": 1,
       "consumers": [
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddLogbookStoryEntry",
+      "count": 1,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
       ],
       "status": "callable"
     },
