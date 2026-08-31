@@ -107,6 +107,21 @@ cluster is retained under the trophy-dealer identity. A string xref then resolve
 MeetSister allocator at `0x00E29990`, and the same guard accepted it only after its lifecycle cluster
 contained `TEXT_QUEST_THERESA_MOTHER_INFO_2_SUMMARY`.
 
+`DiscoverScriptAllocatorFromAnchor.java` removes the usual manual address hunt when a distinctive
+retail string is available. It walks exact string xrefs to the containing `Main`, recognizes that
+function in lifecycle-vtable slot 2, follows vtable assignments to the constructor, and reports its
+allocator callers (or the function itself for inline construction). Candidates still pass through
+the exporter's independent anchor check; discovery is not treated as verification.
+The discovery walk was exercised against both supported construction shapes: inline allocation for
+`QS_MeetSister` (`0x00E29990`) and a separate constructor/caller for `V_MazeResearch`
+(`0x00EA76E0` / `0x00EA8690`). Expected results live in
+`refs/script_recovery/native_discovery_fixtures.json`.
+
+`tools/script_recovery/decompile_native_script.py` is the queue-facing orchestration command. It runs
+headless discovery, requires exactly one candidate, invokes the anchored cluster exporter, treats
+Ghidra script errors as failures even when the launcher returns zero, and verifies the resulting
+allocator and evidence anchor before accepting the JSON artifact.
+
 Non-native macro scripts use a parallel parser and converge on the same operation/reference IR.
 
 ## Safe retail integration

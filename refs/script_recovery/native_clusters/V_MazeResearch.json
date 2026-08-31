@@ -5,6 +5,7 @@
   "allocatorAddress": "0x00EA8690",
   "constructorAddress": "0x00EA76E0",
   "vtableAddress": "0x012EE444",
+  "evidenceAnchors": ["TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_01"],
   "lifecycle": [
     {
       "slot": 0,

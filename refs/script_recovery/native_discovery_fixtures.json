@@ -1,0 +1,21 @@
+{
+  "schema": "fable-native-script-discovery-fixtures/0.1",
+  "fixtures": [
+    {
+      "script": "QS_MeetSister",
+      "anchor": "TEXT_QUEST_THERESA_MOTHER_INFO_2_SUMMARY",
+      "mainAddress": "0x00E28DE0",
+      "vtableAddress": "0x012E2194",
+      "allocatorAddress": "0x00E29990",
+      "candidateCount": 1
+    },
+    {
+      "script": "V_MazeResearch",
+      "anchor": "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_01",
+      "mainAddress": "0x00EA7800",
+      "vtableAddress": "0x012EE444",
+      "allocatorAddress": "0x00EA8690",
+      "candidateCount": 1
+    }
+  ]
+}
