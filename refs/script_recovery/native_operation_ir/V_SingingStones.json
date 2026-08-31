@@ -1,0 +1,399 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "V_SingingStones",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/V_SingingStones.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00ED39A0",
+  "vtableAddress": "0x012F2B0C",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00ED39D0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "CParticleEmitter___CParticleEmitter_0xd39f0",
+          "offset": 303
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 384
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00ED0F50",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00ED10A0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_SingingStonesScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_SingingStonesScript::Main",
+          "offset": 146
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1300
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 1836
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 1938
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2107
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2267
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 2649
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3101
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3270
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3438
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 3761
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 4289
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4419
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4634
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5223
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 5290
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 6131
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6346
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6941
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 7008
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 7849
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8064
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8678
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 8745
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 9625
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9714
+        }
+      ],
+      "strings": [
+        "Witchwood2",
+        "SingingStone",
+        "ManWithDoorName",
+        "WatchForCompleteTune",
+        "",
+        "WatchForSpokenToDemonDoors",
+        "",
+        "WatchForRegionLeaving",
+        "",
+        "Witchwood2"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 2418
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 2565
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "&LAB_00ed16e0",
+          "offset": 3588
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 3705
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00ed2bb0",
+          "offset": 5091
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 5151
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00ed13b0",
+          "offset": 6809
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 6869
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "CQ_BanditCampScript::WatchForEndOfScript",
+          "offset": 8525
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 8606
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00ED0EC0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_SingingStonesScript::Init",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_SingingStonesScript::Init",
+          "offset": 146
+        }
+      ],
+      "strings": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x50",
+          "valueExpression": "1",
+          "offset": 222
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 295
+        },
+        {
+          "fieldOffset": "0x4c",
+          "valueExpression": "3",
+          "offset": 332
+        },
+        {
+          "fieldOffset": "0x54",
+          "valueExpression": "0",
+          "offset": 369
+        },
+        {
+          "fieldOffset": "0x58",
+          "valueExpression": "2",
+          "offset": 406
+        },
+        {
+          "fieldOffset": "0x5c",
+          "valueExpression": "2",
+          "offset": 443
+        },
+        {
+          "fieldOffset": "0x60",
+          "valueExpression": "3",
+          "offset": 480
+        },
+        {
+          "fieldOffset": "0x68",
+          "valueExpression": "0",
+          "offset": 517
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00ED1010",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00ed1010",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "DoorManIntroComplete",
+        "DoorManAttackedByHero",
+        "DoorManHasBribe",
+        "DoorManComplete"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "DoorManIntroComplete",
+          "nativeType": "signed_char",
+          "offset": 185
+        },
+        {
+          "key": "DoorManAttackedByHero",
+          "nativeType": "signed_char",
+          "offset": 390
+        },
+        {
+          "key": "DoorManHasBribe",
+          "nativeType": "signed_char",
+          "offset": 581
+        },
+        {
+          "key": "DoorManComplete",
+          "nativeType": "signed_char",
+          "offset": 766
+        }
+      ]
+    }
+  ]
+}

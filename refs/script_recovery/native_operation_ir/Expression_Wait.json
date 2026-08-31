@@ -1,0 +1,204 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "Expression_Wait",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/Expression_Wait.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00EEA740",
+  "vtableAddress": "0x012F55F8",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00EEA770",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
+          "offset": 331
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 456
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00EEA680",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00EEA460",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CExpression_WaitScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CExpression_WaitScript::Main",
+          "offset": 146
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptThing::CScriptThing",
+          "offset": 1317
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 1859
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 1973
+        },
+        {
+          "operation": "call",
+          "callee": "CBaseIntelligentPointer::CBaseIntelligentPointer",
+          "offset": 2056
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 2604
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 2917
+        },
+        {
+          "operation": "call",
+          "callee": "CBaseIntelligentPointer::CBaseIntelligentPointer",
+          "offset": 3004
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3240
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4174
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::KillSpawnedFunction",
+          "offset": 4252
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4696
+        },
+        {
+          "operation": "call",
+          "callee": "CPhysicsMeshInfo",
+          "offset": 6399
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptGameResourceObjectMovieBase",
+          "offset": 6515
+        }
+      ],
+      "strings": [
+        "",
+        "FollowThread",
+        "Expression_Follow"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00EEA450",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00eea450",
+          "offset": 7
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00CBD4E0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00cbd4e0",
+          "offset": 7
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    }
+  ]
+}

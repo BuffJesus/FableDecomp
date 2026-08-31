@@ -1,0 +1,341 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "LadyGreyWifeManager",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/LadyGreyWifeManager.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00CF91C0",
+  "vtableAddress": "0x012C6C10",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00CF91F0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "CLadyGreyWifeManagerScript",
+          "offset": 341
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 453
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00CF9100",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00cf9100",
+          "offset": 18
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 470
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 669
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1106
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1167
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 994
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 1046
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00CF8A70",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CLadyGreyWifeManagerScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CLadyGreyWifeManagerScript::Main",
+          "offset": 150
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 2032
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2138
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 2750
+        },
+        {
+          "operation": "call",
+          "callee": "NHeroInformationScreens::CBase::CBase",
+          "offset": 2849
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 3330
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 3667
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 3845
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 4008
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 4196
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 4896
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 5541
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 5725
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6627
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7357
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8968
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9707
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10521
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 11075
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11965
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 12595
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 13090
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 13586
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 14607
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 15135
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 16112
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 16828
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 17541
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 17868
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 18103
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 19066
+        }
+      ],
+      "strings": [
+        "LadyGrey",
+        "MayorsHouseBedroom",
+        "BowerstonePosh",
+        "BowerstonePosh",
+        "MayorsHouseBedroom",
+        "BowerstonePosh",
+        "MayorsHouseBedroom",
+        "LadyGreyAppearPoint",
+        "MayorsBedroomVillage",
+        "MayorsBedroom",
+        "LadyGreyAppearPoint",
+        "VILLAGE_BOWERSTONE_POSH"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x84",
+          "valueExpression": "0",
+          "offset": 3413
+        },
+        {
+          "fieldOffset": "0x84",
+          "valueExpression": "iVar4",
+          "offset": 8038
+        },
+        {
+          "fieldOffset": "0x84",
+          "valueExpression": "iVar4",
+          "offset": 8294
+        },
+        {
+          "fieldOffset": "0x84",
+          "valueExpression": "iVar4",
+          "offset": 10409
+        },
+        {
+          "fieldOffset": "0x84",
+          "valueExpression": "iVar4",
+          "offset": 14501
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00CF8970",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CLadyGreyWifeManagerScript::Init",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CLadyGreyWifeManagerScript::Init",
+          "offset": 150
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 519
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 1064
+        },
+        {
+          "operation": "call",
+          "callee": "NHeroInformationScreens::CBase::CBase",
+          "offset": 1153
+        }
+      ],
+      "strings": [
+        "LadyGrey"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00CBD4E0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00cbd4e0",
+          "offset": 7
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    }
+  ]
+}

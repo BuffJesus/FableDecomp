@@ -1,0 +1,330 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "V_TalentlessBard",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/V_TalentlessBard.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00EDACC0",
+  "vtableAddress": "0x012F3428",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00EDACF0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "CV_TalentlessBardScript",
+          "offset": 338
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 430
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00ED7790",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00ED7830",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00ed7830",
+          "offset": 18
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 901
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1085
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1199
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 1494
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 1926
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2110
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2214
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 2479
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 2905
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3025
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3251
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3737
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 3823
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 4721
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 6168
+        }
+      ],
+      "strings": [
+        "TB_BardSpawnPoint",
+        "TB_Bard",
+        "WatchForCompletedQuests",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 1315
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 1450
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "&LAB_00ed7cd0",
+          "offset": 2330
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 2435
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "TalentlessBard_OnScript",
+          "offset": 3606
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 3662
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00ED83C0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00ed83c0",
+          "offset": 18
+        },
+        {
+          "operation": "call",
+          "callee": "resize",
+          "offset": 2603
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 2711
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 2962
+        }
+      ],
+      "strings": [
+        "Q_WaspBoss",
+        "TEXT_QST_163_QUEST_WASP_BOSS",
+        "Q_OrchardFarmRaidGood",
+        "TEXT_QST_163_QUEST_ORCHARD_FARM_GOOD",
+        "Q_OrchardFarmRaidEvil",
+        "TEXT_QST_163_QUEST_ORCHARD_FARM_EVIL",
+        "Q_WhiteBalverineKnotholeGlade",
+        "TEXT_QST_163_QUEST_WHITE_BALV",
+        "Q_PrisonEscapeRescueMother",
+        "TEXT_QST_163_QUEST_PRISON",
+        "Q_BanditCamp",
+        "TEXT_QST_163_QUEST_BANDIT_CAMP",
+        "Q_OpeningGraveyardSecretPassage",
+        "TEXT_QST_163_QUEST_GRAVEYARD",
+        "Q_TraderEscort",
+        "TEXT_QST_163_QUEST_DARKWOOD_TRADERS",
+        "Q_WizardBattle",
+        "TEXT_QST_163_QUEST_WIZARD_BATTLE",
+        "Q_Arena",
+        "TEXT_QST_163_QUEST_ARENA",
+        "Q_EndGameBossBattle",
+        "TEXT_QST_163_QUEST_JACK"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x4c",
+          "valueExpression": "0",
+          "offset": 380
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00ED85A0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00ed85a0",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "bBard_finished",
+        "bRewardGiven",
+        "bHurtBard",
+        "lNumber_of_things_sung_about",
+        "AttackedByHero",
+        "BardIntroComplete",
+        "BardFollowing",
+        "SongThingAvailable"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "bBard_finished",
+          "nativeType": "signed_char",
+          "offset": 205
+        },
+        {
+          "key": "bRewardGiven",
+          "nativeType": "signed_char",
+          "offset": 404
+        },
+        {
+          "key": "bHurtBard",
+          "nativeType": "signed_char",
+          "offset": 586
+        },
+        {
+          "key": "AttackedByHero",
+          "nativeType": "signed_char",
+          "offset": 928
+        },
+        {
+          "key": "BardIntroComplete",
+          "nativeType": "signed_char",
+          "offset": 1112
+        },
+        {
+          "key": "BardFollowing",
+          "nativeType": "signed_char",
+          "offset": 1299
+        },
+        {
+          "key": "SongThingAvailable",
+          "nativeType": "signed_char",
+          "offset": 1420
+        }
+      ]
+    }
+  ]
+}

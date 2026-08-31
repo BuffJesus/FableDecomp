@@ -87,10 +87,10 @@
       "section": "S_QSSI",
       "allocatorAddress": "0x00E2AB00",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\QS_ScytheInfo.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QS_ScytheInfo.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -100,10 +100,10 @@
       "section": "S_QAT",
       "allocatorAddress": "0x00CFA2F0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_AmbushTraders.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_AmbushTraders.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -113,10 +113,10 @@
       "section": "S_QA",
       "allocatorAddress": "0x00CFABF0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_Arena.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_Arena.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -126,10 +126,10 @@
       "section": "S_QATO",
       "allocatorAddress": "0x00D00590",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_AwakeningTheOracle.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_AwakeningTheOracle.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -139,10 +139,10 @@
       "section": "S_QBH",
       "allocatorAddress": "0x00D1CBA0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_BountyHunt.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_BountyHunt.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -152,10 +152,10 @@
       "section": "S_QDBF",
       "allocatorAddress": "0x00D27240",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_DragonBossFight.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_DragonBossFight.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -165,10 +165,10 @@
       "section": "S_QEGBB",
       "allocatorAddress": "0x00D34410",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_EndGameBossBattle.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_EndGameBossBattle.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -178,10 +178,10 @@
       "section": "S_QEGFS",
       "allocatorAddress": "0x00D2F5F0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_EndGameFocalSites.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_EndGameFocalSites.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -191,10 +191,10 @@
       "section": "S_QFHT",
       "allocatorAddress": "0x00D3AFC0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_FireHeart.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_FireHeart.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -204,10 +204,10 @@
       "section": "S_QHTE",
       "allocatorAddress": "0x00D6ED10",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_HangingTreeEvil.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HangingTreeEvil.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -217,10 +217,10 @@
       "section": "S_QHTG",
       "allocatorAddress": "0x00D78290",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_HangingTreeGood.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HangingTreeGood.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -230,10 +230,10 @@
       "section": "S_QHSA",
       "allocatorAddress": "0x00D80BA0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_HeroSoulsArena.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsArena.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -243,10 +243,10 @@
       "section": "S_QHSB",
       "allocatorAddress": "0x00D83300",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_HeroSoulsBriar.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsBriar.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -256,10 +256,10 @@
       "section": "S_QHSG",
       "allocatorAddress": "0x00D87A80",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_HeroSoulsGuildmaster.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsGuildmaster.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -269,10 +269,10 @@
       "section": "S_QHSM",
       "allocatorAddress": "0x00D84AF0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_HeroSoulsMother.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsMother.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -282,10 +282,10 @@
       "section": "S_QHST",
       "allocatorAddress": "0x00D7C6A0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_HeroSoulsThunder.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsThunder.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -295,10 +295,10 @@
       "section": "S_QMC",
       "allocatorAddress": "0x00DA2F40",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_MinionCamp.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_MinionCamp.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -308,10 +308,10 @@
       "section": "S_QNOVI",
       "allocatorAddress": "0x00DBEF70",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_NewOakValeIntro.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_NewOakValeIntro.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -321,10 +321,10 @@
       "section": "S_QOGSP",
       "allocatorAddress": "0x00DCBFD0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_OpeningGraveyardSecretPassage.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_OpeningGraveyardSecretPassage.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -334,10 +334,10 @@
       "section": "S_QOFR",
       "allocatorAddress": "0x00DD1EF0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_OrchardFarmRaid.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_OrchardFarmRaid.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -347,10 +347,10 @@
       "section": "S_QRV",
       "allocatorAddress": "0x00DEBC60",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_RansomVictim.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_RansomVictim.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -360,10 +360,10 @@
       "section": "S_QSP",
       "allocatorAddress": "0x00DF1080",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_SecretPassage.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_SecretPassage.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -373,10 +373,10 @@
       "section": "S_QWZB",
       "allocatorAddress": "0x00E1D9F0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_WizardBattle.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_WizardBattle.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1023,10 +1023,10 @@
       "section": "S_VEM",
       "allocatorAddress": "0x00E7B290",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_ExposeMayor.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_ExposeMayor.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1036,10 +1036,10 @@
       "section": "S_VFCC",
       "allocatorAddress": "0x00E8B700",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_FisticuffsClub.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_FisticuffsClub.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1049,10 +1049,10 @@
       "section": "S_VMTF",
       "allocatorAddress": "0x00EB6A60",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_MurderTwistFinal.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_MurderTwistFinal.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1062,10 +1062,10 @@
       "section": "S_VSC",
       "allocatorAddress": "0x00ED0E00",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_SickChild.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_SickChild.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1075,10 +1075,10 @@
       "section": "S_VSS",
       "allocatorAddress": "0x00ED39A0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_SingingStones.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_SingingStones.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1088,10 +1088,10 @@
       "section": "S_VSITS",
       "allocatorAddress": "0x00ED75F0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_SwordInTheStone.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_SwordInTheStone.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1101,10 +1101,10 @@
       "section": "S_VTB",
       "allocatorAddress": "0x00EDACC0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_TalentlessBard.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_TalentlessBard.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1114,10 +1114,10 @@
       "section": "S_VTG",
       "allocatorAddress": "0x00EE6C00",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_TourGuide.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_TourGuide.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1127,10 +1127,10 @@
       "section": "S_VTH",
       "allocatorAddress": "0x00EE40A0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_TravellingHeroes.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_TravellingHeroes.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1465,10 +1465,10 @@
       "section": "",
       "allocatorAddress": "0x00EE9450",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Global_DebugCycleThroughSpeech.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_DebugCycleThroughSpeech.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1478,10 +1478,10 @@
       "section": "",
       "allocatorAddress": "0x00EEC750",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Global_GiveHeroItemsFromRewardChest.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_GiveHeroItemsFromRewardChest.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1491,10 +1491,10 @@
       "section": "",
       "allocatorAddress": "0x00EECEA0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Global_OpenChest.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_OpenChest.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1504,10 +1504,10 @@
       "section": "",
       "allocatorAddress": "0x00EED060",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Global_ToggleTimeDisplay.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_ToggleTimeDisplay.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1517,10 +1517,10 @@
       "section": "",
       "allocatorAddress": "0x00EE90A0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Global_WatchForHeroDeath.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_WatchForHeroDeath.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1530,10 +1530,10 @@
       "section": "",
       "allocatorAddress": "0x00EEAE70",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Expression_Dig.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Dig.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1543,10 +1543,10 @@
       "section": "",
       "allocatorAddress": "0x00EE9F00",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Expression_Fish.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Fish.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1556,10 +1556,10 @@
       "section": "",
       "allocatorAddress": "0x00EEA3E0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Expression_Follow.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Follow.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1569,10 +1569,10 @@
       "section": "",
       "allocatorAddress": "0x00EEBD70",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Expression_Picklock.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Picklock.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1582,10 +1582,10 @@
       "section": "",
       "allocatorAddress": "0x00EEB730",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Expression_Pickpocket.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Pickpocket.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1595,10 +1595,10 @@
       "section": "",
       "allocatorAddress": "0x00EEC390",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Expression_Steal.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Steal.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1608,10 +1608,10 @@
       "section": "",
       "allocatorAddress": "0x00EEA740",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Expression_Wait.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Wait.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1660,10 +1660,10 @@
       "section": "CS_OVR",
       "allocatorAddress": "0x00EE8BE0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\CS_OakValeRevisited.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\CS_OakValeRevisited.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1816,10 +1816,10 @@
       "section": "S_LGWM",
       "allocatorAddress": "0x00CF91C0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\LadyGreyWifeManager.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\LadyGreyWifeManager.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {

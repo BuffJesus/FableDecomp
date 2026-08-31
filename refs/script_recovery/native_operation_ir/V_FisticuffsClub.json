@@ -1,0 +1,407 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "V_FisticuffsClub",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/V_FisticuffsClub.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00E8B700",
+  "vtableAddress": "0x012EAF14",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00E8B730",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "CV_FisticuffsClubScript",
+          "offset": 338
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 430
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00E820D0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00E82220",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_FisticuffsClubScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_FisticuffsClubScript::Main",
+          "offset": 147
+        },
+        {
+          "operation": "call",
+          "callee": "InitialiseVariables",
+          "offset": 1081
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 1122
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1279
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1416
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 1742
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 2195
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2352
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2487
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 2783
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3239
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3396
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3520
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 3846
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4302
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4459
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4589
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 4915
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 5360
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 5478
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5681
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6205
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 6265
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 7084
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7287
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7797
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 7857
+        }
+      ],
+      "strings": [
+        "FisticuffsClubRing",
+        "FisticuffsMember",
+        "Tyler",
+        "RingFighter",
+        "KeepVariablesUpToDate",
+        "",
+        "ActivateFisticuffsAtNight",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 1563
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 1698
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "&LAB_00e838a0",
+          "offset": 2634
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 2739
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 3667
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 3802
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 4736
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 4871
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "CQ_HangingTreeEvilScript::BanditYells",
+          "offset": 6072
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 6144
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00e83d50",
+          "offset": 7682
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 7736
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00E82010",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CChunkedFile",
+          "offset": 90
+        },
+        {
+          "operation": "call",
+          "callee": "CChunkedFile",
+          "offset": 146
+        },
+        {
+          "operation": "call",
+          "callee": "NHeroInformationScreens::CBase::CBase",
+          "offset": 308
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 657
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 974
+        },
+        {
+          "operation": "call",
+          "callee": "NHeroInformationScreens::CBase::CBase",
+          "offset": 1056
+        }
+      ],
+      "strings": [],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "6",
+          "offset": 271
+        },
+        {
+          "fieldOffset": "0xa4",
+          "valueExpression": "= 0) {\r\n      (*(code *)(*(int **)(this + 0xa4))[1])()",
+          "offset": 570
+        },
+        {
+          "fieldOffset": "0xa0",
+          "valueExpression": "0",
+          "offset": 711
+        },
+        {
+          "fieldOffset": "0xa4",
+          "valueExpression": "0",
+          "offset": 750
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00E82190",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e82190",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "CompletedKnotholePunchClub",
+        "CompletedBowerstonePunchClub",
+        "CompletedBanditPunchClub",
+        "CompletedOakvalePunchClub"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "CompletedKnotholePunchClub",
+          "nativeType": "signed_char",
+          "offset": 185
+        },
+        {
+          "key": "CompletedBowerstonePunchClub",
+          "nativeType": "signed_char",
+          "offset": 411
+        },
+        {
+          "key": "CompletedBanditPunchClub",
+          "nativeType": "signed_char",
+          "offset": 609
+        },
+        {
+          "key": "CompletedOakvalePunchClub",
+          "nativeType": "signed_char",
+          "offset": 803
+        }
+      ]
+    }
+  ]
+}

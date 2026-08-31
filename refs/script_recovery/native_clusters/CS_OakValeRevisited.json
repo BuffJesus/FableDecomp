@@ -1,0 +1,46 @@
+{
+  "schema": "fable-native-script-cluster/0.1",
+  "script": "CS_OakValeRevisited",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00EE8BE0",
+  "constructorAddress": "0x00EE8100",
+  "vtableAddress": "0x012F53C0",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "slot": 0,
+      "role": "destructor",
+      "address": "0x00EE8C10",
+      "currentName": "`vector_deleting_destructor'",
+      "decompile": "\r\n/* [bsim sim=1.0000000000000002 <- ego_r]\r\n   public: virtual void * __thiscall CLandscapeBackgroundPatch::`vector deleting\r\n   destructor'(unsigned int) */\r\n\r\nvoid * __thiscall\r\nCLandscapeBackgroundPatch::_vector_deleting_destructor_\r\n          (CLandscapeBackgroundPatch *this,uint param_1)\r\n\r\n{\r\n  CParticleEmitter___CParticleEmitter_0xe8c30();\r\n  if ((param_1 & 1) != 0) {\r\n    operator_delete(this);\r\n  }\r\n  return this;\r\n}\r\n\r\n"
+    },
+    {
+      "slot": 1,
+      "role": "RegisterMain",
+      "address": "0x00EE8210",
+      "currentName": "Main",
+      "decompile": "\r\n/* [bsim sim=0.6426693107846077 <- ego_r]\r\n   public: virtual void __thiscall NScript::CGlobal_WatchForHeroDeathScript::Main(void) */\r\n\r\nvoid __thiscall\r\nNScript::CGlobal_WatchForHeroDeathScript::Main(CGlobal_WatchForHeroDeathScript *this)\r\n\r\n{\r\n  CSpawnedFunc<NScript::CExpression_FollowScript> *this_00;\r\n  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;\r\n  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;\r\n  _func_void *unaff_ESI;\r\n  CExpression_FollowScript *unaff_EDI;\r\n  bool bVar1;\r\n  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *in_stack_fffffff8;\r\n  undefined4 local_4;\r\n  \r\n  local_4 = 0;\r\n  this_00 = ::operator_new(0x3c);\r\n  bVar1 = this_00 == (CSpawnedFunc<NScript::CExpression_FollowScript> *)0x0;\r\n  if (bVar1) {\r\n    this_00 = (CSpawnedFunc<NScript::CExpression_FollowScript> *)0x0;\r\n  }\r\n  else {\r\n    CCharString::CCharString((CCharString *)&stack0xfffffff8,\"Main\",-1);\r\n    CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>\r\n              (this_00,(CCharString *)&stack0xfffffff8,0,unaff_EDI,unaff_ESI);\r\n    *(undefined ***)this_00 = &PTR__vector_deleting_destructor__012f53d4;\r\n    *(undefined1 **)(this_00 + 0x34) = &LAB_00cdd440;\r\n    *(CGlobal_WatchForHeroDeathScript **)(this_00 + 0x38) = this;\r\n  }\r\n  CCharString::CCharString((CCharString *)&local_4,\"\",-1);\r\n  CGuiVarTransferStruct::Add((CGuiVarTransferStruct *)this,(CGuiVarTransferBase *)this_00);\r\n  std::\r\n  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_4,extraout_EDX,\r\n             (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)unaff_EDI);\r\n  if (!bVar1) {\r\n    std::\r\n    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xfffffff8,\r\n               extraout_EDX_00,in_stack_fffffff8);\r\n  }\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "slot": 2,
+      "role": "Main",
+      "address": "0x00EE82D0",
+      "currentName": "FUN_00ee82d0",
+      "decompile": "\r\nvoid __thiscall\r\nFUN_00ee82d0(CTCVillage *param_1,ulong param_2,float param_3,bool param_4,bool param_5)\r\n\r\n{\r\n  char cVar1;\r\n  bool bVar2;\r\n  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;\r\n  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;\r\n  CCharString *unaff_EBX;\r\n  CCharString *unaff_ESI;\r\n  CCharString *unaff_retaddr;\r\n  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *ppVar3;\r\n  CCharString *pCVar4;\r\n  \r\n  pCVar4 = (CCharString *)0x0;\r\n  CTCVillage::OnInitialActivate(param_1);\r\n  (**(code **)(**(int **)(param_1 + 0x40) + 0x100))();\r\n  CCharString::CCharString((CCharString *)&stack0xfffffffc,\"OakBay\",-1);\r\n  ppVar3 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)&stack0xfffffffc;\r\n  cVar1 = (**(code **)(**(int **)(param_1 + 0x40) + 0x30))();\r\n  std::\r\n  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xfffffff8,\r\n             extraout_EDX,ppVar3);\r\n  while( true ) {\r\n    if (cVar1 != '\\0') {\r\n      bVar2 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);\r\n      if (!bVar2) {\r\n        CSubtitleRenderer::SetText\r\n                  ((CSubtitleRenderer *)0x64,(CFontBank *)ppVar3,unaff_ESI,unaff_EBX,pCVar4,\r\n                   unaff_retaddr,param_2,param_3,param_4,param_5);\r\n        DoMission_OakValeRevisited();\r\n      }\r\n      return;\r\n    }\r\n    (**(code **)(**(int **)(param_1 + 0x40) + 0x1c))();\r\n    bVar2 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);\r\n    if (bVar2) break;\r\n    CCharString::CCharString((CCharString *)&stack0xfffffff8,\"OakBay\",-1);\r\n    cVar1 = (**(code **)(**(int **)(param_1 + 0x40) + 0x30))(&stack0xfffffff8);\r\n    std::\r\n    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xfffffff8,\r\n               extraout_EDX_00,ppVar3);\r\n  }\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "slot": 3,
+      "role": "Init",
+      "address": "0x00CBD4D0",
+      "currentName": "FUN_00cbd4d0",
+      "decompile": "\r\nvoid FUN_00cbd4d0(void)\r\n\r\n{\r\n  return;\r\n}\r\n\r\n"
+    },
+    {
+      "slot": 4,
+      "role": "OnPersist",
+      "address": "0x00CBD4E0",
+      "currentName": "FUN_00cbd4e0",
+      "decompile": "\r\nvoid FUN_00cbd4e0(void)\r\n\r\n{\r\n  return;\r\n}\r\n\r\n"
+    }
+  ]
+}

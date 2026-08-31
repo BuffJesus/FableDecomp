@@ -1,0 +1,408 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "V_SwordInTheStone",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/V_SwordInTheStone.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00ED75F0",
+  "vtableAddress": "0x012F301C",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00ED7620",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "CV_SwordInTheStoneScript",
+          "offset": 339
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 433
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00ED4B90",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00ED4D20",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_SwordInTheStoneScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_SwordInTheStoneScript::Main",
+          "offset": 148
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 2355
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2494
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2638
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 2980
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3494
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3633
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3803
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 4122
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 4606
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4713
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 4778
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 5076
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 5301
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5439
+        },
+        {
+          "operation": "call",
+          "callee": "strstr",
+          "offset": 5764
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 6252
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 6745
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 6875
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 7056
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7200
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7252
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 8217
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8424
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8942
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 9006
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 10015
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 10203
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10978
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 11610
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11760
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 12294
+        }
+      ],
+      "strings": [
+        "SwordOfStrength",
+        "SwordCrowd",
+        "Witchwood",
+        "",
+        "",
+        "",
+        "TEXT_QST_062_GM_INTRO",
+        "WatchForSwordPickup",
+        "",
+        "Witchwood3",
+        "Witchwood3"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 2722
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 2819
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 3943
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 4078
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "WatchForSwordPickup",
+          "offset": 8812
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 8871
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00ED4B10",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_SwordInTheStoneScript::Init",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_SwordInTheStoneScript::Init",
+          "offset": 148
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 1169
+        }
+      ],
+      "strings": [],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 285
+        },
+        {
+          "fieldOffset": "0x6c",
+          "valueExpression": "= 0) {\r\n        (*(code *)(*(int **)(this + 0x6c))[1])()",
+          "offset": 1078
+        },
+        {
+          "fieldOffset": "0x68",
+          "valueExpression": "uVar3",
+          "offset": 1232
+        },
+        {
+          "fieldOffset": "0x6c",
+          "valueExpression": "piVar1",
+          "offset": 1275
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00ED4C50",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00ed4c50",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "HeroHasBeenToldSwordLegend",
+        "SwordRemovalAttemptCount",
+        "HeroStrengthPhysique",
+        "HeroStrengthToughness",
+        "HeroStrengthHealth",
+        "SwordInTheStoneIntroComplete",
+        "StatsInitialised"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "HeroHasBeenToldSwordLegend",
+          "nativeType": "signed_char",
+          "offset": 185
+        },
+        {
+          "key": "SwordRemovalAttemptCount",
+          "nativeType": "signed_char",
+          "offset": 386
+        },
+        {
+          "key": "HeroStrengthPhysique",
+          "nativeType": "signed_char",
+          "offset": 555
+        },
+        {
+          "key": "HeroStrengthToughness",
+          "nativeType": "signed_char",
+          "offset": 720
+        },
+        {
+          "key": "HeroStrengthHealth",
+          "nativeType": "signed_char",
+          "offset": 886
+        },
+        {
+          "key": "SwordInTheStoneIntroComplete",
+          "nativeType": "signed_char",
+          "offset": 1074
+        },
+        {
+          "key": "StatsInitialised",
+          "nativeType": "signed_char",
+          "offset": 1272
+        }
+      ]
+    }
+  ]
+}

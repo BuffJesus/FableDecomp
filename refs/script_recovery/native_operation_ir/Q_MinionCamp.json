@@ -1,0 +1,432 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "Q_MinionCamp",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/Q_MinionCamp.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00DA2F40",
+  "vtableAddress": "0x012D6C60",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00DA2F70",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "CV_FisticuffsClubScript",
+          "offset": 338
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 430
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00D9E520",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00D9E5E0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_MinionCampScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_MinionCampScript::Main",
+          "offset": 143
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1040
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 1609
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1766
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1894
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 2186
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 2698
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2855
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2988
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 3310
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3822
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3979
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4111
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 4433
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4945
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5102
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5230
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 5552
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 6064
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6221
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6354
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 6676
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 7177
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 7296
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7501
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7962
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 8030
+        }
+      ],
+      "strings": [
+        "Darkwood3",
+        "BriarRose",
+        "MC_MinionGuard",
+        "MC_SpawnPoint",
+        "MC_Minion",
+        "FadeinSummoner",
+        "DoMission",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "&LAB_00d9e8b0",
+          "offset": 2037
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 2142
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 3131
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 3266
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 4254
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 4389
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 5373
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 5508
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 6497
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 6632
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "DoMission",
+          "offset": 7859
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 7904
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00D9E2E0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_MinionCampScript::Init",
+          "offset": 79
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_MinionCampScript::Init",
+          "offset": 142
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1996
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2073
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2981
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3068
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4071
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4158
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5164
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5251
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6258
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6345
+        }
+      ],
+      "strings": [
+        "Darkwood3",
+        "Q_MinionCamp",
+        "",
+        "TEXT_QST_BOAST_DESCRIPTION_NAKED",
+        "",
+        "TEXT_QST_BOAST_DESCRIPTION_NODAMAGE",
+        "",
+        "TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS",
+        "",
+        "TEXT_QST_BOAST_DESCRIPTION_BRIARNODAMAGE"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x50",
+          "valueExpression": "0",
+          "offset": 1468
+        },
+        {
+          "fieldOffset": "0x54",
+          "valueExpression": "3",
+          "offset": 1739
+        },
+        {
+          "fieldOffset": "0x58",
+          "valueExpression": "*(undefined4 *)(DAT_0143e90c + 0xd3c)",
+          "offset": 1776
+        },
+        {
+          "fieldOffset": "0x5c",
+          "valueExpression": "*(undefined4 *)(DAT_0143e90c + 0xd40)",
+          "offset": 1849
+        },
+        {
+          "fieldOffset": "0x74",
+          "valueExpression": "0",
+          "offset": 1922
+        },
+        {
+          "fieldOffset": "0xa8",
+          "valueExpression": "0",
+          "offset": 1959
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00CBD4E0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00cbd4e0",
+          "offset": 7
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    }
+  ]
+}

@@ -1,0 +1,420 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "V_TourGuide",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/V_TourGuide.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00EE6C00",
+  "vtableAddress": "0x012F46B8",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00EE6C30",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "CActionTalkedTo",
+          "offset": 341
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 417
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00EE4710",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00EE47B0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00ee47b0",
+          "offset": 18
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 917
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1074
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1185
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 1480
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 1912
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2069
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2183
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 2478
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 2904
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3026
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3229
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3692
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 3753
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4567
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4770
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5233
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 5294
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 6195
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 6980
+        }
+      ],
+      "strings": [
+        "TourGuideGuide",
+        "TourGuideFollower",
+        "WatchForGuideKilled",
+        "",
+        "WatchForClosingTime",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 1301
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 1436
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 2299
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 2434
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "NScript::CV_TourGuideScript::WatchForGuideKilled",
+          "offset": 3557
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 3640
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "NScript::CV_TourGuideScript::WatchForClosingTime",
+          "offset": 5098
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 5181
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00EE42A0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00ee42a0",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "M_TG_LocationBalcony",
+        "TEXT_QST_066_LOCATION_OVERHEARD_BALCONY",
+        "TEXT_QST_066_LOCATION_REQUESTED_BALCONY",
+        "M_TG_LocationBanquet",
+        "TEXT_QST_066_LOCATION_OVERHEARD_BANQUET",
+        "TEXT_QST_066_LOCATION_REQUESTED_BANQUET",
+        "M_TG_LocationBar",
+        "TEXT_QST_066_LOCATION_OVERHEARD_BAR",
+        "TEXT_QST_066_LOCATION_REQUESTED_BAR",
+        "M_TG_LocationBridge",
+        "TEXT_QST_066_LOCATION_OVERHEARD_BRIDGE",
+        "TEXT_QST_066_LOCATION_REQUESTED_BRIDGE",
+        "M_TG_LocationCloisters",
+        "TEXT_QST_066_LOCATION_OVERHEARD_CLOISTERS",
+        "TEXT_QST_066_LOCATION_REQUESTED_CLOISTERS",
+        "M_TG_LocationDorm1",
+        "TEXT_QST_066_LOCATION_OVERHEARD_DORM1",
+        "TEXT_QST_066_LOCATION_REQUESTED_DORM1",
+        "M_TG_LocationDorm2",
+        "TEXT_QST_066_LOCATION_OVERHEARD_DORM2",
+        "TEXT_QST_066_LOCATION_REQUESTED_DORM2",
+        "M_TG_LocationLibrary",
+        "TEXT_QST_066_LOCATION_OVERHEARD_LIBRARY",
+        "TEXT_QST_066_LOCATION_REQUESTED_LIBRARY",
+        "M_TG_LocationMap",
+        "TEXT_QST_066_LOCATION_OVERHEARD_MAP",
+        "TEXT_QST_066_LOCATION_REQUESTED_MAP",
+        "M_TG_LocationMaze",
+        "TEXT_QST_066_LOCATION_OVERHEARD_MAZE",
+        "TEXT_QST_066_LOCATION_REQUESTED_MAZE",
+        "M_TG_LocationShop",
+        "TEXT_QST_066_LOCATION_OVERHEARD_SHOP",
+        "TEXT_QST_066_LOCATION_REQUESTED_SHOP",
+        "M_TG_LocationStart",
+        "TEXT_QST_066_LOCATION_OVERHEARD_START",
+        "TEXT_QST_066_LOCATION_REQUESTED_START",
+        "M_TG_LocationTomb",
+        "TEXT_QST_066_LOCATION_OVERHEARD_TOMB",
+        "TEXT_QST_066_LOCATION_REQUESTED_TOMB",
+        "M_TG_LocationTraining",
+        "TEXT_QST_066_LOCATION_OVERHEARD_TRAINING",
+        "TEXT_QST_066_LOCATION_REQUESTED_TRAINING",
+        "M_TG_LocationServant",
+        "TEXT_QST_066_LOCATION_OVERHEARD_SERVANT",
+        "TEXT_QST_066_LOCATION_REQUESTED_SERVANT",
+        "M_TG_LocationStairsInside",
+        "TEXT_QST_066_LOCATION_OVERHEARD_STAIR",
+        "TEXT_QST_066_LOCATION_REQUESTED_STAIR",
+        "M_TG_LocationStairsOutside",
+        "TEXT_QST_066_LOCATION_OVERHEARD_STAIRCASE",
+        "TEXT_QST_066_LOCATION_REQUESTED_STAIRCASE",
+        "M_TG_LocationStatue",
+        "TEXT_QST_066_LOCATION_OVERHEARD_STATUE",
+        "TEXT_QST_066_LOCATION_REQUESTED_STATUE",
+        "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_0",
+        "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_1",
+        "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_2",
+        "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_3",
+        "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_4",
+        "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_10",
+        "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_20",
+        "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_30",
+        "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_40",
+        "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_50",
+        "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_10",
+        "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_20",
+        "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_30",
+        "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_40",
+        "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_50"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x120",
+          "valueExpression": "0",
+          "offset": 52
+        },
+        {
+          "fieldOffset": "0x121",
+          "valueExpression": "0",
+          "offset": 93
+        },
+        {
+          "fieldOffset": "0x122",
+          "valueExpression": "0",
+          "offset": 134
+        },
+        {
+          "fieldOffset": "0x124",
+          "valueExpression": "0",
+          "offset": 175
+        },
+        {
+          "fieldOffset": "0x123",
+          "valueExpression": "0",
+          "offset": 216
+        },
+        {
+          "fieldOffset": "0x125",
+          "valueExpression": "1",
+          "offset": 257
+        },
+        {
+          "fieldOffset": "0x126",
+          "valueExpression": "0",
+          "offset": 298
+        },
+        {
+          "fieldOffset": "0x174",
+          "valueExpression": "0",
+          "offset": 339
+        },
+        {
+          "fieldOffset": "0x175",
+          "valueExpression": "0",
+          "offset": 380
+        },
+        {
+          "fieldOffset": "0x164",
+          "valueExpression": "0",
+          "offset": 421
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00EE5720",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00ee5720",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "TourGuideKilled",
+        "WaypointCounter",
+        "TourFinished",
+        "QuestActivated"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "TourGuideKilled",
+          "nativeType": "signed_char",
+          "offset": 185
+        },
+        {
+          "key": "WaypointCounter",
+          "nativeType": "signed_char",
+          "offset": 361
+        },
+        {
+          "key": "TourFinished",
+          "nativeType": "signed_char",
+          "offset": 547
+        },
+        {
+          "key": "QuestActivated",
+          "nativeType": "signed_char",
+          "offset": 730
+        }
+      ]
+    }
+  ]
+}

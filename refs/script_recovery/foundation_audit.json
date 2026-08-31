@@ -169,11 +169,191 @@
     {
       "evidence": [
         {
+          "allocator": "0x00EE8BE0",
+          "anchors": [],
+          "script": "CS_OakValeRevisited"
+        },
+        {
+          "allocator": "0x00EEAE70",
+          "anchors": [],
+          "script": "Expression_Dig"
+        },
+        {
+          "allocator": "0x00EE9F00",
+          "anchors": [],
+          "script": "Expression_Fish"
+        },
+        {
+          "allocator": "0x00EEA3E0",
+          "anchors": [],
+          "script": "Expression_Follow"
+        },
+        {
+          "allocator": "0x00EEBD70",
+          "anchors": [],
+          "script": "Expression_Picklock"
+        },
+        {
+          "allocator": "0x00EEB730",
+          "anchors": [],
+          "script": "Expression_Pickpocket"
+        },
+        {
+          "allocator": "0x00EEC390",
+          "anchors": [],
+          "script": "Expression_Steal"
+        },
+        {
+          "allocator": "0x00EEA740",
+          "anchors": [],
+          "script": "Expression_Wait"
+        },
+        {
+          "allocator": "0x00EE9450",
+          "anchors": [],
+          "script": "Global_DebugCycleThroughSpeech"
+        },
+        {
+          "allocator": "0x00EEC750",
+          "anchors": [],
+          "script": "Global_GiveHeroItemsFromRewardChest"
+        },
+        {
+          "allocator": "0x00EECEA0",
+          "anchors": [],
+          "script": "Global_OpenChest"
+        },
+        {
+          "allocator": "0x00EED060",
+          "anchors": [],
+          "script": "Global_ToggleTimeDisplay"
+        },
+        {
+          "allocator": "0x00EE90A0",
+          "anchors": [],
+          "script": "Global_WatchForHeroDeath"
+        },
+        {
+          "allocator": "0x00CF91C0",
+          "anchors": [],
+          "script": "LadyGreyWifeManager"
+        },
+        {
+          "allocator": "0x00CFA2F0",
+          "anchors": [],
+          "script": "Q_AmbushTraders"
+        },
+        {
+          "allocator": "0x00CFABF0",
+          "anchors": [],
+          "script": "Q_Arena"
+        },
+        {
+          "allocator": "0x00D00590",
+          "anchors": [],
+          "script": "Q_AwakeningTheOracle"
+        },
+        {
+          "allocator": "0x00D1CBA0",
+          "anchors": [],
+          "script": "Q_BountyHunt"
+        },
+        {
+          "allocator": "0x00D27240",
+          "anchors": [],
+          "script": "Q_DragonBossFight"
+        },
+        {
+          "allocator": "0x00D34410",
+          "anchors": [],
+          "script": "Q_EndGameBossBattle"
+        },
+        {
+          "allocator": "0x00D2F5F0",
+          "anchors": [],
+          "script": "Q_EndGameFocalSites"
+        },
+        {
+          "allocator": "0x00D3AFC0",
+          "anchors": [],
+          "script": "Q_FireHeart"
+        },
+        {
+          "allocator": "0x00D6ED10",
+          "anchors": [],
+          "script": "Q_HangingTreeEvil"
+        },
+        {
+          "allocator": "0x00D78290",
+          "anchors": [],
+          "script": "Q_HangingTreeGood"
+        },
+        {
           "allocator": "0x00D8D5A0",
           "anchors": [
             "GhostFisherman"
           ],
           "script": "Q_HerosOldHouse"
+        },
+        {
+          "allocator": "0x00D80BA0",
+          "anchors": [],
+          "script": "Q_HeroSoulsArena"
+        },
+        {
+          "allocator": "0x00D83300",
+          "anchors": [],
+          "script": "Q_HeroSoulsBriar"
+        },
+        {
+          "allocator": "0x00D87A80",
+          "anchors": [],
+          "script": "Q_HeroSoulsGuildmaster"
+        },
+        {
+          "allocator": "0x00D84AF0",
+          "anchors": [],
+          "script": "Q_HeroSoulsMother"
+        },
+        {
+          "allocator": "0x00D7C6A0",
+          "anchors": [],
+          "script": "Q_HeroSoulsThunder"
+        },
+        {
+          "allocator": "0x00DA2F40",
+          "anchors": [],
+          "script": "Q_MinionCamp"
+        },
+        {
+          "allocator": "0x00DBEF70",
+          "anchors": [],
+          "script": "Q_NewOakValeIntro"
+        },
+        {
+          "allocator": "0x00DCBFD0",
+          "anchors": [],
+          "script": "Q_OpeningGraveyardSecretPassage"
+        },
+        {
+          "allocator": "0x00DD1EF0",
+          "anchors": [],
+          "script": "Q_OrchardFarmRaid"
+        },
+        {
+          "allocator": "0x00DEBC60",
+          "anchors": [],
+          "script": "Q_RansomVictim"
+        },
+        {
+          "allocator": "0x00DF1080",
+          "anchors": [],
+          "script": "Q_SecretPassage"
+        },
+        {
+          "allocator": "0x00E1D9F0",
+          "anchors": [],
+          "script": "Q_WizardBattle"
         },
         {
           "allocator": "0x00E24C30",
@@ -207,6 +387,11 @@
             "TEXT_QUEST_THERESA_MOTHER_INFO_2_SUMMARY"
           ],
           "script": "QS_MeetSister"
+        },
+        {
+          "allocator": "0x00E2AB00",
+          "anchors": [],
+          "script": "QS_ScytheInfo"
         },
         {
           "allocator": "0x00E322C0",
@@ -254,11 +439,56 @@
           "script": "V_ChickenKicking"
         },
         {
+          "allocator": "0x00E7B290",
+          "anchors": [],
+          "script": "V_ExposeMayor"
+        },
+        {
+          "allocator": "0x00E8B700",
+          "anchors": [],
+          "script": "V_FisticuffsClub"
+        },
+        {
           "allocator": "0x00EA8690",
           "anchors": [
             "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_01"
           ],
           "script": "V_MazeResearch"
+        },
+        {
+          "allocator": "0x00EB6A60",
+          "anchors": [],
+          "script": "V_MurderTwistFinal"
+        },
+        {
+          "allocator": "0x00ED0E00",
+          "anchors": [],
+          "script": "V_SickChild"
+        },
+        {
+          "allocator": "0x00ED39A0",
+          "anchors": [],
+          "script": "V_SingingStones"
+        },
+        {
+          "allocator": "0x00ED75F0",
+          "anchors": [],
+          "script": "V_SwordInTheStone"
+        },
+        {
+          "allocator": "0x00EDACC0",
+          "anchors": [],
+          "script": "V_TalentlessBard"
+        },
+        {
+          "allocator": "0x00EE6C00",
+          "anchors": [],
+          "script": "V_TourGuide"
+        },
+        {
+          "allocator": "0x00EE40A0",
+          "anchors": [],
+          "script": "V_TravellingHeroes"
         }
       ],
       "name": "anchored native decompilation proven",
@@ -266,12 +496,49 @@
     },
     {
       "evidence": [
+        "CS_OakValeRevisited",
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Global_DebugCycleThroughSpeech",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_ToggleTimeDisplay",
+        "Global_WatchForHeroDeath",
+        "LadyGreyWifeManager",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_AwakeningTheOracle",
+        "Q_BountyHunt",
+        "Q_DragonBossFight",
+        "Q_EndGameBossBattle",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
         "Q_HerosOldHouse",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsThunder",
+        "Q_MinionCamp",
+        "Q_NewOakValeIntro",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_RansomVictim",
+        "Q_SecretPassage",
+        "Q_WizardBattle",
         "QR_EscortTrader",
         "QS_GuardianSisterInfo",
         "QS_GuardianSisterInfo2_SisterInBanditCamp",
         "QS_GuardianTrophyDealerInfo",
         "QS_MeetSister",
+        "QS_ScytheInfo",
         "V_AmbushScam",
         "V_ArcheryCompetition",
         "V_AssassinAttacks",
@@ -281,7 +548,16 @@
         "V_BookCollecting",
         "V_Bordello",
         "V_ChickenKicking",
-        "V_MazeResearch"
+        "V_ExposeMayor",
+        "V_FisticuffsClub",
+        "V_MazeResearch",
+        "V_MurderTwistFinal",
+        "V_SickChild",
+        "V_SingingStones",
+        "V_SwordInTheStone",
+        "V_TalentlessBard",
+        "V_TourGuide",
+        "V_TravellingHeroes"
       ],
       "name": "native lifecycle clusters have operation IR",
       "passed": true

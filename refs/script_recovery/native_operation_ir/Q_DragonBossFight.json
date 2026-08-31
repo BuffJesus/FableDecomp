@@ -1,0 +1,306 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "Q_DragonBossFight",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/Q_DragonBossFight.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00D27240",
+  "vtableAddress": "0x012CB70C",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00D27270",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "CParticleEmitter_Dtor_2",
+          "offset": 303
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 364
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00D25520",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00D255E0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_DragonBossFightScript::Main",
+          "offset": 79
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_DragonBossFightScript::Main",
+          "offset": 147
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 897
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1054
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1179
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 1506
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 1959
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2116
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2243
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 2570
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3026
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3183
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3312
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 3639
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 4084
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4203
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4408
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4897
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 4957
+        }
+      ],
+      "strings": [
+        "Dragon",
+        "DBMinion",
+        "DBSummoner",
+        "DoMission",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 1327
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 1462
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 2391
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 2526
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 3460
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 3595
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "DoMission",
+          "offset": 4789
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 4834
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00D254B0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_DragonBossFightScript::Init",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_DragonBossFightScript::Init",
+          "offset": 148
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 661
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 717
+        }
+      ],
+      "strings": [
+        "DragonCliff2",
+        "Q_DragonBossFight"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 441
+        },
+        {
+          "fieldOffset": "0x70",
+          "valueExpression": "0",
+          "offset": 514
+        },
+        {
+          "fieldOffset": "0x74",
+          "valueExpression": "0",
+          "offset": 551
+        },
+        {
+          "fieldOffset": "0x78",
+          "valueExpression": "*(undefined4 *)(DAT_0143e90c + 0xbe0)",
+          "offset": 588
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00CBD4E0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00cbd4e0",
+          "offset": 7
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    }
+  ]
+}
