@@ -142,3 +142,12 @@ compatibility.
 `reconstructed-source` packages can be emitted in `shadow` mode, while `override` requires the exact
 `verified-port` label. The ForgeFSE runtime contract is specified in
 `docs/FORGEFSE_RETAIL_SCRIPT_RUNTIME.md`.
+
+## Foundation verification
+
+Run `python tools/script_recovery/verify_foundation.py --output
+refs/script_recovery/foundation_audit.json` for the requirement-level audit. It fails unless all six
+archives retain provenance hashes, all 16 executable scripts have IR, the merged registry exists,
+static API failures reconcile with the live ForgeFSE binding audit, all 161 retail registrations are
+queued (including non-quest classes), all reconstructed packages remain mutation-free shadow entries,
+executable traces are source-hashed, and at least three native clusters carry independent anchors.

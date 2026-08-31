@@ -1,0 +1,202 @@
+{
+  "checks": [
+    {
+      "evidence": [
+        "GuardianSisterInfo",
+        "GuardianSisterInfo2",
+        "MeetSister",
+        "MazeResearch",
+        "HerosOldHouse",
+        "GuardianTrophyDealerInfo"
+      ],
+      "name": "six seed packages ingested",
+      "passed": true
+    },
+    {
+      "evidence": [
+        "1E12163524B438020CC37B95D7A529D785E825F125247CB2C2D889C214E92838",
+        "5CBFFFF5A8A3ADB5F7CF155269DFEC2299CD8A5F1CDA8CE82A6918115DAE8BDB",
+        "4B0AA00054047316A905477CE9469AC3C36AB35609EABA1C1B4ADDB9F775B631",
+        "35A4B74EC1E5A50F336BEEA131E0E07276F2C71BE507F0540A13D9ED2FF91EC2",
+        "DDF2CAC0063024DFEA9CA6D0977A7579DFD136028732C71399107DDB1FF1C61A",
+        "0A0D254C1516CBCCE2644F1FC946A22AB6D8C3CDA0EBBFFFAFA2F376C951F5AE"
+      ],
+      "name": "archive provenance hashed",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "ir": 16,
+        "registries": 6,
+        "scripts": 16
+      },
+      "name": "all executable Lua scripts have normalized IR",
+      "passed": true
+    },
+    {
+      "evidence": "combined_registry.lua",
+      "name": "merged registry emitted",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "runtimeAudit": [
+          [
+            "missing",
+            "entity",
+            "GetAngleXY"
+          ],
+          [
+            "missing",
+            "quest",
+            "AddLogbookStoryEntry"
+          ],
+          [
+            "missing",
+            "quest",
+            "EndCutscene"
+          ],
+          [
+            "missing",
+            "quest",
+            "FadeOutAndKillEntity"
+          ],
+          [
+            "missing",
+            "quest",
+            "RunCutscene"
+          ],
+          [
+            "missing",
+            "quest",
+            "StartCutscene"
+          ],
+          [
+            "wrong-scope",
+            "entity",
+            "SetIsPushableByHero"
+          ]
+        ],
+        "validation": [
+          [
+            "missing",
+            "entity",
+            "GetAngleXY"
+          ],
+          [
+            "missing",
+            "quest",
+            "AddLogbookStoryEntry"
+          ],
+          [
+            "missing",
+            "quest",
+            "EndCutscene"
+          ],
+          [
+            "missing",
+            "quest",
+            "FadeOutAndKillEntity"
+          ],
+          [
+            "missing",
+            "quest",
+            "RunCutscene"
+          ],
+          [
+            "missing",
+            "quest",
+            "StartCutscene"
+          ],
+          [
+            "wrong-scope",
+            "entity",
+            "SetIsPushableByHero"
+          ]
+        ]
+      },
+      "name": "static API findings reconciled with live bindings",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "byKind": {
+          "cutscene_host": 2,
+          "expression": 7,
+          "global": 8,
+          "master": 5,
+          "personal": 5,
+          "quest": 66,
+          "repeatable_quest": 2,
+          "script": 4,
+          "test": 18,
+          "village": 44
+        },
+        "matchedSeeds": 6,
+        "total": 161
+      },
+      "name": "retail catalog includes non-quest scripts",
+      "passed": true
+    },
+    {
+      "evidence": 161,
+      "name": "conversion queue covers retail catalog",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "default": "disabled",
+        "entries": 6
+      },
+      "name": "reconstructed packages are shadow-only",
+      "passed": true
+    },
+    {
+      "evidence": [
+        {
+          "events": 7,
+          "file": "MeetSister.Main.json"
+        },
+        {
+          "events": 7,
+          "file": "MeetSisterMessenger.Main.json"
+        }
+      ],
+      "name": "executable Lua traces recorded",
+      "passed": true
+    },
+    {
+      "evidence": [
+        {
+          "allocator": "0x00E28CA0",
+          "anchors": [
+            "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01"
+          ],
+          "script": "QS_GuardianTrophyDealerInfo"
+        },
+        {
+          "allocator": "0x00E29990",
+          "anchors": [
+            "TEXT_QUEST_THERESA_MOTHER_INFO_2_SUMMARY"
+          ],
+          "script": "QS_MeetSister"
+        },
+        {
+          "allocator": "0x00EA8690",
+          "anchors": [
+            "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_01"
+          ],
+          "script": "V_MazeResearch"
+        }
+      ],
+      "name": "anchored native decompilation proven",
+      "passed": true
+    }
+  ],
+  "schema": "fable-script-recovery-foundation-audit/0.1",
+  "summary": {
+    "complete": true,
+    "passed": 10,
+    "total": 10
+  }
+}
