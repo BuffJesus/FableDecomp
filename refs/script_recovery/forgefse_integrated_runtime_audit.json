@@ -2,55 +2,14 @@
   "schema": "forgefse-runtime-script-audit/0.1",
   "source": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaManager.cpp",
   "summary": {
-    "registeredQuestBindings": 881,
+    "registeredQuestBindings": 885,
     "registeredEntityBindings": 91,
     "requiredCalls": 84,
-    "callable": 79,
-    "missing": 5,
+    "callable": 83,
+    "missing": 1,
     "wrongScope": 0
   },
   "calls": [
-    {
-      "scope": "Quest",
-      "name": "RunCutscene",
-      "count": 11,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "missing"
-    },
-    {
-      "scope": "Quest",
-      "name": "EndCutscene",
-      "count": 8,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "missing"
-    },
-    {
-      "scope": "Quest",
-      "name": "FadeOutAndKillEntity",
-      "count": 6,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "missing"
-    },
-    {
-      "scope": "Quest",
-      "name": "StartCutscene",
-      "count": 5,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "missing"
-    },
     {
       "scope": "Quest",
       "name": "AddLogbookStoryEntry",
@@ -282,6 +241,16 @@
     },
     {
       "scope": "Quest",
+      "name": "RunCutscene",
+      "count": 11,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
       "name": "SetQuestCardObjective",
       "count": 11,
       "consumers": [
@@ -337,6 +306,16 @@
         "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
         "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
         "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EndCutscene",
+      "count": 8,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
       ],
       "status": "callable"
     },
@@ -405,6 +384,17 @@
       "consumers": [
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "FadeOutAndKillEntity",
+      "count": 6,
+      "consumers": [
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
       ],
       "status": "callable"
     },
@@ -547,6 +537,16 @@
       "consumers": [
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "StartCutscene",
+      "count": 5,
+      "consumers": [
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
       ],
