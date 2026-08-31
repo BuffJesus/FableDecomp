@@ -1,0 +1,710 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "V_BeardyBaldy",
+  "cluster": "refs/script_recovery/native_clusters/V_BeardyBaldy.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00E54260",
+  "vtableAddress": "0x012E5790",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00E54290",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "CParticleEmitter___CParticleEmitter_Variant",
+          "offset": 303
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 384
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00E4F730",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00E4FA20",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_BeardyBaldyScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_BeardyBaldyScript::Main",
+          "offset": 144
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3166
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3325
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3438
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 3759
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 4224
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4331
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 4397
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 4697
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 4935
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 5493
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 5642
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 5781
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6006
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6573
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 6642
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 7590
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7815
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8373
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 8442
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 9390
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9615
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10165
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 10234
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 11182
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11407
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11962
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 12031
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 12982
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 13207
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 13750
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 13819
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 14770
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 14995
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 15537
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 15606
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 16557
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 16782
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 17323
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 17392
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 18389
+        },
+        {
+          "operation": "call",
+          "callee": "GoTalkToBeardyBaldy",
+          "offset": 18597
+        },
+        {
+          "operation": "call",
+          "callee": "Compare",
+          "offset": 18762
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 18996
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 19980
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 20732
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 20851
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 21286
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptThing::_IsAlive_CScriptThing__UBE_NXZ",
+          "offset": 22060
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 22176
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 24180
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 24498
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 24556
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 24739
+        }
+      ],
+      "strings": [
+        "BB_BeardyBaldyMan",
+        "BowerstoneSlumsWarehouses",
+        "",
+        "WatchForQuestFinished",
+        "",
+        "WatchForQuestCardConditions",
+        "",
+        "WatchForBarberLadyDeath",
+        "",
+        "WatchForBeardyBaldyDeath",
+        "",
+        "WatchForNewHairdo",
+        "",
+        "WatchForNewBeard",
+        "",
+        "WatchForNewTash",
+        "",
+        "BowerstoneSlumsWarehouses",
+        "BowerstoneSlumsWarehouses",
+        "BB_BeardyBaldyMan",
+        "CREATURE_BOWERSTONE_SLUMS_VILLAGER_FEMALE_BARBER"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 3559
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 3694
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "CV_AmbushScamScript::WatchForQuestFinished",
+          "offset": 6414
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 6499
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "WatchForQuestCardConditions",
+          "offset": 8229
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 8299
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "WatchForBarberLadyDeath",
+          "offset": 10025
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 10091
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "WatchForBeardyBaldyDeath",
+          "offset": 11821
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 11888
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00e50150",
+          "offset": 13614
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 13676
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00e50210",
+          "offset": 15401
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 15463
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00e502e0",
+          "offset": 17187
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 17249
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00E4F620",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e4f620",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "",
+        "",
+        "",
+        "TEXT_QST_014_RANDOM_00",
+        "TEXT_QST_014_RANDOM_10",
+        "TEXT_QST_014_RANDOM_20",
+        "TEXT_QST_014_RANDOM_30",
+        "TEXT_QST_014_RANDOM_40",
+        "TEXT_QST_014_RANDOM_50",
+        "TEXT_QST_014_RANDOM_60",
+        "TEXT_QST_014_RANDOM_70",
+        "TEXT_QST_014_RANDOM_80",
+        "TEXT_QST_014_RANDOM_90"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 52
+        },
+        {
+          "fieldOffset": "0x4a",
+          "valueExpression": "0",
+          "offset": 92
+        },
+        {
+          "fieldOffset": "0x49",
+          "valueExpression": "0",
+          "offset": 132
+        },
+        {
+          "fieldOffset": "0x4c",
+          "valueExpression": "0",
+          "offset": 172
+        },
+        {
+          "fieldOffset": "0x50",
+          "valueExpression": "1",
+          "offset": 212
+        },
+        {
+          "fieldOffset": "0x51",
+          "valueExpression": "0",
+          "offset": 252
+        },
+        {
+          "fieldOffset": "0x52",
+          "valueExpression": "0",
+          "offset": 292
+        },
+        {
+          "fieldOffset": "0x53",
+          "valueExpression": "0",
+          "offset": 332
+        },
+        {
+          "fieldOffset": "0x54",
+          "valueExpression": "0",
+          "offset": 372
+        },
+        {
+          "fieldOffset": "0x68",
+          "valueExpression": "0",
+          "offset": 601
+        },
+        {
+          "fieldOffset": "0x69",
+          "valueExpression": "0",
+          "offset": 641
+        },
+        {
+          "fieldOffset": "0x6a",
+          "valueExpression": "0",
+          "offset": 681
+        },
+        {
+          "fieldOffset": "0x65",
+          "valueExpression": "0",
+          "offset": 760
+        },
+        {
+          "fieldOffset": "0x66",
+          "valueExpression": "0",
+          "offset": 800
+        },
+        {
+          "fieldOffset": "0x67",
+          "valueExpression": "0",
+          "offset": 840
+        },
+        {
+          "fieldOffset": "0x6c",
+          "valueExpression": "0",
+          "offset": 880
+        },
+        {
+          "fieldOffset": "0x70",
+          "valueExpression": "0",
+          "offset": 920
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00E4F7F0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e4f7f0",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "QuestFinished",
+        "QuestActivated",
+        "QuestComplete",
+        "QuestPhase",
+        "InitialisePhase",
+        "IntroComplete",
+        "Phase1RequirementsComplete",
+        "Phase2RequirementsComplete",
+        "Phase3RequirementsComplete",
+        "RequiredHairdo",
+        "RequiredBeard",
+        "RequiredTash",
+        "BeardyBaldyKilled",
+        "BarberLadyKilled",
+        "AcquiredNewHairdo",
+        "AcquiredNewBeard",
+        "AcquiredNewTash",
+        "AllHairChanged",
+        "IncorrectHairComboCount",
+        "AttackedByHero"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "QuestFinished",
+          "nativeType": "signed_char",
+          "offset": 497
+        },
+        {
+          "key": "QuestActivated",
+          "nativeType": "signed_char",
+          "offset": 695
+        },
+        {
+          "key": "QuestComplete",
+          "nativeType": "signed_char",
+          "offset": 879
+        },
+        {
+          "key": "QuestPhase",
+          "nativeType": "signed_char",
+          "offset": 1037
+        },
+        {
+          "key": "InitialisePhase",
+          "nativeType": "signed_char",
+          "offset": 1217
+        },
+        {
+          "key": "IntroComplete",
+          "nativeType": "signed_char",
+          "offset": 1402
+        },
+        {
+          "key": "Phase1RequirementsComplete",
+          "nativeType": "signed_char",
+          "offset": 1585
+        },
+        {
+          "key": "Phase2RequirementsComplete",
+          "nativeType": "signed_char",
+          "offset": 1781
+        },
+        {
+          "key": "Phase3RequirementsComplete",
+          "nativeType": "signed_char",
+          "offset": 1977
+        },
+        {
+          "key": "BeardyBaldyKilled",
+          "nativeType": "signed_char",
+          "offset": 3928
+        },
+        {
+          "key": "BarberLadyKilled",
+          "nativeType": "signed_char",
+          "offset": 4115
+        },
+        {
+          "key": "AcquiredNewHairdo",
+          "nativeType": "signed_char",
+          "offset": 4301
+        },
+        {
+          "key": "AcquiredNewBeard",
+          "nativeType": "signed_char",
+          "offset": 4487
+        },
+        {
+          "key": "AcquiredNewTash",
+          "nativeType": "signed_char",
+          "offset": 4673
+        },
+        {
+          "key": "AllHairChanged",
+          "nativeType": "signed_char",
+          "offset": 4858
+        },
+        {
+          "key": "IncorrectHairComboCount",
+          "nativeType": "signed_char",
+          "offset": 5017
+        },
+        {
+          "key": "AttackedByHero",
+          "nativeType": "signed_char",
+          "offset": 5210
+        }
+      ]
+    }
+  ]
+}

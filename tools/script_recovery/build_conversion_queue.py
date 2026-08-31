@@ -25,7 +25,7 @@ def build(catalog_path: Path, json_output: Path, tsv_output: Path,
     if clusters_dir and clusters_dir.is_dir():
         for path in clusters_dir.glob("*.json"):
             row = json.loads(path.read_text(encoding="utf-8-sig"))
-            if row.get("script") and row.get("evidenceAnchors"):
+            if row.get("script") and row.get("allocatorAddress") and row.get("vtableAddress"):
                 clusters[row["script"]] = {**row, "path": str(path.resolve())}
     native_irs: dict[str, str] = {}
     if native_ir_dir and native_ir_dir.is_dir():
@@ -38,6 +38,7 @@ def build(catalog_path: Path, json_output: Path, tsv_output: Path,
         seeded = script["name"] in seeds
         cluster = clusters.get(script["name"])
         native_ir = native_irs.get(script["name"])
+        anchored = bool(cluster and cluster.get("evidenceAnchors"))
         allocator = cluster["allocatorAddress"] if cluster else script["allocatorAddress"]
         address_known = bool(allocator)
         queue.append({
@@ -48,7 +49,10 @@ def build(catalog_path: Path, json_output: Path, tsv_output: Path,
             "allocatorAddress": allocator or "",
             "seedPackage": seeds[script["name"]]["package"] if seeded else "",
             "stage": "compare-runtime-trace" if native_ir else ("extract-operation-ir" if cluster else ("resolve-object-boundaries" if address_known else "resolve-allocator-address")),
-            "evidence": "native-operation-ir" if native_ir else ("native-decompile" if cluster else "registry-fact"),
+            "evidence": (("native-operation-ir" if anchored else "native-operation-ir-address-resolved")
+                         if native_ir else
+                         (("native-decompile" if anchored else "native-decompile-address-resolved")
+                          if cluster else "registry-fact")),
             "nativeCluster": cluster["path"] if cluster else "",
             "nativeOperationIr": native_ir or "",
             "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review",
@@ -61,7 +65,9 @@ def build(catalog_path: Path, json_output: Path, tsv_output: Path,
         writer = csv.DictWriter(stream, fieldnames=list(queue[0]), delimiter="\t", lineterminator="\n")
         writer.writeheader()
         writer.writerows(queue)
-    return {"total": len(queue), "seeded": len(seeds), "anchoredClusters": len(clusters),
+    return {"total": len(queue), "seeded": len(seeds),
+            "clusters": len(clusters),
+            "anchoredClusters": sum(bool(row.get("evidenceAnchors")) for row in clusters.values()),
             "nativeOperationIr": len(native_irs),
             "allocatorAddressKnown": sum(bool(row["allocatorAddress"]) for row in queue)}
 

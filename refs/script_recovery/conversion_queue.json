@@ -386,10 +386,10 @@
       "section": "S_QRET",
       "allocatorAddress": "0x00E24C30",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\QR_EscortTrader.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QR_EscortTrader.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -906,10 +906,10 @@
       "section": "S_VAS",
       "allocatorAddress": "0x00E322C0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_AmbushScam.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_AmbushScam.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -919,10 +919,10 @@
       "section": "S_VAC",
       "allocatorAddress": "0x00E37630",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_ArcheryCompetition.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_ArcheryCompetition.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -932,10 +932,10 @@
       "section": "S_VAA",
       "allocatorAddress": "0x00E39850",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_AssassinAttacks.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_AssassinAttacks.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -945,10 +945,10 @@
       "section": "S_VBCP",
       "allocatorAddress": "0x00E477A0",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_BanditCampPath.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BanditCampPath.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -958,10 +958,10 @@
       "section": "S_VBB",
       "allocatorAddress": "0x00E54260",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_BeardyBaldy.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BeardyBaldy.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -971,10 +971,10 @@
       "section": "S_VBGu",
       "allocatorAddress": "0x00E62730",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_BodyGuard.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BodyGuard.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -984,10 +984,10 @@
       "section": "S_VBC",
       "allocatorAddress": "0x00E57A50",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_BookCollecting.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BookCollecting.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -997,10 +997,10 @@
       "section": "S_VB",
       "allocatorAddress": "0x00E46A00",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_Bordello.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_Bordello.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1010,10 +1010,10 @@
       "section": "S_VCK",
       "allocatorAddress": "0x00E68E60",
       "seedPackage": "",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "nativeCluster": "",
-      "nativeOperationIr": "",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_ChickenKicking.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_ChickenKicking.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {

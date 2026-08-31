@@ -79,14 +79,17 @@ def verify(root: Path) -> dict[str, Any]:
     clusters = sorted((root / "native_clusters").glob("*.json"))
     cluster_rows = [load(path) for path in clusters]
     anchored = [row for row in cluster_rows if row.get("evidenceAnchors")]
-    check("anchored native decompilation proven", len(cluster_rows) == 6 and len(anchored) == 6,
+    seed_names = {row["nativeName"] for row in catalog.get("seedCorrelations", [])
+                  if row.get("status") == "matched"}
+    check("anchored native decompilation proven",
+          len(cluster_rows) >= 16 and {row["script"] for row in anchored} == seed_names,
           [{"script": row["script"], "allocator": row["allocatorAddress"],
             "anchors": row.get("evidenceAnchors", [])} for row in cluster_rows])
 
     operation_irs = sorted((root / "native_operation_ir").glob("*.json"))
     operation_rows = [load(path) for path in operation_irs]
-    check("all seed lifecycle clusters have native operation IR",
-          len(operation_rows) == 6 and all(len(row.get("lifecycle", [])) == 5 for row in operation_rows),
+    check("native lifecycle clusters have operation IR",
+          len(operation_rows) >= 16 and all(len(row.get("lifecycle", [])) == 5 for row in operation_rows),
           [row.get("script") for row in operation_rows])
     comparison = load(root / "seed_native_comparison.json")
     bindings_missing = {row["package"]: row["luaBindingsMissingNativeLifecycle"]

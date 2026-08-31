@@ -176,6 +176,11 @@
           "script": "Q_HerosOldHouse"
         },
         {
+          "allocator": "0x00E24C30",
+          "anchors": [],
+          "script": "QR_EscortTrader"
+        },
+        {
           "allocator": "0x00E26780",
           "anchors": [
             "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01"
@@ -204,6 +209,51 @@
           "script": "QS_MeetSister"
         },
         {
+          "allocator": "0x00E322C0",
+          "anchors": [],
+          "script": "V_AmbushScam"
+        },
+        {
+          "allocator": "0x00E37630",
+          "anchors": [],
+          "script": "V_ArcheryCompetition"
+        },
+        {
+          "allocator": "0x00E39850",
+          "anchors": [],
+          "script": "V_AssassinAttacks"
+        },
+        {
+          "allocator": "0x00E477A0",
+          "anchors": [],
+          "script": "V_BanditCampPath"
+        },
+        {
+          "allocator": "0x00E54260",
+          "anchors": [],
+          "script": "V_BeardyBaldy"
+        },
+        {
+          "allocator": "0x00E62730",
+          "anchors": [],
+          "script": "V_BodyGuard"
+        },
+        {
+          "allocator": "0x00E57A50",
+          "anchors": [],
+          "script": "V_BookCollecting"
+        },
+        {
+          "allocator": "0x00E46A00",
+          "anchors": [],
+          "script": "V_Bordello"
+        },
+        {
+          "allocator": "0x00E68E60",
+          "anchors": [],
+          "script": "V_ChickenKicking"
+        },
+        {
           "allocator": "0x00EA8690",
           "anchors": [
             "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_01"
@@ -217,13 +267,23 @@
     {
       "evidence": [
         "Q_HerosOldHouse",
+        "QR_EscortTrader",
         "QS_GuardianSisterInfo",
         "QS_GuardianSisterInfo2_SisterInBanditCamp",
         "QS_GuardianTrophyDealerInfo",
         "QS_MeetSister",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BanditCampPath",
+        "V_BeardyBaldy",
+        "V_BodyGuard",
+        "V_BookCollecting",
+        "V_Bordello",
+        "V_ChickenKicking",
         "V_MazeResearch"
       ],
-      "name": "all seed lifecycle clusters have native operation IR",
+      "name": "native lifecycle clusters have operation IR",
       "passed": true
     },
     {

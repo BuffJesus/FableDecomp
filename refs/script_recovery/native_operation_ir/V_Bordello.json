@@ -1,0 +1,603 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "V_Bordello",
+  "cluster": "refs/script_recovery/native_clusters/V_Bordello.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00E46A00",
+  "vtableAddress": "0x012E38B0",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00E46A30",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "CSystemManager",
+          "offset": 320
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 394
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00E39AA0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00E39B40",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e39b40",
+          "offset": 18
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 1405
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1562
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1687
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 2023
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 2489
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2628
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2783
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 3100
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3579
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3718
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3874
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 4191
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4670
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4809
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4960
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 5277
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 5756
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5895
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6055
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 6372
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 6854
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6993
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7155
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 7472
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 7954
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8093
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8255
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 8572
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 9045
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 9167
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9352
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9913
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 9974
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 10807
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11010
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11531
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 11592
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 12413
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 12616
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 13131
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 13192
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 14013
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 14216
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 14751
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 14812
+        }
+      ],
+      "strings": [
+        "Madame",
+        "BordelloLady",
+        "BordelloGuard",
+        "Magicman",
+        "BordelloClient",
+        "M_HeroDownstairs",
+        "BordelloEntrance",
+        "WatchForBordelloStatus",
+        "",
+        "WatchForDeedStatus",
+        "",
+        "CreateCustomers",
+        "",
+        "AdjustTavernPrices",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 1825
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "1",
+          "offset": 1960
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 2921
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "1",
+          "offset": 3056
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 4012
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "1",
+          "offset": 4147
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 5098
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "1",
+          "offset": 5233
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 6193
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "1",
+          "offset": 6328
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 7293
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "1",
+          "offset": 7428
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 8393
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 8528
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "NScript::CQ_AmbushTradersScript::WatchForAllTradersDead",
+          "offset": 9771
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 9861
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "NScript::CV_BordelloScript::WatchForDeedStatus",
+          "offset": 11398
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 11479
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "NScript::CV_BordelloScript::CreateCustomers",
+          "offset": 13001
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 13079
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "CScriptGameResourceObjectScriptedThingBase_HandleBordelloNPC",
+          "offset": 14604
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 14699
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00E399D0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_BordelloScript::Init",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_BordelloScript::Init",
+          "offset": 141
+        },
+        {
+          "operation": "call",
+          "callee": "NHeroInformationScreens::CBase::CBase",
+          "offset": 888
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 1234
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 1549
+        },
+        {
+          "operation": "call",
+          "callee": "NHeroInformationScreens::CBase::CBase",
+          "offset": 1631
+        }
+      ],
+      "strings": [],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x54",
+          "valueExpression": "0",
+          "offset": 691
+        },
+        {
+          "fieldOffset": "0x60",
+          "valueExpression": "0",
+          "offset": 1287
+        },
+        {
+          "fieldOffset": "0x6c",
+          "valueExpression": "0",
+          "offset": 1692
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00E3B8F0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e3b8f0",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "HadSex",
+        "HeroPartying",
+        "HeroTricking",
+        "MagicianSleeping",
+        "PlayerOwned",
+        "BecomeNunnery",
+        "PlayerHasLeftRegion",
+        "HeroFoundDeeds",
+        "HeroFoundDeedsLocation",
+        "ClientInUse[0]",
+        "ClientInUse[1]",
+        "ClientInUse[2]",
+        "BeersDrunk"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "HadSex",
+          "nativeType": "signed_char",
+          "offset": 185
+        },
+        {
+          "key": "HeroPartying",
+          "nativeType": "signed_char",
+          "offset": 376
+        },
+        {
+          "key": "HeroTricking",
+          "nativeType": "signed_char",
+          "offset": 558
+        },
+        {
+          "key": "MagicianSleeping",
+          "nativeType": "signed_char",
+          "offset": 740
+        },
+        {
+          "key": "PlayerOwned",
+          "nativeType": "signed_char",
+          "offset": 926
+        },
+        {
+          "key": "BecomeNunnery",
+          "nativeType": "signed_char",
+          "offset": 1107
+        },
+        {
+          "key": "PlayerHasLeftRegion",
+          "nativeType": "signed_char",
+          "offset": 1290
+        },
+        {
+          "key": "HeroFoundDeeds",
+          "nativeType": "signed_char",
+          "offset": 1479
+        },
+        {
+          "key": "HeroFoundDeedsLocation",
+          "nativeType": "signed_char",
+          "offset": 1663
+        },
+        {
+          "key": "ClientInUse[0]",
+          "nativeType": "signed_char",
+          "offset": 1855
+        },
+        {
+          "key": "ClientInUse[1]",
+          "nativeType": "signed_char",
+          "offset": 2039
+        },
+        {
+          "key": "ClientInUse[2]",
+          "nativeType": "signed_char",
+          "offset": 2223
+        },
+        {
+          "key": "BeersDrunk",
+          "nativeType": "signed_char",
+          "offset": 2382
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,536 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "V_BodyGuard",
+  "cluster": "refs/script_recovery/native_clusters/V_BodyGuard.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00E62730",
+  "vtableAddress": "0x012E6E4C",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00E62760",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "CParticleEmitter___CParticleEmitter_Minimal",
+          "offset": 303
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 384
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00E5D240",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00E5D4F0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_BodyGuardScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_BodyGuardScript::Main",
+          "offset": 142
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 1422
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1579
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1707
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 2017
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 2497
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2636
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2794
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 3085
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3578
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3717
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3889
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 4180
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4673
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4812
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4980
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 5271
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 5764
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5903
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6067
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 6388
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 6873
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 6991
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7176
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7702
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 7762
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 8621
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8806
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9330
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 9390
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 10249
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10434
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10952
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 11012
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 11843
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 12046
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 12565
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 12625
+        }
+      ],
+      "strings": [
+        "BodyGuard",
+        "HenchmanComment",
+        "HenchmanRegionEntranceComment",
+        "HenchmanRegionExitComment",
+        "M_BodyGuardRespawn",
+        "HenchmanDeductWages",
+        "",
+        "HenchmanCommentary",
+        "",
+        "FisticuffsWatch",
+        "",
+        "CheckForHenchmanFiredOverride",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "&LAB_00e5dd60",
+          "offset": 1849
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 1954
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "&LAB_00e5f1c0",
+          "offset": 2936
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 3041
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "&LAB_00e5f5c0",
+          "offset": 4031
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 4136
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "&LAB_00e5f800",
+          "offset": 5122
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 5227
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 6209
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 6344
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "HenchmanDeductWages",
+          "offset": 7592
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 7646
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "HenchmanCommentary",
+          "offset": 9221
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 9274
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "FisticuffsWatch",
+          "offset": 10846
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 10896
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "CheckForHenchmanFiredOverride",
+          "offset": 12445
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 12509
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00E5D1F0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_BodyGuardScript::Init",
+          "offset": 65
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_BodyGuardScript::Init",
+          "offset": 127
+        }
+      ],
+      "strings": [],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x70",
+          "valueExpression": "0",
+          "offset": 195
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 232
+        },
+        {
+          "fieldOffset": "0x84",
+          "valueExpression": "0",
+          "offset": 475
+        },
+        {
+          "fieldOffset": "0x88",
+          "valueExpression": "0",
+          "offset": 512
+        },
+        {
+          "fieldOffset": "0x8c",
+          "valueExpression": "0",
+          "offset": 549
+        },
+        {
+          "fieldOffset": "0x90",
+          "valueExpression": "0",
+          "offset": 586
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00E5D300",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_BodyGuardScript::OnPersist",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_BodyGuardScript::OnPersist",
+          "offset": 172
+        },
+        {
+          "operation": "call",
+          "callee": "__ftol2",
+          "offset": 2013
+        },
+        {
+          "operation": "call",
+          "callee": "__ftol2",
+          "offset": 2130
+        },
+        {
+          "operation": "call",
+          "callee": "__ftol2",
+          "offset": 2247
+        },
+        {
+          "operation": "call",
+          "callee": "__ftol2",
+          "offset": 2364
+        }
+      ],
+      "strings": [
+        "HenchmanGlobalStatus[HT_EVIL1]",
+        "HenchmanGlobalStatus[HT_EVIL2]",
+        "HenchmanGlobalStatus[HT_GOOD1]",
+        "HenchmanGlobalStatus[HT_GOOD2]",
+        "Evil1RespawnTimer",
+        "Evil2RespawnTimer",
+        "Good1RespawnTimer",
+        "Good2RespawnTimer"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "HenchmanGlobalStatus[HT_EVIL1]",
+          "nativeType": "signed_char",
+          "offset": 447
+        },
+        {
+          "key": "HenchmanGlobalStatus[HT_EVIL2]",
+          "nativeType": "signed_char",
+          "offset": 664
+        },
+        {
+          "key": "HenchmanGlobalStatus[HT_GOOD1]",
+          "nativeType": "signed_char",
+          "offset": 881
+        },
+        {
+          "key": "HenchmanGlobalStatus[HT_GOOD2]",
+          "nativeType": "signed_char",
+          "offset": 1098
+        },
+        {
+          "key": "Evil1RespawnTimer",
+          "nativeType": "signed_char",
+          "offset": 1498
+        },
+        {
+          "key": "Evil2RespawnTimer",
+          "nativeType": "signed_char",
+          "offset": 1619
+        },
+        {
+          "key": "Good1RespawnTimer",
+          "nativeType": "signed_char",
+          "offset": 1739
+        },
+        {
+          "key": "Good2RespawnTimer",
+          "nativeType": "signed_char",
+          "offset": 1859
+        }
+      ]
+    }
+  ]
+}

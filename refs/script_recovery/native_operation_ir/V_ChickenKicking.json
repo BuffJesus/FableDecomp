@@ -1,0 +1,423 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "V_ChickenKicking",
+  "cluster": "refs/script_recovery/native_clusters/V_ChickenKicking.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00E68E60",
+  "vtableAddress": "0x012E7318",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00E68E90",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "CV_SickChildScript",
+          "offset": 333
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 415
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00E628E0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00E62A00",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_ChickenKickingScript::Main",
+          "offset": 79
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_ChickenKickingScript::Main",
+          "offset": 146
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1328
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 1860
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 1962
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2131
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2292
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 2669
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3121
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3290
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3454
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 3778
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4317
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4486
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4652
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 5006
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 5545
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5714
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5876
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 6230
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 6758
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 6888
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7103
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7678
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 7745
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 8589
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8804
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9406
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 9473
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 10353
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10442
+        }
+      ],
+      "strings": [
+        "OakBay",
+        "ChickenMaster",
+        "ChickenSign",
+        "KickedChicken",
+        "Spectator",
+        "CreateSpectators",
+        "",
+        "LookAfterOrganiser",
+        "",
+        "OakBay"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 2444
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "1",
+          "offset": 2591
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "&LAB_00e64d10",
+          "offset": 3605
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "1",
+          "offset": 3722
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 4803
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "1",
+          "offset": 4950
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 6027
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "1",
+          "offset": 6174
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "CreateSpectators",
+          "offset": 7548
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 7605
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "CQ_GuildTrainingScript::KeepTabsOnWhisper",
+          "offset": 9251
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 9333
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00E628B0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e628b0",
+          "offset": 18
+        }
+      ],
+      "strings": [],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 52
+        },
+        {
+          "fieldOffset": "0x4c",
+          "valueExpression": "0",
+          "offset": 92
+        },
+        {
+          "fieldOffset": "0x50",
+          "valueExpression": "0",
+          "offset": 132
+        },
+        {
+          "fieldOffset": "0x54",
+          "valueExpression": "0",
+          "offset": 172
+        },
+        {
+          "fieldOffset": "0x55",
+          "valueExpression": "0",
+          "offset": 212
+        },
+        {
+          "fieldOffset": "0x56",
+          "valueExpression": "0",
+          "offset": 252
+        },
+        {
+          "fieldOffset": "0x57",
+          "valueExpression": "0",
+          "offset": 292
+        },
+        {
+          "fieldOffset": "0x58",
+          "valueExpression": "0",
+          "offset": 332
+        },
+        {
+          "fieldOffset": "0x5c",
+          "valueExpression": "0",
+          "offset": 372
+        },
+        {
+          "fieldOffset": "0x60",
+          "valueExpression": "0",
+          "offset": 412
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00E629A0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e629a0",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "PrizesWon",
+        "InfoDisplayed",
+        "KnowGhostHasGone"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "PrizesWon",
+          "nativeType": "signed_char",
+          "offset": 245
+        },
+        {
+          "key": "InfoDisplayed",
+          "nativeType": "signed_char",
+          "offset": 406
+        },
+        {
+          "key": "KnowGhostHasGone",
+          "nativeType": "signed_char",
+          "offset": 589
+        }
+      ]
+    }
+  ]
+}

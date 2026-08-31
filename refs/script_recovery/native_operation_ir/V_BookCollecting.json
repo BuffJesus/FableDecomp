@@ -1,0 +1,328 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "V_BookCollecting",
+  "cluster": "refs/script_recovery/native_clusters/V_BookCollecting.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00E57A50",
+  "vtableAddress": "0x012E5EFC",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00E57A80",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "CParticleEmitter___CParticleEmitter_MeshFree",
+          "offset": 303
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 385
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00E543B0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00E54450",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e54450",
+          "offset": 18
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 454
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 1073
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 1161
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1330
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1496
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 1849
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 2334
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 2551
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2628
+        }
+      ],
+      "strings": [
+        "BowerstoneSlums",
+        "BS_Teacher",
+        "BowerstoneSlums"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 1646
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 1793
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00E54990",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CConversationData_InitializeConversations",
+          "offset": 177
+        },
+        {
+          "operation": "call",
+          "callee": "std_vector_CConversation_Assign",
+          "offset": 488
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 983
+        },
+        {
+          "operation": "call",
+          "callee": "push_back",
+          "offset": 1052
+        },
+        {
+          "operation": "call",
+          "callee": "resize",
+          "offset": 1522
+        },
+        {
+          "operation": "call",
+          "callee": "resize",
+          "offset": 1721
+        }
+      ],
+      "strings": [],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 448
+        },
+        {
+          "fieldOffset": "0x78",
+          "valueExpression": "0",
+          "offset": 546
+        },
+        {
+          "fieldOffset": "0x79",
+          "valueExpression": "0",
+          "offset": 586
+        },
+        {
+          "fieldOffset": "0x7a",
+          "valueExpression": "0",
+          "offset": 626
+        },
+        {
+          "fieldOffset": "0x7c",
+          "valueExpression": "0",
+          "offset": 666
+        },
+        {
+          "fieldOffset": "0x80",
+          "valueExpression": "0",
+          "offset": 706
+        },
+        {
+          "fieldOffset": "0x84",
+          "valueExpression": "0",
+          "offset": 746
+        },
+        {
+          "fieldOffset": "0x88",
+          "valueExpression": "0",
+          "offset": 786
+        },
+        {
+          "fieldOffset": "0x8c",
+          "valueExpression": "0xffffffff",
+          "offset": 826
+        },
+        {
+          "fieldOffset": "0x90",
+          "valueExpression": "ppVar1",
+          "offset": 932
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00E54880",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e54880",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "DoneIntro",
+        "HatRewarded",
+        "KeyRewarded",
+        "GossipState",
+        "HasInformation",
+        "BooksDonated",
+        "GoodBooksDonated",
+        "LastBookRequested",
+        "BookDonated",
+        "BookOwned"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "DoneIntro",
+          "nativeType": "signed_char",
+          "offset": 225
+        },
+        {
+          "key": "HatRewarded",
+          "nativeType": "signed_char",
+          "offset": 419
+        },
+        {
+          "key": "KeyRewarded",
+          "nativeType": "signed_char",
+          "offset": 600
+        },
+        {
+          "key": "GossipState",
+          "nativeType": "signed_char",
+          "offset": 756
+        },
+        {
+          "key": "HasInformation",
+          "nativeType": "signed_char",
+          "offset": 937
+        },
+        {
+          "key": "BooksDonated",
+          "nativeType": "signed_char",
+          "offset": 1096
+        },
+        {
+          "key": "GoodBooksDonated",
+          "nativeType": "signed_char",
+          "offset": 1253
+        },
+        {
+          "key": "LastBookRequested",
+          "nativeType": "signed_char",
+          "offset": 1414
+        },
+        {
+          "key": "BookDonated",
+          "nativeType": "signed_char",
+          "offset": 1539
+        },
+        {
+          "key": "BookOwned",
+          "nativeType": "signed_char",
+          "offset": 1637
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,465 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "V_AssassinAttacks",
+  "cluster": "refs/script_recovery/native_clusters/V_AssassinAttacks.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00E39850",
+  "vtableAddress": "0x012E35B0",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00E39880",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "CParticleEmitter___CParticleEmitter_WithMemFree",
+          "offset": 303
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 388
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00E37730",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00E377D0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e377d0",
+          "offset": 18
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 2144
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2301
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2415
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 2710
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3142
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3299
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3413
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 3708
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4143
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4300
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4416
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 4711
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 5146
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5303
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5413
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 5708
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 6152
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6265
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6751
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 7511
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo",
+          "offset": 7637
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 7822
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7954
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 8544
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8682
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8736
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 9458
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9596
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9665
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 10776
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 11381
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 11572
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11767
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11815
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 12907
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 13536
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 13662
+        }
+      ],
+      "strings": [
+        "M_AssassinTrigger",
+        "AttackingAssassin",
+        "ChestHidingAssassin",
+        "AssassinChest",
+        "Q_BreakSiege",
+        "V_AssassinAttacks_Activate",
+        "",
+        "TEXT_QST_007_GM_INTRO_GOOD",
+        "",
+        "TEXT_QST_007_GM_INTRO_EVIL",
+        "",
+        "TEXT_QST_007_SUCCESS",
+        "OBJECT_TREASURE_CLUE_3",
+        "OBJECT_TREASURE_CLUE_3"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 2531
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 2666
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 3529
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 3664
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 4532
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 4667
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 5529
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 5664
+        },
+        {
+          "fieldOffset": "0xe0",
+          "valueExpression": "= '\\0') {\r\n        CCharString::CCharString(aCStack_8,\"Q_BreakSiege\",-1)",
+          "offset": 6688
+        },
+        {
+          "fieldOffset": "0x3a",
+          "valueExpression": "= '\\0') {\r\n          bVar9 = CScriptBase::IsActiveThreadTerminating(param_1)",
+          "offset": 8471
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00E39540",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_AssassinAttacksScript::Init",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_AssassinAttacksScript::Init",
+          "offset": 148
+        },
+        {
+          "operation": "call",
+          "callee": "resize",
+          "offset": 1092
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 1652
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1839
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2367
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 2411
+        }
+      ],
+      "strings": [
+        "",
+        "WatchForQuestComplete",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x4c",
+          "valueExpression": "0",
+          "offset": 734
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00e39650",
+          "offset": 2249
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 2304
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00E39780",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e39780",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "AssassinObjectCount",
+        "Activated",
+        "QuestComplete",
+        "RegionOfMostRecentKill",
+        "RewardsGiven",
+        "GivenQuestCard",
+        "RegionKillCounts"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "AssassinObjectCount",
+          "nativeType": "signed_char",
+          "offset": 425
+        },
+        {
+          "key": "Activated",
+          "nativeType": "signed_char",
+          "offset": 610
+        },
+        {
+          "key": "QuestComplete",
+          "nativeType": "signed_char",
+          "offset": 779
+        },
+        {
+          "key": "RewardsGiven",
+          "nativeType": "signed_char",
+          "offset": 1554
+        },
+        {
+          "key": "GivenQuestCard",
+          "nativeType": "signed_char",
+          "offset": 1736
+        }
+      ]
+    }
+  ]
+}

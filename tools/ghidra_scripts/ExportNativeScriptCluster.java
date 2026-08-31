@@ -88,6 +88,7 @@ public class ExportNativeScriptCluster extends GhidraScript {
         String scriptName = args[0];
         Address allocatorAddress = toAddr(Long.parseLong(args[1].replace("0x", ""), 16));
         Function allocator = getFunctionAt(allocatorAddress);
+        if (allocator == null) allocator = createFunction(allocatorAddress, null);
         if (allocator == null) throw new IllegalArgumentException("no allocator function at " + allocatorAddress);
         Function constructor = findConstructor(allocator);
         Address vtable = findVtable(allocator);
