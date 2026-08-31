@@ -1,0 +1,139 @@
+{
+  "schema": "fable-seed-native-comparison/0.1",
+  "scripts": [
+    {
+      "package": "GuardianSisterInfo",
+      "nativeScript": "QS_GuardianSisterInfo",
+      "sharedLiterals": [
+        "",
+        "BowerstoneSlums",
+        "GuardianSpokeToHero",
+        "MazeAtTavern",
+        "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01"
+      ],
+      "luaBindingsFoundNative": [
+        "MazeAtTavern"
+      ],
+      "luaBindingsMissingNativeLifecycle": [],
+      "sharedPersistenceKeys": [
+        "GuardianSpokeToHero"
+      ],
+      "luaPersistenceOnly": [],
+      "nativePersistenceOnly": []
+    },
+    {
+      "package": "GuardianSisterInfo2",
+      "nativeScript": "QS_GuardianSisterInfo2_SisterInBanditCamp",
+      "sharedLiterals": [
+        "",
+        "GuardianSpokeToHero",
+        "MazeAtTavern",
+        "OakBay",
+        "TEXT_QUEST_GUARDIAN_SISTER_INFO_SECOND_OBJECTIVE_01"
+      ],
+      "luaBindingsFoundNative": [
+        "MazeAtTavern"
+      ],
+      "luaBindingsMissingNativeLifecycle": [],
+      "sharedPersistenceKeys": [
+        "GuardianSpokeToHero"
+      ],
+      "luaPersistenceOnly": [],
+      "nativePersistenceOnly": []
+    },
+    {
+      "package": "MeetSister",
+      "nativeScript": "QS_MeetSister",
+      "sharedLiterals": [
+        "BarrowFields",
+        "HauntedHouse",
+        "MeetSisterMessenger",
+        "MeetSisterSister",
+        "TEXT_QUEST_THERESA_MOTHER_INFO_2_SUMMARY"
+      ],
+      "luaBindingsFoundNative": [
+        "MeetSisterMessenger",
+        "MeetSisterSister"
+      ],
+      "luaBindingsMissingNativeLifecycle": [],
+      "sharedPersistenceKeys": [],
+      "luaPersistenceOnly": [],
+      "nativePersistenceOnly": []
+    },
+    {
+      "package": "MazeResearch",
+      "nativeScript": "V_MazeResearch",
+      "sharedLiterals": [
+        "",
+        "BookRead",
+        "EmptyGrave",
+        "HeroGuildComplexInside",
+        "HistoryBookcase",
+        "SwordTaken",
+        "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_01"
+      ],
+      "luaBindingsFoundNative": [
+        "EmptyGrave",
+        "HistoryBookcase"
+      ],
+      "luaBindingsMissingNativeLifecycle": [],
+      "sharedPersistenceKeys": [
+        "BookRead",
+        "SwordTaken"
+      ],
+      "luaPersistenceOnly": [],
+      "nativePersistenceOnly": []
+    },
+    {
+      "package": "HerosOldHouse",
+      "nativeScript": "Q_HerosOldHouse",
+      "sharedLiterals": [
+        "",
+        "BootyDugUp",
+        "ExtraBooty",
+        "FishermansWife",
+        "GhostFisherman",
+        "Helped",
+        "Helping",
+        "OakBay",
+        "WatchForBooty"
+      ],
+      "luaBindingsFoundNative": [
+        "ExtraBooty",
+        "FishermansWife",
+        "GhostFisherman"
+      ],
+      "luaBindingsMissingNativeLifecycle": [],
+      "sharedPersistenceKeys": [
+        "BootyDugUp",
+        "Helped",
+        "Helping"
+      ],
+      "luaPersistenceOnly": [
+        "HaveTalked",
+        "LeavingHappy",
+        "TalkedTo"
+      ],
+      "nativePersistenceOnly": []
+    },
+    {
+      "package": "GuardianTrophyDealerInfo",
+      "nativeScript": "QS_GuardianTrophyDealerInfo",
+      "sharedLiterals": [
+        "GTDI_Maze",
+        "HeroGuildComplexInside",
+        "PieceOver",
+        "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01"
+      ],
+      "luaBindingsFoundNative": [
+        "GTDI_Maze"
+      ],
+      "luaBindingsMissingNativeLifecycle": [],
+      "sharedPersistenceKeys": [
+        "PieceOver"
+      ],
+      "luaPersistenceOnly": [],
+      "nativePersistenceOnly": []
+    }
+  ]
+}

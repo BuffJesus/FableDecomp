@@ -212,12 +212,29 @@
       ],
       "name": "anchored native decompilation proven",
       "passed": true
+    },
+    {
+      "evidence": [
+        "Q_HerosOldHouse",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_MeetSister",
+        "V_MazeResearch"
+      ],
+      "name": "all seed lifecycle clusters have native operation IR",
+      "passed": true
+    },
+    {
+      "evidence": {},
+      "name": "all reconstructed parent bindings correlate with native lifecycle evidence",
+      "passed": true
     }
   ],
   "schema": "fable-script-recovery-foundation-audit/0.1",
   "summary": {
     "complete": true,
-    "passed": 10,
-    "total": 10
+    "passed": 12,
+    "total": 12
   }
 }

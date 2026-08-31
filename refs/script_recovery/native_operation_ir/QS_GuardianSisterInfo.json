@@ -1,0 +1,224 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "QS_GuardianSisterInfo",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/QS_GuardianSisterInfo.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00E26780",
+  "vtableAddress": "0x012E1DAC",
+  "evidenceAnchors": [
+    "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01"
+  ],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00E267C0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
+          "offset": 331
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 456
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00E25A10",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00E25AB0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e25ab0",
+          "offset": 18
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 913
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1113
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1223
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 1519
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 1943
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2097
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2199
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2286
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4007
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 4638
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 4881
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4958
+        }
+      ],
+      "strings": [
+        "MazeAtTavern",
+        "BowerstoneSlums",
+        "",
+        "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+        "BowerstoneSlums",
+        "BowerstoneSlums"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 1340
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 1475
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00E25A00",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e25a00",
+          "offset": 18
+        }
+      ],
+      "strings": [],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 52
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00E25F40",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e25f40",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "GuardianSpokeToHero"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "GuardianSpokeToHero",
+          "nativeType": "signed_char",
+          "offset": 140
+        }
+      ]
+    }
+  ]
+}

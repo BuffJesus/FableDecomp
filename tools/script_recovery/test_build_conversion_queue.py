@@ -44,6 +44,17 @@ class ConversionQueueTests(unittest.TestCase):
             self.assertEqual(row["allocatorAddress"], "0x00123456")
             self.assertEqual(result["anchoredClusters"], 1)
 
+            native_ir = root / "native_ir"
+            native_ir.mkdir()
+            (native_ir / "V_Seed.json").write_text(json.dumps({
+                "schema": "fable-native-script-operation-ir/0.1", "script": "V_Seed"
+            }), encoding="utf-8")
+            result = build(catalog, root / "queue.json", root / "queue.tsv", clusters, native_ir)
+            row = json.loads((root / "queue.json").read_text())["queue"][0]
+            self.assertEqual(row["stage"], "compare-runtime-trace")
+            self.assertEqual(row["evidence"], "native-operation-ir")
+            self.assertEqual(result["nativeOperationIr"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

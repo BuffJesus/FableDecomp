@@ -124,6 +124,11 @@ headless discovery, requires exactly one candidate, invokes the anchored cluster
 Ghidra script errors as failures even when the launcher returns zero, and verifies the resulting
 allocator and evidence anchor before accepting the JSON artifact.
 
+`extract_native_operation_ir.py` converts each accepted lifecycle cluster into ordered calls, string
+references, state writes, and typed persistence transfers. `compare_seed_native_ir.py` correlates those
+facts with reconstructed bindings, literals, and persistence keys across all six packages; results and
+known parent-vs-entity scope limits are documented in `docs/SEED_NATIVE_OPERATION_COMPARISON.md`.
+
 Non-native macro scripts use a parallel parser and converge on the same operation/reference IR.
 
 ## Safe retail integration

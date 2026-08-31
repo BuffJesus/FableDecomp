@@ -78,6 +78,17 @@ def verify(root: Path) -> dict[str, Any]:
           [{"script": row["script"], "allocator": row["allocatorAddress"],
             "anchors": row.get("evidenceAnchors", [])} for row in cluster_rows])
 
+    operation_irs = sorted((root / "native_operation_ir").glob("*.json"))
+    operation_rows = [load(path) for path in operation_irs]
+    check("all seed lifecycle clusters have native operation IR",
+          len(operation_rows) == 6 and all(len(row.get("lifecycle", [])) == 5 for row in operation_rows),
+          [row.get("script") for row in operation_rows])
+    comparison = load(root / "seed_native_comparison.json")
+    bindings_missing = {row["package"]: row["luaBindingsMissingNativeLifecycle"]
+                        for row in comparison["scripts"] if row["luaBindingsMissingNativeLifecycle"]}
+    check("all reconstructed parent bindings correlate with native lifecycle evidence",
+          len(comparison["scripts"]) == 6 and not bindings_missing, bindings_missing)
+
     passed = sum(row["passed"] for row in checks)
     return {"schema": "fable-script-recovery-foundation-audit/0.1",
             "summary": {"passed": passed, "total": len(checks), "complete": passed == len(checks)},
