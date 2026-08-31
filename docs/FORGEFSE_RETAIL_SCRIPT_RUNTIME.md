@@ -46,3 +46,15 @@ Shadow traces are compared at semantic-operation level, not raw call count. Perm
 includes destructor noise, reference-count operations, string temporaries, and compiler-generated
 yield checks. State changes, objective transitions, entity bindings, cutscene maps/flags, thread
 creation, markers, rewards, and activation/completion calls must remain ordered and equivalent.
+
+## Implemented preflight boundary
+
+ForgeFSE branch `feat/retail-script-shadow` now contains `RetailScriptShadowRunner`. It reads the
+generated `FSE/retail_shadow.lua` only when explicitly enabled, creates a separate Lua state, and does
+not register `LuaQuestState`, `LuaEntityAPI`, the game interface, or persistence objects. Entries are
+rejected unless they use `shadow` mode with mutation and save-write flags both false. The checked-in
+generated configuration remains disabled by default.
+
+This is a mutation-free preflight rather than the eventual live read-only oracle. It proves candidate
+loadability and lifecycle/API shape using deterministic proxy results. Native equivalence and allocator
+override remain gated on live trace agreement and `verified-port` evidence.

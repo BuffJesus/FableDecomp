@@ -10,7 +10,7 @@ class OverrideManifestTests(unittest.TestCase):
     def fixture(self, root: Path, evidence: str):
         catalog = root / "catalog.json"
         corpus = root / "corpus.json"
-        catalog.write_text(json.dumps({"seedCorrelations": [{
+        catalog.write_text(json.dumps({"scripts": [{"name": "V_Test", "kind": "village"}], "seedCorrelations": [{
             "status": "matched", "nativeName": "V_Test", "nativeSection": "S_VT", "package": "Test"
         }]}), encoding="utf-8")
         corpus.write_text(json.dumps({"packages": [{
@@ -28,6 +28,18 @@ class OverrideManifestTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "refusing override"):
                 build(catalog, corpus, root / "override.json", "override")
 
+    def test_lua_shadow_config_defaults_disabled_and_preserves_safety_flags(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            catalog, corpus = self.fixture(root, "reconstructed-source")
+            lua_output = root / "retail_shadow.lua"
+            build(catalog, corpus, root / "shadow.json", "shadow", lua_output)
+            text = lua_output.read_text(encoding="utf-8")
+            self.assertIn("enabled = false", text)
+            self.assertIn('kind = "village"', text)
+            self.assertIn("mutatingCallsAllowed = false", text)
+            self.assertIn("saveWritesAllowed = false", text)
+
     def test_verified_port_can_override(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -38,4 +50,3 @@ class OverrideManifestTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

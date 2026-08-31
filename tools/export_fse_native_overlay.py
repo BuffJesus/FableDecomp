@@ -118,12 +118,13 @@ def write_if_changed(path: Path, payload: dict[str, object]) -> bool:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument("--fse-manifest", type=Path)
     parser.add_argument("--output", type=Path, action="append")
     parser.add_argument("--no-mirrors", action="store_true")
     args = parser.parse_args()
     root = args.root.resolve()
     engine_path = root / "rebuild" / "manifest" / "functions.tsv"
-    fse_path = root / "refs" / "fse_api_manifest.json"
+    fse_path = (args.fse_manifest or root / "refs" / "fse_api_manifest.json").resolve()
     source_digest = hashlib.sha256(engine_path.read_bytes() + fse_path.read_bytes()).hexdigest()
     canonical_path = root / "rebuild" / "sdk" / "fse_native_overlay.json"
     generated_at = datetime.now().astimezone().isoformat(timespec="seconds")
