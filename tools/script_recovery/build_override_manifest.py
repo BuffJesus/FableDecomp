@@ -65,6 +65,19 @@ def build(catalog_path: Path, corpus_path: Path, output: Path, mode: str,
             "mutatingCallsAllowed": mode == "override",
             "saveWritesAllowed": mode == "override",
         })
+        for entity in registration.get("entities", []):
+            entries.append({
+                "nativeName": f"{correlation['nativeName']}::{entity['name']}",
+                "nativeSection": correlation["nativeSection"],
+                "package": package["name"],
+                "luaFile": entity["file"],
+                "kind": "entity",
+                "mode": mode,
+                "evidenceLevel": evidence,
+                "archiveSha256": package["archiveSha256"],
+                "mutatingCallsAllowed": mode == "override",
+                "saveWritesAllowed": mode == "override",
+            })
     entries.sort(key=lambda row: row["nativeName"])
     payload = {"schema": "forgefse-retail-script-overrides/0.1", "defaultMode": "disabled", "entries": entries}
     output.parent.mkdir(parents=True, exist_ok=True)

@@ -146,9 +146,10 @@
     {
       "evidence": {
         "default": "disabled",
-        "entries": 6
+        "entities": 10,
+        "entries": 16
       },
-      "name": "reconstructed packages are shadow-only",
+      "name": "reconstructed scripts are shadow-only",
       "passed": true
     },
     {

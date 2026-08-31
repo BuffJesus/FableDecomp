@@ -15,7 +15,9 @@ class OverrideManifestTests(unittest.TestCase):
         }]}), encoding="utf-8")
         corpus.write_text(json.dumps({"packages": [{
             "name": "Test", "evidenceLevel": evidence, "archiveSha256": "ABC",
-            "registry": [{"file": "Test/Test"}],
+            "registry": [{"file": "Test/Test", "entities": [
+                {"name": "TestEntity", "file": "Test/Entities/TestEntity", "id": 9}
+            ]}],
         }]}), encoding="utf-8")
         return catalog, corpus
 
@@ -24,7 +26,7 @@ class OverrideManifestTests(unittest.TestCase):
             root = Path(temp)
             catalog, corpus = self.fixture(root, "reconstructed-source")
             result = build(catalog, corpus, root / "shadow.json", "shadow")
-            self.assertEqual(result["shadow"], 1)
+            self.assertEqual(result["shadow"], 2)
             with self.assertRaisesRegex(ValueError, "refusing override"):
                 build(catalog, corpus, root / "override.json", "override")
 
@@ -37,6 +39,8 @@ class OverrideManifestTests(unittest.TestCase):
             text = lua_output.read_text(encoding="utf-8")
             self.assertIn("enabled = false", text)
             self.assertIn('kind = "village"', text)
+            self.assertIn('nativeName = "V_Test::TestEntity"', text)
+            self.assertIn('kind = "entity"', text)
             self.assertIn("mutatingCallsAllowed = false", text)
             self.assertIn("saveWritesAllowed = false", text)
 
@@ -45,7 +49,7 @@ class OverrideManifestTests(unittest.TestCase):
             root = Path(temp)
             catalog, corpus = self.fixture(root, "verified-port")
             result = build(catalog, corpus, root / "override.json", "override")
-            self.assertEqual(result["override"], 1)
+            self.assertEqual(result["override"], 2)
 
 
 if __name__ == "__main__":

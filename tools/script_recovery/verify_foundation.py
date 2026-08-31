@@ -61,8 +61,13 @@ def verify(root: Path) -> dict[str, Any]:
     safe = all(row["mode"] == "shadow" and row["evidenceLevel"] == "reconstructed-source"
                and not row["mutatingCallsAllowed"] and not row["saveWritesAllowed"]
                for row in manifest["entries"])
-    check("reconstructed packages are shadow-only", len(manifest["entries"]) == 6 and safe,
-          {"default": manifest["defaultMode"], "entries": len(manifest["entries"])})
+    identities = [row["nativeName"] for row in manifest["entries"]]
+    entity_count = sum(row.get("kind") == "entity" for row in manifest["entries"])
+    check("reconstructed scripts are shadow-only",
+          len(manifest["entries"]) == len(script_files) == 16 and entity_count == 10 and
+          len(set(identities)) == len(identities) and safe,
+          {"default": manifest["defaultMode"], "entries": len(manifest["entries"]),
+           "entities": entity_count})
 
     traces = sorted((root / "traces").glob("*.json"))
     trace_rows = [load(path) for path in traces]
