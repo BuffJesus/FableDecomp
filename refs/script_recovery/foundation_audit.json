@@ -168,6 +168,27 @@
     {
       "evidence": [
         {
+          "allocator": "0x00D8D5A0",
+          "anchors": [
+            "GhostFisherman"
+          ],
+          "script": "Q_HerosOldHouse"
+        },
+        {
+          "allocator": "0x00E26780",
+          "anchors": [
+            "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01"
+          ],
+          "script": "QS_GuardianSisterInfo"
+        },
+        {
+          "allocator": "0x00E277E0",
+          "anchors": [
+            "TEXT_QUEST_GUARDIAN_SISTER_INFO_SECOND_OBJECTIVE_01"
+          ],
+          "script": "QS_GuardianSisterInfo2_SisterInBanditCamp"
+        },
+        {
           "allocator": "0x00E28CA0",
           "anchors": [
             "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01"

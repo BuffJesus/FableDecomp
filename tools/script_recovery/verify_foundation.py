@@ -74,7 +74,7 @@ def verify(root: Path) -> dict[str, Any]:
     clusters = sorted((root / "native_clusters").glob("*.json"))
     cluster_rows = [load(path) for path in clusters]
     anchored = [row for row in cluster_rows if row.get("evidenceAnchors")]
-    check("anchored native decompilation proven", len(cluster_rows) >= 3 and len(anchored) >= 3,
+    check("anchored native decompilation proven", len(cluster_rows) == 6 and len(anchored) == 6,
           [{"script": row["script"], "allocator": row["allocatorAddress"],
             "anchors": row.get("evidenceAnchors", [])} for row in cluster_rows])
 

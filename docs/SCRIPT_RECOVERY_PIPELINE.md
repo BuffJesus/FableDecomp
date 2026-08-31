@@ -112,10 +112,12 @@ retail string is available. It walks exact string xrefs to the containing `Main`
 function in lifecycle-vtable slot 2, follows vtable assignments to the constructor, and reports its
 allocator callers (or the function itself for inline construction). Candidates still pass through
 the exporter's independent anchor check; discovery is not treated as verification.
-The discovery walk was exercised against both supported construction shapes: inline allocation for
+The discovery walk was exercised across all six seeds and both supported construction shapes: inline allocation for
 `QS_MeetSister` (`0x00E29990`) and a separate constructor/caller for `V_MazeResearch`
 (`0x00EA76E0` / `0x00EA8690`). Expected results live in
-`refs/script_recovery/native_discovery_fixtures.json`.
+`refs/script_recovery/native_discovery_fixtures.json`. When an anchor xref initially sits in
+unanalyzed code, discovery conservatively bootstraps `Main` from lifecycle slot 2 and accepts the new
+function only if its body owns that exact xref.
 
 `tools/script_recovery/decompile_native_script.py` is the queue-facing orchestration command. It runs
 headless discovery, requires exactly one candidate, invokes the anchored cluster exporter, treats

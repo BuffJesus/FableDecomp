@@ -2,6 +2,38 @@
   "schema": "fable-native-script-discovery-fixtures/0.1",
   "fixtures": [
     {
+      "script": "Q_HerosOldHouse",
+      "anchor": "GhostFisherman",
+      "mainAddress": "0x00D89E60",
+      "vtableAddress": "0x012D5018",
+      "allocatorAddress": "0x00D8D5A0",
+      "candidateCount": 1
+    },
+    {
+      "script": "QS_GuardianSisterInfo",
+      "anchor": "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+      "mainAddress": "0x00E25AB0",
+      "vtableAddress": "0x012E1DAC",
+      "allocatorAddress": "0x00E26780",
+      "candidateCount": 1
+    },
+    {
+      "script": "QS_GuardianSisterInfo2_SisterInBanditCamp",
+      "anchor": "TEXT_QUEST_GUARDIAN_SISTER_INFO_SECOND_OBJECTIVE_01",
+      "mainAddress": "0x00E268C0",
+      "vtableAddress": "0x012E1F08",
+      "allocatorAddress": "0x00E277E0",
+      "candidateCount": 1
+    },
+    {
+      "script": "QS_GuardianTrophyDealerInfo",
+      "anchor": "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01",
+      "mainAddress": "0x00E27920",
+      "vtableAddress": "0x012E2018",
+      "allocatorAddress": "0x00E28CA0",
+      "candidateCount": 1
+    },
+    {
       "script": "QS_MeetSister",
       "anchor": "TEXT_QUEST_THERESA_MOTHER_INFO_2_SUMMARY",
       "mainAddress": "0x00E28DE0",

@@ -49,6 +49,26 @@ public class DiscoverScriptAllocatorFromAnchor extends GhidraScript {
         return false;
     }
 
+    private void addRows(String anchor, Data item, Function main, Address vtable, Set<String> rows) {
+        for (Reference vtableRef : getReferencesTo(vtable)) {
+            Function constructor = getFunctionContaining(vtableRef.getFromAddress());
+            if (constructor == null) continue;
+            Set<Function> candidates = new LinkedHashSet<>();
+            if (allocatesObject(constructor)) candidates.add(constructor);
+            for (Function caller : callers(constructor)) {
+                if (allocatesObject(caller)) candidates.add(caller);
+            }
+            for (Function allocator : candidates) {
+                rows.add("{\"anchor\":\"" + anchor.replace("\"", "\\\"") +
+                    "\",\"anchorAddress\":\"0x" + item.getAddress().toString().toUpperCase() +
+                    "\",\"mainAddress\":\"0x" + main.getEntryPoint().toString().toUpperCase() +
+                    "\",\"vtableAddress\":\"0x" + vtable.toString().toUpperCase() +
+                    "\",\"constructorAddress\":\"0x" + constructor.getEntryPoint().toString().toUpperCase() +
+                    "\",\"allocatorCandidate\":\"0x" + allocator.getEntryPoint().toString().toUpperCase() + "\"}");
+            }
+        }
+    }
+
     @Override public void run() throws Exception {
         String[] args = getScriptArgs();
         if (args.length != 1) throw new IllegalArgumentException("expected one exact string anchor");
@@ -60,28 +80,30 @@ public class DiscoverScriptAllocatorFromAnchor extends GhidraScript {
             if (!anchor.equals(item.getValue())) continue;
             for (Reference stringRef : getReferencesTo(item.getAddress())) {
                 Function main = getFunctionContaining(stringRef.getFromAddress());
-                if (main == null) continue;
+                if (main == null) {
+                    // Script-local strings commonly follow the lifecycle vtable. Bootstrap an
+                    // unanalyzed Main from slot 2, but accept it only if its new body owns this xref.
+                    for (long distance = 4; distance <= 0x200; distance += 4) {
+                        Address vtable = item.getAddress().subtract(distance);
+                        if (!lifecycleVtable(vtable)) continue;
+                        try {
+                            Address mainAddress = toAddr(currentProgram.getMemory().getInt(vtable.add(8)) & 0xffffffffL);
+                            Function candidate = getFunctionAt(mainAddress);
+                            if (candidate == null) candidate = createFunction(mainAddress, null);
+                            if (candidate != null && candidate.getBody().contains(stringRef.getFromAddress())) {
+                                addRows(anchor, item, candidate, vtable, rows);
+                            }
+                        } catch (Exception ignored) {
+                            // Continue scanning; candidate discovery must stay conservative.
+                        }
+                    }
+                    continue;
+                }
                 for (Reference mainRef : getReferencesTo(main.getEntryPoint())) {
                     if (!mainRef.getFromAddress().isMemoryAddress()) continue;
                     Address vtable = mainRef.getFromAddress().subtract(8); // lifecycle slot 2 is Main
                     if (!lifecycleVtable(vtable)) continue;
-                    for (Reference vtableRef : getReferencesTo(vtable)) {
-                        Function constructor = getFunctionContaining(vtableRef.getFromAddress());
-                        if (constructor == null) continue;
-                        Set<Function> candidates = new LinkedHashSet<>();
-                        if (allocatesObject(constructor)) candidates.add(constructor); // inline constructor/allocator
-                        for (Function caller : callers(constructor)) {
-                            if (allocatesObject(caller)) candidates.add(caller);
-                        }
-                        for (Function allocator : candidates) {
-                            rows.add("{\"anchor\":\"" + anchor.replace("\"", "\\\"") +
-                                "\",\"anchorAddress\":\"0x" + item.getAddress().toString().toUpperCase() +
-                                "\",\"mainAddress\":\"0x" + main.getEntryPoint().toString().toUpperCase() +
-                                "\",\"vtableAddress\":\"0x" + vtable.toString().toUpperCase() +
-                                "\",\"constructorAddress\":\"0x" + constructor.getEntryPoint().toString().toUpperCase() +
-                                "\",\"allocatorCandidate\":\"0x" + allocator.getEntryPoint().toString().toUpperCase() + "\"}");
-                        }
-                    }
+                    addRows(anchor, item, main, vtable, rows);
                 }
             }
         }

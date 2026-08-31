@@ -24,7 +24,26 @@ class ConversionQueueTests(unittest.TestCase):
             self.assertEqual(queue[0]["evidence"], "registry-fact")
             self.assertEqual(result["seeded"], 1)
 
+    def test_anchored_cluster_advances_seed(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            catalog = root / "catalog.json"
+            catalog.write_text(json.dumps({
+                "scripts": [{"name": "V_Seed", "kind": "village", "section": "S_VS", "allocatorAddress": None}],
+                "seedCorrelations": [{"nativeName": "V_Seed", "package": "Seed", "status": "matched"}],
+            }), encoding="utf-8")
+            clusters = root / "clusters"
+            clusters.mkdir()
+            (clusters / "V_Seed.json").write_text(json.dumps({
+                "script": "V_Seed", "allocatorAddress": "0x00123456", "evidenceAnchors": ["ANCHOR"]
+            }), encoding="utf-8")
+            result = build(catalog, root / "queue.json", root / "queue.tsv", clusters)
+            row = json.loads((root / "queue.json").read_text())["queue"][0]
+            self.assertEqual(row["evidence"], "native-decompile")
+            self.assertEqual(row["stage"], "extract-operation-ir")
+            self.assertEqual(row["allocatorAddress"], "0x00123456")
+            self.assertEqual(result["anchoredClusters"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()
-

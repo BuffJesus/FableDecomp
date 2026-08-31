@@ -4,68 +4,74 @@
   "queue": [
     {
       "priority": 0,
+      "name": "QS_GuardianSisterInfo",
+      "kind": "quest",
+      "section": "S_QSGSI",
+      "allocatorAddress": "0x00E26780",
+      "seedPackage": "GuardianSisterInfo",
+      "stage": "extract-operation-ir",
+      "evidence": "native-decompile",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\QS_GuardianSisterInfo.json",
+      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
+    },
+    {
+      "priority": 0,
+      "name": "QS_GuardianSisterInfo2_SisterInBanditCamp",
+      "kind": "quest",
+      "section": "S_QSGSI2",
+      "allocatorAddress": "0x00E277E0",
+      "seedPackage": "GuardianSisterInfo2",
+      "stage": "extract-operation-ir",
+      "evidence": "native-decompile",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\QS_GuardianSisterInfo2_SisterInBanditCamp.json",
+      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
+    },
+    {
+      "priority": 0,
+      "name": "QS_GuardianTrophyDealerInfo",
+      "kind": "quest",
+      "section": "S_QSGTDI",
+      "allocatorAddress": "0x00E28CA0",
+      "seedPackage": "GuardianTrophyDealerInfo",
+      "stage": "extract-operation-ir",
+      "evidence": "native-decompile",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\QS_GuardianTrophyDealerInfo.json",
+      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
+    },
+    {
+      "priority": 0,
+      "name": "QS_MeetSister",
+      "kind": "quest",
+      "section": "S_QSMS",
+      "allocatorAddress": "0x00E29990",
+      "seedPackage": "MeetSister",
+      "stage": "extract-operation-ir",
+      "evidence": "native-decompile",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\QS_MeetSister.json",
+      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
+    },
+    {
+      "priority": 0,
+      "name": "Q_HerosOldHouse",
+      "kind": "quest",
+      "section": "S_QHOH",
+      "allocatorAddress": "0x00D8D5A0",
+      "seedPackage": "HerosOldHouse",
+      "stage": "extract-operation-ir",
+      "evidence": "native-decompile",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_HerosOldHouse.json",
+      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
+    },
+    {
+      "priority": 0,
       "name": "V_MazeResearch",
       "kind": "village",
       "section": "S_VMR",
       "allocatorAddress": "0x00EA8690",
       "seedPackage": "MazeResearch",
-      "stage": "resolve-object-boundaries",
-      "evidence": "registry-fact",
-      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
-    },
-    {
-      "priority": 5,
-      "name": "QS_GuardianSisterInfo",
-      "kind": "quest",
-      "section": "S_QSGSI",
-      "allocatorAddress": "",
-      "seedPackage": "GuardianSisterInfo",
-      "stage": "resolve-allocator-address",
-      "evidence": "registry-fact",
-      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
-    },
-    {
-      "priority": 5,
-      "name": "QS_GuardianSisterInfo2_SisterInBanditCamp",
-      "kind": "quest",
-      "section": "S_QSGSI2",
-      "allocatorAddress": "",
-      "seedPackage": "GuardianSisterInfo2",
-      "stage": "resolve-allocator-address",
-      "evidence": "registry-fact",
-      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
-    },
-    {
-      "priority": 5,
-      "name": "QS_GuardianTrophyDealerInfo",
-      "kind": "quest",
-      "section": "S_QSGTDI",
-      "allocatorAddress": "",
-      "seedPackage": "GuardianTrophyDealerInfo",
-      "stage": "resolve-allocator-address",
-      "evidence": "registry-fact",
-      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
-    },
-    {
-      "priority": 5,
-      "name": "QS_MeetSister",
-      "kind": "quest",
-      "section": "S_QSMS",
-      "allocatorAddress": "",
-      "seedPackage": "MeetSister",
-      "stage": "resolve-allocator-address",
-      "evidence": "registry-fact",
-      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
-    },
-    {
-      "priority": 5,
-      "name": "Q_HerosOldHouse",
-      "kind": "quest",
-      "section": "S_QHOH",
-      "allocatorAddress": "",
-      "seedPackage": "HerosOldHouse",
-      "stage": "resolve-allocator-address",
-      "evidence": "registry-fact",
+      "stage": "extract-operation-ir",
+      "evidence": "native-decompile",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_MazeResearch.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -77,6 +83,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -88,6 +95,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -99,6 +107,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -110,6 +119,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -121,6 +131,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -132,6 +143,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -143,6 +155,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -154,6 +167,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -165,6 +179,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -176,6 +191,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -187,6 +203,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -198,6 +215,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -209,6 +227,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -220,6 +239,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -231,6 +251,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -242,6 +263,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -253,6 +275,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -264,6 +287,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -275,6 +299,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -286,6 +311,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -297,6 +323,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -308,6 +335,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -319,6 +347,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -330,6 +359,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -341,6 +371,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -352,6 +383,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -363,6 +395,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -374,6 +407,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -385,6 +419,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -396,6 +431,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -407,6 +443,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -418,6 +455,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -429,6 +467,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -440,6 +479,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -451,6 +491,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -462,6 +503,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -473,6 +515,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -484,6 +527,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -495,6 +539,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -506,6 +551,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -517,6 +563,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -528,6 +575,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -539,6 +587,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -550,6 +599,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -561,6 +611,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -572,6 +623,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -583,6 +635,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -594,6 +647,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -605,6 +659,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -616,6 +671,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -627,6 +683,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -638,6 +695,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -649,6 +707,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -660,6 +719,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -671,6 +731,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -682,6 +743,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -693,6 +755,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -704,6 +767,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -715,6 +779,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -726,6 +791,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -737,6 +803,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -748,6 +815,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -759,6 +827,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -770,6 +839,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -781,6 +851,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -792,6 +863,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -803,6 +875,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -814,6 +887,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -825,6 +899,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -836,6 +911,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -847,6 +923,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -858,6 +935,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -869,6 +947,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -880,6 +959,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -891,6 +971,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -902,6 +983,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -913,6 +995,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -924,6 +1007,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -935,6 +1019,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -946,6 +1031,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -957,6 +1043,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -968,6 +1055,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -979,6 +1067,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -990,6 +1079,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1001,6 +1091,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1012,6 +1103,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1023,6 +1115,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1034,6 +1127,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1045,6 +1139,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1056,6 +1151,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1067,6 +1163,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1078,6 +1175,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1089,6 +1187,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1100,6 +1199,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1111,6 +1211,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1122,6 +1223,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1133,6 +1235,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1144,6 +1247,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1155,6 +1259,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1166,6 +1271,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1177,6 +1283,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1188,6 +1295,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1199,6 +1307,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1210,6 +1319,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1221,6 +1331,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1232,6 +1343,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1243,6 +1355,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1254,6 +1367,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1265,6 +1379,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1276,6 +1391,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1287,6 +1403,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1298,6 +1415,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1309,6 +1427,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1320,6 +1439,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1331,6 +1451,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1342,6 +1463,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1353,6 +1475,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1364,6 +1487,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1375,6 +1499,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1386,6 +1511,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1397,6 +1523,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1408,6 +1535,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1419,6 +1547,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1430,6 +1559,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1441,6 +1571,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1452,6 +1583,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1463,6 +1595,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1474,6 +1607,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1485,6 +1619,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1496,6 +1631,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1507,6 +1643,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1518,6 +1655,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1529,6 +1667,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1540,6 +1679,7 @@
       "seedPackage": "",
       "stage": "resolve-object-boundaries",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1551,6 +1691,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1562,6 +1703,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1573,6 +1715,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1584,6 +1727,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1595,6 +1739,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1606,6 +1751,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1617,6 +1763,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1628,6 +1775,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1639,6 +1787,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1650,6 +1799,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1661,6 +1811,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1672,6 +1823,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1683,6 +1835,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1694,6 +1847,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1705,6 +1859,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1716,6 +1871,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1727,6 +1883,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1738,6 +1895,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1749,6 +1907,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1760,6 +1919,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1771,6 +1931,7 @@
       "seedPackage": "",
       "stage": "resolve-allocator-address",
       "evidence": "registry-fact",
+      "nativeCluster": "",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     }
   ]
