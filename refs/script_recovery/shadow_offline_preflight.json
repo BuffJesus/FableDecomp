@@ -1,0 +1,72 @@
+{
+  "schema": "forgefse-retail-shadow-offline-preflight/0.1",
+  "complete": true,
+  "passed": 16,
+  "failed": 0,
+  "scripts": [
+    {
+      "nativeName": "QS_GuardianSisterInfo",
+      "passed": true
+    },
+    {
+      "nativeName": "QS_GuardianSisterInfo2_SisterInBanditCamp",
+      "passed": true
+    },
+    {
+      "nativeName": "QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern",
+      "passed": true
+    },
+    {
+      "nativeName": "QS_GuardianSisterInfo::MazeAtTavern",
+      "passed": true
+    },
+    {
+      "nativeName": "QS_GuardianTrophyDealerInfo",
+      "passed": true
+    },
+    {
+      "nativeName": "QS_GuardianTrophyDealerInfo::GTDI_Maze",
+      "passed": true
+    },
+    {
+      "nativeName": "QS_MeetSister",
+      "passed": true
+    },
+    {
+      "nativeName": "QS_MeetSister::MeetSisterMessenger",
+      "passed": true
+    },
+    {
+      "nativeName": "QS_MeetSister::MeetSisterSister",
+      "passed": true
+    },
+    {
+      "nativeName": "Q_HerosOldHouse",
+      "passed": true
+    },
+    {
+      "nativeName": "Q_HerosOldHouse::ExtraBooty",
+      "passed": true
+    },
+    {
+      "nativeName": "Q_HerosOldHouse::FishermansWife",
+      "passed": true
+    },
+    {
+      "nativeName": "Q_HerosOldHouse::GhostFisherman",
+      "passed": true
+    },
+    {
+      "nativeName": "V_MazeResearch",
+      "passed": true
+    },
+    {
+      "nativeName": "V_MazeResearch::EmptyGrave",
+      "passed": true
+    },
+    {
+      "nativeName": "V_MazeResearch::HistoryBookcase",
+      "passed": true
+    }
+  ]
+}

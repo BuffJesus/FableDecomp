@@ -16,7 +16,16 @@ python tools\script_recovery\build_shadow_smoke_package.py `
 
 python tools\script_recovery\verify_shadow_smoke_package.py `
   D:\Code\ForgeFSE-retail-shadow\Release\RetailShadowSmoke
+
+python tools\script_recovery\run_shadow_preflight.py `
+  D:\Code\ForgeFSE-retail-shadow\Release\RetailShadowSmoke `
+  --output refs\script_recovery\shadow_offline_preflight.json
 ```
+
+For a reversible installation, use `deploy_shadow_smoke_package.py deploy`. It refuses to run
+while Fable is open, backs up every overwritten file, records newly created files, and emits a
+transaction path. Pass that path to its `rollback` command to restore the previous DLL and remove
+only unchanged files created by the deployment.
 
 After manually backing up an existing ForgeFSE installation, copy the package contents into the
 game directory so `FableScriptExtender.dll` is beside `Fable.exe` and `FSE/retail_shadow.lua` is
