@@ -8,8 +8,8 @@
     "consumerCalls": 1437,
     "directDependencyCalls": 4967,
     "directDependencyTargets": 206,
-    "semanticPatterns": 14,
-    "luaEmissionReady": 14,
+    "semanticPatterns": 15,
+    "luaEmissionReady": 15,
     "resolvedParentInitializers": 2,
     "resolvedInterfaceCalls": 273,
     "resolvedInterfaceMethods": 62,
@@ -48784,9 +48784,25 @@
         "if": 3,
         "while": 1
       },
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "conditional-strided-copy-loop",
+          "complete": true,
+          "conditionOffset": "0x50",
+          "destinationOffset": "0x5c",
+          "destinationStride": 16,
+          "sourcePointerOffset": "0xa8",
+          "sourceStride": 4,
+          "elements": 5,
+          "terminationTarget": "0x00CB7940",
+          "terminationCallSites": [
+            "0x00E37D09",
+            "0x00E37D1F"
+          ]
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00E46A50",

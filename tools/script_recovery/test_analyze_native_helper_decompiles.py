@@ -88,6 +88,17 @@ class NativeHelperDecompileTests(unittest.TestCase):
                          ["0x00E33065", "0x00E33098", "0x00E330CD",
                           "0x00E330F5", "0x00E33108", "0x00E33115"])
 
+    def test_conditional_strided_copy_loop_is_complete(self):
+        body = ("this[0x50] this + 0x5c this + 0xa8 "
+                "iVar3 = iVar3 + 4; pCVar2 = pCVar2 + 0x10; iVar3 < 0x14")
+        direct = [{"target": "0x00CB7940", "site": "0x1"},
+                  {"target": "0x00CB7940", "site": "0x2"}]
+        pattern = semantic_patterns(body, direct, [],
+            "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo")[0]
+        self.assertEqual(pattern["kind"], "conditional-strided-copy-loop")
+        self.assertEqual((pattern["elements"], pattern["destinationStride"],
+                          pattern["sourceStride"]), (5, 0x10, 4))
+
     def test_typed_native_reads_are_complete_semantic_patterns(self):
         field = semantic_patterns(
             "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])

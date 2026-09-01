@@ -179,6 +179,45 @@ def validate(manifest_path: Path) -> dict[str, Any]:
             checks = len(expected)
             if trace != expected:
                 errors.append(f"archery setup trace differs: expected {expected}, got {trace}")
+        elif pattern["kind"] == "conditional-strided-copy-loop":
+            for condition, terminate_at in ((0, None), (1, None), (0, 3), (1, 3)):
+                trace = []
+                termination_calls = [0]
+                def read_u8(offset):
+                    trace.append(("read-u8", offset))
+                    return condition
+                def is_terminating():
+                    termination_calls[0] += 1
+                    result = termination_calls[0] == terminate_at
+                    trace.append(("terminate", result))
+                    return result
+                function(read_u8, is_terminating,
+                         lambda pointer, offset: trace.append(("read-indirect", pointer, offset)) or
+                         (0x500 + offset),
+                         lambda pointer, offset, value:
+                         trace.append(("write-indirect", pointer, offset, value)),
+                         lambda offset, value: trace.append(("write", offset, value)))
+                expected = []
+                for index in range(pattern["elements"]):
+                    expected.append(("read-u8", int(pattern["conditionOffset"], 0)))
+                    terminating = index + 1 == terminate_at
+                    expected.append(("terminate", terminating))
+                    if terminating:
+                        break
+                    source_offset = index * pattern["sourceStride"]
+                    if condition == 0:
+                        expected.append(("write-indirect",
+                                         int(pattern["sourcePointerOffset"], 0), source_offset, 0))
+                    else:
+                        expected.append(("read-indirect",
+                                         int(pattern["sourcePointerOffset"], 0), source_offset))
+                        expected.append(("write", int(pattern["destinationOffset"], 0)
+                                         + index * pattern["destinationStride"],
+                                         0x500 + source_offset))
+                checks += 1
+                if trace != expected:
+                    errors.append(f"condition {condition}/terminate {terminate_at}: "
+                                  f"expected {expected}, got {trace}")
         else:
             errors.append(f"unsupported semantic pattern {pattern['kind']}")
         rows.append({"targetAddress": entry["targetAddress"], "passed": not errors,

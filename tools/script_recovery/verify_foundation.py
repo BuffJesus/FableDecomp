@@ -117,25 +117,25 @@ def verify(root: Path) -> dict[str, Any]:
     helper_lua_validation = load(root / "generated_helper_lua" / "validation.json")
     helper_lua_entries = helper_lua_manifest["entries"]
     check("evidence-complete native helpers execute as standalone Lua",
-          helper_lua_manifest["summary"] == {"emitted": 14, "deploymentEligible": 0} and
+          helper_lua_manifest["summary"] == {"emitted": 15, "deploymentEligible": 0} and
           {row["targetAddress"] for row in helper_lua_entries} == {
               "0x00CD23B9", "0x00CD3EF0", "0x00E1AD30", "0x00E1DF50",
-              "0x00CB8930", "0x00DC3CF0", "0x00E32EF0", "0x00E32FE0", "0x00E33000", "0x00E33040", "0x00E9FEC0",
+              "0x00CB8930", "0x00DC3CF0", "0x00E32EF0", "0x00E32FE0", "0x00E33000", "0x00E33040", "0x00E37CF0", "0x00E9FEC0",
               "0x00F14250", "0x00F14270", "0x00F25840"} and
           all(not row["deploymentEligible"] for row in helper_lua_entries) and
           helper_lua_validation["summary"] == {
-              "helpers": 14, "passed": 14, "checks": 105, "complete": True},
+              "helpers": 15, "passed": 15, "checks": 109, "complete": True},
           {"manifest": helper_lua_manifest["summary"],
            "validation": helper_lua_validation["summary"]})
     readiness = load(root / "native_conversion_readiness.json")
     readiness_summary = readiness["summary"]
     archery = next(row for row in readiness["scripts"] if row["name"] == "V_ArcheryCompetition")
     check("generated helpers reduce the native conversion backlog",
-          readiness_summary["resolvedNativeHelperMethods"] == 14 and
-          readiness_summary["resolvedNativeHelperCalls"] == 185 and
+          readiness_summary["resolvedNativeHelperMethods"] == 15 and
+          readiness_summary["resolvedNativeHelperCalls"] == 186 and
           readiness_summary["scriptsWithResolvedNativeHelpers"] == 124 and
-          readiness_summary["unresolvedNativeHelperMethods"] == 144 and
-          readiness_summary["unresolvedNativeHelperCalls"] == 1418 and
+          readiness_summary["unresolvedNativeHelperMethods"] == 143 and
+          readiness_summary["unresolvedNativeHelperCalls"] == 1417 and
           len(archery["resolvedNativeHelpers"]) == 5 and
           set(archery["unresolvedNativeHelpers"]) == {
               "CCharString__NotEqual", "NScript::CV_ArcheryCompetitionScript::~CV_ArcheryCompetitionScript",

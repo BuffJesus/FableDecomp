@@ -212,7 +212,10 @@ The readiness analyzer now consumes this helper IR by exact target address. It r
 whose every instance has a target marked emission-ready, resolving 14 helper labels and 185 calls
 across 124 scripts while leaving 144 labels / 1,418 calls explicit. `V_ArcheryCompetition` now has
 five recovered helpers and only `CCharString__NotEqual`, its destructor, and `rand` left in its
-helper backlog.
+helper backlog. `V_AssassinAttacks::InitialiseRegionSpecificInfo` adds a fifth fixed-control-flow
+shape: both branches of its five-element strided copy/clear loop and early termination at the first
+or third iteration execute offline. Totals are now fifteen helpers / 109 checks, resolving 186 calls
+across 124 scripts and leaving 143 helper labels / 1,417 calls.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`

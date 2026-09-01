@@ -204,6 +204,20 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
                            "handleOffset": "0x60"},
             "scorePointerOffset": "0x44", "scoreFieldOffset": "0x44",
         })
+    if (current_name.endswith("CV_AssassinAttacksScript::InitialiseRegionSpecificInfo")
+            and len(direct) == 2 and not indirect
+            and all(call.get("target") == "0x00CB7940" for call in direct)
+            and all(value in text for value in (
+                "this[0x50]", "this + 0x5c", "this + 0xa8", "iVar3 = iVar3 + 4",
+                "pCVar2 = pCVar2 + 0x10", "iVar3 < 0x14"))):
+        patterns.append({
+            "kind": "conditional-strided-copy-loop", "complete": True,
+            "conditionOffset": "0x50", "destinationOffset": "0x5c",
+            "destinationStride": 0x10, "sourcePointerOffset": "0xa8",
+            "sourceStride": 4, "elements": 5,
+            "terminationTarget": "0x00CB7940",
+            "terminationCallSites": [call["site"] for call in direct],
+        })
     return patterns
 
 
@@ -329,6 +343,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
                 "conditional-u8-call-clear",
                 "native-script-initializer",
                 "archery-quest-info-setup",
+                "conditional-strided-copy-loop",
             } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)

@@ -146,6 +146,28 @@ def emit_archery_quest_info_setup(helper: dict[str, Any], pattern: dict[str, Any
     return "\n".join(lines)
 
 
+def emit_conditional_strided_copy(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
+    return "\n".join([
+        f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+        "-- Preserve both fixed-loop branches, strides, and per-element termination checks.",
+        "return function(read_u8, is_terminating, read_indirect_i32, "
+        "write_indirect_i32, write_i32)",
+        f"    for index = 0, {pattern['elements'] - 1} do",
+        f"        local condition = read_u8({int(pattern['conditionOffset'], 0)})",
+        "        if is_terminating() then return end",
+        f"        local source_offset = index * {pattern['sourceStride']}",
+        "        if condition == 0 then",
+        f"            write_indirect_i32({int(pattern['sourcePointerOffset'], 0)}, "
+        "source_offset, 0)",
+        "        else",
+        f"            local value = read_indirect_i32({int(pattern['sourcePointerOffset'], 0)}, "
+        "source_offset)",
+        f"            write_i32({int(pattern['destinationOffset'], 0)} + "
+        f"index * {pattern['destinationStride']}, value)",
+        "        end", "    end", "end", "",
+    ])
+
+
 def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
     source_bytes = helper_ir_path.read_bytes()
     document = json.loads(source_bytes.decode("utf-8-sig"))
@@ -159,7 +181,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
                                        "constant-return", "native-field-return",
                                        "native-global-return", "quest-interface-sequence",
                                        "conditional-u8-call-clear"}
-                                       | {"native-script-initializer", "archery-quest-info-setup"}
+                                       | {"native-script-initializer", "archery-quest-info-setup",
+                                          "conditional-strided-copy-loop"}
                     and row["complete"]]
         if len(patterns) != 1:
             raise ValueError(f"expected one complete switch for {helper['targetAddress']}")
@@ -176,6 +199,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
             text = emit_script_initializer(helper, pattern)
         elif pattern["kind"] == "archery-quest-info-setup":
             text = emit_archery_quest_info_setup(helper, pattern)
+        elif pattern["kind"] == "conditional-strided-copy-loop":
+            text = emit_conditional_strided_copy(helper, pattern)
         else:
             text = emit_return(helper, pattern)
         filename = helper["targetAddress"].removeprefix("0x") + ".lua"

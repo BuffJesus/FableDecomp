@@ -53,19 +53,19 @@
     "abiBlockedInterfaceMethods": {
       "MsgOnLevelLoaded": "retail method writes std::list<CCharString>; ForgeFSE uses a newer MSVC STL ABI"
     },
-    "resolvedNativeHelperMethods": 14,
-    "resolvedNativeHelperCalls": 185,
+    "resolvedNativeHelperMethods": 15,
+    "resolvedNativeHelperCalls": 186,
     "scriptsWithResolvedNativeHelpers": 124,
-    "unresolvedNativeHelperMethods": 144,
-    "unresolvedNativeHelperCalls": 1418,
-    "nativeHelperMethodsWithTargetAddress": 103,
-    "nativeHelperCallsWithTargetAddress": 1252,
+    "unresolvedNativeHelperMethods": 143,
+    "unresolvedNativeHelperCalls": 1417,
+    "nativeHelperMethodsWithTargetAddress": 102,
+    "nativeHelperCallsWithTargetAddress": 1251,
     "nativeDirectCalls": 15300,
     "nativeDirectCallTargets": 233,
     "nativeHelperCategories": {
       "engine-or-script-helper": {
-        "methods": 71,
-        "calls": 284
+        "methods": 70,
+        "calls": 283
       },
       "lifecycle-cleanup": {
         "methods": 38,
@@ -2845,25 +2845,6 @@
       ],
       "consumers": [
         "V_ArcheryCompetition"
-      ]
-    },
-    {
-      "name": "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo",
-      "calls": 1,
-      "targetedCalls": 1,
-      "category": "engine-or-script-helper",
-      "scripts": 1,
-      "roles": [
-        "Main"
-      ],
-      "targetAddresses": [
-        "0x00E37CF0"
-      ],
-      "kinds": [
-        "village"
-      ],
-      "consumers": [
-        "V_AssassinAttacks"
       ]
     },
     {
@@ -23829,6 +23810,140 @@
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TonyTestScripts.json"
     },
     {
+      "name": "V_AssassinAttacks",
+      "kind": "village",
+      "allocatorAddress": "0x00E39850",
+      "vtableAddress": "0x012E35B0",
+      "anchored": false,
+      "lifecycleFunctions": 5,
+      "calls": 48,
+      "distinctCalls": 10,
+      "mappedForgeApis": [],
+      "indirectCalls": 18,
+      "nativeDirectCalls": 80,
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "M_AssassinTrigger",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012e369c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 2710,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "AttackingAssassin",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012e369c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 3708,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "ChestHidingAssassin",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012e369c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 4711,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "AssassinChest",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012e369c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 5708,
+          "complete": true,
+          "layoutComplete": true
+        }
+      ],
+      "entityBindingCount": 4,
+      "completeEntityBindings": 4,
+      "resolvedInterfaceCalls": [],
+      "resolvedInterfaceMethods": [],
+      "indirectVtableOffsets": [
+        "0x100",
+        "0x118",
+        "0x1c",
+        "0x1e4",
+        "0x1f8",
+        "0x270",
+        "0x284",
+        "0x288",
+        "0x2e0",
+        "0x448",
+        "0x450",
+        "0x478",
+        "0x58",
+        "0x5e0"
+      ],
+      "opaqueCallees": [],
+      "unresolvedNativeHelpers": [
+        "CParticleEmitter___CParticleEmitter_WithMemFree",
+        "resize"
+      ],
+      "stage": "map-native-helpers",
+      "resolvedNativeHelpers": [
+        "CTCVillage::OnInitialActivate",
+        "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo"
+      ],
+      "resolvedNativeHelperCallCounts": {
+        "CTCVillage::OnInitialActivate": 1,
+        "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo": 1
+      },
+      "resolvedNativeHelperTargetAddresses": {
+        "CTCVillage::OnInitialActivate": [
+          "0x00CB8930"
+        ],
+        "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo": [
+          "0x00E37CF0"
+        ]
+      },
+      "unresolvedNativeHelperCallCounts": {
+        "CParticleEmitter___CParticleEmitter_WithMemFree": 1,
+        "resize": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CParticleEmitter___CParticleEmitter_WithMemFree": [
+          "destructor"
+        ],
+        "resize": [
+          "Init"
+        ]
+      },
+      "unresolvedNativeHelperTargetAddresses": {
+        "CParticleEmitter___CParticleEmitter_WithMemFree": [],
+        "resize": []
+      },
+      "unresolvedNativeHelperTargetedCallCounts": {
+        "CParticleEmitter___CParticleEmitter_WithMemFree": 0,
+        "resize": 0
+      },
+      "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_AssassinAttacks.json"
+    },
+    {
       "name": "V_BanditToll",
       "kind": "village",
       "allocatorAddress": "0x00E4F550",
@@ -30997,144 +31112,6 @@
         "rand": 1
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_ArcheryCompetition.json"
-    },
-    {
-      "name": "V_AssassinAttacks",
-      "kind": "village",
-      "allocatorAddress": "0x00E39850",
-      "vtableAddress": "0x012E35B0",
-      "anchored": false,
-      "lifecycleFunctions": 5,
-      "calls": 48,
-      "distinctCalls": 10,
-      "mappedForgeApis": [],
-      "indirectCalls": 18,
-      "nativeDirectCalls": 80,
-      "entityBindings": [
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "M_AssassinTrigger",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012e369c",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 0,
-          "offset": 2710,
-          "complete": true,
-          "layoutComplete": true
-        },
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "AttackingAssassin",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012e369c",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 0,
-          "offset": 3708,
-          "complete": true,
-          "layoutComplete": true
-        },
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "ChestHidingAssassin",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012e369c",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 0,
-          "offset": 4711,
-          "complete": true,
-          "layoutComplete": true
-        },
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "AssassinChest",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012e369c",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 0,
-          "offset": 5708,
-          "complete": true,
-          "layoutComplete": true
-        }
-      ],
-      "entityBindingCount": 4,
-      "completeEntityBindings": 4,
-      "resolvedInterfaceCalls": [],
-      "resolvedInterfaceMethods": [],
-      "indirectVtableOffsets": [
-        "0x100",
-        "0x118",
-        "0x1c",
-        "0x1e4",
-        "0x1f8",
-        "0x270",
-        "0x284",
-        "0x288",
-        "0x2e0",
-        "0x448",
-        "0x450",
-        "0x478",
-        "0x58",
-        "0x5e0"
-      ],
-      "opaqueCallees": [],
-      "unresolvedNativeHelpers": [
-        "CParticleEmitter___CParticleEmitter_WithMemFree",
-        "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo",
-        "resize"
-      ],
-      "stage": "map-native-helpers",
-      "resolvedNativeHelpers": [
-        "CTCVillage::OnInitialActivate"
-      ],
-      "resolvedNativeHelperCallCounts": {
-        "CTCVillage::OnInitialActivate": 1
-      },
-      "resolvedNativeHelperTargetAddresses": {
-        "CTCVillage::OnInitialActivate": [
-          "0x00CB8930"
-        ]
-      },
-      "unresolvedNativeHelperCallCounts": {
-        "CParticleEmitter___CParticleEmitter_WithMemFree": 1,
-        "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo": 1,
-        "resize": 1
-      },
-      "unresolvedNativeHelperRoles": {
-        "CParticleEmitter___CParticleEmitter_WithMemFree": [
-          "destructor"
-        ],
-        "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo": [
-          "Main"
-        ],
-        "resize": [
-          "Init"
-        ]
-      },
-      "unresolvedNativeHelperTargetAddresses": {
-        "CParticleEmitter___CParticleEmitter_WithMemFree": [],
-        "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo": [
-          "0x00E37CF0"
-        ],
-        "resize": []
-      },
-      "unresolvedNativeHelperTargetedCallCounts": {
-        "CParticleEmitter___CParticleEmitter_WithMemFree": 0,
-        "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo": 1,
-        "resize": 0
-      },
-      "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_AssassinAttacks.json"
     },
     {
       "name": "V_BeardyBaldy",

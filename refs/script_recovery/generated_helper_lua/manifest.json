@@ -1,9 +1,9 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "2AC86DB47E385DA56A6B478B8966FF5B29C600746955D22E422AD63DBD6ED0DB",
+  "sourceSha256": "BCD37E8584C588F2AF11FF8E4C0DE7902A41231114BE0E998CCB8CFAC4532540",
   "summary": {
-    "emitted": 14,
+    "emitted": 15,
     "deploymentEligible": 0
   },
   "entries": [
@@ -448,6 +448,31 @@
         },
         "scorePointerOffset": "0x44",
         "scoreFieldOffset": "0x44"
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x00E37CF0",
+      "currentName": "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo",
+      "sourceDecompileSha256": "4e755cbbfcc2461e376a5a6f3a45ee427e4596b6ad9444fc43a928ac17d25433",
+      "luaFile": "00E37CF0.lua",
+      "luaSha256": "D1991CB6A5B943E36B7931BD9A2BDBEA53F8CE52FFBF9AD517DCEBBB7848E795",
+      "semanticPattern": {
+        "kind": "conditional-strided-copy-loop",
+        "complete": true,
+        "conditionOffset": "0x50",
+        "destinationOffset": "0x5c",
+        "destinationStride": 16,
+        "sourcePointerOffset": "0xa8",
+        "sourceStride": 4,
+        "elements": 5,
+        "terminationTarget": "0x00CB7940",
+        "terminationCallSites": [
+          "0x00E37D09",
+          "0x00E37D1F"
+        ]
       },
       "parentInitializerEvidence": null,
       "deploymentEligible": false,
