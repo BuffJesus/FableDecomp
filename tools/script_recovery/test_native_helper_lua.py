@@ -142,6 +142,24 @@ class NativeHelperLuaTests(unittest.TestCase):
             self.assertTrue(result["summary"]["complete"])
             self.assertEqual(result["summary"]["checks"], 1)
 
+    def test_generated_pointer_token_initializer_preserves_empty_payload(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            helper_ir = root / "ir.json"
+            helper_ir.write_text(json.dumps({"helpers": [{
+                "targetAddress": "0x0099A380", "currentName": "Pointer::Pointer",
+                "decompileSha256": "9" * 64, "luaEmissionReady": True,
+                "semanticPatterns": [{"kind": "opaque-pointer-token-initializer",
+                                      "complete": True, "vtableOffset": "0x0",
+                                      "payloadOffset": "0x4", "fieldWidth": 4,
+                                      "retailVtableAddress": "0x0129A7D8",
+                                      "payloadValue": 0, "donorNameTrusted": False}],
+            }]}))
+            generate(helper_ir, root / "generated")
+            result = validate(root / "generated" / "manifest.json")
+            self.assertTrue(result["summary"]["complete"])
+            self.assertEqual(result["summary"]["checks"], 1)
+
     def test_generated_reference_counted_destructor_executes_all_branches(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

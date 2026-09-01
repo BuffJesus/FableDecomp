@@ -304,6 +304,19 @@ def validate(manifest_path: Path) -> dict[str, Any]:
             checks = 1
             if trace != expected or actual != "token":
                 errors.append(f"token init differs: expected {expected}/token, got {trace}/{actual}")
+        elif pattern["kind"] == "opaque-pointer-token-initializer":
+            address = int(pattern["retailVtableAddress"], 0)
+            payload_offset = int(pattern["payloadOffset"], 0)
+            payload_value = pattern["payloadValue"]
+            trace = []
+            actual = function(
+                lambda vtable, offset, value:
+                trace.append(("initialize", vtable, offset, value)) or "pointer-token")
+            expected = [("initialize", address, payload_offset, payload_value)]
+            checks = 1
+            if trace != expected or actual != "pointer-token":
+                errors.append(f"pointer token init differs: expected {expected}/pointer-token, "
+                              f"got {trace}/{actual}")
         elif pattern["kind"] == "reference-counted-token-destructor":
             owner_offset = int(pattern["ownerOffset"], 0)
             value_offset = int(pattern["valueOffset"], 0)

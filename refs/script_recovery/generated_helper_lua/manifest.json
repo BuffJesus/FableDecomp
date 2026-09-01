@@ -1,9 +1,9 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "806A0090088032E8FCA63B951EFA665655B158E37AE0E935C9076CD42EBFADCA",
+  "sourceSha256": "244812029BB4EBD8EF0EBE6624F489F5DF7DEDBD81131AB62376AC2F1893D62D",
   "summary": {
-    "emitted": 27,
+    "emitted": 28,
     "deploymentEligible": 0
   },
   "entries": [
@@ -133,6 +133,26 @@
         "fieldOffset": "0x0",
         "fieldWidth": 4,
         "retailVtableAddress": "0x01231710",
+        "donorNameTrusted": false
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x0099A380",
+      "currentName": "CBaseIntelligentPointer::CBaseIntelligentPointer",
+      "sourceDecompileSha256": "08c8c54bd409b5bc8b48a0a30024524f363d18041efdcff03e5cbe3b3c9e8f56",
+      "luaFile": "0099A380.lua",
+      "luaSha256": "F94C062BAC25A71DBC1FEADA0CEF4C31F7993D778E7CDBD8E3ED2A82001FE0A2",
+      "semanticPattern": {
+        "kind": "opaque-pointer-token-initializer",
+        "complete": true,
+        "vtableOffset": "0x0",
+        "payloadOffset": "0x4",
+        "fieldWidth": 4,
+        "retailVtableAddress": "0x0129A7D8",
+        "payloadValue": 0,
         "donorNameTrusted": false
       },
       "parentInitializerEvidence": null,

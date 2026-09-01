@@ -8,8 +8,8 @@
     "consumerCalls": 1437,
     "directDependencyCalls": 4967,
     "directDependencyTargets": 206,
-    "semanticPatterns": 27,
-    "luaEmissionReady": 27,
+    "semanticPatterns": 28,
+    "luaEmissionReady": 28,
     "resolvedParentInitializers": 2,
     "resolvedInterfaceCalls": 273,
     "resolvedInterfaceMethods": 62,
@@ -6009,9 +6009,20 @@
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "opaque-pointer-token-initializer",
+          "complete": true,
+          "vtableOffset": "0x0",
+          "payloadOffset": "0x4",
+          "fieldWidth": 4,
+          "retailVtableAddress": "0x0129A7D8",
+          "payloadValue": 0,
+          "donorNameTrusted": false
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00CD4470",

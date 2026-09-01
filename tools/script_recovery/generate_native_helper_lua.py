@@ -249,6 +249,17 @@ def emit_vtable_token_initializer(helper: dict[str, Any], pattern: dict[str, Any
     ])
 
 
+def emit_pointer_token_initializer(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
+    return "\n".join([
+        f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+        "-- Initialize an opaque host-owned pointer token with its exact empty payload state.",
+        "return function(initialize_token)",
+        f"    return initialize_token({int(pattern['retailVtableAddress'], 0)}, "
+        f"{int(pattern['payloadOffset'], 0)}, {pattern['payloadValue']})",
+        "end", "",
+    ])
+
+
 def emit_reference_counted_token_destructor(helper: dict[str, Any],
                                             pattern: dict[str, Any]) -> str:
     return "\n".join([
@@ -356,6 +367,7 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
                                           "optional-resource-script-thing-return",
                                           "destroy-and-zero-field",
                                           "opaque-vtable-token-initializer",
+                                          "opaque-pointer-token-initializer",
                                           "reference-counted-token-destructor",
                                           "reference-counted-script-token-destructor",
                                           "aggregate-owned-container-destructor"}
@@ -389,6 +401,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
             text = emit_destroy_and_zero(helper, pattern)
         elif pattern["kind"] == "opaque-vtable-token-initializer":
             text = emit_vtable_token_initializer(helper, pattern)
+        elif pattern["kind"] == "opaque-pointer-token-initializer":
+            text = emit_pointer_token_initializer(helper, pattern)
         elif pattern["kind"] == "reference-counted-token-destructor":
             text = emit_reference_counted_token_destructor(helper, pattern)
         elif pattern["kind"] == "reference-counted-script-token-destructor":

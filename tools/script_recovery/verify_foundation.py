@@ -117,28 +117,28 @@ def verify(root: Path) -> dict[str, Any]:
     helper_lua_validation = load(root / "generated_helper_lua" / "validation.json")
     helper_lua_entries = helper_lua_manifest["entries"]
     check("evidence-complete native helpers execute as standalone Lua",
-          helper_lua_manifest["summary"] == {"emitted": 27, "deploymentEligible": 0} and
+          helper_lua_manifest["summary"] == {"emitted": 28, "deploymentEligible": 0} and
           {row["targetAddress"] for row in helper_lua_entries} == {
               "0x00CD23B9", "0x00CD3EF0", "0x00E1AD30", "0x00E1DF50",
               "0x00CB8930", "0x00DC3CF0", "0x00E32EF0", "0x00E32FE0", "0x00E33000", "0x00E33040", "0x00E37CF0", "0x00E9FEC0",
               "0x007E7380", "0x007E7390", "0x007E7410", "0x007E7490",
-              "0x004AA840", "0x006E7B80", "0x007E74D0", "0x0099A2D0", "0x0099A2E0",
+              "0x004AA840", "0x006E7B80", "0x007E74D0", "0x0099A2D0", "0x0099A2E0", "0x0099A380",
               "0x00CBD510", "0x00CBED82", "0x00CD2770",
               "0x00F14250", "0x00F14270", "0x00F25840"} and
           all(not row["deploymentEligible"] for row in helper_lua_entries) and
           helper_lua_validation["summary"] == {
-              "helpers": 27, "passed": 27, "checks": 134, "complete": True},
+              "helpers": 28, "passed": 28, "checks": 135, "complete": True},
           {"manifest": helper_lua_manifest["summary"],
            "validation": helper_lua_validation["summary"]})
     readiness = load(root / "native_conversion_readiness.json")
     readiness_summary = readiness["summary"]
     archery = next(row for row in readiness["scripts"] if row["name"] == "V_ArcheryCompetition")
     check("generated helpers reduce the native conversion backlog",
-          readiness_summary["resolvedNativeHelperMethods"] == 25 and
-          readiness_summary["resolvedNativeHelperCalls"] == 950 and
+          readiness_summary["resolvedNativeHelperMethods"] == 26 and
+          readiness_summary["resolvedNativeHelperCalls"] == 992 and
           readiness_summary["scriptsWithResolvedNativeHelpers"] == 160 and
-          readiness_summary["unresolvedNativeHelperMethods"] == 128 and
-          readiness_summary["unresolvedNativeHelperCalls"] == 627 and
+          readiness_summary["unresolvedNativeHelperMethods"] == 127 and
+          readiness_summary["unresolvedNativeHelperCalls"] == 585 and
           readiness_summary["stages"] == {
               "manual-lua-reconstruction": 69, "map-native-helpers": 92} and
           len(archery["resolvedNativeHelpers"]) == 5 and

@@ -158,6 +158,18 @@ class NativeHelperDecompileTests(unittest.TestCase):
             "fieldOffset": "0x0", "fieldWidth": 4,
             "retailVtableAddress": "0x01231710", "donorNameTrusted": False})
 
+    def test_intelligent_pointer_constructor_preserves_empty_payload(self):
+        body = ("*(undefined ***)this = "
+                "&PTR__vector_deleting_destructor__0129a7d8; "
+                "*(undefined4 *)(this + 4) = 0;")
+        pattern = semantic_patterns(
+            body, [], [], "CBaseIntelligentPointer::CBaseIntelligentPointer")[0]
+        self.assertEqual(pattern, {
+            "kind": "opaque-pointer-token-initializer", "complete": True,
+            "vtableOffset": "0x0", "payloadOffset": "0x4", "fieldWidth": 4,
+            "retailVtableAddress": "0x0129A7D8", "payloadValue": 0,
+            "donorNameTrusted": False})
+
     def test_reference_counted_token_destructor_preserves_full_teardown(self):
         body = ("piVar1 = *(int **)(this + 0xc); *piVar1 = *piVar1 + -1; "
                 "if (**(int **)(this + 0xc) == 0) { destroy(); free(); } "

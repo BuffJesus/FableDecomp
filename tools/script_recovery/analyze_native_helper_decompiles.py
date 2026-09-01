@@ -283,6 +283,17 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
                 "retailVtableAddress": f"0x{match.group(1).upper()}",
                 "donorNameTrusted": False,
             })
+    if (current_name == "CBaseIntelligentPointer::CBaseIntelligentPointer"
+            and not direct and not indirect
+            and "*(undefined4 *)(this + 4) = 0" in text):
+        match = re.search(r"\*\(undefined \*\*\*\)this = &PTR_.*_([0-9a-fA-F]{8});", text)
+        if match:
+            patterns.append({
+                "kind": "opaque-pointer-token-initializer", "complete": True,
+                "vtableOffset": "0x0", "payloadOffset": "0x4", "fieldWidth": 4,
+                "retailVtableAddress": f"0x{match.group(1).upper()}",
+                "payloadValue": 0, "donorNameTrusted": False,
+            })
     if (current_name == "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
             and len(direct) == 2 and not indirect
             and [call.get("target") for call in direct] == ["0x00BFE9BC", "0x0099A430"]
@@ -474,6 +485,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
                 "optional-resource-script-thing-return",
                 "destroy-and-zero-field",
                 "opaque-vtable-token-initializer",
+                "opaque-pointer-token-initializer",
                 "reference-counted-token-destructor",
                 "reference-counted-script-token-destructor",
                 "aggregate-owned-container-destructor",

@@ -256,6 +256,14 @@ populated cases execute with opaque tokens. Totals reach twenty-seven helpers / 
 resolved calls across 160 scripts, and 128 helper labels / 627 calls left; 69 scripts now advance from
 helper mapping to manual Lua reconstruction.
 
+The next highest-impact object-lifetime target, `CBaseIntelligentPointer::CBaseIntelligentPointer @
+0x0099A380`, is instruction-complete and has no dependencies: it writes retail vtable `0x0129A7D8`
+at offset zero and clears the payload at `+4`. The generated Lua uses one opaque host initializer that
+receives the exact vtable, payload offset, and zero value, preserving both writes without exposing a
+native pointer. Its offline trace validates the returned host token and initialization tuple. Totals
+reach twenty-eight helpers / 135 checks, 992 resolved calls across 160 scripts, and 127 helper labels /
+585 calls left. Deployment eligibility remains zero until complete parent-script reconstruction.
+
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`
 interface field, and the offset must exist in the dumped retail vtable. Helper analysis exposed 29
