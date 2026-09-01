@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "CParticleEmitter_Dtor_8",
           "offset": 303
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00DCC660",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00DCC770",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_GuildTrainingScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_GuildTrainingScript::Main",
-          "offset": 146
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -317,8 +292,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 14559
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 14539
         },
         {
           "operation": "call",
@@ -332,8 +307,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 16020
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 16000
         },
         {
           "operation": "call",
@@ -682,16 +657,6 @@
       "role": "Init",
       "address": "0x00DCC140",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_OrchardFarmRaidScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_OrchardFarmRaidScript::Init",
-          "offset": 148
-        },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
@@ -1045,13 +1010,7 @@
     {
       "role": "OnPersist",
       "address": "0x00DCC720",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00dcc720",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "ShownCombatMultiplierTutorial",

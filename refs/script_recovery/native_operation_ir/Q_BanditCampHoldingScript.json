@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,11 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00D12B60",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d12b60",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -85,16 +75,6 @@
       "role": "Main",
       "address": "0x00D129C0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_BanditCampHoldingScriptScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_BanditCampHoldingScriptScript::Main",
-          "offset": 157
-        },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
@@ -142,8 +122,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 3952
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 3932
         },
         {
           "operation": "call",
@@ -234,13 +214,7 @@
     {
       "role": "Init",
       "address": "0x00D129B0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d129b0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [
@@ -255,13 +229,7 @@
     {
       "role": "OnPersist",
       "address": "0x00D12C20",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d12c20",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "PathReached"

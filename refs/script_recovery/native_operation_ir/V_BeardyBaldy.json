@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "CParticleEmitter___CParticleEmitter_Variant",
           "offset": 303
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00E4F730",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00E4FA20",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CV_BeardyBaldyScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_BeardyBaldyScript::Main",
-          "offset": 144
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -352,13 +327,13 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 24498
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 24478
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 24556
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 24536
         },
         {
           "operation": "call",
@@ -625,13 +600,7 @@
     {
       "role": "Init",
       "address": "0x00E4F620",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e4f620",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "",
@@ -740,13 +709,7 @@
     {
       "role": "OnPersist",
       "address": "0x00E4F7F0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e4f7f0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "QuestFinished",

@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "CParticleEmitter___CParticleEmitter_WithMemFree",
           "offset": 303
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00E37730",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,11 +75,6 @@
       "role": "Main",
       "address": "0x00E377D0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e377d0",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -485,16 +465,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CV_AssassinAttacksScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_AssassinAttacksScript::Init",
-          "offset": 148
-        },
-        {
-          "operation": "call",
           "callee": "resize",
           "offset": 1092
         },
@@ -547,13 +517,7 @@
     {
       "role": "OnPersist",
       "address": "0x00E39780",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e39780",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "AssassinObjectCount",

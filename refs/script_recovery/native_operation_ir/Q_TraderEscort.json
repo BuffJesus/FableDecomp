@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CThingSwitch::_vector_deleting_destructor_",
-          "offset": 163
-        },
-        {
-          "operation": "call",
-          "callee": "CTimer",
-          "offset": 723
+          "callee": "CTimer::~CTimer",
+          "offset": 714
         },
         {
           "operation": "call",
@@ -41,16 +36,6 @@
       "role": "RegisterMain",
       "address": "0x00E00C20",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -95,16 +80,6 @@
       "role": "Main",
       "address": "0x00E00DB0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CV_TravellingHeroesScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_TravellingHeroesScript::Main",
-          "offset": 149
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -722,16 +697,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_TraderEscortScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_TraderEscortScript::Init",
-          "offset": 145
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 2564
         },
@@ -1095,13 +1060,7 @@
     {
       "role": "OnPersist",
       "address": "0x00E00CE0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e00ce0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "IntroFinished",

@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00E8B8A0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00E8B9C0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CV_GhostGrannyNecklaceScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_GhostGrannyNecklaceScript::Main",
-          "offset": 152
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -369,13 +344,7 @@
     {
       "role": "Init",
       "address": "0x00E8B880",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e8b880",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [
@@ -425,13 +394,7 @@
     {
       "role": "OnPersist",
       "address": "0x00E8B960",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e8b960",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "HeroKnowsAboutNecklace",

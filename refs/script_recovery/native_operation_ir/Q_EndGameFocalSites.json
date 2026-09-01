@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "CParticleEmitter_Dtor_3",
           "offset": 303
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00D2A950",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,11 +75,6 @@
       "role": "Main",
       "address": "0x00D2AA40",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d2aa40",
-          "offset": 106
-        },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
@@ -152,8 +132,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 12753
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 12733
         },
         {
           "operation": "call",
@@ -752,8 +732,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 55542
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 55522
         },
         {
           "operation": "call",
@@ -762,8 +742,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 55864
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 55844
         },
         {
           "operation": "call",
@@ -777,13 +757,13 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 56634
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 56614
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 57105
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 57085
         },
         {
           "operation": "call",
@@ -842,18 +822,18 @@
         },
         {
           "operation": "call",
-          "callee": "CCharString",
-          "offset": 61849
+          "callee": "CCharString::~CCharString",
+          "offset": 61835
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 62793
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 62773
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 62889
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 62869
         }
       ],
       "indirectCalls": [
@@ -1700,11 +1680,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "FUN_00d2a8a0",
-          "offset": 18
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 227
         }
@@ -1746,13 +1721,7 @@
     {
       "role": "OnPersist",
       "address": "0x00D2AA10",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d2aa10",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "QuestStartScreenShown"

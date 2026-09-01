@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,11 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00D50760",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d50760",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -85,11 +75,6 @@
       "role": "Main",
       "address": "0x00D50800",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d50800",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -248,16 +233,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_GuildTrainingDepartureScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_GuildTrainingDepartureScript::Init",
-          "offset": 156
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 512
         },
@@ -327,13 +302,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

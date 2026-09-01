@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
-          "callee": "CSystemManager",
-          "offset": 320
+          "callee": "CSystemManager::~CSystemManager",
+          "offset": 303
         },
         {
           "operation": "call",
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00E39AA0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,11 +75,6 @@
       "role": "Main",
       "address": "0x00E39B40",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e39b40",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -467,16 +447,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CV_BordelloScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_BordelloScript::Init",
-          "offset": 141
-        },
-        {
-          "operation": "call",
           "callee": "NHeroInformationScreens::CBase::CBase",
           "offset": 888
         },
@@ -520,13 +490,7 @@
     {
       "role": "OnPersist",
       "address": "0x00E3B8F0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e3b8f0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "HadSex",

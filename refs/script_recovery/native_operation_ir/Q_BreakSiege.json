@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00D1CF00",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,11 +75,6 @@
       "role": "Main",
       "address": "0x00D1D100",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d1d100",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
@@ -377,8 +357,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 20957
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 20937
         },
         {
           "operation": "call",
@@ -609,16 +589,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_BreakSiegeScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_BreakSiegeScript::Init",
-          "offset": 143
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 1536
         },
@@ -777,13 +747,7 @@
     {
       "role": "OnPersist",
       "address": "0x00D1CFC0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d1cfc0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "BanditDemandsKnown",

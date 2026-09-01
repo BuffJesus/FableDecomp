@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "CParticleEmitter_Dtor_2",
           "offset": 303
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00D25520",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00D255E0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_DragonBossFightScript::Main",
-          "offset": 79
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_DragonBossFightScript::Main",
-          "offset": 147
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -252,16 +227,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_DragonBossFightScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_DragonBossFightScript::Init",
-          "offset": 148
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 661
         },
@@ -311,13 +276,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

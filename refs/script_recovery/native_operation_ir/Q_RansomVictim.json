@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
-          "callee": "CQ_RansomVictimScript",
-          "offset": 336
+          "callee": "NScript::CQ_RansomVictimScript::~CQ_RansomVictimScript",
+          "offset": 303
         },
         {
           "operation": "call",
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00DE0790",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00DE0850",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_RansomVictimScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_RansomVictimScript::Main",
-          "offset": 145
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -522,8 +497,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 33417
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 33397
         }
       ],
       "indirectCalls": [
@@ -876,16 +851,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_RansomVictimScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_RansomVictimScript::Init",
-          "offset": 145
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 2621
         },
@@ -1112,13 +1077,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

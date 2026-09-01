@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00EA2DE0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,21 +75,6 @@
       "role": "Main",
       "address": "0x00EA2E80",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "block",
-          "offset": 35
-        },
-        {
-          "operation": "call",
-          "callee": "block",
-          "offset": 95
-        },
-        {
-          "operation": "call",
-          "callee": "FUN_00ea2e80",
-          "offset": 140
-        },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
@@ -542,16 +512,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CV_LostTraderScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_LostTraderScript::Init",
-          "offset": 143
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 626
         },
@@ -605,13 +565,7 @@
     {
       "role": "OnPersist",
       "address": "0x00EA5930",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00ea5930",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "g_bTraderHit"

@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00CF06F0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,11 +75,6 @@
       "role": "Main",
       "address": "0x00CF0790",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cf0790",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
@@ -247,8 +227,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 10102
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 10082
         }
       ],
       "indirectCalls": [
@@ -408,13 +388,7 @@
     {
       "role": "Init",
       "address": "0x00CF06D0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cf06d0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [
@@ -449,13 +423,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

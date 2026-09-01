@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
-          "offset": 179
-        },
-        {
-          "operation": "call",
-          "callee": "CTimer",
-          "offset": 322
+          "callee": "CTimer::~CTimer",
+          "offset": 313
         },
         {
           "operation": "call",
@@ -41,11 +36,6 @@
       "role": "RegisterMain",
       "address": "0x00DD2BC0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00dd2bc0",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,21 +80,6 @@
       "role": "Main",
       "address": "0x00DD2CE0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "block",
-          "offset": 35
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_PrisonEscapeRescueMotherScript::Main",
-          "offset": 140
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_PrisonEscapeRescueMotherScript::Main",
-          "offset": 218
-        },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
@@ -769,16 +744,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_PrisonEscapeRescueMotherScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_PrisonEscapeRescueMotherScript::Init",
-          "offset": 158
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 2403
         },
@@ -1104,13 +1069,7 @@
     {
       "role": "OnPersist",
       "address": "0x00DD2C80",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00dd2c80",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "CurrentTask",

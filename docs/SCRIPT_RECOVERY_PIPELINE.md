@@ -143,6 +143,13 @@ speculative ports. `compare_seed_native_ir.py` correlates those
 facts with reconstructed bindings, literals, and persistence keys across all six packages; results and
 known parent-vs-entity scope limits are documented in `docs/SEED_NATIVE_OPERATION_COMPARISON.md`.
 
+Direct-call extraction starts at the decompiled function body's opening brace. This prevents the
+function declaration itself from being misclassified as a self-call, and Ghidra p-code operators such
+as `SUB41` and `CONCAT44` are retained as expressions rather than invented native dependencies. After
+regenerating all 161 artifacts, the readiness gate has zero opaque callees: all 161 scripts are now in
+the explicit `map-native-helpers` stage, including every non-quest class. Helper mapping and
+control-flow reconstruction remain required; zero opaque callees does not by itself make a Lua port.
+
 The retail `CGameScriptInterface` vtable base at `0x01260F0C` is now queried directly by
 `DumpVtableSlots.java`. `VerifyScriptInterfaceField.java` independently proves for all 161 allocators
 that the fastcall `EDX` interface argument reaches script-object offset `+0x40`, either directly or

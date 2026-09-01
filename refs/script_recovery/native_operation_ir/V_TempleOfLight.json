@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00EDAE70",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00EDB190",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CV_TempleOfLightScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_TempleOfLightScript::Main",
-          "offset": 146
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -422,8 +397,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 30008
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 29988
         },
         {
           "operation": "call",
@@ -492,8 +467,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 36976
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 36956
         },
         {
           "operation": "call",
@@ -930,13 +905,7 @@
     {
       "role": "Init",
       "address": "0x00EDAE20",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00edae20",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [
@@ -1056,13 +1025,7 @@
     {
       "role": "OnPersist",
       "address": "0x00EDAF30",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00edaf30",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "DonationTotal",

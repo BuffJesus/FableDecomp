@@ -1,11 +1,24 @@
 import unittest
 from pathlib import Path
 
-from tools.script_recovery.extract_native_operation_ir import extract, indirect_calls
+from tools.script_recovery.extract_native_operation_ir import calls, extract, indirect_calls
 from tools.script_recovery.compare_seed_native_ir import compare
 
 
 class NativeOperationIRTests(unittest.TestCase):
+    def test_function_declaration_is_not_counted_as_self_call(self):
+        rows = calls("\nvoid FUN_00cbd4e0(void)\n\n{\n  RealHelper();\n  return;\n}\n")
+        self.assertEqual([row["callee"] for row in rows], ["RealHelper"])
+
+    def test_ghidra_pcode_operators_are_not_native_calls(self):
+        rows = calls("void Main(void) { x = SUB41(value, 0); y = CONCAT44(a, b); RealHelper(); }")
+        self.assertEqual([row["callee"] for row in rows], ["RealHelper"])
+
+    def test_destructor_name_retains_scope_and_tilde(self):
+        rows = calls("void Main(void) { C3DClothPrimitive::~C3DClothPrimitive(ptr); }")
+        self.assertEqual([row["callee"] for row in rows],
+                         ["C3DClothPrimitive::~C3DClothPrimitive"])
+
     def test_indirect_call_retains_vtable_offset(self):
         rows = indirect_calls("(**(code **)(*DAT_0143e8f8 + 0x168))(thing);")
         self.assertEqual(rows[0]["vtableOffset"], "0x168")

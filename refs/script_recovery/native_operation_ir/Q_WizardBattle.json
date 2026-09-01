@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
-          "callee": "CHTG_Audience",
-          "offset": 354
+          "callee": "NScript::CQ_HangingTreeGoodScript::CHTG_Audience::~CHTG_Audience",
+          "offset": 303
         },
         {
           "operation": "call",
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00E1A8D0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00E1A990",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CV_MurderTwistScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_MurderTwistScript::Main",
-          "offset": 144
-        },
         {
           "operation": "call",
           "callee": "CV_ChickenKickingScript::Init",
@@ -396,16 +371,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_WizardBattleScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_WizardBattleScript::Init",
-          "offset": 145
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 432
         },
@@ -440,13 +405,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

@@ -13,18 +13,13 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CThingSwitch::_vector_deleting_destructor_",
-          "offset": 163
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 275
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 295
-        },
-        {
-          "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 390
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 353
         },
         {
           "operation": "call",
@@ -46,16 +41,6 @@
       "role": "RegisterMain",
       "address": "0x00D2F730",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -100,16 +85,6 @@
       "role": "Main",
       "address": "0x00D2F7F0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CV_GhostGrannyNecklaceScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_GhostGrannyNecklaceScript::Main",
-          "offset": 152
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -296,13 +271,7 @@
     {
       "role": "Init",
       "address": "0x00D2F710",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d2f710",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [
@@ -342,13 +311,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

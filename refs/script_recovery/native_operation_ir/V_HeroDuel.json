@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00E98700",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00E987C0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CV_HeroDuelScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_HeroDuelScript::Main",
-          "offset": 141
-        },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
@@ -307,11 +282,6 @@
         },
         {
           "operation": "call",
-          "callee": "CONCAT13",
-          "offset": 18463
-        },
-        {
-          "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
           "offset": 21023
         },
@@ -342,11 +312,6 @@
         },
         {
           "operation": "call",
-          "callee": "CONCAT13",
-          "offset": 22764
-        },
-        {
-          "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
           "offset": 25376
         },
@@ -362,11 +327,6 @@
         },
         {
           "operation": "call",
-          "callee": "CONCAT13",
-          "offset": 25828
-        },
-        {
-          "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
           "offset": 26383
         },
@@ -374,11 +334,6 @@
           "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 26489
-        },
-        {
-          "operation": "call",
-          "callee": "CONCAT13",
-          "offset": 26677
         },
         {
           "operation": "call",
@@ -646,13 +601,7 @@
     {
       "role": "Init",
       "address": "0x00E986D0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e986d0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [
@@ -732,13 +681,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
-          "offset": 179
-        },
-        {
-          "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 333
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 313
         },
         {
           "operation": "call",
@@ -41,16 +36,6 @@
       "role": "RegisterMain",
       "address": "0x00E18570",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -95,16 +80,6 @@
       "role": "Main",
       "address": "0x00E18630",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_WhiteBalverineWWScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_WhiteBalverineWWScript::Main",
-          "offset": 149
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -232,8 +207,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 12433
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 12413
         },
         {
           "operation": "call",
@@ -322,8 +297,8 @@
         },
         {
           "operation": "call",
-          "callee": "CPhysicsMeshInfo",
-          "offset": 20733
+          "callee": "CPhysicsMeshInfo::~CPhysicsMeshInfo",
+          "offset": 20714
         },
         {
           "operation": "call",
@@ -332,8 +307,8 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 20854
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 20817
         },
         {
           "operation": "call",
@@ -382,13 +357,13 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 24946
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 24909
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 25075
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 25055
         },
         {
           "operation": "call",
@@ -412,8 +387,8 @@
         },
         {
           "operation": "call",
-          "callee": "CCharString",
-          "offset": 26451
+          "callee": "CCharString::~CCharString",
+          "offset": 26437
         },
         {
           "operation": "call",
@@ -738,16 +713,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_SecretPassageScript::Init",
-          "offset": 79
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_SecretPassageScript::Init",
-          "offset": 145
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 766
         },
@@ -814,13 +779,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

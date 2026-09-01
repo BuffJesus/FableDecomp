@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00EEC7D0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -92,23 +77,13 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CGlobal_OpenChestScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_OpenChestScript::Main",
-          "offset": 147
-        },
-        {
-          "operation": "call",
           "callee": "CScriptThing::CScriptThing",
           "offset": 2450
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 2949
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 2929
         },
         {
           "operation": "call",
@@ -139,11 +114,6 @@
           "operation": "call",
           "callee": "CCarriedReadableDef::CCarriedReadableDef",
           "offset": 4420
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 4648
         },
         {
           "operation": "call",
@@ -187,13 +157,13 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 8513
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 8476
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 8613
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 8576
         },
         {
           "operation": "call",
@@ -252,13 +222,13 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 13593
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 13556
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 13713
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 13676
         },
         {
           "operation": "call",
@@ -282,13 +252,13 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 15928
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 15908
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 16035
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 16015
         }
       ],
       "indirectCalls": [
@@ -669,13 +639,7 @@
     {
       "role": "Init",
       "address": "0x00EEC7C0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00eec7c0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
@@ -684,13 +648,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

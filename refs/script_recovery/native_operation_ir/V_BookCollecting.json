@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "CParticleEmitter___CParticleEmitter_MeshFree",
           "offset": 303
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00E543B0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,11 +75,6 @@
       "role": "Main",
       "address": "0x00E54450",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e54450",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
@@ -196,11 +176,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CConversationData_InitializeConversations",
-          "offset": 177
-        },
-        {
-          "operation": "call",
           "callee": "std_vector_CConversation_Assign",
           "offset": 488
         },
@@ -284,13 +259,7 @@
     {
       "role": "OnPersist",
       "address": "0x00E54880",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e54880",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "DoneIntro",

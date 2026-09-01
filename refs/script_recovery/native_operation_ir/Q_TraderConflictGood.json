@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
-          "offset": 179
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 519
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00DFA390",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00DFA450",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_TraderConflictGoodScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_TraderConflictGoodScript::Main",
-          "offset": 151
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -272,8 +247,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 12307
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 12287
         },
         {
           "operation": "call",
@@ -282,8 +257,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 13063
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 13043
         },
         {
           "operation": "call",
@@ -462,8 +437,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 28558
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 28538
         },
         {
           "operation": "call",
@@ -877,16 +852,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_TraderConflictGoodScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_TraderConflictGoodScript::Init",
-          "offset": 151
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 2068
         },
@@ -1055,13 +1020,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

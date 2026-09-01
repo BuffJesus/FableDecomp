@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
-          "offset": 179
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 519
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00D5DCA0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,11 +75,6 @@
       "role": "Main",
       "address": "0x00D5DD40",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d5dd40",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -150,13 +130,7 @@
     {
       "role": "Init",
       "address": "0x00D5DC80",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d5dc80",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [
@@ -196,13 +170,7 @@
     {
       "role": "OnPersist",
       "address": "0x00D5E070",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d5e070",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "TestFinished",

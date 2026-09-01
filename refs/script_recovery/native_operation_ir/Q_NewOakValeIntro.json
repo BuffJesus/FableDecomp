@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "CParticleEmitter_Dtor_7",
           "offset": 303
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00DAACE0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,21 +75,6 @@
       "role": "Main",
       "address": "0x00DABAC0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "block",
-          "offset": 35
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CPersonalScript_GlobalThingsScript::Main",
-          "offset": 139
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CPersonalScript_GlobalThingsScript::Main",
-          "offset": 218
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -713,16 +683,6 @@
       "role": "Init",
       "address": "0x00DAADD0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "branches",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "Script_Villager_Reputation_Dialog",
-          "offset": 164
-        },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
@@ -1654,13 +1614,7 @@
     {
       "role": "OnPersist",
       "address": "0x00DAADA0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00daada0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "AttackOver"

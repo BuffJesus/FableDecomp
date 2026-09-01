@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CThingSwitch::_vector_deleting_destructor_",
-          "offset": 163
-        },
-        {
-          "operation": "call",
-          "callee": "CTimer",
-          "offset": 284
+          "callee": "CTimer::~CTimer",
+          "offset": 275
         },
         {
           "operation": "call",
@@ -46,16 +41,6 @@
       "role": "RegisterMain",
       "address": "0x00D834E0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -100,16 +85,6 @@
       "role": "Main",
       "address": "0x00D835D0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsMotherScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsMotherScript::Main",
-          "offset": 148
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -227,8 +202,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 11086
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 11066
         },
         {
           "operation": "call",
@@ -312,16 +287,6 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 18750
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 18785
-        },
-        {
-          "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
           "offset": 18912
         },
@@ -382,8 +347,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 23421
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 23401
         }
       ],
       "indirectCalls": [
@@ -699,16 +664,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsGuildmasterScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsGuildmasterScript::Init",
-          "offset": 153
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 722
         },
@@ -753,13 +708,7 @@
     {
       "role": "OnPersist",
       "address": "0x00D835A0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d835a0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "PlayedMotherCS"

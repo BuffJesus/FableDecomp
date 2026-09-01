@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00F013C0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00F01480",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CCS_PlayCutsceneScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CCS_PlayCutsceneScript::Main",
-          "offset": 146
-        },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
@@ -167,8 +142,8 @@
         },
         {
           "operation": "call",
-          "callee": "CPhysicsMeshInfo",
-          "offset": 6842
+          "callee": "CPhysicsMeshInfo::~CPhysicsMeshInfo",
+          "offset": 6823
         },
         {
           "operation": "call",
@@ -182,8 +157,8 @@
         },
         {
           "operation": "call",
-          "callee": "CPhysicsMeshInfo",
-          "offset": 7235
+          "callee": "CPhysicsMeshInfo::~CPhysicsMeshInfo",
+          "offset": 7216
         },
         {
           "operation": "call",
@@ -299,13 +274,7 @@
     {
       "role": "Init",
       "address": "0x00CBD4D0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4d0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
@@ -314,13 +283,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

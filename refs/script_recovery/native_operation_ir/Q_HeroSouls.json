@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00D78520",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00D78670",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsScript::Main",
-          "offset": 142
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -214,16 +189,6 @@
           "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 14540
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 15162
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 15196
         },
         {
           "operation": "call",
@@ -362,8 +327,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 28575
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 28555
         },
         {
           "operation": "call",
@@ -697,11 +662,6 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 61521
-        },
-        {
-          "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
           "offset": 61635
         },
@@ -744,11 +704,6 @@
           "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 63465
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 64249
         },
         {
           "operation": "call",
@@ -797,8 +752,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 69021
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 69001
         },
         {
           "operation": "call",
@@ -1717,13 +1672,7 @@
     {
       "role": "Init",
       "address": "0x00D78500",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d78500",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [
@@ -1763,13 +1712,7 @@
     {
       "role": "OnPersist",
       "address": "0x00D785E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d785e0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "HeardFirstBriarRoseMessage",

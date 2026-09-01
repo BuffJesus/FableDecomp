@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "CTCInventoryItem::OnDie",
           "offset": 303
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00E7E150",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00E7E370",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CV_FishingCompetitionScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_FishingCompetitionScript::Main",
-          "offset": 151
-        },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
@@ -263,16 +238,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CV_FishingCompetitionScript::Init",
-          "offset": 166
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_FishingCompetitionScript::Init",
-          "offset": 237
-        },
-        {
-          "operation": "call",
           "callee": "rand",
           "offset": 1321
         },
@@ -326,13 +291,7 @@
     {
       "role": "OnPersist",
       "address": "0x00E7E210",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e7e210",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "Winner",

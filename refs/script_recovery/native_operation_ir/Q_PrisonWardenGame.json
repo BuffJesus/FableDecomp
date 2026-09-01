@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
-          "offset": 179
-        },
-        {
-          "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 333
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 313
         },
         {
           "operation": "call",
@@ -41,16 +36,6 @@
       "role": "RegisterMain",
       "address": "0x00DDDD80",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -95,11 +80,6 @@
       "role": "Main",
       "address": "0x00DDDE20",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00ddde20",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -407,16 +387,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CChunkedFile",
-          "offset": 90
-        },
-        {
-          "operation": "call",
-          "callee": "CChunkedFile",
-          "offset": 146
-        },
-        {
-          "operation": "call",
           "callee": "NHeroInformationScreens::CBase::CBase",
           "offset": 378
         },
@@ -465,13 +435,7 @@
     {
       "role": "OnPersist",
       "address": "0x00DDDCD0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00dddcd0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
-          "offset": 179
-        },
-        {
-          "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 333
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 313
         },
         {
           "operation": "call",
@@ -41,16 +36,6 @@
       "role": "RegisterMain",
       "address": "0x00E9FC10",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -95,16 +80,6 @@
       "role": "Main",
       "address": "0x00E9FCD0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CV_KnotholeGladeGatesScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_KnotholeGladeGatesScript::Main",
-          "offset": 151
-        },
         {
           "operation": "call",
           "callee": "CQ_GuildTrainingScript::CMeleeApprentice::Init",
@@ -260,13 +235,7 @@
     {
       "role": "Init",
       "address": "0x00CBD4D0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4d0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
@@ -275,13 +244,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

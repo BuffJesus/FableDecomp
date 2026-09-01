@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
-          "callee": "CV_FisticuffsClubScript",
-          "offset": 338
+          "callee": "NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript",
+          "offset": 303
         },
         {
           "operation": "call",
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00E820D0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00E82220",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CV_FisticuffsClubScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_FisticuffsClubScript::Main",
-          "offset": 147
-        },
         {
           "operation": "call",
           "callee": "InitialiseVariables",
@@ -320,16 +295,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CChunkedFile",
-          "offset": 90
-        },
-        {
-          "operation": "call",
-          "callee": "CChunkedFile",
-          "offset": 146
-        },
-        {
-          "operation": "call",
           "callee": "NHeroInformationScreens::CBase::CBase",
           "offset": 308
         },
@@ -378,13 +343,7 @@
     {
       "role": "OnPersist",
       "address": "0x00E82190",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e82190",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "CompletedKnotholePunchClub",

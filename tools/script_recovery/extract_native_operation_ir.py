@@ -11,11 +11,12 @@ from typing import Any
 
 
 STRING_RE = re.compile(r'"((?:[^"\\]|\\.)*)"')
-CALL_RE = re.compile(r'(?<![\w])((?:[A-Za-z_]\w*::)*[A-Za-z_]\w*)\s*\(')
+CALL_RE = re.compile(r'(?<![\w])((?:[A-Za-z_]\w*::)*(?:~?[A-Za-z_]\w*))\s*\(')
 STATE_WRITE_RE = re.compile(r'\*\([^)]*\*\)\([^\n]*?\+\s*(0x[0-9a-fA-F]+)\)\s*=\s*([^;]+);')
 INDIRECT_CALL_RE = re.compile(r'\(\*\*\(code \*\*\)\((.*?)\)\)\s*\(', re.DOTALL)
 VTABLE_OFFSET_RE = re.compile(r'\+\s*(0x[0-9a-fA-F]+|[0-9]+)\s*$')
 CONTROL_WORDS = {"if", "for", "while", "switch", "sizeof", "return"}
+GHIDRA_PCODE_RE = re.compile(r"^(?:SUB\d+|CONCAT\d+|ZEXT\d*|SEXT\d*|CARRY\d*|SCARRY\d*|SBORROW\d*)$")
 
 
 def strings(text: str) -> list[str]:
@@ -24,9 +25,16 @@ def strings(text: str) -> list[str]:
 
 def calls(text: str) -> list[dict[str, Any]]:
     result = []
+    # Ghidra's decompile text includes the function declaration before the opening
+    # brace. CALL_RE also matches that declaration, which previously made every
+    # default-named lifecycle function appear to call itself (for example
+    # `void FUN_00cbd4e0(void)`). Only expressions in the function body are calls.
+    body_start = text.find("{")
     for match in CALL_RE.finditer(text):
+        if body_start >= 0 and match.start() < body_start:
+            continue
         callee = match.group(1)
-        if callee in CONTROL_WORDS:
+        if callee in CONTROL_WORDS or GHIDRA_PCODE_RE.match(callee):
             continue
         result.append({"operation": "call", "callee": callee, "offset": match.start()})
     return result

@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
-          "callee": "CV_SwordInTheStoneScript",
-          "offset": 339
+          "callee": "NScript::CV_SwordInTheStoneScript::~CV_SwordInTheStoneScript",
+          "offset": 303
         },
         {
           "operation": "call",
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00ED4B90",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00ED4D20",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CV_SwordInTheStoneScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_SwordInTheStoneScript::Main",
-          "offset": 148
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -409,16 +384,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CV_SwordInTheStoneScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_SwordInTheStoneScript::Init",
-          "offset": 148
-        },
-        {
-          "operation": "call",
           "callee": "operator_delete",
           "offset": 1169
         }
@@ -460,13 +425,7 @@
     {
       "role": "OnPersist",
       "address": "0x00ED4C50",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00ed4c50",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "HeroHasBeenToldSwordLegend",

@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "CParticleEmitter___CParticleEmitter_Simple",
           "offset": 303
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00E2AC90",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00E2B090",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CV_AmbushScamScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_AmbushScamScript::Main",
-          "offset": 143
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -447,8 +422,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 24684
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 24664
         }
       ],
       "indirectCalls": [
@@ -701,13 +676,7 @@
     {
       "role": "Init",
       "address": "0x00E2ABC0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e2abc0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "TEXT_QST_002_RANDOM_00",
@@ -908,13 +877,7 @@
     {
       "role": "OnPersist",
       "address": "0x00E2AD50",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e2ad50",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "QuestFinished",

@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00EECF70",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -89,18 +74,7 @@
     {
       "role": "Main",
       "address": "0x00EECF20",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00eecf20",
-          "offset": 18
-        },
-        {
-          "operation": "call",
-          "callee": "CONCAT31",
-          "offset": 346
-        }
-      ],
+      "calls": [],
       "indirectCalls": [
         {
           "operation": "indirect-call",
@@ -142,13 +116,7 @@
     {
       "role": "Init",
       "address": "0x00EECF10",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00eecf10",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [
@@ -163,13 +131,7 @@
     {
       "role": "OnPersist",
       "address": "0x00EED030",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00eed030",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "TimeDisplayActive"

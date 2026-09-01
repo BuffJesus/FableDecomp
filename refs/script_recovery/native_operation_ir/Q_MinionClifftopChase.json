@@ -13,18 +13,13 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CThingSwitch::_vector_deleting_destructor_",
-          "offset": 163
+          "callee": "CTimer::~CTimer",
+          "offset": 275
         },
         {
           "operation": "call",
-          "callee": "CTimer",
-          "offset": 284
-        },
-        {
-          "operation": "call",
-          "callee": "CTimer",
-          "offset": 329
+          "callee": "CTimer::~CTimer",
+          "offset": 320
         },
         {
           "operation": "call",
@@ -46,16 +41,6 @@
       "role": "RegisterMain",
       "address": "0x00DA33A0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -100,21 +85,6 @@
       "role": "Main",
       "address": "0x00DA34B0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "block",
-          "offset": 35
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_GuildTrainingScript::Main",
-          "offset": 140
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_GuildTrainingScript::Main",
-          "offset": 206
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -908,16 +878,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_MinionClifftopChaseScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_MinionClifftopChaseScript::Init",
-          "offset": 152
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 1488
         },
@@ -1090,13 +1050,7 @@
     {
       "role": "OnPersist",
       "address": "0x00DA3460",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00da3460",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "QuestStartScreened",

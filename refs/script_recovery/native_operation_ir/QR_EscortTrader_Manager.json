@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00E25690",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00E24E10",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQR_EscortTrader_ManagerScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQR_EscortTrader_ManagerScript::Main",
-          "offset": 154
-        },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
@@ -720,13 +695,7 @@
     {
       "role": "Init",
       "address": "0x00E24E00",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e24e00",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [
@@ -741,13 +710,7 @@
     {
       "role": "OnPersist",
       "address": "0x00E25750",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e25750",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "OrchardFarmTraderEscortCounter",

@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
-          "callee": "CPatchTesselationEdgeStrip",
-          "offset": 332
+          "callee": "CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip",
+          "offset": 303
         },
         {
           "operation": "call",
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00CFAEB0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00CFB080",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_AwakeningTheOracleScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_AwakeningTheOracleScript::Main",
-          "offset": 151
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -920,11 +895,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "FUN_00cfadd0",
-          "offset": 18
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 1188
         },
@@ -1058,13 +1028,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CFAF70",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cfaf70",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "PlayedLostBayCS",

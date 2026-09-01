@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CThingSwitch::_vector_deleting_destructor_",
-          "offset": 163
-        },
-        {
-          "operation": "call",
           "callee": "CDefendingCombatantInfo::CCombatWheel::ResetRings",
           "offset": 275
         },
@@ -46,16 +41,6 @@
       "role": "RegisterMain",
       "address": "0x00CE75B0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -100,11 +85,6 @@
       "role": "Main",
       "address": "0x00CE7670",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00ce7670",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -174,11 +154,6 @@
           "operation": "call",
           "callee": "CSubtitleRenderer::SetText",
           "offset": 64055
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 64293
         },
         {
           "operation": "call",
@@ -259,16 +234,6 @@
           "operation": "call",
           "callee": "CSubtitleRenderer::SetText",
           "offset": 70116
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 70317
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 70365
         },
         {
           "operation": "call",
@@ -542,16 +507,6 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 88425
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 88452
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 88486
         },
@@ -612,8 +567,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 94591
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 94571
         },
         {
           "operation": "call",
@@ -632,13 +587,13 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 95622
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 95602
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 95692
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 95672
         },
         {
           "operation": "call",
@@ -657,13 +612,13 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 97421
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 97401
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 97657
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 97637
         },
         {
           "operation": "call",
@@ -757,8 +712,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 108302
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 108282
         },
         {
           "operation": "call",
@@ -942,11 +897,6 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 129706
-        },
-        {
-          "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
           "offset": 129744
         },
@@ -979,11 +929,6 @@
           "operation": "call",
           "callee": "CSubtitleRenderer::SetText",
           "offset": 132438
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 132626
         },
         {
           "operation": "call",
@@ -1072,11 +1017,6 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 140934
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 140996
         },
@@ -1159,11 +1099,6 @@
           "operation": "call",
           "callee": "CSubtitleRenderer::SetText",
           "offset": 148598
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 148835
         },
         {
           "operation": "call",
@@ -1362,16 +1297,6 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 168350
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 168369
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 168399
         },
@@ -1439,11 +1364,6 @@
           "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 174134
-        },
-        {
-          "operation": "call",
-          "callee": "CONCAT13",
-          "offset": 175234
         },
         {
           "operation": "call",
@@ -1537,18 +1457,8 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 183432
-        },
-        {
-          "operation": "call",
           "callee": "CSubtitleRenderer::SetText",
           "offset": 183494
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 183731
         },
         {
           "operation": "call",
@@ -1667,18 +1577,8 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 195318
-        },
-        {
-          "operation": "call",
           "callee": "CSubtitleRenderer::SetText",
           "offset": 195401
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 195629
         },
         {
           "operation": "call",
@@ -1799,11 +1699,6 @@
           "operation": "call",
           "callee": "CSubtitleRenderer::SetText",
           "offset": 206899
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 207098
         },
         {
           "operation": "call",
@@ -1949,11 +1844,6 @@
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
           "offset": 220633
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 220719
         },
         {
           "operation": "call",
@@ -2117,11 +2007,6 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 235590
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 235656
         },
@@ -2269,11 +2154,6 @@
           "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 249822
-        },
-        {
-          "operation": "call",
-          "callee": "CONCAT13",
-          "offset": 250969
         },
         {
           "operation": "call",
@@ -2447,16 +2327,6 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 268883
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 268921
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 268949
         },
@@ -2554,11 +2424,6 @@
           "operation": "call",
           "callee": "CSubtitleRenderer::SetText",
           "offset": 278345
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 278544
         },
         {
           "operation": "call",
@@ -2702,11 +2567,6 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 291724
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 291747
         },
@@ -2714,11 +2574,6 @@
           "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 291867
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 291965
         },
         {
           "operation": "call",
@@ -3037,11 +2892,6 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 322536
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 322559
         },
@@ -3049,11 +2899,6 @@
           "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 322655
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 322730
         },
         {
           "operation": "call",
@@ -3149,11 +2994,6 @@
           "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 331018
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 331600
         },
         {
           "operation": "call",
@@ -3327,8 +3167,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 345685
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 345665
         },
         {
           "operation": "call",
@@ -3377,8 +3217,8 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 348641
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 348604
         },
         {
           "operation": "call",
@@ -3417,8 +3257,8 @@
         },
         {
           "operation": "call",
-          "callee": "CPhysicsMeshInfo",
-          "offset": 351884
+          "callee": "CPhysicsMeshInfo::~CPhysicsMeshInfo",
+          "offset": 351865
         },
         {
           "operation": "call",
@@ -3427,8 +3267,8 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 352017
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 351980
         },
         {
           "operation": "call",
@@ -3437,8 +3277,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 352478
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 352458
         },
         {
           "operation": "call",
@@ -3692,16 +3532,6 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 376302
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 376321
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 376345
         },
@@ -3789,16 +3619,6 @@
           "operation": "call",
           "callee": "CSubtitleRenderer::SetText",
           "offset": 383909
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 384131
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 384152
         },
         {
           "operation": "call",
@@ -3929,16 +3749,6 @@
           "operation": "call",
           "callee": "CSubtitleRenderer::SetText",
           "offset": 393591
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 393796
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 393832
         },
         {
           "operation": "call",
@@ -8339,11 +8149,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "FUN_00ce6cf0",
-          "offset": 18
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 3819
         },
@@ -9061,13 +8866,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CEF8E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cef8e0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "PostSavePosition",

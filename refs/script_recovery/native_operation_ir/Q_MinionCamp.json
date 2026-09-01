@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
-          "callee": "CV_FisticuffsClubScript",
-          "offset": 338
+          "callee": "NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript",
+          "offset": 303
         },
         {
           "operation": "call",
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00D9E520",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00D9E5E0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_MinionCampScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_MinionCampScript::Main",
-          "offset": 143
-        },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
@@ -327,16 +302,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_MinionCampScript::Init",
-          "offset": 79
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_MinionCampScript::Init",
-          "offset": 142
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 1996
         },
@@ -486,13 +451,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

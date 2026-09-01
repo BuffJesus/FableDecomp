@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00D03820",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,21 +75,6 @@
       "role": "Main",
       "address": "0x00D038E0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "block",
-          "offset": 35
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_BanditCampBossBattleScript::Main",
-          "offset": 140
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_BanditCampBossBattleScript::Main",
-          "offset": 213
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -811,16 +781,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_BanditCampBossBattleScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_BanditCampBossBattleScript::Init",
-          "offset": 153
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 1184
         },
@@ -955,13 +915,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

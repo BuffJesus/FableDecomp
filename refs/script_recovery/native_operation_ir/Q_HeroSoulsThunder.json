@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
-          "offset": 179
-        },
-        {
-          "operation": "call",
           "callee": "LTextTreeWalkThrough__Dtor",
           "offset": 313
         },
@@ -41,16 +36,6 @@
       "role": "RegisterMain",
       "address": "0x00D7AD70",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -95,16 +80,6 @@
       "role": "Main",
       "address": "0x00D7AE80",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsThunderScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsThunderScript::Main",
-          "offset": 149
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -162,8 +137,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 5154
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 5134
         },
         {
           "operation": "call",
@@ -547,16 +522,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CV_AssassinAttacksScript::CChestHidingAssassin::Init",
-          "offset": 85
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_AssassinAttacksScript::CChestHidingAssassin::Init",
-          "offset": 176
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 616
         },
@@ -585,13 +550,7 @@
     {
       "role": "OnPersist",
       "address": "0x00D7AE30",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d7ae30",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "PlayedThunderCS",

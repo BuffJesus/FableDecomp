@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "CParticleEmitter_Dtor",
           "offset": 303
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00CF9550",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,21 +75,6 @@
       "role": "Main",
       "address": "0x00F024C0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "block",
-          "offset": 35
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HangingTreeGoodScript::Main",
-          "offset": 139
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HangingTreeGoodScript::Main",
-          "offset": 207
-        },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
@@ -577,8 +547,8 @@
         },
         {
           "operation": "call",
-          "callee": "CCharString",
-          "offset": 37841
+          "callee": "CCharString::~CCharString",
+          "offset": 37827
         },
         {
           "operation": "call",
@@ -592,8 +562,8 @@
         },
         {
           "operation": "call",
-          "callee": "CCharString",
-          "offset": 38648
+          "callee": "CCharString::~CCharString",
+          "offset": 38634
         },
         {
           "operation": "call",
@@ -607,8 +577,8 @@
         },
         {
           "operation": "call",
-          "callee": "CCharString",
-          "offset": 39425
+          "callee": "CCharString::~CCharString",
+          "offset": 39411
         },
         {
           "operation": "call",
@@ -1104,16 +1074,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_AmbushTradersScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_AmbushTradersScript::Init",
-          "offset": 146
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 2511
         },
@@ -1512,13 +1472,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CF9610",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cf9610",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "QuestFailed",

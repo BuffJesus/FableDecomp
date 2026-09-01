@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
-          "offset": 179
-        },
-        {
-          "operation": "call",
-          "callee": "CTimer",
-          "offset": 322
+          "callee": "CTimer::~CTimer",
+          "offset": 313
         },
         {
           "operation": "call",
@@ -41,16 +36,6 @@
       "role": "RegisterMain",
       "address": "0x00D8DC00",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -95,21 +80,6 @@
       "role": "Main",
       "address": "0x00D8DD10",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "block",
-          "offset": 35
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HobbeCaveScript::Main",
-          "offset": 140
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HobbeCaveScript::Main",
-          "offset": 202
-        },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
@@ -529,11 +499,6 @@
           "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 31771
-        },
-        {
-          "operation": "call",
-          "callee": "CONCAT13",
-          "offset": 31978
         },
         {
           "operation": "call",
@@ -1031,16 +996,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_HobbeCaveScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HobbeCaveScript::Init",
-          "offset": 142
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 2905
         },
@@ -1409,13 +1364,7 @@
     {
       "role": "OnPersist",
       "address": "0x00D8DCC0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d8dcc0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "QuestStartScreened",

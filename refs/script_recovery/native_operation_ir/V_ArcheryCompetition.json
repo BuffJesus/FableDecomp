@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
-          "callee": "CV_ArcheryCompetitionScript",
-          "offset": 342
+          "callee": "NScript::CV_ArcheryCompetitionScript::~CV_ArcheryCompetitionScript",
+          "offset": 303
         },
         {
           "operation": "call",
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00E324A0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,11 +75,6 @@
       "role": "Main",
       "address": "0x00E32540",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e32540",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
@@ -838,13 +818,7 @@
     {
       "role": "Init",
       "address": "0x00E323B0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e323b0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [
         {
           "operation": "indirect-call",
@@ -953,13 +927,7 @@
     {
       "role": "OnPersist",
       "address": "0x00E37520",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e37520",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "QuestActivated",

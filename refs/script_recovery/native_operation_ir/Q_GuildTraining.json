@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
-          "offset": 179
-        },
-        {
-          "operation": "call",
-          "callee": "CTimer",
-          "offset": 322
+          "callee": "CTimer::~CTimer",
+          "offset": 313
         },
         {
           "operation": "call",
@@ -41,16 +36,6 @@
       "role": "RegisterMain",
       "address": "0x00D3BB50",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -97,21 +82,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "block",
-          "offset": 35
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_GuildTrainingScript::Main",
-          "offset": 140
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_GuildTrainingScript::Main",
-          "offset": 206
-        },
-        {
-          "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
           "offset": 3031
         },
@@ -122,8 +92,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 3645
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 3625
         },
         {
           "operation": "call",
@@ -587,8 +557,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 37158
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 37138
         },
         {
           "operation": "call",
@@ -1039,11 +1009,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "FUN_00d3b3d0",
-          "offset": 18
-        },
-        {
-          "operation": "call",
           "callee": "NScript::CGameflowScript::DeclareGossipCategories",
           "offset": 424
         }
@@ -1080,13 +1045,7 @@
     {
       "role": "OnPersist",
       "address": "0x00D3BC10",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d3bc10",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "GameState",

@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
-          "callee": "CActionTalkedTo",
-          "offset": 341
+          "callee": "NTCScriptedControl::CActionTalkedTo::~CActionTalkedTo",
+          "offset": 303
         },
         {
           "operation": "call",
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00EE4710",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,11 +75,6 @@
       "role": "Main",
       "address": "0x00EE47B0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00ee47b0",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -276,13 +256,7 @@
     {
       "role": "Init",
       "address": "0x00EE42A0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00ee42a0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "M_TG_LocationBalcony",
@@ -412,13 +386,7 @@
     {
       "role": "OnPersist",
       "address": "0x00EE5720",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00ee5720",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "TourGuideKilled",

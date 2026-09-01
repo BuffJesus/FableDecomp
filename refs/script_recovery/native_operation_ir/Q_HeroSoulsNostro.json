@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
-          "offset": 179
-        },
-        {
-          "operation": "call",
-          "callee": "CTimer",
-          "offset": 322
+          "callee": "CTimer::~CTimer",
+          "offset": 313
         },
         {
           "operation": "call",
@@ -41,16 +36,6 @@
       "role": "RegisterMain",
       "address": "0x00D87BA0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -95,16 +80,6 @@
       "role": "Main",
       "address": "0x00D87CB0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsNostroScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsNostroScript::Main",
-          "offset": 148
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -304,16 +279,6 @@
           "operation": "call",
           "callee": "CGuiVarTransferStruct::Add",
           "offset": 15866
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 16852
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 16885
         },
         {
           "operation": "call",
@@ -554,16 +519,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsNostroScript::Init",
-          "offset": 79
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsNostroScript::Init",
-          "offset": 147
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 752
         },
@@ -610,13 +565,7 @@
     {
       "role": "OnPersist",
       "address": "0x00D87C60",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d87c60",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "SummonerCount",

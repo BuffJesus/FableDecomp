@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
-          "offset": 179
-        },
-        {
-          "operation": "call",
           "callee": "LTextTreeWalkThrough_Destructor",
           "offset": 315
         },
@@ -41,16 +36,6 @@
       "role": "RegisterMain",
       "address": "0x00D84C20",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -95,16 +80,6 @@
       "role": "Main",
       "address": "0x00D84D60",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsGuildmasterScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsGuildmasterScript::Main",
-          "offset": 153
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -362,11 +337,6 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 22235
-        },
-        {
-          "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
           "offset": 22776
         },
@@ -379,11 +349,6 @@
           "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 23011
-        },
-        {
-          "operation": "call",
-          "callee": "CONCAT13",
-          "offset": 23981
         },
         {
           "operation": "call",
@@ -437,16 +402,6 @@
         },
         {
           "operation": "call",
-          "callee": "SUB41",
-          "offset": 28564
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 28594
-        },
-        {
-          "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
           "offset": 28753
         },
@@ -469,16 +424,6 @@
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
           "offset": 30319
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 30459
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 30491
         },
         {
           "operation": "call",
@@ -517,8 +462,8 @@
         },
         {
           "operation": "call",
-          "callee": "CCharString",
-          "offset": 32808
+          "callee": "CCharString::~CCharString",
+          "offset": 32794
         },
         {
           "operation": "call",
@@ -527,8 +472,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 33235
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 33215
         },
         {
           "operation": "call",
@@ -582,13 +527,13 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 39812
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 39792
         },
         {
           "operation": "call",
-          "callee": "CTimer",
-          "offset": 39897
+          "callee": "CTimer::~CTimer",
+          "offset": 39888
         }
       ],
       "indirectCalls": [
@@ -1126,16 +1071,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsGuildmasterScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsGuildmasterScript::Init",
-          "offset": 153
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 790
         },
@@ -1175,13 +1110,7 @@
     {
       "role": "OnPersist",
       "address": "0x00D84CE0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d84ce0",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "PlayedGuildMasterCS",

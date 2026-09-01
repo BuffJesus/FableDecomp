@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 331
         },
@@ -36,11 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00D009D0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d009d0",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -85,16 +75,6 @@
       "role": "Main",
       "address": "0x00D00AF0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_BanditCampScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_BanditCampScript::Main",
-          "offset": 143
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -466,16 +446,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_BanditCampScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_BanditCampScript::Init",
-          "offset": 143
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 1700
         },
@@ -667,13 +637,7 @@
     {
       "role": "OnPersist",
       "address": "0x00D00A90",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d00a90",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "Gate1Open",

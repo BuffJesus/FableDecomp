@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
-          "offset": 179
-        },
-        {
-          "operation": "call",
-          "callee": "CTimer",
-          "offset": 322
+          "callee": "CTimer::~CTimer",
+          "offset": 313
         },
         {
           "operation": "call",
@@ -41,16 +36,6 @@
       "role": "RegisterMain",
       "address": "0x00DF12E0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -95,16 +80,6 @@
       "role": "Main",
       "address": "0x00DF13A0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_SummoningTheShipScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_SummoningTheShipScript::Main",
-          "offset": 149
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -350,16 +325,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CV_LostTraderScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_LostTraderScript::Init",
-          "offset": 143
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 626
         },
@@ -418,13 +383,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CBD4E0",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cbd4e0",
-          "offset": 7
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],

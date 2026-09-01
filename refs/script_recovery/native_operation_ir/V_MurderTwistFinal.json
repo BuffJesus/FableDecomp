@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "CParticleEmitter___CParticleEmitter_0xb6ab0",
           "offset": 303
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00EAE980",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,11 +75,6 @@
       "role": "Main",
       "address": "0x00EAEA20",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00eaea20",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -343,16 +323,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CV_SwordInTheStoneScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_SwordInTheStoneScript::Init",
-          "offset": 148
-        },
-        {
-          "operation": "call",
           "callee": "CCarriedReadableDef::CCarriedReadableDef",
           "offset": 438
         },
@@ -363,8 +333,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 1175
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 1155
         },
         {
           "operation": "call",
@@ -378,8 +348,8 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 1450
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 1413
         }
       ],
       "indirectCalls": [],
@@ -401,13 +371,7 @@
     {
       "role": "OnPersist",
       "address": "0x00EB6520",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00eb6520",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "SheriffState",

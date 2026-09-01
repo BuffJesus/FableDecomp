@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CThingSwitch::_vector_deleting_destructor_",
-          "offset": 163
-        },
-        {
-          "operation": "call",
-          "callee": "CTimer",
-          "offset": 490
+          "callee": "CTimer::~CTimer",
+          "offset": 481
         },
         {
           "operation": "call",
@@ -41,16 +36,6 @@
       "role": "RegisterMain",
       "address": "0x00D7C740",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -95,16 +80,6 @@
       "role": "Main",
       "address": "0x00D7C890",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsArenaScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_HeroSoulsArenaScript::Main",
-          "offset": 147
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -322,11 +297,6 @@
         },
         {
           "operation": "call",
-          "callee": "CONCAT13",
-          "offset": 18633
-        },
-        {
-          "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
           "offset": 19215
         },
@@ -347,8 +317,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 20742
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 20722
         },
         {
           "operation": "call",
@@ -379,11 +349,6 @@
           "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 22834
-        },
-        {
-          "operation": "call",
-          "callee": "CONCAT13",
-          "offset": 23083
         },
         {
           "operation": "call",
@@ -452,11 +417,6 @@
         },
         {
           "operation": "call",
-          "callee": "CONCAT13",
-          "offset": 28071
-        },
-        {
-          "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
           "offset": 28653
         },
@@ -477,8 +437,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 29784
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 29764
         },
         {
           "operation": "call",
@@ -487,8 +447,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 30484
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 30464
         },
         {
           "operation": "call",
@@ -497,8 +457,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 31205
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 31185
         },
         {
           "operation": "call",
@@ -507,13 +467,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 31887
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 32394
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 31867
         },
         {
           "operation": "call",
@@ -544,11 +499,6 @@
           "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 34274
-        },
-        {
-          "operation": "call",
-          "callee": "CONCAT13",
-          "offset": 34621
         },
         {
           "operation": "call",
@@ -612,8 +562,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 41221
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 41201
         },
         {
           "operation": "call",
@@ -627,8 +577,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 42453
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 42433
         },
         {
           "operation": "call",
@@ -637,8 +587,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 43180
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 43160
         },
         {
           "operation": "call",
@@ -664,11 +614,6 @@
           "operation": "call",
           "callee": "free",
           "offset": 46121
-        },
-        {
-          "operation": "call",
-          "callee": "SUB41",
-          "offset": 46214
         },
         {
           "operation": "call",
@@ -1227,11 +1172,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "FUN_00f26b90",
-          "offset": 18
-        },
-        {
-          "operation": "call",
           "callee": "std_vector_Conversation_Assign3",
           "offset": 359
         },
@@ -1318,13 +1258,7 @@
     {
       "role": "OnPersist",
       "address": "0x00D7C800",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00d7c800",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "CreatureCount",

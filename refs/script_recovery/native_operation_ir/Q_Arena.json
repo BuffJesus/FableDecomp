@@ -13,13 +13,8 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
-          "callee": "CQ_ArenaScript",
-          "offset": 329
+          "callee": "NScript::CQ_ArenaScript::~CQ_ArenaScript",
+          "offset": 303
         },
         {
           "operation": "call",
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00CFAA50",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,11 +75,6 @@
       "role": "Main",
       "address": "0x00F0FB70",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00f0fb70",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
@@ -507,8 +487,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 46520
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 46500
         },
         {
           "operation": "call",
@@ -542,8 +522,8 @@
         },
         {
           "operation": "call",
-          "callee": "CPhysicsMeshInfo",
-          "offset": 49637
+          "callee": "CPhysicsMeshInfo::~CPhysicsMeshInfo",
+          "offset": 49618
         },
         {
           "operation": "call",
@@ -552,8 +532,8 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 49762
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 49725
         },
         {
           "operation": "call",
@@ -562,8 +542,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 50240
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 50220
         },
         {
           "operation": "call",
@@ -592,8 +572,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 52397
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 52377
         },
         {
           "operation": "call",
@@ -602,8 +582,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 53114
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 53094
         },
         {
           "operation": "call",
@@ -612,8 +592,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 53833
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 53813
         },
         {
           "operation": "call",
@@ -622,8 +602,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 54585
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 54565
         },
         {
           "operation": "call",
@@ -887,8 +867,8 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 72207
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 72170
         },
         {
           "operation": "call",
@@ -897,133 +877,133 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 72348
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 72311
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 72469
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 72432
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 72573
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 72553
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 72685
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 72648
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 72837
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 72817
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 72923
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 72886
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 73075
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 73055
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 73182
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 73145
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 73334
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 73314
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 73420
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 73383
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 73524
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 73504
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 73610
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 73573
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 73714
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 73694
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 74000
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 73963
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 74193
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 74156
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 74275
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 74255
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 74409
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 74372
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 74489
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 74469
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 74614
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 74577
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 74692
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 74672
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 74813
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 74776
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 74950
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 74930
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 75067
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 75030
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 75141
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 75121
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 75251
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 75214
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 75325
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 75305
         },
         {
           "operation": "call",
@@ -1307,8 +1287,8 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 93747
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 93710
         },
         {
           "operation": "call",
@@ -1317,118 +1297,118 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 93885
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 93848
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 93986
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 93949
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 94070
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 94050
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 94180
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 94143
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 94328
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 94308
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 94412
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 94375
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 94560
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 94540
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 94665
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 94628
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 94813
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 94793
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 94897
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 94860
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 94981
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 94961
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 95179
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 95142
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 95366
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 95329
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 95446
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 95426
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 95576
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 95539
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 95712
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 95692
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 95833
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 95796
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 95966
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 95946
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 96062
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 96025
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 96195
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 96175
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 96305
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 96268
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 96379
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 96359
         },
         {
           "operation": "call",
-          "callee": "CTimer",
-          "offset": 96446
+          "callee": "CTimer::~CTimer",
+          "offset": 96437
         },
         {
           "operation": "call",
@@ -1442,8 +1422,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 96945
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 96925
         },
         {
           "operation": "call",
@@ -1457,8 +1437,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 97750
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 97730
         },
         {
           "operation": "call",
@@ -1472,8 +1452,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 98603
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 98583
         },
         {
           "operation": "call",
@@ -1497,13 +1477,13 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 99700
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 99680
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 99783
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 99763
         },
         {
           "operation": "call",
@@ -1522,8 +1502,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 101508
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 101488
         },
         {
           "operation": "call",
@@ -1552,8 +1532,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 104039
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 104019
         },
         {
           "operation": "call",
@@ -1572,8 +1552,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 104553
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 104533
         },
         {
           "operation": "call",
@@ -1587,8 +1567,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 105386
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 105366
         },
         {
           "operation": "call",
@@ -1607,8 +1587,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 106822
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 106802
         },
         {
           "operation": "call",
@@ -1642,8 +1622,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 109267
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 109247
         },
         {
           "operation": "call",
@@ -1667,13 +1647,13 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 110429
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 110409
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 110520
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 110500
         },
         {
           "operation": "call",
@@ -1707,8 +1687,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 113025
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 113005
         },
         {
           "operation": "call",
@@ -1717,8 +1697,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 113768
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 113748
         },
         {
           "operation": "call",
@@ -1757,18 +1737,18 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 116025
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 115988
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 116190
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 116153
         },
         {
           "operation": "call",
-          "callee": "CPhysicsMeshInfo",
-          "offset": 116760
+          "callee": "CPhysicsMeshInfo::~CPhysicsMeshInfo",
+          "offset": 116741
         },
         {
           "operation": "call",
@@ -1837,8 +1817,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 120755
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 120735
         },
         {
           "operation": "call",
@@ -1862,13 +1842,13 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 121896
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 121876
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 121963
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 121943
         },
         {
           "operation": "call",
@@ -2232,18 +2212,18 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 174553
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 174516
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 174718
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 174681
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 174942
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 174905
         },
         {
           "operation": "call",
@@ -2272,28 +2252,23 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 177804
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 177767
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 177973
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 177936
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 178203
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 178166
         },
         {
           "operation": "call",
           "callee": "Compare",
           "offset": 178512
-        },
-        {
-          "operation": "call",
-          "callee": "CONCAT13",
-          "offset": 178654
         },
         {
           "operation": "call",
@@ -2307,18 +2282,18 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 179689
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 179652
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 179846
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 179809
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 180058
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 180021
         },
         {
           "operation": "call",
@@ -2357,8 +2332,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 182329
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 182309
         },
         {
           "operation": "call",
@@ -2372,8 +2347,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 183186
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 183166
         },
         {
           "operation": "call",
@@ -2412,13 +2387,13 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 185650
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 185630
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 186062
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 186025
         },
         {
           "operation": "call",
@@ -2447,8 +2422,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 188027
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 188007
         },
         {
           "operation": "call",
@@ -2462,8 +2437,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 188876
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 188856
         },
         {
           "operation": "call",
@@ -2477,8 +2452,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 189612
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 189592
         },
         {
           "operation": "call",
@@ -2502,13 +2477,13 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 190695
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 190675
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 190782
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 190762
         },
         {
           "operation": "call",
@@ -2527,8 +2502,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 193045
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 193025
         },
         {
           "operation": "call",
@@ -2622,8 +2597,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 197634
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 197614
         },
         {
           "operation": "call",
@@ -2637,8 +2612,8 @@
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 198559
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 198539
         },
         {
           "operation": "call",
@@ -2697,23 +2672,23 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 202918
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 202881
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 203084
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 203047
         },
         {
           "operation": "call",
-          "callee": "CWideScreenMagicPauseEntities",
-          "offset": 203240
+          "callee": "CWideScreenMagicPauseEntities::~CWideScreenMagicPauseEntities",
+          "offset": 203208
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 203396
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 203359
         },
         {
           "operation": "call",
@@ -2782,8 +2757,8 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 208809
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 208772
         },
         {
           "operation": "call",
@@ -2792,33 +2767,33 @@
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 209202
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 209165
         },
         {
           "operation": "call",
-          "callee": "C3DClothPrimitive",
-          "offset": 209378
+          "callee": "C3DClothPrimitive::~C3DClothPrimitive",
+          "offset": 209358
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 209553
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 209516
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 209706
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 209669
         },
         {
           "operation": "call",
-          "callee": "CWideScreenMagicPauseEntities",
-          "offset": 209854
+          "callee": "CWideScreenMagicPauseEntities::~CWideScreenMagicPauseEntities",
+          "offset": 209822
         },
         {
           "operation": "call",
-          "callee": "CScriptGameResourceObjectMovieBase",
-          "offset": 209998
+          "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+          "offset": 209961
         },
         {
           "operation": "call",
@@ -2827,8 +2802,8 @@
         },
         {
           "operation": "call",
-          "callee": "CTimer",
-          "offset": 210193
+          "callee": "CTimer::~CTimer",
+          "offset": 210184
         }
       ],
       "indirectCalls": [
@@ -5200,16 +5175,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "NScript::CQ_ArenaScript::Init",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQ_ArenaScript::Init",
-          "offset": 138
-        },
-        {
-          "operation": "call",
           "callee": "CCharString::CCharString",
           "offset": 1632
         },
@@ -5442,13 +5407,7 @@
     {
       "role": "OnPersist",
       "address": "0x00CFAB10",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00cfab10",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "ArenaState",

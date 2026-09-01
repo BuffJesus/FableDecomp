@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
-          "offset": 179
-        },
-        {
-          "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
           "offset": 519
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00EA8740",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00EA8830",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CV_MurderTwistScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CV_MurderTwistScript::Main",
-          "offset": 144
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -405,13 +380,7 @@
     {
       "role": "Init",
       "address": "0x00EA8720",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00ea8720",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [
@@ -436,13 +405,7 @@
     {
       "role": "OnPersist",
       "address": "0x00EA8800",
-      "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00ea8800",
-          "offset": 18
-        }
-      ],
+      "calls": [],
       "indirectCalls": [],
       "strings": [
         "MurderTwistState"

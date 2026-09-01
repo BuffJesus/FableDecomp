@@ -13,11 +13,6 @@
       "calls": [
         {
           "operation": "call",
-          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
-          "offset": 181
-        },
-        {
-          "operation": "call",
           "callee": "CParticleEmitter___CParticleEmitter_0x24c80",
           "offset": 303
         },
@@ -36,16 +31,6 @@
       "role": "RegisterMain",
       "address": "0x00E1DC30",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
-          "offset": 156
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -90,16 +75,6 @@
       "role": "Main",
       "address": "0x00E1E110",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "NScript::CQR_EscortTraderScript::Main",
-          "offset": 80
-        },
-        {
-          "operation": "call",
-          "callee": "NScript::CQR_EscortTraderScript::Main",
-          "offset": 146
-        },
         {
           "operation": "call",
           "callee": "operator_new",
@@ -358,11 +333,6 @@
       "role": "Init",
       "address": "0x00E247F0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "CScriptGameResourceObjectScriptedThingBase_HandleFollowQuestDialogue",
-          "offset": 237
-        },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
@@ -710,11 +680,6 @@
       "role": "OnPersist",
       "address": "0x00E1DCF0",
       "calls": [
-        {
-          "operation": "call",
-          "callee": "FUN_00e1dcf0",
-          "offset": 18
-        },
         {
           "operation": "call",
           "callee": "CEngineInternalPrimitiveBase::AddChildPrimitive",
