@@ -24,6 +24,7 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -57,6 +58,7 @@
         "Main",
         ""
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x34",
@@ -134,6 +136,36 @@
         "PAAWB_Villager",
         "PAAWB_Guard"
       ],
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "PAAWB_Villager",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012f126c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 960,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "PAAWB_Guard",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012f126c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 1982,
+          "complete": true,
+          "layoutComplete": true
+        }
+      ],
       "stateWrites": [
         {
           "fieldOffset": "0x10",
@@ -164,6 +196,7 @@
       "calls": [],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -173,6 +206,7 @@
       "calls": [],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     }

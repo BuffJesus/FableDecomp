@@ -29,6 +29,7 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -62,6 +63,7 @@
         "Main",
         ""
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x34",
@@ -623,6 +625,36 @@
         "WatchForWhistling",
         ""
       ],
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "OakValeBanditRaidBandit",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d9ec0",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 12864,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "M_RestartMarker",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d9ec0",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 14050,
+          "complete": true,
+          "layoutComplete": true
+        }
+      ],
       "stateWrites": [
         {
           "fieldOffset": "0x10",
@@ -683,6 +715,7 @@
       "calls": [],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x4a",
@@ -743,6 +776,7 @@
       "calls": [],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     }

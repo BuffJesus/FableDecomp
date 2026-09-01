@@ -29,6 +29,7 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -62,6 +63,7 @@
         "Main",
         ""
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x34",
@@ -804,6 +806,204 @@
         "",
         "HeroGuildComplex"
       ],
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "AppleGirl",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012cd734",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 10359,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "ApprenticeSpeedTest",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012cd734",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 11630,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "SpeedFriend",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012cd734",
+          "allocatorExpression": "&LAB_00d407c0",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 12873,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "RaceMarker",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012cd734",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 14145,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "MeleeApprentice",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012cd734",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 15425,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "CombatApprentice",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012cd734",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 16709,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "SkillApprentice",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012cd734",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 17992,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "WillApprentice",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012cd734",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 19274,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "HeroBed",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012cd734",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 20506,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "SkillTarget",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012cd734",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 21730,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "WillDummy",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012cd734",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 22952,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "BirdKiller",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012cd734",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 24175,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "KillBird",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012cd734",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 25396,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "PreMeleeMaze",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012cd734",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 26621,
+          "complete": true,
+          "layoutComplete": true
+        }
+      ],
       "stateWrites": [
         {
           "fieldOffset": "0x48",
@@ -1023,6 +1223,7 @@
         }
       ],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x48",
@@ -1051,6 +1252,7 @@
         "GameState",
         "CurrentBirdsKilled"
       ],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": [
         {

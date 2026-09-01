@@ -34,6 +34,7 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -67,6 +68,7 @@
         "Main",
         ""
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x34",
@@ -1215,6 +1217,36 @@
         "TEXT_QST_015_TUTORIAL_EXPRESSIONS_PC",
         "TEXT_QST_015_TUTORIAL_EXPRESSIONS"
       ],
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "LookoutPointBeggar",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012e68a8",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 4186,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "BeggarBully",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012e68a8",
+          "allocatorExpression": "&LAB_00e5b2d0",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 5181,
+          "complete": true,
+          "layoutComplete": true
+        }
+      ],
       "stateWrites": [
         {
           "fieldOffset": "0x10",
@@ -1260,6 +1292,7 @@
         }
       ],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x48",
@@ -1348,6 +1381,7 @@
         "BelchedAtBully",
         "QuestCardGiven"
       ],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": [
         {

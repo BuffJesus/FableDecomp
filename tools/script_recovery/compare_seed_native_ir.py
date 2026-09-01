@@ -41,13 +41,17 @@ def compare(corpus_sources: Path, native_ir_dir: Path) -> dict[str, Any]:
         lua = lua_facts(corpus_sources / package)
         native = json.loads((native_ir_dir / f"{script}.json").read_text(encoding="utf-8-sig"))
         native_literals = {value for function in native["lifecycle"] for value in function["strings"]}
+        native_bindings = {row["entityName"] for function in native["lifecycle"]
+                           for row in function.get("entityBindings", []) if row.get("entityName")}
         native_persisted = {row["key"] for function in native["lifecycle"]
                             for row in function["persistenceTransfers"] if row["key"]}
         rows.append({
             "package": package, "nativeScript": script,
             "sharedLiterals": sorted(lua["literals"] & native_literals),
-            "luaBindingsFoundNative": sorted(lua["bindings"] & native_literals),
-            "luaBindingsMissingNativeLifecycle": sorted(lua["bindings"] - native_literals),
+            "nativeEntityBindings": sorted(native_bindings),
+            "luaBindingsFoundNative": sorted(lua["bindings"] & native_bindings),
+            "luaBindingsMissingNativeLifecycle": sorted(lua["bindings"] - native_bindings),
+            "nativeBindingsMissingLua": sorted(native_bindings - lua["bindings"]),
             "sharedPersistenceKeys": sorted(lua["persistenceKeys"] & native_persisted),
             "luaPersistenceOnly": sorted(lua["persistenceKeys"] - native_persisted),
             "nativePersistenceOnly": sorted(native_persisted - lua["persistenceKeys"]),

@@ -24,6 +24,7 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -57,6 +58,7 @@
         "Main",
         ""
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x34",
@@ -199,6 +201,50 @@
         "HighDetailPopulationSim",
         ""
       ],
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "RandomPopulationVillager",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012f136c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 1688,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "RandomPopulationGuard",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012f136c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 2773,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "RandomPopulationBandit",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012f136c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 3862,
+          "complete": true,
+          "layoutComplete": true
+        }
+      ],
       "stateWrites": [
         {
           "fieldOffset": "0x10",
@@ -259,6 +305,7 @@
       "calls": [],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x48",
@@ -324,6 +371,7 @@
       "calls": [],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     }

@@ -34,6 +34,7 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -67,6 +68,7 @@
         "Main",
         ""
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x34",
@@ -8004,6 +8006,7 @@
         "DOING_ORCH_FARM",
         "DOING_ORCH_FARM"
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x34",
@@ -8854,6 +8857,7 @@
         "DRAGON_GATE_OPEN",
         "SNOWSPIRE_ARRIVAL"
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x48",
@@ -8874,6 +8878,7 @@
         "SavedScriptNames",
         "SavedCardDefNames"
       ],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": [
         {

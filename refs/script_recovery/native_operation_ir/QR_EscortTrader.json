@@ -24,6 +24,7 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -57,6 +58,7 @@
         "Main",
         ""
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x34",
@@ -264,6 +266,50 @@
         "",
         "WatchForRegionLoads",
         ""
+      ],
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "M_BanditTrigger",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012e1504",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 2078,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "AttackingBandit",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012e1504",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 3093,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "TraderToEscort",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012e1504",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 4110,
+          "complete": true,
+          "layoutComplete": true
+        }
       ],
       "stateWrites": [
         {
@@ -502,6 +548,7 @@
         "TEXT_QST_053_RANDOM_WAIT_30",
         "TEXT_QST_053_RANDOM_WAIT_40"
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x11c",
@@ -711,6 +758,7 @@
         "TotallyLost",
         "AddedBonusObject"
       ],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": [
         {

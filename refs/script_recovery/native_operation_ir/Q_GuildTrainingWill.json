@@ -24,6 +24,7 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -57,6 +58,7 @@
         "Main",
         ""
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x34",
@@ -113,6 +115,22 @@
       "strings": [
         "TheRealGuildmaster"
       ],
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "TheRealGuildmaster",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d1068",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 898,
+          "complete": true,
+          "layoutComplete": true
+        }
+      ],
       "stateWrites": [
         {
           "fieldOffset": "0x10",
@@ -133,6 +151,7 @@
       "calls": [],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x48",
@@ -176,6 +195,7 @@
         "TestFinished",
         "BanditsDefeated"
       ],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": [
         {

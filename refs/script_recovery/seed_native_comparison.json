@@ -11,10 +11,14 @@
         "MazeAtTavern",
         "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01"
       ],
+      "nativeEntityBindings": [
+        "MazeAtTavern"
+      ],
       "luaBindingsFoundNative": [
         "MazeAtTavern"
       ],
       "luaBindingsMissingNativeLifecycle": [],
+      "nativeBindingsMissingLua": [],
       "sharedPersistenceKeys": [
         "GuardianSpokeToHero"
       ],
@@ -31,10 +35,14 @@
         "OakBay",
         "TEXT_QUEST_GUARDIAN_SISTER_INFO_SECOND_OBJECTIVE_01"
       ],
+      "nativeEntityBindings": [
+        "MazeAtTavern"
+      ],
       "luaBindingsFoundNative": [
         "MazeAtTavern"
       ],
       "luaBindingsMissingNativeLifecycle": [],
+      "nativeBindingsMissingLua": [],
       "sharedPersistenceKeys": [
         "GuardianSpokeToHero"
       ],
@@ -51,11 +59,16 @@
         "MeetSisterSister",
         "TEXT_QUEST_THERESA_MOTHER_INFO_2_SUMMARY"
       ],
+      "nativeEntityBindings": [
+        "MeetSisterMessenger",
+        "MeetSisterSister"
+      ],
       "luaBindingsFoundNative": [
         "MeetSisterMessenger",
         "MeetSisterSister"
       ],
       "luaBindingsMissingNativeLifecycle": [],
+      "nativeBindingsMissingLua": [],
       "sharedPersistenceKeys": [],
       "luaPersistenceOnly": [],
       "nativePersistenceOnly": []
@@ -72,11 +85,16 @@
         "SwordTaken",
         "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_01"
       ],
+      "nativeEntityBindings": [
+        "EmptyGrave",
+        "HistoryBookcase"
+      ],
       "luaBindingsFoundNative": [
         "EmptyGrave",
         "HistoryBookcase"
       ],
       "luaBindingsMissingNativeLifecycle": [],
+      "nativeBindingsMissingLua": [],
       "sharedPersistenceKeys": [
         "BookRead",
         "SwordTaken"
@@ -98,12 +116,18 @@
         "OakBay",
         "WatchForBooty"
       ],
+      "nativeEntityBindings": [
+        "ExtraBooty",
+        "FishermansWife",
+        "GhostFisherman"
+      ],
       "luaBindingsFoundNative": [
         "ExtraBooty",
         "FishermansWife",
         "GhostFisherman"
       ],
       "luaBindingsMissingNativeLifecycle": [],
+      "nativeBindingsMissingLua": [],
       "sharedPersistenceKeys": [
         "BootyDugUp",
         "Helped",
@@ -125,10 +149,14 @@
         "PieceOver",
         "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01"
       ],
+      "nativeEntityBindings": [
+        "GTDI_Maze"
+      ],
       "luaBindingsFoundNative": [
         "GTDI_Maze"
       ],
       "luaBindingsMissingNativeLifecycle": [],
+      "nativeBindingsMissingLua": [],
       "sharedPersistenceKeys": [
         "PieceOver"
       ],

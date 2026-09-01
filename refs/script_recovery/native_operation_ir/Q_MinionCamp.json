@@ -24,6 +24,7 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -57,6 +58,7 @@
         "Main",
         ""
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x34",
@@ -231,6 +233,78 @@
         "FadeinSummoner",
         "DoMission",
         ""
+      ],
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "BriarRose",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d6d04",
+          "allocatorExpression": "&LAB_00d9e8b0",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 2186,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "MC_MinionGuard",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d6d04",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 3310,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "MC_SpawnPoint",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d6d04",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 4433,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "MC_Minion",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d6d04",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 5552,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "FadeinSummoner",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d6d04",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 6676,
+          "complete": true,
+          "layoutComplete": true
+        }
       ],
       "stateWrites": [
         {
@@ -414,6 +488,7 @@
         "",
         "TEXT_QST_BOAST_DESCRIPTION_BRIARNODAMAGE"
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x50",
@@ -454,6 +529,7 @@
       "calls": [],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     }

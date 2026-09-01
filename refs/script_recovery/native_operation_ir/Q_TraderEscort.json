@@ -29,6 +29,7 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -62,6 +63,7 @@
         "Main",
         ""
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x34",
@@ -526,6 +528,204 @@
         "",
         "EXPRESSION_PICKPOCKET",
         "TEXT_QST_BOAST_DESCRIPTION_PICKPOCKETTRADERS"
+      ],
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "DarkwoodTrader",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012df40c",
+          "allocatorExpression": "&LAB_00e015f0",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 2936,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "FleshEatingBalverine",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012df40c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 3992,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "InfectedBalverine",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012df40c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 5058,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "TraderComment",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012df40c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 6120,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "DarkwoodAssassinSpawn",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012df40c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 7193,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "DarkwoodBalverineTrader",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012df40c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 8271,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "RockTrollTrigger",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012df40c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 9342,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "DarkwoodRockTroll",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012df40c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 10414,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "MagicBarrier",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012df40c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 11463,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "TE_BanditLeader",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012df40c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 12511,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "BanditCronies",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012df40c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 13530,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "DW5_Balv",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012df40c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 14544,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "DW5_Bandit",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012df40c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 15560,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "EndTrader",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012df40c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 16575,
+          "complete": true,
+          "layoutComplete": true
+        }
       ],
       "stateWrites": [
         {
@@ -1013,6 +1213,7 @@
         "",
         "TEXT_QST_BOAST_DESCRIPTION_ALLTRADERSALIVE"
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x68",
@@ -1071,6 +1272,7 @@
         "ShownBalverine",
         "ShownEarthTroll"
       ],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": [
         {

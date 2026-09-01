@@ -150,9 +150,12 @@ regenerating all 161 artifacts, the readiness gate has zero opaque callees: all 
 the explicit `map-native-helpers` stage, including every non-quest class. Helper mapping and
 control-flow reconstruction remain required; zero opaque callees does not by itself make a Lua port.
 The readiness artifact therefore includes a ranked helper backlog with exact call counts, consumer
-scripts, and script kinds. The current corpus has 159 distinct unresolved helper names across 2,218
-call sites, allowing shared structural operations such as entity-binding registration to be handled
-before one-off quest helpers.
+scripts, and script kinds. Entity registrations are modeled separately as structural IR: all 615
+`AddEntityScriptBinding` records across 119 parent scripts recover the entity name, allocation size,
+and allocator expression. Of those, 611 expose the inlined 0x1c-byte layout and four use a typed
+retail template constructor. With registration removed from the semantic backlog, 158 distinct helper
+names remain across 1,603 call sites, allowing shared engine behavior to be handled before one-off
+quest helpers.
 
 The retail `CGameScriptInterface` vtable base at `0x01260F0C` is now queried directly by
 `DumpVtableSlots.java`. `VerifyScriptInterfaceField.java` independently proves for all 161 allocators

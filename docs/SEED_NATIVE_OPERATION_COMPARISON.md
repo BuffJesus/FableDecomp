@@ -2,7 +2,9 @@
 
 All six reconstructed packages now have anchor-verified retail lifecycle clusters and normalized
 native operation IR. Across the parent lifecycle functions, the comparison finds 35 shared literals
-and every reconstructed entity binding:
+and every reconstructed entity binding. Binding matches now come from explicit recovered
+`AddEntityScriptBinding` records—not merely from finding the same name somewhere in the native
+literal pool:
 
 | Package | Native allocator | Confirmed parent bindings | Confirmed persistence |
 |---|---:|---|---|

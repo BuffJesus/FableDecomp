@@ -110,6 +110,25 @@ class NativeConversionReadinessTests(unittest.TestCase):
                 "name": "SharedHelper", "calls": 4, "scripts": 2,
                 "kinds": ["quest", "village"], "consumers": ["Q_A", "V_B"]})
 
+    def test_entity_binding_registration_is_structural_evidence_not_helper_backlog(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "ir").mkdir()
+            (root / "catalog.json").write_text(json.dumps({"scripts": [
+                {"name": "Q_A", "kind": "quest"}]}))
+            (root / "manifest.json").write_text(json.dumps({"functions": []}))
+            life = [{"role": role, "address": "0x1", "calls": [], "indirectCalls": []}
+                    for role in ("destructor", "RegisterMain", "Main", "Init", "OnPersist")]
+            life[2]["calls"] = [{"callee": "CScriptBase::AddEntityScriptBinding"}]
+            life[2]["entityBindings"] = [{"entityName": "Messenger", "complete": True}]
+            (root / "ir" / "Q_A.json").write_text(json.dumps({
+                "script": "Q_A", "allocatorAddress": "0x1", "vtableAddress": "0x2",
+                "evidenceAnchors": [], "lifecycle": life}))
+            result = analyze(root / "catalog.json", root / "ir", root / "manifest.json")
+            self.assertEqual(result["summary"]["entityBindings"], 1)
+            self.assertEqual(result["summary"]["completeEntityBindings"], 1)
+            self.assertEqual(result["summary"]["unresolvedNativeHelperMethods"], 0)
+
     def test_interface_mapping_requires_provenance(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

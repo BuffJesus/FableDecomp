@@ -24,6 +24,7 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -57,6 +58,7 @@
         "Main",
         ""
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x34",
@@ -376,6 +378,36 @@
         "OBJECT_BANDIT_CAMP_HOSTAGE_KEY",
         "OBJECT_BANDIT_CAMP_HOSTAGE_KEY"
       ],
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "Gate1GuardOuter",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012c850c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 2555,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "Gate1GuardInner",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012c850c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 3567,
+          "complete": true,
+          "layoutComplete": true
+        }
+      ],
       "stateWrites": [
         {
           "fieldOffset": "0x10",
@@ -620,6 +652,7 @@
         "",
         "TEXT_QST_BOAST_DESCRIPTION_KILLMANYBANDITS"
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x11a",
@@ -644,6 +677,7 @@
         "BoastBegun",
         "ActivatedBanditRaid"
       ],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": [
         {

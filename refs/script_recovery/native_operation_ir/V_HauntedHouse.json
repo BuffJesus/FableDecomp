@@ -24,6 +24,7 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -57,6 +58,7 @@
         "Main",
         ""
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x34",
@@ -994,6 +996,64 @@
         "CandleToLight",
         "HauntedHouse"
       ],
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "M_UndeadHere",
+          "allocationSize": 28,
+          "bindingVtable": "PTR__scalar_deleting_destructor__01238c8c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "template-constructor",
+          "constructorScriptType": "NScript::CQ_EndGameFocalSitesScript",
+          "enabled": null,
+          "trailingValue": null,
+          "offset": 25064,
+          "complete": true,
+          "layoutComplete": false
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "HHUndead",
+          "allocationSize": 28,
+          "bindingVtable": null,
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "template-constructor",
+          "constructorScriptType": "NScript::CQ_EndGameFocalSitesScript",
+          "enabled": null,
+          "trailingValue": null,
+          "offset": 26414,
+          "complete": true,
+          "layoutComplete": false
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "M_QuestControl",
+          "allocationSize": 28,
+          "bindingVtable": null,
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "template-constructor",
+          "constructorScriptType": "NScript::CQ_EndGameFocalSitesScript",
+          "enabled": null,
+          "trailingValue": null,
+          "offset": 27773,
+          "complete": true,
+          "layoutComplete": false
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "M_HeroInsideHouse",
+          "allocationSize": 28,
+          "bindingVtable": null,
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "template-constructor",
+          "constructorScriptType": "NScript::CQ_EndGameFocalSitesScript",
+          "enabled": null,
+          "trailingValue": null,
+          "offset": 29138,
+          "complete": true,
+          "layoutComplete": false
+        }
+      ],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -1003,6 +1063,7 @@
       "calls": [],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x48",
@@ -1056,6 +1117,7 @@
         "CellarDoorOpen",
         "HeroBeenToChest"
       ],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": [
         {

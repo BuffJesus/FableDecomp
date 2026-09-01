@@ -15,6 +15,7 @@ CALL_RE = re.compile(r'(?<![\w])((?:[A-Za-z_]\w*::)*(?:~?[A-Za-z_]\w*))\s*\(')
 STATE_WRITE_RE = re.compile(r'\*\([^)]*\*\)\([^\n]*?\+\s*(0x[0-9a-fA-F]+)\)\s*=\s*([^;]+);')
 INDIRECT_CALL_RE = re.compile(r'\(\*\*\(code \*\*\)\((.*?)\)\)\s*\(', re.DOTALL)
 VTABLE_OFFSET_RE = re.compile(r'\+\s*(0x[0-9a-fA-F]+|[0-9]+)\s*$')
+ENTITY_BINDING_CALL_RE = re.compile(r'CScriptBase::AddEntityScriptBinding\s*\(')
 CONTROL_WORDS = {"if", "for", "while", "switch", "sizeof", "return"}
 GHIDRA_PCODE_RE = re.compile(r"^(?:SUB\d+|CONCAT\d+|ZEXT\d*|SEXT\d*|CARRY\d*|SCARRY\d*|SBORROW\d*)$")
 
@@ -79,6 +80,55 @@ def indirect_calls(text: str) -> list[dict[str, Any]]:
     return result
 
 
+def entity_bindings(text: str) -> list[dict[str, Any]]:
+    """Recover the retail 0x1c-byte entity-binding records built before registration."""
+    result = []
+    previous_end = 0
+    for call in ENTITY_BINDING_CALL_RE.finditer(text):
+        # A binding is assembled immediately before AddEntityScriptBinding. Bound
+        # the search by the preceding registration so adjacent records cannot mix.
+        window_start = max(previous_end, call.start() - 3000)
+        window = text[window_start:call.start()]
+        names = list(re.finditer(
+            r'CCharString::CCharString\s*\([^;]*?"((?:[^"\\]|\\.)*)"\s*,\s*-1\s*\)',
+            window, re.DOTALL))
+        allocations = list(re.finditer(r'operator_new\s*\(\s*(0x[0-9a-fA-F]+|\d+)\s*\)', window))
+        vtables = list(re.finditer(r'=\s*&([^;\r\n]*PTR_[^;\r\n]+);', window))
+        allocators = list(re.finditer(
+            r'\*\([^)]*\)\s*\([^;\r\n]*?\+\s*0x10\)\s*=\s*([^;]+);', window))
+        template_constructors = list(re.finditer(
+            r'CEntityScriptBinding<([^>]+)>::\s*CEntityScriptBinding<[^>]+>\s*'
+            r'\(.*?,\s*([A-Za-z_]\w*(?:::[A-Za-z_]\w*)*)\s*,\s*'
+            r'(0x[0-9a-fA-F]+|\d+)\s*\);', window, re.DOTALL))
+        enabled = list(re.finditer(
+            r'\[0x14\]\s*=\s*\(CEntityScriptBindingBase\)(0x[0-9a-fA-F]+|\d+)', window))
+        trailing = list(re.finditer(r'\+\s*0x18\)\s*=\s*(0x[0-9a-fA-F]+|\d+)\s*;', window))
+        name = strings(f'"{names[-1].group(1)}"')[0] if names else None
+        template_constructor = template_constructors[-1] if template_constructors else None
+        allocator_expression = (allocators[-1].group(1).strip() if allocators else
+                                template_constructor.group(2) if template_constructor else None)
+        row = {
+            "operation": "entity-binding-registration",
+            "entityName": name,
+            "allocationSize": int(allocations[-1].group(1), 0) if allocations else None,
+            "bindingVtable": vtables[-1].group(1).strip() if vtables else None,
+            "allocatorExpression": allocator_expression,
+            "constructionMode": "explicit-layout" if allocators else
+                                "template-constructor" if template_constructor else "unresolved",
+            "constructorScriptType": template_constructor.group(1) if template_constructor else None,
+            "enabled": bool(int(enabled[-1].group(1), 0)) if enabled else None,
+            "trailingValue": int(trailing[-1].group(1), 0) if trailing else None,
+            "offset": call.start(),
+        }
+        row["complete"] = all(row[key] is not None for key in (
+            "entityName", "allocationSize", "allocatorExpression"))
+        row["layoutComplete"] = all(row[key] is not None for key in (
+            "bindingVtable", "enabled", "trailingValue"))
+        result.append(row)
+        previous_end = call.end()
+    return result
+
+
 def extract(cluster_path: Path) -> dict[str, Any]:
     cluster = json.loads(cluster_path.read_text(encoding="utf-8-sig"))
     lifecycle = []
@@ -87,6 +137,7 @@ def extract(cluster_path: Path) -> dict[str, Any]:
         lifecycle.append({
             "role": function["role"], "address": function["address"],
             "calls": calls(text), "indirectCalls": indirect_calls(text), "strings": strings(text),
+            "entityBindings": entity_bindings(text),
             "stateWrites": [{"fieldOffset": match.group(1).lower(), "valueExpression": match.group(2).strip(),
                               "offset": match.start()} for match in STATE_WRITE_RE.finditer(text)],
             "persistenceTransfers": persistence(text),

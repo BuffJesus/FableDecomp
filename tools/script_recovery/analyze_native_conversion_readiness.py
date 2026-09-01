@@ -15,7 +15,8 @@ from typing import Any
 OPAQUE_RE = re.compile(r"^(?:FUN_|LAB_|SUB\d*$|thunk_FUN_)", re.IGNORECASE)
 INFRASTRUCTURE_RE = re.compile(
     r"^(?:operator_(?:new|delete)|CCharString::|std::|CGuiVarTransferStruct::Add|"
-    r"CScriptBase::IsActiveThreadTerminating|CSpawnedFunc<|Compare$|CONCAT\d+|CTimer$)"
+    r"CScriptBase::(?:IsActiveThreadTerminating|AddEntityScriptBinding)|"
+    r"CSpawnedFunc<|Compare$|CONCAT\d+|CTimer$)"
 )
 LUA_QUEST_BINDING_RE = re.compile(
     r'questState_type\s*\[\s*"([A-Za-z_][A-Za-z0-9_]*)"\s*\]'
@@ -93,6 +94,8 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
         ir = json.loads(path.read_text(encoding="utf-8-sig"))
         calls = [call["callee"] for life in ir["lifecycle"] for call in life["calls"]]
         indirect = [call for life in ir["lifecycle"] for call in life.get("indirectCalls", [])]
+        entity_bindings = [binding for life in ir["lifecycle"]
+                           for binding in life.get("entityBindings", [])]
         interface_calls = []
         for call in indirect:
             method = interface_methods.get(call.get("vtableOffset"))
@@ -139,6 +142,10 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
             "anchored": bool(ir.get("evidenceAnchors")), "lifecycleFunctions": len(ir["lifecycle"]),
             "calls": len(calls), "distinctCalls": len(set(calls)), "mappedForgeApis": mapped,
             "indirectCalls": len(indirect),
+            "entityBindings": entity_bindings,
+            "entityBindingCount": len(entity_bindings),
+            "completeEntityBindings": sum(binding.get("complete", False)
+                                            for binding in entity_bindings),
             "resolvedInterfaceCalls": interface_calls,
             "resolvedInterfaceMethods": sorted({call["name"] for call in interface_calls}),
             "indirectVtableOffsets": sorted({call["vtableOffset"] for call in indirect
@@ -209,6 +216,9 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
                     "unresolvedNativeHelperMethods": len(helper_backlog),
                     "unresolvedNativeHelperCalls": sum(helper_calls.values()),
                     "scriptsWithResolvedInterfaceCalls": sum(bool(row["resolvedInterfaceCalls"]) for row in rows),
+                    "entityBindings": sum(row["entityBindingCount"] for row in rows),
+                    "completeEntityBindings": sum(row["completeEntityBindings"] for row in rows),
+                    "scriptsWithEntityBindings": sum(bool(row["entityBindingCount"]) for row in rows),
                     "stages": dict(sorted(stages.items()))},
         "nativeHelperBacklog": helper_backlog,
         "scripts": rows,

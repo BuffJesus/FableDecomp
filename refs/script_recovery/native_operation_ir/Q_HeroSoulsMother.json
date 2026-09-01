@@ -34,6 +34,7 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
     },
@@ -67,6 +68,7 @@
         "Main",
         ""
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x34",
@@ -624,6 +626,36 @@
         "TEXT_QUEST_HERO_SOULS_OBJECTIVE_10",
         "Q_HeroSouls"
       ],
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "SummonerToKill",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d4758",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 3542,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "HS_Screamer",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d4758",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 4609,
+          "complete": true,
+          "layoutComplete": true
+        }
+      ],
       "stateWrites": [
         {
           "fieldOffset": "0x10",
@@ -686,6 +718,7 @@
         "OakvaleMemorialGarden",
         "Q_HeroSoulsMother"
       ],
+      "entityBindings": [],
       "stateWrites": [
         {
           "fieldOffset": "0x5c",
@@ -713,6 +746,7 @@
       "strings": [
         "PlayedMotherCS"
       ],
+      "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": [
         {
