@@ -53,3 +53,8 @@ python tools\script_recovery\verify_shadow_smoke_log.py `
 
 Success requires the DLL attach marker, Lua initialization, 16 distinct completion markers,
 `passed=16 failed=0`, and no missing-candidate, exception, or lifecycle-failure lines.
+
+A front-end-only launch may stop at verifier phase `dll-attached`: retail initializes ForgeFSE's Lua
+systems only after entering gameplay. This proves injection/startup but is not a completed shadow
+smoke. Do not automate save selection merely to advance the phase; capture the partial result and
+finish the test during an explicitly supervised disposable-save session.

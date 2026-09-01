@@ -23,6 +23,24 @@ class ShadowSmokeLogTests(unittest.TestCase):
                 encoding="utf-8")
             self.assertTrue(verify(root / "fse.log", root / "manifest.json")["complete"])
 
+    def test_attach_only_log_reports_exact_incomplete_phase(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "manifest.json").write_text(json.dumps({"expectedScripts": 16}), encoding="utf-8")
+            (root / "fse.log").write_text(
+                "--- Fable Custom Quest DLL Attached ---\n--- Initializing Fable API Pointers ---\n",
+                encoding="utf-8")
+            result = verify(root / "fse.log", root / "manifest.json")
+            self.assertFalse(result["complete"])
+            self.assertEqual(result["phase"], "dll-attached")
+            self.assertEqual(result["failed"], 0)
+            self.assertFalse(result["summarySeen"])
+            self.assertEqual(result["failureReasons"], [
+                "Lua initialization marker missing",
+                "completed scripts 0/16",
+                "terminal shadow summary missing",
+            ])
+
     def test_failure_is_not_complete(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

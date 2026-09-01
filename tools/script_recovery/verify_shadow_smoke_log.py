@@ -15,11 +15,24 @@ def verify(log_path: Path, manifest_path: Path) -> dict[str, object]:
     expected = int(manifest["expectedScripts"])
     completed = set(re.findall(r"\[RetailShadow\] completed mutation-free preflight for (.+)$", log, re.MULTILINE))
     summary = re.findall(r"Retail shadow preflight complete: passed=(\d+) failed=(\d+)", log)
-    passed, failed = (map(int, summary[-1])) if summary else (0, -1)
+    summary_seen = bool(summary)
+    passed, failed = (map(int, summary[-1])) if summary_seen else (0, 0)
+    dll_attached = "--- Fable Custom Quest DLL Attached ---" in log
+    lua_initialized = "--- Lua systems initialized successfully. ---" in log
+    if summary_seen:
+        phase = "shadow-complete"
+    elif lua_initialized:
+        phase = "lua-initialized"
+    elif dll_attached:
+        phase = "dll-attached"
+    else:
+        phase = "not-started"
     result = {
         "schema": "forgefse-retail-shadow-smoke-result/0.1",
-        "dllAttached": "--- Fable Custom Quest DLL Attached ---" in log,
-        "luaInitialized": "--- Lua systems initialized successfully. ---" in log,
+        "phase": phase,
+        "dllAttached": dll_attached,
+        "luaInitialized": lua_initialized,
+        "summarySeen": summary_seen,
         "expectedScripts": expected,
         "completedScripts": len(completed),
         "passed": passed,
@@ -27,8 +40,23 @@ def verify(log_path: Path, manifest_path: Path) -> dict[str, object]:
         "errors": len(re.findall(r"\[RetailShadow\].*(?:failed|exception|missing candidate)", log)),
     }
     result["complete"] = all((result["dllAttached"], result["luaInitialized"],
+                              result["summarySeen"],
                               len(completed) == expected, passed == expected,
                               failed == 0, result["errors"] == 0))
+    failure_reasons = []
+    if not dll_attached:
+        failure_reasons.append("DLL attach marker missing")
+    if not lua_initialized:
+        failure_reasons.append("Lua initialization marker missing")
+    if len(completed) != expected:
+        failure_reasons.append(f"completed scripts {len(completed)}/{expected}")
+    if not summary_seen:
+        failure_reasons.append("terminal shadow summary missing")
+    elif passed != expected or failed != 0:
+        failure_reasons.append(f"terminal summary passed={passed} failed={failed}")
+    if result["errors"]:
+        failure_reasons.append(f"shadow errors={result['errors']}")
+    result["failureReasons"] = failure_reasons
     return result
 
 

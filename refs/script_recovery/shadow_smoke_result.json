@@ -1,0 +1,18 @@
+{
+  "schema": "forgefse-retail-shadow-smoke-result/0.1",
+  "phase": "dll-attached",
+  "dllAttached": true,
+  "luaInitialized": false,
+  "summarySeen": false,
+  "expectedScripts": 16,
+  "completedScripts": 0,
+  "passed": 0,
+  "failed": 0,
+  "errors": 0,
+  "complete": false,
+  "failureReasons": [
+    "Lua initialization marker missing",
+    "completed scripts 0/16",
+    "terminal shadow summary missing"
+  ]
+}
