@@ -132,12 +132,14 @@ def verify(root: Path) -> dict[str, Any]:
           deployment["intact"] == 19 and len(deployment["files"]) == 19,
           {"transaction": deployment["transaction"], "intact": deployment["intact"]})
     smoke = load(root / "shadow_smoke_result.json")
+    deployed_dll = next(row for row in deployment["files"]
+                        if row["path"] == "FableScriptExtender.dll")
     check("fresh DLL attachment is proven without loading a save",
           smoke["phase"] == "dll-attached" and smoke["dllAttached"] and
           smoke["processResponsive"] and smoke["normalMenuExit"] and
           not smoke["profileOrSaveLoaded"] and not smoke["luaInitialized"] and
-          smoke["dllSha256"] ==
-          "0BCF232FABB355C555C6C97F1009EB4C3F80E280FE93DB91F57C2CE17D49A206",
+          smoke["dllSha256"] == deployed_dll["actualSha256"] and
+          smoke["deploymentTransaction"] == deployment["transaction"],
           {"observedAtUtc": smoke["observedAtUtc"], "phase": smoke["phase"],
            "luaInitialized": smoke["luaInitialized"]})
     comparison = load(root / "seed_native_comparison.json")

@@ -1226,7 +1226,7 @@
     {
       "evidence": {
         "intact": 19,
-        "transaction": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\backups\\RetailShadowSmoke-20260901T015236Z\\deployment.json"
+        "transaction": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\backups\\RetailShadowSmoke-20260901T020745Z\\deployment.json"
       },
       "name": "reversible local shadow deployment is recorded intact",
       "passed": true
@@ -1234,7 +1234,7 @@
     {
       "evidence": {
         "luaInitialized": false,
-        "observedAtUtc": "2026-09-01T01:54:10Z",
+        "observedAtUtc": "2026-09-01T02:10:46Z",
         "phase": "dll-attached"
       },
       "name": "fresh DLL attachment is proven without loading a save",
