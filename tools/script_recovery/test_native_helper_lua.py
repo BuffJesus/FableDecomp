@@ -162,6 +162,26 @@ class NativeHelperLuaTests(unittest.TestCase):
             self.assertTrue(result["summary"]["complete"])
             self.assertEqual(result["summary"]["checks"], 3)
 
+    def test_generated_script_token_destructor_executes_all_branches(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            helper_ir = root / "ir.json"
+            helper_ir.write_text(json.dumps({"helpers": [{
+                "targetAddress": "0x004AA840", "currentName": "BadDonor::~BadDonor",
+                "decompileSha256": "4" * 64, "luaEmissionReady": True,
+                "semanticPatterns": [{"kind": "reference-counted-script-token-destructor",
+                                      "complete": True, "valueOffset": "0x4",
+                                      "ownerOffset": "0x8",
+                                      "preReleaseVtableAddress": "0x01238C8C",
+                                      "ownerFreeTarget": "0x00BFE9BC",
+                                      "baseInitializerTarget": "0x0099A2E0",
+                                      "callSites": ["0x1", "0x2"]}],
+            }]}))
+            generate(helper_ir, root / "generated")
+            result = validate(root / "generated" / "manifest.json")
+            self.assertTrue(result["summary"]["complete"])
+            self.assertEqual(result["summary"]["checks"], 3)
+
 
 if __name__ == "__main__":
     unittest.main()

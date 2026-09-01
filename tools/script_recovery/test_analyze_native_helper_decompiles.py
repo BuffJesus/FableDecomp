@@ -171,6 +171,18 @@ class NativeHelperDecompileTests(unittest.TestCase):
         self.assertEqual(pattern["restoredVtableAddress"], "0x0126008C")
         self.assertEqual(pattern["callSites"], ["0x1", "0x2"])
 
+    def test_script_token_destructor_preserves_pre_release_identity(self):
+        body = ("*(undefined ***)this = &PTR__scalar_deleting_destructor__01238c8c; "
+                "piVar1 = *(int **)(this + 8); *piVar1 = *piVar1 + -1; "
+                "if (**(int **)(this + 8) == 0) { destroy(); free(); } "
+                "*(undefined4 *)(this + 4) = 0; *(undefined4 *)(this + 8) = 0;")
+        direct = [{"target": "0x00BFE9BC", "site": "0x1"},
+                  {"target": "0x0099A2E0", "site": "0x2"}]
+        pattern = semantic_patterns(body, direct, [],
+            "C3DClothPrimitive::~C3DClothPrimitive")[0]
+        self.assertEqual(pattern["kind"], "reference-counted-script-token-destructor")
+        self.assertEqual(pattern["preReleaseVtableAddress"], "0x01238C8C")
+
     def test_typed_native_reads_are_complete_semantic_patterns(self):
         field = semantic_patterns(
             "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])

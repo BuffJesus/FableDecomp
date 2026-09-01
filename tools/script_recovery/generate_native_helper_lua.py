@@ -271,6 +271,28 @@ def emit_reference_counted_token_destructor(helper: dict[str, Any],
     ])
 
 
+def emit_reference_counted_script_token_destructor(helper: dict[str, Any],
+                                                   pattern: dict[str, Any]) -> str:
+    return "\n".join([
+        f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+        "-- Preserve pre-release identity, all owner branches, clearing, and base initialization.",
+        "return function(read_owner, decrement_ref, destroy_pointee, free_owner, "
+        "write_u32, initialize_base)",
+        f"    write_u32(0, {int(pattern['preReleaseVtableAddress'], 0)})",
+        f"    local owner = read_owner({int(pattern['ownerOffset'], 0)})",
+        "    if owner ~= nil then",
+        "        local remaining = decrement_ref(owner)",
+        "        if remaining == 0 then",
+        "            destroy_pointee(owner)",
+        f"            free_owner(owner, {int(pattern['ownerFreeTarget'], 0)})",
+        "        end", "    end",
+        f"    write_u32({int(pattern['valueOffset'], 0)}, 0)",
+        f"    write_u32({int(pattern['ownerOffset'], 0)}, 0)",
+        f"    initialize_base({int(pattern['baseInitializerTarget'], 0)})",
+        "end", "",
+    ])
+
+
 def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
     source_bytes = helper_ir_path.read_bytes()
     document = json.loads(source_bytes.decode("utf-8-sig"))
@@ -292,7 +314,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
                                           "optional-resource-script-thing-return",
                                           "destroy-and-zero-field",
                                           "opaque-vtable-token-initializer",
-                                          "reference-counted-token-destructor"}
+                                          "reference-counted-token-destructor",
+                                          "reference-counted-script-token-destructor"}
                     and row["complete"]]
         if len(patterns) != 1:
             raise ValueError(f"expected one complete switch for {helper['targetAddress']}")
@@ -325,6 +348,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
             text = emit_vtable_token_initializer(helper, pattern)
         elif pattern["kind"] == "reference-counted-token-destructor":
             text = emit_reference_counted_token_destructor(helper, pattern)
+        elif pattern["kind"] == "reference-counted-script-token-destructor":
+            text = emit_reference_counted_script_token_destructor(helper, pattern)
         else:
             text = emit_return(helper, pattern)
         filename = helper["targetAddress"].removeprefix("0x") + ".lua"

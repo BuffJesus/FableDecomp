@@ -300,6 +300,23 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
             "baseDestructorTarget": direct[1]["target"],
             "callSites": [call["site"] for call in direct],
         })
+    if (current_name == "C3DClothPrimitive::~C3DClothPrimitive"
+            and len(direct) == 2 and not indirect
+            and [call.get("target") for call in direct] == ["0x00BFE9BC", "0x0099A2E0"]
+            and all(value in text for value in (
+                "&PTR__scalar_deleting_destructor__01238c8c",
+                "*(int **)(this + 8)", "*piVar1 = *piVar1 + -1",
+                "**(int **)(this + 8) == 0",
+                "*(undefined4 *)(this + 4) = 0",
+                "*(undefined4 *)(this + 8) = 0"))):
+        patterns.append({
+            "kind": "reference-counted-script-token-destructor", "complete": True,
+            "valueOffset": "0x4", "ownerOffset": "0x8",
+            "preReleaseVtableAddress": "0x01238C8C",
+            "ownerFreeTarget": direct[0]["target"],
+            "baseInitializerTarget": direct[1]["target"],
+            "callSites": [call["site"] for call in direct],
+        })
     return patterns
 
 
@@ -433,6 +450,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
                 "destroy-and-zero-field",
                 "opaque-vtable-token-initializer",
                 "reference-counted-token-destructor",
+                "reference-counted-script-token-destructor",
             } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)

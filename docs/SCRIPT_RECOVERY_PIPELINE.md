@@ -243,7 +243,12 @@ storage. Totals reach twenty-three helpers / 123 checks, 381 resolved calls acro
 are executed; final release destroys the pointee and frees the owner via `0x00BFE9BC`; every path
 clears `+8/+C`, restores vtable `0x0126008C`, and invokes base destructor `0x0099A430`. Host callbacks
 keep owner tokens opaque while preserving order. Totals reach twenty-five helpers / 129 checks, 545
-resolved calls across 138 scripts, and 130 helper labels / 1,032 calls left.
+resolved calls across 138 scripts, and 130 helper labels / 1,032 calls left. The largest remaining
+single target, `0x004AA840`, is another donor-mislabeled script-token destructor: it first writes
+vtable `0x01238C8C`, applies the same three reference-count branches to owner `+8`, clears `+4/+8`,
+and tail-initializes through already-lifted target `0x0099A2E0`. All branches execute through opaque
+callbacks. Totals reach twenty-six helpers / 132 checks, 825 resolved calls across 140 scripts, and
+129 helper labels / 752 calls left.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`

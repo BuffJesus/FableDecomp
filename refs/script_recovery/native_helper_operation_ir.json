@@ -8,8 +8,8 @@
     "consumerCalls": 1437,
     "directDependencyCalls": 4967,
     "directDependencyTargets": 206,
-    "semanticPatterns": 25,
-    "luaEmissionReady": 25,
+    "semanticPatterns": 26,
+    "luaEmissionReady": 26,
     "resolvedParentInitializers": 2,
     "resolvedInterfaceCalls": 273,
     "resolvedInterfaceMethods": 62,
@@ -3956,9 +3956,23 @@
       "controlFlow": {
         "if": 2
       },
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "reference-counted-script-token-destructor",
+          "complete": true,
+          "valueOffset": "0x4",
+          "ownerOffset": "0x8",
+          "preReleaseVtableAddress": "0x01238C8C",
+          "ownerFreeTarget": "0x00BFE9BC",
+          "baseInitializerTarget": "0x0099A2E0",
+          "callSites": [
+            "0x004AA864",
+            "0x004AA87D"
+          ]
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x007E74D0",

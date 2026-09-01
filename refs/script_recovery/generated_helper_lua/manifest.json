@@ -1,9 +1,9 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "79723741DAD5D730CBEBAD5F27EF910577139688EABE90C4E2D91C60A80E0936",
+  "sourceSha256": "3C9F295B6EF869F5FA9EECEA7A14B50CBA0907DF7815ABD94D69FAE142B2D21B",
   "summary": {
-    "emitted": 25,
+    "emitted": 26,
     "deploymentEligible": 0
   },
   "entries": [
@@ -20,6 +20,29 @@
         "argumentOffset": "0x24",
         "callTarget": "0x00CBDF70",
         "callSite": "0x00CB8946"
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x004AA840",
+      "currentName": "C3DClothPrimitive::~C3DClothPrimitive",
+      "sourceDecompileSha256": "ec8b4500e95321b426280060d9e138e2d9a013a3e8965b58b947f20c1043977d",
+      "luaFile": "004AA840.lua",
+      "luaSha256": "0E4D8C345EABDCBF961EEEE8EC58FADB10D592ECDD04284438EC216EE192B344",
+      "semanticPattern": {
+        "kind": "reference-counted-script-token-destructor",
+        "complete": true,
+        "valueOffset": "0x4",
+        "ownerOffset": "0x8",
+        "preReleaseVtableAddress": "0x01238C8C",
+        "ownerFreeTarget": "0x00BFE9BC",
+        "baseInitializerTarget": "0x0099A2E0",
+        "callSites": [
+          "0x004AA864",
+          "0x004AA87D"
+        ]
       },
       "parentInitializerEvidence": null,
       "deploymentEligible": false,
