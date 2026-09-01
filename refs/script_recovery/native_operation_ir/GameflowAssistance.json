@@ -1,0 +1,341 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "GameflowAssistance",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/GameflowAssistance.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00CF0640",
+  "vtableAddress": "0x012C5DE0",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00CF0680",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
+          "offset": 331
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 456
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00CEFA20",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00cefa20",
+          "offset": 18
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 470
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 669
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1106
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1167
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 994
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 1046
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00CEFAC0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00cefac0",
+          "offset": 18
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 870
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1073
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1574
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1635
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 2552
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2755
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3249
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 3310
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4230
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4433
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4926
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 4987
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 5907
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6110
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6624
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 6685
+        }
+      ],
+      "strings": [
+        "Tutorial_CombatMultiplier",
+        "",
+        "Tutorial_LowHealth",
+        "",
+        "Tutorial_LowMagic",
+        "",
+        "Tutorial_RenownLevelIncrease",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "NScript::CGameflowAssistanceScript::Tutorial_LowHealth",
+          "offset": 1423
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 1512
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "NScript::CGameflowAssistanceScript::Tutorial_LowHealth",
+          "offset": 3098
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 3187
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "NScript::CGameflowAssistanceScript::Tutorial_LowHealth",
+          "offset": 4775
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 4864
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "NScript::CGameflowAssistanceScript::Tutorial_RenownLevelIncrease",
+          "offset": 6463
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 6562
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00CEFA00",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00cefa00",
+          "offset": 18
+        }
+      ],
+      "strings": [],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 52
+        },
+        {
+          "fieldOffset": "0x4c",
+          "valueExpression": "0",
+          "offset": 92
+        },
+        {
+          "fieldOffset": "0x50",
+          "valueExpression": "1",
+          "offset": 132
+        },
+        {
+          "fieldOffset": "0x54",
+          "valueExpression": "0",
+          "offset": 172
+        },
+        {
+          "fieldOffset": "0x58",
+          "valueExpression": "0",
+          "offset": 212
+        },
+        {
+          "fieldOffset": "0x5c",
+          "valueExpression": "0",
+          "offset": 252
+        },
+        {
+          "fieldOffset": "0x60",
+          "valueExpression": "0",
+          "offset": 331
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00CF0560",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00cf0560",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "FlourishesOffered",
+        "FlourishesPerformed",
+        "CombatMultHighestLevel",
+        "CombatMultFramesSinceChange",
+        "HealthWarningsGiven",
+        "WillEnergyWarningsGiven",
+        "SaveWarningsGiven",
+        "SavedRenownLevel"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "FlourishesOffered",
+          "nativeType": "signed_char",
+          "offset": 245
+        },
+        {
+          "key": "FlourishesPerformed",
+          "nativeType": "signed_char",
+          "offset": 403
+        },
+        {
+          "key": "CombatMultHighestLevel",
+          "nativeType": "signed_char",
+          "offset": 567
+        },
+        {
+          "key": "CombatMultFramesSinceChange",
+          "nativeType": "signed_char",
+          "offset": 734
+        },
+        {
+          "key": "HealthWarningsGiven",
+          "nativeType": "signed_char",
+          "offset": 906
+        },
+        {
+          "key": "WillEnergyWarningsGiven",
+          "nativeType": "signed_char",
+          "offset": 1070
+        },
+        {
+          "key": "SaveWarningsGiven",
+          "nativeType": "signed_char",
+          "offset": 1238
+        },
+        {
+          "key": "SavedRenownLevel",
+          "nativeType": "signed_char",
+          "offset": 1399
+        }
+      ]
+    }
+  ]
+}

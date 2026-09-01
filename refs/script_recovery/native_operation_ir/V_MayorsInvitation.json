@@ -1,0 +1,469 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "V_MayorsInvitation",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/V_MayorsInvitation.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00EBCC10",
+  "vtableAddress": "0x012F0528",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00EBCC70",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
+          "offset": 179
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 333
+        },
+        {
+          "operation": "call",
+          "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
+          "offset": 391
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 516
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00EB6CB0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00EB6D70",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_MayorsInvitationScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_MayorsInvitationScript::Main",
+          "offset": 149
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 1360
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 1477
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1692
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2115
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 2177
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3146
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3303
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3406
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 3710
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4222
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4379
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4486
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 4790
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 5302
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5459
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5567
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 5871
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 6372
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 6490
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6693
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7111
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 7171
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 8105
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8308
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8731
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 8791
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 9725
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9928
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10321
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 10381
+        }
+      ],
+      "strings": [
+        "MonitorThunderHeroDuel",
+        "",
+        "LadyGrey",
+        "WiseVillager",
+        "MI_InfoKeeper",
+        "WatchForTermination",
+        "",
+        "WatchExposeMayorProgress",
+        "",
+        "DoMission",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x58",
+          "valueExpression": "= 5) && (this[0x4e] == (CV_MayorsInvitationScript)0x0)) &&\r\n     (this[0x4f] == (CV_MayorsInvitationScript)0x0)) {\r\n    bVar1 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)this)",
+          "offset": 1209
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "MonitorThunderHeroDuel",
+          "offset": 1989
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 2048
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 3531
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 3666
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 4611
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 4746
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 5692
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 5827
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "MayorsInvitation_OnEnter",
+          "offset": 6989
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 7048
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "WatchExposeMayorProgress",
+          "offset": 8609
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 8668
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "DoMission",
+          "offset": 10214
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 10258
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00EB6BD0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_MayorsInvitationScript::Init",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_MayorsInvitationScript::Init",
+          "offset": 149
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1021
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 1549
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 1905
+        },
+        {
+          "operation": "call",
+          "callee": "NHeroInformationScreens::CBase::CBase",
+          "offset": 1994
+        }
+      ],
+      "strings": [
+        "OakvaleHSP"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x54",
+          "valueExpression": "0",
+          "offset": 670
+        },
+        {
+          "fieldOffset": "0x5c",
+          "valueExpression": "0",
+          "offset": 707
+        },
+        {
+          "fieldOffset": "0x58",
+          "valueExpression": "0",
+          "offset": 792
+        },
+        {
+          "fieldOffset": "0x68",
+          "valueExpression": "= 0) {\r\n        (*(code *)(*(int **)(this + 0x68))[1])()",
+          "offset": 1458
+        },
+        {
+          "fieldOffset": "0x68",
+          "valueExpression": "piVar1",
+          "offset": 1654
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00EB98A0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00eb98a0",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "WhichQuest",
+        "SecretsLearned",
+        "HeroLearnedSecret",
+        "HeroHasDefeatedThunder",
+        "HeroHasLostToThunder",
+        "HeroReturnedFromParanoidQuest"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "WhichQuest",
+          "nativeType": "signed_char",
+          "offset": 245
+        },
+        {
+          "key": "SecretsLearned",
+          "nativeType": "signed_char",
+          "offset": 382
+        },
+        {
+          "key": "HeroLearnedSecret",
+          "nativeType": "signed_char",
+          "offset": 566
+        },
+        {
+          "key": "HeroHasDefeatedThunder",
+          "nativeType": "signed_char",
+          "offset": 753
+        },
+        {
+          "key": "HeroHasLostToThunder",
+          "nativeType": "signed_char",
+          "offset": 945
+        },
+        {
+          "key": "HeroReturnedFromParanoidQuest",
+          "nativeType": "signed_char",
+          "offset": 1135
+        }
+      ]
+    }
+  ]
+}

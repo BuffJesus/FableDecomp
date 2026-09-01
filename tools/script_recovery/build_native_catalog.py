@@ -31,21 +31,35 @@ def address_from_allocator(value: str) -> str | None:
     return f"0x{match.group(1).upper()}" if match else None
 
 
-def load_registry(path: Path) -> list[dict[str, Any]]:
+def load_allocator_evidence(path: Path | None) -> dict[str, dict[str, str]]:
+    if path is None:
+        return {}
+    with path.open(encoding="utf-8-sig", newline="") as stream:
+        return {row["quest_name"]: row for row in csv.DictReader(stream, delimiter="\t")}
+
+
+def load_registry(path: Path, allocator_evidence: Path | None = None) -> list[dict[str, Any]]:
+    evidence = load_allocator_evidence(allocator_evidence)
     rows = []
     with path.open(encoding="utf-8-sig", newline="") as stream:
         for row in csv.DictReader(stream, delimiter="\t"):
             name = row["quest_name"]
+            registry_address = address_from_allocator(row.get("allocFunc", ""))
+            recovered = evidence.get(name)
+            recovered_address = (
+                f"0x{recovered['allocator_address'].upper()}" if recovered else None
+            )
             rows.append({
                 "name": name,
                 "kind": classify(name, master=row.get("master") == "1"),
                 "numericId": int(row["id"]),
                 "master": row.get("master") == "1",
                 "allocator": row.get("allocFunc") or None,
-                "allocatorAddress": address_from_allocator(row.get("allocFunc", "")),
+                "allocatorAddress": recovered_address or registry_address,
                 "dataAllocator": row.get("dataAlloc") or None,
                 "section": row.get("section") or None,
-                "evidenceLevel": "registry-fact",
+                "evidenceLevel": "registry-operand" if recovered else "registry-fact",
+                "allocatorEvidence": recovered,
                 "source": str(path),
             })
     return rows
@@ -74,8 +88,11 @@ def correlate(catalog: list[dict[str, Any]], corpus_path: Path | None) -> list[d
     return results
 
 
-def build(registry: Path, output: Path, corpus: Path | None = None) -> dict[str, int]:
-    scripts = load_registry(registry.resolve())
+def build(registry: Path, output: Path, corpus: Path | None = None,
+          allocator_evidence: Path | None = None) -> dict[str, int]:
+    scripts = load_registry(
+        registry.resolve(), allocator_evidence.resolve() if allocator_evidence else None
+    )
     correlations = correlate(scripts, corpus.resolve() if corpus else None)
     by_kind: dict[str, int] = {}
     for row in scripts:
@@ -97,12 +114,12 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--registry", type=Path, default=Path("ghidra_out/quest_registry_table.tsv"))
     parser.add_argument("--corpus", type=Path)
+    parser.add_argument("--allocator-evidence", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    print(json.dumps(build(args.registry, args.output, args.corpus), sort_keys=True))
+    print(json.dumps(build(args.registry, args.output, args.corpus, args.allocator_evidence), sort_keys=True))
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

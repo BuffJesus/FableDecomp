@@ -1,7 +1,7 @@
 {
   "schema": "fable-native-script-operation-ir/0.1",
   "script": "V_ChickenKicking",
-  "cluster": "refs/script_recovery/native_clusters/V_ChickenKicking.json",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/V_ChickenKicking.json",
   "evidenceLevel": "native-decompile",
   "allocatorAddress": "0x00E68E60",
   "vtableAddress": "0x012E7318",

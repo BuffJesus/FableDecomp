@@ -1,0 +1,5017 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "Gameflow",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/Gameflow.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00CEF950",
+  "vtableAddress": "0x012C3FA4",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00CEF9A0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CThingSwitch::_vector_deleting_destructor_",
+          "offset": 163
+        },
+        {
+          "operation": "call",
+          "callee": "CDefendingCombatantInfo::CCombatWheel::ResetRings",
+          "offset": 275
+        },
+        {
+          "operation": "call",
+          "callee": "CDefendingCombatantInfo::CCombatWheel::ResetRings",
+          "offset": 360
+        },
+        {
+          "operation": "call",
+          "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
+          "offset": 445
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 570
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00CE75B0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00CE7670",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00ce7670",
+          "offset": 18
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 57163
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 57348
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 57863
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 57911
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 58808
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 58993
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 59551
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 59599
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 61040
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 61650
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 62256
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 62862
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 63471
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 64055
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 64293
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 64462
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 64541
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 65611
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 66331
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 66496
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 67092
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 67440
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 67528
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 68054
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 68142
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 68668
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 68759
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 69285
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 69361
+        },
+        {
+          "operation": "call",
+          "callee": "CDefendingCombatantInfo::CCombatWheel::ResetRings",
+          "offset": 70014
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 70116
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 70317
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 70365
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 70403
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 70500
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 71466
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 72042
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 72132
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 73098
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 73178
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 73705
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 73787
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 74314
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 74393
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 74920
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 74994
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 75521
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 75616
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 76049
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 76124
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 76651
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 76724
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 77251
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 77338
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 77865
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 77941
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 78468
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 78542
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 79069
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 79141
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 79667
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 79745
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 80272
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 80363
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 80796
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 80873
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 81400
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 81475
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 82002
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 82085
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 82612
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 82699
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 83226
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 83313
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 83840
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 83916
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 84443
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 84522
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 85049
+        },
+        {
+          "operation": "call",
+          "callee": "std__vector__push_back",
+          "offset": 85126
+        },
+        {
+          "operation": "call",
+          "callee": "CDefendingCombatantInfo::CCombatWheel::ResetRings",
+          "offset": 85723
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 85920
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 86625
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 86790
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 87385
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 87542
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 88180
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 88425
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 88452
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 88486
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 89206
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 89371
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 89967
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 90124
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 90711
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 91297
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 91882
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 92477
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 93055
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 93650
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 94236
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 94591
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 95011
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 95176
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 95274
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 95622
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 95692
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 96539
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptThing::_IsAlive_CScriptThing__UBE_NXZ",
+          "offset": 97111
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 97284
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 97421
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 97657
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 97732
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 97804
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 98933
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 99020
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 100219
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 100294
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 101399
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 101486
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 102661
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 103241
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 103916
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 104494
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 105069
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 105654
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 106227
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 106805
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 107383
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 107955
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 108302
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 108652
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 109322
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 109415
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 110564
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 111764
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 112090
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 113896
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 114053
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 114128
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 115097
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 115176
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 116241
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 116844
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 117446
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 117537
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 118537
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 118625
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 119704
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 119800
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 120939
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 121520
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 121617
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 122691
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 123371
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 123469
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 124544
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 125225
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 125326
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 126235
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 126594
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 127240
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 127389
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 127954
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 128302
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 128987
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 129136
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 129706
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 129744
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 129885
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 129943
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 131057
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 131198
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 131296
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 132438
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 132626
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 132660
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 133222
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 133776
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 134347
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 134906
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 135037
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 135984
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 136554
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 136686
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 137622
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 138180
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 138253
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 139148
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 139811
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 139944
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 140535
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 140706
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 140934
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 140996
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 141525
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 142055
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 142147
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 143042
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 143576
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 143673
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 144573
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 145111
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 145204
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 146202
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 146287
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 147166
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 147800
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 147933
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 148473
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 148598
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 148835
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 148897
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 148951
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 149943
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 150039
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 150956
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 151478
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 152015
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 152562
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 153198
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 153311
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 154300
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 154842
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 154944
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 155920
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 156547
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 156629
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 157531
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 157605
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 158547
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 158621
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 159649
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 160418
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 161067
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 161200
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 161755
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 161880
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 162422
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 162964
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 163489
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 163618
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 164520
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 165098
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 165734
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 165867
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 166409
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 166534
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 167056
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 167110
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 168163
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 168350
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 168369
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 168399
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 168481
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 169400
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 169941
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 170031
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 170924
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 171468
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 172180
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 172833
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 172966
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 173518
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 173926
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 174075
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 174134
+        },
+        {
+          "operation": "call",
+          "callee": "CONCAT13",
+          "offset": 175234
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 175302
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 175846
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 176017
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 176559
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 177090
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 177624
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 177716
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 178611
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 179144
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 179232
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 180135
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 180678
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 180769
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 181738
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 182389
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 182522
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 183079
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 183204
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 183432
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 183494
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 183731
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 183793
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 183869
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 184982
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 185511
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 186127
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 186743
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 187359
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 187444
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 188504
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 189043
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 189125
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 190182
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 190791
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 190867
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 191794
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 192401
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 192534
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 193064
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 193376
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 194091
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 194224
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 194832
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 195129
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 195318
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 195401
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 195629
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 195691
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 196228
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 196767
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 197298
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 197994
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 198119
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 198186
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 199185
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 199266
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 200265
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 200346
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 201345
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 201879
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 202477
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 202569
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 203564
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 203798
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 203890
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 204885
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 205561
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 206160
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 206277
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 206790
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 206899
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 207098
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 207238
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 207412
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 207521
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 207592
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 208529
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 209040
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 209535
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 209614
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 210538
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 211116
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 211196
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 212203
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 212782
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 212856
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 213863
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 213936
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 214750
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 215372
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 215489
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 216011
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 216162
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 216658
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 217236
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 217317
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 218325
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 219228
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 219907
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 220056
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 220633
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 220719
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 220814
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 220904
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 221942
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 222032
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 223105
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 223410
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 223624
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 223765
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 223893
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 224851
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 225495
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 225590
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 226630
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 227190
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 227753
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 227823
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 228798
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 229012
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 229153
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 229932
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 230081
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 230745
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 230886
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 230956
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 231901
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 232461
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 233114
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 233794
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 234478
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 234627
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 235209
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 235350
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 235590
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 235656
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 236313
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 236962
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 237611
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 237684
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 238853
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 238941
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 240105
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 240759
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 241418
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 241555
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 242598
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 242729
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 243682
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 244331
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 244545
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 244686
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 244753
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 245817
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 246104
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 246711
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 246844
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 247374
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 247706
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 248443
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 248576
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 249137
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 249545
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 249762
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 249822
+        },
+        {
+          "operation": "call",
+          "callee": "CONCAT13",
+          "offset": 250969
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 251037
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 251653
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 251824
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 252359
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 252982
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 253114
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 254201
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 254840
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 255011
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 256101
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 256776
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 256848
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 257884
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 258419
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 259029
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 259659
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 260178
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 260900
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 261033
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 261648
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 261773
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 262326
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 262968
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 263063
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 264133
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 264755
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 265493
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 265545
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 266583
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 267307
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 267432
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 268039
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 268156
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 268686
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 268883
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 268921
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 268949
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 269469
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 270001
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 270531
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 271051
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 271583
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 272112
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 272647
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 272738
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 273624
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 274144
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 274267
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 275224
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 275840
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 275920
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 276833
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 277532
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 277649
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 278236
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 278345
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 278544
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 278684
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 278858
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 278967
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 279544
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 280127
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 280715
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 281302
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 281386
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 282397
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 282980
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 283078
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 284088
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 284682
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 284760
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 285578
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 286277
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 286394
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 286981
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 287090
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 287697
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 287814
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 288335
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 288444
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 289039
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 289539
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 289629
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 290564
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 290684
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 291724
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 291747
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 291867
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 291965
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 292934
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 293034
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 294089
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 294198
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 295259
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 295944
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 296563
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 297064
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 297147
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 297896
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 298546
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 299170
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 299253
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 299630
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 300315
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 300891
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 301526
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 302102
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 302690
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 302754
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 303787
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 304375
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 304981
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 305076
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 306027
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 306539
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 307240
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 307357
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 307894
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 308003
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 308079
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 308974
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 309665
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 309782
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 310361
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 310470
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 310965
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 311624
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 311798
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 311907
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 311975
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 312990
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 313107
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 313188
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 314128
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 314208
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 315133
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 315610
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 315691
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 316503
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 317201
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 317318
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 317904
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 318013
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 318607
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 318724
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 319232
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 319341
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 319411
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 320267
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 320846
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 320931
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 321943
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 322536
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 322559
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 322655
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 322730
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 323699
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 324308
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 324939
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 325006
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 325976
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 326057
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 326780
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 326954
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 327196
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 327896
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 328013
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 328601
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 328710
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 328788
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 329792
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 329966
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 330208
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 330901
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 331018
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 331600
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 331630
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 331739
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 331800
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 332701
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 333281
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 333365
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 334404
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 335022
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 335103
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 335740
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 336308
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 336482
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 336724
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 337415
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 337532
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 338111
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 338220
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 338316
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 339242
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 339899
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 340073
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 340182
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 340249
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 341810
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 342408
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 342517
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 343019
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 343105
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 343710
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 343827
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 344346
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 344436
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 345206
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 345300
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 345685
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 346006
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 346738
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 346871
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 347482
+        },
+        {
+          "operation": "call",
+          "callee": "CCarriedReadableDef::CCarriedReadableDef",
+          "offset": 347580
+        },
+        {
+          "operation": "call",
+          "callee": "C3DMeshInfo::HasPhysicsMesh",
+          "offset": 347676
+        },
+        {
+          "operation": "call",
+          "callee": "CMemoryDataOutputStream::Clear",
+          "offset": 347769
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 348203
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 348488
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptGameResourceObjectMovieBase",
+          "offset": 348641
+        },
+        {
+          "operation": "call",
+          "callee": "StdMap_Construct_API",
+          "offset": 348796
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 348831
+        },
+        {
+          "operation": "call",
+          "callee": "CFourierAnalysis::CFourierAnalysis",
+          "offset": 349364
+        },
+        {
+          "operation": "call",
+          "callee": "C3DAnimationUtil::C3DAnimationUtil",
+          "offset": 350011
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 350213
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 350930
+        },
+        {
+          "operation": "call",
+          "callee": "RunCutsceneMacro_Func",
+          "offset": 351086
+        },
+        {
+          "operation": "call",
+          "callee": "CPhysicsMeshInfo",
+          "offset": 351884
+        },
+        {
+          "operation": "call",
+          "callee": "StdMap_Destroy_API",
+          "offset": 351947
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptGameResourceObjectMovieBase",
+          "offset": 352017
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 352076
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 352478
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 352916
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 353665
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 353806
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 354379
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 354814
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 355468
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 356124
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 356787
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 357429
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 358073
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 358625
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 359182
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 359739
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 360402
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 361065
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 361630
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 362181
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 362740
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 363406
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 364067
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 364638
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 365193
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 365747
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 366317
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 366902
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 367615
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 368504
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 368871
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 369460
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 369569
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 370062
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 370301
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 370573
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 370770
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 370882
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 371355
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 371440
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 372253
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 372716
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 373290
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 373399
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 373891
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 374124
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 374396
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 374593
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 374768
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 374932
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 375033
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 375102
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 376133
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 376302
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 376321
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 376345
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 376820
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 377312
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 377394
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 378276
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 378354
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 379236
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 379784
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 379867
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 380750
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 381234
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 381321
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 382104
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 382693
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 382802
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 383309
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 383410
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 383909
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 384131
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 384152
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 384184
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 384687
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 385180
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 385673
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 386157
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 386226
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 387062
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 387146
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 388096
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 388583
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 389071
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 389169
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 389988
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 390520
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 390642
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 391184
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 391731
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 391915
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 392032
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 392390
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 392510
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 392674
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 392775
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 393377
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 393518
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 393591
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 393796
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 393832
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 394271
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 394821
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 394906
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 395796
+        }
+      ],
+      "strings": [
+        "CoreQuestReminder",
+        "",
+        "CheckBarrowFieldsGuards",
+        "",
+        "OBJECT_TATTOO_CARD_CHEST_CUSTOM_01",
+        "OBJECT_TATTOO_CARD_BACK_CUSTOM_01",
+        "OBJECT_TATTOO_CARD_ARMS_CUSTOM_01",
+        "OBJECT_TATTOO_CARD_LEGS_CUSTOM_01",
+        "OBJECT_TATTOO_CARD_FACE_CUSTOM_01",
+        "Q_NewOakValeIntro",
+        "OBJECT_QUEST_CARD_OAKVALE_INTRO",
+        "Q_NewOakValeIntro",
+        "Q_NewOakValeIntro",
+        "Hook_Fresco_07_OakValeRaid",
+        "Hook_Fresco_09_TimePassing",
+        "Hook_Fresco_10_UneasyAlliance",
+        "Q_GuildTraining",
+        "TEXT_AI_GOSSIP_GUILD_TRAINING_GUILD",
+        "GUILD_TRAINING",
+        "GUILD_TRAINING",
+        "VILLAGE_GUILD_COMPLEX_INSIDE",
+        "GUILD_TRAINING",
+        "CreatureGenerators",
+        "Q_ArenaHoldingScript",
+        "V_AssassinAttacks",
+        "V_BanditToll",
+        "V_TravellingHeroes",
+        "V_BeardyBaldy",
+        "V_BodyGuard",
+        "Q_BowerstoneTownLifeIntro",
+        "V_ChapelOfEvil",
+        "V_DemonDoors",
+        "V_Fisherman",
+        "V_FisticuffsClub",
+        "V_HauntedHouse",
+        "Q_HerosOldHouse",
+        "V_HiddenBooty",
+        "V_RandomPopulationSim",
+        "Q_RansomVictimChiefsHouse",
+        "V_RockTrollFirstEncounter",
+        "V_StatueMaster",
+        "V_SwordInTheStone",
+        "V_TempleOfLight",
+        "Q_GuildTraining",
+        "Q_GuildTraining",
+        "Hook_Fresco_10_UneasyAlliance",
+        "HeroGuildComplex",
+        "HeroGuildComplex",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingDeparture",
+        "TheRealGuildmaster",
+        "M_GuildmasterMarker",
+        "TheRealGuildmaster",
+        "GuildDoors",
+        "Q_WaspBoss",
+        "OBJECT_QUEST_CARD_WASP_MENACE",
+        "DUMMY_QUEST_HAS_NO_SCRIPT",
+        "OBJECT_DUMMY_QUEST_CARD_DEFEAT_SNOW_TROLL",
+        "DUMMY_QUEST_2",
+        "OBJECT_DUMMY_QUEST_CARD_SUPPRESS_UPRISING",
+        "DUMMY_QUEST_HAS_NO_SCRIPT",
+        "OBJECT_DUMMY_QUEST_CARD_MINION_CAMP",
+        "GameflowAssistance",
+        "CS_OakValeRevisited",
+        "V_BeggarAndChild",
+        "V_GuildMaster",
+        "Q_OrchardFarm_Barricade",
+        "V_SickChild",
+        "V_BookCollecting",
+        "V_ChickenKicking",
+        "V_Bordello",
+        "WitchwoodTeleporter",
+        "GUILD_TRAINING",
+        "TEXT_AI_GOSSIP_WASP_BOSS_GLOBAL",
+        "WASP_BOSS",
+        "WASP_BOSS",
+        "Q_OrchardFarmRaidEvil",
+        "Q_OrchardFarmRaidGood",
+        "GreatwoodLake",
+        "OrchardFarm",
+        "GreatwoodEntrance",
+        "OrchardFarm",
+        "V_IntroductionToTrophies",
+        "QR_EscortTrader_Manager",
+        "Q_TraderEscort",
+        "OBJECT_QUEST_CARD_DARKWOOD_TRADER_ESCORT",
+        "Q_HobbeCave",
+        "OBJECT_QUEST_CARD_HOBBE_CAVE",
+        "Q_HobbeToothContest",
+        "OBJECT_QUEST_CARD_HOBBE_CONTEST",
+        "DOING_ORCH_FARM",
+        "TEXT_AI_GOSSIP_TRADER_ESCORT_GLOBAL",
+        "TRADER_ESCORT_GLOBAL",
+        "TRADER_ESCORT_GLOBAL",
+        "TEXT_AI_GOSSIP_TRADER_ESCORT_BSSLUMS",
+        "TRADER_ESCORT_BSSLUMS",
+        "TRADER_ESCORT_BSSLUMS",
+        "VILLAGE_BOWERSTONE_SLUMS",
+        "TRADER_ESCORT_BSSLUMS",
+        "Q_TraderEscort",
+        "Q_TraderEscort",
+        "Q_TraderEscort",
+        "Q_TraderEscort",
+        "",
+        "TEXT_QST_078_GM_MSG_MAZE_AGAIN",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "OBJECT_QUEST_CARD_GUARDIAN_SISTER_INFO_SECOND",
+        "V_IntroductionToTrophies",
+        "V_TalentlessBard",
+        "TRADER_ESCORT_GLOBAL",
+        "TRADER_ESCORT_BSSLUMS",
+        "TEXT_AI_GOSSIP_VISIT_MAZE_2_GLOBAL",
+        "VISIT_MAZE_2_GLOBAL",
+        "VISIT_MAZE_2_GLOBAL",
+        "TEXT_AI_GOSSIP_VISIT_MAZE_2_BSSLUMS",
+        "VISIT_MAZE_2_BSSLUMS",
+        "VISIT_MAZE_2_BSSLUMS",
+        "VILLAGE_OAKVALE",
+        "VISIT_MAZE_2_BSSLUMS",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "VISIT_MAZE_2_GLOBAL",
+        "VISIT_MAZE_2_BSSLUMS",
+        "TEXT_AI_GOSSIP_DOING_BANDIT_CAMP_GLOBAL",
+        "DOING_BANDIT_CAMP_GLOBAL",
+        "DOING_BANDIT_CAMP_GLOBAL",
+        "TEXT_AI_GOSSIP_DOING_BANDIT_CAMP_BANDITCAMP",
+        "DOING_BANDIT_CAMP_BANDITCAMP",
+        "DOING_BANDIT_CAMP_BANDITCAMP",
+        "VILLAGE_BANDIT_CAMP_MAIN",
+        "DOING_BANDIT_CAMP_BANDITCAMP",
+        "VILLAGE_BANDIT_CAMP_RESIDENTIAL",
+        "DOING_BANDIT_CAMP_BANDITCAMP",
+        "Q_BanditCamp",
+        "Q_BanditCamp",
+        "",
+        "TEXT_QST_078_GM_MSG_MAZE_YET_AGAIN",
+        "QS_GuardianTrophyDealerInfo",
+        "OBJECT_QUEST_CARD_GUARDIAN_TROPHY_DEALER_INFO",
+        "V_BanditToll",
+        "Hook_Fresco_08_SistersStory",
+        "DOING_BANDIT_CAMP_GLOBAL",
+        "DOING_BANDIT_CAMP_BANDITCAMP",
+        "TEXT_AI_GOSSIP_VISIT_MAZE_3_GLOBAL",
+        "VISIT_MAZE_3_GLOBAL",
+        "VISIT_MAZE_3_GLOBAL",
+        "TEXT_AI_GOSSIP_VISIT_MAZE_3_GUILD",
+        "VISIT_MAZE_3_GUILD",
+        "VISIT_MAZE_3_GUILD",
+        "VILLAGE_GUILD_COMPLEX_INSIDE",
+        "VISIT_MAZE_3_GUILD",
+        "Q_TraderConflictEvil",
+        "OBJECT_QUEST_CARD_TRADER_CONFLICT_EVIL",
+        "Q_TraderConflictGood",
+        "OBJECT_QUEST_CARD_TRADER_CONFLICT_GOOD",
+        "V_MurderTwistFinal",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_GuardianTrophyDealerInfo",
+        "Hook_BalverinesInKHGPreWhiteBalv",
+        "VISIT_MAZE_3_GLOBAL",
+        "VISIT_MAZE_3_GUILD",
+        "TEXT_AI_GOSSIP_FIND_ARCHAEOLOGIST_GLOBAL",
+        "FIND_ARCHAEOLOGIST",
+        "FIND_ARCHAEOLOGIST",
+        "V_TrophyDealer",
+        "V_TrophyDealer",
+        "V_AmbushScam",
+        "",
+        "TEXT_QST_078_GM_MSG_FOUND_TROPHY_DEALER",
+        "Q_WhiteBalverineKnotholeGlade",
+        "OBJECT_QUEST_CARD_WHITE_BALVERINE_KNOTHOLE_GLADE",
+        "FIND_ARCHAEOLOGIST",
+        "TEXT_AI_GOSSIP_PRE_WHITE_BALV_GLOBAL",
+        "PRE_WHITE_BALV_GLOBAL",
+        "PRE_WHITE_BALV_GLOBAL",
+        "PRE_WHITE_BALV_WITCHWOOD",
+        "Q_WhiteBalverineKnotholeGlade",
+        "KnotholeGlade",
+        "",
+        "TEXT_QST_078_GM_MSG_KNOTHOLE_GLADE_CLOSED",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Hook_BalverinesInKHGPreWhiteBalv",
+        "PRE_WHITE_BALV_GLOBAL",
+        "PRE_WHITE_BALV_WITCHWOOD",
+        "TEXT_AI_GOSSIP_DOING_WHITE_BALV_GLOBAL",
+        "DOING_WHITE_BALV_GLOBAL",
+        "DOING_WHITE_BALV_GLOBAL",
+        "TEXT_AI_GOSSIP_DOING_WHITE_BALV_KHG",
+        "DOING_WHITE_BALV_KHG",
+        "DOING_WHITE_BALV_KHG",
+        "VILLAGE_KNOTHOLE_GLADE",
+        "DOING_WHITE_BALV_KHG",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_Arena",
+        "OBJECT_QUEST_CARD_ARENA",
+        "Q_HobbeToothContest",
+        "V_ArcheryCompetition",
+        "DOING_WHITE_BALV_GLOBAL",
+        "DOING_WHITE_BALV_KHG",
+        "TEXT_AI_GOSSIP_PRE_ARENA_GLOBAL",
+        "PRE_ARENA_GLOBAL",
+        "PRE_ARENA_GLOBAL",
+        "TEXT_AI_GOSSIP_PRE_ARENA_KHG",
+        "PRE_ARENA_KHG",
+        "PRE_ARENA_KHG",
+        "VILLAGE_KNOTHOLE_GLADE",
+        "PRE_ARENA_KHG",
+        "Q_Arena",
+        "Q_Arena",
+        "Q_Arena",
+        "Q_Arena",
+        "Hook_Fresco_05_MothersStory",
+        "Hook_Fresco_13_KilledScorpion",
+        "V_GhostGrannyNecklace",
+        "V_MayorsInvitation",
+        "QS_MeetSister",
+        "OBJECT_QUEST_CARD_MEET_SISTER",
+        "Q_BreakSiege",
+        "OBJECT_QUEST_CARD_BREAK_SIEGE",
+        "V_LostTrader",
+        "OBJECT_QUEST_CARD_LOST_TRADER",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "TEXT_AI_GOSSIP_SPARED_WHISPER_GLOBAL",
+        "WHISPERS_FATE",
+        "WHISPERS_FATE",
+        "TEXT_AI_GOSSIP_KILLED_WHISPER_GLOBAL",
+        "WHISPERS_FATE",
+        "WHISPERS_FATE",
+        "QS_MeetSister",
+        "QS_MeetSister",
+        "Q_MinionClifftopChase",
+        "OBJECT_QUEST_CARD_MINION_CLIFFTOP_CHASE",
+        "PRE_ARENA_GLOBAL",
+        "PRE_ARENA_KHG",
+        "TEXT_AI_GOSSIP_PRE_MCC_GLOBAL",
+        "PRE_MCC_GLOBAL",
+        "PRE_MCC_GLOBAL",
+        "TEXT_AI_GOSSIP_PRE_MCC_BSTONES",
+        "PRE_MCC_BSTONES",
+        "PRE_MCC_BSTONES",
+        "VILLAGE_BOWERSTONE_SLUMS",
+        "PRE_MCC_BSTONES",
+        "VILLAGE_BOWERSTONE_POSH",
+        "PRE_MCC_BSTONES",
+        "Q_MinionClifftopChase",
+        "Q_MinionClifftopChase",
+        "PRE_MCC_GLOBAL",
+        "PRE_MCC_STONES",
+        "TEXT_AI_GOSSIP_DOING_MCC_GLOBAL",
+        "DOING_MCC_GLOBAL",
+        "DOING_MCC_GLOBAL",
+        "Q_MinionClifftopChase",
+        "Q_MinionClifftopChase",
+        "Q_HangingTreeEvil",
+        "OBJECT_QUEST_CARD_HANGING_TREE_EVIL",
+        "Q_HangingTreeGood",
+        "OBJECT_QUEST_CARD_HANGING_TREE_GOOD",
+        "Q_OpeningGraveyardSecretPassage",
+        "OBJECT_QUEST_CARD_GRAVEYARD_SECRET_PASSAGE",
+        "DOING_MCC_GLOBAL",
+        "TEXT_AI_GOSSIP_DOING_GRAVEYARD_GLOBAL",
+        "DOING_GRAVEYARD_GLOBAL",
+        "DOING_GRAVEYARD_GLOBAL",
+        "DOING_GRAVEYARD_GRAVEYARD",
+        "Q_MinionCamp",
+        "OBJECT_QUEST_CARD_MINION_CAMP",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_BountyHunt",
+        "OBJECT_QUEST_CARD_BOUNTY_HUNT",
+        "DOING_GRAVEYARD_GLOBAL",
+        "DOING_GRAVEYARD_GRAVEYARD",
+        "WHISPERS_FATE",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonEscapeRescueMother",
+        "Hook_Fresco_03_JacksObsession",
+        "Hook_Fresco_06_Prison",
+        "Hook_Fresco_04_Kraken",
+        "",
+        "TEXT_QST_078_GM_MSG_GUILD_SEAL_ACTIVE",
+        "Q_AmbushTraders",
+        "OBJECT_QUEST_CARD_AMBUSH_TRADERS",
+        "V_BeardyBaldy",
+        "V_ParanoidWhispers",
+        "TEXT_AI_GOSSIP_HOOK_COAST_GATEWAY_GLOBAL",
+        "HOOK_COAST_GATEWAY_GLOBAL",
+        "TEXT_AI_GOSSIP_AFTER_PRISON_GLOBAL",
+        "HOOK_COAST_GATEWAY_GLOBAL",
+        "HOOK_COAST_GATEWAY_GLOBAL",
+        "Q_EndGame",
+        "OBJECT_QUEST_CARD_GATEWAY_TO_HOOK_COAST",
+        "Q_EndGame",
+        "Q_EndGame",
+        "Q_WizardBattle",
+        "HeroGuildComplexInside",
+        "",
+        "TEXT_QST_078_GM_MOTHER_LEFT_YOU_THIS",
+        "Q_WizardBattle",
+        "HOOK_COAST_GATEWAY_GLOBAL",
+        "HOOK_COAST_GATEWAY_DARKWOOD",
+        "TEXT_AI_GOSSIP_IN_HOOK_COAST_POST_DRAGON_PRE_BATTLE_GLOBAL",
+        "IN_HOOK_COAST_POST_DRAGON_PRE_BATTLE_GLOBAL",
+        "IN_HOOK_COAST_POST_DRAGON_PRE_BATTLE_GLOBAL",
+        "TEXT_AI_GOSSIP_IN_HOOK_COAST_POST_DRAGON_PRE_BATTLE_HOOKCOAST",
+        "IN_HOOK_COAST_POST_DRAGON_PRE_BATTLE_HOOKCOAST",
+        "IN_HOOK_COAST_POST_DRAGON_PRE_BATTLE_HOOKCOAST",
+        "VILLAGE_HOOK_COAST",
+        "IN_HOOK_COAST_POST_DRAGON_PRE_BATTLE_HOOKCOAST",
+        "Q_RansomVictimChiefsHouse",
+        "Q_WizardBattle",
+        "V_RandomPopulationSim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_WizardBattle",
+        "Q_WizardBattle",
+        "IN_HOOK_COAST_POST_DRAGON_PRE_BATTLE_GLOBAL",
+        "IN_HOOK_COAST_POST_DRAGON_PRE_BATTLE_HOOKCOAST",
+        "TEXT_AI_GOSSIP_AFTER_WIZARD_BATTLE_GLOBAL",
+        "AFTER_WIZARD_BATTLE_GLOBAL",
+        "AFTER_WIZARD_BATTLE_GLOBAL",
+        "Hook_Fresco_10_UneasyAlliance",
+        "",
+        "TEXT_QST_078_GM_MSG_GO_TO_WITCHWOOD_FOR_FOCAL_SITES",
+        "HeroGuildComplexInside",
+        "HeroGuildComplexInside",
+        "Q_EndGameFocalSites",
+        "V_TourGuide",
+        "QR_EscortTrader_Manager",
+        "V_GhostGrannyNecklace",
+        "V_SickChild",
+        "V_SickChildBarrowFields",
+        "V_SickChild_Activate",
+        "AFTER_WIZARD_BATTLE_GLOBAL",
+        "TEXT_AI_GOSSIP_DOING_FOCAL_SITES_GLOBAL",
+        "DOING_FOCAL_SITES_GLOBAL",
+        "DOING_FOCAL_SITES_GLOBAL",
+        "TEXT_AI_GOSSIP_DOING_FOCAL_SITES_GUILD",
+        "DOING_FOCAL_SITES_GUILD",
+        "DOING_FOCAL_SITES_GUILD",
+        "VILLAGE_GUILD_COMPLEX_INSIDE",
+        "DOING_FOCAL_SITES_GUILD",
+        "Q_EndGameFocalSites",
+        "Q_EndGameFocalSites",
+        "V_GuildMaster",
+        "Q_EndGameBossBattle",
+        "DOING_FOCAL_SITES_GLOBAL",
+        "DOING_FOCAL_SITES_GUILD",
+        "TEXT_AI_GOSSIP_FINAL_BATTLE_GLOBAL",
+        "FINAL_BATTLE_GLOBAL",
+        "FINAL_BATTLE_GLOBAL",
+        "TEXT_AI_GOSSIP_FINAL_BATTLE_GUILD",
+        "FINAL_BATTLE_GUILD",
+        "FINAL_BATTLE_GUILD",
+        "VILLAGE_GUILD_COMPLEX_INSIDE",
+        "FINAL_BATTLE_GUILD",
+        "Q_EndGameBossBattle",
+        "Q_EndGameBossBattle",
+        "Q_EndGameBossBattle",
+        "Q_EndGameBossBattle",
+        "FINAL_BATTLE_GLOBAL",
+        "FINAL_BATTLE_GUILD",
+        "TEXT_AI_GOSSIP_AFTER_FINAL_BATTLE_GLOBAL",
+        "AFTER_FINAL_BATTLE_GLOBAL",
+        "TEXT_AI_GOSSIP_AFTER_FINAL_BATTLE_KILLED_SISTER_GLOBAL",
+        "AFTER_FINAL_BATTLE_KILLED_SISTER_GLOBAL",
+        "TEXT_AI_GOSSIP_AFTER_FINAL_BATTLE_SPARED_SISTER_GLOBAL",
+        "AFTER_FINAL_BATTLE_SPARED_SISTER_GLOBAL",
+        "TEXT_AI_GOSSIP_AFTER_FINAL_BATTLE_GOT_SWORD_GLOBAL",
+        "AFTER_FINAL_BATTLE_GOT_SWORD_GLOBAL",
+        "TEXT_AI_GOSSIP_AFTER_FINAL_BATTLE_NOTGOT_SWORD_GLOBAL",
+        "AFTER_FINAL_BATTLE_DIDNT_GET_SWORD_GLOBAL",
+        "AFTER_FINAL_BATTLE_GLOBAL",
+        "AFTER_FINAL_BATTLE_KILLED_SISTER_GLOBAL",
+        "AFTER_FINAL_BATTLE_GOT_SWORD_GLOBAL",
+        "TEXT_QST_LOG_STORY_PLATINUM_305",
+        "AFTER_FINAL_BATTLE_SPARED_SISTER_GLOBAL",
+        "AFTER_FINAL_BATTLE_DIDNT_GET_SWORD_GLOBAL",
+        "TEXT_QST_LOG_STORY_PLATINUM_300",
+        "V_RandomPopulationSim",
+        "Q_BreakSiege",
+        "Q_BreakSiege",
+        "Q_MinionCamp",
+        "Q_MinionCamp",
+        "Q_RansomVictim",
+        "OBJECT_QUEST_CARD_RANSOM_VICTIM",
+        "V_AmbushScam",
+        "DummyQuestForScarletRoseStatue",
+        "TEXT_AI_GOSSIP_LOOKOUT_POINT_DEMON_DOOR_READY",
+        "LOOKOUT_POINT_DEMON_DOOR_READY",
+        "LOOKOUT_POINT_DEMON_DOOR_READY",
+        "OakvaleMemorialGarden",
+        "OakvaleMemorialGarden",
+        "Q_FireHeart",
+        "OBJECT_QUEST_CARD_FIRE_HEART",
+        "Q_FireHeart",
+        "Q_FireHeart",
+        "V_GuildMaster",
+        "LOOKOUT_POINT_DEMON_DOOR_READY",
+        "Q_SummoningTheShip",
+        "OBJECT_QUEST_CARD_SUMMONING_THE_SHIP",
+        "V_MazeResearch",
+        "OBJECT_QUEST_CARD_MAZE_RESEARCH",
+        "TEXT_AI_GOSSIP_SUMMON_THE_SHIP",
+        "SUMMON_THE_SHIP",
+        "SUMMON_THE_SHIP",
+        "TEXT_QST_LOG_STORY_PLATINUM_310",
+        "Q_SummoningTheShip",
+        "Q_SummoningTheShip",
+        "LostBay",
+        "LostBay",
+        "Q_AwakeningTheOracle",
+        "OBJECT_QUEST_CARD_ASK_ORACLE",
+        "SUMMON_THE_SHIP",
+        "TEXT_AI_GOSSIP_NORTHERN_WASTES_OPEN",
+        "NORTHERN_WASTES_OPEN",
+        "NORTHERN_WASTES_OPEN",
+        "TEXT_AI_GOSSIP_SCARY_NECROPOLIS",
+        "SCARY_NECROPOLIS",
+        "SCARY_NECROPOLIS",
+        "SNOWSPIRE_ARRIVAL",
+        "VILLAGE_SNOWSPIRE",
+        "SNOWSPIRE_ARRIVAL",
+        "TEXT_QST_LOG_STORY_PLATINUM_320",
+        "Q_AwakeningTheOracle",
+        "Q_AwakeningTheOracle",
+        "QS_ScytheInfo",
+        "OBJECT_QUEST_CARD_SCYTHE_INFO",
+        "QS_ScytheInfo",
+        "QS_ScytheInfo",
+        "Q_HeroSouls",
+        "OBJECT_QUEST_CARD_HERO_SOULS",
+        "SCARY_NECROPOLIS",
+        "TEXT_AI_GOSSIP_NECROPOLIS_FINISHED",
+        "NECROPOLIS_FINISHED",
+        "NECROPOLIS_FINISHED",
+        "TEXT_QST_LOG_STORY_PLATINUM_330",
+        "V_Oracle",
+        "Q_HeroSouls",
+        "Q_HeroSouls",
+        "TEXT_AI_GOSSIP_DRAGON_GATE_OPEN",
+        "DRAGON_GATE_OPEN",
+        "DRAGON_GATE_OPEN",
+        "Q_DragonBossFight",
+        "OBJECT_QUEST_CARD_DRAGON_BOSS",
+        "Q_DragonBossFight",
+        "Q_DragonBossFight",
+        "Q_DragonBossFight",
+        "Q_DragonBossFight",
+        "Hook_Fresco_12_KilledDragon",
+        "FrescoDomeHSP",
+        "FrescoDome",
+        "FrescoDome",
+        "Hero",
+        "",
+        "CS_FABLE_CREDITS",
+        "NW3BronzeDoorHSP",
+        "NorthernWastes3",
+        "NorthernWastes3",
+        "EXPRESSION_SHIT",
+        "EXPRESSION_THANKS",
+        "EXPRESSION_HEROIC_STANCE",
+        "EXPRESSION_FLIRT",
+        "EXPRESSION_APOLOGY",
+        "EXPRESSION_SNEER",
+        "EXPRESSION_EVIL_LAUGH",
+        "EXPRESSION_BATTLE_CRY",
+        "EXPRESSION_PELVIC_THRUST",
+        "EXPRESSION_MIDDLE_FINGER",
+        "EXPRESSION_BELCH",
+        "EXPRESSION_FART",
+        "EXPRESSION_VICTORY_PUMP",
+        "EXPRESSION_COCK_A_DOODLE_DO",
+        "EXPRESSION_CROTCH_GRAB",
+        "EXPRESSION_KISS_MY_ASS",
+        "EXPRESSION_FLAMENCO",
+        "EXPRESSION_COSSACK",
+        "EXPRESSION_AIR_GUITAR",
+        "EXPRESSION_BALLET",
+        "EXPRESSION_SATURDAY_NIGHT_FEVER",
+        "EXPRESSION_TAP",
+        "Q_WaspBoss",
+        "Q_WaspBoss",
+        "WASP_BOSS",
+        "TEXT_AI_GOSSIP_DOING_WASP_BOSS_GLOBAL",
+        "DOING_WASP_BOSS",
+        "DOING_WASP_BOSS",
+        "Q_WaspBoss",
+        "Q_WaspBoss",
+        "QS_GuardianSisterInfo",
+        "OBJECT_QUEST_CARD_GUARDIAN_SISTER_INFO_FIRST",
+        "V_TourGuide",
+        "DOING_WASP_BOSS",
+        "TEXT_AI_GOSSIP_VISIT_MAZE_1_GLOBAL",
+        "VISIT_MAZE_1_GLOBAL",
+        "TEXT_AI_GOSSIP_WASPBOSS_KILLED",
+        "VISIT_MAZE_1_GLOBAL",
+        "VISIT_MAZE_1_GLOBAL",
+        "TEXT_AI_GOSSIP_VISIT_MAZE_1_BSSLUMS",
+        "VISIT_MAZE_1_BSSLUMS",
+        "VISIT_MAZE_1_BSSLUMS",
+        "VILLAGE_BOWERSTONE_SLUMS",
+        "VISIT_MAZE_1_BSSLUMS",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo",
+        "Hook_BowerstoneTeleportTutorial",
+        "V_PicnicAreaAfterWaspBoss",
+        "DUMMY_QUEST_HAS_NO_SCRIPT",
+        "DUMMY_QUEST_HAS_NO_SCRIPT",
+        "V_BeggarAndChild",
+        "Q_OrchardFarmRaidGood",
+        "OBJECT_QUEST_CARD_PROTECT_FARM",
+        "Q_OrchardFarmRaidEvil",
+        "OBJECT_QUEST_CARD_PROTECT_FARM_EVIL",
+        "VISIT_MAZE_1_GLOBAL",
+        "VISIT_MAZE_1_BSSLUMS",
+        "TEXT_AI_GOSSIP_PRE_ORCH_FARM_GLOBAL",
+        "PRE_ORCH_FARM",
+        "PRE_ORCH_FARM",
+        "Q_OrchardFarmRaidGood",
+        "Q_OrchardFarmRaidEvil",
+        "Q_OrchardFarmRaidGood",
+        "Q_OrchardFarmRaidEvil",
+        "TEXT_QST_LOG_GUILD_BOASTS",
+        "PRE_ORCH_FARM",
+        "TEXT_AI_GOSSIP_DOING_ORCH_FARM_GLOBAL",
+        "DOING_ORCH_FARM",
+        "DOING_ORCH_FARM"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "NScript::CQ_HeroSoulsNostroScript::CNostro::Main",
+          "offset": 57718
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 57801
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "NScript::CGameflowScript::CheckBarrowFieldsGuards",
+          "offset": 59405
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 59489
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "1",
+          "offset": 98879
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "1",
+          "offset": 120885
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 128095
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 140660
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "1",
+          "offset": 172052
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 175971
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "1",
+          "offset": 184936
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 193189
+        },
+        {
+          "fieldOffset": "0x74",
+          "valueExpression": "= '\\0') {\r\n          this_00 = (CSubtitleRenderer *)0xaa",
+          "offset": 195007
+        },
+        {
+          "fieldOffset": "0x74",
+          "valueExpression": "= '\\0') {\r\n          CCharString::CCharString(aCStack_750,\"TEXT_AI_GOSSIP_SPARED_WHISPER_GLOBAL\",-1)",
+          "offset": 202412
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "1",
+          "offset": 208487
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 216120
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "1",
+          "offset": 247578
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 251778
+        },
+        {
+          "fieldOffset": "0x88",
+          "valueExpression": "= 1) {\r\n      CCharString::CCharString(aCStack_37c,\"AFTER_FINAL_BATTLE_KILLED_SISTER_GLOBAL\",-1)",
+          "offset": 295887
+        },
+        {
+          "fieldOffset": "0x88",
+          "valueExpression": "= 2) {\r\n      CCharString::CCharString\r\n                ((CCharString *)aaStack_364,\"AFTER_FINAL_BATTLE_SPARED_SISTER_GLOBAL\",-1)",
+          "offset": 297839
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 300273
+        },
+        {
+          "fieldOffset": "0xe0",
+          "valueExpression": "1",
+          "offset": 301467
+        },
+        {
+          "fieldOffset": "0x88",
+          "valueExpression": "= 2) {\r\n      bVar3 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1)",
+          "offset": 312925
+        },
+        {
+          "fieldOffset": "0xe4",
+          "valueExpression": "0",
+          "offset": 354481
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 370163
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "1",
+          "offset": 388056
+        },
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 393478
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00CE6CF0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00ce6cf0",
+          "offset": 18
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3819
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4367
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4938
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5504
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6076
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6652
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7229
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7799
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8371
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8948
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9526
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10102
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10679
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11260
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11845
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 12421
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 12996
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 13571
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 14149
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 14730
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 15310
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 15887
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 16460
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 17030
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 17600
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 18171
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 18743
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 19316
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 19895
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 20477
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 21059
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 21643
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 22257
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 22874
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 23457
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 24038
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 24618
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 25194
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 25769
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 26351
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 26961
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 27571
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 28167
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 28779
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 29366
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 29938
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 30515
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 31088
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 31664
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 32235
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 32809
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 33384
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 33952
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 34525
+        }
+      ],
+      "strings": [
+        "OV_INTRO",
+        "GUILD_TRAINING",
+        "WASP_BOSS",
+        "DOING_WASP_BOSS",
+        "VISIT_MAZE_1_GLOBAL",
+        "VISIT_MAZE_1_BSSLUMS",
+        "PRE_ORCH_FARM",
+        "DOING_ORCH_FARM",
+        "TRADER_ESCORT_GLOBAL",
+        "TRADER_ESCORT_BSSLUMS",
+        "VISIT_MAZE_2_GLOBAL",
+        "VISIT_MAZE_2_BSSLUMS",
+        "DOING_BANDIT_CAMP_GLOBAL",
+        "DOING_BANDIT_CAMP_BANDITCAMP",
+        "VISIT_MAZE_3_GLOBAL",
+        "VISIT_MAZE_3_GUILD",
+        "FIND_ARCHAEOLOGIST",
+        "PRE_WHITE_BALV_GLOBAL",
+        "PRE_WHITE_BALV_WITCHWOOD",
+        "DOING_WHITE_BALV_GLOBAL",
+        "DOING_WHITE_BALV_KHG",
+        "PRE_ARENA_GLOBAL",
+        "PRE_ARENA_KHG",
+        "WHISPERS_FATE",
+        "PRE_MCC_GLOBAL",
+        "PRE_MCC_BSTONES",
+        "DOING_MCC_GLOBAL",
+        "DOING_GRAVEYARD_GLOBAL",
+        "DOING_GRAVEYARD_GRAVEYARD",
+        "HOOK_COAST_GATEWAY_GLOBAL",
+        "HOOK_COAST_GATEWAY_DARKWOOD",
+        "IN_HOOK_COAST_POST_DRAGON_PRE_BATTLE_GLOBAL",
+        "IN_HOOK_COAST_POST_DRAGON_PRE_BATTLE_HOOKCOAST",
+        "AFTER_WIZARD_BATTLE_GLOBAL",
+        "DOING_FOCAL_SITES_GLOBAL",
+        "DOING_FOCAL_SITES_GUILD",
+        "FINAL_BATTLE_GLOBAL",
+        "FINAL_BATTLE_GUILD",
+        "AFTER_FINAL_BATTLE_GLOBAL",
+        "AFTER_FINAL_BATTLE_KILLED_SISTER_GLOBAL",
+        "AFTER_FINAL_BATTLE_SPARED_SISTER_GLOBAL",
+        "AFTER_FINAL_BATTLE_GOT_SWORD_GLOBAL",
+        "AFTER_FINAL_BATTLE_DIDNT_GET_SWORD_GLOBAL",
+        "LOOKOUT_POINT_DEMON_DOOR_READY",
+        "SUMMON_THE_SHIP",
+        "NORTHERN_WASTES_OPEN",
+        "SCARY_NECROPOLIS",
+        "NECROPOLIS_FINISHED",
+        "THUNDER_KILLED",
+        "BRIAR_ROSE_KILLED",
+        "GUILDMASTER_KILLED",
+        "NONE_KILLED",
+        "DRAGON_GATE_OPEN",
+        "SNOWSPIRE_ARRIVAL"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 3756
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00CEF8E0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00cef8e0",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "PostSavePosition",
+        "CoreQuestWaiting",
+        "SavedScriptNames",
+        "SavedCardDefNames"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "PostSavePosition",
+          "nativeType": "signed_char",
+          "offset": 285
+        },
+        {
+          "key": "CoreQuestWaiting",
+          "nativeType": "signed_char",
+          "offset": 456
+        },
+        {
+          "key": "SavedScriptNames",
+          "nativeType": "signed_char",
+          "offset": 580
+        }
+      ]
+    }
+  ]
+}

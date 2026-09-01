@@ -8,10 +8,17 @@
       "numericId": 1,
       "master": true,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00CDD550",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_SunnyvaleMaster",
+        "allocator_address": "00cdd550",
+        "name_xref": "00cd5307",
+        "allocator_operand": "00cd5340",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -20,10 +27,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventRemoveObject::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00CE6C40",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_HB",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "HeroBoasts",
+        "allocator_address": "00ce6c40",
+        "name_xref": "00cd53b1",
+        "allocator_operand": "00cd53df",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -32,10 +46,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00CDE2F0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_PSM",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "PersonalScriptMain",
+        "allocator_address": "00cde2f0",
+        "name_xref": "00cd544a",
+        "allocator_operand": "00cd5478",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -44,10 +65,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00CE19A0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_PSGT",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "PersonalScript_GlobalThings",
+        "allocator_address": "00ce19a0",
+        "name_xref": "00cd54e3",
+        "allocator_operand": "00cd5511",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -56,10 +84,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CGameflowScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00CEF950",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_GF",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Gameflow",
+        "allocator_address": "00cef950",
+        "name_xref": "00cd557c",
+        "allocator_operand": "00cd55aa",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -68,10 +103,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00CF0640",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_GFA",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "GameflowAssistance",
+        "allocator_address": "00cf0640",
+        "name_xref": "00cd5615",
+        "allocator_operand": "00cd5643",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -80,10 +122,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00CF8860",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_AHS",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_ArenaHoldingScript",
+        "allocator_address": "00cf8860",
+        "name_xref": "00cd56ae",
+        "allocator_operand": "00cd56dc",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -95,7 +144,14 @@
       "allocatorAddress": "0x00CF91C0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_LGWM",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "LadyGreyWifeManager",
+        "allocator_address": "00cf91c0",
+        "name_xref": "00cd5747",
+        "allocator_operand": "00cd5770",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -107,7 +163,14 @@
       "allocatorAddress": "0x00CFA2F0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QAT",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_AmbushTraders",
+        "allocator_address": "00cfa2f0",
+        "name_xref": "00cd580a",
+        "allocator_operand": "00cd5838",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -119,7 +182,14 @@
       "allocatorAddress": "0x00CFABF0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QA",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_Arena",
+        "allocator_address": "00cfabf0",
+        "name_xref": "00cd58a3",
+        "allocator_operand": "00cd58d1",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -131,7 +201,14 @@
       "allocatorAddress": "0x00D00590",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QATO",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_AwakeningTheOracle",
+        "allocator_address": "00d00590",
+        "name_xref": "00cd593c",
+        "allocator_operand": "00cd596a",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -140,10 +217,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D03580",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QBC",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_BanditCamp",
+        "allocator_address": "00d03580",
+        "name_xref": "00cd59d5",
+        "allocator_operand": "00cd5a03",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -152,10 +236,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D12920",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QBCBB",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_BanditCampBossBattle",
+        "allocator_address": "00d12920",
+        "name_xref": "00cd5a6e",
+        "allocator_operand": "00cd5a9c",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -164,10 +255,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D12C50",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QBCHS",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_BanditCampHoldingScript",
+        "allocator_address": "00d12c50",
+        "name_xref": "00cd5b07",
+        "allocator_operand": "00cd5b35",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -179,7 +277,14 @@
       "allocatorAddress": "0x00D1CBA0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QBH",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_BountyHunt",
+        "allocator_address": "00d1cba0",
+        "name_xref": "00cd5ba0",
+        "allocator_operand": "00cd5bce",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -188,10 +293,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D23C80",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QBS",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_BreakSiege",
+        "allocator_address": "00d23c80",
+        "name_xref": "00cd5c39",
+        "allocator_operand": "00cd5c67",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -200,10 +312,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D253B0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QBTLI",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_BowerstoneTownLifeIntro",
+        "allocator_address": "00d253b0",
+        "name_xref": "00cd5cd2",
+        "allocator_operand": "00cd5d00",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -215,7 +334,14 @@
       "allocatorAddress": "0x00D27240",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QDBF",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_DragonBossFight",
+        "allocator_address": "00d27240",
+        "name_xref": "00cd5d6b",
+        "allocator_operand": "00cd5d99",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -224,10 +350,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D2A7C0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QEG",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_EndGame",
+        "allocator_address": "00d2a7c0",
+        "name_xref": "00cd5e04",
+        "allocator_operand": "00cd5e32",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -239,7 +372,14 @@
       "allocatorAddress": "0x00D2F5F0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QEGFS",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_EndGameFocalSites",
+        "allocator_address": "00d2f5f0",
+        "name_xref": "00cd5e9d",
+        "allocator_operand": "00cd5ecb",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -251,7 +391,14 @@
       "allocatorAddress": "0x00D34410",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QEGBB",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_EndGameBossBattle",
+        "allocator_address": "00d34410",
+        "name_xref": "00cd5f36",
+        "allocator_operand": "00cd5f64",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -263,7 +410,14 @@
       "allocatorAddress": "0x00D3AFC0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QFHT",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_FireHeart",
+        "allocator_address": "00d3afc0",
+        "name_xref": "00cd5fcf",
+        "allocator_operand": "00cd5ffd",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -272,10 +426,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_BountyHuntScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D50600",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QGT",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_GuildTraining",
+        "allocator_address": "00d50600",
+        "name_xref": "00cd6068",
+        "allocator_operand": "00cd6096",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -284,10 +445,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D513C0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QGTD",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_GuildTrainingDeparture",
+        "allocator_address": "00d513c0",
+        "name_xref": "00cd6101",
+        "allocator_operand": "00cd612f",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -296,10 +464,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D55D10",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QGTPM",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_GuildTrainingPreMelee",
+        "allocator_address": "00d55d10",
+        "name_xref": "00cd619a",
+        "allocator_operand": "00cd61c8",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -308,10 +483,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D5A9F0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QGTM",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_GuildTrainingMelee",
+        "allocator_address": "00d5a9f0",
+        "name_xref": "00cd6233",
+        "allocator_operand": "00cd6261",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -320,10 +502,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_GuildTrainingWillScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D61BB0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QGTW",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_GuildTrainingWill",
+        "allocator_address": "00d61bb0",
+        "name_xref": "00cd62cc",
+        "allocator_operand": "00cd62fa",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -332,10 +521,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D5DBF0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QGTS",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_GuildTrainingSkill",
+        "allocator_address": "00d5dbf0",
+        "name_xref": "00cd6365",
+        "allocator_operand": "00cd6393",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -344,10 +540,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D664D0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QGTWD",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_GuildTrainingWoodsDeparture",
+        "allocator_address": "00d664d0",
+        "name_xref": "00cd63fe",
+        "allocator_operand": "00cd642c",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -356,10 +559,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D67740",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QGTWM",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_GuildTrainingWoodsMelee",
+        "allocator_address": "00d67740",
+        "name_xref": "00cd6497",
+        "allocator_operand": "00cd64c5",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -368,10 +578,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D68EA0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QGTWW",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_GuildTrainingWoodsWill",
+        "allocator_address": "00d68ea0",
+        "name_xref": "00cd6530",
+        "allocator_operand": "00cd655e",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -383,7 +600,14 @@
       "allocatorAddress": "0x00D78290",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QHTG",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_HangingTreeGood",
+        "allocator_address": "00d78290",
+        "name_xref": "00cd65c9",
+        "allocator_operand": "00cd65f7",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -395,7 +619,14 @@
       "allocatorAddress": "0x00D6ED10",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QHTE",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_HangingTreeEvil",
+        "allocator_address": "00d6ed10",
+        "name_xref": "00cd6662",
+        "allocator_operand": "00cd6690",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -404,10 +635,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D7AC50",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QHSS",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_HeroSouls",
+        "allocator_address": "00d7ac50",
+        "name_xref": "00cd66fb",
+        "allocator_operand": "00cd6729",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -419,7 +657,14 @@
       "allocatorAddress": "0x00D7C6A0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QHST",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_HeroSoulsThunder",
+        "allocator_address": "00d7c6a0",
+        "name_xref": "00cd6794",
+        "allocator_operand": "00cd67c2",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -431,7 +676,14 @@
       "allocatorAddress": "0x00D80BA0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QHSA",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_HeroSoulsArena",
+        "allocator_address": "00d80ba0",
+        "name_xref": "00cd682d",
+        "allocator_operand": "00cd685b",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -443,7 +695,14 @@
       "allocatorAddress": "0x00D83300",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QHSB",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_HeroSoulsBriar",
+        "allocator_address": "00d83300",
+        "name_xref": "00cd68c6",
+        "allocator_operand": "00cd68f4",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -455,7 +714,14 @@
       "allocatorAddress": "0x00D84AF0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QHSM",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_HeroSoulsMother",
+        "allocator_address": "00d84af0",
+        "name_xref": "00cd695f",
+        "allocator_operand": "00cd698d",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -467,7 +733,14 @@
       "allocatorAddress": "0x00D87A80",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QHSG",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_HeroSoulsGuildmaster",
+        "allocator_address": "00d87a80",
+        "name_xref": "00cd69f8",
+        "allocator_operand": "00cd6a26",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -476,10 +749,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_BountyHuntScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D89CF0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QHSN",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_HeroSoulsNostro",
+        "allocator_address": "00d89cf0",
+        "name_xref": "00cd6a91",
+        "allocator_operand": "00cd6abf",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -488,10 +768,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D8D5A0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QHOH",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_HerosOldHouse",
+        "allocator_address": "00d8d5a0",
+        "name_xref": "00cd6b2a",
+        "allocator_operand": "00cd6b58",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -500,10 +787,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_BountyHuntScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D99DC0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QHC",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_HobbeCave",
+        "allocator_address": "00d99dc0",
+        "name_xref": "00cd6bc3",
+        "allocator_operand": "00cd6bf1",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -512,10 +806,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_BountyHuntScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00D9E190",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QHTC",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_HobbeToothContest",
+        "allocator_address": "00d9e190",
+        "name_xref": "00cd6c5c",
+        "allocator_operand": "00cd6c8a",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -527,7 +828,14 @@
       "allocatorAddress": "0x00DA2F40",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QMC",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_MinionCamp",
+        "allocator_address": "00da2f40",
+        "name_xref": "00cd6cf5",
+        "allocator_operand": "00cd6d23",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -536,10 +844,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_MinionClifftopChaseScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00DAAB70",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QMCC",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_MinionClifftopChase",
+        "allocator_address": "00daab70",
+        "name_xref": "00cd6d8e",
+        "allocator_operand": "00cd6dbc",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -551,7 +866,14 @@
       "allocatorAddress": "0x00DBEF70",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QNOVI",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_NewOakValeIntro",
+        "allocator_address": "00dbef70",
+        "name_xref": "00cd6e27",
+        "allocator_operand": "00cd6e55",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -560,10 +882,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_OakValeBanditRaidScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00DC24E0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QOVBR",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_OakValeBanditRaid",
+        "allocator_address": "00dc24e0",
+        "name_xref": "00cd6ec0",
+        "allocator_operand": "00cd6eee",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -575,7 +904,14 @@
       "allocatorAddress": "0x00DD1EF0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QOFR",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_OrchardFarmRaid",
+        "allocator_address": "00dd1ef0",
+        "name_xref": "00cd6f59",
+        "allocator_operand": "00cd6f87",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -584,10 +920,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00DD2300",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QOFRE",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_OrchardFarmRaidEvil",
+        "allocator_address": "00dd2300",
+        "name_xref": "00cd6ff2",
+        "allocator_operand": "00cd7020",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -596,10 +939,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00DD2680",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QOFRG",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_OrchardFarmRaidGood",
+        "allocator_address": "00dd2680",
+        "name_xref": "00cd708b",
+        "allocator_operand": "00cd70b9",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -611,7 +961,14 @@
       "allocatorAddress": "0x00DCBFD0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QOGSP",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_OpeningGraveyardSecretPassage",
+        "allocator_address": "00dcbfd0",
+        "name_xref": "00cd7124",
+        "allocator_operand": "00cd7152",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -620,10 +977,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_BountyHuntScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00DDACB0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QPERM",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_PrisonEscapeRescueMother",
+        "allocator_address": "00ddacb0",
+        "name_xref": "00cd71bd",
+        "allocator_operand": "00cd71eb",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -632,10 +996,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00DDDC30",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QPR",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_PrisonRace",
+        "allocator_address": "00dddc30",
+        "name_xref": "00cd7256",
+        "allocator_operand": "00cd7284",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -644,10 +1015,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_PrisonWardenGameScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00DE0290",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QPWG",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_PrisonWardenGame",
+        "allocator_address": "00de0290",
+        "name_xref": "00cd72ef",
+        "allocator_operand": "00cd731d",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -659,7 +1037,14 @@
       "allocatorAddress": "0x00DEBC60",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QRV",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_RansomVictim",
+        "allocator_address": "00debc60",
+        "name_xref": "00cd7388",
+        "allocator_operand": "00cd73b6",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -668,10 +1053,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00DEC790",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QRVCH",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_RansomVictimChiefsHouse",
+        "allocator_address": "00dec790",
+        "name_xref": "00cd7421",
+        "allocator_operand": "00cd744f",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -683,7 +1075,14 @@
       "allocatorAddress": "0x00DF1080",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QSP",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_SecretPassage",
+        "allocator_address": "00df1080",
+        "name_xref": "00cd74ba",
+        "allocator_operand": "00cd74e8",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -692,10 +1091,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_BountyHuntScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00DF4070",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QSTS",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_SummoningTheShip",
+        "allocator_address": "00df4070",
+        "name_xref": "00cd7553",
+        "allocator_operand": "00cd7581",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -704,10 +1110,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_PrisonWardenGameScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00DF5C00",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QTKBF",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_TentacleKrakenBossFight",
+        "allocator_address": "00df5c00",
+        "name_xref": "00cd75ec",
+        "allocator_operand": "00cd761a",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -716,10 +1129,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_TraderConflictEvilScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00DFA020",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QTCE",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_TraderConflictEvil",
+        "allocator_address": "00dfa020",
+        "name_xref": "00cd7685",
+        "allocator_operand": "00cd76b3",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -728,10 +1148,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_GuildTrainingWillScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E00610",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QTCG",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_TraderConflictGood",
+        "allocator_address": "00e00610",
+        "name_xref": "00cd771e",
+        "allocator_operand": "00cd774c",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -740,10 +1167,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_BountyHuntScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E0AF60",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QTE",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_TraderEscort",
+        "allocator_address": "00e0af60",
+        "name_xref": "00cd77b7",
+        "allocator_operand": "00cd77e5",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -752,10 +1186,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_BountyHuntScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E0E9F0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QWB",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_WaspBoss",
+        "allocator_address": "00e0e9f0",
+        "name_xref": "00cd7850",
+        "allocator_operand": "00cd787e",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -764,10 +1205,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_PrisonWardenGameScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E183B0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QWBKG",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_WhiteBalverineKnotholeGlade",
+        "allocator_address": "00e183b0",
+        "name_xref": "00cd78e9",
+        "allocator_operand": "00cd7917",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -776,10 +1224,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CGameflowScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E0E760",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QUR",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_UndeadRising",
+        "allocator_address": "00e0e760",
+        "name_xref": "00cd7982",
+        "allocator_operand": "00cd79b0",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -788,10 +1243,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_PrisonWardenGameScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E1A770",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QWBW",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_WhiteBalverineWW",
+        "allocator_address": "00e1a770",
+        "name_xref": "00cd7a1b",
+        "allocator_operand": "00cd7a49",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -803,7 +1265,14 @@
       "allocatorAddress": "0x00E1D9F0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QWZB",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_WizardBattle",
+        "allocator_address": "00e1d9f0",
+        "name_xref": "00cd7ab4",
+        "allocator_operand": "00cd7add",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -815,7 +1284,14 @@
       "allocatorAddress": "0x00E24C30",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QRET",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "QR_EscortTrader",
+        "allocator_address": "00e24c30",
+        "name_xref": "00cd7b4d",
+        "allocator_operand": "00cd7b7b",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -824,10 +1300,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E25970",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QRETM",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "QR_EscortTrader_Manager",
+        "allocator_address": "00e25970",
+        "name_xref": "00cd7be6",
+        "allocator_operand": "00cd7c0d",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -836,10 +1319,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E26780",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QSGSI",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "QS_GuardianSisterInfo",
+        "allocator_address": "00e26780",
+        "name_xref": "00cd7c7f",
+        "allocator_operand": "00cd7cad",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -848,10 +1338,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E277E0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QSGSI2",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "allocator_address": "00e277e0",
+        "name_xref": "00cd7d18",
+        "allocator_operand": "00cd7d3d",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -860,10 +1357,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E28CA0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QSGTDI",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "QS_GuardianTrophyDealerInfo",
+        "allocator_address": "00e28ca0",
+        "name_xref": "00cd7db1",
+        "allocator_operand": "00cd7ddf",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -872,10 +1376,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E29990",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QSMS",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "QS_MeetSister",
+        "allocator_address": "00e29990",
+        "name_xref": "00cd7e4a",
+        "allocator_operand": "00cd7e6e",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -887,7 +1398,14 @@
       "allocatorAddress": "0x00E2AB00",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_QSSI",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "QS_ScytheInfo",
+        "allocator_address": "00e2ab00",
+        "name_xref": "00cd7ee3",
+        "allocator_operand": "00cd7f11",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -899,7 +1417,14 @@
       "allocatorAddress": "0x00E322C0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VAS",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_AmbushScam",
+        "allocator_address": "00e322c0",
+        "name_xref": "00cd7fa6",
+        "allocator_operand": "00cd7fd4",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -911,7 +1436,14 @@
       "allocatorAddress": "0x00E37630",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VAC",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_ArcheryCompetition",
+        "allocator_address": "00e37630",
+        "name_xref": "00cd803f",
+        "allocator_operand": "00cd806d",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -923,7 +1455,14 @@
       "allocatorAddress": "0x00E39850",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VAA",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_AssassinAttacks",
+        "allocator_address": "00e39850",
+        "name_xref": "00cd80d8",
+        "allocator_operand": "00cd8106",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -932,10 +1471,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E4F550",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VBT",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_BanditToll",
+        "allocator_address": "00e4f550",
+        "name_xref": "00cd8171",
+        "allocator_operand": "00cd819f",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -947,7 +1493,14 @@
       "allocatorAddress": "0x00E477A0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VBCP",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_BanditCampPath",
+        "allocator_address": "00e477a0",
+        "name_xref": "00cd820a",
+        "allocator_operand": "00cd8238",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -959,7 +1512,14 @@
       "allocatorAddress": "0x00E54260",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VBB",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_BeardyBaldy",
+        "allocator_address": "00e54260",
+        "name_xref": "00cd82a3",
+        "allocator_operand": "00cd82d1",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -968,10 +1528,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_MinionClifftopChaseScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E5D0B0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VBAC",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_BeggarAndChild",
+        "allocator_address": "00e5d0b0",
+        "name_xref": "00cd833c",
+        "allocator_operand": "00cd836a",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -983,7 +1550,14 @@
       "allocatorAddress": "0x00E62730",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VBGu",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_BodyGuard",
+        "allocator_address": "00e62730",
+        "name_xref": "00cd83d5",
+        "allocator_operand": "00cd8403",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -995,7 +1569,14 @@
       "allocatorAddress": "0x00E57A50",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VBC",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_BookCollecting",
+        "allocator_address": "00e57a50",
+        "name_xref": "00cd846e",
+        "allocator_operand": "00cd849c",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1007,7 +1588,14 @@
       "allocatorAddress": "0x00E46A00",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VB",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_Bordello",
+        "allocator_address": "00e46a00",
+        "name_xref": "00cd8507",
+        "allocator_operand": "00cd8535",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1016,10 +1604,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventRemoveObject::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E6E230",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VCOE",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_ChapelOfEvil",
+        "allocator_address": "00e6e230",
+        "name_xref": "00cd85a0",
+        "allocator_operand": "00cd85ce",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1031,7 +1626,14 @@
       "allocatorAddress": "0x00E7B290",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VEM",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_ExposeMayor",
+        "allocator_address": "00e7b290",
+        "name_xref": "00cd8639",
+        "allocator_operand": "00cd8667",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1043,7 +1645,14 @@
       "allocatorAddress": "0x00E68E60",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VCK",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_ChickenKicking",
+        "allocator_address": "00e68e60",
+        "name_xref": "00cd86d2",
+        "allocator_operand": "00cd8700",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1052,10 +1661,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E75590",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_DDRS",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_DemonDoors",
+        "allocator_address": "00e75590",
+        "name_xref": "00cd876b",
+        "allocator_operand": "00cd8799",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1064,10 +1680,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E7E0B0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VFM",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_Fisherman",
+        "allocator_address": "00e7e0b0",
+        "name_xref": "00cd8804",
+        "allocator_operand": "00cd8832",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1076,10 +1699,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_PrisonWardenGameScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E81EB0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VFC",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_FishingCompetition",
+        "allocator_address": "00e81eb0",
+        "name_xref": "00cd889d",
+        "allocator_operand": "00cd88cb",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1091,7 +1721,14 @@
       "allocatorAddress": "0x00E8B700",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VFCC",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_FisticuffsClub",
+        "allocator_address": "00e8b700",
+        "name_xref": "00cd8936",
+        "allocator_operand": "00cd8964",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1100,10 +1737,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E906F0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VGGN",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_GhostGrannyNecklace",
+        "allocator_address": "00e906f0",
+        "name_xref": "00cd89cf",
+        "allocator_operand": "00cd89fd",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1112,10 +1756,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventRemoveObject::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E92900",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VGM",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_GuildMaster",
+        "allocator_address": "00e92900",
+        "name_xref": "00cd8a68",
+        "allocator_operand": "00cd8a96",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1124,10 +1775,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E96DD0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VHH",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_HauntedHouse",
+        "allocator_address": "00e96dd0",
+        "name_xref": "00cd8b01",
+        "allocator_operand": "00cd8b2f",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1136,10 +1794,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E98640",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VHDS",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_HeroDolls",
+        "allocator_address": "00e98640",
+        "name_xref": "00cd8b9a",
+        "allocator_operand": "00cd8bc8",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1148,10 +1813,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E9C300",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VHD",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_HeroDuel",
+        "allocator_address": "00e9c300",
+        "name_xref": "00cd8c33",
+        "allocator_operand": "00cd8c61",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1160,10 +1832,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E93CF0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VHB",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_HiddenBooty",
+        "allocator_address": "00e93cf0",
+        "name_xref": "00cd8ccc",
+        "allocator_operand": "00cd8cfa",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1172,10 +1851,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_MinionClifftopChaseScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00E9FB40",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VITT",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_IntroductionToTrophies",
+        "allocator_address": "00e9fb40",
+        "name_xref": "00cd8d65",
+        "allocator_operand": "00cd8d93",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1184,10 +1870,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_PrisonWardenGameScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EA2C60",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VKGG",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_KnotholeGladeGates",
+        "allocator_address": "00ea2c60",
+        "name_xref": "00cd8dfe",
+        "allocator_operand": "00cd8e2c",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1196,10 +1889,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EA7680",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VLT",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_LostTrader",
+        "allocator_address": "00ea7680",
+        "name_xref": "00cd8e97",
+        "allocator_operand": "00cd8ec5",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1211,7 +1911,14 @@
       "allocatorAddress": "0x00EA8690",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VMR",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_MazeResearch",
+        "allocator_address": "00ea8690",
+        "name_xref": "00cd8f30",
+        "allocator_operand": "00cd8f5e",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1220,10 +1927,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_GuildTrainingWillScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EAE890",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VMT",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_MurderTwist",
+        "allocator_address": "00eae890",
+        "name_xref": "00cd8fc9",
+        "allocator_operand": "00cd8ff7",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1235,7 +1949,14 @@
       "allocatorAddress": "0x00EB6A60",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VMTF",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_MurderTwistFinal",
+        "allocator_address": "00eb6a60",
+        "name_xref": "00cd9062",
+        "allocator_operand": "00cd9090",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1244,10 +1965,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NScript::CQ_PrisonWardenGameScript::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EBCC10",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VMI",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_MayorsInvitation",
+        "allocator_address": "00ebcc10",
+        "name_xref": "00cd90fb",
+        "allocator_operand": "00cd9129",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1256,10 +1984,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EBEE30",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VO",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_Oracle",
+        "allocator_address": "00ebee30",
+        "name_xref": "00cd9194",
+        "allocator_operand": "00cd91c2",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1268,10 +2003,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EC11B0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VPW",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_ParanoidWhispers",
+        "allocator_address": "00ec11b0",
+        "name_xref": "00cd922d",
+        "allocator_operand": "00cd925b",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1280,10 +2022,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EC1780",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VPAAWB",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_PicnicAreaAfterWaspBoss",
+        "allocator_address": "00ec1780",
+        "name_xref": "00cd92c6",
+        "allocator_operand": "00cd92f4",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1292,10 +2041,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EC3BC0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VRPS",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_RandomPopulationSim",
+        "allocator_address": "00ec3bc0",
+        "name_xref": "00cd935f",
+        "allocator_operand": "00cd938d",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1304,10 +2060,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EC5360",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VRTFE",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_RockTrollFirstEncounter",
+        "allocator_address": "00ec5360",
+        "name_xref": "00cd93f8",
+        "allocator_operand": "00cd9426",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1319,7 +2082,14 @@
       "allocatorAddress": "0x00ED0E00",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VSC",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_SickChild",
+        "allocator_address": "00ed0e00",
+        "name_xref": "00cd9491",
+        "allocator_operand": "00cd94bf",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1331,7 +2101,14 @@
       "allocatorAddress": "0x00ED39A0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VSS",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_SingingStones",
+        "allocator_address": "00ed39a0",
+        "name_xref": "00cd952a",
+        "allocator_operand": "00cd9558",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1340,10 +2117,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00ED4A40",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VSM",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_StatueMaster",
+        "allocator_address": "00ed4a40",
+        "name_xref": "00cd95c3",
+        "allocator_operand": "00cd95f1",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1355,7 +2139,14 @@
       "allocatorAddress": "0x00ED75F0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VSITS",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_SwordInTheStone",
+        "allocator_address": "00ed75f0",
+        "name_xref": "00cd965c",
+        "allocator_operand": "00cd968a",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1367,7 +2158,14 @@
       "allocatorAddress": "0x00EDACC0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VTB",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_TalentlessBard",
+        "allocator_address": "00edacc0",
+        "name_xref": "00cd96f5",
+        "allocator_operand": "00cd9723",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1379,7 +2177,14 @@
       "allocatorAddress": "0x00EE6C00",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VTG",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_TourGuide",
+        "allocator_address": "00ee6c00",
+        "name_xref": "00cd978e",
+        "allocator_operand": "00cd97bc",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1388,10 +2193,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EDEB40",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VTOL",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_TempleOfLight",
+        "allocator_address": "00edeb40",
+        "name_xref": "00cd9827",
+        "allocator_operand": "00cd9855",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1403,7 +2215,14 @@
       "allocatorAddress": "0x00EE40A0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VTH",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_TravellingHeroes",
+        "allocator_address": "00ee40a0",
+        "name_xref": "00cd98c0",
+        "allocator_operand": "00cd98ee",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1412,10 +2231,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EE80A0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "S_VTD",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "V_TrophyDealer",
+        "allocator_address": "00ee80a0",
+        "name_xref": "00cd9959",
+        "allocator_operand": "00cd9987",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1427,7 +2253,14 @@
       "allocatorAddress": "0x00EE90A0",
       "dataAllocator": "(code *)0x0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Global_WatchForHeroDeath",
+        "allocator_address": "00ee90a0",
+        "name_xref": "00cd9a1c",
+        "allocator_operand": "00cd9a4a",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1439,7 +2272,14 @@
       "allocatorAddress": "0x00EE9450",
       "dataAllocator": "(code *)0x0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Global_DebugCycleThroughSpeech",
+        "allocator_address": "00ee9450",
+        "name_xref": "00cd9ab5",
+        "allocator_operand": "00cd9ae3",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1451,7 +2291,14 @@
       "allocatorAddress": "0x00EE9F00",
       "dataAllocator": "(code *)0x0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Expression_Fish",
+        "allocator_address": "00ee9f00",
+        "name_xref": "00cd9b4e",
+        "allocator_operand": "00cd9b7c",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1464,6 +2311,7 @@
       "dataAllocator": "(code *)0x0",
       "section": null,
       "evidenceLevel": "registry-fact",
+      "allocatorEvidence": null,
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1475,7 +2323,14 @@
       "allocatorAddress": "0x00EEA740",
       "dataAllocator": "(code *)0x0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Expression_Wait",
+        "allocator_address": "00eea740",
+        "name_xref": "00cd9c80",
+        "allocator_operand": "00cd9cae",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1487,7 +2342,14 @@
       "allocatorAddress": "0x00EEAE70",
       "dataAllocator": "(code *)0x0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Expression_Dig",
+        "allocator_address": "00eeae70",
+        "name_xref": "00cd9d19",
+        "allocator_operand": "00cd9d47",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1499,7 +2361,14 @@
       "allocatorAddress": "0x00EEB730",
       "dataAllocator": "(code *)0x0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Expression_Pickpocket",
+        "allocator_address": "00eeb730",
+        "name_xref": "00cd9db2",
+        "allocator_operand": "00cd9de0",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1511,7 +2380,14 @@
       "allocatorAddress": "0x00EEBD70",
       "dataAllocator": "(code *)0x0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Expression_Picklock",
+        "allocator_address": "00eebd70",
+        "name_xref": "00cd9e4b",
+        "allocator_operand": "00cd9e79",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1523,7 +2399,14 @@
       "allocatorAddress": "0x00EEC390",
       "dataAllocator": "(code *)0x0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Expression_Steal",
+        "allocator_address": "00eec390",
+        "name_xref": "00cd9ee4",
+        "allocator_operand": "00cd9f12",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1532,10 +2415,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00CDDB60",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Global_TeleportToHeroGuild",
+        "allocator_address": "00cddb60",
+        "name_xref": "00cd9f7d",
+        "allocator_operand": "00cd9fab",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1547,7 +2437,14 @@
       "allocatorAddress": "0x00EED060",
       "dataAllocator": "(code *)0x0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Global_ToggleTimeDisplay",
+        "allocator_address": "00eed060",
+        "name_xref": "00cda016",
+        "allocator_operand": "00cda044",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1559,7 +2456,14 @@
       "allocatorAddress": "0x00EEC750",
       "dataAllocator": "(code *)0x0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Global_GiveHeroItemsFromRewardChest",
+        "allocator_address": "00eec750",
+        "name_xref": "00cda0af",
+        "allocator_operand": "00cda0dd",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1571,7 +2475,14 @@
       "allocatorAddress": "0x00EECEA0",
       "dataAllocator": "(code *)0x0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Global_OpenChest",
+        "allocator_address": "00eecea0",
+        "name_xref": "00cda148",
+        "allocator_operand": "00cda176",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1583,7 +2494,14 @@
       "allocatorAddress": "0x00EE8BE0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": "CS_OVR",
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "CS_OakValeRevisited",
+        "allocator_address": "00ee8be0",
+        "name_xref": "00cda1e1",
+        "allocator_operand": "00cda20f",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1592,10 +2510,17 @@
       "numericId": 1,
       "master": true,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EED220",
       "dataAllocator": "(code *)&LAB_00cd4a60",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "alextest",
+        "allocator_address": "00eed220",
+        "name_xref": "00cda28e",
+        "allocator_operand": "00cda2bd",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1604,10 +2529,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EEE6D0",
       "dataAllocator": "(code *)&LAB_00cd4a60",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "PersonalScript_alextest",
+        "allocator_address": "00eee6d0",
+        "name_xref": "00cda308",
+        "allocator_operand": "00cda336",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1616,10 +2548,17 @@
       "numericId": 1,
       "master": true,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EFB0B0",
       "dataAllocator": "(code *)&LAB_00cd4b80",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "DanyalTestScripts",
+        "allocator_address": "00efb0b0",
+        "name_xref": "00cda38f",
+        "allocator_operand": "00cda3be",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1628,10 +2567,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EFB610",
       "dataAllocator": "(code *)&LAB_00cd4b80",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "ProximityPodiumTest",
+        "allocator_address": "00efb610",
+        "name_xref": "00cda409",
+        "allocator_operand": "00cda437",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1640,10 +2586,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EFBB70",
       "dataAllocator": "(code *)&LAB_00cd4b80",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "HitSwitchTest",
+        "allocator_address": "00efbb70",
+        "name_xref": "00cda4a6",
+        "allocator_operand": "00cda4d4",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1652,10 +2605,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EFC130",
       "dataAllocator": "(code *)&LAB_00cd4b80",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "GuildSealTriggerTest",
+        "allocator_address": "00efc130",
+        "name_xref": "00cda543",
+        "allocator_operand": "00cda571",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1664,10 +2624,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EFC8D0",
       "dataAllocator": "(code *)&LAB_00cd4b80",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "PersonalScript_Aardvark",
+        "allocator_address": "00efc8d0",
+        "name_xref": "00cda5e0",
+        "allocator_operand": "00cda60e",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1676,10 +2643,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EFC460",
       "dataAllocator": "(code *)&LAB_00cd4b80",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "HeroTurningDebugger",
+        "allocator_address": "00efc460",
+        "name_xref": "00cda67d",
+        "allocator_operand": "00cda6ab",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1688,10 +2662,17 @@
       "numericId": 1,
       "master": true,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EF9EE0",
       "dataAllocator": "(code *)&LAB_00cd4b20",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "joss_test_scripts",
+        "allocator_address": "00ef9ee0",
+        "name_xref": "00cda704",
+        "allocator_operand": "00cda733",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1700,10 +2681,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EFA3C0",
       "dataAllocator": "(code *)&LAB_00cd4b20",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "guy_script",
+        "allocator_address": "00efa3c0",
+        "name_xref": "00cda77e",
+        "allocator_operand": "00cda7ac",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1712,10 +2700,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EFAF30",
       "dataAllocator": "(code *)&LAB_00cd4b20",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "bandit_level_cutscene",
+        "allocator_address": "00efaf30",
+        "name_xref": "00cda81b",
+        "allocator_operand": "00cda849",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1724,10 +2719,17 @@
       "numericId": 1,
       "master": true,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EEE940",
       "dataAllocator": "(code *)&LAB_00cd4ac0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Empty",
+        "allocator_address": "00eee940",
+        "name_xref": "00cda8a2",
+        "allocator_operand": "00cda8d1",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1736,10 +2738,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EEEE40",
       "dataAllocator": "(code *)&LAB_00cd4ac0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "TestTheInventory",
+        "allocator_address": "00eeee40",
+        "name_xref": "00cda91c",
+        "allocator_operand": "00cda94a",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1748,10 +2757,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EF9130",
       "dataAllocator": "(code *)&LAB_00cd4ac0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "PersonalScript_Empty",
+        "allocator_address": "00ef9130",
+        "name_xref": "00cda9b9",
+        "allocator_operand": "00cda9e7",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1760,10 +2776,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EEF9C0",
       "dataAllocator": "(code *)&LAB_00cd4ac0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "TestNewNav1",
+        "allocator_address": "00eef9c0",
+        "name_xref": "00cdaa56",
+        "allocator_operand": "00cdaa84",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1772,10 +2795,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EEFB20",
       "dataAllocator": "(code *)&LAB_00cd4ac0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "TestNewNav2",
+        "allocator_address": "00eefb20",
+        "name_xref": "00cdaaf3",
+        "allocator_operand": "00cdab21",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1784,10 +2814,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EEFC80",
       "dataAllocator": "(code *)&LAB_00cd4ac0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "TestNewNav3",
+        "allocator_address": "00eefc80",
+        "name_xref": "00cdab90",
+        "allocator_operand": "00cdabbe",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1796,10 +2833,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EEFDE0",
       "dataAllocator": "(code *)&LAB_00cd4ac0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "TestNewNav4",
+        "allocator_address": "00eefde0",
+        "name_xref": "00cdac2d",
+        "allocator_operand": "00cdac5b",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1808,10 +2852,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EEFF40",
       "dataAllocator": "(code *)&LAB_00cd4ac0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "TestNewNav5",
+        "allocator_address": "00eeff40",
+        "name_xref": "00cdacca",
+        "allocator_operand": "00cdacf8",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1820,10 +2871,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EEF540",
       "dataAllocator": "(code *)&LAB_00cd4ac0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "TestQuestCard1",
+        "allocator_address": "00eef540",
+        "name_xref": "00cdad67",
+        "allocator_operand": "00cdad95",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1832,10 +2890,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EEF6D0",
       "dataAllocator": "(code *)&LAB_00cd4ac0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "TestQuestCard2",
+        "allocator_address": "00eef6d0",
+        "name_xref": "00cdae04",
+        "allocator_operand": "00cdae32",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1844,10 +2909,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EEF860",
       "dataAllocator": "(code *)&LAB_00cd4ac0",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "TestQuestCard3",
+        "allocator_address": "00eef860",
+        "name_xref": "00cdaea1",
+        "allocator_operand": "00cdaecf",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1856,10 +2928,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EFE380",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "MarkTestScripts",
+        "allocator_address": "00efe380",
+        "name_xref": "00cdaf3e",
+        "allocator_operand": "00cdaf6c",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1868,10 +2947,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EFF000",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "BenTestScripts",
+        "allocator_address": "00eff000",
+        "name_xref": "00cdafd7",
+        "allocator_operand": "00cdb005",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1880,10 +2966,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EFF770",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "TonyTestScripts",
+        "allocator_address": "00eff770",
+        "name_xref": "00cdb070",
+        "allocator_operand": "00cdb09e",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1892,10 +2985,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00EFFCD0",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "ShowTargetedThingHealth",
+        "allocator_address": "00effcd0",
+        "name_xref": "00cdb109",
+        "allocator_operand": "00cdb137",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1904,10 +3004,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00F01330",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "OracleMinigameTest",
+        "allocator_address": "00f01330",
+        "name_xref": "00cdb1a2",
+        "allocator_operand": "00cdb1d0",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1916,10 +3023,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00F02460",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "Q_CinemaTest",
+        "allocator_address": "00f02460",
+        "name_xref": "00cdb23b",
+        "allocator_operand": "00cdb269",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     },
     {
@@ -1928,10 +3042,17 @@
       "numericId": 1,
       "master": false,
       "allocator": "NCreatureAction::CActionEventShot::Alloc",
-      "allocatorAddress": null,
+      "allocatorAddress": "0x00F01760",
       "dataAllocator": "pSunnyvaleDataAlloc_func",
       "section": null,
-      "evidenceLevel": "registry-fact",
+      "evidenceLevel": "registry-operand",
+      "allocatorEvidence": {
+        "quest_name": "CS_PlayCutscene",
+        "allocator_address": "00f01760",
+        "name_xref": "00cdb2d4",
+        "allocator_operand": "00cdb302",
+        "method": "registry-exact-string-to-stack-allocator"
+      },
       "source": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv"
     }
   ],
@@ -1943,7 +3064,7 @@
       "nativeName": "QS_GuardianSisterInfo",
       "status": "matched",
       "nativeSection": "S_QSGSI",
-      "nativeAllocatorAddress": null,
+      "nativeAllocatorAddress": "0x00E26780",
       "identityEvidence": "curated-alias"
     },
     {
@@ -1953,7 +3074,7 @@
       "nativeName": "QS_GuardianSisterInfo2_SisterInBanditCamp",
       "status": "matched",
       "nativeSection": "S_QSGSI2",
-      "nativeAllocatorAddress": null,
+      "nativeAllocatorAddress": "0x00E277E0",
       "identityEvidence": "curated-alias"
     },
     {
@@ -1963,7 +3084,7 @@
       "nativeName": "QS_MeetSister",
       "status": "matched",
       "nativeSection": "S_QSMS",
-      "nativeAllocatorAddress": null,
+      "nativeAllocatorAddress": "0x00E29990",
       "identityEvidence": "curated-alias"
     },
     {
@@ -1983,7 +3104,7 @@
       "nativeName": "Q_HerosOldHouse",
       "status": "matched",
       "nativeSection": "S_QHOH",
-      "nativeAllocatorAddress": null,
+      "nativeAllocatorAddress": "0x00D8D5A0",
       "identityEvidence": "curated-alias"
     },
     {
@@ -1993,7 +3114,7 @@
       "nativeName": "QS_GuardianTrophyDealerInfo",
       "status": "matched",
       "nativeSection": "S_QSGTDI",
-      "nativeAllocatorAddress": null,
+      "nativeAllocatorAddress": "0x00E28CA0",
       "identityEvidence": "curated-alias"
     }
   ],

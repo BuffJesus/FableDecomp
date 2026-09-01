@@ -1,0 +1,914 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "V_TempleOfLight",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/V_TempleOfLight.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00EDEB40",
+  "vtableAddress": "0x012F3C68",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00EDEB80",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
+          "offset": 331
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 456
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00EDAE70",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00EDB190",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CV_TempleOfLightScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CV_TempleOfLightScript::Main",
+          "offset": 146
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4710
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4869
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4996
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 5335
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 5812
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5951
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6102
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 6420
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 6898
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7005
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 7071
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 7372
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 7600
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7740
+        },
+        {
+          "operation": "call",
+          "callee": "strstr",
+          "offset": 8075
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 8607
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 9102
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 9235
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 9361
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9566
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10151
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 10202
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 11104
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11309
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11869
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 11920
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 12822
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 13027
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 13623
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 13674
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 14579
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 14784
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 15384
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 15435
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 16340
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 16545
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 17111
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 17162
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 18123
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 18269
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 18870
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 18937
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 19798
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 20003
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 20594
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 20645
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 21431
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 21660
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 22207
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 22258
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 23030
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 23348
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 23596
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 24203
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 24533
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 24774
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 24930
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 25531
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 26168
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptThing::_IsAlive_CScriptThing__UBE_NXZ",
+          "offset": 26297
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 26558
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 27529
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 27613
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 27682
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 30008
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 30160
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 30637
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 31437
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 32287
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 33362
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 33627
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 33870
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptThing::_IsAlive_CScriptThing__UBE_NXZ",
+          "offset": 33999
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 34336
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 34545
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 34943
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 35587
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 35985
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 36976
+        },
+        {
+          "operation": "call",
+          "callee": "Compare",
+          "offset": 37218
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 37472
+        }
+      ],
+      "strings": [
+        "TOL_AcolyteGood",
+        "TOL_AltarGood",
+        "Witchwood",
+        "",
+        "",
+        "WatchForAcolyteExit",
+        "",
+        "WatchForTermination",
+        "",
+        "WatchForWeaponUnsheathed",
+        "",
+        "WatchForQuestInfoDisplayConditions",
+        "",
+        "DoMission",
+        "",
+        "V_TempleOfLight_Activate",
+        "",
+        "TEXT_QST_064_GM_INTRO",
+        "WatchForInsideTemple",
+        "",
+        "WatchForDonationConditions",
+        "",
+        "Witchwood3",
+        "",
+        "M_SoundAltar",
+        "HUD_ORB_QUEST_VIGNETTE",
+        "OBJECT_QUEST_CARD_TEMPLE_OF_LIGHT",
+        "",
+        "",
+        "TEXT_QUEST_TEMPLE_OF_LIGHT_OBJECTIVE_01",
+        "TEXT_QST_064_TOL_INTRO_10",
+        "TEXT_QST_064_TOL_INTRO_20",
+        "TEXT_QST_064_TOL_INTRO_30",
+        "TEXT_QST_064_TOL_WELCOME_BACK",
+        "TEXT_QST_064_TOL_NOT_WELCOME",
+        "Witchwood3"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 5135
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 5270
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 6241
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 6376
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "CQ_BountyHuntScript::WatchForAllGruntsKilled",
+          "offset": 10000
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 10083
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00edbc80",
+          "offset": 11743
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 11801
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "CV_ChapelOfEvilScript::WatchForWeaponUnsheathed",
+          "offset": 13469
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 13555
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "CQ_BountyHuntScript::WatchForQuestSuccess",
+          "offset": 15236
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 15316
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "CV_ChapelOfEvilScript::DoMission",
+          "offset": 16972
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 17043
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "CV_ChapelOfEvilScript::WatchForInsideChapel",
+          "offset": 20444
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 20526
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "WatchForDonationConditions",
+          "offset": 22074
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 22139
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00EDAE20",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00edae20",
+          "offset": 18
+        }
+      ],
+      "strings": [],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 52
+        },
+        {
+          "fieldOffset": "0x4c",
+          "valueExpression": "0",
+          "offset": 92
+        },
+        {
+          "fieldOffset": "0x50",
+          "valueExpression": "0",
+          "offset": 132
+        },
+        {
+          "fieldOffset": "0x54",
+          "valueExpression": "0",
+          "offset": 172
+        },
+        {
+          "fieldOffset": "0x55",
+          "valueExpression": "0",
+          "offset": 212
+        },
+        {
+          "fieldOffset": "0x56",
+          "valueExpression": "0",
+          "offset": 252
+        },
+        {
+          "fieldOffset": "0x57",
+          "valueExpression": "0",
+          "offset": 292
+        },
+        {
+          "fieldOffset": "0x58",
+          "valueExpression": "0",
+          "offset": 332
+        },
+        {
+          "fieldOffset": "0x59",
+          "valueExpression": "0",
+          "offset": 372
+        },
+        {
+          "fieldOffset": "0x5a",
+          "valueExpression": "0",
+          "offset": 412
+        },
+        {
+          "fieldOffset": "0x5b",
+          "valueExpression": "0",
+          "offset": 452
+        },
+        {
+          "fieldOffset": "0x5c",
+          "valueExpression": "0",
+          "offset": 492
+        },
+        {
+          "fieldOffset": "0x5d",
+          "valueExpression": "0",
+          "offset": 532
+        },
+        {
+          "fieldOffset": "0x68",
+          "valueExpression": "0",
+          "offset": 611
+        },
+        {
+          "fieldOffset": "0x6c",
+          "valueExpression": "0",
+          "offset": 651
+        },
+        {
+          "fieldOffset": "0x70",
+          "valueExpression": "0",
+          "offset": 691
+        },
+        {
+          "fieldOffset": "0x72",
+          "valueExpression": "0",
+          "offset": 731
+        },
+        {
+          "fieldOffset": "0x71",
+          "valueExpression": "0",
+          "offset": 771
+        },
+        {
+          "fieldOffset": "0x5e",
+          "valueExpression": "0",
+          "offset": 811
+        },
+        {
+          "fieldOffset": "0x5f",
+          "valueExpression": "0",
+          "offset": 851
+        },
+        {
+          "fieldOffset": "0x60",
+          "valueExpression": "0",
+          "offset": 891
+        },
+        {
+          "fieldOffset": "0x61",
+          "valueExpression": "0",
+          "offset": 931
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00EDAF30",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00edaf30",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "DonationTotal",
+        "DonationThisVisit",
+        "DonationCounter",
+        "DonationInvalid",
+        "DonationActive",
+        "DisplayQuestInfo",
+        "WeaponWarningComplete",
+        "WeaponUnsheathed",
+        "TempleIntroComplete",
+        "InsideTemple",
+        "AttackedByHero",
+        "AcolyteAttackMessageComplete",
+        "AllAcolytesEscaped",
+        "MoralityInitial",
+        "MoralityCurrent",
+        "MoralityCumulative",
+        "QuestFinished",
+        "QuestActivated",
+        "QuestComplete",
+        "ReceivedReward",
+        "GivenCoolThing1",
+        "GivenCoolThing2",
+        "AwardWeapon"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "DonationTotal",
+          "nativeType": "signed_char",
+          "offset": 245
+        },
+        {
+          "key": "DonationCounter",
+          "nativeType": "signed_char",
+          "offset": 551
+        },
+        {
+          "key": "DonationInvalid",
+          "nativeType": "signed_char",
+          "offset": 736
+        },
+        {
+          "key": "DonationActive",
+          "nativeType": "signed_char",
+          "offset": 921
+        },
+        {
+          "key": "DisplayQuestInfo",
+          "nativeType": "signed_char",
+          "offset": 1105
+        },
+        {
+          "key": "WeaponWarningComplete",
+          "nativeType": "signed_char",
+          "offset": 1291
+        },
+        {
+          "key": "WeaponUnsheathed",
+          "nativeType": "signed_char",
+          "offset": 1482
+        },
+        {
+          "key": "TempleIntroComplete",
+          "nativeType": "signed_char",
+          "offset": 1668
+        },
+        {
+          "key": "InsideTemple",
+          "nativeType": "signed_char",
+          "offset": 1857
+        },
+        {
+          "key": "AttackedByHero",
+          "nativeType": "signed_char",
+          "offset": 2039
+        },
+        {
+          "key": "AcolyteAttackMessageComplete",
+          "nativeType": "signed_char",
+          "offset": 2223
+        },
+        {
+          "key": "AllAcolytesEscaped",
+          "nativeType": "signed_char",
+          "offset": 2421
+        },
+        {
+          "key": "MoralityInitial",
+          "nativeType": "signed_char",
+          "offset": 2584
+        },
+        {
+          "key": "MoralityCurrent",
+          "nativeType": "signed_char",
+          "offset": 2743
+        },
+        {
+          "key": "MoralityCumulative",
+          "nativeType": "signed_char",
+          "offset": 2903
+        },
+        {
+          "key": "QuestFinished",
+          "nativeType": "signed_char",
+          "offset": 3091
+        },
+        {
+          "key": "QuestActivated",
+          "nativeType": "signed_char",
+          "offset": 3274
+        },
+        {
+          "key": "QuestComplete",
+          "nativeType": "signed_char",
+          "offset": 3458
+        },
+        {
+          "key": "ReceivedReward",
+          "nativeType": "signed_char",
+          "offset": 3641
+        },
+        {
+          "key": "GivenCoolThing1",
+          "nativeType": "signed_char",
+          "offset": 3825
+        },
+        {
+          "key": "GivenCoolThing2",
+          "nativeType": "signed_char",
+          "offset": 4010
+        },
+        {
+          "key": "AwardWeapon",
+          "nativeType": "signed_char",
+          "offset": 4195
+        }
+      ]
+    }
+  ]
+}

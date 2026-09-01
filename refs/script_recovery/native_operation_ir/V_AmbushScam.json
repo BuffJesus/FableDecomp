@@ -1,7 +1,7 @@
 {
   "schema": "fable-native-script-operation-ir/0.1",
   "script": "V_AmbushScam",
-  "cluster": "refs/script_recovery/native_clusters/V_AmbushScam.json",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/V_AmbushScam.json",
   "evidenceLevel": "native-decompile",
   "allocatorAddress": "0x00E322C0",
   "vtableAddress": "0x012E2428",

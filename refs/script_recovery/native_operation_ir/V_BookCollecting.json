@@ -1,7 +1,7 @@
 {
   "schema": "fable-native-script-operation-ir/0.1",
   "script": "V_BookCollecting",
-  "cluster": "refs/script_recovery/native_clusters/V_BookCollecting.json",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/V_BookCollecting.json",
   "evidenceLevel": "native-decompile",
   "allocatorAddress": "0x00E57A50",
   "vtableAddress": "0x012E5EFC",

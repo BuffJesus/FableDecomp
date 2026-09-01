@@ -1,7 +1,7 @@
 {
   "schema": "fable-native-script-operation-ir/0.1",
   "script": "V_BeardyBaldy",
-  "cluster": "refs/script_recovery/native_clusters/V_BeardyBaldy.json",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/V_BeardyBaldy.json",
   "evidenceLevel": "native-decompile",
   "allocatorAddress": "0x00E54260",
   "vtableAddress": "0x012E5790",

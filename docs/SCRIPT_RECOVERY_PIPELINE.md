@@ -19,6 +19,8 @@ implements the engine's native quest and entity host contracts.
 Generated artifacts must retain one of these labels:
 
 1. `registry-fact`: identity, allocator, section, or ID recovered from the retail registration table.
+   `registry-operand` is the stronger allocator subtype: an exact script-name xref was followed to
+   the executable allocator operand stored in `CScriptManager_RegisterAllScripts`.
 2. `native-decompile`: operation or control flow recovered from a specified executable address.
 3. `runtime-observed`: behavior captured from an instrumented retail execution.
 4. `reconstructed-source`: third-party or hand-produced Lua that has not been proven equivalent.
@@ -54,6 +56,14 @@ Important outputs:
 catalog and correlates seed packages with retail identities. This matters because reconstructed
 package names are not consistently the engine's join keys: `MazeResearch` maps to
 `V_MazeResearch`, while `HerosOldHouse` maps to `Q_HerosOldHouse`.
+
+`ResolveScriptAllocatorsFromRegistry.java` avoids trusting Function ID labels on registration
+operands. It correlates exact catalog names with the pending `AddScript` record and recovered 160
+instruction-level allocator operands; the one script without an exact defined-string match
+(`Expression_Follow`) already has a direct registry address. Together these provide allocator
+addresses for all 161 catalog entries. All 161 now also have exported five-slot lifecycle clusters
+and native operation IR. Only the six anchor-checked seeds are identity-anchored; the other 155
+remain address-resolved evidence awaiting runtime trace comparison.
 
 `tools/script_recovery/analyze_compatibility.py` turns the IR call inventory and validation findings
 into a ranked ForgeFSE capability backlog. It also emits deterministic lexical trace templates. The

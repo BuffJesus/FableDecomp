@@ -1,0 +1,539 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "V_IntroductionToTrophies",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/V_IntroductionToTrophies.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00E9FB40",
+  "vtableAddress": "0x012ED558",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00E9FBA0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CThingSwitch::_vector_deleting_destructor_",
+          "offset": 163
+        },
+        {
+          "operation": "call",
+          "callee": "CTimer",
+          "offset": 284
+        },
+        {
+          "operation": "call",
+          "callee": "CTimer",
+          "offset": 329
+        },
+        {
+          "operation": "call",
+          "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
+          "offset": 364
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 489
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00E9C410",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00E9C4B0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e9c4b0",
+          "offset": 18
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 1271
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1428
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1534
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 1829
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 2261
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2418
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2535
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 2830
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3265
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3422
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3538
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 3833
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4268
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4425
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4540
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 4835
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 5261
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 5383
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5586
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6064
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 6125
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 6939
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7142
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7576
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 7637
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 8451
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8654
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9090
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 9151
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 10051
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10130
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 11443
+        }
+      ],
+      "strings": [
+        "BriarRose",
+        "TrophiesIntroWatcher",
+        "TrophiesBriarTrophy",
+        "TrophiesIntroTable",
+        "WatchForInsideTavern",
+        "",
+        "WatchForCrowdVolume",
+        "",
+        "WatchForQuestComplete",
+        "",
+        "V_TalentlessBard"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 1650
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 1785
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 2651
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 2786
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 3654
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 3789
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 4656
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 4791
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "NScript::CV_IntroductionToTrophiesScript::WatchForInsideTavern",
+          "offset": 5915
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 6012
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00e9c8d0",
+          "offset": 7470
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 7524
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00e9c850",
+          "offset": 8984
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 9038
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00E9C3B0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e9c3b0",
+          "offset": 18
+        }
+      ],
+      "strings": [],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 52
+        },
+        {
+          "fieldOffset": "0x49",
+          "valueExpression": "0",
+          "offset": 92
+        },
+        {
+          "fieldOffset": "0x4a",
+          "valueExpression": "0",
+          "offset": 132
+        },
+        {
+          "fieldOffset": "0x4b",
+          "valueExpression": "0",
+          "offset": 172
+        },
+        {
+          "fieldOffset": "0x4c",
+          "valueExpression": "0",
+          "offset": 212
+        },
+        {
+          "fieldOffset": "0x4d",
+          "valueExpression": "0",
+          "offset": 252
+        },
+        {
+          "fieldOffset": "0x50",
+          "valueExpression": "0",
+          "offset": 292
+        },
+        {
+          "fieldOffset": "0x54",
+          "valueExpression": "1",
+          "offset": 332
+        },
+        {
+          "fieldOffset": "0x55",
+          "valueExpression": "0",
+          "offset": 372
+        },
+        {
+          "fieldOffset": "0x60",
+          "valueExpression": "0",
+          "offset": 412
+        },
+        {
+          "fieldOffset": "0x58",
+          "valueExpression": "0",
+          "offset": 452
+        },
+        {
+          "fieldOffset": "0x5c",
+          "valueExpression": "0",
+          "offset": 492
+        },
+        {
+          "fieldOffset": "0x61",
+          "valueExpression": "0",
+          "offset": 532
+        },
+        {
+          "fieldOffset": "0x62",
+          "valueExpression": "0",
+          "offset": 572
+        },
+        {
+          "fieldOffset": "0x56",
+          "valueExpression": "0",
+          "offset": 612
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00E9E110",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00e9e110",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "DoneBriarIntroSpeech",
+        "DoneBriarTrophySpeech",
+        "AttackedByHero",
+        "DoneApproachMessage1",
+        "DoneApproachMessage2",
+        "AttackSpeechComplete",
+        "HitByHeroCount",
+        "InsideTavern",
+        "OpinionCurrent",
+        "OpinionRequired",
+        "OpinionTimerReset",
+        "OutsideTavernTimerReset",
+        "QuestComplete"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "DoneBriarIntroSpeech",
+          "nativeType": "signed_char",
+          "offset": 185
+        },
+        {
+          "key": "DoneBriarTrophySpeech",
+          "nativeType": "signed_char",
+          "offset": 390
+        },
+        {
+          "key": "AttackedByHero",
+          "nativeType": "signed_char",
+          "offset": 581
+        },
+        {
+          "key": "DoneApproachMessage1",
+          "nativeType": "signed_char",
+          "offset": 765
+        },
+        {
+          "key": "DoneApproachMessage2",
+          "nativeType": "signed_char",
+          "offset": 955
+        },
+        {
+          "key": "AttackSpeechComplete",
+          "nativeType": "signed_char",
+          "offset": 1145
+        },
+        {
+          "key": "HitByHeroCount",
+          "nativeType": "signed_char",
+          "offset": 1310
+        },
+        {
+          "key": "InsideTavern",
+          "nativeType": "signed_char",
+          "offset": 1494
+        },
+        {
+          "key": "OpinionCurrent",
+          "nativeType": "signed_char",
+          "offset": 1651
+        },
+        {
+          "key": "OpinionRequired",
+          "nativeType": "signed_char",
+          "offset": 1810
+        },
+        {
+          "key": "OpinionTimerReset",
+          "nativeType": "signed_char",
+          "offset": 1995
+        },
+        {
+          "key": "OutsideTavernTimerReset",
+          "nativeType": "signed_char",
+          "offset": 2182
+        },
+        {
+          "key": "QuestComplete",
+          "nativeType": "signed_char",
+          "offset": 2375
+        }
+      ]
+    }
+  ]
+}

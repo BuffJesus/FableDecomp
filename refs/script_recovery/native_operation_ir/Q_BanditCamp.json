@@ -1,0 +1,556 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "Q_BanditCamp",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/Q_BanditCamp.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00D03580",
+  "vtableAddress": "0x012C8300",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00D035C0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CLandscapeBackgroundPatch::_vector_deleting_destructor_",
+          "offset": 181
+        },
+        {
+          "operation": "call",
+          "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
+          "offset": 331
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 456
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00D009D0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00d009d0",
+          "offset": 18
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 470
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 669
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1106
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1167
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 994
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "param_1",
+          "offset": 1046
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00D00AF0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_BanditCampScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_BanditCampScript::Main",
+          "offset": 143
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 1988
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2145
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2256
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 2555
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3000
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3157
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3268
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 3567
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 4004
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 4170
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4276
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4338
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4386
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4469
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6277
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 6842
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7045
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7535
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 7581
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 8393
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8596
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9055
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 9101
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 9913
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10116
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10587
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 10633
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 11445
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11648
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 12115
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 12161
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 13021
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 13267
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 13421
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 13585
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 14246
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 14352
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 14845
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 15519
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 15596
+        }
+      ],
+      "strings": [
+        "Gate1GuardOuter",
+        "Gate1GuardInner",
+        "",
+        "",
+        "TEXT_QUEST_BANDIT_CAMP_OBJECTIVE_01",
+        "Q_BanditCamp",
+        "Q_OakValeBanditRaid",
+        "WatchForTermination",
+        "",
+        "WatchForCostume",
+        "",
+        "CheckAnyBanditsKilled",
+        "",
+        "WatchForEndOfScript",
+        "",
+        "OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS",
+        "OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS",
+        "OBJECT_BANDIT_CAMP_HOSTAGE_KEY",
+        "OBJECT_BANDIT_CAMP_HOSTAGE_KEY"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 2376
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 2511
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 3388
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 3523
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "CScriptBase_WaitForEntityAndExecuteOnePair",
+          "offset": 7401
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 7478
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "WatchForCostume",
+          "offset": 8948
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 8998
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "CheckAnyBanditsKilled",
+          "offset": 10474
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 10530
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00d013a0",
+          "offset": 12004
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 12058
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00D006D0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_BanditCampScript::Init",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_BanditCampScript::Init",
+          "offset": 143
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1700
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1766
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2699
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2785
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3695
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3778
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4688
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4772
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5682
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5764
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6674
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6766
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8063
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8156
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9177
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9264
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10275
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 10362
+        }
+      ],
+      "strings": [
+        "BanditCampPathEntrance",
+        "Q_BanditCamp",
+        "BanditCampEntrance",
+        "Q_BanditCamp",
+        "BanditCampPath1",
+        "Q_BanditCamp",
+        "BanditCampCentre",
+        "Q_BanditCamp",
+        "BanditCampBoss",
+        "Q_BanditCamp",
+        "DemonDoor_BanditCampPath",
+        "Q_BanditCamp",
+        "",
+        "TEXT_QST_BOAST_DESCRIPTION_NODAMAGE",
+        "",
+        "TEXT_QST_BOAST_DESCRIPTION_KILLNOBANDITS",
+        "",
+        "TEXT_QST_BOAST_DESCRIPTION_KILLMANYBANDITS"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x11a",
+          "valueExpression": "0",
+          "offset": 7928
+        },
+        {
+          "fieldOffset": "0x115",
+          "valueExpression": "1",
+          "offset": 7983
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00D00A90",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00d00a90",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "Gate1Open",
+        "BoastBegun",
+        "ActivatedBanditRaid"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "Gate1Open",
+          "nativeType": "signed_char",
+          "offset": 185
+        },
+        {
+          "key": "BoastBegun",
+          "nativeType": "signed_char",
+          "offset": 379
+        },
+        {
+          "key": "ActivatedBanditRaid",
+          "nativeType": "signed_char",
+          "offset": 559
+        }
+      ]
+    }
+  ]
+}

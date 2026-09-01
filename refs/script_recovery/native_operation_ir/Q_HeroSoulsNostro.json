@@ -1,0 +1,514 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "Q_HeroSoulsNostro",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/Q_HeroSoulsNostro.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00D89CF0",
+  "vtableAddress": "0x012D4D2C",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00D89D40",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
+          "offset": 179
+        },
+        {
+          "operation": "call",
+          "callee": "CTimer",
+          "offset": 322
+        },
+        {
+          "operation": "call",
+          "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
+          "offset": 358
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 483
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00D87BA0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00D87CB0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_HeroSoulsNostroScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_HeroSoulsNostroScript::Main",
+          "offset": 148
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 2377
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2516
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2644
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 2970
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3480
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3619
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3783
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 4086
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4599
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4738
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4893
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 5196
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 5709
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5848
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5996
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 6299
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 6812
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6951
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7113
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 7416
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 7921
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8028
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 8657
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8763
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 9343
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9426
+        },
+        {
+          "operation": "call",
+          "callee": "Main_InitializeFourierAnalysis_2",
+          "offset": 9527
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9568
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11230
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11309
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11394
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11514
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 13304
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 13499
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 14077
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 14147
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 15038
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 15233
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 15796
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 15866
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 16852
+        },
+        {
+          "operation": "call",
+          "callee": "SUB41",
+          "offset": 16885
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 17006
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 17189
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 17423
+        },
+        {
+          "operation": "call",
+          "callee": "Main_InitializeFourierAnalysis_2",
+          "offset": 17546
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 17589
+        },
+        {
+          "operation": "call",
+          "callee": "CSubtitleRenderer::SetText",
+          "offset": 17700
+        }
+      ],
+      "strings": [
+        "SummonerToKill",
+        "GuardNearGraveyardPath",
+        "UndeadSoldier",
+        "Nostro",
+        "SUMMONED_CREATURE",
+        "GraveyardCircle",
+        "GraveyardCircle",
+        "CS_HEROSOULS_SOUL3_NOSTRO_START",
+        "OBJECT_QUEST_CARD_HERO_SOULS_NOSTRO",
+        "Graveyard",
+        "GraveyardCircle",
+        "TEXT_QUEST_HERO_SOULS_OBJECTIVE_13",
+        "Q_HeroSouls",
+        "DealWithCreatureGeneration",
+        "",
+        "WatchForNostroHit",
+        "",
+        "CS_HEROSOULS_SOUL3_NOSTRO_SUCCESS",
+        "TEXT_QST_LOG_STORY_PLATINUM_370"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 2768
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 2903
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 3907
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "1",
+          "offset": 4042
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 5017
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 5152
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 6120
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 6255
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 7237
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "0",
+          "offset": 7372
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "Script_Undead_Generator",
+          "offset": 13951
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 14011
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "WatchForNostroHit",
+          "offset": 15676
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 15730
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00D87B20",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_HeroSoulsNostroScript::Init",
+          "offset": 79
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_HeroSoulsNostroScript::Init",
+          "offset": 147
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 752
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 835
+        }
+      ],
+      "strings": [
+        "GraveyardCircle",
+        "Q_HeroSoulsNostro"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x48",
+          "valueExpression": "0",
+          "offset": 478
+        },
+        {
+          "fieldOffset": "0x50",
+          "valueExpression": "0",
+          "offset": 609
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00D87C60",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00d87c60",
+          "offset": 18
+        }
+      ],
+      "strings": [
+        "SummonerCount",
+        "PlayedNostroCS"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": [
+        {
+          "key": "SummonerCount",
+          "nativeType": "signed_char",
+          "offset": 245
+        },
+        {
+          "key": "PlayedNostroCS",
+          "nativeType": "signed_char",
+          "offset": 414
+        }
+      ]
+    }
+  ]
+}

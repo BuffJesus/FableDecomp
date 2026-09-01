@@ -1,0 +1,606 @@
+{
+  "schema": "fable-native-script-operation-ir/0.1",
+  "script": "Q_WhiteBalverineWW",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/Q_WhiteBalverineWW.json",
+  "evidenceLevel": "native-decompile",
+  "allocatorAddress": "0x00E1A770",
+  "vtableAddress": "0x012E0CE4",
+  "evidenceAnchors": [],
+  "lifecycle": [
+    {
+      "role": "destructor",
+      "address": "0x00E1A7D0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "CEngineSubPrimitiveText::_scalar_deleting_destructor_",
+          "offset": 179
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 333
+        },
+        {
+          "operation": "call",
+          "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
+          "offset": 391
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 516
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "RegisterMain",
+      "address": "0x00E18570",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CGlobal_WatchForHeroDeathScript::Main",
+          "offset": 156
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 655
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 860
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1316
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 1376
+        }
+      ],
+      "strings": [
+        "Main",
+        ""
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00cdd440",
+          "offset": 1191
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 1246
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Main",
+      "address": "0x00E18630",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_WhiteBalverineWWScript::Main",
+          "offset": 80
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_WhiteBalverineWWScript::Main",
+          "offset": 149
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 3241
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3400
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 3539
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 3907
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 4389
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4528
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 4709
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 5030
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 5549
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5688
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 5871
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::AddEntityScriptBinding",
+          "offset": 6192
+        },
+        {
+          "operation": "call",
+          "callee": "CTCVillage::OnInitialActivate",
+          "offset": 6678
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 6785
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 7251
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 7905
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8105
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 8672
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 8862
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9027
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9189
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 9410
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11058
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 11656
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 12195
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 12433
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 12999
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 13184
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 13719
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 13787
+        },
+        {
+          "operation": "call",
+          "callee": "operator_new",
+          "offset": 14805
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 14990
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 15530
+        },
+        {
+          "operation": "call",
+          "callee": "CGuiVarTransferStruct::Add",
+          "offset": 15598
+        },
+        {
+          "operation": "call",
+          "callee": "CBaseIntelligentPointer::CBaseIntelligentPointer",
+          "offset": 16608
+        },
+        {
+          "operation": "call",
+          "callee": "malloc",
+          "offset": 16971
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 17346
+        },
+        {
+          "operation": "call",
+          "callee": "CFourierAnalysis::CFourierAnalysis",
+          "offset": 17886
+        },
+        {
+          "operation": "call",
+          "callee": "operator_delete",
+          "offset": 18240
+        },
+        {
+          "operation": "call",
+          "callee": "CBaseIntelligentPointer::CBaseIntelligentPointer",
+          "offset": 18918
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 19134
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 19831
+        },
+        {
+          "operation": "call",
+          "callee": "RunCutsceneMacro_Func",
+          "offset": 19988
+        },
+        {
+          "operation": "call",
+          "callee": "CPhysicsMeshInfo",
+          "offset": 20733
+        },
+        {
+          "operation": "call",
+          "callee": "StdMap_Destroy_API",
+          "offset": 20792
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptGameResourceObjectMovieBase",
+          "offset": 20854
+        },
+        {
+          "operation": "call",
+          "callee": "CBaseIntelligentPointer::CBaseIntelligentPointer",
+          "offset": 20963
+        },
+        {
+          "operation": "call",
+          "callee": "IsDistanceBetweenThingsUnder",
+          "offset": 21364
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 21554
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 21847
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 22113
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 24131
+        },
+        {
+          "operation": "call",
+          "callee": "C3DMeshInfo::HasPhysicsMesh",
+          "offset": 24232
+        },
+        {
+          "operation": "call",
+          "callee": "CMemoryDataOutputStream::Clear",
+          "offset": 24328
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 24808
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptGameResourceObjectMovieBase",
+          "offset": 24946
+        },
+        {
+          "operation": "call",
+          "callee": "C3DClothPrimitive",
+          "offset": 25075
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 25351
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 25524
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 25676
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString__AssignFromWide",
+          "offset": 25782
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString",
+          "offset": 26451
+        },
+        {
+          "operation": "call",
+          "callee": "CScriptBase::IsActiveThreadTerminating",
+          "offset": 26532
+        }
+      ],
+      "strings": [
+        "KG_Chief",
+        "WBWW_WhiteBalverine",
+        "WBWW_SoldierBalverine",
+        "Witchwood4",
+        "WitchWood_7",
+        "WitchWood_7",
+        "KnotholeGlade",
+        "Witchwood4",
+        "TEXT_QUEST_WHITE_BALVERINE_KNOTHOLE_GLADE_OBJECTIVE_07",
+        "Q_WhiteBalverineKnotholeGlade",
+        "MK_WBW_FIRSTSPAWNB",
+        "WBWW_WhiteBalverine",
+        "MonitorBalverine",
+        "",
+        "SpawnBalverines",
+        "",
+        "BALV",
+        "",
+        "CS_WBW_DRINK",
+        "SCRIPT_NAME_HERO",
+        "SCRIPT_NAME_HERO",
+        "SCRIPT_NAME_HERO"
+      ],
+      "stateWrites": [
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 3681
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "1",
+          "offset": 3816
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 4851
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "1",
+          "offset": 4986
+        },
+        {
+          "fieldOffset": "0x10",
+          "valueExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "offset": 6013
+        },
+        {
+          "fieldOffset": "0x18",
+          "valueExpression": "1",
+          "offset": 6148
+        },
+        {
+          "fieldOffset": "0x58",
+          "valueExpression": "= 0) {\r\n        (*(code *)(*(int **)(this + 0x58))[1])()",
+          "offset": 12104
+        },
+        {
+          "fieldOffset": "0x54",
+          "valueExpression": "uVar11",
+          "offset": 12258
+        },
+        {
+          "fieldOffset": "0x58",
+          "valueExpression": "piVar3",
+          "offset": 12302
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "MonitorBalverine",
+          "offset": 13605
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 13656
+        },
+        {
+          "fieldOffset": "0x34",
+          "valueExpression": "&LAB_00e19560",
+          "offset": 15413
+        },
+        {
+          "fieldOffset": "0x38",
+          "valueExpression": "this",
+          "offset": 15467
+        },
+        {
+          "fieldOffset": "0xc",
+          "valueExpression": "paStack_88",
+          "offset": 17214
+        },
+        {
+          "fieldOffset": "0xc",
+          "valueExpression": "= 0) {\r\n        (*(code *)(*(int **)(this_00 + 0xc))[1])()",
+          "offset": 18145
+        },
+        {
+          "fieldOffset": "0xc",
+          "valueExpression": "ppuVar12",
+          "offset": 18386
+        },
+        {
+          "fieldOffset": "0xe1",
+          "valueExpression": "1",
+          "offset": 26638
+        }
+      ],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "Init",
+      "address": "0x00E18480",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_SecretPassageScript::Init",
+          "offset": 79
+        },
+        {
+          "operation": "call",
+          "callee": "NScript::CQ_SecretPassageScript::Init",
+          "offset": 145
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 766
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 823
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1762
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 1840
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2756
+        },
+        {
+          "operation": "call",
+          "callee": "CCharString::CCharString",
+          "offset": 2847
+        }
+      ],
+      "strings": [
+        "KnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "Witchwood4",
+        "Q_WhiteBalverineWW",
+        "DemonDoor_KnotholeGlade",
+        "Q_WhiteBalverineWW"
+      ],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    },
+    {
+      "role": "OnPersist",
+      "address": "0x00CBD4E0",
+      "calls": [
+        {
+          "operation": "call",
+          "callee": "FUN_00cbd4e0",
+          "offset": 7
+        }
+      ],
+      "strings": [],
+      "stateWrites": [],
+      "persistenceTransfers": []
+    }
+  ]
+}

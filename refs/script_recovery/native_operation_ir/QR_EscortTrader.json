@@ -1,7 +1,7 @@
 {
   "schema": "fable-native-script-operation-ir/0.1",
   "script": "QR_EscortTrader",
-  "cluster": "refs/script_recovery/native_clusters/QR_EscortTrader.json",
+  "cluster": "D:/Documents/FableTLC/refs/script_recovery/native_clusters/QR_EscortTrader.json",
   "evidenceLevel": "native-decompile",
   "allocatorAddress": "0x00E24C30",
   "vtableAddress": "0x012E12E0",
