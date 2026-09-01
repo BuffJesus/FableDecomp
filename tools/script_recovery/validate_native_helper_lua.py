@@ -363,6 +363,51 @@ def validate(manifest_path: Path) -> dict[str, Any]:
                 if trace != expected:
                     errors.append(f"script token {owner}/remaining {remaining}: "
                                   f"expected {expected}, got {trace}")
+        elif pattern["kind"] == "aggregate-owned-container-destructor":
+            first = pattern["stridedRange"]
+            free_target = int(pattern["freeTarget"], 0)
+            pointer_offsets = [int(first["beginOffset"], 0),
+                               *(int(row["beginOffset"], 0) for row in pattern["ranges"]),
+                               int(pattern["list"]["offset"], 0)]
+            for elements, populated in (([], False), (["a", "b", "c"], True)):
+                trace = []
+                pointers = {offset: 0x1000 + offset for offset in pointer_offsets} if populated else {}
+                function(
+                    lambda begin, end, stride, values=elements:
+                    trace.append(("read-range", begin, end, stride)) or
+                    runtime.table_from(values),
+                    lambda element, field, target:
+                    trace.append(("destroy-element", element, field, target)),
+                    lambda offset: trace.append(("read-pointer", offset)) or pointers.get(offset),
+                    lambda pointer, target: trace.append(("free", pointer, target)),
+                    lambda begin, end, target:
+                    trace.append(("destroy-range", begin, end, target)),
+                    lambda offset, target: trace.append(("destroy-list", offset, target)),
+                    lambda target: trace.append(("initialize-base", target)))
+                expected = [("read-range", int(first["beginOffset"], 0),
+                             int(first["endOffset"], 0), first["stride"])]
+                expected.extend(("destroy-element", element, first["fieldOffset"],
+                                 int(first["destroyTarget"], 0)) for element in elements)
+                for index, offset in enumerate(pointer_offsets):
+                    if index == 0:
+                        expected.append(("read-pointer", offset))
+                    elif index <= len(pattern["ranges"]):
+                        row = pattern["ranges"][index - 1]
+                        expected.append(("destroy-range", int(row["beginOffset"], 0),
+                                         int(row["endOffset"], 0),
+                                         int(row["destroyTarget"], 0)))
+                        expected.append(("read-pointer", offset))
+                    else:
+                        list_row = pattern["list"]
+                        expected.append(("destroy-list", int(list_row["offset"], 0),
+                                         int(list_row["destroyTarget"], 0)))
+                        expected.append(("read-pointer", offset))
+                    if populated:
+                        expected.append(("free", pointers[offset], free_target))
+                expected.append(("initialize-base", int(pattern["baseInitializerTarget"], 0)))
+                checks += 1
+                if trace != expected:
+                    errors.append(f"aggregate populated {populated}: expected {expected}, got {trace}")
         else:
             errors.append(f"unsupported semantic pattern {pattern['kind']}")
         rows.append({"targetAddress": entry["targetAddress"], "passed": not errors,

@@ -248,7 +248,13 @@ single target, `0x004AA840`, is another donor-mislabeled script-token destructor
 vtable `0x01238C8C`, applies the same three reference-count branches to owner `+8`, clears `+4/+8`,
 and tail-initializes through already-lifted target `0x0099A2E0`. All branches execute through opaque
 callbacks. Totals reach twenty-six helpers / 132 checks, 825 resolved calls across 140 scripts, and
-129 helper labels / 752 calls left.
+129 helper labels / 752 calls left. The destructor-shared
+`NParticleEngine::CParticleEmitter::DeleteAllParticles @ 0x00CBD510` is also fully modeled as the
+ordered teardown of four owned containers: a 24-byte strided range, two typed ranges, one list,
+conditional frees for each backing pointer, then base initialization through `0x0099A300`. Empty and
+populated cases execute with opaque tokens. Totals reach twenty-seven helpers / 134 checks, 950
+resolved calls across 160 scripts, and 128 helper labels / 627 calls left; 69 scripts now advance from
+helper mapping to manual Lua reconstruction.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`

@@ -182,6 +182,31 @@ class NativeHelperLuaTests(unittest.TestCase):
             self.assertTrue(result["summary"]["complete"])
             self.assertEqual(result["summary"]["checks"], 3)
 
+    def test_generated_aggregate_destructor_executes_empty_and_populated_cases(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            helper_ir = root / "ir.json"
+            helper_ir.write_text(json.dumps({"helpers": [{
+                "targetAddress": "0x00CBD510", "currentName": "DeleteAllParticles",
+                "decompileSha256": "5" * 64, "luaEmissionReady": True,
+                "semanticPatterns": [{"kind": "aggregate-owned-container-destructor",
+                    "complete": True,
+                    "stridedRange": {"beginOffset": "0x30", "endOffset": "0x34",
+                                     "stride": 24, "fieldOffset": 16,
+                                     "destroyTarget": "0x0099EAE0"},
+                    "ranges": [{"beginOffset": "0x18", "endOffset": "0x1c",
+                                "destroyTarget": "0x00CBB200"},
+                               {"beginOffset": "0x8", "endOffset": "0xc",
+                                "destroyTarget": "0x00CBB1B0"}],
+                    "list": {"offset": "0x4", "destroyTarget": "0x00CBB090"},
+                    "freeTarget": "0x00BFEA14", "baseInitializerTarget": "0x0099A300",
+                    "callSites": [f"0x{i}" for i in range(9)]}],
+            }]}))
+            generate(helper_ir, root / "generated")
+            result = validate(root / "generated" / "manifest.json")
+            self.assertTrue(result["summary"]["complete"])
+            self.assertEqual(result["summary"]["checks"], 2)
+
 
 if __name__ == "__main__":
     unittest.main()

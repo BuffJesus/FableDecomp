@@ -1,12 +1,62 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "3C9F295B6EF869F5FA9EECEA7A14B50CBA0907DF7815ABD94D69FAE142B2D21B",
+  "sourceSha256": "806A0090088032E8FCA63B951EFA665655B158E37AE0E935C9076CD42EBFADCA",
   "summary": {
-    "emitted": 26,
+    "emitted": 27,
     "deploymentEligible": 0
   },
   "entries": [
+    {
+      "targetAddress": "0x00CBD510",
+      "currentName": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
+      "sourceDecompileSha256": "909e76801a72ea86a90862b230d41a9241e18346787f0117c070fb42e2ddc823",
+      "luaFile": "00CBD510.lua",
+      "luaSha256": "369820450078ECDB63A7D12C6236A0C528479F2C9B09BE6D6D532CA1B4072326",
+      "semanticPattern": {
+        "kind": "aggregate-owned-container-destructor",
+        "complete": true,
+        "stridedRange": {
+          "beginOffset": "0x30",
+          "endOffset": "0x34",
+          "stride": 24,
+          "fieldOffset": 16,
+          "destroyTarget": "0x0099EAE0"
+        },
+        "ranges": [
+          {
+            "beginOffset": "0x18",
+            "endOffset": "0x1c",
+            "destroyTarget": "0x00CBB200"
+          },
+          {
+            "beginOffset": "0x8",
+            "endOffset": "0xc",
+            "destroyTarget": "0x00CBB1B0"
+          }
+        ],
+        "list": {
+          "offset": "0x4",
+          "destroyTarget": "0x00CBB090"
+        },
+        "freeTarget": "0x00BFEA14",
+        "baseInitializerTarget": "0x0099A300",
+        "callSites": [
+          "0x00CBD523",
+          "0x00CBD537",
+          "0x00CBD54A",
+          "0x00CBD557",
+          "0x00CBD56A",
+          "0x00CBD577",
+          "0x00CBD584",
+          "0x00CBD590",
+          "0x00CBD59A"
+        ]
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
     {
       "targetAddress": "0x00CB8930",
       "currentName": "CTCVillage::OnInitialActivate",

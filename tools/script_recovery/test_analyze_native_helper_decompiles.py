@@ -183,6 +183,20 @@ class NativeHelperDecompileTests(unittest.TestCase):
         self.assertEqual(pattern["kind"], "reference-counted-script-token-destructor")
         self.assertEqual(pattern["preReleaseVtableAddress"], "0x01238C8C")
 
+    def test_aggregate_destructor_preserves_all_container_layouts(self):
+        body = ("this + 0x34 this + 0x30 iVar2 = iVar2 + 0x18 iVar2 + 0x10 "
+                "this + 0x1c this + 0x18 this + 0xc this + 8 this + 4")
+        targets = ["0x0099EAE0", "0x00BFEA14", "0x00CBB200", "0x00BFEA14",
+                   "0x00CBB1B0", "0x00BFEA14", "0x00CBB090", "0x00BFEA14",
+                   "0x0099A300"]
+        direct = [{"target": target, "site": f"0x{index}"}
+                  for index, target in enumerate(targets)]
+        pattern = semantic_patterns(body, direct, [],
+            "NParticleEngine::CParticleEmitter::DeleteAllParticles")[0]
+        self.assertEqual(pattern["kind"], "aggregate-owned-container-destructor")
+        self.assertEqual(pattern["stridedRange"]["stride"], 0x18)
+        self.assertEqual(len(pattern["ranges"]), 2)
+
     def test_typed_native_reads_are_complete_semantic_patterns(self):
         field = semantic_patterns(
             "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])

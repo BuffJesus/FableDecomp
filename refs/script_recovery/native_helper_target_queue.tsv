@@ -1,5 +1,4 @@
 target_address	category	calls	scripts	roles	helper_names
-0x00CBD510	lifecycle-cleanup	125	125	destructor	NParticleEngine::CParticleEmitter::DeleteAllParticles
 0x0099A380	object-lifetime	42	22	Main	CBaseIntelligentPointer::CBaseIntelligentPointer
 0x00CD4470	object-lifetime	22	18	Main,destructor	CTimer::~CTimer
 0x00CBFB7D	engine-or-script-helper	44	15	Main	RunCutsceneMacro_Func

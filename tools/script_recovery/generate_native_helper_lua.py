@@ -293,6 +293,48 @@ def emit_reference_counted_script_token_destructor(helper: dict[str, Any],
     ])
 
 
+def emit_aggregate_container_destructor(helper: dict[str, Any],
+                                        pattern: dict[str, Any]) -> str:
+    first = pattern["stridedRange"]
+    lines = [
+        f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+        "-- Preserve four owned-container teardowns and base initialization in native order.",
+        "return function(read_range, destroy_element_field, read_pointer, free_pointer, "
+        "destroy_range, destroy_list, initialize_base)",
+        f"    for _, element in ipairs(read_range({int(first['beginOffset'], 0)}, "
+        f"{int(first['endOffset'], 0)}, {first['stride']})) do",
+        f"        destroy_element_field(element, {first['fieldOffset']}, "
+        f"{int(first['destroyTarget'], 0)})",
+        "    end",
+    ]
+    free_target = int(pattern["freeTarget"], 0)
+    lines.extend([
+        f"    local pointer_1 = read_pointer({int(first['beginOffset'], 0)})",
+        "    if pointer_1 ~= nil then",
+        f"        free_pointer(pointer_1, {free_target})", "    end",
+    ])
+    for index, row in enumerate(pattern["ranges"], 2):
+        begin = int(row["beginOffset"], 0)
+        lines.extend([
+            f"    destroy_range({begin}, {int(row['endOffset'], 0)}, "
+            f"{int(row['destroyTarget'], 0)})",
+            f"    local pointer_{index} = read_pointer({begin})",
+            f"    if pointer_{index} ~= nil then",
+            f"        free_pointer(pointer_{index}, {free_target})", "    end",
+        ])
+    list_row = pattern["list"]
+    list_offset = int(list_row["offset"], 0)
+    lines.extend([
+        f"    destroy_list({list_offset}, {int(list_row['destroyTarget'], 0)})",
+        f"    local pointer_4 = read_pointer({list_offset})",
+        "    if pointer_4 ~= nil then",
+        f"        free_pointer(pointer_4, {free_target})", "    end",
+        f"    initialize_base({int(pattern['baseInitializerTarget'], 0)})",
+        "end", "",
+    ])
+    return "\n".join(lines)
+
+
 def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
     source_bytes = helper_ir_path.read_bytes()
     document = json.loads(source_bytes.decode("utf-8-sig"))
@@ -315,7 +357,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
                                           "destroy-and-zero-field",
                                           "opaque-vtable-token-initializer",
                                           "reference-counted-token-destructor",
-                                          "reference-counted-script-token-destructor"}
+                                          "reference-counted-script-token-destructor",
+                                          "aggregate-owned-container-destructor"}
                     and row["complete"]]
         if len(patterns) != 1:
             raise ValueError(f"expected one complete switch for {helper['targetAddress']}")
@@ -350,6 +393,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
             text = emit_reference_counted_token_destructor(helper, pattern)
         elif pattern["kind"] == "reference-counted-script-token-destructor":
             text = emit_reference_counted_script_token_destructor(helper, pattern)
+        elif pattern["kind"] == "aggregate-owned-container-destructor":
+            text = emit_aggregate_container_destructor(helper, pattern)
         else:
             text = emit_return(helper, pattern)
         filename = helper["targetAddress"].removeprefix("0x") + ".lua"

@@ -317,6 +317,31 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
             "baseInitializerTarget": direct[1]["target"],
             "callSites": [call["site"] for call in direct],
         })
+    particle_targets = [
+        "0x0099EAE0", "0x00BFEA14", "0x00CBB200", "0x00BFEA14",
+        "0x00CBB1B0", "0x00BFEA14", "0x00CBB090", "0x00BFEA14", "0x0099A300",
+    ]
+    if (current_name == "NParticleEngine::CParticleEmitter::DeleteAllParticles"
+            and not indirect and [call.get("target") for call in direct] == particle_targets
+            and all(value in text for value in (
+                "this + 0x34", "this + 0x30", "iVar2 = iVar2 + 0x18",
+                "iVar2 + 0x10", "this + 0x1c", "this + 0x18",
+                "this + 0xc", "this + 8", "this + 4"))):
+        patterns.append({
+            "kind": "aggregate-owned-container-destructor", "complete": True,
+            "stridedRange": {"beginOffset": "0x30", "endOffset": "0x34",
+                             "stride": 0x18, "fieldOffset": 0x10,
+                             "destroyTarget": direct[0]["target"]},
+            "ranges": [
+                {"beginOffset": "0x18", "endOffset": "0x1c",
+                 "destroyTarget": direct[2]["target"]},
+                {"beginOffset": "0x8", "endOffset": "0xc",
+                 "destroyTarget": direct[4]["target"]},
+            ],
+            "list": {"offset": "0x4", "destroyTarget": direct[6]["target"]},
+            "freeTarget": "0x00BFEA14", "baseInitializerTarget": direct[8]["target"],
+            "callSites": [call["site"] for call in direct],
+        })
     return patterns
 
 
@@ -451,6 +476,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
                 "opaque-vtable-token-initializer",
                 "reference-counted-token-destructor",
                 "reference-counted-script-token-destructor",
+                "aggregate-owned-container-destructor",
             } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)
