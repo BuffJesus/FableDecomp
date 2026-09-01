@@ -54,6 +54,32 @@ class NativeHelperDecompileTests(unittest.TestCase):
                 {"input": 1, "return": 0x24}, {"input": 2, "return": 0x25}])
             self.assertEqual(row["semanticPatterns"][0]["defaultReturn"], 0x23)
 
+    def test_initializer_owner_requires_exact_main_this_call(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "ir").mkdir()
+            (root / "clusters").mkdir()
+            source = root / "helpers.json"
+            source.write_text(json.dumps({"helpers": [{
+                "targetAddress": "0x1000", "currentName": "WrongDonor::Init",
+                "helperNames": "WrongDonor::Init", "category": "engine-or-script-helper",
+                "calls": 1, "scripts": 1, "roles": "Main", "status": "decompiled",
+                "error": None, "directCalls": [],
+                "decompile": "void Init(X *this) { this[0x48] = (X)0x0; }",
+            }]}))
+            body = "void Main(Q_Real *this) { WrongDonor::Init((WrongDonor *)this); }"
+            offset = body.index("WrongDonor::Init")
+            lifecycle = [{"role": "Main", "calls": [{
+                "callee": "WrongDonor::Init", "offset": offset,
+                "targetAddress": "0x1000", "directCallSite": "0x2000"}]}]
+            (root / "ir" / "Q_Real.json").write_text(json.dumps({
+                "script": "Q_Real", "lifecycle": lifecycle}))
+            (root / "clusters" / "Q_Real.json").write_text(json.dumps({
+                "lifecycle": [{"role": "Main", "decompile": body}]}))
+            row = analyze(source, root / "ir", root / "clusters")["helpers"][0]
+            self.assertEqual(row["parentInitializerEvidence"]["script"], "Q_Real")
+            self.assertIn("this", row["consumers"][0]["statement"])
+
 
 if __name__ == "__main__":
     unittest.main()

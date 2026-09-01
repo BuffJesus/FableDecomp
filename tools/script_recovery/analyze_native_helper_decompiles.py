@@ -53,8 +53,43 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
     return patterns
 
 
-def analyze(source_path: Path) -> dict[str, Any]:
+def load_consumers(ir_dir: Path | None, cluster_dir: Path | None) -> dict[str, list[dict[str, Any]]]:
+    result: dict[str, list[dict[str, Any]]] = {}
+    if ir_dir is None:
+        return result
+    for path in sorted(ir_dir.glob("*.json")):
+        ir = json.loads(path.read_text(encoding="utf-8-sig"))
+        cluster = None
+        if cluster_dir is not None:
+            cluster_path = cluster_dir / path.name
+            if cluster_path.is_file():
+                cluster = json.loads(cluster_path.read_text(encoding="utf-8-sig"))
+        cluster_lifecycle = ({row["role"]: row for row in cluster["lifecycle"]}
+                             if cluster else {})
+        for life in ir["lifecycle"]:
+            text = cluster_lifecycle.get(life["role"], {}).get("decompile", "")
+            for call in life["calls"]:
+                target = call.get("targetAddress")
+                if not target:
+                    continue
+                statement = None
+                offset = call.get("offset")
+                if text and isinstance(offset, int):
+                    end = text.find(";", offset)
+                    if end >= 0:
+                        statement = " ".join(text[offset:end + 1].split())
+                result.setdefault(target, []).append({
+                    "script": ir["script"], "role": life["role"],
+                    "site": call.get("directCallSite"), "callee": call["callee"],
+                    "statement": statement,
+                })
+    return result
+
+
+def analyze(source_path: Path, ir_dir: Path | None = None,
+            cluster_dir: Path | None = None) -> dict[str, Any]:
     source = json.loads(source_path.read_text(encoding="utf-8-sig"))
+    consumers_by_target = load_consumers(ir_dir, cluster_dir)
     rows = []
     for helper in source["helpers"]:
         text = helper.get("decompile") or ""
@@ -62,6 +97,21 @@ def analyze(source_path: Path) -> dict[str, Any]:
         parsed = correlate_direct_call_targets(calls(text), direct) if text else []
         indirect = indirect_calls(text)
         semantics = semantic_patterns(text, direct, indirect)
+        consumers = consumers_by_target.get(helper["targetAddress"], [])
+        initializer = next((pattern for pattern in semantics
+                            if pattern["kind"] == "native-field-initializer"), None)
+        parent_initializer = None
+        if initializer and consumers and all(
+                row["role"] == "Main" and row.get("statement") and
+                re.search(r"\bthis\s*\)\s*;\s*$", row["statement"])
+                for row in consumers):
+            owners = sorted({row["script"] for row in consumers})
+            if len(owners) == 1:
+                parent_initializer = {
+                    "script": owners[0], "role": "parent-field-initializer",
+                    "evidence": "exact Main call target passes parent this pointer",
+                    "callSites": sorted({row["site"] for row in consumers}),
+                }
         controls = Counter(match.group(1) for match in re.finditer(
             r"\b(if|while|for|switch|goto)\b", text))
         writes = [{"fieldOffset": match.group(1).lower(),
@@ -78,7 +128,7 @@ def analyze(source_path: Path) -> dict[str, Any]:
             "targetAddress": helper["targetAddress"], "currentName": helper["currentName"],
             "helperNames": [name.strip() for name in helper["helperNames"].split("|")],
             "category": helper["category"], "consumerCalls": helper["calls"],
-            "consumerScripts": helper["scripts"],
+            "consumerScriptCount": helper["scripts"], "consumers": consumers,
             "consumerRoles": [role for role in helper["roles"].split(",") if role],
             "status": status, "error": helper.get("error"), "stage": stage,
             "decompileSha256": hashlib.sha256(text.encode("utf-8")).hexdigest() if text else None,
@@ -87,8 +137,10 @@ def analyze(source_path: Path) -> dict[str, Any]:
             "strings": strings(text), "stateWrites": writes,
             "controlFlow": dict(sorted(controls.items())),
             "semanticPatterns": semantics,
-            "luaEmissionReady": any(pattern["kind"] == "constant-return-switch"
-                                    and pattern["complete"] for pattern in semantics),
+            "parentInitializerEvidence": parent_initializer,
+            "luaEmissionReady": any(pattern["kind"] in {
+                "constant-return-switch", "native-field-initializer"
+            } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)
     categories = Counter(row["category"] for row in rows)
@@ -105,6 +157,8 @@ def analyze(source_path: Path) -> dict[str, Any]:
             "directDependencyTargets": len({call["target"] for call in direct_calls}),
             "semanticPatterns": sum(len(row["semanticPatterns"]) for row in rows),
             "luaEmissionReady": sum(row["luaEmissionReady"] for row in rows),
+            "resolvedParentInitializers": sum(row["parentInitializerEvidence"] is not None
+                                              for row in rows),
             "stages": dict(sorted(stages.items())),
             "categories": dict(sorted(categories.items())),
         },
@@ -115,9 +169,11 @@ def analyze(source_path: Path) -> dict[str, Any]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", type=Path, required=True)
+    parser.add_argument("--script-ir", type=Path)
+    parser.add_argument("--clusters", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    result = analyze(args.source)
+    result = analyze(args.source, args.script_ir, args.clusters)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result["summary"], sort_keys=True))

@@ -1,12 +1,185 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "DA912A89FB24D6127EFADD3C029D1E0370DD53DEC7604416E36C75D24E4C3167",
+  "sourceSha256": "31777D5432D1E481505CC5965CE1CF85733C4D797BC9AC2B4F73CA41BED8D6EA",
   "summary": {
-    "emitted": 1,
+    "emitted": 3,
     "deploymentEligible": 0
   },
   "entries": [
+    {
+      "targetAddress": "0x00E1AD30",
+      "currentName": "NScript::CV_ChickenKickingScript::Init",
+      "sourceDecompileSha256": "2887192107d0102eea9b95c512a505ec53d6c14a13f191dc6351a0f7ce8d5337",
+      "luaFile": "00E1AD30.lua",
+      "luaSha256": "07E2A62367EE0C4C8BDE4CB2A988EEA0B8F71DA22E5A1B1D10EA6400A085CEE3",
+      "semanticPattern": {
+        "kind": "native-field-initializer",
+        "writes": [
+          {
+            "fieldOffset": "0x48",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x49",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x4a",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x4b",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x4c",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x4d",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x4e",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x4f",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x50",
+            "width": 4,
+            "valueExpression": "0xffffffff"
+          },
+          {
+            "fieldOffset": "0x54",
+            "width": 4,
+            "valueExpression": "0"
+          }
+        ],
+        "complete": true,
+        "luaFieldNamesResolved": false
+      },
+      "parentInitializerEvidence": {
+        "script": "Q_WizardBattle",
+        "role": "parent-field-initializer",
+        "evidence": "exact Main call target passes parent this pointer",
+        "callSites": [
+          "0x00E1A99F"
+        ]
+      },
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x00E9FEC0",
+      "currentName": "NScript::CQ_GuildTrainingScript::CMeleeApprentice::Init",
+      "sourceDecompileSha256": "304ee4f3fc6aab50646859ae4068ed2ee628ce34b577dd40f1132bba21f06f43",
+      "luaFile": "00E9FEC0.lua",
+      "luaSha256": "E2D2475454D3350DCBB8611E2510E8EFC7C0D736993DCF1419796C5519199C01",
+      "semanticPattern": {
+        "kind": "native-field-initializer",
+        "writes": [
+          {
+            "fieldOffset": "0x48",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x49",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x4a",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x4b",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x4c",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x4d",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x4e",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x4f",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x51",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x53",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x54",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x50",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x52",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x68",
+            "width": 1,
+            "valueExpression": "0x0"
+          },
+          {
+            "fieldOffset": "0x58",
+            "width": 4,
+            "valueExpression": "0"
+          }
+        ],
+        "complete": true,
+        "luaFieldNamesResolved": false
+      },
+      "parentInitializerEvidence": {
+        "script": "V_KnotholeGladeGates",
+        "role": "parent-field-initializer",
+        "evidence": "exact Main call target passes parent this pointer",
+        "callSites": [
+          "0x00E9FCDE"
+        ]
+      },
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
     {
       "targetAddress": "0x00F14270",
       "currentName": "NScript::CQ_ArenaScript::GetFanfareMusic",
@@ -57,6 +230,7 @@
         "defaultReturn": 35,
         "complete": true
       },
+      "parentInitializerEvidence": null,
       "deploymentEligible": false,
       "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
     }

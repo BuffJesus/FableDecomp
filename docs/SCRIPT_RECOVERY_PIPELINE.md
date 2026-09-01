@@ -168,13 +168,16 @@ is retained, but it remains a repair item rather than being represented as conve
 indirect dispatch, control-flow counts, and body hashes in `native_helper_operation_ir.json`.
 
 Semantic lifting is pattern-gated rather than name-gated. The helper analyzer currently recognizes
-three complete leaf patterns: two native-field initializers whose field names remain unresolved, and
-the constant-return switch `CQ_ArenaScript::GetFanfareMusic` at `0x00F14270`. Only the switch is safe
-to express independently of native object layout. `generate_native_helper_lua.py` emits that helper
-as standalone Lua, while its manifest keeps `deploymentEligible` false because the Arena parent
-script is not reconstructed. `validate_native_helper_lua.py` executes all nine native cases plus
-three default-path probes through Lupa's embedded Lua runtime; all 12 currently pass. Initializers remain typed
-offset IR and are not disguised as named Lua state.
+three complete leaf patterns: two native-field initializers and the constant-return switch
+`CQ_ArenaScript::GetFanfareMusic` at `0x00F14270`. Exact caller statements prove that the initializers
+at `0x00E1AD30` and `0x00E9FEC0` receive their respective parent `this` pointers from
+`Q_WizardBattle.Main` and `V_KnotholeGladeGates.Main`; this corrects unrelated imported donor labels.
+Because field names remain unresolved, their standalone Lua takes width-aware `write_u8` and
+`write_u32` callbacks and preserves offsets and values without inventing state names.
+`generate_native_helper_lua.py` emits all three helpers, while its manifest keeps
+`deploymentEligible` false because none of the parent scripts is complete.
+`validate_native_helper_lua.py` executes all nine fanfare cases, three default probes, and all 25
+initializer writes through Lupa's embedded Lua runtime; all 37 checks currently pass.
 
 The reproducible headless export accepts the correlated TSV followed by explicit name/address pairs:
 

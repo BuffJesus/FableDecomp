@@ -112,12 +112,12 @@ def verify(root: Path) -> dict[str, Any]:
     helper_lua_validation = load(root / "generated_helper_lua" / "validation.json")
     helper_lua_entries = helper_lua_manifest["entries"]
     check("evidence-complete native helpers execute as standalone Lua",
-          helper_lua_manifest["summary"] == {"emitted": 1, "deploymentEligible": 0} and
-          len(helper_lua_entries) == 1 and
-          helper_lua_entries[0]["targetAddress"] == "0x00F14270" and
-          not helper_lua_entries[0]["deploymentEligible"] and
+          helper_lua_manifest["summary"] == {"emitted": 3, "deploymentEligible": 0} and
+          {row["targetAddress"] for row in helper_lua_entries} == {
+              "0x00E1AD30", "0x00E9FEC0", "0x00F14270"} and
+          all(not row["deploymentEligible"] for row in helper_lua_entries) and
           helper_lua_validation["summary"] == {
-              "helpers": 1, "passed": 1, "cases": 12, "complete": True},
+              "helpers": 3, "passed": 3, "checks": 37, "complete": True},
           {"manifest": helper_lua_manifest["summary"],
            "validation": helper_lua_validation["summary"]})
     comparison = load(root / "seed_native_comparison.json")

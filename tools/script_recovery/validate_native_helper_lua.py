@@ -25,21 +25,36 @@ def validate(manifest_path: Path) -> dict[str, Any]:
             errors.append("sha256 mismatch")
         function = LuaRuntime(unpack_returned_tuples=True).execute(payload.decode("utf-8"))
         pattern = entry["semanticPattern"]
-        for case in pattern["cases"]:
-            actual = function(case["input"])
-            if actual != case["return"]:
-                errors.append(f"input {case['input']}: expected {case['return']}, got {actual}")
-        used = {case["input"] for case in pattern["cases"]}
-        defaults = [value for value in (0, -1, max(used, default=0) + 1) if value not in used]
-        for value in defaults:
-            actual = function(value)
-            if actual != pattern["defaultReturn"]:
-                errors.append(f"default {value}: expected {pattern['defaultReturn']}, got {actual}")
+        checks = 0
+        if pattern["kind"] == "constant-return-switch":
+            for case in pattern["cases"]:
+                actual = function(case["input"])
+                checks += 1
+                if actual != case["return"]:
+                    errors.append(f"input {case['input']}: expected {case['return']}, got {actual}")
+            used = {case["input"] for case in pattern["cases"]}
+            defaults = [value for value in (0, -1, max(used, default=0) + 1) if value not in used]
+            for value in defaults:
+                actual = function(value)
+                checks += 1
+                if actual != pattern["defaultReturn"]:
+                    errors.append(f"default {value}: expected {pattern['defaultReturn']}, got {actual}")
+        elif pattern["kind"] == "native-field-initializer":
+            actual_writes = []
+            function(lambda offset, value: actual_writes.append((offset, 1, value)),
+                     lambda offset, value: actual_writes.append((offset, 4, value)))
+            expected_writes = [(int(row["fieldOffset"], 0), row["width"],
+                                int(row["valueExpression"], 0)) for row in pattern["writes"]]
+            checks = len(expected_writes)
+            if actual_writes != expected_writes:
+                errors.append(f"writes differ: expected {expected_writes}, got {actual_writes}")
+        else:
+            errors.append(f"unsupported semantic pattern {pattern['kind']}")
         rows.append({"targetAddress": entry["targetAddress"], "passed": not errors,
-                     "cases": len(pattern["cases"]) + len(defaults), "errors": errors})
+                     "checks": checks, "errors": errors})
     return {"schema": "forgefse-native-helper-lua-validation/0.1",
             "summary": {"helpers": len(rows), "passed": sum(row["passed"] for row in rows),
-                        "cases": sum(row["cases"] for row in rows),
+                        "checks": sum(row["checks"] for row in rows),
                         "complete": all(row["passed"] for row in rows)},
             "helpers": rows}
 

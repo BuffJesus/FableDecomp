@@ -27,6 +27,20 @@ def emit_switch(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def emit_initializer(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
+    lines = [
+        f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+        "-- Field names are unresolved; preserve native offsets and write widths.",
+        "return function(write_u8, write_u32)",
+    ]
+    for write in pattern["writes"]:
+        function = "write_u8" if write["width"] == 1 else "write_u32"
+        value = int(write["valueExpression"], 0)
+        lines.append(f"    {function}({int(write['fieldOffset'], 0)}, {value})")
+    lines.extend(("end", ""))
+    return "\n".join(lines)
+
+
 def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
     source_bytes = helper_ir_path.read_bytes()
     document = json.loads(source_bytes.decode("utf-8-sig"))
@@ -36,11 +50,13 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
         if not helper.get("luaEmissionReady"):
             continue
         patterns = [row for row in helper["semanticPatterns"]
-                    if row["kind"] == "constant-return-switch" and row["complete"]]
+                    if row["kind"] in {"constant-return-switch", "native-field-initializer"}
+                    and row["complete"]]
         if len(patterns) != 1:
             raise ValueError(f"expected one complete switch for {helper['targetAddress']}")
         pattern = patterns[0]
-        text = emit_switch(helper, pattern)
+        text = (emit_switch(helper, pattern) if pattern["kind"] == "constant-return-switch"
+                else emit_initializer(helper, pattern))
         filename = helper["targetAddress"].removeprefix("0x") + ".lua"
         destination = output_dir / filename
         destination.write_text(text, encoding="utf-8", newline="\n")
@@ -49,6 +65,7 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
             "sourceDecompileSha256": helper["decompileSha256"],
             "luaFile": filename, "luaSha256": sha256(text.encode("utf-8")),
             "semanticPattern": pattern,
+            "parentInitializerEvidence": helper.get("parentInitializerEvidence"),
             "deploymentEligible": False,
             "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved",
         })
