@@ -157,6 +157,16 @@ currently gives 1,437 of the 1,603 semantic helper call sites an exact target ad
 of the 158 distinct helper labels. Unmatched calls remain explicit instead of being paired by mere
 position; the complete instruction-level target list is still retained alongside them.
 
+`build_native_helper_target_queue.py` collapses those correlated calls into a deterministic TSV
+queue keyed by target address. `ExportNativeHelperTargets.java` batch-decompiles the resulting 128
+targets and captures each helper's own exact direct-call graph. The current pass completes 127 helper
+bodies, including 19 leaf helpers and 108 helpers with dependencies, and records 4,967 outbound calls
+to 206 targets. `RunCutsceneMacro_Func` at `0x00CBFB7D` is the sole explicit failure: its unusually
+large Ghidra function body exceeds the 90-second decompiler limit. Its instruction-level call graph
+is retained, but it remains a repair item rather than being represented as converted behavior.
+`analyze_native_helper_decompiles.py` reduces successful bodies into calls, literals, state writes,
+indirect dispatch, control-flow counts, and body hashes in `native_helper_operation_ir.json`.
+
 The reproducible headless export accepts the correlated TSV followed by explicit name/address pairs:
 
 ```text

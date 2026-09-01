@@ -100,6 +100,14 @@ def verify(root: Path) -> dict[str, Any]:
                                              for call in direct_calls),
           {"scripts": len(operation_rows), "calls": len(direct_calls),
            "targets": len(direct_targets)})
+    helper_ir = load(root / "native_helper_operation_ir.json")
+    helper_summary = helper_ir["summary"]
+    check("address-keyed native helper bodies are exported",
+          helper_summary["targets"] == 128 and helper_summary["decompiled"] == 127 and
+          helper_summary["failed"] == 1 and helper_summary["consumerCalls"] == 1437 and
+          {row["targetAddress"] for row in helper_ir["helpers"]
+           if row["status"] != "decompiled"} == {"0x00CBFB7D"},
+          helper_summary)
     comparison = load(root / "seed_native_comparison.json")
     bindings_missing = {row["package"]: row["luaBindingsMissingNativeLifecycle"]
                         for row in comparison["scripts"] if row["luaBindingsMissingNativeLifecycle"]}
