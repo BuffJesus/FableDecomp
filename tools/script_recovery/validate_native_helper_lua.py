@@ -48,6 +48,30 @@ def validate(manifest_path: Path) -> dict[str, Any]:
             checks = len(expected_writes)
             if actual_writes != expected_writes:
                 errors.append(f"writes differ: expected {expected_writes}, got {actual_writes}")
+        elif pattern["kind"] == "constant-return":
+            checks = 1
+            actual = function()
+            if actual != pattern["return"]:
+                errors.append(f"expected {pattern['return']}, got {actual}")
+        elif pattern["kind"] == "native-field-return":
+            offset = int(pattern["fieldOffset"], 0)
+            if pattern["resultTransform"] == "not-zero":
+                probes = [(0, False), (1, True), (-1, True)]
+            else:
+                probes = [(0x12345678, 0x12345678)]
+            checks = len(probes)
+            for value, expected in probes:
+                actual = function(lambda actual_offset, value=value: value
+                                  if actual_offset == offset else None)
+                if actual != expected:
+                    errors.append(f"value {value}: expected {expected}, got {actual}")
+        elif pattern["kind"] == "native-global-return":
+            address = int(pattern["globalAddress"], 0)
+            checks = 1
+            actual = function(lambda actual_address: 0x12345678
+                              if actual_address == address else None)
+            if actual != 0x12345678:
+                errors.append(f"global read returned {actual}")
         else:
             errors.append(f"unsupported semantic pattern {pattern['kind']}")
         rows.append({"targetAddress": entry["targetAddress"], "passed": not errors,

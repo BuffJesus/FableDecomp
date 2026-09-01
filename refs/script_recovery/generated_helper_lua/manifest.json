@@ -1,12 +1,45 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "31777D5432D1E481505CC5965CE1CF85733C4D797BC9AC2B4F73CA41BED8D6EA",
+  "sourceSha256": "10DDB6F570BF23EE64DC26003903DD3DA6EACBA291918BC00A4EEAB0A88C7328",
   "summary": {
-    "emitted": 3,
+    "emitted": 7,
     "deploymentEligible": 0
   },
   "entries": [
+    {
+      "targetAddress": "0x00CD23B9",
+      "currentName": "C3DMeshInfo::HasPhysicsMesh",
+      "sourceDecompileSha256": "56e5c6ffe30a4b88aec3136d8e1f6d68c67bf49179df0790ce5f1a8cc114dcd3",
+      "luaFile": "00CD23B9.lua",
+      "luaSha256": "676608C60FF862EA28B31441EB970C288C5B6C6F4F4DBA247664F3A453D58EE4",
+      "semanticPattern": {
+        "kind": "native-field-return",
+        "fieldOffset": "0x8",
+        "accessor": "read_i32",
+        "resultTransform": "not-zero",
+        "complete": true,
+        "luaFieldNameResolved": false
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x00CD3EF0",
+      "currentName": "GFGetPreMainMemoryUsed",
+      "sourceDecompileSha256": "f38bd666ca1e8900517ee7360e6c1e05f9b794abe3403e2a6244d8624797f99a",
+      "luaFile": "00CD3EF0.lua",
+      "luaSha256": "16BF96C4285BCE6A567DE42C1ED51A4538F260C99B64F1E96C3E5B117D0F8E6E",
+      "semanticPattern": {
+        "kind": "native-global-return",
+        "globalAddress": "0x0143E920",
+        "complete": true
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
     {
       "targetAddress": "0x00E1AD30",
       "currentName": "NScript::CV_ChickenKickingScript::Init",
@@ -78,6 +111,21 @@
           "0x00E1A99F"
         ]
       },
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x00E1DF50",
+      "currentName": "CEngineInternalPrimitiveBase::AddChildPrimitive",
+      "sourceDecompileSha256": "d1c86dd52efe3cdd641a448bd0e75624a49006aae319dcb41804b8d98b8a7b9b",
+      "luaFile": "00E1DF50.lua",
+      "luaSha256": "001D91C2A6140EE0FAA67D2AF05A54120732933DF160856BEBE035A8F6872D32",
+      "semanticPattern": {
+        "kind": "constant-return",
+        "return": 0,
+        "complete": true
+      },
+      "parentInitializerEvidence": null,
       "deploymentEligible": false,
       "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
     },
@@ -177,6 +225,24 @@
           "0x00E9FCDE"
         ]
       },
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x00F14250",
+      "currentName": "CWorld::DrawGetEnvironment",
+      "sourceDecompileSha256": "347a81456c1a1390cf287f6552384f09e25d0ad7b3e8ffd845e7d7191c99c751",
+      "luaFile": "00F14250.lua",
+      "luaSha256": "9398E8497474EF7243B29046E762C80456B407ED9657998B692FB9E3160D4EA5",
+      "semanticPattern": {
+        "kind": "native-field-return",
+        "fieldOffset": "0x44",
+        "accessor": "read_ptr",
+        "resultTransform": "identity",
+        "complete": true,
+        "luaFieldNameResolved": false
+      },
+      "parentInitializerEvidence": null,
       "deploymentEligible": false,
       "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
     },

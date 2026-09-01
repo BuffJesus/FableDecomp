@@ -3,10 +3,22 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from tools.script_recovery.analyze_native_helper_decompiles import analyze
+from tools.script_recovery.analyze_native_helper_decompiles import analyze, semantic_patterns
 
 
 class NativeHelperDecompileTests(unittest.TestCase):
+    def test_typed_native_reads_are_complete_semantic_patterns(self):
+        field = semantic_patterns(
+            "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])
+        self.assertEqual(field[0], {"kind": "native-field-return", "fieldOffset": "0x8",
+                                   "accessor": "read_i32", "resultTransform": "not-zero",
+                                   "complete": True, "luaFieldNameResolved": False})
+        global_read = semantic_patterns("long F(void) { return DAT_0143e920; }", [], [])
+        self.assertEqual(global_read[0]["globalAddress"], "0x0143E920")
+        constant = semantic_patterns("long F(void) { return 0; }", [], [])
+        self.assertEqual(constant[0], {"kind": "constant-return", "return": 0,
+                                      "complete": True})
+
     def test_reduces_helper_body_and_exact_dependencies(self):
         with tempfile.TemporaryDirectory() as temp:
             source = Path(temp) / "helpers.json"

@@ -8,8 +8,8 @@
     "consumerCalls": 1437,
     "directDependencyCalls": 4967,
     "directDependencyTargets": 206,
-    "semanticPatterns": 3,
-    "luaEmissionReady": 3,
+    "semanticPatterns": 7,
+    "luaEmissionReady": 7,
     "resolvedParentInitializers": 2,
     "stages": {
       "inspect-helper-dependencies": 108,
@@ -25289,9 +25289,18 @@
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "native-field-return",
+          "fieldOffset": "0x8",
+          "accessor": "read_i32",
+          "resultTransform": "not-zero",
+          "complete": true,
+          "luaFieldNameResolved": false
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00CDBF70",
@@ -33991,9 +34000,15 @@
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "native-global-return",
+          "globalAddress": "0x0143E920",
+          "complete": true
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00CD4450",
@@ -45714,9 +45729,15 @@
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "constant-return",
+          "return": 0,
+          "complete": true
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00E32EF0",
@@ -49749,9 +49770,18 @@
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "native-field-return",
+          "fieldOffset": "0x44",
+          "accessor": "read_ptr",
+          "resultTransform": "identity",
+          "complete": true,
+          "luaFieldNameResolved": false
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00F14270",

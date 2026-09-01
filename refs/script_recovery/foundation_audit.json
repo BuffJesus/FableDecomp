@@ -1179,9 +1179,9 @@
         "directDependencyCalls": 4967,
         "directDependencyTargets": 206,
         "failed": 1,
-        "luaEmissionReady": 3,
+        "luaEmissionReady": 7,
         "resolvedParentInitializers": 2,
-        "semanticPatterns": 3,
+        "semanticPatterns": 7,
         "stages": {
           "inspect-helper-dependencies": 108,
           "inspect-leaf-helper": 19,
@@ -1196,13 +1196,13 @@
       "evidence": {
         "manifest": {
           "deploymentEligible": 0,
-          "emitted": 3
+          "emitted": 7
         },
         "validation": {
-          "checks": 37,
+          "checks": 43,
           "complete": true,
-          "helpers": 3,
-          "passed": 3
+          "helpers": 7,
+          "passed": 7
         }
       },
       "name": "evidence-complete native helpers execute as standalone Lua",

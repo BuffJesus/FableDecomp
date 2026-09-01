@@ -50,6 +50,30 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
     if initializers and not direct and not indirect:
         patterns.append({"kind": "native-field-initializer", "writes": initializers,
                          "complete": True, "luaFieldNamesResolved": False})
+    returns = re.findall(r"\breturn\s+([^;]+)\s*;", text)
+    if len(returns) == 1 and not direct and not indirect:
+        expression = returns[0].strip()
+        if re.fullmatch(INTEGER_RE, expression):
+            patterns.append({"kind": "constant-return", "return": int(expression, 0),
+                             "complete": True})
+        field = re.fullmatch(
+            rf"\*\(([^)]+)\)\(this \+ ({INTEGER_RE})\)(?:\s*(!=)\s*0)?",
+            expression)
+        if field:
+            native_type, comparison = " ".join(field.group(1).split()), field.group(3)
+            accessor = "read_i32" if native_type == "int *" else (
+                "read_ptr" if native_type.endswith(" **") else None)
+            if accessor:
+                patterns.append({"kind": "native-field-return",
+                                 "fieldOffset": f"0x{int(field.group(2), 0):x}",
+                                 "accessor": accessor,
+                                 "resultTransform": "not-zero" if comparison else "identity",
+                                 "complete": True, "luaFieldNameResolved": False})
+        global_read = re.fullmatch(r"DAT_([0-9a-fA-F]{8})", expression)
+        if global_read:
+            patterns.append({"kind": "native-global-return",
+                             "globalAddress": "0x" + global_read.group(1).upper(),
+                             "complete": True})
     return patterns
 
 
@@ -139,7 +163,8 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
             "semanticPatterns": semantics,
             "parentInitializerEvidence": parent_initializer,
             "luaEmissionReady": any(pattern["kind"] in {
-                "constant-return-switch", "native-field-initializer"
+                "constant-return-switch", "native-field-initializer", "constant-return",
+                "native-field-return", "native-global-return",
             } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)

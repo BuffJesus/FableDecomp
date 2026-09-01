@@ -179,6 +179,13 @@ Because field names remain unresolved, their standalone Lua takes width-aware `w
 `validate_native_helper_lua.py` executes all nine fanfare cases, three default probes, and all 25
 initializer writes through Lupa's embedded Lua runtime; all 37 checks currently pass.
 
+The same typed-reader boundary now lifts four additional complete leaf behaviors without embedding
+host pointers in Lua: `C3DMeshInfo::HasPhysicsMesh` reads an unnamed 32-bit field,
+`CWorld::DrawGetEnvironment` reads an unnamed pointer field, `GFGetPreMainMemoryUsed` reads the exact
+retail global at `0x0143E920`, and `CEngineInternalPrimitiveBase::AddChildPrimitive` returns its
+constant retail result. Together, seven generated helpers pass 43 native-derived checks. These are
+still standalone conversion units, not evidence that their parent retail scripts are deployable.
+
 The reproducible headless export accepts the correlated TSV followed by explicit name/address pairs:
 
 ```text
