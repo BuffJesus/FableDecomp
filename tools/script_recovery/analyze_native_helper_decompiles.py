@@ -122,6 +122,17 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
                 {"method": "UpdateOnlineScore_Archery", "arguments": [
                     {"kind": "literal", "value": -1}]},
             ]})
+    if current_name == "CTCVillage::OnInitialActivate" and len(direct) == 1 and not indirect:
+        match = re.search(
+            r"if \(this\[(0x[0-9a-fA-F]+)\] != \([^)]*\)0x0\) \{\s*"
+            r"[^;]+\(this\[(0x[0-9a-fA-F]+)\]\);\s*"
+            r"this\[(0x[0-9a-fA-F]+)\] = \([^)]*\)0x0;\s*\}", text)
+        if match and match.group(1) == match.group(3):
+            patterns.append({"kind": "conditional-u8-call-clear", "complete": True,
+                             "conditionOffset": match.group(1),
+                             "argumentOffset": match.group(2),
+                             "callTarget": direct[0]["target"],
+                             "callSite": direct[0]["site"]})
     return patterns
 
 
@@ -244,6 +255,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
             "luaEmissionReady": any(pattern["kind"] in {
                 "constant-return-switch", "native-field-initializer", "constant-return",
                 "native-field-return", "native-global-return", "quest-interface-sequence",
+                "conditional-u8-call-clear",
             } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)

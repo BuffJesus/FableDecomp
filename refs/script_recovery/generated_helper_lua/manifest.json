@@ -1,12 +1,30 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "24D16B22E637E8E07A0CC1FDB1EE9450609A4E8AE42F20B3F02D3ECC2224BC73",
+  "sourceSha256": "5BB58D5C2166E4F52872360C35650F6F2DD97BB276BCD17787CB3E6609EBE25A",
   "summary": {
-    "emitted": 10,
+    "emitted": 11,
     "deploymentEligible": 0
   },
   "entries": [
+    {
+      "targetAddress": "0x00CB8930",
+      "currentName": "CTCVillage::OnInitialActivate",
+      "sourceDecompileSha256": "9eeb152e68ce095290769e0324544603e6627c3e2564b28229a89ab71f0e1f0d",
+      "luaFile": "00CB8930.lua",
+      "luaSha256": "D955FA1DC749853F51A081B9A9B87DB56986C596490B3CC38548D2166BEF9FA3",
+      "semanticPattern": {
+        "kind": "conditional-u8-call-clear",
+        "complete": true,
+        "conditionOffset": "0x25",
+        "argumentOffset": "0x24",
+        "callTarget": "0x00CBDF70",
+        "callSite": "0x00CB8946"
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
     {
       "targetAddress": "0x00CD23B9",
       "currentName": "C3DMeshInfo::HasPhysicsMesh",

@@ -82,6 +82,21 @@ def emit_interface_sequence(helper: dict[str, Any], pattern: dict[str, Any]) -> 
     return "\n".join(lines)
 
 
+def emit_conditional_call_clear(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
+    condition = int(pattern["conditionOffset"], 0)
+    argument = int(pattern["argumentOffset"], 0)
+    target = int(pattern["callTarget"], 0)
+    return "\n".join([
+        f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+        "-- Preserve the conditional byte state, exact native call target, and clearing write.",
+        "return function(read_u8, write_u8, invoke_native)",
+        f"    if read_u8({condition}) ~= 0 then",
+        f"        invoke_native({target}, read_u8({argument}))",
+        f"        write_u8({condition}, 0)",
+        "    end", "end", "",
+    ])
+
+
 def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
     source_bytes = helper_ir_path.read_bytes()
     document = json.loads(source_bytes.decode("utf-8-sig"))
@@ -93,7 +108,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
         patterns = [row for row in helper["semanticPatterns"]
                     if row["kind"] in {"constant-return-switch", "native-field-initializer",
                                        "constant-return", "native-field-return",
-                                       "native-global-return", "quest-interface-sequence"}
+                                       "native-global-return", "quest-interface-sequence",
+                                       "conditional-u8-call-clear"}
                     and row["complete"]]
         if len(patterns) != 1:
             raise ValueError(f"expected one complete switch for {helper['targetAddress']}")
@@ -104,6 +120,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
             text = emit_initializer(helper, pattern)
         elif pattern["kind"] == "quest-interface-sequence":
             text = emit_interface_sequence(helper, pattern)
+        elif pattern["kind"] == "conditional-u8-call-clear":
+            text = emit_conditional_call_clear(helper, pattern)
         else:
             text = emit_return(helper, pattern)
         filename = helper["targetAddress"].removeprefix("0x") + ".lua"

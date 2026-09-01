@@ -97,6 +97,20 @@ def validate(manifest_path: Path) -> dict[str, Any]:
             checks = len(expected)
             if trace != expected:
                 errors.append(f"interface trace differs: expected {expected}, got {trace}")
+        elif pattern["kind"] == "conditional-u8-call-clear":
+            condition = int(pattern["conditionOffset"], 0)
+            argument = int(pattern["argumentOffset"], 0)
+            target = int(pattern["callTarget"], 0)
+            for condition_value, expected in (
+                    (0, []),
+                    (1, [("call", target, 0x5A), ("write", condition, 0)])):
+                trace = []
+                function(lambda offset, value=condition_value: value if offset == condition else 0x5A,
+                         lambda offset, value: trace.append(("write", offset, value)),
+                         lambda address, value: trace.append(("call", address, value)))
+                checks += 1
+                if trace != expected:
+                    errors.append(f"condition {condition_value}: expected {expected}, got {trace}")
         else:
             errors.append(f"unsupported semantic pattern {pattern['kind']}")
         rows.append({"targetAddress": entry["targetAddress"], "passed": not errors,

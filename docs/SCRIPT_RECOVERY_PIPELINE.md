@@ -187,8 +187,12 @@ constant retail result. Three compact `V_ArcheryCompetition` helpers are also li
 interface-call sequences: removing its three quest-info elements, updating the predicate-failure
 counter, and updating both the quest counter and online archery score. Their exact `Main` call sites,
 parent fields, parameters, constants, and all seven interface calls are preserved. Together, ten
-generated helpers pass 50 native-derived checks. These are still standalone conversion units, not
-evidence that their parent retail scripts are deployable.
+generated helpers pass 50 native-derived checks. The shared `CTCVillage::OnInitialActivate` helper,
+called by 121 scripts (including all six reconstructed parents), is now lifted too: it reads the
+exact `+0x25` activation byte, conditionally calls exact target `0x00CBDF70` with the `+0x24` byte,
+then clears `+0x25`. Both branch outcomes are executed offline, bringing the total to eleven helpers
+and 52 checks. These are still standalone conversion units, not evidence that their parent retail
+scripts are deployable.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`

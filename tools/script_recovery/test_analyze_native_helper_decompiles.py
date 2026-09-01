@@ -30,6 +30,17 @@ class NativeHelperDecompileTests(unittest.TestCase):
         self.assertEqual(high_score[0]["operations"][1]["method"],
                          "UpdateOnlineScore_Archery")
 
+    def test_conditional_native_call_and_byte_clear_is_complete(self):
+        patterns = semantic_patterns(
+            "void F(X *this) { if (this[0x25] != (X)0x0) { Helper(this[0x24]); "
+            "this[0x25] = (X)0x0; } return; }",
+            [{"site": "0x1010", "target": "0x2000"}], [],
+            "CTCVillage::OnInitialActivate")
+        self.assertEqual(patterns, [{
+            "kind": "conditional-u8-call-clear", "complete": True,
+            "conditionOffset": "0x25", "argumentOffset": "0x24",
+            "callTarget": "0x2000", "callSite": "0x1010"}])
+
     def test_typed_native_reads_are_complete_semantic_patterns(self):
         field = semantic_patterns(
             "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])
