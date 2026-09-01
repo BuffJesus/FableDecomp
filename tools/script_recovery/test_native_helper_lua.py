@@ -64,6 +64,25 @@ class NativeHelperLuaTests(unittest.TestCase):
             self.assertTrue(result["summary"]["complete"])
             self.assertEqual(result["summary"]["checks"], 2)
 
+    def test_generated_optional_resource_call_executes_both_guard_branches(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            helper_ir = root / "ir.json"
+            helper_ir.write_text(json.dumps({"helpers": [{
+                "targetAddress": "0x007E7410", "currentName": "ClearActions",
+                "decompileSha256": "D" * 64, "luaEmissionReady": True,
+                "semanticPatterns": [{"kind": "optional-resource-virtual-call",
+                                      "complete": True,
+                                      "resourcePointerOffset": "0x8",
+                                      "resourceVtableOffset": "0x58",
+                                      "operation":
+                                      "ClearAllActionsIncludingLoopingAnimations"}],
+            }]}))
+            generate(helper_ir, root / "generated")
+            result = validate(root / "generated" / "manifest.json")
+            self.assertTrue(result["summary"]["complete"])
+            self.assertEqual(result["summary"]["checks"], 2)
+
 
 if __name__ == "__main__":
     unittest.main()

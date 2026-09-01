@@ -23,7 +23,6 @@ target_address	category	calls	scripts	roles	helper_names
 0x0099A3B0	object-lifetime	11	4	Main	CFourierAnalysis::CFourierAnalysis
 0x006E7B40	object-lifetime	6	4	Init,Main	CCarriedReadableDef::CCarriedReadableDef
 0x009AC310	object-lifetime	6	4	Main,destructor	LTextTreeWalkThrough__Dtor
-0x007E7410	engine-or-script-helper	3	3	Main	_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ
 0x00BFEB3A	runtime-support	3	3	Main	strstr
 0x00433530	runtime-support	50	2	Init	std__vector__Reallocate
 0x00414EA0	engine-or-script-helper	6	2	Main,destructor	CDefendingCombatantInfo::CCombatWheel::ResetRings

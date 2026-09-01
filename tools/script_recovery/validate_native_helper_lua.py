@@ -236,6 +236,20 @@ def validate(manifest_path: Path) -> dict[str, Any]:
                 checks += 1
                 if trace != expected:
                     errors.append(f"remove flag {remove_flag}: expected {expected}, got {trace}")
+        elif pattern["kind"] == "optional-resource-virtual-call":
+            pointer_offset = int(pattern["resourcePointerOffset"], 0)
+            vtable_offset = int(pattern["resourceVtableOffset"], 0)
+            for resource, expected in (
+                    (None, [("get", pointer_offset)]),
+                    (0xCAFE, [("get", pointer_offset),
+                              ("invoke", 0xCAFE, pattern["operation"], vtable_offset)])):
+                trace = []
+                function(lambda offset, value=resource: trace.append(("get", offset)) or value,
+                         lambda token, operation, slot:
+                         trace.append(("invoke", token, operation, slot)))
+                checks += 1
+                if trace != expected:
+                    errors.append(f"resource {resource}: expected {expected}, got {trace}")
         else:
             errors.append(f"unsupported semantic pattern {pattern['kind']}")
         rows.append({"targetAddress": entry["targetAddress"], "passed": not errors,

@@ -221,8 +221,11 @@ or third iteration execute offline. `KillAllThingsInVector @ 0x00CBED82` is also
 logical-vector boundary: Lua iterates opaque thing tokens, an `is_alive` callback preserves the
 element virtual call, and `remove_thing` preserves interface slot `0x1B0` plus both retail boolean
 arguments without exposing the native three-dword element layout. Both removal-flag cases and mixed
-alive/dead vectors execute offline. Totals are now sixteen helpers / 111 checks, resolving 188 calls
-across 124 scripts and leaving 137 helper labels / 1,389 calls.
+alive/dead vectors execute offline. The decorated scripted-resource wrapper at `0x007E7410` is
+likewise lifted without trusting its bad imported donor prototype: the exact `this+8` null guard and
+resource vtable slot `0x58` become opaque `get_resource` / `invoke_resource` callbacks, with both
+branches validated. Totals are now seventeen helpers / 113 checks, resolving 191 calls across 127
+scripts and leaving 136 helper labels / 1,386 calls.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`

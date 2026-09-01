@@ -110,6 +110,16 @@ class NativeHelperDecompileTests(unittest.TestCase):
         self.assertEqual(pattern["removeThingVtableOffset"], "0x1b0")
         self.assertTrue(pattern["finalFlag"])
 
+    def test_optional_resource_virtual_call_preserves_guard_and_slot(self):
+        body = ("if (*(int **)(this + 8) != (int *)0x0) { "
+                "(**(code **)(**(int **)(this + 8) + 0x58))(); return; }")
+        pattern = semantic_patterns(body, [], [{"vtableOffset": "0x58"}],
+            "CScriptThing::?ClearAllActionsIncludingLoopingAnimations@CScriptThing@@UAEXXZ")[0]
+        self.assertEqual(pattern, {
+            "kind": "optional-resource-virtual-call", "complete": True,
+            "resourcePointerOffset": "0x8", "resourceVtableOffset": "0x58",
+            "operation": "ClearAllActionsIncludingLoopingAnimations"})
+
     def test_typed_native_reads_are_complete_semantic_patterns(self):
         field = semantic_patterns(
             "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])

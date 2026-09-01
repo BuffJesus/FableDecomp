@@ -8,8 +8,8 @@
     "consumerCalls": 1437,
     "directDependencyCalls": 4967,
     "directDependencyTargets": 206,
-    "semanticPatterns": 16,
-    "luaEmissionReady": 16,
+    "semanticPatterns": 17,
+    "luaEmissionReady": 17,
     "resolvedParentInitializers": 2,
     "resolvedInterfaceCalls": 273,
     "resolvedInterfaceMethods": 62,
@@ -27518,9 +27518,17 @@
       "controlFlow": {
         "if": 1
       },
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "optional-resource-virtual-call",
+          "complete": true,
+          "resourcePointerOffset": "0x8",
+          "resourceVtableOffset": "0x58",
+          "operation": "ClearAllActionsIncludingLoopingAnimations"
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00BFEB3A",

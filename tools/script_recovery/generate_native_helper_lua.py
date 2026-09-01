@@ -184,6 +184,20 @@ def emit_remove_live_things(helper: dict[str, Any], pattern: dict[str, Any]) -> 
     ])
 
 
+def emit_optional_resource_call(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
+    return "\n".join([
+        f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+        "-- Preserve the wrapped-resource null guard and virtual operation through callbacks.",
+        "return function(get_resource, invoke_resource)",
+        f"    local resource = get_resource({int(pattern['resourcePointerOffset'], 0)})",
+        "    if resource ~= nil then",
+        f'        invoke_resource(resource, "{pattern["operation"]}", '
+        f'{int(pattern["resourceVtableOffset"], 0)})',
+        "    end",
+        "end", "",
+    ])
+
+
 def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
     source_bytes = helper_ir_path.read_bytes()
     document = json.loads(source_bytes.decode("utf-8-sig"))
@@ -199,7 +213,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
                                        "conditional-u8-call-clear"}
                                        | {"native-script-initializer", "archery-quest-info-setup",
                                           "conditional-strided-copy-loop",
-                                          "remove-live-things-in-vector"}
+                                          "remove-live-things-in-vector",
+                                          "optional-resource-virtual-call"}
                     and row["complete"]]
         if len(patterns) != 1:
             raise ValueError(f"expected one complete switch for {helper['targetAddress']}")
@@ -220,6 +235,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
             text = emit_conditional_strided_copy(helper, pattern)
         elif pattern["kind"] == "remove-live-things-in-vector":
             text = emit_remove_live_things(helper, pattern)
+        elif pattern["kind"] == "optional-resource-virtual-call":
+            text = emit_optional_resource_call(helper, pattern)
         else:
             text = emit_return(helper, pattern)
         filename = helper["targetAddress"].removeprefix("0x") + ".lua"

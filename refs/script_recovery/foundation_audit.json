@@ -1180,7 +1180,7 @@
         "directDependencyCalls": 4967,
         "directDependencyTargets": 206,
         "failed": 1,
-        "luaEmissionReady": 16,
+        "luaEmissionReady": 17,
         "missingForgeInterfaceMethods": [
           "AddLogBookEntry",
           "AddNewConversation",
@@ -1196,7 +1196,7 @@
         "resolvedInterfaceCalls": 273,
         "resolvedInterfaceMethods": 62,
         "resolvedParentInitializers": 2,
-        "semanticPatterns": 16,
+        "semanticPatterns": 17,
         "stages": {
           "inspect-helper-dependencies": 108,
           "inspect-leaf-helper": 19,
@@ -1211,13 +1211,13 @@
       "evidence": {
         "manifest": {
           "deploymentEligible": 0,
-          "emitted": 16
+          "emitted": 17
         },
         "validation": {
-          "checks": 111,
+          "checks": 113,
           "complete": true,
-          "helpers": 16,
-          "passed": 16
+          "helpers": 17,
+          "passed": 17
         }
       },
       "name": "evidence-complete native helpers execute as standalone Lua",
@@ -1267,11 +1267,11 @@
         ],
         "nativeDirectCallTargets": 233,
         "nativeDirectCalls": 15300,
-        "nativeHelperCallsWithTargetAddress": 1331,
+        "nativeHelperCallsWithTargetAddress": 1328,
         "nativeHelperCategories": {
           "engine-or-script-helper": {
-            "calls": 255,
-            "methods": 64
+            "calls": 252,
+            "methods": 63
           },
           "lifecycle-cleanup": {
             "calls": 164,
@@ -1290,22 +1290,22 @@
             "methods": 1
           }
         },
-        "nativeHelperMethodsWithTargetAddress": 105,
+        "nativeHelperMethodsWithTargetAddress": 104,
         "resolvedForgeInterfaceCalls": 1521,
         "resolvedForgeRuntimeCalls": 1707,
         "resolvedInterfaceCalls": 1708,
         "resolvedInterfaceMethods": 191,
-        "resolvedNativeHelperCalls": 188,
-        "resolvedNativeHelperMethods": 16,
+        "resolvedNativeHelperCalls": 191,
+        "resolvedNativeHelperMethods": 17,
         "scripts": 161,
         "scriptsWithEntityBindings": 119,
         "scriptsWithResolvedInterfaceCalls": 93,
-        "scriptsWithResolvedNativeHelpers": 124,
+        "scriptsWithResolvedNativeHelpers": 127,
         "stages": {
           "map-native-helpers": 161
         },
-        "unresolvedNativeHelperCalls": 1389,
-        "unresolvedNativeHelperMethods": 137,
+        "unresolvedNativeHelperCalls": 1386,
+        "unresolvedNativeHelperMethods": 136,
         "verifiedScriptInterfaceFields": 161
       },
       "name": "generated helpers reduce the native conversion backlog",

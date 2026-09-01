@@ -230,6 +230,16 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
             "removeFlagParameter": "param_3",
             "finalFlag": True,
         })
+    if ("ClearAllActionsIncludingLoopingAnimations" in current_name
+            and not direct and len(indirect) == 1
+            and indirect[0].get("vtableOffset") == "0x58"
+            and "*(int **)(this + 8) != (int *)0x0" in text):
+        patterns.append({
+            "kind": "optional-resource-virtual-call", "complete": True,
+            "resourcePointerOffset": "0x8",
+            "resourceVtableOffset": "0x58",
+            "operation": "ClearAllActionsIncludingLoopingAnimations",
+        })
     return patterns
 
 
@@ -357,6 +367,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
                 "archery-quest-info-setup",
                 "conditional-strided-copy-loop",
                 "remove-live-things-in-vector",
+                "optional-resource-virtual-call",
             } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)

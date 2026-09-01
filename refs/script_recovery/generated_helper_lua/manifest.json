@@ -1,9 +1,9 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "BE38E36E0A1C4220C1F31BB23C5590585218933E87049865D4FCB0629FFA80F2",
+  "sourceSha256": "3EB192D8C45AE83210F330508E1460F0538D37A1CA9630A0E19E4B75D396C196",
   "summary": {
-    "emitted": 16,
+    "emitted": 17,
     "deploymentEligible": 0
   },
   "entries": [
@@ -38,6 +38,23 @@
         "resultTransform": "not-zero",
         "complete": true,
         "luaFieldNameResolved": false
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x007E7410",
+      "currentName": "CScriptGameResourceObjectScriptedThingBase::?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ",
+      "sourceDecompileSha256": "f341ffab45946c2fac3937aeb4f530235b18915601102bc220bf2a72b3bdb04a",
+      "luaFile": "007E7410.lua",
+      "luaSha256": "A5BD201E021A3271D9E661D81C575E2BB7309DE8AD0CD5475FDE2BB806C7B20F",
+      "semanticPattern": {
+        "kind": "optional-resource-virtual-call",
+        "complete": true,
+        "resourcePointerOffset": "0x8",
+        "resourceVtableOffset": "0x58",
+        "operation": "ClearAllActionsIncludingLoopingAnimations"
       },
       "parentInitializerEvidence": null,
       "deploymentEligible": false,
