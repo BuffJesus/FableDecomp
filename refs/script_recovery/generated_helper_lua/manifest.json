@@ -1,9 +1,9 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "C8A298279AE9A39C675B8C03798F0F5F9DA27E840ADF269A783F1EAD708EC41C",
+  "sourceSha256": "24D16B22E637E8E07A0CC1FDB1EE9450609A4E8AE42F20B3F02D3ECC2224BC73",
   "summary": {
-    "emitted": 7,
+    "emitted": 10,
     "deploymentEligible": 0
   },
   "entries": [
@@ -124,6 +124,138 @@
         "kind": "constant-return",
         "return": 0,
         "complete": true
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x00E32EF0",
+      "currentName": "NScript::CV_ArcheryCompetitionScript::RemoveArcheryQuestInfo",
+      "sourceDecompileSha256": "eb92c413fd6af6927f64658c5d48ac1ce14556d4c5daf91b2f5b4ad1bec1ffa7",
+      "luaFile": "00E32EF0.lua",
+      "luaSha256": "60C6E7F9BAAA0CE3EB2133631713BA3C3AD47917AC81FE5BB9ED032FCBCED034",
+      "semanticPattern": {
+        "kind": "quest-interface-sequence",
+        "complete": true,
+        "parameters": [],
+        "operations": [
+          {
+            "method": "DisplayQuestInfo",
+            "arguments": [
+              {
+                "kind": "literal",
+                "value": false
+              }
+            ]
+          },
+          {
+            "method": "RemoveQuestInfoElement",
+            "arguments": [
+              {
+                "kind": "field-i32",
+                "offset": "0x58"
+              }
+            ]
+          },
+          {
+            "method": "RemoveQuestInfoElement",
+            "arguments": [
+              {
+                "kind": "field-i32",
+                "offset": "0x5c"
+              }
+            ]
+          },
+          {
+            "method": "RemoveQuestInfoElement",
+            "arguments": [
+              {
+                "kind": "field-i32",
+                "offset": "0x60"
+              }
+            ]
+          }
+        ]
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x00E32FE0",
+      "currentName": "NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::OnPredicateFail",
+      "sourceDecompileSha256": "b08291b7c8124044dbd8ce8ffc08bfd36a8b3e80d97a7f8b87f51117c15783bf",
+      "luaFile": "00E32FE0.lua",
+      "luaSha256": "FC26384D8C8E2D5A57614F1F628EC80F812DA4E46703E530BA18A51F14A040D8",
+      "semanticPattern": {
+        "kind": "quest-interface-sequence",
+        "complete": true,
+        "parameters": [],
+        "operations": [
+          {
+            "method": "UpdateQuestInfoCounter",
+            "arguments": [
+              {
+                "kind": "field-i32",
+                "offset": "0x5c"
+              },
+              {
+                "kind": "field-i32",
+                "offset": "0x48"
+              },
+              {
+                "kind": "literal",
+                "value": -1
+              }
+            ]
+          }
+        ]
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x00E33000",
+      "currentName": "NScript::CV_ArcheryCompetitionScript::UpdateHighScore",
+      "sourceDecompileSha256": "88f9cc8f1af0cf67aa7ab064fd3c29283be528c74db1aabae039b18824c9b00c",
+      "luaFile": "00E33000.lua",
+      "luaSha256": "4EC41FC666109A849CC3316C025FA0822C1AF85CC3D8C7AA4EB3FC13DE679963",
+      "semanticPattern": {
+        "kind": "quest-interface-sequence",
+        "complete": true,
+        "parameters": [
+          "param_1"
+        ],
+        "operations": [
+          {
+            "method": "UpdateQuestInfoCounter",
+            "arguments": [
+              {
+                "kind": "field-i32",
+                "offset": "0x58"
+              },
+              {
+                "kind": "parameter",
+                "name": "param_1"
+              },
+              {
+                "kind": "literal",
+                "value": -1
+              }
+            ]
+          },
+          {
+            "method": "UpdateOnlineScore_Archery",
+            "arguments": [
+              {
+                "kind": "literal",
+                "value": -1
+              }
+            ]
+          }
+        ]
       },
       "parentInitializerEvidence": null,
       "deploymentEligible": false,

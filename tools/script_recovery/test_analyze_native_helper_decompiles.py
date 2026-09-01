@@ -7,6 +7,29 @@ from tools.script_recovery.analyze_native_helper_decompiles import analyze, sema
 
 
 class NativeHelperDecompileTests(unittest.TestCase):
+    def test_archery_interface_sequences_are_complete_semantic_patterns(self):
+        remove = semantic_patterns(
+            "void F(X *this) { (**(code **)(**(int **)(this + 0x40) + 0x504))(0); "
+            "(**(code **)(**(int **)(this + 0x40) + 0x548))(*(undefined4 *)(this + 0x58)); "
+            "(**(code **)(**(int **)(this + 0x40) + 0x548))(*(undefined4 *)(this + 0x5c)); "
+            "(**(code **)(**(int **)(this + 0x40) + 0x548))(*(undefined4 *)(this + 0x60)); return; }",
+            [], [{"vtableOffset": offset} for offset in ("0x504", "0x548", "0x548", "0x548")],
+            "NScript::CV_ArcheryCompetitionScript::RemoveArcheryQuestInfo")
+        self.assertEqual(remove[0]["kind"], "quest-interface-sequence")
+        self.assertEqual([row["method"] for row in remove[0]["operations"]],
+                         ["DisplayQuestInfo", "RemoveQuestInfoElement",
+                          "RemoveQuestInfoElement", "RemoveQuestInfoElement"])
+
+        high_score = semantic_patterns(
+            "void F(X *this,long param_1) { int iVar1; iVar1 = -1; "
+            "(**(code **)(**(int **)(this + 0x40) + 0x53c))(*(undefined4 *)(this + 0x58),param_1,0xffffffff); "
+            "(**(code **)(**(int **)(this + 0x40) + 0xb54))((float)iVar1); return; }",
+            [], [{"vtableOffset": "0x53c"}, {"vtableOffset": "0xb54"}],
+            "NScript::CV_ArcheryCompetitionScript::UpdateHighScore")
+        self.assertEqual(high_score[0]["parameters"], ["param_1"])
+        self.assertEqual(high_score[0]["operations"][1]["method"],
+                         "UpdateOnlineScore_Archery")
+
     def test_typed_native_reads_are_complete_semantic_patterns(self):
         field = semantic_patterns(
             "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])

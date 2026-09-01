@@ -33,7 +33,7 @@ INTEGER_RE = r"(?:0x[0-9a-fA-F]+|-?\d+)"
 
 
 def semantic_patterns(text: str, direct: list[dict[str, Any]],
-                      indirect: list[dict[str, Any]]) -> list[dict[str, Any]]:
+                      indirect: list[dict[str, Any]], current_name: str = "") -> list[dict[str, Any]]:
     """Recognize only complete helper shapes that can be preserved losslessly."""
     patterns = []
     switch = re.search(r"switch\s*\(\s*([A-Za-z_]\w*)\s*\)\s*\{(.*?)\}", text, re.DOTALL)
@@ -82,6 +82,46 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
             patterns.append({"kind": "native-global-return",
                              "globalAddress": "0x" + global_read.group(1).upper(),
                              "complete": True})
+    offsets = [call.get("vtableOffset") for call in indirect]
+    if not direct and current_name.endswith("::RemoveArcheryQuestInfo") and offsets == [
+            "0x504", "0x548", "0x548", "0x548"]:
+        fields = re.findall(
+            r"\+ 0x548\)\)\(\*\(undefined4 \*\)\(this \+ (0x[0-9a-fA-F]+)\)\);", text)
+        if fields == ["0x58", "0x5c", "0x60"] and re.search(
+                r"\+ 0x504\)\)\(0\);", text):
+            patterns.append({"kind": "quest-interface-sequence", "complete": True,
+                             "parameters": [], "operations": [
+                {"method": "DisplayQuestInfo", "arguments": [
+                    {"kind": "literal", "value": False}]},
+                *({"method": "RemoveQuestInfoElement", "arguments": [
+                    {"kind": "field-i32", "offset": field}]} for field in fields),
+            ]})
+    if not direct and current_name.endswith("::CChunkCollectionIndicator::OnPredicateFail") and offsets == ["0x53c"]:
+        match = re.search(
+            r"\+ 0x53c\)\)\s*\(\*\(undefined4 \*\)\(this \+ (0x[0-9a-fA-F]+)\),"
+            r"\*\(undefined4 \*\)\(this \+ (0x[0-9a-fA-F]+)\),0xffffffff\);", text)
+        if match:
+            patterns.append({"kind": "quest-interface-sequence", "complete": True,
+                             "parameters": [], "operations": [{
+                "method": "UpdateQuestInfoCounter", "arguments": [
+                    {"kind": "field-i32", "offset": match.group(1)},
+                    {"kind": "field-i32", "offset": match.group(2)},
+                    {"kind": "literal", "value": -1},
+                ]}]})
+    if not direct and current_name.endswith("::UpdateHighScore") and offsets == ["0x53c", "0xb54"]:
+        match = re.search(
+            r"\+ 0x53c\)\)\(\*\(undefined4 \*\)\(this \+ (0x[0-9a-fA-F]+)\),param_1,0xffffffff\);", text)
+        if match and re.search(r"iVar1\s*=\s*-1;", text) and re.search(
+                r"\+ 0xb54\)\)\(\(float\)iVar1\);", text):
+            patterns.append({"kind": "quest-interface-sequence", "complete": True,
+                             "parameters": ["param_1"], "operations": [
+                {"method": "UpdateQuestInfoCounter", "arguments": [
+                    {"kind": "field-i32", "offset": match.group(1)},
+                    {"kind": "parameter", "name": "param_1"},
+                    {"kind": "literal", "value": -1}]},
+                {"method": "UpdateOnlineScore_Archery", "arguments": [
+                    {"kind": "literal", "value": -1}]},
+            ]})
     return patterns
 
 
@@ -158,7 +198,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
                     "forgeHostManaged": method["name"] in HOST_MANAGED_METHODS,
                     "forgeRuntimeAbiBlocker": RUNTIME_ABI_BLOCKERS.get(method["name"]),
                 })
-        semantics = semantic_patterns(text, direct, indirect)
+        semantics = semantic_patterns(text, direct, indirect, helper["currentName"])
         consumers = consumers_by_target.get(helper["targetAddress"], [])
         initializer = next((pattern for pattern in semantics
                             if pattern["kind"] == "native-field-initializer"), None)
@@ -203,7 +243,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
             "parentInitializerEvidence": parent_initializer,
             "luaEmissionReady": any(pattern["kind"] in {
                 "constant-return-switch", "native-field-initializer", "constant-return",
-                "native-field-return", "native-global-return",
+                "native-field-return", "native-global-return", "quest-interface-sequence",
             } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)

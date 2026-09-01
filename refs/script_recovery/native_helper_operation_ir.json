@@ -8,8 +8,8 @@
     "consumerCalls": 1437,
     "directDependencyCalls": 4967,
     "directDependencyTargets": 206,
-    "semanticPatterns": 7,
-    "luaEmissionReady": 7,
+    "semanticPatterns": 10,
+    "luaEmissionReady": 10,
     "resolvedParentInitializers": 2,
     "resolvedInterfaceCalls": 273,
     "resolvedInterfaceMethods": 62,
@@ -47950,9 +47950,53 @@
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "quest-interface-sequence",
+          "complete": true,
+          "parameters": [],
+          "operations": [
+            {
+              "method": "DisplayQuestInfo",
+              "arguments": [
+                {
+                  "kind": "literal",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "method": "RemoveQuestInfoElement",
+              "arguments": [
+                {
+                  "kind": "field-i32",
+                  "offset": "0x58"
+                }
+              ]
+            },
+            {
+              "method": "RemoveQuestInfoElement",
+              "arguments": [
+                {
+                  "kind": "field-i32",
+                  "offset": "0x5c"
+                }
+              ]
+            },
+            {
+              "method": "RemoveQuestInfoElement",
+              "arguments": [
+                {
+                  "kind": "field-i32",
+                  "offset": "0x60"
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00E32FE0",
@@ -48011,9 +48055,34 @@
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "quest-interface-sequence",
+          "complete": true,
+          "parameters": [],
+          "operations": [
+            {
+              "method": "UpdateQuestInfoCounter",
+              "arguments": [
+                {
+                  "kind": "field-i32",
+                  "offset": "0x5c"
+                },
+                {
+                  "kind": "field-i32",
+                  "offset": "0x48"
+                },
+                {
+                  "kind": "literal",
+                  "value": -1
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00E33000",
@@ -48094,9 +48163,45 @@
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "quest-interface-sequence",
+          "complete": true,
+          "parameters": [
+            "param_1"
+          ],
+          "operations": [
+            {
+              "method": "UpdateQuestInfoCounter",
+              "arguments": [
+                {
+                  "kind": "field-i32",
+                  "offset": "0x58"
+                },
+                {
+                  "kind": "parameter",
+                  "name": "param_1"
+                },
+                {
+                  "kind": "literal",
+                  "value": -1
+                }
+              ]
+            },
+            {
+              "method": "UpdateOnlineScore_Archery",
+              "arguments": [
+                {
+                  "kind": "literal",
+                  "value": -1
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00E33040",

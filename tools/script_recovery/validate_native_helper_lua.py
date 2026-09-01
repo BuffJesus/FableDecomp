@@ -72,6 +72,31 @@ def validate(manifest_path: Path) -> dict[str, Any]:
                               if actual_address == address else None)
             if actual != 0x12345678:
                 errors.append(f"global read returned {actual}")
+        elif pattern["kind"] == "quest-interface-sequence":
+            trace = []
+            parameter_values = {name: 0x2300 + index
+                                for index, name in enumerate(pattern["parameters"], 1)}
+            field_values = {int(argument["offset"], 0): 0x10000 + int(argument["offset"], 0)
+                            for operation in pattern["operations"]
+                            for argument in operation["arguments"]
+                            if argument["kind"] == "field-i32"}
+            function(lambda method, *arguments: trace.append((method, list(arguments))),
+                     lambda offset: field_values[offset],
+                     *(parameter_values[name] for name in pattern["parameters"]))
+            expected = []
+            for operation in pattern["operations"]:
+                arguments = []
+                for argument in operation["arguments"]:
+                    if argument["kind"] == "field-i32":
+                        arguments.append(field_values[int(argument["offset"], 0)])
+                    elif argument["kind"] == "parameter":
+                        arguments.append(parameter_values[argument["name"]])
+                    else:
+                        arguments.append(argument["value"])
+                expected.append((operation["method"], arguments))
+            checks = len(expected)
+            if trace != expected:
+                errors.append(f"interface trace differs: expected {expected}, got {trace}")
         else:
             errors.append(f"unsupported semantic pattern {pattern['kind']}")
         rows.append({"targetAddress": entry["targetAddress"], "passed": not errors,

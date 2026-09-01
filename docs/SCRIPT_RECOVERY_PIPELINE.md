@@ -183,8 +183,12 @@ The same typed-reader boundary now lifts four additional complete leaf behaviors
 host pointers in Lua: `C3DMeshInfo::HasPhysicsMesh` reads an unnamed 32-bit field,
 `CWorld::DrawGetEnvironment` reads an unnamed pointer field, `GFGetPreMainMemoryUsed` reads the exact
 retail global at `0x0143E920`, and `CEngineInternalPrimitiveBase::AddChildPrimitive` returns its
-constant retail result. Together, seven generated helpers pass 43 native-derived checks. These are
-still standalone conversion units, not evidence that their parent retail scripts are deployable.
+constant retail result. Three compact `V_ArcheryCompetition` helpers are also lifted as ordered
+interface-call sequences: removing its three quest-info elements, updating the predicate-failure
+counter, and updating both the quest counter and online archery score. Their exact `Main` call sites,
+parent fields, parameters, constants, and all seven interface calls are preserved. Together, ten
+generated helpers pass 50 native-derived checks. These are still standalone conversion units, not
+evidence that their parent retail scripts are deployable.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`

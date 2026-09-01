@@ -59,6 +59,29 @@ def emit_return(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
     raise ValueError(f"unsupported return pattern {pattern['kind']}")
 
 
+def emit_interface_sequence(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
+    parameters = ["invoke", "read_i32", *pattern["parameters"]]
+    lines = [f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+             "-- Ordered interface calls and unnamed native fields are preserved exactly.",
+             f"return function({', '.join(parameters)})"]
+    for operation in pattern["operations"]:
+        arguments = []
+        for argument in operation["arguments"]:
+            if argument["kind"] == "field-i32":
+                arguments.append(f"read_i32({int(argument['offset'], 0)})")
+            elif argument["kind"] == "parameter":
+                arguments.append(argument["name"])
+            elif argument["kind"] == "literal":
+                value = argument["value"]
+                arguments.append("true" if value is True else "false" if value is False else str(value))
+            else:
+                raise ValueError(f"unsupported interface argument {argument['kind']}")
+        suffix = (", " + ", ".join(arguments)) if arguments else ""
+        lines.append(f'    invoke("{operation["method"]}"{suffix})')
+    lines.extend(("end", ""))
+    return "\n".join(lines)
+
+
 def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
     source_bytes = helper_ir_path.read_bytes()
     document = json.loads(source_bytes.decode("utf-8-sig"))
@@ -70,7 +93,7 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
         patterns = [row for row in helper["semanticPatterns"]
                     if row["kind"] in {"constant-return-switch", "native-field-initializer",
                                        "constant-return", "native-field-return",
-                                       "native-global-return"}
+                                       "native-global-return", "quest-interface-sequence"}
                     and row["complete"]]
         if len(patterns) != 1:
             raise ValueError(f"expected one complete switch for {helper['targetAddress']}")
@@ -79,6 +102,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
             text = emit_switch(helper, pattern)
         elif pattern["kind"] == "native-field-initializer":
             text = emit_initializer(helper, pattern)
+        elif pattern["kind"] == "quest-interface-sequence":
+            text = emit_interface_sequence(helper, pattern)
         else:
             text = emit_return(helper, pattern)
         filename = helper["targetAddress"].removeprefix("0x") + ".lua"

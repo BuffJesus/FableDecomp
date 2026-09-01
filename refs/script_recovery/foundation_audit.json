@@ -1180,7 +1180,7 @@
         "directDependencyCalls": 4967,
         "directDependencyTargets": 206,
         "failed": 1,
-        "luaEmissionReady": 7,
+        "luaEmissionReady": 10,
         "missingForgeInterfaceMethods": [
           "AddLogBookEntry",
           "AddNewConversation",
@@ -1196,7 +1196,7 @@
         "resolvedInterfaceCalls": 273,
         "resolvedInterfaceMethods": 62,
         "resolvedParentInitializers": 2,
-        "semanticPatterns": 7,
+        "semanticPatterns": 10,
         "stages": {
           "inspect-helper-dependencies": 108,
           "inspect-leaf-helper": 19,
@@ -1211,13 +1211,13 @@
       "evidence": {
         "manifest": {
           "deploymentEligible": 0,
-          "emitted": 7
+          "emitted": 10
         },
         "validation": {
-          "checks": 43,
+          "checks": 50,
           "complete": true,
-          "helpers": 7,
-          "passed": 7
+          "helpers": 10,
+          "passed": 10
         }
       },
       "name": "evidence-complete native helpers execute as standalone Lua",
