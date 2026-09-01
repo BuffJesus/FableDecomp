@@ -2,7 +2,7 @@
   "schema": "forgefse-runtime-script-audit/0.1",
   "source": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaManager.cpp",
   "summary": {
-    "registeredQuestBindings": 886,
+    "registeredQuestBindings": 897,
     "registeredEntityBindings": 91,
     "requiredCalls": 84,
     "callable": 84,

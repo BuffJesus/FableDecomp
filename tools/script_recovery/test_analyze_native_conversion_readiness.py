@@ -3,10 +3,48 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from tools.script_recovery.analyze_native_conversion_readiness import analyze, api_match
+from tools.script_recovery.analyze_native_conversion_readiness import (
+    LUA_QUEST_BINDING_RE, analyze, api_match,
+)
 
 
 class NativeConversionReadinessTests(unittest.TestCase):
+    def test_runtime_binding_extraction(self):
+        text = 'questState_type["CloseDoor"] = &LuaQuestState::CloseDoor;'
+        self.assertEqual(LUA_QUEST_BINDING_RE.findall(text), ["CloseDoor"])
+
+    def test_runtime_alias_and_host_managed_calls_are_not_reported_missing(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "ir").mkdir()
+            (root / "catalog.json").write_text(json.dumps({"scripts": [{"name": "Q_X", "kind": "quest"}]}))
+            (root / "manifest.json").write_text(json.dumps({"functions": []}))
+            (root / "methods.tsv").write_text(
+                "00100000\tPostAddScriptedEntities\n00100010\tStartScriptingEntity\n")
+            (root / "slots.tsv").write_text(
+                "vtable_base\toffset\tslot_address\ttarget_address\tcurrent_name\texecutable\n"
+                "01260f0c\t0x100\t0126100c\t00100000\tdecorated\ttrue\n"
+                "01260f0c\t0x104\t01261010\t00100010\tdecorated\ttrue\n")
+            (root / "LuaManager.cpp").write_text(
+                'questState_type["FinalizeEntityBindings"] = &LuaQuestState::FinalizeEntityBindings;')
+            life = [{"role": role, "address": "0x1", "calls": [], "indirectCalls": []}
+                    for role in ("destructor", "RegisterMain", "Main", "Init", "OnPersist")]
+            life[2]["indirectCalls"] = [
+                {"vtableOffset": "0x100", "interfaceProvenance": "direct-gamescriptinterface-singleton"},
+                {"vtableOffset": "0x104", "interfaceProvenance": "direct-gamescriptinterface-singleton"},
+            ]
+            (root / "ir" / "Q_X.json").write_text(json.dumps({
+                "script": "Q_X", "allocatorAddress": "0x1", "vtableAddress": "0x2",
+                "evidenceAnchors": [], "lifecycle": life}))
+            result = analyze(root / "catalog.json", root / "ir", root / "manifest.json",
+                             root / "slots.tsv", root / "methods.tsv",
+                             lua_manager_path=root / "LuaManager.cpp")
+            self.assertEqual(result["summary"]["missingForgeRuntimeMethods"], [])
+            self.assertEqual(result["summary"]["hostManagedInterfaceMethods"],
+                             ["StartScriptingEntity"])
+            calls = result["scripts"][0]["resolvedInterfaceCalls"]
+            self.assertEqual(calls[0]["forgeRuntimeName"], "FinalizeEntityBindings")
+
     def test_api_match_respects_symbol_boundaries(self):
         self.assertEqual(api_match("global_GetHero_CGameScriptInterface", ["GetHero"]), "GetHero")
         self.assertIsNone(api_match("global_GetHeroic", ["GetHero"]))
