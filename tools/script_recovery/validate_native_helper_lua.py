@@ -250,6 +250,42 @@ def validate(manifest_path: Path) -> dict[str, Any]:
                 checks += 1
                 if trace != expected:
                     errors.append(f"resource {resource}: expected {expected}, got {trace}")
+        elif pattern["kind"] == "optional-resource-forward-virtual-call":
+            pointer_offset = int(pattern["resourcePointerOffset"], 0)
+            vtable_offset = int(pattern["resourceVtableOffset"], 0)
+            arguments = (101, "line", False, True)
+            for resource, expected in (
+                    (None, [("get", pointer_offset)]),
+                    (0xBEEF, [("get", pointer_offset),
+                              ("invoke", 0xBEEF, pattern["operation"], vtable_offset,
+                               *arguments)])):
+                trace = []
+                function(lambda offset, value=resource: trace.append(("get", offset)) or value,
+                         lambda *values: trace.append(("invoke", *values)), *arguments)
+                checks += 1
+                if trace != expected:
+                    errors.append(f"resource {resource}: expected {expected}, got {trace}")
+        elif pattern["kind"] == "optional-resource-script-thing-return":
+            pointer_offset = int(pattern["resourcePointerOffset"], 0)
+            vtable_offset = int(pattern["resourceVtableOffset"], 0)
+            empty_bytes = int(pattern["emptyTokenBytes"])
+            constructor = int(pattern["emptyConstructorTarget"], 0)
+            for resource, expected_result in ((None, "empty-token"), (0xBEEF, "live-token")):
+                trace = []
+                actual = function(
+                    lambda offset, value=resource: trace.append(("get", offset)) or value,
+                    lambda size, target: trace.append(("empty", size, target)) or "empty-token",
+                    lambda token, operation, slot:
+                    trace.append(("invoke", token, operation, slot)) or "live-token")
+                expected_trace = [("get", pointer_offset)]
+                if resource is None:
+                    expected_trace.append(("empty", empty_bytes, constructor))
+                else:
+                    expected_trace.append(("invoke", resource, pattern["operation"], vtable_offset))
+                checks += 1
+                if trace != expected_trace or actual != expected_result:
+                    errors.append(f"resource {resource}: expected {expected_trace}/{expected_result}, "
+                                  f"got {trace}/{actual}")
         else:
             errors.append(f"unsupported semantic pattern {pattern['kind']}")
         rows.append({"targetAddress": entry["targetAddress"], "passed": not errors,

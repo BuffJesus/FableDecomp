@@ -120,6 +120,25 @@ class NativeHelperDecompileTests(unittest.TestCase):
             "resourcePointerOffset": "0x8", "resourceVtableOffset": "0x58",
             "operation": "ClearAllActionsIncludingLoopingAnimations"})
 
+    def test_speak_overloads_preserve_forwarding_slots(self):
+        body = ("if (*(int **)(this + 8) != (int *)0x0) { "
+                "(**(code **)(**(int **)(this + 8) + 0x34))(); }")
+        pattern = semantic_patterns(body, [], [{"vtableOffset": "0x34"}],
+            "Thing::?Speak@Thing@@UAEXABVThing@@PBD@Z")[0]
+        self.assertEqual(pattern["kind"], "optional-resource-forward-virtual-call")
+        self.assertEqual((pattern["operation"], pattern["resourceVtableOffset"]),
+                         ("SpeakCString", "0x34"))
+
+    def test_get_script_thing_preserves_empty_and_delegate_branches(self):
+        body = ("if (*(int **)(this + 8) == (int *)0x0) { Constructor(out); "
+                "*out = &PTR__scalar_deleting_destructor__01238c8c; "
+                "*(undefined4 *)(in_stack_00000004 + 4) = 0; "
+                "*(undefined4 *)(in_stack_00000004 + 8) = 0; } call_slot();")
+        pattern = semantic_patterns(body, [{"target": "0x0099A2D0"}],
+            [{"vtableOffset": "0x30"}], "Thing::?GetScriptThing@Thing@@UBE?AVThing@@XZ")[0]
+        self.assertEqual(pattern["kind"], "optional-resource-script-thing-return")
+        self.assertEqual(pattern["emptyTokenBytes"], 12)
+
     def test_typed_native_reads_are_complete_semantic_patterns(self):
         field = semantic_patterns(
             "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])

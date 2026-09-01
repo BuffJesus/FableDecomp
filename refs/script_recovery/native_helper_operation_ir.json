@@ -8,8 +8,8 @@
     "consumerCalls": 1437,
     "directDependencyCalls": 4967,
     "directDependencyTargets": 206,
-    "semanticPatterns": 17,
-    "luaEmissionReady": 17,
+    "semanticPatterns": 20,
+    "luaEmissionReady": 20,
     "resolvedParentInitializers": 2,
     "resolvedInterfaceCalls": 273,
     "resolvedInterfaceMethods": 62,
@@ -27937,9 +27937,17 @@
       "controlFlow": {
         "if": 1
       },
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "optional-resource-forward-virtual-call",
+          "complete": true,
+          "resourcePointerOffset": "0x8",
+          "resourceVtableOffset": "0x34",
+          "operation": "SpeakCString"
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x007E7490",
@@ -28006,9 +28014,19 @@
       "controlFlow": {
         "if": 1
       },
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "optional-resource-script-thing-return",
+          "complete": true,
+          "resourcePointerOffset": "0x8",
+          "resourceVtableOffset": "0x30",
+          "emptyConstructorTarget": "0x0099A2D0",
+          "emptyTokenBytes": 12,
+          "operation": "GetScriptThing"
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x0099F830",
@@ -33890,9 +33908,17 @@
       "controlFlow": {
         "if": 1
       },
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "optional-resource-forward-virtual-call",
+          "complete": true,
+          "resourcePointerOffset": "0x8",
+          "resourceVtableOffset": "0x38",
+          "operation": "SpeakTextId"
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x009AC2D0",

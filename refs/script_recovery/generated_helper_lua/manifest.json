@@ -1,9 +1,9 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "3EB192D8C45AE83210F330508E1460F0538D37A1CA9630A0E19E4B75D396C196",
+  "sourceSha256": "BA719B7FEF25D20B85F52F7253ED73E0E29E8E7394EDABF1E6F6A49C874DA036",
   "summary": {
-    "emitted": 17,
+    "emitted": 20,
     "deploymentEligible": 0
   },
   "entries": [
@@ -61,6 +61,42 @@
       "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
     },
     {
+      "targetAddress": "0x007E7390",
+      "currentName": "CScriptGameResourceObjectScriptedThingBase::?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z",
+      "sourceDecompileSha256": "377a21607ae37928428084ab0a1b33f2300eb8aed840a58d4fb357868c349ed3",
+      "luaFile": "007E7390.lua",
+      "luaSha256": "EC1A937C019813B963BBB3BA29764A4C045211E2C20C338344DA0A2D0117C449",
+      "semanticPattern": {
+        "kind": "optional-resource-forward-virtual-call",
+        "complete": true,
+        "resourcePointerOffset": "0x8",
+        "resourceVtableOffset": "0x34",
+        "operation": "SpeakCString"
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x007E7490",
+      "currentName": "CScriptGameResourceObjectScriptedThingBase::?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ",
+      "sourceDecompileSha256": "8054ffa487ec098ffe1df959bb807e5f018c2ea0f2cc166d94ed17caaa2254f2",
+      "luaFile": "007E7490.lua",
+      "luaSha256": "4B30F2046DAD867FDFC10E2ABB5A12D5F925C6A69F23F5514F4364F0765513B7",
+      "semanticPattern": {
+        "kind": "optional-resource-script-thing-return",
+        "complete": true,
+        "resourcePointerOffset": "0x8",
+        "resourceVtableOffset": "0x30",
+        "emptyConstructorTarget": "0x0099A2D0",
+        "emptyTokenBytes": 12,
+        "operation": "GetScriptThing"
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
       "targetAddress": "0x00CBED82",
       "currentName": "KillAllThingsInVector",
       "sourceDecompileSha256": "08cdc86ae77a8615a8375f700ab0205d16d3f2104b06e54ae7e785f4e8e30397",
@@ -74,6 +110,23 @@
         "removeThingVtableOffset": "0x1b0",
         "removeFlagParameter": "param_3",
         "finalFlag": true
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x007E7380",
+      "currentName": "CScriptGameResourceObjectScriptedThingBase::?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@KW4ETextGroupSelectionMethod@@_N22@Z",
+      "sourceDecompileSha256": "6f8da3cc9e0c280d838b278ae3c1f91e2d05b0ab03a26e15ac324efdf5292ab7",
+      "luaFile": "007E7380.lua",
+      "luaSha256": "E00E6A987625767442FC48C82187E77A008A046AC27C6734503FD42F7DA2E9C7",
+      "semanticPattern": {
+        "kind": "optional-resource-forward-virtual-call",
+        "complete": true,
+        "resourcePointerOffset": "0x8",
+        "resourceVtableOffset": "0x38",
+        "operation": "SpeakTextId"
       },
       "parentInitializerEvidence": null,
       "deploymentEligible": false,

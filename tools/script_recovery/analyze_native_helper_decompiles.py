@@ -240,6 +240,29 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
             "resourceVtableOffset": "0x58",
             "operation": "ClearAllActionsIncludingLoopingAnimations",
         })
+    if ("::?Speak@" in current_name and not direct and len(indirect) == 1
+            and indirect[0].get("vtableOffset") in {"0x34", "0x38"}
+            and "*(int **)(this + 8) != (int *)0x0" in text):
+        slot = indirect[0]["vtableOffset"]
+        patterns.append({
+            "kind": "optional-resource-forward-virtual-call", "complete": True,
+            "resourcePointerOffset": "0x8", "resourceVtableOffset": slot,
+            "operation": "SpeakCString" if slot == "0x34" else "SpeakTextId",
+        })
+    if ("::?GetScriptThing@" in current_name and len(direct) == 1
+            and direct[0].get("target") == "0x0099A2D0" and len(indirect) == 1
+            and indirect[0].get("vtableOffset") == "0x30"
+            and all(value in text for value in (
+                "*(int **)(this + 8) == (int *)0x0",
+                "&PTR__scalar_deleting_destructor__01238c8c",
+                "*(undefined4 *)(in_stack_00000004 + 4) = 0",
+                "*(undefined4 *)(in_stack_00000004 + 8) = 0"))):
+        patterns.append({
+            "kind": "optional-resource-script-thing-return", "complete": True,
+            "resourcePointerOffset": "0x8", "resourceVtableOffset": "0x30",
+            "emptyConstructorTarget": "0x0099A2D0", "emptyTokenBytes": 12,
+            "operation": "GetScriptThing",
+        })
     return patterns
 
 
@@ -368,6 +391,8 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
                 "conditional-strided-copy-loop",
                 "remove-live-things-in-vector",
                 "optional-resource-virtual-call",
+                "optional-resource-forward-virtual-call",
+                "optional-resource-script-thing-return",
             } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)

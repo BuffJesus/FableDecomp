@@ -198,6 +198,35 @@ def emit_optional_resource_call(helper: dict[str, Any], pattern: dict[str, Any])
     ])
 
 
+def emit_optional_resource_forward_call(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
+    return "\n".join([
+        f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+        "-- Preserve the null guard and tail-forward every caller argument opaquely.",
+        "return function(get_resource, invoke_resource, ...)",
+        f"    local resource = get_resource({int(pattern['resourcePointerOffset'], 0)})",
+        "    if resource ~= nil then",
+        f'        invoke_resource(resource, "{pattern["operation"]}", '
+        f'{int(pattern["resourceVtableOffset"], 0)}, ...)',
+        "    end", "end", "",
+    ])
+
+
+def emit_optional_script_thing_return(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
+    return "\n".join([
+        f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+        "-- Return an opaque script-thing token; native output storage never crosses into Lua.",
+        "return function(get_resource, make_empty, invoke_resource)",
+        f"    local resource = get_resource({int(pattern['resourcePointerOffset'], 0)})",
+        "    if resource == nil then",
+        f"        return make_empty({int(pattern['emptyTokenBytes'])}, "
+        f"{int(pattern['emptyConstructorTarget'], 0)})",
+        "    end",
+        f'    return invoke_resource(resource, "{pattern["operation"]}", '
+        f'{int(pattern["resourceVtableOffset"], 0)})',
+        "end", "",
+    ])
+
+
 def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
     source_bytes = helper_ir_path.read_bytes()
     document = json.loads(source_bytes.decode("utf-8-sig"))
@@ -214,7 +243,9 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
                                        | {"native-script-initializer", "archery-quest-info-setup",
                                           "conditional-strided-copy-loop",
                                           "remove-live-things-in-vector",
-                                          "optional-resource-virtual-call"}
+                                          "optional-resource-virtual-call",
+                                          "optional-resource-forward-virtual-call",
+                                          "optional-resource-script-thing-return"}
                     and row["complete"]]
         if len(patterns) != 1:
             raise ValueError(f"expected one complete switch for {helper['targetAddress']}")
@@ -237,6 +268,10 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
             text = emit_remove_live_things(helper, pattern)
         elif pattern["kind"] == "optional-resource-virtual-call":
             text = emit_optional_resource_call(helper, pattern)
+        elif pattern["kind"] == "optional-resource-forward-virtual-call":
+            text = emit_optional_resource_forward_call(helper, pattern)
+        elif pattern["kind"] == "optional-resource-script-thing-return":
+            text = emit_optional_script_thing_return(helper, pattern)
         else:
             text = emit_return(helper, pattern)
         filename = helper["targetAddress"].removeprefix("0x") + ".lua"

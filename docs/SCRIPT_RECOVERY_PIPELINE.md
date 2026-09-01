@@ -224,8 +224,11 @@ arguments without exposing the native three-dword element layout. Both removal-f
 alive/dead vectors execute offline. The decorated scripted-resource wrapper at `0x007E7410` is
 likewise lifted without trusting its bad imported donor prototype: the exact `this+8` null guard and
 resource vtable slot `0x58` become opaque `get_resource` / `invoke_resource` callbacks, with both
-branches validated. Totals are now seventeen helpers / 113 checks, resolving 191 calls across 127
-scripts and leaving 136 helper labels / 1,386 calls.
+branches validated. Its neighboring wrapper family is now covered as well: both decorated `Speak`
+overloads (`0x007E7380/0x007E7390`) preserve their distinct `0x38/0x34` resource slots and tail-forward
+all arguments, while `GetScriptThing @ 0x007E7490` returns an opaque delegated token or recreates the
+evidenced empty 12-byte token branch through a constructor callback. Totals are now twenty helpers /
+119 checks, resolving 196 calls across 129 scripts and leaving 133 helper labels / 1,381 calls.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`

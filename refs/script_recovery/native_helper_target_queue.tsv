@@ -28,8 +28,6 @@ target_address	category	calls	scripts	roles	helper_names
 0x00414EA0	engine-or-script-helper	6	2	Main,destructor	CDefendingCombatantInfo::CCombatWheel::ResetRings
 0x0099F690	engine-or-script-helper	3	2	Init,Main	CCharString_OperatorPlus_API
 0x007ADD50	lifecycle-cleanup	2	2	destructor	LTextTreeWalkThrough_Destructor
-0x007E7390	engine-or-script-helper	2	2	Main	_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z
-0x007E7490	engine-or-script-helper	2	2	Main	_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ
 0x0099F830	engine-or-script-helper	2	2	Init,Main	GFIntToCharString_API
 0x00BFEA0E	runtime-support	2	2	Main	malloc
 0x00CB7AA0	script-runtime	2	2	Main	CScriptBase::KillSpawnedFunction
@@ -62,7 +60,6 @@ target_address	category	calls	scripts	roles	helper_names
 0x0075F560	runtime-support	1	1	Main	DoublyLinkedList_Init
 0x0075F6C0	engine-or-script-helper	1	1	Main	CFileInstaller::CActiveFile::OnReadFinished
 0x007E72D0	engine-or-script-helper	1	1	Main	_SummonerLightningOrbAttackTarget_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing___Z
-0x007E7380	engine-or-script-helper	1	1	Main	_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z
 0x009AC2D0	engine-or-script-helper	1	1	Main	Std_Deque_Construct
 0x00A394D0	runtime-support	1	1	Main	List_Node_Initialize
 0x00CBE09A	object-lifetime	1	1	Main	CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities

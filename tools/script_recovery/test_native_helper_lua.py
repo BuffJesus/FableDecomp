@@ -83,6 +83,30 @@ class NativeHelperLuaTests(unittest.TestCase):
             self.assertTrue(result["summary"]["complete"])
             self.assertEqual(result["summary"]["checks"], 2)
 
+    def test_generated_resource_forward_and_return_wrappers_execute(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            helper_ir = root / "ir.json"
+            common = {"complete": True, "resourcePointerOffset": "0x8"}
+            helper_ir.write_text(json.dumps({"helpers": [{
+                "targetAddress": "0x007E7390", "currentName": "Speak",
+                "decompileSha256": "E" * 64, "luaEmissionReady": True,
+                "semanticPatterns": [{**common,
+                    "kind": "optional-resource-forward-virtual-call",
+                    "resourceVtableOffset": "0x34", "operation": "SpeakCString"}],
+            }, {
+                "targetAddress": "0x007E7490", "currentName": "GetScriptThing",
+                "decompileSha256": "F" * 64, "luaEmissionReady": True,
+                "semanticPatterns": [{**common,
+                    "kind": "optional-resource-script-thing-return",
+                    "resourceVtableOffset": "0x30", "operation": "GetScriptThing",
+                    "emptyConstructorTarget": "0x0099A2D0", "emptyTokenBytes": 12}],
+            }]}))
+            generate(helper_ir, root / "generated")
+            result = validate(root / "generated" / "manifest.json")
+            self.assertTrue(result["summary"]["complete"])
+            self.assertEqual(result["summary"]["checks"], 4)
+
 
 if __name__ == "__main__":
     unittest.main()

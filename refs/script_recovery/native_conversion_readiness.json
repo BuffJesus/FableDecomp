@@ -53,19 +53,19 @@
     "abiBlockedInterfaceMethods": {
       "MsgOnLevelLoaded": "retail method writes std::list<CCharString>; ForgeFSE uses a newer MSVC STL ABI"
     },
-    "resolvedNativeHelperMethods": 17,
-    "resolvedNativeHelperCalls": 191,
-    "scriptsWithResolvedNativeHelpers": 127,
-    "unresolvedNativeHelperMethods": 136,
-    "unresolvedNativeHelperCalls": 1386,
-    "nativeHelperMethodsWithTargetAddress": 104,
-    "nativeHelperCallsWithTargetAddress": 1328,
+    "resolvedNativeHelperMethods": 20,
+    "resolvedNativeHelperCalls": 196,
+    "scriptsWithResolvedNativeHelpers": 129,
+    "unresolvedNativeHelperMethods": 133,
+    "unresolvedNativeHelperCalls": 1381,
+    "nativeHelperMethodsWithTargetAddress": 101,
+    "nativeHelperCallsWithTargetAddress": 1323,
     "nativeDirectCalls": 15300,
     "nativeDirectCallTargets": 233,
     "nativeHelperCategories": {
       "engine-or-script-helper": {
-        "methods": 63,
-        "calls": 252
+        "methods": 60,
+        "calls": 247
       },
       "lifecycle-cleanup": {
         "methods": 38,
@@ -1191,48 +1191,6 @@
       "consumers": [
         "Q_MinionCamp",
         "V_FisticuffsClub"
-      ]
-    },
-    {
-      "name": "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ",
-      "calls": 2,
-      "targetedCalls": 2,
-      "category": "engine-or-script-helper",
-      "scripts": 2,
-      "roles": [
-        "Main"
-      ],
-      "targetAddresses": [
-        "0x007E7490"
-      ],
-      "kinds": [
-        "personal",
-        "quest"
-      ],
-      "consumers": [
-        "PersonalScript_Aardvark",
-        "Q_HobbeToothContest"
-      ]
-    },
-    {
-      "name": "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z",
-      "calls": 2,
-      "targetedCalls": 2,
-      "category": "engine-or-script-helper",
-      "scripts": 2,
-      "roles": [
-        "Main"
-      ],
-      "targetAddresses": [
-        "0x007E7390"
-      ],
-      "kinds": [
-        "personal",
-        "quest"
-      ],
-      "consumers": [
-        "PersonalScript_Aardvark",
-        "Q_HobbeToothContest"
       ]
     },
     {
@@ -3020,25 +2978,6 @@
       ],
       "consumers": [
         "V_HauntedHouse"
-      ]
-    },
-    {
-      "name": "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z",
-      "calls": 1,
-      "targetedCalls": 1,
-      "category": "engine-or-script-helper",
-      "scripts": 1,
-      "roles": [
-        "Main"
-      ],
-      "targetAddresses": [
-        "0x007E7380"
-      ],
-      "kinds": [
-        "global"
-      ],
-      "consumers": [
-        "Global_DebugCycleThroughSpeech"
       ]
     },
     {
@@ -47979,6 +47918,288 @@
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Wait.json"
     },
     {
+      "name": "PersonalScript_Aardvark",
+      "kind": "personal",
+      "allocatorAddress": "0x00EFC8D0",
+      "vtableAddress": "0x012F6CA8",
+      "anchored": false,
+      "lifecycleFunctions": 5,
+      "calls": 31,
+      "distinctCalls": 15,
+      "mappedForgeApis": [
+        "IsPerformingScriptTask"
+      ],
+      "indirectCalls": 14,
+      "nativeDirectCalls": 39,
+      "entityBindings": [],
+      "entityBindingCount": 0,
+      "completeEntityBindings": 0,
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 1465,
+          "name": "GetThingWithScriptName",
+          "targetAddress": "0x008A7D60",
+          "slotAddress": "0x0126102C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetThingWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x20",
+          "vtableOffset": "0x20",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2193,
+          "name": "StartScriptingEntity",
+          "targetAddress": "0x0089B5B0",
+          "slotAddress": "0x01260F2C",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "StartScriptingEntity",
+          "forgeRuntimeMatch": false,
+          "forgeHostManaged": true,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2274,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x20",
+          "vtableOffset": "0x20",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 3122,
+          "name": "StartScriptingEntity",
+          "targetAddress": "0x0089B5B0",
+          "slotAddress": "0x01260F2C",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "StartScriptingEntity",
+          "forgeRuntimeMatch": false,
+          "forgeHostManaged": true,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5c8",
+          "vtableOffset": "0x5c8",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 3851,
+          "name": "StartMovieSequence",
+          "targetAddress": "0x0089B110",
+          "slotAddress": "0x012614D4",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "StartMovieSequence",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5e0",
+          "vtableOffset": "0x5e0",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 4318,
+          "name": "Pause",
+          "targetAddress": "0x0088E4F0",
+          "slotAddress": "0x012614EC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "Pause",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x420",
+          "vtableOffset": "0x420",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 4671,
+          "name": "GetHealth",
+          "targetAddress": "0x00890400",
+          "slotAddress": "0x0126132C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHealth",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 5030,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 5615,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5e0",
+          "vtableOffset": "0x5e0",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 6877,
+          "name": "Pause",
+          "targetAddress": "0x0088E4F0",
+          "slotAddress": "0x012614EC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "Pause",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
+      "resolvedInterfaceMethods": [
+        "GetHealth",
+        "GetHero",
+        "GetThingWithScriptName",
+        "NewScriptFrame",
+        "Pause",
+        "StartMovieSequence",
+        "StartScriptingEntity"
+      ],
+      "indirectVtableOffsets": [
+        "0x118",
+        "0x120",
+        "0x1c",
+        "0x20",
+        "0x420",
+        "0x5c8",
+        "0x5e0",
+        "0x5ec"
+      ],
+      "opaqueCallees": [],
+      "unresolvedNativeHelpers": [
+        "C3DClothPrimitive::~C3DClothPrimitive",
+        "CBaseIntelligentPointer::CBaseIntelligentPointer",
+        "CMemoryDataOutputStream::Clear",
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo",
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+        "NHeroInformationScreens::CBase::CBase",
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles"
+      ],
+      "stage": "map-native-helpers",
+      "resolvedNativeHelpers": [
+        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ",
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z"
+      ],
+      "resolvedNativeHelperCallCounts": {
+        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": 1,
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": 1
+      },
+      "resolvedNativeHelperTargetAddresses": {
+        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": [
+          "0x007E7490"
+        ],
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": [
+          "0x007E7390"
+        ]
+      },
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 3,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
+        "CMemoryDataOutputStream::Clear": 1,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 3,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 3,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
+      "unresolvedNativeHelperTargetAddresses": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "0x004AA840"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "0x0099A380"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "0x00CD2770"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "0x0099A430"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "0x006E7B80",
+          "0x007E74D0"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "0x0099A2E0"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "0x00CBD510"
+        ]
+      },
+      "unresolvedNativeHelperTargetedCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 3,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
+        "CMemoryDataOutputStream::Clear": 1,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 3,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 3,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\PersonalScript_Aardvark.json"
+    },
+    {
       "name": "Q_HeroSoulsArena",
       "kind": "quest",
       "allocatorAddress": "0x00D80BA0",
@@ -50082,293 +50303,6 @@
         "malloc": 1
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\CS_PlayCutscene.json"
-    },
-    {
-      "name": "PersonalScript_Aardvark",
-      "kind": "personal",
-      "allocatorAddress": "0x00EFC8D0",
-      "vtableAddress": "0x012F6CA8",
-      "anchored": false,
-      "lifecycleFunctions": 5,
-      "calls": 31,
-      "distinctCalls": 15,
-      "mappedForgeApis": [
-        "IsPerformingScriptTask"
-      ],
-      "indirectCalls": 14,
-      "nativeDirectCalls": 39,
-      "entityBindings": [],
-      "entityBindingCount": 0,
-      "completeEntityBindings": 0,
-      "resolvedInterfaceCalls": [
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x120",
-          "vtableOffset": "0x120",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 1465,
-          "name": "GetThingWithScriptName",
-          "targetAddress": "0x008A7D60",
-          "slotAddress": "0x0126102C",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "GetThingWithScriptName",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        },
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x20",
-          "vtableOffset": "0x20",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 2193,
-          "name": "StartScriptingEntity",
-          "targetAddress": "0x0089B5B0",
-          "slotAddress": "0x01260F2C",
-          "forgeManifestMatch": false,
-          "forgeRuntimeName": "StartScriptingEntity",
-          "forgeRuntimeMatch": false,
-          "forgeHostManaged": true,
-          "forgeRuntimeAbiBlocker": null
-        },
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
-          "vtableOffset": "0x1c",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 2274,
-          "name": "NewScriptFrame",
-          "targetAddress": "0x006E7410",
-          "slotAddress": "0x01260F28",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "NewScriptFrame",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        },
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x20",
-          "vtableOffset": "0x20",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 3122,
-          "name": "StartScriptingEntity",
-          "targetAddress": "0x0089B5B0",
-          "slotAddress": "0x01260F2C",
-          "forgeManifestMatch": false,
-          "forgeRuntimeName": "StartScriptingEntity",
-          "forgeRuntimeMatch": false,
-          "forgeHostManaged": true,
-          "forgeRuntimeAbiBlocker": null
-        },
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x5c8",
-          "vtableOffset": "0x5c8",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 3851,
-          "name": "StartMovieSequence",
-          "targetAddress": "0x0089B110",
-          "slotAddress": "0x012614D4",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "StartMovieSequence",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        },
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x5e0",
-          "vtableOffset": "0x5e0",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 4318,
-          "name": "Pause",
-          "targetAddress": "0x0088E4F0",
-          "slotAddress": "0x012614EC",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "Pause",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        },
-        {
-          "operation": "indirect-call",
-          "targetExpression": "iVar2 + 0x420",
-          "vtableOffset": "0x420",
-          "interfaceProvenance": "local-copy-of-script-interface-vtable",
-          "offset": 4671,
-          "name": "GetHealth",
-          "targetAddress": "0x00890400",
-          "slotAddress": "0x0126132C",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "GetHealth",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        },
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x118",
-          "vtableOffset": "0x118",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 5030,
-          "name": "GetHero",
-          "targetAddress": "0x00891CA0",
-          "slotAddress": "0x01261024",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "GetHero",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        },
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
-          "vtableOffset": "0x1c",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 5615,
-          "name": "NewScriptFrame",
-          "targetAddress": "0x006E7410",
-          "slotAddress": "0x01260F28",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "NewScriptFrame",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        },
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x5e0",
-          "vtableOffset": "0x5e0",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 6877,
-          "name": "Pause",
-          "targetAddress": "0x0088E4F0",
-          "slotAddress": "0x012614EC",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "Pause",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        }
-      ],
-      "resolvedInterfaceMethods": [
-        "GetHealth",
-        "GetHero",
-        "GetThingWithScriptName",
-        "NewScriptFrame",
-        "Pause",
-        "StartMovieSequence",
-        "StartScriptingEntity"
-      ],
-      "indirectVtableOffsets": [
-        "0x118",
-        "0x120",
-        "0x1c",
-        "0x20",
-        "0x420",
-        "0x5c8",
-        "0x5e0",
-        "0x5ec"
-      ],
-      "opaqueCallees": [],
-      "unresolvedNativeHelpers": [
-        "C3DClothPrimitive::~C3DClothPrimitive",
-        "CBaseIntelligentPointer::CBaseIntelligentPointer",
-        "CMemoryDataOutputStream::Clear",
-        "CPhysicsMeshInfo::~CPhysicsMeshInfo",
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
-        "NHeroInformationScreens::CBase::CBase",
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles",
-        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ",
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z"
-      ],
-      "stage": "map-native-helpers",
-      "resolvedNativeHelpers": [],
-      "resolvedNativeHelperCallCounts": {},
-      "resolvedNativeHelperTargetAddresses": {},
-      "unresolvedNativeHelperCallCounts": {
-        "C3DClothPrimitive::~C3DClothPrimitive": 3,
-        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
-        "CMemoryDataOutputStream::Clear": 1,
-        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 3,
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 3,
-        "NHeroInformationScreens::CBase::CBase": 1,
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
-        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": 1,
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": 1
-      },
-      "unresolvedNativeHelperRoles": {
-        "C3DClothPrimitive::~C3DClothPrimitive": [
-          "Main"
-        ],
-        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
-          "Main"
-        ],
-        "CMemoryDataOutputStream::Clear": [
-          "Main"
-        ],
-        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
-          "Main"
-        ],
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
-          "Main"
-        ],
-        "NHeroInformationScreens::CBase::CBase": [
-          "Main"
-        ],
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
-          "destructor"
-        ],
-        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": [
-          "Main"
-        ],
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": [
-          "Main"
-        ]
-      },
-      "unresolvedNativeHelperTargetAddresses": {
-        "C3DClothPrimitive::~C3DClothPrimitive": [
-          "0x004AA840"
-        ],
-        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
-          "0x0099A380"
-        ],
-        "CMemoryDataOutputStream::Clear": [
-          "0x00CD2770"
-        ],
-        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
-          "0x0099A430"
-        ],
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
-          "0x006E7B80",
-          "0x007E74D0"
-        ],
-        "NHeroInformationScreens::CBase::CBase": [
-          "0x0099A2E0"
-        ],
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
-          "0x00CBD510"
-        ],
-        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": [
-          "0x007E7490"
-        ],
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": [
-          "0x007E7390"
-        ]
-      },
-      "unresolvedNativeHelperTargetedCallCounts": {
-        "C3DClothPrimitive::~C3DClothPrimitive": 3,
-        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
-        "CMemoryDataOutputStream::Clear": 1,
-        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 3,
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 3,
-        "NHeroInformationScreens::CBase::CBase": 1,
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
-        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": 1,
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": 1
-      },
-      "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\PersonalScript_Aardvark.json"
     },
     {
       "name": "Q_OpeningGraveyardSecretPassage",
@@ -55196,6 +55130,169 @@
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingWoodsWill.json"
     },
     {
+      "name": "Global_DebugCycleThroughSpeech",
+      "kind": "global",
+      "allocatorAddress": "0x00EE9450",
+      "vtableAddress": "0x012F54B4",
+      "anchored": false,
+      "lifecycleFunctions": 5,
+      "calls": 29,
+      "distinctCalls": 19,
+      "mappedForgeApis": [
+        "IsPerformingScriptTask"
+      ],
+      "indirectCalls": 11,
+      "nativeDirectCalls": 34,
+      "entityBindings": [],
+      "entityBindingCount": 0,
+      "completeEntityBindings": 0,
+      "resolvedInterfaceCalls": [],
+      "resolvedInterfaceMethods": [],
+      "indirectVtableOffsets": [
+        "0x118",
+        "0x12c",
+        "0x1c",
+        "0x1c4",
+        "0x20",
+        "0x464",
+        "0x5cc",
+        "0x950",
+        "0xa3c"
+      ],
+      "opaqueCallees": [],
+      "unresolvedNativeHelpers": [
+        "C3DClothPrimitive::~C3DClothPrimitive",
+        "CBaseIntelligentPointer::CBaseIntelligentPointer",
+        "CFileInstaller::CActiveFile::OnReadFinished",
+        "CMemoryAllocatorVariableSize::GetNoAllocatedAreas",
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+        "CTCCarryable::OnKill",
+        "GFIntToCharString_API",
+        "LTextTreeWalkThrough_Cleanup",
+        "LTextTreeWalkThrough_dtor",
+        "List_Node_Initialize",
+        "NHeroInformationScreens::CBase::CBase",
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles"
+      ],
+      "stage": "map-native-helpers",
+      "resolvedNativeHelpers": [
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z"
+      ],
+      "resolvedNativeHelperCallCounts": {
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z": 1
+      },
+      "resolvedNativeHelperTargetAddresses": {
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z": [
+          "0x007E7380"
+        ]
+      },
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 2,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 1,
+        "CFileInstaller::CActiveFile::OnReadFinished": 1,
+        "CMemoryAllocatorVariableSize::GetNoAllocatedAreas": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
+        "CTCCarryable::OnKill": 1,
+        "GFIntToCharString_API": 1,
+        "LTextTreeWalkThrough_Cleanup": 1,
+        "LTextTreeWalkThrough_dtor": 1,
+        "List_Node_Initialize": 1,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CFileInstaller::CActiveFile::OnReadFinished": [
+          "Main"
+        ],
+        "CMemoryAllocatorVariableSize::GetNoAllocatedAreas": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CTCCarryable::OnKill": [
+          "Main"
+        ],
+        "GFIntToCharString_API": [
+          "Main"
+        ],
+        "LTextTreeWalkThrough_Cleanup": [
+          "Main"
+        ],
+        "LTextTreeWalkThrough_dtor": [
+          "Main"
+        ],
+        "List_Node_Initialize": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
+      "unresolvedNativeHelperTargetAddresses": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "0x004AA840"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "0x0099A380"
+        ],
+        "CFileInstaller::CActiveFile::OnReadFinished": [
+          "0x004CFFB0"
+        ],
+        "CMemoryAllocatorVariableSize::GetNoAllocatedAreas": [
+          "0x004292C0"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "0x007E74D0"
+        ],
+        "CTCCarryable::OnKill": [
+          "0x004CFF70"
+        ],
+        "GFIntToCharString_API": [
+          "0x0099F830"
+        ],
+        "LTextTreeWalkThrough_Cleanup": [
+          "0x004D0E20"
+        ],
+        "LTextTreeWalkThrough_dtor": [
+          "0x004D0740"
+        ],
+        "List_Node_Initialize": [
+          "0x00A394D0"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "0x0099A2E0"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "0x00CBD510"
+        ]
+      },
+      "unresolvedNativeHelperTargetedCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 2,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 1,
+        "CFileInstaller::CActiveFile::OnReadFinished": 1,
+        "CMemoryAllocatorVariableSize::GetNoAllocatedAreas": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
+        "CTCCarryable::OnKill": 1,
+        "GFIntToCharString_API": 1,
+        "LTextTreeWalkThrough_Cleanup": 1,
+        "LTextTreeWalkThrough_dtor": 1,
+        "List_Node_Initialize": 1,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_DebugCycleThroughSpeech.json"
+    },
+    {
       "name": "Q_FireHeart",
       "kind": "quest",
       "allocatorAddress": "0x00D3AFC0",
@@ -56456,69 +56553,304 @@
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_FireHeart.json"
     },
     {
-      "name": "Global_DebugCycleThroughSpeech",
-      "kind": "global",
-      "allocatorAddress": "0x00EE9450",
-      "vtableAddress": "0x012F54B4",
+      "name": "Q_HobbeToothContest",
+      "kind": "quest",
+      "allocatorAddress": "0x00D9E190",
+      "vtableAddress": "0x012D65CC",
       "anchored": false,
       "lifecycleFunctions": 5,
-      "calls": 29,
-      "distinctCalls": 19,
+      "calls": 162,
+      "distinctCalls": 25,
       "mappedForgeApis": [
+        "IsDistanceBetweenThingsUnder",
         "IsPerformingScriptTask"
       ],
-      "indirectCalls": 11,
-      "nativeDirectCalls": 34,
-      "entityBindings": [],
-      "entityBindingCount": 0,
-      "completeEntityBindings": 0,
-      "resolvedInterfaceCalls": [],
-      "resolvedInterfaceMethods": [],
+      "indirectCalls": 72,
+      "nativeDirectCalls": 247,
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "Q_HobbeToothHobbe",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d679c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 8676,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "Q_HobbeToothWhisper",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d679c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 9791,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "OrchardFarmFarmer",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d679c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 10916,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "DrinkingHobbe",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d679c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 12037,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "DrinkersReactMarker",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d679c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 13167,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "SpawnNewHobbe",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d679c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 14294,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "HobbeBarrel",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012d679c",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 0,
+          "offset": 15419,
+          "complete": true,
+          "layoutComplete": true
+        }
+      ],
+      "entityBindingCount": 7,
+      "completeEntityBindings": 7,
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
+          "vtableOffset": "0x43c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 1382,
+          "name": "AddQuestRegion",
+          "targetAddress": "0x00891820",
+          "slotAddress": "0x01261348",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestRegion",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x4bc",
+          "vtableOffset": "0x4bc",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 3161,
+          "name": "AddBoast",
+          "targetAddress": "0x00893060",
+          "slotAddress": "0x012613C8",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddBoast",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x4bc",
+          "vtableOffset": "0x4bc",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 4253,
+          "name": "AddBoast",
+          "targetAddress": "0x00893060",
+          "slotAddress": "0x012613C8",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddBoast",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x4bc",
+          "vtableOffset": "0x4bc",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 5347,
+          "name": "AddBoast",
+          "targetAddress": "0x00893060",
+          "slotAddress": "0x012613C8",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddBoast",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x4bc",
+          "vtableOffset": "0x4bc",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 6450,
+          "name": "AddBoast",
+          "targetAddress": "0x00893060",
+          "slotAddress": "0x012613C8",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddBoast",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x164",
+          "vtableOffset": "0x164",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 7228,
+          "name": "SetTimer",
+          "targetAddress": "0x006E76E0",
+          "slotAddress": "0x01261070",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
+      "resolvedInterfaceMethods": [
+        "AddBoast",
+        "AddQuestRegion",
+        "SetTimer"
+      ],
       "indirectVtableOffsets": [
+        "0x100",
         "0x118",
+        "0x120",
         "0x12c",
+        "0x164",
+        "0x16c",
+        "0x18",
+        "0x1b0",
         "0x1c",
-        "0x1c4",
         "0x20",
-        "0x464",
+        "0x284",
+        "0x2c",
+        "0x420",
+        "0x43c",
+        "0x4a0",
+        "0x4bc",
+        "0x4d4",
+        "0x5c8",
         "0x5cc",
-        "0x950",
+        "0x5d4",
+        "0x5e0",
+        "0x5ec",
         "0xa3c"
       ],
       "opaqueCallees": [],
       "unresolvedNativeHelpers": [
         "C3DClothPrimitive::~C3DClothPrimitive",
         "CBaseIntelligentPointer::CBaseIntelligentPointer",
-        "CFileInstaller::CActiveFile::OnReadFinished",
-        "CMemoryAllocatorVariableSize::GetNoAllocatedAreas",
+        "CCarriedReadableDef::CCarriedReadableDef",
+        "CMemoryDataOutputStream::Clear",
         "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
-        "CTCCarryable::OnKill",
-        "GFIntToCharString_API",
-        "LTextTreeWalkThrough_Cleanup",
-        "LTextTreeWalkThrough_dtor",
-        "List_Node_Initialize",
-        "NHeroInformationScreens::CBase::CBase",
+        "CTimer::~CTimer",
         "NParticleEngine::CParticleEmitter::DeleteAllParticles",
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z"
+        "NScript::CQ_HobbeToothContestScript::DisplayTimer",
+        "RunCutsceneMacro_Func",
+        "StdMap_Construct_API",
+        "StdMap_Destroy_API",
+        "__ftol2"
       ],
       "stage": "map-native-helpers",
-      "resolvedNativeHelpers": [],
-      "resolvedNativeHelperCallCounts": {},
-      "resolvedNativeHelperTargetAddresses": {},
+      "resolvedNativeHelpers": [
+        "C3DMeshInfo::HasPhysicsMesh",
+        "CTCVillage::OnInitialActivate",
+        "KillAllThingsInVector",
+        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ",
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z"
+      ],
+      "resolvedNativeHelperCallCounts": {
+        "C3DMeshInfo::HasPhysicsMesh": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "KillAllThingsInVector": 1,
+        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": 1,
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": 1
+      },
+      "resolvedNativeHelperTargetAddresses": {
+        "C3DMeshInfo::HasPhysicsMesh": [
+          "0x00CD23B9"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "0x00CB8930"
+        ],
+        "KillAllThingsInVector": [
+          "0x00CBED82"
+        ],
+        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": [
+          "0x007E7490"
+        ],
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": [
+          "0x007E7390"
+        ]
+      },
       "unresolvedNativeHelperCallCounts": {
-        "C3DClothPrimitive::~C3DClothPrimitive": 2,
-        "CBaseIntelligentPointer::CBaseIntelligentPointer": 1,
-        "CFileInstaller::CActiveFile::OnReadFinished": 1,
-        "CMemoryAllocatorVariableSize::GetNoAllocatedAreas": 1,
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
-        "CTCCarryable::OnKill": 1,
-        "GFIntToCharString_API": 1,
-        "LTextTreeWalkThrough_Cleanup": 1,
-        "LTextTreeWalkThrough_dtor": 1,
-        "List_Node_Initialize": 1,
-        "NHeroInformationScreens::CBase::CBase": 1,
+        "C3DClothPrimitive::~C3DClothPrimitive": 5,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
+        "CCarriedReadableDef::CCarriedReadableDef": 5,
+        "CMemoryDataOutputStream::Clear": 14,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 9,
+        "CTimer::~CTimer": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z": 1
+        "NScript::CQ_HobbeToothContestScript::DisplayTimer": 1,
+        "RunCutsceneMacro_Func": 4,
+        "StdMap_Construct_API": 4,
+        "StdMap_Destroy_API": 2,
+        "__ftol2": 1
       },
       "unresolvedNativeHelperRoles": {
         "C3DClothPrimitive::~C3DClothPrimitive": [
@@ -56527,37 +56859,34 @@
         "CBaseIntelligentPointer::CBaseIntelligentPointer": [
           "Main"
         ],
-        "CFileInstaller::CActiveFile::OnReadFinished": [
+        "CCarriedReadableDef::CCarriedReadableDef": [
           "Main"
         ],
-        "CMemoryAllocatorVariableSize::GetNoAllocatedAreas": [
+        "CMemoryDataOutputStream::Clear": [
           "Main"
         ],
         "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
           "Main"
         ],
-        "CTCCarryable::OnKill": [
-          "Main"
-        ],
-        "GFIntToCharString_API": [
-          "Main"
-        ],
-        "LTextTreeWalkThrough_Cleanup": [
-          "Main"
-        ],
-        "LTextTreeWalkThrough_dtor": [
-          "Main"
-        ],
-        "List_Node_Initialize": [
-          "Main"
-        ],
-        "NHeroInformationScreens::CBase::CBase": [
-          "Main"
+        "CTimer::~CTimer": [
+          "destructor"
         ],
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
           "destructor"
         ],
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z": [
+        "NScript::CQ_HobbeToothContestScript::DisplayTimer": [
+          "Main"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ],
+        "__ftol2": [
           "Main"
         ]
       },
@@ -56568,56 +56897,54 @@
         "CBaseIntelligentPointer::CBaseIntelligentPointer": [
           "0x0099A380"
         ],
-        "CFileInstaller::CActiveFile::OnReadFinished": [
-          "0x004CFFB0"
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "0x006E7B60",
+          "0x007E72A0"
         ],
-        "CMemoryAllocatorVariableSize::GetNoAllocatedAreas": [
-          "0x004292C0"
+        "CMemoryDataOutputStream::Clear": [
+          "0x00CD2770"
         ],
         "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "0x006E7B80",
           "0x007E74D0"
         ],
-        "CTCCarryable::OnKill": [
-          "0x004CFF70"
-        ],
-        "GFIntToCharString_API": [
-          "0x0099F830"
-        ],
-        "LTextTreeWalkThrough_Cleanup": [
-          "0x004D0E20"
-        ],
-        "LTextTreeWalkThrough_dtor": [
-          "0x004D0740"
-        ],
-        "List_Node_Initialize": [
-          "0x00A394D0"
-        ],
-        "NHeroInformationScreens::CBase::CBase": [
-          "0x0099A2E0"
+        "CTimer::~CTimer": [
+          "0x00CD4470"
         ],
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
           "0x00CBD510"
         ],
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z": [
-          "0x007E7380"
+        "NScript::CQ_HobbeToothContestScript::DisplayTimer": [
+          "0x00D9B420"
+        ],
+        "RunCutsceneMacro_Func": [
+          "0x00CBFB7D"
+        ],
+        "StdMap_Construct_API": [
+          "0x00CDBF70"
+        ],
+        "StdMap_Destroy_API": [
+          "0x00CDBFB0"
+        ],
+        "__ftol2": [
+          "0x00BFEA70"
         ]
       },
       "unresolvedNativeHelperTargetedCallCounts": {
-        "C3DClothPrimitive::~C3DClothPrimitive": 2,
-        "CBaseIntelligentPointer::CBaseIntelligentPointer": 1,
-        "CFileInstaller::CActiveFile::OnReadFinished": 1,
-        "CMemoryAllocatorVariableSize::GetNoAllocatedAreas": 1,
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
-        "CTCCarryable::OnKill": 1,
-        "GFIntToCharString_API": 1,
-        "LTextTreeWalkThrough_Cleanup": 1,
-        "LTextTreeWalkThrough_dtor": 1,
-        "List_Node_Initialize": 1,
-        "NHeroInformationScreens::CBase::CBase": 1,
+        "C3DClothPrimitive::~C3DClothPrimitive": 5,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
+        "CCarriedReadableDef::CCarriedReadableDef": 5,
+        "CMemoryDataOutputStream::Clear": 14,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 9,
+        "CTimer::~CTimer": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z": 1
+        "NScript::CQ_HobbeToothContestScript::DisplayTimer": 1,
+        "RunCutsceneMacro_Func": 4,
+        "StdMap_Construct_API": 4,
+        "StdMap_Destroy_API": 2,
+        "__ftol2": 1
       },
-      "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_DebugCycleThroughSpeech.json"
+      "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HobbeToothContest.json"
     },
     {
       "name": "Q_GuildTrainingPreMelee",
@@ -57114,408 +57441,6 @@
         "std__vector__push_back": 25
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Gameflow.json"
-    },
-    {
-      "name": "Q_HobbeToothContest",
-      "kind": "quest",
-      "allocatorAddress": "0x00D9E190",
-      "vtableAddress": "0x012D65CC",
-      "anchored": false,
-      "lifecycleFunctions": 5,
-      "calls": 162,
-      "distinctCalls": 25,
-      "mappedForgeApis": [
-        "IsDistanceBetweenThingsUnder",
-        "IsPerformingScriptTask"
-      ],
-      "indirectCalls": 72,
-      "nativeDirectCalls": 247,
-      "entityBindings": [
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "Q_HobbeToothHobbe",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012d679c",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 1,
-          "offset": 8676,
-          "complete": true,
-          "layoutComplete": true
-        },
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "Q_HobbeToothWhisper",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012d679c",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 1,
-          "offset": 9791,
-          "complete": true,
-          "layoutComplete": true
-        },
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "OrchardFarmFarmer",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012d679c",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 1,
-          "offset": 10916,
-          "complete": true,
-          "layoutComplete": true
-        },
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "DrinkingHobbe",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012d679c",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 1,
-          "offset": 12037,
-          "complete": true,
-          "layoutComplete": true
-        },
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "DrinkersReactMarker",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012d679c",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 0,
-          "offset": 13167,
-          "complete": true,
-          "layoutComplete": true
-        },
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "SpawnNewHobbe",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012d679c",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 0,
-          "offset": 14294,
-          "complete": true,
-          "layoutComplete": true
-        },
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "HobbeBarrel",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012d679c",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 0,
-          "offset": 15419,
-          "complete": true,
-          "layoutComplete": true
-        }
-      ],
-      "entityBindingCount": 7,
-      "completeEntityBindings": 7,
-      "resolvedInterfaceCalls": [
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
-          "vtableOffset": "0x43c",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 1382,
-          "name": "AddQuestRegion",
-          "targetAddress": "0x00891820",
-          "slotAddress": "0x01261348",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "AddQuestRegion",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        },
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x4bc",
-          "vtableOffset": "0x4bc",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 3161,
-          "name": "AddBoast",
-          "targetAddress": "0x00893060",
-          "slotAddress": "0x012613C8",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "AddBoast",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        },
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x4bc",
-          "vtableOffset": "0x4bc",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 4253,
-          "name": "AddBoast",
-          "targetAddress": "0x00893060",
-          "slotAddress": "0x012613C8",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "AddBoast",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        },
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x4bc",
-          "vtableOffset": "0x4bc",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 5347,
-          "name": "AddBoast",
-          "targetAddress": "0x00893060",
-          "slotAddress": "0x012613C8",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "AddBoast",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        },
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x4bc",
-          "vtableOffset": "0x4bc",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 6450,
-          "name": "AddBoast",
-          "targetAddress": "0x00893060",
-          "slotAddress": "0x012613C8",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "AddBoast",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        },
-        {
-          "operation": "indirect-call",
-          "targetExpression": "*DAT_0143e8f8 + 0x164",
-          "vtableOffset": "0x164",
-          "interfaceProvenance": "direct-gamescriptinterface-singleton",
-          "offset": 7228,
-          "name": "SetTimer",
-          "targetAddress": "0x006E76E0",
-          "slotAddress": "0x01261070",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "SetTimer",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        }
-      ],
-      "resolvedInterfaceMethods": [
-        "AddBoast",
-        "AddQuestRegion",
-        "SetTimer"
-      ],
-      "indirectVtableOffsets": [
-        "0x100",
-        "0x118",
-        "0x120",
-        "0x12c",
-        "0x164",
-        "0x16c",
-        "0x18",
-        "0x1b0",
-        "0x1c",
-        "0x20",
-        "0x284",
-        "0x2c",
-        "0x420",
-        "0x43c",
-        "0x4a0",
-        "0x4bc",
-        "0x4d4",
-        "0x5c8",
-        "0x5cc",
-        "0x5d4",
-        "0x5e0",
-        "0x5ec",
-        "0xa3c"
-      ],
-      "opaqueCallees": [],
-      "unresolvedNativeHelpers": [
-        "C3DClothPrimitive::~C3DClothPrimitive",
-        "CBaseIntelligentPointer::CBaseIntelligentPointer",
-        "CCarriedReadableDef::CCarriedReadableDef",
-        "CMemoryDataOutputStream::Clear",
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
-        "CTimer::~CTimer",
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles",
-        "NScript::CQ_HobbeToothContestScript::DisplayTimer",
-        "RunCutsceneMacro_Func",
-        "StdMap_Construct_API",
-        "StdMap_Destroy_API",
-        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ",
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z",
-        "__ftol2"
-      ],
-      "stage": "map-native-helpers",
-      "resolvedNativeHelpers": [
-        "C3DMeshInfo::HasPhysicsMesh",
-        "CTCVillage::OnInitialActivate",
-        "KillAllThingsInVector"
-      ],
-      "resolvedNativeHelperCallCounts": {
-        "C3DMeshInfo::HasPhysicsMesh": 3,
-        "CTCVillage::OnInitialActivate": 1,
-        "KillAllThingsInVector": 1
-      },
-      "resolvedNativeHelperTargetAddresses": {
-        "C3DMeshInfo::HasPhysicsMesh": [
-          "0x00CD23B9"
-        ],
-        "CTCVillage::OnInitialActivate": [
-          "0x00CB8930"
-        ],
-        "KillAllThingsInVector": [
-          "0x00CBED82"
-        ]
-      },
-      "unresolvedNativeHelperCallCounts": {
-        "C3DClothPrimitive::~C3DClothPrimitive": 5,
-        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
-        "CCarriedReadableDef::CCarriedReadableDef": 5,
-        "CMemoryDataOutputStream::Clear": 14,
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 9,
-        "CTimer::~CTimer": 1,
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
-        "NScript::CQ_HobbeToothContestScript::DisplayTimer": 1,
-        "RunCutsceneMacro_Func": 4,
-        "StdMap_Construct_API": 4,
-        "StdMap_Destroy_API": 2,
-        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": 1,
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": 1,
-        "__ftol2": 1
-      },
-      "unresolvedNativeHelperRoles": {
-        "C3DClothPrimitive::~C3DClothPrimitive": [
-          "Main"
-        ],
-        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
-          "Main"
-        ],
-        "CCarriedReadableDef::CCarriedReadableDef": [
-          "Main"
-        ],
-        "CMemoryDataOutputStream::Clear": [
-          "Main"
-        ],
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
-          "Main"
-        ],
-        "CTimer::~CTimer": [
-          "destructor"
-        ],
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
-          "destructor"
-        ],
-        "NScript::CQ_HobbeToothContestScript::DisplayTimer": [
-          "Main"
-        ],
-        "RunCutsceneMacro_Func": [
-          "Main"
-        ],
-        "StdMap_Construct_API": [
-          "Main"
-        ],
-        "StdMap_Destroy_API": [
-          "Main"
-        ],
-        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": [
-          "Main"
-        ],
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": [
-          "Main"
-        ],
-        "__ftol2": [
-          "Main"
-        ]
-      },
-      "unresolvedNativeHelperTargetAddresses": {
-        "C3DClothPrimitive::~C3DClothPrimitive": [
-          "0x004AA840"
-        ],
-        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
-          "0x0099A380"
-        ],
-        "CCarriedReadableDef::CCarriedReadableDef": [
-          "0x006E7B60",
-          "0x007E72A0"
-        ],
-        "CMemoryDataOutputStream::Clear": [
-          "0x00CD2770"
-        ],
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
-          "0x006E7B80",
-          "0x007E74D0"
-        ],
-        "CTimer::~CTimer": [
-          "0x00CD4470"
-        ],
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
-          "0x00CBD510"
-        ],
-        "NScript::CQ_HobbeToothContestScript::DisplayTimer": [
-          "0x00D9B420"
-        ],
-        "RunCutsceneMacro_Func": [
-          "0x00CBFB7D"
-        ],
-        "StdMap_Construct_API": [
-          "0x00CDBF70"
-        ],
-        "StdMap_Destroy_API": [
-          "0x00CDBFB0"
-        ],
-        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": [
-          "0x007E7490"
-        ],
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": [
-          "0x007E7390"
-        ],
-        "__ftol2": [
-          "0x00BFEA70"
-        ]
-      },
-      "unresolvedNativeHelperTargetedCallCounts": {
-        "C3DClothPrimitive::~C3DClothPrimitive": 5,
-        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
-        "CCarriedReadableDef::CCarriedReadableDef": 5,
-        "CMemoryDataOutputStream::Clear": 14,
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 9,
-        "CTimer::~CTimer": 1,
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
-        "NScript::CQ_HobbeToothContestScript::DisplayTimer": 1,
-        "RunCutsceneMacro_Func": 4,
-        "StdMap_Construct_API": 4,
-        "StdMap_Destroy_API": 2,
-        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": 1,
-        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": 1,
-        "__ftol2": 1
-      },
-      "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HobbeToothContest.json"
     },
     {
       "name": "Q_BountyHunt",
