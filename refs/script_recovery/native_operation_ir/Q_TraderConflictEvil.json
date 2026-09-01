@@ -1293,7 +1293,10 @@
         {
           "operation": "call",
           "callee": "std__vector__pop_back",
-          "offset": 65284
+          "offset": 65284,
+          "directCallSite": "0x00DF6BA9",
+          "targetAddress": "0x00CD3152",
+          "targetCurrentName": "std::vector::pop_back"
         },
         {
           "operation": "call",

@@ -3547,7 +3547,10 @@
         {
           "operation": "call",
           "callee": "LTextTreeWalkThrough__Dtor",
-          "offset": 173578
+          "offset": 173578,
+          "directCallSite": "0x00F13424",
+          "targetAddress": "0x009AC310",
+          "targetCurrentName": "LTextTreeWalkThrough::Dtor"
         },
         {
           "operation": "call",
@@ -3608,7 +3611,10 @@
         {
           "operation": "call",
           "callee": "LTextTreeWalkThrough__Dtor",
-          "offset": 176822
+          "offset": 176822,
+          "directCallSite": "0x00F13E49",
+          "targetAddress": "0x009AC310",
+          "targetCurrentName": "LTextTreeWalkThrough::Dtor"
         },
         {
           "operation": "call",
@@ -3653,7 +3659,10 @@
         {
           "operation": "call",
           "callee": "LTextTreeWalkThrough__Dtor",
-          "offset": 178818
+          "offset": 178818,
+          "directCallSite": "0x00F13EA0",
+          "targetAddress": "0x009AC310",
+          "targetCurrentName": "LTextTreeWalkThrough::Dtor"
         },
         {
           "operation": "call",

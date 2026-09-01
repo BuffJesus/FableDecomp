@@ -153,8 +153,11 @@ by address while retaining every current Ghidra name, consumer, lifecycle role, 
 Names remain hints—the target address is the stable identity when imported donor labels disagree.
 The extractor conservatively correlates matching decompiler call expressions back to these
 instruction records, including MSVCR qualification and Microsoft-decorated member spellings. This
-currently gives 1,437 of the 1,603 semantic helper call sites an exact target address and covers 117
-of the 158 distinct helper labels. Unmatched calls remain explicit instead of being paired by mere
+currently gives 1,519 of the 1,577 semantic helper call sites an exact target address and covers 121
+of the 153 distinct helper labels. Exact owner-separator aliases such as
+`CCharString__NotEqual` are correlated to their scoped retail symbols, while native string-storage
+operations remain infrastructure rather than being misreported as standalone script helpers.
+Unmatched calls remain explicit instead of being paired by mere
 position; the complete instruction-level target list is still retained alongside them.
 
 `build_native_helper_target_queue.py` collapses those correlated calls into a deterministic TSV
@@ -215,7 +218,7 @@ five recovered helpers and only `CCharString__NotEqual`, its destructor, and `ra
 helper backlog. `V_AssassinAttacks::InitialiseRegionSpecificInfo` adds a fifth fixed-control-flow
 shape: both branches of its five-element strided copy/clear loop and early termination at the first
 or third iteration execute offline. Totals are now fifteen helpers / 109 checks, resolving 186 calls
-across 124 scripts and leaving 143 helper labels / 1,417 calls.
+across 124 scripts and leaving 138 helper labels / 1,391 calls.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`

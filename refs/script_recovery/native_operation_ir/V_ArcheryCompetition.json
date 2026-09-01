@@ -387,7 +387,10 @@
         {
           "operation": "call",
           "callee": "CCharString__NotEqual",
-          "offset": 11807
+          "offset": 11807,
+          "directCallSite": "0x00E32845",
+          "targetAddress": "0x0099E960",
+          "targetCurrentName": "CCharString::NotEqual"
         },
         {
           "operation": "call",

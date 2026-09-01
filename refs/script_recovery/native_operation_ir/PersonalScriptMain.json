@@ -203,7 +203,10 @@
         {
           "operation": "call",
           "callee": "CCharString__ToUpper",
-          "offset": 6977
+          "offset": 6977,
+          "directCallSite": "0x00CDDED4",
+          "targetAddress": "0x0099EE20",
+          "targetCurrentName": "CCharString::ToUpper"
         },
         {
           "operation": "call",
@@ -216,7 +219,10 @@
         {
           "operation": "call",
           "callee": "CCharString__AppendData",
-          "offset": 7080
+          "offset": 7080,
+          "directCallSite": "0x00CDDDAC",
+          "targetAddress": "0x0099F570",
+          "targetCurrentName": "CCharString::AppendData"
         },
         {
           "operation": "call",
@@ -253,12 +259,18 @@
         {
           "operation": "call",
           "callee": "CCharString__AppendCString",
-          "offset": 9142
+          "offset": 9142,
+          "directCallSite": "0x00CDDDA1",
+          "targetAddress": "0x0099F600",
+          "targetCurrentName": "CCharString::AppendCString"
         },
         {
           "operation": "call",
           "callee": "CCharString__AppendData",
-          "offset": 9195
+          "offset": 9195,
+          "directCallSite": "0x00CDDEF0",
+          "targetAddress": "0x0099F570",
+          "targetCurrentName": "CCharString::AppendData"
         },
         {
           "operation": "call",
@@ -287,17 +299,26 @@
         {
           "operation": "call",
           "callee": "CCharString__AppendCString",
-          "offset": 12250
+          "offset": 12250,
+          "directCallSite": "0x00CDDFF6",
+          "targetAddress": "0x0099F600",
+          "targetCurrentName": "CCharString::AppendCString"
         },
         {
           "operation": "call",
           "callee": "CCharString__AppendData",
-          "offset": 12301
+          "offset": 12301,
+          "directCallSite": "0x00CDE001",
+          "targetAddress": "0x0099F570",
+          "targetCurrentName": "CCharString::AppendData"
         },
         {
           "operation": "call",
           "callee": "CCharString__AppendCString",
-          "offset": 12349
+          "offset": 12349,
+          "directCallSite": "0x00CDE078",
+          "targetAddress": "0x0099F600",
+          "targetCurrentName": "CCharString::AppendCString"
         },
         {
           "operation": "call",
@@ -318,17 +339,26 @@
         {
           "operation": "call",
           "callee": "CCharString__AppendCString",
-          "offset": 14347
+          "offset": 14347,
+          "directCallSite": "0x00CDE08E",
+          "targetAddress": "0x0099F600",
+          "targetCurrentName": "CCharString::AppendCString"
         },
         {
           "operation": "call",
           "callee": "CCharString__AppendData",
-          "offset": 14400
+          "offset": 14400,
+          "directCallSite": "0x00CDE083",
+          "targetAddress": "0x0099F570",
+          "targetCurrentName": "CCharString::AppendData"
         },
         {
           "operation": "call",
           "callee": "CCharString__AppendCString",
-          "offset": 14450
+          "offset": 14450,
+          "directCallSite": "0x00CDE102",
+          "targetAddress": "0x0099F600",
+          "targetCurrentName": "CCharString::AppendCString"
         },
         {
           "operation": "call",
@@ -437,12 +467,18 @@
         {
           "operation": "call",
           "callee": "CCharString__AppendCString",
-          "offset": 21889
+          "offset": 21889,
+          "directCallSite": "0x00CDE118",
+          "targetAddress": "0x0099F600",
+          "targetCurrentName": "CCharString::AppendCString"
         },
         {
           "operation": "call",
           "callee": "CCharString__AppendData",
-          "offset": 21936
+          "offset": 21936,
+          "directCallSite": "0x00CDE10D",
+          "targetAddress": "0x0099F570",
+          "targetCurrentName": "CCharString::AppendData"
         },
         {
           "operation": "call",

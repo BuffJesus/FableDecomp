@@ -117,6 +117,23 @@ class NativeOperationIRTests(unittest.TestCase):
         )
         self.assertEqual(rows[0]["targetAddress"], "0x20")
 
+    def test_flattened_owner_separator_is_correlated_exactly(self):
+        rows = correlate_direct_call_targets(
+            [{"callee": "CCharString__NotEqual", "offset": 11807}],
+            [{"site": "0x00E32845", "target": "0x0099E960",
+              "currentName": "CCharString::NotEqual"}],
+        )
+        self.assertEqual(rows[0]["directCallSite"], "0x00E32845")
+        self.assertEqual(rows[0]["targetAddress"], "0x0099E960")
+
+    def test_flattened_owner_separator_does_not_enable_fuzzy_matching(self):
+        rows = correlate_direct_call_targets(
+            [{"callee": "CCharString__NotEqualExtra", "offset": 1}],
+            [{"site": "0x10", "target": "0x20",
+              "currentName": "CCharString::NotEqual"}],
+        )
+        self.assertNotIn("targetAddress", rows[0])
+
     def test_all_seed_bindings_are_correlated(self):
         result = compare(Path("refs/script_recovery/seed_corpus/sources"),
                          Path("refs/script_recovery/native_operation_ir"))

@@ -341,7 +341,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 67528
+          "offset": 67528,
+          "directCallSite": "0x00CE7A3C",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -354,7 +357,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 68142
+          "offset": 68142,
+          "directCallSite": "0x00CE7A6C",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -367,7 +373,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 68759
+          "offset": 68759,
+          "directCallSite": "0x00CE7A9C",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -380,7 +389,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 69361
+          "offset": 69361,
+          "directCallSite": "0x00CE7ACC",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -449,7 +461,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 73178
+          "offset": 73178,
+          "directCallSite": "0x00CE7C11",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -462,7 +477,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 73787
+          "offset": 73787,
+          "directCallSite": "0x00CE7C41",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -475,7 +493,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 74393
+          "offset": 74393,
+          "directCallSite": "0x00CE7C71",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -488,7 +509,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 74994
+          "offset": 74994,
+          "directCallSite": "0x00CE7CA1",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -501,7 +525,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 75616
+          "offset": 75616,
+          "directCallSite": "0x00CE7CD1",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -514,7 +541,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 76124
+          "offset": 76124,
+          "directCallSite": "0x00CE7D01",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -527,7 +557,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 76724
+          "offset": 76724,
+          "directCallSite": "0x00CE7D31",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -540,7 +573,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 77338
+          "offset": 77338,
+          "directCallSite": "0x00CE7D61",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -553,7 +589,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 77941
+          "offset": 77941,
+          "directCallSite": "0x00CE7D91",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -566,7 +605,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 78542
+          "offset": 78542,
+          "directCallSite": "0x00CE7DC1",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -579,7 +621,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 79141
+          "offset": 79141,
+          "directCallSite": "0x00CE7DF1",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -592,7 +637,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 79745
+          "offset": 79745,
+          "directCallSite": "0x00CE7E21",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -605,7 +653,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 80363
+          "offset": 80363,
+          "directCallSite": "0x00CE7E51",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -618,7 +669,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 80873
+          "offset": 80873,
+          "directCallSite": "0x00CE7E81",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -631,7 +685,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 81475
+          "offset": 81475,
+          "directCallSite": "0x00CE7EB1",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -644,7 +701,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 82085
+          "offset": 82085,
+          "directCallSite": "0x00CE7EE1",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -657,7 +717,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 82699
+          "offset": 82699,
+          "directCallSite": "0x00CE7F11",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -670,7 +733,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 83313
+          "offset": 83313,
+          "directCallSite": "0x00CE7F41",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -683,7 +749,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 83916
+          "offset": 83916,
+          "directCallSite": "0x00CE7F71",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -696,7 +765,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 84522
+          "offset": 84522,
+          "directCallSite": "0x00CE7FA1",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",
@@ -709,7 +781,10 @@
         {
           "operation": "call",
           "callee": "std__vector__push_back",
-          "offset": 85126
+          "offset": 85126,
+          "directCallSite": "0x00CE7FD1",
+          "targetAddress": "0x0044BFF0",
+          "targetCurrentName": "std::vector::push_back"
         },
         {
           "operation": "call",

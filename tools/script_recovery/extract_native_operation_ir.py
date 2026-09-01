@@ -157,6 +157,11 @@ def callee_names_match(parsed: str, current: str | None) -> bool:
     current_name = normalized_callee_name(current)
     if parsed_name == current_name:
         return True
+    # Some recovered helper names flatten one C++ owner separator to a double
+    # underscore (for example CCharString__NotEqual). Accept only that exact,
+    # reversible spelling change; do not use fuzzy or positional matching.
+    if "__" in parsed_name and parsed_name.replace("__", "::") == current_name:
+        return True
     # Ghidra sometimes prints a decorated member with its owner both as a
     # namespace and inside the decorated payload, while the decompile call drops
     # that first owner. Only accept the exact post-scope payload as an alias.

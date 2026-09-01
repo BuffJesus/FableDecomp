@@ -1613,22 +1613,34 @@
         {
           "operation": "call",
           "callee": "CCharString__AssignFromWide",
-          "offset": 6970
+          "offset": 6970,
+          "directCallSite": "0x00DCC39D",
+          "targetAddress": "0x0099B800",
+          "targetCurrentName": "CCharString::AssignFromWide"
         },
         {
           "operation": "call",
           "callee": "CCharString__AssignFromWide",
-          "offset": 7004
+          "offset": 7004,
+          "directCallSite": "0x00DCC3AA",
+          "targetAddress": "0x0099B800",
+          "targetCurrentName": "CCharString::AssignFromWide"
         },
         {
           "operation": "call",
           "callee": "CCharString__AssignFromWide",
-          "offset": 7038
+          "offset": 7038,
+          "directCallSite": "0x00DCC3B7",
+          "targetAddress": "0x0099B800",
+          "targetCurrentName": "CCharString::AssignFromWide"
         },
         {
           "operation": "call",
           "callee": "CCharString__AssignFromWide",
-          "offset": 7072
+          "offset": 7072,
+          "directCallSite": "0x00DCC3C4",
+          "targetAddress": "0x0099B800",
+          "targetCurrentName": "CCharString::AssignFromWide"
         },
         {
           "operation": "call",

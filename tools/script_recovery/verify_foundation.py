@@ -134,12 +134,12 @@ def verify(root: Path) -> dict[str, Any]:
           readiness_summary["resolvedNativeHelperMethods"] == 15 and
           readiness_summary["resolvedNativeHelperCalls"] == 186 and
           readiness_summary["scriptsWithResolvedNativeHelpers"] == 124 and
-          readiness_summary["unresolvedNativeHelperMethods"] == 143 and
-          readiness_summary["unresolvedNativeHelperCalls"] == 1417 and
+          readiness_summary["unresolvedNativeHelperMethods"] == 138 and
+          readiness_summary["unresolvedNativeHelperCalls"] == 1391 and
           len(archery["resolvedNativeHelpers"]) == 5 and
           set(archery["unresolvedNativeHelpers"]) == {
-              "CCharString__NotEqual", "NScript::CV_ArcheryCompetitionScript::~CV_ArcheryCompetitionScript",
-              "rand"}, readiness_summary)
+              "NScript::CV_ArcheryCompetitionScript::~CV_ArcheryCompetitionScript", "rand"},
+          readiness_summary)
     deployment = load(root / "shadow_deployment_verification.json")
     check("reversible local shadow deployment is recorded intact",
           deployment["complete"] and deployment["failures"] == 0 and

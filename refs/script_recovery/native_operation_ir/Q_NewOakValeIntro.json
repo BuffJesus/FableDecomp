@@ -1711,7 +1711,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 8908
+          "offset": 8908,
+          "directCallSite": "0x00DAAEB8",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -1732,7 +1735,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 9843
+          "offset": 9843,
+          "directCallSite": "0x00DAAF02",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -1753,7 +1759,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 10781
+          "offset": 10781,
+          "directCallSite": "0x00DAAF4C",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -1774,7 +1783,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 11719
+          "offset": 11719,
+          "directCallSite": "0x00DAAF96",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -1795,7 +1807,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 12657
+          "offset": 12657,
+          "directCallSite": "0x00DAAFE0",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -1816,7 +1831,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 13595
+          "offset": 13595,
+          "directCallSite": "0x00DAB02A",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -1837,7 +1855,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 14531
+          "offset": 14531,
+          "directCallSite": "0x00DAB082",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -1858,7 +1879,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 15467
+          "offset": 15467,
+          "directCallSite": "0x00DAB0CC",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -1879,7 +1903,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 16403
+          "offset": 16403,
+          "directCallSite": "0x00DAB116",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -1900,7 +1927,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 17339
+          "offset": 17339,
+          "directCallSite": "0x00DAB160",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -1921,7 +1951,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 18275
+          "offset": 18275,
+          "directCallSite": "0x00DAB1AA",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -1942,7 +1975,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 19211
+          "offset": 19211,
+          "directCallSite": "0x00DAB1F4",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -1963,7 +1999,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 20150
+          "offset": 20150,
+          "directCallSite": "0x00DAB24C",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -1984,7 +2023,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 21089
+          "offset": 21089,
+          "directCallSite": "0x00DAB296",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2005,7 +2047,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 22028
+          "offset": 22028,
+          "directCallSite": "0x00DAB2E0",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2026,7 +2071,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 22967
+          "offset": 22967,
+          "directCallSite": "0x00DAB32A",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2047,7 +2095,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 23904
+          "offset": 23904,
+          "directCallSite": "0x00DAB382",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2068,7 +2119,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 24841
+          "offset": 24841,
+          "directCallSite": "0x00DAB3CC",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2089,7 +2143,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 25778
+          "offset": 25778,
+          "directCallSite": "0x00DAB416",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2110,7 +2167,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 26715
+          "offset": 26715,
+          "directCallSite": "0x00DAB460",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2131,7 +2191,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 27654
+          "offset": 27654,
+          "directCallSite": "0x00DAB4B8",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2152,7 +2215,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 28593
+          "offset": 28593,
+          "directCallSite": "0x00DAB502",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2173,7 +2239,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 29604
+          "offset": 29604,
+          "directCallSite": "0x00DAB547",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2186,7 +2255,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 30734
+          "offset": 30734,
+          "directCallSite": "0x00DAB58C",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2199,7 +2271,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 31864
+          "offset": 31864,
+          "directCallSite": "0x00DAB5D1",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2212,7 +2287,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 32994
+          "offset": 32994,
+          "directCallSite": "0x00DAB616",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2225,7 +2303,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 34122
+          "offset": 34122,
+          "directCallSite": "0x00DAB669",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2238,7 +2319,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 35250
+          "offset": 35250,
+          "directCallSite": "0x00DAB6AE",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2251,7 +2335,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 36378
+          "offset": 36378,
+          "directCallSite": "0x00DAB6F3",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2264,7 +2351,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 37506
+          "offset": 37506,
+          "directCallSite": "0x00DAB738",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2277,7 +2367,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 38634
+          "offset": 38634,
+          "directCallSite": "0x00DAB77D",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2290,7 +2383,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 39762
+          "offset": 39762,
+          "directCallSite": "0x00DAB7C2",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2303,7 +2399,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 40890
+          "offset": 40890,
+          "directCallSite": "0x00DAB815",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2316,7 +2415,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 42018
+          "offset": 42018,
+          "directCallSite": "0x00DAB85A",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2329,7 +2431,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 43146
+          "offset": 43146,
+          "directCallSite": "0x00DAB89F",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2342,7 +2447,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 44274
+          "offset": 44274,
+          "directCallSite": "0x00DAB8E4",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2355,7 +2463,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 45402
+          "offset": 45402,
+          "directCallSite": "0x00DAB929",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2368,7 +2479,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 46527
+          "offset": 46527,
+          "directCallSite": "0x00DAB97C",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2381,7 +2495,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 47652
+          "offset": 47652,
+          "directCallSite": "0x00DAB9C1",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2394,7 +2511,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 48777
+          "offset": 48777,
+          "directCallSite": "0x00DABA06",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2407,7 +2527,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 49906
+          "offset": 49906,
+          "directCallSite": "0x00DABA4B",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         },
         {
           "operation": "call",
@@ -2420,7 +2543,10 @@
         {
           "operation": "call",
           "callee": "std__vector__Reallocate",
-          "offset": 51746
+          "offset": 51746,
+          "directCallSite": "0x00DABAA4",
+          "targetAddress": "0x00433530",
+          "targetCurrentName": "std::vector::Reallocate"
         }
       ],
       "indirectCalls": [

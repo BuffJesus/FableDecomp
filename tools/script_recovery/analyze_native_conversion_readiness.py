@@ -57,6 +57,18 @@ def native_helper_category(name: str, roles: set[str] | None = None) -> str:
     return "engine-or-script-helper"
 
 
+def is_infrastructure_call(name: str) -> bool:
+    """Recognize native-only mechanics whose operation remains explicit in IR."""
+    if INFRASTRUCTURE_RE.match(name):
+        return True
+    # The decompiler flattens the CCharString owner separator at a subset of
+    # call sites. These are the same constructors/comparisons/mutations already
+    # treated as native string mechanics under the scoped spelling above; a Lua
+    # reconstruction translates the retained call operation instead of lifting
+    # the retail storage helper as a standalone script helper.
+    return name.startswith("CCharString__")
+
+
 def api_matcher(api_names: list[str]) -> re.Pattern[str]:
     alternatives = "|".join(re.escape(name) for name in sorted(api_names, key=len, reverse=True))
     return re.compile(rf"(?:^|::|_)({alternatives})(?=$|_)")
@@ -154,7 +166,7 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
         opaque = sorted({callee for callee in calls if OPAQUE_RE.match(callee)})
         matches = {callee: match_api.search(callee) for callee in set(calls)}
         mapped = sorted({match.group(1) for match in matches.values() if match})
-        infrastructure = {callee for callee in calls if INFRASTRUCTURE_RE.match(callee)}
+        infrastructure = {callee for callee in calls if is_infrastructure_call(callee)}
         helper_candidates = set(calls) - set(opaque) - infrastructure - {
             callee for callee, match in matches.items() if match}
         resolved_native = []

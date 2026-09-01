@@ -1267,11 +1267,11 @@
         ],
         "nativeDirectCallTargets": 233,
         "nativeDirectCalls": 15300,
-        "nativeHelperCallsWithTargetAddress": 1251,
+        "nativeHelperCallsWithTargetAddress": 1333,
         "nativeHelperCategories": {
           "engine-or-script-helper": {
-            "calls": 283,
-            "methods": 70
+            "calls": 257,
+            "methods": 65
           },
           "lifecycle-cleanup": {
             "calls": 164,
@@ -1290,7 +1290,7 @@
             "methods": 1
           }
         },
-        "nativeHelperMethodsWithTargetAddress": 102,
+        "nativeHelperMethodsWithTargetAddress": 106,
         "resolvedForgeInterfaceCalls": 1521,
         "resolvedForgeRuntimeCalls": 1707,
         "resolvedInterfaceCalls": 1708,
@@ -1304,8 +1304,8 @@
         "stages": {
           "map-native-helpers": 161
         },
-        "unresolvedNativeHelperCalls": 1417,
-        "unresolvedNativeHelperMethods": 143,
+        "unresolvedNativeHelperCalls": 1391,
+        "unresolvedNativeHelperMethods": 138,
         "verifiedScriptInterfaceFields": 161
       },
       "name": "generated helpers reduce the native conversion backlog",

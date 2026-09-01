@@ -357,7 +357,10 @@
         {
           "operation": "call",
           "callee": "CCharString__AssignFromWide",
-          "offset": 9776
+          "offset": 9776,
+          "directCallSite": "0x00D8A1A2",
+          "targetAddress": "0x0099B6B0",
+          "targetCurrentName": "CCharString::AssignFromWide"
         },
         {
           "operation": "call",

@@ -1469,7 +1469,10 @@
         {
           "operation": "call",
           "callee": "CCharString__AssignFromWide",
-          "offset": 63643
+          "offset": 63643,
+          "directCallSite": "0x00D14C3A",
+          "targetAddress": "0x0099B6B0",
+          "targetCurrentName": "CCharString::AssignFromWide"
         },
         {
           "operation": "call",

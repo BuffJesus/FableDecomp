@@ -22,7 +22,10 @@
         {
           "operation": "call",
           "callee": "LTextTreeWalkThrough__Dtor",
-          "offset": 320
+          "offset": 320,
+          "directCallSite": "0x00D84B2E",
+          "targetAddress": "0x009AC310",
+          "targetCurrentName": "LTextTreeWalkThrough::Dtor"
         },
         {
           "operation": "call",

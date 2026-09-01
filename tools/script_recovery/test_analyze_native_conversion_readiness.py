@@ -4,7 +4,8 @@ import unittest
 from pathlib import Path
 
 from tools.script_recovery.analyze_native_conversion_readiness import (
-    LUA_QUEST_BINDING_RE, analyze, api_match, native_helper_category,
+    LUA_QUEST_BINDING_RE, analyze, api_match, is_infrastructure_call,
+    native_helper_category,
 )
 
 
@@ -23,6 +24,11 @@ class NativeConversionReadinessTests(unittest.TestCase):
     def test_runtime_binding_extraction(self):
         text = 'questState_type["CloseDoor"] = &LuaQuestState::CloseDoor;'
         self.assertEqual(LUA_QUEST_BINDING_RE.findall(text), ["CloseDoor"])
+
+    def test_flattened_char_string_calls_remain_native_infrastructure(self):
+        self.assertTrue(is_infrastructure_call("CCharString::NotEqual"))
+        self.assertTrue(is_infrastructure_call("CCharString__NotEqual"))
+        self.assertFalse(is_infrastructure_call("CVillageScript__NotEqual"))
 
     def test_runtime_alias_and_host_managed_calls_are_not_reported_missing(self):
         with tempfile.TemporaryDirectory() as temp:
