@@ -124,6 +124,24 @@ class NativeHelperLuaTests(unittest.TestCase):
             self.assertTrue(result["summary"]["complete"])
             self.assertEqual(result["summary"]["checks"], 2)
 
+    def test_generated_opaque_token_initializer_returns_host_token(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            helper_ir = root / "ir.json"
+            helper_ir.write_text(json.dumps({"helpers": [{
+                "targetAddress": "0x0099A2D0", "currentName": "BadDonor::BadDonor",
+                "decompileSha256": "2" * 64, "luaEmissionReady": True,
+                "semanticPatterns": [{"kind": "opaque-vtable-token-initializer",
+                                      "complete": True, "fieldOffset": "0x0",
+                                      "fieldWidth": 4,
+                                      "retailVtableAddress": "0x01231710",
+                                      "donorNameTrusted": False}],
+            }]}))
+            generate(helper_ir, root / "generated")
+            result = validate(root / "generated" / "manifest.json")
+            self.assertTrue(result["summary"]["complete"])
+            self.assertEqual(result["summary"]["checks"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -296,6 +296,14 @@ def validate(manifest_path: Path) -> dict[str, Any]:
             checks = len(expected)
             if trace != expected:
                 errors.append(f"cleanup trace differs: expected {expected}, got {trace}")
+        elif pattern["kind"] == "opaque-vtable-token-initializer":
+            address = int(pattern["retailVtableAddress"], 0)
+            trace = []
+            actual = function(lambda value: trace.append(("initialize", value)) or "token")
+            expected = [("initialize", address)]
+            checks = 1
+            if trace != expected or actual != "token":
+                errors.append(f"token init differs: expected {expected}/token, got {trace}/{actual}")
         else:
             errors.append(f"unsupported semantic pattern {pattern['kind']}")
         rows.append({"targetAddress": entry["targetAddress"], "passed": not errors,

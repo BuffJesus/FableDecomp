@@ -233,7 +233,12 @@ evidenced empty 12-byte token branch through a constructor callback. Totals are 
 be ordered local cleanup: destroy the owned value at `this+8` through `0x007E70E0`, then zero the
 same 32-bit slot. Typed `destroy_owned` / `write_u32` callbacks preserve both events without treating
 temporary native storage as gameplay state. This adds 66 resolved sites, bringing totals to twenty-one
-helpers / 121 checks, 262 resolved calls across 130 scripts, and 132 helper labels / 1,315 calls left.
+helpers / 121 checks, 262 resolved calls across 130 scripts. Two high-frequency targets mislabeled
+`NHeroInformationScreens::CBase::CBase` (`0x0099A2D0/0x0099A2E0`) are also instruction-complete:
+each writes only retail vtable `0x01231710` at offset zero (the first additionally mirrors `this` in
+`EAX`). Both now initialize opaque host-owned tokens without trusting the donor class name or exposing
+storage. Totals reach twenty-three helpers / 123 checks, 381 resolved calls across 133 scripts, and
+131 helper labels / 1,196 calls left.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`

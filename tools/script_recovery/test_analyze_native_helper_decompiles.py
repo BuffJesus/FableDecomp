@@ -149,6 +149,15 @@ class NativeHelperDecompileTests(unittest.TestCase):
             "fieldOffset": "0x8", "fieldWidth": 4,
             "destroyTarget": "0x007E70E0", "destroyCallSite": "0x00CD2776"})
 
+    def test_untrusted_constructor_becomes_opaque_token_initializer(self):
+        body = "*(undefined ***)this = &PTR__vector_deleting_destructor__01231710;"
+        pattern = semantic_patterns(
+            body, [], [], "NHeroInformationScreens::CBase::CBase")[0]
+        self.assertEqual(pattern, {
+            "kind": "opaque-vtable-token-initializer", "complete": True,
+            "fieldOffset": "0x0", "fieldWidth": 4,
+            "retailVtableAddress": "0x01231710", "donorNameTrusted": False})
+
     def test_typed_native_reads_are_complete_semantic_patterns(self):
         field = semantic_patterns(
             "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])

@@ -1,9 +1,9 @@
 {
   "schema": "forgefse-native-helper-lua-validation/0.1",
   "summary": {
-    "helpers": 21,
-    "passed": 21,
-    "checks": 121,
+    "helpers": 23,
+    "passed": 23,
+    "checks": 123,
     "complete": true
   },
   "helpers": [
@@ -11,6 +11,12 @@
       "targetAddress": "0x00CB8930",
       "passed": true,
       "checks": 2,
+      "errors": []
+    },
+    {
+      "targetAddress": "0x0099A2E0",
+      "passed": true,
+      "checks": 1,
       "errors": []
     },
     {
@@ -23,6 +29,12 @@
       "targetAddress": "0x00CD23B9",
       "passed": true,
       "checks": 3,
+      "errors": []
+    },
+    {
+      "targetAddress": "0x0099A2D0",
+      "passed": true,
+      "checks": 1,
       "errors": []
     },
     {

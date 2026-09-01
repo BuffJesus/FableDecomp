@@ -1,9 +1,9 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "37E409C52951DEAF918C4D5B20ACCE6BA3691F64FC028A5506A0002BC41F13D0",
+  "sourceSha256": "1705D6F0F39D9CA222236AAA53B8F579CA6BF146EA0A51D0DBF1EBCB15DF9FFD",
   "summary": {
-    "emitted": 21,
+    "emitted": 23,
     "deploymentEligible": 0
   },
   "entries": [
@@ -20,6 +20,24 @@
         "argumentOffset": "0x24",
         "callTarget": "0x00CBDF70",
         "callSite": "0x00CB8946"
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x0099A2E0",
+      "currentName": "NHeroInformationScreens::CBase::CBase",
+      "sourceDecompileSha256": "4eea1a9b743d6e98caf3b294db9ad7bb2a04560b2bb78d6f2af6f7d8e6673bfb",
+      "luaFile": "0099A2E0.lua",
+      "luaSha256": "B130F7DB1172603290AC5E584E9737595505101D340230FC30F54B08BC7E9045",
+      "semanticPattern": {
+        "kind": "opaque-vtable-token-initializer",
+        "complete": true,
+        "fieldOffset": "0x0",
+        "fieldWidth": 4,
+        "retailVtableAddress": "0x01231710",
+        "donorNameTrusted": false
       },
       "parentInitializerEvidence": null,
       "deploymentEligible": false,
@@ -56,6 +74,24 @@
         "resultTransform": "not-zero",
         "complete": true,
         "luaFieldNameResolved": false
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x0099A2D0",
+      "currentName": "NHeroInformationScreens::CBase::CBase",
+      "sourceDecompileSha256": "4eea1a9b743d6e98caf3b294db9ad7bb2a04560b2bb78d6f2af6f7d8e6673bfb",
+      "luaFile": "0099A2D0.lua",
+      "luaSha256": "569107EC685C6059994DBC8FBAC9120842F9E9B3A5AC11311A7F733A479BBE90",
+      "semanticPattern": {
+        "kind": "opaque-vtable-token-initializer",
+        "complete": true,
+        "fieldOffset": "0x0",
+        "fieldWidth": 4,
+        "retailVtableAddress": "0x01231710",
+        "donorNameTrusted": false
       },
       "parentInitializerEvidence": null,
       "deploymentEligible": false,

@@ -239,6 +239,16 @@ def emit_destroy_and_zero(helper: dict[str, Any], pattern: dict[str, Any]) -> st
     ])
 
 
+def emit_vtable_token_initializer(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
+    return "\n".join([
+        f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+        "-- Imported donor class name is untrusted; initialize an opaque host-owned token.",
+        "return function(initialize_token)",
+        f"    return initialize_token({int(pattern['retailVtableAddress'], 0)})",
+        "end", "",
+    ])
+
+
 def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
     source_bytes = helper_ir_path.read_bytes()
     document = json.loads(source_bytes.decode("utf-8-sig"))
@@ -258,7 +268,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
                                           "optional-resource-virtual-call",
                                           "optional-resource-forward-virtual-call",
                                           "optional-resource-script-thing-return",
-                                          "destroy-and-zero-field"}
+                                          "destroy-and-zero-field",
+                                          "opaque-vtable-token-initializer"}
                     and row["complete"]]
         if len(patterns) != 1:
             raise ValueError(f"expected one complete switch for {helper['targetAddress']}")
@@ -287,6 +298,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
             text = emit_optional_script_thing_return(helper, pattern)
         elif pattern["kind"] == "destroy-and-zero-field":
             text = emit_destroy_and_zero(helper, pattern)
+        elif pattern["kind"] == "opaque-vtable-token-initializer":
+            text = emit_vtable_token_initializer(helper, pattern)
         else:
             text = emit_return(helper, pattern)
         filename = helper["targetAddress"].removeprefix("0x") + ".lua"

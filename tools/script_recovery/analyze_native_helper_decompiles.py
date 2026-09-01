@@ -273,6 +273,16 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
             "destroyTarget": "0x007E70E0",
             "destroyCallSite": direct[0]["site"],
         })
+    if (current_name == "NHeroInformationScreens::CBase::CBase"
+            and not direct and not indirect):
+        match = re.search(r"\*\(undefined \*\*\*\)this = &PTR_.*_([0-9a-fA-F]{8});", text)
+        if match:
+            patterns.append({
+                "kind": "opaque-vtable-token-initializer", "complete": True,
+                "fieldOffset": "0x0", "fieldWidth": 4,
+                "retailVtableAddress": f"0x{match.group(1).upper()}",
+                "donorNameTrusted": False,
+            })
     return patterns
 
 
@@ -404,6 +414,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
                 "optional-resource-forward-virtual-call",
                 "optional-resource-script-thing-return",
                 "destroy-and-zero-field",
+                "opaque-vtable-token-initializer",
             } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)

@@ -2,7 +2,6 @@ target_address	category	calls	scripts	roles	helper_names
 0x00CBD510	lifecycle-cleanup	125	125	destructor	NParticleEngine::CParticleEmitter::DeleteAllParticles
 0x004AA840	object-lifetime	280	64	Init,Main,destructor	C3DClothPrimitive::~C3DClothPrimitive
 0x007E74D0	object-lifetime	120	27	Init,Main,destructor	CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase
-0x0099A2E0	object-lifetime	101	25	Init,Main	NHeroInformationScreens::CBase::CBase
 0x0099A380	object-lifetime	42	22	Main	CBaseIntelligentPointer::CBaseIntelligentPointer
 0x00CD4470	object-lifetime	22	18	Main,destructor	CTimer::~CTimer
 0x006E7B80	object-lifetime	44	17	Main	CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase
@@ -13,7 +12,6 @@ target_address	category	calls	scripts	roles	helper_names
 0x0099A430	object-lifetime	20	13	Main	CPhysicsMeshInfo::~CPhysicsMeshInfo
 0x006E7B60	object-lifetime	23	12	Main	CCarriedReadableDef::CCarriedReadableDef
 0x004ABE90	object-lifetime	11	11	Main	CScriptThing::CScriptThing
-0x0099A2D0	object-lifetime	18	8	Init,Main	NHeroInformationScreens::CBase::CBase
 0x00CBE960	engine-or-script-helper	13	8	Main	CSubtitleRenderer::SetText
 0x00BFEA14	runtime-support	15	7	Main	free
 0x00BFEB16	runtime-support	15	7	Init,Main	rand
