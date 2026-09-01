@@ -167,6 +167,15 @@ is retained, but it remains a repair item rather than being represented as conve
 `analyze_native_helper_decompiles.py` reduces successful bodies into calls, literals, state writes,
 indirect dispatch, control-flow counts, and body hashes in `native_helper_operation_ir.json`.
 
+Semantic lifting is pattern-gated rather than name-gated. The helper analyzer currently recognizes
+three complete leaf patterns: two native-field initializers whose field names remain unresolved, and
+the constant-return switch `CQ_ArenaScript::GetFanfareMusic` at `0x00F14270`. Only the switch is safe
+to express independently of native object layout. `generate_native_helper_lua.py` emits that helper
+as standalone Lua, while its manifest keeps `deploymentEligible` false because the Arena parent
+script is not reconstructed. `validate_native_helper_lua.py` executes all nine native cases plus
+three default-path probes through Lupa's embedded Lua runtime; all 12 currently pass. Initializers remain typed
+offset IR and are not disguised as named Lua state.
+
 The reproducible headless export accepts the correlated TSV followed by explicit name/address pairs:
 
 ```text

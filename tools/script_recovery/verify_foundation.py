@@ -108,6 +108,18 @@ def verify(root: Path) -> dict[str, Any]:
           {row["targetAddress"] for row in helper_ir["helpers"]
            if row["status"] != "decompiled"} == {"0x00CBFB7D"},
           helper_summary)
+    helper_lua_manifest = load(root / "generated_helper_lua" / "manifest.json")
+    helper_lua_validation = load(root / "generated_helper_lua" / "validation.json")
+    helper_lua_entries = helper_lua_manifest["entries"]
+    check("evidence-complete native helpers execute as standalone Lua",
+          helper_lua_manifest["summary"] == {"emitted": 1, "deploymentEligible": 0} and
+          len(helper_lua_entries) == 1 and
+          helper_lua_entries[0]["targetAddress"] == "0x00F14270" and
+          not helper_lua_entries[0]["deploymentEligible"] and
+          helper_lua_validation["summary"] == {
+              "helpers": 1, "passed": 1, "cases": 12, "complete": True},
+          {"manifest": helper_lua_manifest["summary"],
+           "validation": helper_lua_validation["summary"]})
     comparison = load(root / "seed_native_comparison.json")
     bindings_missing = {row["package"]: row["luaBindingsMissingNativeLifecycle"]
                         for row in comparison["scripts"] if row["luaBindingsMissingNativeLifecycle"]}

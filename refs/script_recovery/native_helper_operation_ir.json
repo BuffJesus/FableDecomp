@@ -8,6 +8,8 @@
     "consumerCalls": 1437,
     "directDependencyCalls": 4967,
     "directDependencyTargets": 206,
+    "semanticPatterns": 3,
+    "luaEmissionReady": 1,
     "stages": {
       "inspect-helper-dependencies": 108,
       "inspect-leaf-helper": 19,
@@ -134,7 +136,9 @@
       "controlFlow": {
         "for": 1,
         "if": 4
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CB8930",
@@ -175,7 +179,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x004AA840",
@@ -231,7 +237,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x007E74D0",
@@ -298,7 +306,9 @@
       ],
       "controlFlow": {
         "if": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x0099A2E0",
@@ -323,7 +333,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x0099A380",
@@ -347,7 +359,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CD4470",
@@ -380,7 +394,9 @@
       ],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x006E7B80",
@@ -445,7 +461,9 @@
       ],
       "controlFlow": {
         "if": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CD2770",
@@ -475,7 +493,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CBFB7D",
@@ -17385,7 +17405,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CDBFB0",
@@ -17446,7 +17468,9 @@
       ],
       "controlFlow": {
         "if": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x007E72A0",
@@ -17492,7 +17516,9 @@
           "offset": 419
         }
       ],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CD23B9",
@@ -17516,7 +17542,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CDBF70",
@@ -17561,7 +17589,9 @@
           "offset": 435
         }
       ],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x0099A430",
@@ -17602,7 +17632,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x006E7B60",
@@ -17647,7 +17679,9 @@
           "offset": 419
         }
       ],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x004ABE90",
@@ -17673,7 +17707,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x0099A2D0",
@@ -17698,7 +17734,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CBE960",
@@ -17819,7 +17857,9 @@
         "_DESC"
       ],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00BFEA14",
@@ -17849,7 +17889,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00BFEB16",
@@ -17880,7 +17922,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00BFEA70",
@@ -17913,7 +17957,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CBE87F",
@@ -18099,7 +18145,9 @@
         "TEXT_QST_LOG_STORY_"
       ],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x0099A3B0",
@@ -18123,7 +18171,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x006E7B40",
@@ -18163,7 +18213,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x007E7410",
@@ -18197,7 +18249,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00BFEB3A",
@@ -18227,7 +18281,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00414EA0",
@@ -18275,7 +18331,9 @@
       "controlFlow": {
         "for": 1,
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x0099F690",
@@ -18372,7 +18430,9 @@
       ],
       "controlFlow": {
         "if": 5
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x007ADD50",
@@ -18432,7 +18492,9 @@
       ],
       "controlFlow": {
         "if": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x007E7390",
@@ -18466,7 +18528,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x007E7490",
@@ -18515,7 +18579,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x0099F830",
@@ -18586,7 +18652,9 @@
       ],
       "controlFlow": {
         "if": 3
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00BFEA0E",
@@ -18616,7 +18684,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CB7AA0",
@@ -18664,7 +18734,9 @@
       "controlFlow": {
         "if": 2,
         "while": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CBED82",
@@ -18706,7 +18778,9 @@
       "controlFlow": {
         "for": 1,
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00BFEB28",
@@ -18736,7 +18810,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D7AA30",
@@ -19027,7 +19103,9 @@
       ],
       "controlFlow": {
         "if": 5
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D7FC70",
@@ -19318,7 +19396,9 @@
       ],
       "controlFlow": {
         "if": 5
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D872D0",
@@ -19609,7 +19689,9 @@
       ],
       "controlFlow": {
         "if": 5
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00DF9B80",
@@ -19855,7 +19937,9 @@
         "goto": 7,
         "if": 21,
         "while": 6
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x004E34B2",
@@ -19901,7 +19985,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x0075F580",
@@ -19948,7 +20034,9 @@
       "controlFlow": {
         "if": 1,
         "while": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00A14040",
@@ -20055,7 +20143,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 6
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CBE0B3",
@@ -20087,7 +20177,9 @@
       ],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CD319B",
@@ -20138,7 +20230,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CFF9A0",
@@ -20405,7 +20499,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 3
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D39330",
@@ -21249,7 +21345,9 @@
       ],
       "controlFlow": {
         "if": 41
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D6B720",
@@ -21617,7 +21715,9 @@
         "goto": 5,
         "if": 14,
         "while": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D7C470",
@@ -21921,7 +22021,9 @@
       ],
       "controlFlow": {
         "if": 5
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D848D0",
@@ -22212,7 +22314,9 @@
       ],
       "controlFlow": {
         "if": 5
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D89AD0",
@@ -22503,7 +22607,9 @@
       ],
       "controlFlow": {
         "if": 5
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00DF9E00",
@@ -22794,7 +22900,9 @@
       ],
       "controlFlow": {
         "if": 5
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00F1EC70",
@@ -23043,7 +23151,9 @@
         "if": 4,
         "switch": 1,
         "while": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x004292C0",
@@ -23071,7 +23181,9 @@
         "for": 1,
         "if": 2,
         "while": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x004AAA40",
@@ -23105,7 +23217,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x004CFF70",
@@ -23152,7 +23266,9 @@
       ],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x004CFFB0",
@@ -23193,7 +23309,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x004D0740",
@@ -23253,7 +23371,9 @@
       ],
       "controlFlow": {
         "if": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x004D0E20",
@@ -23313,7 +23433,9 @@
       ],
       "controlFlow": {
         "if": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x006E7A60",
@@ -23352,7 +23474,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x0075F560",
@@ -23391,7 +23515,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x0075F6C0",
@@ -23445,7 +23571,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x007E72D0",
@@ -23479,7 +23607,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x007E7380",
@@ -23513,7 +23643,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x009AC2D0",
@@ -23558,7 +23690,9 @@
           "offset": 370
         }
       ],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00A394D0",
@@ -23603,7 +23737,9 @@
           "offset": 451
         }
       ],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CBE09A",
@@ -23635,7 +23771,9 @@
       ],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CBE371",
@@ -23690,7 +23828,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CBE9EE",
@@ -23820,7 +23960,9 @@
         "_TITLE"
       ],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CD344A",
@@ -23939,7 +24081,9 @@
       "stateWrites": [],
       "controlFlow": {
         "while": 3
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CD3EF0",
@@ -23963,7 +24107,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CD4450",
@@ -23995,7 +24141,9 @@
       ],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CDBC90",
@@ -24046,7 +24194,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CF9210",
@@ -24323,7 +24473,9 @@
       ],
       "controlFlow": {
         "if": 10
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CFA340",
@@ -24564,7 +24716,9 @@
         "for": 6,
         "if": 9,
         "while": 10
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00CFAC40",
@@ -24716,7 +24870,9 @@
         "for": 1,
         "if": 5,
         "while": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D005E0",
@@ -24844,7 +25000,9 @@
       "controlFlow": {
         "for": 1,
         "if": 5
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D15140",
@@ -24922,7 +25080,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D17470",
@@ -25258,7 +25418,9 @@
         "for": 1,
         "if": 3,
         "while": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D27290",
@@ -25378,7 +25540,9 @@
       "controlFlow": {
         "for": 2,
         "if": 4
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D2F640",
@@ -25444,7 +25608,9 @@
       "stateWrites": [],
       "controlFlow": {
         "while": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D30030",
@@ -29426,7 +29592,9 @@
         "goto": 32,
         "if": 115,
         "while": 19
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D34D40",
@@ -29514,7 +29682,9 @@
       "controlFlow": {
         "if": 4,
         "while": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D3B010",
@@ -30025,7 +30195,9 @@
       "controlFlow": {
         "for": 6,
         "if": 26
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D3B410",
@@ -31218,7 +31390,9 @@
         "Complete Will"
       ],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D6ED60",
@@ -31507,7 +31681,9 @@
       "controlFlow": {
         "for": 3,
         "if": 11
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D782E0",
@@ -31819,7 +31995,9 @@
       "controlFlow": {
         "for": 4,
         "if": 13
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D823A0",
@@ -32183,7 +32361,9 @@
       ],
       "controlFlow": {
         "if": 9
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D83350",
@@ -32322,7 +32502,9 @@
       ],
       "controlFlow": {
         "if": 4
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00D9B420",
@@ -32813,7 +32995,9 @@
         "goto": 5,
         "if": 14,
         "while": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00DA2F90",
@@ -33060,7 +33244,9 @@
       ],
       "controlFlow": {
         "if": 8
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00DBDE40",
@@ -33773,7 +33959,9 @@
       "controlFlow": {
         "if": 13,
         "while": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00DBEFC0",
@@ -33974,7 +34162,9 @@
       "controlFlow": {
         "for": 8,
         "if": 8
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00DC3CF0",
@@ -34035,7 +34225,9 @@
           "offset": 1534
         }
       ],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00DD1F40",
@@ -34137,7 +34329,9 @@
         "for": 1,
         "if": 1,
         "while": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00DEBCB0",
@@ -34422,7 +34616,9 @@
       ],
       "controlFlow": {
         "if": 10
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00DFC320",
@@ -34741,7 +34937,9 @@
         "goto": 16,
         "if": 32,
         "while": 9
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00DFDED0",
@@ -35032,7 +35230,9 @@
       ],
       "controlFlow": {
         "if": 5
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E1AD30",
@@ -35067,7 +35267,67 @@
           "offset": 593
         }
       ],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [
+        {
+          "kind": "native-field-initializer",
+          "writes": [
+            {
+              "fieldOffset": "0x48",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x49",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x4a",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x4b",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x4c",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x4d",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x4e",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x4f",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x50",
+              "width": 4,
+              "valueExpression": "0xffffffff"
+            },
+            {
+              "fieldOffset": "0x54",
+              "width": 4,
+              "valueExpression": "0"
+            }
+          ],
+          "complete": true,
+          "luaFieldNamesResolved": false
+        }
+      ],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E1DA40",
@@ -35237,7 +35497,9 @@
       ],
       "controlFlow": {
         "if": 6
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E1DF50",
@@ -35261,7 +35523,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E32EF0",
@@ -35314,7 +35578,9 @@
       ],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E32FE0",
@@ -35346,7 +35612,9 @@
       ],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E33000",
@@ -35385,7 +35653,9 @@
       ],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E33040",
@@ -35528,7 +35798,9 @@
           "offset": 1973
         }
       ],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E37680",
@@ -35589,7 +35861,9 @@
       "stateWrites": [],
       "controlFlow": {
         "while": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E37CF0",
@@ -35644,7 +35918,9 @@
       "controlFlow": {
         "if": 3,
         "while": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E46A50",
@@ -35942,7 +36218,9 @@
       ],
       "controlFlow": {
         "if": 12
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E477F0",
@@ -36085,7 +36363,9 @@
       "controlFlow": {
         "for": 1,
         "if": 5
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E54AA0",
@@ -36182,7 +36462,9 @@
         "for": 1,
         "if": 6,
         "while": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E68EB0",
@@ -36352,7 +36634,9 @@
       ],
       "controlFlow": {
         "if": 6
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E76040",
@@ -36863,7 +37147,9 @@
         "BribedMayor"
       ],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E7B2E0",
@@ -37084,7 +37370,9 @@
       ],
       "controlFlow": {
         "if": 8
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E81F30",
@@ -37143,7 +37431,9 @@
       "stateWrites": [],
       "controlFlow": {
         "if": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E8B750",
@@ -37339,7 +37629,9 @@
       "controlFlow": {
         "if": 6,
         "while": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00E9FEC0",
@@ -37369,7 +37661,92 @@
           "offset": 760
         }
       ],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [
+        {
+          "kind": "native-field-initializer",
+          "writes": [
+            {
+              "fieldOffset": "0x48",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x49",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x4a",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x4b",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x4c",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x4d",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x4e",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x4f",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x51",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x53",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x54",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x50",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x52",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x68",
+              "width": 1,
+              "valueExpression": "0x0"
+            },
+            {
+              "fieldOffset": "0x58",
+              "width": 4,
+              "valueExpression": "0"
+            }
+          ],
+          "complete": true,
+          "luaFieldNamesResolved": false
+        }
+      ],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00ED7640",
@@ -37506,7 +37883,9 @@
       ],
       "controlFlow": {
         "if": 4
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00EDAD10",
@@ -37652,7 +38031,9 @@
         "for": 1,
         "if": 4,
         "while": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00EE40F0",
@@ -37858,7 +38239,9 @@
       ],
       "controlFlow": {
         "if": 8
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00EE6C50",
@@ -37977,7 +38360,9 @@
       "controlFlow": {
         "if": 2,
         "while": 4
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00EE8390",
@@ -38575,7 +38960,9 @@
         "for": 1,
         "if": 16,
         "while": 2
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00EFF1C0",
@@ -38918,7 +39305,9 @@
         "OBJECT_QUEST_CARD_HOBBE_CONTEST"
       ],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00F14250",
@@ -38942,7 +39331,9 @@
       "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00F14270",
@@ -38968,7 +39359,54 @@
       "stateWrites": [],
       "controlFlow": {
         "switch": 1
-      }
+      },
+      "semanticPatterns": [
+        {
+          "kind": "constant-return-switch",
+          "parameter": "param_1",
+          "cases": [
+            {
+              "input": 1,
+              "return": 36
+            },
+            {
+              "input": 2,
+              "return": 37
+            },
+            {
+              "input": 3,
+              "return": 38
+            },
+            {
+              "input": 4,
+              "return": 39
+            },
+            {
+              "input": 5,
+              "return": 40
+            },
+            {
+              "input": 6,
+              "return": 41
+            },
+            {
+              "input": 7,
+              "return": 42
+            },
+            {
+              "input": 8,
+              "return": 43
+            },
+            {
+              "input": 9,
+              "return": 44
+            }
+          ],
+          "defaultReturn": 35,
+          "complete": true
+        }
+      ],
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00F1EED0",
@@ -42984,7 +43422,9 @@
         "goto": 71,
         "if": 146,
         "while": 18
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00F25840",
@@ -43144,7 +43584,9 @@
         "ARENA_AWWW"
       ],
       "stateWrites": [],
-      "controlFlow": {}
+      "controlFlow": {},
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     },
     {
       "targetAddress": "0x00F26C30",
@@ -43233,7 +43675,9 @@
         "for": 1,
         "if": 4,
         "while": 1
-      }
+      },
+      "semanticPatterns": [],
+      "luaEmissionReady": false
     }
   ]
 }

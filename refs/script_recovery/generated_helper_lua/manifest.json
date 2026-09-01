@@ -1,0 +1,64 @@
+{
+  "schema": "forgefse-native-helper-lua/0.1",
+  "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
+  "sourceSha256": "DA912A89FB24D6127EFADD3C029D1E0370DD53DEC7604416E36C75D24E4C3167",
+  "summary": {
+    "emitted": 1,
+    "deploymentEligible": 0
+  },
+  "entries": [
+    {
+      "targetAddress": "0x00F14270",
+      "currentName": "NScript::CQ_ArenaScript::GetFanfareMusic",
+      "sourceDecompileSha256": "2adac1277bedd09793a950d561afb17c31a6f62a2068aa8c2427e4e58ceff16a",
+      "luaFile": "00F14270.lua",
+      "luaSha256": "37E03F4B51BDA6B5E58AF93B5C9570B60BD0C77AB182A7FF9545D1D7ED46936E",
+      "semanticPattern": {
+        "kind": "constant-return-switch",
+        "parameter": "param_1",
+        "cases": [
+          {
+            "input": 1,
+            "return": 36
+          },
+          {
+            "input": 2,
+            "return": 37
+          },
+          {
+            "input": 3,
+            "return": 38
+          },
+          {
+            "input": 4,
+            "return": 39
+          },
+          {
+            "input": 5,
+            "return": 40
+          },
+          {
+            "input": 6,
+            "return": 41
+          },
+          {
+            "input": 7,
+            "return": 42
+          },
+          {
+            "input": 8,
+            "return": 43
+          },
+          {
+            "input": 9,
+            "return": 44
+          }
+        ],
+        "defaultReturn": 35,
+        "complete": true
+      },
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    }
+  ]
+}

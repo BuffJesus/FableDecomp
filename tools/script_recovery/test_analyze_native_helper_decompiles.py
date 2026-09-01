@@ -39,6 +39,21 @@ class NativeHelperDecompileTests(unittest.TestCase):
             self.assertEqual(result["summary"]["failed"], 1)
             self.assertEqual(result["helpers"][0]["stage"], "repair-helper-decompile")
 
+    def test_complete_constant_switch_is_lua_emission_ready(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source = Path(temp) / "helpers.json"
+            source.write_text(json.dumps({"helpers": [{
+                "targetAddress": "0x1000", "currentName": "Choose", "helperNames": "Choose",
+                "category": "engine-or-script-helper", "calls": 1, "scripts": 1,
+                "roles": "Main", "status": "decompiled", "error": None, "directCalls": [],
+                "decompile": "int Choose(int param_1) { switch(param_1) { default: return 0x23; case 1: return 0x24; case 2: return 0x25; } }",
+            }]}))
+            row = analyze(source)["helpers"][0]
+            self.assertTrue(row["luaEmissionReady"])
+            self.assertEqual(row["semanticPatterns"][0]["cases"], [
+                {"input": 1, "return": 0x24}, {"input": 2, "return": 0x25}])
+            self.assertEqual(row["semanticPatterns"][0]["defaultReturn"], 0x23)
+
 
 if __name__ == "__main__":
     unittest.main()

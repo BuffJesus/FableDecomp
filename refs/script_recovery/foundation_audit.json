@@ -1179,6 +1179,8 @@
         "directDependencyCalls": 4967,
         "directDependencyTargets": 206,
         "failed": 1,
+        "luaEmissionReady": 1,
+        "semanticPatterns": 3,
         "stages": {
           "inspect-helper-dependencies": 108,
           "inspect-leaf-helper": 19,
@@ -1190,6 +1192,22 @@
       "passed": true
     },
     {
+      "evidence": {
+        "manifest": {
+          "deploymentEligible": 0,
+          "emitted": 1
+        },
+        "validation": {
+          "cases": 12,
+          "complete": true,
+          "helpers": 1,
+          "passed": 1
+        }
+      },
+      "name": "evidence-complete native helpers execute as standalone Lua",
+      "passed": true
+    },
+    {
       "evidence": {},
       "name": "all reconstructed parent bindings correlate with native lifecycle evidence",
       "passed": true
@@ -1198,7 +1216,7 @@
   "schema": "fable-script-recovery-foundation-audit/0.1",
   "summary": {
     "complete": true,
-    "passed": 14,
-    "total": 14
+    "passed": 15,
+    "total": 15
   }
 }
