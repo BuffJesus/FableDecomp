@@ -19,7 +19,10 @@
         {
           "operation": "call",
           "callee": "operator_delete",
-          "offset": 384
+          "offset": 384,
+          "directCallSite": "0x00ED39E0",
+          "targetAddress": "0x00BFE9BC",
+          "targetCurrentName": "MSVCR71.DLL::operator_delete"
         }
       ],
       "indirectCalls": [],
@@ -47,22 +50,34 @@
         {
           "operation": "call",
           "callee": "operator_new",
-          "offset": 655
+          "offset": 655,
+          "directCallSite": "0x00ED0F60",
+          "targetAddress": "0x00BFEA1A",
+          "targetCurrentName": "MSVCR71.DLL::operator_new"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 860
+          "offset": 860,
+          "directCallSite": "0x00ED0F79",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 1316
+          "offset": 1316,
+          "directCallSite": "0x00ED0FB0",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CGuiVarTransferStruct::Add",
-          "offset": 1376
+          "offset": 1376,
+          "directCallSite": "0x00ED0FB9",
+          "targetAddress": "0x00CB7E50",
+          "targetCurrentName": "CGuiVarTransferStruct::Add"
         }
       ],
       "indirectCalls": [],
@@ -129,127 +144,202 @@
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 1300
+          "offset": 1300,
+          "directCallSite": "0x00ED10B8",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 1836
+          "offset": 1836,
+          "directCallSite": "0x00ED10EF",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "operator_new",
-          "offset": 1938
+          "offset": 1938,
+          "directCallSite": "0x00ED1144",
+          "targetAddress": "0x00BFEA1A",
+          "targetCurrentName": "MSVCR71.DLL::operator_new"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 2107
+          "offset": 2107,
+          "directCallSite": "0x00ED1107",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 2267
+          "offset": 2267,
+          "directCallSite": "0x00ED115D",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::AddEntityScriptBinding",
-          "offset": 2649
+          "offset": 2649,
+          "directCallSite": "0x00ED119D",
+          "targetAddress": "0x00CB8230",
+          "targetCurrentName": "CScriptBase::AddEntityScriptBinding"
         },
         {
           "operation": "call",
           "callee": "operator_new",
-          "offset": 3101
+          "offset": 3101,
+          "directCallSite": "0x00ED11B5",
+          "targetAddress": "0x00BFEA1A",
+          "targetCurrentName": "MSVCR71.DLL::operator_new"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 3270
+          "offset": 3270,
+          "directCallSite": "0x00ED1178",
+          "targetAddress": "0x0099EC30",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 3438
+          "offset": 3438,
+          "directCallSite": "0x00ED11CE",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::AddEntityScriptBinding",
-          "offset": 3761
+          "offset": 3761,
+          "directCallSite": "0x00ED1205",
+          "targetAddress": "0x00CB8230",
+          "targetCurrentName": "CScriptBase::AddEntityScriptBinding"
         },
         {
           "operation": "call",
           "callee": "CTCVillage::OnInitialActivate",
-          "offset": 4289
+          "offset": 4289,
+          "directCallSite": "0x00ED121D",
+          "targetAddress": "0x00CB8930",
+          "targetCurrentName": "CTCVillage::OnInitialActivate"
         },
         {
           "operation": "call",
           "callee": "operator_new",
-          "offset": 4419
+          "offset": 4419,
+          "directCallSite": "0x00ED122F",
+          "targetAddress": "0x00BFEA1A",
+          "targetCurrentName": "MSVCR71.DLL::operator_new"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 4634
+          "offset": 4634,
+          "directCallSite": "0x00ED11E4",
+          "targetAddress": "0x0099EC30",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 5223
+          "offset": 5223,
+          "directCallSite": "0x00ED1248",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CGuiVarTransferStruct::Add",
-          "offset": 5290
+          "offset": 5290,
+          "directCallSite": "0x00ED1286",
+          "targetAddress": "0x00CB7E50",
+          "targetCurrentName": "CGuiVarTransferStruct::Add"
         },
         {
           "operation": "call",
           "callee": "operator_new",
-          "offset": 6131
+          "offset": 6131,
+          "directCallSite": "0x00ED12A7",
+          "targetAddress": "0x00BFEA1A",
+          "targetCurrentName": "MSVCR71.DLL::operator_new"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 6346
+          "offset": 6346,
+          "directCallSite": "0x00ED127D",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 6941
+          "offset": 6941,
+          "directCallSite": "0x00ED12C0",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CGuiVarTransferStruct::Add",
-          "offset": 7008
+          "offset": 7008,
+          "directCallSite": "0x00ED12FE",
+          "targetAddress": "0x00CB7E50",
+          "targetCurrentName": "CGuiVarTransferStruct::Add"
         },
         {
           "operation": "call",
           "callee": "operator_new",
-          "offset": 7849
+          "offset": 7849,
+          "directCallSite": "0x00ED131F",
+          "targetAddress": "0x00BFEA1A",
+          "targetCurrentName": "MSVCR71.DLL::operator_new"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 8064
+          "offset": 8064,
+          "directCallSite": "0x00ED12F5",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 8678
+          "offset": 8678,
+          "directCallSite": "0x00ED1338",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CGuiVarTransferStruct::Add",
-          "offset": 8745
+          "offset": 8745,
+          "directCallSite": "0x00ED1376",
+          "targetAddress": "0x00CB7E50",
+          "targetCurrentName": "CGuiVarTransferStruct::Add"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 9625
+          "offset": 9625,
+          "directCallSite": "0x00ED1134",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 9714
+          "offset": 9714,
+          "directCallSite": "0x00ED136D",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         }
       ],
       "indirectCalls": [

@@ -2,7 +2,8 @@ import unittest
 from pathlib import Path
 
 from tools.script_recovery.extract_native_operation_ir import (
-    calls, entity_bindings, extract, indirect_calls, load_direct_call_evidence,
+    calls, correlate_direct_call_targets, entity_bindings, extract, indirect_calls,
+    load_direct_call_evidence,
 )
 from tools.script_recovery.compare_seed_native_ir import compare
 
@@ -98,6 +99,23 @@ class NativeOperationIRTests(unittest.TestCase):
         self.assertEqual(result["script"], "Expression_Follow")
         self.assertTrue(any(life["directCallTargets"] for life in result["lifecycle"]))
         self.assertEqual(result["allocatorAddress"], "0x00EEA3E0")
+
+    def test_matching_decompiler_call_is_enriched_with_exact_target(self):
+        rows = correlate_direct_call_targets(
+            [{"callee": "operator_new", "offset": 12}],
+            [{"site": "0x100", "target": "0x200",
+              "currentName": "MSVCR71.DLL::operator_new"}],
+        )
+        self.assertEqual(rows[0]["directCallSite"], "0x100")
+        self.assertEqual(rows[0]["targetAddress"], "0x200")
+
+    def test_decorated_member_name_is_correlated(self):
+        rows = correlate_direct_call_targets(
+            [{"callee": "_ClearCommands_CScriptThing__UAEXXZ", "offset": 1}],
+            [{"site": "0x10", "target": "0x20",
+              "currentName": "CScriptThing::?ClearCommands@CScriptThing@@UAEXXZ"}],
+        )
+        self.assertEqual(rows[0]["targetAddress"], "0x20")
 
     def test_all_seed_bindings_are_correlated(self):
         result = compare(Path("refs/script_recovery/seed_corpus/sources"),

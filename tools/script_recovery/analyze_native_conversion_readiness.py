@@ -156,6 +156,17 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
                             if any(call["callee"] == helper for call in life["calls"])})
             for helper in unresolved
         }
+        unresolved_targets = {
+            helper: sorted({call["targetAddress"] for life in ir["lifecycle"]
+                            for call in life["calls"]
+                            if call["callee"] == helper and call.get("targetAddress")})
+            for helper in unresolved
+        }
+        unresolved_targeted_counts = {
+            helper: sum(call.get("targetAddress") is not None for life in ir["lifecycle"]
+                        for call in life["calls"] if call["callee"] == helper)
+            for helper in unresolved
+        }
         decompile_complete = len(ir["lifecycle"]) == 5 and all(
             life.get("address") and isinstance(life.get("calls"), list) for life in ir["lifecycle"]
         )
@@ -186,6 +197,8 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
             "opaqueCallees": opaque, "unresolvedNativeHelpers": unresolved, "stage": stage,
             "unresolvedNativeHelperCallCounts": dict(sorted(unresolved_counts.items())),
             "unresolvedNativeHelperRoles": unresolved_roles,
+            "unresolvedNativeHelperTargetAddresses": unresolved_targets,
+            "unresolvedNativeHelperTargetedCallCounts": unresolved_targeted_counts,
             "nativeIr": str(path.resolve()),
         })
     rows.sort(key=lambda row: (
@@ -212,17 +225,24 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
     helper_kinds: dict[str, set[str]] = {}
     helper_calls: Counter[str] = Counter()
     helper_roles: dict[str, set[str]] = {}
+    helper_targets: dict[str, set[str]] = {}
+    helper_targeted_calls: Counter[str] = Counter()
     for row in rows:
         for helper, count in row["unresolvedNativeHelperCallCounts"].items():
             helper_calls[helper] += count
             helper_consumers.setdefault(helper, set()).add(row["name"])
             helper_kinds.setdefault(helper, set()).add(row["kind"])
             helper_roles.setdefault(helper, set()).update(row["unresolvedNativeHelperRoles"][helper])
+            helper_targets.setdefault(helper, set()).update(
+                row["unresolvedNativeHelperTargetAddresses"][helper])
+            helper_targeted_calls[helper] += row["unresolvedNativeHelperTargetedCallCounts"][helper]
     helper_backlog = [
         {"name": helper, "calls": helper_calls[helper],
+         "targetedCalls": helper_targeted_calls[helper],
          "category": native_helper_category(helper, helper_roles[helper]),
          "scripts": len(helper_consumers[helper]),
          "roles": sorted(helper_roles[helper]),
+         "targetAddresses": sorted(helper_targets[helper]),
          "kinds": sorted(helper_kinds[helper]),
          "consumers": sorted(helper_consumers[helper])}
         for helper in helper_calls
@@ -289,6 +309,9 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
                     "abiBlockedInterfaceMethods": dict(sorted(abi_blocked_methods.items())),
                     "unresolvedNativeHelperMethods": len(helper_backlog),
                     "unresolvedNativeHelperCalls": sum(helper_calls.values()),
+                    "nativeHelperMethodsWithTargetAddress": sum(
+                        bool(row["targetAddresses"]) for row in helper_backlog),
+                    "nativeHelperCallsWithTargetAddress": sum(helper_targeted_calls.values()),
                     "nativeDirectCalls": sum(row["nativeDirectCalls"] for row in rows),
                     "nativeDirectCallTargets": len(direct_target_backlog),
                     "nativeHelperCategories": dict(sorted(category_summary.items())),

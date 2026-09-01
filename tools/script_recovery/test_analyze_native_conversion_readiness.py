@@ -118,8 +118,9 @@ class NativeConversionReadinessTests(unittest.TestCase):
             self.assertEqual(result["summary"]["unresolvedNativeHelperMethods"], 1)
             self.assertEqual(result["summary"]["unresolvedNativeHelperCalls"], 4)
             self.assertEqual(result["nativeHelperBacklog"][0], {
-                "name": "SharedHelper", "calls": 4,
+                "name": "SharedHelper", "calls": 4, "targetedCalls": 0,
                 "category": "engine-or-script-helper", "scripts": 2, "roles": ["Main"],
+                "targetAddresses": [],
                 "kinds": ["quest", "village"], "consumers": ["Q_A", "V_B"]})
 
     def test_direct_call_backlog_is_keyed_by_retail_target_address(self):

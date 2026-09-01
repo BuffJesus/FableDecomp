@@ -14,12 +14,18 @@
         {
           "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
-          "offset": 331
+          "offset": 331,
+          "directCallSite": "0x00F017A3",
+          "targetAddress": "0x00CBD510",
+          "targetCurrentName": "NParticleEngine::CParticleEmitter::DeleteAllParticles"
         },
         {
           "operation": "call",
           "callee": "operator_delete",
-          "offset": 456
+          "offset": 456,
+          "directCallSite": "0x00F017B0",
+          "targetAddress": "0x00BFE9BC",
+          "targetCurrentName": "MSVCR71.DLL::operator_delete"
         }
       ],
       "indirectCalls": [],
@@ -47,22 +53,34 @@
         {
           "operation": "call",
           "callee": "operator_new",
-          "offset": 655
+          "offset": 655,
+          "directCallSite": "0x00F013D0",
+          "targetAddress": "0x00BFEA1A",
+          "targetCurrentName": "MSVCR71.DLL::operator_new"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 860
+          "offset": 860,
+          "directCallSite": "0x00F013E9",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 1316
+          "offset": 1316,
+          "directCallSite": "0x00F01420",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CGuiVarTransferStruct::Add",
-          "offset": 1376
+          "offset": 1376,
+          "directCallSite": "0x00F01429",
+          "targetAddress": "0x00CB7E50",
+          "targetCurrentName": "CGuiVarTransferStruct::Add"
         }
       ],
       "indirectCalls": [],
@@ -129,107 +147,170 @@
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 1486
+          "offset": 1486,
+          "directCallSite": "0x00F01486",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 1646
+          "offset": 1646,
+          "directCallSite": "0x00F014AA",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "malloc",
-          "offset": 1812
+          "offset": 1812,
+          "directCallSite": "0x00F014D4",
+          "targetAddress": "0x00BFEA0E",
+          "targetCurrentName": "MSVCR71.DLL::malloc"
         },
         {
           "operation": "call",
           "callee": "CBaseIntelligentPointer::CBaseIntelligentPointer",
-          "offset": 2033
+          "offset": 2033,
+          "directCallSite": "0x00F014FF",
+          "targetAddress": "0x0099A380",
+          "targetCurrentName": "CBaseIntelligentPointer::CBaseIntelligentPointer"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 2504
+          "offset": 2504,
+          "directCallSite": "0x00F0153C",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CFourierAnalysis::CFourierAnalysis",
-          "offset": 2859
+          "offset": 2859,
+          "directCallSite": "0x00F01558",
+          "targetAddress": "0x0099A3B0",
+          "targetCurrentName": "CFourierAnalysis::CFourierAnalysis"
         },
         {
           "operation": "call",
           "callee": "operator_delete",
-          "offset": 3298
+          "offset": 3298,
+          "directCallSite": "0x00F01589",
+          "targetAddress": "0x00BFE9BC",
+          "targetCurrentName": "MSVCR71.DLL::operator_delete"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 3998
+          "offset": 3998,
+          "directCallSite": "0x00F015B6",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CFourierAnalysis::CFourierAnalysis",
-          "offset": 4353
+          "offset": 4353,
+          "directCallSite": "0x00F015D2",
+          "targetAddress": "0x0099A3B0",
+          "targetCurrentName": "CFourierAnalysis::CFourierAnalysis"
         },
         {
           "operation": "call",
           "callee": "operator_delete",
-          "offset": 4792
+          "offset": 4792,
+          "directCallSite": "0x00F01603",
+          "targetAddress": "0x00BFE9BC",
+          "targetCurrentName": "MSVCR71.DLL::operator_delete"
         },
         {
           "operation": "call",
           "callee": "CBaseIntelligentPointer::CBaseIntelligentPointer",
-          "offset": 5495
+          "offset": 5495,
+          "directCallSite": "0x00F01629",
+          "targetAddress": "0x0099A380",
+          "targetCurrentName": "CBaseIntelligentPointer::CBaseIntelligentPointer"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 5702
+          "offset": 5702,
+          "directCallSite": "0x00F01649",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "RunCutsceneMacro_Func",
-          "offset": 6385
+          "offset": 6385,
+          "directCallSite": "0x00F0168A",
+          "targetAddress": "0x00CBFB7D",
+          "targetCurrentName": "RunCutsceneMacro_Func"
         },
         {
           "operation": "call",
           "callee": "CPhysicsMeshInfo::~CPhysicsMeshInfo",
-          "offset": 6823
+          "offset": 6823,
+          "directCallSite": "0x00F016B0",
+          "targetAddress": "0x0099A430",
+          "targetCurrentName": "CPhysicsMeshInfo::~CPhysicsMeshInfo"
         },
         {
           "operation": "call",
           "callee": "CMemoryDataOutputStream::Clear",
-          "offset": 6900
+          "offset": 6900,
+          "directCallSite": "0x00F016B9",
+          "targetAddress": "0x00CD2770",
+          "targetCurrentName": "CMemoryDataOutputStream::Clear"
         },
         {
           "operation": "call",
           "callee": "operator_delete",
-          "offset": 7141
+          "offset": 7141,
+          "directCallSite": "0x00F016E1",
+          "targetAddress": "0x00BFE9BC",
+          "targetCurrentName": "MSVCR71.DLL::operator_delete"
         },
         {
           "operation": "call",
           "callee": "CPhysicsMeshInfo::~CPhysicsMeshInfo",
-          "offset": 7216
+          "offset": 7216,
+          "directCallSite": "0x00F016F9",
+          "targetAddress": "0x0099A430",
+          "targetCurrentName": "CPhysicsMeshInfo::~CPhysicsMeshInfo"
         },
         {
           "operation": "call",
           "callee": "StdMap_DestroyNode",
-          "offset": 7345
+          "offset": 7345,
+          "directCallSite": "0x00F01710",
+          "targetAddress": "0x00CD344A",
+          "targetCurrentName": "StdMap_DestroyNode"
         },
         {
           "operation": "call",
           "callee": "free",
-          "offset": 7736
+          "offset": 7736,
+          "directCallSite": "0x00F01737",
+          "targetAddress": "0x00BFEA14",
+          "targetCurrentName": "MSVCR71.DLL::free"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 7831
+          "offset": 7831,
+          "directCallSite": "0x00F014C1",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 8012
+          "offset": 8012,
+          "directCallSite": "0x00F01749",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         }
       ],
       "indirectCalls": [

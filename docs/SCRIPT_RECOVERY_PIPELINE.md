@@ -151,6 +151,11 @@ than provisional script or Function ID names) enriches all 161 operation-IR arti
 call sites targeting 233 exact retail addresses. `nativeDirectCallTargetBacklog` groups those targets
 by address while retaining every current Ghidra name, consumer, lifecycle role, and script kind.
 Names remain hints—the target address is the stable identity when imported donor labels disagree.
+The extractor conservatively correlates matching decompiler call expressions back to these
+instruction records, including MSVCR qualification and Microsoft-decorated member spellings. This
+currently gives 1,437 of the 1,603 semantic helper call sites an exact target address and covers 117
+of the 158 distinct helper labels. Unmatched calls remain explicit instead of being paired by mere
+position; the complete instruction-level target list is still retained alongside them.
 
 The reproducible headless export accepts the correlated TSV followed by explicit name/address pairs:
 

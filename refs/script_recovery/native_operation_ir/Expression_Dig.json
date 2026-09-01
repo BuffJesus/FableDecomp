@@ -14,12 +14,18 @@
         {
           "operation": "call",
           "callee": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
-          "offset": 331
+          "offset": 331,
+          "directCallSite": "0x00EEAEA3",
+          "targetAddress": "0x00CBD510",
+          "targetCurrentName": "NParticleEngine::CParticleEmitter::DeleteAllParticles"
         },
         {
           "operation": "call",
           "callee": "operator_delete",
-          "offset": 456
+          "offset": 456,
+          "directCallSite": "0x00EEAEB0",
+          "targetAddress": "0x00BFE9BC",
+          "targetCurrentName": "MSVCR71.DLL::operator_delete"
         }
       ],
       "indirectCalls": [],
@@ -47,22 +53,34 @@
         {
           "operation": "call",
           "callee": "operator_new",
-          "offset": 655
+          "offset": 655,
+          "directCallSite": "0x00EEADC0",
+          "targetAddress": "0x00BFEA1A",
+          "targetCurrentName": "MSVCR71.DLL::operator_new"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 860
+          "offset": 860,
+          "directCallSite": "0x00EEADD9",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 1316
+          "offset": 1316,
+          "directCallSite": "0x00EEAE10",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CGuiVarTransferStruct::Add",
-          "offset": 1376
+          "offset": 1376,
+          "directCallSite": "0x00EEAE19",
+          "targetAddress": "0x00CB7E50",
+          "targetCurrentName": "CGuiVarTransferStruct::Add"
         }
       ],
       "indirectCalls": [],
@@ -129,162 +147,258 @@
         {
           "operation": "call",
           "callee": "CScriptThing::CScriptThing",
-          "offset": 1796
+          "offset": 1796,
+          "directCallSite": "0x00EEA7E1",
+          "targetAddress": "0x004ABE90",
+          "targetCurrentName": "CScriptThing::CScriptThing"
         },
         {
           "operation": "call",
           "callee": "C3DClothPrimitive::~C3DClothPrimitive",
-          "offset": 2275
+          "offset": 2275,
+          "directCallSite": "0x00EEA7FA",
+          "targetAddress": "0x004AA840",
+          "targetCurrentName": "C3DClothPrimitive::~C3DClothPrimitive"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 2409
+          "offset": 2409,
+          "directCallSite": "0x00EEA809",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 3248
+          "offset": 3248,
+          "directCallSite": "0x00EEA85A",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 3428
+          "offset": 3428,
+          "directCallSite": "0x00EEA878",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "CBaseIntelligentPointer::CBaseIntelligentPointer",
-          "offset": 3526
+          "offset": 3526,
+          "directCallSite": "0x00EEA889",
+          "targetAddress": "0x0099A380",
+          "targetCurrentName": "CBaseIntelligentPointer::CBaseIntelligentPointer"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 4097
+          "offset": 4097,
+          "directCallSite": "0x00EEA8CA",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 4365
+          "offset": 4365,
+          "directCallSite": "0x00EEA8F6",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "CCarriedReadableDef::CCarriedReadableDef",
-          "offset": 4515
+          "offset": 4515,
+          "directCallSite": "0x00EEA915",
+          "targetAddress": "0x006E7B60",
+          "targetCurrentName": "CCarriedReadableDef::CCarriedReadableDef"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 4595
+          "offset": 4595,
+          "directCallSite": "0x00EEA925",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ",
-          "offset": 6451
+          "offset": 6451,
+          "directCallSite": "0x00EEAA23",
+          "targetAddress": "0x007E7410",
+          "targetCurrentName": "CScriptGameResourceObjectScriptedThingBase::?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 6706
+          "offset": 6706,
+          "directCallSite": "0x00EEAA33",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 7467
+          "offset": 7467,
+          "directCallSite": "0x00EEAA77",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "_PlayLoopingAnimation_CScriptGameResourceObjectScriptedThingBase__UAEXABVCCharString__J_N111111_Z",
-          "offset": 7598
+          "offset": 7598,
+          "directCallSite": "0x00EEAA97",
+          "targetAddress": "0x007E73F0",
+          "targetCurrentName": "CScriptGameResourceObjectScriptedThingBase::?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@J_N111111@Z"
         },
         {
           "operation": "call",
           "callee": "CScriptThing::_IsAlive_CScriptThing__UBE_NXZ",
-          "offset": 8443
+          "offset": 8443,
+          "directCallSite": "0x00EEAAC7",
+          "targetAddress": "0x004AB130",
+          "targetCurrentName": "CScriptThing::?IsAlive@CScriptThing@@UBE_NXZ"
         },
         {
           "operation": "call",
           "callee": "Is2DDistanceBetweenThingsUnder",
-          "offset": 8652
+          "offset": 8652,
+          "directCallSite": "0x00EEAAEA",
+          "targetAddress": "0x00CBE371",
+          "targetCurrentName": "Is2DDistanceBetweenThingsUnder"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 8877
+          "offset": 8877,
+          "directCallSite": "0x00EEAAFE",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 9433
+          "offset": 9433,
+          "directCallSite": "0x00EEAB4E",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "_ClearCommands_CScriptGameResourceObjectScriptedThingBase__UAEXXZ",
-          "offset": 9578
+          "offset": 9578,
+          "directCallSite": "0x00EEAB5F",
+          "targetAddress": "0x007E7360",
+          "targetCurrentName": "CScriptGameResourceObjectScriptedThingBase::?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 9833
+          "offset": 9833,
+          "directCallSite": "0x00EEAB6F",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "_PlayAnimation_CScriptGameResourceObjectScriptedThingBase__UAEXABVCCharString___N111111_Z",
-          "offset": 9979
+          "offset": 9979,
+          "directCallSite": "0x00EEAB8D",
+          "targetAddress": "0x007E73D0",
+          "targetCurrentName": "CScriptGameResourceObjectScriptedThingBase::?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 10842
+          "offset": 10842,
+          "directCallSite": "0x00EEABA8",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "_ClearCommands_CScriptGameResourceObjectScriptedThingBase__UAEXXZ",
-          "offset": 10987
+          "offset": 10987,
+          "directCallSite": "0x00EEABB9",
+          "targetAddress": "0x007E7360",
+          "targetCurrentName": "CScriptGameResourceObjectScriptedThingBase::?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 11242
+          "offset": 11242,
+          "directCallSite": "0x00EEABC9",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "_PlayAnimation_CScriptGameResourceObjectScriptedThingBase__UAEXABVCCharString___N111111_Z",
-          "offset": 11388
+          "offset": 11388,
+          "directCallSite": "0x00EEABE7",
+          "targetAddress": "0x007E73D0",
+          "targetCurrentName": "CScriptGameResourceObjectScriptedThingBase::?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z"
         },
         {
           "operation": "call",
           "callee": "CCharString::CCharString",
-          "offset": 12498
+          "offset": 12498,
+          "directCallSite": "0x00EEAC5F",
+          "targetAddress": "0x0099EBF0",
+          "targetCurrentName": "CCharString::CCharString"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 13199
+          "offset": 13199,
+          "directCallSite": "0x00EEAC85",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 13516
+          "offset": 13516,
+          "directCallSite": "0x00EEACB6",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "CScriptBase::IsActiveThreadTerminating",
-          "offset": 14248
+          "offset": 14248,
+          "directCallSite": "0x00EEAD32",
+          "targetAddress": "0x00CB7940",
+          "targetCurrentName": "CScriptBase::IsActiveThreadTerminating"
         },
         {
           "operation": "call",
           "callee": "C3DClothPrimitive::~C3DClothPrimitive",
-          "offset": 15110
+          "offset": 15110,
+          "directCallSite": "0x00EEAD84",
+          "targetAddress": "0x004AA840",
+          "targetCurrentName": "C3DClothPrimitive::~C3DClothPrimitive"
         },
         {
           "operation": "call",
           "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
-          "offset": 15191
+          "offset": 15191,
+          "directCallSite": "0x00EEAD8D",
+          "targetAddress": "0x006E7B80",
+          "targetCurrentName": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
         },
         {
           "operation": "call",
           "callee": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
-          "offset": 15294
+          "offset": 15294,
+          "directCallSite": "0x00EEAD96",
+          "targetAddress": "0x007E74D0",
+          "targetCurrentName": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
         }
       ],
       "indirectCalls": [

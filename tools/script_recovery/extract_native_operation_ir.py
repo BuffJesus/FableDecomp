@@ -145,6 +145,42 @@ def load_direct_call_evidence(path: Path) -> dict[str, dict[str, Any]]:
     return result
 
 
+def normalized_callee_name(value: str | None) -> str:
+    if not value:
+        return ""
+    return "".join(value.replace("MSVCR71.DLL::", "").replace("`", "")
+                   .replace("?", "_").replace("@", "_").split())
+
+
+def callee_names_match(parsed: str, current: str | None) -> bool:
+    parsed_name = normalized_callee_name(parsed)
+    current_name = normalized_callee_name(current)
+    if parsed_name == current_name:
+        return True
+    # Ghidra sometimes prints a decorated member with its owner both as a
+    # namespace and inside the decorated payload, while the decompile call drops
+    # that first owner. Only accept the exact post-scope payload as an alias.
+    return "::" in current_name and parsed_name == current_name.split("::", 1)[1]
+
+
+def correlate_direct_call_targets(parsed: list[dict[str, Any]],
+                                  direct: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Attach exact instruction targets when Ghidra's two views retain the same name."""
+    available = list(direct)
+    result = []
+    for call in parsed:
+        row = dict(call)
+        match = next((index for index, target in enumerate(available)
+                      if callee_names_match(call["callee"], target.get("currentName"))), None)
+        if match is not None:
+            target = available.pop(match)
+            row["directCallSite"] = target["site"]
+            row["targetAddress"] = target["target"]
+            row["targetCurrentName"] = target["currentName"]
+        result.append(row)
+    return result
+
+
 def extract(cluster_path: Path,
             direct_call_evidence: dict[str, dict[str, Any]] | None = None) -> dict[str, Any]:
     cluster = json.loads(cluster_path.read_text(encoding="utf-8-sig"))
@@ -169,9 +205,11 @@ def extract(cluster_path: Path,
                     f"{function['address']} != {direct['address']}"
                 )
             direct_calls = direct["directCalls"]
+        parsed_calls = calls(text)
         lifecycle.append({
             "role": function["role"], "address": function["address"],
-            "calls": calls(text), "indirectCalls": indirect_calls(text), "strings": strings(text),
+            "calls": correlate_direct_call_targets(parsed_calls, direct_calls),
+            "indirectCalls": indirect_calls(text), "strings": strings(text),
             "directCallTargets": direct_calls,
             "entityBindings": entity_bindings(text),
             "stateWrites": [{"fieldOffset": match.group(1).lower(), "valueExpression": match.group(2).strip(),
