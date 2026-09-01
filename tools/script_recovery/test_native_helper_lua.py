@@ -142,6 +142,26 @@ class NativeHelperLuaTests(unittest.TestCase):
             self.assertTrue(result["summary"]["complete"])
             self.assertEqual(result["summary"]["checks"], 1)
 
+    def test_generated_reference_counted_destructor_executes_all_branches(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            helper_ir = root / "ir.json"
+            helper_ir.write_text(json.dumps({"helpers": [{
+                "targetAddress": "0x007E74D0", "currentName": "BadDonor::~BadDonor",
+                "decompileSha256": "3" * 64, "luaEmissionReady": True,
+                "semanticPatterns": [{"kind": "reference-counted-token-destructor",
+                                      "complete": True, "valueOffset": "0x8",
+                                      "ownerOffset": "0xc",
+                                      "restoredVtableAddress": "0x0126008C",
+                                      "ownerFreeTarget": "0x00BFE9BC",
+                                      "baseDestructorTarget": "0x0099A430",
+                                      "callSites": ["0x1", "0x2"]}],
+            }]}))
+            generate(helper_ir, root / "generated")
+            result = validate(root / "generated" / "manifest.json")
+            self.assertTrue(result["summary"]["complete"])
+            self.assertEqual(result["summary"]["checks"], 3)
+
 
 if __name__ == "__main__":
     unittest.main()

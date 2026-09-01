@@ -283,6 +283,23 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
                 "retailVtableAddress": f"0x{match.group(1).upper()}",
                 "donorNameTrusted": False,
             })
+    if (current_name == "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
+            and len(direct) == 2 and not indirect
+            and [call.get("target") for call in direct] == ["0x00BFE9BC", "0x0099A430"]
+            and all(value in text for value in (
+                "*(int **)(this + 0xc)", "*piVar1 = *piVar1 + -1",
+                "**(int **)(this + 0xc) == 0",
+                "*(undefined4 *)(this + 8) = 0",
+                "*(undefined4 *)(this + 0xc) = 0",
+                "&PTR__vector_deleting_destructor__0126008c"))):
+        patterns.append({
+            "kind": "reference-counted-token-destructor", "complete": True,
+            "valueOffset": "0x8", "ownerOffset": "0xc",
+            "restoredVtableAddress": "0x0126008C",
+            "ownerFreeTarget": direct[0]["target"],
+            "baseDestructorTarget": direct[1]["target"],
+            "callSites": [call["site"] for call in direct],
+        })
     return patterns
 
 
@@ -415,6 +432,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
                 "optional-resource-script-thing-return",
                 "destroy-and-zero-field",
                 "opaque-vtable-token-initializer",
+                "reference-counted-token-destructor",
             } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)

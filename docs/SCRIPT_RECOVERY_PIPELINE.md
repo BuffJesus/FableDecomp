@@ -238,7 +238,12 @@ helpers / 121 checks, 262 resolved calls across 130 scripts. Two high-frequency 
 each writes only retail vtable `0x01231710` at offset zero (the first additionally mirrors `this` in
 `EAX`). Both now initialize opaque host-owned tokens without trusting the donor class name or exposing
 storage. Totals reach twenty-three helpers / 123 checks, 381 resolved calls across 133 scripts, and
-131 helper labels / 1,196 calls left.
+131 helper labels / 1,196 calls left. The two byte-equivalent reference-counted token destructors at
+`0x006E7B80/0x007E74D0` are now complete too: all null, retained-reference, and final-reference paths
+are executed; final release destroys the pointee and frees the owner via `0x00BFE9BC`; every path
+clears `+8/+C`, restores vtable `0x0126008C`, and invokes base destructor `0x0099A430`. Host callbacks
+keep owner tokens opaque while preserving order. Totals reach twenty-five helpers / 129 checks, 545
+resolved calls across 138 scripts, and 130 helper labels / 1,032 calls left.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`

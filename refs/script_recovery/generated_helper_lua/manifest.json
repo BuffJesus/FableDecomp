@@ -1,9 +1,9 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "1705D6F0F39D9CA222236AAA53B8F579CA6BF146EA0A51D0DBF1EBCB15DF9FFD",
+  "sourceSha256": "79723741DAD5D730CBEBAD5F27EF910577139688EABE90C4E2D91C60A80E0936",
   "summary": {
-    "emitted": 23,
+    "emitted": 25,
     "deploymentEligible": 0
   },
   "entries": [
@@ -26,6 +26,29 @@
       "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
     },
     {
+      "targetAddress": "0x007E74D0",
+      "currentName": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+      "sourceDecompileSha256": "6744c1d04d93ce92f9bc17d5ce32a05535e125a0edfe71d6ad8c732c18d86394",
+      "luaFile": "007E74D0.lua",
+      "luaSha256": "DAF4B0F6CFF4307136865D23B70945DD445BE05F7D0D0A24B45F911CA413E711",
+      "semanticPattern": {
+        "kind": "reference-counted-token-destructor",
+        "complete": true,
+        "valueOffset": "0x8",
+        "ownerOffset": "0xc",
+        "restoredVtableAddress": "0x0126008C",
+        "ownerFreeTarget": "0x00BFE9BC",
+        "baseDestructorTarget": "0x0099A430",
+        "callSites": [
+          "0x007E74EE",
+          "0x007E750D"
+        ]
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
       "targetAddress": "0x0099A2E0",
       "currentName": "NHeroInformationScreens::CBase::CBase",
       "sourceDecompileSha256": "4eea1a9b743d6e98caf3b294db9ad7bb2a04560b2bb78d6f2af6f7d8e6673bfb",
@@ -38,6 +61,29 @@
         "fieldWidth": 4,
         "retailVtableAddress": "0x01231710",
         "donorNameTrusted": false
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x006E7B80",
+      "currentName": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+      "sourceDecompileSha256": "8c48f6192e856fdfa607b545fb7f2b8f968e270710d462f5ddb35cfc70f5b6d8",
+      "luaFile": "006E7B80.lua",
+      "luaSha256": "87B6669F401304C233564CC4BB720EF323D5149AA65813669E221BE286A31D6C",
+      "semanticPattern": {
+        "kind": "reference-counted-token-destructor",
+        "complete": true,
+        "valueOffset": "0x8",
+        "ownerOffset": "0xc",
+        "restoredVtableAddress": "0x0126008C",
+        "ownerFreeTarget": "0x00BFE9BC",
+        "baseDestructorTarget": "0x0099A430",
+        "callSites": [
+          "0x006E7B9E",
+          "0x006E7BBD"
+        ]
       },
       "parentInitializerEvidence": null,
       "deploymentEligible": false,

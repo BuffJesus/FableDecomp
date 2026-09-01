@@ -304,6 +304,36 @@ def validate(manifest_path: Path) -> dict[str, Any]:
             checks = 1
             if trace != expected or actual != "token":
                 errors.append(f"token init differs: expected {expected}/token, got {trace}/{actual}")
+        elif pattern["kind"] == "reference-counted-token-destructor":
+            owner_offset = int(pattern["ownerOffset"], 0)
+            value_offset = int(pattern["valueOffset"], 0)
+            free_target = int(pattern["ownerFreeTarget"], 0)
+            base_target = int(pattern["baseDestructorTarget"], 0)
+            vtable = int(pattern["restoredVtableAddress"], 0)
+            for owner, remaining in ((None, None), (0xCAFE, 1), (0xCAFE, 0)):
+                trace = []
+                function(
+                    lambda offset, value=owner: trace.append(("read-owner", offset)) or value,
+                    lambda token, value=remaining:
+                    trace.append(("decrement", token)) or value,
+                    lambda token: trace.append(("destroy-pointee", token)),
+                    lambda token, target: trace.append(("free-owner", token, target)),
+                    lambda offset, value: trace.append(("write-u32", offset, value)),
+                    lambda target: trace.append(("destroy-base", target)))
+                expected = [("read-owner", owner_offset)]
+                if owner is not None:
+                    expected.append(("decrement", owner))
+                    if remaining == 0:
+                        expected.extend((("destroy-pointee", owner),
+                                         ("free-owner", owner, free_target)))
+                expected.extend((("write-u32", value_offset, 0),
+                                 ("write-u32", owner_offset, 0),
+                                 ("write-u32", 0, vtable),
+                                 ("destroy-base", base_target)))
+                checks += 1
+                if trace != expected:
+                    errors.append(f"owner {owner}/remaining {remaining}: "
+                                  f"expected {expected}, got {trace}")
         else:
             errors.append(f"unsupported semantic pattern {pattern['kind']}")
         rows.append({"targetAddress": entry["targetAddress"], "passed": not errors,

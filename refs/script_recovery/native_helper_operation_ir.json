@@ -8,8 +8,8 @@
     "consumerCalls": 1437,
     "directDependencyCalls": 4967,
     "directDependencyTargets": 206,
-    "semanticPatterns": 23,
-    "luaEmissionReady": 23,
+    "semanticPatterns": 25,
+    "luaEmissionReady": 25,
     "resolvedParentInitializers": 2,
     "resolvedInterfaceCalls": 273,
     "resolvedInterfaceMethods": 62,
@@ -4869,9 +4869,23 @@
       "controlFlow": {
         "if": 2
       },
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "reference-counted-token-destructor",
+          "complete": true,
+          "valueOffset": "0x8",
+          "ownerOffset": "0xc",
+          "restoredVtableAddress": "0x0126008C",
+          "ownerFreeTarget": "0x00BFE9BC",
+          "baseDestructorTarget": "0x0099A430",
+          "callSites": [
+            "0x007E74EE",
+            "0x007E750D"
+          ]
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x0099A2E0",
@@ -6528,9 +6542,23 @@
       "controlFlow": {
         "if": 2
       },
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "reference-counted-token-destructor",
+          "complete": true,
+          "valueOffset": "0x8",
+          "ownerOffset": "0xc",
+          "restoredVtableAddress": "0x0126008C",
+          "ownerFreeTarget": "0x00BFE9BC",
+          "baseDestructorTarget": "0x0099A430",
+          "callSites": [
+            "0x006E7B9E",
+            "0x006E7BBD"
+          ]
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00CD2770",

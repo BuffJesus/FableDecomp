@@ -158,6 +158,19 @@ class NativeHelperDecompileTests(unittest.TestCase):
             "fieldOffset": "0x0", "fieldWidth": 4,
             "retailVtableAddress": "0x01231710", "donorNameTrusted": False})
 
+    def test_reference_counted_token_destructor_preserves_full_teardown(self):
+        body = ("piVar1 = *(int **)(this + 0xc); *piVar1 = *piVar1 + -1; "
+                "if (**(int **)(this + 0xc) == 0) { destroy(); free(); } "
+                "*(undefined4 *)(this + 8) = 0; *(undefined4 *)(this + 0xc) = 0; "
+                "*(undefined ***)this = &PTR__vector_deleting_destructor__0126008c;")
+        direct = [{"target": "0x00BFE9BC", "site": "0x1"},
+                  {"target": "0x0099A430", "site": "0x2"}]
+        pattern = semantic_patterns(body, direct, [],
+            "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase")[0]
+        self.assertEqual(pattern["kind"], "reference-counted-token-destructor")
+        self.assertEqual(pattern["restoredVtableAddress"], "0x0126008C")
+        self.assertEqual(pattern["callSites"], ["0x1", "0x2"])
+
     def test_typed_native_reads_are_complete_semantic_patterns(self):
         field = semantic_patterns(
             "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])
