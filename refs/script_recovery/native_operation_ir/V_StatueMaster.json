@@ -24,6 +24,18 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "directCallTargets": [
+        {
+          "site": "0x00ED4A83",
+          "target": "0x00CBD510",
+          "currentName": "NParticleEngine::CParticleEmitter::DeleteAllParticles"
+        },
+        {
+          "site": "0x00ED4A90",
+          "target": "0x00BFE9BC",
+          "currentName": "MSVCR71.DLL::operator_delete"
+        }
+      ],
       "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -57,6 +69,43 @@
       "strings": [
         "Main",
         ""
+      ],
+      "directCallTargets": [
+        {
+          "site": "0x00ED3AA0",
+          "target": "0x00BFEA1A",
+          "currentName": "MSVCR71.DLL::operator_new"
+        },
+        {
+          "site": "0x00ED3AB9",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00ED3ACC",
+          "target": "0x00CDD450",
+          "currentName": "CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>"
+        },
+        {
+          "site": "0x00ED3AF0",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00ED3AF9",
+          "target": "0x00CB7E50",
+          "currentName": "CGuiVarTransferStruct::Add"
+        },
+        {
+          "site": "0x00ED3B02",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00ED3B12",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        }
       ],
       "entityBindings": [],
       "stateWrites": [
@@ -368,6 +417,208 @@
         "SM_Greatwood",
         "SM_Center"
       ],
+      "directCallTargets": [
+        {
+          "site": "0x00ED3B43",
+          "target": "0x00BFEA1A",
+          "currentName": "MSVCR71.DLL::operator_new"
+        },
+        {
+          "site": "0x00ED3B5C",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00ED3B74",
+          "target": "0x0099EC30",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00ED3B90",
+          "target": "0x00CB8230",
+          "currentName": "CScriptBase::AddEntityScriptBinding"
+        },
+        {
+          "site": "0x00ED3BA1",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00ED3BA8",
+          "target": "0x00BFEA1A",
+          "currentName": "MSVCR71.DLL::operator_new"
+        },
+        {
+          "site": "0x00ED3BC1",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00ED3BD7",
+          "target": "0x0099EC30",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00ED3BF4",
+          "target": "0x00CB8230",
+          "currentName": "CScriptBase::AddEntityScriptBinding"
+        },
+        {
+          "site": "0x00ED3C05",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00ED3C0C",
+          "target": "0x00BFEA1A",
+          "currentName": "MSVCR71.DLL::operator_new"
+        },
+        {
+          "site": "0x00ED3C25",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00ED3C3B",
+          "target": "0x0099EC30",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00ED3C58",
+          "target": "0x00CB8230",
+          "currentName": "CScriptBase::AddEntityScriptBinding"
+        },
+        {
+          "site": "0x00ED3C66",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00ED3C6D",
+          "target": "0x00CB8930",
+          "currentName": "CTCVillage::OnInitialActivate"
+        },
+        {
+          "site": "0x00ED3C88",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00ED3CA6",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00ED3CB6",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00ED3CD4",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00ED3CE4",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00ED3D02",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00ED3D12",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00ED3D30",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00ED3D40",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00ED3D5E",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00ED3DD3",
+          "target": "0x00BFEB28",
+          "currentName": "MSVCR71.DLL::_CIfmod"
+        },
+        {
+          "site": "0x00ED3E5A",
+          "target": "0x00BFEB28",
+          "currentName": "MSVCR71.DLL::_CIfmod"
+        },
+        {
+          "site": "0x00ED3EE1",
+          "target": "0x00BFEB28",
+          "currentName": "MSVCR71.DLL::_CIfmod"
+        },
+        {
+          "site": "0x00ED3F60",
+          "target": "0x00BFEB28",
+          "currentName": "MSVCR71.DLL::_CIfmod"
+        },
+        {
+          "site": "0x00ED3FA1",
+          "target": "0x00BFE9BC",
+          "currentName": "MSVCR71.DLL::operator_delete"
+        },
+        {
+          "site": "0x00ED3FB5",
+          "target": "0x0099A2E0",
+          "currentName": "NHeroInformationScreens::CBase::CBase"
+        },
+        {
+          "site": "0x00ED3FDB",
+          "target": "0x00BFE9BC",
+          "currentName": "MSVCR71.DLL::operator_delete"
+        },
+        {
+          "site": "0x00ED3FEF",
+          "target": "0x0099A2E0",
+          "currentName": "NHeroInformationScreens::CBase::CBase"
+        },
+        {
+          "site": "0x00ED4015",
+          "target": "0x00BFE9BC",
+          "currentName": "MSVCR71.DLL::operator_delete"
+        },
+        {
+          "site": "0x00ED4029",
+          "target": "0x0099A2E0",
+          "currentName": "NHeroInformationScreens::CBase::CBase"
+        },
+        {
+          "site": "0x00ED404F",
+          "target": "0x00BFE9BC",
+          "currentName": "MSVCR71.DLL::operator_delete"
+        },
+        {
+          "site": "0x00ED4063",
+          "target": "0x0099A2E0",
+          "currentName": "NHeroInformationScreens::CBase::CBase"
+        },
+        {
+          "site": "0x00ED4089",
+          "target": "0x00BFE9BC",
+          "currentName": "MSVCR71.DLL::operator_delete"
+        },
+        {
+          "site": "0x00ED409D",
+          "target": "0x0099A2E0",
+          "currentName": "NHeroInformationScreens::CBase::CBase"
+        }
+      ],
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -472,6 +723,7 @@
       "calls": [],
       "indirectCalls": [],
       "strings": [],
+      "directCallTargets": [],
       "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -482,6 +734,7 @@
       "calls": [],
       "indirectCalls": [],
       "strings": [],
+      "directCallTargets": [],
       "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []

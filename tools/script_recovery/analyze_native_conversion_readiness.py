@@ -117,6 +117,9 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
         ir = json.loads(path.read_text(encoding="utf-8-sig"))
         calls = [call["callee"] for life in ir["lifecycle"] for call in life["calls"]]
         indirect = [call for life in ir["lifecycle"] for call in life.get("indirectCalls", [])]
+        direct_targets = [dict(call, role=life["role"])
+                          for life in ir["lifecycle"]
+                          for call in life.get("directCallTargets", [])]
         entity_bindings = [binding for life in ir["lifecycle"]
                            for binding in life.get("entityBindings", [])]
         interface_calls = []
@@ -170,6 +173,8 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
             "anchored": bool(ir.get("evidenceAnchors")), "lifecycleFunctions": len(ir["lifecycle"]),
             "calls": len(calls), "distinctCalls": len(set(calls)), "mappedForgeApis": mapped,
             "indirectCalls": len(indirect),
+            "nativeDirectCalls": len(direct_targets),
+            "nativeDirectCallTargets": direct_targets,
             "entityBindings": entity_bindings,
             "entityBindingCount": len(entity_bindings),
             "completeEntityBindings": sum(binding.get("complete", False)
@@ -228,6 +233,37 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
         category = category_summary.setdefault(row["category"], {"methods": 0, "calls": 0})
         category["methods"] += 1
         category["calls"] += row["calls"]
+    target_rows: dict[str, dict[str, Any]] = {}
+    for row in rows:
+        for call in row["nativeDirectCallTargets"]:
+            address = call["target"].upper().replace("0X", "0x")
+            target = target_rows.setdefault(address, {
+                "targetAddress": address, "calls": 0, "currentNames": set(),
+                "consumers": set(), "roles": set(), "kinds": set(),
+            })
+            target["calls"] += 1
+            target["currentNames"].add(call["currentName"])
+            target["consumers"].add(row["name"])
+            target["roles"].add(call["role"])
+            target["kinds"].add(row["kind"])
+    direct_target_backlog = []
+    for target in target_rows.values():
+        names = sorted(target["currentNames"])
+        roles = sorted(target["roles"])
+        representative = names[0] if names else target["targetAddress"]
+        direct_target_backlog.append({
+            "targetAddress": target["targetAddress"], "calls": target["calls"],
+            "currentNames": names,
+            "category": native_helper_category(representative, set(roles)),
+            "scripts": len(target["consumers"]), "roles": roles,
+            "kinds": sorted(target["kinds"]), "consumers": sorted(target["consumers"]),
+        })
+    direct_target_backlog.sort(
+        key=lambda row: (-row["scripts"], -row["calls"], row["targetAddress"]))
+    # The call-site evidence already lives in the per-script IR. Keep this report
+    # useful for prioritization instead of duplicating all 15k records a second time.
+    for row in rows:
+        del row["nativeDirectCallTargets"]
     return {
         "schema": "forgefse-native-conversion-readiness/0.1",
         "sources": {"catalog": str(catalog_path.resolve()), "ir": str(ir_dir.resolve()),
@@ -253,6 +289,8 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
                     "abiBlockedInterfaceMethods": dict(sorted(abi_blocked_methods.items())),
                     "unresolvedNativeHelperMethods": len(helper_backlog),
                     "unresolvedNativeHelperCalls": sum(helper_calls.values()),
+                    "nativeDirectCalls": sum(row["nativeDirectCalls"] for row in rows),
+                    "nativeDirectCallTargets": len(direct_target_backlog),
                     "nativeHelperCategories": dict(sorted(category_summary.items())),
                     "scriptsWithResolvedInterfaceCalls": sum(bool(row["resolvedInterfaceCalls"]) for row in rows),
                     "entityBindings": sum(row["entityBindingCount"] for row in rows),
@@ -260,6 +298,7 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
                     "scriptsWithEntityBindings": sum(bool(row["entityBindingCount"]) for row in rows),
                     "stages": dict(sorted(stages.items()))},
         "nativeHelperBacklog": helper_backlog,
+        "nativeDirectCallTargetBacklog": direct_target_backlog,
         "scripts": rows,
     }
 

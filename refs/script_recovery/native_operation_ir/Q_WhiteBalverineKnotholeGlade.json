@@ -29,6 +29,23 @@
       ],
       "indirectCalls": [],
       "strings": [],
+      "directCallTargets": [
+        {
+          "site": "0x00E18416",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E1841D",
+          "target": "0x00CBD510",
+          "currentName": "NParticleEngine::CParticleEmitter::DeleteAllParticles"
+        },
+        {
+          "site": "0x00E1842A",
+          "target": "0x00BFE9BC",
+          "currentName": "MSVCR71.DLL::operator_delete"
+        }
+      ],
       "entityBindings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -62,6 +79,43 @@
       "strings": [
         "Main",
         ""
+      ],
+      "directCallTargets": [
+        {
+          "site": "0x00E13E30",
+          "target": "0x00BFEA1A",
+          "currentName": "MSVCR71.DLL::operator_new"
+        },
+        {
+          "site": "0x00E13E49",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13E5C",
+          "target": "0x00CDD450",
+          "currentName": "CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>"
+        },
+        {
+          "site": "0x00E13E80",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13E89",
+          "target": "0x00CB7E50",
+          "currentName": "CGuiVarTransferStruct::Add"
+        },
+        {
+          "site": "0x00E13E92",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E13EA2",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        }
       ],
       "entityBindings": [],
       "stateWrites": [
@@ -1797,6 +1851,1333 @@
         "",
         "CS_WBK_CHIEF3"
       ],
+      "directCallTargets": [
+        {
+          "site": "0x00E13F28",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13F48",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E13F5F",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E13F77",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13F95",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E13FA4",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E13FBA",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E13FD2",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13FEB",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E13FFD",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E1400D",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E1401D",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E1404F",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14058",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14061",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E1406A",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14071",
+          "target": "0x00BFEA1A",
+          "currentName": "MSVCR71.DLL::operator_new"
+        },
+        {
+          "site": "0x00E1408F",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E140A6",
+          "target": "0x0099EC30",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E140C5",
+          "target": "0x00CB8230",
+          "currentName": "CScriptBase::AddEntityScriptBinding"
+        },
+        {
+          "site": "0x00E140DA",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E140E1",
+          "target": "0x00BFEA1A",
+          "currentName": "MSVCR71.DLL::operator_new"
+        },
+        {
+          "site": "0x00E140FA",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14114",
+          "target": "0x0099EC30",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14131",
+          "target": "0x00CB8230",
+          "currentName": "CScriptBase::AddEntityScriptBinding"
+        },
+        {
+          "site": "0x00E14146",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E1414D",
+          "target": "0x00BFEA1A",
+          "currentName": "MSVCR71.DLL::operator_new"
+        },
+        {
+          "site": "0x00E14166",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14180",
+          "target": "0x0099EC30",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E1419D",
+          "target": "0x00CB8230",
+          "currentName": "CScriptBase::AddEntityScriptBinding"
+        },
+        {
+          "site": "0x00E141B2",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E141B9",
+          "target": "0x00BFEA1A",
+          "currentName": "MSVCR71.DLL::operator_new"
+        },
+        {
+          "site": "0x00E141D2",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E141EC",
+          "target": "0x0099EC30",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14209",
+          "target": "0x00CB8230",
+          "currentName": "CScriptBase::AddEntityScriptBinding"
+        },
+        {
+          "site": "0x00E1421E",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14225",
+          "target": "0x00BFEA1A",
+          "currentName": "MSVCR71.DLL::operator_new"
+        },
+        {
+          "site": "0x00E1423E",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14258",
+          "target": "0x0099EC30",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14275",
+          "target": "0x00CB8230",
+          "currentName": "CScriptBase::AddEntityScriptBinding"
+        },
+        {
+          "site": "0x00E1428A",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14291",
+          "target": "0x00BFEA1A",
+          "currentName": "MSVCR71.DLL::operator_new"
+        },
+        {
+          "site": "0x00E142AA",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E142C4",
+          "target": "0x0099EC30",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E142E1",
+          "target": "0x00CB8230",
+          "currentName": "CScriptBase::AddEntityScriptBinding"
+        },
+        {
+          "site": "0x00E142F6",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E142FD",
+          "target": "0x00CB8930",
+          "currentName": "CTCVillage::OnInitialActivate"
+        },
+        {
+          "site": "0x00E14318",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14338",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E1434F",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14367",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14385",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14394",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E143AC",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E143CA",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E143DA",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E143F8",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14417",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14433",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E1444F",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14456",
+          "target": "0x00BFEA1A",
+          "currentName": "MSVCR71.DLL::operator_new"
+        },
+        {
+          "site": "0x00E1446F",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14480",
+          "target": "0x00CDD450",
+          "currentName": "CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>"
+        },
+        {
+          "site": "0x00E144A4",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E144AD",
+          "target": "0x00CB7E50",
+          "currentName": "CGuiVarTransferStruct::Add"
+        },
+        {
+          "site": "0x00E144B6",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E144C4",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E144DA",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E144F5",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14513",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E1452A",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14542",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14560",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E1456B",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14590",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E145A8",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E145D8",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E145E1",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E145F0",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14608",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14618",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14628",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E1466D",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E14676",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E1467F",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14688",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14691",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E146A1",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E146B1",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E146C1",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E146F3",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E146FC",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14705",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E1470E",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14722",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14736",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E1475B",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14772",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E1479A",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E147B8",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E147C9",
+          "target": "0x007E72A0",
+          "currentName": "CCarriedReadableDef::CCarriedReadableDef"
+        },
+        {
+          "site": "0x00E147D2",
+          "target": "0x007E72A0",
+          "currentName": "CCarriedReadableDef::CCarriedReadableDef"
+        },
+        {
+          "site": "0x00E14808",
+          "target": "0x00CDBF70",
+          "currentName": "StdMap_Construct_API"
+        },
+        {
+          "site": "0x00E14818",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E1482B",
+          "target": "0x00CD3D2E",
+          "currentName": "std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_>::operator[]"
+        },
+        {
+          "site": "0x00E14832",
+          "target": "0x008ABD10",
+          "currentName": "CScriptGameResourceObjectScriptedThingBase::operator="
+        },
+        {
+          "site": "0x00E1483B",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E1484B",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E1485E",
+          "target": "0x00CD3D2E",
+          "currentName": "std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_>::operator[]"
+        },
+        {
+          "site": "0x00E14865",
+          "target": "0x008ABD10",
+          "currentName": "CScriptGameResourceObjectScriptedThingBase::operator="
+        },
+        {
+          "site": "0x00E1486E",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14877",
+          "target": "0x006E7B60",
+          "currentName": "CCarriedReadableDef::CCarriedReadableDef"
+        },
+        {
+          "site": "0x00E14887",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E148A5",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E148D1",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E148E6",
+          "target": "0x00CBFB7D",
+          "currentName": "RunCutsceneMacro_Func"
+        },
+        {
+          "site": "0x00E148EF",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14909",
+          "target": "0x00CD23B9",
+          "currentName": "C3DMeshInfo::HasPhysicsMesh"
+        },
+        {
+          "site": "0x00E14916",
+          "target": "0x00CD2770",
+          "currentName": "CMemoryDataOutputStream::Clear"
+        },
+        {
+          "site": "0x00E1492B",
+          "target": "0x006E7B80",
+          "currentName": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
+        },
+        {
+          "site": "0x00E14934",
+          "target": "0x00CDBFB0",
+          "currentName": "StdMap_Destroy_API"
+        },
+        {
+          "site": "0x00E1493D",
+          "target": "0x007E74D0",
+          "currentName": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
+        },
+        {
+          "site": "0x00E14946",
+          "target": "0x007E74D0",
+          "currentName": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
+        },
+        {
+          "site": "0x00E14956",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14966",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14976",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E149A8",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E149B1",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E149BA",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E149C3",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E149D3",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14A04",
+          "target": "0x00CBE2FF",
+          "currentName": "IsDistanceBetweenThingsUnder"
+        },
+        {
+          "site": "0x00E14A15",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E14A1E",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14A31",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14A49",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14A7E",
+          "target": "0x00CBE2FF",
+          "currentName": "IsDistanceBetweenThingsUnder"
+        },
+        {
+          "site": "0x00E14A8F",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E14A98",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14AA3",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14ABB",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14ACB",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14ADB",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14B0D",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14B16",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14B1F",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14B28",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14B45",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14B5D",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14B8D",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E14B96",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14BA5",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14BBD",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14BCD",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14BDD",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14C3D",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E14C46",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E14C4F",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14C58",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14C61",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14C7A",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14C8E",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14CB8",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14CCF",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14CFA",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14D18",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14D2D",
+          "target": "0x007E72A0",
+          "currentName": "CCarriedReadableDef::CCarriedReadableDef"
+        },
+        {
+          "site": "0x00E14D36",
+          "target": "0x007E72A0",
+          "currentName": "CCarriedReadableDef::CCarriedReadableDef"
+        },
+        {
+          "site": "0x00E14D6C",
+          "target": "0x00CDBF70",
+          "currentName": "StdMap_Construct_API"
+        },
+        {
+          "site": "0x00E14D7C",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14D8F",
+          "target": "0x00CD3D2E",
+          "currentName": "std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_>::operator[]"
+        },
+        {
+          "site": "0x00E14D96",
+          "target": "0x008ABD10",
+          "currentName": "CScriptGameResourceObjectScriptedThingBase::operator="
+        },
+        {
+          "site": "0x00E14D9F",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14DAF",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14DC2",
+          "target": "0x00CD3D2E",
+          "currentName": "std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_>::operator[]"
+        },
+        {
+          "site": "0x00E14DC9",
+          "target": "0x008ABD10",
+          "currentName": "CScriptGameResourceObjectScriptedThingBase::operator="
+        },
+        {
+          "site": "0x00E14DD2",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14DDB",
+          "target": "0x006E7B60",
+          "currentName": "CCarriedReadableDef::CCarriedReadableDef"
+        },
+        {
+          "site": "0x00E14DEB",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14E09",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14E35",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14E4A",
+          "target": "0x00CBFB7D",
+          "currentName": "RunCutsceneMacro_Func"
+        },
+        {
+          "site": "0x00E14E53",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14E6D",
+          "target": "0x00CD23B9",
+          "currentName": "C3DMeshInfo::HasPhysicsMesh"
+        },
+        {
+          "site": "0x00E14E7A",
+          "target": "0x00CD2770",
+          "currentName": "CMemoryDataOutputStream::Clear"
+        },
+        {
+          "site": "0x00E14E8F",
+          "target": "0x006E7B80",
+          "currentName": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
+        },
+        {
+          "site": "0x00E14E98",
+          "target": "0x00CDBFB0",
+          "currentName": "StdMap_Destroy_API"
+        },
+        {
+          "site": "0x00E14EA1",
+          "target": "0x007E74D0",
+          "currentName": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
+        },
+        {
+          "site": "0x00E14EAA",
+          "target": "0x007E74D0",
+          "currentName": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
+        },
+        {
+          "site": "0x00E14EB9",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14ED0",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14EE7",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14EFF",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14F0F",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14F1F",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E14F51",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14F5A",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14F63",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14F6C",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E14F96",
+          "target": "0x00BFEA70",
+          "currentName": "__ftol2"
+        },
+        {
+          "site": "0x00E14FAE",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14FC5",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E14FDC",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E1500C",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E15032",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E15050",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E15070",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E15088",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E150B8",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E150C1",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E150D0",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E150E8",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E150F8",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E15108",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E1514D",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E15156",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E1515F",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E15168",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E15171",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E15181",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E15191",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E151A1",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E151E6",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E151EF",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E151F8",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E15201",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E1520A",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E1521A",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E1522A",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E1523A",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E1527F",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E15288",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E15291",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E1529A",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E152A3",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E152BA",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E152CE",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E152F3",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E1531A",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E15338",
+          "target": "0x00CB7940",
+          "currentName": "CScriptBase::IsActiveThreadTerminating"
+        },
+        {
+          "site": "0x00E15349",
+          "target": "0x007E72A0",
+          "currentName": "CCarriedReadableDef::CCarriedReadableDef"
+        },
+        {
+          "site": "0x00E15352",
+          "target": "0x007E72A0",
+          "currentName": "CCarriedReadableDef::CCarriedReadableDef"
+        },
+        {
+          "site": "0x00E15388",
+          "target": "0x00CDBF70",
+          "currentName": "StdMap_Construct_API"
+        },
+        {
+          "site": "0x00E15398",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E153AB",
+          "target": "0x00CD3D2E",
+          "currentName": "std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_>::operator[]"
+        },
+        {
+          "site": "0x00E153B2",
+          "target": "0x008ABD10",
+          "currentName": "CScriptGameResourceObjectScriptedThingBase::operator="
+        },
+        {
+          "site": "0x00E153BB",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E153CB",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E153DE",
+          "target": "0x00CD3D2E",
+          "currentName": "std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_>::operator[]"
+        },
+        {
+          "site": "0x00E153E5",
+          "target": "0x008ABD10",
+          "currentName": "CScriptGameResourceObjectScriptedThingBase::operator="
+        },
+        {
+          "site": "0x00E153EE",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E153F7",
+          "target": "0x006E7B60",
+          "currentName": "CCarriedReadableDef::CCarriedReadableDef"
+        },
+        {
+          "site": "0x00E15407",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E15425",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E15451",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E15466",
+          "target": "0x00CBFB7D",
+          "currentName": "RunCutsceneMacro_Func"
+        },
+        {
+          "site": "0x00E1546F",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E15485",
+          "target": "0x00CD23B9",
+          "currentName": "C3DMeshInfo::HasPhysicsMesh"
+        },
+        {
+          "site": "0x00E15492",
+          "target": "0x00CD2770",
+          "currentName": "CMemoryDataOutputStream::Clear"
+        },
+        {
+          "site": "0x00E154A7",
+          "target": "0x006E7B80",
+          "currentName": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
+        },
+        {
+          "site": "0x00E154B0",
+          "target": "0x00CDBFB0",
+          "currentName": "StdMap_Destroy_API"
+        },
+        {
+          "site": "0x00E154B9",
+          "target": "0x007E74D0",
+          "currentName": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
+        },
+        {
+          "site": "0x00E154C2",
+          "target": "0x007E74D0",
+          "currentName": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
+        },
+        {
+          "site": "0x00E154CF",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        },
+        {
+          "site": "0x00E154D8",
+          "target": "0x004AA840",
+          "currentName": "C3DClothPrimitive::~C3DClothPrimitive"
+        }
+      ],
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -2121,6 +3502,108 @@
         "",
         "TEXT_QST_BOAST_DESCRIPTION_NODAMAGE"
       ],
+      "directCallTargets": [
+        {
+          "site": "0x00E13C73",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13C83",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13CA1",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E13CAA",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E13CBA",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13CCA",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13CE8",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E13CF1",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E13D01",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13D11",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13D2F",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E13D38",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E13D48",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13D58",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13D8F",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E13D98",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E13DA8",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13DB8",
+          "target": "0x0099EBF0",
+          "currentName": "CCharString::CCharString"
+        },
+        {
+          "site": "0x00E13DED",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        },
+        {
+          "site": "0x00E13DF6",
+          "target": "0x0099EAE0",
+          "currentName": "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+        }
+      ],
       "entityBindings": [],
       "stateWrites": [
         {
@@ -2138,6 +3621,13 @@
       "indirectCalls": [],
       "strings": [
         "QuestStartScreenShown"
+      ],
+      "directCallTargets": [
+        {
+          "site": "0x00E13EF8",
+          "target": "0x004045C0",
+          "currentName": "CPersistContext::Transfer<signed_char>"
+        }
       ],
       "entityBindings": [],
       "stateWrites": [],

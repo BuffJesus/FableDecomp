@@ -122,6 +122,30 @@ class NativeConversionReadinessTests(unittest.TestCase):
                 "category": "engine-or-script-helper", "scripts": 2, "roles": ["Main"],
                 "kinds": ["quest", "village"], "consumers": ["Q_A", "V_B"]})
 
+    def test_direct_call_backlog_is_keyed_by_retail_target_address(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "ir").mkdir()
+            (root / "catalog.json").write_text(json.dumps({"scripts": [
+                {"name": "Q_A", "kind": "quest"}, {"name": "V_B", "kind": "village"}]}))
+            (root / "manifest.json").write_text(json.dumps({"functions": []}))
+            for script, donor in (("Q_A", "WrongDonorA"), ("V_B", "WrongDonorB")):
+                life = [{"role": role, "address": "0x1", "calls": [], "indirectCalls": [],
+                         "directCallTargets": []}
+                        for role in ("destructor", "RegisterMain", "Main", "Init", "OnPersist")]
+                life[2]["directCallTargets"] = [{
+                    "site": "0x100", "target": "0x00ABCDEF", "currentName": donor}]
+                (root / "ir" / f"{script}.json").write_text(json.dumps({
+                    "script": script, "allocatorAddress": "0x1", "vtableAddress": "0x2",
+                    "evidenceAnchors": [], "lifecycle": life}))
+            result = analyze(root / "catalog.json", root / "ir", root / "manifest.json")
+            self.assertEqual(result["summary"]["nativeDirectCalls"], 2)
+            self.assertEqual(result["summary"]["nativeDirectCallTargets"], 1)
+            target = result["nativeDirectCallTargetBacklog"][0]
+            self.assertEqual(target["targetAddress"], "0x00ABCDEF")
+            self.assertEqual(target["currentNames"], ["WrongDonorA", "WrongDonorB"])
+            self.assertEqual(target["consumers"], ["Q_A", "V_B"])
+
     def test_entity_binding_registration_is_structural_evidence_not_helper_backlog(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

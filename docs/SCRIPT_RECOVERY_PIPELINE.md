@@ -143,6 +143,26 @@ speculative ports. `compare_seed_native_ir.py` correlates those
 facts with reconstructed bindings, literals, and persistence keys across all six packages; results and
 known parent-vs-entity scope limits are documented in `docs/SEED_NATIVE_OPERATION_COMPARISON.md`.
 
+`ExportScriptLifecycleDirectCalls.java` also walks the actual instructions in all five lifecycle
+functions and records every direct call's site and target address. The registry allocator evidence
+drives 160 scripts; the separately evidenced direct registry allocator
+`Expression_Follow 00eea3e0` supplies the final catalog entry. Joining on allocator address (rather
+than provisional script or Function ID names) enriches all 161 operation-IR artifacts with 15,300
+call sites targeting 233 exact retail addresses. `nativeDirectCallTargetBacklog` groups those targets
+by address while retaining every current Ghidra name, consumer, lifecycle role, and script kind.
+Names remain hints—the target address is the stable identity when imported donor labels disagree.
+
+The reproducible headless export accepts the correlated TSV followed by explicit name/address pairs:
+
+```text
+-postScript ExportScriptLifecycleDirectCalls.java registry_allocator_evidence.tsv \
+  script_lifecycle_direct_calls.json Expression_Follow 00eea3e0
+```
+
+Pass the resulting document to each IR extraction with
+`--direct-calls script_lifecycle_direct_calls.json`; lifecycle addresses are checked before evidence
+is accepted, so stale or incorrectly joined exports fail regeneration.
+
 Direct-call extraction starts at the decompiled function body's opening brace. This prevents the
 function declaration itself from being misclassified as a self-call, and Ghidra p-code operators such
 as `SUB41` and `CONCAT44` are retained as expressions rather than invented native dependencies. After

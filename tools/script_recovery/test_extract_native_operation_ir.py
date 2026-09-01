@@ -1,7 +1,9 @@
 import unittest
 from pathlib import Path
 
-from tools.script_recovery.extract_native_operation_ir import calls, entity_bindings, extract, indirect_calls
+from tools.script_recovery.extract_native_operation_ir import (
+    calls, entity_bindings, extract, indirect_calls, load_direct_call_evidence,
+)
 from tools.script_recovery.compare_seed_native_ir import compare
 
 
@@ -88,6 +90,14 @@ class NativeOperationIRTests(unittest.TestCase):
         self.assertEqual([row["entityName"] for row in main["entityBindings"]],
                          ["MeetSisterMessenger", "MeetSisterSister"])
         self.assertTrue(all(row["complete"] for row in main["entityBindings"]))
+
+    def test_direct_calls_join_by_allocator_not_provisional_script_name(self):
+        evidence = load_direct_call_evidence(
+            Path("ghidra_out/script_recovery/script_lifecycle_direct_calls.json"))
+        result = extract(Path("refs/script_recovery/native_clusters/Expression_Follow.json"), evidence)
+        self.assertEqual(result["script"], "Expression_Follow")
+        self.assertTrue(any(life["directCallTargets"] for life in result["lifecycle"]))
+        self.assertEqual(result["allocatorAddress"], "0x00EEA3E0")
 
     def test_all_seed_bindings_are_correlated(self):
         result = compare(Path("refs/script_recovery/seed_corpus/sources"),

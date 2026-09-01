@@ -21,6 +21,18 @@ import java.util.List;
 public class ExportNativeScriptCluster extends GhidraScript {
     private static final String[] ROLES = {"destructor", "RegisterMain", "Main", "Init", "OnPersist"};
 
+    private static class DirectCall {
+        Address site;
+        Address target;
+        String name;
+
+        DirectCall(Address site, Address target, String name) {
+            this.site = site;
+            this.target = target;
+            this.name = name;
+        }
+    }
+
     private String json(String value) {
         if (value == null) return "null";
         return "\"" + value.replace("\\", "\\\\").replace("\"", "\\\"")
@@ -78,6 +90,32 @@ public class ExportNativeScriptCluster extends GhidraScript {
         DecompileResults result = decompiler.decompileFunction(function, 60, monitor);
         if (result == null || !result.decompileCompleted()) return null;
         return result.getDecompiledFunction().getC();
+    }
+
+    private List<DirectCall> directCalls(Function function) {
+        List<DirectCall> result = new ArrayList<>();
+        InstructionIterator instructions = currentProgram.getListing().getInstructions(function.getBody(), true);
+        while (instructions.hasNext()) {
+            Instruction instruction = instructions.next();
+            if (!instruction.getFlowType().isCall()) continue;
+            for (Address target : instruction.getFlows()) {
+                Function called = getFunctionAt(target);
+                if (called == null) called = getFunctionContaining(target);
+                result.add(new DirectCall(instruction.getAddress(), target,
+                    called == null ? null : called.getName(true)));
+            }
+        }
+        return result;
+    }
+
+    private String directCallsJson(Function function) {
+        List<String> rows = new ArrayList<>();
+        for (DirectCall call : directCalls(function)) {
+            rows.add("{\"site\":" + json("0x" + call.site.toString().toUpperCase()) +
+                ",\"target\":" + json("0x" + call.target.toString().toUpperCase()) +
+                ",\"currentName\":" + json(call.name) + "}");
+        }
+        return "[" + String.join(",", rows) + "]";
     }
 
     @Override public void run() throws Exception {
@@ -150,6 +188,7 @@ public class ExportNativeScriptCluster extends GhidraScript {
                 output.println("      \"role\": " + json(ROLES[slot]) + ",");
                 output.println("      \"address\": " + json("0x" + function.getEntryPoint().toString().toUpperCase()) + ",");
                 output.println("      \"currentName\": " + json(function.getName()) + ",");
+                output.println("      \"directCalls\": " + directCallsJson(function) + ",");
                 output.println("      \"decompile\": " + json(lifecycleDecompiles.get(slot)));
                 output.println("    }" + (slot + 1 == lifecycle.size() ? "" : ","));
             }

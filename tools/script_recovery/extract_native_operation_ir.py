@@ -129,14 +129,50 @@ def entity_bindings(text: str) -> list[dict[str, Any]]:
     return result
 
 
-def extract(cluster_path: Path) -> dict[str, Any]:
+def normalize_address(value: str) -> str:
+    return f"0x{int(value, 16):08X}"
+
+
+def load_direct_call_evidence(path: Path) -> dict[str, dict[str, Any]]:
+    """Index Ghidra instruction-level calls by allocator, the stable retail identity."""
+    document = json.loads(path.read_text(encoding="utf-8-sig"))
+    result = {}
+    for script in document["scripts"]:
+        key = normalize_address(script["allocatorAddress"])
+        if key in result:
+            raise ValueError(f"duplicate allocator in direct-call evidence: {key}")
+        result[key] = script
+    return result
+
+
+def extract(cluster_path: Path,
+            direct_call_evidence: dict[str, dict[str, Any]] | None = None) -> dict[str, Any]:
     cluster = json.loads(cluster_path.read_text(encoding="utf-8-sig"))
+    evidence = None
+    if direct_call_evidence is not None:
+        allocator = normalize_address(cluster["allocatorAddress"])
+        evidence = direct_call_evidence.get(allocator)
+        if evidence is None:
+            raise ValueError(f"no direct-call evidence for allocator {allocator} ({cluster['script']})")
+        evidence_lifecycle = {row["role"]: row for row in evidence["lifecycle"]}
     lifecycle = []
     for function in cluster["lifecycle"]:
         text = function.get("decompile") or ""
+        direct_calls = []
+        if evidence is not None:
+            direct = evidence_lifecycle.get(function["role"])
+            if direct is None:
+                raise ValueError(f"missing {function['role']} direct-call evidence for {cluster['script']}")
+            if normalize_address(direct["address"]) != normalize_address(function["address"]):
+                raise ValueError(
+                    f"{cluster['script']} {function['role']} address mismatch: "
+                    f"{function['address']} != {direct['address']}"
+                )
+            direct_calls = direct["directCalls"]
         lifecycle.append({
             "role": function["role"], "address": function["address"],
             "calls": calls(text), "indirectCalls": indirect_calls(text), "strings": strings(text),
+            "directCallTargets": direct_calls,
             "entityBindings": entity_bindings(text),
             "stateWrites": [{"fieldOffset": match.group(1).lower(), "valueExpression": match.group(2).strip(),
                               "offset": match.start()} for match in STATE_WRITE_RE.finditer(text)],
@@ -154,9 +190,11 @@ def extract(cluster_path: Path) -> dict[str, Any]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("cluster", type=Path)
+    parser.add_argument("--direct-calls", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    result = extract(args.cluster)
+    evidence = load_direct_call_evidence(args.direct_calls) if args.direct_calls else None
+    result = extract(args.cluster, evidence)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"script": result["script"], "functions": len(result["lifecycle"]),

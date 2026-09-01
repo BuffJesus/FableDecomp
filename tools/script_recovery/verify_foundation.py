@@ -91,6 +91,15 @@ def verify(root: Path) -> dict[str, Any]:
     check("native lifecycle clusters have operation IR",
           len(operation_rows) >= 16 and all(len(row.get("lifecycle", [])) == 5 for row in operation_rows),
           [row.get("script") for row in operation_rows])
+    direct_calls = [call for row in operation_rows for life in row.get("lifecycle", [])
+                    for call in life.get("directCallTargets", [])]
+    direct_targets = {call.get("target") for call in direct_calls}
+    check("native direct-call addresses cover the retail catalog",
+          len(operation_rows) == 161 and len(direct_calls) == 15300 and
+          len(direct_targets) == 233 and all(call.get("site") and call.get("target")
+                                             for call in direct_calls),
+          {"scripts": len(operation_rows), "calls": len(direct_calls),
+           "targets": len(direct_targets)})
     comparison = load(root / "seed_native_comparison.json")
     bindings_missing = {row["package"]: row["luaBindingsMissingNativeLifecycle"]
                         for row in comparison["scripts"] if row["luaBindingsMissingNativeLifecycle"]}

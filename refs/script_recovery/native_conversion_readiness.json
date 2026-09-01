@@ -54,6 +54,8 @@
     },
     "unresolvedNativeHelperMethods": 158,
     "unresolvedNativeHelperCalls": 1603,
+    "nativeDirectCalls": 15300,
+    "nativeDirectCallTargets": 233,
     "nativeHelperCategories": {
       "engine-or-script-helper": {
         "methods": 85,
@@ -3139,6 +3141,6636 @@
       ]
     }
   ],
+  "nativeDirectCallTargetBacklog": [
+    {
+      "targetAddress": "0x0099EAE0",
+      "calls": 4051,
+      "currentNames": [
+        "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 161,
+      "roles": [
+        "Init",
+        "Main",
+        "OnPersist",
+        "RegisterMain",
+        "destructor"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "BenTestScripts",
+        "CS_OakValeRevisited",
+        "CS_PlayCutscene",
+        "DanyalTestScripts",
+        "Empty",
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Gameflow",
+        "GameflowAssistance",
+        "Global_DebugCycleThroughSpeech",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "Global_ToggleTimeDisplay",
+        "Global_WatchForHeroDeath",
+        "GuildSealTriggerTest",
+        "HeroBoasts",
+        "HeroTurningDebugger",
+        "HitSwitchTest",
+        "LadyGreyWifeManager",
+        "MarkTestScripts",
+        "OracleMinigameTest",
+        "PersonalScriptMain",
+        "PersonalScript_Aardvark",
+        "PersonalScript_Empty",
+        "PersonalScript_GlobalThings",
+        "PersonalScript_alextest",
+        "ProximityPodiumTest",
+        "QR_EscortTrader",
+        "QR_EscortTrader_Manager",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_MeetSister",
+        "QS_ScytheInfo",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_ArenaHoldingScript",
+        "Q_AwakeningTheOracle",
+        "Q_BanditCamp",
+        "Q_BanditCampBossBattle",
+        "Q_BanditCampHoldingScript",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_CinemaTest",
+        "Q_DragonBossFight",
+        "Q_EndGame",
+        "Q_EndGameBossBattle",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionCamp",
+        "Q_MinionClifftopChase",
+        "Q_NewOakValeIntro",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_OrchardFarmRaidEvil",
+        "Q_OrchardFarmRaidGood",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_SecretPassage",
+        "Q_SummoningTheShip",
+        "Q_SunnyvaleMaster",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "Q_WizardBattle",
+        "ShowTargetedThingHealth",
+        "TestNewNav1",
+        "TestNewNav2",
+        "TestNewNav3",
+        "TestNewNav4",
+        "TestNewNav5",
+        "TestQuestCard1",
+        "TestQuestCard2",
+        "TestQuestCard3",
+        "TestTheInventory",
+        "TonyTestScripts",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BanditCampPath",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_BodyGuard",
+        "V_BookCollecting",
+        "V_Bordello",
+        "V_ChapelOfEvil",
+        "V_ChickenKicking",
+        "V_DemonDoors",
+        "V_ExposeMayor",
+        "V_Fisherman",
+        "V_FishingCompetition",
+        "V_FisticuffsClub",
+        "V_GhostGrannyNecklace",
+        "V_GuildMaster",
+        "V_HauntedHouse",
+        "V_HeroDolls",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_KnotholeGladeGates",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwist",
+        "V_MurderTwistFinal",
+        "V_Oracle",
+        "V_ParanoidWhispers",
+        "V_PicnicAreaAfterWaspBoss",
+        "V_RandomPopulationSim",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_SingingStones",
+        "V_StatueMaster",
+        "V_SwordInTheStone",
+        "V_TalentlessBard",
+        "V_TempleOfLight",
+        "V_TourGuide",
+        "V_TravellingHeroes",
+        "V_TrophyDealer",
+        "alextest",
+        "bandit_level_cutscene",
+        "guy_script",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x0099EBF0",
+      "calls": 3831,
+      "currentNames": [
+        "CCharString::CCharString"
+      ],
+      "category": "object-lifetime",
+      "scripts": 161,
+      "roles": [
+        "Init",
+        "Main",
+        "RegisterMain"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "BenTestScripts",
+        "CS_OakValeRevisited",
+        "CS_PlayCutscene",
+        "DanyalTestScripts",
+        "Empty",
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Gameflow",
+        "GameflowAssistance",
+        "Global_DebugCycleThroughSpeech",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "Global_ToggleTimeDisplay",
+        "Global_WatchForHeroDeath",
+        "GuildSealTriggerTest",
+        "HeroBoasts",
+        "HeroTurningDebugger",
+        "HitSwitchTest",
+        "LadyGreyWifeManager",
+        "MarkTestScripts",
+        "OracleMinigameTest",
+        "PersonalScriptMain",
+        "PersonalScript_Aardvark",
+        "PersonalScript_Empty",
+        "PersonalScript_GlobalThings",
+        "PersonalScript_alextest",
+        "ProximityPodiumTest",
+        "QR_EscortTrader",
+        "QR_EscortTrader_Manager",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_MeetSister",
+        "QS_ScytheInfo",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_ArenaHoldingScript",
+        "Q_AwakeningTheOracle",
+        "Q_BanditCamp",
+        "Q_BanditCampBossBattle",
+        "Q_BanditCampHoldingScript",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_CinemaTest",
+        "Q_DragonBossFight",
+        "Q_EndGame",
+        "Q_EndGameBossBattle",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionCamp",
+        "Q_MinionClifftopChase",
+        "Q_NewOakValeIntro",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_OrchardFarmRaidEvil",
+        "Q_OrchardFarmRaidGood",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_SecretPassage",
+        "Q_SummoningTheShip",
+        "Q_SunnyvaleMaster",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "Q_WizardBattle",
+        "ShowTargetedThingHealth",
+        "TestNewNav1",
+        "TestNewNav2",
+        "TestNewNav3",
+        "TestNewNav4",
+        "TestNewNav5",
+        "TestQuestCard1",
+        "TestQuestCard2",
+        "TestQuestCard3",
+        "TestTheInventory",
+        "TonyTestScripts",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BanditCampPath",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_BodyGuard",
+        "V_BookCollecting",
+        "V_Bordello",
+        "V_ChapelOfEvil",
+        "V_ChickenKicking",
+        "V_DemonDoors",
+        "V_ExposeMayor",
+        "V_Fisherman",
+        "V_FishingCompetition",
+        "V_FisticuffsClub",
+        "V_GhostGrannyNecklace",
+        "V_GuildMaster",
+        "V_HauntedHouse",
+        "V_HeroDolls",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_KnotholeGladeGates",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwist",
+        "V_MurderTwistFinal",
+        "V_Oracle",
+        "V_ParanoidWhispers",
+        "V_PicnicAreaAfterWaspBoss",
+        "V_RandomPopulationSim",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_SingingStones",
+        "V_StatueMaster",
+        "V_SwordInTheStone",
+        "V_TalentlessBard",
+        "V_TempleOfLight",
+        "V_TourGuide",
+        "V_TravellingHeroes",
+        "V_TrophyDealer",
+        "alextest",
+        "bandit_level_cutscene",
+        "guy_script",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x00BFEA1A",
+      "calls": 994,
+      "currentNames": [
+        "MSVCR71.DLL::operator_new"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 161,
+      "roles": [
+        "Init",
+        "Main",
+        "RegisterMain"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "BenTestScripts",
+        "CS_OakValeRevisited",
+        "CS_PlayCutscene",
+        "DanyalTestScripts",
+        "Empty",
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Gameflow",
+        "GameflowAssistance",
+        "Global_DebugCycleThroughSpeech",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "Global_ToggleTimeDisplay",
+        "Global_WatchForHeroDeath",
+        "GuildSealTriggerTest",
+        "HeroBoasts",
+        "HeroTurningDebugger",
+        "HitSwitchTest",
+        "LadyGreyWifeManager",
+        "MarkTestScripts",
+        "OracleMinigameTest",
+        "PersonalScriptMain",
+        "PersonalScript_Aardvark",
+        "PersonalScript_Empty",
+        "PersonalScript_GlobalThings",
+        "PersonalScript_alextest",
+        "ProximityPodiumTest",
+        "QR_EscortTrader",
+        "QR_EscortTrader_Manager",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_MeetSister",
+        "QS_ScytheInfo",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_ArenaHoldingScript",
+        "Q_AwakeningTheOracle",
+        "Q_BanditCamp",
+        "Q_BanditCampBossBattle",
+        "Q_BanditCampHoldingScript",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_CinemaTest",
+        "Q_DragonBossFight",
+        "Q_EndGame",
+        "Q_EndGameBossBattle",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionCamp",
+        "Q_MinionClifftopChase",
+        "Q_NewOakValeIntro",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_OrchardFarmRaidEvil",
+        "Q_OrchardFarmRaidGood",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_SecretPassage",
+        "Q_SummoningTheShip",
+        "Q_SunnyvaleMaster",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "Q_WizardBattle",
+        "ShowTargetedThingHealth",
+        "TestNewNav1",
+        "TestNewNav2",
+        "TestNewNav3",
+        "TestNewNav4",
+        "TestNewNav5",
+        "TestQuestCard1",
+        "TestQuestCard2",
+        "TestQuestCard3",
+        "TestTheInventory",
+        "TonyTestScripts",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BanditCampPath",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_BodyGuard",
+        "V_BookCollecting",
+        "V_Bordello",
+        "V_ChapelOfEvil",
+        "V_ChickenKicking",
+        "V_DemonDoors",
+        "V_ExposeMayor",
+        "V_Fisherman",
+        "V_FishingCompetition",
+        "V_FisticuffsClub",
+        "V_GhostGrannyNecklace",
+        "V_GuildMaster",
+        "V_HauntedHouse",
+        "V_HeroDolls",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_KnotholeGladeGates",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwist",
+        "V_MurderTwistFinal",
+        "V_Oracle",
+        "V_ParanoidWhispers",
+        "V_PicnicAreaAfterWaspBoss",
+        "V_RandomPopulationSim",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_SingingStones",
+        "V_StatueMaster",
+        "V_SwordInTheStone",
+        "V_TalentlessBard",
+        "V_TempleOfLight",
+        "V_TourGuide",
+        "V_TravellingHeroes",
+        "V_TrophyDealer",
+        "alextest",
+        "bandit_level_cutscene",
+        "guy_script",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x00CB7E50",
+      "calls": 369,
+      "currentNames": [
+        "CGuiVarTransferStruct::Add"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 161,
+      "roles": [
+        "Init",
+        "Main",
+        "RegisterMain"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "BenTestScripts",
+        "CS_OakValeRevisited",
+        "CS_PlayCutscene",
+        "DanyalTestScripts",
+        "Empty",
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Gameflow",
+        "GameflowAssistance",
+        "Global_DebugCycleThroughSpeech",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "Global_ToggleTimeDisplay",
+        "Global_WatchForHeroDeath",
+        "GuildSealTriggerTest",
+        "HeroBoasts",
+        "HeroTurningDebugger",
+        "HitSwitchTest",
+        "LadyGreyWifeManager",
+        "MarkTestScripts",
+        "OracleMinigameTest",
+        "PersonalScriptMain",
+        "PersonalScript_Aardvark",
+        "PersonalScript_Empty",
+        "PersonalScript_GlobalThings",
+        "PersonalScript_alextest",
+        "ProximityPodiumTest",
+        "QR_EscortTrader",
+        "QR_EscortTrader_Manager",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_MeetSister",
+        "QS_ScytheInfo",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_ArenaHoldingScript",
+        "Q_AwakeningTheOracle",
+        "Q_BanditCamp",
+        "Q_BanditCampBossBattle",
+        "Q_BanditCampHoldingScript",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_CinemaTest",
+        "Q_DragonBossFight",
+        "Q_EndGame",
+        "Q_EndGameBossBattle",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionCamp",
+        "Q_MinionClifftopChase",
+        "Q_NewOakValeIntro",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_OrchardFarmRaidEvil",
+        "Q_OrchardFarmRaidGood",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_SecretPassage",
+        "Q_SummoningTheShip",
+        "Q_SunnyvaleMaster",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "Q_WizardBattle",
+        "ShowTargetedThingHealth",
+        "TestNewNav1",
+        "TestNewNav2",
+        "TestNewNav3",
+        "TestNewNav4",
+        "TestNewNav5",
+        "TestQuestCard1",
+        "TestQuestCard2",
+        "TestQuestCard3",
+        "TestTheInventory",
+        "TonyTestScripts",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BanditCampPath",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_BodyGuard",
+        "V_BookCollecting",
+        "V_Bordello",
+        "V_ChapelOfEvil",
+        "V_ChickenKicking",
+        "V_DemonDoors",
+        "V_ExposeMayor",
+        "V_Fisherman",
+        "V_FishingCompetition",
+        "V_FisticuffsClub",
+        "V_GhostGrannyNecklace",
+        "V_GuildMaster",
+        "V_HauntedHouse",
+        "V_HeroDolls",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_KnotholeGladeGates",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwist",
+        "V_MurderTwistFinal",
+        "V_Oracle",
+        "V_ParanoidWhispers",
+        "V_PicnicAreaAfterWaspBoss",
+        "V_RandomPopulationSim",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_SingingStones",
+        "V_StatueMaster",
+        "V_SwordInTheStone",
+        "V_TalentlessBard",
+        "V_TempleOfLight",
+        "V_TourGuide",
+        "V_TravellingHeroes",
+        "V_TrophyDealer",
+        "alextest",
+        "bandit_level_cutscene",
+        "guy_script",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x00CDD450",
+      "calls": 368,
+      "currentNames": [
+        "CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>"
+      ],
+      "category": "script-runtime",
+      "scripts": 161,
+      "roles": [
+        "Init",
+        "Main",
+        "RegisterMain"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "BenTestScripts",
+        "CS_OakValeRevisited",
+        "CS_PlayCutscene",
+        "DanyalTestScripts",
+        "Empty",
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Gameflow",
+        "GameflowAssistance",
+        "Global_DebugCycleThroughSpeech",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "Global_ToggleTimeDisplay",
+        "Global_WatchForHeroDeath",
+        "GuildSealTriggerTest",
+        "HeroBoasts",
+        "HeroTurningDebugger",
+        "HitSwitchTest",
+        "LadyGreyWifeManager",
+        "MarkTestScripts",
+        "OracleMinigameTest",
+        "PersonalScriptMain",
+        "PersonalScript_Aardvark",
+        "PersonalScript_Empty",
+        "PersonalScript_GlobalThings",
+        "PersonalScript_alextest",
+        "ProximityPodiumTest",
+        "QR_EscortTrader",
+        "QR_EscortTrader_Manager",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_MeetSister",
+        "QS_ScytheInfo",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_ArenaHoldingScript",
+        "Q_AwakeningTheOracle",
+        "Q_BanditCamp",
+        "Q_BanditCampBossBattle",
+        "Q_BanditCampHoldingScript",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_CinemaTest",
+        "Q_DragonBossFight",
+        "Q_EndGame",
+        "Q_EndGameBossBattle",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionCamp",
+        "Q_MinionClifftopChase",
+        "Q_NewOakValeIntro",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_OrchardFarmRaidEvil",
+        "Q_OrchardFarmRaidGood",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_SecretPassage",
+        "Q_SummoningTheShip",
+        "Q_SunnyvaleMaster",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "Q_WizardBattle",
+        "ShowTargetedThingHealth",
+        "TestNewNav1",
+        "TestNewNav2",
+        "TestNewNav3",
+        "TestNewNav4",
+        "TestNewNav5",
+        "TestQuestCard1",
+        "TestQuestCard2",
+        "TestQuestCard3",
+        "TestTheInventory",
+        "TonyTestScripts",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BanditCampPath",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_BodyGuard",
+        "V_BookCollecting",
+        "V_Bordello",
+        "V_ChapelOfEvil",
+        "V_ChickenKicking",
+        "V_DemonDoors",
+        "V_ExposeMayor",
+        "V_Fisherman",
+        "V_FishingCompetition",
+        "V_FisticuffsClub",
+        "V_GhostGrannyNecklace",
+        "V_GuildMaster",
+        "V_HauntedHouse",
+        "V_HeroDolls",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_KnotholeGladeGates",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwist",
+        "V_MurderTwistFinal",
+        "V_Oracle",
+        "V_ParanoidWhispers",
+        "V_PicnicAreaAfterWaspBoss",
+        "V_RandomPopulationSim",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_SingingStones",
+        "V_StatueMaster",
+        "V_SwordInTheStone",
+        "V_TalentlessBard",
+        "V_TempleOfLight",
+        "V_TourGuide",
+        "V_TravellingHeroes",
+        "V_TrophyDealer",
+        "alextest",
+        "bandit_level_cutscene",
+        "guy_script",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x00BFE9BC",
+      "calls": 290,
+      "currentNames": [
+        "MSVCR71.DLL::operator_delete"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 161,
+      "roles": [
+        "Init",
+        "Main",
+        "destructor"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "BenTestScripts",
+        "CS_OakValeRevisited",
+        "CS_PlayCutscene",
+        "DanyalTestScripts",
+        "Empty",
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Gameflow",
+        "GameflowAssistance",
+        "Global_DebugCycleThroughSpeech",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "Global_ToggleTimeDisplay",
+        "Global_WatchForHeroDeath",
+        "GuildSealTriggerTest",
+        "HeroBoasts",
+        "HeroTurningDebugger",
+        "HitSwitchTest",
+        "LadyGreyWifeManager",
+        "MarkTestScripts",
+        "OracleMinigameTest",
+        "PersonalScriptMain",
+        "PersonalScript_Aardvark",
+        "PersonalScript_Empty",
+        "PersonalScript_GlobalThings",
+        "PersonalScript_alextest",
+        "ProximityPodiumTest",
+        "QR_EscortTrader",
+        "QR_EscortTrader_Manager",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_MeetSister",
+        "QS_ScytheInfo",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_ArenaHoldingScript",
+        "Q_AwakeningTheOracle",
+        "Q_BanditCamp",
+        "Q_BanditCampBossBattle",
+        "Q_BanditCampHoldingScript",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_CinemaTest",
+        "Q_DragonBossFight",
+        "Q_EndGame",
+        "Q_EndGameBossBattle",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionCamp",
+        "Q_MinionClifftopChase",
+        "Q_NewOakValeIntro",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_OrchardFarmRaidEvil",
+        "Q_OrchardFarmRaidGood",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_SecretPassage",
+        "Q_SummoningTheShip",
+        "Q_SunnyvaleMaster",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "Q_WizardBattle",
+        "ShowTargetedThingHealth",
+        "TestNewNav1",
+        "TestNewNav2",
+        "TestNewNav3",
+        "TestNewNav4",
+        "TestNewNav5",
+        "TestQuestCard1",
+        "TestQuestCard2",
+        "TestQuestCard3",
+        "TestTheInventory",
+        "TonyTestScripts",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BanditCampPath",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_BodyGuard",
+        "V_BookCollecting",
+        "V_Bordello",
+        "V_ChapelOfEvil",
+        "V_ChickenKicking",
+        "V_DemonDoors",
+        "V_ExposeMayor",
+        "V_Fisherman",
+        "V_FishingCompetition",
+        "V_FisticuffsClub",
+        "V_GhostGrannyNecklace",
+        "V_GuildMaster",
+        "V_HauntedHouse",
+        "V_HeroDolls",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_KnotholeGladeGates",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwist",
+        "V_MurderTwistFinal",
+        "V_Oracle",
+        "V_ParanoidWhispers",
+        "V_PicnicAreaAfterWaspBoss",
+        "V_RandomPopulationSim",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_SingingStones",
+        "V_StatueMaster",
+        "V_SwordInTheStone",
+        "V_TalentlessBard",
+        "V_TempleOfLight",
+        "V_TourGuide",
+        "V_TravellingHeroes",
+        "V_TrophyDealer",
+        "alextest",
+        "bandit_level_cutscene",
+        "guy_script",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x00CBD510",
+      "calls": 125,
+      "currentNames": [
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 125,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "BenTestScripts",
+        "CS_PlayCutscene",
+        "DanyalTestScripts",
+        "Empty",
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Gameflow",
+        "GameflowAssistance",
+        "Global_DebugCycleThroughSpeech",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "Global_ToggleTimeDisplay",
+        "Global_WatchForHeroDeath",
+        "GuildSealTriggerTest",
+        "HeroBoasts",
+        "HeroTurningDebugger",
+        "HitSwitchTest",
+        "MarkTestScripts",
+        "OracleMinigameTest",
+        "PersonalScriptMain",
+        "PersonalScript_Aardvark",
+        "PersonalScript_Empty",
+        "PersonalScript_GlobalThings",
+        "PersonalScript_alextest",
+        "ProximityPodiumTest",
+        "QR_EscortTrader_Manager",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_MeetSister",
+        "QS_ScytheInfo",
+        "Q_ArenaHoldingScript",
+        "Q_BanditCamp",
+        "Q_BanditCampBossBattle",
+        "Q_BanditCampHoldingScript",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_CinemaTest",
+        "Q_EndGame",
+        "Q_EndGameBossBattle",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionClifftopChase",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaidEvil",
+        "Q_OrchardFarmRaidGood",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictimChiefsHouse",
+        "Q_SummoningTheShip",
+        "Q_SunnyvaleMaster",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "ShowTargetedThingHealth",
+        "TestNewNav1",
+        "TestNewNav2",
+        "TestNewNav3",
+        "TestNewNav4",
+        "TestNewNav5",
+        "TestQuestCard1",
+        "TestQuestCard2",
+        "TestQuestCard3",
+        "TestTheInventory",
+        "TonyTestScripts",
+        "V_BanditToll",
+        "V_BeggarAndChild",
+        "V_ChapelOfEvil",
+        "V_DemonDoors",
+        "V_Fisherman",
+        "V_GhostGrannyNecklace",
+        "V_GuildMaster",
+        "V_HauntedHouse",
+        "V_HeroDolls",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_KnotholeGladeGates",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwist",
+        "V_Oracle",
+        "V_ParanoidWhispers",
+        "V_PicnicAreaAfterWaspBoss",
+        "V_RandomPopulationSim",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_StatueMaster",
+        "V_TempleOfLight",
+        "V_TrophyDealer",
+        "alextest",
+        "bandit_level_cutscene",
+        "guy_script",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x0099EC30",
+      "calls": 659,
+      "currentNames": [
+        "CCharString::CCharString"
+      ],
+      "category": "object-lifetime",
+      "scripts": 123,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "global",
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "BenTestScripts",
+        "Global_GiveHeroItemsFromRewardChest",
+        "GuildSealTriggerTest",
+        "HeroBoasts",
+        "HitSwitchTest",
+        "LadyGreyWifeManager",
+        "MarkTestScripts",
+        "OracleMinigameTest",
+        "PersonalScriptMain",
+        "PersonalScript_Empty",
+        "PersonalScript_GlobalThings",
+        "PersonalScript_alextest",
+        "ProximityPodiumTest",
+        "QR_EscortTrader",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_MeetSister",
+        "QS_ScytheInfo",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_ArenaHoldingScript",
+        "Q_AwakeningTheOracle",
+        "Q_BanditCamp",
+        "Q_BanditCampBossBattle",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_CinemaTest",
+        "Q_DragonBossFight",
+        "Q_EndGame",
+        "Q_EndGameBossBattle",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionCamp",
+        "Q_MinionClifftopChase",
+        "Q_NewOakValeIntro",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_SecretPassage",
+        "Q_SummoningTheShip",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "Q_WizardBattle",
+        "TonyTestScripts",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BanditCampPath",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_BodyGuard",
+        "V_BookCollecting",
+        "V_Bordello",
+        "V_ChapelOfEvil",
+        "V_ChickenKicking",
+        "V_DemonDoors",
+        "V_ExposeMayor",
+        "V_Fisherman",
+        "V_FishingCompetition",
+        "V_FisticuffsClub",
+        "V_GhostGrannyNecklace",
+        "V_GuildMaster",
+        "V_HeroDolls",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_KnotholeGladeGates",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwist",
+        "V_MurderTwistFinal",
+        "V_Oracle",
+        "V_ParanoidWhispers",
+        "V_PicnicAreaAfterWaspBoss",
+        "V_RandomPopulationSim",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_SingingStones",
+        "V_StatueMaster",
+        "V_SwordInTheStone",
+        "V_TalentlessBard",
+        "V_TempleOfLight",
+        "V_TourGuide",
+        "V_TravellingHeroes",
+        "V_TrophyDealer",
+        "bandit_level_cutscene",
+        "guy_script"
+      ]
+    },
+    {
+      "targetAddress": "0x00CB8930",
+      "calls": 122,
+      "currentNames": [
+        "CTCVillage::OnInitialActivate"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 122,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "BenTestScripts",
+        "CS_OakValeRevisited",
+        "GuildSealTriggerTest",
+        "HeroTurningDebugger",
+        "HitSwitchTest",
+        "MarkTestScripts",
+        "OracleMinigameTest",
+        "PersonalScript_Empty",
+        "PersonalScript_GlobalThings",
+        "PersonalScript_alextest",
+        "ProximityPodiumTest",
+        "QR_EscortTrader",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_MeetSister",
+        "QS_ScytheInfo",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_ArenaHoldingScript",
+        "Q_AwakeningTheOracle",
+        "Q_BanditCamp",
+        "Q_BanditCampBossBattle",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_CinemaTest",
+        "Q_DragonBossFight",
+        "Q_EndGame",
+        "Q_EndGameBossBattle",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionCamp",
+        "Q_MinionClifftopChase",
+        "Q_NewOakValeIntro",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_SecretPassage",
+        "Q_SummoningTheShip",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "Q_WizardBattle",
+        "TonyTestScripts",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BanditCampPath",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_BodyGuard",
+        "V_BookCollecting",
+        "V_Bordello",
+        "V_ChapelOfEvil",
+        "V_ChickenKicking",
+        "V_DemonDoors",
+        "V_ExposeMayor",
+        "V_Fisherman",
+        "V_FishingCompetition",
+        "V_FisticuffsClub",
+        "V_GhostGrannyNecklace",
+        "V_GuildMaster",
+        "V_HauntedHouse",
+        "V_HeroDolls",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_KnotholeGladeGates",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwist",
+        "V_MurderTwistFinal",
+        "V_Oracle",
+        "V_ParanoidWhispers",
+        "V_PicnicAreaAfterWaspBoss",
+        "V_RandomPopulationSim",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_SingingStones",
+        "V_StatueMaster",
+        "V_SwordInTheStone",
+        "V_TalentlessBard",
+        "V_TempleOfLight",
+        "V_TourGuide",
+        "V_TravellingHeroes",
+        "V_TrophyDealer",
+        "bandit_level_cutscene",
+        "guy_script"
+      ]
+    },
+    {
+      "targetAddress": "0x00CB8230",
+      "calls": 625,
+      "currentNames": [
+        "CScriptBase::AddEntityScriptBinding"
+      ],
+      "category": "script-runtime",
+      "scripts": 120,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "BenTestScripts",
+        "GuildSealTriggerTest",
+        "HitSwitchTest",
+        "MarkTestScripts",
+        "OracleMinigameTest",
+        "PersonalScript_Empty",
+        "PersonalScript_GlobalThings",
+        "PersonalScript_alextest",
+        "ProximityPodiumTest",
+        "QR_EscortTrader",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_MeetSister",
+        "QS_ScytheInfo",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_ArenaHoldingScript",
+        "Q_AwakeningTheOracle",
+        "Q_BanditCamp",
+        "Q_BanditCampBossBattle",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_CinemaTest",
+        "Q_DragonBossFight",
+        "Q_EndGame",
+        "Q_EndGameBossBattle",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionCamp",
+        "Q_MinionClifftopChase",
+        "Q_NewOakValeIntro",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_SecretPassage",
+        "Q_SummoningTheShip",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "Q_WizardBattle",
+        "TonyTestScripts",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BanditCampPath",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_BodyGuard",
+        "V_BookCollecting",
+        "V_Bordello",
+        "V_ChapelOfEvil",
+        "V_ChickenKicking",
+        "V_DemonDoors",
+        "V_ExposeMayor",
+        "V_Fisherman",
+        "V_FishingCompetition",
+        "V_FisticuffsClub",
+        "V_GhostGrannyNecklace",
+        "V_GuildMaster",
+        "V_HauntedHouse",
+        "V_HeroDolls",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_KnotholeGladeGates",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwist",
+        "V_MurderTwistFinal",
+        "V_Oracle",
+        "V_ParanoidWhispers",
+        "V_PicnicAreaAfterWaspBoss",
+        "V_RandomPopulationSim",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_SingingStones",
+        "V_StatueMaster",
+        "V_SwordInTheStone",
+        "V_TalentlessBard",
+        "V_TempleOfLight",
+        "V_TourGuide",
+        "V_TravellingHeroes",
+        "V_TrophyDealer",
+        "bandit_level_cutscene",
+        "guy_script"
+      ]
+    },
+    {
+      "targetAddress": "0x00CB7940",
+      "calls": 1351,
+      "currentNames": [
+        "CScriptBase::IsActiveThreadTerminating"
+      ],
+      "category": "script-runtime",
+      "scripts": 107,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "CS_OakValeRevisited",
+        "CS_PlayCutscene",
+        "DanyalTestScripts",
+        "Empty",
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Gameflow",
+        "Global_DebugCycleThroughSpeech",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "HeroBoasts",
+        "LadyGreyWifeManager",
+        "OracleMinigameTest",
+        "PersonalScriptMain",
+        "PersonalScript_Aardvark",
+        "PersonalScript_Empty",
+        "QR_EscortTrader",
+        "QR_EscortTrader_Manager",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_ScytheInfo",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_ArenaHoldingScript",
+        "Q_AwakeningTheOracle",
+        "Q_BanditCamp",
+        "Q_BanditCampHoldingScript",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionClifftopChase",
+        "Q_NewOakValeIntro",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_SunnyvaleMaster",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "TestQuestCard1",
+        "TestTheInventory",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BanditCampPath",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_BookCollecting",
+        "V_ChapelOfEvil",
+        "V_ChickenKicking",
+        "V_Fisherman",
+        "V_FishingCompetition",
+        "V_GhostGrannyNecklace",
+        "V_HauntedHouse",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MurderTwistFinal",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_SingingStones",
+        "V_SwordInTheStone",
+        "V_TalentlessBard",
+        "V_TempleOfLight",
+        "V_TourGuide",
+        "V_TrophyDealer",
+        "alextest",
+        "bandit_level_cutscene",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x004045C0",
+      "calls": 383,
+      "currentNames": [
+        "CPersistContext::Transfer<signed_char>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 72,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "global",
+        "quest",
+        "repeatable_quest",
+        "village"
+      ],
+      "consumers": [
+        "Global_ToggleTimeDisplay",
+        "QR_EscortTrader",
+        "QR_EscortTrader_Manager",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_AwakeningTheOracle",
+        "Q_BanditCamp",
+        "Q_BanditCampHoldingScript",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_EndGame",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTrainingWill",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionClifftopChase",
+        "Q_NewOakValeIntro",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_PrisonEscapeRescueMother",
+        "Q_RansomVictimChiefsHouse",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderEscort",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BanditCampPath",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_BookCollecting",
+        "V_Bordello",
+        "V_ChapelOfEvil",
+        "V_ChickenKicking",
+        "V_ExposeMayor",
+        "V_Fisherman",
+        "V_FishingCompetition",
+        "V_FisticuffsClub",
+        "V_GhostGrannyNecklace",
+        "V_HauntedHouse",
+        "V_HeroDolls",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwistFinal",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_SingingStones",
+        "V_SwordInTheStone",
+        "V_TalentlessBard",
+        "V_TempleOfLight",
+        "V_TourGuide",
+        "V_TravellingHeroes"
+      ]
+    },
+    {
+      "targetAddress": "0x004AA840",
+      "calls": 280,
+      "currentNames": [
+        "C3DClothPrimitive::~C3DClothPrimitive"
+      ],
+      "category": "object-lifetime",
+      "scripts": 64,
+      "roles": [
+        "Init",
+        "Main",
+        "destructor"
+      ],
+      "kinds": [
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Gameflow",
+        "Global_DebugCycleThroughSpeech",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "LadyGreyWifeManager",
+        "PersonalScript_Aardvark",
+        "PersonalScript_Empty",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "Q_Arena",
+        "Q_ArenaHoldingScript",
+        "Q_BanditCampHoldingScript",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_EndGameBossBattle",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "TestQuestCard1",
+        "V_AmbushScam",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_ChapelOfEvil",
+        "V_HauntedHouse",
+        "V_KnotholeGladeGates",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwistFinal",
+        "V_TempleOfLight",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x00410BE0",
+      "calls": 73,
+      "currentNames": [
+        "CPersistContext::Transfer<signed_char>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 33,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "expression",
+        "global",
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Fish",
+        "GameflowAssistance",
+        "PersonalScript_Aardvark",
+        "QR_EscortTrader",
+        "QR_EscortTrader_Manager",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_AwakeningTheOracle",
+        "Q_BountyHunt",
+        "Q_GuildTraining",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsNostro",
+        "Q_MinionClifftopChase",
+        "Q_PrisonEscapeRescueMother",
+        "Q_WaspBoss",
+        "V_AmbushScam",
+        "V_AssassinAttacks",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_BodyGuard",
+        "V_BookCollecting",
+        "V_Bordello",
+        "V_ChapelOfEvil",
+        "V_Fisherman",
+        "V_FishingCompetition",
+        "V_IntroductionToTrophies",
+        "V_MayorsInvitation",
+        "V_MurderTwist",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_SwordInTheStone",
+        "V_TempleOfLight",
+        "V_TourGuide"
+      ]
+    },
+    {
+      "targetAddress": "0x007E74D0",
+      "calls": 120,
+      "currentNames": [
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
+      ],
+      "category": "object-lifetime",
+      "scripts": 27,
+      "roles": [
+        "Init",
+        "Main",
+        "destructor"
+      ],
+      "kinds": [
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Wait",
+        "Gameflow",
+        "Global_DebugCycleThroughSpeech",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "PersonalScript_Aardvark",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_EndGameBossBattle",
+        "Q_FireHeart",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "V_BanditCampPath",
+        "V_BeggarAndChild",
+        "V_MurderTwistFinal",
+        "V_SickChild",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x0099A2E0",
+      "calls": 101,
+      "currentNames": [
+        "NHeroInformationScreens::CBase::CBase"
+      ],
+      "category": "object-lifetime",
+      "scripts": 25,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Pickpocket",
+        "Global_DebugCycleThroughSpeech",
+        "LadyGreyWifeManager",
+        "PersonalScript_Aardvark",
+        "PersonalScript_Empty",
+        "Q_BountyHunt",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_OrchardFarmRaid",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictimChiefsHouse",
+        "Q_TraderConflictEvil",
+        "Q_UndeadRising",
+        "TestQuestCard1",
+        "V_AmbushScam",
+        "V_Bordello",
+        "V_FisticuffsClub",
+        "V_HauntedHouse",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_StatueMaster",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x0099A380",
+      "calls": 42,
+      "currentNames": [
+        "CBaseIntelligentPointer::CBaseIntelligentPointer"
+      ],
+      "category": "object-lifetime",
+      "scripts": 22,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "script",
+        "village"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Global_DebugCycleThroughSpeech",
+        "PersonalScript_Aardvark",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_WhiteBalverineWW",
+        "V_BanditCampPath",
+        "V_BeggarAndChild",
+        "bandit_level_cutscene",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x0099EFE0",
+      "calls": 254,
+      "currentNames": [
+        "CCharString::operator="
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 19,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "quest",
+        "repeatable_quest",
+        "script",
+        "village"
+      ],
+      "consumers": [
+        "LadyGreyWifeManager",
+        "QR_EscortTrader",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_EndGameFocalSites",
+        "Q_HangingTreeEvil",
+        "Q_HeroSoulsThunder",
+        "Q_OrchardFarmRaid",
+        "Q_RansomVictim",
+        "Q_TraderEscort",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BeardyBaldy",
+        "V_ChapelOfEvil",
+        "V_SingingStones",
+        "V_TalentlessBard",
+        "V_TourGuide"
+      ]
+    },
+    {
+      "targetAddress": "0x00CD4470",
+      "calls": 22,
+      "currentNames": [
+        "CTimer::~CTimer"
+      ],
+      "category": "object-lifetime",
+      "scripts": 18,
+      "roles": [
+        "Main",
+        "destructor"
+      ],
+      "kinds": [
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTraining",
+        "Q_GuildTrainingPreMelee",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionClifftopChase",
+        "Q_PrisonEscapeRescueMother",
+        "Q_SummoningTheShip",
+        "Q_TraderConflictEvil",
+        "Q_TraderEscort",
+        "Q_WaspBoss",
+        "V_BeggarAndChild",
+        "V_IntroductionToTrophies"
+      ]
+    },
+    {
+      "targetAddress": "0x006E7B80",
+      "calls": 44,
+      "currentNames": [
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase"
+      ],
+      "category": "object-lifetime",
+      "scripts": 17,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "expression",
+        "global",
+        "personal",
+        "quest",
+        "script",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Global_OpenChest",
+        "PersonalScript_Aardvark",
+        "Q_Arena",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "V_BanditCampPath",
+        "V_BeggarAndChild",
+        "bandit_level_cutscene"
+      ]
+    },
+    {
+      "targetAddress": "0x0099E4B0",
+      "calls": 23,
+      "currentNames": [
+        "CCharString::CCharString"
+      ],
+      "category": "object-lifetime",
+      "scripts": 17,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Global_OpenChest",
+        "PersonalScriptMain",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_TraderConflictEvil",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BeardyBaldy",
+        "V_BookCollecting",
+        "V_ChapelOfEvil",
+        "V_HiddenBooty",
+        "V_RockTrollFirstEncounter",
+        "V_SwordInTheStone",
+        "V_TempleOfLight",
+        "alextest"
+      ]
+    },
+    {
+      "targetAddress": "0x00CD3D2E",
+      "calls": 73,
+      "currentNames": [
+        "std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_>::operator[]"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 15,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "global",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "Gameflow",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "V_BanditCampPath",
+        "V_BeggarAndChild"
+      ]
+    },
+    {
+      "targetAddress": "0x00CD2770",
+      "calls": 66,
+      "currentNames": [
+        "CMemoryDataOutputStream::Clear"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 15,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "global",
+        "personal",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "Gameflow",
+        "PersonalScript_Aardvark",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "V_BanditCampPath",
+        "V_BeggarAndChild"
+      ]
+    },
+    {
+      "targetAddress": "0x00CBFB7D",
+      "calls": 44,
+      "currentNames": [
+        "RunCutsceneMacro_Func"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 15,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "global",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "Gameflow",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "V_BanditCampPath",
+        "V_BeggarAndChild"
+      ]
+    },
+    {
+      "targetAddress": "0x00CDBFB0",
+      "calls": 34,
+      "currentNames": [
+        "StdMap_Destroy_API"
+      ],
+      "category": "runtime-support",
+      "scripts": 15,
+      "roles": [
+        "Main",
+        "destructor"
+      ],
+      "kinds": [
+        "global",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Gameflow",
+        "QS_ScytheInfo",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "V_BanditCampPath",
+        "V_BeggarAndChild"
+      ]
+    },
+    {
+      "targetAddress": "0x007E72A0",
+      "calls": 50,
+      "currentNames": [
+        "CCarriedReadableDef::CCarriedReadableDef"
+      ],
+      "category": "object-lifetime",
+      "scripts": 14,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "global",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Gameflow",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_FireHeart",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "V_BanditCampPath",
+        "V_MurderTwistFinal"
+      ]
+    },
+    {
+      "targetAddress": "0x004AB130",
+      "calls": 22,
+      "currentNames": [
+        "CScriptThing::?IsAlive@CScriptThing@@UBE_NXZ"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 14,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "expression",
+        "global",
+        "master",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Gameflow",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_RansomVictimChiefsHouse",
+        "V_BeardyBaldy",
+        "V_ChapelOfEvil",
+        "V_TempleOfLight",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x008AC970",
+      "calls": 21,
+      "currentNames": [
+        "std::vector<CConversation,std::allocator<CConversation>_>::~vector<CConversation,std::allocator<CConversation>_>"
+      ],
+      "category": "object-lifetime",
+      "scripts": 14,
+      "roles": [
+        "Main",
+        "destructor"
+      ],
+      "kinds": [
+        "expression",
+        "global",
+        "master",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Fish",
+        "Global_TeleportToHeroGuild",
+        "Q_EndGameFocalSites",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HeroSoulsArena",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_UndeadRising",
+        "V_HauntedHouse",
+        "V_MurderTwist",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x00CD23B9",
+      "calls": 52,
+      "currentNames": [
+        "C3DMeshInfo::HasPhysicsMesh"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 13,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global",
+        "master",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Gameflow",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "V_BeggarAndChild",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x00CDBF70",
+      "calls": 28,
+      "currentNames": [
+        "StdMap_Construct_API"
+      ],
+      "category": "runtime-support",
+      "scripts": 13,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Gameflow",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "V_BanditCampPath",
+        "V_BeggarAndChild"
+      ]
+    },
+    {
+      "targetAddress": "0x0099A430",
+      "calls": 20,
+      "currentNames": [
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo"
+      ],
+      "category": "object-lifetime",
+      "scripts": 13,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "script"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "Expression_Follow",
+        "Expression_Wait",
+        "Gameflow",
+        "PersonalScript_Aardvark",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_OakValeBanditRaid",
+        "Q_WhiteBalverineWW",
+        "bandit_level_cutscene",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x006E7B60",
+      "calls": 23,
+      "currentNames": [
+        "CCarriedReadableDef::CCarriedReadableDef"
+      ],
+      "category": "object-lifetime",
+      "scripts": 12,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "expression",
+        "global",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish",
+        "Global_OpenChest",
+        "Q_Arena",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "V_BanditCampPath",
+        "V_BeggarAndChild"
+      ]
+    },
+    {
+      "targetAddress": "0x008ABD10",
+      "calls": 62,
+      "currentNames": [
+        "CScriptGameResourceObjectScriptedThingBase::operator="
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 11,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Q_Arena",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "V_BanditCampPath",
+        "V_BeggarAndChild"
+      ]
+    },
+    {
+      "targetAddress": "0x006E7AB0",
+      "calls": 14,
+      "currentNames": [
+        "std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 11,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "expression",
+        "global",
+        "personal",
+        "quest",
+        "script"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "Expression_Follow",
+        "Expression_Wait",
+        "Gameflow",
+        "PersonalScript_Aardvark",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_OakValeBanditRaid",
+        "Q_WhiteBalverineWW",
+        "bandit_level_cutscene"
+      ]
+    },
+    {
+      "targetAddress": "0x004ABE90",
+      "calls": 11,
+      "currentNames": [
+        "CScriptThing::CScriptThing"
+      ],
+      "category": "object-lifetime",
+      "scripts": 11,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "expression",
+        "global",
+        "quest"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "Q_TraderConflictEvil"
+      ]
+    },
+    {
+      "targetAddress": "0x00CB7920",
+      "calls": 10,
+      "currentNames": [
+        "std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 10,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "expression",
+        "global"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild"
+      ]
+    },
+    {
+      "targetAddress": "0x00411570",
+      "calls": 24,
+      "currentNames": [
+        "CBasicString<char>::Compare"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 9,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Global_GiveHeroItemsFromRewardChest",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_TraderConflictEvil",
+        "V_AmbushScam",
+        "V_BanditCampPath",
+        "V_BeardyBaldy",
+        "V_ChapelOfEvil",
+        "V_TempleOfLight"
+      ]
+    },
+    {
+      "targetAddress": "0x0099A2D0",
+      "calls": 18,
+      "currentNames": [
+        "NHeroInformationScreens::CBase::CBase"
+      ],
+      "category": "object-lifetime",
+      "scripts": 8,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "master",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Q_BowerstoneTownLifeIntro",
+        "Q_OrchardFarmRaid",
+        "Q_PrisonWardenGame",
+        "V_AmbushScam",
+        "V_Bordello",
+        "V_FisticuffsClub",
+        "V_HauntedHouse",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x00CBE960",
+      "calls": 13,
+      "currentNames": [
+        "CSubtitleRenderer::SetText"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 8,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global",
+        "quest"
+      ],
+      "consumers": [
+        "Gameflow",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder"
+      ]
+    },
+    {
+      "targetAddress": "0x00CBE2FF",
+      "calls": 12,
+      "currentNames": [
+        "IsDistanceBetweenThingsUnder"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 8,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Global_TeleportToHeroGuild",
+        "Q_BountyHunt",
+        "Q_HeroSoulsMother",
+        "Q_HobbeToothContest",
+        "Q_TraderConflictEvil",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "V_LostTrader"
+      ]
+    },
+    {
+      "targetAddress": "0x0099B510",
+      "calls": 10,
+      "currentNames": [
+        "CCharString::~CCharString"
+      ],
+      "category": "object-lifetime",
+      "scripts": 8,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_AmbushTraders",
+        "Q_BountyHunt",
+        "Q_EndGameFocalSites",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HerosOldHouse",
+        "Q_WhiteBalverineWW"
+      ]
+    },
+    {
+      "targetAddress": "0x00410620",
+      "calls": 15,
+      "currentNames": [
+        "CPersistContext::Transfer<signed_char>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 7,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "quest",
+        "repeatable_quest",
+        "village"
+      ],
+      "consumers": [
+        "QR_EscortTrader",
+        "Q_EndGame",
+        "V_AmbushScam",
+        "V_BodyGuard",
+        "V_ChapelOfEvil",
+        "V_FishingCompetition",
+        "V_TempleOfLight"
+      ]
+    },
+    {
+      "targetAddress": "0x00BFEA14",
+      "calls": 15,
+      "currentNames": [
+        "MSVCR71.DLL::free"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 7,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "personal",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "PersonalScriptMain",
+        "Q_EndGameFocalSites",
+        "Q_HeroSoulsArena",
+        "Q_TraderConflictEvil",
+        "Q_UndeadRising",
+        "V_HauntedHouse"
+      ]
+    },
+    {
+      "targetAddress": "0x00BFEB16",
+      "calls": 15,
+      "currentNames": [
+        "MSVCR71.DLL::rand"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 7,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "expression",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Q_Arena",
+        "Q_EndGameFocalSites",
+        "V_ArcheryCompetition",
+        "V_FishingCompetition"
+      ]
+    },
+    {
+      "targetAddress": "0x0099EFB0",
+      "calls": 11,
+      "currentNames": [
+        "CCharString::operator="
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 7,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "quest",
+        "repeatable_quest",
+        "village"
+      ],
+      "consumers": [
+        "QR_EscortTrader",
+        "Q_BountyHunt",
+        "Q_FireHeart",
+        "V_AssassinAttacks",
+        "V_BookCollecting",
+        "V_ExposeMayor",
+        "V_FishingCompetition"
+      ]
+    },
+    {
+      "targetAddress": "0x00BFEA70",
+      "calls": 10,
+      "currentNames": [
+        "__ftol2"
+      ],
+      "category": "runtime-support",
+      "scripts": 6,
+      "roles": [
+        "Main",
+        "OnPersist"
+      ],
+      "kinds": [
+        "expression",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Q_HobbeToothContest",
+        "Q_WhiteBalverineKnotholeGlade",
+        "V_BodyGuard"
+      ]
+    },
+    {
+      "targetAddress": "0x0099B6B0",
+      "calls": 8,
+      "currentNames": [
+        "CCharString::AssignFromWide"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 6,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_AmbushTraders",
+        "Q_BountyHunt",
+        "Q_EndGameFocalSites",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HerosOldHouse",
+        "Q_WhiteBalverineWW"
+      ]
+    },
+    {
+      "targetAddress": "0x00CBE87F",
+      "calls": 22,
+      "currentNames": [
+        "CSubtitleRenderer::SetText"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 5,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "global",
+        "quest"
+      ],
+      "consumers": [
+        "CS_OakValeRevisited",
+        "Gameflow",
+        "Q_GuildTrainingMelee",
+        "Q_PrisonEscapeRescueMother",
+        "Q_SecretPassage"
+      ]
+    },
+    {
+      "targetAddress": "0x008AB980",
+      "calls": 11,
+      "currentNames": [
+        "CScriptThing::operator="
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 5,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "expression",
+        "master",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Fish",
+        "Q_Arena",
+        "V_BanditCampPath",
+        "V_HauntedHouse",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x0099A3B0",
+      "calls": 11,
+      "currentNames": [
+        "CFourierAnalysis::CFourierAnalysis"
+      ],
+      "category": "object-lifetime",
+      "scripts": 4,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "global",
+        "quest"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "Gameflow",
+        "Q_BountyHunt",
+        "Q_WhiteBalverineWW"
+      ]
+    },
+    {
+      "targetAddress": "0x0040E1E0",
+      "calls": 7,
+      "currentNames": [
+        "CPersistContext::GetDefaultVal<CCharString>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 4,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "repeatable_quest",
+        "village"
+      ],
+      "consumers": [
+        "QR_EscortTrader",
+        "V_AssassinAttacks",
+        "V_BeardyBaldy",
+        "V_FishingCompetition"
+      ]
+    },
+    {
+      "targetAddress": "0x004109A0",
+      "calls": 7,
+      "currentNames": [
+        "CPersistContext::Transfer<CIntelligentPointer<CThing>_>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 4,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "repeatable_quest",
+        "village"
+      ],
+      "consumers": [
+        "QR_EscortTrader",
+        "V_AssassinAttacks",
+        "V_BeardyBaldy",
+        "V_FishingCompetition"
+      ]
+    },
+    {
+      "targetAddress": "0x007E7450",
+      "calls": 7,
+      "currentNames": [
+        "CScriptThing::?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 4,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global",
+        "master",
+        "personal",
+        "quest"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech",
+        "PersonalScript_Aardvark",
+        "Q_HobbeToothContest",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x006E7B40",
+      "calls": 6,
+      "currentNames": [
+        "CCarriedReadableDef::CCarriedReadableDef"
+      ],
+      "category": "object-lifetime",
+      "scripts": 4,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "expression",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Fish",
+        "Q_FireHeart",
+        "Q_OpeningGraveyardSecretPassage",
+        "V_MurderTwistFinal"
+      ]
+    },
+    {
+      "targetAddress": "0x009AC310",
+      "calls": 6,
+      "currentNames": [
+        "LTextTreeWalkThrough::Dtor"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 4,
+      "roles": [
+        "Main",
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "QS_ScytheInfo",
+        "Q_Arena",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsThunder"
+      ]
+    },
+    {
+      "targetAddress": "0x00704580",
+      "calls": 10,
+      "currentNames": [
+        "CCountedPointer<CDiskFileWin32>::operator="
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 3,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "quest",
+        "script"
+      ],
+      "consumers": [
+        "LadyGreyWifeManager",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "targetAddress": "0x00467686",
+      "calls": 9,
+      "currentNames": [
+        "std::vector<unsigned_char,std::allocator<unsigned_char>_>::resize"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 3,
+      "roles": [
+        "Init"
+      ],
+      "kinds": [
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Q_FireHeart",
+        "V_BookCollecting",
+        "V_TalentlessBard"
+      ]
+    },
+    {
+      "targetAddress": "0x004106F0",
+      "calls": 3,
+      "currentNames": [
+        "CPersistContext::Transfer<signed_char>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 3,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "global",
+        "village"
+      ],
+      "consumers": [
+        "Gameflow",
+        "V_ChickenKicking",
+        "V_TalentlessBard"
+      ]
+    },
+    {
+      "targetAddress": "0x007E7410",
+      "calls": 3,
+      "currentNames": [
+        "CScriptGameResourceObjectScriptedThingBase::?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 3,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "expression",
+        "global"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish",
+        "Global_OpenChest"
+      ]
+    },
+    {
+      "targetAddress": "0x008ADF10",
+      "calls": 3,
+      "currentNames": [
+        "std::map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,C2DVector>_>_>::operator[]"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 3,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_AmbushTraders",
+        "Q_FireHeart",
+        "Q_HeroSoulsGuildmaster"
+      ]
+    },
+    {
+      "targetAddress": "0x00BFEB3A",
+      "calls": 3,
+      "currentNames": [
+        "MSVCR71.DLL::strstr"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 3,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ChapelOfEvil",
+        "V_SwordInTheStone",
+        "V_TempleOfLight"
+      ]
+    },
+    {
+      "targetAddress": "0x00CD3CCB",
+      "calls": 3,
+      "currentNames": [
+        "CArray<std::pair<long,long>_>::push_back"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 3,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Q_FireHeart",
+        "Q_GuildTrainingWoodsWill",
+        "V_MurderTwistFinal"
+      ]
+    },
+    {
+      "targetAddress": "0x00433530",
+      "calls": 50,
+      "currentNames": [
+        "std::vector::Reallocate"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Init"
+      ],
+      "kinds": [
+        "quest",
+        "repeatable_quest"
+      ],
+      "consumers": [
+        "QR_EscortTrader",
+        "Q_NewOakValeIntro"
+      ]
+    },
+    {
+      "targetAddress": "0x009AC700",
+      "calls": 39,
+      "currentNames": [
+        "std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_>::operator[]"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena",
+        "Q_HeroSoulsThunder"
+      ]
+    },
+    {
+      "targetAddress": "0x008AB1E0",
+      "calls": 8,
+      "currentNames": [
+        "CCountedPointer<CDiskFileWin32>::operator="
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global",
+        "quest"
+      ],
+      "consumers": [
+        "Gameflow",
+        "Q_BountyHunt"
+      ]
+    },
+    {
+      "targetAddress": "0x00414EA0",
+      "calls": 6,
+      "currentNames": [
+        "CDefendingCombatantInfo::CCombatWheel::ResetRings"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Main",
+        "destructor"
+      ],
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Gameflow",
+        "Global_OpenChest"
+      ]
+    },
+    {
+      "targetAddress": "0x007E73D0",
+      "calls": 4,
+      "currentNames": [
+        "CScriptGameResourceObjectScriptedThingBase::?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "expression"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish"
+      ]
+    },
+    {
+      "targetAddress": "0x0099F690",
+      "calls": 3,
+      "currentNames": [
+        "CCharString_OperatorPlus_API"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "personal",
+        "village"
+      ],
+      "consumers": [
+        "PersonalScriptMain",
+        "V_FishingCompetition"
+      ]
+    },
+    {
+      "targetAddress": "0x00CDCF80",
+      "calls": 3,
+      "currentNames": [
+        "CPersistContext::Transfer<signed_char>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_BookCollecting",
+        "V_TalentlessBard"
+      ]
+    },
+    {
+      "targetAddress": "0x00D34AC0",
+      "calls": 3,
+      "currentNames": [
+        "std::vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_>::resize"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Init"
+      ],
+      "kinds": [
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Q_FireHeart",
+        "V_MurderTwistFinal"
+      ]
+    },
+    {
+      "targetAddress": "0x004428F0",
+      "calls": 2,
+      "currentNames": [
+        "std::vector<unsigned_int,std::allocator<unsigned_int>_>::resize"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Init"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AssassinAttacks",
+        "V_FishingCompetition"
+      ]
+    },
+    {
+      "targetAddress": "0x007ADD50",
+      "calls": 2,
+      "currentNames": [
+        "LTextTreeWalkThrough_Destructor"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 2,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Q_HeroSoulsGuildmaster",
+        "V_MazeResearch"
+      ]
+    },
+    {
+      "targetAddress": "0x007E7390",
+      "calls": 2,
+      "currentNames": [
+        "CScriptGameResourceObjectScriptedThingBase::?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "personal",
+        "quest"
+      ],
+      "consumers": [
+        "PersonalScript_Aardvark",
+        "Q_HobbeToothContest"
+      ]
+    },
+    {
+      "targetAddress": "0x007E73F0",
+      "calls": 2,
+      "currentNames": [
+        "CScriptGameResourceObjectScriptedThingBase::?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@J_N111111@Z"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "expression"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish"
+      ]
+    },
+    {
+      "targetAddress": "0x007E7490",
+      "calls": 2,
+      "currentNames": [
+        "CScriptGameResourceObjectScriptedThingBase::?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "personal",
+        "quest"
+      ],
+      "consumers": [
+        "PersonalScript_Aardvark",
+        "Q_HobbeToothContest"
+      ]
+    },
+    {
+      "targetAddress": "0x0099E480",
+      "calls": 2,
+      "currentNames": [
+        "CPersistContext::GetDefaultVal<CAnimationSet>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood"
+      ]
+    },
+    {
+      "targetAddress": "0x0099E960",
+      "calls": 2,
+      "currentNames": [
+        "CCharString::NotEqual"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "expression",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Fish",
+        "V_ArcheryCompetition"
+      ]
+    },
+    {
+      "targetAddress": "0x0099F830",
+      "calls": 2,
+      "currentNames": [
+        "GFIntToCharString_API"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Init",
+        "Main"
+      ],
+      "kinds": [
+        "global",
+        "village"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech",
+        "V_FishingCompetition"
+      ]
+    },
+    {
+      "targetAddress": "0x00BFEA0E",
+      "calls": 2,
+      "currentNames": [
+        "MSVCR71.DLL::malloc"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "cutscene_host",
+        "quest"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "Q_WhiteBalverineWW"
+      ]
+    },
+    {
+      "targetAddress": "0x00CB7AA0",
+      "calls": 2,
+      "currentNames": [
+        "CScriptBase::KillSpawnedFunction"
+      ],
+      "category": "script-runtime",
+      "scripts": 2,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "expression",
+        "test"
+      ],
+      "consumers": [
+        "Expression_Wait",
+        "TestQuestCard1"
+      ]
+    },
+    {
+      "targetAddress": "0x00CBED82",
+      "calls": 2,
+      "currentNames": [
+        "KillAllThingsInVector"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 2,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HobbeToothContest",
+        "Q_UndeadRising"
+      ]
+    },
+    {
+      "targetAddress": "0x0044BFF0",
+      "calls": 25,
+      "currentNames": [
+        "std::vector::push_back"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Gameflow"
+      ]
+    },
+    {
+      "targetAddress": "0x0044B110",
+      "calls": 20,
+      "currentNames": [
+        "std::_Cons_val<std::allocator<std::pair<CWideString_const_,float>_>,std::pair<CWideString_const_,float>,std::pair<CWideString,float>_>"
+      ],
+      "category": "object-lifetime",
+      "scripts": 1,
+      "roles": [
+        "Init"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_NewOakValeIntro"
+      ]
+    },
+    {
+      "targetAddress": "0x0099F600",
+      "calls": 6,
+      "currentNames": [
+        "CCharString::AppendCString"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "personal"
+      ],
+      "consumers": [
+        "PersonalScriptMain"
+      ]
+    },
+    {
+      "targetAddress": "0x00E255D0",
+      "calls": 6,
+      "currentNames": [
+        "NScript::CQR_EscortTrader_ManagerScript::Activate"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "repeatable_quest"
+      ],
+      "consumers": [
+        "QR_EscortTrader_Manager"
+      ]
+    },
+    {
+      "targetAddress": "0x0099F570",
+      "calls": 5,
+      "currentNames": [
+        "CCharString::AppendData"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "personal"
+      ],
+      "consumers": [
+        "PersonalScriptMain"
+      ]
+    },
+    {
+      "targetAddress": "0x0099B800",
+      "calls": 4,
+      "currentNames": [
+        "CCharString::AssignFromWide"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Init"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_OrchardFarmRaid"
+      ]
+    },
+    {
+      "targetAddress": "0x00BFEB28",
+      "calls": 4,
+      "currentNames": [
+        "MSVCR71.DLL::_CIfmod"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_StatueMaster"
+      ]
+    },
+    {
+      "targetAddress": "0x00E95390",
+      "calls": 4,
+      "currentNames": [
+        "CEntityScriptBinding<NScript::CQ_EndGameFocalSitesScript>::CEntityScriptBinding<NScript::CQ_EndGameFocalSitesScript>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_HauntedHouse"
+      ]
+    },
+    {
+      "targetAddress": "0x00D7AA30",
+      "calls": 3,
+      "currentNames": [
+        "Game_InitializeHeroCharacter"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSouls"
+      ]
+    },
+    {
+      "targetAddress": "0x00D7FC70",
+      "calls": 3,
+      "currentNames": [
+        "WatchForRoundsInArena_Setup"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsArena"
+      ]
+    },
+    {
+      "targetAddress": "0x00D872D0",
+      "calls": 3,
+      "currentNames": [
+        "Script_InitializeComponents"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsGuildmaster"
+      ]
+    },
+    {
+      "targetAddress": "0x00DF9B80",
+      "calls": 3,
+      "currentNames": [
+        "CScriptBase_FilterCombatantsByType"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_TraderConflictEvil"
+      ]
+    },
+    {
+      "targetAddress": "0x0049B8D0",
+      "calls": 2,
+      "currentNames": [
+        "CPersistContext::Transfer<signed_char>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Gameflow"
+      ]
+    },
+    {
+      "targetAddress": "0x004E34B2",
+      "calls": 2,
+      "currentNames": [
+        "CFileInstaller::CActiveFile::OnReadFinished"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "script"
+      ],
+      "consumers": [
+        "HeroBoasts"
+      ]
+    },
+    {
+      "targetAddress": "0x0075F580",
+      "calls": 2,
+      "currentNames": [
+        "CNavigatorQueueManager::FrameUpdate"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "personal"
+      ],
+      "consumers": [
+        "PersonalScriptMain"
+      ]
+    },
+    {
+      "targetAddress": "0x007E7360",
+      "calls": 2,
+      "currentNames": [
+        "CScriptGameResourceObjectScriptedThingBase::?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "expression"
+      ],
+      "consumers": [
+        "Expression_Dig"
+      ]
+    },
+    {
+      "targetAddress": "0x00A14040",
+      "calls": 2,
+      "currentNames": [
+        "Math_CartesianToSpherical"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_EndGameFocalSites"
+      ]
+    },
+    {
+      "targetAddress": "0x00CBE0B3",
+      "calls": 2,
+      "currentNames": [
+        "CWideScreenMagicPauseEntities::~CWideScreenMagicPauseEntities"
+      ],
+      "category": "object-lifetime",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "targetAddress": "0x00CD319B",
+      "calls": 2,
+      "currentNames": [
+        "CFileInstaller::CActiveFile::OnReadFinished"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_GuildTrainingWoodsWill"
+      ]
+    },
+    {
+      "targetAddress": "0x00CFF9A0",
+      "calls": 2,
+      "currentNames": [
+        "Main_InitializeHeroMorphComponents"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_AwakeningTheOracle"
+      ]
+    },
+    {
+      "targetAddress": "0x00D39330",
+      "calls": 2,
+      "currentNames": [
+        "Game_InitializeRound"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "targetAddress": "0x00D6B720",
+      "calls": 2,
+      "currentNames": [
+        "NScript::CQ_HangingTreeEvilScript::CleanUp"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HangingTreeEvil"
+      ]
+    },
+    {
+      "targetAddress": "0x00D732F0",
+      "calls": 2,
+      "currentNames": [
+        "NScript::CQ_HangingTreeGoodScript::RemoveParty"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HangingTreeGood"
+      ]
+    },
+    {
+      "targetAddress": "0x00D7C470",
+      "calls": 2,
+      "currentNames": [
+        "Main_InitializeFourierAnalysis"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsThunder"
+      ]
+    },
+    {
+      "targetAddress": "0x00D848D0",
+      "calls": 2,
+      "currentNames": [
+        "Main_InitializeFourierAnalysis_1"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsMother"
+      ]
+    },
+    {
+      "targetAddress": "0x00D89AD0",
+      "calls": 2,
+      "currentNames": [
+        "Main_InitializeFourierAnalysis_2"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsNostro"
+      ]
+    },
+    {
+      "targetAddress": "0x00DF9E00",
+      "calls": 2,
+      "currentNames": [
+        "Main_InitializeFourierAnalysis_3"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_TraderConflictEvil"
+      ]
+    },
+    {
+      "targetAddress": "0x00E9E270",
+      "calls": 2,
+      "currentNames": [
+        "CPersistContext::Transfer<signed_char>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_IntroductionToTrophies"
+      ]
+    },
+    {
+      "targetAddress": "0x00F1EC70",
+      "calls": 2,
+      "currentNames": [
+        "NScript::CQ_ArenaScript::AnimateCrowd"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "targetAddress": "0x00401400",
+      "calls": 1,
+      "currentNames": [
+        "`vector_constructor_iterator'"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_OpeningGraveyardSecretPassage"
+      ]
+    },
+    {
+      "targetAddress": "0x004292C0",
+      "calls": 1,
+      "currentNames": [
+        "CMemoryAllocatorVariableSize::GetNoAllocatedAreas"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech"
+      ]
+    },
+    {
+      "targetAddress": "0x0043332C",
+      "calls": 1,
+      "currentNames": [
+        "CArray<std::pair<long,long>_>::push_back"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Init"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_BookCollecting"
+      ]
+    },
+    {
+      "targetAddress": "0x004AA900",
+      "calls": 1,
+      "currentNames": [
+        "CScriptThing::?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_BountyHunt"
+      ]
+    },
+    {
+      "targetAddress": "0x004AAA40",
+      "calls": 1,
+      "currentNames": [
+        "CScriptThing::?GetAngleXY@CScriptThing@@UBEMXZ"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "targetAddress": "0x004CFF70",
+      "calls": 1,
+      "currentNames": [
+        "CTCCarryable::OnKill"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech"
+      ]
+    },
+    {
+      "targetAddress": "0x004CFFB0",
+      "calls": 1,
+      "currentNames": [
+        "CFileInstaller::CActiveFile::OnReadFinished"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech"
+      ]
+    },
+    {
+      "targetAddress": "0x004D0740",
+      "calls": 1,
+      "currentNames": [
+        "LTextTreeWalkThrough_dtor"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech"
+      ]
+    },
+    {
+      "targetAddress": "0x004D0E20",
+      "calls": 1,
+      "currentNames": [
+        "LTextTreeWalkThrough_Cleanup"
+      ],
+      "category": "object-lifetime",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech"
+      ]
+    },
+    {
+      "targetAddress": "0x005815D6",
+      "calls": 1,
+      "currentNames": [
+        "CPersistContext::TransferVector<unsigned_long>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AssassinAttacks"
+      ]
+    },
+    {
+      "targetAddress": "0x006E7A60",
+      "calls": 1,
+      "currentNames": [
+        "C3DAnimationUtil::C3DAnimationUtil"
+      ],
+      "category": "object-lifetime",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Gameflow"
+      ]
+    },
+    {
+      "targetAddress": "0x0074F4B0",
+      "calls": 1,
+      "currentNames": [
+        "__EH_epilog3"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "script"
+      ],
+      "consumers": [
+        "HeroBoasts"
+      ]
+    },
+    {
+      "targetAddress": "0x0075F560",
+      "calls": 1,
+      "currentNames": [
+        "DoublyLinkedList_Init"
+      ],
+      "category": "runtime-support",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "personal"
+      ],
+      "consumers": [
+        "PersonalScriptMain"
+      ]
+    },
+    {
+      "targetAddress": "0x0075F6C0",
+      "calls": 1,
+      "currentNames": [
+        "CFileInstaller::CActiveFile::OnReadFinished"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "personal"
+      ],
+      "consumers": [
+        "PersonalScriptMain"
+      ]
+    },
+    {
+      "targetAddress": "0x007E72D0",
+      "calls": 1,
+      "currentNames": [
+        "CScriptGameResourceObjectScriptedThingBase::?SummonerLightningOrbAttackTarget@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@@Z"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "master"
+      ],
+      "consumers": [
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "targetAddress": "0x007E7380",
+      "calls": 1,
+      "currentNames": [
+        "CScriptGameResourceObjectScriptedThingBase::?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@KW4ETextGroupSelectionMethod@@_N22@Z"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech"
+      ]
+    },
+    {
+      "targetAddress": "0x007E73C0",
+      "calls": 1,
+      "currentNames": [
+        "CScriptGameResourceObjectScriptedThingBase::?PerformExpression@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@ABVCCharString@@@Z"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Global_TeleportToHeroGuild"
+      ]
+    },
+    {
+      "targetAddress": "0x0099EE20",
+      "calls": 1,
+      "currentNames": [
+        "CCharString::ToUpper"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "personal"
+      ],
+      "consumers": [
+        "PersonalScriptMain"
+      ]
+    },
+    {
+      "targetAddress": "0x009AC2D0",
+      "calls": 1,
+      "currentNames": [
+        "Std_Deque_Construct"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "targetAddress": "0x00A394D0",
+      "calls": 1,
+      "currentNames": [
+        "List_Node_Initialize"
+      ],
+      "category": "runtime-support",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech"
+      ]
+    },
+    {
+      "targetAddress": "0x00CBE09A",
+      "calls": 1,
+      "currentNames": [
+        "CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities"
+      ],
+      "category": "object-lifetime",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "targetAddress": "0x00CBE371",
+      "calls": 1,
+      "currentNames": [
+        "Is2DDistanceBetweenThingsUnder"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "expression"
+      ],
+      "consumers": [
+        "Expression_Dig"
+      ]
+    },
+    {
+      "targetAddress": "0x00CBE9EE",
+      "calls": 1,
+      "currentNames": [
+        "CSubtitleRenderer::SetText"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Gameflow"
+      ]
+    },
+    {
+      "targetAddress": "0x00CD1FB1",
+      "calls": 1,
+      "currentNames": [
+        "CSmallVector<CANavQuadTreeNode_const*,8>::operator[]"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_HauntedHouse"
+      ]
+    },
+    {
+      "targetAddress": "0x00CD3152",
+      "calls": 1,
+      "currentNames": [
+        "std::vector::pop_back"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_TraderConflictEvil"
+      ]
+    },
+    {
+      "targetAddress": "0x00CD344A",
+      "calls": 1,
+      "currentNames": [
+        "StdMap_DestroyNode"
+      ],
+      "category": "runtime-support",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "cutscene_host"
+      ],
+      "consumers": [
+        "CS_PlayCutscene"
+      ]
+    },
+    {
+      "targetAddress": "0x00CD3EF0",
+      "calls": 1,
+      "currentNames": [
+        "GFGetPreMainMemoryUsed"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "personal"
+      ],
+      "consumers": [
+        "PersonalScriptMain"
+      ]
+    },
+    {
+      "targetAddress": "0x00CD4450",
+      "calls": 1,
+      "currentNames": [
+        "CTimer::CTimer"
+      ],
+      "category": "object-lifetime",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_GuildTrainingPreMelee"
+      ]
+    },
+    {
+      "targetAddress": "0x00CD4550",
+      "calls": 1,
+      "currentNames": [
+        "std::_Dest_val<std::allocator<CMacro>,CMacro>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_BountyHunt"
+      ]
+    },
+    {
+      "targetAddress": "0x00CDB960",
+      "calls": 1,
+      "currentNames": [
+        "std::vector<CConversation,std::allocator<CConversation>_>::~vector<CConversation,std::allocator<CConversation>_>"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsArena"
+      ]
+    },
+    {
+      "targetAddress": "0x00CDBC90",
+      "calls": 1,
+      "currentNames": [
+        "CFileInstaller::CActiveFile::OnReadFinished"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_BountyHunt"
+      ]
+    },
+    {
+      "targetAddress": "0x00CDCA70",
+      "calls": 1,
+      "currentNames": [
+        "CPersistContext::Transfer<signed_char>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Gameflow"
+      ]
+    },
+    {
+      "targetAddress": "0x00CDE280",
+      "calls": 1,
+      "currentNames": [
+        "CDefinitionManager::GetDef<CHeroPostcardGeneratorDef>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "personal"
+      ],
+      "consumers": [
+        "PersonalScriptMain"
+      ]
+    },
+    {
+      "targetAddress": "0x00CF9210",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CLadyGreyWifeManagerScript::~CLadyGreyWifeManagerScript"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "script"
+      ],
+      "consumers": [
+        "LadyGreyWifeManager"
+      ]
+    },
+    {
+      "targetAddress": "0x00CFA340",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter_Dtor"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_AmbushTraders"
+      ]
+    },
+    {
+      "targetAddress": "0x00CFAC40",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_ArenaScript::~CQ_ArenaScript"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "targetAddress": "0x00D005E0",
+      "calls": 1,
+      "currentNames": [
+        "CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_AwakeningTheOracle"
+      ]
+    },
+    {
+      "targetAddress": "0x00D15140",
+      "calls": 1,
+      "currentNames": [
+        "CMainGameComponentInit::CMainGameComponentInit"
+      ],
+      "category": "object-lifetime",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_BountyHunt"
+      ]
+    },
+    {
+      "targetAddress": "0x00D15170",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_BountyHuntScript::TeleportData::operator="
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_BountyHunt"
+      ]
+    },
+    {
+      "targetAddress": "0x00D17470",
+      "calls": 1,
+      "currentNames": [
+        "Main_InitializeCreatureSpawners"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_BountyHunt"
+      ]
+    },
+    {
+      "targetAddress": "0x00D27290",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter_Dtor_2"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_DragonBossFight"
+      ]
+    },
+    {
+      "targetAddress": "0x00D2F640",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter_Dtor_3"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_EndGameFocalSites"
+      ]
+    },
+    {
+      "targetAddress": "0x00D30030",
+      "calls": 1,
+      "currentNames": [
+        "CScriptGameResourceObject_LoadGuildComplex"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_EndGameBossBattle"
+      ]
+    },
+    {
+      "targetAddress": "0x00D34D40",
+      "calls": 1,
+      "currentNames": [
+        "std_vector_Conversation_Assign"
+      ],
+      "category": "runtime-support",
+      "scripts": 1,
+      "roles": [
+        "Init"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "targetAddress": "0x00D36140",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_FireHeartScript::SetupPuzzleBlocks"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "targetAddress": "0x00D361F0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_FireHeartScript::RestoreFollowers"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "targetAddress": "0x00D39960",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_FireHeartScript::StartRound"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "targetAddress": "0x00D3A050",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_FireHeartScript::DisableFollowers"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "targetAddress": "0x00D3B010",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter_Dtor_4"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "targetAddress": "0x00D3B410",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CGameflowScript::DeclareGossipCategories"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Init"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_GuildTraining"
+      ]
+    },
+    {
+      "targetAddress": "0x00D44CB0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_GuildTrainingScript::RunArrivalCutscene"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_GuildTraining"
+      ]
+    },
+    {
+      "targetAddress": "0x00D6ED60",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_HangingTreeEvilScript::~CQ_HangingTreeEvilScript"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HangingTreeEvil"
+      ]
+    },
+    {
+      "targetAddress": "0x00D6FD00",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_HangingTreeGoodScript::RemoveDregs"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HangingTreeGood"
+      ]
+    },
+    {
+      "targetAddress": "0x00D72B70",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_HangingTreeGoodScript::CleanUp"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HangingTreeGood"
+      ]
+    },
+    {
+      "targetAddress": "0x00D782E0",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter_Dtor_5"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HangingTreeGood"
+      ]
+    },
+    {
+      "targetAddress": "0x00D823A0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_SickChildScript::CWomanToAttract::DoLeavingCutscene"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsBriar"
+      ]
+    },
+    {
+      "targetAddress": "0x00D83350",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter_Dtor_6"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsBriar"
+      ]
+    },
+    {
+      "targetAddress": "0x00D9B420",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_HobbeToothContestScript::DisplayTimer"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HobbeToothContest"
+      ]
+    },
+    {
+      "targetAddress": "0x00DA2F90",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_MinionCamp"
+      ]
+    },
+    {
+      "targetAddress": "0x00DBDE40",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_NewOakValeIntroScript::DoMission"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_NewOakValeIntro"
+      ]
+    },
+    {
+      "targetAddress": "0x00DBEFC0",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter_Dtor_7"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_NewOakValeIntro"
+      ]
+    },
+    {
+      "targetAddress": "0x00DC0300",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_OakValeBanditRaidScript::PopulateLevel"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_OakValeBanditRaid"
+      ]
+    },
+    {
+      "targetAddress": "0x00DC3CF0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_OpeningGraveyardSecretPassageScript::InitializeVariables"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_OpeningGraveyardSecretPassage"
+      ]
+    },
+    {
+      "targetAddress": "0x00DD1F40",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter_Dtor_8"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_OrchardFarmRaid"
+      ]
+    },
+    {
+      "targetAddress": "0x00DE1280",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_RansomVictimScript::GossipSetup"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_RansomVictim"
+      ]
+    },
+    {
+      "targetAddress": "0x00DEBCB0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_RansomVictimScript::~CQ_RansomVictimScript"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_RansomVictim"
+      ]
+    },
+    {
+      "targetAddress": "0x00DED0A0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_GuildTrainingScript::CMeleeApprentice::Init"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_SecretPassage"
+      ]
+    },
+    {
+      "targetAddress": "0x00DF10D0",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter::~CParticleEmitter"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_SecretPassage"
+      ]
+    },
+    {
+      "targetAddress": "0x00DFC320",
+      "calls": 1,
+      "currentNames": [
+        "CScriptBase_ProcessNPCConversations"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_TraderConflictGood"
+      ]
+    },
+    {
+      "targetAddress": "0x00DFDED0",
+      "calls": 1,
+      "currentNames": [
+        "Main_InitializeFourierAnalysis_4"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_TraderConflictGood"
+      ]
+    },
+    {
+      "targetAddress": "0x00E1AD30",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_ChickenKickingScript::Init"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_WizardBattle"
+      ]
+    },
+    {
+      "targetAddress": "0x00E1DA40",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_HangingTreeGoodScript::CHTG_Audience::~CHTG_Audience"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_WizardBattle"
+      ]
+    },
+    {
+      "targetAddress": "0x00E1DF50",
+      "calls": 1,
+      "currentNames": [
+        "CEngineInternalPrimitiveBase::AddChildPrimitive"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "repeatable_quest"
+      ],
+      "consumers": [
+        "QR_EscortTrader"
+      ]
+    },
+    {
+      "targetAddress": "0x00E1DF60",
+      "calls": 1,
+      "currentNames": [
+        "CPersistContext::Transfer<signed_char>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "repeatable_quest"
+      ],
+      "consumers": [
+        "QR_EscortTrader"
+      ]
+    },
+    {
+      "targetAddress": "0x00E24C80",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter::~CParticleEmitter_0x24c80"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "repeatable_quest"
+      ],
+      "consumers": [
+        "QR_EscortTrader"
+      ]
+    },
+    {
+      "targetAddress": "0x00E257C0",
+      "calls": 1,
+      "currentNames": [
+        "CPersistContext::Transfer<signed_char>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "repeatable_quest"
+      ],
+      "consumers": [
+        "QR_EscortTrader_Manager"
+      ]
+    },
+    {
+      "targetAddress": "0x00E2BAC0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_AmbushScamScript::AssignMoralityEtcForEvilEnding"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AmbushScam"
+      ]
+    },
+    {
+      "targetAddress": "0x00E2BB10",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_AmbushScamScript::AssignMoralityEtcForEvilEnding"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AmbushScam"
+      ]
+    },
+    {
+      "targetAddress": "0x00E2EAC0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_AmbushScamScript::TricksterApproach"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AmbushScam"
+      ]
+    },
+    {
+      "targetAddress": "0x00E2F170",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_AmbushScamScript::SpringAmbush"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AmbushScam"
+      ]
+    },
+    {
+      "targetAddress": "0x00E32310",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter::~CParticleEmitter_Simple"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AmbushScam"
+      ]
+    },
+    {
+      "targetAddress": "0x00E32EF0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_ArcheryCompetitionScript::RemoveArcheryQuestInfo"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ArcheryCompetition"
+      ]
+    },
+    {
+      "targetAddress": "0x00E32FE0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::OnPredicateFail"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ArcheryCompetition"
+      ]
+    },
+    {
+      "targetAddress": "0x00E33000",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_ArcheryCompetitionScript::UpdateHighScore"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ArcheryCompetition"
+      ]
+    },
+    {
+      "targetAddress": "0x00E33040",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_ArcheryCompetitionScript::AddArcheryQuestInfo"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ArcheryCompetition"
+      ]
+    },
+    {
+      "targetAddress": "0x00E37680",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_ArcheryCompetitionScript::~CV_ArcheryCompetitionScript"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ArcheryCompetition"
+      ]
+    },
+    {
+      "targetAddress": "0x00E37CF0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AssassinAttacks"
+      ]
+    },
+    {
+      "targetAddress": "0x00E398A0",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter::~CParticleEmitter_WithMemFree"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AssassinAttacks"
+      ]
+    },
+    {
+      "targetAddress": "0x00E46A50",
+      "calls": 1,
+      "currentNames": [
+        "CSystemManager::~CSystemManager"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_Bordello"
+      ]
+    },
+    {
+      "targetAddress": "0x00E477F0",
+      "calls": 1,
+      "currentNames": [
+        "NTCScriptedControl::CActionMoveTo::~CActionMoveTo"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_BanditCampPath"
+      ]
+    },
+    {
+      "targetAddress": "0x00E50650",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_BeardyBaldyScript::GoTalkToBeardyBaldy"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_BeardyBaldy"
+      ]
+    },
+    {
+      "targetAddress": "0x00E542B0",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter::~CParticleEmitter_Variant"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_BeardyBaldy"
+      ]
+    },
+    {
+      "targetAddress": "0x00E54AA0",
+      "calls": 1,
+      "currentNames": [
+        "std_vector_CConversation_Assign"
+      ],
+      "category": "runtime-support",
+      "scripts": 1,
+      "roles": [
+        "Init"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_BookCollecting"
+      ]
+    },
+    {
+      "targetAddress": "0x00E57AA0",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter::~CParticleEmitter_MeshFree"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_BookCollecting"
+      ]
+    },
+    {
+      "targetAddress": "0x00E62780",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter::~CParticleEmitter_Minimal"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_BodyGuard"
+      ]
+    },
+    {
+      "targetAddress": "0x00E68EB0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_SickChildScript::~CV_SickChildScript"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ChickenKicking"
+      ]
+    },
+    {
+      "targetAddress": "0x00E75840",
+      "calls": 1,
+      "currentNames": [
+        "CPersistContext::Transfer<signed_char>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ExposeMayor"
+      ]
+    },
+    {
+      "targetAddress": "0x00E759F0",
+      "calls": 1,
+      "currentNames": [
+        "CPersistContext::Transfer<signed_char>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ExposeMayor"
+      ]
+    },
+    {
+      "targetAddress": "0x00E76040",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CGameflowScript::DeclareGossipCategories"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ExposeMayor"
+      ]
+    },
+    {
+      "targetAddress": "0x00E7B2E0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_ExposeMayorScript::~CV_ExposeMayorScript"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ExposeMayor"
+      ]
+    },
+    {
+      "targetAddress": "0x00E81F30",
+      "calls": 1,
+      "currentNames": [
+        "CTCInventoryItem::OnDie"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_FishingCompetition"
+      ]
+    },
+    {
+      "targetAddress": "0x00E82650",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_FisticuffsClubScript::InitialiseVariables"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_FisticuffsClub"
+      ]
+    },
+    {
+      "targetAddress": "0x00E8B750",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_FisticuffsClub"
+      ]
+    },
+    {
+      "targetAddress": "0x00E95380",
+      "calls": 1,
+      "currentNames": [
+        "$E2"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_HauntedHouse"
+      ]
+    },
+    {
+      "targetAddress": "0x00E95F10",
+      "calls": 1,
+      "currentNames": [
+        "CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>"
+      ],
+      "category": "script-runtime",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_HauntedHouse"
+      ]
+    },
+    {
+      "targetAddress": "0x00E98FB0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_HeroDuelScript::CleanUpHeroDuel"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_HeroDuel"
+      ]
+    },
+    {
+      "targetAddress": "0x00E9FEC0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_GuildTrainingScript::CMeleeApprentice::Init"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_KnotholeGladeGates"
+      ]
+    },
+    {
+      "targetAddress": "0x00EB65A0",
+      "calls": 1,
+      "currentNames": [
+        "CPersistContext::Transfer<signed_char>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_MurderTwistFinal"
+      ]
+    },
+    {
+      "targetAddress": "0x00EB6750",
+      "calls": 1,
+      "currentNames": [
+        "CPersistContext::Transfer<signed_char>"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "OnPersist"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_MurderTwistFinal"
+      ]
+    },
+    {
+      "targetAddress": "0x00EB6AB0",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter::~CParticleEmitter_0xb6ab0"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_MurderTwistFinal"
+      ]
+    },
+    {
+      "targetAddress": "0x00ED39F0",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter::~CParticleEmitter_0xd39f0"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_SingingStones"
+      ]
+    },
+    {
+      "targetAddress": "0x00ED7640",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_SwordInTheStoneScript::~CV_SwordInTheStoneScript"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_SwordInTheStone"
+      ]
+    },
+    {
+      "targetAddress": "0x00EDAD10",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CV_TalentlessBardScript::~CV_TalentlessBardScript"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_TalentlessBard"
+      ]
+    },
+    {
+      "targetAddress": "0x00EE40F0",
+      "calls": 1,
+      "currentNames": [
+        "CTCTavernGame::~CTCTavernGame"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_TravellingHeroes"
+      ]
+    },
+    {
+      "targetAddress": "0x00EE6C50",
+      "calls": 1,
+      "currentNames": [
+        "NTCScriptedControl::CActionTalkedTo::~CActionTalkedTo"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_TourGuide"
+      ]
+    },
+    {
+      "targetAddress": "0x00EE8390",
+      "calls": 1,
+      "currentNames": [
+        "DoMission_OakValeRevisited"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "cutscene_host"
+      ],
+      "consumers": [
+        "CS_OakValeRevisited"
+      ]
+    },
+    {
+      "targetAddress": "0x00EE8C30",
+      "calls": 1,
+      "currentNames": [
+        "CParticleEmitter::~CParticleEmitter_0xe8c30"
+      ],
+      "category": "lifecycle-cleanup",
+      "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
+      "kinds": [
+        "cutscene_host"
+      ],
+      "consumers": [
+        "CS_OakValeRevisited"
+      ]
+    },
+    {
+      "targetAddress": "0x00EFF1C0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CTonyTestScriptsScript::AddQuestsToGuild"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "test"
+      ],
+      "consumers": [
+        "TonyTestScripts"
+      ]
+    },
+    {
+      "targetAddress": "0x00F14250",
+      "calls": 1,
+      "currentNames": [
+        "CWorld::DrawGetEnvironment"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "targetAddress": "0x00F14270",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_ArenaScript::GetFanfareMusic"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "targetAddress": "0x00F1EED0",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_ArenaScript::PlayWave"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "targetAddress": "0x00F25840",
+      "calls": 1,
+      "currentNames": [
+        "NScript::CQ_ArenaScript::InitialiseVariables"
+      ],
+      "category": "engine-or-script-helper",
+      "scripts": 1,
+      "roles": [
+        "Main"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "targetAddress": "0x00F26C30",
+      "calls": 1,
+      "currentNames": [
+        "std_vector_Conversation_Assign3"
+      ],
+      "category": "runtime-support",
+      "scripts": 1,
+      "roles": [
+        "Init"
+      ],
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsArena"
+      ]
+    }
+  ],
   "scripts": [
     {
       "name": "DanyalTestScripts",
@@ -3151,6 +9783,7 @@
       "distinctCalls": 6,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 11,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3203,6 +9836,7 @@
       "distinctCalls": 6,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 18,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3237,6 +9871,7 @@
       "distinctCalls": 5,
       "mappedForgeApis": [],
       "indirectCalls": 0,
+      "nativeDirectCalls": 45,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3269,6 +9904,7 @@
       "distinctCalls": 5,
       "mappedForgeApis": [],
       "indirectCalls": 3,
+      "nativeDirectCalls": 11,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3305,6 +9941,7 @@
       "distinctCalls": 5,
       "mappedForgeApis": [],
       "indirectCalls": 0,
+      "nativeDirectCalls": 16,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3337,6 +9974,7 @@
       "distinctCalls": 5,
       "mappedForgeApis": [],
       "indirectCalls": 6,
+      "nativeDirectCalls": 31,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3466,6 +10104,7 @@
       "distinctCalls": 5,
       "mappedForgeApis": [],
       "indirectCalls": 6,
+      "nativeDirectCalls": 31,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3595,6 +10234,7 @@
       "distinctCalls": 5,
       "mappedForgeApis": [],
       "indirectCalls": 5,
+      "nativeDirectCalls": 103,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3629,6 +10269,7 @@
       "distinctCalls": 6,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 10,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3681,6 +10322,7 @@
       "distinctCalls": 5,
       "mappedForgeApis": [],
       "indirectCalls": 0,
+      "nativeDirectCalls": 16,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3713,6 +10355,7 @@
       "distinctCalls": 5,
       "mappedForgeApis": [],
       "indirectCalls": 0,
+      "nativeDirectCalls": 9,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3745,6 +10388,7 @@
       "distinctCalls": 5,
       "mappedForgeApis": [],
       "indirectCalls": 0,
+      "nativeDirectCalls": 9,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3777,6 +10421,7 @@
       "distinctCalls": 5,
       "mappedForgeApis": [],
       "indirectCalls": 0,
+      "nativeDirectCalls": 9,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3809,6 +10454,7 @@
       "distinctCalls": 5,
       "mappedForgeApis": [],
       "indirectCalls": 0,
+      "nativeDirectCalls": 9,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3841,6 +10487,7 @@
       "distinctCalls": 5,
       "mappedForgeApis": [],
       "indirectCalls": 0,
+      "nativeDirectCalls": 9,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3873,6 +10520,7 @@
       "distinctCalls": 5,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 11,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3907,6 +10555,7 @@
       "distinctCalls": 5,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 11,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -3941,6 +10590,7 @@
       "distinctCalls": 6,
       "mappedForgeApis": [],
       "indirectCalls": 6,
+      "nativeDirectCalls": 26,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -4072,6 +10722,7 @@
       "distinctCalls": 6,
       "mappedForgeApis": [],
       "indirectCalls": 4,
+      "nativeDirectCalls": 15,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -4107,6 +10758,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 25,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -4189,6 +10841,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 15,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -4243,6 +10896,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 2,
+      "nativeDirectCalls": 27,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -4283,6 +10937,7 @@
       "distinctCalls": 6,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 17,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -4322,6 +10977,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 15,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -4376,6 +11032,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 25,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -4458,6 +11115,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 6,
+      "nativeDirectCalls": 29,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -4544,6 +11202,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 95,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -4822,6 +11481,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 25,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -4904,6 +11564,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 15,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -4958,6 +11619,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 34,
+      "nativeDirectCalls": 92,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -5522,6 +12184,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 7,
+      "nativeDirectCalls": 29,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -5581,6 +12244,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 3,
+      "nativeDirectCalls": 30,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -5637,6 +12301,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 3,
+      "nativeDirectCalls": 27,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -5707,6 +12372,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 20,
+      "nativeDirectCalls": 111,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -6096,6 +12762,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 10,
+      "nativeDirectCalls": 153,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -6489,6 +13156,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 9,
+      "nativeDirectCalls": 27,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -6660,6 +13328,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 29,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -6732,6 +13401,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 2,
+      "nativeDirectCalls": 36,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -6849,6 +13519,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 9,
+      "nativeDirectCalls": 74,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -6962,6 +13633,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 15,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -7016,6 +13688,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 18,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -7070,6 +13743,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 5,
+      "nativeDirectCalls": 37,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -7206,6 +13880,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 9,
+      "nativeDirectCalls": 64,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -7462,6 +14137,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 4,
+      "nativeDirectCalls": 53,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -7625,6 +14301,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 80,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -7861,6 +14538,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 8,
+      "nativeDirectCalls": 43,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -7962,6 +14640,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 9,
+      "nativeDirectCalls": 52,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -8192,6 +14871,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 16,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -8246,6 +14926,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 16,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -8300,6 +14981,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 29,
+      "nativeDirectCalls": 62,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -8365,6 +15047,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 61,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -8521,6 +15204,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 20,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -8589,6 +15273,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 39,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -8671,6 +15356,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 20,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -8739,6 +15425,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 39,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -8839,6 +15526,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 16,
+      "nativeDirectCalls": 59,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -8930,6 +15618,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 4,
+      "nativeDirectCalls": 55,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -9065,6 +15754,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 4,
+      "nativeDirectCalls": 110,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -9136,6 +15826,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 2,
+      "nativeDirectCalls": 81,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -9359,6 +16050,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 11,
+      "nativeDirectCalls": 53,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -9468,6 +16160,7 @@
       "distinctCalls": 7,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 15,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -9522,6 +16215,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 19,
+      "nativeDirectCalls": 28,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -9848,6 +16542,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 62,
+      "nativeDirectCalls": 65,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -10728,6 +17423,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 12,
+      "nativeDirectCalls": 32,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -10794,6 +17490,7 @@
       "distinctCalls": 10,
       "mappedForgeApis": [],
       "indirectCalls": 40,
+      "nativeDirectCalls": 327,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -11604,6 +18301,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 11,
+      "nativeDirectCalls": 49,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -11804,6 +18502,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 34,
+      "nativeDirectCalls": 154,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -12507,6 +19206,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 16,
+      "nativeDirectCalls": 133,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -12796,6 +19496,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 13,
+      "nativeDirectCalls": 32,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -12881,6 +19582,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 8,
+      "nativeDirectCalls": 61,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -13087,6 +19789,7 @@
       "distinctCalls": 10,
       "mappedForgeApis": [],
       "indirectCalls": 38,
+      "nativeDirectCalls": 147,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -13818,6 +20521,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 38,
+      "nativeDirectCalls": 231,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -14668,6 +21372,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 16,
+      "nativeDirectCalls": 169,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -15252,6 +21957,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 3,
+      "nativeDirectCalls": 56,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -15431,6 +22137,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 41,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -15536,6 +22243,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 25,
+      "nativeDirectCalls": 182,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -16169,6 +22877,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 17,
+      "nativeDirectCalls": 108,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -16622,6 +23331,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 4,
+      "nativeDirectCalls": 59,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -16818,6 +23528,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 16,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -16877,6 +23588,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 10,
+      "nativeDirectCalls": 102,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -17067,6 +23779,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 10,
+      "nativeDirectCalls": 75,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -17339,6 +24052,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 90,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -17482,6 +24196,7 @@
       "distinctCalls": 8,
       "mappedForgeApis": [],
       "indirectCalls": 2,
+      "nativeDirectCalls": 59,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -17632,6 +24347,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 22,
+      "nativeDirectCalls": 97,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -18050,6 +24766,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 7,
+      "nativeDirectCalls": 71,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -18191,6 +24908,7 @@
         "IsDistanceBetweenThingsUnder"
       ],
       "indirectCalls": 21,
+      "nativeDirectCalls": 87,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -18320,6 +25038,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 16,
+      "nativeDirectCalls": 97,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -18526,6 +25245,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 15,
+      "nativeDirectCalls": 62,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -18843,6 +25563,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 7,
+      "nativeDirectCalls": 64,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -18939,6 +25660,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 4,
+      "nativeDirectCalls": 18,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -18990,6 +25712,7 @@
       "distinctCalls": 10,
       "mappedForgeApis": [],
       "indirectCalls": 15,
+      "nativeDirectCalls": 190,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -19674,6 +26397,7 @@
       "distinctCalls": 10,
       "mappedForgeApis": [],
       "indirectCalls": 7,
+      "nativeDirectCalls": 130,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -19882,6 +26606,7 @@
       "distinctCalls": 10,
       "mappedForgeApis": [],
       "indirectCalls": 19,
+      "nativeDirectCalls": 44,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -20070,6 +26795,7 @@
         "IsAlive"
       ],
       "indirectCalls": 20,
+      "nativeDirectCalls": 56,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -20156,6 +26882,7 @@
       "distinctCalls": 11,
       "mappedForgeApis": [],
       "indirectCalls": 11,
+      "nativeDirectCalls": 54,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -20254,6 +26981,7 @@
       "distinctCalls": 10,
       "mappedForgeApis": [],
       "indirectCalls": 5,
+      "nativeDirectCalls": 278,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -20614,6 +27342,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 20,
+      "nativeDirectCalls": 181,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -21191,6 +27920,7 @@
       "distinctCalls": 10,
       "mappedForgeApis": [],
       "indirectCalls": 9,
+      "nativeDirectCalls": 58,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -21332,6 +28062,7 @@
       "distinctCalls": 10,
       "mappedForgeApis": [],
       "indirectCalls": 11,
+      "nativeDirectCalls": 56,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -21446,6 +28177,7 @@
       "distinctCalls": 10,
       "mappedForgeApis": [],
       "indirectCalls": 34,
+      "nativeDirectCalls": 179,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -22173,6 +28905,7 @@
         "IsAlive"
       ],
       "indirectCalls": 27,
+      "nativeDirectCalls": 66,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -22245,6 +28978,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 27,
+      "nativeDirectCalls": 71,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -22304,6 +29038,7 @@
       "distinctCalls": 10,
       "mappedForgeApis": [],
       "indirectCalls": 18,
+      "nativeDirectCalls": 80,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -22425,6 +29160,7 @@
         "IsAlive"
       ],
       "indirectCalls": 21,
+      "nativeDirectCalls": 132,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -22819,6 +29555,7 @@
         "IsAlive"
       ],
       "indirectCalls": 39,
+      "nativeDirectCalls": 171,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -23525,6 +30262,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 53,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -23649,6 +30387,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 1,
+      "nativeDirectCalls": 36,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -23745,6 +30484,7 @@
       "distinctCalls": 10,
       "mappedForgeApis": [],
       "indirectCalls": 2,
+      "nativeDirectCalls": 66,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -23872,6 +30612,7 @@
       "distinctCalls": 9,
       "mappedForgeApis": [],
       "indirectCalls": 3,
+      "nativeDirectCalls": 31,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -23954,6 +30695,7 @@
         "IsAlive"
       ],
       "indirectCalls": 41,
+      "nativeDirectCalls": 155,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -24683,6 +31425,7 @@
         "PerformExpression"
       ],
       "indirectCalls": 27,
+      "nativeDirectCalls": 40,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -25036,6 +31779,7 @@
       "distinctCalls": 10,
       "mappedForgeApis": [],
       "indirectCalls": 4,
+      "nativeDirectCalls": 38,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -25216,6 +31960,7 @@
       "distinctCalls": 12,
       "mappedForgeApis": [],
       "indirectCalls": 37,
+      "nativeDirectCalls": 141,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -25968,6 +32713,7 @@
       "distinctCalls": 11,
       "mappedForgeApis": [],
       "indirectCalls": 99,
+      "nativeDirectCalls": 239,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -27377,6 +34123,7 @@
       "distinctCalls": 11,
       "mappedForgeApis": [],
       "indirectCalls": 48,
+      "nativeDirectCalls": 90,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -28101,6 +34848,7 @@
       "distinctCalls": 11,
       "mappedForgeApis": [],
       "indirectCalls": 17,
+      "nativeDirectCalls": 84,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -28506,6 +35254,7 @@
       "distinctCalls": 11,
       "mappedForgeApis": [],
       "indirectCalls": 19,
+      "nativeDirectCalls": 157,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -28993,6 +35742,7 @@
       "distinctCalls": 11,
       "mappedForgeApis": [],
       "indirectCalls": 37,
+      "nativeDirectCalls": 158,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -29736,6 +36486,7 @@
       "distinctCalls": 11,
       "mappedForgeApis": [],
       "indirectCalls": 4,
+      "nativeDirectCalls": 38,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -29807,6 +36558,7 @@
       "distinctCalls": 10,
       "mappedForgeApis": [],
       "indirectCalls": 14,
+      "nativeDirectCalls": 49,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -29907,6 +36659,7 @@
       "distinctCalls": 11,
       "mappedForgeApis": [],
       "indirectCalls": 37,
+      "nativeDirectCalls": 59,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -29986,6 +36739,7 @@
       "distinctCalls": 11,
       "mappedForgeApis": [],
       "indirectCalls": 13,
+      "nativeDirectCalls": 29,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -30052,6 +36806,7 @@
       "distinctCalls": 12,
       "mappedForgeApis": [],
       "indirectCalls": 27,
+      "nativeDirectCalls": 77,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -30475,6 +37230,7 @@
       "distinctCalls": 12,
       "mappedForgeApis": [],
       "indirectCalls": 4,
+      "nativeDirectCalls": 53,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -30644,6 +37400,7 @@
       "distinctCalls": 12,
       "mappedForgeApis": [],
       "indirectCalls": 39,
+      "nativeDirectCalls": 169,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -30774,6 +37531,7 @@
         "IsAlive"
       ],
       "indirectCalls": 33,
+      "nativeDirectCalls": 47,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -31320,6 +38078,7 @@
         "IsAlive"
       ],
       "indirectCalls": 30,
+      "nativeDirectCalls": 47,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -31831,6 +38590,7 @@
       "distinctCalls": 12,
       "mappedForgeApis": [],
       "indirectCalls": 16,
+      "nativeDirectCalls": 28,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -32158,6 +38918,7 @@
       "distinctCalls": 12,
       "mappedForgeApis": [],
       "indirectCalls": 52,
+      "nativeDirectCalls": 57,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -33017,6 +39778,7 @@
       "distinctCalls": 14,
       "mappedForgeApis": [],
       "indirectCalls": 95,
+      "nativeDirectCalls": 235,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -33228,6 +39990,7 @@
       "distinctCalls": 13,
       "mappedForgeApis": [],
       "indirectCalls": 29,
+      "nativeDirectCalls": 150,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -33873,6 +40636,7 @@
         "IsDistanceBetweenThingsUnder"
       ],
       "indirectCalls": 36,
+      "nativeDirectCalls": 95,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -34448,6 +41212,7 @@
       "distinctCalls": 14,
       "mappedForgeApis": [],
       "indirectCalls": 23,
+      "nativeDirectCalls": 136,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -34875,6 +41640,7 @@
       "distinctCalls": 13,
       "mappedForgeApis": [],
       "indirectCalls": 8,
+      "nativeDirectCalls": 52,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -35006,6 +41772,7 @@
         "PlayLoopingAnimation"
       ],
       "indirectCalls": 60,
+      "nativeDirectCalls": 50,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -35991,6 +42758,7 @@
         "PlayLoopingAnimation"
       ],
       "indirectCalls": 73,
+      "nativeDirectCalls": 81,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -37199,6 +43967,7 @@
         "IsAlive"
       ],
       "indirectCalls": 42,
+      "nativeDirectCalls": 66,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -37290,6 +44059,7 @@
       "distinctCalls": 14,
       "mappedForgeApis": [],
       "indirectCalls": 49,
+      "nativeDirectCalls": 178,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -38218,6 +44988,7 @@
       "distinctCalls": 15,
       "mappedForgeApis": [],
       "indirectCalls": 57,
+      "nativeDirectCalls": 157,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -39210,6 +45981,7 @@
       "distinctCalls": 14,
       "mappedForgeApis": [],
       "indirectCalls": 28,
+      "nativeDirectCalls": 139,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -39412,6 +46184,7 @@
         "IsPerformingScriptTask"
       ],
       "indirectCalls": 28,
+      "nativeDirectCalls": 124,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -39493,6 +46266,7 @@
       "distinctCalls": 14,
       "mappedForgeApis": [],
       "indirectCalls": 7,
+      "nativeDirectCalls": 36,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -39654,6 +46428,7 @@
         "IsPerformingScriptTask"
       ],
       "indirectCalls": 14,
+      "nativeDirectCalls": 39,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -39894,6 +46669,7 @@
       "distinctCalls": 16,
       "mappedForgeApis": [],
       "indirectCalls": 41,
+      "nativeDirectCalls": 83,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -40527,6 +47303,7 @@
       "distinctCalls": 15,
       "mappedForgeApis": [],
       "indirectCalls": 17,
+      "nativeDirectCalls": 83,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -40834,6 +47611,7 @@
         "IsDistanceBetweenThingsUnder"
       ],
       "indirectCalls": 78,
+      "nativeDirectCalls": 229,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -41138,6 +47916,7 @@
       "distinctCalls": 17,
       "mappedForgeApis": [],
       "indirectCalls": 60,
+      "nativeDirectCalls": 214,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -41330,6 +48109,7 @@
         "IsDistanceBetweenThingsUnder"
       ],
       "indirectCalls": 110,
+      "nativeDirectCalls": 296,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -42932,6 +49712,7 @@
       "distinctCalls": 18,
       "mappedForgeApis": [],
       "indirectCalls": 30,
+      "nativeDirectCalls": 101,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -43507,6 +50288,7 @@
         "IsAlive"
       ],
       "indirectCalls": 47,
+      "nativeDirectCalls": 230,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -43859,6 +50641,7 @@
       "distinctCalls": 18,
       "mappedForgeApis": [],
       "indirectCalls": 70,
+      "nativeDirectCalls": 186,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -44027,6 +50810,7 @@
         "IsPerformingScriptTask"
       ],
       "indirectCalls": 11,
+      "nativeDirectCalls": 34,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -44129,6 +50913,7 @@
       "distinctCalls": 19,
       "mappedForgeApis": [],
       "indirectCalls": 65,
+      "nativeDirectCalls": 197,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -45341,6 +52126,7 @@
       "distinctCalls": 19,
       "mappedForgeApis": [],
       "indirectCalls": 28,
+      "nativeDirectCalls": 90,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -45824,6 +52610,7 @@
       "distinctCalls": 19,
       "mappedForgeApis": [],
       "indirectCalls": 63,
+      "nativeDirectCalls": 158,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -45956,6 +52743,7 @@
         "IsDistanceBetweenThingsUnder"
       ],
       "indirectCalls": 31,
+      "nativeDirectCalls": 113,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -46525,6 +53313,7 @@
         "IsAlive"
       ],
       "indirectCalls": 582,
+      "nativeDirectCalls": 1395,
       "entityBindings": [],
       "entityBindingCount": 0,
       "completeEntityBindings": 0,
@@ -46673,6 +53462,7 @@
       "distinctCalls": 21,
       "mappedForgeApis": [],
       "indirectCalls": 37,
+      "nativeDirectCalls": 116,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -46888,6 +53678,7 @@
         "IsPerformingScriptTask"
       ],
       "indirectCalls": 72,
+      "nativeDirectCalls": 247,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -47222,6 +54013,7 @@
         "IsDistanceBetweenThingsUnder"
       ],
       "indirectCalls": 88,
+      "nativeDirectCalls": 394,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
@@ -47632,6 +54424,7 @@
       "distinctCalls": 31,
       "mappedForgeApis": [],
       "indirectCalls": 269,
+      "nativeDirectCalls": 893,
       "entityBindings": [
         {
           "operation": "entity-binding-registration",
