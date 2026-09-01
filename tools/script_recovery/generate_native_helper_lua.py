@@ -227,6 +227,18 @@ def emit_optional_script_thing_return(helper: dict[str, Any], pattern: dict[str,
     ])
 
 
+def emit_destroy_and_zero(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
+    return "\n".join([
+        f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+        "-- Preserve owned-resource destruction and the following zero write in native order.",
+        "return function(destroy_owned, write_u32)",
+        f"    destroy_owned({int(pattern['fieldOffset'], 0)}, "
+        f"{int(pattern['destroyTarget'], 0)})",
+        f"    write_u32({int(pattern['fieldOffset'], 0)}, 0)",
+        "end", "",
+    ])
+
+
 def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
     source_bytes = helper_ir_path.read_bytes()
     document = json.loads(source_bytes.decode("utf-8-sig"))
@@ -245,7 +257,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
                                           "remove-live-things-in-vector",
                                           "optional-resource-virtual-call",
                                           "optional-resource-forward-virtual-call",
-                                          "optional-resource-script-thing-return"}
+                                          "optional-resource-script-thing-return",
+                                          "destroy-and-zero-field"}
                     and row["complete"]]
         if len(patterns) != 1:
             raise ValueError(f"expected one complete switch for {helper['targetAddress']}")
@@ -272,6 +285,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
             text = emit_optional_resource_forward_call(helper, pattern)
         elif pattern["kind"] == "optional-resource-script-thing-return":
             text = emit_optional_script_thing_return(helper, pattern)
+        elif pattern["kind"] == "destroy-and-zero-field":
+            text = emit_destroy_and_zero(helper, pattern)
         else:
             text = emit_return(helper, pattern)
         filename = helper["targetAddress"].removeprefix("0x") + ".lua"

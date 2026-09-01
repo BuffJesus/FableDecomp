@@ -139,6 +139,16 @@ class NativeHelperDecompileTests(unittest.TestCase):
         self.assertEqual(pattern["kind"], "optional-resource-script-thing-return")
         self.assertEqual(pattern["emptyTokenBytes"], 12)
 
+    def test_destroy_and_zero_preserves_cleanup_order(self):
+        body = ("Destroy((allocator *)(this + 8), edx); "
+                "*(undefined4 *)(this + 8) = 0;")
+        direct = [{"target": "0x007E70E0", "site": "0x00CD2776"}]
+        pattern = semantic_patterns(body, direct, [], "CMemoryDataOutputStream::Clear")[0]
+        self.assertEqual(pattern, {
+            "kind": "destroy-and-zero-field", "complete": True,
+            "fieldOffset": "0x8", "fieldWidth": 4,
+            "destroyTarget": "0x007E70E0", "destroyCallSite": "0x00CD2776"})
+
     def test_typed_native_reads_are_complete_semantic_patterns(self):
         field = semantic_patterns(
             "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])

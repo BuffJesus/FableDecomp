@@ -263,6 +263,16 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
             "emptyConstructorTarget": "0x0099A2D0", "emptyTokenBytes": 12,
             "operation": "GetScriptThing",
         })
+    if (current_name == "CMemoryDataOutputStream::Clear" and len(direct) == 1
+            and direct[0].get("target") == "0x007E70E0" and not indirect
+            and all(value in text for value in (
+                "(this + 8)", "*(undefined4 *)(this + 8) = 0"))):
+        patterns.append({
+            "kind": "destroy-and-zero-field", "complete": True,
+            "fieldOffset": "0x8", "fieldWidth": 4,
+            "destroyTarget": "0x007E70E0",
+            "destroyCallSite": direct[0]["site"],
+        })
     return patterns
 
 
@@ -393,6 +403,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
                 "optional-resource-virtual-call",
                 "optional-resource-forward-virtual-call",
                 "optional-resource-script-thing-return",
+                "destroy-and-zero-field",
             } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)

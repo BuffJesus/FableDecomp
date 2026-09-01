@@ -107,6 +107,23 @@ class NativeHelperLuaTests(unittest.TestCase):
             self.assertTrue(result["summary"]["complete"])
             self.assertEqual(result["summary"]["checks"], 4)
 
+    def test_generated_destroy_and_zero_preserves_operation_order(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            helper_ir = root / "ir.json"
+            helper_ir.write_text(json.dumps({"helpers": [{
+                "targetAddress": "0x00CD2770", "currentName": "Clear",
+                "decompileSha256": "1" * 64, "luaEmissionReady": True,
+                "semanticPatterns": [{"kind": "destroy-and-zero-field",
+                                      "complete": True, "fieldOffset": "0x8",
+                                      "fieldWidth": 4, "destroyTarget": "0x007E70E0",
+                                      "destroyCallSite": "0x00CD2776"}],
+            }]}))
+            generate(helper_ir, root / "generated")
+            result = validate(root / "generated" / "manifest.json")
+            self.assertTrue(result["summary"]["complete"])
+            self.assertEqual(result["summary"]["checks"], 2)
+
 
 if __name__ == "__main__":
     unittest.main()

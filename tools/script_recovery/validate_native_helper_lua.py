@@ -286,6 +286,16 @@ def validate(manifest_path: Path) -> dict[str, Any]:
                 if trace != expected_trace or actual != expected_result:
                     errors.append(f"resource {resource}: expected {expected_trace}/{expected_result}, "
                                   f"got {trace}/{actual}")
+        elif pattern["kind"] == "destroy-and-zero-field":
+            field = int(pattern["fieldOffset"], 0)
+            target = int(pattern["destroyTarget"], 0)
+            trace = []
+            function(lambda offset, address: trace.append(("destroy", offset, address)),
+                     lambda offset, value: trace.append(("write-u32", offset, value)))
+            expected = [("destroy", field, target), ("write-u32", field, 0)]
+            checks = len(expected)
+            if trace != expected:
+                errors.append(f"cleanup trace differs: expected {expected}, got {trace}")
         else:
             errors.append(f"unsupported semantic pattern {pattern['kind']}")
         rows.append({"targetAddress": entry["targetAddress"], "passed": not errors,

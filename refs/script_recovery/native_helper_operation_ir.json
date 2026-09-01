@@ -8,8 +8,8 @@
     "consumerCalls": 1437,
     "directDependencyCalls": 4967,
     "directDependencyTargets": 206,
-    "semanticPatterns": 20,
-    "luaEmissionReady": 20,
+    "semanticPatterns": 21,
+    "luaEmissionReady": 21,
     "resolvedParentInitializers": 2,
     "resolvedInterfaceCalls": 273,
     "resolvedInterfaceMethods": 62,
@@ -7017,9 +7017,18 @@
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "destroy-and-zero-field",
+          "complete": true,
+          "fieldOffset": "0x8",
+          "fieldWidth": 4,
+          "destroyTarget": "0x007E70E0",
+          "destroyCallSite": "0x00CD2776"
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00CBFB7D",

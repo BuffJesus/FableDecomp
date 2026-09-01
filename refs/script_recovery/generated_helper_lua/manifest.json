@@ -1,9 +1,9 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "BA719B7FEF25D20B85F52F7253ED73E0E29E8E7394EDABF1E6F6A49C874DA036",
+  "sourceSha256": "37E409C52951DEAF918C4D5B20ACCE6BA3691F64FC028A5506A0002BC41F13D0",
   "summary": {
-    "emitted": 20,
+    "emitted": 21,
     "deploymentEligible": 0
   },
   "entries": [
@@ -20,6 +20,24 @@
         "argumentOffset": "0x24",
         "callTarget": "0x00CBDF70",
         "callSite": "0x00CB8946"
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x00CD2770",
+      "currentName": "CMemoryDataOutputStream::Clear",
+      "sourceDecompileSha256": "2a5cff304169a0970d3a15304dc65191da7638fb5379f288e473006d6eec0a57",
+      "luaFile": "00CD2770.lua",
+      "luaSha256": "74DA6C36AC280B4948F66D0BE08820E7571D0D2CAA46220B28392BB719D0A0AE",
+      "semanticPattern": {
+        "kind": "destroy-and-zero-field",
+        "complete": true,
+        "fieldOffset": "0x8",
+        "fieldWidth": 4,
+        "destroyTarget": "0x007E70E0",
+        "destroyCallSite": "0x00CD2776"
       },
       "parentInitializerEvidence": null,
       "deploymentEligible": false,

@@ -228,7 +228,12 @@ branches validated. Its neighboring wrapper family is now covered as well: both 
 overloads (`0x007E7380/0x007E7390`) preserve their distinct `0x38/0x34` resource slots and tail-forward
 all arguments, while `GetScriptThing @ 0x007E7490` returns an opaque delegated token or recreates the
 evidenced empty 12-byte token branch through a constructor callback. Totals are now twenty helpers /
-119 checks, resolving 196 calls across 129 scripts and leaving 133 helper labels / 1,381 calls.
+119 checks, resolving 196 calls across 129 scripts. The widely used function labeled
+`CMemoryDataOutputStream::Clear @ 0x00CD2770` is proven by both decompile and retail instructions to
+be ordered local cleanup: destroy the owned value at `this+8` through `0x007E70E0`, then zero the
+same 32-bit slot. Typed `destroy_owned` / `write_u32` callbacks preserve both events without treating
+temporary native storage as gameplay state. This adds 66 resolved sites, bringing totals to twenty-one
+helpers / 121 checks, 262 resolved calls across 130 scripts, and 132 helper labels / 1,315 calls left.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`

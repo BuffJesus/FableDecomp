@@ -1,14 +1,20 @@
 {
   "schema": "forgefse-native-helper-lua-validation/0.1",
   "summary": {
-    "helpers": 20,
-    "passed": 20,
-    "checks": 119,
+    "helpers": 21,
+    "passed": 21,
+    "checks": 121,
     "complete": true
   },
   "helpers": [
     {
       "targetAddress": "0x00CB8930",
+      "passed": true,
+      "checks": 2,
+      "errors": []
+    },
+    {
+      "targetAddress": "0x00CD2770",
       "passed": true,
       "checks": 2,
       "errors": []
