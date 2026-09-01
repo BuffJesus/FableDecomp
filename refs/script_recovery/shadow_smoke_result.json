@@ -1,7 +1,13 @@
 {
   "schema": "forgefse-retail-shadow-smoke-result/0.1",
   "phase": "dll-attached",
+  "observedAtUtc": "2026-09-01T01:54:10Z",
+  "dllSha256": "0BCF232FABB355C555C6C97F1009EB4C3F80E280FE93DB91F57C2CE17D49A206",
+  "deploymentTransaction": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\backups\\RetailShadowSmoke-20260901T015236Z\\deployment.json",
   "dllAttached": true,
+  "processResponsive": true,
+  "normalMenuExit": true,
+  "profileOrSaveLoaded": false,
   "luaInitialized": false,
   "summarySeen": false,
   "expectedScripts": 16,

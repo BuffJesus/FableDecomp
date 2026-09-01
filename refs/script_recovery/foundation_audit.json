@@ -1236,6 +1236,15 @@
       "passed": true
     },
     {
+      "evidence": {
+        "luaInitialized": false,
+        "observedAtUtc": "2026-09-01T01:54:10Z",
+        "phase": "dll-attached"
+      },
+      "name": "fresh DLL attachment is proven without loading a save",
+      "passed": true
+    },
+    {
       "evidence": {},
       "name": "all reconstructed parent bindings correlate with native lifecycle evidence",
       "passed": true
@@ -1244,7 +1253,7 @@
   "schema": "fable-script-recovery-foundation-audit/0.1",
   "summary": {
     "complete": true,
-    "passed": 16,
-    "total": 16
+    "passed": 17,
+    "total": 17
   }
 }
