@@ -54,6 +54,28 @@
     },
     "unresolvedNativeHelperMethods": 158,
     "unresolvedNativeHelperCalls": 1603,
+    "nativeHelperCategories": {
+      "engine-or-script-helper": {
+        "methods": 85,
+        "calls": 469
+      },
+      "lifecycle-cleanup": {
+        "methods": 38,
+        "calls": 164
+      },
+      "object-lifetime": {
+        "methods": 16,
+        "calls": 761
+      },
+      "runtime-support": {
+        "methods": 18,
+        "calls": 207
+      },
+      "script-runtime": {
+        "methods": 1,
+        "calls": 2
+      }
+    },
     "scriptsWithResolvedInterfaceCalls": 93,
     "entityBindings": 615,
     "completeEntityBindings": 615,
@@ -66,7 +88,11 @@
     {
       "name": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
       "calls": 125,
+      "category": "lifecycle-cleanup",
       "scripts": 125,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "cutscene_host",
         "expression",
@@ -210,7 +236,11 @@
     {
       "name": "CTCVillage::OnInitialActivate",
       "calls": 121,
+      "category": "engine-or-script-helper",
       "scripts": 121,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "cutscene_host",
         "personal",
@@ -347,7 +377,13 @@
     {
       "name": "C3DClothPrimitive::~C3DClothPrimitive",
       "calls": 280,
+      "category": "object-lifetime",
       "scripts": 64,
+      "roles": [
+        "Init",
+        "Main",
+        "destructor"
+      ],
       "kinds": [
         "expression",
         "global",
@@ -428,7 +464,13 @@
     {
       "name": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
       "calls": 164,
+      "category": "object-lifetime",
       "scripts": 31,
+      "roles": [
+        "Init",
+        "Main",
+        "destructor"
+      ],
       "kinds": [
         "expression",
         "global",
@@ -475,7 +517,12 @@
     {
       "name": "NHeroInformationScreens::CBase::CBase",
       "calls": 119,
+      "category": "object-lifetime",
       "scripts": 26,
+      "roles": [
+        "Init",
+        "Main"
+      ],
       "kinds": [
         "expression",
         "global",
@@ -518,7 +565,11 @@
     {
       "name": "CBaseIntelligentPointer::CBaseIntelligentPointer",
       "calls": 42,
+      "category": "object-lifetime",
       "scripts": 22,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "cutscene_host",
         "expression",
@@ -557,7 +608,12 @@
     {
       "name": "CTimer::~CTimer",
       "calls": 22,
+      "category": "object-lifetime",
       "scripts": 18,
+      "roles": [
+        "Main",
+        "destructor"
+      ],
       "kinds": [
         "quest",
         "village"
@@ -586,7 +642,12 @@
     {
       "name": "CCarriedReadableDef::CCarriedReadableDef",
       "calls": 79,
+      "category": "object-lifetime",
       "scripts": 17,
+      "roles": [
+        "Init",
+        "Main"
+      ],
       "kinds": [
         "expression",
         "global",
@@ -616,7 +677,11 @@
     {
       "name": "CMemoryDataOutputStream::Clear",
       "calls": 66,
+      "category": "engine-or-script-helper",
       "scripts": 15,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "cutscene_host",
         "global",
@@ -645,7 +710,11 @@
     {
       "name": "RunCutsceneMacro_Func",
       "calls": 44,
+      "category": "engine-or-script-helper",
       "scripts": 15,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "cutscene_host",
         "global",
@@ -673,7 +742,12 @@
     {
       "name": "StdMap_Destroy_API",
       "calls": 34,
+      "category": "runtime-support",
       "scripts": 15,
+      "roles": [
+        "Main",
+        "destructor"
+      ],
       "kinds": [
         "global",
         "quest",
@@ -700,7 +774,11 @@
     {
       "name": "C3DMeshInfo::HasPhysicsMesh",
       "calls": 52,
+      "category": "engine-or-script-helper",
       "scripts": 13,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "global",
         "master",
@@ -726,7 +804,11 @@
     {
       "name": "StdMap_Construct_API",
       "calls": 28,
+      "category": "runtime-support",
       "scripts": 13,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "global",
         "quest",
@@ -751,7 +833,11 @@
     {
       "name": "CPhysicsMeshInfo::~CPhysicsMeshInfo",
       "calls": 20,
+      "category": "object-lifetime",
       "scripts": 13,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "cutscene_host",
         "expression",
@@ -780,7 +866,11 @@
     {
       "name": "CSubtitleRenderer::SetText",
       "calls": 35,
+      "category": "engine-or-script-helper",
       "scripts": 11,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "cutscene_host",
         "global",
@@ -803,7 +893,11 @@
     {
       "name": "CScriptThing::CScriptThing",
       "calls": 11,
+      "category": "object-lifetime",
       "scripts": 11,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "expression",
         "global",
@@ -826,7 +920,11 @@
     {
       "name": "free",
       "calls": 15,
+      "category": "runtime-support",
       "scripts": 7,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "cutscene_host",
         "personal",
@@ -846,7 +944,12 @@
     {
       "name": "rand",
       "calls": 15,
+      "category": "runtime-support",
       "scripts": 7,
+      "roles": [
+        "Init",
+        "Main"
+      ],
       "kinds": [
         "expression",
         "quest",
@@ -865,7 +968,12 @@
     {
       "name": "CCharString__AssignFromWide",
       "calls": 12,
+      "category": "engine-or-script-helper",
       "scripts": 7,
+      "roles": [
+        "Init",
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -882,7 +990,11 @@
     {
       "name": "resize",
       "calls": 14,
+      "category": "runtime-support",
       "scripts": 6,
+      "roles": [
+        "Init"
+      ],
       "kinds": [
         "quest",
         "village"
@@ -899,7 +1011,12 @@
     {
       "name": "__ftol2",
       "calls": 10,
+      "category": "runtime-support",
       "scripts": 6,
+      "roles": [
+        "Main",
+        "OnPersist"
+      ],
       "kinds": [
         "expression",
         "quest",
@@ -917,7 +1034,12 @@
     {
       "name": "CFileInstaller::CActiveFile::OnReadFinished",
       "calls": 7,
+      "category": "engine-or-script-helper",
       "scripts": 5,
+      "roles": [
+        "Main",
+        "destructor"
+      ],
       "kinds": [
         "global",
         "personal",
@@ -935,7 +1057,11 @@
     {
       "name": "CFourierAnalysis::CFourierAnalysis",
       "calls": 11,
+      "category": "object-lifetime",
       "scripts": 4,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "cutscene_host",
         "global",
@@ -951,7 +1077,12 @@
     {
       "name": "LTextTreeWalkThrough__Dtor",
       "calls": 6,
+      "category": "object-lifetime",
       "scripts": 4,
+      "roles": [
+        "Main",
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -965,7 +1096,12 @@
     {
       "name": "push_back",
       "calls": 4,
+      "category": "runtime-support",
       "scripts": 4,
+      "roles": [
+        "Init",
+        "Main"
+      ],
       "kinds": [
         "quest",
         "village"
@@ -980,7 +1116,11 @@
     {
       "name": "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ",
       "calls": 3,
+      "category": "engine-or-script-helper",
       "scripts": 3,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "expression",
         "global"
@@ -994,7 +1134,11 @@
     {
       "name": "strstr",
       "calls": 3,
+      "category": "runtime-support",
       "scripts": 3,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -1007,7 +1151,11 @@
     {
       "name": "std__vector__Reallocate",
       "calls": 50,
+      "category": "runtime-support",
       "scripts": 2,
+      "roles": [
+        "Init"
+      ],
       "kinds": [
         "quest",
         "repeatable_quest"
@@ -1020,7 +1168,12 @@
     {
       "name": "CDefendingCombatantInfo::CCombatWheel::ResetRings",
       "calls": 6,
+      "category": "engine-or-script-helper",
       "scripts": 2,
+      "roles": [
+        "Main",
+        "destructor"
+      ],
       "kinds": [
         "global"
       ],
@@ -1032,7 +1185,12 @@
     {
       "name": "CCharString_OperatorPlus_API",
       "calls": 3,
+      "category": "engine-or-script-helper",
       "scripts": 2,
+      "roles": [
+        "Init",
+        "Main"
+      ],
       "kinds": [
         "personal",
         "village"
@@ -1045,7 +1203,11 @@
     {
       "name": "CCharString__NotEqual",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 2,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "expression",
         "village"
@@ -1058,7 +1220,11 @@
     {
       "name": "CScriptBase::KillSpawnedFunction",
       "calls": 2,
+      "category": "script-runtime",
       "scripts": 2,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "expression",
         "test"
@@ -1071,7 +1237,12 @@
     {
       "name": "GFIntToCharString_API",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 2,
+      "roles": [
+        "Init",
+        "Main"
+      ],
       "kinds": [
         "global",
         "village"
@@ -1084,7 +1255,11 @@
     {
       "name": "KillAllThingsInVector",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 2,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1096,7 +1271,11 @@
     {
       "name": "LTextTreeWalkThrough_Destructor",
       "calls": 2,
+      "category": "lifecycle-cleanup",
       "scripts": 2,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest",
         "village"
@@ -1109,7 +1288,11 @@
     {
       "name": "NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript",
       "calls": 2,
+      "category": "lifecycle-cleanup",
       "scripts": 2,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest",
         "village"
@@ -1122,7 +1305,11 @@
     {
       "name": "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 2,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "personal",
         "quest"
@@ -1135,7 +1322,11 @@
     {
       "name": "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 2,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "personal",
         "quest"
@@ -1148,7 +1339,11 @@
     {
       "name": "malloc",
       "calls": 2,
+      "category": "runtime-support",
       "scripts": 2,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "cutscene_host",
         "quest"
@@ -1161,7 +1356,11 @@
     {
       "name": "std__vector__push_back",
       "calls": 25,
+      "category": "runtime-support",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "global"
       ],
@@ -1172,7 +1371,11 @@
     {
       "name": "Activate",
       "calls": 6,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "repeatable_quest"
       ],
@@ -1183,7 +1386,11 @@
     {
       "name": "CCharString__AppendCString",
       "calls": 6,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "personal"
       ],
@@ -1194,7 +1401,11 @@
     {
       "name": "CCharString__AppendData",
       "calls": 5,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "personal"
       ],
@@ -1205,7 +1416,11 @@
     {
       "name": "_CIfmod",
       "calls": 4,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -1216,7 +1431,11 @@
     {
       "name": "fpatan",
       "calls": 4,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -1227,7 +1446,11 @@
     {
       "name": "CScriptBase_FilterCombatantsByType",
       "calls": 3,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1238,7 +1461,11 @@
     {
       "name": "Game_InitializeHeroCharacter",
       "calls": 3,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1249,7 +1476,11 @@
     {
       "name": "Script_InitializeComponents",
       "calls": 3,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1260,7 +1491,11 @@
     {
       "name": "WatchForRoundsInArena_Setup",
       "calls": 3,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1271,7 +1506,11 @@
     {
       "name": "AssignMoralityEtcForEvilEnding",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -1282,7 +1521,11 @@
     {
       "name": "CNavigatorQueueManager::FrameUpdate",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "personal"
       ],
@@ -1293,7 +1536,11 @@
     {
       "name": "CQ_HangingTreeEvilScript::CleanUp",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1304,7 +1551,11 @@
     {
       "name": "CWideScreenMagicPauseEntities::~CWideScreenMagicPauseEntities",
       "calls": 2,
+      "category": "object-lifetime",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1315,7 +1566,11 @@
     {
       "name": "Game_InitializeRound",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1326,7 +1581,11 @@
     {
       "name": "Main_InitializeFourierAnalysis",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1337,7 +1596,11 @@
     {
       "name": "Main_InitializeFourierAnalysis_1",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1348,7 +1611,11 @@
     {
       "name": "Main_InitializeFourierAnalysis_2",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1359,7 +1626,11 @@
     {
       "name": "Main_InitializeFourierAnalysis_3",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1370,7 +1641,11 @@
     {
       "name": "Main_InitializeHeroMorphComponents",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1381,7 +1656,11 @@
     {
       "name": "Math_CartesianToSpherical",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1392,7 +1671,11 @@
     {
       "name": "NScript::CQ_ArenaScript::AnimateCrowd",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1403,7 +1686,11 @@
     {
       "name": "RemoveParty",
       "calls": 2,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1414,7 +1701,11 @@
     {
       "name": "C3DAnimationUtil::C3DAnimationUtil",
       "calls": 1,
+      "category": "object-lifetime",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "global"
       ],
@@ -1425,7 +1716,11 @@
     {
       "name": "CCharString__ToUpper",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "personal"
       ],
@@ -1436,7 +1731,11 @@
     {
       "name": "CEngineInternalPrimitiveBase::AddChildPrimitive",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "OnPersist"
+      ],
       "kinds": [
         "repeatable_quest"
       ],
@@ -1447,7 +1746,11 @@
     {
       "name": "CGameflowScript::DeclareGossipCategories",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -1458,7 +1761,11 @@
     {
       "name": "CMainGameComponentInit::CMainGameComponentInit",
       "calls": 1,
+      "category": "object-lifetime",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1469,7 +1776,11 @@
     {
       "name": "CMemoryAllocatorVariableSize::GetNoAllocatedAreas",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "global"
       ],
@@ -1480,7 +1791,11 @@
     {
       "name": "CParticleEmitter_Dtor",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1491,7 +1806,11 @@
     {
       "name": "CParticleEmitter_Dtor_2",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1502,7 +1821,11 @@
     {
       "name": "CParticleEmitter_Dtor_3",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1513,7 +1836,11 @@
     {
       "name": "CParticleEmitter_Dtor_4",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1524,7 +1851,11 @@
     {
       "name": "CParticleEmitter_Dtor_5",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1535,7 +1866,11 @@
     {
       "name": "CParticleEmitter_Dtor_6",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1546,7 +1881,11 @@
     {
       "name": "CParticleEmitter_Dtor_7",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1557,7 +1896,11 @@
     {
       "name": "CParticleEmitter_Dtor_8",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1568,7 +1911,11 @@
     {
       "name": "CParticleEmitter___CParticleEmitter",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1579,7 +1926,11 @@
     {
       "name": "CParticleEmitter___CParticleEmitter_0x24c80",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "repeatable_quest"
       ],
@@ -1590,7 +1941,11 @@
     {
       "name": "CParticleEmitter___CParticleEmitter_0xb6ab0",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -1601,7 +1956,11 @@
     {
       "name": "CParticleEmitter___CParticleEmitter_0xd39f0",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -1612,7 +1971,11 @@
     {
       "name": "CParticleEmitter___CParticleEmitter_0xe8c30",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "cutscene_host"
       ],
@@ -1623,7 +1986,11 @@
     {
       "name": "CParticleEmitter___CParticleEmitter_MeshFree",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -1634,7 +2001,11 @@
     {
       "name": "CParticleEmitter___CParticleEmitter_Minimal",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -1645,7 +2016,11 @@
     {
       "name": "CParticleEmitter___CParticleEmitter_Simple",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -1656,7 +2031,11 @@
     {
       "name": "CParticleEmitter___CParticleEmitter_Variant",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -1667,7 +2046,11 @@
     {
       "name": "CParticleEmitter___CParticleEmitter_WithMemFree",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -1678,7 +2061,11 @@
     {
       "name": "CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1689,7 +2076,11 @@
     {
       "name": "CQ_GuildTrainingScript::CMeleeApprentice::Init",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -1700,7 +2091,11 @@
     {
       "name": "CQ_NewOakValeIntroScript::DoMission",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1711,7 +2106,11 @@
     {
       "name": "CScriptBase_ProcessNPCConversations",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1722,7 +2121,11 @@
     {
       "name": "CScriptGameResourceObject_LoadGuildComplex",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1733,7 +2136,11 @@
     {
       "name": "CScriptThing::_GetAngleXY_CScriptThing__UBEMXZ",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1744,7 +2151,11 @@
     {
       "name": "CSystemManager::~CSystemManager",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -1755,7 +2166,11 @@
     {
       "name": "CTCCarryable::OnKill",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "global"
       ],
@@ -1766,7 +2181,11 @@
     {
       "name": "CTCInventoryItem::OnDie",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -1777,7 +2196,11 @@
     {
       "name": "CTCTavernGame::~CTCTavernGame",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -1788,7 +2211,11 @@
     {
       "name": "CTimer::CTimer",
       "calls": 1,
+      "category": "object-lifetime",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1799,7 +2226,11 @@
     {
       "name": "CV_ChickenKickingScript::Init",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1810,7 +2241,11 @@
     {
       "name": "CV_SickChildScript::CWomanToAttract::DoLeavingCutscene",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1821,7 +2256,11 @@
     {
       "name": "CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities",
       "calls": 1,
+      "category": "object-lifetime",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1832,7 +2271,11 @@
     {
       "name": "CWorld::DrawGetEnvironment",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1843,7 +2286,11 @@
     {
       "name": "CleanUp",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1854,7 +2301,11 @@
     {
       "name": "CleanUpHeroDuel",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -1865,7 +2316,11 @@
     {
       "name": "DisableFollowers",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1876,7 +2331,11 @@
     {
       "name": "DoMission_OakValeRevisited",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "cutscene_host"
       ],
@@ -1887,7 +2346,11 @@
     {
       "name": "DoublyLinkedList_Init",
       "calls": 1,
+      "category": "runtime-support",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "personal"
       ],
@@ -1898,7 +2361,11 @@
     {
       "name": "GFGetPreMainMemoryUsed",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "personal"
       ],
@@ -1909,7 +2376,11 @@
     {
       "name": "GoTalkToBeardyBaldy",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -1920,7 +2391,11 @@
     {
       "name": "GossipSetup",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1931,7 +2406,11 @@
     {
       "name": "InitialiseVariables",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -1942,7 +2421,11 @@
     {
       "name": "Is2DDistanceBetweenThingsUnder",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "expression"
       ],
@@ -1953,7 +2436,11 @@
     {
       "name": "LTextTreeWalkThrough_Cleanup",
       "calls": 1,
+      "category": "object-lifetime",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "global"
       ],
@@ -1964,7 +2451,11 @@
     {
       "name": "LTextTreeWalkThrough_dtor",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "global"
       ],
@@ -1975,7 +2466,11 @@
     {
       "name": "List_Node_Initialize",
       "calls": 1,
+      "category": "runtime-support",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "global"
       ],
@@ -1986,7 +2481,11 @@
     {
       "name": "Main_InitializeCreatureSpawners",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -1997,7 +2496,11 @@
     {
       "name": "Main_InitializeFourierAnalysis_4",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2008,7 +2511,11 @@
     {
       "name": "NScript::CGameflowScript::DeclareGossipCategories",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Init"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2019,7 +2526,11 @@
     {
       "name": "NScript::CLadyGreyWifeManagerScript::~CLadyGreyWifeManagerScript",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "script"
       ],
@@ -2030,7 +2541,11 @@
     {
       "name": "NScript::CQ_ArenaScript::GetFanfareMusic",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2041,7 +2556,11 @@
     {
       "name": "NScript::CQ_ArenaScript::InitialiseVariables",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2052,7 +2571,11 @@
     {
       "name": "NScript::CQ_ArenaScript::PlayWave",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2063,7 +2586,11 @@
     {
       "name": "NScript::CQ_ArenaScript::~CQ_ArenaScript",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2074,7 +2601,11 @@
     {
       "name": "NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::OnPredicateFail",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -2085,7 +2616,11 @@
     {
       "name": "NScript::CQ_HangingTreeEvilScript::~CQ_HangingTreeEvilScript",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2096,7 +2631,11 @@
     {
       "name": "NScript::CQ_HangingTreeGoodScript::CHTG_Audience::~CHTG_Audience",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2107,7 +2646,11 @@
     {
       "name": "NScript::CQ_HobbeToothContestScript::DisplayTimer",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2118,7 +2661,11 @@
     {
       "name": "NScript::CQ_OpeningGraveyardSecretPassageScript::InitializeVariables",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2129,7 +2676,11 @@
     {
       "name": "NScript::CQ_RansomVictimScript::~CQ_RansomVictimScript",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2140,7 +2691,11 @@
     {
       "name": "NScript::CTonyTestScriptsScript::AddQuestsToGuild",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "test"
       ],
@@ -2151,7 +2706,11 @@
     {
       "name": "NScript::CV_ArcheryCompetitionScript::AddArcheryQuestInfo",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -2162,7 +2721,11 @@
     {
       "name": "NScript::CV_ArcheryCompetitionScript::RemoveArcheryQuestInfo",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -2173,7 +2736,11 @@
     {
       "name": "NScript::CV_ArcheryCompetitionScript::UpdateHighScore",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -2184,7 +2751,11 @@
     {
       "name": "NScript::CV_ArcheryCompetitionScript::~CV_ArcheryCompetitionScript",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -2195,7 +2766,11 @@
     {
       "name": "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -2206,7 +2781,11 @@
     {
       "name": "NScript::CV_ExposeMayorScript::~CV_ExposeMayorScript",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -2217,7 +2796,11 @@
     {
       "name": "NScript::CV_SickChildScript::~CV_SickChildScript",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -2228,7 +2811,11 @@
     {
       "name": "NScript::CV_SwordInTheStoneScript::~CV_SwordInTheStoneScript",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -2239,7 +2826,11 @@
     {
       "name": "NScript::CV_TalentlessBardScript::~CV_TalentlessBardScript",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -2250,7 +2841,11 @@
     {
       "name": "NTCScriptedControl::CActionMoveTo::~CActionMoveTo",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -2261,7 +2856,11 @@
     {
       "name": "NTCScriptedControl::CActionTalkedTo::~CActionTalkedTo",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "village"
       ],
@@ -2272,7 +2871,11 @@
     {
       "name": "PopulateLevel",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2283,7 +2886,11 @@
     {
       "name": "RemoveDregs",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2294,7 +2901,11 @@
     {
       "name": "RestoreFollowers",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2305,7 +2916,11 @@
     {
       "name": "RunArrivalCutscene",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2316,7 +2931,11 @@
     {
       "name": "SetupPuzzleBlocks",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2327,7 +2946,11 @@
     {
       "name": "SpringAmbush",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -2338,7 +2961,11 @@
     {
       "name": "StartRound",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2349,7 +2976,11 @@
     {
       "name": "StdMap_DestroyNode",
       "calls": 1,
+      "category": "runtime-support",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "cutscene_host"
       ],
@@ -2360,7 +2991,11 @@
     {
       "name": "Std_Deque_Construct",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2371,7 +3006,11 @@
     {
       "name": "TricksterApproach",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -2382,7 +3021,11 @@
     {
       "name": "_E2",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "village"
       ],
@@ -2393,7 +3036,11 @@
     {
       "name": "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "global"
       ],
@@ -2404,7 +3051,11 @@
     {
       "name": "_SummonerLightningOrbAttackTarget_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing___Z",
       "calls": 1,
+      "category": "engine-or-script-helper",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "master"
       ],
@@ -2415,7 +3066,11 @@
     {
       "name": "_vector_constructor_iterator_",
       "calls": 1,
+      "category": "lifecycle-cleanup",
       "scripts": 1,
+      "roles": [
+        "destructor"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2426,7 +3081,11 @@
     {
       "name": "std__vector__pop_back",
       "calls": 1,
+      "category": "runtime-support",
       "scripts": 1,
+      "roles": [
+        "Main"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2437,7 +3096,11 @@
     {
       "name": "std_vector_CConversation_Assign",
       "calls": 1,
+      "category": "runtime-support",
       "scripts": 1,
+      "roles": [
+        "Init"
+      ],
       "kinds": [
         "village"
       ],
@@ -2448,7 +3111,11 @@
     {
       "name": "std_vector_Conversation_Assign",
       "calls": 1,
+      "category": "runtime-support",
       "scripts": 1,
+      "roles": [
+        "Init"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2459,7 +3126,11 @@
     {
       "name": "std_vector_Conversation_Assign3",
       "calls": 1,
+      "category": "runtime-support",
       "scripts": 1,
+      "roles": [
+        "Init"
+      ],
       "kinds": [
         "quest"
       ],
@@ -2514,6 +3185,11 @@
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\DanyalTestScripts.json"
     },
     {
@@ -2543,6 +3219,11 @@
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Empty.json"
     },
     {
@@ -2569,6 +3250,11 @@
       "stage": "map-native-helpers",
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\GameflowAssistance.json"
     },
@@ -2601,6 +3287,11 @@
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_ToggleTimeDisplay.json"
     },
     {
@@ -2627,6 +3318,11 @@
       "stage": "map-native-helpers",
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_WatchForHeroDeath.json"
     },
@@ -2752,6 +3448,11 @@
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_OrchardFarmRaidEvil.json"
     },
     {
@@ -2876,6 +3577,11 @@
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_OrchardFarmRaidGood.json"
     },
     {
@@ -2904,6 +3610,11 @@
       "stage": "map-native-helpers",
       "unresolvedNativeHelperCallCounts": {
         "CParticleEmitter___CParticleEmitter": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CParticleEmitter___CParticleEmitter": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_SecretPassage.json"
     },
@@ -2952,6 +3663,11 @@
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_SunnyvaleMaster.json"
     },
     {
@@ -2978,6 +3694,11 @@
       "stage": "map-native-helpers",
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\ShowTargetedThingHealth.json"
     },
@@ -3006,6 +3727,11 @@
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestNewNav1.json"
     },
     {
@@ -3032,6 +3758,11 @@
       "stage": "map-native-helpers",
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestNewNav2.json"
     },
@@ -3060,6 +3791,11 @@
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestNewNav3.json"
     },
     {
@@ -3087,6 +3823,11 @@
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestNewNav4.json"
     },
     {
@@ -3113,6 +3854,11 @@
       "stage": "map-native-helpers",
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestNewNav5.json"
     },
@@ -3143,6 +3889,11 @@
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestQuestCard2.json"
     },
     {
@@ -3171,6 +3922,11 @@
       "stage": "map-native-helpers",
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestQuestCard3.json"
     },
@@ -3298,6 +4054,11 @@
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestTheInventory.json"
     },
     {
@@ -3327,6 +4088,11 @@
       "stage": "map-native-helpers",
       "unresolvedNativeHelperCallCounts": {
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\alextest.json"
     },
@@ -3402,6 +4168,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\BenTestScripts.json"
     },
     {
@@ -3448,6 +4222,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\GuildSealTriggerTest.json"
     },
     {
@@ -3480,6 +4262,14 @@
         "CFileInstaller::CActiveFile::OnReadFinished": 2,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CFileInstaller::CActiveFile::OnReadFinished": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\HeroBoasts.json"
     },
     {
@@ -3510,6 +4300,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\HeroTurningDebugger.json"
     },
@@ -3556,6 +4354,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\HitSwitchTest.json"
     },
@@ -3630,6 +4436,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\MarkTestScripts.json"
     },
@@ -3708,6 +4522,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\OracleMinigameTest.json"
     },
@@ -3979,6 +4801,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\PersonalScript_GlobalThings.json"
     },
     {
@@ -4053,6 +4883,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\PersonalScript_alextest.json"
     },
     {
@@ -4098,6 +4936,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\ProximityPodiumTest.json"
     },
@@ -4655,6 +5501,14 @@
         "Activate": 6,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "Activate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QR_EscortTrader_Manager.json"
     },
     {
@@ -4706,6 +5560,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QS_GuardianSisterInfo.json"
     },
     {
@@ -4753,6 +5615,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QS_GuardianTrophyDealerInfo.json"
     },
@@ -4815,6 +5685,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QS_MeetSister.json"
     },
@@ -5196,6 +6074,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_BanditCamp.json"
     },
@@ -5582,6 +6468,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_BanditCampBossBattle.json"
     },
     {
@@ -5745,6 +6639,14 @@
         "C3DClothPrimitive::~C3DClothPrimitive": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_BanditCampHoldingScript.json"
     },
     {
@@ -5808,6 +6710,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_CinemaTest.json"
     },
@@ -5918,6 +6828,14 @@
         "CParticleEmitter_Dtor_2": 1,
         "CTCVillage::OnInitialActivate": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CParticleEmitter_Dtor_2": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_DragonBossFight.json"
     },
     {
@@ -6023,6 +6941,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_EndGame.json"
     },
     {
@@ -6069,6 +6995,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingSkill.json"
     },
     {
@@ -6114,6 +7048,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingWill.json"
     },
@@ -6242,6 +7184,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingWoodsMelee.json"
     },
@@ -6491,6 +7441,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_MinionCamp.json"
     },
     {
@@ -6645,6 +7603,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NScript::CV_SickChildScript::~CV_SickChildScript": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NScript::CV_SickChildScript::~CV_SickChildScript": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_ChickenKicking.json"
     },
@@ -6874,6 +7840,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_DemonDoors.json"
     },
     {
@@ -6966,6 +7940,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_Fisherman.json"
     },
@@ -7189,6 +8171,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_GhostGrannyNecklace.json"
     },
     {
@@ -7235,6 +8225,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_GuildMaster.json"
     },
     {
@@ -7280,6 +8278,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_HeroDolls.json"
     },
@@ -7337,6 +8343,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_HiddenBooty.json"
     },
@@ -7486,6 +8500,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_MurderTwist.json"
     },
     {
@@ -7545,6 +8567,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_Oracle.json"
     },
@@ -7620,6 +8650,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_ParanoidWhispers.json"
     },
     {
@@ -7679,6 +8717,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_PicnicAreaAfterWaspBoss.json"
     },
@@ -7772,6 +8818,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_RandomPopulationSim.json"
     },
     {
@@ -7854,6 +8908,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_RockTrollFirstEncounter.json"
     },
@@ -7982,6 +9044,14 @@
         "CParticleEmitter___CParticleEmitter_0xd39f0": 1,
         "CTCVillage::OnInitialActivate": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CParticleEmitter___CParticleEmitter_0xd39f0": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_SingingStones.json"
     },
     {
@@ -8044,6 +9114,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NTCScriptedControl::CActionTalkedTo::~CActionTalkedTo": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NTCScriptedControl::CActionTalkedTo::~CActionTalkedTo": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_TourGuide.json"
     },
@@ -8260,6 +9338,14 @@
         "CTCTavernGame::~CTCTavernGame": 1,
         "CTCVillage::OnInitialActivate": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCTavernGame::~CTCTavernGame": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_TravellingHeroes.json"
     },
     {
@@ -8361,6 +9447,14 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_TrophyDealer.json"
     },
     {
@@ -8406,6 +9500,14 @@
       "unresolvedNativeHelperCallCounts": {
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\guy_script.json"
     },
@@ -8721,6 +9823,17 @@
         "C3DClothPrimitive::~C3DClothPrimitive": 2,
         "CScriptThing::CScriptThing": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CScriptThing::CScriptThing": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_GiveHeroItemsFromRewardChest.json"
     },
@@ -9590,6 +10703,18 @@
         "NHeroInformationScreens::CBase::CBase": 2,
         "NScript::CLadyGreyWifeManagerScript::~CLadyGreyWifeManagerScript": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Init",
+          "Main"
+        ],
+        "NScript::CLadyGreyWifeManagerScript::~CLadyGreyWifeManagerScript": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\LadyGreyWifeManager.json"
     },
     {
@@ -9644,6 +10769,17 @@
         "C3DClothPrimitive::~C3DClothPrimitive": 1,
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QS_GuardianSisterInfo2_SisterInBanditCamp.json"
     },
@@ -10444,6 +11580,17 @@
         "CParticleEmitter_Dtor": 1,
         "CTCVillage::OnInitialActivate": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CCharString__AssignFromWide": [
+          "Main"
+        ],
+        "CParticleEmitter_Dtor": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_AmbushTraders.json"
     },
     {
@@ -10632,6 +11779,17 @@
         "C3DClothPrimitive::~C3DClothPrimitive": 1,
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_ArenaHoldingScript.json"
     },
@@ -11325,6 +12483,17 @@
         "CTCVillage::OnInitialActivate": 1,
         "Main_InitializeHeroMorphComponents": 2
       },
+      "unresolvedNativeHelperRoles": {
+        "CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "Main_InitializeHeroMorphComponents": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_AwakeningTheOracle.json"
     },
     {
@@ -11603,6 +12772,17 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_BreakSiege.json"
     },
     {
@@ -11676,6 +12856,17 @@
         "CTCVillage::OnInitialActivate": 1,
         "NHeroInformationScreens::CBase::CBase": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Init"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingDeparture.json"
     },
@@ -11871,6 +13062,17 @@
         "C3DClothPrimitive::~C3DClothPrimitive": 2,
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingWoodsDeparture.json"
     },
@@ -12591,6 +13793,17 @@
         "CQ_HangingTreeEvilScript::CleanUp": 2,
         "CTCVillage::OnInitialActivate": 1,
         "NScript::CQ_HangingTreeEvilScript::~CQ_HangingTreeEvilScript": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CQ_HangingTreeEvilScript::CleanUp": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NScript::CQ_HangingTreeEvilScript::~CQ_HangingTreeEvilScript": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HangingTreeEvil.json"
     },
@@ -13431,6 +14644,17 @@
         "CTimer::~CTimer": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HobbeCave.json"
     },
     {
@@ -14004,6 +15228,17 @@
         "CTimer::~CTimer": 2,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_MinionClifftopChase.json"
     },
     {
@@ -14172,6 +15407,17 @@
         "CTimer::~CTimer": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_SummoningTheShip.json"
     },
     {
@@ -14265,6 +15511,17 @@
         "C3DClothPrimitive::~C3DClothPrimitive": 1,
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_TentacleKrakenBossFight.json"
     },
@@ -14888,6 +16145,17 @@
         "CTimer::~CTimer": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_TraderEscort.json"
     },
     {
@@ -15330,6 +16598,17 @@
         "CTimer::~CTimer": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_WaspBoss.json"
     },
     {
@@ -15515,6 +16794,17 @@
         "CV_ChickenKickingScript::Init": 1,
         "NScript::CQ_HangingTreeGoodScript::CHTG_Audience::~CHTG_Audience": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CV_ChickenKickingScript::Init": [
+          "Main"
+        ],
+        "NScript::CQ_HangingTreeGoodScript::CHTG_Audience::~CHTG_Audience": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_WizardBattle.json"
     },
     {
@@ -15562,6 +16852,17 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "NScript::CTonyTestScriptsScript::AddQuestsToGuild": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "NScript::CTonyTestScriptsScript::AddQuestsToGuild": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TonyTestScripts.json"
     },
@@ -15741,6 +17042,17 @@
         "C3DClothPrimitive::~C3DClothPrimitive": 4,
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BanditToll.json"
     },
@@ -16003,6 +17315,17 @@
         "CTCVillage::OnInitialActivate": 1,
         "__ftol2": 4
       },
+      "unresolvedNativeHelperRoles": {
+        "CParticleEmitter___CParticleEmitter_Minimal": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "__ftol2": [
+          "OnPersist"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BodyGuard.json"
     },
     {
@@ -16134,6 +17457,17 @@
         "CSystemManager::~CSystemManager": 1,
         "CTCVillage::OnInitialActivate": 1,
         "NHeroInformationScreens::CBase::CBase": 2
+      },
+      "unresolvedNativeHelperRoles": {
+        "CSystemManager::~CSystemManager": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Init"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_Bordello.json"
     },
@@ -16273,6 +17607,17 @@
         "CGameflowScript::DeclareGossipCategories": 1,
         "CTCVillage::OnInitialActivate": 1,
         "NScript::CV_ExposeMayorScript::~CV_ExposeMayorScript": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CGameflowScript::DeclareGossipCategories": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NScript::CV_ExposeMayorScript::~CV_ExposeMayorScript": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_ExposeMayor.json"
     },
@@ -16681,6 +18026,17 @@
         "CleanUpHeroDuel": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CleanUpHeroDuel": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_HeroDuel.json"
     },
     {
@@ -16809,6 +18165,17 @@
         "CTimer::~CTimer": 2,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_IntroductionToTrophies.json"
     },
     {
@@ -16928,6 +18295,17 @@
         "CTCVillage::OnInitialActivate": 1,
         "NHeroInformationScreens::CBase::CBase": 3,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_LostTrader.json"
     },
@@ -17123,6 +18501,17 @@
         "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_SickChild.json"
     },
@@ -17430,6 +18819,17 @@
         "NScript::CV_SwordInTheStoneScript::~CV_SwordInTheStoneScript": 1,
         "strstr": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NScript::CV_SwordInTheStoneScript::~CV_SwordInTheStoneScript": [
+          "destructor"
+        ],
+        "strstr": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_SwordInTheStone.json"
     },
     {
@@ -17515,6 +18915,17 @@
         "NScript::CV_TalentlessBardScript::~CV_TalentlessBardScript": 1,
         "resize": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NScript::CV_TalentlessBardScript::~CV_TalentlessBardScript": [
+          "destructor"
+        ],
+        "resize": [
+          "Init"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_TalentlessBard.json"
     },
     {
@@ -17551,6 +18962,20 @@
         "CSubtitleRenderer::SetText": 1,
         "CTCVillage::OnInitialActivate": 1,
         "DoMission_OakValeRevisited": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CParticleEmitter___CParticleEmitter_0xe8c30": [
+          "destructor"
+        ],
+        "CSubtitleRenderer::SetText": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "DoMission_OakValeRevisited": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\CS_OakValeRevisited.json"
     },
@@ -18222,6 +19647,20 @@
         "NHeroInformationScreens::CBase::CBase": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\PersonalScript_Empty.json"
     },
     {
@@ -18416,6 +19855,20 @@
         "CTCVillage::OnInitialActivate": 1,
         "std__vector__Reallocate": 8
       },
+      "unresolvedNativeHelperRoles": {
+        "CEngineInternalPrimitiveBase::AddChildPrimitive": [
+          "OnPersist"
+        ],
+        "CParticleEmitter___CParticleEmitter_0x24c80": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "std__vector__Reallocate": [
+          "Init"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QR_EscortTrader.json"
     },
     {
@@ -18588,6 +20041,20 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "StdMap_Destroy_API": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "LTextTreeWalkThrough__Dtor": [
+          "destructor"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "StdMap_Destroy_API": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QS_ScytheInfo.json"
     },
     {
@@ -18661,6 +20128,20 @@
         "CTCVillage::OnInitialActivate": 1,
         "NHeroInformationScreens::CBase::CBase": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_BowerstoneTownLifeIntro.json"
     },
@@ -18745,6 +20226,20 @@
         "CCharString__AssignFromWide": 1,
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CCharString__AssignFromWide": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HerosOldHouse.json"
     },
@@ -19091,6 +20586,20 @@
         "CQ_NewOakValeIntroScript::DoMission": 1,
         "CTCVillage::OnInitialActivate": 1,
         "std__vector__Reallocate": 42
+      },
+      "unresolvedNativeHelperRoles": {
+        "CParticleEmitter_Dtor_7": [
+          "destructor"
+        ],
+        "CQ_NewOakValeIntroScript::DoMission": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "std__vector__Reallocate": [
+          "Init"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_NewOakValeIntro.json"
     },
@@ -19655,6 +21164,20 @@
         "CTimer::~CTimer": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CSubtitleRenderer::SetText": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_PrisonEscapeRescueMother.json"
     },
     {
@@ -19782,6 +21305,20 @@
         "NHeroInformationScreens::CBase::CBase": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_PrisonRace.json"
     },
     {
@@ -19880,6 +21417,21 @@
         "CTCVillage::OnInitialActivate": 1,
         "NHeroInformationScreens::CBase::CBase": 4,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Init",
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_PrisonWardenGame.json"
     },
@@ -20592,6 +22144,20 @@
         "GossipSetup": 1,
         "NScript::CQ_RansomVictimScript::~CQ_RansomVictimScript": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "GossipSetup": [
+          "Main"
+        ],
+        "NScript::CQ_RansomVictimScript::~CQ_RansomVictimScript": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_RansomVictim.json"
     },
     {
@@ -20652,6 +22218,20 @@
         "NHeroInformationScreens::CBase::CBase": 2,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_RansomVictimChiefsHouse.json"
     },
     {
@@ -20696,6 +22276,20 @@
         "CScriptBase::KillSpawnedFunction": 1,
         "NHeroInformationScreens::CBase::CBase": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CScriptBase::KillSpawnedFunction": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestQuestCard1.json"
     },
@@ -20801,6 +22395,20 @@
         "CTCVillage::OnInitialActivate": 1,
         "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo": 1,
         "resize": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CParticleEmitter___CParticleEmitter_WithMemFree": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo": [
+          "Main"
+        ],
+        "resize": [
+          "Init"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_AssassinAttacks.json"
     },
@@ -21181,6 +22789,20 @@
         "CParticleEmitter___CParticleEmitter_Variant": 1,
         "CTCVillage::OnInitialActivate": 1,
         "GoTalkToBeardyBaldy": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CParticleEmitter___CParticleEmitter_Variant": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "GoTalkToBeardyBaldy": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BeardyBaldy.json"
     },
@@ -21876,6 +23498,20 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "strstr": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "strstr": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_ChapelOfEvil.json"
     },
     {
@@ -21986,6 +23622,20 @@
         "NHeroInformationScreens::CBase::CBase": 2,
         "NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "InitialiseVariables": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Init"
+        ],
+        "NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_FisticuffsClub.json"
     },
     {
@@ -22067,6 +23717,20 @@
         "CQ_GuildTrainingScript::CMeleeApprentice::Init": 1,
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "destructor"
+        ],
+        "CQ_GuildTrainingScript::CMeleeApprentice::Init": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_KnotholeGladeGates.json"
     },
@@ -22181,6 +23845,20 @@
         "NHeroInformationScreens::CBase::CBase": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Init"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_MayorsInvitation.json"
     },
     {
@@ -22246,6 +23924,20 @@
         "CTCVillage::OnInitialActivate": 1,
         "LTextTreeWalkThrough_Destructor": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "LTextTreeWalkThrough_Destructor": [
+          "destructor"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_MazeResearch.json"
     },
@@ -22961,6 +24653,20 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "strstr": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "strstr": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_TempleOfLight.json"
     },
     {
@@ -23300,6 +25006,23 @@
         "CScriptThing::CScriptThing": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CScriptThing::CScriptThing": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_TeleportToHeroGuild.json"
     },
     {
@@ -23462,6 +25185,23 @@
         "CScriptGameResourceObject_LoadGuildComplex": 1,
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "destructor"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "destructor"
+        ],
+        "CScriptGameResourceObject_LoadGuildComplex": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_EndGameBossBattle.json"
     },
@@ -24197,6 +25937,23 @@
         "CleanUp": 1,
         "RemoveDregs": 1,
         "RemoveParty": 2
+      },
+      "unresolvedNativeHelperRoles": {
+        "CParticleEmitter_Dtor_5": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CleanUp": [
+          "Main"
+        ],
+        "RemoveDregs": [
+          "Main"
+        ],
+        "RemoveParty": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HangingTreeGood.json"
     },
@@ -25590,6 +27347,23 @@
         "Game_InitializeHeroCharacter": 3,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CSubtitleRenderer::SetText": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "Game_InitializeHeroCharacter": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSouls.json"
     },
     {
@@ -26297,6 +28071,23 @@
         "CTCVillage::OnInitialActivate": 1,
         "CV_SickChildScript::CWomanToAttract::DoLeavingCutscene": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CParticleEmitter_Dtor_6": [
+          "destructor"
+        ],
+        "CSubtitleRenderer::SetText": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CV_SickChildScript::CWomanToAttract::DoLeavingCutscene": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsBriar.json"
     },
     {
@@ -26684,6 +28475,23 @@
         "CTimer::~CTimer": 1,
         "Main_InitializeFourierAnalysis_2": 2,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CSubtitleRenderer::SetText": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "Main_InitializeFourierAnalysis_2": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsNostro.json"
     },
@@ -27154,6 +28962,23 @@
         "CParticleEmitter_Dtor_8": 1,
         "CTCVillage::OnInitialActivate": 1,
         "NHeroInformationScreens::CBase::CBase": 4
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CCharString__AssignFromWide": [
+          "Init"
+        ],
+        "CParticleEmitter_Dtor_8": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Init"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_OrchardFarmRaid.json"
     },
@@ -27881,6 +29706,23 @@
         "Main_InitializeFourierAnalysis_4": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CScriptBase_ProcessNPCConversations": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "Main_InitializeFourierAnalysis_4": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_TraderConflictGood.json"
     },
     {
@@ -27934,6 +29776,23 @@
         "push_back": 1,
         "resize": 2,
         "std_vector_CConversation_Assign": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CParticleEmitter___CParticleEmitter_MeshFree": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "push_back": [
+          "Init"
+        ],
+        "resize": [
+          "Init"
+        ],
+        "std_vector_CConversation_Assign": [
+          "Init"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BookCollecting.json"
     },
@@ -28018,6 +29877,23 @@
         "_CIfmod": 4,
         "fpatan": 4
       },
+      "unresolvedNativeHelperRoles": {
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "_CIfmod": [
+          "Main"
+        ],
+        "fpatan": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_StatueMaster.json"
     },
     {
@@ -28080,6 +29956,23 @@
         "CTCVillage::OnInitialActivate": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\bandit_level_cutscene.json"
     },
     {
@@ -28125,6 +30018,26 @@
         "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 1,
         "CScriptThing::CScriptThing": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CScriptThing::CScriptThing": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Follow.json"
     },
@@ -28529,6 +30442,26 @@
         "Main_InitializeFourierAnalysis": 2,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CSubtitleRenderer::SetText": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "LTextTreeWalkThrough__Dtor": [
+          "destructor"
+        ],
+        "Main_InitializeFourierAnalysis": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsThunder.json"
     },
     {
@@ -28678,6 +30611,26 @@
         "rand": 2,
         "resize": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CCharString_OperatorPlus_API": [
+          "Init"
+        ],
+        "CTCInventoryItem::OnDie": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "GFIntToCharString_API": [
+          "Init"
+        ],
+        "rand": [
+          "Init"
+        ],
+        "resize": [
+          "Init"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_FishingCompetition.json"
     },
     {
@@ -28785,6 +30738,26 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "_E2": 1,
         "free": 7
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "_E2": [
+          "Main"
+        ],
+        "free": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_HauntedHouse.json"
     },
@@ -29309,6 +31282,29 @@
         "__ftol2": 1,
         "rand": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CScriptThing::CScriptThing": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "__ftol2": [
+          "Main"
+        ],
+        "rand": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Picklock.json"
     },
     {
@@ -29799,6 +31795,29 @@
         "__ftol2": 1,
         "rand": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CScriptThing::CScriptThing": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "__ftol2": [
+          "Main"
+        ],
+        "rand": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Steal.json"
     },
     {
@@ -30102,6 +32121,29 @@
         "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 1,
         "CScriptThing::CScriptThing": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "Main"
+        ],
+        "CScriptBase::KillSpawnedFunction": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CScriptThing::CScriptThing": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Wait.json"
     },
@@ -30939,6 +32981,29 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CDefendingCombatantInfo::CCombatWheel::ResetRings": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CScriptThing::CScriptThing": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_OpenChest.json"
     },
     {
@@ -31126,6 +33191,29 @@
         "Math_CartesianToSpherical": 2,
         "free": 2,
         "rand": 6
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CCharString__AssignFromWide": [
+          "Main"
+        ],
+        "CParticleEmitter_Dtor_3": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "Math_CartesianToSpherical": [
+          "Main"
+        ],
+        "free": [
+          "Main"
+        ],
+        "rand": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_EndGameFocalSites.json"
     },
@@ -31747,6 +33835,29 @@
         "NScript::CGameflowScript::DeclareGossipCategories": 1,
         "RunArrivalCutscene": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "NScript::CGameflowScript::DeclareGossipCategories": [
+          "Init"
+        ],
+        "RunArrivalCutscene": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTraining.json"
     },
     {
@@ -32301,6 +34412,29 @@
         "Main_InitializeFourierAnalysis_1": 2,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CSubtitleRenderer::SetText": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "LTextTreeWalkThrough__Dtor": [
+          "destructor"
+        ],
+        "Main_InitializeFourierAnalysis_1": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsMother.json"
     },
     {
@@ -32705,6 +34839,29 @@
         "SpringAmbush": 1,
         "TricksterApproach": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "AssignMoralityEtcForEvilEnding": [
+          "Main"
+        ],
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CParticleEmitter___CParticleEmitter_Simple": [
+          "destructor"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "SpringAmbush": [
+          "Main"
+        ],
+        "TricksterApproach": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_AmbushScam.json"
     },
     {
@@ -32807,6 +34964,29 @@
         "CTCVillage::OnInitialActivate": 1,
         "push_back": 1,
         "resize": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Init"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Init"
+        ],
+        "CParticleEmitter___CParticleEmitter_0xb6ab0": [
+          "destructor"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Init"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "push_back": [
+          "Init"
+        ],
+        "resize": [
+          "Init"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_MurderTwistFinal.json"
     },
@@ -33767,6 +35947,32 @@
         "Is2DDistanceBetweenThingsUnder": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CScriptThing::CScriptThing": [
+          "Main"
+        ],
+        "Is2DDistanceBetweenThingsUnder": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Dig.json"
     },
@@ -34952,6 +37158,32 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CCharString__NotEqual": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CScriptThing::CScriptThing": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Fish.json"
     },
     {
@@ -35018,6 +37250,32 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "__ftol2": 2,
         "rand": 2
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CScriptThing::CScriptThing": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "__ftol2": [
+          "Main"
+        ],
+        "rand": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Pickpocket.json"
     },
@@ -35920,6 +38178,32 @@
         "WatchForRoundsInArena_Setup": 3,
         "free": 1,
         "std_vector_Conversation_Assign3": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CSubtitleRenderer::SetText": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "WatchForRoundsInArena_Setup": [
+          "Main"
+        ],
+        "free": [
+          "Main"
+        ],
+        "std_vector_Conversation_Assign3": [
+          "Init"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsArena.json"
     },
@@ -36887,6 +39171,32 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "Script_InitializeComponents": 3
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CCharString__AssignFromWide": [
+          "Main"
+        ],
+        "CSubtitleRenderer::SetText": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "Main"
+        ],
+        "LTextTreeWalkThrough_Destructor": [
+          "destructor"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "Script_InitializeComponents": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsGuildmaster.json"
     },
     {
@@ -37060,6 +39370,32 @@
         "NScript::CV_ArcheryCompetitionScript::~CV_ArcheryCompetitionScript": 1,
         "rand": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CCharString__NotEqual": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::OnPredicateFail": [
+          "Main"
+        ],
+        "NScript::CV_ArcheryCompetitionScript::AddArcheryQuestInfo": [
+          "Main"
+        ],
+        "NScript::CV_ArcheryCompetitionScript::RemoveArcheryQuestInfo": [
+          "Main"
+        ],
+        "NScript::CV_ArcheryCompetitionScript::UpdateHighScore": [
+          "Main"
+        ],
+        "NScript::CV_ArcheryCompetitionScript::~CV_ArcheryCompetitionScript": [
+          "destructor"
+        ],
+        "rand": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_ArcheryCompetition.json"
     },
     {
@@ -37117,6 +39453,32 @@
         "NHeroInformationScreens::CBase::CBase": 24,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "_SummonerLightningOrbAttackTarget_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing___Z": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "C3DMeshInfo::HasPhysicsMesh": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "_SummonerLightningOrbAttackTarget_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing___Z": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\joss_test_scripts.json"
     },
@@ -37247,6 +39609,35 @@
         "StdMap_DestroyNode": 1,
         "free": 1,
         "malloc": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CFourierAnalysis::CFourierAnalysis": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_DestroyNode": [
+          "Main"
+        ],
+        "free": [
+          "Main"
+        ],
+        "malloc": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\CS_PlayCutscene.json"
     },
@@ -37460,6 +39851,35 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": 1,
         "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": [
+          "Main"
+        ],
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\PersonalScript_Aardvark.json"
     },
@@ -38065,6 +40485,35 @@
         "StdMap_Construct_API": 1,
         "StdMap_Destroy_API": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NTCScriptedControl::CActionMoveTo::~CActionMoveTo": [
+          "destructor"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BanditCampPath.json"
     },
     {
@@ -38337,6 +40786,38 @@
         "GFGetPreMainMemoryUsed": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "free": 2
+      },
+      "unresolvedNativeHelperRoles": {
+        "CCharString_OperatorPlus_API": [
+          "Main"
+        ],
+        "CCharString__AppendCString": [
+          "Main"
+        ],
+        "CCharString__AppendData": [
+          "Main"
+        ],
+        "CCharString__ToUpper": [
+          "Main"
+        ],
+        "CFileInstaller::CActiveFile::OnReadFinished": [
+          "Main"
+        ],
+        "CNavigatorQueueManager::FrameUpdate": [
+          "Main"
+        ],
+        "DoublyLinkedList_Init": [
+          "Main"
+        ],
+        "GFGetPreMainMemoryUsed": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "free": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\PersonalScriptMain.json"
     },
@@ -38612,6 +41093,38 @@
         "free": 1,
         "std__vector__pop_back": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CScriptBase_FilterCombatantsByType": [
+          "Main"
+        ],
+        "CScriptThing::CScriptThing": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "Main_InitializeFourierAnalysis_3": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "free": [
+          "Main"
+        ],
+        "std__vector__pop_back": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_TraderConflictEvil.json"
     },
     {
@@ -38766,6 +41279,41 @@
         "StdMap_Construct_API": 3,
         "StdMap_Destroy_API": 3,
         "free": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "KillAllThingsInVector": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ],
+        "free": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_UndeadRising.json"
     },
@@ -40335,6 +42883,42 @@
         "StdMap_Destroy_API": 3,
         "__ftol2": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main",
+          "destructor"
+        ],
+        "C3DMeshInfo::HasPhysicsMesh": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ],
+        "__ftol2": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_WhiteBalverineKnotholeGlade.json"
     },
     {
@@ -40869,6 +43453,45 @@
         "StdMap_Construct_API": 1,
         "StdMap_Destroy_API": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main",
+          "destructor"
+        ],
+        "C3DMeshInfo::HasPhysicsMesh": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "PopulateLevel": [
+          "Main"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_OakValeBanditRaid.json"
     },
     {
@@ -41185,6 +43808,44 @@
         "StdMap_Destroy_API": 1,
         "_vector_constructor_iterator_": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "C3DMeshInfo::HasPhysicsMesh": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "NScript::CQ_OpeningGraveyardSecretPassageScript::InitializeVariables": [
+          "Main"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ],
+        "_vector_constructor_iterator_": [
+          "destructor"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_OpeningGraveyardSecretPassage.json"
     },
     {
@@ -41313,6 +43974,44 @@
         "StdMap_Construct_API": 1,
         "StdMap_Destroy_API": 2
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "C3DMeshInfo::HasPhysicsMesh": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BeggarAndChild.json"
     },
     {
@@ -41375,6 +44074,47 @@
         "NHeroInformationScreens::CBase::CBase": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CFileInstaller::CActiveFile::OnReadFinished": [
+          "Main"
+        ],
+        "CMemoryAllocatorVariableSize::GetNoAllocatedAreas": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CTCCarryable::OnKill": [
+          "Main"
+        ],
+        "GFIntToCharString_API": [
+          "Main"
+        ],
+        "LTextTreeWalkThrough_Cleanup": [
+          "Main"
+        ],
+        "LTextTreeWalkThrough_dtor": [
+          "Main"
+        ],
+        "List_Node_Initialize": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_DebugCycleThroughSpeech.json"
     },
@@ -42546,6 +45286,48 @@
         "resize": 8,
         "std_vector_Conversation_Assign": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Init",
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Init"
+        ],
+        "CParticleEmitter_Dtor_4": [
+          "destructor"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Init"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "DisableFollowers": [
+          "Main"
+        ],
+        "Game_InitializeRound": [
+          "Main"
+        ],
+        "RestoreFollowers": [
+          "Main"
+        ],
+        "SetupPuzzleBlocks": [
+          "Main"
+        ],
+        "StartRound": [
+          "Main"
+        ],
+        "push_back": [
+          "Init"
+        ],
+        "resize": [
+          "Init"
+        ],
+        "std_vector_Conversation_Assign": [
+          "Init"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_FireHeart.json"
     },
     {
@@ -42988,6 +45770,47 @@
         "StdMap_Construct_API": 1,
         "StdMap_Destroy_API": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "C3DMeshInfo::HasPhysicsMesh": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CSubtitleRenderer::SetText": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingMelee.json"
     },
     {
@@ -43076,6 +45899,47 @@
         "StdMap_Construct_API": 2,
         "StdMap_Destroy_API": 2,
         "push_back": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "C3DMeshInfo::HasPhysicsMesh": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CFileInstaller::CActiveFile::OnReadFinished": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ],
+        "push_back": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingWoodsWill.json"
     },
@@ -43604,6 +46468,48 @@
         "StdMap_Destroy_API": 1,
         "malloc": 1
       },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main",
+          "destructor"
+        ],
+        "C3DMeshInfo::HasPhysicsMesh": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CCharString__AssignFromWide": [
+          "Main"
+        ],
+        "CFourierAnalysis::CFourierAnalysis": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ],
+        "malloc": [
+          "Main"
+        ]
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_WhiteBalverineWW.json"
     },
     {
@@ -43705,6 +46611,54 @@
         "StdMap_Construct_API": 1,
         "StdMap_Destroy_API": 1,
         "std__vector__push_back": 25
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DAnimationUtil::C3DAnimationUtil": [
+          "Main"
+        ],
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "C3DMeshInfo::HasPhysicsMesh": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CDefendingCombatantInfo::CCombatWheel::ResetRings": [
+          "Main",
+          "destructor"
+        ],
+        "CFourierAnalysis::CFourierAnalysis": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CSubtitleRenderer::SetText": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ],
+        "std__vector__push_back": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Gameflow.json"
     },
@@ -43870,6 +46824,53 @@
         "RunCutsceneMacro_Func": 3,
         "StdMap_Construct_API": 1,
         "StdMap_Destroy_API": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "C3DMeshInfo::HasPhysicsMesh": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::CTimer": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingPreMelee.json"
     },
@@ -44150,6 +47151,59 @@
         "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": 1,
         "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": 1,
         "__ftol2": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "C3DMeshInfo::HasPhysicsMesh": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "KillAllThingsInVector": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "NScript::CQ_HobbeToothContestScript::DisplayTimer": [
+          "Main"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ],
+        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": [
+          "Main"
+        ],
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": [
+          "Main"
+        ],
+        "__ftol2": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HobbeToothContest.json"
     },
@@ -44505,6 +47559,65 @@
         "RunCutsceneMacro_Func": 2,
         "StdMap_Construct_API": 2,
         "StdMap_Destroy_API": 3
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "C3DMeshInfo::HasPhysicsMesh": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CCharString__AssignFromWide": [
+          "Main"
+        ],
+        "CFileInstaller::CActiveFile::OnReadFinished": [
+          "destructor"
+        ],
+        "CFourierAnalysis::CFourierAnalysis": [
+          "Main"
+        ],
+        "CMainGameComponentInit::CMainGameComponentInit": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "destructor"
+        ],
+        "Main_InitializeCreatureSpawners": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_BountyHunt.json"
     },
@@ -45021,6 +48134,80 @@
         "StdMap_Destroy_API": 11,
         "Std_Deque_Construct": 1,
         "rand": 2
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "C3DMeshInfo::HasPhysicsMesh": [
+          "Main"
+        ],
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CMemoryDataOutputStream::Clear": [
+          "Main"
+        ],
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "CScriptThing::_GetAngleXY_CScriptThing__UBEMXZ": [
+          "Main"
+        ],
+        "CTCVillage::OnInitialActivate": [
+          "Main"
+        ],
+        "CTimer::~CTimer": [
+          "Main"
+        ],
+        "CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities": [
+          "Main"
+        ],
+        "CWideScreenMagicPauseEntities::~CWideScreenMagicPauseEntities": [
+          "Main"
+        ],
+        "CWorld::DrawGetEnvironment": [
+          "Main"
+        ],
+        "LTextTreeWalkThrough__Dtor": [
+          "Main"
+        ],
+        "NScript::CQ_ArenaScript::AnimateCrowd": [
+          "Main"
+        ],
+        "NScript::CQ_ArenaScript::GetFanfareMusic": [
+          "Main"
+        ],
+        "NScript::CQ_ArenaScript::InitialiseVariables": [
+          "Main"
+        ],
+        "NScript::CQ_ArenaScript::PlayWave": [
+          "Main"
+        ],
+        "NScript::CQ_ArenaScript::~CQ_ArenaScript": [
+          "destructor"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ],
+        "Std_Deque_Construct": [
+          "Main"
+        ],
+        "rand": [
+          "Main"
+        ]
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_Arena.json"
     }

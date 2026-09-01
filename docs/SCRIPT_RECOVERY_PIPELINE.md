@@ -157,6 +157,13 @@ retail template constructor. With registration removed from the semantic backlog
 names remain across 1,603 call sites, allowing shared engine behavior to be handled before one-off
 quest helpers.
 
+Those helpers are not treated as one undifferentiated semantic backlog. Role-aware classification
+currently separates 164 destructor-only cleanup calls, 761 constructor/destructor lifetime calls,
+207 CRT/container-support calls, and two script-runtime calls. The remaining 469 calls across 85
+engine-or-script helper names are the higher-value semantic investigation set. Every classified row
+retains its original name, lifecycle roles, counts, kinds, and consumers; classification never erases
+native evidence, and imported donor names remain provisional.
+
 The retail `CGameScriptInterface` vtable base at `0x01260F0C` is now queried directly by
 `DumpVtableSlots.java`. `VerifyScriptInterfaceField.java` independently proves for all 161 allocators
 that the fastcall `EDX` interface argument reaches script-object offset `+0x40`, either directly or

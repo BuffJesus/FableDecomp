@@ -4,11 +4,22 @@ import unittest
 from pathlib import Path
 
 from tools.script_recovery.analyze_native_conversion_readiness import (
-    LUA_QUEST_BINDING_RE, analyze, api_match,
+    LUA_QUEST_BINDING_RE, analyze, api_match, native_helper_category,
 )
 
 
 class NativeConversionReadinessTests(unittest.TestCase):
+    def test_native_helper_categories_preserve_lifetime_and_runtime_support(self):
+        self.assertEqual(native_helper_category("C3DClothPrimitive::~C3DClothPrimitive"),
+                         "object-lifetime")
+        self.assertEqual(native_helper_category("CBaseIntelligentPointer::CBaseIntelligentPointer"),
+                         "object-lifetime")
+        self.assertEqual(native_helper_category("StdMap_Destroy_API"), "runtime-support")
+        self.assertEqual(native_helper_category("RunCutsceneMacro_Func"),
+                         "engine-or-script-helper")
+        self.assertEqual(native_helper_category("BadDonorName", {"destructor"}),
+                         "lifecycle-cleanup")
+
     def test_runtime_binding_extraction(self):
         text = 'questState_type["CloseDoor"] = &LuaQuestState::CloseDoor;'
         self.assertEqual(LUA_QUEST_BINDING_RE.findall(text), ["CloseDoor"])
@@ -107,7 +118,8 @@ class NativeConversionReadinessTests(unittest.TestCase):
             self.assertEqual(result["summary"]["unresolvedNativeHelperMethods"], 1)
             self.assertEqual(result["summary"]["unresolvedNativeHelperCalls"], 4)
             self.assertEqual(result["nativeHelperBacklog"][0], {
-                "name": "SharedHelper", "calls": 4, "scripts": 2,
+                "name": "SharedHelper", "calls": 4,
+                "category": "engine-or-script-helper", "scripts": 2, "roles": ["Main"],
                 "kinds": ["quest", "village"], "consumers": ["Q_A", "V_B"]})
 
     def test_entity_binding_registration_is_structural_evidence_not_helper_backlog(self):

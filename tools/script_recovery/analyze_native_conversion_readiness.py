@@ -32,6 +32,29 @@ RUNTIME_ABI_BLOCKERS = {
         "retail method writes std::list<CCharString>; ForgeFSE uses a newer MSVC STL ABI"
     ),
 }
+RUNTIME_SUPPORT_NAMES = {
+    "free", "malloc", "rand", "resize", "push_back", "strstr", "__ftol2",
+}
+
+
+def native_helper_category(name: str, roles: set[str] | None = None) -> str:
+    """Classify conversion work without suppressing the underlying native evidence."""
+    if roles == {"destructor"}:
+        return "lifecycle-cleanup"
+    if "::~" in name or re.search(r"(?:__?Dtor(?:_\d+)?|_Destructor|Destructor|_Cleanup)$", name):
+        return "object-lifetime"
+    parts = name.split("::")
+    if len(parts) >= 2:
+        owner = re.sub(r"<.*$", "", parts[-2])
+        method = re.sub(r"<.*$", "", parts[-1])
+        if owner == method:
+            return "object-lifetime"
+    if (name in RUNTIME_SUPPORT_NAMES or name.startswith(("std_", "StdMap_", "List_",
+                                                          "DoublyLinkedList_"))):
+        return "runtime-support"
+    if name.startswith("CScriptBase::") or name.startswith("CSpawnedFunc"):
+        return "script-runtime"
+    return "engine-or-script-helper"
 
 
 def api_matcher(api_names: list[str]) -> re.Pattern[str]:
@@ -125,6 +148,11 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
         unresolved = sorted(set(calls) - set(opaque) - infrastructure -
                             {callee for callee, match in matches.items() if match})
         unresolved_counts = Counter(callee for callee in calls if callee in unresolved)
+        unresolved_roles = {
+            helper: sorted({life["role"] for life in ir["lifecycle"]
+                            if any(call["callee"] == helper for call in life["calls"])})
+            for helper in unresolved
+        }
         decompile_complete = len(ir["lifecycle"]) == 5 and all(
             life.get("address") and isinstance(life.get("calls"), list) for life in ir["lifecycle"]
         )
@@ -152,6 +180,7 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
                                               if call.get("vtableOffset")}),
             "opaqueCallees": opaque, "unresolvedNativeHelpers": unresolved, "stage": stage,
             "unresolvedNativeHelperCallCounts": dict(sorted(unresolved_counts.items())),
+            "unresolvedNativeHelperRoles": unresolved_roles,
             "nativeIr": str(path.resolve()),
         })
     rows.sort(key=lambda row: (
@@ -177,19 +206,28 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
     helper_consumers: dict[str, set[str]] = {}
     helper_kinds: dict[str, set[str]] = {}
     helper_calls: Counter[str] = Counter()
+    helper_roles: dict[str, set[str]] = {}
     for row in rows:
         for helper, count in row["unresolvedNativeHelperCallCounts"].items():
             helper_calls[helper] += count
             helper_consumers.setdefault(helper, set()).add(row["name"])
             helper_kinds.setdefault(helper, set()).add(row["kind"])
+            helper_roles.setdefault(helper, set()).update(row["unresolvedNativeHelperRoles"][helper])
     helper_backlog = [
         {"name": helper, "calls": helper_calls[helper],
+         "category": native_helper_category(helper, helper_roles[helper]),
          "scripts": len(helper_consumers[helper]),
+         "roles": sorted(helper_roles[helper]),
          "kinds": sorted(helper_kinds[helper]),
          "consumers": sorted(helper_consumers[helper])}
         for helper in helper_calls
     ]
     helper_backlog.sort(key=lambda row: (-row["scripts"], -row["calls"], row["name"]))
+    category_summary = {}
+    for row in helper_backlog:
+        category = category_summary.setdefault(row["category"], {"methods": 0, "calls": 0})
+        category["methods"] += 1
+        category["calls"] += row["calls"]
     return {
         "schema": "forgefse-native-conversion-readiness/0.1",
         "sources": {"catalog": str(catalog_path.resolve()), "ir": str(ir_dir.resolve()),
@@ -215,6 +253,7 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
                     "abiBlockedInterfaceMethods": dict(sorted(abi_blocked_methods.items())),
                     "unresolvedNativeHelperMethods": len(helper_backlog),
                     "unresolvedNativeHelperCalls": sum(helper_calls.values()),
+                    "nativeHelperCategories": dict(sorted(category_summary.items())),
                     "scriptsWithResolvedInterfaceCalls": sum(bool(row["resolvedInterfaceCalls"]) for row in rows),
                     "entityBindings": sum(row["entityBindingCount"] for row in rows),
                     "completeEntityBindings": sum(row["completeEntityBindings"] for row in rows),
