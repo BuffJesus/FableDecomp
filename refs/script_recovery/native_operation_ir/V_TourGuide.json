@@ -27,6 +27,7 @@
           "offset": 417
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -66,6 +67,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -189,6 +191,32 @@
           "offset": 6980
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 2961
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "offset": 6406
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x464",
+          "vtableOffset": "0x464",
+          "offset": 6479
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 6915
+        }
+      ],
       "strings": [
         "TourGuideGuide",
         "TourGuideFollower",
@@ -251,6 +279,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "M_TG_LocationBalcony",
         "TEXT_QST_066_LOCATION_OVERHEARD_BALCONY",
@@ -386,6 +415,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "TourGuideKilled",
         "WaypointCounter",

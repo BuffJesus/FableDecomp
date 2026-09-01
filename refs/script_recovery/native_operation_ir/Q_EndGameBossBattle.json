@@ -37,6 +37,7 @@
           "offset": 621
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -76,6 +77,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -209,6 +211,32 @@
           "offset": 6760
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 5134
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "offset": 5303
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x49c",
+          "vtableOffset": "0x49c",
+          "offset": 5445
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x450",
+          "vtableOffset": "0x450",
+          "offset": 6363
+        }
+      ],
       "strings": [
         "SwordVoid",
         "EndGameSister",
@@ -271,6 +299,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -316,6 +345,7 @@
           "offset": 7
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []

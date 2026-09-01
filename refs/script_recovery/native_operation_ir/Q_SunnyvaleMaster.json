@@ -27,6 +27,7 @@
           "offset": 456
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -66,6 +67,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -104,6 +106,14 @@
           "offset": 304
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 242
+        }
+      ],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -118,6 +128,7 @@
           "offset": 7
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -132,6 +143,7 @@
           "offset": 7
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []

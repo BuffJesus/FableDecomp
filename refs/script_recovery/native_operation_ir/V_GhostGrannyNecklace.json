@@ -27,6 +27,7 @@
           "offset": 456
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -66,6 +67,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -234,6 +236,62 @@
           "offset": 10149
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 4611
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 7970
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "offset": 8398
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x480",
+          "vtableOffset": "0x480",
+          "offset": 8453
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 9022
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 9453
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 9716
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "offset": 10361
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x464",
+          "vtableOffset": "0x464",
+          "offset": 10436
+        }
+      ],
       "strings": [
         "GhostGrannyNecklace",
         "GhostGrannyDaughterInLaw",
@@ -309,6 +367,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -364,6 +423,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "HeroKnowsAboutNecklace",
         "NecklaceReturned",

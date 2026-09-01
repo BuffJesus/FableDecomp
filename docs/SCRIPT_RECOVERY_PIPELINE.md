@@ -135,7 +135,11 @@ Ghidra script errors as failures even when the launcher returns zero, and verifi
 allocator and evidence anchor before accepting the JSON artifact.
 
 `extract_native_operation_ir.py` converts each accepted lifecycle cluster into ordered calls, string
-references, state writes, and typed persistence transfers. `compare_seed_native_ir.py` correlates those
+references, state writes, typed persistence transfers, and indirect dispatch expressions with their
+recoverable vtable offsets. The full catalog currently contains 3,870 such indirect calls across 153
+scripts and 263 distinct offsets; these must be mapped before native IR can safely generate executable
+Lua. `analyze_native_conversion_readiness.py` makes that gate machine-readable rather than emitting
+speculative ports. `compare_seed_native_ir.py` correlates those
 facts with reconstructed bindings, literals, and persistence keys across all six packages; results and
 known parent-vs-entity scope limits are documented in `docs/SEED_NATIVE_OPERATION_COMPARISON.md`.
 

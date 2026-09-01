@@ -27,6 +27,7 @@
           "offset": 456
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -66,6 +67,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -529,6 +531,32 @@
           "offset": 26611
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 17001
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xae8",
+          "vtableOffset": "0xae8",
+          "offset": 27410
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xae8",
+          "vtableOffset": "0xae8",
+          "offset": 27467
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xae8",
+          "vtableOffset": "0xae8",
+          "offset": 27524
+        }
+      ],
       "strings": [
         "Gate2Guard1",
         "BCGameMaster",
@@ -848,6 +876,44 @@
           "offset": 6300
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
+          "vtableOffset": "0x43c",
+          "offset": 1337
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
+          "vtableOffset": "0x43c",
+          "offset": 2458
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
+          "vtableOffset": "0x43c",
+          "offset": 3461
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
+          "vtableOffset": "0x43c",
+          "offset": 4465
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
+          "vtableOffset": "0x43c",
+          "offset": 5467
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
+          "vtableOffset": "0x43c",
+          "offset": 6479
+        }
+      ],
       "strings": [
         "BanditCampPathEntrance",
         "Q_BanditCampBossBattle",
@@ -886,6 +952,7 @@
           "offset": 7
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []

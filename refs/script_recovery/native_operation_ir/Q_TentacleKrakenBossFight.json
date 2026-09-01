@@ -32,6 +32,7 @@
           "offset": 516
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -71,6 +72,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -209,6 +211,14 @@
           "offset": 6742
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 4327
+        }
+      ],
       "strings": [
         "KrakenMinion",
         "M_Experience",
@@ -282,6 +292,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -317,6 +328,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "KrakenAutoSaveCheckPoint"
       ],

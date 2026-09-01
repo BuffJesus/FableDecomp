@@ -27,6 +27,7 @@
           "offset": 456
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -61,6 +62,7 @@
           "offset": 1167
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -169,6 +171,7 @@
           "offset": 6685
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Tutorial_CombatMultiplier",
         "",
@@ -233,6 +236,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -283,6 +287,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "FlourishesOffered",
         "FlourishesPerformed",

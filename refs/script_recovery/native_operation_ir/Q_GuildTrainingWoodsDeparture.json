@@ -27,6 +27,7 @@
           "offset": 456
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -66,6 +67,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -269,6 +271,56 @@
           "offset": 15661
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x2c",
+          "vtableOffset": "0x2c",
+          "offset": 2242
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 6734
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x4a0",
+          "vtableOffset": "0x4a0",
+          "offset": 12027
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "offset": 13876
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*piVar6 + 0x18",
+          "vtableOffset": "0x18",
+          "offset": 13985
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x16c",
+          "vtableOffset": "0x16c",
+          "offset": 14140
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 15510
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x2c",
+          "vtableOffset": "0x2c",
+          "offset": 15743
+        }
+      ],
       "strings": [
         "GuildWoods",
         "ArtifactThief",
@@ -356,6 +408,7 @@
           "offset": 7
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -370,6 +423,7 @@
           "offset": 7
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []

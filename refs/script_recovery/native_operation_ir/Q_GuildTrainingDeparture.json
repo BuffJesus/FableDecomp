@@ -27,6 +27,7 @@
           "offset": 456
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -61,6 +62,7 @@
           "offset": 1167
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -154,6 +156,62 @@
           "offset": 4594
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 1805
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x470",
+          "vtableOffset": "0x470",
+          "offset": 2041
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 2470
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x470",
+          "vtableOffset": "0x470",
+          "offset": 2736
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x470",
+          "vtableOffset": "0x470",
+          "offset": 3426
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 3867
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x470",
+          "vtableOffset": "0x470",
+          "offset": 4145
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "offset": 4797
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x464",
+          "vtableOffset": "0x464",
+          "offset": 4875
+        }
+      ],
       "strings": [
         "TheRealGuildmaster",
         "Q_GuildTrainingWoodsDeparture",
@@ -205,6 +263,32 @@
           "offset": 1032
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x120",
+          "vtableOffset": "0x120",
+          "offset": 645
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*piVar1 + 0x118",
+          "vtableOffset": "0x118",
+          "offset": 777
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x760",
+          "vtableOffset": "0x760",
+          "offset": 819
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5d8",
+          "vtableOffset": "0x5d8",
+          "offset": 1442
+        }
+      ],
       "strings": [
         "HeroDepartureStartMarker"
       ],
@@ -237,6 +321,7 @@
           "offset": 7
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []

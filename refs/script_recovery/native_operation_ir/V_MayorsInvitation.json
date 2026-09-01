@@ -32,6 +32,7 @@
           "offset": 516
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -71,6 +72,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -254,6 +256,14 @@
           "offset": 10381
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 6426
+        }
+      ],
       "strings": [
         "MonitorThunderHeroDuel",
         "",
@@ -381,6 +391,14 @@
           "offset": 1994
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "offset": 1180
+        }
+      ],
       "strings": [
         "OakvaleHSP"
       ],
@@ -423,6 +441,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "WhichQuest",
         "SecretsLearned",

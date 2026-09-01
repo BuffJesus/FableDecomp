@@ -27,6 +27,7 @@
           "offset": 385
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -66,6 +67,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -139,6 +141,32 @@
           "offset": 2628
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 620
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 2397
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 2486
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 2721
+        }
+      ],
       "strings": [
         "BowerstoneSlums",
         "BS_Teacher",
@@ -193,6 +221,7 @@
           "offset": 1721
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -258,6 +287,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "DoneIntro",
         "HatRewarded",

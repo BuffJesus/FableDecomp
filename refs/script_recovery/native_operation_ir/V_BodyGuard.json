@@ -27,6 +27,7 @@
           "offset": 384
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -66,6 +67,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -284,6 +286,14 @@
           "offset": 12625
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 6927
+        }
+      ],
       "strings": [
         "BodyGuard",
         "HenchmanComment",
@@ -408,6 +418,14 @@
           "offset": 127
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x164",
+          "vtableOffset": "0x164",
+          "offset": 361
+        }
+      ],
       "strings": [],
       "stateWrites": [
         {
@@ -476,6 +494,56 @@
           "operation": "call",
           "callee": "__ftol2",
           "offset": 2364
+        }
+      ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x168",
+          "vtableOffset": "0x168",
+          "offset": 1227
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x168",
+          "vtableOffset": "0x168",
+          "offset": 1285
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x168",
+          "vtableOffset": "0x168",
+          "offset": 1356
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x168",
+          "vtableOffset": "0x168",
+          "offset": 1427
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x164",
+          "vtableOffset": "0x164",
+          "offset": 2027
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x164",
+          "vtableOffset": "0x164",
+          "offset": 2144
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x164",
+          "vtableOffset": "0x164",
+          "offset": 2261
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x164",
+          "vtableOffset": "0x164",
+          "offset": 2378
         }
       ],
       "strings": [

@@ -27,6 +27,7 @@
           "offset": 456
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -61,6 +62,7 @@
           "offset": 1167
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -704,6 +706,242 @@
           "offset": 44841
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x478",
+          "vtableOffset": "0x478",
+          "offset": 4931
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 5379
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 5742
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "offset": 6785
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*piStack_bc + 0x18",
+          "vtableOffset": "0x18",
+          "offset": 8217
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 400",
+          "vtableOffset": null,
+          "offset": 8307
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "pCVar20 + 4",
+          "vtableOffset": null,
+          "offset": 8632
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*unaff_ESI + 0x18",
+          "vtableOffset": "0x18",
+          "offset": 10283
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 400",
+          "vtableOffset": null,
+          "offset": 10401
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "offset": 12235
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x6fc",
+          "vtableOffset": "0x6fc",
+          "offset": 12670
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "offset": 12919
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x7fc",
+          "vtableOffset": "0x7fc",
+          "offset": 13355
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 300",
+          "vtableOffset": null,
+          "offset": 13514
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*ppuStack_b4 + 300",
+          "vtableOffset": null,
+          "offset": 18199
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "(int)ppuStack_c4 + 300",
+          "vtableOffset": null,
+          "offset": 18298
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*ppuStack_b4 + 0x18",
+          "vtableOffset": "0x18",
+          "offset": 18771
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 400",
+          "vtableOffset": null,
+          "offset": 18874
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*unaff_EBX + 0x18",
+          "vtableOffset": "0x18",
+          "offset": 20011
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 400",
+          "vtableOffset": null,
+          "offset": 20101
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 21357
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x854",
+          "vtableOffset": "0x854",
+          "offset": 23161
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x478",
+          "vtableOffset": "0x478",
+          "offset": 23471
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*ppuStack_c0 + 300",
+          "vtableOffset": null,
+          "offset": 24093
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*ppuStack_cc + 300",
+          "vtableOffset": null,
+          "offset": 24214
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 29815
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 31719
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 32039
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 32492
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 32824
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 300",
+          "vtableOffset": null,
+          "offset": 33513
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x854",
+          "vtableOffset": "0x854",
+          "offset": 34379
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 34881
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 35712
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x854",
+          "vtableOffset": "0x854",
+          "offset": 36800
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 37335
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar8 + 0x854",
+          "vtableOffset": "0x854",
+          "offset": 38262
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1b0",
+          "vtableOffset": "0x1b0",
+          "offset": 39977
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1b0",
+          "vtableOffset": "0x1b0",
+          "offset": 40039
+        }
+      ],
       "strings": [
         "Q_TraderEscort",
         "HauntedHouse",
@@ -745,6 +983,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -800,6 +1039,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "CellarDoorOpen",
         "HeroBeenToChest"

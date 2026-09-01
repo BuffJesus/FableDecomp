@@ -27,6 +27,7 @@
           "offset": 388
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -66,6 +67,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -279,6 +281,116 @@
           "offset": 13662
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 6209
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x288",
+          "vtableOffset": "0x288",
+          "offset": 6351
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x58",
+          "vtableOffset": "0x58",
+          "offset": 6564
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x478",
+          "vtableOffset": "0x478",
+          "offset": 6846
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x450",
+          "vtableOffset": "0x450",
+          "offset": 8032
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x448",
+          "vtableOffset": "0x448",
+          "offset": 8831
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x448",
+          "vtableOffset": "0x448",
+          "offset": 9745
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 10711
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 11318
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x5e0",
+          "vtableOffset": "0x5e0",
+          "offset": 11672
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x448",
+          "vtableOffset": "0x448",
+          "offset": 11909
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x5e0",
+          "vtableOffset": "0x5e0",
+          "offset": 12812
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x118",
+          "vtableOffset": "0x118",
+          "offset": 13048
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x2e0",
+          "vtableOffset": "0x2e0",
+          "offset": 13093
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1e4",
+          "vtableOffset": "0x1e4",
+          "offset": 13749
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1f8",
+          "vtableOffset": "0x1f8",
+          "offset": 14192
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x270",
+          "vtableOffset": "0x270",
+          "offset": 14287
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x284",
+          "vtableOffset": "0x284",
+          "offset": 14382
+        }
+      ],
       "strings": [
         "M_AssassinTrigger",
         "AttackingAssassin",
@@ -389,6 +501,7 @@
           "offset": 2411
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "",
         "WatchForQuestComplete",
@@ -423,6 +536,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "AssassinObjectCount",
         "Activated",

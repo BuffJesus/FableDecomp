@@ -27,6 +27,7 @@
           "offset": 456
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -66,6 +67,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -179,6 +181,122 @@
           "offset": 6642
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x118",
+          "vtableOffset": "0x118",
+          "offset": 1233
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 1953
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "offset": 2270
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar7 + 0x488",
+          "vtableOffset": "0x488",
+          "offset": 2323
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x4fc",
+          "vtableOffset": "0x4fc",
+          "offset": 2839
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*unaff_EBP + 300",
+          "vtableOffset": null,
+          "offset": 2934
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*unaff_EBP + 8",
+          "vtableOffset": null,
+          "offset": 3286
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1f0",
+          "vtableOffset": "0x1f0",
+          "offset": 4485
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1b0",
+          "vtableOffset": "0x1b0",
+          "offset": 4558
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x628",
+          "vtableOffset": "0x628",
+          "offset": 4638
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 4720
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x628",
+          "vtableOffset": "0x628",
+          "offset": 4891
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x360",
+          "vtableOffset": "0x360",
+          "offset": 5207
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1d8",
+          "vtableOffset": "0x1d8",
+          "offset": 5411
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xa4",
+          "vtableOffset": "0xa4",
+          "offset": 5625
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 5718
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xa4",
+          "vtableOffset": "0xa4",
+          "offset": 5907
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "offset": 6152
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar7 + 0x464",
+          "vtableOffset": "0x464",
+          "offset": 6223
+        }
+      ],
       "strings": [
         "OBJECT_CHEST_REWARD_ON_DEATH",
         "",
@@ -197,6 +315,7 @@
           "offset": 7
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -211,6 +330,7 @@
           "offset": 7
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []

@@ -27,6 +27,7 @@
           "offset": 456
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -61,6 +62,7 @@
           "offset": 1167
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -294,6 +296,74 @@
           "offset": 15596
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 4058
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x4a0",
+          "vtableOffset": "0x4a0",
+          "offset": 4552
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x450",
+          "vtableOffset": "0x450",
+          "offset": 6366
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 13203
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xafc",
+          "vtableOffset": "0xafc",
+          "offset": 13527
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x118",
+          "vtableOffset": "0x118",
+          "offset": 13716
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x2e0",
+          "vtableOffset": "0x2e0",
+          "offset": 13840
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 500",
+          "vtableOffset": null,
+          "offset": 14435
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x118",
+          "vtableOffset": "0x118",
+          "offset": 14965
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x2e0",
+          "vtableOffset": "0x2e0",
+          "offset": 15031
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 500",
+          "vtableOffset": null,
+          "offset": 15787
+        }
+      ],
       "strings": [
         "Gate1GuardOuter",
         "Gate1GuardInner",
@@ -484,6 +554,62 @@
           "offset": 10362
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
+          "vtableOffset": "0x43c",
+          "offset": 1843
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
+          "vtableOffset": "0x43c",
+          "offset": 2954
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
+          "vtableOffset": "0x43c",
+          "offset": 3947
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
+          "vtableOffset": "0x43c",
+          "offset": 4941
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
+          "vtableOffset": "0x43c",
+          "offset": 5933
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
+          "vtableOffset": "0x43c",
+          "offset": 6935
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x4bc",
+          "vtableOffset": "0x4bc",
+          "offset": 8423
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x4bc",
+          "vtableOffset": "0x4bc",
+          "offset": 9521
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x4bc",
+          "vtableOffset": "0x4bc",
+          "offset": 10635
+        }
+      ],
       "strings": [
         "BanditCampPathEntrance",
         "Q_BanditCamp",
@@ -528,6 +654,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Gate1Open",
         "BoastBegun",

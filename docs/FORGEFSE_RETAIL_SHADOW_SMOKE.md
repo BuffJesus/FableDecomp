@@ -27,6 +27,16 @@ while Fable is open, backs up every overwritten file, records newly created file
 transaction path. Pass that path to its `rollback` command to restore the previous DLL and remove
 only unchanged files created by the deployment.
 
+Audit an installed transaction without changing the game directory:
+
+```powershell
+python tools\script_recovery\deploy_shadow_smoke_package.py verify `
+  --transaction '<game>\FSE\backups\RetailShadowSmoke-<stamp>\deployment.json'
+```
+
+This checks every deployed hash and every required rollback backup. It does not launch Fable or
+touch saves.
+
 After manually backing up an existing ForgeFSE installation, copy the package contents into the
 game directory so `FableScriptExtender.dll` is beside `Fable.exe` and `FSE/retail_shadow.lua` is
 under that same directory. Start the game once, reach the point where ForgeFSE initializes Lua,

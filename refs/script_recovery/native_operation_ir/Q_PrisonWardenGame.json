@@ -32,6 +32,7 @@
           "offset": 516
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -71,6 +72,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -254,6 +256,74 @@
           "offset": 10816
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 6010
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*piVar6 + 0x120",
+          "vtableOffset": "0x120",
+          "offset": 6298
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*piVar6 + 0x118",
+          "vtableOffset": "0x118",
+          "offset": 6416
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x760",
+          "vtableOffset": "0x760",
+          "offset": 6453
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "offset": 7181
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*piVar5 + 0x28",
+          "vtableOffset": "0x28",
+          "offset": 7313
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*piVar6 + 0x118",
+          "vtableOffset": "0x118",
+          "offset": 7431
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x768",
+          "vtableOffset": "0x768",
+          "offset": 7480
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 8307
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 10674
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 10906
+        }
+      ],
       "strings": [
         "PrisonWarden",
         "SecretBook",
@@ -355,6 +425,7 @@
           "offset": 1126
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -390,6 +461,7 @@
           "offset": 7
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []

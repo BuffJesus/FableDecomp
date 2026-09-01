@@ -27,6 +27,7 @@
           "offset": 456
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -66,6 +67,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -214,6 +216,74 @@
           "offset": 6070
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x118",
+          "vtableOffset": "0x118",
+          "offset": 993
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*piStack_24 + 300",
+          "vtableOffset": null,
+          "offset": 1305
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x950",
+          "vtableOffset": "0x950",
+          "offset": 1630
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x5cc",
+          "vtableOffset": "0x5cc",
+          "offset": 1958
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x20",
+          "vtableOffset": "0x20",
+          "offset": 2224
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar3 + 0x1c4",
+          "vtableOffset": "0x1c4",
+          "offset": 2746
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x118",
+          "vtableOffset": "0x118",
+          "offset": 3281
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 3959
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x5cc",
+          "vtableOffset": "0x5cc",
+          "offset": 5039
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "offset": 5413
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar3 + 0x464",
+          "vtableOffset": "0x464",
+          "offset": 5482
+        }
+      ],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -228,6 +298,7 @@
           "offset": 7
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -242,6 +313,7 @@
           "offset": 7
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []

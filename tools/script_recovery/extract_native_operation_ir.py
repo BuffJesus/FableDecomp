@@ -13,6 +13,8 @@ from typing import Any
 STRING_RE = re.compile(r'"((?:[^"\\]|\\.)*)"')
 CALL_RE = re.compile(r'(?<![\w])((?:[A-Za-z_]\w*::)*[A-Za-z_]\w*)\s*\(')
 STATE_WRITE_RE = re.compile(r'\*\([^)]*\*\)\([^\n]*?\+\s*(0x[0-9a-fA-F]+)\)\s*=\s*([^;]+);')
+INDIRECT_CALL_RE = re.compile(r'\(\*\*\(code \*\*\)\((.*?)\)\)\s*\(', re.DOTALL)
+VTABLE_OFFSET_RE = re.compile(r'\+\s*(0x[0-9a-fA-F]+)\s*$')
 CONTROL_WORDS = {"if", "for", "while", "switch", "sizeof", "return"}
 
 
@@ -39,6 +41,17 @@ def persistence(text: str) -> list[dict[str, Any]]:
     return result
 
 
+def indirect_calls(text: str) -> list[dict[str, Any]]:
+    result = []
+    for match in INDIRECT_CALL_RE.finditer(text):
+        expression = " ".join(match.group(1).split())
+        offset = VTABLE_OFFSET_RE.search(expression)
+        result.append({"operation": "indirect-call", "targetExpression": expression,
+                       "vtableOffset": offset.group(1).lower() if offset else None,
+                       "offset": match.start()})
+    return result
+
+
 def extract(cluster_path: Path) -> dict[str, Any]:
     cluster = json.loads(cluster_path.read_text(encoding="utf-8-sig"))
     lifecycle = []
@@ -46,7 +59,7 @@ def extract(cluster_path: Path) -> dict[str, Any]:
         text = function.get("decompile") or ""
         lifecycle.append({
             "role": function["role"], "address": function["address"],
-            "calls": calls(text), "strings": strings(text),
+            "calls": calls(text), "indirectCalls": indirect_calls(text), "strings": strings(text),
             "stateWrites": [{"fieldOffset": match.group(1).lower(), "valueExpression": match.group(2).strip(),
                               "offset": match.start()} for match in STATE_WRITE_RE.finditer(text)],
             "persistenceTransfers": persistence(text),

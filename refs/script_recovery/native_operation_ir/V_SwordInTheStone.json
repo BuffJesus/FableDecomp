@@ -27,6 +27,7 @@
           "offset": 433
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -66,6 +67,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -254,6 +256,92 @@
           "offset": 12294
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 4660
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x58",
+          "vtableOffset": "0x58",
+          "offset": 4921
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 5010
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x58",
+          "vtableOffset": "0x58",
+          "offset": 5228
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 6188
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x448",
+          "vtableOffset": "0x448",
+          "offset": 7339
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 9949
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "offset": 10515
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x480",
+          "vtableOffset": "0x480",
+          "offset": 10569
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 11070
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 11542
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 11846
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "offset": 12476
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x464",
+          "vtableOffset": "0x464",
+          "offset": 12528
+        }
+      ],
       "strings": [
         "SwordOfStrength",
         "SwordCrowd",
@@ -321,6 +409,14 @@
           "offset": 1169
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x164",
+          "vtableOffset": "0x164",
+          "offset": 416
+        }
+      ],
       "strings": [],
       "stateWrites": [
         {
@@ -356,6 +452,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "HeroHasBeenToldSwordLegend",
         "SwordRemovalAttemptCount",

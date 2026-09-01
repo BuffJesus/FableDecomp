@@ -27,6 +27,7 @@
           "offset": 456
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -66,6 +67,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -484,6 +486,170 @@
           "offset": 31029
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 10904
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x58",
+          "vtableOffset": "0x58",
+          "offset": 11116
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 11275
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x58",
+          "vtableOffset": "0x58",
+          "offset": 11501
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x478",
+          "vtableOffset": "0x478",
+          "offset": 12214
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x478",
+          "vtableOffset": "0x478",
+          "offset": 13151
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x478",
+          "vtableOffset": "0x478",
+          "offset": 14109
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 15128
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x450",
+          "vtableOffset": "0x450",
+          "offset": 16713
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x448",
+          "vtableOffset": "0x448",
+          "offset": 17261
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x8b8",
+          "vtableOffset": "0x8b8",
+          "offset": 23587
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 24515
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x168",
+          "vtableOffset": "0x168",
+          "offset": 25320
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 25472
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 26531
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 26757
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 27119
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 27939
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar6 + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "offset": 29337
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar6 + 0x498",
+          "vtableOffset": "0x498",
+          "offset": 29389
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x58",
+          "vtableOffset": "0x58",
+          "offset": 29809
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 29925
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x58",
+          "vtableOffset": "0x58",
+          "offset": 30167
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x8b8",
+          "vtableOffset": "0x8b8",
+          "offset": 30578
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x464",
+          "vtableOffset": "0x464",
+          "offset": 31148
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar6 + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "offset": 31653
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar6 + 0x464",
+          "vtableOffset": "0x464",
+          "offset": 31710
+        }
+      ],
       "strings": [
         "AC_Owner",
         "AC_DummyStatic",
@@ -652,6 +818,14 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x164",
+          "vtableOffset": "0x164",
+          "offset": 731
+        }
+      ],
       "strings": [
         "TEXT_QST_004_RANDOM_00",
         "TEXT_QST_004_RANDOM_10",
@@ -758,6 +932,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "QuestActivated",
         "PrizeAlreadyGot",

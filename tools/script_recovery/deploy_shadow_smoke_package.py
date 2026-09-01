@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Transactionally deploy or roll back a verified retail-shadow smoke package."""
+"""Transactionally deploy, verify, or roll back a retail-shadow smoke package."""
 
 from __future__ import annotations
 
@@ -103,6 +103,36 @@ def rollback(transaction_path: Path) -> dict[str, object]:
     return {"restored": restored, "removed": removed, "transaction": str(transaction_path)}
 
 
+def verify_deployment(transaction_path: Path) -> dict[str, object]:
+    transaction = json.loads(transaction_path.read_text(encoding="utf-8-sig"))
+    game_root = Path(transaction["gameRoot"]).resolve()
+    backup_root = transaction_path.parent / "files"
+    files = []
+    complete = True
+    for row in transaction["files"]:
+        relative = Path(row["path"])
+        destination = ensure_under(game_root / relative, game_root)
+        if not destination.is_file():
+            status, actual = "missing", None
+        else:
+            actual = sha256(destination)
+            status = "intact" if actual == row["deployedSha256"] else "modified"
+        backup_status = "not-required"
+        if row["existed"]:
+            backup = ensure_under(backup_root / relative, backup_root)
+            backup_status = (
+                "intact" if backup.is_file() and sha256(backup) == row["previousSha256"]
+                else "missing-or-corrupt"
+            )
+        complete = complete and status == "intact" and backup_status != "missing-or-corrupt"
+        files.append({"path": relative.as_posix(), "status": status,
+                      "actualSha256": actual, "backupStatus": backup_status})
+    return {"complete": complete, "files": files, "transaction": str(transaction_path),
+            "intact": sum(row["status"] == "intact" for row in files),
+            "failures": sum(row["status"] != "intact" or row["backupStatus"] == "missing-or-corrupt"
+                            for row in files)}
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="action", required=True)
@@ -111,11 +141,15 @@ def main() -> int:
     deploy_parser.add_argument("--game-root", type=Path, required=True)
     rollback_parser = sub.add_parser("rollback")
     rollback_parser.add_argument("--transaction", type=Path, required=True)
+    verify_parser = sub.add_parser("verify")
+    verify_parser.add_argument("--transaction", type=Path, required=True)
     args = parser.parse_args()
     if args.action == "deploy":
         result = deploy(args.package.resolve(), args.game_root.resolve())
-    else:
+    elif args.action == "rollback":
         result = rollback(args.transaction.resolve())
+    else:
+        result = verify_deployment(args.transaction.resolve())
     print(json.dumps(result, sort_keys=True))
     return 0
 

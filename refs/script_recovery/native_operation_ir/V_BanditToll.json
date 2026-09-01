@@ -27,6 +27,7 @@
           "offset": 456
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -66,6 +67,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -419,6 +421,68 @@
           "offset": 20844
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 2305
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 2644
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "offset": 2894
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x100",
+          "vtableOffset": "0x100",
+          "offset": 13205
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "offset": 13457
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*piStack_2c + 0x18",
+          "vtableOffset": "0x18",
+          "offset": 14285
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x16c",
+          "vtableOffset": "0x16c",
+          "offset": 14334
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "offset": 15396
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*piStack_20 + 0x18",
+          "vtableOffset": "0x18",
+          "offset": 16244
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(param_1 + 0x40) + 0x16c",
+          "vtableOffset": "0x16c",
+          "offset": 16297
+        }
+      ],
       "strings": [
         "GreatwoodBanditToll",
         "GreatwoodBanditToll",
@@ -577,6 +641,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -652,6 +717,7 @@
           "offset": 18
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "TraderDead",
         "SafeTraderAppeared",

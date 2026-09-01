@@ -27,6 +27,7 @@
           "offset": 456
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -66,6 +67,7 @@
           "offset": 1376
         }
       ],
+      "indirectCalls": [],
       "strings": [
         "Main",
         ""
@@ -204,6 +206,50 @@
           "offset": 8012
         }
       ],
+      "indirectCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x118",
+          "vtableOffset": "0x118",
+          "offset": 2399
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x20",
+          "vtableOffset": "0x20",
+          "offset": 2466
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5c8",
+          "vtableOffset": "0x5c8",
+          "offset": 5867
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*piVar3 + 0x5ec",
+          "vtableOffset": "0x5ec",
+          "offset": 6343
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*piVar3 + 0x5ec",
+          "vtableOffset": "0x5ec",
+          "offset": 6424
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 7767
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "offset": 7950
+        }
+      ],
       "strings": [
         "Hero",
         "HERO",
@@ -253,6 +299,7 @@
           "offset": 7
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []
@@ -267,6 +314,7 @@
           "offset": 7
         }
       ],
+      "indirectCalls": [],
       "strings": [],
       "stateWrites": [],
       "persistenceTransfers": []

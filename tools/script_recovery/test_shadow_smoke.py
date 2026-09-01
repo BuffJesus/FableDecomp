@@ -6,7 +6,7 @@ from pathlib import Path
 
 from tools.script_recovery.verify_shadow_smoke_log import verify
 from tools.script_recovery.verify_shadow_smoke_package import verify as verify_package
-from tools.script_recovery.deploy_shadow_smoke_package import deploy, rollback
+from tools.script_recovery.deploy_shadow_smoke_package import deploy, rollback, verify_deployment
 
 
 class ShadowSmokeLogTests(unittest.TestCase):
@@ -64,6 +64,9 @@ class ShadowSmokeLogTests(unittest.TestCase):
                 "safety": {"mode": "shadow", "mutations": False, "saveWrites": False},
                 "expectedScripts": 1, "files": files}), encoding="utf-8")
             deployed = deploy(package, game)
+            verified = verify_deployment(Path(deployed["transaction"]))
+            self.assertTrue(verified["complete"])
+            self.assertEqual(verified["intact"], deployed["deployed"])
             self.assertEqual((game / "FableScriptExtender.dll").read_bytes(), b"new")
             rolled_back = rollback(Path(deployed["transaction"]))
             self.assertEqual((game / "FableScriptExtender.dll").read_bytes(), b"old")
