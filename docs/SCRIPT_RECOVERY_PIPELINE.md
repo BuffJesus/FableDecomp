@@ -151,13 +151,15 @@ that per-script evidence and lifecycle dataflow prove the dispatch base, or when
 `DAT_0143e8f8` singleton is explicit. This conservative pass maps 1,708 calls across 93 scripts to 191
 retail interface methods. Of those calls, 1,521 target methods already present in the ForgeFSE API
 manifest. The runtime-aware pass separately inspects the bindings actually registered in
-`LuaManager.cpp`: 1,687 of the 1,708 calls are directly callable or host-managed. It maps retail
+`LuaManager.cpp`: 1,707 of the 1,708 calls are directly callable or host-managed. It maps retail
 `PostAddScriptedEntities` to the safer `FinalizeEntityBindings` wrapper and records
 `StartScriptingEntity` as host-managed rather than exposing the scheduler primitive to Lua. The only
-remaining runtime methods are the three engine-message pollers `MsgOnLevelLoaded`,
-`MsgOnRegionLoaded`, and `MsgOnRegionUnloaded`; their engine-owned output containers still require
-ABI and ownership proof. Calls through unrelated entity/resource vtables retain their raw expressions
-and are not mislabeled merely because an offset matches.
+region-message pollers now copy their returned `CCharString` into Lua-owned memory and destroy the
+native result. The sole remaining method, `MsgOnLevelLoaded`, writes a retail
+`std::list<CCharString>`; passing a modern MSVC `std::list` into the VC7-era executable would cross an
+incompatible STL ABI. The readiness artifact records that blocker explicitly rather than advertising
+an unsafe binding. Calls through unrelated entity/resource vtables retain their raw expressions and
+are not mislabeled merely because an offset matches.
 
 Non-native macro scripts use a parallel parser and converge on the same operation/reference IR.
 

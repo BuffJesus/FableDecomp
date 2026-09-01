@@ -45,6 +45,28 @@ class NativeConversionReadinessTests(unittest.TestCase):
             calls = result["scripts"][0]["resolvedInterfaceCalls"]
             self.assertEqual(calls[0]["forgeRuntimeName"], "FinalizeEntityBindings")
 
+    def test_stl_output_method_records_runtime_abi_blocker(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "ir").mkdir()
+            (root / "catalog.json").write_text(json.dumps({"scripts": [{"name": "Q_X", "kind": "quest"}]}))
+            (root / "manifest.json").write_text(json.dumps({"functions": []}))
+            (root / "methods.tsv").write_text("00100000\tMsgOnLevelLoaded\n")
+            (root / "slots.tsv").write_text(
+                "vtable_base\toffset\tslot_address\ttarget_address\tcurrent_name\texecutable\n"
+                "01260f0c\t0x48\t01260f54\t00100000\tdecorated\ttrue\n")
+            life = [{"role": role, "address": "0x1", "calls": [], "indirectCalls": []}
+                    for role in ("destructor", "RegisterMain", "Main", "Init", "OnPersist")]
+            life[2]["indirectCalls"] = [{
+                "vtableOffset": "0x48", "interfaceProvenance": "direct-gamescriptinterface-singleton"}]
+            (root / "ir" / "Q_X.json").write_text(json.dumps({
+                "script": "Q_X", "allocatorAddress": "0x1", "vtableAddress": "0x2",
+                "evidenceAnchors": [], "lifecycle": life}))
+            result = analyze(root / "catalog.json", root / "ir", root / "manifest.json",
+                             root / "slots.tsv", root / "methods.tsv")
+            blockers = result["summary"]["abiBlockedInterfaceMethods"]
+            self.assertIn("std::list<CCharString>", blockers["MsgOnLevelLoaded"])
+
     def test_api_match_respects_symbol_boundaries(self):
         self.assertEqual(api_match("global_GetHero_CGameScriptInterface", ["GetHero"]), "GetHero")
         self.assertIsNone(api_match("global_GetHeroic", ["GetHero"]))

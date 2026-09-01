@@ -25,6 +25,11 @@ RUNTIME_ALIASES = {
 HOST_MANAGED_METHODS = {
     "StartScriptingEntity",
 }
+RUNTIME_ABI_BLOCKERS = {
+    "MsgOnLevelLoaded": (
+        "retail method writes std::list<CCharString>; ForgeFSE uses a newer MSVC STL ABI"
+    ),
+}
 
 
 def api_matcher(api_names: list[str]) -> re.Pattern[str]:
@@ -102,11 +107,13 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
             if (singleton_provenance or field_provenance) and method:
                 runtime_name = RUNTIME_ALIASES.get(method["name"], method["name"])
                 host_managed = method["name"] in HOST_MANAGED_METHODS
+                abi_blocker = RUNTIME_ABI_BLOCKERS.get(method["name"])
                 interface_calls.append({**call, **method,
                                         "forgeManifestMatch": method["name"] in api_names,
                                         "forgeRuntimeName": runtime_name,
                                         "forgeRuntimeMatch": runtime_name in runtime_bindings,
-                                        "forgeHostManaged": host_managed})
+                                        "forgeHostManaged": host_managed,
+                                        "forgeRuntimeAbiBlocker": abi_blocker})
         opaque = sorted({callee for callee in calls if OPAQUE_RE.match(callee)})
         matches = {callee: match_api.search(callee) for callee in set(calls)}
         mapped = sorted({match.group(1) for match in matches.values() if match})
@@ -152,6 +159,11 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
                                if not call["forgeRuntimeMatch"] and not call["forgeHostManaged"]}
     host_managed_methods = {call["name"] for row in rows for call in row["resolvedInterfaceCalls"]
                             if call["forgeHostManaged"]}
+    abi_blocked_methods = {
+        call["name"]: call["forgeRuntimeAbiBlocker"]
+        for row in rows for call in row["resolvedInterfaceCalls"]
+        if call["forgeRuntimeAbiBlocker"]
+    }
     return {
         "schema": "forgefse-native-conversion-readiness/0.1",
         "sources": {"catalog": str(catalog_path.resolve()), "ir": str(ir_dir.resolve()),
@@ -174,6 +186,7 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
                     "missingForgeInterfaceMethods": sorted(missing_methods),
                     "missingForgeRuntimeMethods": sorted(missing_runtime_methods),
                     "hostManagedInterfaceMethods": sorted(host_managed_methods),
+                    "abiBlockedInterfaceMethods": dict(sorted(abi_blocked_methods.items())),
                     "scriptsWithResolvedInterfaceCalls": sum(bool(row["resolvedInterfaceCalls"]) for row in rows),
                     "stages": dict(sorted(stages.items()))},
         "scripts": rows,

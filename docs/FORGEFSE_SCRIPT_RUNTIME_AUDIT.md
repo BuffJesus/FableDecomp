@@ -1,6 +1,6 @@
 # ForgeFSE runtime binding audit
 
-- registeredQuestBindings: **897**
+- registeredQuestBindings: **899**
 - registeredEntityBindings: **91**
 - requiredCalls: **84**
 - callable: **84**
