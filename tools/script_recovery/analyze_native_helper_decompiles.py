@@ -133,6 +133,34 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
                              "argumentOffset": match.group(2),
                              "callTarget": direct[0]["target"],
                              "callSite": direct[0]["site"]})
+    if (current_name.endswith("CQ_OpeningGraveyardSecretPassageScript::InitializeVariables")
+            and len(direct) == 4 and not indirect
+            and all(call.get("currentName") == "CCharString::operator=" for call in direct)):
+        operations = []
+        for match in re.finditer(
+                r'CCharString::operator=\(\(CCharString \*\)\(this \+ (0x[0-9a-fA-F]+|\d+)\),"([^"]*)"\);', text):
+            operations.append((match.start(), {"kind": "set-string",
+                                               "offset": f"0x{int(match.group(1), 0):x}",
+                                               "value": match.group(2)}))
+        for match in re.finditer(
+                r"this\[(0x[0-9a-fA-F]+)\] = \([^)]*\)0x0;", text):
+            operations.append((match.start(), {"kind": "write-u8", "offset": match.group(1),
+                                               "value": 0}))
+        for match in re.finditer(
+                r"\*\(undefined4 \*\)\(this \+ (0x[0-9a-fA-F]+)\) = 0;", text):
+            operations.append((match.start(), {"kind": "write-u32", "offset": match.group(1),
+                                               "value": 0}))
+        for match in re.finditer(
+                r"\*\(undefined1 \*\)\(\*\(int \*\)\(this \+ (0x[0-9a-fA-F]+)\) \+ "
+                r"(0x[0-9a-fA-F]+)\) = 0;", text):
+            operations.append((match.start(), {"kind": "write-nested-u8",
+                                               "pointerOffset": match.group(1),
+                                               "fieldOffset": match.group(2), "value": 0}))
+        ordered = [operation for _, operation in sorted(operations)]
+        if (len([row for row in ordered if row["kind"] == "set-string"]) == 4
+                and len(ordered) == 20):
+            patterns.append({"kind": "native-script-initializer", "complete": True,
+                             "operations": ordered})
     return patterns
 
 
@@ -256,6 +284,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
                 "constant-return-switch", "native-field-initializer", "constant-return",
                 "native-field-return", "native-global-return", "quest-interface-sequence",
                 "conditional-u8-call-clear",
+                "native-script-initializer",
             } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)

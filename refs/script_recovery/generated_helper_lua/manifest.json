@@ -1,9 +1,9 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "5BB58D5C2166E4F52872360C35650F6F2DD97BB276BCD17787CB3E6609EBE25A",
+  "sourceSha256": "2F74AF89ABBA985C17B29840569012C1D1C24FB2BE9A1739DBC1D39ED529711D",
   "summary": {
-    "emitted": 11,
+    "emitted": 12,
     "deploymentEligible": 0
   },
   "entries": [
@@ -53,6 +53,123 @@
         "kind": "native-global-return",
         "globalAddress": "0x0143E920",
         "complete": true
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x00DC3CF0",
+      "currentName": "NScript::CQ_OpeningGraveyardSecretPassageScript::InitializeVariables",
+      "sourceDecompileSha256": "208b0c3ef9f0b950b661d1ac24b8f24cb0dfe3bb4bf589863cbb6c05514becdd",
+      "luaFile": "00DC3CF0.lua",
+      "luaSha256": "127E24BC2A4206D87F788D45547F8E17A627F36E83DF0753B08333BB8EC78F7D",
+      "semanticPattern": {
+        "kind": "native-script-initializer",
+        "complete": true,
+        "operations": [
+          {
+            "kind": "set-string",
+            "offset": "0x58",
+            "value": "OBJECT_CEREMONIAL_SWORD"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x5c",
+            "value": "OBJECT_CEREMONIAL_SHIELD"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x60",
+            "value": "OBJECT_CEREMONIAL_ARMOUR"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x64",
+            "value": "OBJECT_CEREMONIAL_HELMET"
+          },
+          {
+            "kind": "write-u8",
+            "offset": "0x4a",
+            "value": 0
+          },
+          {
+            "kind": "write-u8",
+            "offset": "0x48",
+            "value": 0
+          },
+          {
+            "kind": "write-u8",
+            "offset": "0x4b",
+            "value": 0
+          },
+          {
+            "kind": "write-u8",
+            "offset": "0x4c",
+            "value": 0
+          },
+          {
+            "kind": "write-u8",
+            "offset": "0x49",
+            "value": 0
+          },
+          {
+            "kind": "write-u8",
+            "offset": "0x4d",
+            "value": 0
+          },
+          {
+            "kind": "write-u8",
+            "offset": "0x4e",
+            "value": 0
+          },
+          {
+            "kind": "write-u8",
+            "offset": "0x4f",
+            "value": 0
+          },
+          {
+            "kind": "write-u8",
+            "offset": "0x50",
+            "value": 0
+          },
+          {
+            "kind": "write-u8",
+            "offset": "0x55",
+            "value": 0
+          },
+          {
+            "kind": "write-u8",
+            "offset": "0x56",
+            "value": 0
+          },
+          {
+            "kind": "write-u8",
+            "offset": "0x57",
+            "value": 0
+          },
+          {
+            "kind": "write-u8",
+            "offset": "0x68",
+            "value": 0
+          },
+          {
+            "kind": "write-u32",
+            "offset": "0x6c",
+            "value": 0
+          },
+          {
+            "kind": "write-u8",
+            "offset": "0x70",
+            "value": 0
+          },
+          {
+            "kind": "write-nested-u8",
+            "pointerOffset": "0x44",
+            "fieldOffset": "0x11c",
+            "value": 0
+          }
+        ]
       },
       "parentInitializerEvidence": null,
       "deploymentEligible": false,

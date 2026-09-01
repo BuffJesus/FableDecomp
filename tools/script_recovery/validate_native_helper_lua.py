@@ -111,6 +111,24 @@ def validate(manifest_path: Path) -> dict[str, Any]:
                 checks += 1
                 if trace != expected:
                     errors.append(f"condition {condition_value}: expected {expected}, got {trace}")
+        elif pattern["kind"] == "native-script-initializer":
+            trace = []
+            function(lambda offset, value: trace.append(("set-string", offset, value)),
+                     lambda offset, value: trace.append(("write-u8", offset, value)),
+                     lambda offset, value: trace.append(("write-u32", offset, value)),
+                     lambda pointer, field, value:
+                     trace.append(("write-nested-u8", pointer, field, value)))
+            expected = []
+            for operation in pattern["operations"]:
+                if operation["kind"] == "write-nested-u8":
+                    expected.append((operation["kind"], int(operation["pointerOffset"], 0),
+                                     int(operation["fieldOffset"], 0), operation["value"]))
+                else:
+                    expected.append((operation["kind"], int(operation["offset"], 0),
+                                     operation["value"]))
+            checks = len(expected)
+            if trace != expected:
+                errors.append(f"initializer trace differs: expected {expected}, got {trace}")
         else:
             errors.append(f"unsupported semantic pattern {pattern['kind']}")
         rows.append({"targetAddress": entry["targetAddress"], "passed": not errors,

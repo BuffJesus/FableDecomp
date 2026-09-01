@@ -97,6 +97,27 @@ def emit_conditional_call_clear(helper: dict[str, Any], pattern: dict[str, Any])
     ])
 
 
+def emit_script_initializer(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
+    lines = [f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+             "-- Preserve initializer order and native offsets without inventing field names.",
+             "return function(set_string, write_u8, write_u32, write_nested_u8)"]
+    for operation in pattern["operations"]:
+        if operation["kind"] == "set-string":
+            value = operation["value"].replace("\\", "\\\\").replace('"', '\\"')
+            lines.append(f'    set_string({int(operation["offset"], 0)}, "{value}")')
+        elif operation["kind"] == "write-u8":
+            lines.append(f'    write_u8({int(operation["offset"], 0)}, {operation["value"]})')
+        elif operation["kind"] == "write-u32":
+            lines.append(f'    write_u32({int(operation["offset"], 0)}, {operation["value"]})')
+        elif operation["kind"] == "write-nested-u8":
+            lines.append(f'    write_nested_u8({int(operation["pointerOffset"], 0)}, '
+                         f'{int(operation["fieldOffset"], 0)}, {operation["value"]})')
+        else:
+            raise ValueError(f"unsupported initializer operation {operation['kind']}")
+    lines.extend(("end", ""))
+    return "\n".join(lines)
+
+
 def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
     source_bytes = helper_ir_path.read_bytes()
     document = json.loads(source_bytes.decode("utf-8-sig"))
@@ -110,6 +131,7 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
                                        "constant-return", "native-field-return",
                                        "native-global-return", "quest-interface-sequence",
                                        "conditional-u8-call-clear"}
+                                       | {"native-script-initializer"}
                     and row["complete"]]
         if len(patterns) != 1:
             raise ValueError(f"expected one complete switch for {helper['targetAddress']}")
@@ -122,6 +144,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
             text = emit_interface_sequence(helper, pattern)
         elif pattern["kind"] == "conditional-u8-call-clear":
             text = emit_conditional_call_clear(helper, pattern)
+        elif pattern["kind"] == "native-script-initializer":
+            text = emit_script_initializer(helper, pattern)
         else:
             text = emit_return(helper, pattern)
         filename = helper["targetAddress"].removeprefix("0x") + ".lua"

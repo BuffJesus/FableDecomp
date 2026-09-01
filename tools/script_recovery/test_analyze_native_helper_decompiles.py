@@ -41,6 +41,25 @@ class NativeHelperDecompileTests(unittest.TestCase):
             "conditionOffset": "0x25", "argumentOffset": "0x24",
             "callTarget": "0x2000", "callSite": "0x1010"}])
 
+    def test_script_initializer_preserves_order_widths_and_nested_write(self):
+        body = "void F(X *this) { " + " ".join([
+            'CCharString::operator=((CCharString *)(this + 0x58),"A");',
+            'CCharString::operator=((CCharString *)(this + 0x5c),"B");',
+            'CCharString::operator=((CCharString *)(this + 0x60),"C");',
+            'CCharString::operator=((CCharString *)(this + 100),"D");',
+            *[f"this[0x{offset:x}] = (X)0x0;" for offset in
+              (0x4a, 0x48, 0x4b, 0x4c, 0x49, 0x4d, 0x4e, 0x4f, 0x50, 0x55, 0x56, 0x57, 0x68)],
+            "*(undefined4 *)(this + 0x6c) = 0;", "this[0x70] = (X)0x0;",
+            "*(undefined1 *)(*(int *)(this + 0x44) + 0x11c) = 0;", "return; }"])
+        direct = [{"currentName": "CCharString::operator="} for _ in range(4)]
+        pattern = semantic_patterns(body, direct, [],
+            "NScript::CQ_OpeningGraveyardSecretPassageScript::InitializeVariables")[0]
+        self.assertEqual(pattern["kind"], "native-script-initializer")
+        self.assertEqual(len(pattern["operations"]), 20)
+        self.assertEqual(pattern["operations"][3],
+                         {"kind": "set-string", "offset": "0x64", "value": "D"})
+        self.assertEqual(pattern["operations"][-1]["kind"], "write-nested-u8")
+
     def test_typed_native_reads_are_complete_semantic_patterns(self):
         field = semantic_patterns(
             "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])

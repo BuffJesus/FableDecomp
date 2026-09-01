@@ -194,6 +194,11 @@ then clears `+0x25`. Both branch outcomes are executed offline, bringing the tot
 and 52 checks. These are still standalone conversion units, not evidence that their parent retail
 scripts are deployable.
 
+`Q_OpeningGraveyardSecretPassage::InitializeVariables` adds the first complete mixed-type parent
+initializer: four exact ceremonial-object strings, fourteen byte writes, one 32-bit write, and the
+nested `this+0x44/+0x11c` byte are emitted in native order through typed callbacks. Its 20-operation
+trace raises the standalone total to twelve helpers and 72 checks without guessing field names.
+
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`
 interface field, and the offset must exist in the dumped retail vtable. Helper analysis exposed 29

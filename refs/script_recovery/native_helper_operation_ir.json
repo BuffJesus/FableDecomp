@@ -8,8 +8,8 @@
     "consumerCalls": 1437,
     "directDependencyCalls": 4967,
     "directDependencyTargets": 206,
-    "semanticPatterns": 11,
-    "luaEmissionReady": 11,
+    "semanticPatterns": 12,
+    "luaEmissionReady": 12,
     "resolvedParentInitializers": 2,
     "resolvedInterfaceCalls": 273,
     "resolvedInterfaceMethods": 62,
@@ -46397,9 +46397,117 @@
         }
       ],
       "controlFlow": {},
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "native-script-initializer",
+          "complete": true,
+          "operations": [
+            {
+              "kind": "set-string",
+              "offset": "0x58",
+              "value": "OBJECT_CEREMONIAL_SWORD"
+            },
+            {
+              "kind": "set-string",
+              "offset": "0x5c",
+              "value": "OBJECT_CEREMONIAL_SHIELD"
+            },
+            {
+              "kind": "set-string",
+              "offset": "0x60",
+              "value": "OBJECT_CEREMONIAL_ARMOUR"
+            },
+            {
+              "kind": "set-string",
+              "offset": "0x64",
+              "value": "OBJECT_CEREMONIAL_HELMET"
+            },
+            {
+              "kind": "write-u8",
+              "offset": "0x4a",
+              "value": 0
+            },
+            {
+              "kind": "write-u8",
+              "offset": "0x48",
+              "value": 0
+            },
+            {
+              "kind": "write-u8",
+              "offset": "0x4b",
+              "value": 0
+            },
+            {
+              "kind": "write-u8",
+              "offset": "0x4c",
+              "value": 0
+            },
+            {
+              "kind": "write-u8",
+              "offset": "0x49",
+              "value": 0
+            },
+            {
+              "kind": "write-u8",
+              "offset": "0x4d",
+              "value": 0
+            },
+            {
+              "kind": "write-u8",
+              "offset": "0x4e",
+              "value": 0
+            },
+            {
+              "kind": "write-u8",
+              "offset": "0x4f",
+              "value": 0
+            },
+            {
+              "kind": "write-u8",
+              "offset": "0x50",
+              "value": 0
+            },
+            {
+              "kind": "write-u8",
+              "offset": "0x55",
+              "value": 0
+            },
+            {
+              "kind": "write-u8",
+              "offset": "0x56",
+              "value": 0
+            },
+            {
+              "kind": "write-u8",
+              "offset": "0x57",
+              "value": 0
+            },
+            {
+              "kind": "write-u8",
+              "offset": "0x68",
+              "value": 0
+            },
+            {
+              "kind": "write-u32",
+              "offset": "0x6c",
+              "value": 0
+            },
+            {
+              "kind": "write-u8",
+              "offset": "0x70",
+              "value": 0
+            },
+            {
+              "kind": "write-nested-u8",
+              "pointerOffset": "0x44",
+              "fieldOffset": "0x11c",
+              "value": 0
+            }
+          ]
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00DD1F40",
