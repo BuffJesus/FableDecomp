@@ -93,7 +93,8 @@ def load_interface_methods(slots_path: Path | None, catalog_path: Path | None) -
 def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
             slots_path: Path | None = None, interface_catalog_path: Path | None = None,
             interface_field_evidence_path: Path | None = None,
-            lua_manager_path: Path | None = None) -> dict[str, Any]:
+            lua_manager_path: Path | None = None,
+            helper_ir_path: Path | None = None) -> dict[str, Any]:
     catalog = json.loads(catalog_path.read_text(encoding="utf-8-sig"))
     manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
     api_names = sorted({row["name"] for row in manifest["functions"]}, key=len, reverse=True)
@@ -104,6 +105,12 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
             lua_manager_path.read_text(encoding="utf-8-sig", errors="replace")
         ))
     interface_methods = load_interface_methods(slots_path, interface_catalog_path)
+    ready_helper_targets = set()
+    if helper_ir_path:
+        helper_ir = json.loads(helper_ir_path.read_text(encoding="utf-8-sig"))
+        ready_helper_targets = {
+            row["targetAddress"] for row in helper_ir["helpers"] if row.get("luaEmissionReady")
+        }
     verified_interface_fields = set()
     if interface_field_evidence_path:
         with interface_field_evidence_path.open(encoding="utf-8-sig", newline="") as stream:
@@ -148,8 +155,22 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
         matches = {callee: match_api.search(callee) for callee in set(calls)}
         mapped = sorted({match.group(1) for match in matches.values() if match})
         infrastructure = {callee for callee in calls if INFRASTRUCTURE_RE.match(callee)}
-        unresolved = sorted(set(calls) - set(opaque) - infrastructure -
-                            {callee for callee, match in matches.items() if match})
+        helper_candidates = set(calls) - set(opaque) - infrastructure - {
+            callee for callee, match in matches.items() if match}
+        resolved_native = []
+        for helper in sorted(helper_candidates):
+            instances = [call for life in ir["lifecycle"] for call in life["calls"]
+                         if call["callee"] == helper]
+            if instances and all(call.get("targetAddress") in ready_helper_targets
+                                 for call in instances):
+                resolved_native.append(helper)
+        unresolved = sorted(helper_candidates - set(resolved_native))
+        resolved_native_counts = Counter(callee for callee in calls if callee in resolved_native)
+        resolved_native_targets = {
+            helper: sorted({call["targetAddress"] for life in ir["lifecycle"]
+                            for call in life["calls"] if call["callee"] == helper})
+            for helper in resolved_native
+        }
         unresolved_counts = Counter(callee for callee in calls if callee in unresolved)
         unresolved_roles = {
             helper: sorted({life["role"] for life in ir["lifecycle"]
@@ -195,6 +216,9 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
             "indirectVtableOffsets": sorted({call["vtableOffset"] for call in indirect
                                               if call.get("vtableOffset")}),
             "opaqueCallees": opaque, "unresolvedNativeHelpers": unresolved, "stage": stage,
+            "resolvedNativeHelpers": resolved_native,
+            "resolvedNativeHelperCallCounts": dict(sorted(resolved_native_counts.items())),
+            "resolvedNativeHelperTargetAddresses": resolved_native_targets,
             "unresolvedNativeHelperCallCounts": dict(sorted(unresolved_counts.items())),
             "unresolvedNativeHelperRoles": unresolved_roles,
             "unresolvedNativeHelperTargetAddresses": unresolved_targets,
@@ -210,6 +234,7 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
     for row in rows:
         stages[row["stage"]] = stages.get(row["stage"], 0) + 1
     resolved_methods = {call["name"] for row in rows for call in row["resolvedInterfaceCalls"]}
+    resolved_helper_methods = {helper for row in rows for helper in row["resolvedNativeHelpers"]}
     missing_methods = {call["name"] for row in rows for call in row["resolvedInterfaceCalls"]
                        if not call["forgeManifestMatch"]}
     missing_runtime_methods = {call["name"] for row in rows for call in row["resolvedInterfaceCalls"]
@@ -290,7 +315,8 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
                     "apiManifest": str(manifest_path.resolve()),
                     "interfaceFieldEvidence": (str(interface_field_evidence_path.resolve())
                                                if interface_field_evidence_path else None),
-                    "luaManager": str(lua_manager_path.resolve()) if lua_manager_path else None},
+                    "luaManager": str(lua_manager_path.resolve()) if lua_manager_path else None,
+                    "helperIr": str(helper_ir_path.resolve()) if helper_ir_path else None},
         "summary": {"scripts": len(rows), "anchored": sum(row["anchored"] for row in rows),
                     "lifecycleComplete": sum(row["lifecycleFunctions"] == 5 for row in rows),
                     "verifiedScriptInterfaceFields": len(verified_interface_fields),
@@ -307,6 +333,11 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
                     "missingForgeRuntimeMethods": sorted(missing_runtime_methods),
                     "hostManagedInterfaceMethods": sorted(host_managed_methods),
                     "abiBlockedInterfaceMethods": dict(sorted(abi_blocked_methods.items())),
+                    "resolvedNativeHelperMethods": len(resolved_helper_methods),
+                    "resolvedNativeHelperCalls": sum(
+                        sum(row["resolvedNativeHelperCallCounts"].values()) for row in rows),
+                    "scriptsWithResolvedNativeHelpers": sum(bool(row["resolvedNativeHelpers"])
+                                                            for row in rows),
                     "unresolvedNativeHelperMethods": len(helper_backlog),
                     "unresolvedNativeHelperCalls": sum(helper_calls.values()),
                     "nativeHelperMethodsWithTargetAddress": sum(
@@ -335,10 +366,12 @@ def main() -> int:
     parser.add_argument("--interface-catalog", type=Path)
     parser.add_argument("--interface-field-evidence", type=Path)
     parser.add_argument("--lua-manager", type=Path)
+    parser.add_argument("--helper-ir", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     result = analyze(args.catalog, args.ir, args.api_manifest, args.vtable_slots,
-                     args.interface_catalog, args.interface_field_evidence, args.lua_manager)
+                     args.interface_catalog, args.interface_field_evidence, args.lua_manager,
+                     args.helper_ir)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result["summary"], sort_keys=True))

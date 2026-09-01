@@ -208,6 +208,11 @@ strings use count zero and scale `1.0`, the timer uses `this+0x6C`, returned han
 `+0x58/+0x5C/+0x60`, and the nested `+0x44/+0x44` score feeds the counter and online score before
 quest info is displayed. The emitted 12-event trace raises coverage to fourteen helpers and 105
 checks; the instruction addresses remain embedded in the operation evidence.
+The readiness analyzer now consumes this helper IR by exact target address. It removes only calls
+whose every instance has a target marked emission-ready, resolving 14 helper labels and 185 calls
+across 124 scripts while leaving 144 labels / 1,418 calls explicit. `V_ArcheryCompetition` now has
+five recovered helpers and only `CCharString__NotEqual`, its destructor, and `rand` left in its
+helper backlog.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`

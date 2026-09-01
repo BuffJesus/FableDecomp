@@ -1225,6 +1225,94 @@
     },
     {
       "evidence": {
+        "abiBlockedInterfaceMethods": {
+          "MsgOnLevelLoaded": "retail method writes std::list<CCharString>; ForgeFSE uses a newer MSVC STL ABI"
+        },
+        "anchored": 6,
+        "completeEntityBindings": 615,
+        "entityBindings": 615,
+        "hostManagedInterfaceMethods": [
+          "StartScriptingEntity"
+        ],
+        "lifecycleComplete": 161,
+        "missingForgeInterfaceMethods": [
+          "AddNewConversation",
+          "AddPersonToConversation",
+          "CloseDoor",
+          "DisableFishingSpot",
+          "GiveHeroQuestCardDirectly",
+          "HeroGoDigging",
+          "HeroGoFishing",
+          "HeroStopDigging",
+          "IsDPadButtonHeldForExpression",
+          "IsFishingSpotEnabled",
+          "IsHeroControlledByPlayer",
+          "IsInMovieSequence",
+          "IsObjectInThingsPossession",
+          "MsgOnLevelLoaded",
+          "MsgOnRegionLoaded",
+          "MsgOnRegionUnloaded",
+          "PostAddScriptedEntities",
+          "SetCutsceneMode",
+          "SetHeroGuideToShowQuestCardsWhenSpokenTo",
+          "SetQuestCardGoldReward",
+          "SetQuestCardRenownReward",
+          "SetToDisplayTutorialsDuringCutscenes",
+          "SetToKeepHeroAbilitiesDuringCutscenes",
+          "StartScriptingEntity",
+          "UpdateFishWeight"
+        ],
+        "missingForgeRuntimeMethods": [
+          "MsgOnLevelLoaded"
+        ],
+        "nativeDirectCallTargets": 233,
+        "nativeDirectCalls": 15300,
+        "nativeHelperCallsWithTargetAddress": 1252,
+        "nativeHelperCategories": {
+          "engine-or-script-helper": {
+            "calls": 284,
+            "methods": 71
+          },
+          "lifecycle-cleanup": {
+            "calls": 164,
+            "methods": 38
+          },
+          "object-lifetime": {
+            "calls": 761,
+            "methods": 16
+          },
+          "runtime-support": {
+            "calls": 207,
+            "methods": 18
+          },
+          "script-runtime": {
+            "calls": 2,
+            "methods": 1
+          }
+        },
+        "nativeHelperMethodsWithTargetAddress": 103,
+        "resolvedForgeInterfaceCalls": 1521,
+        "resolvedForgeRuntimeCalls": 1707,
+        "resolvedInterfaceCalls": 1708,
+        "resolvedInterfaceMethods": 191,
+        "resolvedNativeHelperCalls": 185,
+        "resolvedNativeHelperMethods": 14,
+        "scripts": 161,
+        "scriptsWithEntityBindings": 119,
+        "scriptsWithResolvedInterfaceCalls": 93,
+        "scriptsWithResolvedNativeHelpers": 124,
+        "stages": {
+          "map-native-helpers": 161
+        },
+        "unresolvedNativeHelperCalls": 1418,
+        "unresolvedNativeHelperMethods": 144,
+        "verifiedScriptInterfaceFields": 161
+      },
+      "name": "generated helpers reduce the native conversion backlog",
+      "passed": true
+    },
+    {
+      "evidence": {
         "intact": 19,
         "transaction": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\backups\\RetailShadowSmoke-20260901T021609Z\\deployment.json"
       },
@@ -1249,7 +1337,7 @@
   "schema": "fable-script-recovery-foundation-audit/0.1",
   "summary": {
     "complete": true,
-    "passed": 17,
-    "total": 17
+    "passed": 18,
+    "total": 18
   }
 }

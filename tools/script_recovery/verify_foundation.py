@@ -127,6 +127,19 @@ def verify(root: Path) -> dict[str, Any]:
               "helpers": 14, "passed": 14, "checks": 105, "complete": True},
           {"manifest": helper_lua_manifest["summary"],
            "validation": helper_lua_validation["summary"]})
+    readiness = load(root / "native_conversion_readiness.json")
+    readiness_summary = readiness["summary"]
+    archery = next(row for row in readiness["scripts"] if row["name"] == "V_ArcheryCompetition")
+    check("generated helpers reduce the native conversion backlog",
+          readiness_summary["resolvedNativeHelperMethods"] == 14 and
+          readiness_summary["resolvedNativeHelperCalls"] == 185 and
+          readiness_summary["scriptsWithResolvedNativeHelpers"] == 124 and
+          readiness_summary["unresolvedNativeHelperMethods"] == 144 and
+          readiness_summary["unresolvedNativeHelperCalls"] == 1418 and
+          len(archery["resolvedNativeHelpers"]) == 5 and
+          set(archery["unresolvedNativeHelpers"]) == {
+              "CCharString__NotEqual", "NScript::CV_ArcheryCompetitionScript::~CV_ArcheryCompetitionScript",
+              "rand"}, readiness_summary)
     deployment = load(root / "shadow_deployment_verification.json")
     check("reversible local shadow deployment is recorded intact",
           deployment["complete"] and deployment["failures"] == 0 and

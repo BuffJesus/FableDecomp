@@ -127,6 +127,28 @@ class NativeConversionReadinessTests(unittest.TestCase):
                 "targetAddresses": [],
                 "kinds": ["quest", "village"], "consumers": ["Q_A", "V_B"]})
 
+    def test_emission_ready_target_moves_helper_out_of_unresolved_backlog(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "ir").mkdir()
+            (root / "catalog.json").write_text(json.dumps({"scripts": [
+                {"name": "Q_A", "kind": "quest"}]}))
+            (root / "manifest.json").write_text(json.dumps({"functions": []}))
+            (root / "helpers.json").write_text(json.dumps({"helpers": [{
+                "targetAddress": "0x1000", "luaEmissionReady": True}]}))
+            life = [{"role": role, "address": "0x1", "calls": [], "indirectCalls": []}
+                    for role in ("destructor", "RegisterMain", "Main", "Init", "OnPersist")]
+            life[2]["calls"] = [{"callee": "RecoveredHelper", "targetAddress": "0x1000"}]
+            (root / "ir" / "Q_A.json").write_text(json.dumps({
+                "script": "Q_A", "allocatorAddress": "0x1", "vtableAddress": "0x2",
+                "evidenceAnchors": [], "lifecycle": life}))
+            result = analyze(root / "catalog.json", root / "ir", root / "manifest.json",
+                             helper_ir_path=root / "helpers.json")
+            self.assertEqual(result["summary"]["resolvedNativeHelperMethods"], 1)
+            self.assertEqual(result["summary"]["resolvedNativeHelperCalls"], 1)
+            self.assertEqual(result["summary"]["unresolvedNativeHelperMethods"], 0)
+            self.assertEqual(result["scripts"][0]["stage"], "manual-lua-reconstruction")
+
     def test_direct_call_backlog_is_keyed_by_retail_target_address(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
