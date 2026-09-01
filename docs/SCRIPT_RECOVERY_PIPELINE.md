@@ -202,6 +202,9 @@ branch now exposes wrappers for `OverrideAutomaticHouseLocking`, `UpdateOnlineSc
 converts Lua UTF-8 into a plain UTF-16 buffer, then constructs and destroys each opaque four-byte
 `CWideString` through the retail executable's exact relocation-matched constructor (`0x0099B6B0`)
 and destructor (`0x0099B510`). No modern STL object crosses the VC7 ABI boundary.
+The same adapter now backs `DisplayGameInfoText` and `SetReadableObjectText`; their earlier
+hand-built modern-STL surrogate and intentional allocation leaks have been removed. Forge's shadow
+safety gate rejects reintroduction of that surrogate or bypassing the retail-owned string path.
 
 The reproducible headless export accepts the correlated TSV followed by explicit name/address pairs:
 

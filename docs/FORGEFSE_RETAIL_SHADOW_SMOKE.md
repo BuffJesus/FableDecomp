@@ -39,12 +39,12 @@ This checks every deployed hash and every required rollback backup. It does not 
 touch saves.
 
 The current local transaction is
-`RetailShadowSmoke-20260901T020745Z`. Before deploying it, the preceding transaction was rolled back
+`RetailShadowSmoke-20260901T021609Z`. Before deploying it, the preceding transaction was rolled back
 successfully (one overwritten DLL restored and 18 unchanged package files removed). The rebuilt
 package passed 16/16 offline script preflights, and the fresh deployment verifies 19/19 files with
-DLL SHA-256 `E17D98C48BF1F39E2FF1DE9EE590D55CBB0AB0DBE3237A7AA4E97DD190368694`.
+DLL SHA-256 `AF0912549E831AA34929F6CD7B64714C57CCD24044315E6AD6F2E35D375C1C85`.
 
-A fresh menu-only launch with that DLL on `2026-09-01T02:10:46Z` confirmed attachment, API-pointer
+A fresh menu-only launch with that DLL on `2026-09-01T02:16:51Z` confirmed attachment, API-pointer
 initialization, hook installation, a responsive game process, and a normal window close. No profile
 or save was loaded. As expected, the menu phase did not initialize Lua, so the gameplay-level
 16-script terminal summary remains pending rather than being reported as a successful full smoke.

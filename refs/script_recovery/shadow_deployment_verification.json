@@ -4,7 +4,7 @@
     {
       "path": "FableScriptExtender.dll",
       "status": "intact",
-      "actualSha256": "E17D98C48BF1F39E2FF1DE9EE590D55CBB0AB0DBE3237A7AA4E97DD190368694",
+      "actualSha256": "AF0912549E831AA34929F6CD7B64714C57CCD24044315E6AD6F2E35D375C1C85",
       "backupStatus": "intact"
     },
     {
@@ -116,7 +116,7 @@
       "backupStatus": "not-required"
     }
   ],
-  "transaction": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\backups\\RetailShadowSmoke-20260901T020745Z\\deployment.json",
+  "transaction": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\backups\\RetailShadowSmoke-20260901T021609Z\\deployment.json",
   "intact": 19,
   "failures": 0
 }
