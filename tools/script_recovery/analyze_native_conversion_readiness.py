@@ -28,10 +28,6 @@ HOST_MANAGED_METHODS = {
     "StartScriptingEntity",
 }
 RUNTIME_ABI_BLOCKERS = {
-    "AddLogBookEntry": (
-        "retail method consumes CWideString objects; constructing them with a modern std::wstring "
-        "would cross the VC7 STL ABI"
-    ),
     "MsgOnLevelLoaded": (
         "retail method writes std::list<CCharString>; ForgeFSE uses a newer MSVC STL ABI"
     ),

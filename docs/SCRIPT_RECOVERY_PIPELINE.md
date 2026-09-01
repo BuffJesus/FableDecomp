@@ -195,13 +195,13 @@ resource, timer, or other unrelated vtables remain raw even when their numeric o
 collide. The lifecycle totals remain 1,708 calls and 191 used methods because the new offsets occur
 inside helper bodies, not the five top-level lifecycle functions.
 
-Comparing those 273 helper calls with the bindings actually registered by ForgeFSE found three
-runtime method gaps. Forge already resolved all three retail pointers. The isolated Forge branch now
-exposes ABI-safe wrappers for `OverrideAutomaticHouseLocking` and `UpdateOnlineScore_Archery`, leaving
-270/273 helper calls directly callable or host-managed. The remaining three calls all target
-`AddLogBookEntry`; that method consumes retail `CWideString` objects, so constructing them with a
-modern `std::wstring` would cross the VC7 STL ABI. It remains one explicit method-level blocker until
-a retail-owned string adapter is recovered.
+Comparing those 273 helper calls with the bindings actually registered by ForgeFSE originally found
+three runtime method gaps. Forge already resolved all three retail pointers. The isolated Forge
+branch now exposes wrappers for `OverrideAutomaticHouseLocking`, `UpdateOnlineScore_Archery`, and
+`AddLogBookEntry`, making all 273 helper calls directly callable or host-managed. The log-book wrapper
+converts Lua UTF-8 into a plain UTF-16 buffer, then constructs and destroys each opaque four-byte
+`CWideString` through the retail executable's exact relocation-matched constructor (`0x0099B6B0`)
+and destructor (`0x0099B510`). No modern STL object crosses the VC7 ABI boundary.
 
 The reproducible headless export accepts the correlated TSV followed by explicit name/address pairs:
 

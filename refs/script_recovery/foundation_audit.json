@@ -1167,9 +1167,7 @@
     },
     {
       "evidence": {
-        "abiBlockedInterfaceMethods": {
-          "AddLogBookEntry": "retail method consumes CWideString objects; constructing them with a modern std::wstring would cross the VC7 STL ABI"
-        },
+        "abiBlockedInterfaceMethods": {},
         "categories": {
           "engine-or-script-helper": 66,
           "lifecycle-cleanup": 29,
@@ -1192,11 +1190,9 @@
           "StartScriptingEntity",
           "UpdateOnlineScore_Archery"
         ],
-        "missingForgeRuntimeMethods": [
-          "AddLogBookEntry"
-        ],
+        "missingForgeRuntimeMethods": [],
         "resolvedForgeInterfaceCalls": 256,
-        "resolvedForgeRuntimeCalls": 270,
+        "resolvedForgeRuntimeCalls": 273,
         "resolvedInterfaceCalls": 273,
         "resolvedInterfaceMethods": 62,
         "resolvedParentInitializers": 2,

@@ -107,9 +107,9 @@ def verify(root: Path) -> dict[str, Any]:
           helper_summary["failed"] == 1 and helper_summary["consumerCalls"] == 1437 and
           helper_summary["resolvedInterfaceCalls"] == 273 and
           helper_summary["resolvedInterfaceMethods"] == 62 and
-          helper_summary["resolvedForgeRuntimeCalls"] == 270 and
-          helper_summary["missingForgeRuntimeMethods"] == ["AddLogBookEntry"] and
-          list(helper_summary["abiBlockedInterfaceMethods"]) == ["AddLogBookEntry"] and
+          helper_summary["resolvedForgeRuntimeCalls"] == 273 and
+          helper_summary["missingForgeRuntimeMethods"] == [] and
+          helper_summary["abiBlockedInterfaceMethods"] == {} and
           {row["targetAddress"] for row in helper_ir["helpers"]
            if row["status"] != "decompiled"} == {"0x00CBFB7D"},
           helper_summary)

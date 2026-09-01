@@ -14,7 +14,7 @@
     "resolvedInterfaceCalls": 273,
     "resolvedInterfaceMethods": 62,
     "resolvedForgeInterfaceCalls": 256,
-    "resolvedForgeRuntimeCalls": 270,
+    "resolvedForgeRuntimeCalls": 273,
     "missingForgeInterfaceMethods": [
       "AddLogBookEntry",
       "AddNewConversation",
@@ -24,12 +24,8 @@
       "StartScriptingEntity",
       "UpdateOnlineScore_Archery"
     ],
-    "missingForgeRuntimeMethods": [
-      "AddLogBookEntry"
-    ],
-    "abiBlockedInterfaceMethods": {
-      "AddLogBookEntry": "retail method consumes CWideString objects; constructing them with a modern std::wstring would cross the VC7 STL ABI"
-    },
+    "missingForgeRuntimeMethods": [],
+    "abiBlockedInterfaceMethods": {},
     "stages": {
       "inspect-helper-dependencies": 108,
       "inspect-leaf-helper": 19,
@@ -26481,9 +26477,9 @@
           "slotAddress": "0x012613DC",
           "forgeManifestMatch": false,
           "forgeRuntimeName": "AddLogBookEntry",
-          "forgeRuntimeMatch": false,
+          "forgeRuntimeMatch": true,
           "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": "retail method consumes CWideString objects; constructing them with a modern std::wstring would cross the VC7 STL ABI"
+          "forgeRuntimeAbiBlocker": null
         }
       ],
       "strings": [
@@ -27229,9 +27225,9 @@
           "slotAddress": "0x012613DC",
           "forgeManifestMatch": false,
           "forgeRuntimeName": "AddLogBookEntry",
-          "forgeRuntimeMatch": false,
+          "forgeRuntimeMatch": true,
           "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": "retail method consumes CWideString objects; constructing them with a modern std::wstring would cross the VC7 STL ABI"
+          "forgeRuntimeAbiBlocker": null
         }
       ],
       "strings": [
@@ -34218,9 +34214,9 @@
           "slotAddress": "0x012613DC",
           "forgeManifestMatch": false,
           "forgeRuntimeName": "AddLogBookEntry",
-          "forgeRuntimeMatch": false,
+          "forgeRuntimeMatch": true,
           "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": "retail method consumes CWideString objects; constructing them with a modern std::wstring would cross the VC7 STL ABI"
+          "forgeRuntimeAbiBlocker": null
         },
         {
           "operation": "indirect-call",
