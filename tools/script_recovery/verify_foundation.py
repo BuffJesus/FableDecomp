@@ -117,14 +117,14 @@ def verify(root: Path) -> dict[str, Any]:
     helper_lua_validation = load(root / "generated_helper_lua" / "validation.json")
     helper_lua_entries = helper_lua_manifest["entries"]
     check("evidence-complete native helpers execute as standalone Lua",
-          helper_lua_manifest["summary"] == {"emitted": 12, "deploymentEligible": 0} and
+          helper_lua_manifest["summary"] == {"emitted": 13, "deploymentEligible": 0} and
           {row["targetAddress"] for row in helper_lua_entries} == {
               "0x00CD23B9", "0x00CD3EF0", "0x00E1AD30", "0x00E1DF50",
               "0x00CB8930", "0x00DC3CF0", "0x00E32EF0", "0x00E32FE0", "0x00E33000", "0x00E9FEC0",
-              "0x00F14250", "0x00F14270"} and
+              "0x00F14250", "0x00F14270", "0x00F25840"} and
           all(not row["deploymentEligible"] for row in helper_lua_entries) and
           helper_lua_validation["summary"] == {
-              "helpers": 12, "passed": 12, "checks": 72, "complete": True},
+              "helpers": 13, "passed": 13, "checks": 93, "complete": True},
           {"manifest": helper_lua_manifest["summary"],
            "validation": helper_lua_validation["summary"]})
     deployment = load(root / "shadow_deployment_verification.json")

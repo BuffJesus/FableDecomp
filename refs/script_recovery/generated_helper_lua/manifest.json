@@ -1,9 +1,9 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "2F74AF89ABBA985C17B29840569012C1D1C24FB2BE9A1739DBC1D39ED529711D",
+  "sourceSha256": "D9486750514E0513D193F190F358831DFC4A12DC7751FAC485651980FA6820B6",
   "summary": {
-    "emitted": 12,
+    "emitted": 13,
     "deploymentEligible": 0
   },
   "entries": [
@@ -562,6 +562,129 @@
         ],
         "defaultReturn": 35,
         "complete": true
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x00F25840",
+      "currentName": "NScript::CQ_ArenaScript::InitialiseVariables",
+      "sourceDecompileSha256": "32d68da84bd3b0e62a719c5bb2b10f33c611f4c00ca11e5ddf529e5c2790df06",
+      "luaFile": "00F25840.lua",
+      "luaSha256": "19A7735AD0B3AA61977C0D40BE6C33E59AC0FE5C6DA6C589D5F4455ECA209A67",
+      "semanticPattern": {
+        "kind": "native-script-initializer",
+        "complete": true,
+        "operations": [
+          {
+            "kind": "invoke-native",
+            "target": "0x00F25980",
+            "arguments": [
+              21231952
+            ]
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x48",
+            "value": "ARENA_HECKLE_SMALL_LOOP"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x4c",
+            "value": "ARENA_CHANT_LOOP"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x50",
+            "value": "ARENA_APPLAUSE_SMALL_LOOP"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x54",
+            "value": "ARENA_CHEER_CROWD"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x58",
+            "value": "ARENA_AWWW"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x5c",
+            "value": "ARENA_HECKLE_SMALL_LOOP"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x60",
+            "value": "ARENA_CHANT_LOOP"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x64",
+            "value": "ARENA_APPLAUSE_MEDIUM_LOOP"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x68",
+            "value": "ARENA_CHEER_CROWD"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x6c",
+            "value": "ARENA_AWWW"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x70",
+            "value": "ARENA_HECKLE_MEDIUM_LOOP"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x74",
+            "value": "ARENA_CHANT_LOOP"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x78",
+            "value": "ARENA_APPLAUSE_BIG_LOOP"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x7c",
+            "value": "ARENA_CHEER_CROWD"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x80",
+            "value": "ARENA_AWWW"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x84",
+            "value": "ARENA_HECKLE_BIG_LOOP"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x88",
+            "value": "ARENA_CHANT_LOOP"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x8c",
+            "value": "ARENA_APPLAUSE_BIG_LOOP"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x90",
+            "value": "ARENA_CHEER_CROWD"
+          },
+          {
+            "kind": "set-string",
+            "offset": "0x94",
+            "value": "ARENA_AWWW"
+          }
+        ]
       },
       "parentInitializerEvidence": null,
       "deploymentEligible": false,

@@ -98,9 +98,12 @@ def emit_conditional_call_clear(helper: dict[str, Any], pattern: dict[str, Any])
 
 
 def emit_script_initializer(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
+    callbacks = ["set_string", "write_u8", "write_u32", "write_nested_u8"]
+    if any(operation["kind"] == "invoke-native" for operation in pattern["operations"]):
+        callbacks.append("invoke_native")
     lines = [f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
              "-- Preserve initializer order and native offsets without inventing field names.",
-             "return function(set_string, write_u8, write_u32, write_nested_u8)"]
+             f"return function({', '.join(callbacks)})"]
     for operation in pattern["operations"]:
         if operation["kind"] == "set-string":
             value = operation["value"].replace("\\", "\\\\").replace('"', '\\"')
@@ -112,6 +115,9 @@ def emit_script_initializer(helper: dict[str, Any], pattern: dict[str, Any]) -> 
         elif operation["kind"] == "write-nested-u8":
             lines.append(f'    write_nested_u8({int(operation["pointerOffset"], 0)}, '
                          f'{int(operation["fieldOffset"], 0)}, {operation["value"]})')
+        elif operation["kind"] == "invoke-native":
+            arguments = ", ".join(str(value) for value in operation["arguments"])
+            lines.append(f'    invoke_native({int(operation["target"], 0)}, {arguments})')
         else:
             raise ValueError(f"unsupported initializer operation {operation['kind']}")
     lines.extend(("end", ""))

@@ -161,6 +161,24 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
                 and len(ordered) == 20):
             patterns.append({"kind": "native-script-initializer", "complete": True,
                              "operations": ordered})
+    if (current_name.endswith("CQ_ArenaScript::InitialiseVariables") and len(direct) == 21
+            and not indirect and direct[0].get("target") == "0x00F25980"
+            and all(call.get("currentName") == "CCharString::operator=" for call in direct[1:])):
+        operations = []
+        native = re.search(r"std_vector_Conversation_Assign2\(DAT_([0-9a-fA-F]{8}) \+ (0x[0-9a-fA-F]+)\);", text)
+        if native:
+            operations.append((native.start(), {"kind": "invoke-native", "target": direct[0]["target"],
+                                                "arguments": [int(native.group(1), 16)
+                                                              + int(native.group(2), 0)]}))
+        for match in re.finditer(
+                r'CCharString::operator=\(\(CCharString \*\)\(this \+ (0x[0-9a-fA-F]+|\d+)\),"([^"]*)"\);', text):
+            operations.append((match.start(), {"kind": "set-string",
+                                               "offset": f"0x{int(match.group(1), 0):x}",
+                                               "value": match.group(2)}))
+        ordered = [operation for _, operation in sorted(operations)]
+        if len(ordered) == 21 and ordered[0]["kind"] == "invoke-native":
+            patterns.append({"kind": "native-script-initializer", "complete": True,
+                             "operations": ordered})
     return patterns
 
 

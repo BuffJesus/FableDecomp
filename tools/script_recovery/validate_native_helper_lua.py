@@ -117,12 +117,17 @@ def validate(manifest_path: Path) -> dict[str, Any]:
                      lambda offset, value: trace.append(("write-u8", offset, value)),
                      lambda offset, value: trace.append(("write-u32", offset, value)),
                      lambda pointer, field, value:
-                     trace.append(("write-nested-u8", pointer, field, value)))
+                     trace.append(("write-nested-u8", pointer, field, value)),
+                     lambda target, *arguments:
+                     trace.append(("invoke-native", target, *arguments)))
             expected = []
             for operation in pattern["operations"]:
                 if operation["kind"] == "write-nested-u8":
                     expected.append((operation["kind"], int(operation["pointerOffset"], 0),
                                      int(operation["fieldOffset"], 0), operation["value"]))
+                elif operation["kind"] == "invoke-native":
+                    expected.append((operation["kind"], int(operation["target"], 0),
+                                     *operation["arguments"]))
                 else:
                     expected.append((operation["kind"], int(operation["offset"], 0),
                                      operation["value"]))

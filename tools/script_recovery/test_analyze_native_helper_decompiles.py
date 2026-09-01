@@ -60,6 +60,21 @@ class NativeHelperDecompileTests(unittest.TestCase):
                          {"kind": "set-string", "offset": "0x64", "value": "D"})
         self.assertEqual(pattern["operations"][-1]["kind"], "write-nested-u8")
 
+    def test_arena_initializer_preserves_exact_native_global_argument(self):
+        assignments = " ".join(
+            f'CCharString::operator=((CCharString *)(this + 0x{0x48 + index * 4:x}),"S{index}");'
+            for index in range(20))
+        body = ("void F(X *this) { std_vector_Conversation_Assign2(DAT_0143e90c + 0x1044); "
+                + assignments + " return; }")
+        direct = [{"target": "0x00F25980", "currentName": "std_vector_Conversation_Assign2"},
+                  *({"target": "0x0099EFE0", "currentName": "CCharString::operator="}
+                    for _ in range(20))]
+        pattern = semantic_patterns(body, direct, [],
+            "NScript::CQ_ArenaScript::InitialiseVariables")[0]
+        self.assertEqual(len(pattern["operations"]), 21)
+        self.assertEqual(pattern["operations"][0], {
+            "kind": "invoke-native", "target": "0x00F25980", "arguments": [0x0143F950]})
+
     def test_typed_native_reads_are_complete_semantic_patterns(self):
         field = semantic_patterns(
             "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])

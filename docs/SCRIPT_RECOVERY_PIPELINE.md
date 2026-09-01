@@ -198,6 +198,10 @@ scripts are deployable.
 initializer: four exact ceremonial-object strings, fourteen byte writes, one 32-bit write, and the
 nested `this+0x44/+0x11c` byte are emitted in native order through typed callbacks. Its 20-operation
 trace raises the standalone total to twelve helpers and 72 checks without guessing field names.
+`Q_Arena::InitialiseVariables` contributes a second mixed initializer: the exact call target
+`0x00F25980` receives resolved retail global address `0x0143F950`, followed by twenty ordered crowd
+sound string assignments from `this+0x48` through `this+0x94`. Its 21-operation trace brings the
+standalone total to thirteen helpers and 93 checks.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`
