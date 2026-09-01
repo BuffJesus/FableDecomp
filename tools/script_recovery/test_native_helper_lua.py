@@ -45,6 +45,25 @@ class NativeHelperLuaTests(unittest.TestCase):
             self.assertTrue(result["summary"]["complete"])
             self.assertEqual(result["summary"]["checks"], 2)
 
+    def test_generated_live_vector_removal_executes_both_flag_cases(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            helper_ir = root / "ir.json"
+            helper_ir.write_text(json.dumps({"helpers": [{
+                "targetAddress": "0x00CBED82", "currentName": "KillAllThingsInVector",
+                "decompileSha256": "C" * 64, "luaEmissionReady": True,
+                "semanticPatterns": [{"kind": "remove-live-things-in-vector",
+                                      "complete": True, "elementDwords": 3,
+                                      "isAliveVtableOffset": "0x12c",
+                                      "removeThingVtableOffset": "0x1b0",
+                                      "removeFlagParameter": "param_3",
+                                      "finalFlag": True}],
+            }]}))
+            generate(helper_ir, root / "generated")
+            result = validate(root / "generated" / "manifest.json")
+            self.assertTrue(result["summary"]["complete"])
+            self.assertEqual(result["summary"]["checks"], 2)
+
 
 if __name__ == "__main__":
     unittest.main()

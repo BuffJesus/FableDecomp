@@ -34,7 +34,6 @@ target_address	category	calls	scripts	roles	helper_names
 0x0099F830	engine-or-script-helper	2	2	Init,Main	GFIntToCharString_API
 0x00BFEA0E	runtime-support	2	2	Main	malloc
 0x00CB7AA0	script-runtime	2	2	Main	CScriptBase::KillSpawnedFunction
-0x00CBED82	engine-or-script-helper	2	2	Main	KillAllThingsInVector
 0x0044BFF0	runtime-support	25	1	Main	std__vector__push_back
 0x00BFEB28	engine-or-script-helper	4	1	Main	_CIfmod
 0x00D7AA30	engine-or-script-helper	3	1	Main	Game_InitializeHeroCharacter

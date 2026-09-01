@@ -53,19 +53,19 @@
     "abiBlockedInterfaceMethods": {
       "MsgOnLevelLoaded": "retail method writes std::list<CCharString>; ForgeFSE uses a newer MSVC STL ABI"
     },
-    "resolvedNativeHelperMethods": 15,
-    "resolvedNativeHelperCalls": 186,
+    "resolvedNativeHelperMethods": 16,
+    "resolvedNativeHelperCalls": 188,
     "scriptsWithResolvedNativeHelpers": 124,
-    "unresolvedNativeHelperMethods": 138,
-    "unresolvedNativeHelperCalls": 1391,
-    "nativeHelperMethodsWithTargetAddress": 106,
-    "nativeHelperCallsWithTargetAddress": 1333,
+    "unresolvedNativeHelperMethods": 137,
+    "unresolvedNativeHelperCalls": 1389,
+    "nativeHelperMethodsWithTargetAddress": 105,
+    "nativeHelperCallsWithTargetAddress": 1331,
     "nativeDirectCalls": 15300,
     "nativeDirectCallTargets": 233,
     "nativeHelperCategories": {
       "engine-or-script-helper": {
-        "methods": 65,
-        "calls": 257
+        "methods": 64,
+        "calls": 255
       },
       "lifecycle-cleanup": {
         "methods": 38,
@@ -1170,26 +1170,6 @@
       "consumers": [
         "Global_DebugCycleThroughSpeech",
         "V_FishingCompetition"
-      ]
-    },
-    {
-      "name": "KillAllThingsInVector",
-      "calls": 2,
-      "targetedCalls": 2,
-      "category": "engine-or-script-helper",
-      "scripts": 2,
-      "roles": [
-        "Main"
-      ],
-      "targetAddresses": [
-        "0x00CBED82"
-      ],
-      "kinds": [
-        "quest"
-      ],
-      "consumers": [
-        "Q_HobbeToothContest",
-        "Q_UndeadRising"
       ]
     },
     {
@@ -51171,6 +51151,245 @@
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_TraderConflictEvil.json"
     },
     {
+      "name": "Q_UndeadRising",
+      "kind": "quest",
+      "allocatorAddress": "0x00E0E760",
+      "vtableAddress": "0x012DFD3C",
+      "anchored": false,
+      "lifecycleFunctions": 5,
+      "calls": 142,
+      "distinctCalls": 17,
+      "mappedForgeApis": [],
+      "indirectCalls": 60,
+      "nativeDirectCalls": 214,
+      "entityBindings": [
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "UndeadRisingFirefly",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012dfed0",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 5673,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "UndeadRisingZombieAttacker",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012dfed0",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 6825,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "UndeadRisingZombieAttackerBoss",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012dfed0",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 8024,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "UndeadRisingBoss",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012dfed0",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 9209,
+          "complete": true,
+          "layoutComplete": true
+        },
+        {
+          "operation": "entity-binding-registration",
+          "entityName": "UndeadRisingCentre",
+          "allocationSize": 28,
+          "bindingVtable": "PTR_LAB_012dfed0",
+          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
+          "constructionMode": "explicit-layout",
+          "constructorScriptType": null,
+          "enabled": true,
+          "trailingValue": 1,
+          "offset": 10399,
+          "complete": true,
+          "layoutComplete": true
+        }
+      ],
+      "entityBindingCount": 5,
+      "completeEntityBindings": 5,
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
+          "vtableOffset": "0x43c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 564,
+          "name": "AddQuestRegion",
+          "targetAddress": "0x00891820",
+          "slotAddress": "0x01261348",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestRegion",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
+      "resolvedInterfaceMethods": [
+        "AddQuestRegion"
+      ],
+      "indirectVtableOffsets": [
+        "0x100",
+        "0x118",
+        "0x120",
+        "0x12c",
+        "0x18",
+        "0x190",
+        "0x1b0",
+        "0x1c",
+        "0x20",
+        "0x28",
+        "0x2c",
+        "0x4",
+        "0x43c",
+        "0x4a0",
+        "0x5c8",
+        "0x5e0",
+        "0x5ec",
+        "0x774"
+      ],
+      "opaqueCallees": [],
+      "unresolvedNativeHelpers": [
+        "C3DClothPrimitive::~C3DClothPrimitive",
+        "CCarriedReadableDef::CCarriedReadableDef",
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+        "NHeroInformationScreens::CBase::CBase",
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles",
+        "RunCutsceneMacro_Func",
+        "StdMap_Construct_API",
+        "StdMap_Destroy_API",
+        "free"
+      ],
+      "stage": "map-native-helpers",
+      "resolvedNativeHelpers": [
+        "CTCVillage::OnInitialActivate",
+        "KillAllThingsInVector"
+      ],
+      "resolvedNativeHelperCallCounts": {
+        "CTCVillage::OnInitialActivate": 1,
+        "KillAllThingsInVector": 1
+      },
+      "resolvedNativeHelperTargetAddresses": {
+        "CTCVillage::OnInitialActivate": [
+          "0x00CB8930"
+        ],
+        "KillAllThingsInVector": [
+          "0x00CBED82"
+        ]
+      },
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 6,
+        "CCarriedReadableDef::CCarriedReadableDef": 9,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 9,
+        "NHeroInformationScreens::CBase::CBase": 7,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "RunCutsceneMacro_Func": 3,
+        "StdMap_Construct_API": 3,
+        "StdMap_Destroy_API": 3,
+        "free": 1
+      },
+      "unresolvedNativeHelperRoles": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "Main"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "Main"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "Main"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "Main"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "destructor"
+        ],
+        "RunCutsceneMacro_Func": [
+          "Main"
+        ],
+        "StdMap_Construct_API": [
+          "Main"
+        ],
+        "StdMap_Destroy_API": [
+          "Main"
+        ],
+        "free": [
+          "Main"
+        ]
+      },
+      "unresolvedNativeHelperTargetAddresses": {
+        "C3DClothPrimitive::~C3DClothPrimitive": [
+          "0x004AA840"
+        ],
+        "CCarriedReadableDef::CCarriedReadableDef": [
+          "0x006E7B60",
+          "0x007E72A0"
+        ],
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
+          "0x006E7B80",
+          "0x007E74D0"
+        ],
+        "NHeroInformationScreens::CBase::CBase": [
+          "0x0099A2E0"
+        ],
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
+          "0x00CBD510"
+        ],
+        "RunCutsceneMacro_Func": [
+          "0x00CBFB7D"
+        ],
+        "StdMap_Construct_API": [
+          "0x00CDBF70"
+        ],
+        "StdMap_Destroy_API": [
+          "0x00CDBFB0"
+        ],
+        "free": [
+          "0x00BFEA14"
+        ]
+      },
+      "unresolvedNativeHelperTargetedCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 6,
+        "CCarriedReadableDef::CCarriedReadableDef": 9,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 9,
+        "NHeroInformationScreens::CBase::CBase": 7,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "RunCutsceneMacro_Func": 3,
+        "StdMap_Construct_API": 3,
+        "StdMap_Destroy_API": 3,
+        "free": 1
+      },
+      "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_UndeadRising.json"
+    },
+    {
       "name": "Q_WhiteBalverineKnotholeGlade",
       "kind": "quest",
       "allocatorAddress": "0x00E183B0",
@@ -53444,249 +53663,6 @@
         "StdMap_Destroy_API": 1
       },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_OakValeBanditRaid.json"
-    },
-    {
-      "name": "Q_UndeadRising",
-      "kind": "quest",
-      "allocatorAddress": "0x00E0E760",
-      "vtableAddress": "0x012DFD3C",
-      "anchored": false,
-      "lifecycleFunctions": 5,
-      "calls": 142,
-      "distinctCalls": 17,
-      "mappedForgeApis": [],
-      "indirectCalls": 60,
-      "nativeDirectCalls": 214,
-      "entityBindings": [
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "UndeadRisingFirefly",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012dfed0",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 1,
-          "offset": 5673,
-          "complete": true,
-          "layoutComplete": true
-        },
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "UndeadRisingZombieAttacker",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012dfed0",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 1,
-          "offset": 6825,
-          "complete": true,
-          "layoutComplete": true
-        },
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "UndeadRisingZombieAttackerBoss",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012dfed0",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 1,
-          "offset": 8024,
-          "complete": true,
-          "layoutComplete": true
-        },
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "UndeadRisingBoss",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012dfed0",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 1,
-          "offset": 9209,
-          "complete": true,
-          "layoutComplete": true
-        },
-        {
-          "operation": "entity-binding-registration",
-          "entityName": "UndeadRisingCentre",
-          "allocationSize": 28,
-          "bindingVtable": "PTR_LAB_012dfed0",
-          "allocatorExpression": "CTriangleStripifier::CTriangleList::CTriangleList",
-          "constructionMode": "explicit-layout",
-          "constructorScriptType": null,
-          "enabled": true,
-          "trailingValue": 1,
-          "offset": 10399,
-          "complete": true,
-          "layoutComplete": true
-        }
-      ],
-      "entityBindingCount": 5,
-      "completeEntityBindings": 5,
-      "resolvedInterfaceCalls": [
-        {
-          "operation": "indirect-call",
-          "targetExpression": "**(int **)(this + 0x40) + 0x43c",
-          "vtableOffset": "0x43c",
-          "interfaceProvenance": "script-instance-gamescriptinterface-field",
-          "offset": 564,
-          "name": "AddQuestRegion",
-          "targetAddress": "0x00891820",
-          "slotAddress": "0x01261348",
-          "forgeManifestMatch": true,
-          "forgeRuntimeName": "AddQuestRegion",
-          "forgeRuntimeMatch": true,
-          "forgeHostManaged": false,
-          "forgeRuntimeAbiBlocker": null
-        }
-      ],
-      "resolvedInterfaceMethods": [
-        "AddQuestRegion"
-      ],
-      "indirectVtableOffsets": [
-        "0x100",
-        "0x118",
-        "0x120",
-        "0x12c",
-        "0x18",
-        "0x190",
-        "0x1b0",
-        "0x1c",
-        "0x20",
-        "0x28",
-        "0x2c",
-        "0x4",
-        "0x43c",
-        "0x4a0",
-        "0x5c8",
-        "0x5e0",
-        "0x5ec",
-        "0x774"
-      ],
-      "opaqueCallees": [],
-      "unresolvedNativeHelpers": [
-        "C3DClothPrimitive::~C3DClothPrimitive",
-        "CCarriedReadableDef::CCarriedReadableDef",
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
-        "KillAllThingsInVector",
-        "NHeroInformationScreens::CBase::CBase",
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles",
-        "RunCutsceneMacro_Func",
-        "StdMap_Construct_API",
-        "StdMap_Destroy_API",
-        "free"
-      ],
-      "stage": "map-native-helpers",
-      "resolvedNativeHelpers": [
-        "CTCVillage::OnInitialActivate"
-      ],
-      "resolvedNativeHelperCallCounts": {
-        "CTCVillage::OnInitialActivate": 1
-      },
-      "resolvedNativeHelperTargetAddresses": {
-        "CTCVillage::OnInitialActivate": [
-          "0x00CB8930"
-        ]
-      },
-      "unresolvedNativeHelperCallCounts": {
-        "C3DClothPrimitive::~C3DClothPrimitive": 6,
-        "CCarriedReadableDef::CCarriedReadableDef": 9,
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 9,
-        "KillAllThingsInVector": 1,
-        "NHeroInformationScreens::CBase::CBase": 7,
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
-        "RunCutsceneMacro_Func": 3,
-        "StdMap_Construct_API": 3,
-        "StdMap_Destroy_API": 3,
-        "free": 1
-      },
-      "unresolvedNativeHelperRoles": {
-        "C3DClothPrimitive::~C3DClothPrimitive": [
-          "Main"
-        ],
-        "CCarriedReadableDef::CCarriedReadableDef": [
-          "Main"
-        ],
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
-          "Main"
-        ],
-        "KillAllThingsInVector": [
-          "Main"
-        ],
-        "NHeroInformationScreens::CBase::CBase": [
-          "Main"
-        ],
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
-          "destructor"
-        ],
-        "RunCutsceneMacro_Func": [
-          "Main"
-        ],
-        "StdMap_Construct_API": [
-          "Main"
-        ],
-        "StdMap_Destroy_API": [
-          "Main"
-        ],
-        "free": [
-          "Main"
-        ]
-      },
-      "unresolvedNativeHelperTargetAddresses": {
-        "C3DClothPrimitive::~C3DClothPrimitive": [
-          "0x004AA840"
-        ],
-        "CCarriedReadableDef::CCarriedReadableDef": [
-          "0x006E7B60",
-          "0x007E72A0"
-        ],
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": [
-          "0x006E7B80",
-          "0x007E74D0"
-        ],
-        "KillAllThingsInVector": [
-          "0x00CBED82"
-        ],
-        "NHeroInformationScreens::CBase::CBase": [
-          "0x0099A2E0"
-        ],
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
-          "0x00CBD510"
-        ],
-        "RunCutsceneMacro_Func": [
-          "0x00CBFB7D"
-        ],
-        "StdMap_Construct_API": [
-          "0x00CDBF70"
-        ],
-        "StdMap_Destroy_API": [
-          "0x00CDBFB0"
-        ],
-        "free": [
-          "0x00BFEA14"
-        ]
-      },
-      "unresolvedNativeHelperTargetedCallCounts": {
-        "C3DClothPrimitive::~C3DClothPrimitive": 6,
-        "CCarriedReadableDef::CCarriedReadableDef": 9,
-        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 9,
-        "KillAllThingsInVector": 1,
-        "NHeroInformationScreens::CBase::CBase": 7,
-        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
-        "RunCutsceneMacro_Func": 3,
-        "StdMap_Construct_API": 3,
-        "StdMap_Destroy_API": 3,
-        "free": 1
-      },
-      "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_UndeadRising.json"
     },
     {
       "name": "Q_WhiteBalverineWW",
@@ -57411,7 +57387,6 @@
         "CMemoryDataOutputStream::Clear",
         "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
         "CTimer::~CTimer",
-        "KillAllThingsInVector",
         "NParticleEngine::CParticleEmitter::DeleteAllParticles",
         "NScript::CQ_HobbeToothContestScript::DisplayTimer",
         "RunCutsceneMacro_Func",
@@ -57424,11 +57399,13 @@
       "stage": "map-native-helpers",
       "resolvedNativeHelpers": [
         "C3DMeshInfo::HasPhysicsMesh",
-        "CTCVillage::OnInitialActivate"
+        "CTCVillage::OnInitialActivate",
+        "KillAllThingsInVector"
       ],
       "resolvedNativeHelperCallCounts": {
         "C3DMeshInfo::HasPhysicsMesh": 3,
-        "CTCVillage::OnInitialActivate": 1
+        "CTCVillage::OnInitialActivate": 1,
+        "KillAllThingsInVector": 1
       },
       "resolvedNativeHelperTargetAddresses": {
         "C3DMeshInfo::HasPhysicsMesh": [
@@ -57436,6 +57413,9 @@
         ],
         "CTCVillage::OnInitialActivate": [
           "0x00CB8930"
+        ],
+        "KillAllThingsInVector": [
+          "0x00CBED82"
         ]
       },
       "unresolvedNativeHelperCallCounts": {
@@ -57445,7 +57425,6 @@
         "CMemoryDataOutputStream::Clear": 14,
         "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 9,
         "CTimer::~CTimer": 1,
-        "KillAllThingsInVector": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "NScript::CQ_HobbeToothContestScript::DisplayTimer": 1,
         "RunCutsceneMacro_Func": 4,
@@ -57473,9 +57452,6 @@
         ],
         "CTimer::~CTimer": [
           "destructor"
-        ],
-        "KillAllThingsInVector": [
-          "Main"
         ],
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
           "destructor"
@@ -57523,9 +57499,6 @@
         "CTimer::~CTimer": [
           "0x00CD4470"
         ],
-        "KillAllThingsInVector": [
-          "0x00CBED82"
-        ],
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": [
           "0x00CBD510"
         ],
@@ -57558,7 +57531,6 @@
         "CMemoryDataOutputStream::Clear": 14,
         "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 9,
         "CTimer::~CTimer": 1,
-        "KillAllThingsInVector": 1,
         "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
         "NScript::CQ_HobbeToothContestScript::DisplayTimer": 1,
         "RunCutsceneMacro_Func": 4,

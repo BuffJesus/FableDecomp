@@ -218,6 +218,18 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
             "terminationTarget": "0x00CB7940",
             "terminationCallSites": [call["site"] for call in direct],
         })
+    if (current_name == "KillAllThingsInVector" and not direct and len(indirect) == 2
+            and [call.get("vtableOffset") for call in indirect] == ["0x12c", "0x1b0"]
+            and all(value in text for value in (
+                "piVar2 = piVar2 + 3", "cVar1 != '\\0'", "piVar2,_param_3,1"))):
+        patterns.append({
+            "kind": "remove-live-things-in-vector", "complete": True,
+            "elementDwords": 3,
+            "isAliveVtableOffset": "0x12c",
+            "removeThingVtableOffset": "0x1b0",
+            "removeFlagParameter": "param_3",
+            "finalFlag": True,
+        })
     return patterns
 
 
@@ -344,6 +356,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
                 "native-script-initializer",
                 "archery-quest-info-setup",
                 "conditional-strided-copy-loop",
+                "remove-live-things-in-vector",
             } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)

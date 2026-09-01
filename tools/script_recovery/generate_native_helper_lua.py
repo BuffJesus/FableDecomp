@@ -168,6 +168,22 @@ def emit_conditional_strided_copy(helper: dict[str, Any], pattern: dict[str, Any
     ])
 
 
+def emit_remove_live_things(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
+    return "\n".join([
+        f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+        "-- Iterate the logical vector through callbacks; never expose native storage to Lua.",
+        "return function(things, is_alive, remove_thing, remove_flag)",
+        "    for index = 1, #things do",
+        "        local thing = things[index]",
+        "        if is_alive(thing) then",
+        f"            remove_thing(thing, remove_flag, "
+        f"{'true' if pattern['finalFlag'] else 'false'})",
+        "        end",
+        "    end",
+        "end", "",
+    ])
+
+
 def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
     source_bytes = helper_ir_path.read_bytes()
     document = json.loads(source_bytes.decode("utf-8-sig"))
@@ -182,7 +198,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
                                        "native-global-return", "quest-interface-sequence",
                                        "conditional-u8-call-clear"}
                                        | {"native-script-initializer", "archery-quest-info-setup",
-                                          "conditional-strided-copy-loop"}
+                                          "conditional-strided-copy-loop",
+                                          "remove-live-things-in-vector"}
                     and row["complete"]]
         if len(patterns) != 1:
             raise ValueError(f"expected one complete switch for {helper['targetAddress']}")
@@ -201,6 +218,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
             text = emit_archery_quest_info_setup(helper, pattern)
         elif pattern["kind"] == "conditional-strided-copy-loop":
             text = emit_conditional_strided_copy(helper, pattern)
+        elif pattern["kind"] == "remove-live-things-in-vector":
+            text = emit_remove_live_things(helper, pattern)
         else:
             text = emit_return(helper, pattern)
         filename = helper["targetAddress"].removeprefix("0x") + ".lua"

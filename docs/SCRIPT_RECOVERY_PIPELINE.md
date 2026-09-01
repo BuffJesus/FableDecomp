@@ -217,8 +217,12 @@ across 124 scripts while leaving 144 labels / 1,418 calls explicit. `V_ArcheryCo
 five recovered helpers and only `CCharString__NotEqual`, its destructor, and `rand` left in its
 helper backlog. `V_AssassinAttacks::InitialiseRegionSpecificInfo` adds a fifth fixed-control-flow
 shape: both branches of its five-element strided copy/clear loop and early termination at the first
-or third iteration execute offline. Totals are now fifteen helpers / 109 checks, resolving 186 calls
-across 124 scripts and leaving 138 helper labels / 1,391 calls.
+or third iteration execute offline. `KillAllThingsInVector @ 0x00CBED82` is also lifted through a
+logical-vector boundary: Lua iterates opaque thing tokens, an `is_alive` callback preserves the
+element virtual call, and `remove_thing` preserves interface slot `0x1B0` plus both retail boolean
+arguments without exposing the native three-dword element layout. Both removal-flag cases and mixed
+alive/dead vectors execute offline. Totals are now sixteen helpers / 111 checks, resolving 188 calls
+across 124 scripts and leaving 137 helper labels / 1,389 calls.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`

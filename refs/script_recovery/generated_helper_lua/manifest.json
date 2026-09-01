@@ -1,9 +1,9 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "BCD37E8584C588F2AF11FF8E4C0DE7902A41231114BE0E998CCB8CFAC4532540",
+  "sourceSha256": "BE38E36E0A1C4220C1F31BB23C5590585218933E87049865D4FCB0629FFA80F2",
   "summary": {
-    "emitted": 15,
+    "emitted": 16,
     "deploymentEligible": 0
   },
   "entries": [
@@ -38,6 +38,25 @@
         "resultTransform": "not-zero",
         "complete": true,
         "luaFieldNameResolved": false
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x00CBED82",
+      "currentName": "KillAllThingsInVector",
+      "sourceDecompileSha256": "08cdc86ae77a8615a8375f700ab0205d16d3f2104b06e54ae7e785f4e8e30397",
+      "luaFile": "00CBED82.lua",
+      "luaSha256": "34FC7A7366085B322CCDDDD9497E7C696884A71D8EEF68E5697C47BDAAD9E152",
+      "semanticPattern": {
+        "kind": "remove-live-things-in-vector",
+        "complete": true,
+        "elementDwords": 3,
+        "isAliveVtableOffset": "0x12c",
+        "removeThingVtableOffset": "0x1b0",
+        "removeFlagParameter": "param_3",
+        "finalFlag": true
       },
       "parentInitializerEvidence": null,
       "deploymentEligible": false,

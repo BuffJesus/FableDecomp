@@ -8,8 +8,8 @@
     "consumerCalls": 1437,
     "directDependencyCalls": 4967,
     "directDependencyTargets": 206,
-    "semanticPatterns": 15,
-    "luaEmissionReady": 15,
+    "semanticPatterns": 16,
+    "luaEmissionReady": 16,
     "resolvedParentInitializers": 2,
     "resolvedInterfaceCalls": 273,
     "resolvedInterfaceMethods": 62,
@@ -26381,12 +26381,18 @@
         {
           "operation": "call",
           "callee": "CCharString__AppendCString",
-          "offset": 1063
+          "offset": 1063,
+          "directCallSite": "0x00CBE973",
+          "targetAddress": "0x0099F600",
+          "targetCurrentName": "CCharString::AppendCString"
         },
         {
           "operation": "call",
           "callee": "CCharString__AppendCString",
-          "offset": 1103
+          "offset": 1103,
+          "directCallSite": "0x00CBE982",
+          "targetAddress": "0x0099F600",
+          "targetCurrentName": "CCharString::AppendCString"
         },
         {
           "operation": "call",
@@ -27079,22 +27085,34 @@
         {
           "operation": "call",
           "callee": "CCharString__AppendData",
-          "offset": 1739
+          "offset": 1739,
+          "directCallSite": "0x00CBE8AA",
+          "targetAddress": "0x0099F570",
+          "targetCurrentName": "CCharString::AppendData"
         },
         {
           "operation": "call",
           "callee": "CCharString__AppendCString",
-          "offset": 1774
+          "offset": 1774,
+          "directCallSite": "0x00CBE8B4",
+          "targetAddress": "0x0099F600",
+          "targetCurrentName": "CCharString::AppendCString"
         },
         {
           "operation": "call",
           "callee": "CCharString__AppendCString",
-          "offset": 2667
+          "offset": 2667,
+          "directCallSite": "0x00CBE8DC",
+          "targetAddress": "0x0099F600",
+          "targetCurrentName": "CCharString::AppendCString"
         },
         {
           "operation": "call",
           "callee": "CCharString__AppendCString",
-          "offset": 2713
+          "offset": 2713,
+          "directCallSite": "0x00CBE8EC",
+          "targetAddress": "0x0099F600",
+          "targetCurrentName": "CCharString::AppendCString"
         },
         {
           "operation": "call",
@@ -28022,7 +28040,10 @@
         {
           "operation": "call",
           "callee": "CCharString__Format_vsnprintf",
-          "offset": 334
+          "offset": 334,
+          "directCallSite": "0x0099F854",
+          "targetAddress": "0x0099F1F0",
+          "targetCurrentName": "CCharString::Format_vsnprintf"
         },
         {
           "operation": "call",
@@ -28251,9 +28272,19 @@
         "for": 1,
         "if": 1
       },
-      "semanticPatterns": [],
+      "semanticPatterns": [
+        {
+          "kind": "remove-live-things-in-vector",
+          "complete": true,
+          "elementDwords": 3,
+          "isAliveVtableOffset": "0x12c",
+          "removeThingVtableOffset": "0x1b0",
+          "removeFlagParameter": "param_3",
+          "finalFlag": true
+        }
+      ],
       "parentInitializerEvidence": null,
-      "luaEmissionReady": false
+      "luaEmissionReady": true
     },
     {
       "targetAddress": "0x00BFEB28",
@@ -29373,7 +29404,10 @@
         {
           "operation": "call",
           "callee": "std__vector__pop_back",
-          "offset": 4077
+          "offset": 4077,
+          "directCallSite": "0x00DF9CC6",
+          "targetAddress": "0x00CD3152",
+          "targetCurrentName": "std::vector::pop_back"
         },
         {
           "operation": "call",
@@ -29386,7 +29420,10 @@
         {
           "operation": "call",
           "callee": "std__vector__pop_back",
-          "offset": 4986
+          "offset": 4986,
+          "directCallSite": "0x00DF9D67",
+          "targetAddress": "0x00CD3152",
+          "targetCurrentName": "std::vector::pop_back"
         },
         {
           "operation": "call",
@@ -34108,7 +34145,10 @@
         {
           "operation": "call",
           "callee": "CCharString__AppendCString",
-          "offset": 1013
+          "offset": 1013,
+          "directCallSite": "0x00CBEA01",
+          "targetAddress": "0x0099F600",
+          "targetCurrentName": "CCharString::AppendCString"
         },
         {
           "operation": "call",
@@ -47079,7 +47119,10 @@
         {
           "operation": "call",
           "callee": "std__vector__pop_back",
-          "offset": 6010
+          "offset": 6010,
+          "directCallSite": "0x00DFC3C8",
+          "targetAddress": "0x00CD3152",
+          "targetCurrentName": "std::vector::pop_back"
         },
         {
           "operation": "call",
@@ -47100,7 +47143,10 @@
         {
           "operation": "call",
           "callee": "std__vector__pop_back",
-          "offset": 6975
+          "offset": 6975,
+          "directCallSite": "0x00DFC5EA",
+          "targetAddress": "0x00CD3152",
+          "targetCurrentName": "std::vector::pop_back"
         },
         {
           "operation": "call",

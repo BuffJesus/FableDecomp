@@ -99,6 +99,17 @@ class NativeHelperDecompileTests(unittest.TestCase):
         self.assertEqual((pattern["elements"], pattern["destinationStride"],
                           pattern["sourceStride"]), (5, 0x10, 4))
 
+    def test_live_vector_removal_preserves_both_virtual_operations(self):
+        body = ("for (piVar2 = begin; piVar2 != end; piVar2 = piVar2 + 3) { "
+                "cVar1 = (**fn)(*piVar2 + 300)(); if (cVar1 != '\\0') { "
+                "(**remove)(piVar2,_param_3,1); } }")
+        indirect = [{"vtableOffset": "0x12c"}, {"vtableOffset": "0x1b0"}]
+        pattern = semantic_patterns(body, [], indirect, "KillAllThingsInVector")[0]
+        self.assertEqual(pattern["kind"], "remove-live-things-in-vector")
+        self.assertEqual(pattern["elementDwords"], 3)
+        self.assertEqual(pattern["removeThingVtableOffset"], "0x1b0")
+        self.assertTrue(pattern["finalFlag"])
+
     def test_typed_native_reads_are_complete_semantic_patterns(self):
         field = semantic_patterns(
             "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])

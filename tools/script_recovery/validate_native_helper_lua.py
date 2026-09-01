@@ -23,7 +23,8 @@ def validate(manifest_path: Path) -> dict[str, Any]:
         errors = []
         if actual_hash != entry["luaSha256"]:
             errors.append("sha256 mismatch")
-        function = LuaRuntime(unpack_returned_tuples=True).execute(payload.decode("utf-8"))
+        runtime = LuaRuntime(unpack_returned_tuples=True)
+        function = runtime.execute(payload.decode("utf-8"))
         pattern = entry["semanticPattern"]
         checks = 0
         if pattern["kind"] == "constant-return-switch":
@@ -218,6 +219,23 @@ def validate(manifest_path: Path) -> dict[str, Any]:
                 if trace != expected:
                     errors.append(f"condition {condition}/terminate {terminate_at}: "
                                   f"expected {expected}, got {trace}")
+        elif pattern["kind"] == "remove-live-things-in-vector":
+            thing_values = [101, 202, 303, 404]
+            things = runtime.table_from(thing_values)
+            alive = {101, 303, 404}
+            for remove_flag in (False, True):
+                trace = []
+                function(things, lambda thing: trace.append(("alive", thing)) or thing in alive,
+                         lambda thing, flag, final:
+                         trace.append(("remove", thing, flag, final)), remove_flag)
+                expected = []
+                for thing in thing_values:
+                    expected.append(("alive", thing))
+                    if thing in alive:
+                        expected.append(("remove", thing, remove_flag, pattern["finalFlag"]))
+                checks += 1
+                if trace != expected:
+                    errors.append(f"remove flag {remove_flag}: expected {expected}, got {trace}")
         else:
             errors.append(f"unsupported semantic pattern {pattern['kind']}")
         rows.append({"targetAddress": entry["targetAddress"], "passed": not errors,
