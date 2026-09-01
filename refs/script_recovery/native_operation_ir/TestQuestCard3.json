@@ -106,6 +106,7 @@
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 0x1bc",
           "vtableOffset": "0x1bc",
+          "interfaceProvenance": null,
           "offset": 398
         }
       ],

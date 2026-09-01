@@ -271,30 +271,35 @@
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 0x100",
           "vtableOffset": "0x100",
+          "interfaceProvenance": null,
           "offset": 5318
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 0x450",
           "vtableOffset": "0x450",
+          "interfaceProvenance": null,
           "offset": 10227
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 0xa3c",
           "vtableOffset": "0xa3c",
+          "interfaceProvenance": null,
           "offset": 10869
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar2 + 0x464",
           "vtableOffset": "0x464",
+          "interfaceProvenance": null,
           "offset": 10942
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
           "vtableOffset": "0x1c",
+          "interfaceProvenance": null,
           "offset": 11378
         }
       ],
@@ -400,12 +405,14 @@
           "operation": "indirect-call",
           "targetExpression": "*DAT_0143e8f8 + 0x164",
           "vtableOffset": "0x164",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
           "offset": 652
         },
         {
           "operation": "indirect-call",
           "targetExpression": "*DAT_0143e8f8 + 0x164",
           "vtableOffset": "0x164",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
           "offset": 727
         }
       ],

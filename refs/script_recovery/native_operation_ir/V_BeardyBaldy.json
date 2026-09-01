@@ -371,126 +371,147 @@
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x100",
           "vtableOffset": "0x100",
+          "interfaceProvenance": null,
           "offset": 4278
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x58",
           "vtableOffset": "0x58",
+          "interfaceProvenance": null,
           "offset": 4530
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x1c",
           "vtableOffset": "0x1c",
+          "interfaceProvenance": null,
           "offset": 4630
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x58",
           "vtableOffset": "0x58",
+          "interfaceProvenance": null,
           "offset": 4850
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x1c",
           "vtableOffset": "0x1c",
+          "interfaceProvenance": null,
           "offset": 18931
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x30",
           "vtableOffset": "0x30",
+          "interfaceProvenance": null,
           "offset": 20084
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x120",
           "vtableOffset": "0x120",
+          "interfaceProvenance": null,
           "offset": 20944
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar8 + 0x118",
           "vtableOffset": "0x118",
+          "interfaceProvenance": null,
           "offset": 21466
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar8 + 0x134",
           "vtableOffset": "0x134",
+          "interfaceProvenance": null,
           "offset": 21515
         },
         {
           "operation": "indirect-call",
           "targetExpression": "*piStack_14 + 300",
           "vtableOffset": null,
+          "interfaceProvenance": null,
           "offset": 21966
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x580",
           "vtableOffset": "0x580",
+          "interfaceProvenance": null,
           "offset": 22290
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x5a4",
           "vtableOffset": "0x5a4",
+          "interfaceProvenance": null,
           "offset": 22360
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar8 + 0xa3c",
           "vtableOffset": "0xa3c",
+          "interfaceProvenance": null,
           "offset": 22569
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar8 + 0x480",
           "vtableOffset": "0x480",
+          "interfaceProvenance": null,
           "offset": 22625
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar8 + 0xa3c",
           "vtableOffset": "0xa3c",
+          "interfaceProvenance": null,
           "offset": 23163
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar8 + 0x498",
           "vtableOffset": "0x498",
+          "interfaceProvenance": null,
           "offset": 23220
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar8 + 0xa3c",
           "vtableOffset": "0xa3c",
+          "interfaceProvenance": null,
           "offset": 23679
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar8 + 0x464",
           "vtableOffset": "0x464",
+          "interfaceProvenance": null,
           "offset": 23738
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x580",
           "vtableOffset": "0x580",
+          "interfaceProvenance": null,
           "offset": 24276
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x5a4",
           "vtableOffset": "0x5a4",
+          "interfaceProvenance": null,
           "offset": 24347
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x1c",
           "vtableOffset": "0x1c",
+          "interfaceProvenance": null,
           "offset": 24679
         }
       ],

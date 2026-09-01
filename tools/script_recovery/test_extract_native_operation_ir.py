@@ -10,6 +10,14 @@ class NativeOperationIRTests(unittest.TestCase):
         rows = indirect_calls("(**(code **)(*DAT_0143e8f8 + 0x168))(thing);")
         self.assertEqual(rows[0]["vtableOffset"], "0x168")
         self.assertEqual(rows[0]["targetExpression"], "*DAT_0143e8f8 + 0x168")
+        self.assertEqual(rows[0]["interfaceProvenance"], "direct-gamescriptinterface-singleton")
+
+    def test_indirect_call_tracks_local_singleton_copy(self):
+        rows = indirect_calls(
+            "iVar1 = *DAT_0143e8f8;\n(**(code **)(iVar1 + 0x164))(timer);"
+        )
+        self.assertEqual(rows[0]["interfaceProvenance"],
+                         "local-copy-of-gamescriptinterface-singleton")
 
     def test_maze_research_state_and_persistence(self):
         result = extract(Path("refs/script_recovery/native_clusters/V_MazeResearch.json"))

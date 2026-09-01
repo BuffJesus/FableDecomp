@@ -46,8 +46,20 @@ def indirect_calls(text: str) -> list[dict[str, Any]]:
     for match in INDIRECT_CALL_RE.finditer(text):
         expression = " ".join(match.group(1).split())
         offset = VTABLE_OFFSET_RE.search(expression)
+        provenance = None
+        if "DAT_0143e8f8" in expression:
+            provenance = "direct-gamescriptinterface-singleton"
+        else:
+            base = re.match(r"([A-Za-z_]\w*)\s*\+", expression)
+            if base:
+                assignments = list(re.finditer(
+                    rf"\b{re.escape(base.group(1))}\s*=\s*([^;]+);", text[:match.start()]
+                ))
+                if assignments and assignments[-1].group(1).strip() == "*DAT_0143e8f8":
+                    provenance = "local-copy-of-gamescriptinterface-singleton"
         result.append({"operation": "indirect-call", "targetExpression": expression,
                        "vtableOffset": offset.group(1).lower() if offset else None,
+                       "interfaceProvenance": provenance,
                        "offset": match.start()})
     return result
 

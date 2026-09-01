@@ -286,54 +286,63 @@
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 0x100",
           "vtableOffset": "0x100",
+          "interfaceProvenance": null,
           "offset": 8384
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 0x120",
           "vtableOffset": "0x120",
+          "interfaceProvenance": null,
           "offset": 8651
         },
         {
           "operation": "indirect-call",
           "targetExpression": "*piStack_10 + 0x28",
           "vtableOffset": "0x28",
+          "interfaceProvenance": null,
           "offset": 9217
         },
         {
           "operation": "indirect-call",
           "targetExpression": "*piStack_10 + 0x18",
           "vtableOffset": "0x18",
+          "interfaceProvenance": null,
           "offset": 9431
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 0x118",
           "vtableOffset": "0x118",
+          "interfaceProvenance": null,
           "offset": 9563
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0x764",
           "vtableOffset": "0x764",
+          "interfaceProvenance": null,
           "offset": 9635
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 0x30",
           "vtableOffset": "0x30",
+          "interfaceProvenance": null,
           "offset": 9850
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 0x1c",
           "vtableOffset": "0x1c",
+          "interfaceProvenance": null,
           "offset": 12243
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 0x30",
           "vtableOffset": "0x30",
+          "interfaceProvenance": null,
           "offset": 12478
         }
       ],
