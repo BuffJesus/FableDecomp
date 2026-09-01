@@ -169,9 +169,39 @@
     {
       "evidence": [
         {
+          "allocator": "0x00EED220",
+          "anchors": [],
+          "script": "alextest"
+        },
+        {
+          "allocator": "0x00EFAF30",
+          "anchors": [],
+          "script": "bandit_level_cutscene"
+        },
+        {
+          "allocator": "0x00EFF000",
+          "anchors": [],
+          "script": "BenTestScripts"
+        },
+        {
           "allocator": "0x00EE8BE0",
           "anchors": [],
           "script": "CS_OakValeRevisited"
+        },
+        {
+          "allocator": "0x00F01760",
+          "anchors": [],
+          "script": "CS_PlayCutscene"
+        },
+        {
+          "allocator": "0x00EFB0B0",
+          "anchors": [],
+          "script": "DanyalTestScripts"
+        },
+        {
+          "allocator": "0x00EEE940",
+          "anchors": [],
+          "script": "Empty"
         },
         {
           "allocator": "0x00EEAE70",
@@ -209,6 +239,16 @@
           "script": "Expression_Wait"
         },
         {
+          "allocator": "0x00CEF950",
+          "anchors": [],
+          "script": "Gameflow"
+        },
+        {
+          "allocator": "0x00CF0640",
+          "anchors": [],
+          "script": "GameflowAssistance"
+        },
+        {
           "allocator": "0x00EE9450",
           "anchors": [],
           "script": "Global_DebugCycleThroughSpeech"
@@ -224,6 +264,11 @@
           "script": "Global_OpenChest"
         },
         {
+          "allocator": "0x00CDDB60",
+          "anchors": [],
+          "script": "Global_TeleportToHeroGuild"
+        },
+        {
           "allocator": "0x00EED060",
           "anchors": [],
           "script": "Global_ToggleTimeDisplay"
@@ -234,9 +279,79 @@
           "script": "Global_WatchForHeroDeath"
         },
         {
+          "allocator": "0x00EFC130",
+          "anchors": [],
+          "script": "GuildSealTriggerTest"
+        },
+        {
+          "allocator": "0x00EFA3C0",
+          "anchors": [],
+          "script": "guy_script"
+        },
+        {
+          "allocator": "0x00CE6C40",
+          "anchors": [],
+          "script": "HeroBoasts"
+        },
+        {
+          "allocator": "0x00EFC460",
+          "anchors": [],
+          "script": "HeroTurningDebugger"
+        },
+        {
+          "allocator": "0x00EFBB70",
+          "anchors": [],
+          "script": "HitSwitchTest"
+        },
+        {
+          "allocator": "0x00EF9EE0",
+          "anchors": [],
+          "script": "joss_test_scripts"
+        },
+        {
           "allocator": "0x00CF91C0",
           "anchors": [],
           "script": "LadyGreyWifeManager"
+        },
+        {
+          "allocator": "0x00EFE380",
+          "anchors": [],
+          "script": "MarkTestScripts"
+        },
+        {
+          "allocator": "0x00F01330",
+          "anchors": [],
+          "script": "OracleMinigameTest"
+        },
+        {
+          "allocator": "0x00EFC8D0",
+          "anchors": [],
+          "script": "PersonalScript_Aardvark"
+        },
+        {
+          "allocator": "0x00EEE6D0",
+          "anchors": [],
+          "script": "PersonalScript_alextest"
+        },
+        {
+          "allocator": "0x00EF9130",
+          "anchors": [],
+          "script": "PersonalScript_Empty"
+        },
+        {
+          "allocator": "0x00CE19A0",
+          "anchors": [],
+          "script": "PersonalScript_GlobalThings"
+        },
+        {
+          "allocator": "0x00CDE2F0",
+          "anchors": [],
+          "script": "PersonalScriptMain"
+        },
+        {
+          "allocator": "0x00EFB610",
+          "anchors": [],
+          "script": "ProximityPodiumTest"
         },
         {
           "allocator": "0x00CFA2F0",
@@ -249,9 +364,29 @@
           "script": "Q_Arena"
         },
         {
+          "allocator": "0x00CF8860",
+          "anchors": [],
+          "script": "Q_ArenaHoldingScript"
+        },
+        {
           "allocator": "0x00D00590",
           "anchors": [],
           "script": "Q_AwakeningTheOracle"
+        },
+        {
+          "allocator": "0x00D03580",
+          "anchors": [],
+          "script": "Q_BanditCamp"
+        },
+        {
+          "allocator": "0x00D12920",
+          "anchors": [],
+          "script": "Q_BanditCampBossBattle"
+        },
+        {
+          "allocator": "0x00D12C50",
+          "anchors": [],
+          "script": "Q_BanditCampHoldingScript"
         },
         {
           "allocator": "0x00D1CBA0",
@@ -259,9 +394,29 @@
           "script": "Q_BountyHunt"
         },
         {
+          "allocator": "0x00D253B0",
+          "anchors": [],
+          "script": "Q_BowerstoneTownLifeIntro"
+        },
+        {
+          "allocator": "0x00D23C80",
+          "anchors": [],
+          "script": "Q_BreakSiege"
+        },
+        {
+          "allocator": "0x00F02460",
+          "anchors": [],
+          "script": "Q_CinemaTest"
+        },
+        {
           "allocator": "0x00D27240",
           "anchors": [],
           "script": "Q_DragonBossFight"
+        },
+        {
+          "allocator": "0x00D2A7C0",
+          "anchors": [],
+          "script": "Q_EndGame"
         },
         {
           "allocator": "0x00D34410",
@@ -279,6 +434,51 @@
           "script": "Q_FireHeart"
         },
         {
+          "allocator": "0x00D50600",
+          "anchors": [],
+          "script": "Q_GuildTraining"
+        },
+        {
+          "allocator": "0x00D513C0",
+          "anchors": [],
+          "script": "Q_GuildTrainingDeparture"
+        },
+        {
+          "allocator": "0x00D5A9F0",
+          "anchors": [],
+          "script": "Q_GuildTrainingMelee"
+        },
+        {
+          "allocator": "0x00D55D10",
+          "anchors": [],
+          "script": "Q_GuildTrainingPreMelee"
+        },
+        {
+          "allocator": "0x00D5DBF0",
+          "anchors": [],
+          "script": "Q_GuildTrainingSkill"
+        },
+        {
+          "allocator": "0x00D61BB0",
+          "anchors": [],
+          "script": "Q_GuildTrainingWill"
+        },
+        {
+          "allocator": "0x00D664D0",
+          "anchors": [],
+          "script": "Q_GuildTrainingWoodsDeparture"
+        },
+        {
+          "allocator": "0x00D67740",
+          "anchors": [],
+          "script": "Q_GuildTrainingWoodsMelee"
+        },
+        {
+          "allocator": "0x00D68EA0",
+          "anchors": [],
+          "script": "Q_GuildTrainingWoodsWill"
+        },
+        {
           "allocator": "0x00D6ED10",
           "anchors": [],
           "script": "Q_HangingTreeEvil"
@@ -294,6 +494,11 @@
             "GhostFisherman"
           ],
           "script": "Q_HerosOldHouse"
+        },
+        {
+          "allocator": "0x00D7AC50",
+          "anchors": [],
+          "script": "Q_HeroSouls"
         },
         {
           "allocator": "0x00D80BA0",
@@ -316,9 +521,24 @@
           "script": "Q_HeroSoulsMother"
         },
         {
+          "allocator": "0x00D89CF0",
+          "anchors": [],
+          "script": "Q_HeroSoulsNostro"
+        },
+        {
           "allocator": "0x00D7C6A0",
           "anchors": [],
           "script": "Q_HeroSoulsThunder"
+        },
+        {
+          "allocator": "0x00D99DC0",
+          "anchors": [],
+          "script": "Q_HobbeCave"
+        },
+        {
+          "allocator": "0x00D9E190",
+          "anchors": [],
+          "script": "Q_HobbeToothContest"
         },
         {
           "allocator": "0x00DA2F40",
@@ -326,9 +546,19 @@
           "script": "Q_MinionCamp"
         },
         {
+          "allocator": "0x00DAAB70",
+          "anchors": [],
+          "script": "Q_MinionClifftopChase"
+        },
+        {
           "allocator": "0x00DBEF70",
           "anchors": [],
           "script": "Q_NewOakValeIntro"
+        },
+        {
+          "allocator": "0x00DC24E0",
+          "anchors": [],
+          "script": "Q_OakValeBanditRaid"
         },
         {
           "allocator": "0x00DCBFD0",
@@ -341,14 +571,94 @@
           "script": "Q_OrchardFarmRaid"
         },
         {
+          "allocator": "0x00DD2300",
+          "anchors": [],
+          "script": "Q_OrchardFarmRaidEvil"
+        },
+        {
+          "allocator": "0x00DD2680",
+          "anchors": [],
+          "script": "Q_OrchardFarmRaidGood"
+        },
+        {
+          "allocator": "0x00DDACB0",
+          "anchors": [],
+          "script": "Q_PrisonEscapeRescueMother"
+        },
+        {
+          "allocator": "0x00DDDC30",
+          "anchors": [],
+          "script": "Q_PrisonRace"
+        },
+        {
+          "allocator": "0x00DE0290",
+          "anchors": [],
+          "script": "Q_PrisonWardenGame"
+        },
+        {
           "allocator": "0x00DEBC60",
           "anchors": [],
           "script": "Q_RansomVictim"
         },
         {
+          "allocator": "0x00DEC790",
+          "anchors": [],
+          "script": "Q_RansomVictimChiefsHouse"
+        },
+        {
           "allocator": "0x00DF1080",
           "anchors": [],
           "script": "Q_SecretPassage"
+        },
+        {
+          "allocator": "0x00DF4070",
+          "anchors": [],
+          "script": "Q_SummoningTheShip"
+        },
+        {
+          "allocator": "0x00CDD550",
+          "anchors": [],
+          "script": "Q_SunnyvaleMaster"
+        },
+        {
+          "allocator": "0x00DF5C00",
+          "anchors": [],
+          "script": "Q_TentacleKrakenBossFight"
+        },
+        {
+          "allocator": "0x00DFA020",
+          "anchors": [],
+          "script": "Q_TraderConflictEvil"
+        },
+        {
+          "allocator": "0x00E00610",
+          "anchors": [],
+          "script": "Q_TraderConflictGood"
+        },
+        {
+          "allocator": "0x00E0AF60",
+          "anchors": [],
+          "script": "Q_TraderEscort"
+        },
+        {
+          "allocator": "0x00E0E760",
+          "anchors": [],
+          "script": "Q_UndeadRising"
+        },
+        {
+          "allocator": "0x00E0E9F0",
+          "anchors": [],
+          "script": "Q_WaspBoss"
+        },
+        {
+          "allocator": "0x00E183B0",
+          "anchors": [],
+          "script": "Q_WhiteBalverineKnotholeGlade"
+        },
+        {
+          "allocator": "0x00E1A770",
+          "anchors": [],
+          "script": "Q_WhiteBalverineWW"
         },
         {
           "allocator": "0x00E1D9F0",
@@ -359,6 +669,11 @@
           "allocator": "0x00E24C30",
           "anchors": [],
           "script": "QR_EscortTrader"
+        },
+        {
+          "allocator": "0x00E25970",
+          "anchors": [],
+          "script": "QR_EscortTrader_Manager"
         },
         {
           "allocator": "0x00E26780",
@@ -394,6 +709,61 @@
           "script": "QS_ScytheInfo"
         },
         {
+          "allocator": "0x00EFFCD0",
+          "anchors": [],
+          "script": "ShowTargetedThingHealth"
+        },
+        {
+          "allocator": "0x00EEF9C0",
+          "anchors": [],
+          "script": "TestNewNav1"
+        },
+        {
+          "allocator": "0x00EEFB20",
+          "anchors": [],
+          "script": "TestNewNav2"
+        },
+        {
+          "allocator": "0x00EEFC80",
+          "anchors": [],
+          "script": "TestNewNav3"
+        },
+        {
+          "allocator": "0x00EEFDE0",
+          "anchors": [],
+          "script": "TestNewNav4"
+        },
+        {
+          "allocator": "0x00EEFF40",
+          "anchors": [],
+          "script": "TestNewNav5"
+        },
+        {
+          "allocator": "0x00EEF540",
+          "anchors": [],
+          "script": "TestQuestCard1"
+        },
+        {
+          "allocator": "0x00EEF6D0",
+          "anchors": [],
+          "script": "TestQuestCard2"
+        },
+        {
+          "allocator": "0x00EEF860",
+          "anchors": [],
+          "script": "TestQuestCard3"
+        },
+        {
+          "allocator": "0x00EEEE40",
+          "anchors": [],
+          "script": "TestTheInventory"
+        },
+        {
+          "allocator": "0x00EFF770",
+          "anchors": [],
+          "script": "TonyTestScripts"
+        },
+        {
           "allocator": "0x00E322C0",
           "anchors": [],
           "script": "V_AmbushScam"
@@ -414,9 +784,19 @@
           "script": "V_BanditCampPath"
         },
         {
+          "allocator": "0x00E4F550",
+          "anchors": [],
+          "script": "V_BanditToll"
+        },
+        {
           "allocator": "0x00E54260",
           "anchors": [],
           "script": "V_BeardyBaldy"
+        },
+        {
+          "allocator": "0x00E5D0B0",
+          "anchors": [],
+          "script": "V_BeggarAndChild"
         },
         {
           "allocator": "0x00E62730",
@@ -434,9 +814,19 @@
           "script": "V_Bordello"
         },
         {
+          "allocator": "0x00E6E230",
+          "anchors": [],
+          "script": "V_ChapelOfEvil"
+        },
+        {
           "allocator": "0x00E68E60",
           "anchors": [],
           "script": "V_ChickenKicking"
+        },
+        {
+          "allocator": "0x00E75590",
+          "anchors": [],
+          "script": "V_DemonDoors"
         },
         {
           "allocator": "0x00E7B290",
@@ -444,9 +834,69 @@
           "script": "V_ExposeMayor"
         },
         {
+          "allocator": "0x00E7E0B0",
+          "anchors": [],
+          "script": "V_Fisherman"
+        },
+        {
+          "allocator": "0x00E81EB0",
+          "anchors": [],
+          "script": "V_FishingCompetition"
+        },
+        {
           "allocator": "0x00E8B700",
           "anchors": [],
           "script": "V_FisticuffsClub"
+        },
+        {
+          "allocator": "0x00E906F0",
+          "anchors": [],
+          "script": "V_GhostGrannyNecklace"
+        },
+        {
+          "allocator": "0x00E92900",
+          "anchors": [],
+          "script": "V_GuildMaster"
+        },
+        {
+          "allocator": "0x00E96DD0",
+          "anchors": [],
+          "script": "V_HauntedHouse"
+        },
+        {
+          "allocator": "0x00E98640",
+          "anchors": [],
+          "script": "V_HeroDolls"
+        },
+        {
+          "allocator": "0x00E9C300",
+          "anchors": [],
+          "script": "V_HeroDuel"
+        },
+        {
+          "allocator": "0x00E93CF0",
+          "anchors": [],
+          "script": "V_HiddenBooty"
+        },
+        {
+          "allocator": "0x00E9FB40",
+          "anchors": [],
+          "script": "V_IntroductionToTrophies"
+        },
+        {
+          "allocator": "0x00EA2C60",
+          "anchors": [],
+          "script": "V_KnotholeGladeGates"
+        },
+        {
+          "allocator": "0x00EA7680",
+          "anchors": [],
+          "script": "V_LostTrader"
+        },
+        {
+          "allocator": "0x00EBCC10",
+          "anchors": [],
+          "script": "V_MayorsInvitation"
         },
         {
           "allocator": "0x00EA8690",
@@ -456,9 +906,39 @@
           "script": "V_MazeResearch"
         },
         {
+          "allocator": "0x00EAE890",
+          "anchors": [],
+          "script": "V_MurderTwist"
+        },
+        {
           "allocator": "0x00EB6A60",
           "anchors": [],
           "script": "V_MurderTwistFinal"
+        },
+        {
+          "allocator": "0x00EBEE30",
+          "anchors": [],
+          "script": "V_Oracle"
+        },
+        {
+          "allocator": "0x00EC11B0",
+          "anchors": [],
+          "script": "V_ParanoidWhispers"
+        },
+        {
+          "allocator": "0x00EC1780",
+          "anchors": [],
+          "script": "V_PicnicAreaAfterWaspBoss"
+        },
+        {
+          "allocator": "0x00EC3BC0",
+          "anchors": [],
+          "script": "V_RandomPopulationSim"
+        },
+        {
+          "allocator": "0x00EC5360",
+          "anchors": [],
+          "script": "V_RockTrollFirstEncounter"
         },
         {
           "allocator": "0x00ED0E00",
@@ -471,6 +951,11 @@
           "script": "V_SingingStones"
         },
         {
+          "allocator": "0x00ED4A40",
+          "anchors": [],
+          "script": "V_StatueMaster"
+        },
+        {
           "allocator": "0x00ED75F0",
           "anchors": [],
           "script": "V_SwordInTheStone"
@@ -481,6 +966,11 @@
           "script": "V_TalentlessBard"
         },
         {
+          "allocator": "0x00EDEB40",
+          "anchors": [],
+          "script": "V_TempleOfLight"
+        },
+        {
           "allocator": "0x00EE6C00",
           "anchors": [],
           "script": "V_TourGuide"
@@ -489,6 +979,11 @@
           "allocator": "0x00EE40A0",
           "anchors": [],
           "script": "V_TravellingHeroes"
+        },
+        {
+          "allocator": "0x00EE80A0",
+          "anchors": [],
+          "script": "V_TrophyDealer"
         }
       ],
       "name": "anchored native decompilation proven",
@@ -496,7 +991,13 @@
     },
     {
       "evidence": [
+        "alextest",
+        "bandit_level_cutscene",
+        "BenTestScripts",
         "CS_OakValeRevisited",
+        "CS_PlayCutscene",
+        "DanyalTestScripts",
+        "Empty",
         "Expression_Dig",
         "Expression_Fish",
         "Expression_Follow",
@@ -504,60 +1005,153 @@
         "Expression_Pickpocket",
         "Expression_Steal",
         "Expression_Wait",
+        "Gameflow",
+        "GameflowAssistance",
         "Global_DebugCycleThroughSpeech",
         "Global_GiveHeroItemsFromRewardChest",
         "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
         "Global_ToggleTimeDisplay",
         "Global_WatchForHeroDeath",
+        "GuildSealTriggerTest",
+        "guy_script",
+        "HeroBoasts",
+        "HeroTurningDebugger",
+        "HitSwitchTest",
+        "joss_test_scripts",
         "LadyGreyWifeManager",
+        "MarkTestScripts",
+        "OracleMinigameTest",
+        "PersonalScript_Aardvark",
+        "PersonalScript_alextest",
+        "PersonalScript_Empty",
+        "PersonalScript_GlobalThings",
+        "PersonalScriptMain",
+        "ProximityPodiumTest",
         "Q_AmbushTraders",
         "Q_Arena",
+        "Q_ArenaHoldingScript",
         "Q_AwakeningTheOracle",
+        "Q_BanditCamp",
+        "Q_BanditCampBossBattle",
+        "Q_BanditCampHoldingScript",
         "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_CinemaTest",
         "Q_DragonBossFight",
+        "Q_EndGame",
         "Q_EndGameBossBattle",
         "Q_EndGameFocalSites",
         "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
         "Q_HangingTreeEvil",
         "Q_HangingTreeGood",
         "Q_HerosOldHouse",
+        "Q_HeroSouls",
         "Q_HeroSoulsArena",
         "Q_HeroSoulsBriar",
         "Q_HeroSoulsGuildmaster",
         "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
         "Q_HeroSoulsThunder",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
         "Q_MinionCamp",
+        "Q_MinionClifftopChase",
         "Q_NewOakValeIntro",
+        "Q_OakValeBanditRaid",
         "Q_OpeningGraveyardSecretPassage",
         "Q_OrchardFarmRaid",
+        "Q_OrchardFarmRaidEvil",
+        "Q_OrchardFarmRaidGood",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
         "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
         "Q_SecretPassage",
+        "Q_SummoningTheShip",
+        "Q_SunnyvaleMaster",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
         "Q_WizardBattle",
         "QR_EscortTrader",
+        "QR_EscortTrader_Manager",
         "QS_GuardianSisterInfo",
         "QS_GuardianSisterInfo2_SisterInBanditCamp",
         "QS_GuardianTrophyDealerInfo",
         "QS_MeetSister",
         "QS_ScytheInfo",
+        "ShowTargetedThingHealth",
+        "TestNewNav1",
+        "TestNewNav2",
+        "TestNewNav3",
+        "TestNewNav4",
+        "TestNewNav5",
+        "TestQuestCard1",
+        "TestQuestCard2",
+        "TestQuestCard3",
+        "TestTheInventory",
+        "TonyTestScripts",
         "V_AmbushScam",
         "V_ArcheryCompetition",
         "V_AssassinAttacks",
         "V_BanditCampPath",
+        "V_BanditToll",
         "V_BeardyBaldy",
+        "V_BeggarAndChild",
         "V_BodyGuard",
         "V_BookCollecting",
         "V_Bordello",
+        "V_ChapelOfEvil",
         "V_ChickenKicking",
+        "V_DemonDoors",
         "V_ExposeMayor",
+        "V_Fisherman",
+        "V_FishingCompetition",
         "V_FisticuffsClub",
+        "V_GhostGrannyNecklace",
+        "V_GuildMaster",
+        "V_HauntedHouse",
+        "V_HeroDolls",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_KnotholeGladeGates",
+        "V_LostTrader",
+        "V_MayorsInvitation",
         "V_MazeResearch",
+        "V_MurderTwist",
         "V_MurderTwistFinal",
+        "V_Oracle",
+        "V_ParanoidWhispers",
+        "V_PicnicAreaAfterWaspBoss",
+        "V_RandomPopulationSim",
+        "V_RockTrollFirstEncounter",
         "V_SickChild",
         "V_SingingStones",
+        "V_StatueMaster",
         "V_SwordInTheStone",
         "V_TalentlessBard",
+        "V_TempleOfLight",
         "V_TourGuide",
-        "V_TravellingHeroes"
+        "V_TravellingHeroes",
+        "V_TrophyDealer"
       ],
       "name": "native lifecycle clusters have operation IR",
       "passed": true
