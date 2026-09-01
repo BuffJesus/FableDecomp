@@ -531,224 +531,224 @@
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x100",
           "vtableOffset": "0x100",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 15169
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x8b8",
           "vtableOffset": "0x8b8",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 15304
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0xa3c",
           "vtableOffset": "0xa3c",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
           "offset": 16279
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0x4a0",
           "vtableOffset": "0x4a0",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
           "offset": 16318
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x30",
           "vtableOffset": "0x30",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 18086
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x1c",
           "vtableOffset": "0x1c",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 18562
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x30",
           "vtableOffset": "0x30",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 18835
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0xb04",
           "vtableOffset": "0xb04",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 19648
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0xa3c",
           "vtableOffset": "0xa3c",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
           "offset": 20161
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0x4a0",
           "vtableOffset": "0x4a0",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
           "offset": 20198
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x30",
           "vtableOffset": "0x30",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 21818
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x1c",
           "vtableOffset": "0x1c",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 22294
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x30",
           "vtableOffset": "0x30",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 22568
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0xa3c",
           "vtableOffset": "0xa3c",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
           "offset": 23741
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0x4a0",
           "vtableOffset": "0x4a0",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
           "offset": 23778
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x5d8",
           "vtableOffset": "0x5d8",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 25218
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x8b8",
           "vtableOffset": "0x8b8",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 25448
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0xa3c",
           "vtableOffset": "0xa3c",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
           "offset": 26432
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0x4a0",
           "vtableOffset": "0x4a0",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
           "offset": 26471
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x8b8",
           "vtableOffset": "0x8b8",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 29625
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x30",
           "vtableOffset": "0x30",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 30379
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x1c",
           "vtableOffset": "0x1c",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 30811
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x30",
           "vtableOffset": "0x30",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 31079
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0xa3c",
           "vtableOffset": "0xa3c",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
           "offset": 31921
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0x4d4",
           "vtableOffset": "0x4d4",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
           "offset": 31974
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x5d8",
           "vtableOffset": "0x5d8",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 32363
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0xa3c",
           "vtableOffset": "0xa3c",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
           "offset": 32729
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0x480",
           "vtableOffset": "0x480",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
           "offset": 32786
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0xa3c",
           "vtableOffset": "0xa3c",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
           "offset": 33324
         },
         {
           "operation": "indirect-call",
           "targetExpression": "iVar1 + 0x464",
           "vtableOffset": "0x464",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
           "offset": 33383
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x5d8",
           "vtableOffset": "0x5d8",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 33792
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x1c",
           "vtableOffset": "0x1c",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 33878
         }
       ],

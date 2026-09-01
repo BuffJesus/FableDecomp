@@ -207,7 +207,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "unaff_EDI + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 4878
         },
@@ -221,7 +221,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "unaff_EDI + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 5116
         },

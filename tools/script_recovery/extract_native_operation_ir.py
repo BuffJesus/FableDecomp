@@ -14,7 +14,7 @@ STRING_RE = re.compile(r'"((?:[^"\\]|\\.)*)"')
 CALL_RE = re.compile(r'(?<![\w])((?:[A-Za-z_]\w*::)*[A-Za-z_]\w*)\s*\(')
 STATE_WRITE_RE = re.compile(r'\*\([^)]*\*\)\([^\n]*?\+\s*(0x[0-9a-fA-F]+)\)\s*=\s*([^;]+);')
 INDIRECT_CALL_RE = re.compile(r'\(\*\*\(code \*\*\)\((.*?)\)\)\s*\(', re.DOTALL)
-VTABLE_OFFSET_RE = re.compile(r'\+\s*(0x[0-9a-fA-F]+)\s*$')
+VTABLE_OFFSET_RE = re.compile(r'\+\s*(0x[0-9a-fA-F]+|[0-9]+)\s*$')
 CONTROL_WORDS = {"if", "for", "while", "switch", "sizeof", "return"}
 
 
@@ -49,16 +49,23 @@ def indirect_calls(text: str) -> list[dict[str, Any]]:
         provenance = None
         if "DAT_0143e8f8" in expression:
             provenance = "direct-gamescriptinterface-singleton"
+        elif "**(int **)(this + 0x40)" in expression:
+            provenance = "script-instance-gamescriptinterface-field"
         else:
             base = re.match(r"([A-Za-z_]\w*)\s*\+", expression)
             if base:
                 assignments = list(re.finditer(
                     rf"\b{re.escape(base.group(1))}\s*=\s*([^;]+);", text[:match.start()]
                 ))
-                if assignments and assignments[-1].group(1).strip() == "*DAT_0143e8f8":
-                    provenance = "local-copy-of-gamescriptinterface-singleton"
+                if assignments:
+                    source = assignments[-1].group(1).strip()
+                    if source == "*DAT_0143e8f8":
+                        provenance = "local-copy-of-gamescriptinterface-singleton"
+                    elif source == "**(int **)(this + 0x40)":
+                        provenance = "local-copy-of-script-interface-vtable"
+        normalized_offset = f"0x{int(offset.group(1), 0):x}" if offset else None
         result.append({"operation": "indirect-call", "targetExpression": expression,
-                       "vtableOffset": offset.group(1).lower() if offset else None,
+                       "vtableOffset": normalized_offset,
                        "interfaceProvenance": provenance,
                        "offset": match.start()})
     return result

@@ -19,6 +19,14 @@ class NativeOperationIRTests(unittest.TestCase):
         self.assertEqual(rows[0]["interfaceProvenance"],
                          "local-copy-of-gamescriptinterface-singleton")
 
+    def test_script_interface_field_and_decimal_offset(self):
+        rows = indirect_calls(
+            "iVar1 = **(int **)(this + 0x40);\n(**(code **)(iVar1 + 2000))();"
+        )
+        self.assertEqual(rows[0]["vtableOffset"], "0x7d0")
+        self.assertEqual(rows[0]["interfaceProvenance"],
+                         "local-copy-of-script-interface-vtable")
+
     def test_maze_research_state_and_persistence(self):
         result = extract(Path("refs/script_recovery/native_clusters/V_MazeResearch.json"))
         persisted = [row["key"] for function in result["lifecycle"] for row in function["persistenceTransfers"]]

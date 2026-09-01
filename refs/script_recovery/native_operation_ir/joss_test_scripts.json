@@ -619,7 +619,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "*piStack_fc + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 9539
         },
@@ -633,7 +633,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "*piStack_f0 + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 14683
         },
@@ -654,7 +654,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "*unaff_EBX + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 16827
         },
@@ -675,7 +675,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "*unaff_EBX + 100",
-          "vtableOffset": null,
+          "vtableOffset": "0x64",
           "interfaceProvenance": null,
           "offset": 18718
         },
@@ -710,7 +710,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "*piStack_c0 + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 19444
         },
@@ -731,7 +731,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "*piStack_cc + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 20522
         },
@@ -752,7 +752,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "*piStack_d8 + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 21592
         },
@@ -773,7 +773,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 24694
         },

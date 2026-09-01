@@ -544,7 +544,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "ppVar9 + 4",
-          "vtableOffset": null,
+          "vtableOffset": "0x4",
           "interfaceProvenance": null,
           "offset": 9567
         },
@@ -712,21 +712,21 @@
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 900",
-          "vtableOffset": null,
+          "vtableOffset": "0x384",
           "interfaceProvenance": null,
           "offset": 21333
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 900",
-          "vtableOffset": null,
+          "vtableOffset": "0x384",
           "interfaceProvenance": null,
           "offset": 21974
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 900",
-          "vtableOffset": null,
+          "vtableOffset": "0x384",
           "interfaceProvenance": null,
           "offset": 22517
         },

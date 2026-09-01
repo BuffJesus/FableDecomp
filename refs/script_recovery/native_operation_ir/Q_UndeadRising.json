@@ -826,7 +826,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "iVar8 + 400",
-          "vtableOffset": null,
+          "vtableOffset": "0x190",
           "interfaceProvenance": null,
           "offset": 17546
         },
@@ -847,7 +847,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "iVar8 + 400",
-          "vtableOffset": null,
+          "vtableOffset": "0x190",
           "interfaceProvenance": null,
           "offset": 19922
         },
@@ -889,7 +889,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "*piStack_ec + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 24554
         },
@@ -924,7 +924,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "aiStack_78[0] + 400",
-          "vtableOffset": null,
+          "vtableOffset": "0x190",
           "interfaceProvenance": null,
           "offset": 25402
         },
@@ -945,14 +945,14 @@
         {
           "operation": "indirect-call",
           "targetExpression": "iVar8 + 400",
-          "vtableOffset": null,
+          "vtableOffset": "0x190",
           "interfaceProvenance": null,
           "offset": 29329
         },
         {
           "operation": "indirect-call",
           "targetExpression": "ppVar16 + 4",
-          "vtableOffset": null,
+          "vtableOffset": "0x4",
           "interfaceProvenance": null,
           "offset": 30434
         },
@@ -1008,14 +1008,14 @@
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 37775
         },
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 38312
         },
@@ -1029,7 +1029,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 39519
         },
@@ -1043,7 +1043,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "**(int **)(param_1 + 0x40) + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 40559
         },
@@ -1351,7 +1351,7 @@
           "operation": "indirect-call",
           "targetExpression": "**(int **)(this + 0x40) + 0x43c",
           "vtableOffset": "0x43c",
-          "interfaceProvenance": null,
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 564
         }
       ],

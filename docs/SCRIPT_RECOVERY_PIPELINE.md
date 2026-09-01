@@ -144,10 +144,13 @@ facts with reconstructed bindings, literals, and persistence keys across all six
 known parent-vs-entity scope limits are documented in `docs/SEED_NATIVE_OPERATION_COMPARISON.md`.
 
 The retail `CGameScriptInterface` vtable base at `0x01260F0C` is now queried directly by
-`DumpVtableSlots.java`. All 263 offsets observed anywhere in lifecycle IR resolve to executable named
-slots, but the readiness analyzer applies a method name only when dataflow proves that the call target
-is `DAT_0143e8f8` or an unmodified local copy of that singleton. This conservative pass currently maps
-64 calls across 26 scripts; all 64 names exist in the ForgeFSE API manifest. Calls through unrelated
+`DumpVtableSlots.java`. `VerifyScriptInterfaceField.java` independently proves for all 161 allocators
+that the fastcall `EDX` interface argument reaches script-object offset `+0x40`, either directly or
+through a constructor stack argument. The readiness analyzer applies a method name only when both
+that per-script evidence and lifecycle dataflow prove the dispatch base, or when the global
+`DAT_0143e8f8` singleton is explicit. This conservative pass maps 1,708 calls across 93 scripts to 191
+retail interface methods. Of those calls, 1,521 target methods already present in the ForgeFSE API
+manifest; the remaining 25 distinct methods form a concrete binding backlog. Calls through unrelated
 entity/resource vtables retain their raw expressions and are not mislabeled merely because an offset
 matches.
 

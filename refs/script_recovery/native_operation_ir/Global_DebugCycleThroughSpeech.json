@@ -227,7 +227,7 @@
         {
           "operation": "indirect-call",
           "targetExpression": "*piStack_24 + 300",
-          "vtableOffset": null,
+          "vtableOffset": "0x12c",
           "interfaceProvenance": null,
           "offset": 1305
         },
