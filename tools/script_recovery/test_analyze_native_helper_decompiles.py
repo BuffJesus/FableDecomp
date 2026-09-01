@@ -75,6 +75,19 @@ class NativeHelperDecompileTests(unittest.TestCase):
         self.assertEqual(pattern["operations"][0], {
             "kind": "invoke-native", "target": "0x00F25980", "arguments": [0x0143F950]})
 
+    def test_archery_setup_records_instruction_call_sites(self):
+        body = ("HUD_ICON_MULTI_ARROW HUD_ICON_ARROW HUD_CLOCK_ICON "
+                "*(int *)(this + 0x58) *(int *)(this + 0x5c) *(int *)(this + 0x60) "
+                "this + 0x6c *(int *)(*(int *)(this + 0x44) + 0x44)")
+        pattern = semantic_patterns(body, [{} for _ in range(6)],
+            [{"vtableOffset": value} for value in
+             ("0x51c", "0x51c", "0x518", "0x53c", "0xb54", "0x504")],
+            "NScript::CV_ArcheryCompetitionScript::AddArcheryQuestInfo")[0]
+        self.assertEqual(pattern["kind"], "archery-quest-info-setup")
+        self.assertEqual([row["site"] for row in pattern["instructionEvidence"]],
+                         ["0x00E33065", "0x00E33098", "0x00E330CD",
+                          "0x00E330F5", "0x00E33108", "0x00E33115"])
+
     def test_typed_native_reads_are_complete_semantic_patterns(self):
         field = semantic_patterns(
             "bool F(X *this) { return *(int *)(this + 8) != 0; }", [], [])

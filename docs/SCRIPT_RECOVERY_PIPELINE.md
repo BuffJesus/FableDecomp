@@ -202,6 +202,12 @@ trace raises the standalone total to twelve helpers and 72 checks without guessi
 `0x00F25980` receives resolved retail global address `0x0143F950`, followed by twenty ordered crowd
 sound string assignments from `this+0x48` through `this+0x94`. Its 21-operation trace brings the
 standalone total to thirteen helpers and 93 checks.
+The adjacent `V_ArcheryCompetition::AddArcheryQuestInfo` decompile omitted UI-call arguments, so its
+six retail call sites were checked at `0x00E33065..0x00E33115`. The instructions prove both counter
+strings use count zero and scale `1.0`, the timer uses `this+0x6C`, returned handles populate
+`+0x58/+0x5C/+0x60`, and the nested `+0x44/+0x44` score feeds the counter and online score before
+quest info is displayed. The emitted 12-event trace raises coverage to fourteen helpers and 105
+checks; the instruction addresses remain embedded in the operation evidence.
 
 Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
 dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`

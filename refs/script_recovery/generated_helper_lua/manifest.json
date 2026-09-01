@@ -1,9 +1,9 @@
 {
   "schema": "forgefse-native-helper-lua/0.1",
   "source": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_helper_operation_ir.json",
-  "sourceSha256": "D9486750514E0513D193F190F358831DFC4A12DC7751FAC485651980FA6820B6",
+  "sourceSha256": "2AC86DB47E385DA56A6B478B8966FF5B29C600746955D22E422AD63DBD6ED0DB",
   "summary": {
-    "emitted": 13,
+    "emitted": 14,
     "deploymentEligible": 0
   },
   "entries": [
@@ -391,6 +391,63 @@
             ]
           }
         ]
+      },
+      "parentInitializerEvidence": null,
+      "deploymentEligible": false,
+      "deploymentBlocker": "standalone helper only; parent script state/control flow unresolved"
+    },
+    {
+      "targetAddress": "0x00E33040",
+      "currentName": "NScript::CV_ArcheryCompetitionScript::AddArcheryQuestInfo",
+      "sourceDecompileSha256": "21ff7911bcd98eac361885c71cfe878b024b773e53523ebc155b08a1750be42b",
+      "luaFile": "00E33040.lua",
+      "luaSha256": "E0B5F1510F0D069B734AF083BA38CF35901CD6024B07AE54D152DC98159967CB",
+      "semanticPattern": {
+        "kind": "archery-quest-info-setup",
+        "complete": true,
+        "instructionEvidence": [
+          {
+            "site": "0x00E33065",
+            "vtableOffset": "0x51c"
+          },
+          {
+            "site": "0x00E33098",
+            "vtableOffset": "0x51c"
+          },
+          {
+            "site": "0x00E330CD",
+            "vtableOffset": "0x518"
+          },
+          {
+            "site": "0x00E330F5",
+            "vtableOffset": "0x53c"
+          },
+          {
+            "site": "0x00E33108",
+            "vtableOffset": "0xb54"
+          },
+          {
+            "site": "0x00E33115",
+            "vtableOffset": "0x504"
+          }
+        ],
+        "counterEntries": [
+          {
+            "text": "HUD_ICON_MULTI_ARROW",
+            "handleOffset": "0x58"
+          },
+          {
+            "text": "HUD_ICON_ARROW",
+            "handleOffset": "0x5c"
+          }
+        ],
+        "timerEntry": {
+          "timerOffset": "0x6c",
+          "text": "HUD_CLOCK_ICON",
+          "handleOffset": "0x60"
+        },
+        "scorePointerOffset": "0x44",
+        "scoreFieldOffset": "0x44"
       },
       "parentInitializerEvidence": null,
       "deploymentEligible": false,

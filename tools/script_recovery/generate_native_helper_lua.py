@@ -124,6 +124,28 @@ def emit_script_initializer(helper: dict[str, Any], pattern: dict[str, Any]) -> 
     return "\n".join(lines)
 
 
+def emit_archery_quest_info_setup(helper: dict[str, Any], pattern: dict[str, Any]) -> str:
+    lines = [f"-- Retail helper {helper['targetAddress']} ({helper['currentName']})",
+             "-- Arguments are recovered from the exact retail call-site instructions.",
+             "return function(invoke, read_i32, write_i32, read_nested_i32, field_ref)"]
+    for index, entry in enumerate(pattern["counterEntries"], 1):
+        lines.append(f'    local handle_{index} = invoke("AddQuestInfoCounter", '
+                     f'"{entry["text"]}", 0, 1.0)')
+        lines.append(f'    write_i32({int(entry["handleOffset"], 0)}, handle_{index})')
+    timer = pattern["timerEntry"]
+    lines.append(f'    local timer_handle = invoke("AddQuestInfoTimer", '
+                 f'field_ref({int(timer["timerOffset"], 0)}), "{timer["text"]}", 1.0)')
+    lines.append(f'    write_i32({int(timer["handleOffset"], 0)}, timer_handle)')
+    lines.append(f'    local score = read_nested_i32({int(pattern["scorePointerOffset"], 0)}, '
+                 f'{int(pattern["scoreFieldOffset"], 0)})')
+    first_handle = int(pattern["counterEntries"][0]["handleOffset"], 0)
+    lines.append(f'    invoke("UpdateQuestInfoCounter", read_i32({first_handle}), score, -1)')
+    lines.append('    invoke("UpdateOnlineScore_Archery", score)')
+    lines.append('    invoke("DisplayQuestInfo", true)')
+    lines.extend(("end", ""))
+    return "\n".join(lines)
+
+
 def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
     source_bytes = helper_ir_path.read_bytes()
     document = json.loads(source_bytes.decode("utf-8-sig"))
@@ -137,7 +159,7 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
                                        "constant-return", "native-field-return",
                                        "native-global-return", "quest-interface-sequence",
                                        "conditional-u8-call-clear"}
-                                       | {"native-script-initializer"}
+                                       | {"native-script-initializer", "archery-quest-info-setup"}
                     and row["complete"]]
         if len(patterns) != 1:
             raise ValueError(f"expected one complete switch for {helper['targetAddress']}")
@@ -152,6 +174,8 @@ def generate(helper_ir_path: Path, output_dir: Path) -> dict[str, Any]:
             text = emit_conditional_call_clear(helper, pattern)
         elif pattern["kind"] == "native-script-initializer":
             text = emit_script_initializer(helper, pattern)
+        elif pattern["kind"] == "archery-quest-info-setup":
+            text = emit_archery_quest_info_setup(helper, pattern)
         else:
             text = emit_return(helper, pattern)
         filename = helper["targetAddress"].removeprefix("0x") + ".lua"

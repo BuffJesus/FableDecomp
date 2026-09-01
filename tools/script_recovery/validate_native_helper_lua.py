@@ -134,6 +134,51 @@ def validate(manifest_path: Path) -> dict[str, Any]:
             checks = len(expected)
             if trace != expected:
                 errors.append(f"initializer trace differs: expected {expected}, got {trace}")
+        elif pattern["kind"] == "archery-quest-info-setup":
+            trace = []
+            fields = {}
+            next_handle = [1001]
+            def invoke(method, *arguments):
+                trace.append(("invoke", method, *arguments))
+                if method in {"AddQuestInfoCounter", "AddQuestInfoTimer"}:
+                    value = next_handle[0]
+                    next_handle[0] += 1
+                    return value
+                return None
+            def read_i32(offset):
+                trace.append(("read-i32", offset))
+                return fields[offset]
+            def write_i32(offset, value):
+                trace.append(("write-i32", offset, value))
+                fields[offset] = value
+            def read_nested(pointer, field):
+                trace.append(("read-nested-i32", pointer, field))
+                return 777
+            def field_ref(offset):
+                trace.append(("field-ref", offset))
+                return f"field@{offset}"
+            function(invoke, read_i32, write_i32, read_nested, field_ref)
+            first, second = pattern["counterEntries"]
+            timer = pattern["timerEntry"]
+            expected = [
+                ("invoke", "AddQuestInfoCounter", first["text"], 0, 1.0),
+                ("write-i32", int(first["handleOffset"], 0), 1001),
+                ("invoke", "AddQuestInfoCounter", second["text"], 0, 1.0),
+                ("write-i32", int(second["handleOffset"], 0), 1002),
+                ("field-ref", int(timer["timerOffset"], 0)),
+                ("invoke", "AddQuestInfoTimer", f"field@{int(timer['timerOffset'], 0)}",
+                 timer["text"], 1.0),
+                ("write-i32", int(timer["handleOffset"], 0), 1003),
+                ("read-nested-i32", int(pattern["scorePointerOffset"], 0),
+                 int(pattern["scoreFieldOffset"], 0)),
+                ("read-i32", int(first["handleOffset"], 0)),
+                ("invoke", "UpdateQuestInfoCounter", 1001, 777, -1),
+                ("invoke", "UpdateOnlineScore_Archery", 777),
+                ("invoke", "DisplayQuestInfo", True),
+            ]
+            checks = len(expected)
+            if trace != expected:
+                errors.append(f"archery setup trace differs: expected {expected}, got {trace}")
         else:
             errors.append(f"unsupported semantic pattern {pattern['kind']}")
         rows.append({"targetAddress": entry["targetAddress"], "passed": not errors,

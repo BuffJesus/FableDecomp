@@ -179,6 +179,31 @@ def semantic_patterns(text: str, direct: list[dict[str, Any]],
         if len(ordered) == 21 and ordered[0]["kind"] == "invoke-native":
             patterns.append({"kind": "native-script-initializer", "complete": True,
                              "operations": ordered})
+    if (current_name.endswith("CV_ArcheryCompetitionScript::AddArcheryQuestInfo")
+            and len(direct) == 6 and offsets == ["0x51c", "0x51c", "0x518", "0x53c", "0xb54", "0x504"]
+            and all(value in text for value in
+                    ("HUD_ICON_MULTI_ARROW", "HUD_ICON_ARROW", "HUD_CLOCK_ICON",
+                     "*(int *)(this + 0x58)", "*(int *)(this + 0x5c)",
+                     "*(int *)(this + 0x60)", "this + 0x6c",
+                     "*(int *)(*(int *)(this + 0x44) + 0x44)"))):
+        patterns.append({
+            "kind": "archery-quest-info-setup", "complete": True,
+            "instructionEvidence": [
+                {"site": "0x00E33065", "vtableOffset": "0x51c"},
+                {"site": "0x00E33098", "vtableOffset": "0x51c"},
+                {"site": "0x00E330CD", "vtableOffset": "0x518"},
+                {"site": "0x00E330F5", "vtableOffset": "0x53c"},
+                {"site": "0x00E33108", "vtableOffset": "0xb54"},
+                {"site": "0x00E33115", "vtableOffset": "0x504"},
+            ],
+            "counterEntries": [
+                {"text": "HUD_ICON_MULTI_ARROW", "handleOffset": "0x58"},
+                {"text": "HUD_ICON_ARROW", "handleOffset": "0x5c"},
+            ],
+            "timerEntry": {"timerOffset": "0x6c", "text": "HUD_CLOCK_ICON",
+                           "handleOffset": "0x60"},
+            "scorePointerOffset": "0x44", "scoreFieldOffset": "0x44",
+        })
     return patterns
 
 
@@ -303,6 +328,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
                 "native-field-return", "native-global-return", "quest-interface-sequence",
                 "conditional-u8-call-clear",
                 "native-script-initializer",
+                "archery-quest-info-setup",
             } and pattern["complete"] for pattern in semantics),
         })
     stages = Counter(row["stage"] for row in rows)
