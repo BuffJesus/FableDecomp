@@ -92,6 +92,26 @@ class NativeHelperDecompileTests(unittest.TestCase):
             self.assertEqual(row["parentInitializerEvidence"]["script"], "Q_Real")
             self.assertIn("this", row["consumers"][0]["statement"])
 
+    def test_helper_interface_call_resolves_only_with_provenance(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            source = root / "helpers.json"
+            source.write_text(json.dumps({"helpers": [{
+                "targetAddress": "0x1000", "currentName": "Wrapper", "helperNames": "Wrapper",
+                "category": "engine-or-script-helper", "calls": 1, "scripts": 1,
+                "roles": "Main", "status": "decompiled", "error": None, "directCalls": [],
+                "decompile": "void F(X *this) { (**(code **)(**(int **)(this + 0x40) + 0x504))(0); }",
+            }]}))
+            slots = root / "slots.tsv"
+            slots.write_text("vtable_base\toffset\tslot_address\ttarget_address\tcurrent_name\texecutable\n"
+                             "01260f0c\t0x504\t01261410\t00100000\tbad\ttrue\n")
+            catalog = root / "catalog.tsv"
+            catalog.write_text("00100000\tRemoveQuestCardFromHero\n")
+            row = analyze(source, slots_path=slots,
+                          interface_catalog_path=catalog)["helpers"][0]
+            self.assertEqual(row["resolvedInterfaceCalls"][0]["name"],
+                             "RemoveQuestCardFromHero")
+
 
 if __name__ == "__main__":
     unittest.main()

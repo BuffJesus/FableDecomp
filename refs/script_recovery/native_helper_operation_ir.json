@@ -11,6 +11,25 @@
     "semanticPatterns": 7,
     "luaEmissionReady": 7,
     "resolvedParentInitializers": 2,
+    "resolvedInterfaceCalls": 273,
+    "resolvedInterfaceMethods": 62,
+    "resolvedForgeInterfaceCalls": 256,
+    "resolvedForgeRuntimeCalls": 270,
+    "missingForgeInterfaceMethods": [
+      "AddLogBookEntry",
+      "AddNewConversation",
+      "IsHeroControlledByPlayer",
+      "OpenHouseDoors",
+      "OverrideAutomaticHouseLocking",
+      "StartScriptingEntity",
+      "UpdateOnlineScore_Archery"
+    ],
+    "missingForgeRuntimeMethods": [
+      "AddLogBookEntry"
+    ],
+    "abiBlockedInterfaceMethods": {
+      "AddLogBookEntry": "retail method consumes CWideString objects; constructing them with a modern std::wstring would cross the VC7 STL ABI"
+    },
     "stages": {
       "inspect-helper-dependencies": 108,
       "inspect-leaf-helper": 19,
@@ -1009,6 +1028,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -1903,6 +1923,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -3924,6 +3945,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -4825,6 +4847,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -5575,6 +5598,7 @@
       "calls": [],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -5898,6 +5922,7 @@
       "calls": [],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -6088,6 +6113,23 @@
           "vtableOffset": "0x160",
           "interfaceProvenance": "direct-gamescriptinterface-singleton",
           "offset": 149
+        }
+      ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 149,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
         }
       ],
       "strings": [],
@@ -6455,6 +6497,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -6965,6 +7008,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -24188,6 +24232,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -24484,6 +24529,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -24887,6 +24933,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -25286,6 +25333,7 @@
       "calls": [],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -25535,6 +25583,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -25725,6 +25774,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -25932,6 +25982,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -26044,6 +26095,7 @@
       "calls": [],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -26202,6 +26254,7 @@
       "calls": [],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -26416,6 +26469,23 @@
           "offset": 1436
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x4d0",
+          "vtableOffset": "0x4d0",
+          "interfaceProvenance": "local-copy-of-gamescriptinterface-singleton",
+          "offset": 1436,
+          "name": "AddLogBookEntry",
+          "targetAddress": "0x0088FE00",
+          "slotAddress": "0x012613DC",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "AddLogBookEntry",
+          "forgeRuntimeMatch": false,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": "retail method consumes CWideString objects; constructing them with a modern std::wstring would cross the VC7 STL ABI"
+        }
+      ],
       "strings": [
         "_NAME",
         "_DESC"
@@ -26559,6 +26629,7 @@
       ],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -26700,6 +26771,7 @@
       ],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -26806,6 +26878,7 @@
       ],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -27144,6 +27217,23 @@
           "offset": 3052
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x4d0",
+          "vtableOffset": "0x4d0",
+          "interfaceProvenance": "local-copy-of-gamescriptinterface-singleton",
+          "offset": 3052,
+          "name": "AddLogBookEntry",
+          "targetAddress": "0x0088FE00",
+          "slotAddress": "0x012613DC",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "AddLogBookEntry",
+          "forgeRuntimeMatch": false,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": "retail method consumes CWideString objects; constructing them with a modern std::wstring would cross the VC7 STL ABI"
+        }
+      ],
       "strings": [
         "TEXT_QST_LOG_STORY_"
       ],
@@ -27252,6 +27342,7 @@
       "calls": [],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -27339,6 +27430,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -27397,6 +27489,7 @@
           "offset": 842
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -27455,6 +27548,7 @@
       ],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -27547,6 +27641,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -27660,6 +27755,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -27744,6 +27840,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -27803,6 +27900,7 @@
           "offset": 859
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -27871,6 +27969,7 @@
           "offset": 753
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -27955,6 +28054,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -28012,6 +28112,7 @@
       ],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -28070,6 +28171,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -28137,6 +28239,7 @@
           "offset": 622
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -28203,6 +28306,7 @@
       ],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -28499,6 +28603,7 @@
           "offset": 4401
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "HERO",
         ""
@@ -28816,6 +28921,7 @@
           "offset": 4380
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "HERO",
         ""
@@ -29133,6 +29239,7 @@
           "offset": 4368
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "HERO",
         ""
@@ -29411,6 +29518,7 @@
           "offset": 4825
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "CREATURE_DEMON_DOOR_FACE_01",
         "",
@@ -29489,6 +29597,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -29554,6 +29663,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -29681,6 +29791,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -29734,6 +29845,7 @@
           "offset": 250
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -29802,6 +29914,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -30085,6 +30198,7 @@
           "offset": 4281
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "HERO",
         ""
@@ -30833,6 +30947,7 @@
           "offset": 19708
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "HERO",
         "GUEST",
@@ -31330,6 +31445,128 @@
           "offset": 4477
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 1100,
+          "name": "GetThingWithScriptName",
+          "targetAddress": "0x008A7D60",
+          "slotAddress": "0x0126102C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetThingWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 1657,
+          "name": "GetThingWithScriptName",
+          "targetAddress": "0x008A7D60",
+          "slotAddress": "0x0126102C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetThingWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2218,
+          "name": "GetThingWithScriptName",
+          "targetAddress": "0x008A7D60",
+          "slotAddress": "0x0126102C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetThingWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 300",
+          "vtableOffset": "0x12c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2866,
+          "name": "GetAllThingsWithScriptName",
+          "targetAddress": "0x008A8570",
+          "slotAddress": "0x01261038",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetAllThingsWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1b0",
+          "vtableOffset": "0x1b0",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 3591,
+          "name": "RemoveThing",
+          "targetAddress": "0x008910D0",
+          "slotAddress": "0x012610BC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RemoveThing",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1b0",
+          "vtableOffset": "0x1b0",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 4006,
+          "name": "RemoveThing",
+          "targetAddress": "0x008910D0",
+          "slotAddress": "0x012610BC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RemoveThing",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1b0",
+          "vtableOffset": "0x1b0",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 4185,
+          "name": "RemoveThing",
+          "targetAddress": "0x008910D0",
+          "slotAddress": "0x012610BC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RemoveThing",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1b0",
+          "vtableOffset": "0x1b0",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 4477,
+          "name": "RemoveThing",
+          "targetAddress": "0x008910D0",
+          "slotAddress": "0x012610BC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RemoveThing",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [
         "GUARD1",
         "GUARD2",
@@ -31642,6 +31879,7 @@
           "offset": 4452
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "HERO",
         ""
@@ -31952,6 +32190,7 @@
           "offset": 4346
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "HERO",
         ""
@@ -32262,6 +32501,7 @@
           "offset": 4325
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "HERO",
         ""
@@ -32572,6 +32812,7 @@
           "offset": 4338
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "HERO",
         ""
@@ -32848,6 +33089,128 @@
           "offset": 5041
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 300",
+          "vtableOffset": "0x12c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 1371,
+          "name": "GetAllThingsWithScriptName",
+          "targetAddress": "0x008A8570",
+          "slotAddress": "0x01261038",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetAllThingsWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x79c",
+          "vtableOffset": "0x79c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2530,
+          "name": "EntityPlayObjectAnimation",
+          "targetAddress": "0x0089BBC0",
+          "slotAddress": "0x012616A8",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "EntityPlayObjectAnimation",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x79c",
+          "vtableOffset": "0x79c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2956,
+          "name": "EntityPlayObjectAnimation",
+          "targetAddress": "0x0089BBC0",
+          "slotAddress": "0x012616A8",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "EntityPlayObjectAnimation",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x79c",
+          "vtableOffset": "0x79c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 3361,
+          "name": "EntityPlayObjectAnimation",
+          "targetAddress": "0x0089BBC0",
+          "slotAddress": "0x012616A8",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "EntityPlayObjectAnimation",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x79c",
+          "vtableOffset": "0x79c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 3761,
+          "name": "EntityPlayObjectAnimation",
+          "targetAddress": "0x0089BBC0",
+          "slotAddress": "0x012616A8",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "EntityPlayObjectAnimation",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x79c",
+          "vtableOffset": "0x79c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 4169,
+          "name": "EntityPlayObjectAnimation",
+          "targetAddress": "0x0089BBC0",
+          "slotAddress": "0x012616A8",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "EntityPlayObjectAnimation",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x79c",
+          "vtableOffset": "0x79c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 4571,
+          "name": "EntityPlayObjectAnimation",
+          "targetAddress": "0x0089BBC0",
+          "slotAddress": "0x012616A8",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "EntityPlayObjectAnimation",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x800",
+          "vtableOffset": "0x800",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 5041,
+          "name": "EntitySetCutsceneBehaviour",
+          "targetAddress": "0x0088EA20",
+          "slotAddress": "0x0126170C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "EntitySetCutsceneBehaviour",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [
         "AudienceMember",
         "CHEER_LOOP_01",
@@ -32897,6 +33260,7 @@
       "calls": [],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -32945,6 +33309,7 @@
           "offset": 401
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -32998,6 +33363,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -33057,6 +33423,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -33123,6 +33490,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -33195,6 +33563,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -33254,6 +33623,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -33305,6 +33675,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -33369,6 +33740,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -33415,6 +33787,7 @@
           "offset": 850
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -33461,6 +33834,7 @@
           "offset": 857
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -33514,6 +33888,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -33571,6 +33946,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -33621,6 +33997,7 @@
           "offset": 417
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -33686,6 +34063,7 @@
           "offset": 624
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -33828,6 +34206,38 @@
           "offset": 1584
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x4d0",
+          "vtableOffset": "0x4d0",
+          "interfaceProvenance": "local-copy-of-gamescriptinterface-singleton",
+          "offset": 1405,
+          "name": "AddLogBookEntry",
+          "targetAddress": "0x0088FE00",
+          "slotAddress": "0x012613DC",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "AddLogBookEntry",
+          "forgeRuntimeMatch": false,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": "retail method consumes CWideString objects; constructing them with a modern std::wstring would cross the VC7 STL ABI"
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 1584,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [
         "_TITLE"
       ],
@@ -33959,6 +34369,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -33997,6 +34408,7 @@
       "calls": [],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -34045,6 +34457,23 @@
           "vtableOffset": "0x15c",
           "interfaceProvenance": "direct-gamescriptinterface-singleton",
           "offset": 184
+        }
+      ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x15c",
+          "vtableOffset": "0x15c",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 184,
+          "name": "RegisterTimer",
+          "targetAddress": "0x006E79E0",
+          "slotAddress": "0x01261068",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RegisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
         }
       ],
       "strings": [],
@@ -34108,6 +34537,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -34301,6 +34731,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -34637,6 +35068,38 @@
           "offset": 9054
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 8936,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 9054,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [],
       "stateWrites": [
         {
@@ -34779,6 +35242,23 @@
           "vtableOffset": "0x160",
           "interfaceProvenance": "direct-gamescriptinterface-singleton",
           "offset": 1299
+        }
+      ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 1299,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
         }
       ],
       "strings": [],
@@ -34932,6 +35412,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -35046,6 +35527,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -35390,6 +35872,7 @@
           "offset": 3889
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -35512,6 +35995,38 @@
           "offset": 394
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 320,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 394,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [],
       "stateWrites": [
         {
@@ -35600,6 +36115,38 @@
           "vtableOffset": "0x160",
           "interfaceProvenance": "direct-gamescriptinterface-singleton",
           "offset": 745
+        }
+      ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 580,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 745,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
         }
       ],
       "strings": [],
@@ -39495,6 +40042,7 @@
           "offset": 94941
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "HeroGuildComplex",
         "HeroGuildComplex",
@@ -39695,6 +40243,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -40102,6 +40651,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -41374,6 +41924,428 @@
           "offset": 28886
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb34",
+          "vtableOffset": "0xb34",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 3792,
+          "name": "AddRumourCategory",
+          "targetAddress": "0x008A9DB0",
+          "slotAddress": "0x01261A40",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddRumourCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb38",
+          "vtableOffset": "0xb38",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 4479,
+          "name": "AddNewRumourToCategory",
+          "targetAddress": "0x008A9DD0",
+          "slotAddress": "0x01261A44",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddNewRumourToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb44",
+          "vtableOffset": "0xb44",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 5482,
+          "name": "AddGossipVillage",
+          "targetAddress": "0x008A9E30",
+          "slotAddress": "0x01261A50",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipVillage",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb48",
+          "vtableOffset": "0xb48",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 6479,
+          "name": "AddGossipFactionToCategory",
+          "targetAddress": "0x008A9E60",
+          "slotAddress": "0x01261A54",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipFactionToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb48",
+          "vtableOffset": "0xb48",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 7471,
+          "name": "AddGossipFactionToCategory",
+          "targetAddress": "0x008A9E60",
+          "slotAddress": "0x01261A54",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipFactionToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb48",
+          "vtableOffset": "0xb48",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 8476,
+          "name": "AddGossipFactionToCategory",
+          "targetAddress": "0x008A9E60",
+          "slotAddress": "0x01261A54",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipFactionToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb38",
+          "vtableOffset": "0xb38",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 9489,
+          "name": "AddNewRumourToCategory",
+          "targetAddress": "0x008A9DD0",
+          "slotAddress": "0x01261A44",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddNewRumourToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb44",
+          "vtableOffset": "0xb44",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 10499,
+          "name": "AddGossipVillage",
+          "targetAddress": "0x008A9E30",
+          "slotAddress": "0x01261A50",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipVillage",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb48",
+          "vtableOffset": "0xb48",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 11503,
+          "name": "AddGossipFactionToCategory",
+          "targetAddress": "0x008A9E60",
+          "slotAddress": "0x01261A54",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipFactionToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb38",
+          "vtableOffset": "0xb38",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 12514,
+          "name": "AddNewRumourToCategory",
+          "targetAddress": "0x008A9DD0",
+          "slotAddress": "0x01261A44",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddNewRumourToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb44",
+          "vtableOffset": "0xb44",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 13523,
+          "name": "AddGossipVillage",
+          "targetAddress": "0x008A9E30",
+          "slotAddress": "0x01261A50",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipVillage",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb48",
+          "vtableOffset": "0xb48",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 14521,
+          "name": "AddGossipFactionToCategory",
+          "targetAddress": "0x008A9E60",
+          "slotAddress": "0x01261A54",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipFactionToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb34",
+          "vtableOffset": "0xb34",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 15431,
+          "name": "AddRumourCategory",
+          "targetAddress": "0x008A9DB0",
+          "slotAddress": "0x01261A40",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddRumourCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb38",
+          "vtableOffset": "0xb38",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 16092,
+          "name": "AddNewRumourToCategory",
+          "targetAddress": "0x008A9DD0",
+          "slotAddress": "0x01261A44",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddNewRumourToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb44",
+          "vtableOffset": "0xb44",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 17098,
+          "name": "AddGossipVillage",
+          "targetAddress": "0x008A9E30",
+          "slotAddress": "0x01261A50",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipVillage",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb48",
+          "vtableOffset": "0xb48",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 18106,
+          "name": "AddGossipFactionToCategory",
+          "targetAddress": "0x008A9E60",
+          "slotAddress": "0x01261A54",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipFactionToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb34",
+          "vtableOffset": "0xb34",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 19018,
+          "name": "AddRumourCategory",
+          "targetAddress": "0x008A9DB0",
+          "slotAddress": "0x01261A40",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddRumourCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb38",
+          "vtableOffset": "0xb38",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 19683,
+          "name": "AddNewRumourToCategory",
+          "targetAddress": "0x008A9DD0",
+          "slotAddress": "0x01261A44",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddNewRumourToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb44",
+          "vtableOffset": "0xb44",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 20691,
+          "name": "AddGossipVillage",
+          "targetAddress": "0x008A9E30",
+          "slotAddress": "0x01261A50",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipVillage",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb48",
+          "vtableOffset": "0xb48",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 21701,
+          "name": "AddGossipFactionToCategory",
+          "targetAddress": "0x008A9E60",
+          "slotAddress": "0x01261A54",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipFactionToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb34",
+          "vtableOffset": "0xb34",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 22613,
+          "name": "AddRumourCategory",
+          "targetAddress": "0x008A9DB0",
+          "slotAddress": "0x01261A40",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddRumourCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb38",
+          "vtableOffset": "0xb38",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 23278,
+          "name": "AddNewRumourToCategory",
+          "targetAddress": "0x008A9DD0",
+          "slotAddress": "0x01261A44",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddNewRumourToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb44",
+          "vtableOffset": "0xb44",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 24286,
+          "name": "AddGossipVillage",
+          "targetAddress": "0x008A9E30",
+          "slotAddress": "0x01261A50",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipVillage",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb48",
+          "vtableOffset": "0xb48",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 25296,
+          "name": "AddGossipFactionToCategory",
+          "targetAddress": "0x008A9E60",
+          "slotAddress": "0x01261A54",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipFactionToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb34",
+          "vtableOffset": "0xb34",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 26207,
+          "name": "AddRumourCategory",
+          "targetAddress": "0x008A9DB0",
+          "slotAddress": "0x01261A40",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddRumourCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb38",
+          "vtableOffset": "0xb38",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 26870,
+          "name": "AddNewRumourToCategory",
+          "targetAddress": "0x008A9DD0",
+          "slotAddress": "0x01261A44",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddNewRumourToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb44",
+          "vtableOffset": "0xb44",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 27877,
+          "name": "AddGossipVillage",
+          "targetAddress": "0x008A9E30",
+          "slotAddress": "0x01261A50",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipVillage",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb48",
+          "vtableOffset": "0xb48",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 28886,
+          "name": "AddGossipFactionToCategory",
+          "targetAddress": "0x008A9E60",
+          "slotAddress": "0x01261A54",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipFactionToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [
         "Sweet Kid",
         "TEXT_AI_GOSSIP_SWEET_KID",
@@ -41641,6 +42613,23 @@
           "vtableOffset": "0x160",
           "interfaceProvenance": "direct-gamescriptinterface-singleton",
           "offset": 2872
+        }
+      ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 2872,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
         }
       ],
       "strings": [],
@@ -41967,6 +42956,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -42395,6 +43385,83 @@
           "offset": 6190
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 1738,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x20",
+          "vtableOffset": "0x20",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 1791,
+          "name": "StartScriptingEntity",
+          "targetAddress": "0x0089B5B0",
+          "slotAddress": "0x01260F2C",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "StartScriptingEntity",
+          "forgeRuntimeMatch": false,
+          "forgeHostManaged": true,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5c8",
+          "vtableOffset": "0x5c8",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 5423,
+          "name": "StartMovieSequence",
+          "targetAddress": "0x0089B110",
+          "slotAddress": "0x012614D4",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "StartMovieSequence",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5cc",
+          "vtableOffset": "0x5cc",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 5888,
+          "name": "FixMovieSequenceCamera",
+          "targetAddress": "0x0088E500",
+          "slotAddress": "0x012614D8",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "FixMovieSequenceCamera",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5cc",
+          "vtableOffset": "0x5cc",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 6004,
+          "name": "FixMovieSequenceCamera",
+          "targetAddress": "0x0088E500",
+          "slotAddress": "0x012614D8",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "FixMovieSequenceCamera",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [
         "HERO",
         "ROSE",
@@ -42543,6 +43610,38 @@
           "vtableOffset": "0x160",
           "interfaceProvenance": "direct-gamescriptinterface-singleton",
           "offset": 359
+        }
+      ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 285,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 359,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
         }
       ],
       "strings": [],
@@ -43064,6 +44163,428 @@
           "offset": 7444
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x15c",
+          "vtableOffset": "0x15c",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 977,
+          "name": "RegisterTimer",
+          "targetAddress": "0x006E79E0",
+          "slotAddress": "0x01261068",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RegisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar5 + 0x164",
+          "vtableOffset": "0x164",
+          "interfaceProvenance": "local-copy-of-gamescriptinterface-singleton",
+          "offset": 1144,
+          "name": "SetTimer",
+          "targetAddress": "0x006E76E0",
+          "slotAddress": "0x01261070",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x504",
+          "vtableOffset": "0x504",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 1197,
+          "name": "DisplayQuestInfo",
+          "targetAddress": "0x00891920",
+          "slotAddress": "0x01261410",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DisplayQuestInfo",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x518",
+          "vtableOffset": "0x518",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 1421,
+          "name": "AddQuestInfoTimer",
+          "targetAddress": "0x00891B20",
+          "slotAddress": "0x01261424",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestInfoTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x51c",
+          "vtableOffset": "0x51c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2017,
+          "name": "AddQuestInfoCounter",
+          "targetAddress": "0x00891B40",
+          "slotAddress": "0x01261428",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestInfoCounter",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x51c",
+          "vtableOffset": "0x51c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2665,
+          "name": "AddQuestInfoCounter",
+          "targetAddress": "0x00891B40",
+          "slotAddress": "0x01261428",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestInfoCounter",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x15c",
+          "vtableOffset": "0x15c",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 3070,
+          "name": "RegisterTimer",
+          "targetAddress": "0x006E79E0",
+          "slotAddress": "0x01261068",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RegisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x164",
+          "vtableOffset": "0x164",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 3113,
+          "name": "SetTimer",
+          "targetAddress": "0x006E76E0",
+          "slotAddress": "0x01261070",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x168",
+          "vtableOffset": "0x168",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 3200,
+          "name": "GetTimer",
+          "targetAddress": "0x006E7710",
+          "slotAddress": "0x01261074",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 3268,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x53c",
+          "vtableOffset": "0x53c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 3431,
+          "name": "UpdateQuestInfoCounter",
+          "targetAddress": "0x00891BD0",
+          "slotAddress": "0x01261448",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "UpdateQuestInfoCounter",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x53c",
+          "vtableOffset": "0x53c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 3552,
+          "name": "UpdateQuestInfoCounter",
+          "targetAddress": "0x00891BD0",
+          "slotAddress": "0x01261448",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "UpdateQuestInfoCounter",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x2c",
+          "vtableOffset": "0x2c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 3745,
+          "name": "IsLevelLoaded",
+          "targetAddress": "0x0088E2A0",
+          "slotAddress": "0x01260F38",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "IsLevelLoaded",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 4343,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 4397,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x164",
+          "vtableOffset": "0x164",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 4625,
+          "name": "SetTimer",
+          "targetAddress": "0x006E76E0",
+          "slotAddress": "0x01261070",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x168",
+          "vtableOffset": "0x168",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 4731,
+          "name": "GetTimer",
+          "targetAddress": "0x006E7710",
+          "slotAddress": "0x01261074",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x164",
+          "vtableOffset": "0x164",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 4986,
+          "name": "SetTimer",
+          "targetAddress": "0x006E76E0",
+          "slotAddress": "0x01261070",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x168",
+          "vtableOffset": "0x168",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 5315,
+          "name": "GetTimer",
+          "targetAddress": "0x006E7710",
+          "slotAddress": "0x01261074",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x2c",
+          "vtableOffset": "0x2c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 5643,
+          "name": "IsLevelLoaded",
+          "targetAddress": "0x0088E2A0",
+          "slotAddress": "0x01260F38",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "IsLevelLoaded",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x548",
+          "vtableOffset": "0x548",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 6205,
+          "name": "RemoveQuestInfoElement",
+          "targetAddress": "0x00891C10",
+          "slotAddress": "0x01261454",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RemoveQuestInfoElement",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x548",
+          "vtableOffset": "0x548",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 6272,
+          "name": "RemoveQuestInfoElement",
+          "targetAddress": "0x00891C10",
+          "slotAddress": "0x01261454",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RemoveQuestInfoElement",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x548",
+          "vtableOffset": "0x548",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 6338,
+          "name": "RemoveQuestInfoElement",
+          "targetAddress": "0x00891C10",
+          "slotAddress": "0x01261454",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RemoveQuestInfoElement",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x504",
+          "vtableOffset": "0x504",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 6409,
+          "name": "DisplayQuestInfo",
+          "targetAddress": "0x00891920",
+          "slotAddress": "0x01261410",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DisplayQuestInfo",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 6612,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x2c",
+          "vtableOffset": "0x2c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 6957,
+          "name": "IsLevelLoaded",
+          "targetAddress": "0x0088E2A0",
+          "slotAddress": "0x01260F38",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "IsLevelLoaded",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 7396,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 7444,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [
         "HUD_CLOCK_ICON",
         "HUD_HERO_ICON",
@@ -43275,6 +44796,38 @@
           "vtableOffset": "0x160",
           "interfaceProvenance": "direct-gamescriptinterface-singleton",
           "offset": 2241
+        }
+      ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 2170,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 2241,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
         }
       ],
       "strings": [],
@@ -44019,6 +45572,458 @@
           "offset": 13668
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 1873,
+          "name": "IsRegionLoaded",
+          "targetAddress": "0x0088E300",
+          "slotAddress": "0x01260F3C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "IsRegionLoaded",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2354,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x30",
+          "vtableOffset": "0x30",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2639,
+          "name": "IsRegionLoaded",
+          "targetAddress": "0x0088E300",
+          "slotAddress": "0x01260F3C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "IsRegionLoaded",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5d0",
+          "vtableOffset": "0x5d0",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 3428,
+          "name": "FadeScreenOutUntilNextCallToFadeScreenIn",
+          "targetAddress": "0x008907E0",
+          "slotAddress": "0x012614DC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "FadeScreenOutUntilNextCallToFadeScreenIn",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 3633,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x178",
+          "vtableOffset": "0x178",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 3714,
+          "name": "TurnCreatureInto",
+          "targetAddress": "0x0089F4A0",
+          "slotAddress": "0x01261084",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "TurnCreatureInto",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xae8",
+          "vtableOffset": "0xae8",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 9187,
+          "name": "CacheMusicSet",
+          "targetAddress": "0x00891310",
+          "slotAddress": "0x012619F4",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "CacheMusicSet",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x450",
+          "vtableOffset": "0x450",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 9445,
+          "name": "ActivateQuest",
+          "targetAddress": "0x00892E80",
+          "slotAddress": "0x0126135C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "ActivateQuest",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 9852,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 10078,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x814",
+          "vtableOffset": "0x814",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 10133,
+          "name": "EntitySetAsKillable",
+          "targetAddress": "0x0088EB30",
+          "slotAddress": "0x01261720",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "EntitySetAsKillable",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xa20",
+          "vtableOffset": "0xa20",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 10232,
+          "name": "SetTimeAsStopped",
+          "targetAddress": "0x0088FE80",
+          "slotAddress": "0x0126192C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetTimeAsStopped",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xa18",
+          "vtableOffset": "0xa18",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 10331,
+          "name": "SetTimeOfDay",
+          "targetAddress": "0x0088FDC0",
+          "slotAddress": "0x01261924",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetTimeOfDay",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x8e8",
+          "vtableOffset": "0x8e8",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 10413,
+          "name": "SetHeroSleepingAsEnabled",
+          "targetAddress": "0x0088F440",
+          "slotAddress": "0x012617F4",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetHeroSleepingAsEnabled",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x554",
+          "vtableOffset": "0x554",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 10488,
+          "name": "DisplayMoneyBag",
+          "targetAddress": "0x00891C40",
+          "slotAddress": "0x01261460",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DisplayMoneyBag",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 10765,
+          "name": "GetThingWithScriptName",
+          "targetAddress": "0x008A7D60",
+          "slotAddress": "0x0126102C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetThingWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x6bc",
+          "vtableOffset": "0x6bc",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 11250,
+          "name": "OverrideAutomaticHouseLocking",
+          "targetAddress": "0x0088E030",
+          "slotAddress": "0x012615C8",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "OverrideAutomaticHouseLocking",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x6ac",
+          "vtableOffset": "0x6ac",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 11305,
+          "name": "OpenHouseDoors",
+          "targetAddress": "0x0088DFD0",
+          "slotAddress": "0x012615B8",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "OpenHouseDoors",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 11492,
+          "name": "GetActiveQuestName",
+          "targetAddress": "0x00891880",
+          "slotAddress": "0x01261948",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetActiveQuestName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x4d4",
+          "vtableOffset": "0x4d4",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 11561,
+          "name": "KickOffQuestStartScreen",
+          "targetAddress": "0x00896B60",
+          "slotAddress": "0x012613E0",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "KickOffQuestStartScreen",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xae0",
+          "vtableOffset": "0xae0",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 11945,
+          "name": "OverrideMusic",
+          "targetAddress": "0x00891220",
+          "slotAddress": "0x012619EC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "OverrideMusic",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 12145,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5d0",
+          "vtableOffset": "0x5d0",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 12530,
+          "name": "FadeScreenOutUntilNextCallToFadeScreenIn",
+          "targetAddress": "0x008907E0",
+          "slotAddress": "0x012614DC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "FadeScreenOutUntilNextCallToFadeScreenIn",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 12623,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x814",
+          "vtableOffset": "0x814",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 12678,
+          "name": "EntitySetAsKillable",
+          "targetAddress": "0x0088EB30",
+          "slotAddress": "0x01261720",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "EntitySetAsKillable",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x8e8",
+          "vtableOffset": "0x8e8",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 12715,
+          "name": "SetHeroSleepingAsEnabled",
+          "targetAddress": "0x0088F440",
+          "slotAddress": "0x012617F4",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetHeroSleepingAsEnabled",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 12911,
+          "name": "GetActiveQuestName",
+          "targetAddress": "0x00891880",
+          "slotAddress": "0x01261948",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetActiveQuestName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x480",
+          "vtableOffset": "0x480",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 12993,
+          "name": "SetQuestAsCompleted",
+          "targetAddress": "0x00892F80",
+          "slotAddress": "0x0126138C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetQuestAsCompleted",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xa3c",
+          "vtableOffset": "0xa3c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 13586,
+          "name": "GetActiveQuestName",
+          "targetAddress": "0x00891880",
+          "slotAddress": "0x01261948",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetActiveQuestName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar2 + 0x464",
+          "vtableOffset": "0x464",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 13668,
+          "name": "DeactivateQuestLater",
+          "targetAddress": "0x00892F10",
+          "slotAddress": "0x01261370",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeactivateQuestLater",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [
         "StartOakVale",
         "StartOakVale",
@@ -44275,6 +46280,38 @@
           "offset": 1712
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 1545,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 1712,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -44335,6 +46372,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "OBJECT_CEREMONIAL_SWORD",
         "OBJECT_CEREMONIAL_SHIELD",
@@ -44459,6 +46497,38 @@
           "vtableOffset": "0x160",
           "interfaceProvenance": "direct-gamescriptinterface-singleton",
           "offset": 1595
+        }
+      ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 1070,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 1595,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
         }
       ],
       "strings": [],
@@ -44657,6 +46727,23 @@
           "vtableOffset": "0x160",
           "interfaceProvenance": "direct-gamescriptinterface-singleton",
           "offset": 2892
+        }
+      ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 2892,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
         }
       ],
       "strings": [],
@@ -45070,6 +47157,7 @@
           "offset": 6808
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "CREATURE_NEW_CHICKEN_04",
         "",
@@ -45375,6 +47463,7 @@
           "offset": 4346
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "HERO",
         ""
@@ -45432,6 +47521,7 @@
       "calls": [],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -45637,6 +47727,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -45726,6 +47817,7 @@
       "calls": [],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -45797,6 +47889,68 @@
           "offset": 482
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x504",
+          "vtableOffset": "0x504",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 266,
+          "name": "DisplayQuestInfo",
+          "targetAddress": "0x00891920",
+          "slotAddress": "0x01261410",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DisplayQuestInfo",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x548",
+          "vtableOffset": "0x548",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 320,
+          "name": "RemoveQuestInfoElement",
+          "targetAddress": "0x00891C10",
+          "slotAddress": "0x01261454",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RemoveQuestInfoElement",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x548",
+          "vtableOffset": "0x548",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 401,
+          "name": "RemoveQuestInfoElement",
+          "targetAddress": "0x00891C10",
+          "slotAddress": "0x01261454",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RemoveQuestInfoElement",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x548",
+          "vtableOffset": "0x548",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 482,
+          "name": "RemoveQuestInfoElement",
+          "targetAddress": "0x00891C10",
+          "slotAddress": "0x01261454",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RemoveQuestInfoElement",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -45839,6 +47993,23 @@
           "vtableOffset": "0x53c",
           "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 329
+        }
+      ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x53c",
+          "vtableOffset": "0x53c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 329,
+          "name": "UpdateQuestInfoCounter",
+          "targetAddress": "0x00891BD0",
+          "slotAddress": "0x01261448",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "UpdateQuestInfoCounter",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
         }
       ],
       "strings": [],
@@ -45890,6 +48061,38 @@
           "vtableOffset": "0xb54",
           "interfaceProvenance": "script-instance-gamescriptinterface-field",
           "offset": 395
+        }
+      ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x53c",
+          "vtableOffset": "0x53c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 295,
+          "name": "UpdateQuestInfoCounter",
+          "targetAddress": "0x00891BD0",
+          "slotAddress": "0x01261448",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "UpdateQuestInfoCounter",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb54",
+          "vtableOffset": "0xb54",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 395,
+          "name": "UpdateOnlineScore_Archery",
+          "targetAddress": "0x008A1040",
+          "slotAddress": "0x01261A60",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "UpdateOnlineScore_Archery",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
         }
       ],
       "strings": [],
@@ -46027,6 +48230,98 @@
           "offset": 2703
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x51c",
+          "vtableOffset": "0x51c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 636,
+          "name": "AddQuestInfoCounter",
+          "targetAddress": "0x00891B40",
+          "slotAddress": "0x01261428",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestInfoCounter",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x51c",
+          "vtableOffset": "0x51c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 1310,
+          "name": "AddQuestInfoCounter",
+          "targetAddress": "0x00891B40",
+          "slotAddress": "0x01261428",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestInfoCounter",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x518",
+          "vtableOffset": "0x518",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 1920,
+          "name": "AddQuestInfoTimer",
+          "targetAddress": "0x00891B20",
+          "slotAddress": "0x01261424",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestInfoTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x53c",
+          "vtableOffset": "0x53c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2540,
+          "name": "UpdateQuestInfoCounter",
+          "targetAddress": "0x00891BD0",
+          "slotAddress": "0x01261448",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "UpdateQuestInfoCounter",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb54",
+          "vtableOffset": "0xb54",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2638,
+          "name": "UpdateOnlineScore_Archery",
+          "targetAddress": "0x008A1040",
+          "slotAddress": "0x01261A60",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "UpdateOnlineScore_Archery",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x504",
+          "vtableOffset": "0x504",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2703,
+          "name": "DisplayQuestInfo",
+          "targetAddress": "0x00891920",
+          "slotAddress": "0x01261410",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DisplayQuestInfo",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [
         "HUD_ICON_MULTI_ARROW",
         "HUD_ICON_ARROW",
@@ -46118,6 +48413,38 @@
           "offset": 1130
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 1059,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 1130,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -46184,6 +48511,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -46394,6 +48722,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -46613,6 +48942,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -46757,6 +49087,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -46890,6 +49221,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -47444,6 +49776,188 @@
           "offset": 11717
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb34",
+          "vtableOffset": "0xb34",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 1815,
+          "name": "AddRumourCategory",
+          "targetAddress": "0x008A9DB0",
+          "slotAddress": "0x01261A40",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddRumourCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb38",
+          "vtableOffset": "0xb38",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2509,
+          "name": "AddNewRumourToCategory",
+          "targetAddress": "0x008A9DD0",
+          "slotAddress": "0x01261A44",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddNewRumourToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb44",
+          "vtableOffset": "0xb44",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 3510,
+          "name": "AddGossipVillage",
+          "targetAddress": "0x008A9E30",
+          "slotAddress": "0x01261A50",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipVillage",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb48",
+          "vtableOffset": "0xb48",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 4505,
+          "name": "AddGossipFactionToCategory",
+          "targetAddress": "0x008A9E60",
+          "slotAddress": "0x01261A54",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipFactionToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb34",
+          "vtableOffset": "0xb34",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 5429,
+          "name": "AddRumourCategory",
+          "targetAddress": "0x008A9DB0",
+          "slotAddress": "0x01261A40",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddRumourCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb38",
+          "vtableOffset": "0xb38",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 6130,
+          "name": "AddNewRumourToCategory",
+          "targetAddress": "0x008A9DD0",
+          "slotAddress": "0x01261A44",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddNewRumourToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb44",
+          "vtableOffset": "0xb44",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 7145,
+          "name": "AddGossipVillage",
+          "targetAddress": "0x008A9E30",
+          "slotAddress": "0x01261A50",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipVillage",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb48",
+          "vtableOffset": "0xb48",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 8154,
+          "name": "AddGossipFactionToCategory",
+          "targetAddress": "0x008A9E60",
+          "slotAddress": "0x01261A54",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipFactionToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb34",
+          "vtableOffset": "0xb34",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 9063,
+          "name": "AddRumourCategory",
+          "targetAddress": "0x008A9DB0",
+          "slotAddress": "0x01261A40",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddRumourCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb38",
+          "vtableOffset": "0xb38",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 9723,
+          "name": "AddNewRumourToCategory",
+          "targetAddress": "0x008A9DD0",
+          "slotAddress": "0x01261A44",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddNewRumourToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb44",
+          "vtableOffset": "0xb44",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 10723,
+          "name": "AddGossipVillage",
+          "targetAddress": "0x008A9E30",
+          "slotAddress": "0x01261A50",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipVillage",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xb48",
+          "vtableOffset": "0xb48",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 11717,
+          "name": "AddGossipFactionToCategory",
+          "targetAddress": "0x008A9E60",
+          "slotAddress": "0x01261A54",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddGossipFactionToCategory",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [
         "ExposedMayor",
         "TEXT_AI_GOSSIP_MAYOR_EXPOSED",
@@ -47626,6 +50140,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -47768,6 +50283,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -47919,6 +50435,38 @@
           "offset": 2500
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 2429,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 2500,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [],
       "stateWrites": [
         {
@@ -48014,6 +50562,7 @@
       "calls": [],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -48221,6 +50770,23 @@
           "offset": 314
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 314,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [],
       "stateWrites": [
         {
@@ -48390,6 +50956,38 @@
           "vtableOffset": "0x160",
           "interfaceProvenance": "direct-gamescriptinterface-singleton",
           "offset": 2696
+        }
+      ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 1042,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 2696,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
         }
       ],
       "strings": [],
@@ -48572,6 +51170,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -48742,6 +51341,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [
         {
@@ -49332,6 +51932,7 @@
           "offset": 12779
         }
       ],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "OakValeFire",
         "",
@@ -49716,6 +52317,113 @@
           "offset": 8602
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x490",
+          "vtableOffset": "0x490",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 1759,
+          "name": "AddQuestCard",
+          "targetAddress": "0x008913F0",
+          "slotAddress": "0x0126139C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestCard",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x490",
+          "vtableOffset": "0x490",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 2983,
+          "name": "AddQuestCard",
+          "targetAddress": "0x008913F0",
+          "slotAddress": "0x0126139C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestCard",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x490",
+          "vtableOffset": "0x490",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 4099,
+          "name": "AddQuestCard",
+          "targetAddress": "0x008913F0",
+          "slotAddress": "0x0126139C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestCard",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x490",
+          "vtableOffset": "0x490",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 5228,
+          "name": "AddQuestCard",
+          "targetAddress": "0x008913F0",
+          "slotAddress": "0x0126139C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestCard",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x490",
+          "vtableOffset": "0x490",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 6343,
+          "name": "AddQuestCard",
+          "targetAddress": "0x008913F0",
+          "slotAddress": "0x0126139C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestCard",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x490",
+          "vtableOffset": "0x490",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 7484,
+          "name": "AddQuestCard",
+          "targetAddress": "0x008913F0",
+          "slotAddress": "0x0126139C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestCard",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x490",
+          "vtableOffset": "0x490",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 8602,
+          "name": "AddQuestCard",
+          "targetAddress": "0x008913F0",
+          "slotAddress": "0x0126139C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestCard",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [
         "Q_Arena",
         "OBJECT_QUEST_CARD_ARENA",
@@ -49767,6 +52475,7 @@
       "calls": [],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {},
@@ -49812,6 +52521,7 @@
       "calls": [],
       "directCallTargets": [],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {
@@ -53802,6 +56512,1568 @@
           "offset": 77124
         }
       ],
+      "resolvedInterfaceCalls": [
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 5528,
+          "name": "GetThingWithScriptName",
+          "targetAddress": "0x008A7D60",
+          "slotAddress": "0x0126102C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetThingWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 6110,
+          "name": "GetThingWithScriptName",
+          "targetAddress": "0x008A7D60",
+          "slotAddress": "0x0126102C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetThingWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x15c",
+          "vtableOffset": "0x15c",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 6530,
+          "name": "RegisterTimer",
+          "targetAddress": "0x006E79E0",
+          "slotAddress": "0x01261068",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RegisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 6970,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 7100,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x5b0",
+          "vtableOffset": "0x5b0",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 7224,
+          "name": "AddNewConversation",
+          "targetAddress": "0x008906C0",
+          "slotAddress": "0x012614BC",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "AddNewConversation",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x164",
+          "vtableOffset": "0x164",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 7968,
+          "name": "SetTimer",
+          "targetAddress": "0x006E76E0",
+          "slotAddress": "0x01261070",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x168",
+          "vtableOffset": "0x168",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 8029,
+          "name": "GetTimer",
+          "targetAddress": "0x006E7710",
+          "slotAddress": "0x01261074",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 8107,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x168",
+          "vtableOffset": "0x168",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 8285,
+          "name": "GetTimer",
+          "targetAddress": "0x006E7710",
+          "slotAddress": "0x01261074",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 8498,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x5b0",
+          "vtableOffset": "0x5b0",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 8622,
+          "name": "AddNewConversation",
+          "targetAddress": "0x008906C0",
+          "slotAddress": "0x012614BC",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "AddNewConversation",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x164",
+          "vtableOffset": "0x164",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 9364,
+          "name": "SetTimer",
+          "targetAddress": "0x006E76E0",
+          "slotAddress": "0x01261070",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x168",
+          "vtableOffset": "0x168",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 9425,
+          "name": "GetTimer",
+          "targetAddress": "0x006E7710",
+          "slotAddress": "0x01261074",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 9503,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x168",
+          "vtableOffset": "0x168",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 9681,
+          "name": "GetTimer",
+          "targetAddress": "0x006E7710",
+          "slotAddress": "0x01261074",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 9882,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x5b0",
+          "vtableOffset": "0x5b0",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 10010,
+          "name": "AddNewConversation",
+          "targetAddress": "0x008906C0",
+          "slotAddress": "0x012614BC",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "AddNewConversation",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x164",
+          "vtableOffset": "0x164",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 10776,
+          "name": "SetTimer",
+          "targetAddress": "0x006E76E0",
+          "slotAddress": "0x01261070",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x168",
+          "vtableOffset": "0x168",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 10839,
+          "name": "GetTimer",
+          "targetAddress": "0x006E7710",
+          "slotAddress": "0x01261074",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 10921,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x168",
+          "vtableOffset": "0x168",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 11105,
+          "name": "GetTimer",
+          "targetAddress": "0x006E7710",
+          "slotAddress": "0x01261074",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 11316,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x5b0",
+          "vtableOffset": "0x5b0",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 11369,
+          "name": "AddNewConversation",
+          "targetAddress": "0x008906C0",
+          "slotAddress": "0x012614BC",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "AddNewConversation",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 300",
+          "vtableOffset": "0x12c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 12566,
+          "name": "GetAllThingsWithScriptName",
+          "targetAddress": "0x008A8570",
+          "slotAddress": "0x01261038",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetAllThingsWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 300",
+          "vtableOffset": "0x12c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 13331,
+          "name": "GetAllThingsWithScriptName",
+          "targetAddress": "0x008A8570",
+          "slotAddress": "0x01261038",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetAllThingsWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 13966,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x138",
+          "vtableOffset": "0x138",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 14013,
+          "name": "GetFurthestWithScriptName",
+          "targetAddress": "0x0089A6E0",
+          "slotAddress": "0x01261044",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetFurthestWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 300",
+          "vtableOffset": "0x12c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 15436,
+          "name": "GetAllThingsWithScriptName",
+          "targetAddress": "0x008A8570",
+          "slotAddress": "0x01261038",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetAllThingsWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x17c",
+          "vtableOffset": "0x17c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 18928,
+          "name": "SetCreatureCreationDelayFrames",
+          "targetAddress": "0x006E7D30",
+          "slotAddress": "0x01261088",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetCreatureCreationDelayFrames",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x16c",
+          "vtableOffset": "0x16c",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 19685,
+          "name": "CreateCreature",
+          "targetAddress": "0x008A9100",
+          "slotAddress": "0x01261078",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "CreateCreature",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x180",
+          "vtableOffset": "0x180",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 20553,
+          "name": "ResetCreatureCreationDelayFrames",
+          "targetAddress": "0x006E7D40",
+          "slotAddress": "0x0126108C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "ResetCreatureCreationDelayFrames",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x800",
+          "vtableOffset": "0x800",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 20632,
+          "name": "EntitySetCutsceneBehaviour",
+          "targetAddress": "0x0088EA20",
+          "slotAddress": "0x0126170C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "EntitySetCutsceneBehaviour",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 20842,
+          "name": "GetThingWithScriptName",
+          "targetAddress": "0x008A7D60",
+          "slotAddress": "0x0126102C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetThingWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar25 + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 21773,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar25 + 0x70c",
+          "vtableOffset": "0x70c",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 21854,
+          "name": "GiveThingBestEnemyTarget",
+          "targetAddress": "0x008A0260",
+          "slotAddress": "0x01261618",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GiveThingBestEnemyTarget",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar25 + 0x120",
+          "vtableOffset": "0x120",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 23417,
+          "name": "GetThingWithScriptName",
+          "targetAddress": "0x008A7D60",
+          "slotAddress": "0x0126102C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetThingWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar25 + 0x70c",
+          "vtableOffset": "0x70c",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 23509,
+          "name": "GiveThingBestEnemyTarget",
+          "targetAddress": "0x008A0260",
+          "slotAddress": "0x01261618",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GiveThingBestEnemyTarget",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar25 + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 24613,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x17c",
+          "vtableOffset": "0x17c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 25092,
+          "name": "SetCreatureCreationDelayFrames",
+          "targetAddress": "0x006E7D30",
+          "slotAddress": "0x01261088",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetCreatureCreationDelayFrames",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar1 + 0x170",
+          "vtableOffset": "0x170",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 25987,
+          "name": "CreateCreatureNearby",
+          "targetAddress": "0x0089F300",
+          "slotAddress": "0x0126107C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "CreateCreatureNearby",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x17c",
+          "vtableOffset": "0x17c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 28704,
+          "name": "SetCreatureCreationDelayFrames",
+          "targetAddress": "0x006E7D30",
+          "slotAddress": "0x01261088",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetCreatureCreationDelayFrames",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar15 + 0x16c",
+          "vtableOffset": "0x16c",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 29467,
+          "name": "CreateCreature",
+          "targetAddress": "0x008A9100",
+          "slotAddress": "0x01261078",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "CreateCreature",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x180",
+          "vtableOffset": "0x180",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 30231,
+          "name": "ResetCreatureCreationDelayFrames",
+          "targetAddress": "0x006E7D40",
+          "slotAddress": "0x0126108C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "ResetCreatureCreationDelayFrames",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x800",
+          "vtableOffset": "0x800",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 30310,
+          "name": "EntitySetCutsceneBehaviour",
+          "targetAddress": "0x0088EA20",
+          "slotAddress": "0x0126170C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "EntitySetCutsceneBehaviour",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 30502,
+          "name": "GetThingWithScriptName",
+          "targetAddress": "0x008A7D60",
+          "slotAddress": "0x0126102C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetThingWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar25 + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 31536,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar25 + 0x70c",
+          "vtableOffset": "0x70c",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 31617,
+          "name": "GiveThingBestEnemyTarget",
+          "targetAddress": "0x008A0260",
+          "slotAddress": "0x01261618",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GiveThingBestEnemyTarget",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar25 + 0x120",
+          "vtableOffset": "0x120",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 33115,
+          "name": "GetThingWithScriptName",
+          "targetAddress": "0x008A7D60",
+          "slotAddress": "0x0126102C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetThingWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar25 + 0x70c",
+          "vtableOffset": "0x70c",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 33206,
+          "name": "GiveThingBestEnemyTarget",
+          "targetAddress": "0x008A0260",
+          "slotAddress": "0x01261618",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GiveThingBestEnemyTarget",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar25 + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 34309,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x17c",
+          "vtableOffset": "0x17c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 34788,
+          "name": "SetCreatureCreationDelayFrames",
+          "targetAddress": "0x006E7D30",
+          "slotAddress": "0x01261088",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetCreatureCreationDelayFrames",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar15 + 0x170",
+          "vtableOffset": "0x170",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 35689,
+          "name": "CreateCreatureNearby",
+          "targetAddress": "0x0089F300",
+          "slotAddress": "0x0126107C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "CreateCreatureNearby",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x17c",
+          "vtableOffset": "0x17c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 37349,
+          "name": "SetCreatureCreationDelayFrames",
+          "targetAddress": "0x006E7D30",
+          "slotAddress": "0x01261088",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetCreatureCreationDelayFrames",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x170",
+          "vtableOffset": "0x170",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 37813,
+          "name": "CreateCreatureNearby",
+          "targetAddress": "0x0089F300",
+          "slotAddress": "0x0126107C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "CreateCreatureNearby",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x180",
+          "vtableOffset": "0x180",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 38928,
+          "name": "ResetCreatureCreationDelayFrames",
+          "targetAddress": "0x006E7D40",
+          "slotAddress": "0x0126108C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "ResetCreatureCreationDelayFrames",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x17c",
+          "vtableOffset": "0x17c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 40115,
+          "name": "SetCreatureCreationDelayFrames",
+          "targetAddress": "0x006E7D30",
+          "slotAddress": "0x01261088",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "SetCreatureCreationDelayFrames",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x180",
+          "vtableOffset": "0x180",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 41512,
+          "name": "ResetCreatureCreationDelayFrames",
+          "targetAddress": "0x006E7D40",
+          "slotAddress": "0x0126108C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "ResetCreatureCreationDelayFrames",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x800",
+          "vtableOffset": "0x800",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 41842,
+          "name": "EntitySetCutsceneBehaviour",
+          "targetAddress": "0x0088EA20",
+          "slotAddress": "0x0126170C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "EntitySetCutsceneBehaviour",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar15 + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 41979,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar15 + 0x70c",
+          "vtableOffset": "0x70c",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 42027,
+          "name": "GiveThingBestEnemyTarget",
+          "targetAddress": "0x008A0260",
+          "slotAddress": "0x01261618",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GiveThingBestEnemyTarget",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 43793,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 46135,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x524",
+          "vtableOffset": "0x524",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 47086,
+          "name": "AddQuestInfoCounterList",
+          "targetAddress": "0x00891B50",
+          "slotAddress": "0x01261430",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestInfoCounterList",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x540",
+          "vtableOffset": "0x540",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 47668,
+          "name": "UpdateQuestInfoCounterList",
+          "targetAddress": "0x00891BE0",
+          "slotAddress": "0x0126144C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "UpdateQuestInfoCounterList",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 49247,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x504",
+          "vtableOffset": "0x504",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 49849,
+          "name": "DisplayQuestInfo",
+          "targetAddress": "0x00891920",
+          "slotAddress": "0x01261410",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DisplayQuestInfo",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 51534,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x540",
+          "vtableOffset": "0x540",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 52293,
+          "name": "UpdateQuestInfoCounterList",
+          "targetAddress": "0x00891BE0",
+          "slotAddress": "0x0126144C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "UpdateQuestInfoCounterList",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x548",
+          "vtableOffset": "0x548",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 52859,
+          "name": "RemoveQuestInfoElement",
+          "targetAddress": "0x00891C10",
+          "slotAddress": "0x01261454",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RemoveQuestInfoElement",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x524",
+          "vtableOffset": "0x524",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 53058,
+          "name": "AddQuestInfoCounterList",
+          "targetAddress": "0x00891B50",
+          "slotAddress": "0x01261430",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "AddQuestInfoCounterList",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x2c",
+          "vtableOffset": "0x2c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 53439,
+          "name": "IsLevelLoaded",
+          "targetAddress": "0x0088E2A0",
+          "slotAddress": "0x01260F38",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "IsLevelLoaded",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 55316,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x548",
+          "vtableOffset": "0x548",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 60726,
+          "name": "RemoveQuestInfoElement",
+          "targetAddress": "0x00891C10",
+          "slotAddress": "0x01261454",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "RemoveQuestInfoElement",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x504",
+          "vtableOffset": "0x504",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 62122,
+          "name": "DisplayQuestInfo",
+          "targetAddress": "0x00891920",
+          "slotAddress": "0x01261410",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DisplayQuestInfo",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5e0",
+          "vtableOffset": "0x5e0",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 62825,
+          "name": "Pause",
+          "targetAddress": "0x0088E4F0",
+          "slotAddress": "0x012614EC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "Pause",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0xae0",
+          "vtableOffset": "0xae0",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 63044,
+          "name": "OverrideMusic",
+          "targetAddress": "0x00891220",
+          "slotAddress": "0x012619EC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "OverrideMusic",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5e0",
+          "vtableOffset": "0x5e0",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 63102,
+          "name": "Pause",
+          "targetAddress": "0x0088E4F0",
+          "slotAddress": "0x012614EC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "Pause",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0xae4",
+          "vtableOffset": "0xae4",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 63169,
+          "name": "StopOverrideMusic",
+          "targetAddress": "0x008912A0",
+          "slotAddress": "0x012619F0",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "StopOverrideMusic",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x628",
+          "vtableOffset": "0x628",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 63263,
+          "name": "IsHeroControlledByPlayer",
+          "targetAddress": "0x0088E980",
+          "slotAddress": "0x01261534",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "IsHeroControlledByPlayer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 63353,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x628",
+          "vtableOffset": "0x628",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 63536,
+          "name": "IsHeroControlledByPlayer",
+          "targetAddress": "0x0088E980",
+          "slotAddress": "0x01261534",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "IsHeroControlledByPlayer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5c8",
+          "vtableOffset": "0x5c8",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 63932,
+          "name": "StartMovieSequence",
+          "targetAddress": "0x0089B110",
+          "slotAddress": "0x012614D4",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "StartMovieSequence",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 64872,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x20",
+          "vtableOffset": "0x20",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 64932,
+          "name": "StartScriptingEntity",
+          "targetAddress": "0x0089B5B0",
+          "slotAddress": "0x01260F2C",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "StartScriptingEntity",
+          "forgeRuntimeMatch": false,
+          "forgeHostManaged": true,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 65009,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 65235,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x20",
+          "vtableOffset": "0x20",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 65297,
+          "name": "StartScriptingEntity",
+          "targetAddress": "0x0089B5B0",
+          "slotAddress": "0x01260F2C",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "StartScriptingEntity",
+          "forgeRuntimeMatch": false,
+          "forgeHostManaged": true,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x1c8",
+          "vtableOffset": "0x1c8",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 66415,
+          "name": "GiveHeroYesNoQuestion",
+          "targetAddress": "0x0089E540",
+          "slotAddress": "0x012610D4",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GiveHeroYesNoQuestion",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x9c",
+          "vtableOffset": "0x9c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 67960,
+          "name": "MsgIsQuestionAnsweredYesOrNo",
+          "targetAddress": "0x00894300",
+          "slotAddress": "0x01260FA8",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "MsgIsQuestionAnsweredYesOrNo",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 68050,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x9c",
+          "vtableOffset": "0x9c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 68240,
+          "name": "MsgIsQuestionAnsweredYesOrNo",
+          "targetAddress": "0x00894300",
+          "slotAddress": "0x01260FA8",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "MsgIsQuestionAnsweredYesOrNo",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5d4",
+          "vtableOffset": "0x5d4",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 68640,
+          "name": "FadeScreenOut",
+          "targetAddress": "0x00890820",
+          "slotAddress": "0x012614E0",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "FadeScreenOut",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5e0",
+          "vtableOffset": "0x5e0",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 68735,
+          "name": "Pause",
+          "targetAddress": "0x0088E4F0",
+          "slotAddress": "0x012614EC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "Pause",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1f8",
+          "vtableOffset": "0x1f8",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 69337,
+          "name": "GiveHeroGold",
+          "targetAddress": "0x00898F40",
+          "slotAddress": "0x01261104",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GiveHeroGold",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x118",
+          "vtableOffset": "0x118",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 69524,
+          "name": "GetHero",
+          "targetAddress": "0x00891CA0",
+          "slotAddress": "0x01261024",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetHero",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "iVar10 + 0x5b0",
+          "vtableOffset": "0x5b0",
+          "interfaceProvenance": "local-copy-of-script-interface-vtable",
+          "offset": 69660,
+          "name": "AddNewConversation",
+          "targetAddress": "0x008906C0",
+          "slotAddress": "0x012614BC",
+          "forgeManifestMatch": false,
+          "forgeRuntimeName": "AddNewConversation",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5c0",
+          "vtableOffset": "0x5c0",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 70416,
+          "name": "IsConversationActive",
+          "targetAddress": "0x008907D0",
+          "slotAddress": "0x012614CC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "IsConversationActive",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x1c",
+          "vtableOffset": "0x1c",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 70520,
+          "name": "NewScriptFrame",
+          "targetAddress": "0x006E7410",
+          "slotAddress": "0x01260F28",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "NewScriptFrame",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x5c0",
+          "vtableOffset": "0x5c0",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 70715,
+          "name": "IsConversationActive",
+          "targetAddress": "0x008907D0",
+          "slotAddress": "0x012614CC",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "IsConversationActive",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x120",
+          "vtableOffset": "0x120",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 72070,
+          "name": "GetThingWithScriptName",
+          "targetAddress": "0x008A7D60",
+          "slotAddress": "0x0126102C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "GetThingWithScriptName",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "**(int **)(this + 0x40) + 0x188",
+          "vtableOffset": "0x188",
+          "interfaceProvenance": "script-instance-gamescriptinterface-field",
+          "offset": 73150,
+          "name": "CreateObject",
+          "targetAddress": "0x00894820",
+          "slotAddress": "0x01261094",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "CreateObject",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 75768,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        },
+        {
+          "operation": "indirect-call",
+          "targetExpression": "*DAT_0143e8f8 + 0x160",
+          "vtableOffset": "0x160",
+          "interfaceProvenance": "direct-gamescriptinterface-singleton",
+          "offset": 77124,
+          "name": "DeregisterTimer",
+          "targetAddress": "0x006E7690",
+          "slotAddress": "0x0126106C",
+          "forgeManifestMatch": true,
+          "forgeRuntimeName": "DeregisterTimer",
+          "forgeRuntimeMatch": true,
+          "forgeHostManaged": false,
+          "forgeRuntimeAbiBlocker": null
+        }
+      ],
       "strings": [
         "ARENA_SpawnPoint",
         "BigCreatureSpawnPoint",
@@ -54038,6 +58310,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [
         "ARENA_HECKLE_SMALL_LOOP",
         "ARENA_CHANT_LOOP",
@@ -54156,6 +58429,7 @@
         }
       ],
       "indirectCalls": [],
+      "resolvedInterfaceCalls": [],
       "strings": [],
       "stateWrites": [],
       "controlFlow": {

@@ -78,6 +78,10 @@ class NativeConversionReadinessTests(unittest.TestCase):
             blockers = result["summary"]["abiBlockedInterfaceMethods"]
             self.assertIn("std::list<CCharString>", blockers["MsgOnLevelLoaded"])
 
+    def test_wide_string_input_method_records_runtime_abi_blocker(self):
+        from tools.script_recovery.analyze_native_conversion_readiness import RUNTIME_ABI_BLOCKERS
+        self.assertIn("CWideString", RUNTIME_ABI_BLOCKERS["AddLogBookEntry"])
+
     def test_api_match_respects_symbol_boundaries(self):
         self.assertEqual(api_match("global_GetHero_CGameScriptInterface", ["GetHero"]), "GetHero")
         self.assertIsNone(api_match("global_GetHeroic", ["GetHero"]))

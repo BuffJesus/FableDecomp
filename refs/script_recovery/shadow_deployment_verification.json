@@ -1,0 +1,122 @@
+{
+  "complete": true,
+  "files": [
+    {
+      "path": "FableScriptExtender.dll",
+      "status": "intact",
+      "actualSha256": "0BCF232FABB355C555C6C97F1009EB4C3F80E280FE93DB91F57C2CE17D49A206",
+      "backupStatus": "intact"
+    },
+    {
+      "path": "FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+      "status": "intact",
+      "actualSha256": "CB80ED0506A8FB64B3252390150C991D7379D1EC8E1B735B9A481806BC1F0640",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+      "status": "intact",
+      "actualSha256": "FCF0FE6543A33F0C56EC1C33B4A0B3EF9313C14FFFAD2A99366F8D14748EDC3F",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+      "status": "intact",
+      "actualSha256": "3015363DE58F792577E8317C949D2F58C2CCD8A08D8FC58B1D63A974C65DC009",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+      "status": "intact",
+      "actualSha256": "534ED3877E23EF84ACC02E70BB55ADB0AE9936DADE86A2DAB28DD48F07B07234",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+      "status": "intact",
+      "actualSha256": "D80808673082FBADBF74FC3F025F73F9D44B01B3B0DF1B77F6548B80D2BC02CD",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+      "status": "intact",
+      "actualSha256": "62573209B4AD0B02654710A0E7A446A92C996073A678E26DFABAB1E377047A18",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+      "status": "intact",
+      "actualSha256": "A2ADB3006F57569FFF7796836F078C4D97BB425CF1F41517D0E17E48CFDCF5C5",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
+      "status": "intact",
+      "actualSha256": "2BEC7243756E96F37D8F1B3A0012C7493BC869C9DDFA35A72124F9146872034B",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+      "status": "intact",
+      "actualSha256": "EAE62610ACAF9A01A171B0CA978432182E6838F5B40DF2AB02C1605FF982AD2D",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/HerosOldHouse/HerosOldHouse.lua",
+      "status": "intact",
+      "actualSha256": "0B21ED36B8142143CDCF5CBB6775CA95E5F8F9619AE0272C41C50327B3E393A8",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/MazeResearch/Entities/EmptyGrave.lua",
+      "status": "intact",
+      "actualSha256": "448BC588F0144FE666BD3216BE5D6DE2FC3F99B9A1E86E2674E7E81E36DD67EF",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/MazeResearch/Entities/HistoryBookcase.lua",
+      "status": "intact",
+      "actualSha256": "B48BB2857167AC2A909D3A6D8264D4E6F52673F47CF3BA009E9B115BAFCC13F6",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/MazeResearch/MazeResearch.lua",
+      "status": "intact",
+      "actualSha256": "D6CF51AF31F1907FDE44D8211F6DE8F9E2398DBF533C9B987A7BB80CC8970CAB",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+      "status": "intact",
+      "actualSha256": "A78BFACA66CA91D985B25308425CDECBBB166EB9F247DA85FF518CDD8BF68958",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/MeetSister/Entities/MeetSisterSister.lua",
+      "status": "intact",
+      "actualSha256": "6D3BF1464C57EA9ED4451D3483384296E274EA74B80413CDF8BAE7D07EA11631",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/MeetSister/MeetSister.lua",
+      "status": "intact",
+      "actualSha256": "2F9F61757F0A9D80B8E272B1D3153409D8213E5BD3EB92CF1EE667AD5AEAC3FC",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/retail_shadow.json",
+      "status": "intact",
+      "actualSha256": "D3D0CBA69DCB78356205A081577756DAA1E8D4EFC3E961371F1DF53E480942D2",
+      "backupStatus": "not-required"
+    },
+    {
+      "path": "FSE/retail_shadow.lua",
+      "status": "intact",
+      "actualSha256": "1C854248F33B0267655A4719A7E5669BFE3E4397BED5C7F4314FE4DE0A7DA4DD",
+      "backupStatus": "not-required"
+    }
+  ],
+  "transaction": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\backups\\RetailShadowSmoke-20260901T015236Z\\deployment.json",
+  "intact": 19,
+  "failures": 0
+}

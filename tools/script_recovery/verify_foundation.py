@@ -105,6 +105,11 @@ def verify(root: Path) -> dict[str, Any]:
     check("address-keyed native helper bodies are exported",
           helper_summary["targets"] == 128 and helper_summary["decompiled"] == 127 and
           helper_summary["failed"] == 1 and helper_summary["consumerCalls"] == 1437 and
+          helper_summary["resolvedInterfaceCalls"] == 273 and
+          helper_summary["resolvedInterfaceMethods"] == 62 and
+          helper_summary["resolvedForgeRuntimeCalls"] == 270 and
+          helper_summary["missingForgeRuntimeMethods"] == ["AddLogBookEntry"] and
+          list(helper_summary["abiBlockedInterfaceMethods"]) == ["AddLogBookEntry"] and
           {row["targetAddress"] for row in helper_ir["helpers"]
            if row["status"] != "decompiled"} == {"0x00CBFB7D"},
           helper_summary)
@@ -121,6 +126,11 @@ def verify(root: Path) -> dict[str, Any]:
               "helpers": 7, "passed": 7, "checks": 43, "complete": True},
           {"manifest": helper_lua_manifest["summary"],
            "validation": helper_lua_validation["summary"]})
+    deployment = load(root / "shadow_deployment_verification.json")
+    check("reversible local shadow deployment is recorded intact",
+          deployment["complete"] and deployment["failures"] == 0 and
+          deployment["intact"] == 19 and len(deployment["files"]) == 19,
+          {"transaction": deployment["transaction"], "intact": deployment["intact"]})
     comparison = load(root / "seed_native_comparison.json")
     bindings_missing = {row["package"]: row["luaBindingsMissingNativeLifecycle"]
                         for row in comparison["scripts"] if row["luaBindingsMissingNativeLifecycle"]}

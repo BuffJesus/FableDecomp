@@ -31,11 +31,18 @@ Audit an installed transaction without changing the game directory:
 
 ```powershell
 python tools\script_recovery\deploy_shadow_smoke_package.py verify `
-  --transaction '<game>\FSE\backups\RetailShadowSmoke-<stamp>\deployment.json'
+  --transaction '<game>\FSE\backups\RetailShadowSmoke-<stamp>\deployment.json' `
+  --output refs\script_recovery\shadow_deployment_verification.json
 ```
 
 This checks every deployed hash and every required rollback backup. It does not launch Fable or
 touch saves.
+
+The current local transaction is
+`RetailShadowSmoke-20260901T015236Z`. Before deploying it, the preceding transaction was rolled back
+successfully (one overwritten DLL restored and 18 unchanged package files removed). The rebuilt
+package passed 16/16 offline script preflights, and the fresh deployment verifies 19/19 files with
+DLL SHA-256 `0BCF232FABB355C555C6C97F1009EB4C3F80E280FE93DB91F57C2CE17D49A206`.
 
 After manually backing up an existing ForgeFSE installation, copy the package contents into the
 game directory so `FableScriptExtender.dll` is beside `Fable.exe` and `FSE/retail_shadow.lua` is

@@ -186,6 +186,23 @@ retail global at `0x0143E920`, and `CEngineInternalPrimitiveBase::AddChildPrimit
 constant retail result. Together, seven generated helpers pass 43 native-derived checks. These are
 still standalone conversion units, not evidence that their parent retail scripts are deployable.
 
+Helper bodies use the same provenance rule as script lifecycles when resolving indirect engine
+dispatch: the base must be the explicit game-script-interface singleton or a proven script `+0x40`
+interface field, and the offset must exist in the dumped retail vtable. Helper analysis exposed 29
+previously unrequested offsets; extending the authoritative vtable dump from 191 to 219 executable
+slots resolves all 273 proven helper-interface calls to 62 exact methods. Calls through entity,
+resource, timer, or other unrelated vtables remain raw even when their numeric offsets happen to
+collide. The lifecycle totals remain 1,708 calls and 191 used methods because the new offsets occur
+inside helper bodies, not the five top-level lifecycle functions.
+
+Comparing those 273 helper calls with the bindings actually registered by ForgeFSE found three
+runtime method gaps. Forge already resolved all three retail pointers. The isolated Forge branch now
+exposes ABI-safe wrappers for `OverrideAutomaticHouseLocking` and `UpdateOnlineScore_Archery`, leaving
+270/273 helper calls directly callable or host-managed. The remaining three calls all target
+`AddLogBookEntry`; that method consumes retail `CWideString` objects, so constructing them with a
+modern `std::wstring` would cross the VC7 STL ABI. It remains one explicit method-level blocker until
+a retail-owned string adapter is recovered.
+
 The reproducible headless export accepts the correlated TSV followed by explicit name/address pairs:
 
 ```text

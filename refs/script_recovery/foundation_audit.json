@@ -1167,6 +1167,9 @@
     },
     {
       "evidence": {
+        "abiBlockedInterfaceMethods": {
+          "AddLogBookEntry": "retail method consumes CWideString objects; constructing them with a modern std::wstring would cross the VC7 STL ABI"
+        },
         "categories": {
           "engine-or-script-helper": 66,
           "lifecycle-cleanup": 29,
@@ -1180,6 +1183,22 @@
         "directDependencyTargets": 206,
         "failed": 1,
         "luaEmissionReady": 7,
+        "missingForgeInterfaceMethods": [
+          "AddLogBookEntry",
+          "AddNewConversation",
+          "IsHeroControlledByPlayer",
+          "OpenHouseDoors",
+          "OverrideAutomaticHouseLocking",
+          "StartScriptingEntity",
+          "UpdateOnlineScore_Archery"
+        ],
+        "missingForgeRuntimeMethods": [
+          "AddLogBookEntry"
+        ],
+        "resolvedForgeInterfaceCalls": 256,
+        "resolvedForgeRuntimeCalls": 270,
+        "resolvedInterfaceCalls": 273,
+        "resolvedInterfaceMethods": 62,
         "resolvedParentInitializers": 2,
         "semanticPatterns": 7,
         "stages": {
@@ -1209,6 +1228,14 @@
       "passed": true
     },
     {
+      "evidence": {
+        "intact": 19,
+        "transaction": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\backups\\RetailShadowSmoke-20260901T015236Z\\deployment.json"
+      },
+      "name": "reversible local shadow deployment is recorded intact",
+      "passed": true
+    },
+    {
       "evidence": {},
       "name": "all reconstructed parent bindings correlate with native lifecycle evidence",
       "passed": true
@@ -1217,7 +1244,7 @@
   "schema": "fable-script-recovery-foundation-audit/0.1",
   "summary": {
     "complete": true,
-    "passed": 15,
-    "total": 15
+    "passed": 16,
+    "total": 16
   }
 }

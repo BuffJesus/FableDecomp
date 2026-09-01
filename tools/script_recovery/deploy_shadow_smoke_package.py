@@ -143,6 +143,7 @@ def main() -> int:
     rollback_parser.add_argument("--transaction", type=Path, required=True)
     verify_parser = sub.add_parser("verify")
     verify_parser.add_argument("--transaction", type=Path, required=True)
+    verify_parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     if args.action == "deploy":
         result = deploy(args.package.resolve(), args.game_root.resolve())
@@ -150,6 +151,9 @@ def main() -> int:
         result = rollback(args.transaction.resolve())
     else:
         result = verify_deployment(args.transaction.resolve())
+        if args.output:
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result, sort_keys=True))
     return 0
 

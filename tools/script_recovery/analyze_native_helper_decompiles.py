@@ -15,9 +15,17 @@ try:
     from tools.script_recovery.extract_native_operation_ir import (
         STATE_WRITE_RE, calls, correlate_direct_call_targets, indirect_calls, strings,
     )
+    from tools.script_recovery.analyze_native_conversion_readiness import (
+        HOST_MANAGED_METHODS, LUA_QUEST_BINDING_RE, RUNTIME_ABI_BLOCKERS, RUNTIME_ALIASES,
+        load_interface_methods,
+    )
 except ModuleNotFoundError:  # direct execution from this directory
     from extract_native_operation_ir import (
         STATE_WRITE_RE, calls, correlate_direct_call_targets, indirect_calls, strings,
+    )
+    from analyze_native_conversion_readiness import (
+        HOST_MANAGED_METHODS, LUA_QUEST_BINDING_RE, RUNTIME_ABI_BLOCKERS, RUNTIME_ALIASES,
+        load_interface_methods,
     )
 
 
@@ -111,15 +119,45 @@ def load_consumers(ir_dir: Path | None, cluster_dir: Path | None) -> dict[str, l
 
 
 def analyze(source_path: Path, ir_dir: Path | None = None,
-            cluster_dir: Path | None = None) -> dict[str, Any]:
+            cluster_dir: Path | None = None, slots_path: Path | None = None,
+            interface_catalog_path: Path | None = None,
+            api_manifest_path: Path | None = None,
+            lua_manager_path: Path | None = None) -> dict[str, Any]:
     source = json.loads(source_path.read_text(encoding="utf-8-sig"))
     consumers_by_target = load_consumers(ir_dir, cluster_dir)
+    interface_methods = load_interface_methods(slots_path, interface_catalog_path)
+    api_names = set()
+    if api_manifest_path:
+        api_names = {row["name"] for row in json.loads(
+            api_manifest_path.read_text(encoding="utf-8-sig"))["functions"]}
+    runtime_bindings = set()
+    if lua_manager_path:
+        runtime_bindings = set(LUA_QUEST_BINDING_RE.findall(
+            lua_manager_path.read_text(encoding="utf-8-sig", errors="replace")))
     rows = []
     for helper in source["helpers"]:
         text = helper.get("decompile") or ""
         direct = helper.get("directCalls", [])
         parsed = correlate_direct_call_targets(calls(text), direct) if text else []
         indirect = indirect_calls(text)
+        resolved_interface_calls = []
+        for call in indirect:
+            if call.get("interfaceProvenance") in {
+                "direct-gamescriptinterface-singleton",
+                "local-copy-of-gamescriptinterface-singleton",
+                "script-instance-gamescriptinterface-field",
+                "local-copy-of-script-interface-vtable",
+            } and call.get("vtableOffset") in interface_methods:
+                method = interface_methods[call["vtableOffset"]]
+                runtime_name = RUNTIME_ALIASES.get(method["name"], method["name"])
+                resolved_interface_calls.append({
+                    **call, **method,
+                    "forgeManifestMatch": method["name"] in api_names,
+                    "forgeRuntimeName": runtime_name,
+                    "forgeRuntimeMatch": runtime_name in runtime_bindings,
+                    "forgeHostManaged": method["name"] in HOST_MANAGED_METHODS,
+                    "forgeRuntimeAbiBlocker": RUNTIME_ABI_BLOCKERS.get(method["name"]),
+                })
         semantics = semantic_patterns(text, direct, indirect)
         consumers = consumers_by_target.get(helper["targetAddress"], [])
         initializer = next((pattern for pattern in semantics
@@ -158,6 +196,7 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
             "decompileSha256": hashlib.sha256(text.encode("utf-8")).hexdigest() if text else None,
             "decompileLines": len(text.splitlines()) if text else 0,
             "calls": parsed, "directCallTargets": direct, "indirectCalls": indirect,
+            "resolvedInterfaceCalls": resolved_interface_calls,
             "strings": strings(text), "stateWrites": writes,
             "controlFlow": dict(sorted(controls.items())),
             "semanticPatterns": semantics,
@@ -170,6 +209,13 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
     stages = Counter(row["stage"] for row in rows)
     categories = Counter(row["category"] for row in rows)
     direct_calls = [call for row in rows for call in row["directCallTargets"]]
+    resolved_interface_calls = [call for row in rows for call in row["resolvedInterfaceCalls"]]
+    missing_manifest = sorted({call["name"] for call in resolved_interface_calls
+                               if not call["forgeManifestMatch"]})
+    missing_runtime = sorted({call["name"] for call in resolved_interface_calls
+                              if not call["forgeRuntimeMatch"] and not call["forgeHostManaged"]})
+    abi_blockers = {call["name"]: call["forgeRuntimeAbiBlocker"]
+                    for call in resolved_interface_calls if call["forgeRuntimeAbiBlocker"]}
     return {
         "schema": "fable-native-helper-operation-ir/0.1",
         "source": str(source_path.resolve()),
@@ -184,6 +230,15 @@ def analyze(source_path: Path, ir_dir: Path | None = None,
             "luaEmissionReady": sum(row["luaEmissionReady"] for row in rows),
             "resolvedParentInitializers": sum(row["parentInitializerEvidence"] is not None
                                               for row in rows),
+            "resolvedInterfaceCalls": len(resolved_interface_calls),
+            "resolvedInterfaceMethods": len({call["name"] for call in resolved_interface_calls}),
+            "resolvedForgeInterfaceCalls": sum(call["forgeManifestMatch"]
+                                               for call in resolved_interface_calls),
+            "resolvedForgeRuntimeCalls": sum(call["forgeRuntimeMatch"] or call["forgeHostManaged"]
+                                             for call in resolved_interface_calls),
+            "missingForgeInterfaceMethods": missing_manifest,
+            "missingForgeRuntimeMethods": missing_runtime,
+            "abiBlockedInterfaceMethods": dict(sorted(abi_blockers.items())),
             "stages": dict(sorted(stages.items())),
             "categories": dict(sorted(categories.items())),
         },
@@ -196,9 +251,15 @@ def main() -> int:
     parser.add_argument("--source", type=Path, required=True)
     parser.add_argument("--script-ir", type=Path)
     parser.add_argument("--clusters", type=Path)
+    parser.add_argument("--vtable-slots", type=Path)
+    parser.add_argument("--interface-catalog", type=Path)
+    parser.add_argument("--api-manifest", type=Path)
+    parser.add_argument("--lua-manager", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    result = analyze(args.source, args.script_ir, args.clusters)
+    result = analyze(args.source, args.script_ir, args.clusters,
+                     args.vtable_slots, args.interface_catalog,
+                     args.api_manifest, args.lua_manager)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result["summary"], sort_keys=True))
