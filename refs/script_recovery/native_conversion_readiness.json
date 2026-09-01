@@ -52,11 +52,2553 @@
     "abiBlockedInterfaceMethods": {
       "MsgOnLevelLoaded": "retail method writes std::list<CCharString>; ForgeFSE uses a newer MSVC STL ABI"
     },
+    "unresolvedNativeHelperMethods": 159,
+    "unresolvedNativeHelperCalls": 2218,
     "scriptsWithResolvedInterfaceCalls": 93,
     "stages": {
       "map-native-helpers": 161
     }
   },
+  "nativeHelperBacklog": [
+    {
+      "name": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
+      "calls": 125,
+      "scripts": 125,
+      "kinds": [
+        "cutscene_host",
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "BenTestScripts",
+        "CS_PlayCutscene",
+        "DanyalTestScripts",
+        "Empty",
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Gameflow",
+        "GameflowAssistance",
+        "Global_DebugCycleThroughSpeech",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "Global_ToggleTimeDisplay",
+        "Global_WatchForHeroDeath",
+        "GuildSealTriggerTest",
+        "HeroBoasts",
+        "HeroTurningDebugger",
+        "HitSwitchTest",
+        "MarkTestScripts",
+        "OracleMinigameTest",
+        "PersonalScriptMain",
+        "PersonalScript_Aardvark",
+        "PersonalScript_Empty",
+        "PersonalScript_GlobalThings",
+        "PersonalScript_alextest",
+        "ProximityPodiumTest",
+        "QR_EscortTrader_Manager",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_MeetSister",
+        "QS_ScytheInfo",
+        "Q_ArenaHoldingScript",
+        "Q_BanditCamp",
+        "Q_BanditCampBossBattle",
+        "Q_BanditCampHoldingScript",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_CinemaTest",
+        "Q_EndGame",
+        "Q_EndGameBossBattle",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionClifftopChase",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaidEvil",
+        "Q_OrchardFarmRaidGood",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictimChiefsHouse",
+        "Q_SummoningTheShip",
+        "Q_SunnyvaleMaster",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "ShowTargetedThingHealth",
+        "TestNewNav1",
+        "TestNewNav2",
+        "TestNewNav3",
+        "TestNewNav4",
+        "TestNewNav5",
+        "TestQuestCard1",
+        "TestQuestCard2",
+        "TestQuestCard3",
+        "TestTheInventory",
+        "TonyTestScripts",
+        "V_BanditToll",
+        "V_BeggarAndChild",
+        "V_ChapelOfEvil",
+        "V_DemonDoors",
+        "V_Fisherman",
+        "V_GhostGrannyNecklace",
+        "V_GuildMaster",
+        "V_HauntedHouse",
+        "V_HeroDolls",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_KnotholeGladeGates",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwist",
+        "V_Oracle",
+        "V_ParanoidWhispers",
+        "V_PicnicAreaAfterWaspBoss",
+        "V_RandomPopulationSim",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_StatueMaster",
+        "V_TempleOfLight",
+        "V_TrophyDealer",
+        "alextest",
+        "bandit_level_cutscene",
+        "guy_script",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "name": "CTCVillage::OnInitialActivate",
+      "calls": 121,
+      "scripts": 121,
+      "kinds": [
+        "cutscene_host",
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "BenTestScripts",
+        "CS_OakValeRevisited",
+        "GuildSealTriggerTest",
+        "HeroTurningDebugger",
+        "HitSwitchTest",
+        "MarkTestScripts",
+        "OracleMinigameTest",
+        "PersonalScript_Empty",
+        "PersonalScript_GlobalThings",
+        "PersonalScript_alextest",
+        "ProximityPodiumTest",
+        "QR_EscortTrader",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_MeetSister",
+        "QS_ScytheInfo",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_ArenaHoldingScript",
+        "Q_AwakeningTheOracle",
+        "Q_BanditCamp",
+        "Q_BanditCampBossBattle",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_CinemaTest",
+        "Q_DragonBossFight",
+        "Q_EndGame",
+        "Q_EndGameBossBattle",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionCamp",
+        "Q_MinionClifftopChase",
+        "Q_NewOakValeIntro",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_SummoningTheShip",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "Q_WizardBattle",
+        "TonyTestScripts",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BanditCampPath",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_BodyGuard",
+        "V_BookCollecting",
+        "V_Bordello",
+        "V_ChapelOfEvil",
+        "V_ChickenKicking",
+        "V_DemonDoors",
+        "V_ExposeMayor",
+        "V_Fisherman",
+        "V_FishingCompetition",
+        "V_FisticuffsClub",
+        "V_GhostGrannyNecklace",
+        "V_GuildMaster",
+        "V_HauntedHouse",
+        "V_HeroDolls",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_KnotholeGladeGates",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwist",
+        "V_MurderTwistFinal",
+        "V_Oracle",
+        "V_ParanoidWhispers",
+        "V_PicnicAreaAfterWaspBoss",
+        "V_RandomPopulationSim",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_SingingStones",
+        "V_StatueMaster",
+        "V_SwordInTheStone",
+        "V_TalentlessBard",
+        "V_TempleOfLight",
+        "V_TourGuide",
+        "V_TravellingHeroes",
+        "V_TrophyDealer",
+        "bandit_level_cutscene",
+        "guy_script"
+      ]
+    },
+    {
+      "name": "CScriptBase::AddEntityScriptBinding",
+      "calls": 615,
+      "scripts": 119,
+      "kinds": [
+        "personal",
+        "quest",
+        "repeatable_quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "BenTestScripts",
+        "GuildSealTriggerTest",
+        "HitSwitchTest",
+        "MarkTestScripts",
+        "OracleMinigameTest",
+        "PersonalScript_Empty",
+        "PersonalScript_GlobalThings",
+        "PersonalScript_alextest",
+        "ProximityPodiumTest",
+        "QR_EscortTrader",
+        "QS_GuardianSisterInfo",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "QS_GuardianTrophyDealerInfo",
+        "QS_MeetSister",
+        "QS_ScytheInfo",
+        "Q_AmbushTraders",
+        "Q_Arena",
+        "Q_ArenaHoldingScript",
+        "Q_AwakeningTheOracle",
+        "Q_BanditCamp",
+        "Q_BanditCampBossBattle",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_CinemaTest",
+        "Q_DragonBossFight",
+        "Q_EndGame",
+        "Q_EndGameBossBattle",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingSkill",
+        "Q_GuildTrainingWill",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HangingTreeEvil",
+        "Q_HangingTreeGood",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionCamp",
+        "Q_MinionClifftopChase",
+        "Q_NewOakValeIntro",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_PrisonEscapeRescueMother",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_SummoningTheShip",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_TraderEscort",
+        "Q_UndeadRising",
+        "Q_WaspBoss",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "Q_WizardBattle",
+        "TonyTestScripts",
+        "V_AmbushScam",
+        "V_ArcheryCompetition",
+        "V_AssassinAttacks",
+        "V_BanditCampPath",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_BodyGuard",
+        "V_BookCollecting",
+        "V_Bordello",
+        "V_ChapelOfEvil",
+        "V_ChickenKicking",
+        "V_DemonDoors",
+        "V_ExposeMayor",
+        "V_Fisherman",
+        "V_FishingCompetition",
+        "V_FisticuffsClub",
+        "V_GhostGrannyNecklace",
+        "V_GuildMaster",
+        "V_HauntedHouse",
+        "V_HeroDolls",
+        "V_HeroDuel",
+        "V_HiddenBooty",
+        "V_IntroductionToTrophies",
+        "V_KnotholeGladeGates",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwist",
+        "V_MurderTwistFinal",
+        "V_Oracle",
+        "V_ParanoidWhispers",
+        "V_PicnicAreaAfterWaspBoss",
+        "V_RandomPopulationSim",
+        "V_RockTrollFirstEncounter",
+        "V_SickChild",
+        "V_SingingStones",
+        "V_StatueMaster",
+        "V_SwordInTheStone",
+        "V_TalentlessBard",
+        "V_TempleOfLight",
+        "V_TourGuide",
+        "V_TravellingHeroes",
+        "V_TrophyDealer",
+        "bandit_level_cutscene",
+        "guy_script"
+      ]
+    },
+    {
+      "name": "C3DClothPrimitive::~C3DClothPrimitive",
+      "calls": 280,
+      "scripts": 64,
+      "kinds": [
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Gameflow",
+        "Global_DebugCycleThroughSpeech",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "LadyGreyWifeManager",
+        "PersonalScript_Aardvark",
+        "PersonalScript_Empty",
+        "QS_GuardianSisterInfo2_SisterInBanditCamp",
+        "Q_Arena",
+        "Q_ArenaHoldingScript",
+        "Q_BanditCampHoldingScript",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_BreakSiege",
+        "Q_EndGameBossBattle",
+        "Q_EndGameFocalSites",
+        "Q_FireHeart",
+        "Q_GuildTraining",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsDeparture",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsThunder",
+        "Q_HerosOldHouse",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_OrchardFarmRaid",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictim",
+        "Q_RansomVictimChiefsHouse",
+        "Q_TentacleKrakenBossFight",
+        "Q_TraderConflictEvil",
+        "Q_TraderConflictGood",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "TestQuestCard1",
+        "V_AmbushScam",
+        "V_BanditToll",
+        "V_BeardyBaldy",
+        "V_BeggarAndChild",
+        "V_ChapelOfEvil",
+        "V_HauntedHouse",
+        "V_KnotholeGladeGates",
+        "V_MayorsInvitation",
+        "V_MazeResearch",
+        "V_MurderTwistFinal",
+        "V_TempleOfLight",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "name": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+      "calls": 164,
+      "scripts": 31,
+      "kinds": [
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "script",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Gameflow",
+        "Global_DebugCycleThroughSpeech",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "PersonalScript_Aardvark",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_EndGameBossBattle",
+        "Q_FireHeart",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "V_BanditCampPath",
+        "V_BeggarAndChild",
+        "V_MurderTwistFinal",
+        "V_SickChild",
+        "bandit_level_cutscene",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "name": "NHeroInformationScreens::CBase::CBase",
+      "calls": 119,
+      "scripts": 26,
+      "kinds": [
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "script",
+        "test",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Pickpocket",
+        "Global_DebugCycleThroughSpeech",
+        "LadyGreyWifeManager",
+        "PersonalScript_Aardvark",
+        "PersonalScript_Empty",
+        "Q_BountyHunt",
+        "Q_BowerstoneTownLifeIntro",
+        "Q_GuildTraining",
+        "Q_GuildTrainingDeparture",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_OrchardFarmRaid",
+        "Q_PrisonRace",
+        "Q_PrisonWardenGame",
+        "Q_RansomVictimChiefsHouse",
+        "Q_TraderConflictEvil",
+        "Q_UndeadRising",
+        "TestQuestCard1",
+        "V_AmbushScam",
+        "V_Bordello",
+        "V_FisticuffsClub",
+        "V_HauntedHouse",
+        "V_LostTrader",
+        "V_MayorsInvitation",
+        "V_StatueMaster",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "name": "CBaseIntelligentPointer::CBaseIntelligentPointer",
+      "calls": 42,
+      "scripts": 22,
+      "kinds": [
+        "cutscene_host",
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "script",
+        "village"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Global_DebugCycleThroughSpeech",
+        "PersonalScript_Aardvark",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_WhiteBalverineWW",
+        "V_BanditCampPath",
+        "V_BeggarAndChild",
+        "bandit_level_cutscene",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "name": "CTimer::~CTimer",
+      "calls": 22,
+      "scripts": 18,
+      "kinds": [
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTraining",
+        "Q_GuildTrainingPreMelee",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HobbeCave",
+        "Q_HobbeToothContest",
+        "Q_MinionClifftopChase",
+        "Q_PrisonEscapeRescueMother",
+        "Q_SummoningTheShip",
+        "Q_TraderConflictEvil",
+        "Q_TraderEscort",
+        "Q_WaspBoss",
+        "V_BeggarAndChild",
+        "V_IntroductionToTrophies"
+      ]
+    },
+    {
+      "name": "CCarriedReadableDef::CCarriedReadableDef",
+      "calls": 79,
+      "scripts": 17,
+      "kinds": [
+        "expression",
+        "global",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish",
+        "Gameflow",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_FireHeart",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "V_BanditCampPath",
+        "V_BeggarAndChild",
+        "V_MurderTwistFinal"
+      ]
+    },
+    {
+      "name": "CMemoryDataOutputStream::Clear",
+      "calls": 66,
+      "scripts": 15,
+      "kinds": [
+        "cutscene_host",
+        "global",
+        "personal",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "Gameflow",
+        "PersonalScript_Aardvark",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "V_BanditCampPath",
+        "V_BeggarAndChild"
+      ]
+    },
+    {
+      "name": "RunCutsceneMacro_Func",
+      "calls": 44,
+      "scripts": 15,
+      "kinds": [
+        "cutscene_host",
+        "global",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "Gameflow",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "V_BanditCampPath",
+        "V_BeggarAndChild"
+      ]
+    },
+    {
+      "name": "StdMap_Destroy_API",
+      "calls": 34,
+      "scripts": 15,
+      "kinds": [
+        "global",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Gameflow",
+        "QS_ScytheInfo",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "V_BanditCampPath",
+        "V_BeggarAndChild"
+      ]
+    },
+    {
+      "name": "C3DMeshInfo::HasPhysicsMesh",
+      "calls": 52,
+      "scripts": 13,
+      "kinds": [
+        "global",
+        "master",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Gameflow",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_WhiteBalverineKnotholeGlade",
+        "Q_WhiteBalverineWW",
+        "V_BeggarAndChild",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "name": "StdMap_Construct_API",
+      "calls": 28,
+      "scripts": 13,
+      "kinds": [
+        "global",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Gameflow",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_GuildTrainingWoodsWill",
+        "Q_HobbeToothContest",
+        "Q_OakValeBanditRaid",
+        "Q_OpeningGraveyardSecretPassage",
+        "Q_UndeadRising",
+        "Q_WhiteBalverineKnotholeGlade",
+        "V_BanditCampPath",
+        "V_BeggarAndChild"
+      ]
+    },
+    {
+      "name": "CPhysicsMeshInfo::~CPhysicsMeshInfo",
+      "calls": 20,
+      "scripts": 13,
+      "kinds": [
+        "cutscene_host",
+        "expression",
+        "global",
+        "master",
+        "personal",
+        "quest",
+        "script"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "Expression_Follow",
+        "Expression_Wait",
+        "Gameflow",
+        "PersonalScript_Aardvark",
+        "Q_Arena",
+        "Q_BountyHunt",
+        "Q_GuildTrainingMelee",
+        "Q_GuildTrainingPreMelee",
+        "Q_OakValeBanditRaid",
+        "Q_WhiteBalverineWW",
+        "bandit_level_cutscene",
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "name": "CSubtitleRenderer::SetText",
+      "calls": 35,
+      "scripts": 11,
+      "kinds": [
+        "cutscene_host",
+        "global",
+        "quest"
+      ],
+      "consumers": [
+        "CS_OakValeRevisited",
+        "Gameflow",
+        "Q_GuildTrainingMelee",
+        "Q_HeroSouls",
+        "Q_HeroSoulsArena",
+        "Q_HeroSoulsBriar",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsNostro",
+        "Q_HeroSoulsThunder",
+        "Q_PrisonEscapeRescueMother"
+      ]
+    },
+    {
+      "name": "CScriptThing::CScriptThing",
+      "calls": 11,
+      "scripts": 11,
+      "kinds": [
+        "expression",
+        "global",
+        "quest"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish",
+        "Expression_Follow",
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Expression_Wait",
+        "Global_GiveHeroItemsFromRewardChest",
+        "Global_OpenChest",
+        "Global_TeleportToHeroGuild",
+        "Q_TraderConflictEvil"
+      ]
+    },
+    {
+      "name": "free",
+      "calls": 15,
+      "scripts": 7,
+      "kinds": [
+        "cutscene_host",
+        "personal",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "PersonalScriptMain",
+        "Q_EndGameFocalSites",
+        "Q_HeroSoulsArena",
+        "Q_TraderConflictEvil",
+        "Q_UndeadRising",
+        "V_HauntedHouse"
+      ]
+    },
+    {
+      "name": "rand",
+      "calls": 15,
+      "scripts": 7,
+      "kinds": [
+        "expression",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Q_Arena",
+        "Q_EndGameFocalSites",
+        "V_ArcheryCompetition",
+        "V_FishingCompetition"
+      ]
+    },
+    {
+      "name": "CCharString__AssignFromWide",
+      "calls": 12,
+      "scripts": 7,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_AmbushTraders",
+        "Q_BountyHunt",
+        "Q_EndGameFocalSites",
+        "Q_HeroSoulsGuildmaster",
+        "Q_HerosOldHouse",
+        "Q_OrchardFarmRaid",
+        "Q_WhiteBalverineWW"
+      ]
+    },
+    {
+      "name": "resize",
+      "calls": 14,
+      "scripts": 6,
+      "kinds": [
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Q_FireHeart",
+        "V_AssassinAttacks",
+        "V_BookCollecting",
+        "V_FishingCompetition",
+        "V_MurderTwistFinal",
+        "V_TalentlessBard"
+      ]
+    },
+    {
+      "name": "__ftol2",
+      "calls": 10,
+      "scripts": 6,
+      "kinds": [
+        "expression",
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Picklock",
+        "Expression_Pickpocket",
+        "Expression_Steal",
+        "Q_HobbeToothContest",
+        "Q_WhiteBalverineKnotholeGlade",
+        "V_BodyGuard"
+      ]
+    },
+    {
+      "name": "CFileInstaller::CActiveFile::OnReadFinished",
+      "calls": 7,
+      "scripts": 5,
+      "kinds": [
+        "global",
+        "personal",
+        "quest",
+        "script"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech",
+        "HeroBoasts",
+        "PersonalScriptMain",
+        "Q_BountyHunt",
+        "Q_GuildTrainingWoodsWill"
+      ]
+    },
+    {
+      "name": "CFourierAnalysis::CFourierAnalysis",
+      "calls": 11,
+      "scripts": 4,
+      "kinds": [
+        "cutscene_host",
+        "global",
+        "quest"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "Gameflow",
+        "Q_BountyHunt",
+        "Q_WhiteBalverineWW"
+      ]
+    },
+    {
+      "name": "LTextTreeWalkThrough__Dtor",
+      "calls": 6,
+      "scripts": 4,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "QS_ScytheInfo",
+        "Q_Arena",
+        "Q_HeroSoulsMother",
+        "Q_HeroSoulsThunder"
+      ]
+    },
+    {
+      "name": "push_back",
+      "calls": 4,
+      "scripts": 4,
+      "kinds": [
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Q_FireHeart",
+        "Q_GuildTrainingWoodsWill",
+        "V_BookCollecting",
+        "V_MurderTwistFinal"
+      ]
+    },
+    {
+      "name": "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ",
+      "calls": 3,
+      "scripts": 3,
+      "kinds": [
+        "expression",
+        "global"
+      ],
+      "consumers": [
+        "Expression_Dig",
+        "Expression_Fish",
+        "Global_OpenChest"
+      ]
+    },
+    {
+      "name": "strstr",
+      "calls": 3,
+      "scripts": 3,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ChapelOfEvil",
+        "V_SwordInTheStone",
+        "V_TempleOfLight"
+      ]
+    },
+    {
+      "name": "std__vector__Reallocate",
+      "calls": 50,
+      "scripts": 2,
+      "kinds": [
+        "quest",
+        "repeatable_quest"
+      ],
+      "consumers": [
+        "QR_EscortTrader",
+        "Q_NewOakValeIntro"
+      ]
+    },
+    {
+      "name": "CDefendingCombatantInfo::CCombatWheel::ResetRings",
+      "calls": 6,
+      "scripts": 2,
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Gameflow",
+        "Global_OpenChest"
+      ]
+    },
+    {
+      "name": "CCharString_OperatorPlus_API",
+      "calls": 3,
+      "scripts": 2,
+      "kinds": [
+        "personal",
+        "village"
+      ],
+      "consumers": [
+        "PersonalScriptMain",
+        "V_FishingCompetition"
+      ]
+    },
+    {
+      "name": "CCharString__NotEqual",
+      "calls": 2,
+      "scripts": 2,
+      "kinds": [
+        "expression",
+        "village"
+      ],
+      "consumers": [
+        "Expression_Fish",
+        "V_ArcheryCompetition"
+      ]
+    },
+    {
+      "name": "CScriptBase::KillSpawnedFunction",
+      "calls": 2,
+      "scripts": 2,
+      "kinds": [
+        "expression",
+        "test"
+      ],
+      "consumers": [
+        "Expression_Wait",
+        "TestQuestCard1"
+      ]
+    },
+    {
+      "name": "GFIntToCharString_API",
+      "calls": 2,
+      "scripts": 2,
+      "kinds": [
+        "global",
+        "village"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech",
+        "V_FishingCompetition"
+      ]
+    },
+    {
+      "name": "KillAllThingsInVector",
+      "calls": 2,
+      "scripts": 2,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HobbeToothContest",
+        "Q_UndeadRising"
+      ]
+    },
+    {
+      "name": "LTextTreeWalkThrough_Destructor",
+      "calls": 2,
+      "scripts": 2,
+      "kinds": [
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Q_HeroSoulsGuildmaster",
+        "V_MazeResearch"
+      ]
+    },
+    {
+      "name": "NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript",
+      "calls": 2,
+      "scripts": 2,
+      "kinds": [
+        "quest",
+        "village"
+      ],
+      "consumers": [
+        "Q_MinionCamp",
+        "V_FisticuffsClub"
+      ]
+    },
+    {
+      "name": "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ",
+      "calls": 2,
+      "scripts": 2,
+      "kinds": [
+        "personal",
+        "quest"
+      ],
+      "consumers": [
+        "PersonalScript_Aardvark",
+        "Q_HobbeToothContest"
+      ]
+    },
+    {
+      "name": "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z",
+      "calls": 2,
+      "scripts": 2,
+      "kinds": [
+        "personal",
+        "quest"
+      ],
+      "consumers": [
+        "PersonalScript_Aardvark",
+        "Q_HobbeToothContest"
+      ]
+    },
+    {
+      "name": "malloc",
+      "calls": 2,
+      "scripts": 2,
+      "kinds": [
+        "cutscene_host",
+        "quest"
+      ],
+      "consumers": [
+        "CS_PlayCutscene",
+        "Q_WhiteBalverineWW"
+      ]
+    },
+    {
+      "name": "std__vector__push_back",
+      "calls": 25,
+      "scripts": 1,
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Gameflow"
+      ]
+    },
+    {
+      "name": "Activate",
+      "calls": 6,
+      "scripts": 1,
+      "kinds": [
+        "repeatable_quest"
+      ],
+      "consumers": [
+        "QR_EscortTrader_Manager"
+      ]
+    },
+    {
+      "name": "CCharString__AppendCString",
+      "calls": 6,
+      "scripts": 1,
+      "kinds": [
+        "personal"
+      ],
+      "consumers": [
+        "PersonalScriptMain"
+      ]
+    },
+    {
+      "name": "CCharString__AppendData",
+      "calls": 5,
+      "scripts": 1,
+      "kinds": [
+        "personal"
+      ],
+      "consumers": [
+        "PersonalScriptMain"
+      ]
+    },
+    {
+      "name": "_CIfmod",
+      "calls": 4,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_StatueMaster"
+      ]
+    },
+    {
+      "name": "fpatan",
+      "calls": 4,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_StatueMaster"
+      ]
+    },
+    {
+      "name": "CScriptBase_FilterCombatantsByType",
+      "calls": 3,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_TraderConflictEvil"
+      ]
+    },
+    {
+      "name": "Game_InitializeHeroCharacter",
+      "calls": 3,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSouls"
+      ]
+    },
+    {
+      "name": "Script_InitializeComponents",
+      "calls": 3,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsGuildmaster"
+      ]
+    },
+    {
+      "name": "WatchForRoundsInArena_Setup",
+      "calls": 3,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsArena"
+      ]
+    },
+    {
+      "name": "AssignMoralityEtcForEvilEnding",
+      "calls": 2,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AmbushScam"
+      ]
+    },
+    {
+      "name": "CNavigatorQueueManager::FrameUpdate",
+      "calls": 2,
+      "scripts": 1,
+      "kinds": [
+        "personal"
+      ],
+      "consumers": [
+        "PersonalScriptMain"
+      ]
+    },
+    {
+      "name": "CQ_HangingTreeEvilScript::CleanUp",
+      "calls": 2,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HangingTreeEvil"
+      ]
+    },
+    {
+      "name": "CWideScreenMagicPauseEntities::~CWideScreenMagicPauseEntities",
+      "calls": 2,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "name": "Game_InitializeRound",
+      "calls": 2,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "name": "Main_InitializeFourierAnalysis",
+      "calls": 2,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsThunder"
+      ]
+    },
+    {
+      "name": "Main_InitializeFourierAnalysis_1",
+      "calls": 2,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsMother"
+      ]
+    },
+    {
+      "name": "Main_InitializeFourierAnalysis_2",
+      "calls": 2,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsNostro"
+      ]
+    },
+    {
+      "name": "Main_InitializeFourierAnalysis_3",
+      "calls": 2,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_TraderConflictEvil"
+      ]
+    },
+    {
+      "name": "Main_InitializeHeroMorphComponents",
+      "calls": 2,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_AwakeningTheOracle"
+      ]
+    },
+    {
+      "name": "Math_CartesianToSpherical",
+      "calls": 2,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_EndGameFocalSites"
+      ]
+    },
+    {
+      "name": "NScript::CQ_ArenaScript::AnimateCrowd",
+      "calls": 2,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "name": "RemoveParty",
+      "calls": 2,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HangingTreeGood"
+      ]
+    },
+    {
+      "name": "C3DAnimationUtil::C3DAnimationUtil",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Gameflow"
+      ]
+    },
+    {
+      "name": "CCharString__ToUpper",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "personal"
+      ],
+      "consumers": [
+        "PersonalScriptMain"
+      ]
+    },
+    {
+      "name": "CEngineInternalPrimitiveBase::AddChildPrimitive",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "repeatable_quest"
+      ],
+      "consumers": [
+        "QR_EscortTrader"
+      ]
+    },
+    {
+      "name": "CGameflowScript::DeclareGossipCategories",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ExposeMayor"
+      ]
+    },
+    {
+      "name": "CMainGameComponentInit::CMainGameComponentInit",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_BountyHunt"
+      ]
+    },
+    {
+      "name": "CMemoryAllocatorVariableSize::GetNoAllocatedAreas",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech"
+      ]
+    },
+    {
+      "name": "CParticleEmitter_Dtor",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_AmbushTraders"
+      ]
+    },
+    {
+      "name": "CParticleEmitter_Dtor_2",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_DragonBossFight"
+      ]
+    },
+    {
+      "name": "CParticleEmitter_Dtor_3",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_EndGameFocalSites"
+      ]
+    },
+    {
+      "name": "CParticleEmitter_Dtor_4",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "name": "CParticleEmitter_Dtor_5",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HangingTreeGood"
+      ]
+    },
+    {
+      "name": "CParticleEmitter_Dtor_6",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsBriar"
+      ]
+    },
+    {
+      "name": "CParticleEmitter_Dtor_7",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_NewOakValeIntro"
+      ]
+    },
+    {
+      "name": "CParticleEmitter_Dtor_8",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_OrchardFarmRaid"
+      ]
+    },
+    {
+      "name": "CParticleEmitter___CParticleEmitter",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_SecretPassage"
+      ]
+    },
+    {
+      "name": "CParticleEmitter___CParticleEmitter_0x24c80",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "repeatable_quest"
+      ],
+      "consumers": [
+        "QR_EscortTrader"
+      ]
+    },
+    {
+      "name": "CParticleEmitter___CParticleEmitter_0xb6ab0",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_MurderTwistFinal"
+      ]
+    },
+    {
+      "name": "CParticleEmitter___CParticleEmitter_0xd39f0",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_SingingStones"
+      ]
+    },
+    {
+      "name": "CParticleEmitter___CParticleEmitter_0xe8c30",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "cutscene_host"
+      ],
+      "consumers": [
+        "CS_OakValeRevisited"
+      ]
+    },
+    {
+      "name": "CParticleEmitter___CParticleEmitter_MeshFree",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_BookCollecting"
+      ]
+    },
+    {
+      "name": "CParticleEmitter___CParticleEmitter_Minimal",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_BodyGuard"
+      ]
+    },
+    {
+      "name": "CParticleEmitter___CParticleEmitter_Simple",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AmbushScam"
+      ]
+    },
+    {
+      "name": "CParticleEmitter___CParticleEmitter_Variant",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_BeardyBaldy"
+      ]
+    },
+    {
+      "name": "CParticleEmitter___CParticleEmitter_WithMemFree",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AssassinAttacks"
+      ]
+    },
+    {
+      "name": "CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_AwakeningTheOracle"
+      ]
+    },
+    {
+      "name": "CQ_GuildTrainingScript::CMeleeApprentice::Init",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_KnotholeGladeGates"
+      ]
+    },
+    {
+      "name": "CQ_NewOakValeIntroScript::DoMission",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_NewOakValeIntro"
+      ]
+    },
+    {
+      "name": "CScriptBase_ProcessNPCConversations",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_TraderConflictGood"
+      ]
+    },
+    {
+      "name": "CScriptGameResourceObject_LoadGuildComplex",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_EndGameBossBattle"
+      ]
+    },
+    {
+      "name": "CScriptThing::_GetAngleXY_CScriptThing__UBEMXZ",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "name": "CSystemManager::~CSystemManager",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_Bordello"
+      ]
+    },
+    {
+      "name": "CTCCarryable::OnKill",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech"
+      ]
+    },
+    {
+      "name": "CTCInventoryItem::OnDie",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_FishingCompetition"
+      ]
+    },
+    {
+      "name": "CTCTavernGame::~CTCTavernGame",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_TravellingHeroes"
+      ]
+    },
+    {
+      "name": "CTimer::CTimer",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_GuildTrainingPreMelee"
+      ]
+    },
+    {
+      "name": "CV_ChickenKickingScript::Init",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_WizardBattle"
+      ]
+    },
+    {
+      "name": "CV_SickChildScript::CWomanToAttract::DoLeavingCutscene",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsBriar"
+      ]
+    },
+    {
+      "name": "CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "name": "CWorld::DrawGetEnvironment",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "name": "CleanUp",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HangingTreeGood"
+      ]
+    },
+    {
+      "name": "CleanUpHeroDuel",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_HeroDuel"
+      ]
+    },
+    {
+      "name": "DisableFollowers",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "name": "DoMission_OakValeRevisited",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "cutscene_host"
+      ],
+      "consumers": [
+        "CS_OakValeRevisited"
+      ]
+    },
+    {
+      "name": "DoublyLinkedList_Init",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "personal"
+      ],
+      "consumers": [
+        "PersonalScriptMain"
+      ]
+    },
+    {
+      "name": "GFGetPreMainMemoryUsed",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "personal"
+      ],
+      "consumers": [
+        "PersonalScriptMain"
+      ]
+    },
+    {
+      "name": "GoTalkToBeardyBaldy",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_BeardyBaldy"
+      ]
+    },
+    {
+      "name": "GossipSetup",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_RansomVictim"
+      ]
+    },
+    {
+      "name": "InitialiseVariables",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_FisticuffsClub"
+      ]
+    },
+    {
+      "name": "Is2DDistanceBetweenThingsUnder",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "expression"
+      ],
+      "consumers": [
+        "Expression_Dig"
+      ]
+    },
+    {
+      "name": "LTextTreeWalkThrough_Cleanup",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech"
+      ]
+    },
+    {
+      "name": "LTextTreeWalkThrough_dtor",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech"
+      ]
+    },
+    {
+      "name": "List_Node_Initialize",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech"
+      ]
+    },
+    {
+      "name": "Main_InitializeCreatureSpawners",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_BountyHunt"
+      ]
+    },
+    {
+      "name": "Main_InitializeFourierAnalysis_4",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_TraderConflictGood"
+      ]
+    },
+    {
+      "name": "NScript::CGameflowScript::DeclareGossipCategories",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_GuildTraining"
+      ]
+    },
+    {
+      "name": "NScript::CLadyGreyWifeManagerScript::~CLadyGreyWifeManagerScript",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "script"
+      ],
+      "consumers": [
+        "LadyGreyWifeManager"
+      ]
+    },
+    {
+      "name": "NScript::CQ_ArenaScript::GetFanfareMusic",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "name": "NScript::CQ_ArenaScript::InitialiseVariables",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "name": "NScript::CQ_ArenaScript::PlayWave",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "name": "NScript::CQ_ArenaScript::~CQ_ArenaScript",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "name": "NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::OnPredicateFail",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ArcheryCompetition"
+      ]
+    },
+    {
+      "name": "NScript::CQ_HangingTreeEvilScript::~CQ_HangingTreeEvilScript",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HangingTreeEvil"
+      ]
+    },
+    {
+      "name": "NScript::CQ_HangingTreeGoodScript::CHTG_Audience::~CHTG_Audience",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_WizardBattle"
+      ]
+    },
+    {
+      "name": "NScript::CQ_HobbeToothContestScript::DisplayTimer",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HobbeToothContest"
+      ]
+    },
+    {
+      "name": "NScript::CQ_OpeningGraveyardSecretPassageScript::InitializeVariables",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_OpeningGraveyardSecretPassage"
+      ]
+    },
+    {
+      "name": "NScript::CQ_RansomVictimScript::~CQ_RansomVictimScript",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_RansomVictim"
+      ]
+    },
+    {
+      "name": "NScript::CTonyTestScriptsScript::AddQuestsToGuild",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "test"
+      ],
+      "consumers": [
+        "TonyTestScripts"
+      ]
+    },
+    {
+      "name": "NScript::CV_ArcheryCompetitionScript::AddArcheryQuestInfo",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ArcheryCompetition"
+      ]
+    },
+    {
+      "name": "NScript::CV_ArcheryCompetitionScript::RemoveArcheryQuestInfo",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ArcheryCompetition"
+      ]
+    },
+    {
+      "name": "NScript::CV_ArcheryCompetitionScript::UpdateHighScore",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ArcheryCompetition"
+      ]
+    },
+    {
+      "name": "NScript::CV_ArcheryCompetitionScript::~CV_ArcheryCompetitionScript",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ArcheryCompetition"
+      ]
+    },
+    {
+      "name": "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AssassinAttacks"
+      ]
+    },
+    {
+      "name": "NScript::CV_ExposeMayorScript::~CV_ExposeMayorScript",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ExposeMayor"
+      ]
+    },
+    {
+      "name": "NScript::CV_SickChildScript::~CV_SickChildScript",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_ChickenKicking"
+      ]
+    },
+    {
+      "name": "NScript::CV_SwordInTheStoneScript::~CV_SwordInTheStoneScript",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_SwordInTheStone"
+      ]
+    },
+    {
+      "name": "NScript::CV_TalentlessBardScript::~CV_TalentlessBardScript",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_TalentlessBard"
+      ]
+    },
+    {
+      "name": "NTCScriptedControl::CActionMoveTo::~CActionMoveTo",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_BanditCampPath"
+      ]
+    },
+    {
+      "name": "NTCScriptedControl::CActionTalkedTo::~CActionTalkedTo",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_TourGuide"
+      ]
+    },
+    {
+      "name": "PopulateLevel",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_OakValeBanditRaid"
+      ]
+    },
+    {
+      "name": "RemoveDregs",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HangingTreeGood"
+      ]
+    },
+    {
+      "name": "RestoreFollowers",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "name": "RunArrivalCutscene",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_GuildTraining"
+      ]
+    },
+    {
+      "name": "SetupPuzzleBlocks",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "name": "SpringAmbush",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AmbushScam"
+      ]
+    },
+    {
+      "name": "StartRound",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "name": "StdMap_DestroyNode",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "cutscene_host"
+      ],
+      "consumers": [
+        "CS_PlayCutscene"
+      ]
+    },
+    {
+      "name": "Std_Deque_Construct",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_Arena"
+      ]
+    },
+    {
+      "name": "TricksterApproach",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_AmbushScam"
+      ]
+    },
+    {
+      "name": "_E2",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_HauntedHouse"
+      ]
+    },
+    {
+      "name": "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "global"
+      ],
+      "consumers": [
+        "Global_DebugCycleThroughSpeech"
+      ]
+    },
+    {
+      "name": "_SummonerLightningOrbAttackTarget_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing___Z",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "master"
+      ],
+      "consumers": [
+        "joss_test_scripts"
+      ]
+    },
+    {
+      "name": "_vector_constructor_iterator_",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_OpeningGraveyardSecretPassage"
+      ]
+    },
+    {
+      "name": "std__vector__pop_back",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_TraderConflictEvil"
+      ]
+    },
+    {
+      "name": "std_vector_CConversation_Assign",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "village"
+      ],
+      "consumers": [
+        "V_BookCollecting"
+      ]
+    },
+    {
+      "name": "std_vector_Conversation_Assign",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_FireHeart"
+      ]
+    },
+    {
+      "name": "std_vector_Conversation_Assign3",
+      "calls": 1,
+      "scripts": 1,
+      "kinds": [
+        "quest"
+      ],
+      "consumers": [
+        "Q_HeroSoulsArena"
+      ]
+    }
+  ],
   "scripts": [
     {
       "name": "DanyalTestScripts",
@@ -97,6 +2639,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\DanyalTestScripts.json"
     },
     {
@@ -120,6 +2665,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Empty.json"
     },
     {
@@ -141,6 +2689,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\GameflowAssistance.json"
     },
     {
@@ -166,6 +2717,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_ToggleTimeDisplay.json"
     },
     {
@@ -187,6 +2741,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_WatchForHeroDeath.json"
     },
     {
@@ -305,6 +2862,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_OrchardFarmRaidEvil.json"
     },
     {
@@ -423,6 +2983,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_OrchardFarmRaidGood.json"
     },
     {
@@ -446,6 +3009,9 @@
         "CParticleEmitter___CParticleEmitter"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CParticleEmitter___CParticleEmitter": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_SecretPassage.json"
     },
     {
@@ -487,6 +3053,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_SunnyvaleMaster.json"
     },
     {
@@ -508,6 +3077,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\ShowTargetedThingHealth.json"
     },
     {
@@ -529,6 +3101,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestNewNav1.json"
     },
     {
@@ -550,6 +3125,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestNewNav2.json"
     },
     {
@@ -571,6 +3149,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestNewNav3.json"
     },
     {
@@ -592,6 +3173,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestNewNav4.json"
     },
     {
@@ -613,6 +3197,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestNewNav5.json"
     },
     {
@@ -636,6 +3223,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestQuestCard2.json"
     },
     {
@@ -659,6 +3249,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestQuestCard3.json"
     },
     {
@@ -779,6 +3372,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestTheInventory.json"
     },
     {
@@ -803,6 +3399,9 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\alextest.json"
     },
     {
@@ -828,6 +3427,10 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CFileInstaller::CActiveFile::OnReadFinished": 2,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\HeroBoasts.json"
     },
     {
@@ -852,6 +3455,10 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\HeroTurningDebugger.json"
     },
     {
@@ -1401,6 +4008,10 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "Activate": 6,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QR_EscortTrader_Manager.json"
     },
     {
@@ -1557,6 +4168,10 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_BanditCampHoldingScript.json"
     },
     {
@@ -1582,6 +4197,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\BenTestScripts.json"
     },
     {
@@ -1889,6 +4509,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 2,
+        "CScriptThing::CScriptThing": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_GiveHeroItemsFromRewardChest.json"
     },
     {
@@ -1914,6 +4539,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\GuildSealTriggerTest.json"
     },
     {
@@ -1939,6 +4569,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\HitSwitchTest.json"
     },
     {
@@ -2799,6 +5434,11 @@
         "NScript::CLadyGreyWifeManagerScript::~CLadyGreyWifeManagerScript"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 5,
+        "NHeroInformationScreens::CBase::CBase": 2,
+        "NScript::CLadyGreyWifeManagerScript::~CLadyGreyWifeManagerScript": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\LadyGreyWifeManager.json"
     },
     {
@@ -2824,6 +5464,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\MarkTestScripts.json"
     },
     {
@@ -2853,6 +5498,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\OracleMinigameTest.json"
     },
     {
@@ -2878,6 +5528,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 17,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\PersonalScript_GlobalThings.json"
     },
     {
@@ -2903,6 +5558,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\PersonalScript_alextest.json"
     },
     {
@@ -2928,6 +5588,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\ProximityPodiumTest.json"
     },
     {
@@ -2958,6 +5623,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QS_GuardianSisterInfo.json"
     },
     {
@@ -2985,6 +5655,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QS_GuardianTrophyDealerInfo.json"
     },
     {
@@ -3012,6 +5687,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QS_MeetSister.json"
     },
     {
@@ -3358,6 +6038,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_BanditCamp.json"
     },
     {
@@ -3540,6 +6225,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 14,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_BanditCampBossBattle.json"
     },
     {
@@ -3583,6 +6273,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_CinemaTest.json"
     },
     {
@@ -3643,6 +6338,11 @@
         "CTCVillage::OnInitialActivate"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CParticleEmitter_Dtor_2": 1,
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_DragonBossFight.json"
     },
     {
@@ -3671,6 +6371,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 5,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_EndGame.json"
     },
     {
@@ -3696,6 +6401,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingSkill.json"
     },
     {
@@ -3721,6 +6431,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingWill.json"
     },
     {
@@ -3828,6 +6543,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingWoodsMelee.json"
     },
     {
@@ -3999,6 +6719,11 @@
         "NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 5,
+        "CTCVillage::OnInitialActivate": 1,
+        "NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_MinionCamp.json"
     },
     {
@@ -4091,6 +6816,11 @@
         "NScript::CV_SickChildScript::~CV_SickChildScript"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 4,
+        "CTCVillage::OnInitialActivate": 1,
+        "NScript::CV_SickChildScript::~CV_SickChildScript": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_ChickenKicking.json"
     },
     {
@@ -4116,6 +6846,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 14,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_DemonDoors.json"
     },
     {
@@ -4146,6 +6881,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 4,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_Fisherman.json"
     },
     {
@@ -4319,6 +7059,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_GhostGrannyNecklace.json"
     },
     {
@@ -4344,6 +7089,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_GuildMaster.json"
     },
     {
@@ -4369,6 +7119,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_HeroDolls.json"
     },
     {
@@ -4405,6 +7160,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_HiddenBooty.json"
     },
     {
@@ -4448,6 +7208,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 7,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_MurderTwist.json"
     },
     {
@@ -4473,6 +7238,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_Oracle.json"
     },
     {
@@ -4498,6 +7268,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_ParanoidWhispers.json"
     },
     {
@@ -4523,6 +7298,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_PicnicAreaAfterWaspBoss.json"
     },
     {
@@ -4566,6 +7346,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_RandomPopulationSim.json"
     },
     {
@@ -4600,6 +7385,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_RockTrollFirstEncounter.json"
     },
     {
@@ -4692,6 +7482,11 @@
         "CTCVillage::OnInitialActivate"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CParticleEmitter___CParticleEmitter_0xd39f0": 1,
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_SingingStones.json"
     },
     {
@@ -4720,6 +7515,11 @@
         "NTCScriptedControl::CActionTalkedTo::~CActionTalkedTo"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "NTCScriptedControl::CActionTalkedTo::~CActionTalkedTo": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_TourGuide.json"
     },
     {
@@ -4746,6 +7546,11 @@
         "CTCVillage::OnInitialActivate"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 13,
+        "CTCTavernGame::~CTCTavernGame": 1,
+        "CTCVillage::OnInitialActivate": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_TravellingHeroes.json"
     },
     {
@@ -4812,6 +7617,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_TrophyDealer.json"
     },
     {
@@ -4837,6 +7647,11 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\guy_script.json"
     },
     {
@@ -4865,6 +7680,12 @@
         "DoMission_OakValeRevisited"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CParticleEmitter___CParticleEmitter_0xe8c30": 1,
+        "CSubtitleRenderer::SetText": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "DoMission_OakValeRevisited": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\CS_OakValeRevisited.json"
     },
     {
@@ -4898,6 +7719,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QS_GuardianSisterInfo2_SisterInBanditCamp.json"
     },
     {
@@ -5549,6 +8376,12 @@
         "CTCVillage::OnInitialActivate"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CCharString__AssignFromWide": 3,
+        "CParticleEmitter_Dtor": 1,
+        "CScriptBase::AddEntityScriptBinding": 10,
+        "CTCVillage::OnInitialActivate": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_AmbushTraders.json"
     },
     {
@@ -5646,6 +8479,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CScriptBase::AddEntityScriptBinding": 6,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_ArenaHoldingScript.json"
     },
     {
@@ -6176,6 +9015,12 @@
         "Main_InitializeHeroMorphComponents"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip": 1,
+        "CScriptBase::AddEntityScriptBinding": 11,
+        "CTCVillage::OnInitialActivate": 1,
+        "Main_InitializeHeroMorphComponents": 2
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_AwakeningTheOracle.json"
     },
     {
@@ -6320,6 +9165,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CScriptBase::AddEntityScriptBinding": 9,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_BreakSiege.json"
     },
     {
@@ -6372,6 +9223,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingDeparture.json"
     },
     {
@@ -6517,6 +9374,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 2,
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingWoodsDeparture.json"
     },
     {
@@ -7117,6 +9980,12 @@
         "NScript::CQ_HangingTreeEvilScript::~CQ_HangingTreeEvilScript"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CQ_HangingTreeEvilScript::CleanUp": 2,
+        "CScriptBase::AddEntityScriptBinding": 8,
+        "CTCVillage::OnInitialActivate": 1,
+        "NScript::CQ_HangingTreeEvilScript::~CQ_HangingTreeEvilScript": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HangingTreeEvil.json"
     },
     {
@@ -7738,6 +10607,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 15,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HobbeCave.json"
     },
     {
@@ -8023,6 +10898,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 20,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 2,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_MinionClifftopChase.json"
     },
     {
@@ -8099,6 +10980,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 6,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_SummoningTheShip.json"
     },
     {
@@ -8143,6 +11030,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_TentacleKrakenBossFight.json"
     },
     {
@@ -8561,6 +11454,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 14,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_TraderEscort.json"
     },
     {
@@ -8869,6 +11768,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 9,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_WaspBoss.json"
     },
     {
@@ -8962,6 +11867,12 @@
         "NScript::CQ_HangingTreeGoodScript::CHTG_Audience::~CHTG_Audience"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 6,
+        "CTCVillage::OnInitialActivate": 1,
+        "CV_ChickenKickingScript::Init": 1,
+        "NScript::CQ_HangingTreeGoodScript::CHTG_Audience::~CHTG_Audience": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_WizardBattle.json"
     },
     {
@@ -8998,6 +11909,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CScriptBase::KillSpawnedFunction": 1,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TestQuestCard1.json"
     },
     {
@@ -9024,6 +11941,12 @@
         "NScript::CTonyTestScriptsScript::AddQuestsToGuild"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "NScript::CTonyTestScriptsScript::AddQuestsToGuild": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\TonyTestScripts.json"
     },
     {
@@ -9055,6 +11978,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 4,
+        "CScriptBase::AddEntityScriptBinding": 10,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BanditToll.json"
     },
     {
@@ -9238,6 +12167,12 @@
         "__ftol2"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CParticleEmitter___CParticleEmitter_Minimal": 1,
+        "CScriptBase::AddEntityScriptBinding": 5,
+        "CTCVillage::OnInitialActivate": 1,
+        "__ftol2": 4
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BodyGuard.json"
     },
     {
@@ -9264,6 +12199,12 @@
         "NHeroInformationScreens::CBase::CBase"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 7,
+        "CSystemManager::~CSystemManager": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NHeroInformationScreens::CBase::CBase": 2
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_Bordello.json"
     },
     {
@@ -9325,6 +12266,12 @@
         "NScript::CV_ExposeMayorScript::~CV_ExposeMayorScript"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CGameflowScript::DeclareGossipCategories": 1,
+        "CScriptBase::AddEntityScriptBinding": 5,
+        "CTCVillage::OnInitialActivate": 1,
+        "NScript::CV_ExposeMayorScript::~CV_ExposeMayorScript": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_ExposeMayor.json"
     },
     {
@@ -9696,6 +12643,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "CleanUpHeroDuel": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_HeroDuel.json"
     },
     {
@@ -9760,6 +12713,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 4,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 2,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_IntroductionToTrophies.json"
     },
     {
@@ -9830,6 +12789,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NHeroInformationScreens::CBase::CBase": 3,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_LostTrader.json"
     },
     {
@@ -9863,6 +12828,12 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 11,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_SickChild.json"
     },
     {
@@ -10133,6 +13104,12 @@
         "strstr"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "NScript::CV_SwordInTheStoneScript::~CV_SwordInTheStoneScript": 1,
+        "strstr": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_SwordInTheStone.json"
     },
     {
@@ -10182,6 +13159,12 @@
         "resize"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "NScript::CV_TalentlessBardScript::~CV_TalentlessBardScript": 1,
+        "resize": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_TalentlessBard.json"
     },
     {
@@ -10511,6 +13494,13 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 4,
+        "CCarriedReadableDef::CCarriedReadableDef": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
+        "CScriptThing::CScriptThing": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_TeleportToHeroGuild.json"
     },
     {
@@ -10752,6 +13742,13 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CScriptBase::AddEntityScriptBinding": 30,
+        "CTCVillage::OnInitialActivate": 1,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\PersonalScript_Empty.json"
     },
     {
@@ -10895,6 +13892,13 @@
         "std__vector__Reallocate"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CEngineInternalPrimitiveBase::AddChildPrimitive": 1,
+        "CParticleEmitter___CParticleEmitter_0x24c80": 1,
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "std__vector__Reallocate": 8
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QR_EscortTrader.json"
     },
     {
@@ -11030,6 +14034,13 @@
         "StdMap_Destroy_API"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "LTextTreeWalkThrough__Dtor": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "StdMap_Destroy_API": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\QS_ScytheInfo.json"
     },
     {
@@ -11067,6 +14078,13 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 4,
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_BowerstoneTownLifeIntro.json"
     },
     {
@@ -11100,6 +14118,13 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CCharString__AssignFromWide": 1,
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HerosOldHouse.json"
     },
     {
@@ -11213,6 +14238,13 @@
         "std__vector__Reallocate"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CParticleEmitter_Dtor_7": 1,
+        "CQ_NewOakValeIntroScript::DoMission": 1,
+        "CScriptBase::AddEntityScriptBinding": 16,
+        "CTCVillage::OnInitialActivate": 1,
+        "std__vector__Reallocate": 42
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_NewOakValeIntro.json"
     },
     {
@@ -11557,6 +14589,13 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 15,
+        "CSubtitleRenderer::SetText": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_PrisonEscapeRescueMother.json"
     },
     {
@@ -11591,6 +14630,13 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CScriptBase::AddEntityScriptBinding": 6,
+        "CTCVillage::OnInitialActivate": 1,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_PrisonRace.json"
     },
     {
@@ -11625,6 +14671,13 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CScriptBase::AddEntityScriptBinding": 4,
+        "CTCVillage::OnInitialActivate": 1,
+        "NHeroInformationScreens::CBase::CBase": 4,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_PrisonWardenGame.json"
     },
     {
@@ -12187,6 +15240,13 @@
         "NScript::CQ_RansomVictimScript::~CQ_RansomVictimScript"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CScriptBase::AddEntityScriptBinding": 10,
+        "CTCVillage::OnInitialActivate": 1,
+        "GossipSetup": 1,
+        "NScript::CQ_RansomVictimScript::~CQ_RansomVictimScript": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_RansomVictim.json"
     },
     {
@@ -12224,6 +15284,13 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 9,
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NHeroInformationScreens::CBase::CBase": 2,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_RansomVictimChiefsHouse.json"
     },
     {
@@ -12264,6 +15331,13 @@
         "resize"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CParticleEmitter___CParticleEmitter_WithMemFree": 1,
+        "CScriptBase::AddEntityScriptBinding": 4,
+        "CTCVillage::OnInitialActivate": 1,
+        "NScript::CV_AssassinAttacksScript::InitialiseRegionSpecificInfo": 1,
+        "resize": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_AssassinAttacks.json"
     },
     {
@@ -12621,6 +15695,13 @@
         "GoTalkToBeardyBaldy"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 2,
+        "CParticleEmitter___CParticleEmitter_Variant": 1,
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "GoTalkToBeardyBaldy": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BeardyBaldy.json"
     },
     {
@@ -13264,6 +16345,13 @@
         "strstr"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 2,
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "strstr": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_ChapelOfEvil.json"
     },
     {
@@ -13309,6 +16397,13 @@
         "NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 4,
+        "CTCVillage::OnInitialActivate": 1,
+        "InitialiseVariables": 1,
+        "NHeroInformationScreens::CBase::CBase": 2,
+        "NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_FisticuffsClub.json"
     },
     {
@@ -13354,6 +16449,13 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CQ_GuildTrainingScript::CMeleeApprentice::Init": 1,
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_KnotholeGladeGates.json"
     },
     {
@@ -13416,6 +16518,13 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_MayorsInvitation.json"
     },
     {
@@ -13445,6 +16554,13 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "LTextTreeWalkThrough_Destructor": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_MazeResearch.json"
     },
     {
@@ -14122,6 +17238,13 @@
         "strstr"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 2,
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "strstr": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_TempleOfLight.json"
     },
     {
@@ -14157,6 +17280,14 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 1,
+        "CScriptThing::CScriptThing": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Follow.json"
     },
     {
@@ -14254,6 +17385,14 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CScriptBase::AddEntityScriptBinding": 4,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 1,
+        "CScriptGameResourceObject_LoadGuildComplex": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_EndGameBossBattle.json"
     },
     {
@@ -14839,6 +17978,14 @@
         "RemoveParty"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CParticleEmitter_Dtor_5": 1,
+        "CScriptBase::AddEntityScriptBinding": 10,
+        "CTCVillage::OnInitialActivate": 1,
+        "CleanUp": 1,
+        "RemoveDregs": 1,
+        "RemoveParty": 2
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HangingTreeGood.json"
     },
     {
@@ -16179,6 +19326,14 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 2,
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CSubtitleRenderer::SetText": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "Game_InitializeHeroCharacter": 3,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSouls.json"
     },
     {
@@ -16834,6 +19989,14 @@
         "CV_SickChildScript::CWomanToAttract::DoLeavingCutscene"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CParticleEmitter_Dtor_6": 1,
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CSubtitleRenderer::SetText": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "CV_SickChildScript::CWomanToAttract::DoLeavingCutscene": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsBriar.json"
     },
     {
@@ -17142,6 +20305,14 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 5,
+        "CSubtitleRenderer::SetText": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 1,
+        "Main_InitializeFourierAnalysis_2": 2,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsNostro.json"
     },
     {
@@ -17476,6 +20647,14 @@
         "NHeroInformationScreens::CBase::CBase"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 2,
+        "CCharString__AssignFromWide": 4,
+        "CParticleEmitter_Dtor_8": 1,
+        "CScriptBase::AddEntityScriptBinding": 9,
+        "CTCVillage::OnInitialActivate": 1,
+        "NHeroInformationScreens::CBase::CBase": 4
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_OrchardFarmRaid.json"
     },
     {
@@ -18094,6 +21273,14 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 3,
+        "CScriptBase::AddEntityScriptBinding": 7,
+        "CScriptBase_ProcessNPCConversations": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "Main_InitializeFourierAnalysis_4": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_TraderConflictGood.json"
     },
     {
@@ -18124,6 +21311,14 @@
         "std_vector_CConversation_Assign"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CParticleEmitter___CParticleEmitter_MeshFree": 1,
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "push_back": 1,
+        "resize": 2,
+        "std_vector_CConversation_Assign": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BookCollecting.json"
     },
     {
@@ -18155,6 +21350,14 @@
         "fpatan"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NHeroInformationScreens::CBase::CBase": 5,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "_CIfmod": 4,
+        "fpatan": 4
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_StatueMaster.json"
     },
     {
@@ -18193,6 +21396,14 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 1,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 1,
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\bandit_level_cutscene.json"
     },
     {
@@ -18704,6 +21915,15 @@
         "rand"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 5,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
+        "CScriptThing::CScriptThing": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "__ftol2": 1,
+        "rand": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Picklock.json"
     },
     {
@@ -19182,6 +22402,15 @@
         "rand"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 5,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
+        "CScriptThing::CScriptThing": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "__ftol2": 1,
+        "rand": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Steal.json"
     },
     {
@@ -19474,6 +22703,15 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 1,
+        "CScriptBase::KillSpawnedFunction": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 1,
+        "CScriptThing::CScriptThing": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Wait.json"
     },
     {
@@ -20298,6 +23536,15 @@
         "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 3,
+        "CCarriedReadableDef::CCarriedReadableDef": 2,
+        "CDefendingCombatantInfo::CCombatWheel::ResetRings": 2,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 4,
+        "CScriptThing::CScriptThing": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_OpenChest.json"
     },
     {
@@ -20676,6 +23923,15 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CSubtitleRenderer::SetText": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "LTextTreeWalkThrough__Dtor": 1,
+        "Main_InitializeFourierAnalysis": 2,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsThunder.json"
     },
     {
@@ -20772,6 +24028,15 @@
         "resize"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CCharString_OperatorPlus_API": 1,
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCInventoryItem::OnDie": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "GFIntToCharString_API": 1,
+        "rand": 2,
+        "resize": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_FishingCompetition.json"
     },
     {
@@ -20813,6 +24078,15 @@
         "free"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 6,
+        "CScriptBase::AddEntityScriptBinding": 4,
+        "CTCVillage::OnInitialActivate": 1,
+        "NHeroInformationScreens::CBase::CBase": 25,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "_E2": 1,
+        "free": 7
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_HauntedHouse.json"
     },
     {
@@ -21760,6 +25034,16 @@
         "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 2,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 1,
+        "CCarriedReadableDef::CCarriedReadableDef": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
+        "CScriptThing::CScriptThing": 1,
+        "Is2DDistanceBetweenThingsUnder": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Dig.json"
     },
     {
@@ -22931,6 +26215,16 @@
         "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 5,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 1,
+        "CCarriedReadableDef::CCarriedReadableDef": 3,
+        "CCharString__NotEqual": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
+        "CScriptThing::CScriptThing": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "_ClearAllActionsIncludingLoopingAnimations_CScriptGameResourceObjectScriptedThingBase__UAEXXZ": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Fish.json"
     },
     {
@@ -22985,6 +26279,16 @@
         "rand"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 8,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 5,
+        "CScriptThing::CScriptThing": 1,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "__ftol2": 2,
+        "rand": 2
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Expression_Pickpocket.json"
     },
     {
@@ -23049,6 +26353,16 @@
         "rand"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 7,
+        "CCharString__AssignFromWide": 1,
+        "CParticleEmitter_Dtor_3": 1,
+        "CScriptBase::AddEntityScriptBinding": 8,
+        "CTCVillage::OnInitialActivate": 1,
+        "Math_CartesianToSpherical": 2,
+        "free": 2,
+        "rand": 6
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_EndGameFocalSites.json"
     },
     {
@@ -23461,6 +26775,16 @@
         "RunArrivalCutscene"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 2,
+        "CScriptBase::AddEntityScriptBinding": 14,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 1,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "NScript::CGameflowScript::DeclareGossipCategories": 1,
+        "RunArrivalCutscene": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTraining.json"
     },
     {
@@ -23975,6 +27299,16 @@
         "NParticleEngine::CParticleEmitter::DeleteAllParticles"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 2,
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CSubtitleRenderer::SetText": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 1,
+        "LTextTreeWalkThrough__Dtor": 1,
+        "Main_InitializeFourierAnalysis_1": 2,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsMother.json"
     },
     {
@@ -24325,6 +27659,16 @@
         "TricksterApproach"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "AssignMoralityEtcForEvilEnding": 2,
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CParticleEmitter___CParticleEmitter_Simple": 1,
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CTCVillage::OnInitialActivate": 1,
+        "NHeroInformationScreens::CBase::CBase": 4,
+        "SpringAmbush": 1,
+        "TricksterApproach": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_AmbushScam.json"
     },
     {
@@ -24360,6 +27704,16 @@
         "resize"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "CCarriedReadableDef::CCarriedReadableDef": 2,
+        "CParticleEmitter___CParticleEmitter_0xb6ab0": 1,
+        "CScriptBase::AddEntityScriptBinding": 4,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "push_back": 1,
+        "resize": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_MurderTwistFinal.json"
     },
     {
@@ -24405,6 +27759,16 @@
         "_SummonerLightningOrbAttackTarget_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing___Z"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 14,
+        "C3DMeshInfo::HasPhysicsMesh": 1,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 1,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 2,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 1,
+        "NHeroInformationScreens::CBase::CBase": 24,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "_SummonerLightningOrbAttackTarget_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing___Z": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\joss_test_scripts.json"
     },
     {
@@ -24521,6 +27885,17 @@
         "malloc"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
+        "CFourierAnalysis::CFourierAnalysis": 2,
+        "CMemoryDataOutputStream::Clear": 1,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 2,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "RunCutsceneMacro_Func": 1,
+        "StdMap_DestroyNode": 1,
+        "free": 1,
+        "malloc": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\CS_PlayCutscene.json"
     },
     {
@@ -24720,6 +28095,17 @@
         "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 3,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
+        "CMemoryDataOutputStream::Clear": 1,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 3,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 3,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": 1,
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\PersonalScript_Aardvark.json"
     },
     {
@@ -25469,6 +28855,17 @@
         "std_vector_Conversation_Assign3"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 8,
+        "CScriptBase::AddEntityScriptBinding": 10,
+        "CSubtitleRenderer::SetText": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "WatchForRoundsInArena_Setup": 3,
+        "free": 1,
+        "std_vector_Conversation_Assign3": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsArena.json"
     },
     {
@@ -26324,6 +29721,17 @@
         "Script_InitializeComponents"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 2,
+        "CCharString__AssignFromWide": 1,
+        "CScriptBase::AddEntityScriptBinding": 7,
+        "CSubtitleRenderer::SetText": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 1,
+        "LTextTreeWalkThrough_Destructor": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "Script_InitializeComponents": 3
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HeroSoulsGuildmaster.json"
     },
     {
@@ -26400,6 +29808,17 @@
         "rand"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CCharString__NotEqual": 1,
+        "CScriptBase::AddEntityScriptBinding": 6,
+        "CTCVillage::OnInitialActivate": 1,
+        "NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::OnPredicateFail": 1,
+        "NScript::CV_ArcheryCompetitionScript::AddArcheryQuestInfo": 1,
+        "NScript::CV_ArcheryCompetitionScript::RemoveArcheryQuestInfo": 1,
+        "NScript::CV_ArcheryCompetitionScript::UpdateHighScore": 1,
+        "NScript::CV_ArcheryCompetitionScript::~CV_ArcheryCompetitionScript": 1,
+        "rand": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_ArcheryCompetition.json"
     },
     {
@@ -26658,6 +30077,18 @@
         "free"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CCharString_OperatorPlus_API": 2,
+        "CCharString__AppendCString": 6,
+        "CCharString__AppendData": 5,
+        "CCharString__ToUpper": 1,
+        "CFileInstaller::CActiveFile::OnReadFinished": 1,
+        "CNavigatorQueueManager::FrameUpdate": 2,
+        "DoublyLinkedList_Init": 1,
+        "GFGetPreMainMemoryUsed": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "free": 2
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\PersonalScriptMain.json"
     },
     {
@@ -27234,6 +30665,18 @@
         "StdMap_Destroy_API"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 1,
+        "CCarriedReadableDef::CCarriedReadableDef": 3,
+        "CMemoryDataOutputStream::Clear": 1,
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 5,
+        "CTCVillage::OnInitialActivate": 1,
+        "NTCScriptedControl::CActionMoveTo::~CActionMoveTo": 1,
+        "RunCutsceneMacro_Func": 1,
+        "StdMap_Construct_API": 1,
+        "StdMap_Destroy_API": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BanditCampPath.json"
     },
     {
@@ -27423,6 +30866,19 @@
         "std__vector__pop_back"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 6,
+        "CScriptBase::AddEntityScriptBinding": 5,
+        "CScriptBase_FilterCombatantsByType": 3,
+        "CScriptThing::CScriptThing": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 1,
+        "Main_InitializeFourierAnalysis_3": 2,
+        "NHeroInformationScreens::CBase::CBase": 17,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "free": 1,
+        "std__vector__pop_back": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_TraderConflictEvil.json"
     },
     {
@@ -27492,6 +30948,20 @@
         "free"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 6,
+        "CCarriedReadableDef::CCarriedReadableDef": 9,
+        "CScriptBase::AddEntityScriptBinding": 5,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 9,
+        "CTCVillage::OnInitialActivate": 1,
+        "KillAllThingsInVector": 1,
+        "NHeroInformationScreens::CBase::CBase": 7,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "RunCutsceneMacro_Func": 3,
+        "StdMap_Construct_API": 3,
+        "StdMap_Destroy_API": 3,
+        "free": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_UndeadRising.json"
     },
     {
@@ -28960,6 +32430,20 @@
         "__ftol2"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 18,
+        "C3DMeshInfo::HasPhysicsMesh": 3,
+        "CCarriedReadableDef::CCarriedReadableDef": 9,
+        "CMemoryDataOutputStream::Clear": 3,
+        "CScriptBase::AddEntityScriptBinding": 6,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 9,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "RunCutsceneMacro_Func": 3,
+        "StdMap_Construct_API": 3,
+        "StdMap_Destroy_API": 3,
+        "__ftol2": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_WhiteBalverineKnotholeGlade.json"
     },
     {
@@ -29005,6 +32489,21 @@
         "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 2,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 1,
+        "CFileInstaller::CActiveFile::OnReadFinished": 1,
+        "CMemoryAllocatorVariableSize::GetNoAllocatedAreas": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
+        "CTCCarryable::OnKill": 1,
+        "GFIntToCharString_API": 1,
+        "LTextTreeWalkThrough_Cleanup": 1,
+        "LTextTreeWalkThrough_dtor": 1,
+        "List_Node_Initialize": 1,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Global_DebugCycleThroughSpeech.json"
     },
     {
@@ -29494,6 +32993,21 @@
         "StdMap_Destroy_API"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 3,
+        "C3DMeshInfo::HasPhysicsMesh": 1,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
+        "CMemoryDataOutputStream::Clear": 1,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 1,
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "PopulateLevel": 1,
+        "RunCutsceneMacro_Func": 1,
+        "StdMap_Construct_API": 1,
+        "StdMap_Destroy_API": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_OakValeBanditRaid.json"
     },
     {
@@ -29597,6 +33111,21 @@
         "_vector_constructor_iterator_"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 7,
+        "C3DMeshInfo::HasPhysicsMesh": 4,
+        "CCarriedReadableDef::CCarriedReadableDef": 5,
+        "CMemoryDataOutputStream::Clear": 5,
+        "CScriptBase::AddEntityScriptBinding": 14,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 7,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "NScript::CQ_OpeningGraveyardSecretPassageScript::InitializeVariables": 1,
+        "RunCutsceneMacro_Func": 1,
+        "StdMap_Construct_API": 1,
+        "StdMap_Destroy_API": 1,
+        "_vector_constructor_iterator_": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_OpeningGraveyardSecretPassage.json"
     },
     {
@@ -29680,6 +33209,21 @@
         "StdMap_Destroy_API"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 4,
+        "C3DMeshInfo::HasPhysicsMesh": 3,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 3,
+        "CCarriedReadableDef::CCarriedReadableDef": 1,
+        "CMemoryDataOutputStream::Clear": 3,
+        "CScriptBase::AddEntityScriptBinding": 2,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 8,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 2,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "RunCutsceneMacro_Func": 14,
+        "StdMap_Construct_API": 1,
+        "StdMap_Destroy_API": 2
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_BeggarAndChild.json"
     },
     {
@@ -30692,6 +34236,22 @@
         "std_vector_Conversation_Assign"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 9,
+        "CCarriedReadableDef::CCarriedReadableDef": 3,
+        "CParticleEmitter_Dtor_4": 1,
+        "CScriptBase::AddEntityScriptBinding": 10,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "DisableFollowers": 1,
+        "Game_InitializeRound": 2,
+        "RestoreFollowers": 1,
+        "SetupPuzzleBlocks": 1,
+        "StartRound": 1,
+        "push_back": 1,
+        "resize": 8,
+        "std_vector_Conversation_Assign": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_FireHeart.json"
     },
     {
@@ -31074,6 +34634,22 @@
         "StdMap_Destroy_API"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "C3DMeshInfo::HasPhysicsMesh": 2,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 3,
+        "CMemoryDataOutputStream::Clear": 2,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 2,
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
+        "CSubtitleRenderer::SetText": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "NHeroInformationScreens::CBase::CBase": 4,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "RunCutsceneMacro_Func": 1,
+        "StdMap_Construct_API": 1,
+        "StdMap_Destroy_API": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingMelee.json"
     },
     {
@@ -31131,6 +34707,22 @@
         "push_back"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 1,
+        "C3DMeshInfo::HasPhysicsMesh": 5,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
+        "CCarriedReadableDef::CCarriedReadableDef": 4,
+        "CFileInstaller::CActiveFile::OnReadFinished": 2,
+        "CMemoryDataOutputStream::Clear": 5,
+        "CScriptBase::AddEntityScriptBinding": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 8,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "RunCutsceneMacro_Func": 2,
+        "StdMap_Construct_API": 2,
+        "StdMap_Destroy_API": 2,
+        "push_back": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingWoodsWill.json"
     },
     {
@@ -31598,6 +35190,22 @@
         "malloc"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 3,
+        "C3DMeshInfo::HasPhysicsMesh": 1,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 3,
+        "CCharString__AssignFromWide": 1,
+        "CFourierAnalysis::CFourierAnalysis": 1,
+        "CMemoryDataOutputStream::Clear": 1,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 1,
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
+        "CTCVillage::OnInitialActivate": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "RunCutsceneMacro_Func": 1,
+        "StdMap_Destroy_API": 1,
+        "malloc": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_WhiteBalverineWW.json"
     },
     {
@@ -31680,6 +35288,23 @@
         "std__vector__push_back"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DAnimationUtil::C3DAnimationUtil": 1,
+        "C3DClothPrimitive::~C3DClothPrimitive": 8,
+        "C3DMeshInfo::HasPhysicsMesh": 1,
+        "CCarriedReadableDef::CCarriedReadableDef": 1,
+        "CDefendingCombatantInfo::CCombatWheel::ResetRings": 4,
+        "CFourierAnalysis::CFourierAnalysis": 1,
+        "CMemoryDataOutputStream::Clear": 1,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 1,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 2,
+        "CSubtitleRenderer::SetText": 24,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "RunCutsceneMacro_Func": 1,
+        "StdMap_Construct_API": 1,
+        "StdMap_Destroy_API": 1,
+        "std__vector__push_back": 25
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Gameflow.json"
     },
     {
@@ -31783,6 +35408,24 @@
         "StdMap_Destroy_API"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 3,
+        "C3DMeshInfo::HasPhysicsMesh": 4,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 3,
+        "CCarriedReadableDef::CCarriedReadableDef": 2,
+        "CMemoryDataOutputStream::Clear": 4,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 1,
+        "CScriptBase::AddEntityScriptBinding": 3,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 9,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::CTimer": 1,
+        "CTimer::~CTimer": 1,
+        "NHeroInformationScreens::CBase::CBase": 3,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "RunCutsceneMacro_Func": 3,
+        "StdMap_Construct_API": 1,
+        "StdMap_Destroy_API": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_GuildTrainingPreMelee.json"
     },
     {
@@ -31943,6 +35586,26 @@
         "__ftol2"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 5,
+        "C3DMeshInfo::HasPhysicsMesh": 3,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
+        "CCarriedReadableDef::CCarriedReadableDef": 5,
+        "CMemoryDataOutputStream::Clear": 14,
+        "CScriptBase::AddEntityScriptBinding": 7,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 9,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 1,
+        "KillAllThingsInVector": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "NScript::CQ_HobbeToothContestScript::DisplayTimer": 1,
+        "RunCutsceneMacro_Func": 4,
+        "StdMap_Construct_API": 4,
+        "StdMap_Destroy_API": 2,
+        "_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ": 1,
+        "_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__PBDW4ETextGroupSelectionMethod___N33_Z": 1,
+        "__ftol2": 1
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HobbeToothContest.json"
     },
     {
@@ -32176,6 +35839,28 @@
         "StdMap_Destroy_API"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 10,
+        "C3DMeshInfo::HasPhysicsMesh": 7,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 2,
+        "CCarriedReadableDef::CCarriedReadableDef": 7,
+        "CCharString__AssignFromWide": 1,
+        "CFileInstaller::CActiveFile::OnReadFinished": 1,
+        "CFourierAnalysis::CFourierAnalysis": 7,
+        "CMainGameComponentInit::CMainGameComponentInit": 1,
+        "CMemoryDataOutputStream::Clear": 7,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 2,
+        "CScriptBase::AddEntityScriptBinding": 7,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 8,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 1,
+        "Main_InitializeCreatureSpawners": 1,
+        "NHeroInformationScreens::CBase::CBase": 1,
+        "NParticleEngine::CParticleEmitter::DeleteAllParticles": 1,
+        "RunCutsceneMacro_Func": 2,
+        "StdMap_Construct_API": 2,
+        "StdMap_Destroy_API": 3
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_BountyHunt.json"
     },
     {
@@ -32467,6 +36152,33 @@
         "rand"
       ],
       "stage": "map-native-helpers",
+      "unresolvedNativeHelperCallCounts": {
+        "C3DClothPrimitive::~C3DClothPrimitive": 58,
+        "C3DMeshInfo::HasPhysicsMesh": 17,
+        "CBaseIntelligentPointer::CBaseIntelligentPointer": 5,
+        "CCarriedReadableDef::CCarriedReadableDef": 21,
+        "CMemoryDataOutputStream::Clear": 17,
+        "CPhysicsMeshInfo::~CPhysicsMeshInfo": 2,
+        "CScriptBase::AddEntityScriptBinding": 14,
+        "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase": 49,
+        "CScriptThing::_GetAngleXY_CScriptThing__UBEMXZ": 1,
+        "CTCVillage::OnInitialActivate": 1,
+        "CTimer::~CTimer": 2,
+        "CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities": 1,
+        "CWideScreenMagicPauseEntities::~CWideScreenMagicPauseEntities": 2,
+        "CWorld::DrawGetEnvironment": 1,
+        "LTextTreeWalkThrough__Dtor": 3,
+        "NScript::CQ_ArenaScript::AnimateCrowd": 2,
+        "NScript::CQ_ArenaScript::GetFanfareMusic": 1,
+        "NScript::CQ_ArenaScript::InitialiseVariables": 1,
+        "NScript::CQ_ArenaScript::PlayWave": 1,
+        "NScript::CQ_ArenaScript::~CQ_ArenaScript": 1,
+        "RunCutsceneMacro_Func": 6,
+        "StdMap_Construct_API": 7,
+        "StdMap_Destroy_API": 11,
+        "Std_Deque_Construct": 1,
+        "rand": 2
+      },
       "nativeIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_Arena.json"
     }
   ]

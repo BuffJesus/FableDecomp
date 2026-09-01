@@ -89,6 +89,27 @@ class NativeConversionReadinessTests(unittest.TestCase):
             self.assertEqual(result["scripts"][0]["stage"], "resolve-opaque-callees")
             self.assertEqual(result["scripts"][0]["mappedForgeApis"], ["GetHero"])
 
+    def test_native_helper_backlog_counts_calls_and_consumers(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "ir").mkdir()
+            (root / "catalog.json").write_text(json.dumps({"scripts": [
+                {"name": "Q_A", "kind": "quest"}, {"name": "V_B", "kind": "village"}]}))
+            (root / "manifest.json").write_text(json.dumps({"functions": []}))
+            for script in ("Q_A", "V_B"):
+                life = [{"role": role, "address": "0x1", "calls": [], "indirectCalls": []}
+                        for role in ("destructor", "RegisterMain", "Main", "Init", "OnPersist")]
+                life[2]["calls"] = [{"callee": "SharedHelper"}, {"callee": "SharedHelper"}]
+                (root / "ir" / f"{script}.json").write_text(json.dumps({
+                    "script": script, "allocatorAddress": "0x1", "vtableAddress": "0x2",
+                    "evidenceAnchors": [], "lifecycle": life}))
+            result = analyze(root / "catalog.json", root / "ir", root / "manifest.json")
+            self.assertEqual(result["summary"]["unresolvedNativeHelperMethods"], 1)
+            self.assertEqual(result["summary"]["unresolvedNativeHelperCalls"], 4)
+            self.assertEqual(result["nativeHelperBacklog"][0], {
+                "name": "SharedHelper", "calls": 4, "scripts": 2,
+                "kinds": ["quest", "village"], "consumers": ["Q_A", "V_B"]})
+
     def test_interface_mapping_requires_provenance(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

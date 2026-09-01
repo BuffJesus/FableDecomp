@@ -149,6 +149,10 @@ as `SUB41` and `CONCAT44` are retained as expressions rather than invented nativ
 regenerating all 161 artifacts, the readiness gate has zero opaque callees: all 161 scripts are now in
 the explicit `map-native-helpers` stage, including every non-quest class. Helper mapping and
 control-flow reconstruction remain required; zero opaque callees does not by itself make a Lua port.
+The readiness artifact therefore includes a ranked helper backlog with exact call counts, consumer
+scripts, and script kinds. The current corpus has 159 distinct unresolved helper names across 2,218
+call sites, allowing shared structural operations such as entity-binding registration to be handled
+before one-off quest helpers.
 
 The retail `CGameScriptInterface` vtable base at `0x01260F0C` is now queried directly by
 `DumpVtableSlots.java`. `VerifyScriptInterfaceField.java` independently proves for all 161 allocators

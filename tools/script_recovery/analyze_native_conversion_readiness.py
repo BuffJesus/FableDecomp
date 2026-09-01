@@ -7,6 +7,7 @@ import argparse
 import csv
 import json
 import re
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -120,6 +121,7 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
         infrastructure = {callee for callee in calls if INFRASTRUCTURE_RE.match(callee)}
         unresolved = sorted(set(calls) - set(opaque) - infrastructure -
                             {callee for callee, match in matches.items() if match})
+        unresolved_counts = Counter(callee for callee in calls if callee in unresolved)
         decompile_complete = len(ir["lifecycle"]) == 5 and all(
             life.get("address") and isinstance(life.get("calls"), list) for life in ir["lifecycle"]
         )
@@ -142,6 +144,7 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
             "indirectVtableOffsets": sorted({call["vtableOffset"] for call in indirect
                                               if call.get("vtableOffset")}),
             "opaqueCallees": opaque, "unresolvedNativeHelpers": unresolved, "stage": stage,
+            "unresolvedNativeHelperCallCounts": dict(sorted(unresolved_counts.items())),
             "nativeIr": str(path.resolve()),
         })
     rows.sort(key=lambda row: (
@@ -164,6 +167,22 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
         for row in rows for call in row["resolvedInterfaceCalls"]
         if call["forgeRuntimeAbiBlocker"]
     }
+    helper_consumers: dict[str, set[str]] = {}
+    helper_kinds: dict[str, set[str]] = {}
+    helper_calls: Counter[str] = Counter()
+    for row in rows:
+        for helper, count in row["unresolvedNativeHelperCallCounts"].items():
+            helper_calls[helper] += count
+            helper_consumers.setdefault(helper, set()).add(row["name"])
+            helper_kinds.setdefault(helper, set()).add(row["kind"])
+    helper_backlog = [
+        {"name": helper, "calls": helper_calls[helper],
+         "scripts": len(helper_consumers[helper]),
+         "kinds": sorted(helper_kinds[helper]),
+         "consumers": sorted(helper_consumers[helper])}
+        for helper in helper_calls
+    ]
+    helper_backlog.sort(key=lambda row: (-row["scripts"], -row["calls"], row["name"]))
     return {
         "schema": "forgefse-native-conversion-readiness/0.1",
         "sources": {"catalog": str(catalog_path.resolve()), "ir": str(ir_dir.resolve()),
@@ -187,8 +206,11 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
                     "missingForgeRuntimeMethods": sorted(missing_runtime_methods),
                     "hostManagedInterfaceMethods": sorted(host_managed_methods),
                     "abiBlockedInterfaceMethods": dict(sorted(abi_blocked_methods.items())),
+                    "unresolvedNativeHelperMethods": len(helper_backlog),
+                    "unresolvedNativeHelperCalls": sum(helper_calls.values()),
                     "scriptsWithResolvedInterfaceCalls": sum(bool(row["resolvedInterfaceCalls"]) for row in rows),
                     "stages": dict(sorted(stages.items()))},
+        "nativeHelperBacklog": helper_backlog,
         "scripts": rows,
     }
 
