@@ -12,8 +12,10 @@
 struct CHeroPostcardGeneratorDef {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x39];                          // +0x04 flattened base-class subobject(s)
-    unsigned char MeshAreaTLPos[0x8];                        // +0x3d C2DVector
-    unsigned char MeshAreaBRPos[0x8];                        // +0x45 C2DVector
+    float         MeshAreaTLPos_X;                           // +0x3d C2DVector::X
+    float         MeshAreaTLPos_Y;                           // +0x41 C2DVector::Y
+    float         MeshAreaBRPos_X;                           // +0x45 C2DVector::X
+    float         MeshAreaBRPos_Y;                           // +0x49 C2DVector::Y
     unsigned char DollCentreOffset[0xf];                     // +0x4d C3DVector
     float         DollBoundingSphereRadius;                  // +0x5c
 };
@@ -21,8 +23,10 @@ struct CHeroPostcardGeneratorDef {
 
 FABLE_STATIC_ASSERT(sizeof(CHeroPostcardGeneratorDef) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CHeroPostcardGeneratorDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CHeroPostcardGeneratorDef, MeshAreaTLPos) == 0x3d);
-FABLE_STATIC_ASSERT(offsetof(CHeroPostcardGeneratorDef, MeshAreaBRPos) == 0x45);
+FABLE_STATIC_ASSERT(offsetof(CHeroPostcardGeneratorDef, MeshAreaTLPos_X) == 0x3d);
+FABLE_STATIC_ASSERT(offsetof(CHeroPostcardGeneratorDef, MeshAreaTLPos_Y) == 0x41);
+FABLE_STATIC_ASSERT(offsetof(CHeroPostcardGeneratorDef, MeshAreaBRPos_X) == 0x45);
+FABLE_STATIC_ASSERT(offsetof(CHeroPostcardGeneratorDef, MeshAreaBRPos_Y) == 0x49);
 FABLE_STATIC_ASSERT(offsetof(CHeroPostcardGeneratorDef, DollCentreOffset) == 0x4d);
 FABLE_STATIC_ASSERT(offsetof(CHeroPostcardGeneratorDef, DollBoundingSphereRadius) == 0x5c);
 

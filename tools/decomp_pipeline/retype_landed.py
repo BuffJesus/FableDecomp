@@ -142,6 +142,11 @@ class Transform:
         """Return (new_source, info) or None with self.reason set."""
         if '#include "engine/' + self.cls + '.h"' in src:
             return self.fail("ALREADY_TYPED")
+        if re.search(r"\b(?:struct|class)\s+\w+\s*:\s*(?:public|protected|private)?\s*\w+\s*\{", src):
+            # local class hierarchies (`struct X : public Base {`) model base subobjects
+            # explicitly; STRUCT_RE cannot see the derived declaration, so leave these to a
+            # dedicated pass rather than retype the base by mistake.
+            return self.fail("INHERITANCE")
         pick = class_struct.choose_this_struct(src, self.cls)
         if pick is None:
             # no struct at all = the function never touches `this` fields (constant-return
@@ -203,6 +208,8 @@ class Transform:
                 return self.fail("AMBIGUOUS_MEMBER(%s)" % name)
             renames[name] = h.name
         # method idiom?
+        if "{" in body:
+            return self.fail("INLINE_METHODS")
         stmts = [s.strip() for s in body.split(";") if s.strip()]
         methods = [s for s in stmts if "(" in s and not class_struct.MEMBER_RE.fullmatch(s + ";")]
         # method idiom = the struct declares methods AND the code (not a comment) defines
@@ -216,10 +223,10 @@ class Transform:
         m = decl_re.search(new, max(0, start - 1))
         if not m:
             return self.fail("NO_THIS_STRUCT")
-        insert_at = m.start()
-        new = new[:m.start()] + new[m.end():]
-        # 2. shim or type rename. Rename the qualifier FIRST, then insert the shim (whose base
-        #    must stay the real class name), then any leftover `T` -> class.
+        MARKER = "/*__RETYPE_SHIM_MARKER__*/\n"
+        new = new[:m.start()] + MARKER + new[m.end():]
+        # 2. shim or type rename. Rename the qualifier FIRST, then drop the shim in at the marker
+        #    (renames change offsets, so never reuse a pre-rename index), then leftover `T` -> class.
         shim_name = self.cls + "_Methods"
         if method_idiom:
             if not methods:
@@ -229,9 +236,11 @@ class Transform:
                 new = word_sub(new, tname, self.cls)
             shim = ("struct %s : %s {\n" % (shim_name, self.cls)
                     + "".join("    %s;\n" % s for s in methods) + "};\n")
-            new = new[:insert_at] + shim + new[insert_at:]
-        elif tname != self.cls:
-            new = word_sub(new, tname, self.cls)
+            new = new.replace(MARKER, shim, 1)
+        else:
+            if tname != self.cls:
+                new = word_sub(new, tname, self.cls)
+            new = new.replace(MARKER, "", 1)
         # 3. nested pointee renames
         for old, nw in sub_renames.items():
             new = word_sub(new, old, nw)
@@ -267,8 +276,8 @@ class Transform:
         if not m:
             return tst
         body = m.group(1)
-        new = tst[:m.start()] + tst[m.end():]
-        insert_at = m.start()
+        MARKER = "/*__RETYPE_SHIM_MARKER__*/\n"
+        new = tst[:m.start()] + MARKER + tst[m.end():]
         if info["idiom"] == "method":
             stmts = [s.strip() for s in body.split(";") if s.strip()]
             methods = [s for s in stmts if "(" in s and not class_struct.MEMBER_RE.fullmatch(s + ";")]
@@ -277,9 +286,11 @@ class Transform:
                 new = word_sub(new, tname, self.cls)
             shim = ("struct %s : %s {\n" % (info["shim"], self.cls)
                     + "".join("    %s;\n" % s for s in methods) + "};\n")
-            new = new[:insert_at] + shim + new[insert_at:]
-        elif tname != self.cls:
-            new = word_sub(new, tname, self.cls)
+            new = new.replace(MARKER, shim, 1)
+        else:
+            if tname != self.cls:
+                new = word_sub(new, tname, self.cls)
+            new = new.replace(MARKER, "", 1)
         for old, nw in info["subs"].items():
             new = word_sub(new, old, nw)
         for old, nw in info["renames"].items():

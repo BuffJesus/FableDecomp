@@ -14,14 +14,18 @@ struct C3DMeshFileXBoundingSphereChunk {
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char Center[0xc];                               // +0x10 C3DVector
+    float         Center_X;                                  // +0x10 C3DVector::X
+    float         Center_Y;                                  // +0x14 C3DVector::Y
+    float         Center_Z;                                  // +0x18 C3DVector::Z
     float         Radius;                                    // +0x1c
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(C3DMeshFileXBoundingSphereChunk) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingSphereChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingSphereChunk, Center) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingSphereChunk, Center_X) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingSphereChunk, Center_Y) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingSphereChunk, Center_Z) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXBoundingSphereChunk, Radius) == 0x1c);
 
 #endif // FABLE_ENGINE_C3DMESHFILEXBOUNDINGSPHERECHUNK_H

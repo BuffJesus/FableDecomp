@@ -8,49 +8,59 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
 struct CFontBank;
 struct CGraphicDataBank;
+struct CLoadingMemoryFailureHandler;
 struct CMeshDataBank;
+struct CMovableResourceMemoryPool;
+struct CWideStringData;
+struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
 struct CEngineResourceManager {
-    void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char     _pad_0x04[0x4];                        // +0x04
-    unsigned char     _pad_0x08[0x4];                        // +0x08
-    unsigned char     _pad_0x0c[0x4];                        // +0x0c
-    CMeshDataBank*    MeshBanks[3];                          // +0x10
-    CMeshDataBank*    MainMeshBank;                          // +0x1c
-    unsigned char     EditorMeshBank[0x4f8];                 // +0x20 CMeshDataBank
-    unsigned char     EngineMeshBank[0x4f8];                 // +0x518 CMeshDataBank
-    unsigned char     LoadingMemoryPool[0x8];                // +0xa10 CCountedPointer<CMovableResourceMemoryPool>
-    unsigned char     LoadingMemoryFailureHandler[0x8];      // +0xa18 CCountedPointer<CLoadingMemoryFailureHandler>
-    unsigned char     AnimationMemoryPool[0x8];              // +0xa20 CCountedPointer<CMovableResourceMemoryPool>
-    unsigned char     ClothMemoryPool[0x8];                  // +0xa28 CCountedPointer<CMovableResourceMemoryPool>
-    unsigned char     MeshDataMemoryPool[0x8];               // +0xa30 CCountedPointer<CMovableResourceMemoryPool>
-    unsigned char     AnimationManager[0x50];                // +0xa38 C3DAnimationManager
-    CGraphicDataBank* GraphicBanks[1];                       // +0xa88
-    CGraphicDataBank* MainGraphicBank;                       // +0xa8c
-    CFontBank*        EngineFont;                            // +0xa90
-    unsigned char     VShaderBanks[0x2cb8];                  // +0xa94 CShaderDataBank[27]
-    unsigned char     ShaderBankPixel[0x1a8];                // +0x374c CShaderDataBank
-    unsigned char     VShaderResources[0xd8];                // +0x38f4 CCountedPointer<CShaderResource>[27]
-    unsigned char     ShaderResourcePixel[0xc];              // +0x39cc CCountedPointer<CShaderResource>
-    double            MaxLoadingTime;                        // +0x39d8
-    unsigned long     VertexBufferUsageFlags;                // +0x39e0
-    unsigned char     StipleFadeTexture[0x8];                // +0x39e4 CTexture
-    unsigned char     HWInverseStipplePatterns[0x10];        // +0x39ec CArray<unsigned_long>
-    unsigned char     DitherTextureList[0x10];               // +0x39fc CArray<CTexture>
-    unsigned char     EngineCachePath[0x4];                  // +0x3a0c CWideString
-    unsigned char     WriteableEngineCachePath[0x4];         // +0x3a10 CWideString
-    unsigned char     ZeroRGBATexture[0x8];                  // +0x3a14 CTexture
-    unsigned char     SatRGBATexture[0x8];                   // +0x3a1c CTexture
-    unsigned char     VSConstantLayoutBasic[0x150];          // +0x3a24 CEngineVSConstantLayoutBasic
-    unsigned char     VSConstantLayoutLights[0x150];         // +0x3b74 CEngineVSConstantLayoutLights
-    unsigned char     VSConstantLayoutLightsBones[0x150];    // +0x3cc4 CEngineVSConstantLayoutLightsBones
-    unsigned char     VSConstantLayoutRepeatedMesh[0x180];   // +0x3e14 CEngineVSConstantLayoutRepeatedMesh
-    unsigned char     VSConstantLayoutParticles[0x150];      // +0x3f94 CEngineVSConstantLayoutParticles
-    unsigned char     GPUScratchBufferTextureManager[0x58];  // +0x40e4 CGPUScratchBufferTextureManager
-    unsigned char     ExternalTexturesAllocatedFromEnginePools[0x14]; // +0x413c map<CTexture_*,CEngineResourceManager::CExternalTextureAllocationInfo,std::less<CTexture_*>,std::allocator<std::pair<CTexture_*_const,CEngineResourceManager::CExternalTextureAllocationInfo>_>_>
+    void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char                 _pad_0x04[0x4];            // +0x04
+    unsigned char                 _pad_0x08[0x4];            // +0x08
+    unsigned char                 _pad_0x0c[0x4];            // +0x0c
+    CMeshDataBank*                MeshBanks[3];              // +0x10
+    CMeshDataBank*                MainMeshBank;              // +0x1c
+    unsigned char                 EditorMeshBank[0x4f8];     // +0x20 CMeshDataBank
+    unsigned char                 EngineMeshBank[0x4f8];     // +0x518 CMeshDataBank
+    CMovableResourceMemoryPool*   LoadingMemoryPool_Data;    // +0xa10 CCountedPointer<CMovableResourceMemoryPool>::Data
+    CCPPointerInfo*               LoadingMemoryPool_Info;    // +0xa14 CCountedPointer<CMovableResourceMemoryPool>::Info
+    CLoadingMemoryFailureHandler* LoadingMemoryFailureHandler_Data; // +0xa18 CCountedPointer<CLoadingMemoryFailureHandler>::Data
+    CCPPointerInfo*               LoadingMemoryFailureHandler_Info; // +0xa1c CCountedPointer<CLoadingMemoryFailureHandler>::Info
+    CMovableResourceMemoryPool*   AnimationMemoryPool_Data;  // +0xa20 CCountedPointer<CMovableResourceMemoryPool>::Data
+    CCPPointerInfo*               AnimationMemoryPool_Info;  // +0xa24 CCountedPointer<CMovableResourceMemoryPool>::Info
+    CMovableResourceMemoryPool*   ClothMemoryPool_Data;      // +0xa28 CCountedPointer<CMovableResourceMemoryPool>::Data
+    CCPPointerInfo*               ClothMemoryPool_Info;      // +0xa2c CCountedPointer<CMovableResourceMemoryPool>::Info
+    CMovableResourceMemoryPool*   MeshDataMemoryPool_Data;   // +0xa30 CCountedPointer<CMovableResourceMemoryPool>::Data
+    CCPPointerInfo*               MeshDataMemoryPool_Info;   // +0xa34 CCountedPointer<CMovableResourceMemoryPool>::Info
+    unsigned char                 AnimationManager[0x50];    // +0xa38 C3DAnimationManager
+    CGraphicDataBank*             GraphicBanks[1];           // +0xa88
+    CGraphicDataBank*             MainGraphicBank;           // +0xa8c
+    CFontBank*                    EngineFont;                // +0xa90
+    unsigned char                 VShaderBanks[0x2cb8];      // +0xa94 CShaderDataBank[27]
+    unsigned char                 ShaderBankPixel[0x1a8];    // +0x374c CShaderDataBank
+    unsigned char                 VShaderResources[0xd8];    // +0x38f4 CCountedPointer<CShaderResource>[27]
+    unsigned char                 ShaderResourcePixel[0xc];  // +0x39cc CCountedPointer<CShaderResource>
+    double                        MaxLoadingTime;            // +0x39d8
+    unsigned long                 VertexBufferUsageFlags;    // +0x39e0
+    unsigned char                 StipleFadeTexture[0x8];    // +0x39e4 CTexture
+    unsigned char                 HWInverseStipplePatterns[0x10]; // +0x39ec CArray<unsigned_long>
+    unsigned char                 DitherTextureList[0x10];   // +0x39fc CArray<CTexture>
+    CWideStringData*              EngineCachePath_PStringData; // +0x3a0c CWideString::PStringData
+    CWideStringData*              WriteableEngineCachePath_PStringData; // +0x3a10 CWideString::PStringData
+    unsigned char                 ZeroRGBATexture[0x8];      // +0x3a14 CTexture
+    unsigned char                 SatRGBATexture[0x8];       // +0x3a1c CTexture
+    unsigned char                 VSConstantLayoutBasic[0x150]; // +0x3a24 CEngineVSConstantLayoutBasic
+    unsigned char                 VSConstantLayoutLights[0x150]; // +0x3b74 CEngineVSConstantLayoutLights
+    unsigned char                 VSConstantLayoutLightsBones[0x150]; // +0x3cc4 CEngineVSConstantLayoutLightsBones
+    unsigned char                 VSConstantLayoutRepeatedMesh[0x180]; // +0x3e14 CEngineVSConstantLayoutRepeatedMesh
+    unsigned char                 VSConstantLayoutParticles[0x150]; // +0x3f94 CEngineVSConstantLayoutParticles
+    unsigned char                 GPUScratchBufferTextureManager[0x58]; // +0x40e4 CGPUScratchBufferTextureManager
+    unsigned char                 ExternalTexturesAllocatedFromEnginePools[0x14]; // +0x413c map<CTexture_*,CEngineResourceManager::CExternalTextureAllocationInfo,std::less<CTexture_*>,std::allocator<std::pair<CTexture_*_const,CEngineResourceManager::CExternalTextureAllocationInfo>_>_>
 };
 #pragma pack(pop)
 
@@ -60,11 +70,16 @@ FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, MeshBanks) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, MainMeshBank) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, EditorMeshBank) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, EngineMeshBank) == 0x518);
-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, LoadingMemoryPool) == 0xa10);
-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, LoadingMemoryFailureHandler) == 0xa18);
-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, AnimationMemoryPool) == 0xa20);
-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, ClothMemoryPool) == 0xa28);
-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, MeshDataMemoryPool) == 0xa30);
+FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, LoadingMemoryPool_Data) == 0xa10);
+FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, LoadingMemoryPool_Info) == 0xa14);
+FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, LoadingMemoryFailureHandler_Data) == 0xa18);
+FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, LoadingMemoryFailureHandler_Info) == 0xa1c);
+FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, AnimationMemoryPool_Data) == 0xa20);
+FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, AnimationMemoryPool_Info) == 0xa24);
+FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, ClothMemoryPool_Data) == 0xa28);
+FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, ClothMemoryPool_Info) == 0xa2c);
+FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, MeshDataMemoryPool_Data) == 0xa30);
+FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, MeshDataMemoryPool_Info) == 0xa34);
 FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, AnimationManager) == 0xa38);
 FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, GraphicBanks) == 0xa88);
 FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, MainGraphicBank) == 0xa8c);
@@ -78,8 +93,8 @@ FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, VertexBufferUsageFlags) == 
 FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, StipleFadeTexture) == 0x39e4);
 FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, HWInverseStipplePatterns) == 0x39ec);
 FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, DitherTextureList) == 0x39fc);
-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, EngineCachePath) == 0x3a0c);
-FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, WriteableEngineCachePath) == 0x3a10);
+FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, EngineCachePath_PStringData) == 0x3a0c);
+FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, WriteableEngineCachePath_PStringData) == 0x3a10);
 FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, ZeroRGBATexture) == 0x3a14);
 FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, SatRGBATexture) == 0x3a1c);
 FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, VSConstantLayoutBasic) == 0x3a24);

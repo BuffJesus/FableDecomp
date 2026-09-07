@@ -52,7 +52,7 @@ struct CCreatureAction_PickCrop {
     unsigned char _pad_0x9c[0x4];                            // +0x9c
     unsigned char _pad_0xa0[0x4];                            // +0xa0
     unsigned char _pad_0xa4[0x4];                            // +0xa4
-    long          sub;                                       // +0xa8 retail-only (CCreatureActionPickCrop_PerformAction_00844720.cpp)
+    long          sub;                                       // +0xa8 retail-only (previous header)
     unsigned char _pad_0xac[0x4];                            // +0xac
     unsigned char _pad_0xb0[0x4];                            // +0xb0
     unsigned char PObjectToUse[0x8];                         // +0xb4 CIntelligentPointer<CThingObject>

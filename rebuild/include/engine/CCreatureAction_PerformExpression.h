@@ -8,70 +8,72 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
+
 #pragma pack(push, 1)
 struct CCreatureAction_PerformExpression {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char _pad_0x28[0x4];                            // +0x28
-    unsigned char _pad_0x2c[0x4];                            // +0x2c
-    unsigned char _pad_0x30[0x4];                            // +0x30
-    unsigned char _pad_0x34[0x4];                            // +0x34
-    unsigned char _pad_0x38[0x4];                            // +0x38
-    unsigned char _pad_0x3c[0x4];                            // +0x3c
-    unsigned char _pad_0x40[0x4];                            // +0x40
-    unsigned char _pad_0x44[0x4];                            // +0x44
-    unsigned char _pad_0x48[0x4];                            // +0x48
-    unsigned char _pad_0x4c[0x4];                            // +0x4c
-    unsigned char _pad_0x50[0x4];                            // +0x50
-    unsigned char _pad_0x54[0x4];                            // +0x54
-    unsigned char _pad_0x58[0x4];                            // +0x58
-    unsigned char _pad_0x5c[0x4];                            // +0x5c
-    unsigned char _pad_0x60[0x4];                            // +0x60
-    unsigned char _pad_0x64[0x4];                            // +0x64
-    unsigned char _pad_0x68[0x4];                            // +0x68
-    unsigned char _pad_0x6c[0x4];                            // +0x6c
-    unsigned char _pad_0x70[0x4];                            // +0x70
-    unsigned char _pad_0x74[0x4];                            // +0x74
-    unsigned char _pad_0x78[0x4];                            // +0x78
-    unsigned char _pad_0x7c[0x4];                            // +0x7c
-    unsigned char _pad_0x80[0x4];                            // +0x80
-    unsigned char _pad_0x84[0x4];                            // +0x84
-    unsigned char _pad_0x88[0x4];                            // +0x88
-    unsigned char _pad_0x8c[0x4];                            // +0x8c
-    unsigned char _pad_0x90[0x4];                            // +0x90
-    unsigned char _pad_0x94[0x4];                            // +0x94
-    unsigned char _pad_0x98[0x4];                            // +0x98
-    unsigned char _pad_0x9c[0x4];                            // +0x9c
-    unsigned char _pad_0xa0[0x4];                            // +0xa0
-    unsigned char _pad_0xa4[0x4];                            // +0xa4
-    void*         p;                                         // +0xa8 retail-only (CCreatureActionPerformExpression_IsToHaveEmptyHands_00842c20.cpp)
-    unsigned char _pad_0xac[0x4];                            // +0xac
-    unsigned char _pad_0xb0[0x4];                            // +0xb0
-    unsigned char PExpressionDef[0x4];                       // +0xb4 CDefPointer<CExpressionDef_const_>
-    unsigned char PPerformToThing[0x8];                      // +0xb8 CIntelligentPointer<CThing>
-    long          ExpressionItemDefIndex;                    // +0xc0
-    bool          EmoteIconAdded;                            // +0xc4
-    bool          ReplacedAction;                            // +0xc5
-    bool          Extended;                                  // +0xc6
-    bool          ButtonHeld;                                // +0xc7
-    unsigned long SoundEffectID;                             // +0xc8
-    long          ExtraData1;                                // +0xcc
-    long          ExtraData2;                                // +0xd0
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned char    _pad_0x28[0x4];                         // +0x28
+    unsigned char    _pad_0x2c[0x4];                         // +0x2c
+    unsigned char    _pad_0x30[0x4];                         // +0x30
+    unsigned char    _pad_0x34[0x4];                         // +0x34
+    unsigned char    _pad_0x38[0x4];                         // +0x38
+    unsigned char    _pad_0x3c[0x4];                         // +0x3c
+    unsigned char    _pad_0x40[0x4];                         // +0x40
+    unsigned char    _pad_0x44[0x4];                         // +0x44
+    unsigned char    _pad_0x48[0x4];                         // +0x48
+    unsigned char    _pad_0x4c[0x4];                         // +0x4c
+    unsigned char    _pad_0x50[0x4];                         // +0x50
+    unsigned char    _pad_0x54[0x4];                         // +0x54
+    unsigned char    _pad_0x58[0x4];                         // +0x58
+    unsigned char    _pad_0x5c[0x4];                         // +0x5c
+    unsigned char    _pad_0x60[0x4];                         // +0x60
+    unsigned char    _pad_0x64[0x4];                         // +0x64
+    unsigned char    _pad_0x68[0x4];                         // +0x68
+    unsigned char    _pad_0x6c[0x4];                         // +0x6c
+    unsigned char    _pad_0x70[0x4];                         // +0x70
+    unsigned char    _pad_0x74[0x4];                         // +0x74
+    unsigned char    _pad_0x78[0x4];                         // +0x78
+    unsigned char    _pad_0x7c[0x4];                         // +0x7c
+    unsigned char    _pad_0x80[0x4];                         // +0x80
+    unsigned char    _pad_0x84[0x4];                         // +0x84
+    unsigned char    _pad_0x88[0x4];                         // +0x88
+    unsigned char    _pad_0x8c[0x4];                         // +0x8c
+    unsigned char    _pad_0x90[0x4];                         // +0x90
+    unsigned char    _pad_0x94[0x4];                         // +0x94
+    unsigned char    _pad_0x98[0x4];                         // +0x98
+    unsigned char    _pad_0x9c[0x4];                         // +0x9c
+    unsigned char    _pad_0xa0[0x4];                         // +0xa0
+    unsigned char    _pad_0xa4[0x4];                         // +0xa4
+    long             p;                                      // +0xa8 retail-only (previous header)
+    unsigned char    _pad_0xac[0x4];                         // +0xac
+    unsigned char    _pad_0xb0[0x4];                         // +0xb0
+    CDefPointeeBase* PExpressionDef_Object;                  // +0xb4 CDefPointer<CExpressionDef_const_>::Object
+    unsigned char    PPerformToThing[0x8];                   // +0xb8 CIntelligentPointer<CThing>
+    long             ExpressionItemDefIndex;                 // +0xc0
+    bool             EmoteIconAdded;                         // +0xc4
+    bool             ReplacedAction;                         // +0xc5
+    bool             Extended;                               // +0xc6
+    bool             ButtonHeld;                             // +0xc7
+    unsigned long    SoundEffectID;                          // +0xc8
+    long             ExtraData1;                             // +0xcc
+    long             ExtraData2;                             // +0xd0
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_PerformExpression) == 0xd4);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, p) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, PExpressionDef) == 0xb4);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, PExpressionDef_Object) == 0xb4);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, PPerformToThing) == 0xb8);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, ExpressionItemDefIndex) == 0xc0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PerformExpression, EmoteIconAdded) == 0xc4);

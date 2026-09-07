@@ -15,8 +15,12 @@ struct CGameCameraBase {
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    InternalCam[0x38];                      // +0x04 CCamera
     unsigned char    LastInternalCam[0x38];                  // +0x3c CCamera
-    unsigned char    LastPointingAt[0xc];                    // +0x74 C3DVector
-    unsigned char    PointingAt[0xc];                        // +0x80 C3DVector
+    float            LastPointingAt_X;                       // +0x74 C3DVector::X
+    float            LastPointingAt_Y;                       // +0x78 C3DVector::Y
+    float            LastPointingAt_Z;                       // +0x7c C3DVector::Z
+    float            PointingAt_X;                           // +0x80 C3DVector::X
+    float            PointingAt_Y;                           // +0x84 C3DVector::Y
+    float            PointingAt_Z;                           // +0x88 C3DVector::Z
     CWorld*          World;                                  // +0x8c
     float            Theta;                                  // +0x90
     float            Phi;                                    // +0x94
@@ -40,8 +44,12 @@ FABLE_STATIC_ASSERT(sizeof(CGameCameraBase) == 0xd8);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraBase, InternalCam) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraBase, LastInternalCam) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CGameCameraBase, LastPointingAt) == 0x74);
-FABLE_STATIC_ASSERT(offsetof(CGameCameraBase, PointingAt) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CGameCameraBase, LastPointingAt_X) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CGameCameraBase, LastPointingAt_Y) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(CGameCameraBase, LastPointingAt_Z) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CGameCameraBase, PointingAt_X) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CGameCameraBase, PointingAt_Y) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CGameCameraBase, PointingAt_Z) == 0x88);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraBase, World) == 0x8c);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraBase, Theta) == 0x90);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraBase, Phi) == 0x94);

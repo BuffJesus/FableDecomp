@@ -8,43 +8,54 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CLevelLoader;
 struct CMainGameComponent;
+struct CRegionConnectionGraph;
+struct CThingMapManager;
+struct CWADBank;
 struct CWorld;
 
 #pragma pack(push, 1)
 struct CWorldMap {
-    void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
-    long                f4;                                  // +0x04 retail-only (CWorldMap_GetMapPos_004fc690.cpp)
-    CWorld*             World;                               // +0x08
-    CMainGameComponent* Component;                           // +0x0c
-    unsigned char       PThingMapManager[0x4];               // +0x10 scoped_ptr<NThingMap::CThingMapManager>
-    unsigned char       LoadedScriptedMapBrushes[0x10];      // +0x14 map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>
-    unsigned char       Maps[0x10];                          // +0x24 CArray<CMapInfo>
-    unsigned char       Regions[0x10];                       // +0x34 vector<CRegion,std::allocator<CRegion>_>
-    unsigned char       RegionTime[0x10];                    // +0x44 vector<long,std::allocator<long>_>
-    unsigned char       PRegionGraph[0x8];                   // +0x54 CCountedPointer<CRegionConnectionGraph>
-    bool                SoundThemesDisabled;                 // +0x5c
-    unsigned char       _pad_0x5d[0x3];                      // +0x5d
-    long                Granularity;                         // +0x60
-    long                GranularityShift;                    // +0x64
-    long                MapPlacementPitch;                   // +0x68
-    unsigned char       Area[0x10];                          // +0x6c C2DBoxI
-    unsigned char       MapPlacement[0x10];                  // +0x7c vector<unsigned_short,std::allocator<unsigned_short>_>
-    unsigned char       PlayerPositionInfo[0x10];            // +0x8c vector<CWorldMap::CPlayerPositionInfo,std::allocator<CWorldMap::CPlayerPositionInfo>_>
-    unsigned char       HeightChangedAreas[0x10];            // +0x9c vector<C2DBoxI,std::allocator<C2DBoxI>_>
-    unsigned char       LoadedMaps[0x10];                    // +0xac CArray<long>
-    long                LoadedRegion;                        // +0xbc
-    unsigned char       LevelWADBank[0x8];                   // +0xc0 CCountedPointer<CWADBank>
-    bool                UseLevelWADBank;                     // +0xc8
-    unsigned char       _pad_0xc9[0x3];                      // +0xc9
-    unsigned long       CurrentMapUIDCount;                  // +0xcc
-    unsigned char       DestroyedThemePositions[0x10];       // +0xd0 vector<C2DCoordI,std::allocator<C2DCoordI>_>
-    unsigned char       PLevelLoader[0x8];                   // +0xe0 CCountedPointer<CLevelLoader>
-    unsigned char       PCameraRegionParticle[0x8];          // +0xe8 CIntelligentPointer<CThing>
-    unsigned char       PHeroBreathParticle[0x8];            // +0xf0 CIntelligentPointer<CThing>
-    bool                RegionUnloading;                     // +0xf8
-    bool                PassabilityBeingShown;               // +0xf9
-    unsigned char       _pad_0xfa[0x2];                      // +0xfa
+    void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
+    long                    f4;                              // +0x04 retail-only (previous header)
+    CWorld*                 World;                           // +0x08
+    CMainGameComponent*     Component;                       // +0x0c
+    CThingMapManager*       PThingMapManager_ptr;            // +0x10 scoped_ptr<NThingMap::CThingMapManager>::ptr
+    unsigned char           LoadedScriptedMapBrushes[0x10];  // +0x14 map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>
+    unsigned char           Maps[0x10];                      // +0x24 CArray<CMapInfo>
+    unsigned char           Regions[0x10];                   // +0x34 vector<CRegion,std::allocator<CRegion>_>
+    unsigned char           RegionTime[0x10];                // +0x44 vector<long,std::allocator<long>_>
+    CRegionConnectionGraph* PRegionGraph_Data;               // +0x54 CCountedPointer<CRegionConnectionGraph>::Data
+    CCPPointerInfo*         PRegionGraph_Info;               // +0x58 CCountedPointer<CRegionConnectionGraph>::Info
+    bool                    SoundThemesDisabled;             // +0x5c
+    unsigned char           _pad_0x5d[0x3];                  // +0x5d
+    long                    Granularity;                     // +0x60
+    long                    GranularityShift;                // +0x64
+    long                    MapPlacementPitch;               // +0x68
+    long                    Area_TLX;                        // +0x6c C2DBoxI::TLX
+    long                    Area_TLY;                        // +0x70 C2DBoxI::TLY
+    long                    Area_BRX;                        // +0x74 C2DBoxI::BRX
+    long                    Area_BRY;                        // +0x78 C2DBoxI::BRY
+    unsigned char           MapPlacement[0x10];              // +0x7c vector<unsigned_short,std::allocator<unsigned_short>_>
+    unsigned char           PlayerPositionInfo[0x10];        // +0x8c vector<CWorldMap::CPlayerPositionInfo,std::allocator<CWorldMap::CPlayerPositionInfo>_>
+    unsigned char           HeightChangedAreas[0x10];        // +0x9c vector<C2DBoxI,std::allocator<C2DBoxI>_>
+    unsigned char           LoadedMaps[0x10];                // +0xac CArray<long>
+    long                    LoadedRegion;                    // +0xbc
+    CWADBank*               LevelWADBank_Data;               // +0xc0 CCountedPointer<CWADBank>::Data
+    CCPPointerInfo*         LevelWADBank_Info;               // +0xc4 CCountedPointer<CWADBank>::Info
+    bool                    UseLevelWADBank;                 // +0xc8
+    unsigned char           _pad_0xc9[0x3];                  // +0xc9
+    unsigned long           CurrentMapUIDCount;              // +0xcc
+    unsigned char           DestroyedThemePositions[0x10];   // +0xd0 vector<C2DCoordI,std::allocator<C2DCoordI>_>
+    CLevelLoader*           PLevelLoader_Data;               // +0xe0 CCountedPointer<CLevelLoader>::Data
+    CCPPointerInfo*         PLevelLoader_Info;               // +0xe4 CCountedPointer<CLevelLoader>::Info
+    unsigned char           PCameraRegionParticle[0x8];      // +0xe8 CIntelligentPointer<CThing>
+    unsigned char           PHeroBreathParticle[0x8];        // +0xf0 CIntelligentPointer<CThing>
+    bool                    RegionUnloading;                 // +0xf8
+    bool                    PassabilityBeingShown;           // +0xf9
+    unsigned char           _pad_0xfa[0x2];                  // +0xfa
 };
 #pragma pack(pop)
 
@@ -53,27 +64,33 @@ FABLE_STATIC_ASSERT(offsetof(CWorldMap, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, f4) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, World) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, Component) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CWorldMap, PThingMapManager) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CWorldMap, PThingMapManager_ptr) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, LoadedScriptedMapBrushes) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, Maps) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, Regions) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, RegionTime) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CWorldMap, PRegionGraph) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CWorldMap, PRegionGraph_Data) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CWorldMap, PRegionGraph_Info) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, SoundThemesDisabled) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, Granularity) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, GranularityShift) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, MapPlacementPitch) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CWorldMap, Area) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CWorldMap, Area_TLX) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CWorldMap, Area_TLY) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CWorldMap, Area_BRX) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CWorldMap, Area_BRY) == 0x78);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, MapPlacement) == 0x7c);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, PlayerPositionInfo) == 0x8c);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, HeightChangedAreas) == 0x9c);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, LoadedMaps) == 0xac);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, LoadedRegion) == 0xbc);
-FABLE_STATIC_ASSERT(offsetof(CWorldMap, LevelWADBank) == 0xc0);
+FABLE_STATIC_ASSERT(offsetof(CWorldMap, LevelWADBank_Data) == 0xc0);
+FABLE_STATIC_ASSERT(offsetof(CWorldMap, LevelWADBank_Info) == 0xc4);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, UseLevelWADBank) == 0xc8);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, CurrentMapUIDCount) == 0xcc);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, DestroyedThemePositions) == 0xd0);
-FABLE_STATIC_ASSERT(offsetof(CWorldMap, PLevelLoader) == 0xe0);
+FABLE_STATIC_ASSERT(offsetof(CWorldMap, PLevelLoader_Data) == 0xe0);
+FABLE_STATIC_ASSERT(offsetof(CWorldMap, PLevelLoader_Info) == 0xe4);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, PCameraRegionParticle) == 0xe8);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, PHeroBreathParticle) == 0xf0);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, RegionUnloading) == 0xf8);

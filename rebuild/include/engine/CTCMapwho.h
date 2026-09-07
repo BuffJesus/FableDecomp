@@ -8,26 +8,53 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CMapwhoNode;
+struct CThingMapCell;
+
 #pragma pack(push, 1)
 struct CTCMapwho {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char TLNode[0x10];                              // +0x0c CMapwhoNode
-    unsigned char TRNode[0x10];                              // +0x1c CMapwhoNode
-    unsigned char BLNode[0x10];                              // +0x2c CMapwhoNode
-    unsigned char BRNode[0x10];                              // +0x3c CMapwhoNode
-    unsigned long SearchID;                                  // +0x4c
-    unsigned char InMapwho[0x4];                             // +0x50 bitfield group: uchar:1
+    void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char  _pad_0x04[0x4];                           // +0x04
+    unsigned char  _pad_0x08[0x4];                           // +0x08
+    CTCMapwho*     TLNode_PMapwho;                           // +0x0c CMapwhoNode::PMapwho
+    CMapwhoNode*   TLNode_PNext;                             // +0x10 CMapwhoNode::PNext
+    CMapwhoNode*   TLNode_PPrevious;                         // +0x14 CMapwhoNode::PPrevious
+    CThingMapCell* TLNode_PCell;                             // +0x18 CMapwhoNode::PCell
+    CTCMapwho*     TRNode_PMapwho;                           // +0x1c CMapwhoNode::PMapwho
+    CMapwhoNode*   TRNode_PNext;                             // +0x20 CMapwhoNode::PNext
+    CMapwhoNode*   TRNode_PPrevious;                         // +0x24 CMapwhoNode::PPrevious
+    CThingMapCell* TRNode_PCell;                             // +0x28 CMapwhoNode::PCell
+    CTCMapwho*     BLNode_PMapwho;                           // +0x2c CMapwhoNode::PMapwho
+    CMapwhoNode*   BLNode_PNext;                             // +0x30 CMapwhoNode::PNext
+    CMapwhoNode*   BLNode_PPrevious;                         // +0x34 CMapwhoNode::PPrevious
+    CThingMapCell* BLNode_PCell;                             // +0x38 CMapwhoNode::PCell
+    CTCMapwho*     BRNode_PMapwho;                           // +0x3c CMapwhoNode::PMapwho
+    CMapwhoNode*   BRNode_PNext;                             // +0x40 CMapwhoNode::PNext
+    CMapwhoNode*   BRNode_PPrevious;                         // +0x44 CMapwhoNode::PPrevious
+    CThingMapCell* BRNode_PCell;                             // +0x48 CMapwhoNode::PCell
+    unsigned long  SearchID;                                 // +0x4c
+    unsigned char  InMapwho[0x4];                            // +0x50 bitfield group: uchar:1
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCMapwho) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CTCMapwho, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCMapwho, TLNode) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCMapwho, TRNode) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CTCMapwho, BLNode) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CTCMapwho, BRNode) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, TLNode_PMapwho) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, TLNode_PNext) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, TLNode_PPrevious) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, TLNode_PCell) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, TRNode_PMapwho) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, TRNode_PNext) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, TRNode_PPrevious) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, TRNode_PCell) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, BLNode_PMapwho) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, BLNode_PNext) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, BLNode_PPrevious) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, BLNode_PCell) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, BRNode_PMapwho) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, BRNode_PNext) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, BRNode_PPrevious) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CTCMapwho, BRNode_PCell) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CTCMapwho, SearchID) == 0x4c);
 FABLE_STATIC_ASSERT(offsetof(CTCMapwho, InMapwho) == 0x50);
 

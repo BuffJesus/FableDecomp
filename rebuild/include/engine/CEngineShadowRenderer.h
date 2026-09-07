@@ -8,6 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct IDirect3DTexture9;
+
 #pragma pack(push, 1)
 struct CEngineShadowRenderer {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -19,7 +21,9 @@ struct CEngineShadowRenderer {
     float         ColourBufferShadowTextureZBias;            // +0x258
     float         ColourBufferShadowMinWClamp;               // +0x25c
     bool          EnableShadowBufferDraw;                    // +0x260
-    unsigned char StaticDataOrigin[0xc];                     // +0x261 C3DVector
+    float         StaticDataOrigin_X;                        // +0x261 C3DVector::X
+    float         StaticDataOrigin_Y;                        // +0x265 C3DVector::Y
+    float         StaticDataOrigin_Z;                        // +0x269 C3DVector::Z
     unsigned char CameraLookVector[0xf];                     // +0x26d C3DVector
     unsigned char CameraViewMatrix[0x30];                    // +0x27c CMatrix3x4
     bool          PerspectiveShadowsEnabled;                 // +0x2ac
@@ -37,7 +41,9 @@ struct CEngineShadowRenderer {
     unsigned char ShadowBufferDepthSurface[0x10];            // +0x2f8 CSurface
     unsigned char ShadowBufferColourSurface[0x10];           // +0x308 CSurface
     unsigned char ShadowBufferColourTexture[0x8];            // +0x318 CTexture
-    unsigned char ShadowBufferTextureUVScaler[0xc];          // +0x320 C3DVector
+    float         ShadowBufferTextureUVScaler_X;             // +0x320 C3DVector::X
+    float         ShadowBufferTextureUVScaler_Y;             // +0x324 C3DVector::Y
+    float         ShadowBufferTextureUVScaler_Z;             // +0x328 C3DVector::Z
     unsigned char DepthPackingLookupTexture[0x8];            // +0x32c CTexture
     unsigned char RenderingTechnique[0x4];                   // +0x334 EShadowRenderingTechnique
     long          UserVideoOptionShadowBufferSize;           // +0x338
@@ -54,7 +60,9 @@ FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowProjectionZSlopeOffset
 FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ColourBufferShadowTextureZBias) == 0x258);
 FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ColourBufferShadowMinWClamp) == 0x25c);
 FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, EnableShadowBufferDraw) == 0x260);
-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, StaticDataOrigin) == 0x261);
+FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, StaticDataOrigin_X) == 0x261);
+FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, StaticDataOrigin_Y) == 0x265);
+FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, StaticDataOrigin_Z) == 0x269);
 FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, CameraLookVector) == 0x26d);
 FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, CameraViewMatrix) == 0x27c);
 FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, PerspectiveShadowsEnabled) == 0x2ac);
@@ -72,7 +80,9 @@ FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, RenderSurface) == 0x2f0);
 FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferDepthSurface) == 0x2f8);
 FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferColourSurface) == 0x308);
 FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferColourTexture) == 0x318);
-FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferTextureUVScaler) == 0x320);
+FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferTextureUVScaler_X) == 0x320);
+FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferTextureUVScaler_Y) == 0x324);
+FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, ShadowBufferTextureUVScaler_Z) == 0x328);
 FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, DepthPackingLookupTexture) == 0x32c);
 FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, RenderingTechnique) == 0x334);
 FABLE_STATIC_ASSERT(offsetof(CEngineShadowRenderer, UserVideoOptionShadowBufferSize) == 0x338);

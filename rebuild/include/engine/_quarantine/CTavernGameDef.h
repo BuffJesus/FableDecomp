@@ -46,7 +46,7 @@ struct CTavernGameDef {
     unsigned long BettingBack;                               // +0x84
     unsigned long ReactionForward;                           // +0x88
     unsigned long FarewellForward;                           // +0x8c
-    unsigned char CameraName[0x4];                           // +0x90 CDefString
+    long          CameraName_TablePos;                       // +0x90 CDefString::TablePos
     unsigned long BoxGraphicL;                               // +0x94
     unsigned long BoxGraphicC;                               // +0x98
     unsigned long BoxGraphicR;                               // +0x9c
@@ -81,9 +81,9 @@ struct CTavernGameDef {
     long          MinBet;                                    // +0x110
     long          MaxBet;                                    // +0x114
     long          BetIncrement;                              // +0x118
-    unsigned char ScoreFont[0x4];                            // +0x11c CDefString
-    unsigned char TargetFont[0x4];                           // +0x120 CDefString
-    unsigned char StatsFont[0x4];                            // +0x124 CDefString
+    long          ScoreFont_TablePos;                        // +0x11c CDefString::TablePos
+    long          TargetFont_TablePos;                       // +0x120 CDefString::TablePos
+    long          StatsFont_TablePos;                        // +0x124 CDefString::TablePos
     float         ScoreX;                                    // +0x128
     float         ScoreY;                                    // +0x12c
     float         TargetX;                                   // +0x130
@@ -147,7 +147,7 @@ FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, BettingForward) == 0x80);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, BettingBack) == 0x84);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, ReactionForward) == 0x88);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, FarewellForward) == 0x8c);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, CameraName) == 0x90);
+FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, CameraName_TablePos) == 0x90);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, BoxGraphicL) == 0x94);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, BoxGraphicC) == 0x98);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, BoxGraphicR) == 0x9c);
@@ -182,9 +182,9 @@ FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, MoneyBagGraphic) == 0x10c);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, MinBet) == 0x110);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, MaxBet) == 0x114);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, BetIncrement) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, ScoreFont) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, TargetFont) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, StatsFont) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, ScoreFont_TablePos) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, TargetFont_TablePos) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, StatsFont_TablePos) == 0x124);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, ScoreX) == 0x128);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, ScoreY) == 0x12c);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameDef, TargetX) == 0x130);

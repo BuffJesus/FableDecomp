@@ -12,7 +12,7 @@
 struct CCombatAbilityFlourishCounterAttackDef {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x24];                           // +0x04
-    long          m_member;                                  // +0x28 retail-only (CCombatAbilityFlourishCounterAttackDef_Copy_00453ed2.cpp)
+    long          m_member;                                  // +0x28 retail-only (previous header)
     unsigned char _pad_0x2c[0x1c];                           // +0x2c
 };
 #pragma pack(pop)

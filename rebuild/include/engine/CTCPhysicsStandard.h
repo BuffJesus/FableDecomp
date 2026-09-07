@@ -13,9 +13,9 @@ struct CThingPhysicsMeshInfo;
 #pragma pack(push, 1)
 struct CTCPhysicsStandard {
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
-    void*                  owner;                            // +0x04 retail-only (CTCPhysicsStandard_IsOnAnyStationarySurface_00723a60.cpp)
+    long                   owner;                            // +0x04 retail-only (previous header)
     unsigned char          _pad_0x08[0x4];                   // +0x08
-    long                   ground;                           // +0x0c retail-only (CTCPhysicsStandard_SetRHSetAsFlushOnGround_00723a10.cpp)
+    long                   ground;                           // +0x0c retail-only (previous header)
     unsigned char          _pad_0x10[0x4];                   // +0x10
     unsigned char          _pad_0x14[0x4];                   // +0x14
     unsigned char          _pad_0x18[0x4];                   // +0x18
@@ -29,7 +29,9 @@ struct CTCPhysicsStandard {
     unsigned char          _pad_0x38[0x4];                   // +0x38
     unsigned char          _pad_0x3c[0x4];                   // +0x3c
     CThingPhysicsMeshInfo* PPhysicsMeshInfo;                 // +0x40
-    unsigned char          OffsetVector3D[0xc];              // +0x44 C3DVector
+    float                  OffsetVector3D_X;                 // +0x44 C3DVector::X
+    float                  OffsetVector3D_Y;                 // +0x48 C3DVector::Y
+    float                  OffsetVector3D_Z;                 // +0x4c C3DVector::Z
     unsigned char          RHSet[0x18];                      // +0x50 CRightHandedSet
     unsigned char          OldRHSet[0x18];                   // +0x68 CRightHandedSet
     long                   RHSetLastFrameSet;                // +0x80
@@ -43,7 +45,9 @@ FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, owner) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, ground) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, PPhysicsMeshInfo) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, OffsetVector3D) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, OffsetVector3D_X) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, OffsetVector3D_Y) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, OffsetVector3D_Z) == 0x4c);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, RHSet) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, OldRHSet) == 0x68);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsStandard, RHSetLastFrameSet) == 0x80);

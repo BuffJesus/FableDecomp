@@ -8,62 +8,80 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CComponent {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    int           f98;                                       // +0x04 retail-only (CComponent_ResetState_0052e6b0.cpp)
-    int           f9c;                                       // +0x08 retail-only (CComponent_ResetState_0052e6b0.cpp)
-    int           fa0;                                       // +0x0c retail-only (CComponent_ResetState_0052e6b0.cpp)
-    int           fa4;                                       // +0x10 retail-only (CComponent_ResetState_0052e6b0.cpp)
-    int           fa8;                                       // +0x14 retail-only (CComponent_ResetState_0052e6b0.cpp)
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char Name[0x4];                                 // +0x24 CCharString
-    unsigned char States[0x10];                              // +0x28 map<unsigned_long,NUISystem::CUIState,std::less<unsigned_long>,std::allocator<std::pair<unsigned_long_const_,NUISystem::CUIState>_>_>
-    float         Time;                                      // +0x38
-    unsigned char Position[0x8];                             // +0x3c C2DVector
-    unsigned char TargetPosition[0x8];                       // +0x44 C2DVector
-    unsigned char InitialPosition[0x8];                      // +0x4c C2DVector
-    unsigned char ParentPosition[0x8];                       // +0x54 C2DVector
-    unsigned char RenderPosition[0x8];                       // +0x5c C2DVector
-    unsigned char Zoom[0x8];                                 // +0x64 C2DVector
-    unsigned char TargetZoom[0x8];                           // +0x6c C2DVector
-    unsigned char InitialZoom[0x8];                          // +0x74 C2DVector
-    unsigned char ParentZoom[0x8];                           // +0x7c C2DVector
-    unsigned char RenderZoom[0x8];                           // +0x84 C2DVector
-    unsigned char Colour[0x4];                               // +0x8c CRGBColour
-    unsigned char TargetColour[0x4];                         // +0x90 CRGBColour
-    unsigned char InitialColour[0x4];                        // +0x94 CRGBColour
-    unsigned char ParentColour[0x4];                         // +0x98 CRGBColour
-    unsigned char RenderColour[0x4];                         // +0x9c CRGBColour
-    float         PositionTimeElapsed;                       // +0xa0
-    float         PositionTime;                              // +0xa4
-    float         ZoomTimeElapsed;                           // +0xa8
-    float         ZoomTime;                                  // +0xac
-    float         ColourTimeElapsed;                         // +0xb0
-    float         ColourTime;                                // +0xb4
-    unsigned char Children[0x10];                            // +0xb8 vector<CCountedPointer<NUISystem::CComponent>,std::allocator<CCountedPointer<NUISystem::CComponent>_>_>
-    unsigned char ChildrenToDelete[0x10];                    // +0xc8 vector<CCountedPointer<NUISystem::CComponent>,std::allocator<CCountedPointer<NUISystem::CComponent>_>_>
-    CComponent*   PParent;                                   // +0xd8
-    unsigned char Size[0x8];                                 // +0xdc C2DVector
-    unsigned char Deletion[0x10];                            // +0xe4 CDeletion
-    CComponent*   PParentViewport;                           // +0xf4
-    unsigned char ActionsIAmParamOf[0xc];                    // +0xf8 list<CCountedPointer<NUISystem::CAction>,std::allocator<CCountedPointer<NUISystem::CAction>_>_>
-    unsigned char ShapeChildren[0x10];                       // +0x104 vector<unsigned_long,std::allocator<unsigned_long>_>
-    unsigned char RenderPositionSave[0x8];                   // +0x114 C2DVector
-    unsigned char RelativeRenderPosition[0x8];               // +0x11c C2DVector
-    unsigned char RelativeParentPosition[0x8];               // +0x124 C2DVector
-    unsigned char RelativeRenderZoom[0x8];                   // +0x12c C2DVector
-    unsigned char RelativeParentZoom[0x8];                   // +0x134 C2DVector
-    CComponent*   PPositionParent;                           // +0x13c
-    unsigned char PositionChildren[0x10];                    // +0x140 set<NUISystem::CComponent_*,std::less<NUISystem::CComponent_*>,std::allocator<NUISystem::CComponent_*>_>
-    void*         PActionsOnDestruction;                     // +0x150 list<CCountedPointer<NUISystem::CAction>,std::allocator<CCountedPointer<NUISystem::CAction>_>_> *
-    unsigned char Flags;                                     // +0x154
-    unsigned char Type;                                      // +0x155
-    unsigned char FlagsSetTwo;                               // +0x156
-    char          Layer;                                     // +0x157
-    long          DefIndex;                                  // +0x158
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    long             f98;                                    // +0x04 retail-only (previous header)
+    long             f9c;                                    // +0x08 retail-only (previous header)
+    long             fa0;                                    // +0x0c retail-only (previous header)
+    long             fa4;                                    // +0x10 retail-only (previous header)
+    long             fa8;                                    // +0x14 retail-only (previous header)
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    CCharStringData* Name_PStringData;                       // +0x24 CCharString::PStringData
+    unsigned char    States[0x10];                           // +0x28 map<unsigned_long,NUISystem::CUIState,std::less<unsigned_long>,std::allocator<std::pair<unsigned_long_const_,NUISystem::CUIState>_>_>
+    float            Time;                                   // +0x38
+    float            Position_X;                             // +0x3c C2DVector::X
+    float            Position_Y;                             // +0x40 C2DVector::Y
+    float            TargetPosition_X;                       // +0x44 C2DVector::X
+    float            TargetPosition_Y;                       // +0x48 C2DVector::Y
+    float            InitialPosition_X;                      // +0x4c C2DVector::X
+    float            InitialPosition_Y;                      // +0x50 C2DVector::Y
+    float            ParentPosition_X;                       // +0x54 C2DVector::X
+    float            ParentPosition_Y;                       // +0x58 C2DVector::Y
+    float            RenderPosition_X;                       // +0x5c C2DVector::X
+    float            RenderPosition_Y;                       // +0x60 C2DVector::Y
+    float            Zoom_X;                                 // +0x64 C2DVector::X
+    float            Zoom_Y;                                 // +0x68 C2DVector::Y
+    float            TargetZoom_X;                           // +0x6c C2DVector::X
+    float            TargetZoom_Y;                           // +0x70 C2DVector::Y
+    float            InitialZoom_X;                          // +0x74 C2DVector::X
+    float            InitialZoom_Y;                          // +0x78 C2DVector::Y
+    float            ParentZoom_X;                           // +0x7c C2DVector::X
+    float            ParentZoom_Y;                           // +0x80 C2DVector::Y
+    float            RenderZoom_X;                           // +0x84 C2DVector::X
+    float            RenderZoom_Y;                           // +0x88 C2DVector::Y
+    unsigned char    Colour[0x4];                            // +0x8c CRGBColour
+    unsigned char    TargetColour[0x4];                      // +0x90 CRGBColour
+    unsigned char    InitialColour[0x4];                     // +0x94 CRGBColour
+    unsigned char    ParentColour[0x4];                      // +0x98 CRGBColour
+    unsigned char    RenderColour[0x4];                      // +0x9c CRGBColour
+    float            PositionTimeElapsed;                    // +0xa0
+    float            PositionTime;                           // +0xa4
+    float            ZoomTimeElapsed;                        // +0xa8
+    float            ZoomTime;                               // +0xac
+    float            ColourTimeElapsed;                      // +0xb0
+    float            ColourTime;                             // +0xb4
+    unsigned char    Children[0x10];                         // +0xb8 vector<CCountedPointer<NUISystem::CComponent>,std::allocator<CCountedPointer<NUISystem::CComponent>_>_>
+    unsigned char    ChildrenToDelete[0x10];                 // +0xc8 vector<CCountedPointer<NUISystem::CComponent>,std::allocator<CCountedPointer<NUISystem::CComponent>_>_>
+    CComponent*      PParent;                                // +0xd8
+    float            Size_X;                                 // +0xdc C2DVector::X
+    float            Size_Y;                                 // +0xe0 C2DVector::Y
+    unsigned char    Deletion[0x10];                         // +0xe4 CDeletion
+    CComponent*      PParentViewport;                        // +0xf4
+    unsigned char    ActionsIAmParamOf[0xc];                 // +0xf8 list<CCountedPointer<NUISystem::CAction>,std::allocator<CCountedPointer<NUISystem::CAction>_>_>
+    unsigned char    ShapeChildren[0x10];                    // +0x104 vector<unsigned_long,std::allocator<unsigned_long>_>
+    float            RenderPositionSave_X;                   // +0x114 C2DVector::X
+    float            RenderPositionSave_Y;                   // +0x118 C2DVector::Y
+    float            RelativeRenderPosition_X;               // +0x11c C2DVector::X
+    float            RelativeRenderPosition_Y;               // +0x120 C2DVector::Y
+    float            RelativeParentPosition_X;               // +0x124 C2DVector::X
+    float            RelativeParentPosition_Y;               // +0x128 C2DVector::Y
+    float            RelativeRenderZoom_X;                   // +0x12c C2DVector::X
+    float            RelativeRenderZoom_Y;                   // +0x130 C2DVector::Y
+    float            RelativeParentZoom_X;                   // +0x134 C2DVector::X
+    float            RelativeParentZoom_Y;                   // +0x138 C2DVector::Y
+    CComponent*      PPositionParent;                        // +0x13c
+    unsigned char    PositionChildren[0x10];                 // +0x140 set<NUISystem::CComponent_*,std::less<NUISystem::CComponent_*>,std::allocator<NUISystem::CComponent_*>_>
+    void*            PActionsOnDestruction;                  // +0x150 list<CCountedPointer<NUISystem::CAction>,std::allocator<CCountedPointer<NUISystem::CAction>_>_> *
+    unsigned char    Flags;                                  // +0x154
+    unsigned char    Type;                                   // +0x155
+    unsigned char    FlagsSetTwo;                            // +0x156
+    char             Layer;                                  // +0x157
+    long             DefIndex;                               // +0x158
 };
 #pragma pack(pop)
 
@@ -74,19 +92,29 @@ FABLE_STATIC_ASSERT(offsetof(CComponent, f9c) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CComponent, fa0) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CComponent, fa4) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CComponent, fa8) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CComponent, Name) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Name_PStringData) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CComponent, States) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CComponent, Time) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CComponent, Position) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CComponent, TargetPosition) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CComponent, InitialPosition) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CComponent, ParentPosition) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CComponent, RenderPosition) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CComponent, Zoom) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CComponent, TargetZoom) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(CComponent, InitialZoom) == 0x74);
-FABLE_STATIC_ASSERT(offsetof(CComponent, ParentZoom) == 0x7c);
-FABLE_STATIC_ASSERT(offsetof(CComponent, RenderZoom) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Position_X) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Position_Y) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CComponent, TargetPosition_X) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CComponent, TargetPosition_Y) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CComponent, InitialPosition_X) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, InitialPosition_Y) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ParentPosition_X) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ParentPosition_Y) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RenderPosition_X) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RenderPosition_Y) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Zoom_X) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Zoom_Y) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CComponent, TargetZoom_X) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, TargetZoom_Y) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CComponent, InitialZoom_X) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CComponent, InitialZoom_Y) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ParentZoom_X) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ParentZoom_Y) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RenderZoom_X) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RenderZoom_Y) == 0x88);
 FABLE_STATIC_ASSERT(offsetof(CComponent, Colour) == 0x8c);
 FABLE_STATIC_ASSERT(offsetof(CComponent, TargetColour) == 0x90);
 FABLE_STATIC_ASSERT(offsetof(CComponent, InitialColour) == 0x94);
@@ -101,16 +129,22 @@ FABLE_STATIC_ASSERT(offsetof(CComponent, ColourTime) == 0xb4);
 FABLE_STATIC_ASSERT(offsetof(CComponent, Children) == 0xb8);
 FABLE_STATIC_ASSERT(offsetof(CComponent, ChildrenToDelete) == 0xc8);
 FABLE_STATIC_ASSERT(offsetof(CComponent, PParent) == 0xd8);
-FABLE_STATIC_ASSERT(offsetof(CComponent, Size) == 0xdc);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Size_X) == 0xdc);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Size_Y) == 0xe0);
 FABLE_STATIC_ASSERT(offsetof(CComponent, Deletion) == 0xe4);
 FABLE_STATIC_ASSERT(offsetof(CComponent, PParentViewport) == 0xf4);
 FABLE_STATIC_ASSERT(offsetof(CComponent, ActionsIAmParamOf) == 0xf8);
 FABLE_STATIC_ASSERT(offsetof(CComponent, ShapeChildren) == 0x104);
-FABLE_STATIC_ASSERT(offsetof(CComponent, RenderPositionSave) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeRenderPosition) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeParentPosition) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeRenderZoom) == 0x12c);
-FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeParentZoom) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RenderPositionSave_X) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RenderPositionSave_Y) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeRenderPosition_X) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeRenderPosition_Y) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeParentPosition_X) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeParentPosition_Y) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeRenderZoom_X) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeRenderZoom_Y) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeParentZoom_X) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeParentZoom_Y) == 0x138);
 FABLE_STATIC_ASSERT(offsetof(CComponent, PPositionParent) == 0x13c);
 FABLE_STATIC_ASSERT(offsetof(CComponent, PositionChildren) == 0x140);
 FABLE_STATIC_ASSERT(offsetof(CComponent, PActionsOnDestruction) == 0x150);

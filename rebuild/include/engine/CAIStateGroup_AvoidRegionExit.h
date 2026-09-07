@@ -15,12 +15,16 @@ struct CAIStateGroup_AvoidRegionExit {
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
     unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char Position[0xc];                             // +0x14 C3DVector
+    float         Position_X;                                // +0x14 C3DVector::X
+    float         Position_Y;                                // +0x18 C3DVector::Y
+    float         Position_Z;                                // +0x1c C3DVector::Z
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_AvoidRegionExit) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_AvoidRegionExit, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_AvoidRegionExit, Position) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_AvoidRegionExit, Position_X) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_AvoidRegionExit, Position_Y) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_AvoidRegionExit, Position_Z) == 0x1c);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_AVOIDREGIONEXIT_H

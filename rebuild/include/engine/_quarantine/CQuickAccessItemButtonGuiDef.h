@@ -27,15 +27,19 @@ struct CQuickAccessItemButtonGuiDef {
     unsigned char _pad_0x38[0x4];                            // +0x38
     unsigned char _pad_0x3c[0x4];                            // +0x3c
     long          ButtonGraphic;                             // +0x40
-    unsigned char Position[0x8];                             // +0x44 C2DVector
-    unsigned char Offset[0x8];                               // +0x4c C2DVector
+    float         Position_X;                                // +0x44 C2DVector::X
+    float         Position_Y;                                // +0x48 C2DVector::Y
+    float         Offset_X;                                  // +0x4c C2DVector::X
+    float         Offset_Y;                                  // +0x50 C2DVector::Y
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CQuickAccessItemButtonGuiDef) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CQuickAccessItemButtonGuiDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CQuickAccessItemButtonGuiDef, ButtonGraphic) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CQuickAccessItemButtonGuiDef, Position) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CQuickAccessItemButtonGuiDef, Offset) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CQuickAccessItemButtonGuiDef, Position_X) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CQuickAccessItemButtonGuiDef, Position_Y) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CQuickAccessItemButtonGuiDef, Offset_X) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CQuickAccessItemButtonGuiDef, Offset_Y) == 0x50);
 
 #endif // FABLE_ENGINE_CQUICKACCESSITEMBUTTONGUIDEF_H

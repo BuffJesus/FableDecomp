@@ -8,6 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+struct CDefPointeeBase;
 struct CTCDriverBase;
 struct CTCGraphicAppearance;
 struct CTCPhysicsBase;
@@ -23,15 +25,15 @@ struct CThing {
     unsigned char         UsingComponents[0x28];             // +0x20 bitset<274>
     unsigned char         Components[0x14];                  // +0x48 CVectorMap<ETCInterfaceType,CTCBase_*,CKeyPairCompareLess<ETCInterfaceType,CTCBase_*>_>
     unsigned char         UpdateComponentsList[0xc];         // +0x5c list<CTCBase_*,std::allocator<CTCBase_*>_>
-    unsigned char         SerialisationSectionName[0x4];     // +0x68 CCharString
+    CCharStringData*      SerialisationSectionName_PStringData; // +0x68 CCharString::PStringData
     CTCDriverBase*        PTCDriver;                         // +0x6c
     CTCPhysicsBase*       PhysicsTC;                         // +0x70
     CTCGraphicAppearance* PTCGraphicAppearance;              // +0x74
     long                  WorldFrameCreatedAt;               // +0x78
     unsigned long         ThingTypeFlags;                    // +0x7c
-    unsigned char         PBaseDef[0x4];                     // +0x80 CDefPointer<CThingBaseDef_const_>
-    unsigned char         ScriptName[0x4];                   // +0x84 CCharString
-    unsigned char         ScriptData[0x4];                   // +0x88 CCharString
+    CDefPointeeBase*      PBaseDef_Object;                   // +0x80 CDefPointer<CThingBaseDef_const_>::Object
+    CCharStringData*      ScriptName_PStringData;            // +0x84 CCharString::PStringData
+    CCharStringData*      ScriptData_PStringData;            // +0x88 CCharString::PStringData
     CThing*               RenderListPrev;                    // +0x8c
     CThing*               RenderListNext;                    // +0x90
     CThing*               UpdateListPrev;                    // +0x94
@@ -52,15 +54,15 @@ FABLE_STATIC_ASSERT(offsetof(CThing, UniqueID) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CThing, UsingComponents) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CThing, Components) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CThing, UpdateComponentsList) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CThing, SerialisationSectionName) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CThing, SerialisationSectionName_PStringData) == 0x68);
 FABLE_STATIC_ASSERT(offsetof(CThing, PTCDriver) == 0x6c);
 FABLE_STATIC_ASSERT(offsetof(CThing, PhysicsTC) == 0x70);
 FABLE_STATIC_ASSERT(offsetof(CThing, PTCGraphicAppearance) == 0x74);
 FABLE_STATIC_ASSERT(offsetof(CThing, WorldFrameCreatedAt) == 0x78);
 FABLE_STATIC_ASSERT(offsetof(CThing, ThingTypeFlags) == 0x7c);
-FABLE_STATIC_ASSERT(offsetof(CThing, PBaseDef) == 0x80);
-FABLE_STATIC_ASSERT(offsetof(CThing, ScriptName) == 0x84);
-FABLE_STATIC_ASSERT(offsetof(CThing, ScriptData) == 0x88);
+FABLE_STATIC_ASSERT(offsetof(CThing, PBaseDef_Object) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CThing, ScriptName_PStringData) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CThing, ScriptData_PStringData) == 0x88);
 FABLE_STATIC_ASSERT(offsetof(CThing, RenderListPrev) == 0x8c);
 FABLE_STATIC_ASSERT(offsetof(CThing, RenderListNext) == 0x90);
 FABLE_STATIC_ASSERT(offsetof(CThing, UpdateListPrev) == 0x94);

@@ -10,25 +10,32 @@
 
 struct CFontBank;
 struct CGraphicDataBank;
+struct CWideStringData;
 
 #pragma pack(push, 1)
 struct CSubtitleRenderer {
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char     VWindow[0x10];                         // +0x04 C2DBoxF
-    unsigned char     VTelevisionWindow[0x10];               // +0x14 C2DBoxF
+    float             VWindow_TLX;                           // +0x04 C2DBoxF::TLX
+    float             VWindow_TLY;                           // +0x08 C2DBoxF::TLY
+    float             VWindow_BRX;                           // +0x0c C2DBoxF::BRX
+    float             VWindow_BRY;                           // +0x10 C2DBoxF::BRY
+    float             VTelevisionWindow_TLX;                 // +0x14 C2DBoxF::TLX
+    float             VTelevisionWindow_TLY;                 // +0x18 C2DBoxF::TLY
+    float             VTelevisionWindow_BRX;                 // +0x1c C2DBoxF::BRX
+    float             VTelevisionWindow_BRY;                 // +0x20 C2DBoxF::BRY
     long              TextCharactersShowing;                 // +0x24
     bool              TextGroupHasEntriesRemaining;          // +0x28
     unsigned char     _pad_0x29[0x3];                        // +0x29
     long              TextGroupIndex;                        // +0x2c
-    unsigned char     TextGroupTag[0x4];                     // +0x30 CWideString
+    CWideStringData*  TextGroupTag_PStringData;              // +0x30 CWideString::PStringData
     unsigned char     TextInfoQueue[0x18];                   // +0x34 queue<CSubtitleRenderer::CSetTextInfo,std::deque<CSubtitleRenderer::CSetTextInfo,std::allocator<CSubtitleRenderer::CSetTextInfo>_>_>
-    unsigned char     Text[0x4];                             // +0x4c CWideString
-    unsigned char     NameText[0x4];                         // +0x50 CWideString
-    unsigned char     Button1Text[0x4];                      // +0x54 CWideString
-    unsigned char     Button2Text[0x4];                      // +0x58 CWideString
-    unsigned char     Button3Text[0x4];                      // +0x5c CWideString
-    unsigned char     Button1OverrideText[0x4];              // +0x60 CWideString
-    unsigned char     Button2OverrideText[0x4];              // +0x64 CWideString
+    CWideStringData*  Text_PStringData;                      // +0x4c CWideString::PStringData
+    CWideStringData*  NameText_PStringData;                  // +0x50 CWideString::PStringData
+    CWideStringData*  Button1Text_PStringData;               // +0x54 CWideString::PStringData
+    CWideStringData*  Button2Text_PStringData;               // +0x58 CWideString::PStringData
+    CWideStringData*  Button3Text_PStringData;               // +0x5c CWideString::PStringData
+    CWideStringData*  Button1OverrideText_PStringData;       // +0x60 CWideString::PStringData
+    CWideStringData*  Button2OverrideText_PStringData;       // +0x64 CWideString::PStringData
     unsigned char     Button1Alpha;                          // +0x68
     unsigned char     Button2Alpha;                          // +0x69
     unsigned char     _pad_0x6a[0x2];                        // +0x6a
@@ -63,20 +70,26 @@ struct CSubtitleRenderer {
 
 FABLE_STATIC_ASSERT(sizeof(CSubtitleRenderer) == 0x128);
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, VWindow) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, VTelevisionWindow) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, VWindow_TLX) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, VWindow_TLY) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, VWindow_BRX) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, VWindow_BRY) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, VTelevisionWindow_TLX) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, VTelevisionWindow_TLY) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, VTelevisionWindow_BRX) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, VTelevisionWindow_BRY) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, TextCharactersShowing) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, TextGroupHasEntriesRemaining) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, TextGroupIndex) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, TextGroupTag) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, TextGroupTag_PStringData) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, TextInfoQueue) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Text) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, NameText) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Button1Text) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Button2Text) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Button3Text) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Button1OverrideText) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Button2OverrideText) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Text_PStringData) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, NameText_PStringData) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Button1Text_PStringData) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Button2Text_PStringData) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Button3Text_PStringData) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Button1OverrideText_PStringData) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Button2OverrideText_PStringData) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Button1Alpha) == 0x68);
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, Button2Alpha) == 0x69);
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, DisplayFlags) == 0x6c);

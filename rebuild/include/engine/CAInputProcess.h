@@ -8,19 +8,25 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CBaseClass;
 struct CInputProcessManager;
+struct CLinkedListPosition;
 
 #pragma pack(push, 1)
 struct CAInputProcess {
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     CInputProcessManager* PPlayerInterface;                  // +0x04
-    unsigned char         InputProcessListPos[0xc];          // +0x08 CLinkedListPosition
+    CBaseClass*           InputProcessListPos_Data;          // +0x08 CLinkedListPosition::Data
+    CLinkedListPosition*  InputProcessListPos_Next;          // +0x0c CLinkedListPosition::Next
+    CLinkedListPosition*  InputProcessListPos_Previous;      // +0x10 CLinkedListPosition::Previous
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CAInputProcess) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CAInputProcess, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAInputProcess, PPlayerInterface) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CAInputProcess, InputProcessListPos) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CAInputProcess, InputProcessListPos_Data) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CAInputProcess, InputProcessListPos_Next) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CAInputProcess, InputProcessListPos_Previous) == 0x10);
 
 #endif // FABLE_ENGINE_CAINPUTPROCESS_H

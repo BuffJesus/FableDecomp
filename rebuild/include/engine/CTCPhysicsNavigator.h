@@ -13,9 +13,15 @@ struct CTCPhysicsNavigator {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x84];                          // +0x04 flattened base-class subobject(s)
     bool          Navigating;                                // +0x88
-    unsigned char PositionToNavigateTo[0xc];                 // +0x89 C3DVector
-    unsigned char AdditionalImpulse[0xc];                    // +0x95 C3DVector
-    unsigned char ForcedMoveToPos[0xc];                      // +0xa1 C3DVector
+    float         PositionToNavigateTo_X;                    // +0x89 C3DVector::X
+    float         PositionToNavigateTo_Y;                    // +0x8d C3DVector::Y
+    float         PositionToNavigateTo_Z;                    // +0x91 C3DVector::Z
+    float         AdditionalImpulse_X;                       // +0x95 C3DVector::X
+    float         AdditionalImpulse_Y;                       // +0x99 C3DVector::Y
+    float         AdditionalImpulse_Z;                       // +0x9d C3DVector::Z
+    float         ForcedMoveToPos_X;                         // +0xa1 C3DVector::X
+    float         ForcedMoveToPos_Y;                         // +0xa5 C3DVector::Y
+    float         ForcedMoveToPos_Z;                         // +0xa9 C3DVector::Z
     unsigned char ForcedMoveToPosUsePhysics[0x3];            // +0xad bitfield group: bool:1
 };
 #pragma pack(pop)
@@ -23,9 +29,15 @@ struct CTCPhysicsNavigator {
 FABLE_STATIC_ASSERT(sizeof(CTCPhysicsNavigator) == 0xb0);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, Navigating) == 0x88);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, PositionToNavigateTo) == 0x89);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, AdditionalImpulse) == 0x95);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, ForcedMoveToPos) == 0xa1);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, PositionToNavigateTo_X) == 0x89);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, PositionToNavigateTo_Y) == 0x8d);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, PositionToNavigateTo_Z) == 0x91);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, AdditionalImpulse_X) == 0x95);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, AdditionalImpulse_Y) == 0x99);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, AdditionalImpulse_Z) == 0x9d);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, ForcedMoveToPos_X) == 0xa1);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, ForcedMoveToPos_Y) == 0xa5);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, ForcedMoveToPos_Z) == 0xa9);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsNavigator, ForcedMoveToPosUsePhysics) == 0xad);
 
 #endif // FABLE_ENGINE_CTCPHYSICSNAVIGATOR_H

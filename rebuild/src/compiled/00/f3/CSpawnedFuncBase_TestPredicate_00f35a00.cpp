@@ -1,3 +1,3 @@
-struct P { virtual bool v0(); };
-struct S { char pad[0x2c]; P* f2c; };
-bool __fastcall TestPredicate(S* self){ P* p = self->f2c; if(!p) return true; return p->v0(); }
+#include "engine/CSpawnedFuncBase.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CPredicateBase { virtual bool v0(); };
+bool __fastcall TestPredicate(CSpawnedFuncBase* self){ CPredicateBase* p = self->PPredicate_Data; if(!p) return true; return p->v0(); }

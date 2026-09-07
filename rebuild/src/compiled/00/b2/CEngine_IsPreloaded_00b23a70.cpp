@@ -1,8 +1,11 @@
+#include "engine/CEngine.h"  // retyped onto the PDB layout; byte parity re-verified
 #include "rebuild_abi.h"
-// CEngine::IsPreloaded @ 0x00b23a70
-struct CEngine { char pad18[0x18]; char m_b18; char pad19[0xb]; char m_b24; bool IsPreloaded(); };
-bool CEngine::IsPreloaded()
+// CEngine_Methods::IsPreloaded @ 0x00b23a70
+struct CEngine_Methods : CEngine {
+    bool IsPreloaded();
+};
+bool CEngine_Methods::IsPreloaded()
 {
-    if (m_b18 || m_b24) return false;
+    if (NewSceneFlag || CutscenePreloadFlag) return false;
     return true;
 }

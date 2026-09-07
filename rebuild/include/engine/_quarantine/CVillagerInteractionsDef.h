@@ -26,8 +26,8 @@ struct CVillagerInteractionsDef {
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
     int           fieldA;                                    // +0x3c retail-only (CVillagerInteractionsDef_TransferCVillagerInteractionsDefUAEXAAVCPersistC_00456f27.cpp)
-    unsigned char Animation1[0x4];                           // +0x40 CDefString
-    unsigned char Animation2[0x4];                           // +0x44 CDefString
+    long          Animation1_TablePos;                       // +0x40 CDefString::TablePos
+    long          Animation2_TablePos;                       // +0x44 CDefString::TablePos
     float         Distance;                                  // +0x48
 };
 #pragma pack(pop)
@@ -35,8 +35,8 @@ struct CVillagerInteractionsDef {
 FABLE_STATIC_ASSERT(sizeof(CVillagerInteractionsDef) == 0x4c);
 FABLE_STATIC_ASSERT(offsetof(CVillagerInteractionsDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CVillagerInteractionsDef, fieldA) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CVillagerInteractionsDef, Animation1) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CVillagerInteractionsDef, Animation2) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CVillagerInteractionsDef, Animation1_TablePos) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CVillagerInteractionsDef, Animation2_TablePos) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CVillagerInteractionsDef, Distance) == 0x48);
 
 #endif // FABLE_ENGINE_CVILLAGERINTERACTIONSDEF_H

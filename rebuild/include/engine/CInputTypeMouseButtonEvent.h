@@ -12,13 +12,15 @@
 struct CInputTypeMouseButtonEvent {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char Button[0x4];                               // +0x04 EMouseButtonControl
-    unsigned char ControlDirection[0x8];                     // +0x08 C2DVector
+    float         ControlDirection_X;                        // +0x08 C2DVector::X
+    float         ControlDirection_Y;                        // +0x0c C2DVector::Y
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CInputTypeMouseButtonEvent) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CInputTypeMouseButtonEvent, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CInputTypeMouseButtonEvent, Button) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CInputTypeMouseButtonEvent, ControlDirection) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CInputTypeMouseButtonEvent, ControlDirection_X) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CInputTypeMouseButtonEvent, ControlDirection_Y) == 0xc);
 
 #endif // FABLE_ENGINE_CINPUTTYPEMOUSEBUTTONEVENT_H

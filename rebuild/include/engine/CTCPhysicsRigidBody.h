@@ -34,7 +34,8 @@ struct CTCPhysicsRigidBody {
     CThingPhysicsMeshInfo* PPhysicsMeshInfo;                 // +0x70
     unsigned char          RHSet[0x18];                      // +0x74 CRightHandedSet
     unsigned char          OldRHSet[0x18];                   // +0x8c CRightHandedSet
-    unsigned char          OffsetVector[0x8];                // +0xa4 C2DVector
+    float                  OffsetVector_X;                   // +0xa4 C2DVector::X
+    float                  OffsetVector_Y;                   // +0xa8 C2DVector::Y
     unsigned char          Body[0x1c4];                      // +0xac CRigidBody
 };
 #pragma pack(pop)
@@ -47,7 +48,8 @@ FABLE_STATIC_ASSERT(offsetof(CTCPhysicsRigidBody, Collidors) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsRigidBody, PPhysicsMeshInfo) == 0x70);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsRigidBody, RHSet) == 0x74);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsRigidBody, OldRHSet) == 0x8c);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsRigidBody, OffsetVector) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsRigidBody, OffsetVector_X) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsRigidBody, OffsetVector_Y) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsRigidBody, Body) == 0xac);
 
 #endif // FABLE_ENGINE_CTCPHYSICSRIGIDBODY_H

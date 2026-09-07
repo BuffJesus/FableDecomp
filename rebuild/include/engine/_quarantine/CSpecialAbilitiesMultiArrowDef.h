@@ -29,7 +29,7 @@ struct CSpecialAbilitiesMultiArrowDef {
     long          NumberOfShots[4];                          // +0x40
     long          NumberInVolley[4];                         // +0x50
     float         AmmoEffectCreationDelaySecs;               // +0x60
-    unsigned char CastSound[0x4];                            // +0x64 CDefString
+    long          CastSound_TablePos;                        // +0x64 CDefString::TablePos
     float         BowHighlightWidth;                         // +0x68
     unsigned char BowHighlightColor[0x10];                   // +0x6c vector<long,std::allocator<long>_>
     unsigned char MultiArrowPerArrowDamageMultiplier[0x10];  // +0x7c vector<float,std::allocator<float>_>
@@ -41,7 +41,7 @@ FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesMultiArrowDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesMultiArrowDef, NumberOfShots) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesMultiArrowDef, NumberInVolley) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesMultiArrowDef, AmmoEffectCreationDelaySecs) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesMultiArrowDef, CastSound) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesMultiArrowDef, CastSound_TablePos) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesMultiArrowDef, BowHighlightWidth) == 0x68);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesMultiArrowDef, BowHighlightColor) == 0x6c);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesMultiArrowDef, MultiArrowPerArrowDamageMultiplier) == 0x7c);

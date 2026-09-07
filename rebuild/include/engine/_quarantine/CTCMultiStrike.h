@@ -8,39 +8,48 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
 struct CHitLocation;
 
 #pragma pack(push, 1)
 struct CTCMultiStrike {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char PDef[0x4];                                 // +0x0c CDefPointer<CSpecialAbilitiesMultiStrikeDef_const_>
-    long          SpellLevel;                                // +0x10
-    bool          StrikeStarted;                             // +0x14
-    unsigned char _pad_0x15[0x3];                            // +0x15
-    long          DelayTimer;                                // +0x18
-    long          NumHits;                                   // +0x1c
-    CHitLocation* PHitLocation;                              // +0x20
-    unsigned char PWeapon[0x8];                              // +0x24 CIntelligentPointer<CThing>
-    unsigned char PointOfHit[0xc];                           // +0x2c C3DVector
-    unsigned char HitDirection[0xc];                         // +0x38 C3DVector
-    unsigned char PTarget[0x8];                              // +0x44 CIntelligentPointer<CThing>
-    unsigned char ParticleEffects[0x10];                     // +0x4c vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    CDefPointeeBase* PDef_Object;                            // +0x0c CDefPointer<CSpecialAbilitiesMultiStrikeDef_const_>::Object
+    long             SpellLevel;                             // +0x10
+    bool             StrikeStarted;                          // +0x14
+    unsigned char    _pad_0x15[0x3];                         // +0x15
+    long             DelayTimer;                             // +0x18
+    long             NumHits;                                // +0x1c
+    CHitLocation*    PHitLocation;                           // +0x20
+    unsigned char    PWeapon[0x8];                           // +0x24 CIntelligentPointer<CThing>
+    float            PointOfHit_X;                           // +0x2c C3DVector::X
+    float            PointOfHit_Y;                           // +0x30 C3DVector::Y
+    float            PointOfHit_Z;                           // +0x34 C3DVector::Z
+    float            HitDirection_X;                         // +0x38 C3DVector::X
+    float            HitDirection_Y;                         // +0x3c C3DVector::Y
+    float            HitDirection_Z;                         // +0x40 C3DVector::Z
+    unsigned char    PTarget[0x8];                           // +0x44 CIntelligentPointer<CThing>
+    unsigned char    ParticleEffects[0x10];                  // +0x4c vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCMultiStrike) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, PDef) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, PDef_Object) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, SpellLevel) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, StrikeStarted) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, DelayTimer) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, NumHits) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, PHitLocation) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, PWeapon) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, PointOfHit) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, HitDirection) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, PointOfHit_X) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, PointOfHit_Y) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, PointOfHit_Z) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, HitDirection_X) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, HitDirection_Y) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, HitDirection_Z) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, PTarget) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CTCMultiStrike, ParticleEffects) == 0x4c);
 

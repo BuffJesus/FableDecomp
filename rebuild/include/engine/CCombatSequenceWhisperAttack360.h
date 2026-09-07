@@ -12,7 +12,7 @@
 struct CCombatSequenceWhisperAttack360 {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x1c];                           // +0x04
-    void*         f20;                                       // +0x20 retail-only (CCombatSequenceWhisperAttack360_IsValid_00908d90.cpp)
+    long          f20;                                       // +0x20 retail-only (previous header)
     unsigned char _pad_0x24[0x8];                            // +0x24
 };
 #pragma pack(pop)

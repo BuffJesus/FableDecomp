@@ -8,82 +8,86 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
+
 #pragma pack(push, 1)
 struct CCombatActionBase {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char _pad_0x28[0x4];                            // +0x28
-    unsigned char _pad_0x2c[0x4];                            // +0x2c
-    unsigned char _pad_0x30[0x4];                            // +0x30
-    unsigned char _pad_0x34[0x4];                            // +0x34
-    unsigned char _pad_0x38[0x4];                            // +0x38
-    unsigned char _pad_0x3c[0x4];                            // +0x3c
-    unsigned char _pad_0x40[0x4];                            // +0x40
-    unsigned char _pad_0x44[0x4];                            // +0x44
-    unsigned char _pad_0x48[0x4];                            // +0x48
-    unsigned char _pad_0x4c[0x4];                            // +0x4c
-    unsigned char _pad_0x50[0x4];                            // +0x50
-    unsigned char _pad_0x54[0x4];                            // +0x54
-    unsigned char _pad_0x58[0x4];                            // +0x58
-    unsigned char _pad_0x5c[0x4];                            // +0x5c
-    unsigned char _pad_0x60[0x4];                            // +0x60
-    unsigned char _pad_0x64[0x4];                            // +0x64
-    unsigned char _pad_0x68[0x4];                            // +0x68
-    unsigned char _pad_0x6c[0x4];                            // +0x6c
-    unsigned char _pad_0x70[0x4];                            // +0x70
-    unsigned char _pad_0x74[0x4];                            // +0x74
-    unsigned char _pad_0x78[0x4];                            // +0x78
-    unsigned char _pad_0x7c[0x4];                            // +0x7c
-    unsigned char _pad_0x80[0x4];                            // +0x80
-    unsigned char _pad_0x84[0x4];                            // +0x84
-    unsigned char _pad_0x88[0x4];                            // +0x88
-    unsigned char _pad_0x8c[0x4];                            // +0x8c
-    unsigned char _pad_0x90[0x4];                            // +0x90
-    unsigned char _pad_0x94[0x4];                            // +0x94
-    unsigned char _pad_0x98[0x4];                            // +0x98
-    unsigned char _pad_0x9c[0x4];                            // +0x9c
-    unsigned char _pad_0xa0[0x4];                            // +0xa0
-    unsigned char _pad_0xa4[0x4];                            // +0xa4
-    unsigned char _pad_0xa8[0x4];                            // +0xa8
-    unsigned char _pad_0xac[0x4];                            // +0xac
-    unsigned char _pad_0xb0[0x4];                            // +0xb0
-    unsigned char PTarget[0x8];                              // +0xb4 CIntelligentPointer<CThing>
-    unsigned char PCameraPoint[0x8];                         // +0xbc CIntelligentPointer<CThing_const_>
-    unsigned char PMeleeAbilityDef[0x4];                     // +0xc4 CDefPointer<CMeleeCombatAbilityDef_const_>
-    unsigned char StrikeEvents[0xc];                         // +0xc8 list<CCountedPointer<CCombatActionBase::CStrikeEvent>,std::allocator<CCountedPointer<CCombatActionBase::CStrikeEvent>_>_>
-    long          LastStrikeEventEndTime;                    // +0xd4
-    float         StrikeEventInterruptTime;                  // +0xd8
-    float         StrikeEventResetComboTime;                 // +0xdc
-    long          MovementEventInterruptFrame;               // +0xe0
-    float         StrikeSpeedVariationStartTime;             // +0xe4
-    float         StrikeSpeedVariationEndTime;               // +0xe8
-    bool          HasStrikeEventInterrupt;                   // +0xec
-    bool          HasStrikeEventResetCombo;                  // +0xed
-    bool          HasMovementEventInterrupt;                 // +0xee
-    bool          StrikeEventInterruptActive;                // +0xef
-    bool          MovementEventInterruptActive;              // +0xf0
-    bool          PreferredFinalPosSet;                      // +0xf1
-    bool          HasPerformAction;                          // +0xf2
-    bool          SentMissedEvent;                           // +0xf3
-    bool          HasResetMeleeCombatAbilityEffects;         // +0xf4
-    unsigned char _pad_0xf5[0x3];                            // +0xf5
-    long          LastAnimStage;                             // +0xf8
-    bool          HitThing;                                  // +0xfc
-    bool          HitCreature;                               // +0xfd
-    unsigned char _pad_0xfe[0x2];                            // +0xfe
-    long          FrameUpdatePauseFrames;                    // +0x100
-    unsigned char CombatAnimations[0x10];                    // +0x104 vector<CAnimationEntry_const_*,std::allocator<CAnimationEntry_const_*>_>
-    long          ActiveStrikeEventIndex;                    // +0x114
-    unsigned char LastWeaponUsedInStrike[0x8];               // +0x118 CIntelligentPointer<CThing>
-    unsigned char PreferredMovementVector[0xc];              // +0x120 C3DVector
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned char    _pad_0x28[0x4];                         // +0x28
+    unsigned char    _pad_0x2c[0x4];                         // +0x2c
+    unsigned char    _pad_0x30[0x4];                         // +0x30
+    unsigned char    _pad_0x34[0x4];                         // +0x34
+    unsigned char    _pad_0x38[0x4];                         // +0x38
+    unsigned char    _pad_0x3c[0x4];                         // +0x3c
+    unsigned char    _pad_0x40[0x4];                         // +0x40
+    unsigned char    _pad_0x44[0x4];                         // +0x44
+    unsigned char    _pad_0x48[0x4];                         // +0x48
+    unsigned char    _pad_0x4c[0x4];                         // +0x4c
+    unsigned char    _pad_0x50[0x4];                         // +0x50
+    unsigned char    _pad_0x54[0x4];                         // +0x54
+    unsigned char    _pad_0x58[0x4];                         // +0x58
+    unsigned char    _pad_0x5c[0x4];                         // +0x5c
+    unsigned char    _pad_0x60[0x4];                         // +0x60
+    unsigned char    _pad_0x64[0x4];                         // +0x64
+    unsigned char    _pad_0x68[0x4];                         // +0x68
+    unsigned char    _pad_0x6c[0x4];                         // +0x6c
+    unsigned char    _pad_0x70[0x4];                         // +0x70
+    unsigned char    _pad_0x74[0x4];                         // +0x74
+    unsigned char    _pad_0x78[0x4];                         // +0x78
+    unsigned char    _pad_0x7c[0x4];                         // +0x7c
+    unsigned char    _pad_0x80[0x4];                         // +0x80
+    unsigned char    _pad_0x84[0x4];                         // +0x84
+    unsigned char    _pad_0x88[0x4];                         // +0x88
+    unsigned char    _pad_0x8c[0x4];                         // +0x8c
+    unsigned char    _pad_0x90[0x4];                         // +0x90
+    unsigned char    _pad_0x94[0x4];                         // +0x94
+    unsigned char    _pad_0x98[0x4];                         // +0x98
+    unsigned char    _pad_0x9c[0x4];                         // +0x9c
+    unsigned char    _pad_0xa0[0x4];                         // +0xa0
+    unsigned char    _pad_0xa4[0x4];                         // +0xa4
+    unsigned char    _pad_0xa8[0x4];                         // +0xa8
+    unsigned char    _pad_0xac[0x4];                         // +0xac
+    unsigned char    _pad_0xb0[0x4];                         // +0xb0
+    unsigned char    PTarget[0x8];                           // +0xb4 CIntelligentPointer<CThing>
+    unsigned char    PCameraPoint[0x8];                      // +0xbc CIntelligentPointer<CThing_const_>
+    CDefPointeeBase* PMeleeAbilityDef_Object;                // +0xc4 CDefPointer<CMeleeCombatAbilityDef_const_>::Object
+    unsigned char    StrikeEvents[0xc];                      // +0xc8 list<CCountedPointer<CCombatActionBase::CStrikeEvent>,std::allocator<CCountedPointer<CCombatActionBase::CStrikeEvent>_>_>
+    long             LastStrikeEventEndTime;                 // +0xd4
+    float            StrikeEventInterruptTime;               // +0xd8
+    float            StrikeEventResetComboTime;              // +0xdc
+    long             MovementEventInterruptFrame;            // +0xe0
+    float            StrikeSpeedVariationStartTime;          // +0xe4
+    float            StrikeSpeedVariationEndTime;            // +0xe8
+    bool             HasStrikeEventInterrupt;                // +0xec
+    bool             HasStrikeEventResetCombo;               // +0xed
+    bool             HasMovementEventInterrupt;              // +0xee
+    bool             StrikeEventInterruptActive;             // +0xef
+    bool             MovementEventInterruptActive;           // +0xf0
+    bool             PreferredFinalPosSet;                   // +0xf1
+    bool             HasPerformAction;                       // +0xf2
+    bool             SentMissedEvent;                        // +0xf3
+    bool             HasResetMeleeCombatAbilityEffects;      // +0xf4
+    unsigned char    _pad_0xf5[0x3];                         // +0xf5
+    long             LastAnimStage;                          // +0xf8
+    bool             HitThing;                               // +0xfc
+    bool             HitCreature;                            // +0xfd
+    unsigned char    _pad_0xfe[0x2];                         // +0xfe
+    long             FrameUpdatePauseFrames;                 // +0x100
+    unsigned char    CombatAnimations[0x10];                 // +0x104 vector<CAnimationEntry_const_*,std::allocator<CAnimationEntry_const_*>_>
+    long             ActiveStrikeEventIndex;                 // +0x114
+    unsigned char    LastWeaponUsedInStrike[0x8];            // +0x118 CIntelligentPointer<CThing>
+    float            PreferredMovementVector_X;              // +0x120 C3DVector::X
+    float            PreferredMovementVector_Y;              // +0x124 C3DVector::Y
+    float            PreferredMovementVector_Z;              // +0x128 C3DVector::Z
 };
 #pragma pack(pop)
 
@@ -91,7 +95,7 @@ FABLE_STATIC_ASSERT(sizeof(CCombatActionBase) == 0x12c);
 FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PTarget) == 0xb4);
 FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PCameraPoint) == 0xbc);
-FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PMeleeAbilityDef) == 0xc4);
+FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PMeleeAbilityDef_Object) == 0xc4);
 FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, StrikeEvents) == 0xc8);
 FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, LastStrikeEventEndTime) == 0xd4);
 FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, StrikeEventInterruptTime) == 0xd8);
@@ -115,6 +119,8 @@ FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, FrameUpdatePauseFrames) == 0x100
 FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, CombatAnimations) == 0x104);
 FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, ActiveStrikeEventIndex) == 0x114);
 FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, LastWeaponUsedInStrike) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_X) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_Y) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_Z) == 0x128);
 
 #endif // FABLE_ENGINE_CCOMBATACTIONBASE_H

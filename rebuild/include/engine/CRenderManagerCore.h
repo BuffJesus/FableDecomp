@@ -3745,7 +3745,7 @@ struct CRenderManagerCore {
     CDisplayManager*       DisplayManager;                   // +0x3a3c
     float                  LastRenderEndTime;                // +0x3a40
     long                   NoTrisPerSecond;                  // +0x3a44
-    unsigned char          ScreenPixelFormat[0x4];           // +0x3a48 CPixelFormat
+    long                   ScreenPixelFormat_FormatIndex;    // +0x3a48 CPixelFormat::FormatIndex
     unsigned char          SystemFont[0x8];                  // +0x3a4c CSystemFont
     bool                   Rendering;                        // +0x3a54
     bool                   ResolutionReinit;                 // +0x3a55
@@ -3782,7 +3782,7 @@ FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, DisplayManager) == 0x3a3c);
 FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, LastRenderEndTime) == 0x3a40);
 FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, NoTrisPerSecond) == 0x3a44);
-FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, ScreenPixelFormat) == 0x3a48);
+FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, ScreenPixelFormat_FormatIndex) == 0x3a48);
 FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, SystemFont) == 0x3a4c);
 FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, Rendering) == 0x3a54);
 FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, ResolutionReinit) == 0x3a55);

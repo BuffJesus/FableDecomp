@@ -8,56 +8,58 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CShopDef {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned long Name;                                      // +0x28
-    unsigned long InitialHawkingPhrase;                      // +0x2c
-    unsigned long ReplyToRequestPhrase;                      // +0x30
-    unsigned long CustomerFollowPhrase;                      // +0x34
-    unsigned long ThankingPhrase;                            // +0x38
-    unsigned char ShopkeeperMeshType[0x4];                   // +0x3c CCharString
-    unsigned char DefaultStock[0x10];                        // +0x40 vector<CShopItemDef,std::allocator<CShopItemDef>_>
-    unsigned char StockCategoryDefaults[0x10];               // +0x50 vector<CShopItemDef,std::allocator<CShopItemDef>_>
-    float         BuyPriceMultiplier;                        // +0x60
-    float         SellPriceMultiplier;                       // +0x64
-    float         AttitudeBuyPriceMultiplierDefault;         // +0x68
-    unsigned char AttitudeBuyPriceMultiplier[0x10];          // +0x6c map<EOpinionAttitudeType,float,std::less<EOpinionAttitudeType>,std::allocator<std::pair<EOpinionAttitudeType_const_,float>_>_>
-    float         AttitudeSellPriceMultiplierDefault;        // +0x7c
-    unsigned char AttitudeSellPriceMultiplier[0x10];         // +0x80 map<EOpinionAttitudeType,float,std::less<EOpinionAttitudeType>,std::allocator<std::pair<EOpinionAttitudeType_const_,float>_>_>
-    float         MaxStockChangePerSell;                     // +0x90
-    float         MaxStockChangePerBuy;                      // +0x94
-    float         MaxStockRevertPerDay;                      // +0x98
-    float         PriceReductionFractionPerItem;             // +0x9c
-    float         MaxPriceReductionFractionDueToStockCount;  // +0xa0
-    unsigned long PreferredShopkeeper;                       // +0xa4
-    bool          IsStockDisplayPermanent;                   // +0xa8
-    bool          IsBarberShop;                              // +0xa9
-    bool          IsTattooShop;                              // +0xaa
-    bool          IsTitleShop;                               // +0xab
-    bool          AlwaysOpen;                                // +0xac
-    unsigned char _pad_0xad[0x3];                            // +0xad
-    float         MinPriceMultiplierForItemToBeWanted;       // +0xb0
-    float         MaxPriceToDisplay;                         // +0xb4
-    float         MinTimeToSteal;                            // +0xb8
-    float         MaxTimeToSteal;                            // +0xbc
-    long          MinGoldForDonation;                        // +0xc0
-    long          MaxGoldForDonation;                        // +0xc4
-    float         MaxMoralityForDonation;                    // +0xc8
-    float         LogarithmicPower;                          // +0xcc
-    long          NumDaysToKeepSpecialItem;                  // +0xd0
-    long          MinAmountBeforeSpecialItem;                // +0xd4
-    float         ProbabilityOfSpecialItemPerDay;            // +0xd8
-    float         SpecialItemPriceMult;                      // +0xdc
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned long    Name;                                   // +0x28
+    unsigned long    InitialHawkingPhrase;                   // +0x2c
+    unsigned long    ReplyToRequestPhrase;                   // +0x30
+    unsigned long    CustomerFollowPhrase;                   // +0x34
+    unsigned long    ThankingPhrase;                         // +0x38
+    CCharStringData* ShopkeeperMeshType_PStringData;         // +0x3c CCharString::PStringData
+    unsigned char    DefaultStock[0x10];                     // +0x40 vector<CShopItemDef,std::allocator<CShopItemDef>_>
+    unsigned char    StockCategoryDefaults[0x10];            // +0x50 vector<CShopItemDef,std::allocator<CShopItemDef>_>
+    float            BuyPriceMultiplier;                     // +0x60
+    float            SellPriceMultiplier;                    // +0x64
+    float            AttitudeBuyPriceMultiplierDefault;      // +0x68
+    unsigned char    AttitudeBuyPriceMultiplier[0x10];       // +0x6c map<EOpinionAttitudeType,float,std::less<EOpinionAttitudeType>,std::allocator<std::pair<EOpinionAttitudeType_const_,float>_>_>
+    float            AttitudeSellPriceMultiplierDefault;     // +0x7c
+    unsigned char    AttitudeSellPriceMultiplier[0x10];      // +0x80 map<EOpinionAttitudeType,float,std::less<EOpinionAttitudeType>,std::allocator<std::pair<EOpinionAttitudeType_const_,float>_>_>
+    float            MaxStockChangePerSell;                  // +0x90
+    float            MaxStockChangePerBuy;                   // +0x94
+    float            MaxStockRevertPerDay;                   // +0x98
+    float            PriceReductionFractionPerItem;          // +0x9c
+    float            MaxPriceReductionFractionDueToStockCount; // +0xa0
+    unsigned long    PreferredShopkeeper;                    // +0xa4
+    bool             IsStockDisplayPermanent;                // +0xa8
+    bool             IsBarberShop;                           // +0xa9
+    bool             IsTattooShop;                           // +0xaa
+    bool             IsTitleShop;                            // +0xab
+    bool             AlwaysOpen;                             // +0xac
+    unsigned char    _pad_0xad[0x3];                         // +0xad
+    float            MinPriceMultiplierForItemToBeWanted;    // +0xb0
+    float            MaxPriceToDisplay;                      // +0xb4
+    float            MinTimeToSteal;                         // +0xb8
+    float            MaxTimeToSteal;                         // +0xbc
+    long             MinGoldForDonation;                     // +0xc0
+    long             MaxGoldForDonation;                     // +0xc4
+    float            MaxMoralityForDonation;                 // +0xc8
+    float            LogarithmicPower;                       // +0xcc
+    long             NumDaysToKeepSpecialItem;               // +0xd0
+    long             MinAmountBeforeSpecialItem;             // +0xd4
+    float            ProbabilityOfSpecialItemPerDay;         // +0xd8
+    float            SpecialItemPriceMult;                   // +0xdc
 };
 #pragma pack(pop)
 
@@ -68,7 +70,7 @@ FABLE_STATIC_ASSERT(offsetof(CShopDef, InitialHawkingPhrase) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CShopDef, ReplyToRequestPhrase) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CShopDef, CustomerFollowPhrase) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CShopDef, ThankingPhrase) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CShopDef, ShopkeeperMeshType) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CShopDef, ShopkeeperMeshType_PStringData) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CShopDef, DefaultStock) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CShopDef, StockCategoryDefaults) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CShopDef, BuyPriceMultiplier) == 0x60);

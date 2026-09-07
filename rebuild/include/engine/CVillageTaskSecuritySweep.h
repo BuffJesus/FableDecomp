@@ -13,9 +13,13 @@ struct CVillageTaskSecuritySweep {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char CreatureAssignedToTask[0x8];               // +0x08 CIntelligentPointer<CThing_const_>
-    unsigned char PositionToGoTo[0xc];                       // +0x10 C3DVector
+    float         PositionToGoTo_X;                          // +0x10 C3DVector::X
+    float         PositionToGoTo_Y;                          // +0x14 C3DVector::Y
+    float         PositionToGoTo_Z;                          // +0x18 C3DVector::Z
     float         RadiusAroundThePositionToStay;             // +0x1c
-    unsigned char PositionToLookTowards[0xc];                // +0x20 C3DVector
+    float         PositionToLookTowards_X;                   // +0x20 C3DVector::X
+    float         PositionToLookTowards_Y;                   // +0x24 C3DVector::Y
+    float         PositionToLookTowards_Z;                   // +0x28 C3DVector::Z
     float         AngleToLookTowards;                        // +0x2c
     bool          HasBecomeInvalid;                          // +0x30
     unsigned char _pad_0x31[0x3];                            // +0x31
@@ -25,9 +29,13 @@ struct CVillageTaskSecuritySweep {
 FABLE_STATIC_ASSERT(sizeof(CVillageTaskSecuritySweep) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, CreatureAssignedToTask) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, PositionToGoTo) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, PositionToGoTo_X) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, PositionToGoTo_Y) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, PositionToGoTo_Z) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, RadiusAroundThePositionToStay) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, PositionToLookTowards) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, PositionToLookTowards_X) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, PositionToLookTowards_Y) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, PositionToLookTowards_Z) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, AngleToLookTowards) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CVillageTaskSecuritySweep, HasBecomeInvalid) == 0x30);
 

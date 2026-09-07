@@ -86,7 +86,9 @@ struct CCreatureAction_TrollThrowProjectile {
     unsigned char _pad_0x124[0x4];                           // +0x124
     unsigned char _pad_0x128[0x4];                           // +0x128
     unsigned char PShot[0x8];                                // +0x12c CIntelligentPointer<CThing>
-    unsigned char TargetPos[0xc];                            // +0x134 C3DVector
+    float         TargetPos_X;                               // +0x134 C3DVector::X
+    float         TargetPos_Y;                               // +0x138 C3DVector::Y
+    float         TargetPos_Z;                               // +0x13c C3DVector::Z
     bool          UseTargetPos;                              // +0x140
     unsigned char _pad_0x141[0x3];                           // +0x141
     long          ShotAlpha;                                 // +0x144
@@ -96,7 +98,9 @@ struct CCreatureAction_TrollThrowProjectile {
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TrollThrowProjectile) == 0x148);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, PShot) == 0x12c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, TargetPos) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, TargetPos_X) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, TargetPos_Y) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, TargetPos_Z) == 0x13c);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, UseTargetPos) == 0x140);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, ShotAlpha) == 0x144);
 

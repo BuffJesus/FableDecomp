@@ -8,31 +8,33 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct C3DMeshFileMaterialChunk {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char _pad_0x28[0x4];                            // +0x28
-    unsigned char _pad_0x2c[0x4];                            // +0x2c
-    unsigned char _pad_0x30[0x4];                            // +0x30
-    long          MaterialIndex;                             // +0x34
-    bool          TwoSided;                                  // +0x38
-    unsigned char _pad_0x39[0x3];                            // +0x39
-    unsigned char Ambient[0x4];                              // +0x3c CRGBColour
-    unsigned char Diffuse[0x4];                              // +0x40 CRGBColour
-    unsigned char Specular[0x4];                             // +0x44 CRGBColour
-    float         Shiny;                                     // +0x48
-    float         ShinyStrength;                             // +0x4c
-    float         Transparency;                              // +0x50
-    unsigned char Name[0x4];                                 // +0x54 CCharString
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned char    _pad_0x28[0x4];                         // +0x28
+    unsigned char    _pad_0x2c[0x4];                         // +0x2c
+    unsigned char    _pad_0x30[0x4];                         // +0x30
+    long             MaterialIndex;                          // +0x34
+    bool             TwoSided;                               // +0x38
+    unsigned char    _pad_0x39[0x3];                         // +0x39
+    unsigned char    Ambient[0x4];                           // +0x3c CRGBColour
+    unsigned char    Diffuse[0x4];                           // +0x40 CRGBColour
+    unsigned char    Specular[0x4];                          // +0x44 CRGBColour
+    float            Shiny;                                  // +0x48
+    float            ShinyStrength;                          // +0x4c
+    float            Transparency;                           // +0x50
+    CCharStringData* Name_PStringData;                       // +0x54 CCharString::PStringData
 };
 #pragma pack(pop)
 
@@ -46,6 +48,6 @@ FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, Specular) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, Shiny) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, ShinyStrength) == 0x4c);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, Transparency) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, Name) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileMaterialChunk, Name_PStringData) == 0x54);
 
 #endif // FABLE_ENGINE_C3DMESHFILEMATERIALCHUNK_H

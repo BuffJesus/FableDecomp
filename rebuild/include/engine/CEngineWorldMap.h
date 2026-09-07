@@ -10,43 +10,44 @@
 
 struct CIDrawWorld;
 struct CIDrawWorldMap;
+struct CWideStringData;
 
 #pragma pack(push, 1)
 struct CEngineWorldMap {
-    void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char   _pad_0x04[0x4];                          // +0x04
-    unsigned char   _pad_0x08[0x4];                          // +0x08
-    void*           Map;                                     // +0x0c short *
-    long            MapArrayWidth;                           // +0x10
-    long            MapArrayHeight;                          // +0x14
-    long            MapOffsetX;                              // +0x18
-    long            MapOffsetY;                              // +0x1c
-    unsigned char   MapList[0x10];                           // +0x20 CArray<CEngineMap_*>
-    unsigned char   VisibleMapList[0xc];                     // +0x30 list<CEngineMap_*,std::allocator<CEngineMap_*>_>
-    unsigned char   StaticMapBankName[0x4];                  // +0x3c CWideString
-    unsigned char   StaticMapFile[0x1d8];                    // +0x40 CStaticMapBankFile
-    CIDrawWorld*    GameWorld;                               // +0x218
-    CIDrawWorldMap* GameWorldMap;                            // +0x21c
-    long            StaticMapQuality;                        // +0x220
-    bool            EnableMinimumStaticMapRebuild;           // +0x224
-    bool            FirstWorldUpdate;                        // +0x225
-    unsigned char   _pad_0x226[0x2];                         // +0x226
-    unsigned char   StaticMapOpenState[0x4];                 // +0x228 STATIC_MAP_OPEN_STATE
-    bool            DynamicUpdateEnabled;                    // +0x22c
-    bool            BuildRetailStaticMaps;                   // +0x22d
-    unsigned char   _pad_0x22e[0x2];                         // +0x22e
-    unsigned char   StaticMapBuildStatus[0x4];               // +0x230 STATIC_MAP_BUILD_STATUS
-    unsigned char   ChangedAreas[0x10];                      // +0x234 CArray<C2DBoxI>
-    unsigned char   IntermidiateStaticMapFile[0x1d8];        // +0x244 CStaticMapBankFile
-    bool            GlobalMapDataLoaded;                     // +0x41c
-    unsigned char   _pad_0x41d[0x3];                         // +0x41d
-    float           StaticMapGenerationEstimatedMaxCameraHeightAboveLandscape; // +0x420
-    bool            StaticMapGlobalOptimizationsEnabled;     // +0x424
-    unsigned char   _pad_0x425[0x1];                         // +0x425
-    unsigned char   _pad_0x426[0x2];                         // +0x426
-    unsigned char   ForcedMapUpdateList[0x10];               // +0x428 CArray<CCharString>
-    unsigned char   CommonHeaderStream[0x1c];                // +0x438 CMemoryDataOutputStream
-    unsigned char   CommonHeaderPosLookupTable[0x10];        // +0x454 map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    void*            Map;                                    // +0x0c short *
+    long             MapArrayWidth;                          // +0x10
+    long             MapArrayHeight;                         // +0x14
+    long             MapOffsetX;                             // +0x18
+    long             MapOffsetY;                             // +0x1c
+    unsigned char    MapList[0x10];                          // +0x20 CArray<CEngineMap_*>
+    unsigned char    VisibleMapList[0xc];                    // +0x30 list<CEngineMap_*,std::allocator<CEngineMap_*>_>
+    CWideStringData* StaticMapBankName_PStringData;          // +0x3c CWideString::PStringData
+    unsigned char    StaticMapFile[0x1d8];                   // +0x40 CStaticMapBankFile
+    CIDrawWorld*     GameWorld;                              // +0x218
+    CIDrawWorldMap*  GameWorldMap;                           // +0x21c
+    long             StaticMapQuality;                       // +0x220
+    bool             EnableMinimumStaticMapRebuild;          // +0x224
+    bool             FirstWorldUpdate;                       // +0x225
+    unsigned char    _pad_0x226[0x2];                        // +0x226
+    unsigned char    StaticMapOpenState[0x4];                // +0x228 STATIC_MAP_OPEN_STATE
+    bool             DynamicUpdateEnabled;                   // +0x22c
+    bool             BuildRetailStaticMaps;                  // +0x22d
+    unsigned char    _pad_0x22e[0x2];                        // +0x22e
+    unsigned char    StaticMapBuildStatus[0x4];              // +0x230 STATIC_MAP_BUILD_STATUS
+    unsigned char    ChangedAreas[0x10];                     // +0x234 CArray<C2DBoxI>
+    unsigned char    IntermidiateStaticMapFile[0x1d8];       // +0x244 CStaticMapBankFile
+    bool             GlobalMapDataLoaded;                    // +0x41c
+    unsigned char    _pad_0x41d[0x3];                        // +0x41d
+    float            StaticMapGenerationEstimatedMaxCameraHeightAboveLandscape; // +0x420
+    bool             StaticMapGlobalOptimizationsEnabled;    // +0x424
+    unsigned char    _pad_0x425[0x1];                        // +0x425
+    unsigned char    _pad_0x426[0x2];                        // +0x426
+    unsigned char    ForcedMapUpdateList[0x10];              // +0x428 CArray<CCharString>
+    unsigned char    CommonHeaderStream[0x1c];               // +0x438 CMemoryDataOutputStream
+    unsigned char    CommonHeaderPosLookupTable[0x10];       // +0x454 map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>
 };
 #pragma pack(pop)
 
@@ -59,7 +60,7 @@ FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, MapOffsetX) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, MapOffsetY) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, MapList) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, VisibleMapList) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, StaticMapBankName) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, StaticMapBankName_PStringData) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, StaticMapFile) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, GameWorld) == 0x218);
 FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, GameWorldMap) == 0x21c);

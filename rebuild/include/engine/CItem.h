@@ -8,19 +8,24 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CPerItemData;
+
 #pragma pack(push, 1)
 struct CItem {
-    long          ItemType;                                  // +0x00
-    long          NumberOfItems;                             // +0x04
-    unsigned char PPerItemData[0x8];                         // +0x08 CCountedPointer<NInventory::CPerItemData>
-    long          AverageBoughtPrice;                        // +0x10
+    long            ItemType;                                // +0x00
+    long            NumberOfItems;                           // +0x04
+    CPerItemData*   PPerItemData_Data;                       // +0x08 CCountedPointer<NInventory::CPerItemData>::Data
+    CCPPointerInfo* PPerItemData_Info;                       // +0x0c CCountedPointer<NInventory::CPerItemData>::Info
+    long            AverageBoughtPrice;                      // +0x10
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CItem) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CItem, ItemType) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CItem, NumberOfItems) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CItem, PPerItemData) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CItem, PPerItemData_Data) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CItem, PPerItemData_Info) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CItem, AverageBoughtPrice) == 0x10);
 
 #endif // FABLE_ENGINE_CITEM_H

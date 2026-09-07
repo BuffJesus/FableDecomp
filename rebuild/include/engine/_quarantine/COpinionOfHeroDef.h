@@ -20,7 +20,7 @@ struct COpinionOfHeroDef {
     unsigned char _pad_0x1c[0x4];                            // +0x1c
     unsigned char _pad_0x20[0x4];                            // +0x20
     unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char ThreatenGift[0x4];                         // +0x28 CDefIndex
+    long          ThreatenGift_Val;                          // +0x28 CDefIndex::Val
     bool          WillAttackCriminals;                       // +0x2c
     unsigned char _pad_0x2d[0x3];                            // +0x2d
     long          Personality;                               // +0x30
@@ -31,7 +31,7 @@ struct COpinionOfHeroDef {
 
 FABLE_STATIC_ASSERT(sizeof(COpinionOfHeroDef) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(COpinionOfHeroDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(COpinionOfHeroDef, ThreatenGift) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(COpinionOfHeroDef, ThreatenGift_Val) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(COpinionOfHeroDef, WillAttackCriminals) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(COpinionOfHeroDef, Personality) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(COpinionOfHeroDef, ReactionMask) == 0x34);

@@ -1,3 +1,6 @@
-struct Sub_00bc3af0;
-struct C_00bc3af0 { char pad[0x7c]; Sub_00bc3af0* sub; Sub_00bc3af0* M(); };
-Sub_00bc3af0* C_00bc3af0::M() { return (Sub_00bc3af0*)&this->sub; }
+#include "engine/CEngineInternalPrimitiveParticleMesh.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CEngineLocalLightArray;
+struct CEngineInternalPrimitiveParticleMesh_Methods : CEngineInternalPrimitiveParticleMesh {
+    CEngineLocalLightArray* M();
+};
+CEngineLocalLightArray* CEngineInternalPrimitiveParticleMesh_Methods::M() { return (CEngineLocalLightArray*)&this->RenderInfo_Lights; }

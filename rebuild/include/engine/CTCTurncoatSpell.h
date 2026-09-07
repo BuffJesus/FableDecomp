@@ -8,37 +8,39 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
+
 #pragma pack(push, 1)
 struct CTCTurncoatSpell {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char Timer[0x38];                               // +0x0c CWillButtonHelperTimer
-    unsigned char PDef[0x4];                                 // +0x44 CDefPointer<CSpecialAbilitiesTurncoatSpellDef_const_>
-    unsigned char PTarget[0x8];                              // +0x48 CIntelligentPointer<CThingCreatureBase>
-    long          LevelOfSpell;                              // +0x50
-    unsigned long LoopingSound;                              // +0x54
-    unsigned char PItemRemoved[0x8];                         // +0x58 CIntelligentPointer<CThing>
-    float         PerFrameStaminaModify;                     // +0x60
-    float         AccModifyStamina;                          // +0x64
-    long          StaminaModify;                             // +0x68
-    float         PerFrameResistanceModify;                  // +0x6c
-    float         AccModifyResistance;                       // +0x70
-    long          ResistanceModify;                          // +0x74
-    unsigned char TurncoatingEffectOnMe[0x8];                // +0x78 CIntelligentPointer<CThing>
-    unsigned char TurncoatingEffectOnTarget[0x8];            // +0x80 CIntelligentPointer<CThing>
-    unsigned char TurncoatingEffectOnMeOutOfRange[0x8];      // +0x88 CIntelligentPointer<CThing>
-    bool          InRange;                                   // +0x90
-    unsigned char _pad_0x91[0x3];                            // +0x91
-    long          CurXPFrameCounter;                         // +0x94
-    long          XPFrameCounter;                            // +0x98
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    Timer[0x38];                            // +0x0c CWillButtonHelperTimer
+    CDefPointeeBase* PDef_Object;                            // +0x44 CDefPointer<CSpecialAbilitiesTurncoatSpellDef_const_>::Object
+    unsigned char    PTarget[0x8];                           // +0x48 CIntelligentPointer<CThingCreatureBase>
+    long             LevelOfSpell;                           // +0x50
+    unsigned long    LoopingSound;                           // +0x54
+    unsigned char    PItemRemoved[0x8];                      // +0x58 CIntelligentPointer<CThing>
+    float            PerFrameStaminaModify;                  // +0x60
+    float            AccModifyStamina;                       // +0x64
+    long             StaminaModify;                          // +0x68
+    float            PerFrameResistanceModify;               // +0x6c
+    float            AccModifyResistance;                    // +0x70
+    long             ResistanceModify;                       // +0x74
+    unsigned char    TurncoatingEffectOnMe[0x8];             // +0x78 CIntelligentPointer<CThing>
+    unsigned char    TurncoatingEffectOnTarget[0x8];         // +0x80 CIntelligentPointer<CThing>
+    unsigned char    TurncoatingEffectOnMeOutOfRange[0x8];   // +0x88 CIntelligentPointer<CThing>
+    bool             InRange;                                // +0x90
+    unsigned char    _pad_0x91[0x3];                         // +0x91
+    long             CurXPFrameCounter;                      // +0x94
+    long             XPFrameCounter;                         // +0x98
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCTurncoatSpell) == 0x9c);
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoatSpell, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoatSpell, Timer) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCTurncoatSpell, PDef) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CTCTurncoatSpell, PDef_Object) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoatSpell, PTarget) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoatSpell, LevelOfSpell) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoatSpell, LoopingSound) == 0x54);

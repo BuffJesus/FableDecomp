@@ -14,8 +14,8 @@ struct CCreatureAction_NymphGetHit {
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
-    int           m_a;                                       // +0x10 retail-only (CCreatureActionNymphGetHit_OnAnimationLoadedCCreatureActionNymphGetHitUAEXX_008c9dd0.cpp)
-    int           m_b;                                       // +0x14 retail-only (CCreatureActionNymphGetHit_OnAnimationLoadedCCreatureActionNymphGetHitUAEXX_008c9dd0.cpp)
+    long          m_a;                                       // +0x10 retail-only (previous header)
+    long          m_b;                                       // +0x14 retail-only (previous header)
     unsigned char _pad_0x18[0x4];                            // +0x18
     unsigned char _pad_0x1c[0x4];                            // +0x1c
     unsigned char _pad_0x20[0x4];                            // +0x20
@@ -98,7 +98,9 @@ struct CCreatureAction_NymphGetHit {
     unsigned char _pad_0x154[0x4];                           // +0x154
     unsigned char _pad_0x158[0x4];                           // +0x158
     unsigned char _pad_0x15c[0x4];                           // +0x15c
-    unsigned char InitDummyPos[0xc];                         // +0x160 C3DVector
+    float         InitDummyPos_X;                            // +0x160 C3DVector::X
+    float         InitDummyPos_Y;                            // +0x164 C3DVector::Y
+    float         InitDummyPos_Z;                            // +0x168 C3DVector::Z
 };
 #pragma pack(pop)
 
@@ -106,6 +108,8 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_NymphGetHit) == 0x16c);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_NymphGetHit, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_NymphGetHit, m_a) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_NymphGetHit, m_b) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_NymphGetHit, InitDummyPos) == 0x160);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_NymphGetHit, InitDummyPos_X) == 0x160);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_NymphGetHit, InitDummyPos_Y) == 0x164);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_NymphGetHit, InitDummyPos_Z) == 0x168);
 
 #endif // FABLE_ENGINE_CCREATUREACTION_NYMPHGETHIT_H

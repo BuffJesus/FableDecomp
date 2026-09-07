@@ -35,8 +35,8 @@ struct CSpecialAbilitiesThunderLightningStormDef {
     float         BeamRotationEndSpeed;                      // +0x58
     float         TotalLifetime;                             // +0x5c
     float         Damage;                                    // +0x60
-    unsigned char InitSound[0x4];                            // +0x64 CDefString
-    unsigned char LoopingSound[0x4];                         // +0x68 CDefString
+    long          InitSound_TablePos;                        // +0x64 CDefString::TablePos
+    long          LoopingSound_TablePos;                     // +0x68 CDefString::TablePos
 };
 #pragma pack(pop)
 
@@ -51,7 +51,7 @@ FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesThunderLightningStormDef, BeamRota
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesThunderLightningStormDef, BeamRotationEndSpeed) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesThunderLightningStormDef, TotalLifetime) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesThunderLightningStormDef, Damage) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesThunderLightningStormDef, InitSound) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesThunderLightningStormDef, LoopingSound) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesThunderLightningStormDef, InitSound_TablePos) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesThunderLightningStormDef, LoopingSound_TablePos) == 0x68);
 
 #endif // FABLE_ENGINE_CSPECIALABILITIESTHUNDERLIGHTNINGSTORMDEF_H

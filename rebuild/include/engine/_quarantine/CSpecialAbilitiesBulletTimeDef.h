@@ -37,23 +37,31 @@ struct CSpecialAbilitiesBulletTimeDef {
     float         CastCamHeight;                             // +0xb0
     float         CastCamFOV;                                // +0xb4
     float         CastCamSwitchTime;                         // +0xb8
-    unsigned char ChargeSound[0x4];                          // +0xbc CDefString
-    unsigned char PowerUp1Sound[0x4];                        // +0xc0 CDefString
-    unsigned char PowerUp2Sound[0x4];                        // +0xc4 CDefString
-    unsigned char PowerUp3Sound[0x4];                        // +0xc8 CDefString
-    unsigned char InitSound[0x4];                            // +0xcc CDefString
-    unsigned char LoopSound[0x4];                            // +0xd0 CDefString
-    unsigned char EndSound[0x4];                             // +0xd4 CDefString
-    unsigned char RadialBlurThresholdCol[0xc];               // +0xd8 C3DVector
+    long          ChargeSound_TablePos;                      // +0xbc CDefString::TablePos
+    long          PowerUp1Sound_TablePos;                    // +0xc0 CDefString::TablePos
+    long          PowerUp2Sound_TablePos;                    // +0xc4 CDefString::TablePos
+    long          PowerUp3Sound_TablePos;                    // +0xc8 CDefString::TablePos
+    long          InitSound_TablePos;                        // +0xcc CDefString::TablePos
+    long          LoopSound_TablePos;                        // +0xd0 CDefString::TablePos
+    long          EndSound_TablePos;                         // +0xd4 CDefString::TablePos
+    float         RadialBlurThresholdCol_X;                  // +0xd8 C3DVector::X
+    float         RadialBlurThresholdCol_Y;                  // +0xdc C3DVector::Y
+    float         RadialBlurThresholdCol_Z;                  // +0xe0 C3DVector::Z
     float         RadialBlurLength;                          // +0xe4
-    unsigned char RadialBlurIntensityCol[0xc];               // +0xe8 C3DVector
+    float         RadialBlurIntensityCol_X;                  // +0xe8 C3DVector::X
+    float         RadialBlurIntensityCol_Y;                  // +0xec C3DVector::Y
+    float         RadialBlurIntensityCol_Z;                  // +0xf0 C3DVector::Z
     float         RadialBlurFade;                            // +0xf4
     float         RadialBlurRange;                           // +0xf8
     float         RadialBlurTwist;                           // +0xfc
     float         RadialBlurFadeTimeSecs;                    // +0x100
-    unsigned char DamageRadialBlurThresholdCol[0xc];         // +0x104 C3DVector
+    float         DamageRadialBlurThresholdCol_X;            // +0x104 C3DVector::X
+    float         DamageRadialBlurThresholdCol_Y;            // +0x108 C3DVector::Y
+    float         DamageRadialBlurThresholdCol_Z;            // +0x10c C3DVector::Z
     float         DamageRadialBlurLength;                    // +0x110
-    unsigned char DamageRadialBlurIntensityCol[0xc];         // +0x114 C3DVector
+    float         DamageRadialBlurIntensityCol_X;            // +0x114 C3DVector::X
+    float         DamageRadialBlurIntensityCol_Y;            // +0x118 C3DVector::Y
+    float         DamageRadialBlurIntensityCol_Z;            // +0x11c C3DVector::Z
     float         DamageRadialBlurFade;                      // +0x120
     float         DamageRadialBlurRange;                     // +0x124
     float         DamageRadialBlurTwist;                     // +0x128
@@ -84,23 +92,31 @@ FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, CastCamDist) == 0xa
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, CastCamHeight) == 0xb0);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, CastCamFOV) == 0xb4);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, CastCamSwitchTime) == 0xb8);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, ChargeSound) == 0xbc);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, PowerUp1Sound) == 0xc0);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, PowerUp2Sound) == 0xc4);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, PowerUp3Sound) == 0xc8);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, InitSound) == 0xcc);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, LoopSound) == 0xd0);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, EndSound) == 0xd4);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, RadialBlurThresholdCol) == 0xd8);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, ChargeSound_TablePos) == 0xbc);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, PowerUp1Sound_TablePos) == 0xc0);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, PowerUp2Sound_TablePos) == 0xc4);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, PowerUp3Sound_TablePos) == 0xc8);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, InitSound_TablePos) == 0xcc);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, LoopSound_TablePos) == 0xd0);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, EndSound_TablePos) == 0xd4);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, RadialBlurThresholdCol_X) == 0xd8);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, RadialBlurThresholdCol_Y) == 0xdc);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, RadialBlurThresholdCol_Z) == 0xe0);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, RadialBlurLength) == 0xe4);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, RadialBlurIntensityCol) == 0xe8);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, RadialBlurIntensityCol_X) == 0xe8);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, RadialBlurIntensityCol_Y) == 0xec);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, RadialBlurIntensityCol_Z) == 0xf0);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, RadialBlurFade) == 0xf4);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, RadialBlurRange) == 0xf8);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, RadialBlurTwist) == 0xfc);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, RadialBlurFadeTimeSecs) == 0x100);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, DamageRadialBlurThresholdCol) == 0x104);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, DamageRadialBlurThresholdCol_X) == 0x104);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, DamageRadialBlurThresholdCol_Y) == 0x108);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, DamageRadialBlurThresholdCol_Z) == 0x10c);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, DamageRadialBlurLength) == 0x110);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, DamageRadialBlurIntensityCol) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, DamageRadialBlurIntensityCol_X) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, DamageRadialBlurIntensityCol_Y) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, DamageRadialBlurIntensityCol_Z) == 0x11c);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, DamageRadialBlurFade) == 0x120);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, DamageRadialBlurRange) == 0x124);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesBulletTimeDef, DamageRadialBlurTwist) == 0x128);

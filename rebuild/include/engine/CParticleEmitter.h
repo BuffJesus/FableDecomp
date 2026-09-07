@@ -8,33 +8,37 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CParticleEmitter {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _base_0x04[0x4];                           // +0x04 flattened base-class subobject(s)
-    unsigned char ParticleSystems[0x10];                     // +0x08 vector<CCountedPointer<NParticleEngine::CParticleSystem>,std::allocator<CCountedPointer<NParticleEngine::CParticleSystem>_>_>
-    unsigned char UpdateParameters[0x2c];                    // +0x18 CParticleUpdateParameters<unsigned_long,unsigned_long>
-    unsigned char PrimitiveGroupHandle[0x8];                 // +0x44 CEnginePrimitiveHandle
-    unsigned char ContinuousEmitter[0x1];                    // +0x4c bitfield group: ushort:1
-    unsigned char Emitter2D[0x1];                            // +0x4d bitfield group: ushort:1
-    unsigned char Emitter2DLayer[0x2];                       // +0x4e bitfield group: ushort:7
-    unsigned char ClipEffectToWeatherMask[0x1];              // +0x50 bitfield group: uchar:1
-    unsigned char ClearedDecals[0x1];                        // +0x51 bitfield group: uchar:1
-    unsigned char OldPos[0xc];                               // +0x52 C3DVector
-    unsigned char Velocity[0xe];                             // +0x5e C3DVector
-    unsigned char OrientationInterpolator[0x34];             // +0x6c C3DOrientationInterpolator
-    unsigned char PositionInterpolator[0x1c];                // +0xa0 C3DPositionInterpolator
-    unsigned char Transform[0x30];                           // +0xbc CMatrix3x4
-    unsigned char InverseTransform[0x30];                    // +0xec CMatrix3x4
-    unsigned char EndTransform[0x30];                        // +0x11c CMatrix3x4
-    unsigned char Name[0x4];                                 // +0x14c CCharString
-    unsigned char BSphere[0x10];                             // +0x150 C3DBoundingSphere
-    float         DistanceToCam;                             // +0x160
-    float         MaxSpawnDistance;                          // +0x164
-    float         MaxDrawDistance;                           // +0x168
-    float         FadeOutStart;                              // +0x16c
-    float         FadeInStart;                               // +0x170
-    float         FadeInEnd;                                 // +0x174
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _base_0x04[0x4];                        // +0x04 flattened base-class subobject(s)
+    unsigned char    ParticleSystems[0x10];                  // +0x08 vector<CCountedPointer<NParticleEngine::CParticleSystem>,std::allocator<CCountedPointer<NParticleEngine::CParticleSystem>_>_>
+    unsigned char    UpdateParameters[0x2c];                 // +0x18 CParticleUpdateParameters<unsigned_long,unsigned_long>
+    unsigned char    PrimitiveGroupHandle[0x8];              // +0x44 CEnginePrimitiveHandle
+    unsigned char    ContinuousEmitter[0x1];                 // +0x4c bitfield group: ushort:1
+    unsigned char    Emitter2D[0x1];                         // +0x4d bitfield group: ushort:1
+    unsigned char    Emitter2DLayer[0x2];                    // +0x4e bitfield group: ushort:7
+    unsigned char    ClipEffectToWeatherMask[0x1];           // +0x50 bitfield group: uchar:1
+    unsigned char    ClearedDecals[0x1];                     // +0x51 bitfield group: uchar:1
+    float            OldPos_X;                               // +0x52 C3DVector::X
+    float            OldPos_Y;                               // +0x56 C3DVector::Y
+    float            OldPos_Z;                               // +0x5a C3DVector::Z
+    unsigned char    Velocity[0xe];                          // +0x5e C3DVector
+    unsigned char    OrientationInterpolator[0x34];          // +0x6c C3DOrientationInterpolator
+    unsigned char    PositionInterpolator[0x1c];             // +0xa0 C3DPositionInterpolator
+    unsigned char    Transform[0x30];                        // +0xbc CMatrix3x4
+    unsigned char    InverseTransform[0x30];                 // +0xec CMatrix3x4
+    unsigned char    EndTransform[0x30];                     // +0x11c CMatrix3x4
+    CCharStringData* Name_PStringData;                       // +0x14c CCharString::PStringData
+    unsigned char    BSphere[0x10];                          // +0x150 C3DBoundingSphere
+    float            DistanceToCam;                          // +0x160
+    float            MaxSpawnDistance;                       // +0x164
+    float            MaxDrawDistance;                        // +0x168
+    float            FadeOutStart;                           // +0x16c
+    float            FadeInStart;                            // +0x170
+    float            FadeInEnd;                              // +0x174
 };
 #pragma pack(pop)
 
@@ -48,14 +52,16 @@ FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, Emitter2D) == 0x4d);
 FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, Emitter2DLayer) == 0x4e);
 FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, ClipEffectToWeatherMask) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, ClearedDecals) == 0x51);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, OldPos) == 0x52);
+FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, OldPos_X) == 0x52);
+FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, OldPos_Y) == 0x56);
+FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, OldPos_Z) == 0x5a);
 FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, Velocity) == 0x5e);
 FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, OrientationInterpolator) == 0x6c);
 FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, PositionInterpolator) == 0xa0);
 FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, Transform) == 0xbc);
 FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, InverseTransform) == 0xec);
 FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, EndTransform) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, Name) == 0x14c);
+FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, Name_PStringData) == 0x14c);
 FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, BSphere) == 0x150);
 FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, DistanceToCam) == 0x160);
 FABLE_STATIC_ASSERT(offsetof(CParticleEmitter, MaxSpawnDistance) == 0x164);

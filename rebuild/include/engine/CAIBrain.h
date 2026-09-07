@@ -10,6 +10,7 @@
 
 struct CAIStateGroupBase;
 struct CBrainUpdateZone;
+struct CDefPointeeBase;
 struct CMainGameComponent;
 struct CPlayerManager;
 struct CThingAICreature;
@@ -37,7 +38,7 @@ struct CAIBrain {
     bool                UpdatingStateGroup;                  // +0x91
     bool                StateGroupUpdated;                   // +0x92
     bool                InitialisedCreaturePosition;         // +0x93
-    unsigned char       PBrainDef[0x4];                      // +0x94 CDefPointer<CBrainDef_const_>
+    CDefPointeeBase*    PBrainDef_Object;                    // +0x94 CDefPointer<CBrainDef_const_>::Object
     unsigned char       UpdateZones[0x10];                   // +0x98 vector<CBrainUpdateZone,std::allocator<CBrainUpdateZone>_>
     CBrainUpdateZone*   PCurrentUpdateZone;                  // +0xa8
     bool                OnKillCalled;                        // +0xac
@@ -61,7 +62,7 @@ FABLE_STATIC_ASSERT(offsetof(CAIBrain, OutputValid) == 0x90);
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, UpdatingStateGroup) == 0x91);
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, StateGroupUpdated) == 0x92);
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, InitialisedCreaturePosition) == 0x93);
-FABLE_STATIC_ASSERT(offsetof(CAIBrain, PBrainDef) == 0x94);
+FABLE_STATIC_ASSERT(offsetof(CAIBrain, PBrainDef_Object) == 0x94);
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, UpdateZones) == 0x98);
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, PCurrentUpdateZone) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CAIBrain, OnKillCalled) == 0xac);

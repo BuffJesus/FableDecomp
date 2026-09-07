@@ -8,12 +8,15 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
 struct CPhonemeDataBank;
+struct CResourceBank;
+struct CSpeechAnalyser;
 
 #pragma pack(push, 1)
 struct CLipSyncDataBank {
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char     _pad_0x04[0x4];                        // +0x04
+    long              object;                                // +0x04 retail-only (previous header)
     unsigned char     _pad_0x08[0x4];                        // +0x08
     unsigned char     _pad_0x0c[0x4];                        // +0x0c
     unsigned char     _pad_0x10[0x4];                        // +0x10
@@ -106,7 +109,7 @@ struct CLipSyncDataBank {
     unsigned char     _pad_0x16c[0x4];                       // +0x16c
     unsigned char     _pad_0x170[0x4];                       // +0x170
     unsigned char     _pad_0x174[0x4];                       // +0x174
-    unsigned char     m_bSuspended;                          // +0x178 retail-only (CLipSyncDataBank_Update_00a427a0.cpp)
+    unsigned char     m_bSuspended;                          // +0x178 retail-only (previous header)
     unsigned char     _pad_0x179[0x3];                       // +0x179
     unsigned char     _pad_0x17c[0x4];                       // +0x17c
     unsigned char     _pad_0x180[0x4];                       // +0x180
@@ -132,8 +135,10 @@ struct CLipSyncDataBank {
     unsigned char     _pad_0x1d0[0x4];                       // +0x1d0
     unsigned char     _pad_0x1d4[0x4];                       // +0x1d4
     unsigned char     Entries[0x10];                         // +0x1d8 CArray<CLipSyncDataBankEntry>
-    unsigned char     ResourceBank[0x8];                     // +0x1e8 CCountedPointer<CResourceBank>
-    unsigned char     SpeechAnalyser[0x8];                   // +0x1f0 CCountedPointer<CSpeechAnalyser>
+    CResourceBank*    ResourceBank_Data;                     // +0x1e8 CCountedPointer<CResourceBank>::Data
+    CCPPointerInfo*   ResourceBank_Info;                     // +0x1ec CCountedPointer<CResourceBank>::Info
+    CSpeechAnalyser*  SpeechAnalyser_Data;                   // +0x1f0 CCountedPointer<CSpeechAnalyser>::Data
+    CCPPointerInfo*   SpeechAnalyser_Info;                   // +0x1f4 CCountedPointer<CSpeechAnalyser>::Info
     bool              SkipUpdate;                            // +0x1f8
     unsigned char     _pad_0x1f9[0x3];                       // +0x1f9
     CPhonemeDataBank* PhonemeBank;                           // +0x1fc
@@ -142,10 +147,13 @@ struct CLipSyncDataBank {
 
 FABLE_STATIC_ASSERT(sizeof(CLipSyncDataBank) == 0x200);
 FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, __vftable) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, object) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, m_bSuspended) == 0x178);
 FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, Entries) == 0x1d8);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, ResourceBank) == 0x1e8);
-FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, SpeechAnalyser) == 0x1f0);
+FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, ResourceBank_Data) == 0x1e8);
+FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, ResourceBank_Info) == 0x1ec);
+FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, SpeechAnalyser_Data) == 0x1f0);
+FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, SpeechAnalyser_Info) == 0x1f4);
 FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, SkipUpdate) == 0x1f8);
 FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, PhonemeBank) == 0x1fc);
 

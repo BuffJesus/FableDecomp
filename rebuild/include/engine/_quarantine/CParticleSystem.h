@@ -8,6 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
 struct CIEngine;
 struct CParticleEmitter;
 
@@ -26,8 +27,10 @@ struct CParticleSystem {
     float             GlobalAlpha;                           // +0x70
     float             FadeAlpha;                             // +0x74
     float             NormalisedTime;                        // +0x78
-    unsigned char     Scale[0xc];                            // +0x7c C3DVector
-    unsigned char     Name[0x4];                             // +0x88 CCharString
+    float             Scale_X;                               // +0x7c C3DVector::X
+    float             Scale_Y;                               // +0x80 C3DVector::Y
+    float             Scale_Z;                               // +0x84 C3DVector::Z
+    CCharStringData*  Name_PStringData;                      // +0x88 CCharString::PStringData
 };
 #pragma pack(pop)
 
@@ -45,7 +48,9 @@ FABLE_STATIC_ASSERT(offsetof(CParticleSystem, ScaleParticles) == 0x6c);
 FABLE_STATIC_ASSERT(offsetof(CParticleSystem, GlobalAlpha) == 0x70);
 FABLE_STATIC_ASSERT(offsetof(CParticleSystem, FadeAlpha) == 0x74);
 FABLE_STATIC_ASSERT(offsetof(CParticleSystem, NormalisedTime) == 0x78);
-FABLE_STATIC_ASSERT(offsetof(CParticleSystem, Scale) == 0x7c);
-FABLE_STATIC_ASSERT(offsetof(CParticleSystem, Name) == 0x88);
+FABLE_STATIC_ASSERT(offsetof(CParticleSystem, Scale_X) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CParticleSystem, Scale_Y) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CParticleSystem, Scale_Z) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CParticleSystem, Name_PStringData) == 0x88);
 
 #endif // FABLE_ENGINE_CPARTICLESYSTEM_H

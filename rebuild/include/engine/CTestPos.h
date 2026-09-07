@@ -14,9 +14,9 @@ struct CPersonalScript_EmptyScript;
 #pragma pack(push, 1)
 struct CTestPos {
     void*                        __vftable;                  // +0x00 vptr, or first dword of a flattened base subobject
-    int                          field_4;                    // +0x04 retail-only (CTestPos_Init_00ca7c60.cpp)
-    void*                        field_8;                    // +0x08 retail-only (CTestPos_Init_00ca7c60.cpp)
-    int                          field_c;                    // +0x0c retail-only (CTestPos_Init_00ca7c60.cpp)
+    long                         field_4;                    // +0x04 retail-only (previous header)
+    long                         field_8;                    // +0x08 retail-only (previous header)
+    long                         field_c;                    // +0x0c retail-only (previous header)
     unsigned char                _pad_0x10[0x4];             // +0x10
     CPersonalScript_EmptyScript* ParentClass;                // +0x14
     CEmptyData*                  PMasterData;                // +0x18

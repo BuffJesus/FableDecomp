@@ -8,28 +8,33 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CDefPointeeBase;
 struct CPrimitive;
+struct CSpotLightInfo;
 
 #pragma pack(push, 1)
 struct CTCSpotLight {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char PLightInfo[0x8];                           // +0x10 CCountedPointer<CTCSpotLight::CSpotLightInfo>
-    unsigned char PLightDef[0x4];                            // +0x18 CDefPointer<CSpotLightDef_const_>
-    bool          Overridden;                                // +0x1c
-    unsigned char _pad_0x1d[0x3];                            // +0x1d
-    CPrimitive*   LightPrimitive;                            // +0x20
-    float         AccumilativeFlickerFactor;                 // +0x24
-    float         OldAccumilativeFlickerFactor;              // +0x28
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    CSpotLightInfo*  PLightInfo_Data;                        // +0x10 CCountedPointer<CTCSpotLight::CSpotLightInfo>::Data
+    CCPPointerInfo*  PLightInfo_Info;                        // +0x14 CCountedPointer<CTCSpotLight::CSpotLightInfo>::Info
+    CDefPointeeBase* PLightDef_Object;                       // +0x18 CDefPointer<CSpotLightDef_const_>::Object
+    bool             Overridden;                             // +0x1c
+    unsigned char    _pad_0x1d[0x3];                         // +0x1d
+    CPrimitive*      LightPrimitive;                         // +0x20
+    float            AccumilativeFlickerFactor;              // +0x24
+    float            OldAccumilativeFlickerFactor;           // +0x28
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCSpotLight) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, PLightInfo) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, PLightDef) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, PLightInfo_Data) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, PLightInfo_Info) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, PLightDef_Object) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, Overridden) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, LightPrimitive) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CTCSpotLight, AccumilativeFlickerFactor) == 0x24);

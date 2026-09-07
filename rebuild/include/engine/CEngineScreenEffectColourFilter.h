@@ -12,20 +12,26 @@
 struct CEngineScreenEffectColourFilter {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char enabled;                                   // +0x08 retail-only (CEngineScreenEffectColourFilter_SetEffectQuality_00b5a0b0.cpp)
-    unsigned char field44;                                   // +0x09 retail-only (CEngineScreenEffectColourFilter_SetEffectQuality_00b5a0b0.cpp)
+    unsigned char enabled;                                   // +0x08 retail-only (previous header)
+    unsigned char field44;                                   // +0x09 retail-only (previous header)
     unsigned char _pad_0x0a[0x2];                            // +0x0a
     bool          ForceColourFilter;                         // +0x0c
     unsigned char _pad_0x0d[0x3];                            // +0x0d
     unsigned char Settings[0x20];                            // +0x10 CEngineColourFilterSettings
-    unsigned char GrayRGBWeights[0x10];                      // +0x30 CRGBFloatColour
+    float         GrayRGBWeights_R;                          // +0x30 CRGBFloatColour::R
+    float         GrayRGBWeights_G;                          // +0x34 CRGBFloatColour::G
+    float         GrayRGBWeights_B;                          // +0x38 CRGBFloatColour::B
+    float         GrayRGBWeights_A;                          // +0x3c CRGBFloatColour::A
     float         GrayLevel;                                 // +0x40
     bool          EffectSupported;                           // +0x44
     unsigned char _pad_0x45[0x1];                            // +0x45
     unsigned char _pad_0x46[0x2];                            // +0x46
     unsigned char TextureToBackBufferVerts[0x60];            // +0x48 CTVertexColTex1[4]
     unsigned char OldRenderTarget[0x24];                     // +0xa8 CRenderTarget
-    unsigned char OldViewport[0x10];                         // +0xcc C2DBoxI
+    long          OldViewport_TLX;                           // +0xcc C2DBoxI::TLX
+    long          OldViewport_TLY;                           // +0xd0 C2DBoxI::TLY
+    long          OldViewport_BRX;                           // +0xd4 C2DBoxI::BRX
+    long          OldViewport_BRY;                           // +0xd8 C2DBoxI::BRY
     unsigned char ScreenCopyVertexShader[0x8];               // +0xdc CVertexShader
     unsigned char ColourFilterPixelShader[0x8];              // +0xe4 CPixelShader
 };
@@ -37,12 +43,18 @@ FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, enabled) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, field44) == 0x9);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, ForceColourFilter) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, Settings) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, GrayRGBWeights) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, GrayRGBWeights_R) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, GrayRGBWeights_G) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, GrayRGBWeights_B) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, GrayRGBWeights_A) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, GrayLevel) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, EffectSupported) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, TextureToBackBufferVerts) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, OldRenderTarget) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, OldViewport) == 0xcc);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, OldViewport_TLX) == 0xcc);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, OldViewport_TLY) == 0xd0);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, OldViewport_BRX) == 0xd4);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, OldViewport_BRY) == 0xd8);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, ScreenCopyVertexShader) == 0xdc);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, ColourFilterPixelShader) == 0xe4);
 

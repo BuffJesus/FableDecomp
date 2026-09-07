@@ -8,6 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CGraphicDataBank;
+
 #pragma pack(push, 1)
 struct CEnginePrimitive2DViewportManager {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject

@@ -24,7 +24,7 @@ struct CTrapDef {
     unsigned char TriggerType[0x4];                          // +0x38 ETrapTriggerType
     unsigned char TrapType[0x4];                             // +0x3c ETrapType
     float         TriggerRadius;                             // +0x40
-    unsigned char TriggerHelperName[0x4];                    // +0x44 CDefString
+    long          TriggerHelperName_TablePos;                // +0x44 CDefString::TablePos
     float         TrapDamage;                                // +0x48
     long          TriggeredCollisionMesh;                    // +0x4c
     long          UntriggeredCollisionMesh;                  // +0x50
@@ -42,7 +42,7 @@ FABLE_STATIC_ASSERT(offsetof(CTrapDef, Sound) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CTrapDef, TriggerType) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CTrapDef, TrapType) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CTrapDef, TriggerRadius) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CTrapDef, TriggerHelperName) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CTrapDef, TriggerHelperName_TablePos) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CTrapDef, TrapDamage) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CTrapDef, TriggeredCollisionMesh) == 0x4c);
 FABLE_STATIC_ASSERT(offsetof(CTrapDef, UntriggeredCollisionMesh) == 0x50);

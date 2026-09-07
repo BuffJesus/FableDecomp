@@ -85,12 +85,16 @@ struct CCombatAction_StabThing {
     unsigned char _pad_0x120[0x4];                           // +0x120
     unsigned char _pad_0x124[0x4];                           // +0x124
     unsigned char _pad_0x128[0x4];                           // +0x128
-    unsigned char StabPos[0xc];                              // +0x12c C3DVector
+    float         StabPos_X;                                 // +0x12c C3DVector::X
+    float         StabPos_Y;                                 // +0x130 C3DVector::Y
+    float         StabPos_Z;                                 // +0x134 C3DVector::Z
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCombatAction_StabThing) == 0x138);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_StabThing, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_StabThing, StabPos) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_StabThing, StabPos_X) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_StabThing, StabPos_Y) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_StabThing, StabPos_Z) == 0x134);
 
 #endif // FABLE_ENGINE_CCOMBATACTION_STABTHING_H

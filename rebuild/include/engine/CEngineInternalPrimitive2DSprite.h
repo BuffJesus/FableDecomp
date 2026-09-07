@@ -14,7 +14,10 @@ struct CTexture;
 struct CEngineInternalPrimitive2DSprite {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x44];                          // +0x04 flattened base-class subobject(s)
-    unsigned char ClipBox[0x10];                             // +0x48 C2DBoxF
+    float         ClipBox_TLX;                               // +0x48 C2DBoxF::TLX
+    float         ClipBox_TLY;                               // +0x4c C2DBoxF::TLY
+    float         ClipBox_BRX;                               // +0x50 C2DBoxF::BRX
+    float         ClipBox_BRY;                               // +0x54 C2DBoxF::BRY
     unsigned char Layer[0x4];                                // +0x58 EEngine2DLayer
     unsigned long BankIndex;                                 // +0x5c
     unsigned long Frame;                                     // +0x60
@@ -23,8 +26,10 @@ struct CEngineInternalPrimitive2DSprite {
     unsigned char Colour[0x4];                               // +0x6c CRGBColour
     CTexture*     Texture;                                   // +0x70
     bool          Filter;                                    // +0x74
-    unsigned char UVOffsetsStart[0x8];                       // +0x75 C2DVector
-    unsigned char UVOffsetsEnd[0x8];                         // +0x7d C2DVector
+    float         UVOffsetsStart_X;                          // +0x75 C2DVector::X
+    float         UVOffsetsStart_Y;                          // +0x79 C2DVector::Y
+    float         UVOffsetsEnd_X;                            // +0x7d C2DVector::X
+    float         UVOffsetsEnd_Y;                            // +0x81 C2DVector::Y
     bool          WrapTexture;                               // +0x85
     unsigned char _pad_0x86[0x2];                            // +0x86
     unsigned char BlendMode[0x4];                            // +0x88 EEnginePrimitiveBlendMode
@@ -33,7 +38,10 @@ struct CEngineInternalPrimitive2DSprite {
 
 FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitive2DSprite) == 0x8c);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, ClipBox) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, ClipBox_TLX) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, ClipBox_TLY) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, ClipBox_BRX) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, ClipBox_BRY) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, Layer) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, BankIndex) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, Frame) == 0x60);
@@ -42,8 +50,10 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, EndAngle) == 0x68
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, Colour) == 0x6c);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, Texture) == 0x70);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, Filter) == 0x74);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, UVOffsetsStart) == 0x75);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, UVOffsetsEnd) == 0x7d);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, UVOffsetsStart_X) == 0x75);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, UVOffsetsStart_Y) == 0x79);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, UVOffsetsEnd_X) == 0x7d);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, UVOffsetsEnd_Y) == 0x81);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, WrapTexture) == 0x85);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DSprite, BlendMode) == 0x88);
 

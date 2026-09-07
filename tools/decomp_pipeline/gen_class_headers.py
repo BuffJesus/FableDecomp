@@ -163,12 +163,54 @@ def pointee_forward(typ: str) -> str | None:
     return None
 
 
+FLATTEN_DONOR: dict = {}   # set by generate(): donor structs, for one-level wrapper flattening
+
+
+def flatten_wrapper(m: DonorMember, used: set[str], fwd: set[str]) -> list[Emitted] | None:
+    """Inline a composite member whose donor layout is entirely scalar/pointer leaves
+    (CCountedPointer<X> = {X* Data; CCPPointerInfo* Info}, scoped_ptr<X> = {X* ptr},
+    CDefPointer<X> = {CDefPointeeBase* Object}). Retail code reads these leaves directly
+    (88 CONTAINED pointer reads at +0 of CCountedPointer members), so exposing them as
+    `Name_Data` / `Name_Info` lets the rewriter map those fields instead of skipping."""
+    typ = m.typ.strip()
+    d = FLATTEN_DONOR.get(typ)
+    if d is None or d.size != m.span or not d.members:
+        return None
+    out: list[Emitted] = []
+    cur = 0
+    for sub in d.members:
+        if sub.name == "_padding_" or sub.off != cur or sub.span <= 0:
+            return None
+        st = sub.typ.strip()
+        if st in SCALARS:
+            c, sz, kind = SCALARS[st]
+        elif st.endswith("*"):
+            p = pointee_forward(st)
+            if p:
+                c = p + "*"; fwd.add(p.replace("const ", ""))
+            else:
+                c = "void*"
+            sz, kind = 4, "ptr"
+        else:
+            return None
+        if sz != sub.span:
+            return None
+        out.append(Emitted(m.off + sub.off, sz, c, sanitize_ident(f"{m.name}_{sub.name}", used), "",
+                           kind, f"{typ}::{sub.name}"))
+        cur += sz
+    return out if cur == d.size else None
+
+
 def map_member(m: DonorMember, used: set[str], fwd: set[str]) -> list[Emitted]:
     """Map one donor member (with its span) to one or more emitted C members."""
     out: list[Emitted] = []
     typ, span = m.typ.strip(), m.span
     if span <= 0:
         return out
+    if m.name and m.name != "_padding_" and typ not in SCALARS and not typ.endswith("*"):
+        flat = flatten_wrapper(m, used, fwd)
+        if flat:
+            return flat
     if m.name == "_padding_" or not m.name:
         out.append(Emitted(m.off, span, "unsigned char", f"_pad_0x{m.off:02x}", f"[0x{span:x}]",
                            "pad", "", True))
@@ -355,7 +397,7 @@ def reconcile(cls: str, donor: DonorStruct, emitted: list[Emitted],
                                        f"retail-only {r.retail_type} ({r.evidence})"))
                 else:
                     new.append(Emitted(r.off, r.retail_size, ctype, nm, "", rk,
-                                       f"retail-only ({r.evidence})"))
+                                       f"retail-only {r.retail_type} ({r.evidence})"))
                 cur = r.off + r.retail_size
             if cur < e.off + e.size:
                 new.append(Emitted(cur, e.off + e.size - cur, "unsigned char", f"_pad_0x{cur:02x}",
@@ -406,6 +448,8 @@ def hand_owned() -> set[str]:
 def generate(classes: list[str], donor: dict[str, DonorStruct], mf: label_trust.Manifest,
              owned: set[str]):
     OUT.mkdir(parents=True, exist_ok=True); QUAR.mkdir(parents=True, exist_ok=True)
+    global FLATTEN_DONOR
+    FLATTEN_DONOR = donor
     index_rows = []; rec_rows: list[Reconcile] = []
     written = quarantined = skipped = 0
     for cls in classes:
@@ -432,6 +476,24 @@ def generate(classes: list[str], donor: dict[str, DonorStruct], mf: label_trust.
         files = [f for f in files if Path(f).exists() and label_trust.is_genuine(f)]
         prov: dict[int, list] = {}
         _, rsize, used_n = class_struct.facts_for(cls, files=files, provenance=prov)
+        # Sticky retail-only members: files already retyped onto this header no longer carry a
+        # local struct, so their evidence would vanish on regeneration and break them. Re-read the
+        # previous header's `retail-only` lines as evidence so the member (name, offset) survives.
+        prev = OUT / f"{cls}.h"
+        if prev.exists():
+            for line in prev.read_text(encoding="utf-8", errors="ignore").splitlines():
+                pm = re.match(r"^\s+(.+?)\s+([A-Za-z_]\w*)((?:\[[^\]]+\])*);\s*// \+0x([0-9a-f]+) retail-only\s*(.*?)\s*\(", line)
+                if not pm:
+                    continue
+                ctype, nm, suffix, off = pm.group(1).strip(), pm.group(2), pm.group(3), int(pm.group(4), 16)
+                n = 1
+                for a in re.findall(r"\[([^\]]+)\]", suffix):
+                    n *= int(a, 0)
+                sz = (class_struct.type_size(ctype) if not suffix else n)
+                # the retail type is recorded in the comment (`retail-only void* (file)`); older
+                # headers lack it, in which case the emitted C type is the best evidence we have
+                rtype = pm.group(5).strip() or ctype
+                prov.setdefault(off, []).insert(0, (rtype if not suffix else "unsigned char", nm, sz, "previous header"))
         rows, emitted = reconcile(cls, d, emitted, prov, rsize)
         rec_rows.extend(rows)
         bad = [r for r in rows if r.verdict in ("CONFLICT", "SIZE_CONFLICT")]
@@ -443,6 +505,12 @@ def generate(classes: list[str], donor: dict[str, DonorStruct], mf: label_trust.
         # of conflicting files is far more often a mislabelled function than a layout change;
         # the header is emitted and those files are listed so the rewriter skips them.
         quarantine = size_bad or (bad_files and len(bad_files) >= max(1, len(good_files)))
+        # Pin: landed files already retyped onto this header include it by path. Quarantining
+        # it now would break their build, so it stays in engine/ and the conflict is a note.
+        pinned = sum(1 for f in files if f'engine/{cls}.h' in Path(f).read_text(encoding="utf-8", errors="ignore"))
+        if pinned and quarantine:
+            quarantine = False
+            status += f"; PINNED by {pinned} retyped file(s) despite conflicts"
         status = ("clean" if not bad else
                   f"{len(bad)} conflict(s) in {len(bad_files)} file(s) vs {len(good_files)} agreeing")
         text = emit_header(cls, d, emitted, fwd, used_n, status)

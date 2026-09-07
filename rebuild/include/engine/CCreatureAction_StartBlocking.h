@@ -11,10 +11,10 @@
 #pragma pack(push, 1)
 struct CCreatureAction_StartBlocking {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    int           field_4;                                   // +0x04 retail-only (CCreatureActionStartBlocking_CCreatureActionStartBlockingFrameUpdate_008552e0.cpp)
-    int           field_8;                                   // +0x08 retail-only (CCreatureActionStartBlocking_CCreatureActionStartBlockingFrameUpdate_008552e0.cpp)
-    int           field_c;                                   // +0x0c retail-only (CCreatureActionStartBlocking_CCreatureActionStartBlockingFrameUpdate_008552e0.cpp)
-    int           field_10;                                  // +0x10 retail-only (CCreatureActionStartBlocking_CCreatureActionStartBlockingFrameUpdate_008552e0.cpp)
+    long          field_4;                                   // +0x04 retail-only (previous header)
+    long          field_8;                                   // +0x08 retail-only (previous header)
+    long          field_c;                                   // +0x0c retail-only (previous header)
+    long          field_10;                                  // +0x10 retail-only (previous header)
     unsigned char _pad_0x14[0x118];                          // +0x14
 };
 #pragma pack(pop)

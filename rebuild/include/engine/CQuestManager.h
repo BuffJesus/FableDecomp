@@ -9,49 +9,54 @@
 #include "rebuild_abi.h"
 
 struct CActiveQuest;
+struct CCPPointerInfo;
+struct CCharStringData;
 struct CGameScriptInterface;
+struct CGameScriptThingManager;
 struct CScriptInfoManager;
 struct CWorld;
 
 #pragma pack(push, 1)
 struct CQuestManager {
-    void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char         PGameScriptThingManager[0x8];      // +0x04 CCountedPointer<CGameScriptThingManager>
-    unsigned char         RuntimeQuestPersistence[0x28];     // +0x0c CRuntimeQuestPersistence
-    unsigned char         RegisteredQuestNames[0x10];        // +0x34 vector<CCharString,std::allocator<CCharString>_>
-    unsigned char         ActiveQuests[0xc];                 // +0x44 list<CCountedPointer<CQuestManager::CActiveQuest>,std::allocator<CCountedPointer<CQuestManager::CActiveQuest>_>_>
-    unsigned char         PendingQuestsToDeactivate[0xc];    // +0x50 list<std::pair<CCharString,unsigned_long>,std::allocator<std::pair<CCharString,unsigned_long>_>_>
-    unsigned char         CreatureGenerationDisabledQuests[0x10]; // +0x5c vector<CCharString,std::allocator<CCharString>_>
-    unsigned char         BetweenStartAndEndScreenQuests[0x10]; // +0x6c vector<CCharString,std::allocator<CCharString>_>
-    unsigned char         AvailableQuestCardTypes[0xc];      // +0x7c list<CQuestManager::CQuestCard,std::allocator<CQuestManager::CQuestCard>_>
-    unsigned char         ActiveQuestCards[0xc];             // +0x88 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
-    unsigned char         CompletedQuestCards[0xc];          // +0x94 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
-    unsigned long         FrameBoastsLastUpdated;            // +0xa0
-    unsigned char         Boasts[0xc];                       // +0xa4 list<CQuestManager::CBoast,std::allocator<CQuestManager::CBoast>_>
-    unsigned char         AcceptedBoasts[0xc];               // +0xb0 list<CQuestManager::CBoast,std::allocator<CQuestManager::CBoast>_>
-    unsigned char         TempBoasts[0xc];                   // +0xbc list<CQuestManager::CBoast,std::allocator<CQuestManager::CBoast>_>
-    unsigned char         Objectives[0xc];                   // +0xc8 list<CQuestManager::CObjective,std::allocator<CQuestManager::CObjective>_>
-    CScriptInfoManager*   ScriptInfoManager;                 // +0xd4
-    CWorld*               World;                             // +0xd8
-    CGameScriptInterface* GameInterface;                     // +0xdc
-    long                  CurrentQuestID;                    // +0xe0
-    CActiveQuest*         PQuestCurrentlyRunning;            // +0xe4
-    bool                  DayActive;                         // +0xe8
-    bool                  NightActive;                       // +0xe9
-    bool                  WorldDestructed;                   // +0xea
-    bool                  QuestCardsNeedUpdating;            // +0xeb
-    long                  HeroMapNumber;                     // +0xec
-    long                  LastAutoSaveFrame;                 // +0xf0
-    long                  NumberOfQuestsBetweenStartAndFinishScreens; // +0xf4
-    unsigned char         QuestsWithResourcesLoadedThatAreNotActivated[0x10]; // +0xf8 set<CCharString,std::less<CCharString>,std::allocator<CCharString>_>
-    unsigned char         PMostRecentValidUsedTarget[0x8];   // +0x108 CIntelligentPointer<CThing>
-    unsigned char         PMostRecentValidUsedTargetName[0x4]; // +0x110 CCharString
+    void*                    __vftable;                      // +0x00 vptr, or first dword of a flattened base subobject
+    CGameScriptThingManager* PGameScriptThingManager_Data;   // +0x04 CCountedPointer<CGameScriptThingManager>::Data
+    CCPPointerInfo*          PGameScriptThingManager_Info;   // +0x08 CCountedPointer<CGameScriptThingManager>::Info
+    unsigned char            RuntimeQuestPersistence[0x28];  // +0x0c CRuntimeQuestPersistence
+    unsigned char            RegisteredQuestNames[0x10];     // +0x34 vector<CCharString,std::allocator<CCharString>_>
+    unsigned char            ActiveQuests[0xc];              // +0x44 list<CCountedPointer<CQuestManager::CActiveQuest>,std::allocator<CCountedPointer<CQuestManager::CActiveQuest>_>_>
+    unsigned char            PendingQuestsToDeactivate[0xc]; // +0x50 list<std::pair<CCharString,unsigned_long>,std::allocator<std::pair<CCharString,unsigned_long>_>_>
+    unsigned char            CreatureGenerationDisabledQuests[0x10]; // +0x5c vector<CCharString,std::allocator<CCharString>_>
+    unsigned char            BetweenStartAndEndScreenQuests[0x10]; // +0x6c vector<CCharString,std::allocator<CCharString>_>
+    unsigned char            AvailableQuestCardTypes[0xc];   // +0x7c list<CQuestManager::CQuestCard,std::allocator<CQuestManager::CQuestCard>_>
+    unsigned char            ActiveQuestCards[0xc];          // +0x88 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned char            CompletedQuestCards[0xc];       // +0x94 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned long            FrameBoastsLastUpdated;         // +0xa0
+    unsigned char            Boasts[0xc];                    // +0xa4 list<CQuestManager::CBoast,std::allocator<CQuestManager::CBoast>_>
+    unsigned char            AcceptedBoasts[0xc];            // +0xb0 list<CQuestManager::CBoast,std::allocator<CQuestManager::CBoast>_>
+    unsigned char            TempBoasts[0xc];                // +0xbc list<CQuestManager::CBoast,std::allocator<CQuestManager::CBoast>_>
+    unsigned char            Objectives[0xc];                // +0xc8 list<CQuestManager::CObjective,std::allocator<CQuestManager::CObjective>_>
+    CScriptInfoManager*      ScriptInfoManager;              // +0xd4
+    CWorld*                  World;                          // +0xd8
+    CGameScriptInterface*    GameInterface;                  // +0xdc
+    long                     CurrentQuestID;                 // +0xe0
+    CActiveQuest*            PQuestCurrentlyRunning;         // +0xe4
+    bool                     DayActive;                      // +0xe8
+    bool                     NightActive;                    // +0xe9
+    bool                     WorldDestructed;                // +0xea
+    bool                     QuestCardsNeedUpdating;         // +0xeb
+    long                     HeroMapNumber;                  // +0xec
+    long                     LastAutoSaveFrame;              // +0xf0
+    long                     NumberOfQuestsBetweenStartAndFinishScreens; // +0xf4
+    unsigned char            QuestsWithResourcesLoadedThatAreNotActivated[0x10]; // +0xf8 set<CCharString,std::less<CCharString>,std::allocator<CCharString>_>
+    unsigned char            PMostRecentValidUsedTarget[0x8]; // +0x108 CIntelligentPointer<CThing>
+    CCharStringData*         PMostRecentValidUsedTargetName_PStringData; // +0x110 CCharString::PStringData
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CQuestManager) == 0x114);
 FABLE_STATIC_ASSERT(offsetof(CQuestManager, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CQuestManager, PGameScriptThingManager) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CQuestManager, PGameScriptThingManager_Data) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CQuestManager, PGameScriptThingManager_Info) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CQuestManager, RuntimeQuestPersistence) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CQuestManager, RegisteredQuestNames) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CQuestManager, ActiveQuests) == 0x44);
@@ -80,6 +85,6 @@ FABLE_STATIC_ASSERT(offsetof(CQuestManager, LastAutoSaveFrame) == 0xf0);
 FABLE_STATIC_ASSERT(offsetof(CQuestManager, NumberOfQuestsBetweenStartAndFinishScreens) == 0xf4);
 FABLE_STATIC_ASSERT(offsetof(CQuestManager, QuestsWithResourcesLoadedThatAreNotActivated) == 0xf8);
 FABLE_STATIC_ASSERT(offsetof(CQuestManager, PMostRecentValidUsedTarget) == 0x108);
-FABLE_STATIC_ASSERT(offsetof(CQuestManager, PMostRecentValidUsedTargetName) == 0x110);
+FABLE_STATIC_ASSERT(offsetof(CQuestManager, PMostRecentValidUsedTargetName_PStringData) == 0x110);
 
 #endif // FABLE_ENGINE_CQUESTMANAGER_H

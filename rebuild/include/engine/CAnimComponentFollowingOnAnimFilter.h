@@ -12,12 +12,12 @@
 struct CAnimComponentFollowingOnAnimFilter {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char NextFilter[0x4];                           // +0x08 CDefString
+    long          NextFilter_TablePos;                       // +0x08 CDefString::TablePos
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CAnimComponentFollowingOnAnimFilter) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CAnimComponentFollowingOnAnimFilter, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAnimComponentFollowingOnAnimFilter, NextFilter) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CAnimComponentFollowingOnAnimFilter, NextFilter_TablePos) == 0x8);
 
 #endif // FABLE_ENGINE_CANIMCOMPONENTFOLLOWINGONANIMFILTER_H

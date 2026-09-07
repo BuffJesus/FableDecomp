@@ -8,14 +8,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCachedVolumes;
 struct CGameDefinitionManager;
+struct CGameMap;
+struct CHeightMap;
 struct CWorld;
 
 #pragma pack(push, 1)
 struct CMap {
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
-    unsigned char           CachedVolumes[0x4];              // +0x08 scoped_ptr<CCachedVolumes>
+    CCachedVolumes*         CachedVolumes_ptr;               // +0x08 scoped_ptr<CCachedVolumes>::ptr
     unsigned char           ScriptedMapBrushes[0xc];         // +0x0c list<CScriptedMapBrush,std::allocator<CScriptedMapBrush>_>
     unsigned char           ScriptedMapBrushUpdateAreas[0x10]; // +0x18 vector<CMap::CScriptedMapBrushUpdateArea,std::allocator<CMap::CScriptedMapBrushUpdateArea>_>
     CGameDefinitionManager* DefinitionManager;               // +0x28
@@ -23,8 +26,8 @@ struct CMap {
     void*                   WorldSeed;                       // +0x30 ulong *
     unsigned char           RippleBuffer[0x1a44];            // +0x34 float[41][41]
     unsigned char           ThemePaletteEntryList[0x10];     // +0x1a78 vector<CThemePaletteEntry,std::allocator<CThemePaletteEntry>_>
-    unsigned char           GameMap[0x4];                    // +0x1a88 scoped_ptr<CGameMap>
-    unsigned char           HeightMap[0x4];                  // +0x1a8c scoped_ptr<CHeightMap>
+    CGameMap*               GameMap_ptr;                     // +0x1a88 scoped_ptr<CGameMap>::ptr
+    CHeightMap*             HeightMap_ptr;                   // +0x1a8c scoped_ptr<CHeightMap>::ptr
     unsigned char           ChangedHeightAreas[0x140];       // +0x1a90 C2DBoxI[20]
     unsigned char           ChangedGameAreas[0x140];         // +0x1bd0 C2DBoxI[20]
     long                    NoChangedHeightAreas;            // +0x1d10
@@ -36,7 +39,8 @@ struct CMap {
     long                    HeightMapSizeY;                  // +0x1d28
     long                    GameMapSizeX;                    // +0x1d2c
     long                    GameMapSizeY;                    // +0x1d30
-    unsigned char           WorldPos[0x8];                   // +0x1d34 C2DCoordI
+    long                    WorldPos_X;                      // +0x1d34 C2DCoordI::X
+    long                    WorldPos_Y;                      // +0x1d38 C2DCoordI::Y
     unsigned long           MapUID;                          // +0x1d3c
     unsigned __int64        ThingUIDCount;                   // +0x1d40
     bool                    InitialisePassabilityFromThemes; // +0x1d48
@@ -46,7 +50,7 @@ struct CMap {
 
 FABLE_STATIC_ASSERT(sizeof(CMap) == 0x1d50);
 FABLE_STATIC_ASSERT(offsetof(CMap, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CMap, CachedVolumes) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CMap, CachedVolumes_ptr) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CMap, ScriptedMapBrushes) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CMap, ScriptedMapBrushUpdateAreas) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CMap, DefinitionManager) == 0x28);
@@ -54,8 +58,8 @@ FABLE_STATIC_ASSERT(offsetof(CMap, World) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CMap, WorldSeed) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CMap, RippleBuffer) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CMap, ThemePaletteEntryList) == 0x1a78);
-FABLE_STATIC_ASSERT(offsetof(CMap, GameMap) == 0x1a88);
-FABLE_STATIC_ASSERT(offsetof(CMap, HeightMap) == 0x1a8c);
+FABLE_STATIC_ASSERT(offsetof(CMap, GameMap_ptr) == 0x1a88);
+FABLE_STATIC_ASSERT(offsetof(CMap, HeightMap_ptr) == 0x1a8c);
 FABLE_STATIC_ASSERT(offsetof(CMap, ChangedHeightAreas) == 0x1a90);
 FABLE_STATIC_ASSERT(offsetof(CMap, ChangedGameAreas) == 0x1bd0);
 FABLE_STATIC_ASSERT(offsetof(CMap, NoChangedHeightAreas) == 0x1d10);
@@ -67,7 +71,8 @@ FABLE_STATIC_ASSERT(offsetof(CMap, HeightMapSizeX) == 0x1d24);
 FABLE_STATIC_ASSERT(offsetof(CMap, HeightMapSizeY) == 0x1d28);
 FABLE_STATIC_ASSERT(offsetof(CMap, GameMapSizeX) == 0x1d2c);
 FABLE_STATIC_ASSERT(offsetof(CMap, GameMapSizeY) == 0x1d30);
-FABLE_STATIC_ASSERT(offsetof(CMap, WorldPos) == 0x1d34);
+FABLE_STATIC_ASSERT(offsetof(CMap, WorldPos_X) == 0x1d34);
+FABLE_STATIC_ASSERT(offsetof(CMap, WorldPos_Y) == 0x1d38);
 FABLE_STATIC_ASSERT(offsetof(CMap, MapUID) == 0x1d3c);
 FABLE_STATIC_ASSERT(offsetof(CMap, ThingUIDCount) == 0x1d40);
 FABLE_STATIC_ASSERT(offsetof(CMap, InitialisePassabilityFromThemes) == 0x1d48);

@@ -8,55 +8,59 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CWeaponDef {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char Type[0x4];                                 // +0x28 EWeaponType
-    unsigned char Class[0x4];                                // +0x2c EWeaponClass
-    unsigned long Property;                                  // +0x30
-    unsigned char AnimationGroupName[0x4];                   // +0x34 CCharString
-    long          SheatheObject;                             // +0x38
-    bool          SheatheObjectAlwaysVisible;                // +0x3c
-    unsigned char _pad_0x3d[0x3];                            // +0x3d
-    float         AnimationSpeedVal;                         // +0x40
-    float         Damage;                                    // +0x44
-    unsigned char DamageType[0x4];                           // +0x48 EDamageAttribute
-    long          Explosion;                                 // +0x4c
-    unsigned char FlourishParticles[0x34];                   // +0x50 CObjectAugmentationParticleSet
-    unsigned char FlourishSpecialWeaponTrail[0x8];           // +0x84 CWeaponTrailGraphicSet
-    unsigned char WeaponTrails[0x10];                        // +0x8c map<EObjectAugmentationType,CWeaponTrailGraphicSet,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType_const_,CWeaponTrailGraphicSet>_>_>
-    bool          UseAnalogueLoading;                        // +0x9c
-    unsigned char _pad_0x9d[0x3];                            // +0x9d
-    long          MissileLoadCarrySlot;                      // +0xa0
-    unsigned char ProjectileWeaponHelperNameTip[0x4];        // +0xa4 CCharString
-    unsigned char ProjectileWeaponHelperNameBase[0x4];       // +0xa8 CCharString
-    long          Shot;                                      // +0xac
-    long          Ammo;                                      // +0xb0
-    long          TargetingRange;                            // +0xb4
-    float         TargetingFOV;                              // +0xb8
-    unsigned char ArrowTrails[0x10];                         // +0xbc map<EObjectAugmentationType,long,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType_const_,long>_>_>
-    unsigned char ReloadSpeedRange[0x8];                     // +0xcc CFloatRange
-    bool          ProjectileWeaponAutoReload;                // +0xd4
-    bool          ProjectileWeaponStartLoaded;               // +0xd5
-    bool          UseExtendedProjectileTrails;               // +0xd6
-    unsigned char _pad_0xd7[0x1];                            // +0xd7
-    long          NextWeaponForBoss;                         // +0xd8
-    float         MeleeTargetingArc;                         // +0xdc
-    bool          NeedsLoading;                              // +0xe0
-    unsigned char _pad_0xe1[0x3];                            // +0xe1
-    unsigned char UnsheatheToCombatAnim[0x4];                // +0xe4 CCharString
-    unsigned char UnsheatheToNormalAnim[0x4];                // +0xe8 CCharString
-    unsigned char SheatheFromCombatAnim[0x4];                // +0xec CCharString
-    unsigned char SheatheFromNormalAnim[0x4];                // +0xf0 CCharString
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned char    Type[0x4];                              // +0x28 EWeaponType
+    unsigned char    Class[0x4];                             // +0x2c EWeaponClass
+    unsigned long    Property;                               // +0x30
+    CCharStringData* AnimationGroupName_PStringData;         // +0x34 CCharString::PStringData
+    long             SheatheObject;                          // +0x38
+    bool             SheatheObjectAlwaysVisible;             // +0x3c
+    unsigned char    _pad_0x3d[0x3];                         // +0x3d
+    float            AnimationSpeedVal;                      // +0x40
+    float            Damage;                                 // +0x44
+    unsigned char    DamageType[0x4];                        // +0x48 EDamageAttribute
+    long             Explosion;                              // +0x4c
+    unsigned char    FlourishParticles[0x34];                // +0x50 CObjectAugmentationParticleSet
+    long             FlourishSpecialWeaponTrail_Attack;      // +0x84 CWeaponTrailGraphicSet::Attack
+    long             FlourishSpecialWeaponTrail_Knockdown;   // +0x88 CWeaponTrailGraphicSet::Knockdown
+    unsigned char    WeaponTrails[0x10];                     // +0x8c map<EObjectAugmentationType,CWeaponTrailGraphicSet,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType_const_,CWeaponTrailGraphicSet>_>_>
+    bool             UseAnalogueLoading;                     // +0x9c
+    unsigned char    _pad_0x9d[0x3];                         // +0x9d
+    long             MissileLoadCarrySlot;                   // +0xa0
+    CCharStringData* ProjectileWeaponHelperNameTip_PStringData; // +0xa4 CCharString::PStringData
+    CCharStringData* ProjectileWeaponHelperNameBase_PStringData; // +0xa8 CCharString::PStringData
+    long             Shot;                                   // +0xac
+    long             Ammo;                                   // +0xb0
+    long             TargetingRange;                         // +0xb4
+    float            TargetingFOV;                           // +0xb8
+    unsigned char    ArrowTrails[0x10];                      // +0xbc map<EObjectAugmentationType,long,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType_const_,long>_>_>
+    float            ReloadSpeedRange_HighValue;             // +0xcc CFloatRange::HighValue
+    float            ReloadSpeedRange_LowValue;              // +0xd0 CFloatRange::LowValue
+    bool             ProjectileWeaponAutoReload;             // +0xd4
+    bool             ProjectileWeaponStartLoaded;            // +0xd5
+    bool             UseExtendedProjectileTrails;            // +0xd6
+    unsigned char    _pad_0xd7[0x1];                         // +0xd7
+    long             NextWeaponForBoss;                      // +0xd8
+    float            MeleeTargetingArc;                      // +0xdc
+    bool             NeedsLoading;                           // +0xe0
+    unsigned char    _pad_0xe1[0x3];                         // +0xe1
+    CCharStringData* UnsheatheToCombatAnim_PStringData;      // +0xe4 CCharString::PStringData
+    CCharStringData* UnsheatheToNormalAnim_PStringData;      // +0xe8 CCharString::PStringData
+    CCharStringData* SheatheFromCombatAnim_PStringData;      // +0xec CCharString::PStringData
+    CCharStringData* SheatheFromNormalAnim_PStringData;      // +0xf0 CCharString::PStringData
 };
 #pragma pack(pop)
 
@@ -65,7 +69,7 @@ FABLE_STATIC_ASSERT(offsetof(CWeaponDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, Type) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, Class) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, Property) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CWeaponDef, AnimationGroupName) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CWeaponDef, AnimationGroupName_PStringData) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, SheatheObject) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, SheatheObjectAlwaysVisible) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, AnimationSpeedVal) == 0x40);
@@ -73,27 +77,29 @@ FABLE_STATIC_ASSERT(offsetof(CWeaponDef, Damage) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, DamageType) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, Explosion) == 0x4c);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, FlourishParticles) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CWeaponDef, FlourishSpecialWeaponTrail) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CWeaponDef, FlourishSpecialWeaponTrail_Attack) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CWeaponDef, FlourishSpecialWeaponTrail_Knockdown) == 0x88);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, WeaponTrails) == 0x8c);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, UseAnalogueLoading) == 0x9c);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, MissileLoadCarrySlot) == 0xa0);
-FABLE_STATIC_ASSERT(offsetof(CWeaponDef, ProjectileWeaponHelperNameTip) == 0xa4);
-FABLE_STATIC_ASSERT(offsetof(CWeaponDef, ProjectileWeaponHelperNameBase) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CWeaponDef, ProjectileWeaponHelperNameTip_PStringData) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CWeaponDef, ProjectileWeaponHelperNameBase_PStringData) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, Shot) == 0xac);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, Ammo) == 0xb0);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, TargetingRange) == 0xb4);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, TargetingFOV) == 0xb8);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, ArrowTrails) == 0xbc);
-FABLE_STATIC_ASSERT(offsetof(CWeaponDef, ReloadSpeedRange) == 0xcc);
+FABLE_STATIC_ASSERT(offsetof(CWeaponDef, ReloadSpeedRange_HighValue) == 0xcc);
+FABLE_STATIC_ASSERT(offsetof(CWeaponDef, ReloadSpeedRange_LowValue) == 0xd0);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, ProjectileWeaponAutoReload) == 0xd4);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, ProjectileWeaponStartLoaded) == 0xd5);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, UseExtendedProjectileTrails) == 0xd6);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, NextWeaponForBoss) == 0xd8);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, MeleeTargetingArc) == 0xdc);
 FABLE_STATIC_ASSERT(offsetof(CWeaponDef, NeedsLoading) == 0xe0);
-FABLE_STATIC_ASSERT(offsetof(CWeaponDef, UnsheatheToCombatAnim) == 0xe4);
-FABLE_STATIC_ASSERT(offsetof(CWeaponDef, UnsheatheToNormalAnim) == 0xe8);
-FABLE_STATIC_ASSERT(offsetof(CWeaponDef, SheatheFromCombatAnim) == 0xec);
-FABLE_STATIC_ASSERT(offsetof(CWeaponDef, SheatheFromNormalAnim) == 0xf0);
+FABLE_STATIC_ASSERT(offsetof(CWeaponDef, UnsheatheToCombatAnim_PStringData) == 0xe4);
+FABLE_STATIC_ASSERT(offsetof(CWeaponDef, UnsheatheToNormalAnim_PStringData) == 0xe8);
+FABLE_STATIC_ASSERT(offsetof(CWeaponDef, SheatheFromCombatAnim_PStringData) == 0xec);
+FABLE_STATIC_ASSERT(offsetof(CWeaponDef, SheatheFromNormalAnim_PStringData) == 0xf0);
 
 #endif // FABLE_ENGINE_CWEAPONDEF_H

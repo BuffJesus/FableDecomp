@@ -1,5 +1,5 @@
 // Byte-exact reconstruction of
-// CMeshDataBank::PrepareDataForInclusion (retail 0x00a24410)
+// CMeshDataBank_Methods::PrepareDataForInclusion (retail 0x00a24410)
 //
 // Retail body = inlined destruction of a by-value
 // CCountedPointer<CBankStateBlock> stack argument: decrement the shared
@@ -7,6 +7,7 @@
 // (this in ecx, no args) and free the block. `this` (the CMeshDataBank)
 // is never touched, so retail emits a frameless esi-based body.
 
+#include "engine/CMeshDataBank.h"  // retyped onto the PDB layout; byte parity re-verified
 struct RefBlock {
     long          count;   // +0x00
     void        (__fastcall *dtor)(void* self); // +0x04 vfn slot (thiscall)
@@ -21,7 +22,7 @@ struct CCountedPtr { RefBlock* blk; };
 struct CDataOutputStream;
 
 // Real member -> genuine __fastcall (this in ecx, homed only if used).
-struct CMeshDataBank {
+struct CMeshDataBank_Methods : CMeshDataBank {
     void PrepareDataForInclusion(
         CWorldMap*  a,           // +0x04
         long        b,           // +0x08
@@ -29,10 +30,11 @@ struct CMeshDataBank {
         long        d,           // +0x10
         CCountedPtr sp,          // +0x14 by-value counted pointer
         CDataOutputStream* e,    // +0x18
-        CDataOutputStream* f);   // +0x1c (pads ret 0x1c)
+        CDataOutputStream* f);
+    // +0x1c (pads ret 0x1c);
 };
 
-void CMeshDataBank::PrepareDataForInclusion(
+void CMeshDataBank_Methods::PrepareDataForInclusion(
     CWorldMap* a, long b, CArrayStr* c, long d,
     CCountedPtr sp, CDataOutputStream* e, CDataOutputStream* f)
 {

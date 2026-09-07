@@ -15,7 +15,7 @@ struct GlyphBank;
 #pragma pack(push, 1)
 struct CStreamingFontBank {
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned int            m_maxHeight;                     // +0x04 retail-only (CStreamingFontBank_GetFontMaxHeight_009a0ea0.cpp)
+    long                    m_maxHeight;                     // +0x04 retail-only (previous header)
     unsigned char           _pad_0x08[0x4];                  // +0x08
     unsigned char           _pad_0x0c[0x4];                  // +0x0c
     CStreamingFontDataBank* data_bank;                       // +0x10

@@ -8,174 +8,178 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CTextureManager;
+
 #pragma pack(push, 1)
 struct CGraphicDataBank {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char _pad_0x28[0x4];                            // +0x28
-    unsigned char _pad_0x2c[0x4];                            // +0x2c
-    unsigned char _pad_0x30[0x4];                            // +0x30
-    unsigned char _pad_0x34[0x4];                            // +0x34
-    unsigned char _pad_0x38[0x4];                            // +0x38
-    unsigned char _pad_0x3c[0x4];                            // +0x3c
-    unsigned char _pad_0x40[0x4];                            // +0x40
-    unsigned char _pad_0x44[0x4];                            // +0x44
-    unsigned char _pad_0x48[0x4];                            // +0x48
-    unsigned char _pad_0x4c[0x4];                            // +0x4c
-    unsigned char _pad_0x50[0x4];                            // +0x50
-    unsigned char _pad_0x54[0x4];                            // +0x54
-    unsigned char _pad_0x58[0x4];                            // +0x58
-    unsigned char _pad_0x5c[0x4];                            // +0x5c
-    unsigned char _pad_0x60[0x4];                            // +0x60
-    unsigned char _pad_0x64[0x4];                            // +0x64
-    unsigned char _pad_0x68[0x4];                            // +0x68
-    unsigned char _pad_0x6c[0x4];                            // +0x6c
-    unsigned char _pad_0x70[0x4];                            // +0x70
-    unsigned char _pad_0x74[0x4];                            // +0x74
-    unsigned char _pad_0x78[0x4];                            // +0x78
-    unsigned char _pad_0x7c[0x4];                            // +0x7c
-    unsigned char _pad_0x80[0x4];                            // +0x80
-    unsigned char _pad_0x84[0x4];                            // +0x84
-    unsigned char _pad_0x88[0x4];                            // +0x88
-    unsigned char _pad_0x8c[0x4];                            // +0x8c
-    unsigned char _pad_0x90[0x4];                            // +0x90
-    unsigned char _pad_0x94[0x4];                            // +0x94
-    unsigned char _pad_0x98[0x4];                            // +0x98
-    unsigned char _pad_0x9c[0x4];                            // +0x9c
-    unsigned char _pad_0xa0[0x4];                            // +0xa0
-    unsigned char _pad_0xa4[0x4];                            // +0xa4
-    unsigned char _pad_0xa8[0x4];                            // +0xa8
-    unsigned char _pad_0xac[0x4];                            // +0xac
-    unsigned char _pad_0xb0[0x4];                            // +0xb0
-    unsigned char _pad_0xb4[0x4];                            // +0xb4
-    unsigned char _pad_0xb8[0x4];                            // +0xb8
-    unsigned char _pad_0xbc[0x4];                            // +0xbc
-    unsigned char _pad_0xc0[0x4];                            // +0xc0
-    unsigned char _pad_0xc4[0x4];                            // +0xc4
-    unsigned char _pad_0xc8[0x4];                            // +0xc8
-    unsigned char _pad_0xcc[0x4];                            // +0xcc
-    unsigned char _pad_0xd0[0x4];                            // +0xd0
-    unsigned char _pad_0xd4[0x4];                            // +0xd4
-    unsigned char _pad_0xd8[0x4];                            // +0xd8
-    unsigned char _pad_0xdc[0x4];                            // +0xdc
-    unsigned char _pad_0xe0[0x4];                            // +0xe0
-    unsigned char _pad_0xe4[0x4];                            // +0xe4
-    unsigned char _pad_0xe8[0x4];                            // +0xe8
-    unsigned char _pad_0xec[0x4];                            // +0xec
-    unsigned char _pad_0xf0[0x4];                            // +0xf0
-    unsigned char _pad_0xf4[0x4];                            // +0xf4
-    unsigned char _pad_0xf8[0x4];                            // +0xf8
-    unsigned char _pad_0xfc[0x4];                            // +0xfc
-    unsigned char _pad_0x100[0x4];                           // +0x100
-    unsigned char _pad_0x104[0x4];                           // +0x104
-    unsigned char _pad_0x108[0x4];                           // +0x108
-    unsigned char _pad_0x10c[0x4];                           // +0x10c
-    unsigned char _pad_0x110[0x4];                           // +0x110
-    unsigned char _pad_0x114[0x4];                           // +0x114
-    unsigned char _pad_0x118[0x4];                           // +0x118
-    unsigned char _pad_0x11c[0x4];                           // +0x11c
-    unsigned char _pad_0x120[0x4];                           // +0x120
-    unsigned char _pad_0x124[0x4];                           // +0x124
-    unsigned char _pad_0x128[0x4];                           // +0x128
-    unsigned char _pad_0x12c[0x4];                           // +0x12c
-    unsigned char _pad_0x130[0x4];                           // +0x130
-    unsigned char _pad_0x134[0x4];                           // +0x134
-    unsigned char _pad_0x138[0x4];                           // +0x138
-    unsigned char _pad_0x13c[0x4];                           // +0x13c
-    unsigned char _pad_0x140[0x4];                           // +0x140
-    unsigned char _pad_0x144[0x4];                           // +0x144
-    unsigned char _pad_0x148[0x4];                           // +0x148
-    unsigned char _pad_0x14c[0x4];                           // +0x14c
-    unsigned char _pad_0x150[0x4];                           // +0x150
-    unsigned char _pad_0x154[0x4];                           // +0x154
-    unsigned char _pad_0x158[0x4];                           // +0x158
-    unsigned char _pad_0x15c[0x4];                           // +0x15c
-    unsigned char _pad_0x160[0x4];                           // +0x160
-    unsigned char _pad_0x164[0x4];                           // +0x164
-    unsigned char _pad_0x168[0x4];                           // +0x168
-    unsigned char _pad_0x16c[0x4];                           // +0x16c
-    unsigned char _pad_0x170[0x4];                           // +0x170
-    unsigned char _pad_0x174[0x4];                           // +0x174
-    unsigned char _pad_0x178[0x4];                           // +0x178
-    unsigned char _pad_0x17c[0x4];                           // +0x17c
-    unsigned char _pad_0x180[0x4];                           // +0x180
-    unsigned char _pad_0x184[0x4];                           // +0x184
-    unsigned char _pad_0x188[0x4];                           // +0x188
-    unsigned char _pad_0x18c[0x4];                           // +0x18c
-    unsigned char _pad_0x190[0x4];                           // +0x190
-    unsigned char _pad_0x194[0x4];                           // +0x194
-    unsigned char _pad_0x198[0x4];                           // +0x198
-    unsigned char _pad_0x19c[0x4];                           // +0x19c
-    unsigned char _pad_0x1a0[0x4];                           // +0x1a0
-    unsigned char _pad_0x1a4[0x4];                           // +0x1a4
-    unsigned char _pad_0x1a8[0x4];                           // +0x1a8
-    unsigned char _pad_0x1ac[0x4];                           // +0x1ac
-    unsigned char _pad_0x1b0[0x4];                           // +0x1b0
-    unsigned char _pad_0x1b4[0x4];                           // +0x1b4
-    unsigned char _pad_0x1b8[0x4];                           // +0x1b8
-    unsigned char _pad_0x1bc[0x4];                           // +0x1bc
-    unsigned char _pad_0x1c0[0x4];                           // +0x1c0
-    unsigned char _pad_0x1c4[0x4];                           // +0x1c4
-    unsigned char _pad_0x1c8[0x4];                           // +0x1c8
-    unsigned char _pad_0x1cc[0x4];                           // +0x1cc
-    unsigned char _pad_0x1d0[0x4];                           // +0x1d0
-    unsigned char _pad_0x1d4[0x4];                           // +0x1d4
-    unsigned char _pad_0x1d8[0x4];                           // +0x1d8
-    unsigned char _pad_0x1dc[0x4];                           // +0x1dc
-    void*         f1e0;                                      // +0x1e0 retail-only (CGraphicDataBank_NotifyEntryRemoved_009fd970.cpp)
-    unsigned char _pad_0x1e4[0x4];                           // +0x1e4
-    unsigned char _pad_0x1e8[0x4];                           // +0x1e8
-    unsigned char _pad_0x1ec[0x4];                           // +0x1ec
-    unsigned char _pad_0x1f0[0x4];                           // +0x1f0
-    unsigned char _pad_0x1f4[0x4];                           // +0x1f4
-    unsigned char _pad_0x1f8[0x4];                           // +0x1f8
-    unsigned char _pad_0x1fc[0x4];                           // +0x1fc
-    unsigned char _pad_0x200[0x4];                           // +0x200
-    unsigned char _pad_0x204[0x4];                           // +0x204
-    unsigned char _pad_0x208[0x4];                           // +0x208
-    unsigned char _pad_0x20c[0x4];                           // +0x20c
-    unsigned char _pad_0x210[0x4];                           // +0x210
-    unsigned char _pad_0x214[0x4];                           // +0x214
-    unsigned char _pad_0x218[0x4];                           // +0x218
-    unsigned char _pad_0x21c[0x4];                           // +0x21c
-    unsigned char _pad_0x220[0x4];                           // +0x220
-    unsigned char _pad_0x224[0x4];                           // +0x224
-    unsigned char _pad_0x228[0x4];                           // +0x228
-    unsigned char _pad_0x22c[0x4];                           // +0x22c
-    unsigned char _pad_0x230[0x4];                           // +0x230
-    unsigned char _pad_0x234[0x4];                           // +0x234
-    unsigned char _pad_0x238[0x4];                           // +0x238
-    unsigned char _pad_0x23c[0x4];                           // +0x23c
-    unsigned char _pad_0x240[0x4];                           // +0x240
-    unsigned char _pad_0x244[0x4];                           // +0x244
-    unsigned char _pad_0x248[0x4];                           // +0x248
-    unsigned char _pad_0x24c[0x4];                           // +0x24c
-    unsigned char _pad_0x250[0x4];                           // +0x250
-    unsigned char GraphicList[0x10];                         // +0x254 CArray<CGraphicInfo>
-    unsigned char GraphicFrameBuffer[0x10];                  // +0x264 CArray<CGraphicInfoFrame>
-    bool          Initialised;                               // +0x274
-    unsigned char _pad_0x275[0x3];                           // +0x275
-    unsigned char StateBlock[0x64];                          // +0x278 CGraphicBankStateBlock
-    long          TextureSizeWarningMaxWidth;                // +0x2dc
-    long          TextureSizeWarningMaxHeight;               // +0x2e0
-    unsigned long UnloadFrameDelay;                          // +0x2e4
-    unsigned long ReduceSizeFrameDelay;                      // +0x2e8
-    unsigned long TexturePointersValidForFrames;             // +0x2ec
-    long          MinAvailablePreloadMemory;                 // +0x2f0
-    long          AvailableMemory;                           // +0x2f4
-    bool          FreezeGraphics;                            // +0x2f8
-    unsigned char _pad_0x2f9[0x3];                           // +0x2f9
-    unsigned char TextureManager[0x8];                       // +0x2fc CCountedPointer<CTextureManager>
-    unsigned char PixelFormats[0x2c];                        // +0x304 CPixelFormat[11]
-    unsigned char BlankTextures[0x58];                       // +0x330 CTexture[11]
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned char    _pad_0x28[0x4];                         // +0x28
+    unsigned char    _pad_0x2c[0x4];                         // +0x2c
+    unsigned char    _pad_0x30[0x4];                         // +0x30
+    unsigned char    _pad_0x34[0x4];                         // +0x34
+    unsigned char    _pad_0x38[0x4];                         // +0x38
+    unsigned char    _pad_0x3c[0x4];                         // +0x3c
+    unsigned char    _pad_0x40[0x4];                         // +0x40
+    unsigned char    _pad_0x44[0x4];                         // +0x44
+    unsigned char    _pad_0x48[0x4];                         // +0x48
+    unsigned char    _pad_0x4c[0x4];                         // +0x4c
+    unsigned char    _pad_0x50[0x4];                         // +0x50
+    unsigned char    _pad_0x54[0x4];                         // +0x54
+    unsigned char    _pad_0x58[0x4];                         // +0x58
+    unsigned char    _pad_0x5c[0x4];                         // +0x5c
+    unsigned char    _pad_0x60[0x4];                         // +0x60
+    unsigned char    _pad_0x64[0x4];                         // +0x64
+    unsigned char    _pad_0x68[0x4];                         // +0x68
+    unsigned char    _pad_0x6c[0x4];                         // +0x6c
+    unsigned char    _pad_0x70[0x4];                         // +0x70
+    unsigned char    _pad_0x74[0x4];                         // +0x74
+    unsigned char    _pad_0x78[0x4];                         // +0x78
+    unsigned char    _pad_0x7c[0x4];                         // +0x7c
+    unsigned char    _pad_0x80[0x4];                         // +0x80
+    unsigned char    _pad_0x84[0x4];                         // +0x84
+    unsigned char    _pad_0x88[0x4];                         // +0x88
+    unsigned char    _pad_0x8c[0x4];                         // +0x8c
+    unsigned char    _pad_0x90[0x4];                         // +0x90
+    unsigned char    _pad_0x94[0x4];                         // +0x94
+    unsigned char    _pad_0x98[0x4];                         // +0x98
+    unsigned char    _pad_0x9c[0x4];                         // +0x9c
+    unsigned char    _pad_0xa0[0x4];                         // +0xa0
+    unsigned char    _pad_0xa4[0x4];                         // +0xa4
+    unsigned char    _pad_0xa8[0x4];                         // +0xa8
+    unsigned char    _pad_0xac[0x4];                         // +0xac
+    unsigned char    _pad_0xb0[0x4];                         // +0xb0
+    unsigned char    _pad_0xb4[0x4];                         // +0xb4
+    unsigned char    _pad_0xb8[0x4];                         // +0xb8
+    unsigned char    _pad_0xbc[0x4];                         // +0xbc
+    unsigned char    _pad_0xc0[0x4];                         // +0xc0
+    unsigned char    _pad_0xc4[0x4];                         // +0xc4
+    unsigned char    _pad_0xc8[0x4];                         // +0xc8
+    unsigned char    _pad_0xcc[0x4];                         // +0xcc
+    unsigned char    _pad_0xd0[0x4];                         // +0xd0
+    unsigned char    _pad_0xd4[0x4];                         // +0xd4
+    unsigned char    _pad_0xd8[0x4];                         // +0xd8
+    unsigned char    _pad_0xdc[0x4];                         // +0xdc
+    unsigned char    _pad_0xe0[0x4];                         // +0xe0
+    unsigned char    _pad_0xe4[0x4];                         // +0xe4
+    unsigned char    _pad_0xe8[0x4];                         // +0xe8
+    unsigned char    _pad_0xec[0x4];                         // +0xec
+    unsigned char    _pad_0xf0[0x4];                         // +0xf0
+    unsigned char    _pad_0xf4[0x4];                         // +0xf4
+    unsigned char    _pad_0xf8[0x4];                         // +0xf8
+    unsigned char    _pad_0xfc[0x4];                         // +0xfc
+    unsigned char    _pad_0x100[0x4];                        // +0x100
+    unsigned char    _pad_0x104[0x4];                        // +0x104
+    unsigned char    _pad_0x108[0x4];                        // +0x108
+    unsigned char    _pad_0x10c[0x4];                        // +0x10c
+    unsigned char    _pad_0x110[0x4];                        // +0x110
+    unsigned char    _pad_0x114[0x4];                        // +0x114
+    unsigned char    _pad_0x118[0x4];                        // +0x118
+    unsigned char    _pad_0x11c[0x4];                        // +0x11c
+    unsigned char    _pad_0x120[0x4];                        // +0x120
+    unsigned char    _pad_0x124[0x4];                        // +0x124
+    unsigned char    _pad_0x128[0x4];                        // +0x128
+    unsigned char    _pad_0x12c[0x4];                        // +0x12c
+    unsigned char    _pad_0x130[0x4];                        // +0x130
+    unsigned char    _pad_0x134[0x4];                        // +0x134
+    unsigned char    _pad_0x138[0x4];                        // +0x138
+    unsigned char    _pad_0x13c[0x4];                        // +0x13c
+    unsigned char    _pad_0x140[0x4];                        // +0x140
+    unsigned char    _pad_0x144[0x4];                        // +0x144
+    unsigned char    _pad_0x148[0x4];                        // +0x148
+    unsigned char    _pad_0x14c[0x4];                        // +0x14c
+    unsigned char    _pad_0x150[0x4];                        // +0x150
+    unsigned char    _pad_0x154[0x4];                        // +0x154
+    unsigned char    _pad_0x158[0x4];                        // +0x158
+    unsigned char    _pad_0x15c[0x4];                        // +0x15c
+    unsigned char    _pad_0x160[0x4];                        // +0x160
+    unsigned char    _pad_0x164[0x4];                        // +0x164
+    unsigned char    _pad_0x168[0x4];                        // +0x168
+    unsigned char    _pad_0x16c[0x4];                        // +0x16c
+    unsigned char    _pad_0x170[0x4];                        // +0x170
+    unsigned char    _pad_0x174[0x4];                        // +0x174
+    unsigned char    _pad_0x178[0x4];                        // +0x178
+    unsigned char    _pad_0x17c[0x4];                        // +0x17c
+    unsigned char    _pad_0x180[0x4];                        // +0x180
+    unsigned char    _pad_0x184[0x4];                        // +0x184
+    unsigned char    _pad_0x188[0x4];                        // +0x188
+    unsigned char    _pad_0x18c[0x4];                        // +0x18c
+    unsigned char    _pad_0x190[0x4];                        // +0x190
+    unsigned char    _pad_0x194[0x4];                        // +0x194
+    unsigned char    _pad_0x198[0x4];                        // +0x198
+    unsigned char    _pad_0x19c[0x4];                        // +0x19c
+    unsigned char    _pad_0x1a0[0x4];                        // +0x1a0
+    unsigned char    _pad_0x1a4[0x4];                        // +0x1a4
+    unsigned char    _pad_0x1a8[0x4];                        // +0x1a8
+    unsigned char    _pad_0x1ac[0x4];                        // +0x1ac
+    unsigned char    _pad_0x1b0[0x4];                        // +0x1b0
+    unsigned char    _pad_0x1b4[0x4];                        // +0x1b4
+    unsigned char    _pad_0x1b8[0x4];                        // +0x1b8
+    unsigned char    _pad_0x1bc[0x4];                        // +0x1bc
+    unsigned char    _pad_0x1c0[0x4];                        // +0x1c0
+    unsigned char    _pad_0x1c4[0x4];                        // +0x1c4
+    unsigned char    _pad_0x1c8[0x4];                        // +0x1c8
+    unsigned char    _pad_0x1cc[0x4];                        // +0x1cc
+    unsigned char    _pad_0x1d0[0x4];                        // +0x1d0
+    unsigned char    _pad_0x1d4[0x4];                        // +0x1d4
+    unsigned char    _pad_0x1d8[0x4];                        // +0x1d8
+    unsigned char    _pad_0x1dc[0x4];                        // +0x1dc
+    void*            f1e0;                                   // +0x1e0 retail-only (CGraphicDataBank_NotifyEntryRemoved_009fd970.cpp)
+    unsigned char    _pad_0x1e4[0x4];                        // +0x1e4
+    unsigned char    _pad_0x1e8[0x4];                        // +0x1e8
+    unsigned char    _pad_0x1ec[0x4];                        // +0x1ec
+    unsigned char    _pad_0x1f0[0x4];                        // +0x1f0
+    unsigned char    _pad_0x1f4[0x4];                        // +0x1f4
+    unsigned char    _pad_0x1f8[0x4];                        // +0x1f8
+    unsigned char    _pad_0x1fc[0x4];                        // +0x1fc
+    unsigned char    _pad_0x200[0x4];                        // +0x200
+    unsigned char    _pad_0x204[0x4];                        // +0x204
+    unsigned char    _pad_0x208[0x4];                        // +0x208
+    unsigned char    _pad_0x20c[0x4];                        // +0x20c
+    unsigned char    _pad_0x210[0x4];                        // +0x210
+    unsigned char    _pad_0x214[0x4];                        // +0x214
+    unsigned char    _pad_0x218[0x4];                        // +0x218
+    unsigned char    _pad_0x21c[0x4];                        // +0x21c
+    unsigned char    _pad_0x220[0x4];                        // +0x220
+    unsigned char    _pad_0x224[0x4];                        // +0x224
+    unsigned char    _pad_0x228[0x4];                        // +0x228
+    unsigned char    _pad_0x22c[0x4];                        // +0x22c
+    unsigned char    _pad_0x230[0x4];                        // +0x230
+    unsigned char    _pad_0x234[0x4];                        // +0x234
+    unsigned char    _pad_0x238[0x4];                        // +0x238
+    unsigned char    _pad_0x23c[0x4];                        // +0x23c
+    unsigned char    _pad_0x240[0x4];                        // +0x240
+    unsigned char    _pad_0x244[0x4];                        // +0x244
+    unsigned char    _pad_0x248[0x4];                        // +0x248
+    unsigned char    _pad_0x24c[0x4];                        // +0x24c
+    unsigned char    _pad_0x250[0x4];                        // +0x250
+    unsigned char    GraphicList[0x10];                      // +0x254 CArray<CGraphicInfo>
+    unsigned char    GraphicFrameBuffer[0x10];               // +0x264 CArray<CGraphicInfoFrame>
+    bool             Initialised;                            // +0x274
+    unsigned char    _pad_0x275[0x3];                        // +0x275
+    unsigned char    StateBlock[0x64];                       // +0x278 CGraphicBankStateBlock
+    long             TextureSizeWarningMaxWidth;             // +0x2dc
+    long             TextureSizeWarningMaxHeight;            // +0x2e0
+    unsigned long    UnloadFrameDelay;                       // +0x2e4
+    unsigned long    ReduceSizeFrameDelay;                   // +0x2e8
+    unsigned long    TexturePointersValidForFrames;          // +0x2ec
+    long             MinAvailablePreloadMemory;              // +0x2f0
+    long             AvailableMemory;                        // +0x2f4
+    bool             FreezeGraphics;                         // +0x2f8
+    unsigned char    _pad_0x2f9[0x3];                        // +0x2f9
+    CTextureManager* TextureManager_Data;                    // +0x2fc CCountedPointer<CTextureManager>::Data
+    CCPPointerInfo*  TextureManager_Info;                    // +0x300 CCountedPointer<CTextureManager>::Info
+    unsigned char    PixelFormats[0x2c];                     // +0x304 CPixelFormat[11]
+    unsigned char    BlankTextures[0x58];                    // +0x330 CTexture[11]
 };
 #pragma pack(pop)
 
@@ -194,7 +198,8 @@ FABLE_STATIC_ASSERT(offsetof(CGraphicDataBank, TexturePointersValidForFrames) ==
 FABLE_STATIC_ASSERT(offsetof(CGraphicDataBank, MinAvailablePreloadMemory) == 0x2f0);
 FABLE_STATIC_ASSERT(offsetof(CGraphicDataBank, AvailableMemory) == 0x2f4);
 FABLE_STATIC_ASSERT(offsetof(CGraphicDataBank, FreezeGraphics) == 0x2f8);
-FABLE_STATIC_ASSERT(offsetof(CGraphicDataBank, TextureManager) == 0x2fc);
+FABLE_STATIC_ASSERT(offsetof(CGraphicDataBank, TextureManager_Data) == 0x2fc);
+FABLE_STATIC_ASSERT(offsetof(CGraphicDataBank, TextureManager_Info) == 0x300);
 FABLE_STATIC_ASSERT(offsetof(CGraphicDataBank, PixelFormats) == 0x304);
 FABLE_STATIC_ASSERT(offsetof(CGraphicDataBank, BlankTextures) == 0x330);
 

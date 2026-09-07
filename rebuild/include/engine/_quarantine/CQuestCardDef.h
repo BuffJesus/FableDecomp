@@ -24,8 +24,8 @@ struct CQuestCardDef {
     long          QuestSummary;                              // +0x2c
     long          QuestObjective;                            // +0x30
     long          SuccessSummary;                            // +0x34
-    unsigned char RegionName[0x4];                           // +0x38 CDefString
-    unsigned char TeleporterRegionName[0x4];                 // +0x3c CDefString
+    long          RegionName_TablePos;                       // +0x38 CDefString::TablePos
+    long          TeleporterRegionName_TablePos;             // +0x3c CDefString::TablePos
     long          InventoryCategory;                         // +0x40
     long          RenownReward;                              // +0x44
     long          GoldReward;                                // +0x48
@@ -48,8 +48,8 @@ FABLE_STATIC_ASSERT(offsetof(CQuestCardDef, QuestName) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CQuestCardDef, QuestSummary) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CQuestCardDef, QuestObjective) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CQuestCardDef, SuccessSummary) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CQuestCardDef, RegionName) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CQuestCardDef, TeleporterRegionName) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CQuestCardDef, RegionName_TablePos) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CQuestCardDef, TeleporterRegionName_TablePos) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CQuestCardDef, InventoryCategory) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CQuestCardDef, RenownReward) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CQuestCardDef, GoldReward) == 0x48);

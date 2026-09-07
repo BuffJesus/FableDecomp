@@ -22,10 +22,14 @@ struct CAIStateGroup_TavernServer {
     unsigned char PPub[0x8];                                 // +0x34 CIntelligentPointer<CThingBuilding>
     long          JugIndex;                                  // +0x3c
     long          ServingActionPointIndex;                   // +0x40
-    unsigned char ServingPos[0xc];                           // +0x44 C3DVector
+    float         ServingPos_X;                              // +0x44 C3DVector::X
+    float         ServingPos_Y;                              // +0x48 C3DVector::Y
+    float         ServingPos_Z;                              // +0x4c C3DVector::Z
     unsigned char ServingRHSet[0x18];                        // +0x50 CRightHandedSet
     long          BarActionPointIndex;                       // +0x68
-    unsigned char BarPos[0xc];                               // +0x6c C3DVector
+    float         BarPos_X;                                  // +0x6c C3DVector::X
+    float         BarPos_Y;                                  // +0x70 C3DVector::Y
+    float         BarPos_Z;                                  // +0x74 C3DVector::Z
     unsigned char BarRHSet[0x18];                            // +0x78 CRightHandedSet
     long          ActionPointIndex;                          // +0x90
     long          SeatIndex;                                 // +0x94
@@ -42,10 +46,14 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, PTankard) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, PPub) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, JugIndex) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, ServingActionPointIndex) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, ServingPos) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, ServingPos_X) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, ServingPos_Y) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, ServingPos_Z) == 0x4c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, ServingRHSet) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, BarActionPointIndex) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, BarPos) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, BarPos_X) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, BarPos_Y) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, BarPos_Z) == 0x74);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, BarRHSet) == 0x78);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, ActionPointIndex) == 0x90);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernServer, SeatIndex) == 0x94);

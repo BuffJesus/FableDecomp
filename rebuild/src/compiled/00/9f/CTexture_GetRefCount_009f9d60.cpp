@@ -1,30 +1,30 @@
-// CTexture::GetRefCount  retail 0x009f9d60
+// CTexture_Methods::GetRefCount  retail 0x009f9d60
 // member 0 = pointer to a COM-like interface object whose [0] is a vtable of
 // stdcall function pointers taking the object pointer explicitly.
 // slot1 ([vtbl+4]) called for side effect; slot2 ([vtbl+8]) returns the count.
 
-struct IRefObj;
+#include "engine/CTexture.h"  // retyped onto the PDB layout; byte parity re-verified
+struct IDirect3DTexture9;
 struct IRefVtbl {
-    long (__stdcall *slot0)(IRefObj*);
-    long (__stdcall *slot1)(IRefObj*);
-    long (__stdcall *slot2)(IRefObj*);
+    long (__stdcall *slot0)(IDirect3DTexture9*);
+    long (__stdcall *slot1)(IDirect3DTexture9*);
+    long (__stdcall *slot2)(IDirect3DTexture9*);
 };
-struct IRefObj {
+struct IDirect3DTexture9 {
     IRefVtbl* vtbl;
 };
 
-struct CTexture {
-    IRefObj* obj;
+struct CTexture_Methods : CTexture {
     long GetRefCount();
 };
 
-long CTexture::GetRefCount()
+long CTexture_Methods::GetRefCount()
 {
-    IRefObj* p = this->obj;
+    IDirect3DTexture9* p = this->PD3DTexture;
     if (p != 0)
     {
         p->vtbl->slot1(p);
-        p = this->obj;
+        p = this->PD3DTexture;
         return p->vtbl->slot2(p);
     }
     return 0;

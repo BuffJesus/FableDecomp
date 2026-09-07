@@ -8,6 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
 struct CMainGameComponent;
 struct CPlayerManager;
 
@@ -470,7 +471,7 @@ struct CGamePlayerInterface {
     unsigned char       LoadedInputEvent[0x78];              // +0x724 CSavedInputEvent
     bool                Suspended;                           // +0x79c
     unsigned char       _pad_0x79d[0x3];                     // +0x79d
-    unsigned char       PControlsDef[0x4];                   // +0x7a0 CDefPointer<CControlsDef_const_>
+    CDefPointeeBase*    PControlsDef_Object;                 // +0x7a0 CDefPointer<CControlsDef_const_>::Object
     long                ControlsDefIndex;                    // +0x7a4
     unsigned char       Controls[0x14];                      // +0x7a8 CVectorMap<EGameAction,CCountedPointer<CInputTypeBase_const_>,CKeyPairCompareLess<EGameAction,CCountedPointer<CInputTypeBase_const_>_>_>
     unsigned char       AssignableSpecialMoveButtons[0x10];  // +0x7bc vector<CCountedPointer<CInputTypeBase_const_>,std::allocator<CCountedPointer<CInputTypeBase_const_>_>_>
@@ -494,7 +495,7 @@ FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, PacketFile) == 0x704);
 FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, InputEventIsLoaded) == 0x720);
 FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, LoadedInputEvent) == 0x724);
 FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, Suspended) == 0x79c);
-FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, PControlsDef) == 0x7a0);
+FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, PControlsDef_Object) == 0x7a0);
 FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, ControlsDefIndex) == 0x7a4);
 FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, Controls) == 0x7a8);
 FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, AssignableSpecialMoveButtons) == 0x7bc);

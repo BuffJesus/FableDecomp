@@ -86,13 +86,17 @@ struct CCreatureAction_ScorpionCharge {
     unsigned char _pad_0x124[0x4];                           // +0x124
     unsigned char _pad_0x128[0x4];                           // +0x128
     float         ChargeDistance;                            // +0x12c
-    unsigned char StartPos[0xc];                             // +0x130 C3DVector
+    float         StartPos_X;                                // +0x130 C3DVector::X
+    float         StartPos_Y;                                // +0x134 C3DVector::Y
+    float         StartPos_Z;                                // +0x138 C3DVector::Z
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ScorpionCharge) == 0x13c);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, ChargeDistance) == 0x12c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, StartPos) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, StartPos_X) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, StartPos_Y) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionCharge, StartPos_Z) == 0x138);
 
 #endif // FABLE_ENGINE_CCREATUREACTION_SCORPIONCHARGE_H

@@ -8,6 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CFontBank;
 struct _func___cdecl_void;
 
 #pragma pack(push, 1)
@@ -35,9 +37,12 @@ struct CTCTavernGame {
     unsigned char       BetHandles[0x10];                    // +0x6c vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
     unsigned char       MoneyHandles[0x10];                  // +0x7c vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
     unsigned char       WinningsHandles[0x10];               // +0x8c vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
-    unsigned char       PScoreFont[0x8];                     // +0x9c CCountedPointer<CFontBank>
-    unsigned char       PTargetFont[0x8];                    // +0xa4 CCountedPointer<CFontBank>
-    unsigned char       PStatsFont[0x8];                     // +0xac CCountedPointer<CFontBank>
+    CFontBank*          PScoreFont_Data;                     // +0x9c CCountedPointer<CFontBank>::Data
+    CCPPointerInfo*     PScoreFont_Info;                     // +0xa0 CCountedPointer<CFontBank>::Info
+    CFontBank*          PTargetFont_Data;                    // +0xa4 CCountedPointer<CFontBank>::Data
+    CCPPointerInfo*     PTargetFont_Info;                    // +0xa8 CCountedPointer<CFontBank>::Info
+    CFontBank*          PStatsFont_Data;                     // +0xac CCountedPointer<CFontBank>::Data
+    CCPPointerInfo*     PStatsFont_Info;                     // +0xb0 CCountedPointer<CFontBank>::Info
     float               TargetTime;                          // +0xb4
     long                TargetRound;                         // +0xb8
     bool                NewBestScore;                        // +0xbc
@@ -87,9 +92,12 @@ FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, BoxHandles) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, BetHandles) == 0x6c);
 FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, MoneyHandles) == 0x7c);
 FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, WinningsHandles) == 0x8c);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PScoreFont) == 0x9c);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PTargetFont) == 0xa4);
-FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PStatsFont) == 0xac);
+FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PScoreFont_Data) == 0x9c);
+FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PScoreFont_Info) == 0xa0);
+FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PTargetFont_Data) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PTargetFont_Info) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PStatsFont_Data) == 0xac);
+FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, PStatsFont_Info) == 0xb0);
 FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, TargetTime) == 0xb4);
 FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, TargetRound) == 0xb8);
 FABLE_STATIC_ASSERT(offsetof(CTCTavernGame, NewBestScore) == 0xbc);

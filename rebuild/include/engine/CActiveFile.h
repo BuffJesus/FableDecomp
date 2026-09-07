@@ -9,31 +9,34 @@
 #include "rebuild_abi.h"
 
 struct CBufferChunk;
+struct CCPPointerInfo;
+struct CFileInfo;
 
 #pragma pack(push, 1)
 struct CActiveFile {
-    void*         SrcFileHandle;                             // +0x00
-    void*         DstFileHandle;                             // +0x04
-    unsigned long CurrentSrcOffset;                          // +0x08
-    unsigned long NoBytesRead;                               // +0x0c
-    unsigned long NoBytesWritten;                            // +0x10
-    unsigned long InputSize;                                 // +0x14
-    unsigned long OutputSize;                                // +0x18
-    unsigned char PFileInfo[0x8];                            // +0x1c CCountedPointer<CFileInstaller::CFileInfo_const_>
-    unsigned long MinWriteSize;                              // +0x24
-    unsigned long MinReadSize;                               // +0x28
-    unsigned char _pad_0x2c[0x4];                            // +0x2c
-    double        StartTime;                                 // +0x30
-    unsigned char Decompressor[0x5c];                        // +0x38 CCompressorZlib
-    unsigned char PendingWrites[0xc];                        // +0x94 list<CFileInstaller::CPendingWrite,std::allocator<CFileInstaller::CPendingWrite>_>
-    unsigned char PendingDecompression[0xc];                 // +0xa0 list<CFileInstaller::CActiveRead_*,std::allocator<CFileInstaller::CActiveRead_*>_>
-    unsigned long DecompressSrcPos;                          // +0xac
-    unsigned long DecompressDstPos;                          // +0xb0
-    CBufferChunk* PDecompressSrcBuffer;                      // +0xb4
-    CBufferChunk* PDecompressDstBuffer;                      // +0xb8
-    unsigned long DecompressDstUsed;                         // +0xbc
-    bool          DecompressFinish;                          // +0xc0
-    unsigned char _pad_0xc1[0x7];                            // +0xc1
+    void*           SrcFileHandle;                           // +0x00
+    void*           DstFileHandle;                           // +0x04
+    unsigned long   CurrentSrcOffset;                        // +0x08
+    unsigned long   NoBytesRead;                             // +0x0c
+    unsigned long   NoBytesWritten;                          // +0x10
+    unsigned long   InputSize;                               // +0x14
+    unsigned long   OutputSize;                              // +0x18
+    CFileInfo*      PFileInfo_Data;                          // +0x1c CCountedPointer<CFileInstaller::CFileInfo_const_>::Data
+    CCPPointerInfo* PFileInfo_Info;                          // +0x20 CCountedPointer<CFileInstaller::CFileInfo_const_>::Info
+    unsigned long   MinWriteSize;                            // +0x24
+    unsigned long   MinReadSize;                             // +0x28
+    unsigned char   _pad_0x2c[0x4];                          // +0x2c
+    double          StartTime;                               // +0x30
+    unsigned char   Decompressor[0x5c];                      // +0x38 CCompressorZlib
+    unsigned char   PendingWrites[0xc];                      // +0x94 list<CFileInstaller::CPendingWrite,std::allocator<CFileInstaller::CPendingWrite>_>
+    unsigned char   PendingDecompression[0xc];               // +0xa0 list<CFileInstaller::CActiveRead_*,std::allocator<CFileInstaller::CActiveRead_*>_>
+    unsigned long   DecompressSrcPos;                        // +0xac
+    unsigned long   DecompressDstPos;                        // +0xb0
+    CBufferChunk*   PDecompressSrcBuffer;                    // +0xb4
+    CBufferChunk*   PDecompressDstBuffer;                    // +0xb8
+    unsigned long   DecompressDstUsed;                       // +0xbc
+    bool            DecompressFinish;                        // +0xc0
+    unsigned char   _pad_0xc1[0x7];                          // +0xc1
 };
 #pragma pack(pop)
 
@@ -45,7 +48,8 @@ FABLE_STATIC_ASSERT(offsetof(CActiveFile, NoBytesRead) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CActiveFile, NoBytesWritten) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CActiveFile, InputSize) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CActiveFile, OutputSize) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CActiveFile, PFileInfo) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CActiveFile, PFileInfo_Data) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CActiveFile, PFileInfo_Info) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CActiveFile, MinWriteSize) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CActiveFile, MinReadSize) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CActiveFile, StartTime) == 0x30);

@@ -1,6 +1,7 @@
-// CGameScriptInterface::GetTextString @ 0x008913a0
+// CGameScriptInterface_Methods::GetTextString @ 0x008913a0
 // Returns CWideString by value; forwards to a member helper obtained from a global.
 
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CCharString { char* p; };
 struct CWideString { unsigned short* p; };
 
@@ -9,15 +10,14 @@ struct Sub {
     CWideString GetText(CCharString const& str);
 };
 
-struct CGameScriptInterface {
-    char pad[4];
+struct CGameScriptInterface_Methods : CGameScriptInterface {
     CWideString GetTextString(CCharString const& str);
 };
 
 // global object; +0x14 = Sub*
 extern char* g_globalObj;
 
-CWideString CGameScriptInterface::GetTextString(CCharString const& str)
+CWideString CGameScriptInterface_Methods::GetTextString(CCharString const& str)
 {
     Sub* sub = *(Sub**)(g_globalObj + 0x14);
     return sub->GetText(str);

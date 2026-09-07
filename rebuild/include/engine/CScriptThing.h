@@ -8,15 +8,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+
 #pragma pack(push, 1)
 struct CScriptThing {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char PImp[0x8];                                 // +0x04 CCountedPointer<CScriptThing>
+    void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
+    CScriptThing*   PImp_Data;                               // +0x04 CCountedPointer<CScriptThing>::Data
+    CCPPointerInfo* PImp_Info;                               // +0x08 CCountedPointer<CScriptThing>::Info
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CScriptThing) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CScriptThing, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp_Data) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp_Info) == 0x8);
 
 #endif // FABLE_ENGINE_CSCRIPTTHING_H

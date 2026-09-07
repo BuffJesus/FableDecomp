@@ -9,38 +9,42 @@
 #include "rebuild_abi.h"
 
 struct C3DMeshInfo;
+struct CIVCountedPointeeBase;
 
 #pragma pack(push, 1)
 struct CEngineInternalPrimitiveMeshBase {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char _pad_0x28[0x4];                            // +0x28
-    unsigned char _pad_0x2c[0x4];                            // +0x2c
-    unsigned char _pad_0x30[0x4];                            // +0x30
-    unsigned char _pad_0x34[0x4];                            // +0x34
-    unsigned char _pad_0x38[0x4];                            // +0x38
-    unsigned char _pad_0x3c[0x4];                            // +0x3c
-    unsigned char _pad_0x40[0x4];                            // +0x40
-    unsigned char _pad_0x44[0x4];                            // +0x44
-    unsigned char _pad_0x48[0x4];                            // +0x48
-    unsigned char _pad_0x4c[0x4];                            // +0x4c
-    C3DMeshInfo*  MeshInfo;                                  // +0x50
-    C3DMeshInfo*  ShadowMeshInfo;                            // +0x54
-    float         Scale;                                     // +0x58
-    unsigned char TintColour[0x4];                           // +0x5c CRGBColour
-    bool          BulletTimeAffectsCloth;                    // +0x60
-    unsigned char _pad_0x61[0x3];                            // +0x61
-    unsigned char SimulationInfo[0x4];                       // +0x64 CIVCountedPointer<CEnginePrimitiveSimulationInfo>
-    unsigned char MeshEffect[0x4];                           // +0x68 CIVCountedPointer<CEngineMeshEffect>
-    unsigned char ThemeChannelDesc[0x4];                     // +0x6c CEnginePrimitiveThemeChannelDesc
+    void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char          _pad_0x04[0x4];                   // +0x04
+    unsigned char          _pad_0x08[0x4];                   // +0x08
+    unsigned char          _pad_0x0c[0x4];                   // +0x0c
+    unsigned char          _pad_0x10[0x4];                   // +0x10
+    unsigned char          _pad_0x14[0x4];                   // +0x14
+    unsigned char          _pad_0x18[0x4];                   // +0x18
+    unsigned char          _pad_0x1c[0x4];                   // +0x1c
+    unsigned char          _pad_0x20[0x4];                   // +0x20
+    unsigned char          _pad_0x24[0x4];                   // +0x24
+    unsigned char          _pad_0x28[0x4];                   // +0x28
+    unsigned char          _pad_0x2c[0x4];                   // +0x2c
+    unsigned char          _pad_0x30[0x4];                   // +0x30
+    unsigned char          _pad_0x34[0x4];                   // +0x34
+    unsigned char          _pad_0x38[0x4];                   // +0x38
+    unsigned char          _pad_0x3c[0x4];                   // +0x3c
+    unsigned char          _pad_0x40[0x4];                   // +0x40
+    unsigned char          _pad_0x44[0x4];                   // +0x44
+    unsigned char          _pad_0x48[0x4];                   // +0x48
+    unsigned char          _pad_0x4c[0x4];                   // +0x4c
+    C3DMeshInfo*           MeshInfo;                         // +0x50
+    C3DMeshInfo*           ShadowMeshInfo;                   // +0x54
+    float                  Scale;                            // +0x58
+    unsigned char          TintColour[0x4];                  // +0x5c CRGBColour
+    bool                   BulletTimeAffectsCloth;           // +0x60
+    unsigned char          _pad_0x61[0x3];                   // +0x61
+    CIVCountedPointeeBase* SimulationInfo_Object;            // +0x64 CIVCountedPointer<CEnginePrimitiveSimulationInfo>::Object
+    CIVCountedPointeeBase* MeshEffect_Object;                // +0x68 CIVCountedPointer<CEngineMeshEffect>::Object
+    unsigned char          ThemeChannelDesc_ChannelIndex0;   // +0x6c CEnginePrimitiveThemeChannelDesc::ChannelIndex0
+    unsigned char          ThemeChannelDesc_ChannelIndex1;   // +0x6d CEnginePrimitiveThemeChannelDesc::ChannelIndex1
+    unsigned char          ThemeChannelDesc_ChannelBlendFactor; // +0x6e CEnginePrimitiveThemeChannelDesc::ChannelBlendFactor
+    unsigned char          ThemeChannelDesc_Pad;             // +0x6f CEnginePrimitiveThemeChannelDesc::Pad
 };
 #pragma pack(pop)
 
@@ -51,8 +55,11 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveMeshBase, ShadowMeshInfo) =
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveMeshBase, Scale) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveMeshBase, TintColour) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveMeshBase, BulletTimeAffectsCloth) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveMeshBase, SimulationInfo) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveMeshBase, MeshEffect) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveMeshBase, ThemeChannelDesc) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveMeshBase, SimulationInfo_Object) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveMeshBase, MeshEffect_Object) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveMeshBase, ThemeChannelDesc_ChannelIndex0) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveMeshBase, ThemeChannelDesc_ChannelIndex1) == 0x6d);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveMeshBase, ThemeChannelDesc_ChannelBlendFactor) == 0x6e);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveMeshBase, ThemeChannelDesc_Pad) == 0x6f);
 
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVEMESHBASE_H

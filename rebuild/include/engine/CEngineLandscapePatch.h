@@ -8,6 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CBankFileAsyncData;
+struct CCPPointerInfo;
 struct CEngineLandscapeMap;
 struct CLandscapeLayerMesh;
 struct CWaterPatchMesh;
@@ -27,7 +29,8 @@ struct CEngineLandscapePatch {
     unsigned short       MapX;                               // +0x38
     unsigned short       MapY;                               // +0x3a
     unsigned char        ForegroundNeeded[0x4];              // +0x3c bitfield group: bool:1
-    unsigned char        LoadingPatch[0x8];                  // +0x40 CCountedPointer<CBankFileAsyncData>
+    CBankFileAsyncData*  LoadingPatch_Data;                  // +0x40 CCountedPointer<CBankFileAsyncData>::Data
+    CCPPointerInfo*      LoadingPatch_Info;                  // +0x44 CCountedPointer<CBankFileAsyncData>::Info
 };
 #pragma pack(pop)
 
@@ -44,6 +47,7 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, BoundingBox) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, MapX) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, MapY) == 0x3a);
 FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, ForegroundNeeded) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, LoadingPatch) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, LoadingPatch_Data) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapePatch, LoadingPatch_Info) == 0x44);
 
 #endif // FABLE_ENGINE_CENGINELANDSCAPEPATCH_H

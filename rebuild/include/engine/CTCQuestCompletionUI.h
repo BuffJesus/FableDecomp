@@ -8,62 +8,65 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
 struct CComponent;
+struct CDefPointeeBase;
 struct CText;
+struct CWideStringData;
 
 #pragma pack(push, 1)
 struct CTCQuestCompletionUI {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    bool          Active;                                    // +0x0c
-    bool          ReallyActive;                              // +0x0d
-    unsigned char _pad_0x0e[0x2];                            // +0x0e
-    unsigned char Components[0x10];                          // +0x10 vector<NUISystem::CComponent_*,std::allocator<NUISystem::CComponent_*>_>
-    bool          Quitting;                                  // +0x20
-    bool          WaitingForRegionLoad;                      // +0x21
-    bool          WaitingForPlayerControl;                   // +0x22
-    bool          WaitingForBoastProcessing;                 // +0x23
-    unsigned char Completion[0x4];                           // +0x24 CompletionType
-    unsigned long Frame;                                     // +0x28
-    long          FrameStartedBoastProcessing;               // +0x2c
-    unsigned char PCardDef[0x4];                             // +0x30 CDefPointer<CQuestCardDef_const_>
-    unsigned char Boasts[0xc];                               // +0x34 list<CQuestManager::CBoast,std::allocator<CQuestManager::CBoast>_>
-    unsigned long RenderedObjectDef;                         // +0x40
-    unsigned char QuestSummary[0x4];                         // +0x44 CWideString
-    unsigned char SuccessSummary[0x4];                       // +0x48 CWideString
-    unsigned char QuestObjective[0x4];                       // +0x4c CWideString
-    double        LastRenderTime;                            // +0x50
-    unsigned char ScriptName[0x4];                           // +0x58 CCharString
-    unsigned char FailureReason[0x4];                        // +0x5c CWideString
-    long          GoldReward;                                // +0x60
-    long          RenownReward;                              // +0x64
-    long          TargetGoldGained;                          // +0x68
-    long          InitialGold;                               // +0x6c
-    long          TargetExperienceGained;                    // +0x70
-    long          InitialExperience;                         // +0x74
-    long          TargetRenownGained;                        // +0x78
-    long          InitialRenown;                             // +0x7c
-    float         ExperienceGainedDisplayed;                 // +0x80
-    float         RenownGainedDisplayed;                     // +0x84
-    float         GoldGainedDisplayed;                       // +0x88
-    unsigned char StartQuestExperience[0x10];                // +0x8c map<long,unsigned_long,std::less<long>,std::allocator<std::pair<long_const_,unsigned_long>_>_>
-    unsigned char StartQuestGold[0x10];                      // +0x9c map<long,unsigned_long,std::less<long>,std::allocator<std::pair<long_const_,unsigned_long>_>_>
-    unsigned char StartQuestRenown[0x10];                    // +0xac map<long,unsigned_long,std::less<long>,std::allocator<std::pair<long_const_,unsigned_long>_>_>
-    CText*        PRenownText;                               // +0xbc
-    CText*        PGoldText;                                 // +0xc0
-    CText*        PExperienceText;                           // +0xc4
-    float         AccumFadeTime;                             // +0xc8
-    CComponent*   PFrame;                                    // +0xcc
-    CComponent*   PBlack;                                    // +0xd0
-    bool          QuittingFadeOut;                           // +0xd4
-    unsigned char _pad_0xd5[0x3];                            // +0xd5
-    long          QuestCardDef;                              // +0xd8
-    unsigned long ExperienceCountingSound;                   // +0xdc
-    unsigned long GoldCountingSound;                         // +0xe0
-    unsigned long RenownCountingSound;                       // +0xe4
-    bool          CanTeleportToGuildMember;                  // +0xe8
-    unsigned char _pad_0xe9[0x7];                            // +0xe9
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    bool             Active;                                 // +0x0c
+    bool             ReallyActive;                           // +0x0d
+    unsigned char    _pad_0x0e[0x2];                         // +0x0e
+    unsigned char    Components[0x10];                       // +0x10 vector<NUISystem::CComponent_*,std::allocator<NUISystem::CComponent_*>_>
+    bool             Quitting;                               // +0x20
+    bool             WaitingForRegionLoad;                   // +0x21
+    bool             WaitingForPlayerControl;                // +0x22
+    bool             WaitingForBoastProcessing;              // +0x23
+    unsigned char    Completion[0x4];                        // +0x24 CompletionType
+    unsigned long    Frame;                                  // +0x28
+    long             FrameStartedBoastProcessing;            // +0x2c
+    CDefPointeeBase* PCardDef_Object;                        // +0x30 CDefPointer<CQuestCardDef_const_>::Object
+    unsigned char    Boasts[0xc];                            // +0x34 list<CQuestManager::CBoast,std::allocator<CQuestManager::CBoast>_>
+    unsigned long    RenderedObjectDef;                      // +0x40
+    CWideStringData* QuestSummary_PStringData;               // +0x44 CWideString::PStringData
+    CWideStringData* SuccessSummary_PStringData;             // +0x48 CWideString::PStringData
+    CWideStringData* QuestObjective_PStringData;             // +0x4c CWideString::PStringData
+    double           LastRenderTime;                         // +0x50
+    CCharStringData* ScriptName_PStringData;                 // +0x58 CCharString::PStringData
+    CWideStringData* FailureReason_PStringData;              // +0x5c CWideString::PStringData
+    long             GoldReward;                             // +0x60
+    long             RenownReward;                           // +0x64
+    long             TargetGoldGained;                       // +0x68
+    long             InitialGold;                            // +0x6c
+    long             TargetExperienceGained;                 // +0x70
+    long             InitialExperience;                      // +0x74
+    long             TargetRenownGained;                     // +0x78
+    long             InitialRenown;                          // +0x7c
+    float            ExperienceGainedDisplayed;              // +0x80
+    float            RenownGainedDisplayed;                  // +0x84
+    float            GoldGainedDisplayed;                    // +0x88
+    unsigned char    StartQuestExperience[0x10];             // +0x8c map<long,unsigned_long,std::less<long>,std::allocator<std::pair<long_const_,unsigned_long>_>_>
+    unsigned char    StartQuestGold[0x10];                   // +0x9c map<long,unsigned_long,std::less<long>,std::allocator<std::pair<long_const_,unsigned_long>_>_>
+    unsigned char    StartQuestRenown[0x10];                 // +0xac map<long,unsigned_long,std::less<long>,std::allocator<std::pair<long_const_,unsigned_long>_>_>
+    CText*           PRenownText;                            // +0xbc
+    CText*           PGoldText;                              // +0xc0
+    CText*           PExperienceText;                        // +0xc4
+    float            AccumFadeTime;                          // +0xc8
+    CComponent*      PFrame;                                 // +0xcc
+    CComponent*      PBlack;                                 // +0xd0
+    bool             QuittingFadeOut;                        // +0xd4
+    unsigned char    _pad_0xd5[0x3];                         // +0xd5
+    long             QuestCardDef;                           // +0xd8
+    unsigned long    ExperienceCountingSound;                // +0xdc
+    unsigned long    GoldCountingSound;                      // +0xe0
+    unsigned long    RenownCountingSound;                    // +0xe4
+    bool             CanTeleportToGuildMember;               // +0xe8
+    unsigned char    _pad_0xe9[0x7];                         // +0xe9
 };
 #pragma pack(pop)
 
@@ -79,15 +82,15 @@ FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, WaitingForBoastProcessing) ==
 FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, Completion) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, Frame) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, FrameStartedBoastProcessing) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, PCardDef) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, PCardDef_Object) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, Boasts) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, RenderedObjectDef) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, QuestSummary) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, SuccessSummary) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, QuestObjective) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, QuestSummary_PStringData) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, SuccessSummary_PStringData) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, QuestObjective_PStringData) == 0x4c);
 FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, LastRenderTime) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, ScriptName) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, FailureReason) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, ScriptName_PStringData) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, FailureReason_PStringData) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, GoldReward) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, RenownReward) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUI, TargetGoldGained) == 0x68);

@@ -21,13 +21,13 @@ struct CCarryingDef {
     unsigned char _pad_0x20[0x4];                            // +0x20
     unsigned char _pad_0x24[0x4];                            // +0x24
     unsigned char AvailableCarrySlots[0x10];                 // +0x28 vector<long,std::allocator<long>_>
-    unsigned char OverriddenDummyObject[0x4];                // +0x38 CDefString
+    long          OverriddenDummyObject_TablePos;            // +0x38 CDefString::TablePos
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCarryingDef) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CCarryingDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCarryingDef, AvailableCarrySlots) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCarryingDef, OverriddenDummyObject) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CCarryingDef, OverriddenDummyObject_TablePos) == 0x38);
 
 #endif // FABLE_ENGINE_CCARRYINGDEF_H

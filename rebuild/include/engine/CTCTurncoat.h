@@ -8,24 +8,26 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
+
 #pragma pack(push, 1)
 struct CTCTurncoat {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    long          WillTurncoatTimer;                         // +0x0c
-    float         CurrentTurncoatedness;                     // +0x10
-    unsigned char PDef[0x4];                                 // +0x14 CDefPointer<CTurncoatDef_const_>
-    unsigned char TurncoatedEffect[0x8];                     // +0x18 CIntelligentPointer<CThing>
-    long          TurncoatTimeLast;                          // +0x20
-    unsigned char TurncoatOriginator[0x8];                   // +0x24 CIntelligentPointer<CThing>
-    bool          TurncoatOverride;                          // +0x2c
-    unsigned char _pad_0x2d[0x3];                            // +0x2d
-    long          TimeDelayBeforeResistanceRecoveryFrames;   // +0x30
-    long          CurrentRecoveryTimer;                      // +0x34
-    float         ResistanceRecoveryPerFrame;                // +0x38
-    unsigned char TurncoatStageEffects[0x10];                // +0x3c vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
-    float         CreatureTurncoatResistance;                // +0x4c
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    long             WillTurncoatTimer;                      // +0x0c
+    float            CurrentTurncoatedness;                  // +0x10
+    CDefPointeeBase* PDef_Object;                            // +0x14 CDefPointer<CTurncoatDef_const_>::Object
+    unsigned char    TurncoatedEffect[0x8];                  // +0x18 CIntelligentPointer<CThing>
+    long             TurncoatTimeLast;                       // +0x20
+    unsigned char    TurncoatOriginator[0x8];                // +0x24 CIntelligentPointer<CThing>
+    bool             TurncoatOverride;                       // +0x2c
+    unsigned char    _pad_0x2d[0x3];                         // +0x2d
+    long             TimeDelayBeforeResistanceRecoveryFrames; // +0x30
+    long             CurrentRecoveryTimer;                   // +0x34
+    float            ResistanceRecoveryPerFrame;             // +0x38
+    unsigned char    TurncoatStageEffects[0x10];             // +0x3c vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    float            CreatureTurncoatResistance;             // +0x4c
 };
 #pragma pack(pop)
 
@@ -33,7 +35,7 @@ FABLE_STATIC_ASSERT(sizeof(CTCTurncoat) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoat, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoat, WillTurncoatTimer) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoat, CurrentTurncoatedness) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CTCTurncoat, PDef) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CTCTurncoat, PDef_Object) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoat, TurncoatedEffect) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoat, TurncoatTimeLast) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CTCTurncoat, TurncoatOriginator) == 0x24);

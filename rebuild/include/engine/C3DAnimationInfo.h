@@ -8,25 +8,31 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CIVCountedPointeeBase;
+
 #pragma pack(push, 1)
 struct C3DAnimationInfo {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char Data[0x4];                                 // +0x0c CIVCountedPointer<C3DAnimationInfo::CAnimationData>
-    float         Duration;                                  // +0x10
-    float         NonLoopingDuration;                        // +0x14
-    unsigned char MovementVector[0xc];                       // +0x18 C3DVector
-    float         Rotation;                                  // +0x24
+    void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char          _pad_0x04[0x4];                   // +0x04
+    unsigned char          _pad_0x08[0x4];                   // +0x08
+    CIVCountedPointeeBase* Data_Object;                      // +0x0c CIVCountedPointer<C3DAnimationInfo::CAnimationData>::Object
+    float                  Duration;                         // +0x10
+    float                  NonLoopingDuration;               // +0x14
+    float                  MovementVector_X;                 // +0x18 C3DVector::X
+    float                  MovementVector_Y;                 // +0x1c C3DVector::Y
+    float                  MovementVector_Z;                 // +0x20 C3DVector::Z
+    float                  Rotation;                         // +0x24
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(C3DAnimationInfo) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(C3DAnimationInfo, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimationInfo, Data) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(C3DAnimationInfo, Data_Object) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(C3DAnimationInfo, Duration) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(C3DAnimationInfo, NonLoopingDuration) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimationInfo, MovementVector) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(C3DAnimationInfo, MovementVector_X) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(C3DAnimationInfo, MovementVector_Y) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(C3DAnimationInfo, MovementVector_Z) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(C3DAnimationInfo, Rotation) == 0x24);
 
 #endif // FABLE_ENGINE_C3DANIMATIONINFO_H

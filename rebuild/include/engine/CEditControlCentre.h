@@ -13,10 +13,40 @@ struct CAnimationEventsDialog;
 struct CAttachingThingsDialog;
 struct CBoneDialog;
 struct CBrushLibraryDialog;
+struct CCPPointerInfo;
 struct CCamera;
+struct CCharStringData;
 struct CCopyPasteDialog;
 struct CEditComponent;
 struct CEditDisplayEngine;
+struct CEditInputProcessAddTrackPoints;
+struct CEditInputProcessAnimation;
+struct CEditInputProcessBone;
+struct CEditInputProcessConsole;
+struct CEditInputProcessCopyPaste;
+struct CEditInputProcessEditCameraPoint;
+struct CEditInputProcessEditShapes;
+struct CEditInputProcessEditThings;
+struct CEditInputProcessMain;
+struct CEditInputProcessMapPlacement;
+struct CEditInputProcessPaintMap;
+struct CEditInputProcessPreviewSpline;
+struct CEditInputProcessRegion;
+struct CEditInputProcessScriptBrushes;
+struct CEditInputProcessSetPolygonalArea;
+struct CEditInputProcessSurveyEngine;
+struct CEditInputProcessSurveyMinimap;
+struct CEditInputProcessSurveyPassability;
+struct CEditInputProcessSurveyReflections;
+struct CEditInputProcessSurveySounds;
+struct CEditInputProcessSurveyThemes;
+struct CEditInputProcessTracks;
+struct CEditInputProcessView2D;
+struct CEditInputProcessView3D;
+struct CEditRiver;
+struct CEditRiverControlPointInfo;
+struct CEditTransactionComposite;
+struct CEditTransactionManager;
 struct CFractalDialog;
 struct CGameDefinitionManager;
 struct CInitialQuestsDialog;
@@ -35,166 +65,194 @@ struct CThingDialog;
 struct CThingPropertyDialog;
 struct CThingTrackNode;
 struct CTracksDialog;
+struct CWideStringData;
 struct CWorldMapPlacementPopupDialog;
 
 #pragma pack(push, 1)
 struct CEditControlCentre {
-    void*                          __vftable;                // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char                  MultipleSelection[0xc];   // +0x04 list<CThing_*,std::allocator<CThing_*>_>
-    unsigned char                  BackupLevelHeader[0x1c];  // +0x10 CFileFormatLevel
-    unsigned char                  LevelBackup[0x40];        // +0x2c CEditMapBrush
-    unsigned char                  LevelThingBackup[0x10];   // +0x6c map<unsigned___int64,CThingBrushInfo,std::less<unsigned___int64>,std::allocator<std::pair<unsigned___int64_const_,CThingBrushInfo>_>_>
-    bool                           IsLevelBackedUp;          // +0x7c
-    unsigned char                  _pad_0x7d[0x3];           // +0x7d
-    long                           LevelBackedUpID;          // +0x80
-    float                          ScriptTotalTimeToPlayTrack; // +0x84
-    bool                           ScriptFinishedPlayingTrack; // +0x88
-    bool                           ScriptPlayingTrack;       // +0x89
-    unsigned char                  _pad_0x8a[0x2];           // +0x8a
-    CThingTrackNode*               ScriptStartTrackNode;     // +0x8c
-    CThingTrackNode*               ScriptStartViewNode;      // +0x90
-    float                          ScriptTrackLength;        // +0x94
-    float                          ScriptViewLength;         // +0x98
-    float                          ScriptTrackInterpolate;   // +0x9c
-    float                          ScriptCameraViewInterpolate; // +0xa0
-    float                          ScriptPlayCameraTrackOldTime; // +0xa4
-    unsigned char                  ScriptPreviousCamera[0x38]; // +0xa8 CCamera
-    bool                           ActivateSelectionHighlighting; // +0xe0
-    unsigned char                  _pad_0xe1[0x3];           // +0xe1
-    unsigned char                  InputProcessManager[0x6f8]; // +0xe4 CEditInputProcessManager
-    unsigned char                  PInputProcessMain[0x4];   // +0x7dc scoped_ptr<CEditInputProcessMain>
-    unsigned char                  PInputProcessView3D[0x4]; // +0x7e0 scoped_ptr<CEditInputProcessView3D>
-    unsigned char                  PInputProcessView2D[0x4]; // +0x7e4 scoped_ptr<CEditInputProcessView2D>
-    unsigned char                  PInputProcessPaintMap[0x4]; // +0x7e8 scoped_ptr<CEditInputProcessPaintMap>
-    unsigned char                  PInputProcessScriptBrushes[0x4]; // +0x7ec scoped_ptr<CEditInputProcessScriptBrushes>
-    unsigned char                  PInputProcessEditThings[0x4]; // +0x7f0 scoped_ptr<CEditInputProcessEditThings>
-    unsigned char                  PInputProcessMapPlacement[0x4]; // +0x7f4 scoped_ptr<CEditInputProcessMapPlacement>
-    unsigned char                  PInputProcessRegion[0x4]; // +0x7f8 scoped_ptr<CEditInputProcessRegion>
-    unsigned char                  PInputProcessEditTracks[0x4]; // +0x7fc scoped_ptr<CEditInputProcessTracks>
-    unsigned char                  PInputProcessCopyPaste[0x4]; // +0x800 scoped_ptr<CEditInputProcessCopyPaste>
-    unsigned char                  PInputProcessBone[0x4];   // +0x804 scoped_ptr<CEditInputProcessBone>
-    unsigned char                  PInputProcessAnimation[0x4]; // +0x808 scoped_ptr<CEditInputProcessAnimation>
-    unsigned char                  PInputProcessSetPolygonalArea[0x4]; // +0x80c scoped_ptr<CEditInputProcessSetPolygonalArea>
-    unsigned char                  PInputProcessEditCameraPoint[0x4]; // +0x810 scoped_ptr<CEditInputProcessEditCameraPoint>
-    unsigned char                  PInputProcessEditShapes[0x4]; // +0x814 scoped_ptr<CEditInputProcessEditShapes>
-    unsigned char                  PInputProcessAddTrackPoints[0x4]; // +0x818 scoped_ptr<CEditInputProcessAddTrackPoints>
-    unsigned char                  PInputProcessSurveyPassability[0x4]; // +0x81c scoped_ptr<CEditInputProcessSurveyPassability>
-    unsigned char                  PInputProcessSurveyThemes[0x4]; // +0x820 scoped_ptr<CEditInputProcessSurveyThemes>
-    unsigned char                  PInputProcessSurveyEngine[0x4]; // +0x824 scoped_ptr<CEditInputProcessSurveyEngine>
-    unsigned char                  PInputProcessSurveySounds[0x4]; // +0x828 scoped_ptr<CEditInputProcessSurveySounds>
-    unsigned char                  PInputProcessSurveyReflections[0x4]; // +0x82c scoped_ptr<CEditInputProcessSurveyReflections>
-    unsigned char                  PInputProcessSurveyMinimap[0x4]; // +0x830 scoped_ptr<CEditInputProcessSurveyMinimap>
-    unsigned char                  PInputProcessPreviewSpline[0x4]; // +0x834 scoped_ptr<CEditInputProcessPreviewSpline>
-    unsigned char                  PInputProcessConsole[0x4]; // +0x838 scoped_ptr<CEditInputProcessConsole>
-    CEditComponent*                Component;                // +0x83c
-    CEditDisplayEngine*            DisplayEngine;            // +0x840
-    CGameDefinitionManager*        DefinitionManager;        // +0x844
-    unsigned char                  GlobalMode[0x4];          // +0x848 EGlobalMode
-    unsigned char                  ViewMode[0x4];            // +0x84c EEditViewMode
-    unsigned char                  EditMode[0x4];            // +0x850 EEditMode
-    unsigned char                  LastBackedUpEditMode[0x4]; // +0x854 EEditMode
-    unsigned char                  Camera2D[0x38];           // +0x858 CCamera
-    unsigned char                  Camera3D[0x38];           // +0x890 CCamera
-    CCamera*                       PCurrentCamera;           // +0x8c8
-    unsigned char                  StickOnVertexPos[0xc];    // +0x8cc C3DVector
-    unsigned char                  GameAnimationEventSymbols[0x2c]; // +0x8d8 CSymbolMap
-    unsigned char                  SoundAnimationEventSymbols[0x2c]; // +0x904 CSymbolMap
-    CMenu*                         PEditMenu;                // +0x930
-    CPaintMapDialog*               PEditPaintMapDialog;      // +0x934
-    CTheme2MapDialog*              PEditTheme2MapDialog;     // +0x938
-    CThingDialog*                  PEditThingDialog;         // +0x93c
-    CSceneDialog*                  PEditSceneDialog;         // +0x940
-    CThingPropertyDialog*          PEditThingPropertiesDialog; // +0x944
-    CAttachingThingsDialog*        PEditAttachingThingsDialog; // +0x948
-    CBoneDialog*                   PEditBoneDialog;          // +0x94c
-    CScriptBrushDialog*            PEditScriptBrushDialog;   // +0x950
-    CTracksDialog*                 PEditTracksDialog;        // +0x954
-    CCopyPasteDialog*              PEditCopyPasteDialog;     // +0x958
-    CBrushLibraryDialog*           PEditBrushLibraryDialog;  // +0x95c
-    CMapsAndRegionsDialog*         PEditMapsAndRegionsDialog; // +0x960
-    CWorldMapPlacementPopupDialog* PEditWorldMapPlacementPopupDialog; // +0x964
-    CMapResizeDialog*              PEditMapResizeDialog;     // +0x968
-    CMapVisDialog*                 PEditMapVisDialog;        // +0x96c
-    CFractalDialog*                PEditFractalDialog;       // +0x970
-    CSurveyDialog*                 PEditSurveyDialog;        // +0x974
-    CQuestDialog*                  PEditQuestDialog;         // +0x978
-    CInitialQuestsDialog*          PEditInitialQuestsDialog; // +0x97c
-    CAnimationDialog*              PEditAnimationDialog;     // +0x980
-    CAnimationEventsDialog*        PEditAnimationEventsDialog; // +0x984
-    CResolveDialog*                PEditResolveDialog;       // +0x988
-    unsigned char                  PSelectedThing[0x8];      // +0x98c CIntelligentPointer<CThing>
-    unsigned char                  PSelectedScriptBrush[0x8]; // +0x994 CIntelligentPointer<CScriptedMapBrush>
-    unsigned char                  SelectedMapForPlacement[0x4]; // +0x99c CCharString
-    unsigned long                  SelectedMapRegion;        // +0x9a0
-    unsigned long                  SelectedMapUID;           // +0x9a4
-    unsigned char                  SelectedMapArea[0x10];    // +0x9a8 C2DBoxI
-    long                           SelectedMapIndexForResize; // +0x9b8
-    bool                           ShowingCreatures;         // +0x9bc
-    bool                           ShowingBuildings;         // +0x9bd
-    bool                           ShowingObjects;           // +0x9be
-    bool                           ShowingHolySites;         // +0x9bf
-    bool                           ShowingVillages;          // +0x9c0
-    unsigned char                  _pad_0x9c1[0x3];          // +0x9c1
-    unsigned char                  ShowDetailMode[0x4];      // +0x9c4 EShowDetailMode
-    bool                           EngineGridFlag;           // +0x9c8
-    bool                           SnapToGridFlag;           // +0x9c9
-    unsigned char                  PCarriedThing[0x8];       // +0x9ca CIntelligentPointer<CThing>
-    unsigned char                  PNearestThing[0x8];       // +0x9d2 CIntelligentPointer<CThing>
-    bool                           AlwaysGetNearestThing;    // +0x9da
-    unsigned char                  ThingPickUpPos[0xc];      // +0x9db C3DVector
-    unsigned char                  PositionThingWasBeforeMoved[0xc]; // +0x9e7 C3DVector
-    unsigned char                  RHSetOfThingBeforeRotated[0x18]; // +0x9f3 CRightHandedSet
-    unsigned char                  DrawPathStartPos[0xc];    // +0xa0b C3DVector
-    unsigned char                  DrawPathEndPos[0xc];      // +0xa17 C3DVector
-    unsigned char                  MoveThingStartPos[0xc];   // +0xa23 C3DVector
-    unsigned char                  PThingAttachingThingsTo[0x9]; // +0xa2f CIntelligentPointer<CThing>
-    unsigned char                  AttachModeType[0x4];      // +0xa38 EAttachModeType
-    unsigned char                  SelectedRegion[0x10];     // +0xa3c C2DBoxF
-    bool                           DraggingSelectedRegionFlag; // +0xa4c
-    unsigned char                  _pad_0xa4d[0x3];          // +0xa4d
-    unsigned char                  CurrentScriptBrushMask[0x10]; // +0xa50 C2DBoxF
-    unsigned char                  CurrentScriptBrushThingMask[0x10]; // +0xa60 C2DBoxF
-    bool                           EditingScriptBrush;       // +0xa70
-    unsigned char                  _pad_0xa71[0x3];          // +0xa71
-    unsigned char                  CurrentScriptBrushName[0x4]; // +0xa74 CCharString
-    unsigned char                  ScriptBrushThingsToDelete[0xc]; // +0xa78 list<unsigned___int64,std::allocator<unsigned___int64>_>
-    unsigned char                  ScriptBrushThingsToAdd[0xc]; // +0xa84 list<unsigned___int64,std::allocator<unsigned___int64>_>
-    unsigned char                  ScriptBrushThingsToMove[0x10]; // +0xa90 set<unsigned___int64,std::less<unsigned___int64>,std::allocator<unsigned___int64>_>
-    unsigned char                  TrackNodesMovedWhileEditingScriptBrush[0xc]; // +0xaa0 list<unsigned___int64,std::allocator<unsigned___int64>_>
-    unsigned char                  SelectedQuestName[0x4];   // +0xaac CCharString
-    float                          MoveSpeed;                // +0xab0
-    bool                           WorldChangedSinceLoad;    // +0xab4
-    unsigned char                  _pad_0xab5[0x3];          // +0xab5
-    long                           SelectedPlayerNumber;     // +0xab8
-    bool                           StickOnVertex;            // +0xabc
-    bool                           ChangingSelectedScriptBrushFlag; // +0xabd
-    bool                           LinkingTracks;            // +0xabe
-    unsigned char                  _pad_0xabf[0x1];          // +0xabf
-    CThingTrackNode*               PreviousLinkTrackNode;    // +0xac0
-    unsigned char                  CurrentSelectedTrack[0x4]; // +0xac4 CCharString
-    long                           CurrentTrackNumber;       // +0xac8
-    long                           CurrentScriptedMapBrushNumber; // +0xacc
-    unsigned char                  CurrentLoadedWorldName[0x4]; // +0xad0 CWideString
-    float                          CarriedThingGroundOffset; // +0xad4
-    unsigned long                  FrameBlinkLastTransitioned; // +0xad8
-    bool                           BlinkHighlightedItem;     // +0xadc
-    bool                           CameraGroundCollision;    // +0xadd
-    unsigned char                  _pad_0xade[0x2];          // +0xade
-    unsigned char                  PEditRiver[0x4];          // +0xae0 scoped_ptr<CEditRiver>
-    unsigned char                  PRiverControlPointBeingDragged[0x8]; // +0xae4 CCountedPointer<CEditRiverControlPointInfo>
-    unsigned char                  RiverBezierPointsList[0xc]; // +0xaec list<C3DVector,std::allocator<C3DVector>_>
-    bool                           DraggingRiverGUIPoint;    // +0xaf8
-    unsigned char                  PShapeManagerOwner[0xb];  // +0xaf9 CIntelligentPointer<CThing>
-    unsigned char                  CameraPointsList[0x10];   // +0xb04 vector<CCamera,std::allocator<CCamera>_>
-    unsigned char                  ShapePointsList[0x10];    // +0xb14 vector<C3DVector,std::allocator<C3DVector>_>
-    long                           ShapeDesiredNumPoints;    // +0xb24
-    unsigned char                  ShapeType[0x4];           // +0xb28 EShape
-    bool                           PreviewingSpline;         // +0xb2c
-    unsigned char                  _pad_0xb2d[0x3];          // +0xb2d
-    float                          CameraSplineIndex;        // +0xb30
-    unsigned char                  EngineSurveyData[0x30];   // +0xb34 CEngineSurveyData
-    unsigned char                  PEditTransactionManager[0x8]; // +0xb64 CCountedPointer<CEditTransactionManager>
-    unsigned char                  PCompositeAction[0x8];    // +0xb6c CCountedPointer<CEditTransactionComposite>
+    void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char                       MultipleSelection[0xc]; // +0x04 list<CThing_*,std::allocator<CThing_*>_>
+    unsigned char                       BackupLevelHeader[0x1c]; // +0x10 CFileFormatLevel
+    unsigned char                       LevelBackup[0x40];   // +0x2c CEditMapBrush
+    unsigned char                       LevelThingBackup[0x10]; // +0x6c map<unsigned___int64,CThingBrushInfo,std::less<unsigned___int64>,std::allocator<std::pair<unsigned___int64_const_,CThingBrushInfo>_>_>
+    bool                                IsLevelBackedUp;     // +0x7c
+    unsigned char                       _pad_0x7d[0x3];      // +0x7d
+    long                                LevelBackedUpID;     // +0x80
+    float                               ScriptTotalTimeToPlayTrack; // +0x84
+    bool                                ScriptFinishedPlayingTrack; // +0x88
+    bool                                ScriptPlayingTrack;  // +0x89
+    unsigned char                       _pad_0x8a[0x2];      // +0x8a
+    CThingTrackNode*                    ScriptStartTrackNode; // +0x8c
+    CThingTrackNode*                    ScriptStartViewNode; // +0x90
+    float                               ScriptTrackLength;   // +0x94
+    float                               ScriptViewLength;    // +0x98
+    float                               ScriptTrackInterpolate; // +0x9c
+    float                               ScriptCameraViewInterpolate; // +0xa0
+    float                               ScriptPlayCameraTrackOldTime; // +0xa4
+    unsigned char                       ScriptPreviousCamera[0x38]; // +0xa8 CCamera
+    bool                                ActivateSelectionHighlighting; // +0xe0
+    unsigned char                       _pad_0xe1[0x3];      // +0xe1
+    unsigned char                       InputProcessManager[0x6f8]; // +0xe4 CEditInputProcessManager
+    CEditInputProcessMain*              PInputProcessMain_ptr; // +0x7dc scoped_ptr<CEditInputProcessMain>::ptr
+    CEditInputProcessView3D*            PInputProcessView3D_ptr; // +0x7e0 scoped_ptr<CEditInputProcessView3D>::ptr
+    CEditInputProcessView2D*            PInputProcessView2D_ptr; // +0x7e4 scoped_ptr<CEditInputProcessView2D>::ptr
+    CEditInputProcessPaintMap*          PInputProcessPaintMap_ptr; // +0x7e8 scoped_ptr<CEditInputProcessPaintMap>::ptr
+    CEditInputProcessScriptBrushes*     PInputProcessScriptBrushes_ptr; // +0x7ec scoped_ptr<CEditInputProcessScriptBrushes>::ptr
+    CEditInputProcessEditThings*        PInputProcessEditThings_ptr; // +0x7f0 scoped_ptr<CEditInputProcessEditThings>::ptr
+    CEditInputProcessMapPlacement*      PInputProcessMapPlacement_ptr; // +0x7f4 scoped_ptr<CEditInputProcessMapPlacement>::ptr
+    CEditInputProcessRegion*            PInputProcessRegion_ptr; // +0x7f8 scoped_ptr<CEditInputProcessRegion>::ptr
+    CEditInputProcessTracks*            PInputProcessEditTracks_ptr; // +0x7fc scoped_ptr<CEditInputProcessTracks>::ptr
+    CEditInputProcessCopyPaste*         PInputProcessCopyPaste_ptr; // +0x800 scoped_ptr<CEditInputProcessCopyPaste>::ptr
+    CEditInputProcessBone*              PInputProcessBone_ptr; // +0x804 scoped_ptr<CEditInputProcessBone>::ptr
+    CEditInputProcessAnimation*         PInputProcessAnimation_ptr; // +0x808 scoped_ptr<CEditInputProcessAnimation>::ptr
+    CEditInputProcessSetPolygonalArea*  PInputProcessSetPolygonalArea_ptr; // +0x80c scoped_ptr<CEditInputProcessSetPolygonalArea>::ptr
+    CEditInputProcessEditCameraPoint*   PInputProcessEditCameraPoint_ptr; // +0x810 scoped_ptr<CEditInputProcessEditCameraPoint>::ptr
+    CEditInputProcessEditShapes*        PInputProcessEditShapes_ptr; // +0x814 scoped_ptr<CEditInputProcessEditShapes>::ptr
+    CEditInputProcessAddTrackPoints*    PInputProcessAddTrackPoints_ptr; // +0x818 scoped_ptr<CEditInputProcessAddTrackPoints>::ptr
+    CEditInputProcessSurveyPassability* PInputProcessSurveyPassability_ptr; // +0x81c scoped_ptr<CEditInputProcessSurveyPassability>::ptr
+    CEditInputProcessSurveyThemes*      PInputProcessSurveyThemes_ptr; // +0x820 scoped_ptr<CEditInputProcessSurveyThemes>::ptr
+    CEditInputProcessSurveyEngine*      PInputProcessSurveyEngine_ptr; // +0x824 scoped_ptr<CEditInputProcessSurveyEngine>::ptr
+    CEditInputProcessSurveySounds*      PInputProcessSurveySounds_ptr; // +0x828 scoped_ptr<CEditInputProcessSurveySounds>::ptr
+    CEditInputProcessSurveyReflections* PInputProcessSurveyReflections_ptr; // +0x82c scoped_ptr<CEditInputProcessSurveyReflections>::ptr
+    CEditInputProcessSurveyMinimap*     PInputProcessSurveyMinimap_ptr; // +0x830 scoped_ptr<CEditInputProcessSurveyMinimap>::ptr
+    CEditInputProcessPreviewSpline*     PInputProcessPreviewSpline_ptr; // +0x834 scoped_ptr<CEditInputProcessPreviewSpline>::ptr
+    CEditInputProcessConsole*           PInputProcessConsole_ptr; // +0x838 scoped_ptr<CEditInputProcessConsole>::ptr
+    CEditComponent*                     Component;           // +0x83c
+    CEditDisplayEngine*                 DisplayEngine;       // +0x840
+    CGameDefinitionManager*             DefinitionManager;   // +0x844
+    unsigned char                       GlobalMode[0x4];     // +0x848 EGlobalMode
+    unsigned char                       ViewMode[0x4];       // +0x84c EEditViewMode
+    unsigned char                       EditMode[0x4];       // +0x850 EEditMode
+    unsigned char                       LastBackedUpEditMode[0x4]; // +0x854 EEditMode
+    unsigned char                       Camera2D[0x38];      // +0x858 CCamera
+    unsigned char                       Camera3D[0x38];      // +0x890 CCamera
+    CCamera*                            PCurrentCamera;      // +0x8c8
+    float                               StickOnVertexPos_X;  // +0x8cc C3DVector::X
+    float                               StickOnVertexPos_Y;  // +0x8d0 C3DVector::Y
+    float                               StickOnVertexPos_Z;  // +0x8d4 C3DVector::Z
+    unsigned char                       GameAnimationEventSymbols[0x2c]; // +0x8d8 CSymbolMap
+    unsigned char                       SoundAnimationEventSymbols[0x2c]; // +0x904 CSymbolMap
+    CMenu*                              PEditMenu;           // +0x930
+    CPaintMapDialog*                    PEditPaintMapDialog; // +0x934
+    CTheme2MapDialog*                   PEditTheme2MapDialog; // +0x938
+    CThingDialog*                       PEditThingDialog;    // +0x93c
+    CSceneDialog*                       PEditSceneDialog;    // +0x940
+    CThingPropertyDialog*               PEditThingPropertiesDialog; // +0x944
+    CAttachingThingsDialog*             PEditAttachingThingsDialog; // +0x948
+    CBoneDialog*                        PEditBoneDialog;     // +0x94c
+    CScriptBrushDialog*                 PEditScriptBrushDialog; // +0x950
+    CTracksDialog*                      PEditTracksDialog;   // +0x954
+    CCopyPasteDialog*                   PEditCopyPasteDialog; // +0x958
+    CBrushLibraryDialog*                PEditBrushLibraryDialog; // +0x95c
+    CMapsAndRegionsDialog*              PEditMapsAndRegionsDialog; // +0x960
+    CWorldMapPlacementPopupDialog*      PEditWorldMapPlacementPopupDialog; // +0x964
+    CMapResizeDialog*                   PEditMapResizeDialog; // +0x968
+    CMapVisDialog*                      PEditMapVisDialog;   // +0x96c
+    CFractalDialog*                     PEditFractalDialog;  // +0x970
+    CSurveyDialog*                      PEditSurveyDialog;   // +0x974
+    CQuestDialog*                       PEditQuestDialog;    // +0x978
+    CInitialQuestsDialog*               PEditInitialQuestsDialog; // +0x97c
+    CAnimationDialog*                   PEditAnimationDialog; // +0x980
+    CAnimationEventsDialog*             PEditAnimationEventsDialog; // +0x984
+    CResolveDialog*                     PEditResolveDialog;  // +0x988
+    unsigned char                       PSelectedThing[0x8]; // +0x98c CIntelligentPointer<CThing>
+    unsigned char                       PSelectedScriptBrush[0x8]; // +0x994 CIntelligentPointer<CScriptedMapBrush>
+    CCharStringData*                    SelectedMapForPlacement_PStringData; // +0x99c CCharString::PStringData
+    unsigned long                       SelectedMapRegion;   // +0x9a0
+    unsigned long                       SelectedMapUID;      // +0x9a4
+    long                                SelectedMapArea_TLX; // +0x9a8 C2DBoxI::TLX
+    long                                SelectedMapArea_TLY; // +0x9ac C2DBoxI::TLY
+    long                                SelectedMapArea_BRX; // +0x9b0 C2DBoxI::BRX
+    long                                SelectedMapArea_BRY; // +0x9b4 C2DBoxI::BRY
+    long                                SelectedMapIndexForResize; // +0x9b8
+    bool                                ShowingCreatures;    // +0x9bc
+    bool                                ShowingBuildings;    // +0x9bd
+    bool                                ShowingObjects;      // +0x9be
+    bool                                ShowingHolySites;    // +0x9bf
+    bool                                ShowingVillages;     // +0x9c0
+    unsigned char                       _pad_0x9c1[0x3];     // +0x9c1
+    unsigned char                       ShowDetailMode[0x4]; // +0x9c4 EShowDetailMode
+    bool                                EngineGridFlag;      // +0x9c8
+    bool                                SnapToGridFlag;      // +0x9c9
+    unsigned char                       PCarriedThing[0x8];  // +0x9ca CIntelligentPointer<CThing>
+    unsigned char                       PNearestThing[0x8];  // +0x9d2 CIntelligentPointer<CThing>
+    bool                                AlwaysGetNearestThing; // +0x9da
+    float                               ThingPickUpPos_X;    // +0x9db C3DVector::X
+    float                               ThingPickUpPos_Y;    // +0x9df C3DVector::Y
+    float                               ThingPickUpPos_Z;    // +0x9e3 C3DVector::Z
+    float                               PositionThingWasBeforeMoved_X; // +0x9e7 C3DVector::X
+    float                               PositionThingWasBeforeMoved_Y; // +0x9eb C3DVector::Y
+    float                               PositionThingWasBeforeMoved_Z; // +0x9ef C3DVector::Z
+    unsigned char                       RHSetOfThingBeforeRotated[0x18]; // +0x9f3 CRightHandedSet
+    float                               DrawPathStartPos_X;  // +0xa0b C3DVector::X
+    float                               DrawPathStartPos_Y;  // +0xa0f C3DVector::Y
+    float                               DrawPathStartPos_Z;  // +0xa13 C3DVector::Z
+    float                               DrawPathEndPos_X;    // +0xa17 C3DVector::X
+    float                               DrawPathEndPos_Y;    // +0xa1b C3DVector::Y
+    float                               DrawPathEndPos_Z;    // +0xa1f C3DVector::Z
+    float                               MoveThingStartPos_X; // +0xa23 C3DVector::X
+    float                               MoveThingStartPos_Y; // +0xa27 C3DVector::Y
+    float                               MoveThingStartPos_Z; // +0xa2b C3DVector::Z
+    unsigned char                       PThingAttachingThingsTo[0x9]; // +0xa2f CIntelligentPointer<CThing>
+    unsigned char                       AttachModeType[0x4]; // +0xa38 EAttachModeType
+    float                               SelectedRegion_TLX;  // +0xa3c C2DBoxF::TLX
+    float                               SelectedRegion_TLY;  // +0xa40 C2DBoxF::TLY
+    float                               SelectedRegion_BRX;  // +0xa44 C2DBoxF::BRX
+    float                               SelectedRegion_BRY;  // +0xa48 C2DBoxF::BRY
+    bool                                DraggingSelectedRegionFlag; // +0xa4c
+    unsigned char                       _pad_0xa4d[0x3];     // +0xa4d
+    float                               CurrentScriptBrushMask_TLX; // +0xa50 C2DBoxF::TLX
+    float                               CurrentScriptBrushMask_TLY; // +0xa54 C2DBoxF::TLY
+    float                               CurrentScriptBrushMask_BRX; // +0xa58 C2DBoxF::BRX
+    float                               CurrentScriptBrushMask_BRY; // +0xa5c C2DBoxF::BRY
+    float                               CurrentScriptBrushThingMask_TLX; // +0xa60 C2DBoxF::TLX
+    float                               CurrentScriptBrushThingMask_TLY; // +0xa64 C2DBoxF::TLY
+    float                               CurrentScriptBrushThingMask_BRX; // +0xa68 C2DBoxF::BRX
+    float                               CurrentScriptBrushThingMask_BRY; // +0xa6c C2DBoxF::BRY
+    bool                                EditingScriptBrush;  // +0xa70
+    unsigned char                       _pad_0xa71[0x3];     // +0xa71
+    CCharStringData*                    CurrentScriptBrushName_PStringData; // +0xa74 CCharString::PStringData
+    unsigned char                       ScriptBrushThingsToDelete[0xc]; // +0xa78 list<unsigned___int64,std::allocator<unsigned___int64>_>
+    unsigned char                       ScriptBrushThingsToAdd[0xc]; // +0xa84 list<unsigned___int64,std::allocator<unsigned___int64>_>
+    unsigned char                       ScriptBrushThingsToMove[0x10]; // +0xa90 set<unsigned___int64,std::less<unsigned___int64>,std::allocator<unsigned___int64>_>
+    unsigned char                       TrackNodesMovedWhileEditingScriptBrush[0xc]; // +0xaa0 list<unsigned___int64,std::allocator<unsigned___int64>_>
+    CCharStringData*                    SelectedQuestName_PStringData; // +0xaac CCharString::PStringData
+    float                               MoveSpeed;           // +0xab0
+    bool                                WorldChangedSinceLoad; // +0xab4
+    unsigned char                       _pad_0xab5[0x3];     // +0xab5
+    long                                SelectedPlayerNumber; // +0xab8
+    bool                                StickOnVertex;       // +0xabc
+    bool                                ChangingSelectedScriptBrushFlag; // +0xabd
+    bool                                LinkingTracks;       // +0xabe
+    unsigned char                       _pad_0xabf[0x1];     // +0xabf
+    CThingTrackNode*                    PreviousLinkTrackNode; // +0xac0
+    CCharStringData*                    CurrentSelectedTrack_PStringData; // +0xac4 CCharString::PStringData
+    long                                CurrentTrackNumber;  // +0xac8
+    long                                CurrentScriptedMapBrushNumber; // +0xacc
+    CWideStringData*                    CurrentLoadedWorldName_PStringData; // +0xad0 CWideString::PStringData
+    float                               CarriedThingGroundOffset; // +0xad4
+    unsigned long                       FrameBlinkLastTransitioned; // +0xad8
+    bool                                BlinkHighlightedItem; // +0xadc
+    bool                                CameraGroundCollision; // +0xadd
+    unsigned char                       _pad_0xade[0x2];     // +0xade
+    CEditRiver*                         PEditRiver_ptr;      // +0xae0 scoped_ptr<CEditRiver>::ptr
+    CEditRiverControlPointInfo*         PRiverControlPointBeingDragged_Data; // +0xae4 CCountedPointer<CEditRiverControlPointInfo>::Data
+    CCPPointerInfo*                     PRiverControlPointBeingDragged_Info; // +0xae8 CCountedPointer<CEditRiverControlPointInfo>::Info
+    unsigned char                       RiverBezierPointsList[0xc]; // +0xaec list<C3DVector,std::allocator<C3DVector>_>
+    bool                                DraggingRiverGUIPoint; // +0xaf8
+    unsigned char                       PShapeManagerOwner[0xb]; // +0xaf9 CIntelligentPointer<CThing>
+    unsigned char                       CameraPointsList[0x10]; // +0xb04 vector<CCamera,std::allocator<CCamera>_>
+    unsigned char                       ShapePointsList[0x10]; // +0xb14 vector<C3DVector,std::allocator<C3DVector>_>
+    long                                ShapeDesiredNumPoints; // +0xb24
+    unsigned char                       ShapeType[0x4];      // +0xb28 EShape
+    bool                                PreviewingSpline;    // +0xb2c
+    unsigned char                       _pad_0xb2d[0x3];     // +0xb2d
+    float                               CameraSplineIndex;   // +0xb30
+    unsigned char                       EngineSurveyData[0x30]; // +0xb34 CEngineSurveyData
+    CEditTransactionManager*            PEditTransactionManager_Data; // +0xb64 CCountedPointer<CEditTransactionManager>::Data
+    CCPPointerInfo*                     PEditTransactionManager_Info; // +0xb68 CCountedPointer<CEditTransactionManager>::Info
+    CEditTransactionComposite*          PCompositeAction_Data; // +0xb6c CCountedPointer<CEditTransactionComposite>::Data
+    CCPPointerInfo*                     PCompositeAction_Info; // +0xb70 CCountedPointer<CEditTransactionComposite>::Info
 };
 #pragma pack(pop)
 
@@ -219,30 +277,30 @@ FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, ScriptPlayCameraTrackOldTime) =
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, ScriptPreviousCamera) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, ActivateSelectionHighlighting) == 0xe0);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, InputProcessManager) == 0xe4);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessMain) == 0x7dc);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessView3D) == 0x7e0);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessView2D) == 0x7e4);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessPaintMap) == 0x7e8);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessScriptBrushes) == 0x7ec);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessEditThings) == 0x7f0);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessMapPlacement) == 0x7f4);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessRegion) == 0x7f8);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessEditTracks) == 0x7fc);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessCopyPaste) == 0x800);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessBone) == 0x804);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessAnimation) == 0x808);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessSetPolygonalArea) == 0x80c);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessEditCameraPoint) == 0x810);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessEditShapes) == 0x814);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessAddTrackPoints) == 0x818);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessSurveyPassability) == 0x81c);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessSurveyThemes) == 0x820);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessSurveyEngine) == 0x824);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessSurveySounds) == 0x828);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessSurveyReflections) == 0x82c);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessSurveyMinimap) == 0x830);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessPreviewSpline) == 0x834);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessConsole) == 0x838);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessMain_ptr) == 0x7dc);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessView3D_ptr) == 0x7e0);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessView2D_ptr) == 0x7e4);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessPaintMap_ptr) == 0x7e8);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessScriptBrushes_ptr) == 0x7ec);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessEditThings_ptr) == 0x7f0);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessMapPlacement_ptr) == 0x7f4);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessRegion_ptr) == 0x7f8);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessEditTracks_ptr) == 0x7fc);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessCopyPaste_ptr) == 0x800);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessBone_ptr) == 0x804);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessAnimation_ptr) == 0x808);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessSetPolygonalArea_ptr) == 0x80c);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessEditCameraPoint_ptr) == 0x810);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessEditShapes_ptr) == 0x814);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessAddTrackPoints_ptr) == 0x818);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessSurveyPassability_ptr) == 0x81c);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessSurveyThemes_ptr) == 0x820);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessSurveyEngine_ptr) == 0x824);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessSurveySounds_ptr) == 0x828);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessSurveyReflections_ptr) == 0x82c);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessSurveyMinimap_ptr) == 0x830);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessPreviewSpline_ptr) == 0x834);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PInputProcessConsole_ptr) == 0x838);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, Component) == 0x83c);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, DisplayEngine) == 0x840);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, DefinitionManager) == 0x844);
@@ -253,7 +311,9 @@ FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, LastBackedUpEditMode) == 0x854)
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, Camera2D) == 0x858);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, Camera3D) == 0x890);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PCurrentCamera) == 0x8c8);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, StickOnVertexPos) == 0x8cc);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, StickOnVertexPos_X) == 0x8cc);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, StickOnVertexPos_Y) == 0x8d0);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, StickOnVertexPos_Z) == 0x8d4);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, GameAnimationEventSymbols) == 0x8d8);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SoundAnimationEventSymbols) == 0x904);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PEditMenu) == 0x930);
@@ -281,10 +341,13 @@ FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PEditAnimationEventsDialog) == 
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PEditResolveDialog) == 0x988);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PSelectedThing) == 0x98c);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PSelectedScriptBrush) == 0x994);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedMapForPlacement) == 0x99c);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedMapForPlacement_PStringData) == 0x99c);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedMapRegion) == 0x9a0);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedMapUID) == 0x9a4);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedMapArea) == 0x9a8);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedMapArea_TLX) == 0x9a8);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedMapArea_TLY) == 0x9ac);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedMapArea_BRX) == 0x9b0);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedMapArea_BRY) == 0x9b4);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedMapIndexForResize) == 0x9b8);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, ShowingCreatures) == 0x9bc);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, ShowingBuildings) == 0x9bd);
@@ -297,25 +360,44 @@ FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SnapToGridFlag) == 0x9c9);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PCarriedThing) == 0x9ca);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PNearestThing) == 0x9d2);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, AlwaysGetNearestThing) == 0x9da);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, ThingPickUpPos) == 0x9db);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PositionThingWasBeforeMoved) == 0x9e7);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, ThingPickUpPos_X) == 0x9db);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, ThingPickUpPos_Y) == 0x9df);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, ThingPickUpPos_Z) == 0x9e3);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PositionThingWasBeforeMoved_X) == 0x9e7);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PositionThingWasBeforeMoved_Y) == 0x9eb);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PositionThingWasBeforeMoved_Z) == 0x9ef);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, RHSetOfThingBeforeRotated) == 0x9f3);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, DrawPathStartPos) == 0xa0b);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, DrawPathEndPos) == 0xa17);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, MoveThingStartPos) == 0xa23);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, DrawPathStartPos_X) == 0xa0b);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, DrawPathStartPos_Y) == 0xa0f);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, DrawPathStartPos_Z) == 0xa13);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, DrawPathEndPos_X) == 0xa17);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, DrawPathEndPos_Y) == 0xa1b);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, DrawPathEndPos_Z) == 0xa1f);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, MoveThingStartPos_X) == 0xa23);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, MoveThingStartPos_Y) == 0xa27);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, MoveThingStartPos_Z) == 0xa2b);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PThingAttachingThingsTo) == 0xa2f);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, AttachModeType) == 0xa38);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedRegion) == 0xa3c);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedRegion_TLX) == 0xa3c);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedRegion_TLY) == 0xa40);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedRegion_BRX) == 0xa44);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedRegion_BRY) == 0xa48);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, DraggingSelectedRegionFlag) == 0xa4c);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentScriptBrushMask) == 0xa50);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentScriptBrushThingMask) == 0xa60);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentScriptBrushMask_TLX) == 0xa50);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentScriptBrushMask_TLY) == 0xa54);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentScriptBrushMask_BRX) == 0xa58);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentScriptBrushMask_BRY) == 0xa5c);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentScriptBrushThingMask_TLX) == 0xa60);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentScriptBrushThingMask_TLY) == 0xa64);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentScriptBrushThingMask_BRX) == 0xa68);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentScriptBrushThingMask_BRY) == 0xa6c);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, EditingScriptBrush) == 0xa70);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentScriptBrushName) == 0xa74);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentScriptBrushName_PStringData) == 0xa74);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, ScriptBrushThingsToDelete) == 0xa78);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, ScriptBrushThingsToAdd) == 0xa84);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, ScriptBrushThingsToMove) == 0xa90);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, TrackNodesMovedWhileEditingScriptBrush) == 0xaa0);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedQuestName) == 0xaac);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedQuestName_PStringData) == 0xaac);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, MoveSpeed) == 0xab0);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, WorldChangedSinceLoad) == 0xab4);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, SelectedPlayerNumber) == 0xab8);
@@ -323,16 +405,17 @@ FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, StickOnVertex) == 0xabc);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, ChangingSelectedScriptBrushFlag) == 0xabd);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, LinkingTracks) == 0xabe);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PreviousLinkTrackNode) == 0xac0);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentSelectedTrack) == 0xac4);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentSelectedTrack_PStringData) == 0xac4);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentTrackNumber) == 0xac8);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentScriptedMapBrushNumber) == 0xacc);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentLoadedWorldName) == 0xad0);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CurrentLoadedWorldName_PStringData) == 0xad0);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CarriedThingGroundOffset) == 0xad4);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, FrameBlinkLastTransitioned) == 0xad8);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, BlinkHighlightedItem) == 0xadc);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CameraGroundCollision) == 0xadd);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PEditRiver) == 0xae0);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PRiverControlPointBeingDragged) == 0xae4);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PEditRiver_ptr) == 0xae0);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PRiverControlPointBeingDragged_Data) == 0xae4);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PRiverControlPointBeingDragged_Info) == 0xae8);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, RiverBezierPointsList) == 0xaec);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, DraggingRiverGUIPoint) == 0xaf8);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PShapeManagerOwner) == 0xaf9);
@@ -343,7 +426,9 @@ FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, ShapeType) == 0xb28);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PreviewingSpline) == 0xb2c);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, CameraSplineIndex) == 0xb30);
 FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, EngineSurveyData) == 0xb34);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PEditTransactionManager) == 0xb64);
-FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PCompositeAction) == 0xb6c);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PEditTransactionManager_Data) == 0xb64);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PEditTransactionManager_Info) == 0xb68);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PCompositeAction_Data) == 0xb6c);
+FABLE_STATIC_ASSERT(offsetof(CEditControlCentre, PCompositeAction_Info) == 0xb70);
 
 #endif // FABLE_ENGINE_CEDITCONTROLCENTRE_H

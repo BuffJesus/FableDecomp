@@ -8,7 +8,9 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
 struct CInputManagerDX;
+struct CSurface;
 struct IDirectInputDevice8W;
 
 #pragma pack(push, 1)
@@ -3348,7 +3350,8 @@ struct CMouseDX {
     unsigned char         _pad_0x3410[0x4];                  // +0x3410
     float                 PositionX;                         // +0x3414 retail-only (CMouseDX_SetPos_00ab4700.cpp)
     float                 PositionY;                         // +0x3418 retail-only (CMouseDX_SetPos_00ab4700.cpp)
-    unsigned char         Pos[0x8];                          // +0x341c C2DVector
+    float                 Pos_X;                             // +0x341c C2DVector::X
+    float                 Pos_Y;                             // +0x3420 C2DVector::Y
     IDirectInputDevice8W* DMouse;                            // +0x3424
     CInputManagerDX*      InputManagerDX;                    // +0x3428
     bool                  Acquired;                          // +0x342c
@@ -3373,8 +3376,11 @@ struct CMouseDX {
     bool                  MMBOn;                             // +0x4851
     bool                  RMBOn;                             // +0x4852
     bool                  Filtering;                         // +0x4853
-    unsigned char         LastUpdateMovement[0xc];           // +0x4854 C3DVector
-    unsigned char         CursorGraphic[0x8];                // +0x4860 CCountedPointer<CSurface>
+    float                 LastUpdateMovement_X;              // +0x4854 C3DVector::X
+    float                 LastUpdateMovement_Y;              // +0x4858 C3DVector::Y
+    float                 LastUpdateMovement_Z;              // +0x485c C3DVector::Z
+    CSurface*             CursorGraphic_Data;                // +0x4860 CCountedPointer<CSurface>::Data
+    CCPPointerInfo*       CursorGraphic_Info;                // +0x4864 CCountedPointer<CSurface>::Info
 };
 #pragma pack(pop)
 
@@ -3382,7 +3388,8 @@ FABLE_STATIC_ASSERT(sizeof(CMouseDX) == 0x4868);
 FABLE_STATIC_ASSERT(offsetof(CMouseDX, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CMouseDX, PositionX) == 0x3414);
 FABLE_STATIC_ASSERT(offsetof(CMouseDX, PositionY) == 0x3418);
-FABLE_STATIC_ASSERT(offsetof(CMouseDX, Pos) == 0x341c);
+FABLE_STATIC_ASSERT(offsetof(CMouseDX, Pos_X) == 0x341c);
+FABLE_STATIC_ASSERT(offsetof(CMouseDX, Pos_Y) == 0x3420);
 FABLE_STATIC_ASSERT(offsetof(CMouseDX, DMouse) == 0x3424);
 FABLE_STATIC_ASSERT(offsetof(CMouseDX, InputManagerDX) == 0x3428);
 FABLE_STATIC_ASSERT(offsetof(CMouseDX, Acquired) == 0x342c);
@@ -3405,7 +3412,10 @@ FABLE_STATIC_ASSERT(offsetof(CMouseDX, LMBOn) == 0x4850);
 FABLE_STATIC_ASSERT(offsetof(CMouseDX, MMBOn) == 0x4851);
 FABLE_STATIC_ASSERT(offsetof(CMouseDX, RMBOn) == 0x4852);
 FABLE_STATIC_ASSERT(offsetof(CMouseDX, Filtering) == 0x4853);
-FABLE_STATIC_ASSERT(offsetof(CMouseDX, LastUpdateMovement) == 0x4854);
-FABLE_STATIC_ASSERT(offsetof(CMouseDX, CursorGraphic) == 0x4860);
+FABLE_STATIC_ASSERT(offsetof(CMouseDX, LastUpdateMovement_X) == 0x4854);
+FABLE_STATIC_ASSERT(offsetof(CMouseDX, LastUpdateMovement_Y) == 0x4858);
+FABLE_STATIC_ASSERT(offsetof(CMouseDX, LastUpdateMovement_Z) == 0x485c);
+FABLE_STATIC_ASSERT(offsetof(CMouseDX, CursorGraphic_Data) == 0x4860);
+FABLE_STATIC_ASSERT(offsetof(CMouseDX, CursorGraphic_Info) == 0x4864);
 
 #endif // FABLE_ENGINE_CMOUSEDX_H

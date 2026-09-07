@@ -27,7 +27,11 @@ struct CAppearanceDef {
     bool          OverrideLightingChannel;                   // +0x5a
     unsigned char _pad_0x5b[0x1];                            // +0x5b
     unsigned char LightingChannel[0x4];                      // +0x5c ELightingChannel
-    unsigned char FadeOutWhenCloseGraphic[0xe];              // +0x60 CEngineGraphic
+    unsigned long FadeOutWhenCloseGraphic_BankIndex;         // +0x60 CEngineGraphic::BankIndex
+    float         FadeOutWhenCloseGraphic_AnimStep;          // +0x64 CEngineGraphic::AnimStep
+    float         FadeOutWhenCloseGraphic_RenderSizeX;       // +0x68 CEngineGraphic::RenderSizeX
+    bool          FadeOutWhenCloseGraphic_AdditiveAlpha;     // +0x6c CEngineGraphic::AdditiveAlpha
+    unsigned char FadeOutWhenCloseGraphic_Type;              // +0x6d CEngineGraphic::Type
     bool          HasFadeOutWhenCloseGraphic;                // +0x6e
     unsigned char _pad_0x6f[0x1];                            // +0x6f
     float         FadeOutGraphicRenderFadeDistance;          // +0x70
@@ -44,7 +48,11 @@ FABLE_STATIC_ASSERT(offsetof(CAppearanceDef, OutlineEffectAlphaRef) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CAppearanceDef, OutlineEffectAlphaBias) == 0x59);
 FABLE_STATIC_ASSERT(offsetof(CAppearanceDef, OverrideLightingChannel) == 0x5a);
 FABLE_STATIC_ASSERT(offsetof(CAppearanceDef, LightingChannel) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CAppearanceDef, FadeOutWhenCloseGraphic) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CAppearanceDef, FadeOutWhenCloseGraphic_BankIndex) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CAppearanceDef, FadeOutWhenCloseGraphic_AnimStep) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CAppearanceDef, FadeOutWhenCloseGraphic_RenderSizeX) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CAppearanceDef, FadeOutWhenCloseGraphic_AdditiveAlpha) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CAppearanceDef, FadeOutWhenCloseGraphic_Type) == 0x6d);
 FABLE_STATIC_ASSERT(offsetof(CAppearanceDef, HasFadeOutWhenCloseGraphic) == 0x6e);
 FABLE_STATIC_ASSERT(offsetof(CAppearanceDef, FadeOutGraphicRenderFadeDistance) == 0x70);
 FABLE_STATIC_ASSERT(offsetof(CAppearanceDef, FadeOutGraphicNearRenderFadeDistance) == 0x74);

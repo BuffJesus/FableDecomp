@@ -13,14 +13,15 @@ struct CTexture;
 #pragma pack(push, 1)
 struct CStaticFontBank {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned int  m_maxHeight;                               // +0x04 retail-only (CStaticFontBank_GetFontMaxHeight_00ab7a50.cpp)
+    long          m_maxHeight;                               // +0x04 retail-only (previous header)
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
     unsigned long MaxHeight;                                 // +0x10
     long          Weight;                                    // +0x14
     bool          Italics;                                   // +0x18
     unsigned char _pad_0x19[0x3];                            // +0x19
-    unsigned char TextureSize[0x8];                          // +0x1c C2DExtentsI
+    long          TextureSize_X;                             // +0x1c C2DExtentsI::X
+    long          TextureSize_Y;                             // +0x20 C2DExtentsI::Y
     long          MinChar;                                   // +0x24
     long          MaxChar;                                   // +0x28
     long          TotalNoGlyphs;                             // +0x2c
@@ -35,7 +36,8 @@ FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, m_maxHeight) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, MaxHeight) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, Weight) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, Italics) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, TextureSize) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, TextureSize_X) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, TextureSize_Y) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, MinChar) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, MaxChar) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, TotalNoGlyphs) == 0x2c);

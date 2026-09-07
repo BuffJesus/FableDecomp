@@ -14,7 +14,9 @@ struct CTCBoastingPosition {
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char PBoastingPodium[0x8];                      // +0x0c CIntelligentPointer<CThing>
-    unsigned char OrbPosition[0xc];                          // +0x14 C3DVector
+    float         OrbPosition_X;                             // +0x14 C3DVector::X
+    float         OrbPosition_Y;                             // +0x18 C3DVector::Y
+    float         OrbPosition_Z;                             // +0x1c C3DVector::Z
     bool          PositionActivated;                         // +0x20
     unsigned char _pad_0x21[0x3];                            // +0x21
     long          BoastIndex;                                // +0x24
@@ -28,7 +30,9 @@ struct CTCBoastingPosition {
 FABLE_STATIC_ASSERT(sizeof(CTCBoastingPosition) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CTCBoastingPosition, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CTCBoastingPosition, PBoastingPodium) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCBoastingPosition, OrbPosition) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CTCBoastingPosition, OrbPosition_X) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CTCBoastingPosition, OrbPosition_Y) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CTCBoastingPosition, OrbPosition_Z) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CTCBoastingPosition, PositionActivated) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CTCBoastingPosition, BoastIndex) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CTCBoastingPosition, Cost) == 0x28);

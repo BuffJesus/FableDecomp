@@ -27,7 +27,7 @@ struct COpinionDeedReactionDef {
     unsigned char _pad_0x38[0x4];                            // +0x38
     unsigned char _pad_0x3c[0x4];                            // +0x3c
     unsigned char Attitudes[0x10];                           // +0x40 vector<EOpinionAttitudeType,std::allocator<EOpinionAttitudeType>_>
-    unsigned char Animation[0x4];                            // +0x50 CDefString
+    long          Animation_TablePos;                        // +0x50 CDefString::TablePos
     unsigned long DialogueTag;                               // +0x54
 };
 #pragma pack(pop)
@@ -35,7 +35,7 @@ struct COpinionDeedReactionDef {
 FABLE_STATIC_ASSERT(sizeof(COpinionDeedReactionDef) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(COpinionDeedReactionDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(COpinionDeedReactionDef, Attitudes) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(COpinionDeedReactionDef, Animation) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(COpinionDeedReactionDef, Animation_TablePos) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(COpinionDeedReactionDef, DialogueTag) == 0x54);
 
 #endif // FABLE_ENGINE_COPINIONDEEDREACTIONDEF_H

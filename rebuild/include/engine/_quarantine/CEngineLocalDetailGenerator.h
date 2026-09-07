@@ -20,7 +20,9 @@ struct CEngineLocalDetailGenerator {
     unsigned char       Themes[0x10];                        // +0x20 CArray<CLocalDetailGeneratorTheme_*>
     unsigned char       CacheFadeGroups[0x10];               // +0x30 CArray<NLocalDetailCache::CCacheGroup>
     unsigned char       PlacementGrids[0x10];                // +0x40 CArray<CIVCountedPointer<CLocalDetailPlacementGrid>_>
-    unsigned char       OldCameraPos[0xc];                   // +0x50 C3DVector
+    float               OldCameraPos_X;                      // +0x50 C3DVector::X
+    float               OldCameraPos_Y;                      // +0x54 C3DVector::Y
+    float               OldCameraPos_Z;                      // +0x58 C3DVector::Z
     bool                ZSpriteGenerationEnabled;            // +0x5c
     unsigned char       _pad_0x5d[0x3];                      // +0x5d
     long                StippleAlphaMeshBias;                // +0x60
@@ -41,7 +43,9 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLocalDetailGenerator, DisplacementTable) == 
 FABLE_STATIC_ASSERT(offsetof(CEngineLocalDetailGenerator, Themes) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CEngineLocalDetailGenerator, CacheFadeGroups) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CEngineLocalDetailGenerator, PlacementGrids) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CEngineLocalDetailGenerator, OldCameraPos) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CEngineLocalDetailGenerator, OldCameraPos_X) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CEngineLocalDetailGenerator, OldCameraPos_Y) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CEngineLocalDetailGenerator, OldCameraPos_Z) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CEngineLocalDetailGenerator, ZSpriteGenerationEnabled) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CEngineLocalDetailGenerator, StippleAlphaMeshBias) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CEngineLocalDetailGenerator, RepeatedMeshBatchSize) == 0x64);

@@ -8,17 +8,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CEnginePrimitiveManagerSpriteTrails;
+
 #pragma pack(push, 1)
 struct CEnginePrimitiveManagerParticleSpriteTrailGroup {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char VertexShadersSpriteTrailPointLights[0x10]; // +0x0c CArray<CVertexShader>
-    unsigned char VertexShaderDisplacement[0x8];             // +0x1c CVertexShader
-    unsigned char PixelShader[0x8];                          // +0x24 CPixelShader
-    unsigned char PixelShaderStipple[0x8];                   // +0x2c CPixelShader
-    unsigned char PixelShaderDisplacement[0x8];              // +0x34 CPixelShader
-    unsigned char PTrailManager[0x8];                        // +0x3c CCountedPointer<CEnginePrimitiveManagerSpriteTrails>
+    void*                                __vftable;          // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char                        _pad_0x04[0x4];     // +0x04
+    unsigned char                        _pad_0x08[0x4];     // +0x08
+    unsigned char                        VertexShadersSpriteTrailPointLights[0x10]; // +0x0c CArray<CVertexShader>
+    unsigned char                        VertexShaderDisplacement[0x8]; // +0x1c CVertexShader
+    unsigned char                        PixelShader[0x8];   // +0x24 CPixelShader
+    unsigned char                        PixelShaderStipple[0x8]; // +0x2c CPixelShader
+    unsigned char                        PixelShaderDisplacement[0x8]; // +0x34 CPixelShader
+    CEnginePrimitiveManagerSpriteTrails* PTrailManager_Data; // +0x3c CCountedPointer<CEnginePrimitiveManagerSpriteTrails>::Data
+    CCPPointerInfo*                      PTrailManager_Info; // +0x40 CCountedPointer<CEnginePrimitiveManagerSpriteTrails>::Info
 };
 #pragma pack(pop)
 
@@ -29,6 +33,7 @@ FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, Ve
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PixelShader) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PixelShaderStipple) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PixelShaderDisplacement) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PTrailManager) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PTrailManager_Data) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteTrailGroup, PTrailManager_Info) == 0x40);
 
 #endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGERPARTICLESPRITETRAILGROUP_H

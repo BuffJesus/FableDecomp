@@ -32,8 +32,8 @@ struct CEngineInternalPrimitiveStaticMesh {
     unsigned char _pad_0x4c[0x4];                            // +0x4c
     unsigned char _pad_0x50[0x4];                            // +0x50
     unsigned char _pad_0x54[0x4];                            // +0x54
-    int           field58;                                   // +0x58 retail-only (CEngineInternalPrimitiveStaticMesh_SetPosition_00b9cfa0.cpp)
-    char          sub;                                       // +0x5c retail-only (CEngineInternalPrimitiveStaticMesh_SetPosition_00b9cfa0.cpp)
+    long          field58;                                   // +0x58 retail-only (previous header)
+    unsigned char sub;                                       // +0x5c retail-only (previous header)
     unsigned char _pad_0x5d[0x3];                            // +0x5d
     unsigned char _pad_0x60[0x4];                            // +0x60
     unsigned char _pad_0x64[0x4];                            // +0x64

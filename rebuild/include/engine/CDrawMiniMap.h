@@ -13,8 +13,8 @@ struct CDrawMiniMap {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
-    void*         f_c;                                       // +0x0c retail-only (CDrawMiniMap_SetRegion_0064dfde.cpp)
-    long          disp;                                      // +0x10 retail-only (CDrawMiniMap_SetRegion_0064dfde.cpp)
+    long          f_c;                                       // +0x0c retail-only (previous header)
+    long          disp;                                      // +0x10 retail-only (previous header)
     unsigned char _pad_0x14[0x4];                            // +0x14
     unsigned char _pad_0x18[0x4];                            // +0x18
     unsigned char _pad_0x1c[0x4];                            // +0x1c
@@ -28,7 +28,10 @@ struct CDrawMiniMap {
     bool          RegionChange;                              // +0x10b
     unsigned char Alpha;                                     // +0x10c
     unsigned char _pad_0x10d[0x3];                           // +0x10d
-    unsigned char ScreenBox[0x10];                           // +0x110 C2DBoxF
+    float         ScreenBox_TLX;                             // +0x110 C2DBoxF::TLX
+    float         ScreenBox_TLY;                             // +0x114 C2DBoxF::TLY
+    float         ScreenBox_BRX;                             // +0x118 C2DBoxF::BRX
+    float         ScreenBox_BRY;                             // +0x11c C2DBoxF::BRY
     unsigned char FadeInOut[0x1c];                           // +0x120 CFadeInFadeOutBase
     unsigned char TextFadeInOut[0x1c];                       // +0x13c CFadeInFadeOutBase
     unsigned char ScreenPosFadeInOut[0x1c];                  // +0x158 CFadeInFadeOutBase
@@ -46,7 +49,10 @@ FABLE_STATIC_ASSERT(offsetof(CDrawMiniMap, Active) == 0x109);
 FABLE_STATIC_ASSERT(offsetof(CDrawMiniMap, OldActive) == 0x10a);
 FABLE_STATIC_ASSERT(offsetof(CDrawMiniMap, RegionChange) == 0x10b);
 FABLE_STATIC_ASSERT(offsetof(CDrawMiniMap, Alpha) == 0x10c);
-FABLE_STATIC_ASSERT(offsetof(CDrawMiniMap, ScreenBox) == 0x110);
+FABLE_STATIC_ASSERT(offsetof(CDrawMiniMap, ScreenBox_TLX) == 0x110);
+FABLE_STATIC_ASSERT(offsetof(CDrawMiniMap, ScreenBox_TLY) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CDrawMiniMap, ScreenBox_BRX) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CDrawMiniMap, ScreenBox_BRY) == 0x11c);
 FABLE_STATIC_ASSERT(offsetof(CDrawMiniMap, FadeInOut) == 0x120);
 FABLE_STATIC_ASSERT(offsetof(CDrawMiniMap, TextFadeInOut) == 0x13c);
 FABLE_STATIC_ASSERT(offsetof(CDrawMiniMap, ScreenPosFadeInOut) == 0x158);

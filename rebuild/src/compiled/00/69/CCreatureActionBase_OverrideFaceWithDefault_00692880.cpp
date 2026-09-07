@@ -1,3 +1,3 @@
-struct Sub; extern unsigned int __fastcall probe(Sub*);
-struct S { char pad[0x74]; Sub* f74; };
-bool __fastcall OverrideFaceWithDefault(S* self){ return (probe(self->f74) >> 4) & 1; }
+#include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAnimationEntry; extern unsigned int __fastcall probe(CAnimationEntry*);
+bool __fastcall OverrideFaceWithDefault(CCreatureActionBase* self){ return (probe(self->PAnimEntry_Data) >> 4) & 1; }

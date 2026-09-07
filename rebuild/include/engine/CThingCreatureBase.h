@@ -8,7 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CCreatureActionBase;
+struct CCreatureInteraction;
+struct CDefPointeeBase;
 struct CTCCreatureModeManager;
+struct CThingBodyReorienter;
 
 #pragma pack(push, 1)
 struct CThingCreatureBase {
@@ -36,8 +41,8 @@ struct CThingCreatureBase {
     unsigned char           _pad_0x54[0x4];                  // +0x54
     unsigned char           _pad_0x58[0x4];                  // +0x58
     unsigned char           _pad_0x5c[0x4];                  // +0x5c
-    void*                   q;                               // +0x60 retail-only (CThingCreatureBase_GetCombatRadius_00661f90.cpp)
-    void*                   p;                               // +0x64 retail-only (CThingCreatureBase_GetCombatRadius_00661f90.cpp)
+    long                    q;                               // +0x60 retail-only (previous header)
+    long                    p;                               // +0x64 retail-only (previous header)
     unsigned char           _pad_0x68[0x4];                  // +0x68
     unsigned char           _pad_0x6c[0x4];                  // +0x6c
     unsigned char           _pad_0x70[0x4];                  // +0x70
@@ -68,26 +73,34 @@ struct CThingCreatureBase {
     unsigned char           _pad_0xd4[0x4];                  // +0xd4
     unsigned char           _pad_0xd8[0x4];                  // +0xd8
     unsigned char           _pad_0xdc[0x4];                  // +0xdc
-    void*                   data;                            // +0xe0 retail-only (CThingCreatureBase_IsChild_00661f70.cpp)
+    long                    data;                            // +0xe0 retail-only (previous header)
     unsigned char           _pad_0xe4[0x4];                  // +0xe4
     unsigned long           LastMessageEventICreatedID;      // +0xe8
     unsigned char           CombatCollisionDebugGraphics[0x10]; // +0xec vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
-    unsigned char           PDef[0x4];                       // +0xfc CDefPointer<CThingCreatureDef_const_>
+    CDefPointeeBase*        PDef_Object;                     // +0xfc CDefPointer<CThingCreatureDef_const_>::Object
     long                    ShotAccuracyPercentage;          // +0x100
-    unsigned char           InitialPos[0xc];                 // +0x104 C3DVector
+    float                   InitialPos_X;                    // +0x104 C3DVector::X
+    float                   InitialPos_Y;                    // +0x108 C3DVector::Y
+    float                   InitialPos_Z;                    // +0x10c C3DVector::Z
     unsigned char           PLastAttackedByCreature[0x8];    // +0x110 CIntelligentPointer<CThingCreatureBase>
     unsigned long           WFLastAttackedByCreature;        // +0x118
-    unsigned char           PCurrentAction[0x8];             // +0x11c CCountedPointer<CCreatureActionBase>
+    CCreatureActionBase*    PCurrentAction_Data;             // +0x11c CCountedPointer<CCreatureActionBase>::Data
+    CCPPointerInfo*         PCurrentAction_Info;             // +0x120 CCountedPointer<CCreatureActionBase>::Info
     unsigned char           PQueuedActions[0xc];             // +0x124 list<CCountedPointer<CCreatureActionBase>,std::allocator<CCountedPointer<CCreatureActionBase>_>_>
-    unsigned char           MovementVector[0xc];             // +0x130 C3DVector
-    unsigned char           HeadPosOffset[0xc];              // +0x13c C3DVector
+    float                   MovementVector_X;                // +0x130 C3DVector::X
+    float                   MovementVector_Y;                // +0x134 C3DVector::Y
+    float                   MovementVector_Z;                // +0x138 C3DVector::Z
+    float                   HeadPosOffset_X;                 // +0x13c C3DVector::X
+    float                   HeadPosOffset_Y;                 // +0x140 C3DVector::Y
+    float                   HeadPosOffset_Z;                 // +0x144 C3DVector::Z
     long                    IdleCounter;                     // +0x148
     float                   TurnSpeed;                       // +0x14c
-    unsigned char           PCreatureInteraction[0x8];       // +0x150 CCountedPointer<CCreatureInteraction>
+    CCreatureInteraction*   PCreatureInteraction_Data;       // +0x150 CCountedPointer<CCreatureInteraction>::Data
+    CCPPointerInfo*         PCreatureInteraction_Info;       // +0x154 CCountedPointer<CCreatureInteraction>::Info
     CTCCreatureModeManager* PTCModeManager;                  // +0x158
     unsigned char           PreviousActionHandedness[0x4];   // +0x15c ECombatAnimationHandedness
     long                    PreviousActionHandednessWF;      // +0x160
-    unsigned char           BodyReorienter[0x4];             // +0x164 scoped_ptr<CThingBodyReorienter>
+    CThingBodyReorienter*   BodyReorienter_ptr;              // +0x164 scoped_ptr<CThingBodyReorienter>::ptr
     unsigned char           CombatDebugGraphics[0x10];       // +0x168 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
     unsigned char           PItemToUnsheatheAfterCutscene[0x8]; // +0x178 CIntelligentPointer<CThing>
     void*                   DebugText;                       // +0x180 char *
@@ -104,22 +117,30 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, p) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, data) == 0xe0);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, LastMessageEventICreatedID) == 0xe8);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, CombatCollisionDebugGraphics) == 0xec);
-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PDef) == 0xfc);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PDef_Object) == 0xfc);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, ShotAccuracyPercentage) == 0x100);
-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, InitialPos) == 0x104);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, InitialPos_X) == 0x104);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, InitialPos_Y) == 0x108);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, InitialPos_Z) == 0x10c);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PLastAttackedByCreature) == 0x110);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, WFLastAttackedByCreature) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PCurrentAction) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PCurrentAction_Data) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PCurrentAction_Info) == 0x120);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PQueuedActions) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, MovementVector) == 0x130);
-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, HeadPosOffset) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, MovementVector_X) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, MovementVector_Y) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, MovementVector_Z) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, HeadPosOffset_X) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, HeadPosOffset_Y) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, HeadPosOffset_Z) == 0x144);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, IdleCounter) == 0x148);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, TurnSpeed) == 0x14c);
-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PCreatureInteraction) == 0x150);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PCreatureInteraction_Data) == 0x150);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PCreatureInteraction_Info) == 0x154);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PTCModeManager) == 0x158);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PreviousActionHandedness) == 0x15c);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PreviousActionHandednessWF) == 0x160);
-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, BodyReorienter) == 0x164);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, BodyReorienter_ptr) == 0x164);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, CombatDebugGraphics) == 0x168);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, PItemToUnsheatheAfterCutscene) == 0x178);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, DebugText) == 0x180);

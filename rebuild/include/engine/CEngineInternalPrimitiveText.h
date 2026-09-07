@@ -9,44 +9,49 @@
 #include "rebuild_abi.h"
 
 struct CFontBank;
+struct CWideStringData;
 
 #pragma pack(push, 1)
 struct CEngineInternalPrimitiveText {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char _pad_0x28[0x4];                            // +0x28
-    unsigned char _pad_0x2c[0x4];                            // +0x2c
-    unsigned char _pad_0x30[0x4];                            // +0x30
-    unsigned char _pad_0x34[0x4];                            // +0x34
-    unsigned char _pad_0x38[0x4];                            // +0x38
-    unsigned char _pad_0x3c[0x4];                            // +0x3c
-    unsigned char _pad_0x40[0x4];                            // +0x40
-    unsigned char _pad_0x44[0x4];                            // +0x44
-    unsigned char Pos[0xc];                                  // +0x48 C3DVector
-    float         Scale;                                     // +0x54
-    unsigned char Colour[0x4];                               // +0x58 CRGBColour
-    bool          ScaleIn3D;                                 // +0x5c
-    unsigned char _pad_0x5d[0x3];                            // +0x5d
-    unsigned char Text[0x4];                                 // +0x60 CWideString
-    CFontBank*    Font;                                      // +0x64
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned char    _pad_0x28[0x4];                         // +0x28
+    unsigned char    _pad_0x2c[0x4];                         // +0x2c
+    unsigned char    _pad_0x30[0x4];                         // +0x30
+    unsigned char    _pad_0x34[0x4];                         // +0x34
+    unsigned char    _pad_0x38[0x4];                         // +0x38
+    unsigned char    _pad_0x3c[0x4];                         // +0x3c
+    unsigned char    _pad_0x40[0x4];                         // +0x40
+    unsigned char    _pad_0x44[0x4];                         // +0x44
+    float            Pos_X;                                  // +0x48 C3DVector::X
+    float            Pos_Y;                                  // +0x4c C3DVector::Y
+    float            Pos_Z;                                  // +0x50 C3DVector::Z
+    float            Scale;                                  // +0x54
+    unsigned char    Colour[0x4];                            // +0x58 CRGBColour
+    bool             ScaleIn3D;                              // +0x5c
+    unsigned char    _pad_0x5d[0x3];                         // +0x5d
+    CWideStringData* Text_PStringData;                       // +0x60 CWideString::PStringData
+    CFontBank*       Font;                                   // +0x64
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveText) == 0x68);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveText, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveText, Pos) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveText, Pos_X) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveText, Pos_Y) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveText, Pos_Z) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveText, Scale) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveText, Colour) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveText, ScaleIn3D) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveText, Text) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveText, Text_PStringData) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveText, Font) == 0x64);
 
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVETEXT_H

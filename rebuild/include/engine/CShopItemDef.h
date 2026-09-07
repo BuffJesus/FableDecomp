@@ -21,13 +21,25 @@ struct CShopItemDef {
     unsigned char _pad_0x20[0x4];                            // +0x20
     unsigned char _pad_0x24[0x4];                            // +0x24
     long          Type;                                      // +0x28
-    unsigned char Item[0x1c];                                // +0x2c CShopItem
+    float         Item_Quantity;                             // +0x2c CShopItem::Quantity
+    float         Item_PriceMultiplier;                      // +0x30 CShopItem::PriceMultiplier
+    float         Item_MaxStock;                             // +0x34 CShopItem::MaxStock
+    long          Item_RestockPeriod;                        // +0x38 CShopItem::RestockPeriod
+    float         Item_RestockPeriodRandomness;              // +0x3c CShopItem::RestockPeriodRandomness
+    float         Item_SalesPerDay;                          // +0x40 CShopItem::SalesPerDay
+    float         Item_SalesPerDayRandomness;                // +0x44 CShopItem::SalesPerDayRandomness
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CShopItemDef) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CShopItemDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CShopItemDef, Type) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CShopItemDef, Item) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CShopItemDef, Item_Quantity) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CShopItemDef, Item_PriceMultiplier) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CShopItemDef, Item_MaxStock) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CShopItemDef, Item_RestockPeriod) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CShopItemDef, Item_RestockPeriodRandomness) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CShopItemDef, Item_SalesPerDay) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CShopItemDef, Item_SalesPerDayRandomness) == 0x44);
 
 #endif // FABLE_ENGINE_CSHOPITEMDEF_H

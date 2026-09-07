@@ -13,8 +13,8 @@ struct CGuiControlNumber;
 #pragma pack(push, 1)
 struct CGuiVarTransferFloat {
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
-    int                f4;                                   // +0x04 retail-only (CGuiVarTransferFloat_TransferFromGui_00c3ca30.cpp)
-    void*              f8;                                   // +0x08 retail-only (CGuiVarTransferFloat_TransferFromGui_00c3ca30.cpp)
+    long               f4;                                   // +0x04 retail-only (previous header)
+    long               f8;                                   // +0x08 retail-only (previous header)
     CGuiControlNumber* PControl;                             // +0x0c
     float              Step;                                 // +0x10
     float              Min;                                  // +0x14

@@ -1,3 +1,6 @@
-struct S; extern int __fastcall sub(void* p);
-struct S { char pad[0x74]; void* f74; char M(); };
-char S::M(){ unsigned int r=(unsigned int)sub(this->f74); return (char)((~(r>>3))&1); }
+#include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CCreatureActionBase; extern int __fastcall sub(void* p);
+struct CCreatureActionBase_Methods : CCreatureActionBase {
+    char M();
+};
+char CCreatureActionBase_Methods::M(){ unsigned int r=(unsigned int)sub(this->PAnimEntry_Data); return (char)((~(r>>3))&1); }

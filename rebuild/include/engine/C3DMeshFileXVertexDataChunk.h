@@ -18,7 +18,14 @@ struct C3DMeshFileXVertexDataChunk {
     unsigned long VertexCount;                               // +0x14
     unsigned long VertexSize;                                // +0x18
     unsigned long InitFlags;                                 // +0x1c
-    unsigned char VBCParams[0x20];                           // +0x20 CVertexCompressionParams
+    float         VBCParams_PosScaleX;                       // +0x20 CVertexCompressionParams::PosScaleX
+    float         VBCParams_PosScaleY;                       // +0x24 CVertexCompressionParams::PosScaleY
+    float         VBCParams_PosScaleZ;                       // +0x28 CVertexCompressionParams::PosScaleZ
+    float         VBCParams_PosScaleW;                       // +0x2c CVertexCompressionParams::PosScaleW
+    float         VBCParams_PosBiasX;                        // +0x30 CVertexCompressionParams::PosBiasX
+    float         VBCParams_PosBiasY;                        // +0x34 CVertexCompressionParams::PosBiasY
+    float         VBCParams_PosBiasZ;                        // +0x38 CVertexCompressionParams::PosBiasZ
+    float         VBCParams_PosBiasW;                        // +0x3c CVertexCompressionParams::PosBiasW
     unsigned char VertexData[0x10];                          // +0x40 CArray<char>
 };
 #pragma pack(pop)
@@ -29,7 +36,14 @@ FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, FormatID) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VertexCount) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VertexSize) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, InitFlags) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosScaleX) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosScaleY) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosScaleZ) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosScaleW) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosBiasX) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosBiasY) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosBiasZ) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VBCParams_PosBiasW) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileXVertexDataChunk, VertexData) == 0x40);
 
 #endif // FABLE_ENGINE_C3DMESHFILEXVERTEXDATACHUNK_H

@@ -85,16 +85,24 @@ struct CCombatAction_KickThingOnGround {
     unsigned char _pad_0x120[0x4];                           // +0x120
     unsigned char _pad_0x124[0x4];                           // +0x124
     unsigned char _pad_0x128[0x4];                           // +0x128
-    unsigned char MoveToPos[0xc];                            // +0x12c C3DVector
-    unsigned char Movement[0xc];                             // +0x138 C3DVector
+    float         MoveToPos_X;                               // +0x12c C3DVector::X
+    float         MoveToPos_Y;                               // +0x130 C3DVector::Y
+    float         MoveToPos_Z;                               // +0x134 C3DVector::Z
+    float         Movement_X;                                // +0x138 C3DVector::X
+    float         Movement_Y;                                // +0x13c C3DVector::Y
+    float         Movement_Z;                                // +0x140 C3DVector::Z
     float         MaxRunningSpeed;                           // +0x144
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCombatAction_KickThingOnGround) == 0x148);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, MoveToPos) == 0x12c);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, Movement) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, MoveToPos_X) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, MoveToPos_Y) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, MoveToPos_Z) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, Movement_X) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, Movement_Y) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, Movement_Z) == 0x140);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, MaxRunningSpeed) == 0x144);
 
 #endif // FABLE_ENGINE_CCOMBATACTION_KICKTHINGONGROUND_H

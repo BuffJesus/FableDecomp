@@ -8,32 +8,34 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct C3DMeshFileSubMeshChunk {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char _pad_0x28[0x4];                            // +0x28
-    unsigned char _pad_0x2c[0x4];                            // +0x2c
-    unsigned char _pad_0x30[0x4];                            // +0x30
-    unsigned char Name[0x4];                                 // +0x34 CCharString
-    long          SubMeshIndex;                              // +0x38
-    long          ParentIndex;                               // +0x3c
-    long          FirstChildIndex;                           // +0x40
-    long          NextSiblingIndex;                          // +0x44
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned char    _pad_0x28[0x4];                         // +0x28
+    unsigned char    _pad_0x2c[0x4];                         // +0x2c
+    unsigned char    _pad_0x30[0x4];                         // +0x30
+    CCharStringData* Name_PStringData;                       // +0x34 CCharString::PStringData
+    long             SubMeshIndex;                           // +0x38
+    long             ParentIndex;                            // +0x3c
+    long             FirstChildIndex;                        // +0x40
+    long             NextSiblingIndex;                       // +0x44
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(C3DMeshFileSubMeshChunk) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileSubMeshChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileSubMeshChunk, Name) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileSubMeshChunk, Name_PStringData) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileSubMeshChunk, SubMeshIndex) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileSubMeshChunk, ParentIndex) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileSubMeshChunk, FirstChildIndex) == 0x40);

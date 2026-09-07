@@ -8,16 +8,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
 struct CTCInventoryBase;
 
 #pragma pack(push, 1)
 struct CTCInventoryItem {
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
-    int               slot;                                  // +0x04 retail-only (CTCInventoryItem_RemoveFromInventory_005d8e20.cpp)
-    int               field8;                                // +0x08 retail-only (CTCInventoryItem_RemoveFromInventory_005d8e20.cpp)
-    unsigned char     PDef[0x4];                             // +0x0c CDefPointer<CInventoryItemDef_const_>
+    long              slot;                                  // +0x04 retail-only (previous header)
+    long              field8;                                // +0x08 retail-only (previous header)
+    CDefPointeeBase*  PDef_Object;                           // +0x0c CDefPointer<CInventoryItemDef_const_>::Object
     CTCInventoryBase* PInventory;                            // +0x10
-    long              call;                                  // +0x14 retail-only (CTCInventoryItem_RemoveFromInventory_005d8e20.cpp)
+    long              call;                                  // +0x14 retail-only (previous header)
     unsigned __int64  InventoryUIDToAttachTo;                // +0x18
     bool              DefaultItem;                           // +0x20
     unsigned char     _pad_0x21[0x7];                        // +0x21
@@ -28,7 +29,7 @@ FABLE_STATIC_ASSERT(sizeof(CTCInventoryItem) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, slot) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, field8) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, PDef) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, PDef_Object) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, PInventory) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, call) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, InventoryUIDToAttachTo) == 0x18);

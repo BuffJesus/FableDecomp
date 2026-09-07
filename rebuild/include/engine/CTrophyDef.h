@@ -8,35 +8,37 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CTrophyDef {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    float         MinigameInitialTimerSecs;                  // +0x28
-    float         TimeBonusPerWitness;                       // +0x2c
-    long          RenownGainedPerWitnessAhead;               // +0x30
-    bool          EvilTrophy;                                // +0x34
-    bool          FakeTrophy;                                // +0x35
-    unsigned char _pad_0x36[0x2];                            // +0x36
-    long          EmoteIconForAvailableWitness;              // +0x38
-    unsigned char ShowTrophyAnimName[0x4];                   // +0x3c CDefString
-    float         GameDebugTextScale;                        // +0x40
-    float         SecsDelayPerGainedWitnessSound;            // +0x44
-    unsigned char SoundStartGame[0x4];                       // +0x48 CCharString
-    unsigned char SoundShowTrophy[0x4];                      // +0x4c CCharString
-    unsigned char SoundGainedWitness[0x4];                   // +0x50 CCharString
-    unsigned char SoundOutOfTime[0x4];                       // +0x54 CCharString
-    unsigned char SoundGotAllWitnesses[0x4];                 // +0x58 CCharString
-    unsigned char SoundEndNewHighScore[0x4];                 // +0x5c CCharString
-    unsigned char SoundEndNoNewScore[0x4];                   // +0x60 CCharString
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    float            MinigameInitialTimerSecs;               // +0x28
+    float            TimeBonusPerWitness;                    // +0x2c
+    long             RenownGainedPerWitnessAhead;            // +0x30
+    bool             EvilTrophy;                             // +0x34
+    bool             FakeTrophy;                             // +0x35
+    unsigned char    _pad_0x36[0x2];                         // +0x36
+    long             EmoteIconForAvailableWitness;           // +0x38
+    long             ShowTrophyAnimName_TablePos;            // +0x3c CDefString::TablePos
+    float            GameDebugTextScale;                     // +0x40
+    float            SecsDelayPerGainedWitnessSound;         // +0x44
+    CCharStringData* SoundStartGame_PStringData;             // +0x48 CCharString::PStringData
+    CCharStringData* SoundShowTrophy_PStringData;            // +0x4c CCharString::PStringData
+    CCharStringData* SoundGainedWitness_PStringData;         // +0x50 CCharString::PStringData
+    CCharStringData* SoundOutOfTime_PStringData;             // +0x54 CCharString::PStringData
+    CCharStringData* SoundGotAllWitnesses_PStringData;       // +0x58 CCharString::PStringData
+    CCharStringData* SoundEndNewHighScore_PStringData;       // +0x5c CCharString::PStringData
+    CCharStringData* SoundEndNoNewScore_PStringData;         // +0x60 CCharString::PStringData
 };
 #pragma pack(pop)
 
@@ -48,15 +50,15 @@ FABLE_STATIC_ASSERT(offsetof(CTrophyDef, RenownGainedPerWitnessAhead) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CTrophyDef, EvilTrophy) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CTrophyDef, FakeTrophy) == 0x35);
 FABLE_STATIC_ASSERT(offsetof(CTrophyDef, EmoteIconForAvailableWitness) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CTrophyDef, ShowTrophyAnimName) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CTrophyDef, ShowTrophyAnimName_TablePos) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CTrophyDef, GameDebugTextScale) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SecsDelayPerGainedWitnessSound) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundStartGame) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundShowTrophy) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundGainedWitness) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundOutOfTime) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundGotAllWitnesses) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundEndNewHighScore) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundEndNoNewScore) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundStartGame_PStringData) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundShowTrophy_PStringData) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundGainedWitness_PStringData) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundOutOfTime_PStringData) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundGotAllWitnesses_PStringData) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundEndNewHighScore_PStringData) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundEndNoNewScore_PStringData) == 0x60);
 
 #endif // FABLE_ENGINE_CTROPHYDEF_H

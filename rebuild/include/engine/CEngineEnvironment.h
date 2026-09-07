@@ -19,9 +19,15 @@ struct CEngineEnvironment {
     float         NonPausedInterpolation;                    // +0x18
     unsigned char WindSkewHistory[0x300];                    // +0x1c C3DVector[64]
     unsigned char InterpolatedWindSkewHistory[0x300];        // +0x31c C3DVector[64]
-    unsigned char CurrentWindVector[0xc];                    // +0x61c C3DVector
-    unsigned char NextWindVector[0xc];                       // +0x628 C3DVector
-    unsigned char PreviousWindVector[0xc];                   // +0x634 C3DVector
+    float         CurrentWindVector_X;                       // +0x61c C3DVector::X
+    float         CurrentWindVector_Y;                       // +0x620 C3DVector::Y
+    float         CurrentWindVector_Z;                       // +0x624 C3DVector::Z
+    float         NextWindVector_X;                          // +0x628 C3DVector::X
+    float         NextWindVector_Y;                          // +0x62c C3DVector::Y
+    float         NextWindVector_Z;                          // +0x630 C3DVector::Z
+    float         PreviousWindVector_X;                      // +0x634 C3DVector::X
+    float         PreviousWindVector_Y;                      // +0x638 C3DVector::Y
+    float         PreviousWindVector_Z;                      // +0x63c C3DVector::Z
     float         CurrentWindSpeed;                          // +0x640
     float         NextWindSpeed;                             // +0x644
     float         PreviousWindSpeed;                         // +0x648
@@ -40,9 +46,15 @@ FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, PausedInterpolation) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, NonPausedInterpolation) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, WindSkewHistory) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, InterpolatedWindSkewHistory) == 0x31c);
-FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, CurrentWindVector) == 0x61c);
-FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, NextWindVector) == 0x628);
-FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, PreviousWindVector) == 0x634);
+FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, CurrentWindVector_X) == 0x61c);
+FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, CurrentWindVector_Y) == 0x620);
+FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, CurrentWindVector_Z) == 0x624);
+FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, NextWindVector_X) == 0x628);
+FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, NextWindVector_Y) == 0x62c);
+FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, NextWindVector_Z) == 0x630);
+FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, PreviousWindVector_X) == 0x634);
+FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, PreviousWindVector_Y) == 0x638);
+FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, PreviousWindVector_Z) == 0x63c);
 FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, CurrentWindSpeed) == 0x640);
 FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, NextWindSpeed) == 0x644);
 FABLE_STATIC_ASSERT(offsetof(CEngineEnvironment, PreviousWindSpeed) == 0x648);

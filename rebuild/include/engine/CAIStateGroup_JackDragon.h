@@ -26,24 +26,58 @@ struct CAIStateGroup_JackDragon {
     unsigned char CurrentState[0x4];                         // +0x5c EDragonState
     long          GoLeft;                                    // +0x60
     bool          BattleTriggered;                           // +0x64
-    unsigned char PreviousFlightPos[0xc];                    // +0x65 C3DVector
+    float         PreviousFlightPos_X;                       // +0x65 C3DVector::X
+    float         PreviousFlightPos_Y;                       // +0x69 C3DVector::Y
+    float         PreviousFlightPos_Z;                       // +0x6d C3DVector::Z
     bool          IsRangeAttack;                             // +0x71
-    unsigned char DragonPosOutOfGround1[0xc];                // +0x72 C3DVector
-    unsigned char DragonPosOutOfGround2[0xc];                // +0x7e C3DVector
-    unsigned char DragonPosOutOfGround3Left[0xc];            // +0x8a C3DVector
-    unsigned char DragonPosOutOfGround3Right[0xc];           // +0x96 C3DVector
-    unsigned char DragonPosOutOfGround4Left[0xc];            // +0xa2 C3DVector
-    unsigned char DragonPosOutOfGround4Right[0xc];           // +0xae C3DVector
-    unsigned char DragonPosIntoGround1Left[0xc];             // +0xba C3DVector
-    unsigned char DragonPosIntoGround1Right[0xc];            // +0xc6 C3DVector
-    unsigned char DragonPosIntoGround2Left[0xc];             // +0xd2 C3DVector
-    unsigned char DragonPosIntoGround2Right[0xc];            // +0xde C3DVector
-    unsigned char DragonPosIntoGround3[0xc];                 // +0xea C3DVector
-    unsigned char DragonPosIntoStrafeLeft[0xc];              // +0xf6 C3DVector
-    unsigned char DragonPosIntoStrafeRight[0xc];             // +0x102 C3DVector
-    unsigned char DragonPosOutOfStrafeLeft[0xc];             // +0x10e C3DVector
-    unsigned char DragonPosOutOfStrafeRight[0xc];            // +0x11a C3DVector
-    unsigned char DragonPosStrafeFlameRight[0xc];            // +0x126 C3DVector
+    float         DragonPosOutOfGround1_X;                   // +0x72 C3DVector::X
+    float         DragonPosOutOfGround1_Y;                   // +0x76 C3DVector::Y
+    float         DragonPosOutOfGround1_Z;                   // +0x7a C3DVector::Z
+    float         DragonPosOutOfGround2_X;                   // +0x7e C3DVector::X
+    float         DragonPosOutOfGround2_Y;                   // +0x82 C3DVector::Y
+    float         DragonPosOutOfGround2_Z;                   // +0x86 C3DVector::Z
+    float         DragonPosOutOfGround3Left_X;               // +0x8a C3DVector::X
+    float         DragonPosOutOfGround3Left_Y;               // +0x8e C3DVector::Y
+    float         DragonPosOutOfGround3Left_Z;               // +0x92 C3DVector::Z
+    float         DragonPosOutOfGround3Right_X;              // +0x96 C3DVector::X
+    float         DragonPosOutOfGround3Right_Y;              // +0x9a C3DVector::Y
+    float         DragonPosOutOfGround3Right_Z;              // +0x9e C3DVector::Z
+    float         DragonPosOutOfGround4Left_X;               // +0xa2 C3DVector::X
+    float         DragonPosOutOfGround4Left_Y;               // +0xa6 C3DVector::Y
+    float         DragonPosOutOfGround4Left_Z;               // +0xaa C3DVector::Z
+    float         DragonPosOutOfGround4Right_X;              // +0xae C3DVector::X
+    float         DragonPosOutOfGround4Right_Y;              // +0xb2 C3DVector::Y
+    float         DragonPosOutOfGround4Right_Z;              // +0xb6 C3DVector::Z
+    float         DragonPosIntoGround1Left_X;                // +0xba C3DVector::X
+    float         DragonPosIntoGround1Left_Y;                // +0xbe C3DVector::Y
+    float         DragonPosIntoGround1Left_Z;                // +0xc2 C3DVector::Z
+    float         DragonPosIntoGround1Right_X;               // +0xc6 C3DVector::X
+    float         DragonPosIntoGround1Right_Y;               // +0xca C3DVector::Y
+    float         DragonPosIntoGround1Right_Z;               // +0xce C3DVector::Z
+    float         DragonPosIntoGround2Left_X;                // +0xd2 C3DVector::X
+    float         DragonPosIntoGround2Left_Y;                // +0xd6 C3DVector::Y
+    float         DragonPosIntoGround2Left_Z;                // +0xda C3DVector::Z
+    float         DragonPosIntoGround2Right_X;               // +0xde C3DVector::X
+    float         DragonPosIntoGround2Right_Y;               // +0xe2 C3DVector::Y
+    float         DragonPosIntoGround2Right_Z;               // +0xe6 C3DVector::Z
+    float         DragonPosIntoGround3_X;                    // +0xea C3DVector::X
+    float         DragonPosIntoGround3_Y;                    // +0xee C3DVector::Y
+    float         DragonPosIntoGround3_Z;                    // +0xf2 C3DVector::Z
+    float         DragonPosIntoStrafeLeft_X;                 // +0xf6 C3DVector::X
+    float         DragonPosIntoStrafeLeft_Y;                 // +0xfa C3DVector::Y
+    float         DragonPosIntoStrafeLeft_Z;                 // +0xfe C3DVector::Z
+    float         DragonPosIntoStrafeRight_X;                // +0x102 C3DVector::X
+    float         DragonPosIntoStrafeRight_Y;                // +0x106 C3DVector::Y
+    float         DragonPosIntoStrafeRight_Z;                // +0x10a C3DVector::Z
+    float         DragonPosOutOfStrafeLeft_X;                // +0x10e C3DVector::X
+    float         DragonPosOutOfStrafeLeft_Y;                // +0x112 C3DVector::Y
+    float         DragonPosOutOfStrafeLeft_Z;                // +0x116 C3DVector::Z
+    float         DragonPosOutOfStrafeRight_X;               // +0x11a C3DVector::X
+    float         DragonPosOutOfStrafeRight_Y;               // +0x11e C3DVector::Y
+    float         DragonPosOutOfStrafeRight_Z;               // +0x122 C3DVector::Z
+    float         DragonPosStrafeFlameRight_X;               // +0x126 C3DVector::X
+    float         DragonPosStrafeFlameRight_Y;               // +0x12a C3DVector::Y
+    float         DragonPosStrafeFlameRight_Z;               // +0x12e C3DVector::Z
     unsigned char DragonPosStrafeFlameLeft[0xe];             // +0x132 C3DVector
 };
 #pragma pack(pop)
@@ -64,24 +98,58 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, FramesInSnapRange) == 0x5
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, CurrentState) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, GoLeft) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, BattleTriggered) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, PreviousFlightPos) == 0x65);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, PreviousFlightPos_X) == 0x65);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, PreviousFlightPos_Y) == 0x69);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, PreviousFlightPos_Z) == 0x6d);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, IsRangeAttack) == 0x71);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround1) == 0x72);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround2) == 0x7e);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround3Left) == 0x8a);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround3Right) == 0x96);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround4Left) == 0xa2);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround4Right) == 0xae);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround1Left) == 0xba);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround1Right) == 0xc6);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround2Left) == 0xd2);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround2Right) == 0xde);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround3) == 0xea);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoStrafeLeft) == 0xf6);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoStrafeRight) == 0x102);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfStrafeLeft) == 0x10e);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfStrafeRight) == 0x11a);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosStrafeFlameRight) == 0x126);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround1_X) == 0x72);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround1_Y) == 0x76);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround1_Z) == 0x7a);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround2_X) == 0x7e);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround2_Y) == 0x82);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround2_Z) == 0x86);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround3Left_X) == 0x8a);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround3Left_Y) == 0x8e);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround3Left_Z) == 0x92);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround3Right_X) == 0x96);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround3Right_Y) == 0x9a);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround3Right_Z) == 0x9e);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround4Left_X) == 0xa2);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround4Left_Y) == 0xa6);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround4Left_Z) == 0xaa);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround4Right_X) == 0xae);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround4Right_Y) == 0xb2);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfGround4Right_Z) == 0xb6);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround1Left_X) == 0xba);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround1Left_Y) == 0xbe);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround1Left_Z) == 0xc2);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround1Right_X) == 0xc6);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround1Right_Y) == 0xca);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround1Right_Z) == 0xce);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround2Left_X) == 0xd2);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround2Left_Y) == 0xd6);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround2Left_Z) == 0xda);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround2Right_X) == 0xde);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround2Right_Y) == 0xe2);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround2Right_Z) == 0xe6);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround3_X) == 0xea);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround3_Y) == 0xee);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoGround3_Z) == 0xf2);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoStrafeLeft_X) == 0xf6);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoStrafeLeft_Y) == 0xfa);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoStrafeLeft_Z) == 0xfe);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoStrafeRight_X) == 0x102);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoStrafeRight_Y) == 0x106);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosIntoStrafeRight_Z) == 0x10a);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfStrafeLeft_X) == 0x10e);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfStrafeLeft_Y) == 0x112);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfStrafeLeft_Z) == 0x116);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfStrafeRight_X) == 0x11a);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfStrafeRight_Y) == 0x11e);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosOutOfStrafeRight_Z) == 0x122);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosStrafeFlameRight_X) == 0x126);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosStrafeFlameRight_Y) == 0x12a);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosStrafeFlameRight_Z) == 0x12e);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackDragon, DragonPosStrafeFlameLeft) == 0x132);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_JACKDRAGON_H

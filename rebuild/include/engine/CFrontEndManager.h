@@ -11,6 +11,7 @@
 struct CComponent;
 struct CNewFrontendGameComponent;
 struct CVirtualKeyboard;
+struct CWideStringData;
 
 #pragma pack(push, 1)
 struct CFrontEndManager {
@@ -20,7 +21,7 @@ struct CFrontEndManager {
     unsigned char              _pad_0x0c[0x4];               // +0x0c
     unsigned char              _pad_0x10[0x4];               // +0x10
     unsigned char              _pad_0x14[0x4];               // +0x14
-    unsigned char              MediaPlayerErrorString[0x4];  // +0x18 CWideString
+    CWideStringData*           MediaPlayerErrorString_PStringData; // +0x18 CWideString::PStringData
     unsigned char              UIActionParams[0xc];          // +0x1c list<NUISystem::CActionParam_*,std::allocator<NUISystem::CActionParam_*>_>
     CNewFrontendGameComponent* PGameComponent;               // +0x28
     unsigned char              m_stackScreens[0x18];         // +0x2c stack<NUISystem::CComponent_*,std::deque<NUISystem::CComponent_*,std::allocator<NUISystem::CComponent_*>_>_>
@@ -40,8 +41,8 @@ struct CFrontEndManager {
     unsigned char              _pad_0xb5[0x3];               // +0xb5
     CComponent*                PScreenToDeactivateForStartGame; // +0xb8
     CComponent*                PScreenToDeactivateForLoadGame; // +0xbc
-    unsigned char              GameToLoad[0x4];              // +0xc0 CWideString
-    unsigned char              ProfileToDelete[0x4];         // +0xc4 CWideString
+    CWideStringData*           GameToLoad_PStringData;       // +0xc0 CWideString::PStringData
+    CWideStringData*           ProfileToDelete_PStringData;  // +0xc4 CWideString::PStringData
     unsigned long              BlocksOnUNeeded;              // +0xc8
     unsigned long              BlocksOnTNeeded;              // +0xcc
     unsigned long              NumberSaveGames;              // +0xd0
@@ -58,7 +59,7 @@ struct CFrontEndManager {
 
 FABLE_STATIC_ASSERT(sizeof(CFrontEndManager) == 0xf8);
 FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, MediaPlayerErrorString) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, MediaPlayerErrorString_PStringData) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, UIActionParams) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, PGameComponent) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, m_stackScreens) == 0x2c);
@@ -75,8 +76,8 @@ FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, PScreenToActivate) == 0xb0);
 FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, GoToKeyboard) == 0xb4);
 FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, PScreenToDeactivateForStartGame) == 0xb8);
 FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, PScreenToDeactivateForLoadGame) == 0xbc);
-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, GameToLoad) == 0xc0);
-FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, ProfileToDelete) == 0xc4);
+FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, GameToLoad_PStringData) == 0xc0);
+FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, ProfileToDelete_PStringData) == 0xc4);
 FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, BlocksOnUNeeded) == 0xc8);
 FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, BlocksOnTNeeded) == 0xcc);
 FABLE_STATIC_ASSERT(offsetof(CFrontEndManager, NumberSaveGames) == 0xd0);

@@ -12,7 +12,10 @@
 struct CEngineInternalPrimitive2DClockSprite {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x44];                          // +0x04 flattened base-class subobject(s)
-    unsigned char ClipBox[0x10];                             // +0x48 C2DBoxF
+    float         ClipBox_TLX;                               // +0x48 C2DBoxF::TLX
+    float         ClipBox_TLY;                               // +0x4c C2DBoxF::TLY
+    float         ClipBox_BRX;                               // +0x50 C2DBoxF::BRX
+    float         ClipBox_BRY;                               // +0x54 C2DBoxF::BRY
     unsigned char Layer[0x4];                                // +0x58 EEngine2DLayer
     unsigned long BankIndex;                                 // +0x5c
     unsigned long Frame;                                     // +0x60
@@ -23,8 +26,10 @@ struct CEngineInternalPrimitive2DClockSprite {
     float         AngleStart;                                // +0x74
     float         AngleEnd;                                  // +0x78
     bool          Filter;                                    // +0x7c
-    unsigned char UVOffsetsStart[0x8];                       // +0x7d C2DVector
-    unsigned char UVOffsetsEnd[0x8];                         // +0x85 C2DVector
+    float         UVOffsetsStart_X;                          // +0x7d C2DVector::X
+    float         UVOffsetsStart_Y;                          // +0x81 C2DVector::Y
+    float         UVOffsetsEnd_X;                            // +0x85 C2DVector::X
+    float         UVOffsetsEnd_Y;                            // +0x89 C2DVector::Y
     bool          WrapTexture;                               // +0x8d
     unsigned char _pad_0x8e[0x2];                            // +0x8e
     unsigned char BlendMode[0x4];                            // +0x90 EEnginePrimitiveBlendMode
@@ -33,7 +38,10 @@ struct CEngineInternalPrimitive2DClockSprite {
 
 FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitive2DClockSprite) == 0x94);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, ClipBox) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, ClipBox_TLX) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, ClipBox_TLY) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, ClipBox_BRX) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, ClipBox_BRY) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, Layer) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, BankIndex) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, Frame) == 0x60);
@@ -44,8 +52,10 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, Colour2) == 
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, AngleStart) == 0x74);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, AngleEnd) == 0x78);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, Filter) == 0x7c);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, UVOffsetsStart) == 0x7d);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, UVOffsetsEnd) == 0x85);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, UVOffsetsStart_X) == 0x7d);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, UVOffsetsStart_Y) == 0x81);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, UVOffsetsEnd_X) == 0x85);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, UVOffsetsEnd_Y) == 0x89);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, WrapTexture) == 0x8d);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DClockSprite, BlendMode) == 0x90);
 

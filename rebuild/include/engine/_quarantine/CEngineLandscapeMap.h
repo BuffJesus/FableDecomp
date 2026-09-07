@@ -8,12 +8,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CBankFileAsyncData;
+struct CBankFileAsyncEntry;
+struct CCPPointerInfo;
 struct CEngineLandscapeLODMap;
 struct CEngineLandscapePatch;
 struct CEngineMap;
 struct CEngineStaticMapFileBlockManager;
+struct CGraphicDataBank;
 struct CLandscapeBackgroundDynamicBuildTemplate;
 struct CLandscapeBackgroundTreeNode;
+struct CRGBColour;
 
 #pragma pack(push, 1)
 struct CEngineLandscapeMap {
@@ -23,10 +28,16 @@ struct CEngineLandscapeMap {
     long                                      PatchGridWidth; // +0x0c
     long                                      PatchGridHeight; // +0x10
     CEngineMap*                               Map;           // +0x14
-    unsigned char                             MapFileEntry[0x8]; // +0x18 CCountedPointer<CBankFileAsyncEntry>
+    CBankFileAsyncEntry*                      MapFileEntry_Data; // +0x18 CCountedPointer<CBankFileAsyncEntry>::Data
+    CCPPointerInfo*                           MapFileEntry_Info; // +0x1c CCountedPointer<CBankFileAsyncEntry>::Info
     CEngineStaticMapFileBlockManager*         FileBlockManager; // +0x20
-    unsigned char                             MapFileHeader[0x14]; // +0x24 CMapFileHeader
-    unsigned char                             LoadingPatches[0x8]; // +0x38 CCountedPointer<CBankFileAsyncData>
+    long                                      MapFileHeader_TexturePaletteFilePointer; // +0x24 CMapFileHeader::TexturePaletteFilePointer
+    long                                      MapFileHeader_TexturePaletteSize; // +0x28 CMapFileHeader::TexturePaletteSize
+    long                                      MapFileHeader_PatchesFilePointer; // +0x2c CMapFileHeader::PatchesFilePointer
+    long                                      MapFileHeader_PatchTreeFileBlockPos; // +0x30 CMapFileHeader::PatchTreeFileBlockPos
+    long                                      MapFileHeader_PatchTreeFileBlockSize; // +0x34 CMapFileHeader::PatchTreeFileBlockSize
+    CBankFileAsyncData*                       LoadingPatches_Data; // +0x38 CCountedPointer<CBankFileAsyncData>::Data
+    CCPPointerInfo*                           LoadingPatches_Info; // +0x3c CCountedPointer<CBankFileAsyncData>::Info
     unsigned char                             TexturePalette[0x1c]; // +0x40 CEngineTexturePalette
     long                                      CreationFlags; // +0x5c
     bool                                      MemoryFreeingLocked; // +0x60
@@ -47,10 +58,16 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, Patches) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, PatchGridWidth) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, PatchGridHeight) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, Map) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileEntry) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileEntry_Data) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileEntry_Info) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, FileBlockManager) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileHeader) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, LoadingPatches) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileHeader_TexturePaletteFilePointer) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileHeader_TexturePaletteSize) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileHeader_PatchesFilePointer) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileHeader_PatchTreeFileBlockPos) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MapFileHeader_PatchTreeFileBlockSize) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, LoadingPatches_Data) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, LoadingPatches_Info) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, TexturePalette) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, CreationFlags) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, MemoryFreeingLocked) == 0x60);

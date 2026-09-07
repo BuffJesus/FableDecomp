@@ -8,54 +8,58 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CAIScratchpadDef {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned long ThankingPhrase;                            // +0x28
-    unsigned long IgnoringPhrase;                            // +0x2c
-    unsigned char WanderCentrePoint[0xc];                    // +0x30 C3DVector
-    float         WanderMinDistance;                         // +0x3c
-    float         WanderMaxDistance;                         // +0x40
-    long          GossipCounter;                             // +0x44
-    long          MaxGossipPhrase;                           // +0x48
-    unsigned long WarningPhrase;                             // +0x4c
-    unsigned long BeerRequestPhrase;                         // +0x50
-    unsigned char ScriptingStateGroup[0x4];                  // +0x54 EScriptingStateGroups
-    float         MaxHeroReactionDistance;                   // +0x58
-    long          ActionFrequency;                           // +0x5c
-    float         ActionFrequencyVariation;                  // +0x60
-    unsigned char Action[0x4];                               // +0x64 CCharString
-    bool          FaceHeroForAction;                         // +0x68
-    unsigned char _pad_0x69[0x3];                            // +0x69
-    unsigned char TargetName[0x4];                           // +0x6c CCharString
-    float         FollowDistance;                            // +0x70
-    bool          AttackHeroOnSight;                         // +0x74
-    unsigned char _pad_0x75[0x3];                            // +0x75
-    long          TimeToSpendHarassingHero;                  // +0x78
-    float         CombatNearbyEnemyFleeingBreakOffRange;     // +0x7c
-    float         CombatNearbyBreakOffRange;                 // +0x80
-    bool          StealStealableItems;                       // +0x84
-    bool          RecoverStealableItems;                     // +0x85
-    bool          TakeStealableItemToRandomDestination;      // +0x86
-    bool          KillSelfAndStealableItemAfterReachingDestination; // +0x87
-    bool          AllowedToFollow;                           // +0x88
-    unsigned char _pad_0x89[0x3];                            // +0x89
-    unsigned char TableName[0x4];                            // +0x8c CCharString
-    unsigned char SeatName[0x4];                             // +0x90 CCharString
-    bool          DisableHeadLooking;                        // +0x94
-    bool          IsPushableByHero;                          // +0x95
-    bool          LookForFiniteTime;                         // +0x96
-    bool          AvoidRegionExits;                          // +0x97
-    float         TargetingDistanceOffset;                   // +0x98
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned long    ThankingPhrase;                         // +0x28
+    unsigned long    IgnoringPhrase;                         // +0x2c
+    float            WanderCentrePoint_X;                    // +0x30 C3DVector::X
+    float            WanderCentrePoint_Y;                    // +0x34 C3DVector::Y
+    float            WanderCentrePoint_Z;                    // +0x38 C3DVector::Z
+    float            WanderMinDistance;                      // +0x3c
+    float            WanderMaxDistance;                      // +0x40
+    long             GossipCounter;                          // +0x44
+    long             MaxGossipPhrase;                        // +0x48
+    unsigned long    WarningPhrase;                          // +0x4c
+    unsigned long    BeerRequestPhrase;                      // +0x50
+    unsigned char    ScriptingStateGroup[0x4];               // +0x54 EScriptingStateGroups
+    float            MaxHeroReactionDistance;                // +0x58
+    long             ActionFrequency;                        // +0x5c
+    float            ActionFrequencyVariation;               // +0x60
+    CCharStringData* Action_PStringData;                     // +0x64 CCharString::PStringData
+    bool             FaceHeroForAction;                      // +0x68
+    unsigned char    _pad_0x69[0x3];                         // +0x69
+    CCharStringData* TargetName_PStringData;                 // +0x6c CCharString::PStringData
+    float            FollowDistance;                         // +0x70
+    bool             AttackHeroOnSight;                      // +0x74
+    unsigned char    _pad_0x75[0x3];                         // +0x75
+    long             TimeToSpendHarassingHero;               // +0x78
+    float            CombatNearbyEnemyFleeingBreakOffRange;  // +0x7c
+    float            CombatNearbyBreakOffRange;              // +0x80
+    bool             StealStealableItems;                    // +0x84
+    bool             RecoverStealableItems;                  // +0x85
+    bool             TakeStealableItemToRandomDestination;   // +0x86
+    bool             KillSelfAndStealableItemAfterReachingDestination; // +0x87
+    bool             AllowedToFollow;                        // +0x88
+    unsigned char    _pad_0x89[0x3];                         // +0x89
+    CCharStringData* TableName_PStringData;                  // +0x8c CCharString::PStringData
+    CCharStringData* SeatName_PStringData;                   // +0x90 CCharString::PStringData
+    bool             DisableHeadLooking;                     // +0x94
+    bool             IsPushableByHero;                       // +0x95
+    bool             LookForFiniteTime;                      // +0x96
+    bool             AvoidRegionExits;                       // +0x97
+    float            TargetingDistanceOffset;                // +0x98
 };
 #pragma pack(pop)
 
@@ -63,7 +67,9 @@ FABLE_STATIC_ASSERT(sizeof(CAIScratchpadDef) == 0x9c);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, ThankingPhrase) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, IgnoringPhrase) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, WanderCentrePoint) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, WanderCentrePoint_X) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, WanderCentrePoint_Y) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, WanderCentrePoint_Z) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, WanderMinDistance) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, WanderMaxDistance) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, GossipCounter) == 0x44);
@@ -74,9 +80,9 @@ FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, ScriptingStateGroup) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, MaxHeroReactionDistance) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, ActionFrequency) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, ActionFrequencyVariation) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, Action) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, Action_PStringData) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, FaceHeroForAction) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, TargetName) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, TargetName_PStringData) == 0x6c);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, FollowDistance) == 0x70);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, AttackHeroOnSight) == 0x74);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, TimeToSpendHarassingHero) == 0x78);
@@ -87,8 +93,8 @@ FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, RecoverStealableItems) == 0x85);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, TakeStealableItemToRandomDestination) == 0x86);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, KillSelfAndStealableItemAfterReachingDestination) == 0x87);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, AllowedToFollow) == 0x88);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, TableName) == 0x8c);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, SeatName) == 0x90);
+FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, TableName_PStringData) == 0x8c);
+FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, SeatName_PStringData) == 0x90);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, DisableHeadLooking) == 0x94);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, IsPushableByHero) == 0x95);
 FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, LookForFiniteTime) == 0x96);

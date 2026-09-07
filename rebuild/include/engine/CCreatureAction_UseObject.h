@@ -60,7 +60,9 @@ struct CCreatureAction_UseObject {
     unsigned char   PUsedThing[0x8];                         // +0xb4 CIntelligentPointer<CThing>
     CTCPhysicsBase* PreviousPhysicsComponent;                // +0xbc
     unsigned char   Dummy[0x18];                             // +0xc0 CRightHandedSet
-    unsigned char   DummyPos[0xc];                           // +0xd8 C3DVector
+    float           DummyPos_X;                              // +0xd8 C3DVector::X
+    float           DummyPos_Y;                              // +0xdc C3DVector::Y
+    float           DummyPos_Z;                              // +0xe0 C3DVector::Z
     float           Proximity;                               // +0xe4
     bool            UsingDummy;                              // +0xe8
     bool            MovingToDummy;                           // +0xe9
@@ -74,7 +76,9 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseObject, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseObject, PUsedThing) == 0xb4);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseObject, PreviousPhysicsComponent) == 0xbc);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseObject, Dummy) == 0xc0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseObject, DummyPos) == 0xd8);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseObject, DummyPos_X) == 0xd8);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseObject, DummyPos_Y) == 0xdc);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseObject, DummyPos_Z) == 0xe0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseObject, Proximity) == 0xe4);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseObject, UsingDummy) == 0xe8);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseObject, MovingToDummy) == 0xe9);

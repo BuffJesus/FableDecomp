@@ -1,25 +1,22 @@
+#include "engine/CTCDoor.h"
 #include <stdio.h>
-struct COwner {
+struct CDefPointeeBase {
     char pad[0x3a];
     unsigned char lockedFlag;
 };
-struct CTCDoor {
-    char pad[0x20];
-    COwner* owner;
-};
 bool __fastcall CTCDoor_IsLockableByOwner(CTCDoor* self) {
-    COwner* o = self->owner;
+    CDefPointeeBase* o = self->PDef_Object;
     if (o != 0)
         return o->lockedFlag == 0;
     return true;
 }
 int main() {
     CTCDoor d;
-    d.owner = 0;
+    d.PDef_Object = 0;
     bool r1 = CTCDoor_IsLockableByOwner(&d);
-    COwner o;
+    CDefPointeeBase o;
     o.lockedFlag = 0;
-    d.owner = &o;
+    d.PDef_Object = &o;
     bool r2 = CTCDoor_IsLockableByOwner(&d);
     o.lockedFlag = 1;
     bool r3 = CTCDoor_IsLockableByOwner(&d);

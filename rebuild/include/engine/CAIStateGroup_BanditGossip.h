@@ -11,8 +11,8 @@
 #pragma pack(push, 1)
 struct CAIStateGroup_BanditGossip {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    void*         owner;                                     // +0x04 retail-only (CAIStateGroupBanditGossip_OnReplaceCAIStateGroupBanditGossipMAEXXZ_0090e590.cpp)
-    char          flag;                                      // +0x08 retail-only (CAIStateGroupBanditGossip_OnReplaceCAIStateGroupBanditGossipMAEXXZ_0090e590.cpp)
+    long          owner;                                     // +0x04 retail-only (previous header)
+    unsigned char flag;                                      // +0x08 retail-only (previous header)
     unsigned char _pad_0x09[0x3];                            // +0x09
     unsigned char _pad_0x0c[0x4];                            // +0x0c
     unsigned char _pad_0x10[0x4];                            // +0x10

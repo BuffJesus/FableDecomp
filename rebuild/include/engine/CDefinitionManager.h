@@ -8,12 +8,16 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CCharStringData;
+struct CSymbolMap;
+struct CWideStringData;
 struct _func___cdecl_void_CCharString_ptr;
 
 #pragma pack(push, 1)
 struct CDefinitionManager {
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
-    void*                               m_classArray;        // +0x04 retail-only (CDefinitionManager_GetPDefFromClassIndex_00c96430.cpp)
+    long                                m_classArray;        // +0x04 retail-only (previous header)
     unsigned char                       _pad_0x08[0x4];      // +0x08
     unsigned char                       _pad_0x0c[0x4];      // +0x0c
     unsigned char                       _pad_0x10[0x4];      // +0x10
@@ -30,16 +34,18 @@ struct CDefinitionManager {
     void*                               PDefTypeDebugInfoMap; // +0x3c map<CCharString,CDefinitionManager::CDefTypeDebugInfo,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CDefinitionManager::CDefTypeDebugInfo>_>_> *
     unsigned char                       SymbolPathList[0x10]; // +0x40 vector<CWideString,std::allocator<CWideString>_>
     unsigned char                       CompilePathList[0x10]; // +0x50 vector<CWideString,std::allocator<CWideString>_>
-    unsigned char                       PSymbolMap[0x8];     // +0x60 CCountedPointer<CSymbolMap>
-    unsigned char                       PDefinitionSymbolMap[0x8]; // +0x68 CCountedPointer<CSymbolMap>
+    CSymbolMap*                         PSymbolMap_Data;     // +0x60 CCountedPointer<CSymbolMap>::Data
+    CCPPointerInfo*                     PSymbolMap_Info;     // +0x64 CCountedPointer<CSymbolMap>::Info
+    CSymbolMap*                         PDefinitionSymbolMap_Data; // +0x68 CCountedPointer<CSymbolMap>::Data
+    CCPPointerInfo*                     PDefinitionSymbolMap_Info; // +0x6c CCountedPointer<CSymbolMap>::Info
     unsigned char                       NameCRCToIndexMap[0x14]; // +0x70 CVectorMap<unsigned_long,long,CKeyPairCompareLess<unsigned_long,long>_>
     unsigned char                       DefClassInfo[0x14];  // +0x84 CVectorMap<unsigned_long,CDefinitionManager::CDefClassInfo,CKeyPairCompareLess<unsigned_long,CDefinitionManager::CDefClassInfo>_>
     unsigned char                       CompressedDefData[0x10]; // +0x98 CArray<unsigned_char>
     unsigned char                       CompressedOffsets[0x14]; // +0xa8 CVectorMap<unsigned_long,unsigned_long,CKeyPairCompareLess<unsigned_long,unsigned_long>_>
     unsigned char                       InstantiatedDefs[0x10]; // +0xbc CArray<CDefinitionManager::CInstantiatedDefInfo_*>
     _func___cdecl_void_CCharString_ptr* ErrorCallback;       // +0xcc
-    unsigned char                       CurrentFilename[0x4]; // +0xd0 CCharString
-    unsigned char                       CompiledFileName[0x4]; // +0xd4 CWideString
+    CCharStringData*                    CurrentFilename_PStringData; // +0xd0 CCharString::PStringData
+    CWideStringData*                    CompiledFileName_PStringData; // +0xd4 CWideString::PStringData
     unsigned long                       DependencyCheckCRC;  // +0xd8
     bool                                UseSafeBinaryFormat; // +0xdc
     unsigned char                       _pad_0xdd[0x1];      // +0xdd
@@ -54,16 +60,18 @@ FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, m_classArray) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, PDefTypeDebugInfoMap) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, SymbolPathList) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, CompilePathList) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, PSymbolMap) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, PDefinitionSymbolMap) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, PSymbolMap_Data) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, PSymbolMap_Info) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, PDefinitionSymbolMap_Data) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, PDefinitionSymbolMap_Info) == 0x6c);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, NameCRCToIndexMap) == 0x70);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, DefClassInfo) == 0x84);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, CompressedDefData) == 0x98);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, CompressedOffsets) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, InstantiatedDefs) == 0xbc);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, ErrorCallback) == 0xcc);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, CurrentFilename) == 0xd0);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, CompiledFileName) == 0xd4);
+FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, CurrentFilename_PStringData) == 0xd0);
+FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, CompiledFileName_PStringData) == 0xd4);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, DependencyCheckCRC) == 0xd8);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, UseSafeBinaryFormat) == 0xdc);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, RecompiledDefs) == 0xe0);

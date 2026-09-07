@@ -8,26 +8,28 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
+
 #pragma pack(push, 1)
 struct CTCHeroExperience {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _base_0x04[0x8];                           // +0x04 flattened base-class subobject(s)
-    long          FishingLevel;                              // +0x0c
-    long          TotalExperiencePoints;                     // +0x10
-    long          ExperiencePointsAvailableToSpend;          // +0x14
-    unsigned char StatExperiencePoints[0x10];                // +0x18 vector<long,std::allocator<long>_>
-    unsigned char TrainableStatLevels[0x10];                 // +0x28 vector<long,std::allocator<long>_>
-    float         ExperienceMultiplierParam;                 // +0x38
-    float         LastExperienceMultiplierParam;             // +0x3c
-    long          ExperienceAttenuationTimer;                // +0x40
-    bool          AbleToGainExperience;                      // +0x44
-    unsigned char _pad_0x45[0x3];                            // +0x45
-    unsigned char Pickups[0xc];                              // +0x48 list<std::pair<long,long>,std::allocator<std::pair<long,long>_>_>
-    unsigned char ExperienceSpentOnStats[0x10];              // +0x54 vector<long,std::allocator<long>_>
-    unsigned char AttackHistory[0xc];                        // +0x64 list<std::pair<EDamageAttribute,long>,std::allocator<std::pair<EDamageAttribute,long>_>_>
-    unsigned char PDef[0x4];                                 // +0x70 CDefPointer<CHeroExperienceDef_const_>
-    unsigned char PHeroCombatDef[0x4];                       // +0x74 CDefPointer<CHeroCombatDef_const_>
-    unsigned char PHeroStatsDef[0x4];                        // +0x78 CDefPointer<CHeroStatsDef_const_>
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _base_0x04[0x8];                        // +0x04 flattened base-class subobject(s)
+    long             FishingLevel;                           // +0x0c
+    long             TotalExperiencePoints;                  // +0x10
+    long             ExperiencePointsAvailableToSpend;       // +0x14
+    unsigned char    StatExperiencePoints[0x10];             // +0x18 vector<long,std::allocator<long>_>
+    unsigned char    TrainableStatLevels[0x10];              // +0x28 vector<long,std::allocator<long>_>
+    float            ExperienceMultiplierParam;              // +0x38
+    float            LastExperienceMultiplierParam;          // +0x3c
+    long             ExperienceAttenuationTimer;             // +0x40
+    bool             AbleToGainExperience;                   // +0x44
+    unsigned char    _pad_0x45[0x3];                         // +0x45
+    unsigned char    Pickups[0xc];                           // +0x48 list<std::pair<long,long>,std::allocator<std::pair<long,long>_>_>
+    unsigned char    ExperienceSpentOnStats[0x10];           // +0x54 vector<long,std::allocator<long>_>
+    unsigned char    AttackHistory[0xc];                     // +0x64 list<std::pair<EDamageAttribute,long>,std::allocator<std::pair<EDamageAttribute,long>_>_>
+    CDefPointeeBase* PDef_Object;                            // +0x70 CDefPointer<CHeroExperienceDef_const_>::Object
+    CDefPointeeBase* PHeroCombatDef_Object;                  // +0x74 CDefPointer<CHeroCombatDef_const_>::Object
+    unsigned char    PHeroStatsDef[0x4];                     // +0x78 CDefPointer<CHeroStatsDef_const_>
 };
 #pragma pack(pop)
 
@@ -45,8 +47,8 @@ FABLE_STATIC_ASSERT(offsetof(CTCHeroExperience, AbleToGainExperience) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroExperience, Pickups) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroExperience, ExperienceSpentOnStats) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroExperience, AttackHistory) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroExperience, PDef) == 0x70);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroExperience, PHeroCombatDef) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroExperience, PDef_Object) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroExperience, PHeroCombatDef_Object) == 0x74);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroExperience, PHeroStatsDef) == 0x78);
 
 #endif // FABLE_ENGINE_CTCHEROEXPERIENCE_H

@@ -9,50 +9,51 @@
 #include "rebuild_abi.h"
 
 struct CComponent;
+struct CDefPointeeBase;
 struct CYesNo;
 
 #pragma pack(push, 1)
 struct CTCInGameMenu {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    void*         field4;                                    // +0x04 retail-only (CTCInGameMenu_OnCreate_0047d60d.cpp)
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    bool          InGameMenuOpen;                            // +0x0c
-    unsigned char _pad_0x0d[0x3];                            // +0x0d
-    unsigned char PDef[0x4];                                 // +0x10 CDefPointer<CInventoryDef_const_>
-    long          GlobalDefIndex;                            // +0x14
-    unsigned char ActiveScreen[0x4];                         // +0x18 EScreenType
-    long          ItemCount;                                 // +0x1c
-    long          ItemHighlightIndex;                        // +0x20
-    long          ItemTopIndex;                              // +0x24
-    unsigned char FileNames[0x10];                           // +0x28 vector<CWideString,std::allocator<CWideString>_>
-    unsigned char FileTimes[0x10];                           // +0x38 vector<CDateAndTime,std::allocator<CDateAndTime>_>
-    unsigned char PrimitiveHandles[0x10];                    // +0x48 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
-    unsigned char MenuPrimitiveHandles[0x10];                // +0x58 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
-    unsigned char Components[0x10];                          // +0x68 vector<NUISystem::CComponent_*,std::allocator<NUISystem::CComponent_*>_>
-    long          LoadGameIndex;                             // +0x78
-    unsigned char _pad_0x7c[0x4];                            // +0x7c
-    double        CurStartPauseTime;                         // +0x80
-    double        AccumulativePausedTime;                    // +0x88
-    unsigned char FileRegionNames[0x10];                     // +0x90 vector<CCharString,std::allocator<CCharString>_>
-    unsigned char FileRegionMiniMapNames[0x10];              // +0xa0 vector<CCharString,std::allocator<CCharString>_>
-    unsigned char FilePlayTimes[0x10];                       // +0xb0 vector<long,std::allocator<long>_>
-    double        LastRenderTime;                            // +0xc0
-    bool          OpenInventory;                             // +0xc8
-    unsigned char _pad_0xc9[0x3];                            // +0xc9
-    CYesNo*       m_pOKDialog;                               // +0xcc
-    CYesNo*       PVideoOptionsNotAcceptedDialog;            // +0xd0
-    CYesNo*       PVideoOptionsChangedDialog;                // +0xd4
-    long          SaveGameToLoad;                            // +0xd8
-    unsigned char _pad_0xdc[0x4];                            // +0xdc
-    double        VideoChangesTimer;                         // +0xe0
-    long          SaveGameIndex;                             // +0xe8
-    long          FramesToWaitToSave;                        // +0xec
-    CComponent*   PSaveInProgress;                           // +0xf0
-    unsigned char _pad_0xf4[0x4];                            // +0xf4
-    double        SaveInProgressTime;                        // +0xf8
-    unsigned char Signatures[0x10];                          // +0x100 map<CWideString,bool,std::less<CWideString>,std::allocator<std::pair<CWideString_const_,bool>_>_>
-    CComponent*   PMousePointer;                             // +0x110
-    CYesNo*       PYesNo;                                    // +0x114
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    long             field4;                                 // +0x04 retail-only (previous header)
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    bool             InGameMenuOpen;                         // +0x0c
+    unsigned char    _pad_0x0d[0x3];                         // +0x0d
+    CDefPointeeBase* PDef_Object;                            // +0x10 CDefPointer<CInventoryDef_const_>::Object
+    long             GlobalDefIndex;                         // +0x14
+    unsigned char    ActiveScreen[0x4];                      // +0x18 EScreenType
+    long             ItemCount;                              // +0x1c
+    long             ItemHighlightIndex;                     // +0x20
+    long             ItemTopIndex;                           // +0x24
+    unsigned char    FileNames[0x10];                        // +0x28 vector<CWideString,std::allocator<CWideString>_>
+    unsigned char    FileTimes[0x10];                        // +0x38 vector<CDateAndTime,std::allocator<CDateAndTime>_>
+    unsigned char    PrimitiveHandles[0x10];                 // +0x48 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
+    unsigned char    MenuPrimitiveHandles[0x10];             // +0x58 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
+    unsigned char    Components[0x10];                       // +0x68 vector<NUISystem::CComponent_*,std::allocator<NUISystem::CComponent_*>_>
+    long             LoadGameIndex;                          // +0x78
+    unsigned char    _pad_0x7c[0x4];                         // +0x7c
+    double           CurStartPauseTime;                      // +0x80
+    double           AccumulativePausedTime;                 // +0x88
+    unsigned char    FileRegionNames[0x10];                  // +0x90 vector<CCharString,std::allocator<CCharString>_>
+    unsigned char    FileRegionMiniMapNames[0x10];           // +0xa0 vector<CCharString,std::allocator<CCharString>_>
+    unsigned char    FilePlayTimes[0x10];                    // +0xb0 vector<long,std::allocator<long>_>
+    double           LastRenderTime;                         // +0xc0
+    bool             OpenInventory;                          // +0xc8
+    unsigned char    _pad_0xc9[0x3];                         // +0xc9
+    CYesNo*          m_pOKDialog;                            // +0xcc
+    CYesNo*          PVideoOptionsNotAcceptedDialog;         // +0xd0
+    CYesNo*          PVideoOptionsChangedDialog;             // +0xd4
+    long             SaveGameToLoad;                         // +0xd8
+    unsigned char    _pad_0xdc[0x4];                         // +0xdc
+    double           VideoChangesTimer;                      // +0xe0
+    long             SaveGameIndex;                          // +0xe8
+    long             FramesToWaitToSave;                     // +0xec
+    CComponent*      PSaveInProgress;                        // +0xf0
+    unsigned char    _pad_0xf4[0x4];                         // +0xf4
+    double           SaveInProgressTime;                     // +0xf8
+    unsigned char    Signatures[0x10];                       // +0x100 map<CWideString,bool,std::less<CWideString>,std::allocator<std::pair<CWideString_const_,bool>_>_>
+    CComponent*      PMousePointer;                          // +0x110
+    CYesNo*          PYesNo;                                 // +0x114
 };
 #pragma pack(pop)
 
@@ -60,7 +61,7 @@ FABLE_STATIC_ASSERT(sizeof(CTCInGameMenu) == 0x118);
 FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, field4) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, InGameMenuOpen) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, PDef) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, PDef_Object) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, GlobalDefIndex) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, ActiveScreen) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CTCInGameMenu, ItemCount) == 0x1c);

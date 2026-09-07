@@ -8,41 +8,42 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
 struct CTCBoss;
 
 #pragma pack(push, 1)
 struct CTCKraken {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char PKrakenDef[0x4];                           // +0x0c CDefPointer<CKrakenDef_const_>
-    unsigned char PChamber[0x8];                             // +0x10 CIntelligentPointer<CThing>
-    unsigned char PCentreMarker[0x8];                        // +0x18 CIntelligentPointer<CThing>
-    unsigned char PTarget[0x8];                              // +0x20 CIntelligentPointer<CThing>
-    unsigned char PHeadEffect[0x8];                          // +0x28 CIntelligentPointer<CThing>
-    unsigned char ExplosionList[0xc];                        // +0x30 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
-    unsigned char PBeamWeaponEffect[0x8];                    // +0x3c CIntelligentPointer<CThing>
-    long          DelayBeforeBeam;                           // +0x44
-    CTCBoss*      PTCBoss;                                   // +0x48
-    unsigned char Tentacles[0xc];                            // +0x4c list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
-    unsigned char AttackingTentacleIterator[0x4];            // +0x58 _List_iterator<std::_List_val<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>_>
-    long          TentacleStrikeCounter;                     // +0x5c
-    bool          TentacleReadyToStrike;                     // +0x60
-    bool          HeadTrackTarget;                           // +0x61
-    bool          HeadHasBeenHit;                            // +0x62
-    unsigned char _pad_0x63[0x1];                            // +0x63
-    long          LastStrikeTick;                            // +0x64
-    long          KillBeamCounter;                           // +0x68
-    bool          ReturnHeadToWater;                         // +0x6c
-    unsigned char _pad_0x6d[0x3];                            // +0x6d
-    unsigned char Phase[0x4];                                // +0x70 EKrakenBossPhase
-    unsigned char Mode[0x4];                                 // +0x74 EKrakenMode
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    CDefPointeeBase* PKrakenDef_Object;                      // +0x0c CDefPointer<CKrakenDef_const_>::Object
+    unsigned char    PChamber[0x8];                          // +0x10 CIntelligentPointer<CThing>
+    unsigned char    PCentreMarker[0x8];                     // +0x18 CIntelligentPointer<CThing>
+    unsigned char    PTarget[0x8];                           // +0x20 CIntelligentPointer<CThing>
+    unsigned char    PHeadEffect[0x8];                       // +0x28 CIntelligentPointer<CThing>
+    unsigned char    ExplosionList[0xc];                     // +0x30 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned char    PBeamWeaponEffect[0x8];                 // +0x3c CIntelligentPointer<CThing>
+    long             DelayBeforeBeam;                        // +0x44
+    CTCBoss*         PTCBoss;                                // +0x48
+    unsigned char    Tentacles[0xc];                         // +0x4c list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned char    AttackingTentacleIterator[0x4];         // +0x58 _List_iterator<std::_List_val<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>_>
+    long             TentacleStrikeCounter;                  // +0x5c
+    bool             TentacleReadyToStrike;                  // +0x60
+    bool             HeadTrackTarget;                        // +0x61
+    bool             HeadHasBeenHit;                         // +0x62
+    unsigned char    _pad_0x63[0x1];                         // +0x63
+    long             LastStrikeTick;                         // +0x64
+    long             KillBeamCounter;                        // +0x68
+    bool             ReturnHeadToWater;                      // +0x6c
+    unsigned char    _pad_0x6d[0x3];                         // +0x6d
+    unsigned char    Phase[0x4];                             // +0x70 EKrakenBossPhase
+    unsigned char    Mode[0x4];                              // +0x74 EKrakenMode
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCKraken) == 0x78);
 FABLE_STATIC_ASSERT(offsetof(CTCKraken, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCKraken, PKrakenDef) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CTCKraken, PKrakenDef_Object) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCKraken, PChamber) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCKraken, PCentreMarker) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CTCKraken, PTarget) == 0x20);

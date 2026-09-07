@@ -13,7 +13,7 @@ struct CCreatureAction_SpiritAttack {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
-    int           field10;                                   // +0x0c retail-only (CCreatureActionSpiritAttack_InitialiseCCreatureActionSpiritAttackUAEXXZ_008545f0.cpp)
+    long          field10;                                   // +0x0c retail-only (previous header)
     unsigned char _pad_0x10[0x4];                            // +0x10
     unsigned char _pad_0x14[0x4];                            // +0x14
     unsigned char _pad_0x18[0x4];                            // +0x18

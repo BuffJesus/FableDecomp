@@ -8,40 +8,42 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CTattooDef {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char TattooName[0x4];                           // +0x28 CCharString
-    long          TextureLayer;                              // +0x2c
-    long          ReplacingTextureIndex;                     // +0x30
-    long          BankIndex;                                 // +0x34
-    unsigned char Blend[0x4];                                // +0x38 ECompositeBlendType
-    bool          RemovesAllTattoos;                         // +0x3c
-    bool          Permanent;                                 // +0x3d
-    unsigned char _pad_0x3e[0x2];                            // +0x3e
-    long          CoversBodyAreaFlags;                       // +0x40
-    float         VisibilityMultiplier;                      // +0x44
-    long          SpecificCoversBodyAreaFlags;               // +0x48
-    unsigned char CustomFileName[0x4];                       // +0x4c CCharString
-    unsigned char CustomFileNameBase[0x4];                   // +0x50 CCharString
-    float         Attractiveness;                            // +0x54
-    float         Scariness;                                 // +0x58
-    float         Goodstrength;                              // +0x5c
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    CCharStringData* TattooName_PStringData;                 // +0x28 CCharString::PStringData
+    long             TextureLayer;                           // +0x2c
+    long             ReplacingTextureIndex;                  // +0x30
+    long             BankIndex;                              // +0x34
+    unsigned char    Blend[0x4];                             // +0x38 ECompositeBlendType
+    bool             RemovesAllTattoos;                      // +0x3c
+    bool             Permanent;                              // +0x3d
+    unsigned char    _pad_0x3e[0x2];                         // +0x3e
+    long             CoversBodyAreaFlags;                    // +0x40
+    float            VisibilityMultiplier;                   // +0x44
+    long             SpecificCoversBodyAreaFlags;            // +0x48
+    CCharStringData* CustomFileName_PStringData;             // +0x4c CCharString::PStringData
+    CCharStringData* CustomFileNameBase_PStringData;         // +0x50 CCharString::PStringData
+    float            Attractiveness;                         // +0x54
+    float            Scariness;                              // +0x58
+    float            Goodstrength;                           // +0x5c
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTattooDef) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CTattooDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTattooDef, TattooName) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CTattooDef, TattooName_PStringData) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CTattooDef, TextureLayer) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CTattooDef, ReplacingTextureIndex) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CTattooDef, BankIndex) == 0x34);
@@ -51,8 +53,8 @@ FABLE_STATIC_ASSERT(offsetof(CTattooDef, Permanent) == 0x3d);
 FABLE_STATIC_ASSERT(offsetof(CTattooDef, CoversBodyAreaFlags) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CTattooDef, VisibilityMultiplier) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CTattooDef, SpecificCoversBodyAreaFlags) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CTattooDef, CustomFileName) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CTattooDef, CustomFileNameBase) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CTattooDef, CustomFileName_PStringData) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CTattooDef, CustomFileNameBase_PStringData) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CTattooDef, Attractiveness) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CTattooDef, Scariness) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CTattooDef, Goodstrength) == 0x5c);

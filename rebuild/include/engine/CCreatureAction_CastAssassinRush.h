@@ -8,18 +8,22 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CCreatureActionBase;
+
 #pragma pack(push, 1)
 struct CCreatureAction_CastAssassinRush {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _base_0x04[0x128];                         // +0x04 flattened base-class subobject(s)
-    bool          Override;                                  // +0x12c
-    unsigned char Dir[0xf];                                  // +0x12d C3DVector
-    float         Distance;                                  // +0x13c
-    long          Level;                                     // +0x140
-    unsigned char FinalAction[0x8];                          // +0x144 CCountedPointer<CCreatureActionBase>
-    bool          UseCollision;                              // +0x14c
-    bool          IsZTargetting;                             // +0x14d
-    unsigned char _pad_0x14e[0x2];                           // +0x14e
+    void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char        _base_0x04[0x128];                  // +0x04 flattened base-class subobject(s)
+    bool                 Override;                           // +0x12c
+    unsigned char        Dir[0xf];                           // +0x12d C3DVector
+    float                Distance;                           // +0x13c
+    long                 Level;                              // +0x140
+    CCreatureActionBase* FinalAction_Data;                   // +0x144 CCountedPointer<CCreatureActionBase>::Data
+    CCPPointerInfo*      FinalAction_Info;                   // +0x148 CCountedPointer<CCreatureActionBase>::Info
+    bool                 UseCollision;                       // +0x14c
+    bool                 IsZTargetting;                      // +0x14d
+    unsigned char        _pad_0x14e[0x2];                    // +0x14e
 };
 #pragma pack(pop)
 
@@ -29,7 +33,8 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, Override) == 0x12
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, Dir) == 0x12d);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, Distance) == 0x13c);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, Level) == 0x140);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, FinalAction) == 0x144);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, FinalAction_Data) == 0x144);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, FinalAction_Info) == 0x148);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, UseCollision) == 0x14c);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, IsZTargetting) == 0x14d);
 

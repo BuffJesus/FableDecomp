@@ -8,33 +8,35 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CObjectAugmentationsDef {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    long          NumberOfSlots;                             // +0x28
-    long          MaximumNumberOfSlots;                      // +0x2c
-    unsigned char AugmentationParticles[0x10];               // +0x30 map<EObjectAugmentationType,CObjectAugmentationParticleSet,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType_const_,CObjectAugmentationParticleSet>_>_>
-    unsigned long EmptySlotName;                             // +0x40
-    unsigned char InitialAugmentations[0x10];                // +0x44 vector<long,std::allocator<long>_>
-    unsigned char SlotUpgradeCosts[0x10];                    // +0x54 vector<long,std::allocator<long>_>
-    unsigned char InitSounds[0x10];                          // +0x64 map<EObjectAugmentationType,CDefString,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType_const_,CDefString>_>_>
-    unsigned char LoopingSounds[0x10];                       // +0x74 map<EObjectAugmentationType,CDefString,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType_const_,CDefString>_>_>
-    long          FireProjectileTrailEffect;                 // +0x84
-    long          LightningProjectileTrailEffect;            // +0x88
-    long          FireAndLightningProjectileTrailEffect;     // +0x8c
-    long          FireProjectileOnHitEffect;                 // +0x90
-    long          LightningProjectileOnHitEffect;            // +0x94
-    long          FireAndLightningProjectileOnHitEffect;     // +0x98
-    unsigned char WeaponTrailAttachmentPoint[0x4];           // +0x9c CCharString
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    long             NumberOfSlots;                          // +0x28
+    long             MaximumNumberOfSlots;                   // +0x2c
+    unsigned char    AugmentationParticles[0x10];            // +0x30 map<EObjectAugmentationType,CObjectAugmentationParticleSet,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType_const_,CObjectAugmentationParticleSet>_>_>
+    unsigned long    EmptySlotName;                          // +0x40
+    unsigned char    InitialAugmentations[0x10];             // +0x44 vector<long,std::allocator<long>_>
+    unsigned char    SlotUpgradeCosts[0x10];                 // +0x54 vector<long,std::allocator<long>_>
+    unsigned char    InitSounds[0x10];                       // +0x64 map<EObjectAugmentationType,CDefString,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType_const_,CDefString>_>_>
+    unsigned char    LoopingSounds[0x10];                    // +0x74 map<EObjectAugmentationType,CDefString,std::less<EObjectAugmentationType>,std::allocator<std::pair<EObjectAugmentationType_const_,CDefString>_>_>
+    long             FireProjectileTrailEffect;              // +0x84
+    long             LightningProjectileTrailEffect;         // +0x88
+    long             FireAndLightningProjectileTrailEffect;  // +0x8c
+    long             FireProjectileOnHitEffect;              // +0x90
+    long             LightningProjectileOnHitEffect;         // +0x94
+    long             FireAndLightningProjectileOnHitEffect;  // +0x98
+    CCharStringData* WeaponTrailAttachmentPoint_PStringData; // +0x9c CCharString::PStringData
 };
 #pragma pack(pop)
 
@@ -54,6 +56,6 @@ FABLE_STATIC_ASSERT(offsetof(CObjectAugmentationsDef, FireAndLightningProjectile
 FABLE_STATIC_ASSERT(offsetof(CObjectAugmentationsDef, FireProjectileOnHitEffect) == 0x90);
 FABLE_STATIC_ASSERT(offsetof(CObjectAugmentationsDef, LightningProjectileOnHitEffect) == 0x94);
 FABLE_STATIC_ASSERT(offsetof(CObjectAugmentationsDef, FireAndLightningProjectileOnHitEffect) == 0x98);
-FABLE_STATIC_ASSERT(offsetof(CObjectAugmentationsDef, WeaponTrailAttachmentPoint) == 0x9c);
+FABLE_STATIC_ASSERT(offsetof(CObjectAugmentationsDef, WeaponTrailAttachmentPoint_PStringData) == 0x9c);
 
 #endif // FABLE_ENGINE_COBJECTAUGMENTATIONSDEF_H

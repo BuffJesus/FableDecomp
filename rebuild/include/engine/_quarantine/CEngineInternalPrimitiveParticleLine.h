@@ -28,8 +28,12 @@ struct CEngineInternalPrimitiveParticleLine {
     unsigned char _pad_0x3c[0x4];                            // +0x3c
     unsigned char _pad_0x40[0x4];                            // +0x40
     unsigned char _pad_0x44[0x4];                            // +0x44
-    unsigned char Start[0xc];                                // +0x48 C3DVector
-    unsigned char End[0xc];                                  // +0x54 C3DVector
+    float         Start_X;                                   // +0x48 C3DVector::X
+    float         Start_Y;                                   // +0x4c C3DVector::Y
+    float         Start_Z;                                   // +0x50 C3DVector::Z
+    float         End_X;                                     // +0x54 C3DVector::X
+    float         End_Y;                                     // +0x58 C3DVector::Y
+    float         End_Z;                                     // +0x5c C3DVector::Z
     float         Width;                                     // +0x60
     unsigned char Colour[0x4];                               // +0x64 CRGBColour
 };
@@ -40,8 +44,12 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleLine, __vftable) ==
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleLine, fc) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleLine, v48) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleLine, v54) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleLine, Start) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleLine, End) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleLine, Start_X) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleLine, Start_Y) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleLine, Start_Z) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleLine, End_X) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleLine, End_Y) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleLine, End_Z) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleLine, Width) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveParticleLine, Colour) == 0x64);
 

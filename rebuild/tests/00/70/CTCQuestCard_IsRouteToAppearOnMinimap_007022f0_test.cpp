@@ -1,24 +1,21 @@
+#include "engine/CTCQuestCard.h"
 #include <stdio.h>
 
-struct RouteInner {
+struct CDefPointeeBase {
     char pad[0x59];
     char b59;
     char b5a;
     char b5b;
 };
 
-struct CTCQuestCard {
-    char pad0[0x0c];
-    RouteInner* inner;
-};
 
 int __fastcall CTCQuestCard_IsRouteToAppearOnMinimap(CTCQuestCard* self);
 
 int main()
 {
-    RouteInner ri;
+    CDefPointeeBase ri;
     CTCQuestCard card;
-    card.inner = &ri;
+    card.PDef_Object = &ri;
 
     ri.b59 = 0; ri.b5b = 1;
     if (CTCQuestCard_IsRouteToAppearOnMinimap(&card) != 1) { printf("FAIL1\n"); return 1; }

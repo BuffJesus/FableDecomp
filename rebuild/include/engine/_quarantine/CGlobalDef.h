@@ -8,82 +8,92 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CGlobalDef {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char _pad_0x28[0x4];                            // +0x28
-    unsigned char _pad_0x2c[0x4];                            // +0x2c
-    unsigned char _pad_0x30[0x4];                            // +0x30
-    unsigned char _pad_0x34[0x4];                            // +0x34
-    unsigned char _pad_0x38[0x4];                            // +0x38
-    unsigned char _pad_0x3c[0x4];                            // +0x3c
-    long          ControlSchemePC;                           // +0x40
-    long          ControlSchemePCAggressive;                 // +0x44
-    long          ControlSchemeXBOX;                         // +0x48
-    long          ControlSchemeXBOXAggressive;               // +0x4c
-    long          PhysicsTexture;                            // +0x50
-    long          InvalidThemeStandin;                       // +0x54
-    long          DefaultEngineThemeDef;                     // +0x58
-    float         StaticMapGenerationEstimatedMaxCameraHeightAboveLandscape; // +0x5c
-    long          GraphicWeaponTrail;                        // +0x60
-    long          GraphicWeaponTrail2;                       // +0x64
-    long          GraphicWeaponTrailArrow;                   // +0x68
-    long          WeaponTrailAlpha;                          // +0x6c
-    float         WeaponTrailAlphaFadeOffTime;               // +0x70
-    long          WeaponTrailArrowAlpha;                     // +0x74
-    float         WeaponTrailArrowAlphaFadeOffTime;          // +0x78
-    long          WeaponTrialNumFramesToFadeOut;             // +0x7c
-    long          HealthPickupValue;                         // +0x80
-    long          RespawnDelay;                              // +0x84
-    long          ScrabbleAngle;                             // +0x88
-    long          SlideAngle;                                // +0x8c
-    long          MaxFollowers;                              // +0x90
-    unsigned char PickupGoldSoundCriteria[0x4];              // +0x94 CCharString
-    unsigned char PickupItemSoundCriteria[0x4];              // +0x98 CCharString
-    unsigned char OnClickSoundCriteria[0x4];                 // +0x9c CCharString
-    long          EditorSpangleCursor;                       // +0xa0
-    long          EditorCircleSprite;                        // +0xa4
-    long          EditorSecondaryCircleSprite;               // +0xa8
-    long          TestSpeech;                                // +0xac
-    unsigned char MimeSpeechIndex[0x4];                      // +0xb0 CCharString
-    long          AdultSleepTimeStart;                       // +0xb4
-    long          AdultSleepTimeEnd;                         // +0xb8
-    long          ChildSleepTimeStart;                       // +0xbc
-    long          ChildSleepTimeEnd;                         // +0xc0
-    long          ElderlySleepTimeStart;                     // +0xc4
-    long          ElderlySleepTimeEnd;                       // +0xc8
-    float         CreatureGeneratorRegenDelaySeconds;        // +0xcc
-    long          Music;                                     // +0xd0
-    float         AgeIncreasePerLevelUp;                     // +0xd4
-    long          E3BodgeFireflyGraphic;                     // +0xd8
-    unsigned char SwitchGraphic[0xe];                        // +0xdc CEngineGraphic
-    unsigned char TrackGraphic[0xe];                         // +0xea CEngineGraphic
-    unsigned char ConversationCameras[0x10];                 // +0xf8 map<long,CCharString,std::less<long>,std::allocator<std::pair<long_const_,CCharString>_>_>
-    unsigned char PermittedAINarrators[0x10];                // +0x108 vector<CCharString,std::allocator<CCharString>_>
-    unsigned char DialogueLayers[0x10];                      // +0x118 vector<NSpeechGainManager::CDialogueLayerDef,std::allocator<NSpeechGainManager::CDialogueLayerDef>_>
-    long          OpinionDebugIndicatorIcon;                 // +0x128
-    long          WifeLoveIndicatorIcon;                     // +0x12c
-    long          WifeEngagedIndicatorIcon;                  // +0x130
-    long          WifeMarriedIndicatorIcon;                  // +0x134
-    long          ExpressionIndicatorIcon;                   // +0x138
-    long          FollowerIndicatorIcon;                     // +0x13c
-    float         EmoteIconDrawDistance;                     // +0x140
-    float         AngleToBeConsideredVertical;               // +0x144
-    float         SoundGainLowerValueWhenInsideOutside;      // +0x148
-    long          TeleportOutParticleEffect;                 // +0x14c
-    float         TeleportFadeOutTimeInSeconds;              // +0x150
-    long          TeleportInParticleEffect;                  // +0x154
-    float         TeleportFadeInTimeInSeconds;               // +0x158
-    float         DamageForMaximumBlood;                     // +0x15c
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned char    _pad_0x28[0x4];                         // +0x28
+    unsigned char    _pad_0x2c[0x4];                         // +0x2c
+    unsigned char    _pad_0x30[0x4];                         // +0x30
+    unsigned char    _pad_0x34[0x4];                         // +0x34
+    unsigned char    _pad_0x38[0x4];                         // +0x38
+    unsigned char    _pad_0x3c[0x4];                         // +0x3c
+    long             ControlSchemePC;                        // +0x40
+    long             ControlSchemePCAggressive;              // +0x44
+    long             ControlSchemeXBOX;                      // +0x48
+    long             ControlSchemeXBOXAggressive;            // +0x4c
+    long             PhysicsTexture;                         // +0x50
+    long             InvalidThemeStandin;                    // +0x54
+    long             DefaultEngineThemeDef;                  // +0x58
+    float            StaticMapGenerationEstimatedMaxCameraHeightAboveLandscape; // +0x5c
+    long             GraphicWeaponTrail;                     // +0x60
+    long             GraphicWeaponTrail2;                    // +0x64
+    long             GraphicWeaponTrailArrow;                // +0x68
+    long             WeaponTrailAlpha;                       // +0x6c
+    float            WeaponTrailAlphaFadeOffTime;            // +0x70
+    long             WeaponTrailArrowAlpha;                  // +0x74
+    float            WeaponTrailArrowAlphaFadeOffTime;       // +0x78
+    long             WeaponTrialNumFramesToFadeOut;          // +0x7c
+    long             HealthPickupValue;                      // +0x80
+    long             RespawnDelay;                           // +0x84
+    long             ScrabbleAngle;                          // +0x88
+    long             SlideAngle;                             // +0x8c
+    long             MaxFollowers;                           // +0x90
+    CCharStringData* PickupGoldSoundCriteria_PStringData;    // +0x94 CCharString::PStringData
+    CCharStringData* PickupItemSoundCriteria_PStringData;    // +0x98 CCharString::PStringData
+    CCharStringData* OnClickSoundCriteria_PStringData;       // +0x9c CCharString::PStringData
+    long             EditorSpangleCursor;                    // +0xa0
+    long             EditorCircleSprite;                     // +0xa4
+    long             EditorSecondaryCircleSprite;            // +0xa8
+    long             TestSpeech;                             // +0xac
+    CCharStringData* MimeSpeechIndex_PStringData;            // +0xb0 CCharString::PStringData
+    long             AdultSleepTimeStart;                    // +0xb4
+    long             AdultSleepTimeEnd;                      // +0xb8
+    long             ChildSleepTimeStart;                    // +0xbc
+    long             ChildSleepTimeEnd;                      // +0xc0
+    long             ElderlySleepTimeStart;                  // +0xc4
+    long             ElderlySleepTimeEnd;                    // +0xc8
+    float            CreatureGeneratorRegenDelaySeconds;     // +0xcc
+    long             Music;                                  // +0xd0
+    float            AgeIncreasePerLevelUp;                  // +0xd4
+    long             E3BodgeFireflyGraphic;                  // +0xd8
+    unsigned long    SwitchGraphic_BankIndex;                // +0xdc CEngineGraphic::BankIndex
+    float            SwitchGraphic_AnimStep;                 // +0xe0 CEngineGraphic::AnimStep
+    float            SwitchGraphic_RenderSizeX;              // +0xe4 CEngineGraphic::RenderSizeX
+    bool             SwitchGraphic_AdditiveAlpha;            // +0xe8 CEngineGraphic::AdditiveAlpha
+    unsigned char    SwitchGraphic_Type;                     // +0xe9 CEngineGraphic::Type
+    unsigned long    TrackGraphic_BankIndex;                 // +0xea CEngineGraphic::BankIndex
+    float            TrackGraphic_AnimStep;                  // +0xee CEngineGraphic::AnimStep
+    float            TrackGraphic_RenderSizeX;               // +0xf2 CEngineGraphic::RenderSizeX
+    bool             TrackGraphic_AdditiveAlpha;             // +0xf6 CEngineGraphic::AdditiveAlpha
+    unsigned char    TrackGraphic_Type;                      // +0xf7 CEngineGraphic::Type
+    unsigned char    ConversationCameras[0x10];              // +0xf8 map<long,CCharString,std::less<long>,std::allocator<std::pair<long_const_,CCharString>_>_>
+    unsigned char    PermittedAINarrators[0x10];             // +0x108 vector<CCharString,std::allocator<CCharString>_>
+    unsigned char    DialogueLayers[0x10];                   // +0x118 vector<NSpeechGainManager::CDialogueLayerDef,std::allocator<NSpeechGainManager::CDialogueLayerDef>_>
+    long             OpinionDebugIndicatorIcon;              // +0x128
+    long             WifeLoveIndicatorIcon;                  // +0x12c
+    long             WifeEngagedIndicatorIcon;               // +0x130
+    long             WifeMarriedIndicatorIcon;               // +0x134
+    long             ExpressionIndicatorIcon;                // +0x138
+    long             FollowerIndicatorIcon;                  // +0x13c
+    float            EmoteIconDrawDistance;                  // +0x140
+    float            AngleToBeConsideredVertical;            // +0x144
+    float            SoundGainLowerValueWhenInsideOutside;   // +0x148
+    long             TeleportOutParticleEffect;              // +0x14c
+    float            TeleportFadeOutTimeInSeconds;           // +0x150
+    long             TeleportInParticleEffect;               // +0x154
+    float            TeleportFadeInTimeInSeconds;            // +0x158
+    float            DamageForMaximumBlood;                  // +0x15c
 };
 #pragma pack(pop)
 
@@ -110,14 +120,14 @@ FABLE_STATIC_ASSERT(offsetof(CGlobalDef, RespawnDelay) == 0x84);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, ScrabbleAngle) == 0x88);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, SlideAngle) == 0x8c);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, MaxFollowers) == 0x90);
-FABLE_STATIC_ASSERT(offsetof(CGlobalDef, PickupGoldSoundCriteria) == 0x94);
-FABLE_STATIC_ASSERT(offsetof(CGlobalDef, PickupItemSoundCriteria) == 0x98);
-FABLE_STATIC_ASSERT(offsetof(CGlobalDef, OnClickSoundCriteria) == 0x9c);
+FABLE_STATIC_ASSERT(offsetof(CGlobalDef, PickupGoldSoundCriteria_PStringData) == 0x94);
+FABLE_STATIC_ASSERT(offsetof(CGlobalDef, PickupItemSoundCriteria_PStringData) == 0x98);
+FABLE_STATIC_ASSERT(offsetof(CGlobalDef, OnClickSoundCriteria_PStringData) == 0x9c);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, EditorSpangleCursor) == 0xa0);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, EditorCircleSprite) == 0xa4);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, EditorSecondaryCircleSprite) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, TestSpeech) == 0xac);
-FABLE_STATIC_ASSERT(offsetof(CGlobalDef, MimeSpeechIndex) == 0xb0);
+FABLE_STATIC_ASSERT(offsetof(CGlobalDef, MimeSpeechIndex_PStringData) == 0xb0);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, AdultSleepTimeStart) == 0xb4);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, AdultSleepTimeEnd) == 0xb8);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, ChildSleepTimeStart) == 0xbc);
@@ -128,8 +138,16 @@ FABLE_STATIC_ASSERT(offsetof(CGlobalDef, CreatureGeneratorRegenDelaySeconds) == 
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, Music) == 0xd0);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, AgeIncreasePerLevelUp) == 0xd4);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, E3BodgeFireflyGraphic) == 0xd8);
-FABLE_STATIC_ASSERT(offsetof(CGlobalDef, SwitchGraphic) == 0xdc);
-FABLE_STATIC_ASSERT(offsetof(CGlobalDef, TrackGraphic) == 0xea);
+FABLE_STATIC_ASSERT(offsetof(CGlobalDef, SwitchGraphic_BankIndex) == 0xdc);
+FABLE_STATIC_ASSERT(offsetof(CGlobalDef, SwitchGraphic_AnimStep) == 0xe0);
+FABLE_STATIC_ASSERT(offsetof(CGlobalDef, SwitchGraphic_RenderSizeX) == 0xe4);
+FABLE_STATIC_ASSERT(offsetof(CGlobalDef, SwitchGraphic_AdditiveAlpha) == 0xe8);
+FABLE_STATIC_ASSERT(offsetof(CGlobalDef, SwitchGraphic_Type) == 0xe9);
+FABLE_STATIC_ASSERT(offsetof(CGlobalDef, TrackGraphic_BankIndex) == 0xea);
+FABLE_STATIC_ASSERT(offsetof(CGlobalDef, TrackGraphic_AnimStep) == 0xee);
+FABLE_STATIC_ASSERT(offsetof(CGlobalDef, TrackGraphic_RenderSizeX) == 0xf2);
+FABLE_STATIC_ASSERT(offsetof(CGlobalDef, TrackGraphic_AdditiveAlpha) == 0xf6);
+FABLE_STATIC_ASSERT(offsetof(CGlobalDef, TrackGraphic_Type) == 0xf7);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, ConversationCameras) == 0xf8);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, PermittedAINarrators) == 0x108);
 FABLE_STATIC_ASSERT(offsetof(CGlobalDef, DialogueLayers) == 0x118);

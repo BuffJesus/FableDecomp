@@ -73,8 +73,16 @@ struct CThingCreatureDef {
     float         Damage;                                    // +0xfc
     long          DamageEffectDef;                           // +0x100
     long          StunnedParticle;                           // +0x104
-    unsigned char Graphic[0xe];                              // +0x108 CEngineGraphic
-    unsigned char EyeGraphic[0xe];                           // +0x116 CEngineGraphic
+    unsigned long Graphic_BankIndex;                         // +0x108 CEngineGraphic::BankIndex
+    float         Graphic_AnimStep;                          // +0x10c CEngineGraphic::AnimStep
+    float         Graphic_RenderSizeX;                       // +0x110 CEngineGraphic::RenderSizeX
+    bool          Graphic_AdditiveAlpha;                     // +0x114 CEngineGraphic::AdditiveAlpha
+    unsigned char Graphic_Type;                              // +0x115 CEngineGraphic::Type
+    unsigned long EyeGraphic_BankIndex;                      // +0x116 CEngineGraphic::BankIndex
+    float         EyeGraphic_AnimStep;                       // +0x11a CEngineGraphic::AnimStep
+    float         EyeGraphic_RenderSizeX;                    // +0x11e CEngineGraphic::RenderSizeX
+    bool          EyeGraphic_AdditiveAlpha;                  // +0x122 CEngineGraphic::AdditiveAlpha
+    unsigned char EyeGraphic_Type;                           // +0x123 CEngineGraphic::Type
     long          DefaultOwner;                              // +0x124
     unsigned char ControlledMovementType[0x4];               // +0x128 EControlledMovementType
     long          CombatTypeDef;                             // +0x12c
@@ -128,8 +136,16 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, Property) == 0xf8);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, Damage) == 0xfc);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, DamageEffectDef) == 0x100);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, StunnedParticle) == 0x104);
-FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, Graphic) == 0x108);
-FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, EyeGraphic) == 0x116);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, Graphic_BankIndex) == 0x108);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, Graphic_AnimStep) == 0x10c);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, Graphic_RenderSizeX) == 0x110);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, Graphic_AdditiveAlpha) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, Graphic_Type) == 0x115);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, EyeGraphic_BankIndex) == 0x116);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, EyeGraphic_AnimStep) == 0x11a);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, EyeGraphic_RenderSizeX) == 0x11e);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, EyeGraphic_AdditiveAlpha) == 0x122);
+FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, EyeGraphic_Type) == 0x123);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, DefaultOwner) == 0x124);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, ControlledMovementType) == 0x128);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, CombatTypeDef) == 0x12c);

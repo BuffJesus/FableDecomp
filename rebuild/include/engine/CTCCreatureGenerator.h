@@ -8,6 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
 struct CTCShapeManager;
 
 #pragma pack(push, 1)
@@ -37,7 +38,7 @@ struct CTCCreatureGenerator {
     bool             UndeadTriggered;                        // +0xa4
     bool             Destroyed;                              // +0xa5
     unsigned char    _pad_0xa6[0x2];                         // +0xa6
-    unsigned char    PDef[0x4];                              // +0xa8 CDefPointer<CCreatureGeneratorDef_const_>
+    CDefPointeeBase* PDef_Object;                            // +0xa8 CDefPointer<CCreatureGeneratorDef_const_>::Object
     unsigned char    PRandomParticle[0x8];                   // +0xac CIntelligentPointer<CThing>
     long             FramesUntilRandomEffect;                // +0xb4
     long             FramesUntilRandomSoundEffect;           // +0xb8
@@ -68,7 +69,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCCreatureGenerator, DebugPrimitives) == 0x90);
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureGenerator, CreationCount) == 0xa0);
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureGenerator, UndeadTriggered) == 0xa4);
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureGenerator, Destroyed) == 0xa5);
-FABLE_STATIC_ASSERT(offsetof(CTCCreatureGenerator, PDef) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CTCCreatureGenerator, PDef_Object) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureGenerator, PRandomParticle) == 0xac);
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureGenerator, FramesUntilRandomEffect) == 0xb4);
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureGenerator, FramesUntilRandomSoundEffect) == 0xb8);

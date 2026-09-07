@@ -12,7 +12,7 @@
 struct CCreatureAction_GenericAimProjectileWeapon {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0xc];                            // +0x04
-    int           f10;                                       // +0x10 retail-only (CCreatureActionGenericAimProjectileWeapon_OnAnimationLoaded_008bedc0.cpp)
+    long          f10;                                       // +0x10 retail-only (previous header)
     unsigned char _pad_0x14[0x118];                          // +0x14
 };
 #pragma pack(pop)

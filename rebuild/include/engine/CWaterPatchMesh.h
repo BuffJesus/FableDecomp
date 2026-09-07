@@ -16,7 +16,8 @@ struct CVertexHeightData;
 struct CWaterPatchMesh {
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     CEngineLandscapeMap* Map;                                // +0x04
-    unsigned char        Offset[0x8];                        // +0x08 C2DCoordI
+    long                 Offset_X;                           // +0x08 C2DCoordI::X
+    long                 Offset_Y;                           // +0x0c C2DCoordI::Y
     CVertexBufferWin32*  VertexBuffer;                       // +0x10
     CVertexHeightData*   VertexHeightData;                   // +0x14
     float                WaterBodySpan;                      // +0x18
@@ -27,7 +28,8 @@ struct CWaterPatchMesh {
 FABLE_STATIC_ASSERT(sizeof(CWaterPatchMesh) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, Map) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, Offset) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, Offset_X) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, Offset_Y) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, VertexBuffer) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, VertexHeightData) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CWaterPatchMesh, WaterBodySpan) == 0x18);

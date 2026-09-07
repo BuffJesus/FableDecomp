@@ -1,6 +1,6 @@
-struct Sub; extern int __fastcall cat_probe(Sub*);
-struct S { char pad[0x74]; Sub* sub; };
-bool __fastcall CanAnimationTransitionOut(S* self)
+#include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAnimationEntry; extern int __fastcall cat_probe(CAnimationEntry*);
+bool __fastcall CanAnimationTransitionOut(CCreatureActionBase* self)
 {
-    return (~cat_probe(self->sub)) & 1;
+    return (~cat_probe(self->PAnimEntry_Data)) & 1;
 }

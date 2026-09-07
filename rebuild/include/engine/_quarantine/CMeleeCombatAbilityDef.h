@@ -26,8 +26,8 @@ struct CMeleeCombatAbilityDef {
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
     unsigned char _pad_0x3c[0x4];                            // +0x3c
-    unsigned char FlourishAnimName[0x4];                     // +0x40 CDefString
-    unsigned char FlourishResponseAnimName[0x4];             // +0x44 CDefString
+    long          FlourishAnimName_TablePos;                 // +0x40 CDefString::TablePos
+    long          FlourishResponseAnimName_TablePos;         // +0x44 CDefString::TablePos
     float         DamageMultiplier;                          // +0x48
     bool          Flourish;                                  // +0x4c
     bool          BlockCounter;                              // +0x4d
@@ -48,8 +48,8 @@ struct CMeleeCombatAbilityDef {
 
 FABLE_STATIC_ASSERT(sizeof(CMeleeCombatAbilityDef) == 0x88);
 FABLE_STATIC_ASSERT(offsetof(CMeleeCombatAbilityDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CMeleeCombatAbilityDef, FlourishAnimName) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CMeleeCombatAbilityDef, FlourishResponseAnimName) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CMeleeCombatAbilityDef, FlourishAnimName_TablePos) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CMeleeCombatAbilityDef, FlourishResponseAnimName_TablePos) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CMeleeCombatAbilityDef, DamageMultiplier) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CMeleeCombatAbilityDef, Flourish) == 0x4c);
 FABLE_STATIC_ASSERT(offsetof(CMeleeCombatAbilityDef, BlockCounter) == 0x4d);

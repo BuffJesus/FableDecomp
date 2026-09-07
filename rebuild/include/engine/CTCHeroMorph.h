@@ -8,37 +8,42 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CMeshMorphSet;
+
 #pragma pack(push, 1)
 struct CTCHeroMorph {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char PMeshMorphSet[0x8];                        // +0x0c CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet>
-    unsigned char ParticleEmitters[0xc];                     // +0x14 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
-    unsigned char IdleParticleEmitters[0xc];                 // +0x20 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
-    unsigned char Tattoos[0x10];                             // +0x2c vector<CDefPointer<CThingBaseDef_const_>,std::allocator<CDefPointer<CThingBaseDef_const_>_>_>
-    unsigned char CustomToBankIndex[0x10];                   // +0x3c map<CCharString,std::pair<long,CDateAndTime>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_>_>
-    long          FrameTattoosChanged;                       // +0x4c
-    long          FrameHeroBecameIdle;                       // +0x50
-    bool          IdleParticlesAdded;                        // +0x54
-    bool          Changed;                                   // +0x55
-    unsigned char _pad_0x56[0x2];                            // +0x56
-    float         Strength;                                  // +0x58
-    float         Berserk;                                   // +0x5c
-    float         Will;                                      // +0x60
-    float         Skill;                                     // +0x64
-    float         Age;                                       // +0x68
-    float         Morality;                                  // +0x6c
-    float         Fatness;                                   // +0x70
-    float         Tan;                                       // +0x74
-    bool          Teenager;                                  // +0x78
-    unsigned char _pad_0x79[0x3];                            // +0x79
+    void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char   _pad_0x04[0x4];                          // +0x04
+    unsigned char   _pad_0x08[0x4];                          // +0x08
+    CMeshMorphSet*  PMeshMorphSet_Data;                      // +0x0c CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet>::Data
+    CCPPointerInfo* PMeshMorphSet_Info;                      // +0x10 CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet>::Info
+    unsigned char   ParticleEmitters[0xc];                   // +0x14 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned char   IdleParticleEmitters[0xc];               // +0x20 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned char   Tattoos[0x10];                           // +0x2c vector<CDefPointer<CThingBaseDef_const_>,std::allocator<CDefPointer<CThingBaseDef_const_>_>_>
+    unsigned char   CustomToBankIndex[0x10];                 // +0x3c map<CCharString,std::pair<long,CDateAndTime>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_>_>
+    long            FrameTattoosChanged;                     // +0x4c
+    long            FrameHeroBecameIdle;                     // +0x50
+    bool            IdleParticlesAdded;                      // +0x54
+    bool            Changed;                                 // +0x55
+    unsigned char   _pad_0x56[0x2];                          // +0x56
+    float           Strength;                                // +0x58
+    float           Berserk;                                 // +0x5c
+    float           Will;                                    // +0x60
+    float           Skill;                                   // +0x64
+    float           Age;                                     // +0x68
+    float           Morality;                                // +0x6c
+    float           Fatness;                                 // +0x70
+    float           Tan;                                     // +0x74
+    bool            Teenager;                                // +0x78
+    unsigned char   _pad_0x79[0x3];                          // +0x79
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCHeroMorph) == 0x7c);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroMorph, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroMorph, PMeshMorphSet) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroMorph, PMeshMorphSet_Data) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroMorph, PMeshMorphSet_Info) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroMorph, ParticleEmitters) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroMorph, IdleParticleEmitters) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroMorph, Tattoos) == 0x2c);

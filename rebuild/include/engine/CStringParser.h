@@ -8,6 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
 struct _func___cdecl_void_CCharString_ptr;
 
 #pragma pack(push, 1)
@@ -15,8 +16,8 @@ struct CStringParser {
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
     void*                               String;              // +0x04 char *
     unsigned long                       BaseLineOffset;      // +0x08
-    unsigned char                       Filename[0x4];       // +0x0c CCharString
-    unsigned char                       TempCharString[0x4]; // +0x10 CCharString
+    CCharStringData*                    Filename_PStringData; // +0x0c CCharString::PStringData
+    CCharStringData*                    TempCharString_PStringData; // +0x10 CCharString::PStringData
     unsigned char                       Comments[0xc];       // +0x14 list<CStringParserCommentBoundaries,std::allocator<CStringParserCommentBoundaries>_>
     _func___cdecl_void_CCharString_ptr* ErrorCallback;       // +0x20
     unsigned char                       CursorPos[0xc];      // +0x24 CCursorPos
@@ -27,8 +28,8 @@ FABLE_STATIC_ASSERT(sizeof(CStringParser) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CStringParser, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CStringParser, String) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CStringParser, BaseLineOffset) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CStringParser, Filename) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CStringParser, TempCharString) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CStringParser, Filename_PStringData) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CStringParser, TempCharString_PStringData) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CStringParser, Comments) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CStringParser, ErrorCallback) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CStringParser, CursorPos) == 0x24);

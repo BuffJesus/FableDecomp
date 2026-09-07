@@ -20,10 +20,10 @@ struct CBedDef {
     unsigned char _pad_0x1c[0x4];                            // +0x1c
     unsigned char _pad_0x20[0x4];                            // +0x20
     unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char GetInBedAnimName[0x4];                     // +0x28 CDefString
-    unsigned char SleepInBedAnimName[0x4];                   // +0x2c CDefString
-    unsigned char GetUpFromBedAnimName[0x4];                 // +0x30 CDefString
-    unsigned char GetUpFromBedFastAnimName[0x4];             // +0x34 CDefString
+    long          GetInBedAnimName_TablePos;                 // +0x28 CDefString::TablePos
+    long          SleepInBedAnimName_TablePos;               // +0x2c CDefString::TablePos
+    long          GetUpFromBedAnimName_TablePos;             // +0x30 CDefString::TablePos
+    long          GetUpFromBedFastAnimName_TablePos;         // +0x34 CDefString::TablePos
     bool          Animating;                                 // +0x38
     unsigned char _pad_0x39[0x3];                            // +0x39
 };
@@ -31,10 +31,10 @@ struct CBedDef {
 
 FABLE_STATIC_ASSERT(sizeof(CBedDef) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CBedDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CBedDef, GetInBedAnimName) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CBedDef, SleepInBedAnimName) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CBedDef, GetUpFromBedAnimName) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CBedDef, GetUpFromBedFastAnimName) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CBedDef, GetInBedAnimName_TablePos) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CBedDef, SleepInBedAnimName_TablePos) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CBedDef, GetUpFromBedAnimName_TablePos) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CBedDef, GetUpFromBedFastAnimName_TablePos) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CBedDef, Animating) == 0x38);
 
 #endif // FABLE_ENGINE_CBEDDEF_H

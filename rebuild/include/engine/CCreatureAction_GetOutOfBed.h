@@ -11,7 +11,7 @@
 #pragma pack(push, 1)
 struct CCreatureAction_GetOutOfBed {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    bool          interrupted;                               // +0x04 retail-only (CCreatureActionGetOutOfBed_FinishActionCCreatureActionGetOutOfBedUAEXXZ_008421c0.cpp)
+    unsigned char interrupted;                               // +0x04 retail-only (previous header)
     unsigned char _pad_0x05[0x3];                            // +0x05
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c

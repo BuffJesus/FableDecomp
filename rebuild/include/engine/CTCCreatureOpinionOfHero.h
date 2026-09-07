@@ -8,32 +8,34 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
+
 #pragma pack(push, 1)
 struct CTCCreatureOpinionOfHero {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    long          LastOpinionReactionFrame;                  // +0x0c
-    float         NumberOfTimesHit;                          // +0x10
-    float         ToleranceToBeingHitOverride;               // +0x14
-    long          FrameToDecayNumberOfTimesHit;              // +0x18
-    unsigned char PDef[0x4];                                 // +0x1c CDefPointer<COpinionOfHeroDef_const_>
-    unsigned char PPersonalityDef[0x4];                      // +0x20 CDefPointer<COpinionPersonalityDef_const_>
-    unsigned char AttitudeMask[0x14];                        // +0x24 vector<bool,std::allocator<bool>_>
-    unsigned char ReactionMask[0x14];                        // +0x38 vector<bool,std::allocator<bool>_>
-    unsigned char DeedMask[0x14];                            // +0x4c vector<bool,std::allocator<bool>_>
-    unsigned char RelativeOpinion[0x10];                     // +0x60 COpinionSet
-    unsigned char PendingDeeds[0xc];                         // +0x70 list<long,std::allocator<long>_>
-    long          LastFrameAppliedDeedEffect[92];            // +0x7c
-    unsigned char KnownDeeds[0x450];                         // +0x1ec list<long,std::allocator<long>_>[92]
-    unsigned char TransientOffsets[0xc];                     // +0x63c list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>
-    unsigned char ForcedAttitude[0x4];                       // +0x648 EOpinionAttitudeType
-    bool          InteractedFlag;                            // +0x64c
-    bool          GreetedFlag;                               // +0x64d
-    bool          HeroOpinionEnemy;                          // +0x64e
-    bool          InFindAGuardAndYellForHelp;                // +0x64f
-    unsigned char PUnknownThreatOpinionSource[0x8];          // +0x650 CIntelligentPointer<CThing>
-    long          FrameLastUpdatedUnknownThreat;             // +0x658
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    long             LastOpinionReactionFrame;               // +0x0c
+    float            NumberOfTimesHit;                       // +0x10
+    float            ToleranceToBeingHitOverride;            // +0x14
+    long             FrameToDecayNumberOfTimesHit;           // +0x18
+    CDefPointeeBase* PDef_Object;                            // +0x1c CDefPointer<COpinionOfHeroDef_const_>::Object
+    CDefPointeeBase* PPersonalityDef_Object;                 // +0x20 CDefPointer<COpinionPersonalityDef_const_>::Object
+    unsigned char    AttitudeMask[0x14];                     // +0x24 vector<bool,std::allocator<bool>_>
+    unsigned char    ReactionMask[0x14];                     // +0x38 vector<bool,std::allocator<bool>_>
+    unsigned char    DeedMask[0x14];                         // +0x4c vector<bool,std::allocator<bool>_>
+    unsigned char    RelativeOpinion[0x10];                  // +0x60 COpinionSet
+    unsigned char    PendingDeeds[0xc];                      // +0x70 list<long,std::allocator<long>_>
+    long             LastFrameAppliedDeedEffect[92];         // +0x7c
+    unsigned char    KnownDeeds[0x450];                      // +0x1ec list<long,std::allocator<long>_>[92]
+    unsigned char    TransientOffsets[0xc];                  // +0x63c list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>
+    unsigned char    ForcedAttitude[0x4];                    // +0x648 EOpinionAttitudeType
+    bool             InteractedFlag;                         // +0x64c
+    bool             GreetedFlag;                            // +0x64d
+    bool             HeroOpinionEnemy;                       // +0x64e
+    bool             InFindAGuardAndYellForHelp;             // +0x64f
+    unsigned char    PUnknownThreatOpinionSource[0x8];       // +0x650 CIntelligentPointer<CThing>
+    long             FrameLastUpdatedUnknownThreat;          // +0x658
 };
 #pragma pack(pop)
 
@@ -43,8 +45,8 @@ FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, LastOpinionReactionFrame)
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, NumberOfTimesHit) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, ToleranceToBeingHitOverride) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, FrameToDecayNumberOfTimesHit) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, PDef) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, PPersonalityDef) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, PDef_Object) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, PPersonalityDef_Object) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, AttitudeMask) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, ReactionMask) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, DeedMask) == 0x4c);

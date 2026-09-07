@@ -20,19 +20,19 @@ struct CCarrySlotDef {
     unsigned char _pad_0x1c[0x4];                            // +0x1c
     unsigned char _pad_0x20[0x4];                            // +0x20
     unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char DummyPosName[0x4];                         // +0x28 CDefString
+    long          DummyPosName_TablePos;                     // +0x28 CDefString::TablePos
     long          DummyPosIndex;                             // +0x2c
     bool          PrimarySlot;                               // +0x30
     unsigned char _pad_0x31[0x3];                            // +0x31
-    unsigned char SecondaryDummyPosName[0x4];                // +0x34 CDefString
+    long          SecondaryDummyPosName_TablePos;            // +0x34 CDefString::TablePos
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCarrySlotDef) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CCarrySlotDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCarrySlotDef, DummyPosName) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CCarrySlotDef, DummyPosName_TablePos) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CCarrySlotDef, DummyPosIndex) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CCarrySlotDef, PrimarySlot) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CCarrySlotDef, SecondaryDummyPosName) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CCarrySlotDef, SecondaryDummyPosName_TablePos) == 0x34);
 
 #endif // FABLE_ENGINE_CCARRYSLOTDEF_H

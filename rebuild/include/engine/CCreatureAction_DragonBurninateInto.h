@@ -85,22 +85,34 @@ struct CCreatureAction_DragonBurninateInto {
     unsigned char _pad_0x120[0x4];                           // +0x120
     unsigned char _pad_0x124[0x4];                           // +0x124
     unsigned char _pad_0x128[0x4];                           // +0x128
-    unsigned char PreviousPoint[0xc];                        // +0x12c C3DVector
+    float         PreviousPoint_X;                           // +0x12c C3DVector::X
+    float         PreviousPoint_Y;                           // +0x130 C3DVector::Y
+    float         PreviousPoint_Z;                           // +0x134 C3DVector::Z
     unsigned char MovementPoints[0x10];                      // +0x138 vector<C3DVector,std::allocator<C3DVector>_>
     float         BurnStart;                                 // +0x148
     float         BurnStop;                                  // +0x14c
-    unsigned char FlameStartPos[0xc];                        // +0x150 C3DVector
-    unsigned char FlameEndPos[0xc];                          // +0x15c C3DVector
+    float         FlameStartPos_X;                           // +0x150 C3DVector::X
+    float         FlameStartPos_Y;                           // +0x154 C3DVector::Y
+    float         FlameStartPos_Z;                           // +0x158 C3DVector::Z
+    float         FlameEndPos_X;                             // +0x15c C3DVector::X
+    float         FlameEndPos_Y;                             // +0x160 C3DVector::Y
+    float         FlameEndPos_Z;                             // +0x164 C3DVector::Z
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_DragonBurninateInto) == 0x168);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, PreviousPoint) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, PreviousPoint_X) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, PreviousPoint_Y) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, PreviousPoint_Z) == 0x134);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, MovementPoints) == 0x138);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, BurnStart) == 0x148);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, BurnStop) == 0x14c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, FlameStartPos) == 0x150);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, FlameEndPos) == 0x15c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, FlameStartPos_X) == 0x150);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, FlameStartPos_Y) == 0x154);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, FlameStartPos_Z) == 0x158);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, FlameEndPos_X) == 0x15c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, FlameEndPos_Y) == 0x160);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonBurninateInto, FlameEndPos_Z) == 0x164);
 
 #endif // FABLE_ENGINE_CCREATUREACTION_DRAGONBURNINATEINTO_H

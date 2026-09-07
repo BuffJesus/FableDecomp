@@ -40,8 +40,16 @@ struct CThingPhysicalSwitchDef {
     unsigned char _pad_0x6c[0x4];                            // +0x6c
     unsigned char _pad_0x70[0x4];                            // +0x70
     unsigned char TriggerType[0x4];                          // +0x74 EPSwitchTriggerType
-    unsigned char UntriggeredGraphic[0xe];                   // +0x78 CEngineGraphic
-    unsigned char TriggeredGraphic[0xe];                     // +0x86 CEngineGraphic
+    unsigned long UntriggeredGraphic_BankIndex;              // +0x78 CEngineGraphic::BankIndex
+    float         UntriggeredGraphic_AnimStep;               // +0x7c CEngineGraphic::AnimStep
+    float         UntriggeredGraphic_RenderSizeX;            // +0x80 CEngineGraphic::RenderSizeX
+    bool          UntriggeredGraphic_AdditiveAlpha;          // +0x84 CEngineGraphic::AdditiveAlpha
+    unsigned char UntriggeredGraphic_Type;                   // +0x85 CEngineGraphic::Type
+    unsigned long TriggeredGraphic_BankIndex;                // +0x86 CEngineGraphic::BankIndex
+    float         TriggeredGraphic_AnimStep;                 // +0x8a CEngineGraphic::AnimStep
+    float         TriggeredGraphic_RenderSizeX;              // +0x8e CEngineGraphic::RenderSizeX
+    bool          TriggeredGraphic_AdditiveAlpha;            // +0x92 CEngineGraphic::AdditiveAlpha
+    unsigned char TriggeredGraphic_Type;                     // +0x93 CEngineGraphic::Type
     long          TriggerSound;                              // +0x94
 };
 #pragma pack(pop)
@@ -49,8 +57,16 @@ struct CThingPhysicalSwitchDef {
 FABLE_STATIC_ASSERT(sizeof(CThingPhysicalSwitchDef) == 0x98);
 FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, TriggerType) == 0x74);
-FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, UntriggeredGraphic) == 0x78);
-FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, TriggeredGraphic) == 0x86);
+FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, UntriggeredGraphic_BankIndex) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, UntriggeredGraphic_AnimStep) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, UntriggeredGraphic_RenderSizeX) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, UntriggeredGraphic_AdditiveAlpha) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, UntriggeredGraphic_Type) == 0x85);
+FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, TriggeredGraphic_BankIndex) == 0x86);
+FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, TriggeredGraphic_AnimStep) == 0x8a);
+FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, TriggeredGraphic_RenderSizeX) == 0x8e);
+FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, TriggeredGraphic_AdditiveAlpha) == 0x92);
+FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, TriggeredGraphic_Type) == 0x93);
 FABLE_STATIC_ASSERT(offsetof(CThingPhysicalSwitchDef, TriggerSound) == 0x94);
 
 #endif // FABLE_ENGINE_CTHINGPHYSICALSWITCHDEF_H

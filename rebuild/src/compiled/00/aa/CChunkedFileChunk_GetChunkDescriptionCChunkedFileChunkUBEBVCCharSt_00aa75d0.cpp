@@ -1,6 +1,7 @@
-// Faithful VC7.1 translation of CChunkedFileChunk::GetChunkDescription (00aa75d0)
+// Faithful VC7.1 translation of CChunkedFileChunk_Methods::GetChunkDescription (00aa75d0)
 // Struct-return const method: return CCharString("...", -1);
 
+#include "engine/CChunkedFileChunk.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CCharString {
     char* m_ptr;
     int   m_len;
@@ -11,11 +12,10 @@ struct CCharString {
 // The literal at 0x129e4a0
 static const char* const s_desc = (const char*)0x129e4a0;
 
-struct CChunkedFileChunk {
-    void* vtbl;
+struct CChunkedFileChunk_Methods : CChunkedFileChunk {
     CCharString GetChunkDescription() const;
 };
 
-CCharString CChunkedFileChunk::GetChunkDescription() const {
+CCharString CChunkedFileChunk_Methods::GetChunkDescription() const {
     return CCharString(s_desc, -1);
 }

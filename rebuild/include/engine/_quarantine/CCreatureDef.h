@@ -8,66 +8,81 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CCreatureStatsDef;
+struct CExpressionSet;
+struct CRandomAppearanceMorph;
+struct CWoundMorphs;
+
 #pragma pack(push, 1)
 struct CCreatureDef {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char PWoundMorphs[0x8];                         // +0x28 CCountedPointer<CWoundMorphs>
-    unsigned char PRandomAppearanceMorph[0x8];               // +0x30 CCountedPointer<CRandomAppearanceMorph>
-    unsigned char PExpressions[0x8];                         // +0x38 CCountedPointer<CExpressionSet>
-    unsigned char PStats[0x8];                               // +0x40 CCountedPointer<CCreatureStatsDef>
-    unsigned char InitialActions[0x10];                      // +0x48 vector<long,std::allocator<long>_>
-    unsigned char InitialAppearanceModifiers[0x10];          // +0x58 vector<long,std::allocator<long>_>
-    unsigned char PhonemeAnim[0x10];                         // +0x68 map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>
-    unsigned char DialogueVoices[0x10];                      // +0x78 vector<CDefString,std::allocator<CDefString>_>
-    long          Inventory;                                 // +0x88
-    long          ClothingInventory;                         // +0x8c
-    long          WeaponsInventory;                          // +0x90
-    long          HeroAbilitiesScreenInventory;              // +0x94
-    long          QuestCardScreenInventory;                  // +0x98
-    long          MapScreenInventory;                        // +0x9c
-    long          StatsScreenInventory;                      // +0xa0
-    long          MagicScreenInventory;                      // +0xa4
-    long          ExperienceScreenInventory;                 // +0xa8
-    long          TradeScreenInventory;                      // +0xac
-    long          AugmentScreenInventory;                    // +0xb0
-    long          QuestsScreenInventory;                     // +0xb4
-    long          InGameMenuScreen;                          // +0xb8
-    unsigned long CreatureGroup;                             // +0xbc
-    unsigned char BattleCrySound[0x4];                       // +0xc0 CDefString
-    long          OpinionSourceDef;                          // +0xc4
-    long          RespawnWaitInDaysMin;                      // +0xc8
-    long          RespawnWaitInDaysMax;                      // +0xcc
-    long          RespawnWaitInFramesMin;                    // +0xd0
-    long          RespawnWaitInFramesMax;                    // +0xd4
-    bool          Short;                                     // +0xd8
-    bool          FlashOnHit;                                // +0xd9
-    bool          PickPocketable;                            // +0xda
-    bool          ChildThatCanRegionFollow;                  // +0xdb
-    bool          AllowedInProtectedTowns;                   // +0xdc
-    bool          UseActualHitPosForHitEffects;              // +0xdd
-    unsigned char _pad_0xde[0x2];                            // +0xde
-    unsigned char RadiusWeight[0x10];                        // +0xe0 CHeroAbilityStatWeight
-    unsigned char RadiusSpread[0x8];                         // +0xf0 CFloatRange
-    bool          AGhostIsWhatIBe;                           // +0xf8
-    unsigned char _pad_0xf9[0x3];                            // +0xf9
+    void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char           _pad_0x04[0x4];                  // +0x04
+    unsigned char           _pad_0x08[0x4];                  // +0x08
+    unsigned char           _pad_0x0c[0x4];                  // +0x0c
+    unsigned char           _pad_0x10[0x4];                  // +0x10
+    unsigned char           _pad_0x14[0x4];                  // +0x14
+    unsigned char           _pad_0x18[0x4];                  // +0x18
+    unsigned char           _pad_0x1c[0x4];                  // +0x1c
+    unsigned char           _pad_0x20[0x4];                  // +0x20
+    unsigned char           _pad_0x24[0x4];                  // +0x24
+    CWoundMorphs*           PWoundMorphs_Data;               // +0x28 CCountedPointer<CWoundMorphs>::Data
+    CCPPointerInfo*         PWoundMorphs_Info;               // +0x2c CCountedPointer<CWoundMorphs>::Info
+    CRandomAppearanceMorph* PRandomAppearanceMorph_Data;     // +0x30 CCountedPointer<CRandomAppearanceMorph>::Data
+    CCPPointerInfo*         PRandomAppearanceMorph_Info;     // +0x34 CCountedPointer<CRandomAppearanceMorph>::Info
+    CExpressionSet*         PExpressions_Data;               // +0x38 CCountedPointer<CExpressionSet>::Data
+    CCPPointerInfo*         PExpressions_Info;               // +0x3c CCountedPointer<CExpressionSet>::Info
+    CCreatureStatsDef*      PStats_Data;                     // +0x40 CCountedPointer<CCreatureStatsDef>::Data
+    CCPPointerInfo*         PStats_Info;                     // +0x44 CCountedPointer<CCreatureStatsDef>::Info
+    unsigned char           InitialActions[0x10];            // +0x48 vector<long,std::allocator<long>_>
+    unsigned char           InitialAppearanceModifiers[0x10]; // +0x58 vector<long,std::allocator<long>_>
+    unsigned char           PhonemeAnim[0x10];               // +0x68 map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>
+    unsigned char           DialogueVoices[0x10];            // +0x78 vector<CDefString,std::allocator<CDefString>_>
+    long                    Inventory;                       // +0x88
+    long                    ClothingInventory;               // +0x8c
+    long                    WeaponsInventory;                // +0x90
+    long                    HeroAbilitiesScreenInventory;    // +0x94
+    long                    QuestCardScreenInventory;        // +0x98
+    long                    MapScreenInventory;              // +0x9c
+    long                    StatsScreenInventory;            // +0xa0
+    long                    MagicScreenInventory;            // +0xa4
+    long                    ExperienceScreenInventory;       // +0xa8
+    long                    TradeScreenInventory;            // +0xac
+    long                    AugmentScreenInventory;          // +0xb0
+    long                    QuestsScreenInventory;           // +0xb4
+    long                    InGameMenuScreen;                // +0xb8
+    unsigned long           CreatureGroup;                   // +0xbc
+    long                    BattleCrySound_TablePos;         // +0xc0 CDefString::TablePos
+    long                    OpinionSourceDef;                // +0xc4
+    long                    RespawnWaitInDaysMin;            // +0xc8
+    long                    RespawnWaitInDaysMax;            // +0xcc
+    long                    RespawnWaitInFramesMin;          // +0xd0
+    long                    RespawnWaitInFramesMax;          // +0xd4
+    bool                    Short;                           // +0xd8
+    bool                    FlashOnHit;                      // +0xd9
+    bool                    PickPocketable;                  // +0xda
+    bool                    ChildThatCanRegionFollow;        // +0xdb
+    bool                    AllowedInProtectedTowns;         // +0xdc
+    bool                    UseActualHitPosForHitEffects;    // +0xdd
+    unsigned char           _pad_0xde[0x2];                  // +0xde
+    unsigned char           RadiusWeight[0x10];              // +0xe0 CHeroAbilityStatWeight
+    float                   RadiusSpread_HighValue;          // +0xf0 CFloatRange::HighValue
+    float                   RadiusSpread_LowValue;           // +0xf4 CFloatRange::LowValue
+    bool                    AGhostIsWhatIBe;                 // +0xf8
+    unsigned char           _pad_0xf9[0x3];                  // +0xf9
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCreatureDef) == 0xfc);
 FABLE_STATIC_ASSERT(offsetof(CCreatureDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureDef, PWoundMorphs) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCreatureDef, PRandomAppearanceMorph) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CCreatureDef, PExpressions) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CCreatureDef, PStats) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CCreatureDef, PWoundMorphs_Data) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CCreatureDef, PWoundMorphs_Info) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureDef, PRandomAppearanceMorph_Data) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CCreatureDef, PRandomAppearanceMorph_Info) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CCreatureDef, PExpressions_Data) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CCreatureDef, PExpressions_Info) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureDef, PStats_Data) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CCreatureDef, PStats_Info) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CCreatureDef, InitialActions) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CCreatureDef, InitialAppearanceModifiers) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CCreatureDef, PhonemeAnim) == 0x68);
@@ -86,7 +101,7 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureDef, AugmentScreenInventory) == 0xb0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureDef, QuestsScreenInventory) == 0xb4);
 FABLE_STATIC_ASSERT(offsetof(CCreatureDef, InGameMenuScreen) == 0xb8);
 FABLE_STATIC_ASSERT(offsetof(CCreatureDef, CreatureGroup) == 0xbc);
-FABLE_STATIC_ASSERT(offsetof(CCreatureDef, BattleCrySound) == 0xc0);
+FABLE_STATIC_ASSERT(offsetof(CCreatureDef, BattleCrySound_TablePos) == 0xc0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureDef, OpinionSourceDef) == 0xc4);
 FABLE_STATIC_ASSERT(offsetof(CCreatureDef, RespawnWaitInDaysMin) == 0xc8);
 FABLE_STATIC_ASSERT(offsetof(CCreatureDef, RespawnWaitInDaysMax) == 0xcc);
@@ -99,7 +114,8 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureDef, ChildThatCanRegionFollow) == 0xdb);
 FABLE_STATIC_ASSERT(offsetof(CCreatureDef, AllowedInProtectedTowns) == 0xdc);
 FABLE_STATIC_ASSERT(offsetof(CCreatureDef, UseActualHitPosForHitEffects) == 0xdd);
 FABLE_STATIC_ASSERT(offsetof(CCreatureDef, RadiusWeight) == 0xe0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureDef, RadiusSpread) == 0xf0);
+FABLE_STATIC_ASSERT(offsetof(CCreatureDef, RadiusSpread_HighValue) == 0xf0);
+FABLE_STATIC_ASSERT(offsetof(CCreatureDef, RadiusSpread_LowValue) == 0xf4);
 FABLE_STATIC_ASSERT(offsetof(CCreatureDef, AGhostIsWhatIBe) == 0xf8);
 
 #endif // FABLE_ENGINE_CCREATUREDEF_H

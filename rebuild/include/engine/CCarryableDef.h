@@ -24,7 +24,9 @@ struct CCarryableDef {
     long          SecondaryActiveCarrySlot;                  // +0x2c
     long          PassiveCarrySlot;                          // +0x30
     long          OnKillFX;                                  // +0x34
-    unsigned char OffsetCoordRelativeToAttachToDummy[0xc];   // +0x38 C3DVector
+    float         OffsetCoordRelativeToAttachToDummy_X;      // +0x38 C3DVector::X
+    float         OffsetCoordRelativeToAttachToDummy_Y;      // +0x3c C3DVector::Y
+    float         OffsetCoordRelativeToAttachToDummy_Z;      // +0x40 C3DVector::Z
     float         OffsetAmountForThingsOnTopOfMe;            // +0x44
     float         PassiveCarrySlotScale;                     // +0x48
     bool          IncludeInThingScansWhenCarried;            // +0x4c
@@ -38,7 +40,9 @@ FABLE_STATIC_ASSERT(offsetof(CCarryableDef, ActiveCarrySlot) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CCarryableDef, SecondaryActiveCarrySlot) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CCarryableDef, PassiveCarrySlot) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CCarryableDef, OnKillFX) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CCarryableDef, OffsetCoordRelativeToAttachToDummy) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CCarryableDef, OffsetCoordRelativeToAttachToDummy_X) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CCarryableDef, OffsetCoordRelativeToAttachToDummy_Y) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CCarryableDef, OffsetCoordRelativeToAttachToDummy_Z) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CCarryableDef, OffsetAmountForThingsOnTopOfMe) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CCarryableDef, PassiveCarrySlotScale) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CCarryableDef, IncludeInThingScansWhenCarried) == 0x4c);

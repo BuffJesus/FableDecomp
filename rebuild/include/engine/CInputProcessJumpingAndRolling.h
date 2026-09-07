@@ -20,12 +20,15 @@ struct CInputProcessJumpingAndRolling {
     unsigned char _pad_0x1c[0x4];                            // +0x1c
     unsigned char _pad_0x20[0x4];                            // +0x20
     unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char PulseVector[0x8];                          // +0x28 C2DVector
+    float         PulseVector_X;                             // +0x28 C2DVector::X
+    float         PulseVector_Y;                             // +0x2c C2DVector::Y
     long          PulseStartTimer;                           // +0x30
     long          PulseEndTimer;                             // +0x34
     unsigned char Pulses[0xc];                               // +0x38 list<std::pair<C2DVector,long>,std::allocator<std::pair<C2DVector,long>_>_>
     unsigned char InitialFacingDirections[0xc];              // +0x44 list<C3DVector,std::allocator<C3DVector>_>
-    unsigned char FacingDirection[0xc];                      // +0x50 C3DVector
+    float         FacingDirection_X;                         // +0x50 C3DVector::X
+    float         FacingDirection_Y;                         // +0x54 C3DVector::Y
+    float         FacingDirection_Z;                         // +0x58 C3DVector::Z
     bool          StickPulled;                               // +0x5c
     unsigned char _pad_0x5d[0x3];                            // +0x5d
     long          WFLastRoll;                                // +0x60
@@ -34,12 +37,15 @@ struct CInputProcessJumpingAndRolling {
 
 FABLE_STATIC_ASSERT(sizeof(CInputProcessJumpingAndRolling) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CInputProcessJumpingAndRolling, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CInputProcessJumpingAndRolling, PulseVector) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CInputProcessJumpingAndRolling, PulseVector_X) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CInputProcessJumpingAndRolling, PulseVector_Y) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CInputProcessJumpingAndRolling, PulseStartTimer) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CInputProcessJumpingAndRolling, PulseEndTimer) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CInputProcessJumpingAndRolling, Pulses) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CInputProcessJumpingAndRolling, InitialFacingDirections) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CInputProcessJumpingAndRolling, FacingDirection) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CInputProcessJumpingAndRolling, FacingDirection_X) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CInputProcessJumpingAndRolling, FacingDirection_Y) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CInputProcessJumpingAndRolling, FacingDirection_Z) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CInputProcessJumpingAndRolling, StickPulled) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CInputProcessJumpingAndRolling, WFLastRoll) == 0x60);
 

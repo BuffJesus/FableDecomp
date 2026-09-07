@@ -35,8 +35,8 @@ struct CThingPhysical {
     unsigned char _pad_0x58[0x4];                            // +0x58
     unsigned char _pad_0x5c[0x4];                            // +0x5c
     unsigned char _pad_0x60[0x4];                            // +0x60
-    void*         f64;                                       // +0x64 retail-only (CThingPhysical_SetScale_006a4b80.cpp)
-    float         f9c;                                       // +0x68 retail-only (CThingPhysical_SetScale_006a4b80.cpp)
+    long          f64;                                       // +0x64 retail-only (previous header)
+    long          f9c;                                       // +0x68 retail-only (previous header)
     unsigned char _pad_0x6c[0x4];                            // +0x6c
     unsigned char _pad_0x70[0x4];                            // +0x70
     unsigned char _pad_0x74[0x4];                            // +0x74

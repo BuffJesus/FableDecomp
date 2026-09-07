@@ -8,40 +8,49 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+struct CDefPointeeBase;
+
 #pragma pack(push, 1)
 struct CRegion {
-    unsigned char Maps[0x10];                                // +0x00 vector<long,std::allocator<long>_>
-    unsigned char VisMaps[0x10];                             // +0x10 vector<long,std::allocator<long>_>
-    unsigned char Name[0x4];                                 // +0x20 CCharString
-    unsigned char DisplayName[0x4];                          // +0x24 CCharString
-    unsigned char RegionDefName[0x4];                        // +0x28 CCharString
-    unsigned char PDef[0x4];                                 // +0x2c CDefPointer<CRegionDef_const_>
-    unsigned char MiniMapGraphic[0x4];                       // +0x30 CCharString
-    float         MiniMapScale;                              // +0x34
-    unsigned char MiniMapOffset[0x8];                        // +0x38 C2DVector
-    unsigned char MiniMapRegionExitTextOffsets[0x10];        // +0x40 map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,C2DVector>_>_>
-    unsigned char WorldMapOffset[0x8];                       // +0x50 C2DVector
-    unsigned char NameGraphicOffset[0x8];                    // +0x58 C2DVector
-    bool          AppearOnWorldMap;                          // +0x60
-    bool          CreatureGenerationEnabled;                 // +0x61
-    bool          SoundThemesEnabled;                        // +0x62
-    unsigned char _pad_0x63[0x1];                            // +0x63
+    unsigned char    Maps[0x10];                             // +0x00 vector<long,std::allocator<long>_>
+    unsigned char    VisMaps[0x10];                          // +0x10 vector<long,std::allocator<long>_>
+    CCharStringData* Name_PStringData;                       // +0x20 CCharString::PStringData
+    CCharStringData* DisplayName_PStringData;                // +0x24 CCharString::PStringData
+    CCharStringData* RegionDefName_PStringData;              // +0x28 CCharString::PStringData
+    CDefPointeeBase* PDef_Object;                            // +0x2c CDefPointer<CRegionDef_const_>::Object
+    CCharStringData* MiniMapGraphic_PStringData;             // +0x30 CCharString::PStringData
+    float            MiniMapScale;                           // +0x34
+    float            MiniMapOffset_X;                        // +0x38 C2DVector::X
+    float            MiniMapOffset_Y;                        // +0x3c C2DVector::Y
+    unsigned char    MiniMapRegionExitTextOffsets[0x10];     // +0x40 map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,C2DVector>_>_>
+    float            WorldMapOffset_X;                       // +0x50 C2DVector::X
+    float            WorldMapOffset_Y;                       // +0x54 C2DVector::Y
+    float            NameGraphicOffset_X;                    // +0x58 C2DVector::X
+    float            NameGraphicOffset_Y;                    // +0x5c C2DVector::Y
+    bool             AppearOnWorldMap;                       // +0x60
+    bool             CreatureGenerationEnabled;              // +0x61
+    bool             SoundThemesEnabled;                     // +0x62
+    unsigned char    _pad_0x63[0x1];                         // +0x63
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CRegion) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CRegion, Maps) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CRegion, VisMaps) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CRegion, Name) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CRegion, DisplayName) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CRegion, RegionDefName) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CRegion, PDef) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CRegion, MiniMapGraphic) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CRegion, Name_PStringData) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CRegion, DisplayName_PStringData) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CRegion, RegionDefName_PStringData) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CRegion, PDef_Object) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CRegion, MiniMapGraphic_PStringData) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CRegion, MiniMapScale) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CRegion, MiniMapOffset) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CRegion, MiniMapOffset_X) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CRegion, MiniMapOffset_Y) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CRegion, MiniMapRegionExitTextOffsets) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CRegion, WorldMapOffset) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CRegion, NameGraphicOffset) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CRegion, WorldMapOffset_X) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CRegion, WorldMapOffset_Y) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CRegion, NameGraphicOffset_X) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CRegion, NameGraphicOffset_Y) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CRegion, AppearOnWorldMap) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CRegion, CreatureGenerationEnabled) == 0x61);
 FABLE_STATIC_ASSERT(offsetof(CRegion, SoundThemesEnabled) == 0x62);

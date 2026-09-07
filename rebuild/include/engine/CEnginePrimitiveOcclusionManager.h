@@ -15,8 +15,12 @@ struct CEnginePrimitiveOcclusionManager {
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned long PrimitiveOccludeDelay;                     // +0x0c
     long          ShowVisibilityInfo;                        // +0x10
-    unsigned char LastCameraDirection[0xc];                  // +0x14 C3DVector
-    unsigned char LastCameraPosition[0xc];                   // +0x20 C3DVector
+    float         LastCameraDirection_X;                     // +0x14 C3DVector::X
+    float         LastCameraDirection_Y;                     // +0x18 C3DVector::Y
+    float         LastCameraDirection_Z;                     // +0x1c C3DVector::Z
+    float         LastCameraPosition_X;                      // +0x20 C3DVector::X
+    float         LastCameraPosition_Y;                      // +0x24 C3DVector::Y
+    float         LastCameraPosition_Z;                      // +0x28 C3DVector::Z
     float         MaxCameraAngleStep;                        // +0x2c
     float         MaxCameraPositionStep;                     // +0x30
     bool          InvalidateOcclusion;                       // +0x34
@@ -29,8 +33,12 @@ FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveOcclusionManager) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, PrimitiveOccludeDelay) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, ShowVisibilityInfo) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, LastCameraDirection) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, LastCameraPosition) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, LastCameraDirection_X) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, LastCameraDirection_Y) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, LastCameraDirection_Z) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, LastCameraPosition_X) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, LastCameraPosition_Y) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, LastCameraPosition_Z) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, MaxCameraAngleStep) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, MaxCameraPositionStep) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveOcclusionManager, InvalidateOcclusion) == 0x34);

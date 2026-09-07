@@ -9,6 +9,8 @@
 #include "rebuild_abi.h"
 
 struct C3DMeshInfo;
+struct CSurface;
+struct CTexture;
 
 #pragma pack(push, 1)
 struct CEnginePrimitiveManagerRepeatedZSprites {

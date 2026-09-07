@@ -19,31 +19,37 @@ struct IMediaControl;
 struct IMediaEvent;
 struct IMediaPosition;
 struct IMediaSeeking;
+struct _RTL_CRITICAL_SECTION_DEBUG;
 
 #pragma pack(push, 1)
 struct CVideoSys {
-    IGraphBuilder*     GBuilder;                             // +0x00
-    IMediaControl*     MControl;                             // +0x04
-    IMediaPosition*    MPosition;                            // +0x08
-    IMediaSeeking*     MSeeking;                             // +0x0c
-    IMediaEvent*       MEvent;                               // +0x10
-    IBasicAudio*       BasicAudio;                           // +0x14
-    IBaseFilter*       PAsfReader;                           // +0x18
-    IFileSourceFilter* PFileSource;                          // +0x1c
-    CTextureRenderer*  TexRenderer;                          // +0x20
-    unsigned char      PlayMode[0x4];                        // +0x24 PTYPE
-    int                State;                                // +0x28
-    bool               RenderVideo;                          // +0x2c
-    unsigned char      _pad_0x2d[0x3];                       // +0x2d
-    unsigned char      Subtitles[0x34];                      // +0x30 CMovieSubtitles
-    bool               SubtitlesEnabled;                     // +0x64
-    unsigned char      _pad_0x65[0x3];                       // +0x65
-    CDataBank*         pTextBank;                            // +0x68
-    unsigned char      CriticalSection[0x18];                // +0x6c _RTL_CRITICAL_SECTION
-    void*              RenderEvent;                          // +0x84
-    CTexture*          PRenderTexture;                       // +0x88
-    long               Height;                               // +0x8c
-    long               Width;                                // +0x90
+    IGraphBuilder*               GBuilder;                   // +0x00
+    IMediaControl*               MControl;                   // +0x04
+    IMediaPosition*              MPosition;                  // +0x08
+    IMediaSeeking*               MSeeking;                   // +0x0c
+    IMediaEvent*                 MEvent;                     // +0x10
+    IBasicAudio*                 BasicAudio;                 // +0x14
+    IBaseFilter*                 PAsfReader;                 // +0x18
+    IFileSourceFilter*           PFileSource;                // +0x1c
+    CTextureRenderer*            TexRenderer;                // +0x20
+    unsigned char                PlayMode[0x4];              // +0x24 PTYPE
+    int                          State;                      // +0x28
+    bool                         RenderVideo;                // +0x2c
+    unsigned char                _pad_0x2d[0x3];             // +0x2d
+    unsigned char                Subtitles[0x34];            // +0x30 CMovieSubtitles
+    bool                         SubtitlesEnabled;           // +0x64
+    unsigned char                _pad_0x65[0x3];             // +0x65
+    CDataBank*                   pTextBank;                  // +0x68
+    _RTL_CRITICAL_SECTION_DEBUG* CriticalSection_DebugInfo;  // +0x6c _RTL_CRITICAL_SECTION::DebugInfo
+    long                         CriticalSection_LockCount;  // +0x70 _RTL_CRITICAL_SECTION::LockCount
+    long                         CriticalSection_RecursionCount; // +0x74 _RTL_CRITICAL_SECTION::RecursionCount
+    void*                        CriticalSection_OwningThread; // +0x78 _RTL_CRITICAL_SECTION::OwningThread
+    void*                        CriticalSection_LockSemaphore; // +0x7c _RTL_CRITICAL_SECTION::LockSemaphore
+    unsigned long                CriticalSection_SpinCount;  // +0x80 _RTL_CRITICAL_SECTION::SpinCount
+    void*                        RenderEvent;                // +0x84
+    CTexture*                    PRenderTexture;             // +0x88
+    long                         Height;                     // +0x8c
+    long                         Width;                      // +0x90
 };
 #pragma pack(pop)
 
@@ -63,7 +69,12 @@ FABLE_STATIC_ASSERT(offsetof(CVideoSys, RenderVideo) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CVideoSys, Subtitles) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CVideoSys, SubtitlesEnabled) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CVideoSys, pTextBank) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CVideoSys, CriticalSection) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CVideoSys, CriticalSection_DebugInfo) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CVideoSys, CriticalSection_LockCount) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CVideoSys, CriticalSection_RecursionCount) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CVideoSys, CriticalSection_OwningThread) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(CVideoSys, CriticalSection_LockSemaphore) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CVideoSys, CriticalSection_SpinCount) == 0x80);
 FABLE_STATIC_ASSERT(offsetof(CVideoSys, RenderEvent) == 0x84);
 FABLE_STATIC_ASSERT(offsetof(CVideoSys, PRenderTexture) == 0x88);
 FABLE_STATIC_ASSERT(offsetof(CVideoSys, Height) == 0x8c);

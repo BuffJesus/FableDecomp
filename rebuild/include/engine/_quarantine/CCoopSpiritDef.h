@@ -20,20 +20,20 @@ struct CCoopSpiritDef {
     unsigned char _pad_0x1c[0x4];                            // +0x1c
     unsigned char _pad_0x20[0x4];                            // +0x20
     unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char OnHitParticle[0x4];                        // +0x28 CDefString
-    unsigned char OnStrikeParticle[0x4];                     // +0x2c CDefString
-    unsigned char DefaultParticle[0x4];                      // +0x30 CDefString
-    unsigned char AttackTargetParticle[0x4];                 // +0x34 CDefString
+    long          OnHitParticle_TablePos;                    // +0x28 CDefString::TablePos
+    long          OnStrikeParticle_TablePos;                 // +0x2c CDefString::TablePos
+    long          DefaultParticle_TablePos;                  // +0x30 CDefString::TablePos
+    long          AttackTargetParticle_TablePos;             // +0x34 CDefString::TablePos
     float         MeleeTargetRange;                          // +0x38
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCoopSpiritDef) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CCoopSpiritDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCoopSpiritDef, OnHitParticle) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCoopSpiritDef, OnStrikeParticle) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CCoopSpiritDef, DefaultParticle) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CCoopSpiritDef, AttackTargetParticle) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CCoopSpiritDef, OnHitParticle_TablePos) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CCoopSpiritDef, OnStrikeParticle_TablePos) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CCoopSpiritDef, DefaultParticle_TablePos) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CCoopSpiritDef, AttackTargetParticle_TablePos) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CCoopSpiritDef, MeleeTargetRange) == 0x38);
 
 #endif // FABLE_ENGINE_CCOOPSPIRITDEF_H

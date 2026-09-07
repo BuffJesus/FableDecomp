@@ -8,6 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CDisplayViewManager;
 struct CGameDefinitionManager;
 struct CGraphicDataBank;
 struct CIEngine;
@@ -25,7 +27,10 @@ struct CDisplayEngine {
     CGameDefinitionManager* DefinitionManager;               // +0x10
     CGraphicDataBank*       EngineGraphicBank;               // +0x14
     CMeshDataBank*          MeshBank;                        // +0x18
-    unsigned char           MainWindow[0x10];                // +0x1c C2DBoxF
+    float                   MainWindow_TLX;                  // +0x1c C2DBoxF::TLX
+    float                   MainWindow_TLY;                  // +0x20 C2DBoxF::TLY
+    float                   MainWindow_BRX;                  // +0x24 C2DBoxF::BRX
+    float                   MainWindow_BRY;                  // +0x28 C2DBoxF::BRY
     CIEngine*               Engine3D;                        // +0x2c
     unsigned char           Camera[0x38];                    // +0x30 CCamera
     long                    Frame;                           // +0x68
@@ -46,7 +51,8 @@ struct CDisplayEngine {
     bool                    DrawMemoryUse;                   // +0xd9
     unsigned char           _pad_0xda[0x2];                  // +0xda
     long                    DrawDebugPage;                   // +0xdc
-    unsigned char           PViewManager[0x8];               // +0xe0 CCountedPointer<CDisplayViewManager>
+    CDisplayViewManager*    PViewManager_Data;               // +0xe0 CCountedPointer<CDisplayViewManager>::Data
+    CCPPointerInfo*         PViewManager_Info;               // +0xe4 CCountedPointer<CDisplayViewManager>::Info
     long                    InitialFadeReadynessCount;       // +0xe8
     bool                    InitialFadeActive;               // +0xec
     unsigned char           _pad_0xed[0x3];                  // +0xed
@@ -65,7 +71,10 @@ FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, PlayerManager) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, DefinitionManager) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, EngineGraphicBank) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MeshBank) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MainWindow) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MainWindow_TLX) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MainWindow_TLY) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MainWindow_BRX) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, MainWindow_BRY) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, Engine3D) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, Camera) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, Frame) == 0x68);
@@ -82,7 +91,8 @@ FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, ScreenFadeOutInfo) == 0xbc);
 FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, ScreenFadeOutLocked) == 0xd8);
 FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, DrawMemoryUse) == 0xd9);
 FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, DrawDebugPage) == 0xdc);
-FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, PViewManager) == 0xe0);
+FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, PViewManager_Data) == 0xe0);
+FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, PViewManager_Info) == 0xe4);
 FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, InitialFadeReadynessCount) == 0xe8);
 FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, InitialFadeActive) == 0xec);
 FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, ScreenFadeDuration) == 0xf0);

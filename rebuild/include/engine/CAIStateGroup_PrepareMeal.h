@@ -17,7 +17,9 @@ struct CAIStateGroup_PrepareMeal {
     unsigned char _pad_0x10[0x4];                            // +0x10
     unsigned char PCookingPot[0x8];                          // +0x14 CIntelligentPointer<CThing>
     long          ActionPointIndex;                          // +0x1c
-    unsigned char ActionPointPos[0xc];                       // +0x20 C3DVector
+    float         ActionPointPos_X;                          // +0x20 C3DVector::X
+    float         ActionPointPos_Y;                          // +0x24 C3DVector::Y
+    float         ActionPointPos_Z;                          // +0x28 C3DVector::Z
     unsigned char ActionOrientation[0x18];                   // +0x2c CRightHandedSet
 };
 #pragma pack(pop)
@@ -26,7 +28,9 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_PrepareMeal) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_PrepareMeal, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_PrepareMeal, PCookingPot) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_PrepareMeal, ActionPointIndex) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_PrepareMeal, ActionPointPos) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_PrepareMeal, ActionPointPos_X) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_PrepareMeal, ActionPointPos_Y) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_PrepareMeal, ActionPointPos_Z) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_PrepareMeal, ActionOrientation) == 0x2c);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_PREPAREMEAL_H

@@ -11,7 +11,7 @@
 #pragma pack(push, 1)
 struct CAIStateGroup_GazeAtWork {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    void*         f4;                                        // +0x04 retail-only (CAIStateGroupGazeAtWork_GetOwner_00919020.cpp)
+    long          f4;                                        // +0x04 retail-only (previous header)
     unsigned char _pad_0x08[0x28];                           // +0x08
 };
 #pragma pack(pop)

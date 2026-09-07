@@ -20,7 +20,7 @@ struct CActivateQuestDef {
     unsigned char _pad_0x1c[0x4];                            // +0x1c
     unsigned char _pad_0x20[0x4];                            // +0x20
     unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char ScriptName[0x4];                           // +0x28 CDefString
+    long          ScriptName_TablePos;                       // +0x28 CDefString::TablePos
     bool          LoadResources;                             // +0x2c
     unsigned char _pad_0x2d[0x3];                            // +0x2d
 };
@@ -28,7 +28,7 @@ struct CActivateQuestDef {
 
 FABLE_STATIC_ASSERT(sizeof(CActivateQuestDef) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CActivateQuestDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CActivateQuestDef, ScriptName) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CActivateQuestDef, ScriptName_TablePos) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CActivateQuestDef, LoadResources) == 0x2c);
 
 #endif // FABLE_ENGINE_CACTIVATEQUESTDEF_H

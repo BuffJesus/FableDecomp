@@ -86,13 +86,17 @@ struct CCreatureAction_BlockBase {
     unsigned char _pad_0x124[0x4];                           // +0x124
     unsigned char _pad_0x128[0x4];                           // +0x128
     long          BlowStrength;                              // +0x12c
-    unsigned char MovementDirection[0xc];                    // +0x130 C3DVector
+    float         MovementDirection_X;                       // +0x130 C3DVector::X
+    float         MovementDirection_Y;                       // +0x134 C3DVector::Y
+    float         MovementDirection_Z;                       // +0x138 C3DVector::Z
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BlockBase) == 0x13c);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, BlowStrength) == 0x12c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, MovementDirection) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, MovementDirection_X) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, MovementDirection_Y) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockBase, MovementDirection_Z) == 0x138);
 
 #endif // FABLE_ENGINE_CCREATUREACTION_BLOCKBASE_H

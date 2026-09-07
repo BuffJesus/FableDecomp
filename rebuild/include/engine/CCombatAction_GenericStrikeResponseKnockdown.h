@@ -8,28 +8,38 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CCombatAction_GenericStrikeResponseKnockdown {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _base_0x04[0x128];                         // +0x04 flattened base-class subobject(s)
-    unsigned char AnimName[0x4];                             // +0x12c CCharString
-    unsigned char PThingThatHit[0x8];                        // +0x130 CIntelligentPointer<CThing_const_>
-    unsigned char PointOfHit[0xc];                           // +0x138 C3DVector
-    bool          GotPointOfHit;                             // +0x144
-    unsigned char DirectionOfHit[0xc];                       // +0x145 C3DVector
-    bool          GotDirectionOfHit;                         // +0x151
-    bool          FlipFacing;                                // +0x152
-    unsigned char _pad_0x153[0x1];                           // +0x153
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _base_0x04[0x128];                      // +0x04 flattened base-class subobject(s)
+    CCharStringData* AnimName_PStringData;                   // +0x12c CCharString::PStringData
+    unsigned char    PThingThatHit[0x8];                     // +0x130 CIntelligentPointer<CThing_const_>
+    float            PointOfHit_X;                           // +0x138 C3DVector::X
+    float            PointOfHit_Y;                           // +0x13c C3DVector::Y
+    float            PointOfHit_Z;                           // +0x140 C3DVector::Z
+    bool             GotPointOfHit;                          // +0x144
+    float            DirectionOfHit_X;                       // +0x145 C3DVector::X
+    float            DirectionOfHit_Y;                       // +0x149 C3DVector::Y
+    float            DirectionOfHit_Z;                       // +0x14d C3DVector::Z
+    bool             GotDirectionOfHit;                      // +0x151
+    bool             FlipFacing;                             // +0x152
+    unsigned char    _pad_0x153[0x1];                        // +0x153
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCombatAction_GenericStrikeResponseKnockdown) == 0x154);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, AnimName) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, AnimName_PStringData) == 0x12c);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PThingThatHit) == 0x130);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_X) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_Y) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_Z) == 0x140);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, GotPointOfHit) == 0x144);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit) == 0x145);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_X) == 0x145);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_Y) == 0x149);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_Z) == 0x14d);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, GotDirectionOfHit) == 0x151);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, FlipFacing) == 0x152);
 

@@ -16,7 +16,9 @@ struct CAIStateGroup_KidWatchHopscotch {
     unsigned char _pad_0x0c[0x4];                            // +0x0c
     unsigned char _pad_0x10[0x4];                            // +0x10
     unsigned char PHopscotchBoard[0x8];                      // +0x14 CIntelligentPointer<CThing>
-    unsigned char HopscotchCentre[0xc];                      // +0x1c C3DVector
+    float         HopscotchCentre_X;                         // +0x1c C3DVector::X
+    float         HopscotchCentre_Y;                         // +0x20 C3DVector::Y
+    float         HopscotchCentre_Z;                         // +0x24 C3DVector::Z
     float         HopscotchRadius;                           // +0x28
     long          CreationFrame;                             // +0x2c
     long          StartFrame;                                // +0x30
@@ -31,7 +33,9 @@ struct CAIStateGroup_KidWatchHopscotch {
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_KidWatchHopscotch) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_KidWatchHopscotch, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_KidWatchHopscotch, PHopscotchBoard) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_KidWatchHopscotch, HopscotchCentre) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_KidWatchHopscotch, HopscotchCentre_X) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_KidWatchHopscotch, HopscotchCentre_Y) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_KidWatchHopscotch, HopscotchCentre_Z) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_KidWatchHopscotch, HopscotchRadius) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_KidWatchHopscotch, CreationFrame) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_KidWatchHopscotch, StartFrame) == 0x30);

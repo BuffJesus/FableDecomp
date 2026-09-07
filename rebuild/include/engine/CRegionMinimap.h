@@ -8,14 +8,24 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct IDirect3DTexture9;
+
 #pragma pack(push, 1)
 struct CRegionMinimap {
     long          RegionMinimapSize;                         // +0x00
-    unsigned char RegionMapBox[0x10];                        // +0x04 C2DBoxI
-    unsigned char RegionMapSquare[0x10];                     // +0x14 C2DBoxI
+    long          RegionMapBox_TLX;                          // +0x04 C2DBoxI::TLX
+    long          RegionMapBox_TLY;                          // +0x08 C2DBoxI::TLY
+    long          RegionMapBox_BRX;                          // +0x0c C2DBoxI::BRX
+    long          RegionMapBox_BRY;                          // +0x10 C2DBoxI::BRY
+    long          RegionMapSquare_TLX;                       // +0x14 C2DBoxI::TLX
+    long          RegionMapSquare_TLY;                       // +0x18 C2DBoxI::TLY
+    long          RegionMapSquare_BRX;                       // +0x1c C2DBoxI::BRX
+    long          RegionMapSquare_BRY;                       // +0x20 C2DBoxI::BRY
     unsigned char RegionMinimapSurface[0x10];                // +0x24 CSurface
     unsigned char RegionMinimapTexture[0x8];                 // +0x34 CTexture
-    unsigned char IlluminationDirection[0xc];                // +0x3c C3DVector
+    float         IlluminationDirection_X;                   // +0x3c C3DVector::X
+    float         IlluminationDirection_Y;                   // +0x40 C3DVector::Y
+    float         IlluminationDirection_Z;                   // +0x44 C3DVector::Z
     unsigned char RegionMinimapCellList[0x10];               // +0x48 vector<CRegionMinimap::RegionMinimapCellData,std::allocator<CRegionMinimap::RegionMinimapCellData>_>
     unsigned long MaxRegionMinimapThemeColours;              // +0x58
     unsigned char RegionMinimapThemeColour[0x10];            // +0x5c vector<CRGBColour,std::allocator<CRGBColour>_>
@@ -24,11 +34,19 @@ struct CRegionMinimap {
 
 FABLE_STATIC_ASSERT(sizeof(CRegionMinimap) == 0x6c);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapSize) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapBox) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapSquare) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapBox_TLX) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapBox_TLY) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapBox_BRX) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapBox_BRY) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapSquare_TLX) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapSquare_TLY) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapSquare_BRX) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMapSquare_BRY) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapSurface) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapTexture) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, IlluminationDirection) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, IlluminationDirection_X) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, IlluminationDirection_Y) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, IlluminationDirection_Z) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapCellList) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, MaxRegionMinimapThemeColours) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CRegionMinimap, RegionMinimapThemeColour) == 0x5c);

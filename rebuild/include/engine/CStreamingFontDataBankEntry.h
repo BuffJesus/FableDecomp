@@ -8,12 +8,15 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CFontBank;
 struct CStreamingFontDataBank;
 
 #pragma pack(push, 1)
 struct CStreamingFontDataBankEntry {
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char           Font[0x8];                       // +0x04 CCountedPointer<CFontBank>
+    CFontBank*              Font_Data;                       // +0x04 CCountedPointer<CFontBank>::Data
+    CCPPointerInfo*         Font_Info;                       // +0x08 CCountedPointer<CFontBank>::Info
     CStreamingFontDataBank* Bank;                            // +0x0c
     unsigned long           Index;                           // +0x10
     unsigned long           DataType;                        // +0x14
@@ -22,7 +25,8 @@ struct CStreamingFontDataBankEntry {
 
 FABLE_STATIC_ASSERT(sizeof(CStreamingFontDataBankEntry) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CStreamingFontDataBankEntry, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CStreamingFontDataBankEntry, Font) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CStreamingFontDataBankEntry, Font_Data) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CStreamingFontDataBankEntry, Font_Info) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CStreamingFontDataBankEntry, Bank) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CStreamingFontDataBankEntry, Index) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CStreamingFontDataBankEntry, DataType) == 0x14);

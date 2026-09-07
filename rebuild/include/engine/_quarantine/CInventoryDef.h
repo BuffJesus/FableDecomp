@@ -25,35 +25,56 @@ struct CInventoryDef {
     unsigned char InitialInventoryWeaponsItems[0x10];        // +0x70 vector<long,std::allocator<long>_>
     unsigned char InitialInventoryStatsItems[0x10];          // +0x80 vector<long,std::allocator<long>_>
     unsigned char InitialInventoryStandardItems[0x10];       // +0x90 vector<long,std::allocator<long>_>
-    unsigned char ClothingShadedCircleTLPos[0x8];            // +0xa0 C2DVector
-    unsigned char ClothingShadedCircleExtents[0x8];          // +0xa8 C2DVector
-    unsigned char CategoriesTLPos[0x8];                      // +0xb0 C2DVector
-    unsigned char MeshAreaTLPos[0x8];                        // +0xb8 C2DVector
-    unsigned char MeshAreaBRPos[0x8];                        // +0xc0 C2DVector
-    unsigned char NextCategoryOffset[0x8];                   // +0xc8 C2DVector
-    unsigned char FirstItemOffsetFromCategory[0x8];          // +0xd0 C2DVector
-    unsigned char NextItemOffset[0x8];                       // +0xd8 C2DVector
-    unsigned char GenericFont[0x4];                          // +0xe0 CDefString
+    float         ClothingShadedCircleTLPos_X;               // +0xa0 C2DVector::X
+    float         ClothingShadedCircleTLPos_Y;               // +0xa4 C2DVector::Y
+    float         ClothingShadedCircleExtents_X;             // +0xa8 C2DVector::X
+    float         ClothingShadedCircleExtents_Y;             // +0xac C2DVector::Y
+    float         CategoriesTLPos_X;                         // +0xb0 C2DVector::X
+    float         CategoriesTLPos_Y;                         // +0xb4 C2DVector::Y
+    float         MeshAreaTLPos_X;                           // +0xb8 C2DVector::X
+    float         MeshAreaTLPos_Y;                           // +0xbc C2DVector::Y
+    float         MeshAreaBRPos_X;                           // +0xc0 C2DVector::X
+    float         MeshAreaBRPos_Y;                           // +0xc4 C2DVector::Y
+    float         NextCategoryOffset_X;                      // +0xc8 C2DVector::X
+    float         NextCategoryOffset_Y;                      // +0xcc C2DVector::Y
+    float         FirstItemOffsetFromCategory_X;             // +0xd0 C2DVector::X
+    float         FirstItemOffsetFromCategory_Y;             // +0xd4 C2DVector::Y
+    float         NextItemOffset_X;                          // +0xd8 C2DVector::X
+    float         NextItemOffset_Y;                          // +0xdc C2DVector::Y
+    long          GenericFont_TablePos;                      // +0xe0 CDefString::TablePos
     unsigned char BackGroundColour[0x4];                     // +0xe4 CRGBColour
     long          ClothingDoll;                              // +0xe8
-    unsigned char DollCentreOffset[0xc];                     // +0xec C3DVector
+    float         DollCentreOffset_X;                        // +0xec C3DVector::X
+    float         DollCentreOffset_Y;                        // +0xf0 C3DVector::Y
+    float         DollCentreOffset_Z;                        // +0xf4 C3DVector::Z
     float         DollBoundingSphereRadius;                  // +0xf8
-    unsigned char TotalExperienceTextPos[0x8];               // +0xfc C2DVector
+    float         TotalExperienceTextPos_X;                  // +0xfc C2DVector::X
+    float         TotalExperienceTextPos_Y;                  // +0x100 C2DVector::Y
     unsigned long TotalExperienceText;                       // +0x104
-    unsigned char SpendingExperienceTextPos[0x8];            // +0x108 C2DVector
+    float         SpendingExperienceTextPos_X;               // +0x108 C2DVector::X
+    float         SpendingExperienceTextPos_Y;               // +0x10c C2DVector::Y
     unsigned long SpendingExperienceText;                    // +0x110
-    unsigned char StrengthLevelTextPos[0x8];                 // +0x114 C2DVector
+    float         StrengthLevelTextPos_X;                    // +0x114 C2DVector::X
+    float         StrengthLevelTextPos_Y;                    // +0x118 C2DVector::Y
     unsigned char StrengthLevelColour[0x4];                  // +0x11c CRGBColour
-    unsigned char SkillLevelTextPos[0x8];                    // +0x120 C2DVector
+    float         SkillLevelTextPos_X;                       // +0x120 C2DVector::X
+    float         SkillLevelTextPos_Y;                       // +0x124 C2DVector::Y
     unsigned char SkillLevelColour[0x4];                     // +0x128 CRGBColour
-    unsigned char WillLevelTextPos[0x8];                     // +0x12c C2DVector
+    float         WillLevelTextPos_X;                        // +0x12c C2DVector::X
+    float         WillLevelTextPos_Y;                        // +0x130 C2DVector::Y
     unsigned char WillLevelColour[0x4];                      // +0x134 CRGBColour
-    unsigned char RenownLevelTextPos[0x8];                   // +0x138 C2DVector
-    unsigned char HeroLevelTextPos[0x8];                     // +0x140 C2DVector
-    unsigned char StatLevelsFirstLineTextPos[0x8];           // +0x148 C2DVector
-    unsigned char StatLevelsNextLineTextOffset[0x8];         // +0x150 C2DVector
-    unsigned char ButtonAssignmentTextPos[0x8];              // +0x158 C2DVector
-    unsigned char ButtonAssignmentTextOffset[0x8];           // +0x160 C2DVector
+    float         RenownLevelTextPos_X;                      // +0x138 C2DVector::X
+    float         RenownLevelTextPos_Y;                      // +0x13c C2DVector::Y
+    float         HeroLevelTextPos_X;                        // +0x140 C2DVector::X
+    float         HeroLevelTextPos_Y;                        // +0x144 C2DVector::Y
+    float         StatLevelsFirstLineTextPos_X;              // +0x148 C2DVector::X
+    float         StatLevelsFirstLineTextPos_Y;              // +0x14c C2DVector::Y
+    float         StatLevelsNextLineTextOffset_X;            // +0x150 C2DVector::X
+    float         StatLevelsNextLineTextOffset_Y;            // +0x154 C2DVector::Y
+    float         ButtonAssignmentTextPos_X;                 // +0x158 C2DVector::X
+    float         ButtonAssignmentTextPos_Y;                 // +0x15c C2DVector::Y
+    float         ButtonAssignmentTextOffset_X;              // +0x160 C2DVector::X
+    float         ButtonAssignmentTextOffset_Y;              // +0x164 C2DVector::Y
     unsigned char StatLevelsTexts[0x10];                     // +0x168 vector<unsigned_long,std::allocator<unsigned_long>_>
     unsigned char StatLevelsColours[0x10];                   // +0x178 vector<CRGBColour,std::allocator<CRGBColour>_>
     long          WeaponsTextSeparator;                      // +0x188
@@ -63,44 +84,80 @@ struct CInventoryDef {
     long          WeaponsTextNoFreeSlots;                    // +0x198
     long          WeaponsTextReadyToAugment;                 // +0x19c
     long          WeaponsTextNotReadyToAugment;              // +0x1a0
-    unsigned char WeaponsDescriptionBoxTLPos[0x8];           // +0x1a4 C2DVector
-    unsigned char WeaponsDescriptionBoxExtents[0x8];         // +0x1ac C2DVector
-    unsigned char WeaponsActiveMeleeIconPos[0x8];            // +0x1b4 C2DVector
-    unsigned char WeaponsActiveRangeIconPos[0x8];            // +0x1bc C2DVector
-    unsigned char WeaponAugmentationTextStartPos[0x8];       // +0x1c4 C2DVector
-    unsigned char WeaponAugmentationTextNewLineOffset[0x8];  // +0x1cc C2DVector
-    unsigned char AugmentationStatusTextAreaTLPos[0x8];      // +0x1d4 C2DVector
-    unsigned char AugmentationStatusTextAreaBRPos[0x8];      // +0x1dc C2DVector
+    float         WeaponsDescriptionBoxTLPos_X;              // +0x1a4 C2DVector::X
+    float         WeaponsDescriptionBoxTLPos_Y;              // +0x1a8 C2DVector::Y
+    float         WeaponsDescriptionBoxExtents_X;            // +0x1ac C2DVector::X
+    float         WeaponsDescriptionBoxExtents_Y;            // +0x1b0 C2DVector::Y
+    float         WeaponsActiveMeleeIconPos_X;               // +0x1b4 C2DVector::X
+    float         WeaponsActiveMeleeIconPos_Y;               // +0x1b8 C2DVector::Y
+    float         WeaponsActiveRangeIconPos_X;               // +0x1bc C2DVector::X
+    float         WeaponsActiveRangeIconPos_Y;               // +0x1c0 C2DVector::Y
+    float         WeaponAugmentationTextStartPos_X;          // +0x1c4 C2DVector::X
+    float         WeaponAugmentationTextStartPos_Y;          // +0x1c8 C2DVector::Y
+    float         WeaponAugmentationTextNewLineOffset_X;     // +0x1cc C2DVector::X
+    float         WeaponAugmentationTextNewLineOffset_Y;     // +0x1d0 C2DVector::Y
+    float         AugmentationStatusTextAreaTLPos_X;         // +0x1d4 C2DVector::X
+    float         AugmentationStatusTextAreaTLPos_Y;         // +0x1d8 C2DVector::Y
+    float         AugmentationStatusTextAreaBRPos_X;         // +0x1dc C2DVector::X
+    float         AugmentationStatusTextAreaBRPos_Y;         // +0x1e0 C2DVector::Y
     float         TimeToDisplayWarningMessageInSeconds;      // +0x1e4
-    unsigned char WeaponsShadedCircleTLPos[0x8];             // +0x1e8 C2DVector
-    unsigned char WeaponsShadedCircleExtents[0x8];           // +0x1f0 C2DVector
+    float         WeaponsShadedCircleTLPos_X;                // +0x1e8 C2DVector::X
+    float         WeaponsShadedCircleTLPos_Y;                // +0x1ec C2DVector::Y
+    float         WeaponsShadedCircleExtents_X;              // +0x1f0 C2DVector::X
+    float         WeaponsShadedCircleExtents_Y;              // +0x1f4 C2DVector::Y
     float         NumberOfSecondsForObjectRotation;          // +0x1f8
     long          MaxNumberOfItemsToDisplayPerCategory;      // +0x1fc
     long          MaxNumberOfCategoriesToDisplay;            // +0x200
     long          MaxNumberOfScreenNamesToDisplay;           // +0x204
     unsigned long InventoryName;                             // +0x208
     unsigned char InventoryIdentifier[0x4];                  // +0x20c EInventoryIdentifier
-    unsigned char MapScreenMapDisplayBoxTLPos[0x8];          // +0x210 C2DVector
-    unsigned char MapScreenMapDisplayBoxBRPos[0x8];          // +0x218 C2DVector
-    unsigned char MapScreenRegionNamePos[0x8];               // +0x220 C2DVector
+    float         MapScreenMapDisplayBoxTLPos_X;             // +0x210 C2DVector::X
+    float         MapScreenMapDisplayBoxTLPos_Y;             // +0x214 C2DVector::Y
+    float         MapScreenMapDisplayBoxBRPos_X;             // +0x218 C2DVector::X
+    float         MapScreenMapDisplayBoxBRPos_Y;             // +0x21c C2DVector::Y
+    float         MapScreenRegionNamePos_X;                  // +0x220 C2DVector::X
+    float         MapScreenRegionNamePos_Y;                  // +0x224 C2DVector::Y
     long          MapScreenWorldMapGraphic;                  // +0x228
-    unsigned char MapScreenWorldMapPos[0x8];                 // +0x22c C2DVector
+    float         MapScreenWorldMapPos_X;                    // +0x22c C2DVector::X
+    float         MapScreenWorldMapPos_Y;                    // +0x230 C2DVector::Y
     long          MapScreenRegionUnknownGraphic;             // +0x234
     long          MapScreenRegionUnknownHighlightGraphic;    // +0x238
     long          MapScreenRegionHeroGraphic;                // +0x23c
     long          MapScreenRegionQuestGraphic;               // +0x240
     long          MapScreenRegionTeleportGraphic;            // +0x244
     long          MapScreenRegionHouseGraphic;               // +0x248
-    unsigned char StatsTitleTLPos[0x8];                      // +0x24c C2DVector
-    unsigned char StatsShadedCircleTLPos[0x8];               // +0x254 C2DVector
-    unsigned char StatsShadedCircleExtents[0x8];             // +0x25c C2DVector
-    unsigned char StatsProgBarL[0xe];                        // +0x264 CEngineGraphic
-    unsigned char StatsProgBarC[0xe];                        // +0x272 CEngineGraphic
-    unsigned char StatsProgBarR[0xe];                        // +0x280 CEngineGraphic
-    unsigned char StatsProgBarValue[0xe];                    // +0x28e CEngineGraphic
-    unsigned char StatsProgBarValueOffset[0x8];              // +0x29c C2DVector
-    unsigned char StatsPersonalityHeadingTLPos[0x8];         // +0x2a4 C2DVector
-    unsigned char StatsPersonalityHeadingBRPos[0x8];         // +0x2ac C2DVector
+    float         StatsTitleTLPos_X;                         // +0x24c C2DVector::X
+    float         StatsTitleTLPos_Y;                         // +0x250 C2DVector::Y
+    float         StatsShadedCircleTLPos_X;                  // +0x254 C2DVector::X
+    float         StatsShadedCircleTLPos_Y;                  // +0x258 C2DVector::Y
+    float         StatsShadedCircleExtents_X;                // +0x25c C2DVector::X
+    float         StatsShadedCircleExtents_Y;                // +0x260 C2DVector::Y
+    unsigned long StatsProgBarL_BankIndex;                   // +0x264 CEngineGraphic::BankIndex
+    float         StatsProgBarL_AnimStep;                    // +0x268 CEngineGraphic::AnimStep
+    float         StatsProgBarL_RenderSizeX;                 // +0x26c CEngineGraphic::RenderSizeX
+    bool          StatsProgBarL_AdditiveAlpha;               // +0x270 CEngineGraphic::AdditiveAlpha
+    unsigned char StatsProgBarL_Type;                        // +0x271 CEngineGraphic::Type
+    unsigned long StatsProgBarC_BankIndex;                   // +0x272 CEngineGraphic::BankIndex
+    float         StatsProgBarC_AnimStep;                    // +0x276 CEngineGraphic::AnimStep
+    float         StatsProgBarC_RenderSizeX;                 // +0x27a CEngineGraphic::RenderSizeX
+    bool          StatsProgBarC_AdditiveAlpha;               // +0x27e CEngineGraphic::AdditiveAlpha
+    unsigned char StatsProgBarC_Type;                        // +0x27f CEngineGraphic::Type
+    unsigned long StatsProgBarR_BankIndex;                   // +0x280 CEngineGraphic::BankIndex
+    float         StatsProgBarR_AnimStep;                    // +0x284 CEngineGraphic::AnimStep
+    float         StatsProgBarR_RenderSizeX;                 // +0x288 CEngineGraphic::RenderSizeX
+    bool          StatsProgBarR_AdditiveAlpha;               // +0x28c CEngineGraphic::AdditiveAlpha
+    unsigned char StatsProgBarR_Type;                        // +0x28d CEngineGraphic::Type
+    unsigned long StatsProgBarValue_BankIndex;               // +0x28e CEngineGraphic::BankIndex
+    float         StatsProgBarValue_AnimStep;                // +0x292 CEngineGraphic::AnimStep
+    float         StatsProgBarValue_RenderSizeX;             // +0x296 CEngineGraphic::RenderSizeX
+    bool          StatsProgBarValue_AdditiveAlpha;           // +0x29a CEngineGraphic::AdditiveAlpha
+    unsigned char StatsProgBarValue_Type;                    // +0x29b CEngineGraphic::Type
+    float         StatsProgBarValueOffset_X;                 // +0x29c C2DVector::X
+    float         StatsProgBarValueOffset_Y;                 // +0x2a0 C2DVector::Y
+    float         StatsPersonalityHeadingTLPos_X;            // +0x2a4 C2DVector::X
+    float         StatsPersonalityHeadingTLPos_Y;            // +0x2a8 C2DVector::Y
+    float         StatsPersonalityHeadingBRPos_X;            // +0x2ac C2DVector::X
+    float         StatsPersonalityHeadingBRPos_Y;            // +0x2b0 C2DVector::Y
     unsigned long StatsPersonalityRenownLowerLabel;          // +0x2b4
     unsigned long StatsPersonalityRenownUpperLabel;          // +0x2b8
     unsigned long StatsPersonalityGoodnessLowerLabel;        // +0x2bc
@@ -111,22 +168,31 @@ struct CInventoryDef {
     unsigned long StatsPersonalityScarinessUpperLabel;       // +0x2d0
     unsigned long StatsPersonalityNicenessLowerLabel;        // +0x2d4
     unsigned long StatsPersonalityNicenessUpperLabel;        // +0x2d8
-    unsigned char StatsPersonalityLabelTextOffset[0x8];      // +0x2dc C2DVector
-    unsigned char StatsPersonalityLowerLabelTLPos[0x8];      // +0x2e4 C2DVector
+    float         StatsPersonalityLabelTextOffset_X;         // +0x2dc C2DVector::X
+    float         StatsPersonalityLabelTextOffset_Y;         // +0x2e0 C2DVector::Y
+    float         StatsPersonalityLowerLabelTLPos_X;         // +0x2e4 C2DVector::X
+    float         StatsPersonalityLowerLabelTLPos_Y;         // +0x2e8 C2DVector::Y
     float         StatsPersonalityLowerLabelWidth;           // +0x2ec
     float         StatsPersonalityLowerLabelHeight;          // +0x2f0
     float         StatsPersonalitySliderWidth;               // +0x2f4
     float         StatsPersonalityUpperLabelWidth;           // +0x2f8
     long          StatsPersonalityDoll;                      // +0x2fc
-    unsigned char StatsPersonalityDollCentreOffset[0xc];     // +0x300 C3DVector
+    float         StatsPersonalityDollCentreOffset_X;        // +0x300 C3DVector::X
+    float         StatsPersonalityDollCentreOffset_Y;        // +0x304 C3DVector::Y
+    float         StatsPersonalityDollCentreOffset_Z;        // +0x308 C3DVector::Z
     float         StatsPersonalityDollBoundingSphereRadius;  // +0x30c
-    unsigned char StatsStatisticsLabelTLPos[0x8];            // +0x310 C2DVector
+    float         StatsStatisticsLabelTLPos_X;               // +0x310 C2DVector::X
+    float         StatsStatisticsLabelTLPos_Y;               // +0x314 C2DVector::Y
     float         StatsStatisticsLabelWidth;                 // +0x318
     float         StatsStatisticsLabelHeight;                // +0x31c
-    unsigned char StatsStatisticsLabelTextOffset[0x8];       // +0x320 C2DVector
-    unsigned char StatsStatisticsDataTextOffset[0x8];        // +0x328 C2DVector
-    unsigned char StatsStatisticsHeadingTLPos[0x8];          // +0x330 C2DVector
-    unsigned char StatsStatisticsHeadingBRPos[0x8];          // +0x338 C2DVector
+    float         StatsStatisticsLabelTextOffset_X;          // +0x320 C2DVector::X
+    float         StatsStatisticsLabelTextOffset_Y;          // +0x324 C2DVector::Y
+    float         StatsStatisticsDataTextOffset_X;           // +0x328 C2DVector::X
+    float         StatsStatisticsDataTextOffset_Y;           // +0x32c C2DVector::Y
+    float         StatsStatisticsHeadingTLPos_X;             // +0x330 C2DVector::X
+    float         StatsStatisticsHeadingTLPos_Y;             // +0x334 C2DVector::Y
+    float         StatsStatisticsHeadingBRPos_X;             // +0x338 C2DVector::X
+    float         StatsStatisticsHeadingBRPos_Y;             // +0x33c C2DVector::Y
     unsigned long StatsStatisticsPeopleKilledLabel;          // +0x340
     unsigned long StatsStatisticsMonstersKilledLabel;        // +0x344
     unsigned long StatsStatisticsMaxMultiplierLabel;         // +0x348
@@ -137,19 +203,29 @@ struct CInventoryDef {
     unsigned long StatsStatisticsQuestsActiveLabel;          // +0x35c
     unsigned long StatsStatisticsQuestsFinishedLabel;        // +0x360
     unsigned long StatsStatisticsBoastsAchievedLabel;        // +0x364
-    unsigned char StatsExperienceStrengthTextOffset[0x8];    // +0x368 C2DVector
-    unsigned char StatsExperienceWillTextOffset[0x8];        // +0x370 C2DVector
-    unsigned char StatsExperienceSkillTextOffset[0x8];       // +0x378 C2DVector
+    float         StatsExperienceStrengthTextOffset_X;       // +0x368 C2DVector::X
+    float         StatsExperienceStrengthTextOffset_Y;       // +0x36c C2DVector::Y
+    float         StatsExperienceWillTextOffset_X;           // +0x370 C2DVector::X
+    float         StatsExperienceWillTextOffset_Y;           // +0x374 C2DVector::Y
+    float         StatsExperienceSkillTextOffset_X;          // +0x378 C2DVector::X
+    float         StatsExperienceSkillTextOffset_Y;          // +0x37c C2DVector::Y
     unsigned long StatsExperienceStrengthText;               // +0x380
     unsigned long StatsExperienceWillText;                   // +0x384
     unsigned long StatsExperienceSkillText;                  // +0x388
-    unsigned char StatsExperiencePoolGeneralTLPos[0x8];      // +0x38c C2DVector
-    unsigned char StatsExperiencePoolGeneralTextOffset[0x8]; // +0x394 C2DVector
-    unsigned char StatsExperiencePoolStrengthGroupTLPos[0x8]; // +0x39c C2DVector
-    unsigned char StatsExperiencePoolSkillGroupTLPos[0x8];   // +0x3a4 C2DVector
-    unsigned char StatsExperiencePoolWillGroupTLPos[0x8];    // +0x3ac C2DVector
-    unsigned char StatsExperiencePoolLabelTLPos[0x8];        // +0x3b4 C2DVector
-    unsigned char StatsExperiencePoolLabelTextOffset[0x8];   // +0x3bc C2DVector
+    float         StatsExperiencePoolGeneralTLPos_X;         // +0x38c C2DVector::X
+    float         StatsExperiencePoolGeneralTLPos_Y;         // +0x390 C2DVector::Y
+    float         StatsExperiencePoolGeneralTextOffset_X;    // +0x394 C2DVector::X
+    float         StatsExperiencePoolGeneralTextOffset_Y;    // +0x398 C2DVector::Y
+    float         StatsExperiencePoolStrengthGroupTLPos_X;   // +0x39c C2DVector::X
+    float         StatsExperiencePoolStrengthGroupTLPos_Y;   // +0x3a0 C2DVector::Y
+    float         StatsExperiencePoolSkillGroupTLPos_X;      // +0x3a4 C2DVector::X
+    float         StatsExperiencePoolSkillGroupTLPos_Y;      // +0x3a8 C2DVector::Y
+    float         StatsExperiencePoolWillGroupTLPos_X;       // +0x3ac C2DVector::X
+    float         StatsExperiencePoolWillGroupTLPos_Y;       // +0x3b0 C2DVector::Y
+    float         StatsExperiencePoolLabelTLPos_X;           // +0x3b4 C2DVector::X
+    float         StatsExperiencePoolLabelTLPos_Y;           // +0x3b8 C2DVector::Y
+    float         StatsExperiencePoolLabelTextOffset_X;      // +0x3bc C2DVector::X
+    float         StatsExperiencePoolLabelTextOffset_Y;      // +0x3c0 C2DVector::Y
     float         StatsExperiencePoolLabelWidth;             // +0x3c4
     float         StatsExperiencePoolLabelHeight;            // +0x3c8
     float         StatsExperiencePoolSliderWidth;            // +0x3cc
@@ -168,16 +244,22 @@ struct CInventoryDef {
     float         StatsExperienceStrengthBarValue;           // +0x400
     float         StatsExperienceSkillBarValue;              // +0x404
     float         StatsExperienceWillBarValue;               // +0x408
-    unsigned char ExperienceGeneralPoolLabelTLPos[0x8];      // +0x40c C2DVector
-    unsigned char ExperienceGeneralPoolLabelTextOffset[0x8]; // +0x414 C2DVector
+    float         ExperienceGeneralPoolLabelTLPos_X;         // +0x40c C2DVector::X
+    float         ExperienceGeneralPoolLabelTLPos_Y;         // +0x410 C2DVector::Y
+    float         ExperienceGeneralPoolLabelTextOffset_X;    // +0x414 C2DVector::X
+    float         ExperienceGeneralPoolLabelTextOffset_Y;    // +0x418 C2DVector::Y
     float         ExperienceGeneralPoolWidth;                // +0x41c
     float         ExperienceGeneralPoolSliderWidth;          // +0x420
     unsigned long ExperienceGeneralPoolBarValue;             // +0x424
     unsigned long ExperienceGeneralPoolLabel;                // +0x428
-    unsigned char ExperienceGeneralPoolSpendTextOffset[0x8]; // +0x42c C2DVector
-    unsigned char ExperienceStrengthPoolTLPos[0x8];          // +0x434 C2DVector
-    unsigned char ExperienceSkillPoolTLPos[0x8];             // +0x43c C2DVector
-    unsigned char ExperienceWillPoolTLPos[0x8];              // +0x444 C2DVector
+    float         ExperienceGeneralPoolSpendTextOffset_X;    // +0x42c C2DVector::X
+    float         ExperienceGeneralPoolSpendTextOffset_Y;    // +0x430 C2DVector::Y
+    float         ExperienceStrengthPoolTLPos_X;             // +0x434 C2DVector::X
+    float         ExperienceStrengthPoolTLPos_Y;             // +0x438 C2DVector::Y
+    float         ExperienceSkillPoolTLPos_X;                // +0x43c C2DVector::X
+    float         ExperienceSkillPoolTLPos_Y;                // +0x440 C2DVector::Y
+    float         ExperienceWillPoolTLPos_X;                 // +0x444 C2DVector::X
+    float         ExperienceWillPoolTLPos_Y;                 // +0x448 C2DVector::Y
     float         ExperiencePoolWidth;                       // +0x44c
     float         ExperiencePoolHeight;                      // +0x450
     unsigned long ExperienceTypeStrengthLabel;               // +0x454
@@ -186,10 +268,14 @@ struct CInventoryDef {
     unsigned long ExperienceTypePureMagicLabel;              // +0x460
     unsigned long ExperienceTypeAbilityMagicLabel;           // +0x464
     unsigned long ExperienceTypeWeaponMagicLabel;            // +0x468
-    unsigned char ExperienceTypeTLPos[0x8];                  // +0x46c C2DVector
-    unsigned char ExperienceTypeTLPosOffset[0x8];            // +0x474 C2DVector
-    unsigned char ExperienceTypeTextOffset[0x8];             // +0x47c C2DVector
-    unsigned char ExperienceTypeSpendTextOffset[0x8];        // +0x484 C2DVector
+    float         ExperienceTypeTLPos_X;                     // +0x46c C2DVector::X
+    float         ExperienceTypeTLPos_Y;                     // +0x470 C2DVector::Y
+    float         ExperienceTypeTLPosOffset_X;               // +0x474 C2DVector::X
+    float         ExperienceTypeTLPosOffset_Y;               // +0x478 C2DVector::Y
+    float         ExperienceTypeTextOffset_X;                // +0x47c C2DVector::X
+    float         ExperienceTypeTextOffset_Y;                // +0x480 C2DVector::Y
+    float         ExperienceTypeSpendTextOffset_X;           // +0x484 C2DVector::X
+    float         ExperienceTypeSpendTextOffset_Y;           // +0x488 C2DVector::Y
     float         ExperienceTypeLabelWidth;                  // +0x48c
     float         ExperienceTypeLabelHeight;                 // +0x490
     float         ExperienceTypeSliderWidth;                 // +0x494
@@ -231,23 +317,66 @@ struct CInventoryDef {
     float         ExperiencePureMagicBurningHandsBarValue;   // +0x524
     float         ExperiencePureMagicPhysicalShieldBarValue; // +0x528
     float         ExperiencePureMagicForcePushBarValue;      // +0x52c
-    unsigned char ExperienceProgBarL[0xe];                   // +0x530 CEngineGraphic
-    unsigned char ExperienceProgBarC[0xe];                   // +0x53e CEngineGraphic
-    unsigned char ExperienceProgBarR[0xe];                   // +0x54c CEngineGraphic
-    unsigned char ExperienceProgBarValue[0xe];               // +0x55a CEngineGraphic
-    unsigned char ExperienceProgBarValueOffset[0x8];         // +0x568 C2DVector
+    unsigned long ExperienceProgBarL_BankIndex;              // +0x530 CEngineGraphic::BankIndex
+    float         ExperienceProgBarL_AnimStep;               // +0x534 CEngineGraphic::AnimStep
+    float         ExperienceProgBarL_RenderSizeX;            // +0x538 CEngineGraphic::RenderSizeX
+    bool          ExperienceProgBarL_AdditiveAlpha;          // +0x53c CEngineGraphic::AdditiveAlpha
+    unsigned char ExperienceProgBarL_Type;                   // +0x53d CEngineGraphic::Type
+    unsigned long ExperienceProgBarC_BankIndex;              // +0x53e CEngineGraphic::BankIndex
+    float         ExperienceProgBarC_AnimStep;               // +0x542 CEngineGraphic::AnimStep
+    float         ExperienceProgBarC_RenderSizeX;            // +0x546 CEngineGraphic::RenderSizeX
+    bool          ExperienceProgBarC_AdditiveAlpha;          // +0x54a CEngineGraphic::AdditiveAlpha
+    unsigned char ExperienceProgBarC_Type;                   // +0x54b CEngineGraphic::Type
+    unsigned long ExperienceProgBarR_BankIndex;              // +0x54c CEngineGraphic::BankIndex
+    float         ExperienceProgBarR_AnimStep;               // +0x550 CEngineGraphic::AnimStep
+    float         ExperienceProgBarR_RenderSizeX;            // +0x554 CEngineGraphic::RenderSizeX
+    bool          ExperienceProgBarR_AdditiveAlpha;          // +0x558 CEngineGraphic::AdditiveAlpha
+    unsigned char ExperienceProgBarR_Type;                   // +0x559 CEngineGraphic::Type
+    unsigned long ExperienceProgBarValue_BankIndex;          // +0x55a CEngineGraphic::BankIndex
+    float         ExperienceProgBarValue_AnimStep;           // +0x55e CEngineGraphic::AnimStep
+    float         ExperienceProgBarValue_RenderSizeX;        // +0x562 CEngineGraphic::RenderSizeX
+    bool          ExperienceProgBarValue_AdditiveAlpha;      // +0x566 CEngineGraphic::AdditiveAlpha
+    unsigned char ExperienceProgBarValue_Type;               // +0x567 CEngineGraphic::Type
+    float         ExperienceProgBarValueOffset_X;            // +0x568 C2DVector::X
+    float         ExperienceProgBarValueOffset_Y;            // +0x56c C2DVector::Y
     long          ExperienceSpendTimeOffset;                 // +0x570
     long          ExperienceSpendRate;                       // +0x574
     unsigned char ExperienceItemLabelStat[0x10];             // +0x578 vector<long,std::allocator<long>_>
     unsigned char ExperienceItemLabelAbility[0x10];          // +0x588 vector<long,std::allocator<long>_>
-    unsigned char ExperienceSpendGreen[0xe];                 // +0x598 CEngineGraphic
-    unsigned char ExperienceSpendGreenOutline[0xe];          // +0x5a6 CEngineGraphic
-    unsigned char ExperienceSpendGreenEnd[0xe];              // +0x5b4 CEngineGraphic
-    unsigned char ExperienceSpendRed[0xe];                   // +0x5c2 CEngineGraphic
-    unsigned char ExperienceSpendRedOutline[0xe];            // +0x5d0 CEngineGraphic
-    unsigned char ExperienceSpendRedEnd[0xe];                // +0x5de CEngineGraphic
-    unsigned char ExperienceDescriptionTextTLPos[0x8];       // +0x5ec C2DVector
-    unsigned char ExperienceDescriptionTextOffset[0x8];      // +0x5f4 C2DVector
+    unsigned long ExperienceSpendGreen_BankIndex;            // +0x598 CEngineGraphic::BankIndex
+    float         ExperienceSpendGreen_AnimStep;             // +0x59c CEngineGraphic::AnimStep
+    float         ExperienceSpendGreen_RenderSizeX;          // +0x5a0 CEngineGraphic::RenderSizeX
+    bool          ExperienceSpendGreen_AdditiveAlpha;        // +0x5a4 CEngineGraphic::AdditiveAlpha
+    unsigned char ExperienceSpendGreen_Type;                 // +0x5a5 CEngineGraphic::Type
+    unsigned long ExperienceSpendGreenOutline_BankIndex;     // +0x5a6 CEngineGraphic::BankIndex
+    float         ExperienceSpendGreenOutline_AnimStep;      // +0x5aa CEngineGraphic::AnimStep
+    float         ExperienceSpendGreenOutline_RenderSizeX;   // +0x5ae CEngineGraphic::RenderSizeX
+    bool          ExperienceSpendGreenOutline_AdditiveAlpha; // +0x5b2 CEngineGraphic::AdditiveAlpha
+    unsigned char ExperienceSpendGreenOutline_Type;          // +0x5b3 CEngineGraphic::Type
+    unsigned long ExperienceSpendGreenEnd_BankIndex;         // +0x5b4 CEngineGraphic::BankIndex
+    float         ExperienceSpendGreenEnd_AnimStep;          // +0x5b8 CEngineGraphic::AnimStep
+    float         ExperienceSpendGreenEnd_RenderSizeX;       // +0x5bc CEngineGraphic::RenderSizeX
+    bool          ExperienceSpendGreenEnd_AdditiveAlpha;     // +0x5c0 CEngineGraphic::AdditiveAlpha
+    unsigned char ExperienceSpendGreenEnd_Type;              // +0x5c1 CEngineGraphic::Type
+    unsigned long ExperienceSpendRed_BankIndex;              // +0x5c2 CEngineGraphic::BankIndex
+    float         ExperienceSpendRed_AnimStep;               // +0x5c6 CEngineGraphic::AnimStep
+    float         ExperienceSpendRed_RenderSizeX;            // +0x5ca CEngineGraphic::RenderSizeX
+    bool          ExperienceSpendRed_AdditiveAlpha;          // +0x5ce CEngineGraphic::AdditiveAlpha
+    unsigned char ExperienceSpendRed_Type;                   // +0x5cf CEngineGraphic::Type
+    unsigned long ExperienceSpendRedOutline_BankIndex;       // +0x5d0 CEngineGraphic::BankIndex
+    float         ExperienceSpendRedOutline_AnimStep;        // +0x5d4 CEngineGraphic::AnimStep
+    float         ExperienceSpendRedOutline_RenderSizeX;     // +0x5d8 CEngineGraphic::RenderSizeX
+    bool          ExperienceSpendRedOutline_AdditiveAlpha;   // +0x5dc CEngineGraphic::AdditiveAlpha
+    unsigned char ExperienceSpendRedOutline_Type;            // +0x5dd CEngineGraphic::Type
+    unsigned long ExperienceSpendRedEnd_BankIndex;           // +0x5de CEngineGraphic::BankIndex
+    float         ExperienceSpendRedEnd_AnimStep;            // +0x5e2 CEngineGraphic::AnimStep
+    float         ExperienceSpendRedEnd_RenderSizeX;         // +0x5e6 CEngineGraphic::RenderSizeX
+    bool          ExperienceSpendRedEnd_AdditiveAlpha;       // +0x5ea CEngineGraphic::AdditiveAlpha
+    unsigned char ExperienceSpendRedEnd_Type;                // +0x5eb CEngineGraphic::Type
+    float         ExperienceDescriptionTextTLPos_X;          // +0x5ec C2DVector::X
+    float         ExperienceDescriptionTextTLPos_Y;          // +0x5f0 C2DVector::Y
+    float         ExperienceDescriptionTextOffset_X;         // +0x5f4 C2DVector::X
+    float         ExperienceDescriptionTextOffset_Y;         // +0x5f8 C2DVector::Y
     unsigned long QuestCardInfoQuestNameLabel;               // +0x5fc
     unsigned long QuestCardInfoMoralityLabel;                // +0x600
     unsigned long QuestCardInfoCoreLabel;                    // +0x604
@@ -276,42 +405,72 @@ struct CInventoryDef {
     unsigned long QuestCardInfoTrophyText;                   // +0x660
     unsigned long QuestCardInfoBoastsText;                   // +0x664
     unsigned long QuestCardInfoStatusText;                   // +0x668
-    unsigned char TradeEdgedButtonCostTLPos[0x8];            // +0x66c C2DVector
-    unsigned char TradeEdgedButtonOwnedTLPos[0x8];           // +0x674 C2DVector
-    unsigned char TradeEdgedButtonProfitTLPos[0x8];          // +0x67c C2DVector
-    unsigned char TradeEdgedButtonTitleTLPos[0x8];           // +0x684 C2DVector
-    unsigned char TradeEdgedButtonCashTLPos[0x8];            // +0x68c C2DVector
-    unsigned char TradeEdgedButtonExtents[0x8];              // +0x694 C2DVector
-    unsigned char TradeAnimImageBoxTLPos[0x8];               // +0x69c C2DVector
-    unsigned char TradeAnimImageBoxExtents[0x8];             // +0x6a4 C2DVector
+    float         TradeEdgedButtonCostTLPos_X;               // +0x66c C2DVector::X
+    float         TradeEdgedButtonCostTLPos_Y;               // +0x670 C2DVector::Y
+    float         TradeEdgedButtonOwnedTLPos_X;              // +0x674 C2DVector::X
+    float         TradeEdgedButtonOwnedTLPos_Y;              // +0x678 C2DVector::Y
+    float         TradeEdgedButtonProfitTLPos_X;             // +0x67c C2DVector::X
+    float         TradeEdgedButtonProfitTLPos_Y;             // +0x680 C2DVector::Y
+    float         TradeEdgedButtonTitleTLPos_X;              // +0x684 C2DVector::X
+    float         TradeEdgedButtonTitleTLPos_Y;              // +0x688 C2DVector::Y
+    float         TradeEdgedButtonCashTLPos_X;               // +0x68c C2DVector::X
+    float         TradeEdgedButtonCashTLPos_Y;               // +0x690 C2DVector::Y
+    float         TradeEdgedButtonExtents_X;                 // +0x694 C2DVector::X
+    float         TradeEdgedButtonExtents_Y;                 // +0x698 C2DVector::Y
+    float         TradeAnimImageBoxTLPos_X;                  // +0x69c C2DVector::X
+    float         TradeAnimImageBoxTLPos_Y;                  // +0x6a0 C2DVector::Y
+    float         TradeAnimImageBoxExtents_X;                // +0x6a4 C2DVector::X
+    float         TradeAnimImageBoxExtents_Y;                // +0x6a8 C2DVector::Y
     float         TradeAnimImageXRotationTime;               // +0x6ac
     float         TradeAnimImageYRotationTime;               // +0x6b0
     float         TradeAnimImageZRotationTime;               // +0x6b4
-    unsigned char TradeEquippedItemTLPos[0x8];               // +0x6b8 C2DVector
-    unsigned char TradeEquippedItemExtents[0x8];             // +0x6c0 C2DVector
-    unsigned char TradeEquippedItemGraphic[0xe];             // +0x6c8 CEngineGraphic
-    unsigned char TradeDescriptionBoxTLPos[0x8];             // +0x6d6 C2DVector
+    float         TradeEquippedItemTLPos_X;                  // +0x6b8 C2DVector::X
+    float         TradeEquippedItemTLPos_Y;                  // +0x6bc C2DVector::Y
+    float         TradeEquippedItemExtents_X;                // +0x6c0 C2DVector::X
+    float         TradeEquippedItemExtents_Y;                // +0x6c4 C2DVector::Y
+    unsigned long TradeEquippedItemGraphic_BankIndex;        // +0x6c8 CEngineGraphic::BankIndex
+    float         TradeEquippedItemGraphic_AnimStep;         // +0x6cc CEngineGraphic::AnimStep
+    float         TradeEquippedItemGraphic_RenderSizeX;      // +0x6d0 CEngineGraphic::RenderSizeX
+    bool          TradeEquippedItemGraphic_AdditiveAlpha;    // +0x6d4 CEngineGraphic::AdditiveAlpha
+    unsigned char TradeEquippedItemGraphic_Type;             // +0x6d5 CEngineGraphic::Type
+    float         TradeDescriptionBoxTLPos_X;                // +0x6d6 C2DVector::X
+    float         TradeDescriptionBoxTLPos_Y;                // +0x6da C2DVector::Y
     unsigned char TradeDescriptionBoxExtents[0xa];           // +0x6de C2DVector
     unsigned long TradeTextOwned;                            // +0x6e8
     unsigned long TradeTextDivider;                          // +0x6ec
     unsigned long TradeTextCost;                             // +0x6f0
     unsigned long TradeTextGold;                             // +0x6f4
     unsigned long TradeTextProfit;                           // +0x6f8
-    unsigned char TradeShadedCircleTLPos[0x8];               // +0x6fc C2DVector
-    unsigned char TradeShadedCircleExtents[0x8];             // +0x704 C2DVector
-    unsigned char AugmentationMeshAreaTLPos[0x8];            // +0x70c C2DVector
-    unsigned char AugmentationMeshAreaBRPos[0x8];            // +0x714 C2DVector
-    unsigned char AugmentDescriptionBoxTLPos[0x8];           // +0x71c C2DVector
-    unsigned char AugmentDescriptionBoxExtents[0x8];         // +0x724 C2DVector
-    unsigned char AugmentAugmentationInfoTLPos[0x8];         // +0x72c C2DVector
-    unsigned char AugmentAugmentationLabelTLPos[0x8];        // +0x734 C2DVector
-    unsigned char AugmentAugmentationInfoTextOffset[0x8];    // +0x73c C2DVector
-    unsigned char AugmentAugmentationSlotTLPos[0x8];         // +0x744 C2DVector
-    unsigned char AugmentAugmentationSlotTextOffset[0x8];    // +0x74c C2DVector
-    unsigned char AugmentAugmentationWeaponTLPos[0x8];       // +0x754 C2DVector
-    unsigned char AugmentAugmentationWeaponTextOffset[0x8];  // +0x75c C2DVector
-    unsigned char AugmentTitleTLPos[0x8];                    // +0x764 C2DVector
-    unsigned char AugmentTitleTextOffset[0x8];               // +0x76c C2DVector
+    float         TradeShadedCircleTLPos_X;                  // +0x6fc C2DVector::X
+    float         TradeShadedCircleTLPos_Y;                  // +0x700 C2DVector::Y
+    float         TradeShadedCircleExtents_X;                // +0x704 C2DVector::X
+    float         TradeShadedCircleExtents_Y;                // +0x708 C2DVector::Y
+    float         AugmentationMeshAreaTLPos_X;               // +0x70c C2DVector::X
+    float         AugmentationMeshAreaTLPos_Y;               // +0x710 C2DVector::Y
+    float         AugmentationMeshAreaBRPos_X;               // +0x714 C2DVector::X
+    float         AugmentationMeshAreaBRPos_Y;               // +0x718 C2DVector::Y
+    float         AugmentDescriptionBoxTLPos_X;              // +0x71c C2DVector::X
+    float         AugmentDescriptionBoxTLPos_Y;              // +0x720 C2DVector::Y
+    float         AugmentDescriptionBoxExtents_X;            // +0x724 C2DVector::X
+    float         AugmentDescriptionBoxExtents_Y;            // +0x728 C2DVector::Y
+    float         AugmentAugmentationInfoTLPos_X;            // +0x72c C2DVector::X
+    float         AugmentAugmentationInfoTLPos_Y;            // +0x730 C2DVector::Y
+    float         AugmentAugmentationLabelTLPos_X;           // +0x734 C2DVector::X
+    float         AugmentAugmentationLabelTLPos_Y;           // +0x738 C2DVector::Y
+    float         AugmentAugmentationInfoTextOffset_X;       // +0x73c C2DVector::X
+    float         AugmentAugmentationInfoTextOffset_Y;       // +0x740 C2DVector::Y
+    float         AugmentAugmentationSlotTLPos_X;            // +0x744 C2DVector::X
+    float         AugmentAugmentationSlotTLPos_Y;            // +0x748 C2DVector::Y
+    float         AugmentAugmentationSlotTextOffset_X;       // +0x74c C2DVector::X
+    float         AugmentAugmentationSlotTextOffset_Y;       // +0x750 C2DVector::Y
+    float         AugmentAugmentationWeaponTLPos_X;          // +0x754 C2DVector::X
+    float         AugmentAugmentationWeaponTLPos_Y;          // +0x758 C2DVector::Y
+    float         AugmentAugmentationWeaponTextOffset_X;     // +0x75c C2DVector::X
+    float         AugmentAugmentationWeaponTextOffset_Y;     // +0x760 C2DVector::Y
+    float         AugmentTitleTLPos_X;                       // +0x764 C2DVector::X
+    float         AugmentTitleTLPos_Y;                       // +0x768 C2DVector::Y
+    float         AugmentTitleTextOffset_X;                  // +0x76c C2DVector::X
+    float         AugmentTitleTextOffset_Y;                  // +0x770 C2DVector::Y
     unsigned long AugmentTextMaxSlots;                       // +0x774
     unsigned long AugmentTextNumSlots;                       // +0x778
     unsigned long AugmentTextUpgradeCost;                    // +0x77c
@@ -322,53 +481,116 @@ struct CInventoryDef {
     unsigned long AugmentTextAugmentations;                  // +0x790
     unsigned long AugmentTextWeapons;                        // +0x794
     unsigned long AugmentTextDivider;                        // +0x798
-    unsigned char AugmentShadedCircleTLPos[0x8];             // +0x79c C2DVector
-    unsigned char AugmentShadedCircleExtents[0x8];           // +0x7a4 C2DVector
+    float         AugmentShadedCircleTLPos_X;                // +0x79c C2DVector::X
+    float         AugmentShadedCircleTLPos_Y;                // +0x7a0 C2DVector::Y
+    float         AugmentShadedCircleExtents_X;              // +0x7a4 C2DVector::X
+    float         AugmentShadedCircleExtents_Y;              // +0x7a8 C2DVector::Y
     float         InventoryAnimImageXRotationTime;           // +0x7ac
     float         InventoryAnimImageYRotationTime;           // +0x7b0
     float         InventoryAnimImageZRotationTime;           // +0x7b4
     unsigned char QuestCardFeatColour[0x4];                  // +0x7b8 CRGBColour
     unsigned char QuestCardCoreColour[0x4];                  // +0x7bc CRGBColour
     unsigned char QuestCardExclusiveColour[0x4];             // +0x7c0 CRGBColour
-    unsigned char QuestCardInfoTLPos[0x8];                   // +0x7c4 C2DVector
-    unsigned char QuestCardInfo2TLPos[0x8];                  // +0x7cc C2DVector
-    unsigned char QuestCardNoQuestsTLPos[0x8];               // +0x7d4 C2DVector
+    float         QuestCardInfoTLPos_X;                      // +0x7c4 C2DVector::X
+    float         QuestCardInfoTLPos_Y;                      // +0x7c8 C2DVector::Y
+    float         QuestCardInfo2TLPos_X;                     // +0x7cc C2DVector::X
+    float         QuestCardInfo2TLPos_Y;                     // +0x7d0 C2DVector::Y
+    float         QuestCardNoQuestsTLPos_X;                  // +0x7d4 C2DVector::X
+    float         QuestCardNoQuestsTLPos_Y;                  // +0x7d8 C2DVector::Y
     unsigned long QuestCardNoQuestsText;                     // +0x7dc
-    unsigned char QuestCardInfoTextOffset[0x8];              // +0x7e0 C2DVector
-    unsigned char QuestCardEdgedButtonTitleTLPos[0x8];       // +0x7e8 C2DVector
-    unsigned char QuestCardEdgedButtonExtents[0x8];          // +0x7f0 C2DVector
+    float         QuestCardInfoTextOffset_X;                 // +0x7e0 C2DVector::X
+    float         QuestCardInfoTextOffset_Y;                 // +0x7e4 C2DVector::Y
+    float         QuestCardEdgedButtonTitleTLPos_X;          // +0x7e8 C2DVector::X
+    float         QuestCardEdgedButtonTitleTLPos_Y;          // +0x7ec C2DVector::Y
+    float         QuestCardEdgedButtonExtents_X;             // +0x7f0 C2DVector::X
+    float         QuestCardEdgedButtonExtents_Y;             // +0x7f4 C2DVector::Y
     unsigned char ExpSpendItemLabelStat[0x10];               // +0x7f8 vector<long,std::allocator<long>_>
     unsigned char ExpSpendItemLabelAbility[0x10];            // +0x808 vector<long,std::allocator<long>_>
     long          ExpSpendMaxItemsToDisplay;                 // +0x818
-    unsigned char ExpSpendButtonTLPos[0x8];                  // +0x81c C2DVector
-    unsigned char ExpSpendButtonTLPosOffset[0x8];            // +0x824 C2DVector
-    unsigned char ExpSpendButtonTextOffset[0x8];             // +0x82c C2DVector
-    unsigned char ExpSpendButtonSelL[0xe];                   // +0x834 CEngineGraphic
-    unsigned char ExpSpendButtonSelC[0xe];                   // +0x842 CEngineGraphic
-    unsigned char ExpSpendButtonSelR[0xe];                   // +0x850 CEngineGraphic
-    unsigned char ExpSpendButtonL[0xe];                      // +0x85e CEngineGraphic
-    unsigned char ExpSpendButtonC[0xe];                      // +0x86c CEngineGraphic
-    unsigned char ExpSpendButtonR[0xe];                      // +0x87a CEngineGraphic
-    unsigned char ExpSpendDescriptionBoxTLPos[0x8];          // +0x888 C2DVector
-    unsigned char ExpSpendDescriptionBoxExtents[0x8];        // +0x890 C2DVector
-    unsigned char ExpSpendArrowUpTLPos[0x8];                 // +0x898 C2DVector
-    unsigned char ExpSpendArrowDnTLPos[0x8];                 // +0x8a0 C2DVector
-    unsigned char ExpSpendGeneralPoolLabelTLPos[0x8];        // +0x8a8 C2DVector
-    unsigned char ExpSpendGeneralPoolLabelTextOffset[0x8];   // +0x8b0 C2DVector
-    unsigned char ExpSpendGeneralPoolSpendTextOffset[0x8];   // +0x8b8 C2DVector
+    float         ExpSpendButtonTLPos_X;                     // +0x81c C2DVector::X
+    float         ExpSpendButtonTLPos_Y;                     // +0x820 C2DVector::Y
+    float         ExpSpendButtonTLPosOffset_X;               // +0x824 C2DVector::X
+    float         ExpSpendButtonTLPosOffset_Y;               // +0x828 C2DVector::Y
+    float         ExpSpendButtonTextOffset_X;                // +0x82c C2DVector::X
+    float         ExpSpendButtonTextOffset_Y;                // +0x830 C2DVector::Y
+    unsigned long ExpSpendButtonSelL_BankIndex;              // +0x834 CEngineGraphic::BankIndex
+    float         ExpSpendButtonSelL_AnimStep;               // +0x838 CEngineGraphic::AnimStep
+    float         ExpSpendButtonSelL_RenderSizeX;            // +0x83c CEngineGraphic::RenderSizeX
+    bool          ExpSpendButtonSelL_AdditiveAlpha;          // +0x840 CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendButtonSelL_Type;                   // +0x841 CEngineGraphic::Type
+    unsigned long ExpSpendButtonSelC_BankIndex;              // +0x842 CEngineGraphic::BankIndex
+    float         ExpSpendButtonSelC_AnimStep;               // +0x846 CEngineGraphic::AnimStep
+    float         ExpSpendButtonSelC_RenderSizeX;            // +0x84a CEngineGraphic::RenderSizeX
+    bool          ExpSpendButtonSelC_AdditiveAlpha;          // +0x84e CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendButtonSelC_Type;                   // +0x84f CEngineGraphic::Type
+    unsigned long ExpSpendButtonSelR_BankIndex;              // +0x850 CEngineGraphic::BankIndex
+    float         ExpSpendButtonSelR_AnimStep;               // +0x854 CEngineGraphic::AnimStep
+    float         ExpSpendButtonSelR_RenderSizeX;            // +0x858 CEngineGraphic::RenderSizeX
+    bool          ExpSpendButtonSelR_AdditiveAlpha;          // +0x85c CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendButtonSelR_Type;                   // +0x85d CEngineGraphic::Type
+    unsigned long ExpSpendButtonL_BankIndex;                 // +0x85e CEngineGraphic::BankIndex
+    float         ExpSpendButtonL_AnimStep;                  // +0x862 CEngineGraphic::AnimStep
+    float         ExpSpendButtonL_RenderSizeX;               // +0x866 CEngineGraphic::RenderSizeX
+    bool          ExpSpendButtonL_AdditiveAlpha;             // +0x86a CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendButtonL_Type;                      // +0x86b CEngineGraphic::Type
+    unsigned long ExpSpendButtonC_BankIndex;                 // +0x86c CEngineGraphic::BankIndex
+    float         ExpSpendButtonC_AnimStep;                  // +0x870 CEngineGraphic::AnimStep
+    float         ExpSpendButtonC_RenderSizeX;               // +0x874 CEngineGraphic::RenderSizeX
+    bool          ExpSpendButtonC_AdditiveAlpha;             // +0x878 CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendButtonC_Type;                      // +0x879 CEngineGraphic::Type
+    unsigned long ExpSpendButtonR_BankIndex;                 // +0x87a CEngineGraphic::BankIndex
+    float         ExpSpendButtonR_AnimStep;                  // +0x87e CEngineGraphic::AnimStep
+    float         ExpSpendButtonR_RenderSizeX;               // +0x882 CEngineGraphic::RenderSizeX
+    bool          ExpSpendButtonR_AdditiveAlpha;             // +0x886 CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendButtonR_Type;                      // +0x887 CEngineGraphic::Type
+    float         ExpSpendDescriptionBoxTLPos_X;             // +0x888 C2DVector::X
+    float         ExpSpendDescriptionBoxTLPos_Y;             // +0x88c C2DVector::Y
+    float         ExpSpendDescriptionBoxExtents_X;           // +0x890 C2DVector::X
+    float         ExpSpendDescriptionBoxExtents_Y;           // +0x894 C2DVector::Y
+    float         ExpSpendArrowUpTLPos_X;                    // +0x898 C2DVector::X
+    float         ExpSpendArrowUpTLPos_Y;                    // +0x89c C2DVector::Y
+    float         ExpSpendArrowDnTLPos_X;                    // +0x8a0 C2DVector::X
+    float         ExpSpendArrowDnTLPos_Y;                    // +0x8a4 C2DVector::Y
+    float         ExpSpendGeneralPoolLabelTLPos_X;           // +0x8a8 C2DVector::X
+    float         ExpSpendGeneralPoolLabelTLPos_Y;           // +0x8ac C2DVector::Y
+    float         ExpSpendGeneralPoolLabelTextOffset_X;      // +0x8b0 C2DVector::X
+    float         ExpSpendGeneralPoolLabelTextOffset_Y;      // +0x8b4 C2DVector::Y
+    float         ExpSpendGeneralPoolSpendTextOffset_X;      // +0x8b8 C2DVector::X
+    float         ExpSpendGeneralPoolSpendTextOffset_Y;      // +0x8bc C2DVector::Y
     float         ExpSpendGeneralPoolWidth;                  // +0x8c0
     float         ExpSpendGeneralPoolSliderWidth;            // +0x8c4
-    unsigned char ExpSpendStrengthPoolTLPos[0x8];            // +0x8c8 C2DVector
-    unsigned char ExpSpendSkillPoolTLPos[0x8];               // +0x8d0 C2DVector
-    unsigned char ExpSpendWillPoolTLPos[0x8];                // +0x8d8 C2DVector
+    float         ExpSpendStrengthPoolTLPos_X;               // +0x8c8 C2DVector::X
+    float         ExpSpendStrengthPoolTLPos_Y;               // +0x8cc C2DVector::Y
+    float         ExpSpendSkillPoolTLPos_X;                  // +0x8d0 C2DVector::X
+    float         ExpSpendSkillPoolTLPos_Y;                  // +0x8d4 C2DVector::Y
+    float         ExpSpendWillPoolTLPos_X;                   // +0x8d8 C2DVector::X
+    float         ExpSpendWillPoolTLPos_Y;                   // +0x8dc C2DVector::Y
     float         ExpSpendPoolWidth;                         // +0x8e0
     float         ExpSpendPoolHeight;                        // +0x8e4
-    unsigned char ExpSpendProgBarL[0xe];                     // +0x8e8 CEngineGraphic
-    unsigned char ExpSpendProgBarC[0xe];                     // +0x8f6 CEngineGraphic
-    unsigned char ExpSpendProgBarR[0xe];                     // +0x904 CEngineGraphic
-    unsigned char ExpSpendProgBarValue[0xe];                 // +0x912 CEngineGraphic
-    unsigned char ExpSpendProgBarValueOffset[0x8];           // +0x920 C2DVector
-    unsigned char ExpSpendTypeTextOffset[0x8];               // +0x928 C2DVector
+    unsigned long ExpSpendProgBarL_BankIndex;                // +0x8e8 CEngineGraphic::BankIndex
+    float         ExpSpendProgBarL_AnimStep;                 // +0x8ec CEngineGraphic::AnimStep
+    float         ExpSpendProgBarL_RenderSizeX;              // +0x8f0 CEngineGraphic::RenderSizeX
+    bool          ExpSpendProgBarL_AdditiveAlpha;            // +0x8f4 CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendProgBarL_Type;                     // +0x8f5 CEngineGraphic::Type
+    unsigned long ExpSpendProgBarC_BankIndex;                // +0x8f6 CEngineGraphic::BankIndex
+    float         ExpSpendProgBarC_AnimStep;                 // +0x8fa CEngineGraphic::AnimStep
+    float         ExpSpendProgBarC_RenderSizeX;              // +0x8fe CEngineGraphic::RenderSizeX
+    bool          ExpSpendProgBarC_AdditiveAlpha;            // +0x902 CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendProgBarC_Type;                     // +0x903 CEngineGraphic::Type
+    unsigned long ExpSpendProgBarR_BankIndex;                // +0x904 CEngineGraphic::BankIndex
+    float         ExpSpendProgBarR_AnimStep;                 // +0x908 CEngineGraphic::AnimStep
+    float         ExpSpendProgBarR_RenderSizeX;              // +0x90c CEngineGraphic::RenderSizeX
+    bool          ExpSpendProgBarR_AdditiveAlpha;            // +0x910 CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendProgBarR_Type;                     // +0x911 CEngineGraphic::Type
+    unsigned long ExpSpendProgBarValue_BankIndex;            // +0x912 CEngineGraphic::BankIndex
+    float         ExpSpendProgBarValue_AnimStep;             // +0x916 CEngineGraphic::AnimStep
+    float         ExpSpendProgBarValue_RenderSizeX;          // +0x91a CEngineGraphic::RenderSizeX
+    bool          ExpSpendProgBarValue_AdditiveAlpha;        // +0x91e CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendProgBarValue_Type;                 // +0x91f CEngineGraphic::Type
+    float         ExpSpendProgBarValueOffset_X;              // +0x920 C2DVector::X
+    float         ExpSpendProgBarValueOffset_Y;              // +0x924 C2DVector::Y
+    float         ExpSpendTypeTextOffset_X;                  // +0x928 C2DVector::X
+    float         ExpSpendTypeTextOffset_Y;                  // +0x92c C2DVector::Y
     long          ExpSpendGeneralPoolBarValue;               // +0x930
     long          ExpSpendGeneralPoolLabel;                  // +0x934
     long          ExpSpendTypeStrengthLabel;                 // +0x938
@@ -379,29 +601,85 @@ struct CInventoryDef {
     float         ExpSpendWillBarValue;                      // +0x94c
     long          ExpSpendRate;                              // +0x950
     long          ExpSpendTimeOffset;                        // +0x954
-    unsigned char ExpSpendGreen[0xe];                        // +0x958 CEngineGraphic
-    unsigned char ExpSpendGreenOutline[0xe];                 // +0x966 CEngineGraphic
-    unsigned char ExpSpendGreenEnd[0xe];                     // +0x974 CEngineGraphic
-    unsigned char ExpSpendRed[0xe];                          // +0x982 CEngineGraphic
-    unsigned char ExpSpendRedOutline[0xe];                   // +0x990 CEngineGraphic
-    unsigned char ExpSpendRedEnd[0xe];                       // +0x99e CEngineGraphic
-    unsigned char ExpSpendDescriptionTextTLPos[0x8];         // +0x9ac C2DVector
-    unsigned char ExpSpendDescriptionTextOffset[0x8];        // +0x9b4 C2DVector
-    unsigned char MainEdgedButtonTitleTLPos[0x8];            // +0x9bc C2DVector
-    unsigned char MainEdgedButtonOwnedTLPos[0x8];            // +0x9c4 C2DVector
-    unsigned char MainEdgedButtonPriceTLPos[0x8];            // +0x9cc C2DVector
-    unsigned char MainEdgedButtonCostTLPos[0x8];             // +0x9d4 C2DVector
-    unsigned char MainEdgedButtonExtents[0x8];               // +0x9dc C2DVector
-    unsigned char MainDescriptionBoxC[0xe];                  // +0x9e4 CEngineGraphic
-    unsigned char MainDescriptionBoxTL[0xe];                 // +0x9f2 CEngineGraphic
-    unsigned char MainDescriptionBoxTR[0xe];                 // +0xa00 CEngineGraphic
-    unsigned char MainDescriptionBoxBL[0xe];                 // +0xa0e CEngineGraphic
-    unsigned char MainDescriptionBoxBR[0xe];                 // +0xa1c CEngineGraphic
-    unsigned char MainDescriptionBoxTLPos[0x8];              // +0xa2a C2DVector
-    unsigned char MainDescriptionBoxExtents[0x8];            // +0xa32 C2DVector
-    unsigned char MainShadedCircleTLPos[0x8];                // +0xa3a C2DVector
-    unsigned char MainShadedCircleExtents[0x8];              // +0xa42 C2DVector
-    unsigned char MainAnimBoxTLPos[0x8];                     // +0xa4a C2DVector
+    unsigned long ExpSpendGreen_BankIndex;                   // +0x958 CEngineGraphic::BankIndex
+    float         ExpSpendGreen_AnimStep;                    // +0x95c CEngineGraphic::AnimStep
+    float         ExpSpendGreen_RenderSizeX;                 // +0x960 CEngineGraphic::RenderSizeX
+    bool          ExpSpendGreen_AdditiveAlpha;               // +0x964 CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendGreen_Type;                        // +0x965 CEngineGraphic::Type
+    unsigned long ExpSpendGreenOutline_BankIndex;            // +0x966 CEngineGraphic::BankIndex
+    float         ExpSpendGreenOutline_AnimStep;             // +0x96a CEngineGraphic::AnimStep
+    float         ExpSpendGreenOutline_RenderSizeX;          // +0x96e CEngineGraphic::RenderSizeX
+    bool          ExpSpendGreenOutline_AdditiveAlpha;        // +0x972 CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendGreenOutline_Type;                 // +0x973 CEngineGraphic::Type
+    unsigned long ExpSpendGreenEnd_BankIndex;                // +0x974 CEngineGraphic::BankIndex
+    float         ExpSpendGreenEnd_AnimStep;                 // +0x978 CEngineGraphic::AnimStep
+    float         ExpSpendGreenEnd_RenderSizeX;              // +0x97c CEngineGraphic::RenderSizeX
+    bool          ExpSpendGreenEnd_AdditiveAlpha;            // +0x980 CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendGreenEnd_Type;                     // +0x981 CEngineGraphic::Type
+    unsigned long ExpSpendRed_BankIndex;                     // +0x982 CEngineGraphic::BankIndex
+    float         ExpSpendRed_AnimStep;                      // +0x986 CEngineGraphic::AnimStep
+    float         ExpSpendRed_RenderSizeX;                   // +0x98a CEngineGraphic::RenderSizeX
+    bool          ExpSpendRed_AdditiveAlpha;                 // +0x98e CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendRed_Type;                          // +0x98f CEngineGraphic::Type
+    unsigned long ExpSpendRedOutline_BankIndex;              // +0x990 CEngineGraphic::BankIndex
+    float         ExpSpendRedOutline_AnimStep;               // +0x994 CEngineGraphic::AnimStep
+    float         ExpSpendRedOutline_RenderSizeX;            // +0x998 CEngineGraphic::RenderSizeX
+    bool          ExpSpendRedOutline_AdditiveAlpha;          // +0x99c CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendRedOutline_Type;                   // +0x99d CEngineGraphic::Type
+    unsigned long ExpSpendRedEnd_BankIndex;                  // +0x99e CEngineGraphic::BankIndex
+    float         ExpSpendRedEnd_AnimStep;                   // +0x9a2 CEngineGraphic::AnimStep
+    float         ExpSpendRedEnd_RenderSizeX;                // +0x9a6 CEngineGraphic::RenderSizeX
+    bool          ExpSpendRedEnd_AdditiveAlpha;              // +0x9aa CEngineGraphic::AdditiveAlpha
+    unsigned char ExpSpendRedEnd_Type;                       // +0x9ab CEngineGraphic::Type
+    float         ExpSpendDescriptionTextTLPos_X;            // +0x9ac C2DVector::X
+    float         ExpSpendDescriptionTextTLPos_Y;            // +0x9b0 C2DVector::Y
+    float         ExpSpendDescriptionTextOffset_X;           // +0x9b4 C2DVector::X
+    float         ExpSpendDescriptionTextOffset_Y;           // +0x9b8 C2DVector::Y
+    float         MainEdgedButtonTitleTLPos_X;               // +0x9bc C2DVector::X
+    float         MainEdgedButtonTitleTLPos_Y;               // +0x9c0 C2DVector::Y
+    float         MainEdgedButtonOwnedTLPos_X;               // +0x9c4 C2DVector::X
+    float         MainEdgedButtonOwnedTLPos_Y;               // +0x9c8 C2DVector::Y
+    float         MainEdgedButtonPriceTLPos_X;               // +0x9cc C2DVector::X
+    float         MainEdgedButtonPriceTLPos_Y;               // +0x9d0 C2DVector::Y
+    float         MainEdgedButtonCostTLPos_X;                // +0x9d4 C2DVector::X
+    float         MainEdgedButtonCostTLPos_Y;                // +0x9d8 C2DVector::Y
+    float         MainEdgedButtonExtents_X;                  // +0x9dc C2DVector::X
+    float         MainEdgedButtonExtents_Y;                  // +0x9e0 C2DVector::Y
+    unsigned long MainDescriptionBoxC_BankIndex;             // +0x9e4 CEngineGraphic::BankIndex
+    float         MainDescriptionBoxC_AnimStep;              // +0x9e8 CEngineGraphic::AnimStep
+    float         MainDescriptionBoxC_RenderSizeX;           // +0x9ec CEngineGraphic::RenderSizeX
+    bool          MainDescriptionBoxC_AdditiveAlpha;         // +0x9f0 CEngineGraphic::AdditiveAlpha
+    unsigned char MainDescriptionBoxC_Type;                  // +0x9f1 CEngineGraphic::Type
+    unsigned long MainDescriptionBoxTL_BankIndex;            // +0x9f2 CEngineGraphic::BankIndex
+    float         MainDescriptionBoxTL_AnimStep;             // +0x9f6 CEngineGraphic::AnimStep
+    float         MainDescriptionBoxTL_RenderSizeX;          // +0x9fa CEngineGraphic::RenderSizeX
+    bool          MainDescriptionBoxTL_AdditiveAlpha;        // +0x9fe CEngineGraphic::AdditiveAlpha
+    unsigned char MainDescriptionBoxTL_Type;                 // +0x9ff CEngineGraphic::Type
+    unsigned long MainDescriptionBoxTR_BankIndex;            // +0xa00 CEngineGraphic::BankIndex
+    float         MainDescriptionBoxTR_AnimStep;             // +0xa04 CEngineGraphic::AnimStep
+    float         MainDescriptionBoxTR_RenderSizeX;          // +0xa08 CEngineGraphic::RenderSizeX
+    bool          MainDescriptionBoxTR_AdditiveAlpha;        // +0xa0c CEngineGraphic::AdditiveAlpha
+    unsigned char MainDescriptionBoxTR_Type;                 // +0xa0d CEngineGraphic::Type
+    unsigned long MainDescriptionBoxBL_BankIndex;            // +0xa0e CEngineGraphic::BankIndex
+    float         MainDescriptionBoxBL_AnimStep;             // +0xa12 CEngineGraphic::AnimStep
+    float         MainDescriptionBoxBL_RenderSizeX;          // +0xa16 CEngineGraphic::RenderSizeX
+    bool          MainDescriptionBoxBL_AdditiveAlpha;        // +0xa1a CEngineGraphic::AdditiveAlpha
+    unsigned char MainDescriptionBoxBL_Type;                 // +0xa1b CEngineGraphic::Type
+    unsigned long MainDescriptionBoxBR_BankIndex;            // +0xa1c CEngineGraphic::BankIndex
+    float         MainDescriptionBoxBR_AnimStep;             // +0xa20 CEngineGraphic::AnimStep
+    float         MainDescriptionBoxBR_RenderSizeX;          // +0xa24 CEngineGraphic::RenderSizeX
+    bool          MainDescriptionBoxBR_AdditiveAlpha;        // +0xa28 CEngineGraphic::AdditiveAlpha
+    unsigned char MainDescriptionBoxBR_Type;                 // +0xa29 CEngineGraphic::Type
+    float         MainDescriptionBoxTLPos_X;                 // +0xa2a C2DVector::X
+    float         MainDescriptionBoxTLPos_Y;                 // +0xa2e C2DVector::Y
+    float         MainDescriptionBoxExtents_X;               // +0xa32 C2DVector::X
+    float         MainDescriptionBoxExtents_Y;               // +0xa36 C2DVector::Y
+    float         MainShadedCircleTLPos_X;                   // +0xa3a C2DVector::X
+    float         MainShadedCircleTLPos_Y;                   // +0xa3e C2DVector::Y
+    float         MainShadedCircleExtents_X;                 // +0xa42 C2DVector::X
+    float         MainShadedCircleExtents_Y;                 // +0xa46 C2DVector::Y
+    float         MainAnimBoxTLPos_X;                        // +0xa4a C2DVector::X
+    float         MainAnimBoxTLPos_Y;                        // +0xa4e C2DVector::Y
     unsigned char MainAnimBoxExtents[0xa];                   // +0xa52 C2DVector
     float         MainQuickAccessItemFlashTime;              // +0xa5c
 };
@@ -421,35 +699,56 @@ FABLE_STATIC_ASSERT(offsetof(CInventoryDef, InitialInventoryClothingItems) == 0x
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, InitialInventoryWeaponsItems) == 0x70);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, InitialInventoryStatsItems) == 0x80);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, InitialInventoryStandardItems) == 0x90);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ClothingShadedCircleTLPos) == 0xa0);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ClothingShadedCircleExtents) == 0xa8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, CategoriesTLPos) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MeshAreaTLPos) == 0xb8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MeshAreaBRPos) == 0xc0);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, NextCategoryOffset) == 0xc8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, FirstItemOffsetFromCategory) == 0xd0);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, NextItemOffset) == 0xd8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, GenericFont) == 0xe0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ClothingShadedCircleTLPos_X) == 0xa0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ClothingShadedCircleTLPos_Y) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ClothingShadedCircleExtents_X) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ClothingShadedCircleExtents_Y) == 0xac);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, CategoriesTLPos_X) == 0xb0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, CategoriesTLPos_Y) == 0xb4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MeshAreaTLPos_X) == 0xb8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MeshAreaTLPos_Y) == 0xbc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MeshAreaBRPos_X) == 0xc0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MeshAreaBRPos_Y) == 0xc4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, NextCategoryOffset_X) == 0xc8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, NextCategoryOffset_Y) == 0xcc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, FirstItemOffsetFromCategory_X) == 0xd0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, FirstItemOffsetFromCategory_Y) == 0xd4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, NextItemOffset_X) == 0xd8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, NextItemOffset_Y) == 0xdc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, GenericFont_TablePos) == 0xe0);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, BackGroundColour) == 0xe4);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ClothingDoll) == 0xe8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, DollCentreOffset) == 0xec);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, DollCentreOffset_X) == 0xec);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, DollCentreOffset_Y) == 0xf0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, DollCentreOffset_Z) == 0xf4);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, DollBoundingSphereRadius) == 0xf8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TotalExperienceTextPos) == 0xfc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TotalExperienceTextPos_X) == 0xfc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TotalExperienceTextPos_Y) == 0x100);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TotalExperienceText) == 0x104);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, SpendingExperienceTextPos) == 0x108);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, SpendingExperienceTextPos_X) == 0x108);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, SpendingExperienceTextPos_Y) == 0x10c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, SpendingExperienceText) == 0x110);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StrengthLevelTextPos) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StrengthLevelTextPos_X) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StrengthLevelTextPos_Y) == 0x118);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StrengthLevelColour) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, SkillLevelTextPos) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, SkillLevelTextPos_X) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, SkillLevelTextPos_Y) == 0x124);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, SkillLevelColour) == 0x128);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WillLevelTextPos) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WillLevelTextPos_X) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WillLevelTextPos_Y) == 0x130);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WillLevelColour) == 0x134);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, RenownLevelTextPos) == 0x138);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, HeroLevelTextPos) == 0x140);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatLevelsFirstLineTextPos) == 0x148);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatLevelsNextLineTextOffset) == 0x150);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ButtonAssignmentTextPos) == 0x158);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ButtonAssignmentTextOffset) == 0x160);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, RenownLevelTextPos_X) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, RenownLevelTextPos_Y) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, HeroLevelTextPos_X) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, HeroLevelTextPos_Y) == 0x144);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatLevelsFirstLineTextPos_X) == 0x148);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatLevelsFirstLineTextPos_Y) == 0x14c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatLevelsNextLineTextOffset_X) == 0x150);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatLevelsNextLineTextOffset_Y) == 0x154);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ButtonAssignmentTextPos_X) == 0x158);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ButtonAssignmentTextPos_Y) == 0x15c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ButtonAssignmentTextOffset_X) == 0x160);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ButtonAssignmentTextOffset_Y) == 0x164);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatLevelsTexts) == 0x168);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatLevelsColours) == 0x178);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsTextSeparator) == 0x188);
@@ -459,44 +758,80 @@ FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsTextSuccessfulAugmentation) =
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsTextNoFreeSlots) == 0x198);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsTextReadyToAugment) == 0x19c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsTextNotReadyToAugment) == 0x1a0);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsDescriptionBoxTLPos) == 0x1a4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsDescriptionBoxExtents) == 0x1ac);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsActiveMeleeIconPos) == 0x1b4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsActiveRangeIconPos) == 0x1bc);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponAugmentationTextStartPos) == 0x1c4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponAugmentationTextNewLineOffset) == 0x1cc);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentationStatusTextAreaTLPos) == 0x1d4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentationStatusTextAreaBRPos) == 0x1dc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsDescriptionBoxTLPos_X) == 0x1a4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsDescriptionBoxTLPos_Y) == 0x1a8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsDescriptionBoxExtents_X) == 0x1ac);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsDescriptionBoxExtents_Y) == 0x1b0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsActiveMeleeIconPos_X) == 0x1b4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsActiveMeleeIconPos_Y) == 0x1b8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsActiveRangeIconPos_X) == 0x1bc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsActiveRangeIconPos_Y) == 0x1c0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponAugmentationTextStartPos_X) == 0x1c4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponAugmentationTextStartPos_Y) == 0x1c8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponAugmentationTextNewLineOffset_X) == 0x1cc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponAugmentationTextNewLineOffset_Y) == 0x1d0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentationStatusTextAreaTLPos_X) == 0x1d4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentationStatusTextAreaTLPos_Y) == 0x1d8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentationStatusTextAreaBRPos_X) == 0x1dc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentationStatusTextAreaBRPos_Y) == 0x1e0);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TimeToDisplayWarningMessageInSeconds) == 0x1e4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsShadedCircleTLPos) == 0x1e8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsShadedCircleExtents) == 0x1f0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsShadedCircleTLPos_X) == 0x1e8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsShadedCircleTLPos_Y) == 0x1ec);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsShadedCircleExtents_X) == 0x1f0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, WeaponsShadedCircleExtents_Y) == 0x1f4);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, NumberOfSecondsForObjectRotation) == 0x1f8);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MaxNumberOfItemsToDisplayPerCategory) == 0x1fc);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MaxNumberOfCategoriesToDisplay) == 0x200);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MaxNumberOfScreenNamesToDisplay) == 0x204);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, InventoryName) == 0x208);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, InventoryIdentifier) == 0x20c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenMapDisplayBoxTLPos) == 0x210);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenMapDisplayBoxBRPos) == 0x218);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenRegionNamePos) == 0x220);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenMapDisplayBoxTLPos_X) == 0x210);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenMapDisplayBoxTLPos_Y) == 0x214);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenMapDisplayBoxBRPos_X) == 0x218);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenMapDisplayBoxBRPos_Y) == 0x21c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenRegionNamePos_X) == 0x220);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenRegionNamePos_Y) == 0x224);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenWorldMapGraphic) == 0x228);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenWorldMapPos) == 0x22c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenWorldMapPos_X) == 0x22c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenWorldMapPos_Y) == 0x230);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenRegionUnknownGraphic) == 0x234);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenRegionUnknownHighlightGraphic) == 0x238);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenRegionHeroGraphic) == 0x23c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenRegionQuestGraphic) == 0x240);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenRegionTeleportGraphic) == 0x244);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MapScreenRegionHouseGraphic) == 0x248);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsTitleTLPos) == 0x24c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsShadedCircleTLPos) == 0x254);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsShadedCircleExtents) == 0x25c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarL) == 0x264);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarC) == 0x272);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarR) == 0x280);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarValue) == 0x28e);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarValueOffset) == 0x29c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityHeadingTLPos) == 0x2a4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityHeadingBRPos) == 0x2ac);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsTitleTLPos_X) == 0x24c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsTitleTLPos_Y) == 0x250);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsShadedCircleTLPos_X) == 0x254);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsShadedCircleTLPos_Y) == 0x258);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsShadedCircleExtents_X) == 0x25c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsShadedCircleExtents_Y) == 0x260);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarL_BankIndex) == 0x264);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarL_AnimStep) == 0x268);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarL_RenderSizeX) == 0x26c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarL_AdditiveAlpha) == 0x270);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarL_Type) == 0x271);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarC_BankIndex) == 0x272);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarC_AnimStep) == 0x276);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarC_RenderSizeX) == 0x27a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarC_AdditiveAlpha) == 0x27e);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarC_Type) == 0x27f);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarR_BankIndex) == 0x280);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarR_AnimStep) == 0x284);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarR_RenderSizeX) == 0x288);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarR_AdditiveAlpha) == 0x28c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarR_Type) == 0x28d);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarValue_BankIndex) == 0x28e);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarValue_AnimStep) == 0x292);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarValue_RenderSizeX) == 0x296);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarValue_AdditiveAlpha) == 0x29a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarValue_Type) == 0x29b);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarValueOffset_X) == 0x29c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsProgBarValueOffset_Y) == 0x2a0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityHeadingTLPos_X) == 0x2a4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityHeadingTLPos_Y) == 0x2a8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityHeadingBRPos_X) == 0x2ac);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityHeadingBRPos_Y) == 0x2b0);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityRenownLowerLabel) == 0x2b4);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityRenownUpperLabel) == 0x2b8);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityGoodnessLowerLabel) == 0x2bc);
@@ -507,22 +842,31 @@ FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityScarinessLowerLabel)
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityScarinessUpperLabel) == 0x2d0);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityNicenessLowerLabel) == 0x2d4);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityNicenessUpperLabel) == 0x2d8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityLabelTextOffset) == 0x2dc);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityLowerLabelTLPos) == 0x2e4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityLabelTextOffset_X) == 0x2dc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityLabelTextOffset_Y) == 0x2e0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityLowerLabelTLPos_X) == 0x2e4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityLowerLabelTLPos_Y) == 0x2e8);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityLowerLabelWidth) == 0x2ec);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityLowerLabelHeight) == 0x2f0);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalitySliderWidth) == 0x2f4);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityUpperLabelWidth) == 0x2f8);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityDoll) == 0x2fc);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityDollCentreOffset) == 0x300);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityDollCentreOffset_X) == 0x300);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityDollCentreOffset_Y) == 0x304);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityDollCentreOffset_Z) == 0x308);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsPersonalityDollBoundingSphereRadius) == 0x30c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsLabelTLPos) == 0x310);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsLabelTLPos_X) == 0x310);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsLabelTLPos_Y) == 0x314);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsLabelWidth) == 0x318);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsLabelHeight) == 0x31c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsLabelTextOffset) == 0x320);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsDataTextOffset) == 0x328);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsHeadingTLPos) == 0x330);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsHeadingBRPos) == 0x338);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsLabelTextOffset_X) == 0x320);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsLabelTextOffset_Y) == 0x324);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsDataTextOffset_X) == 0x328);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsDataTextOffset_Y) == 0x32c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsHeadingTLPos_X) == 0x330);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsHeadingTLPos_Y) == 0x334);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsHeadingBRPos_X) == 0x338);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsHeadingBRPos_Y) == 0x33c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsPeopleKilledLabel) == 0x340);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsMonstersKilledLabel) == 0x344);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsMaxMultiplierLabel) == 0x348);
@@ -533,19 +877,29 @@ FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsNumberOfWivesLabel) =
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsQuestsActiveLabel) == 0x35c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsQuestsFinishedLabel) == 0x360);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsStatisticsBoastsAchievedLabel) == 0x364);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceStrengthTextOffset) == 0x368);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceWillTextOffset) == 0x370);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceSkillTextOffset) == 0x378);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceStrengthTextOffset_X) == 0x368);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceStrengthTextOffset_Y) == 0x36c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceWillTextOffset_X) == 0x370);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceWillTextOffset_Y) == 0x374);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceSkillTextOffset_X) == 0x378);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceSkillTextOffset_Y) == 0x37c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceStrengthText) == 0x380);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceWillText) == 0x384);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceSkillText) == 0x388);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolGeneralTLPos) == 0x38c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolGeneralTextOffset) == 0x394);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolStrengthGroupTLPos) == 0x39c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolSkillGroupTLPos) == 0x3a4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolWillGroupTLPos) == 0x3ac);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolLabelTLPos) == 0x3b4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolLabelTextOffset) == 0x3bc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolGeneralTLPos_X) == 0x38c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolGeneralTLPos_Y) == 0x390);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolGeneralTextOffset_X) == 0x394);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolGeneralTextOffset_Y) == 0x398);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolStrengthGroupTLPos_X) == 0x39c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolStrengthGroupTLPos_Y) == 0x3a0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolSkillGroupTLPos_X) == 0x3a4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolSkillGroupTLPos_Y) == 0x3a8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolWillGroupTLPos_X) == 0x3ac);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolWillGroupTLPos_Y) == 0x3b0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolLabelTLPos_X) == 0x3b4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolLabelTLPos_Y) == 0x3b8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolLabelTextOffset_X) == 0x3bc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolLabelTextOffset_Y) == 0x3c0);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolLabelWidth) == 0x3c4);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolLabelHeight) == 0x3c8);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolSliderWidth) == 0x3cc);
@@ -564,16 +918,22 @@ FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperiencePoolPureMagicLabel) =
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceStrengthBarValue) == 0x400);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceSkillBarValue) == 0x404);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, StatsExperienceWillBarValue) == 0x408);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceGeneralPoolLabelTLPos) == 0x40c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceGeneralPoolLabelTextOffset) == 0x414);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceGeneralPoolLabelTLPos_X) == 0x40c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceGeneralPoolLabelTLPos_Y) == 0x410);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceGeneralPoolLabelTextOffset_X) == 0x414);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceGeneralPoolLabelTextOffset_Y) == 0x418);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceGeneralPoolWidth) == 0x41c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceGeneralPoolSliderWidth) == 0x420);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceGeneralPoolBarValue) == 0x424);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceGeneralPoolLabel) == 0x428);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceGeneralPoolSpendTextOffset) == 0x42c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceStrengthPoolTLPos) == 0x434);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSkillPoolTLPos) == 0x43c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceWillPoolTLPos) == 0x444);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceGeneralPoolSpendTextOffset_X) == 0x42c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceGeneralPoolSpendTextOffset_Y) == 0x430);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceStrengthPoolTLPos_X) == 0x434);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceStrengthPoolTLPos_Y) == 0x438);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSkillPoolTLPos_X) == 0x43c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSkillPoolTLPos_Y) == 0x440);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceWillPoolTLPos_X) == 0x444);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceWillPoolTLPos_Y) == 0x448);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperiencePoolWidth) == 0x44c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperiencePoolHeight) == 0x450);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeStrengthLabel) == 0x454);
@@ -582,10 +942,14 @@ FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeWillLabel) == 0x45c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypePureMagicLabel) == 0x460);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeAbilityMagicLabel) == 0x464);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeWeaponMagicLabel) == 0x468);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeTLPos) == 0x46c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeTLPosOffset) == 0x474);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeTextOffset) == 0x47c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeSpendTextOffset) == 0x484);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeTLPos_X) == 0x46c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeTLPos_Y) == 0x470);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeTLPosOffset_X) == 0x474);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeTLPosOffset_Y) == 0x478);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeTextOffset_X) == 0x47c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeTextOffset_Y) == 0x480);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeSpendTextOffset_X) == 0x484);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeSpendTextOffset_Y) == 0x488);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeLabelWidth) == 0x48c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeLabelHeight) == 0x490);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceTypeSliderWidth) == 0x494);
@@ -627,23 +991,66 @@ FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceAbilityMagicTimeSpellBarVa
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperiencePureMagicBurningHandsBarValue) == 0x524);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperiencePureMagicPhysicalShieldBarValue) == 0x528);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperiencePureMagicForcePushBarValue) == 0x52c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarL) == 0x530);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarC) == 0x53e);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarR) == 0x54c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarValue) == 0x55a);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarValueOffset) == 0x568);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarL_BankIndex) == 0x530);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarL_AnimStep) == 0x534);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarL_RenderSizeX) == 0x538);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarL_AdditiveAlpha) == 0x53c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarL_Type) == 0x53d);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarC_BankIndex) == 0x53e);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarC_AnimStep) == 0x542);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarC_RenderSizeX) == 0x546);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarC_AdditiveAlpha) == 0x54a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarC_Type) == 0x54b);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarR_BankIndex) == 0x54c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarR_AnimStep) == 0x550);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarR_RenderSizeX) == 0x554);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarR_AdditiveAlpha) == 0x558);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarR_Type) == 0x559);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarValue_BankIndex) == 0x55a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarValue_AnimStep) == 0x55e);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarValue_RenderSizeX) == 0x562);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarValue_AdditiveAlpha) == 0x566);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarValue_Type) == 0x567);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarValueOffset_X) == 0x568);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceProgBarValueOffset_Y) == 0x56c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendTimeOffset) == 0x570);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRate) == 0x574);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceItemLabelStat) == 0x578);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceItemLabelAbility) == 0x588);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreen) == 0x598);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreenOutline) == 0x5a6);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreenEnd) == 0x5b4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRed) == 0x5c2);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRedOutline) == 0x5d0);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRedEnd) == 0x5de);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceDescriptionTextTLPos) == 0x5ec);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceDescriptionTextOffset) == 0x5f4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreen_BankIndex) == 0x598);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreen_AnimStep) == 0x59c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreen_RenderSizeX) == 0x5a0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreen_AdditiveAlpha) == 0x5a4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreen_Type) == 0x5a5);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreenOutline_BankIndex) == 0x5a6);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreenOutline_AnimStep) == 0x5aa);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreenOutline_RenderSizeX) == 0x5ae);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreenOutline_AdditiveAlpha) == 0x5b2);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreenOutline_Type) == 0x5b3);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreenEnd_BankIndex) == 0x5b4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreenEnd_AnimStep) == 0x5b8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreenEnd_RenderSizeX) == 0x5bc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreenEnd_AdditiveAlpha) == 0x5c0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendGreenEnd_Type) == 0x5c1);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRed_BankIndex) == 0x5c2);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRed_AnimStep) == 0x5c6);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRed_RenderSizeX) == 0x5ca);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRed_AdditiveAlpha) == 0x5ce);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRed_Type) == 0x5cf);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRedOutline_BankIndex) == 0x5d0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRedOutline_AnimStep) == 0x5d4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRedOutline_RenderSizeX) == 0x5d8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRedOutline_AdditiveAlpha) == 0x5dc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRedOutline_Type) == 0x5dd);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRedEnd_BankIndex) == 0x5de);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRedEnd_AnimStep) == 0x5e2);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRedEnd_RenderSizeX) == 0x5e6);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRedEnd_AdditiveAlpha) == 0x5ea);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceSpendRedEnd_Type) == 0x5eb);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceDescriptionTextTLPos_X) == 0x5ec);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceDescriptionTextTLPos_Y) == 0x5f0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceDescriptionTextOffset_X) == 0x5f4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExperienceDescriptionTextOffset_Y) == 0x5f8);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfoQuestNameLabel) == 0x5fc);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfoMoralityLabel) == 0x600);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfoCoreLabel) == 0x604);
@@ -672,42 +1079,72 @@ FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfoRenownText) == 0x65c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfoTrophyText) == 0x660);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfoBoastsText) == 0x664);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfoStatusText) == 0x668);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonCostTLPos) == 0x66c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonOwnedTLPos) == 0x674);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonProfitTLPos) == 0x67c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonTitleTLPos) == 0x684);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonCashTLPos) == 0x68c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonExtents) == 0x694);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeAnimImageBoxTLPos) == 0x69c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeAnimImageBoxExtents) == 0x6a4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonCostTLPos_X) == 0x66c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonCostTLPos_Y) == 0x670);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonOwnedTLPos_X) == 0x674);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonOwnedTLPos_Y) == 0x678);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonProfitTLPos_X) == 0x67c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonProfitTLPos_Y) == 0x680);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonTitleTLPos_X) == 0x684);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonTitleTLPos_Y) == 0x688);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonCashTLPos_X) == 0x68c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonCashTLPos_Y) == 0x690);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonExtents_X) == 0x694);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEdgedButtonExtents_Y) == 0x698);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeAnimImageBoxTLPos_X) == 0x69c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeAnimImageBoxTLPos_Y) == 0x6a0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeAnimImageBoxExtents_X) == 0x6a4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeAnimImageBoxExtents_Y) == 0x6a8);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeAnimImageXRotationTime) == 0x6ac);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeAnimImageYRotationTime) == 0x6b0);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeAnimImageZRotationTime) == 0x6b4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEquippedItemTLPos) == 0x6b8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEquippedItemExtents) == 0x6c0);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEquippedItemGraphic) == 0x6c8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeDescriptionBoxTLPos) == 0x6d6);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEquippedItemTLPos_X) == 0x6b8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEquippedItemTLPos_Y) == 0x6bc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEquippedItemExtents_X) == 0x6c0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEquippedItemExtents_Y) == 0x6c4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEquippedItemGraphic_BankIndex) == 0x6c8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEquippedItemGraphic_AnimStep) == 0x6cc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEquippedItemGraphic_RenderSizeX) == 0x6d0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEquippedItemGraphic_AdditiveAlpha) == 0x6d4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeEquippedItemGraphic_Type) == 0x6d5);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeDescriptionBoxTLPos_X) == 0x6d6);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeDescriptionBoxTLPos_Y) == 0x6da);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeDescriptionBoxExtents) == 0x6de);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeTextOwned) == 0x6e8);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeTextDivider) == 0x6ec);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeTextCost) == 0x6f0);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeTextGold) == 0x6f4);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeTextProfit) == 0x6f8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeShadedCircleTLPos) == 0x6fc);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeShadedCircleExtents) == 0x704);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentationMeshAreaTLPos) == 0x70c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentationMeshAreaBRPos) == 0x714);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentDescriptionBoxTLPos) == 0x71c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentDescriptionBoxExtents) == 0x724);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationInfoTLPos) == 0x72c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationLabelTLPos) == 0x734);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationInfoTextOffset) == 0x73c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationSlotTLPos) == 0x744);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationSlotTextOffset) == 0x74c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationWeaponTLPos) == 0x754);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationWeaponTextOffset) == 0x75c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentTitleTLPos) == 0x764);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentTitleTextOffset) == 0x76c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeShadedCircleTLPos_X) == 0x6fc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeShadedCircleTLPos_Y) == 0x700);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeShadedCircleExtents_X) == 0x704);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, TradeShadedCircleExtents_Y) == 0x708);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentationMeshAreaTLPos_X) == 0x70c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentationMeshAreaTLPos_Y) == 0x710);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentationMeshAreaBRPos_X) == 0x714);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentationMeshAreaBRPos_Y) == 0x718);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentDescriptionBoxTLPos_X) == 0x71c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentDescriptionBoxTLPos_Y) == 0x720);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentDescriptionBoxExtents_X) == 0x724);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentDescriptionBoxExtents_Y) == 0x728);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationInfoTLPos_X) == 0x72c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationInfoTLPos_Y) == 0x730);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationLabelTLPos_X) == 0x734);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationLabelTLPos_Y) == 0x738);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationInfoTextOffset_X) == 0x73c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationInfoTextOffset_Y) == 0x740);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationSlotTLPos_X) == 0x744);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationSlotTLPos_Y) == 0x748);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationSlotTextOffset_X) == 0x74c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationSlotTextOffset_Y) == 0x750);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationWeaponTLPos_X) == 0x754);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationWeaponTLPos_Y) == 0x758);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationWeaponTextOffset_X) == 0x75c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentAugmentationWeaponTextOffset_Y) == 0x760);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentTitleTLPos_X) == 0x764);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentTitleTLPos_Y) == 0x768);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentTitleTextOffset_X) == 0x76c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentTitleTextOffset_Y) == 0x770);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentTextMaxSlots) == 0x774);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentTextNumSlots) == 0x778);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentTextUpgradeCost) == 0x77c);
@@ -718,53 +1155,116 @@ FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentTextSlot) == 0x78c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentTextAugmentations) == 0x790);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentTextWeapons) == 0x794);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentTextDivider) == 0x798);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentShadedCircleTLPos) == 0x79c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentShadedCircleExtents) == 0x7a4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentShadedCircleTLPos_X) == 0x79c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentShadedCircleTLPos_Y) == 0x7a0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentShadedCircleExtents_X) == 0x7a4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, AugmentShadedCircleExtents_Y) == 0x7a8);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, InventoryAnimImageXRotationTime) == 0x7ac);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, InventoryAnimImageYRotationTime) == 0x7b0);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, InventoryAnimImageZRotationTime) == 0x7b4);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardFeatColour) == 0x7b8);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardCoreColour) == 0x7bc);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardExclusiveColour) == 0x7c0);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfoTLPos) == 0x7c4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfo2TLPos) == 0x7cc);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardNoQuestsTLPos) == 0x7d4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfoTLPos_X) == 0x7c4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfoTLPos_Y) == 0x7c8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfo2TLPos_X) == 0x7cc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfo2TLPos_Y) == 0x7d0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardNoQuestsTLPos_X) == 0x7d4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardNoQuestsTLPos_Y) == 0x7d8);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardNoQuestsText) == 0x7dc);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfoTextOffset) == 0x7e0);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardEdgedButtonTitleTLPos) == 0x7e8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardEdgedButtonExtents) == 0x7f0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfoTextOffset_X) == 0x7e0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardInfoTextOffset_Y) == 0x7e4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardEdgedButtonTitleTLPos_X) == 0x7e8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardEdgedButtonTitleTLPos_Y) == 0x7ec);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardEdgedButtonExtents_X) == 0x7f0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, QuestCardEdgedButtonExtents_Y) == 0x7f4);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendItemLabelStat) == 0x7f8);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendItemLabelAbility) == 0x808);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendMaxItemsToDisplay) == 0x818);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonTLPos) == 0x81c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonTLPosOffset) == 0x824);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonTextOffset) == 0x82c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelL) == 0x834);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelC) == 0x842);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelR) == 0x850);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonL) == 0x85e);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonC) == 0x86c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonR) == 0x87a);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendDescriptionBoxTLPos) == 0x888);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendDescriptionBoxExtents) == 0x890);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendArrowUpTLPos) == 0x898);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendArrowDnTLPos) == 0x8a0);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGeneralPoolLabelTLPos) == 0x8a8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGeneralPoolLabelTextOffset) == 0x8b0);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGeneralPoolSpendTextOffset) == 0x8b8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonTLPos_X) == 0x81c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonTLPos_Y) == 0x820);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonTLPosOffset_X) == 0x824);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonTLPosOffset_Y) == 0x828);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonTextOffset_X) == 0x82c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonTextOffset_Y) == 0x830);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelL_BankIndex) == 0x834);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelL_AnimStep) == 0x838);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelL_RenderSizeX) == 0x83c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelL_AdditiveAlpha) == 0x840);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelL_Type) == 0x841);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelC_BankIndex) == 0x842);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelC_AnimStep) == 0x846);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelC_RenderSizeX) == 0x84a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelC_AdditiveAlpha) == 0x84e);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelC_Type) == 0x84f);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelR_BankIndex) == 0x850);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelR_AnimStep) == 0x854);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelR_RenderSizeX) == 0x858);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelR_AdditiveAlpha) == 0x85c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonSelR_Type) == 0x85d);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonL_BankIndex) == 0x85e);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonL_AnimStep) == 0x862);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonL_RenderSizeX) == 0x866);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonL_AdditiveAlpha) == 0x86a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonL_Type) == 0x86b);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonC_BankIndex) == 0x86c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonC_AnimStep) == 0x870);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonC_RenderSizeX) == 0x874);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonC_AdditiveAlpha) == 0x878);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonC_Type) == 0x879);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonR_BankIndex) == 0x87a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonR_AnimStep) == 0x87e);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonR_RenderSizeX) == 0x882);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonR_AdditiveAlpha) == 0x886);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendButtonR_Type) == 0x887);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendDescriptionBoxTLPos_X) == 0x888);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendDescriptionBoxTLPos_Y) == 0x88c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendDescriptionBoxExtents_X) == 0x890);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendDescriptionBoxExtents_Y) == 0x894);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendArrowUpTLPos_X) == 0x898);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendArrowUpTLPos_Y) == 0x89c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendArrowDnTLPos_X) == 0x8a0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendArrowDnTLPos_Y) == 0x8a4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGeneralPoolLabelTLPos_X) == 0x8a8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGeneralPoolLabelTLPos_Y) == 0x8ac);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGeneralPoolLabelTextOffset_X) == 0x8b0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGeneralPoolLabelTextOffset_Y) == 0x8b4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGeneralPoolSpendTextOffset_X) == 0x8b8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGeneralPoolSpendTextOffset_Y) == 0x8bc);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGeneralPoolWidth) == 0x8c0);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGeneralPoolSliderWidth) == 0x8c4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendStrengthPoolTLPos) == 0x8c8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendSkillPoolTLPos) == 0x8d0);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendWillPoolTLPos) == 0x8d8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendStrengthPoolTLPos_X) == 0x8c8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendStrengthPoolTLPos_Y) == 0x8cc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendSkillPoolTLPos_X) == 0x8d0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendSkillPoolTLPos_Y) == 0x8d4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendWillPoolTLPos_X) == 0x8d8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendWillPoolTLPos_Y) == 0x8dc);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendPoolWidth) == 0x8e0);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendPoolHeight) == 0x8e4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarL) == 0x8e8);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarC) == 0x8f6);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarR) == 0x904);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarValue) == 0x912);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarValueOffset) == 0x920);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendTypeTextOffset) == 0x928);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarL_BankIndex) == 0x8e8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarL_AnimStep) == 0x8ec);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarL_RenderSizeX) == 0x8f0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarL_AdditiveAlpha) == 0x8f4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarL_Type) == 0x8f5);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarC_BankIndex) == 0x8f6);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarC_AnimStep) == 0x8fa);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarC_RenderSizeX) == 0x8fe);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarC_AdditiveAlpha) == 0x902);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarC_Type) == 0x903);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarR_BankIndex) == 0x904);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarR_AnimStep) == 0x908);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarR_RenderSizeX) == 0x90c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarR_AdditiveAlpha) == 0x910);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarR_Type) == 0x911);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarValue_BankIndex) == 0x912);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarValue_AnimStep) == 0x916);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarValue_RenderSizeX) == 0x91a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarValue_AdditiveAlpha) == 0x91e);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarValue_Type) == 0x91f);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarValueOffset_X) == 0x920);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendProgBarValueOffset_Y) == 0x924);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendTypeTextOffset_X) == 0x928);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendTypeTextOffset_Y) == 0x92c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGeneralPoolBarValue) == 0x930);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGeneralPoolLabel) == 0x934);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendTypeStrengthLabel) == 0x938);
@@ -775,29 +1275,85 @@ FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendSkillBarValue) == 0x948);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendWillBarValue) == 0x94c);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRate) == 0x950);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendTimeOffset) == 0x954);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreen) == 0x958);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreenOutline) == 0x966);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreenEnd) == 0x974);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRed) == 0x982);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRedOutline) == 0x990);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRedEnd) == 0x99e);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendDescriptionTextTLPos) == 0x9ac);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendDescriptionTextOffset) == 0x9b4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonTitleTLPos) == 0x9bc);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonOwnedTLPos) == 0x9c4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonPriceTLPos) == 0x9cc);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonCostTLPos) == 0x9d4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonExtents) == 0x9dc);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxC) == 0x9e4);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTL) == 0x9f2);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTR) == 0xa00);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxBL) == 0xa0e);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxBR) == 0xa1c);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTLPos) == 0xa2a);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxExtents) == 0xa32);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainShadedCircleTLPos) == 0xa3a);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainShadedCircleExtents) == 0xa42);
-FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainAnimBoxTLPos) == 0xa4a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreen_BankIndex) == 0x958);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreen_AnimStep) == 0x95c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreen_RenderSizeX) == 0x960);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreen_AdditiveAlpha) == 0x964);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreen_Type) == 0x965);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreenOutline_BankIndex) == 0x966);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreenOutline_AnimStep) == 0x96a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreenOutline_RenderSizeX) == 0x96e);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreenOutline_AdditiveAlpha) == 0x972);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreenOutline_Type) == 0x973);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreenEnd_BankIndex) == 0x974);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreenEnd_AnimStep) == 0x978);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreenEnd_RenderSizeX) == 0x97c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreenEnd_AdditiveAlpha) == 0x980);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendGreenEnd_Type) == 0x981);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRed_BankIndex) == 0x982);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRed_AnimStep) == 0x986);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRed_RenderSizeX) == 0x98a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRed_AdditiveAlpha) == 0x98e);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRed_Type) == 0x98f);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRedOutline_BankIndex) == 0x990);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRedOutline_AnimStep) == 0x994);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRedOutline_RenderSizeX) == 0x998);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRedOutline_AdditiveAlpha) == 0x99c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRedOutline_Type) == 0x99d);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRedEnd_BankIndex) == 0x99e);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRedEnd_AnimStep) == 0x9a2);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRedEnd_RenderSizeX) == 0x9a6);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRedEnd_AdditiveAlpha) == 0x9aa);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendRedEnd_Type) == 0x9ab);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendDescriptionTextTLPos_X) == 0x9ac);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendDescriptionTextTLPos_Y) == 0x9b0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendDescriptionTextOffset_X) == 0x9b4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, ExpSpendDescriptionTextOffset_Y) == 0x9b8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonTitleTLPos_X) == 0x9bc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonTitleTLPos_Y) == 0x9c0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonOwnedTLPos_X) == 0x9c4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonOwnedTLPos_Y) == 0x9c8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonPriceTLPos_X) == 0x9cc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonPriceTLPos_Y) == 0x9d0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonCostTLPos_X) == 0x9d4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonCostTLPos_Y) == 0x9d8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonExtents_X) == 0x9dc);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainEdgedButtonExtents_Y) == 0x9e0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxC_BankIndex) == 0x9e4);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxC_AnimStep) == 0x9e8);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxC_RenderSizeX) == 0x9ec);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxC_AdditiveAlpha) == 0x9f0);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxC_Type) == 0x9f1);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTL_BankIndex) == 0x9f2);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTL_AnimStep) == 0x9f6);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTL_RenderSizeX) == 0x9fa);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTL_AdditiveAlpha) == 0x9fe);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTL_Type) == 0x9ff);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTR_BankIndex) == 0xa00);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTR_AnimStep) == 0xa04);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTR_RenderSizeX) == 0xa08);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTR_AdditiveAlpha) == 0xa0c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTR_Type) == 0xa0d);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxBL_BankIndex) == 0xa0e);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxBL_AnimStep) == 0xa12);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxBL_RenderSizeX) == 0xa16);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxBL_AdditiveAlpha) == 0xa1a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxBL_Type) == 0xa1b);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxBR_BankIndex) == 0xa1c);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxBR_AnimStep) == 0xa20);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxBR_RenderSizeX) == 0xa24);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxBR_AdditiveAlpha) == 0xa28);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxBR_Type) == 0xa29);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTLPos_X) == 0xa2a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxTLPos_Y) == 0xa2e);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxExtents_X) == 0xa32);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainDescriptionBoxExtents_Y) == 0xa36);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainShadedCircleTLPos_X) == 0xa3a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainShadedCircleTLPos_Y) == 0xa3e);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainShadedCircleExtents_X) == 0xa42);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainShadedCircleExtents_Y) == 0xa46);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainAnimBoxTLPos_X) == 0xa4a);
+FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainAnimBoxTLPos_Y) == 0xa4e);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainAnimBoxExtents) == 0xa52);
 FABLE_STATIC_ASSERT(offsetof(CInventoryDef, MainQuickAccessItemFlashTime) == 0xa5c);
 

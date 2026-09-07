@@ -8,15 +8,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CDataOutputStream {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char NewLine[0x4];                              // +0x04 CCharString
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    CCharStringData* NewLine_PStringData;                    // +0x04 CCharString::PStringData
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CDataOutputStream) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CDataOutputStream, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CDataOutputStream, NewLine) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CDataOutputStream, NewLine_PStringData) == 0x4);
 
 #endif // FABLE_ENGINE_CDATAOUTPUTSTREAM_H

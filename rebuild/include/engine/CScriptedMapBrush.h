@@ -8,18 +8,23 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CScriptedMapBrush {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char Cells[0x10];                               // +0x08 vector<CScriptedMapBrush::CScriptedMapCell,std::allocator<CScriptedMapBrush::CScriptedMapCell>_>
-    unsigned char ThingsToDelete[0x10];                      // +0x18 set<unsigned___int64,std::less<unsigned___int64>,std::allocator<unsigned___int64>_>
-    unsigned char ThingsToMove[0x10];                        // +0x28 map<unsigned___int64,CScriptedMapBrush::CThingPosAndOrientation,std::less<unsigned___int64>,std::allocator<std::pair<unsigned___int64_const_,CScriptedMapBrush::CThingPosAndOrientation>_>_>
-    unsigned char ThingsToAdd[0x10];                         // +0x38 set<unsigned___int64,std::less<unsigned___int64>,std::allocator<unsigned___int64>_>
-    unsigned char GameArea[0x10];                            // +0x48 C2DBoxI
-    unsigned char BrushName[0x4];                            // +0x58 CCharString
-    float         CreationTimeSeconds;                       // +0x5c
-    long          CreationPattern;                           // +0x60
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    Cells[0x10];                            // +0x08 vector<CScriptedMapBrush::CScriptedMapCell,std::allocator<CScriptedMapBrush::CScriptedMapCell>_>
+    unsigned char    ThingsToDelete[0x10];                   // +0x18 set<unsigned___int64,std::less<unsigned___int64>,std::allocator<unsigned___int64>_>
+    unsigned char    ThingsToMove[0x10];                     // +0x28 map<unsigned___int64,CScriptedMapBrush::CThingPosAndOrientation,std::less<unsigned___int64>,std::allocator<std::pair<unsigned___int64_const_,CScriptedMapBrush::CThingPosAndOrientation>_>_>
+    unsigned char    ThingsToAdd[0x10];                      // +0x38 set<unsigned___int64,std::less<unsigned___int64>,std::allocator<unsigned___int64>_>
+    long             GameArea_TLX;                           // +0x48 C2DBoxI::TLX
+    long             GameArea_TLY;                           // +0x4c C2DBoxI::TLY
+    long             GameArea_BRX;                           // +0x50 C2DBoxI::BRX
+    long             GameArea_BRY;                           // +0x54 C2DBoxI::BRY
+    CCharStringData* BrushName_PStringData;                  // +0x58 CCharString::PStringData
+    float            CreationTimeSeconds;                    // +0x5c
+    long             CreationPattern;                        // +0x60
 };
 #pragma pack(pop)
 
@@ -29,8 +34,11 @@ FABLE_STATIC_ASSERT(offsetof(CScriptedMapBrush, Cells) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CScriptedMapBrush, ThingsToDelete) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CScriptedMapBrush, ThingsToMove) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CScriptedMapBrush, ThingsToAdd) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CScriptedMapBrush, GameArea) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CScriptedMapBrush, BrushName) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CScriptedMapBrush, GameArea_TLX) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CScriptedMapBrush, GameArea_TLY) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CScriptedMapBrush, GameArea_BRX) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CScriptedMapBrush, GameArea_BRY) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CScriptedMapBrush, BrushName_PStringData) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CScriptedMapBrush, CreationTimeSeconds) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CScriptedMapBrush, CreationPattern) == 0x60);
 

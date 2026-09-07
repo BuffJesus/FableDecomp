@@ -8,72 +8,76 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
+
 #pragma pack(push, 1)
 struct CTCVillage {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    long          TorchTasksUpdateFrame;                     // +0x0c
-    long          FrameStartedSecuritySweep;                 // +0x10
-    unsigned char PositionPlayerWasInWhenSecuritySweepCalculated[0xc]; // +0x14 C3DVector
-    long          LastAweCrowdEventFrame;                    // +0x20
-    long          LastLynchCrowdEventFrame;                  // +0x24
-    unsigned char VillageBuildings[0xc];                     // +0x28 list<CIntelligentPointer<CThingBuilding>,std::allocator<CIntelligentPointer<CThingBuilding>_>_>
-    unsigned char VillagePeople[0xc];                        // +0x34 list<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_>
-    unsigned char VillageTorches[0xc];                       // +0x40 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
-    unsigned char VillageHorns[0xc];                         // +0x4c list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
-    unsigned char VillageGates[0xc];                         // +0x58 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
-    unsigned char VillageCrops[0xc];                         // +0x64 list<CIntelligentPointer<CThingObject>,std::allocator<CIntelligentPointer<CThingObject>_>_>
-    unsigned char VillageCages[0xc];                         // +0x70 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
-    unsigned char VillageCampfires[0xc];                     // +0x7c list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
-    unsigned char VillagePatrols[0xc];                       // +0x88 list<CIntelligentPointer<CThingTrackNode>,std::allocator<CIntelligentPointer<CThingTrackNode>_>_>
-    unsigned char TorchTasks[0xc];                           // +0x94 list<CCountedPointer<CVillageTaskTorch>,std::allocator<CCountedPointer<CVillageTaskTorch>_>_>
-    unsigned char HornTasks[0xc];                            // +0xa0 list<CCountedPointer<CVillageTaskHorn>,std::allocator<CCountedPointer<CVillageTaskHorn>_>_>
-    unsigned char PatrolTasks[0xc];                          // +0xac list<CCountedPointer<CVillageTaskPatrol>,std::allocator<CCountedPointer<CVillageTaskPatrol>_>_>
-    unsigned char CropTasks[0xc];                            // +0xb8 list<CCountedPointer<CVillageTaskPickCrops>,std::allocator<CCountedPointer<CVillageTaskPickCrops>_>_>
-    unsigned char SecuritySweepTasks[0xc];                   // +0xc4 list<CCountedPointer<CVillageTaskSecuritySweep>,std::allocator<CCountedPointer<CVillageTaskSecuritySweep>_>_>
-    unsigned char CrateTasks[0xc];                           // +0xd0 list<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>
-    unsigned char PlayersCrimes[0x10];                       // +0xdc set<long,std::less<long>,std::allocator<long>_>
-    unsigned char VillageMarkers[0xc];                       // +0xec list<CIntelligentPointer<CThingMarker>,std::allocator<CIntelligentPointer<CThingMarker>_>_>
-    unsigned char VillageDummies[0xc];                       // +0xf8 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
-    bool          Initialised;                               // +0x104
-    bool          InitiallyPopulated;                        // +0x105
-    bool          HasBeenInitiallyPopulated;                 // +0x106
-    bool          HornTasksAdded;                            // +0x107
-    bool          IsEnemyBecauseOfCrime;                     // +0x108
-    unsigned char _pad_0x109[0x3];                           // +0x109
-    long          FramePlayerLastSeenByGuard;                // +0x10c
-    bool          InCurfew;                                  // +0x110
-    unsigned char _pad_0x111[0x3];                           // +0x111
-    long          NumGuards;                                 // +0x114
-    long          HouseCurrentlyChecking;                    // +0x118
-    bool          TimeIsPaused;                              // +0x11c
-    unsigned char _pad_0x11d[0x3];                           // +0x11d
-    unsigned char PDef[0x4];                                 // +0x120 CDefPointer<CVillageDef_const_>
-    unsigned char StanceToHero[0x4];                         // +0x124 EVillageStanceToHero
-    long          TimeStopIndex;                             // +0x128
-    long          AmountOfFineAlreadyPaid;                   // +0x12c
-    long          NextGuardRespawn;                          // +0x130
-    long          FrameBribeEnds;                            // +0x134
-    long          FrameForNextGuardGreeting;                 // +0x138
-    bool          WorkTimeAccordingToCrier;                  // +0x13c
-    bool          CurfewTimeAccordingToCrier;                // +0x13d
-    bool          Limbo;                                     // +0x13e
-    bool          LaggyLimbo;                                // +0x13f
-    bool          SecuritySweepUrgent;                       // +0x140
-    unsigned char _pad_0x141[0x3];                           // +0x141
-    float         InitialSecuritySweepRadius;                // +0x144
-    bool          TeacherTeaching;                           // +0x148
-    unsigned char GuardFollowingPlayer[0xb];                 // +0x149 CIntelligentPointer<CThingAICreature>
-    long          NextFrameToFollowPlayer;                   // +0x154
-    bool          LightActiveStateToChange;                  // +0x158
-    unsigned char _pad_0x159[0x3];                           // +0x159
-    long          MaxFrameToAssignTask;                      // +0x15c
-    long          HeroEnemyOfGuardsUntil;                    // +0x160
-    long          LastFrameApologised;                       // +0x164
-    unsigned char GuardWarningHero[0x8];                     // +0x168 CIntelligentPointer<CThingAICreature>
-    bool          CurrentIsHeroCriminal;                     // +0x170
-    unsigned char _pad_0x171[0x3];                           // +0x171
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    long             TorchTasksUpdateFrame;                  // +0x0c
+    long             FrameStartedSecuritySweep;              // +0x10
+    float            PositionPlayerWasInWhenSecuritySweepCalculated_X; // +0x14 C3DVector::X
+    float            PositionPlayerWasInWhenSecuritySweepCalculated_Y; // +0x18 C3DVector::Y
+    float            PositionPlayerWasInWhenSecuritySweepCalculated_Z; // +0x1c C3DVector::Z
+    long             LastAweCrowdEventFrame;                 // +0x20
+    long             LastLynchCrowdEventFrame;               // +0x24
+    unsigned char    VillageBuildings[0xc];                  // +0x28 list<CIntelligentPointer<CThingBuilding>,std::allocator<CIntelligentPointer<CThingBuilding>_>_>
+    unsigned char    VillagePeople[0xc];                     // +0x34 list<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_>
+    unsigned char    VillageTorches[0xc];                    // +0x40 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned char    VillageHorns[0xc];                      // +0x4c list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned char    VillageGates[0xc];                      // +0x58 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned char    VillageCrops[0xc];                      // +0x64 list<CIntelligentPointer<CThingObject>,std::allocator<CIntelligentPointer<CThingObject>_>_>
+    unsigned char    VillageCages[0xc];                      // +0x70 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned char    VillageCampfires[0xc];                  // +0x7c list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned char    VillagePatrols[0xc];                    // +0x88 list<CIntelligentPointer<CThingTrackNode>,std::allocator<CIntelligentPointer<CThingTrackNode>_>_>
+    unsigned char    TorchTasks[0xc];                        // +0x94 list<CCountedPointer<CVillageTaskTorch>,std::allocator<CCountedPointer<CVillageTaskTorch>_>_>
+    unsigned char    HornTasks[0xc];                         // +0xa0 list<CCountedPointer<CVillageTaskHorn>,std::allocator<CCountedPointer<CVillageTaskHorn>_>_>
+    unsigned char    PatrolTasks[0xc];                       // +0xac list<CCountedPointer<CVillageTaskPatrol>,std::allocator<CCountedPointer<CVillageTaskPatrol>_>_>
+    unsigned char    CropTasks[0xc];                         // +0xb8 list<CCountedPointer<CVillageTaskPickCrops>,std::allocator<CCountedPointer<CVillageTaskPickCrops>_>_>
+    unsigned char    SecuritySweepTasks[0xc];                // +0xc4 list<CCountedPointer<CVillageTaskSecuritySweep>,std::allocator<CCountedPointer<CVillageTaskSecuritySweep>_>_>
+    unsigned char    CrateTasks[0xc];                        // +0xd0 list<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>
+    unsigned char    PlayersCrimes[0x10];                    // +0xdc set<long,std::less<long>,std::allocator<long>_>
+    unsigned char    VillageMarkers[0xc];                    // +0xec list<CIntelligentPointer<CThingMarker>,std::allocator<CIntelligentPointer<CThingMarker>_>_>
+    unsigned char    VillageDummies[0xc];                    // +0xf8 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    bool             Initialised;                            // +0x104
+    bool             InitiallyPopulated;                     // +0x105
+    bool             HasBeenInitiallyPopulated;              // +0x106
+    bool             HornTasksAdded;                         // +0x107
+    bool             IsEnemyBecauseOfCrime;                  // +0x108
+    unsigned char    _pad_0x109[0x3];                        // +0x109
+    long             FramePlayerLastSeenByGuard;             // +0x10c
+    bool             InCurfew;                               // +0x110
+    unsigned char    _pad_0x111[0x3];                        // +0x111
+    long             NumGuards;                              // +0x114
+    long             HouseCurrentlyChecking;                 // +0x118
+    bool             TimeIsPaused;                           // +0x11c
+    unsigned char    _pad_0x11d[0x3];                        // +0x11d
+    CDefPointeeBase* PDef_Object;                            // +0x120 CDefPointer<CVillageDef_const_>::Object
+    unsigned char    StanceToHero[0x4];                      // +0x124 EVillageStanceToHero
+    long             TimeStopIndex;                          // +0x128
+    long             AmountOfFineAlreadyPaid;                // +0x12c
+    long             NextGuardRespawn;                       // +0x130
+    long             FrameBribeEnds;                         // +0x134
+    long             FrameForNextGuardGreeting;              // +0x138
+    bool             WorkTimeAccordingToCrier;               // +0x13c
+    bool             CurfewTimeAccordingToCrier;             // +0x13d
+    bool             Limbo;                                  // +0x13e
+    bool             LaggyLimbo;                             // +0x13f
+    bool             SecuritySweepUrgent;                    // +0x140
+    unsigned char    _pad_0x141[0x3];                        // +0x141
+    float            InitialSecuritySweepRadius;             // +0x144
+    bool             TeacherTeaching;                        // +0x148
+    unsigned char    GuardFollowingPlayer[0xb];              // +0x149 CIntelligentPointer<CThingAICreature>
+    long             NextFrameToFollowPlayer;                // +0x154
+    bool             LightActiveStateToChange;               // +0x158
+    unsigned char    _pad_0x159[0x3];                        // +0x159
+    long             MaxFrameToAssignTask;                   // +0x15c
+    long             HeroEnemyOfGuardsUntil;                 // +0x160
+    long             LastFrameApologised;                    // +0x164
+    unsigned char    GuardWarningHero[0x8];                  // +0x168 CIntelligentPointer<CThingAICreature>
+    bool             CurrentIsHeroCriminal;                  // +0x170
+    unsigned char    _pad_0x171[0x3];                        // +0x171
 };
 #pragma pack(pop)
 
@@ -81,7 +85,9 @@ FABLE_STATIC_ASSERT(sizeof(CTCVillage) == 0x174);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, TorchTasksUpdateFrame) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, FrameStartedSecuritySweep) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated_X) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated_Y) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated_Z) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, LastAweCrowdEventFrame) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, LastLynchCrowdEventFrame) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageBuildings) == 0x28);
@@ -112,7 +118,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCVillage, InCurfew) == 0x110);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, NumGuards) == 0x114);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, HouseCurrentlyChecking) == 0x118);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, TimeIsPaused) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CTCVillage, PDef) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, PDef_Object) == 0x120);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, StanceToHero) == 0x124);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, TimeStopIndex) == 0x128);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, AmountOfFineAlreadyPaid) == 0x12c);

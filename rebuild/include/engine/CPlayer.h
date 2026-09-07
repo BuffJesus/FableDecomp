@@ -8,8 +8,77 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CDefPointeeBase;
 struct CGameDefinitionManager;
 struct CGamePlayerInterface;
+struct CHeroLogBook;
+struct CInputProcessBButtonExitMode;
+struct CInputProcessBetting;
+struct CInputProcessBlock;
+struct CInputProcessBoastUI;
+struct CInputProcessCameraLookAround;
+struct CInputProcessClickPastText;
+struct CInputProcessCombat;
+struct CInputProcessConsole;
+struct CInputProcessControlCreature;
+struct CInputProcessControlCreatureActivateZTarget;
+struct CInputProcessControlCreatureActivateZTargetOnPress;
+struct CInputProcessControlCreatureRightStick;
+struct CInputProcessControlFreeCamera;
+struct CInputProcessControlSpirit;
+struct CInputProcessCreatureMovement;
+struct CInputProcessCreatureMovementWatchForControlAngleChange;
+struct CInputProcessCreditsUI;
+struct CInputProcessCutScene;
+struct CInputProcessCycleSpecialCameraModes;
+struct CInputProcessDead;
+struct CInputProcessDebugControls;
+struct CInputProcessDigging;
+struct CInputProcessFireheartMinigame;
+struct CInputProcessFirstPerson;
+struct CInputProcessFirstPersonLookAround;
+struct CInputProcessFirstPersonTargeting;
+struct CInputProcessFishing;
+struct CInputProcessFreezeControls;
+struct CInputProcessHeroAbilitiesScreen;
+struct CInputProcessHeroInformationScreens;
+struct CInputProcessInGameMenu;
+struct CInputProcessInventory;
+struct CInputProcessInventoryClothing;
+struct CInputProcessInventoryExperienceScreen;
+struct CInputProcessInventoryMagicScreen;
+struct CInputProcessInventoryMapScreen;
+struct CInputProcessInventoryQuestsScreen;
+struct CInputProcessInventoryStatsScreen;
+struct CInputProcessInventoryTradeScreen;
+struct CInputProcessInventoryWeapons;
+struct CInputProcessJumpingAndRolling;
+struct CInputProcessLightning;
+struct CInputProcessMain;
+struct CInputProcessOracleMinigame;
+struct CInputProcessParalysed;
+struct CInputProcessPhotojournalCapture;
+struct CInputProcessProjectileTargetingAnalogueZoom;
+struct CInputProcessQuestCompletionUI;
+struct CInputProcessQuickAccessItems;
+struct CInputProcessQuickAccessMenu;
+struct CInputProcessRebootGame;
+struct CInputProcessSetRangedWeaponMode;
+struct CInputProcessSetRangedWeaponThirdPersonMode;
+struct CInputProcessSpecialAbilities;
+struct CInputProcessStrafe;
+struct CInputProcessTargetLockCycleTargets;
+struct CInputProcessTargetLockRightStickTargetSelect;
+struct CInputProcessTavernGame;
+struct CInputProcessToggleViewHeroMode;
+struct CInputProcessUseEnvironment;
+struct CInputProcessUseRangedWeapon;
+struct CInputProcessUseRangedWeaponZLock;
+struct CInputProcessWatchForRangedWeaponThirdPersonModeTermination;
+struct CInputProcessWatchForWillChargeUpThirdPersonModeTermination;
+struct CInputProcessYesNoQuestion;
+struct CInputProcessZTarget;
 struct CMainGameComponent;
 struct CPlayerManager;
 struct CThingManager;
@@ -18,117 +87,118 @@ struct CWorldMap;
 
 #pragma pack(push, 1)
 struct CPlayer {
-    void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char           _pad_0x04[0x4];                  // +0x04
-    bool                    DrawingFreeCamDebug;             // +0x08
-    bool                    PlayerIsCharacter;               // +0x09
-    unsigned char           _pad_0x0a[0x2];                  // +0x0a
-    CGamePlayerInterface*   PlayerInterface;                 // +0x0c
-    CPlayerManager*         PlayerManager;                   // +0x10
-    CMainGameComponent*     Component;                       // +0x14
-    CGameDefinitionManager* DefinitionManager;               // +0x18
-    CWorld*                 World;                           // +0x1c
-    CThingManager*          ThingManager;                    // +0x20
-    CWorldMap*              PWorldMap;                       // +0x24
-    long                    Number;                          // +0x28
-    unsigned char           ControlledCreature[0x8];         // +0x2c CIntelligentPointer<CThingPlayerCreature>
-    unsigned char           PlayerCharacter[0x8];            // +0x34 CIntelligentPointer<CThingPlayerCreature>
-    long                    PlayerRespawnDelay;              // +0x3c
-    unsigned char           CurrentFreeCamera[0x38];         // +0x40 CCamera
-    unsigned char           FreeCamera[0x38];                // +0x78 CCamera
-    unsigned char           OldFreeCamera[0x38];             // +0xb0 CCamera
-    unsigned char           RespawnInfo[0x10];               // +0xe8 CThingRespawnInfo
-    unsigned char           PHeroLogBook[0x8];               // +0xf8 CCountedPointer<CHeroLogBook>
-    unsigned char           InputProcessMain[0x4];           // +0x100 scoped_ptr<CInputProcessMain>
-    unsigned char           InputProcessControlCreature[0x4]; // +0x104 scoped_ptr<CInputProcessControlCreature>
-    unsigned char           InputProcessZTarget[0x4];        // +0x108 scoped_ptr<CInputProcessZTarget>
-    unsigned char           InputProcessDead[0x4];           // +0x10c scoped_ptr<CInputProcessDead>
-    unsigned char           InputProcessInventory[0x4];      // +0x110 scoped_ptr<CInputProcessInventory>
-    unsigned char           InputProcessInventoryClothing[0x4]; // +0x114 scoped_ptr<CInputProcessInventoryClothing>
-    unsigned char           InputProcessInventoryWeapons[0x4]; // +0x118 scoped_ptr<CInputProcessInventoryWeapons>
-    unsigned char           InputProcessHeroAbilitiesScreen[0x4]; // +0x11c scoped_ptr<CInputProcessHeroAbilitiesScreen>
-    unsigned char           InputProcessInventoryMapScreen[0x4]; // +0x120 scoped_ptr<CInputProcessInventoryMapScreen>
-    unsigned char           InputProcessInventoryStatsScreen[0x4]; // +0x124 scoped_ptr<CInputProcessInventoryStatsScreen>
-    unsigned char           InputProcessInventoryMagicScreen[0x4]; // +0x128 scoped_ptr<CInputProcessInventoryMagicScreen>
-    unsigned char           InputProcessInventoryExperienceScreen[0x4]; // +0x12c scoped_ptr<CInputProcessInventoryExperienceScreen>
-    unsigned char           InputProcessInventoryTradeScreen[0x4]; // +0x130 scoped_ptr<CInputProcessInventoryTradeScreen>
-    unsigned char           InputProcessInventoryQuestsScreen[0x4]; // +0x134 scoped_ptr<CInputProcessInventoryQuestsScreen>
-    unsigned char           InputProcessHeroInformationScreens[0x4]; // +0x138 scoped_ptr<CInputProcessHeroInformationScreens>
-    unsigned char           InputProcessFirstPerson[0x4];    // +0x13c scoped_ptr<CInputProcessFirstPerson>
-    unsigned char           InputProcessClickPastText[0x4];  // +0x140 scoped_ptr<CInputProcessClickPastText>
-    unsigned char           InputProcessYesNoQuestion[0x4];  // +0x144 scoped_ptr<CInputProcessYesNoQuestion>
-    unsigned char           InputProcessFreezeControls[0x4]; // +0x148 scoped_ptr<CInputProcessFreezeControls>
-    unsigned char           InputProcessControlFreeCamera[0x4]; // +0x14c scoped_ptr<CInputProcessControlFreeCamera>
-    unsigned char           InputProcessCreatureMovement[0x4]; // +0x150 scoped_ptr<CInputProcessCreatureMovement>
-    unsigned char           InputProcessUseEnvironment[0x4]; // +0x154 scoped_ptr<CInputProcessUseEnvironment>
-    unsigned char           InputProcessBlock[0x4];          // +0x158 scoped_ptr<CInputProcessBlock>
-    unsigned char           InputProcessDebugControls[0x4];  // +0x15c scoped_ptr<CInputProcessDebugControls>
-    unsigned char           InputProcessQuickAccessItems[0x4]; // +0x160 scoped_ptr<CInputProcessQuickAccessItems>
-    unsigned char           InputProcessCombat[0x4];         // +0x164 scoped_ptr<CInputProcessCombat>
-    unsigned char           InputProcessSpecialAbilities[0x4]; // +0x168 scoped_ptr<CInputProcessSpecialAbilities>
-    unsigned char           InputProcessControlCreatureRightStick[0x4]; // +0x16c scoped_ptr<CInputProcessControlCreatureRightStick>
-    unsigned char           InputProcessRightStickLookAround[0x4]; // +0x170 scoped_ptr<CInputProcessCameraLookAround>
-    unsigned char           InputProcessCycleSpecialCameraModes[0x4]; // +0x174 scoped_ptr<CInputProcessCycleSpecialCameraModes>
-    unsigned char           InputProcessRebootGame[0x4];     // +0x178 scoped_ptr<CInputProcessRebootGame>
-    unsigned char           InputProcessJumpingAndRolling[0x4]; // +0x17c scoped_ptr<CInputProcessJumpingAndRolling>
-    unsigned char           InputProcessFirstPersonTargeting[0x4]; // +0x180 scoped_ptr<CInputProcessFirstPersonTargeting>
-    unsigned char           InputProcessUseRangedWeapon[0x4]; // +0x184 scoped_ptr<CInputProcessUseRangedWeapon>
-    unsigned char           InputProcessControlCreatureActivateZTarget[0x4]; // +0x188 scoped_ptr<CInputProcessControlCreatureActivateZTarget>
-    unsigned char           InputProcessControlCreatureActivateZTargetOnPress[0x4]; // +0x18c scoped_ptr<CInputProcessControlCreatureActivateZTargetOnPress>
-    unsigned char           InputProcessLeftStickLookAround[0x4]; // +0x190 scoped_ptr<CInputProcessFirstPersonLookAround>
-    unsigned char           InputProcessInGameMenu[0x4];     // +0x194 scoped_ptr<CInputProcessInGameMenu>
-    unsigned char           InputProcessControlSpirit[0x4];  // +0x198 scoped_ptr<CInputProcessControlSpirit>
-    unsigned char           InputProcessTavernGame[0x4];     // +0x19c scoped_ptr<CInputProcessTavernGame>
-    unsigned char           InputProcessSetRangedWeaponMode[0x4]; // +0x1a0 scoped_ptr<CInputProcessSetRangedWeaponMode>
-    unsigned char           InputProcessCutScene[0x4];       // +0x1a4 scoped_ptr<CInputProcessCutScene>
-    unsigned char           InputProcessFishing[0x4];        // +0x1a8 scoped_ptr<CInputProcessFishing>
-    unsigned char           InputProcessDigging[0x4];        // +0x1ac scoped_ptr<CInputProcessDigging>
-    unsigned char           InputProcessParalysed[0x4];      // +0x1b0 scoped_ptr<CInputProcessParalysed>
-    unsigned char           InputProcessBoastUI[0x4];        // +0x1b4 scoped_ptr<CInputProcessBoastUI>
-    unsigned char           InputProcessSetRangedWeaponThirdPerson[0x4]; // +0x1b8 scoped_ptr<CInputProcessSetRangedWeaponThirdPersonMode>
-    unsigned char           InputProcessUseRangedWeaponZLock[0x4]; // +0x1bc scoped_ptr<CInputProcessUseRangedWeaponZLock>
-    unsigned char           InputProcessWatchForRangedWeaponThirdPersonModeTermination[0x4]; // +0x1c0 scoped_ptr<CInputProcessWatchForRangedWeaponThirdPersonModeTermination>
-    unsigned char           InputProcessWatchForWillChargeUpThirdPersonModeTermination[0x4]; // +0x1c4 scoped_ptr<CInputProcessWatchForWillChargeUpThirdPersonModeTermination>
-    unsigned char           InputProcessTargetLockCycleTargets[0x4]; // +0x1c8 scoped_ptr<CInputProcessTargetLockCycleTargets>
-    unsigned char           InputProcessQuickAccessMenu[0x4]; // +0x1cc scoped_ptr<CInputProcessQuickAccessMenu>
-    unsigned char           InputProcessQuestCompletionUI[0x4]; // +0x1d0 scoped_ptr<CInputProcessQuestCompletionUI>
-    unsigned char           InputProcessTargetLockRightStickTargetSelect[0x4]; // +0x1d4 scoped_ptr<CInputProcessTargetLockRightStickTargetSelect>
-    unsigned char           InputProcessBButtonExitMode[0x4]; // +0x1d8 scoped_ptr<CInputProcessBButtonExitMode>
-    unsigned char           InputProcessCreditsUI[0x4];      // +0x1dc scoped_ptr<CInputProcessCreditsUI>
-    unsigned char           InputProcessBetting[0x4];        // +0x1e0 scoped_ptr<CInputProcessBetting>
-    unsigned char           InputProcessLightning[0x4];      // +0x1e4 scoped_ptr<CInputProcessLightning>
-    unsigned char           InputProcessWatchForControlAngleChange[0x4]; // +0x1e8 scoped_ptr<CInputProcessCreatureMovementWatchForControlAngleChange>
-    unsigned char           InputProcessOracleMinigame[0x4]; // +0x1ec scoped_ptr<CInputProcessOracleMinigame>
-    unsigned char           InputProcessFireheartMinigame[0x4]; // +0x1f0 scoped_ptr<CInputProcessFireheartMinigame>
-    unsigned char           InputProcessStrafe[0x4];         // +0x1f4 scoped_ptr<CInputProcessStrafe>
-    unsigned char           InputProcessConsole[0x4];        // +0x1f8 scoped_ptr<CInputProcessConsole>
-    unsigned char           InputProcessProjectileTargetingAnalogueZoom[0x4]; // +0x1fc scoped_ptr<CInputProcessProjectileTargetingAnalogueZoom>
-    unsigned char           InputProcessPhotojournalCapture[0x4]; // +0x200 scoped_ptr<CInputProcessPhotojournalCapture>
-    unsigned char           InputProcessToggleViewHeroMode[0x4]; // +0x204 scoped_ptr<CInputProcessToggleViewHeroMode>
-    bool                    Local;                           // +0x208
-    bool                    ShowWorldThing;                  // +0x209
-    bool                    ZTargeting;                      // +0x20a
-    bool                    ProjectileTargetLocked;          // +0x20b
-    bool                    RightTriggerTargetLocked;        // +0x20c
-    unsigned char           _pad_0x20d[0x1];                 // +0x20d
-    unsigned char           _pad_0x20e[0x2];                 // +0x20e
-    unsigned char           PlayerModes[0xc];                // +0x210 list<EPlayerMode,std::allocator<EPlayerMode>_>
-    bool                    SuppressFullModeRemoval;         // +0x21c
-    bool                    DisallowModeChanges;             // +0x21d
-    bool                    InitialPlayerModeSet;            // +0x21e
-    bool                    AggressiveMode;                  // +0x21f
-    bool                    SpellMode;                       // +0x220
-    bool                    ExpressionShiftMode;             // +0x221
-    bool                    PCProjectileWeaponThirdPersonAimingMode; // +0x222
-    bool                    KillEverythingMode;              // +0x223
-    unsigned char           PlayerDef[0x4];                  // +0x224 CDefPointer<CPlayerDef_const_>
-    bool                    UsingFreeCamera;                 // +0x228
-    bool                    FreeCameraTrackingPlayer;        // +0x229
-    bool                    FreeCameraTrackingPlayerYZ;      // +0x22a
-    bool                    ControllingFreeCamera;           // +0x22b
-    bool                    KeepAbilitiesDuringCutscenes;    // +0x22c
-    unsigned char           _pad_0x22d[0x3];                 // +0x22d
-    long                    JoystickDeviceNumber;            // +0x230
+    void*                                                        __vftable; // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char                                                _pad_0x04[0x4]; // +0x04
+    bool                                                         DrawingFreeCamDebug; // +0x08
+    bool                                                         PlayerIsCharacter; // +0x09
+    unsigned char                                                _pad_0x0a[0x2]; // +0x0a
+    CGamePlayerInterface*                                        PlayerInterface; // +0x0c
+    CPlayerManager*                                              PlayerManager; // +0x10
+    CMainGameComponent*                                          Component; // +0x14
+    CGameDefinitionManager*                                      DefinitionManager; // +0x18
+    CWorld*                                                      World; // +0x1c
+    CThingManager*                                               ThingManager; // +0x20
+    CWorldMap*                                                   PWorldMap; // +0x24
+    long                                                         Number; // +0x28
+    unsigned char                                                ControlledCreature[0x8]; // +0x2c CIntelligentPointer<CThingPlayerCreature>
+    unsigned char                                                PlayerCharacter[0x8]; // +0x34 CIntelligentPointer<CThingPlayerCreature>
+    long                                                         PlayerRespawnDelay; // +0x3c
+    unsigned char                                                CurrentFreeCamera[0x38]; // +0x40 CCamera
+    unsigned char                                                FreeCamera[0x38]; // +0x78 CCamera
+    unsigned char                                                OldFreeCamera[0x38]; // +0xb0 CCamera
+    unsigned char                                                RespawnInfo[0x10]; // +0xe8 CThingRespawnInfo
+    CHeroLogBook*                                                PHeroLogBook_Data; // +0xf8 CCountedPointer<CHeroLogBook>::Data
+    CCPPointerInfo*                                              PHeroLogBook_Info; // +0xfc CCountedPointer<CHeroLogBook>::Info
+    CInputProcessMain*                                           InputProcessMain_ptr; // +0x100 scoped_ptr<CInputProcessMain>::ptr
+    CInputProcessControlCreature*                                InputProcessControlCreature_ptr; // +0x104 scoped_ptr<CInputProcessControlCreature>::ptr
+    CInputProcessZTarget*                                        InputProcessZTarget_ptr; // +0x108 scoped_ptr<CInputProcessZTarget>::ptr
+    CInputProcessDead*                                           InputProcessDead_ptr; // +0x10c scoped_ptr<CInputProcessDead>::ptr
+    CInputProcessInventory*                                      InputProcessInventory_ptr; // +0x110 scoped_ptr<CInputProcessInventory>::ptr
+    CInputProcessInventoryClothing*                              InputProcessInventoryClothing_ptr; // +0x114 scoped_ptr<CInputProcessInventoryClothing>::ptr
+    CInputProcessInventoryWeapons*                               InputProcessInventoryWeapons_ptr; // +0x118 scoped_ptr<CInputProcessInventoryWeapons>::ptr
+    CInputProcessHeroAbilitiesScreen*                            InputProcessHeroAbilitiesScreen_ptr; // +0x11c scoped_ptr<CInputProcessHeroAbilitiesScreen>::ptr
+    CInputProcessInventoryMapScreen*                             InputProcessInventoryMapScreen_ptr; // +0x120 scoped_ptr<CInputProcessInventoryMapScreen>::ptr
+    CInputProcessInventoryStatsScreen*                           InputProcessInventoryStatsScreen_ptr; // +0x124 scoped_ptr<CInputProcessInventoryStatsScreen>::ptr
+    CInputProcessInventoryMagicScreen*                           InputProcessInventoryMagicScreen_ptr; // +0x128 scoped_ptr<CInputProcessInventoryMagicScreen>::ptr
+    CInputProcessInventoryExperienceScreen*                      InputProcessInventoryExperienceScreen_ptr; // +0x12c scoped_ptr<CInputProcessInventoryExperienceScreen>::ptr
+    CInputProcessInventoryTradeScreen*                           InputProcessInventoryTradeScreen_ptr; // +0x130 scoped_ptr<CInputProcessInventoryTradeScreen>::ptr
+    CInputProcessInventoryQuestsScreen*                          InputProcessInventoryQuestsScreen_ptr; // +0x134 scoped_ptr<CInputProcessInventoryQuestsScreen>::ptr
+    CInputProcessHeroInformationScreens*                         InputProcessHeroInformationScreens_ptr; // +0x138 scoped_ptr<CInputProcessHeroInformationScreens>::ptr
+    CInputProcessFirstPerson*                                    InputProcessFirstPerson_ptr; // +0x13c scoped_ptr<CInputProcessFirstPerson>::ptr
+    CInputProcessClickPastText*                                  InputProcessClickPastText_ptr; // +0x140 scoped_ptr<CInputProcessClickPastText>::ptr
+    CInputProcessYesNoQuestion*                                  InputProcessYesNoQuestion_ptr; // +0x144 scoped_ptr<CInputProcessYesNoQuestion>::ptr
+    CInputProcessFreezeControls*                                 InputProcessFreezeControls_ptr; // +0x148 scoped_ptr<CInputProcessFreezeControls>::ptr
+    CInputProcessControlFreeCamera*                              InputProcessControlFreeCamera_ptr; // +0x14c scoped_ptr<CInputProcessControlFreeCamera>::ptr
+    CInputProcessCreatureMovement*                               InputProcessCreatureMovement_ptr; // +0x150 scoped_ptr<CInputProcessCreatureMovement>::ptr
+    CInputProcessUseEnvironment*                                 InputProcessUseEnvironment_ptr; // +0x154 scoped_ptr<CInputProcessUseEnvironment>::ptr
+    CInputProcessBlock*                                          InputProcessBlock_ptr; // +0x158 scoped_ptr<CInputProcessBlock>::ptr
+    CInputProcessDebugControls*                                  InputProcessDebugControls_ptr; // +0x15c scoped_ptr<CInputProcessDebugControls>::ptr
+    CInputProcessQuickAccessItems*                               InputProcessQuickAccessItems_ptr; // +0x160 scoped_ptr<CInputProcessQuickAccessItems>::ptr
+    CInputProcessCombat*                                         InputProcessCombat_ptr; // +0x164 scoped_ptr<CInputProcessCombat>::ptr
+    CInputProcessSpecialAbilities*                               InputProcessSpecialAbilities_ptr; // +0x168 scoped_ptr<CInputProcessSpecialAbilities>::ptr
+    CInputProcessControlCreatureRightStick*                      InputProcessControlCreatureRightStick_ptr; // +0x16c scoped_ptr<CInputProcessControlCreatureRightStick>::ptr
+    CInputProcessCameraLookAround*                               InputProcessRightStickLookAround_ptr; // +0x170 scoped_ptr<CInputProcessCameraLookAround>::ptr
+    CInputProcessCycleSpecialCameraModes*                        InputProcessCycleSpecialCameraModes_ptr; // +0x174 scoped_ptr<CInputProcessCycleSpecialCameraModes>::ptr
+    CInputProcessRebootGame*                                     InputProcessRebootGame_ptr; // +0x178 scoped_ptr<CInputProcessRebootGame>::ptr
+    CInputProcessJumpingAndRolling*                              InputProcessJumpingAndRolling_ptr; // +0x17c scoped_ptr<CInputProcessJumpingAndRolling>::ptr
+    CInputProcessFirstPersonTargeting*                           InputProcessFirstPersonTargeting_ptr; // +0x180 scoped_ptr<CInputProcessFirstPersonTargeting>::ptr
+    CInputProcessUseRangedWeapon*                                InputProcessUseRangedWeapon_ptr; // +0x184 scoped_ptr<CInputProcessUseRangedWeapon>::ptr
+    CInputProcessControlCreatureActivateZTarget*                 InputProcessControlCreatureActivateZTarget_ptr; // +0x188 scoped_ptr<CInputProcessControlCreatureActivateZTarget>::ptr
+    CInputProcessControlCreatureActivateZTargetOnPress*          InputProcessControlCreatureActivateZTargetOnPress_ptr; // +0x18c scoped_ptr<CInputProcessControlCreatureActivateZTargetOnPress>::ptr
+    CInputProcessFirstPersonLookAround*                          InputProcessLeftStickLookAround_ptr; // +0x190 scoped_ptr<CInputProcessFirstPersonLookAround>::ptr
+    CInputProcessInGameMenu*                                     InputProcessInGameMenu_ptr; // +0x194 scoped_ptr<CInputProcessInGameMenu>::ptr
+    CInputProcessControlSpirit*                                  InputProcessControlSpirit_ptr; // +0x198 scoped_ptr<CInputProcessControlSpirit>::ptr
+    CInputProcessTavernGame*                                     InputProcessTavernGame_ptr; // +0x19c scoped_ptr<CInputProcessTavernGame>::ptr
+    CInputProcessSetRangedWeaponMode*                            InputProcessSetRangedWeaponMode_ptr; // +0x1a0 scoped_ptr<CInputProcessSetRangedWeaponMode>::ptr
+    CInputProcessCutScene*                                       InputProcessCutScene_ptr; // +0x1a4 scoped_ptr<CInputProcessCutScene>::ptr
+    CInputProcessFishing*                                        InputProcessFishing_ptr; // +0x1a8 scoped_ptr<CInputProcessFishing>::ptr
+    CInputProcessDigging*                                        InputProcessDigging_ptr; // +0x1ac scoped_ptr<CInputProcessDigging>::ptr
+    CInputProcessParalysed*                                      InputProcessParalysed_ptr; // +0x1b0 scoped_ptr<CInputProcessParalysed>::ptr
+    CInputProcessBoastUI*                                        InputProcessBoastUI_ptr; // +0x1b4 scoped_ptr<CInputProcessBoastUI>::ptr
+    CInputProcessSetRangedWeaponThirdPersonMode*                 InputProcessSetRangedWeaponThirdPerson_ptr; // +0x1b8 scoped_ptr<CInputProcessSetRangedWeaponThirdPersonMode>::ptr
+    CInputProcessUseRangedWeaponZLock*                           InputProcessUseRangedWeaponZLock_ptr; // +0x1bc scoped_ptr<CInputProcessUseRangedWeaponZLock>::ptr
+    CInputProcessWatchForRangedWeaponThirdPersonModeTermination* InputProcessWatchForRangedWeaponThirdPersonModeTermination_ptr; // +0x1c0 scoped_ptr<CInputProcessWatchForRangedWeaponThirdPersonModeTermination>::ptr
+    CInputProcessWatchForWillChargeUpThirdPersonModeTermination* InputProcessWatchForWillChargeUpThirdPersonModeTermination_ptr; // +0x1c4 scoped_ptr<CInputProcessWatchForWillChargeUpThirdPersonModeTermination>::ptr
+    CInputProcessTargetLockCycleTargets*                         InputProcessTargetLockCycleTargets_ptr; // +0x1c8 scoped_ptr<CInputProcessTargetLockCycleTargets>::ptr
+    CInputProcessQuickAccessMenu*                                InputProcessQuickAccessMenu_ptr; // +0x1cc scoped_ptr<CInputProcessQuickAccessMenu>::ptr
+    CInputProcessQuestCompletionUI*                              InputProcessQuestCompletionUI_ptr; // +0x1d0 scoped_ptr<CInputProcessQuestCompletionUI>::ptr
+    CInputProcessTargetLockRightStickTargetSelect*               InputProcessTargetLockRightStickTargetSelect_ptr; // +0x1d4 scoped_ptr<CInputProcessTargetLockRightStickTargetSelect>::ptr
+    CInputProcessBButtonExitMode*                                InputProcessBButtonExitMode_ptr; // +0x1d8 scoped_ptr<CInputProcessBButtonExitMode>::ptr
+    CInputProcessCreditsUI*                                      InputProcessCreditsUI_ptr; // +0x1dc scoped_ptr<CInputProcessCreditsUI>::ptr
+    CInputProcessBetting*                                        InputProcessBetting_ptr; // +0x1e0 scoped_ptr<CInputProcessBetting>::ptr
+    CInputProcessLightning*                                      InputProcessLightning_ptr; // +0x1e4 scoped_ptr<CInputProcessLightning>::ptr
+    CInputProcessCreatureMovementWatchForControlAngleChange*     InputProcessWatchForControlAngleChange_ptr; // +0x1e8 scoped_ptr<CInputProcessCreatureMovementWatchForControlAngleChange>::ptr
+    CInputProcessOracleMinigame*                                 InputProcessOracleMinigame_ptr; // +0x1ec scoped_ptr<CInputProcessOracleMinigame>::ptr
+    CInputProcessFireheartMinigame*                              InputProcessFireheartMinigame_ptr; // +0x1f0 scoped_ptr<CInputProcessFireheartMinigame>::ptr
+    CInputProcessStrafe*                                         InputProcessStrafe_ptr; // +0x1f4 scoped_ptr<CInputProcessStrafe>::ptr
+    CInputProcessConsole*                                        InputProcessConsole_ptr; // +0x1f8 scoped_ptr<CInputProcessConsole>::ptr
+    CInputProcessProjectileTargetingAnalogueZoom*                InputProcessProjectileTargetingAnalogueZoom_ptr; // +0x1fc scoped_ptr<CInputProcessProjectileTargetingAnalogueZoom>::ptr
+    CInputProcessPhotojournalCapture*                            InputProcessPhotojournalCapture_ptr; // +0x200 scoped_ptr<CInputProcessPhotojournalCapture>::ptr
+    CInputProcessToggleViewHeroMode*                             InputProcessToggleViewHeroMode_ptr; // +0x204 scoped_ptr<CInputProcessToggleViewHeroMode>::ptr
+    bool                                                         Local; // +0x208
+    bool                                                         ShowWorldThing; // +0x209
+    bool                                                         ZTargeting; // +0x20a
+    bool                                                         ProjectileTargetLocked; // +0x20b
+    bool                                                         RightTriggerTargetLocked; // +0x20c
+    unsigned char                                                _pad_0x20d[0x1]; // +0x20d
+    unsigned char                                                _pad_0x20e[0x2]; // +0x20e
+    unsigned char                                                PlayerModes[0xc]; // +0x210 list<EPlayerMode,std::allocator<EPlayerMode>_>
+    bool                                                         SuppressFullModeRemoval; // +0x21c
+    bool                                                         DisallowModeChanges; // +0x21d
+    bool                                                         InitialPlayerModeSet; // +0x21e
+    bool                                                         AggressiveMode; // +0x21f
+    bool                                                         SpellMode; // +0x220
+    bool                                                         ExpressionShiftMode; // +0x221
+    bool                                                         PCProjectileWeaponThirdPersonAimingMode; // +0x222
+    bool                                                         KillEverythingMode; // +0x223
+    CDefPointeeBase*                                             PlayerDef_Object; // +0x224 CDefPointer<CPlayerDef_const_>::Object
+    bool                                                         UsingFreeCamera; // +0x228
+    bool                                                         FreeCameraTrackingPlayer; // +0x229
+    bool                                                         FreeCameraTrackingPlayerYZ; // +0x22a
+    bool                                                         ControllingFreeCamera; // +0x22b
+    bool                                                         KeepAbilitiesDuringCutscenes; // +0x22c
+    unsigned char                                                _pad_0x22d[0x3]; // +0x22d
+    long                                                         JoystickDeviceNumber; // +0x230
 };
 #pragma pack(pop)
 
@@ -151,73 +221,74 @@ FABLE_STATIC_ASSERT(offsetof(CPlayer, CurrentFreeCamera) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, FreeCamera) == 0x78);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, OldFreeCamera) == 0xb0);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, RespawnInfo) == 0xe8);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, PHeroLogBook) == 0xf8);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessMain) == 0x100);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlCreature) == 0x104);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessZTarget) == 0x108);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessDead) == 0x10c);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventory) == 0x110);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryClothing) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryWeapons) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessHeroAbilitiesScreen) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryMapScreen) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryStatsScreen) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryMagicScreen) == 0x128);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryExperienceScreen) == 0x12c);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryTradeScreen) == 0x130);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryQuestsScreen) == 0x134);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessHeroInformationScreens) == 0x138);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFirstPerson) == 0x13c);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessClickPastText) == 0x140);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessYesNoQuestion) == 0x144);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFreezeControls) == 0x148);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlFreeCamera) == 0x14c);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCreatureMovement) == 0x150);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessUseEnvironment) == 0x154);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessBlock) == 0x158);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessDebugControls) == 0x15c);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessQuickAccessItems) == 0x160);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCombat) == 0x164);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessSpecialAbilities) == 0x168);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlCreatureRightStick) == 0x16c);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessRightStickLookAround) == 0x170);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCycleSpecialCameraModes) == 0x174);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessRebootGame) == 0x178);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessJumpingAndRolling) == 0x17c);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFirstPersonTargeting) == 0x180);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessUseRangedWeapon) == 0x184);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlCreatureActivateZTarget) == 0x188);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlCreatureActivateZTargetOnPress) == 0x18c);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessLeftStickLookAround) == 0x190);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInGameMenu) == 0x194);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlSpirit) == 0x198);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessTavernGame) == 0x19c);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessSetRangedWeaponMode) == 0x1a0);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCutScene) == 0x1a4);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFishing) == 0x1a8);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessDigging) == 0x1ac);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessParalysed) == 0x1b0);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessBoastUI) == 0x1b4);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessSetRangedWeaponThirdPerson) == 0x1b8);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessUseRangedWeaponZLock) == 0x1bc);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessWatchForRangedWeaponThirdPersonModeTermination) == 0x1c0);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessWatchForWillChargeUpThirdPersonModeTermination) == 0x1c4);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessTargetLockCycleTargets) == 0x1c8);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessQuickAccessMenu) == 0x1cc);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessQuestCompletionUI) == 0x1d0);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessTargetLockRightStickTargetSelect) == 0x1d4);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessBButtonExitMode) == 0x1d8);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCreditsUI) == 0x1dc);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessBetting) == 0x1e0);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessLightning) == 0x1e4);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessWatchForControlAngleChange) == 0x1e8);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessOracleMinigame) == 0x1ec);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFireheartMinigame) == 0x1f0);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessStrafe) == 0x1f4);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessConsole) == 0x1f8);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessProjectileTargetingAnalogueZoom) == 0x1fc);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessPhotojournalCapture) == 0x200);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessToggleViewHeroMode) == 0x204);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, PHeroLogBook_Data) == 0xf8);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, PHeroLogBook_Info) == 0xfc);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessMain_ptr) == 0x100);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlCreature_ptr) == 0x104);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessZTarget_ptr) == 0x108);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessDead_ptr) == 0x10c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventory_ptr) == 0x110);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryClothing_ptr) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryWeapons_ptr) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessHeroAbilitiesScreen_ptr) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryMapScreen_ptr) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryStatsScreen_ptr) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryMagicScreen_ptr) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryExperienceScreen_ptr) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryTradeScreen_ptr) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInventoryQuestsScreen_ptr) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessHeroInformationScreens_ptr) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFirstPerson_ptr) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessClickPastText_ptr) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessYesNoQuestion_ptr) == 0x144);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFreezeControls_ptr) == 0x148);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlFreeCamera_ptr) == 0x14c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCreatureMovement_ptr) == 0x150);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessUseEnvironment_ptr) == 0x154);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessBlock_ptr) == 0x158);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessDebugControls_ptr) == 0x15c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessQuickAccessItems_ptr) == 0x160);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCombat_ptr) == 0x164);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessSpecialAbilities_ptr) == 0x168);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlCreatureRightStick_ptr) == 0x16c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessRightStickLookAround_ptr) == 0x170);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCycleSpecialCameraModes_ptr) == 0x174);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessRebootGame_ptr) == 0x178);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessJumpingAndRolling_ptr) == 0x17c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFirstPersonTargeting_ptr) == 0x180);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessUseRangedWeapon_ptr) == 0x184);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlCreatureActivateZTarget_ptr) == 0x188);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlCreatureActivateZTargetOnPress_ptr) == 0x18c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessLeftStickLookAround_ptr) == 0x190);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessInGameMenu_ptr) == 0x194);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessControlSpirit_ptr) == 0x198);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessTavernGame_ptr) == 0x19c);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessSetRangedWeaponMode_ptr) == 0x1a0);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCutScene_ptr) == 0x1a4);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFishing_ptr) == 0x1a8);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessDigging_ptr) == 0x1ac);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessParalysed_ptr) == 0x1b0);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessBoastUI_ptr) == 0x1b4);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessSetRangedWeaponThirdPerson_ptr) == 0x1b8);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessUseRangedWeaponZLock_ptr) == 0x1bc);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessWatchForRangedWeaponThirdPersonModeTermination_ptr) == 0x1c0);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessWatchForWillChargeUpThirdPersonModeTermination_ptr) == 0x1c4);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessTargetLockCycleTargets_ptr) == 0x1c8);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessQuickAccessMenu_ptr) == 0x1cc);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessQuestCompletionUI_ptr) == 0x1d0);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessTargetLockRightStickTargetSelect_ptr) == 0x1d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessBButtonExitMode_ptr) == 0x1d8);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessCreditsUI_ptr) == 0x1dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessBetting_ptr) == 0x1e0);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessLightning_ptr) == 0x1e4);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessWatchForControlAngleChange_ptr) == 0x1e8);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessOracleMinigame_ptr) == 0x1ec);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessFireheartMinigame_ptr) == 0x1f0);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessStrafe_ptr) == 0x1f4);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessConsole_ptr) == 0x1f8);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessProjectileTargetingAnalogueZoom_ptr) == 0x1fc);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessPhotojournalCapture_ptr) == 0x200);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, InputProcessToggleViewHeroMode_ptr) == 0x204);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, Local) == 0x208);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, ShowWorldThing) == 0x209);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, ZTargeting) == 0x20a);
@@ -232,7 +303,7 @@ FABLE_STATIC_ASSERT(offsetof(CPlayer, SpellMode) == 0x220);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, ExpressionShiftMode) == 0x221);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, PCProjectileWeaponThirdPersonAimingMode) == 0x222);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, KillEverythingMode) == 0x223);
-FABLE_STATIC_ASSERT(offsetof(CPlayer, PlayerDef) == 0x224);
+FABLE_STATIC_ASSERT(offsetof(CPlayer, PlayerDef_Object) == 0x224);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, UsingFreeCamera) == 0x228);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, FreeCameraTrackingPlayer) == 0x229);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, FreeCameraTrackingPlayerYZ) == 0x22a);

@@ -55,12 +55,16 @@ struct CCreatureAction_SpiritHitResponse {
     unsigned char _pad_0xa8[0x4];                            // +0xa8
     unsigned char _pad_0xac[0x4];                            // +0xac
     unsigned char _pad_0xb0[0x4];                            // +0xb0
-    unsigned char Acceleration[0xc];                         // +0xb4 C3DVector
+    float         Acceleration_X;                            // +0xb4 C3DVector::X
+    float         Acceleration_Y;                            // +0xb8 C3DVector::Y
+    float         Acceleration_Z;                            // +0xbc C3DVector::Z
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SpiritHitResponse) == 0xc0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritHitResponse, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritHitResponse, Acceleration) == 0xb4);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritHitResponse, Acceleration_X) == 0xb4);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritHitResponse, Acceleration_Y) == 0xb8);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritHitResponse, Acceleration_Z) == 0xbc);
 
 #endif // FABLE_ENGINE_CCREATUREACTION_SPIRITHITRESPONSE_H

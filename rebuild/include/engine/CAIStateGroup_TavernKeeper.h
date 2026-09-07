@@ -22,7 +22,9 @@ struct CAIStateGroup_TavernKeeper {
     unsigned char  PPub[0x8];                                // +0x24 CIntelligentPointer<CThingBuilding>
     unsigned char  PPayee[0x8];                              // +0x2c CIntelligentPointer<CThingAICreature>
     long           JugActionPointIndex;                      // +0x34
-    unsigned char  JugPos[0xc];                              // +0x38 C3DVector
+    float          JugPos_X;                                 // +0x38 C3DVector::X
+    float          JugPos_Y;                                 // +0x3c C3DVector::Y
+    float          JugPos_Z;                                 // +0x40 C3DVector::Z
     unsigned char  JugRHSet[0x18];                           // +0x44 CRightHandedSet
     long           JugSlot;                                  // +0x5c
     float          AverageWalkSpeed;                         // +0x60
@@ -37,7 +39,9 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, PBar) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, PPub) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, PPayee) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugActionPointIndex) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugPos) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugPos_X) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugPos_Y) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugPos_Z) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugRHSet) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugSlot) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, AverageWalkSpeed) == 0x60);

@@ -85,7 +85,9 @@ struct CCreatureAction_InterruptableMidAttackAutoTurn {
     unsigned char _pad_0x120[0x4];                           // +0x120
     unsigned char _pad_0x124[0x4];                           // +0x124
     unsigned char _pad_0x128[0x4];                           // +0x128
-    unsigned char RequiredFacing[0xc];                       // +0x12c C3DVector
+    float         RequiredFacing_X;                          // +0x12c C3DVector::X
+    float         RequiredFacing_Y;                          // +0x130 C3DVector::Y
+    float         RequiredFacing_Z;                          // +0x134 C3DVector::Z
     unsigned char PWeapon[0x8];                              // +0x138 CIntelligentPointer<CThing_const_>
     bool          PerformedStrikeEnd;                        // +0x140
     unsigned char _pad_0x141[0x3];                           // +0x141
@@ -94,7 +96,9 @@ struct CCreatureAction_InterruptableMidAttackAutoTurn {
 
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_InterruptableMidAttackAutoTurn) == 0x144);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_X) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_Y) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_Z) == 0x134);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, PWeapon) == 0x138);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, PerformedStrikeEnd) == 0x140);
 

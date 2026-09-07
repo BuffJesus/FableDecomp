@@ -26,11 +26,15 @@ struct CHeroCombatDef {
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
     unsigned char _pad_0x3c[0x4];                            // +0x3c
-    unsigned char RangedAccuracySecondsForMaximumWithSkill[0x8]; // +0x40 CFloatRange
-    unsigned char RangedAccuracyPercentFractionWithBuildup[0x8]; // +0x48 CFloatRange
-    unsigned char RangedAccuracyPercentWithStats[0x8];       // +0x50 CFloatRange
+    float         RangedAccuracySecondsForMaximumWithSkill_HighValue; // +0x40 CFloatRange::HighValue
+    float         RangedAccuracySecondsForMaximumWithSkill_LowValue; // +0x44 CFloatRange::LowValue
+    float         RangedAccuracyPercentFractionWithBuildup_HighValue; // +0x48 CFloatRange::HighValue
+    float         RangedAccuracyPercentFractionWithBuildup_LowValue; // +0x4c CFloatRange::LowValue
+    float         RangedAccuracyPercentWithStats_HighValue;  // +0x50 CFloatRange::HighValue
+    float         RangedAccuracyPercentWithStats_LowValue;   // +0x54 CFloatRange::LowValue
     unsigned char RangedAccuracyWeighting[0x10];             // +0x58 CHeroAbilityStatWeight
-    unsigned char RangedAccuracyShakeyCursor[0x8];           // +0x68 CFloatRange
+    float         RangedAccuracyShakeyCursor_HighValue;      // +0x68 CFloatRange::HighValue
+    float         RangedAccuracyShakeyCursor_LowValue;       // +0x6c CFloatRange::LowValue
     unsigned char RangedAccuracyShakeyCursorWeighting[0x10]; // +0x70 CHeroAbilityStatWeight
     float         RangedAccuracyShakeFractionOfRadius;       // +0x80
     unsigned char RangedDamageMultiplierWeighting[0x10];     // +0x84 CHeroAbilityStatWeight
@@ -41,9 +45,11 @@ struct CHeroCombatDef {
     float         RangedDamageMultiplierSpeedSuperBuildup;   // +0xa4
     float         RangedDamageMultiplierScaleSuperBuildup;   // +0xa8
     unsigned char RangedWeaponReloadSpeedWeighting[0x10];    // +0xac CHeroAbilityStatWeight
-    unsigned char MeleeDamageMultiplierWithStats[0x8];       // +0xbc CFloatRange
+    float         MeleeDamageMultiplierWithStats_HighValue;  // +0xbc CFloatRange::HighValue
+    float         MeleeDamageMultiplierWithStats_LowValue;   // +0xc0 CFloatRange::LowValue
     unsigned char MeleeDamageWeighting[0x10];                // +0xc4 CHeroAbilityStatWeight
-    unsigned char HitDamageMultiplierWithStats[0x8];         // +0xd4 CFloatRange
+    float         HitDamageMultiplierWithStats_HighValue;    // +0xd4 CFloatRange::HighValue
+    float         HitDamageMultiplierWithStats_LowValue;     // +0xd8 CFloatRange::LowValue
     unsigned char HitDamageWeighting[0x10];                  // +0xdc CHeroAbilityStatWeight
     bool          MeleeFlourishValidOnMultiplierLevelIncrease; // +0xec
     unsigned char _pad_0xed[0x3];                            // +0xed
@@ -58,7 +64,8 @@ struct CHeroCombatDef {
     float         TargetingPressureFractionThresholdForToggle; // +0x100
     float         MaxAngleToTurnToShootAtTargetInThirdPersonBowMode; // +0x104
     long          MeleeStrikeNumFramesPauseOnHeroStrike;     // +0x108
-    unsigned char MeleeStrikeAnimationSpeedFractionWithStats[0x8]; // +0x10c CFloatRange
+    float         MeleeStrikeAnimationSpeedFractionWithStats_HighValue; // +0x10c CFloatRange::HighValue
+    float         MeleeStrikeAnimationSpeedFractionWithStats_LowValue; // +0x110 CFloatRange::LowValue
     unsigned char MeleeStrikeAnimationSpeedWeighting[0x10];  // +0x114 CHeroAbilityStatWeight
     float         AutoBlockSkillThreshold;                   // +0x124
     float         AutoBlockStrengthThreshold;                // +0x128
@@ -79,11 +86,15 @@ struct CHeroCombatDef {
 
 FABLE_STATIC_ASSERT(sizeof(CHeroCombatDef) == 0x174);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracySecondsForMaximumWithSkill) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracyPercentFractionWithBuildup) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracyPercentWithStats) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracySecondsForMaximumWithSkill_HighValue) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracySecondsForMaximumWithSkill_LowValue) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracyPercentFractionWithBuildup_HighValue) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracyPercentFractionWithBuildup_LowValue) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracyPercentWithStats_HighValue) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracyPercentWithStats_LowValue) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracyWeighting) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracyShakeyCursor) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracyShakeyCursor_HighValue) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracyShakeyCursor_LowValue) == 0x6c);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracyShakeyCursorWeighting) == 0x70);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedAccuracyShakeFractionOfRadius) == 0x80);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedDamageMultiplierWeighting) == 0x84);
@@ -94,9 +105,11 @@ FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedDamageMultiplierScaleNominalB
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedDamageMultiplierSpeedSuperBuildup) == 0xa4);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedDamageMultiplierScaleSuperBuildup) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, RangedWeaponReloadSpeedWeighting) == 0xac);
-FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, MeleeDamageMultiplierWithStats) == 0xbc);
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, MeleeDamageMultiplierWithStats_HighValue) == 0xbc);
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, MeleeDamageMultiplierWithStats_LowValue) == 0xc0);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, MeleeDamageWeighting) == 0xc4);
-FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, HitDamageMultiplierWithStats) == 0xd4);
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, HitDamageMultiplierWithStats_HighValue) == 0xd4);
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, HitDamageMultiplierWithStats_LowValue) == 0xd8);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, HitDamageWeighting) == 0xdc);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, MeleeFlourishValidOnMultiplierLevelIncrease) == 0xec);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, MeleeFlourishNumMultiplierLevelsPerFlourish) == 0xf0);
@@ -108,7 +121,8 @@ FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, MeleeCombatPlayStrikeSounds) == 0xf
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, TargetingPressureFractionThresholdForToggle) == 0x100);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, MaxAngleToTurnToShootAtTargetInThirdPersonBowMode) == 0x104);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, MeleeStrikeNumFramesPauseOnHeroStrike) == 0x108);
-FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, MeleeStrikeAnimationSpeedFractionWithStats) == 0x10c);
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, MeleeStrikeAnimationSpeedFractionWithStats_HighValue) == 0x10c);
+FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, MeleeStrikeAnimationSpeedFractionWithStats_LowValue) == 0x110);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, MeleeStrikeAnimationSpeedWeighting) == 0x114);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, AutoBlockSkillThreshold) == 0x124);
 FABLE_STATIC_ASSERT(offsetof(CHeroCombatDef, AutoBlockStrengthThreshold) == 0x128);

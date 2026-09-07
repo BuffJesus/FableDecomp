@@ -8,24 +8,26 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
+
 #pragma pack(push, 1)
 struct CTCHeroCentre {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char PDef[0x4];                                 // +0x0c CDefPointer<CHeroCentreDef_const_>
-    unsigned char CurrentGUIMode[0x4];                       // +0x10 EGUIMode
-    unsigned long FrameQuestCardListFrom;                    // +0x14
-    unsigned char QuestCards[0x10];                          // +0x18 vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
-    unsigned char QuestCardPositions[0x10];                  // +0x28 vector<C3DVector,std::allocator<C3DVector>_>
-    bool          WaitingForTutorialToFinish;                // +0x38
-    unsigned char _pad_0x39[0x3];                            // +0x39
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    CDefPointeeBase* PDef_Object;                            // +0x0c CDefPointer<CHeroCentreDef_const_>::Object
+    unsigned char    CurrentGUIMode[0x4];                    // +0x10 EGUIMode
+    unsigned long    FrameQuestCardListFrom;                 // +0x14
+    unsigned char    QuestCards[0x10];                       // +0x18 vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned char    QuestCardPositions[0x10];               // +0x28 vector<C3DVector,std::allocator<C3DVector>_>
+    bool             WaitingForTutorialToFinish;             // +0x38
+    unsigned char    _pad_0x39[0x3];                         // +0x39
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCHeroCentre) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, PDef) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, PDef_Object) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, CurrentGUIMode) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, FrameQuestCardListFrom) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CTCHeroCentre, QuestCards) == 0x18);

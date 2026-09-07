@@ -8,69 +8,71 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CVillageDef {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char Tasks[0x10];                               // +0x28 vector<EVillageTaskType,std::allocator<EVillageTaskType>_>
-    unsigned char PatrolTrackName[0x4];                      // +0x38 CDefString
-    unsigned char DefaultStanceToHero[0x4];                  // +0x3c EVillageStanceToHero
-    long          SecondsSecuritySweepLasts;                 // +0x40
-    long          WarehouseCrateDef;                         // +0x44
-    unsigned char StoryStartTimes[0x10];                     // +0x48 vector<long,std::allocator<long>_>
-    long          StoryDuration;                             // +0x58
-    unsigned char SchoolStartTimes[0x10];                    // +0x5c vector<long,std::allocator<long>_>
-    long          SchoolDuration;                            // +0x6c
-    unsigned char WorkStartTimes[0x10];                      // +0x70 vector<long,std::allocator<long>_>
-    long          WorkDuration;                              // +0x80
-    unsigned char CookStartTimes[0x10];                      // +0x84 vector<long,std::allocator<long>_>
-    long          CookDuration;                              // +0x94
-    unsigned char EatStartTimes[0x10];                       // +0x98 vector<long,std::allocator<long>_>
-    long          EatDuration;                               // +0xa8
-    unsigned char TavernStartTimes[0x10];                    // +0xac vector<long,std::allocator<long>_>
-    long          TavernDuration;                            // +0xbc
-    unsigned char GamingStartTimes[0x10];                    // +0xc0 vector<long,std::allocator<long>_>
-    long          GamingDuration;                            // +0xd0
-    long          SleepAdultStartTime;                       // +0xd4
-    long          SleepAdultEndTime;                         // +0xd8
-    long          SleepChildStartTime;                       // +0xdc
-    long          SleepChildEndTime;                         // +0xe0
-    long          SleepElderlyStartTime;                     // +0xe4
-    long          SleepElderlyEndTime;                       // +0xe8
-    long          HouseLightsOnTime;                         // +0xec
-    long          HouseLightsOffTime;                        // +0xf0
-    long          SociableStartTime;                         // +0xf4
-    long          SociableFinishTime;                        // +0xf8
-    long          CurfewStartTime;                           // +0xfc
-    long          CurfewFinishTime;                          // +0x100
-    bool          EnableAutoPlacement;                       // +0x104
-    bool          AllowHouseBuying;                          // +0x105
-    bool          HearTownCrier;                             // +0x106
-    unsigned char _pad_0x107[0x1];                           // +0x107
-    unsigned char CurfewStartSound[0x4];                     // +0x108 CCharString
-    unsigned char CurfewEndSound[0x4];                       // +0x10c CCharString
-    unsigned char WorkStartSound[0x4];                       // +0x110 CCharString
-    unsigned char WorkEndSound[0x4];                         // +0x114 CCharString
-    long          BribeCost;                                 // +0x118
-    long          FramesBetweenGuardSnoop;                   // +0x11c
-    long          FramesBetweenGuardSnoopNightShops;         // +0x120
-    long          FramesBeforeGuardSnoop;                    // +0x124
-    long          FramesBeforeGuardSnoopNightShops;          // +0x128
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned char    Tasks[0x10];                            // +0x28 vector<EVillageTaskType,std::allocator<EVillageTaskType>_>
+    long             PatrolTrackName_TablePos;               // +0x38 CDefString::TablePos
+    unsigned char    DefaultStanceToHero[0x4];               // +0x3c EVillageStanceToHero
+    long             SecondsSecuritySweepLasts;              // +0x40
+    long             WarehouseCrateDef;                      // +0x44
+    unsigned char    StoryStartTimes[0x10];                  // +0x48 vector<long,std::allocator<long>_>
+    long             StoryDuration;                          // +0x58
+    unsigned char    SchoolStartTimes[0x10];                 // +0x5c vector<long,std::allocator<long>_>
+    long             SchoolDuration;                         // +0x6c
+    unsigned char    WorkStartTimes[0x10];                   // +0x70 vector<long,std::allocator<long>_>
+    long             WorkDuration;                           // +0x80
+    unsigned char    CookStartTimes[0x10];                   // +0x84 vector<long,std::allocator<long>_>
+    long             CookDuration;                           // +0x94
+    unsigned char    EatStartTimes[0x10];                    // +0x98 vector<long,std::allocator<long>_>
+    long             EatDuration;                            // +0xa8
+    unsigned char    TavernStartTimes[0x10];                 // +0xac vector<long,std::allocator<long>_>
+    long             TavernDuration;                         // +0xbc
+    unsigned char    GamingStartTimes[0x10];                 // +0xc0 vector<long,std::allocator<long>_>
+    long             GamingDuration;                         // +0xd0
+    long             SleepAdultStartTime;                    // +0xd4
+    long             SleepAdultEndTime;                      // +0xd8
+    long             SleepChildStartTime;                    // +0xdc
+    long             SleepChildEndTime;                      // +0xe0
+    long             SleepElderlyStartTime;                  // +0xe4
+    long             SleepElderlyEndTime;                    // +0xe8
+    long             HouseLightsOnTime;                      // +0xec
+    long             HouseLightsOffTime;                     // +0xf0
+    long             SociableStartTime;                      // +0xf4
+    long             SociableFinishTime;                     // +0xf8
+    long             CurfewStartTime;                        // +0xfc
+    long             CurfewFinishTime;                       // +0x100
+    bool             EnableAutoPlacement;                    // +0x104
+    bool             AllowHouseBuying;                       // +0x105
+    bool             HearTownCrier;                          // +0x106
+    unsigned char    _pad_0x107[0x1];                        // +0x107
+    CCharStringData* CurfewStartSound_PStringData;           // +0x108 CCharString::PStringData
+    CCharStringData* CurfewEndSound_PStringData;             // +0x10c CCharString::PStringData
+    CCharStringData* WorkStartSound_PStringData;             // +0x110 CCharString::PStringData
+    CCharStringData* WorkEndSound_PStringData;               // +0x114 CCharString::PStringData
+    long             BribeCost;                              // +0x118
+    long             FramesBetweenGuardSnoop;                // +0x11c
+    long             FramesBetweenGuardSnoopNightShops;      // +0x120
+    long             FramesBeforeGuardSnoop;                 // +0x124
+    long             FramesBeforeGuardSnoopNightShops;       // +0x128
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CVillageDef) == 0x12c);
 FABLE_STATIC_ASSERT(offsetof(CVillageDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CVillageDef, Tasks) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CVillageDef, PatrolTrackName) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CVillageDef, PatrolTrackName_TablePos) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CVillageDef, DefaultStanceToHero) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CVillageDef, SecondsSecuritySweepLasts) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CVillageDef, WarehouseCrateDef) == 0x44);
@@ -103,10 +105,10 @@ FABLE_STATIC_ASSERT(offsetof(CVillageDef, CurfewFinishTime) == 0x100);
 FABLE_STATIC_ASSERT(offsetof(CVillageDef, EnableAutoPlacement) == 0x104);
 FABLE_STATIC_ASSERT(offsetof(CVillageDef, AllowHouseBuying) == 0x105);
 FABLE_STATIC_ASSERT(offsetof(CVillageDef, HearTownCrier) == 0x106);
-FABLE_STATIC_ASSERT(offsetof(CVillageDef, CurfewStartSound) == 0x108);
-FABLE_STATIC_ASSERT(offsetof(CVillageDef, CurfewEndSound) == 0x10c);
-FABLE_STATIC_ASSERT(offsetof(CVillageDef, WorkStartSound) == 0x110);
-FABLE_STATIC_ASSERT(offsetof(CVillageDef, WorkEndSound) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CVillageDef, CurfewStartSound_PStringData) == 0x108);
+FABLE_STATIC_ASSERT(offsetof(CVillageDef, CurfewEndSound_PStringData) == 0x10c);
+FABLE_STATIC_ASSERT(offsetof(CVillageDef, WorkStartSound_PStringData) == 0x110);
+FABLE_STATIC_ASSERT(offsetof(CVillageDef, WorkEndSound_PStringData) == 0x114);
 FABLE_STATIC_ASSERT(offsetof(CVillageDef, BribeCost) == 0x118);
 FABLE_STATIC_ASSERT(offsetof(CVillageDef, FramesBetweenGuardSnoop) == 0x11c);
 FABLE_STATIC_ASSERT(offsetof(CVillageDef, FramesBetweenGuardSnoopNightShops) == 0x120);

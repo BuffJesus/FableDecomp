@@ -10,20 +10,21 @@
 
 struct CComponent;
 struct CEditBox;
+struct CWideStringData;
 
 #pragma pack(push, 1)
 struct CVirtualKeyboard {
-    unsigned char ProfileName[0x4];                          // +0x00 CWideString
-    bool          Canceled;                                  // +0x04
-    bool          Done;                                      // +0x05
-    unsigned char _pad_0x06[0x2];                            // +0x06
-    CComponent*   PEntryScreen;                              // +0x08
-    CEditBox*     PEntryBox;                                 // +0x0c
+    CWideStringData* ProfileName_PStringData;                // +0x00 CWideString::PStringData
+    bool             Canceled;                               // +0x04
+    bool             Done;                                   // +0x05
+    unsigned char    _pad_0x06[0x2];                         // +0x06
+    CComponent*      PEntryScreen;                           // +0x08
+    CEditBox*        PEntryBox;                              // +0x0c
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CVirtualKeyboard) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CVirtualKeyboard, ProfileName) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CVirtualKeyboard, ProfileName_PStringData) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CVirtualKeyboard, Canceled) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CVirtualKeyboard, Done) == 0x5);
 FABLE_STATIC_ASSERT(offsetof(CVirtualKeyboard, PEntryScreen) == 0x8);

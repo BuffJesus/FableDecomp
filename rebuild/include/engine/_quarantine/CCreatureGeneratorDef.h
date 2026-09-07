@@ -21,7 +21,7 @@ struct CCreatureGeneratorDef {
     unsigned char _pad_0x20[0x4];                            // +0x20
     unsigned char _pad_0x24[0x4];                            // +0x24
     unsigned char RandomEffects[0x10];                       // +0x28 vector<long,std::allocator<long>_>
-    unsigned char RandomSoundCriteria[0x4];                  // +0x38 CDefString
+    long          RandomSoundCriteria_TablePos;              // +0x38 CDefString::TablePos
     long          SecondsBetweenEffects;                     // +0x3c
     long          SecondsBetweenSoundEffects;                // +0x40
 };
@@ -30,7 +30,7 @@ struct CCreatureGeneratorDef {
 FABLE_STATIC_ASSERT(sizeof(CCreatureGeneratorDef) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CCreatureGeneratorDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCreatureGeneratorDef, RandomEffects) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCreatureGeneratorDef, RandomSoundCriteria) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CCreatureGeneratorDef, RandomSoundCriteria_TablePos) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CCreatureGeneratorDef, SecondsBetweenEffects) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CCreatureGeneratorDef, SecondsBetweenSoundEffects) == 0x40);
 

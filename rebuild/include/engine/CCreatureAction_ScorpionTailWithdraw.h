@@ -85,12 +85,16 @@ struct CCreatureAction_ScorpionTailWithdraw {
     unsigned char _pad_0x120[0x4];                           // +0x120
     unsigned char _pad_0x124[0x4];                           // +0x124
     unsigned char _pad_0x128[0x4];                           // +0x128
-    unsigned char TargetPos[0xc];                            // +0x12c C3DVector
+    float         TargetPos_X;                               // +0x12c C3DVector::X
+    float         TargetPos_Y;                               // +0x130 C3DVector::Y
+    float         TargetPos_Z;                               // +0x134 C3DVector::Z
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ScorpionTailWithdraw) == 0x138);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionTailWithdraw, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionTailWithdraw, TargetPos) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionTailWithdraw, TargetPos_X) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionTailWithdraw, TargetPos_Y) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionTailWithdraw, TargetPos_Z) == 0x134);
 
 #endif // FABLE_ENGINE_CCREATUREACTION_SCORPIONTAILWITHDRAW_H

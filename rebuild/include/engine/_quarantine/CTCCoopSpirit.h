@@ -8,20 +8,23 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
 struct CPlayer;
 
 #pragma pack(push, 1)
 struct CTCCoopSpirit {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    long          NoMovementTimer;                           // +0x0c
-    long          Score;                                     // +0x10
-    long          OffscreenCounter;                          // +0x14
-    unsigned char MovementVector[0xc];                       // +0x18 C3DVector
-    CPlayer*      Master;                                    // +0x24
-    unsigned char PCoopSpiritDef[0x4];                       // +0x28 CDefPointer<CCoopSpiritDef_const_>
-    unsigned char PParticleEmitter[0x8];                     // +0x2c CIntelligentPointer<CThing>
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    long             NoMovementTimer;                        // +0x0c
+    long             Score;                                  // +0x10
+    long             OffscreenCounter;                       // +0x14
+    float            MovementVector_X;                       // +0x18 C3DVector::X
+    float            MovementVector_Y;                       // +0x1c C3DVector::Y
+    float            MovementVector_Z;                       // +0x20 C3DVector::Z
+    CPlayer*         Master;                                 // +0x24
+    CDefPointeeBase* PCoopSpiritDef_Object;                  // +0x28 CDefPointer<CCoopSpiritDef_const_>::Object
+    unsigned char    PParticleEmitter[0x8];                  // +0x2c CIntelligentPointer<CThing>
 };
 #pragma pack(pop)
 
@@ -30,9 +33,11 @@ FABLE_STATIC_ASSERT(offsetof(CTCCoopSpirit, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CTCCoopSpirit, NoMovementTimer) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCCoopSpirit, Score) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCCoopSpirit, OffscreenCounter) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CTCCoopSpirit, MovementVector) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CTCCoopSpirit, MovementVector_X) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CTCCoopSpirit, MovementVector_Y) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CTCCoopSpirit, MovementVector_Z) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CTCCoopSpirit, Master) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CTCCoopSpirit, PCoopSpiritDef) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CTCCoopSpirit, PCoopSpiritDef_Object) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CTCCoopSpirit, PParticleEmitter) == 0x2c);
 
 #endif // FABLE_ENGINE_CTCCOOPSPIRIT_H

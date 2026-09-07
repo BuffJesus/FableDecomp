@@ -18,7 +18,9 @@ struct CAIStateGroup_EatAtTable {
     unsigned char Table[0x8];                                // +0x14 CIntelligentPointer<CThing>
     long          SeatIndex;                                 // +0x1c
     long          SeatActionPointIndex;                      // +0x20
-    unsigned char SeatPos[0xc];                              // +0x24 C3DVector
+    float         SeatPos_X;                                 // +0x24 C3DVector::X
+    float         SeatPos_Y;                                 // +0x28 C3DVector::Y
+    float         SeatPos_Z;                                 // +0x2c C3DVector::Z
     unsigned char SeatRHSet[0x18];                           // +0x30 CRightHandedSet
     float         Duration;                                  // +0x48
 };
@@ -29,7 +31,9 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EatAtTable, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EatAtTable, Table) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EatAtTable, SeatIndex) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EatAtTable, SeatActionPointIndex) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EatAtTable, SeatPos) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EatAtTable, SeatPos_X) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EatAtTable, SeatPos_Y) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EatAtTable, SeatPos_Z) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EatAtTable, SeatRHSet) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EatAtTable, Duration) == 0x48);
 

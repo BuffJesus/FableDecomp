@@ -1,4 +1,5 @@
-// CRegionMinimap::InitialiseRegionMinimapSize  0x0066cc40  __fastcall void(CWorldMap*, CRegion*)
+// CRegionMinimap_Methods::InitialiseRegionMinimapSize  0x0066cc40  __fastcall void(CWorldMap*, CRegion*)
+#include "engine/CRegionMinimap.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CRegion;
 
 struct RegionVec {
@@ -21,12 +22,13 @@ struct CWorldMap {
     virtual int   GetRegionExtent(CRegion* r); // slot 19  (+0x4c)
 };
 
-struct CRegionMinimap {
-    void SetRegionMapExtents(int val);              // 0x66c630 __fastcall(int)
+struct CRegionMinimap_Methods : CRegionMinimap {
+    void SetRegionMapExtents(int val);
+    // 0x66c630 __fastcall(int)
     void InitialiseRegionMinimapSize(CWorldMap* worldMap, CRegion* region);
 };
 
-void CRegionMinimap::InitialiseRegionMinimapSize(CWorldMap* worldMap, CRegion* region)
+void CRegionMinimap_Methods::InitialiseRegionMinimapSize(CWorldMap* worldMap, CRegion* region)
 {
     RegionVec vec;
     vec.Build(region);

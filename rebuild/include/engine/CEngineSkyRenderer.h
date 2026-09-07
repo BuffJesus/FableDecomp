@@ -8,43 +8,46 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
+struct CWideStringData;
+
 #pragma pack(push, 1)
 struct CEngineSkyRenderer {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    float         CloudHeightOffset;                         // +0x0c
-    float         CloudTextureOffset;                        // +0x10
-    float         CloudTextureMulitplier;                    // +0x14
-    float         CloudSpeedMultiplier;                      // +0x18
-    float         CloudMaxSpeed;                             // +0x1c
-    float         CloudMinSpeed;                             // +0x20
-    unsigned char StarFieldVertexBuffer[0x34];               // +0x24 CVertexBufferWin32
-    unsigned char VertexBuffer[0x34];                        // +0x58 CVertexBufferWin32
-    unsigned char IndexBuffer[0x14];                         // +0x8c CIndexBuffer
-    unsigned char SolidBaseBandVertexBuffer[0x34];           // +0xa0 CVertexBufferWin32
-    unsigned char SolidBaseBandIndexBuffer[0x14];            // +0xd4 CIndexBuffer
-    unsigned char CloudVertexShader[0x8];                    // +0xe8 CVertexShader
-    unsigned char SkyVertexShader[0x8];                      // +0xf0 CVertexShader
-    unsigned char StarFieldVertexShader[0x8];                // +0xf8 CVertexShader
-    unsigned char StarFieldPixelShader[0x8];                 // +0x100 CPixelShader
-    unsigned char StarFieldReflectionVertexShader[0x8];      // +0x108 CVertexShader
-    unsigned char SkySpriteVertexShader[0x8];                // +0x110 CVertexShader
-    unsigned char BaseBandVertexShader[0x8];                 // +0x118 CVertexShader
-    unsigned char CloudPixelShader[0x8];                     // +0x120 CPixelShader
-    unsigned char SkyPixelShader[0x8];                       // +0x128 CPixelShader
-    unsigned char SkySpritePixelShader[0x8];                 // +0x130 CPixelShader
-    unsigned char BaseBandPixelShader[0x8];                  // +0x138 CPixelShader
-    unsigned char ScreenSpaceSpriteVertexShader[0x8];        // +0x140 CVertexShader
-    unsigned char ScreenSpaceSpritePixelShader[0x8];         // +0x148 CPixelShader
-    long          StarCount;                                 // +0x150
-    unsigned char StarBitmapFilePath[0x4];                   // +0x154 CWideString
-    unsigned char StarVBFilePath[0x4];                       // +0x158 CWideString
-    unsigned char CloudVector[0x10];                         // +0x15c C2DVector[2]
-    unsigned char CloudVectorHistory[0x20];                  // +0x16c C2DVector[2][2]
-    bool          EnableClouds;                              // +0x18c
-    unsigned char _pad_0x18d[0x3];                           // +0x18d
-    unsigned char PSkyDef[0x4];                              // +0x190 CDefPointer<CSkyDef_const_>
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    float            CloudHeightOffset;                      // +0x0c
+    float            CloudTextureOffset;                     // +0x10
+    float            CloudTextureMulitplier;                 // +0x14
+    float            CloudSpeedMultiplier;                   // +0x18
+    float            CloudMaxSpeed;                          // +0x1c
+    float            CloudMinSpeed;                          // +0x20
+    unsigned char    StarFieldVertexBuffer[0x34];            // +0x24 CVertexBufferWin32
+    unsigned char    VertexBuffer[0x34];                     // +0x58 CVertexBufferWin32
+    unsigned char    IndexBuffer[0x14];                      // +0x8c CIndexBuffer
+    unsigned char    SolidBaseBandVertexBuffer[0x34];        // +0xa0 CVertexBufferWin32
+    unsigned char    SolidBaseBandIndexBuffer[0x14];         // +0xd4 CIndexBuffer
+    unsigned char    CloudVertexShader[0x8];                 // +0xe8 CVertexShader
+    unsigned char    SkyVertexShader[0x8];                   // +0xf0 CVertexShader
+    unsigned char    StarFieldVertexShader[0x8];             // +0xf8 CVertexShader
+    unsigned char    StarFieldPixelShader[0x8];              // +0x100 CPixelShader
+    unsigned char    StarFieldReflectionVertexShader[0x8];   // +0x108 CVertexShader
+    unsigned char    SkySpriteVertexShader[0x8];             // +0x110 CVertexShader
+    unsigned char    BaseBandVertexShader[0x8];              // +0x118 CVertexShader
+    unsigned char    CloudPixelShader[0x8];                  // +0x120 CPixelShader
+    unsigned char    SkyPixelShader[0x8];                    // +0x128 CPixelShader
+    unsigned char    SkySpritePixelShader[0x8];              // +0x130 CPixelShader
+    unsigned char    BaseBandPixelShader[0x8];               // +0x138 CPixelShader
+    unsigned char    ScreenSpaceSpriteVertexShader[0x8];     // +0x140 CVertexShader
+    unsigned char    ScreenSpaceSpritePixelShader[0x8];      // +0x148 CPixelShader
+    long             StarCount;                              // +0x150
+    CWideStringData* StarBitmapFilePath_PStringData;         // +0x154 CWideString::PStringData
+    CWideStringData* StarVBFilePath_PStringData;             // +0x158 CWideString::PStringData
+    unsigned char    CloudVector[0x10];                      // +0x15c C2DVector[2]
+    unsigned char    CloudVectorHistory[0x20];               // +0x16c C2DVector[2][2]
+    bool             EnableClouds;                           // +0x18c
+    unsigned char    _pad_0x18d[0x3];                        // +0x18d
+    CDefPointeeBase* PSkyDef_Object;                         // +0x190 CDefPointer<CSkyDef_const_>::Object
 };
 #pragma pack(pop)
 
@@ -75,11 +78,11 @@ FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, BaseBandPixelShader) == 0x138);
 FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, ScreenSpaceSpriteVertexShader) == 0x140);
 FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, ScreenSpaceSpritePixelShader) == 0x148);
 FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarCount) == 0x150);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarBitmapFilePath) == 0x154);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarVBFilePath) == 0x158);
+FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarBitmapFilePath_PStringData) == 0x154);
+FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarVBFilePath_PStringData) == 0x158);
 FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudVector) == 0x15c);
 FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudVectorHistory) == 0x16c);
 FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, EnableClouds) == 0x18c);
-FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, PSkyDef) == 0x190);
+FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, PSkyDef_Object) == 0x190);
 
 #endif // FABLE_ENGINE_CENGINESKYRENDERER_H

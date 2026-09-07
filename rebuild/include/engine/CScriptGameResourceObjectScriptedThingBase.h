@@ -8,16 +8,20 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+
 #pragma pack(push, 1)
 struct CScriptGameResourceObjectScriptedThingBase {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char PImp[0x8];                                 // +0x08 CCountedPointer<CScriptGameResourceObjectScriptedThingBase>
+    void*                                       __vftable;   // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char                               _pad_0x04[0x4]; // +0x04
+    CScriptGameResourceObjectScriptedThingBase* PImp_Data;   // +0x08 CCountedPointer<CScriptGameResourceObjectScriptedThingBase>::Data
+    CCPPointerInfo*                             PImp_Info;   // +0x0c CCountedPointer<CScriptGameResourceObjectScriptedThingBase>::Info
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CScriptGameResourceObjectScriptedThingBase) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CScriptGameResourceObjectScriptedThingBase, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CScriptGameResourceObjectScriptedThingBase, PImp) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CScriptGameResourceObjectScriptedThingBase, PImp_Data) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CScriptGameResourceObjectScriptedThingBase, PImp_Info) == 0xc);
 
 #endif // FABLE_ENGINE_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_H

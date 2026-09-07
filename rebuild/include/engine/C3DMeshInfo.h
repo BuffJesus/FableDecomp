@@ -8,18 +8,20 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CIVCountedPointeeBase;
+
 #pragma pack(push, 1)
 struct C3DMeshInfo {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    void*         f4;                                        // +0x04 retail-only (C3DMeshInfo_PeekPhysicsMesh_00a24a70.cpp)
-    int           idx;                                       // +0x08 retail-only (C3DMeshInfo_PeekPhysicsMesh_00a24a70.cpp)
-    unsigned char MeshData[0x4];                             // +0x0c CIVCountedPointer<C3DMeshInfo::CMeshData>
-    unsigned char BoundingBox[0x18];                         // +0x10 C3DBoundingBox
-    unsigned char BoundingSphere[0x10];                      // +0x28 C3DBoundingSphere
-    float         SafeBoundingRadius;                        // +0x38
-    long          PhysicsMeshIndex;                          // +0x3c
-    float         LODErrors[4];                              // +0x40
-    unsigned long LODDataSizes[4];                           // +0x50
+    void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
+    long                   f4;                               // +0x04 retail-only (previous header)
+    long                   idx;                              // +0x08 retail-only (previous header)
+    CIVCountedPointeeBase* MeshData_Object;                  // +0x0c CIVCountedPointer<C3DMeshInfo::CMeshData>::Object
+    unsigned char          BoundingBox[0x18];                // +0x10 C3DBoundingBox
+    unsigned char          BoundingSphere[0x10];             // +0x28 C3DBoundingSphere
+    float                  SafeBoundingRadius;               // +0x38
+    long                   PhysicsMeshIndex;                 // +0x3c
+    float                  LODErrors[4];                     // +0x40
+    unsigned long          LODDataSizes[4];                  // +0x50
 };
 #pragma pack(pop)
 
@@ -27,7 +29,7 @@ FABLE_STATIC_ASSERT(sizeof(C3DMeshInfo) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, f4) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, idx) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, MeshData) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, MeshData_Object) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, BoundingBox) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, BoundingSphere) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, SafeBoundingRadius) == 0x38);

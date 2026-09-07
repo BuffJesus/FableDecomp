@@ -47,10 +47,10 @@ struct CSpecialAbilitiesLightningSpellDef {
     unsigned char m_faSubBeamDelay[0x10];                    // +0x130 vector<float,std::allocator<float>_>
     unsigned char OnhitEveryNSecs[0x10];                     // +0x140 vector<float,std::allocator<float>_>
     float         CombatMultiplierIncreaseTime;              // +0x150
-    unsigned char InitSound[0x4];                            // +0x154 CDefString
-    unsigned char LoopingSound[0x4];                         // +0x158 CDefString
-    unsigned char EndHeroSound[0x4];                         // +0x15c CDefString
-    unsigned char EndAttackeeSound[0x4];                     // +0x160 CDefString
+    long          InitSound_TablePos;                        // +0x154 CDefString::TablePos
+    long          LoopingSound_TablePos;                     // +0x158 CDefString::TablePos
+    long          EndHeroSound_TablePos;                     // +0x15c CDefString::TablePos
+    long          EndAttackeeSound_TablePos;                 // +0x160 CDefString::TablePos
     float         LightningThemeTransitionInSecs;            // +0x164
     float         LightningThemeTransitionOutSecs;           // +0x168
 };
@@ -79,10 +79,10 @@ FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, m_faSubBeamDeca
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, m_faSubBeamDelay) == 0x130);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, OnhitEveryNSecs) == 0x140);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, CombatMultiplierIncreaseTime) == 0x150);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, InitSound) == 0x154);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, LoopingSound) == 0x158);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, EndHeroSound) == 0x15c);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, EndAttackeeSound) == 0x160);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, InitSound_TablePos) == 0x154);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, LoopingSound_TablePos) == 0x158);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, EndHeroSound_TablePos) == 0x15c);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, EndAttackeeSound_TablePos) == 0x160);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, LightningThemeTransitionInSecs) == 0x164);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesLightningSpellDef, LightningThemeTransitionOutSecs) == 0x168);
 

@@ -18,7 +18,8 @@ struct CThingMapManager {
     unsigned char ActiveThingMaps[0x10];                     // +0x18 CArray<NThingMap::CThingMapManager::CThingMapInfo_*>
     unsigned char ActiveGameMaps[0x10];                      // +0x28 set<long,std::less<long>,std::allocator<long>_>
     long          NoThings;                                  // +0x38
-    unsigned char Dimensions[0x8];                           // +0x3c C2DExtentsI
+    long          Dimensions_X;                              // +0x3c C2DExtentsI::X
+    long          Dimensions_Y;                              // +0x40 C2DExtentsI::Y
 };
 #pragma pack(pop)
 
@@ -29,6 +30,7 @@ FABLE_STATIC_ASSERT(offsetof(CThingMapManager, ThingMaps) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CThingMapManager, ActiveThingMaps) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CThingMapManager, ActiveGameMaps) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CThingMapManager, NoThings) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CThingMapManager, Dimensions) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CThingMapManager, Dimensions_X) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CThingMapManager, Dimensions_Y) == 0x40);
 
 #endif // FABLE_ENGINE_CTHINGMAPMANAGER_H

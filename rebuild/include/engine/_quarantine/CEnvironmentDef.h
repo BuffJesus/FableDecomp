@@ -8,92 +8,94 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CEnvironmentDef {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char _pad_0x28[0x4];                            // +0x28
-    unsigned char _pad_0x2c[0x4];                            // +0x2c
-    unsigned char _pad_0x30[0x4];                            // +0x30
-    unsigned char _pad_0x34[0x4];                            // +0x34
-    unsigned char _pad_0x38[0x4];                            // +0x38
-    unsigned char _pad_0x3c[0x4];                            // +0x3c
-    unsigned char ColourLookupTexture[0x4];                  // +0x40 CCharString
-    long          DiffuseLookupRow;                          // +0x44
-    long          AmbientLookupRow;                          // +0x48
-    long          BacklightLookupRow;                        // +0x4c
-    long          ReflectionLookupRow;                       // +0x50
-    long          MistEffectColourLookupRow;                 // +0x54
-    long          FogColourLookupRow;                        // +0x58
-    long          FogAlphaLookupRow;                         // +0x5c
-    long          SunColourLookupRow;                        // +0x60
-    long          CloudColourLookupRow;                      // +0x64
-    long          MoonColourLookupRow;                       // +0x68
-    long          StarsColourLookupRow;                      // +0x6c
-    long          SunFlareColourLookupRow;                   // +0x70
-    long          LensFlareColourLookupRow;                  // +0x74
-    long          SkyGradientTopLookupRow;                   // +0x78
-    long          SkyGradientTopAlphaLookupRow;              // +0x7c
-    long          SkyGradientBottomLookupRow;                // +0x80
-    long          SkyGradientBottomAlphaLookupRow;           // +0x84
-    long          WaterColourLookupRow;                      // +0x88
-    long          SeaColourLookupRow;                        // +0x8c
-    long          GlowThresholdColourLookupRow;              // +0x90
-    long          GlowBloomColourLookupRow;                  // +0x94
-    long          SunlightAttenuatorColourLookupRow;         // +0x98
-    float         DiffuseClampAngle;                         // +0x9c
-    float         SunlightAttenuatorAngleFadeStart;          // +0xa0
-    float         SunlightAttenuatorAngleFadeEnd;            // +0xa4
-    long          SeaTexture;                                // +0xa8
-    long          SeaRadius;                                 // +0xac
-    long          SeaFlatSectionStart;                       // +0xb0
-    long          SeaFlatSectionEnd;                         // +0xb4
-    float         DayStartTime;                              // +0xb8
-    float         DaySpeed;                                  // +0xbc
-    long          WaterBumpMapPC;                            // +0xc0
-    long          SeaBumpMapPC;                              // +0xc4
-    long          IceBumpMapPC;                              // +0xc8
-    long          IceBumpMap;                                // +0xcc
-    long          IceTexture;                                // +0xd0
-    long          WaterEdgeAlphaMap;                         // +0xd4
-    long          WaterSurfMap;                              // +0xd8
-    long          WaterBumpMap;                              // +0xdc
-    long          WaterBumpMap2;                             // +0xe0
-    long          SeaBumpMap;                                // +0xe4
-    long          SeaBumpMap2;                               // +0xe8
-    long          WaterEnvMapOverlayTexture;                 // +0xec
-    long          MistAlphaGraphic;                          // +0xf0
-    long          MistAlphaGraphicPC;                        // +0xf4
-    long          RainTexture;                               // +0xf8
-    long          RainTexturePC;                             // +0xfc
-    long          SnowTexture;                               // +0x100
-    long          RainSplashParticle;                        // +0x104
-    float         LightningFadeInDuration;                   // +0x108
-    float         LightningFadeOutDuration;                  // +0x10c
-    float         LightningFlashDuration;                    // +0x110
-    float         LightningRainThreshold;                    // +0x114
-    long          LightningTheme;                            // +0x118
-    float         CloudSpeedMultiplier;                      // +0x11c
-    float         CloudMaxSpeed;                             // +0x120
-    float         CloudTextureCoordMultiplier;               // +0x124
-    float         CloudTextureCoordOffset;                   // +0x128
-    float         CloudHeightOffset;                         // +0x12c
-    float         WaterLakeMinimumFlowSpeed;                 // +0x130
-    float         WaterLakeMaximumFlowSpeed;                 // +0x134
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned char    _pad_0x28[0x4];                         // +0x28
+    unsigned char    _pad_0x2c[0x4];                         // +0x2c
+    unsigned char    _pad_0x30[0x4];                         // +0x30
+    unsigned char    _pad_0x34[0x4];                         // +0x34
+    unsigned char    _pad_0x38[0x4];                         // +0x38
+    unsigned char    _pad_0x3c[0x4];                         // +0x3c
+    CCharStringData* ColourLookupTexture_PStringData;        // +0x40 CCharString::PStringData
+    long             DiffuseLookupRow;                       // +0x44
+    long             AmbientLookupRow;                       // +0x48
+    long             BacklightLookupRow;                     // +0x4c
+    long             ReflectionLookupRow;                    // +0x50
+    long             MistEffectColourLookupRow;              // +0x54
+    long             FogColourLookupRow;                     // +0x58
+    long             FogAlphaLookupRow;                      // +0x5c
+    long             SunColourLookupRow;                     // +0x60
+    long             CloudColourLookupRow;                   // +0x64
+    long             MoonColourLookupRow;                    // +0x68
+    long             StarsColourLookupRow;                   // +0x6c
+    long             SunFlareColourLookupRow;                // +0x70
+    long             LensFlareColourLookupRow;               // +0x74
+    long             SkyGradientTopLookupRow;                // +0x78
+    long             SkyGradientTopAlphaLookupRow;           // +0x7c
+    long             SkyGradientBottomLookupRow;             // +0x80
+    long             SkyGradientBottomAlphaLookupRow;        // +0x84
+    long             WaterColourLookupRow;                   // +0x88
+    long             SeaColourLookupRow;                     // +0x8c
+    long             GlowThresholdColourLookupRow;           // +0x90
+    long             GlowBloomColourLookupRow;               // +0x94
+    long             SunlightAttenuatorColourLookupRow;      // +0x98
+    float            DiffuseClampAngle;                      // +0x9c
+    float            SunlightAttenuatorAngleFadeStart;       // +0xa0
+    float            SunlightAttenuatorAngleFadeEnd;         // +0xa4
+    long             SeaTexture;                             // +0xa8
+    long             SeaRadius;                              // +0xac
+    long             SeaFlatSectionStart;                    // +0xb0
+    long             SeaFlatSectionEnd;                      // +0xb4
+    float            DayStartTime;                           // +0xb8
+    float            DaySpeed;                               // +0xbc
+    long             WaterBumpMapPC;                         // +0xc0
+    long             SeaBumpMapPC;                           // +0xc4
+    long             IceBumpMapPC;                           // +0xc8
+    long             IceBumpMap;                             // +0xcc
+    long             IceTexture;                             // +0xd0
+    long             WaterEdgeAlphaMap;                      // +0xd4
+    long             WaterSurfMap;                           // +0xd8
+    long             WaterBumpMap;                           // +0xdc
+    long             WaterBumpMap2;                          // +0xe0
+    long             SeaBumpMap;                             // +0xe4
+    long             SeaBumpMap2;                            // +0xe8
+    long             WaterEnvMapOverlayTexture;              // +0xec
+    long             MistAlphaGraphic;                       // +0xf0
+    long             MistAlphaGraphicPC;                     // +0xf4
+    long             RainTexture;                            // +0xf8
+    long             RainTexturePC;                          // +0xfc
+    long             SnowTexture;                            // +0x100
+    long             RainSplashParticle;                     // +0x104
+    float            LightningFadeInDuration;                // +0x108
+    float            LightningFadeOutDuration;               // +0x10c
+    float            LightningFlashDuration;                 // +0x110
+    float            LightningRainThreshold;                 // +0x114
+    long             LightningTheme;                         // +0x118
+    float            CloudSpeedMultiplier;                   // +0x11c
+    float            CloudMaxSpeed;                          // +0x120
+    float            CloudTextureCoordMultiplier;            // +0x124
+    float            CloudTextureCoordOffset;                // +0x128
+    float            CloudHeightOffset;                      // +0x12c
+    float            WaterLakeMinimumFlowSpeed;              // +0x130
+    float            WaterLakeMaximumFlowSpeed;              // +0x134
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CEnvironmentDef) == 0x138);
 FABLE_STATIC_ASSERT(offsetof(CEnvironmentDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEnvironmentDef, ColourLookupTexture) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CEnvironmentDef, ColourLookupTexture_PStringData) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CEnvironmentDef, DiffuseLookupRow) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CEnvironmentDef, AmbientLookupRow) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CEnvironmentDef, BacklightLookupRow) == 0x4c);

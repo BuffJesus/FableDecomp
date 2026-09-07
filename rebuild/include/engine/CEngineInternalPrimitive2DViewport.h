@@ -8,6 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CGraphicDataBank;
+
 #pragma pack(push, 1)
 struct CEngineInternalPrimitive2DViewport {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -28,7 +30,10 @@ struct CEngineInternalPrimitive2DViewport {
     unsigned char _pad_0x3c[0x4];                            // +0x3c
     unsigned char _pad_0x40[0x4];                            // +0x40
     unsigned char _pad_0x44[0x4];                            // +0x44
-    unsigned char Viewport[0x10];                            // +0x48 C2DBoxF
+    float         Viewport_TLX;                              // +0x48 C2DBoxF::TLX
+    float         Viewport_TLY;                              // +0x4c C2DBoxF::TLY
+    float         Viewport_BRX;                              // +0x50 C2DBoxF::BRX
+    float         Viewport_BRY;                              // +0x54 C2DBoxF::BRY
     float         HorizontalFOV;                             // +0x58
     float         VerticalFOV;                               // +0x5c
     bool          Use2DFOV;                                  // +0x60
@@ -41,7 +46,10 @@ struct CEngineInternalPrimitive2DViewport {
 
 FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitive2DViewport) == 0xa4);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DViewport, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DViewport, Viewport) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DViewport, Viewport_TLX) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DViewport, Viewport_TLY) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DViewport, Viewport_BRX) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DViewport, Viewport_BRY) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DViewport, HorizontalFOV) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DViewport, VerticalFOV) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitive2DViewport, Use2DFOV) == 0x60);

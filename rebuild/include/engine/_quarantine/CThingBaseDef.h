@@ -25,8 +25,8 @@ struct CThingBaseDef {
     float         MeshHeight;                                // +0x60
     float         MeshRadius;                                // +0x64
     float         ApproxMaxMeshHeight;                       // +0x68
-    unsigned char DefaultScriptName[0x4];                    // +0x6c CDefString
-    unsigned char DefaultScriptData[0x4];                    // +0x70 CDefString
+    long          DefaultScriptName_TablePos;                // +0x6c CDefString::TablePos
+    long          DefaultScriptData_TablePos;                // +0x70 CDefString::TablePos
 };
 #pragma pack(pop)
 
@@ -45,7 +45,7 @@ FABLE_STATIC_ASSERT(offsetof(CThingBaseDef, MeshHeightOffset) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CThingBaseDef, MeshHeight) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CThingBaseDef, MeshRadius) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CThingBaseDef, ApproxMaxMeshHeight) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CThingBaseDef, DefaultScriptName) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(CThingBaseDef, DefaultScriptData) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CThingBaseDef, DefaultScriptName_TablePos) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CThingBaseDef, DefaultScriptData_TablePos) == 0x70);
 
 #endif // FABLE_ENGINE_CTHINGBASEDEF_H

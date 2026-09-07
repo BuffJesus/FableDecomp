@@ -11,7 +11,9 @@
 struct C3DAnimationSequence;
 struct C3DAnimationSequenceData;
 struct C3DVector;
+struct CCPPointerInfo;
 struct CMovableResourceMemoryPool;
+struct CSimpleMemoryPool;
 
 #pragma pack(push, 1)
 struct C3DAnimation2 {
@@ -27,12 +29,15 @@ struct C3DAnimation2 {
     unsigned char               _pad_0x24[0x4];              // +0x24
     unsigned char               _pad_0x28[0x4];              // +0x28
     unsigned char               _pad_0x2c[0x4];              // +0x2c
-    void*                       sub;                         // +0x30 retail-only (global_Sizeof_00a4c1c0.cpp)
-    unsigned char               Allocator[0x8];              // +0x34 CCountedPointer<CSimpleMemoryPool>
+    long                        sub;                         // +0x30 retail-only (previous header)
+    CSimpleMemoryPool*          Allocator_Data;              // +0x34 CCountedPointer<CSimpleMemoryPool>::Data
+    CCPPointerInfo*             Allocator_Info;              // +0x38 CCountedPointer<CSimpleMemoryPool>::Info
     CMovableResourceMemoryPool* MemoryPool;                  // +0x3c
     long                        MemoryHandle;                // +0x40
-    unsigned char               MovementTrack[0x8];          // +0x44 CCountedPointer<C3DAnimationSequence>
-    unsigned char               MovementTrackData[0x8];      // +0x4c CCountedPointer<C3DAnimationSequenceData>
+    C3DAnimationSequence*       MovementTrack_Data;          // +0x44 CCountedPointer<C3DAnimationSequence>::Data
+    CCPPointerInfo*             MovementTrack_Info;          // +0x48 CCountedPointer<C3DAnimationSequence>::Info
+    C3DAnimationSequenceData*   MovementTrackData_Data;      // +0x4c CCountedPointer<C3DAnimationSequenceData>::Data
+    CCPPointerInfo*             MovementTrackData_Info;      // +0x50 CCountedPointer<C3DAnimationSequenceData>::Info
     float                       SamplesPerSecond;            // +0x54
     unsigned long               FrameCount;                  // +0x58
     unsigned long               SequenceCount;               // +0x5c
@@ -52,11 +57,14 @@ struct C3DAnimation2 {
 FABLE_STATIC_ASSERT(sizeof(C3DAnimation2) == 0x88);
 FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, sub) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, Allocator) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, Allocator_Data) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, Allocator_Info) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, MemoryPool) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, MemoryHandle) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, MovementTrack) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, MovementTrackData) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, MovementTrack_Data) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, MovementTrack_Info) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, MovementTrackData_Data) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, MovementTrackData_Info) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, SamplesPerSecond) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, FrameCount) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(C3DAnimation2, SequenceCount) == 0x5c);

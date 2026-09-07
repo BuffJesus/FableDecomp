@@ -8,15 +8,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CCreatureActionBase;
+
 #pragma pack(push, 1)
 struct CActionDoCreatureAction {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    long          ActionID;                                  // +0x0c
-    bool          ActionSet;                                 // +0x10
-    unsigned char _pad_0x11[0x3];                            // +0x11
-    unsigned char Action[0x8];                               // +0x14 CCountedPointer<CCreatureActionBase>
+    void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char        _pad_0x04[0x4];                     // +0x04
+    unsigned char        _pad_0x08[0x4];                     // +0x08
+    long                 ActionID;                           // +0x0c
+    bool                 ActionSet;                          // +0x10
+    unsigned char        _pad_0x11[0x3];                     // +0x11
+    CCreatureActionBase* Action_Data;                        // +0x14 CCountedPointer<CCreatureActionBase>::Data
+    CCPPointerInfo*      Action_Info;                        // +0x18 CCountedPointer<CCreatureActionBase>::Info
 };
 #pragma pack(pop)
 
@@ -24,6 +28,7 @@ FABLE_STATIC_ASSERT(sizeof(CActionDoCreatureAction) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CActionDoCreatureAction, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CActionDoCreatureAction, ActionID) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CActionDoCreatureAction, ActionSet) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CActionDoCreatureAction, Action) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CActionDoCreatureAction, Action_Data) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CActionDoCreatureAction, Action_Info) == 0x18);
 
 #endif // FABLE_ENGINE_CACTIONDOCREATUREACTION_H

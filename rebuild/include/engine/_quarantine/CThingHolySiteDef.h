@@ -39,7 +39,11 @@ struct CThingHolySiteDef {
     unsigned char _pad_0x68[0x4];                            // +0x68
     unsigned char _pad_0x6c[0x4];                            // +0x6c
     unsigned char _pad_0x70[0x4];                            // +0x70
-    unsigned char Graphic[0xe];                              // +0x74 CEngineGraphic
+    unsigned long Graphic_BankIndex;                         // +0x74 CEngineGraphic::BankIndex
+    float         Graphic_AnimStep;                          // +0x78 CEngineGraphic::AnimStep
+    float         Graphic_RenderSizeX;                       // +0x7c CEngineGraphic::RenderSizeX
+    bool          Graphic_AdditiveAlpha;                     // +0x80 CEngineGraphic::AdditiveAlpha
+    unsigned char Graphic_Type;                              // +0x81 CEngineGraphic::Type
     bool          PlayerStart;                               // +0x82
     unsigned char _pad_0x83[0x1];                            // +0x83
 };
@@ -47,7 +51,11 @@ struct CThingHolySiteDef {
 
 FABLE_STATIC_ASSERT(sizeof(CThingHolySiteDef) == 0x84);
 FABLE_STATIC_ASSERT(offsetof(CThingHolySiteDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CThingHolySiteDef, Graphic) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CThingHolySiteDef, Graphic_BankIndex) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CThingHolySiteDef, Graphic_AnimStep) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(CThingHolySiteDef, Graphic_RenderSizeX) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CThingHolySiteDef, Graphic_AdditiveAlpha) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CThingHolySiteDef, Graphic_Type) == 0x81);
 FABLE_STATIC_ASSERT(offsetof(CThingHolySiteDef, PlayerStart) == 0x82);
 
 #endif // FABLE_ENGINE_CTHINGHOLYSITEDEF_H

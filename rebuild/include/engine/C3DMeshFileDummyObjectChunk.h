@@ -29,7 +29,9 @@ struct C3DMeshFileDummyObjectChunk {
     unsigned char _pad_0x40[0x4];                            // +0x40
     unsigned char _pad_0x44[0x4];                            // +0x44
     unsigned char _pad_0x48[0x4];                            // +0x48
-    unsigned char Direction[0xc];                            // +0x4c C3DVector
+    float         Direction_X;                               // +0x4c C3DVector::X
+    float         Direction_Y;                               // +0x50 C3DVector::Y
+    float         Direction_Z;                               // +0x54 C3DVector::Z
     unsigned char Transform[0x30];                           // +0x58 CMatrix3x4
     bool          UseLocalOrigin;                            // +0x88
     unsigned char _pad_0x89[0x3];                            // +0x89
@@ -38,7 +40,9 @@ struct C3DMeshFileDummyObjectChunk {
 
 FABLE_STATIC_ASSERT(sizeof(C3DMeshFileDummyObjectChunk) == 0x8c);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, Direction) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, Direction_X) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, Direction_Y) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, Direction_Z) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, Transform) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshFileDummyObjectChunk, UseLocalOrigin) == 0x88);
 

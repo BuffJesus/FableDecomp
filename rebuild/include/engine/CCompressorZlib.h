@@ -8,27 +8,57 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct _func___cdecl_void_ptr_void_ptr_uint_uint;
+struct _func___cdecl_void_void_ptr_void_ptr;
+struct internal_state;
+
 #pragma pack(push, 1)
 struct CCompressorZlib {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char Stream[0x38];                              // +0x20 z_stream_s
-    bool          ZlibInitialised;                           // +0x58
-    bool          Compressing;                               // +0x59
-    bool          ErrorFlag;                                 // +0x5a
-    unsigned char _pad_0x5b[0x1];                            // +0x5b
+    void*                                      __vftable;    // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char                              _pad_0x04[0x4]; // +0x04
+    unsigned char                              _pad_0x08[0x4]; // +0x08
+    unsigned char                              _pad_0x0c[0x4]; // +0x0c
+    unsigned char                              _pad_0x10[0x4]; // +0x10
+    unsigned char                              _pad_0x14[0x4]; // +0x14
+    unsigned char                              _pad_0x18[0x4]; // +0x18
+    unsigned char                              _pad_0x1c[0x4]; // +0x1c
+    void*                                      Stream_next_in; // +0x20 z_stream_s::next_in
+    unsigned int                               Stream_avail_in; // +0x24 z_stream_s::avail_in
+    unsigned long                              Stream_total_in; // +0x28 z_stream_s::total_in
+    void*                                      Stream_next_out; // +0x2c z_stream_s::next_out
+    unsigned int                               Stream_avail_out; // +0x30 z_stream_s::avail_out
+    unsigned long                              Stream_total_out; // +0x34 z_stream_s::total_out
+    void*                                      Stream_msg;   // +0x38 z_stream_s::msg
+    internal_state*                            Stream_state; // +0x3c z_stream_s::state
+    _func___cdecl_void_ptr_void_ptr_uint_uint* Stream_zalloc; // +0x40 z_stream_s::zalloc
+    _func___cdecl_void_void_ptr_void_ptr*      Stream_zfree; // +0x44 z_stream_s::zfree
+    void*                                      Stream_opaque; // +0x48 z_stream_s::opaque
+    int                                        Stream_data_type; // +0x4c z_stream_s::data_type
+    unsigned long                              Stream_adler; // +0x50 z_stream_s::adler
+    unsigned long                              Stream_reserved; // +0x54 z_stream_s::reserved
+    bool                                       ZlibInitialised; // +0x58
+    bool                                       Compressing;  // +0x59
+    bool                                       ErrorFlag;    // +0x5a
+    unsigned char                              _pad_0x5b[0x1]; // +0x5b
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCompressorZlib) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_next_in) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_avail_in) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_total_in) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_next_out) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_avail_out) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_total_out) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_msg) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_state) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_zalloc) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_zfree) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_opaque) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_data_type) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_adler) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Stream_reserved) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, ZlibInitialised) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, Compressing) == 0x59);
 FABLE_STATIC_ASSERT(offsetof(CCompressorZlib, ErrorFlag) == 0x5a);

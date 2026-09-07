@@ -11,7 +11,7 @@
 #pragma pack(push, 1)
 struct CAnimComponentCombatHandedness {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    int           f4;                                        // +0x04 retail-only (CAnimComponentCombatHandedness_CloneCAnimComponentCombatHandednessUBEPAVCAnimCo_005db260.cpp)
+    long          f4;                                        // +0x04 retail-only (previous header)
     unsigned char StartHandedness[0x4];                      // +0x08 ECombatAnimationHandedness
     unsigned char EndHandedness[0x4];                        // +0x0c ECombatAnimationHandedness
 };

@@ -8,16 +8,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CAnimComponentStrikeResponseAnim {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char ResponseAnimName[0x4];                     // +0x08 CCharString
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    CCharStringData* ResponseAnimName_PStringData;           // +0x08 CCharString::PStringData
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CAnimComponentStrikeResponseAnim) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CAnimComponentStrikeResponseAnim, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAnimComponentStrikeResponseAnim, ResponseAnimName) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CAnimComponentStrikeResponseAnim, ResponseAnimName_PStringData) == 0x8);
 
 #endif // FABLE_ENGINE_CANIMCOMPONENTSTRIKERESPONSEANIM_H

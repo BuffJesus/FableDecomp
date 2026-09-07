@@ -8,51 +8,53 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
+
 #pragma pack(push, 1)
 struct CTCWillLightning {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char WeaponState[0x4];                          // +0x0c EWEAPON_STATE
-    bool          LeftHandAnim;                              // +0x10
-    unsigned char PItemRemoved[0xb];                         // +0x11 CIntelligentPointer<CThing>
-    long          AIHoldingDownTimer;                        // +0x1c
-    long          PrimaryHandEffect;                         // +0x20
-    long          SecondaryHandEffect;                       // +0x24
-    unsigned char m_lspDef[0x4];                             // +0x28 CDefPointer<CSpecialAbilitiesLightningSpellDef_const_>
-    unsigned char m_tTimer[0x38];                            // +0x2c CWillButtonHelperTimer
-    float         m_fTime;                                   // +0x64
-    float         m_fTimeBase;                               // +0x68
-    unsigned char m_lbBeams[0xc];                            // +0x6c list<CCountedPointer<CTCWillLightning::CLightningBeam>,std::allocator<CCountedPointer<CTCWillLightning::CLightningBeam>_>_>
-    unsigned char m_lsState[0x4];                            // +0x78 ELightningState
-    unsigned char m_cbpPlayer[0x8];                          // +0x7c CIntelligentPointer<CThingCreatureBase>
-    unsigned char m_tpLeftHandEffect[0x8];                   // +0x84 CIntelligentPointer<CThing>
-    unsigned char m_tpRightHandEffect[0x8];                  // +0x8c CIntelligentPointer<CThing>
-    unsigned char PTargetOverride[0x8];                      // +0x94 CIntelligentPointer<CThing>
-    unsigned long InitSound;                                 // +0x9c
-    bool          StartCostingStamina;                       // +0xa0
-    bool          BeamsInitialised;                          // +0xa1
-    unsigned char _pad_0xa2[0x2];                            // +0xa2
-    unsigned long LoopingSound;                              // +0xa4
-    float         m_fAreaEffect;                             // +0xa8
-    float         m_fDamagePerHit;                           // +0xac
-    float         m_fSubBeamDamagePerHit;                    // +0xb0
-    float         m_fActivationTime;                         // +0xb4
-    float         m_fDeActivationTime;                       // +0xb8
-    long          m_nMinMainBeams;                           // +0xbc
-    long          m_nMaxMainBeams;                           // +0xc0
-    long          m_nMinSubBeams;                            // +0xc4
-    long          m_nMaxSubBeams;                            // +0xc8
-    float         m_fTemporaryBeamLife;                      // +0xcc
-    float         m_fTargettingFOV;                          // +0xd0
-    float         m_fStaminaPerSecond;                       // +0xd4
-    float         m_fMainBeamDecapitationTime;               // +0xd8
-    float         m_fSubBeamDecapitationTime;                // +0xdc
-    float         m_fSubBeamDelay;                           // +0xe0
-    bool          m_bPlayedSound;                            // +0xe4
-    unsigned char _pad_0xe5[0x3];                            // +0xe5
-    long          m_OnhitEveryFrame;                         // +0xe8
-    long          m_CombatMultiplierTimer;                   // +0xec
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    WeaponState[0x4];                       // +0x0c EWEAPON_STATE
+    bool             LeftHandAnim;                           // +0x10
+    unsigned char    PItemRemoved[0xb];                      // +0x11 CIntelligentPointer<CThing>
+    long             AIHoldingDownTimer;                     // +0x1c
+    long             PrimaryHandEffect;                      // +0x20
+    long             SecondaryHandEffect;                    // +0x24
+    CDefPointeeBase* m_lspDef_Object;                        // +0x28 CDefPointer<CSpecialAbilitiesLightningSpellDef_const_>::Object
+    unsigned char    m_tTimer[0x38];                         // +0x2c CWillButtonHelperTimer
+    float            m_fTime;                                // +0x64
+    float            m_fTimeBase;                            // +0x68
+    unsigned char    m_lbBeams[0xc];                         // +0x6c list<CCountedPointer<CTCWillLightning::CLightningBeam>,std::allocator<CCountedPointer<CTCWillLightning::CLightningBeam>_>_>
+    unsigned char    m_lsState[0x4];                         // +0x78 ELightningState
+    unsigned char    m_cbpPlayer[0x8];                       // +0x7c CIntelligentPointer<CThingCreatureBase>
+    unsigned char    m_tpLeftHandEffect[0x8];                // +0x84 CIntelligentPointer<CThing>
+    unsigned char    m_tpRightHandEffect[0x8];               // +0x8c CIntelligentPointer<CThing>
+    unsigned char    PTargetOverride[0x8];                   // +0x94 CIntelligentPointer<CThing>
+    unsigned long    InitSound;                              // +0x9c
+    bool             StartCostingStamina;                    // +0xa0
+    bool             BeamsInitialised;                       // +0xa1
+    unsigned char    _pad_0xa2[0x2];                         // +0xa2
+    unsigned long    LoopingSound;                           // +0xa4
+    float            m_fAreaEffect;                          // +0xa8
+    float            m_fDamagePerHit;                        // +0xac
+    float            m_fSubBeamDamagePerHit;                 // +0xb0
+    float            m_fActivationTime;                      // +0xb4
+    float            m_fDeActivationTime;                    // +0xb8
+    long             m_nMinMainBeams;                        // +0xbc
+    long             m_nMaxMainBeams;                        // +0xc0
+    long             m_nMinSubBeams;                         // +0xc4
+    long             m_nMaxSubBeams;                         // +0xc8
+    float            m_fTemporaryBeamLife;                   // +0xcc
+    float            m_fTargettingFOV;                       // +0xd0
+    float            m_fStaminaPerSecond;                    // +0xd4
+    float            m_fMainBeamDecapitationTime;            // +0xd8
+    float            m_fSubBeamDecapitationTime;             // +0xdc
+    float            m_fSubBeamDelay;                        // +0xe0
+    bool             m_bPlayedSound;                         // +0xe4
+    unsigned char    _pad_0xe5[0x3];                         // +0xe5
+    long             m_OnhitEveryFrame;                      // +0xe8
+    long             m_CombatMultiplierTimer;                // +0xec
 };
 #pragma pack(pop)
 
@@ -64,7 +66,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, PItemRemoved) == 0x11);
 FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, AIHoldingDownTimer) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, PrimaryHandEffect) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, SecondaryHandEffect) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_lspDef) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_lspDef_Object) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_tTimer) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fTime) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_fTimeBase) == 0x68);

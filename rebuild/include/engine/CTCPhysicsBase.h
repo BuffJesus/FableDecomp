@@ -8,30 +8,44 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
+
 #pragma pack(push, 1)
 struct CTCPhysicsBase {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    void*         sub;                                       // +0x04 retail-only (CTCPhysicsBase_IsPhysicsMeshTypeCylinder_006b0170.cpp)
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char Position[0xc];                             // +0x0c C3DVector
-    unsigned char OldPosition[0xc];                          // +0x18 C3DVector
-    long          OldPositionLastFrameSet;                   // +0x24
-    unsigned char Velocity[0xc];                             // +0x28 C3DVector
-    float         Radius;                                    // +0x34
-    unsigned char PhysicsDef[0x4];                           // +0x38 CDefPointer<CPhysicsDef_const_>
-    unsigned char OldMoving[0x4];                            // +0x3c bitfield group: bool:1
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    long             sub;                                    // +0x04 retail-only (previous header)
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    float            Position_X;                             // +0x0c C3DVector::X
+    float            Position_Y;                             // +0x10 C3DVector::Y
+    float            Position_Z;                             // +0x14 C3DVector::Z
+    float            OldPosition_X;                          // +0x18 C3DVector::X
+    float            OldPosition_Y;                          // +0x1c C3DVector::Y
+    float            OldPosition_Z;                          // +0x20 C3DVector::Z
+    long             OldPositionLastFrameSet;                // +0x24
+    float            Velocity_X;                             // +0x28 C3DVector::X
+    float            Velocity_Y;                             // +0x2c C3DVector::Y
+    float            Velocity_Z;                             // +0x30 C3DVector::Z
+    float            Radius;                                 // +0x34
+    CDefPointeeBase* PhysicsDef_Object;                      // +0x38 CDefPointer<CPhysicsDef_const_>::Object
+    unsigned char    OldMoving[0x4];                         // +0x3c bitfield group: bool:1
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CTCPhysicsBase) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, sub) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, Position) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, OldPosition) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, Position_X) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, Position_Y) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, Position_Z) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, OldPosition_X) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, OldPosition_Y) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, OldPosition_Z) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, OldPositionLastFrameSet) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, Velocity) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, Velocity_X) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, Velocity_Y) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, Velocity_Z) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, Radius) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, PhysicsDef) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, PhysicsDef_Object) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, OldMoving) == 0x3c);
 
 #endif // FABLE_ENGINE_CTCPHYSICSBASE_H

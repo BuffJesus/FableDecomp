@@ -1,8 +1,9 @@
-// CGameScriptInterface::PreloadNewScene  @ 0x00890b70
+// CGameScriptInterface_Methods::PreloadNewScene  @ 0x00890b70
 // Reads a global manager, hops two pointers to reach a scene object,
 // then makes a virtual call (vtable slot 0xdc/4 = 55) with args (4, param).
 // this = the scene object (passed in ecx).
 
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct SceneTarget
 {
     virtual void v00();
@@ -78,12 +79,11 @@ struct SceneRootHolder
 // The global manager pointer at 0x013b86a0.
 extern SceneRootHolder* g_sceneRoot;
 
-struct CGameScriptInterface
-{
+struct CGameScriptInterface_Methods : CGameScriptInterface {
     void PreloadNewScene(float param);
 };
 
-void CGameScriptInterface::PreloadNewScene(float param)
+void CGameScriptInterface_Methods::PreloadNewScene(float param)
 {
     SceneTarget* t = g_sceneRoot->mid->target;
     t->PreloadScene(4, param);

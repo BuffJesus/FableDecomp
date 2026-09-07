@@ -1,3 +1,6 @@
-struct M_0049e1b0;
-struct C_0049e1b0 { char pad[0x50]; M_0049e1b0* p; M_0049e1b0& G(); };
-M_0049e1b0& C_0049e1b0::G(){ return *this->p; }
+#include "engine/CWorld.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CThingManager;
+struct CWorld_Methods : CWorld {
+    CThingManager& G();
+};
+CThingManager& CWorld_Methods::G(){ return *this->PThingManager_ptr; }

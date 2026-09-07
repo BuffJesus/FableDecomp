@@ -8,21 +8,25 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CFontBank;
 struct CFontDataBank;
 
 #pragma pack(push, 1)
 struct CFontDataBankEntry {
-    void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char  Font[0x8];                                // +0x04 CCountedPointer<CFontBank>
-    CFontDataBank* Bank;                                     // +0x0c
-    unsigned long  Index;                                    // +0x10
-    unsigned long  DataType;                                 // +0x14
+    void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
+    CFontBank*      Font_Data;                               // +0x04 CCountedPointer<CFontBank>::Data
+    CCPPointerInfo* Font_Info;                               // +0x08 CCountedPointer<CFontBank>::Info
+    CFontDataBank*  Bank;                                    // +0x0c
+    unsigned long   Index;                                   // +0x10
+    unsigned long   DataType;                                // +0x14
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CFontDataBankEntry) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, Font) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, Font_Data) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, Font_Info) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, Bank) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, Index) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CFontDataBankEntry, DataType) == 0x14);

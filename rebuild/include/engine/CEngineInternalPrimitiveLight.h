@@ -28,8 +28,13 @@ struct CEngineInternalPrimitiveLight {
     unsigned char _pad_0x3c[0x4];                            // +0x3c
     unsigned char _pad_0x40[0x4];                            // +0x40
     unsigned char _pad_0x44[0x4];                            // +0x44
-    unsigned char WorldPos[0xc];                             // +0x48 C3DVector
-    unsigned char Colour[0x10];                              // +0x54 CRGBFloatColour
+    float         WorldPos_X;                                // +0x48 C3DVector::X
+    float         WorldPos_Y;                                // +0x4c C3DVector::Y
+    float         WorldPos_Z;                                // +0x50 C3DVector::Z
+    float         Colour_R;                                  // +0x54 CRGBFloatColour::R
+    float         Colour_G;                                  // +0x58 CRGBFloatColour::G
+    float         Colour_B;                                  // +0x5c CRGBFloatColour::B
+    float         Colour_A;                                  // +0x60 CRGBFloatColour::A
     float         Radius;                                    // +0x64
     float         SpotRadius;                                // +0x68
     unsigned long ChannelMask;                               // +0x6c
@@ -38,8 +43,13 @@ struct CEngineInternalPrimitiveLight {
 
 FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveLight) == 0x70);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, WorldPos) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, Colour) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, WorldPos_X) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, WorldPos_Y) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, WorldPos_Z) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, Colour_R) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, Colour_G) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, Colour_B) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, Colour_A) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, Radius) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, SpotRadius) == 0x68);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveLight, ChannelMask) == 0x6c);

@@ -8,6 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
 struct CThingAICreature;
 struct CThingGameObject;
 
@@ -22,7 +23,7 @@ struct CAIStateGroup_ApprenticeHero {
     CThingGameObject* PDummy;                                // +0x18
     long              Action;                                // +0x1c
     CThingAICreature* PracticeOpponent;                      // +0x20
-    unsigned char     Interaction[0x4];                      // +0x24 CCharString
+    CCharStringData*  Interaction_PStringData;               // +0x24 CCharString::PStringData
     long              NumFights;                             // +0x28
     bool              Submissive;                            // +0x2c
     bool              Critical;                              // +0x2d
@@ -36,7 +37,7 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, NextFramePractice) ==
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, PDummy) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, Action) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, PracticeOpponent) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, Interaction) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, Interaction_PStringData) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, NumFights) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, Submissive) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, Critical) == 0x2d);

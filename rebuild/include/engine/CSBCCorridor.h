@@ -17,7 +17,8 @@ struct CSBCCorridor {
     unsigned char _pad_0x10[0x4];                            // +0x10
     unsigned char _pad_0x14[0x4];                            // +0x14
     unsigned char Walls[0xc];                                // +0x18 list<CWall,std::allocator<CWall>_>
-    unsigned char CurrentEndPoint[0x8];                      // +0x24 C2DVector
+    float         CurrentEndPoint_X;                         // +0x24 C2DVector::X
+    float         CurrentEndPoint_Y;                         // +0x28 C2DVector::Y
     float         BestLeft;                                  // +0x2c
     float         BestRight;                                 // +0x30
 };
@@ -26,7 +27,8 @@ struct CSBCCorridor {
 FABLE_STATIC_ASSERT(sizeof(CSBCCorridor) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CSBCCorridor, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CSBCCorridor, Walls) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CSBCCorridor, CurrentEndPoint) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CSBCCorridor, CurrentEndPoint_X) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CSBCCorridor, CurrentEndPoint_Y) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CSBCCorridor, BestLeft) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CSBCCorridor, BestRight) == 0x30);
 

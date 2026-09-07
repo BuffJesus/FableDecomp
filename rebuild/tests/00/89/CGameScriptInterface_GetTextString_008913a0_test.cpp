@@ -1,8 +1,10 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 struct CCharString { const char* p; };
 struct CWideString { const wchar_t* p; };
-struct CGameScriptInterface { char pad[4]; };
+struct CGameScriptInterface_Methods : CGameScriptInterface {
+};
 
 struct Sub { CWideString stored; };
 static Sub g_sub;

@@ -26,22 +26,22 @@ struct CExpressionDef {
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
     unsigned char _pad_0x3c[0x4];                            // +0x3c
-    unsigned char Animation[0x4];                            // +0x40 CDefString
-    unsigned char AnimationInto[0x4];                        // +0x44 CDefString
-    unsigned char AnimationLoop[0x4];                        // +0x48 CDefString
-    unsigned char AnimationOutOf[0x4];                       // +0x4c CDefString
-    unsigned char AnimationToOther[0x4];                     // +0x50 CDefString
-    unsigned char AnimationToOtherInto[0x4];                 // +0x54 CDefString
-    unsigned char AnimationToOtherLoop[0x4];                 // +0x58 CDefString
-    unsigned char AnimationToOtherOutOf[0x4];                // +0x5c CDefString
+    long          Animation_TablePos;                        // +0x40 CDefString::TablePos
+    long          AnimationInto_TablePos;                    // +0x44 CDefString::TablePos
+    long          AnimationLoop_TablePos;                    // +0x48 CDefString::TablePos
+    long          AnimationOutOf_TablePos;                   // +0x4c CDefString::TablePos
+    long          AnimationToOther_TablePos;                 // +0x50 CDefString::TablePos
+    long          AnimationToOtherInto_TablePos;             // +0x54 CDefString::TablePos
+    long          AnimationToOtherLoop_TablePos;             // +0x58 CDefString::TablePos
+    long          AnimationToOtherOutOf_TablePos;            // +0x5c CDefString::TablePos
     float         SpriteDuration;                            // +0x60
     long          SpriteGraphic;                             // +0x64
-    unsigned char SpriteOverrideText[0x4];                   // +0x68 CDefString
-    unsigned char SoundCriteria[0x4];                        // +0x6c CDefString
-    unsigned char LoopSoundCriteria[0x4];                    // +0x70 CDefString
-    unsigned char DummyObject[0x4];                          // +0x74 CDefIndex
+    long          SpriteOverrideText_TablePos;               // +0x68 CDefString::TablePos
+    long          SoundCriteria_TablePos;                    // +0x6c CDefString::TablePos
+    long          LoopSoundCriteria_TablePos;                // +0x70 CDefString::TablePos
+    long          DummyObject_Val;                           // +0x74 CDefIndex::Val
     unsigned char GameEventType[0x4];                        // +0x78 EGameEventType
-    unsigned char ScriptName[0x4];                           // +0x7c CDefString
+    long          ScriptName_TablePos;                       // +0x7c CDefString::TablePos
     bool          ScriptLoadResources;                       // +0x80
     bool          DeactivateScriptAtEnd;                     // +0x81
     bool          PerformAfterScript;                        // +0x82
@@ -58,22 +58,22 @@ struct CExpressionDef {
 
 FABLE_STATIC_ASSERT(sizeof(CExpressionDef) == 0x94);
 FABLE_STATIC_ASSERT(offsetof(CExpressionDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CExpressionDef, Animation) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CExpressionDef, AnimationInto) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CExpressionDef, AnimationLoop) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CExpressionDef, AnimationOutOf) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CExpressionDef, AnimationToOther) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CExpressionDef, AnimationToOtherInto) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CExpressionDef, AnimationToOtherLoop) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CExpressionDef, AnimationToOtherOutOf) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CExpressionDef, Animation_TablePos) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CExpressionDef, AnimationInto_TablePos) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CExpressionDef, AnimationLoop_TablePos) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CExpressionDef, AnimationOutOf_TablePos) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CExpressionDef, AnimationToOther_TablePos) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CExpressionDef, AnimationToOtherInto_TablePos) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CExpressionDef, AnimationToOtherLoop_TablePos) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CExpressionDef, AnimationToOtherOutOf_TablePos) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CExpressionDef, SpriteDuration) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CExpressionDef, SpriteGraphic) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CExpressionDef, SpriteOverrideText) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CExpressionDef, SoundCriteria) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(CExpressionDef, LoopSoundCriteria) == 0x70);
-FABLE_STATIC_ASSERT(offsetof(CExpressionDef, DummyObject) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CExpressionDef, SpriteOverrideText_TablePos) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CExpressionDef, SoundCriteria_TablePos) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CExpressionDef, LoopSoundCriteria_TablePos) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CExpressionDef, DummyObject_Val) == 0x74);
 FABLE_STATIC_ASSERT(offsetof(CExpressionDef, GameEventType) == 0x78);
-FABLE_STATIC_ASSERT(offsetof(CExpressionDef, ScriptName) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CExpressionDef, ScriptName_TablePos) == 0x7c);
 FABLE_STATIC_ASSERT(offsetof(CExpressionDef, ScriptLoadResources) == 0x80);
 FABLE_STATIC_ASSERT(offsetof(CExpressionDef, DeactivateScriptAtEnd) == 0x81);
 FABLE_STATIC_ASSERT(offsetof(CExpressionDef, PerformAfterScript) == 0x82);

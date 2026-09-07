@@ -8,30 +8,37 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct C3DMesh2;
 struct C3DMeshInfo;
+struct CBankFileAsyncData;
+struct CCPPointerInfo;
 
 #pragma pack(push, 1)
 struct C3DMeshLODInfo {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char Mesh[0x8];                                 // +0x1c CCountedPointer<C3DMesh2>
-    unsigned char FileData[0x8];                             // +0x24 CCountedPointer<CBankFileAsyncData>
-    C3DMeshInfo*  MeshInfo;                                  // +0x2c
-    unsigned char LOD;                                       // +0x30
-    bool          UsedMeshStats;                             // +0x31
-    unsigned char _pad_0x32[0x2];                            // +0x32
+    void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char       _pad_0x04[0x4];                      // +0x04
+    unsigned char       _pad_0x08[0x4];                      // +0x08
+    unsigned char       _pad_0x0c[0x4];                      // +0x0c
+    unsigned char       _pad_0x10[0x4];                      // +0x10
+    unsigned char       _pad_0x14[0x4];                      // +0x14
+    unsigned char       _pad_0x18[0x4];                      // +0x18
+    C3DMesh2*           Mesh_Data;                           // +0x1c CCountedPointer<C3DMesh2>::Data
+    CCPPointerInfo*     Mesh_Info;                           // +0x20 CCountedPointer<C3DMesh2>::Info
+    CBankFileAsyncData* FileData_Data;                       // +0x24 CCountedPointer<CBankFileAsyncData>::Data
+    CCPPointerInfo*     FileData_Info;                       // +0x28 CCountedPointer<CBankFileAsyncData>::Info
+    C3DMeshInfo*        MeshInfo;                            // +0x2c
+    unsigned char       LOD;                                 // +0x30
+    bool                UsedMeshStats;                       // +0x31
+    unsigned char       _pad_0x32[0x2];                      // +0x32
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(C3DMeshLODInfo) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshLODInfo, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshLODInfo, Mesh) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshLODInfo, FileData) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshLODInfo, Mesh_Data) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshLODInfo, Mesh_Info) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshLODInfo, FileData_Data) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(C3DMeshLODInfo, FileData_Info) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshLODInfo, MeshInfo) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshLODInfo, LOD) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshLODInfo, UsedMeshStats) == 0x31);

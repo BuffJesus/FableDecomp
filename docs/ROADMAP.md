@@ -7,7 +7,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 
 ## Current focus (2026-09)
 
-- [ ] Typed shared headers: 2026-09-07 `--all-trusted` = 969 compiling headers (244 quarantined); `retype_landed.py --all --apply` retyped 427 landed TUs byte-exact. Next lever = the skip reasons in `rebuild/backlog/retype_log.tsv`: NO_EXACT_MAP 293 (opaque CCountedPointer<T>/composite members), PARITY_CHANGED 108, VIRTUAL_THIS 62 + VTABLE_TYPED 37 (vtable-modelled `this`), PARTIAL_SUB 34 — `tools/decomp_pipeline/`
+- [ ] Typed shared headers: 2026-09-07 `--all-trusted` = 969 compiling headers (244 quarantined); `retype_landed.py --all --apply` (3 passes; smart-pointer members flattened to `Name_Data`/`Name_Info`) retyped 485 landed TUs byte-exact. Next lever = the skip reasons in `rebuild/backlog/retype_log.tsv`: NO_EXACT_MAP 212 (opaque composite members), PARITY_CHANGED 124 (mostly local helper-type renames that no longer compile), VIRTUAL_THIS 54 + VTABLE_TYPED 37 (vtable-modelled `this`), INHERITANCE 29 — `tools/decomp_pipeline/`
 - [x] 2026-09-07 Aeon's 12 new Lua ports ingested (20 packages, 71 scripts; foundation audit 15/18) — `docs/scripts/AEON_LUA_PORTS.md`
 - [ ] Port the 12 FSE 6.9.26 bindings LUAGameflow needs into ForgeFSE-retail-shadow; add package→native-name aliases so the new seeds correlate (8/20 today) — `docs/scripts/AEON_LUA_PORTS.md`
 - [ ] Keep the parity crawl moving from `work/crawl_batch155` (ledger 5,693; catalog 18,631 landed) — `docs/pipeline/FULL_DECOMP.md`
@@ -78,9 +78,9 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 
 ## (e) Engine subsystem RE — `docs/engine/SYSTEMS_ANALYSIS.md`, `docs/engine/CAPABILITY_INDEX.md`
 
-- [x] Nav: quadtree line init/update, multilayer nav, navmesh RE — `NAVMESH_RE.md`, `MULTILAYER_NAV.md`
+- [x] Nav: quadtree line init/update, multilayer nav, navmesh RE — `engine/NAVIGATION.md` (merged from `NAVMESH_RE.md`, `MULTILAYER_NAV.md`)
 - [x] Quest logic is compiled C++ (161-entry allocator table @ `0x00CD52D0`, no VM) — `QUEST_VM_RE.md`, `SCRIPT_VM_MAP.md`
-- [x] Quest cards: display map, body art (3D mesh via `Graphic.modelId`), CUIDefs 8487-8489, empty-card fix — `QUEST_CARD_*.md`
+- [x] Quest cards: display map, body art (3D mesh via `Graphic.modelId`), CUIDefs 8487-8489, empty-card fix — `engine/QUEST_CARDS.md` (merged from `QUEST_CARD_*.md`)
 - [x] Input: Redefine Keys system, controller enums from FableWin.pdb — `REDEFINE_INPUT_SYSTEM.md`, `CONTROLLER_ENUMS.md`
 - [x] Video system, minimap, hero morph, appearance strip, console commands, demon door face — per-doc
 - [x] Terrain: whiteout + render fixes; ForgeTest64 terrain renders in-game (stage33); foliage group-sphere contract recovered (stage46)

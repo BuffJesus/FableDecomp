@@ -17,12 +17,16 @@ struct CAIStateGroup_HoverKeepInArea {
     unsigned char _pad_0x10[0x4];                            // +0x10
     unsigned char _pad_0x14[0x4];                            // +0x14
     unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char StartPos[0xc];                             // +0x1c C3DVector
+    float         StartPos_X;                                // +0x1c C3DVector::X
+    float         StartPos_Y;                                // +0x20 C3DVector::Y
+    float         StartPos_Z;                                // +0x24 C3DVector::Z
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_HoverKeepInArea) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverKeepInArea, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverKeepInArea, StartPos) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverKeepInArea, StartPos_X) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverKeepInArea, StartPos_Y) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_HoverKeepInArea, StartPos_Z) == 0x24);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_HOVERKEEPINAREA_H

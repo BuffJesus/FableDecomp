@@ -11,7 +11,7 @@
 #pragma pack(push, 1)
 struct CTCShotDefinitionProjectile {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    void*         m4;                                        // +0x04 retail-only (CTCShotDefinitionProjectile_UpdateMovement_007bbc47.cpp)
+    long          m4;                                        // +0x04 retail-only (previous header)
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
     unsigned char _pad_0x10[0x4];                            // +0x10

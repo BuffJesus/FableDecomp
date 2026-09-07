@@ -20,7 +20,9 @@ struct CAIStateGroup_ServeFood {
     long          CarriedFoodItems;                          // +0x14
     CThing*       Table;                                     // +0x18
     long          Seat;                                      // +0x1c
-    unsigned char ServePos[0xc];                             // +0x20 C3DVector
+    float         ServePos_X;                                // +0x20 C3DVector::X
+    float         ServePos_Y;                                // +0x24 C3DVector::Y
+    float         ServePos_Z;                                // +0x28 C3DVector::Z
     unsigned char ServeRHSet[0x18];                          // +0x2c CRightHandedSet
     long          ServeActionPoint;                          // +0x44
     unsigned char Mode[0x4];                                 // +0x48 ServingMode
@@ -32,7 +34,9 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, CarriedFoodItems) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, Table) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, Seat) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, ServePos) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, ServePos_X) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, ServePos_Y) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, ServePos_Z) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, ServeRHSet) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, ServeActionPoint) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ServeFood, Mode) == 0x48);

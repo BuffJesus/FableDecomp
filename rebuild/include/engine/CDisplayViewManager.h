@@ -8,13 +8,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CViewBase;
+
 #pragma pack(push, 1)
 struct CDisplayViewManager {
-    unsigned char PCurrentView[0x8];                         // +0x00 CCountedPointer<NDisplayView::CViewBase>
+    CViewBase*      PCurrentView_Data;                       // +0x00 CCountedPointer<NDisplayView::CViewBase>::Data
+    CCPPointerInfo* PCurrentView_Info;                       // +0x04 CCountedPointer<NDisplayView::CViewBase>::Info
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CDisplayViewManager) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CDisplayViewManager, PCurrentView) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CDisplayViewManager, PCurrentView_Data) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CDisplayViewManager, PCurrentView_Info) == 0x4);
 
 #endif // FABLE_ENGINE_CDISPLAYVIEWMANAGER_H

@@ -29,7 +29,10 @@ struct CEngineScreenEffectOutlineGlow {
     unsigned char BlurToBlurVerts[0x60];                     // +0x8c CTVertexColTex1[4]
     unsigned char BlurToBackBufferVerts[0x60];               // +0xec CTVertexColTex1[4]
     unsigned char OldRenderTarget[0x24];                     // +0x14c CRenderTarget
-    unsigned char OldViewport[0x10];                         // +0x170 C2DBoxI
+    long          OldViewport_TLX;                           // +0x170 C2DBoxI::TLX
+    long          OldViewport_TLY;                           // +0x174 C2DBoxI::TLY
+    long          OldViewport_BRX;                           // +0x178 C2DBoxI::BRX
+    long          OldViewport_BRY;                           // +0x17c C2DBoxI::BRY
     unsigned char OutlineToBlurVertexShader[0x8];            // +0x180 CVertexShader
     unsigned char OutlineToBlurPixelShader[0x8];             // +0x188 CPixelShader
     unsigned char BlurToBlurVertexShader[0x8];               // +0x190 CVertexShader
@@ -49,7 +52,7 @@ struct CEngineScreenEffectOutlineGlow {
     long          OverriddenParamsTextureAlphaBias;          // +0x1d4
     long          BlurStepCount;                             // +0x1d8
     float         DepthBufferBias;                           // +0x1dc
-    unsigned char OutlineRenderingCaptureBlock[0x1];         // +0x1e0 CRenderStateCaptureBlock
+    bool          OutlineRenderingCaptureBlock_Open;         // +0x1e0 CRenderStateCaptureBlock::Open
     bool          EnableDrawDebugTextures;                   // +0x1e1
     unsigned char _pad_0x1e2[0x2];                           // +0x1e2
 };
@@ -69,7 +72,10 @@ FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, OutlineToBlurVerts)
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, BlurToBlurVerts) == 0x8c);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, BlurToBackBufferVerts) == 0xec);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, OldRenderTarget) == 0x14c);
-FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, OldViewport) == 0x170);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, OldViewport_TLX) == 0x170);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, OldViewport_TLY) == 0x174);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, OldViewport_BRX) == 0x178);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, OldViewport_BRY) == 0x17c);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, OutlineToBlurVertexShader) == 0x180);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, OutlineToBlurPixelShader) == 0x188);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, BlurToBlurVertexShader) == 0x190);
@@ -88,7 +94,7 @@ FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, OverriddenParamsTex
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, OverriddenParamsTextureAlphaBias) == 0x1d4);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, BlurStepCount) == 0x1d8);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, DepthBufferBias) == 0x1dc);
-FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, OutlineRenderingCaptureBlock) == 0x1e0);
+FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, OutlineRenderingCaptureBlock_Open) == 0x1e0);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectOutlineGlow, EnableDrawDebugTextures) == 0x1e1);
 
 #endif // FABLE_ENGINE_CENGINESCREENEFFECTOUTLINEGLOW_H

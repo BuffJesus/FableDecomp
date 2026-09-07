@@ -8,9 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
 struct CComponent;
 struct CDefinitionManager;
+struct CGraphicDataBank;
 struct CInputManager;
+struct CMeshDataBank;
 struct CTCHeroExperience;
 struct CTCInventory;
 struct CTCInventoryAbilities;
@@ -32,8 +35,10 @@ struct CManager {
     unsigned char           _pad_0x14[0x4];                  // +0x14
     unsigned char           _pad_0x18[0x4];                  // +0x18
     unsigned char           _pad_0x1c[0x4];                  // +0x1c
-    unsigned char           PGraphicsBank[0x8];              // +0x20 CCountedPointer<CGraphicDataBank>
-    unsigned char           PMeshBank[0x8];                  // +0x28 CCountedPointer<CMeshDataBank>
+    CGraphicDataBank*       PGraphicsBank_Data;              // +0x20 CCountedPointer<CGraphicDataBank>::Data
+    CCPPointerInfo*         PGraphicsBank_Info;              // +0x24 CCountedPointer<CGraphicDataBank>::Info
+    CMeshDataBank*          PMeshBank_Data;                  // +0x28 CCountedPointer<CMeshDataBank>::Data
+    CCPPointerInfo*         PMeshBank_Info;                  // +0x2c CCountedPointer<CMeshDataBank>::Info
     CInputManager*          PInputManager;                   // +0x30
     unsigned char           Keys[0x10];                      // +0x34 map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
     unsigned char           InputType[0x4];                  // +0x44 EInputType
@@ -54,16 +59,19 @@ struct CManager {
     unsigned char           Change[0x4];                     // +0x90 EChange
     unsigned char           Layers[0x10];                    // +0x94 map<long,EEngine2DLayer,std::less<long>,std::allocator<std::pair<long_const_,EEngine2DLayer>_>_>
     long                    MetaLayer;                       // +0xa4
-    unsigned char           BastardChild[0x8];               // +0xa8 CCountedPointer<NUISystem::CComponent>
+    CComponent*             BastardChild_Data;               // +0xa8 CCountedPointer<NUISystem::CComponent>::Data
+    CCPPointerInfo*         BastardChild_Info;               // +0xac CCountedPointer<NUISystem::CComponent>::Info
     unsigned char           BastardChildren[0x10];           // +0xb0 map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_>
-    unsigned char           RightStickForce[0x8];            // +0xc0 C2DVector
+    float                   RightStickForce_X;               // +0xc0 C2DVector::X
+    float                   RightStickForce_Y;               // +0xc4 C2DVector::Y
     bool                    m_bHasErrorMessage;              // +0xc8
     unsigned char           _pad_0xc9[0x3];                  // +0xc9
     CComponent*             m_pErrorMessage;                 // +0xcc
     bool                    Restoring;                       // +0xd0
     unsigned char           _pad_0xd1[0x7];                  // +0xd1
     double                  m_fLastRenderTime;               // +0xd8
-    unsigned char           MouseMovement[0x8];              // +0xe0 C2DVector
+    float                   MouseMovement_X;                 // +0xe0 C2DVector::X
+    float                   MouseMovement_Y;                 // +0xe4 C2DVector::Y
     CComponent*             PMouseCursor;                    // +0xe8
     CComponent*             PDropped;                        // +0xec
     wchar_t                 KeyPressed;                      // +0xf0
@@ -79,8 +87,10 @@ struct CManager {
 
 FABLE_STATIC_ASSERT(sizeof(CManager) == 0x100);
 FABLE_STATIC_ASSERT(offsetof(CManager, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CManager, PGraphicsBank) == 0x20);
-FABLE_STATIC_ASSERT(offsetof(CManager, PMeshBank) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CManager, PGraphicsBank_Data) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CManager, PGraphicsBank_Info) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CManager, PMeshBank_Data) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CManager, PMeshBank_Info) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CManager, PInputManager) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CManager, Keys) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CManager, InputType) == 0x44);
@@ -101,14 +111,17 @@ FABLE_STATIC_ASSERT(offsetof(CManager, NumberAugmentations) == 0x8c);
 FABLE_STATIC_ASSERT(offsetof(CManager, Change) == 0x90);
 FABLE_STATIC_ASSERT(offsetof(CManager, Layers) == 0x94);
 FABLE_STATIC_ASSERT(offsetof(CManager, MetaLayer) == 0xa4);
-FABLE_STATIC_ASSERT(offsetof(CManager, BastardChild) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CManager, BastardChild_Data) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CManager, BastardChild_Info) == 0xac);
 FABLE_STATIC_ASSERT(offsetof(CManager, BastardChildren) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CManager, RightStickForce) == 0xc0);
+FABLE_STATIC_ASSERT(offsetof(CManager, RightStickForce_X) == 0xc0);
+FABLE_STATIC_ASSERT(offsetof(CManager, RightStickForce_Y) == 0xc4);
 FABLE_STATIC_ASSERT(offsetof(CManager, m_bHasErrorMessage) == 0xc8);
 FABLE_STATIC_ASSERT(offsetof(CManager, m_pErrorMessage) == 0xcc);
 FABLE_STATIC_ASSERT(offsetof(CManager, Restoring) == 0xd0);
 FABLE_STATIC_ASSERT(offsetof(CManager, m_fLastRenderTime) == 0xd8);
-FABLE_STATIC_ASSERT(offsetof(CManager, MouseMovement) == 0xe0);
+FABLE_STATIC_ASSERT(offsetof(CManager, MouseMovement_X) == 0xe0);
+FABLE_STATIC_ASSERT(offsetof(CManager, MouseMovement_Y) == 0xe4);
 FABLE_STATIC_ASSERT(offsetof(CManager, PMouseCursor) == 0xe8);
 FABLE_STATIC_ASSERT(offsetof(CManager, PDropped) == 0xec);
 FABLE_STATIC_ASSERT(offsetof(CManager, KeyPressed) == 0xf0);

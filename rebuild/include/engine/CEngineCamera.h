@@ -37,7 +37,9 @@ struct CEngineCamera {
     unsigned char NoScaleViewTransform[0x30];                // +0x114 CMatrix3x4
     unsigned char InverseNoScaleViewTransform[0x30];         // +0x144 CMatrix3x4
     unsigned char ProjectionTransform[0x40];                 // +0x174 CMatrix4x4
-    unsigned char LookVector[0xc];                           // +0x1b4 C3DVector
+    float         LookVector_X;                              // +0x1b4 C3DVector::X
+    float         LookVector_Y;                              // +0x1b8 C3DVector::Y
+    float         LookVector_Z;                              // +0x1bc C3DVector::Z
     unsigned char FrustrumPlanes[0x40];                      // +0x1c0 CPlane[4]
     long          ConsoleOverrideViewPortWidth;              // +0x200
     long          ConsoleOverrideViewPortHeight;             // +0x204
@@ -72,7 +74,9 @@ FABLE_STATIC_ASSERT(offsetof(CEngineCamera, InverseViewTransform) == 0xe4);
 FABLE_STATIC_ASSERT(offsetof(CEngineCamera, NoScaleViewTransform) == 0x114);
 FABLE_STATIC_ASSERT(offsetof(CEngineCamera, InverseNoScaleViewTransform) == 0x144);
 FABLE_STATIC_ASSERT(offsetof(CEngineCamera, ProjectionTransform) == 0x174);
-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, LookVector) == 0x1b4);
+FABLE_STATIC_ASSERT(offsetof(CEngineCamera, LookVector_X) == 0x1b4);
+FABLE_STATIC_ASSERT(offsetof(CEngineCamera, LookVector_Y) == 0x1b8);
+FABLE_STATIC_ASSERT(offsetof(CEngineCamera, LookVector_Z) == 0x1bc);
 FABLE_STATIC_ASSERT(offsetof(CEngineCamera, FrustrumPlanes) == 0x1c0);
 FABLE_STATIC_ASSERT(offsetof(CEngineCamera, ConsoleOverrideViewPortWidth) == 0x200);
 FABLE_STATIC_ASSERT(offsetof(CEngineCamera, ConsoleOverrideViewPortHeight) == 0x204);

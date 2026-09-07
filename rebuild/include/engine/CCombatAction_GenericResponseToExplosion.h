@@ -86,8 +86,12 @@ struct CCombatAction_GenericResponseToExplosion {
     unsigned char _pad_0x124[0x4];                           // +0x124
     unsigned char _pad_0x128[0x4];                           // +0x128
     unsigned char PExplosion[0x8];                           // +0x12c CIntelligentPointer<CThing>
-    unsigned char PointOfHit[0xc];                           // +0x134 C3DVector
-    unsigned char HitDir[0xc];                               // +0x140 C3DVector
+    float         PointOfHit_X;                              // +0x134 C3DVector::X
+    float         PointOfHit_Y;                              // +0x138 C3DVector::Y
+    float         PointOfHit_Z;                              // +0x13c C3DVector::Z
+    float         HitDir_X;                                  // +0x140 C3DVector::X
+    float         HitDir_Y;                                  // +0x144 C3DVector::Y
+    float         HitDir_Z;                                  // +0x148 C3DVector::Z
     bool          FlipFacing;                                // +0x14c
     unsigned char _pad_0x14d[0x3];                           // +0x14d
 };
@@ -96,8 +100,12 @@ struct CCombatAction_GenericResponseToExplosion {
 FABLE_STATIC_ASSERT(sizeof(CCombatAction_GenericResponseToExplosion) == 0x150);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericResponseToExplosion, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericResponseToExplosion, PExplosion) == 0x12c);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericResponseToExplosion, PointOfHit) == 0x134);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericResponseToExplosion, HitDir) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericResponseToExplosion, PointOfHit_X) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericResponseToExplosion, PointOfHit_Y) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericResponseToExplosion, PointOfHit_Z) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericResponseToExplosion, HitDir_X) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericResponseToExplosion, HitDir_Y) == 0x144);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericResponseToExplosion, HitDir_Z) == 0x148);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericResponseToExplosion, FlipFacing) == 0x14c);
 
 #endif // FABLE_ENGINE_CCOMBATACTION_GENERICRESPONSETOEXPLOSION_H

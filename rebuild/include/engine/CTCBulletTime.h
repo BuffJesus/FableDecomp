@@ -8,19 +8,20 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CDefPointeeBase;
 struct CEnginePrimitive2DSprite;
 
 #pragma pack(push, 1)
 struct CTCBulletTime {
     void*                     __vftable;                     // +0x00 vptr, or first dword of a flattened base subobject
-    void*                     f4;                            // +0x04 retail-only (CTCBulletTime_CancelMove_0079c640.cpp)
-    char                      f54;                           // +0x08 retail-only (CTCBulletTime_CancelMove_0079c640.cpp)
+    long                      f4;                            // +0x04 retail-only (previous header)
+    unsigned char             f54;                           // +0x08 retail-only (previous header)
     unsigned char             _pad_0x09[0x3];                // +0x09
     long                      BulletTimeRemainingTicks;      // +0x0c
     long                      BulletTimeAbilityLevel;        // +0x10
     CEnginePrimitive2DSprite* DisplacementMask;              // +0x14
     unsigned char             DisplacementEffectPrimitive[0x8]; // +0x18 CEnginePrimitiveHandle
-    unsigned char             PDef[0x4];                     // +0x20 CDefPointer<CSpecialAbilitiesBulletTimeDef_const_>
+    CDefPointeeBase*          PDef_Object;                   // +0x20 CDefPointer<CSpecialAbilitiesBulletTimeDef_const_>::Object
     long                      m_nLevel;                      // +0x24
     long                      m_nTimeMultiplier;             // +0x28
     float                     m_fDuration;                   // +0x2c
@@ -45,7 +46,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, BulletTimeRemainingTicks) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, BulletTimeAbilityLevel) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, DisplacementMask) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, DisplacementEffectPrimitive) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, PDef) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, PDef_Object) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, m_nLevel) == 0x24);
 FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, m_nTimeMultiplier) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, m_fDuration) == 0x2c);

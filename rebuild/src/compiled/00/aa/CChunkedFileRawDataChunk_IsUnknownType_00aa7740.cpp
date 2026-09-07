@@ -1,5 +1,8 @@
+#include "engine/CChunkedFileRawDataChunk.h"  // retyped onto the PDB layout; byte parity re-verified
 #include "rebuild_abi.h"
-// CChunkedFileRawDataChunk::IsUnknownType @ 0x00aa7740
+// CChunkedFileRawDataChunk_Methods::IsUnknownType @ 0x00aa7740
 // mov eax,1; ret  -> always true
-struct CChunkedFileRawDataChunk { unsigned long IsUnknownType(); };
-unsigned long CChunkedFileRawDataChunk::IsUnknownType(){ return 1; }
+struct CChunkedFileRawDataChunk_Methods : CChunkedFileRawDataChunk {
+    unsigned long IsUnknownType();
+};
+unsigned long CChunkedFileRawDataChunk_Methods::IsUnknownType(){ return 1; }

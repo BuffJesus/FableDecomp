@@ -15,7 +15,7 @@ struct CLandscapePatchTesselator {
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
     unsigned char _pad_0x10[0x4];                            // +0x10
-    void*         m_begin;                                   // +0x14 retail-only (CLandscapePatchTesselator_GetBridgeVertexBufferSize_00b6c990.cpp)
+    long          m_begin;                                   // +0x14 retail-only (previous header)
     unsigned char BridgeVertexBuffer[0x10];                  // +0x18 CArray<CTVertexLandscapeBackground>
 };
 #pragma pack(pop)

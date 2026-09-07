@@ -19,7 +19,16 @@ struct COptimisedPrimitive {
     long          SegmentCount;                              // +0x54
     unsigned char SegmentSizes[0x10];                        // +0x58 CArray<float>
     unsigned char SubChunksToKeep[0x10];                     // +0x68 CArray<CCountedPointer<CChunkedFileChunk>_>
-    unsigned char Parameters[0x28];                          // +0x78 COptimisationParameters
+    float         Parameters_Scaling;                        // +0x78 COptimisationParameters::Scaling
+    float         Parameters_EdgeWeight;                     // +0x7c COptimisationParameters::EdgeWeight
+    float         Parameters_EdgeCost;                       // +0x80 COptimisationParameters::EdgeCost
+    float         Parameters_GroupWeight;                    // +0x84 COptimisationParameters::GroupWeight
+    float         Parameters_TextureWeight;                  // +0x88 COptimisationParameters::TextureWeight
+    float         Parameters_TexturePenalty;                 // +0x8c COptimisationParameters::TexturePenalty
+    float         Parameters_UnsplitTextureWeight;           // +0x90 COptimisationParameters::UnsplitTextureWeight
+    float         Parameters_UnsplitNormalWeight;            // +0x94 COptimisationParameters::UnsplitNormalWeight
+    float         Parameters_HighPenalty;                    // +0x98 COptimisationParameters::HighPenalty
+    unsigned long Parameters_MaximumBonesPerVertex;          // +0x9c COptimisationParameters::MaximumBonesPerVertex
 };
 #pragma pack(pop)
 
@@ -33,6 +42,15 @@ FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, VertexPairContractions) == 0x4
 FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, SegmentCount) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, SegmentSizes) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, SubChunksToKeep) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_Scaling) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_EdgeWeight) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_EdgeCost) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_GroupWeight) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_TextureWeight) == 0x88);
+FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_TexturePenalty) == 0x8c);
+FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_UnsplitTextureWeight) == 0x90);
+FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_UnsplitNormalWeight) == 0x94);
+FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_HighPenalty) == 0x98);
+FABLE_STATIC_ASSERT(offsetof(COptimisedPrimitive, Parameters_MaximumBonesPerVertex) == 0x9c);
 
 #endif // FABLE_ENGINE_COPTIMISEDPRIMITIVE_H

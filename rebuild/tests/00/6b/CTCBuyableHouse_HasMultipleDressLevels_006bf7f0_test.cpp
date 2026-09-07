@@ -1,15 +1,12 @@
+#include "engine/CTCBuyableHouse.h"
 #include <cstdio>
 
-struct DressData {
+struct CDefPointeeBase {
     char pad0[0x28];
     int* first;
     int* last;
 };
 
-struct CTCBuyableHouse {
-    char pad0[0xc];
-    DressData* dress;
-};
 
 bool __fastcall HasMultipleDressLevels(CTCBuyableHouse* self);
 
@@ -18,15 +15,15 @@ int main()
     int arr[4] = {0,1,2,3};
 
     CTCBuyableHouse h;
-    DressData d;
+    CDefPointeeBase d;
 
     // null dress -> false
-    h.dress = 0;
+    h.PDef_Object = 0;
     bool r0 = HasMultipleDressLevels(&h);
 
     // 0 elements -> false
     d.first = arr; d.last = arr;
-    h.dress = &d;
+    h.PDef_Object = &d;
     bool r1 = HasMultipleDressLevels(&h);
 
     // 1 element -> false

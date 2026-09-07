@@ -85,8 +85,12 @@ struct CCombatAction_ControlledStrafeJump {
     unsigned char _pad_0x120[0x4];                           // +0x120
     unsigned char _pad_0x124[0x4];                           // +0x124
     unsigned char _pad_0x128[0x4];                           // +0x128
-    unsigned char RequiredFacing[0xc];                       // +0x12c C3DVector
-    unsigned char OriginalFacing[0xc];                       // +0x138 C3DVector
+    float         RequiredFacing_X;                          // +0x12c C3DVector::X
+    float         RequiredFacing_Y;                          // +0x130 C3DVector::Y
+    float         RequiredFacing_Z;                          // +0x134 C3DVector::Z
+    float         OriginalFacing_X;                          // +0x138 C3DVector::X
+    float         OriginalFacing_Y;                          // +0x13c C3DVector::Y
+    float         OriginalFacing_Z;                          // +0x140 C3DVector::Z
     bool          AddedRollMode;                             // +0x144
     unsigned char _pad_0x145[0x3];                           // +0x145
 };
@@ -94,8 +98,12 @@ struct CCombatAction_ControlledStrafeJump {
 
 FABLE_STATIC_ASSERT(sizeof(CCombatAction_ControlledStrafeJump) == 0x148);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, RequiredFacing) == 0x12c);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, OriginalFacing) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, RequiredFacing_X) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, RequiredFacing_Y) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, RequiredFacing_Z) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, OriginalFacing_X) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, OriginalFacing_Y) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, OriginalFacing_Z) == 0x140);
 FABLE_STATIC_ASSERT(offsetof(CCombatAction_ControlledStrafeJump, AddedRollMode) == 0x144);
 
 #endif // FABLE_ENGINE_CCOMBATACTION_CONTROLLEDSTRAFEJUMP_H

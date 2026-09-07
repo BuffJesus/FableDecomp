@@ -35,7 +35,8 @@ struct CTavernGameCardBaseDef {
     unsigned char HighlightColourBad[0x4];                   // +0x58 CRGBColour
     float         CardSeparation;                            // +0x5c
     float         TableSeparation;                           // +0x60
-    unsigned char PackOffset[0x8];                           // +0x64 C2DVector
+    float         PackOffset_X;                              // +0x64 C2DVector::X
+    float         PackOffset_Y;                              // +0x68 C2DVector::Y
     unsigned char CardOrders[0x10];                          // +0x6c vector<CCardPositionsDef,std::allocator<CCardPositionsDef>_>
     unsigned char CardPack[0x10];                            // +0x7c vector<CCardDef,std::allocator<CCardDef>_>
 };
@@ -58,7 +59,8 @@ FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, HighlightColourGood) == 0x5
 FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, HighlightColourBad) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, CardSeparation) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, TableSeparation) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, PackOffset) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, PackOffset_X) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, PackOffset_Y) == 0x68);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, CardOrders) == 0x6c);
 FABLE_STATIC_ASSERT(offsetof(CTavernGameCardBaseDef, CardPack) == 0x7c);
 

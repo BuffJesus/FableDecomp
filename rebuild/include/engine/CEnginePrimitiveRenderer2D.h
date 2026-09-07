@@ -8,48 +8,86 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
 struct CEngineInternalPrimitiveBase;
+struct CEnginePrimitive2DViewportManager;
+struct CEnginePrimitiveManager2DAnimatedMeshes;
+struct CEnginePrimitiveManager2DParticleGroup;
+struct CEnginePrimitiveManager2DSprites;
+struct CEnginePrimitiveManager2DStaticMeshes;
 
 #pragma pack(push, 1)
 struct CEnginePrimitiveRenderer2D {
-    void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char                 _pad_0x04[0x4];            // +0x04
-    unsigned char                 _pad_0x08[0x4];            // +0x08
-    unsigned char                 PrimitiveManagers[0x10];   // +0x0c CArray<CCountedPointer<CEnginePrimitiveManager>_>
-    unsigned char                 StaticMesh2DManager[0x8];  // +0x1c CCountedPointer<CEnginePrimitiveManager2DStaticMeshes>
-    unsigned char                 AnimatedMesh2DManager[0x8]; // +0x24 CCountedPointer<CEnginePrimitiveManager2DAnimatedMeshes>
-    unsigned char                 Sprite2DManager[0x8];      // +0x2c CCountedPointer<CEnginePrimitiveManager2DSprites>
-    unsigned char                 Viewport2DManager[0x8];    // +0x34 CCountedPointer<CEnginePrimitive2DViewportManager>
-    unsigned char                 Particle2DManager[0x8];    // +0x3c CCountedPointer<CEnginePrimitiveManager2DParticleGroup>
-    CEngineInternalPrimitiveBase* First2DPrim;               // +0x44
-    CEngineInternalPrimitiveBase* First2DDisplacementPrim;   // +0x48
-    float                         FOV2D;                     // +0x4c
-    unsigned char                 AmbientLightColour[0x10];  // +0x50 CRGBFloatColour
-    unsigned char                 DiffuseLightColour[0x10];  // +0x60 CRGBFloatColour
-    unsigned char                 BackLightColour[0x10];     // +0x70 CRGBFloatColour
-    unsigned char                 LightVector[0xc];          // +0x80 C3DVector
-    float                         Layer2DDistances[83];      // +0x8c
-    float                         Layer2DSortDistances[83];  // +0x1d8
-    bool                          Enable2DLayer[83];         // +0x324
-    unsigned char                 _pad_0x377[0x1];           // +0x377
+    void*                                    __vftable;      // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char                            _pad_0x04[0x4]; // +0x04
+    unsigned char                            _pad_0x08[0x4]; // +0x08
+    unsigned char                            PrimitiveManagers[0x10]; // +0x0c CArray<CCountedPointer<CEnginePrimitiveManager>_>
+    CEnginePrimitiveManager2DStaticMeshes*   StaticMesh2DManager_Data; // +0x1c CCountedPointer<CEnginePrimitiveManager2DStaticMeshes>::Data
+    CCPPointerInfo*                          StaticMesh2DManager_Info; // +0x20 CCountedPointer<CEnginePrimitiveManager2DStaticMeshes>::Info
+    CEnginePrimitiveManager2DAnimatedMeshes* AnimatedMesh2DManager_Data; // +0x24 CCountedPointer<CEnginePrimitiveManager2DAnimatedMeshes>::Data
+    CCPPointerInfo*                          AnimatedMesh2DManager_Info; // +0x28 CCountedPointer<CEnginePrimitiveManager2DAnimatedMeshes>::Info
+    CEnginePrimitiveManager2DSprites*        Sprite2DManager_Data; // +0x2c CCountedPointer<CEnginePrimitiveManager2DSprites>::Data
+    CCPPointerInfo*                          Sprite2DManager_Info; // +0x30 CCountedPointer<CEnginePrimitiveManager2DSprites>::Info
+    CEnginePrimitive2DViewportManager*       Viewport2DManager_Data; // +0x34 CCountedPointer<CEnginePrimitive2DViewportManager>::Data
+    CCPPointerInfo*                          Viewport2DManager_Info; // +0x38 CCountedPointer<CEnginePrimitive2DViewportManager>::Info
+    CEnginePrimitiveManager2DParticleGroup*  Particle2DManager_Data; // +0x3c CCountedPointer<CEnginePrimitiveManager2DParticleGroup>::Data
+    CCPPointerInfo*                          Particle2DManager_Info; // +0x40 CCountedPointer<CEnginePrimitiveManager2DParticleGroup>::Info
+    CEngineInternalPrimitiveBase*            First2DPrim;    // +0x44
+    CEngineInternalPrimitiveBase*            First2DDisplacementPrim; // +0x48
+    float                                    FOV2D;          // +0x4c
+    float                                    AmbientLightColour_R; // +0x50 CRGBFloatColour::R
+    float                                    AmbientLightColour_G; // +0x54 CRGBFloatColour::G
+    float                                    AmbientLightColour_B; // +0x58 CRGBFloatColour::B
+    float                                    AmbientLightColour_A; // +0x5c CRGBFloatColour::A
+    float                                    DiffuseLightColour_R; // +0x60 CRGBFloatColour::R
+    float                                    DiffuseLightColour_G; // +0x64 CRGBFloatColour::G
+    float                                    DiffuseLightColour_B; // +0x68 CRGBFloatColour::B
+    float                                    DiffuseLightColour_A; // +0x6c CRGBFloatColour::A
+    float                                    BackLightColour_R; // +0x70 CRGBFloatColour::R
+    float                                    BackLightColour_G; // +0x74 CRGBFloatColour::G
+    float                                    BackLightColour_B; // +0x78 CRGBFloatColour::B
+    float                                    BackLightColour_A; // +0x7c CRGBFloatColour::A
+    float                                    LightVector_X;  // +0x80 C3DVector::X
+    float                                    LightVector_Y;  // +0x84 C3DVector::Y
+    float                                    LightVector_Z;  // +0x88 C3DVector::Z
+    float                                    Layer2DDistances[83]; // +0x8c
+    float                                    Layer2DSortDistances[83]; // +0x1d8
+    bool                                     Enable2DLayer[83]; // +0x324
+    unsigned char                            _pad_0x377[0x1]; // +0x377
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveRenderer2D) == 0x378);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, PrimitiveManagers) == 0xc);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, StaticMesh2DManager) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, AnimatedMesh2DManager) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, Sprite2DManager) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, Viewport2DManager) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, Particle2DManager) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, StaticMesh2DManager_Data) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, StaticMesh2DManager_Info) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, AnimatedMesh2DManager_Data) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, AnimatedMesh2DManager_Info) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, Sprite2DManager_Data) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, Sprite2DManager_Info) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, Viewport2DManager_Data) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, Viewport2DManager_Info) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, Particle2DManager_Data) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, Particle2DManager_Info) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, First2DPrim) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, First2DDisplacementPrim) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, FOV2D) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, AmbientLightColour) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, DiffuseLightColour) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, BackLightColour) == 0x70);
-FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, LightVector) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, AmbientLightColour_R) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, AmbientLightColour_G) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, AmbientLightColour_B) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, AmbientLightColour_A) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, DiffuseLightColour_R) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, DiffuseLightColour_G) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, DiffuseLightColour_B) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, DiffuseLightColour_A) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, BackLightColour_R) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, BackLightColour_G) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, BackLightColour_B) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, BackLightColour_A) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, LightVector_X) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, LightVector_Y) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, LightVector_Z) == 0x88);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, Layer2DDistances) == 0x8c);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, Layer2DSortDistances) == 0x1d8);
 FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, Enable2DLayer) == 0x324);

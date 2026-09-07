@@ -8,6 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCPPointerInfo;
+struct CDefPointeeBase;
 struct CGraphicDataBank;
 struct CThing;
 
@@ -38,12 +40,14 @@ struct CTCInventoryBase {
     unsigned char     OldIntervalDesc[0x8];                  // +0x64 CPresentationIntervalDesc
     bool              OldIntervalDescInitialised;            // +0x6c
     unsigned char     _pad_0x6d[0x3];                        // +0x6d
-    unsigned char     PDef[0x4];                             // +0x70 CDefPointer<CInventoryDef_const_>
+    CDefPointeeBase*  PDef_Object;                           // +0x70 CDefPointer<CInventoryDef_const_>::Object
     long              GlobalDefIndex;                        // +0x74
     long              SelectedCategoryIndex;                 // +0x78
     CGraphicDataBank* GraphicManager;                        // +0x7c
-    unsigned char     SerialisedItems[0x8];                  // +0x80 CCountedPointer<std::vector<NInventory::CItem,std::allocator<NInventory::CItem>_>_>
-    unsigned char     SerialisedSelectedItems[0x8];          // +0x88 CCountedPointer<std::vector<CCharString,std::allocator<CCharString>_>_>
+    void*             SerialisedItems_Data;                  // +0x80 CCountedPointer<std::vector<NInventory::CItem,std::allocator<NInventory::CItem>_>_>::Data
+    CCPPointerInfo*   SerialisedItems_Info;                  // +0x84 CCountedPointer<std::vector<NInventory::CItem,std::allocator<NInventory::CItem>_>_>::Info
+    void*             SerialisedSelectedItems_Data;          // +0x88 CCountedPointer<std::vector<CCharString,std::allocator<CCharString>_>_>::Data
+    CCPPointerInfo*   SerialisedSelectedItems_Info;          // +0x8c CCountedPointer<std::vector<CCharString,std::allocator<CCharString>_>_>::Info
     bool              Dying;                                 // +0x90
     bool              CategoryMoving;                        // +0x91
     unsigned char     _pad_0x92[0x2];                        // +0x92
@@ -53,7 +57,10 @@ struct CTCInventoryBase {
     unsigned char     MenuDisplayListCategory[0x10];         // +0xac vector<long,std::allocator<long>_>
     unsigned char     ConfiscatedItems[0x10];                // +0xbc vector<NInventory::CItem,std::allocator<NInventory::CItem>_>
     CThing*           pBuildingThing;                        // +0xcc
-    unsigned char     InventoryAnimRenderBox[0x10];          // +0xd0 C2DBoxF
+    float             InventoryAnimRenderBox_TLX;            // +0xd0 C2DBoxF::TLX
+    float             InventoryAnimRenderBox_TLY;            // +0xd4 C2DBoxF::TLY
+    float             InventoryAnimRenderBox_BRX;            // +0xd8 C2DBoxF::BRX
+    float             InventoryAnimRenderBox_BRY;            // +0xdc C2DBoxF::BRY
     unsigned char     InventoryAnimCurrentRHSet[0x18];       // +0xe0 CRightHandedSet
     unsigned char     InventoryAnimLastRHSet[0x18];          // +0xf8 CRightHandedSet
     float             InventoryAnimCurrentXRotationAngle;    // +0x110
@@ -95,12 +102,14 @@ FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, LastRenderTime) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, InventoryOpen) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, OldIntervalDesc) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, OldIntervalDescInitialised) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, PDef) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, PDef_Object) == 0x70);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, GlobalDefIndex) == 0x74);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, SelectedCategoryIndex) == 0x78);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, GraphicManager) == 0x7c);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, SerialisedItems) == 0x80);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, SerialisedSelectedItems) == 0x88);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, SerialisedItems_Data) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, SerialisedItems_Info) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, SerialisedSelectedItems_Data) == 0x88);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, SerialisedSelectedItems_Info) == 0x8c);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, Dying) == 0x90);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, CategoryMoving) == 0x91);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, CategoryMovement) == 0x94);
@@ -109,7 +118,10 @@ FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, MenuDisplayListItem) == 0x9c);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, MenuDisplayListCategory) == 0xac);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, ConfiscatedItems) == 0xbc);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, pBuildingThing) == 0xcc);
-FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, InventoryAnimRenderBox) == 0xd0);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, InventoryAnimRenderBox_TLX) == 0xd0);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, InventoryAnimRenderBox_TLY) == 0xd4);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, InventoryAnimRenderBox_BRX) == 0xd8);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, InventoryAnimRenderBox_BRY) == 0xdc);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, InventoryAnimCurrentRHSet) == 0xe0);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, InventoryAnimLastRHSet) == 0xf8);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, InventoryAnimCurrentXRotationAngle) == 0x110);

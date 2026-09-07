@@ -35,14 +35,26 @@ struct CTCTargetingPlayer {
     unsigned char Targets[0x10];                             // +0x68 vector<NPlayerTargeting::CTargetPoint,std::allocator<NPlayerTargeting::CTargetPoint>_>
     unsigned char RejectedTargetPoints[0x10];                // +0x78 vector<NPlayerTargeting::CTargetPoint,std::allocator<NPlayerTargeting::CTargetPoint>_>
     long          CurrentZTargetIndex;                       // +0x88
-    unsigned char TargetedPos[0xc];                          // +0x8c C3DVector
-    unsigned char OldTargetedPos[0xc];                       // +0x98 C3DVector
-    unsigned char TargetedPosOffset3D[0xc];                  // +0xa4 C3DVector
-    unsigned char OldTargetedPosOffset3D[0xc];               // +0xb0 C3DVector
-    unsigned char TargetedPosOffset[0x8];                    // +0xbc C2DVector
-    unsigned char DeltaTargetedPosOffset[0x8];               // +0xc4 C2DVector
-    unsigned char DesiredTargetedPosOffset[0x8];             // +0xcc C2DVector
-    unsigned char TargetedPosOffsetSecondOrder[0x8];         // +0xd4 C2DVector
+    float         TargetedPos_X;                             // +0x8c C3DVector::X
+    float         TargetedPos_Y;                             // +0x90 C3DVector::Y
+    float         TargetedPos_Z;                             // +0x94 C3DVector::Z
+    float         OldTargetedPos_X;                          // +0x98 C3DVector::X
+    float         OldTargetedPos_Y;                          // +0x9c C3DVector::Y
+    float         OldTargetedPos_Z;                          // +0xa0 C3DVector::Z
+    float         TargetedPosOffset3D_X;                     // +0xa4 C3DVector::X
+    float         TargetedPosOffset3D_Y;                     // +0xa8 C3DVector::Y
+    float         TargetedPosOffset3D_Z;                     // +0xac C3DVector::Z
+    float         OldTargetedPosOffset3D_X;                  // +0xb0 C3DVector::X
+    float         OldTargetedPosOffset3D_Y;                  // +0xb4 C3DVector::Y
+    float         OldTargetedPosOffset3D_Z;                  // +0xb8 C3DVector::Z
+    float         TargetedPosOffset_X;                       // +0xbc C2DVector::X
+    float         TargetedPosOffset_Y;                       // +0xc0 C2DVector::Y
+    float         DeltaTargetedPosOffset_X;                  // +0xc4 C2DVector::X
+    float         DeltaTargetedPosOffset_Y;                  // +0xc8 C2DVector::Y
+    float         DesiredTargetedPosOffset_X;                // +0xcc C2DVector::X
+    float         DesiredTargetedPosOffset_Y;                // +0xd0 C2DVector::Y
+    float         TargetedPosOffsetSecondOrder_X;            // +0xd4 C2DVector::X
+    float         TargetedPosOffsetSecondOrder_Y;            // +0xd8 C2DVector::Y
     unsigned char PLastThreatenedThing[0x8];                 // +0xdc CIntelligentPointer<CThing>
     unsigned char PProjectileTargetedThing[0x8];             // +0xe4 CIntelligentPointer<CThing>
     unsigned char PTargetLockedThing[0x8];                   // +0xec CIntelligentPointer<CThing>
@@ -64,14 +76,26 @@ FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPoint) == 0x4c);
 FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, Targets) == 0x68);
 FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, RejectedTargetPoints) == 0x78);
 FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, CurrentZTargetIndex) == 0x88);
-FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPos) == 0x8c);
-FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, OldTargetedPos) == 0x98);
-FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPosOffset3D) == 0xa4);
-FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, OldTargetedPosOffset3D) == 0xb0);
-FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPosOffset) == 0xbc);
-FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, DeltaTargetedPosOffset) == 0xc4);
-FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, DesiredTargetedPosOffset) == 0xcc);
-FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPosOffsetSecondOrder) == 0xd4);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPos_X) == 0x8c);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPos_Y) == 0x90);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPos_Z) == 0x94);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, OldTargetedPos_X) == 0x98);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, OldTargetedPos_Y) == 0x9c);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, OldTargetedPos_Z) == 0xa0);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPosOffset3D_X) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPosOffset3D_Y) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPosOffset3D_Z) == 0xac);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, OldTargetedPosOffset3D_X) == 0xb0);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, OldTargetedPosOffset3D_Y) == 0xb4);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, OldTargetedPosOffset3D_Z) == 0xb8);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPosOffset_X) == 0xbc);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPosOffset_Y) == 0xc0);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, DeltaTargetedPosOffset_X) == 0xc4);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, DeltaTargetedPosOffset_Y) == 0xc8);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, DesiredTargetedPosOffset_X) == 0xcc);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, DesiredTargetedPosOffset_Y) == 0xd0);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPosOffsetSecondOrder_X) == 0xd4);
+FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, TargetedPosOffsetSecondOrder_Y) == 0xd8);
 FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, PLastThreatenedThing) == 0xdc);
 FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, PProjectileTargetedThing) == 0xe4);
 FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, PTargetLockedThing) == 0xec);

@@ -8,44 +8,46 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CSpecialAbilitiesSummonSpellDef {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char _pad_0x28[0x4];                            // +0x28
-    unsigned char _pad_0x2c[0x4];                            // +0x2c
-    unsigned char _pad_0x30[0x4];                            // +0x30
-    unsigned char _pad_0x34[0x4];                            // +0x34
-    unsigned char _pad_0x38[0x4];                            // +0x38
-    unsigned char _pad_0x3c[0x4];                            // +0x3c
-    unsigned char TimeOfSummon[0x10];                        // +0x40 vector<float,std::allocator<float>_>
-    unsigned char BaseSummonCreatureName[0x4];               // +0x50 CDefString
-    float         FadeInTime;                                // +0x54
-    float         FadeOutTime;                               // +0x58
-    long          ResetCreatureManaCost;                     // +0x5c
-    unsigned char SummonTintColour[0x10];                    // +0x60 vector<long,std::allocator<long>_>
-    unsigned char EyeLeftDummyPointName[0x4];                // +0x70 CCharString
-    unsigned char EyeRightDummyPointName[0x4];               // +0x74 CCharString
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned char    _pad_0x28[0x4];                         // +0x28
+    unsigned char    _pad_0x2c[0x4];                         // +0x2c
+    unsigned char    _pad_0x30[0x4];                         // +0x30
+    unsigned char    _pad_0x34[0x4];                         // +0x34
+    unsigned char    _pad_0x38[0x4];                         // +0x38
+    unsigned char    _pad_0x3c[0x4];                         // +0x3c
+    unsigned char    TimeOfSummon[0x10];                     // +0x40 vector<float,std::allocator<float>_>
+    long             BaseSummonCreatureName_TablePos;        // +0x50 CDefString::TablePos
+    float            FadeInTime;                             // +0x54
+    float            FadeOutTime;                            // +0x58
+    long             ResetCreatureManaCost;                  // +0x5c
+    unsigned char    SummonTintColour[0x10];                 // +0x60 vector<long,std::allocator<long>_>
+    CCharStringData* EyeLeftDummyPointName_PStringData;      // +0x70 CCharString::PStringData
+    CCharStringData* EyeRightDummyPointName_PStringData;     // +0x74 CCharString::PStringData
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CSpecialAbilitiesSummonSpellDef) == 0x78);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesSummonSpellDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesSummonSpellDef, TimeOfSummon) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesSummonSpellDef, BaseSummonCreatureName) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesSummonSpellDef, BaseSummonCreatureName_TablePos) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesSummonSpellDef, FadeInTime) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesSummonSpellDef, FadeOutTime) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesSummonSpellDef, ResetCreatureManaCost) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesSummonSpellDef, SummonTintColour) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesSummonSpellDef, EyeLeftDummyPointName) == 0x70);
-FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesSummonSpellDef, EyeRightDummyPointName) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesSummonSpellDef, EyeLeftDummyPointName_PStringData) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesSummonSpellDef, EyeRightDummyPointName_PStringData) == 0x74);
 
 #endif // FABLE_ENGINE_CSPECIALABILITIESSUMMONSPELLDEF_H

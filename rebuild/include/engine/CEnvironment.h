@@ -8,40 +8,42 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CEnvironmentSpellEffectInterface;
+struct CEnvironmentSpellEffectInterpolator;
 struct CGameDefinitionManager;
 
 #pragma pack(push, 1)
 struct CEnvironment {
-    void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
-    CGameDefinitionManager* DefinitionManager;               // +0x04
-    float                   SunlightAttenuatorAngleFadeStart; // +0x08
-    float                   SunlightAttenuatorAngleFadeEnd;  // +0x0c
-    long                    RegionTheme;                     // +0x10
-    unsigned char           _pad_0x14[0x4];                  // +0x14
-    double                  LightningStartTime;              // +0x18
-    float                   LightningFadeInDuration;         // +0x20
-    float                   LightningFadeOutDuration;        // +0x24
-    float                   LightningFlashDuration;          // +0x28
-    float                   LightningRainThreshold;          // +0x2c
-    long                    LightningTheme;                  // +0x30
-    float                   LightningCurrentFlashChance;     // +0x34
-    unsigned long           LightningRandomSeed;             // +0x38
-    bool                    ForcedColours;                   // +0x3c
-    bool                    ForcedNonColourValues;           // +0x3d
-    bool                    ForcedEnvironmentTheme;          // +0x3e
-    unsigned char           _pad_0x3f[0x1];                  // +0x3f
-    float                   DiffuseClampAngle;               // +0x40
-    bool                    PassedFirstUpdate;               // +0x44
-    bool                    RainEnabled;                     // +0x45
-    unsigned char           _pad_0x46[0x2];                  // +0x46
-    unsigned char           PriorityStackChannels[0x10];     // +0x48 CArray<NEnvironmentInternal::CEnvironmentThemePriorityStack>
-    unsigned char           GameTickState[0xcb0];            // +0x58 CEnvironmentGameTickState
-    unsigned char           PrevGameTickState[0xcb0];        // +0xd08 CEnvironmentGameTickState
-    unsigned char           InterpolatedEnvironmentParams[0xc4]; // +0x19b8 CIDrawEnvironmentParams
-    unsigned char           ThemeSet[0x10];                  // +0x1a7c CEnvironmentThemeResourcePallette
-    unsigned char           SpellEffectInterface[0x4];       // +0x1a8c scoped_ptr<CEnvironmentSpellEffectInterface>
-    unsigned char           SpellEffectInterpolator[0x4];    // +0x1a90 scoped_ptr<CEnvironmentSpellEffectInterpolator>
-    unsigned char           PRainSplashParticle[0xc];        // +0x1a94 CIntelligentPointer<CThing>
+    void*                                __vftable;          // +0x00 vptr, or first dword of a flattened base subobject
+    CGameDefinitionManager*              DefinitionManager;  // +0x04
+    float                                SunlightAttenuatorAngleFadeStart; // +0x08
+    float                                SunlightAttenuatorAngleFadeEnd; // +0x0c
+    long                                 RegionTheme;        // +0x10
+    unsigned char                        _pad_0x14[0x4];     // +0x14
+    double                               LightningStartTime; // +0x18
+    float                                LightningFadeInDuration; // +0x20
+    float                                LightningFadeOutDuration; // +0x24
+    float                                LightningFlashDuration; // +0x28
+    float                                LightningRainThreshold; // +0x2c
+    long                                 LightningTheme;     // +0x30
+    float                                LightningCurrentFlashChance; // +0x34
+    unsigned long                        LightningRandomSeed; // +0x38
+    bool                                 ForcedColours;      // +0x3c
+    bool                                 ForcedNonColourValues; // +0x3d
+    bool                                 ForcedEnvironmentTheme; // +0x3e
+    unsigned char                        _pad_0x3f[0x1];     // +0x3f
+    float                                DiffuseClampAngle;  // +0x40
+    bool                                 PassedFirstUpdate;  // +0x44
+    bool                                 RainEnabled;        // +0x45
+    unsigned char                        _pad_0x46[0x2];     // +0x46
+    unsigned char                        PriorityStackChannels[0x10]; // +0x48 CArray<NEnvironmentInternal::CEnvironmentThemePriorityStack>
+    unsigned char                        GameTickState[0xcb0]; // +0x58 CEnvironmentGameTickState
+    unsigned char                        PrevGameTickState[0xcb0]; // +0xd08 CEnvironmentGameTickState
+    unsigned char                        InterpolatedEnvironmentParams[0xc4]; // +0x19b8 CIDrawEnvironmentParams
+    unsigned char                        ThemeSet[0x10];     // +0x1a7c CEnvironmentThemeResourcePallette
+    CEnvironmentSpellEffectInterface*    SpellEffectInterface_ptr; // +0x1a8c scoped_ptr<CEnvironmentSpellEffectInterface>::ptr
+    CEnvironmentSpellEffectInterpolator* SpellEffectInterpolator_ptr; // +0x1a90 scoped_ptr<CEnvironmentSpellEffectInterpolator>::ptr
+    unsigned char                        PRainSplashParticle[0xc]; // +0x1a94 CIntelligentPointer<CThing>
 };
 #pragma pack(pop)
 
@@ -70,8 +72,8 @@ FABLE_STATIC_ASSERT(offsetof(CEnvironment, GameTickState) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CEnvironment, PrevGameTickState) == 0xd08);
 FABLE_STATIC_ASSERT(offsetof(CEnvironment, InterpolatedEnvironmentParams) == 0x19b8);
 FABLE_STATIC_ASSERT(offsetof(CEnvironment, ThemeSet) == 0x1a7c);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, SpellEffectInterface) == 0x1a8c);
-FABLE_STATIC_ASSERT(offsetof(CEnvironment, SpellEffectInterpolator) == 0x1a90);
+FABLE_STATIC_ASSERT(offsetof(CEnvironment, SpellEffectInterface_ptr) == 0x1a8c);
+FABLE_STATIC_ASSERT(offsetof(CEnvironment, SpellEffectInterpolator_ptr) == 0x1a90);
 FABLE_STATIC_ASSERT(offsetof(CEnvironment, PRainSplashParticle) == 0x1a94);
 
 #endif // FABLE_ENGINE_CENVIRONMENT_H

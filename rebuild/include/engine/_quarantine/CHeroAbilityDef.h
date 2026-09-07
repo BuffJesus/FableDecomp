@@ -31,7 +31,8 @@ struct CHeroAbilityDef {
     long          IconGraphicIndex;                          // +0x48
     long          IconEffectIndex;                           // +0x4c
     long          IconActiveEffectIndex;                     // +0x50
-    unsigned char IconEffectOffset[0x8];                     // +0x54 C2DVector
+    float         IconEffectOffset_X;                        // +0x54 C2DVector::X
+    float         IconEffectOffset_Y;                        // +0x58 C2DVector::Y
     long          Name;                                      // +0x5c
     long          Description;                               // +0x60
     unsigned char LevDescription[0x10];                      // +0x64 vector<long,std::allocator<long>_>
@@ -43,7 +44,7 @@ struct CHeroAbilityDef {
     float         MoralityCostFactor;                        // +0xa0
     bool          Aggressive;                                // +0xa4
     unsigned char _pad_0xa5[0x3];                            // +0xa5
-    unsigned char DummyObject[0x4];                          // +0xa8 CDefIndex
+    long          DummyObject_Val;                           // +0xa8 CDefIndex::Val
 };
 #pragma pack(pop)
 
@@ -54,7 +55,8 @@ FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, Stat) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, IconGraphicIndex) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, IconEffectIndex) == 0x4c);
 FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, IconActiveEffectIndex) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, IconEffectOffset) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, IconEffectOffset_X) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, IconEffectOffset_Y) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, Name) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, Description) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, LevDescription) == 0x64);
@@ -65,6 +67,6 @@ FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, ExperienceCostsToUpgrade) == 0x8c)
 FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, ABXYPriority) == 0x9c);
 FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, MoralityCostFactor) == 0xa0);
 FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, Aggressive) == 0xa4);
-FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, DummyObject) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, DummyObject_Val) == 0xa8);
 
 #endif // FABLE_ENGINE_CHEROABILITYDEF_H

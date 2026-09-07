@@ -31,8 +31,12 @@ struct CEngineSimulationManager {
     float         MaxWindMultiplier;                         // +0x1054
     float         ClothWindFactor;                           // +0x1058
     float         ClothGravityFactor;                        // +0x105c
-    unsigned char GravityVector[0xc];                        // +0x1060 C3DVector
-    unsigned char WindVector[0xc];                           // +0x106c C3DVector
+    float         GravityVector_X;                           // +0x1060 C3DVector::X
+    float         GravityVector_Y;                           // +0x1064 C3DVector::Y
+    float         GravityVector_Z;                           // +0x1068 C3DVector::Z
+    float         WindVector_X;                              // +0x106c C3DVector::X
+    float         WindVector_Y;                              // +0x1070 C3DVector::Y
+    float         WindVector_Z;                              // +0x1074 C3DVector::Z
     float         SimRadius;                                 // +0x1078
     float         SimFadeBegin;                              // +0x107c
     float         Zoom;                                      // +0x1080
@@ -60,8 +64,12 @@ FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, MinWindMultiplier) == 0x1
 FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, MaxWindMultiplier) == 0x1054);
 FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, ClothWindFactor) == 0x1058);
 FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, ClothGravityFactor) == 0x105c);
-FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, GravityVector) == 0x1060);
-FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, WindVector) == 0x106c);
+FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, GravityVector_X) == 0x1060);
+FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, GravityVector_Y) == 0x1064);
+FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, GravityVector_Z) == 0x1068);
+FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, WindVector_X) == 0x106c);
+FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, WindVector_Y) == 0x1070);
+FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, WindVector_Z) == 0x1074);
 FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, SimRadius) == 0x1078);
 FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, SimFadeBegin) == 0x107c);
 FABLE_STATIC_ASSERT(offsetof(CEngineSimulationManager, Zoom) == 0x1080);

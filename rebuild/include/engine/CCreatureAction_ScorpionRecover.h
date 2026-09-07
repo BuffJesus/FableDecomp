@@ -11,7 +11,7 @@
 #pragma pack(push, 1)
 struct CCreatureAction_ScorpionRecover {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    long          m8;                                        // +0x04 retail-only (CCreatureActionScorpionRecover_InitialiseCCreatureActionScorpionRecoverUAEXXZ_008c3ee0.cpp)
+    long          m8;                                        // +0x04 retail-only (previous header)
     unsigned char _pad_0x08[0x124];                          // +0x08
 };
 #pragma pack(pop)

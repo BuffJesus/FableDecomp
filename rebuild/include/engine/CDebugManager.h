@@ -10,33 +10,40 @@
 
 struct CExclusiveAssert;
 struct CSystemManager;
+struct CWideStringData;
 struct HINSTANCE__;
 struct HWND__;
+struct _RTL_CRITICAL_SECTION_DEBUG;
 struct _iobuf;
 
 #pragma pack(push, 1)
 struct CDebugManager {
-    CSystemManager*   SystemManager;                         // +0x00
-    bool              Valid;                                 // +0x04
-    bool              Exclusive;                             // +0x05
-    bool              Verbose;                               // +0x06
-    bool              CanDoVerbose;                          // +0x07
-    unsigned char     DebugManagerCriticalSection[0x18];     // +0x08 _RTL_CRITICAL_SECTION
-    bool              LogMessages;                           // +0x20
-    bool              LogErrors;                             // +0x21
-    unsigned char     _pad_0x22[0x2];                        // +0x22
-    _iobuf*           LogFile;                               // +0x24
-    wchar_t           ProjectDirectory[263];                 // +0x28
-    unsigned char     ErrorDisplayInfo[0x6];                 // +0x236 CErrorDisplayInfo[5]
-    CExclusiveAssert* PExclusiveAssert;                      // +0x23c
-    HINSTANCE__*      WinInstance;                           // +0x240
-    HWND__*           WinHandle;                             // +0x244
-    unsigned char     ErrorsOff[0x10];                       // +0x248 set<unsigned_long,std::less<unsigned_long>,std::allocator<unsigned_long>_>
-    unsigned char     LoggedErrorsOff[0x10];                 // +0x258 set<unsigned_long,std::less<unsigned_long>,std::allocator<unsigned_long>_>
-    long              NoErrorsOff;                           // +0x268
-    unsigned char     ApplicationName[0x4];                  // +0x26c CWideString
-    unsigned char     VerboseMessage[0x4];                   // +0x270 CWideString
-    long              ErrorsInProgress;                      // +0x274
+    CSystemManager*              SystemManager;              // +0x00
+    bool                         Valid;                      // +0x04
+    bool                         Exclusive;                  // +0x05
+    bool                         Verbose;                    // +0x06
+    bool                         CanDoVerbose;               // +0x07
+    _RTL_CRITICAL_SECTION_DEBUG* DebugManagerCriticalSection_DebugInfo; // +0x08 _RTL_CRITICAL_SECTION::DebugInfo
+    long                         DebugManagerCriticalSection_LockCount; // +0x0c _RTL_CRITICAL_SECTION::LockCount
+    long                         DebugManagerCriticalSection_RecursionCount; // +0x10 _RTL_CRITICAL_SECTION::RecursionCount
+    void*                        DebugManagerCriticalSection_OwningThread; // +0x14 _RTL_CRITICAL_SECTION::OwningThread
+    void*                        DebugManagerCriticalSection_LockSemaphore; // +0x18 _RTL_CRITICAL_SECTION::LockSemaphore
+    unsigned long                DebugManagerCriticalSection_SpinCount; // +0x1c _RTL_CRITICAL_SECTION::SpinCount
+    bool                         LogMessages;                // +0x20
+    bool                         LogErrors;                  // +0x21
+    unsigned char                _pad_0x22[0x2];             // +0x22
+    _iobuf*                      LogFile;                    // +0x24
+    wchar_t                      ProjectDirectory[263];      // +0x28
+    unsigned char                ErrorDisplayInfo[0x6];      // +0x236 CErrorDisplayInfo[5]
+    CExclusiveAssert*            PExclusiveAssert;           // +0x23c
+    HINSTANCE__*                 WinInstance;                // +0x240
+    HWND__*                      WinHandle;                  // +0x244
+    unsigned char                ErrorsOff[0x10];            // +0x248 set<unsigned_long,std::less<unsigned_long>,std::allocator<unsigned_long>_>
+    unsigned char                LoggedErrorsOff[0x10];      // +0x258 set<unsigned_long,std::less<unsigned_long>,std::allocator<unsigned_long>_>
+    long                         NoErrorsOff;                // +0x268
+    CWideStringData*             ApplicationName_PStringData; // +0x26c CWideString::PStringData
+    CWideStringData*             VerboseMessage_PStringData; // +0x270 CWideString::PStringData
+    long                         ErrorsInProgress;           // +0x274
 };
 #pragma pack(pop)
 
@@ -46,7 +53,12 @@ FABLE_STATIC_ASSERT(offsetof(CDebugManager, Valid) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CDebugManager, Exclusive) == 0x5);
 FABLE_STATIC_ASSERT(offsetof(CDebugManager, Verbose) == 0x6);
 FABLE_STATIC_ASSERT(offsetof(CDebugManager, CanDoVerbose) == 0x7);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, DebugManagerCriticalSection) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CDebugManager, DebugManagerCriticalSection_DebugInfo) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CDebugManager, DebugManagerCriticalSection_LockCount) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CDebugManager, DebugManagerCriticalSection_RecursionCount) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CDebugManager, DebugManagerCriticalSection_OwningThread) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CDebugManager, DebugManagerCriticalSection_LockSemaphore) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CDebugManager, DebugManagerCriticalSection_SpinCount) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CDebugManager, LogMessages) == 0x20);
 FABLE_STATIC_ASSERT(offsetof(CDebugManager, LogErrors) == 0x21);
 FABLE_STATIC_ASSERT(offsetof(CDebugManager, LogFile) == 0x24);
@@ -58,8 +70,8 @@ FABLE_STATIC_ASSERT(offsetof(CDebugManager, WinHandle) == 0x244);
 FABLE_STATIC_ASSERT(offsetof(CDebugManager, ErrorsOff) == 0x248);
 FABLE_STATIC_ASSERT(offsetof(CDebugManager, LoggedErrorsOff) == 0x258);
 FABLE_STATIC_ASSERT(offsetof(CDebugManager, NoErrorsOff) == 0x268);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, ApplicationName) == 0x26c);
-FABLE_STATIC_ASSERT(offsetof(CDebugManager, VerboseMessage) == 0x270);
+FABLE_STATIC_ASSERT(offsetof(CDebugManager, ApplicationName_PStringData) == 0x26c);
+FABLE_STATIC_ASSERT(offsetof(CDebugManager, VerboseMessage_PStringData) == 0x270);
 FABLE_STATIC_ASSERT(offsetof(CDebugManager, ErrorsInProgress) == 0x274);
 
 #endif // FABLE_ENGINE_CDEBUGMANAGER_H

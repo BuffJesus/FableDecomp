@@ -30,8 +30,10 @@ struct CAbilityButtonGuiDef {
     unsigned char ControllerButton[0x4];                     // +0x44 EXboxControllerButton
     unsigned char MouseButton[0x4];                          // +0x48 EMouseButtonControl
     long          ButtonGraphic;                             // +0x4c
-    unsigned char Position[0x8];                             // +0x50 C2DVector
-    unsigned char Offset[0x8];                               // +0x58 C2DVector
+    float         Position_X;                                // +0x50 C2DVector::X
+    float         Position_Y;                                // +0x54 C2DVector::Y
+    float         Offset_X;                                  // +0x58 C2DVector::X
+    float         Offset_Y;                                  // +0x5c C2DVector::Y
 };
 #pragma pack(pop)
 
@@ -41,7 +43,9 @@ FABLE_STATIC_ASSERT(offsetof(CAbilityButtonGuiDef, ControllerType) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CAbilityButtonGuiDef, ControllerButton) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CAbilityButtonGuiDef, MouseButton) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CAbilityButtonGuiDef, ButtonGraphic) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CAbilityButtonGuiDef, Position) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CAbilityButtonGuiDef, Offset) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CAbilityButtonGuiDef, Position_X) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CAbilityButtonGuiDef, Position_Y) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CAbilityButtonGuiDef, Offset_X) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CAbilityButtonGuiDef, Offset_Y) == 0x5c);
 
 #endif // FABLE_ENGINE_CABILITYBUTTONGUIDEF_H

@@ -21,13 +21,13 @@ struct CSummonableCreatureDef {
     unsigned char _pad_0x20[0x4];                            // +0x20
     unsigned char _pad_0x24[0x4];                            // +0x24
     float         Rank;                                      // +0x28
-    unsigned char SummonedBrain[0x4];                        // +0x2c CDefString
+    long          SummonedBrain_TablePos;                    // +0x2c CDefString::TablePos
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CSummonableCreatureDef) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CSummonableCreatureDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CSummonableCreatureDef, Rank) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CSummonableCreatureDef, SummonedBrain) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CSummonableCreatureDef, SummonedBrain_TablePos) == 0x2c);
 
 #endif // FABLE_ENGINE_CSUMMONABLECREATUREDEF_H

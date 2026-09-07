@@ -37,9 +37,11 @@ struct CThingShotDef {
     float         HitThingShieldDamage;                      // +0x5c
     bool          CauseDamage;                               // +0x60
     unsigned char _pad_0x61[0x3];                            // +0x61
-    unsigned char ShotDefinitionClassName[0x4];              // +0x64 CDefString
-    unsigned char ShotOffsetAngleRange[0x8];                 // +0x68 CFloatRange
-    unsigned char ShotOffsetRadiusRange[0x8];                // +0x70 CFloatRange
+    long          ShotDefinitionClassName_TablePos;          // +0x64 CDefString::TablePos
+    float         ShotOffsetAngleRange_HighValue;            // +0x68 CFloatRange::HighValue
+    float         ShotOffsetAngleRange_LowValue;             // +0x6c CFloatRange::LowValue
+    float         ShotOffsetRadiusRange_HighValue;           // +0x70 CFloatRange::HighValue
+    float         ShotOffsetRadiusRange_LowValue;            // +0x74 CFloatRange::LowValue
     long          ExplosionDef;                              // +0x78
     long          GroundExplosionDef;                        // +0x7c
     long          ObjectDef;                                 // +0x80
@@ -79,9 +81,11 @@ FABLE_STATIC_ASSERT(offsetof(CThingShotDef, UseEndTimeLineOnContinousEffect) == 
 FABLE_STATIC_ASSERT(offsetof(CThingShotDef, HitThingDamage) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CThingShotDef, HitThingShieldDamage) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CThingShotDef, CauseDamage) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CThingShotDef, ShotDefinitionClassName) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CThingShotDef, ShotOffsetAngleRange) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CThingShotDef, ShotOffsetRadiusRange) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CThingShotDef, ShotDefinitionClassName_TablePos) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CThingShotDef, ShotOffsetAngleRange_HighValue) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CThingShotDef, ShotOffsetAngleRange_LowValue) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CThingShotDef, ShotOffsetRadiusRange_HighValue) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CThingShotDef, ShotOffsetRadiusRange_LowValue) == 0x74);
 FABLE_STATIC_ASSERT(offsetof(CThingShotDef, ExplosionDef) == 0x78);
 FABLE_STATIC_ASSERT(offsetof(CThingShotDef, GroundExplosionDef) == 0x7c);
 FABLE_STATIC_ASSERT(offsetof(CThingShotDef, ObjectDef) == 0x80);

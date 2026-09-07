@@ -8,91 +8,97 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CBankFileAsyncData;
+struct CBankFileAsyncEntry;
+struct CCPPointerInfo;
+struct CCharStringData;
 struct CStaticMapBankFile;
 struct CTexture;
 struct CWaterGenerator;
 
 #pragma pack(push, 1)
 struct CEngineWaterRenderer {
-    void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char       _pad_0x04[0x4];                      // +0x04
-    unsigned char       _pad_0x08[0x4];                      // +0x08
-    unsigned char       ForegroundIndexBuffers[0x14];        // +0x0c CIndexBuffer
-    unsigned char       ForegroundTextureIndexBuffers[0x14]; // +0x20 CIndexBuffer
-    unsigned char       ForegroundTextureVertexBuffers[0x34]; // +0x34 CVertexBufferWin32
-    unsigned char       SeaBackgroundIndexBuffer[0x14];      // +0x68 CIndexBuffer
-    unsigned char       SeaBackgroundVertexBuffer[0x34];     // +0x7c CVertexBufferWin32
-    long                SeaBackgroundVertexCount;            // +0xb0
-    long                SeaBackgroundPolyCount;              // +0xb4
-    long                WaterForegroundPolyCount;            // +0xb8
-    unsigned char       SeaBackgroundVertexShader[0x8];      // +0xbc CVertexShader
-    unsigned char       SeaBackgroundPixelShader[0x8];       // +0xc4 CPixelShader
-    unsigned char       SeaForegroundReflectiveVertexShader[0x8]; // +0xcc CVertexShader
-    unsigned char       SeaForegroundReflectivePixelShader[0x8]; // +0xd4 CPixelShader
-    unsigned char       SeaForegroundNonReflectiveVertexShader[0x8]; // +0xdc CVertexShader
-    unsigned char       SeaForegroundNonReflectivePixelShader[0x8]; // +0xe4 CPixelShader
-    unsigned char       ForegroundVertexShader[0x8];         // +0xec CVertexShader
-    unsigned char       ForegroundPixelShader[0x8];          // +0xf4 CPixelShader
-    unsigned char       RefractionForegroundPixelShader[0x8]; // +0xfc CPixelShader
-    unsigned char       BackgroundVertexShader[0x8];         // +0x104 CVertexShader
-    unsigned char       BackgroundPixelShader[0x8];          // +0x10c CPixelShader
-    unsigned char       SeaBackgroundLowEndVertexShader[0x8]; // +0x114 CVertexShader
-    unsigned char       WaterBackgroundLowEndVertexShader[0x8]; // +0x11c CVertexShader
-    unsigned char       WaterLowEndPixelShader[0x8];         // +0x124 CPixelShader
-    unsigned char       IceForegroundVertexShader[0x10];     // +0x12c CArray<CVertexShader>
-    unsigned char       IceForegroundShadowedVertexShader[0x10]; // +0x13c CArray<CVertexShader>
-    unsigned char       IceForegroundColbuffShadowedVertexShader[0x10]; // +0x14c CArray<CVertexShader>
-    unsigned char       IceBackgroundVertexShader[0x8];      // +0x15c CVertexShader
-    unsigned char       IceForegroundPixelShader[0x8];       // +0x164 CPixelShader
-    unsigned char       IceForegroundShadowedPixelShader[0x8]; // +0x16c CPixelShader
-    unsigned char       IceForegroundColbuffShadowedPixelShader[0x8]; // +0x174 CPixelShader
-    unsigned char       IceBackgroundPixelShader[0x8];       // +0x17c CPixelShader
-    unsigned char       BumpmapVertexShader[0x8];            // +0x184 CVertexShader
-    unsigned char       BumpmapPixelShader[0x8];             // +0x18c CPixelShader
-    unsigned char       IceBumpmapVertexShader[0x8];         // +0x194 CVertexShader
-    unsigned char       IceBumpmapPixelShader[0x8];          // +0x19c CPixelShader
-    unsigned char       BumpmapRainVertexShader[0x8];        // +0x1a4 CVertexShader
-    unsigned char       BumpmapRainPixelShader[0x8];         // +0x1ac CPixelShader
-    unsigned char       EnvironmentMapVertexShader[0x8];     // +0x1b4 CVertexShader
-    unsigned char       EnvironmentMapPixelShader[0x8];      // +0x1bc CPixelShader
-    unsigned char       SkyMapVertexShader[0x8];             // +0x1c4 CVertexShader
-    unsigned char       SkyMapPixelShader[0x8];              // +0x1cc CPixelShader
-    unsigned char       EnvMapOverlayVertexShader[0x8];      // +0x1d4 CVertexShader
-    unsigned char       EnvMapOverlayPixelShader[0x8];       // +0x1dc CPixelShader
-    long                DynamicTexturePageHandle;            // +0x1e4
-    long                EnvironmentMapHandle;                // +0x1e8
-    CTexture*           EnvironmentMap;                      // +0x1ec
-    long                SeaBumpMapHandle;                    // +0x1f0
-    CTexture*           SeaBumpMap;                          // +0x1f4
-    long                WaterBumpMapHandle;                  // +0x1f8
-    CTexture*           WaterBumpMap;                        // +0x1fc
-    long                IceBumpMapHandle;                    // +0x200
-    CTexture*           IceBumpMap;                          // +0x204
-    unsigned char       ForegroundRenderList[0x10];          // +0x208 CArray<CWaterPatchMesh_*>
-    unsigned char       BackgroundRenderList[0x10];          // +0x218 CArray<CEngineWaterBackgroundSubPatch_*>
-    unsigned char       AlphaedBackgroundRenderList[0x10];   // +0x228 CArray<CEngineWaterBackgroundSubPatch_*>
-    unsigned char       IceForegroundRenderList[0x10];       // +0x238 CArray<std::pair<C3DBoundingBox,CWaterPatchMesh_*>_>
-    unsigned char       IceBackgroundRenderList[0x10];       // +0x248 CArray<CEngineWaterBackgroundSubPatch_*>
-    unsigned char       IceAlphaedBackgroundRenderList[0x10]; // +0x258 CArray<CEngineWaterBackgroundSubPatch_*>
-    unsigned char       SeaReflectiveForegroundRenderList[0x10]; // +0x268 CArray<CWaterPatchMesh_*>
-    unsigned char       SeaNonReflectiveForegroundRenderList[0x10]; // +0x278 CArray<CWaterPatchMesh_*>
-    unsigned char       SeaMidgroundRenderList[0x10];        // +0x288 CArray<CEngineWaterBackgroundSubPatch_*>
-    unsigned char       SeaAlphaedMidgroundRenderList[0x10]; // +0x298 CArray<CEngineWaterBackgroundSubPatch_*>
-    bool                HighendWaterEnabled;                 // +0x2a8
-    bool                HighendWaterSupported;               // +0x2a9
-    bool                HaveBackgroundSea;                   // +0x2aa
-    unsigned char       _pad_0x2ab[0x1];                     // +0x2ab
-    unsigned char       LoadedOrLoadingSeaBodyID[0x4];       // +0x2ac CCharString
-    unsigned char       RequestedSeaBodyID[0x4];             // +0x2b0 CCharString
-    unsigned char       Settings[0x2e4];                     // +0x2b4 CEngineWaterSettings
-    unsigned char       Tesselator[0x28];                    // +0x598 CWaterPatchTesselatorBase<CTVertexWaterBackground>
-    unsigned char       SeaTesselator[0x28];                 // +0x5c0 CWaterPatchTesselatorBase<CTVertexSeaBackground>
-    CWaterGenerator*    WaterGenerator;                      // +0x5e8
-    CStaticMapBankFile* StaticMapBankFile;                   // +0x5ec
-    unsigned char       StaticMapSeaEntryPrefix[0x4];        // +0x5f0 CCharString
-    unsigned char       LoadingSeaEntry[0x8];                // +0x5f4 CCountedPointer<CBankFileAsyncEntry>
-    unsigned char       LoadingSea[0x8];                     // +0x5fc CCountedPointer<CBankFileAsyncData>
-    float               WaterBumpFactor;                     // +0x604
+    void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char        _pad_0x04[0x4];                     // +0x04
+    unsigned char        _pad_0x08[0x4];                     // +0x08
+    unsigned char        ForegroundIndexBuffers[0x14];       // +0x0c CIndexBuffer
+    unsigned char        ForegroundTextureIndexBuffers[0x14]; // +0x20 CIndexBuffer
+    unsigned char        ForegroundTextureVertexBuffers[0x34]; // +0x34 CVertexBufferWin32
+    unsigned char        SeaBackgroundIndexBuffer[0x14];     // +0x68 CIndexBuffer
+    unsigned char        SeaBackgroundVertexBuffer[0x34];    // +0x7c CVertexBufferWin32
+    long                 SeaBackgroundVertexCount;           // +0xb0
+    long                 SeaBackgroundPolyCount;             // +0xb4
+    long                 WaterForegroundPolyCount;           // +0xb8
+    unsigned char        SeaBackgroundVertexShader[0x8];     // +0xbc CVertexShader
+    unsigned char        SeaBackgroundPixelShader[0x8];      // +0xc4 CPixelShader
+    unsigned char        SeaForegroundReflectiveVertexShader[0x8]; // +0xcc CVertexShader
+    unsigned char        SeaForegroundReflectivePixelShader[0x8]; // +0xd4 CPixelShader
+    unsigned char        SeaForegroundNonReflectiveVertexShader[0x8]; // +0xdc CVertexShader
+    unsigned char        SeaForegroundNonReflectivePixelShader[0x8]; // +0xe4 CPixelShader
+    unsigned char        ForegroundVertexShader[0x8];        // +0xec CVertexShader
+    unsigned char        ForegroundPixelShader[0x8];         // +0xf4 CPixelShader
+    unsigned char        RefractionForegroundPixelShader[0x8]; // +0xfc CPixelShader
+    unsigned char        BackgroundVertexShader[0x8];        // +0x104 CVertexShader
+    unsigned char        BackgroundPixelShader[0x8];         // +0x10c CPixelShader
+    unsigned char        SeaBackgroundLowEndVertexShader[0x8]; // +0x114 CVertexShader
+    unsigned char        WaterBackgroundLowEndVertexShader[0x8]; // +0x11c CVertexShader
+    unsigned char        WaterLowEndPixelShader[0x8];        // +0x124 CPixelShader
+    unsigned char        IceForegroundVertexShader[0x10];    // +0x12c CArray<CVertexShader>
+    unsigned char        IceForegroundShadowedVertexShader[0x10]; // +0x13c CArray<CVertexShader>
+    unsigned char        IceForegroundColbuffShadowedVertexShader[0x10]; // +0x14c CArray<CVertexShader>
+    unsigned char        IceBackgroundVertexShader[0x8];     // +0x15c CVertexShader
+    unsigned char        IceForegroundPixelShader[0x8];      // +0x164 CPixelShader
+    unsigned char        IceForegroundShadowedPixelShader[0x8]; // +0x16c CPixelShader
+    unsigned char        IceForegroundColbuffShadowedPixelShader[0x8]; // +0x174 CPixelShader
+    unsigned char        IceBackgroundPixelShader[0x8];      // +0x17c CPixelShader
+    unsigned char        BumpmapVertexShader[0x8];           // +0x184 CVertexShader
+    unsigned char        BumpmapPixelShader[0x8];            // +0x18c CPixelShader
+    unsigned char        IceBumpmapVertexShader[0x8];        // +0x194 CVertexShader
+    unsigned char        IceBumpmapPixelShader[0x8];         // +0x19c CPixelShader
+    unsigned char        BumpmapRainVertexShader[0x8];       // +0x1a4 CVertexShader
+    unsigned char        BumpmapRainPixelShader[0x8];        // +0x1ac CPixelShader
+    unsigned char        EnvironmentMapVertexShader[0x8];    // +0x1b4 CVertexShader
+    unsigned char        EnvironmentMapPixelShader[0x8];     // +0x1bc CPixelShader
+    unsigned char        SkyMapVertexShader[0x8];            // +0x1c4 CVertexShader
+    unsigned char        SkyMapPixelShader[0x8];             // +0x1cc CPixelShader
+    unsigned char        EnvMapOverlayVertexShader[0x8];     // +0x1d4 CVertexShader
+    unsigned char        EnvMapOverlayPixelShader[0x8];      // +0x1dc CPixelShader
+    long                 DynamicTexturePageHandle;           // +0x1e4
+    long                 EnvironmentMapHandle;               // +0x1e8
+    CTexture*            EnvironmentMap;                     // +0x1ec
+    long                 SeaBumpMapHandle;                   // +0x1f0
+    CTexture*            SeaBumpMap;                         // +0x1f4
+    long                 WaterBumpMapHandle;                 // +0x1f8
+    CTexture*            WaterBumpMap;                       // +0x1fc
+    long                 IceBumpMapHandle;                   // +0x200
+    CTexture*            IceBumpMap;                         // +0x204
+    unsigned char        ForegroundRenderList[0x10];         // +0x208 CArray<CWaterPatchMesh_*>
+    unsigned char        BackgroundRenderList[0x10];         // +0x218 CArray<CEngineWaterBackgroundSubPatch_*>
+    unsigned char        AlphaedBackgroundRenderList[0x10];  // +0x228 CArray<CEngineWaterBackgroundSubPatch_*>
+    unsigned char        IceForegroundRenderList[0x10];      // +0x238 CArray<std::pair<C3DBoundingBox,CWaterPatchMesh_*>_>
+    unsigned char        IceBackgroundRenderList[0x10];      // +0x248 CArray<CEngineWaterBackgroundSubPatch_*>
+    unsigned char        IceAlphaedBackgroundRenderList[0x10]; // +0x258 CArray<CEngineWaterBackgroundSubPatch_*>
+    unsigned char        SeaReflectiveForegroundRenderList[0x10]; // +0x268 CArray<CWaterPatchMesh_*>
+    unsigned char        SeaNonReflectiveForegroundRenderList[0x10]; // +0x278 CArray<CWaterPatchMesh_*>
+    unsigned char        SeaMidgroundRenderList[0x10];       // +0x288 CArray<CEngineWaterBackgroundSubPatch_*>
+    unsigned char        SeaAlphaedMidgroundRenderList[0x10]; // +0x298 CArray<CEngineWaterBackgroundSubPatch_*>
+    bool                 HighendWaterEnabled;                // +0x2a8
+    bool                 HighendWaterSupported;              // +0x2a9
+    bool                 HaveBackgroundSea;                  // +0x2aa
+    unsigned char        _pad_0x2ab[0x1];                    // +0x2ab
+    CCharStringData*     LoadedOrLoadingSeaBodyID_PStringData; // +0x2ac CCharString::PStringData
+    CCharStringData*     RequestedSeaBodyID_PStringData;     // +0x2b0 CCharString::PStringData
+    unsigned char        Settings[0x2e4];                    // +0x2b4 CEngineWaterSettings
+    unsigned char        Tesselator[0x28];                   // +0x598 CWaterPatchTesselatorBase<CTVertexWaterBackground>
+    unsigned char        SeaTesselator[0x28];                // +0x5c0 CWaterPatchTesselatorBase<CTVertexSeaBackground>
+    CWaterGenerator*     WaterGenerator;                     // +0x5e8
+    CStaticMapBankFile*  StaticMapBankFile;                  // +0x5ec
+    CCharStringData*     StaticMapSeaEntryPrefix_PStringData; // +0x5f0 CCharString::PStringData
+    CBankFileAsyncEntry* LoadingSeaEntry_Data;               // +0x5f4 CCountedPointer<CBankFileAsyncEntry>::Data
+    CCPPointerInfo*      LoadingSeaEntry_Info;               // +0x5f8 CCountedPointer<CBankFileAsyncEntry>::Info
+    CBankFileAsyncData*  LoadingSea_Data;                    // +0x5fc CCountedPointer<CBankFileAsyncData>::Data
+    CCPPointerInfo*      LoadingSea_Info;                    // +0x600 CCountedPointer<CBankFileAsyncData>::Info
+    float                WaterBumpFactor;                    // +0x604
 };
 #pragma pack(pop)
 
@@ -162,16 +168,18 @@ FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaAlphaedMidgroundRenderList
 FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, HighendWaterEnabled) == 0x2a8);
 FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, HighendWaterSupported) == 0x2a9);
 FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, HaveBackgroundSea) == 0x2aa);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadedOrLoadingSeaBodyID) == 0x2ac);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, RequestedSeaBodyID) == 0x2b0);
+FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadedOrLoadingSeaBodyID_PStringData) == 0x2ac);
+FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, RequestedSeaBodyID_PStringData) == 0x2b0);
 FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, Settings) == 0x2b4);
 FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, Tesselator) == 0x598);
 FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaTesselator) == 0x5c0);
 FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, WaterGenerator) == 0x5e8);
 FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, StaticMapBankFile) == 0x5ec);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, StaticMapSeaEntryPrefix) == 0x5f0);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadingSeaEntry) == 0x5f4);
-FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadingSea) == 0x5fc);
+FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, StaticMapSeaEntryPrefix_PStringData) == 0x5f0);
+FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadingSeaEntry_Data) == 0x5f4);
+FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadingSeaEntry_Info) == 0x5f8);
+FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadingSea_Data) == 0x5fc);
+FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadingSea_Info) == 0x600);
 FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, WaterBumpFactor) == 0x604);
 
 #endif // FABLE_ENGINE_CENGINEWATERRENDERER_H

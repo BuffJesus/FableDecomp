@@ -8,29 +8,31 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CEntitySoundDef {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char SoundMap[0x28];                            // +0x28 CSoundMap
-    unsigned char SoundIdentifier[0x4];                      // +0x50 CCharString
-    float         VoicePitchOverride;                        // +0x54
-    long          AnimCriteriaClipDistance;                  // +0x58
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    unsigned char    SoundMap[0x28];                         // +0x28 CSoundMap
+    CCharStringData* SoundIdentifier_PStringData;            // +0x50 CCharString::PStringData
+    float            VoicePitchOverride;                     // +0x54
+    long             AnimCriteriaClipDistance;               // +0x58
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CEntitySoundDef) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CEntitySoundDef, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CEntitySoundDef, SoundMap) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CEntitySoundDef, SoundIdentifier) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CEntitySoundDef, SoundIdentifier_PStringData) == 0x50);
 FABLE_STATIC_ASSERT(offsetof(CEntitySoundDef, VoicePitchOverride) == 0x54);
 FABLE_STATIC_ASSERT(offsetof(CEntitySoundDef, AnimCriteriaClipDistance) == 0x58);
 

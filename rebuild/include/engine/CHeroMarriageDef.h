@@ -8,58 +8,60 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CHeroMarriageDef {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    float         WeddingTimeForScreenToFadeOut;             // +0x28
-    float         WeddingTimeForScreenToFadeIn;              // +0x2c
-    float         WeddingAfterFrescoTimeOfDayFastForwardTo;  // +0x30
-    float         SecondsJustMarriedDuration;                // +0x34
-    float         HeroStatRenownIncreasePerMarriage;         // +0x38
-    long          SecondsBetweenCheckingPlayersAppearance;   // +0x3c
-    long          SecondsMaxTimeWithinNoticingCanReact;      // +0x40
-    float         FatnessChangeThresholdForComment;          // +0x44
-    long          SecondsBetweenReceivingGiftOpinionReactionCanHappen; // +0x48
-    long          SecondsThatGiftsReceivedWillBeRemembered;  // +0x4c
-    long          FramesBetweenCullingOldGifts;              // +0x50
-    long          SecondsBetweenEvaluatingGiftOpinion;       // +0x54
-    long          SecondsBetweenGiftGivingOpportunities;     // +0x58
-    float         ChanceThatGiftWillBeGiven;                 // +0x5c
-    float         AmountOfGoldPerHourOfMarriageToIncreaseGiftGivingPriceValuePerHourOfPlay; // +0x60
-    float         MaxNumHoursOfMarriageToIncreaseGiftGivingPriceValue; // +0x64
-    float         MultiplierForGiftGivingValueEveryOpportunity; // +0x68
-    float         MaxDistanceFromMaxStatsThatGiftsCanBeGiven; // +0x6c
-    long          SecondsBetweenEvaluatingLoveAttitude;      // +0x70
-    float         SecondsOutOfTheRegionForLoveAttitudeToDecayOneToZero; // +0x74
-    float         ThresholdForLoveAttitudeOverride;          // +0x78
-    unsigned char FallenInLoveSoundCriteria[0x4];            // +0x7c CCharString
-    float         FallenInLoveSoundGain;                     // +0x80
-    long          FianceeOpinionPersonalityDef;              // +0x84
-    float         ProbabilityOfCourtingAdviceOnGreet;        // +0x88
-    float         SecondsTimeSinceSeeingYouMinThreshold;     // +0x8c
-    float         SecondsRunOutWifeOnViolenceHateSpike;      // +0x90
-    float         PeakEffectWifeOnViolenceHateSpike;         // +0x94
-    float         PersistEffectWifeOnViolenceHateSpike;      // +0x98
-    float         SecsInHateBeforeDivorceOccurs;             // +0x9c
-    float         SecsInHateBetweenDivorceWarnings;          // +0xa0
-    unsigned char TextGuiWifeDivorceOccurred[0x4];           // +0xa4 CCharString
-    unsigned char TextGuiWifeDivorceRenting[0x4];            // +0xa8 CCharString
-    float         HeroStatMoralityInOpinionFormChangePerDivorce; // +0xac
-    float         SecsInLoveAndHusbandPresentBeforeSexOffered; // +0xb0
-    float         SecsInLoveAndHusbandPresentBetweenSexOffers; // +0xb4
-    unsigned char TextGuiWifeSexOffered[0x4];                // +0xb8 CCharString
-    float         SecsMinSoundDurationInSexCutscene;         // +0xbc
-    float         SecsWaitAfterSoundInSexCutscene;           // +0xc0
-    unsigned char DialogueGroupForSexCutscene[0x4];          // +0xc4 CCharString
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    float            WeddingTimeForScreenToFadeOut;          // +0x28
+    float            WeddingTimeForScreenToFadeIn;           // +0x2c
+    float            WeddingAfterFrescoTimeOfDayFastForwardTo; // +0x30
+    float            SecondsJustMarriedDuration;             // +0x34
+    float            HeroStatRenownIncreasePerMarriage;      // +0x38
+    long             SecondsBetweenCheckingPlayersAppearance; // +0x3c
+    long             SecondsMaxTimeWithinNoticingCanReact;   // +0x40
+    float            FatnessChangeThresholdForComment;       // +0x44
+    long             SecondsBetweenReceivingGiftOpinionReactionCanHappen; // +0x48
+    long             SecondsThatGiftsReceivedWillBeRemembered; // +0x4c
+    long             FramesBetweenCullingOldGifts;           // +0x50
+    long             SecondsBetweenEvaluatingGiftOpinion;    // +0x54
+    long             SecondsBetweenGiftGivingOpportunities;  // +0x58
+    float            ChanceThatGiftWillBeGiven;              // +0x5c
+    float            AmountOfGoldPerHourOfMarriageToIncreaseGiftGivingPriceValuePerHourOfPlay; // +0x60
+    float            MaxNumHoursOfMarriageToIncreaseGiftGivingPriceValue; // +0x64
+    float            MultiplierForGiftGivingValueEveryOpportunity; // +0x68
+    float            MaxDistanceFromMaxStatsThatGiftsCanBeGiven; // +0x6c
+    long             SecondsBetweenEvaluatingLoveAttitude;   // +0x70
+    float            SecondsOutOfTheRegionForLoveAttitudeToDecayOneToZero; // +0x74
+    float            ThresholdForLoveAttitudeOverride;       // +0x78
+    CCharStringData* FallenInLoveSoundCriteria_PStringData;  // +0x7c CCharString::PStringData
+    float            FallenInLoveSoundGain;                  // +0x80
+    long             FianceeOpinionPersonalityDef;           // +0x84
+    float            ProbabilityOfCourtingAdviceOnGreet;     // +0x88
+    float            SecondsTimeSinceSeeingYouMinThreshold;  // +0x8c
+    float            SecondsRunOutWifeOnViolenceHateSpike;   // +0x90
+    float            PeakEffectWifeOnViolenceHateSpike;      // +0x94
+    float            PersistEffectWifeOnViolenceHateSpike;   // +0x98
+    float            SecsInHateBeforeDivorceOccurs;          // +0x9c
+    float            SecsInHateBetweenDivorceWarnings;       // +0xa0
+    CCharStringData* TextGuiWifeDivorceOccurred_PStringData; // +0xa4 CCharString::PStringData
+    CCharStringData* TextGuiWifeDivorceRenting_PStringData;  // +0xa8 CCharString::PStringData
+    float            HeroStatMoralityInOpinionFormChangePerDivorce; // +0xac
+    float            SecsInLoveAndHusbandPresentBeforeSexOffered; // +0xb0
+    float            SecsInLoveAndHusbandPresentBetweenSexOffers; // +0xb4
+    CCharStringData* TextGuiWifeSexOffered_PStringData;      // +0xb8 CCharString::PStringData
+    float            SecsMinSoundDurationInSexCutscene;      // +0xbc
+    float            SecsWaitAfterSoundInSexCutscene;        // +0xc0
+    CCharStringData* DialogueGroupForSexCutscene_PStringData; // +0xc4 CCharString::PStringData
 };
 #pragma pack(pop)
 
@@ -86,7 +88,7 @@ FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, MaxDistanceFromMaxStatsThatGiftsC
 FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, SecondsBetweenEvaluatingLoveAttitude) == 0x70);
 FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, SecondsOutOfTheRegionForLoveAttitudeToDecayOneToZero) == 0x74);
 FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, ThresholdForLoveAttitudeOverride) == 0x78);
-FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, FallenInLoveSoundCriteria) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, FallenInLoveSoundCriteria_PStringData) == 0x7c);
 FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, FallenInLoveSoundGain) == 0x80);
 FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, FianceeOpinionPersonalityDef) == 0x84);
 FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, ProbabilityOfCourtingAdviceOnGreet) == 0x88);
@@ -96,14 +98,14 @@ FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, PeakEffectWifeOnViolenceHateSpike
 FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, PersistEffectWifeOnViolenceHateSpike) == 0x98);
 FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, SecsInHateBeforeDivorceOccurs) == 0x9c);
 FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, SecsInHateBetweenDivorceWarnings) == 0xa0);
-FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, TextGuiWifeDivorceOccurred) == 0xa4);
-FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, TextGuiWifeDivorceRenting) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, TextGuiWifeDivorceOccurred_PStringData) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, TextGuiWifeDivorceRenting_PStringData) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, HeroStatMoralityInOpinionFormChangePerDivorce) == 0xac);
 FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, SecsInLoveAndHusbandPresentBeforeSexOffered) == 0xb0);
 FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, SecsInLoveAndHusbandPresentBetweenSexOffers) == 0xb4);
-FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, TextGuiWifeSexOffered) == 0xb8);
+FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, TextGuiWifeSexOffered_PStringData) == 0xb8);
 FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, SecsMinSoundDurationInSexCutscene) == 0xbc);
 FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, SecsWaitAfterSoundInSexCutscene) == 0xc0);
-FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, DialogueGroupForSexCutscene) == 0xc4);
+FABLE_STATIC_ASSERT(offsetof(CHeroMarriageDef, DialogueGroupForSexCutscene_PStringData) == 0xc4);
 
 #endif // FABLE_ENGINE_CHEROMARRIAGEDEF_H

@@ -8,30 +8,32 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+struct CCharStringData;
+
 #pragma pack(push, 1)
 struct CFireheartMinigameDef {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
-    unsigned char _pad_0x0c[0x4];                            // +0x0c
-    unsigned char _pad_0x10[0x4];                            // +0x10
-    unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char _pad_0x1c[0x4];                            // +0x1c
-    unsigned char _pad_0x20[0x4];                            // +0x20
-    unsigned char _pad_0x24[0x4];                            // +0x24
-    unsigned char MoonFX[0x4];                               // +0x28 CCharString
-    unsigned char SunFX[0x4];                                // +0x2c CCharString
-    unsigned long QuitText;                                  // +0x30
-    unsigned long YesText;                                   // +0x34
-    unsigned long NoText;                                    // +0x38
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    unsigned char    _pad_0x24[0x4];                         // +0x24
+    CCharStringData* MoonFX_PStringData;                     // +0x28 CCharString::PStringData
+    CCharStringData* SunFX_PStringData;                      // +0x2c CCharString::PStringData
+    unsigned long    QuitText;                               // +0x30
+    unsigned long    YesText;                                // +0x34
+    unsigned long    NoText;                                 // +0x38
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CFireheartMinigameDef) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, MoonFX) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, SunFX) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, MoonFX_PStringData) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, SunFX_PStringData) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, QuitText) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, YesText) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CFireheartMinigameDef, NoText) == 0x38);
