@@ -25,11 +25,11 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [x] 2026-09-07 `rebuild/COVERAGE.md` regenerated with genuine-C++ / asm-bake / readability rows; README rows generated from it
 - [ ] Re-home `docs/journal/FINDINGS_LOG.md` facts into the reference docs (`docs_reorg.py --check-findings` lists the orphans), then enable that check in CI
 - [x] 2026-09-07 doc families merged: `formats/SAVE.md` (8→1), `formats/BIG.md` (3→1), `formats/MESH.md` (4→1), `engine/QUEST_CARDS.md` (5→1), `engine/NAVIGATION.md` (2→1); sources left as 3-line stubs
-- [ ] Remaining family merges: ANIM×2, TEXTURE×2, AUDIO×4 (LUG/LUT/DIALOGUE), TEXT×2, DEFS×6, HERO_APPEARANCE×4, INPUT×3, GAME_ENTRY_PATHS×3, QUEST_SCRIPTS×3 — mapping notes in `tools/docs_reorg_map.tsv`
+- [x] 2026-09-07 remaining families merged: `formats/{ANIM,TEXTURE,TEXT,AUDIO,DEFS}.md`, `engine/{HERO_APPEARANCE,INPUT,GAME_ENTRY_PATHS,QUEST_SCRIPTS}.md` (sources are 3-line stubs; INDEX lists both)
 - [ ] Turn `rebuild/build_candidates.ps1` (130k lines of PowerShell objects) into a TSV + small driver
-- [ ] Prune superseded intake drafts (`lift/reports`, `rebuild/candidates/snapshots`) whose address is already landed
-- [ ] Archive FQT-era one-off scripts out of `tools/` (`*Fqt*`, `*_f2scene_*`) into FableForge or `tools/archive/`
-- [ ] Document or make opt-in the hidden scheduled tasks (`InstallRebuildRefreshTask.ps1`, `InstallLocalParityTask.ps1`)
+- [ ] Prune superseded intake drafts: 600/1,066 `rebuild/candidates/snapshots` and 604/1,079 `lift/reports/*/code` files have a landed reconstruction at their address (counted 2026-09-07). Needs the manifest/status generators to stop counting them first (`agent_candidates`, `agent_source_path`)
+- [x] 2026-09-07 FQT + Fable-2 scene-import one-offs (21 scripts) moved to `tools/archive/` with a README
+- [x] 2026-09-07 hidden scheduled tasks documented in `docs/BUILDING.md` (Background automation) with the disable command
 
 ## (b) Symbols & types — `docs/pipeline/SYMBOLS.md`, `docs/pipeline/NAMING_STRAGGLERS.md`
 
@@ -63,7 +63,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [ ] 84 deferred over-captures worklist `rebuild/backlog/overcapture-recovery-worklist.tsv` (~11 recovered)
 - [ ] Lifted modules 3/3,433 -> next module-level link proof after OpenRetailBank ring (`LINK_WORKLIST.md`)
 
-## (d) Running frontend / renderer parity — `docs/pipeline/VISUAL_PARITY_STATUS.md`, `docs/engine/CONTINUE_GAME_PATH.md`
+## (d) Running frontend / renderer parity — `docs/pipeline/VISUAL_PARITY_STATUS.md`, `docs/engine/GAME_ENTRY_PATHS.md#continue-and-load-game-path`
 
 - [x] Stage-0/1 executable integration: VC7.1 links byte-identical fns into an owned Win32 process; `WinMain 0x403480` promoted
 - [x] `FableTLC-Reconstruction-VisualCheckpoint.exe` renders the D3D9 frontend headlessly (synth-click + screenshot QA recipe)
@@ -80,9 +80,9 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 ## (e) Engine subsystem RE — `docs/engine/SYSTEMS_ANALYSIS.md`, `docs/engine/CAPABILITY_INDEX.md`
 
 - [x] Nav: quadtree line init/update, multilayer nav, navmesh RE — `engine/NAVIGATION.md` (merged from `NAVMESH_RE.md`, `MULTILAYER_NAV.md`)
-- [x] Quest logic is compiled C++ (161-entry allocator table @ `0x00CD52D0`, no VM) — `QUEST_VM_RE.md`, `SCRIPT_VM_MAP.md`
+- [x] Quest logic is compiled C++ (161-entry allocator table @ `0x00CD52D0`, no VM) — `QUEST_SCRIPTS.md#quest-binding-compiled-c-classes`, `QUEST_SCRIPTS.md#cutscene-and-region-script-interpreter`
 - [x] Quest cards: display map, body art (3D mesh via `Graphic.modelId`), CUIDefs 8487-8489, empty-card fix — `engine/QUEST_CARDS.md` (merged from `QUEST_CARD_*.md`)
-- [x] Input: Redefine Keys system, controller enums from FableWin.pdb — `REDEFINE_INPUT_SYSTEM.md`, `CONTROLLER_ENUMS.md`
+- [x] Input: Redefine Keys system, controller enums from FableWin.pdb — `INPUT.md#binding-store-and-redefine-subsystem`, `INPUT.md#controller-enum-tables`
 - [x] Video system, minimap, hero morph, appearance strip, console commands, demon door face — per-doc
 - [x] Terrain: whiteout + render fixes; ForgeTest64 terrain renders in-game (stage33); foliage group-sphere contract recovered (stage46)
 - [x] Cut co-op multiplayer + EgoMP donor audits — `CUT_COOP_MULTIPLAYER.md`, `EGOMP_*.md`
@@ -91,7 +91,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [ ] stage45 near-black terrain faces: compare authored foreground packed normals vs retail patch
 - [ ] Save graph: `CTCInventory::Transfer`, `CQuestManager`/`CFactionManager` field/tag names
 - [ ] Statue Master restoration `mods/StatueMasterRestoration/RUNTIME_PROBE.md` ten-case live probe (user-driven)
-- [ ] Recover full 31-action `EGameAction` int->name table (3 sourcing passes failed; do not re-scan binary/web) — `docs/engine/GAMEPAD_REDEFINE_PATCH.md`
+- [ ] Recover full 31-action `EGameAction` int->name table (3 sourcing passes failed; do not re-scan binary/web) — `docs/engine/INPUT.md#open-gaps`
 
 ## (f) Quest-script recovery / Lua — `docs/scripts/SCRIPT_RECOVERY_PIPELINE.md`, `docs/scripts/AEON_LUA_PORTS.md`
 
@@ -114,7 +114,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 
 ## Parked / shelved
 
-- Gamepad redefine patch — shelved 2026-08-10; install reverted to clean retail; #811 clone renders black, row-value read path unknown — `docs/engine/GAMEPAD_REDEFINE_PATCH.md`
+- Gamepad redefine patch — shelved 2026-08-10; install reverted to clean retail; #811 clone renders black, row-value read path unknown — `docs/engine/INPUT.md#open-gaps`
 - Mario rig (`work/mario_hero/stage_bindaxis4`) — body segments stretch apart; needs animation translation retargeting, not more bind-axis placement
 - Unicorn emulation — assessed 2026-07-27 as optional local pilot; not implemented; not on parity totals — `docs/pipeline/UNICORN_EMULATION_PLAN.md`
 - Co-op revival — RE audits done (`CUT_COOP_MULTIPLAYER.md`); implementation moved to FableForge docs; no active work

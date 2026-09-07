@@ -32,7 +32,7 @@ gives us a clean place to *decompile* that mapping from a known-good build.
 
 ## Input / redefine-keys lane — what the disc gives us
 The critical PC blocker is the `EGameAction` ordinal→display-label mapping/order for the redefine
-menu (see `redefine-keys-name-gap`, `REDEFINE_INPUT_SYSTEM.md`, `GAMEPAD_REDEFINE_PATCH.md`).
+menu (see `redefine-keys-name-gap`, `INPUT.md#binding-store-and-redefine-subsystem`, `INPUT.md#gamepad-redefine-patch-shelved-2026-08-10`).
 - **NOT solved by strings:** the XBE embeds only 4 `GAME_ACTION_*` *identifiers* (the debug-print
   ones); the full enum-name table is stripped, same as PC.
 - **Label universe recovered:** `refs/xbox/headers/text_xbox.h` lists **48 `TEXT_GUI_ACTION_*`** tags

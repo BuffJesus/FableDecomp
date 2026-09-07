@@ -1,6 +1,6 @@
 # CWorld object layout (recovered from the ctor 0x004a67d0)
 
-The `CWorld` object created by `CMainGameComponent::InitWorld` (docs/engine/NEW_GAME_PATH.md).
+The `CWorld` object created by `CMainGameComponent::InitWorld` (docs/engine/GAME_ENTRY_PATHS.md#new-game-path-child-prologue).
 Fully decoded from the 727B ctor `CWorld::CWorld(WorldCtx&) @ 0x004a67d0` (__thiscall,
 returns this, ret 4). Object size = **0x198 (408 bytes)** (matches InitWorld's
 `operator new(0x198)`). This is the field map; the ctor itself is a byte-parity **DEFER**

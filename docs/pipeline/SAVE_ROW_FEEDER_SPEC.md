@@ -3,7 +3,7 @@
 Wires live save-metadata rows into the frontend Load Game screen. Gap closed:
 `tools/save_metadata.py` proves the read contract (python, not in build); 
 `FableSetVisualFrontendSaveRows` is the renderer sink (authored defaults only). 
-Nothing native reads real Profile.bin/.sav and feeds the sink. See docs/engine/CONTINUE_GAME_PATH.md.
+Nothing native reads real Profile.bin/.sav and feeds the sink. See docs/engine/GAME_ENTRY_PATHS.md#continue-and-load-game-path.
 
 ## Verdict
 Add a NEW translation unit `rebuild/integration/frontend_save_rows.cpp` (+ `.h`). Do NOT extend `save_metadata_runtime_boundary.cpp` â€” that TU is the boot-time .MET-from-.LUG generator (`GenerateMetFilesFromLugFiles` 0x00418c3b), a genuinely different retail seam (boot-owned, script-bank data, Profile.bin never touched). Confirmed by reading it: all 14 stubs are FableMet* .MET sidecar helpers wired into Phase 9 behind the `FABLETLC_EXECUTE_EXACT_SAVE_METADATA` flag; it has no Profile.bin/HEADER code and sharing it would conflate two seams. ONE new seam for the feeder itself, BUT it forces a SECOND supporting TU: a self-contained raw-DEFLATE inflate (`fable_inflate.c/.h`), because the checkpoint build links NO zlib/inflate anywhere and the .sav HEADER is an RFC-1950 zlib stream (0x78DA) that must be inflated. So: 1 feeder TU + 1 inflate TU, plus add the existing `crcCalcObject` to the visual link list to reuse `FableCRC_Calc_004014A0` (crc0) rather than re-implement it. The checkpoint already resolves the Saves dir and enumerates profile dirs (`RefreshVisualProfileNames`/`FableEnumerateVisualFrontendProfiles` at visual_boot_checkpoint.cpp:2734/462) and already routes Load Game via `action==66` (line 3669) â€” the feeder plugs into that existing scaffold.

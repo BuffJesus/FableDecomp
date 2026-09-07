@@ -88,9 +88,9 @@ own sampler/`tex2D` controls filtering. Investigate:
   `audiooptions-backdrop-not-sunbeam`), not a sunbeam-alpha issue.
 - Redefine live-scroll still uses the baked page atlas (flashing during scroll);
   the byte-pure native-scroll path is task #11 (CRedefinerList Refresh/OnActivate/
-  Initialise — Refresh RE'd in REDEFINE_INPUT_SYSTEM.md work).
+  Initialise — Refresh RE'd in INPUT.md#binding-store-and-redefine-subsystem work).
 - Gamepad "Redefine Keys (Keyboard)/(Gamepad)" menu-row split not wired yet (only
-  the detail-screen title split is in); see GAMEPAD_REDEFINE_PATCH.md.
+  the detail-screen title split is in); see INPUT.md#gamepad-redefine-patch-shelved-2026-08-10.
 
 ## 2026-08-10 — profile-name font-doubling: static root-cause narrowing (build-light)
 

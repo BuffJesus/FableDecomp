@@ -30,7 +30,7 @@ The two binaries are sibling compiles of one source tree. The differences are al
   addresses live in overlay VA ranges and cross-overlay calls route through paging thunks.
 - Quest overlays (66): `S_QGT*` (guild-training family), `S_QHS*` (Hero-save family), `S_QBC*`,
   `S_QEG*`, `S_QWB*`, `S_QRV*`, `S_QOFR*`, … — quest logic is **compiled C++, split per quest**.
-  Independently re-confirms the PC finding: **no quest VM** (`docs/engine/QUEST_VM_RE.md`).
+  Independently re-confirms the PC finding: **no quest VM** (`docs/engine/QUEST_SCRIPTS.md#quest-binding-compiled-c-classes`).
 - Subsystem overlays (43): `S_V*` (e.g. `S_VMR`, `S_VSC`, `S_VTH`, `S_VHB`, `S_VFC`).
 
 ### 3. Platform layer differs exactly as expected (console vs PC)
@@ -46,7 +46,7 @@ The two binaries are sibling compiles of one source tree. The differences are al
 Even with RTTI making the class list visible only on the PC side, the PC build **retains** console
 input types: `CInputTypeXboxPadButtonEvent`, `CInputTypeXboxPadLeftStickEvent`,
 `CInputTypeXboxPadRightStickEvent`. This corroborates the gamepad-redefine lane
-(`GAMEPAD_REDEFINE_PATCH.md`): the PC engine still contains the Xbox pad event plumbing, dormant.
+(`INPUT.md#gamepad-redefine-patch-shelved-2026-08-10`): the PC engine still contains the Xbox pad event plumbing, dormant.
 
 ## What the XBE is actually good for (revised, evidence-based)
 1. **Confirming architecture** (done): no quest VM; per-quest/subsystem code overlays.

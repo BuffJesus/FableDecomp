@@ -115,7 +115,7 @@ The governing pattern is the **OpenRetailBank runtime-module anchor** (memory: *
 
 ---
 
-*Relevant files:* `D:\Documents\FableTLC\rebuild\integration\stage2_engine_boundary.cpp` (seam stub), `D:\Documents\FableTLC\rebuild\src\compiled\00\41\CGame_Play_00412f90.cpp` (landed loop entry), `D:\Documents\FableTLC\rebuild\integration\boot_oracles.tsv` (oracle), `D:\Documents\FableTLC\docs\engine\NEW_GAME_PATH.md` + `CONTINUE_GAME_PATH.md` (seam semantics), `D:\Documents\FableTLC\rebuild\manifest\functions.tsv` (render family protos: 0xb91760/0xb92500/0x435530 accepted, decompile=yes, no source). *Load-bearing fact:* `FableGFMainPhase10PlayBoundary` at `stage2_engine_boundary.cpp:1034-1038` is the blocking stub — it must call `0x00412f90`, and today it does not.
+*Relevant files:* `D:\Documents\FableTLC\rebuild\integration\stage2_engine_boundary.cpp` (seam stub), `D:\Documents\FableTLC\rebuild\src\compiled\00\41\CGame_Play_00412f90.cpp` (landed loop entry), `D:\Documents\FableTLC\rebuild\integration\boot_oracles.tsv` (oracle), `D:\Documents\FableTLC\docs\engine\GAME_ENTRY_PATHS.md` (New Game + Continue sections) (seam semantics), `D:\Documents\FableTLC\rebuild\manifest\functions.tsv` (render family protos: 0xb91760/0xb92500/0x435530 accepted, decompile=yes, no source). *Load-bearing fact:* `FableGFMainPhase10PlayBoundary` at `stage2_engine_boundary.cpp:1034-1038` is the blocking stub — it must call `0x00412f90`, and today it does not.
 ---
 
 ## Implementation reality-check (2026-08-16, from reading the seam + landed Play)

@@ -18,7 +18,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Ghidra DB after RTTI force pass: 49,082 functions, 40,187 named, 8,895 default-named. Bulk RTTI
   port source is `ghidra_out/labels_rtti_port.tsv`; conflict audit is `ghidra_out/rtti_port_compare.tsv`.
 - Quest logic is compiled C++ (161-entry name→allocator table @ 0x00CD52D0, no quest VM) — see
-  `docs/engine/QUEST_VM_RE.md`. Trust FSE ASLR addresses over BSim names when they clash (0x00CB8110 is
+  `docs/engine/QUEST_SCRIPTS.md#quest-binding-compiled-c-classes`. Trust FSE ASLR addresses over BSim names when they clash (0x00CB8110 is
   the CScriptBase ctor, not "CHeroMorphDef"; 0x00CBFAB8 is SetScriptActiveStatus).
 - Manifest module labels are NOT trustworthy per file: Ghidra propagates one name over every
   byte-identical body (2,977 "CLandscapeBackgroundPatch::vector_deleting_destructor" rows are dtors of

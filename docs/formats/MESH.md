@@ -5,7 +5,7 @@
 section 2026-07-31). Container layout / TOC / writer live in [BIG.md](BIG.md); skeletal animations
 (types 6/7/9) in [BIG_ANIM_FORMAT.md](BIG_ANIM_FORMAT.md); the LZO1X codec in
 [LIONHEAD_LZ.md](LIONHEAD_LZ.md); equipment usage of composed meshes in
-`docs/engine/APPEARANCE_SYSTEM.md` §7.*
+`docs/engine/HERO_APPEARANCE.md#equipment-and-clothing-system` §7.*
 
 **Status:** compiled-mesh payload grammar fully decoded (header, materials, primitives, vertex
 layouts, u16 indices, skeleton bind blocks, skin weights) and **round-trips**; brand-new static
@@ -604,7 +604,7 @@ fable_compose_*.blend/png`.
 - Layouts `'float'`/`'packed'` only (§5.2 exclusions). Triangle lists only.
 - Materials bind by textures.big entry ID; new-texture authoring is `TEXTURE_WRITER.md`.
 - Engine smoke test was not part of the compose task (grammar-identical to retail; a follow-up wires
-  a composed boot into a `CAppearanceModifierDef Graphics[]` id — `APPEARANCE_SYSTEM.md` §7).
+  a composed boot into a `CAppearanceModifierDef Graphics[]` id — `HERO_APPEARANCE.md#equipment-and-clothing-system` §7).
 - Blender "Export NEW mesh" operator wiring (`import_op.py`, following `ExportFableModel`) is the
   natural follow-up.
 

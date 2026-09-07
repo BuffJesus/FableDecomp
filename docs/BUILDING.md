@@ -66,3 +66,21 @@ Point Ghidra's Script Manager at this dir (Script Directories → add). Key scri
 ## Lua tooling (`tools/lua_mod/`, copied from Fable2RE)
 - `luadis.py` / `luadis51.py` — Lua 5.0/5.1 bytecode disassembler (confirm TLC's Lua version first).
 - `script_index.py`, `bnk_repack.py`, `apply_mod.py` — script catalog + archive repack patterns.
+
+## Background automation (know it exists)
+
+Two hidden Windows Scheduled Tasks rewrite files in this tree without you asking:
+
+| Task | Installed by | Cadence | Touches |
+|---|---|---|---|
+| `FableTLC Rebuild Refresh` | `tools/InstallRebuildRefreshTask.ps1` | every 15 min | `rebuild/manifest/*`, `rebuild/COVERAGE.*`, `README.md` metrics block, `ghidra_out/fable_engine.h`, root scratch sweep |
+| `FableTLC Local Parity Queue` | `tools/InstallLocalParityTask.ps1` | queue-driven | `rebuild/build_candidates.ps1`, landed sources (auto-landing) |
+
+If a file changed under you, check `rebuild/refresh.log` first. Disable while doing manual
+catalog/manifest surgery:
+
+    schtasks /Change /TN "FableTLC Rebuild Refresh" /DISABLE
+    schtasks /Change /TN "FableTLC Local Parity Queue" /DISABLE
+
+and `/ENABLE` afterwards. Both defer while another pipeline PID file is live (see
+`rebuild/README.md`, "Regenerate").
