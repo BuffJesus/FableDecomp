@@ -159,7 +159,7 @@ def apply(plan_only: bool) -> int:
             target_dir.mkdir(parents=True, exist_ok=True)
             data = s.read_bytes()
             (target_dir / s.name).write_bytes(data)
-            git("rm", "-q", str(s))
+            git("rm", "-q", "-f", str(s))
             lines.append(f"- <a id=\"{s.stem.lower()}\"></a>`{s.name}` -> {repo} "
                          f"`docs/from_fabletlc/{s.name}`")
         MODDING_POINTER.write_text("\n".join(lines) + "\n", encoding="utf-8")

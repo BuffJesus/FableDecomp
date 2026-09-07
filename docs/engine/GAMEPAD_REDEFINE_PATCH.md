@@ -1,0 +1,517 @@
+# Gamepad Redefine patch — design & plan
+
+Goal: split retail's single **"Redefine Keys"** frontend option into
+**"Redefine Keys (Keyboard)"** (the existing screen, unchanged) and a new
+**"Redefine Keys (Gamepad)"** screen that rebinds controller inputs, using
+Unreal-Engine-style key names ("Face Button Bottom", "D-Pad Up", …).
+
+This is a **base-game patch target**: the reconstruction reproduces the retail
+redefine subsystem byte-for-byte (see `REDEFINE_INPUT_SYSTEM.md`), and this doc
+is the delta a patch author applies on top of that understood code. Nothing here
+requires a new storage layout — the engine already models controller-class input
+records.
+
+## 0. Why this is feasible (recap of the RE)
+
+From `REDEFINE_INPUT_SYSTEM.md`:
+- Bindings live in `CUserProfileManager` as two 28-byte-record vectors
+  (`+0x54/+0x58` primary, `+0x60/+0x64` passive). Record = `{EGameAction +0,
+  input +4}`.
+- Input records are **device-type-aware**: `CKeyRedefiner::GetSubTypeForAction`
+  (0x557CA0) already branches on `record[0]` type `0x3C` (analog/controller
+  movement) returning four directional subtypes `0x0A–0x0D`, plus button classes
+  `0x37`/`0x38`. **The store is not keyboard-only.**
+- Control schemes are **named & data-driven** (`ResetAssignedInputs` 0x4085F0 /
+  `ResetAssignedInputsWASD` 0x408820 resolve a scheme by name string and apply
+  it to both vectors). A gamepad default is a *data + one apply call*, not a
+  rewrite.
+
+So the missing piece at retail is purely a **frontend screen** that (a) presents
+gamepad bindings and (b) captures controller input into `0x3C`/button-type
+records. Everything downstream (dispatch, persistence) already works.
+
+## 1. Menu split
+
+Retail frontend has one entry routing to detail `screen==4` ("Redefine Keys").
+Patch:
+
+| Menu label | Detail screen | Bindings shown | Capture device |
+|------------|---------------|----------------|----------------|
+| Redefine Keys (Keyboard) | 4 (unchanged) | primary vector `+0x54`, keyboard records | keyboard |
+| Redefine Keys (Gamepad)  | **5 (new)**   | passive/controller records | gamepad |
+
+In the reconstruction's checkpoint the detail title is chosen by `screen`:
+- `screen==4` → title string becomes **"Redefine Keys (Keyboard)"**.
+- `screen==5` → new title **"Redefine Keys (Gamepad)"**.
+
+The options-list row that today opens screen 4 is duplicated into two rows; the
+second sets the active screen to 5. (Reconstruction: the options-list builder in
+`visual_boot_checkpoint.cpp` / `visual_boot_d3d9.cpp` — add the second row and a
+hit-region that sets `screen=5`.)
+
+## 2. UE gamepad key-name table
+
+The gamepad screen renders bound inputs as UE-style names. The value column maps
+a **captured controller input code → UE label**. This table is the display layer;
+the stored record stays the engine's native `0x3C`/button type + code.
+
+Standard XInput-class mapping (Unreal `FKey` naming, Xbox layout):
+
+| UE label | UE FKey id | Xbox physical | XInput bit / axis |
+|----------|-----------|---------------|-------------------|
+| Face Button Bottom | `Gamepad_FaceButton_Bottom` | A | `XINPUT_GAMEPAD_A` 0x1000 |
+| Face Button Right  | `Gamepad_FaceButton_Right`  | B | `XINPUT_GAMEPAD_B` 0x2000 |
+| Face Button Left   | `Gamepad_FaceButton_Left`   | X | `XINPUT_GAMEPAD_X` 0x4000 |
+| Face Button Top    | `Gamepad_FaceButton_Top`    | Y | `XINPUT_GAMEPAD_Y` 0x8000 |
+| D-Pad Up    | `Gamepad_DPad_Up`    | D-Pad Up    | 0x0001 |
+| D-Pad Down  | `Gamepad_DPad_Down`  | D-Pad Down  | 0x0002 |
+| D-Pad Left  | `Gamepad_DPad_Left`  | D-Pad Left  | 0x0004 |
+| D-Pad Right | `Gamepad_DPad_Right` | D-Pad Right | 0x0008 |
+| Left Shoulder  | `Gamepad_LeftShoulder`  | LB | 0x0100 |
+| Right Shoulder | `Gamepad_RightShoulder` | RB | 0x0200 |
+| Left Trigger   | `Gamepad_LeftTrigger`   | LT | axis (Z+ / bLeftTrigger) |
+| Right Trigger  | `Gamepad_RightTrigger`  | RT | axis (Z- / bRightTrigger) |
+| Left Thumbstick Button  | `Gamepad_LeftThumbstick`  | L3 | 0x0040 |
+| Right Thumbstick Button | `Gamepad_RightThumbstick` | R3 | 0x0080 |
+| Special Left  | `Gamepad_Special_Left`  | Back/View  | 0x0020 |
+| Special Right | `Gamepad_Special_Right` | Start/Menu | 0x0010 |
+| Left Stick Up    | `Gamepad_LeftStick_Up`    | LS ↑ | thumbLY+ |
+| Left Stick Down  | `Gamepad_LeftStick_Down`  | LS ↓ | thumbLY− |
+| Left Stick Left  | `Gamepad_LeftStick_Left`  | LS ← | thumbLX− |
+| Left Stick Right | `Gamepad_LeftStick_Right` | LS → | thumbLX+ |
+| Right Stick Up    | `Gamepad_RightStick_Up`    | RS ↑ | thumbRY+ |
+| Right Stick Down  | `Gamepad_RightStick_Down`  | RS ↓ | thumbRY− |
+| Right Stick Left  | `Gamepad_RightStick_Left`  | RS ← | thumbRX− |
+| Right Stick Right | `Gamepad_RightStick_Right` | RS → | thumbRX+ |
+
+The four Left-Stick directions map to the engine's existing `0x3C` analog
+subtypes `0x0A–0x0D` (§3 of the RE doc) — the movement axes are already modeled;
+this display table just gives them UE names.
+
+**Encoding — mostly RESOLVED (2026-08-09):** the def/scheme-side record encoding
+is already recovered in `docs/engine/CONTROLLER_ENUMS.md`: per-record layout `+0x00
+GameAction`, `+0x04 ControllerType` (1=Xbox pad), `+0x0C EXboxControllerButton`
+(A=1, B=2, …, LeftThumbstick=17, RightThumbstick=18), `+0x14/+0x18` C2DVector dir
+hint. `FABLE_XBOX_CONTROL_SCHEME` (def entry 1099, 77 records) IS the native
+gamepad default — so the §5/§7 gamepad scheme is buildable directly, no live
+probe needed, and the EGameAction ordinals come from `debug_build/FableWin.pdb`
+(see `tools/render_fable_frontend_subscreens.py`). The ONLY still-open piece is
+the *runtime* 28-byte `CUserProfileManager` binding-record encoding under
+`GetSubTypeForAction` types `0x37`/`0x38`/`0x3C` (the scheme→runtime apply in
+`ResetAssignedInputs` 0x4085F0); confirm that against `CONTROLLER_ENUMS.md` before
+assuming the runtime form matches the scheme form.
+
+## 3. Gamepad detail screen (screen 5)
+
+Mirrors the keyboard redefine list but:
+1. Row source = the action set that is meaningfully controller-bindable (all
+   `EGameAction`s that already carry a passive/controller record, plus the four
+   movement axes).
+2. Value column = UE label from §2 (fallback: "Unbound").
+3. Capture: entering redefine on a row arms `CKeyRedefiner` for controller
+   input; the next controller button/axis event is written as the record
+   (type `0x37`/`0x38` button or `0x3C` axis), exactly as the keyboard path
+   writes keyboard records.
+4. Reset button applies the **gamepad default scheme** (new named scheme, §2 of
+   RE doc — data + one `0x411B90` apply call). Conflict / coexistence gating
+   reuses `AreAllowedToCoexist` (0x5578A0).
+
+Reconstruction status: the checkpoint currently fakes the keyboard list with a
+baked page atlas; screen 5 gets the same treatment first (authored list over the
+existing redefine backdrop), then converges on the byte-pure `CRedefinerList`
+live-scroll path once `Refresh` (0x557000) is reconstructed (task #11).
+
+## 4. Bonus goal — controller hotbar cycling
+
+Separable follow-up (RE doc §6): add one `EGameAction` (the enum is a persisted
+`CVectorMap`), bind it to a shoulder/trigger in the passive vector `+0x60`, and
+dispatch it in the runtime action consumer (`CGamePlayerInterface`
+IsEventGameAction 0x445BD0 / GetControlMovementFromGameActionEvent 0x445C30) to
+advance the hotbar index. No new UI required beyond a bindable row in screen 5.
+
+## 4b. RETAIL patch architecture (2026-08-09 — the actual deliverable)
+
+The `visual_boot_*` screen-5 work is a **reconstruction mockup / visual spec only**
+— retail does NOT bake menu screens; it builds the frontend dynamically. A patch
+that runs on retail `Fable.exe` operates on that dynamic system. RE-confirmed
+data-vs-code split:
+
+**Controller value scheme — USE MODERN XInput / UE names, NOT retail's enum.**
+The original Xbox controller (Duke/S) had Black/White buttons and **no bumpers**,
+so retail's native `EXboxControllerButton` (Black=5/White=6, no LB/RB;
+`docs/engine/CONTROLLER_ENUMS.md`) is the WRONG scheme for modern pads. We bind/display
+via the **UE-style modern XInput values** already in `visual_boot_d3d9.cpp`
+(`kGamepadKeyValues`/`kGamepadKeyValueLabels`: Face Button Bottom/Right/Left/Top,
+Left/Right Shoulder, triggers, thumbstick clicks, stick directions → XInput bits +
+the engine's `0x3C` analog subtypes `0x0A–0x0D`). This is a design choice for
+modern controllers, not a reproduction of retail's original-Xbox defaults, so the
+low-confidence face/shoulder rows in CONTROLLER_ENUMS.md do NOT gate us.
+
+**DATA (frontend defs — forge-moddable, no binary edit):**
+- **Options list def #219** (rooted `(200,150)`, 30px pitch; rows = actions
+  9/13/12/283, per `docs/formats/FRONTEND_FORMAT.md`): add a **5th row** referencing a new
+  action id + label text-tag. Rows come from the compiled UI def tree = data.
+- **New "Redefine Keys (Gamepad)" screen def** — clone `UI_FRONTEND_SCREEN_REDEFINE_
+  KEYS_PC`. `CRedefinerList::Initialise` (0x5566A0) builds its rows by iterating the
+  screen def's UI-component children (reads the def ptr at `this+0x1a0`, then virtual
+  child-walk) — **so the row/action set is data**. The clone's rows carry
+  controller-type expected records so capture accepts pad events.
+- **Gamepad default scheme** — a new named input scheme (RE doc §2: schemes are
+  data, applied by `ResetAssignedInputs` 0x4085F0 via one `0x411B90` apply call),
+  values from the UE/XInput table above.
+
+**CODE (unavoidable detours, retail VAs) — concrete values pinned (2026-08-09):**
+- New row **action = 284** (`0x11C`), **used-key = 0x17**. Verified free: `Action()`
+  assigns keys `{0x1,0x3-0xa,0xc,0xf,0x10,0x14,0x16,0x18,0x19,0x1a,0x1c}` (0x16 =
+  keyboard Redefine); **0x17 is unused** — the natural neighbour. Action 284 has no
+  `Action()` case → falls to the clean `0x59a7ff` default (inert) until detoured.
+- **`CFrontEndManager::Action` @ 0x0059A238** — detour to add: `if (action==284) {
+  usedKey = 0x17; goto dispatch; }` where dispatch = the existing `0x59a7d2` tail
+  (`lea eax,[ebp+8]; push eax; lea ecx,[esi+0x54]; jmp GotoNextScreen 0x596763`).
+  Action id is read as `**(int**)eventArg`.
+- **`CFrontEndManager::Init2` @ 0x00598A1C** — bind key `0x17` → the new
+  `UI_FRONTEND_SCREEN_REDEFINE_KEYS_GAMEPAD` def. **Bind mechanism decoded**
+  (@0x598F4D, the redefine block): Init2 is a sequence of ~30-byte bind blocks,
+  each: build `CWideString`(screenName,-1) via **0x99EBF0**; `mov [slot], KEY`
+  (numeric key inline — `0x16`=keyboard redefine); `call 0x59B5D7` (ecx=this,
+  arg=&slot → get-or-create bind slot for KEY); get FE singleton **0x41E5F2**;
+  `call 0x41DB1D` (resolve screen def by name); store `[slot]=screen`; dtor
+  **0x99EAE0**. So the "detour" is just **replaying ONE bind block post-Init2**
+  for (key=0x17, name="UI_FRONTEND_SCREEN_REDEFINE_KEYS_GAMEPAD") with ecx=the
+  CFrontEndManager `this` — a self-contained call sequence using those 5 named
+  helpers, callable straight from an FSE plugin. No mid-function patch needed;
+  the screen resolves by name (no index dependency).
+- **Capture needs NO code — CONFIRMED (disasm 2026-08-09).** `CKeyRedefiner::
+  Redefine` (0x557D20) is device-agnostic: it compares `this+0x1A8` (expected
+  state/type) vs `event+0x4` (incoming event type) only to pick a state branch,
+  then on the accept path copies the incoming event's **28-byte record wholesale**
+  into the candidate `this+0x1A4` via `rep movsd (7 dwords)`. No keyboard
+  hardcoding — it captures whatever event arrives, keyboard OR controller.
+  `GetSubTypeForAction` (0x557CA0) already handles controller types `0x37/0x38/
+  0x3C`. So a gamepad screen driven by controller events captures pad records
+  unmodified.
+
+**Three opens — ALL VERIFIED (2026-08-09):** (1) frontend defs are editable data
+in `data/CompiledDefs/frontend.bin` (parser+writer: `tools/parse_frontend.py`);
+(2) `Action()` default path `0x59a7ff` is a clean `pop/leave/ret 4`, so an unused
+action id is inert-safe (dispatch tail = `0x59a7d2`); (3) `Redefine` 0x557D20 is
+device-agnostic (confirmed above).
+
+**DATA HALF — BUILT + round-trip verified (`tools/build_gamepad_redefine_data.py`).**
+Concrete frontend.bin structure: options list **#219 `UI_FRONTEND_LIST_OPTIONS_SUB_MENU`**
+Children `[347,350,273,344]` = the 4 rows (row **344 `UI_OPTIONS_BUTTON_REDEFINE_KEYS`**
+Action=283 is the clone source); redefine screen **#238 `UI_FRONTEND_SCREEN_REDEFINE_
+KEYS_PC`**. The builder appends (to a scratch out-dir, never the install):
+`UI_OPTIONS_BUTTON_REDEFINE_KEYS_GAMEPAD` (row clone, Action **284**) at gi 810,
+`UI_FRONTEND_SCREEN_REDEFINE_KEYS_GAMEPAD` (screen clone) at gi 811, and rewrites
+#219 Children → `[347,350,273,344,810]`. names.bin +2 with **crc0** (verified vs the
+contract vectors + 2000/2000 stored). Round-trip re-parse confirms all three.
+Remaining data polish: clone row 344's label child (345) to a "(Gamepad)" text tag
+(else the row shows the keyboard label); the cloned screen's sub-defs are SHARED per
+DEF_LOAD_CONTRACT (title/list stay keyboard until the code detour relabels). Still
+TODO: the gamepad control **scheme** lives in game.bin (per CONTROLLER_ENUMS.md), a
+separate append. In-game validation needs the CODE detour (below) so action 284 routes.
+
+**Net:** a mostly-DATA patch (2 frontend-def clones/edits + 1 named scheme) + a
+**small 2-site code detour** (Action case + Init2 bind). Capture/persistence reuse
+the existing 28-byte record + passive vector `+0x60` — no new storage, no
+redefiner code change.
+
+Open verification before building: (1) ~~`Redefine` type-driven accept~~ ✓
+CONFIRMED; (2) options list #219 def is runtime-editable via the forge frontend-def
+path; (3) the new action id is free and survives `Action()`'s default-return
+filter; (4) the frontend pumps controller input events to the active redefine
+screen (likely — the runtime already resolves controller events via
+GetSubTypeForAction; confirm the event source feeding `Redefine` when the gamepad
+screen is active).
+
+## 5. Build order (reconstruction mockup — superseded by §4b for the retail patch)
+
+1. **[data]** UE gamepad key-name table in the frontend renderer (this commit).
+2. **[title]** screen 4 title → "Redefine Keys (Keyboard)"; add screen 5 title.
+3. **[menu]** duplicate the options row → second row opens screen 5.
+4. **[screen]** authored gamepad list over the redefine backdrop (screen 5),
+   value column from §2.
+5. **[probe]** live-capture the record encoding per physical controller input;
+   fill §2 "record encoding" column.
+6. **[capture]** arm `CKeyRedefiner` for controller events on screen 5 (reuses
+   `Redefine` 0x557D20 once reconstructed).
+7. **[scheme]** gamepad default scheme + reset apply-call.
+8. **[patch]** port the delta onto retail `Fable.exe` as a loader/detour patch
+   (the reconstruction is the reference implementation; the patch reuses the same
+   engine entry points at their retail VAs).
+
+Steps 1–4 are pure reconstruction-side (no live RE needed) and can land now;
+5–7 need one x32dbg capture session; 8 is the eventual base-game deliverable.
+
+## Status (2026-08-09)
+
+- **[data] DONE** (`b1621a8`): `kGamepadKeyValueLabels[24]` / `kGamepadKeyValues[24]`
+  (UE-name ↔ XInput-bit table) in `visual_boot_d3d9.cpp`.
+- **[title] DONE**: detail title splits screen 4 → "Redefine Keys (Keyboard)",
+  screen 5 → "Redefine Keys (Gamepad)"; render clamp raised to `screen<=5`.
+  The screen-5 entry point (`FableSetVisualFrontendDetailScreen`) previously
+  rejected `screen==5`, making the "(Gamepad)" title dead code — **fixed**
+  (guard `screen > 5`), so screen 5 is now reachable and shows its title over
+  the redefine backdrop. Compile-verified; visual-QA of the title pending.
+- **[screen] DONE (scaffold, compile-verified)**: screen 5 renders over screen
+  4's Redefine Keys backdrop (`overlayFrame = 3 + (screen==5?4:screen)` since 5
+  has no baked art) with the shared action-label column (`AppendRedefineActionText`
+  now gated `screen==4||5`) and a new `AppendRedefineGamepadValueText` value
+  column. Value column shows neutral "Unbound" — the per-row action→
+  `EXboxControllerButton` default is NOT wired because only movement/DPad are
+  HIGH-confidence in CONTROLLER_ENUMS.md (face/shoulder/trigger = LOW). Not yet
+  visually verified (screen 5 is unreachable in-game until the menu row lands).
+- **[menu] TODO** (step 3): the interactive host's options submenu is the retail
+  4-row list — `ActivateVisualOptionsSelection` (guard `g_VisualOptionsSelection
+  >= 4`, `detailScreens[4] = {1,3,2,4}`) + `FindVisualOptionsMenuRow` geometry +
+  `g_OptionsRowChildren[4]` (all in visual_boot_checkpoint.cpp). A 5th
+  "(Gamepad)" row needs: guard→5, `detailScreens[5]={1,3,2,4,5}`, extended
+  hit-test rows, AND a 5th *visible* row (authored label/art over the baked
+  4-row menu). Layout-sensitive → needs the headless visual-QA cycle
+  (`build_bootstrap.ps1 -RetailFrontendBank …/data/graphics/pc/frontend.big` →
+  synth-click → screenshot); do NOT do blind (risks regressing the 4-row menu).
+- **[bindings] TODO** (step 4/5): per-row gamepad value column needs a
+  higher-confidence action→button map than CONTROLLER_ENUMS.md's LOW cluster
+  (movement/DPad are usable now; rest need a runtime capture or a 2nd source).
+- **[hover] TODO**: `FableSetVisualFrontendRedefineHover` etc. are gated `!= 4`;
+  generalize to screen 5 for row highlighting once the screen is reachable.
+- **[probe/scheme/patch] TODO** (steps 5–8): unchanged; need the x32dbg capture
+  of the per-input record encoding, then the base-game detour.
+
+## 6. Device-aware UI swapping (Xbox-UI reference) — feasibility (2026-08-09)
+
+Idea: show keyboard prompts when the player uses kbd/mouse and controller glyphs
+when they use a pad, swapping live. Findings:
+
+- **Engine has the device infrastructure.** `EControllerType` (proven:
+  CONTROLLER_NONE=0/XBOX_PAD=1/KEYBOARD=2/MOUSE=3) tags every input record, and a
+  polymorphic `CInputType*` hierarchy distinguishes the source event:
+  `CInputTypeKeyboardKeyEvent`, `CInputTypeMouseButtonEvent`,
+  `CInputTypeXboxPadButtonEvent`, `...XboxPadLeftStickEvent`,
+  `...XboxPadRightStickEvent`, `...MouseMovementEvent`, `...MouseWheelMovement*`
+  (each `GetType()->NControlSystem::EInputType`). So the engine KNOWS the device
+  of every event — an "active device = EControllerType of the last input event"
+  signal is trivially derivable.
+- **Retail PC almost certainly does NOT auto-swap** (Xbox build is always-pad, PC
+  build always kbd/mouse; no active-device getter or button-prompt widget surfaces
+  in the manifest). So device-aware prompts are a NEW feature, not a latent one.
+- **The Xbox build is the controller-UI answer key.** `refs/xbox/headers/
+  front_end_bank_xbox.h` names the controller glyphs (`HUD_ABXY_BIG_A/B/Y_FE`,
+  `UI_THUMB_STICK_U/D/L/R_OFF_FE`, `FRONTEND_BUTTON_L/R/M`); `Media/Fable.uix` is
+  the Xbox UI skin; glyph pixels live in `data/graphics/xbox/frontend.biz`. The
+  FableControllerSupport mod's `player_gui.def` is a *static* controller-HUD (always
+  pad glyphs while its DLL is active) — the reference for the layout.
+- **Implementation shape (a HUD/prompt feature, bigger than the redefine screen):**
+  (1) track last-input device (hook the input event pump → store EControllerType);
+  (2) HUD/frontend button-prompt widgets pick glyph-vs-key text from it; (3) supply
+  the controller glyph atlas (port Xbox `frontend.biz` ABXY/stick sprites into the
+  PC frontend bank). Data = glyph atlas + prompt defs (forge); code = the last-
+  device tracker + prompt selection (FSE plugin). Pairs naturally with the redefine
+  screen (which reads the same EControllerType) and an XInput bridge like the
+  FableControllerSupport DLL.
+
+Scope note: this is a separate, larger workstream than the gamepad-redefine screen
+(§1-5) — it touches HUD prompts game-wide, not just one menu. Recommend landing the
+redefine screen first, then device-aware prompts as a follow-on using the same
+EControllerType signal + Xbox glyph refs.
+
+## 7. LIVE-TESTED in retail (2026-08-09) — both halves work end-to-end
+
+Deployed to the real install (backups: `*.gamepadbak`) and driven in-game:
+- **DATA half VERIFIED:** the Options submenu shows a 5th row **"Redefine Keys
+  (Gamepad)"** (distinct label — the engine renders the literal CWideString, no
+  text.big edit needed). The DEF_LOAD_CONTRACT append loads with no crash.
+- **CODE half VERIFIED:** clicking the gamepad row opens a redefine screen (action
+  284, inert without the hook, now routes) — proving the Action @0x59A238 detour
+  fires and `GotoNextScreen`s to the resolved gamepad screen #811. Boot-safe (Init2
+  is NOT hooked; the earlier 2-hook build crashed at frontend init, redesigned to a
+  single on-demand resolve in the Action hook). DLL: `rebuild/integration/
+  gamepad_patch/gamepad_redefine_hook.c`; inject via FSE_Launcher (Mods\ + Mods.ini).
+
+**Remaining — show CONTROLLER values (not keyboard) on the gamepad screen.** #811 is
+a byte-clone of the keyboard screen #238, so it displays keyboard bindings. The
+screen is data-driven (list #217: `ActionOrder` = the 31 EGameAction ordinals,
+`ActionMap` = action→text tags, `Redefiner`=#412 UI_KEY_REDEFINER_BASE). But the
+redefiner has NO keyboard-vs-controller def field — the vector choice
+(`GetAssignedInputForAction(action, usePassive)`: primary `+0x54` keyboard vs
+passive `+0x60` controller) is CODE. So displaying controller bindings needs a code
+change: when the active screen is the gamepad clone, make CRedefinerList/CKeyRedefiner
+read the passive vector (usePassive=1) and label values via the gamepad table
+(`rebuild/integration/gamepad_binding_table.md`, proven XBOX_PAD_* values). That is
+the next code hook (on CRedefinerList::Refresh 0x557000 / the redefiner), plus a
+gamepad default scheme applied to the passive vector.
+
+## 8. Controller-values step — EXACT decision point found (2026-08-09)
+
+RE'd the redefine display path end-to-end. The keyboard-vs-controller choice is a SINGLE
+hardcoded call, so the "show controller bindings" hook is now fully specified:
+
+- `CRedefinerList::Refresh` @ **0x557000** rebuilds the visible rows. At **0x557008** it calls
+  `GetPrimaryInputVector` @ **0x4088E0** on the `CUserProfileManager` singleton (from
+  `0x40D2A0`, global `[0x13B7D4C]`), then feeds the returned vector to the row builder
+  (`0x556A40`).
+- `GetPrimaryInputVector` @0x4088E0 is dead simple and **hardcoded to the primary vector**:
+    ```
+    mov eax,[ecx+0x54]      ; primary begin
+    mov edx,[ecx+0x58]      ; primary end
+    cmp eax,edx
+    lea esi,[ecx+0x54]      ; return &primary
+    jne +           ; if empty -> EnsureDefaults (0x4085F0)
+    call 0x4085F0
+    mov eax,esi ; ret        ; returns &this[0x54]
+    ```
+  There is NO device/usePassive parameter — the redefine screen therefore ALWAYS shows the
+  keyboard (primary `+0x54`) vector. (Contrast `GetAssignedInputForAction` @0x408C90, which
+  DOES branch: `usePassive!=0` → `+0x54` keyboard, `usePassive==0` → `+0x60` controller. That
+  one is used by other consumers, e.g. HUD prompts at 0x64F/0x652, not by the redefine list.)
+- The controller records live in the **passive vector `+0x60/+0x64`** (28-byte records, same
+  layout). `FABLE_XBOX_CONTROL_SCHEME` (def 1099) is the native gamepad default to seed it.
+
+**Ready-to-build hook (Phase 3 of the patch — NOT yet shipped, needs live USER test):**
+1. In the existing Action-284 detour (`gamepad_redefine_hook.c`), set a module global
+   `g_gamepadRedefine = 1` right before `GotoNextScreen`, and clear it when leaving the
+   screen (hook the screen-exit / back action, or the next non-284 Action).
+2. Add a second inline hook on **0x4088E0**: if `g_gamepadRedefine`, return `&this[0x60]`
+   (mirror the empty→EnsureDefaults guard against `+0x60/+0x64`, seeding from
+   `FABLE_XBOX_CONTROL_SCHEME` if empty); else tail to the saved original. This flips BOTH
+   the display (Refresh reads it) — and, because `CKeyRedefiner::Redefine` is device-agnostic
+   and writes back through the same vector the list is bound to, the CAPTURE side too.
+3. Label the value column via the proven `gamepad_binding_table.md` (`EXboxControllerButton`
+   → UE-style names). This is display-only; stored records stay the engine's native form.
+
+Risk to watch: 0x4088E0 may have other callers active while the gamepad screen is open; gate
+STRICTLY on the screen-active flag so the primary vector is untouched everywhere else. Verify
+in-game with the USER driving (see memory: in-game verification is user-driven, not automated).
+
+## 9. Controller-values hook BUILT + DEPLOYED (2026-08-09) — pending live test
+
+Implemented Phase 3 as three boot-safe inline hooks in `gamepad_redefine_hook.c` (compiled
+VS2022 x86 `cl /O2 /MT /LD /Gz` → 85504-byte PE32, KERNEL32-only import; deployed to the
+retail `Mods\`, prior working single-hook DLL saved as `gamepad_redefine.dll.singlehook.bak`):
+
+1. **Action @0x59A238** (as before) — on action 284, resolve the gamepad screen, now ALSO cache
+   the resolved screen def pointer in `g_gamepadScreen`, then GotoNextScreen to it.
+2. **GotoNextScreen @0x596763** (new) — every screen transition sets
+   `g_useController = (screenArg == g_gamepadScreen)`. Single source of truth for "gamepad
+   redefine screen is showing"; auto-clears the instant the user navigates elsewhere.
+3. **GetPrimaryInputVector @0x4088E0** (new, full 5-byte-jmp replacement) — faithful reimpl of
+   the retail accessor (primary `+0x54`, empty→`EnsureDefaults 0x4085F0`), EXCEPT: when
+   `g_useController` is set AND the return address is Refresh's call site (`0x55700D`), it returns
+   the passive/controller vector `+0x60` (empty→same default-scheme loader). The retaddr guard
+   means ONLY `CRedefinerList::Refresh` is redirected — every other caller keeps the primary
+   vector, so keyboard redefine and all gameplay input are byte-unchanged.
+
+Because `CKeyRedefiner::Redefine` writes back through whichever vector the list is bound to, this
+flips both DISPLAY and CAPTURE to the controller vector on the gamepad screen only.
+
+NEEDS A LIVE USER TEST (in-game verification is user-driven — see memory): launch via
+FSE_Launcher, open Options → "Redefine Keys (Gamepad)", confirm the value column now shows the
+controller bindings (passive vector) and that "Redefine Keys (Keyboard)" is unchanged. If it
+crashes or misbehaves, revert instantly by restoring `gamepad_redefine.dll.singlehook.bak` over
+`gamepad_redefine.dll` (or removing the Mods.ini line). Open item if +0x60 shows empty/unbound:
+seed the passive vector with `FABLE_XBOX_CONTROL_SCHEME` (def 1099) via a ResetAssignedInputs-by-
+name call in the Action-284 handler before GotoNextScreen.
+
+## 10. Live-test session 2026-08-09 (evening) — findings, and the two real blockers
+
+Drove the patch live in retail with a diagnostic/logging DLL. Net: the routing infrastructure
+is solid, but TWO real blockers remain, and the earlier "it opened the gamepad screen" belief was
+wrong. Chronology + hard facts:
+
+1. **Why it kept showing keyboard values (SOLVED, data bug).** The gamepad options row #810 had
+   `Action=284` BUT `ActionOnLeftUnclicked=283` — copied verbatim from the keyboard row #344. A
+   mouse click fires `ActionOnLeftUnclicked`, so clicking "Redefine Keys (Gamepad)" fired **283**
+   (the keyboard action) and opened the KEYBOARD screen #238. We were never actually seeing #811.
+   FIX: set #810.`ActionOnLeftUnclicked = 284` (0x1C010000). Verified in the deployed bin
+   (`Action=284, ActionOnLeftUnclicked=284`). The builder must set this — see §11.
+
+2. **The gamepad screen #811 renders BLACK when correctly routed (OPEN BLOCKER #1).** Once the
+   click-fix routes clicks to 284 -> #811, the screen is black. #811 is a BYTE-IDENTICAL clone of
+   the working keyboard screen #238 (both `Type=10`, `Children=[217,342,632,120,585]`,
+   `NonScrollingChildren=[0,1]`, identical States) — so the screen DEF is fine. The black means
+   opening it via a bare `GotoNextScreen(this, screen, 0)` is INSUFFICIENT: retail's real
+   redefine-screen activation (the action-283 path inside `CFrontEndManager::Action` @0x59A238)
+   must do additional setup — most likely initialising the redefine list #217 / `CRedefinerList`
+   / redefiner context for the screen. NEXT: RE the 283 case in the Action dispatcher (0x59A238;
+   its body reads the event action id at `[[ebp+8]]` ~0x59A281 then dispatches) and replicate the
+   WHOLE handler for 284, not just the navigation call.
+
+3. **The controller vector IS populated (good news).** Instrumented the profile-manager singleton
+   (`*(void**)0x13B7D4C`): primary vector `+0x54` and passive vector `+0x60` BOTH hold **123**
+   28-byte records (`COUNTS a=0x7B b=0x7B`). So controller bindings already exist in `+0x60`;
+   the feature only needs the gamepad screen to READ/format them.
+
+4. **Raw vector pointer-swap is too invasive (REJECTED approach).** Swapping the `+0x54`<->`+0x60`
+   {begin,end,cap} triples while on the gamepad screen blacked the redefine render AND corrupted
+   the profile-select screen (text only drew on hover). Reverted. Do NOT swap the vectors.
+
+5. **`GetPrimaryInputVector` @0x4088E0 is NOT the row-value source.** A screen-gated redirect of
+   0x4088E0 -> `+0x60` had ZERO effect on the displayed values (§8/§9 hypothesis disproved). The
+   redefine row KeyText comes through a different function — candidates: `GetAssignedInputForAction`
+   @0x408C90 (has the `usePassive` param: `!=0`->keyboard `+0x54`, `==0`->controller `+0x60`),
+   called from big functions at 0x48CAF0 / 0x642A60 (HUD/redefine builders). This is OPEN BLOCKER
+   #2 (identify the exact read site).
+
+6. **Hook infrastructure that DOES work** (keep): Action@0x59A238 catches 284, resolves+caches the
+   gamepad screen ptr, `GotoNextScreen`s to it (routing confirmed via logs: `gp` set, screen match).
+   GotoNextScreen@0x596763 screen-tracking flag toggles correctly. `%TEMP%\gamepad_hook.log`
+   diagnostics + a buffered caller-address recorder are wired in the v3 source.
+
+**v3 DLL (authored, NOT deployed):** non-invasive — hooks `GetAssignedInputForAction` @0x408C90 to
+force `usePassive=0` while on the gamepad screen (reads controller vector) and logs every caller's
+return address so, on the next test, we see whether the redefine rows actually flow through 0x408C90
+(and if not, exactly which function to target). It cannot corrupt vectors/other screens. It's gated
+behind BLOCKER #1: it's pointless until #811 opens non-black.
+
+**Definitive next tool:** live tracing. Start the debugger server (`python -m debugger`) so
+`mcp__ghidra__debugger_trace_function` can non-invasively log calls+args on 0x408C90 / the redefine
+builders while the screen is shown — this pins BOTH the screen-activation gap and the value read
+path in one session instead of blind rebuild/redeploy cycles.
+
+**Install state:** reverted to CLEAN RETAIL (frontend.bin/names.bin restored from *.gamepadbak,
+Mods.ini `gamepad_redefine.dll=0`). All patch artifacts remain in the repo; redeploy per §4b/README
+to resume.
+
+---
+
+## 2026-08-10 — SHELVED: redefine + gamepad/menu work REVERTED from rebuild & install
+
+Per user direction, the entire redefine-keys / gamepad-menu line was reverted out of the
+**rebuild** and the **live install**, to refocus on the binary-wide byte-parity crawl
+("byte purity and parity... no hacks, no guesses"). This doc + git history are the record;
+nothing below is lost, only un-landed.
+
+**Removed from the rebuild (working tree):**
+- `rebuild/integration/gamepad_patch/` (whole dir: hook `.c`, `.dll`, `.obj`, README) — deleted.
+- `tools/build_gamepad_redefine_data.py` (frontend.bin/names.bin data-patch builder) — deleted.
+- Gamepad blocks in `rebuild/integration/visual_boot_d3d9.cpp`: `kGamepadKeyValueLabels`/
+  `kGamepadKeyValues`, the "(Keyboard)/(Gamepad)" title split (reverted to plain "Redefine Keys"),
+  `AppendRedefineGamepadValueText` + its call, screen-5 backdrop reuse, and the screen>4→>5 guard
+  raises. All reverted to the pre-gamepad state (screens capped at 4).
+- Gamepad rows in `rebuild/integration/visual_boot_checkpoint.cpp`: options-row loop `!=5`→`!=4`,
+  `detailScreens[5]{1,3,2,4,5}`→`[4]{1,3,2,4}`, selection guard `>=5`→`>=4`.
+- The 8 landed byte-pure `CKeyRedefiner`/`CRedefinerList` functions un-landed: catalog blocks
+  (`build_candidates.ps1`), src+test files (`rebuild/{src/compiled,tests}/00/55/`), and rows in
+  `retail-parity.tsv`, `vc71-compiled.tsv`, `auto-re-candidates.tsv`, `ARTIFACT_INDEX.tsv`.
+  Addrs: 00556580, 00557850, 00557860, 00557880, 005578a0, 00557bd0, 00557c10, 00557ca0.
+  Their manifest reconstruction columns (compiled_status/behavior_test/retail_parity/
+  compiled_source) were blanked; the 8 addrs were appended to the durable crawl ledger
+  `tools/decomp_pipeline/crawl/gen_tried.txt` so the crawl won't immediately re-suggest them.
+
+**KEPT (intentionally):**
+- All findings docs (this file, `docs/engine/REDEFINE_INPUT_SYSTEM.md`).
+- The faithful **keyboard** Redefine-Keys screen rendering (`AppendRedefineKeyText`,
+  `AppendRedefineActionText`, `kRedefine*` constants) — retail has that screen; it is real parity.
+- The PDB-backed **naming** identities for the 8 functions in `manifest/functions.tsv` and
+  `rebuild/corrections/function_overrides.tsv` (RE-DB naming facts, independent of reconstruction).
+
+**Live install:** stock. `Mods.ini` = FSE-only (gamepad line removed), `Mods/gamepad_redefine.dll`
+(+`.singlehook.bak`) deleted, `frontend.bin`/`names.bin` confirmed byte-identical to stock (SHA-1),
+all `*.gamepadbak`/`*.preclickfix` backups removed.
+
+**To resume this feature later:** the byte-exact function sources are recoverable from git history
+(commits before 2026-08-10); the patch package is at commit `07c1037`. Re-land the 8 functions via
+the normal crawl, then re-apply the menu/gamepad integration from git. Open blockers unchanged:
+#811 gamepad screen renders black (needs retail 283-handler setup), and the redefine value read
+path (candidate `GetAssignedInputForAction` @0x408C90) — pin both via live `debugger_trace_function`.

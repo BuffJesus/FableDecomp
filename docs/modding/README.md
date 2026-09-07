@@ -1,0 +1,42 @@
+# Modding-tooling documentation has moved
+
+These documents describe FableForge / ForgeFSE tooling rather than the decomp itself and now live in those repositories (`docs/from_fabletlc/`).
+
+- <a id="ai_texture_pipeline"></a>`AI_TEXTURE_PIPELINE.md` -> FableForge `docs/from_fabletlc/AI_TEXTURE_PIPELINE.md`
+- <a id="bake_forgetest_terrain"></a>`BAKE_FORGETEST_TERRAIN.md` -> FableForge `docs/from_fabletlc/BAKE_FORGETEST_TERRAIN.md`
+- <a id="banjo_hero_swap_plan"></a>`BANJO_HERO_SWAP_PLAN.md` -> FableForge `docs/from_fabletlc/BANJO_HERO_SWAP_PLAN.md`
+- <a id="blender_addon"></a>`BLENDER_ADDON.md` -> FableForge `docs/from_fabletlc/BLENDER_ADDON.md`
+- <a id="comprehensive_modding_environment"></a>`COMPREHENSIVE_MODDING_ENVIRONMENT.md` -> FableForge `docs/from_fabletlc/COMPREHENSIVE_MODDING_ENVIRONMENT.md`
+- <a id="content_authoring_plan"></a>`CONTENT_AUTHORING_PLAN.md` -> FableForge `docs/from_fabletlc/CONTENT_AUTHORING_PLAN.md`
+- <a id="coop_revival"></a>`COOP_REVIVAL.md` -> FableForge `docs/from_fabletlc/COOP_REVIVAL.md`
+- <a id="custom_heightmap_terrain"></a>`CUSTOM_HEIGHTMAP_TERRAIN.md` -> FableForge `docs/from_fabletlc/CUSTOM_HEIGHTMAP_TERRAIN.md`
+- <a id="custom_level_authoring_ux"></a>`CUSTOM_LEVEL_AUTHORING_UX.md` -> FableForge `docs/from_fabletlc/CUSTOM_LEVEL_AUTHORING_UX.md`
+- <a id="ecosystem"></a>`ECOSYSTEM.md` -> FableForge `docs/from_fabletlc/ECOSYSTEM.md`
+- <a id="editor_tooling_notes"></a>`EDITOR_TOOLING_NOTES.md` -> FableForge `docs/from_fabletlc/EDITOR_TOOLING_NOTES.md`
+- <a id="egocore_integration"></a>`EGOCORE_INTEGRATION.md` -> FableForge `docs/from_fabletlc/EGOCORE_INTEGRATION.md`
+- <a id="fable2_bwsmarket_scene_import_progress"></a>`FABLE2_BWSMARKET_SCENE_IMPORT_PROGRESS.md` -> FableForge `docs/from_fabletlc/FABLE2_BWSMARKET_SCENE_IMPORT_PROGRESS.md`
+- <a id="fableforge_ui_ux_research"></a>`FABLEFORGE_UI_UX_RESEARCH.md` -> FableForge `docs/from_fabletlc/FABLEFORGE_UI_UX_RESEARCH.md`
+- <a id="forgefse_integrated_runtime_audit"></a>`FORGEFSE_INTEGRATED_RUNTIME_AUDIT.md` -> ForgeFSE `docs/from_fabletlc/FORGEFSE_INTEGRATED_RUNTIME_AUDIT.md`
+- <a id="forgefse_retail_script_runtime"></a>`FORGEFSE_RETAIL_SCRIPT_RUNTIME.md` -> ForgeFSE `docs/from_fabletlc/FORGEFSE_RETAIL_SCRIPT_RUNTIME.md`
+- <a id="forgefse_retail_shadow_smoke"></a>`FORGEFSE_RETAIL_SHADOW_SMOKE.md` -> ForgeFSE `docs/from_fabletlc/FORGEFSE_RETAIL_SHADOW_SMOKE.md`
+- <a id="forgefse_runtime_script_audit"></a>`FORGEFSE_RUNTIME_SCRIPT_AUDIT.md` -> ForgeFSE `docs/from_fabletlc/FORGEFSE_RUNTIME_SCRIPT_AUDIT.md`
+- <a id="forgefse_script_compatibility"></a>`FORGEFSE_SCRIPT_COMPATIBILITY.md` -> ForgeFSE `docs/from_fabletlc/FORGEFSE_SCRIPT_COMPATIBILITY.md`
+- <a id="forgefse_script_runtime_audit"></a>`FORGEFSE_SCRIPT_RUNTIME_AUDIT.md` -> ForgeFSE `docs/from_fabletlc/FORGEFSE_SCRIPT_RUNTIME_AUDIT.md`
+- <a id="forgetest64_dark_terrain_and_foliage"></a>`FORGETEST64_DARK_TERRAIN_AND_FOLIAGE.md` -> FableForge `docs/from_fabletlc/FORGETEST64_DARK_TERRAIN_AND_FOLIAGE.md`
+- <a id="forgetest64_ui_and_region"></a>`FORGETEST64_UI_AND_REGION.md` -> FableForge `docs/from_fabletlc/FORGETEST64_UI_AND_REGION.md`
+- <a id="forgetest_state"></a>`FORGETEST_STATE.md` -> FableForge `docs/from_fabletlc/FORGETEST_STATE.md`
+- <a id="fqt_creation_kit_task_plan"></a>`FQT_CREATION_KIT_TASK_PLAN.md` -> FableForge `docs/from_fabletlc/FQT_CREATION_KIT_TASK_PLAN.md`
+- <a id="fqt_editor_bridge_plan"></a>`FQT_EDITOR_BRIDGE_PLAN.md` -> FableForge `docs/from_fabletlc/FQT_EDITOR_BRIDGE_PLAN.md`
+- <a id="fqt_editor_targets"></a>`FQT_EDITOR_TARGETS.md` -> FableForge `docs/from_fabletlc/FQT_EDITOR_TARGETS.md`
+- <a id="mesh_export_bridge"></a>`MESH_EXPORT_BRIDGE.md` -> FableForge `docs/from_fabletlc/MESH_EXPORT_BRIDGE.md`
+- <a id="native_stb_writer_scope"></a>`NATIVE_STB_WRITER_SCOPE.md` -> FableForge `docs/from_fabletlc/NATIVE_STB_WRITER_SCOPE.md`
+- <a id="native_terrain_status"></a>`NATIVE_TERRAIN_STATUS.md` -> FableForge `docs/from_fabletlc/NATIVE_TERRAIN_STATUS.md`
+- <a id="new_level_assembly"></a>`NEW_LEVEL_ASSEMBLY.md` -> FableForge `docs/from_fabletlc/NEW_LEVEL_ASSEMBLY.md`
+- <a id="new_level_creation"></a>`NEW_LEVEL_CREATION.md` -> FableForge `docs/from_fabletlc/NEW_LEVEL_CREATION.md`
+- <a id="openalbion_terrain_crosswalk"></a>`OPENALBION_TERRAIN_CROSSWALK.md` -> FableForge `docs/from_fabletlc/OPENALBION_TERRAIN_CROSSWALK.md`
+- <a id="particle_lighting_package_readme"></a>`PARTICLE_LIGHTING_PACKAGE_README.md` -> FableForge `docs/from_fabletlc/PARTICLE_LIGHTING_PACKAGE_README.md`
+- <a id="terrain_blender"></a>`TERRAIN_BLENDER.md` -> FableForge `docs/from_fabletlc/TERRAIN_BLENDER.md`
+- <a id="terrain_native_bake"></a>`TERRAIN_NATIVE_BAKE.md` -> FableForge `docs/from_fabletlc/TERRAIN_NATIVE_BAKE.md`
+- <a id="things_editor"></a>`THINGS_EDITOR.md` -> FableForge `docs/from_fabletlc/THINGS_EDITOR.md`
+- <a id="tooling_integration_matrix"></a>`TOOLING_INTEGRATION_MATRIX.md` -> FableForge `docs/from_fabletlc/TOOLING_INTEGRATION_MATRIX.md`
+- <a id="ui_upscale_plan"></a>`UI_UPSCALE_PLAN.md` -> FableForge `docs/from_fabletlc/UI_UPSCALE_PLAN.md`

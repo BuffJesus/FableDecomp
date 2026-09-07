@@ -1,0 +1,321 @@
+# Session checkpoint — 2026-07-23 (resume state if usage runs out)
+
+## Fresh-session resume - 2026-08-05
+
+Workspace: `D:\Documents\FableTLC`.
+Active lane: frontend retail visual parity, branch `agent/frontend-retail-input-parity`.
+The worktree is intentionally dirty from parallel decomp/automation work; preserve unrelated
+changes and do not reset or clean the repository.
+
+### Latest verified frontend state
+
+- Release bootstrap rebuild passes, including `VISUAL_BOOT_CHECKPOINT PASS` and
+  `FABLETLC_VISUAL_BOOT_BEHAVIOR PASS`.
+- The Release visual checkpoint and latest full
+  `smoke_visual_checkpoint.ps1 -VerifyRetailReferenceSize -VerifySubscreens`
+  run pass the complete frontend route, including Saved Games highlight delta,
+  Redefine scrolled hover/off-page remap, and detail footer/arrow proofs.
+- Full Python decomp/render discovery passes **109/109**. `py_compile` and relevant
+  `git diff --check` pass; only normal CRLF/LF conversion warnings remain.
+- Bedtime visual parity delta is recorded in `docs/journal/HANDOFF_ARCHIVE.md` and
+  `docs/journal/2026-09/ACTIVE_TASK_LIST.md`: Redefine overlap draw order is corrected, live
+  detail text has a bounded dark halo, and Saved Games minimap alpha is clipped
+  to the retail ring footprint. Saved Games row labels and File Information
+  text now use the live ENG_ARIAL_16/24 glyph paths in the 1664-wide component
+  route. The HUD_TEXTBOX_BACK_FE bottom backdrop and UI_TABLE_TEST_H_T_FE rule
+  now follow live atlas quads as well. The focused frontend renderer suite is
+  The asymmetric UI_TEXT_AREA table family now follows six live atlas quads.
+  The UI_TITLE_AREA frame now follows six live atlas quads as well, and the
+  “Saved Games” title follows the live ENG_ARIAL_24 glyph path. The save
+  highlight is emitted after the cell backdrop, and the Render2D batch budget
+  now covers the page-atlas texture path. The focused frontend renderer suite
+  is **50/50** after these changes.
+- Redefine action and normal key-value labels now use the recovered live
+  ENG_ARIAL_12 atlas/metrics, matching the authored row-child font. The
+  title/footer remain on ENG_ARIAL_24; the initial and scrolled normal rows
+  no longer depend on baked key text.
+- The D3D9 live vertex/record staging queues were expanded for the Redefine
+  page-atlas path. Reference-size captures for logical selections 6/15/22
+  now present their UI instead of retaining only the forest backdrop.
+- Do not treat the halo as final font purity: the full eight-neighbor outline
+  exceeded the fixed Render2D queue, so the live path currently uses a bounded
+  two-diagonal approximation. Next visual work is slider placement, exact font
+  weight/filtering, and same-state capture comparison.
+
+### Redefine Keys implementation completed
+
+- The recovered 44 expanded rows are rendered through a dedicated 3200x3360 diagnostic atlas,
+  embedded as resource 125 and uploaded through its own D3D9 texture. Logical list positions
+  1..30 route to atlas pages; the first page remains the live native path.
+- The smoke sends a real `WM_MOUSEWHEEL`, walks the first and clamped final pages, verifies the
+  final Down arrow is suppressed, and proves scrolled row hover changes the frame.
+- Native hit-testing now uses the recovered ActionOrder-to-expanded-row offsets
+  `{0,4,5,6,...,33}`. Transparent rows on the final page no longer accept hover/click state.
+- Stable recovered mouse/keyboard bindings use retail-facing labels. Opaque/reserved inputs
+  retain source notation such as `K:0x54` and `K:0x55`; the recovered Photojournal binding
+  is rendered as `PRNT SCRN`.
+- A stale-hover bug was fixed: row/reset hover state is constrained while the list is scrolled,
+  and live row hover is composited above scrolled atlas pages.
+
+### Next recommended task
+
+Native off-page capture/remapping is now implemented as a separate bridge change. The current,
+entry, and saved transactions use all 44 expanded rows; logical ActionOrder children map to the
+expanded capture row; and changed supported key tiles overlay scrolled atlas pages without
+overwriting unresolved static labels. The retail coexistence groups `{8,31,45}` and `{26,86}`
+and the routed-input `IsRedefinableKey` filter are now applied. Profile persistence and
+opaque/reserved bindings remain unresolved by design.
+
+Detail-screen/helper geometry is now consolidated in shared decoded records for row
+metadata/defaults, arrows, footer helpers, Redefine reset controls, and the Redefine
+list/value/hover geometry. Runtime hit-tests and D3D9 overlays consume the same records.
+
+Useful files:
+
+- `rebuild/integration/visual_boot_checkpoint.cpp` - input, list mapping, transaction state.
+- `rebuild/integration/visual_boot_d3d9.cpp` - atlas/page and hover compositing.
+- `rebuild/integration/fable_visual_d3d9.h` - bridge API.
+- `rebuild/smoke_visual_checkpoint.ps1` - end-to-end proof.
+- `tools/render_fable_frontend_subscreens.py` - decoded 44-row metadata and atlas bake.
+- `docs/journal/HANDOFF_ARCHIVE.md`, `docs/journal/2026-09/ACTIVE_TASK_LIST.md`, `docs/formats/FRONTEND_FORMAT.md` - canonical status.
+
+### Validation commands
+
+```powershell
+& .\rebuild\build_bootstrap.ps1 -Configuration Release
+& .\rebuild\smoke_visual_checkpoint.ps1 -VerifyRetailReferenceSize -VerifySubscreens -ReferenceProfileName Cornelio -TimeoutSeconds 30
+python -m unittest discover -s tools/decomp_pipeline/tests -p 'test_*.py'
+python -m py_compile tools/render_fable_frontend_subscreens.py tools/decomp_pipeline/tests/test_render_fable_frontend_subscreens.py
+```
+
+Two tracks in flight: (A) background decomp/byte-match loop, (B) foreground custom quest-card work.
+`docs/journal/HANDOFF_ARCHIVE.md` (automation-maintained) has the canonical decomp resume; this file adds the
+in-flight session state + the quest-card task the automation does NOT track.
+
+## UI continuation — 2026-08-02
+
+The frontend visual checkpoint now has a sourced Credits entry path. Its
+compiled layout oracle is green, its initial frame preserves the retail scroll
+start at y=480, action 67 enters it, and the shared Back helper/Escape returns
+to the main menu. The focused frontend suite is 35/35; the complete visual
+smoke includes Credits and its hover proof. Change Profile's normal runtime
+list refreshes the user's profile directories and renders their names through
+the retail font atlas. Delete mode now enters the retail-pipeline confirmation
+frame, the empty-profile branch reaches the authored New Profile route, and
+new-profile editing follows the recovered 128-byte text-input contract. Native
+delete/create/load/refresh persistence remains an explicit manager link boundary.
+Full Credits text scrolling remains a separate live-component boundary.
+
+The focused suite also extracts all six authored `TEXT_GUI_CRE_*` groups
+from `text.big` without flattening or reordering their member IDs. Geometry
+and runtime promotion remain gated until the retail text layout and scroll
+timing are measured.
+
+The Change Profile validator deliberately requires both Type-43 profile lists
+to have no serialized children: their rows are runtime data and are supplied
+to the normal route from the user's profile store rather than replaced with
+hardcoded names or a baked sample surface. The normal list's decoded
+`PositionOffsetY=28` is also the single row-step used by runtime placement and
+mouse hit-testing.
+
+**Current prioritized queue:** `docs/journal/2026-09/ACTIVE_TASK_LIST.md`. Its generated address lists are
+`rebuild/backlog/active_candidate_queue.tsv`, `fse2_remaining_ranked.tsv`, and
+`pending_batch_status.tsv`. Use that queue instead of the older candidate ordering below.
+
+## A. Background decomp — in flight
+- **Coverage:** ~1,731 landed src/compiled; ~1,588 audit-confirmed byte-matches (EXACT+RELOC).
+  fse1 landed **108 verified ForgeFSE bindings** (commit `8b97302`).
+- **Running workflow:** residue cracker `wg7qhm5s6` (`scratchpad/residue_wf.js`) — 8 register-alloc
+  DIFFER residues (`0081ee60 0081efc0 0081f090 0081f170 0082e330 0082e3d0 0082e420 00ab4700`).
+  On completion: for each self-win, OVERWRITE the landed `rebuild/src/compiled/*<addr>*.cpp` with the
+  winning source (these are already in the catalog), then re-run `catalog_parity_audit.py` and commit.
+- **Queued next (prepped, ready to fire):** `fse2` — 76 larger ForgeFSE binding methods (97–160B).
+  Oracle+targets: `rebuild/oracles/pending/fse2_{oracle.tsv,targets.json}`; bundles+addr list in
+  `scratchpad/fse2_{bundles,addr_list.json}`. Launch: `Workflow(scriptPath=scratchpad/author_wf.js,
+  args={"batch":"fse2","addrs":[...fse2_addr_list.json...]})`, single lane, then verify_and_land.
+- **Loop mechanics / tooling:** all committed in `tools/decomp_pipeline/` — see HANDOFF. One lane at a
+  time (avoids rate-limit); watch for monthly-spend-limit failures (landing/exports are local).
+- **Downstream exports (mirrored to projects):** `python tools/decomp_pipeline/export_verified_facts.py`
+  regenerates + mirrors `verified_functions/struct_schema/forgefse_verified_bindings` into
+  FableForge/ForgeFSE/FQT doc dirs.
+
+## B. Custom quest card — the F9 "Active Quests" fix (foreground task)
+**Goal:** custom hunt-quest cards that appear in the F9 Active Quests menu (user's mod: NPC quest-giver
+with 9 cycling hunt quests; everything works EXCEPT the F9 card).
+
+**Root cause (engine decomp, HIGH confidence — `docs/engine/QUEST_CARD_EMPTY_FIX.md`):** the F9 list
+(`ConstructQuestList param_3==1`) renders from the **runtime card THING** (`CTCQuestCard`) in the quest
+manager's runtime list (`DAT_013b89fc+0x6c`), NOT from the static def or the guild-list entry. That
+THING exists only after the quest is **ACTIVATED**; setters resolve it via
+`GetActiveQuestCardFromScriptName` keyed on the **quest script name** (`card+0x28`). Title/summary come
+from static def TextIDs (`def+0x30`/`+0x2c`) — **zero/invalid TextID => blank**.
+
+**Required accept-handler flow (script names MUST all match):**
+```
+AddQuestRegion(region,...) -> AddQuestCard("OBJECT_QUEST_CARD_<n>", questScriptName, false,false)
+-> ActivateQuest(questScriptName)  [creates the F9 THING]
+-> SetQuestCardObjective/GoldReward/RenownReward(questScriptName, ...)
+```
+FQT's start-screen generator already implements this exact flow (working reference).
+
+**CQuestCardDef fields** (`ghidra_out/def_field_layouts.json`, `docs/engine/QUEST_CARD_SYSTEM.md`):
+QuestName +0x28/QuestSummary +0x2c/QuestObjective +0x30 (TextIDs), RegionName +0x38, InventoryCategory
++0x40, RenownReward +0x44, GoldReward +0x48, RewardObjects +0x4c, IsCoreQuest +0x58.
+FSE API: `AddQuestCard`@0x008913F0 (vtable292, takes questCardObjectName), `GiveQuestCardDirectly`
+@0x008968C0 (transient, avoid), `SetQuestCardObjective` plus the ForgeFSE wrapper names
+`SetQuestGoldReward`/`SetQuestRenownReward` for the reward fields.
+
+**Decision (user, 2026-07-23):** author **DISTINCT card def per quest** (9 hunt quests). Use **donor
+text** (clone WASP_MENACE TextIDs) for the first working test → swap in custom text.big entries later.
+
+**DONE (2026-07-23):**
+- ✅ **9 distinct hunt cards authored + byte-validated** → `work/quest_card_custom_20260723/`.
+  `build/data/CompiledDefs/game.bin` = retail + `OBJECT_QUEST_CARD_HUNT_1..9` (entries 14763–14780),
+  cloned from Wasp Menace (valid TextIDs 5289/6894 → non-blank), escalating rewards 200g/50r →
+  2000g/550r, IsCoreQuest=1, all decode clean. Tool: `forge quest card <root> <schema> HUNT_N
+  --donor OBJECT_QUEST_CARD_WASP_MENACE --in-place --gold G --renown R --core 1` (pass bare `HUNT_N`;
+  the tool prepends `OBJECT_QUEST_CARD_`).
+- ✅ Companion script `work/quest_card_custom_20260723/companion_hunt_quest.lua` (accept-handler flow).
+- ✅ Latent retail donor found: `OBJECT_QUEST_CARD_BOUNTY_HUNT` #3725, `CREATURE_BANDIT_BOUNTYHUNT`
+  #1118, `OBJECT_HERO_TITLE_SHADOWHUNTER` #3971 — Fable ships a bounty-hunt scaffold.
+
+**PERSISTENCE SPIKE VERDICT (2026-07-23, decomp — HIGH confidence):** a quest card activated in the
+childhood prologue does **NOT** survive the childhood→adult time-skip. The runtime card THING
+(`CTCQuestCard`) is transient and destroyed on region/world unload; `AddQuestCard` only inserts into
+the runtime guild list (CQuestManager+0x58), which is NOT entity-serialized. **BUT quest SCRIPT_DATA
+variables DO persist** when the same ForgeFSE quest implements `OnPersist` and round-trips its
+namespaced `SetStateBool` value with `PersistTransferBool`. (`SetStateBool` alone is in-memory;
+ForgeFSE exposes no `SetQuestVariable`/`GetQuestVariable` binding.) ⇒ Use **discover-as-kid /
+hunt-as-adult**: the mysterious NPC in childhood Oakvale
+sets a persistent quest variable; an adult script checks it and does AddQuestCard→Activate→Set*.
+Cites: `docs/engine/QUEST_CARD_SYSTEM.md:13,23`, `docs/formats/SAVE_ENTITY_GRAPH.md:256-280`, `FORGETEST_STATE.md:40`.
+
+**Design (user, 2026-07-23):** mysterious NPC flavor; discover-as-kid → hunt-as-adult.
+
+**DONE after the original checkpoint:**
+1. ✅ **Mysterious NPC placement package** under
+   `work/quest_card_custom_20260723/npc_placement/`. It clones the childhood
+   `NOVI_BookTrader` into StartOakValeEast at `M_BarrelManHiddenPos`, offline only. Validation:
+   106→107 things, exactly one addition, zero changes/removals/conflicts, base and modified TNGs
+   round-trip. The live TNG SHA-256 remains equal to the untouched base.
+2. ✅ **Correct persistence bridge:** `SecretHunt.lua` uses quest-local `SetStateBool` plus
+   `OnPersist`/`PersistTransferBool`; the NPC entity uses real `TEXT_SECRET_HUNT_NPC_*` dialogue
+   keys. No nonexistent SetQuestVariable API remains.
+3. ✅ **EgoCore-compatible text writer ported into FableForge:** `forge text set` and atomic
+   `forge text import`, plus quest-card `--title-text/--summary-text/--objective-text/--success-text`.
+   The writer preserves retail `BIGB`, metadata, type histogram, and untouched payloads. FableForge
+   test suite: 7/7 PASS.
+4. ✅ **Custom text staged:** `custom_text_manifest.json` contains 36 strings. The staged
+   `build/data/lang/English/text.big` retains all 28,913 retail records byte-identically and appends
+   IDs 28914–28949. All nine card defs now reference distinct custom title/summary/objective IDs.
+5. ✅ **Decomp resumed:** fse2 landed
+   `CGameScriptInterface::CameraEarthquakeIntensityAtPos @ 0x0088ED20` as
+   `RELOCATION_MATCH + behavior PASS`; fse2 is 1/76 with 75 remaining. Notes and the honest
+   0x008997E0 near miss are in `work/decomp_fse2_resume/`. The scheduled
+   `FableTLC Auto RE Wave 2` lane was restarted after integration and resumed Wave 3 work.
+
+**Next steps:**
+1. Register `SecretHunt` plus `MysteryHunt1..9` in ForgeFSE/QST, then run the documented offline
+   deployment smoke. Back up and stage both game.bin and English text.big; do not deploy only one.
+2. Confirm the live region strings used by the companion hunt table, especially Graveyard,
+   HobbeCave, and Snowspire.
+3. Continue fse2 from the 75 remaining staged binding methods, using the VC7.1 byte gate.
+
+Artifacts folder: `work/quest_card_custom_20260723/` (README.md + companion_hunt_quest.lua + build/).
+
+---
+
+## Session addendum — 2026-07-23 (evening)
+
+**Decomp landings:** +2 byte-exact fse2 bindings via a NEW **diff-feedback refine loop**
+(`MsgOnHeroCastSpell` 0x00893f80, `IsDeedWitnessed` 0x0089c8a0; both RELOCATION_MATCH + behaviour
+PASS). Byte-match count 55→57. Method: author → compile → feed annotated retail-vs-built disasm diff
+back to the agent with register-alloc nudging → verify_and_land. This cracked cases the mechanical
+`crack_residue.py` sweep and first-pass authoring both missed (0 wins each).
+
+**fse2 status:** 20 of 76 authored (session-limit cut the fan-out at 55 failures); 0 byte-exact on
+first pass, 2 landed after the refine round. ~55 methods still un-authored; ~8 close DIFFERs remain
+(same-length near-misses, candidates for another refine round). New tool: `verify_residue.py`.
+
+**Residues (the 8 register-alloc DIFFERs):** still DIFFER. Agent re-authoring reached 0 byte-exact;
+several are now documented **IRREDUCIBLE** — VC7.1 13.10 deterministically emits a register
+allocation retail doesn't (e.g. 0081f090 extra `mov esi,eax`; 008994e0 tail `Apply` this-via-eax).
+These are compiler-scheduler artifacts, not source-shape bugs. Honest verdict: not all residues are
+crackable from C source under this toolchain.
+
+**Quest cards — track C DONE:** `work/quest_card_custom_20260723/deploy/` registration package
+assembled + offline-validated (TNG 106→107 clean; 9 HUNT cards decode clean). Engine finding:
+MysteryHunt1..9 need NO separate ForgeFSE registration — `LuaQuestState::ActivateQuest` forwards the
+name string to engine ActivateQuest (vtable[276]); one host quest `SecretHunt` drives all nine.
+Remaining: in-game smoke (manual, needs live game) + confirm Graveyard/HobbeCave/Snowspire region
+strings.
+
+**Major finding — dormant co-op multiplayer subsystem.** Documented in `docs/journal/FINDINGS_LOG.md`
+(2-source: retail name DB + `ego_r` debug PDB). `LHNetworkLib` sockets + `CNetworkClient`
+client/host `CGameEventPackage` replication + `CPlayerManager` multi-controller + combat-capable
+`CTCCoopSpirit` (COOP_SPIRIT_PLAYER_ONE..FOUR). Next probe: decompile the gate/protocol cluster
+(`IsMultiplayerGameActive` 0x449d20, `InitialiseAsNetworkHost` ~0x4ae940, `GetLocalGameEventPackageSet`
+0x4aeaa0, `ProcessEventPackage` 0x416670, `CTCCoopSpirit::Construct` 0x4d55d0) to gauge how gated vs
+gutted the path is.
+
+---
+
+## Session addendum — 2026-08-02: OpenRetailBank runtime parity
+
+The standalone OpenRetailBank runtime lane under
+`rebuild/runtime/openretailbank/` now has evidence beyond structural linking:
+
+- `verify_anchor.py`: `CBankFileManager::OpenRetailBank @ 0x009A8840` remains
+  1565/1565 bytes with 44 relocations, `RELOCATION_MATCH`.
+- `link_smoke.py`: 32/32 objects compile and strict DLL link has 0 unresolved
+  externals.
+- `runtime_probe.py` opens installed `frontend.big`, matches its single contained-bank
+  record and all five values, then reads all 394 oracle entry payloads through the
+  reconstructed threaded handle.
+- Payload result: 394/394 entries, 13,287,366 bytes, byte-for-byte equal.
+
+The raw anchor remains untouched. Remaining OpenRetailBank work is engine-level
+entry-metadata consumption/API coverage; bank-open, contained-bank, threaded-handle,
+and payload parity are verified.
+
+### Frontend readability checkpoint — 2026-08-03
+
+The `ChangeStateFirstTime` and `GetInstance` frontend leaves now have zero
+`__asm` in their promoted sources. Typed ABI declarations reproduce retail
+exactly under VC7.1: 21 bytes/one relocation for the state transition and
+41 bytes/four relocations for the singleton getter. Both behavior fixtures and
+the canonical Release build pass. The decompiled `CreateComponent` wrapper is
+also promoted as typed C++ (`__thiscall` over the base manager factory): 21
+bytes, two relocations, behavior PASS, and canonical Release build PASS.
+`CNewFrontendGameComponent::LoadGame` is also promoted without assembly:
+31 bytes, one relocation, correct prepare/flag/assignment ordering, and
+canonical Release build PASS.
+The history deque `BlockSize` and iterator `Current` leaves are now promoted
+as typed C++ as well: exact 4-byte and 3-byte retail bodies, zero relocations,
+behavior PASS, and canonical Release build PASS.
+The adjacent `BlockEndSlot`, `NodeSlot`, `EndIterator`, and `BlockBegin` leaves
+are now promoted as typed field/address expressions and are covered by exact
+retail-byte and behavior gates.
+`Equal` and `SetNode` are promoted through typed pointer comparison and field
+assignment: exact 18-byte and 23-byte retail bodies, zero relocations, and
+behavior PASS. Ghidra confirms the retail `Run` order after the movie phase:
+frontend/text/shader bank opens, Init2, engine/frontend initialization,
+clear/swap, then `ChangeStateFirstTime`. The bank closure remains isolated in
+the standalone verified runtime lane until its complete dependency closure
+can be linked into the visual path without host substitutions.
+The duplicate `NodeSlot @ 0x0059AA0D` and `EndIterator @ 0x0059AA15` leaves are
+also promoted as typed address expressions with exact 8-byte bodies, zero
+relocations, and behavior gates.
+The deque map allocator cluster is covered too: `Deallocate @ 0x0059A9F9` is
+exact readable C++ (20 bytes, one helper relocation), while `Allocate @
+0x0059A9E0` retains only its exact 25-byte assembly control-flow shape because
+VC7.1 folds equivalent readable C++ return paths and removes retail's explicit
+`eb 02` jump. Both behavior fixtures and the full Release gate pass.
+The recovered `Init2 @ 0x00598A1C` component-definition literals are recorded
+in `work/frontend_re/manager_init2_component_manifest.tsv`; a source check
+passes for all 24 entries against the Ghidra decompilation, including the
+retail `UI_FRONTEND_SCREEN_REDEFINE_KEYS_PC` definition.
+The `CCountedPointer<NUISystem::CAction>::Release @ 0x0059A994` probe recovered
+the real `CCPPointerInfo` callback dispatch (`+4` member-function address,
+action object at `+8` in ECX), but VC7.1 emits different clear and stack-cleanup
+instructions; it remains exact assembly and is not falsely promoted.

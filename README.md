@@ -49,9 +49,9 @@ The work has three connected outputs:
 - **Native tooling:** reusable format, scripting, editor, viewer, and modding
   knowledge produced by the reverse engineering.
 
-The detailed strategy is in [FULL_DECOMP.md](docs/FULL_DECOMP.md). The latest
+The detailed strategy is in [FULL_DECOMP.md](docs/pipeline/FULL_DECOMP.md). The latest
 working memory and exact resume point are always at the top of
-[HANDOFF.md](docs/HANDOFF.md).
+[HANDOFF.md](docs/journal/HANDOFF_ARCHIVE.md).
 
 <p align="right"><a href="#contents">back to contents</a></p>
 
@@ -166,7 +166,7 @@ runtime boundary, see [rebuild/RUNNABLE.md](rebuild/RUNNABLE.md).
 
 This table is a landing-page summary. Detailed addresses, byte counts, evidence,
 caveats, and chronological checkpoints belong in
-[HANDOFF.md](docs/HANDOFF.md), [ACTIVE_TASK_LIST.md](docs/ACTIVE_TASK_LIST.md),
+[HANDOFF.md](docs/journal/HANDOFF_ARCHIVE.md), [ACTIVE_TASK_LIST.md](docs/journal/2026-09/ACTIVE_TASK_LIST.md),
 and the subsystem documents below.
 
 <p align="right"><a href="#contents">back to contents</a></p>
@@ -212,8 +212,8 @@ and the subsystem documents below.
   automatic byte-parity claim.
 
 The ranked, acceptance-gated queue is
-[ACTIVE_TASK_LIST.md](docs/ACTIVE_TASK_LIST.md). Broader sequencing is in
-[PLAN.md](docs/PLAN.md).
+[ACTIVE_TASK_LIST.md](docs/journal/2026-09/ACTIVE_TASK_LIST.md). Broader sequencing is in
+[PLAN.md](docs/journal/2026-09/PLAN_pre-roadmap.md).
 
 <p align="right"><a href="#contents">back to contents</a></p>
 
@@ -244,10 +244,10 @@ The result is intentionally conservative:
 Implementation details:
 
 - [decomp pipeline](tools/decomp_pipeline/README.md)
-- [source architecture](docs/SOURCE_ARCHITECTURE.md)
-- [parity triage](docs/PARITY_TRIAGE.md)
-- [methodology](docs/METHODOLOGY.md)
-- [toolchain setup](docs/TOOLCHAIN.md)
+- [source architecture](docs/ARCHITECTURE.md)
+- [parity triage](docs/pipeline/PARITY_TRIAGE.md)
+- [methodology](docs/pipeline/METHODOLOGY.md)
+- [toolchain setup](docs/BUILDING.md)
 
 <p align="right"><a href="#contents">back to contents</a></p>
 
@@ -261,42 +261,42 @@ technical material lives in focused documents.
 
 | Document | Purpose |
 |---|---|
-| [HANDOFF.md](docs/HANDOFF.md) | Authoritative latest checkpoint and exact resume state |
-| [ACTIVE_TASK_LIST.md](docs/ACTIVE_TASK_LIST.md) | Ranked work with acceptance gates |
+| [HANDOFF.md](docs/journal/HANDOFF_ARCHIVE.md) | Authoritative latest checkpoint and exact resume state |
+| [ACTIVE_TASK_LIST.md](docs/journal/2026-09/ACTIVE_TASK_LIST.md) | Ranked work with acceptance gates |
 | [rebuild/RUNNABLE.md](rebuild/RUNNABLE.md) | Build, launch, smoke, and runtime-boundary instructions |
-| [TOOLCHAIN.md](docs/TOOLCHAIN.md) | Ghidra, BSim, FSE, VC7.1, and local prerequisites |
-| [CAPABILITY_INDEX.md](docs/CAPABILITY_INDEX.md) | Index of recovered tooling and format capabilities |
+| [TOOLCHAIN.md](docs/BUILDING.md) | Ghidra, BSim, FSE, VC7.1, and local prerequisites |
+| [CAPABILITY_INDEX.md](docs/engine/CAPABILITY_INDEX.md) | Index of recovered tooling and format capabilities |
 
 ### Reconstruction
 
 | Document | Purpose |
 |---|---|
-| [FULL_DECOMP.md](docs/FULL_DECOMP.md) | Full-decomp strategy and promotion model |
-| [TECHNICAL_BRIEF.md](docs/TECHNICAL_BRIEF.md) | Current architecture, evidence grades, boot status, and modernization boundaries |
-| [SOURCE_ARCHITECTURE.md](docs/SOURCE_ARCHITECTURE.md) | Generated, parity, and modern-source boundaries |
-| [BSIM_PORT.md](docs/BSIM_PORT.md) | Donor-symbol porting runbook |
-| [DECOMP_ACCELERATORS.md](docs/DECOMP_ACCELERATORS.md) | Automation and throughput options |
-| [UNICORN_EMULATION_PLAN.md](docs/UNICORN_EMULATION_PLAN.md) | Optional bounded x86 behavior-oracle pilot |
+| [FULL_DECOMP.md](docs/pipeline/FULL_DECOMP.md) | Full-decomp strategy and promotion model |
+| [TECHNICAL_BRIEF.md](docs/journal/2026-07/TECHNICAL_BRIEF.md) | Current architecture, evidence grades, boot status, and modernization boundaries |
+| [SOURCE_ARCHITECTURE.md](docs/ARCHITECTURE.md) | Generated, parity, and modern-source boundaries |
+| [BSIM_PORT.md](docs/pipeline/SYMBOLS.md) | Donor-symbol porting runbook |
+| [DECOMP_ACCELERATORS.md](docs/pipeline/DECOMP_ACCELERATORS.md) | Automation and throughput options |
+| [UNICORN_EMULATION_PLAN.md](docs/pipeline/UNICORN_EMULATION_PLAN.md) | Optional bounded x86 behavior-oracle pilot |
 
 ### Runtime, UI, and rendering
 
 | Document | Purpose |
 |---|---|
-| [FRONTEND_FORMAT.md](docs/FRONTEND_FORMAT.md) | Recovered frontend definitions, tables, actions, and transforms |
-| [VIDEO_SYSTEM_RE.md](docs/VIDEO_SYSTEM_RE.md) | `CVideoSys`/`CMovie`, DirectShow, and texture-presentation recovery |
-| [PARTICLE_LIGHTING_VIEWER_HANDOFF.md](docs/PARTICLE_LIGHTING_VIEWER_HANDOFF.md) | Particles, billboards, RSA/environment lighting, shaders, sky, and shadows |
-| [UI_UPSCALE_PLAN.md](docs/UI_UPSCALE_PLAN.md) | Optional high-resolution cache policy and validation |
-| [COOP_REVIVAL.md](docs/COOP_REVIVAL.md) | Evidence and safe order for the cut multiplayer system |
+| [FRONTEND_FORMAT.md](docs/formats/FRONTEND_FORMAT.md) | Recovered frontend definitions, tables, actions, and transforms |
+| [VIDEO_SYSTEM_RE.md](docs/engine/VIDEO_SYSTEM_RE.md) | `CVideoSys`/`CMovie`, DirectShow, and texture-presentation recovery |
+| [PARTICLE_LIGHTING_VIEWER_HANDOFF.md](docs/journal/2026-08/PARTICLE_LIGHTING_VIEWER_HANDOFF.md) | Particles, billboards, RSA/environment lighting, shaders, sky, and shadows |
+| [UI_UPSCALE_PLAN.md](docs/modding/README.md#ui_upscale_plan) | Optional high-resolution cache policy and validation |
+| [COOP_REVIVAL.md](docs/modding/README.md#coop_revival) | Evidence and safe order for the cut multiplayer system |
 
 ### Content and modding
 
 | Document | Purpose |
 |---|---|
-| [COMPREHENSIVE_MODDING_ENVIRONMENT.md](docs/COMPREHENSIVE_MODDING_ENVIRONMENT.md) | Overall tool/editor environment |
-| [CONTENT_AUTHORING_PLAN.md](docs/CONTENT_AUTHORING_PLAN.md) | Safe content-creation workflow |
-| [SYSTEMS_ANALYSIS.md](docs/SYSTEMS_ANALYSIS.md) | Per-subsystem maps and moddability verdicts |
-| [FINDINGS.md](docs/FINDINGS.md) | Cross-checked technical findings |
-| [FABLE_TLC_REPORTED_BUGS.md](docs/FABLE_TLC_REPORTED_BUGS.md) | Evidence template for reported game defects |
+| [COMPREHENSIVE_MODDING_ENVIRONMENT.md](docs/modding/README.md#comprehensive_modding_environment) | Overall tool/editor environment |
+| [CONTENT_AUTHORING_PLAN.md](docs/modding/README.md#content_authoring_plan) | Safe content-creation workflow |
+| [SYSTEMS_ANALYSIS.md](docs/engine/SYSTEMS_ANALYSIS.md) | Per-subsystem maps and moddability verdicts |
+| [FINDINGS.md](docs/journal/FINDINGS_LOG.md) | Cross-checked technical findings |
+| [FABLE_TLC_REPORTED_BUGS.md](docs/engine/FABLE_TLC_REPORTED_BUGS.md) | Evidence template for reported game defects |
 
 The `docs/` directory contains focused references for definitions, BIG
 archives, textures, meshes, animation, audio, terrain, navigation, quests,
@@ -317,7 +317,7 @@ scripts, saves, and editor integration.
 | `refs/` | FSE and other compact reference manifests |
 | `work/`, `snapshots/`, `dist/` | Ignored local experiments, generated artifacts, and share packages |
 
-See [WORKSPACE_LAYOUT.md](docs/WORKSPACE_LAYOUT.md) for ownership and cleanup
+See [WORKSPACE_LAYOUT.md](docs/pipeline/WORKSPACE_LAYOUT.md) for ownership and cleanup
 rules.
 
 <p align="right"><a href="#contents">back to contents</a></p>
