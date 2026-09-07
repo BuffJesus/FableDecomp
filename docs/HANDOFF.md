@@ -1,7 +1,7 @@
 # Resume here (one page) — updated 2026-09-07
 
 ## State
-- Branch: `feat/script-recovery-marathon` (head `3a9bd81`, clean tree); `main` was fast-forwarded (519 commits) and pushed to `BuffJesus/FableDecomp` on 2026-09-07 — fast-forward it again after each checkpoint. Note: `git add` on this tree takes 1–6 minutes and HANGS if another process is writing under `rebuild/` (or a reserved-name file like `CON` exists); never run it concurrently with the header generator or retype.
+- Branch: `feat/script-recovery-marathon` (head `2e038aa`, clean tree, `main` == this head); `main` was fast-forwarded (519 commits) and pushed to `BuffJesus/FableDecomp` on 2026-09-07 — fast-forward it again after each checkpoint. Note: `git add` on this tree takes 1–6 minutes and HANGS if another process is writing under `rebuild/` (or a reserved-name file like `CON` exists); never run it concurrently with the header generator or retype.
 - 22 old agent branches are now `archive/*` tags. Root scratch + `CON` removed. `LICENSE`, `CONTRIBUTING.md`, CI `docs-consistency` added.
 - Coverage (2026-08-28 dashboard): 8,082 byte-identical (16.3%), 18,579 functional-or-matching (37.5%) of 49,568; catalog is now 18,631 landed. Regenerate `rebuild/COVERAGE.md` before quoting numbers.
 
