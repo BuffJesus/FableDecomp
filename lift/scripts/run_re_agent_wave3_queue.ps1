@@ -41,7 +41,7 @@ $env:RE_AGENT_CODEX_MAX_ATTEMPTS = '3'
 $decompileCacheRoot = 'D:\Documents\FableTLC\lift\.cache\re-agent-decompile'
 
 # === Co-op / multiplayer cluster (priority probe, added 2026-07-23) =========
-# Fable retains a disabled co-op subsystem (docs/FINDINGS.md). Decompile the GATE,
+# Fable retains a disabled co-op subsystem (docs/journal/FINDINGS_LOG.md). Decompile the GATE,
 # the CNetworkClient client/host lifecycle, the CGameEventPackage replication +
 # WIRE FORMAT (Compress/InitFromCompressedBuffer), and the CTCCoopSpirit entity so
 # we can judge how complete-vs-gutted the path is and plan a revival. These run

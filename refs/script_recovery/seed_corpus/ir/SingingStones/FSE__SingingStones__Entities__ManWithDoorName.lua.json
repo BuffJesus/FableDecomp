@@ -1,0 +1,436 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/SingingStones/Entities/ManWithDoorName.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 17,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetThingPersistent",
+          "line": 3
+        },
+        {
+          "receiver": "me",
+          "name": "MakeBehavioral",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 22,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingHasInformation",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "SetWanderCentrePoint",
+          "line": 17
+        },
+        {
+          "receiver": "me",
+          "name": "GetPos",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "SetWanderMinDistance",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "SetWanderMaxDistance",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "SetScriptingStateGroup",
+          "line": 20
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 28
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 29
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "StartMovieSequence",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 34
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 36
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 37
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 39
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 40
+        },
+        {
+          "receiver": "quest",
+          "name": "EndMovieSequence",
+          "line": 41
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 47
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 47
+        },
+        {
+          "receiver": "quest",
+          "name": "StartMovieSequence",
+          "line": 48
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 49
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 50
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 51
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 52
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 54
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 55
+        },
+        {
+          "receiver": "quest",
+          "name": "EndMovieSequence",
+          "line": 56
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 58
+        },
+        {
+          "receiver": "quest",
+          "name": "ClearThingHasInformation",
+          "line": 59
+        },
+        {
+          "receiver": "quest",
+          "name": "GetNearestWithDefName",
+          "line": 61
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 63
+        },
+        {
+          "receiver": "me",
+          "name": "MoveToPosition",
+          "line": 64
+        },
+        {
+          "receiver": "me",
+          "name": "FadeOutAndKillEntity",
+          "line": 67
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 74
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 75
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 76
+        },
+        {
+          "receiver": "quest",
+          "name": "StartMovieSequence",
+          "line": 78
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 79
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 80
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 81
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 84
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 86
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 89
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 90
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 93
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 94
+        },
+        {
+          "receiver": "quest",
+          "name": "EndMovieSequence",
+          "line": 95
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 99
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsPresentedWithItem",
+          "line": 100
+        },
+        {
+          "receiver": "quest",
+          "name": "AddItemToContainer",
+          "line": 103
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 104
+        },
+        {
+          "receiver": "quest",
+          "name": "StartMovieSequence",
+          "line": 107
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 108
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 109
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 110
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 111
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 113
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 114
+        },
+        {
+          "receiver": "quest",
+          "name": "EndMovieSequence",
+          "line": 115
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 121
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 122
+        },
+        {
+          "receiver": "me",
+          "name": "FadeOutAndKillEntity",
+          "line": 125
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 126
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 132
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 133
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "DoorManAttackedByHero",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "DoorManComplete",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "DoorManHasBribe",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "DoorManIntroComplete",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_060_MAN_WITH_DOOR_NAME_ATTACKED",
+      "TEXT_QST_060_MAN_WITH_DOOR_NAME_HIT",
+      "TEXT_QST_060_MAN_WITH_DOOR_NAME_INTRO",
+      "TEXT_QST_060_MAN_WITH_DOOR_NAME_REMINDER",
+      "TEXT_QST_060_MAN_WITH_DOOR_NAME_SPEAKS",
+      "TEXT_QST_060_MAN_WITH_DOOR_WRONG_ITEM"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

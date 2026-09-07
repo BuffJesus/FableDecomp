@@ -1,0 +1,95 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/TentacleKrakenBossFight/Entities/KrakenMinion.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 4,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "name": "OnPredicateFail",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 8,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 12,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveThingBestEnemyTarget",
+          "line": 14
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 20
+        }
+      ]
+    }
+  ],
+  "state": [],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

@@ -2,7 +2,7 @@
 r"""Fable TLC ANIM (3DAF) WRITER -- the write path pairing parse_anim_xseq.py.
 
 Grammar source: EgoCore AnimParser.h/AnimCompiler.h (answer key, ported -- see
-docs/BIG_ANIM_FORMAT.md S9) + retail bytes. EgoCore's AnimCompiler is a
+docs/formats/BIG_ANIM_FORMAT.md S9) + retail bytes. EgoCore's AnimCompiler is a
 *semantic* writer (re-derives palettes, drops header bytes, reorders chunks);
 this module is instead a LOSSLESS field-level model: decode->encode of the
 decompressed 3DAF image is byte-exact on retail entries, which proves the

@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 #include <cstring>
 
@@ -9,11 +10,6 @@ public:
     void RadialBlurSetCenterWorldPos(void* param_2, const C3DVector& param_3);
 };
 
-struct CGameScriptInterface_Overlay
-{
-    unsigned char pad_0000[0x4];
-    void* field_0004;
-};
 
 struct CGameScriptInterface_Field4_Overlay
 {
@@ -29,7 +25,7 @@ struct CGameScriptInterface_Field18_Overlay
 
 extern "C" void __fastcall
 CGameScriptInterface_RadialBlurSetCenterWorldPos(
-    CGameScriptInterface_Overlay* self, void* edxDummy,
+    CGameScriptInterface* self, void* edxDummy,
     void* param_2, const C3DVector& param_3);
 
 int main()
@@ -59,11 +55,11 @@ int main()
     std::memset(blob0, 0, sizeof(blob0));
     void* field4ptr = field4;
     std::memcpy(blob0 + 0x4, &field4ptr, sizeof(field4ptr));
-    CGameScriptInterface_Overlay* selfObj =
-        reinterpret_cast<CGameScriptInterface_Overlay*>(blob0);
+    CGameScriptInterface* selfObj =
+        reinterpret_cast<CGameScriptInterface*>(blob0);
 
     CGameScriptInterface_Field4_Overlay* chasedField4 =
-        *reinterpret_cast<CGameScriptInterface_Field4_Overlay* const*>(&selfObj->field_0004);
+        *reinterpret_cast<CGameScriptInterface_Field4_Overlay* const*>(&selfObj->World);
     CGameScriptInterface_Field18_Overlay* chasedField18 =
         *reinterpret_cast<CGameScriptInterface_Field18_Overlay* const*>(&chasedField4->field_0018);
 

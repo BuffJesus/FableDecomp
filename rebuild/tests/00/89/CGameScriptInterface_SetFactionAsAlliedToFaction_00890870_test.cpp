@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 struct Faction;
@@ -16,13 +17,9 @@ struct FactionMgr {
     Faction* fb;
     Faction* GetFaction(int id);
 };
-struct CMid {
+struct CWorld {
     unsigned char _pad[0x54];
     FactionMgr* mgr;
-};
-struct CGameScriptInterface {
-    void* vt;
-    CMid* mid;
 };
 
 void Faction::AddAlly(Faction* other) {
@@ -41,9 +38,9 @@ Faction* FactionMgr::GetFaction(int id) {
 
 void __fastcall CGameScriptInterface_SetFactionAsAlliedToFaction(CGameScriptInterface* self, int edx, int faction1, int faction2)
 {
-    FactionMgr* m = self->mid->mgr;
+    FactionMgr* m = self->World->mgr;
     Faction* a = m->GetFaction(faction1);
-    FactionMgr* m2 = self->mid->mgr;
+    FactionMgr* m2 = self->World->mgr;
     Faction* b = m2->GetFaction(faction2);
     if (a && b) {
         a->AddAlly(b);
@@ -55,8 +52,8 @@ int main() {
     Faction fA; fA.id = 1;
     Faction fB; fB.id = 2;
     FactionMgr mgr; mgr.fa = &fA; mgr.fb = &fB;
-    CMid midObj; midObj.mgr = &mgr;
-    CGameScriptInterface gsi; gsi.mid = &midObj;
+    CWorld midObj; midObj.mgr = &mgr;
+    CGameScriptInterface gsi; gsi.World = &midObj;
 
     // both present -> two AddAlly calls, cross referenced
     g_add_calls = 0;

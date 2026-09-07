@@ -4,7 +4,7 @@ r"""text.big WRITER/editor for Fable: TLC localized-text BIGB banks.
 Pairs with parse_bigb.py (container read) + big_write.py (container rebuild).
 Payload codec is a byte-exact port of EgoCore CTextParser::Parse/Recompile
 (EgoCore-master\EgoCore\Text\TextParser.h); validated round-trip on all
-28,912 payload-bearing retail text.big entries (see docs/TEXT_BIG_WRITE.md).
+28,912 payload-bearing retail text.big entries (see docs/formats/TEXT_BIG_WRITE.md).
 
 Text-bank facts this tool relies on (all verified against retail text.big):
   * Type-0 payload = UTF-16LE content \0\0 + 3 length-prefixed strings
@@ -254,7 +254,7 @@ def _fmt(d):
         print('%-13s %d narrators' % ('narrators:', len(d['narrators'])))
 
 def selftest(big_path, workdir):
-    """Validation suite from docs/TEXT_BIG_WRITE.md, run against a COPY."""
+    """Validation suite from docs/formats/TEXT_BIG_WRITE.md, run against a COPY."""
     import shutil
     os.makedirs(workdir, exist_ok=True)
     copy = os.path.join(workdir, 'text_selftest_copy.big')

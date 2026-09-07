@@ -3,14 +3,19 @@ from pathlib import Path
 
 from tools.script_recovery.verify_foundation import verify
 
-# Gaps opened by ingesting Aeon's StatueMaster and DragonBossFight ports on
-# 2026-09-02.  Both are tracked in docs/AEON_FSE_UPSTREAM_2026-09-02.md and must
-# shrink to an empty set, never grow.
+# Gaps opened by ingesting Aeon's Lua ports. Each is tracked in
+# docs/scripts/AEON_LUA_PORTS.md and must shrink to an empty set, never grow.
 KNOWN_PENDING = {
     # V_StatueMaster and Q_DragonBossFight need a Ghidra anchor-discovery run.
-    # (The upstream-binding gap was closed by porting the 14 bindings into
-    # ForgeFSE on 2026-09-02; the corpus is now 111/111 callable.)
     "anchored native decompilation proven",
+    # 2026-09-07: Aeon's 12-package batch (LUAGameflow, Fisherman, WaspBoss, ...) uses 12
+    # bindings added in FSE 6.9.26 that ForgeFSE-retail-shadow has not ported yet
+    # (GetCurrentStateGroupType, MoveToPosition_NonBlocking, MsgIsHitBy*, IsXbox,
+    # ActivateQuestWithoutLoadingResources, AddLogbookTutorialEntry, ...).
+    "static API findings reconciled with live bindings",
+    # 2026-09-07: the new packages' scripts do not yet correlate to native catalog names
+    # (matchedSeeds stayed 8/20), so the shadow manifest covers only the first 8 packages.
+    "reconstructed scripts are shadow-only",
 }
 
 

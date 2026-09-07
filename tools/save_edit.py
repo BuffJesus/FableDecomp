@@ -4,7 +4,7 @@ save_edit.py - Fable: The Lost Chapters runtime save (.sav / "FableSave!") read-
 
 Pure Python (stdlib only: struct, zlib). No Ghidra, no third-party deps.
 
-Format (see docs/SAVEGAME_FORMAT.md + docs/SAVE_WRITER.md):
+Format (see docs/formats/SAVEGAME_FORMAT.md + docs/formats/SAVE_WRITER.md):
 
   File:
     0x00  "FableSave!"                 10 bytes ASCII magic (no NUL)
@@ -32,7 +32,7 @@ CRC family (both seeds share the standard zlib/PKZIP reflected table, poly 0xEDB
     file trailer sig: CCRC::Calc(0, file[0:trailer_pos])    <-- seed 0, CONFIRMED across 5 real saves
 
 Entity-graph (SAVED_ENTITIES) hero-editing layer at the bottom of this file:
-    hero_report / set_hero_stat / set_item_qty / add_item  (see docs/SAVE_ENTITY_GRAPH.md)
+    hero_report / set_hero_stat / set_item_qty / add_item  (see docs/formats/SAVE_ENTITY_GRAPH.md)
 """
 
 import struct
@@ -398,7 +398,7 @@ def set_field_by_tag(payload, tag, value, value_type, occurrence=0):
 # ============================================================================
 # Entity-graph (SAVED_ENTITIES) hero-editing layer
 # ============================================================================
-# Layout (all CONFIRMED on real bytes across 6 saves / 81 cells — docs/SAVE_ENTITY_GRAPH.md):
+# Layout (all CONFIRMED on real bytes across 6 saves / 81 cells — docs/formats/SAVE_ENTITY_GRAPH.md):
 #
 #   chunk1 inflated stream contains:  "SAVED_ENTITIES\0" [u32 sectionLen] <section data>
 #   section data = [u32 0][u32 N?][u32 0] head, then a run of CELL RECORDS (+ empty slots),
@@ -416,7 +416,7 @@ def set_field_by_tag(payload, tag, value, value_type, occurrence=0):
 #   On ANY cell edit you MUST patch recLen + clen (+ ulen if the inflated size changed),
 #   the SAVED_ENTITIES [u32 sectionLen], and chunk1_ulen — then rebuild + re-sign the container.
 #
-#   Hero component grammar used below (CONFIRMED — docs/SAVE_HERO_STATS.md, SAVE_ENTITY_GRAPH.md):
+#   Hero component grammar used below (CONFIRMED — docs/formats/SAVE_HERO_STATS.md, SAVE_ENTITY_GRAPH.md):
 #     component:  [class ASCII \0][u32 0][u8 0][u32 dataLen][dataLen bytes][u32 0]
 #     CTCHeroStats fields: [u32 getcrc0(name)][4-byte value] (Money/Morality/RenownLevel i32,
 #                          Age/Fatness f32)

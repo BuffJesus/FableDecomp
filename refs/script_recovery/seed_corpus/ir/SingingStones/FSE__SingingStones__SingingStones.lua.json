@@ -1,0 +1,647 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/SingingStones/SingingStones.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest"
+      ],
+      "line": 17,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "quest",
+        "context"
+      ],
+      "line": 31,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferBool",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferBool",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferBool",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferBool",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 17
+        }
+      ]
+    },
+    {
+      "name": "WatchForCompleteTune",
+      "parameters": [
+        "quest"
+      ],
+      "line": 49,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "GetNearestWithScriptName",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 37
+        },
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 41
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 42
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 45
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 46
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 50
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 51
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 52
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 53
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 54
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 55
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 59
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 63
+        },
+        {
+          "receiver": "quest",
+          "name": "StartMovieSequence",
+          "line": 67
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 68
+        },
+        {
+          "receiver": "quest",
+          "name": "Pause",
+          "line": 69
+        },
+        {
+          "receiver": "quest",
+          "name": "CameraUseCameraPoint",
+          "line": 70
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 71
+        },
+        {
+          "receiver": "quest",
+          "name": "GetNearestWithScriptName",
+          "line": 73
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 75
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 77
+        },
+        {
+          "receiver": "quest",
+          "name": "Pause",
+          "line": 81
+        },
+        {
+          "receiver": "quest",
+          "name": "CameraDefault",
+          "line": 82
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 83
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 84
+        },
+        {
+          "receiver": "quest",
+          "name": "EndMovieSequence",
+          "line": 85
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 86
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 89
+        },
+        {
+          "receiver": "quest",
+          "name": "StartMovieSequence",
+          "line": 92
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 93
+        },
+        {
+          "receiver": "quest",
+          "name": "Pause",
+          "line": 94
+        },
+        {
+          "receiver": "quest",
+          "name": "CameraUseCameraPoint",
+          "line": 95
+        },
+        {
+          "receiver": "quest",
+          "name": "GetNearestWithScriptName",
+          "line": 97
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 99
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 101
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 105
+        },
+        {
+          "receiver": "quest",
+          "name": "GetAllThingsWithScriptName",
+          "line": 107
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateCreature",
+          "line": 110
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveThingBestEnemyTarget",
+          "line": 112
+        },
+        {
+          "receiver": "quest",
+          "name": "Pause",
+          "line": 117
+        },
+        {
+          "receiver": "quest",
+          "name": "CameraDefault",
+          "line": 118
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 119
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 120
+        },
+        {
+          "receiver": "quest",
+          "name": "EndMovieSequence",
+          "line": 121
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 122
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 126
+        }
+      ]
+    },
+    {
+      "name": "WatchForSpokenToDemonDoors",
+      "parameters": [
+        "quest"
+      ],
+      "line": 179,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 12
+        }
+      ]
+    },
+    {
+      "name": "WatchForRegionLeaving",
+      "parameters": [
+        "quest"
+      ],
+      "line": 192,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest"
+      ],
+      "line": 212,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "AddEntityBinding",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "AddEntityBinding",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "FinalizeEntityBindings",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateThread",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateThread",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateThread",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 20
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "ClearEffects",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "CurrentPlayListIndex",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "DoorManAttackedByHero",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "DoorManComplete",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "DoorManHasBribe",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "DoorManIntroComplete",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "PersonalPlayList_",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "PuzzleWon",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "SingingStone",
+      "script": "SingingStones/Entities/SingingStone",
+      "line": 223
+    },
+    {
+      "name": "ManWithDoorName",
+      "script": "SingingStones/Entities/ManWithDoorName",
+      "line": 224
+    }
+  ],
+  "references": {
+    "textTags": [
+      "TEXT_QST_060_NAME_",
+      "TEXT_QST_060_NAME_CDBA",
+      "TEXT_QST_060_NAME_DBAC"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

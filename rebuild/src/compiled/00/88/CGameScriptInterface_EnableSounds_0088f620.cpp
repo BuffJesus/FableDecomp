@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CSoundMgr {
     void** vtbl;
     void SetMute(int muted);
@@ -8,7 +9,6 @@ extern unsigned char g_soundsEnabledFlag;
 
 typedef void (__fastcall *StopFn)(CSoundMgr*);
 
-struct CGameScriptInterface { char pad; };
 
 void __fastcall CGameScriptInterface_EnableSounds(CGameScriptInterface* self, void* edx, char enable)
 {

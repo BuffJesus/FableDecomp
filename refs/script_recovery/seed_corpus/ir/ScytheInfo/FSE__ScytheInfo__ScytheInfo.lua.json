@@ -1,0 +1,215 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/ScytheInfo/ScytheInfo.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 8,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 14,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 21,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "FinalizeEntityBindings",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetQuestCardObjective",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 12
+        },
+        {
+          "receiver": "Quest",
+          "name": "RegisterTimer",
+          "line": 15
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetTimer",
+          "line": 16
+        },
+        {
+          "receiver": "Quest",
+          "name": "IsRegionLoaded",
+          "line": 19
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 21
+        },
+        {
+          "receiver": "Quest",
+          "name": "DeregisterTimer",
+          "line": 22
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetTimer",
+          "line": 26
+        },
+        {
+          "receiver": "Quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 27
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetTimer",
+          "line": 28
+        },
+        {
+          "receiver": "Quest",
+          "name": "IsRegionLoaded",
+          "line": 31
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 38
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 39
+        },
+        {
+          "receiver": "Quest",
+          "name": "DeregisterTimer",
+          "line": 40
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 46
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetQuestAsCompleted",
+          "line": 47
+        },
+        {
+          "receiver": "Quest",
+          "name": "DeactivateQuestLater",
+          "line": 48
+        },
+        {
+          "receiver": "Quest",
+          "name": "FadeScreenIn",
+          "line": 49
+        },
+        {
+          "receiver": "Quest",
+          "name": "DeregisterTimer",
+          "line": 50
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 51
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "MissionSucceeded",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "ScytheMarker",
+      "script": "ScytheInfo/Entities/ScytheMarker",
+      "line": 26
+    },
+    {
+      "name": "ScytheNearOracle",
+      "script": "ScytheInfo/Entities/ScytheNearOracle",
+      "line": 27
+    }
+  ],
+  "references": {
+    "textTags": [
+      "TEXT_QST_B03_SCYTHE_RETURN_TO_SNOWSPIRE_REMINDER_10",
+      "TEXT_QUEST_AWAKEN_ORACLE_OBJECTIVE_03"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

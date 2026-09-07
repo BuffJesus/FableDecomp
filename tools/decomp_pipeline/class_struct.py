@@ -32,9 +32,41 @@ def type_size(t):
         return 4
     return SIZEOF.get(t, SIZEOF.get(t.replace("const ", "").strip(), 4))
 
+PAD_PREFIXES = ("pad", "_pad", "unk", "_unk", "gap", "_gap", "reserved", "filler", "dummy",
+                "_dummy", "base", "_base", "vt", "vtbl", "_vfptr", "_vfp", "vfptr", "vptr",
+                "vftable", "__vftable", "_vtable", "vtable", "padding", "_padding_", "unused")
+
 def is_pad(name):
     n = name.lower()
-    return n.startswith("pad") or n.startswith("_pad") or n in ("dummy", "_dummy", "vtbl", "_vfptr", "_vfp", "vfptr")
+    if n.startswith("m_"):
+        n = n[2:]
+    return (n.startswith(PAD_PREFIXES) or n.endswith(("pad", "_pad", "padding", "_padding_"))
+            or n in ("dummy", "_dummy", "vt", "vtbl", "_vfptr", "_vfp", "vfptr"))
+
+THIS_QUAL_RE = re.compile(r"\b([A-Za-z_]\w*)::~?\w+\s*\(")
+THIS_PARAM_RE = re.compile(r"\(\s*(?:const\s+)?([A-Za-z_]\w*)\s*\*\s*(?:const\s+)?(?:self|this_|thisptr|pThis|that|obj|p|pSelf|inst)\b")
+
+def choose_this_struct(txt, cls):
+    """Pick the struct that models `this` for the landed function, or None if unsure.
+
+    Order: a struct literally named `cls`; the struct used as an `X::Method(` qualifier; the
+    struct whose pointer is the first (this) parameter. Never fall back to "the first struct in
+    the file" -- that picks nested helper structs (`Sub`, `Inner`, map keys) and poisons the
+    merged class facts."""
+    structs = {m.group(1): (m.group(2), m.start()) for m in STRUCT_RE.finditer(txt)}
+    if not structs:
+        return None
+    if cls in structs:
+        return (cls,) + structs[cls]
+    for rx in (THIS_QUAL_RE, THIS_PARAM_RE, THIS_FASTCALL_RE):
+        for m in rx.finditer(txt):
+            n = m.group(1)
+            if n in structs and n not in ("std", "NScript"):
+                return (n,) + structs[n]
+    return None
+
+# first parameter of a __fastcall definition is `this` (ecx) whatever it is called
+THIS_FASTCALL_RE = re.compile(r"__fastcall\s+\w+\s*\(\s*(?:const\s+)?([A-Za-z_]\w*)\s*\*")
 
 PACK1_RE = re.compile(r"#pragma\s+pack\s*\(\s*push\s*,\s*1\s*\)|#pragma\s+pack\s*\(\s*1\s*\)")
 
@@ -113,17 +145,10 @@ def facts_for(cls, files=None, trust=None, provenance=None):
             mm = SIZEOFCLASS_RE.search(txt)
             if mm:
                 size = max(size or 0, int(mm.group(1), 0))
-        chosen = None
-        chosen_start = 0
-        for m in STRUCT_RE.finditer(txt):
-            if m.group(1) == cls:
-                chosen, chosen_start = m.group(2), m.start(); break
-        if chosen is None:
-            m = STRUCT_RE.search(txt)
-            if m:
-                chosen, chosen_start = m.group(2), m.start()
-        if chosen is None:
+        pick = choose_this_struct(txt, cls)
+        if pick is None:
             continue
+        _, chosen, chosen_start = pick
         packed = is_packed(txt, chosen_start)
         fields, total = parse_struct(chosen, packed=True)
         if not packed:

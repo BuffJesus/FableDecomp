@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-08-28T20:12:49-06:00`
+Generated: `2026-09-07T11:20:38-06:00`
 
 | Stage | Complete | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|
@@ -20,7 +20,12 @@ Generated: `2026-08-28T20:12:49-06:00`
 | Candidate retail `.text` match | 8,066 | 49,568 | 16.273% | Generated-candidate track exact matches awaiting promotion |
 | Candidate relocation-masked `.text` match | 10,495 | 49,568 | 21.173% | Exact instruction bytes/layout after masking expected COFF linker fields |
 | Verified functional or matching C++ | 18,579 | 49,568 | 37.482% | Compiled under VC7.1 and checked against retail |
-| Byte-identical C++ | 8,082 | 49,568 | 16.305% | Exact `.text` match |
+| Byte-identical C++ | 8,082 | 49,568 | 16.305% | Exact `.text` match (includes asm bakes below) |
+| Byte-identical **genuine** C++ | 7,790 | 49,568 | 15.716% | Exact match from real compiler input; no `__asm`, `naked`, `_emit` |
+| Hand-written asm bakes (grade `asm_bake`) | 292 | 600 | — | Byte-exact oracles, **not** reconstruction; de-bake worklist |
+| Landed sources typed onto shared engine headers | 105 | 14,431 | 0.728% | `#include "engine/<Class>.h"` with PDB member names (5 headers) |
+| Generic local struct declarations remaining | 4,675 | — | — | `struct T/Sub/Owner...` throwaways in 3,527 files; retype worklist |
+| Matched retail bytes (genuine C++) | 385,690 | — | — | Bytes of retail `.text` reproduced by genuine landings |
 | Lifted modules | 3 | 3,433 | 0.087% | Module-level reconstruction proof |
 
 ## Interpretation

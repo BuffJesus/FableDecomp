@@ -1,7 +1,7 @@
 <#
     fetch_qfe_toolset.ps1 — download the VC7.1 13.10.4035 (QFE) compiler used to build
     ~11 of retail Fable.exe's object files, which our RTM 3077 toolchain cannot reproduce
-    byte-exact. See docs/QFE4035_COMPILER_GATE.md for the evidence (PE Rich header).
+    byte-exact. See docs/pipeline/QFE4035_COMPILER_GATE.md for the evidence (PE Rich header).
 
     SOURCE (review before running): the WinDDK 3790.1830 (Windows Server 2003 SP1 DDK)
     x86 compiler binaries, from the community mirror below. These are Microsoft binaries;

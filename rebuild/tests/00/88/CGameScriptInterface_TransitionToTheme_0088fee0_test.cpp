@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 struct Inner {
@@ -6,8 +7,7 @@ struct Inner {
     int lastArg2;
     void Apply(int one, int n, int arg2);
 };
-struct CMid { unsigned char pad[0x18]; Inner* p18; };
-struct CGameScriptInterface { void* vt; CMid* mid; };
+struct CWorld { unsigned char pad[0x18]; Inner* p18; };
 
 static int g_resolveArg = 0;
 static int g_count = 0;
@@ -27,7 +27,7 @@ void CGameScriptInterface_TransitionToTheme(CGameScriptInterface* self, int arg1
     void* r = Resolve(arg1);
     int n = CountOf(r);
     if (n > 0) {
-        self->mid->p18->Apply(1, n, arg2);
+        self->World->p18->Apply(1, n, arg2);
     }
 }
 
@@ -37,10 +37,10 @@ int main()
     inner.calls = 0;
     inner.lastN = 0;
     inner.lastArg2 = 0;
-    CMid midObj;
+    CWorld midObj;
     midObj.p18 = &inner;
     CGameScriptInterface gsi;
-    gsi.mid = &midObj;
+    gsi.World = &midObj;
 
     g_count = 0;
     CGameScriptInterface_TransitionToTheme(&gsi, 42, 99);

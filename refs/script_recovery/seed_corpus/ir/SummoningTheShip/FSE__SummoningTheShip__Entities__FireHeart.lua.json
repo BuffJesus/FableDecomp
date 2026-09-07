@@ -1,0 +1,283 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/SummoningTheShip/Entities/FireHeart.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 38,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsKillable",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsDamageable",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 8
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 47,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAlpha",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapRemoveMarker",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsDamageable",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "DisplayQuestInfo",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAlpha",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestInfoBarHealth",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 36
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 40
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 44
+        },
+        {
+          "receiver": "quest",
+          "name": "Play2DSound",
+          "line": 46
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 47
+        },
+        {
+          "receiver": "quest",
+          "name": "Play2DSound",
+          "line": 49
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 50
+        },
+        {
+          "receiver": "quest",
+          "name": "Play2DSound",
+          "line": 52
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 53
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitBy",
+          "line": 58
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFrom",
+          "line": 59
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitBySpecialAbilityFrom",
+          "line": 60
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 63
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 65
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 70
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 71
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 72
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 77
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 78
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 79
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "CommentaryTimer",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "ConversationIndex",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "LighthouseStarted",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "MissionFailed",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SummonerAttacksStarted",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_B02_BRIARROSE_"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

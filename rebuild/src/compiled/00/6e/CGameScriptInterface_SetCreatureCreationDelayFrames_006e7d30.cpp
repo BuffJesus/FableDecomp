@@ -1,10 +1,10 @@
-struct CGameScriptInterface {
-    unsigned char _pad0[0x4c];
-    int creatureCreationDelayFrames; // +0x4c
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CGameScriptInterface_Methods : CGameScriptInterface {
+    // +0x4c
     void SetCreatureCreationDelayFrames(int frames);
 };
 
-void CGameScriptInterface::SetCreatureCreationDelayFrames(int frames)
+void CGameScriptInterface_Methods::SetCreatureCreationDelayFrames(int frames)
 {
-    this->creatureCreationDelayFrames = frames;
+    this->CameraResetToViewBehindHeroCount = frames;
 }

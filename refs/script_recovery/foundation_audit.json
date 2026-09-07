@@ -9,9 +9,21 @@
         "MazeResearch",
         "MeetSister",
         "StatueMaster",
-        "DragonBossFight"
+        "DragonBossFight",
+        "Gameflow",
+        "BeardyBaldy",
+        "RockTrollFirstEncounter",
+        "BowerstoneTownLifeIntro",
+        "ScytheInfo",
+        "SingingStones",
+        "TrophyDealer",
+        "WaspBoss",
+        "OakValeRevisited",
+        "Fisherman",
+        "TentacleKrakenBossFight",
+        "SummoningTheShip"
       ],
-      "name": "eight seed packages ingested",
+      "name": "seed packages ingested (one per recovered source dir)",
       "passed": true
     },
     {
@@ -23,16 +35,28 @@
         "35A4B74EC1E5A50F336BEEA131E0E07276F2C71BE507F0540A13D9ED2FF91EC2",
         "4B0AA00054047316A905477CE9469AC3C36AB35609EABA1C1B4ADDB9F775B631",
         "EA39505A93C611BAD2DAB7EAD99EA05101465B44B41E6C2DCEA6D7D7912FFDBF",
-        "E13F8A4244636AFFC4FF6407603D87B9682E660E85639FE89B7C19B654F8A8B7"
+        "E13F8A4244636AFFC4FF6407603D87B9682E660E85639FE89B7C19B654F8A8B7",
+        "A33CA117FD1BEE9EE6B51A04CD72E4D51A02838E9A894467E41D1EA9A1A79B2D",
+        "FDC5598146DD9A0A4B771B39DE0F0C473C606E3A874BBD485B1B48F681BF3134",
+        "A464972381B0CCA05B7E4DFCB642E58C353B6575713895FC4FE67565C7A4CCA4",
+        "C5FEA4B567DFE67300E6E72E37D1C2131763B64EDEE70E3AF699561911B2EA91",
+        "511835CC7B522C340F46447007C0879643B85E9D4DE43EBB5824FE2D7E1D6D93",
+        "D8A24D09BC577B2978D97470D368A82D21B651F46C1A906659818B3DE4491998",
+        "AAAC6CFDFA40A3677BBCEA7F6465BE5ACA1C5DD1DDC4A39666EB7029E2EA38C9",
+        "30D41731A96A2B9EC1788E8B6E7C4643AD263DCB9BBA4721BAA533CE68E06801",
+        "119E80FEE2BD67232A43BF3EED50A1676C00CB189EBADB5EA27C510959F504EE",
+        "02EAF525B4E217BC6E1474145022F6286B81B8E82C0A97EB384F55D7AFF27698",
+        "9BB0779CB6937348EA9DA1570696489CCF184EBBD2FB2AC7E3D40B9D7BCEC2E4",
+        "E2C72482E3353190C59B38D29A5990C28C6511E17C22B0BC267F04D13E305F97"
       ],
       "name": "archive provenance hashed",
       "passed": true
     },
     {
       "evidence": {
-        "ir": 25,
-        "registries": 8,
-        "scripts": 25
+        "ir": 71,
+        "registries": 20,
+        "scripts": 71
       },
       "name": "all executable Lua scripts have normalized IR",
       "passed": true
@@ -44,11 +68,173 @@
     },
     {
       "evidence": {
-        "runtimeAudit": [],
-        "validation": []
+        "runtimeAudit": [
+          [
+            "missing",
+            "entity",
+            "GetCurrentStateGroupType"
+          ],
+          [
+            "missing",
+            "entity",
+            "MoveToPosition_NonBlocking"
+          ],
+          [
+            "missing",
+            "entity",
+            "MsgIsHitBy"
+          ],
+          [
+            "missing",
+            "entity",
+            "MsgIsHitByAnySpecialAbilityFrom"
+          ],
+          [
+            "missing",
+            "entity",
+            "MsgIsHitBySpecialAbilityFrom"
+          ],
+          [
+            "missing",
+            "quest",
+            "ActivateMultipleQuestsWithoutLoadingResources"
+          ],
+          [
+            "missing",
+            "quest",
+            "ActivateQuestWithoutLoadingResources"
+          ],
+          [
+            "missing",
+            "quest",
+            "AddLogbookTutorialEntry"
+          ],
+          [
+            "missing",
+            "quest",
+            "GetValidTextEntryNameWithAttitude"
+          ],
+          [
+            "missing",
+            "quest",
+            "IsXbox"
+          ],
+          [
+            "missing",
+            "quest",
+            "PrepareQuestsWhenFinalQuestIsActivated"
+          ],
+          [
+            "missing",
+            "quest",
+            "PrepareQuestsWhenFinalQuestIsCompleted"
+          ]
+        ],
+        "validation": [
+          [
+            "missing",
+            "entity",
+            "ClearAllActions"
+          ],
+          [
+            "missing",
+            "entity",
+            "ClearAllActionsIncludingLoopingAnimations"
+          ],
+          [
+            "missing",
+            "entity",
+            "FollowPreCalculatedRoute"
+          ],
+          [
+            "missing",
+            "entity",
+            "GetCurrentStateGroupType"
+          ],
+          [
+            "missing",
+            "entity",
+            "MsgIsHitBy"
+          ],
+          [
+            "missing",
+            "entity",
+            "MsgIsHitByAnySpecialAbilityFrom"
+          ],
+          [
+            "missing",
+            "entity",
+            "MsgIsHitBySpecialAbilityFrom"
+          ],
+          [
+            "missing",
+            "entity",
+            "Speak"
+          ],
+          [
+            "missing",
+            "entity",
+            "SummonerLightningOrbAttackTarget"
+          ],
+          [
+            "missing",
+            "quest",
+            "ActivateMultipleQuestsWithoutLoadingResources"
+          ],
+          [
+            "missing",
+            "quest",
+            "ActivateQuestWithoutLoadingResources"
+          ],
+          [
+            "missing",
+            "quest",
+            "AddLogbookTutorialEntry"
+          ],
+          [
+            "missing",
+            "quest",
+            "CloseDoor"
+          ],
+          [
+            "missing",
+            "quest",
+            "GetValidTextEntryNameWithAttitude"
+          ],
+          [
+            "missing",
+            "quest",
+            "IsFishingSpotEnabled"
+          ],
+          [
+            "missing",
+            "quest",
+            "IsXbox"
+          ],
+          [
+            "missing",
+            "quest",
+            "MsgOnRegionLoaded"
+          ],
+          [
+            "missing",
+            "quest",
+            "PrepareQuestsWhenFinalQuestIsActivated"
+          ],
+          [
+            "missing",
+            "quest",
+            "PrepareQuestsWhenFinalQuestIsCompleted"
+          ],
+          [
+            "missing",
+            "quest",
+            "SetHeroGuideToShowQuestCardsWhenSpokenTo"
+          ]
+        ]
       },
       "name": "static API findings reconciled with live bindings",
-      "passed": true
+      "passed": false
     },
     {
       "evidence": {
@@ -87,7 +273,7 @@
         ]
       },
       "name": "reconstructed scripts are shadow-only",
-      "passed": true
+      "passed": false
     },
     {
       "evidence": [
@@ -474,7 +660,7 @@
   "schema": "fable-script-recovery-foundation-audit/0.1",
   "summary": {
     "complete": false,
-    "passed": 17,
+    "passed": 15,
     "total": 18
   }
 }

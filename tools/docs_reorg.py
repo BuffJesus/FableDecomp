@@ -21,6 +21,11 @@ import subprocess
 import sys
 from pathlib import Path
 
+try:  # Windows consoles default to cp1252; doc headings contain arrows/stars
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except Exception:
+    pass
+
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 MAP = ROOT / "tools" / "docs_reorg_map.tsv"
@@ -202,9 +207,12 @@ def check_findings() -> int:
     if not findings.exists():
         print("findings: no FINDINGS file, nothing to check")
         return 0
-    heads = [re.sub(r"[`*]", "", m.group(1)).strip()
-             for m in re.finditer(r"^#{2,3}\s+(.+)$", findings.read_text(encoding="utf-8"),
-                                  re.M)]
+    heads = []
+    for m in re.finditer(r"^#{2,3}\s+(.+)$", findings.read_text(encoding="utf-8"), re.M):
+        h = re.sub(r"[`*]", "", m.group(1)).strip()
+        # entries are dated: "2026-08-26 — MsgOnBoastsMade ownership and ABI" -> match the topic
+        h = re.sub(r"^\d{4}-\d{2}-\d{2}\s*[—–-]\s*", "", h)
+        heads.append(h)
     corpus = ""
     for f in DOCS.rglob("*.md"):
         if "journal" in f.parts or f == findings:

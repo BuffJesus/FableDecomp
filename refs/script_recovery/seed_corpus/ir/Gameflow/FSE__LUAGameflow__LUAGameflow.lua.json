@@ -1,0 +1,3360 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/LUAGameflow/LUAGameflow.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "DeclareGossipCategories",
+      "parameters": [
+        "quest"
+      ],
+      "line": 124,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "AddRumourCategory",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 130,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetMasterGameState",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 10
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 141,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "GetMasterGameState",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferInt",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetMasterGameState",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "name": "CoreQuestReminder",
+      "parameters": [],
+      "line": 153,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "IsHeroOnQuest",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 20
+        }
+      ]
+    },
+    {
+      "name": "CheckBarrowFieldsGuards",
+      "parameters": [],
+      "line": 179,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "EnableGuards",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "name": "RunStage_Intro",
+      "parameters": [
+        "quest"
+      ],
+      "line": 215,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "SetAllSoundsAsMuted",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "IsXbox",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroObject",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroObject",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroObject",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroObject",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroObject",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "SetAllowScreenFadingOnNextRegionChange",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateMultipleQuestsWithoutLoadingResources",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateMultipleQuestsWithoutLoadingResources",
+          "line": 57
+        }
+      ]
+    },
+    {
+      "name": "RunStage_Training",
+      "parameters": [
+        "quest"
+      ],
+      "line": 277,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "IsLevelLoaded",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityTeleportToThing",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "SetHeroGuideToShowQuestCardsWhenSpokenTo",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingAsUsable",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 36
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 37
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 39
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 40
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 41
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 44
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 45
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 46
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 47
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 48
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 49
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 50
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 51
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 53
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTeleporterAsActive",
+          "line": 55
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 58
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 59
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "name": "RunStage_WaitingForWaspBoss",
+      "parameters": [
+        "quest"
+      ],
+      "line": 342,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "DisplayTutorial",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgIsTutorialClickedPast",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 19
+        }
+      ]
+    },
+    {
+      "name": "RunStage_WaspBoss",
+      "parameters": [
+        "quest"
+      ],
+      "line": 366,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "DisplayTutorial",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgIsTutorialClickedPast",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 26
+        }
+      ]
+    },
+    {
+      "name": "RunStage_MazeMeeting",
+      "parameters": [
+        "quest"
+      ],
+      "line": 397,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveQuestCardFromGuild",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveQuestCardFromGuild",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "name": "RunStage_WaitingForOrchardFarm",
+      "parameters": [
+        "quest"
+      ],
+      "line": 425,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveQuestCardFromGuild",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveQuestCardFromGuild",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookTutorialEntry",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "name": "RunStage_OrchardFarm",
+      "parameters": [
+        "quest"
+      ],
+      "line": 454,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAllowRouteBetweenRegions",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAllowRouteBetweenRegions",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "name": "RunStage_WaitingForTraderEscort",
+      "parameters": [
+        "quest"
+      ],
+      "line": 486,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 9
+        }
+      ]
+    },
+    {
+      "name": "RunStage_TraderEscort",
+      "parameters": [
+        "quest"
+      ],
+      "line": 499,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "name": "RunStage_SecondMazeMeeting",
+      "parameters": [
+        "quest"
+      ],
+      "line": 527,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 19
+        }
+      ]
+    },
+    {
+      "name": "RunStage_BanditCamp",
+      "parameters": [
+        "quest"
+      ],
+      "line": 551,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "name": "RunStage_MazeTeleportToWW",
+      "parameters": [
+        "quest"
+      ],
+      "line": 581,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuestWithoutLoadingResources",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "name": "RunStage_TrophyDealer",
+      "parameters": [
+        "quest"
+      ],
+      "line": 599,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 17
+        }
+      ]
+    },
+    {
+      "name": "RunStage_WitchwoodPostTrophyDealer",
+      "parameters": [
+        "quest"
+      ],
+      "line": 621,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 28
+        }
+      ]
+    },
+    {
+      "name": "RunStage_WhiteBalverineWitchwood",
+      "parameters": [
+        "quest"
+      ],
+      "line": 654,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveQuestCardFromGuild",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "name": "RunStage_WitchwoodWaitingForArena",
+      "parameters": [
+        "quest"
+      ],
+      "line": 681,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 9
+        }
+      ]
+    },
+    {
+      "name": "RunStage_Arena",
+      "parameters": [
+        "quest"
+      ],
+      "line": 694,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveQuestCardFromGuild",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 33
+        }
+      ]
+    },
+    {
+      "name": "RunStage_MeetSister",
+      "parameters": [
+        "quest"
+      ],
+      "line": 733,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "name": "RunStage_WaitingForMCC",
+      "parameters": [
+        "quest"
+      ],
+      "line": 760,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "name": "RunStage_MinionClifftopChase",
+      "parameters": [
+        "quest"
+      ],
+      "line": 778,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 19
+        }
+      ]
+    },
+    {
+      "name": "RunStage_Graveyard",
+      "parameters": [
+        "quest"
+      ],
+      "line": 802,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "name": "RunStage_Prison",
+      "parameters": [
+        "quest"
+      ],
+      "line": 820,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "name": "RunStage_HookCoast",
+      "parameters": [
+        "quest"
+      ],
+      "line": 850,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "name": "RunStage_WaitingForWizardBattle",
+      "parameters": [
+        "quest"
+      ],
+      "line": 862,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "PrepareQuestsWhenFinalQuestIsActivated",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 32
+        }
+      ]
+    },
+    {
+      "name": "RunStage_WizardBattle",
+      "parameters": [
+        "quest"
+      ],
+      "line": 899,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 12
+        }
+      ]
+    },
+    {
+      "name": "RunStage_WaitingForFocalSites",
+      "parameters": [
+        "quest"
+      ],
+      "line": 916,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 24
+        }
+      ]
+    },
+    {
+      "name": "RunStage_FocalSites",
+      "parameters": [
+        "quest"
+      ],
+      "line": 945,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "name": "RunStage_JackBossFight",
+      "parameters": [
+        "quest"
+      ],
+      "line": 971,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntryString",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntryString",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "PrepareQuestsWhenFinalQuestIsCompleted",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 34
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveQuestCardFromGuild",
+          "line": 36
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 37
+        },
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveQuestCardFromGuild",
+          "line": 40
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 41
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestCard",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuest",
+          "line": 44
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 45
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 47
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 48
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 50
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 51
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 54
+        }
+      ]
+    },
+    {
+      "name": "RunStage_FireHeart",
+      "parameters": [
+        "quest"
+      ],
+      "line": 1029,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntryString",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "name": "RunStage_TheShip",
+      "parameters": [
+        "quest"
+      ],
+      "line": 1055,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeScreenIn",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "AddGossipVillage",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntryString",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 24
+        }
+      ]
+    },
+    {
+      "name": "RunStage_TheOracle",
+      "parameters": [
+        "quest"
+      ],
+      "line": 1084,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 10
+        }
+      ]
+    },
+    {
+      "name": "RunStage_ScytheMeeting",
+      "parameters": [
+        "quest"
+      ],
+      "line": 1099,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveRumourCategory",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntryString",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "name": "RunStage_HeroSouls",
+      "parameters": [
+        "quest"
+      ],
+      "line": 1120,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "AddNewRumourToCategory",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "name": "RunStage_DragonFight",
+      "parameters": [
+        "quest"
+      ],
+      "line": 1137,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeScreenIn",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnQuestCompleted",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "ActivateQuest",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "SetRegionTextDisplayAsActive",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "SetAllowScreenFadingOnNextRegionChange",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeScreenOutUntilNextCallToFadeScreenIn",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityTeleportToThing",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "IsLevelLoaded",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "StartCutscene",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "StartCutscene",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 36
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityTeleportToThing",
+          "line": 40
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 44
+        },
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 47
+        },
+        {
+          "receiver": "quest",
+          "name": "TeleportAllFollowersToHeroPosition",
+          "line": 48
+        },
+        {
+          "receiver": "quest",
+          "name": "SetRegionTextDisplayAsActive",
+          "line": 49
+        },
+        {
+          "receiver": "quest",
+          "name": "SetAllowScreenFadingOnNextRegionChange",
+          "line": 50
+        }
+      ]
+    },
+    {
+      "name": "RunStage_FinishedGame",
+      "parameters": [
+        "quest"
+      ],
+      "line": 1192,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroExpression",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSave",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeScreenIn",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 14
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 1208,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "CreateThread",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "CreateThread",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetMasterGameState",
+          "line": 48
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 49
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 54
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 57
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 62
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "CoreQuestWaiting",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "PostSavePosition",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_AI_GOSSIP_AFTER_FINAL_BATTLE_GLOBAL",
+      "TEXT_AI_GOSSIP_AFTER_FINAL_BATTLE_GOT_SWORD_GLOBAL",
+      "TEXT_AI_GOSSIP_AFTER_FINAL_BATTLE_KILLED_SISTER_GLOBAL",
+      "TEXT_AI_GOSSIP_AFTER_FINAL_BATTLE_NOTGOT_SWORD_GLOBAL",
+      "TEXT_AI_GOSSIP_AFTER_FINAL_BATTLE_SPARED_SISTER_GLOBAL",
+      "TEXT_AI_GOSSIP_AFTER_PRISON_GLOBAL",
+      "TEXT_AI_GOSSIP_AFTER_WIZARD_BATTLE_GLOBAL",
+      "TEXT_AI_GOSSIP_DOING_BANDIT_CAMP_BANDITCAMP",
+      "TEXT_AI_GOSSIP_DOING_BANDIT_CAMP_GLOBAL",
+      "TEXT_AI_GOSSIP_DOING_FOCAL_SITES_GLOBAL",
+      "TEXT_AI_GOSSIP_DOING_FOCAL_SITES_GUILD",
+      "TEXT_AI_GOSSIP_DOING_GRAVEYARD_GLOBAL",
+      "TEXT_AI_GOSSIP_DOING_MCC_GLOBAL",
+      "TEXT_AI_GOSSIP_DOING_ORCH_FARM_GLOBAL",
+      "TEXT_AI_GOSSIP_DOING_WASP_BOSS_GLOBAL",
+      "TEXT_AI_GOSSIP_DOING_WHITE_BALV_GLOBAL",
+      "TEXT_AI_GOSSIP_DOING_WHITE_BALV_KHG",
+      "TEXT_AI_GOSSIP_DRAGON_GATE_OPEN",
+      "TEXT_AI_GOSSIP_FINAL_BATTLE_GLOBAL",
+      "TEXT_AI_GOSSIP_FINAL_BATTLE_GUILD",
+      "TEXT_AI_GOSSIP_FIND_ARCHAEOLOGIST_GLOBAL",
+      "TEXT_AI_GOSSIP_GUILD_TRAINING_GUILD",
+      "TEXT_AI_GOSSIP_HOOK_COAST_GATEWAY_GLOBAL",
+      "TEXT_AI_GOSSIP_IN_HOOK_COAST_POST_DRAGON_PRE_BATTLE_GLOBAL",
+      "TEXT_AI_GOSSIP_IN_HOOK_COAST_POST_DRAGON_PRE_BATTLE_HOOKCOAST",
+      "TEXT_AI_GOSSIP_KILLED_WHISPER_GLOBAL",
+      "TEXT_AI_GOSSIP_LOOKOUT_POINT_DEMON_DOOR_READY",
+      "TEXT_AI_GOSSIP_NECROPOLIS_FINISHED",
+      "TEXT_AI_GOSSIP_NORTHERN_WASTES_OPEN",
+      "TEXT_AI_GOSSIP_PRE_ARENA_GLOBAL",
+      "TEXT_AI_GOSSIP_PRE_ARENA_KHG",
+      "TEXT_AI_GOSSIP_PRE_MCC_BSTONES",
+      "TEXT_AI_GOSSIP_PRE_MCC_GLOBAL",
+      "TEXT_AI_GOSSIP_PRE_ORCH_FARM_GLOBAL",
+      "TEXT_AI_GOSSIP_PRE_WHITE_BALV_GLOBAL",
+      "TEXT_AI_GOSSIP_SCARY_NECROPOLIS",
+      "TEXT_AI_GOSSIP_SPARED_WHISPER_GLOBAL",
+      "TEXT_AI_GOSSIP_SUMMON_THE_SHIP",
+      "TEXT_AI_GOSSIP_TRADER_ESCORT_BSSLUMS",
+      "TEXT_AI_GOSSIP_TRADER_ESCORT_GLOBAL",
+      "TEXT_AI_GOSSIP_VISIT_MAZE_1_BSSLUMS",
+      "TEXT_AI_GOSSIP_VISIT_MAZE_1_GLOBAL",
+      "TEXT_AI_GOSSIP_VISIT_MAZE_2_BSSLUMS",
+      "TEXT_AI_GOSSIP_VISIT_MAZE_2_GLOBAL",
+      "TEXT_AI_GOSSIP_VISIT_MAZE_3_GLOBAL",
+      "TEXT_AI_GOSSIP_VISIT_MAZE_3_GUILD",
+      "TEXT_AI_GOSSIP_WASPBOSS_KILLED",
+      "TEXT_AI_GOSSIP_WASP_BOSS_GLOBAL",
+      "TEXT_QST_078_GM_MOTHER_LEFT_YOU_THIS",
+      "TEXT_QST_078_GM_MSG_FOUND_TROPHY_DEALER",
+      "TEXT_QST_078_GM_MSG_GO_TO_WITCHWOOD_FOR_FOCAL_SITES",
+      "TEXT_QST_078_GM_MSG_GUILD_SEAL_ACTIVE",
+      "TEXT_QST_078_GM_MSG_KNOTHOLE_GLADE_CLOSED",
+      "TEXT_QST_078_GM_MSG_MAZE_AGAIN",
+      "TEXT_QST_078_GM_MSG_MAZE_YET_AGAIN",
+      "TEXT_QST_078_GM_MSG_NEW_QUEST_AT_GUILD",
+      "TEXT_QST_LOG_GUILD_BOASTS",
+      "TEXT_QST_LOG_STORY_PLATINUM_300",
+      "TEXT_QST_LOG_STORY_PLATINUM_305",
+      "TEXT_QST_LOG_STORY_PLATINUM_310",
+      "TEXT_QST_LOG_STORY_PLATINUM_320",
+      "TEXT_QST_LOG_STORY_PLATINUM_330"
+    ],
+    "cutscenes": [
+      "CS_FABLE_CREDITS",
+      "CS_OakValeRevisited"
+    ],
+    "regions": [
+      "BarrowFields",
+      "HeroGuildComplexInside"
+    ]
+  }
+}

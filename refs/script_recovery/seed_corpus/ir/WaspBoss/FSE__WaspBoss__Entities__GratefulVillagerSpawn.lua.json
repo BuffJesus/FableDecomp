@@ -1,0 +1,58 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/WaspBoss/Entities/GratefulVillagerSpawn.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 1,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCategoryActivity",
+          "line": 11
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "PanickedVillagersScene",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

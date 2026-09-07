@@ -260,7 +260,7 @@ their package `quests.lua` never registers them: `StatuePointing.lua`,
     python tools/script_recovery/analyze_compatibility.py \
       --corpus refs/script_recovery/seed_corpus \
       --json refs/script_recovery/compatibility.json \
-      --markdown docs/modding/README.md#forgefse_script_compatibility
+      --markdown docs/scripts/FORGEFSE_SCRIPT_COMPATIBILITY.md
 
     python tools/script_recovery/build_native_catalog.py \
       --output refs/script_recovery/native_catalog.json \
@@ -277,7 +277,7 @@ their package `quests.lua` never registers them: `StatuePointing.lua`,
       --compatibility refs/script_recovery/compatibility.json \
       --lua-manager D:/Code/ForgeFSE/FableScriptExtender/LuaManager.cpp \
       --json refs/script_recovery/forgefse_runtime_audit.json \
-      --markdown docs/modding/README.md#forgefse_runtime_script_audit
+      --markdown docs/scripts/FORGEFSE_RUNTIME_SCRIPT_AUDIT.md
 
     python tools/script_recovery/build_override_manifest.py \
       --catalog refs/script_recovery/native_catalog.json \
@@ -296,3 +296,29 @@ their package `quests.lua` never registers them: `StatuePointing.lua`,
     python -m pytest tools/script_recovery -q
 
 Extracted upstream packages for inspection: `work/aeon_lua_ports/`.
+
+## 2026-09-07 — second batch: 12 more ports incl. LUAGameflow
+
+Ingested from Aeon's Discord drops of 2026-09-03..06: `Gameflow` (LUAGameflow.lua, 50 KB — the
+master script that activates every other quest; Aeon completed a full 2-hour playthrough on it),
+`BeardyBaldy`, `RockTrollFirstEncounter`, `BowerstoneTownLifeIntro`, `ScytheInfo`, `SingingStones`,
+`TrophyDealer`, `WaspBoss`, `OakValeRevisited`, `Fisherman` (two newly discovered dialogue paths),
+`TentacleKrakenBossFight`, `SummoningTheShip`. Requires FSE 6.9.26.
+
+Corpus after ingest: 20 packages, 71 executable scripts (all with normalized IR), 3,672 API calls,
+221 unique. Foundation audit 15/18. New gaps (both tracked as `KNOWN_PENDING` in
+`tools/script_recovery/test_verify_foundation.py`):
+
+- **12 bindings missing from ForgeFSE-retail-shadow** (added upstream in FSE 6.9.26):
+  entity `GetCurrentStateGroupType`, `MoveToPosition_NonBlocking`, `MsgIsHitBy`,
+  `MsgIsHitByAnySpecialAbilityFrom`, `MsgIsHitBySpecialAbilityFrom`; quest
+  `ActivateMultipleQuestsWithoutLoadingResources`, `ActivateQuestWithoutLoadingResources`,
+  `AddLogbookTutorialEntry`, `GetValidTextEntryNameWithAttitude`, `IsXbox`, `PrepareQuestsWhenFin…`
+  (full list in `refs/script_recovery/forgefse_runtime_audit.json`). Port these on a branch of
+  `D:\Code\ForgeFSE-retail-shadow` before the LUAGameflow corpus can run on our fork.
+- **Seed correlation stops at 8/20**: `build_native_catalog.py` matches package names to retail
+  catalog names, and the new package names (`Gameflow`, `Fisherman`, `WaspBoss`, …) do not match
+  the `Q_*/QS_*/V_*` native names, so the shadow manifest still covers only the first 8 packages.
+  Fix = an alias table (package -> native script name) in `build_native_catalog.py`.
+
+Reproduce: same command chain as above with the 12 extra archives appended to `recover_scripts.py`.

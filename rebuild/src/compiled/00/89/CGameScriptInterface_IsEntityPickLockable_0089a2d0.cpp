@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 enum ETCInterfaceType { ETC_DUMMY = 0 };
 
 struct CScriptThing;
@@ -44,9 +45,6 @@ struct CThingOverlay
     CVectorMap    m_InterfaceMap44; // 0x44
 };
 
-struct CGameScriptInterface
-{
-};
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)0x26;
 

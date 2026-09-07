@@ -1,13 +1,13 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 struct Inner { char pad[0x78]; bool flag; };
 struct Mid { char pad[0x1964]; Inner* inner; };
-struct Outer { char pad[0x18]; Mid* mid; };
-struct Self { char pad[4]; Outer* outer; };
+struct CWorld { char pad[0x18]; Mid* mid; };
 
-bool __fastcall CGameScriptInterface_IsRadialBlurFadeActive(const Self* self)
+bool __fastcall CGameScriptInterface_IsRadialBlurFadeActive(const CGameScriptInterface* self)
 {
-    return self->outer->mid->inner->flag;
+    return self->World->mid->inner->flag;
 }
 
 int main()
@@ -16,10 +16,10 @@ int main()
     leaf.flag = true;
     Mid midv;
     midv.inner = (&leaf);
-    Outer outv;
+    CWorld outv;
     outv.mid = (&midv);
-    Self selfv;
-    selfv.outer = (&outv);
+    CGameScriptInterface selfv;
+    selfv.World = (&outv);
     bool r = CGameScriptInterface_IsRadialBlurFadeActive((&selfv));
     leaf.flag = false;
     bool r2 = CGameScriptInterface_IsRadialBlurFadeActive((&selfv));

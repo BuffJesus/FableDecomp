@@ -1,0 +1,80 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/Fisherman/Entities/M_FishermanWaspSpawn.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 3,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 13
+        },
+        {
+          "receiver": "me",
+          "name": "GetPos",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateCreature",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 19
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "HeroHasSavedFishermanFromWasps",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "IntroPlayed",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

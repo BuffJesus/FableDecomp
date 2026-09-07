@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 enum ETCInterfaceType { ETC_DUMMY = 0 };
 
 struct CKeyPair
@@ -24,11 +25,6 @@ struct CThingOverlay
     unsigned char m_Flags91;        // 0x91
 };
 
-struct CGameScriptInterface
-{
-    unsigned char m_Pad00[0x14];
-    void*         m_Field14; // 0x14
-};
 
 extern "C" void* __fastcall Sub_ResolveA(void* self);
 extern "C" void* __fastcall Sub_ResolveB(void* obj);
@@ -39,7 +35,7 @@ const ETCInterfaceType kTargetType = (ETCInterfaceType)0x68;
 long __fastcall CGameScriptInterface_GetPlayerCreatureCombatMultiplier(
     const CGameScriptInterface* self)
 {
-    void* a = Sub_ResolveA(self->m_Field14);
+    void* a = Sub_ResolveA(self->PlayerManager);
     CThingOverlay* pThing = (CThingOverlay*)Sub_ResolveB(a);
     if (pThing != 0 &&
         (pThing->m_Flags91 & 0x01) == 0 &&

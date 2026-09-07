@@ -461,5 +461,5 @@ and custom terrain-texture replacement remain deferred.
 - Proposed restoration: central locator plus five augmentation-responsive
   satellite statues and persistent seals, with Guild as tutorial/progress/final
   state. This is evidence-constrained reconstruction, not parity.
-- Canonical detail: `docs/STATUEMASTER_DEEP_RESEARCH_REPORT.md` and
-  `docs/STATUEMASTER_LUA_PORT_AUDIT.md`.
+- Canonical detail: `docs/scripts/STATUEMASTER_DEEP_RESEARCH_REPORT.md` and
+  `docs/scripts/STATUEMASTER_LUA_PORT_AUDIT.md`.

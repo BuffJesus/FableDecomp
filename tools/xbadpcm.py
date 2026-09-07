@@ -4,7 +4,7 @@ encoder + decoder for Fable TLC audio banks (.lug SFX banks, .lut dialogue banks
 
 ffmpeg DECODES this codec (adpcm_ima_xbox) but has NO encoder for it — this module is
 the encode side. Decode semantics were pinned byte-exact against ffmpeg 8.1 on retail
-clips (mono 22050/44100 and stereo 22050, village.lug; see docs/LUG_AUDIO_FORMAT.md §8):
+clips (mono 22050/44100 and stereo 22050, village.lug; see docs/formats/LUG_AUDIO_FORMAT.md §8):
 
   Block = 36*ch bytes:
     ch x { i16 predictor (an EXACT source sample), u8 stepIndex, u8 reserved=0 }

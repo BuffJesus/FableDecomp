@@ -43,7 +43,7 @@ transport, lobby behavior, and `CheckSync` are also outside this module.
 
 EgoMP independently demonstrates useful TLC player/creature, motion, and
 region-load integration seams, but its protocol is not inherited here. See
-[`docs/EGOMP_MULTIPLAYER_AUDIT.md`](../../../docs/EGOMP_MULTIPLAYER_AUDIT.md)
+[`docs/engine/EGOMP_MULTIPLAYER_AUDIT.md`](../../../docs/engine/EGOMP_MULTIPLAYER_AUDIT.md)
 for the evidence boundary and the recommended host-authoritative path.
 
 ## Build and test

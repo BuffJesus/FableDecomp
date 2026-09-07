@@ -1,6 +1,7 @@
 // CGameScriptInterface::GetHeroWillEnergyPercentage @ 0089a210
 // __fastcall, returns long, 0 params.
 
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct MapNode {
     int key;        // +0x0
     void* value;    // +0x4
@@ -21,10 +22,6 @@ struct Thing {
     unsigned char flags91;     // +0x91
 };
 
-struct GSI {
-    unsigned char pad0[0x14];
-    void* member14;            // +0x14
-};
 
 // externs (reloc-masked); all __fastcall to match retail this-in-ecx idiom
 extern void* __fastcall GetMgr(void* self);            // call A: this=member14
@@ -32,9 +29,9 @@ extern Thing* __fastcall GetThing(void* mgr);          // call B: this=mgr
 extern long __fastcall CalcPct(void* value);           // call C: this=value
 extern long __cdecl Finalize(void);                    // call D
 
-long __fastcall CGameScriptInterface_GetHeroWillEnergyPercentage(GSI* self)
+long __fastcall CGameScriptInterface_GetHeroWillEnergyPercentage(CGameScriptInterface* self)
 {
-    Thing* thing = GetThing(GetMgr(self->member14));
+    Thing* thing = GetThing(GetMgr(self->PlayerManager));
     if (thing != 0 && !(thing->flags91 & 1) && (thing->field20 & 0x10)) {
         int key = 4;
         IFaceMap* m = &thing->ifaces;

@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 struct MapNode { int key; void* value; };
@@ -7,7 +8,6 @@ static MapNode g_found;
 static int g_consumed = -1;
 static int g_scenario = 0;
 
-struct Iface { char pad[0x14]; void* sub; };
 
 static void* GetSubObject(void* self) { return self; }
 static unsigned char g_obj[0x100];
@@ -21,8 +21,8 @@ static MapNode* MapLowerBound(void* /*self*/, int* /*key*/) {
 }
 static void Consume(void* value) { g_consumed = (int)(long)value; }
 
-static void Run(Iface* self) {
-    void* a = GetSubObject(self->sub);
+static void Run(CGameScriptInterface* self) {
+    void* a = GetSubObject(self->PlayerManager);
     unsigned char* eax = (unsigned char*)Resolve(a);
     if (!eax) return;
     if (eax[0x91] & 0x1) return;
@@ -39,7 +39,7 @@ static void Run(Iface* self) {
 }
 
 int main() {
-    Iface iface; iface.sub = 0;
+    CGameScriptInterface iface; iface.PlayerManager = 0;
     g_end.value = (void*)111;
     g_found.value = (void*)222;
 

@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 struct CFactionThing {
@@ -13,19 +14,15 @@ struct CFactionMgr {
         return &g_factions[factionId];
     }
 };
-struct CMid {
+struct CWorld {
     unsigned char _pad[0x54];
     CFactionMgr* m54; // +0x54
-};
-struct CGameScriptInterface {
-    void* vt;
-    CMid* mid; // +0x4
 };
 
 void __fastcall CGameScriptInterface_SetFactionAsNeutralToFaction(CGameScriptInterface* self, void* edxpad, int faction1, int faction2)
 {
-    CFactionThing* a = self->mid->m54->Lookup(faction1);
-    CFactionThing* b = self->mid->m54->Lookup(faction2);
+    CFactionThing* a = self->World->m54->Lookup(faction1);
+    CFactionThing* b = self->World->m54->Lookup(faction2);
     if (a && b) {
         a->AddNeutral(b);
         b->AddNeutral(a);
@@ -36,10 +33,10 @@ int main()
 {
     for (int i = 0; i < 4; ++i) { g_factions[i].id = i; g_factions[i].neutralTo = 0; }
     CFactionMgr mgr;
-    CMid midObj;
+    CWorld midObj;
     midObj.m54 = &mgr;
     CGameScriptInterface gsi;
-    gsi.mid = &midObj;
+    gsi.World = &midObj;
 
     // both valid -> mutual neutral
     CGameScriptInterface_SetFactionAsNeutralToFaction(&gsi, 0, 0, 1);

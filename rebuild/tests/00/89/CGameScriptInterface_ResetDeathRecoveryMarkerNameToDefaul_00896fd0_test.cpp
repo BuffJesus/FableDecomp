@@ -1,9 +1,9 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 struct MapNode { int key; struct MapNode* aux; };
 struct MapKind { int _pad0; struct MapNode* head; struct MapNode* lb(int* key); };
 struct EngineObj { char _pad[0x94]; };
-struct SubA { void* GetB(); };
-struct GSI { char _pad[0x14]; SubA* member14; };
+struct CPlayerManager { void* GetB(); };
 
 static int g_finalized = -1;
 static MapNode g_nodeA = { 3, 0 };
@@ -11,16 +11,16 @@ static MapNode g_nodeEnd = { 0, 0 };
 static MapNode* g_lb_ret = 0;
 static EngineObj g_obj;
 
-void* SubA::GetB(){ return this; }
-static SubA g_subA;
+void* CPlayerManager::GetB(){ return this; }
+static CPlayerManager g_subA;
 EngineObj* ResolveObj_impl(void* p){ return &g_obj; }
 MapNode* MapKind::lb(int* key){ return g_lb_ret; }
 void FinalizeNode_impl(void* n){ g_finalized = n ? ((MapNode*)n)->key : -99; }
 
-void CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefault(GSI* self)
+void CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefault(CGameScriptInterface* self)
 {
     int key;
-    void* a = self->member14->GetB();
+    void* a = self->PlayerManager->GetB();
     EngineObj* obj = ResolveObj_impl(a);
     if (!obj) return;
     if (*(unsigned char*)((char*)obj + 0x91) & 1) return;
@@ -37,9 +37,9 @@ void CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefault(GSI* self)
 }
 
 int main(){
-    g_subA = SubA();
-    GSI gsi;
-    gsi.member14 = &g_subA;
+    g_subA = CPlayerManager();
+    CGameScriptInterface gsi;
+    gsi.PlayerManager = &g_subA;
 
     g_obj._pad[0x91] = 0;
     g_obj._pad[0x20] = 0x10;

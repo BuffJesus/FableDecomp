@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 static bool g_camHasCam = true;
@@ -10,7 +11,7 @@ struct CamObj {
     virtual bool onScreen(void* pos) { return g_onScreen; }
 };
 
-struct MidObj {
+struct CWorld {
     virtual void v0() {}
     virtual void v1() {}
     virtual void v2() {}
@@ -23,21 +24,17 @@ struct MidObj {
     virtual void v9() {}
     virtual bool getCam(CamObj** out);
     unsigned char _pad[0x30];
-    MidObj* m34;
+    CWorld* m34;
 };
 
 static CamObj g_cam;
-bool MidObj::getCam(CamObj** out) { *out = &g_cam; return g_camHasCam; }
+bool CWorld::getCam(CamObj** out) { *out = &g_cam; return g_camHasCam; }
 
-struct CGameScriptInterface {
-    void* vt;
-    MidObj* mid;
-};
 
 bool __fastcall CGameScriptInterface_IsCameraPosOnScreen(CGameScriptInterface* self, int edx_unused, void* pos)
 {
     CamObj* cam;
-    MidObj* m = self->mid->m34;
+    CWorld* m = self->World->m34;
     if (m->getCam(&cam)) {
         if (cam->onScreen(pos))
             return true;
@@ -46,9 +43,9 @@ bool __fastcall CGameScriptInterface_IsCameraPosOnScreen(CGameScriptInterface* s
 }
 
 int main() {
-    MidObj inner;
+    CWorld inner;
     inner.m34 = &inner;
-    CGameScriptInterface gsi; gsi.mid = &inner;
+    CGameScriptInterface gsi; gsi.World = &inner;
 
     int dummy;
 

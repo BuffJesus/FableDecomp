@@ -6,7 +6,7 @@ candidate's `.text` against authoritative retail bytes (relocation-masked), conv
 source spelling whose codegen byte-matches. Built to attack the **register-allocation /
 instruction-scheduling tail** — functions that are functionally correct and the right length
 but differ only in which register holds a value or where a `push` lands (see
-`docs/PARITY_TRIAGE.md` "class 2").
+`docs/pipeline/PARITY_TRIAGE.md` "class 2").
 
 ## Pieces
 - `permuter_score.py` — the scorer. Compiles a `.cpp` with `cl /c /O2 /Oy /W3`, extracts the

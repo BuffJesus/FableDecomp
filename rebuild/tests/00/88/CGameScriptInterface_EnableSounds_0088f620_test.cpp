@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 static int g_muteCalls = 0;
@@ -16,7 +17,6 @@ typedef void (__fastcall *StopFn)(CSoundMgr*);
 
 void __fastcall StopImpl(CSoundMgr*) { g_stopCalled++; }
 
-struct CGameScriptInterface { char pad; };
 
 void __fastcall CGameScriptInterface_EnableSounds(CGameScriptInterface* self, void* edx, char enable)
 {

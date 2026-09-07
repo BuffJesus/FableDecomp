@@ -1,9 +1,5 @@
-struct CGameScriptInterface {
-    void* vt;
-    void* member14_pad[4];
-    void* member14; // +0x14
-};
 
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct HeroObj {
     unsigned char pad[0x91];
     unsigned char flags; // +0x91

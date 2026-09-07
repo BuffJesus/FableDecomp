@@ -1,6 +1,6 @@
 param(
     [string]$IndexDir = "ghidra_out/installed_game",
-    [string]$OutputPath = "docs/WORLD_AND_CHEST_INDEX.md"
+    [string]$OutputPath = "docs/formats/WORLD_AND_CHEST_INDEX.md"
 )
 
 Set-StrictMode -Version Latest

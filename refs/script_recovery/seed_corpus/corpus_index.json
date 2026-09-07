@@ -437,6 +437,784 @@
           "size": 423
         }
       ]
+    },
+    {
+      "name": "Gameflow",
+      "sourceArchive": "D:\\Downloads\\Gameflow.zip",
+      "archiveSha256": "A33CA117FD1BEE9EE6B51A04CD72E4D51A02838E9A894467E41D1EA9A1A79B2D",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "LUAGameflow",
+          "name": "LUAGameflow",
+          "file": "LUAGameflow/LUAGameflow",
+          "id": 1027,
+          "kind": "script",
+          "entities": []
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/LUAGameflow/LUAGameflow.lua",
+          "sha256": "4CFDEDC8EBA0A64F033289AFFDD43BFBD611225F95088A43A7E5135E17771DAA",
+          "size": 50222,
+          "ir": "ir/Gameflow/FSE__LUAGameflow__LUAGameflow.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "52BF7FB3B5CAD63BDFA3E316471B80A0C59E31E1E459EDDEECC10E31721BB112",
+          "size": 297
+        }
+      ]
+    },
+    {
+      "name": "BeardyBaldy",
+      "sourceArchive": "D:\\Downloads\\BeardyBaldy.zip",
+      "archiveSha256": "FDC5598146DD9A0A4B771B39DE0F0C473C606E3A874BBD485B1B48F681BF3134",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "BeardyBaldy",
+          "name": "BeardyBaldy",
+          "file": "BeardyBaldy/BeardyBaldy",
+          "id": 1026,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "BB_BeardyBaldyMan",
+              "file": "BeardyBaldy/Entities/BB_BeardyBaldyMan",
+              "id": 108
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/BeardyBaldy/BeardyBaldy.lua",
+          "sha256": "0E941500FC3A4CD68E73FC15E5556254A8BDAE2F29E303F99B4A271BE40269D4",
+          "size": 18804,
+          "ir": "ir/BeardyBaldy/FSE__BeardyBaldy__BeardyBaldy.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+          "sha256": "2B06A2F7876666EA4DA3CBEAD2E0ADCE33E783710D0CF100AF6C284EB62BE4EA",
+          "size": 21434,
+          "ir": "ir/BeardyBaldy/FSE__BeardyBaldy__Entities__BB_BeardyBaldyMan.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "3BA6CF41B6FC6A496C76C89984D1D7BA0EAD964F7F63D4957CBD5D1497EDF724",
+          "size": 409
+        }
+      ]
+    },
+    {
+      "name": "RockTrollFirstEncounter",
+      "sourceArchive": "D:\\Downloads\\RockTrollFirstEncounter.zip",
+      "archiveSha256": "A464972381B0CCA05B7E4DFCB642E58C353B6575713895FC4FE67565C7A4CCA4",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "RockTrollFirstEncounter",
+          "name": "RockTrollFirstEncounter",
+          "file": "RockTrollFirstEncounter/RockTrollFirstEncounter",
+          "id": 1025,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "RTFE_Sparrow",
+              "file": "RockTrollFirstEncounter/Entities/RTFE_Sparrow",
+              "id": 105
+            },
+            {
+              "name": "RTFE_RockTroll",
+              "file": "RockTrollFirstEncounter/Entities/RTFE_RockTroll",
+              "id": 106
+            },
+            {
+              "name": "M_RTFERockTrollTrigger",
+              "file": "RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger",
+              "id": 107
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger.lua",
+          "sha256": "8567723A1379E0ABAC1EF54C8A86424BA72018573C879AA5B042E6BBB8317B37",
+          "size": 2144,
+          "ir": "ir/RockTrollFirstEncounter/FSE__RockTrollFirstEncounter__Entities__M_RTFERockTrollTrigger.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+          "sha256": "5688238F5A8481A610CCFEC1F22644ADDDE687D284AA430EAFF4915BB7AF91E1",
+          "size": 3443,
+          "ir": "ir/RockTrollFirstEncounter/FSE__RockTrollFirstEncounter__Entities__RTFE_RockTroll.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/RockTrollFirstEncounter/Entities/RTFE_Sparrow.lua",
+          "sha256": "E7E7E79CDDD5B729AAE28485477C30143607A2D5E62BD051F2DED22B1D14F52F",
+          "size": 1344,
+          "ir": "ir/RockTrollFirstEncounter/FSE__RockTrollFirstEncounter__Entities__RTFE_Sparrow.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+          "sha256": "6D519820F8DB8CD781E5E63A755651745051D1CAFE87407C1DA57DB67FC94E7F",
+          "size": 7538,
+          "ir": "ir/RockTrollFirstEncounter/FSE__RockTrollFirstEncounter__RockTrollFirstEncounter.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "78A3D52733A7C471B3B4A59F9E97ABA53A5D7E33C1FDC2C9ED3BCFBBC1141ED3",
+          "size": 727
+        }
+      ]
+    },
+    {
+      "name": "BowerstoneTownLifeIntro",
+      "sourceArchive": "D:\\Downloads\\BowerstoneTownLifeIntro.zip",
+      "archiveSha256": "C5FEA4B567DFE67300E6E72E37D1C2131763B64EDEE70E3AF699561911B2EA91",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "BowerstoneTownLifeIntro",
+          "name": "BowerstoneTownLifeIntro",
+          "file": "BowerstoneTownLifeIntro/BowerstoneTownLifeIntro",
+          "id": 1021,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "BowerstoneIntroGuard",
+              "file": "BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard",
+              "id": 97
+            },
+            {
+              "name": "BowerstoneIntroGuardToPosh",
+              "file": "BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh",
+              "id": 98
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
+          "sha256": "B15E0BF08958F833D53B9AA8BD53FB326AB1CD50D4F9621A71870415E47ACCF3",
+          "size": 3713,
+          "ir": "ir/BowerstoneTownLifeIntro/FSE__BowerstoneTownLifeIntro__BowerstoneTownLifeIntro.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+          "sha256": "2D7CA122DF96C95AE00699FA041C382580F147FBABF8183B90850E0F1FA2FE8E",
+          "size": 1055,
+          "ir": "ir/BowerstoneTownLifeIntro/FSE__BowerstoneTownLifeIntro__Entities__BowerstoneIntroGuard.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+          "sha256": "51F3801A51CC7E98D68F1D099C8DB2E749B5209656F70A34765C4E02833DDDC5",
+          "size": 4356,
+          "ir": "ir/BowerstoneTownLifeIntro/FSE__BowerstoneTownLifeIntro__Entities__BowerstoneIntroGuardToPosh.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "61C4EDEC558A7B8F86FE8E3C6B118343C0698CDACE4F59328BAEA73688D87A75",
+          "size": 618
+        }
+      ]
+    },
+    {
+      "name": "ScytheInfo",
+      "sourceArchive": "D:\\Downloads\\ScytheInfo.zip",
+      "archiveSha256": "511835CC7B522C340F46447007C0879643B85E9D4DE43EBB5824FE2D7E1D6D93",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "ScytheInfo",
+          "name": "ScytheInfo",
+          "file": "ScytheInfo/ScytheInfo",
+          "id": 1023,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "ScytheMarker",
+              "file": "ScytheInfo/Entities/ScytheMarker",
+              "id": 101
+            },
+            {
+              "name": "ScytheNearOracle",
+              "file": "ScytheInfo/Entities/ScytheNearOracle",
+              "id": 102
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/ScytheInfo/Entities/ScytheMarker.lua",
+          "sha256": "3B9BA75C9ACC9764E2427A4A38A9CF07BB1E5E2DB85D14DF481C6CCF234E32B0",
+          "size": 393,
+          "ir": "ir/ScytheInfo/FSE__ScytheInfo__Entities__ScytheMarker.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+          "sha256": "F5A0750CC674E79056B9CBBC9AE63D628349CA63EA77B0D6B785241EBF82ADBE",
+          "size": 3422,
+          "ir": "ir/ScytheInfo/FSE__ScytheInfo__Entities__ScytheNearOracle.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/ScytheInfo/ScytheInfo.lua",
+          "sha256": "BCB05A51C3EC808ADF8DBD8DC7D804B89F4D027F427660FFA6F954683BFB75CF",
+          "size": 2758,
+          "ir": "ir/ScytheInfo/FSE__ScytheInfo__ScytheInfo.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "4D20F5AB90B9783A6BB37044EAB50E8036853199A3FDE09EB72119A687C46086",
+          "size": 502
+        }
+      ]
+    },
+    {
+      "name": "SingingStones",
+      "sourceArchive": "D:\\Downloads\\SingingStones.zip",
+      "archiveSha256": "D8A24D09BC577B2978D97470D368A82D21B651F46C1A906659818B3DE4491998",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "SingingStones",
+          "name": "SingingStones",
+          "file": "SingingStones/SingingStones",
+          "id": 1024,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "SingingStone",
+              "file": "SingingStones/Entities/SingingStone",
+              "id": 103
+            },
+            {
+              "name": "ManWithDoorName",
+              "file": "SingingStones/Entities/ManWithDoorName",
+              "id": 104
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/SingingStones/Entities/ManWithDoorName.lua",
+          "sha256": "AC60DC5CE575E585134509791B47A3F2F283E1181B64A5E2907A6AE15E12546A",
+          "size": 6405,
+          "ir": "ir/SingingStones/FSE__SingingStones__Entities__ManWithDoorName.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/SingingStones/Entities/SingingStone.lua",
+          "sha256": "1E5EA2BE0C5664A76F1417ACDB4441F213FCAD866BE538A1F459DCCCE2B7387D",
+          "size": 4080,
+          "ir": "ir/SingingStones/FSE__SingingStones__Entities__SingingStone.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/SingingStones/SingingStones.lua",
+          "sha256": "269F5A7D5A226CC650965D5501EA10016B9C4FF8440B580E98FE5CB89550E69F",
+          "size": 8919,
+          "ir": "ir/SingingStones/FSE__SingingStones__SingingStones.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "2F1C7E1F260B49A3F4AEBD4F6D338EF49F863A9FE91C8232244237643B957821",
+          "size": 516
+        }
+      ]
+    },
+    {
+      "name": "TrophyDealer",
+      "sourceArchive": "D:\\Downloads\\TrophyDealer.zip",
+      "archiveSha256": "AAAC6CFDFA40A3677BBCEA7F6465BE5ACA1C5DD1DDC4A39666EB7029E2EA38C9",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "TrophyDealer",
+          "name": "TrophyDealer",
+          "file": "TrophyDealer/TrophyDealer",
+          "id": 1022,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "TrophyDealerInCave",
+              "file": "TrophyDealer/Entities/TrophyDealerInCave",
+              "id": 99
+            },
+            {
+              "name": "DemonDoorFace",
+              "file": "TrophyDealer/Entities/DemonDoorFace",
+              "id": 100
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+          "sha256": "8308CE5A3C2E1384E8C129996ACDF069F5B988067921C4FACA179AA4B007BE12",
+          "size": 4624,
+          "ir": "ir/TrophyDealer/FSE__TrophyDealer__Entities__DemonDoorFace.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/TrophyDealer/Entities/TrophyDealerInCave.lua",
+          "sha256": "9DFEBD72AFC8CF81560EC92A7214A81BA0C8085AC1CF4539BE02810B8843136B",
+          "size": 2783,
+          "ir": "ir/TrophyDealer/FSE__TrophyDealer__Entities__TrophyDealerInCave.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/TrophyDealer/TrophyDealer.lua",
+          "sha256": "2E14F4FADDD3EE96FBA95CB2A4653712DB85AC804C50F5DF65AF859EEABA4073",
+          "size": 3250,
+          "ir": "ir/TrophyDealer/FSE__TrophyDealer__TrophyDealer.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "E0806510AD7A8AA0EF5E166E5DD14E1FC427D3340AF230F053DC7B2AEB3FB5EC",
+          "size": 521
+        }
+      ]
+    },
+    {
+      "name": "WaspBoss",
+      "sourceArchive": "D:\\Downloads\\WaspBoss.zip",
+      "archiveSha256": "30D41731A96A2B9EC1788E8B6E7C4643AD263DCB9BBA4721BAA533CE68E06801",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "WaspBoss",
+          "name": "WaspBoss",
+          "file": "WaspBoss/WaspBoss",
+          "id": 1008,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "GratefulVillagerSpawn",
+              "file": "WaspBoss/Entities/GratefulVillagerSpawn",
+              "id": 74
+            },
+            {
+              "name": "WaspChaser",
+              "file": "WaspBoss/Entities/WaspChaser",
+              "id": 75
+            },
+            {
+              "name": "WaspChaseWoman",
+              "file": "WaspBoss/Entities/WaspChaseWoman",
+              "id": 76
+            },
+            {
+              "name": "WaspAttacker",
+              "file": "WaspBoss/Entities/WaspAttacker",
+              "id": 77
+            },
+            {
+              "name": "WaspVictim",
+              "file": "WaspBoss/Entities/WaspVictim",
+              "id": 78
+            },
+            {
+              "name": "FleeingWoman",
+              "file": "WaspBoss/Entities/FleeingWoman",
+              "id": 79
+            },
+            {
+              "name": "WaspHelper",
+              "file": "WaspBoss/Entities/WaspHelper",
+              "id": 80
+            },
+            {
+              "name": "QueenHornet",
+              "file": "WaspBoss/Entities/QueenHornet",
+              "id": 81
+            },
+            {
+              "name": "HornetDrone",
+              "file": "WaspBoss/Entities/HornetDrone",
+              "id": 82
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/WaspBoss/Entities/FleeingWoman.lua",
+          "sha256": "4068C3083A2A596610A79F26069519224787E2B84E2C2F91501F32D1DF0EF1AB",
+          "size": 2269,
+          "ir": "ir/WaspBoss/FSE__WaspBoss__Entities__FleeingWoman.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/WaspBoss/Entities/GratefulVillagerSpawn.lua",
+          "sha256": "9CA633504C9D5C1219A33C7A03970DE1BE998B67B08DA968CA07257091E89D49",
+          "size": 449,
+          "ir": "ir/WaspBoss/FSE__WaspBoss__Entities__GratefulVillagerSpawn.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/WaspBoss/Entities/HornetDrone.lua",
+          "sha256": "F3ABA2794D06C10792615F68182B23D882506B1058AEB742E53CD09574C1FFE3",
+          "size": 2249,
+          "ir": "ir/WaspBoss/FSE__WaspBoss__Entities__HornetDrone.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/WaspBoss/Entities/QueenHornet.lua",
+          "sha256": "D9D035E0565B247BBA1A88D622D9F10F67BEED82535A4A8F9EDC2806DA447911",
+          "size": 398,
+          "ir": "ir/WaspBoss/FSE__WaspBoss__Entities__QueenHornet.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/WaspBoss/Entities/WaspAttacker.lua",
+          "sha256": "9DC69DC4EFB3EE2D8B2805D6D471CEEDB7ACD527888064671A9604DAEA72B054",
+          "size": 708,
+          "ir": "ir/WaspBoss/FSE__WaspBoss__Entities__WaspAttacker.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+          "sha256": "BC5E2C9FEF801A0926AF7BC51DCD7E2F678E56155BF16097334E0742653D8209",
+          "size": 3722,
+          "ir": "ir/WaspBoss/FSE__WaspBoss__Entities__WaspChaseWoman.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/WaspBoss/Entities/WaspChaser.lua",
+          "sha256": "FF7D13C459B011F7797F9CD0101CCDFDB66C7EDBC216A985057E223A99F4BDC2",
+          "size": 685,
+          "ir": "ir/WaspBoss/FSE__WaspBoss__Entities__WaspChaser.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/WaspBoss/Entities/WaspHelper.lua",
+          "sha256": "980712933089C0738610CEEC955312352BE7BAE4C7F9839071E4FEB34B28543B",
+          "size": 16815,
+          "ir": "ir/WaspBoss/FSE__WaspBoss__Entities__WaspHelper.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/WaspBoss/Entities/WaspVictim.lua",
+          "sha256": "06C481F3F6E8C7AEA3D0625031CD222FD41E659C0591A3A26B9B0B8C94BE0AA7",
+          "size": 3330,
+          "ir": "ir/WaspBoss/FSE__WaspBoss__Entities__WaspVictim.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/WaspBoss/WaspBoss.lua",
+          "sha256": "FD27A792C7921064DBBB1C1DD51C89F56324D43DD07269DFED09F9B305B1E97C",
+          "size": 15262,
+          "ir": "ir/WaspBoss/FSE__WaspBoss__WaspBoss.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "D45A12EDD1BAC144E6DBAEE50891CFB2415249A9AFAE712241783B6F0F3B270E",
+          "size": 1257
+        }
+      ]
+    },
+    {
+      "name": "OakValeRevisited",
+      "sourceArchive": "D:\\Downloads\\OakValeRevisited.zip",
+      "archiveSha256": "119E80FEE2BD67232A43BF3EED50A1676C00CB189EBADB5EA27C510959F504EE",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "OakValeRevisited",
+          "name": "OakValeRevisited",
+          "file": "OakValeRevisited/OakValeRevisited",
+          "id": 1013,
+          "kind": "script",
+          "entities": []
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/OakValeRevisited/OakValeRevisited.lua",
+          "sha256": "D9A38C0D30F326B3C6B6033D9897BEF6B0901968E3898AD7B4FA63694A180FA3",
+          "size": 4952,
+          "ir": "ir/OakValeRevisited/FSE__OakValeRevisited__OakValeRevisited.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "B2648ABCD6A2A34761E8562C140CC910FE61C31BD6FF90B2D8FE7575222D915A",
+          "size": 332
+        }
+      ]
+    },
+    {
+      "name": "Fisherman",
+      "sourceArchive": "D:\\Downloads\\Fisherman.zip",
+      "archiveSha256": "02EAF525B4E217BC6E1474145022F6286B81B8E82C0A97EB384F55D7AFF27698",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "Fisherman",
+          "name": "Fisherman",
+          "file": "Fisherman/Fisherman",
+          "id": 1012,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "Fisherman",
+              "file": "Fisherman/Entities/Fisherman",
+              "id": 93
+            },
+            {
+              "name": "M_FishermanWaspSpawn",
+              "file": "Fisherman/Entities/M_FishermanWaspSpawn",
+              "id": 94
+            },
+            {
+              "name": "FishermanBulletinBoard",
+              "file": "Fisherman/Entities/FishermanBulletinBoard",
+              "id": 95
+            },
+            {
+              "name": "FishermanWasp",
+              "file": "Fisherman/Entities/FishermanWasp",
+              "id": 96
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/Fisherman/Entities/Fisherman.lua",
+          "sha256": "70C4AADD9D8045F6BF67A01BFB104FDC19810499F789DDE52C601862E8BFBB07",
+          "size": 14274,
+          "ir": "ir/Fisherman/FSE__Fisherman__Entities__Fisherman.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/Fisherman/Entities/FishermanBulletinBoard.lua",
+          "sha256": "E6A081D837F285A7A3A5286637C858F7570D9F16C4616CF88BB06CEBF1AEA7D4",
+          "size": 476,
+          "ir": "ir/Fisherman/FSE__Fisherman__Entities__FishermanBulletinBoard.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/Fisherman/Entities/FishermanWasp.lua",
+          "sha256": "64630DF102C788828D74AF3297B4EE729C68AFF7095304F50CD46A062A960655",
+          "size": 756,
+          "ir": "ir/Fisherman/FSE__Fisherman__Entities__FishermanWasp.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/Fisherman/Entities/M_FishermanWaspSpawn.lua",
+          "sha256": "89CCCCF2FDF3FC0850C85F84785F7FD4C8CAB6AD93874E5A7D7D3832C39B0CD9",
+          "size": 755,
+          "ir": "ir/Fisherman/FSE__Fisherman__Entities__M_FishermanWaspSpawn.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/Fisherman/Fisherman.lua",
+          "sha256": "BAB80CDE191786895D472DFE4114AC31AAF3A71D9D176B4CDFF545A5C23CF66A",
+          "size": 2442,
+          "ir": "ir/Fisherman/FSE__Fisherman__Fisherman.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "3EE53A35DAE1F4D8EE69EFCD3E72831A76EA7E2E0ADB953D6C3444A7D351B048",
+          "size": 758
+        }
+      ]
+    },
+    {
+      "name": "TentacleKrakenBossFight",
+      "sourceArchive": "D:\\Downloads\\TentacleKrakenBossFight.zip",
+      "archiveSha256": "9BB0779CB6937348EA9DA1570696489CCF184EBBD2FB2AC7E3D40B9D7BCEC2E4",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "TentacleKrakenBossFight",
+          "name": "TentacleKrakenBossFight",
+          "file": "TentacleKrakenBossFight/TentacleKrakenBossFight",
+          "id": 1011,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "KrakenMinion",
+              "file": "TentacleKrakenBossFight/Entities/KrakenMinion",
+              "id": 90
+            },
+            {
+              "name": "M_Experience",
+              "file": "TentacleKrakenBossFight/Entities/M_Experience",
+              "id": 91
+            },
+            {
+              "name": "TheKraken",
+              "file": "TentacleKrakenBossFight/Entities/TheKraken",
+              "id": 92
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/TentacleKrakenBossFight/Entities/KrakenMinion.lua",
+          "sha256": "CC9D2723506E849B4D95A8EFF0D8DA9435841E40CE63BB8D8E568BA05BFA7AF3",
+          "size": 883,
+          "ir": "ir/TentacleKrakenBossFight/FSE__TentacleKrakenBossFight__Entities__KrakenMinion.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/TentacleKrakenBossFight/Entities/M_Experience.lua",
+          "sha256": "EF147264E0880D6B526D23B0F6EED8BF3A8226D2A34C4786E3EF6F04D1B74952",
+          "size": 438,
+          "ir": "ir/TentacleKrakenBossFight/FSE__TentacleKrakenBossFight__Entities__M_Experience.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/TentacleKrakenBossFight/Entities/TheKraken.lua",
+          "sha256": "E82116C9EC6AC8B435776985A846413D0EBE20576692B2134E70E1AE3B6FC3C5",
+          "size": 1207,
+          "ir": "ir/TentacleKrakenBossFight/FSE__TentacleKrakenBossFight__Entities__TheKraken.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+          "sha256": "0EBCB49AD00CC15DACBB9B191F9CDBBDE7CEB08A5D3220C8F74D264766FB00EC",
+          "size": 9492,
+          "ir": "ir/TentacleKrakenBossFight/FSE__TentacleKrakenBossFight__TentacleKrakenBossFight.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "4AAB141AF97FDB368581AB0EF00C1B6D4F9B3D422E6361A0C0750C6721589EDF",
+          "size": 685
+        }
+      ]
+    },
+    {
+      "name": "SummoningTheShip",
+      "sourceArchive": "D:\\Downloads\\SummoningTheShip.zip",
+      "archiveSha256": "E2C72482E3353190C59B38D29A5990C28C6511E17C22B0BC267F04D13E305F97",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "SummoningTheShip",
+          "name": "SummoningTheShip",
+          "file": "SummoningTheShip/SummoningTheShip",
+          "id": 1010,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "STS_BriarRose",
+              "file": "SummoningTheShip/Entities/STS_BriarRose",
+              "id": 84
+            },
+            {
+              "name": "SummonerAttacker",
+              "file": "SummoningTheShip/Entities/SummonerAttacker",
+              "id": 85
+            },
+            {
+              "name": "SummonerMinion",
+              "file": "SummoningTheShip/Entities/SummonerMinion",
+              "id": 86
+            },
+            {
+              "name": "FireHeartHolder",
+              "file": "SummoningTheShip/Entities/FireHeartHolder",
+              "id": 87
+            },
+            {
+              "name": "FireHeart",
+              "file": "SummoningTheShip/Entities/FireHeart",
+              "id": 88
+            },
+            {
+              "name": "M_ActivateLighthouse",
+              "file": "SummoningTheShip/Entities/M_ActivateLighthouse",
+              "id": 89
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/SummoningTheShip/Entities/FireHeart.lua",
+          "sha256": "9A2E5F4C7E84D376FBDD1D35D7DC093BB7DC22FB5AEF354C591F859A669E4B80",
+          "size": 4130,
+          "ir": "ir/SummoningTheShip/FSE__SummoningTheShip__Entities__FireHeart.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/SummoningTheShip/Entities/FireHeartHolder.lua",
+          "sha256": "2DAE1EB9E9AB210E6348F162616A2AB9F2A81141A695E74BF759EACB060A3B20",
+          "size": 1523,
+          "ir": "ir/SummoningTheShip/FSE__SummoningTheShip__Entities__FireHeartHolder.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/SummoningTheShip/Entities/M_ActivateLighthouse.lua",
+          "sha256": "D79A430B7817B5A19094A6C916CC7B5B2858E11095D7E4233153E09F4A7AF695",
+          "size": 310,
+          "ir": "ir/SummoningTheShip/FSE__SummoningTheShip__Entities__M_ActivateLighthouse.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+          "sha256": "0EF36BCAA2A4311DBA69F31CEDD85C84E6B2E759FD5043AF79BFDD256CA5F561",
+          "size": 7412,
+          "ir": "ir/SummoningTheShip/FSE__SummoningTheShip__Entities__STS_BriarRose.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+          "sha256": "2FE6F1A4DC2018F76A58428F579728627D4401087C03665772E3EF5BB8FA15D2",
+          "size": 5868,
+          "ir": "ir/SummoningTheShip/FSE__SummoningTheShip__Entities__SummonerAttacker.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+          "sha256": "C84038B5E39D6C60FB774B464F3D3F40E58AA86C20804932D71BEFA8B1D2FDE7",
+          "size": 2170,
+          "ir": "ir/SummoningTheShip/FSE__SummoningTheShip__Entities__SummonerMinion.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/SummoningTheShip/SummoningTheShip.lua",
+          "sha256": "F7E58A9DEAC2D2713406E405802D18D6F1B20F115AB3DCA5334B9C616E621DA3",
+          "size": 7871,
+          "ir": "ir/SummoningTheShip/FSE__SummoningTheShip__SummoningTheShip.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "A9024A1312E2751ACEF7D076995B8482C0E46A2906FBF26A4B6C242A13152A64",
+          "size": 1026
+        }
+      ]
     }
   ]
 }

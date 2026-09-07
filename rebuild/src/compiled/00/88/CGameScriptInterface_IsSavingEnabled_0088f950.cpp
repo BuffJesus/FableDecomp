@@ -1,7 +1,7 @@
-struct CInner { char pad[0xd7]; char flag; };
-struct CGameScriptInterface { int dummy; CInner* inner; };
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CWorld { char pad[0xd7]; char flag; };
 
 char __fastcall CGameScriptInterface_IsSavingEnabled(const CGameScriptInterface* self)
 {
-    return self->inner->flag;
+    return self->World->flag;
 }

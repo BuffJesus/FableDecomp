@@ -1,0 +1,65 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/WaspBoss/Entities/QueenHornet.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 1,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "Pause",
+          "line": 3
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 4
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 5
+        },
+        {
+          "receiver": "me",
+          "name": "IsAlive",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 13
+        }
+      ]
+    }
+  ],
+  "state": [],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

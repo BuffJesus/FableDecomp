@@ -10,7 +10,7 @@ Export direction: sample an action per anim frame and clone-a-donor-clip
 quat/pos pools + palettes with resampled data, re-serialize, recompress and
 inject via big_write.rebuild into a STAGED .big.
 
-Coordinate convention (probed against retail, see docs/ANIM_WRITER.md §7):
+Coordinate convention (probed against retail, see docs/formats/ANIM_WRITER.md §7):
 the importer maps Fable model space to Blender space VERBATIM (no axis swap),
 so an anim track's data is, in the armature's space:
 
@@ -255,7 +255,7 @@ def _pool_palette(items):
 def export_action_to_image(arm_obj, action, donor_img, frame_count=None):
     """Sample `action` on `arm_obj` and write it over a donor 3DAF image
     (bytes, decompressed) whose rig matches the armature -- the
-    docs/ANIM_WRITER.md §4 donor-clone recipe, automated.
+    docs/formats/ANIM_WRITER.md §4 donor-clone recipe, automated.
 
     Every donor track whose bone exists in the armature gets its non-empty
     rot/pos pools + palettes REPLACED by data sampled from the action at the

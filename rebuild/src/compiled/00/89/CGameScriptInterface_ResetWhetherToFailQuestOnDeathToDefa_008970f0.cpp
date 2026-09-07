@@ -1,6 +1,7 @@
 // CGameScriptInterface::ResetWhetherToFailQuestOnDeathToDefault
 // __fastcall, void, 1 param (this)
 
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct MapNode {
     int key;      // +0x00
     void* value;  // +0x04
@@ -16,14 +17,10 @@ extern void* __fastcall GetSubObject(void* self);
 extern void* __fastcall Resolve(void* self);
 extern void __fastcall Consume(void* value);
 
-struct Iface {
-    char pad[0x14];
-    void* sub; // +0x14
-};
 
-void __fastcall CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefault(Iface* self)
+void __fastcall CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefault(CGameScriptInterface* self)
 {
-    void* a = GetSubObject(self->sub);
+    void* a = GetSubObject(self->PlayerManager);
     unsigned char* eax = (unsigned char*)Resolve(a);
     if (!eax) return;
     if (eax[0x91] & 0x1) return;

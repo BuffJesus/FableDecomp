@@ -1,8 +1,8 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 bool g_QuitTavernGame = false;
 
-struct CGameScriptInterface { char dummy; };
 
 bool __fastcall CGameScriptInterface_GetQuitTavernGame(CGameScriptInterface* self)
 {

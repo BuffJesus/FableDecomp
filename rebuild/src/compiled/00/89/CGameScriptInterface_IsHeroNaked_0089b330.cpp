@@ -1,4 +1,5 @@
 // CGameScriptInterface::IsHeroNaked  @ 0x0089b330  (VC7.1 /O2 /Oy)
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 typedef unsigned char u8;
 typedef unsigned int u32;
 
@@ -17,10 +18,6 @@ struct HeroTarget {
     u8    flags91;    // +0x91
 };
 
-struct GSISelf {
-    char  pad00[0x14];
-    void* field14;    // +0x14
-};
 
 struct TCMap {
     TCEntry* LowerBound(int* key);   // __fastcall: this in ecx, key pushed
@@ -31,9 +28,9 @@ extern "C" void*       __fastcall GSI_Helper_A(void* p);            // 0x0040D95
 extern "C" HeroTarget* __fastcall GSI_Helper_B(void* p);           // 0x00487DC0-ish
 extern "C" bool        __fastcall TCShop_GetName(void* self);
 
-bool __fastcall CGameScriptInterface_IsHeroNaked(const GSISelf* self)
+bool __fastcall CGameScriptInterface_IsHeroNaked(const CGameScriptInterface* self)
 {
-    HeroTarget* target = GSI_Helper_B(GSI_Helper_A(self->field14));
+    HeroTarget* target = GSI_Helper_B(GSI_Helper_A(self->PlayerManager));
 
     if (target != 0 &&
         (target->flags91 & 0x1) == 0 &&

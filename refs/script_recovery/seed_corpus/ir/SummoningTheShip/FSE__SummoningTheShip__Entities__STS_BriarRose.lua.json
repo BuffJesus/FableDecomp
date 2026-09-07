@@ -1,0 +1,324 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 40,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "me",
+          "name": "MakeBehavioral",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsRespondingToFollowAndWaitExpressions",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingPersistent",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsAllowedToFollowHero",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingHasInformation",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySheatheWeapons",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetThingAsAllyOfThing",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsKillable",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsDamageable",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsToAddToComboMultiplierWhenHit",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 63,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestCardObjective",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "ClearThingBestEnemyTarget",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityFollowThing",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 34
+        },
+        {
+          "receiver": "quest",
+          "name": "GetNearestWithScriptName",
+          "line": 39
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveThingBestEnemyTarget",
+          "line": 41
+        },
+        {
+          "receiver": "quest",
+          "name": "GetNearestWithScriptName",
+          "line": 48
+        },
+        {
+          "receiver": "quest",
+          "name": "GetNearestWithScriptName",
+          "line": 49
+        },
+        {
+          "receiver": "quest",
+          "name": "GetDistanceBetweenThings",
+          "line": 52
+        },
+        {
+          "receiver": "quest",
+          "name": "GetDistanceBetweenThings",
+          "line": 53
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveThingBestEnemyTarget",
+          "line": 68
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 74
+        },
+        {
+          "receiver": "me",
+          "name": "GetCurrentStateGroupType",
+          "line": 93
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 104
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitBy",
+          "line": 105
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFrom",
+          "line": 106
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitBySpecialAbilityFrom",
+          "line": 107
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 111
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitBy",
+          "line": 114
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFrom",
+          "line": 115
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitBySpecialAbilityFrom",
+          "line": 116
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 120
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitBy",
+          "line": 127
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFrom",
+          "line": 128
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitBySpecialAbilityFrom",
+          "line": 129
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 135
+        },
+        {
+          "receiver": "me",
+          "name": "IsDead",
+          "line": 136
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 139
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 140
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "CommentaryTimer",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "ConversationIndex",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "CurrentAttackWave",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SummonerAttacksStarted",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SummonersAlive",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_B02_BRIARROSE_",
+      "TEXT_QUEST_SUMMONING_SHIP_OBJECTIVE_03"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

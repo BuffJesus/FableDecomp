@@ -1,0 +1,40 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/ScytheInfo/Entities/ScytheMarker.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 7,
+      "calls": [
+        {
+          "receiver": "me",
+          "name": "GetPos",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateCreature",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 5
+        }
+      ]
+    }
+  ],
+  "state": [],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

@@ -50,7 +50,7 @@ def parse_header(data):
 if __name__ == '__main__':
     cmd = sys.argv[1] if len(sys.argv) > 1 else 'demo'
     if cmd == 'crc':
-        # SAVE-STREAM field tag == Calc(seed=0, name) (same as game.bin). See docs/SAVE_HEADER_MAP.md.
+        # SAVE-STREAM field tag == Calc(seed=0, name) (same as game.bin). See docs/formats/SAVE_HEADER_MAP.md.
         for nm in sys.argv[2:]:
             t0 = getcrc(nm, 0)
             print("%-30s -> save/game.bin tag(seed0)=%08X (LE %s)   [seedFFFF=%08X]" %

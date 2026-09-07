@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """BIGB bank-archive parser for the Fable: TLC .big family.
 
-Ports the reader spec from docs/TEXTBIG_FORMAT.md. Pure byte-level, no Ghidra.
+Ports the reader spec from docs/formats/TEXTBIG_FORMAT.md. Pure byte-level, no Ghidra.
 Usage: python parse_bigb.py <file.big> [--dump N] [--type-payload]
 """
 import struct, sys, os

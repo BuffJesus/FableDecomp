@@ -1,5 +1,5 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
-struct CGameScriptInterface { char pad[4]; };
 bool g_PlayerUsingMeleeDummies = false;
 bool __fastcall CGameScriptInterface_GetPlayerUsingMeleeDummies(const CGameScriptInterface* self)
 {

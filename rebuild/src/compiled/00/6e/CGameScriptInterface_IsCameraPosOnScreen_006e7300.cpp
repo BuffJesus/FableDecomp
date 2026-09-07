@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CamObj {
     virtual void s0();
     virtual void s1();
@@ -5,7 +6,7 @@ struct CamObj {
     virtual bool onScreen(void* pos); // slot index 3 => 0xc
 };
 
-struct MidObj {
+struct CWorld {
     virtual void v0();
     virtual void v1();
     virtual void v2();
@@ -18,18 +19,14 @@ struct MidObj {
     virtual void v9();
     virtual bool getCam(CamObj** out); // slot index 10 => 0x28
     unsigned char _pad[0x30]; // vptr at +0, then pad to +0x34
-    MidObj* m34;               // +0x34
+    CWorld* m34;               // +0x34
 };
 
-struct CGameScriptInterface {
-    void* vt;      // +0x0
-    MidObj* mid;   // +0x4
-};
 
 bool __fastcall CGameScriptInterface_IsCameraPosOnScreen(CGameScriptInterface* self, int edx_unused, void* pos)
 {
     CamObj* cam;
-    MidObj* m = self->mid->m34;
+    CWorld* m = self->World->m34;
     if (m->getCam(&cam)) {
         if (cam->onScreen(pos))
             return true;

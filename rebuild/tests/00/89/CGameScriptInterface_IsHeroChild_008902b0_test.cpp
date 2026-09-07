@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 struct Hero {
@@ -5,20 +6,19 @@ struct Hero {
     unsigned char flags;
 };
 
-struct World { int dummy; };
-struct GSI { char pad[0x14]; World* world; };
+struct CPlayerManager { int dummy; };
 
 static Hero g_hero;
-static World g_world;
+static CPlayerManager g_world;
 static int g_checkResult = 1;
 
-extern "C" World* __fastcall GSI_GetWorld(World* w) { return &g_world; }
-extern "C" Hero*  __fastcall World_GetHero(World* w) { return &g_hero; }
+extern "C" CPlayerManager* __fastcall GSI_GetWorld(CPlayerManager* w) { return &g_world; }
+extern "C" Hero*  __fastcall World_GetHero(CPlayerManager* w) { return &g_hero; }
 extern "C" bool   __fastcall Hero_CheckChild(Hero* h) { return g_checkResult != 0; }
 
-bool __fastcall CGameScriptInterface_IsHeroChild(GSI* self)
+bool __fastcall CGameScriptInterface_IsHeroChild(CGameScriptInterface* self)
 {
-    Hero* h = World_GetHero((World*)GSI_GetWorld(self->world));
+    Hero* h = World_GetHero((CPlayerManager*)GSI_GetWorld(self->PlayerManager));
     if (h != 0 && (h->flags & 1) == 0)
         return Hero_CheckChild(h);
     return false;
@@ -26,8 +26,8 @@ bool __fastcall CGameScriptInterface_IsHeroChild(GSI* self)
 
 int main()
 {
-    GSI self;
-    self.world = &g_world;
+    CGameScriptInterface self;
+    self.PlayerManager = &g_world;
 
     // Case 1: flags bit0 clear, check returns true => true
     g_hero.flags = 0;

@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT
 """Headless Blender test: per-vertex SKIN WEIGHTS -> vertex groups + Armature
-modifier (docs/BIG_MESH_GEOMETRY.md sec. 7.1).
+modifier (docs/formats/BIG_MESH_GEOMETRY.md sec. 7.1).
 
 Run:
   blender --background --factory-startup --python \

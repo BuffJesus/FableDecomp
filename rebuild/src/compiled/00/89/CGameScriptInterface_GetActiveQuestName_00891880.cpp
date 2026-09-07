@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CCharString {
     char* p;
     CCharString(const char* s, int len);
@@ -16,12 +17,11 @@ struct GameGlobal {
 
 extern GameGlobal* g_ptr; // ds:0x13b89fc
 
-struct CGameScriptInterface {
-    void* vt;
+struct CGameScriptInterface_Methods : CGameScriptInterface {
     CCharString GetActiveQuestName();
 };
 
-CCharString CGameScriptInterface::GetActiveQuestName()
+CCharString CGameScriptInterface_Methods::GetActiveQuestName()
 {
     QuestObj* q = g_ptr->active;
     if (q)

@@ -1,0 +1,75 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/WaspBoss/Entities/WaspAttacker.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 1,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveThingBestEnemyTarget",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveThingBestEnemyTarget",
+          "line": 21
+        }
+      ]
+    }
+  ],
+  "state": [],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

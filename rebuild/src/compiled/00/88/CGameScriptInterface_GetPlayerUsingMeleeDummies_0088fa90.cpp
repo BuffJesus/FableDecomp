@@ -1,4 +1,4 @@
-struct CGameScriptInterface { char pad[4]; };
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 extern bool g_PlayerUsingMeleeDummies;
 bool __fastcall CGameScriptInterface_GetPlayerUsingMeleeDummies(const CGameScriptInterface* self)
 {

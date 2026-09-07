@@ -1,0 +1,322 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 9,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestCompleted",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetThingAsAllyOfThing",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetThingAsAllyOfThing",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingHasInformation",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 25,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 7
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 18
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 27
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 28
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 30
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 31
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 39
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 40
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestCompleted",
+          "line": 40
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 41
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 45
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 53
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 54
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 55
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 60
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 65
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 67
+        },
+        {
+          "receiver": "quest",
+          "name": "StartCutscene",
+          "line": 69
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 70
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 71
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 73
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 77
+        },
+        {
+          "receiver": "quest",
+          "name": "StartCutscene",
+          "line": 79
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 80
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 81
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 83
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityUnsetThingAsAllyOfThing",
+          "line": 84
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityUnsetThingAsAllyOfThing",
+          "line": 85
+        },
+        {
+          "receiver": "quest",
+          "name": "ClearThingHasInformation",
+          "line": 86
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 95
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 96
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 101
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 102
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "ArenaFinished",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "DoneGuardSpeech",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "PoshGuardComplete",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_037_GUARD_POSH_REMINDER"
+    ],
+    "cutscenes": [
+      "CS_BOWERSTONE_INTRO_POSH_ENTER",
+      "CS_BOWERSTONE_INTRO_POSH_LEAVE"
+    ],
+    "regions": []
+  }
+}

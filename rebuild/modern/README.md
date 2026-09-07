@@ -19,7 +19,7 @@ representative behavior are stable. Each subsystem README should identify:
 - intentional API or ownership improvements;
 - unsupported retail behavior.
 
-See `docs/SOURCE_ARCHITECTURE.md` for the promotion and modernization policy.
+See `docs/ARCHITECTURE.md` for the promotion and modernization policy.
 
 ## Current modules
 

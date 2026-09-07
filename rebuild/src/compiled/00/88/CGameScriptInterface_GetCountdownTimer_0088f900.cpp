@@ -1,7 +1,7 @@
-struct CountdownSub { char pad[0xa0]; int frames; };
-struct CGameScriptInterface { void* pad0; CountdownSub* sub; };
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CWorld { char pad[0xa0]; int frames; };
 
 float __fastcall CGameScriptInterface_GetCountdownTimer(const CGameScriptInterface* self)
 {
-    return (float)self->sub->frames;
+    return (float)self->World->frames;
 }

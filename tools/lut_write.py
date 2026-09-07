@@ -16,7 +16,7 @@ parse_lut.py. Every write is meant to be re-validated by re-reading through pars
 --------------------------------------------------------------------------------
 TAIL DIRECTORY - FULLY DECODED (this run, all 4 retail .lut)
 --------------------------------------------------------------------------------
-The format doc (docs/LUT_AUDIOBANK_FORMAT.md) flagged the tail LHAudioBankLookupTable
+The format doc (docs/formats/LUT_AUDIOBANK_FORMAT.md) flagged the tail LHAudioBankLookupTable
 "hash bucket array" as only partially decoded and the main writer risk. That risk is
 now CLOSED: the tail is a plain, deterministic (index, record_size, offset) array, not
 a hash table. Layout, from `TocOffset`:

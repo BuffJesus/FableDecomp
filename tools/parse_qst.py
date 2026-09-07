@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Parser for Fable: TLC .qst quest-registry files (plain-text script format).
 
-Format spec: docs/QST_FORMAT.md. A .qst is ASCII text containing
+Format spec: docs/formats/QST_FORMAT.md. A .qst is ASCII text containing
     AddQuest("<Name>", TRUE|FALSE);
     AddTestQuest("<Name>", "<StartHSP>", <int>, "<Display>", "<Ini>", "<End>", "<CardDef>");
 statements with free-form whitespace, tolerated stray junk, and (per the

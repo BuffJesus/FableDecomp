@@ -1,0 +1,1252 @@
+class	header	size	named_members	status	note
+C2DBoxF		0	0	HAND_OWNED	
+C2DBoxI		0	0	HAND_OWNED	
+C3DAnimFileBoneMaskChunk	C3DAnimFileBoneMaskChunk.h	36	1	OK	0 retail files
+C3DAnimFileHelpersChunk	C3DAnimFileHelpersChunk.h	52	0	OK	0 retail files
+C3DAnimFileMovementVectorChunk	C3DAnimFileMovementVectorChunk.h	64	1	OK	2 retail files
+C3DAnimFileXAllocationSizeChunk	C3DAnimFileXAllocationSizeChunk.h	20	1	OK	1 retail files
+C3DAnimFileXSequenceChunk	C3DAnimFileXSequenceChunk.h	32	1	OK	0 retail files
+C3DAnimation2	C3DAnimation2.h	136	17	OK	2 retail files
+C3DAnimationInfo	C3DAnimationInfo.h	40	5	OK	1 retail files
+C3DAnimationState	C3DAnimationState.h	16	2	OK	0 retail files
+C3DAnimationStateAlpha	C3DAnimationStateAlpha.h	20	1	OK	0 retail files
+C3DAnimationTransitionState	C3DAnimationTransitionState.h	20	3	OK	1 retail files
+C3DMeshFileClothChunk	C3DMeshFileClothChunk.h	80	4	OK	1 retail files
+C3DMeshFileDummyObjectChunk	C3DMeshFileDummyObjectChunk.h	140	3	OK	0 retail files
+C3DMeshFileEngineMaterialChunk	C3DMeshFileEngineMaterialChunk.h	92	13	OK	1 retail files
+C3DMeshFileGroupChunk	C3DMeshFileGroupChunk.h	72	2	OK	0 retail files
+C3DMeshFileHelperPointChunk	C3DMeshFileHelperPointChunk.h	76	4	OK	0 retail files
+C3DMeshFileHelpersChunk	C3DMeshFileHelpersChunk.h	52	0	OK	0 retail files
+C3DMeshFileMaterialChunk	C3DMeshFileMaterialChunk.h	88	9	OK	1 retail files
+C3DMeshFileMaterialExtChunk	C3DMeshFileMaterialExtChunk.h	20	1	OK	0 retail files
+C3DMeshFileMaterialListChunk	C3DMeshFileMaterialListChunk.h	52	0	OK	1 retail files
+C3DMeshFilePartitionChunk	C3DMeshFilePartitionChunk.h	24	1	OK	1 retail files
+C3DMeshFilePrimitiveChunk	C3DMeshFilePrimitiveChunk.h	68	1	OK	0 retail files
+C3DMeshFileSmoothingGroupsChunk	C3DMeshFileSmoothingGroupsChunk.h	32	1	OK	0 retail files
+C3DMeshFileSubMeshChunk	C3DMeshFileSubMeshChunk.h	72	5	OK	1 retail files
+C3DMeshFileTransformationChunk	C3DMeshFileTransformationChunk.h	100	1	OK	1 retail files
+C3DMeshFileTrianglesChunk	C3DMeshFileTrianglesChunk.h	68	1	OK	1 retail files
+C3DMeshFileUniqueVerticesChunk	C3DMeshFileUniqueVerticesChunk.h	32	1	OK	1 retail files
+C3DMeshFileVerticesChunk	C3DMeshFileVerticesChunk.h	32	1	OK	1 retail files
+C3DMeshFileXAnimatedPrimitiveChunk	C3DMeshFileXAnimatedPrimitiveChunk.h	60	2	OK	0 retail files
+C3DMeshFileXBoundingBoxChunk	C3DMeshFileXBoundingBoxChunk.h	40	2	OK	0 retail files
+C3DMeshFileXBoundingSphereChunk	C3DMeshFileXBoundingSphereChunk.h	32	2	OK	0 retail files
+C3DMeshFileXMappingInfoChunk	C3DMeshFileXMappingInfoChunk.h	20	1	OK	0 retail files
+C3DMeshFileXTextureIndexChunk	C3DMeshFileXTextureIndexChunk.h	20	1	OK	1 retail files
+C3DMeshFileXTriangleStripChunk	C3DMeshFileXTriangleStripChunk.h	32	1	OK	0 retail files
+C3DMeshFileXUVTangentChunk	C3DMeshFileXUVTangentChunk.h	48	2	OK	0 retail files
+C3DMeshFileXVertexDataChunk	C3DMeshFileXVertexDataChunk.h	80	6	OK	1 retail files
+C3DMeshInfo	C3DMeshInfo.h	96	9	OK	1 retail files
+C3DMeshLODInfo	C3DMeshLODInfo.h	52	5	OK	0 retail files
+CACompressor	CACompressor.h	32	4	OK	0 retail files
+CAFile		0	0	HAND_OWNED	
+CAIBrain	CAIBrain.h	176	18	OK	1 retail files
+CAICreatureWillPowerIndicatorDef	CAICreatureWillPowerIndicatorDef.h	44	1	OK	1 retail files
+CAIGameCameraBase	CAIGameCameraBase.h	4	0	OK	2 retail files
+CAIScratchpadDef	CAIScratchpadDef.h	156	33	OK	1 retail files
+CAIStateGroupBase	CAIStateGroupBase.h	20	6	OK	2 retail files
+CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase.h	52	7	OK	0 retail files
+CAIStateGroup_ApprenticeHero	_quarantine/CAIStateGroup_ApprenticeHero.h	48	8	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CAIStateGroup_AvoidRegionExit	CAIStateGroup_AvoidRegionExit.h	32	1	OK	0 retail files
+CAIStateGroup_BalverineCornered	CAIStateGroup_BalverineCornered.h	52	4	OK	2 retail files
+CAIStateGroup_BalverineJumpAtFleeingEnemy	CAIStateGroup_BalverineJumpAtFleeingEnemy.h	32	2	OK	2 retail files
+CAIStateGroup_BanditGossip	CAIStateGroup_BanditGossip.h	40	3	OK	1 retail files
+CAIStateGroup_BanditKingCharge	CAIStateGroup_BanditKingCharge.h	28	1	OK	1 retail files
+CAIStateGroup_BanditKingLunge	CAIStateGroup_BanditKingLunge.h	32	2	OK	2 retail files
+CAIStateGroup_BanditKingThrowWeapons	CAIStateGroup_BanditKingThrowWeapons.h	28	1	OK	1 retail files
+CAIStateGroup_BanditPlayDice	CAIStateGroup_BanditPlayDice.h	40	5	OK	1 retail files
+CAIStateGroup_BanditPlot	CAIStateGroup_BanditPlot.h	40	0	OK	0 retail files
+CAIStateGroup_BirdGroundWander	CAIStateGroup_BirdGroundWander.h	24	1	OK	1 retail files
+CAIStateGroup_BriarRose	CAIStateGroup_BriarRose.h	32	2	OK	2 retail files
+CAIStateGroup_BriarRoseWillUse	CAIStateGroup_BriarRoseWillUse.h	32	2	OK	1 retail files
+CAIStateGroup_BuyFromSeller	CAIStateGroup_BuyFromSeller.h	24	1	OK	1 retail files
+CAIStateGroup_CarryCrateAndFollow	CAIStateGroup_CarryCrateAndFollow.h	56	6	OK	0 retail files
+CAIStateGroup_ChickenBeg	CAIStateGroup_ChickenBeg.h	20	0	OK	1 retail files
+CAIStateGroup_Clean	CAIStateGroup_Clean.h	40	6	OK	0 retail files
+CAIStateGroup_CleanHouse	CAIStateGroup_CleanHouse.h	40	1	OK	1 retail files
+CAIStateGroup_CreatureAdvanceInCover	CAIStateGroup_CreatureAdvanceInCover.h	80	0	OK	1 retail files
+CAIStateGroup_CreatureFindCover	CAIStateGroup_CreatureFindCover.h	80	0	OK	1 retail files
+CAIStateGroup_CreatureRangedCombat2	CAIStateGroup_CreatureRangedCombat2.h	32	2	OK	2 retail files
+CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets.h	28	1	OK	1 retail files
+CAIStateGroup_CreatureRangedCombatUseWillShield	CAIStateGroup_CreatureRangedCombatUseWillShield.h	20	0	OK	1 retail files
+CAIStateGroup_CreatureTakeCover	CAIStateGroup_CreatureTakeCover.h	80	0	OK	1 retail files
+CAIStateGroup_CreatureUseCoverBase	CAIStateGroup_CreatureUseCoverBase.h	80	9	OK	3 retail files
+CAIStateGroup_Drunk	CAIStateGroup_Drunk.h	24	1	OK	1 retail files
+CAIStateGroup_EarthTroll	CAIStateGroup_EarthTroll.h	52	0	OK	1 retail files
+CAIStateGroup_EatAtHome	CAIStateGroup_EatAtHome.h	76	1	OK	1 retail files
+CAIStateGroup_EatAtTable	_quarantine/CAIStateGroup_EatAtTable.h	76	6	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CAIStateGroup_EnemyCreatureBase	CAIStateGroup_EnemyCreatureBase.h	28	1	OK	1 retail files
+CAIStateGroup_FollowPlayer	CAIStateGroup_FollowPlayer.h	32	2	OK	1 retail files
+CAIStateGroup_GameMaster	CAIStateGroup_GameMaster.h	176	4	OK	1 retail files
+CAIStateGroup_Gaze	CAIStateGroup_Gaze.h	48	6	OK	0 retail files
+CAIStateGroup_GazeAtHome	CAIStateGroup_GazeAtHome.h	48	1	OK	1 retail files
+CAIStateGroup_GazeAtWork	CAIStateGroup_GazeAtWork.h	48	1	OK	1 retail files
+CAIStateGroup_GazeOutside	CAIStateGroup_GazeOutside.h	48	0	OK	0 retail files
+CAIStateGroup_Guildmaster	CAIStateGroup_Guildmaster.h	64	6	OK	1 retail files
+CAIStateGroup_HandyMan	CAIStateGroup_HandyMan.h	24	1	OK	2 retail files
+CAIStateGroup_HoverAttack	CAIStateGroup_HoverAttack.h	28	0	OK	1 retail files
+CAIStateGroup_HoverAttackArea	CAIStateGroup_HoverAttackArea.h	40	1	OK	1 retail files
+CAIStateGroup_HoverAttackUnlessTargetIsFleeing	CAIStateGroup_HoverAttackUnlessTargetIsFleeing.h	28	0	OK	2 retail files
+CAIStateGroup_HoverHornetQueen	CAIStateGroup_HoverHornetQueen.h	112	11	OK	3 retail files
+CAIStateGroup_HoverHornetQueenTakeDamage	CAIStateGroup_HoverHornetQueenTakeDamage.h	40	4	OK	2 retail files
+CAIStateGroup_HoverKeepInArea	CAIStateGroup_HoverKeepInArea.h	40	1	OK	0 retail files
+CAIStateGroup_HoverWander	CAIStateGroup_HoverWander.h	28	0	OK	0 retail files
+CAIStateGroup_HoverWanderAroundThing	CAIStateGroup_HoverWanderAroundThing.h	36	1	OK	0 retail files
+CAIStateGroup_IceTrollIcicleAssault	CAIStateGroup_IceTrollIcicleAssault.h	28	1	OK	1 retail files
+CAIStateGroup_IceTrollIcicleAttack	CAIStateGroup_IceTrollIcicleAttack.h	28	1	OK	1 retail files
+CAIStateGroup_IceTrollPoundGroundAttack	CAIStateGroup_IceTrollPoundGroundAttack.h	28	1	OK	1 retail files
+CAIStateGroup_IdleAtHome	CAIStateGroup_IdleAtHome.h	20	0	OK	1 retail files
+CAIStateGroup_JackDragon	CAIStateGroup_JackDragon.h	320	33	OK	1 retail files
+CAIStateGroup_JackOfBladesBase	CAIStateGroup_JackOfBladesBase.h	84	7	OK	1 retail files
+CAIStateGroup_JackOfBladesStage2	CAIStateGroup_JackOfBladesStage2.h	92	1	OK	1 retail files
+CAIStateGroup_KidHurtSelfRunToMother	CAIStateGroup_KidHurtSelfRunToMother.h	24	1	OK	1 retail files
+CAIStateGroup_KidWanderNearKids	CAIStateGroup_KidWanderNearKids.h	20	0	OK	0 retail files
+CAIStateGroup_KidWatchHopscotch	_quarantine/CAIStateGroup_KidWatchHopscotch.h	68	9	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CAIStateGroup_LightHomeCandle	CAIStateGroup_LightHomeCandle.h	28	2	OK	1 retail files
+CAIStateGroup_LightWorkCandle	CAIStateGroup_LightWorkCandle.h	28	1	OK	1 retail files
+CAIStateGroup_LookAtInterestingThings	CAIStateGroup_LookAtInterestingThings.h	24	1	OK	0 retail files
+CAIStateGroup_MazeBase	_quarantine/CAIStateGroup_MazeBase.h	32	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CAIStateGroup_MazeDefensiveMeleeCombat	CAIStateGroup_MazeDefensiveMeleeCombat.h	36	1	OK	1 retail files
+CAIStateGroup_MazeRangedCombat	CAIStateGroup_MazeRangedCombat.h	36	1	OK	1 retail files
+CAIStateGroup_MazeShieldedChase	CAIStateGroup_MazeShieldedChase.h	32	0	OK	1 retail files
+CAIStateGroup_MazeTeleport	CAIStateGroup_MazeTeleport.h	32	0	OK	1 retail files
+CAIStateGroup_MazeTutorialBattle	CAIStateGroup_MazeTutorialBattle.h	36	1	OK	1 retail files
+CAIStateGroup_MazeTutorialBattleRespondToLightning	CAIStateGroup_MazeTutorialBattleRespondToLightning.h	36	1	OK	1 retail files
+CAIStateGroup_MazeTutorialBattleTeleport	CAIStateGroup_MazeTutorialBattleTeleport.h	48	2	OK	1 retail files
+CAIStateGroup_MazeTutorialBattleUseShield	CAIStateGroup_MazeTutorialBattleUseShield.h	36	1	OK	1 retail files
+CAIStateGroup_MeleeCombatNearby	CAIStateGroup_MeleeCombatNearby.h	32	1	OK	1 retail files
+CAIStateGroup_MeleeCombatNearby2	CAIStateGroup_MeleeCombatNearby2.h	32	1	OK	1 retail files
+CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose	CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose.h	28	0	OK	1 retail files
+CAIStateGroup_MeleeCombatNearbyBase	CAIStateGroup_MeleeCombatNearbyBase.h	28	1	OK	0 retail files
+CAIStateGroup_MinionBehaviourPodiumEmoteNeutral	_quarantine/CAIStateGroup_MinionBehaviourPodiumEmoteNeutral.h	72	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CAIStateGroup_MinionBehaviourSad	_quarantine/CAIStateGroup_MinionBehaviourSad.h	68	6	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CAIStateGroup_MinionFollowThing	CAIStateGroup_MinionFollowThing.h	40	7	OK	0 retail files
+CAIStateGroup_MinionGossip	CAIStateGroup_MinionGossip.h	36	5	OK	1 retail files
+CAIStateGroup_MinionGuardGreetPlayer	CAIStateGroup_MinionGuardGreetPlayer.h	20	0	OK	0 retail files
+CAIStateGroup_MinionGuardReactToBribe	CAIStateGroup_MinionGuardReactToBribe.h	36	3	OK	1 retail files
+CAIStateGroup_MinionGuardReactToCriminal	CAIStateGroup_MinionGuardReactToCriminal.h	52	5	OK	2 retail files
+CAIStateGroup_MinionHasInformation	CAIStateGroup_MinionHasInformation.h	36	4	OK	0 retail files
+CAIStateGroup_MinionKidAnnoy	CAIStateGroup_MinionKidAnnoy.h	28	1	OK	0 retail files
+CAIStateGroup_MinionKidCalledToMother	CAIStateGroup_MinionKidCalledToMother.h	20	0	OK	1 retail files
+CAIStateGroup_MinionKidGroupTag	CAIStateGroup_MinionKidGroupTag.h	48	5	OK	2 retail files
+CAIStateGroup_MinionLeaveRegion	CAIStateGroup_MinionLeaveRegion.h	32	1	OK	0 retail files
+CAIStateGroup_MinionListenToStory	CAIStateGroup_MinionListenToStory.h	20	0	OK	0 retail files
+CAIStateGroup_MinionReactToCrime	CAIStateGroup_MinionReactToCrime.h	36	5	OK	1 retail files
+CAIStateGroup_MinionReactToCriminal	CAIStateGroup_MinionReactToCriminal.h	48	8	OK	1 retail files
+CAIStateGroup_MinionReactToNoise	CAIStateGroup_MinionReactToNoise.h	40	4	OK	2 retail files
+CAIStateGroup_MinionReactToPlayerInteraction	CAIStateGroup_MinionReactToPlayerInteraction.h	60	5	OK	2 retail files
+CAIStateGroup_MinionReactToTrespassing	CAIStateGroup_MinionReactToTrespassing.h	32	2	OK	1 retail files
+CAIStateGroup_MinionSitAtHome	_quarantine/CAIStateGroup_MinionSitAtHome.h	64	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CAIStateGroup_MinionSitAtInn	CAIStateGroup_MinionSitAtInn.h	60	0	OK	0 retail files
+CAIStateGroup_MinionSitOnSeat	CAIStateGroup_MinionSitOnSeat.h	64	1	OK	0 retail files
+CAIStateGroup_MinionSitOnSeatBase	CAIStateGroup_MinionSitOnSeatBase.h	60	1	OK	0 retail files
+CAIStateGroup_MinionSitOutside	CAIStateGroup_MinionSitOutside.h	68	1	OK	0 retail files
+CAIStateGroup_MinionSleep	CAIStateGroup_MinionSleep.h	100	1	OK	0 retail files
+CAIStateGroup_MinionWander	CAIStateGroup_MinionWander.h	20	1	OK	1 retail files
+CAIStateGroup_MinionWatchFires	CAIStateGroup_MinionWatchFires.h	28	1	OK	0 retail files
+CAIStateGroup_MoveGoodsBase	CAIStateGroup_MoveGoodsBase.h	28	2	OK	1 retail files
+CAIStateGroup_OpinionReactionRoot	CAIStateGroup_OpinionReactionRoot.h	152	11	OK	2 retail files
+CAIStateGroup_PerformAction	CAIStateGroup_PerformAction.h	24	0	OK	0 retail files
+CAIStateGroup_PrepareMeal	CAIStateGroup_PrepareMeal.h	68	4	OK	0 retail files
+CAIStateGroup_RangedCombatUsePreferredFirePoint	CAIStateGroup_RangedCombatUsePreferredFirePoint.h	40	3	OK	1 retail files
+CAIStateGroup_ReactToDeadLeader	CAIStateGroup_ReactToDeadLeader.h	32	2	OK	1 retail files
+CAIStateGroup_RecoverStealableItem	CAIStateGroup_RecoverStealableItem.h	64	8	OK	0 retail files
+CAIStateGroup_RockTroll	CAIStateGroup_RockTroll.h	52	0	OK	1 retail files
+CAIStateGroup_ScorpionKing	CAIStateGroup_ScorpionKing.h	68	7	OK	1 retail files
+CAIStateGroup_SeekEnemy	CAIStateGroup_SeekEnemy.h	28	1	OK	1 retail files
+CAIStateGroup_SeekPerceivedThing	CAIStateGroup_SeekPerceivedThing.h	24	1	OK	0 retail files
+CAIStateGroup_SeekScriptTarget	CAIStateGroup_SeekScriptTarget.h	28	1	OK	1 retail files
+CAIStateGroup_ServeFood	_quarantine/CAIStateGroup_ServeFood.h	76	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CAIStateGroup_ServeFoodAtHome	CAIStateGroup_ServeFoodAtHome.h	76	0	OK	0 retail files
+CAIStateGroup_ServeFoodAtTavern	CAIStateGroup_ServeFoodAtTavern.h	76	0	OK	0 retail files
+CAIStateGroup_SitInPub	CAIStateGroup_SitInPub.h	60	1	OK	0 retail files
+CAIStateGroup_SitRoundCampfire	CAIStateGroup_SitRoundCampfire.h	40	5	OK	0 retail files
+CAIStateGroup_StandStill	CAIStateGroup_StandStill.h	20	0	OK	1 retail files
+CAIStateGroup_StealStealableItem	CAIStateGroup_StealStealableItem.h	60	8	OK	0 retail files
+CAIStateGroup_StealthSeekEnemy	CAIStateGroup_StealthSeekEnemy.h	40	2	OK	1 retail files
+CAIStateGroup_SummonerCharge	CAIStateGroup_SummonerCharge.h	36	3	OK	1 retail files
+CAIStateGroup_SummonerLightningAttack	CAIStateGroup_SummonerLightningAttack.h	36	3	OK	1 retail files
+CAIStateGroup_SummonerSummon	CAIStateGroup_SummonerSummon.h	28	1	OK	1 retail files
+CAIStateGroup_TavernKeeper	CAIStateGroup_TavernKeeper.h	104	10	OK	0 retail files
+CAIStateGroup_TavernServer	CAIStateGroup_TavernServer.h	156	15	OK	1 retail files
+CAIStateGroup_TestTestTest	CAIStateGroup_TestTestTest.h	20	0	OK	0 retail files
+CAIStateGroup_ThrowLogsOnFire	CAIStateGroup_ThrowLogsOnFire.h	28	0	OK	0 retail files
+CAIStateGroup_Thunder	CAIStateGroup_Thunder.h	44	4	OK	1 retail files
+CAIStateGroup_TrollBase	CAIStateGroup_TrollBase.h	52	7	OK	0 retail files
+CAIStateGroup_VersusEnemyBase	CAIStateGroup_VersusEnemyBase.h	28	1	OK	1 retail files
+CAIStateGroup_VersusScorpionKing	CAIStateGroup_VersusScorpionKing.h	40	2	OK	1 retail files
+CAIStateGroup_VillageTaskPickCrops	CAIStateGroup_VillageTaskPickCrops.h	28	1	OK	0 retail files
+CAIStateGroup_WanderAroundShops	CAIStateGroup_WanderAroundShops.h	40	3	OK	0 retail files
+CAIStateGroup_WhisperPotionCombat	CAIStateGroup_WhisperPotionCombat.h	60	3	OK	1 retail files
+CAIStateGroup_WhisperRetreat	CAIStateGroup_WhisperRetreat.h	48	4	OK	1 retail files
+CAIStateGroup_WifeGiveYouGift	CAIStateGroup_WifeGiveYouGift.h	32	3	OK	1 retail files
+CAIStateGroup_WorkAtSchool	CAIStateGroup_WorkAtSchool.h	20	0	OK	0 retail files
+CAIStateGroup_WorkHammerAnvil	CAIStateGroup_WorkHammerAnvil.h	76	6	OK	1 retail files
+CAIStateGroup_WorkSawingWood	CAIStateGroup_WorkSawingWood.h	72	5	OK	1 retail files
+CAInputProcess	CAInputProcess.h	20	2	OK	2 retail files
+CANavQuadTreeNode	CANavQuadTreeNode.h	16	5	OK	1 retail files
+CAProgressDisplay	CAProgressDisplay.h	4	0	OK	0 retail files
+CASuspendableProcess	CASuspendableProcess.h	16	5	OK	1 retail files
+CAbilityButtonGuiDef	_quarantine/CAbilityButtonGuiDef.h	96	6	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CAbilityDef	_quarantine/CAbilityDef.h	44	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CAbilityTrackDef	_quarantine/CAbilityTrackDef.h	88	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CAbilityTrackLevelDef	_quarantine/CAbilityTrackLevelDef.h	76	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CActionDoCreatureAction	CActionDoCreatureAction.h	28	3	OK	0 retail files
+CActionUseDef	CActionUseDef.h	52	4	OK	1 retail files
+CActivateQuestDef	CActivateQuestDef.h	48	2	OK	1 retail files
+CActiveFile	CActiveFile.h	200	20	OK	0 retail files; dup_donor
+CAnimComponentCombatComboChain	CAnimComponentCombatComboChain.h	16	3	OK	2 retail files
+CAnimComponentCombatFlourishTargetOffset	CAnimComponentCombatFlourishTargetOffset.h	17	2	OK	1 retail files
+CAnimComponentCombatHandedness	CAnimComponentCombatHandedness.h	16	3	OK	2 retail files
+CAnimComponentCombatMisc	CAnimComponentCombatMisc.h	10	2	OK	2 retail files
+CAnimComponentCombatRecoil	CAnimComponentCombatRecoil.h	12	1	OK	3 retail files
+CAnimComponentDelayTime	CAnimComponentDelayTime.h	12	1	OK	3 retail files
+CAnimComponentFlags	CAnimComponentFlags.h	12	1	OK	3 retail files
+CAnimComponentFollowingOnAnim	CAnimComponentFollowingOnAnim.h	12	1	OK	3 retail files
+CAnimComponentFollowingOnAnimFilter	CAnimComponentFollowingOnAnimFilter.h	12	1	OK	2 retail files
+CAnimComponentSetCreatureMode	CAnimComponentSetCreatureMode.h	12	1	OK	3 retail files
+CAnimComponentStrikeResponseAnim	CAnimComponentStrikeResponseAnim.h	12	1	OK	0 retail files
+CAnimComponentStrikeSpeedMultiplier	_quarantine/CAnimComponentStrikeSpeedMultiplier.h	12	2	QUARANTINED	4 conflict(s) in 4 file(s) vs 0 agreeing
+CAnimComponentTransitionInTime	CAnimComponentTransitionInTime.h	12	1	OK	3 retail files
+CAnimFilterNoGroup	CAnimFilterNoGroup.h	4	0	OK	0 retail files
+CAnimatingObjectDef	_quarantine/CAnimatingObjectDef.h	76	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CAppearanceDef	_quarantine/CAppearanceDef.h	124	11	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CAppearanceModifierDef	_quarantine/CAppearanceModifierDef.h	120	14	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CAppearanceModifierScalingDef	_quarantine/CAppearanceModifierScalingDef.h	76	4	QUARANTINED	3 conflict(s) in 2 file(s) vs 0 agreeing
+CApprenticeSpeedTest	CApprenticeSpeedTest.h	32	3	OK	1 retail files
+CAreaOfEffectAttackDef	_quarantine/CAreaOfEffectAttackDef.h	80	5	QUARANTINED	2 conflict(s) in 2 file(s) vs 0 agreeing
+CArmourDef	_quarantine/CArmourDef.h	124	8	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CAttackPatternDef	_quarantine/CAttackPatternDef.h	80	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CAugmentationDef	CAugmentationDef.h	76	9	OK	0 retail files
+CBalverineBattleDef	_quarantine/CBalverineBattleDef.h	76	4	QUARANTINED	3 conflict(s) in 2 file(s) vs 0 agreeing
+CBankFile	CBankFile.h	372	36	OK	2 retail files
+CBankFileManager		0	0	HAND_OWNED	
+CBaseObject	CBaseObject.h	8	1	OK	0 retail files
+CBedDef	_quarantine/CBedDef.h	60	5	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CBettingDef	CBettingDef.h	88	12	OK	0 retail files
+CBlurredAttitudesDef	_quarantine/CBlurredAttitudesDef.h	80	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CBoastingPodiumDef	_quarantine/CBoastingPodiumDef.h	44	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CBonusItemDef	CBonusItemDef.h	116	20	OK	0 retail files
+CBossDef	_quarantine/CBossDef.h	96	5	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CBrainDef	_quarantine/CBrainDef.h	112	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CBriarRoseDef	CBriarRoseDef.h	84	11	OK	0 retail files
+CBrushLibraryDialog	CBrushLibraryDialog.h	300	1	OK	0 retail files
+CBufferedFileDataOutputStream	CBufferedFileDataOutputStream.h	36	7	OK	1 retail files
+CBulletTimeManager	CBulletTimeManager.h	32	6	OK	0 retail files
+CBuyHouseDef	CBuyHouseDef.h	38	1	OK	1 retail files
+CBuyableHouseDef	_quarantine/CBuyableHouseDef.h	84	8	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCachedFile	CCachedFile.h	44	7	OK	4 retail files
+CCameraCollisionDef	CCameraCollisionDef.h	44	1	OK	2 retail files
+CCameraManagerDef	_quarantine/CCameraManagerDef.h	128	10	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCameraManagerSetDef	_quarantine/CCameraManagerSetDef.h	80	5	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CCameraModeDef	_quarantine/CCameraModeDef.h	220	41	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCardDef	_quarantine/CCardDef.h	72	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 2 agreeing
+CCardPositionsDef	_quarantine/CCardPositionsDef.h	80	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCarriedReadableDef	CCarriedReadableDef.h	48	2	OK	1 retail files
+CCarrySlotDef	_quarantine/CCarrySlotDef.h	56	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCarryableDef	CCarryableDef.h	80	8	OK	0 retail files
+CCarryingDef	_quarantine/CCarryingDef.h	60	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCategory	CCategory.h	48	9	OK	4 retail files; suspect=CCategory_GetHighlightedItemCountInCategory_00713290.cpp
+CCharString		0	0	HAND_OWNED	
+CChestDef	CChestDef.h	60	6	OK	1 retail files
+CChunkedFileChunk	CChunkedFileChunk.h	16	2	OK	2 retail files
+CChunkedFileRawDataChunk	CChunkedFileRawDataChunk.h	24	2	OK	1 retail files
+CChunkedFileSuperChunk	CChunkedFileSuperChunk.h	52	3	OK	0 retail files
+CClass	CClass.h	17	3	OK	0 retail files
+CClassFactory	CClassFactory.h	40	4	OK	0 retail files
+CClockDef	_quarantine/CClockDef.h	60	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCoinGameObstacleDef	_quarantine/CCoinGameObstacleDef.h	44	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCombatAbility	CCombatAbility.h	8	2	OK	1 retail files
+CCombatAbilityAttackBase	CCombatAbilityAttackBase.h	72	1	OK	1 retail files
+CCombatAbilityBlockCounterAttackDef	CCombatAbilityBlockCounterAttackDef.h	72	0	OK	1 retail files
+CCombatAbilityBlockHeavyWeaponAttackDef	_quarantine/CCombatAbilityBlockHeavyWeaponAttackDef.h	92	0	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCombatAbilityBlockLightWeaponAttackDef	_quarantine/CCombatAbilityBlockLightWeaponAttackDef.h	92	0	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCombatAbilityBlockProjectileWeaponAttackDef	_quarantine/CCombatAbilityBlockProjectileWeaponAttackDef.h	92	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCombatAbilityBlockUnarmedAttackDef	_quarantine/CCombatAbilityBlockUnarmedAttackDef.h	92	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCombatAbilityBlockingData	CCombatAbilityBlockingData.h	52	5	OK	1 retail files
+CCombatAbilityData	CCombatAbilityData.h	24	5	OK	1 retail files
+CCombatAbilityFlourishCounterAttackDef	CCombatAbilityFlourishCounterAttackDef.h	72	1	OK	1 retail files
+CCombatAbilityGetHitCounterAttackDef	_quarantine/CCombatAbilityGetHitCounterAttackDef.h	72	0	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCombatAbilityMeleeAttackData	CCombatAbilityMeleeAttackData.h	32	3	OK	0 retail files
+CCombatAbilityProjectileAttackData	CCombatAbilityProjectileAttackData.h	32	2	OK	0 retail files
+CCombatAbilityStrafeDef	CCombatAbilityStrafeDef.h	68	1	OK	2 retail files
+CCombatAbilityStrafingData	CCombatAbilityStrafingData.h	28	1	OK	0 retail files
+CCombatAbilityUseProjectileWeaponDef	_quarantine/CCombatAbilityUseProjectileWeaponDef.h	72	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCombatActionBase	_quarantine/CCombatActionBase.h	300	27	QUARANTINED	2 conflict(s) in 1 file(s) vs 1 agreeing
+CCombatAction_ControlledStrafeJump	CCombatAction_ControlledStrafeJump.h	328	3	OK	0 retail files
+CCombatAction_GenericBreakOffDrain	_quarantine/CCombatAction_GenericBreakOffDrain.h	300	0	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCombatAction_GenericResponseToDecapitation	CCombatAction_GenericResponseToDecapitation.h	300	0	OK	1 retail files
+CCombatAction_GenericResponseToDrain	_quarantine/CCombatAction_GenericResponseToDrain.h	300	0	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCombatAction_GenericResponseToExplosion	CCombatAction_GenericResponseToExplosion.h	336	4	OK	0 retail files
+CCombatAction_GenericStrikeResponseBase	CCombatAction_GenericStrikeResponseBase.h	352	9	OK	3 retail files
+CCombatAction_GenericStrikeResponseKnockdown	CCombatAction_GenericStrikeResponseKnockdown.h	340	7	OK	0 retail files
+CCombatAction_GenericStrikeResponseKnockdownRecoverBase	CCombatAction_GenericStrikeResponseKnockdownRecoverBase.h	304	2	OK	1 retail files
+CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath	CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath.h	304	0	OK	0 retail files
+CCombatAction_KickThingOnGround	CCombatAction_KickThingOnGround.h	328	3	OK	0 retail files
+CCombatAction_RecoverFromDazed	_quarantine/CCombatAction_RecoverFromDazed.h	300	0	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCombatAction_StabThing	CCombatAction_StabThing.h	312	1	OK	0 retail files
+CCombatAction_StrikeResponseJackOfBladesIntoRush	CCombatAction_StrikeResponseJackOfBladesIntoRush.h	356	1	OK	0 retail files
+CCombatAction_StrikeResponseScorpionKing	CCombatAction_StrikeResponseScorpionKing.h	352	0	OK	0 retail files
+CCombatAction_WillEnflameInto	CCombatAction_WillEnflameInto.h	304	1	OK	0 retail files
+CCombatAction_WillForcePushInto	_quarantine/CCombatAction_WillForcePushInto.h	300	0	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCombatAction_WillShieldInto	CCombatAction_WillShieldInto.h	308	2	OK	0 retail files
+CCombatDialogueDef	_quarantine/CCombatDialogueDef.h	144	20	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCombatSequence2StrikeCombo	CCombatSequence2StrikeCombo.h	44	0	OK	1 retail files
+CCombatSequenceBase	_quarantine/CCombatSequenceBase.h	44	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCombatSequenceDef	_quarantine/CCombatSequenceDef.h	112	9	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCombatSequenceGeneric	CCombatSequenceGeneric.h	48	2	OK	4 retail files
+CCombatSequenceJacksCombo	CCombatSequenceJacksCombo.h	44	0	OK	0 retail files
+CCombatSequenceNonInterruptable2StrikeCombo	CCombatSequenceNonInterruptable2StrikeCombo.h	44	0	OK	0 retail files
+CCombatSequenceUnblockableFacing	CCombatSequenceUnblockableFacing.h	44	0	OK	1 retail files
+CCombatSequenceWhisperAdvance	CCombatSequenceWhisperAdvance.h	44	0	OK	1 retail files
+CCombatSequenceWhisperAttack360	CCombatSequenceWhisperAttack360.h	44	1	OK	1 retail files
+CCombatSequenceWhisperAttackBigCombo	CCombatSequenceWhisperAttackBigCombo.h	44	1	OK	2 retail files
+CCombatSequenceWhisperAttackCombo	CCombatSequenceWhisperAttackCombo.h	44	0	OK	0 retail files
+CCombatSequenceWhisperBoast	CCombatSequenceWhisperBoast.h	44	0	OK	1 retail files
+CCombatSequenceWhisperIdles	CCombatSequenceWhisperIdles.h	44	0	OK	1 retail files
+CCombatSequenceWhisperLunge	CCombatSequenceWhisperLunge.h	44	0	OK	1 retail files
+CCombatSequenceWhisperSortYourselfOut	CCombatSequenceWhisperSortYourselfOut.h	44	0	OK	1 retail files
+CCombatSequenceWhisperStrafeAround	CCombatSequenceWhisperStrafeAround.h	44	0	OK	1 retail files
+CCombatSequenceWhisperStrikeStrafeBack	CCombatSequenceWhisperStrikeStrafeBack.h	44	0	OK	1 retail files
+CCombatSequenceWhisperTooCloseLeapBack	CCombatSequenceWhisperTooCloseLeapBack.h	44	0	OK	1 retail files
+CCombatSequence_BanditAdvanceFar	CCombatSequence_BanditAdvanceFar.h	44	0	OK	1 retail files
+CCombatSequence_BanditAttackFar	CCombatSequence_BanditAttackFar.h	44	0	OK	0 retail files
+CCombatSequence_BanditAttackMiddle	CCombatSequence_BanditAttackMiddle.h	44	0	OK	0 retail files
+CCombatSequence_BanditAttackNear	CCombatSequence_BanditAttackNear.h	44	0	OK	0 retail files
+CCombatSequence_BanditAttackSide	CCombatSequence_BanditAttackSide.h	44	0	OK	1 retail files
+CCombatSequence_BanditBoast	CCombatSequence_BanditBoast.h	44	0	OK	0 retail files
+CCombatSequence_BanditIdleMiddle	CCombatSequence_BanditIdleMiddle.h	44	0	OK	0 retail files
+CCombatSequence_BanditIdleNear	CCombatSequence_BanditIdleNear.h	44	0	OK	0 retail files
+CCombatSequence_BanditKingAdvance	CCombatSequence_BanditKingAdvance.h	44	0	OK	1 retail files
+CCombatSequence_BanditKingAttack	CCombatSequence_BanditKingAttack.h	44	0	OK	0 retail files
+CCombatSequence_BanditKingBackOff	CCombatSequence_BanditKingBackOff.h	44	0	OK	1 retail files
+CCombatSequence_BanditKingSpinAround	CCombatSequence_BanditKingSpinAround.h	44	0	OK	0 retail files
+CCombatSequence_BanditUnblockableAttack	CCombatSequence_BanditUnblockableAttack.h	44	0	OK	0 retail files
+CCombatSequence_BattleCharge	CCombatSequence_BattleCharge.h	48	2	OK	1 retail files
+CCombatSequence_FodderCombatIdle	CCombatSequence_FodderCombatIdle.h	44	0	OK	0 retail files
+CCombatSequence_FodderMainAttack	CCombatSequence_FodderMainAttack.h	44	0	OK	0 retail files
+CCombatSequence_FodderSecondaryAttack	CCombatSequence_FodderSecondaryAttack.h	44	0	OK	1 retail files
+CCombatSequence_FodderUnblockableMainAttack	CCombatSequence_FodderUnblockableMainAttack.h	44	0	OK	0 retail files
+CCombatSequence_GenericLeader	CCombatSequence_GenericLeader.h	44	0	OK	1 retail files
+CCombatSequence_GenericRangedAttack	CCombatSequence_GenericRangedAttack.h	44	0	OK	1 retail files
+CCombatSequence_KingScorpionTailPlunge	CCombatSequence_KingScorpionTailPlunge.h	44	0	OK	0 retail files
+CCombatSequence_NonInterruptableBoxStrafe	CCombatSequence_NonInterruptableBoxStrafe.h	44	0	OK	0 retail files
+CCombatSequence_ScorpionLungeAttack	CCombatSequence_ScorpionLungeAttack.h	48	2	OK	3 retail files
+CCombatSequence_TrollBurrowPursue	CCombatSequence_TrollBurrowPursue.h	44	0	OK	1 retail files
+CCombatSequence_TrollBurrowPursueNoZone	CCombatSequence_TrollBurrowPursueNoZone.h	44	0	OK	0 retail files
+CCombatSequence_TrollDoubleSwipe	CCombatSequence_TrollDoubleSwipe.h	44	0	OK	0 retail files
+CCombatSequence_TrollDoubleSwipeNonMelee	CCombatSequence_TrollDoubleSwipeNonMelee.h	44	0	OK	1 retail files
+CCombatSequence_TrollOpeningGroundPound	CCombatSequence_TrollOpeningGroundPound.h	48	2	OK	2 retail files
+CCombatSequence_TrollProjectileAttack	CCombatSequence_TrollProjectileAttack.h	44	0	OK	0 retail files
+CCombatSequence_TrollRockAdvance	CCombatSequence_TrollRockAdvance.h	44	0	OK	0 retail files
+CCombatSequence_TrollRockIdle	CCombatSequence_TrollRockIdle.h	44	0	OK	0 retail files
+CCombatSequence_TrollRockPursue	CCombatSequence_TrollRockPursue.h	44	0	OK	1 retail files
+CCombatSequence_TrollRockPursueNoZone	CCombatSequence_TrollRockPursueNoZone.h	44	0	OK	0 retail files
+CCombatSequence_TrollRockShuffleBack	CCombatSequence_TrollRockShuffleBack.h	44	0	OK	0 retail files
+CCombatSequence_TrollRockThrowRock	CCombatSequence_TrollRockThrowRock.h	44	0	OK	0 retail files
+CCombatSequence_VillagerAdvance	CCombatSequence_VillagerAdvance.h	44	0	OK	0 retail files
+CCombatSequence_VillagerAttack	CCombatSequence_VillagerAttack.h	44	0	OK	0 retail files
+CCombatSequence_VillagerBackOff	CCombatSequence_VillagerBackOff.h	44	0	OK	1 retail files
+CCombatSequence_VillagerCombo	CCombatSequence_VillagerCombo.h	44	0	OK	0 retail files
+CCombatSequence_VillagerComboUnblockable	CCombatSequence_VillagerComboUnblockable.h	44	0	OK	1 retail files
+CCombatSequence_VillagerNearAttack	CCombatSequence_VillagerNearAttack.h	44	0	OK	0 retail files
+CCombatSequence_VillagerStepIn	CCombatSequence_VillagerStepIn.h	44	0	OK	0 retail files
+CCombatSequence_WillEnflame	CCombatSequence_WillEnflame.h	44	0	OK	0 retail files
+CCombatSequence_WillForcePush	CCombatSequence_WillForcePush.h	44	0	OK	0 retail files
+CCombatSequence_WillForcePushLongRange	CCombatSequence_WillForcePushLongRange.h	44	0	OK	0 retail files
+CCombatSequence_WillLightning	CCombatSequence_WillLightning.h	44	0	OK	0 retail files
+CCombatSequence_WillPhysicalShield	CCombatSequence_WillPhysicalShield.h	44	0	OK	1 retail files
+CCombatSequence_WillPhysicalShieldNonMelee	CCombatSequence_WillPhysicalShieldNonMelee.h	44	0	OK	1 retail files
+CCombatTypeDef	CCombatTypeDef.h	192	21	OK	0 retail files
+CComponent	CComponent.h	348	50	OK	1 retail files
+CCompressedMemoryDataInputStream	CCompressedMemoryDataInputStream.h	36	3	OK	1 retail files
+CCompressorZlib	CCompressorZlib.h	92	4	OK	0 retail files
+CConfigOptionsDefaultsDef	_quarantine/CConfigOptionsDefaultsDef.h	120	14	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CConsoleCommandBase	CConsoleCommandBase.h	24	2	OK	1 retail files
+CContainerRewardHeroDef	_quarantine/CContainerRewardHeroDef.h	56	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CContainmentVolume	CContainmentVolume.h	16	3	OK	1 retail files
+CContextSensitiveItemDef	CContextSensitiveItemDef.h	60	5	OK	1 retail files
+CControlsDef	_quarantine/CControlsDef.h	88	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCoopSpiritDef	_quarantine/CCoopSpiritDef.h	60	5	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCrateStackDef	CCrateStackDef.h	48	2	OK	1 retail files
+CCreatureAbilityDef	_quarantine/CCreatureAbilityDef.h	68	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureActionBase	CCreatureActionBase.h	180	28	OK	8 retail files
+CCreatureActionHero180RunningTurn	CCreatureActionHero180RunningTurn.h	312	1	OK	0 retail files
+CCreatureActionHeroJump	_quarantine/CCreatureActionHeroJump.h	300	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CCreatureActionHeroRunningStop	CCreatureActionHeroRunningStop.h	300	0	OK	0 retail files
+CCreatureAction_ActivateQuest	CCreatureAction_ActivateQuest.h	196	4	OK	1 retail files
+CCreatureAction_AimMissileWeapon	CCreatureAction_AimMissileWeapon.h	188	1	OK	0 retail files
+CCreatureAction_Ambush	CCreatureAction_Ambush.h	312	1	OK	0 retail files
+CCreatureAction_BalverineBreakOffFromCombat	CCreatureAction_BalverineBreakOffFromCombat.h	300	0	OK	0 retail files
+CCreatureAction_BalverineBreakOffFromCombatLong	CCreatureAction_BalverineBreakOffFromCombatLong.h	300	0	OK	0 retail files
+CCreatureAction_BalverineCorneredJumpIntoSky	CCreatureAction_BalverineCorneredJumpIntoSky.h	304	1	OK	0 retail files
+CCreatureAction_BalverineDropInFromSky	CCreatureAction_BalverineDropInFromSky.h	300	0	OK	0 retail files
+CCreatureAction_BalverineLungeAttack	CCreatureAction_BalverineLungeAttack.h	300	0	OK	0 retail files
+CCreatureAction_BanditKingAdvance	CCreatureAction_BanditKingAdvance.h	300	0	OK	0 retail files
+CCreatureAction_BanditKingAttack	CCreatureAction_BanditKingAttack.h	304	3	OK	1 retail files
+CCreatureAction_BanditKingBackOff	CCreatureAction_BanditKingBackOff.h	300	0	OK	0 retail files
+CCreatureAction_BanditKingGetHit	CCreatureAction_BanditKingGetHit.h	352	0	OK	0 retail files
+CCreatureAction_BanditKingLunge	CCreatureAction_BanditKingLunge.h	300	0	OK	0 retail files
+CCreatureAction_BanditKingStuck	CCreatureAction_BanditKingStuck.h	320	3	OK	0 retail files
+CCreatureAction_BanditKingThrowWeapons	CCreatureAction_BanditKingThrowWeapons.h	188	1	OK	0 retail files
+CCreatureAction_BanditKingUnstuck	CCreatureAction_BanditKingUnstuck.h	304	3	OK	1 retail files
+CCreatureAction_BattleChargeImpact	CCreatureAction_BattleChargeImpact.h	316	2	OK	0 retail files
+CCreatureAction_BattleChargeMiss	CCreatureAction_BattleChargeMiss.h	316	2	OK	0 retail files
+CCreatureAction_BattleChargeTurnLeft	CCreatureAction_BattleChargeTurnLeft.h	300	0	OK	0 retail files
+CCreatureAction_BattleChargeTurnRight	CCreatureAction_BattleChargeTurnRight.h	300	0	OK	0 retail files
+CCreatureAction_BeDazed	CCreatureAction_BeDazed.h	180	0	OK	0 retail files
+CCreatureAction_BeStunned	_quarantine/CCreatureAction_BeStunned.h	184	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureAction_BeingForcePushed	CCreatureAction_BeingForcePushed.h	300	0	OK	0 retail files
+CCreatureAction_BlockBase	CCreatureAction_BlockBase.h	316	2	OK	0 retail files
+CCreatureAction_BlockBroken	_quarantine/CCreatureAction_BlockBroken.h	300	0	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureAction_BlockCounter	CCreatureAction_BlockCounter.h	300	0	OK	0 retail files
+CCreatureAction_BlockRespond	CCreatureAction_BlockRespond.h	332	4	OK	1 retail files
+CCreatureAction_BlowHorn	CCreatureAction_BlowHorn.h	188	1	OK	0 retail files
+CCreatureAction_BodgeSideStrike	CCreatureAction_BodgeSideStrike.h	300	0	OK	0 retail files
+CCreatureAction_BriarRoseConcentrateInto	CCreatureAction_BriarRoseConcentrateInto.h	312	2	OK	0 retail files
+CCreatureAction_BriarRoseIntoInvulnerable	CCreatureAction_BriarRoseIntoInvulnerable.h	308	1	OK	0 retail files
+CCreatureAction_BriarRoseShotFarInto	CCreatureAction_BriarRoseShotFarInto.h	300	0	OK	0 retail files
+CCreatureAction_BriarRoseShotFarOutof	CCreatureAction_BriarRoseShotFarOutof.h	308	1	OK	0 retail files
+CCreatureAction_BuildDrainLifeSpell	CCreatureAction_BuildDrainLifeSpell.h	300	0	OK	0 retail files
+CCreatureAction_BuildFireballSpell	CCreatureAction_BuildFireballSpell.h	300	0	OK	0 retail files
+CCreatureAction_BuildGhostSwordSpell	CCreatureAction_BuildGhostSwordSpell.h	300	0	OK	0 retail files
+CCreatureAction_BuildHealLifeSpell	CCreatureAction_BuildHealLifeSpell.h	300	0	OK	0 retail files
+CCreatureAction_BuildUpBattleCharge	CCreatureAction_BuildUpBattleCharge.h	300	0	OK	0 retail files
+CCreatureAction_BuildUpDivineWrathSpell	CCreatureAction_BuildUpDivineWrathSpell.h	300	0	OK	0 retail files
+CCreatureAction_BuildUpPhysicalShieldSpell	CCreatureAction_BuildUpPhysicalShieldSpell.h	300	0	OK	0 retail files
+CCreatureAction_BuildUpTimeSpell	CCreatureAction_BuildUpTimeSpell.h	300	0	OK	0 retail files
+CCreatureAction_BuildUpUnholyPowerSpell	CCreatureAction_BuildUpUnholyPowerSpell.h	300	0	OK	0 retail files
+CCreatureAction_BuildUpWillEnflameSpell	CCreatureAction_BuildUpWillEnflameSpell.h	300	0	OK	0 retail files
+CCreatureAction_BuildUpWillLightningSpell	CCreatureAction_BuildUpWillLightningSpell.h	300	0	OK	0 retail files
+CCreatureAction_BuildUpWillSummonSpell	CCreatureAction_BuildUpWillSummonSpell.h	300	0	OK	0 retail files
+CCreatureAction_BuildWillForceSpell	CCreatureAction_BuildWillForceSpell.h	300	0	OK	0 retail files
+CCreatureAction_BuildWillTurncoatSpell	CCreatureAction_BuildWillTurncoatSpell.h	300	0	OK	0 retail files
+CCreatureAction_CastAssassinRush	CCreatureAction_CastAssassinRush.h	336	7	OK	0 retail files
+CCreatureAction_CastBattleCharge	CCreatureAction_CastBattleCharge.h	328	5	OK	0 retail files
+CCreatureAction_CastDivineWrathSpell	CCreatureAction_CastDivineWrathSpell.h	300	0	OK	0 retail files
+CCreatureAction_CastPhysicalShieldSpell	CCreatureAction_CastPhysicalShieldSpell.h	316	5	OK	0 retail files
+CCreatureAction_CastSkillMultiArrow	CCreatureAction_CastSkillMultiArrow.h	304	1	OK	0 retail files
+CCreatureAction_CastStrengthBerserk	CCreatureAction_CastStrengthBerserk.h	300	0	OK	0 retail files
+CCreatureAction_CastStrengthMultiStrike	CCreatureAction_CastStrengthMultiStrike.h	304	1	OK	1 retail files
+CCreatureAction_CastStrengthMultiStrikeProper	CCreatureAction_CastStrengthMultiStrikeProper.h	304	1	OK	0 retail files
+CCreatureAction_CastTimeSpell	CCreatureAction_CastTimeSpell.h	304	1	OK	0 retail files
+CCreatureAction_CastUnholyPowerSpell	CCreatureAction_CastUnholyPowerSpell.h	300	0	OK	0 retail files
+CCreatureAction_CastWillEnflameSpell	CCreatureAction_CastWillEnflameSpell.h	308	2	OK	0 retail files
+CCreatureAction_CastWillFireballSpell	CCreatureAction_CastWillFireballSpell.h	308	3	OK	0 retail files
+CCreatureAction_CastWillForceSpell	CCreatureAction_CastWillForceSpell.h	308	3	OK	0 retail files
+CCreatureAction_CastWillGhostSwordSpell	CCreatureAction_CastWillGhostSwordSpell.h	304	1	OK	0 retail files
+CCreatureAction_CastWillLightningSpell	CCreatureAction_CastWillLightningSpell.h	308	2	OK	0 retail files
+CCreatureAction_CastWillSummonSpell	CCreatureAction_CastWillSummonSpell.h	304	1	OK	0 retail files
+CCreatureAction_Charge	CCreatureAction_Charge.h	300	0	OK	0 retail files
+CCreatureAction_CombatBoast	CCreatureAction_CombatBoast.h	300	0	OK	0 retail files
+CCreatureAction_CombatIdle	CCreatureAction_CombatIdle.h	300	0	OK	0 retail files
+CCreatureAction_Curiosity	CCreatureAction_Curiosity.h	180	0	OK	0 retail files
+CCreatureAction_DiagonalStrafeBL	CCreatureAction_DiagonalStrafeBL.h	300	0	OK	0 retail files
+CCreatureAction_DiagonalStrafeBR	CCreatureAction_DiagonalStrafeBR.h	300	0	OK	0 retail files
+CCreatureAction_Die	CCreatureAction_Die.h	184	1	OK	1 retail files
+CCreatureAction_DowseFire	CCreatureAction_DowseFire.h	200	3	OK	0 retail files
+CCreatureAction_DragonBurninateInto	CCreatureAction_DragonBurninateInto.h	360	6	OK	0 retail files
+CCreatureAction_DragonFireBlastBase	CCreatureAction_DragonFireBlastBase.h	316	2	OK	0 retail files
+CCreatureAction_DragonFlight	CCreatureAction_DragonFlight.h	308	3	OK	2 retail files
+CCreatureAction_DragonHoverOutOf	CCreatureAction_DragonHoverOutOf.h	300	0	OK	0 retail files
+CCreatureAction_DragonLand	CCreatureAction_DragonLand.h	300	0	OK	0 retail files
+CCreatureAction_DragonRearUpFull	CCreatureAction_DragonRearUpFull.h	308	1	OK	0 retail files
+CCreatureAction_DragonRearUpInto	CCreatureAction_DragonRearUpInto.h	304	1	OK	0 retail files
+CCreatureAction_DragonRearUpOutOf	CCreatureAction_DragonRearUpOutOf.h	300	0	OK	0 retail files
+CCreatureAction_DragonRetreat	CCreatureAction_DragonRetreat.h	300	0	OK	0 retail files
+CCreatureAction_DragonStrafeOutOf	CCreatureAction_DragonStrafeOutOf.h	300	0	OK	0 retail files
+CCreatureAction_DragonSwoop	CCreatureAction_DragonSwoop.h	336	1	OK	0 retail files
+CCreatureAction_DragonTakeOffIntoFlying	CCreatureAction_DragonTakeOffIntoFlying.h	364	6	OK	0 retail files
+CCreatureAction_DropGenericBox	CCreatureAction_DropGenericBox.h	180	0	OK	0 retail files
+CCreatureAction_FillBucket	CCreatureAction_FillBucket.h	188	1	OK	0 retail files
+CCreatureAction_FinishDrainLifeSpell	CCreatureAction_FinishDrainLifeSpell.h	300	0	OK	0 retail files
+CCreatureAction_FinishFireballSpell	CCreatureAction_FinishFireballSpell.h	300	0	OK	0 retail files
+CCreatureAction_FinishGhostSwordSpell	CCreatureAction_FinishGhostSwordSpell.h	300	0	OK	0 retail files
+CCreatureAction_FinishHealLifeSpell	CCreatureAction_FinishHealLifeSpell.h	300	0	OK	0 retail files
+CCreatureAction_FinishWillForceSpell	CCreatureAction_FinishWillForceSpell.h	300	0	OK	0 retail files
+CCreatureAction_FinishWillTurncoatSpell	CCreatureAction_FinishWillTurncoatSpell.h	300	0	OK	0 retail files
+CCreatureAction_FireMissileWeapon	CCreatureAction_FireMissileWeapon.h	212	7	OK	0 retail files
+CCreatureAction_FodderIdle	CCreatureAction_FodderIdle.h	300	0	OK	0 retail files
+CCreatureAction_FodderPrimaryAttack	CCreatureAction_FodderPrimaryAttack.h	300	0	OK	0 retail files
+CCreatureAction_FodderSecondaryAttack	CCreatureAction_FodderSecondaryAttack.h	300	0	OK	0 retail files
+CCreatureAction_FodderUnblockablePrimaryAttack	CCreatureAction_FodderUnblockablePrimaryAttack.h	300	0	OK	0 retail files
+CCreatureAction_ForcePushOutOf	CCreatureAction_ForcePushOutOf.h	304	1	OK	1 retail files
+CCreatureAction_GeneralInterruptedAttack	CCreatureAction_GeneralInterruptedAttack.h	300	0	OK	0 retail files
+CCreatureAction_GenericAimProjectileWeapon	CCreatureAction_GenericAimProjectileWeapon.h	300	1	OK	1 retail files
+CCreatureAction_GenericFireProjectileWeapon	CCreatureAction_GenericFireProjectileWeapon.h	300	0	OK	0 retail files
+CCreatureAction_GenericLeaderCommand	CCreatureAction_GenericLeaderCommand.h	300	0	OK	0 retail files
+CCreatureAction_GenericLoadProjectileWeapon	CCreatureAction_GenericLoadProjectileWeapon.h	300	0	OK	0 retail files
+CCreatureAction_GenericStrafeLeft	CCreatureAction_GenericStrafeLeft.h	300	0	OK	0 retail files
+CCreatureAction_GenericStrafeRight	CCreatureAction_GenericStrafeRight.h	300	0	OK	0 retail files
+CCreatureAction_GetInBed	CCreatureAction_GetInBed.h	204	5	OK	0 retail files
+CCreatureAction_GetOutOfBed	CCreatureAction_GetOutOfBed.h	188	2	OK	1 retail files
+CCreatureAction_GetUpFromSitting	_quarantine/CCreatureAction_GetUpFromSitting.h	308	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureAction_GoUnderground	CCreatureAction_GoUnderground.h	300	0	OK	0 retail files
+CCreatureAction_Hammer	CCreatureAction_Hammer.h	188	1	OK	0 retail files
+CCreatureAction_HeroLoadRangedWeapon	CCreatureAction_HeroLoadRangedWeapon.h	196	2	OK	0 retail files
+CCreatureAction_HobbeLungeAttack	CCreatureAction_HobbeLungeAttack.h	300	0	OK	0 retail files
+CCreatureAction_IceTrollIcicleAssaultInto	CCreatureAction_IceTrollIcicleAssaultInto.h	300	0	OK	0 retail files
+CCreatureAction_IceTrollIcicleAssaultLoop	_quarantine/CCreatureAction_IceTrollIcicleAssaultLoop.h	300	0	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureAction_IceTrollIcicleAttack	CCreatureAction_IceTrollIcicleAttack.h	300	0	OK	0 retail files
+CCreatureAction_InterruptableFarAttack	CCreatureAction_InterruptableFarAttack.h	300	0	OK	0 retail files
+CCreatureAction_InterruptableMidAttack	CCreatureAction_InterruptableMidAttack.h	304	1	OK	0 retail files
+CCreatureAction_InterruptableMidAttackAutoTurn	CCreatureAction_InterruptableMidAttackAutoTurn.h	324	3	OK	0 retail files
+CCreatureAction_JackDeathInto	CCreatureAction_JackDeathInto.h	300	0	OK	0 retail files
+CCreatureAction_JackFall	CCreatureAction_JackFall.h	300	0	OK	0 retail files
+CCreatureAction_JackFlash	CCreatureAction_JackFlash.h	300	0	OK	0 retail files
+CCreatureAction_JackFloatUp	CCreatureAction_JackFloatUp.h	316	4	OK	0 retail files
+CCreatureAction_JackGetUp	_quarantine/CCreatureAction_JackGetUp.h	300	0	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend	CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend.h	300	0	OK	0 retail files
+CCreatureAction_JackScream	CCreatureAction_JackScream.h	308	1	OK	0 retail files
+CCreatureAction_JackShotFar	CCreatureAction_JackShotFar.h	300	0	OK	0 retail files
+CCreatureAction_JackShotFloat	CCreatureAction_JackShotFloat.h	300	0	OK	0 retail files
+CCreatureAction_JackShotNear	CCreatureAction_JackShotNear.h	300	0	OK	0 retail files
+CCreatureAction_LeapBack	CCreatureAction_LeapBack.h	300	0	OK	0 retail files
+CCreatureAction_LeapLong	CCreatureAction_LeapLong.h	304	2	OK	1 retail files
+CCreatureAction_MidAttackFacing	CCreatureAction_MidAttackFacing.h	300	0	OK	0 retail files
+CCreatureAction_NymphGetHit	CCreatureAction_NymphGetHit.h	364	3	OK	1 retail files
+CCreatureAction_NymphGetHitDie	CCreatureAction_NymphGetHitDie.h	356	1	OK	1 retail files
+CCreatureAction_NymphIdleAfterShot	CCreatureAction_NymphIdleAfterShot.h	300	0	OK	0 retail files
+CCreatureAction_NymphShot	CCreatureAction_NymphShot.h	300	0	OK	0 retail files
+CCreatureAction_NymphSummonInto	CCreatureAction_NymphSummonInto.h	300	0	OK	0 retail files
+CCreatureAction_NymphSummonOutOf	CCreatureAction_NymphSummonOutOf.h	300	1	OK	1 retail files
+CCreatureAction_NymphTeleportLimboBase	CCreatureAction_NymphTeleportLimboBase.h	300	0	OK	0 retail files
+CCreatureAction_OnGenerate	CCreatureAction_OnGenerate.h	300	0	OK	0 retail files
+CCreatureAction_OpenChest	CCreatureAction_OpenChest.h	188	1	OK	0 retail files
+CCreatureAction_PerformExpression	CCreatureAction_PerformExpression.h	212	11	OK	3 retail files
+CCreatureAction_PerformExpressionExtended	CCreatureAction_PerformExpressionExtended.h	212	8	OK	2 retail files
+CCreatureAction_PickCrop	CCreatureAction_PickCrop.h	188	2	OK	1 retail files
+CCreatureAction_PickUpGenericBox	CCreatureAction_PickUpGenericBox.h	188	1	OK	0 retail files
+CCreatureAction_PickUpGoods	CCreatureAction_PickUpGoods.h	188	1	OK	0 retail files
+CCreatureAction_PickupGameObject	CCreatureAction_PickupGameObject.h	188	1	OK	0 retail files
+CCreatureAction_PlayAnimation	CCreatureAction_PlayAnimation.h	192	9	OK	3 retail files
+CCreatureAction_PlayAnimationFromIndex	CCreatureAction_PlayAnimationFromIndex.h	180	0	OK	0 retail files
+CCreatureAction_PlayAnimationWithLookTurning	CCreatureAction_PlayAnimationWithLookTurning.h	192	0	OK	0 retail files
+CCreatureAction_PlayCombatAnimation	CCreatureAction_PlayCombatAnimation.h	304	6	OK	3 retail files
+CCreatureAction_PlayCombatAnimationWithLooking	CCreatureAction_PlayCombatAnimationWithLooking.h	304	0	OK	0 retail files
+CCreatureAction_PlayConversationAnimation	CCreatureAction_PlayConversationAnimation.h	188	2	OK	0 retail files
+CCreatureAction_PlayHopscotch	CCreatureAction_PlayHopscotch.h	180	0	OK	0 retail files
+CCreatureAction_PlayIntoLoopOutOfAnimation	_quarantine/CCreatureAction_PlayIntoLoopOutOfAnimation.h	208	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureAction_PlayerInteractionBribe	CCreatureAction_PlayerInteractionBribe.h	188	1	OK	0 retail files
+CCreatureAction_PlayerInteractionFlirt	CCreatureAction_PlayerInteractionFlirt.h	188	1	OK	0 retail files
+CCreatureAction_PlayerInteractionGreet	CCreatureAction_PlayerInteractionGreet.h	188	1	OK	0 retail files
+CCreatureAction_PlayerInteractionInsult	CCreatureAction_PlayerInteractionInsult.h	188	1	OK	0 retail files
+CCreatureAction_PlayerInteractionThreaten	CCreatureAction_PlayerInteractionThreaten.h	188	1	OK	0 retail files
+CCreatureAction_PlayerInteractionViewQuests	CCreatureAction_PlayerInteractionViewQuests.h	188	1	OK	0 retail files
+CCreatureAction_ProjectileCrouch	CCreatureAction_ProjectileCrouch.h	316	2	OK	0 retail files
+CCreatureAction_PutGoodsDown	CCreatureAction_PutGoodsDown.h	180	0	OK	0 retail files
+CCreatureAction_QueenHornetShootBabies	CCreatureAction_QueenHornetShootBabies.h	300	0	OK	0 retail files
+CCreatureAction_ReleaseAndLoopDivineWrathSpell	CCreatureAction_ReleaseAndLoopDivineWrathSpell.h	300	0	OK	0 retail files
+CCreatureAction_ReleaseAndLoopUnholyPowerSpell	CCreatureAction_ReleaseAndLoopUnholyPowerSpell.h	300	0	OK	0 retail files
+CCreatureAction_ReleaseDivineWrathSpell	CCreatureAction_ReleaseDivineWrathSpell.h	300	0	OK	0 retail files
+CCreatureAction_ReleasePhysicalShieldSpell	CCreatureAction_ReleasePhysicalShieldSpell.h	300	0	OK	0 retail files
+CCreatureAction_ReleaseStrengthBerserk	CCreatureAction_ReleaseStrengthBerserk.h	300	0	OK	0 retail files
+CCreatureAction_ReleaseTimeSpell	CCreatureAction_ReleaseTimeSpell.h	304	1	OK	0 retail files
+CCreatureAction_ReleaseUnholyPowerSpell	CCreatureAction_ReleaseUnholyPowerSpell.h	300	0	OK	0 retail files
+CCreatureAction_ReleaseWillEnflameSpell	CCreatureAction_ReleaseWillEnflameSpell.h	300	0	OK	0 retail files
+CCreatureAction_ReleaseWillLightningSpell	CCreatureAction_ReleaseWillLightningSpell.h	300	0	OK	0 retail files
+CCreatureAction_ReleaseWillSummonSpell	CCreatureAction_ReleaseWillSummonSpell.h	300	0	OK	0 retail files
+CCreatureAction_RemovePhysicalShieldSpell	CCreatureAction_RemovePhysicalShieldSpell.h	300	0	OK	0 retail files
+CCreatureAction_RiseUp	_quarantine/CCreatureAction_RiseUp.h	304	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureAction_ScorpionCharge	CCreatureAction_ScorpionCharge.h	316	2	OK	0 retail files
+CCreatureAction_ScorpionChargeInto	CCreatureAction_ScorpionChargeInto.h	312	2	OK	0 retail files
+CCreatureAction_ScorpionChargeStrike	CCreatureAction_ScorpionChargeStrike.h	316	2	OK	0 retail files
+CCreatureAction_ScorpionKingDeath	CCreatureAction_ScorpionKingDeath.h	300	0	OK	1 retail files
+CCreatureAction_ScorpionPrepareTailPlunge	CCreatureAction_ScorpionPrepareTailPlunge.h	312	1	OK	0 retail files
+CCreatureAction_ScorpionRecover	CCreatureAction_ScorpionRecover.h	300	1	OK	1 retail files
+CCreatureAction_ScorpionSummon	CCreatureAction_ScorpionSummon.h	300	0	OK	0 retail files
+CCreatureAction_ScorpionTailWithdraw	CCreatureAction_ScorpionTailWithdraw.h	312	1	OK	0 retail files
+CCreatureAction_ScorpionUnblockableLeftTurnAttack	CCreatureAction_ScorpionUnblockableLeftTurnAttack.h	300	0	OK	0 retail files
+CCreatureAction_ScorpionUnblockableRightTurnAttack	CCreatureAction_ScorpionUnblockableRightTurnAttack.h	300	0	OK	0 retail files
+CCreatureAction_ScreamerAdvance	CCreatureAction_ScreamerAdvance.h	300	0	OK	0 retail files
+CCreatureAction_ScreamerBackOff	CCreatureAction_ScreamerBackOff.h	300	0	OK	0 retail files
+CCreatureAction_ScreamerDrainAttack	CCreatureAction_ScreamerDrainAttack.h	308	0	OK	0 retail files
+CCreatureAction_ScreamerDrainOutOf	CCreatureAction_ScreamerDrainOutOf.h	300	0	OK	0 retail files
+CCreatureAction_ScreamerIdle	CCreatureAction_ScreamerIdle.h	300	0	OK	0 retail files
+CCreatureAction_SheatheItemToInventory_ForDivineWrath	CCreatureAction_SheatheItemToInventory_ForDivineWrath.h	188	0	OK	0 retail files
+CCreatureAction_SheatheItemToInventory_ForEnflame	CCreatureAction_SheatheItemToInventory_ForEnflame.h	188	0	OK	0 retail files
+CCreatureAction_SheatheItemToInventory_ForUnholyPower	CCreatureAction_SheatheItemToInventory_ForUnholyPower.h	188	0	OK	0 retail files
+CCreatureAction_ShowFear	CCreatureAction_ShowFear.h	180	0	OK	0 retail files
+CCreatureAction_ShowLove	CCreatureAction_ShowLove.h	188	1	OK	0 retail files
+CCreatureAction_SitDown	CCreatureAction_SitDown.h	188	1	OK	0 retail files
+CCreatureAction_SnapDragon	CCreatureAction_SnapDragon.h	300	0	OK	0 retail files
+CCreatureAction_SnapDragonFast	CCreatureAction_SnapDragonFast.h	300	0	OK	0 retail files
+CCreatureAction_SnapDragonOutOf	CCreatureAction_SnapDragonOutOf.h	300	0	OK	0 retail files
+CCreatureAction_SpiritAttack	CCreatureAction_SpiritAttack.h	196	3	OK	1 retail files
+CCreatureAction_SpiritHitResponse	CCreatureAction_SpiritHitResponse.h	192	1	OK	0 retail files
+CCreatureAction_SpiritReturnToHero	CCreatureAction_SpiritReturnToHero.h	180	2	OK	1 retail files
+CCreatureAction_StabbedToDeath	CCreatureAction_StabbedToDeath.h	180	0	OK	2 retail files
+CCreatureAction_StartBlocking	CCreatureAction_StartBlocking.h	300	4	OK	1 retail files
+CCreatureAction_StartSneaking	CCreatureAction_StartSneaking.h	180	0	OK	0 retail files
+CCreatureAction_StopSneaking	CCreatureAction_StopSneaking.h	180	0	OK	0 retail files
+CCreatureAction_StrafeBackward	CCreatureAction_StrafeBackward.h	300	0	OK	0 retail files
+CCreatureAction_StrafeForward	CCreatureAction_StrafeForward.h	300	0	OK	0 retail files
+CCreatureAction_SummonerDead	CCreatureAction_SummonerDead.h	300	0	OK	0 retail files
+CCreatureAction_SummonerDie	CCreatureAction_SummonerDie.h	300	0	OK	0 retail files
+CCreatureAction_SummonerFlameSlice	CCreatureAction_SummonerFlameSlice.h	308	1	OK	0 retail files
+CCreatureAction_SummonerLightningOrbInto	CCreatureAction_SummonerLightningOrbInto.h	308	1	OK	0 retail files
+CCreatureAction_SummonerStrike	CCreatureAction_SummonerStrike.h	300	0	OK	0 retail files
+CCreatureAction_SummonerUnsheatheStrike	CCreatureAction_SummonerUnsheatheStrike.h	304	0	OK	0 retail files
+CCreatureAction_TavernGameMasterInteraction	CCreatureAction_TavernGameMasterInteraction.h	188	1	OK	0 retail files
+CCreatureAction_TeleportIn	CCreatureAction_TeleportIn.h	304	1	OK	0 retail files
+CCreatureAction_TeleportOut	CCreatureAction_TeleportOut.h	316	2	OK	0 retail files
+CCreatureAction_TentacleIdle	_quarantine/CCreatureAction_TentacleIdle.h	300	0	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureAction_TentacleRise	CCreatureAction_TentacleRise.h	300	0	OK	0 retail files
+CCreatureAction_TentacleStrikeGetHit	CCreatureAction_TentacleStrikeGetHit.h	300	0	OK	0 retail files
+CCreatureAction_TentacleStrikeInto	CCreatureAction_TentacleStrikeInto.h	304	1	OK	0 retail files
+CCreatureAction_TentacleStrikeLoop	_quarantine/CCreatureAction_TentacleStrikeLoop.h	312	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureAction_TentacleStrikeOutOf	_quarantine/CCreatureAction_TentacleStrikeOutOf.h	300	0	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureAction_ThrowShotObject	CCreatureAction_ThrowShotObject.h	300	0	OK	0 retail files
+CCreatureAction_ThunderLightningStorm	CCreatureAction_ThunderLightningStorm.h	300	0	OK	0 retail files
+CCreatureAction_TrollAngryGroundPound	CCreatureAction_TrollAngryGroundPound.h	300	1	OK	2 retail files
+CCreatureAction_TrollGetProjectile	CCreatureAction_TrollGetProjectile.h	300	0	OK	0 retail files
+CCreatureAction_TrollProjectileAttack	CCreatureAction_TrollProjectileAttack.h	308	2	OK	1 retail files
+CCreatureAction_TrollPursue	CCreatureAction_TrollPursue.h	300	0	OK	0 retail files
+CCreatureAction_TrollSwipe	CCreatureAction_TrollSwipe.h	300	0	OK	0 retail files
+CCreatureAction_TrollThrowProjectile	CCreatureAction_TrollThrowProjectile.h	328	4	OK	0 retail files
+CCreatureAction_TrollTunnel	CCreatureAction_TrollTunnel.h	300	0	OK	1 retail files
+CCreatureAction_TrollWhackGroundBase	CCreatureAction_TrollWhackGroundBase.h	300	0	OK	1 retail files
+CCreatureAction_UnblockableMidAttack	CCreatureAction_UnblockableMidAttack.h	300	0	OK	0 retail files
+CCreatureAction_UndeadIdleUnderground	_quarantine/CCreatureAction_UndeadIdleUnderground.h	300	0	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureAction_UndeadReturnToEarth	CCreatureAction_UndeadReturnToEarth.h	300	0	OK	0 retail files
+CCreatureAction_UndeadRiseUp	CCreatureAction_UndeadRiseUp.h	308	2	OK	1 retail files
+CCreatureAction_UnsheatheItemFromInventoryWithHasteAction	CCreatureAction_UnsheatheItemFromInventoryWithHasteAction.h	200	1	OK	0 retail files
+CCreatureAction_UnsheatheWeapons	CCreatureAction_UnsheatheWeapons.h	304	1	OK	1 retail files
+CCreatureAction_UseLamp	CCreatureAction_UseLamp.h	188	1	OK	0 retail files
+CCreatureAction_UseObject	CCreatureAction_UseObject.h	236	9	OK	0 retail files
+CCreatureAction_UseWallMount	CCreatureAction_UseWallMount.h	188	1	OK	0 retail files
+CCreatureAction_VillagerAdvance	CCreatureAction_VillagerAdvance.h	300	0	OK	0 retail files
+CCreatureAction_VillagerAttack	CCreatureAction_VillagerAttack.h	300	0	OK	0 retail files
+CCreatureAction_VillagerAttackKnockdown	CCreatureAction_VillagerAttackKnockdown.h	304	2	OK	1 retail files
+CCreatureAction_VillagerBackOff	CCreatureAction_VillagerBackOff.h	300	0	OK	0 retail files
+CCreatureAction_WalkInto	CCreatureAction_WalkInto.h	300	0	OK	0 retail files
+CCreatureAction_WaspQueenDie	_quarantine/CCreatureAction_WaspQueenDie.h	304	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureAction_WaspQueenDiveAttack	CCreatureAction_WaspQueenDiveAttack.h	300	0	OK	0 retail files
+CCreatureAction_WaspQueenLashOutAttack	CCreatureAction_WaspQueenLashOutAttack.h	300	0	OK	0 retail files
+CCreatureAction_WaspQueenPrimaryAttack	CCreatureAction_WaspQueenPrimaryAttack.h	300	0	OK	0 retail files
+CCreatureAction_WhisperJumpIntoSky	CCreatureAction_WhisperJumpIntoSky.h	300	0	OK	0 retail files
+CCreatureAction_WhisperSommersaultBackward	_quarantine/CCreatureAction_WhisperSommersaultBackward.h	304	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureAction_WhisperSommersaultForward	_quarantine/CCreatureAction_WhisperSommersaultForward.h	304	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureAction_YellOverHere	CCreatureAction_YellOverHere.h	180	0	OK	0 retail files
+CCreatureDef	_quarantine/CCreatureDef.h	252	37	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureGenerationFamilyDef	_quarantine/CCreatureGenerationFamilyDef.h	104	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureGeneratorDef	_quarantine/CCreatureGeneratorDef.h	68	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCreatureModeDef	_quarantine/CCreatureModeDef.h	68	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CCreatureNavigationDef	CCreatureNavigationDef.h	56	4	OK	1 retail files
+CCreatureStatsDef	CCreatureStatsDef.h	72	8	OK	1 retail files
+CCriticalSectionLock	CCriticalSectionLock.h	8	2	OK	1 retail files
+CDataInputStream	CDataInputStream.h	24	5	OK	1 retail files
+CDataOutputStream	CDataOutputStream.h	8	1	OK	1 retail files
+CDebugManager	CDebugManager.h	632	20	OK	0 retail files
+CDecal	CDecal.h	124	16	OK	1 retail files
+CDecapitationDef	CDecapitationDef.h	48	2	OK	2 retail files
+CDefClassBase	CDefClassBase.h	37	3	OK	7 retail files
+CDefStringTable		0	0	HAND_OWNED	
+CDefaultEngineMemoryInit	CDefaultEngineMemoryInit.h	40	0	OK	0 retail files
+CDefinitionManager	CDefinitionManager.h	240	17	OK	4 retail files
+CDegradableDef	_quarantine/CDegradableDef.h	64	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CDiskFileWin32	CDiskFileWin32.h	28	6	OK	4 retail files
+CDisplayEngine	CDisplayEngine.h	256	29	OK	1 retail files
+CDisplayManager		0	0	HAND_OWNED	
+CDisplayViewManager	CDisplayViewManager.h	8	1	OK	1 retail files
+CDoorDef	CDoorDef.h	60	7	OK	0 retail files
+CDragonActionHoverDef	_quarantine/CDragonActionHoverDef.h	44	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CDragonActionNapalmDef	_quarantine/CDragonActionNapalmDef.h	56	4	QUARANTINED	4 conflict(s) in 1 file(s) vs 0 agreeing
+CDragonActionSwoopDef	CDragonActionSwoopDef.h	100	15	OK	1 retail files
+CDrawMiniMap	CDrawMiniMap.h	388	13	OK	2 retail files
+CDrawQuickAccessIcons	_quarantine/CDrawQuickAccessIcons.h	168	13	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CDriveManager	CDriveManager.h	8	1	OK	1 retail files
+CDrunkennessDef	_quarantine/CDrunkennessDef.h	44	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEditControlCentre	CEditControlCentre.h	2932	145	OK	1 retail files
+CEditTransactionBase	_quarantine/CEditTransactionBase.h	8	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEditWorldMap	CEditWorldMap.h	332	9	OK	1 retail files
+CEnemyDef	CEnemyDef.h	44	1	OK	2 retail files
+CEngine	CEngine.h	392	43	OK	10 retail files; dup_donor; suspect=CEngine_OnPostDeviceReset_00b25d00.cpp
+CEngineBillboardGenerator	CEngineBillboardGenerator.h	32	2	OK	0 retail files
+CEngineCamera	CEngineCamera.h	552	29	OK	0 retail files
+CEngineComponent	CEngineComponent.h	12	3	OK	0 retail files
+CEngineDef	_quarantine/CEngineDef.h	132	17	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineEnvironment	CEngineEnvironment.h	1620	15	OK	0 retail files
+CEngineInternalPrimitive2DAnimatedMesh	CEngineInternalPrimitive2DAnimatedMesh.h	340	4	OK	1 retail files
+CEngineInternalPrimitive2DClockSprite	CEngineInternalPrimitive2DClockSprite.h	148	15	OK	0 retail files
+CEngineInternalPrimitive2DMorphedAnimatedMesh	_quarantine/CEngineInternalPrimitive2DMorphedAnimatedMesh.h	412	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineInternalPrimitive2DSprite	CEngineInternalPrimitive2DSprite.h	140	13	OK	0 retail files
+CEngineInternalPrimitive2DStaticMesh	CEngineInternalPrimitive2DStaticMesh.h	304	11	OK	5 retail files
+CEngineInternalPrimitive2DText	_quarantine/CEngineInternalPrimitive2DText.h	108	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineInternalPrimitive2DViewport	CEngineInternalPrimitive2DViewport.h	164	7	OK	0 retail files
+CEngineInternalPrimitiveAnimatedMesh	_quarantine/CEngineInternalPrimitiveAnimatedMesh.h	300	6	QUARANTINED	4 conflict(s) in 2 file(s) vs 1 agreeing
+CEngineInternalPrimitiveAnimatedMeshFromFile	CEngineInternalPrimitiveAnimatedMeshFromFile.h	300	0	OK	0 retail files
+CEngineInternalPrimitiveBase	CEngineInternalPrimitiveBase.h	72	17	OK	4 retail files
+CEngineInternalPrimitiveDecal	CEngineInternalPrimitiveDecal.h	148	11	OK	1 retail files
+CEngineInternalPrimitiveGroup	CEngineInternalPrimitiveGroup.h	100	2	OK	1 retail files
+CEngineInternalPrimitiveLight	CEngineInternalPrimitiveLight.h	112	5	OK	0 retail files
+CEngineInternalPrimitiveMeshBase	_quarantine/CEngineInternalPrimitiveMeshBase.h	112	8	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CEngineInternalPrimitiveMorphedAnimatedMesh	_quarantine/CEngineInternalPrimitiveMorphedAnimatedMesh.h	372	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineInternalPrimitiveMorphedStaticMesh	_quarantine/CEngineInternalPrimitiveMorphedStaticMesh.h	244	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CEngineInternalPrimitiveOcclusionBase	CEngineInternalPrimitiveOcclusionBase.h	80	1	OK	0 retail files
+CEngineInternalPrimitiveOcclusionGroup	CEngineInternalPrimitiveOcclusionGroup.h	100	5	OK	1 retail files
+CEngineInternalPrimitiveParticleDecal	_quarantine/CEngineInternalPrimitiveParticleDecal.h	124	8	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CEngineInternalPrimitiveParticleDecalGroup	_quarantine/CEngineInternalPrimitiveParticleDecalGroup.h	216	11	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineInternalPrimitiveParticleGroup	CEngineInternalPrimitiveParticleGroup.h	192	12	OK	2 retail files
+CEngineInternalPrimitiveParticleLine	_quarantine/CEngineInternalPrimitiveParticleLine.h	104	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineInternalPrimitiveParticleLineGroup	_quarantine/CEngineInternalPrimitiveParticleLineGroup.h	208	10	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineInternalPrimitiveParticleMesh	CEngineInternalPrimitiveParticleMesh.h	136	3	OK	1 retail files
+CEngineInternalPrimitiveParticleMeshGroup	CEngineInternalPrimitiveParticleMeshGroup.h	252	4	OK	1 retail files
+CEngineInternalPrimitiveParticleSprite	_quarantine/CEngineInternalPrimitiveParticleSprite.h	104	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CEngineInternalPrimitiveParticleSpriteGroup	_quarantine/CEngineInternalPrimitiveParticleSpriteGroup.h	208	10	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineInternalPrimitiveParticleSpriteTrailGroup	CEngineInternalPrimitiveParticleSpriteTrailGroup.h	208	4	OK	1 retail files
+CEngineInternalPrimitiveRepeatedStaticMesh	CEngineInternalPrimitiveRepeatedStaticMesh.h	176	14	OK	2 retail files
+CEngineInternalPrimitiveRepeatedZSprite	CEngineInternalPrimitiveRepeatedZSprite.h	148	9	OK	1 retail files
+CEngineInternalPrimitiveShadowedSpotLight	CEngineInternalPrimitiveShadowedSpotLight.h	124	6	OK	0 retail files
+CEngineInternalPrimitiveSprite	CEngineInternalPrimitiveSprite.h	136	14	OK	1 retail files
+CEngineInternalPrimitiveStaticMesh	CEngineInternalPrimitiveStaticMesh.h	172	4	OK	6 retail files
+CEngineInternalPrimitiveStaticMeshFromFile	CEngineInternalPrimitiveStaticMeshFromFile.h	172	1	OK	1 retail files
+CEngineInternalPrimitiveText	CEngineInternalPrimitiveText.h	104	6	OK	0 retail files
+CEngineInternalPrimitiveWeatherMask	_quarantine/CEngineInternalPrimitiveWeatherMask.h	168	9	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineLandscapeMap	_quarantine/CEngineLandscapeMap.h	120	18	QUARANTINED	3 conflict(s) in 2 file(s) vs 0 agreeing
+CEngineLandscapeMemoryManager	CEngineLandscapeMemoryManager.h	140	10	OK	3 retail files
+CEngineLandscapePatch	CEngineLandscapePatch.h	72	12	OK	1 retail files
+CEngineLandscapeRenderer	CEngineLandscapeRenderer.h	3932	42	OK	0 retail files
+CEngineLightingManager	CEngineLightingManager.h	18140	33	OK	0 retail files
+CEngineLocalDetailGenerator	_quarantine/CEngineLocalDetailGenerator.h	180	14	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineLocalDetailGeneratorDef	_quarantine/CEngineLocalDetailGeneratorDef.h	80	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineLocalDetailLayerDef	_quarantine/CEngineLocalDetailLayerDef.h	96	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CEngineLocalDetailObjectDef	_quarantine/CEngineLocalDetailObjectDef.h	140	19	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineOcclusionManager	CEngineOcclusionManager.h	147668	19	OK	0 retail files
+CEnginePersistentPrimitiveBase	CEnginePersistentPrimitiveBase.h	12	1	OK	0 retail files
+CEnginePrimitive2DViewportManager	CEnginePrimitive2DViewportManager.h	56	1	OK	0 retail files
+CEnginePrimitiveAttachmentManager	CEnginePrimitiveAttachmentManager.h	28	1	OK	1 retail files
+CEnginePrimitiveManager		0	0	HAND_OWNED	
+CEnginePrimitiveManager2DParticleGroup	CEnginePrimitiveManager2DParticleGroup.h	40	0	OK	1 retail files
+CEnginePrimitiveManager2DSprites	_quarantine/CEnginePrimitiveManager2DSprites.h	56	5	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEnginePrimitiveManagerFlareSprites	CEnginePrimitiveManagerFlareSprites.h	40	3	OK	1 retail files
+CEnginePrimitiveManagerMeshBase	CEnginePrimitiveManagerMeshBase.h	32	0	OK	0 retail files
+CEnginePrimitiveManagerParticleDecalGroup	CEnginePrimitiveManagerParticleDecalGroup.h	292	15	OK	1 retail files
+CEnginePrimitiveManagerParticleLineGroup	CEnginePrimitiveManagerParticleLineGroup.h	612	8	OK	1 retail files
+CEnginePrimitiveManagerParticleMeshGroup	CEnginePrimitiveManagerParticleMeshGroup.h	736	8	OK	1 retail files
+CEnginePrimitiveManagerParticleSpriteGroup	CEnginePrimitiveManagerParticleSpriteGroup.h	820	12	OK	1 retail files
+CEnginePrimitiveManagerParticleSpriteTrailGroup	CEnginePrimitiveManagerParticleSpriteTrailGroup.h	68	6	OK	0 retail files
+CEnginePrimitiveManagerRepeatedStaticMeshes	CEnginePrimitiveManagerRepeatedStaticMeshes.h	148	17	OK	1 retail files
+CEnginePrimitiveManagerRepeatedZSprites	CEnginePrimitiveManagerRepeatedZSprites.h	200	15	OK	0 retail files
+CEnginePrimitiveManagerSprites	CEnginePrimitiveManagerSprites.h	12	1	OK	1 retail files
+CEnginePrimitiveManagerStaticMeshesBase	CEnginePrimitiveManagerStaticMeshesBase.h	792	41	OK	0 retail files
+CEnginePrimitiveOcclusionGroupManager	CEnginePrimitiveOcclusionGroupManager.h	32	0	OK	1 retail files
+CEnginePrimitiveOcclusionManager	CEnginePrimitiveOcclusionManager.h	56	8	OK	0 retail files
+CEnginePrimitiveRenderer	CEnginePrimitiveRenderer.h	856	28	OK	1 retail files
+CEnginePrimitiveRenderer2D	CEnginePrimitiveRenderer2D.h	888	16	OK	0 retail files
+CEnginePrimitiveTypeInfo	CEnginePrimitiveTypeInfo.h	204	1	OK	0 retail files
+CEngineResourceManager	CEngineResourceManager.h	16720	33	OK	0 retail files
+CEngineSceneEnumeratorResetVisibilityRatio	CEngineSceneEnumeratorResetVisibilityRatio.h	8	1	OK	0 retail files
+CEngineScreenEffectColourFilter	CEngineScreenEffectColourFilter.h	236	12	OK	1 retail files
+CEngineScreenEffectDisplacementRenderer	CEngineScreenEffectDisplacementRenderer.h	428	23	OK	1 retail files
+CEngineScreenEffectGlowRenderer	CEngineScreenEffectGlowRenderer.h	640	33	OK	1 retail files
+CEngineScreenEffectOutlineGlow	CEngineScreenEffectOutlineGlow.h	484	33	OK	0 retail files
+CEngineScreenEffectRadialBlurRenderer	CEngineScreenEffectRadialBlurRenderer.h	556	25	OK	2 retail files
+CEngineShadowRenderer	CEngineShadowRenderer.h	832	30	OK	0 retail files
+CEngineSimulationManager	CEngineSimulationManager.h	4240	24	OK	0 retail files
+CEngineSkyRenderer	CEngineSkyRenderer.h	404	31	OK	0 retail files
+CEngineStateBlocks	CEngineStateBlocks.h	52	10	OK	0 retail files
+CEngineSubPrimitiveRenderer	CEngineSubPrimitiveRenderer.h	464	6	OK	2 retail files
+CEngineSurfaceCompositionManager	CEngineSurfaceCompositionManager.h	4764	27	OK	2 retail files
+CEngineThemeDef	_quarantine/CEngineThemeDef.h	168	26	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineThemeGroupDef	_quarantine/CEngineThemeGroupDef.h	62	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineVSConstantLayoutBasic	CEngineVSConstantLayoutBasic.h	336	0	OK	0 retail files
+CEngineVSConstantLayoutLights	CEngineVSConstantLayoutLights.h	336	0	OK	0 retail files
+CEngineVSConstantLayoutLightsBones	CEngineVSConstantLayoutLightsBones.h	336	0	OK	1 retail files
+CEngineVSConstantLayoutParticles	CEngineVSConstantLayoutParticles.h	336	0	OK	0 retail files
+CEngineVSConstantLayoutRepeatedMesh	CEngineVSConstantLayoutRepeatedMesh.h	384	4	OK	0 retail files
+CEngineVideoOptionsDef	_quarantine/CEngineVideoOptionsDef.h	124	21	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEngineWaterBackgroundSubPatch	CEngineWaterBackgroundSubPatch.h	96	18	OK	1 retail files
+CEngineWaterRenderer	CEngineWaterRenderer.h	1544	75	OK	0 retail files
+CEngineWeatherRenderer	CEngineWeatherRenderer.h	4904	43	OK	0 retail files
+CEngineWorldMap	CEngineWorldMap.h	1124	26	OK	0 retail files
+CEntitySoundDef	_quarantine/CEntitySoundDef.h	92	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEnvironment	CEnvironment.h	6816	26	OK	5 retail files
+CEnvironmentDef	_quarantine/CEnvironmentDef.h	312	62	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CEnvironmentThemeDaySetDef	CEnvironmentThemeDaySetDef.h	116	10	OK	1 retail files
+CEnvironmentThemeDef	_quarantine/CEnvironmentThemeDef.h	200	34	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CExperienceDef	_quarantine/CExperienceDef.h	92	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CExplodingObjectDef	CExplodingObjectDef.h	52	4	OK	0 retail files
+CExplosionDef	_quarantine/CExplosionDef.h	116	18	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CExplosiveTrailDef	CExplosiveTrailDef.h	76	9	OK	1 retail files
+CExpressionDef	_quarantine/CExpressionDef.h	148	25	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CExpressionSubDef	CExpressionSubDef.h	44	1	OK	2 retail files
+CFactionDef	_quarantine/CFactionDef.h	96	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CFadeInFadeOutBase	CFadeInFadeOutBase.h	28	8	OK	0 retail files
+CFileDataInputStream	CFileDataInputStream.h	36	3	OK	1 retail files
+CFileDataOutputStream	CFileDataOutputStream.h	12	2	OK	1 retail files
+CFireballSpellLevelDef	CFireballSpellLevelDef.h	44	1	OK	2 retail files
+CFireheartMinigameDef	CFireheartMinigameDef.h	60	5	OK	1 retail files
+CFishDef	CFishDef.h	88	12	OK	0 retail files
+CFishingDef	_quarantine/CFishingDef.h	128	19	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CFishingRodDef	_quarantine/CFishingRodDef.h	60	5	QUARANTINED	5 conflict(s) in 1 file(s) vs 0 agreeing
+CFlammableDef	_quarantine/CFlammableDef.h	80	5	QUARANTINED	4 conflict(s) in 2 file(s) vs 0 agreeing
+CFontBank	CFontBank.h	16	3	OK	1 retail files
+CFontBankStateBlock	CFontBankStateBlock.h	16	1	OK	2 retail files
+CFontDataBank	CFontDataBank.h	408	3	OK	2 retail files
+CFontDataBankEntry	CFontDataBankEntry.h	24	4	OK	2 retail files
+CFrontEndDef	_quarantine/CFrontEndDef.h	92	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CFrontEndList	CFrontEndList.h	576	0	OK	0 retail files
+CFrontEndManager	CFrontEndManager.h	248	27	OK	0 retail files
+CFrontEndScreen	CFrontEndScreen.h	412	3	OK	0 retail files
+CFrontendGameComponent		0	0	HAND_OWNED	
+CGame		0	0	HAND_OWNED	
+CGameCameraBase	CGameCameraBase.h	216	17	OK	0 retail files
+CGameCameraManager	CGameCameraManager.h	388	49	OK	6 retail files; suspect=CGameCameraManager_SetAutomaticCameraControl_00699090.cpp
+CGameComponent		0	0	HAND_OWNED	
+CGameDefinitionManager	_quarantine/CGameDefinitionManager.h	1	0	COMPILE_FAIL	D:\Documents\FableTLC\rebuild\include\engine\CGameDefinitionManager.h(17) : error C2118: negative subscript
+CGameEvent	CGameEvent.h	40	6	OK	1 retail files
+CGameEventPackageSet	CGameEventPackageSet.h	80404	2	OK	1 retail files
+CGameJoystickManager	CGameJoystickManager.h	12	2	OK	1 retail files
+CGamePlayerInterface	CGamePlayerInterface.h	2216	18	OK	0 retail files
+CGameScriptInterface	CGameScriptInterface.h	84	16	OK	43 retail files; suspect=CGameScriptInterface_CameraEarthquakeIntensityAtPos_0088ed20.cpp,CGameScriptInterface_GetNumHousesOwned_008a12a0.cpp,CGameScriptInterface_IsEntityWieldingRangedWeapon_00890250.cpp,CGameScriptInterface_IsThingAChest_008a0eb0.cpp,CGameScriptInterface_StartSneaking_008a1300.cpp
+CGameScriptThing	CGameScriptThing.h	72	9	OK	5 retail files
+CGhostGrannySon	_quarantine/CGhostGrannySon.h	36	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CGiftDef	_quarantine/CGiftDef.h	48	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CGlobalDef	_quarantine/CGlobalDef.h	352	58	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CGoldDef	CGoldDef.h	44	1	OK	2 retail files
+CGraphicBankStateBlock	CGraphicBankStateBlock.h	100	1	OK	1 retail files
+CGraphicDataBank	_quarantine/CGraphicDataBank.h	904	16	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CGraphicFrame	CGraphicFrame.h	4	1	OK	1 retail files
+CGroundNavigatorExternalInterface	CGroundNavigatorExternalInterface.h	12	2	OK	9 retail files
+CGuardDef	CGuardDef.h	80	10	OK	0 retail files
+CGuiVarTransferFloat	CGuiVarTransferFloat.h	32	7	OK	1 retail files
+CGuildMasterDef	_quarantine/CGuildMasterDef.h	48	2	QUARANTINED	3 conflict(s) in 2 file(s) vs 0 agreeing
+CHairCardDef	CHairCardDef.h	44	1	OK	2 retail files
+CHandleBasedMemoryPool	CHandleBasedMemoryPool.h	1128	21	OK	2 retail files
+CHasNameDef	CHasNameDef.h	52	3	OK	1 retail files
+CHeightMapCell	CHeightMapCell.h	12	4	OK	1 retail files
+CHeroAbilityDef	_quarantine/CHeroAbilityDef.h	172	17	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CHeroCentreDef	CHeroCentreDef.h	37	0	OK	0 retail files
+CHeroCombatDef	_quarantine/CHeroCombatDef.h	372	44	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CHeroDef	CHeroDef.h	48	2	OK	2 retail files
+CHeroExperienceDef	_quarantine/CHeroExperienceDef.h	224	13	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CHeroMarriageDef	CHeroMarriageDef.h	200	40	OK	0 retail files
+CHeroMarriageInfo	CHeroMarriageInfo.h	24	4	OK	0 retail files
+CHeroMorphDef	_quarantine/CHeroMorphDef.h	120	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CHeroPostcardGeneratorDef	_quarantine/CHeroPostcardGeneratorDef.h	96	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CHeroSpecialMovementDef	CHeroSpecialMovementDef.h	56	4	OK	1 retail files
+CHeroStatsDef	_quarantine/CHeroStatsDef.h	356	43	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CHeroSuitDef	_quarantine/CHeroSuitDef.h	56	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CHeroTitleDef	CHeroTitleDef.h	80	11	OK	0 retail files
+CHighlightItemDef	CHighlightItemDef.h	72	8	OK	0 retail files
+CHitLocationDef	_quarantine/CHitLocationDef.h	128	19	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CHitLocationsDef	_quarantine/CHitLocationsDef.h	56	1	QUARANTINED	2 conflict(s) in 2 file(s) vs 0 agreeing
+CHornetDrone	CHornetDrone.h	32	3	OK	1 retail files
+CHoverable	CHoverable.h	412	4	OK	0 retail files
+CIDrawMap	CIDrawMap.h	4	0	OK	3 retail files
+CIEngine	CIEngine.h	12	1	OK	16 retail files
+CIME		0	0	HAND_OWNED	
+CIVCountedPointeeBase	CIVCountedPointeeBase.h	8	1	OK	1 retail files
+CIdleSchedulerDef	_quarantine/CIdleSchedulerDef.h	80	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CIndexBuffer	CIndexBuffer.h	20	4	OK	0 retail files
+CInitBaseClass		0	0	HAND_OWNED	
+CInputProcessBetting	CInputProcessBetting.h	40	0	OK	0 retail files
+CInputProcessBoastUI	CInputProcessBoastUI.h	40	0	OK	0 retail files
+CInputProcessClickPastText	CInputProcessClickPastText.h	40	0	OK	0 retail files
+CInputProcessConsole	CInputProcessConsole.h	40	0	OK	0 retail files
+CInputProcessControlCreatureRightStick	CInputProcessControlCreatureRightStick.h	44	3	OK	1 retail files
+CInputProcessControlFreeCamera	CInputProcessControlFreeCamera.h	44	1	OK	1 retail files
+CInputProcessControlSpirit	CInputProcessControlSpirit.h	48	1	OK	0 retail files
+CInputProcessCreditsUI	CInputProcessCreditsUI.h	40	0	OK	0 retail files
+CInputProcessCutScene	CInputProcessCutScene.h	40	0	OK	0 retail files
+CInputProcessCycleSpecialCameraModes	CInputProcessCycleSpecialCameraModes.h	40	0	OK	0 retail files
+CInputProcessDead	CInputProcessDead.h	40	0	OK	1 retail files
+CInputProcessFireheartMinigame	CInputProcessFireheartMinigame.h	40	0	OK	0 retail files
+CInputProcessFreezeControls	CInputProcessFreezeControls.h	40	0	OK	0 retail files
+CInputProcessGameBase	CInputProcessGameBase.h	40	5	OK	1 retail files
+CInputProcessHeroAbilitiesScreen	CInputProcessHeroAbilitiesScreen.h	60	2	OK	0 retail files
+CInputProcessHeroInformationScreens	CInputProcessHeroInformationScreens.h	40	0	OK	0 retail files
+CInputProcessInGameMenu	CInputProcessInGameMenu.h	56	4	OK	0 retail files
+CInputProcessInventory	CInputProcessInventory.h	56	1	OK	0 retail files
+CInputProcessInventoryBase	CInputProcessInventoryBase.h	52	3	OK	1 retail files
+CInputProcessInventoryClothing	CInputProcessInventoryClothing.h	56	1	OK	0 retail files
+CInputProcessInventoryExperienceScreen	CInputProcessInventoryExperienceScreen.h	56	1	OK	0 retail files
+CInputProcessInventoryMagicScreen	CInputProcessInventoryMagicScreen.h	56	1	OK	0 retail files
+CInputProcessInventoryMapScreen	CInputProcessInventoryMapScreen.h	56	1	OK	0 retail files
+CInputProcessInventoryQuestsScreen	CInputProcessInventoryQuestsScreen.h	64	3	OK	1 retail files
+CInputProcessInventoryStatsScreen	CInputProcessInventoryStatsScreen.h	56	1	OK	0 retail files
+CInputProcessInventoryTradeScreen	CInputProcessInventoryTradeScreen.h	56	1	OK	0 retail files
+CInputProcessInventoryWeapons	CInputProcessInventoryWeapons.h	56	1	OK	0 retail files
+CInputProcessJumpingAndRolling	CInputProcessJumpingAndRolling.h	100	8	OK	1 retail files
+CInputProcessLightning	CInputProcessLightning.h	40	0	OK	0 retail files
+CInputProcessMain	CInputProcessMain.h	40	0	OK	0 retail files
+CInputProcessParalysed	CInputProcessParalysed.h	44	1	OK	1 retail files
+CInputProcessQuestCompletionUI	CInputProcessQuestCompletionUI.h	40	0	OK	0 retail files
+CInputProcessQuickAccessMenu	CInputProcessQuickAccessMenu.h	40	0	OK	0 retail files
+CInputProcessTargetLockRightStickTargetSelect	CInputProcessTargetLockRightStickTargetSelect.h	44	2	OK	1 retail files
+CInputProcessTavernGame	CInputProcessTavernGame.h	40	0	OK	0 retail files
+CInputProcessUseRangedWeaponZLock	CInputProcessUseRangedWeaponZLock.h	40	0	OK	0 retail files
+CInputProcessWatchForRangedWeaponThirdPersonModeTermination	CInputProcessWatchForRangedWeaponThirdPersonModeTermination.h	44	1	OK	0 retail files
+CInputProcessWatchForWillChargeUpThirdPersonModeTermination	CInputProcessWatchForWillChargeUpThirdPersonModeTermination.h	44	1	OK	0 retail files
+CInputProcessYesNoQuestion	CInputProcessYesNoQuestion.h	44	1	OK	0 retail files
+CInputTypeKeyboardKeyEvent	CInputTypeKeyboardKeyEvent.h	16	2	OK	2 retail files
+CInputTypeMouseButtonEvent	CInputTypeMouseButtonEvent.h	16	2	OK	0 retail files
+CInputTypeMouseMovementEvent	CInputTypeMouseMovementEvent.h	4	0	OK	2 retail files
+CInputTypeMouseWheelMovementDownEvent	CInputTypeMouseWheelMovementDownEvent.h	4	0	OK	3 retail files
+CInputTypeMouseWheelMovementEvent	CInputTypeMouseWheelMovementEvent.h	4	0	OK	2 retail files
+CInputTypeMouseWheelMovementUpEvent	CInputTypeMouseWheelMovementUpEvent.h	4	0	OK	3 retail files
+CInputTypeXboxPadButtonEvent	CInputTypeXboxPadButtonEvent.h	8	1	OK	1 retail files
+CInputTypeXboxPadLeftStickEvent	CInputTypeXboxPadLeftStickEvent.h	4	0	OK	2 retail files
+CInputTypeXboxPadRightStickEvent	CInputTypeXboxPadRightStickEvent.h	4	0	OK	1 retail files
+CInterestingToVillagersDef	CInterestingToVillagersDef.h	44	1	OK	1 retail files
+CInventoryCategoryDef	_quarantine/CInventoryCategoryDef.h	92	9	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CInventoryDef	_quarantine/CInventoryDef.h	2656	391	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CInventoryItemDef	CInventoryItemDef.h	112	20	OK	2 retail files
+CItem	CItem.h	20	4	OK	0 retail files
+CJackDragonDef	CJackDragonDef.h	120	20	OK	1 retail files
+CJackOfBladesBattleDef	_quarantine/CJackOfBladesBattleDef.h	132	17	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CJoystick	CJoystick.h	3360	6	OK	2 retail files
+CJoystickDX	CJoystickDX.h	3404	13	OK	8 retail files
+CKeyboard	CKeyboard.h	13340	5	OK	1 retail files
+CKeyboardDX	_quarantine/CKeyboardDX.h	13852	5	QUARANTINED	2 conflict(s) in 1 file(s) vs 0 agreeing
+CKickableDef	CKickableDef.h	84	11	OK	0 retail files
+CKrakenDef	_quarantine/CKrakenDef.h	128	19	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CKrakenTentacleDef	CKrakenTentacleDef.h	96	14	OK	0 retail files
+CLandscapeBackgroundPatch	CLandscapeBackgroundPatch.h	284	28	OK	1 retail files
+CLandscapeBackgroundSubNodeBase	CLandscapeBackgroundSubNodeBase.h	4	0	OK	0 retail files
+CLandscapeBackgroundSubNodeSplitBranch	CLandscapeBackgroundSubNodeSplitBranch.h	484	2	OK	1 retail files
+CLandscapeBackgroundTreeNode	CLandscapeBackgroundTreeNode.h	240	25	OK	1 retail files
+CLandscapeLayerMesh	_quarantine/CLandscapeLayerMesh.h	84	21	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CLandscapePatchTesselator	CLandscapePatchTesselator.h	40	2	OK	2 retail files
+CLensFlareElementDef	_quarantine/CLensFlareElementDef.h	80	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CLevelLoader	CLevelLoader.h	44	4	OK	0 retail files
+CLightDef	CLightDef.h	92	15	OK	0 retail files
+CLightningDef	_quarantine/CLightningDef.h	92	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CLightningOrbDef	_quarantine/CLightningOrbDef.h	60	5	QUARANTINED	3 conflict(s) in 1 file(s) vs 0 agreeing
+CLipSyncDataBank	CLipSyncDataBank.h	512	6	OK	3 retail files
+CList	CList.h	576	26	OK	0 retail files
+CLocalDetailCacheMap	CLocalDetailCacheMap.h	120	6	OK	0 retail files
+CLookDef	CLookDef.h	88	15	OK	0 retail files
+CMainGameComponent		0	0	HAND_OWNED	
+CManagedTextureData	CManagedTextureData.h	76	13	OK	1 retail files
+CManager	CManager.h	256	38	OK	0 retail files; dup_donor
+CMap	_quarantine/CMap.h	7504	25	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CMarkerInfo	CMarkerInfo.h	16	3	OK	1 retail files
+CMaterialDef	_quarantine/CMaterialDef.h	180	12	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CMazeBattleDef	_quarantine/CMazeBattleDef.h	100	9	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CMeleeCombatAbilityDef	_quarantine/CMeleeCombatAbilityDef.h	136	14	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CMeleeCombatKnockdownEffects	_quarantine/CMeleeCombatKnockdownEffects.h	96	11	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CMemoryAllocatorBase	CMemoryAllocatorBase.h	3100	3	OK	0 retail files
+CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize.h	3148	12	OK	0 retail files
+CMemoryDataInputStream	CMemoryDataInputStream.h	28	6	OK	1 retail files
+CMemoryDataOutputStream	CMemoryDataOutputStream.h	28	2	OK	0 retail files
+CMemoryFile	CMemoryFile.h	40	6	OK	4 retail files; suspect=CMemoryFile_GetPathnameCMemoryFileUBEAVCWideStri_00412070.cpp
+CMeshBankManager	CMeshBankManager.h	20	1	OK	0 retail files
+CMeshDataBank	CMeshDataBank.h	1272	34	OK	2 retail files
+CMeshDataBankEntry	CMeshDataBankEntry.h	12	2	OK	0 retail files
+CMessageEventDef	_quarantine/CMessageEventDef.h	84	6	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CMiniMapDisplay	CMiniMapDisplay.h	220	14	OK	5 retail files
+CMirroredTextureHighlightsChunk	CMirroredTextureHighlightsChunk.h	32	1	OK	0 retail files
+CModeDragonBase	CModeDragonBase.h	48	4	OK	2 retail files
+CModeStandBase	CModeStandBase.h	104	13	OK	0 retail files
+CMorphingSprite	CMorphingSprite.h	472	4	OK	0 retail files
+CMouse	CMouse.h	13340	5	OK	0 retail files
+CMouseDX	_quarantine/CMouseDX.h	18536	27	QUARANTINED	3 conflict(s) in 1 file(s) vs 0 agreeing
+CMovableResource	CMovableResource.h	4	0	OK	1 retail files
+CMovableResourceMemoryPool	CMovableResourceMemoryPool.h	1128	0	OK	1 retail files
+CMovie	CMovie.h	456	9	OK	1 retail files
+CMultiStaticMeshDef	_quarantine/CMultiStaticMeshDef.h	56	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CMultiStaticMeshEntryDef	CMultiStaticMeshEntryDef.h	56	5	OK	0 retail files
+CNavBlockedQuadTreeNode	CNavBlockedQuadTreeNode.h	16	0	OK	3 retail files
+CNavNavigableLeafNode	CNavNavigableLeafNode.h	32	3	OK	3 retail files
+CNavQuadTree	CNavQuadTree.h	176	16	OK	0 retail files
+CNavQuadTreeNode	CNavQuadTreeNode.h	32	4	OK	0 retail files
+CNavSwitchableLeafNode	CNavSwitchableLeafNode.h	52	4	OK	4 retail files
+CNavigatorAStar	CNavigatorAStar.h	212	27	OK	2 retail files
+CNavigatorBase	CNavigatorBase.h	36	5	OK	2 retail files
+CNavigatorFlyer	CNavigatorFlyer.h	48	1	OK	4 retail files
+CNavigatorManager	CNavigatorManager.h	76	5	OK	0 retail files
+CNetworkClient	CNetworkClient.h	9856	13	OK	0 retail files
+CNewFrontendGameComponent		0	0	HAND_OWNED	
+CNymphDef	CNymphDef.h	80	10	OK	0 retail files
+CObjectAugmentationsDef	_quarantine/CObjectAugmentationsDef.h	160	15	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CObjectFamilyDef	_quarantine/CObjectFamilyDef.h	80	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CObserver	CObserver.h	24	2	OK	0 retail files
+CObstacleNavigatorExternalInterface	_quarantine/CObstacleNavigatorExternalInterface.h	24	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+COccupiableDef	COccupiableDef.h	44	1	OK	2 retail files
+COpinionDeedEffectsDef	_quarantine/COpinionDeedEffectsDef.h	148	14	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+COpinionDeedMaskDef	_quarantine/COpinionDeedMaskDef.h	80	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+COpinionDeedReactionDef	_quarantine/COpinionDeedReactionDef.h	88	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+COpinionOfHeroDef	_quarantine/COpinionOfHeroDef.h	60	5	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+COpinionPersonalityDef	_quarantine/COpinionPersonalityDef.h	92	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+COpinionReactionManagerDef	_quarantine/COpinionReactionManagerDef.h	860	13	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+COpinionReactionMaskDef	_quarantine/COpinionReactionMaskDef.h	80	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+COpinionSourceDef	_quarantine/COpinionSourceDef.h	216	16	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+COptimisedPrimitive	COptimisedPrimitive.h	160	10	OK	0 retail files
+COracleMinigameDef	COracleMinigameDef.h	92	13	OK	0 retail files
+COverheadDisplayDef	COverheadDisplayDef.h	40	3	OK	0 retail files
+CParentDefClassBase	CParentDefClassBase.h	61	2	OK	3 retail files
+CParticleAttacherDef	_quarantine/CParticleAttacherDef.h	56	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CParticleEmitter	CParticleEmitter.h	376	23	OK	1 retail files
+CParticleProgram	CParticleProgram.h	368	19	OK	1 retail files
+CParticleSimulationRenderData	CParticleSimulationRenderData.h	4	0	OK	1 retail files
+CParticleSystem	_quarantine/CParticleSystem.h	140	14	QUARANTINED	2 conflict(s) in 1 file(s) vs 0 agreeing
+CPerceivedThingDef	CPerceivedThingDef.h	80	10	OK	0 retail files
+CPersistContext		0	0	HAND_OWNED	
+CPhysicsDef	_quarantine/CPhysicsDef.h	68	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CPhysicsFacesSegmentBranch	CPhysicsFacesSegmentBranch.h	28	3	OK	1 retail files
+CPhysicsFacesSegmentLeaf	CPhysicsFacesSegmentLeaf.h	20	1	OK	1 retail files
+CPixelFormat	CPixelFormat.h	4	1	OK	1 retail files
+CPlayer	CPlayer.h	564	105	OK	2 retail files
+CPlayerDef	_quarantine/CPlayerDef.h	72	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 2 agreeing
+CPlayerGui	CPlayerGui.h	864	83	OK	1 retail files
+CPlayerGuiDef	_quarantine/CPlayerGuiDef.h	2896	463	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CPlayerInventoryDef	_quarantine/CPlayerInventoryDef.h	136	6	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CPlayerManager	CPlayerManager.h	52	6	OK	0 retail files
+CPlayerMovementDef	_quarantine/CPlayerMovementDef.h	128	16	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CPrizeScoreDef	_quarantine/CPrizeScoreDef.h	48	2	QUARANTINED	2 conflict(s) in 2 file(s) vs 0 agreeing
+CProcessedInput	CProcessedInput.h	176	5	OK	0 retail files
+CProgressDisplay		0	0	HAND_OWNED	
+CQ_GuildTrainingPreMeleeScript	CQ_GuildTrainingPreMeleeScript.h	108	7	OK	1 retail files
+CQuestCardDef	_quarantine/CQuestCardDef.h	124	18	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CQuestInfoElement	_quarantine/CQuestInfoElement.h	32	4	QUARANTINED	2 conflict(s) in 1 file(s) vs 0 agreeing
+CQuestManager	CQuestManager.h	276	30	OK	3 retail files
+CQuickAccessItemButtonGuiDef	_quarantine/CQuickAccessItemButtonGuiDef.h	84	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CReactionFrequencyTraits_ControlledCount	CReactionFrequencyTraits_ControlledCount.h	44	10	OK	0 retail files
+CReactionFrequencyTraits_LinearTime	CReactionFrequencyTraits_LinearTime.h	16	3	OK	1 retail files
+CReactionFrequencyTraits_PeriodicFrequency	CReactionFrequencyTraits_PeriodicFrequency.h	32	7	OK	1 retail files
+CReactionMatch_AsymmetricPyramid	CReactionMatch_AsymmetricPyramid.h	40	8	OK	0 retail files
+CReactionMatch_MRPyramid	CReactionMatch_MRPyramid.h	52	3	OK	1 retail files
+CReactionMatch_SecondaryAxisCentredMRShifted	CReactionMatch_SecondaryAxisCentredMRShifted.h	36	7	OK	0 retail files
+CReactionMatch_SecondaryAxisMRShifted	CReactionMatch_SecondaryAxisMRShifted.h	36	7	OK	0 retail files
+CReactionMatch_Sphere	CReactionMatch_Sphere.h	28	2	OK	0 retail files
+CReadableDef	CReadableDef.h	38	1	OK	1 retail files
+CRegion	CRegion.h	100	15	OK	2 retail files
+CRegionDef		0	0	HAND_OWNED	
+CRegionDialog	CRegionDialog.h	324	8	OK	1 retail files
+CRegionMinimap	CRegionMinimap.h	108	9	OK	3 retail files
+CRenderManagerCore	CRenderManagerCore.h	15648	31	OK	0 retail files
+CRenderStateManager	CRenderStateManager.h	14908	11	OK	0 retail files
+CReplaceableMeshDef	_quarantine/CReplaceableMeshDef.h	56	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CResource	CResource.h	28	5	OK	7 retail files
+CResourceList	CResourceList.h	60	8	OK	0 retail files
+CResurrectionItemDef	CResurrectionItemDef.h	44	1	OK	2 retail files
+CRumbleDef	_quarantine/CRumbleDef.h	72	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSB	CSB.h	12	1	OK	0 retail files
+CSBAgents	CSBAgents.h	16	1	OK	0 retail files
+CSBCAgents	CSBCAgents.h	28	1	OK	0 retail files
+CSBCCorridor	CSBCCorridor.h	52	4	OK	0 retail files
+CSBGoal	CSBGoal.h	36	6	OK	0 retail files
+CSBIAgents	CSBIAgents.h	24	1	OK	0 retail files
+CScorpionKingBattleDef	_quarantine/CScorpionKingBattleDef.h	100	9	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CScriptConversation	CScriptConversation.h	52	9	OK	1 retail files; dup_donor
+CScriptGameResourceObjectScriptedThing	CScriptGameResourceObjectScriptedThing.h	40	5	OK	1 retail files
+CScriptGameResourceObjectScriptedThingBase	CScriptGameResourceObjectScriptedThingBase.h	16	1	OK	26 retail files
+CScriptThing	CScriptThing.h	12	1	OK	62 retail files
+CScriptedMapBrush	CScriptedMapBrush.h	100	8	OK	0 retail files
+CScrollingComponent	CScrollingComponent.h	396	3	OK	1 retail files
+CShaderDataBank	CShaderDataBank.h	424	5	OK	2 retail files
+CShaderRenderManager		0	0	HAND_OWNED	
+CShipDef	CShipDef.h	68	7	OK	0 retail files
+CShopDef	_quarantine/CShopDef.h	224	37	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CShopItemDef	CShopItemDef.h	72	2	OK	0 retail files
+CShoveHaPennyRegionDef	_quarantine/CShoveHaPennyRegionDef.h	48	2	QUARANTINED	2 conflict(s) in 1 file(s) vs 0 agreeing
+CSimBuildingDef	_quarantine/CSimBuildingDef.h	76	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CSimVoicesDef	_quarantine/CSimVoicesDef.h	92	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSimpleMemoryPool	CSimpleMemoryPool.h	28	4	OK	1 retail files
+CSkeletalMorphDef	_quarantine/CSkeletalMorphDef.h	56	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CSkyDef	_quarantine/CSkyDef.h	136	15	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSmashableDef	CSmashableDef.h	48	3	OK	1 retail files
+CSmokeGeneratorDef	_quarantine/CSmokeGeneratorDef.h	48	2	QUARANTINED	2 conflict(s) in 2 file(s) vs 0 agreeing
+CSnowTrollDef	CSnowTrollDef.h	96	14	OK	1 retail files
+CSoundAtmospheresDef	_quarantine/CSoundAtmospheresDef.h	56	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 2 agreeing
+CSoundDef	_quarantine/CSoundDef.h	156	8	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSoundThemeDef	_quarantine/CSoundThemeDef.h	108	11	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpawnedFuncBase	CSpawnedFuncBase.h	52	8	OK	1 retail files
+CSpecialAbilitiesAssassinRushDef	_quarantine/CSpecialAbilitiesAssassinRushDef.h	148	18	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesBattleChargeDef	_quarantine/CSpecialAbilitiesBattleChargeDef.h	184	18	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesBerserkDef	_quarantine/CSpecialAbilitiesBerserkDef.h	468	47	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CSpecialAbilitiesBulletTimeDef	_quarantine/CSpecialAbilitiesBulletTimeDef.h	428	42	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesBurntEffectDef	_quarantine/CSpecialAbilitiesBurntEffectDef.h	92	5	QUARANTINED	4 conflict(s) in 2 file(s) vs 0 agreeing
+CSpecialAbilitiesCreatureTintDef	_quarantine/CSpecialAbilitiesCreatureTintDef.h	88	4	QUARANTINED	3 conflict(s) in 2 file(s) vs 0 agreeing
+CSpecialAbilitiesDivineWrathDef	_quarantine/CSpecialAbilitiesDivineWrathDef.h	312	20	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesDrainLifeDataDef	_quarantine/CSpecialAbilitiesDrainLifeDataDef.h	44	1	QUARANTINED	2 conflict(s) in 2 file(s) vs 0 agreeing
+CSpecialAbilitiesDrainLifeDef	_quarantine/CSpecialAbilitiesDrainLifeDef.h	132	6	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CSpecialAbilitiesDrunkennessDef	_quarantine/CSpecialAbilitiesDrunkennessDef.h	84	5	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesElectrocutedEffectDef	_quarantine/CSpecialAbilitiesElectrocutedEffectDef.h	120	8	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesEnflameDef	_quarantine/CSpecialAbilitiesEnflameDef.h	176	8	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesFireballSpellDef	_quarantine/CSpecialAbilitiesFireballSpellDef.h	92	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesForcePushDataDef	_quarantine/CSpecialAbilitiesForcePushDataDef.h	44	1	QUARANTINED	2 conflict(s) in 2 file(s) vs 0 agreeing
+CSpecialAbilitiesForcePushDef	CSpecialAbilitiesForcePushDef.h	180	18	OK	0 retail files
+CSpecialAbilitiesGhostSwordDef	_quarantine/CSpecialAbilitiesGhostSwordDef.h	92	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesHealLifeDef	_quarantine/CSpecialAbilitiesHealLifeDef.h	112	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesLightningSpellDef	_quarantine/CSpecialAbilitiesLightningSpellDef.h	364	27	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesMultiArrowDef	_quarantine/CSpecialAbilitiesMultiArrowDef.h	140	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesMultiStrikeDef	_quarantine/CSpecialAbilitiesMultiStrikeDef.h	180	8	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesPhysicalShieldDef	CSpecialAbilitiesPhysicalShieldDef.h	364	29	OK	1 retail files
+CSpecialAbilitiesSummonSpellDef	_quarantine/CSpecialAbilitiesSummonSpellDef.h	120	8	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesThunderLightningStormDef	_quarantine/CSpecialAbilitiesThunderLightningStormDef.h	108	11	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialAbilitiesTurncoatSpellDef	_quarantine/CSpecialAbilitiesTurncoatSpellDef.h	144	6	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CSpecialAbilitiesUnholyPowerDef	_quarantine/CSpecialAbilitiesUnholyPowerDef.h	312	20	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpecialEffectsDef	_quarantine/CSpecialEffectsDef.h	56	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSpotLightDef	CSpotLightDef.h	68	7	OK	0 retail files
+CSprite	CSprite.h	436	8	OK	0 retail files
+CStartupDefinitionManager	CStartupDefinitionManager.h	240	0	OK	1 retail files
+CStateBlockFunctionSold	CStateBlockFunctionSold.h	4	0	OK	0 retail files
+CStaticFontBank	CStaticFontBank.h	8244	10	OK	1 retail files
+CStaticMapBankFile	CStaticMapBankFile.h	472	0	OK	0 retail files
+CStaticMapBankStateBlock	CStaticMapBankStateBlock.h	8	1	OK	0 retail files
+CStealthDef	CStealthDef.h	72	8	OK	0 retail files
+CStockItemDef	CStockItemDef.h	64	7	OK	0 retail files
+CStreamingFontBank	CStreamingFontBank.h	12340	12	OK	1 retail files
+CStreamingFontBankStateBlock	CStreamingFontBankStateBlock.h	20	1	OK	2 retail files
+CStreamingFontDataBank	CStreamingFontDataBank.h	520	4	OK	2 retail files
+CStreamingFontDataBankEntry	CStreamingFontDataBankEntry.h	24	4	OK	2 retail files
+CStringParser	CStringParser.h	48	7	OK	0 retail files
+CSubtitleRenderer	CSubtitleRenderer.h	296	42	OK	0 retail files
+CSummonDef	CSummonDef.h	76	9	OK	0 retail files
+CSummonableCreatureDef	_quarantine/CSummonableCreatureDef.h	48	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CSummonerDef	CSummonerDef.h	92	13	OK	0 retail files
+CSurface	CSurface.h	16	3	OK	1 retail files
+CSystemManager		0	0	HAND_OWNED	
+CSystemManagerInit		0	0	HAND_OWNED	
+CSystemRegistry		0	0	HAND_OWNED	
+CTCActivationReceptorBase	CTCActivationReceptorBase.h	48	6	OK	0 retail files
+CTCBase	CTCBase.h	12	3	OK	1 retail files
+CTCBerserk	CTCBerserk.h	120	25	OK	1 retail files
+CTCBoastUI	CTCBoastUI.h	52	7	OK	1 retail files
+CTCBoastingPosition	CTCBoastingPosition.h	56	8	OK	0 retail files
+CTCBulletTime	CTCBulletTime.h	88	19	OK	1 retail files
+CTCBuyableHouse	CTCBuyableHouse.h	76	16	OK	2 retail files
+CTCCombat	CTCCombat.h	172	29	OK	5 retail files
+CTCCoopSpirit	_quarantine/CTCCoopSpirit.h	52	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CTCCreatureGenerator	CTCCreatureGenerator.h	196	25	OK	1 retail files
+CTCCreatureGroupBoastingCrowd	CTCCreatureGroupBoastingCrowd.h	76	9	OK	0 retail files
+CTCCreatureNavigation	CTCCreatureNavigation.h	104	13	OK	2 retail files
+CTCCreatureOpinionOfHero	CTCCreatureOpinionOfHero.h	1628	21	OK	1 retail files
+CTCDoor	CTCDoor.h	36	10	OK	3 retail files
+CTCEntityEvents	CTCEntityEvents.h	24	2	OK	1 retail files
+CTCGraphicAppearance	_quarantine/CTCGraphicAppearance.h	116	18	QUARANTINED	2 conflict(s) in 2 file(s) vs 0 agreeing
+CTCHeroAttachableAppearanceModifiers	CTCHeroAttachableAppearanceModifiers.h	88	6	OK	1 retail files
+CTCHeroCentre	CTCHeroCentre.h	60	6	OK	1 retail files
+CTCHeroExperience	CTCHeroExperience.h	124	15	OK	3 retail files
+CTCHeroMorph	CTCHeroMorph.h	124	18	OK	1 retail files
+CTCHeroRangedAttacks	CTCHeroRangedAttacks.h	76	19	OK	1 retail files
+CTCHeroStats	CTCHeroStats.h	508	109	OK	3 retail files; suspect=CTCHeroStats_GetMoralityPercentage_0057a690.cpp
+CTCHighlightItem	CTCHighlightItem.h	40	5	OK	1 retail files
+CTCInGameMenu	CTCInGameMenu.h	280	33	OK	2 retail files
+CTCInventory	CTCInventory.h	624	30	OK	0 retail files
+CTCInventoryAbilities	CTCInventoryAbilities.h	544	19	OK	4 retail files
+CTCInventoryBase	CTCInventoryBase.h	328	49	OK	2 retail files
+CTCInventoryClothing	CTCInventoryClothing.h	408	8	OK	1 retail files
+CTCInventoryExperience	CTCInventoryExperience.h	728	43	OK	2 retail files
+CTCInventoryItem	CTCInventoryItem.h	40	7	OK	1 retail files
+CTCInventoryTrade	CTCInventoryTrade.h	640	39	OK	0 retail files
+CTCKraken	_quarantine/CTCKraken.h	120	20	QUARANTINED	2 conflict(s) in 1 file(s) vs 0 agreeing
+CTCLook	CTCLook.h	212	39	OK	1 retail files
+CTCMapwho	CTCMapwho.h	84	6	OK	1 retail files
+CTCMultiStrike	_quarantine/CTCMultiStrike.h	92	11	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CTCNamedUserActionPoints	CTCNamedUserActionPoints.h	76	2	OK	1 retail files
+CTCNoiseDef	_quarantine/CTCNoiseDef.h	52	3	QUARANTINED	2 conflict(s) in 1 file(s) vs 0 agreeing
+CTCOracleMinigame	CTCOracleMinigame.h	244	16	OK	1 retail files
+CTCPerceiveThing	CTCPerceiveThing.h	88	23	OK	3 retail files; suspect=CTCPerceiveThing_SetLastAwareInfo_00744730.cpp
+CTCPhysicsBase	CTCPhysicsBase.h	64	8	OK	1 retail files
+CTCPhysicsNavigator	CTCPhysicsNavigator.h	176	5	OK	0 retail files
+CTCPhysicsRigidBody	CTCPhysicsRigidBody.h	624	8	OK	0 retail files
+CTCPhysicsStandard	CTCPhysicsStandard.h	136	9	OK	3 retail files
+CTCQuestCard	CTCQuestCard.h	52	11	OK	1 retail files
+CTCQuestCompletionUI	CTCQuestCompletionUI.h	240	45	OK	0 retail files
+CTCShotDefinitionProjectile	CTCShotDefinitionProjectile.h	168	2	OK	1 retail files
+CTCSpotLight	CTCSpotLight.h	44	6	OK	2 retail files
+CTCStockItem	CTCStockItem.h	28	5	OK	1 retail files
+CTCTargeted	CTCTargeted.h	24	6	OK	2 retail files
+CTCTargetingPlayer	CTCTargetingPlayer.h	256	23	OK	1 retail files
+CTCTavernGame	CTCTavernGame.h	264	44	OK	0 retail files
+CTCTrapBase	CTCTrapBase.h	108	10	OK	1 retail files
+CTCTurncoat	CTCTurncoat.h	80	12	OK	1 retail files
+CTCTurncoatSpell	CTCTurncoatSpell.h	156	18	OK	1 retail files
+CTCVillage	CTCVillage.h	372	55	OK	1 retail files
+CTCVolumeContainmentTrackerDef	CTCVolumeContainmentTrackerDef.h	48	4	OK	0 retail files
+CTCWeapon	CTCWeapon.h	40	7	OK	1 retail files
+CTCWife	CTCWife.h	244	47	OK	1 retail files
+CTCWillLightning	_quarantine/CTCWillLightning.h	240	38	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CTable	CTable.h	420	3	OK	0 retail files
+CTargetingDef	_quarantine/CTargetingDef.h	148	27	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CTattooDef	CTattooDef.h	96	15	OK	0 retail files
+CTavernDef	CTavernDef.h	44	1	OK	2 retail files
+CTavernGameCardBaseDef	CTavernGameCardBaseDef.h	140	18	OK	0 retail files
+CTavernGameCoinBaseDef	CTavernGameCoinBaseDef.h	68	7	OK	0 retail files
+CTavernGameCoinGolfDef	CTavernGameCoinGolfDef.h	92	13	OK	0 retail files
+CTavernGameDef	_quarantine/CTavernGameDef.h	424	93	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CTavernGameShoveHaPennyDef	_quarantine/CTavernGameShoveHaPennyDef.h	520	21	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CTavernGameSpotTheAdditionDef	_quarantine/CTavernGameSpotTheAdditionDef.h	152	22	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CTavernTableDef	CTavernTableDef.h	39	2	OK	1 retail files
+CTeleporterDef	_quarantine/CTeleporterDef.h	52	3	QUARANTINED	2 conflict(s) in 1 file(s) vs 0 agreeing
+CTestPos	CTestPos.h	36	7	OK	1 retail files
+CText	CText.h	444	9	OK	1 retail files
+CTexture	CTexture.h	8	3	OK	3 retail files
+CTextureManager	CTextureManager.h	1556	7	OK	1 retail files
+CTextureReplacementDef	_quarantine/CTextureReplacementDef.h	56	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CThing	_quarantine/CThing.h	168	24	QUARANTINED	3 conflict(s) in 3 file(s) vs 2 agreeing
+CThingAICreature	CThingAICreature.h	528	21	OK	1 retail files
+CThingBaseDef	_quarantine/CThingBaseDef.h	116	15	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CThingBuildingDef	_quarantine/CThingBuildingDef.h	168	10	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CThingCreatureBase	CThingCreatureBase.h	392	27	OK	5 retail files
+CThingCreatureDef	_quarantine/CThingCreatureDef.h	340	49	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CThingDrainLifeShotDef	CThingDrainLifeShotDef.h	60	5	OK	0 retail files
+CThingGameObject	CThingGameObject.h	232	3	OK	2 retail files
+CThingGroupDef	_quarantine/CThingGroupDef.h	62	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CThingHolySiteDef	_quarantine/CThingHolySiteDef.h	132	2	QUARANTINED	3 conflict(s) in 2 file(s) vs 0 agreeing
+CThingMapManager	CThingMapManager.h	68	6	OK	0 retail files
+CThingMarkerDef	_quarantine/CThingMarkerDef.h	140	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CThingMultiArrowShotDef	CThingMultiArrowShotDef.h	84	11	OK	1 retail files
+CThingNoiseDef	_quarantine/CThingNoiseDef.h	168	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CThingObjectDef	_quarantine/CThingObjectDef.h	160	8	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CThingPhysical	CThingPhysical.h	216	10	OK	1 retail files
+CThingPhysicalSwitchDef	_quarantine/CThingPhysicalSwitchDef.h	152	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CThingSearchTools	CThingSearchTools.h	28	4	OK	1 retail files
+CThingShotDef	_quarantine/CThingShotDef.h	176	34	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CThingSwitchDef	_quarantine/CThingSwitchDef.h	120	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CThingVillageDef	_quarantine/CThingVillageDef.h	132	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CThreadedFile		0	0	HAND_OWNED	
+CThunderBattleDef	_quarantine/CThunderBattleDef.h	80	5	QUARANTINED	2 conflict(s) in 2 file(s) vs 0 agreeing
+CTimeAppearanceFadeDef	CTimeAppearanceFadeDef.h	56	4	OK	1 retail files
+CTrapDef	_quarantine/CTrapDef.h	104	13	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CTrollBattleDef	_quarantine/CTrollBattleDef.h	100	9	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CTrophyDef	CTrophyDef.h	100	16	OK	0 retail files
+CTurncoatDef	_quarantine/CTurncoatDef.h	88	10	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CUserProfileManager		0	0	HAND_OWNED	
+CVectorMap		0	0	NO_DONOR	
+CVertexBufferWin32	CVertexBufferWin32.h	52	0	OK	0 retail files
+CVertexShader	CVertexShader.h	8	1	OK	1 retail files
+CVertexShaderConstantLayout	CVertexShaderConstantLayout.h	336	25	OK	0 retail files
+CVideoSys	CVideoSys.h	148	20	OK	1 retail files
+CVillageDef	_quarantine/CVillageDef.h	300	43	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CVillageMemberDef	CVillageMemberDef.h	38	1	OK	2 retail files
+CVillagePeopleDef	_quarantine/CVillagePeopleDef.h	204	36	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CVillageTaskCarryCrate	CVillageTaskCarryCrate.h	32	4	OK	1 retail files
+CVillageTaskHorn	CVillageTaskHorn.h	24	2	OK	3 retail files
+CVillageTaskPatrol	CVillageTaskPatrol.h	28	3	OK	4 retail files
+CVillageTaskPickCrops	CVillageTaskPickCrops.h	24	2	OK	3 retail files
+CVillageTaskSecuritySweep	CVillageTaskSecuritySweep.h	52	6	OK	3 retail files
+CVillageTaskTorch	CVillageTaskTorch.h	24	2	OK	3 retail files
+CVillagerInteractionsDef	_quarantine/CVillagerInteractionsDef.h	76	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
+CVirtualKeyboard	CVirtualKeyboard.h	16	5	OK	0 retail files
+CWADBank	CWADBank.h	472	0	OK	0 retail files
+CWADBankStateBlock	CWADBankStateBlock.h	8	1	OK	0 retail files
+CWADFile	CWADFile.h	16	3	OK	5 retail files
+CWallMountEffectsDef	_quarantine/CWallMountEffectsDef.h	52	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CWaspQueenBattleDef	_quarantine/CWaspQueenBattleDef.h	68	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CWaterPatchMesh	CWaterPatchMesh.h	32	6	OK	0 retail files
+CWeaponDef	_quarantine/CWeaponDef.h	244	33	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CWhisperBattleDef	_quarantine/CWhisperBattleDef.h	72	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 2 agreeing
+CWideString		0	0	HAND_OWNED	
+CWifeDef	_quarantine/CWifeDef.h	44	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CWillResponseDef	CWillResponseDef.h	45	8	OK	0 retail files
+CWomanToAttract	_quarantine/CWomanToAttract.h	52	6	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CWorld	CWorld.h	440	94	OK	10 retail files
+CWorldMap	CWorldMap.h	252	28	OK	12 retail files; suspect=CWorldMap_GetDimensions_0051cde0.cpp
+CXMVPlayer		0	0	HAND_OWNED	
+EULA		0	0	NO_DONOR	
+LHHttp2	LHHttp2.h	4356	27	OK	1 retail files
+LHHttpHeaderStatus	LHHttpHeaderStatus.h	140	7	OK	1 retail files
+NBankFileManager		0	0	NO_DONOR	
+NGameText::CDataBank		0	0	NO_DONOR	
+NInventory::CTCInventoryBase		0	0	NO_DONOR	
+NResourceDirectoryNames		0	0	NO_DONOR	
+NUISystem::CIME		0	0	NO_DONOR	
+NUISystem::CKeyRedefiner		0	0	NO_DONOR	
+Render2DDrawList		0	0	NO_DONOR	
+std::deque		0	0	NO_DONOR	
+std::list		0	0	NO_DONOR	

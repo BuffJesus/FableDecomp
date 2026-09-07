@@ -1,0 +1,566 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 10,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetCreatureGeneratorsEnabled",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 12
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 13
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 14
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 15
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 17
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 28,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 13
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 14
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 15
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 17
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 18
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 19
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateInt",
+          "line": 21
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferInt",
+          "line": 22
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 52,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "FinalizeEntityBindings",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "IsRegionLoaded",
+          "line": 14
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 15
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 18
+        },
+        {
+          "receiver": "Quest",
+          "name": "CreateThread",
+          "line": 21
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 24
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 25
+        },
+        {
+          "receiver": "Quest",
+          "name": "ActivateQuest",
+          "line": 26
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 27
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 31
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 32
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 35
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateInt",
+          "line": 37
+        },
+        {
+          "receiver": "Quest",
+          "name": "RemoveQuestInfoElement",
+          "line": 39
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 40
+        },
+        {
+          "receiver": "Quest",
+          "name": "DisplayQuestInfo",
+          "line": 42
+        },
+        {
+          "receiver": "Quest",
+          "name": "MsgOnRegionLoaded",
+          "line": 45
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 46
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 49
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetCreatureGeneratorsEnabled",
+          "line": 52
+        },
+        {
+          "receiver": "Quest",
+          "name": "DeactivateQuestLater",
+          "line": 55
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 56
+        },
+        {
+          "receiver": "Quest",
+          "name": "DeactivateQuestLater",
+          "line": 58
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 61
+        }
+      ]
+    },
+    {
+      "name": "WatchForRegionExit",
+      "parameters": [
+        "quest"
+      ],
+      "line": 114,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCreatureGeneratorsEnabled",
+          "line": 14
+        }
+      ]
+    },
+    {
+      "name": "WatchForRockTrollHit",
+      "parameters": [
+        "quest"
+      ],
+      "line": 129,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestInfoBarHealth",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "DisplayQuestInfo",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "name": "WatchForRockTrollKilled",
+      "parameters": [
+        "quest"
+      ],
+      "line": 161,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveQuestInfoElement",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "DisplayQuestInfo",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 31
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "Activated",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "AddedItemsToRockTroll",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "MissionOver",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "MissionSucceeded",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "PlayedExhumeCutScene",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "RockTrollHealthBarID",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "RockTrollTriggered",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "RTFE_Sparrow",
+      "script": "RockTrollFirstEncounter/Entities/RTFE_Sparrow",
+      "line": 57
+    },
+    {
+      "name": "RTFE_RockTroll",
+      "script": "RockTrollFirstEncounter/Entities/RTFE_RockTroll",
+      "line": 58
+    },
+    {
+      "name": "M_RTFERockTrollTrigger",
+      "script": "RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger",
+      "line": 59
+    }
+  ],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

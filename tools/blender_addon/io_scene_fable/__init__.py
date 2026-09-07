@@ -12,7 +12,7 @@ Imports what the FableTLC reverse-engineering project can decode TODAY from a
   * Submesh / LOD / bounds tree as an Empty hierarchy so the model's
     organization is visible before geometry exists.                    [WORKING]
   * Geometry (verts/faces/UVs) -- STUBBED. `fable_core.decode_geometry()` is a
-    hook that returns None until docs/BIG_MESH_GEOMETRY.md lands; the mesh-build
+    hook that returns None until docs/formats/BIG_MESH_GEOMETRY.md lands; the mesh-build
     call site is already wired so only that hook body needs filling later.[STUB]
 
 All parse/convert logic lives in the bpy-FREE `fable_core` module (unit-tested

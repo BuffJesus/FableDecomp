@@ -124,7 +124,7 @@ def main():
         g = fc.decode_geometry(buf, model.lods[0].submeshes[0], model.lods[0].offset)
         assert g is None, "decode_geometry should be a STUB returning None today"
         print("\ngeometry stub: decode_geometry() -> None (as expected, pending "
-              "docs/BIG_MESH_GEOMETRY.md)")
+              "docs/formats/BIG_MESH_GEOMETRY.md)")
 
     # --- visual evidence: save the decoded texture to scratchpad as PNG ---
     try:

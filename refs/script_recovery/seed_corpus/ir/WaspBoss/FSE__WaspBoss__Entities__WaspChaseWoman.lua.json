@@ -1,0 +1,279 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 1,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsScared",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 5,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 8
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 15
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 32
+        },
+        {
+          "receiver": "me",
+          "name": "FollowPreCalculatedRoute",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 36
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 39
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 40
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 45
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 46
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 49
+        },
+        {
+          "receiver": "me",
+          "name": "ClearCommands",
+          "line": 57
+        },
+        {
+          "receiver": "me",
+          "name": "FollowPreCalculatedRoute",
+          "line": 59
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 65
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsScared",
+          "line": 66
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 67
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 69
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 70
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 73
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 75
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroMorality",
+          "line": 76
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 77
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 80
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 82
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 83
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 84
+        },
+        {
+          "receiver": "me",
+          "name": "MoveToThing",
+          "line": 85
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 87
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 88
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 94
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeOutAndKillEntity",
+          "line": 95
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 96
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "QueenHornetAttacks",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SavedVillagerCount",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "StartChase",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_072_WASP_CHASE_FEMALE_ON_SAVED_10"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

@@ -168,7 +168,7 @@ def main():
         print("  resource FORMAT/CLASS (e.g. all 465 shaders.big entries share one CRC;")
         print("  frontend has 3 distinct CRCs for 394 entries; 0x4e1ace9f recurs in BOTH")
         print("  frontend and textures). It is a per-format/class schema fingerprint, NOT a")
-        print("  per-payload hash. See docs/BIG_ROUNDTRIP.md 'CRC formula — refuted'.")
+        print("  per-payload hash. See docs/formats/BIG_ROUNDTRIP.md 'CRC formula — refuted'.")
 
     return winners, all_samples
 

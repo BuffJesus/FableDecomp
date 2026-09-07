@@ -1,6 +1,6 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct Inner { void Apply(int one, int count, int arg2); };
-struct CMid { char pad[0x18]; Inner* p18; };
-struct CGameScriptInterface { void* vt; CMid* mid; };
+struct CWorld { char pad[0x18]; Inner* p18; };
 
 struct ThemeObj;
 extern ThemeObj* __stdcall GetTheme(int channel);
@@ -12,6 +12,6 @@ void __fastcall CGameScriptInterface_SetEnvironmentThemeWeightAllChannels(
     ThemeObj* t = GetTheme(channel);
     int n = ThemeCount(t);
     if (n > 0) {
-        self->mid->p18->Apply(1, n, arg2);
+        self->World->p18->Apply(1, n, arg2);
     }
 }

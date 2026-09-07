@@ -1,0 +1,162 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/WaspBoss/Entities/FleeingWoman.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 2,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 7,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 6
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 15
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 34
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 39
+        },
+        {
+          "receiver": "me",
+          "name": "MoveToPosition",
+          "line": 40
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 42
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 50
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 51
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 56
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeOutAndKillEntity",
+          "line": 57
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 58
+        }
+      ]
+    }
+  ],
+  "state": [],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_072_WOMAN_FLEES_10"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

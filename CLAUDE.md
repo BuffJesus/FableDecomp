@@ -1,195 +1,54 @@
-# FableTLC — AI agent guide
+# FableTLC / FableDecomp — AI agent guide
 
-Reverse-engineering project on the **native PC** `Fable.exe` (Fable: The Lost Chapters, Steam).
-Read `docs/journal/2026-09/PLAN_pre-roadmap.md` first, then `docs/journal/HANDOFF_ARCHIVE.md` for where things stand.
+Reverse-engineering + byte-exact reconstruction of the **native PC** `Fable.exe`
+(Fable: The Lost Chapters, Steam, VC7.1). Public repo: `BuffJesus/FableDecomp` (this tree, `main`).
+
+**Start here, in this order:** `docs/HANDOFF.md` (one page: state + resume commands) →
+`docs/ROADMAP.md` (the only task list) → `docs/ARCHITECTURE.md` → `docs/BUILDING.md` →
+`CONTRIBUTING.md`. Everything else is indexed in `docs/INDEX.md`. Solved problems go in
+`docs/pipeline/GOTCHAS.md` (one line each), not here.
 
 ## The one thing to get right
-**TLC is native x86-32 Windows — NOT an Xbox port.** There is no recompilation, no XEX, no decrypt,
-no packer. Do **not** copy the Fable2RE recomp workflow (ReXGlue / codegen / dangling-goto fixers /
-guest↔host membase math). This is Ghidra static analysis + ordinary native (x32dbg/WinDbg) debugging
-of a clean PE32 at ImageBase `0x400000`.
+**TLC is native x86-32 Windows — NOT an Xbox port.** No recompilation, no XEX, no decrypt, no packer.
+Do **not** copy the Fable2RE recomp workflow (ReXGlue / codegen / guest↔host membase math). This is
+Ghidra static analysis + ordinary native debugging of a clean PE32 at ImageBase `0x400000`, and
+reconstruction that must compile under VC7.1 to the retail bytes.
 
 ## Biggest assets (use them, don't re-derive)
-- **FSE manifest** `refs/fse_api_manifest.json` — 933 reversed API functions. Run
-  `python tools/fse_import/fse_manifest_to_ghidra.py` → `fse_api.h` (parse into Ghidra) +
-  `fse_api_index.md` (RE roadmap).
-- **FSE source (local):** `D:\Code\FQT\SourceFilesToReference\FSE\FableScriptExtender-master\`
-  — hook `0xCDB355`, `g_fableBase`-relative engine pointers = call targets to pin in Ghidra.
-- **Community formats:** fabletlcmod.com wiki (byte layouts) — complements Ghidra's parsers.
-- **Fable2RE** (`D:\Documents\Fable2RE`) — tooling + methodology + sibling-engine priors.
+- **PDB-derived types:** `ghidra_out/struct_layouts_egor.tsv` / `fable_types.h` (3,807 classes, real
+  member names, from `debug_build/Ego_r.pdb`; FableWin.pdb + Ego_d.pdb also on disk, never committed).
+  Compilable per-class headers: `rebuild/include/engine/<Class>.h` via
+  `tools/decomp_pipeline/gen_class_headers.py`; retype landed code with `retype_landed.py`.
+- **FSE manifest** `refs/fse_api_manifest.json` (933 reversed API functions) and FSE source at
+  `D:\Code\FQT\SourceFilesToReference\FSE\FableScriptExtender-master\` (hook `0xCDB355`).
+- **Aeon's Lua ports** (`work/aeon_lua_ports/`, 20 packages incl. LUAGameflow) — ground-truth oracle
+  for retail quest scripts; audit in `docs/scripts/AEON_LUA_PORTS.md`.
+- **EgoCore** (`C:\Users\Cornelio\Documents\EgoCoreInspect\EgoCore-master`) — whole-format answer key
+  for defs/meshes/anim/lipsync; check it BEFORE byte-RE.
+- **Sibling repos:** FableForge `D:\Code\FableForge` (modding toolchain, the build target),
+  ForgeFSE-retail-shadow `D:\Code\ForgeFSE-retail-shadow` (canonical FSE fork), Fable2RE
+  `D:\Documents\Fable2RE` (methodology). Modding docs live there (`docs/modding/README.md`).
 
-## Working rules (from Fable2RE + UE6Verse CLAUDE.md)
-- **Evidence, not assumption** — cross-check every claim against ≥2 sources (FSE manifest, wiki,
-  live x32dbg/FSE-Lua probe, Fable2 findings). Verify before asserting.
-- **Reproducible DB** — record names as `ghidra_out/labels_*.tsv`, apply with `LabelApply.java`;
-  git-track the TSV, not the `.rep`.
-- **Loop prevention** — never repeat a failing call >2× with same args; after 2 failed attempts,
-  stop and document the gap in `docs/journal/FINDINGS_LOG.md`.
-- **Document as you go** — `FINDINGS.md` (cited technical truth), `SYSTEMS_ANALYSIS.md` (per-subsystem
-  map + moddability verdict), `PROGRESS.md`, `HANDOFF.md` (resume point).
-- **Living gotchas** — when you solve a real problem, append a one-liner here.
-- Ghidra `X86FunctionPurgeAnalyzer` on huge binaries (165k fns) goes log-silent for hours in a
-  quadratic progress-reporting loop — it's working, not hung; verify with jstack + CPU sampling,
-  never kill (headless saves only after analysis completes).
-- PDB names can contain whitespace ("dynamic initializer for 'x'") which Ghidra symbols reject —
-  `ApplyNames.java` sanitizes `\s+`→`_` before `setName`.
+## Working rules
+- **Evidence, not assumption** — cross-check every claim against ≥2 sources; verify before asserting.
+- **Byte purity** — coverage is compiler-emitted C++ that byte-matches retail. `__asm` / `naked` /
+  `_emit` is grade `asm_bake`: an oracle, never reconstruction. `verify_and_land.py` rejects it.
+- **Shared headers** — model `this` with `#include "engine/<Class>.h"`, never a local
+  `struct T { char pad[0x1a8]; ... }` when a header exists (the verifier warns; strict mode rejects).
+- **Trust the manifest carefully** — module labels are propagated across byte-identical bodies;
+  use `label_trust.py` before attributing a function to a class.
+- **Reproducible DB** — names as `ghidra_out/labels_*.tsv`, applied with `LabelApply.java`.
+- **Loop prevention** — never repeat a failing call >2× with the same args; after 2 failures stop and
+  record the gap in `docs/journal/FINDINGS_LOG.md`.
+- **Document as you go** — session notes in `docs/journal/YYYY-MM/`, status changes in
+  `docs/ROADMAP.md`, resume point in `docs/HANDOFF.md` (keep it one page), gotchas in
+  `docs/pipeline/GOTCHAS.md`. Never hand-edit coverage numbers; run `tools/write_decomp_dashboard.py`
+  then `tools/update_readme_progress.py`.
+- **Git hygiene** — `main` is what the public sees. Commit subjects `land:|docs:|tools:|fix:|hygiene:`
+  with a human sentence. Never commit retail bytes, root scratch, or `work/`. A file named `CON` at the
+  root hangs git on Windows.
 
-- Preserve MSVC decorated names on the first PDB/BSim `setName` attempt so `DemangleAll.java` still
-  works; only fall back to `SymbolUtilities.replaceInvalidChars(...)` after Ghidra rejects a name.
-- WinLibs mingw64 g++ builds can die at startup with 0xC0000139 (entrypoint not found) from runtime
-  DLL mismatches on PATH - link `-static -static-libgcc -static-libstdc++` (done in FableForge).
-- **★ Active build target since 2026-07-18: FableForge (`D:\Code\FableForge`)** - the C++ rewrite of
-  the modding toolchain consuming this project's RE outputs. FQT is a donor, not the target.
-- RTTI vtable-slot ports beat low-confidence BSim guesses when slot counts align; preserve the
-  compare TSV, then use `LabelApplyForce.java` and demangle.
-- `analyzeHeadless.bat` script args: cmd.exe splits on `=`, so `name=0xaddr` arrives as TWO args —
-  pass alternating `name addr` pairs instead (bit DumpVerbSlices.java mid-run; had to kill+rerun).
-- Current FableForge commit: `17b7b8e` (`M2: add STB static-map reader`). Implemented WAD/TNG/WLD/
-  LEV/STB/catalog + `forge validate`; retail install validates CLEAN.
-- Chest facts: `CChestDef::Transfer` is retail `0x004DE204`. Key requirement IS in `CChestDef`:
-  `OpenerObject` at `+0x34`, `OpenersRequired` at `+0x38`. Rewards are elsewhere:
-  `CContainerRewardHeroDef::ObjectFamilies` at `+0x28`, expanded by
-  `CTCContainerRewardHero::GetRewardItems`.
-- Ghidra DB after RTTI force pass: 49,082 functions, 40,187 named, 8,895 default-named. Bulk RTTI
-  port source is `ghidra_out/labels_rtti_port.tsv`; conflict audit is
-  `ghidra_out/rtti_port_compare.tsv`.
-- Quest logic is compiled C++ (161-entry name→allocator table @ 0x00CD52D0, no quest VM) — see
-  docs/engine/QUEST_VM_RE.md. Trust FSE ASLR addresses over BSim names when they clash (0x00CB8110 is
-  the CScriptBase ctor, not "CHeroMorphDef"; 0x00CBFAB8 is SetScriptActiveStatus).
-- 3DAF anim payload = `u32 decompSize` + ONE raw LZO1X stream (no `[u16 clen]` frames — that's
-  the texture/mesh framing); decompressed chunks are plain `[fourcc][u32 size]`, one XSEQ per
-  bone track. EgoCore (`C:\Users\Cornelio\Documents\EgoCoreInspect\EgoCore-master`) is the whole-format
-  answer key (defs/crc0, meshes, anim, lipsync, banks) — went STABLE 31.7.26; check it BEFORE byte-RE.
-  See `docs/formats/BIG_ANIM_FORMAT.md` §9, `docs/engine/DEMON_DOOR_FACE.md`, and `docs/journal/2026-07/EGOCORE_ASSESSMENT_20260731.md`
-  (full cross-ref: confirms crc0/3DAF/skinning, unblocks Mario-rig via `GltfAnimImporter`, adds
-  `SpeechAnalyzer` WAV→lipsync; DO NOT copy EgoCore's `CDefStringTable::GetCRC` (std-CRC+tolower, wrong)
-  or its `classIndex=0` — trust our byte-proven crc0 + dense index; filed EgoCore issue #4).
-- Texture payloads: only MIP 0 is chunked-LZO; mips 1..n-1 are stored RAW. Info+24 (MipSize0) =
-  on-disk mip-0 region size, 0 = all-raw payload (loader-accepted). DXT3 Info tail is `02 08`,
-  not `03 04`. Writer: `tools/texture_build.py`; recipe: `docs/formats/TEXTURE_WRITER.md`.
-- Compiled-mesh Info `LODSizes[]` are LOD byte SIZES; every retail 1-LOD type-1 entry appends an
-  UNCOUNTED "ghost LOD" (empty mesh block) after LOD0, and material lists end with a
-  `DegenerateTriangles` sentinel (STATIC meshes only — retail skinned meshes carry none).
-  New-mesh composer: `mesh_rw.compose_mesh` + `big_write.rebuild(adds=)`; SKINNED type-5
-  via `skeleton=mesh_rw.clone_skeleton(donor)` (bone blocks cloned raw; weight bytes sum
-  exactly 255 retail-wide, max 3 influences); recipe: `docs/formats/MESH_COMPOSE.md`.
-  (EgoCore 2026-07-31: ghost LOD actually applies to types 1/2/4/5 — we retail-verified 1/5, 2/4
-  to-verify; mesh types = 1 static / 2 instanced (stride-36) / 3 physics-BBM-via-PhysicsIndex /
-  4 particle / 5 skinned. See `docs/formats/MESH_COMPOSE.md` EgoCore section.)
-
-- Fable name hash = **crc0** = reflected CRC-32 poly 0xEDB88320, **seed 0, NO final inversion**
-  (`CCharString::ComputeCRC32` 0x00404310) — keys names.bin CRCs, game.bin field tags, and the
-  `map<unsigned_long,CDefClassInfo>` def registry (13593/13593 retail names verified). NOT
-  `0xFFFFFFFF-crc32`, NOT zlib crc32. A game.bin def APPEND is engine-resolvable only if (1) the new
-  names.bin CRC is crc0 (forge `bin.cpp` fixed) AND (2) the cloned payload's self global-entry-index
-  back-refs are retargeted to the new landing index (component sub-defs are SHARED, leave them). Counts
-  were never the bug. In-place `setEntryData` field edits sidestep both. See docs/formats/DEF_LOAD_CONTRACT.md.
-- Save edits: any SAVED_ENTITIES cell edit must patch the 36-byte cell descriptor
-  (recLen=29+clen / clen / ulen) AND sectionLen AND chunk1_ulen, then re-sign — patching only
-  the section length mis-frames the engine's record walk. Use tools/save_edit.py
-  (report/set-gold/set-stat/set-qty/add-item); grammar in SAVE_ENTITY_GRAPH.md §9.5.
-
-- Dialogue join: text.big SpeechBank names only the bank; the clip index <N> is in
-  data\Defs\<bank>snds.bin = sorted {crc0("SND_"+entryName), soundID} pairs; soundID ==
-  .lut clip Index == dialogue.big LIPSYNC id. Pipeline: tools/dialogue_pipeline.py,
-  docs/formats/DIALOGUE_PIPELINE.md. .lut MaxEntries < retail Count => not a count cap.
-
-- New-map registration REQUIRES a FinalAlbion_RT.stb common-header chunk: OpenRetailStaticMap
-  (0xB41E50) does an UNCHECKED map<name,offset> lookup per registered map -> garbage seek ->
-  CTD 0xA2428A on miss. Writer + chunk layout: work/newlevel_experiment/
-  assemble_forgetest_stage2.py; post-mortem NEW_LEVEL_ASSEMBLY.md par.9. WER Application-log
-  fault offsets are the fastest crash triage (offset+0x400000 = Ghidra VA).
-- WLD/BWD authoring is now in FableForge (no more manual tools/wld_bwd.py): `forge wld compile`
-  (byte-exact text→BWD), `forge world add-level` / `install-level` (atomic full package) /
-  `attach-map` (region membership), `forge stb settex` (retexture); `forge validate` cross-checks
-  BWD↔WLD↔STB bounds+counts. Docs: D:\Code\FableForge\docs\{BWD_INTEGRATION,TERRAIN_TEXTURE_PAINT_PLAN}.md.
-- ForgeTest region-142 teleport: NOT a 141-region cap (runtime region_vector_size=142; stock=141reg/398map).
-  Resolution is fixed by attaching slot 399 to an in-range (≤141) region (`forge world attach-map`).
-  The remaining blocker is a CRASH at `0x7dd1d3` = CEngineLandscapeMap::OpenStaticMap @0x00BDD0E0:
-  `rep stosd` zero-filling `malloc(field_04)` with NO null check (field_04=landscape header alloc size,
-  this+0x28) → garbage field_04 → NULL malloc → AV. NOT textures (LoadForeground @0xbfe050 bounds-checks
-  gracefully). Debugger BP 0xBDD1B2 reads field_04 to settle chunk-defect vs stream-misposition.
-- Custom terrain textures: foreground triple values are GBANK_MAIN_PC entry IDs in data/graphics/pc/
-  textures.big (156 UNASSIGNED_* 512² slots to repurpose; NOT inline). Pipeline = `texture_build.py
-  replace <big> <out> <UNASSIGNED_slot> <png>` + `forge stb settex <chunk> <out> --map old:slotId`.
-  User texture library: C:\Users\Cornelio\Documents\FableStaging\AIUpscale\.
-- Adding a D3D9 frontend texture (visual_boot_d3d9.cpp) requires registering it in BOTH the
-  `FableInitialiseVisualD3D9` upload chain AND the `VisualRender2DAdapter`
-  `RENDER2D_ADAPTER_ATTACH_TEXTURE` pointer->selectedTexture chain (~L1024-1101). Miss the attach
-  chain and the texture uploads/validates/selects fine but its quads bind nothing and draw FLAT
-  WHITE. Pinned the About-screen SPOOKY bg bug this way (2026-07-30); new frontend resource ids need
-  a free slot (101-120 were taken; 116-119 are WAVE, so About=120, spooky=121/122).
-- Decomp authoring lane (`verify_and_land.py`): it runs `html.unescape()` on `test_cpp` before
-  compiling, so any `&<word>;` adjacency (e.g. `&marker;`) expands to a Unicode glyph -> VC7.1
-  C3209 "Unicode identifiers not supported". Author tests without `&name;` sequences (rename the
-  var, or take the address into a `void* p = &var;` first). Same file rewrites `__thiscall`->
-  `__fastcall` and strips `static_assert`; never write the literal `__thiscall` keyword (VC7.1
-  rejects it, C4234) — model this-in-ecx methods as real members or free `__fastcall(self,...)`.
-- Workflow `args` arrive in the script as a JSON **string**, not a parsed value — guard with
-  `const items = typeof args === 'string' ? JSON.parse(args) : args` before `.map`/`.length`.
-- `verify_and_land.py` CANNOT auto-verify functions with an EMBEDDED JUMP TABLE (switch >~4 dense
-  cases → `jmp [eax*4+table]` with the table inline in .text). Two failure modes in `obj_text`:
-  (1) objdump `-d` splits the body at every internal `$Lxxx` local label, so the leaf-named block is
-  just the pre-`jmp` head → reports `DIFFER(37v120)`; (2) the relocated table dwords are all-zero in
-  the fresh .obj so objdump elides them as `...`, dropping 4·N bytes. Verify these by RAW COFF
-  extraction (read .text section bytes start→next-non-`$`-symbol, mask reloc slots) + behavior test,
-  NOT the harness. Proven: `CKeyRedefiner::GetSubTypeForAction` 0x557CA0 (RELOCATION_MATCH 120/120,
-  source in docs/engine/REDEFINE_INPUT_SYSTEM.md) + `AreAllowedToCoexist` 0x5578A0 (147/147). USE
-  `tools/decomp_pipeline/verify_land_jumptable.py <land.json> <oracle.tsv> [--land]` — same interface
-  as verify_and_land, imports it and swaps ONLY obj_text for the raw-COFF extractor (shared harness
-  untouched, so a background crawl keeps using verify_and_land concurrently).
-- Manifest boundary OVER-CAPTURE: a function's oracle span is [addr, next_manifest_addr); when the
-  real next fn ISN'T in the manifest the span swallows inter-fn `0xCC` int3 padding + the next fn's
-  head, so the row is longer than the real body (e.g. 00a14e20 Clear = real 8B vs captured 19B) and
-  never reaches parity. The harness's trailing-CC strip misses INTERIOR padding. Auto-fix with
-  `tools/decomp_pipeline/trim_overcapture.py 0x<addr> ...` (prints trimmed len+bytes) or
-  `--oracle <tsv>` (rewrites over-captured rows in place); it cuts at the first standalone int3 that
-  follows a terminator (ret/tail-jmp), leaving clean rows untouched. Then author the single fn.
-  TAIL-CALL CAVEAT authoring recovered forwarders: a VALUE-returning member forwarder
-  (`return this->f4->M(this->f8);`) or cdecl-cleanup forwarder (`helper(a,b,-1);` w/ `add esp,N`)
-  keeps retail's `call;ret` and recovers byte-exact; a VOID member forwarder (`sub->M(x);` as the whole
-  body) gets tail-call-optimized to `jmp` by VC7.1 while retail kept `push;call;ret` — DIFFER(NvN)
-  same-length, not recoverable. Backlog of the 84 deferred over-captures (by shape) is
-  rebuild/backlog/overcapture-recovery-worklist.tsv; ~11 recovered so far this pass.
-- Frontend visual QA can be DRIVEN headlessly: build via `rebuild/build_bootstrap.ps1
-  -RetailFrontendBank <frontend.big>`, launch FableTLC-Reconstruction-VisualCheckpoint.exe (client
-  1280x720, asset-free, loads data/frontend/*.bmp), then synth-click with SetForegroundWindow+
-  SetCursorPos+mouse_event and screenshot with Graphics.CopyFromScreen (crop+3x NearestNeighbor to
-  inspect glyphs). `$PID` is read-only in PS — use another var. Full recipe + menu map + current
-  fixed/open state in docs/pipeline/VISUAL_PARITY_STATUS.md.
-- OPEN visual bug: the profile-name font (`AppendProfileNameText`, ENG_ARIAL save rows/profile names/
-  File Information) renders DOUBLED/ghosted vs retail's smooth AA. NOT a double-draw (one quad/glyph)
-  and NOT fixed by fixed-function SetSamplerState LINEAR (no effect). Leading theory: the frontend
-  samples the atlas via a PIXEL SHADER (window title `...PixelShader...`), so API sampler state is
-  bypassed — investigate the Render2D PS sampler + ENG_ARIAL atlas cell packing (half-texel inset).
-  The detail-title font IS clean (LINEAR after BeginScene, commit 352a684). See VISUAL_PARITY_STATUS.md.
-
-## Toolchain (see docs/BUILDING.md for commands)
-- Mario rig gotcha (2026-07-22): `work/mario_hero/stage_bindaxis4` is format-valid and looks
-  better, but its live gameplay test still stretches every disconnected SM64 body segment apart.
-  Mario is smaller/differently proportioned than the hero; hero-sized parent-relative animation
-  translations pull the pieces out to hero joint positions. Textures are also still visibly wrong.
-  Do not iterate the same per-piece bind-axis placement or call the atlas fixed. Fable ANIM position
-  keys carry parent-relative bind translations, so mesh-only rest/inverse-bind edits are insufficient.
-  Resume from the timestamped Mario section at the end of `docs/journal/HANDOFF_ARCHIVE.md`; first test animation
-  translation retargeting or smooth/overlapping joint geometry on one walk clip.
-- Quest/terrain smoke gotcha (2026-07-22): Wasp Menace (`OBJECT_QUEST_CARD_WASP_MENACE`) rendered
-  correctly through ForgeFSE with 1337 gold, 500 renown, card art, and Guildmaster audio, so the base
-  quest API works when the card asset exists. Custom blank cards are a data/text/definition binding
-  problem. Do not activate a quest during ForgeTest terrain teleports; the engine raises the
-  quest-region abandon/reload modal and can block/confuse manual terrain validation. Evidence:
-  `work/runtime_smoke_quest_terrain_20260722/RESULTS.md`.
-- Wave3 decomp gotcha (2026-07-22): attached
-  `lift/reports/wave3/code/0x0089B330_global_IsHeroNaked_CGameScriptInterface_UBE_NXZ.cpp` names
-  `CGameScriptInterface::IsHeroNaked`, but review before promotion. Its current miss path can
-  dereference the vector-map end sentinel after `LowerBound`; verify the type-key `0x5E` interface
-  method before curating it.
-
-Ghidra **12.1** @ **`D:\Subuwu\tools\ghidra-public`** (verified path; not the stale `D:\ghidra_12.1.2_PUBLIC`)
-+ GhidraMCP (port 8089). **No XEXLoaderWV.**
-Era compiler = MSVC 2003 / VC7.1 (game ships `msvcr71.dll`) for Phase-4 oracle compiles.
-Ghidra scripts in `tools/ghidra_scripts/`; Lua tooling in `tools/lua_mod/`.
-
-## Payoff link
-A decompiled name/def-table export can auto-feed **FQT**'s hand-curated `GameData.cs`
-(`D:\Code\FQT\FQT\DOCS\GAME_DATA.md` says it has "no automated extraction pipeline yet").
+## Toolchain
+Ghidra **12.1** at `D:\Subuwu\tools\ghidra-public` + GhidraMCP (port 8089). Era compiler MSVC 2003 /
+VC7.1 at `D:\Tools\vc71` (QFE-4035 toolset at `D:\Tools\vc71-qfe4035` for ~11 objects). Ghidra scripts
+in `tools/ghidra_scripts/`; pipeline in `tools/decomp_pipeline/`; commands in `docs/BUILDING.md`.

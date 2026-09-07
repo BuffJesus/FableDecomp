@@ -1,0 +1,66 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/Fisherman/Entities/FishermanBulletinBoard.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 2,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "me",
+          "name": "SetReadableText",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 8
+        },
+        {
+          "receiver": "me",
+          "name": "SetReadableText",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 14
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "HeroHasSavedFishermanFromWasps",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_023_SIGN_COME_FISHING",
+      "TEXT_QST_023_SIGN_WASP_PLAGUE"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

@@ -4,21 +4,150 @@
   "summary": {
     "registeredQuestBindings": 908,
     "registeredEntityBindings": 92,
-    "requiredCalls": 111,
-    "callable": 111,
-    "missing": 0,
+    "requiredCalls": 221,
+    "callable": 209,
+    "missing": 12,
     "wrongScope": 0
   },
   "calls": [
     {
+      "scope": "Entity",
+      "name": "MsgIsHitBy",
+      "count": 6,
+      "consumers": [
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Entity",
+      "name": "MsgIsHitByAnySpecialAbilityFrom",
+      "count": 5,
+      "consumers": [
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Entity",
+      "name": "MsgIsHitBySpecialAbilityFrom",
+      "count": 5,
+      "consumers": [
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddLogbookTutorialEntry",
+      "count": 3,
+      "consumers": [
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetValidTextEntryNameWithAttitude",
+      "count": 3,
+      "consumers": [
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Quest",
+      "name": "ActivateMultipleQuestsWithoutLoadingResources",
+      "count": 2,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Quest",
+      "name": "ActivateQuestWithoutLoadingResources",
+      "count": 2,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Quest",
+      "name": "IsXbox",
+      "count": 2,
+      "consumers": [
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Entity",
+      "name": "GetCurrentStateGroupType",
+      "count": 1,
+      "consumers": [
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Entity",
+      "name": "MoveToPosition_NonBlocking",
+      "count": 1,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Quest",
+      "name": "PrepareQuestsWhenFinalQuestIsActivated",
+      "count": 1,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "missing"
+    },
+    {
+      "scope": "Quest",
+      "name": "PrepareQuestsWhenFinalQuestIsCompleted",
+      "count": 1,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "missing"
+    },
+    {
       "scope": "Quest",
       "name": "Log",
-      "count": 119,
+      "count": 522,
       "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
         "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
         "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
         "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Fisherman:FSE/Fisherman/Entities/FishermanBulletinBoard.lua",
+        "Fisherman:FSE/Fisherman/Entities/FishermanWasp.lua",
+        "Fisherman:FSE/Fisherman/Entities/M_FishermanWaspSpawn.lua",
+        "Fisherman:FSE/Fisherman/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
@@ -35,45 +164,64 @@
         "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
         "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
         "MeetSister:FSE/MeetSister/MeetSister.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_Sparrow.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
         "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua",
         "StatueMaster:FSE/StatueMaster/Entities/StatueMasterChest.lua",
         "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua",
-        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "SetStateBool",
-      "count": 42,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
-        "MazeResearch:FSE/MazeResearch/MazeResearch.lua"
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeartHolder.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/Entities/KrakenMinion.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/Entities/TheKraken.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/FleeingWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/GratefulVillagerSpawn.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/QueenHornet.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspAttacker.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaser.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
       "name": "NewScriptFrame",
-      "count": 41,
+      "count": 277,
       "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
         "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
         "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
         "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Fisherman:FSE/Fisherman/Entities/FishermanBulletinBoard.lua",
+        "Fisherman:FSE/Fisherman/Entities/FishermanWasp.lua",
+        "Fisherman:FSE/Fisherman/Entities/M_FishermanWaspSpawn.lua",
+        "Fisherman:FSE/Fisherman/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
@@ -87,17 +235,105 @@
         "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
         "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
         "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_Sparrow.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
         "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua",
-        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua"
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeartHolder.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/M_ActivateLighthouse.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/Entities/KrakenMinion.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/Entities/M_Experience.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/Entities/TheKraken.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/FleeingWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/GratefulVillagerSpawn.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/QueenHornet.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspAttacker.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaser.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetStateBool",
+      "count": 208,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Fisherman:FSE/Fisherman/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeartHolder.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
       "name": "GetStateBool",
-      "count": 35,
+      "count": 160,
       "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
         "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Fisherman:FSE/Fisherman/Entities/FishermanBulletinBoard.lua",
+        "Fisherman:FSE/Fisherman/Entities/M_FishermanWaspSpawn.lua",
+        "Fisherman:FSE/Fisherman/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
@@ -109,28 +345,42 @@
         "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
         "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
         "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
-        "MazeResearch:FSE/MazeResearch/MazeResearch.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "SetStateInt",
-      "count": 33,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua"
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_Sparrow.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeartHolder.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/GratefulVillagerSpawn.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
       "name": "GetThingWithScriptName",
-      "count": 32,
+      "count": 101,
       "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
         "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
@@ -144,19 +394,350 @@
         "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
         "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
         "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
         "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua",
         "StatueMaster:FSE/StatueMaster/Entities/StatueMasterChest.lua",
         "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua",
-        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/FleeingWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspAttacker.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaser.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetStateInt",
+      "count": 96,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Fisherman:FSE/Fisherman/Entities/FishermanWasp.lua",
+        "Fisherman:FSE/Fisherman/Fisherman.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/Entities/TheKraken.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "ReleaseControl",
+      "count": 95,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_Sparrow.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/Entities/KrakenMinion.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/FleeingWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/QueenHornet.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaser.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetStateInt",
+      "count": 76,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Fisherman:FSE/Fisherman/Entities/FishermanWasp.lua",
+        "Fisherman:FSE/Fisherman/Fisherman.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/Entities/TheKraken.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetHealth",
+      "count": 56,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/Entities/TheKraken.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/QueenHornet.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspAttacker.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaser.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetCategoryActivity",
+      "count": 51,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/GratefulVillagerSpawn.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddNewRumourToCategory",
+      "count": 50,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "PersistTransferBool",
+      "count": 49,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
+        "Fisherman:FSE/Fisherman/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "AcquireControl",
+      "count": 48,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_Sparrow.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/Entities/KrakenMinion.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/FleeingWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/QueenHornet.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaser.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddEntityBinding",
+      "count": 48,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Fisherman.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "MeetSister:FSE/MeetSister/MeetSister.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetHero",
+      "count": 48,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Fisherman:FSE/Fisherman/Entities/FishermanWasp.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/Entities/KrakenMinion.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/FleeingWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspAttacker.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetMasterGameState",
+      "count": 48,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "DeregisterTimer",
+      "count": 46,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
       "name": "GetActiveQuestName",
-      "count": 24,
+      "count": 46,
       "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
         "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Fisherman:FSE/Fisherman/Fisherman.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
@@ -171,82 +752,200 @@
         "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
         "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
         "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
-        "MeetSister:FSE/MeetSister/MeetSister.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Entity",
-      "name": "ReleaseControl",
-      "count": 24,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+        "MeetSister:FSE/MeetSister/MeetSister.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "GetStateInt",
-      "count": 21,
+      "name": "RemoveRumourCategory",
+      "count": 40,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetTimer",
+      "count": 40,
       "consumers": [
         "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
         "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua"
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "ActivateQuest",
+      "count": 38,
+      "consumers": [
+        "Fisherman:FSE/Fisherman/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "IsRegionLoaded",
+      "count": 38,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "RemoveThing",
+      "count": 34,
+      "consumers": [
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheMarker.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterChest.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "IsDistanceBetweenThingsUnder",
+      "count": 33,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/FleeingWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "DeactivateQuestLater",
+      "count": 32,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AutoSave",
+      "count": 31,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Entity",
-      "name": "AcquireControl",
-      "count": 16,
+      "name": "Speak",
+      "count": 30,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "DeregisterTimer",
-      "count": 15,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "AddEntityBinding",
-      "count": 14,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
-        "MeetSister:FSE/MeetSister/MeetSister.lua",
-        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
       "name": "SetQuestCardObjective",
-      "count": 13,
+      "count": 29,
       "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
         "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
@@ -255,50 +954,726 @@
         "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
         "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
         "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
-        "MeetSister:FSE/MeetSister/MeetSister.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Entity",
-      "name": "SpeakAndWait",
-      "count": 13,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+        "MeetSister:FSE/MeetSister/MeetSister.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "GetHero",
-      "count": 12,
+      "name": "AddLineToConversation",
+      "count": 28,
       "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
         "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/FleeingWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "MsgOnQuestCompleted",
+      "count": 28,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "CreateThread",
+      "count": 27,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "StartAmbientConversation",
+      "count": 27,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/FleeingWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "IsPerformingScriptTask",
+      "count": 25,
+      "consumers": [
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/FleeingWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
       "name": "RunCutscene",
-      "count": 12,
+      "count": 25,
+      "consumers": [
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetTimer",
+      "count": 24,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "PauseAllNonScriptedEntities",
+      "count": 24,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeartHolder.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddQuestCard",
+      "count": 23,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EndCutscene",
+      "count": 23,
+      "consumers": [
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "PlayCutscene",
+      "count": 23,
       "consumers": [
         "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "MiniMapAddMarker",
+      "count": 22,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/Entities/KrakenMinion.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddLogbookStoryEntry",
+      "count": 21,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "DeactivateQuest",
+      "count": 20,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "RegisterTimer",
+      "count": 20,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "SpeakAndWait",
+      "count": 20,
+      "consumers": [
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "FinalizeEntityBindings",
+      "count": 19,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Fisherman.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "MeetSister:FSE/MeetSister/MeetSister.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GiveQuestCardDirectly",
+      "count": 19,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "StartCutscene",
+      "count": 19,
+      "consumers": [
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "IsTalkedToByHero",
+      "count": 18,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetThingHasInformation",
+      "count": 18,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "Pause",
+      "count": 17,
+      "consumers": [
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/QueenHornet.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetFacingAngleTowardsThing",
+      "count": 16,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetMasterGameState",
+      "count": 16,
+      "consumers": [
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "HeroReceiveMessageFromGuildMaster",
+      "count": 16,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "MiniMapRemoveMarker",
+      "count": 16,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeartHolder.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetStateString",
+      "count": 16,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddGossipVillage",
+      "count": 15,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetQuestAsCompleted",
+      "count": 15,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "PlayAnimation",
+      "count": 14,
+      "consumers": [
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "FadeScreenIn",
+      "count": 13,
+      "consumers": [
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
+        "ScytheInfo:FSE/ScytheInfo/ScytheInfo.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GiveHeroObject",
+      "count": 13,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GiveThingBestEnemyTarget",
+      "count": 13,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "Fisherman:FSE/Fisherman/Entities/FishermanWasp.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/Entities/KrakenMinion.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspAttacker.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "IsDead",
+      "count": 13,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/Entities/TheKraken.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "IsQuestActive",
+      "count": 13,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "MsgIsHitByAnySpecialAbilityFromHero",
+      "count": 13,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "MsgIsHitByHealLifeFromHero",
+      "count": 13,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "MsgIsHitByHero",
+      "count": 13,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EndMovieSequence",
+      "count": 12,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeartHolder.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "PersistTransferInt",
+      "count": 12,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "StartMovieSequence",
+      "count": 12,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeartHolder.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "CreateCreature",
+      "count": 11,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Fisherman:FSE/Fisherman/Entities/M_FishermanWaspSpawn.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheMarker.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "DisplayQuestInfo",
+      "count": 11,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetAsKillable",
+      "count": 11,
+      "consumers": [
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua"
       ],
       "status": "callable"
     },
@@ -314,352 +1689,388 @@
     },
     {
       "scope": "Quest",
-      "name": "MiniMapAddMarker",
-      "count": 11,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "PersistTransferBool",
-      "count": 11,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/MazeResearch.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "PlayCutscene",
-      "count": 11,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "DeactivateQuestLater",
-      "count": 10,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "RemoveThing",
-      "count": 10,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
-        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterChest.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "SetTimer",
-      "count": 10,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "EndCutscene",
-      "count": 9,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "GetTimer",
-      "count": 9,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "SetQuestAsCompleted",
-      "count": 9,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "SetThingHasInformation",
-      "count": 9,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "FinalizeEntityBindings",
-      "count": 8,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
-        "MeetSister:FSE/MeetSister/MeetSister.lua",
-        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "GetHealth",
-      "count": 8,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Entity",
-      "name": "IsTalkedToByHero",
-      "count": 7,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "AddLineToConversation",
-      "count": 6,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
       "name": "EntitySetThingAsAllyOfThing",
-      "count": 6,
+      "count": 11,
       "consumers": [
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
       "name": "FadeOutAndKillEntity",
-      "count": 6,
+      "count": 11,
       "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "IsRegionLoaded",
-      "count": 6,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "MiniMapRemoveMarker",
-      "count": 6,
-      "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
+        "WaspBoss:FSE/WaspBoss/Entities/FleeingWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddGossipFactionToCategory",
+      "count": 10,
+      "consumers": [
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "ClearThingHasInformation",
+      "count": 10,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetAllThingsWithScriptName",
+      "count": 10,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetNearestWithScriptName",
+      "count": 10,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Entity",
-      "name": "MsgIsHitByAnySpecialAbilityFromHero",
-      "count": 6,
+      "name": "GetPos",
+      "count": 10,
       "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "Fisherman:FSE/Fisherman/Entities/M_FishermanWaspSpawn.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheMarker.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Entity",
-      "name": "MsgIsHitByHealLifeFromHero",
-      "count": 6,
+      "name": "MoveToPosition",
+      "count": 10,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/FleeingWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Entity",
-      "name": "MsgIsHitByHero",
-      "count": 6,
+      "name": "ClearCommands",
+      "count": 9,
       "consumers": [
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "RegisterTimer",
-      "count": 6,
+      "name": "CreateEffectAtPos",
+      "count": 9,
       "consumers": [
         "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "StartAmbientConversation",
-      "count": 6,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "StartCutscene",
-      "count": 6,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "EntitySetAsKillable",
-      "count": 5,
-      "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "EntitySetFacingAngle",
-      "count": 5,
-      "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua"
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
       "name": "EntitySetInLimbo",
-      "count": 5,
+      "count": 9,
       "consumers": [
         "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua"
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "IsLevelLoaded",
+      "count": 9,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "IsWearingHairstyle",
+      "count": 9,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetAlpha",
+      "count": 8,
+      "consumers": [
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetFacingAngle",
+      "count": 8,
+      "consumers": [
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntityTeleportToThing",
+      "count": 8,
+      "consumers": [
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "MakeBehavioral",
+      "count": 8,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeartHolder.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "RemoveQuestCardFromGuild",
+      "count": 8,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddLogbookStoryEntryString",
+      "count": 7,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetAsDamageable",
+      "count": 7,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "GetDataString",
+      "count": 7,
+      "consumers": [
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GiveHeroMorality",
+      "count": 7,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "IsAlive",
+      "count": 7,
+      "consumers": [
+        "Fisherman:FSE/Fisherman/Entities/FishermanWasp.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/QueenHornet.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "StopOverrideMusic",
+      "count": 7,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddQuestInfoBarHealth",
+      "count": 6,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddQuestRegion",
+      "count": 6,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetDistanceBetweenThings",
+      "count": 6,
+      "consumers": [
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetNearestWithDefName",
+      "count": 6,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetStateString",
+      "count": 6,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua",
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetThingPersistent",
+      "count": 6,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/DemonDoorFace.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetAsScared",
+      "count": 5,
+      "consumers": [
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua"
       ],
       "status": "callable"
     },
@@ -677,11 +2088,102 @@
     },
     {
       "scope": "Quest",
-      "name": "IsDistanceBetweenThingsUnder",
+      "name": "KickOffQuestStartScreen",
+      "count": 5,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "OverrideMusic",
+      "count": 5,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "PlayAVIMovie",
+      "count": 5,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetCreatureGeneratorsEnabled",
+      "count": 5,
+      "consumers": [
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "TrophyDealer:FSE/TrophyDealer/Entities/TrophyDealerInCave.lua",
+        "TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetIsPushableByHero",
       "count": 5,
       "consumers": [
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetQuestAsFailed",
+      "count": 5,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddItemToContainer",
+      "count": 4,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "DisplayGameInfo",
+      "count": 4,
+      "consumers": [
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GiveHeroYesNoQuestion",
+      "count": 4,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
       ],
@@ -689,73 +2191,44 @@
     },
     {
       "scope": "Quest",
-      "name": "ClearThingHasInformation",
+      "name": "IsQuestCompleted",
       "count": 4,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "CreateEffectAtPos",
-      "count": 4,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "CreateThread",
-      "count": 4,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "EntitySetFacingAngleTowardsThing",
-      "count": 4,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "GiveHeroMorality",
-      "count": 4,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Entity",
-      "name": "MoveToPosition",
+      "name": "MsgIsUsedByHero",
       "count": 4,
       "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeartHolder.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "PlayAVIMovie",
+      "name": "RemoveQuestInfoElement",
       "count": 4,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "SetFriendsWithEverythingFlag",
+      "count": 4,
+      "consumers": [
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua"
       ],
       "status": "callable"
     },
@@ -770,30 +2243,30 @@
     },
     {
       "scope": "Quest",
-      "name": "SetStateString",
-      "count": 4,
+      "name": "AddRumourCategory",
+      "count": 3,
       "consumers": [
-        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "DisplayQuestInfo",
+      "name": "CameraDefault",
       "count": 3,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+        "SingingStones:FSE/SingingStones/SingingStones.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "FadeScreenIn",
+      "name": "EntityGetBossPhase",
       "count": 3,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
       ],
       "status": "callable"
     },
@@ -808,91 +2281,79 @@
     },
     {
       "scope": "Quest",
-      "name": "GetMasterGameState",
+      "name": "GetCutsceneFlag",
       "count": 3,
       "consumers": [
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "OakValeRevisited:FSE/OakValeRevisited/OakValeRevisited.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "MoveToThing",
+      "count": 3,
+      "consumers": [
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "GiveHeroYesNoQuestion",
+      "name": "MsgIsGameInfoClickedPast",
       "count": 3,
       "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "GiveQuestCardDirectly",
-      "count": 3,
-      "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Entity",
-      "name": "IsDead",
-      "count": 3,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Entity",
-      "name": "IsPerformingScriptTask",
-      "count": 3,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Entity",
-      "name": "MsgIsUsedByHero",
-      "count": 3,
-      "consumers": [
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
         "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
         "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua"
       ],
       "status": "callable"
     },
     {
+      "scope": "Quest",
+      "name": "MsgOnHeroHairTypeChanged",
+      "count": 3,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "PersistTransferString",
+      "count": 3,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "Play2DSound",
+      "count": 3,
+      "consumers": [
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetAllowScreenFadingOnNextRegionChange",
+      "count": 3,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
       "scope": "Entity",
-      "name": "PlayAnimation",
+      "name": "SetReadableText",
       "count": 3,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "SetIsPushableByHero",
-      "count": 3,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "SetMasterGameState",
-      "count": 3,
-      "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+        "Fisherman:FSE/Fisherman/Entities/FishermanBulletinBoard.lua",
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua"
       ],
       "status": "callable"
     },
@@ -907,49 +2368,79 @@
       "status": "callable"
     },
     {
-      "scope": "Quest",
-      "name": "AddLogbookStoryEntryString",
-      "count": 2,
+      "scope": "Entity",
+      "name": "TakeExclusiveControl",
+      "count": 3,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "AddQuestRegion",
+      "name": "CameraUseCameraPoint",
       "count": 2,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+        "SingingStones:FSE/SingingStones/SingingStones.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "CreateCreature",
+      "name": "ClearThingBestEnemyTarget",
       "count": 2,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "DisplayGameInfo",
+      "name": "CreateCreatureNearby",
       "count": 2,
       "consumers": [
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
-        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua"
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "EntitySetAsDamageable",
+      "name": "DisplayTutorial",
       "count": 2,
       "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntityFadeIn",
+      "count": 2,
+      "consumers": [
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerMinion.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntityFollowThing",
+      "count": 2,
+      "consumers": [
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntityForceToLookAtThing",
+      "count": 2,
+      "consumers": [
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua"
       ],
       "status": "callable"
     },
@@ -974,10 +2465,68 @@
     },
     {
       "scope": "Quest",
-      "name": "GetAllThingsWithScriptName",
+      "name": "EntitySetAsToAddToComboMultiplierWhenHit",
       "count": 2,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetCutsceneBehaviour",
+      "count": 2,
+      "consumers": [
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntityUnsetThingAsAllyOfThing",
+      "count": 2,
+      "consumers": [
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "FadeOutAndKillEntity",
+      "count": 2,
+      "consumers": [
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "FadeScreenOutUntilNextCallToFadeScreenIn",
+      "count": 2,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "FollowPreCalculatedRoute",
+      "count": 2,
+      "consumers": [
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaseWoman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "FollowThing",
+      "count": 2,
+      "consumers": [
+        "WaspBoss:FSE/WaspBoss/Entities/WaspChaser.lua",
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua"
       ],
       "status": "callable"
     },
@@ -1001,42 +2550,49 @@
       "status": "callable"
     },
     {
-      "scope": "Entity",
-      "name": "GetPos",
+      "scope": "Quest",
+      "name": "GiveHeroExperience",
       "count": 2,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "GiveThingBestEnemyTarget",
+      "name": "IsFishingSpotEnabled",
       "count": 2,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
-        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua"
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "KickOffQuestStartScreen",
+      "name": "MiniMapAllowRouteBetweenRegions",
       "count": 2,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "MsgIsGameInfoClickedPast",
+      "name": "MsgIsTutorialClickedPast",
       "count": 2,
       "consumers": [
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
-        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua"
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "MsgOnRegionLoaded",
+      "count": 2,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua"
       ],
       "status": "callable"
     },
@@ -1060,73 +2616,179 @@
     },
     {
       "scope": "Quest",
-      "name": "StopOverrideMusic",
+      "name": "SetIsThingForcePushable",
       "count": 2,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "ScytheInfo:FSE/ScytheInfo/Entities/ScytheNearOracle.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "AddItemToContainer",
-      "count": 1,
+      "name": "SetRegionExitAsActive",
+      "count": 2,
       "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+        "BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "AddLogbookStoryEntry",
-      "count": 1,
+      "name": "SetRegionTextDisplayAsActive",
+      "count": 2,
       "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetScriptingStateGroup",
+      "count": 2,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetSummonerDeathExplosionAffectsHero",
+      "count": 2,
+      "consumers": [
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetTeleporterAsActive",
+      "count": 2,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "AddQuestCard",
-      "count": 1,
+      "name": "SetThingAsUsable",
+      "count": 2,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua"
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "AddQuestInfoBarHealth",
+      "name": "SetVillageLimbo",
+      "count": 2,
+      "consumers": [
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetWanderCentrePoint",
+      "count": 2,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetWanderMaxDistance",
+      "count": 2,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetWanderMinDistance",
+      "count": 2,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetWeaponOutCrimeEnabled",
+      "count": 2,
+      "consumers": [
+        "SummoningTheShip:FSE/SummoningTheShip/SummoningTheShip.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AutoSaveCheckPoint",
       "count": 1,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Entity",
-      "name": "ClearCommands",
+      "name": "ClearAllActions",
       "count": 1,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua"
+        "WaspBoss:FSE/WaspBoss/Entities/WaspHelper.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "ClearAllActionsIncludingLoopingAnimations",
+      "count": 1,
+      "consumers": [
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "ClearThingBestEnemyTarget",
+      "name": "CloseDoor",
       "count": 1,
       "consumers": [
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua"
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "EntitySetAlpha",
+      "name": "CreateExperienceOrb",
       "count": 1,
       "consumers": [
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua"
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "CreateObject",
+      "count": 1,
+      "consumers": [
+        "TentacleKrakenBossFight:FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EnableGuards",
+      "count": 1,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
       ],
       "status": "callable"
     },
@@ -1141,19 +2803,55 @@
     },
     {
       "scope": "Quest",
-      "name": "EntitySetCutsceneBehaviour",
+      "name": "EntitySetAsAllowedToFollowHero",
       "count": 1,
       "consumers": [
-        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua"
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "FadeScreenOutUntilNextCallToFadeScreenIn",
+      "name": "EntitySetAsRespondingToFollowAndWaitExpressions",
       "count": 1,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetInFaction",
+      "count": 1,
+      "consumers": [
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySheatheWeapons",
+      "count": 1,
+      "consumers": [
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "FadeScreenOut",
+      "count": 1,
+      "consumers": [
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "FixMovieSequenceCamera",
+      "count": 1,
+      "consumers": [
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua"
       ],
       "status": "callable"
     },
@@ -1177,19 +2875,19 @@
     },
     {
       "scope": "Quest",
-      "name": "GetCutsceneFlag",
+      "name": "GetHeroGold",
       "count": 1,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "GetHeroGold",
+      "name": "GiveHeroExpression",
       "count": 1,
       "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
       ],
       "status": "callable"
     },
@@ -1204,10 +2902,55 @@
     },
     {
       "scope": "Quest",
+      "name": "GiveHeroTutorial",
+      "count": 1,
+      "consumers": [
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "IsAwareOfHero",
+      "count": 1,
+      "consumers": [
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "IsCameraPosOnScreen",
+      "count": 1,
+      "consumers": [
+        "SingingStones:FSE/SingingStones/Entities/SingingStone.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
       "name": "IsCreatureFlying",
       "count": 1,
       "consumers": [
         "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "IsHeroOnQuest",
+      "count": 1,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "ModifyThingHealth",
+      "count": 1,
+      "consumers": [
+        "WaspBoss:FSE/WaspBoss/Entities/WaspVictim.lua"
       ],
       "status": "callable"
     },
@@ -1221,29 +2964,65 @@
       "status": "callable"
     },
     {
-      "scope": "Quest",
-      "name": "OverrideMusic",
+      "scope": "Entity",
+      "name": "MsgIsPresentedWithItem",
       "count": 1,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+        "SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "PersistTransferInt",
+      "name": "OpenDoor",
       "count": 1,
       "consumers": [
-        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+        "Fisherman:FSE/Fisherman/Entities/Fisherman.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Entity",
-      "name": "SetFriendsWithEverythingFlag",
+      "name": "PlayLoopingAnimation",
       "count": 1,
       "consumers": [
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua"
+        "WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "RemoveQuestCardFromHero",
+      "count": 1,
+      "consumers": [
+        "BeardyBaldy:FSE/BeardyBaldy/BeardyBaldy.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "ResetPlayerCreatureCombatMultiplier",
+      "count": 1,
+      "consumers": [
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetAllSoundsAsMuted",
+      "count": 1,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetHeroGuideToShowQuestCardsWhenSpokenTo",
+      "count": 1,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
       ],
       "status": "callable"
     },
@@ -1258,37 +3037,10 @@
     },
     {
       "scope": "Quest",
-      "name": "SetIsThingForcePushable",
+      "name": "SetQuestWorldMapOffset",
       "count": 1,
       "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "SetQuestAsFailed",
-      "count": 1,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "SetTeleporterAsActive",
-      "count": 1,
-      "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "SetThingAsUsable",
-      "count": 1,
-      "consumers": [
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
+        "WaspBoss:FSE/WaspBoss/WaspBoss.lua"
       ],
       "status": "callable"
     },
@@ -1298,6 +3050,33 @@
       "count": 1,
       "consumers": [
         "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "SummonerLightningOrbAttackTarget",
+      "count": 1,
+      "consumers": [
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "TakeObjectFromHero",
+      "count": 1,
+      "consumers": [
+        "SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeartHolder.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "TeleportAllFollowersToHeroPosition",
+      "count": 1,
+      "consumers": [
+        "Gameflow:FSE/LUAGameflow/LUAGameflow.lua"
       ],
       "status": "callable"
     }

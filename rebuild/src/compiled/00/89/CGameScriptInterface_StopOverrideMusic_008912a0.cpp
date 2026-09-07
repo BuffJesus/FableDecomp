@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CGSIStopMusicCodeSection
 {
     unsigned char pad00[0x0c];
@@ -10,7 +11,7 @@ struct CGSIStopMusicCodeSection
 
 struct CGSIStopMusicEvent;
 
-struct CGSIStopMusicInner
+struct CWorld
 {
     unsigned char pad00[0x6c];
     CGSIStopMusicEvent* event;
@@ -67,11 +68,7 @@ struct CGSIStopMusicEmitter
     virtual void Stop(unsigned long command, unsigned long value, float fade);
 };
 
-struct CGameScriptInterface
-{
-    unsigned char pad00[4];
-    CGSIStopMusicInner* inner;
-
+struct CGameScriptInterface_Methods : CGameScriptInterface {
     void StopOverrideMusic(bool enabled) const;
 };
 
@@ -80,7 +77,7 @@ extern CGSIStopMusicCodeSection* __cdecl CGSIStopMusic_GetCodeSection();
 extern void __fastcall CGSIStopMusic_StopEvent(CGSIStopMusicEvent* event);
 extern void __fastcall CGSIStopMusic_ResumeEvent(CGSIStopMusicEvent* event);
 
-void CGameScriptInterface::StopOverrideMusic(bool enabled) const
+void CGameScriptInterface_Methods::StopOverrideMusic(bool enabled) const
 {
     if (enabled)
     {
@@ -95,8 +92,8 @@ void CGameScriptInterface::StopOverrideMusic(bool enabled) const
                 value = section->primaryValue;
             CGSIStopMusic_Emitter->Stop(0x100, value, 500.0f);
         }
-        CGSIStopMusic_StopEvent(inner->event);
+        CGSIStopMusic_StopEvent(World->event);
         return;
     }
-    CGSIStopMusic_ResumeEvent(inner->event);
+    CGSIStopMusic_ResumeEvent(World->event);
 }

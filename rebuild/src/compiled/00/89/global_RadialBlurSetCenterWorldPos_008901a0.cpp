@@ -1,6 +1,6 @@
 // CGameScriptInterface::RadialBlurSetCenterWorldPos(void*, const C3DVector&) @ 0x008901A0.
 //
-// Genuine C++ tail-call thunk: chase this->field_0004->field_0018->field_1964
+// Genuine C++ tail-call thunk: chase this->World->field_0018->field_1964
 // to reach the CEnvironmentSpellEffectInterpolator instance, then forward the
 // call (same ecx-this, same stack args) to that object's own
 // RadialBlurSetCenterWorldPos member (real retail impl at fixed address
@@ -11,6 +11,7 @@
 // single relative jmp (relocation-masked in parity) instead of a call+ret,
 // reproducing retail's 12-byte pointer chase followed by `e9 xx xx xx xx`.
 
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct C3DVector { float x, y, z; };
 
 class CEnvironmentSpellEffectInterpolator
@@ -19,11 +20,6 @@ public:
     void RadialBlurSetCenterWorldPos(void* param_2, const C3DVector& param_3);
 };
 
-struct CGameScriptInterface_Overlay
-{
-    unsigned char pad_0000[0x4];
-    void* field_0004;
-};
 
 struct CGameScriptInterface_Field4_Overlay
 {
@@ -39,11 +35,11 @@ struct CGameScriptInterface_Field18_Overlay
 
 extern "C" void __fastcall
 CGameScriptInterface_RadialBlurSetCenterWorldPos(
-    CGameScriptInterface_Overlay* self, void* edxDummy,
+    CGameScriptInterface* self, void* edxDummy,
     void* worldPosArg, const C3DVector& worldPosVec)
 {
     CGameScriptInterface_Field4_Overlay* field4 =
-        *reinterpret_cast<CGameScriptInterface_Field4_Overlay* const*>(&self->field_0004);
+        *reinterpret_cast<CGameScriptInterface_Field4_Overlay* const*>(&self->World);
     CGameScriptInterface_Field18_Overlay* field18 =
         *reinterpret_cast<CGameScriptInterface_Field18_Overlay* const*>(&field4->field_0018);
 

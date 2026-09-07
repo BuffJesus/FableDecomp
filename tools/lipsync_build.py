@@ -12,7 +12,7 @@ already byte-exact-validated on all retail entries by parse_bigb):
   Info := f32 duration (4 bytes)                # frameCount == ceil(duration*fps)
   weight byte w = round-ish of weightFloat*255; visemeID indexes the dictionary;
   each viseme maps to a single-frame phoneme POSE anim (ANIM_*_PHONEME_*) blended
-  by weight at runtime (docs/DEMON_DOOR_FACE.md).
+  by weight at runtime (docs/engine/DEMON_DOOR_FACE.md).
 
 CLI (always run against a COPY of retail .bigs, never originals):
   python tools/lipsync_build.py <dialogue.big> --roundtrip [N]

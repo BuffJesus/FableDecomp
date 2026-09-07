@@ -1,13 +1,10 @@
-struct CMid {
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CWorld {
     void Save(int a);
 };
 
-struct CGameScriptInterface {
-    void* vt;
-    CMid* mid;
-};
 
 void __fastcall CGameScriptInterface_AutoSave(CGameScriptInterface* self)
 {
-    self->mid->Save(0);
+    self->World->Save(0);
 }

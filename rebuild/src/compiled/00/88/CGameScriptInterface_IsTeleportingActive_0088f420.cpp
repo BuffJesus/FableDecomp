@@ -1,7 +1,7 @@
-struct CTeleportState { char pad[0xd5]; bool active; };
-struct CGameScriptInterface { void* vtbl; CTeleportState* state; };
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CWorld { char pad[0xd5]; bool active; };
 
 bool __fastcall CGameScriptInterface_IsTeleportingActive(const CGameScriptInterface* self)
 {
-    return self->state->active;
+    return self->World->active;
 }

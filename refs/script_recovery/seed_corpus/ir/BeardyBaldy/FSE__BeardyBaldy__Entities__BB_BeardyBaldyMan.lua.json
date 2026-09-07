@@ -1,0 +1,1077 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 139,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingHasInformation",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingPersistent",
+          "line": 5
+        },
+        {
+          "receiver": "me",
+          "name": "MakeBehavioral",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 9
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 149,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 16
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 20
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 21
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "StartMovieSequence",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 30
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 32
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 33
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 36
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "EndMovieSequence",
+          "line": 39
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 42
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 45
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 46
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 48
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 54
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 57
+        },
+        {
+          "receiver": "me",
+          "name": "GetPos",
+          "line": 58
+        },
+        {
+          "receiver": "quest",
+          "name": "SetWanderCentrePoint",
+          "line": 59
+        },
+        {
+          "receiver": "quest",
+          "name": "SetWanderMinDistance",
+          "line": 60
+        },
+        {
+          "receiver": "quest",
+          "name": "SetWanderMaxDistance",
+          "line": 61
+        },
+        {
+          "receiver": "quest",
+          "name": "SetScriptingStateGroup",
+          "line": 62
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 63
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 70
+        },
+        {
+          "receiver": "quest",
+          "name": "StartMovieSequence",
+          "line": 71
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 72
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 73
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 75
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 76
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 77
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 80
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 81
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 82
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 85
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 86
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 88
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroYesNoQuestion",
+          "line": 91
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 96
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 97
+        },
+        {
+          "receiver": "quest",
+          "name": "IsWearingHairstyle",
+          "line": 100
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroObject",
+          "line": 101
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateString",
+          "line": 102
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroObject",
+          "line": 104
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateString",
+          "line": 105
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 108
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 109
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 111
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 114
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 115
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 120
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 121
+        },
+        {
+          "receiver": "quest",
+          "name": "EndMovieSequence",
+          "line": 122
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 124
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 125
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 126
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 134
+        },
+        {
+          "receiver": "quest",
+          "name": "StartMovieSequence",
+          "line": 135
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 136
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 137
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 139
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 140
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 141
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateString",
+          "line": 144
+        },
+        {
+          "receiver": "quest",
+          "name": "IsWearingHairstyle",
+          "line": 145
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 146
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 147
+        },
+        {
+          "receiver": "quest",
+          "name": "IsWearingHairstyle",
+          "line": 150
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroObject",
+          "line": 151
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateString",
+          "line": 152
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroObject",
+          "line": 154
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateString",
+          "line": 155
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 158
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 159
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 161
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 163
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 164
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 169
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 170
+        },
+        {
+          "receiver": "quest",
+          "name": "EndMovieSequence",
+          "line": 171
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 173
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 174
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 175
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 183
+        },
+        {
+          "receiver": "quest",
+          "name": "StartMovieSequence",
+          "line": 184
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 185
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 186
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 188
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 189
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 190
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateString",
+          "line": 193
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateString",
+          "line": 194
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 198
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 199
+        },
+        {
+          "receiver": "quest",
+          "name": "IsWearingHairstyle",
+          "line": 202
+        },
+        {
+          "receiver": "quest",
+          "name": "IsWearingHairstyle",
+          "line": 203
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 206
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 207
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 211
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 212
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 215
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 216
+        },
+        {
+          "receiver": "quest",
+          "name": "IsWearingHairstyle",
+          "line": 220
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroObject",
+          "line": 221
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateString",
+          "line": 222
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroObject",
+          "line": 224
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateString",
+          "line": 225
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 228
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 229
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 231
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 233
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 234
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 237
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 238
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 241
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 242
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 248
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 249
+        },
+        {
+          "receiver": "quest",
+          "name": "EndMovieSequence",
+          "line": 250
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 252
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 253
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 254
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 262
+        },
+        {
+          "receiver": "quest",
+          "name": "StartMovieSequence",
+          "line": 263
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 264
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 265
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 267
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 274
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 275
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroObject",
+          "line": 277
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 278
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 279
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 280
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 281
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroObject",
+          "line": 283
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 284
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 286
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 287
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 288
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 289
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 293
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 294
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 298
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 299
+        },
+        {
+          "receiver": "quest",
+          "name": "EndMovieSequence",
+          "line": 300
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 304
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroExperience",
+          "line": 305
+        },
+        {
+          "receiver": "quest",
+          "name": "ClearThingHasInformation",
+          "line": 306
+        },
+        {
+          "receiver": "quest",
+          "name": "GetNearestWithScriptName",
+          "line": 308
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 310
+        },
+        {
+          "receiver": "me",
+          "name": "MoveToPosition_NonBlocking",
+          "line": 311
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 313
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgOnRegionLoaded",
+          "line": 313
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 314
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 315
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 316
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 321
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeOutAndKillEntity",
+          "line": 322
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 323
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 324
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeOutAndKillEntity",
+          "line": 327
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 328
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 329
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 335
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 336
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "AllHairChanged",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "AttackedByHero",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "BeardyBaldyLeft",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "IncorrectHairComboCount",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "InitialisePhase",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "IntroComplete",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "Phase1RequirementsComplete",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "Phase2RequirementsComplete",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "Phase3RequirementsComplete",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "QuestComplete",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "QuestPhase",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "RequiredBeard",
+      "types": [
+        "string"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "RequiredHairdo",
+      "types": [
+        "string"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "RequiredTash",
+      "types": [
+        "string"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_OBJECT_HERO_ANSWER_NO",
+      "TEXT_OBJECT_HERO_ANSWER_YES",
+      "TEXT_QST_014_ATTACK",
+      "TEXT_QST_014_END_FINALE1",
+      "TEXT_QST_014_END_FINALE2",
+      "TEXT_QST_014_END_NO_TASH",
+      "TEXT_QST_014_END_WRONG",
+      "TEXT_QST_014_PHASE1_DENIED",
+      "TEXT_QST_014_PHASE1_INTRO1",
+      "TEXT_QST_014_PHASE1_INTRO2",
+      "TEXT_QST_014_PHASE1_INTRO3",
+      "TEXT_QST_014_PHASE1_INTRO_REMINDER",
+      "TEXT_QST_014_PHASE1_REMINDER",
+      "TEXT_QST_014_PHASE2_INTRO1",
+      "TEXT_QST_014_PHASE2_INTRO2",
+      "TEXT_QST_014_PHASE2_REMINDER",
+      "TEXT_QST_014_PHASE2_WRONG_HAIR",
+      "TEXT_QST_014_PHASE3_INTRO1",
+      "TEXT_QST_014_PHASE3_INTRO2",
+      "TEXT_QST_014_PHASE3_INTRO3",
+      "TEXT_QST_014_PHASE3_INTRO4",
+      "TEXT_QST_014_PHASE3_NO_BEARD",
+      "TEXT_QST_014_PHASE3_REMINDER",
+      "TEXT_QST_014_PHASE3_WRONG_BEARD",
+      "TEXT_QST_014_PHASE3_WRONG_HAIR",
+      "TEXT_QST_014_PHASE3_WRONG_HAIR_AND_BEARD",
+      "TEXT_QST_014_QUEST_ON_QUESTION",
+      "TEXT_QST_014_RANDOM_00",
+      "TEXT_QST_014_RANDOM_10",
+      "TEXT_QST_014_RANDOM_20",
+      "TEXT_QST_014_RANDOM_30",
+      "TEXT_QST_014_RANDOM_40",
+      "TEXT_QST_014_RANDOM_50",
+      "TEXT_QST_014_RANDOM_60",
+      "TEXT_QST_014_RANDOM_70",
+      "TEXT_QST_014_RANDOM_80",
+      "TEXT_QST_014_RANDOM_90"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

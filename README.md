@@ -49,9 +49,18 @@ The work has three connected outputs:
 - **Native tooling:** reusable format, scripting, editor, viewer, and modding
   knowledge produced by the reverse engineering.
 
-The detailed strategy is in [FULL_DECOMP.md](docs/pipeline/FULL_DECOMP.md). The latest
-working memory and exact resume point are always at the top of
-[HANDOFF.md](docs/journal/HANDOFF_ARCHIVE.md).
+Where to look first: [ROADMAP.md](docs/ROADMAP.md) is the single task list (done / in flight /
+next), [HANDOFF.md](docs/HANDOFF.md) is the one-page resume point, [ARCHITECTURE.md](docs/ARCHITECTURE.md)
+explains the source layers, [BUILDING.md](docs/BUILDING.md) the toolchain, and
+[CONTRIBUTING.md](CONTRIBUTING.md) the landing rules. The full strategy is in
+[FULL_DECOMP.md](docs/pipeline/FULL_DECOMP.md); every other document is listed in [docs/INDEX.md](docs/INDEX.md).
+
+**On readability.** Early landed code modelled `this` with throwaway local structs
+(`struct T { char pad[0x1a8]; ... }`). Since 2026-09-07 the class layouts recovered from the debug
+PDB are emitted as compilable, PDB-named headers in `rebuild/include/engine/`, and landed functions are
+retyped onto them only when the rewritten file still compiles to the identical retail bytes. The
+"Readability" rows in the metrics below track that conversion; the remaining generic declarations are
+a worklist, not the intended end state.
 
 <p align="right"><a href="#contents">back to contents</a></p>
 
@@ -87,6 +96,9 @@ parity, coverage, and naming reports:
 | Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,604** |
 | Reconstruction | Verified functional or matching C++ | **18,579** (37.48%) |
 | Reconstruction | — of which byte-**identical** C++ | 8,082 (16.30%) |
+| Reconstruction | — of which hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 292 |
+| Readability | Landed sources typed onto shared PDB-named engine headers | 105 |
+| Readability | Throwaway local `struct T {...}` declarations remaining | 4,675 |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 43 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 0 |
 | Auto-RE intake | Generated candidates / structural checker PASS | 1,066 / 1,053 |
@@ -95,7 +107,7 @@ parity, coverage, and naming reports:
 | Boot path | Current Phase 10 direct calls proven | **21 / 21** (100.00%) |
 | Modern C++23 | GFMain phases promoted into the modern startup lane | **0 / 10** (0.00%) |
 
-Counts above are from the 2026-08-28 canonical refresh:
+Counts above are from the 2026-09-07 canonical refresh:
 `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-parity.json`,
 `rebuild/COVERAGE.md`, and the naming-quality reports.
 
@@ -155,7 +167,7 @@ runtime boundary, see [rebuild/RUNNABLE.md](rebuild/RUNNABLE.md).
 | Area | Verified state | Major remaining boundary |
 |---|---|---|
 | Analysis database | Nearly complete navigation-quality names with recovered prototypes and calling conventions | Resolve the remaining ambiguous types, function starts, and hard naming stragglers |
-| Function reconstruction | 5,588 VC7.1-compiled and behavior-gated sources; 5,440 verified functional/matching | Continue strict promotion without counting structural-only generated code |
+| Function reconstruction | See the generated metrics above (byte-identical genuine C++, functional-or-matching, asm bakes reported separately) | Continue strict promotion; retype landed code onto the shared PDB-named headers; de-bake the `asm_bake` grade |
 | Startup | Retail-matched `WinMain`, all ten authored GFMain phases callable, connected exact `GFInitialise`, progress-display ownership | Replace the remaining GFMain dependency boundaries and pursue whole-coordinator retail parity |
 | Frontend | Boot movies, retail-data-driven interactive menus, CUIState-driven main-menu/Save/Options rows, keyboard/mouse/controller navigation, Credits routing, profile/delete/new-profile branches, Continue-to-Saved-Games routing, and retail list/transition sounds | Visual sign-off is still open: compare identical retail/reconstruction captures; link native profile persistence and validated save action `0x11` only at their recovered manager/game boundaries |
 | Controls | Interactive capture/cancel/apply, duplicate clearing, W/S/A/D movement expansion, arrow/WASD reset actions, and recovered wheel/arrow ingress for authored scrolling lists | Full 31-action Redefine materialization/filtering/coexistence, profile persistence, and remaining controller/action ownership |
@@ -164,56 +176,20 @@ runtime boundary, see [rebuild/RUNNABLE.md](rebuild/RUNNABLE.md).
 | Modding research | Broad readers/writers for definitions, levels, terrain, meshes, animation, audio, text, quests, and saves | Consolidate them behind safe product workflows and runtime validation |
 | Cut multiplayer | Player slots, event/package codecs, local initialization, and a grounded revival plan are documented | Reconstruct synchronization, seating, lifecycle, and transport before enabling anything |
 
-This table is a landing-page summary. Detailed addresses, byte counts, evidence,
-caveats, and chronological checkpoints belong in
-[HANDOFF.md](docs/journal/HANDOFF_ARCHIVE.md), [ACTIVE_TASK_LIST.md](docs/journal/2026-09/ACTIVE_TASK_LIST.md),
-and the subsystem documents below.
+This table is a landing-page summary. Detailed addresses, byte counts, evidence, and caveats
+live in the subsystem documents (`docs/engine/`, `docs/formats/`, `docs/pipeline/`); the
+chronological record is `docs/journal/`.
 
 <p align="right"><a href="#contents">back to contents</a></p>
 
 <a id="roadmap"></a>
 ## 5. Roadmap
 
-### P0 — retail frontend and renderer parity
-
-- Finish live `CTable`, `CList`, and `CKeyRedefiner` ownership and state flow,
-  including detail-row extraction, controller input, and remaining actions.
-- Keep recovered wheel/list/click/manager dispatch IDs at their explicit retail
-  callback boundary; do not replace them with guessed host-side state or local
-  profile/delete writers.
-- Add deterministic retail-vs-reconstruction screenshot comparisons.
-- Replace the remaining ownership-heavy GFMain dependency seams in Phases 3
-  and 5, plus Phase 6 font/text/display ownership. Phase 6 definition-table
-  loading and write-permission probing now execute exact coordinators;
-  Phases 4, 7, 8, 9, and 10 have every direct call independently proven.
-- Recover particle, RSA-lighting, sky, and shadow runtime contracts.
-
-### P0 — product-facing native features
-
-- Complete and runtime-test the secret-hunt quest/content package.
-- Prioritize high-value Quest, NPC, frontend, and renderer functions.
-- Keep game-install changes transactional, hashed, and reversible.
-
-### P1 — reconstruction throughput
-
-- Promote short deterministic candidates through VC7.1 compile, behavior, and
-  retail-byte gates.
-- Diagnose compact `DIFFER` residues with disassembly feedback, the permuter,
-  and the optional Unicorn function-oracle pilot.
-- Repair boundaries and prototypes before re-authoring repeated failures.
-
-### Later — complete engine and game
-
-- Connect the full engine initialization, archive/runtime asset loading,
-  renderer, world, scripting, save, audio, and gameplay loops.
-- Replace compatibility and authored integration layers only when the recovered
-  native owners are ready.
-- Treat modern C++ subsystem code as a readable consumer layer, never as an
-  automatic byte-parity claim.
-
-The ranked, acceptance-gated queue is
-[ACTIVE_TASK_LIST.md](docs/journal/2026-09/ACTIVE_TASK_LIST.md). Broader sequencing is in
-[PLAN.md](docs/journal/2026-09/PLAN_pre-roadmap.md).
+The roadmap is a checklist, not prose: [docs/ROADMAP.md](docs/ROADMAP.md). It has one
+"current focus" block and seven lanes (repo health, symbols and types, byte-parity
+reconstruction, runnable frontend, engine subsystem RE, quest-script recovery, modding
+toolchain), each with `[x]` done / `[ ]` open items that point at their owning document.
+Superseded plans are archived under `docs/journal/`.
 
 <p align="right"><a href="#contents">back to contents</a></p>
 

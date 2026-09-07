@@ -1,5 +1,5 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
-struct CGameScriptInterface { char pad; };
 struct CutsceneMgr { char pad[0xf6]; unsigned char inCutscene; };
 CutsceneMgr g_mgr;
 CutsceneMgr* g_cutsceneMgr = &g_mgr;

@@ -1,6 +1,6 @@
-struct CInner { void EndLetterBox(); };
-struct CGameScriptInterface { char pad[0xc]; CInner* inner; };
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CDisplayEngine { void EndLetterBox(); };
 extern "C" void __fastcall CGameScriptInterface_EndLetterBox(CGameScriptInterface* self)
 {
-    self->inner->EndLetterBox();
+    self->DisplayEngine->EndLetterBox();
 }

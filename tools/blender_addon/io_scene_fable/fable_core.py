@@ -16,12 +16,12 @@ What this layer produces from a graphics.big (+ its texture banks):
   * ImageData      -- real decoded RGBA pixel arrays (LZO1X-decompress + DXT/ARGB)
   * MaterialData   -- material -> base-texture binding (the headline feature)
   * BoneData       -- skeleton with REAL bind poses (names + parent hierarchy +
-                      inverse-bind matrices; docs/BIG_MESH_GEOMETRY.md section 7)
+                      inverse-bind matrices; docs/formats/BIG_MESH_GEOMETRY.md section 7)
   * SubmeshData / LodData / MeshModel -- LOD + submesh + bounds tree
   * GeometryData -- real verts/faces/UVs per primitive (see _parse_mesh_primitives)
 
 Geometry is now DECODED (ported from EgoCore MeshParser.h + GltfExporter.h; the
-on-disk vertex/index buffers are Fable chunked-LZO -- see docs/BIG_MESH_GEOMETRY.md).
+on-disk vertex/index buffers are Fable chunked-LZO -- see docs/formats/BIG_MESH_GEOMETRY.md).
 Validated: LZO-inflated vertices' bbox matches each entry's stored bbox to 0.000,
 and both meshes import as real Blender geometry. Materials/textures, bone names,
 and the submesh tree remain decodable as before.
@@ -126,7 +126,7 @@ class BoneData:
     head: tuple = (0.0, 0.0, 0.0)
     tail: tuple = (0.0, 0.1, 0.0)
     # REAL bind pose (decoded from the compiled bone blocks; see
-    # docs/BIG_MESH_GEOMETRY.md section 7). Empty tuple = not available
+    # docs/formats/BIG_MESH_GEOMETRY.md section 7). Empty tuple = not available
     # (name-scan fallback path) -> the bpy layer uses placeholder transforms.
     matrix: tuple = ()              # 16 floats, row-major world/model-space bind
     #                                 matrix, column-vector convention
@@ -156,11 +156,11 @@ class LodData:
 @dataclass
 class GeometryData:
     """Actual mesh geometry -- currently always None (stubbed). When
-    docs/BIG_MESH_GEOMETRY.md lands, decode_geometry() fills these."""
+    docs/formats/BIG_MESH_GEOMETRY.md lands, decode_geometry() fills these."""
     vertices: list = field(default_factory=list)   # list[(x,y,z)]
     faces: list = field(default_factory=list)       # list[(i,j,k)]
     uvs: list = field(default_factory=list)         # per-loop [(u,v), ...]
-    # Per-vertex skin weights for ANIMATED prims (docs/BIG_MESH_GEOMETRY.md §7.1).
+    # Per-vertex skin weights for ANIMATED prims (docs/formats/BIG_MESH_GEOMETRY.md §7.1).
     # Parallel to `vertices`: skin[v] = list[(local_bone_slot, weight_float)],
     # zero-weight influences dropped, weights renormalized to sum 1.0. Empty for
     # static (unskinned) prims.
@@ -336,7 +336,7 @@ def rgba_to_blender(rgba) -> list:
 # ===========================================================================
 # Mesh (MBANK) model extraction -- descriptor + skeleton + submesh tree
 # ===========================================================================
-# 3ds-Max Biped bone-name tokens (per docs/BIG_MESH_FORMAT.md section 3).
+# 3ds-Max Biped bone-name tokens (per docs/formats/BIG_MESH_FORMAT.md section 3).
 # Full Biped bone-name tokens that appear (possibly with an L/R side prefix and
 # a trailing digit) in the skeleton string block. Used to anchor extraction.
 _BONE_ANCHORS = (
@@ -376,7 +376,7 @@ def recover_bone_names(payload: bytes, header_end: int, first_lod_off: int) -> l
     """Recover the skeleton bone NAMES from the compiled-mesh payload.
 
     The skeleton is a 3ds-Max Biped bone-name string hierarchy embedded between
-    the header and the first LOD block (docs/BIG_MESH_FORMAT.md section 3). That
+    the header and the first LOD block (docs/formats/BIG_MESH_FORMAT.md section 3). That
     region is INTERLEAVED with binary (bone matrices) and is partly framed by the
     BBB control-byte compression, so the names are NOT cleanly NUL-terminated --
     some are truncated ('Forearm'->'For', 'Calf'->'alf'). We therefore recover
@@ -386,7 +386,7 @@ def recover_bone_names(payload: bytes, header_end: int, first_lod_off: int) -> l
     This is HONEST PARTIAL recovery: it yields the Biped bone names that survive
     the compression framing, in order, so an armature with the right bone labels
     can be built. Real bone TRANSFORMS (head/tail matrices) and the exact parent
-    hierarchy await the mesh-geometry RE (docs/BIG_MESH_GEOMETRY.md); parenting
+    hierarchy await the mesh-geometry RE (docs/formats/BIG_MESH_GEOMETRY.md); parenting
     here is a flat 'everything under Scene Root' placeholder.
     """
     lo = max(0, header_end)
@@ -426,7 +426,7 @@ def recover_bone_names(payload: bytes, header_end: int, first_lod_off: int) -> l
 # Compiled-mesh GEOMETRY decode.
 # Ported from EgoCore (MIT) MeshParser.h (C3DMeshContent::Parse) + GltfExporter.h
 # (vertex attribute offsets + strip/list triangulation). The on-disk vertex &
-# index buffers are Fable **chunked-LZO** (NOT plain — see docs/BIG_MESH_GEOMETRY.md
+# index buffers are Fable **chunked-LZO** (NOT plain — see docs/formats/BIG_MESH_GEOMETRY.md
 # CORRECTION). Validated against real graphics.big: the LZO-inflated vertices'
 # bbox matches each entry's STORED bbox to 0.000 (MESH_SEAGULL_01, _STATUE_BEAR).
 # ===========================================================================
@@ -572,7 +572,7 @@ def _decode_bones(idx_raw, names_raw, bone_raw, ibm_raw, bone_count):
 
     Layouts confirmed from EgoCore (MeshParser.h C3DMeshContent::Parse +
     MeshProperties.h UpdateAnimationBones + GltfExporter.h) -- see
-    docs/BIG_MESH_GEOMETRY.md section 7:
+    docs/formats/BIG_MESH_GEOMETRY.md section 7:
       idx_raw   -- u16[bone_count] local slot -> GLOBAL Fable bone ID (NOT parents)
       names_raw -- bone_count NUL-terminated names, slot order
       bone_raw  -- 60 B/bone: u32 NameCRC, i32 ParentIndex (LOCAL, -1=root),
@@ -799,7 +799,7 @@ def _prim_skin(p, bone_count):
 
     Returns a list parallel to the vertex list: skin[v] = [(local_bone, weight), ...]
     (zero-weight influences dropped, weights renormalized). Empty list if the
-    primitive is static (abc == 0). Layout: docs/BIG_MESH_GEOMETRY.md §7.1, ported
+    primitive is static (abc == 0). Layout: docs/formats/BIG_MESH_GEOMETRY.md §7.1, ported
     from EgoCore GltfExporter.h (the `hasBones` branch of the vertex loop).
 
     Joint bytes are triangle-stride palette indices: pID = ind[k]//3 indexes the
@@ -857,7 +857,7 @@ def _prim_skin(p, bone_count):
 def decode_geometry(payload: bytes, submesh, lod_off: int) -> Optional[GeometryData]:
     """GEOMETRY STUB -- returns None today. (Blocker corrected 2026-07-19.)
 
-    CORRECTION: geometry is NOT compressed. docs/BIG_MESH_GEOMETRY.md (geometry-RE
+    CORRECTION: geometry is NOT compressed. docs/formats/BIG_MESH_GEOMETRY.md (geometry-RE
     agent, from the decompiled Fable.exe loader) REFUTES the old "Big Blue Box
     control-byte compression" claim in BIG_MESH_FORMAT.md section 6: there is no
     decompressor anywhere on the mesh load path. A compiled MBANK entry is a raw
@@ -942,7 +942,7 @@ def build_model(buf: bytes, entry, tex_bank: Optional[TextureBank] = None,
     # --- primitive parse (geometry + REAL skeleton bind poses) ---
     # Run the EgoCore-derived payload walk ONCE; it yields both the per-primitive
     # geometry and the decoded bone blocks (names + parent hierarchy + bind
-    # matrices -- docs/BIG_MESH_GEOMETRY.md section 7).
+    # matrices -- docs/formats/BIG_MESH_GEOMETRY.md section 7).
     prims = None
     real_bones = None
     try:

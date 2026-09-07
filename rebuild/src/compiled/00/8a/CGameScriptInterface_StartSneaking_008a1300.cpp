@@ -1,4 +1,5 @@
 // CGameScriptInterface::StartSneaking @ 008a1300
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct Node { int key; void* p4; };
 struct Container {
     Node* begin; Node* end_;
@@ -14,10 +15,6 @@ struct Obj {
     unsigned char flags;       // +0x91
 };
 
-struct CGameScriptInterface {
-    unsigned char _pad0[0x14];
-    void* member14;            // +0x14
-};
 
 struct M14 { char d; };
 
@@ -27,7 +24,7 @@ extern void __fastcall FinalCall(void* p);           // ecx
 
 void __fastcall CGameScriptInterface_StartSneaking(CGameScriptInterface* self)
 {
-    Obj* a = Resolve1((M14*)self->member14);
+    Obj* a = Resolve1((M14*)self->PlayerManager);
     Obj* o = Resolve2(a);
     if (!o) return;
     if (o->flags & 1) return;

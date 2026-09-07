@@ -79,4 +79,134 @@ Quests = {
         }
     },
 
+    LUAGameflow = {
+        name = "LUAGameflow",
+        file = "LUAGameflow/LUAGameflow",
+        id = 1027,
+        entity_scripts = {
+        }
+    },
+
+    BeardyBaldy = {
+        name = "BeardyBaldy",
+        file = "BeardyBaldy/BeardyBaldy",
+        id = 1026,
+        entity_scripts = {
+            { name = "BB_BeardyBaldyMan", file = "BeardyBaldy/Entities/BB_BeardyBaldyMan", id = 108 },
+        }
+    },
+
+    RockTrollFirstEncounter = {
+        name = "RockTrollFirstEncounter",
+        file = "RockTrollFirstEncounter/RockTrollFirstEncounter",
+        id = 1025,
+        entity_scripts = {
+            { name = "RTFE_Sparrow", file = "RockTrollFirstEncounter/Entities/RTFE_Sparrow", id = 105 },
+            { name = "RTFE_RockTroll", file = "RockTrollFirstEncounter/Entities/RTFE_RockTroll", id = 106 },
+            { name = "M_RTFERockTrollTrigger", file = "RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger", id = 107 },
+        }
+    },
+
+    BowerstoneTownLifeIntro = {
+        name = "BowerstoneTownLifeIntro",
+        file = "BowerstoneTownLifeIntro/BowerstoneTownLifeIntro",
+        id = 1021,
+        entity_scripts = {
+            { name = "BowerstoneIntroGuard", file = "BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard", id = 97 },
+            { name = "BowerstoneIntroGuardToPosh", file = "BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh", id = 98 },
+        }
+    },
+
+    ScytheInfo = {
+        name = "ScytheInfo",
+        file = "ScytheInfo/ScytheInfo",
+        id = 1023,
+        entity_scripts = {
+            { name = "ScytheMarker", file = "ScytheInfo/Entities/ScytheMarker", id = 101 },
+            { name = "ScytheNearOracle", file = "ScytheInfo/Entities/ScytheNearOracle", id = 102 },
+        }
+    },
+
+    SingingStones = {
+        name = "SingingStones",
+        file = "SingingStones/SingingStones",
+        id = 1024,
+        entity_scripts = {
+            { name = "SingingStone", file = "SingingStones/Entities/SingingStone", id = 103 },
+            { name = "ManWithDoorName", file = "SingingStones/Entities/ManWithDoorName", id = 104 },
+        }
+    },
+
+    TrophyDealer = {
+        name = "TrophyDealer",
+        file = "TrophyDealer/TrophyDealer",
+        id = 1022,
+        entity_scripts = {
+            { name = "TrophyDealerInCave", file = "TrophyDealer/Entities/TrophyDealerInCave", id = 99 },
+            { name = "DemonDoorFace", file = "TrophyDealer/Entities/DemonDoorFace", id = 100 },
+        }
+    },
+
+    WaspBoss = {
+        name = "WaspBoss",
+        file = "WaspBoss/WaspBoss",
+        id = 1008,
+        entity_scripts = {
+            { name = "GratefulVillagerSpawn", file = "WaspBoss/Entities/GratefulVillagerSpawn", id = 74 },
+            { name = "WaspChaser", file = "WaspBoss/Entities/WaspChaser", id = 75 },
+            { name = "WaspChaseWoman", file = "WaspBoss/Entities/WaspChaseWoman", id = 76 },
+            { name = "WaspAttacker", file = "WaspBoss/Entities/WaspAttacker", id = 77 },
+            { name = "WaspVictim", file = "WaspBoss/Entities/WaspVictim", id = 78 },
+            { name = "FleeingWoman", file = "WaspBoss/Entities/FleeingWoman", id = 79 },
+            { name = "WaspHelper", file = "WaspBoss/Entities/WaspHelper", id = 80 },
+            { name = "QueenHornet", file = "WaspBoss/Entities/QueenHornet", id = 81 },
+            { name = "HornetDrone", file = "WaspBoss/Entities/HornetDrone", id = 82 },
+        }
+    },
+
+    OakValeRevisited = {
+        name = "OakValeRevisited",
+        file = "OakValeRevisited/OakValeRevisited",
+        id = 1013,
+        entity_scripts = {
+        }
+    },
+
+    Fisherman = {
+        name = "Fisherman",
+        file = "Fisherman/Fisherman",
+        id = 1012,
+        entity_scripts = {
+            { name = "Fisherman", file = "Fisherman/Entities/Fisherman", id = 93 },
+            { name = "M_FishermanWaspSpawn", file = "Fisherman/Entities/M_FishermanWaspSpawn", id = 94 },
+            { name = "FishermanBulletinBoard", file = "Fisherman/Entities/FishermanBulletinBoard", id = 95 },
+            { name = "FishermanWasp", file = "Fisherman/Entities/FishermanWasp", id = 96 },
+        }
+    },
+
+    TentacleKrakenBossFight = {
+        name = "TentacleKrakenBossFight",
+        file = "TentacleKrakenBossFight/TentacleKrakenBossFight",
+        id = 1011,
+        entity_scripts = {
+            { name = "KrakenMinion", file = "TentacleKrakenBossFight/Entities/KrakenMinion", id = 90 },
+            { name = "M_Experience", file = "TentacleKrakenBossFight/Entities/M_Experience", id = 91 },
+            { name = "TheKraken", file = "TentacleKrakenBossFight/Entities/TheKraken", id = 92 },
+        }
+    },
+
+    SummoningTheShip = {
+        name = "SummoningTheShip",
+        file = "SummoningTheShip/SummoningTheShip",
+        id = 1010,
+        entity_scripts = {
+            { name = "STS_BriarRose", file = "SummoningTheShip/Entities/STS_BriarRose", id = 84 },
+            { name = "SummonerAttacker", file = "SummoningTheShip/Entities/SummonerAttacker", id = 85 },
+            { name = "SummonerMinion", file = "SummoningTheShip/Entities/SummonerMinion", id = 86 },
+            { name = "FireHeartHolder", file = "SummoningTheShip/Entities/FireHeartHolder", id = 87 },
+            { name = "FireHeart", file = "SummoningTheShip/Entities/FireHeart", id = 88 },
+            { name = "M_ActivateLighthouse", file = "SummoningTheShip/Entities/M_ActivateLighthouse", id = 89 },
+        }
+    },
+
 }

@@ -6,7 +6,7 @@ container reader. Cracks the 34-byte per-entry texture Info descriptor
 (dims / pixel-format / mip-count), walks the compressed pixel-payload framing,
 and decodes the *uncompressed* pixel formats to PNG.
 
-Status (see docs/BIG_TEXTURE_FORMAT.md):
+Status (see docs/formats/BIG_TEXTURE_FORMAT.md):
   * Info descriptor  ...... CONFIRMED (validated on all 6,324 + 394 entries).
   * Pixel-format enum ..... CONFIRMED (0x1=A8R8G8B8, 0x1f=DXT1, 0x20=DXT3).
   * Payload framing ....... CONFIRMED (u16/u32 block-length prefix per mip).
@@ -243,7 +243,7 @@ def cmd_png(path, target_id, out):
         info = parse_info(e["info"])
         if info["compressed"] is not False:
             print(f"id {target_id} fmt {info['fmt_name']} pixel-payload is LZ-compressed; "
-                  f"the codec is an open gap (see docs/BIG_TEXTURE_FORMAT.md). "
+                  f"the codec is an open gap (see docs/formats/BIG_TEXTURE_FORMAT.md). "
                   f"PNG export is only wired for uncompressed decompressed buffers.")
             return
         # Uncompressed ARGB path would go here once a decompressed buffer exists.

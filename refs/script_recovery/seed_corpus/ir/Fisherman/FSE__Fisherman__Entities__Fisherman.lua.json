@@ -1,0 +1,790 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/Fisherman/Entities/Fisherman.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 76,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsKillable",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityTeleportToThing",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngle",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "CloseDoor",
+          "line": 17
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 96,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateCreature",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateCreature",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateCreature",
+          "line": 33
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 37
+        },
+        {
+          "receiver": "quest",
+          "name": "StartCutscene",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 45
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 46
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 49
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 50
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 51
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 54
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 57
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 58
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 61
+        },
+        {
+          "receiver": "me",
+          "name": "MoveToPosition",
+          "line": 62
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 64
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 65
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 72
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 73
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 74
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 76
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 78
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 79
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 83
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 84
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 85
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 86
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 88
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 93
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 94
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 95
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 100
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsScared",
+          "line": 103
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 104
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroMorality",
+          "line": 105
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 108
+        },
+        {
+          "receiver": "quest",
+          "name": "StartCutscene",
+          "line": 109
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 113
+        },
+        {
+          "receiver": "quest",
+          "name": "FixMovieSequenceCamera",
+          "line": 114
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 117
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 118
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 119
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 120
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestCardObjective",
+          "line": 121
+        },
+        {
+          "receiver": "quest",
+          "name": "IsXbox",
+          "line": 125
+        },
+        {
+          "receiver": "quest",
+          "name": "DisplayGameInfo",
+          "line": 126
+        },
+        {
+          "receiver": "quest",
+          "name": "DisplayGameInfo",
+          "line": 128
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgIsGameInfoClickedPast",
+          "line": 130
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 132
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 135
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 136
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 142
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 144
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 148
+        },
+        {
+          "receiver": "quest",
+          "name": "OpenDoor",
+          "line": 150
+        },
+        {
+          "receiver": "me",
+          "name": "TakeExclusiveControl",
+          "line": 153
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 154
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 156
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 157
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 162
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingHasInformation",
+          "line": 163
+        },
+        {
+          "receiver": "quest",
+          "name": "GetNearestWithScriptName",
+          "line": 164
+        },
+        {
+          "receiver": "quest",
+          "name": "IsFishingSpotEnabled",
+          "line": 166
+        },
+        {
+          "receiver": "quest",
+          "name": "IsFishingSpotEnabled",
+          "line": 167
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 169
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 170
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 175
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 175
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 176
+        },
+        {
+          "receiver": "quest",
+          "name": "GetValidTextEntryNameWithAttitude",
+          "line": 177
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 178
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 180
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 185
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 186
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 188
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 192
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 193
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 194
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 199
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 203
+        },
+        {
+          "receiver": "quest",
+          "name": "GetValidTextEntryNameWithAttitude",
+          "line": 206
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 207
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 209
+        },
+        {
+          "receiver": "me",
+          "name": "PlayAnimation",
+          "line": 212
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 213
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 214
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 215
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 216
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 217
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 222
+        },
+        {
+          "receiver": "quest",
+          "name": "ClearThingHasInformation",
+          "line": 226
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 231
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 232
+        },
+        {
+          "receiver": "quest",
+          "name": "StartCutscene",
+          "line": 233
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 238
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 239
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 241
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 243
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 245
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestAsCompleted",
+          "line": 246
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 247
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 253
+        },
+        {
+          "receiver": "me",
+          "name": "TakeExclusiveControl",
+          "line": 254
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 255
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 257
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityForceToLookAtThing",
+          "line": 259
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 262
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 266
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 267
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 272
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 272
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 273
+        },
+        {
+          "receiver": "quest",
+          "name": "GetValidTextEntryNameWithAttitude",
+          "line": 274
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 275
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 277
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 281
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 282
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 283
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 289
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 290
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 291
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "Attitude",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "FishermanMustRunAway",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "FishermanTasks",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "HeroHasSavedFishermanFromWasps",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "IntroPlayed",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "QuestCardGiven",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "WaspsAlive",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_023_FISHING_SPOT_INFO",
+      "TEXT_QST_023_FISHING_SPOT_INFO_PC",
+      "TEXT_QST_023_HELP",
+      "TEXT_QST_023_IDLE",
+      "TEXT_QST_023_IDLE_03_HATE",
+      "TEXT_QST_023_KNOWS_FISHING",
+      "TEXT_QST_023_TUTORIAL_10",
+      "TEXT_QST_023_TUTORIAL_IDLE",
+      "TEXT_QUEST_FISHERMAN_OBJECTIVE_01"
+    ],
+    "cutscenes": [
+      "CS_FISHERMAN_CAUGHTFISH",
+      "CS_FISHERMAN_CAUGHTFISH_NASTY",
+      "CS_FISHERMAN_INTRO",
+      "CS_FISHERMAN_THANKS"
+    ],
+    "regions": []
+  }
+}

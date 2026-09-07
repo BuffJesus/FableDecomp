@@ -1,0 +1,266 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/OakValeRevisited/OakValeRevisited.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 19,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 24,
+      "calls": []
+    },
+    {
+      "name": "OakValeFire",
+      "parameters": [
+        "quest"
+      ],
+      "line": 28,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetCutsceneFlag",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "GetAllThingsWithScriptName",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateEffectAtPos",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "GetCutsceneFlag",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 39
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 44
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 46
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 50
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 52
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 53
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityTeleportToThing",
+          "line": 56
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 57
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 59
+        },
+        {
+          "receiver": "quest",
+          "name": "StartCutscene",
+          "line": 63
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateThread",
+          "line": 66
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 69
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 73
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 74
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 80
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 81
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 82
+        },
+        {
+          "receiver": "quest",
+          "name": "GetAllThingsWithScriptName",
+          "line": 85
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 89
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 93
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 122,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "FinalizeEntityBindings",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "IsRegionLoaded",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 15
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddLogbookStoryEntry",
+          "line": 16
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 19
+        }
+      ]
+    }
+  ],
+  "state": [],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [
+      "CS_OAKVALE_REVISITED",
+      "CS_OakValeRevisited"
+    ],
+    "regions": [
+      "OakBay"
+    ]
+  }
+}

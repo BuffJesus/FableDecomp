@@ -27,7 +27,7 @@ Design (why it is safe):
     ID, Type, Size(*), CRC, Timestamp, Name, Deps, Info, and the stats
     header -- is reproduced VERBATIM from the model.  (*) Size changes ONLY
     for the one edited entry (to the new payload length).
-  * CRC and Timestamp are PASSED THROUGH verbatim.  Per docs/BIG_ROUNDTRIP.md
+  * CRC and Timestamp are PASSED THROUGH verbatim.  Per docs/formats/BIG_ROUNDTRIP.md
     Sec.7, TOC CRC is a per-format-CLASS fingerprint, NOT a payload hash, so
     an edited payload of an existing format legitimately keeps the SAME CRC as
     its unedited siblings.  We never recompute it.
@@ -215,7 +215,7 @@ def serialize(model):
       * the header FooterOffset / FooterSize.
     Everything else -- entry Magic/ID/Type/CRC/Timestamp/Name/Deps/Info and the
     stats header -- is reproduced VERBATIM from the model. CRC and Timestamp are
-    passthrough (per docs/BIG_ROUNDTRIP.md Sec.7: CRC is a per-format-CLASS
+    passthrough (per docs/formats/BIG_ROUNDTRIP.md Sec.7: CRC is a per-format-CLASS
     fingerprint, not a payload hash). Only the ONE edited entry's Size differs.
     """
     regions = model['regions']

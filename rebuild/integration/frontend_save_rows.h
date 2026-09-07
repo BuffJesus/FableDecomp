@@ -5,7 +5,7 @@
  * FableSetVisualFrontendSaveRows (declared in fable_visual_d3d9.h). This is the
  * native port of tools/save_metadata.py; it closes the seam between the proven
  * python read-contract and the renderer sink that previously only received the
- * authored visual-checkpoint defaults. See docs/SAVE_ROW_FEEDER_SPEC.md.
+ * authored visual-checkpoint defaults. See docs/pipeline/SAVE_ROW_FEEDER_SPEC.md.
  *
  * Separate from save_metadata_runtime_boundary.cpp, which reconstructs the boot
  * .MET-from-.LUG generator (0x00418c3b) — a different retail seam.

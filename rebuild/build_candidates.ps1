@@ -10,7 +10,7 @@ $rebuildRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $vcRoot = 'D:\Tools\vc71'
 # Alternate 13.10.4035 QFE toolset (WinDDK 3790.1830). Entries tagged Compiler='qfe4035'
 # (~11 retail objects RTM 3077 cannot reproduce) compile with this cl.exe; headers/libs stay
-# RTM. Override with $env:VC71_QFE. See docs/QFE4035_COMPILER_GATE.md.
+# RTM. Override with $env:VC71_QFE. See docs/pipeline/QFE4035_COMPILER_GATE.md.
 $vcQfeRoot = if ($env:VC71_QFE) { $env:VC71_QFE } else { 'D:\Tools\vc71-qfe4035' }
 $sourceRoot = Join-Path $rebuildRoot 'src\compiled'
 $outDir = Join-Path $rebuildRoot "build\candidates-$Configuration"
@@ -34,6 +34,7 @@ $catalog = @(
         Source = '00/8a/CGameScriptInterface_RepopulateVillage_008a1c50.cpp'
         TestSource = '00/8a/CGameScriptInterface_RepopulateVillage_008a1c50_test.cpp'
         PassPattern = 'FSE2_008a1c50_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089ad90'
@@ -41,6 +42,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_IsQuestStartScreenActive_0089ad90.cpp'
         TestSource = '00/89/CGameScriptInterface_IsQuestStartScreenActive_0089ad90_test.cpp'
         PassPattern = 'FSE2_0089ad90_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00896df0'
@@ -52,50 +54,62 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00536b4f'; Module = 'CList'; Source = '00/53/CList_InitialiseOffsets_00536b4f.cpp'
         TestSource = '00/53/CList_InitialiseOffsets_00536b4f_test.cpp'; PassPattern = 'CList_InitialiseOffsets_00536b4f_test PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '0053c332'; Module = 'CList'; Source = '00/53/CList_DoRecomputeOffsets_0053c332.cpp'
         TestSource = '00/53/CList_DoRecomputeOffsets_0053c332_test.cpp'; PassPattern = 'CList_DoRecomputeOffsets_0053c332_test PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '005360b1'; Module = 'CList'; Source = '00/53/CList_SetSelectedChild_005360b1.cpp'
         TestSource = '00/53/CList_SetSelectedChild_005360b1_test.cpp'; PassPattern = 'CList_SetSelectedChild_005360b1_test PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '0053673b'; Module = 'CList'; Source = '00/53/CList_ProcessEvent_0053673b.cpp'
         TestSource = '00/53/CList_ProcessEvent_0053673b_test.cpp'; PassPattern = 'CList_ProcessEvent_0053673b_test PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '0041e5f2'; Module = 'CFrontEndManager'; Source = '00/41/CFrontEndManager_GetInstance_0041e5f2.cpp'
         TestSource = '00/41/CFrontEndManager_GetInstance_0041e5f2_test.cpp'; PassPattern = 'CFrontEndManager_GetInstance_0041e5f2_test PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00597b20'; Module = 'CFrontEndManager'; Source = '00/59/CFrontEndManager_GotoProfileMenu_00597b20.cpp'
         TestSource = '00/59/CFrontEndManager_GotoProfileMenu_00597b20_test.cpp'; PassPattern = 'CFrontEndManager_GotoProfileMenu_00597b20_test PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '005955ab'; Module = 'CFrontEndManager'; Source = '00/59/CFrontEndManager_GetProfileNames_005955ab.cpp'
         TestSource = '00/59/CFrontEndManager_GetProfileNames_005955ab_test.cpp'; PassPattern = 'GET_PROFILE_NAMES_005955AB_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '0042df9e'; Module = 'CNewFrontendGameComponent'; Source = '00/42/CNewFrontendGameComponent_Draw_0042df9e.cpp'
         TestSource = '00/42/CNewFrontendGameComponent_Draw_0042df9e_test.cpp'; PassPattern = 'FRONTEND_DRAW_0042DF9E_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '0042e98f'; Module = 'CNewFrontendGameComponent'; Source = '00/42/CNewFrontendGameComponent_Init2_0042e98f.cpp'
         TestSource = '00/42/CNewFrontendGameComponent_Init2_0042e98f_test.cpp'; PassPattern = 'INIT2_0042E98F_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '0042e204'; Module = 'CNewFrontendGameComponent'; Source = '00/42/CNewFrontendGameComponent_InitialiseEngine_0042e204.cpp'
         TestSource = '00/42/CNewFrontendGameComponent_InitialiseEngine_0042e204_test.cpp'; PassPattern = 'INITIALISE_ENGINE_0042E204_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00551340'; Module = 'CTable'; Source = '00/55/CTable_GetDataFromDef_00551340.cpp'
         TestSource = '00/55/CTable_GetDataFromDef_00551340_test.cpp'; PassPattern = 'CTable_GetDataFromDef_00551340_test PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00550c60'; Module = 'CTable'; Source = '00/55/CTable_Initialise_00550c60.cpp'
         TestSource = '00/55/CTable_Initialise_00550c60_test.cpp'; PassPattern = 'CTable_Initialise_00550c60_test PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00401f30'; Module = '_global'; Source = '00/40/Global_GFGetBuildNumber2_00401f30.cpp'
@@ -136,14 +150,17 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00404a90'; Module = '_global'; Source = '00/40/Global_E2_00404a90.cpp'
         TestSource = '00/40/Global_E2_00404a90_test.cpp'; PassPattern = 'GLOBAL_E2_00404A90_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00404310'; Module = '_global'; Source = '00/40/Global_CCharStringComputeCRC32_00404310.cpp'
         TestSource = '00/40/Global_CCharStringComputeCRC32_00404310_test.cpp'; PassPattern = 'CCHARSTRING_COMPUTE_CRC32_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '0040138c'; Module = '_global'; Source = '00/40/Global_SEHProlog_0040138c.cpp'
         TestSource = '00/40/Global_SEHProlog_0040138c_test.cpp'; PassPattern = 'GLOBAL_SEH_PROLOG_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00405ba0'; Module = '_global'; Source = '00/40/Global_StdMoveBackward_00405ba0.cpp'
@@ -185,6 +202,7 @@ $catalog = @(
         Source = '00/40/Global_SEHEpilog_004013c7.cpp'
         TestSource = '00/40/Global_SEHEpilog_004013c7_test.cpp'
         PassPattern = 'GLOBAL_SEH_EPILOG_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00401296'
@@ -206,6 +224,7 @@ $catalog = @(
         Source = '00/40/Global_Array_LinearSearchInt_0040e170.cpp'
         TestSource = '00/40/Global_Array_LinearSearchInt_0040e170_test.cpp'
         PassPattern = 'ARRAY_LINEAR_SEARCH_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00406770'
@@ -248,6 +267,7 @@ $catalog = @(
         Source = '00/82/CScriptedMapBrush_GetTheme_0082e330.cpp'
         TestSource = '00/82/CScriptedMapBrush_GetTheme_0082e330_test.cpp'
         PassPattern = 'SCRIPTED_BRUSH_GET_THEME_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '0082e3d0'
@@ -325,6 +345,7 @@ $catalog = @(
         Source = '00/bf/CEngineLandscapeRenderer_GetForegroundVertexShader_00bf5c20.cpp'
         TestSource = '00/bf/CEngineLandscapeRenderer_GetForegroundVertexShader_00bf5c20_test.cpp'
         PassPattern = 'SHADER_00BF5C20_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00bf5c60'
@@ -332,6 +353,7 @@ $catalog = @(
         Source = '00/bf/CEngineLandscapeRenderer_GetForegroundSpotLightVertexShader_00bf5c60.cpp'
         TestSource = '00/bf/CEngineLandscapeRenderer_GetForegroundSpotLightVertexShader_00bf5c60_test.cpp'
         PassPattern = 'SHADER_00BF5C60_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00bf5ca0'
@@ -339,6 +361,7 @@ $catalog = @(
         Source = '00/bf/CEngineLandscapeRenderer_GetForegroundShadowedVertexShader_00bf5ca0.cpp'
         TestSource = '00/bf/CEngineLandscapeRenderer_GetForegroundShadowedVertexShader_00bf5ca0_test.cpp'
         PassPattern = 'SHADER_00BF5CA0_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00bf5cd0'
@@ -346,6 +369,7 @@ $catalog = @(
         Source = '00/bf/CEngineLandscapeRenderer_GetForegroundBumpShadowedVertexShader_00bf5cd0.cpp'
         TestSource = '00/bf/CEngineLandscapeRenderer_GetForegroundBumpShadowedVertexShader_00bf5cd0_test.cpp'
         PassPattern = 'SHADER_00BF5CD0_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00bf5d00'
@@ -353,6 +377,7 @@ $catalog = @(
         Source = '00/bf/CEngineLandscapeRenderer_GetForegroundSpotShadowedVertexShader_00bf5d00.cpp'
         TestSource = '00/bf/CEngineLandscapeRenderer_GetForegroundSpotShadowedVertexShader_00bf5d00_test.cpp'
         PassPattern = 'SHADER_00BF5D00_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00bf6720'
@@ -619,6 +644,7 @@ $catalog = @(
         Source = '00/bf/CEngineLandscapePatch_RelocateData_00bf3980.cpp'
         TestSource = '00/bf/CEngineLandscapePatch_RelocateData_00bf3980_test.cpp'
         PassPattern = 'LANDSCAPE_PATCH_RELOCATE_DATA_TEST PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00b676a0'
@@ -1578,6 +1604,7 @@ $catalog = @(
         Source = '00/68/CTCCreatureOpinionOfHero_IsWillingToStartFollowingHero_006818a0.cpp'
         TestSource = '00/68/CTCCreatureOpinionOfHero_IsWillingToStartFollowingHero_006818a0_test.cpp'
         PassPattern = 'CTCCreatureOpinionOfHero_006818a0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00412130'
@@ -1816,6 +1843,7 @@ $catalog = @(
         Source = '00/98/CShaderRenderManager_ResetWorldTransform_00988290.cpp'
         TestSource = '00/98/CShaderRenderManager_ResetWorldTransform_00988290_test.cpp'
         PassPattern = 'CShaderRenderManager_00988290_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '009ad950'
@@ -2873,6 +2901,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_OnPostDeviceReset_004175da.cpp'
         TestSource = '00/41/CMainGameComponent_OnPostDeviceReset_004175da_test.cpp'
         PassPattern = 'PASS_004175da'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00416219'
@@ -2880,6 +2909,7 @@ $catalog = @(
         Source = '00/41/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00416219.cpp'
         TestSource = '00/41/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00416219_test.cpp'
         PassPattern = 'PASS_00416219'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00415530'
@@ -2915,6 +2945,7 @@ $catalog = @(
         Source = '00/41/CManager_UpdateErrorMessage_0041ce9d.cpp'
         TestSource = '00/41/CManager_UpdateErrorMessage_0041ce9d_test.cpp'
         PassPattern = 'PASS_0041ce9d'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00416202'
@@ -2922,6 +2953,7 @@ $catalog = @(
         Source = '00/41/global_operatornew_00416202.cpp'
         TestSource = '00/41/global_operatornew_00416202_test.cpp'
         PassPattern = 'PASS_00416202'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00414f70'
@@ -2929,6 +2961,7 @@ $catalog = @(
         Source = '00/41/CConsoleCommandBase_GetTypeAsStringCConsoleCommandBaseMB_00414f70.cpp'
         TestSource = '00/41/CConsoleCommandBase_GetTypeAsStringCConsoleCommandBaseMB_00414f70_test.cpp'
         PassPattern = 'PASS_00414f70'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041c7e0'
@@ -2936,6 +2969,7 @@ $catalog = @(
         Source = '00/41/CMemoryAllocatorVariableSize_GetNoAllocatedAreas_0041c7e0.cpp'
         TestSource = '00/41/CMemoryAllocatorVariableSize_GetNoAllocatedAreas_0041c7e0_test.cpp'
         PassPattern = 'PASS_0041c7e0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041c800'
@@ -2943,6 +2977,7 @@ $catalog = @(
         Source = '00/41/CMemoryAllocatorVariableSize_GetNoAllocatedAreas_0041c800.cpp'
         TestSource = '00/41/CMemoryAllocatorVariableSize_GetNoAllocatedAreas_0041c800_test.cpp'
         PassPattern = 'PASS_0041c800'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041d198'
@@ -2950,6 +2985,7 @@ $catalog = @(
         Source = '00/41/CManager_SetGraphicsBank_0041d198.cpp'
         TestSource = '00/41/CManager_SetGraphicsBank_0041d198_test.cpp'
         PassPattern = 'PASS_0041d198'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00416296'
@@ -2957,6 +2993,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_IsControllerDisconnected_00416296.cpp'
         TestSource = '00/41/CMainGameComponent_IsControllerDisconnected_00416296_test.cpp'
         PassPattern = 'PASS_00416296'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00414e00'
@@ -2964,6 +3001,7 @@ $catalog = @(
         Source = '00/41/Destroyrangestd_allocatorCSpeechFrame_00414e00.cpp'
         TestSource = '00/41/Destroyrangestd_allocatorCSpeechFrame_00414e00_test.cpp'
         PassPattern = 'PASS_00414e00'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004167a7'
@@ -2971,6 +3009,7 @@ $catalog = @(
         Source = '00/41/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_004167a7.cpp'
         TestSource = '00/41/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_004167a7_test.cpp'
         PassPattern = 'PASS_004167a7'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00416392'
@@ -2978,6 +3017,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_PeekWorldChecksum_00416392.cpp'
         TestSource = '00/41/CMainGameComponent_PeekWorldChecksum_00416392_test.cpp'
         PassPattern = 'PASS_00416392'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041919c'
@@ -2985,6 +3025,7 @@ $catalog = @(
         Source = '00/41/global_GFLimitReturndouble_0041919c.cpp'
         TestSource = '00/41/global_GFLimitReturndouble_0041919c_test.cpp'
         PassPattern = 'PASS_0041919c'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004160a6'
@@ -2992,6 +3033,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_UninitEventPackageLoading_004160a6.cpp'
         TestSource = '00/41/CMainGameComponent_UninitEventPackageLoading_004160a6_test.cpp'
         PassPattern = 'PASS_004160a6'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00416122'
@@ -2999,6 +3041,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_UninitEventPackageLoading_00416122.cpp'
         TestSource = '00/41/CMainGameComponent_UninitEventPackageLoading_00416122_test.cpp'
         PassPattern = 'PASS_00416122'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00419650'
@@ -3006,6 +3049,7 @@ $catalog = @(
         Source = '00/41/CThing_GetPBaseDef_00419650.cpp'
         TestSource = '00/41/CThing_GetPBaseDef_00419650_test.cpp'
         PassPattern = 'PASS_00419650'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00414f90'
@@ -3013,6 +3057,7 @@ $catalog = @(
         Source = '00/41/CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_00414f90.cpp'
         TestSource = '00/41/CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_00414f90_test.cpp'
         PassPattern = 'PASS_00414f90'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00416365'
@@ -3020,6 +3065,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_PostChangeResolution_00416365.cpp'
         TestSource = '00/41/CMainGameComponent_PostChangeResolution_00416365_test.cpp'
         PassPattern = 'PASS_00416365'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041732a'
@@ -3027,6 +3073,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_InitPlayerManager_0041732a.cpp'
         TestSource = '00/41/CMainGameComponent_InitPlayerManager_0041732a_test.cpp'
         PassPattern = 'PASS_0041732a'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00419680'
@@ -3034,6 +3081,7 @@ $catalog = @(
         Source = '00/41/CBulletTimeManager_IsBulletTimeActive_00419680.cpp'
         TestSource = '00/41/CBulletTimeManager_IsBulletTimeActive_00419680_test.cpp'
         PassPattern = 'PASS_00419680'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041d165'
@@ -3041,6 +3089,7 @@ $catalog = @(
         Source = '00/41/global_OnCloseMenus_0041d165.cpp'
         TestSource = '00/41/global_OnCloseMenus_0041d165_test.cpp'
         PassPattern = 'PASS_0041d165'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041a810'
@@ -3048,6 +3097,7 @@ $catalog = @(
         Source = '00/41/C2DBoxF_Move_0041a810.cpp'
         TestSource = '00/41/C2DBoxF_Move_0041a810_test.cpp'
         PassPattern = 'PASS_0041a810'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00412c10'
@@ -3055,6 +3105,7 @@ $catalog = @(
         Source = '00/41/vectorEWeaponClass_UmoveEWeaponClass_00412c10.cpp'
         TestSource = '00/41/vectorEWeaponClass_UmoveEWeaponClass_00412c10_test.cpp'
         PassPattern = 'PASS_00412c10'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00416670'
@@ -3062,6 +3113,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_ProcessEventPackage_00416670.cpp'
         TestSource = '00/41/CMainGameComponent_ProcessEventPackage_00416670_test.cpp'
         PassPattern = 'PASS_00416670'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041ab00'
@@ -3069,6 +3121,7 @@ $catalog = @(
         Source = '00/41/CSprite_GetDefaultGraphicIndex_0041ab00.cpp'
         TestSource = '00/41/CSprite_GetDefaultGraphicIndex_0041ab00_test.cpp'
         PassPattern = 'PASS_0041ab00'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041be70'
@@ -3076,6 +3129,7 @@ $catalog = @(
         Source = '00/41/CEnginePrimitiveHandle_Clear_0041be70.cpp'
         TestSource = '00/41/CEnginePrimitiveHandle_Clear_0041be70_test.cpp'
         PassPattern = 'PASS_0041be70'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004166a8'
@@ -3083,6 +3137,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_CreatePlayers_004166a8.cpp'
         TestSource = '00/41/CMainGameComponent_CreatePlayers_004166a8_test.cpp'
         PassPattern = 'PASS_004166a8'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00419428'
@@ -3090,6 +3145,7 @@ $catalog = @(
         Source = '00/41/CCountedPointerstdvectorCCharString_Reset_00419428.cpp'
         TestSource = '00/41/CCountedPointerstdvectorCCharString_Reset_00419428_test.cpp'
         PassPattern = 'PASS_00419428'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041947a'
@@ -3097,6 +3153,7 @@ $catalog = @(
         Source = '00/41/CCountedPointerstdvectorCCharString_Reset_0041947a.cpp'
         TestSource = '00/41/CCountedPointerstdvectorCCharString_Reset_0041947a_test.cpp'
         PassPattern = 'PASS_0041947a'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041bdb0'
@@ -3104,6 +3161,7 @@ $catalog = @(
         Source = '00/41/CGraphicFrameData_scalardeletingdestructor_0041bdb0.cpp'
         TestSource = '00/41/CGraphicFrameData_scalardeletingdestructor_0041bdb0_test.cpp'
         PassPattern = 'PASS_0041bdb0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041d1c8'
@@ -3111,6 +3169,7 @@ $catalog = @(
         Source = '00/41/CTCBoastingCrowdControl_OnKillCrowd_0041d1c8.cpp'
         TestSource = '00/41/CTCBoastingCrowdControl_OnKillCrowd_0041d1c8_test.cpp'
         PassPattern = 'PASS_0041d1c8'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00412b20'
@@ -3118,6 +3177,7 @@ $catalog = @(
         Source = '00/41/vectorstdpairCCharString_resize_00412b20.cpp'
         TestSource = '00/41/vectorstdpairCCharString_resize_00412b20_test.cpp'
         PassPattern = 'PASS_00412b20'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00416005'
@@ -3125,6 +3185,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_InitDefinitions_00416005.cpp'
         TestSource = '00/41/CMainGameComponent_InitDefinitions_00416005_test.cpp'
         PassPattern = 'PASS_00416005'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041d122'
@@ -3132,6 +3193,7 @@ $catalog = @(
         Source = '00/41/global_OnOpenMenus_0041d122.cpp'
         TestSource = '00/41/global_OnOpenMenus_0041d122_test.cpp'
         PassPattern = 'PASS_0041d122'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041649c'
@@ -3139,6 +3201,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_AddGameEvent_0041649c.cpp'
         TestSource = '00/41/CMainGameComponent_AddGameEvent_0041649c_test.cpp'
         PassPattern = 'PASS_0041649c'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00414c90'
@@ -3146,6 +3209,7 @@ $catalog = @(
         Source = '00/41/global_Get_00414c90.cpp'
         TestSource = '00/41/global_Get_00414c90_test.cpp'
         PassPattern = 'PASS_00414c90'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004194d1'
@@ -3153,6 +3217,7 @@ $catalog = @(
         Source = '00/41/CCountedPointerstdvectorCCharString_Reset_004194d1.cpp'
         TestSource = '00/41/CCountedPointerstdvectorCCharString_Reset_004194d1_test.cpp'
         PassPattern = 'PASS_004194d1'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00412a50'
@@ -3160,6 +3225,7 @@ $catalog = @(
         Source = '00/41/vectorunsignedint_resize_00412a50.cpp'
         TestSource = '00/41/vectorunsignedint_resize_00412a50_test.cpp'
         PassPattern = 'PASS_00412a50'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00416056'
@@ -3167,6 +3233,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_InitEventPackageLoading_00416056.cpp'
         TestSource = '00/41/CMainGameComponent_InitEventPackageLoading_00416056_test.cpp'
         PassPattern = 'PASS_00416056'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00415940'
@@ -3174,6 +3241,7 @@ $catalog = @(
         Source = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_00415940.cpp'
         TestSource = '00/41/CLandscapeBackgroundPatch_vectordeletingdestructor_00415940_test.cpp'
         PassPattern = 'PASS_00415940'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041799b'
@@ -3181,6 +3249,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_ChangeTextureColourDepthCMainGameCom_0041799b.cpp'
         TestSource = '00/41/CMainGameComponent_ChangeTextureColourDepthCMainGameCom_0041799b_test.cpp'
         PassPattern = 'PASS_0041799b'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004195af'
@@ -3188,6 +3257,7 @@ $catalog = @(
         Source = '00/41/CCountedPointerstdvectorCCharString_Reset_004195af.cpp'
         TestSource = '00/41/CCountedPointerstdvectorCCharString_Reset_004195af_test.cpp'
         PassPattern = 'PASS_004195af'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00416c35'
@@ -3195,6 +3265,7 @@ $catalog = @(
         Source = '00/41/global_ConsoleForceUpdateTickSpeed_00416c35.cpp'
         TestSource = '00/41/global_ConsoleForceUpdateTickSpeed_00416c35_test.cpp'
         PassPattern = 'PASS_00416c35'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041bdf0'
@@ -3202,6 +3273,7 @@ $catalog = @(
         Source = '00/41/CGraphicFrameData_scalardeletingdestructor_0041bdf0.cpp'
         TestSource = '00/41/CGraphicFrameData_scalardeletingdestructor_0041bdf0_test.cpp'
         PassPattern = 'PASS_0041bdf0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004160cc'
@@ -3209,6 +3281,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_InitEventPackageSaving_004160cc.cpp'
         TestSource = '00/41/CMainGameComponent_InitEventPackageSaving_004160cc_test.cpp'
         PassPattern = 'PASS_004160cc'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004167da'
@@ -3216,6 +3289,7 @@ $catalog = @(
         Source = '00/41/global_AppReinitFunc_004167da.cpp'
         TestSource = '00/41/global_AppReinitFunc_004167da_test.cpp'
         PassPattern = 'PASS_004167da'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00412aa0'
@@ -3223,6 +3297,7 @@ $catalog = @(
         Source = '00/41/vectorEWeaponClass_UmoveEWeaponClass_00412aa0.cpp'
         TestSource = '00/41/vectorEWeaponClass_UmoveEWeaponClass_00412aa0_test.cpp'
         PassPattern = 'PASS_00412aa0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004161a7'
@@ -3230,6 +3305,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_AddEventPackageSetToSave_004161a7.cpp'
         TestSource = '00/41/CMainGameComponent_AddEventPackageSetToSave_004161a7_test.cpp'
         PassPattern = 'PASS_004161a7'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004129f0'
@@ -3237,6 +3313,7 @@ $catalog = @(
         Source = '00/41/vectorCBrainBehaviour_resize_004129f0.cpp'
         TestSource = '00/41/vectorCBrainBehaviour_resize_004129f0_test.cpp'
         PassPattern = 'PASS_004129f0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041674a'
@@ -3244,6 +3321,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_IsTimeForServerUpdate_0041674a.cpp'
         TestSource = '00/41/CMainGameComponent_IsTimeForServerUpdate_0041674a_test.cpp'
         PassPattern = 'PASS_0041674a'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041c4a0'
@@ -3251,6 +3329,7 @@ $catalog = @(
         Source = '00/41/CObject_CObject_0041c4a0.cpp'
         TestSource = '00/41/CObject_CObject_0041c4a0_test.cpp'
         PassPattern = 'PASS_0041c4a0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041c700'
@@ -3258,6 +3337,7 @@ $catalog = @(
         Source = '00/41/CGraphicFrame_UnInitialise_0041c700.cpp'
         TestSource = '00/41/CGraphicFrame_UnInitialise_0041c700_test.cpp'
         PassPattern = 'PASS_0041c700'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00416148'
@@ -3265,6 +3345,7 @@ $catalog = @(
         Source = '00/41/CMainGameComponent_GetEventPackageSetFromSave_00416148.cpp'
         TestSource = '00/41/CMainGameComponent_GetEventPackageSetFromSave_00416148_test.cpp'
         PassPattern = 'PASS_00416148'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042d405'
@@ -3272,6 +3353,7 @@ $catalog = @(
         Source = '00/42/CTCInventoryClothing_SetClothingMappingToMenuEntry_0042d405.cpp'
         TestSource = '00/42/CTCInventoryClothing_SetClothingMappingToMenuEntry_0042d405_test.cpp'
         PassPattern = 'PASS_0042d405'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042d41e'
@@ -3279,6 +3361,7 @@ $catalog = @(
         Source = '00/42/CTCInventoryClothing_SetClothingMappingToMenuEntry_0042d41e.cpp'
         TestSource = '00/42/CTCInventoryClothing_SetClothingMappingToMenuEntry_0042d41e_test.cpp'
         PassPattern = 'PASS_0042d41e'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042be11'
@@ -3286,6 +3369,7 @@ $catalog = @(
         Source = '00/42/CSurface_GetHeight_0042be11.cpp'
         TestSource = '00/42/CSurface_GetHeight_0042be11_test.cpp'
         PassPattern = 'PASS_0042be11'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042bed4'
@@ -3293,6 +3377,7 @@ $catalog = @(
         Source = '00/42/CBankFile_GetBankHandle_0042bed4.cpp'
         TestSource = '00/42/CBankFile_GetBankHandle_0042bed4_test.cpp'
         PassPattern = 'PASS_0042bed4'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042b587'
@@ -3300,6 +3385,7 @@ $catalog = @(
         Source = '00/42/global_Alloc_0042b587.cpp'
         TestSource = '00/42/global_Alloc_0042b587_test.cpp'
         PassPattern = 'PASS_0042b587'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042bdf0'
@@ -3307,6 +3393,7 @@ $catalog = @(
         Source = '00/42/global_Alloc_0042bdf0.cpp'
         TestSource = '00/42/global_Alloc_0042bdf0_test.cpp'
         PassPattern = 'PASS_0042bdf0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042be2f'
@@ -3314,6 +3401,7 @@ $catalog = @(
         Source = '00/42/global_Alloc_0042be2f.cpp'
         TestSource = '00/42/global_Alloc_0042be2f_test.cpp'
         PassPattern = 'PASS_0042be2f'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00429418'
@@ -3321,6 +3409,7 @@ $catalog = @(
         Source = '00/42/FindstdListuncheckediteratorstdListvalNUISystemCComponentstdallocatorNUISystemCComponentNUISystem_CComponent_00429418.cpp'
         TestSource = '00/42/FindstdListuncheckediteratorstdListvalNUISystemCComponentstdallocatorNUISystemCComponentNUISystem_CComponent_00429418_test.cpp'
         PassPattern = 'PASS_00429418'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042a77f'
@@ -3328,6 +3417,7 @@ $catalog = @(
         Source = '00/42/FindstdListuncheckediteratorstdListvalNUISystemCComponentstdallocatorNUISystemCComponentNUISystem_CComponent_0042a77f.cpp'
         TestSource = '00/42/FindstdListuncheckediteratorstdListvalNUISystemCComponentstdallocatorNUISystemCComponentNUISystem_CComponent_0042a77f_test.cpp'
         PassPattern = 'PASS_0042a77f'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004294ac'
@@ -3335,6 +3425,7 @@ $catalog = @(
         Source = '00/42/FindstdListuncheckediteratorstdListvalNUISystemCComponentstdallocatorNUISystemCComponentNUISystem_CComponent_004294ac.cpp'
         TestSource = '00/42/FindstdListuncheckediteratorstdListvalNUISystemCComponentstdallocatorNUISystemCComponentNUISystem_CComponent_004294ac_test.cpp'
         PassPattern = 'PASS_004294ac'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041e61b'
@@ -3342,6 +3433,7 @@ $catalog = @(
         Source = '00/41/CSpellContainerList_AddChild_0041e61b.cpp'
         TestSource = '00/41/CSpellContainerList_AddChild_0041e61b_test.cpp'
         PassPattern = 'PASS_0041e61b'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042aab3'
@@ -3349,6 +3441,7 @@ $catalog = @(
         Source = '00/42/lessCCharString_operator_0042aab3.cpp'
         TestSource = '00/42/lessCCharString_operator_0042aab3_test.cpp'
         PassPattern = 'PASS_0042aab3'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042c058'
@@ -3356,6 +3449,7 @@ $catalog = @(
         Source = '00/42/CompareDataOffset_operator_0042c058.cpp'
         TestSource = '00/42/CompareDataOffset_operator_0042c058_test.cpp'
         PassPattern = 'PASS_0042c058'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042b4c3'
@@ -3363,6 +3457,7 @@ $catalog = @(
         Source = '00/42/InsertstdListconstiteratorstdListvalCClassstd_allocatorCClass_0042b4c3.cpp'
         TestSource = '00/42/InsertstdListconstiteratorstdListvalCClassstd_allocatorCClass_0042b4c3_test.cpp'
         PassPattern = 'PASS_0042b4c3'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00429a2f'
@@ -3370,6 +3465,7 @@ $catalog = @(
         Source = '00/42/CAnimFilterNoGroup_Clone_00429a2f.cpp'
         TestSource = '00/42/CAnimFilterNoGroup_Clone_00429a2f_test.cpp'
         PassPattern = 'PASS_00429a2f'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00429a85'
@@ -3377,6 +3473,7 @@ $catalog = @(
         Source = '00/42/listNUISystemCList_begin_00429a85.cpp'
         TestSource = '00/42/listNUISystemCList_begin_00429a85_test.cpp'
         PassPattern = 'PASS_00429a85'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004299a8'
@@ -3384,6 +3481,7 @@ $catalog = @(
         Source = '00/42/global_SetIsUsingRelativeCoords_004299a8.cpp'
         TestSource = '00/42/global_SetIsUsingRelativeCoords_004299a8_test.cpp'
         PassPattern = 'PASS_004299a8'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041d8a8'
@@ -3391,6 +3489,7 @@ $catalog = @(
         Source = '00/41/CTCBoastingCrowdControl_OnKillCrowd_0041d8a8.cpp'
         TestSource = '00/41/CTCBoastingCrowdControl_OnKillCrowd_0041d8a8_test.cpp'
         PassPattern = 'PASS_0041d8a8'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042951b'
@@ -3398,6 +3497,7 @@ $catalog = @(
         Source = '00/42/CMemoryAllocatorVariableSize_RotateLeft_0042951b.cpp'
         TestSource = '00/42/CMemoryAllocatorVariableSize_RotateLeft_0042951b_test.cpp'
         PassPattern = 'PASS_0042951b'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00429c6f'
@@ -3405,6 +3505,7 @@ $catalog = @(
         Source = '00/42/CCountedPointerstdvectorCCharString_Reset_00429c6f.cpp'
         TestSource = '00/42/CCountedPointerstdvectorCCharString_Reset_00429c6f_test.cpp'
         PassPattern = 'PASS_00429c6f'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042d201'
@@ -3412,6 +3513,7 @@ $catalog = @(
         Source = '00/42/mapNUISystemCManagerEUsedKeys_operator_0042d201.cpp'
         TestSource = '00/42/mapNUISystemCManagerEUsedKeys_operator_0042d201_test.cpp'
         PassPattern = 'PASS_0042d201'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042d246'
@@ -3419,6 +3521,7 @@ $catalog = @(
         Source = '00/42/mapNUISystemCManagerEUsedKeys_operator_0042d246.cpp'
         TestSource = '00/42/mapNUISystemCManagerEUsedKeys_operator_0042d246_test.cpp'
         PassPattern = 'PASS_0042d246'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042b945'
@@ -3426,6 +3529,7 @@ $catalog = @(
         Source = '00/42/CEngineSceneGrid_GetCellBoundingBox_0042b945.cpp'
         TestSource = '00/42/CEngineSceneGrid_GetCellBoundingBox_0042b945_test.cpp'
         PassPattern = 'PASS_0042b945'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042d1b7'
@@ -3433,6 +3537,7 @@ $catalog = @(
         Source = '00/42/mapNUISystemCComponent_operator_0042d1b7.cpp'
         TestSource = '00/42/mapNUISystemCComponent_operator_0042d1b7_test.cpp'
         PassPattern = 'PASS_0042d1b7'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00429950'
@@ -3440,6 +3545,7 @@ $catalog = @(
         Source = '00/42/CBasicStringchar_operator_00429950.cpp'
         TestSource = '00/42/CBasicStringchar_operator_00429950_test.cpp'
         PassPattern = 'PASS_00429950'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0041e16e'
@@ -3447,6 +3553,7 @@ $catalog = @(
         Source = '00/41/CManager_IsKeyHeld_0041e16e.cpp'
         TestSource = '00/41/CManager_IsKeyHeld_0041e16e_test.cpp'
         PassPattern = 'PASS_0041e16e'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042d131'
@@ -3454,6 +3561,7 @@ $catalog = @(
         Source = '00/42/mapCCharString_operator_0042d131.cpp'
         TestSource = '00/42/mapCCharString_operator_0042d131_test.cpp'
         PassPattern = 'PASS_0042d131'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00434a00'
@@ -3461,6 +3569,7 @@ $catalog = @(
         Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00434a00.cpp'
         TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00434a00_test.cpp'
         PassPattern = 'PASS_00434a00'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042dbee'
@@ -3468,6 +3577,7 @@ $catalog = @(
         Source = '00/42/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_0042dbee.cpp'
         TestSource = '00/42/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_0042dbee_test.cpp'
         PassPattern = 'PASS_0042dbee'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00437820'
@@ -3475,6 +3585,7 @@ $catalog = @(
         Source = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00437820.cpp'
         TestSource = '00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00437820_test.cpp'
         PassPattern = 'PASS_00437820'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042dec5'
@@ -3482,6 +3593,7 @@ $catalog = @(
         Source = '00/42/CNewFrontendGameComponent_InitialiseInput_0042dec5.cpp'
         TestSource = '00/42/CNewFrontendGameComponent_InitialiseInput_0042dec5_test.cpp'
         PassPattern = 'PASS_0042dec5'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004374b0'
@@ -3489,6 +3601,7 @@ $catalog = @(
         Source = '00/43/CPlayerGui_Open_004374b0.cpp'
         TestSource = '00/43/CPlayerGui_Open_004374b0_test.cpp'
         PassPattern = 'PASS_004374b0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042dbd8'
@@ -3496,6 +3609,7 @@ $catalog = @(
         Source = '00/42/CNewFrontendGameComponent_ReleaseXMVCode_0042dbd8.cpp'
         TestSource = '00/42/CNewFrontendGameComponent_ReleaseXMVCode_0042dbd8_test.cpp'
         PassPattern = 'PASS_0042dbd8'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042f70b'
@@ -3503,6 +3617,7 @@ $catalog = @(
         Source = '00/42/global_CompileDefs_0042f70b.cpp'
         TestSource = '00/42/global_CompileDefs_0042f70b_test.cpp'
         PassPattern = 'PASS_0042f70b'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004374d0'
@@ -3510,6 +3625,7 @@ $catalog = @(
         Source = '00/43/CPlayerGui_ForceOpen_004374d0.cpp'
         TestSource = '00/43/CPlayerGui_ForceOpen_004374d0_test.cpp'
         PassPattern = 'PASS_004374d0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004372a0'
@@ -3517,6 +3633,7 @@ $catalog = @(
         Source = '00/43/CSubtitleRenderer_GetTextWidthFromText_004372a0.cpp'
         TestSource = '00/43/CSubtitleRenderer_GetTextWidthFromText_004372a0_test.cpp'
         PassPattern = 'PASS_004372a0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004354a0'
@@ -3524,6 +3641,7 @@ $catalog = @(
         Source = '00/43/CDisplayEngine_UninitEngineCDisplayEngineMAEXXZ_004354a0.cpp'
         TestSource = '00/43/CDisplayEngine_UninitEngineCDisplayEngineMAEXXZ_004354a0_test.cpp'
         PassPattern = 'PASS_004354a0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042fc66'
@@ -3531,6 +3649,7 @@ $catalog = @(
         Source = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0042fc66.cpp'
         TestSource = '00/42/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0042fc66_test.cpp'
         PassPattern = 'PASS_0042fc66'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00437040'
@@ -3538,6 +3657,7 @@ $catalog = @(
         Source = '00/43/CTCInventoryItem_OnDie_00437040.cpp'
         TestSource = '00/43/CTCInventoryItem_OnDie_00437040_test.cpp'
         PassPattern = 'PASS_00437040'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00437160'
@@ -3545,6 +3665,7 @@ $catalog = @(
         Source = '00/43/CDefaultEngineMemoryInit_ApplyCustomValue_00437160.cpp'
         TestSource = '00/43/CDefaultEngineMemoryInit_ApplyCustomValue_00437160_test.cpp'
         PassPattern = 'PASS_00437160'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042dae0'
@@ -3552,6 +3673,7 @@ $catalog = @(
         Source = '00/42/CEnginePrimitiveOcclusionManager_GetOccludedFrames_0042dae0.cpp'
         TestSource = '00/42/CEnginePrimitiveOcclusionManager_GetOccludedFrames_0042dae0_test.cpp'
         PassPattern = 'PASS_0042dae0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004331c0'
@@ -3559,6 +3681,7 @@ $catalog = @(
         Source = '00/43/CFrontEndDef_TransferCFrontEndDefUAEXAAVCPersistC_004331c0.cpp'
         TestSource = '00/43/CFrontEndDef_TransferCFrontEndDefUAEXAAVCPersistC_004331c0_test.cpp'
         PassPattern = 'PASS_004331c0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042fc13'
@@ -3566,6 +3689,7 @@ $catalog = @(
         Source = '00/42/CCountedPointerstdvectorCCharString_Reset_0042fc13.cpp'
         TestSource = '00/42/CCountedPointerstdvectorCCharString_Reset_0042fc13_test.cpp'
         PassPattern = 'PASS_0042fc13'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00433d3a'
@@ -3573,6 +3697,7 @@ $catalog = @(
         Source = '00/43/CCountedPointerstdvectorCCharString_Reset_00433d3a.cpp'
         TestSource = '00/43/CCountedPointerstdvectorCCharString_Reset_00433d3a_test.cpp'
         PassPattern = 'PASS_00433d3a'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00434c90'
@@ -3580,6 +3705,7 @@ $catalog = @(
         Source = '00/43/CDisplayEngine_EndScreenFadeOut_00434c90.cpp'
         TestSource = '00/43/CDisplayEngine_EndScreenFadeOut_00434c90_test.cpp'
         PassPattern = 'PASS_00434c90'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042f722'
@@ -3587,6 +3713,7 @@ $catalog = @(
         Source = '00/42/CNewFrontendGameComponent_InitialiseDefs_0042f722.cpp'
         TestSource = '00/42/CNewFrontendGameComponent_InitialiseDefs_0042f722_test.cpp'
         PassPattern = 'PASS_0042f722'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00430300'
@@ -3594,6 +3721,7 @@ $catalog = @(
         Source = '00/43/CTCInventoryItem_OnDie_00430300.cpp'
         TestSource = '00/43/CTCInventoryItem_OnDie_00430300_test.cpp'
         PassPattern = 'PASS_00430300'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00436560'
@@ -3601,6 +3729,7 @@ $catalog = @(
         Source = '00/43/CTCHeroStats_SoberUp_00436560.cpp'
         TestSource = '00/43/CTCHeroStats_SoberUp_00436560_test.cpp'
         PassPattern = 'PASS_00436560'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00431061'
@@ -3608,6 +3737,7 @@ $catalog = @(
         Source = '00/43/CEngineLightingManager_UpdateShadowScene_00431061.cpp'
         TestSource = '00/43/CEngineLightingManager_UpdateShadowScene_00431061_test.cpp'
         PassPattern = 'PASS_00431061'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00433227'
@@ -3615,6 +3745,7 @@ $catalog = @(
         Source = '00/43/global_GFSerialiseVectorBinaryOutCCharStrin_00433227.cpp'
         TestSource = '00/43/global_GFSerialiseVectorBinaryOutCCharStrin_00433227_test.cpp'
         PassPattern = 'PASS_00433227'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00437210'
@@ -3622,6 +3753,7 @@ $catalog = @(
         Source = '00/43/CFontBank_GetVStringWidth_00437210.cpp'
         TestSource = '00/43/CFontBank_GetVStringWidth_00437210_test.cpp'
         PassPattern = 'PASS_00437210'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00431f10'
@@ -3629,6 +3761,7 @@ $catalog = @(
         Source = '00/43/CThingBuildingDef_operator_00431f10.cpp'
         TestSource = '00/43/CThingBuildingDef_operator_00431f10_test.cpp'
         PassPattern = 'PASS_00431f10'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004375f0'
@@ -3636,6 +3769,7 @@ $catalog = @(
         Source = '00/43/CPlayerGui_SetVWindowForDeprecatedDrawInterface_004375f0.cpp'
         TestSource = '00/43/CPlayerGui_SetVWindowForDeprecatedDrawInterface_004375f0_test.cpp'
         PassPattern = 'PASS_004375f0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00437580'
@@ -3643,6 +3777,7 @@ $catalog = @(
         Source = '00/43/CPlayerGui_SetSpecialAbilityButtonsAsDisplaying_00437580.cpp'
         TestSource = '00/43/CPlayerGui_SetSpecialAbilityButtonsAsDisplaying_00437580_test.cpp'
         PassPattern = 'PASS_00437580'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00434ba0'
@@ -3650,6 +3785,7 @@ $catalog = @(
         Source = '00/43/CDisplayEngine_StartLetterBoxMode_00434ba0.cpp'
         TestSource = '00/43/CDisplayEngine_StartLetterBoxMode_00434ba0_test.cpp'
         PassPattern = 'PASS_00434ba0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00434d60'
@@ -3657,6 +3793,7 @@ $catalog = @(
         Source = '00/43/C3DAnimation2_CanRelocateData_00434d60.cpp'
         TestSource = '00/43/C3DAnimation2_CanRelocateData_00434d60_test.cpp'
         PassPattern = 'PASS_00434d60'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004330f0'
@@ -3664,6 +3801,7 @@ $catalog = @(
         Source = '00/43/CControlsDef_TransferCControlsDefUAEXAAVCPersistC_004330f0.cpp'
         TestSource = '00/43/CControlsDef_TransferCControlsDefUAEXAAVCPersistC_004330f0_test.cpp'
         PassPattern = 'PASS_004330f0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00435070'
@@ -3671,6 +3809,7 @@ $catalog = @(
         Source = '00/43/CGameScriptInterface_DisplayTutorial_00435070.cpp'
         TestSource = '00/43/CGameScriptInterface_DisplayTutorial_00435070_test.cpp'
         PassPattern = 'PASS_00435070'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00434870'
@@ -3678,6 +3817,7 @@ $catalog = @(
         Source = '00/43/CFadeInFadeOutBase_Update_00434870.cpp'
         TestSource = '00/43/CFadeInFadeOutBase_Update_00434870_test.cpp'
         PassPattern = 'PASS_00434870'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00434a30'
@@ -3685,6 +3825,7 @@ $catalog = @(
         Source = '00/43/CWorld_ProcessEvent_00434a30.cpp'
         TestSource = '00/43/CWorld_ProcessEvent_00434a30_test.cpp'
         PassPattern = 'batch8_part3_00434a30_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00433504'
@@ -3692,6 +3833,7 @@ $catalog = @(
         Source = '00/43/global_Fillnunsignedlongunsignedintunsigned_00433504.cpp'
         TestSource = '00/43/global_Fillnunsignedlongunsignedintunsigned_00433504_test.cpp'
         PassPattern = 'batch8_part3_00433504_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00433d8a'
@@ -3699,6 +3841,7 @@ $catalog = @(
         Source = '00/43/UninitcopyCArrayCRandomAppearanceMorphCBodyPartMeshCArrayclassCRandomAppearanceMorphCBodyPartMeshstdallocatorCArrayCRandomAppearanceMorph_CBodyPartMesh_00433d8a.cpp'
         TestSource = '00/43/UninitcopyCArrayCRandomAppearanceMorphCBodyPartMeshCArrayclassCRandomAppearanceMorphCBodyPartMeshstdallocatorCArrayCRandomAppearanceMorph_CBodyPartMesh_00433d8a_test.cpp'
         PassPattern = 'batch8_part3_00433d8a_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00434840'
@@ -3706,6 +3849,7 @@ $catalog = @(
         Source = '00/43/CEngine_StartNewScene_00434840.cpp'
         TestSource = '00/43/CEngine_StartNewScene_00434840_test.cpp'
         PassPattern = 'batch8_part3_00434840_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00431f60'
@@ -3713,6 +3857,7 @@ $catalog = @(
         Source = '00/43/CTCPhysicsBase_ConstructFromParams_00431f60.cpp'
         TestSource = '00/43/CTCPhysicsBase_ConstructFromParams_00431f60_test.cpp'
         PassPattern = 'batch8_part3_00431f60_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00433cec'
@@ -3720,6 +3865,7 @@ $catalog = @(
         Source = '00/43/CopyimplCArrayCRandomAppearanceMorphCBodyPartMeshCArrayclassCRandomAppearanceMorph_CBodyPartMesh_00433cec.cpp'
         TestSource = '00/43/CopyimplCArrayCRandomAppearanceMorphCBodyPartMeshCArrayclassCRandomAppearanceMorph_CBodyPartMesh_00433cec_test.cpp'
         PassPattern = 'batch8_part3_00433cec_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00431773'
@@ -3727,6 +3873,7 @@ $catalog = @(
         Source = '00/43/global_Alloc_00431773.cpp'
         TestSource = '00/43/global_Alloc_00431773_test.cpp'
         PassPattern = 'batch8_part3_00431773_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00431e40'
@@ -3734,6 +3881,7 @@ $catalog = @(
         Source = '00/43/CThingTrackNode_vectordeletingdestructor_00431e40.cpp'
         TestSource = '00/43/CThingTrackNode_vectordeletingdestructor_00431e40_test.cpp'
         PassPattern = 'batch8_part3_00431e40_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0043318d'
@@ -3741,6 +3889,7 @@ $catalog = @(
         Source = '00/43/CCreatureActionFireMissileWeapon_FrameUpdate_0043318d.cpp'
         TestSource = '00/43/CCreatureActionFireMissileWeapon_FrameUpdate_0043318d_test.cpp'
         PassPattern = 'batch8_part3_0043318d_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004331f9'
@@ -3748,6 +3897,7 @@ $catalog = @(
         Source = '00/43/CCreatureActionFireMissileWeapon_FrameUpdate_004331f9.cpp'
         TestSource = '00/43/CCreatureActionFireMissileWeapon_FrameUpdate_004331f9_test.cpp'
         PassPattern = 'batch8_part3_004331f9_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042dc63'
@@ -3755,6 +3905,7 @@ $catalog = @(
         Source = '00/42/CNewFrontendGameComponent_IsControllerDisconnected_0042dc63.cpp'
         TestSource = '00/42/CNewFrontendGameComponent_IsControllerDisconnected_0042dc63_test.cpp'
         PassPattern = 'batch8_part3_0042dc63_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004304a0'
@@ -3762,6 +3913,7 @@ $catalog = @(
         Source = '00/43/CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_004304a0.cpp'
         TestSource = '00/43/CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_004304a0_test.cpp'
         PassPattern = 'batch8_part3_004304a0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00431ed0'
@@ -3769,6 +3921,7 @@ $catalog = @(
         Source = '00/43/CParentDefClassBase_operator_00431ed0.cpp'
         TestSource = '00/43/CParentDefClassBase_operator_00431ed0_test.cpp'
         PassPattern = 'batch8_part3_00431ed0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00437670'
@@ -3776,6 +3929,7 @@ $catalog = @(
         Source = '00/43/CPlayerGui_DrawScreenFade_00437670.cpp'
         TestSource = '00/43/CPlayerGui_DrawScreenFade_00437670_test.cpp'
         PassPattern = 'batch8_part3_00437670_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042fb40'
@@ -3783,6 +3937,7 @@ $catalog = @(
         Source = '00/42/pairCCharString_swap_0042fb40.cpp'
         TestSource = '00/42/pairCCharString_swap_0042fb40_test.cpp'
         PassPattern = 'batch8_part3_0042fb40_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004372c0'
@@ -3790,6 +3945,7 @@ $catalog = @(
         Source = '00/43/vectorbool_operator_004372c0.cpp'
         TestSource = '00/43/vectorbool_operator_004372c0_test.cpp'
         PassPattern = 'batch8_part3_004372c0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004364c0'
@@ -3797,6 +3953,7 @@ $catalog = @(
         Source = '00/43/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_004364c0.cpp'
         TestSource = '00/43/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_004364c0_test.cpp'
         PassPattern = 'batch8_part3_004364c0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00438440'
@@ -3804,6 +3961,7 @@ $catalog = @(
         Source = '00/43/CPlayerGui_ForceClose_00438440.cpp'
         TestSource = '00/43/CPlayerGui_ForceClose_00438440_test.cpp'
         PassPattern = 'PASS_00438440'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004382c0'
@@ -3811,6 +3969,7 @@ $catalog = @(
         Source = '00/43/CWorldMap_PrepareForLoad_004382c0.cpp'
         TestSource = '00/43/CWorldMap_PrepareForLoad_004382c0_test.cpp'
         PassPattern = 'PASS_004382c0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00437950'
@@ -3818,6 +3977,7 @@ $catalog = @(
         Source = '00/43/CPlayerGui_OnHeroHit_00437950.cpp'
         TestSource = '00/43/CPlayerGui_OnHeroHit_00437950_test.cpp'
         PassPattern = 'PASS_00437950'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0043f720'
@@ -3825,6 +3985,7 @@ $catalog = @(
         Source = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_0043f720.cpp'
         TestSource = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_0043f720_test.cpp'
         PassPattern = 'PASS_0043f720'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004382e0'
@@ -3832,6 +3993,7 @@ $catalog = @(
         Source = '00/43/CPlayerGui_SetButtonAlpha_004382e0.cpp'
         TestSource = '00/43/CPlayerGui_SetButtonAlpha_004382e0_test.cpp'
         PassPattern = 'PASS_004382e0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004383d0'
@@ -3839,6 +4001,7 @@ $catalog = @(
         Source = '00/43/CGameScriptInterface_GiveHeroExpression_004383d0.cpp'
         TestSource = '00/43/CGameScriptInterface_GiveHeroExpression_004383d0_test.cpp'
         PassPattern = 'PASS_004383d0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0043f6c0'
@@ -3846,6 +4009,7 @@ $catalog = @(
         Source = '00/43/Uninitfillnstdpairunsignedint64CCountedPointerCActiveEntityScriptBaseunsignedint_pairunsignedint64classCCountedPointerclassCActiv_0043f6c0.cpp'
         TestSource = '00/43/Uninitfillnstdpairunsignedint64CCountedPointerCActiveEntityScriptBaseunsignedint_pairunsignedint64classCCountedPointerclassCActiv_0043f6c0_test.cpp'
         PassPattern = 'PASS_0043f6c0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00438400'
@@ -3853,6 +4017,7 @@ $catalog = @(
         Source = '00/43/CPlayerGui_Close_00438400.cpp'
         TestSource = '00/43/CPlayerGui_Close_00438400_test.cpp'
         PassPattern = 'batch9_part4_00438400_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0043f230'
@@ -3860,6 +4025,7 @@ $catalog = @(
         Source = '00/43/CGuiControlTreePane_SortTreeRecursively_0043f230.cpp'
         TestSource = '00/43/CGuiControlTreePane_SortTreeRecursively_0043f230_test.cpp'
         PassPattern = 'batch9_part4_0043f230_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0043f400'
@@ -3867,6 +4033,7 @@ $catalog = @(
         Source = '00/43/ConsvalstdallocatorstdpairCCharStringC3DVectorstdpairCCharStringC3DVectorstd_pairclassCCharStringclassC3DVector_0043f400.cpp'
         TestSource = '00/43/ConsvalstdallocatorstdpairCCharStringC3DVectorstdpairCCharStringC3DVectorstd_pairclassCCharStringclassC3DVector_0043f400_test.cpp'
         PassPattern = 'batch9_part4_0043f400_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0043e4d0'
@@ -3874,6 +4041,7 @@ $catalog = @(
         Source = '00/43/CFontBank_GetVStringWidth_0043e4d0.cpp'
         TestSource = '00/43/CFontBank_GetVStringWidth_0043e4d0_test.cpp'
         PassPattern = 'batch9_part4_0043e4d0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00445ba0'
@@ -3881,6 +4049,7 @@ $catalog = @(
         Source = '00/44/CTCShotDefinitionBase_CanBeHitByMeleeStrike_00445ba0.cpp'
         TestSource = '00/44/CTCShotDefinitionBase_CanBeHitByMeleeStrike_00445ba0_test.cpp'
         PassPattern = 'PASS_00445ba0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00445bb0'
@@ -3888,6 +4057,7 @@ $catalog = @(
         Source = '00/44/CTCShotDefinitionBase_CanBeHitByMeleeStrike_00445bb0.cpp'
         TestSource = '00/44/CTCShotDefinitionBase_CanBeHitByMeleeStrike_00445bb0_test.cpp'
         PassPattern = 'PASS_00445bb0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00445bc0'
@@ -3895,6 +4065,7 @@ $catalog = @(
         Source = '00/44/CTCShotDefinitionBase_CanBeHitByMeleeStrike_00445bc0.cpp'
         TestSource = '00/44/CTCShotDefinitionBase_CanBeHitByMeleeStrike_00445bc0_test.cpp'
         PassPattern = 'PASS_00445bc0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0044b110'
@@ -3902,6 +4073,7 @@ $catalog = @(
         Source = '00/44/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_Consval_0044b110.cpp'
         TestSource = '00/44/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_Consval_0044b110_test.cpp'
         PassPattern = 'PASS_0044b110'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00445940'
@@ -3909,6 +4081,7 @@ $catalog = @(
         Source = '00/44/CShaderPreParser_GetConstantCount_00445940.cpp'
         TestSource = '00/44/CShaderPreParser_GetConstantCount_00445940_test.cpp'
         PassPattern = 'PASS_00445940'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00445950'
@@ -3916,6 +4089,7 @@ $catalog = @(
         Source = '00/44/CShaderPreParser_GetConstantCount_00445950.cpp'
         TestSource = '00/44/CShaderPreParser_GetConstantCount_00445950_test.cpp'
         PassPattern = 'PASS_00445950'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00445630'
@@ -3923,6 +4097,7 @@ $catalog = @(
         Source = '00/44/CInputTypeXboxPadButtonEvent_IsInputTypeWithButton_00445630.cpp'
         TestSource = '00/44/CInputTypeXboxPadButtonEvent_IsInputTypeWithButton_00445630_test.cpp'
         PassPattern = 'PASS_00445630'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004456d0'
@@ -3937,6 +4112,7 @@ $catalog = @(
         Source = '00/44/CSpellContainerList_AddChild_00449b20.cpp'
         TestSource = '00/44/CSpellContainerList_AddChild_00449b20_test.cpp'
         PassPattern = 'PASS_00449b20'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004497c0'
@@ -3944,6 +4120,7 @@ $catalog = @(
         Source = '00/44/CPlayerManager_IsThingMainPlayer_004497c0.cpp'
         TestSource = '00/44/CPlayerManager_IsThingMainPlayer_004497c0_test.cpp'
         PassPattern = 'PASS_004497c0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0043f750'
@@ -3951,6 +4128,7 @@ $catalog = @(
         Source = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_0043f750.cpp'
         TestSource = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_0043f750_test.cpp'
         PassPattern = 'PASS_0043f750'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0043f980'
@@ -3958,6 +4136,7 @@ $catalog = @(
         Source = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_0043f980.cpp'
         TestSource = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_0043f980_test.cpp'
         PassPattern = 'PASS_0043f980'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00440ba0'
@@ -3965,6 +4144,7 @@ $catalog = @(
         Source = '00/44/Destroyrangestd_allocatorCSpeechFrame_00440ba0.cpp'
         TestSource = '00/44/Destroyrangestd_allocatorCSpeechFrame_00440ba0_test.cpp'
         PassPattern = 'PASS_00440ba0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00440bd0'
@@ -3972,6 +4152,7 @@ $catalog = @(
         Source = '00/44/Destroyrangestd_allocatorCSpeechFrame_00440bd0.cpp'
         TestSource = '00/44/Destroyrangestd_allocatorCSpeechFrame_00440bd0_test.cpp'
         PassPattern = 'PASS_00440bd0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00446b10'
@@ -3979,6 +4160,7 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_IsGameActionEventInQueue_00446b10.cpp'
         TestSource = '00/44/CGamePlayerInterface_IsGameActionEventInQueue_00446b10_test.cpp'
         PassPattern = 'PASS_00446b10'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00443190'
@@ -3986,6 +4168,7 @@ $catalog = @(
         Source = '00/44/CTCAssassinRush_FinishMove_00443190.cpp'
         TestSource = '00/44/CTCAssassinRush_FinishMove_00443190_test.cpp'
         PassPattern = 'PASS_00443190'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004431c0'
@@ -3993,6 +4176,7 @@ $catalog = @(
         Source = '00/44/CTCAssassinRush_FinishMove_004431c0.cpp'
         TestSource = '00/44/CTCAssassinRush_FinishMove_004431c0_test.cpp'
         PassPattern = 'PASS_004431c0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004431f0'
@@ -4000,6 +4184,7 @@ $catalog = @(
         Source = '00/44/CTCAssassinRush_FinishMove_004431f0.cpp'
         TestSource = '00/44/CTCAssassinRush_FinishMove_004431f0_test.cpp'
         PassPattern = 'PASS_004431f0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0044b120'
@@ -4007,6 +4192,7 @@ $catalog = @(
         Source = '00/44/UninitcopyCFeatDefCFeatDefstd_allocatorCFeatDef_0044b120.cpp'
         TestSource = '00/44/UninitcopyCFeatDefCFeatDefstd_allocatorCFeatDef_0044b120_test.cpp'
         PassPattern = 'PASS_0044b120'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00442870'
@@ -4014,6 +4200,7 @@ $catalog = @(
         Source = '00/44/CCombatWheel_ResetRings_00442870.cpp'
         TestSource = '00/44/CCombatWheel_ResetRings_00442870_test.cpp'
         PassPattern = 'PASS_00442870'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0044a530'
@@ -4021,6 +4208,7 @@ $catalog = @(
         Source = '00/44/CTCHeroExperience_UpdateAbilitiesForAllStats_0044a530.cpp'
         TestSource = '00/44/CTCHeroExperience_UpdateAbilitiesForAllStats_0044a530_test.cpp'
         PassPattern = 'PASS_0044a530'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004482c0'
@@ -4028,6 +4216,7 @@ $catalog = @(
         Source = '00/44/Uninitfillnstdpairunsignedint64CCountedPointerCActiveEntityScriptBaseunsignedint_pairunsignedint64classCCountedPointerclassCActiv_004482c0.cpp'
         TestSource = '00/44/Uninitfillnstdpairunsignedint64CCountedPointerCActiveEntityScriptBaseunsignedint_pairunsignedint64classCCountedPointerclassCActiv_004482c0_test.cpp'
         PassPattern = 'PASS_004482c0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004400c0'
@@ -4035,6 +4224,7 @@ $catalog = @(
         Source = '00/44/UninitcopystdVectorconstiteratorstdVectorvalCScriptThingstdallocatorCScriptThing_allocatorCScriptThing_004400c0.cpp'
         TestSource = '00/44/UninitcopystdVectorconstiteratorstdVectorvalCScriptThingstdallocatorCScriptThing_allocatorCScriptThing_004400c0_test.cpp'
         PassPattern = 'PASS_004400c0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00441380'
@@ -4042,6 +4232,7 @@ $catalog = @(
         Source = '00/44/CEngineScreenEffectOutlineGlow_FinishWithDynamicTextures_00441380.cpp'
         TestSource = '00/44/CEngineScreenEffectOutlineGlow_FinishWithDynamicTextures_00441380_test.cpp'
         PassPattern = 'PASS_00441380'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00445b40'
@@ -4049,6 +4240,7 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_LoadInitialInfo_00445b40.cpp'
         TestSource = '00/44/CGamePlayerInterface_LoadInitialInfo_00445b40_test.cpp'
         PassPattern = 'PASS_00445b40'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0044b150'
@@ -4056,6 +4248,7 @@ $catalog = @(
         Source = '00/44/global_Fillnunsignedlongunsignedintunsignedlong_0044b150.cpp'
         TestSource = '00/44/global_Fillnunsignedlongunsignedintunsignedlong_0044b150_test.cpp'
         PassPattern = 'PASS_0044b150'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0043f920'
@@ -4063,6 +4256,7 @@ $catalog = @(
         Source = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_0043f920.cpp'
         TestSource = '00/43/CLandscapeBackgroundPatch_vectordeletingdestructor_0043f920_test.cpp'
         PassPattern = 'PASS_0043f920'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0043fe40'
@@ -4070,6 +4264,7 @@ $catalog = @(
         Source = '00/43/CGuiControlTreePane_SortTreeRecursively_0043fe40.cpp'
         TestSource = '00/43/CGuiControlTreePane_SortTreeRecursively_0043fe40_test.cpp'
         PassPattern = 'PASS_0043fe40'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00440730'
@@ -4077,6 +4272,7 @@ $catalog = @(
         Source = '00/44/CGuiControlTreePane_SortTreeRecursively_00440730.cpp'
         TestSource = '00/44/CGuiControlTreePane_SortTreeRecursively_00440730_test.cpp'
         PassPattern = 'PASS_00440730'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00440770'
@@ -4084,6 +4280,7 @@ $catalog = @(
         Source = '00/44/CGuiControlTreePane_SortTreeRecursively_00440770.cpp'
         TestSource = '00/44/CGuiControlTreePane_SortTreeRecursively_00440770_test.cpp'
         PassPattern = 'PASS_00440770'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00449880'
@@ -4091,6 +4288,7 @@ $catalog = @(
         Source = '00/44/CPlayerManager_IsPlayer_00449880.cpp'
         TestSource = '00/44/CPlayerManager_IsPlayer_00449880_test.cpp'
         PassPattern = 'PASS_00449880'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00448910'
@@ -4098,6 +4296,7 @@ $catalog = @(
         Source = '00/44/global_CopyimplCNavigationPositionCNavigationPosition_00448910.cpp'
         TestSource = '00/44/global_CopyimplCNavigationPositionCNavigationPosition_00448910_test.cpp'
         PassPattern = 'PASS_00448910'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00449990'
@@ -4105,6 +4304,7 @@ $catalog = @(
         Source = '00/44/CPlayerManager_GetPlayerNumberFromJoystickDeviceNumber_00449990.cpp'
         TestSource = '00/44/CPlayerManager_GetPlayerNumberFromJoystickDeviceNumber_00449990_test.cpp'
         PassPattern = 'PASS_00449990'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00443c50'
@@ -4112,6 +4312,7 @@ $catalog = @(
         Source = '00/44/CEngineSubPrimitiveText_scalardeletingdestructor_00443c50.cpp'
         TestSource = '00/44/CEngineSubPrimitiveText_scalardeletingdestructor_00443c50_test.cpp'
         PassPattern = 'PASS_00443c50'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00443ca0'
@@ -4119,6 +4320,7 @@ $catalog = @(
         Source = '00/44/CEngineSubPrimitiveText_scalardeletingdestructor_00443ca0.cpp'
         TestSource = '00/44/CEngineSubPrimitiveText_scalardeletingdestructor_00443ca0_test.cpp'
         PassPattern = 'PASS_00443ca0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0043fdf0'
@@ -4126,6 +4328,7 @@ $catalog = @(
         Source = '00/43/CNavigatorQueueManager_FrameUpdate_0043fdf0.cpp'
         TestSource = '00/43/CNavigatorQueueManager_FrameUpdate_0043fdf0_test.cpp'
         PassPattern = 'PASS_0043fdf0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004496b0'
@@ -4133,6 +4336,7 @@ $catalog = @(
         Source = '00/44/CAIStateGroupIdleAtHome_InitCreaturePosition_004496b0.cpp'
         TestSource = '00/44/CAIStateGroupIdleAtHome_InitCreaturePosition_004496b0_test.cpp'
         PassPattern = 'PASS_004496b0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004499e0'
@@ -4140,6 +4344,7 @@ $catalog = @(
         Source = '00/44/CPlayerManager_IsPlayerAssociatedWithJoystickDeviceNumber_004499e0.cpp'
         TestSource = '00/44/CPlayerManager_IsPlayerAssociatedWithJoystickDeviceNumber_004499e0_test.cpp'
         PassPattern = 'batch10_part4_004499e0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00445e90'
@@ -4147,6 +4352,7 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_IsAssignableSpecialMoveButtonInQueue_00445e90.cpp'
         TestSource = '00/44/CGamePlayerInterface_IsAssignableSpecialMoveButtonInQueue_00445e90_test.cpp'
         PassPattern = 'batch10_part4_00445e90_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004460c0'
@@ -4154,6 +4360,7 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_IsAssignableSpecialMoveButtonInQueue_004460c0.cpp'
         TestSource = '00/44/CGamePlayerInterface_IsAssignableSpecialMoveButtonInQueue_004460c0_test.cpp'
         PassPattern = 'batch10_part4_004460c0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004461d0'
@@ -4161,6 +4368,7 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_IsAssignableSpecialMoveButtonInQueue_004461d0.cpp'
         TestSource = '00/44/CGamePlayerInterface_IsAssignableSpecialMoveButtonInQueue_004461d0_test.cpp'
         PassPattern = 'batch10_part4_004461d0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004425c0'
@@ -4168,6 +4376,7 @@ $catalog = @(
         Source = '00/44/CWound_Kill_004425c0.cpp'
         TestSource = '00/44/CWound_Kill_004425c0_test.cpp'
         PassPattern = 'batch10_part4_004425c0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004498c0'
@@ -4175,6 +4384,7 @@ $catalog = @(
         Source = '00/44/CPlayerManager_GetPlayer_004498c0.cpp'
         TestSource = '00/44/CPlayerManager_GetPlayer_004498c0_test.cpp'
         PassPattern = 'batch10_part4_004498c0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00449910'
@@ -4182,6 +4392,7 @@ $catalog = @(
         Source = '00/44/CPlayerManager_GetPlayer_00449910.cpp'
         TestSource = '00/44/CPlayerManager_GetPlayer_00449910_test.cpp'
         PassPattern = 'batch10_part4_00449910_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00443140'
@@ -4189,6 +4400,7 @@ $catalog = @(
         Source = '00/44/CEngineScreenEffectDisplacementRenderer_FinishWithDynamicTextures_00443140.cpp'
         TestSource = '00/44/CEngineScreenEffectDisplacementRenderer_FinishWithDynamicTextures_00443140_test.cpp'
         PassPattern = 'batch10_part4_00443140_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00448860'
@@ -4196,6 +4408,7 @@ $catalog = @(
         Source = '00/44/Destroyrangestdallocatorstd_pairCCharStringCCountedPointerCEntityScriptBindi_00448860.cpp'
         TestSource = '00/44/Destroyrangestdallocatorstd_pairCCharStringCCountedPointerCEntityScriptBindi_00448860_test.cpp'
         PassPattern = 'batch10_part4_00448860_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00448380'
@@ -4203,6 +4416,7 @@ $catalog = @(
         Source = '00/44/CItem_operator_00448380.cpp'
         TestSource = '00/44/CItem_operator_00448380_test.cpp'
         PassPattern = 'batch10_part4_00448380_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00447c80'
@@ -4210,6 +4424,7 @@ $catalog = @(
         Source = '00/44/CVectorMaplong_LowerBound_00447c80.cpp'
         TestSource = '00/44/CVectorMaplong_LowerBound_00447c80_test.cpp'
         PassPattern = 'batch10_part4_00447c80_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00445bd0'
@@ -4217,6 +4432,7 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_IsEventGameAction_00445bd0.cpp'
         TestSource = '00/44/CGamePlayerInterface_IsEventGameAction_00445bd0_test.cpp'
         PassPattern = 'batch10_part4_00445bd0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00445ae0'
@@ -4224,6 +4440,7 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_SaveInitialInfo_00445ae0.cpp'
         TestSource = '00/44/CGamePlayerInterface_SaveInitialInfo_00445ae0_test.cpp'
         PassPattern = 'batch10_part4_00445ae0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004488b0'
@@ -4231,6 +4448,7 @@ $catalog = @(
         Source = '00/44/Destroyrangestdallocatorstd_pairlongCCountedPointerCRegionConnectionNode_004488b0.cpp'
         TestSource = '00/44/Destroyrangestdallocatorstd_pairlongCCountedPointerCRegionConnectionNode_004488b0_test.cpp'
         PassPattern = 'batch10_part4_004488b0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00442770'
@@ -4238,6 +4456,7 @@ $catalog = @(
         Source = '00/44/vectorunsignedint_resize_00442770.cpp'
         TestSource = '00/44/vectorunsignedint_resize_00442770_test.cpp'
         PassPattern = 'batch10_part4_00442770_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00445e30'
@@ -4245,6 +4464,7 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_IsEventAssignableSpecialMoveButton_00445e30.cpp'
         TestSource = '00/44/CGamePlayerInterface_IsEventAssignableSpecialMoveButton_00445e30_test.cpp'
         PassPattern = 'batch10_part4_00445e30_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00445ee0'
@@ -4252,6 +4472,7 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_GetAssignableSpecialMoveIndexForButton_00445ee0.cpp'
         TestSource = '00/44/CGamePlayerInterface_GetAssignableSpecialMoveIndexForButton_00445ee0_test.cpp'
         PassPattern = 'batch10_part4_00445ee0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00445f40'
@@ -4259,6 +4480,7 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_GetAssignableSpecialMoveIndexForButton_00445f40.cpp'
         TestSource = '00/44/CGamePlayerInterface_GetAssignableSpecialMoveIndexForButton_00445f40_test.cpp'
         PassPattern = 'batch10_part4_00445f40_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00445fa0'
@@ -4266,6 +4488,7 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_GetAssignableSpecialMoveIndexForButton_00445fa0.cpp'
         TestSource = '00/44/CGamePlayerInterface_GetAssignableSpecialMoveIndexForButton_00445fa0_test.cpp'
         PassPattern = 'batch10_part4_00445fa0_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0044a140'
@@ -4273,6 +4496,7 @@ $catalog = @(
         Source = '00/44/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_0044a140.cpp'
         TestSource = '00/44/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_0044a140_test.cpp'
         PassPattern = 'batch10_part4_0044a140_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00446000'
@@ -4280,6 +4504,7 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_IsEventContextSensitiveItemButton_00446000.cpp'
         TestSource = '00/44/CGamePlayerInterface_IsEventContextSensitiveItemButton_00446000_test.cpp'
         PassPattern = 'batch10_part4_00446000_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00446060'
@@ -4287,6 +4512,7 @@ $catalog = @(
         Source = '00/44/CGamePlayerInterface_IsOtherQuickAccessItemButtonHeld_00446060.cpp'
         TestSource = '00/44/CGamePlayerInterface_IsOtherQuickAccessItemButtonHeld_00446060_test.cpp'
         PassPattern = 'batch10_part4_00446060_pass'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0044c158'
@@ -4987,6 +5213,7 @@ $catalog = @(
         Source = '00/45/DestvalstdallocatorstdpairEAnimComponentCIVCountedPointerCAnimComponentBasestd_pairEAnimComponentCIVCountedPointerCAnimComponen_00450bba.cpp'
         TestSource = '00/45/DestvalstdallocatorstdpairEAnimComponentCIVCountedPointerCAnimComponentBasestd_pairEAnimComponentCIVCountedPointerCAnimComponen_00450bba_test.cpp'
         PassPattern = 'Destval_00450bba_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00450e92'
@@ -5204,6 +5431,7 @@ $catalog = @(
         Source = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_0044fd16.cpp'
         TestSource = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_0044fd16_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_0044fd16_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0044fd55'
@@ -5211,6 +5439,7 @@ $catalog = @(
         Source = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_0044fd55.cpp'
         TestSource = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_0044fd55_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_0044fd55_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0044fd94'
@@ -5218,6 +5447,7 @@ $catalog = @(
         Source = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_0044fd94.cpp'
         TestSource = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_0044fd94_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_0044fd94_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0044fe12'
@@ -5225,6 +5455,7 @@ $catalog = @(
         Source = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_0044fe12.cpp'
         TestSource = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_0044fe12_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_0044fe12_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004525a3'
@@ -7444,6 +7675,7 @@ $catalog = @(
         Source = '00/88/CGameScriptInterface_EntityClearMaxNumberOfAttackers_0088ec70.cpp'
         TestSource = '00/88/CGameScriptInterface_EntityClearMaxNumberOfAttackers_0088ec70_test.cpp'
         PassPattern = 'CGameScriptInterface_0088ec70_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0088e090'
@@ -7486,6 +7718,7 @@ $catalog = @(
         Source = '00/88/CGameScriptInterface_GiveHeroTitle_0088e110.cpp'
         TestSource = '00/88/CGameScriptInterface_GiveHeroTitle_0088e110_test.cpp'
         PassPattern = 'CGameScriptInterface_0088e110_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008a9db0'
@@ -7535,6 +7768,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_DisplacementMonochromeEffectColourFadeTo_008901c0.cpp'
         TestSource = '00/89/CGameScriptInterface_DisplacementMonochromeEffectColourFadeTo_008901c0_test.cpp'
         PassPattern = 'CGameScriptInterface_008901c0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00891c60'
@@ -8144,6 +8378,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_IsHeroAllowedHenchmenInCurrentRegion_00891ea0.cpp'
         TestSource = '00/89/CGameScriptInterface_IsHeroAllowedHenchmenInCurrentRegion_00891ea0_test.cpp'
         PassPattern = 'FSE2_00891ea0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00891ef0'
@@ -8151,6 +8386,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_IsHeroAllowedHenchmenInRegion_00891ef0.cpp'
         TestSource = '00/89/CGameScriptInterface_IsHeroAllowedHenchmenInRegion_00891ef0_test.cpp'
         PassPattern = 'FSE2_00891ef0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00892280'
@@ -8179,6 +8415,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_CameraUseCameraPoint_008922f0.cpp'
         TestSource = '00/89/CGameScriptInterface_CameraUseCameraPoint_008922f0_test.cpp'
         PassPattern = 'FSE2_008922f0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00892380'
@@ -8186,6 +8423,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_CameraUseCameraPoint_00892380.cpp'
         TestSource = '00/89/CGameScriptInterface_CameraUseCameraPoint_00892380_test.cpp'
         PassPattern = 'FSE2_00892380_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00892410'
@@ -8193,6 +8431,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_CameraMoveToPosAndLookAtPos_00892410.cpp'
         TestSource = '00/89/CGameScriptInterface_CameraMoveToPosAndLookAtPos_00892410_test.cpp'
         PassPattern = 'FSE2_00892410_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008924b0'
@@ -8200,6 +8439,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_CameraMoveToPosAndLookAtThing_008924b0.cpp'
         TestSource = '00/89/CGameScriptInterface_CameraMoveToPosAndLookAtThing_008924b0_test.cpp'
         PassPattern = 'FSE2_008924b0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00891b50'
@@ -8319,6 +8559,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetDeathRecoveryMarkerName_00896ee0.cpp'
         TestSource = '00/89/CGameScriptInterface_GetDeathRecoveryMarkerName_00896ee0_test.cpp'
         PassPattern = 'FSE2_00896ee0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00896f60'
@@ -8347,6 +8588,7 @@ $catalog = @(
         Source = '00/54/CFrontEndList_ScrollUp_0054c4c0.cpp'
         TestSource = '00/54/CFrontEndList_ScrollUp_0054c4c0_test.cpp'
         PassPattern = 'FSE2_0054c4c0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0052d9e0'
@@ -8354,6 +8596,7 @@ $catalog = @(
         Source = '00/52/CFrontEndManager_Initialize_0052d9e0.cpp'
         TestSource = '00/52/CFrontEndManager_Initialize_0052d9e0_test.cpp'
         PassPattern = 'FRONTEND_0052d9e0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0052da20'
@@ -8361,6 +8604,7 @@ $catalog = @(
         Source = '00/52/CObserver_ObserveEvent_0052da20.cpp'
         TestSource = '00/52/CObserver_ObserveEvent_0052da20_test.cpp'
         PassPattern = 'OBSERVER_0052da20_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00661d20'
@@ -8368,6 +8612,7 @@ $catalog = @(
         Source = '00/66/CFrontEndManager_CreateComponent_00661d20.cpp'
         TestSource = '00/66/CFrontEndManager_CreateComponent_00661d20_test.cpp'
         PassPattern = 'FRONTEND_00661d20_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0054c810'
@@ -8375,6 +8620,7 @@ $catalog = @(
         Source = '00/54/CFrontEndList_ScrollDown_0054c810.cpp'
         TestSource = '00/54/CFrontEndList_ScrollDown_0054c810_test.cpp'
         PassPattern = 'FRONTEND_0054c810_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0054c480'
@@ -8382,6 +8628,7 @@ $catalog = @(
         Source = '00/54/CFrontEndList_InitialiseOffsets_0054c480.cpp'
         TestSource = '00/54/CFrontEndList_InitialiseOffsets_0054c480_test.cpp'
         PassPattern = 'FSE2_0054c480_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00595845'
@@ -8389,6 +8636,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_GotoNewProfileScreen_00595845.cpp'
         TestSource = '00/59/CFrontEndManager_GotoNewProfileScreen_00595845_test.cpp'
         PassPattern = 'FSE2_00595845_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005957d9'
@@ -8396,6 +8644,7 @@ $catalog = @(
         Source = '00/59/CUserProfileManager_VerifyAndLoadProfile_005957d9.cpp'
         TestSource = '00/59/CUserProfileManager_VerifyAndLoadProfile_005957d9_test.cpp'
         PassPattern = 'FSE2_005957d9_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0047ed0a'
@@ -8403,6 +8652,7 @@ $catalog = @(
         Source = '00/47/CUserProfileManager_ValidateSaveFile_0047ed0a.cpp'
         TestSource = '00/47/CUserProfileManager_ValidateSaveFile_0047ed0a_test.cpp'
         PassPattern = 'FSE2_0047ed0a_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005958f5'
@@ -8410,6 +8660,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_Init_005958f5.cpp'
         TestSource = '00/59/CFrontEndManager_Init_005958f5_test.cpp'
         PassPattern = 'FSE2_005958f5_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005952c3'
@@ -8424,6 +8675,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_Draw_00595222.cpp'
         TestSource = '00/59/CFrontEndManager_Draw_00595222_test.cpp'
         PassPattern = 'FSE2_00595222_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005952d8'
@@ -8431,6 +8683,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_DeactivateAllEditBoxes_005952d8.cpp'
         TestSource = '00/59/CFrontEndManager_DeactivateAllEditBoxes_005952d8_test.cpp'
         PassPattern = 'FSE2_005952d8_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00595356'
@@ -8438,6 +8691,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_ResetSlidersToProfileValues_00595356.cpp'
         TestSource = '00/59/CFrontEndManager_ResetSlidersToProfileValues_00595356_test.cpp'
         PassPattern = 'FSE2_00595356_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005953e2'
@@ -8445,6 +8699,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_CFrontEndManager_005953e2.cpp'
         TestSource = '00/59/CFrontEndManager_CFrontEndManager_005953e2_test.cpp'
         PassPattern = 'FSE2_005953e2_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00595582'
@@ -8466,6 +8721,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_AddPrefixToTitleBar_00595ad9.cpp'
         TestSource = '00/59/CFrontEndManager_AddPrefixToTitleBar_00595ad9_test.cpp'
         PassPattern = 'FSE2_00595ad9_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00595a06'
@@ -8473,6 +8729,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_SetMainMenuDefName_00595a06.cpp'
         TestSource = '00/59/CFrontEndManager_SetMainMenuDefName_00595a06_test.cpp'
         PassPattern = 'FSE2_00595a06_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00595b24'
@@ -8480,6 +8737,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_AddProfileNameToScreens_00595b24.cpp'
         TestSource = '00/59/CFrontEndManager_AddProfileNameToScreens_00595b24_test.cpp'
         PassPattern = 'FSE2_00595b24_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005966f2'
@@ -8487,6 +8745,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_CanAcceptOptionChanges_005966f2.cpp'
         TestSource = '00/59/CFrontEndManager_CanAcceptOptionChanges_005966f2_test.cpp'
         PassPattern = 'FSE2_005966f2_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0059630e'
@@ -8494,6 +8753,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_SetScoreboardEditBox_0059630e.cpp'
         TestSource = '00/59/CFrontEndManager_SetScoreboardEditBox_0059630e_test.cpp'
         PassPattern = 'FSE2_0059630e_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00596379'
@@ -8501,6 +8761,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_GetScoreboardEditBox_00596379.cpp'
         TestSource = '00/59/CFrontEndManager_GetScoreboardEditBox_00596379_test.cpp'
         PassPattern = 'FSE2_00596379_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0059672a'
@@ -8508,6 +8769,7 @@ $catalog = @(
         Source = '00/59/FrontEnd_FrameUpdate_0059672a.cpp'
         TestSource = '00/59/FrontEnd_FrameUpdate_0059672a_test.cpp'
         PassPattern = 'FSE2_0059672a_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005963db'
@@ -8515,6 +8777,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_SetScoreboardOptionsFromProfile_005963db.cpp'
         TestSource = '00/59/CFrontEndManager_SetScoreboardOptionsFromProfile_005963db_test.cpp'
         PassPattern = 'FSE2_005963db_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00596550'
@@ -8522,6 +8785,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_GetScoreboardOptionsToProfile_00596550.cpp'
         TestSource = '00/59/CFrontEndManager_GetScoreboardOptionsToProfile_00596550_test.cpp'
         PassPattern = 'FSE2_00596550_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00596763'
@@ -8529,6 +8793,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_GotoNextScreen_00596763.cpp'
         TestSource = '00/59/CFrontEndManager_GotoNextScreen_00596763_test.cpp'
         PassPattern = 'FSE2_00596763_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0059686d'
@@ -8536,6 +8801,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_GotoSpecificPreviousScreen_0059686d.cpp'
         TestSource = '00/59/CFrontEndManager_GotoSpecificPreviousScreen_0059686d_test.cpp'
         PassPattern = 'FRONTEND_0059686d_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00596917'
@@ -8543,6 +8809,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_LaunchVirtualKeyboard_00596917.cpp'
         TestSource = '00/59/CFrontEndManager_LaunchVirtualKeyboard_00596917_test.cpp'
         PassPattern = 'FRONTEND_00596917_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0059697a'
@@ -8550,6 +8817,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_CreateNewProfile_0059697a.cpp'
         TestSource = '00/59/CFrontEndManager_CreateNewProfile_0059697a_test.cpp'
         PassPattern = 'FSE2_0059697a_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00596a68'
@@ -8557,6 +8825,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_CreateFrontEndButtonComponent_00596a68.cpp'
         TestSource = '00/59/CFrontEndManager_CreateFrontEndButtonComponent_00596a68_test.cpp'
         PassPattern = 'FRONTEND_00596a68_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00596cce'
@@ -8564,6 +8833,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_RefreshAvailableProfiles_00596cce.cpp'
         TestSource = '00/59/CFrontEndManager_RefreshAvailableProfiles_00596cce_test.cpp'
         PassPattern = 'FSE2_00596CCE_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0059a238'
@@ -8571,6 +8841,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_Action_0059a238.cpp'
         TestSource = '00/59/CFrontEndManager_Action_0059a238_test.cpp'
         PassPattern = 'FRONTEND_ACTION_0059A238_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00597006'
@@ -8578,6 +8849,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_RefreshAvailableProfilesForDelete_00597006.cpp'
         TestSource = '00/59/CFrontEndManager_RefreshAvailableProfilesForDelete_00597006_test.cpp'
         PassPattern = 'FRONTEND_00597006_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0059899a'
@@ -8585,6 +8857,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_LoadProfile_0059899a.cpp'
         TestSource = '00/59/CFrontEndManager_LoadProfile_0059899a_test.cpp'
         PassPattern = 'FSE2_0059899a_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00599d5c'
@@ -8592,6 +8865,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_DoPressStart_00599d5c.cpp'
         TestSource = '00/59/CFrontEndManager_DoPressStart_00599d5c_test.cpp'
         PassPattern = 'FSE2_00599d5c_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0059a8f3'
@@ -8599,6 +8873,7 @@ $catalog = @(
         Source = '00/59/FrontEndDequeIterator_Distance_0059a8f3.cpp'
         TestSource = '00/59/FrontEndDequeIterator_Distance_0059a8f3_test.cpp'
         PassPattern = 'FRONTEND_0059a8f3_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0059aa64'
@@ -8606,6 +8881,7 @@ $catalog = @(
         Source = '00/59/FrontEndHistoryDeque_FreeBlocks_0059aa64.cpp'
         TestSource = '00/59/FrontEndHistoryDeque_FreeBlocks_0059aa64_test.cpp'
         PassPattern = 'FRONTEND_0059aa64_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0059aa43'
@@ -8613,6 +8889,7 @@ $catalog = @(
         Source = '00/59/FrontEndHistoryDeque_AllocateBlocks_0059aa43.cpp'
         TestSource = '00/59/FrontEndHistoryDeque_AllocateBlocks_0059aa43_test.cpp'
         PassPattern = 'FRONTEND_0059aa43_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0059a9e0'
@@ -8711,6 +8988,7 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_GotoPreviousScreen_00597bf2.cpp'
         TestSource = '00/59/CFrontEndManager_GotoPreviousScreen_00597bf2_test.cpp'
         PassPattern = 'FSE2_00597bf2_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008912a0'
@@ -27087,6 +27365,7 @@ $catalog = @(
         Source = '00/49/CProgressDisplay_Constructor_00499ce0.cpp'
         TestSource = '00/49/CProgressDisplay_Constructor_00499ce0_test.cpp'
         PassPattern = 'FABLETLC_PROGRESS_DISPLAY_CONSTRUCTOR_BEHAVIOR PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '009e9fd0'
@@ -27717,6 +27996,7 @@ $catalog = @(
         Source = '00/9e/Global_GetProgressDisplay_009ea060.cpp'
         TestSource = '00/9e/Global_GetProgressDisplay_009ea060_test.cpp'
         PassPattern = 'FABLETLC_GET_PROGRESS_DISPLAY_BEHAVIOR PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00595a03'
@@ -30692,6 +30972,7 @@ $catalog = @(
         Source = '00/9b/CDisplayManager_SwapScreens_009beeb0.cpp'
         TestSource = '00/9b/CDisplayManager_SwapScreens_009beeb0_test.cpp'
         PassPattern = 'FABLETLC_DISPLAY_SWAP_SCREENS_BEHAVIOR PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '009bf160'
@@ -30706,6 +30987,7 @@ $catalog = @(
         Source = '00/9b/CDisplayManager_SetViewportInteger_009bef80.cpp'
         TestSource = '00/9b/CDisplayManager_SetViewportInteger_009bef80_test.cpp'
         PassPattern = 'FABLETLC_DISPLAY_INTEGER_VIEWPORT_BEHAVIOR PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00a0aac0'
@@ -30713,6 +30995,7 @@ $catalog = @(
         Source = '00/a0/Global_FableViewportE2_00a0aac0.cpp'
         TestSource = '00/a0/Global_FableViewportE2_00a0aac0_test.cpp'
         PassPattern = 'FABLETLC_VIEWPORT_E2_BEHAVIOR PASS'
+        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '009bf490'
@@ -30720,6 +31003,7 @@ $catalog = @(
         Source = '00/9b/CDisplayManager_SetViewport_009bf490.cpp'
         TestSource = '00/9b/CDisplayManager_SetViewport_009bf490_test.cpp'
         PassPattern = 'FABLETLC_DISPLAY_FLOAT_VIEWPORT_BEHAVIOR PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00a05840'
@@ -30944,6 +31228,7 @@ $catalog = @(
         Source = '00/9e/CPixelFormat_InitialiseD3DFormat_009e3830.cpp'
         TestSource = '00/9e/CPixelFormat_InitialiseD3DFormat_009e3830_test.cpp'
         PassPattern = 'FABLETLC_PIXEL_FORMAT_INITIALISE PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '009df060'
@@ -31854,6 +32139,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_CameraMoveBetweenLookingAt_00892530.cpp'
         TestSource = '00/89/CGameScriptInterface_CameraMoveBetweenLookingAt_00892530_test.cpp'
         PassPattern = 'FSE2_00892530_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00594f36'
@@ -31868,6 +32154,7 @@ $catalog = @(
         Source = '00/85/CVirtualKeyboard_GetProfileName_00851890.cpp'
         TestSource = '00/85/CVirtualKeyboard_GetProfileName_00851890_test.cpp'
         PassPattern = 'FSE2_00851890_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0054e3d0'
@@ -31875,6 +32162,7 @@ $catalog = @(
         Source = '00/54/CFrontEndScreen_CFrontEndScreen_0054e3d0.cpp'
         TestSource = '00/54/CFrontEndScreen_CFrontEndScreen_0054e3d0_test.cpp'
         PassPattern = 'FSE2_0054e3d0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00892610'
@@ -31882,6 +32170,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_CameraMoveBetweenLookFromAndLookTo_00892610.cpp'
         TestSource = '00/89/CGameScriptInterface_CameraMoveBetweenLookFromAndLookTo_00892610_test.cpp'
         PassPattern = 'FSE2_00892610_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00494520'
@@ -31889,6 +32178,7 @@ $catalog = @(
         Source = '00/49/CFrontendGameComponent_GetMaxVisibleProfileNumber_00494520.cpp'
         TestSource = '00/49/CFrontendGameComponent_GetMaxVisibleProfileNumber_00494520_test.cpp'
         PassPattern = 'FRONTEND_00494520_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0054e450'
@@ -31896,6 +32186,7 @@ $catalog = @(
         Source = '00/54/CFrontEndScreen_dtor_0054e450.cpp'
         TestSource = '00/54/CFrontEndScreen_dtor_0054e450_test.cpp'
         PassPattern = 'FSE2_0054e450_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008926d0'
@@ -31903,6 +32194,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_CameraMoveBetweenLookingAt_008926d0.cpp'
         TestSource = '00/89/CGameScriptInterface_CameraMoveBetweenLookingAt_008926d0_test.cpp'
         PassPattern = 'FSE2_008926d0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00494560'
@@ -31910,6 +32202,7 @@ $catalog = @(
         Source = '00/49/CFrontendGameComponent_ShowMoreProfiles_00494560.cpp'
         TestSource = '00/49/CFrontendGameComponent_ShowMoreProfiles_00494560_test.cpp'
         PassPattern = 'FRONTEND_00494560_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0054e4b0'
@@ -31917,6 +32210,7 @@ $catalog = @(
         Source = '00/54/CFrontEndScreen_Initialise_0054e4b0.cpp'
         TestSource = '00/54/CFrontEndScreen_Initialise_0054e4b0_test.cpp'
         PassPattern = 'FSE2_0054e4b0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00494680'
@@ -31924,6 +32218,7 @@ $catalog = @(
         Source = '00/49/CFrontendGameComponent_GetMaxVisibleProfileNumber_00494680.cpp'
         TestSource = '00/49/CFrontendGameComponent_GetMaxVisibleProfileNumber_00494680_test.cpp'
         PassPattern = 'FRONTEND_00494680_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00892b50'
@@ -31931,6 +32226,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_CameraCircleAroundThing_00892b50.cpp'
         TestSource = '00/89/CGameScriptInterface_CameraCircleAroundThing_00892b50_test.cpp'
         PassPattern = 'FSE2_00892b50_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004946c0'
@@ -31938,6 +32234,7 @@ $catalog = @(
         Source = '00/49/CFrontendGameComponent_ShowMoreProfiles_004946c0.cpp'
         TestSource = '00/49/CFrontendGameComponent_ShowMoreProfiles_004946c0_test.cpp'
         PassPattern = 'FRONTEND_004946c0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00669280'
@@ -31945,6 +32242,7 @@ $catalog = @(
         Source = '00/66/CFrontEndScreen_AddActionOnLeftClicked_00669280.cpp'
         TestSource = '00/66/CFrontEndScreen_AddActionOnLeftClicked_00669280_test.cpp'
         PassPattern = 'PASS CFrontEndScreen::AddActionOnLeftClicked'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00892c20'
@@ -31952,6 +32250,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_CameraCircleAroundPos_00892c20.cpp'
         TestSource = '00/89/CGameScriptInterface_CameraCircleAroundPos_00892c20_test.cpp'
         PassPattern = 'FSE2_00892c20_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00494710'
@@ -31959,6 +32258,7 @@ $catalog = @(
         Source = '00/49/CFrontendGameComponent_ChooseWorldNumber_00494710.cpp'
         TestSource = '00/49/CFrontendGameComponent_ChooseWorldNumber_00494710_test.cpp'
         PassPattern = 'FRONTEND_00494710_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00835330'
@@ -31966,6 +32266,7 @@ $catalog = @(
         Source = '00/83/CFrontEndScreen_dtor_00835330.cpp'
         TestSource = '00/83/CFrontEndScreen_dtor_00835330_test.cpp'
         PassPattern = 'PASS CFrontEndScreen::~CFrontEndScreen 0x00835330'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089d8b0'
@@ -31973,6 +32274,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_EntityForceToLookAtCamera_0089d8b0.cpp'
         TestSource = '00/89/CGameScriptInterface_EntityForceToLookAtCamera_0089d8b0_test.cpp'
         PassPattern = 'FSE2_0089d8b0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00494770'
@@ -31980,6 +32282,7 @@ $catalog = @(
         Source = '00/49/CFrontendGameComponent_GetMaxVisibleProfileNumber_00494770.cpp'
         TestSource = '00/49/CFrontendGameComponent_GetMaxVisibleProfileNumber_00494770_test.cpp'
         PassPattern = 'FRONTEND_00494770_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00992470'
@@ -31987,6 +32290,7 @@ $catalog = @(
         Source = '00/99/CFrontEndScreen_AddActionOnLeftClicked_00992470.cpp'
         TestSource = '00/99/CFrontEndScreen_AddActionOnLeftClicked_00992470_test.cpp'
         PassPattern = 'PASS CFrontEndScreen::AddActionOnLeftClicked 0x00992470'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004947b0'
@@ -31994,6 +32298,7 @@ $catalog = @(
         Source = '00/49/CFrontendGameComponent_ShowMoreProfiles_004947b0.cpp'
         TestSource = '00/49/CFrontendGameComponent_ShowMoreProfiles_004947b0_test.cpp'
         PassPattern = 'FRONTEND_004947b0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00494800'
@@ -32001,6 +32306,7 @@ $catalog = @(
         Source = '00/49/CFrontendGameComponent_ChooseSaveNumber_00494800.cpp'
         TestSource = '00/49/CFrontendGameComponent_ChooseSaveNumber_00494800_test.cpp'
         PassPattern = 'FRONTEND_00494800_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089df70'
@@ -32008,6 +32314,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_EntityGetShotStrikePos_0089df70.cpp'
         TestSource = '00/89/CGameScriptInterface_EntityGetShotStrikePos_0089df70_test.cpp'
         PassPattern = 'FSE2_0089df70_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '009fd870'
@@ -32015,6 +32322,7 @@ $catalog = @(
         Source = '00/9f/CFrontEndScreen_AddActionOnLeftClicked_009fd870.cpp'
         TestSource = '00/9f/CFrontEndScreen_AddActionOnLeftClicked_009fd870_test.cpp'
         PassPattern = 'PASS CFrontEndScreen::AddActionOnLeftClicked 0x009FD870'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00f35b40'
@@ -32022,6 +32330,7 @@ $catalog = @(
         Source = '00/f3/CFrontEndScreen_dtor_00f35b40.cpp'
         TestSource = '00/f3/CFrontEndScreen_dtor_00f35b40_test.cpp'
         PassPattern = 'PASS CFrontEndScreen::~CFrontEndScreen 0x00F35B40'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089a490'
@@ -32029,6 +32338,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetHeroTargetedThing_0089a490.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroTargetedThing_0089a490_test.cpp'
         PassPattern = 'FSE2_0089a490_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066e7e1'
@@ -32036,6 +32346,7 @@ $catalog = @(
         Source = '00/66/CManager_GetScreenAtScrollIndex_0066e7e1.cpp'
         TestSource = '00/66/CManager_GetScreenAtScrollIndex_0066e7e1_test.cpp'
         PassPattern = 'PASS CManager::GetScreenAtScrollIndex'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00495610'
@@ -32057,6 +32368,7 @@ $catalog = @(
         Source = '00/8a/CGameScriptInterface_EntityDecapitate_008a8e40.cpp'
         TestSource = '00/8a/CGameScriptInterface_EntityDecapitate_008a8e40_test.cpp'
         PassPattern = 'FSE2_008a8e40_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066e845'
@@ -32064,6 +32376,7 @@ $catalog = @(
         Source = '00/66/CManager_ProcessNextScreenAction_0066e845.cpp'
         TestSource = '00/66/CManager_ProcessNextScreenAction_0066e845_test.cpp'
         PassPattern = 'PASS CManager::ProcessNextScreenAction'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00495fe0'
@@ -32078,6 +32391,7 @@ $catalog = @(
         Source = '00/66/CManager_ProcessPreviousScreenAction_0066e8a1.cpp'
         TestSource = '00/66/CManager_ProcessPreviousScreenAction_0066e8a1_test.cpp'
         PassPattern = 'PASS CManager::ProcessPreviousScreenAction'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008a8eb0'
@@ -32085,6 +32399,7 @@ $catalog = @(
         Source = '00/8a/CGameScriptInterface_EntitySetAttackThingImmediately_008a8eb0.cpp'
         TestSource = '00/8a/CGameScriptInterface_EntitySetAttackThingImmediately_008a8eb0_test.cpp'
         PassPattern = 'FSE2_008a8eb0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00897a30'
@@ -32092,6 +32407,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_IsEntityMarriable_00897a30.cpp'
         TestSource = '00/89/CGameScriptInterface_IsEntityMarriable_00897a30_test.cpp'
         PassPattern = 'FSE2_00897a30_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066e8ee'
@@ -32099,6 +32415,7 @@ $catalog = @(
         Source = '00/66/CManager_Update_0066e8ee.cpp'
         TestSource = '00/66/CManager_Update_0066e8ee_test.cpp'
         PassPattern = 'PASS CManager::Update'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008979c0'
@@ -32106,6 +32423,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_IsEntityMarriedToHero_008979c0.cpp'
         TestSource = '00/89/CGameScriptInterface_IsEntityMarriedToHero_008979c0_test.cpp'
         PassPattern = 'FSE2_008979c0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066e941'
@@ -32113,6 +32431,7 @@ $catalog = @(
         Source = '00/66/CManager_GetAllRegisteredScreens_0066e941.cpp'
         TestSource = '00/66/CManager_GetAllRegisteredScreens_0066e941_test.cpp'
         PassPattern = 'PASS CManager::GetAllRegisteredScreens'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008974f0'
@@ -32120,6 +32439,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_IsEntityWieldingWeapon_008974f0.cpp'
         TestSource = '00/89/CGameScriptInterface_IsEntityWieldingWeapon_008974f0_test.cpp'
         PassPattern = 'FSE2_008974f0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066e985'
@@ -32127,6 +32447,7 @@ $catalog = @(
         Source = '00/66/CManager_RemoveAllPlayerModes_0066e985.cpp'
         TestSource = '00/66/CManager_RemoveAllPlayerModes_0066e985_test.cpp'
         PassPattern = 'PASS CManager::RemoveAllPlayerModes'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089d7c0'
@@ -32134,6 +32455,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_SetAbilityAvailability_0089d7c0.cpp'
         TestSource = '00/89/CGameScriptInterface_SetAbilityAvailability_0089d7c0_test.cpp'
         PassPattern = 'FSE2_0089d7c0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066e9e9'
@@ -32141,6 +32463,7 @@ $catalog = @(
         Source = '00/66/CManager_GetAllRegisteredInventoryScreens_0066e9e9.cpp'
         TestSource = '00/66/CManager_GetAllRegisteredInventoryScreens_0066e9e9_test.cpp'
         PassPattern = 'PASS CManager::GetAllRegisteredInventoryScreens'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008997e0'
@@ -32148,6 +32471,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetHeroExperienceAvailableToSpend_008997e0.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroExperienceAvailableToSpend_008997e0_test.cpp'
         PassPattern = 'FSE2_008997e0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066ea46'
@@ -32155,6 +32479,7 @@ $catalog = @(
         Source = '00/66/CManager_Open_0066ea46.cpp'
         TestSource = '00/66/CManager_Open_0066ea46_test.cpp'
         PassPattern = 'PASS CManager::Open'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066ea85'
@@ -32162,6 +32487,7 @@ $catalog = @(
         Source = '00/66/CManager_InitialiseScrollBarIndices_0066ea85.cpp'
         TestSource = '00/66/CManager_InitialiseScrollBarIndices_0066ea85_test.cpp'
         PassPattern = 'PASS CManager::InitialiseScrollBarIndices'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899770'
@@ -32169,6 +32495,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetHeroRoughExperienceLevel_00899770.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroRoughExperienceLevel_00899770_test.cpp'
         PassPattern = 'FSE2_00899770_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089a000'
@@ -32176,6 +32503,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetHeroMoralityCategory_0089a000.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroMoralityCategory_0089a000_test.cpp'
         PassPattern = 'FSE2_0089a000_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066eab7'
@@ -32183,6 +32511,7 @@ $catalog = @(
         Source = '00/66/CManager_CManager_0066eab7.cpp'
         TestSource = '00/66/CManager_CManager_0066eab7_test.cpp'
         PassPattern = 'PASS CManager::CManager'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00898a50'
@@ -32190,6 +32519,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GiveHeroTutorial_00898a50.cpp'
         TestSource = '00/89/CGameScriptInterface_GiveHeroTutorial_00898a50_test.cpp'
         PassPattern = 'FSE2_00898a50_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066eb11'
@@ -32197,6 +32527,7 @@ $catalog = @(
         Source = '00/66/CManager_RegisterScreen_0066eb11.cpp'
         TestSource = '00/66/CManager_RegisterScreen_0066eb11_test.cpp'
         PassPattern = 'PASS CManager::RegisterScreen'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008a0fd0'
@@ -32204,6 +32535,7 @@ $catalog = @(
         Source = '00/8a/CGameScriptInterface_SetReadableObjectTextTag_008a0fd0.cpp'
         TestSource = '00/8a/CGameScriptInterface_SetReadableObjectTextTag_008a0fd0_test.cpp'
         PassPattern = 'FSE2_008a0fd0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066eb78'
@@ -32211,6 +32543,7 @@ $catalog = @(
         Source = '00/66/CManager_DeregisterScreen_0066eb78.cpp'
         TestSource = '00/66/CManager_DeregisterScreen_0066eb78_test.cpp'
         PassPattern = 'PASS CManager::DeregisterScreen'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00494840'
@@ -32218,6 +32551,7 @@ $catalog = @(
         Source = '00/49/CFrontendGameComponent_InitGraphics_00494840.cpp'
         TestSource = '00/49/CFrontendGameComponent_InitGraphics_00494840_test.cpp'
         PassPattern = 'CFrontendGameComponent_InitGraphics_00494840_test PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066ebe0'
@@ -32225,6 +32559,7 @@ $catalog = @(
         Source = '00/66/CManager_DeregisterAllScreens_0066ebe0.cpp'
         TestSource = '00/66/CManager_DeregisterAllScreens_0066ebe0_test.cpp'
         PassPattern = 'PASS CManager::DeregisterAllScreens'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899400'
@@ -32232,6 +32567,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetHeroSkillLevel_00899400.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroSkillLevel_00899400_test.cpp'
         PassPattern = 'FSE2_00899400_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004944c0'
@@ -32246,6 +32582,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetHeroStrengthLevel_00899390.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroStrengthLevel_00899390_test.cpp'
         PassPattern = 'FSE2_00899390_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004944e0'
@@ -32260,6 +32597,7 @@ $catalog = @(
         Source = '00/66/std_Fill_n_ulong_0066ec31.cpp'
         TestSource = '00/66/std_Fill_n_ulong_0066ec31_test.cpp'
         PassPattern = 'PASS std::_Fill_n<unsigned long>'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066ec8a'
@@ -32267,6 +32605,7 @@ $catalog = @(
         Source = '00/66/Vector_AllocateUints_0066ec8a.cpp'
         TestSource = '00/66/Vector_AllocateUints_0066ec8a_test.cpp'
         PassPattern = 'PASS Vector_AllocateUints'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00494440'
@@ -32281,6 +32620,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetHeroWillLevel_00899470.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroWillLevel_00899470_test.cpp'
         PassPattern = 'FSE2_00899470_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00494410'
@@ -32300,6 +32640,7 @@ $catalog = @(
         Source = '00/66/Vector_InsertValue_0066eda6.cpp'
         TestSource = '00/66/Vector_InsertValue_0066eda6_test.cpp'
         PassPattern = 'PASS Vector_InsertValue 0x0066EDA6'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00494490'; Module = 'CFrontendGameComponent'
@@ -32312,6 +32653,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_RemoveDeadCreature_00894490.cpp'
         TestSource = '00/89/CGameScriptInterface_RemoveDeadCreature_00894490_test.cpp'
         PassPattern = 'FSE2_00894490_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00494470'; Module = 'CFrontendGameComponent'
@@ -32324,6 +32666,7 @@ $catalog = @(
         Source = '00/66/CInputTypeKeyboardKeyEvent_operator_eq_0066ede0.cpp'
         TestSource = '00/66/CInputTypeKeyboardKeyEvent_operator_eq_0066ede0_test.cpp'
         PassPattern = 'PASS CInputTypeKeyboardKeyEvent::operator=='
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00494480'; Module = 'CFrontendGameComponent'
@@ -32336,6 +32679,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GiveHeroRenownPoints_008990c0.cpp'
         TestSource = '00/89/CGameScriptInterface_GiveHeroRenownPoints_008990c0_test.cpp'
         PassPattern = 'FSE2_008990c0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00494430'; Module = 'CFrontendGameComponent'
@@ -32348,6 +32692,7 @@ $catalog = @(
         Source = '00/66/CInputTypeKeyboardKeyEvent_IsEventOfThisType_0066ee20.cpp'
         TestSource = '00/66/CInputTypeKeyboardKeyEvent_IsEventOfThisType_0066ee20_test.cpp'
         PassPattern = 'PASS CInputTypeKeyboardKeyEvent::IsEventOfThisType'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00494460'; Module = 'CFrontendGameComponent'
@@ -32360,18 +32705,21 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetHeroStatLevel_00899290.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroStatLevel_00899290_test.cpp'
         PassPattern = 'FSE2_00899290_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066eea0'; Module = 'CInputTypeKeyboardKeyEvent'
         Source = '00/66/CInputTypeKeyboardKeyEvent_operator_eq_0066eea0.cpp'
         TestSource = '00/66/CInputTypeKeyboardKeyEvent_operator_eq_0066eea0_test.cpp'
         PassPattern = 'PASS CInputTypeKeyboardKeyEvent::operator== 0x0066EEA0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899310'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_GetHeroStatMax_00899310.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroStatMax_00899310_test.cpp'
         PassPattern = 'FSE2_00899310_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004944a0'; Module = 'CFrontendGameComponent'
@@ -32390,282 +32738,329 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_SetHeroAge_008994e0.cpp'
         TestSource = '00/89/CGameScriptInterface_SetHeroAge_008994e0_test.cpp'
         PassPattern = 'FSE2_008994e0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066eee0'; Module = 'CInputTypeMouseButtonEvent'
         Source = '00/66/CInputTypeMouseButtonEvent_IsEventOfThisType_0066eee0.cpp'
         TestSource = '00/66/CInputTypeMouseButtonEvent_IsEventOfThisType_0066eee0_test.cpp'
         PassPattern = 'PASS CInputTypeMouseButtonEvent::IsEventOfThisType'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899680'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_SetHeroAsApprentice_00899680.cpp'
         TestSource = '00/89/CGameScriptInterface_SetHeroAsApprentice_00899680_test.cpp'
         PassPattern = 'FSE2_00899680_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f060'; Module = 'CInputTypeMouseButtonEvent'
         Source = '00/66/CInputTypeMouseButtonEvent_GetEventTypeFromGeneralButtonType_0066f060.cpp'
         TestSource = '00/66/CInputTypeMouseButtonEvent_GetEventTypeFromGeneralButtonType_0066f060_test.cpp'
         PassPattern = 'PASS CInputTypeMouseButtonEvent::GetEventTypeFromGeneralButtonType'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004945b0'; Module = 'CFrontendGameComponent'
         Source = '00/49/CFrontendGameComponent_CreateNewProfile_004945b0.cpp'
         TestSource = '00/49/CFrontendGameComponent_CreateNewProfile_004945b0_test.cpp'
         PassPattern = 'CFrontendGameComponent_CreateNewProfile_004945b0_test PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899a10'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_SetHeroWillEnergyLevel_00899a10.cpp'
         TestSource = '00/89/CGameScriptInterface_SetHeroWillEnergyLevel_00899a10_test.cpp'
         PassPattern = 'FSE2_00899a10_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00495620'; Module = 'CFrontendGameComponent'
         Source = '00/49/CFrontendGameComponent_Destroy_00495620.cpp'
         TestSource = '00/49/CFrontendGameComponent_Destroy_00495620_test.cpp'
         PassPattern = 'CFrontendGameComponent_Destroy_00495620_test PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f210'; Module = 'CInputTypeKeyboardKeyEvent'
         Source = '00/66/CInputTypeKeyboardKeyEvent_operator_eq_0066f210.cpp'
         TestSource = '00/66/CInputTypeKeyboardKeyEvent_operator_eq_0066f210_test.cpp'
         PassPattern = 'PASS CInputTypeKeyboardKeyEvent::operator== 0x0066F210'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899a90'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_SetHeroWillEnergyAsAbleToRefill_00899a90.cpp'
         TestSource = '00/89/CGameScriptInterface_SetHeroWillEnergyAsAbleToRefill_00899a90_test.cpp'
         PassPattern = 'FSE2_00899a90_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00495780'; Module = 'CFrontendGameComponent'
         Source = '00/49/CFrontendGameComponent_ClearProfileResources_00495780.cpp'
         TestSource = '00/49/CFrontendGameComponent_ClearProfileResources_00495780_test.cpp'
         PassPattern = 'CFrontendGameComponent_ClearProfileResources_00495780_test PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f250'; Module = 'CInputTypeXboxPadButtonEvent'
         Source = '00/66/CInputTypeXboxPadButtonEvent_IsEventOfThisType_0066f250.cpp'
         TestSource = '00/66/CInputTypeXboxPadButtonEvent_IsEventOfThisType_0066f250_test.cpp'
         PassPattern = 'PASS CInputTypeXboxPadButtonEvent::IsEventOfThisType 0x0066F250'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899b10'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_IsPlayerZTargetingThing_00899b10.cpp'
         TestSource = '00/89/CGameScriptInterface_IsPlayerZTargetingThing_00899b10_test.cpp'
         PassPattern = 'FSE2_00899b10_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f2d0'; Module = 'CInputTypeMouseMovementEvent'
         Source = '00/66/CInputTypeMouseMovementEvent_operator_eq_0066f2d0.cpp'
         TestSource = '00/66/CInputTypeMouseMovementEvent_operator_eq_0066f2d0_test.cpp'
         PassPattern = 'PASS CInputTypeMouseMovementEvent::operator=='
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00495830'; Module = 'CFrontendProfileList'
         Source = '00/49/CFrontendProfileList_Refresh_00495830.cpp'
         TestSource = '00/49/CFrontendProfileList_Refresh_00495830_test.cpp'
         PassPattern = 'CFrontendProfileList_Refresh_00495830_test PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f300'; Module = 'CInputTypeXboxPadLeftStickEvent'
         Source = '00/66/CInputTypeXboxPadLeftStickEvent_IsEventOfThisType_0066f300.cpp'
         TestSource = '00/66/CInputTypeXboxPadLeftStickEvent_IsEventOfThisType_0066f300_test.cpp'
         PassPattern = 'PASS CInputTypeXboxPadLeftStickEvent::IsEventOfThisType'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899e10'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_SetPlayerCreatureOnlyTarget_00899e10.cpp'
         TestSource = '00/89/CGameScriptInterface_SetPlayerCreatureOnlyTarget_00899e10_test.cpp'
         PassPattern = 'FSE2_00899e10_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00495890'; Module = 'CFrontendGameComponent'
         Source = '00/49/CFrontendGameComponent_PopulateProfiles_00495890.cpp'
         TestSource = '00/49/CFrontendGameComponent_PopulateProfiles_00495890_test.cpp'
         PassPattern = 'CFrontendGameComponent_PopulateProfiles_00495890_test PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004962c0'; Module = 'CFrontendGameComponent'
         Source = '00/49/CFrontendGameComponent_ChooseProfileNumber_004962c0.cpp'
         TestSource = '00/49/CFrontendGameComponent_ChooseProfileNumber_004962c0_test.cpp'
         PassPattern = 'CFrontendGameComponent_ChooseProfileNumber_004962c0_test PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f320'; Module = 'CInputTypeXboxPadLeftStickEvent'
         Source = '00/66/CInputTypeXboxPadLeftStickEvent_IsEventOfThisTypeInQueue_0066f320.cpp'
         TestSource = '00/66/CInputTypeXboxPadLeftStickEvent_IsEventOfThisTypeInQueue_0066f320_test.cpp'
         PassPattern = 'PASS CInputTypeXboxPadLeftStickEvent::IsEventOfThisTypeInQueue 0x0066F320'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f360'; Module = 'CInputTypeXboxPadLeftStickEvent'
         Source = '00/66/CInputTypeXboxPadLeftStickEvent_operator_eq_0066f360.cpp'
         TestSource = '00/66/CInputTypeXboxPadLeftStickEvent_operator_eq_0066f360_test.cpp'
         PassPattern = 'PASS CInputTypeXboxPadLeftStickEvent::operator== 0x0066F360'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899060'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_SetHeroAbleToGainExperience_00899060.cpp'
         TestSource = '00/89/CGameScriptInterface_SetHeroAbleToGainExperience_00899060_test.cpp'
         PassPattern = 'FSE2_00899060_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899140'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_GetHeroRenownLevel_00899140.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroRenownLevel_00899140_test.cpp'
         PassPattern = 'FSE2_00899140_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f390'; Module = 'CInputTypeXboxPadRightStickEvent'
         Source = '00/66/CInputTypeXboxPadRightStickEvent_IsEventOfThisType_0066f390.cpp'
         TestSource = '00/66/CInputTypeXboxPadRightStickEvent_IsEventOfThisType_0066f390_test.cpp'
         PassPattern = 'PASS CInputTypeXboxPadRightStickEvent::IsEventOfThisType 0x0066F390'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f3b0'; Module = 'CInputTypeXboxPadRightStickEvent'
         Source = '00/66/CInputTypeXboxPadRightStickEvent_IsEventOfThisTypeInQueue_0066f3b0.cpp'
         TestSource = '00/66/CInputTypeXboxPadRightStickEvent_IsEventOfThisTypeInQueue_0066f3b0_test.cpp'
         PassPattern = 'PASS CInputTypeXboxPadRightStickEvent::IsEventOfThisTypeInQueue 0x0066F3B0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f3f0'; Module = 'CInputTypeXboxPadRightStickEvent'
         Source = '00/66/CInputTypeXboxPadRightStickEvent_operator_eq_0066f3f0.cpp'
         TestSource = '00/66/CInputTypeXboxPadRightStickEvent_operator_eq_0066f3f0_test.cpp'
         PassPattern = 'PASS CInputTypeXboxPadRightStickEvent::operator== 0x0066F3F0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008991a0'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_IsHeroRenownLevelFull_008991a0.cpp'
         TestSource = '00/89/CGameScriptInterface_IsHeroRenownLevelFull_008991a0_test.cpp'
         PassPattern = 'FSE2_008991a0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899220'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_IncreaseHeroRenownLevel_00899220.cpp'
         TestSource = '00/89/CGameScriptInterface_IncreaseHeroRenownLevel_00899220_test.cpp'
         PassPattern = 'FSE2_00899220_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f420'; Module = 'CInputTypeMouseMovementEvent'
         Source = '00/66/CInputTypeMouseMovementEvent_IsEventOfThisType_0066f420.cpp'
         TestSource = '00/66/CInputTypeMouseMovementEvent_IsEventOfThisType_0066f420_test.cpp'
         PassPattern = 'PASS CInputTypeMouseMovementEvent::IsEventOfThisType 0x0066F420'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f440'; Module = 'CInputTypeMouseMovementEvent'
         Source = '00/66/CInputTypeMouseMovementEvent_IsEventOfThisTypeInQueue_0066f440.cpp'
         TestSource = '00/66/CInputTypeMouseMovementEvent_IsEventOfThisTypeInQueue_0066f440_test.cpp'
         PassPattern = 'PASS CInputTypeMouseMovementEvent::IsEventOfThisTypeInQueue 0x0066F440'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f480'; Module = 'CInputTypeMouseMovementEvent'
         Source = '00/66/CInputTypeMouseMovementEvent_operator_eq_0066f480.cpp'
         TestSource = '00/66/CInputTypeMouseMovementEvent_operator_eq_0066f480_test.cpp'
         PassPattern = 'PASS CInputTypeMouseMovementEvent::operator== 0x0066F480'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f4b0'; Module = 'CInputTypeMouseWheelMovementEvent'
         Source = '00/66/CInputTypeMouseWheelMovementEvent_IsEventOfThisType_0066f4b0.cpp'
         TestSource = '00/66/CInputTypeMouseWheelMovementEvent_IsEventOfThisType_0066f4b0_test.cpp'
         PassPattern = 'PASS CInputTypeMouseWheelMovementEvent::IsEventOfThisType 0x0066F4B0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899560'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_GetHeroAge_00899560.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroAge_00899560_test.cpp'
         PassPattern = 'FSE2_00899560_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008995d0'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_SetHeroAsTeenager_008995d0.cpp'
         TestSource = '00/89/CGameScriptInterface_SetHeroAsTeenager_008995d0_test.cpp'
         PassPattern = 'FSE2_008995d0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f4d0'; Module = 'CInputTypeMouseWheelMovementEvent'
         Source = '00/66/CInputTypeMouseWheelMovementEvent_IsEventOfThisTypeInQueue_0066f4d0.cpp'
         TestSource = '00/66/CInputTypeMouseWheelMovementEvent_IsEventOfThisTypeInQueue_0066f4d0_test.cpp'
         PassPattern = 'PASS CInputTypeMouseWheelMovementEvent::IsEventOfThisTypeInQueue 0x0066F4D0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f510'; Module = 'CInputTypeMouseWheelMovementEvent'
         Source = '00/66/CInputTypeMouseWheelMovementEvent_operator_eq_0066f510.cpp'
         TestSource = '00/66/CInputTypeMouseWheelMovementEvent_operator_eq_0066f510_test.cpp'
         PassPattern = 'PASS CInputTypeMouseWheelMovementEvent::operator== 0x0066F510'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899700'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_GetDistanceHeroCanBeHeardFrom_00899700.cpp'
         TestSource = '00/89/CGameScriptInterface_GetDistanceHeroCanBeHeardFrom_00899700_test.cpp'
         PassPattern = 'FSE2_00899700_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f540'; Module = 'CInputTypeMouseWheelMovementUpEvent'
         Source = '00/66/CInputTypeMouseWheelMovementUpEvent_IsEventOfThisType_0066f540.cpp'
         TestSource = '00/66/CInputTypeMouseWheelMovementUpEvent_IsEventOfThisType_0066f540_test.cpp'
         PassPattern = 'PASS CInputTypeMouseWheelMovementUpEvent::IsEventOfThisType 0x0066F540'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899850'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_GetHeroFatness_00899850.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroFatness_00899850_test.cpp'
         PassPattern = 'FSE2_00899850_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008998c0'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_GetHeroScariness_008998c0.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroScariness_008998c0_test.cpp'
         PassPattern = 'FSE2_008998c0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f590'; Module = 'CInputTypeMouseWheelMovementUpEvent'
         Source = '00/66/CInputTypeMouseWheelMovementUpEvent_operator_eq_0066f590.cpp'
         TestSource = '00/66/CInputTypeMouseWheelMovementUpEvent_operator_eq_0066f590_test.cpp'
         PassPattern = 'PASS CInputTypeMouseWheelMovementUpEvent::operator== 0x0066F590'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f5c0'; Module = 'CInputTypeMouseWheelMovementDownEvent'
         Source = '00/66/CInputTypeMouseWheelMovementDownEvent_IsEventOfThisType_0066f5c0.cpp'
         TestSource = '00/66/CInputTypeMouseWheelMovementDownEvent_IsEventOfThisType_0066f5c0_test.cpp'
         PassPattern = 'PASS CInputTypeMouseWheelMovementDownEvent::IsEventOfThisType 0x0066F5C0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899930'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_GetHeroAttractiveness_00899930.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroAttractiveness_00899930_test.cpp'
         PassPattern = 'FSE2_00899930_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f610'; Module = 'CInputTypeKeyboardKeyEvent'
         Source = '00/66/CInputTypeKeyboardKeyEvent_GetControlDirection_0066f610.cpp'
         TestSource = '00/66/CInputTypeKeyboardKeyEvent_GetControlDirection_0066f610_test.cpp'
         PassPattern = 'PASS CInputTypeKeyboardKeyEvent::GetControlDirection 0x0066F610'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008999a0'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_GetHeroWillEnergyLevel_008999a0.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroWillEnergyLevel_008999a0_test.cpp'
         PassPattern = 'FSE2_008999a0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004131a0'; Module = 'CMainGameComponentInit'
         Source = '00/41/CMainGameComponentInit_CMainGameComponentInit_004131a0.cpp'
         TestSource = '00/41/CMainGameComponentInit_CMainGameComponentInit_004131a0_test.cpp'
         PassPattern = 'MAIN_GAME_INIT_004131a0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00415e17'; Module = 'CMainGameComponentInit'
         Source = '00/41/CMainGameComponentInit_CMainGameComponentInit_00415e17.cpp'
         TestSource = '00/41/CMainGameComponentInit_CMainGameComponentInit_00415e17_test.cpp'
         PassPattern = 'MAIN_GAME_INIT_COPY_00415e17_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f630'; Module = 'CInputTypeKeyboardKeyEvent'
         Source = '00/66/CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630.cpp'
         TestSource = '00/66/CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630_test.cpp'
         PassPattern = 'PASS CInputTypeKeyboardKeyEvent::IsEventOfThisTypeInQueue 0x0066F630'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f6b0'; Module = 'CInputTypeMouseButtonEvent'
@@ -32678,12 +33073,14 @@ $catalog = @(
         Source = '00/66/CInputTypeMouseButtonEvent_IsEventOfThisTypeInQueue_0066f6d0.cpp'
         TestSource = '00/66/CInputTypeMouseButtonEvent_IsEventOfThisTypeInQueue_0066f6d0_test.cpp'
         PassPattern = 'PASS CInputTypeMouseButtonEvent::IsEventOfThisTypeInQueue 0x0066F6D0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f730'; Module = 'CInputTypeXboxPadButtonEvent'
         Source = '00/66/CInputTypeXboxPadButtonEvent_GetControlDirection_0066f730.cpp'
         TestSource = '00/66/CInputTypeXboxPadButtonEvent_GetControlDirection_0066f730_test.cpp'
         PassPattern = 'PASS CInputTypeXboxPadButtonEvent::GetControlDirection 0x0066F730'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899c90'; Module = 'CGameScriptInterface'
@@ -32708,48 +33105,56 @@ $catalog = @(
         Source = '00/49/CWorld_IsHeroStateFileValid_0049d4e0.cpp'
         TestSource = '00/49/CWorld_IsHeroStateFileValid_0049d4e0_test.cpp'
         PassPattern = 'HERO_STATE_VALID_0049d4e0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f750'; Module = 'CInputTypeXboxPadButtonEvent'
         Source = '00/66/CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750.cpp'
         TestSource = '00/66/CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_test.cpp'
         PassPattern = 'PASS CInputTypeXboxPadButtonEvent::IsEventOfThisTypeInQueue 0x0066F750'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899e90'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_ResetPlayerCreatureOnlyTarget_00899e90.cpp'
         TestSource = '00/89/CGameScriptInterface_ResetPlayerCreatureOnlyTarget_00899e90_test.cpp'
         PassPattern = 'CGameScriptInterface_00899e90_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004a2d70'; Module = 'CWorld'
         Source = '00/4a/CWorld_LoadHeroStateInternal_004a2d70.cpp'
         TestSource = '00/4a/CWorld_LoadHeroStateInternal_004a2d70_test.cpp'
         PassPattern = 'LOAD_HERO_STATE_004a2d70_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f7d0'; Module = 'CInputTypeXboxPadLeftStickEvent'
         Source = '00/66/CInputTypeXboxPadLeftStickEvent_GetControlDirection_0066f7d0.cpp'
         TestSource = '00/66/CInputTypeXboxPadLeftStickEvent_GetControlDirection_0066f7d0_test.cpp'
         PassPattern = 'PASS CInputTypeXboxPadLeftStickEvent::GetControlDirection 0x0066F7D0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f840'; Module = 'CInputTypeXboxPadRightStickEvent'
         Source = '00/66/CInputTypeXboxPadRightStickEvent_GetControlDirection_0066f840.cpp'
         TestSource = '00/66/CInputTypeXboxPadRightStickEvent_GetControlDirection_0066f840_test.cpp'
         PassPattern = 'PASS CInputTypeXboxPadRightStickEvent::GetControlDirection 0x0066F840'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899ef0'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_GiveHeroMorality_00899ef0.cpp'
         TestSource = '00/89/CGameScriptInterface_GiveHeroMorality_00899ef0_test.cpp'
         PassPattern = 'CGameScriptInterface_00899ef0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00899f90'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_GetHeroMorality_00899f90.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroMorality_00899f90_test.cpp'
         PassPattern = 'CGameScriptInterface_00899f90_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089a070'; Module = 'CGameScriptInterface'
@@ -32768,36 +33173,42 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetHeroWillEnergy_0089a150.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroWillEnergy_0089a150_test.cpp'
         PassPattern = 'CGameScriptInterface_0089a150_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089a1b0'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_GetHeroWillEnergyMax_0089a1b0.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroWillEnergyMax_0089a1b0_test.cpp'
         PassPattern = 'CGameScriptInterface_0089a1b0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f8b0'; Module = 'CInputTypeMouseMovementEvent'
         Source = '00/66/CInputTypeMouseMovementEvent_GetControlDirection_0066f8b0.cpp'
         TestSource = '00/66/CInputTypeMouseMovementEvent_GetControlDirection_0066f8b0_test.cpp'
         PassPattern = 'PASS CInputTypeMouseMovementEvent::GetControlDirection 0x0066F8B0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f930'; Module = 'CInputTypeMouseWheelMovementEvent'
         Source = '00/66/CInputTypeMouseWheelMovementEvent_GetControlDirection_0066f930.cpp'
         TestSource = '00/66/CInputTypeMouseWheelMovementEvent_GetControlDirection_0066f930_test.cpp'
         PassPattern = 'PASS CInputTypeMouseWheelMovementEvent::GetControlDirection 0x0066F930'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f950'; Module = 'CInputTypeMouseWheelMovementUpEvent'
         Source = '00/66/CInputTypeMouseWheelMovementUpEvent_GetControlDirection_0066f950.cpp'
         TestSource = '00/66/CInputTypeMouseWheelMovementUpEvent_GetControlDirection_0066f950_test.cpp'
         PassPattern = 'PASS CInputTypeMouseWheelMovementUpEvent::GetControlDirection 0x0066F950'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f970'; Module = 'CInputTypeMouseWheelMovementDownEvent'
         Source = '00/66/CInputTypeMouseWheelMovementDownEvent_GetControlDirection_0066f970.cpp'
         TestSource = '00/66/CInputTypeMouseWheelMovementDownEvent_GetControlDirection_0066f970_test.cpp'
         PassPattern = 'PASS CInputTypeMouseWheelMovementDownEvent::GetControlDirection 0x0066F970'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f990'; Module = 'C2DVector'
@@ -32810,6 +33221,7 @@ $catalog = @(
         Source = '00/66/CTCPhysicsRigidBody_SetFacingAnglesFromRHSet_0066f9b0.cpp'
         TestSource = '00/66/CTCPhysicsRigidBody_SetFacingAnglesFromRHSet_0066f9b0_test.cpp'
         PassPattern = 'PASS CTCPhysicsRigidBody::SetFacingAnglesFromRHSet 0x0066F9B0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f9e0'; Module = 'physics'
@@ -32828,42 +33240,49 @@ $catalog = @(
         Source = '00/4a/CWorld_PrepareForLoad_004a0220.cpp'
         TestSource = '00/4a/CWorld_PrepareForLoad_004a0220_test.cpp'
         PassPattern = 'PREPARE_FOR_LOAD_004a0220_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004b4450'; Module = 'CQuestManager'
         Source = '00/4b/CQuestManager_DeactivateAllQuests_004b4450.cpp'
         TestSource = '00/4b/CQuestManager_DeactivateAllQuests_004b4450_test.cpp'
         PassPattern = 'DEACTIVATE_ALL_QUESTS_004b4450_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00993b20'; Module = 'CDataInputStream'
         Source = '00/99/CDataInputStream_CDataInputStream_00993b20.cpp'
         TestSource = '00/99/CDataInputStream_CDataInputStream_00993b20_test.cpp'
         PassPattern = 'DATA_INPUT_STREAM_00993b20_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0099a2d0'; Module = 'CBase'
         Source = '00/99/CBase_CBase_0099a2d0.cpp'
         TestSource = '00/99/CBase_CBase_0099a2d0_test.cpp'
         PassPattern = 'CBASE_0099a2d0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0099a960'; Module = 'CDiskFileWin32'
         Source = '00/99/CDiskFileWin32_Read_0099a960.cpp'
         TestSource = '00/99/CDiskFileWin32_Read_0099a960_test.cpp'
         PassPattern = 'DISK_READ_0099a960_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00994700'; Module = 'CFileDataInputStream'
         Source = '00/99/CFileDataInputStream_CFileDataInputStream_00994700.cpp'
         TestSource = '00/99/CFileDataInputStream_CFileDataInputStream_00994700_test.cpp'
         PassPattern = 'FILE_DATA_STREAM_00994700_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00993ca0'; Module = 'CDataInputStream'
         Source = '00/99/CDataInputStream_ReadWithSrcChunkOverflow_00993ca0.cpp'
         TestSource = '00/99/CDataInputStream_ReadWithSrcChunkOverflow_00993ca0_test.cpp'
         PassPattern = 'DATA_INPUT_OVERFLOW_00993ca0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089a2d0'; Module = 'CGameScriptInterface'
@@ -32876,12 +33295,14 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_IsEntityStealable_0089a330.cpp'
         TestSource = '00/89/CGameScriptInterface_IsEntityStealable_0089a330_test.cpp'
         PassPattern = 'CGameScriptInterface_0089a330_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089a390'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_EntitySetAsPickLocked_0089a390.cpp'
         TestSource = '00/89/CGameScriptInterface_EntitySetAsPickLocked_0089a390_test.cpp'
         PassPattern = 'CGameScriptInterface_0089a390_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066fa10'; Module = 'CCharString'
@@ -32936,12 +33357,14 @@ $catalog = @(
         Source = '00/48/ByteVector_InsertFill_00485f3a.cpp'
         TestSource = '00/48/ByteVector_InsertFill_00485f3a_test.cpp'
         PassPattern = 'BYTE_VECTOR_INSERT_00485f3a_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089a510'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_GetNearestWithScriptName_0089a510.cpp'
         TestSource = '00/89/CGameScriptInterface_GetNearestWithScriptName_0089a510_test.cpp'
         PassPattern = 'CGameScriptInterface_0089a510_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066fab0'; Module = 'math'
@@ -32960,12 +33383,14 @@ $catalog = @(
         Source = '00/99/CDataInputStream_ReadZlibCompressed_00996230.cpp'
         TestSource = '00/99/CDataInputStream_ReadZlibCompressed_00996230_test.cpp'
         PassPattern = 'READ_ZLIB_00996230_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089a6e0'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_GetFurthestWithScriptName_0089a6e0.cpp'
         TestSource = '00/89/CGameScriptInterface_GetFurthestWithScriptName_0089a6e0_test.cpp'
         PassPattern = 'CGameScriptInterface_0089a510_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066fae0'; Module = 'CTCCoopSpirit'
@@ -32990,12 +33415,14 @@ $catalog = @(
         Source = '00/99/CMemoryDataInputStream_OpenMemorySource_00994570.cpp'
         TestSource = '00/99/CMemoryDataInputStream_OpenMemorySource_00994570_test.cpp'
         PassPattern = 'MEMORY_INPUT_OPEN_00994570_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '009baa30'; Module = 'CPersistContext'
         Source = '00/9b/CPersistContext_CPersistContext_009baa30.cpp'
         TestSource = '00/9b/CPersistContext_CPersistContext_009baa30_test.cpp'
         PassPattern = 'PERSIST_CONTEXT_CTOR_009baa30_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066fb20'; Module = 'CWorld'
@@ -33008,6 +33435,7 @@ $catalog = @(
         Source = '00/99/CFileDataInputStream_dtor_00994780.cpp'
         TestSource = '00/99/CFileDataInputStream_dtor_00994780_test.cpp'
         PassPattern = 'FILE_DATA_STREAM_DTOR_00994780_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066fb30'; Module = 'runtime'
@@ -33020,6 +33448,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_MsgOnLevelLoaded_0089ac10.cpp'
         TestSource = '00/89/CGameScriptInterface_MsgOnLevelLoaded_0089ac10_test.cpp'
         PassPattern = 'CGameScriptInterface_0089ac10_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066fb40'; Module = 'runtime'
@@ -33032,6 +33461,7 @@ $catalog = @(
         Source = '00/48/CPersistContextReadSection_CPersistContextReadSection_00485cd2.cpp'
         TestSource = '00/48/CPersistContextReadSection_CPersistContextReadSection_00485cd2_test.cpp'
         PassPattern = 'PERSIST_READ_SECTION_CTOR_00485cd2_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066fb50'; Module = 'runtime'
@@ -33044,18 +33474,21 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_EntitySetCombatAbility_0089aff0.cpp'
         TestSource = '00/89/CGameScriptInterface_EntitySetCombatAbility_0089aff0_test.cpp'
         PassPattern = 'CGameScriptInterface_0089aff0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089b0b0'; Module = 'CGameScriptInterface'
         Source = '00/89/CGameScriptInterface_EntityResetAsPureAINarrator_0089b0b0.cpp'
         TestSource = '00/89/CGameScriptInterface_EntityResetAsPureAINarrator_0089b0b0_test.cpp'
         PassPattern = 'CGameScriptInterface_0089b0b0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0099e900'; Module = 'CCharString'
         Source = '00/99/CCharString_NotEqual_0099e900.cpp'
         TestSource = '00/99/CCharString_NotEqual_0099e900_test.cpp'
         PassPattern = 'CHAR_STRING_NOT_EQUAL_0099e900_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00c8c730'
@@ -33063,6 +33496,7 @@ $catalog = @(
         Source = '00/c8/global_BatchInvokeWithStackArgsc8c730_00c8c730.cpp'
         TestSource = '00/c8/global_BatchInvokeWithStackArgsc8c730_00c8c730_test.cpp'
         PassPattern = 'Batch_InvokeWithStackArgs_c8c730_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0040e250'
@@ -33119,6 +33553,7 @@ $catalog = @(
         Source = '00/43/CParentDefClassBase_GetInstantiationName_004303b0.cpp'
         TestSource = '00/43/CParentDefClassBase_GetInstantiationName_004303b0_test.cpp'
         PassPattern = 'OK_0x004303b0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00414de0'
@@ -33161,6 +33596,7 @@ $catalog = @(
         Source = '00/41/CGameEventPackage_CGameEventPackage_00419220.cpp'
         TestSource = '00/41/CGameEventPackage_CGameEventPackage_00419220_test.cpp'
         PassPattern = 'OK_0x00419220'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0042ae0e'
@@ -33245,6 +33681,7 @@ $catalog = @(
         Source = '00/46/CVsyncCallbackTimerInfo_CVsyncCallbackTimerInfo_00469435.cpp'
         TestSource = '00/46/CVsyncCallbackTimerInfo_CVsyncCallbackTimerInfo_00469435_test.cpp'
         PassPattern = 'OK_0x00469435'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0046aade'
@@ -33301,6 +33738,7 @@ $catalog = @(
         Source = '00/48/CPlayer_IsTargetLocked_004874a0.cpp'
         TestSource = '00/48/CPlayer_IsTargetLocked_004874a0_test.cpp'
         PassPattern = 'OK_0x004874a0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0048bc40'
@@ -33322,6 +33760,7 @@ $catalog = @(
         Source = '00/48/CPersistContext_IsBinary_0048db13.cpp'
         TestSource = '00/48/CPersistContext_IsBinary_0048db13_test.cpp'
         PassPattern = 'OK_0x0048db13'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0048db35'
@@ -33357,6 +33796,7 @@ $catalog = @(
         Source = '00/49/global_GFROR13_00497890.cpp'
         TestSource = '00/49/global_GFROR13_00497890_test.cpp'
         PassPattern = 'OK_0x00497890'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0049c770'
@@ -33371,6 +33811,7 @@ $catalog = @(
         Source = '00/49/CThingSearchTools_CThingSearchTools_0049c7a0.cpp'
         TestSource = '00/49/CThingSearchTools_CThingSearchTools_0049c7a0_test.cpp'
         PassPattern = 'OK_0x0049c7a0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0049c9b0'
@@ -33413,6 +33854,7 @@ $catalog = @(
         Source = '00/49/CWorld_ProcessEvent_0049e1d0.cpp'
         TestSource = '00/49/CWorld_ProcessEvent_0049e1d0_test.cpp'
         PassPattern = 'OK_0x0049e1d0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0049e9f0'
@@ -33427,6 +33869,7 @@ $catalog = @(
         Source = '00/4a/CScriptThing_SetFriendsWithEverythingFlag_004ab060.cpp'
         TestSource = '00/4a/CScriptThing_SetFriendsWithEverythingFlag_004ab060_test.cpp'
         PassPattern = 'OK_0x004ab060'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004ab0a0'
@@ -33434,6 +33877,7 @@ $catalog = @(
         Source = '00/4a/CScriptThing_SetActivationTriggerStatus_004ab0a0.cpp'
         TestSource = '00/4a/CScriptThing_SetActivationTriggerStatus_004ab0a0_test.cpp'
         PassPattern = 'OK_0x004ab0a0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004ab0e0'
@@ -33441,6 +33885,7 @@ $catalog = @(
         Source = '00/4a/CScriptThing_UpdateThingAttachment_004ab0e0.cpp'
         TestSource = '00/4a/CScriptThing_UpdateThingAttachment_004ab0e0_test.cpp'
         PassPattern = 'OK_0x004ab0e0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004ab0f0'
@@ -33448,6 +33893,7 @@ $catalog = @(
         Source = '00/4a/CScriptThing_IncrementScriptCounter_004ab0f0.cpp'
         TestSource = '00/4a/CScriptThing_IncrementScriptCounter_004ab0f0_test.cpp'
         PassPattern = 'OK_0x004ab0f0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004a9210'
@@ -33462,6 +33908,7 @@ $catalog = @(
         Source = '00/4a/CScriptThing_DecrementScriptCounter_004ab100.cpp'
         TestSource = '00/4a/CScriptThing_DecrementScriptCounter_004ab100_test.cpp'
         PassPattern = 'OK_0x004ab100'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004ae9d0'
@@ -33483,6 +33930,7 @@ $catalog = @(
         Source = '00/4a/CQuestManager_SetObjectiveAsCompleted_004af960.cpp'
         TestSource = '00/4a/CQuestManager_SetObjectiveAsCompleted_004af960_test.cpp'
         PassPattern = 'OK_0x004af960'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004af990'
@@ -33511,6 +33959,7 @@ $catalog = @(
         Source = '00/4b/CTCGraphicAppearance_GetAnims_004bc000.cpp'
         TestSource = '00/4b/CTCGraphicAppearance_GetAnims_004bc000_test.cpp'
         PassPattern = 'OK_0x004bc000'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004ae9a0'
@@ -33518,6 +33967,7 @@ $catalog = @(
         Source = '00/4a/CTCTrapBase_ManualReset_004ae9a0.cpp'
         TestSource = '00/4a/CTCTrapBase_ManualReset_004ae9a0_test.cpp'
         PassPattern = 'OK_0x004ae9a0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004bbfc0'
@@ -33581,6 +34031,7 @@ $catalog = @(
         Source = '00/4c/CRenderTarget_DetachTarget_004c7590.cpp'
         TestSource = '00/4c/CRenderTarget_DetachTarget_004c7590_test.cpp'
         PassPattern = 'OK_0x004c7590'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004c7e10'
@@ -33630,6 +34081,7 @@ $catalog = @(
         Source = '00/4c/CPhysicalPrimitiveMesh_GetClosestPointToPos2D_004cf3d0.cpp'
         TestSource = '00/4c/CPhysicalPrimitiveMesh_GetClosestPointToPos2D_004cf3d0_test.cpp'
         PassPattern = 'OK_0x004cf3d0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004df3cb'
@@ -33658,6 +34110,7 @@ $catalog = @(
         Source = '00/4e/CSoundInit_CSoundInit_004ec9b5.cpp'
         TestSource = '00/4e/CSoundInit_CSoundInit_004ec9b5_test.cpp'
         PassPattern = 'OK_0x004ec9b5'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004fab10'
@@ -33672,6 +34125,7 @@ $catalog = @(
         Source = '00/4f/CWorldMap_DrawFindLastUnblockedGroundPositionAndReportColl_004fb290.cpp'
         TestSource = '00/4f/CWorldMap_DrawFindLastUnblockedGroundPositionAndReportColl_004fb290_test.cpp'
         PassPattern = 'OK_0x004fb290'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004fb2a0'
@@ -33679,6 +34133,7 @@ $catalog = @(
         Source = '00/4f/CWorldMap_DrawFindLastUnblockedThemePositionAndReportColli_004fb2a0.cpp'
         TestSource = '00/4f/CWorldMap_DrawFindLastUnblockedThemePositionAndReportColli_004fb2a0_test.cpp'
         PassPattern = 'OK_0x004fb2a0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004fb2b0'
@@ -33693,6 +34148,7 @@ $catalog = @(
         Source = '00/4f/CWorldMap_IsPosChangeable_004fb2f0.cpp'
         TestSource = '00/4f/CWorldMap_IsPosChangeable_004fb2f0_test.cpp'
         PassPattern = 'OK_0x004fb2f0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004e786c'
@@ -33749,6 +34205,7 @@ $catalog = @(
         Source = '00/52/CCompressorZlib_CompressAsImage_0052ae10.cpp'
         TestSource = '00/52/CCompressorZlib_CompressAsImage_0052ae10_test.cpp'
         PassPattern = 'OK_0x0052ae10'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0051ce00'
@@ -33777,6 +34234,7 @@ $catalog = @(
         Source = '00/53/CComponent_Die_00530720.cpp'
         TestSource = '00/53/CComponent_Die_00530720_test.cpp'
         PassPattern = 'OK_0x00530720'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00547b90'
@@ -33784,6 +34242,7 @@ $catalog = @(
         Source = '00/54/CMovie_FreeTextures_00547b90.cpp'
         TestSource = '00/54/CMovie_FreeTextures_00547b90_test.cpp'
         PassPattern = 'OK_0x00547b90'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00548570'
@@ -33819,6 +34278,7 @@ $catalog = @(
         Source = '00/55/CMorphingSprite_InternalChanged_00554110.cpp'
         TestSource = '00/55/CMorphingSprite_InternalChanged_00554110_test.cpp'
         PassPattern = 'OK_0x00554110'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00556540'
@@ -33854,6 +34314,7 @@ $catalog = @(
         Source = '00/55/CHoverable_OnUnhovered_0055b9a0.cpp'
         TestSource = '00/55/CHoverable_OnUnhovered_0055b9a0_test.cpp'
         PassPattern = 'OK_0x0055b9a0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00556520'
@@ -33875,6 +34336,7 @@ $catalog = @(
         Source = '00/56/CTCInventoryExperience_IncrementStatIndicator_0056e5ca.cpp'
         TestSource = '00/56/CTCInventoryExperience_IncrementStatIndicator_0056e5ca_test.cpp'
         PassPattern = 'OK_0x0056e5ca'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0056e5de'
@@ -33889,6 +34351,7 @@ $catalog = @(
         Source = '00/57/CDateAndTime_CDateAndTime_0057a376.cpp'
         TestSource = '00/57/CDateAndTime_CDateAndTime_0057a376_test.cpp'
         PassPattern = 'OK_0x0057a376'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0057a3a2'
@@ -33903,6 +34366,7 @@ $catalog = @(
         Source = '00/57/CTCHeroStats_InformOfEvent_0057a56c.cpp'
         TestSource = '00/57/CTCHeroStats_InformOfEvent_0057a56c_test.cpp'
         PassPattern = 'OK_0x0057a56c'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0055ddf0'
@@ -33931,6 +34395,7 @@ $catalog = @(
         Source = '00/57/CTCHeroStats_UpgradeRenownLevel_0057cae9.cpp'
         TestSource = '00/57/CTCHeroStats_UpgradeRenownLevel_0057cae9_test.cpp'
         PassPattern = 'OK_0x0057cae9'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0057fc46'
@@ -33938,6 +34403,7 @@ $catalog = @(
         Source = '00/57/CTattooDef_GetTypeBalancedAttractiveness_0057fc46.cpp'
         TestSource = '00/57/CTattooDef_GetTypeBalancedAttractiveness_0057fc46_test.cpp'
         PassPattern = 'OK_0x0057fc46'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0057feb1'
@@ -33952,6 +34418,7 @@ $catalog = @(
         Source = '00/57/global_UIntRBTreeFindLess_0057fed6.cpp'
         TestSource = '00/57/global_UIntRBTreeFindLess_0057fed6_test.cpp'
         PassPattern = 'OK_0x0057fed6'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005819dd'
@@ -33959,6 +34426,7 @@ $catalog = @(
         Source = '00/58/CTCInventory_ConstructItemDescription_005819dd.cpp'
         TestSource = '00/58/CTCInventory_ConstructItemDescription_005819dd_test.cpp'
         PassPattern = 'OK_0x005819dd'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00581bde'
@@ -33973,6 +34441,7 @@ $catalog = @(
         Source = '00/59/CTCInventoryExperience_IncrementStatIndicator_0059aaf9.cpp'
         TestSource = '00/59/CTCInventoryExperience_IncrementStatIndicator_0059aaf9_test.cpp'
         PassPattern = 'OK_0x0059aaf9'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0059b61c'
@@ -33980,6 +34449,7 @@ $catalog = @(
         Source = '00/59/CCreatureActionFireMissileWeapon_FrameUpdate_0059b61c.cpp'
         TestSource = '00/59/CCreatureActionFireMissileWeapon_FrameUpdate_0059b61c_test.cpp'
         PassPattern = 'OK_0x0059b61c'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0059b777'
@@ -33987,6 +34457,7 @@ $catalog = @(
         Source = '00/59/CTCInventoryTrade_ProcessButtonAReleased_0059b777.cpp'
         TestSource = '00/59/CTCInventoryTrade_ProcessButtonAReleased_0059b777_test.cpp'
         PassPattern = 'OK_0x0059b777'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005b1dfe'
@@ -34036,6 +34507,7 @@ $catalog = @(
         Source = '00/5b/CTCInventoryBase_RemoveItemFromInventory_005bc499.cpp'
         TestSource = '00/5b/CTCInventoryBase_RemoveItemFromInventory_005bc499_test.cpp'
         PassPattern = 'OK_0x005bc499'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005bc70a'
@@ -34043,6 +34515,7 @@ $catalog = @(
         Source = '00/5b/CItem_UpdateNonQuestPersistentRefCount_005bc70a.cpp'
         TestSource = '00/5b/CItem_UpdateNonQuestPersistentRefCount_005bc70a_test.cpp'
         PassPattern = 'OK_0x005bc70a'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005bc729'
@@ -34050,6 +34523,7 @@ $catalog = @(
         Source = '00/5b/CItem_IsQuestPersistent_005bc729.cpp'
         TestSource = '00/5b/CItem_IsQuestPersistent_005bc729_test.cpp'
         PassPattern = 'OK_0x005bc729'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005bc746'
@@ -34064,6 +34538,7 @@ $catalog = @(
         Source = '00/5b/CTCInventoryBase_ProcessButtonAReleased_005bc638.cpp'
         TestSource = '00/5b/CTCInventoryBase_ProcessButtonAReleased_005bc638_test.cpp'
         PassPattern = 'OK_0x005bc638'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005bc6f9'
@@ -34092,6 +34567,7 @@ $catalog = @(
         Source = '00/5b/CTCInventoryBase_GetSelectedCategory_005bcace.cpp'
         TestSource = '00/5b/CTCInventoryBase_GetSelectedCategory_005bcace_test.cpp'
         PassPattern = 'OK_0x005bcace'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005bce2f'
@@ -34106,6 +34582,7 @@ $catalog = @(
         Source = '00/5b/CTCInventoryBase_GetCategoryWithIndex_005bce3c.cpp'
         TestSource = '00/5b/CTCInventoryBase_GetCategoryWithIndex_005bce3c_test.cpp'
         PassPattern = 'OK_0x005bce3c'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005bd1b3'
@@ -34113,6 +34590,7 @@ $catalog = @(
         Source = '00/5b/CCategory_GetCategoryIdentifier_005bd1b3.cpp'
         TestSource = '00/5b/CCategory_GetCategoryIdentifier_005bd1b3_test.cpp'
         PassPattern = 'OK_0x005bd1b3'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005bd404'
@@ -34120,6 +34598,7 @@ $catalog = @(
         Source = '00/5b/CTCWeapon_GetAnimationSpeedValue_005bd404.cpp'
         TestSource = '00/5b/CTCWeapon_GetAnimationSpeedValue_005bd404_test.cpp'
         PassPattern = 'OK_0x005bd404'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005bd993'
@@ -34127,6 +34606,7 @@ $catalog = @(
         Source = '00/5b/CRenderTarget_DetachTarget_005bd993.cpp'
         TestSource = '00/5b/CRenderTarget_DetachTarget_005bd993_test.cpp'
         PassPattern = 'OK_0x005bd993'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005c14a6'
@@ -34134,6 +34614,7 @@ $catalog = @(
         Source = '00/5c/CNavigationLayer_CNavigationLayer_005c14a6.cpp'
         TestSource = '00/5c/CNavigationLayer_CNavigationLayer_005c14a6_test.cpp'
         PassPattern = 'OK_0x005c14a6'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005d8e40'
@@ -34148,6 +34629,7 @@ $catalog = @(
         Source = '00/5d/CChunkCollectionIndicator_OnPredicateFail_005d8e50.cpp'
         TestSource = '00/5d/CChunkCollectionIndicator_OnPredicateFail_005d8e50_test.cpp'
         PassPattern = 'OK_0x005d8e50'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005d92d0'
@@ -34183,6 +34665,7 @@ $catalog = @(
         Source = '00/5d/global_IsMeleeWeaponClass_005da510.cpp'
         TestSource = '00/5d/global_IsMeleeWeaponClass_005da510_test.cpp'
         PassPattern = 'OK_0x005da510'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005d9030'
@@ -34190,6 +34673,7 @@ $catalog = @(
         Source = '00/5d/CCategory_GetCategoryIdentifier_005d9030.cpp'
         TestSource = '00/5d/CCategory_GetCategoryIdentifier_005d9030_test.cpp'
         PassPattern = 'OK_0x005d9030'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005da680'
@@ -34204,6 +34688,7 @@ $catalog = @(
         Source = '00/5d/CCategory_GetCategoryIdentifier_005da7d0.cpp'
         TestSource = '00/5d/CCategory_GetCategoryIdentifier_005da7d0_test.cpp'
         PassPattern = 'OK_0x005da7d0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005da8f0'
@@ -34211,6 +34696,7 @@ $catalog = @(
         Source = '00/5d/CTCWeapon_IsAnalogueLoading_005da8f0.cpp'
         TestSource = '00/5d/CTCWeapon_IsAnalogueLoading_005da8f0_test.cpp'
         PassPattern = 'OK_0x005da8f0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005daa40'
@@ -34218,6 +34704,7 @@ $catalog = @(
         Source = '00/5d/CTCWeapon_IsProjectileWeapon_005daa40.cpp'
         TestSource = '00/5d/CTCWeapon_IsProjectileWeapon_005daa40_test.cpp'
         PassPattern = 'OK_0x005daa40'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005e3e70'
@@ -34246,6 +34733,7 @@ $catalog = @(
         Source = '00/5d/CTCWeapon_IsMeleeWeapon_005daa70.cpp'
         TestSource = '00/5d/CTCWeapon_IsMeleeWeapon_005daa70_test.cpp'
         PassPattern = 'OK_0x005daa70'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005e9bf0'
@@ -34253,6 +34741,7 @@ $catalog = @(
         Source = '00/5e/CTCTavernGame_IsCurrentOrUpcomingState_005e9bf0.cpp'
         TestSource = '00/5e/CTCTavernGame_IsCurrentOrUpcomingState_005e9bf0_test.cpp'
         PassPattern = 'OK_0x005e9bf0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005ede93'
@@ -34302,6 +34791,7 @@ $catalog = @(
         Source = '00/5e/CTCInventoryAbilities_IsAbilityAvailable_005edf08.cpp'
         TestSource = '00/5e/CTCInventoryAbilities_IsAbilityAvailable_005edf08_test.cpp'
         PassPattern = 'OK_0x005edf08'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00403d20'
@@ -34365,6 +34855,7 @@ $catalog = @(
         Source = '00/47/global_Fillnunsignedlongunsignedintunsignedlong_0047b6c0.cpp'
         TestSource = '00/47/global_Fillnunsignedlongunsignedintunsignedlong_0047b6c0_test.cpp'
         PassPattern = 'FILL_N_ULONG_TRIPLE_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0047c600'
@@ -34386,6 +34877,7 @@ $catalog = @(
         Source = '00/47/CTCInGameMenu_PeekGuiDef_0047d5a3.cpp'
         TestSource = '00/47/CTCInGameMenu_PeekGuiDef_0047d5a3_test.cpp'
         PassPattern = 'PEEKGUIDEF_0047D5A3_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0047db73'
@@ -34498,6 +34990,7 @@ $catalog = @(
         Source = '00/47/global_Uninitcopyuintd_0047b670.cpp'
         TestSource = '00/47/global_Uninitcopyuintd_0047b670_test.cpp'
         PassPattern = 'UNINIT_COPY_UINT_0047B670_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0047b710'
@@ -34505,6 +34998,7 @@ $catalog = @(
         Source = '00/47/global_Uninitcopyuinte_0047b710.cpp'
         TestSource = '00/47/global_Uninitcopyuinte_0047b710_test.cpp'
         PassPattern = 'UNINIT_COPY_UINT_047B710_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0047d60d'
@@ -34561,6 +35055,7 @@ $catalog = @(
         Source = '00/47/global_Uninitcopyuinta_0047b5f0.cpp'
         TestSource = '00/47/global_Uninitcopyuinta_0047b5f0_test.cpp'
         PassPattern = 'UNINIT_COPY_UINT_A_0047B5F0_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0047b630'
@@ -34575,6 +35070,7 @@ $catalog = @(
         Source = '00/47/global_Uninitcopyuintc_0047c290.cpp'
         TestSource = '00/47/global_Uninitcopyuintc_0047c290_test.cpp'
         PassPattern = 'UNINIT_COPY_UINT_C_0047C290_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00403510'
@@ -34715,6 +35211,7 @@ $catalog = @(
         Source = '00/88/CGameScriptInterface_StartCountdownTimer_0088f8d0.cpp'
         TestSource = '00/88/CGameScriptInterface_StartCountdownTimer_0088f8d0_test.cpp'
         PassPattern = 'ROUND_OK'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0088f910'
@@ -35170,6 +35667,7 @@ $catalog = @(
         Source = '00/bf/global_ehvectordestructoriterator_00bfeed8.cpp'
         TestSource = '00/bf/global_ehvectordestructoriterator_00bfeed8_test.cpp'
         PassPattern = 'PASS_00BFEED8_OK'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '009a0590'
@@ -35226,6 +35724,7 @@ $catalog = @(
         Source = '00/bf/global_ArrayUnwind_00bfee7a.cpp'
         TestSource = '00/bf/global_ArrayUnwind_00bfee7a_test.cpp'
         PassPattern = 'PASS_00BFEE7A_OK'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '009ba110'
@@ -35492,6 +35991,7 @@ $catalog = @(
         Source = '00/7a/CWorldMap_PrepareForLoad_007a7d10.cpp'
         TestSource = '00/7a/CWorldMap_PrepareForLoad_007a7d10_test.cpp'
         PassPattern = 'PREPAREFORLOAD_OK'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '007df3d0'
@@ -35863,6 +36363,7 @@ $catalog = @(
         Source = '00/c8/std_DestvalCFlasha_00c8db10.cpp'
         TestSource = '00/c8/std_DestvalCFlasha_00c8db10_test.cpp'
         PassPattern = 'DEST_VAL_CFLASH_OK'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00cb5ac0'
@@ -44235,6 +44736,7 @@ $catalog = @(
         Source = '00/ca/global_FtoL_00ca3b10.cpp'
         TestSource = '00/ca/global_FtoL_00ca3b10_test.cpp'
         PassPattern = 'RB_ca3b10_OK'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00922fa0'
@@ -44865,6 +45367,7 @@ $catalog = @(
         Source = '00/bf/global_securitycheckcookie_00bfe9f9.cpp'
         TestSource = '00/bf/global_securitycheckcookie_00bfe9f9_test.cpp'
         PassPattern = 'OK_00bfe9f9'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00c09be0'
@@ -44893,6 +45396,7 @@ $catalog = @(
         Source = '00/c0/ConsvalstdallocatorstdpairCCharStringCCharStringstdpairCCharStringCCharStringstd_pairclassCCharStringclassCCharString_00c0bcc0.cpp'
         TestSource = '00/c0/ConsvalstdallocatorstdpairCCharStringCCharStringstdpairCCharStringCCharStringstd_pairclassCCharStringclassCCharString_00c0bcc0_test.cpp'
         PassPattern = 'OK_00c0bcc0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00c0e6e0'
@@ -44900,6 +45404,7 @@ $catalog = @(
         Source = '00/c0/CAIBrain_GetCurrentStateGroupDebugText_00c0e6e0.cpp'
         TestSource = '00/c0/CAIBrain_GetCurrentStateGroupDebugText_00c0e6e0_test.cpp'
         PassPattern = 'OK_00c0e6e0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00c0f1c0'
@@ -45152,6 +45657,7 @@ $catalog = @(
         Source = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c43370.cpp'
         TestSource = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c43370_test.cpp'
         PassPattern = 'OK_00c43370'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00c44a90'
@@ -45194,6 +45700,7 @@ $catalog = @(
         Source = '00/c6/CCreatureActionBase_GetFramesRemaining_00c61be0.cpp'
         TestSource = '00/c6/CCreatureActionBase_GetFramesRemaining_00c61be0_test.cpp'
         PassPattern = 'OK_00c61be0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00c62350'
@@ -45250,6 +45757,7 @@ $catalog = @(
         Source = '00/48/CMainGameComponent_BeginInputLoading_0048faa0.cpp'
         TestSource = '00/48/CMainGameComponent_BeginInputLoading_0048faa0_test.cpp'
         PassPattern = 'OK_0048faa0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004c7c40'
@@ -45264,6 +45772,7 @@ $catalog = @(
         Source = '00/4c/CThing_IsGameStatePersisted_004c8280.cpp'
         TestSource = '00/4c/CThing_IsGameStatePersisted_004c8280_test.cpp'
         PassPattern = 'OK_004c8280'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004fd020'
@@ -45292,6 +45801,7 @@ $catalog = @(
         Source = '00/5c/Ucopystd_pairlongCCountedPointerCContainmentVolume_005c13cd.cpp'
         TestSource = '00/5c/Ucopystd_pairlongCCountedPointerCContainmentVolume_005c13cd_test.cpp'
         PassPattern = 'OK_005c13cd'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005c13e3'
@@ -45299,6 +45809,7 @@ $catalog = @(
         Source = '00/5c/Ucopystd_pairlongCCountedPointerCContainmentVolume_005c13e3.cpp'
         TestSource = '00/5c/Ucopystd_pairlongCCountedPointerCContainmentVolume_005c13e3_test.cpp'
         PassPattern = 'OK_005c13e3'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005c190b'
@@ -45306,6 +45817,7 @@ $catalog = @(
         Source = '00/5c/Ucopystd_pairlongCCountedPointerCContainmentVolume_005c190b.cpp'
         TestSource = '00/5c/Ucopystd_pairlongCCountedPointerCContainmentVolume_005c190b_test.cpp'
         PassPattern = 'OK_005c190b'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005d97b0'
@@ -45320,6 +45832,7 @@ $catalog = @(
         Source = '00/5d/CTCWeapon_IsAbleToBeUsedToBlock_005dacf0.cpp'
         TestSource = '00/5d/CTCWeapon_IsAbleToBeUsedToBlock_005dacf0_test.cpp'
         PassPattern = 'OK_005dacf0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005db260'
@@ -45369,6 +45882,7 @@ $catalog = @(
         Source = '00/5e/CTCTavernGame_SetStateAfterYesNo_005eaf30.cpp'
         TestSource = '00/5e/CTCTavernGame_SetStateAfterYesNo_005eaf30_test.cpp'
         PassPattern = 'OK_005eaf30'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066a670'
@@ -45390,6 +45904,7 @@ $catalog = @(
         Source = '00/69/CCreatureActionBase_GetWorldMap_00692c10.cpp'
         TestSource = '00/69/CCreatureActionBase_GetWorldMap_00692c10_test.cpp'
         PassPattern = 'OK_00692c10'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '006e7460'
@@ -45397,6 +45912,7 @@ $catalog = @(
         Source = '00/6e/CGameScriptInterface_PostAddScriptedEntities_006e7460.cpp'
         TestSource = '00/6e/CGameScriptInterface_PostAddScriptedEntities_006e7460_test.cpp'
         PassPattern = 'OK_006e7460'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00702280'
@@ -45418,6 +45934,7 @@ $catalog = @(
         Source = '00/70/CTCQuestCard_IsOptional_007022c0.cpp'
         TestSource = '00/70/CTCQuestCard_IsOptional_007022c0_test.cpp'
         PassPattern = 'OK_007022c0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00719c30'
@@ -45439,6 +45956,7 @@ $catalog = @(
         Source = '00/78/CTCCreatureGroupBoastingCrowd_OnHeroEnterBoastingArea_00784690.cpp'
         TestSource = '00/78/CTCCreatureGroupBoastingCrowd_OnHeroEnterBoastingArea_00784690_test.cpp'
         PassPattern = 'OK_00784690'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00789cc0'
@@ -45446,6 +45964,7 @@ $catalog = @(
         Source = '00/78/CTCDivineWrath_GetDamageMultiplier_00789cc0.cpp'
         TestSource = '00/78/CTCDivineWrath_GetDamageMultiplier_00789cc0_test.cpp'
         PassPattern = 'OK_00789cc0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00789fd0'
@@ -45460,6 +45979,7 @@ $catalog = @(
         Source = '00/79/CTCBulletTime_CancelForCutscene_0079c660.cpp'
         TestSource = '00/79/CTCBulletTime_CancelForCutscene_0079c660_test.cpp'
         PassPattern = 'OK_0079c660'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '007ce370'
@@ -45663,6 +46183,7 @@ $catalog = @(
         Source = '00/a5/CStreamingFontDataBank_GetEnumerationType_00a5ef10.cpp'
         TestSource = '00/a5/CStreamingFontDataBank_GetEnumerationType_00a5ef10_test.cpp'
         PassPattern = 'OK_00a5ef10'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00a632d0'
@@ -45677,6 +46198,7 @@ $catalog = @(
         Source = '00/a6/CFontDataBank_GetEnumerationType_00a63380.cpp'
         TestSource = '00/a6/CFontDataBank_GetEnumerationType_00a63380_test.cpp'
         PassPattern = 'OK_00a63380'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00af7ca0'
@@ -45747,6 +46269,7 @@ $catalog = @(
         Source = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bf36c0.cpp'
         TestSource = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bf36c0_test.cpp'
         PassPattern = 'OK_00bf36c0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00c0c910'
@@ -45817,6 +46340,7 @@ $catalog = @(
         Source = '00/c6/global_FtoL_00c6b240.cpp'
         TestSource = '00/c6/global_FtoL_00c6b240_test.cpp'
         PassPattern = 'OK_00c6b240'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00cb2860'
@@ -45873,6 +46397,7 @@ $catalog = @(
         Source = '00/4d/CActionDoCreatureAction_GetActionName_004d4249.cpp'
         TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d4249_test.cpp'
         PassPattern = 'OK_004d4249'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004d429b'
@@ -45880,6 +46405,7 @@ $catalog = @(
         Source = '00/4d/CActionDoCreatureAction_GetActionName_004d429b.cpp'
         TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d429b_test.cpp'
         PassPattern = 'OK_004d429b'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004d430f'
@@ -45887,6 +46413,7 @@ $catalog = @(
         Source = '00/4d/CActionDoCreatureAction_GetActionName_004d430f.cpp'
         TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d430f_test.cpp'
         PassPattern = 'OK_004d430f'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004d4369'
@@ -45901,6 +46428,7 @@ $catalog = @(
         Source = '00/4d/CActionDoCreatureAction_GetActionName_004d5fdb.cpp'
         TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d5fdb_test.cpp'
         PassPattern = 'OK_004d5fdb'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004d5ff2'
@@ -46784,6 +47312,7 @@ $catalog = @(
         Source = '00/c5/global_CPUAheadCounterCallback_00c52a80.cpp'
         TestSource = '00/c5/global_CPUAheadCounterCallback_00c52a80_test.cpp'
         PassPattern = '00c52a80_TEST PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00cd3211'
@@ -49466,6 +49995,7 @@ $catalog = @(
         Source = '00/a5/global_GFInitVectorMath_00a5b850.cpp'
         TestSource = '00/a5/global_GFInitVectorMath_00a5b850_test.cpp'
         PassPattern = 'VECTORMATH_SSE_OK'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00a5ee20'
@@ -51217,6 +51747,7 @@ $catalog = @(
         Source = '00/9e/global_CPUAheadCounterCallback_009e2540.cpp'
         TestSource = '00/9e/global_CPUAheadCounterCallback_009e2540_test.cpp'
         PassPattern = 'RDTSC_OK'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '009ea210'
@@ -66794,6 +67325,7 @@ $catalog = @(
         Source = '00/6a/CThingFilterIsInterestingToCreature_operator_006a7120.cpp'
         TestSource = '00/6a/CThingFilterIsInterestingToCreature_operator_006a7120_test.cpp'
         PassPattern = 'PARITY_OK'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '006a7410'
@@ -66823,6 +67355,7 @@ $catalog = @(
         Source = '00/6a/CMessageEventFilterIsOriginatedByThing_operator_006af200.cpp'
         TestSource = '00/6a/CMessageEventFilterIsOriginatedByThing_operator_006af200_test.cpp'
         PassPattern = 'PARITY_OK'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '006b0170'
@@ -93984,6 +94517,7 @@ $catalog = @(
         Source = '00/be/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00be5bb0.cpp'
         TestSource = '00/be/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00be5bb0_test.cpp'
         PassPattern = 'PASS_00be5bb0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00bea7e0'
@@ -93991,6 +94525,7 @@ $catalog = @(
         Source = '00/be/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bea7e0.cpp'
         TestSource = '00/be/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bea7e0_test.cpp'
         PassPattern = 'PASS_00bea7e0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00bf6260'
@@ -93998,6 +94533,7 @@ $catalog = @(
         Source = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bf6260.cpp'
         TestSource = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bf6260_test.cpp'
         PassPattern = 'PASS_00bf6260'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00bf62e0'
@@ -94005,6 +94541,7 @@ $catalog = @(
         Source = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bf62e0.cpp'
         TestSource = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bf62e0_test.cpp'
         PassPattern = 'PASS_00bf62e0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00bf9900'
@@ -94012,6 +94549,7 @@ $catalog = @(
         Source = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bf9900.cpp'
         TestSource = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bf9900_test.cpp'
         PassPattern = 'PASS_00bf9900'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00bf9980'
@@ -94019,6 +94557,7 @@ $catalog = @(
         Source = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bf9980.cpp'
         TestSource = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bf9980_test.cpp'
         PassPattern = 'PASS_00bf9980'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00bf9a00'
@@ -94026,6 +94565,7 @@ $catalog = @(
         Source = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bf9a00.cpp'
         TestSource = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bf9a00_test.cpp'
         PassPattern = 'PASS_00bf9a00'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00bfd160'
@@ -94033,6 +94573,7 @@ $catalog = @(
         Source = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bfd160.cpp'
         TestSource = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bfd160_test.cpp'
         PassPattern = 'PASS_00bfd160'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00bfdcc0'
@@ -94040,6 +94581,7 @@ $catalog = @(
         Source = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bfdcc0.cpp'
         TestSource = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bfdcc0_test.cpp'
         PassPattern = 'PASS_00bfdcc0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0065d691'
@@ -94719,6 +95261,7 @@ $catalog = @(
         Source = '00/48/global_Fillnunsignedlongunsignedintunsignedlong_0048514c.cpp'
         TestSource = '00/48/global_Fillnunsignedlongunsignedintunsignedlong_0048514c_test.cpp'
         PassPattern = 'PASS_0048514c'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00654d0c'
@@ -94726,6 +95269,7 @@ $catalog = @(
         Source = '00/65/global_Fillnunsignedlongunsignedintunsignedlong_00654d0c.cpp'
         TestSource = '00/65/global_Fillnunsignedlongunsignedintunsignedlong_00654d0c_test.cpp'
         PassPattern = 'PASS_00654d0c'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00788c87'
@@ -94733,6 +95277,7 @@ $catalog = @(
         Source = '00/78/global_Fillnunsignedlongunsignedintunsignedlong_00788c87.cpp'
         TestSource = '00/78/global_Fillnunsignedlongunsignedintunsignedlong_00788c87_test.cpp'
         PassPattern = 'PASS_00788c87'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0048b7f0'
@@ -94957,6 +95502,7 @@ $catalog = @(
         Source = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_0044fcd7.cpp'
         TestSource = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_0044fcd7_test.cpp'
         PassPattern = 'PASS_0044fcd7'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0044fdd3'
@@ -94964,6 +95510,7 @@ $catalog = @(
         Source = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_0044fdd3.cpp'
         TestSource = '00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_0044fdd3_test.cpp'
         PassPattern = 'PASS_0044fdd3'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00454404'
@@ -95230,6 +95777,7 @@ $catalog = @(
         Source = '00/40/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_0040dd00.cpp'
         TestSource = '00/40/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_0040dd00_test.cpp'
         PassPattern = 'PASS_0040dd00'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0067e870'
@@ -95363,6 +95911,7 @@ $catalog = @(
         Source = '00/47/UninitcopystdVectorconstiteratorstdVectorvalunsignedintstdallocatorunsignedintun_allocatorunsignedint_0047b830.cpp'
         TestSource = '00/47/UninitcopystdVectorconstiteratorstdVectorvalunsignedintstdallocatorunsignedintun_allocatorunsignedint_0047b830_test.cpp'
         PassPattern = 'PASS_0047b830'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004b93e0'
@@ -95433,6 +95982,7 @@ $catalog = @(
         Source = '00/4c/CPhysicalPrimitiveMesh_GetClosestPointToPos2D_004cfbc0.cpp'
         TestSource = '00/4c/CPhysicalPrimitiveMesh_GetClosestPointToPos2D_004cfbc0_test.cpp'
         PassPattern = 'PASS_004cfbc0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005c1390'
@@ -95517,6 +96067,7 @@ $catalog = @(
         Source = '00/65/global_Fill_00654e46.cpp'
         TestSource = '00/65/global_Fill_00654e46_test.cpp'
         PassPattern = 'PASS_00654e46'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005c1921'
@@ -95524,6 +96075,7 @@ $catalog = @(
         Source = '00/5c/Ucopystd_pairlongCCountedPointerCContainmentVolume_005c1921.cpp'
         TestSource = '00/5c/Ucopystd_pairlongCCountedPointerCContainmentVolume_005c1921_test.cpp'
         PassPattern = 'PASS_005c1921'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '005cbeba'
@@ -95538,6 +96090,7 @@ $catalog = @(
         Source = '00/5e/CTCTavernGame_SetStateAfterYesNoAlt_005eadc0.cpp'
         TestSource = '00/5e/CTCTavernGame_SetStateAfterYesNoAlt_005eadc0_test.cpp'
         PassPattern = 'PASS_005eadc0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '006313a0'
@@ -95671,6 +96224,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_DisplayTutorial_0089e710.cpp'
         TestSource = '00/89/CGameScriptInterface_DisplayTutorial_0089e710_test.cpp'
         PassPattern = 'PASS_0089e710'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089ec60'
@@ -95797,6 +96351,7 @@ $catalog = @(
         Source = '00/a4/CLipSyncDataBank_GetEnumerationType_00a427e0.cpp'
         TestSource = '00/a4/CLipSyncDataBank_GetEnumerationType_00a427e0_test.cpp'
         PassPattern = 'PASS_00a427e0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00a5f230'
@@ -95874,6 +96429,7 @@ $catalog = @(
         Source = '00/c8/global_FtoL_00c89be0.cpp'
         TestSource = '00/c8/global_FtoL_00c89be0_test.cpp'
         PassPattern = 'PASS_00c89be0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00e1cac0'
@@ -129167,6 +129723,7 @@ $catalog = @(
         Source = '00/67/CTCCoopSpirit_OnCreate_006700f0.cpp'
         TestSource = '00/67/CTCCoopSpirit_OnCreate_006700f0_test.cpp'
         PassPattern = 'COOP_SPIRIT_ONCREATE_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066ff20'
@@ -129174,6 +129731,7 @@ $catalog = @(
         Source = '00/66/CTCCoopSpirit_SwapToHero_0066ff20.cpp'
         TestSource = '00/66/CTCCoopSpirit_SwapToHero_0066ff20_test.cpp'
         PassPattern = 'COOP_SPIRIT_SWAP_TO_HERO_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008a89d0'
@@ -129181,6 +129739,7 @@ $catalog = @(
         Source = '00/8a/CGameScriptInterface_GetAllCreaturesExcludingHero_008a89d0.cpp'
         TestSource = '00/8a/CGameScriptInterface_GetAllCreaturesExcludingHero_008a89d0_test.cpp'
         PassPattern = 'GET_ALL_CREATURES_EXCLUDING_HERO_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008a9c40'
@@ -129188,6 +129747,7 @@ $catalog = @(
         Source = '00/8a/CGameScriptInterface_GetAllThingsWithDefNameByDistanceFrom_008a9c40.cpp'
         TestSource = '00/8a/CGameScriptInterface_GetAllThingsWithDefNameByDistanceFrom_008a9c40_test.cpp'
         PassPattern = 'GET_THINGS_BY_DEF_DISTANCE_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00a76f30'
@@ -129195,6 +129755,7 @@ $catalog = @(
         Source = '00/a7/CNavQuadTree_IsAreaBlockedByLines_00a76f30.cpp'
         TestSource = '00/a7/CNavQuadTree_IsAreaBlockedByLines_00a76f30_test.cpp'
         PassPattern = 'NAV_AREA_BLOCKED_BY_LINES_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008a86c0'
@@ -129202,6 +129763,7 @@ $catalog = @(
         Source = '00/8a/CGameScriptInterface_GetAllCreaturesInAreaWithScriptName_008a86c0.cpp'
         TestSource = '00/8a/CGameScriptInterface_GetAllCreaturesInAreaWithScriptName_008a86c0_test.cpp'
         PassPattern = 'GET_CREATURES_AREA_SCRIPT_NAME_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00a80360'
@@ -129209,6 +129771,7 @@ $catalog = @(
         Source = '00/a8/global_VectorConstructInitializedC2DLineF_00a80360.cpp'
         TestSource = '00/a8/global_VectorConstructInitializedC2DLineF_00a80360_test.cpp'
         PassPattern = 'VECTOR_C2DLINEF_CONSTRUCT_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004368e0'
@@ -129986,6 +130549,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetHeroHasChildren_00897bd0.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroHasChildren_00897bd0_test.cpp'
         PassPattern = 'GET_HERO_HAS_CHILDREN_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00897c30'
@@ -129993,6 +130557,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetHeroHasMurderedWife_00897c30.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroHasMurderedWife_00897c30_test.cpp'
         PassPattern = 'GET_HERO_HAS_MURDERED_WIFE_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00897b70'
@@ -130000,6 +130565,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetHeroHasDivorcedMarriage_00897b70.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroHasDivorcedMarriage_00897b70_test.cpp'
         PassPattern = 'GET_HERO_HAS_DIVORCED_MARRIAGE_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00897b10'
@@ -130007,6 +130573,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetHeroHasCurrentMarriage_00897b10.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroHasCurrentMarriage_00897b10_test.cpp'
         PassPattern = 'GET_HERO_HAS_CURRENT_MARRIAGE_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00897aa0'
@@ -130014,6 +130581,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_GetHeroHasMarried_00897aa0.cpp'
         TestSource = '00/89/CGameScriptInterface_GetHeroHasMarried_00897aa0_test.cpp'
         PassPattern = 'GET_HERO_HAS_MARRIED_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008a9610'
@@ -130021,6 +130589,7 @@ $catalog = @(
         Source = '00/8a/CGameScriptInterface_SetThingAsConscious_008a9610.cpp'
         TestSource = '00/8a/CGameScriptInterface_SetThingAsConscious_008a9610_test.cpp'
         PassPattern = 'SET_THING_AS_CONSCIOUS_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0089b4d0'
@@ -130028,6 +130597,7 @@ $catalog = @(
         Source = '00/89/CGameScriptInterface_RemoveHeroHairstyle_0089b4d0.cpp'
         TestSource = '00/89/CGameScriptInterface_RemoveHeroHairstyle_0089b4d0_test.cpp'
         PassPattern = 'REMOVE_HERO_HAIRSTYLE_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008a1590'
@@ -130035,6 +130605,7 @@ $catalog = @(
         Source = '00/8a/CGameScriptInterface_GetBestTimePairs_008a1590.cpp'
         TestSource = '00/8a/CGameScriptInterface_GetBestTimePairs_008a1590_test.cpp'
         PassPattern = 'GET_BEST_TIME_PAIRS_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008a15f0'
@@ -130042,6 +130613,7 @@ $catalog = @(
         Source = '00/8a/CGameScriptInterface_GetBestTimeSorting_008a15f0.cpp'
         TestSource = '00/8a/CGameScriptInterface_GetBestTimeSorting_008a15f0_test.cpp'
         PassPattern = 'GET_BEST_TIME_SORTING_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '008a17d0'
@@ -130049,6 +130621,7 @@ $catalog = @(
         Source = '00/8a/CGameScriptInterface_GetBestTimeGuessTheAddition_008a17d0.cpp'
         TestSource = '00/8a/CGameScriptInterface_GetBestTimeGuessTheAddition_008a17d0_test.cpp'
         PassPattern = 'GET_BEST_TIME_ADDITION_PASS'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00890750'
@@ -130333,7 +130906,7 @@ try {
         # Entries tagged Compiler='qfe4035' need the 13.10.4035 backend to reproduce their bytes.
         $entryCompilerRoot = if ($entry.PSObject.Properties['Compiler'] -and $entry.Compiler -eq 'qfe4035') {
             if (-not (Test-Path -LiteralPath (Join-Path $vcQfeRoot 'bin\cl.exe'))) {
-                throw "Entry $($entry.Address) needs the QFE-4035 toolset but $vcQfeRoot\bin\cl.exe is missing (see docs/QFE4035_COMPILER_GATE.md)"
+                throw "Entry $($entry.Address) needs the QFE-4035 toolset but $vcQfeRoot\bin\cl.exe is missing (see docs/pipeline/QFE4035_COMPILER_GATE.md)"
             }
             $vcQfeRoot
         } else { $vcRoot }

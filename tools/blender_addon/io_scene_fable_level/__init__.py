@@ -17,7 +17,7 @@ owns the terrain round-trip and touches none of that package's files.
 Honest scope: editing terrain heights does NOT regenerate the navmesh / region
 graph / obstacle-brush data -- those are preserved opaque, so the engine's
 runtime navigation still reflects the ORIGINAL terrain. TNG "thing" placement is
-NOT included here (deferred). See docs/TERRAIN_BLENDER.md.
+NOT included here (deferred). See docs/modding/README.md#terrain_blender.
 
 All LEV logic lives in the bpy-FREE `level_core` module (wraps tools/lev_rw.py,
 unit-testable standalone). `level_io` is the thin bpy layer.

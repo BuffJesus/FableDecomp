@@ -1,0 +1,275 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/TrophyDealer/Entities/DemonDoorFace.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 10,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingHasInformation",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingPersistent",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsDamageable",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 10
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 21,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 8
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 22
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 29
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 34
+        },
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 36
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 37
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestCardObjective",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 39
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 45
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 46
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 47
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 54
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 56
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 57
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 58
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 61
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestCardObjective",
+          "line": 62
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 65
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingPersistent",
+          "line": 67
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 69
+        },
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 73
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapRemoveMarker",
+          "line": 76
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 77
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 78
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 80
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 88
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 89
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "quest",
+        "me",
+        "context"
+      ],
+      "line": 114,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferInt",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 5
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "DemonDoorState",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_071_DOOR_LOCKED1",
+      "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_03",
+      "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_04"
+    ],
+    "cutscenes": [
+      "CS_TROPHY_DEALER_DOOR_OPENS"
+    ],
+    "regions": []
+  }
+}

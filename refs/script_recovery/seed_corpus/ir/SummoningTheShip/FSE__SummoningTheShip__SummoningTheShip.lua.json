@@ -1,0 +1,684 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/SummoningTheShip/SummoningTheShip.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest"
+      ],
+      "line": 7,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestRegion",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestRegion",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "quest",
+        "context"
+      ],
+      "line": 26,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferInt",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferBool",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferBool",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferBool",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferInt",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest"
+      ],
+      "line": 48,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "AddEntityBinding",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "AddEntityBinding",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "AddEntityBinding",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "AddEntityBinding",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "AddEntityBinding",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "AddEntityBinding",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "FinalizeEntityBindings",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateThread",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "name": "DoMission",
+      "parameters": [
+        "quest"
+      ],
+      "line": 64,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestCardObjective",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "IsLevelLoaded",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "SetSummonerDeathExplosionAffectsHero",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "SetWeaponOutCrimeEnabled",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "SetVillageLimbo",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "KickOffQuestStartScreen",
+          "line": 34
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeScreenIn",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 39
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 42
+        },
+        {
+          "receiver": "quest",
+          "name": "OverrideMusic",
+          "line": 44
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestCardObjective",
+          "line": 45
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 47
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 49
+        },
+        {
+          "receiver": "quest",
+          "name": "OverrideMusic",
+          "line": 50
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 53
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 53
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 54
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 57
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 58
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 59
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestAsFailed",
+          "line": 60
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 63
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 64
+        },
+        {
+          "receiver": "quest",
+          "name": "SetSummonerDeathExplosionAffectsHero",
+          "line": 67
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 70
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 70
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 71
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 74
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 75
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 76
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestAsFailed",
+          "line": 77
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 81
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 83
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 85
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 87
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 88
+        },
+        {
+          "receiver": "quest",
+          "name": "StopOverrideMusic",
+          "line": 92
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 94
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 95
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 96
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 97
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestAsFailed",
+          "line": 98
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 100
+        },
+        {
+          "receiver": "quest",
+          "name": "Pause",
+          "line": 101
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 102
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayAVIMovie",
+          "line": 103
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestAsCompleted",
+          "line": 104
+        },
+        {
+          "receiver": "quest",
+          "name": "SetVillageLimbo",
+          "line": 108
+        },
+        {
+          "receiver": "quest",
+          "name": "SetWeaponOutCrimeEnabled",
+          "line": 109
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 110
+        },
+        {
+          "receiver": "quest",
+          "name": "StopOverrideMusic",
+          "line": 111
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 113
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityTeleportToThing",
+          "line": 115
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 118
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 120
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 123
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 124
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "CommentaryTimer",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "ConversationIndex",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "CurrentAttackWave",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "LighthouseStarted",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "MissionFailed",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "SummonerAttacksStarted",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "SummonersAlive",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "STS_BriarRose",
+      "script": "SummoningTheShip/Entities/STS_BriarRose",
+      "line": 52
+    },
+    {
+      "name": "SummonerAttacker",
+      "script": "SummoningTheShip/Entities/SummonerAttacker",
+      "line": 53
+    },
+    {
+      "name": "SummonerMinion",
+      "script": "SummoningTheShip/Entities/SummonerMinion",
+      "line": 54
+    },
+    {
+      "name": "FireHeartHolder",
+      "script": "SummoningTheShip/Entities/FireHeartHolder",
+      "line": 55
+    },
+    {
+      "name": "FireHeart",
+      "script": "SummoningTheShip/Entities/FireHeart",
+      "line": 56
+    },
+    {
+      "name": "M_ActivateLighthouse",
+      "script": "SummoningTheShip/Entities/M_ActivateLighthouse",
+      "line": 57
+    }
+  ],
+  "references": {
+    "textTags": [
+      "TEXT_QST_B02_BRIARROSE_FIREHEART_POWERED",
+      "TEXT_QUEST_SUMMONING_SHIP_OBJECTIVE_01",
+      "TEXT_QUEST_SUMMONING_SHIP_OBJECTIVE_02",
+      "TEXT_QUEST_SUMMONING_THE_SHIP_FAILED"
+    ],
+    "cutscenes": [
+      "CS_SUMSHIP_INTRO",
+      "CS_SUMSHIP_OUTRO",
+      "CS_SUMSHIP_OUTRO_FAILED",
+      "CS_SUMSHIP_PREINTRO",
+      "CS_SUMSHIP_WAVE2"
+    ],
+    "regions": []
+  }
+}

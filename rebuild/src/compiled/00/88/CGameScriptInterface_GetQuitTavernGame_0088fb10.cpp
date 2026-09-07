@@ -1,6 +1,6 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 extern bool g_QuitTavernGame;
 
-struct CGameScriptInterface { char dummy; };
 
 bool __fastcall CGameScriptInterface_GetQuitTavernGame(CGameScriptInterface* self)
 {

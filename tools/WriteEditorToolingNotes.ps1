@@ -1,6 +1,6 @@
 param(
     [string]$PdbNames = "ghidra_out\fablewin_pdb_names.tsv",
-    [string]$OutPath = "docs\EDITOR_TOOLING_NOTES.md"
+    [string]$OutPath = "docs\modding\README.md#editor_tooling_notes"
 )
 
 $ErrorActionPreference = "Stop"

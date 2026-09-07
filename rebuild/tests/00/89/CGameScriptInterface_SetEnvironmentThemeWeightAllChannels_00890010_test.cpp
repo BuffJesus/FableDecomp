@@ -1,11 +1,11 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 struct Inner {
     int applied; int one; int count; int arg2;
     void Apply(int a, int b, int c) { applied = 1; one = a; count = b; arg2 = c; }
 };
-struct CMid { char pad[0x18]; Inner* p18; };
-struct CGameScriptInterface { void* vt; CMid* mid; };
+struct CWorld { char pad[0x18]; Inner* p18; };
 
 struct ThemeObj { int cnt; };
 
@@ -21,14 +21,14 @@ void __fastcall CGameScriptInterface_SetEnvironmentThemeWeightAllChannels(
     ThemeObj* t = GetTheme(channel);
     int n = ThemeCount(t);
     if (n > 0) {
-        self->mid->p18->Apply(1, n, arg2);
+        self->World->p18->Apply(1, n, arg2);
     }
 }
 
 int main() {
     Inner innerObj; innerObj.applied = 0;
-    CMid midObj; midObj.p18 = &innerObj;
-    CGameScriptInterface obj; obj.mid = &midObj;
+    CWorld midObj; midObj.p18 = &innerObj;
+    CGameScriptInterface obj; obj.World = &midObj;
 
     g_theme.cnt = 5;
     CGameScriptInterface_SetEnvironmentThemeWeightAllChannels(&obj, 0, 7, 99);

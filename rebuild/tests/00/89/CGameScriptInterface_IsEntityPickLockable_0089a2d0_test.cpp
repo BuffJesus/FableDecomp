@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 enum ETCInterfaceType { ETC_DUMMY = 0 };
@@ -45,9 +46,6 @@ struct CThingOverlay
     CVectorMap    m_InterfaceMap44;
 };
 
-struct CGameScriptInterface
-{
-};
 
 static bool g_available = false;
 static CThingOverlay* g_thing = 0;

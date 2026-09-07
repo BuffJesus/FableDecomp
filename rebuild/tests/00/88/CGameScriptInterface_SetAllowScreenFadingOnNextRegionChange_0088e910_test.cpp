@@ -1,21 +1,18 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
-struct CMid {
+struct CWorld {
     unsigned char _pad[0xdb];
     unsigned char allowScreenFadingOnNextRegionChange; // +0xdb
 };
-struct CGameScriptInterface {
-    void* vt;      // +0x0
-    CMid* mid;     // +0x4
-};
 void __fastcall CGameScriptInterface_SetAllowScreenFadingOnNextRegionChange(
         CGameScriptInterface* self, int edx_dummy, char val) {
-    self->mid->allowScreenFadingOnNextRegionChange = (unsigned char)val;
+    self->World->allowScreenFadingOnNextRegionChange = (unsigned char)val;
 }
 int main() {
-    CMid midObj;
+    CWorld midObj;
     CGameScriptInterface obj;
-    CMid* mp = &midObj;
-    obj.mid = mp;
+    CWorld* mp = &midObj;
+    obj.World = mp;
     midObj.allowScreenFadingOnNextRegionChange = 0;
     CGameScriptInterface* op = &obj;
     CGameScriptInterface_SetAllowScreenFadingOnNextRegionChange(op, 0, 1);

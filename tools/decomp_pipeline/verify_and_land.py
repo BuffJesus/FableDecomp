@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(r"D:\Documents\FableTLC")
 VC = Path(r"D:\Tools\vc71")
 # Alternate 13.10.4035 QFE toolset (WinDDK 3790.1830 c1xx.dll+c2.dll). --qfe swaps the
-# compiler binaries only; headers/libs stay RTM. See docs/QFE4035_COMPILER_GATE.md.
+# compiler binaries only; headers/libs stay RTM. See docs/pipeline/QFE4035_COMPILER_GATE.md.
 QFE = Path(os.environ.get("VC71_QFE", r"D:\Tools\vc71-qfe4035"))
 CL_EXE = VC / "bin" / "cl.exe"   # active compiler (reset by use_qfe())
 CC_BIN = VC / "bin"             # active compiler's bin dir (for PATH)
@@ -21,7 +21,11 @@ SP = ROOT / "rebuild" / "build"
 WORK_ROOT = Path(os.environ.get("LANDVERIFY_WORK", SP / "landverify"))
 WORK_ROOT.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from artifact_layout import shard_directory
+from crawl import purity
+GENERIC_STRUCT_NAMES = {"T", "Sub", "Owner", "Slot", "Info", "Obj", "S", "Self", "This", "Inner",
+                        "Foo", "Holder", "Mid", "MidObj"}
 
 OBJDUMP = r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe"
 DS = re.compile(r"^\s*([0-9a-fA-F]+)\s+<(.+)>:$"); DB = re.compile(r"^\s*[0-9a-fA-F]+:\s+((?:[0-9a-fA-F]{2}\s+)+)")
@@ -93,7 +97,7 @@ def use_qfe():
         raise FileNotFoundError(
             f"QFE-4035 toolset not found: {clexe}\nInstall the 13.10.4035 compiler "
             f"(c1xx.dll+c2.dll+cl.exe from WinDDK 3790.1830) there, or set $VC71_QFE. "
-            f"See docs/QFE4035_COMPILER_GATE.md")
+            f"See docs/pipeline/QFE4035_COMPILER_GATE.md")
     CL_EXE, CC_BIN = clexe, QFE / "bin"
 
 def env():
@@ -375,6 +379,22 @@ def main():
         if not o: print(f"{addr:10} {'NO_ORACLE':16} {'-':6} {name}"); continue
         work=shard_directory(WORK_ROOT, addr, leaf=True); work.mkdir(parents=True, exist_ok=True)
         src0=vc71(c["source_cpp"]); tst=vc71(c["test_cpp"]); patt=c["pass_pattern"]; mod=c.get("module","_global")
+        # Purity gate: hand-written machine code is an oracle, not a reconstruction (CONTRIBUTING.md).
+        if not purity.is_genuine(src0):
+            print(f"{addr:10} {'NOT_GENUINE':16} {'-':6} {name}"); continue
+        # Shared-header policy: warn when a candidate redeclares a class that already has an
+        # engine header, or models `this` with a throwaway struct name. LANDVERIFY_STRICT_HEADERS=1
+        # turns the warnings into rejections.
+        hdr_warn=[]
+        for sm in re.finditer(r"\bstruct\s+([A-Za-z_]\w*)\s*\{", src0):
+            sn=sm.group(1)
+            if (ROOT/"rebuild"/"include"/"engine"/f"{sn}.h").exists() and f'engine/{sn}.h' not in src0:
+                hdr_warn.append(f"SHARED_HEADER_AVAILABLE {sn}")
+            elif sn in GENERIC_STRUCT_NAMES and (ROOT/"rebuild"/"include"/"engine"/f"{mod}.h").exists():
+                hdr_warn.append(f"GENERIC_STRUCT module={mod} (use engine/{mod}.h)")
+        for w_ in hdr_warn: print(f"{addr:10} WARN {w_}")
+        if hdr_warn and os.environ.get("LANDVERIFY_STRICT_HEADERS")=="1":
+            print(f"{addr:10} {'HEADER_POLICY':16} {'-':6} {name}"); continue
         retail=bytes.fromhex(o["bytes"])
         # try base source/flags, then a pragma x extra-flag sweep (permuter integrated).
         src=src0; winflags=[]; st,_,_=parity_of(src, addr, leaf, retail, work, e)
@@ -417,7 +437,7 @@ def main():
             if w.get("flags"):
                 flagline=f"        CompilerFlags = '{' '.join(BASE_FLAGS+w['flags'])}'\n"
             # Record the toolset so the real build recompiles QFE wins with 13.10.4035
-            # (RTM cannot reproduce their bytes). See docs/QFE4035_COMPILER_GATE.md.
+            # (RTM cannot reproduce their bytes). See docs/pipeline/QFE4035_COMPILER_GATE.md.
             compilerline="        Compiler = 'qfe4035'\n" if qfe else ""
             entries.append("    [pscustomobject]@{\n"
                 f"        Address = '{w['addr']}'\n        Module = '{w['module']}'\n"

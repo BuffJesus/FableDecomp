@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CCharString;
 struct CRegions;
 
@@ -23,18 +24,14 @@ struct CMidArg {
     virtual CRegions* GetRegions(int n);     // slot 13
 };
 
-struct CGameScriptInterface {
-    void* vt;      // +0x0
-    void* mid;     // +0x4  (CMid*)
-};
 
 const CCharString& __fastcall CGameScriptInterface_GetRegionName(CGameScriptInterface* self)
 {
-    CMidNoArg* m = (CMidNoArg*)self->mid;
+    CMidNoArg* m = (CMidNoArg*)self->World;
     CRegions* col = m->GetRegions();
     int n = CRegions_GetCount(col);
     if (n > 0) {
-        CMidArg* m2 = (CMidArg*)self->mid;
+        CMidArg* m2 = (CMidArg*)self->World;
         CRegions* e = m2->GetRegions(n);
         return *(const CCharString*)((char*)CRegions_GetEntry(e) + 0x18);
     }

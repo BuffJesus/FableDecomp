@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CCharString;
 
 struct CQuestManager {
@@ -6,11 +7,11 @@ struct CQuestManager {
 
 extern CQuestManager* g_questMgr;
 
-struct CGameScriptInterface {
-  void ActivateQuestWithoutLoadingResources(CCharString* cs);
+struct CGameScriptInterface_Methods : CGameScriptInterface {
+    void ActivateQuestWithoutLoadingResources(CCharString* cs);
 };
 
-void CGameScriptInterface::ActivateQuestWithoutLoadingResources(CCharString* cs)
+void CGameScriptInterface_Methods::ActivateQuestWithoutLoadingResources(CCharString* cs)
 {
   g_questMgr->Activate(cs, 1, 0);
 }

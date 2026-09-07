@@ -1,5 +1,5 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
-struct CGameScriptInterface { char pad[0x1010]; };
 unsigned char g_spotTheAdditionBeaten;
 void __fastcall CGameScriptInterface_SetSpotTheAdditionBeaten(CGameScriptInterface* self, int edx, unsigned char val)
 {

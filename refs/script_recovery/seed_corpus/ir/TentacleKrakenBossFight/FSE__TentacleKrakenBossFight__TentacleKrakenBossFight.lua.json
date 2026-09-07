@@ -1,0 +1,587 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest"
+      ],
+      "line": 11,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "quest",
+        "context"
+      ],
+      "line": 25,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferBool",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferInt",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 9
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest"
+      ],
+      "line": 35,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "AddEntityBinding",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "AddEntityBinding",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "AddEntityBinding",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "FinalizeEntityBindings",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateThread",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "name": "DoMission",
+      "parameters": [
+        "quest"
+      ],
+      "line": 49,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "IsLevelLoaded",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "AutoSaveCheckPoint",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "StopOverrideMusic",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 31
+        }
+      ]
+    },
+    {
+      "name": "PhaseOne",
+      "parameters": [
+        "quest"
+      ],
+      "line": 81,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestCardObjective",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "GetAllThingsWithScriptName",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateObject",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngle",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAlpha",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateEffectAtPos",
+          "line": 37
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngle",
+          "line": 39
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 45
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 48
+        },
+        {
+          "receiver": "quest",
+          "name": "OverrideMusic",
+          "line": 49
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 52
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 53
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityTeleportToThing",
+          "line": 55
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 59
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 62
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 63
+        },
+        {
+          "receiver": "quest",
+          "name": "DisplayQuestInfo",
+          "line": 69
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 73
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestInfoBarHealth",
+          "line": 74
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 75
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 77
+        },
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 80
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityFollowThing",
+          "line": 84
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 87
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 90
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 91
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 94
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 96
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 97
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 103
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveQuestInfoElement",
+          "line": 107
+        },
+        {
+          "receiver": "quest",
+          "name": "DisplayQuestInfo",
+          "line": 109
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 113
+        },
+        {
+          "receiver": "quest",
+          "name": "GetAllThingsWithScriptName",
+          "line": 117
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateExperienceOrb",
+          "line": 123
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 126
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 131
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateEffectAtPos",
+          "line": 137
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 138
+        },
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 141
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestCardObjective",
+          "line": 143
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 146
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 148
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 149
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 153
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestRegion",
+          "line": 155
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 157
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 159
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityTeleportToThing",
+          "line": 161
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 162
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 165
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "KrakenAutoSaveCheckPoint",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "KrakenState",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "MissionFailed",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "MissionSucceeded",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "KrakenMinion",
+      "script": "TentacleKrakenBossFight/Entities/KrakenMinion",
+      "line": 39
+    },
+    {
+      "name": "M_Experience",
+      "script": "TentacleKrakenBossFight/Entities/M_Experience",
+      "line": 40
+    },
+    {
+      "name": "TheKraken",
+      "script": "TentacleKrakenBossFight/Entities/TheKraken",
+      "line": 41
+    }
+  ],
+  "references": {
+    "textTags": [
+      "TEXT_QUEST_PRISON_ESCAPE_OBJECTIVE_05",
+      "TEXT_QUEST_PRISON_ESCAPE_OBJECTIVE_06"
+    ],
+    "cutscenes": [
+      "CS_KRAKEN_INTRO",
+      "CS_KRAKEN_OUTRO"
+    ],
+    "regions": []
+  }
+}

@@ -12,7 +12,7 @@
 // load for the reconstruction's narrow-Win32 ReadFile path (M1), leaving the
 // baked-resource path as fallback behind FABLE_RUNTIME_BANKS.
 //
-// BIGB layout (per tools/parse_bigb.py / docs/TEXTBIG_FORMAT.md):
+// BIGB layout (per tools/parse_bigb.py / docs/formats/TEXTBIG_FORMAT.md):
 //   header: "BIGB", u32 version, u32 footerOffset, u32 footerSize
 //   footer(@footerOffset): u32 subBankCount, then per sub-bank:
 //       cstr name, u32 version, u32 entryCount, u32 tocOffset, u32 tocSize, u32 align

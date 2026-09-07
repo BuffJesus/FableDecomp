@@ -70,5 +70,685 @@
     "code": "partial-persistence",
     "line": 1,
     "message": "State referenced but not persisted: MinionSpawningEnabled, NextSummonerSpawnPoint, NumFlyBysBetweenSummonerSpawns, NumFlyBysSinceLastSummonerSpawn, NumMinions, NumSummoners, SummonerSpawningEnabled, TargetNumMinions, TargetNumSummoners"
+  },
+  {
+    "package": "Gameflow",
+    "path": "FSE/LUAGameflow/LUAGameflow.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 5,
+    "message": "quest API 'IsXbox' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Gameflow",
+    "path": "FSE/LUAGameflow/LUAGameflow.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 21,
+    "message": "quest API 'ActivateMultipleQuestsWithoutLoadingResources' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Gameflow",
+    "path": "FSE/LUAGameflow/LUAGameflow.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 57,
+    "message": "quest API 'ActivateMultipleQuestsWithoutLoadingResources' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Gameflow",
+    "path": "FSE/LUAGameflow/LUAGameflow.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 29,
+    "message": "quest API 'SetHeroGuideToShowQuestCardsWhenSpokenTo' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Gameflow",
+    "path": "FSE/LUAGameflow/LUAGameflow.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 19,
+    "message": "quest API 'AddLogbookTutorialEntry' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Gameflow",
+    "path": "FSE/LUAGameflow/LUAGameflow.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 9,
+    "message": "quest API 'ActivateQuestWithoutLoadingResources' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Gameflow",
+    "path": "FSE/LUAGameflow/LUAGameflow.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 30,
+    "message": "quest API 'PrepareQuestsWhenFinalQuestIsActivated' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Gameflow",
+    "path": "FSE/LUAGameflow/LUAGameflow.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 33,
+    "message": "quest API 'PrepareQuestsWhenFinalQuestIsCompleted' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Gameflow",
+    "path": "FSE/LUAGameflow/LUAGameflow.lua",
+    "severity": "warning",
+    "code": "no-obvious-yield",
+    "line": 1208,
+    "message": "Main has no recognized yield/blocking operation"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/BeardyBaldy.lua",
+    "severity": "warning",
+    "code": "partial-persistence",
+    "line": 1,
+    "message": "State referenced but not persisted: BeardyBaldyLeft"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 33,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 77,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 82,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 86,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 97,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 109,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 115,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 141,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 147,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 159,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 164,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 190,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 199,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 207,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 212,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 216,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 229,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 234,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 238,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 242,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 275,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 281,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 289,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 294,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BeardyBaldy",
+    "path": "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 313,
+    "message": "quest API 'MsgOnRegionLoaded' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "RockTrollFirstEncounter",
+    "path": "FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 45,
+    "message": "quest API 'MsgOnRegionLoaded' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "RockTrollFirstEncounter",
+    "path": "FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua",
+    "severity": "warning",
+    "code": "partial-persistence",
+    "line": 1,
+    "message": "State referenced but not persisted: MissionOver, MissionSucceeded"
+  },
+  {
+    "package": "BowerstoneTownLifeIntro",
+    "path": "FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 21,
+    "message": "quest API 'AddLogbookTutorialEntry' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "BowerstoneTownLifeIntro",
+    "path": "FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 22,
+    "message": "quest API 'AddLogbookTutorialEntry' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "ScytheInfo",
+    "path": "FSE/ScytheInfo/Entities/ScytheMarker.lua",
+    "severity": "warning",
+    "code": "no-obvious-yield",
+    "line": 7,
+    "message": "Main has no recognized yield/blocking operation"
+  },
+  {
+    "package": "SingingStones",
+    "path": "FSE/SingingStones/Entities/ManWithDoorName.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 37,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SingingStones",
+    "path": "FSE/SingingStones/Entities/ManWithDoorName.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 52,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SingingStones",
+    "path": "FSE/SingingStones/Entities/ManWithDoorName.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 84,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SingingStones",
+    "path": "FSE/SingingStones/Entities/ManWithDoorName.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 86,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SingingStones",
+    "path": "FSE/SingingStones/Entities/ManWithDoorName.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 89,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SingingStones",
+    "path": "FSE/SingingStones/Entities/ManWithDoorName.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 111,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SingingStones",
+    "path": "FSE/SingingStones/SingingStones.lua",
+    "severity": "warning",
+    "code": "partial-persistence",
+    "line": 1,
+    "message": "State referenced but not persisted: ClearEffects, CurrentPlayListIndex, PersonalPlayList_, PuzzleWon"
+  },
+  {
+    "package": "TrophyDealer",
+    "path": "FSE/TrophyDealer/TrophyDealer.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 16,
+    "message": "quest API 'ActivateQuestWithoutLoadingResources' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "WaspBoss",
+    "path": "FSE/WaspBoss/Entities/HornetDrone.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 38,
+    "message": "entity API 'MsgIsHitBy' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "WaspBoss",
+    "path": "FSE/WaspBoss/Entities/HornetDrone.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 49,
+    "message": "entity API 'ClearAllActionsIncludingLoopingAnimations' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "WaspBoss",
+    "path": "FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 33,
+    "message": "entity API 'FollowPreCalculatedRoute' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "WaspBoss",
+    "path": "FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 59,
+    "message": "entity API 'FollowPreCalculatedRoute' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "WaspBoss",
+    "path": "FSE/WaspBoss/Entities/WaspHelper.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 181,
+    "message": "entity API 'ClearAllActions' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "WaspBoss",
+    "path": "FSE/WaspBoss/Entities/WaspHelper.lua",
+    "severity": "warning",
+    "code": "partial-persistence",
+    "line": 1,
+    "message": "State referenced but not persisted: MissionSucceeded, ReachedWaspHelperTimer, ReachedWaspHelperTimerID, SavedVillagerCount"
+  },
+  {
+    "package": "WaspBoss",
+    "path": "FSE/WaspBoss/WaspBoss.lua",
+    "severity": "warning",
+    "code": "timer-balance",
+    "line": 1,
+    "message": "RegisterTimer count 1 exceeds DeregisterTimer count 0"
+  },
+  {
+    "package": "WaspBoss",
+    "path": "FSE/WaspBoss/WaspBoss.lua",
+    "severity": "warning",
+    "code": "partial-persistence",
+    "line": 1,
+    "message": "State referenced but not persisted: CutsceneFinished, MissionFailed, MissionSucceeded, PanickedVillagersScene, QueenHornetAttacks, ReachedWaspHelperTimer, ReachedWaspHelperTimerID, StartChase"
+  },
+  {
+    "package": "Fisherman",
+    "path": "FSE/Fisherman/Entities/Fisherman.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 17,
+    "message": "quest API 'CloseDoor' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Fisherman",
+    "path": "FSE/Fisherman/Entities/Fisherman.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 125,
+    "message": "quest API 'IsXbox' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Fisherman",
+    "path": "FSE/Fisherman/Entities/Fisherman.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 166,
+    "message": "quest API 'IsFishingSpotEnabled' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Fisherman",
+    "path": "FSE/Fisherman/Entities/Fisherman.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 167,
+    "message": "quest API 'IsFishingSpotEnabled' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Fisherman",
+    "path": "FSE/Fisherman/Entities/Fisherman.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 177,
+    "message": "quest API 'GetValidTextEntryNameWithAttitude' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Fisherman",
+    "path": "FSE/Fisherman/Entities/Fisherman.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 206,
+    "message": "quest API 'GetValidTextEntryNameWithAttitude' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Fisherman",
+    "path": "FSE/Fisherman/Entities/Fisherman.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 274,
+    "message": "quest API 'GetValidTextEntryNameWithAttitude' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "Fisherman",
+    "path": "FSE/Fisherman/Fisherman.lua",
+    "severity": "warning",
+    "code": "partial-persistence",
+    "line": 1,
+    "message": "State referenced but not persisted: Attitude, FishermanMustRunAway, IntroPlayed, QuestCardGiven, WaspsAlive"
+  },
+  {
+    "package": "TentacleKrakenBossFight",
+    "path": "FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+    "severity": "warning",
+    "code": "no-obvious-yield",
+    "line": 35,
+    "message": "Main has no recognized yield/blocking operation"
+  },
+  {
+    "package": "TentacleKrakenBossFight",
+    "path": "FSE/TentacleKrakenBossFight/TentacleKrakenBossFight.lua",
+    "severity": "warning",
+    "code": "partial-persistence",
+    "line": 1,
+    "message": "State referenced but not persisted: MissionFailed, MissionSucceeded"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/FireHeart.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 58,
+    "message": "entity API 'MsgIsHitBy' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/FireHeart.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 59,
+    "message": "entity API 'MsgIsHitByAnySpecialAbilityFrom' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/FireHeart.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 60,
+    "message": "entity API 'MsgIsHitBySpecialAbilityFrom' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 93,
+    "message": "entity API 'GetCurrentStateGroupType' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 105,
+    "message": "entity API 'MsgIsHitBy' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 106,
+    "message": "entity API 'MsgIsHitByAnySpecialAbilityFrom' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 107,
+    "message": "entity API 'MsgIsHitBySpecialAbilityFrom' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 114,
+    "message": "entity API 'MsgIsHitBy' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 115,
+    "message": "entity API 'MsgIsHitByAnySpecialAbilityFrom' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 116,
+    "message": "entity API 'MsgIsHitBySpecialAbilityFrom' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 127,
+    "message": "entity API 'MsgIsHitBy' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 128,
+    "message": "entity API 'MsgIsHitByAnySpecialAbilityFrom' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 129,
+    "message": "entity API 'MsgIsHitBySpecialAbilityFrom' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 58,
+    "message": "entity API 'SummonerLightningOrbAttackTarget' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 62,
+    "message": "entity API 'MsgIsHitBy' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 63,
+    "message": "entity API 'MsgIsHitByAnySpecialAbilityFrom' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 64,
+    "message": "entity API 'MsgIsHitBySpecialAbilityFrom' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/SummoningTheShip.lua",
+    "severity": "warning",
+    "code": "no-obvious-yield",
+    "line": 48,
+    "message": "Main has no recognized yield/blocking operation"
+  },
+  {
+    "package": "SummoningTheShip",
+    "path": "FSE/SummoningTheShip/SummoningTheShip.lua",
+    "severity": "warning",
+    "code": "partial-persistence",
+    "line": 1,
+    "message": "State referenced but not persisted: CommentaryTimer, ConversationIndex"
   }
 ]

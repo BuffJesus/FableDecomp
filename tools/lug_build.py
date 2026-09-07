@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """lug_build.py — WRITER for Fable TLC `data\\Sound\\*.lug` audio segment banks.
 
-Companion to tools/parse_lug.py (read side; docs/LUG_AUDIO_FORMAT.md) — reuses its
+Companion to tools/parse_lug.py (read side; docs/formats/LUG_AUDIO_FORMAT.md) — reuses its
 parser and never modifies it. Codec encode side lives in tools/xbadpcm.py (ffmpeg has
 no adpcm_ima_xbox encoder). Always work on COPIES of retail files.
 

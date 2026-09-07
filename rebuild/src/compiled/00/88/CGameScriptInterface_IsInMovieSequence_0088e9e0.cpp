@@ -1,2 +1,5 @@
-struct C_0088e9e0 { char pad[0x2c]; unsigned char f; unsigned char M(); };
-unsigned char C_0088e9e0::M(){ return this->f; }
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CGameScriptInterface_Methods : CGameScriptInterface {
+    unsigned char M();
+};
+unsigned char CGameScriptInterface_Methods::M(){ return this->InMovieSequence; }

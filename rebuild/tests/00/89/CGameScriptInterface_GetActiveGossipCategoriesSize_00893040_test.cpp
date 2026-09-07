@@ -1,5 +1,5 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
-struct CGameScriptInterface {};
 int g_ActiveGossipCategoriesSize = 0;
 int __fastcall CGameScriptInterface_GetActiveGossipCategoriesSize(const CGameScriptInterface* self)
 {

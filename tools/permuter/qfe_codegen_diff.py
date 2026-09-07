@@ -6,7 +6,7 @@ cosmetically in the .obj packaging without any machine-code change).
 
 FINDING (2026-08-16): across 128 functions (120 real landed + 8 synthetic incl. x87
 float-fold shapes) the .text is byte-identical. 13.10.4035 codegen == 13.10.3077 codegen;
-the QFE hotfix was a non-codegen fix. See docs/QFE4035_COMPILER_GATE.md.
+the QFE hotfix was a non-codegen fix. See docs/pipeline/QFE4035_COMPILER_GATE.md.
 
 Usage:
   python qfe_codegen_diff.py <src.cpp> <leaf>     # one function

@@ -1,0 +1,48 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/TentacleKrakenBossFight/Entities/M_Experience.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 4,
+      "calls": []
+    },
+    {
+      "name": "OnPredicateFail",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 7,
+      "calls": []
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 10,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 4
+        }
+      ]
+    }
+  ],
+  "state": [],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

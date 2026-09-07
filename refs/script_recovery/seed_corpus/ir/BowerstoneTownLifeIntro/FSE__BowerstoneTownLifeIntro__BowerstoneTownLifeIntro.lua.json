@@ -1,0 +1,288 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/BowerstoneTownLifeIntro/BowerstoneTownLifeIntro.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 4,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 12,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 12
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 13
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 14
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 27,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "FinalizeEntityBindings",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetThingWithScriptName",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetRegionExitAsActive",
+          "line": 12
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 16
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 17
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetThingWithScriptName",
+          "line": 23
+        },
+        {
+          "receiver": "Quest",
+          "name": "RemoveThing",
+          "line": 25
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 26
+        },
+        {
+          "receiver": "Quest",
+          "name": "FadeScreenIn",
+          "line": 30
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 33
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 34
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 39
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 40
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetThingWithScriptName",
+          "line": 46
+        },
+        {
+          "receiver": "Quest",
+          "name": "RemoveThing",
+          "line": 48
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 49
+        },
+        {
+          "receiver": "Quest",
+          "name": "FadeScreenIn",
+          "line": 53
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetThingWithScriptName",
+          "line": 56
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetRegionExitAsActive",
+          "line": 59
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 64
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 64
+        },
+        {
+          "receiver": "Quest",
+          "name": "IsRegionLoaded",
+          "line": 65
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 69
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 74
+        },
+        {
+          "receiver": "Quest",
+          "name": "DeactivateQuestLater",
+          "line": 75
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 76
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "ArenaFinished",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "DoneGuardSpeech",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "PoshGuardComplete",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "BowerstoneIntroGuard",
+      "script": "BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard",
+      "line": 32
+    },
+    {
+      "name": "BowerstoneIntroGuardToPosh",
+      "script": "BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuardToPosh",
+      "line": 33
+    }
+  ],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": [
+      "BowerstoneSlums"
+    ]
+  }
+}

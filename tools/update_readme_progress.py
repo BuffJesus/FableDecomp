@@ -181,6 +181,15 @@ def main() -> int:
         "— of which byte-**identical** C++": (
             f"{byte_identical:,} ({percentage(byte_identical, total, 2)})"
         ),
+        "— of which hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction)": (
+            f"{int(coverage.get('asm_bake_matching', 0)):,}"
+        ),
+        "Landed sources typed onto shared PDB-named engine headers": (
+            f"{int(coverage.get('landed_using_engine_header', 0)):,}"
+        ),
+        "Throwaway local `struct T {...}` declarations remaining": (
+            f"{int(coverage.get('generic_struct_decls', 0)):,}"
+        ),
         "Compiled sources still honestly `DIFFER`": f"{int(parity['differing']):,}",
         "Compiled rows lacking a Ghidra function-start oracle": (
             f"{int(parity['oracle_missing']):,}"

@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 float g_defaultGameAngleXY = 1.5f;
@@ -20,20 +21,16 @@ struct Holder {
     virtual bool tryGet(Obj** out)=0;
 };
 
-struct Inner {
+struct CWorld {
     char pad34[0x34];
     Holder* holder;
 };
 
-struct CGameScriptInterface {
-    void* pad0;
-    Inner* inner;
-};
 
 float __fastcall CGameScriptInterface_GetGameAngleXY(CGameScriptInterface* self)
 {
     Obj* local;
-    Holder* h = self->inner->holder;
+    Holder* h = self->World->holder;
     if (h->tryGet(&local)) {
         return local->getAngle();
     }
@@ -63,8 +60,8 @@ struct HolderImpl : Holder {
 
 int main() {
     static HolderImpl holder;
-    static Inner inner; inner.holder = &holder;
-    static CGameScriptInterface gsi; gsi.inner = &inner;
+    static CWorld inner; inner.holder = &holder;
+    static CGameScriptInterface gsi; gsi.World = &inner;
 
     g_ret = true;
     float a = CGameScriptInterface_GetGameAngleXY(&gsi);

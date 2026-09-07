@@ -1,7 +1,7 @@
 param(
     [string]$PdbNamesPath = "ghidra_out/fablewin_pdb_names.tsv",
     [string]$OutputPath = "ghidra_out/native_gameplay_targets.tsv",
-    [string]$ReportPath = "docs/NATIVE_GAMEPLAY_TARGETS.md"
+    [string]$ReportPath = "docs/engine/NATIVE_GAMEPLAY_TARGETS.md"
 )
 
 Set-StrictMode -Version Latest

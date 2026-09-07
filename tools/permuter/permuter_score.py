@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 VC = Path(r"D:\Tools\vc71")
 # Alternate VC7.1 QFE-4035 toolset (13.10.4035 c1xx.dll+c2.dll from WinDDK 3790.1830).
 # Only the compiler *binaries* differ; headers/libs (INCLUDE/LIB) stay RTM-compatible.
-# See docs/QFE4035_COMPILER_GATE.md. Override the location with $VC71_QFE.
+# See docs/pipeline/QFE4035_COMPILER_GATE.md. Override the location with $VC71_QFE.
 QFE = Path(os.environ.get("VC71_QFE", r"D:\Tools\vc71-qfe4035"))
 OBJDUMP = os.environ.get("OBJDUMP",
     r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe")
@@ -104,7 +104,7 @@ def resolve_toolset(qfe: bool):
             raise FileNotFoundError(
                 f"QFE-4035 toolset not found: {clexe}\n"
                 f"Install the 13.10.4035 compiler (c1xx.dll+c2.dll+cl.exe from WinDDK "
-                f"3790.1830) there, or set $VC71_QFE. See docs/QFE4035_COMPILER_GATE.md")
+                f"3790.1830) there, or set $VC71_QFE. See docs/pipeline/QFE4035_COMPILER_GATE.md")
         return clexe, QFE / "bin"
     return VC / "bin" / "cl.exe", VC / "bin"
 
@@ -178,7 +178,7 @@ def score_source(cpp: Path, addr: str, name: str | None = None,
 
 
 # Known QFE-4035-gated fixtures: (addr, source file, leaf). RTM 3077 cannot byte-match
-# these; the 13.10.4035 toolset should. See docs/QFE4035_COMPILER_GATE.md.
+# these; the 13.10.4035 toolset should. See docs/pipeline/QFE4035_COMPILER_GATE.md.
 QFE_FIXTURES = [
     ("00643e09", "isactive.cpp",    "IsActive"),
     ("00643e2e", "setasactive.cpp", "SetAsActive"),

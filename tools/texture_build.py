@@ -6,7 +6,7 @@ proven decode path (tools/parse_texture.py decoders + tools/lionhead_lz.py) and
 the proven compressor (tools/lionhead_lz_compress.py, engine-faithful LZO1X-1).
 
 ON-DISK ENTRY LAYOUT (validated 2026-07-20 on 227/230 random retail entries,
-see docs/TEXTURE_WRITER.md; answer key = EgoCore TextureParser.h/TextureBuilder.h):
+see docs/formats/TEXTURE_WRITER.md; answer key = EgoCore TextureParser.h/TextureBuilder.h):
 
   Info (34 bytes) = CGraphicHeader(28) + CPixelFormatInit(6):
     +0  u16 Width        allocated (pow2) surface width

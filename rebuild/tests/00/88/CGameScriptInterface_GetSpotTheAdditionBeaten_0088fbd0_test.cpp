@@ -1,8 +1,8 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 bool g_SpotTheAdditionBeaten;
 
-struct CGameScriptInterface {};
 
 bool __fastcall CGameScriptInterface_GetSpotTheAdditionBeaten(const CGameScriptInterface* self)
 {

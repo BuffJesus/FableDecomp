@@ -2,7 +2,7 @@
 """Structurally decode and check a baked local-detail (foliage) section.
 
 Grammar recovered in work/no_donor_terrain_pack/RE_NOTES_20260822_subsections_manager_palette.md
-and docs/FOLIAGE_LOCAL_DETAIL_RE.md:
+and docs/engine/FOLIAGE_LOCAL_DETAIL_RE.md:
 
   group block   u32 groupCount, then per group a 0x28-byte header + 4 child slots
   group header  +0x00 payloadOffset (absolute in chunk)   +0x04 payloadSize

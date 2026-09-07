@@ -3,7 +3,7 @@ r"""Fable TLC particle-effects bank reader — data\Misc\pc\effects.big.
 
 Container: standard BIGB (see parse_bigb.py / TEXTBIG_FORMAT.md), one sub-bank
 PARTICLE_MAIN_PC (1,165 entries, all type 0, uncompressed payloads).
-Entry payload = one serialized CParticleEmitter (see docs/EFFECTS_FORMAT.md):
+Entry payload = one serialized CParticleEmitter (see docs/formats/EFFECTS_FORMAT.md):
 
   u32   magic (0x64 = bank version)
   cstr  name

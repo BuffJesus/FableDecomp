@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fable TLC graphics.big ANIM_* (3DAF) full keyframe decoder.
 
-Supersedes the "XSEQ is packed / needs Ghidra" verdict in docs/BIG_ANIM_FORMAT.md
+Supersedes the "XSEQ is packed / needs Ghidra" verdict in docs/formats/BIG_ANIM_FORMAT.md
 S6: the answer key is EgoCore's AnimParser.h
 (C:/Users/Cornelio/Documents/EgoCoreInspect/EgoCore-master/EgoCore/Animations/AnimParser.h).
 

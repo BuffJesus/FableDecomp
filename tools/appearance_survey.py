@@ -4,7 +4,7 @@ Decodes every OBJECT's CDef listing, extracts each CAppearanceModifierDef
 (HideMaterials / Graphics / CoversBodyAreaFlags / HeroSuit / SuitPart /
 AppearanceType / ArmourDefIndex), resolves the Graphics model IDs against
 graphics.big MBANK_ALLMESHES, and prints the full item -> modifier -> mesh
-chain. Evidence backing docs/APPEARANCE_SYSTEM.md.
+chain. Evidence backing docs/engine/APPEARANCE_SYSTEM.md.
 
 Usage:  python tools/appearance_survey.py [game-root]
 """

@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 // Standalone behavior fixture for
@@ -16,7 +17,7 @@ struct DeathRecoveryMarkerNameMap
     DeathRecoveryMarkerNameNode* lower_bound(const int* key);
 };
 
-struct DeathRecoveryMarkerNameSource
+struct CPlayerManager
 {
     void* GetTarget();
 };
@@ -33,11 +34,6 @@ struct DeathRecoveryMarkerNameInterface
     CCharString markerName;
 };
 
-struct CGameScriptInterface_00896f60
-{
-    char pad00[0x14];
-    DeathRecoveryMarkerNameSource* source;
-};
 
 static void* g_sourceThis;
 static void* g_sourceResult;
@@ -50,7 +46,7 @@ static void* g_assignmentThis;
 static const CCharString* g_assignmentSource;
 static int g_assignmentCount;
 
-void* DeathRecoveryMarkerNameSource::GetTarget()
+void* CPlayerManager::GetTarget()
 {
     g_sourceThis = this;
     return g_sourceResult;
@@ -80,11 +76,11 @@ CCharString& CCharString::operator=(const CCharString& other)
 }
 
 void __fastcall CGameScriptInterface_SetDeathRecoveryMarkerName(
-    CGameScriptInterface_00896f60* self,
+    CGameScriptInterface* self,
     unsigned long,
     const CCharString& name)
 {
-    void* source = self->source->GetTarget();
+    void* source = self->PlayerManager->GetTarget();
     unsigned char* target =
         (unsigned char*)ResolveDeathRecoveryMarkerTarget(source);
 
@@ -131,8 +127,8 @@ static void ClearBytes(void* data, unsigned int size)
 int main()
 {
     int failures = 0;
-    CGameScriptInterface_00896f60 self;
-    DeathRecoveryMarkerNameSource sourceObject;
+    CGameScriptInterface self;
+    CPlayerManager sourceObject;
     CCharString input;
     unsigned char target[0x98];
     DeathRecoveryMarkerNameNode found;
@@ -141,7 +137,7 @@ int main()
     DeathRecoveryMarkerNameInterface endInterface;
 
     ClearBytes(&self, sizeof(self));
-    self.source = &sourceObject;
+    self.PlayerManager = &sourceObject;
     input.text = "Oakvale";
     found.key = 4;
     found.value = &foundInterface;

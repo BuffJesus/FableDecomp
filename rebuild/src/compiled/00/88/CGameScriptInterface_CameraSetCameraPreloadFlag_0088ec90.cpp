@@ -1,11 +1,11 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct Provider { void* vt; };
-struct Owner { char pad[0x34]; Provider* prov; };
-struct Self { char pad[4]; Owner* owner; };
+struct CWorld { char pad[0x34]; Provider* prov; };
 
-void __fastcall CGameScriptInterface_CameraSetCameraPreloadFlag(Self* self, void* edx, char flag)
+void __fastcall CGameScriptInterface_CameraSetCameraPreloadFlag(CGameScriptInterface* self, void* edx, char flag)
 {
     void* local;
-    Provider* prov = self->owner->prov;
+    Provider* prov = self->World->prov;
     void** vt = *(void***)prov;
     typedef void (__fastcall *fn_t)(Provider*, void*, void**);
     fn_t fn = (fn_t)vt[9];

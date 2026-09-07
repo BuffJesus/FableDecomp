@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CCharString {
     CCharString(const CCharString& other);
     ~CCharString();
@@ -18,7 +19,6 @@ struct GossipFactionLipSyncMap {
 
 extern GossipFactionLipSyncMap DAT_013bae5c;
 
-struct CGameScriptInterface { void* vt; };
 
 void __fastcall CGameScriptInterface_ClearGossipFactions(CGameScriptInterface* self, CCharString gossipFaction)
 {

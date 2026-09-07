@@ -3,7 +3,7 @@
 
 Magic: `LiOnHeAdLHAudioBankCompData`. These are the voice-over/dialogue audio
 banks that sit between text.big (text) and dialogue.big (lipsync); all three are
-keyed by the same ordinal <N>. See docs/LUT_AUDIOBANK_FORMAT.md.
+keyed by the same ordinal <N>. See docs/formats/LUT_AUDIOBANK_FORMAT.md.
 
 On-disk layout (byte-verified, pure Python, no Ghidra):
 

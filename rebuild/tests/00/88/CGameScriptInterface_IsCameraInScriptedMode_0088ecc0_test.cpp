@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 struct CCamObj { int v; };
 bool __fastcall GetCameraScriptedMode(CCamObj* self){ return self && self->v==7; }
@@ -17,13 +18,12 @@ struct CCamMgr {
 static CCamObj g_obj = {7};
 void CCamMgr::GetObj(CCamObj** out){ *out = &g_obj; }
 
-struct COuter { char pad[0x38]; };
-struct CGameScriptInterface { char pad4[4]; COuter* outer; };
+struct CWorld { char pad[0x38]; };
 
 bool __fastcall CGameScriptInterface_IsCameraInScriptedMode(CGameScriptInterface* self)
 {
     CCamObj* local;
-    COuter* a = self->outer;
+    CWorld* a = self->World;
     CCamMgr* b = *(CCamMgr**)((char*)a + 0x34);
     b->GetObj(&local);
     return GetCameraScriptedMode(local);
@@ -33,7 +33,7 @@ int main(){
     static char blob[0x40];
     CCamMgr mgr;
     *(CCamMgr**)(blob + 0x34) = &mgr;
-    CGameScriptInterface gsi; gsi.outer = (COuter*)blob;
+    CGameScriptInterface gsi; gsi.World = (CWorld*)blob;
     bool r = CGameScriptInterface_IsCameraInScriptedMode(&gsi);
     if (r) { std::printf("CGameScriptInterface_0088ecc0_TEST PASS\n"); return 0; }
     std::printf("FAIL\n"); return 1;

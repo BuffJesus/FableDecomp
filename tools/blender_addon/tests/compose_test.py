@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-"""NEW-MESH COMPOSITION oracle tests + demo CLI (docs/MESH_COMPOSE.md).
+"""NEW-MESH COMPOSITION oracle tests + demo CLI (docs/formats/MESH_COMPOSE.md).
 
 Run (plain Python, no Blender):
   python tools/blender_addon/tests/compose_test.py <graphics.big COPY> [out.big]

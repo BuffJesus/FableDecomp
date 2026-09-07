@@ -1,4 +1,4 @@
-struct CGameScriptInterface {};
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 extern int g_ActiveGossipCategoriesSize;
 int __fastcall CGameScriptInterface_GetActiveGossipCategoriesSize(const CGameScriptInterface* self)
 {

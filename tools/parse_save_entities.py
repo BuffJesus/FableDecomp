@@ -3,11 +3,11 @@
 parse_save_entities.py - Walk the FULL SAVED_ENTITIES entity graph of a Fable: The
 Lost Chapters `FableSave!` file and dump every entity / component / tagged field.
 
-Read-only. Pure stdlib (struct, zlib). Companion to docs/SAVE_ENTITY_GRAPH.md and the
+Read-only. Pure stdlib (struct, zlib). Companion to docs/formats/SAVE_ENTITY_GRAPH.md and the
 container/HEADER/hero-stat docs (SAVEGAME_FORMAT.md, SAVE_HEADER_MAP.md,
 SAVE_HERO_STATS.md). Reuses the seed-0 CRC field-tag hash from tools/save_tools/savecrc.py.
 
-Nesting (all empirically validated, see docs/SAVE_ENTITY_GRAPH.md):
+Nesting (all empirically validated, see docs/formats/SAVE_ENTITY_GRAPH.md):
   file -> chunk1 (zlib) -> inflated stream containing "SAVED_ENTITIES\0"
   SAVED_ENTITIES section = [u32 sectionLen] + run of N independently zlib-compressed CELLS
   each inflated cell:
@@ -758,7 +758,7 @@ def main():
             print("  %-28s %s" % (nm, fl.hex()))
 
     elif cmd == 'report':
-        # one-shot dump of everything (used to build docs/SAVE_ENTITY_GRAPH.md)
+        # one-shot dump of everything (used to build docs/formats/SAVE_ENTITY_GRAPH.md)
         print("== cells =="); print("%d cells, %d bytes inflated" %
                                     (len(cells), sum(len(c[2]) for c in cells)))
         rows = entity_headers(cells)

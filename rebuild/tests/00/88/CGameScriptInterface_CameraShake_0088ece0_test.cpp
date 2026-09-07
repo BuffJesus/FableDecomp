@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 struct C3DVector { float x; float y; float z; };
@@ -36,13 +37,12 @@ struct CCamMgr {
     virtual bool GetObj(CCamObj** out){ *out = &g_obj; return true; }
 };
 
-struct COuter { char pad[0x38]; };
-struct CGameScriptInterface { char pad4[4]; COuter* outer; };
+struct CWorld { char pad[0x38]; };
 
 void __fastcall CGameScriptInterface_CameraShake(const CGameScriptInterface* self, float magnitude, float duration)
 {
     CCamObj* local;
-    COuter* a = self->outer;
+    CWorld* a = self->World;
     CCamMgr* b = *(CCamMgr**)((char*)a + 0x34);
     if (b->GetObj(&local)) {
         local->SetEarthquakeAt((C3DVector*)((char*)local + 4), magnitude, duration, false);
@@ -53,7 +53,7 @@ int main(){
     static char blob[0x40];
     CCamMgr mgr;
     *(CCamMgr**)(blob + 0x34) = &mgr;
-    CGameScriptInterface gsi; gsi.outer = (COuter*)blob;
+    CGameScriptInterface gsi; gsi.World = (CWorld*)blob;
 
     CGameScriptInterface_CameraShake(&gsi, 2.5f, 4.0f);
 

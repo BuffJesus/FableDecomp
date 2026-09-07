@@ -1,0 +1,80 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/WaspBoss/Entities/WaspChaser.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 1,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 2
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 7
+        },
+        {
+          "receiver": "me",
+          "name": "FollowThing",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 14
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 20
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 21
+        }
+      ]
+    }
+  ],
+  "state": [],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

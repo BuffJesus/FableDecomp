@@ -297,7 +297,7 @@ CONTROL_VALUE_GROUPS = (
 # so the nine visible rows below cover action ids 60(x4),9,7,8,31,45. The
 # remaining 25 ids scroll off the first page:
 #   REDEFINE_FULL_ACTION_ORDER (below). Every id's default *key binding* is
-#   sourced from FABLE_PC_CONTROL_SCHEME_GDD_WASD (see docs/CONTROLLER_ENUMS.md).
+#   sourced from FABLE_PC_CONTROL_SCHEME_GDD_WASD (see docs/engine/CONTROLLER_ENUMS.md).
 # The debug FableWin.pdb preserves the authoritative EGameAction enum names
 # and values. Every ActionOrder entry also has a direct TEXT_GUI_ACTION_* entry
 # in the shipped English text.big; keep the decoded localized wording beside

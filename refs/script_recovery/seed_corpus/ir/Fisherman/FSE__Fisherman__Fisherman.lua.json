@@ -1,0 +1,269 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/Fisherman/Fisherman.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 4,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 12
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 17,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "GetStateInt",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferInt",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 29,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "FinalizeEntityBindings",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 14
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 15
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 20
+        },
+        {
+          "receiver": "Quest",
+          "name": "IsRegionLoaded",
+          "line": 23
+        },
+        {
+          "receiver": "Quest",
+          "name": "IsRegionLoaded",
+          "line": 24
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 25
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 31
+        },
+        {
+          "receiver": "Quest",
+          "name": "ActivateQuest",
+          "line": 34
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 37
+        },
+        {
+          "receiver": "Quest",
+          "name": "DeactivateQuestLater",
+          "line": 38
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 39
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "Attitude",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "FishermanMustRunAway",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "FishermanTasks",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "HeroHasSavedFishermanFromWasps",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "IntroPlayed",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "QuestCardGiven",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "WaspsAlive",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "Fisherman",
+      "script": "Fisherman/Entities/Fisherman",
+      "line": 35
+    },
+    {
+      "name": "M_FishermanWaspSpawn",
+      "script": "Fisherman/Entities/M_FishermanWaspSpawn",
+      "line": 36
+    },
+    {
+      "name": "FishermanBulletinBoard",
+      "script": "Fisherman/Entities/FishermanBulletinBoard",
+      "line": 37
+    },
+    {
+      "name": "FishermanWasp",
+      "script": "Fisherman/Entities/FishermanWasp",
+      "line": 38
+    }
+  ],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

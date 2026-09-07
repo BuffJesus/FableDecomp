@@ -26,6 +26,8 @@ def main() -> int:
     signature = json.loads(signature_path.read_text(encoding="utf-8")) if signature_path.exists() else {}
     naming_triage_path = root / "ghidra_out" / "naming_stragglers" / "quality_triage.json"
     naming_triage = json.loads(naming_triage_path.read_text(encoding="utf-8")) if naming_triage_path.exists() else {}
+    header_metrics_path = rebuild / "manifest" / "header_metrics.json"
+    hm = json.loads(header_metrics_path.read_text(encoding="utf-8")) if header_metrics_path.exists() else {}
     total = status["catalog_functions"]
     accepted_names = total - status["naming_quality_review"]
     verified = (
@@ -35,6 +37,10 @@ def main() -> int:
         + status.get("candidate_relocation_matches", 0)
     )
     byte_identical = status["lift_matching"] + status.get("candidate_retail_matches", 0)
+    # Hand-written __asm / _emit bodies are byte-exact oracles, not reconstruction. Report them
+    # on their own line and subtract them from the genuine C++ figure (grade `asm_bake`).
+    asm_bake_matching = hm.get("asm_bake_matching", 0)
+    byte_identical_genuine = byte_identical - asm_bake_matching
     structurally_different = (
         status.get("behavior_tested_candidates", 0)
         - status.get("candidate_retail_matches", 0)
@@ -51,6 +57,13 @@ def main() -> int:
         ),
         "verified_lifted": verified,
         "byte_identical": byte_identical,
+        "byte_identical_genuine": byte_identical_genuine,
+        "asm_bake_matching": asm_bake_matching,
+        "asm_bake_files": hm.get("naked_asm", 0) + hm.get("emit_bake", 0),
+        "landed_using_engine_header": hm.get("includes_engine_header", 0),
+        "generic_struct_decls": hm.get("generic_struct_decls", 0),
+        "matched_bytes_genuine": hm.get("matched_bytes_genuine", 0),
+        "engine_headers_generated": hm.get("engine_headers_generated", 0),
         "candidate_integrity_pass": gate.get("integrity_pass", 0),
         "candidate_host_syntax_pass": gate.get("host_cpp20_syntax_pass", 0),
     }
@@ -81,7 +94,12 @@ def main() -> int:
         f"| Candidate retail `.text` match | {status.get('candidate_retail_matches', 0):,} | {total:,} | {pct(status.get('candidate_retail_matches', 0), total)} | Generated-candidate track exact matches awaiting promotion |",
         f"| Candidate relocation-masked `.text` match | {status.get('candidate_relocation_matches', 0):,} | {total:,} | {pct(status.get('candidate_relocation_matches', 0), total)} | Exact instruction bytes/layout after masking expected COFF linker fields |",
         f"| Verified functional or matching C++ | {verified:,} | {total:,} | {pct(verified, total)} | Compiled under VC7.1 and checked against retail |",
-        f"| Byte-identical C++ | {byte_identical:,} | {total:,} | {pct(byte_identical, total)} | Exact `.text` match |",
+        f"| Byte-identical C++ | {byte_identical:,} | {total:,} | {pct(byte_identical, total)} | Exact `.text` match (includes asm bakes below) |",
+        f"| Byte-identical **genuine** C++ | {byte_identical_genuine:,} | {total:,} | {pct(byte_identical_genuine, total)} | Exact match from real compiler input; no `__asm`, `naked`, `_emit` |",
+        f"| Hand-written asm bakes (grade `asm_bake`) | {asm_bake_matching:,} | {hm.get('naked_asm', 0) + hm.get('emit_bake', 0):,} | — | Byte-exact oracles, **not** reconstruction; de-bake worklist |",
+        f"| Landed sources typed onto shared engine headers | {hm.get('includes_engine_header', 0):,} | {hm.get('genuine', 0):,} | {pct(hm.get('includes_engine_header', 0), hm.get('genuine', 0))} | `#include \"engine/<Class>.h\"` with PDB member names ({hm.get('engine_headers_generated', 0):,} headers) |",
+        f"| Generic local struct declarations remaining | {hm.get('generic_struct_decls', 0):,} | — | — | `struct T/Sub/Owner...` throwaways in {hm.get('files_with_generic_struct', 0):,} files; retype worklist |",
+        f"| Matched retail bytes (genuine C++) | {hm.get('matched_bytes_genuine', 0):,} | — | — | Bytes of retail `.text` reproduced by genuine landings |",
         f"| Lifted modules | {status['lift_modules']:,} | {status['modules']:,} | {pct(status['lift_modules'], status['modules'])} | Module-level reconstruction proof |",
         "",
         "## Interpretation",

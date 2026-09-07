@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 enum ETCInterfaceType { ETC_DUMMY = 0 };
 
 class CGSIPicklockMoralityStats
@@ -45,11 +46,6 @@ struct CDefinitionManagerOverlay
     CPicklockMoralityDefinition* m_Definition; // 0xdc
 };
 
-struct CGameScriptInterface
-{
-    unsigned char m_Pad00[0x14];
-    void*         m_Field14; // 0x14
-};
 
 extern "C" void* __fastcall Sub_ResolveA(void* self);
 extern "C" CThingOverlay* __fastcall Sub_ResolveB(void* obj);
@@ -60,7 +56,7 @@ const ETCInterfaceType kTargetType = (ETCInterfaceType)4;
 void __fastcall CGameScriptInterface_ChangeHeroMoralityDueToPicklock(
     const CGameScriptInterface* self)
 {
-    CThingOverlay* pThing = Sub_ResolveB(Sub_ResolveA(self->m_Field14));
+    CThingOverlay* pThing = Sub_ResolveB(Sub_ResolveA(self->PlayerManager));
     if (pThing != 0 &&
         (pThing->m_Flags91 & 0x01) == 0 &&
         (pThing->m_Flags20 & 0x10) != 0)

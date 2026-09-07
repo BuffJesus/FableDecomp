@@ -1,10 +1,10 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct Tgt { void method(int a, int b); };
-struct B { char pad[0x18]; char* p18; };
-struct Self { char pad[4]; B* p4; };
+struct CWorld { char pad[0x18]; char* p18; };
 
-void __fastcall CGameScriptInterface_RadialBlurFadeOut(Self* self, int edx, int a, int b)
+void __fastcall CGameScriptInterface_RadialBlurFadeOut(CGameScriptInterface* self, int edx, int a, int b)
 {
-    char* mid = self->p4->p18;
+    char* mid = self->World->p18;
     Tgt* t = *(Tgt**)(mid + 0x1964);
     t->method(a, b);
 }

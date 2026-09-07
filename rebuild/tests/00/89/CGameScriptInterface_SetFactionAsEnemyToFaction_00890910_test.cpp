@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 struct Faction {
@@ -8,8 +9,7 @@ struct FactionMgr {
     Faction* list[16]; int n;
     Faction* Lookup(int id);
 };
-struct CMid { char pad[0x54]; FactionMgr* mgr; };
-struct CGameScriptInterface { void* vt; CMid* mid; };
+struct CWorld { char pad[0x54]; FactionMgr* mgr; };
 
 Faction* FactionMgr::Lookup(int id)
 {
@@ -25,9 +25,9 @@ void Faction::AddEnemy(Faction* other)
 
 void __fastcall CGameScriptInterface_SetFactionAsEnemyToFaction(CGameScriptInterface* self, int dummy, int a, int b)
 {
-    FactionMgr* m = self->mid->mgr;
+    FactionMgr* m = self->World->mgr;
     Faction* fa = m->Lookup(a);
-    FactionMgr* m2 = self->mid->mgr;
+    FactionMgr* m2 = self->World->mgr;
     Faction* fb = m2->Lookup(b);
     if (fa && fb) {
         fa->AddEnemy(fb);
@@ -40,8 +40,8 @@ int main()
     Faction f0; f0.id = 10; f0.nEnemies = 0;
     Faction f1; f1.id = 20; f1.nEnemies = 0;
     FactionMgr mgr; mgr.list[0] = &f0; mgr.list[1] = &f1; mgr.n = 2;
-    CMid midObj; midObj.mgr = &mgr;
-    CGameScriptInterface gsi; gsi.mid = &midObj;
+    CWorld midObj; midObj.mgr = &mgr;
+    CGameScriptInterface gsi; gsi.World = &midObj;
 
     CGameScriptInterface_SetFactionAsEnemyToFaction(&gsi, 0, 10, 20);
     if (f0.nEnemies != 1 || f0.enemies[0] != 20) { std::printf("FAIL a\n"); return 1; }

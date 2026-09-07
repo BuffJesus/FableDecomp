@@ -76,7 +76,7 @@ the canonical `candidates.tsv`, `summary.json`, or compile-gate `README.md`.
 - `crack_residue.py`, `verify_residue.py`, and `tools/permuter/` remain targeted tools for promising
   same-length `DIFFER` rows. They are not sprayed across every residue because prior audits proved
   several compiler register-allocation differences irreducible from VC7.1 source spelling.
-- `docs/UNICORN_EMULATION_PLAN.md` specifies an optional local 32-bit execution
+- `docs/pipeline/UNICORN_EMULATION_PLAN.md` specifies an optional local 32-bit execution
   oracle for retail behavior, ABI, block, and memory traces. It is a proposed
   diagnostic input to this pipeline, not a replacement for compile, behavior,
   signature, or byte-parity gates.

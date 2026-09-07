@@ -1,6 +1,6 @@
 # Binary-wide byte-parity crawl
 
-High-yield lane (~96% win on the small-function tail). See docs/HANDOFF.md
+High-yield lane (~96% win on the small-function tail). See docs/journal/HANDOFF_ARCHIVE.md
 "Session 2026-08-01 (late)" and memory `binary-wide-parity-crawl.md`.
 
 1. `python next_smallest.py <N> <prefix>` — emits `<prefix>.json` targets +

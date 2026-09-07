@@ -46,8 +46,14 @@ class Manifest:
     def __init__(self, path: Path = MANIFEST):
         self.rows = list(csv.DictReader(open(path, encoding="utf-8-sig"), delimiter="\t"))
         self.by_addr = {_norm_addr(r["address"]): r for r in self.rows if r.get("address")}
+        # Count (module, leaf-name) pairs. Names arrive both bare ("Foo") and qualified
+        # ("CClass::Foo") for the same method, so compare on the leaf.
         self.pair_count = collections.Counter(
-            (r["module"], r["name"]) for r in self.rows)
+            (r["module"], self.leaf(r["name"])) for r in self.rows)
+
+    @staticmethod
+    def leaf(name: str) -> str:
+        return (name or "").rsplit("::", 1)[-1]
 
     def module_of(self, addr: str) -> str | None:
         r = self.by_addr.get(_norm_addr(addr))
@@ -71,8 +77,8 @@ class Manifest:
             return "TEMPLATE"
         if self.is_generated_name(n):
             return "GENERATED_NAME"
-        if self.pair_count[(m, n)] != 1:
-            return f"MISLABELLED_FAMILY({self.pair_count[(m, n)]})"
+        if self.pair_count[(m, self.leaf(n))] != 1:
+            return f"MISLABELLED_FAMILY({self.pair_count[(m, self.leaf(n))]})"
         return ""
 
     def trusted_module(self, addr: str) -> str | None:

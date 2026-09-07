@@ -1,0 +1,994 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/WaspBoss/Entities/WaspHelper.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 14,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "quest",
+        "me",
+        "context"
+      ],
+      "line": 22,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferBool",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferBool",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "PersistTransferBool",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 30,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 18
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 20
+        },
+        {
+          "receiver": "me",
+          "name": "MakeBehavioral",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 34
+        },
+        {
+          "receiver": "me",
+          "name": "FollowThing",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "GetDistanceBetweenThings",
+          "line": 41
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 42
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 46
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 46
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 46
+        },
+        {
+          "receiver": "me",
+          "name": "SetFriendsWithEverythingFlag",
+          "line": 47
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 51
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 52
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 56
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 57
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 58
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 59
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 60
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 65
+        },
+        {
+          "receiver": "me",
+          "name": "ClearCommands",
+          "line": 66
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 69
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 72
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 74
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 78
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 79
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 81
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 82
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 86
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 93
+        },
+        {
+          "receiver": "me",
+          "name": "ClearCommands",
+          "line": 98
+        },
+        {
+          "receiver": "me",
+          "name": "MoveToPosition",
+          "line": 99
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 101
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 104
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 107
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 108
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 109
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 110
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 111
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 112
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 119
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 119
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 119
+        },
+        {
+          "receiver": "me",
+          "name": "SetFriendsWithEverythingFlag",
+          "line": 120
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 123
+        },
+        {
+          "receiver": "quest",
+          "name": "GetDistanceBetweenThings",
+          "line": 126
+        },
+        {
+          "receiver": "quest",
+          "name": "GetDistanceBetweenThings",
+          "line": 127
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 129
+        },
+        {
+          "receiver": "quest",
+          "name": "GetDistanceBetweenThings",
+          "line": 132
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 133
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 134
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 139
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 140
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 141
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 142
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 145
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 150
+        },
+        {
+          "receiver": "me",
+          "name": "ClearCommands",
+          "line": 152
+        },
+        {
+          "receiver": "me",
+          "name": "MoveToPosition",
+          "line": 153
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 157
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 160
+        },
+        {
+          "receiver": "me",
+          "name": "ClearCommands",
+          "line": 162
+        },
+        {
+          "receiver": "me",
+          "name": "MoveToPosition",
+          "line": 163
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 172
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 173
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 174
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 175
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 176
+        },
+        {
+          "receiver": "me",
+          "name": "ClearCommands",
+          "line": 180
+        },
+        {
+          "receiver": "me",
+          "name": "ClearAllActions",
+          "line": 181
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 186
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 187
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 188
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 189
+        },
+        {
+          "receiver": "quest",
+          "name": "Pause",
+          "line": 190
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 191
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 194
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 195
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 196
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 197
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 198
+        },
+        {
+          "receiver": "me",
+          "name": "PlayAnimation",
+          "line": 200
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 201
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 202
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 203
+        },
+        {
+          "receiver": "quest",
+          "name": "Pause",
+          "line": 206
+        },
+        {
+          "receiver": "me",
+          "name": "PlayAnimation",
+          "line": 208
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 209
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 210
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 211
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 214
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 215
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 221
+        },
+        {
+          "receiver": "me",
+          "name": "ClearCommands",
+          "line": 227
+        },
+        {
+          "receiver": "quest",
+          "name": "SetIsPushableByHero",
+          "line": 228
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 231
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 232
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 233
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 235
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 236
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 237
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 238
+        },
+        {
+          "receiver": "me",
+          "name": "PlayAnimation",
+          "line": 241
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 242
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 243
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 244
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 248
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 249
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 250
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 251
+        },
+        {
+          "receiver": "me",
+          "name": "PlayAnimation",
+          "line": 255
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 256
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 257
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 258
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 262
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 268
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 269
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 272
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 273
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 277
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 278
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 279
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 283
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 283
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 283
+        },
+        {
+          "receiver": "me",
+          "name": "SetFriendsWithEverythingFlag",
+          "line": 284
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 287
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 291
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 292
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 293
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 295
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 297
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 299
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 300
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 301
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 302
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 304
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 305
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 306
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 308
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 311
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 312
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 313
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 314
+        },
+        {
+          "receiver": "me",
+          "name": "PlayAnimation",
+          "line": 317
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 318
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 319
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 320
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 324
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 325
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 326
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 327
+        },
+        {
+          "receiver": "me",
+          "name": "PlayAnimation",
+          "line": 331
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 332
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 333
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 334
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 339
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 340
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 341
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 342
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "LeadToRegion",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "MissionSucceeded",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "PleadedToHero",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "ReachedWaspHelperTimer",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "ReachedWaspHelperTimerID",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SavedVillagerCount",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "WavedOver",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_072_HELPER_FOLLOW_ME_10",
+      "TEXT_QST_072_HELPER_GO_THIS_WAY",
+      "TEXT_QST_072_HELPER_LONG_TIME_FOLLOW_ME_10",
+      "TEXT_QST_072_HELPER_NOT_KILLED_WASP_QUEEN_10",
+      "TEXT_QST_072_HELPER_NOT_MOVED_10",
+      "TEXT_QST_072_HELPER_OVER_HERE",
+      "TEXT_QST_072_HELPER_THIS_WAY_10"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

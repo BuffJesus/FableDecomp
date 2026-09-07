@@ -5,7 +5,7 @@ param(
 )
 
 # Decode OBJECT_FAMILY and CContainerRewardHeroDef payload hex dumps into a
-# reward-picker table for FableForge. Layouts (evidence: docs/FINDINGS.md
+# reward-picker table for FableForge. Layouts (evidence: docs/journal/FINDINGS_LOG.md
 # 2026-07-18 "Reward payload fully decoded"):
 #   OBJECT_FAMILY:            9-byte header, u32 count, count x (u32 objDefIdx, f32 weight)
 #   CContainerRewardHeroDef:  7-byte header, u32 count, count x (u32 familyDefIdx)

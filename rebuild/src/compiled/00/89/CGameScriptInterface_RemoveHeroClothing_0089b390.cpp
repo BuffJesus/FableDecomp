@@ -1,4 +1,5 @@
 // CGameScriptInterface::RemoveHeroClothing @ 0089b390
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct Node { int key; void* val; };
 
 struct Vec {
@@ -19,15 +20,11 @@ struct HeroData {
     // Vec at +0x44
 };
 
-struct GSI {
-    char pad0[0x14];
-    void* mgr; // +0x14
-};
 
-void __fastcall CGameScriptInterface_RemoveHeroClothing(GSI* self)
+void __fastcall CGameScriptInterface_RemoveHeroClothing(CGameScriptInterface* self)
 {
     int key;
-    void* h = GetHeroObj(self->mgr);
+    void* h = GetHeroObj(self->PlayerManager);
     HeroData* d = (HeroData*)ResolveHero(h);
     if (!d) return;
     if (d->flag91 & 1) return;

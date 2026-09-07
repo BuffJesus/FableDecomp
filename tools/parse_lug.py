@@ -4,7 +4,7 @@
 Container: `LiOnHeAd` + `LHFileSegmentBankInfo` (SFX/ambience banks; music is loose .ogg,
 dialogue voice lives in the .lut banks — see parse_lut.py / LUT_AUDIOBANK_FORMAT.md).
 
-Layout (all little-endian; evidence in docs/LUG_AUDIO_FORMAT.md):
+Layout (all little-endian; evidence in docs/formats/LUG_AUDIO_FORMAT.md):
   0x00  char[8]   "LiOnHeAd"
   0x08  block stream, each block = char[32] NUL-padded struct name + u32 size + payload[size]:
         LHFileSegmentBankInfo   payload = bank title/description string field (size 0x208)

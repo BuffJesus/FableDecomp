@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CCharString {
     void* p;
     CCharString(const CCharString& o);
@@ -6,12 +7,11 @@ struct CCharString {
 struct CGlobal { char pad[0xb0]; CCharString name; };
 extern CGlobal* g_obj;
 
-struct CGameScriptInterface {
-    char pad[0x1010];
+struct CGameScriptInterface_Methods : CGameScriptInterface {
     CCharString GetMostRecentValidUsedTargetName();
 };
 
-CCharString CGameScriptInterface::GetMostRecentValidUsedTargetName()
+CCharString CGameScriptInterface_Methods::GetMostRecentValidUsedTargetName()
 {
     return g_obj->name;
 }

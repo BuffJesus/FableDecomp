@@ -18,7 +18,7 @@ index stream inside a LOD block. Both use Big Blue Box's proprietary control-byt
 compression ("compressed index information" per the fabletlcmod.com wiki); a
 byte-exact decode needs the engine's decompressor (Ghidra), not pure byte scanning.
 
-Format reference: docs/BIG_MESH_FORMAT.md (this project) + fabletlcmod.com wiki
+Format reference: docs/formats/BIG_MESH_FORMAT.md (this project) + fabletlcmod.com wiki
 (file_formats:bbm). Container reader dependency: tools/parse_bigb.py.
 
 Usage:

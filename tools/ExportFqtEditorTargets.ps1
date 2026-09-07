@@ -1,7 +1,7 @@
 param(
     [string]$InputPath = "ghidra_out/fablewin_pdb_names.tsv",
     [string]$OutputTsv = "ghidra_out/fablewin_fqt_editor_targets.tsv",
-    [string]$OutputMd = "docs/FQT_EDITOR_TARGETS.md"
+    [string]$OutputMd = "work/FQT_EDITOR_TARGETS.md"
 )
 
 Set-StrictMode -Version Latest

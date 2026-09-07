@@ -20,7 +20,7 @@ Usage is identical to verify_and_land.py:
 
 Proven on CKeyRedefiner::GetSubTypeForAction 0x557CA0 (RELOCATION_MATCH 120/120)
 and CKeyRedefiner::AreAllowedToCoexist 0x5578A0 (147/147). See CLAUDE.md gotcha
-and docs/REDEFINE_INPUT_SYSTEM.md. Assumes the function is at .text offset 0
+and docs/engine/REDEFINE_INPUT_SYSTEM.md. Assumes the function is at .text offset 0
 (true for the single-function objects this pipeline compiles); raises otherwise.
 """
 import struct

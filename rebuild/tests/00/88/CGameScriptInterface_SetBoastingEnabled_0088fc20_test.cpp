@@ -1,8 +1,6 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
-struct CGameScriptInterface {
-    void* vt;
-};
 
 unsigned char g_boastingEnabled = 0;
 

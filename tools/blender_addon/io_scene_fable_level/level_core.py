@@ -17,7 +17,7 @@ we only:
 Honest scope (inherited from lev_rw): editing cell heights does NOT regenerate
 the navmesh / region graph / obstacle-brush data -- those are preserved opaque.
 The engine's runtime navigation still reflects the ORIGINAL terrain. See
-docs/TERRAIN_BLENDER.md.
+docs/modding/README.md#terrain_blender.
 """
 import importlib.util
 import os

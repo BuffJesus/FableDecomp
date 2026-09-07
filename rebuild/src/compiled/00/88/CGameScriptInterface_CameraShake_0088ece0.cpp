@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct C3DVector { float x; float y; float z; };
 
 struct CCamObj {
@@ -18,13 +19,13 @@ struct CCamMgr {
     virtual bool GetObj(CCamObj** out); // slot 9 -> vtbl offset 0x24
 };
 
-struct COuter { char pad[0x38]; }; // CCamMgr* at +0x34
-struct CGameScriptInterface { char pad4[4]; COuter* outer; }; // outer at +0x4
+struct CWorld { char pad[0x38]; }; // CCamMgr* at +0x34
+// outer at +0x4
 
 void __fastcall CGameScriptInterface_CameraShake(const CGameScriptInterface* self, float magnitude, float duration)
 {
     CCamObj* local;
-    COuter* a = self->outer;
+    CWorld* a = self->World;
     CCamMgr* b = *(CCamMgr**)((char*)a + 0x34);
     if (b->GetObj(&local)) {
         local->SetEarthquakeAt((C3DVector*)((char*)local + 4), magnitude, duration, false);

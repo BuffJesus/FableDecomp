@@ -5,7 +5,7 @@ Extracts real GEOMETRY (vertex buffers + u16 index streams) from a compiled MBAN
 mesh entry (graphics.big types 1,2,4,5) by REPLAYING the deterministic
 `C3DMesh2::LoadBinary` walk. The compiled entry is a relocatable serialized memory
 image of a C3DMesh2 object graph -- geometry is PLAIN / UNCOMPRESSED (there is NO
-codec on the mesh load path; see docs/BIG_MESH_GEOMETRY.md). The vertex/index
+codec on the mesh load path; see docs/formats/BIG_MESH_GEOMETRY.md). The vertex/index
 blocks are NOT locatable by byte pattern-scan; you must WALK the stream field by
 field to position them.
 

@@ -1,0 +1,295 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/WaspBoss/Entities/WaspVictim.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 1,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 2
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsScared",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 5,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "ModifyThingHealth",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 21
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 36
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 37
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 39
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 44
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 45
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 50
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 53
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 55
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 56
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsScared",
+          "line": 58
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 60
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 62
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroMorality",
+          "line": 63
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 64
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 67
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 69
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 70
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 71
+        },
+        {
+          "receiver": "me",
+          "name": "MoveToThing",
+          "line": 72
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 74
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 75
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 81
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeOutAndKillEntity",
+          "line": 82
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 83
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "QueenHornetAttacks",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "QuestStartScreened",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SavedVillagerCount",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_072_VILLAGER_MALE_ON_SAVED_10",
+      "TEXT_QST_072_VILLAGER_MALE_SCREAMS_10"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

@@ -37,11 +37,13 @@ def verify(root: Path) -> dict[str, Any]:
     registry_files = [row for row in lua_files if row["path"].lower().endswith("/quests.lua")]
     script_files = [row for row in lua_files if row not in registry_files]
     ir_files = [row for row in script_files if "ir" in row]
-    check("eight seed packages ingested", len(packages) == 8, [row["name"] for row in packages])
+    sources = sorted(d.name for d in (corpus / "sources").iterdir() if d.is_dir()) if (corpus / "sources").exists() else []
+    check("seed packages ingested (one per recovered source dir)",
+          len(packages) >= 8 and len(packages) == len(sources), [row["name"] for row in packages])
     hashes_ok = all(row.get("archiveSha256") and len(row["archiveSha256"]) == 64 for row in packages)
     check("archive provenance hashed", hashes_ok, [row.get("archiveSha256") for row in packages])
     check("all executable Lua scripts have normalized IR",
-          len(registry_files) == 8 and len(script_files) == len(ir_files) == 25,
+          len(registry_files) == len(packages) and len(script_files) == len(ir_files) and len(script_files) >= 25,
           {"registries": len(registry_files), "scripts": len(script_files), "ir": len(ir_files)})
     check("merged registry emitted", (corpus / "combined_registry.lua").is_file(), "combined_registry.lua")
 
@@ -76,9 +78,12 @@ def verify(root: Path) -> dict[str, Any]:
     entity_count = sum(row.get("kind") == "entity" for row in manifest["entries"])
     registered = {f"FSE/{name}.lua" for name in registered_script_names(packages)}
     unregistered = sorted(row["path"] for row in script_files if row["path"] not in registered)
+    # Entity scripts a package ships but never registers in its quests.lua are not shadow
+    # entries by design (documented in docs/scripts/AEON_LUA_PORTS.md); the set may only
+    # contain paths that really are unregistered, and every registered script needs an entry.
     check("reconstructed scripts are shadow-only",
-          len(manifest["entries"]) == 22 and entity_count == 14 and
-          len(script_files) == 25 and len(unregistered) == 3 and
+          len(manifest["entries"]) >= 22 and entity_count >= 14 and
+          len(manifest["entries"]) == len(script_files) - len(unregistered) and
           len(set(identities)) == len(identities) and safe,
           {"default": manifest["defaultMode"], "entries": len(manifest["entries"]),
            "entities": entity_count, "unregisteredScripts": unregistered})
@@ -188,7 +193,7 @@ def verify(root: Path) -> dict[str, Any]:
     bindings_missing = {row["package"]: row["luaBindingsMissingNativeLifecycle"]
                         for row in comparison["scripts"] if row["luaBindingsMissingNativeLifecycle"]}
     check("all reconstructed parent bindings correlate with native lifecycle evidence",
-          len(comparison["scripts"]) == 8 and not bindings_missing, bindings_missing)
+          len(comparison["scripts"]) == len(seed_names) and not bindings_missing, bindings_missing)
 
     passed = sum(row["passed"] for row in checks)
     return {"schema": "fable-script-recovery-foundation-audit/0.1",

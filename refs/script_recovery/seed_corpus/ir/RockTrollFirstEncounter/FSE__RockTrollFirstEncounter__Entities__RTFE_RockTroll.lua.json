@@ -1,0 +1,252 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/RockTrollFirstEncounter/Entities/RTFE_RockTroll.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 9,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingPersistent",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 21,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateThread",
+          "line": 13
+        },
+        {
+          "receiver": "me",
+          "name": "MakeBehavioral",
+          "line": 16
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "AddItemToContainer",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "AddItemToContainer",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 32
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "StartCutscene",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 39
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 40
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateThread",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 44
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 45
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 48
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 51
+        },
+        {
+          "receiver": "me",
+          "name": "PlayAnimation",
+          "line": 52
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 53
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 54
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 57
+        },
+        {
+          "receiver": "me",
+          "name": "PlayAnimation",
+          "line": 58
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 59
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 60
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 64
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 65
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityForceToLookAtThing",
+          "line": 68
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveThingBestEnemyTarget",
+          "line": 69
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 73
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 76
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "AddedItemsToRockTroll",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "PlayedExhumeCutScene",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [
+      "CS_ROCKTROLL_EXHUME"
+    ],
+    "regions": []
+  }
+}

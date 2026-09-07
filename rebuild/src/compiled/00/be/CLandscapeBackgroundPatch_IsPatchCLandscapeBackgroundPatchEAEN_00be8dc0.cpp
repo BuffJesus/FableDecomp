@@ -1,5 +1,5 @@
-struct CLandscapeBackgroundPatch { char _pad[4]; };
 
+#include "engine/CLandscapeBackgroundPatch.h"  // retyped onto the PDB layout; byte parity re-verified
 bool __fastcall CLandscapeBackgroundPatch_IsPatch(CLandscapeBackgroundPatch* self)
 {
     return true;

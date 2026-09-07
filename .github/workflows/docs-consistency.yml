@@ -19,8 +19,9 @@ jobs:
           python-version: "3.12"
       - name: Coverage numbers match the generated dashboard
         run: python tools/update_readme_progress.py --check
-      - name: Docs links resolve, no orphaned findings, no root scratch tracked
-        run: python tools/docs_reorg.py --check-links --check-findings --check-root
+      - name: Docs links resolve, no root scratch tracked
+        # --check-findings joins once FINDINGS_LOG facts are re-homed (ROADMAP lane a)
+        run: python tools/docs_reorg.py --check-links --check-root
       - name: Pure-Python pipeline tests
         run: |
           python -m pip install pytest

@@ -2,7 +2,7 @@
 r"""Hero appearance OVERLAY authoring -- custom tattoos / war-paint / skin
 variants through the CHeroMorphDef.TextureMorphs compositing system.
 
-WHAT IT DOES (docs/HERO_MORPH.md is the map):
+WHAT IT DOES (docs/engine/HERO_MORPH.md is the map):
   Given a transparent PNG glyph + a body region + one or more trigger stats it
   stages, WITHOUT touching the install:
     (a) the glyph as a NEW textures.big entry in GBANK_MAIN_PC

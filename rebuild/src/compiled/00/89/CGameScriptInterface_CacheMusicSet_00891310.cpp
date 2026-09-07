@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 enum EMusicSetType { EMS_A };
 
 struct CMusicTarget
@@ -5,20 +6,17 @@ struct CMusicTarget
     void CacheMusicSet(EMusicSetType t);
 };
 
-struct CInner
+struct CWorld
 {
     char pad_0000[0x6C];
     CMusicTarget* target_006C;
 };
 
-struct CGameScriptInterface
-{
-    char pad_0000[0x04];
-    CInner* inner_0004;
+struct CGameScriptInterface_Methods : CGameScriptInterface {
     void CacheMusicSet(EMusicSetType t) const;
 };
 
-void CGameScriptInterface::CacheMusicSet(EMusicSetType t) const
+void CGameScriptInterface_Methods::CacheMusicSet(EMusicSetType t) const
 {
-    inner_0004->target_006C->CacheMusicSet(t);
+    World->target_006C->CacheMusicSet(t);
 }

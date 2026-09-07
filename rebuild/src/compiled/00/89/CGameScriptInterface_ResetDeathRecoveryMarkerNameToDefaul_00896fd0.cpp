@@ -1,6 +1,7 @@
 // CGameScriptInterface::ResetDeathRecoveryMarkerNameToDefault
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct MapNode;
-struct SubA {
+struct CPlayerManager {
     void* GetB();          // __fastcall, returns object ptr in eax
 };
 struct SubB;
@@ -11,18 +12,14 @@ struct MapKind {
     struct MapNode* lb(int* key);   // __fastcall lower_bound-like
 };
 struct Node2 { void* p; };
-struct GSI {
-    char _pad[0x14];
-    SubA* member14;        // +0x14
-};
 
 extern "C" EngineObj* __fastcall ResolveObj(void* p);  // this in ecx
 extern "C" void __fastcall FinalizeNode(void* n);      // this in ecx
 
-void __fastcall CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefault(GSI* self)
+void __fastcall CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefault(CGameScriptInterface* self)
 {
     int key;
-    void* a = self->member14->GetB();
+    void* a = self->PlayerManager->GetB();
     EngineObj* obj = ResolveObj(a);
     if (!obj) return;
     if (*(unsigned char*)((char*)obj + 0x91) & 1) return;

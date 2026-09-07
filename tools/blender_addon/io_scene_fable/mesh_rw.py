@@ -212,7 +212,7 @@ def encode_skin(vb, stride, init_flags, mesh_type, prim, vert_influences):
     buffer from `vert_influences` (one list[(local_bone_slot, weight)] per vertex,
     parallel to the vertex order). Returns (new_vb_bytes, new_ablocks).
 
-    This is the inverse of fable_core._prim_skin (docs/BIG_MESH_GEOMETRY.md §7.1):
+    This is the inverse of fable_core._prim_skin (docs/formats/BIG_MESH_GEOMETRY.md §7.1):
       * top-4 influences per vertex, renormalized to u8 (sum forced to 255);
       * joint byte = paletteIndex*3, where paletteIndex is the local bone's slot in
         this animated block's Groups[] palette (appended if absent, capped at 84
@@ -406,7 +406,7 @@ _IDENTITY_ROOT = struct.pack('<12f', 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 
 # ---------------------------------------------------------------------------
-# SKINNED composition support (docs/BIG_MESH_GEOMETRY.md §7/§7.1, EgoCore
+# SKINNED composition support (docs/formats/BIG_MESH_GEOMETRY.md §7/§7.1, EgoCore
 # MeshCompiler.h CompileSingleLOD + GltfMeshImporter.h ImportType5).
 # The skeleton is CLONED from a donor mesh (retail boot / creature) as the four
 # raw per-bone blocks -- byte-exact, no re-derivation of bind matrices needed.

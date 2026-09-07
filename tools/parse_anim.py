@@ -8,7 +8,7 @@ WHAT THIS TOOL DOES (and honestly does NOT do)
 graphics.big MBANK Types 6/7/9 (`ANIM_*`, 3435 entries) are Big Blue Box **3DAF**
 ("3D Animation File") images -- the *compiled/packed* runtime form produced by
 `C3DAnimFileXLoader` in Fable.exe (RTTI classes confirmed in the binary; see
-docs/BIG_ANIM_FORMAT.md).
+docs/formats/BIG_ANIM_FORMAT.md).
 
 The 3DAF image has a **plain, self-describing FourCC-chunk header** that this tool
 DECODES and VALIDATES self-consistently across all retail entries:
@@ -26,7 +26,7 @@ FRAGMENTS inside XSEQ, but the quaternion rotation keys / translation keys / key
 are interleaved through the CBYTE framing and are NOT recoverable by byte pattern-scan
 (same situation as the mesh geometry: only the deterministic C3DAnimFileXSequenceChunk
 deserializer computes the byte offsets). Decoding the keyframe tracks is a scoped
-Ghidra follow-up -- see docs/BIG_ANIM_FORMAT.md sec.6.
+Ghidra follow-up -- see docs/formats/BIG_ANIM_FORMAT.md sec.6.
 
 IMPORTANT: a *prior* version of this file claimed the XSEQ body was LZO1X-compressed
 and that fps==30. Both are REFUTED by the retail bytes (LZO1X decode fails on every
@@ -216,7 +216,7 @@ def cmd_validate(b, ents, n):
                  'Y' if h['xseq_magic'] else 'n'))
     print("--- totals ---")
     print("  ANRT duration == TOC Info[0]: %d/%d nonzero-Info entries" % (dur_ok, dur_tot))
-    print("  (keyframe-track byte decode: PENDING Ghidra -- see docs/BIG_ANIM_FORMAT.md)")
+    print("  (keyframe-track byte decode: PENDING Ghidra -- see docs/formats/BIG_ANIM_FORMAT.md)")
 
 
 def main():

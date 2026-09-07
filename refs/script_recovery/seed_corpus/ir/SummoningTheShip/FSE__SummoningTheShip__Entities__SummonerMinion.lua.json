@@ -1,0 +1,197 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 4,
+      "calls": [
+        {
+          "receiver": "me",
+          "name": "GetDataString",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 10,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 3
+        },
+        {
+          "receiver": "me",
+          "name": "GetDataString",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 6
+        },
+        {
+          "receiver": "me",
+          "name": "MakeBehavioral",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAlpha",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetInLimbo",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 25
+        },
+        {
+          "receiver": "me",
+          "name": "IsDead",
+          "line": 26
+        },
+        {
+          "receiver": "me",
+          "name": "IsAlive",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveThingBestEnemyTarget",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetInLimbo",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAlpha",
+          "line": 36
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityFadeIn",
+          "line": 37
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 40
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 41
+        },
+        {
+          "receiver": "me",
+          "name": "IsDead",
+          "line": 42
+        },
+        {
+          "receiver": "me",
+          "name": "IsDead",
+          "line": 46
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 47
+        },
+        {
+          "receiver": "quest",
+          "name": "Pause",
+          "line": 48
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 49
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 51
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 55
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "CurrentAttackWave",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SummonerAttacksStarted",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SummonersAlive",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

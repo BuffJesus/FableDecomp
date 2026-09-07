@@ -1,4 +1,5 @@
 // CGameScriptInterface::GetGameAngleXY  @ 006e7340
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 extern float g_defaultGameAngleXY;
 
 // Obj: getAngle at vtable +0x64 => slot index 25 (0..24 fillers)
@@ -21,20 +22,16 @@ struct Holder {
     virtual bool tryGet(Obj** out); // +0x28
 };
 
-struct Inner {
+struct CWorld {
     char pad34[0x34];
     Holder* holder;
 };
 
-struct CGameScriptInterface {
-    void* pad0;
-    Inner* inner;
-};
 
 float __fastcall CGameScriptInterface_GetGameAngleXY(CGameScriptInterface* self)
 {
     Obj* local;
-    Holder* h = self->inner->holder;
+    Holder* h = self->World->holder;
     if (h->tryGet(&local)) {
         return local->getAngle();
     }

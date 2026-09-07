@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-"""Headless Blender test: REAL bone bind poses (docs/BIG_MESH_GEOMETRY.md sec. 7).
+"""Headless Blender test: REAL bone bind poses (docs/formats/BIG_MESH_GEOMETRY.md sec. 7).
 
 Run:
   blender --background --factory-startup --python \

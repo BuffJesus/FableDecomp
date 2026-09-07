@@ -1,0 +1,382 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 7,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 6
+        },
+        {
+          "receiver": "me",
+          "name": "GetDataString",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "name": "OnPredicateFail",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 19,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 6
+        },
+        {
+          "receiver": "me",
+          "name": "GetDataString",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 37,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 3
+        },
+        {
+          "receiver": "me",
+          "name": "GetDataString",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 6
+        },
+        {
+          "receiver": "me",
+          "name": "MakeBehavioral",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAlpha",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetInLimbo",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 25
+        },
+        {
+          "receiver": "me",
+          "name": "IsDead",
+          "line": 26
+        },
+        {
+          "receiver": "me",
+          "name": "IsAlive",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetInLimbo",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAlpha",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityFadeIn",
+          "line": 34
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestInfoBarHealth",
+          "line": 37
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 40
+        },
+        {
+          "receiver": "me",
+          "name": "IsDead",
+          "line": 48
+        },
+        {
+          "receiver": "me",
+          "name": "IsAlive",
+          "line": 48
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 51
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 53
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 54
+        },
+        {
+          "receiver": "me",
+          "name": "IsDead",
+          "line": 55
+        },
+        {
+          "receiver": "me",
+          "name": "IsAlive",
+          "line": 55
+        },
+        {
+          "receiver": "me",
+          "name": "IsPerformingScriptTask",
+          "line": 57
+        },
+        {
+          "receiver": "me",
+          "name": "SummonerLightningOrbAttackTarget",
+          "line": 58
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitBy",
+          "line": 62
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFrom",
+          "line": 63
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitBySpecialAbilityFrom",
+          "line": 64
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateCreatureNearby",
+          "line": 69
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 70
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateCreatureNearby",
+          "line": 75
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 76
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 82
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapRemoveMarker",
+          "line": 83
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveThingBestEnemyTarget",
+          "line": 88
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 91
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 92
+        },
+        {
+          "receiver": "me",
+          "name": "IsDead",
+          "line": 93
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 97
+        },
+        {
+          "receiver": "me",
+          "name": "IsDead",
+          "line": 101
+        },
+        {
+          "receiver": "me",
+          "name": "IsAlive",
+          "line": 101
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 102
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 105
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 106
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 109
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 112
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 113
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 117
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "CurrentAttackWave",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SummonerAttacksStarted",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SummonersAlive",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

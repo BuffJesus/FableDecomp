@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """decode_mesh_geo.py — MBANK compiled-mesh GEOMETRY decode facts + helpers.
 
-GROUND TRUTH (from the Fable.exe mesh loader, decompiled — see docs/BIG_MESH_GEOMETRY.md):
+GROUND TRUTH (from the Fable.exe mesh loader, decompiled — see docs/formats/BIG_MESH_GEOMETRY.md):
 The compiled MBANK mesh geometry is **PLAIN / UNCOMPRESSED**. There is NO decompressor
 (no LZO, no zlib, no bespoke control-byte codec) anywhere on the mesh load path. A compiled
 mesh entry is a **relocatable serialized memory image** of a C3DMesh2 object graph. Loading =

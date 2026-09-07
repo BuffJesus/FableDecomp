@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-"""Headless Blender proof for NEW-MESH COMPOSITION (docs/MESH_COMPOSE.md §5).
+"""Headless Blender proof for NEW-MESH COMPOSITION (docs/formats/MESH_COMPOSE.md §5).
 
 Run:
   blender --background --factory-startup --python \

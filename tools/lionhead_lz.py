@@ -7,9 +7,9 @@ engine ships the reference decompressor `lzo1x_decompress` at retail address
 decompiled from Fable.exe; Ghidra BSim matched it at sim=1.0 to the LZO1X
 reference in the ego_r (EgoCore/Fable2) signature DB. The grammar below is a
 faithful port of that routine, validated by decoding real textures to coherent
-images (see docs/LIONHEAD_LZ.md).
+images (see docs/formats/LIONHEAD_LZ.md).
 
-Per-mip block framing (see docs/BIG_TEXTURE_FORMAT.md):
+Per-mip block framing (see docs/formats/BIG_TEXTURE_FORMAT.md):
     block := u16 clen                 ; header 2 bytes, when clen < 0xffff
            | u16 0xffff , u32 clen    ; header 6 bytes, when clen >= 0xffff
            followed by `clen` bytes of the LZO1X stream.

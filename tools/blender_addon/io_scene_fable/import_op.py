@@ -76,7 +76,7 @@ def _build_armature(model, collection):
     """Build an Armature object from the decoded skeleton.
 
     When the bones carry REAL bind poses (BoneData.matrix set -- decoded from the
-    compiled bone blocks, docs/BIG_MESH_GEOMETRY.md section 7), each edit-bone
+    compiled bone blocks, docs/formats/BIG_MESH_GEOMETRY.md section 7), each edit-bone
     gets its model-space bind matrix (head = bind translation, orientation from
     the bind rotation) and is parented per the real ParentIndex hierarchy.
     Falls back to the old stacked-placeholder layout for name-scan-only bones.
@@ -153,7 +153,7 @@ def _build_armature(model, collection):
 def _apply_skin(obj, model, geo, armature):
     """Create one vertex group per bone (named by bone name), assign each vertex
     its decoded (local_bone -> weight) influences, and add an Armature modifier
-    binding the mesh to `armature`. See docs/BIG_MESH_GEOMETRY.md §7.1.
+    binding the mesh to `armature`. See docs/formats/BIG_MESH_GEOMETRY.md §7.1.
 
     geo.skin[v] = [(local_bone_slot, weight), ...] parallel to geo.vertices.
     The armature edit-bones were created in local-slot order, so bone-name lookup
@@ -191,7 +191,7 @@ def _build_geometry_mesh(model, submesh, materials, collection, parent, src_big=
     """Build the actual mesh object for a submesh IF geometry is available.
     Returns the object or None (None today -- geometry is stubbed).
     When the submesh carries skin weights and an armature is present, binds the
-    mesh with vertex groups + an Armature modifier (docs/BIG_MESH_GEOMETRY.md §7.1)."""
+    mesh with vertex groups + an Armature modifier (docs/formats/BIG_MESH_GEOMETRY.md §7.1)."""
     geo = submesh.geometry
     if geo is None or not geo.vertices or not geo.faces:
         return None  # STUB path: fable_core.decode_geometry returned None
@@ -248,7 +248,7 @@ def _build_placeholders(model, materials, collection, root, src_big="", armature
             sm_empty["n_faces"] = sm.n_faces
             sm_empty["sVert"] = sm.svert
             sm_empty["material_slot"] = sm.material_slot
-            sm_empty["geometry"] = "STUB (pending docs/BIG_MESH_GEOMETRY.md)"
+            sm_empty["geometry"] = "STUB (pending docs/formats/BIG_MESH_GEOMETRY.md)"
             if 0 <= sm.material_slot < len(materials):
                 sm_empty["material"] = materials[sm.material_slot].name
             collection.objects.link(sm_empty)

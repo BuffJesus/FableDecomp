@@ -4,7 +4,7 @@
  * list. No STL, Win32 file APIs only, hand-rolled parsing per the project's
  * integration style (see visual_boot_checkpoint.cpp). crc0 is implemented inline
  * (proven byte-identical to the compiled FableCRC_Calc_004014A0) to avoid a
- * duplicate-symbol link with the visual runtime. See docs/SAVE_ROW_FEEDER_SPEC.md.
+ * duplicate-symbol link with the visual runtime. See docs/pipeline/SAVE_ROW_FEEDER_SPEC.md.
  */
 #include "frontend_save_rows.h"
 #include "fable_inflate.h"

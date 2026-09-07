@@ -9,7 +9,7 @@ artifact a spoken line needs:
     dialogue.big the LIPSYNC mouth-weight curve (entry <stem>_<N>)
     <bank>snds.bin  (ADD only) the name->index join table in data\\Defs
 
-THE CROSS-FILE JOIN (settled 2026-07-20, empirical - see docs/DIALOGUE_PIPELINE.md):
+THE CROSS-FILE JOIN (settled 2026-07-20, empirical - see docs/formats/DIALOGUE_PIPELINE.md):
   text.big stores only the bank NAME (SpeechBank="ScriptDialogue.lug"); the index
   <N> lives in data\\Defs\\<bank>snds.bin:
       u32 count ; count x { u32 crc, u32 soundID }   sorted ascending by crc

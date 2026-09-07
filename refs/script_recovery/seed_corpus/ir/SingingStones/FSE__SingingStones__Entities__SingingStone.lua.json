@@ -1,0 +1,234 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/SingingStones/Entities/SingingStone.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 13,
+      "calls": [
+        {
+          "receiver": "me",
+          "name": "GetDataString",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 6
+        },
+        {
+          "receiver": "me",
+          "name": "SetReadableText",
+          "line": 10
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 25,
+      "calls": [
+        {
+          "receiver": "me",
+          "name": "GetDataString",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "GetNearestWithScriptName",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "IsCameraPosOnScreen",
+          "line": 28
+        },
+        {
+          "receiver": "me",
+          "name": "GetPos",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 31
+        },
+        {
+          "receiver": "me",
+          "name": "GetPos",
+          "line": 34
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateEffectAtPos",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 42
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 46
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 51
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 52
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 52
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 55
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 59
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 65
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 68
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 70
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 75
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 76
+        },
+        {
+          "receiver": "me",
+          "name": "GetPos",
+          "line": 80
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateEffectAtPos",
+          "line": 81
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 86
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 88
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "ClearEffects",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "CurrentPlayListIndex",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "PersonalPlayList_",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "PuzzleWon",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_060_NAME_A",
+      "TEXT_QST_060_NAME_B",
+      "TEXT_QST_060_NAME_C",
+      "TEXT_QST_060_NAME_D"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

@@ -1,11 +1,11 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
-struct GSISub { char pad0[0xbc]; unsigned char b_bc; char pad1[0xc]; unsigned char b_c9; };
-struct CGameScriptInterface { char pad0[0xc]; GSISub* sub; };
+struct CDisplayEngine { char pad0[0xbc]; unsigned char b_bc; char pad1[0xc]; unsigned char b_c9; };
 
 int __fastcall CGameScriptInterface_IsScreenFadingOut(const CGameScriptInterface* self)
 {
-    const GSISub* s = self->sub;
+    const CDisplayEngine* s = self->DisplayEngine;
     if (s->b_bc) {
         if (s->b_c9) {
             return 1;
@@ -16,9 +16,9 @@ int __fastcall CGameScriptInterface_IsScreenFadingOut(const CGameScriptInterface
 
 int main()
 {
-    GSISub node;
+    CDisplayEngine node;
     CGameScriptInterface obj;
-    obj.sub = &node;
+    obj.DisplayEngine = &node;
     const CGameScriptInterface* p = &obj;
 
     node.b_bc = 1; node.b_c9 = 1;

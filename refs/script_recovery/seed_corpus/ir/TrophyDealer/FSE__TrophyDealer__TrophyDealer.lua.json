@@ -1,0 +1,256 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/TrophyDealer/TrophyDealer.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "HilightGuildTeleporter",
+      "parameters": [
+        "quest"
+      ],
+      "line": 4,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapRemoveMarker",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 32
+        }
+      ]
+    },
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 37,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetQuestCardObjective",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 9
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 47,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetCreatureGeneratorsEnabled",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "FinalizeEntityBindings",
+          "line": 12
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 13
+        },
+        {
+          "receiver": "Quest",
+          "name": "ActivateQuestWithoutLoadingResources",
+          "line": 16
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 17
+        },
+        {
+          "receiver": "Quest",
+          "name": "CreateThread",
+          "line": 20
+        },
+        {
+          "receiver": "Quest",
+          "name": "IsRegionLoaded",
+          "line": 23
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 24
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetActiveQuestName",
+          "line": 30
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetQuestCardObjective",
+          "line": 31
+        },
+        {
+          "receiver": "Quest",
+          "name": "KickOffQuestStartScreen",
+          "line": 32
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 33
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 34
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 82,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 6
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "StartScreenShown",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "TrophyDealerInCave",
+      "script": "TrophyDealer/Entities/TrophyDealerInCave",
+      "line": 56
+    },
+    {
+      "name": "DemonDoorFace",
+      "script": "TrophyDealer/Entities/DemonDoorFace",
+      "line": 57
+    }
+  ],
+  "references": {
+    "textTags": [
+      "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_01",
+      "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_02"
+    ],
+    "cutscenes": [],
+    "regions": [
+      "HeroGuildComplexInside"
+    ]
+  }
+}

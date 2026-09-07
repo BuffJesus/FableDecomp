@@ -1,4 +1,4 @@
-struct CGameScriptInterface { char pad[0x1010]; };
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 extern unsigned char g_spotTheAdditionBeaten;
 unsigned char g_spotTheAdditionBeaten;
 void __fastcall CGameScriptInterface_SetSpotTheAdditionBeaten(CGameScriptInterface* self, int edx, unsigned char val)

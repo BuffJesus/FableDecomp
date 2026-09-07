@@ -1,3 +1,4 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
 static int g_count = 0;
@@ -16,15 +17,11 @@ struct Inner {
     }
 };
 
-struct CMid {
+struct CWorld {
     unsigned char pad[0x18];
     Inner* p18;
 };
 
-struct CGameScriptInterface {
-    void* vt;
-    CMid* mid;
-};
 
 static Thing g_theme;
 extern "C" Thing* __stdcall GetTheme(int arg1) { (void)arg1; return &g_theme; }
@@ -34,14 +31,14 @@ void __fastcall CGameScriptInterface_TransitionToThemeExternals(CGameScriptInter
     Thing* t = GetTheme(arg1);
     int n = t->count();
     if (n > 0) {
-        self->mid->p18->method(0, 1, n, arg2);
+        self->World->p18->method(0, 1, n, arg2);
     }
 }
 
 int main() {
     Inner inner;
-    CMid theMid; theMid.p18 = &inner;
-    CGameScriptInterface iface; iface.mid = &theMid;
+    CWorld theMid; theMid.p18 = &inner;
+    CGameScriptInterface iface; iface.World = &theMid;
 
     g_count = 0; g_method_calls = 0;
     CGameScriptInterface_TransitionToThemeExternals(&iface, 0, 5, 42);

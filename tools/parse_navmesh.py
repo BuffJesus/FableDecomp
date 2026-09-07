@@ -20,7 +20,7 @@ round-trip of a real shipped .lev nav section (see round_trip and __main__).
   CSaveNavigationPositionToFile ctor     0x0328a5f0   position writer  (C2DVector + long)
   CNavigationPosition ctor               0x01c90330   position reader  (this+8 = long)
 
-Docs: docs/NAVMESH_RE.md.  Evidence: ghidra_out/decomp_navmesh.c, decomp_navmesh2_nodes.txt.
+Docs: docs/engine/NAVMESH_RE.md.  Evidence: ghidra_out/decomp_navmesh.c, decomp_navmesh2_nodes.txt.
 
 CLI:
   python parse_navmesh.py [file.lev]            round-trip validate (byte-identical oracle)
@@ -464,7 +464,7 @@ def regen_compare(lev_path):
 #
 # Builds a from-scratch CNavQuadTree for a LEV using only its terrain cell grid, mirroring
 # the shipped writer's conventions (all reverse-engineered from the retail corpus in the
-# 2026-07-20 session, see docs/NAVMESH_RE.md "GENERATOR" section):
+# 2026-07-20 session, see docs/engine/NAVMESH_RE.md "GENERATOR" section):
 #
 #   TopologyWeights   cell walkable byte +15 == 0 -> hard blocked (0xFF); cell byte +20 == 1
 #                     -> preferred path (pref 0x00); else normal ground (pref 0x80).

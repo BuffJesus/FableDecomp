@@ -2,7 +2,7 @@
 """lev_theme_rebase.py - audit / repair a LEV's ground-theme palette.
 
 A LEV carries a 256-entry theme palette at file offset 47 (LEVHeader 25 B +
-LEVMapHeader 22 B), each entry `char name[128] + u32 value` (docs/LEV_WRITER.md).
+LEVMapHeader 22 B), each entry `char name[128] + u32 value` (docs/formats/LEV_WRITER.md).
 
 The u32 is the GLOBAL game.bin def entry index, not a name hash. Proven two ways:
 

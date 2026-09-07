@@ -1,4 +1,5 @@
 // CGameScriptInterface::SetDeathRecoveryMarkerName
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct DeathRecoveryMarkerNameNode
 {
     int key;
@@ -13,7 +14,7 @@ struct DeathRecoveryMarkerNameMap
     DeathRecoveryMarkerNameNode* lower_bound(const int* key);
 };
 
-struct DeathRecoveryMarkerNameSource
+struct CPlayerManager
 {
     void* GetTarget();
 };
@@ -29,20 +30,15 @@ struct DeathRecoveryMarkerNameInterface
     CCharString markerName;
 };
 
-struct CGameScriptInterface_00896f60
-{
-    char pad00[0x14];
-    DeathRecoveryMarkerNameSource* source;
-};
 
 extern "C" void* __fastcall ResolveDeathRecoveryMarkerTarget(void* source);
 
 void __fastcall CGameScriptInterface_SetDeathRecoveryMarkerName(
-    CGameScriptInterface_00896f60* self,
+    CGameScriptInterface* self,
     unsigned long,
     const CCharString& name)
 {
-    void* source = self->source->GetTarget();
+    void* source = self->PlayerManager->GetTarget();
     unsigned char* target =
         (unsigned char*)ResolveDeathRecoveryMarkerTarget(source);
 

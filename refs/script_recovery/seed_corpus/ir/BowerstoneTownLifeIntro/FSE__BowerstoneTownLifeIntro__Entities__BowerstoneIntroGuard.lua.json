@@ -1,0 +1,128 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 2,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetThingHasInformation",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsKillable",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 7,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 7
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 16
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "StartCutscene",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookTutorialEntry",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookTutorialEntry",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 27
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "DoneGuardSpeech",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_LOG_TOWNS_LAWANDORDER",
+      "TEXT_QST_LOG_TOWNS_PUBS"
+    ],
+    "cutscenes": [
+      "CS_BOWERSTONE_INTRO_TOWN"
+    ],
+    "regions": []
+  }
+}

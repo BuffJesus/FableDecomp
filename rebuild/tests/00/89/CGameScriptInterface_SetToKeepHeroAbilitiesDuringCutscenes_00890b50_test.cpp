@@ -1,12 +1,9 @@
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
-struct Inner {
+struct CMainGameComponent {
     char pad[0x1c];
     void* f1c;
-};
-struct CGameScriptInterface {
-    char pad[8];
-    Inner* f8;
 };
 
 static unsigned char g_obj[0x300];
@@ -21,9 +18,9 @@ void __fastcall SetToKeepHeroAbilitiesDuringCutscenes(CGameScriptInterface* self
 
 int main()
 {
-    Inner inner;
+    CMainGameComponent inner;
     CGameScriptInterface gsi;
-    gsi.f8 = &inner;
+    gsi.Component = &inner;
     inner.f1c = (void*)0x1234;
 
     g_obj[0x224] = 0;

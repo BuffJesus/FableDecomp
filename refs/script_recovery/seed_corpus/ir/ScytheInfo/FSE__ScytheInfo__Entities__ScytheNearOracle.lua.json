@@ -1,0 +1,212 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/ScytheInfo/Entities/ScytheNearOracle.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 9,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "SetIsThingForcePushable",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "SetIsPushableByHero",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsKillable",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsToAddToComboMultiplierWhenHit",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingHasInformation",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 17,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 10
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 13
+        },
+        {
+          "receiver": "me",
+          "name": "TakeExclusiveControl",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngleTowardsThing",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 34
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 38
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 42
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 43
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 51
+        },
+        {
+          "receiver": "me",
+          "name": "SpeakAndWait",
+          "line": 52
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetThingAsAllyOfThing",
+          "line": 56
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetThingAsAllyOfThing",
+          "line": 57
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapRemoveMarker",
+          "line": 62
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 65
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 67
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 69
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 70
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 76
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 83
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 85
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "MissionSucceeded",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_B03_SCYTHE_ON_HIT_RETURNED"
+    ],
+    "cutscenes": [
+      "CS_ORACLE_AWAKENS"
+    ],
+    "regions": []
+  }
+}
