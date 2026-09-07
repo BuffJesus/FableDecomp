@@ -131,7 +131,7 @@ python tools/lev_rw.py edittest  work/level_samples/BarrowFields/BarrowFields.le
   preserved opaque. Editing terrain heights does **not** update navmesh walkability or
   obstacle occupancy — the engine's runtime nav will still reflect the original terrain.
   For gameplay-correct large terrain edits, the nav rebuild (`CMap::SaveToFile` /
-  `CEditWorldMap` region builders, docs/journal/FINDINGS_LOG.md) is the follow-on Ghidra job.
+  `CEditWorldMap` region builders, see the level-editor recipe below) is the follow-on Ghidra job.
 - **Grid resizing is not supported.** Changing `width`/`height` would move `navOffset`/
   `obsOffset` and require rewriting the opaque spans; the writer asserts nothing about
   this but the API offers no resize. Brand-new-level creation
@@ -145,3 +145,31 @@ python tools/lev_rw.py edittest  work/level_samples/BarrowFields/BarrowFields.le
 - `docs/formats/LEV_WRITER.md` — this document.
 - Cross-check sources: `D:\Code\FableForge\libs\forgecore\src\lev.cpp`,
   `docs/formats/LEVEL_CONTAINER_INDEX.md`, retail `FinalAlbion.wad` (398 LEVs).
+
+## Verified facts (from FINDINGS log)
+
+- **2026-08-21 — Map origins are 32-aligned across all 398 retail maps (2026-08-21).** Measured via
+  `forge world inspect` on pristine retail `FinalAlbion.wld`/`.bwd`: 0 off-grid at mod-32, 0 at mod-16.
+  - `ForgeTest64` had been registered at `(3328, 2296)`; `2296 % 32 = 24`, `2296 % 16 = 8`. An
+    off-grid origin slides every 16-cell landscape patch off the patch grid
+    (`forge stb foregroundinfo --verify-topology`, same LEV + donor chunk): origin (3328, 2296) ->
+    shift dy = -264 -> topology 25/105 exact; origin (3328, 2304) -> dy = -256 (16x16) -> 105/105.
+    Control: untouched donor chunk 105/105.
+  - Open question (not a claim): `CEngineLandscapeMap::OpenStaticMap` (0x00BDD0E0) faults at
+    0xBDD1D3 on the landscape-block-header allocation size (`field_04` at `this+0x28`); off-grid
+    origin is a plausible but undemonstrated source. Evidence
+    `work/terrain_runtime_probe_20260821/README.md`.
+
+- **2026-07-19 — Level-editor save/create recipe (FableWin editor RE).** `DecompDefTransfers.java`
+  batch-decompiled 50 `CEdit*` editor functions (`ghidra_out/leveleditor_decomp.c`, 50/50 clean;
+  targets `leveleditor_targets.tsv`). **New level** — `CEditWorldMap::CreateAndSaveNewLevel(name:
+  CWideString, coord:C2DCoordI, mapInit:CMapInit)` (`0x0296D2D0`): adds a `CMapInfo` to the world-map
+  `CArray<CMapInfo>`, initialises its 2D bounding box (`C2DBox::Initialise`) at the given world
+  coordinate, sets map flags `+0x2c`/`+0x2d`, allocates the 0x1D78-byte map object → a new level = a
+  new `CMapInfo` in the WLD at a free 2D coord + bbox, plus LEV+TNG. **Save level** —
+  `CEditWorldMap::SaveSingleLevelToFiles` (`0x0296E8B0`): (1) TNG via `CThingManager::SaveToScript`,
+  (2) LEV via `CMap::SaveToFile(file, CFileFormatLevel)` through
+  `CReplaceSerialise<CFileFormatLevel, COldFileFormatLevel3>` (matches decoded LEV version 6404),
+  (3) brush/terrain paint data. `CMap::SaveToFile` is the authoritative LEV writer to mirror.
+  **Regions / navmesh graph** — `CEditWorldMap::CreateNewRegion` (`0x0296D920`) maintains parallel
+  `vector<CRegion>` / `vector<CEditRegion>` (asserts equal size). Donor = FableWin.exe.

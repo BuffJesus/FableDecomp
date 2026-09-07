@@ -90,3 +90,29 @@ powershell -ExecutionPolicy Bypass -File tools/WriteFablePipelineReport.ps1
 powershell -ExecutionPolicy Bypass -File tools/SummarizeFableWinEditorSymbols.ps1
 powershell -ExecutionPolicy Bypass -File tools/WriteEditorToolingNotes.ps1
 ```
+
+## Verified facts (from FINDINGS log)
+
+- **2026-07-18 — RTTI is fully present in retail Fable.exe (open question resolved).** Binary scan
+  (`scan_fable.py`): **1,973 unique class type descriptors** (`.?AV…@@`) and 8 struct descriptors
+  (`.?AU…@@`), including `.?AVCChestDef@@`, `.?AVCContainerRewardHeroDef@@`,
+  `.?AVCCreatureAction_OpenChest@@` (cross-checks the scan against classes located by other means).
+  TypeDescriptor → CompleteObjectLocator → vtable pins class names/vtables for ~2k classes
+  independently of BSim/PDB porting.
+- **2026-07-18 — Bulk RTTI vtable-slot port applied to retail Ghidra DB.** `tools/rtti_port_all.py`
+  produced **6,653** high-confidence virtual-method labels by porting class-local PDB names from the
+  FableWin donor via MSVC RTTI vtable-slot identity: 1,973 retail classes scanned; 1,574 with ≥1
+  matched vtable; 372 skipped for slot-count mismatch; 4 image-folding/name-conflict rows dropped.
+  Conservative apply renamed 4,473 functions + created 4,642; `DemangleAll.java` 4,473 / 0 failures.
+  `CompareLabels.java`: 4,474 agree, 2,179 disagree, 0 missing (disagreements = BSim generic/collided
+  names such as `GetBankHandle`, `InitialiseDefaultCameraTags`). `LabelApplyForce.java` overrode the
+  2,180 conflicts (0 failures); `DemangleAll.java` 6,650 / 0 failures. `DumpStats.java` after the
+  force pass: **49,082 functions, 40,187 named, 8,895 default-named, 427 thunks, 202,189 symbols**
+  (named count unchanged from the conservative pass — force replaces wrong BSim names, not defaults).
+  Source `ghidra_out/labels_rtti_port.tsv`; audit `ghidra_out/rtti_port_compare.tsv`. Caveat: the
+  FableWin donor is Anniversary-era, so classes whose slot counts differ are skipped (e.g. `CTCChest`
+  donor 32 slots vs retail 28) — slot indices must re-align per class.
+- **2026-07-18 — single-class RTTI walk (`tools/rtti_map.py`)** resolves the donor's incremental-link
+  `jmp` thunks and validated on `CTCChest`: retail slot 9 = `0x750780` = the independently confirmed
+  `CTCChest::FrameUpdate` (donor slot 9 `?FrameUpdate@CTCChest@@UAEXXZ`). Chest results are in
+  [SYSTEMS_ANALYSIS.md](../engine/SYSTEMS_ANALYSIS.md#verified-facts-from-findings-log).

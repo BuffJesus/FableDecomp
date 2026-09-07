@@ -192,3 +192,69 @@ That crash is the documented prototype's finding, not a fresh live test here.
 Happy to share the actual decompiled `IsMultiplayerGameActive` and `UpdateScore` — the
 score>19→SwapToHero one is the most satisfying because it's the exact mechanic Molyneux
 described sitting right there in the binary.
+
+## Verified facts (from FINDINGS log)
+
+- **2026-07-23 — Dormant multiplayer / co-op subsystem (2026-07-23, HIGH confidence, 2-source).**
+  Retail `Fable.exe` name DB AND `debug_build/ego_r.exe` PDB agree.
+  - Transport `LHNetworkLib`: `LSocket` (`CreateSocket`, `Bind`, `Listen`, `Accept`,
+    `CheckForAcceptedConnectionsOnSocket`, `LSocket::Send`, `LSocket_ReceiveWithTimeout`,
+    `SetNonBlocking`, `CNetworkConnection_Cleanup`); debug adds `LSocketServer`, `DatagrammPacket`
+    (UDP), `LSocketConnError`, `CNetworkClient`/`CNetworkServer` RTTI, init string `"was unable to
+    initialise the network manager."`, connection pool `std::list<LSocket*>`.
+  - Replication: `CNetworkClient` roles `InitialiseAsLocal` / `InitialiseAsNetworkClient` /
+    `InitialiseAsNetworkHost`; flow `SendGameEvent` -> `GetLocalGameEventPackageSet` /
+    `GetGameEventPackageSet` -> `ReceiveGameEventPackageSet` -> `IsGameEventPackageWaiting` /
+    `IsServerGameEventPackageWaiting` -> `CheckForLocalFrameUpdate`, plus `CheckSync`,
+    `ConfirmFeedbackGameEventPackage`, `UpdateFromEventPackageSet`, save integration
+    (`GetEventPackageSetFromSave`, `AddEventPackageSetToSave`). Commands = `EA*` set (`EAMoveCreature`,
+    `EAUseProjectileWeapon`, `EAControlledCreatureUseAbility`, `EASkipCutScene`, ...).
+  - `CPlayerManager`: `CreatePlayers`/`DestroyPlayers`, `GetMainPlayer`,
+    `DowngradePlayerToNonMainPlayer`, `GetPlayerNumberFromJoystickDeviceNumber`,
+    `IsPlayerAssociatedWithJoystickDeviceNumber`, `GetMainPlayerJoystickDeviceNumber`,
+    `Get/SetPlayerHeroSwapScriptName`, `IsMultiplayerGameActive` (real 108-byte query at retail
+    0x00449d20), `GetMultiplayerColour`, `GetSpiritDefName`, `GetSpiritScoreText`.
+  - `CTCCoopSpirit` / `CCoopSpiritDef`: `CTCCoopSpirit::Construct` retail 0x004d55d0; combat/score
+    (`ApplyMovementVector`, `FrameUpdate`, `OnHit`, `OnStrike`, `GetMeleeTargetRange`,
+    `GetAttackEffectName`, `AddExperience`, `AddScore`, `GetScore`, `ResetScore`); tether
+    (`SetMasterPlayer`, `GetAttractToMasterDistance`, `GetNoFramesForOffscreenReturnToMaster`); four
+    slots `COOP_SPIRIT_PLAYER_ONE..FOUR`; `CCoopSpiritDef::Transfer(CPersistContext&)` (retail
+    0x004526xx) = serializable through the save persist context.
+  - Excluded: debug-build P4API strings (`$P4PORT`, "unopened rpc", "Fatal client error;
+    disconnecting") are Perforce, not netcode. Determinism for lockstep unverified.
+  - Probe targets: `IsMultiplayerGameActive` 0x00449d20, `InitialiseAsNetworkHost`/`Client` near
+    0x004ae940, `GetLocalGameEventPackageSet` 0x004aeaa0, `ProcessEventPackage` 0x00416670,
+    `CTCCoopSpirit::Construct` 0x004d55d0. Transport options: ZeroTier/Radmin over `LSocket`,
+    Steamworks P2P (AppID 174790), GameNetworkingSockets.
+- **2026-07-23 — Co-op subsystem decompiled — COMPLETE-BUT-GATED (2026-07-23, Claude decomp loop).**
+  22 functions: 19 LIVE, 2 GATED, 1 STUB.
+  - Single gate byte flag `[CNetworkClient+0x2662]`: guards `Update` (0x4ae9d0),
+    `GetGameEventPackageSet` (0x4aeba0) and the update path (early-return when clear).
+    `CNetworkClient::InitialiseAsLocal` (0x4ae940) SETS it (+ active flag) to 1 after the unnamed
+    base initializer at retail 0x0099A350 succeeds.
+  - `CPlayerManager::IsMultiplayerGameActive` (0x00449d20) is UNGATED (per-slot player-vector scan);
+    `GetMultiplayerColour` (0x449b60) live with hardcoded P1..P4 colours (blue/red/cyan/green).
+  - Event-package pipeline LIVE: `CGameEvent::CompressIntoBuffer` 0x9f1810,
+    `CGameEventPackageSet::CompressIntoBuffer` 0x9f19a0 (raw 215-byte `MATCH` proving `[u8 package
+    count]` + per-package `[u8 event count][u32 sequence]` framing), deserialize 0x9f1870/0x9f1ac0,
+    `ProcessEventPackage` 0x416670, `UpdateFromEventPackageSet` 0x41726d,
+    `CProcessedInput::AddGameEvent` 0xa0d340 (raw 71-byte `MATCH`: four inline 40-byte event slots,
+    player-byte overwrite, byte-count increment); spirit entity `OnCreate` 0x6700f0,
+    `UpdateAttractionToMaster` 0x6701a0, `SwapToHero` 0x66ff20, `EAMoveSpirit` 0x62c0e0.
+  - Shortest path to life: call `InitialiseAsLocal` 0x4ae940 so `[+0x2662]=1` and the `+0x2678`
+    component back-pointer is installed.
+  - Only genuine gutting: `CheckSync` (0x4165e8) deserializes three sync fields then DROPS them — the
+    one piece to REBUILD.
+- **2026-07-24 — Co-op cluster — corrections + CheckSync rebuild (2026-07-24, verify=PLAUSIBLE).**
+  Write-up `docs/modding/README.md#coop_revival`.
+  - Byte-solid: enable gate `[CNetworkClient+0x2662]` (Update no-ops when 0; InitialiseAsLocal
+    0x4AE940 sets it + stores back-ptr +0x2678); `CGameEvent` wire format `[u16 hdr(15-bit
+    id|0x8000 flag)][u8 sub][u8 len][payload]` (Compress = pack dense, not compression); CheckSync
+    0x004165E8 genuinely STUBBED (reads 3 remote u32s + world checksum, discards all).
+    CNetworkClient is embedded at `CMainGameComponent+0x13AB8`.
+  - Corrections: (1) `0x4EBA10` is a flat-disassembler base-zero artifact; the retail rel32 resolves
+    to 0x0099A350, whose six-byte body sets `this+4=1` and returns true (class identity unknown).
+    (2) UpdateFromEventPackageSet's world forward is `0x0049DFB0 CWorld::Update`, not 0x0049E0B0.
+    (3) package/event loop accessors are structural GetCount/GetAt; engine_api.tsv BSim-mislabels them.
+  - Raw-poking +0x2662 without InitialiseAsLocal storing +0x2678 can CTD (forwarder null-deref) —
+    enable via InitialiseAsLocal, not a bare poke.

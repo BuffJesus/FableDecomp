@@ -23,7 +23,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [x] 2026-09-07 `docs/ROADMAP.md` + one-page `docs/HANDOFF.md` written (this file)
 - [x] 2026-09-07 `docs_reorg.py --check-links --check-root` clean; `update_readme_progress.py --check` clean; both run in CI (`.github/workflows/docs-consistency.yml`)
 - [x] 2026-09-07 `rebuild/COVERAGE.md` regenerated with genuine-C++ / asm-bake / readability rows; README rows generated from it
-- [ ] Re-home `docs/journal/FINDINGS_LOG.md` facts into the reference docs (`docs_reorg.py --check-findings` lists the orphans), then enable that check in CI
+- [x] 2026-09-07 all 56 FINDINGS_LOG entries re-homed into reference docs (Verified facts sections; new `engine/CUTSCENES.md`); `--check-findings` now runs in CI
 - [x] 2026-09-07 doc families merged: `formats/SAVE.md` (8→1), `formats/BIG.md` (3→1), `formats/MESH.md` (4→1), `engine/QUEST_CARDS.md` (5→1), `engine/NAVIGATION.md` (2→1); sources left as 3-line stubs
 - [x] 2026-09-07 remaining families merged: `formats/{ANIM,TEXTURE,TEXT,AUDIO,DEFS}.md`, `engine/{HERO_APPEARANCE,INPUT,GAME_ENTRY_PATHS,QUEST_SCRIPTS}.md` (sources are 3-line stubs; INDEX lists both)
 - [ ] Turn `rebuild/build_candidates.ps1` (130k lines of PowerShell objects) into a TSV + small driver

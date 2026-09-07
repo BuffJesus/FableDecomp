@@ -285,3 +285,20 @@ Every hit repeated within the same execution window and disappeared after the
 next coroutine yield. Positive/negative melee discrimination and the Hero-name
 filter are therefore live-validated. Multi-augmentation and projectile cases
 remain untested.
+
+## Verified facts (from FINDINGS log)
+
+- **2026-08-28 — Hit-local weapon augmentation inspection.** Authoritative source for a scripted
+  statue strike = the matched `CEventHitBy` payload, not the hero's current weapon. `CEventHitBase`
+  owns a counted `CHitParameters`; retail 0x60-byte hit parameters store
+  `vector<EObjectAugmentationType>` at `+0x3C`, hitter at `+0x50`, striking weapon at `+0x58`.
+  `CGameScriptThing::MsgIsHitByWithWeapon` @ 0x008D1130 filters event/time/hitter/weapon but returns
+  only a boolean; ForgeFSE sibling `MsgGetHitByWeaponAugmentations` returns names, IDs, ORed mask.
+  - `game.bin` bit values: Sharpening/Steel `0x01`, Silver `0x02`, Flame/Fire `0x04`, Lightning
+    `0x08`, Piercing/Diamond `0x10`, Health `0x20`, Mana `0x40`, Experience `0x80`, Hobbe Killer
+    `0x100`, Bandit Slayer `0x200`. `HasCombinationOfAugmentations @ 0x00766050` = bitmask OR +
+    containment test. `GetEvent @ 0x008D49B0`: events are not removed; lookup uses `createdAfter <
+    eventTick <= createdBeforeOrOn` with bounds from the script execution context.
+  - Lookout Point prototype accepts Piercing/Diamond `0x10`, debounces its namespaced seal, and
+    repeats the lookup in-window and after one yield; offline Lua mocks + Release x86 build pass;
+    projectile/coroutine-window behavior remain runtime claims.

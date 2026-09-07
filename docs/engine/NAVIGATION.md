@@ -889,3 +889,29 @@ FableWin.exe, base 0x400000, unless marked.
   `ReadAsInteger` (the hand-placed transition-hint format).
 - Whether `navLayer` values > 5 load and path correctly at runtime (format allows u8; retail max 5).
 - DetailedAreas emission in the generator (level-6 splits) and switchable-leaf emission from TNG doors.
+
+## Verified facts (from FINDINGS log)
+
+- **2026-07-20 — Navmesh subdivision algorithm — CRACKED and oracle-validated (2026-07-20).** Tool
+  `tools/parse_navmesh.py` (`correlate` + `regen` CLI modes). Cited FableWin decompiles:
+  `CNavQuadTree::Initialise` 0x03290030, `CNavQuadTreeNode::Initialise` 0x032851b0, `IsAreaClear`
+  0x0328c7e0, `IsAreaAllSamePreferability` 0x0328d400, `GetPreferabilityCostForNode` 0x0328d710
+  (`ghidra_out/decomp_navmesh*.c`).
+  - On-disk field semantics: node byte +0xc = quadtree detail level (0..7, cell size = 32/2^level map
+    units, size table `DAT_044f344c`), +0xd = vertical nav-layer index, leaf tail byte +0x1c =
+    preferability (A* cost). Root tiling = (mapW/32)x(mapH/32) cells.
+  - Subdivision rule: split while area is non-uniform (mixed walkability OR mixed preferability);
+    depth cap 5 (1-unit), 6 (0.5-unit) inside "detailed areas"; switchable leaves only at max depth
+    (never merged); all-blocked subtrees collapse to the singleton.
+  - Walkability predicate (IsAreaClear): TopologyWeights u8 grid @1 map unit (0xFF = hard blocked) +
+    static blocking lines (8x8-unit buckets) + switchable blockage lines keyed by door u64 uid (keys
+    become the leaf's on-disk switchKeys).
+  - TopologyWeights pinned to LEV terrain, 0 exceptions over 149 nav-bearing retail LEVs (201,951
+    cells): 0xFF if LEV cell walkable byte(+15)==0; 0x00 if cell byte +20==1 (preferred path); else
+    0x80. Nav-walkable is a strict subset of LEV-walkable (obstacle lines carve ~19% more).
+  - Oracle: `parse_navmesh.py regen` rasterizes shipped leaves (0.5-unit), re-runs the algorithm,
+    compares node-for-node: 398/398 retail LEVs EXACT topology match (every section, every layer).
+    249/398 LEVs ship with an empty nav directory.
+  - Remaining gap for from-scratch generation: `CWorldMap::GetMapNavigationAreaInit` (ego_r
+    0x004df950; retail BSim ~0x0050a650) — how placed-thing collision produces the blocking-line
+    lists / switchable blockages / detailed areas. Terrain-only generation is already possible.

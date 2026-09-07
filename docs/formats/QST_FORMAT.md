@@ -156,3 +156,23 @@ python tools/parse_qst.py diff <vanilla> <modded>   # entry-level diff
 6. `FinalAlbion.wld` `START_INITIAL_QUESTS` block (forge wld info: 6 initial quests) — name/flag cross-match.
 7. `data/Levels/FinalAlbion/KnotholeGlade.tng` (HSP marker existence), `data/CompiledDefs/names.bin`
    (`OBJECT_QUEST_CARD_*` existence).
+
+## Verified facts (from FINDINGS log)
+
+- **2026-07-20 — .QST QUEST REGISTRY FORMAT FULLY CRACKED (it's plain text).** ASCII CRLF script,
+  tokenized by the engine at world load; parser `tools/parse_qst.py` (parse/roundtrip/diff).
+  - Two retail files in `data/Levels/`: `FinalAlbion.qst` (187 `AddQuest` + 112 `AddTestQuest`) and
+    `GlobalQuests.qst` (13 `AddQuest`). Zero non-printable bytes in either.
+  - Grammar: `AddQuest("Name", TRUE|FALSE);` (TRUE = active at start) and
+    `AddTestQuest("Name","StartHSP",int,"Display","Ini","EndScript","QuestCardDef");` (dev debug-menu
+    entries). Keyword strings in Fable.exe @ file offsets 0xe38e98/0xe38ea8, next to "Load
+    Quests"/"Init Quests".
+  - Cross-validated: all 6 `FinalAlbion.wld` START_INITIAL_QUESTS names are exactly the .qst TRUE
+    entries (+2 extra TRUE: ChapterAndSceneManager, NPCDeath); HSP names exist as TNG things;
+    `OBJECT_QUEST_CARD_*` names exist in names.bin; SilverChest.Modern `QstFile.cs` parses the same grammar.
+  - Ground truth: ArenaRevisited 1.0 = 1-line diff, `Q_Arena` FALSE->TRUE. Parser roundtrips all 3
+    samples byte-identical.
+  - Custom quest registration = append an `AddQuest` line (FSE's shipped test qst appends
+    MyFirstQuest/DemonDoorLUA etc.). Quest-mod merging = statement-level set union.
+  - Gaps: AddTestQuest arg-3 semantics (0/1/2), loader function address, engine comment support,
+    GlobalQuests.qst load timing.

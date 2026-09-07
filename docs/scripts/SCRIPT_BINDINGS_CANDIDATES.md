@@ -239,3 +239,26 @@ truth, `?Name@Class@@…@Z`) cross-checked against each decompiled body. RVA = r
 - `UpdateOnlineScore_*` decompiles show `param_2` typed as the scoreboard pointer because the `float`
   score arrives in a register Ghidra mislabels; the mangled `M` (float) in every symbol is
   authoritative for the public signature.
+
+## Verified facts (from FINDINGS log)
+
+- **2026-07-19 — Script-binding candidates: the 101-method FSE gap, spec'd + prioritized.**
+  101/101 resolve to a retail address in `gamescriptinterface_catalog.tsv`, cross-checked against
+  `refs/fse_api_manifest.json` (933 bound functions). ~18 are VARIANT DUPLICATES already reachable
+  under typed/suffixed FSE names (`EntitySetAsOpinionSource`→`...ByInt/ByString`;
+  `EntitySetOpinionDeedMask`→`...ByInt/ByString`; `EntitySetPersonalityOverride`→`...ByInt/ByString`;
+  `SetIsGossipForPlayer`→`_ByName/_ByObject`; `RadialBlurFadeTo`→`_NoPos/_WithPos`;
+  `GiveHeroQuestCardDirectly`→`GiveQuestCardDirectly`; `SetHeroGuideToShowQuestCardsWhenSpokenTo`→
+  `SetHeroGuideShowsQuestCards`; `SetQuestCardGoldReward`→`SetQuestGoldReward`).
+  `IsActiveThreadTerminating` (`0x006e71b0`) is `CScriptBase`'s script-yield/abort guard
+  (`decomp_open_chest_scripts.log:109…`) — FSE-internal, Tier-D. Top tier: `HeroGoFishing`
+  (`0x895a90`), `HeroGoDigging`/`HeroStopDigging` (`0x8df80`/`0x8dfa0`), `HeroPlayOracleMinigame`
+  (`0x895b60`), `HeroPlayFireheartMinigame` (`0x895c90`), `SetHouseOwnedByPlayer` (`0x895ed0`),
+  `SetBuyableHouseAsScripted` (`0x896000`), `Open`/`CloseHouseDoors` (`0x8dfd0`/`0x8e000`), `JamDoor`
+  (`0x895e10`), `AddLogBookEntry` (`0x8fe00`); read-backs `IsThingWithThisUIDAlive` (`0x8e260`),
+  `IsHeroControlledByPlayer` (`0x8e980`), `GetHeroFishingLevel` (`0x895b00`), `GetAllThingsInLevel`
+  (`0x8a8af0`). Unresolved at the time (7): `CreateEffect` (`0x89f910`), `GetAllThingsInLevel`
+  out-param shape, the conversation builder (`0x8906c0`/`0x890750`/`0x890710`), house/door bool args,
+  `AddLogBookEntry` string-vs-id, `UpdateOnlineScore_*` (`0x8a1040`…) XBL no-op status. Binding ABI:
+  RVA = retail addr − ImageBase `0x400000`, thiscall through the `CGameScriptInterface` vtable base
+  `0x1260F0C`, FSE hook `0xCDB355`.

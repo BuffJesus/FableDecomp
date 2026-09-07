@@ -371,3 +371,28 @@ TEXT SELFTEST: ALL ASSERTIONS PASSED
 - **"`CCRC::Calc` table/polynomial is the same open item tracked for #12/#13"** — resolved
   project-wide: crc0 = reflected CRC-32 poly 0xEDB88320, seed 0, no final inversion
   (`CCharString::ComputeCRC32` 0x00404310; CLAUDE.md).
+
+## Verified facts (from FINDINGS log)
+
+- **2026-07-19 — text.big / dialogue.big BIGB localization format CRACKED + validated (task #14).**
+  Three independent sources agree (raw bytes + EgoCore completed-RE loader + retail `Fable.exe`
+  loader); grammar is §1–§7 above. Retail header values: `Version=100`, `FooterOffset=0x658267`,
+  `FooterSize=0x2A`; footer `SubBankCount=1`, sub-bank `TEXT_ENGLISH_MAIN` `Version 106`,
+  `EntryCount 28913`; TOC stats header `StatsCount=3` = `(0,26807)(1,2105)(2,1)` (sums to 28913);
+  every TOC entry `Magic==42`; TOC walk terminates exactly at `FooterOffset`. Validating parser
+  `scratchpad/parse_textbig.py` decoded all 28,913 entries — samples:
+  `[1] TEXT_QST_028_ONSCREENHELP_FLOURISH_BASIC` speaker=NONE bank=ScriptDialogue.lug
+  ("If you get three hits in a row without reply, you can Flourish by pressing [B]…");
+  `[835] TEXT_CS_035_END_10` speaker=FARMER, 1 tag `(0,"ANIM:SCRIPT_CHEER_1")`
+  ("Well done! You really taught the Hobbes a lesson."); group
+  `TEXT_AI_GUARD_DEMAND_REBRIBE_SECOND` count=4, member IDs [16879,16872,16761,16858]. Retail
+  loader (`NGameText::CDataBank : CBankFile`): `text.big` string @ `0x0122da24`;
+  `NLocalisation::GetLanguage` @ `0x00415070` → `TEXT_*_MAIN` variants at `0x0122e8e8..0x0122e974`;
+  `GetTextInfo` @ `0x009c7d00` requires `Type==0` and indexes `*(this+0x1e0)[id]`;
+  `GetTextEntryFromGroup` @ `0x009c9280` requires `Type==1`, weighted-random pick (engine RNG
+  `state*0x24a1+0x24df`); `GetTextBySymbol` @ `0x009c95e0` does
+  `id = FUN_009cc410( CCRC::Calc(0, name, len) )` — seed-0 crc0, the same hash as game.bin field
+  tags and save-stream tags; `FUN_009cc410` = `CVectorMap<u32,CDefString>::LowerBound`. Logs:
+  `ghidra_out/decomp_localisation.c`, `decomp_textbig_loader.c`, `decomp_textbig_strxref.log`,
+  `decomp_textbig_bankfile.log`. (The 2026-07-19 "write round-trip NOT yet proven" and the TOC
+  `CRC`/`Timestamp` [hypothesis] were closed 2026-07-20 — §8, §11.)

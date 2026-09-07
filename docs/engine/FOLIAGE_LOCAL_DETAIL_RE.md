@@ -452,3 +452,13 @@ CLOSED. Still open:
    that cutoff, ORs their primitive masks, and appends `CCacheGroup{cutoff, highest, mask}`.
    Consumers use +4 (`highest`) and +8 (`mask`). This descending pass yields stock ids
    0..4 = fades 210, 118, 85, 48, 23.
+
+## Verified facts (from FINDINGS log)
+
+- **2026-08-22 — why stages 34-44 never produced grass.** The early writer serialized each grass
+  placement as primitive type 0 while the retail grass palette declares primitive type 1
+  (`RepeatedMesh`); zeroing the palette discriminator only satisfied the loader's exact-type check, not
+  the renderer the mesh requires. Retail type-1 data: paired vectors = orientation/scale followed by
+  world position/scale. Stage45 emits the native representation and validates 300/300 authored grass
+  instances with zero unbound records. Separate `foliage instances` bug (skipped later frames when a
+  compressed size changed the scanner's modulo-four alignment) fixed as well.

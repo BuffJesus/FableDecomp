@@ -40,3 +40,21 @@ These documents describe FableForge / ForgeFSE tooling rather than the decomp it
 - <a id="things_editor"></a>`THINGS_EDITOR.md` -> FableForge `docs/from_fabletlc/THINGS_EDITOR.md`
 - <a id="tooling_integration_matrix"></a>`TOOLING_INTEGRATION_MATRIX.md` -> FableForge `docs/from_fabletlc/TOOLING_INTEGRATION_MATRIX.md`
 - <a id="ui_upscale_plan"></a>`UI_UPSCALE_PLAN.md` -> FableForge `docs/from_fabletlc/UI_UPSCALE_PLAN.md`
+
+## Findings that live in FableForge
+
+- **2026-08-21 — FableForge container-writer audit — 6 further defects (2026-08-21).** Multi-agent
+  audit of every FableForge container writer against zero-exception retail invariants (full report
+  `work/terrain_runtime_probe_20260821/FORGE_WRITER_AUDIT.md`; full text kept in
+  `docs/journal/FINDINGS_LOG.md`). Fixed: quad-directory AABBs kept donor world coordinates (retail
+  10257/10257 live entries inside their map's InfoBlock box; fix `forge::stbbake::translateQuadDirXY`
+  after `updateQuadDirZBounds`, 16/17 inside vs donor 16/17) and repacked foreground frames packed
+  byte-tight (retail 10257/10257 `frameOffset` multiples of 2048; 15/16 misaligned -> 0/16). Open:
+  `wad::repack` does not align resized payloads/footer; appended STB chunk lands before the relocated
+  common header (retail 0 violations across 423 pairs); new WLD region omits 7 layout keys retail
+  writes 141/141 times (`MiniMapScale`, `MiniMap/WorldMap/NameGraphic` offsets); a map owned by TWO
+  regions (retail BWD owner histogram `{1: 398}`, ours `{1: 398, 2: 1}` via
+  `--also-contain-in-region` adding to `containsMaps` not `seesMaps`). Cosmetic: STB common-header
+  name index appended at tail; appended STB dev-header `type=0` vs retail `{1: 424}`; STB entry name
+  length includes a NUL. `stbvalidate` S3 (4096 page) is a heuristic — only 5414 of retail's 10257
+  frames are 4096-aligned.

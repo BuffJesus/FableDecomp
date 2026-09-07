@@ -130,3 +130,68 @@ Two candidate mechanisms were carried in as suspects. The fresh proven disasm (`
 | Root-cause status (asserts residual) | `D:/Documents/FableTLC/docs/modding/README.md#native_terrain_status` |
 | Proven map-open disasm | `D:/Documents/FableTLC/work/terrain_path/mapopen_proven_decomp.log` |
 | Staged STB (entry 426 present) | `D:/Documents/FableTLC/work/smoke_test/stage/data/Levels/FinalAlbion_RT.stb` |
+
+## Verified facts (from FINDINGS log)
+
+- **2026-08-22 — Inline background patch textures store ONE mip, not a chain (2026-08-22).**
+  `CLandscapeBackgroundPatch::Load @0x00BE7D70` allocates each patch texture with level count 1
+  (`push 1` at 0x00BE81D0) and hard-coded `'DXT1'` (`push 0x31545844` at 0x00BE8197, when the
+  header's `isDXT` byte is set). `CTexture::LoadFromDataStreamToPreallocatedSurface @0x009FB750`
+  reads a 19-byte (`0x13`) header, loops mips bounded by the SURFACE level count
+  (`surface->vtable[+0x34]()`, compared at 0x009FBA4D), never reads the header `levels`; compressed
+  branch consumes `bpp * w * h / 8` RAW bytes per level (0x009FB865: `imul` w, `imul` h,
+  `shr eax,3`, `rep movsd`) — no LZO framing, no per-mip length.
+  - Retail Darkwood_9 frame 4 header `4000 4000 01 e3040000 ...` (64x64, levels=1), texture spans
+    `19 + 2048 = 2067` bytes; every retail patch spans `19 + mip0`.
+  - Defect: FableForge emitted six levels (`8000 8000 06 ...`, 128x128, `19 + 10920 = 10939`) while
+    the engine consumed `19 + 8192 = 8211`; the 2728 extra bytes desynced the stream, so edge-strip
+    counts + `hasWater` EBOOL were read from mip-1 data; garbage `hasWater` entered
+    `CEngineWaterBackgroundSubPatch::Load`, whose `s32` count reached `CRangeCompressor::Decompress`
+    -> 31,171,392-byte `rep movsd` -> stage20 AV at `Fable.exe+0xb39f25`. Only the water loaders' `s32`
+    counts can reach 31 MB (mesh `u16` counts cap near 1 MB). Fixed by
+    `forge::stbbake::singleLevelBackgroundTexture`.
+- **2026-08-22 — Patch body tail grammar (2026-08-22).** Mesh and water-only paths of
+  `CLandscapeBackgroundPatch::Load` converge at 0x00BE8803: 0x00BE8810 4x `call 0xBFC600`
+  (`CPatchTesselationEdgeStrip::Load`, this += 0x2C); 0x00BE8872 `u8 hasWater` (!= 0 -> allocate 0x60,
+  `CEngineWaterBackgroundSubPatch::Load @0xBFD7C0`).
+  - `CPatchTesselationEdgeStrip::Load @0x00BFC600` reads `[u16 -> +4][u16 -> +6][u8 -> +0x29]`, then
+    four `LoadVerts` (0xBFC880 / 0xBFCA20 / 0xBFCBC0 / 0xBFCD60, stride 0x14); each reads one `s32`
+    into the resize at 0x00BFBE40; zero consumes exactly 4 bytes (`newCount == 0` branch at
+    0x00BFBE56). Empty strip = 21 bytes: `[u16][u16][u8][4 x s32 zero]`.
+  - Header bytes 8 and 9 are not interchangeable: byte 8 -> `[edi+0x11a]`, reloaded at 0x00BE7FC1 to
+    skip the mesh (`isWaterOnly`); byte 9 -> `[edi+0x118]` (`detailMode`). Retail and authored bodies
+    carry `b[8]=0x00, b[9]=0x01`.
+- **2026-08-22 — Runtime region vector is hard-capped at 142 (2026-08-22).** ForgeFSE probe, three
+  deploys: BWD 143 regions -> `region_vector_size` 142, slot-399 owner 142,
+  `GetRegionNumberMapIsIn(399)` = 0; BWD 145 -> 142 / 142 / 0; BWD 145 with owner 141 -> 142 / 141 /
+  141. All three installed BWDs (`FinalAlbion.bwd`, `data\Levels\FinalAlbion.bwd`,
+  `data\Levels\FinalAlbion\FinalAlbion.bwd`) held 145 regions; no shadow BWD in the WAD.
+  - Region index 142 never answers containment lookups. A custom map must be owned by a region at
+    index <= 141 — repurpose an existing one; ForgeTest64 uses retail region 141
+    `Filler_NorthernWastes_02` (inert: `contains=0 sees=0`). Retires the "hard-cap theory refuted"
+    note; the stage9 `ForgeTerminalSentinel` region never had any effect.
+- **2026-08-22 — Inline-texture mip fix confirmed in-game (2026-08-22).** `LandscapeBackgroundRenderProbe`
+  on authored ForgeTest64: `map=(32,0) size=(16,16) z=(72,83.962) vertices=289 polys=512 lod=1
+  texBytes=8192 ibBytes=2174 vbBytes=6936 sharedIB=1 water=0 result=1 safe=1`. `texBytes=8192` = one
+  128x128 DXT1 mip (17 of 18 patches; the last is 64x64 at 2048); `water=0` on all 18; no AV where
+  stage20 faulted.
+- **2026-08-22 — Background patch contract — three defects found in-game (2026-08-22).** All in
+  `forge::stbbake::buildBackgroundPatchRect`; retail evidence Darkwood_3.
+  - (1) `pw`/`ph` are SUBDIVISION counts capped at 16: `CLandscapeBackgroundPatch::Load` at
+    0x00BE860A indexes a shared index-buffer table as `table[pw*17 + ph]` when `detailMode == 1`;
+    16x16 is the largest entry (16*17+16 = 288). `pw=ph=64` gave 64*17+64 = 1152 -> crash at
+    0x00BE8626. Retail has only 16x16 (289 verts) and 16x8 (153 verts) patches; a 32x32 world node
+    still stores a 17x17 grid — parent LOD nodes must be stride-decimated.
+  - (2) Vertex order is part of the contract (shared IB): canonical serpentine first-touch strip
+    order `(0,0) (1,0) (1,1) (0,1) (0,2) (1,2) (1,3) (0,3) (0,4) (1,4) ... (1,16) (2,0) (2,1) ...`;
+    Darkwood_3 frame 35 and `buildLayerTopology` agree byte-for-byte across 44 vertices.
+  - (3) `indexCount` is the STRIP length: retail 16x16 stores 1085 (strip size minus two priming
+    indices, same as the foreground `polygonCount`); `16*16*2 = 512` rendered banded terrain.
+  - Dump a patch VB in stored order: `forge stb patchverts <chunk> <frame>`.
+- **2026-08-22 — Foreground layer texture ids must be global bank ids (2026-08-22).**
+  `LandscapeTextureProbe` on retail patches reports ids 4185/4304/4192/4307; ours `1` and `3` because
+  `forge stb create-terrain`'s name path substituted a placeholder `material.textures = {1,2,3}`.
+  Foreground textures are always GLOBAL GBANK_MAIN_PC ids in `textures.big` — write custom art into an
+  `UNASSIGNED_*` slot and reference by id. Retail composites multiple layers per patch (Darkwood_3
+  frame 0 has four, `mapping` 0/2/4) blended via the per-vertex `blend` byte with per-vertex
+  `cliffU`/`cliffV`; a single layer with `blend=255` flat-paints the map.

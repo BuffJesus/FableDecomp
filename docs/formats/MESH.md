@@ -716,3 +716,30 @@ python tools/blender_addon/tests/compose_test.py <scratch>/graphics_copy.big
 analyzeHeadless ... -postScript XrefTree.java 4 0xc06b90 0xc08170
 analyzeHeadless ... -postScript FindRefs.java c06b90        # -> 1 ref: FUN_00996610
 ```
+
+## Verified facts (from FINDINGS log)
+
+- **2026-07-20 — NEW-MESH COMPOSITION: custom static meshes as NEW graphics.big entries (2026-07-20).**
+  `mesh_rw.compose_mesh` builds a complete compiled-mesh payload from arbitrary geometry;
+  `big_write.rebuild(adds=)` inserts it as a NEW TOC entry (recipe `docs/formats/MESH_COMPOSE.md`;
+  write-side answer key EgoCore `MeshCompiler.h` CompileSingleLOD).
+  - Ghost LOD: retail single-LOD type-1 entries append an empty duplicate mesh block (header + zero
+    mats/prims + identity RootMatrix) NOT counted in Info `LODCount` (PLATE: 1189 B payload = 971
+    LOD0 + 218 ghost).
+  - Sentinel material: material lists end with a `DegenerateTriangles` material (all map IDs 0,
+    DegenerateTriangles=1); `MaterialCount` includes it.
+  - Info blob = EgoCore `SerializeEntryMetadata` (`PhysicsIndex, bounds, LODCount, LODSizes[],
+    SafeBoundingRadius, LODErrors[n-1], TextureIDs[]`); `lod[]` are LOD byte SIZES.
+  - Retail type-1 vertex layouts (400-entry survey): init 0x04/stride 12 (packed pos+norm+UV,
+    dominant), 0x14/20 (FLOAT3 pos + packed norm + i16 UV), 0x06/20 and 0x16/28 (bump). No float2-UV
+    layout in type 1; composer emits 0x14/20 ('float') or 0x04/12 ('packed').
+  - TOC conventions: ids unique + sorted per subbank (new id = max+1); name lpstr stored WITHOUT
+    trailing NUL; stats header = type histogram (bump it); footer entry_count bumped; entry CRC is NOT
+    CRC-32 of name/dep (bear and PLATE share ae689191) — new entries ship CRC=0/ts=0.
+  - Bear statue gotcha: type-1 "static" entries can carry a full 38-bone skeleton block while
+    primitives stay static (abc=0); compose v1 walks past and drops it.
+  - Validation (all PASS, `tools/blender_addon/tests/compose_test.py` + `blender_compose_test.py`):
+    recompose oracle on bear/plate/sign exact; synthetic cube+grass added to a graphics.big COPY as
+    ids 8113/8114, TOC CLEAN; proof `tools/blender_addon/tests/proof/fable_compose_new_meshes.{blend,png}`.
+  - Limits: static only, LOD0+ghost only, tri lists, no bump layouts/cloth/helpers; engine load not
+    yet observed in-game.

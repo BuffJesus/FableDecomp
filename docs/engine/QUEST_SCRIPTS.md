@@ -704,3 +704,49 @@ Lua recovery lane: `docs/scripts/SCRIPT_RECOVERY_PIPELINE.md`, `docs/scripts/AEO
   wrong; FSE-verified identities are `CScriptBase::CScriptBase` and `SetScriptActiveStatus`.
 - **`RunCutsceneMacro_Func` "likely a major interpreter/executor" (RE plan, hedged)** — confirmed as
   THE executor for cutscenes and region scripts.
+
+## Verified facts (from FINDINGS log)
+
+- **2026-07-20 — Quest binding: logic is compiled C++; everything around it is data (2026-07-20).**
+  No quest VM exists (evidence `docs/engine/QUEST_VM_RE.md`, artifacts `ghidra_out/quest_*`).
+  - Registration routine `FUN_00cd52d0 @ 0x00CD52D0` (ends at FSE's hook 0x00CDB355): 161
+    straight-line `AddScript(0x00CB5C90)` calls, each registering `CScriptInfo{Name="Q_...",
+    pAllocFunc=<native code ptr>, pAllocDataFunc=0x00CDBD20, "S_x" section}`. Table:
+    `ghidra_out/quest_registry_table.tsv`. Real classes = `NScript::CQ_<Name>Script`.
+  - Binding = `CQuestManager (DAT_013b89fc)::ActivateMultipleQuests @ 0x004B4260` ->
+    `FUN_004b3ce0 @ 0x004B3CE0`: `obj = (*pAllocFunc)()`, wrap in `CActiveQuest`,
+    `CScriptBase::Activate`, optional per-quest `LoadGameState`. Unregistered names silently dropped
+    (`IsQuestRegistered` gate).
+  - Quest object contract = 5-slot `CScriptBase` vtable (dtor/RegisterMain/Main/Init/OnPersist;
+    e.g. 0x012D3994 for Q_HeroSoulsArena); threads = `CSpawnedFunc` raw code pointers.
+  - Two-level registry: `.qst AddQuest` registers the name (data), the compiled table supplies the
+    logic; name-without-script is anticipated ("QuestNotInScripts"/"DUMMY_QUEST_HAS_NO_SCRIPT").
+  - Boundary: cards/rewards/objective text/cutscenes/region scripts/initial activation/save state =
+    DATA; new quest control flow = NATIVE CODE => FSE (or DLL) required; CScriptInfo injection is the
+    minimal correct seam.
+  - BSim misnames: 0x00CB8110 "CHeroMorphDef" = CScriptBase ctor; 0x00CBFAB8
+    "SetMiniMapRegionExitTextOffsetX" = SetScriptActiveStatus (FSE-verified).
+
+- **2026-07-18 — Retail Fable.exe embeds NO Lua (open question resolved).** Full-binary regex scan
+  of `Fable.exe` (16,666,624 bytes, scratchpad `scan_fable.py`): zero hits for `Lua 5.x`, `$Lua`,
+  `Tecgraf`, `lua.org`, `LUA_*`, `lua_*`/`luaL_*` (a static Lua link always carries the version
+  banner + error strings). Case-insensitive `lua` substring: only 4 hits — two `FrameLastEvaluated…`
+  property names, two coincidental x86 instruction bytes at `0x579535`/`0x61c532` (mid-instruction).
+  All Lua in the modding ecosystem is injected by FSE (vendored **Lua 5.4.8** + Sol2 per
+  `FSE Vendor\lua\lua.h`) at the script-registration hook `0xCDB355`; TLC quest scripts are compiled
+  C++ (`CGlobal_*Script`, 843 Quest API entries in the FSE manifest). `luadis.py`/`luadis51.py` are
+  irrelevant to retail TLC; Fable 2's Lua lineage does not apply.
+- **2026-07-19 — CGameScriptInterface: the native scripting API (891 methods).** `DecompByName.java`
+  (decompile all functions matching name substrings) swept `CGameScriptInterface`/`CScriptManager`/
+  etc. → `ghidra_out/scriptvm_decomp.c` (1,010 functions, 0 fail); catalog
+  `ghidra_out/gamescriptinterface_catalog.tsv` (891 methods + retail addresses). Cross-referenced
+  against `refs/fse_api_manifest.json`: **790 of 891 are FSE-exposed**; the **101 not in FSE** are
+  `ghidra_out/native_methods_not_in_fse.txt` → spec'd in
+  [SCRIPT_BINDINGS_CANDIDATES.md](../scripts/SCRIPT_BINDINGS_CANDIDATES.md). Representative surface:
+  `GiveThingItemInHand`, `HeroGoDigging`, `OpenHouseDoors`, `SetTimer`/`RegisterTimer`,
+  `EntitySetAsAllowedToFollowHero`, `WaitForCameraMessage`, conversation builders
+  (`AddNewConversation`/`AddLineToConversation`/`AddPersonToConversation`), fishing
+  (`GetHeroFishingLevel`/`DisableFishingSpot`), `ActivateMultipleQuests`, `AddLogBookEntry`,
+  `GetTextString`/`GetFormattedString`.
+- Cutscene macro-stream facts (verb census, interpreter architecture, 184-verb API, bug census,
+  dispatch order) are re-homed in [CUTSCENES.md](CUTSCENES.md).

@@ -325,3 +325,22 @@ Kept verbatim for the record.*
 - **§8 open gaps "(1) Pixel-payload LZ codec — recover from the `Fable.exe` GBANK texture
   decompressor via Ghidra; (3) confirm whether the loader accepts uncompressed (stored) blocks"** —
   both closed 2026-07-20 without Ghidra. Gap (2) — confirm `0x23` / `0x18` — remains (§9).
+
+## Verified facts (from FINDINGS log)
+
+- **2026-07-20 — Texture WRITE path: native image->big entry works (2026-07-20).**
+  `tools/texture_build.py` turns a PNG/TGA into a valid textures.big/frontend.big entry
+  (DXT1/DXT3/A8R8G8B8, full mip chain, engine LZO, 34-byte subheader) and patches it into a container
+  copy via `big_write`; recipe `docs/formats/TEXTURE_WRITER.md`.
+  - Only MIP 0 is chunked-LZO; mips 1..n-1 stored RAW, concatenated. `Info+24` (`MipSize0`) = on-disk
+    size of the mip-0 compressed region; `MipSize0 == 0` = whole payload raw (what ChocolateBox mods
+    emit; loaders accept). Source: EgoCore `TextureParser.h:289` + byte-accounting on 227/230 random
+    retail entries.
+  - 34-byte Info = EgoCore `CGraphicHeader`(28)+`CPixelFormatInit`(6); DXT3 tail is
+    `02 08 00 00 00 00` (the `03 04` claim is DXT1-only).
+  - Validation: identity re-encode of 10 retail entries 46–67 dB; new-image replace of
+    TEXTURE_OV_SMITH_TORSO_01 re-decodes at 39.5 dB through our reader and the Blender addon's
+    `fable_core` (6,323 untouched entries byte-identical); SilverChest `--texture-import` oracle gives a
+    field-identical subheader (only MipSize0/LZO-length differs).
+  - Gaps: multi-frame sprites (FrameCount>1), rare fmts 0x23/0x18, DXT1 punch-through alpha, in-game
+    screenshot proof.

@@ -536,3 +536,91 @@ the compiled index above and `forge defs decode` now deliver.
   stride lives in a separate helper (likely `GetDefsOfType`).
 - EgoCore `CDefStringTable::GetCRC` (std-CRC + `tolower`) and `classIndex = 0` — contradicted by
   byte-proven crc0 + dense `indexInDefinition`; do not re-litigate (issue #4 resolved as dead code).
+
+## Verified facts (from FINDINGS log)
+
+- **2026-07-24 — game.bin definition-load contract + the two append bugs (2026-07-24, HIGH confidence, verify=CONFIRMED).**
+  Workflow `defload-contract-re` (8 decode agents -> synthesis -> adversarial verify); write-up
+  `docs/formats/DEF_LOAD_CONTRACT.md`.
+  - `crc0` = reflected CRC-32, poly 0xEDB88320, seed 0, NO final inversion (`CCRC::Calc(0,…)` /
+    `CCharString::ComputeCRC32` @0x00404310); 13593/13593 names.bin CRCs equal `crc0(name)`, 0 match
+    any other variant. `crc0("CREATURE_TRADER_01")=0xAA22BB08`, `crc0("Graphic")=0x2E6B63C8`. Keys
+    game.bin field tags, names.bin entries, `std::map<unsigned_long, CDefClassInfo>` registry
+    (registrar 0x564395).
+  - Bug 1: forge `nameCrc` used `0xFFFFFFFF - mz_crc32` (0/13593 matches) — fixed in FableForge
+    `bin.cpp`. Bug 2: creature payloads carry ABSOLUTE global entry indices as self back-refs
+    (TRADER_01=1549 @ payload {25,193,301}); byte-clone keeps the donor index — fixed by value-keyed
+    retarget in `02_add_creature.cpp` (shared component sub-defs left intact).
+  - Header counts (nameCount/tableSize/entryCount/dense indexInDefinition) were never the cause.
+    `CreateCreature 0x008A9100` hashes the name, queries the registry, on miss returns the null
+    `CObjectRef` (typetag 0x1238C8C) -> Lua nil.
+
+- **2026-07-18 — String-hash constant: no murmur/FNV; CRC32 present.** Little-endian immediate scan
+  of the full exe: Fable 2's murmur-like `0x5BD5E995` 0 hits; FNV basis/prime
+  (`0x811C9DC5`/`0x01000193`) 0 hits; CRC-32 reversed polynomial `0xEDB88320` 2 hits (file offsets
+  `0xE9A368`, `0xEAF980`, .text code); forward poly `0x04C11DB7` 1 hit. Resolved later the same
+  week to crc0 (above).
+- **2026-07-19 — Complete def schema: 240 def types, 3,212 fields (Transfer sweep).**
+  `tools/ghidra_scripts/DecompDefTransfers.java` batch-decompiled all 257 retail `CxxxDef::Transfer`
+  methods (targets `ghidra_out/def_transfer_targets.tsv` from the RTTI port) → `ghidra_out/def_transfers.c`
+  (257/257 clean). `tools/parse_def_field_layouts.py` → `ghidra_out/def_field_layouts.{json,tsv}`:
+  240 of 257 defs yielded field maps, 3,212 fields; `CChestDef` extracts exactly
+  `0x25 0x28 0x2c 0x30 0x34 0x38`. Largest: `CPlayerGuiDef` (432), `CInventoryDef` (378),
+  `CTavernGameDef` (93), `CEnvironmentDef` (62), `CThingCreatureDef` (50), `CHeroCombatDef` (42),
+  `CShopDef` (37). The persist-helper ADDRESS per field discriminates types (CChestDef `0x30` uses
+  `FUN_00431143`) even where the decompiler mislabels the helper NAME (stale
+  `CEngineLightingManager::UpdateShadowScene`). 17 defs yielded no offsets (delegate to base / persist
+  nothing).
+- **2026-07-19 — Full NAMED + TYPED def schema (donor Transfer merge).** FableWin donor Transfers call
+  named persist helpers carrying the field name (string literal) and type (helper mangling);
+  `DecompDefTransfers.java` → `donor_def_transfers.c` (269/269 clean); `tools/merge_def_schema.py` →
+  `ghidra_out/def_schema.json` (mirrored to FableForge `docs/re_reference/def_schema.json`): **269 def
+  types, 4,332 named fields** (4,332/4,375 = 99%); 173 defs carry aligned retail offsets. Serialization
+  order = Transfer CALL order, NOT offset order (CChestDef persists 0x28 before 0x25). Type mangling:
+  `J`=int32, `K`=uint32, `M`=float, `_N`=bool, `E`=uint8, `VCCharString`, `VCDefString`,
+  `VC2DVector`/`VC3DVector`, `VCRGBColour`, `VCFloatRange`, `W4Exxx`=enum,
+  `TransferVectorOfSubComponents_VCxxx`=vector<Cxxx>. CChestDef order: OpenParticleEffect(int32),
+  PersistOnOpening(bool), DisplayMessageOnEmpty(bool), OpenAnimationForCreature(CCharString),
+  OpenerObject(int32), OpenersRequired(int32) → retail 0x28/0x25/0x2c/0x30/0x34/0x38 after correcting
+  the donor's +4 Anniversary shift. (Superseded in count by `refs/transfer_field_orders.json`, 268/5,133.)
+- **2026-07-19 — game.bin field serialization: per-field hash-tagged values (PARTIAL).** First
+  byte-level proof of `[4-byte tag][value]`: three `CChestDef` payloads (entries 24=NULLDEF,
+  9247=normal chest, 12266=5-silver-key chest) — `OpenersRequired` value at payload offset 38-41 =
+  `05 00 00 00` in the 5-key chest, `00 00 00 00` in the others, tag `07 55 7d c0` (34-37) identical
+  across all three; `OpenerObject` value at 30-33 = `d9 10 00 00` (0x10D9 = key def index), tag
+  `d4 8f 85 e2` (26-29) constant; other constant groups `2a 90 2f a0`, `74 23 94 82` at earlier field
+  boundaries. Hash not yet identified at that point (crc32/fnv/djb2/sdbm/jenkins all failed —
+  because they were tested with the standard final inversion / wrong seed).
+- **2026-07-19 — THE ENGINE STRING-HASH IDENTIFIED: field tag = CCharString::GetCRC()** — headline
+  SUPERSEDED (the tag is seed-0 crc0, not `GetCRC()` seed `0xFFFFFFFF`); evidence kept: donor
+  `CPersistContext::CheckCRC` (`0x018747b0`) asserts `"stream_crc==CCharString(name).GetCRC()"` and
+  reads/writes the CRC only in `mode==2` (binary IN) / `mode==3` (binary OUT) — text modes 0/1 return
+  early; `CCharString::GetCRC()` (donor `0x0186d2a0`) = `CCRC::Calc(0xFFFFFFFF, chars, len)`;
+  `CCRC::Calc` = donor `0x0186d2d0` (`?Calc@CCRC@@SIKKPBXK@Z`), standard table-driven update
+  `crc = (crc >> 8) ^ table[(data[i] ^ (crc & 0xFF)) & 0xFF]`, no final inversion, 256-entry table
+  at donor VA `0x0449BE30` (dump `ghidra_out/crc_table.txt`, `table[1]=0x77073096`). Persist mode
+  switch on `*(ctx + 0x18)`: 0=LoadText, 1=SaveText, higher=binary. Binary persist templates (donor):
+  `Transfer<long>` `0x018951e0` → writer `<J,ABJ>` `0x01895220`; `Transfer<bool>` `0x018951a0`;
+  `Transfer<uint32>` `0x01895cb0`; `Transfer<float>` `0x01895cf0`; `Transfer<CCharString>`
+  `0x01895d30` → writer `0x0189c530`; `TransferVector<...>` `0x01894de0`. Logs
+  `ghidra_out/decomp_persist_helpers.log`, `decomp_getcrc.log`, `decomp_ccrc_calc.log`.
+- **2026-07-19 (latest) - ★ game.bin FIELD ENCODING FULLY CRACKED + corpus-validated.** Tag =
+  reflected CRC-32(fieldName), seed 0, NO final inversion, over the ASCII name as-is (no NUL), stored
+  little-endian — reproduces all six CChestDef tags: `OpenParticleEffect` → `2a 90 2f a0`,
+  `DisplayMessageOnEmpty` → `74 23 94 82`, `PersistOnOpening` → `59 5f e8 00`,
+  `OpenAnimationForCreature` → `9a a0 c9 0c`, `OpenerObject` → `d4 8f 85 e2`, `OpenersRequired` →
+  `07 55 7d c0`. Same hash confirmed for text.big symbols (`GetTextBySymbol` `0x009c95e0`), save-stream
+  tags (`WorldName`=`a8de4f22`, `Money`=`b03ccbfd`, `Morality`=`79a2d479`; 23/23 HEADER + 2/2 PLAYER
+  across 4 saves; seed-`0xFFFFFFFF` value `b128a473` never appears) and the save trailer
+  (`Calc(0, file[0:trailer_pos])`, 5/5 saves). Payload layout: `[variable prefix][field]*`, prefix =
+  untagged base-class data (`01 00 01` ×124 types, `01 00 01 00 00` ×11, 11 B ×6, 19 B ×2, 2 outliers),
+  field = `[u32 tag][value]`; value sizes: int32/uint32/float/enum/CDefIndex = 4 B, bool = 1 B,
+  CCharString = NUL-terminated (no length prefix, empty = `0x00`), `Vector_<T>` = `[u32 count]
+  [count × T]`, struct/Map = recurse. String proof: `CFireheartMinigameDef` entry 10516
+  `14 c9 3b 4a` `GATEWAY_IDLE_01\0` then `da 32 88 a2` `FLOURISH_WISP_SHORT_01\0`. Vector proof:
+  `CContainerRewardHeroDef` entry 8931 = `58 3d f0 08` (crc0 "ObjectFamilies") + `01 00 00 00` +
+  `04 0b 00 00`. Corpus (`validate_defs.py`, `validate2.py`): naive 3-byte-prefix decoder 85 types
+  byte-exact; resync decoder **145/145** schema'd types present in game.bin match every tag in order
+  (100 of 269 schema types absent from game.bin; 4 have no named fields). Reference implementation
+  `tools/decode_game_bin_field.py` (`field_tag()`, `decode()`). Note `tools/save_edit.py:get_crc`
+  defaults to seed 0xFFFFFFFF — pass seed 0 for field tags.

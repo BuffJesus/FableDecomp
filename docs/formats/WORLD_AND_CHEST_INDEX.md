@@ -118,3 +118,20 @@
 - wld_regions.csv gives region grouping and visibility edges for map navigation and streaming/load previews.
 - chest_key_reward_entities.csv is the first gameplay-object index for chest/key reward editing and validation.
 - FableWin symbols around CScriptThing::MsgOpenedChest, inventory, rewards, and definitions should be inspected against these fixtures.
+
+## Verified facts (from FINDINGS log)
+
+- **2026-07-18 — forge validate cross-checks the install clean.** `forge validate <game-root>` on the
+  Steam install: 398 WLD maps / 141 regions, 796 WAD entries, all 398 LEV + 398 TNG resolve inside
+  the WAD, 0 unresolved region map references, 21,764 things across 397 loose TNGs with 0 missing
+  `DefinitionType` and 0 missing UID — matching `fqt_modding_catalog.json` exactly. LEV reader
+  verified cell-exact (16,384/16,384 heights, dominant themes, strengths) against
+  SilverChest.LevBridge's BarrowFields theme grid.
+- **2026-07-18 — FableForge STB reader validates FinalAlbion_RT.stb.** STB is a BBB-style container
+  (source: decompiled FableMod.BBB / FableMod.STB): 32-byte header, 12-byte dev header before the
+  entry table, 28-byte entry headers, special `__STATIC_MAP_COMMON_HEADER__` entry.
+  `forge stb list FinalAlbion_RT.stb`: 424 entries, 398 static maps, 2048-byte alignment, table
+  offset `597919744`. `forge validate` now reports `stb: 424 entries, 398 static maps` and
+  `stb static maps: 0 missing`; names match all 398 WLD `LevelName` values after the `Data\Levels\`
+  prefix. `ctest --test-dir D:\Code\FableForge\build --output-on-failure` passes incl. a synthetic
+  STB fixture.

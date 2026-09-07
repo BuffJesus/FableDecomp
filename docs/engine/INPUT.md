@@ -881,3 +881,77 @@ menu/gamepad integration from git. Open blockers unchanged: #811 renders black (
   live 2026-08-09; it is not the row-value source.
 - **Init2 @0x00598A1C hook as part of the retail patch** — the 2-hook build crashed at frontend init;
   replaced by a single on-demand resolve inside the Action-284 handler.
+
+## Verified facts (from FINDINGS log)
+
+- **2026-07-19 — Native input/controller system decompiled (1,253 fns).** `DecompByName.java` swept
+  CInputManager/CActionInputControl/CJoystick/CInputType/XboxControllerButton →
+  `ghidra_out/input_decomp.c` (1,253 fns, 0 fail). `CActionInputControl` is the binding model:
+  `GetDirection`/`IsDirectional` (analog-stick aware), `IsSameActionAndButton`/`IsSameButton` (remap
+  comparison), `TransferBinaryIn`/`TransferBinaryOut` (binary persist of a sub-component).
+  `CControlsDef.Controls` is a `vector<CActionInputControl>` in game.bin → remapping is a data edit.
+- **2026-07-19 — CONTROLLER / INPUT SUBSYSTEM RE (tasks #16/#17).** Evidence:
+  `ghidra_out/decomp_controller_donor.log` (FableWin donor, 684 fns), `decomp_controller_retail.log`
+  (retail, 87 fns), `decomp_controller_retail2.log` (13 Rumble fns), `decomp_rumbledef_donor.log`
+  (41 fns); cross-checked against `ghidra_out/def_schema.json` (CControlsDef, CRumbleDef). Retail
+  addresses are RTTI vtable-slot ports (`labels_rtti_port.tsv`) + BSim; donor addresses carry PDB names.
+- **2026-07-19 — Class / method map (donor @ 0x018xxxxx  ->  retail Fable.exe @ 0x00xxxxxx).**
+  `CControlsDef::Transfer` `017bce88` → `004330f0`; `CActionInputControl::ctor` `017b8027` (28-byte
+  record, 7 dwords); `IsSameButton` `01848591` (tagged-union device layout); `IsSameActionAndButton`
+  `017b746f` (action-id compare at +0x00); `GetDirection` `01790194` → `01889840` (reads C2DVector
+  +0x14/+0x18); `CPersistTraits<CActionInputControl>::TransferOut` `017e149a` (per-record persist
+  writer); `CPersistTraits<EXboxControllerButton>::TransferIn/Out` `017b2e7e`/`017a5922` (enum stored as
+  LONG); `CInputManager::GetKeyboard` `018451e8`; `CInputManager::IsUsingMouse` `017bdbcb`;
+  `CJoystick::SetRumbleGloballyActive` `017bb763` (`DAT_04a67e31` = single global gate byte);
+  `CJoystick::CInitRumble::ctor(f,f,f,f,bool)` `01799195` → `0070c050`; `CJoystickDX::AddRumble`
+  `018516e6` (nop) → `00ab7930` (nop); `ClearAllRumbles` → `00ab7940` (nop); `GetRumbleWithID` →
+  `00ab7910` (ret 0); `PeekRumbleWithID` `0181c8b0` (ret 0) → `00ab7920` (ret 0);
+  `GetJoystickDeviceNumber` → `00ab7900` (ret 0); `CRumbleDef::Transfer` `01bbcb57` → `004e676a`;
+  `CGameScriptInterface::CreateRumble` `01855dcc` → `0089fda0`;
+  `CGameScriptInterface::ClearAllRumbles` → `00892df0`; input-event classes from `00445630`
+  (CInputTypeXboxPadButtonEvent / XboxPadLeftStickEvent / XboxPadRightStickEvent /
+  MouseMovementEvent / MouseWheelMovementEvent).
+- **2026-07-19 — CControlsDef binding-table layout (the remapping surface).** `CControlsDef::Transfer`
+  offsets (retail = donor − 0x10; retail Transfer `004330f0`, toggle bools at retail +0x48..+0x4D):
+  `Controls` `vector<CActionInputControl>` donor +0x44 / retail **+0x34**; `ToggleZTarget` +0x58/+0x48;
+  `ToggleSpells` +0x59/+0x49; `ToggleSneak` +0x5A/+0x4A; `ToggleExpressionMenu` +0x5B/+0x4B;
+  `ToggleExpressionShift` +0x5C/+0x4C; `FlourishNeedsAttackButtonHeld` +0x5D/+0x4D. Each
+  `CActionInputControl` = 28 bytes (`_Copy_backward` and `GetAssignedInputForAction` stride 7 dwords);
+  persist order from `TransferOut` @ donor `017e149a` (source literal
+  `...\fable1_5mainpc\fablelib\defs\controls_def.hpp`): `+0x00 GameAction` (EGameAction, LONG),
+  `+0x04 ControllerType` (1=Xbox pad, 2=keyboard, 3=mouse), `+0x08 EInputKey`, `+0x0C
+  EXboxControllerButton`, `+0x10 EMouseButtonControl`, `+0x14/+0x18` C2DVector x/y. In memory
+  `IsSameButton` switches on +0x04 and compares only the matching device field (1→+0x0C, 2→+0x08,
+  3→+0x10). **On-disk (2026-08-10, retail game.bin):** flat fixed 28-byte records, all 7 dwords
+  written `[i32 GameAction][i32 ControllerType][i32 key][i32 xbox][i32 mouse][f32 dirX][f32 dirY]`;
+  the non-matching device slot is 0; the C2DVector IS persisted (e.g. a KEY binding with
+  `dir=(0.0,1.0)`); found via `crc0("Controls")=0x66b93100`; two shipped schemes (PAD count 70,
+  KEY/MOUSE count 75); probe `scratchpad/probe_controls3.py`. game.bin per-def payloads are
+  individual zlib deflate level-1 streams (`78 01`; 234 decompress cleanly) — tags live INSIDE the
+  decompressed stream. crc0 byte-order caveat: `crc0("Money")=0xb03ccbfd`, `crc0("Morality")=
+  0x79a2d479` are the integer values; literals such as `crc0("OpenerObject")=0xd48f85e2` elsewhere are
+  the stored LE bytes `e2 85 8f d4` read big-endian — compute the integer, store little-endian.
+- **2026-07-19 — Rumble path.** (1) Controller motor rumble: `CJoystick::CInitRumble` (4 floats +
+  bool, defaults 1.0f) → `CJoystickDX::AddRumble`, gated by the static
+  `CJoystick::SetRumbleGloballyActive(bool)` writing one global byte (donor `DAT_04a67e31`). In
+  retail the entire `CJoystickDX` rumble vtable is stubbed (`AddRumble`/`ClearAllRumbles` nop,
+  `GetRumbleWithID`/`PeekRumbleWithID`/`GetJoystickDeviceNumber` return 0); the Anniversary donor
+  `AddRumble` is also a nop → DirectInput force-feedback was never wired on PC; controller rumble is
+  dead code. (2) Screen quake: `CGameScriptInterface::CreateRumble` (retail `0089fda0`) spawns a
+  `CTCDRumble` thing; strength/duration from `CRumbleDef` (retail Transfer `004e676a`):
+  `QuakeIntensities` (map<EQuakeStrength,float> @ +0x28), `QuakeDurations` (map<EQuakeLength,float>
+  @ +0x34); `ERumbleType` = NULL/WILL/DAMAGED/HITTING/QUAKE (`header_enums.csv`). Live and tunable
+  by data edit (camera shake, not the motor).
+- **2026-07-19 — EXboxControllerButton enum values - GAP (hypothesis only)** — closed 2026-08-09 by
+  the `FableWin.pdb` enums (see [Controller enum tables](#controller-enum-tables)). Record of the
+  gap: the enum is persisted numerically (LONG); retail strips enum-name strings; `header_enums.csv`
+  has `ERumbleType` but no `EXboxControllerButton`/`EGameAction`/`EInputKey`; the
+  `CInputTypeXboxPad{Button,LeftStick,RightStick}Event` classes confirm the button-vs-stick split but
+  expose no constants; 2 enum-scan attempts on both binaries + header_enums failed (stopped per
+  loop-prevention).
+- **2026-07-19 — Moddability verdict (tasks #16/#17).** Remapping = YES, pure data edit (`Controls`
+  vector at retail +0x34, 28-byte records; tag for `Controls` = seed-0 crc0 of "Controls", NOT
+  `GetCRC`; no native patch). Controller-motor rumble tuning = NOT possible on retail PC short of a
+  code patch (rumble path compiled out to nops; "disable rumble" is the de-facto state; an XInput
+  re-implementation would be new code). Screen-quake tuning = YES via `CRumbleDef`
+  QuakeIntensities/QuakeDurations (+0x28/+0x34, in def_schema.json).

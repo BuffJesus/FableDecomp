@@ -201,8 +201,11 @@ class Transform:
                     if hp == "void":
                         return self.fail("PARTIAL_SUB(+0x%x %s -> void*)" % (off, name))
                     if hp != pointee:
-                        if hp in other_structs or hp == tname:
+                        if hp in other_structs or hp == tname or hp == self.cls:
                             return self.fail("PARTIAL_SUB(+0x%x %s->%s name clash)" % (off, pointee, hp))
+                        if hp in sub_renames.values() and sub_renames.get(pointee) != hp:
+                            # two different local helper structs would both become `hp`
+                            return self.fail("PARTIAL_SUB(+0x%x %s->%s duplicate target)" % (off, pointee, hp))
                         sub_renames[pointee] = hp
             if name != h.name and name in other_members:
                 return self.fail("AMBIGUOUS_MEMBER(%s)" % name)

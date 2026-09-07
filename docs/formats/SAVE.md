@@ -1880,3 +1880,21 @@ Closed items are kept (struck through in prose) so the history is auditable.
 - L4. `Profile.bin` `dw08` (@0x08) is 0 in all 4 profiles — assumed reserved.
 - L5. `save_metadata.py` row data still needs to be consumed by the native C++ runtime before the
   live game-load ownership boundary is connected.
+
+## Verified facts (from FINDINGS log)
+
+- **2026-07-20 — SAVE SIGNATURE IS ENFORCED ON LOAD (decompile-confirmed; editor unblocked).**
+  Evidence: `docs/formats/SAVE_SIG_ENFORCEMENT.md`; logs `ghidra_out/decomp_save_sig_load1..4.log`.
+  - Verifier `CUserProfileManager::VerifySignature` @ retail 0x00409730: checks `FableSav`/`FablePro`
+    magic (+ u32 `0x2165` = "e!\0\0" for saves), reads u32 @0x0C as `total_data_len`, computes
+    `CCRC::Calc(0, file[0:total_data_len])` and compares to the stored u32 trailer at
+    `total_data_len`; then requires file size EXACTLY 0x4B000 (saves; 0x4000 profiles) and all pad
+    bytes == 0x00 (saves; 0x20 profiles). Any failure -> false.
+  - `CWorld::LoadGameStateInternal` @ 0x004A21F0 calls it as its FIRST statement
+    (`if (!VerifySignature(path)) return false;`). Also gates `CUserProfileManager::Load` @
+    0x0040D350 (Profile.bin) and two cached save-slot-validity helpers (`FUN_005957d9`/`FUN_0047ed0a`).
+  - No off-switch in retail: no `UseSaveGameSignatures` / `UseBinarySaveGames` strings (donor-only);
+    `UseRetailSaveGameSystem` @ 0x0122E85C exists. The "flip the flag" mitigation is impossible in
+    retail.
+  - Edited saves MUST be re-signed with the seed-0 CRC over the literal file prefix + exact 300KB
+    zero-padded slab — what `tools/save_edit.py` (gates A-D 5/5) produces; `forge save edit` unblocked.

@@ -253,5 +253,125 @@ integer->name tables (retail strips the strings; not in the extracted DevHeaders
 controls_def.hpp/inputkey.h headers, an empirical game.bin CControlsDef payload dump, or the wiki.
 
 Evidence: `ghidra_out/decomp_controller_{donor,retail,retail2}.log`, `decomp_rumbledef_donor.log`,
-`def_schema.json` (CControlsDef, CRumbleDef). Full detail in FINDINGS.md 2026-07-19 controller
-section.
+`def_schema.json` (CControlsDef, CRumbleDef). Full detail in [INPUT.md](INPUT.md#verified-facts-from-findings-log) (2026-07-19
+controller cluster).
+
+## Verified facts (from FINDINGS log)
+
+- **2026-08-26 — MsgOnBoastsMade ownership and ABI.** Retail `008a9ae0` queries type `0x29` messages
+  with extra data between two distinct world-frame bounds. Event `+0x3c` -> data with a long at
+  `+0x00` and `CCharString` at `+0x0c`; results append as eight-byte pairs. `0099ec30` = string copy
+  ctor, `0099eae0` = its dtor, `0074fce0` = receiver-based vector growth helper. Returns whether the
+  temporary list was nonempty and frees every list allocation. Natural reconstruction passes its
+  fixture but is `DIFFER(279v352)` (bounded, not parity).
+  - Verifier COFF defect: objdump basic-block labels share the function-header syntax but nonzero
+    labels are offsets within the current VC7.1 `.text` contribution; keeping them attached restored
+    the 744-byte `GFHandleSystemInitError` relocation match.
+  - `00c93b30 Audio_ApplyGainTableToBuffer`: five-argument fastcall (count pointer + input in
+    `ECX`/`EDX`; gain indexes, output, limit callee-clean stack args); `gainTable[index] * input` up
+    to the clamped limit, unrolled 4x, then float zero through the original count; 250/260-byte
+    codegen bounded.
+  - `0045d264 CActiveFile_AssignVector8`: callee-clean three-stack-arg allocator/copy (`count * 8`,
+    half-open range of two-dword values; zero count -> null; null allocation suppresses stores);
+    77/68-byte scheduling bounded.
+  - 24-byte tree-node allocator grammar: exact two-dword member at `0045d901`, dword-plus-byte at
+    `0045e2b1` (also `0045de2f`, `0045e797`); all return the allocation base despite `void`
+    prototypes, payload at `base + 0x10`, clean one stack arg, 34-byte relocation match. Masked scan:
+    34 two-dword + 4 dword-plus-byte instances; all 38 landed (28 new relocation matches).
+  - `0045deba Map_EraseNode`: 47-byte member forwarding node/allocator offsets `+4/+8/+0x0c`, frees
+    the returned node when nonnull, decrements count `+4`; initial 45-byte boundary missed the 3-byte
+    `ret 4`. Ten exact 47-byte erase/free members, all landed.
+  - 26-byte `00429fe3` node-allocation residue: eight exact bodies (incl. `00493a40`, `0053c879`,
+    `0057f525`, `00592ad3`, `005f807c`), payload at `+8`, all exact-length `DIFFER(26v26)`
+    (VC7.1 folds `pop/lea/test`), all explicitly bounded.
+  - 22-byte `00451303` output-pointer allocator grammar: 62 authoritative starts (sizes `0x14`,
+    `0x18`, `0x1c`, `0x20`, `0x28`, `0x30`, `0x40`, `0x48`, `0x58`), fastcall `ECX` output, `and
+    [out],0`; 62/62 landed `RELOCATION_MATCH["s"]`.
+  - 43-byte free-pointer loop rooted at `0043f510`: six instances (new `0048c820`, `007b3b50`,
+    `00913690`), stdcall two-range ABI; 6/6 landed.
+  - 17-byte iterator/max-node forwarder: 69 starts, 69/69 landed; RB-tree/max-node named subset = 32.
+  - 42-byte list/sentinel initialization rooted at `0045170f`: 62 instances (incl. texture-format
+    handler block `004dd170..004dd5c4`, `00cd2d37/00cd2d61`); 62/62 landed.
+  - 32-byte list unlink/free: 7 bodies (new `0053c7b9`, `00655125`, `006553d0`, `006553fd`); 7/7 landed.
+  - 58-byte buffer move/relocate: 42 retail bodies, 4 authoritative (all landed); 38 discovery-only
+    (manifest gate). 37-byte list-insert splice: 34 hits, 33 authoritative, 33/33 landed (20 renamed
+    `ListNode_InsertBefore_<address>`). Polymorphic range-cleanup rooted at `004437e0`: 19/19 landed
+    (`PolymorphicRangeCleanup_*`). 26-byte list push-front wrapper: 33/33 landed
+    (`ListPushFrontWrapper_*`). 35-byte tree-lookup accessors (`self + 0x144`, `self + 0x150`) 1 each,
+    complete. 38-byte vector-copy wrapper: 26 bodies, only `00411b00` authoritative. 59-byte vector
+    push-back: `0044bff0 std::vector::push_back` landed, family 2/2.
+
+- **2026-07-18 — Retail CChestDef::Transfer = 0x004DE204 (RTTI vtable-slot port).** vtable slot 18;
+  `Copy` = `0x004E0564` (slot 19), `GetSizeofClass` = `0x004D3840` (slot 20), vector-deleting dtor =
+  `0x004D8072` (slot 0). Labels `ghidra_out/labels_chestdef_rtti.tsv`; tool `tools/rtti_map.py`.
+  Evidence: (1) donor and retail `CChestDef` vtables both have exactly 25 slots and the override
+  cluster Transfer/Copy/GetSizeofClass sits at 18–20 in both; (2) same walk on `CTCChest` puts retail
+  slot 9 at `0x750780` = confirmed `CTCChest::FrameUpdate`; (3) `0x4DE204` disassembles as a
+  canonical Transfer (`mov esi,ecx`, then `lea eax,[esi+0xNN]; push eax; mov ecx,edi; call …` for
+  +0x28, +0x25, +0x2C, +0x30 …). Retail strips def field-name strings (0 hits for
+  `OpenParticleEffect`, `PersistOnOpening`, `OpenersRequired`, `DisplayMessageOnEmpty`), so game.bin
+  decodes by field ORDER; donor Transfer supplies names, retail Transfer supplies offsets.
+- **2026-07-18 — Retail CChestDef::Transfer own-field map.** Six own fields
+  (`ghidra_out/decomp_chestdef_transfer_retail.log`): `+0x25` `PersistOnOpening` (bool), `+0x28`
+  `OpenParticleEffect`, `+0x2C` `DisplayMessageOnEmpty`, `+0x30` `OpenAnimationForCreature`,
+  `+0x34` `OpenerObject`, `+0x38` `OpenersRequired` (int). Key requirement = `OpenerObject` +
+  `OpenersRequired`; reward contents are NOT in these fields.
+- **2026-07-18 — CTCChest::GetNumberOfKeysToUnlock reads CChestDef only** (no inventory/quest state;
+  `ghidra_out/decomp_chest_core.log`, `decomp_chest_interface_after_rtti.log`): gets the chest sub-def
+  from the owning thing's def pointer (`thing + 0x70`); requires `subdef[0x0d]`/`+0x34`
+  (`OpenerObject`) and `subdef[0x0e]`/`+0x38` (`OpenersRequired`) both positive; resolves the
+  `OpenerObject` global def index to a def name into the output `CCharString`; returns
+  `OpenersRequired`, else clears the string and returns 0.
+  `CGameScriptInterface::GetNumberOfKeysNeededToUnlockChest` validates the script thing, finds
+  `CTCChest` via interface type `0x3c`, and forwards.
+- **2026-07-18 — CContainerRewardHeroDef::Transfer static reward field.** One own field,
+  `ObjectFamilies`, at retail `+0x28`. RTTI port: `Transfer` `0x004E8987`, `Copy` `0x004E249B`,
+  `GetSizeofClass` `0x004E2497` (returns `0x34`; `Copy` assigns the tail field at `param2 + 0x28`).
+  Retail bytes at `0x004E8987` begin `add ecx,0x28; push ecx; ...`; donor Transfer carries the single
+  field-name string `ObjectFamilies` on donor `this + 0x28`.
+- **2026-07-18 — Chest key gate: full retail runtime chain located.** `FindRefs` on
+  `CTCChest::GetNumberOfKeysToUnlock` (`0x750050`) → exactly one caller,
+  `CGameScriptInterface::GetNumberOfKeysNeededToUnlockChest` (`0x8966C0`)
+  (`ghidra_out/findrefs_chest_callers.log`). Script bodies (`ghidra_out/chest_script_syms.log`):
+  `CGlobal_OpenChestScript::Main` = `0xEEC890`, `CGlobal_GiveHeroItemsFromRewardChestScript::Main`
+  = `0xEEC410`. `CGameScriptInterface` vtable base = `0x1260F0C` (slot 0 → `0x6E7D50`), proven by
+  `+0x6CC` → `0x896390` `OpenChest`, `+0x6D4` → `0x8966C0`, `+0x6D8` → `0x896730`
+  `DisplayLockedChestMessage` (data refs `0x12615D8/E0/E4`). `Main` decomp
+  (`ghidra_out/decomp_open_chest_scripts.log`): `n = vtbl+0x6D4(keyNameOut)`; `n < 1` → open; else
+  `have = vtbl+0x2DC(keyName)`; `n <= have` → open; else game text `"CHEST_OPEN_FAIL"` (`vtbl+0xAC4`)
+  + `vtbl+0x6D8`. Slot `+0x2DC` = `0x12611E8` → `0x897190` =
+  `?GetNumberOfItemsOfTypeInInventory@CGameScriptInterface@@UBEJABVCCharString@@@Z`
+  (`ghidra_out/decomp_inventory_count_slot.log`) → `CDefinitionManager::GetDefGlobalIndexFromName`
+  (`0x9AD410`) → hero `CTCInventoryBase` (TC type `0x11`) →
+  `NInventory::CTCInventoryBase::GetNumberOfItemsOfTypeInInventory` (`0x5BDF08`). No call removes key
+  items in either branch: **keys are counted, never consumed**; a chest can require N of ANY object def.
+- **2026-07-18 — Reward payload fully decoded: ObjectFamilies -> CObjectFamilyDef -> weighted random.**
+  `CTCContainerRewardHero::GetRewardItems` (`0x74E860`, `ghidra_out/decomp_reward_expand_after_rtti.log`):
+  when the runtime reward list at `this+0xC..0x10` (stride 8, `pair<long, CCharString>`) is empty, it
+  iterates the def's `subdef+0x28..+0x2C` (stride 4), calls `GFRandom(count)`, resolves the chosen
+  family via `CDefinitionManager::GetDef<...>`, then `CObjectFamilyDef::GetRandomObject` (`0x8ED590`,
+  `ghidra_out/decomp_objectfamily_def.log`): iterates `this+0x3C..0x40` stride 8, sums `entry+4`
+  weights, draws `rand % totalWeight` (LCG state `DAT_013B86A0+0x1613C`, mul `0x24A1`, add `0x24DF`,
+  then ROR13), returns `entry+0` of the first entry crossing the draw. Transfer thunks:
+  `CObjectFamilyDef::Transfer` `0x46C294` = `add ecx,0x3C; push ecx; mov ecx,[esp+8]; call 0x46C2A4`;
+  `CContainerRewardHeroDef::Transfer` `0x4E8987` same shape with `+0x28`, helper `0x4E8997`; both
+  helpers call `CPersistContext::CheckCRC(ctx, "")` with the EMPTY name string at `0x122D70E`, then
+  `GFSerialiseVectorBinaryIn/Out` (`ctx+0x18 == 2` = read from `CMemoryDataInputStream` at `ctx+0x24`).
+  Helpers renamed via `ghidra_out/labels_chest_reward_chain.tsv` (2/2; previously stale BSim
+  `CCreatureAction_FireMissileWeapon::FrameUpdate`). Gold: attached `CTCGold` TC (interface type
+  `0xCC`) gated by thing flag `+0x38 & 0x1000`; `GetDynamicPotionDefIndex` (`0x74E280`) picks
+  health/super/mana potion by hero inventory; failed dynamic resurrection → +20 gold.
+- **2026-07-18 — game.bin reward payloads decoded end-to-end; families enumerated.** `tools/bin_dump`
+  hex mode → `ghidra_out/installed_game/objectfamily_payloads.tsv`, `rewarddef_payloads.tsv`.
+  `OBJECT_FAMILY` payload = 9-byte header + `u32 count` + `count x (u32 objectDefIdx, f32 weight)`;
+  `CContainerRewardHeroDef` payload = 7-byte header + `u32 count` + `count x u32 familyDefIdx`. Def
+  indices ARE game.bin entry indices: reward value 2820 = row 2820 = `REWARD_VILLAGER_01`; family
+  member 4642 = `OBJECT_GOLDBAG_MEDIUM_WITH_COINS`, 4290/4291 = the dynamic potion/resurrection
+  dummies. Weights are per-mille floats (`REWARD_GUARD_01` sums to exactly 1000 with two `defIdx 0`
+  entries, 100+400 = 50% no-drop). Decoder `tools/DecodeObjectFamilies.ps1` →
+  `ghidra_out/installed_game/object_families.{json,csv}` (**41 families, 72 reward defs**). The 72
+  reward defs cluster after `CCreatureDef` parents = creature death-loot tables. Chest OBJECT defs
+  (485-byte payloads: `OBJECT_CHEST_OPENABLE` 3688, `OBJECT_SILVERKEY_CHEST_5..100` 3689-3694) embed
+  their components. Fixed chest contents live in the TNG: `StartCTCChest; ContainerContents[0]
+  "OBJECT_SUPER_MANA_POTION"; ChestOpen FALSE; EndCTCChest` (HobbeCaveLarder five-key chest); 162
+  chest placements across the 397 loose TNGs, 115 with fixed contents (`forge chest list`).
