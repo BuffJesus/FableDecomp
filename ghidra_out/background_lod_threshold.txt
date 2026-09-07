@@ -1,0 +1,266 @@
+﻿INFO  Using log config file: jar:file:/D:/Subuwu/tools/ghidra-public/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (1638 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (3853 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\GnuDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BytePatterns\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\JVM\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SystemEmulation\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\8051\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FileFormats\ghidra_scripts
+    D:\Documents\FableTLC\tools\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BSim\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\VersionTracking\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PDB\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\PIC\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Base\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Extensions\XEXLoaderWV\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    C:\Users\Cornelio\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\DATA\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Decompiler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\Atmel\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PyGhidra\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FunctionID\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessAnalyzer)  
+INFO  Opening project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessProject)  
+INFO  REPORT: Processing project file: /FableWin.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: DecompByName.java 'BuildLODMap' 'PeekLODBandThreshold' 'BuildTree_CLandscapeBackgroundDynamicBuildTemplate'  (HeadlessAnalyzer)  
+INFO  SCRIPT: D:\Documents\FableTLC\tools\ghidra_scripts\DecompByName.java (HeadlessAnalyzer)  
+INFO  DecompByName.java> ==================== ?BuildLODMap@CEngineLandscapeMap@@AAEXXZ @ 017ceb47 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+void __fastcall _BuildLODMap_CEngineLandscapeMap__AAEXXZ(int param_1)
+
+{
+  void *pvVar1;
+  undefined4 *puVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  undefined4 uVar5;
+  undefined4 uStack_20;
+  void *pvStack_10;
+  undefined1 *puStack_c;
+  undefined4 uStack_8;
+  
+  uStack_8 = 0xffffffff;
+  puStack_c = &LAB_03e5fa7b;
+  pvStack_10 = ExceptionList;
+  if (*(int *)(param_1 + 0x74) == 0) {
+    ExceptionList = &pvStack_10;
+    pvVar1 = operator_new(0x14);
+    uStack_8 = 0;
+    if (pvVar1 == (void *)0x0) {
+      uStack_20 = 0;
+    }
+    else {
+      uStack_20 = __0CEngineLandscapeLODMap__QAE_PBVCEngineMap___Z(*(undefined4 *)(param_1 + 0x14));
+    }
+    uStack_8 = 0xffffffff;
+    *(undefined4 *)(param_1 + 0x74) = uStack_20;
+    puVar2 = (undefined4 *)_GetSettings_CEngineLandscapeRenderer__QAEABUCLandscapeSettings_1_XZ();
+    uVar5 = *puVar2;
+    uVar3 = _PeekHeight_CEngineLandscapeMap__QBEJXZ(uVar5);
+    uVar4 = _PeekWidth_CEngineLandscapeMap__QBEJXZ(uVar3);
+    _UpdateThresholdPointArea_CEngineLandscapeLODMap__QAEXJJJJM_Z(0,0,uVar4,uVar3,uVar5);
+  }
+  ExceptionList = pvStack_10;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z @ 017e6b5c ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+uint __thiscall
+_PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(int param_1,int param_2,int param_3)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  uint uVar4;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined1 *puVar7;
+  undefined4 uVar8;
+  undefined4 uVar9;
+  undefined1 auStack_2c [8];
+  undefined1 auStack_24 [8];
+  undefined1 auStack_1c [11];
+  char cStack_11;
+  void *pvStack_10;
+  undefined1 *puStack_c;
+  int iStack_8;
+  
+  iStack_8 = 0xffffffff;
+  puStack_c = &LAB_03e61bf8;
+  pvStack_10 = ExceptionList;
+  if ((((param_2 < 0) || (param_3 < 0)) || (*(int *)(param_1 + 0xc) < param_2)) ||
+     (*(int *)(param_1 + 0x10) < param_3)) {
+    ExceptionList = &pvStack_10;
+    __0CWideString__QAE_PB_W_Z
+              (
+              L"e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fableengine\\Engine_Landscape_lod_map.hpp"
+              );
+    iStack_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+    iStack_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z("x>=0 && y>=0 && x<=MapWidth && y<=MapHeight",0xffffffff);
+    iStack_8._0_1_ = 2;
+    uVar9 = 1;
+    uVar8 = 0x4a;
+    puVar7 = auStack_1c;
+    puVar6 = auStack_24;
+    puVar5 = auStack_2c;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0x4a,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar5,puVar6,puVar7,uVar8,uVar9);
+    cStack_11 = '\x01' - (cVar2 != '\x01');
+    iStack_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    iStack_8 = (uint)iStack_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    iStack_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if (cStack_11 != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar4 = (*pcVar1)();
+        return uVar4;
+      }
+    }
+  }
+  ExceptionList = pvStack_10;
+  return (uint)*(byte *)(*(int *)(param_1 + 4) + (*(int *)(param_1 + 0xc) + 1) * param_3 + param_2);
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?BuildLODMap@CEngineLandscapeMap@@AAEXXZ @ 02cced10 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+void __fastcall _BuildLODMap_CEngineLandscapeMap__AAEXXZ(int param_1)
+
+{
+  void *pvVar1;
+  undefined4 *puVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  undefined4 uVar5;
+  undefined4 local_20;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03e5fa7b;
+  local_10 = ExceptionList;
+  if (*(int *)(param_1 + 0x74) == 0) {
+    ExceptionList = &local_10;
+    pvVar1 = operator_new(0x14);
+    local_8 = 0;
+    if (pvVar1 == (void *)0x0) {
+      local_20 = 0;
+    }
+    else {
+      local_20 = __0CEngineLandscapeLODMap__QAE_PBVCEngineMap___Z(*(undefined4 *)(param_1 + 0x14));
+    }
+    local_8 = 0xffffffff;
+    *(undefined4 *)(param_1 + 0x74) = local_20;
+    puVar2 = (undefined4 *)_GetSettings_CEngineLandscapeRenderer__QAEABUCLandscapeSettings_1_XZ();
+    uVar5 = *puVar2;
+    uVar3 = _PeekHeight_CEngineLandscapeMap__QBEJXZ(uVar5);
+    uVar4 = _PeekWidth_CEngineLandscapeMap__QBEJXZ(uVar3);
+    _UpdateThresholdPointArea_CEngineLandscapeLODMap__QAEXJJJJM_Z(0,0,uVar4,uVar3,uVar5);
+  }
+  ExceptionList = local_10;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z @ 02ce7770 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+uint __thiscall
+_PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(int param_1,int param_2,int param_3)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  uint uVar4;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined1 *puVar7;
+  undefined4 uVar8;
+  undefined4 uVar9;
+  undefined1 local_2c [8];
+  undefined1 local_24 [8];
+  undefined1 local_1c [11];
+  char local_11;
+  void *local_10;
+  undefined1 *puStack_c;
+  int local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03e61bf8;
+  local_10 = ExceptionList;
+  if ((((param_2 < 0) || (param_3 < 0)) || (*(int *)(param_1 + 0xc) < param_2)) ||
+     (*(int *)(param_1 + 0x10) < param_3)) {
+    ExceptionList = &local_10;
+    __0CWideString__QAE_PB_W_Z
+              (
+              L"e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fableengine\\Engine_Landscape_lod_map.hpp"
+              );
+    local_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+    local_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z("x>=0 && y>=0 && x<=MapWidth && y<=MapHeight",0xffffffff);
+    local_8._0_1_ = 2;
+    uVar9 = 1;
+    uVar8 = 0x4a;
+    puVar7 = local_1c;
+    puVar6 = local_24;
+    puVar5 = local_2c;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0x4a,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar5,puVar6,puVar7,uVar8,uVar9);
+    local_11 = '\x01' - (cVar2 != '\x01');
+    local_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    local_8 = (uint)local_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if (local_11 != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar4 = (*pcVar1)();
+        return uVar4;
+      }
+    }
+  }
+  ExceptionList = local_10;
+  return (uint)*(byte *)(*(int *)(param_1 + 4) + (*(int *)(param_1 + 0xc) + 1) * param_3 + param_2);
+}
+
+ (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /FableWin.exe (HeadlessAnalyzer)  

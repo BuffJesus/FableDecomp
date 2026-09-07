@@ -36,64 +36,109 @@ def is_pad(name):
     n = name.lower()
     return n.startswith("pad") or n.startswith("_pad") or n in ("dummy", "_dummy", "vtbl", "_vfptr", "_vfp", "vfptr")
 
-def parse_struct(body):
-    """Yield (offset, type, name, size) for named non-pad members; return (fields, total_size)."""
+PACK1_RE = re.compile(r"#pragma\s+pack\s*\(\s*push\s*,\s*1\s*\)|#pragma\s+pack\s*\(\s*1\s*\)")
+
+def is_packed(text, struct_start):
+    """True when a `#pragma pack(push,1)` / `pack(1)` is open at struct_start."""
+    opens = [m.start() for m in PACK1_RE.finditer(text) if m.start() < struct_start]
+    if not opens:
+        return False
+    last_open = opens[-1]
+    pops = [m.start() for m in re.finditer(r"#pragma\s+pack\s*\(\s*pop\s*\)", text)
+            if last_open < m.start() < struct_start]
+    return not pops
+
+def type_align(t):
+    return min(type_size(t), 4)
+
+def parse_struct(body, packed=True):
+    """Return (fields, total_size) with fields = [(offset, type, name, size)] for named,
+    non-pad members.  `packed=False` applies VC7.1 natural alignment (align = min(size,4))
+    to member offsets and the total; the previous behaviour assumed pack(1) everywhere,
+    which mis-offsets every un-packed local struct with mixed member widths."""
     off = 0
     fields = []
+    max_align = 1
     for m in MEMBER_RE.finditer(body):
         typ, name, _, arr = m.group(1).strip(), m.group(2), None, m.group(4)
         if typ in ("struct", "class", "return", "void") and not arr:
             continue
+        if typ.startswith(("virtual", "static", "typedef")):
+            continue
+        elt = type_size(typ)
+        al = 1 if packed else max(1, type_align(typ))
+        if not packed and off % al:
+            off += al - (off % al)
+        max_align = max(max_align, al)
         if arr is not None:
             n = int(arr, 0)
-            elt = type_size(typ)
             span = n * elt if elt else n
-            if not is_pad(name):
-                fields.append((off, typ, name, span))
-            off += span
         else:
-            sz = type_size(typ)
-            if not is_pad(name):
-                fields.append((off, typ, name, sz))
-            off += sz
+            span = elt
+        if not is_pad(name):
+            fields.append((off, typ, name, span))
+        off += span
+    if not packed and off % max_align:
+        off += max_align - (off % max_align)
     return fields, off
 
-def facts_for(cls):
-    """Merge all verified facts for a class -> (offset->(type,name), class_size, n_files)."""
-    files = [
+def landed_files_for(cls):
+    return [
         p
         for p in glob.glob(str(SRC / "**/*.cpp"), recursive=True)
         if os.path.basename(p).startswith(cls + "_")
     ]
+
+def facts_for(cls, files=None, trust=None, provenance=None):
+    """Merge all verified facts for a class -> (offset->(type,name), class_size, n_files).
+
+    files: explicit list of landed .cpp paths (default: every `<cls>_*.cpp`).
+    trust: optional predicate(path) -> bool; files failing it are skipped (use
+           label_trust to drop mislabelled families / non-genuine bakes).
+    provenance: optional dict filled with offset -> list of (type, name, size, file).
+    Files whose struct uses natural alignment and whose packed/natural layouts differ are
+    skipped as ambiguous (AMBIG_ALIGN) rather than guessed.
+    """
+    if files is None:
+        files = landed_files_for(cls)
     off_map = {}
     size = None
+    used = 0
     for f in files:
+        if trust is not None and not trust(f):
+            continue
         txt = open(f, encoding="utf-8", errors="ignore").read()
         base = os.path.basename(f)
-        # class size from GetSizeofClass constant-return (only when the FILE is that method)
         if "GetSizeofClass" in base:
             mm = SIZEOFCLASS_RE.search(txt)
             if mm:
                 size = max(size or 0, int(mm.group(1), 0))
-        # merge fields from the struct whose name matches (or the first struct)
-        structs = STRUCT_RE.findall(txt)
         chosen = None
-        for sname, body in structs:
-            if sname == cls:
-                chosen = body; break
-        if chosen is None and structs:
-            # a same-class file with a differently-named local struct still models this class
-            chosen = structs[0][1]
+        chosen_start = 0
+        for m in STRUCT_RE.finditer(txt):
+            if m.group(1) == cls:
+                chosen, chosen_start = m.group(2), m.start(); break
+        if chosen is None:
+            m = STRUCT_RE.search(txt)
+            if m:
+                chosen, chosen_start = m.group(2), m.start()
         if chosen is None:
             continue
-        fields, total = parse_struct(chosen)
+        packed = is_packed(txt, chosen_start)
+        fields, total = parse_struct(chosen, packed=True)
+        if not packed:
+            nat_fields, nat_total = parse_struct(chosen, packed=False)
+            if nat_fields != fields:
+                # natural alignment moved something: only trust it if the struct is
+                # homogeneous in width (then both agree); otherwise skip as ambiguous.
+                continue
+        used += 1
         for off, typ, name, sz in fields:
+            if provenance is not None:
+                provenance.setdefault(off, []).append((typ, name, sz, base))
             if off not in off_map or off_map[off][0] in ("int", "unsigned", "unsigned long", "long"):
                 off_map[off] = (typ, name)
-        # NOTE: do NOT infer class size from an all-pad struct total -- agents use
-        # `char pad[N]` as a placeholder for the `this` param, not the real class size.
-        # Only GetSizeofClass returns (above) are trusted for size.
-    return off_map, size, len(files)
+    return off_map, size, used
 
 def render(cls):
     off_map, size, n = facts_for(cls)

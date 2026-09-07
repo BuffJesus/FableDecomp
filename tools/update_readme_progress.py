@@ -92,6 +92,11 @@ def replace_summary_denominator(text: str, total: int) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="do not write; exit 1 if README numbers differ from the generated dashboard",
+    )
     args = parser.parse_args()
 
     root = args.root.resolve()
@@ -244,6 +249,20 @@ def main() -> int:
     if count != 1:
         raise RuntimeError("strict denominator sentence not found")
 
+    if args.check:
+        original = readme.read_text(encoding="utf-8")
+        if original != text:
+            import difflib
+            diff = difflib.unified_diff(
+                original.splitlines(), text.splitlines(),
+                "README.md (committed)", "README.md (generated)", lineterm="", n=0,
+            )
+            print("\n".join(list(diff)[:40]))
+            print("readme_progress=DRIFT: run tools/write_decomp_dashboard.py then "
+                  "tools/update_readme_progress.py and commit")
+            return 1
+        print(f"readme_progress=consistent catalog={total}")
+        return 0
     temporary = readme.with_suffix(".md.tmp")
     temporary.write_text(text, encoding="utf-8")
     temporary.replace(readme)

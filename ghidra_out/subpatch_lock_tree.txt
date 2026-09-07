@@ -1,0 +1,320 @@
+//=== ?BuildTree@CSubPatchTreeLODLockElement@@QAE_NMJPAMJJJMMJPAJ@Z @ 0184fffd (seed 0184fffd) ===
+
+/* WARNING: Removing unreachable block (ram,0x02df1dc8) */
+/* WARNING: Removing unreachable block (ram,0x02df1d29) */
+/* WARNING: Removing unreachable block (ram,0x02df1bff) */
+/* WARNING: Removing unreachable block (ram,0x02df1b9e) */
+/* WARNING: Removing unreachable block (ram,0x02df1cfa) */
+/* WARNING: Removing unreachable block (ram,0x02df1d96) */
+/* WARNING: Removing unreachable block (ram,0x02df1cd6) */
+
+undefined4
+_BuildTree_CSubPatchTreeLODLockElement__QAE_NMJPAMJJJMMJPAJ_Z
+          (float param_1,int param_2,int param_3,undefined4 param_4,int param_5,int param_6,
+          float param_7,float param_8,int param_9,int *param_10)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  void *pvVar4;
+  float *in_ECX;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined1 *puVar7;
+  undefined4 uVar8;
+  undefined4 uVar9;
+  int iStack_130;
+  float fStack_128;
+  float fStack_124;
+  float fStack_118;
+  float fStack_108;
+  float fStack_104;
+  float fStack_100;
+  float fStack_fc;
+  float fStack_f8;
+  float fStack_f4;
+  undefined1 auStack_8c [8];
+  undefined1 auStack_84 [8];
+  undefined1 auStack_7c [11];
+  char cStack_71;
+  float fStack_70;
+  float fStack_6c;
+  float fStack_68;
+  float fStack_64;
+  int iStack_60;
+  float fStack_5c;
+  int iStack_58;
+  int iStack_54;
+  float fStack_50;
+  int iStack_4c;
+  int iStack_48;
+  int iStack_44;
+  float fStack_40;
+  float fStack_3c;
+  int iStack_38;
+  float fStack_34;
+  float fStack_30;
+  float fStack_2c;
+  float fStack_28;
+  float fStack_24;
+  float fStack_20;
+  int iStack_1c;
+  int iStack_18;
+  float fStack_14;
+  void *pvStack_10;
+  undefined1 *puStack_c;
+  int iStack_8;
+  
+  iStack_8 = 0xffffffff;
+  puStack_c = &LAB_03e7ba03;
+  pvStack_10 = ExceptionList;
+  ExceptionList = &pvStack_10;
+  if (param_6 < param_9) {
+    ExceptionList = &pvStack_10;
+    __0CWideString__QAE_PB_W_Z(L"Engine_Landscape_Background_Dynamic_Build_Template.cpp");
+    iStack_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0446568c,0xffffffff);
+    iStack_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z("lockrange>=min_lock_range",0xffffffff);
+    iStack_8._0_1_ = 2;
+    uVar9 = 1;
+    uVar8 = 0x60;
+    puVar7 = auStack_7c;
+    puVar6 = auStack_84;
+    puVar5 = auStack_8c;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0x60,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar5,puVar6,puVar7,uVar8,uVar9);
+    cStack_71 = '\x01' - (cVar2 != '\x01');
+    iStack_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    iStack_8 = (uint)iStack_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    iStack_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if ((cStack_71 != '\0') && (BVar3 = IsDebuggerPresent(), BVar3 != 0)) {
+      pcVar1 = (code *)swi(3);
+      uVar8 = (*pcVar1)();
+      return uVar8;
+    }
+  }
+  fStack_28 = 0.0;
+  fStack_20 = 0.0;
+  for (iStack_44 = param_5; iStack_44 < param_6 / 2 + param_5; iStack_44 = iStack_44 + 1) {
+    if (fStack_28 <= *(float *)(param_3 + iStack_44 * 4)) {
+      fStack_f4 = *(float *)(param_3 + iStack_44 * 4);
+    }
+    else {
+      fStack_f4 = fStack_28;
+    }
+    fStack_28 = fStack_f4;
+  }
+  for (iStack_48 = param_6 / 2 + param_5; iStack_48 < param_5 + param_6; iStack_48 = iStack_48 + 1)
+  {
+    if (fStack_20 <= *(float *)(param_3 + iStack_48 * 4)) {
+      fStack_f8 = *(float *)(param_3 + iStack_48 * 4);
+    }
+    else {
+      fStack_f8 = fStack_20;
+    }
+    fStack_20 = fStack_f8;
+  }
+  fStack_28 = (((float)param_6 * param_1) / 2.0) * fStack_28;
+  fStack_20 = (((float)param_6 * param_1) / 2.0) * fStack_20;
+  fStack_fc = fStack_20;
+  if (fStack_20 < fStack_28) {
+    fStack_fc = fStack_28;
+  }
+  fStack_24 = fStack_fc + fStack_fc;
+  uVar8 = 0;
+  if ((float)param_2 * param_8 <= fStack_24) {
+    if (param_6 != param_9) {
+      fStack_30 = 0.0;
+      fStack_14 = 0.0;
+      for (iStack_4c = param_5; iStack_4c < param_6 / 2 + param_5; iStack_4c = iStack_4c + param_9)
+      {
+        fStack_50 = 0.0;
+        for (iStack_54 = iStack_4c; iStack_54 < iStack_4c + param_9; iStack_54 = iStack_54 + 1) {
+          if (fStack_50 <= *(float *)(param_3 + iStack_54 * 4)) {
+            fStack_100 = *(float *)(param_3 + iStack_54 * 4);
+          }
+          else {
+            fStack_100 = fStack_50;
+          }
+          fStack_50 = fStack_100;
+        }
+        fStack_30 = (float)param_9 * fStack_50 + fStack_30;
+      }
+      for (iStack_58 = param_6 / 2 + param_5; iStack_58 < param_5 + param_6;
+          iStack_58 = iStack_58 + param_9) {
+        fStack_5c = 0.0;
+        for (iStack_60 = iStack_58; iStack_60 < iStack_58 + param_9; iStack_60 = iStack_60 + 1) {
+          if (fStack_5c <= *(float *)(param_3 + iStack_60 * 4)) {
+            fStack_104 = *(float *)(param_3 + iStack_60 * 4);
+          }
+          else {
+            fStack_104 = fStack_5c;
+          }
+          fStack_5c = fStack_104;
+        }
+        fStack_14 = (float)param_9 * fStack_5c + fStack_14;
+      }
+      fStack_30 = fStack_30 * param_1;
+      fStack_14 = fStack_14 * param_1;
+      iStack_1c = __ftol2_sse();
+      uVar8 = 0;
+      if ((float)iStack_1c <= (float)param_2 * param_8) {
+        *(undefined1 *)(in_ECX + 1) = 1;
+        if (((float)param_2 * param_8) / 2.0 <= fStack_28) {
+          if (fStack_20 < ((float)param_2 * param_8) / 2.0) {
+            fStack_6c = fStack_20 / (float)param_2;
+            fStack_70 = param_8 - fStack_6c;
+            if (fStack_30 < (float)param_2 * fStack_70 != (fStack_30 == (float)param_2 * fStack_70))
+            {
+              *in_ECX = param_7 + fStack_70;
+              pvVar4 = operator_new(0x10);
+              iStack_8 = 4;
+              if (pvVar4 == (void *)0x0) {
+                fStack_118 = 0.0;
+              }
+              else {
+                fStack_118 = (float)__0CSubPatchTreeLODLockElement__QAE_XZ();
+              }
+              iStack_8 = 0xffffffff;
+              in_ECX[2] = fStack_118;
+              cVar2 = _BuildTree_CSubPatchTreeLODLockElement__QAE_NMJPAMJJJMMJPAJ_Z
+                                (param_1,param_2,param_3,param_4,param_5,param_6 / 2,param_7,
+                                 fStack_70,param_9,param_10);
+              if (cVar2 != '\0') {
+                if (*(char *)((int)in_ECX[2] + 4) == '\0') {
+                  if (in_ECX[2] != 0.0) {
+                    ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+                  }
+                  in_ECX[2] = 0.0;
+                }
+                ExceptionList = pvStack_10;
+                return 1;
+              }
+              if (in_ECX[2] != 0.0) {
+                ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+              }
+              in_ECX[2] = 0.0;
+            }
+          }
+        }
+        else {
+          fStack_68 = fStack_28 / (float)param_2;
+          fStack_64 = param_8 - fStack_68;
+          if (fStack_14 < (float)param_2 * fStack_64 != (fStack_14 == (float)param_2 * fStack_64)) {
+            *in_ECX = param_7 + fStack_68;
+            pvVar4 = operator_new(0x10);
+            iStack_8 = 3;
+            if (pvVar4 == (void *)0x0) {
+              fStack_108 = 0.0;
+            }
+            else {
+              fStack_108 = (float)__0CSubPatchTreeLODLockElement__QAE_XZ();
+            }
+            iStack_8 = 0xffffffff;
+            in_ECX[3] = fStack_108;
+            cVar2 = _BuildTree_CSubPatchTreeLODLockElement__QAE_NMJPAMJJJMMJPAJ_Z
+                              (param_1,param_2,param_3,param_4,param_6 / 2 + param_5,param_6 / 2,
+                               param_7 + fStack_68,fStack_64,param_9,param_10);
+            if (cVar2 != '\0') {
+              if (*(char *)((int)in_ECX[3] + 4) == '\0') {
+                if (in_ECX[3] != 0.0) {
+                  ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+                }
+                in_ECX[3] = 0.0;
+              }
+              ExceptionList = pvStack_10;
+              return 1;
+            }
+            if (in_ECX[3] != 0.0) {
+              ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+            }
+            in_ECX[3] = 0.0;
+          }
+        }
+        fStack_40 = fStack_30 / (float)param_2;
+        fStack_3c = fStack_14 / (float)param_2;
+        fStack_34 = ((fStack_40 + param_8) - fStack_3c) / 2.0;
+        fStack_2c = param_8 - fStack_34;
+        *in_ECX = param_7 + fStack_34;
+        pvVar4 = operator_new(0x10);
+        iStack_8 = 5;
+        if (pvVar4 == (void *)0x0) {
+          fStack_124 = 0.0;
+        }
+        else {
+          fStack_124 = (float)__0CSubPatchTreeLODLockElement__QAE_XZ();
+        }
+        iStack_8 = 0xffffffff;
+        in_ECX[2] = fStack_124;
+        pvVar4 = operator_new(0x10);
+        iStack_8 = 6;
+        if (pvVar4 == (void *)0x0) {
+          fStack_128 = 0.0;
+        }
+        else {
+          fStack_128 = (float)__0CSubPatchTreeLODLockElement__QAE_XZ();
+        }
+        iStack_8 = 0xffffffff;
+        in_ECX[3] = fStack_128;
+        iStack_38 = 0;
+        iStack_18 = 0;
+        cVar2 = _BuildTree_CSubPatchTreeLODLockElement__QAE_NMJPAMJJJMMJPAJ_Z
+                          (param_1,param_2,param_3,param_4,param_5,param_6 / 2,param_7,fStack_34,
+                           param_9,&iStack_38);
+        if ((cVar2 == '\0') ||
+           (cVar2 = _BuildTree_CSubPatchTreeLODLockElement__QAE_NMJPAMJJJMMJPAJ_Z
+                              (param_1,param_2,param_3,param_4,param_6 / 2 + param_5,param_6 / 2,
+                               param_7 + fStack_34,fStack_2c,param_9,&iStack_18), cVar2 == '\0')) {
+          if (in_ECX[2] != 0.0) {
+            ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+          }
+          in_ECX[2] = 0.0;
+          if (in_ECX[3] != 0.0) {
+            ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+          }
+          in_ECX[3] = 0.0;
+          uVar8 = 0;
+        }
+        else {
+          if (iStack_38 < iStack_18) {
+            iStack_130 = iStack_38;
+          }
+          else {
+            iStack_130 = iStack_18;
+          }
+          *param_10 = iStack_130;
+          if (*(char *)((int)in_ECX[2] + 4) == '\0') {
+            if (in_ECX[2] != 0.0) {
+              ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+            }
+            in_ECX[2] = 0.0;
+          }
+          if (*(char *)((int)in_ECX[3] + 4) == '\0') {
+            if (in_ECX[3] != 0.0) {
+              ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+            }
+            in_ECX[3] = 0.0;
+          }
+          uVar8 = 1;
+        }
+      }
+    }
+  }
+  else {
+    *param_10 = param_6;
+    uVar8 = 1;
+  }
+  ExceptionList = pvStack_10;
+  return uVar8;
+}
+
+
+// CALLEES of ?BuildTree@CSubPatchTreeLODLockElement@@QAE_NMJPAMJJJMMJPAJ@Z:
+

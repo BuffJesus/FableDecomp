@@ -1,0 +1,3 @@
+#include <cstdio>
+#include <cstdlib>
+struct Pair{unsigned long a,b;};static void* Run(const Pair& input){unsigned char* allocation=(unsigned char*)std::malloc(0x18);if(!allocation)return 0;Pair* payload=(Pair*)(allocation+0x10);if(payload)*payload=input;return allocation;}int main(){Pair input={0x12345678UL,0xabcdef09UL};unsigned char* allocation=(unsigned char*)Run(input);if(!allocation)return 1;Pair* payload=(Pair*)(allocation+0x10);if(payload->a!=input.a||payload->b!=input.b)return 2;std::free(allocation);std::printf("BST_CREATE_DUP_PASS\n");return 0;}

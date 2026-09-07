@@ -40,6 +40,14 @@ def feature_count(value: str) -> int:
     return total
 
 
+def owner_name(row: dict[str, object]) -> str:
+    name = str(row["name"])
+    module = str(row["module"])
+    if module == "_global" or "::" in name:
+        return name
+    return f"{module}::{name}"
+
+
 def semantic_hazards(text: str) -> list[str]:
     """Return source patterns that need human review before compilation/promotion.
 
@@ -60,7 +68,8 @@ def semantic_hazards(text: str) -> list[str]:
 
     end_assignment = re.compile(
         r"\b(?P<variable>[A-Za-z_]\w*)\s*=\s*"
-        r"[^;{}\r\n]*(?:m_p\w*End|\bend(?:Entry|Iterator)?\b|\.end\s*\(\s*\))\s*;",
+        r"[^;{}\r\n]*(?:\b[A-Za-z_]\w*(?:End|Sentinel)\b|"
+        r"\bend(?:Entry|Iterator)?\b|\.end\s*\(\s*\))\s*;",
         re.IGNORECASE,
     )
     for assignment in end_assignment.finditer(source):
@@ -122,11 +131,19 @@ def main() -> int:
         for row in read_tsv(rebuild / "compile-gate" / "vc71-compiled.tsv")
         if row.get("status") == "PASS" and row.get("behavior_test") == "PASS"
     }
+    active_queue_path = rebuild / "backlog" / "active_candidate_queue.tsv"
+    bounded = {
+        row["address"].lower()
+        for row in read_tsv(active_queue_path)
+        if row.get("attempt", "").strip().lower() == "bounded"
+    } if active_queue_path.is_file() else set()
+    candidate_addresses = {row["address"].lower() for row in candidates}
+    bounded_candidates = bounded & candidate_addresses
 
     ranked: list[tuple[tuple[object, ...], dict[str, object]]] = []
     for candidate in candidates:
         address = candidate["address"].lower()
-        if address in compiled:
+        if address in compiled or address in bounded_candidates:
             continue
         signature = signatures.get(address, {})
         missing = list_count(candidate.get("missing_dependencies", ""))
@@ -203,7 +220,9 @@ def main() -> int:
         "",
         f"Generated: `{timestamp}`",
         "",
-        f"Uncompiled auto-RE candidates: **{len(ranked)}**. Showing: **{len(rows)}**. "
+        f"Uncompiled auto-RE candidates after bounded exclusions: **{len(ranked)}**. "
+        f"Showing: **{len(rows)}**. "
+        f"Already-bounded parity residues excluded: **{len(bounded_candidates)}**. "
         f"Semantic-review quarantine: **{len(hazard_rows)}**.",
         "",
         "Ranking favors checker/integrity/signature PASS and candidates without known source-level hazards, then the smallest declaration, dependency, VC7.1, and source-size repair surface. Structural fidelity does not by itself make an unsafe C++ expression promotable; every promotion still needs semantic review, a focused behavior oracle, and retail comparison.",
@@ -212,7 +231,7 @@ def main() -> int:
         "|---:|---|---|---|---|---|---:|---:|---:|---|",
     ]
     for row in rows:
-        owner = row["name"] if row["module"] == "_global" else f"{row['module']}::{row['name']}"
+        owner = owner_name(row)
         blocker = str(row["first_blocker"]).replace("|", "\\|")
         lines.append(
             f"| {row['rank']} | `0x{str(row['address']).upper()}` | `{owner}` | `{row['lane']}` | "
@@ -231,7 +250,7 @@ def main() -> int:
         ]
     )
     for row in hazard_rows[:25]:
-        owner = row["name"] if row["module"] == "_global" else f"{row['module']}::{row['name']}"
+        owner = owner_name(row)
         lines.append(
             f"| `0x{str(row['address']).upper()}` | `{owner}` | {row['semantic_hazards']} |"
         )
@@ -243,7 +262,7 @@ def main() -> int:
     temporary.replace(backlog / "PROMOTION_QUEUE.md")
     print(
         f"promotion_candidates={len(ranked)} wrote={len(rows)} "
-        f"semantic_quarantine={len(hazard_rows)}"
+        f"bounded_excluded={len(bounded_candidates)} semantic_quarantine={len(hazard_rows)}"
     )
     return 0
 

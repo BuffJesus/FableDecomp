@@ -36,8 +36,11 @@ def main() -> int:
     if policy.get("engineVerificationIsNotBindingVerification") is not True:
         errors.append("overlay policy must separate engine verification from binding verification")
     fse_functions = overlay.get("functions", [])
-    if len(fse_functions) != 931:
-        errors.append(f"expected 931 FSE functions, found {len(fse_functions)}")
+    # AlbionSecrets' 2025-11-05 tutorial header and the corresponding
+    # LuaManager registrations expose 933 unique Lua-facing names.  The older
+    # 931-row snapshot omitted the two conversation-construction functions.
+    if len(fse_functions) != 933:
+        errors.append(f"expected 933 FSE functions, found {len(fse_functions)}")
     names = [(item.get("scope"), item.get("name")) for item in fse_functions]
     if len(names) != len(set(names)):
         errors.append("duplicate scope/name rows in FSE overlay")

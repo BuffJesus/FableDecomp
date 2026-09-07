@@ -1,11 +1,22 @@
-// Forwarder to a member of the sub-object pointer at this+0x1c0. VC7.1 tail-calls
-// a void member->void member forward, so retail is `mov ecx,[ecx+d]; jmp rel32`.
-#pragma pack(push,1)
-struct Sub { void Run(); };
-struct T {
-    char pad[0x1c0];
-    Sub* sub;
-    void Run();
+namespace NPlayerGui
+{
+class CDrawDamage
+{
+public:
+    void AddDamageChange(float amount, bool isDamage);
 };
-#pragma pack(pop)
-void T::Run() { this->sub->Run(); }
+}
+
+class CPlayerGui
+{
+public:
+    unsigned char unused00[0x1C0];
+    NPlayerGui::CDrawDamage* drawDamage;
+
+    void AddDamageChange(float amount, bool isDamage);
+};
+
+void CPlayerGui::AddDamageChange(float amount, bool isDamage)
+{
+    drawDamage->AddDamageChange(amount, isDamage);
+}

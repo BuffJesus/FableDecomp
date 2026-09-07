@@ -1,6 +1,6 @@
 # FSE-reversed API surface (RE roadmap)
 
-Source: `fse_api_manifest.json` — **931 functions** across **2 categories**, referencing **1 engine types**.
+Source: `fse_api_manifest.json` — **933 functions** across **2 categories**, referencing **1 engine types**.
 
 Each row is a function FableScriptExtender already reverse-engineered well enough to call. For decompilation, each is a *named target*: find its address in Ghidra (via strings/xrefs or the FSE DLL's call sites), apply the name + signature, then decompile outward from it.
 
@@ -95,7 +95,7 @@ Each row is a function FableScriptExtender already reverse-engineered well enoug
 - `void WaitForEntityToFinishPerformingTasks_NonBlocking(...)` — Entity: Waits for entity to finish performing tasks. Starts asynchronously and returns immediately.
 - `void Wait_NonBlocking(...)` — Entity: Waits for the specified duration. Starts asynchronously and returns immediately.
 
-## Quest API  (843)
+## Quest API  (845)
 
 - `void ActivateQuest(...)` — Quest [blocking]: Activates quest.
 - `void AddBoast(...)` — Quest [blocking]: Adds boast.
@@ -109,6 +109,7 @@ Each row is a function FableScriptExtender already reverse-engineered well enoug
 - `void AddGossipVillage(...)` — Quest [blocking]: Adds gossip village.
 - `void AddGossipVillages(...)` — Quest [blocking]: Adds gossip villages.
 - `void AddItemToContainer(...)` — Quest [blocking]: Adds item to container.
+- `void AddLineToConversation(...)` — Quest: Adds a dialogue line to an existing ambient conversation.
 - `void AddNewRumourToCategory(...)` — Quest [blocking]: Adds new rumour to category.
 - `void AddQuestCard(...)` — Quest [blocking]: Adds quest card.
 - `int AddQuestInfoBar(...)` — Quest [blocking]: Adds quest info bar.
@@ -918,6 +919,7 @@ Each row is a function FableScriptExtender already reverse-engineered well enoug
 - `void ShowMessageWithButtons(...)` — Quest [blocking]: Shows message with buttons.
 - `void ShowOnScreenMessageWithFont(...)` — Quest [blocking]: Shows on screen message with font.
 - `void SmashAllWindowsWithinRadiusOfPoint(...)` — Quest [blocking]: Invokes smash all windows within radius of point.
+- `int StartAmbientConversation(...)` — Quest: Creates an ambient conversation and returns its conversation ID.
 - `void StartCountdownTimer(...)` — Quest [blocking]: Invokes start countdown timer.
 - `void StartMovieSequence(...)` — Quest [blocking]: Invokes start movie sequence.
 - `void StartSneaking(...)` — Quest [blocking]: Invokes start sneaking.

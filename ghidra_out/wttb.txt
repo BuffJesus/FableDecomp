@@ -1,0 +1,211 @@
+//=== WriteTextureToBank @ 00b2bd80 (seed 0x00b2bd80) ===
+
+/* [bsim sim=0.5371453702897117 <- ego_r]
+   private: void __thiscall CEngineSurfaceCompositionManager::WriteTextureToBank(class CTexture
+   &,class CGraphicDataBank &,unsigned long,bool) */
+
+void __thiscall
+CEngineSurfaceCompositionManager::WriteTextureToBank
+          (CEngineSurfaceCompositionManager *this,CTexture *param_1,CGraphicDataBank *param_2,
+          ulong param_3,bool param_4)
+
+{
+  undefined4 uVar1;
+  undefined4 uVar2;
+  ulong uVar3;
+  uint uVar4;
+  long lVar5;
+  int iVar6;
+  undefined4 *puVar7;
+  void *pvVar8;
+  uint uVar9;
+  ulong uVar10;
+  undefined4 ***pppuVar11;
+  undefined4 ***pppuVar12;
+  undefined1 local_94;
+  undefined4 **local_90;
+  undefined4 **local_8c;
+  undefined1 *local_88;
+  ulong local_84 [2];
+  uint local_7c [2];
+  long local_74;
+  undefined2 local_70;
+  undefined2 local_6e;
+  undefined2 local_6c;
+  undefined2 local_6a;
+  undefined2 local_68;
+  undefined2 local_66;
+  undefined4 local_64;
+  bool local_60;
+  undefined1 local_5f;
+  byte local_5e;
+  long local_5c;
+  undefined **local_54 [4];
+  CMemoryDataOutputStream local_44 [24];
+  undefined1 local_2c [12];
+  undefined4 *local_20;
+  CMemoryDataInputStream local_1c [28];
+  
+  uVar10 = 0;
+  uVar4 = CTexture::GetNoLevels(param_1);
+  uVar9 = 0;
+  if (uVar4 != 0) {
+    do {
+      lVar5 = CTexture::GetLevelByteLength(param_1,uVar9);
+      uVar10 = uVar10 + lVar5;
+      uVar9 = uVar9 + 1;
+    } while (uVar9 < uVar4);
+  }
+  CBankFile::InternalResizeEntryData((CBankFile *)param_2,param_3,uVar10);
+  local_74 = CTexture::GetLevelByteLength(param_1,0);
+  local_84[0] = 0;
+  local_7c[0] = 0;
+  if (uVar4 != 0) {
+    do {
+      CTexture::GetNoLevels(param_1);
+      uVar10 = CSurface::GetByteLength((CSurface *)local_54);
+      pppuVar11 = (undefined4 ***)0x0;
+      local_90 = (undefined4 **)0x0;
+      local_8c = (undefined4 **)0x0;
+      local_88 = (undefined1 *)0x0;
+      if (uVar10 != 0) {
+        pppuVar11 = malloc(uVar10);
+      }
+      local_88 = (undefined1 *)((int)pppuVar11 + uVar10);
+      pppuVar12 = pppuVar11;
+      for (uVar9 = uVar10 >> 2; uVar9 != 0; uVar9 = uVar9 - 1) {
+        *pppuVar12 = (undefined4 **)0x0;
+        pppuVar12 = pppuVar12 + 1;
+      }
+      for (uVar9 = uVar10 & 3; uVar9 != 0; uVar9 = uVar9 - 1) {
+        *(undefined1 *)pppuVar12 = 0;
+        pppuVar12 = (undefined4 ***)((int)pppuVar12 + 1);
+      }
+      local_8c = (undefined4 **)((int)pppuVar11 + uVar10);
+      local_90 = pppuVar11;
+      CSurface::ReadOnlyLock((CSurface *)local_54,(ulong)local_2c);
+      pppuVar11 = (undefined4 ***)local_90;
+      if (local_8c == local_90) {
+        pppuVar11 = &local_90;
+      }
+      puVar7 = local_20;
+      for (uVar9 = uVar10 >> 2; uVar9 != 0; uVar9 = uVar9 - 1) {
+        *pppuVar11 = (undefined4 **)*puVar7;
+        puVar7 = puVar7 + 1;
+        pppuVar11 = pppuVar11 + 1;
+      }
+      for (uVar9 = uVar10 & 3; uVar9 != 0; uVar9 = uVar9 - 1) {
+        *(undefined1 *)pppuVar11 = *(undefined1 *)puVar7;
+        puVar7 = (undefined4 *)((int)puVar7 + 1);
+        pppuVar11 = (undefined4 ***)((int)pppuVar11 + 1);
+      }
+      CVertexBufferWin32::DoUnlock((CVertexBufferWin32 *)local_54);
+      uVar3 = local_84[0];
+      pppuVar11 = (undefined4 ***)local_90;
+      if (local_8c == local_90) {
+        pppuVar11 = &local_90;
+      }
+      CBankFile::InternalWriteEntryData((CBankFile *)param_2,param_3,local_84[0],pppuVar11,uVar10);
+      local_84[0] = uVar3 + uVar10;
+      if ((undefined4 ***)local_90 != (undefined4 ***)0x0) {
+        free(local_90);
+      }
+      local_54[0] = &PTR__vector_deleting_destructor__0122f84c;
+      CSurface::Uninitialise((CSurface *)local_54);
+      local_7c[0] = local_7c[0] + 1;
+    } while (local_7c[0] < uVar4);
+  }
+  iVar6 = CTexture::GetDimensions(param_1,(ulong)local_84);
+  uVar1 = *(undefined4 *)(iVar6 + 4);
+  puVar7 = (undefined4 *)CTexture::GetDimensions(param_1,(ulong)local_7c);
+  uVar2 = *puVar7;
+  C3DAnimationSequenceData::C3DAnimationSequenceData((C3DAnimationSequenceData *)&local_70);
+  local_70 = (undefined2)uVar2;
+  local_6e = (undefined2)uVar1;
+  local_6c = 1;
+  local_66 = 1;
+  local_6a = local_70;
+  local_68 = local_6e;
+  puVar7 = (undefined4 *)CTexture::GetPixelFormat(param_1);
+  local_64 = *puVar7;
+  local_94 = (undefined1)uVar4;
+  local_60 = param_4;
+  local_5e = local_5e & 0xfe;
+  local_5f = local_94;
+  local_5c = local_74;
+  CMemoryDataOutputStream::CMemoryDataOutputStream(local_44);
+  CGraphicDataBank::CGraphicHeader::Save((CGraphicHeader *)&local_70,(CDataOutputStream *)local_44);
+  uVar10 = CCreatureActionBase::GetFramesRemaining((CCreatureActionBase *)local_44);
+  pvVar8 = CMemoryDataOutputStream::PeekData(local_44);
+  CMemoryDataInputStream::CMemoryDataInputStream(local_1c,pvVar8,uVar10);
+  lVar5 = CCreatureActionBase::GetFramesRemaining((CCreatureActionBase *)local_44);
+  CBankFile_LoadEntryData(param_3,local_1c,lVar5);
+  CChunkedFileChunk::~CChunkedFileChunk((CChunkedFileChunk *)local_1c);
+  CCompressedMemoryDataInputStream::~CCompressedMemoryDataInputStream
+            ((CCompressedMemoryDataInputStream *)local_44);
+  return;
+}
+
+
+// CALLEES of WriteTextureToBank:
+//   009f2fc0  GetByteLength
+//   009cc8b0  CBankFile_LoadEntryData
+//   009f9db0  GetDimensions
+//   009f9e80  GetLevelByteLength
+//   009cccd0  InternalWriteEntryData
+//   009f9df0  GetNoLevels
+//   009fd6c0  C3DAnimationSequenceData
+//   009f3010  ReadOnlyLock
+//   00994b40  GetFramesRemaining
+//   00995e70  PeekData
+//   009f9e00  GetNoLevels
+//   00bfea0e  malloc
+//   00996b30  ~CCompressedMemoryDataInputStream
+//   00993b10  ~CChunkedFileChunk
+//   00bfea14  free
+//   009f9d80  GetPixelFormat
+//   009fd1e0  Save
+//   009d1260  InternalResizeEntryData
+//   00994930  CMemoryDataInputStream
+//   00996af0  CMemoryDataOutputStream
+//   009f2dc0  DoUnlock
+//   009f2e20  Uninitialise
+
+//=== CCompositeSurfaceCache @ 00b2c400 (seed 0x00b2c400) ===
+
+/* [bsim sim=0.9999999999999998 <- ego_r]
+   public: __thiscall CCompositeSurfaceCache::CCompositeSurfaceCache(class
+   CEngineSurfaceCompositionManager &) */
+
+CCompositeSurfaceCache * __thiscall
+CCompositeSurfaceCache::CCompositeSurfaceCache
+          (CCompositeSurfaceCache *this,CEngineSurfaceCompositionManager *param_1)
+
+{
+  CResource::CResource((CResource *)this);
+  *(undefined ***)this = &PTR__vector_deleting_destructor__012a116c;
+  *(CEngineSurfaceCompositionManager **)(this + 0x1c) = param_1;
+  *(undefined4 *)(this + 0x20) = 0;
+  *(undefined4 *)(this + 0x24) = 0;
+  *(undefined4 *)(this + 0x28) = 0;
+  *(undefined4 *)(this + 0x2c) = 0;
+  *(undefined4 *)(this + 0x30) = 0;
+  *(undefined4 *)(this + 0x34) = 0;
+  *(undefined4 *)(this + 0x38) = 0;
+  *(undefined4 *)(this + 0x3c) = 0;
+  *(undefined4 *)(this + 0x40) = 0;
+  *(undefined4 *)(this + 0x44) = 0;
+  *(undefined4 *)(this + 0x4c) = 0;
+  NHeroInformationScreens::CBase::CBase((CBase *)(this + 0x50));
+  *(undefined ***)(this + 0x50) = &PTR__vector_deleting_destructor__0129c880;
+  *(undefined4 *)(this + 0x54) = 0;
+  *(undefined4 *)(this + 0x58) = 0;
+  *(undefined4 *)(this + 0x5c) = 0;
+  return this;
+}
+
+
+// CALLEES of CCompositeSurfaceCache:
+//   009fbec0  CResource
+//   0099a2d0  CBase
+

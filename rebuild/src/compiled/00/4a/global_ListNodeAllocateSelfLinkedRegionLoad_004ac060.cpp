@@ -1,0 +1,3 @@
+#include <stdlib.h>
+struct ListSentinel_004ac060 { ListSentinel_004ac060* next; ListSentinel_004ac060* previous; unsigned long reserved; };
+void** __fastcall ListNode_AllocateSelfLinked_RegionLoad(void** owner, void* unusedRegister, void* unusedStack) { (void)unusedRegister; (void)unusedStack; *owner = 0; ListSentinel_004ac060* node = (ListSentinel_004ac060*)malloc(0x0c); node->next = node; node->previous = node; *owner = node; return owner; }

@@ -1,0 +1,3 @@
+#include <cstdio>
+#include <cstdlib>
+struct Node{Node* next;Node* previous;unsigned char rest[0x18];};static void** __fastcall Run(void** out,void*,void*){*(unsigned long*)out&=0;Node* n=(Node*)std::malloc(0x20);n->next=n;n->previous=n;*out=n;return out;}int main(){void* head=(void*)1;if(Run(&head,0,0)!=&head||!head)return 1;Node* n=(Node*)head;if(n->next!=n||n->previous!=n)return 2;((unsigned char*)n)[0x1f]=0x5a;std::free(n);std::printf("LINKED_LIST_INITIALIZE32_PASS\n");return 0;}

@@ -1,0 +1,329 @@
+background oracle: WLD world=(3104,2560), neighboring maps=7
+  neighbor world=(3104,2624) size=64x32 FinalAlbion\Darkwood3_Leadout_01.lev
+  neighbor world=(3040,2560) size=64x64 FinalAlbion\Darkwood_4.lev
+  neighbor world=(2976,2496) size=128x64 FinalAlbion\Darkwood_Filler_09.lev
+  neighbor world=(3104,2464) size=64x96 FinalAlbion\Darkwood_Filler_10.lev
+  neighbor world=(3168,2496) size=64x96 FinalAlbion\Darkwood_Filler_11.lev
+  neighbor world=(3168,2592) size=64x64 FinalAlbion\Darkwood_Filler_13.lev
+  neighbor world=(3008,2624) size=96x64 FinalAlbion\Darkwood_Filler_21.lev
+background oracle source parity: foreground heights mismatched=2/11843 max-difference=0.953125
+background oracle source parity: foreground normals mismatched=245/11843 unique-points=77
+background oracle source parity: max normal-component difference=0.00102508068
+  source-height mismatch local=(64,64) stb=83.40625 lev=82.453125 delta=+0.953125
+@0x22000 rect=(0,0 64x64) bands=1,5,7 block=(0x22000,0x9c4,0x932) lod=3
+  lod band=5 remap=5 block=(0x3c000,0x53a5,0x0)
+    payload grid=64x64 origin=(0,0) vertices=168 indices=302 bytes=11772 sparse-grid
+    predicted vertices=168 indices=302 MATCH
+  lod band=6 remap=5 block=(0x0,0x0,0x0)
+  lod band=7 remap=7 block=(0x41800,0x4ae,0x0)
+    payload grid=64x64 origin=(0,0) vertices=21 indices=30 bytes=1387 sparse-grid
+    predicted vertices=21 indices=30 MATCH
+  @0x22932 rect=(0,0 32x64) bands=1,4,5 block=(0x22000,0x9c4,0x47b) lod=2
+    lod band=4 remap=4 block=(0x2f800,0xc7fb,0x0)
+      payload grid=32x64 origin=(0,0) vertices=277 indices=505 bytes=13844 sparse-grid
+      predicted vertices=277 indices=505 MATCH
+    lod band=5 remap=5 block=(0x3c000,0x53a5,0x2bd7)
+      payload grid=32x64 origin=(0,0) vertices=106 indices=184 bytes=6555 sparse-grid
+      predicted vertices=106 indices=184 MATCH
+    @0x2247b rect=(0,0 32x32) bands=1,3,4 block=(0x22000,0x9c4,0x233) lod=2
+      lod band=3 remap=3 block=(0x4e000,0xc0a9,0x0)
+        payload grid=32x32 origin=(0,0) vertices=316 indices=587 bytes=14329 sparse-grid
+        predicted vertices=309 indices=574 MISMATCH
+        delta rect=(0,0 32x32) band=3 vertices=-7 triangles=-13 MAP-BOUNDARY
+        retail-only adaptive points=7: (10,30:t2) (14,30:t2) (26,22:t2) (30,2:t2) (30,18:t2) (30,22:t2) (32,20:t2)
+          threshold-trace (10,30) endpoints=(12,28)-(8,32) h=71.578125 mid=71.578125 err=0 term=0 dots=(0.948300779,0.945969343) nerr=0.0540306568 dist=2.82842708 nterm=30.5643559 base=30.5643559
+          threshold-trace (14,30) endpoints=(12,28)-(16,32) h=74.6796875 mid=74.7617188 err=0.08203125 term=16.40625 dots=(0.957644463,0.984586358) nerr=0.0423555374 dist=2.82842708 nterm=23.9599094 base=23.9599094
+          threshold-trace (26,22) endpoints=(28,20)-(24,24) h=69.9765625 mid=70.1992188 err=0.22265625 term=44.53125 dots=(0.999208033,0.875695407) nerr=0.124304593 dist=2.82842708 nterm=70.3172913 base=70.3172913
+          threshold-trace (30,2) endpoints=(32,0)-(28,4) h=76.890625 mid=76.546875 err=0.34375 term=68.75 dots=(0.996842086,0.994276643) nerr=0.0057233572 dist=2.82842708 nterm=3.23761964 base=68.75
+          threshold-trace (30,18) endpoints=(32,16)-(28,20) h=70.09375 mid=70.0585938 err=0.03515625 term=7.03125 dots=(0.99904722,0.999375582) nerr=0.000952780247 dist=2.82842708 nterm=0.538973868 base=7.03125
+          threshold-trace (30,22) endpoints=(28,20)-(32,24) h=70.140625 mid=69.9375 err=0.203125 term=40.625 dots=(0.999070823,0.980362713) nerr=0.0196372867 dist=2.82842708 nterm=11.1085262 base=40.625
+          threshold-trace (32,20) endpoints=(32,16)-(32,24) h=70.1328125 mid=69.9257812 err=0.20703125 term=41.40625 dots=(0.999687552,0.976466358) nerr=0.0235336423 dist=4 nterm=18.8269138 base=41.40625
+        extent-count matches: none
+      lod band=4 remap=4 block=(0x2f800,0xc7fb,0x3418)
+        payload grid=32x32 origin=(0,0) vertices=131 indices=232 bytes=11103 sparse-grid
+        predicted vertices=131 indices=232 MATCH
+      @0x22233 rect=(0,0 32x16) bands=1,3,3 block=(0x22000,0x9c4,0xe8) lod=1
+        lod band=3 remap=3 block=(0x4e000,0xc0a9,0x35eb)
+          payload grid=32x16 origin=(0,0) vertices=184 indices=332 bytes=11974 sparse-grid
+          predicted vertices=184 indices=332 MATCH
+        @0x220e8 rect=(0,0 16x16) bands=1,2,3 block=(0x22000,0x9c4,0x56) lod=2
+          lod band=2 remap=2 block=(0x5a800,0x937b,0x0)
+            payload grid=16x16 origin=(0,0) vertices=147 indices=253 bytes=11313 sparse-grid
+            predicted vertices=147 indices=253 MATCH
+          lod band=3 remap=3 block=(0x4e000,0xc0a9,0x631c)
+            payload grid=16x16 origin=(0,0) vertices=97 indices=167 bytes=4322 sparse-grid
+            predicted vertices=97 indices=167 MATCH
+          @0x22056 rect=(0,0 16x8) bands=1,1,2 block=(0x0,0x0,0x0) lod=2
+            lod band=1 remap=1 block=(0x42000,0xb96b,0x0)
+              payload grid=16x8 origin=(0,0) vertices=153 indices=573 bytes=6115
+              predicted vertices=153 indices=256 MISMATCH
+            lod band=2 remap=2 block=(0x5a800,0x937b,0x2a7e)
+              payload grid=16x8 origin=(0,0) vertices=69 indices=113 bytes=5880 sparse-grid
+              predicted vertices=69 indices=113 MATCH
+          @0x2209f rect=(0,8 16x8) bands=1,1,2 block=(0x0,0x0,0x0) lod=2
+            lod band=1 remap=1 block=(0x42000,0xb96b,0x1663)
+              payload grid=16x8 origin=(0,8) vertices=153 indices=573 bytes=10235
+              predicted vertices=153 indices=256 MISMATCH
+            lod band=2 remap=2 block=(0x5a800,0x937b,0x409d)
+              payload grid=16x8 origin=(0,8) vertices=88 indices=140 bytes=10196 sparse-grid
+              predicted vertices=88 indices=140 MATCH
+        @0x22131 rect=(16,0 16x16) bands=1,1,3 block=(0x0,0x0,0x0) lod=3
+          lod band=1 remap=1 block=(0x42000,0xb96b,0x3bd2)
+            payload grid=16x16 origin=(16,0) vertices=289 indices=1085 bytes=11545
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0x5a800,0x937b,0x668d)
+            payload grid=16x16 origin=(16,0) vertices=186 indices=331 bytes=11930 sparse-grid
+            predicted vertices=156 indices=274 MISMATCH
+            delta rect=(16,0 16x16) band=2 vertices=-30 triangles=-57 MAP-BOUNDARY
+            retail-only adaptive points=30: (1,1:t1) (1,3:t1) (1,5:t1) (1,7:t1) (2,4:t1) (3,1:t1) (3,3:t1) (3,5:t1) (4,2:t1) (5,1:t1) (5,3:t1) (5,7:t1) (6,0:t1) (7,1:t1) (7,3:t1) (11,3:t1) ...
+              threshold-trace (17,1) endpoints=(16,0)-(18,2) h=83.078125 mid=82.953125 err=0.125 term=25 dots=(0.998050869,0.954836607) nerr=0.045163393 dist=1.41421354 nterm=12.7741365 base=25
+              threshold-trace (17,3) endpoints=(18,2)-(16,4) h=84.2734375 mid=84.4492188 err=0.17578125 term=35.15625 dots=(0.989394128,0.978642285) nerr=0.0213577151 dist=1.41421354 nterm=6.040874 base=35.15625
+              threshold-trace (17,5) endpoints=(16,4)-(18,6) h=85.296875 mid=85.0742188 err=0.22265625 term=44.53125 dots=(0.935743153,0.89937079) nerr=0.10062921 dist=1.41421354 nterm=28.4622364 base=44.53125
+              threshold-trace (17,7) endpoints=(18,6)-(16,8) h=85.0390625 mid=85.0039062 err=0.03515625 term=7.03125 dots=(0.925201416,0.991931319) nerr=0.074798584 dist=1.41421354 nterm=21.1562328 base=21.1562328
+              threshold-trace (18,4) endpoints=(16,4)-(20,4) h=84.6875 mid=84.4570312 err=0.23046875 term=46.09375 dots=(0.963360727,0.945011795) nerr=0.0549882054 dist=2 nterm=21.9952812 base=46.09375
+              threshold-trace (19,1) endpoints=(20,0)-(18,2) h=83.3828125 mid=83.2421875 err=0.140625 term=28.125 dots=(0.993928909,0.980303288) nerr=0.0196967125 dist=1.41421354 nterm=5.57107162 base=28.125
+              threshold-trace (19,3) endpoints=(18,2)-(20,4) h=84.0703125 mid=83.828125 err=0.2421875 term=48.4375 dots=(0.932225585,0.963332891) nerr=0.067774415 dist=1.41421354 nterm=19.1694984 base=48.4375
+              threshold-trace (19,5) endpoints=(20,4)-(18,6) h=84.59375 mid=84.453125 err=0.140625 term=28.125 dots=(0.996541262,0.938411474) nerr=0.0615885258 dist=1.41421354 nterm=17.4198666 base=28.125
+              threshold-trace (20,2) endpoints=(20,0)-(20,4) h=83.40625 mid=83.25 err=0.15625 term=31.25 dots=(0.990274489,0.979235709) nerr=0.0207642913 dist=2 nterm=8.30571651 base=31.25
+              threshold-trace (21,1) endpoints=(20,0)-(22,2) h=82.6640625 mid=82.4921875 err=0.171875 term=34.375 dots=(0.97444272,0.943861961) nerr=0.0561380386 dist=1.41421354 nterm=15.8782349 base=34.375
+              threshold-trace (21,3) endpoints=(22,2)-(20,4) h=83.0078125 mid=83.078125 err=0.0703125 term=14.0625 dots=(0.995318651,0.993496537) nerr=0.00650346279 dist=1.41421354 nterm=1.83945704 base=14.0625
+              threshold-trace (21,7) endpoints=(22,6)-(20,8) h=81.828125 mid=81.5585938 err=0.26953125 term=53.90625 dots=(0.992657363,0.999646425) nerr=0.00734263659 dist=1.41421354 nterm=2.07681108 base=53.90625
+              threshold-trace (22,0) endpoints=(20,0)-(24,0) h=81.7265625 mid=81.6601562 err=0.06640625 term=13.28125 dots=(0.912818432,0.911745846) nerr=0.0882541537 dist=2 nterm=35.3016624 base=35.3016624
+              threshold-trace (23,1) endpoints=(24,0)-(22,2) h=81.2421875 mid=81.4882812 err=0.24609375 term=49.21875 dots=(0.88174355,0.998405993) nerr=0.11825645 dist=1.41421354 nterm=33.4479752 base=49.21875
+              threshold-trace (23,3) endpoints=(22,2)-(24,4) h=81.015625 mid=80.7734375 err=0.2421875 term=48.4375 dots=(0.939533055,0.957041264) nerr=0.0604669452 dist=1.41421354 nterm=17.1026344 base=48.4375
+              threshold-trace (27,3) endpoints=(26,2)-(28,4) h=77.4765625 mid=77.5625 err=0.0859375 term=17.1875 dots=(0.985949755,0.994635522) nerr=0.0140502453 dist=1.41421354 nterm=3.97400928 base=17.1875
+            extent-count matches: none
+          lod band=3 remap=3 block=(0x4e000,0xc0a9,0x738f)
+            payload grid=16x16 origin=(16,0) vertices=96 indices=165 bytes=6306 sparse-grid
+            predicted vertices=96 indices=165 MATCH
+      @0x2226f rect=(0,16 32x16) bands=1,3,3 block=(0x22000,0x9c4,0x187) lod=1
+        lod band=3 remap=3 block=(0x4e000,0xc0a9,0x8b3b)
+          payload grid=32x16 origin=(0,16) vertices=141 indices=242 bytes=7292 sparse-grid
+          predicted vertices=141 indices=242 MATCH
+        @0x22187 rect=(0,16 16x16) bands=1,1,3 block=(0x0,0x0,0x0) lod=3
+          lod band=1 remap=1 block=(0x42000,0xb96b,0x6644)
+            payload grid=16x16 origin=(0,16) vertices=289 indices=1085 bytes=11505
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0x23000,0x4169,0x0)
+            payload grid=16x16 origin=(0,16) vertices=133 indices=230 bytes=6999 sparse-grid
+            predicted vertices=133 indices=230 MATCH
+          lod band=3 remap=3 block=(0x4e000,0xc0a9,0xa6b4)
+            payload grid=16x16 origin=(0,16) vertices=73 indices=122 bytes=2903 sparse-grid
+            predicted vertices=73 indices=122 MATCH
+        @0x221dd rect=(16,16 16x16) bands=1,1,3 block=(0x0,0x0,0x0) lod=3
+          lod band=1 remap=1 block=(0x42000,0xb96b,0x8faf)
+            payload grid=16x16 origin=(16,16) vertices=289 indices=1085 bytes=11541
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0x23000,0x4169,0x1a2f)
+            payload grid=16x16 origin=(16,16) vertices=116 indices=197 bytes=10821 sparse-grid
+            predicted vertices=116 indices=197 MATCH
+          lod band=3 remap=3 block=(0x4e000,0xc0a9,0xb187)
+            payload grid=16x16 origin=(16,16) vertices=75 indices=120 bytes=4022 sparse-grid
+            predicted vertices=75 indices=120 MATCH
+    @0x224c4 rect=(0,32 32x32) bands=1,3,4 block=(0x22000,0x9c4,0x403) lod=2
+      lod band=3 remap=3 block=(0x78800,0xad4f,0x0)
+        payload grid=32x32 origin=(0,32) vertices=322 indices=597 bytes=14473 sparse-grid
+        predicted vertices=322 indices=597 MATCH
+      lod band=4 remap=4 block=(0x2f800,0xc7fb,0x5dcf)
+        payload grid=32x32 origin=(0,32) vertices=155 indices=273 bytes=5431 sparse-grid
+        predicted vertices=155 indices=273 MATCH
+      @0x22403 rect=(0,32 16x32) bands=1,3,3 block=(0x22000,0x9c4,0x2ab) lod=1
+        lod band=3 remap=3 block=(0x78800,0xad4f,0x36bc)
+          payload grid=16x32 origin=(0,32) vertices=145 indices=257 bytes=7255 sparse-grid
+          predicted vertices=145 indices=257 MATCH
+        @0x222ab rect=(0,32 16x16) bands=1,1,3 block=(0x0,0x0,0x0) lod=3
+          lod band=1 remap=1 block=(0x64000,0xa8a1,0x0)
+            payload grid=16x16 origin=(0,32) vertices=289 indices=1085 bytes=11541
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0x6f000,0x961b,0x0)
+            payload grid=16x16 origin=(0,32) vertices=114 indices=193 bytes=6666 sparse-grid
+            predicted vertices=114 indices=193 MATCH
+          lod band=3 remap=3 block=(0x78800,0xad4f,0x522c)
+            payload grid=16x16 origin=(0,32) vertices=73 indices=120 bytes=2924 sparse-grid
+            predicted vertices=73 indices=120 MATCH
+        @0x22301 rect=(0,48 16x16) bands=1,1,3 block=(0x0,0x0,0x0) lod=3
+          lod band=1 remap=1 block=(0x64000,0xa8a1,0x2a45)
+            payload grid=16x16 origin=(0,48) vertices=289 indices=1085 bytes=11505
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0x6f000,0x961b,0x1903)
+            payload grid=16x16 origin=(0,48) vertices=131 indices=229 bytes=11085 sparse-grid
+            predicted vertices=131 indices=229 MATCH
+          lod band=3 remap=3 block=(0x78800,0xad4f,0x5d0d)
+            payload grid=16x16 origin=(0,48) vertices=82 indices=137 bytes=4083 sparse-grid
+            predicted vertices=82 indices=137 MATCH
+      @0x2243f rect=(16,32 16x32) bands=1,3,3 block=(0x22000,0x9c4,0x357) lod=1
+        lod band=3 remap=3 block=(0x78800,0xad4f,0x6c81)
+          payload grid=16x32 origin=(16,32) vertices=193 indices=340 bytes=8139 sparse-grid
+          predicted vertices=193 indices=340 MATCH
+        @0x22357 rect=(16,32 16x16) bands=1,1,3 block=(0x0,0x0,0x0) lod=3
+          lod band=1 remap=1 block=(0x64000,0xa8a1,0x543d)
+            payload grid=16x16 origin=(16,32) vertices=289 indices=1085 bytes=11505
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0x6f000,0x961b,0x4162)
+            payload grid=16x16 origin=(16,32) vertices=166 indices=290 bytes=11649 sparse-grid
+            predicted vertices=166 indices=290 MATCH
+          lod band=3 remap=3 block=(0x78800,0xad4f,0x8ba1)
+            payload grid=16x16 origin=(16,32) vertices=110 indices=184 bytes=4607 sparse-grid
+            predicted vertices=110 indices=184 MATCH
+        @0x223ad rect=(16,48 16x16) bands=1,1,3 block=(0x0,0x0,0x0) lod=3
+          lod band=1 remap=1 block=(0x64000,0xa8a1,0x7ea3)
+            payload grid=16x16 origin=(16,48) vertices=289 indices=1085 bytes=11501
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0x6f000,0x961b,0x6d2b)
+            payload grid=16x16 origin=(16,48) vertices=139 indices=245 bytes=11166 sparse-grid
+            predicted vertices=139 indices=245 MATCH
+          lod band=3 remap=3 block=(0x78800,0xad4f,0x9d18)
+            payload grid=16x16 origin=(16,48) vertices=93 indices=156 bytes=4285 sparse-grid
+            predicted vertices=93 indices=156 MATCH
+  @0x2297b rect=(32,0 32x64) bands=1,4,5 block=(0x22000,0x9c4,0x8a0) lod=2
+    lod band=4 remap=4 block=(0x2f800,0xc7fb,0x7255)
+      payload grid=32x64 origin=(32,0) vertices=243 indices=433 bytes=13177 sparse-grid
+      predicted vertices=243 indices=433 MATCH
+    lod band=5 remap=5 block=(0x3c000,0x53a5,0x44bf)
+      payload grid=32x64 origin=(32,0) vertices=73 indices=118 bytes=4018 sparse-grid
+      predicted vertices=73 indices=118 MATCH
+    @0x228a0 rect=(32,0 32x32) bands=1,3,4 block=(0x22000,0x9c4,0x64b) lod=2
+      lod band=3 remap=3 block=(0x27800,0x7efa,0x0)
+        payload grid=32x32 origin=(32,0) vertices=225 indices=398 bytes=12814 sparse-grid
+        predicted vertices=225 indices=398 MATCH
+      lod band=4 remap=4 block=(0x2f800,0xc7fb,0xa23d)
+        payload grid=32x32 origin=(32,0) vertices=88 indices=137 bytes=4394 sparse-grid
+        predicted vertices=85 indices=131 MISMATCH
+        delta rect=(32,0 32x32) band=4 vertices=-3 triangles=-6 MAP-BOUNDARY
+        retail-only adaptive points=3: (4,20:t3) (12,12:t3) (12,20:t3)
+          threshold-trace (36,20) endpoints=(32,16)-(40,24) h=69.8359375 mid=69.8867188 err=0.05078125 term=10.15625 dots=(0.996572435,0.99226594) nerr=0.00773406029 dist=5.65685415 nterm=8.75008965 base=10.15625
+          threshold-trace (44,12) endpoints=(40,8)-(48,16) h=72.4296875 mid=71.9648438 err=0.46484375 term=92.96875 dots=(0.91510123,0.986200809) nerr=0.0848987699 dist=5.65685415 nterm=96.0519943 base=96.0519943
+          threshold-trace (44,20) endpoints=(48,16)-(40,24) h=70.2734375 mid=70.5351562 err=0.26171875 term=52.34375 dots=(0.984667063,0.999539137) nerr=0.0153329372 dist=5.65685415 nterm=17.3472366 base=52.34375
+        extent-count matches: none
+      @0x2264b rect=(32,0 16x32) bands=1,2,3 block=(0x22000,0x9c4,0x50d) lod=2
+        lod band=2 remap=2 block=(0x8e000,0x9109,0x0)
+          payload grid=16x32 origin=(32,0) vertices=183 indices=322 bytes=11995 sparse-grid
+          predicted vertices=173 indices=302 MISMATCH
+          delta rect=(32,0 16x32) band=2 vertices=-10 triangles=-20 MAP-BOUNDARY
+          retail-only adaptive points=10: (2,18:t1) (2,22:t1) (6,14:t1) (6,18:t1) (6,22:t1) (6,26:t1) (10,14:t1) (10,26:t1) (10,30:t1) (14,30:t1)
+            threshold-trace (34,18) endpoints=(32,16)-(36,20) h=70.1015625 mid=69.9414062 err=0.16015625 term=32.03125 dots=(0.993539155,0.999515176) nerr=0.00646084547 dist=2.82842708 nterm=3.6548059 base=32.03125
+            threshold-trace (34,22) endpoints=(36,20)-(32,24) h=69.7734375 mid=69.8203125 err=0.046875 term=9.375 dots=(0.998782933,0.993257642) nerr=0.00674235821 dist=2.82842708 nterm=3.81405354 base=9.375
+            threshold-trace (38,14) endpoints=(36,12)-(40,16) h=70.8125 mid=70.6914062 err=0.12109375 term=24.21875 dots=(0.984296679,0.967704892) nerr=0.0322951078 dist=2.82842708 nterm=18.2688713 base=24.21875
+            threshold-trace (38,18) endpoints=(40,16)-(36,20) h=69.90625 mid=69.9375 err=0.03125 term=6.25 dots=(0.99342382,0.998028755) nerr=0.00657618046 dist=2.82842708 nterm=3.72004914 base=6.25
+            threshold-trace (38,22) endpoints=(36,20)-(40,24) h=69.7265625 mid=69.78125 err=0.0546875 term=10.9375 dots=(0.999390483,0.993910968) nerr=0.0060890317 dist=2.82842708 nterm=3.44447637 base=10.9375
+            threshold-trace (38,26) endpoints=(40,24)-(36,28) h=69.75 mid=69.7617188 err=0.01171875 term=2.34375 dots=(0.989980221,0.996356606) nerr=0.0100197792 dist=2.82842708 nterm=5.66804314 base=5.66804314
+            threshold-trace (42,14) endpoints=(44,12)-(40,16) h=71.0703125 mid=71.234375 err=0.1640625 term=32.8125 dots=(0.977207661,0.944138646) nerr=0.0558613539 dist=2.82842708 nterm=31.5999546 base=32.8125
+            threshold-trace (42,26) endpoints=(40,24)-(44,28) h=70.0390625 mid=70.0351562 err=0.00390625 term=0.78125 dots=(0.99439621,0.978177905) nerr=0.0218220949 dist=2.82842708 nterm=12.3444405 base=12.3444405
+            threshold-trace (42,30) endpoints=(44,28)-(40,32) h=70.4453125 mid=70.3007812 err=0.14453125 term=28.90625 dots=(0.983571231,0.999483824) nerr=0.0164287686 dist=2.82842708 nterm=9.29351425 base=28.90625
+            threshold-trace (46,30) endpoints=(44,28)-(48,32) h=70.7890625 mid=70.6914062 err=0.09765625 term=19.53125 dots=(0.987612844,0.971005917) nerr=0.0289940834 dist=2.82842708 nterm=16.4015312 base=19.53125
+          extent-count matches: none
+        lod band=3 remap=3 block=(0x27800,0x7efa,0x2f5e)
+          payload grid=16x32 origin=(32,0) vertices=108 indices=181 bytes=6644 sparse-grid
+          predicted vertices=108 indices=181 MATCH
+        @0x2250d rect=(32,0 16x16) bands=1,1,2 block=(0x0,0x0,0x0) lod=2
+          lod band=1 remap=1 block=(0x83800,0xa219,0x0)
+            payload grid=16x16 origin=(32,0) vertices=289 indices=1085 bytes=11497
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0x8e000,0x9109,0x2a19)
+            payload grid=16x16 origin=(32,0) vertices=115 indices=202 bytes=4540 sparse-grid
+            predicted vertices=113 indices=198 MISMATCH
+            delta rect=(32,0 16x16) band=2 vertices=-2 triangles=-4 MAP-BOUNDARY
+            retail-only adaptive points=2: (6,14:t1) (10,14:t1)
+              threshold-trace (38,14) endpoints=(36,12)-(40,16) h=70.8125 mid=70.6914062 err=0.12109375 term=24.21875 dots=(0.984296679,0.967704892) nerr=0.0322951078 dist=2.82842708 nterm=18.2688713 base=24.21875
+              threshold-trace (42,14) endpoints=(44,12)-(40,16) h=71.0703125 mid=71.234375 err=0.1640625 term=32.8125 dots=(0.977207661,0.944138646) nerr=0.0558613539 dist=2.82842708 nterm=31.5999546 base=32.8125
+            extent-count matches: none
+        @0x22556 rect=(32,16 16x16) bands=1,1,2 block=(0x0,0x0,0x0) lod=2
+          lod band=1 remap=1 block=(0x83800,0xa219,0x28c0)
+            payload grid=16x16 origin=(32,16) vertices=289 indices=1085 bytes=11457
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0x8e000,0x9109,0x3b1a)
+            payload grid=16x16 origin=(32,16) vertices=73 indices=120 bytes=5943 sparse-grid
+            predicted vertices=65 indices=104 MISMATCH
+            delta rect=(32,16 16x16) band=2 vertices=-8 triangles=-16 INTERIOR
+            retail-only adaptive points=8: (2,2:t1) (2,6:t1) (6,2:t1) (6,6:t1) (6,10:t1) (10,10:t1) (10,14:t1) (14,14:t1)
+              threshold-trace (34,18) endpoints=(32,16)-(36,20) h=70.1015625 mid=69.9414062 err=0.16015625 term=32.03125 dots=(0.993539155,0.999515176) nerr=0.00646084547 dist=2.82842708 nterm=3.6548059 base=32.03125
+              threshold-trace (34,22) endpoints=(36,20)-(32,24) h=69.7734375 mid=69.8203125 err=0.046875 term=9.375 dots=(0.998782933,0.993257642) nerr=0.00674235821 dist=2.82842708 nterm=3.81405354 base=9.375
+              threshold-trace (38,18) endpoints=(40,16)-(36,20) h=69.90625 mid=69.9375 err=0.03125 term=6.25 dots=(0.99342382,0.998028755) nerr=0.00657618046 dist=2.82842708 nterm=3.72004914 base=6.25
+              threshold-trace (38,22) endpoints=(36,20)-(40,24) h=69.7265625 mid=69.78125 err=0.0546875 term=10.9375 dots=(0.999390483,0.993910968) nerr=0.0060890317 dist=2.82842708 nterm=3.44447637 base=10.9375
+              threshold-trace (38,26) endpoints=(40,24)-(36,28) h=69.75 mid=69.7617188 err=0.01171875 term=2.34375 dots=(0.989980221,0.996356606) nerr=0.0100197792 dist=2.82842708 nterm=5.66804314 base=5.66804314
+              threshold-trace (42,26) endpoints=(40,24)-(44,28) h=70.0390625 mid=70.0351562 err=0.00390625 term=0.78125 dots=(0.99439621,0.978177905) nerr=0.0218220949 dist=2.82842708 nterm=12.3444405 base=12.3444405
+              threshold-trace (42,30) endpoints=(44,28)-(40,32) h=70.4453125 mid=70.3007812 err=0.14453125 term=28.90625 dots=(0.983571231,0.999483824) nerr=0.0164287686 dist=2.82842708 nterm=9.29351425 base=28.90625
+              threshold-trace (46,30) endpoints=(44,28)-(48,32) h=70.7890625 mid=70.6914062 err=0.09765625 term=19.53125 dots=(0.987612844,0.971005917) nerr=0.0289940834 dist=2.82842708 nterm=16.4015312 base=19.53125
+            extent-count matches: none
+      @0x22694 rect=(48,0 16x32) bands=1,3,3 block=(0x22000,0x9c4,0x59f) lod=1
+        lod band=3 remap=3 block=(0x27800,0x7efa,0x47bf)
+          payload grid=16x32 origin=(48,0) vertices=129 indices=217 bytes=7090 sparse-grid
+          predicted vertices=129 indices=217 MATCH
+        @0x2259f rect=(48,0 16x16) bands=1,1,3 block=(0x0,0x0,0x0) lod=3
+          lod band=1 remap=1 block=(0x83800,0xa219,0x4ff4)
+            payload grid=16x16 origin=(48,0) vertices=289 indices=1085 bytes=11509
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0x8e000,0x9109,0x4fa3)
+            payload grid=16x16 origin=(48,0) vertices=131 indices=226 bytes=11090 sparse-grid
+            predicted vertices=131 indices=226 MATCH
+          lod band=3 remap=3 block=(0x27800,0x7efa,0x626c)
+            payload grid=16x16 origin=(48,0) vertices=78 indices=129 bytes=4018 sparse-grid
+            predicted vertices=78 indices=129 MATCH
+        @0x225f5 rect=(48,16 16x16) bands=1,1,3 block=(0x0,0x0,0x0) lod=3
+          lod band=1 remap=1 block=(0x83800,0xa219,0x799d)
+            payload grid=16x16 origin=(48,16) vertices=289 indices=1085 bytes=11501
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0x8e000,0x9109,0x780d)
+            payload grid=16x16 origin=(48,16) vertices=126 indices=214 bytes=6815 sparse-grid
+            predicted vertices=126 indices=214 MATCH
+          lod band=3 remap=3 block=(0x27800,0x7efa,0x71a4)
+            payload grid=16x16 origin=(48,16) vertices=56 indices=88 bytes=3624 sparse-grid
+            predicted vertices=56 indices=88 MATCH
+    @0x228e9 rect=(32,32 32x32) bands=1,3,4 block=(0x22000,0x9c4,0x828) lod=2
+      lod band=3 remap=3 block=(0xac000,0xb7ab,0x0)
+        payload grid=32x32 origin=(32,32) vertices=309 indices=573 bytes=14160 sparse-grid
+        predicted vertices=309 indices=573 MATCH
+      lod band=4 remap=4 block=(0x2f800,0xc7fb,0xb278)
+        payload grid=32x32 origin=(32,32) vertices=171 indices=302 bytes=5691 sparse-grid
+        predicted vertices=171 indices=302 MATCH
+      @0x22828 rect=(32,32 16x32) bands=1,3,3 block=(0x22000,0x9c4,0x6d0) lod=1
+        lod band=3 remap=3 block=(0xac000,0xb7ab,0x3552)
+          payload grid=16x32 origin=(32,32) vertices=175 indices=312 bytes=11839 sparse-grid
+          predicted vertices=175 indices=312 MATCH
+        @0x226d0 rect=(32,32 16x16) bands=1,1,3 block=(0x0,0x0,0x0) lod=3
+          lod band=1 remap=1 block=(0x97800,0xa4d2,0x0)
+            payload grid=16x16 origin=(32,32) vertices=289 indices=1085 bytes=11501
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0xa2000,0x9c9a,0x0)
+            payload grid=16x16 origin=(32,32) vertices=128 indices=220 bytes=10916 sparse-grid
+            predicted vertices=128 indices=220 MATCH
+          lod band=3 remap=3 block=(0xac000,0xb7ab,0x605a)
+            payload grid=16x16 origin=(32,32) vertices=95 indices=160 bytes=4284 sparse-grid
+            predicted vertices=95 indices=160 MATCH
+        @0x22726 rect=(32,48 16x16) bands=1,1,3 block=(0x0,0x0,0x0) lod=3
+          lod band=1 remap=1 block=(0x97800,0xa4d2,0x2970)
+            payload grid=16x16 origin=(32,48) vertices=289 indices=1085 bytes=11497
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0xa2000,0x9c9a,0x2707)
+            payload grid=16x16 origin=(32,48) vertices=120 indices=214 bytes=10739 sparse-grid
+            predicted vertices=120 indices=214 MATCH
+          lod band=3 remap=3 block=(0xac000,0xb7ab,0x7049)
+            payload grid=16x16 origin=(32,48) vertices=88 indices=152 bytes=4137 sparse-grid
+            predicted vertices=88 indices=152 MATCH
+      @0x22864 rect=(48,32 16x32) bands=1,3,3 block=(0x22000,0x9c4,0x77c) lod=1
+        lod band=3 remap=3 block=(0xac000,0xb7ab,0x7fab)
+          payload grid=16x32 origin=(48,32) vertices=147 indices=261 bytes=7255 sparse-grid
+          predicted vertices=147 indices=261 MATCH
+        @0x2277c rect=(48,32 16x16) bands=1,1,3 block=(0x0,0x0,0x0) lod=3
+          lod band=1 remap=1 block=(0x97800,0xa4d2,0x5239)
+            payload grid=16x16 origin=(48,32) vertices=289 indices=1085 bytes=11505
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0xa2000,0x9c9a,0x4d60)
+            payload grid=16x16 origin=(48,32) vertices=147 indices=257 bytes=11307 sparse-grid
+            predicted vertices=147 indices=257 MATCH
+          lod band=3 remap=3 block=(0xac000,0xb7ab,0x9a9f)
+            payload grid=16x16 origin=(48,32) vertices=89 indices=152 bytes=4164 sparse-grid
+            predicted vertices=89 indices=152 MATCH
+        @0x227d2 rect=(48,48 16x16) bands=1,1,3 block=(0x0,0x0,0x0) lod=3
+          lod band=1 remap=1 block=(0x97800,0xa4d2,0x7aea)
+            payload grid=16x16 origin=(48,48) vertices=289 indices=1085 bytes=11499
+            predicted vertices=289 indices=512 MISMATCH
+          lod band=2 remap=2 block=(0xa2000,0x9c9a,0x755f)
+            payload grid=16x16 origin=(48,48) vertices=126 indices=225 bytes=10837 sparse-grid
+            predicted vertices=126 indices=225 MATCH
+          lod band=3 remap=3 block=(0xac000,0xb7ab,0xaa15)
+            payload grid=16x16 origin=(48,48) vertices=64 indices=109 bytes=3662 sparse-grid
+            predicted vertices=64 indices=109 MATCH
+neighbor-subset oracle best=49/55 mask=0x39 maps: FinalAlbion\Darkwood3_Leadout_01.lev FinalAlbion\Darkwood_Filler_10.lev FinalAlbion\Darkwood_Filler_11.lev FinalAlbion\Darkwood_Filler_13.lev
+firstLodZ integer oracle best=49/55 value=64
+background tree: nodes=33 leaves=17 lod-records=73

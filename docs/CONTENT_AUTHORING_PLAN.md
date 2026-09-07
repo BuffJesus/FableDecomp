@@ -8,7 +8,7 @@ Answers: how do the "content" systems fit into FableForge, and where does Blende
 
 | System | Native (retail engine) | Runtime mod layer (today) | Asset/format tool |
 |---|---|---|---|
-| **Scripts / quests** | C++ `NScript::` classes (`CQ_*`, `CV_*`, `CGlobal_*`, `CScriptThing`, `CScriptBase`, spawned funcs) compiled into `script.bin` (611 entries) | **FSE Lua** — 843-fn Quest API + 88-fn Entity API. Retail embeds NO Lua; FSE adds it. FQT already generates this. | `forge::bin` reads script.bin; FSE manifest = the API contract |
+| **Scripts / quests** | C++ `NScript::` classes (`CQ_*`, `CV_*`, `CGlobal_*`, `CScriptThing`, `CScriptBase`, spawned funcs) compiled into `script.bin` (611 entries) | **FSE Lua** — 845-fn Quest API + 88-fn Entity API. Retail embeds NO Lua; FSE adds it. FQT already generates this. | `forge::bin` reads script.bin; FSE manifest = the API contract |
 | **Dialogue / text** | Babel text system; speech via `SpeakAndWait`, subtitles via `CSubtitleRenderer::SetText` | FSE `AddScreenMessage`, `SpeakAndWait`, quest-info bars | `data\lang\English\text.big` (2.8 MB), `dialogue.big` (550 KB), fonts.big — EgoCore parses banks + `LipSyncParser` |
 | **Cutscenes** | native cutscene macro (`RunCutsceneMacro_Func` @ `0x00CBFB7D`, 74 KB — now decompiling) | FSE `Camera*` family (`CameraCircleAroundThing`, `CameraDefault`, …) + `Speak*` | camera/timeline is script-driven |
 | **Meshes / anims** | BBM mesh + anim formats | — | **EgoCore: full round-trip** — `MeshParser`/`MeshCompiler`, `AnimParser`/`AnimCompiler`, `GltfExporter`/`GltfMeshImporter`/`GltfAnimImporter`, `LipSyncCompiler`+`SpeechAnalyzer`, `TextureBuilder`, `ParticleCompiler`, font builders |
@@ -31,7 +31,7 @@ Key consequences:
   IDs, the things they bind, and their region/objective structure. Orientation before authoring.
 
 ### Stage B — quest & script authoring via FSE (the practical "quests now" path)
-- A **visual quest/script editor** in FableForge that emits **FSE Lua**, validated against the 931-fn
+- A **visual quest/script editor** in FableForge that emits **FSE Lua**, validated against the 933-fn
   API manifest (unknown call = editor error). This folds in FQT's proven approach as a native panel.
 - Node/graph model: triggers → objectives → actions (spawn, speak, give item, camera, screen message),
   compiled to Lua. Live-deploy + test through FSE; iterate without restarting.
@@ -84,7 +84,7 @@ EgoCore has glTF on both sides — so:
   shipping the dialogue editor (same discipline as the `game.bin` semantic round-trip already proven).
 - **glTF round-trip fidelity**: EgoCore has the compilers, but skeleton/weight/material edge cases need
   a byte/behavior oracle (extract → edit-nothing → recompile → diff) before promising custom rigs.
-- **FSE API coverage**: cutscene/dialogue authoring is only as capable as the 931-fn surface until the
+- **FSE API coverage**: cutscene/dialogue authoring is only as capable as the 933-fn surface until the
   native VM is decompiled; document what FSE can't yet express so the editor doesn't over-promise.
 - **Native quest/cutscene editing** (Stage D / B-native) is genuinely long-horizon and gated on the
   VC7.1 lift harness.

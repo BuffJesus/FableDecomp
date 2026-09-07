@@ -1,0 +1,2 @@
+#include <cstdio>
+struct Slot{void* value;};static unsigned long Run(Slot* input){Slot* a=(Slot*)input->value;Slot* b=(Slot*)a->value;return *(unsigned long*)b->value;}int main(){unsigned long value=0x89abcdefUL;Slot b={&value},a={&b},root={&a};if(Run(&root)!=value)return 1;std::printf("GETTER_TRIPLE_DEREF_PASS\n");return 0;}

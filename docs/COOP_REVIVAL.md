@@ -203,10 +203,10 @@ necessary retail-pipeline state, but not "one flag from life": EgoMP's working
 prototype avoids this client entirely, and enabling residual native
 multiplayer behavior is observed to crash.
 
-- ⚠ **CORRECTION (verifier):** the InitialiseAsLocal base-init precondition target is **UNKNOWN**
-  (relocation-masked). The previously cited `0x4EBA10` is a **flat-disassembler artifact**, not a resolved
-  address (`e8 08 ba 4e 00` at `0x4AE940+0x3` → base0 render `0x4EBA10`, real target masked). `FINDINGS.md`
-  inherited the same phantom. Do not treat `0x4EBA10` as real.
+- **CORRECTION (2026-08-26):** `0x4EBA10` is a flat-disassembler base-zero rendering, but the retail
+  rel32 at `0x004AE943` resolves to **`0x0099A350`**. That six-byte callee sets `this+4 = 1` and returns
+  `AL=1`. Its BSim `CXMVPlaybackInfo` class identity is not credible in this network-client context;
+  treat it as an unnamed network-base initializer with proven address and behavior.
 
 ## 2. `IsMultiplayerGameActive` (`0x00449D20`) — data-driven, NOT a stub, unsafe to activate yet
 Scans `std::vector<CPlayer*>` at `this+0x0C..0x10`, loops 4 slots (`cmp edi,4; jl`), finds the element whose
@@ -230,8 +230,21 @@ Returns true when a non-main player is seated with `[+0x91] bit0 CLEAR`. Indepen
 ```
 "Compress" = pack dense (no compression, no endian swap). Producer returns `payloadLen+4` (records
 concatenate). Consumer sets id=`hdr&0x7FFF`, `+0x27`=flag, `+0x25=0 then +=len`, and `+0x26=1`
-(pending/dirty apply flag). A `CGameEventPackageSet` frames N records; its own compress/init are
-`0x9F19A0`/`0x9F1AC0` (per FINDINGS, not decoded here).
+(pending/dirty apply flag). `CGameEventPackageSet::CompressIntoBuffer @ 0x9F19A0` is now a raw
+215-byte `MATCH`. Its framing is one `u8 packageCount`, then for each package
+`[u8 eventCount][u32 sequence][event records...]`; package headers therefore cost five bytes and
+the function returns the full byte count. The inverse remains `0x9F1AC0`.
+
+`CNetworkClient::GetLocalGameEventPackageSet @ 0x004AEAA0` is now a 252-byte
+`RELOCATION_MATCH[/GS]`. On an exact `IsTimeForServerUpdate(frame) == 1`, it appends checksum1,
+checksum2, and the pre-increment frame to a type-1 event, increments the frame, assigns that new
+frame as the local package sequence, copies the package to the caller's freshly initialized set,
+then clears the local package. Other return-byte values produce no package.
+
+`UpdateFromEventPackageSet @ 0x0041726D` is now behavior-complete at exact-length
+`DIFFER(189v189)`: only strictly newer sequences are applied; caught-up state is computed before
+advancing the input frame; the current frame is monotonic; and `(frame, checksum, seed)` is sent to
+the embedded client at `+0x13AB8`. Its residual difference is compiler register/local allocation.
 
 **Safety correction (2026-07-25):** although the length field can encode 0..255, the proven
 `CGameEvent` layout is only `0x28` bytes and its payload occupies `+0x05..+0x24` (32 bytes).
@@ -314,5 +327,11 @@ host-authoritative sidecar replication while the retail pipeline continues to
 be recovered independently.
 
 *Artifacts: `work/coop_re/` (bundles, `checksync_md.txt`, `summary.txt`). Full synthesis + verify in the
-task output journal. Supersedes/refines the co-op section of `FINDINGS.md` (which shares the `0x4EBA10`
-phantom).*
+task output journal. Supersedes/refines the co-op section of `FINDINGS.md`; the former `0x4EBA10`
+base-zero phantom is now resolved to retail `0x0099A350` as documented above.*
+
+### 2026-08-26 offline parity note
+
+`008a9ae0 MsgOnBoastsMade` is behavior-complete but remains a bounded 279/352-byte residue. Its
+message-manager query and temporary-list ownership are now understood; this does not alter the
+co-op runtime plan and makes no runtime or visual claim.

@@ -1,0 +1,1364 @@
+//=== ?GetFilteredHeight@CEditWorldMap@@IBEMJJMM@Z @ 02974c50 (seed 02974c50) ===
+
+/* WARNING: Removing unreachable block (ram,0x02974ca5) */
+/* [ported from ego_r via strfp] */
+
+float10 _GetFilteredHeight_CEditWorldMap__IBEMJJMM_Z
+                  (int param_1,int param_2,float param_3,undefined4 param_4)
+
+{
+  float fVar1;
+  float fVar2;
+  char cVar3;
+  undefined4 uVar4;
+  int iVar5;
+  int *in_ECX;
+  int iVar6;
+  int iVar7;
+  float10 fVar8;
+  float10 fVar9;
+  int local_28;
+  float local_24;
+  float local_18;
+  int local_10;
+  float local_8;
+  
+  local_24 = 0.0;
+  local_10 = 0;
+  uVar4 = __0C2DCoordI__QAE_JJ_Z(param_1,param_2);
+  fVar8 = (float10)_GetGroundSizeZAtBlock_CWorldMap__QBEMABVC2DCoordI___Z(uVar4);
+  fVar1 = (float)fVar8;
+  local_8 = 1e+30;
+  local_18 = -1e+30;
+  for (local_28 = 0; local_28 < 8; local_28 = local_28 + 1) {
+    iVar7 = param_1 + *(int *)(&DAT_04ac55a0 + local_28 * 8);
+    iVar6 = param_2 + *(int *)(&DAT_04ac55a4 + local_28 * 8);
+    (**(code **)(*in_ECX + 0x34))();
+    iVar5 = _GetTLX_C2DBoxI__QBEJXZ();
+    if (iVar5 <= iVar7) {
+      (**(code **)(*in_ECX + 0x34))();
+      iVar5 = _GetBRX_C2DBoxI__QBEJXZ();
+      if (iVar7 < iVar5) {
+        (**(code **)(*in_ECX + 0x34))();
+        iVar5 = _GetTLY_C2DBoxI__QBEJXZ();
+        if (iVar5 <= iVar6) {
+          (**(code **)(*in_ECX + 0x34))();
+          iVar5 = _GetBRY_C2DBoxI__QBEJXZ();
+          if (iVar6 < iVar5) {
+            uVar4 = __0C2DCoordI__QAE_JJ_Z(iVar7,iVar6);
+            iVar5 = (**(code **)(*in_ECX + 0x44))(uVar4);
+            if ((iVar5 != 0) &&
+               (cVar3 = _IsMapEditable_CEditWorldMap__QBE_NJ_Z(iVar5), cVar3 != '\0')) {
+              local_10 = local_10 + 1;
+              uVar4 = __0C2DCoordI__QAE_JJ_Z(iVar7,iVar6);
+              fVar8 = (float10)_GetGroundSizeZAtBlock_CWorldMap__QBEMABVC2DCoordI___Z(uVar4);
+              fVar2 = (float)fVar8;
+              if (fVar2 < local_8) {
+                local_8 = fVar2;
+              }
+              if (local_18 < fVar2) {
+                local_18 = fVar2;
+              }
+              local_24 = local_24 + fVar2;
+            }
+          }
+        }
+      }
+    }
+  }
+  fVar2 = local_24 / (float)local_10;
+  fVar8 = (float10)_fabs__YAMM_Z(fVar1 - fVar2);
+  fVar9 = (float10)_GFSqr__YIMM_Z(param_4);
+  local_24 = fVar1;
+  if (fVar9 < (float10)(float)(fVar8 / ((float10)local_18 - (float10)local_8))) {
+    local_24 = (1.0 - param_3) * fVar1 + fVar2 * param_3;
+  }
+  return (float10)local_24;
+}
+
+
+// CALLEES of ?GetFilteredHeight@CEditWorldMap@@IBEMJJMM@Z:
+//   01832eee  ?GetBRX@C2DBoxI@@QBEJXZ
+//   017f2187  ?IsMapEditable@CEditWorldMap@@QBE_NJ@Z
+//   01840670  ?GFSqr@@YIMM@Z
+//   01802181  ?GetTLX@C2DBoxI@@QBEJXZ
+//   017cd657  ?GetBRY@C2DBoxI@@QBEJXZ
+//   017c2329  ?fabs@@YAMM@Z
+//   01828368  ??0C2DCoordI@@QAE@JJ@Z
+//   017daf00  ?GetGroundSizeZAtBlock@CWorldMap@@QBEMABVC2DCoordI@@@Z
+//   01801d7b  ?GetTLY@C2DBoxI@@QBEJXZ
+
+//=== ?DrawFractal@CEditFractal@@ABEXABVCEnginePrimitivePrepareInfo@@@Z @ 029a76b0 (seed 029a76b0) ===
+
+/* WARNING: Removing unreachable block (ram,0x029a7992) */
+/* WARNING: Removing unreachable block (ram,0x029a77e1) */
+/* WARNING: Removing unreachable block (ram,0x029a77af) */
+/* [ported from ego_r via strfp] */
+
+void _DrawFractal_CEditFractal__ABEXABVCEnginePrimitivePrepareInfo___Z(void)
+
+{
+  undefined4 uVar1;
+  undefined4 uVar2;
+  int in_ECX;
+  int iVar3;
+  float10 fVar4;
+  undefined4 uVar5;
+  undefined1 *puVar6;
+  undefined8 uVar7;
+  undefined8 uVar8;
+  undefined1 local_108;
+  undefined1 local_f8;
+  undefined1 local_e8;
+  int local_8c;
+  undefined1 local_88 [8];
+  int local_80;
+  int local_7c;
+  byte local_75;
+  undefined4 local_74;
+  float local_70;
+  undefined4 local_6c;
+  byte local_66;
+  byte local_65;
+  float local_64;
+  float local_60;
+  byte local_59;
+  undefined1 local_58 [16];
+  float local_48;
+  float local_44;
+  undefined1 local_40 [4];
+  int local_3c;
+  int local_38;
+  float local_34;
+  undefined1 local_30 [4];
+  float local_2c;
+  undefined4 local_28;
+  undefined1 local_24 [16];
+  undefined4 local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03df7228;
+  local_10 = ExceptionList;
+  ExceptionList = &local_10;
+  if (*(char *)(in_ECX + 0x34) != '\0') {
+    local_2c = 0.0;
+    local_34 = 60.0;
+    local_28 = 0x40a3d70a;
+    local_14 = 0x429c4000;
+    ExceptionList = &local_10;
+    __0CPixelFormat__QAE_XZ();
+    _GetBestBooleanAlphaTextureFormat_CDisplayManager__QAE_NKAAVCPixelFormat___Z(0x10,local_30);
+    uVar8 = 0;
+    uVar7 = 0x100000000;
+    puVar6 = local_30;
+    uVar5 = 1;
+    uVar1 = __ftol2_sse(1,puVar6,0,1,0,0);
+    uVar2 = __ftol2_sse(uVar1);
+    uVar1 = __0C2DExtentsI__QAE_JJ_Z(uVar2,uVar1);
+    _Initialise_CTexture__QAE_NABVC2DExtentsI__JABVCPixelFormat__KW4ESurfacePool___N3_Z
+              (uVar1,uVar5,puVar6,uVar7,uVar8);
+    _GetSurfaceLevel_CTexture__QBE_AVCSurface__J_Z(local_24,0);
+    local_8 = 0;
+    __0CRGBColour__QAE_EEEE_Z(0,0,0,0);
+    _Clear_CSurface__QAEXABVCRGBColour___Z();
+    for (local_38 = __ftol2_sse(); 0 < local_38; local_38 = local_38 + -1) {
+      for (local_3c = 0; (float)local_3c < 800.0; local_3c = local_3c + 1) {
+        uVar1 = __0C2DCoordI__QAE_JJ_Z(local_3c,local_38);
+        _BufferCoordToWorldCoord_CEditFractal__ABE_AVC2DCoordI__ABV2__Z(&local_80,uVar1);
+        local_59 = (char)(local_80 + (local_80 >> 0x1f & 0xffU) >> 8) +
+                   (char)(local_7c + (local_7c >> 0x1f & 0xffU) >> 8) & 1;
+        _ToC2DCoordF_C2DCoordI__QBE_AVC2DVector__XZ();
+        fVar4 = (float10)_GetFractalHeightAt_CEditFractal__QBEMABVC2DVector___Z();
+        local_70 = (float)fVar4;
+        local_60 = 0.0;
+        if (((float)(local_3c + 1) < 800.0) && ((float)(local_38 + 1) < 800.0)) {
+          uVar1 = __0C2DCoordI__QAE_JJ_Z(local_3c + 1,local_38 + 1);
+          _BufferCoordToWorldCoord_CEditFractal__ABE_AVC2DCoordI__ABV2__Z(local_88,uVar1);
+          _ToC2DCoordF_C2DCoordI__QBE_AVC2DVector__XZ();
+          fVar4 = (float10)_GetFractalHeightAt_CEditFractal__QBEMABVC2DVector___Z();
+          local_60 = (float)fVar4;
+        }
+        local_48 = (float)local_38 * 0.25 + (float)local_3c + local_2c;
+        local_44 = (800.0 - (float)local_38) + local_34;
+        uVar1 = __ftol2_sse();
+        uVar2 = __ftol2_sse();
+        uVar7 = CONCAT44(uVar1,uVar2);
+        uVar1 = __ftol2_sse(uVar2);
+        uVar2 = __ftol2_sse();
+        __0C2DBoxI__QAE_JJJJ_Z(uVar2,uVar1,uVar7);
+        local_75 = 1;
+        local_66 = 1;
+        local_65 = 1;
+        local_6c = 0;
+        local_74 = 0x3f800000;
+        for (local_8c = 0; local_8c < 7; local_8c = local_8c + 1) {
+          if (local_70 <= *(float *)(&DAT_04ac5618 + local_8c * 8)) {
+            if (local_8c == 0) {
+              local_6c = 0;
+            }
+            else {
+              local_6c = *(undefined4 *)(&DAT_04ac5610 + local_8c * 8);
+            }
+            local_74 = *(undefined4 *)(&DAT_04ac5618 + local_8c * 8);
+            local_75 = _GetR_CRGBColour__QBEEXZ();
+            local_66 = _GetG_CRGBColour__QBEEXZ();
+            local_65 = _GetB_CRGBColour__QBEEXZ();
+            break;
+          }
+        }
+        fVar4 = (float10)_GFArcTan__YIMNN_Z(0x3f847ae140000000,(double)(local_60 - local_70));
+        local_64 = (float)((float10)0.75 - fVar4);
+        if (local_59 != 0) {
+          local_64 = local_64 - 0.1;
+        }
+        ___GFLimit_MMM__YIXAAMABM1_Z();
+        local_e8 = (undefined1)(int)ROUND((float)local_75 * local_64);
+        local_75 = local_e8;
+        local_f8 = (undefined1)(int)ROUND((float)local_66 * local_64);
+        local_66 = local_f8;
+        local_108 = (undefined1)(int)ROUND((float)local_65 * local_64);
+        local_65 = local_108;
+        __0CRGBColour__QAE_EEE_Z();
+        _ClearArea_CSurface__QAEXABVC2DBoxI__ABVCRGBColour___Z(local_58,local_40);
+      }
+    }
+    *(undefined1 *)(in_ECX + 0x34) = 0;
+    local_8 = 0xffffffff;
+    __1CSurface__UAE_XZ();
+  }
+  uVar2 = 0;
+  uVar1 = __0CRGBColour__QAE_EEE_Z(0xff,0xff,0xff);
+  uVar7 = CONCAT44(uVar2,uVar1);
+  iVar3 = in_ECX + 0x2c;
+  _GFAYToVY__YIMM_Z(0x42480000);
+  fVar4 = (float10)_GFAXToVX__YIMM_Z(0x42c80000);
+  uVar1 = __0C2DVector__QAE_MM_Z((float)fVar4);
+  _Draw2DSurface_CRenderManager2D__QAE_NABVC2DVector__AAVCTexture__ABVCRGBColour__K_Z
+            (uVar1,iVar3,uVar7);
+  ExceptionList = local_10;
+  return;
+}
+
+
+// CALLEES of ?DrawFractal@CEditFractal@@ABEXABVCEnginePrimitivePrepareInfo@@@Z:
+//   01811843  ?BufferCoordToWorldCoord@CEditFractal@@ABE?AVC2DCoordI@@ABV2@@Z
+//   0182dac0  __ftol2_sse
+//   017eb5cb  ?GetFractalHeightAt@CEditFractal@@QBEMABVC2DVector@@@Z
+//   017f11ec  ?GFAYToVY@@YIMM@Z
+//   017ed669  ?GFAXToVX@@YIMM@Z
+//   01809fa8  ?Clear@CSurface@@QAEXABVCRGBColour@@@Z
+//   01859378  ?ToC2DCoordF@C2DCoordI@@QBE?AVC2DVector@@XZ
+//   018137ce  ??0CRGBColour@@QAE@EEEE@Z
+//   017e3f06  ?GetG@CRGBColour@@QBEEXZ
+//   017c9872  ??0CRGBColour@@QAE@EEE@Z
+//   01842303  ?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z
+//   0180bdda  ??1CSurface@@UAE@XZ
+//   017e4f64  ??0C2DExtentsI@@QAE@JJ@Z
+//   01818710  ??0C2DVector@@QAE@MM@Z
+//   01828368  ??0C2DCoordI@@QAE@JJ@Z
+//   017a665b  ?GetB@CRGBColour@@QBEEXZ
+//   0183b0a3  ?Draw2DSurface@CRenderManager2D@@QAE_NABVC2DVector@@AAVCTexture@@ABVCRGBColour@@K@Z
+//   017f5738  ?GFArcTan@@YIMNN@Z
+//   01847065  ?GetR@CRGBColour@@QBEEXZ
+//   01813ed6  ?GetBestBooleanAlphaTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z
+//   018159ed  ??$GFLimit@MMM@@YIXAAMABM1@Z
+//   0184bc0a  ?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z
+//   018529c9  ??0CPixelFormat@@QAE@XZ
+//   017d47c7  ?ClearArea@CSurface@@QAEXABVC2DBoxI@@ABVCRGBColour@@@Z
+//   01841737  ??0C2DBoxI@@QAE@JJJJ@Z
+
+//=== ?PlaceGoods@CAIStateGroup_MoveGoodsBase@@IAE_NV?$CIntelligentPointer@VCThing@@@@MV?$vector@PBVCCharString@@V?$allocator@PBVCCharString@@@std@@@std@@ABVCAIFilterBase@CAIStateGroupBase@@PBVCThing@@@Z @ 02ba55f0 (seed 02ba55f0) ===
+
+/* [ported from ego_r via strfp] */
+
+undefined1
+_PlaceGoods_CAIStateGroup_MoveGoodsBase__IAE_NV__CIntelligentPointer_VCThing____MV__vector_PBVCCharString__V__allocator_PBVCCharString___std___std__ABVCAIFilterBase_CAIStateGroupBase__PBVCThing___Z
+          (void)
+
+{
+  code *pcVar1;
+  bool bVar2;
+  bool bVar3;
+  bool bVar4;
+  bool bVar5;
+  char cVar6;
+  undefined1 uVar7;
+  BOOL BVar8;
+  int iVar9;
+  uint uVar10;
+  undefined4 *puVar11;
+  int in_ECX;
+  float10 fVar12;
+  undefined4 *in_stack_00000024;
+  undefined1 *in_stack_00000028;
+  undefined1 **ppuVar13;
+  undefined1 *puStack_2c4;
+  undefined4 *puStack_2c0;
+  undefined1 auStack_2bc [4];
+  undefined4 uStack_2b8;
+  undefined1 *puStack_2b4;
+  undefined1 *puStack_2b0;
+  char *pcStack_2ac;
+  undefined1 *puStack_2a8;
+  char *pcStack_2a4;
+  undefined1 *puStack_2a0;
+  char *pcStack_29c;
+  int **ppiStack_298;
+  char local_288;
+  char local_274;
+  char local_25c;
+  undefined1 local_17c [8];
+  undefined1 local_174 [8];
+  undefined1 local_16c [11];
+  char local_161;
+  undefined1 local_160 [8];
+  undefined1 local_158 [24];
+  undefined1 local_140 [11];
+  char local_135;
+  undefined1 local_134 [8];
+  undefined1 local_12c [8];
+  undefined1 local_124 [10];
+  char local_11a;
+  undefined1 local_119;
+  undefined1 *local_118;
+  undefined1 *local_114;
+  undefined1 local_10f;
+  undefined1 local_10e;
+  undefined1 local_10d;
+  undefined1 *local_10c;
+  undefined1 local_105;
+  undefined4 local_104 [3];
+  undefined1 local_f8 [12];
+  undefined1 local_ec [24];
+  undefined1 local_d4 [9];
+  char local_cb;
+  undefined1 local_ca;
+  undefined1 local_c9;
+  undefined1 local_c8 [8];
+  undefined1 local_c0 [8];
+  undefined1 local_b8 [11];
+  char local_ad;
+  undefined1 local_ac [24];
+  undefined1 local_94 [11];
+  char local_89;
+  undefined1 local_88 [24];
+  int local_70;
+  float local_6c;
+  undefined4 local_68 [6];
+  int local_50;
+  int local_4c;
+  undefined1 local_48 [12];
+  uint local_3c;
+  undefined1 local_35;
+  int *local_34;
+  undefined4 local_30;
+  int local_2c;
+  int local_28 [3];
+  undefined1 local_1c [4];
+  undefined1 local_18 [4];
+  undefined1 local_14 [4];
+  void *local_10;
+  undefined1 *puStack_c;
+  uint local_8;
+  
+  puStack_c = &LAB_03e38b82;
+  local_10 = ExceptionList;
+  bVar5 = false;
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  local_8 = 1;
+  ppiStack_298 = (int **)local_14;
+  pcStack_29c = (char *)0x2ba5632;
+  ExceptionList = &local_10;
+  __C__CIntelligentPointer_VCThing____QBEPAVCThing__XZ();
+  pcStack_29c = (char *)0x2ba5639;
+  cVar6 = ___GetTC_VCTCCrateStack___CThing__QAE_NPAPAVCTCCrateStack___Z();
+  if (cVar6 == '\0') goto LAB_02ba6681;
+  ppiStack_298 = (int **)local_18;
+  pcStack_29c = (char *)0x2ba5653;
+  _GetCreature_CAIStateGroupBase__IBEAAVCThingAICreature__XZ();
+  pcStack_29c = (char *)0x2ba565a;
+  cVar6 = ___PeekTC___CBVCTCCarrying___CThing__QBE_NPAPBVCTCCarrying___Z();
+  if (cVar6 == '\0') {
+    if (DAT_04bac270 == 0) {
+LAB_02ba576d:
+      local_25c = '\x01';
+    }
+    else {
+      ppiStack_298 = (int **)0x43e94b0;
+      pcStack_29c = (char *)0x2ba5682;
+      __0CWideString__QAE_PB_W_Z();
+      local_8 = CONCAT31(local_8._1_3_,2);
+      ppiStack_298 = (int **)0xffffffff;
+      pcStack_29c = "";
+      puStack_2a0 = (undefined1 *)0x2ba56a7;
+      __0CCharString__QAE_PBDJ_Z();
+      local_8 = 3;
+      ppiStack_298 = (int **)0x1;
+      pcStack_29c = (char *)0x59;
+      puStack_2a0 = local_94;
+      pcStack_2a4 = "GetCreature().PeekTC(&ptc_carrying)";
+      puStack_2a8 = (undefined1 *)0xffffffff;
+      pcStack_2ac = "Failed success assert on ";
+      puStack_2b0 = (undefined1 *)0x2ba56df;
+      __0CCharString__QAE_PBDJ_Z();
+      local_8 = 4;
+      puStack_2a8 = (undefined1 *)0x2ba5718;
+      pcStack_2a4 = (char *)__H_YI_AVCCharString__ABV0_PBD_Z();
+      local_8 = 5;
+      bVar5 = true;
+      bVar4 = true;
+      bVar3 = true;
+      bVar2 = true;
+      puStack_2a8 = local_ac;
+      pcStack_2ac = (char *)0x2ba5759;
+      cVar6 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        ();
+      if (cVar6 == '\x01') goto LAB_02ba576d;
+      local_25c = '\0';
+    }
+    local_89 = local_25c;
+    local_8 = 4;
+    if (bVar3) {
+      ppiStack_298 = (int **)0x2ba57a7;
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 3;
+    if (bVar4) {
+      ppiStack_298 = (int **)0x2ba57cb;
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 2;
+    if (bVar5) {
+      ppiStack_298 = (int **)0x2ba57ef;
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 1;
+    if (bVar2) {
+      ppiStack_298 = (int **)0x2ba5813;
+      __1CWideString__QAE_XZ();
+    }
+    if (local_89 != '\0') {
+      ppiStack_298 = (int **)0x2ba5824;
+      BVar8 = IsDebuggerPresent();
+      if (BVar8 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar7 = (*pcVar1)();
+        return uVar7;
+      }
+    }
+  }
+  bVar5 = false;
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  ppiStack_298 = (int **)0x2ba5831;
+  ppiStack_298 = (int **)_GetThingInPrimarySlot_CTCCarrying__QBEPAVCThing__XZ();
+  pcStack_29c = (char *)0x2ba583a;
+  __0__CIntelligentPointer_VCThing____QAE_PAVCThing___Z();
+  local_8._0_1_ = 6;
+  ppiStack_298 = (int **)0x2ba5848;
+  cVar6 = ____9VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+  if (cVar6 == '\0') {
+    ppiStack_298 = (int **)0x43e9538;
+    pcStack_29c = (char *)0x2ba5863;
+    __0CWideString__QAE_PB_W_Z();
+    local_8._0_1_ = 7;
+    ppiStack_298 = (int **)0xffffffff;
+    pcStack_29c = "Trying to place goods when not carrying anything";
+    puStack_2a0 = (undefined1 *)0x2ba5879;
+    __0CCharString__QAE_PBDJ_Z();
+    local_8._0_1_ = 8;
+    ppiStack_298 = (int **)0xffffffff;
+    pcStack_29c = "pcrate!=NULL";
+    puStack_2a0 = (undefined1 *)0x2ba588f;
+    __0CCharString__QAE_PBDJ_Z();
+    local_8._0_1_ = 9;
+    ppiStack_298 = (int **)0x2;
+    pcStack_29c = (char *)0x5b;
+    puStack_2a0 = local_b8;
+    pcStack_2a4 = local_c0;
+    puStack_2a8 = local_c8;
+    pcStack_2ac = (char *)0x2ba58b1;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ();
+    pcStack_2ac = (char *)0x2ba58b8;
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    pcStack_2ac = (char *)0x2ba58bf;
+    cVar6 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      ();
+    local_ad = '\x01' - (cVar6 != '\x01');
+    local_8._0_1_ = 8;
+    ppiStack_298 = (int **)0x2ba58e1;
+    __1CCharString__QAE_XZ();
+    local_8._0_1_ = 7;
+    ppiStack_298 = (int **)0x2ba58f0;
+    __1CCharString__QAE_XZ();
+    local_8._0_1_ = 6;
+    ppiStack_298 = (int **)0x2ba58ff;
+    __1CWideString__QAE_XZ();
+    if (local_ad != '\0') {
+      ppiStack_298 = (int **)0x2ba5910;
+      BVar8 = IsDebuggerPresent();
+      if (BVar8 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar7 = (*pcVar1)();
+        return uVar7;
+      }
+    }
+  }
+  ppiStack_298 = (int **)0x2ba591f;
+  cVar6 = ____8VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+  if (cVar6 != '\0') {
+    local_c9 = 0;
+    local_8._0_1_ = 1;
+    ppiStack_298 = (int **)0x2ba5939;
+    __1__CIntelligentPointer_VCThing____UAE_XZ();
+    local_8 = (uint)local_8._1_3_ << 8;
+    ppiStack_298 = (int **)0x2ba5945;
+    __1__CIntelligentPointer_VCThing____UAE_XZ();
+    local_8 = 0xffffffff;
+    ppiStack_298 = (int **)0x2ba5954;
+    ATL::CAtlWinModule::~CAtlWinModule((CAtlWinModule *)&stack0x00000010);
+    ExceptionList = local_10;
+    return local_c9;
+  }
+  ppiStack_298 = (int **)local_1c;
+  pcStack_29c = (char *)0x2ba596b;
+  __C__CIntelligentPointer_VCThing____QBEPAVCThing__XZ();
+  pcStack_29c = (char *)0x2ba5972;
+  cVar6 = ___GetTC_VCTCSingleUserActionPoints___CThing__QAE_NPAPAVCTCSingleUserActionPoints___Z();
+  if (cVar6 != '\0') {
+    ppiStack_298 = (int **)0x2ba5988;
+    __0CRightHandedSet__QAE_XZ();
+    ppiStack_298 = (int **)0x2ba5990;
+    __0C3DVector__QAE_XZ();
+    ppiStack_298 = (int **)0x2ba5995;
+    iVar9 = _GetFrame_CWorld__SIJXZ();
+    ppiStack_298 = (int **)0x2ba599c;
+    _GetConstantFPS_CMainGameComponent__SIJXZ();
+    ppiStack_298 = (int **)0x2ba59b3;
+    local_70 = __ftol2_sse();
+    local_70 = iVar9 + local_70;
+    do {
+      ppiStack_298 = (int **)&local_30;
+      pcStack_29c = local_88;
+      puStack_2a0 = local_48;
+      pcStack_2a4 = (char *)0x2ba59d2;
+      pcStack_2a4 = (char *)_GetCreature_CAIStateGroupBase__IBEAAVCThingAICreature__XZ();
+      puStack_2a8 = (undefined1 *)0x2ba59db;
+      cVar6 = _GetFreeActionPoint_CTCUserActionPointBase__QAE_NAAVCThing__AAVC3DVector__AAVCRightHandedSet__AAJ_Z
+                        ();
+      if (cVar6 != '\0') {
+        ppiStack_298 = &local_34;
+        pcStack_29c = (char *)0x2ba5a83;
+        __C__CIntelligentPointer_VCThing____QBEPAVCThing__XZ();
+        pcStack_29c = (char *)0x2ba5a8a;
+        cVar6 = ___GetTC_VCTCPhysicsBase___CThing__QAE_NPAPAVCTCPhysicsBase___Z();
+        if (cVar6 == '\0') {
+          if (DAT_04bac270 == 0) {
+LAB_02ba5b9f:
+            local_274 = '\x01';
+          }
+          else {
+            ppiStack_298 = (int **)0x43e95c8;
+            pcStack_29c = (char *)0x2ba5ab2;
+            __0CWideString__QAE_PB_W_Z();
+            local_8 = CONCAT31(local_8._1_3_,10);
+            ppiStack_298 = (int **)0xffffffff;
+            pcStack_29c = "";
+            puStack_2a0 = (undefined1 *)0x2ba5ad7;
+            __0CCharString__QAE_PBDJ_Z();
+            local_8 = 0xb;
+            ppiStack_298 = (int **)0x1;
+            pcStack_29c = (char *)0x71;
+            puStack_2a0 = local_d4;
+            pcStack_2a4 = "pthing_to_place_goods->GetTC(&tc_physics)";
+            puStack_2a8 = (undefined1 *)0xffffffff;
+            pcStack_2ac = "Failed success assert on ";
+            puStack_2b0 = (undefined1 *)0x2ba5b0f;
+            __0CCharString__QAE_PBDJ_Z();
+            local_8 = 0xc;
+            puStack_2a8 = (undefined1 *)0x2ba5b48;
+            pcStack_2a4 = (char *)__H_YI_AVCCharString__ABV0_PBD_Z();
+            local_8 = 0xd;
+            bVar5 = true;
+            bVar4 = true;
+            bVar3 = true;
+            bVar2 = true;
+            puStack_2a8 = local_ec;
+            pcStack_2ac = (char *)0x2ba5b8b;
+            cVar6 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                              ();
+            if (cVar6 == '\x01') goto LAB_02ba5b9f;
+            local_274 = '\0';
+          }
+          local_cb = local_274;
+          local_8 = 0xc;
+          if (bVar2) {
+            ppiStack_298 = (int **)0x2ba5bdf;
+            __1CCharString__QAE_XZ();
+          }
+          local_8 = 0xb;
+          if (bVar3) {
+            ppiStack_298 = (int **)0x2ba5c03;
+            __1CCharString__QAE_XZ();
+          }
+          local_8 = 10;
+          if (bVar4) {
+            ppiStack_298 = (int **)0x2ba5c27;
+            __1CCharString__QAE_XZ();
+          }
+          local_8._0_1_ = 6;
+          local_8._1_3_ = 0;
+          if (bVar5) {
+            ppiStack_298 = (int **)0x2ba5c4b;
+            __1CWideString__QAE_XZ();
+          }
+          if (local_cb != '\0') {
+            ppiStack_298 = (int **)0x2ba5c5c;
+            BVar8 = IsDebuggerPresent();
+            if (BVar8 != 0) {
+              pcVar1 = (code *)swi(3);
+              uVar7 = (*pcVar1)();
+              return uVar7;
+            }
+          }
+        }
+        bVar5 = false;
+        bVar4 = false;
+        bVar3 = false;
+        bVar2 = false;
+        ppiStack_298 = (int **)0x2ba5c71;
+        (**(code **)(*local_34 + 0x130))();
+        ppiStack_298 = (int **)0x2ba5c78;
+        ppiStack_298 = (int **)GetErrorReason();
+        pcStack_29c = (char *)0x2ba5c81;
+        __0C3DVector__QAE_ABV0__Z();
+        ppiStack_298 = (int **)0x2ba5c89;
+        __C__CIntelligentPointer_VCThing____QBEPAVCThing__XZ();
+        ppiStack_298 = (int **)0x2ba5c90;
+        ppiStack_298 = (int **)_GetPos_CThing__QBEABVC3DVector__XZ();
+        pcStack_29c = local_f8;
+        puStack_2a0 = (undefined1 *)0x2ba5ca0;
+        __GC3DVector__QBE_BV0_ABV0__Z();
+        ppiStack_298 = (int **)0x2ba5ca7;
+        fVar12 = (float10)_GetMagnitude2D_C3DVector__QBEMXZ();
+        ppiStack_298 = (int **)(float)fVar12;
+        pcStack_29c = (char *)local_68;
+        puStack_2a0 = (undefined1 *)0x2ba5cbd;
+        local_6c = (float)ppiStack_298;
+        __DC3DVector__QBE_BV0_M_Z();
+        if (in_stack_00000028 != (undefined1 *)0x0) {
+          ppiStack_298 = (int **)0x2ba5cce;
+          _GetCreature_CAIStateGroupBase__IBEAAVCThingAICreature__XZ();
+          ppiStack_298 = (int **)0x2ba5cd5;
+          ppiStack_298 = (int **)_GetPos_CThing__QBEABVC3DVector__XZ();
+          pcStack_29c = (char *)local_104;
+          puStack_2a0 = (undefined1 *)0x2ba5ce5;
+          __C__CIntelligentPointer_VCThing____QBEPAVCThing__XZ();
+          puStack_2a0 = (undefined1 *)0x2ba5cec;
+          _GetPos_CThing__QBEABVC3DVector__XZ();
+          puStack_2a0 = (undefined1 *)0x2ba5cf3;
+          __GC3DVector__QBE_BV0_ABV0__Z();
+          ppiStack_298 = (int **)0x2ba5cfa;
+          fVar12 = (float10)_GetSquaredMagnitude_C3DVector__QBEMXZ();
+          if ((float10)400.0 < fVar12) {
+            ppiStack_298 = (int **)0x1;
+            pcStack_29c = (char *)in_stack_00000024;
+            puStack_2a0 = (undefined1 *)0x3;
+            pcStack_2a4 = &local_35;
+            puStack_2a8 = in_stack_00000028;
+            pcStack_2ac = (char *)0x2ba5d22;
+            _AIAction_MoveToPreCalcRoute_CAIStateGroupBase__IAE_AW4EAIActionReturn__ABVCThing__AA_NW4EMovementType__ABVCAIFilterBase_1__N_Z
+                      ();
+          }
+        }
+        ppiStack_298 = (int **)0x2ba5d2c;
+        cVar6 = ____8VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+        if (cVar6 == '\0') {
+          ppiStack_298 = (int **)0x2ba5d3d;
+          cVar6 = ____8VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+          if (cVar6 == '\0') goto LAB_02ba5d9a;
+        }
+        ppiStack_298 = (int **)0x2ba5d4e;
+        cVar6 = ____9VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+        if (cVar6 != '\0') {
+          ppiStack_298 = (int **)local_30;
+          pcStack_29c = (char *)0x2ba5d61;
+          _SetActionPointAsFree_CTCUserActionPointBase__QAEXJ_Z();
+        }
+        local_105 = 0;
+        local_8._0_1_ = 1;
+        ppiStack_298 = (int **)0x2ba5d74;
+        __1__CIntelligentPointer_VCThing____UAE_XZ();
+        local_8 = (uint)local_8._1_3_ << 8;
+        ppiStack_298 = (int **)0x2ba5d80;
+        __1__CIntelligentPointer_VCThing____UAE_XZ();
+        local_8 = 0xffffffff;
+        ppiStack_298 = (int **)0x2ba5d8f;
+        ATL::CAtlWinModule::~CAtlWinModule((CAtlWinModule *)&stack0x00000010);
+        ExceptionList = local_10;
+        return local_105;
+      }
+      ppiStack_298 = (int **)0x0;
+      pcStack_29c = (char *)0x3;
+      puStack_2a0 = (undefined1 *)0x2ba59f5;
+      iVar9 = _AIAction_MinionWander_CAIStateGroupBase__IAE_AW4EAIActionReturn__W4EMovementType__PAVCThingBuilding___Z
+                        ();
+      if (iVar9 == 1) break;
+      ppiStack_298 = (int **)0x2ba59ff;
+      iVar9 = _GetFrame_CWorld__SIJXZ();
+      if (local_70 < iVar9) break;
+      ppiStack_298 = (int **)0x2ba5a10;
+      cVar6 = (**(code **)*in_stack_00000024)();
+      if (cVar6 == '\0') break;
+      ppiStack_298 = (int **)0x2ba5a21;
+      cVar6 = ____8VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+      if (cVar6 != '\0') break;
+      ppiStack_298 = (int **)0x2ba5a32;
+      cVar6 = ____8VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+    } while (cVar6 == '\0');
+    local_ca = 0;
+    local_8._0_1_ = 1;
+    ppiStack_298 = (int **)0x2ba5a4c;
+    __1__CIntelligentPointer_VCThing____UAE_XZ();
+    local_8 = (uint)local_8._1_3_ << 8;
+    ppiStack_298 = (int **)0x2ba5a58;
+    __1__CIntelligentPointer_VCThing____UAE_XZ();
+    local_8 = 0xffffffff;
+    ppiStack_298 = (int **)0x2ba5a67;
+    ATL::CAtlWinModule::~CAtlWinModule((CAtlWinModule *)&stack0x00000010);
+    ExceptionList = local_10;
+    return local_ca;
+  }
+  goto LAB_02ba6675;
+  while( true ) {
+    ppiStack_298 = (int **)0x2ba5e08;
+    cVar6 = (**(code **)*in_stack_00000024)();
+    if (cVar6 == '\0') goto LAB_02ba5e31;
+    ppiStack_298 = (int **)0x2ba5e19;
+    cVar6 = ____8VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+    if (cVar6 != '\0') goto LAB_02ba5e31;
+    ppiStack_298 = (int **)0x2ba5e2a;
+    cVar6 = ____8VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+    if (cVar6 != '\0') goto LAB_02ba5e31;
+    if (local_4c != 4) break;
+LAB_02ba5d9a:
+    ppiStack_298 = (int **)0x0;
+    pcStack_29c = (char *)0x1;
+    puStack_2a0 = (undefined1 *)0x0;
+    pcStack_2a4 = (char *)0x1;
+    puStack_2a8 = (undefined1 *)0x0;
+    pcStack_2ac = (char *)0x1;
+    puStack_2b0 = (undefined1 *)0x3;
+    puStack_2b4 = &local_35;
+    uStack_2b8 = 0x40a00000;
+    local_10c = (undefined1 *)&puStack_2c4;
+    ppuVar13 = &puStack_2c4;
+    puVar11 = local_68;
+    __C__CIntelligentPointer_VCThing____QBEPAVCThing__XZ(&puStack_2c4,puVar11);
+    _GetPos_CThing__QBEABVC3DVector__XZ();
+    __HC3DVector__QBE_BV0_ABV0__Z(ppuVar13,puVar11);
+    local_4c = _AIAction_MoveToPosProximity_CAIStateGroupBase__IAE_AW4EAIActionReturn__W4EAIActionRepeat__VC3DVector__MAA_NW4EMovementType___N44PBVCThing__4M_Z
+                         (2);
+    if ((local_4c == 1) || (local_4c == 3)) {
+LAB_02ba5e31:
+      ppiStack_298 = (int **)0x2ba5e3b;
+      cVar6 = ____9VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+      if (cVar6 != '\0') {
+        ppiStack_298 = (int **)local_30;
+        pcStack_29c = (char *)0x2ba5e4e;
+        _SetActionPointAsFree_CTCUserActionPointBase__QAEXJ_Z();
+      }
+      local_10d = 0;
+      local_8._0_1_ = 1;
+      ppiStack_298 = (int **)0x2ba5e61;
+      __1__CIntelligentPointer_VCThing____UAE_XZ();
+      local_8 = (uint)local_8._1_3_ << 8;
+      ppiStack_298 = (int **)0x2ba5e6d;
+      __1__CIntelligentPointer_VCThing____UAE_XZ();
+      local_8 = 0xffffffff;
+      ppiStack_298 = (int **)0x2ba5e7c;
+      ATL::CAtlWinModule::~CAtlWinModule((CAtlWinModule *)&stack0x00000010);
+      ExceptionList = local_10;
+      return local_10d;
+    }
+  }
+  local_2c = 0;
+  ppiStack_298 = (int **)&local_2c;
+  pcStack_29c = (char *)0x2ba5ea4;
+  __C__CIntelligentPointer_VCThing____QBEPAVCThing__XZ();
+  pcStack_29c = (char *)0x2ba5eab;
+  cVar6 = ___GetTC_VCTCExclusiveUse___CThing__QAE_NPAPAVCTCExclusiveUse___Z();
+  if (cVar6 != '\0') {
+    ppiStack_298 = (int **)0x2ba5ebe;
+    iVar9 = what();
+    if (iVar9 != 0) {
+      ppiStack_298 = (int **)0x2ba5ecb;
+      iVar9 = _GetFrame_CWorld__SIJXZ();
+      ppiStack_298 = (int **)0x2ba5ed8;
+      _GetWorld_CAIStateGroupBase__IBEAAVCWorld__XZ();
+      ppiStack_298 = (int **)0x2ba5edf;
+      _GetWorldSeed_CWorld__QBEPAKXZ();
+      ppiStack_298 = (int **)0x2ba5eeb;
+      local_70 = _GFRandom__YIKKPAK_Z();
+      local_70 = iVar9 + 0x32 + local_70;
+      do {
+        ppiStack_298 = (int **)0x0;
+        pcStack_29c = (char *)0x3;
+        puStack_2a0 = (undefined1 *)0x2ba5f01;
+        local_4c = _AIAction_MinionWander_CAIStateGroupBase__IAE_AW4EAIActionReturn__W4EMovementType__PAVCThingBuilding___Z
+                             ();
+        ppiStack_298 = (int **)0x2ba5f0c;
+        iVar9 = what();
+        if ((iVar9 == 0) || (local_4c == 1)) break;
+        ppiStack_298 = (int **)0x2ba5f1b;
+        iVar9 = _GetFrame_CWorld__SIJXZ();
+        if (local_70 <= iVar9) break;
+        ppiStack_298 = (int **)0x2ba5f2c;
+        cVar6 = (**(code **)*in_stack_00000024)();
+        if (cVar6 == '\0') break;
+        ppiStack_298 = (int **)0x2ba5f3d;
+        cVar6 = ____9VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+        if (cVar6 == '\0') break;
+        ppiStack_298 = (int **)0x2ba5f4e;
+        cVar6 = ____9VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+      } while (cVar6 != '\0');
+    }
+    ppiStack_298 = (int **)0x2ba5f5d;
+    iVar9 = what();
+    if (iVar9 != 0) {
+      ppiStack_298 = (int **)local_30;
+      pcStack_29c = (char *)0x2ba5f6d;
+      _SetActionPointAsFree_CTCUserActionPointBase__QAEXJ_Z();
+      local_10e = 0;
+      local_8._0_1_ = 1;
+      ppiStack_298 = (int **)0x2ba5f80;
+      __1__CIntelligentPointer_VCThing____UAE_XZ();
+      local_8 = (uint)local_8._1_3_ << 8;
+      ppiStack_298 = (int **)0x2ba5f8c;
+      __1__CIntelligentPointer_VCThing____UAE_XZ();
+      local_8 = 0xffffffff;
+      ppiStack_298 = (int **)0x2ba5f9b;
+      ATL::CAtlWinModule::~CAtlWinModule((CAtlWinModule *)&stack0x00000010);
+      ExceptionList = local_10;
+      return local_10e;
+    }
+    ppiStack_298 = (int **)0x2ba5fb3;
+    ppiStack_298 = (int **)_GetCreature_CAIStateGroupBase__IBEAAVCThingAICreature__XZ();
+    pcStack_29c = (char *)0x2ba5fbc;
+    _SetUser_CTCExclusiveUse__QAEXPAVCThing___Z();
+  }
+  ppiStack_298 = (int **)0x2ba5fc6;
+  cVar6 = ____8VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+  if (cVar6 != '\0') {
+LAB_02ba5fde:
+    ppiStack_298 = (int **)0x2ba5fe8;
+    cVar6 = ____9VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+    if (cVar6 != '\0') {
+      ppiStack_298 = (int **)local_30;
+      pcStack_29c = (char *)0x2ba5ffb;
+      _SetActionPointAsFree_CTCUserActionPointBase__QAEXJ_Z();
+    }
+    local_10f = 0;
+    local_8._0_1_ = 1;
+    ppiStack_298 = (int **)0x2ba600e;
+    __1__CIntelligentPointer_VCThing____UAE_XZ();
+    local_8 = (uint)local_8._1_3_ << 8;
+    ppiStack_298 = (int **)0x2ba601a;
+    __1__CIntelligentPointer_VCThing____UAE_XZ();
+    local_8 = 0xffffffff;
+    ppiStack_298 = (int **)0x2ba6029;
+    ATL::CAtlWinModule::~CAtlWinModule((CAtlWinModule *)&stack0x00000010);
+    ExceptionList = local_10;
+    return local_10f;
+  }
+  ppiStack_298 = (int **)0x2ba5fd7;
+  cVar6 = ____8VCThing____YI_NABV__CIntelligentPointer_VCThing____H_Z();
+  if (cVar6 != '\0') goto LAB_02ba5fde;
+  do {
+    ppiStack_298 = (int **)0x3f800000;
+    pcStack_29c = (char *)0x1;
+    puStack_2a0 = (undefined1 *)0x0;
+    pcStack_2a4 = (undefined1 *)0x1;
+    puStack_2a8 = (undefined1 *)0x1;
+    pcStack_2ac = (char *)0x3;
+    puStack_2b0 = &local_35;
+    local_114 = auStack_2bc;
+    puStack_2c4 = auStack_2bc;
+    puStack_2c0 = local_68;
+    __C__CIntelligentPointer_VCThing____QBEPAVCThing__XZ();
+    _GetPos_CThing__QBEABVC3DVector__XZ();
+    __HC3DVector__QBE_BV0_ABV0__Z();
+    puStack_2c0 = (undefined4 *)0x2;
+    puStack_2c4 = (undefined1 *)0x2ba607f;
+    local_4c = _AIAction_MoveToPos_CAIStateGroupBase__IAE_AW4EAIActionReturn__W4EAIActionRepeat__VC3DVector__AA_NW4EMovementType___N4PBVCThing__4M_Z
+                         ();
+    if (local_4c != 4) break;
+    ppiStack_298 = (int **)0x2ba6094;
+    cVar6 = (**(code **)*in_stack_00000024)();
+  } while (cVar6 != '\0');
+  do {
+    ppiStack_298 = (int **)0x3b360a13;
+    pcStack_29c = (char *)0x11;
+    puStack_2a0 = (undefined1 *)0x2ba60af;
+    __C__CIntelligentPointer_VCThing____QBEPAVCThing__XZ();
+    puStack_2a0 = (undefined1 *)0x2ba60b6;
+    pcStack_2ac = (char *)_GetPos_CThing__QBEABVC3DVector__XZ();
+    local_118 = (undefined1 *)&puStack_2a8;
+    puStack_2b0 = (undefined1 *)0x2ba60c7;
+    __0C3DVector__QAE_ABV0__Z();
+    pcStack_2ac = (char *)0x2;
+    puStack_2b0 = (undefined1 *)0x2ba60d4;
+    local_4c = _AIAction_LookAtPos_CAIStateGroupBase__IAE_AW4EAIActionReturn__W4EAIActionRepeat__VC3DVector__JM_Z
+                         ();
+    if (local_4c != 4) break;
+    ppiStack_298 = (int **)0x2ba60e9;
+    cVar6 = (**(code **)*in_stack_00000024)();
+  } while (cVar6 != '\0');
+  if (local_4c != 2) {
+    ppiStack_298 = (int **)local_30;
+    pcStack_29c = (char *)0x2ba6102;
+    _SetActionPointAsFree_CTCUserActionPointBase__QAEXJ_Z();
+    local_119 = 0;
+    local_8._0_1_ = 1;
+    ppiStack_298 = (int **)0x2ba6115;
+    __1__CIntelligentPointer_VCThing____UAE_XZ();
+    local_8 = (uint)local_8._1_3_ << 8;
+    ppiStack_298 = (int **)0x2ba6121;
+    __1__CIntelligentPointer_VCThing____UAE_XZ();
+    local_8 = 0xffffffff;
+    ppiStack_298 = (int **)0x2ba6130;
+    ATL::CAtlWinModule::~CAtlWinModule((CAtlWinModule *)&stack0x00000010);
+    ExceptionList = local_10;
+    return local_119;
+  }
+  *(undefined1 *)(in_ECX + 0x18) = 1;
+  local_28[0] = 0;
+  ppiStack_298 = (int **)local_28;
+  pcStack_29c = (char *)0x2ba6158;
+  __C__CIntelligentPointer_VCThing____QBEPAVCThing__XZ();
+  pcStack_29c = (char *)0x2ba615f;
+  ___GetTC_VCTCCrateStack___CThing__QAE_NPAPAVCTCCrateStack___Z();
+  if (local_28[0] == 0) {
+    local_3c = 0;
+  }
+  else {
+    ppiStack_298 = (int **)0x2ba616d;
+    local_3c = _GetNumCrates_CTCCrateStack__QBEJXZ();
+  }
+  ppiStack_298 = (int **)0x2ba6181;
+  uVar10 = _size___vector_PBVCCharString__V__allocator_PBVCCharString___std___std__QBEIXZ();
+  if (uVar10 <= local_3c) {
+    ppiStack_298 = (int **)0x43e9658;
+    pcStack_29c = (char *)0x2ba619a;
+    __0CWideString__QAE_PB_W_Z();
+    local_8._0_1_ = 0xe;
+    ppiStack_298 = (int **)0xffffffff;
+    pcStack_29c = "";
+    puStack_2a0 = (undefined1 *)0x2ba61b0;
+    __0CCharString__QAE_PBDJ_Z();
+    local_8._0_1_ = 0xf;
+    ppiStack_298 = (int **)0xffffffff;
+    pcStack_29c = "anim_to_play < put_down_anim_names.size()";
+    puStack_2a0 = (undefined1 *)0x2ba61c6;
+    __0CCharString__QAE_PBDJ_Z();
+    local_8._0_1_ = 0x10;
+    ppiStack_298 = (int **)0x1;
+    pcStack_29c = (char *)0xcb;
+    puStack_2a0 = local_124;
+    pcStack_2a4 = local_12c;
+    puStack_2a8 = local_134;
+    pcStack_2ac = (char *)0x2ba61eb;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ();
+    pcStack_2ac = (char *)0x2ba61f2;
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    pcStack_2ac = (char *)0x2ba61f9;
+    cVar6 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      ();
+    local_11a = '\x01' - (cVar6 != '\x01');
+    local_8._0_1_ = 0xf;
+    ppiStack_298 = (int **)0x2ba621b;
+    __1CCharString__QAE_XZ();
+    local_8._0_1_ = 0xe;
+    ppiStack_298 = (int **)0x2ba622a;
+    __1CCharString__QAE_XZ();
+    local_8._0_1_ = 6;
+    ppiStack_298 = (int **)0x2ba6239;
+    __1CWideString__QAE_XZ();
+    if (local_11a != '\0') {
+      ppiStack_298 = (int **)0x2ba624a;
+      BVar8 = IsDebuggerPresent();
+      if (BVar8 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar7 = (*pcVar1)();
+        return uVar7;
+      }
+    }
+  }
+  local_50 = 0;
+  ppiStack_298 = (int **)0x4d;
+  pcStack_29c = (char *)0x2ba6260;
+  _GetThingInPrimarySlot_CTCCarrying__QBEPAVCThing__XZ();
+  pcStack_29c = (char *)0x2ba6267;
+  cVar6 = _HasTC_CThing__QBE_NW4ETCInterfaceType___Z();
+  if (cVar6 == '\0') {
+    ppiStack_298 = (int **)0xffffffff;
+    pcStack_29c = "CTCSolidToThing";
+    puStack_2a0 = (undefined1 *)0x2ba648d;
+    __0CCharString__QAE_PBDJ_Z();
+    local_8._0_1_ = 0x15;
+    ppiStack_298 = (int **)0x0;
+    pcStack_29c = (char *)0x1;
+    puStack_2a0 = local_160;
+    pcStack_2a4 = (char *)0x2ba64a4;
+    _GetThingInPrimarySlot_CTCCarrying__QBEPAVCThing__XZ();
+    pcStack_2a4 = (undefined1 *)0x2ba64ab;
+    _AddTC_CThing__QAEPAVCTCBase__ABVCCharString___NPBVCTCParamsBase___Z();
+    ppiStack_298 = (int **)0x2ba64b4;
+    local_50 = ___GFDebugPDynamicCast_PAVCTCBase__PAVCTCSolidToThing____YIPAVCTCSolidToThing__PAVCTCBase__PAV0__Z
+                         ();
+    local_8._0_1_ = 6;
+    ppiStack_298 = (int **)0x2ba64c6;
+    __1CCharString__QAE_XZ();
+  }
+  else {
+    ppiStack_298 = (int **)&local_50;
+    pcStack_29c = (char *)0x2ba627e;
+    _GetThingInPrimarySlot_CTCCarrying__QBEPAVCThing__XZ();
+    pcStack_29c = (char *)0x2ba6285;
+    cVar6 = ___GetTC_VCTCSolidToThing___CThing__QAE_NPAPAVCTCSolidToThing___Z();
+    if (cVar6 == '\0') {
+      if (DAT_04bac270 == 0) {
+LAB_02ba63a7:
+        local_288 = '\x01';
+      }
+      else {
+        ppiStack_298 = (int **)0x43e96d0;
+        pcStack_29c = (char *)0x2ba62ad;
+        __0CWideString__QAE_PB_W_Z();
+        local_8 = CONCAT31(local_8._1_3_,0x11);
+        ppiStack_298 = (int **)0xffffffff;
+        pcStack_29c = "";
+        puStack_2a0 = (undefined1 *)0x2ba62d5;
+        __0CCharString__QAE_PBDJ_Z();
+        local_8 = 0x12;
+        ppiStack_298 = (int **)0x1;
+        pcStack_29c = (char *)0xcf;
+        puStack_2a0 = local_140;
+        pcStack_2a4 = "ptc_carrying->GetThingInPrimarySlot()->GetTC(&pTCSolidToThing)";
+        puStack_2a8 = (undefined1 *)0xffffffff;
+        pcStack_2ac = "Failed success assert on ";
+        puStack_2b0 = (undefined1 *)0x2ba6313;
+        __0CCharString__QAE_PBDJ_Z();
+        local_8 = 0x13;
+        puStack_2a8 = (undefined1 *)0x2ba634f;
+        pcStack_2a4 = (char *)__H_YI_AVCCharString__ABV0_PBD_Z();
+        local_8 = 0x14;
+        bVar5 = true;
+        bVar4 = true;
+        bVar3 = true;
+        bVar2 = true;
+        puStack_2a8 = local_158;
+        pcStack_2ac = (char *)0x2ba6393;
+        cVar6 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                          ();
+        if (cVar6 == '\x01') goto LAB_02ba63a7;
+        local_288 = '\0';
+      }
+      local_135 = local_288;
+      local_8 = 0x13;
+      if (bVar2) {
+        ppiStack_298 = (int **)0x2ba63e6;
+        __1CCharString__QAE_XZ();
+      }
+      local_8 = 0x12;
+      if (bVar3) {
+        ppiStack_298 = (int **)0x2ba6410;
+        __1CCharString__QAE_XZ();
+      }
+      local_8 = 0x11;
+      if (bVar4) {
+        ppiStack_298 = (int **)0x2ba643a;
+        __1CCharString__QAE_XZ();
+      }
+      local_8._0_1_ = 6;
+      local_8._1_3_ = 0;
+      if (bVar5) {
+        ppiStack_298 = (int **)0x2ba6463;
+        __1CWideString__QAE_XZ();
+      }
+      if (local_135 != '\0') {
+        ppiStack_298 = (int **)0x2ba6474;
+        BVar8 = IsDebuggerPresent();
+        if (BVar8 != 0) {
+          pcVar1 = (code *)swi(3);
+          uVar7 = (*pcVar1)();
+          return uVar7;
+        }
+      }
+    }
+  }
+  if (local_50 == 0) {
+    ppiStack_298 = (int **)0x43e9788;
+    pcStack_29c = (char *)0x2ba64e0;
+    __0CWideString__QAE_PB_W_Z();
+    local_8._0_1_ = 0x16;
+    ppiStack_298 = (int **)0xffffffff;
+    pcStack_29c = "";
+    puStack_2a0 = (undefined1 *)0x2ba64f6;
+    __0CCharString__QAE_PBDJ_Z();
+    local_8._0_1_ = 0x17;
+    ppiStack_298 = (int **)0xffffffff;
+    pcStack_29c = "pTCSolidToThing";
+    puStack_2a0 = (undefined1 *)0x2ba650c;
+    __0CCharString__QAE_PBDJ_Z();
+    local_8._0_1_ = 0x18;
+    ppiStack_298 = (int **)0x1;
+    pcStack_29c = (char *)0xd5;
+    puStack_2a0 = local_16c;
+    pcStack_2a4 = local_174;
+    puStack_2a8 = local_17c;
+    pcStack_2ac = (char *)0x2ba6531;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ();
+    pcStack_2ac = (char *)0x2ba6538;
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    pcStack_2ac = (char *)0x2ba653f;
+    cVar6 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      ();
+    local_161 = '\x01' - (cVar6 != '\x01');
+    local_8._0_1_ = 0x17;
+    ppiStack_298 = (int **)0x2ba6561;
+    __1CCharString__QAE_XZ();
+    local_8._0_1_ = 0x16;
+    ppiStack_298 = (int **)0x2ba6570;
+    __1CCharString__QAE_XZ();
+    local_8._0_1_ = 6;
+    ppiStack_298 = (int **)0x2ba657f;
+    __1CWideString__QAE_XZ();
+    if (local_161 != '\0') {
+      ppiStack_298 = (int **)0x2ba6590;
+      BVar8 = IsDebuggerPresent();
+      if (BVar8 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar7 = (*pcVar1)();
+        return uVar7;
+      }
+    }
+  }
+  if (local_50 != 0) {
+    ppiStack_298 = (int **)0x2ba65a6;
+    ppiStack_298 = (int **)_GetCreature_CAIStateGroupBase__IBEAAVCThingAICreature__XZ();
+    pcStack_29c = "j";
+    _AddThingNotSolidTo_CTCSolidToThing__QAEXPBVCThing___Z();
+  }
+  ppiStack_298 = (int **)0x0;
+  pcStack_29c = (char *)local_3c;
+  puStack_2a0 = (undefined1 *)0x2ba65bd;
+  puVar11 = (undefined4 *)
+            __A__vector_PBVCCharString__V__allocator_PBVCCharString___std___std__QAEAAPBVCCharString__I_Z
+                      ();
+  pcStack_29c = (char *)*puVar11;
+  puStack_2a0 = (undefined1 *)0x2ba65cb;
+  puStack_2a0 = (undefined1 *)_GetCreature_CAIStateGroupBase__IBEAAVCThingAICreature__XZ();
+  pcStack_2a4 = (undefined1 *)0x2ba65d7;
+  pcStack_29c = (char *)__0CCreatureAction_PutGoodsDown__QAE_AAVCThingCreatureBase__ABVCCharString___Z
+                                  ();
+  local_8._0_1_ = 0x19;
+  puStack_2a0 = (undefined1 *)0x2ba65ff;
+  local_4c = _AIAction_PerformActionAndWait_CAIStateGroupBase__IAE_AW4EAIActionReturn__ABVCCreatureActionBase___N_Z
+                       ();
+  local_8._0_1_ = 6;
+  ppiStack_298 = (int **)0x2ba6611;
+  __1CCreatureAction_PutGoodsDown__UAE_XZ();
+  if (local_4c == 2) {
+    if (local_2c != 0) {
+      ppiStack_298 = (int **)0x0;
+      pcStack_29c = (char *)0x2ba6627;
+      _SetUser_CTCExclusiveUse__QAEXPAVCThing___Z();
+    }
+    ppiStack_298 = (int **)local_30;
+    pcStack_29c = (char *)0x2ba6633;
+    _SetActionPointAsFree_CTCUserActionPointBase__QAEXJ_Z();
+    local_8._0_1_ = 1;
+    ppiStack_298 = (int **)0x2ba6646;
+    __1__CIntelligentPointer_VCThing____UAE_XZ();
+    local_8 = (uint)local_8._1_3_ << 8;
+    ppiStack_298 = (int **)0x2ba6652;
+    __1__CIntelligentPointer_VCThing____UAE_XZ();
+    local_8 = 0xffffffff;
+    ppiStack_298 = (int **)0x2ba6661;
+    ATL::CAtlWinModule::~CAtlWinModule((CAtlWinModule *)&stack0x00000010);
+    ExceptionList = local_10;
+    return 1;
+  }
+  ppiStack_298 = (int **)local_30;
+  pcStack_29c = (char *)0x2ba6675;
+  _SetActionPointAsFree_CTCUserActionPointBase__QAEXJ_Z();
+LAB_02ba6675:
+  local_8 = CONCAT31(local_8._1_3_,1);
+  ppiStack_298 = (int **)0x2ba6681;
+  __1__CIntelligentPointer_VCThing____UAE_XZ();
+LAB_02ba6681:
+  local_8 = local_8 & 0xffffff00;
+  ppiStack_298 = (int **)0x2ba6694;
+  __1__CIntelligentPointer_VCThing____UAE_XZ();
+  local_8 = 0xffffffff;
+  ppiStack_298 = (int **)0x2ba66a3;
+  ATL::CAtlWinModule::~CAtlWinModule((CAtlWinModule *)&stack0x00000010);
+  ExceptionList = local_10;
+  return 0;
+}
+
+
+// CALLEES of ?PlaceGoods@CAIStateGroup_MoveGoodsBase@@IAE_NV?$CIntelligentPointer@VCThing@@@@MV?$vector@PBVCCharString@@V?$allocator@PBVCCharString@@@std@@@std@@ABVCAIFilterBase@CAIStateGroupBase@@PBVCThing@@@Z:
+//   01790c70  ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
+//   0184581e  ~CAtlWinModule
+//   EXTERNAL:00000128  IsDebuggerPresent
+//   017f5dc8  GetErrorReason
+//   01826e0a  ??$?8VCThing@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@H@Z
+//   0179b238  ??$GetTC@VCTCCrateStack@@@CThing@@QAE_NPAPAVCTCCrateStack@@@Z
+//   018006e7  ??HC3DVector@@QBE?BV0@ABV0@@Z
+//   017c0092  ??1?$CIntelligentPointer@VCThing@@@@UAE@XZ
+//   017f33bb  ?SetUser@CTCExclusiveUse@@QAEXPAVCThing@@@Z
+//   017c6cd5  ?GetMagnitude2D@C3DVector@@QBEMXZ
+//   0179099b  ?AIAction_MoveToPreCalcRoute@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCThing@@AA_NW4EMovementType@@ABVCAIFilterBase@1@_N@Z
+//   017ce192  ?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z
+//   017fed79  ??$?9VCThing@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@H@Z
+//   017d42a9  ?GetFreeActionPoint@CTCUserActionPointBase@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ@Z
+//   0181c126  ??0CCharString@@QAE@PBDJ@Z
+//   017d58de  ?AIAction_MinionWander@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMovementType@@PAVCThingBuilding@@@Z
+//   017da064  ??DC3DVector@@QBE?BV0@M@Z
+//   017f8bae  ?GFGetSystemManager@@YIPAVCSystemManager@@XZ
+//   0179318c  ??0C3DVector@@QAE@XZ
+//   017c88a0  ??$PeekTC@$$CBVCTCCarrying@@@CThing@@QBE_NPAPBVCTCCarrying@@@Z
+//   017abd72  ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@MAA_NW4EMovementType@@_N44PBVCThing@@4M@Z
+//   017f059e  ??0CWideString@@QAE@PB_W@Z
+//   017c0b23  ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+//   018474c0  ??A?$vector@PBVCCharString@@V?$allocator@PBVCCharString@@@std@@@std@@QAEAAPBVCCharString@@I@Z
+//   0183552c  ?DoErrorMessage@CDebugManager@@QAE_NABVCCharString@@0ABVCWideString@@KW4EErrorType@NDebugManager@@@Z
+//   0182ffd2  ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z
+//   01805255  ?GetConstantFPS@CMainGameComponent@@SIJXZ
+//   017be454  ?GetThingInPrimarySlot@CTCCarrying@@QBEPAVCThing@@XZ
+//   017d47e5  ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ
+//   017957b1  ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
+//   0182dac0  __ftol2_sse
+//   017995be  ?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z
+//   01797363  ??$GetTC@VCTCPhysicsBase@@@CThing@@QAE_NPAPAVCTCPhysicsBase@@@Z
+//   017d1e55  ??$GetTC@VCTCSingleUserActionPoints@@@CThing@@QAE_NPAPAVCTCSingleUserActionPoints@@@Z
+//   01808946  ?GetWorldSeed@CWorld@@QBEPAKXZ
+//   01851c40  ?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z
+//   017ea333  ??1CWideString@@QAE@XZ
+//   01810e11  ??0CRightHandedSet@@QAE@XZ
+//   017b2c2b  ??$GetTC@VCTCExclusiveUse@@@CThing@@QAE_NPAPAVCTCExclusiveUse@@@Z
+//   0179f40f  ?GetFrame@CWorld@@SIJXZ
+//   01822233  ??1CCharString@@QAE@XZ
+//   01797c14  ?GFRandom@@YIKKPAK@Z
+//   01856ace  ?size@?$vector@PBVCCharString@@V?$allocator@PBVCCharString@@@std@@@std@@QBEIXZ
+//   01845373  ??0CCreatureAction_PutGoodsDown@@QAE@AAVCThingCreatureBase@@ABVCCharString@@@Z
+//   01841205  ??H@YI?AVCCharString@@ABV0@PBD@Z
+//   017caa3d  ?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z
+//   017f17b4  ??$GFDebugPDynamicCast@PAVCTCBase@@PAVCTCSolidToThing@@@@YIPAVCTCSolidToThing@@PAVCTCBase@@PAV0@@Z
+//   017b4cbf  ??$GetTC@VCTCSolidToThing@@@CThing@@QAE_NPAPAVCTCSolidToThing@@@Z
+//   018562ae  ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z
+//   017dc6fc  ?GetDebugManager@CSystemManager@@QAEPAVCDebugManager@@XZ
+//   018123e2  ?GetSquaredMagnitude@C3DVector@@QBEMXZ
+//   017cc20c  ??GC3DVector@@QBE?BV0@ABV0@@Z
+//   01801f33  ??C?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ
+//   017ba7c8  ??1CCreatureAction_PutGoodsDown@@UAE@XZ
+//   01811064  ??0C3DVector@@QAE@ABV0@@Z
+//   0183c1ce  what
+//   017ff4ae  ?GetNumCrates@CTCCrateStack@@QBEJXZ
+//   01829074  ?GetPos@CThing@@QBEABVC3DVector@@XZ
+
+//=== ?AccurateBuildFromPoints@C3DBoundingSphere@@QAEXPBVC3DVector@@JM@Z @ 0338b000 (seed 0338b000) ===
+
+/* WARNING: Removing unreachable block (ram,0x0338b065) */
+/* [ported from ego_r via strfp] */
+
+void _AccurateBuildFromPoints_C3DBoundingSphere__QAEXPBVC3DVector__JM_Z
+               (int param_1,uint param_2,float param_3)
+
+{
+  undefined4 uVar1;
+  undefined4 *in_ECX;
+  float10 fVar2;
+  undefined1 *puVar3;
+  float fVar4;
+  undefined1 local_68 [12];
+  undefined1 local_5c [12];
+  undefined1 local_50 [12];
+  undefined1 local_44 [12];
+  undefined1 local_38 [12];
+  int local_2c;
+  float local_28;
+  uint local_24;
+  float local_20;
+  uint local_1c;
+  float local_18;
+  undefined4 local_14;
+  undefined4 local_10;
+  undefined4 local_c;
+  float local_8;
+  
+  _FastBuildFromPoints_C3DBoundingSphere__QAEXPBVC3DVector__J_Z(param_1,param_2);
+  if (param_2 != 0) {
+    local_18 = 0.25;
+    local_8 = 1e+30;
+    __0C3DVector__QAE_ABV0__Z(in_ECX);
+    while (param_3 < local_18) {
+      local_20 = 0.0;
+      local_1c = 0;
+      for (local_24 = 0; local_24 < param_2; local_24 = local_24 + 1) {
+        local_2c = local_24 * 0xc + param_1;
+        __GC3DVector__QBE_BV0_ABV0__Z(local_38,in_ECX);
+        fVar2 = (float10)_GetSquaredMagnitude_C3DVector__QBEMXZ();
+        local_28 = (float)fVar2;
+        if (local_20 < local_28) {
+          local_1c = local_24;
+          local_20 = local_28;
+        }
+      }
+      if (local_8 <= local_20) {
+        puVar3 = local_68;
+        fVar4 = local_18;
+        __GC3DVector__QBE_BV0_ABV0__Z(local_5c,in_ECX);
+        uVar1 = __DC3DVector__QBE_BV0_M_Z(puVar3,fVar4);
+        __YC3DVector__QAEABV0_ABV0__Z(uVar1);
+        local_18 = local_18 * 0.75;
+      }
+      else {
+        local_14 = *in_ECX;
+        local_10 = in_ECX[1];
+        local_c = in_ECX[2];
+        local_8 = local_20;
+        puVar3 = local_50;
+        fVar4 = local_18;
+        __GC3DVector__QBE_BV0_ABV0__Z(local_44,in_ECX);
+        uVar1 = __DC3DVector__QBE_BV0_M_Z(puVar3,fVar4);
+        __YC3DVector__QAEABV0_ABV0__Z(uVar1);
+      }
+    }
+    *in_ECX = local_14;
+    in_ECX[1] = local_10;
+    in_ECX[2] = local_c;
+    fVar2 = (float10)_GFRoot__YIMM_Z(local_8);
+    in_ECX[3] = (float)fVar2;
+  }
+  return;
+}
+
+
+// CALLEES of ?AccurateBuildFromPoints@C3DBoundingSphere@@QAEXPBVC3DVector@@JM@Z:
+//   018123e2  ?GetSquaredMagnitude@C3DVector@@QBEMXZ
+//   017cc20c  ??GC3DVector@@QBE?BV0@ABV0@@Z
+//   01798286  ?FastBuildFromPoints@C3DBoundingSphere@@QAEXPBVC3DVector@@J@Z
+//   017dd16f  ??YC3DVector@@QAEABV0@ABV0@@Z
+//   0179e212  ?GFRoot@@YIMM@Z
+//   01811064  ??0C3DVector@@QAE@ABV0@@Z
+//   017da064  ??DC3DVector@@QBE?BV0@M@Z
+

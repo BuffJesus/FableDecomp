@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-08-21T19:00:48-06:00",
+  "compiler": "C:\\Users\\Cornelio\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.EXE",
+  "candidates": 12,
+  "integrity_pass": 12,
+  "host_cpp20_syntax_pass": 8,
+  "vc71_compatible": 0,
+  "compile_ready": 0,
+  "semantic_quarantine": 0,
+  "unique_missing_dependencies": 7
+}

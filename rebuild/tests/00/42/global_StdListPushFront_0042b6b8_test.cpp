@@ -1,0 +1,2 @@
+#include <cstdio>
+struct List{void* first;void** address;void* seenFirst;void* copy;void Push(void* value){address=&value;seenFirst=first;copy=value;}};int main(){int a,b;List list={&a,0,0,0};list.Push(&b);if(!list.address||list.seenFirst!=&a||list.copy!=&b)return 1;std::printf("STD_LIST_PUSH_FRONT_PASS\n");return 0;}

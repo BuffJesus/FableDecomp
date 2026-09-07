@@ -1,0 +1,3 @@
+#include <stdlib.h>
+void __cdecl operator delete(void* memory);
+struct CleanupEntry{virtual void Destroy(int flags);unsigned long unknown;};struct CleanupOwner{unsigned char unused[0x1c];CleanupEntry* begin;CleanupEntry* end;};void __fastcall PolymorphicRangeCleanup_004436c0(CleanupOwner* self){if(self!=0){CleanupEntry* finish=self->end;for(CleanupEntry* current=self->begin;current!=finish;++current){current->Destroy(0);}if(self->begin!=0)free(self->begin);operator delete(self);}}

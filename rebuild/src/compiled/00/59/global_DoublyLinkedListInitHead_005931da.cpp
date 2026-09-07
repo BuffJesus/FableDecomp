@@ -1,0 +1,3 @@
+#pragma optimize("s",on)
+#include <stdlib.h>
+struct CircularNode_005931da{CircularNode_005931da* next;CircularNode_005931da* previous;};void** __fastcall DoublyLinkedList_InitHead(void** out,void* unusedRegister,void* unusedStack){(void)unusedRegister;(void)unusedStack;*(unsigned long*)out&=0;CircularNode_005931da* node=(CircularNode_005931da*)malloc(0xc);node->next=node;node->previous=node;*out=node;return out;}

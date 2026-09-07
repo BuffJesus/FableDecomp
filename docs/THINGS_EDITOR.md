@@ -27,6 +27,21 @@ Working in the GUI today (`Things` rail entry, separate from `World > Landscape`
   `tng::File::setCtcProperty`, and facing writes the retail-quantized basis
   (`* 0.999994`), never a unit vector.
 - Filter by type / def / script name, hide markers, `Save .tng`.
+- **Definition-sized mesh proxies now render.** The editor decodes each distinct
+  `DefinitionType` once from the live `game.bin`, follows its non-zero
+  `Graphic.modelId`, and draws a yaw-oriented wire box using `MeshRadius`,
+  `MeshHeightOffset` (bottom) and `MeshHeight`. Definitions without a clean
+  mesh binding or sane dimensions retain the coloured pin fallback. The next
+  preview increment is compiled LOD0 geometry, not proxy plumbing.
+- **Compiled LOD0 wireframes now render too (2026-08-24).** A new read-only
+  `forge::meshpreview` core module ports the proven Blender decoder's compiled
+  payload walk, Fable chunked-LZO framing, packed/unpacked positions, and
+  strip/list triangulation. Things cache geometry by `Graphic.modelId`, render
+  nearby meshes under a 30,000-triangle frame budget, and fall back to the
+  definition proxy or pin on malformed, unavailable, or over-budget geometry.
+  Retail `MESH_OBJECT_WOODEN_SIGNPOST_01` (id 5341) gates at 67 vertices / 113
+  triangles. The mesh bank's retail location is `data/graphics/graphics.big`
+  (not the `pc` texture-bank directory).
 
 ## 1. The reference design (ChocolateBox / FableMod)
 
@@ -155,8 +170,9 @@ one action.** Give a thing with no script name a generated one
 
 ## 7. Immediate next steps
 
-1. Proxy boxes from def mesh dimensions (§2.1) — biggest visual payoff per hour.
-2. Port `decodeLod0` to forgecore; wireframe, then flat-shaded (§2.2, §2.3).
+1. ~~Proxy boxes from def mesh dimensions (§2.1).~~ Complete 2026-08-24.
+2. ~~Port `decodeLod0` to forgecore and add wireframes (§2.2).~~ Complete
+   2026-08-24. Next: flat-shaded triangles (§2.3).
 3. Palette + drag-to-place, with def validation (§3).
 4. CTC property inspector, text-tag picker (§4).
 5. Thing → node graph → ForgeFSE Lua round trip (§5).

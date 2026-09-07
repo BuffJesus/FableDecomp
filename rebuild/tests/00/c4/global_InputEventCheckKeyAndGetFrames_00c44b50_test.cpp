@@ -1,0 +1,2 @@
+#include <cstdio>
+struct Event{long current,seen;int gets,frames;};static void Run(Event& e,long key){++e.gets;if(key<e.current){e.seen=key;++e.frames;}}int main(){Event e={5,0,0,0};Run(e,4);if(e.gets!=1||e.frames!=1||e.seen!=4)return 1;Run(e,5);Run(e,6);if(e.gets!=3||e.frames!=1)return 2;std::printf("INPUT_EVENT_CHECK_PASS\n");return 0;}

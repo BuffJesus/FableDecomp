@@ -137,10 +137,18 @@ class NativeOperationIRTests(unittest.TestCase):
     def test_all_seed_bindings_are_correlated(self):
         result = compare(Path("refs/script_recovery/seed_corpus/sources"),
                          Path("refs/script_recovery/native_operation_ir"))
-        self.assertEqual(len(result["scripts"]), 6)
+        self.assertEqual(len(result["scripts"]), 8)
+        # Every reconstructed binding must exist in the native lifecycle.  The
+        # reverse is not required: DragonBossFight's quests.lua registers only
+        # Dragon, while retail also binds DBMinion and DBSummoner (both .lua
+        # files ship in the package but are never registered).
+        native_only = {row["package"]: row["nativeBindingsMissingLua"]
+                       for row in result["scripts"] if row["nativeBindingsMissingLua"]}
+        self.assertEqual(native_only, {"DragonBossFight": ["DBMinion", "DBSummoner"]})
         for row in result["scripts"]:
             self.assertFalse(row["luaBindingsMissingNativeLifecycle"], row)
-            self.assertEqual(row["luaBindingsFoundNative"], row["nativeEntityBindings"])
+            self.assertTrue(set(row["luaBindingsFoundNative"])
+                            <= set(row["nativeEntityBindings"]), row)
 
 
 if __name__ == "__main__":

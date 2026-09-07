@@ -1,3 +1,6 @@
+// RE_AGENT_SEMANTIC_REVIEW: deferred compiler-owned CRT/SEH startup shell.
+// Exact promotion is intentionally gated on a useful GFMain integration boundary;
+// exit/_cexit and unwind behavior cannot be validated by the current offline fixture lane.
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>

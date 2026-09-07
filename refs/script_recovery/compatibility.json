@@ -2,73 +2,22 @@
   "schema": "forgefse-script-compatibility/0.1",
   "corpus": "D:\\Documents\\FableTLC\\refs\\script_recovery\\seed_corpus",
   "summary": {
-    "uniqueCalls": 84,
-    "totalCalls": 542,
-    "missingApis": 6,
-    "traceTemplates": 16
+    "uniqueCalls": 111,
+    "totalCalls": 825,
+    "missingApis": 0,
+    "traceTemplates": 25
   },
-  "missingApis": [
-    {
-      "name": "RunCutscene",
-      "occurrences": 11,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "priority": 22
-    },
-    {
-      "name": "FadeOutAndKillEntity",
-      "occurrences": 6,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "priority": 18
-    },
-    {
-      "name": "EndCutscene",
-      "occurrences": 8,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "priority": 16
-    },
-    {
-      "name": "StartCutscene",
-      "occurrences": 5,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "priority": 10
-    },
-    {
-      "name": "GetAngleXY",
-      "occurrences": 2,
-      "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
-      ],
-      "priority": 4
-    },
-    {
-      "name": "AddLogbookStoryEntry",
-      "occurrences": 1,
-      "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
-      ],
-      "priority": 1
-    }
-  ],
+  "missingApis": [],
   "calls": [
     {
       "scope": "Quest",
       "name": "Log",
-      "count": 50,
+      "count": 119,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
@@ -84,33 +33,20 @@
         "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
         "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
         "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
-        "MeetSister:FSE/MeetSister/MeetSister.lua"
-      ]
-    },
-    {
-      "scope": "Quest",
-      "name": "GetStateBool",
-      "count": 33,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
-        "MazeResearch:FSE/MazeResearch/MazeResearch.lua"
+        "MeetSister:FSE/MeetSister/MeetSister.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterChest.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua",
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
       ]
     },
     {
       "scope": "Quest",
       "name": "SetStateBool",
-      "count": 33,
+      "count": 42,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
@@ -129,8 +65,12 @@
     {
       "scope": "Quest",
       "name": "NewScriptFrame",
-      "count": 26,
+      "count": 41,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
@@ -143,7 +83,65 @@
         "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
         "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
         "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua"
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "GetStateBool",
+      "count": 35,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "SetStateInt",
+      "count": 33,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "GetThingWithScriptName",
+      "count": 32,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterChest.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua",
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
       ]
     },
     {
@@ -161,8 +159,9 @@
     {
       "scope": "Quest",
       "name": "GetActiveQuestName",
-      "count": 23,
+      "count": 24,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
@@ -182,22 +181,13 @@
     },
     {
       "scope": "Quest",
-      "name": "GetThingWithScriptName",
-      "count": 20,
+      "name": "GetStateInt",
+      "count": 21,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua"
       ]
     },
     {
@@ -210,6 +200,32 @@
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "DeregisterTimer",
+      "count": 15,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "AddEntityBinding",
+      "count": 14,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "MeetSister:FSE/MeetSister/MeetSister.lua",
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
       ]
     },
     {
@@ -226,10 +242,45 @@
     },
     {
       "scope": "Quest",
-      "name": "DeregisterTimer",
+      "name": "SetQuestCardObjective",
+      "count": 13,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "MeetSister:FSE/MeetSister/MeetSister.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "GetHero",
       "count": 12,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "RunCutscene",
+      "count": 12,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
       ]
@@ -273,40 +324,98 @@
     },
     {
       "scope": "Quest",
-      "name": "RunCutscene",
+      "name": "PlayCutscene",
       "count": 11,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "DeactivateQuestLater",
+      "count": 10,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "RemoveThing",
+      "count": 10,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterChest.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "SetTimer",
+      "count": 10,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
       ]
     },
     {
       "scope": "Quest",
-      "name": "SetQuestCardObjective",
-      "count": 11,
+      "name": "EndCutscene",
+      "count": 9,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
-        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
-        "MeetSister:FSE/MeetSister/MeetSister.lua"
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
       ]
     },
     {
       "scope": "Quest",
-      "name": "AddEntityBinding",
-      "count": 10,
+      "name": "GetTimer",
+      "count": 9,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "SetQuestAsCompleted",
+      "count": 9,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
-        "MeetSister:FSE/MeetSister/MeetSister.lua"
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
       ]
     },
     {
@@ -323,41 +432,29 @@
     },
     {
       "scope": "Quest",
-      "name": "DeactivateQuestLater",
+      "name": "FinalizeEntityBindings",
       "count": 8,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
         "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "MeetSister:FSE/MeetSister/MeetSister.lua",
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
       ]
     },
     {
       "scope": "Quest",
-      "name": "EndCutscene",
+      "name": "GetHealth",
       "count": 8,
       "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ]
-    },
-    {
-      "scope": "Quest",
-      "name": "GetHero",
-      "count": 8,
-      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
       ]
     },
     {
@@ -370,33 +467,6 @@
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ]
-    },
-    {
-      "scope": "Quest",
-      "name": "PlayCutscene",
-      "count": 7,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
-      ]
-    },
-    {
-      "scope": "Quest",
-      "name": "SetQuestAsCompleted",
-      "count": 7,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
       ]
     },
     {
@@ -434,6 +504,18 @@
     },
     {
       "scope": "Quest",
+      "name": "AddLineToConversation",
+      "count": 6,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
       "name": "EntitySetThingAsAllyOfThing",
       "count": 6,
       "consumers": [
@@ -453,15 +535,13 @@
     },
     {
       "scope": "Quest",
-      "name": "FinalizeEntityBindings",
+      "name": "IsRegionLoaded",
       "count": 6,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
         "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
-        "MeetSister:FSE/MeetSister/MeetSister.lua"
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua"
       ]
     },
     {
@@ -478,9 +558,10 @@
     },
     {
       "scope": "Quest",
-      "name": "SetTimer",
+      "name": "RegisterTimer",
       "count": 6,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
@@ -488,11 +569,22 @@
     },
     {
       "scope": "Quest",
-      "name": "AddLineToConversation",
-      "count": 5,
+      "name": "StartAmbientConversation",
+      "count": 6,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "StartCutscene",
+      "count": 6,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
       ]
@@ -505,6 +597,25 @@
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetFacingAngle",
+      "count": 5,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetInLimbo",
+      "count": 5,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua"
       ]
     },
     {
@@ -530,36 +641,6 @@
       ]
     },
     {
-      "scope": "Quest",
-      "name": "IsRegionLoaded",
-      "count": 5,
-      "consumers": [
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua"
-      ]
-    },
-    {
-      "scope": "Quest",
-      "name": "StartAmbientConversation",
-      "count": 5,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ]
-    },
-    {
-      "scope": "Quest",
-      "name": "StartCutscene",
-      "count": 5,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ]
-    },
-    {
       "scope": "Entity",
       "name": "MoveToPosition",
       "count": 4,
@@ -580,11 +661,21 @@
     },
     {
       "scope": "Quest",
-      "name": "EntitySetFacingAngle",
+      "name": "CreateEffectAtPos",
       "count": 4,
       "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "CreateThread",
+      "count": 4,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua"
       ]
     },
     {
@@ -599,33 +690,45 @@
     },
     {
       "scope": "Quest",
-      "name": "GetHealth",
+      "name": "GiveHeroMorality",
       "count": 4,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
       ]
     },
     {
       "scope": "Quest",
-      "name": "GetTimer",
+      "name": "PlayAVIMovie",
       "count": 4,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
       ]
     },
     {
       "scope": "Quest",
-      "name": "RemoveThing",
+      "name": "SetReadableObjectTextTag",
       "count": 4,
       "consumers": [
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "SetStateString",
+      "count": 4,
+      "consumers": [
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
+      ]
+    },
+    {
+      "scope": "Entity",
+      "name": "IsDead",
+      "count": 3,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua"
       ]
     },
     {
@@ -638,11 +741,47 @@
     },
     {
       "scope": "Entity",
+      "name": "MsgIsUsedByHero",
+      "count": 3,
+      "consumers": [
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua"
+      ]
+    },
+    {
+      "scope": "Entity",
       "name": "PlayAnimation",
       "count": 3,
       "consumers": [
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "DisplayQuestInfo",
+      "count": 3,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "FadeScreenIn",
+      "count": 3,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "GetAllThingsWithDefName",
+      "count": 3,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
       ]
     },
     {
@@ -673,21 +812,28 @@
     },
     {
       "scope": "Quest",
-      "name": "RegisterTimer",
-      "count": 3,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ]
-    },
-    {
-      "scope": "Quest",
       "name": "SetIsPushableByHero",
       "count": 3,
       "consumers": [
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "SetMasterGameState",
+      "count": 3,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "SetTeleportingAsActive",
+      "count": 3,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
       ]
     },
@@ -710,21 +856,36 @@
       ]
     },
     {
-      "scope": "Entity",
-      "name": "MsgIsUsedByHero",
+      "scope": "Quest",
+      "name": "AddLogbookStoryEntryString",
       "count": 2,
       "consumers": [
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
       ]
     },
     {
       "scope": "Quest",
-      "name": "CreateEffectAtPos",
+      "name": "AddQuestRegion",
       "count": 2,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "CreateCreature",
+      "count": 2,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "DisplayGameInfo",
+      "count": 2,
+      "consumers": [
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua"
       ]
     },
     {
@@ -738,6 +899,14 @@
     },
     {
       "scope": "Quest",
+      "name": "EntitySetAsLocked",
+      "count": 2,
+      "consumers": [
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
       "name": "EntitySetAsOpinionSourceByString",
       "count": 2,
       "consumers": [
@@ -747,27 +916,69 @@
     },
     {
       "scope": "Quest",
-      "name": "EntitySetInLimbo",
+      "name": "GetAllThingsWithScriptName",
       "count": 2,
       "consumers": [
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
       ]
     },
     {
       "scope": "Quest",
-      "name": "FadeScreenIn",
+      "name": "GetHeroMorality",
       "count": 2,
       "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
       ]
     },
     {
       "scope": "Quest",
-      "name": "GiveHeroMorality",
+      "name": "GiveThingBestEnemyTarget",
       "count": 2,
       "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "KickOffQuestStartScreen",
+      "count": 2,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "MsgIsGameInfoClickedPast",
+      "count": 2,
+      "consumers": [
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "SetCutsceneActionMode",
+      "count": 2,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "SetHUDEnabled",
+      "count": 2,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "StopOverrideMusic",
+      "count": 2,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
       ]
     },
     {
@@ -828,26 +1039,18 @@
     },
     {
       "scope": "Quest",
+      "name": "AddQuestInfoBarHealth",
+      "count": 1,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
       "name": "ClearThingBestEnemyTarget",
       "count": 1,
       "consumers": [
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua"
-      ]
-    },
-    {
-      "scope": "Quest",
-      "name": "CreateThread",
-      "count": 1,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua"
-      ]
-    },
-    {
-      "scope": "Quest",
-      "name": "DisplayGameInfo",
-      "count": 1,
-      "consumers": [
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
       ]
     },
     {
@@ -868,10 +1071,42 @@
     },
     {
       "scope": "Quest",
+      "name": "EntitySetCutsceneBehaviour",
+      "count": 1,
+      "consumers": [
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "FadeScreenOutUntilNextCallToFadeScreenIn",
+      "count": 1,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
       "name": "ForceShipsVisible",
       "count": 1,
       "consumers": [
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "GetAllCreaturesExcludingHero",
+      "count": 1,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "GetCutsceneFlag",
+      "count": 1,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
       ]
     },
     {
@@ -892,18 +1127,26 @@
     },
     {
       "scope": "Quest",
-      "name": "KickOffQuestStartScreen",
+      "name": "IsCreatureFlying",
       "count": 1,
       "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua"
       ]
     },
     {
       "scope": "Quest",
-      "name": "MsgIsGameInfoClickedPast",
+      "name": "OverrideMusic",
       "count": 1,
       "consumers": [
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ]
+    },
+    {
+      "scope": "Quest",
+      "name": "PersistTransferInt",
+      "count": 1,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
       ]
     },
     {
@@ -925,14 +1168,6 @@
     {
       "scope": "Quest",
       "name": "SetTeleporterAsActive",
-      "count": 1,
-      "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
-      ]
-    },
-    {
-      "scope": "Quest",
-      "name": "SetTeleportingAsActive",
       "count": 1,
       "consumers": [
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
@@ -1989,95 +2224,23 @@
       ]
     },
     {
-      "package": "MeetSister",
-      "script": "FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+      "package": "GuardianTrophyDealerInfo",
+      "script": "FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
       "kind": "entity",
       "evidenceLevel": "reconstructed-source",
       "functions": [
         {
           "name": "Init",
-          "events": []
-        },
-        {
-          "name": "Main",
           "events": [
             {
               "event": "api-call",
-              "scope": "Quest",
-              "name": "GetThingWithScriptName",
+              "scope": "Entity",
+              "name": "GetAngleXY",
               "sourceLine": 3,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "Log",
-              "sourceLine": 5,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "IsRegionLoaded",
-              "sourceLine": 9,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "NewScriptFrame",
-              "sourceLine": 10,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetHero",
-              "sourceLine": 15,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "Log",
-              "sourceLine": 17,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "PlayCutscene",
-              "sourceLine": 21,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "RemoveThing",
-              "sourceLine": 23,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             }
           ]
-        }
-      ]
-    },
-    {
-      "package": "MeetSister",
-      "script": "FSE/MeetSister/Entities/MeetSisterSister.lua",
-      "kind": "entity",
-      "evidenceLevel": "reconstructed-source",
-      "functions": [
-        {
-          "name": "Init",
-          "events": []
         },
         {
           "name": "Main",
@@ -2117,15 +2280,15 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "PlayCutscene",
-              "sourceLine": 15,
+              "name": "SetThingHasInformation",
+              "sourceLine": 16,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             },
             {
               "event": "api-call",
-              "scope": "Quest",
-              "name": "RemoveThing",
+              "scope": "Entity",
+              "name": "AcquireControl",
               "sourceLine": 17,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -2133,7 +2296,7 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "GetActiveQuestName",
+              "name": "EntitySetAsKillable",
               "sourceLine": 19,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -2141,7 +2304,7 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "SetQuestAsCompleted",
+              "name": "EntitySetAsDamageable",
               "sourceLine": 20,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -2149,7 +2312,7 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "DeactivateQuestLater",
+              "name": "SetIsPushableByHero",
               "sourceLine": 21,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -2157,8 +2320,344 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "FadeScreenIn",
-              "sourceLine": 22,
+              "name": "GetActiveQuestName",
+              "sourceLine": 23,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "KickOffQuestStartScreen",
+              "sourceLine": 24,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "MiniMapAddMarker",
+              "sourceLine": 26,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "MsgIsHitByHero",
+              "sourceLine": 30,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "MsgIsHitByAnySpecialAbilityFromHero",
+              "sourceLine": 31,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "MsgIsHitByHealLifeFromHero",
+              "sourceLine": 31,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetThingAsAllyOfThing",
+              "sourceLine": 34,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetThingAsAllyOfThing",
+              "sourceLine": 35,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "ReleaseControl",
+              "sourceLine": 38,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PlayCutscene",
+              "sourceLine": 39,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "AcquireControl",
+              "sourceLine": 40,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "IsTalkedToByHero",
+              "sourceLine": 44,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "ReleaseControl",
+              "sourceLine": 45,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PlayCutscene",
+              "sourceLine": 46,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "AcquireControl",
+              "sourceLine": 47,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 51,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "ReleaseControl",
+              "sourceLine": 52,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GiveQuestCardDirectly",
+              "sourceLine": 58,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 60,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetTeleporterAsActive",
+              "sourceLine": 62,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 64,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetTeleportingAsActive",
+              "sourceLine": 66,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "ClearThingHasInformation",
+              "sourceLine": 68,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "MiniMapRemoveMarker",
+              "sourceLine": 69,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetFacingAngle",
+              "sourceLine": 70,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "AddLogbookStoryEntry",
+              "sourceLine": 71,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetActiveQuestName",
+              "sourceLine": 73,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetQuestAsCompleted",
+              "sourceLine": 74,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateBool",
+              "sourceLine": 75,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "MsgIsHitByHero",
+              "sourceLine": 79,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "MsgIsHitByAnySpecialAbilityFromHero",
+              "sourceLine": 80,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "MsgIsHitByHealLifeFromHero",
+              "sourceLine": 80,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetThingAsAllyOfThing",
+              "sourceLine": 83,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetThingAsAllyOfThing",
+              "sourceLine": 84,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetFacingAngleTowardsThing",
+              "sourceLine": 85,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetHealth",
+              "sourceLine": 87,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "SpeakAndWait",
+              "sourceLine": 88,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "IsTalkedToByHero",
+              "sourceLine": 90,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetFacingAngleTowardsThing",
+              "sourceLine": 91,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetHealth",
+              "sourceLine": 92,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "SpeakAndWait",
+              "sourceLine": 93,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 97,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "ReleaseControl",
+              "sourceLine": 98,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             }
@@ -2167,8 +2666,8 @@
       ]
     },
     {
-      "package": "MeetSister",
-      "script": "FSE/MeetSister/MeetSister.lua",
+      "package": "GuardianTrophyDealerInfo",
+      "script": "FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
       "kind": "quest",
       "evidenceLevel": "reconstructed-source",
       "functions": [
@@ -2182,6 +2681,14 @@
               "sourceLine": 4,
               "arguments": "unresolved",
               "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateBool",
+              "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
             }
           ]
         },
@@ -2207,80 +2714,7 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "AddEntityBinding",
-              "sourceLine": 7,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
               "name": "FinalizeEntityBindings",
-              "sourceLine": 8,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetActiveQuestName",
-              "sourceLine": 10,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "SetQuestCardObjective",
-              "sourceLine": 11,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "Log",
-              "sourceLine": 12,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "package": "MazeResearch",
-      "script": "FSE/MazeResearch/Entities/EmptyGrave.lua",
-      "kind": "entity",
-      "evidenceLevel": "reconstructed-source",
-      "functions": [
-        {
-          "name": "Init",
-          "events": []
-        },
-        {
-          "name": "Main",
-          "events": [
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetThingWithScriptName",
-              "sourceLine": 2,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "Log",
-              "sourceLine": 4,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetStateBool",
               "sourceLine": 7,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -2288,208 +2722,7 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "MiniMapAddMarker",
-              "sourceLine": 8,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetThingWithScriptName",
-              "sourceLine": 10,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "EntitySetInLimbo",
-              "sourceLine": 12,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "Log",
-              "sourceLine": 14,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "MsgIsUsedByHero",
-              "sourceLine": 17,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetStateBool",
-              "sourceLine": 18,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetStateBool",
-              "sourceLine": 19,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetMasterGameState",
-              "sourceLine": 21,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetMasterGameState",
-              "sourceLine": 22,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetHero",
-              "sourceLine": 24,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "Log",
-              "sourceLine": 26,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "EntitySetInLimbo",
-              "sourceLine": 30,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "EntitySetAlpha",
-              "sourceLine": 31,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetMasterGameState",
-              "sourceLine": 33,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "Log",
-              "sourceLine": 35,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "PlayCutscene",
-              "sourceLine": 36,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "MiniMapRemoveMarker",
-              "sourceLine": 37,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "SetStateBool",
-              "sourceLine": 38,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
               "name": "GetActiveQuestName",
-              "sourceLine": 39,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "DeactivateQuestLater",
-              "sourceLine": 40,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "NewScriptFrame",
-              "sourceLine": 45,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "package": "MazeResearch",
-      "script": "FSE/MazeResearch/Entities/HistoryBookcase.lua",
-      "kind": "entity",
-      "evidenceLevel": "reconstructed-source",
-      "functions": [
-        {
-          "name": "Init",
-          "events": []
-        },
-        {
-          "name": "Main",
-          "events": [
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetThingWithScriptName",
-              "sourceLine": 3,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "Log",
-              "sourceLine": 5,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetStateBool",
               "sourceLine": 9,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -2497,7 +2730,7 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "NewScriptFrame",
+              "name": "SetQuestCardObjective",
               "sourceLine": 10,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -2505,193 +2738,7 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "SetThingAsUsable",
-              "sourceLine": 14,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "MiniMapAddMarker",
-              "sourceLine": 15,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "MsgIsUsedByHero",
-              "sourceLine": 18,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "NewScriptFrame",
-              "sourceLine": 22,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetActiveQuestName",
-              "sourceLine": 28,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "SetQuestCardObjective",
-              "sourceLine": 29,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "MiniMapRemoveMarker",
-              "sourceLine": 32,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetThingWithScriptName",
-              "sourceLine": 33,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "MiniMapAddMarker",
-              "sourceLine": 35,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
               "name": "Log",
-              "sourceLine": 37,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "SetStateBool",
-              "sourceLine": 40,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "DisplayGameInfo",
-              "sourceLine": 51,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "MsgIsGameInfoClickedPast",
-              "sourceLine": 52,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "NewScriptFrame",
-              "sourceLine": 53,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "NewScriptFrame",
-              "sourceLine": 59,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "package": "MazeResearch",
-      "script": "FSE/MazeResearch/MazeResearch.lua",
-      "kind": "script",
-      "evidenceLevel": "reconstructed-source",
-      "functions": [
-        {
-          "name": "Init",
-          "events": [
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "Log",
-              "sourceLine": 4,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            }
-          ]
-        },
-        {
-          "name": "Main",
-          "events": [
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "Log",
-              "sourceLine": 4,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "AddEntityBinding",
-              "sourceLine": 6,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "AddEntityBinding",
-              "sourceLine": 7,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "FinalizeEntityBindings",
-              "sourceLine": 8,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetActiveQuestName",
-              "sourceLine": 10,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "SetQuestCardObjective",
               "sourceLine": 11,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -2699,8 +2746,48 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "Log",
-              "sourceLine": 12,
+              "name": "GetStateBool",
+              "sourceLine": 14,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 15,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 21,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 24,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetActiveQuestName",
+              "sourceLine": 30,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "DeactivateQuestLater",
+              "sourceLine": 31,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             }
@@ -2730,30 +2817,6 @@
               "scope": "Quest",
               "name": "SetStateBool",
               "sourceLine": 6,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetStateBool",
-              "sourceLine": 8,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "PersistTransferBool",
-              "sourceLine": 9,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "SetStateBool",
-              "sourceLine": 10,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             }
@@ -5018,9 +5081,387 @@
       ]
     },
     {
-      "package": "GuardianTrophyDealerInfo",
-      "script": "FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+      "package": "MazeResearch",
+      "script": "FSE/MazeResearch/Entities/EmptyGrave.lua",
       "kind": "entity",
+      "evidenceLevel": "reconstructed-source",
+      "functions": [
+        {
+          "name": "Init",
+          "events": []
+        },
+        {
+          "name": "Main",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 2,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateBool",
+              "sourceLine": 7,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "MiniMapAddMarker",
+              "sourceLine": 8,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetInLimbo",
+              "sourceLine": 12,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 14,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "MsgIsUsedByHero",
+              "sourceLine": 17,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateBool",
+              "sourceLine": 18,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateBool",
+              "sourceLine": 19,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetMasterGameState",
+              "sourceLine": 21,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetMasterGameState",
+              "sourceLine": 22,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetHero",
+              "sourceLine": 24,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 26,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetInLimbo",
+              "sourceLine": 30,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetAlpha",
+              "sourceLine": 31,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetMasterGameState",
+              "sourceLine": 33,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 35,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PlayCutscene",
+              "sourceLine": 36,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "MiniMapRemoveMarker",
+              "sourceLine": 37,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateBool",
+              "sourceLine": 38,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetActiveQuestName",
+              "sourceLine": 39,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "DeactivateQuestLater",
+              "sourceLine": 40,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 45,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": "MazeResearch",
+      "script": "FSE/MazeResearch/Entities/HistoryBookcase.lua",
+      "kind": "entity",
+      "evidenceLevel": "reconstructed-source",
+      "functions": [
+        {
+          "name": "Init",
+          "events": []
+        },
+        {
+          "name": "Main",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateBool",
+              "sourceLine": 9,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetThingAsUsable",
+              "sourceLine": 14,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "MiniMapAddMarker",
+              "sourceLine": 15,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "MsgIsUsedByHero",
+              "sourceLine": 18,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 22,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetActiveQuestName",
+              "sourceLine": 28,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetQuestCardObjective",
+              "sourceLine": 29,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "MiniMapRemoveMarker",
+              "sourceLine": 32,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 33,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "MiniMapAddMarker",
+              "sourceLine": 35,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 37,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateBool",
+              "sourceLine": 40,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "DisplayGameInfo",
+              "sourceLine": 51,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "MsgIsGameInfoClickedPast",
+              "sourceLine": 52,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 53,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 59,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": "MazeResearch",
+      "script": "FSE/MazeResearch/MazeResearch.lua",
+      "kind": "script",
       "evidenceLevel": "reconstructed-source",
       "functions": [
         {
@@ -5028,13 +5469,220 @@
           "events": [
             {
               "event": "api-call",
-              "scope": "Entity",
-              "name": "GetAngleXY",
-              "sourceLine": 3,
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 4,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             }
           ]
+        },
+        {
+          "name": "Main",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "AddEntityBinding",
+              "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "AddEntityBinding",
+              "sourceLine": 7,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "FinalizeEntityBindings",
+              "sourceLine": 8,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetActiveQuestName",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetQuestCardObjective",
+              "sourceLine": 11,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 12,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "OnPersist",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateBool",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PersistTransferBool",
+              "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateBool",
+              "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateBool",
+              "sourceLine": 8,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PersistTransferBool",
+              "sourceLine": 9,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateBool",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": "MeetSister",
+      "script": "FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+      "kind": "entity",
+      "evidenceLevel": "reconstructed-source",
+      "functions": [
+        {
+          "name": "Init",
+          "events": []
+        },
+        {
+          "name": "Main",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "IsRegionLoaded",
+              "sourceLine": 9,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetHero",
+              "sourceLine": 15,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 17,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PlayCutscene",
+              "sourceLine": 21,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "RemoveThing",
+              "sourceLine": 23,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": "MeetSister",
+      "script": "FSE/MeetSister/Entities/MeetSisterSister.lua",
+      "kind": "entity",
+      "evidenceLevel": "reconstructed-source",
+      "functions": [
+        {
+          "name": "Init",
+          "events": []
         },
         {
           "name": "Main",
@@ -5074,15 +5722,15 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "SetThingHasInformation",
-              "sourceLine": 16,
+              "name": "PlayCutscene",
+              "sourceLine": 15,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             },
             {
               "event": "api-call",
-              "scope": "Entity",
-              "name": "AcquireControl",
+              "scope": "Quest",
+              "name": "RemoveThing",
               "sourceLine": 17,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -5090,7 +5738,7 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "EntitySetAsKillable",
+              "name": "GetActiveQuestName",
               "sourceLine": 19,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -5098,7 +5746,7 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "EntitySetAsDamageable",
+              "name": "SetQuestAsCompleted",
               "sourceLine": 20,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -5106,7 +5754,7 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "SetIsPushableByHero",
+              "name": "DeactivateQuestLater",
               "sourceLine": 21,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -5114,344 +5762,8 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "GetActiveQuestName",
-              "sourceLine": 23,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "KickOffQuestStartScreen",
-              "sourceLine": 24,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "MiniMapAddMarker",
-              "sourceLine": 26,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "MsgIsHitByHero",
-              "sourceLine": 30,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "MsgIsHitByAnySpecialAbilityFromHero",
-              "sourceLine": 31,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "MsgIsHitByHealLifeFromHero",
-              "sourceLine": 31,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "EntitySetThingAsAllyOfThing",
-              "sourceLine": 34,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "EntitySetThingAsAllyOfThing",
-              "sourceLine": 35,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "ReleaseControl",
-              "sourceLine": 38,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "PlayCutscene",
-              "sourceLine": 39,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "AcquireControl",
-              "sourceLine": 40,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "IsTalkedToByHero",
-              "sourceLine": 44,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "ReleaseControl",
-              "sourceLine": 45,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "PlayCutscene",
-              "sourceLine": 46,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "AcquireControl",
-              "sourceLine": 47,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "NewScriptFrame",
-              "sourceLine": 51,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "ReleaseControl",
-              "sourceLine": 52,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GiveQuestCardDirectly",
-              "sourceLine": 58,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetThingWithScriptName",
-              "sourceLine": 60,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "SetTeleporterAsActive",
-              "sourceLine": 62,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "Log",
-              "sourceLine": 64,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "SetTeleportingAsActive",
-              "sourceLine": 66,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "ClearThingHasInformation",
-              "sourceLine": 68,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "MiniMapRemoveMarker",
-              "sourceLine": 69,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "EntitySetFacingAngle",
-              "sourceLine": 70,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "AddLogbookStoryEntry",
-              "sourceLine": 71,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetActiveQuestName",
-              "sourceLine": 73,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "SetQuestAsCompleted",
-              "sourceLine": 74,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "SetStateBool",
-              "sourceLine": 75,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "MsgIsHitByHero",
-              "sourceLine": 79,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "MsgIsHitByAnySpecialAbilityFromHero",
-              "sourceLine": 80,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "MsgIsHitByHealLifeFromHero",
-              "sourceLine": 80,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "EntitySetThingAsAllyOfThing",
-              "sourceLine": 83,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "EntitySetThingAsAllyOfThing",
-              "sourceLine": 84,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "EntitySetFacingAngleTowardsThing",
-              "sourceLine": 85,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetHealth",
-              "sourceLine": 87,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "SpeakAndWait",
-              "sourceLine": 88,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "IsTalkedToByHero",
-              "sourceLine": 90,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "EntitySetFacingAngleTowardsThing",
-              "sourceLine": 91,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "GetHealth",
-              "sourceLine": 92,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "SpeakAndWait",
-              "sourceLine": 93,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Quest",
-              "name": "NewScriptFrame",
-              "sourceLine": 97,
-              "arguments": "unresolved",
-              "result": "fixture-supplied"
-            },
-            {
-              "event": "api-call",
-              "scope": "Entity",
-              "name": "ReleaseControl",
-              "sourceLine": 98,
+              "name": "FadeScreenIn",
+              "sourceLine": 22,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             }
@@ -5460,9 +5772,488 @@
       ]
     },
     {
-      "package": "GuardianTrophyDealerInfo",
-      "script": "FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+      "package": "MeetSister",
+      "script": "FSE/MeetSister/MeetSister.lua",
       "kind": "quest",
+      "evidenceLevel": "reconstructed-source",
+      "functions": [
+        {
+          "name": "Init",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "Main",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "AddEntityBinding",
+              "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "AddEntityBinding",
+              "sourceLine": 7,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "FinalizeEntityBindings",
+              "sourceLine": 8,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetActiveQuestName",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetQuestCardObjective",
+              "sourceLine": 11,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 12,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": "StatueMaster",
+      "script": "FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua",
+      "kind": "entity",
+      "evidenceLevel": "reconstructed-source",
+      "functions": [
+        {
+          "name": "Main",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 12,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetAsLocked",
+              "sourceLine": 19,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetAsLocked",
+              "sourceLine": 23,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "MsgIsUsedByHero",
+              "sourceLine": 26,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "DisplayGameInfo",
+              "sourceLine": 27,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "MsgIsGameInfoClickedPast",
+              "sourceLine": 29,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 30,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 36,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": "StatueMaster",
+      "script": "FSE/StatueMaster/Entities/StatueMasterChest.lua",
+      "kind": "entity",
+      "evidenceLevel": "reconstructed-source",
+      "functions": [
+        {
+          "name": "Main",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "RemoveThing",
+              "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 8,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": "StatueMaster",
+      "script": "FSE/StatueMaster/Entities/StatueMasterStatue.lua",
+      "kind": "entity",
+      "evidenceLevel": "reconstructed-source",
+      "functions": [
+        {
+          "name": "Init",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetReadableObjectTextTag",
+              "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 7,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "Main",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetCutsceneBehaviour",
+              "sourceLine": 9,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetFacingAngle",
+              "sourceLine": 16,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetReadableObjectTextTag",
+              "sourceLine": 23,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetReadableObjectTextTag",
+              "sourceLine": 25,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetReadableObjectTextTag",
+              "sourceLine": 27,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 30,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": "StatueMaster",
+      "script": "FSE/StatueMaster/Entities/StatuePointing.lua",
+      "kind": "entity",
+      "evidenceLevel": "reconstructed-source",
+      "functions": []
+    },
+    {
+      "package": "StatueMaster",
+      "script": "FSE/StatueMaster/StatueMaster.lua",
+      "kind": "script",
+      "evidenceLevel": "reconstructed-source",
+      "functions": [
+        {
+          "name": "Init",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "Main",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "AddEntityBinding",
+              "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "AddEntityBinding",
+              "sourceLine": 7,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "AddEntityBinding",
+              "sourceLine": 8,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "FinalizeEntityBindings",
+              "sourceLine": 9,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 11,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 12,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 13,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 14,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 15,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 18,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateString",
+              "sourceLine": 31,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateString",
+              "sourceLine": 32,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateString",
+              "sourceLine": 33,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateString",
+              "sourceLine": 34,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 36,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": "DragonBossFight",
+      "script": "FSE/DragonBossFight/DragonBossFight.lua",
+      "kind": "script",
       "evidenceLevel": "reconstructed-source",
       "functions": [
         {
@@ -5479,8 +6270,133 @@
             {
               "event": "api-call",
               "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 7,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 8,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 9,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 11,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 12,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
               "name": "SetStateBool",
+              "sourceLine": 13,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateBool",
+              "sourceLine": 14,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 15,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "AddQuestRegion",
+              "sourceLine": 17,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "AddQuestRegion",
+              "sourceLine": 18,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 19,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "OnPersist",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PersistTransferInt",
               "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 6,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             }
@@ -5516,7 +6432,7 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "GetActiveQuestName",
+              "name": "CreateThread",
               "sourceLine": 9,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -5524,7 +6440,1162 @@
             {
               "event": "api-call",
               "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "SpawnMinions",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 14,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "CreateEffectAtPos",
+              "sourceLine": 15,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 16,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "CreateCreature",
+              "sourceLine": 17,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 18,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 21,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 22,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "SpawnSummoners",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 9,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 15,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "CreateEffectAtPos",
+              "sourceLine": 16,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 17,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "CreateCreature",
+              "sourceLine": 18,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 19,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 23,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 24,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 25,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "RunEnemySpawning",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetAllThingsWithScriptName",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetAllThingsWithScriptName",
+              "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "RegisterTimer",
+              "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "RegisterTimer",
+              "sourceLine": 7,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 9,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateBool",
+              "sourceLine": 12,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetTimer",
+              "sourceLine": 12,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 13,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateBool",
+              "sourceLine": 15,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateBool",
+              "sourceLine": 18,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetTimer",
+              "sourceLine": 18,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 19,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateBool",
+              "sourceLine": 21,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "DeregisterTimer",
+              "sourceLine": 25,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "DeregisterTimer",
+              "sourceLine": 26,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 27,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "JackTaunts",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetHero",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "RegisterTimer",
+              "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetTimer",
+              "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 9,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetTimer",
+              "sourceLine": 12,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "StartAmbientConversation",
+              "sourceLine": 14,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 17,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "AddLineToConversation",
+              "sourceLine": 18,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetTimer",
+              "sourceLine": 25,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "DeregisterTimer",
+              "sourceLine": 29,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 30,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "DoMission",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetActiveQuestName",
+              "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
               "name": "SetQuestCardObjective",
+              "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "IsRegionLoaded",
+              "sourceLine": 9,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 13,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "FadeScreenOutUntilNextCallToFadeScreenIn",
+              "sourceLine": 14,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetMasterGameState",
+              "sourceLine": 16,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetAllCreaturesExcludingHero",
+              "sourceLine": 18,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetInLimbo",
+              "sourceLine": 21,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetHero",
+              "sourceLine": 25,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PlayCutscene",
+              "sourceLine": 27,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "OverrideMusic",
+              "sourceLine": 28,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetQuestCardObjective",
+              "sourceLine": 30,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "KickOffQuestStartScreen",
+              "sourceLine": 31,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "FadeScreenIn",
+              "sourceLine": 33,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetTeleportingAsActive",
+              "sourceLine": 34,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "DisplayQuestInfo",
+              "sourceLine": 35,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 37,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "AddQuestInfoBarHealth",
+              "sourceLine": 39,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 41,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "CreateThread",
+              "sourceLine": 45,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "CreateThread",
+              "sourceLine": 46,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 48,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 50,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 51,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetThingWithScriptName",
+              "sourceLine": 53,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetHealth",
+              "sourceLine": 55,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 57,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 58,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 64,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetTeleportingAsActive",
+              "sourceLine": 65,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetAllThingsWithDefName",
+              "sourceLine": 68,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "RemoveThing",
+              "sourceLine": 71,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetAllThingsWithDefName",
+              "sourceLine": 74,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "RemoveThing",
+              "sourceLine": 77,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetAllThingsWithDefName",
+              "sourceLine": 80,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "RemoveThing",
+              "sourceLine": 83,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PlayCutscene",
+              "sourceLine": 87,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetCutsceneActionMode",
+              "sourceLine": 89,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "StartCutscene",
+              "sourceLine": 90,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "RunCutscene",
+              "sourceLine": 91,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetCutsceneActionMode",
+              "sourceLine": 92,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetCutsceneFlag",
+              "sourceLine": 94,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EndCutscene",
+              "sourceLine": 95,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 98,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PlayCutscene",
+              "sourceLine": 99,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "AddLogbookStoryEntryString",
+              "sourceLine": 100,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetMasterGameState",
+              "sourceLine": 101,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetInLimbo",
+              "sourceLine": 105,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetQuestAsCompleted",
+              "sourceLine": 109,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 112,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetHeroMorality",
+              "sourceLine": 115,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PlayAVIMovie",
+              "sourceLine": 116,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PlayAVIMovie",
+              "sourceLine": 118,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GiveHeroMorality",
+              "sourceLine": 121,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "StopOverrideMusic",
+              "sourceLine": 122,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetHUDEnabled",
+              "sourceLine": 123,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "DisplayQuestInfo",
+              "sourceLine": 124,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "DeactivateQuestLater",
+              "sourceLine": 125,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 127,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PlayCutscene",
+              "sourceLine": 128,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "AddLogbookStoryEntryString",
+              "sourceLine": 129,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetMasterGameState",
+              "sourceLine": 130,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "EntitySetInLimbo",
+              "sourceLine": 134,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetQuestAsCompleted",
+              "sourceLine": 138,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 141,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetHeroMorality",
+              "sourceLine": 144,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PlayAVIMovie",
+              "sourceLine": 145,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "PlayAVIMovie",
+              "sourceLine": 147,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GiveHeroMorality",
+              "sourceLine": 150,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "StopOverrideMusic",
+              "sourceLine": 151,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetHUDEnabled",
+              "sourceLine": 152,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "DisplayQuestInfo",
+              "sourceLine": 153,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "DeactivateQuestLater",
+              "sourceLine": 154,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 157,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": "DragonBossFight",
+      "script": "FSE/DragonBossFight/Entities/DBMinion.lua",
+      "kind": "entity",
+      "evidenceLevel": "reconstructed-source",
+      "functions": [
+        {
+          "name": "Init",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "OnPredicateFail",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 7,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetTimer",
+              "sourceLine": 9,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetTimer",
               "sourceLine": 10,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -5536,12 +7607,17 @@
               "sourceLine": 11,
               "arguments": "unresolved",
               "result": "fixture-supplied"
-            },
+            }
+          ]
+        },
+        {
+          "name": "Main",
+          "events": [
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "GetStateBool",
-              "sourceLine": 14,
+              "name": "Log",
+              "sourceLine": 3,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             },
@@ -5549,14 +7625,54 @@
               "event": "api-call",
               "scope": "Quest",
               "name": "NewScriptFrame",
-              "sourceLine": 15,
+              "sourceLine": 6,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             },
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "GetThingWithScriptName",
+              "name": "GetHero",
+              "sourceLine": 8,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GiveThingBestEnemyTarget",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 12,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 16,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 17,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "IsDead",
               "sourceLine": 21,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -5564,36 +7680,60 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "NewScriptFrame",
-              "sourceLine": 24,
+              "name": "Log",
+              "sourceLine": 22,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             },
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "GetActiveQuestName",
-              "sourceLine": 30,
+              "name": "GetStateInt",
+              "sourceLine": 26,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             },
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "DeactivateQuestLater",
-              "sourceLine": 31,
+              "name": "Log",
+              "sourceLine": 28,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "RemoveThing",
+              "sourceLine": 29,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "package": "DragonBossFight",
+      "script": "FSE/DragonBossFight/Entities/DBSummoner.lua",
+      "kind": "entity",
+      "evidenceLevel": "reconstructed-source",
+      "functions": [
         {
-          "name": "OnPersist",
+          "name": "Init",
           "events": [
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "GetStateBool",
+              "name": "Log",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
               "sourceLine": 4,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -5601,7 +7741,7 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "PersistTransferBool",
+              "name": "SetStateInt",
               "sourceLine": 5,
               "arguments": "unresolved",
               "result": "fixture-supplied"
@@ -5609,8 +7749,553 @@
             {
               "event": "api-call",
               "scope": "Quest",
-              "name": "SetStateBool",
+              "name": "Log",
               "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "OnPredicateFail",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 7,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetTimer",
+              "sourceLine": 9,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetTimer",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 11,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "Main",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetHero",
+              "sourceLine": 8,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GiveThingBestEnemyTarget",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 12,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 16,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 17,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "IsDead",
+              "sourceLine": 21,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 22,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 26,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 28,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "RemoveThing",
+              "sourceLine": 29,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": "DragonBossFight",
+      "script": "FSE/DragonBossFight/Entities/Dragon.lua",
+      "kind": "entity",
+      "evidenceLevel": "reconstructed-source",
+      "functions": [
+        {
+          "name": "Init",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "OnPredicateFail",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 4,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            }
+          ]
+        },
+        {
+          "name": "Main",
+          "events": [
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 3,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 5,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 6,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 7,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetHealth",
+              "sourceLine": 10,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 12,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetHealth",
+              "sourceLine": 13,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 15,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 27,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "NewScriptFrame",
+              "sourceLine": 30,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 31,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetHealth",
+              "sourceLine": 35,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 36,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Entity",
+              "name": "IsDead",
+              "sourceLine": 39,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 40,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 41,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "IsCreatureFlying",
+              "sourceLine": 45,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 49,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 54,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 56,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 57,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateBool",
+              "sourceLine": 58,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "GetStateInt",
+              "sourceLine": 60,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateBool",
+              "sourceLine": 61,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 62,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 63,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 69,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 70,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 71,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateBool",
+              "sourceLine": 72,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 73,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 75,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 76,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 77,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateBool",
+              "sourceLine": 78,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 79,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 81,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 82,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateInt",
+              "sourceLine": 83,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "SetStateBool",
+              "sourceLine": 84,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 85,
+              "arguments": "unresolved",
+              "result": "fixture-supplied"
+            },
+            {
+              "event": "api-call",
+              "scope": "Quest",
+              "name": "Log",
+              "sourceLine": 89,
               "arguments": "unresolved",
               "result": "fixture-supplied"
             }

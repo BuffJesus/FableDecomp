@@ -1,0 +1,2663 @@
+﻿INFO  Using log config file: jar:file:/D:/Subuwu/tools/ghidra-public/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (1797 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (3998 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\GnuDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BytePatterns\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\JVM\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SystemEmulation\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\8051\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FileFormats\ghidra_scripts
+    D:\Documents\FableTLC\tools\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BSim\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\VersionTracking\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PDB\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\PIC\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Base\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Extensions\XEXLoaderWV\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    C:\Users\Cornelio\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\DATA\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Decompiler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\Atmel\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PyGhidra\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FunctionID\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessAnalyzer)  
+INFO  Opening project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessProject)  
+INFO  REPORT: Processing project file: /FableWin.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: DecompByName.java '0CEngineLandscapeRenderer' 'Initialise_CEngineLandscapeRenderer' 'Init_CEngineLandscapeRenderer'  (HeadlessAnalyzer)  
+INFO  SCRIPT: D:\Documents\FableTLC\tools\ghidra_scripts\DecompByName.java (HeadlessAnalyzer)  
+INFO  DecompByName.java> ==================== ??0CEngineLandscapeRenderer@@QAE@ABVCEngineMemoryInit@@@Z @ 0182d88b ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+undefined4 * __thiscall
+__0CEngineLandscapeRenderer__QAE_ABVCEngineMemoryInit___Z(undefined4 *param_1,undefined4 param_2)
+
+{
+  undefined4 uVar1;
+  uint uVar2;
+  void *pvVar3;
+  bool bVar4;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined4 uStack_670;
+  undefined4 uStack_4bc;
+  undefined4 uStack_4b8;
+  undefined4 uStack_4b4;
+  undefined4 uStack_4a8;
+  undefined4 uStack_4a4;
+  undefined4 uStack_4a0;
+  undefined4 uStack_49c;
+  undefined4 uStack_498;
+  undefined4 uStack_494;
+  undefined4 uStack_490;
+  undefined4 uStack_48c;
+  undefined4 uStack_488;
+  undefined4 uStack_484;
+  undefined4 uStack_480;
+  undefined1 auStack_46c [8];
+  undefined1 auStack_464 [8];
+  undefined1 auStack_45c [8];
+  undefined1 auStack_454 [8];
+  undefined1 auStack_44c [8];
+  undefined1 auStack_444 [8];
+  undefined1 auStack_43c [8];
+  undefined1 auStack_434 [8];
+  undefined1 auStack_42c [8];
+  undefined1 auStack_424 [8];
+  undefined1 auStack_41c [8];
+  undefined1 auStack_414 [8];
+  undefined1 auStack_40c [8];
+  undefined1 auStack_404 [8];
+  undefined1 auStack_3fc [8];
+  undefined1 auStack_3f4 [8];
+  undefined1 auStack_3ec [8];
+  undefined1 auStack_3e4 [8];
+  undefined1 auStack_3dc [8];
+  undefined1 auStack_3d4 [8];
+  undefined1 auStack_3cc [8];
+  undefined1 auStack_3c4 [8];
+  undefined1 auStack_3bc [8];
+  undefined1 auStack_3b4 [8];
+  undefined1 auStack_3ac [8];
+  undefined1 auStack_3a4 [8];
+  undefined1 auStack_39c [8];
+  undefined1 auStack_394 [8];
+  undefined1 auStack_38c [8];
+  undefined1 auStack_384 [8];
+  undefined1 auStack_37c [8];
+  undefined1 auStack_374 [8];
+  undefined1 auStack_36c [8];
+  undefined1 auStack_364 [8];
+  undefined1 auStack_35c [8];
+  undefined1 auStack_354 [8];
+  undefined1 auStack_34c [8];
+  undefined1 auStack_344 [8];
+  undefined1 auStack_33c [8];
+  undefined1 auStack_334 [8];
+  undefined1 auStack_32c [8];
+  undefined1 auStack_324 [8];
+  undefined1 auStack_31c [8];
+  undefined1 auStack_314 [8];
+  undefined1 auStack_30c [8];
+  undefined1 auStack_304 [8];
+  undefined1 auStack_2fc [8];
+  undefined1 auStack_2f4 [8];
+  undefined1 auStack_2ec [8];
+  undefined1 auStack_2e4 [8];
+  undefined1 auStack_2dc [8];
+  undefined1 auStack_2d4 [8];
+  undefined1 auStack_2cc [8];
+  undefined1 auStack_2c4 [8];
+  undefined1 auStack_2bc [8];
+  undefined1 auStack_2b4 [8];
+  undefined1 auStack_2ac [8];
+  undefined1 auStack_2a4 [8];
+  undefined1 auStack_29c [8];
+  undefined1 auStack_294 [8];
+  undefined1 auStack_28c [8];
+  undefined1 auStack_284 [8];
+  undefined1 auStack_27c [8];
+  undefined1 auStack_274 [8];
+  undefined1 auStack_26c [8];
+  undefined1 auStack_264 [8];
+  undefined1 auStack_25c [8];
+  undefined1 auStack_254 [8];
+  undefined1 auStack_24c [8];
+  undefined1 auStack_244 [8];
+  undefined1 auStack_23c [8];
+  undefined1 auStack_234 [8];
+  undefined1 auStack_22c [8];
+  undefined1 auStack_224 [8];
+  undefined1 auStack_21c [8];
+  undefined1 auStack_214 [8];
+  undefined1 auStack_20c [8];
+  undefined1 auStack_204 [8];
+  undefined1 auStack_1fc [8];
+  undefined1 auStack_1f4 [8];
+  undefined1 auStack_1ec [8];
+  undefined1 auStack_1e4 [8];
+  undefined1 auStack_1dc [8];
+  undefined1 auStack_1d4 [8];
+  undefined1 auStack_1cc [8];
+  undefined1 auStack_1c4 [8];
+  undefined1 auStack_1bc [8];
+  undefined1 auStack_1b4 [8];
+  undefined1 auStack_1ac [8];
+  undefined1 auStack_1a4 [8];
+  undefined1 auStack_19c [8];
+  undefined1 auStack_194 [8];
+  undefined1 auStack_18c [8];
+  undefined1 auStack_184 [8];
+  undefined1 auStack_17c [8];
+  undefined1 auStack_174 [8];
+  undefined1 auStack_16c [8];
+  undefined1 auStack_164 [8];
+  undefined1 auStack_15c [8];
+  undefined1 auStack_154 [8];
+  undefined1 auStack_14c [8];
+  undefined1 auStack_144 [8];
+  undefined1 auStack_13c [8];
+  undefined1 auStack_134 [8];
+  undefined1 auStack_12c [8];
+  undefined1 auStack_124 [8];
+  undefined1 auStack_11c [8];
+  undefined1 auStack_114 [8];
+  undefined1 auStack_10c [8];
+  void *pvStack_104;
+  undefined4 uStack_100;
+  undefined1 auStack_fc [8];
+  void *pvStack_f4;
+  undefined4 uStack_f0;
+  undefined1 auStack_ec [28];
+  void *pvStack_d0;
+  undefined4 uStack_cc;
+  undefined1 auStack_c8 [8];
+  undefined4 uStack_c0;
+  void *pvStack_bc;
+  undefined4 uStack_b8;
+  undefined1 auStack_b4 [8];
+  undefined4 uStack_ac;
+  void *pvStack_a8;
+  undefined4 uStack_a4;
+  undefined1 auStack_a0 [8];
+  void *pvStack_98;
+  undefined4 uStack_94;
+  undefined1 auStack_90 [8];
+  void *pvStack_88;
+  undefined4 uStack_84;
+  undefined1 auStack_80 [8];
+  void *pvStack_78;
+  undefined4 uStack_74;
+  undefined1 auStack_70 [8];
+  void *pvStack_68;
+  undefined4 uStack_64;
+  undefined1 auStack_60 [8];
+  void *pvStack_58;
+  undefined4 uStack_54;
+  undefined1 auStack_50 [8];
+  void *pvStack_48;
+  undefined4 uStack_44;
+  undefined1 auStack_40 [8];
+  void *pvStack_38;
+  undefined4 uStack_34;
+  undefined1 auStack_30 [8];
+  void *pvStack_28;
+  undefined4 uStack_24;
+  undefined1 auStack_20 [8];
+  void *pvStack_18;
+  undefined4 uStack_14;
+  void *pvStack_10;
+  undefined1 *puStack_c;
+  undefined4 uStack_8;
+  
+  uStack_8 = 0xffffffff;
+  puStack_c = &LAB_03e58193;
+  pvStack_10 = ExceptionList;
+  ExceptionList = &pvStack_10;
+  __0CEngineComponent__QAE_XZ();
+  uStack_8 = 0;
+  *param_1 = CEngineLandscapeRenderer::vftable;
+  __0CLandscapeGPUUpdateQueue__QAE_XZ();
+  uStack_8._0_1_ = 1;
+  __0CEngineLandscapeMeshBuilder__QAE_XZ();
+  uStack_8._0_1_ = 2;
+  __0__CArray_UCLandscapeTheme____QAE_XZ();
+  uStack_8._0_1_ = 3;
+  __0CVertexShader__QAE_XZ();
+  uStack_8._0_1_ = 4;
+  __0CVertexShader__QAE_XZ();
+  uStack_8._0_1_ = 5;
+  __0CVertexShader__QAE_XZ();
+  uStack_8._0_1_ = 6;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  uStack_8._0_1_ = 7;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  uStack_8._0_1_ = 8;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  uStack_8._0_1_ = 9;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  uStack_8._0_1_ = 10;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  uStack_8._0_1_ = 0xb;
+  __0CVertexShader__QAE_XZ();
+  uStack_8._0_1_ = 0xc;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  uStack_8._0_1_ = 0xd;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  uStack_8._0_1_ = 0xe;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  uStack_8._0_1_ = 0xf;
+  __0CVertexShader__QAE_XZ();
+  uStack_8._0_1_ = 0x10;
+  __0CVertexShader__QAE_XZ();
+  uStack_8._0_1_ = 0x11;
+  __0CPixelShader__QAE_XZ();
+  uStack_8._0_1_ = 0x12;
+  __0CPixelShader__QAE_XZ();
+  uStack_8._0_1_ = 0x13;
+  __0CPixelShader__QAE_XZ();
+  uStack_8._0_1_ = 0x14;
+  __0CPixelShader__QAE_XZ();
+  uStack_8._0_1_ = 0x15;
+  __0CPixelShader__QAE_XZ();
+  uStack_8._0_1_ = 0x16;
+  __0CPixelShader__QAE_XZ();
+  uStack_8._0_1_ = 0x17;
+  __0CPixelShader__QAE_XZ();
+  uStack_8._0_1_ = 0x18;
+  __0CPixelShader__QAE_XZ();
+  uStack_8._0_1_ = 0x19;
+  __0CIndexBuffer__QAE_XZ();
+  uStack_8._0_1_ = 0x1a;
+  _eh_vector_constructor_iterator_(param_1 + 0x3a1,8,5,__0CTexture__QAE_XZ,__1CTexture__QAE_XZ);
+  uStack_8._0_1_ = 0x1b;
+  __0__CArray_UCSubPatchSorterEntry_CEngineLandscapeRenderer____QAE_XZ();
+  uStack_8._0_1_ = 0x1c;
+  __0__CArray_UCBackgroundLoadingOcclusionBoxTask_CEngineLandscapeRenderer____QAE_XZ();
+  uStack_8._0_1_ = 0x1d;
+  __0__CArray_J__QAE_XZ();
+  uStack_8._0_1_ = 0x1e;
+  __0CLandscapeSettings_CEngineLandscapeRenderer__QAE_XZ();
+  __0__CArray_G__QAE_XZ();
+  uStack_8._0_1_ = 0x1f;
+  __0__CArray_VCTVertexLandscapeBackground____QAE_XZ();
+  uStack_8._0_1_ = 0x20;
+  __0CLandscapePatchTesselator__QAE_XZ();
+  uStack_8._0_1_ = 0x21;
+  __0CFastForegroundTextureLoadInfo_CEngineLandscapeRenderer__QAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  param_1[0x3ba] = _DAT_04434914;
+  param_1[0x3bb] = _DAT_04434918;
+  param_1[0x3bd] = _DAT_04067328;
+  param_1[0x3be] = _DAT_04022f20;
+  _CalcForegroundFadeFactors_CEngineLandscapeRenderer__QAEXXZ();
+  *(undefined1 *)(param_1 + 0x3bc) = 1;
+  *(undefined1 *)((int)param_1 + 0xef1) = 1;
+  *(undefined1 *)((int)param_1 + 0xef2) = 1;
+  *(undefined1 *)(param_1 + 0x3c7) = 1;
+  *(undefined1 *)((int)param_1 + 0xf1d) = 1;
+  *(undefined1 *)((int)param_1 + 0xf29) = 0;
+  param_1[0x3cb] = 0x8000;
+  param_1[0x3c8] = 0x3f800000;
+  param_1[0x3c9] = _DAT_04434920;
+  *(undefined1 *)(param_1 + 0x3ca) = 1;
+  *(undefined1 *)((int)param_1 + 0xf1f) = 1;
+  *(undefined1 *)(param_1 + 0x3cc) = 1;
+  *(undefined1 *)((int)param_1 + 0xf1e) = 0;
+  _BuildLODBands_CEngineLandscapeRenderer__AAEXXZ();
+  _BuildThemes_CEngineLandscapeRenderer__AAEXXZ();
+  pvStack_18 = operator_new(0x14);
+  uStack_8._0_1_ = 0x23;
+  bVar4 = pvStack_18 == (void *)0x0;
+  if (bVar4) {
+    uStack_480 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableForeground",0xffffffff);
+    uStack_8 = CONCAT31(uStack_8._1_3_,0x24);
+    uStack_480 = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(auStack_20,param_1 + 0x3bc);
+  }
+  uStack_14 = uStack_480;
+  uStack_8 = 0x25;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(uStack_480);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(uStack_480);
+  uStack_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  pvStack_28 = operator_new(0x14);
+  uStack_8._0_1_ = 0x26;
+  bVar4 = pvStack_28 == (void *)0x0;
+  if (bVar4) {
+    uStack_484 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableBackground",0xffffffff);
+    uStack_8 = CONCAT31(uStack_8._1_3_,0x27);
+    uStack_484 = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(auStack_30,(int)param_1 + 0xef1);
+  }
+  uStack_24 = uStack_484;
+  uStack_8 = 0x28;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(uStack_484);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(uStack_484);
+  uStack_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  pvStack_38 = operator_new(0x14);
+  uStack_8._0_1_ = 0x29;
+  bVar4 = pvStack_38 == (void *)0x0;
+  if (bVar4) {
+    uStack_488 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableLandscapeLODUpdate",0xffffffff);
+    uStack_8 = CONCAT31(uStack_8._1_3_,0x2a);
+    uStack_488 = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(auStack_40,param_1 + 0x3c7);
+  }
+  uStack_34 = uStack_488;
+  uStack_8 = 0x2b;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(uStack_488);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(uStack_488);
+  uStack_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  pvStack_48 = operator_new(0x14);
+  uStack_8._0_1_ = 0x2c;
+  bVar4 = pvStack_48 == (void *)0x0;
+  if (bVar4) {
+    uStack_48c = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableLandscapeFog",0xffffffff);
+    uStack_8 = CONCAT31(uStack_8._1_3_,0x2d);
+    uStack_48c = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(auStack_50,(int)param_1 + 0xf1d);
+  }
+  uStack_44 = uStack_48c;
+  uStack_8 = 0x2e;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(uStack_48c);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(uStack_48c);
+  uStack_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  pvStack_58 = operator_new(0x14);
+  uStack_8._0_1_ = 0x2f;
+  bVar4 = pvStack_58 == (void *)0x0;
+  if (bVar4) {
+    uStack_490 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableBackgroundWater",0xffffffff);
+    uStack_8 = CONCAT31(uStack_8._1_3_,0x30);
+    uStack_490 = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(auStack_60,(int)param_1 + 0xef2);
+  }
+  uStack_54 = uStack_490;
+  uStack_8 = 0x31;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(uStack_490);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(uStack_490);
+  uStack_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  pvStack_68 = operator_new(0x14);
+  uStack_8._0_1_ = 0x32;
+  bVar4 = pvStack_68 == (void *)0x0;
+  if (bVar4) {
+    uStack_494 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableForegroundWithoutGameMap",0xffffffff);
+    uStack_8 = CONCAT31(uStack_8._1_3_,0x33);
+    uStack_494 = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(auStack_70,param_1 + 0x3ca);
+  }
+  uStack_64 = uStack_494;
+  uStack_8 = 0x34;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(uStack_494);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(uStack_494);
+  uStack_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  pvStack_78 = operator_new(0x14);
+  uStack_8._0_1_ = 0x35;
+  bVar4 = pvStack_78 == (void *)0x0;
+  if (bVar4) {
+    uStack_498 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableLandscapeBumpMapping",0xffffffff);
+    uStack_8 = CONCAT31(uStack_8._1_3_,0x36);
+    uStack_498 = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(auStack_80,(int)param_1 + 0xf1f);
+  }
+  uStack_74 = uStack_498;
+  uStack_8 = 0x37;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(uStack_498);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(uStack_498);
+  uStack_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  pvStack_88 = operator_new(0x14);
+  uStack_8._0_1_ = 0x38;
+  bVar4 = pvStack_88 == (void *)0x0;
+  if (bVar4) {
+    uStack_49c = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableLandscapeTesselation",0xffffffff);
+    uStack_8 = CONCAT31(uStack_8._1_3_,0x39);
+    uStack_49c = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(auStack_90,param_1 + 0x3cc);
+  }
+  uStack_84 = uStack_49c;
+  uStack_8 = 0x3a;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(uStack_49c);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(uStack_49c);
+  uStack_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  pvStack_98 = operator_new(0x14);
+  uStack_8._0_1_ = 0x3b;
+  bVar4 = pvStack_98 == (void *)0x0;
+  if (bVar4) {
+    uStack_4a0 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("LandscapeLODUpdateTime",0xffffffff);
+    uStack_8 = CONCAT31(uStack_8._1_3_,0x3c);
+    uStack_4a0 = __0CConsoleVariable__QAE_ABVCCharString__AAM_Z(auStack_a0,param_1 + 0x3c8);
+  }
+  uStack_94 = uStack_4a0;
+  uStack_8 = 0x3d;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(uStack_4a0);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(uStack_4a0);
+  uStack_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  pvStack_a8 = operator_new(0x28);
+  uStack_8._0_1_ = 0x3e;
+  bVar4 = pvStack_a8 == (void *)0x0;
+  if (bVar4) {
+    uStack_4a4 = 0;
+  }
+  else {
+    uStack_ac = 3;
+    __0CCharString__QAE_PBDJ_Z("SetLandscapeDetail",0xffffffff);
+    uStack_8 = CONCAT31(uStack_8._1_3_,0x3f);
+    uStack_4a4 = __0__CConsoleCommand_VCEngineLandscapeRenderer____QAE_ABVCCharString__AAVCEngineLandscapeRenderer__P6IX1ABV__vector_VCGenericVar__V__allocator_VCGenericVar___std___std___ZABW4EGenericVarType___Z
+                           (auStack_b4,param_1,&LAB_018306b2,&uStack_ac);
+  }
+  uStack_a4 = uStack_4a4;
+  uStack_8 = 0x40;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(uStack_4a4);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(uStack_4a4);
+  uStack_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  pvStack_bc = operator_new(0x28);
+  uStack_8._0_1_ = 0x41;
+  bVar4 = pvStack_bc == (void *)0x0;
+  if (bVar4) {
+    uStack_4a8 = 0;
+  }
+  else {
+    uStack_c0 = 3;
+    __0CCharString__QAE_PBDJ_Z("SetProcTextureDetail",0xffffffff);
+    uStack_8 = CONCAT31(uStack_8._1_3_,0x42);
+    uStack_4a8 = __0__CConsoleCommand_VCEngineLandscapeRenderer____QAE_ABVCCharString__AAVCEngineLandscapeRenderer__P6IX1ABV__vector_VCGenericVar__V__allocator_VCGenericVar___std___std___ZABW4EGenericVarType___Z
+                           (auStack_c8,param_1,&LAB_017aa23d,&uStack_c0);
+  }
+  uStack_b8 = uStack_4a8;
+  uStack_8 = 0x43;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(uStack_4a8);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(uStack_4a8);
+  uStack_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  pvStack_d0 = operator_new(0x28);
+  uStack_8._0_1_ = 0x44;
+  bVar4 = pvStack_d0 == (void *)0x0;
+  if (bVar4) {
+    uStack_4b4 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("SetForegroundFade",0xffffffff);
+    uStack_8 = CONCAT31(uStack_8._1_3_,0x45);
+    uVar1 = __0CConsoleCommandParameters__QAE_W4EGenericVarType__0_Z(3,3);
+    uStack_8 = 0x46;
+    uStack_4b4 = __0__CConsoleCommand_VCEngineLandscapeRenderer____QAE_ABVCCharString__AAVCEngineLandscapeRenderer__P6IX1ABV__vector_VCGenericVar__V__allocator_VCGenericVar___std___std___ZABVCConsoleCommandParameters___Z
+                           (auStack_ec,param_1,&LAB_017bb93e,uVar1);
+  }
+  uStack_cc = uStack_4b4;
+  uStack_8 = 0x48;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(uStack_4b4);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(uStack_4b4);
+  uStack_8 = 0x47;
+  if (!bVar4) {
+    __1CConsoleCommandParameters__QAE_XZ();
+  }
+  uStack_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  pvStack_f4 = operator_new(0x14);
+  uStack_8._0_1_ = 0x49;
+  bVar4 = pvStack_f4 == (void *)0x0;
+  if (bVar4) {
+    uStack_4b8 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("ForegroundMaxPixelsPerTexel",0xffffffff);
+    uStack_8 = CONCAT31(uStack_8._1_3_,0x4a);
+    uStack_4b8 = __0CConsoleVariable__QAE_ABVCCharString__AAM_Z(auStack_fc,param_1 + 0x3c9);
+  }
+  uStack_f0 = uStack_4b8;
+  uStack_8 = 0x4b;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(uStack_4b8);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(uStack_4b8);
+  uStack_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  pvStack_104 = operator_new(0x14);
+  uStack_8._0_1_ = 0x4c;
+  bVar4 = pvStack_104 == (void *)0x0;
+  if (bVar4) {
+    uStack_4bc = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("DrawLandscapeDebugView",0xffffffff);
+    uStack_8 = CONCAT31(uStack_8._1_3_,0x4d);
+    uStack_4bc = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(auStack_10c,(int)param_1 + 0xf29);
+  }
+  uStack_100 = uStack_4bc;
+  uStack_8 = 0x4e;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(uStack_4bc);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(uStack_4bc);
+  uStack_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_BLACKOUT_PASS",0xffffffff);
+  uStack_8._0_1_ = 0x4f;
+  puVar6 = auStack_114;
+  puVar5 = auStack_11c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x50;
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x4f;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  _resize___vector_VCVertexShader__V__allocator_VCVertexShader___std___std__QAEXI_Z(6);
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND",0xffffffff);
+  uStack_8._0_1_ = 0x51;
+  puVar6 = auStack_124;
+  puVar5 = auStack_12c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x52;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(0);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x51;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS",0xffffffff);
+  uStack_8._0_1_ = 0x53;
+  puVar6 = auStack_134;
+  puVar5 = auStack_13c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x54;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(1);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x53;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS",0xffffffff);
+  uStack_8._0_1_ = 0x55;
+  puVar6 = auStack_144;
+  puVar5 = auStack_14c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x56;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(2);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x55;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS",0xffffffff);
+  uStack_8._0_1_ = 0x57;
+  puVar6 = auStack_154;
+  puVar5 = auStack_15c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x58;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(3);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x57;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS",0xffffffff);
+  uStack_8._0_1_ = 0x59;
+  puVar6 = auStack_164;
+  puVar5 = auStack_16c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x5a;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(4);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x59;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_5LIGHTS",0xffffffff);
+  uStack_8._0_1_ = 0x5b;
+  puVar6 = auStack_174;
+  puVar5 = auStack_17c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x5c;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(5);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x5b;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  _resize___vector_VCVertexShader__V__allocator_VCVertexShader___std___std__QAEXI_Z(6);
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x5d;
+  puVar6 = auStack_184;
+  puVar5 = auStack_18c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x5e;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(0);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x5d;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x5f;
+  puVar6 = auStack_194;
+  puVar5 = auStack_19c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x60;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(1);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x5f;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x61;
+  puVar6 = auStack_1a4;
+  puVar5 = auStack_1ac;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x62;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(2);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x61;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 99;
+  puVar6 = auStack_1b4;
+  puVar5 = auStack_1bc;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 100;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(3);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 99;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x65;
+  puVar6 = auStack_1c4;
+  puVar5 = auStack_1cc;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x66;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(4);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x65;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_5LIGHTS_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x67;
+  puVar6 = auStack_1d4;
+  puVar5 = auStack_1dc;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x68;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(5);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x67;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  _resize___vector_VCVertexShader__V__allocator_VCVertexShader___std___std__QAEXI_Z(6);
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_BUMP_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x69;
+  puVar6 = auStack_1e4;
+  puVar5 = auStack_1ec;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x6a;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(0);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x69;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_BUMP_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x6b;
+  puVar6 = auStack_1f4;
+  puVar5 = auStack_1fc;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x6c;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(1);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x6b;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_BUMP_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x6d;
+  puVar6 = auStack_204;
+  puVar5 = auStack_20c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x6e;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(2);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x6d;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_BUMP_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x6f;
+  puVar6 = auStack_214;
+  puVar5 = auStack_21c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x70;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(3);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x6f;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_BUMP_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x71;
+  puVar6 = auStack_224;
+  puVar5 = auStack_22c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x72;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(4);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x71;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_5LIGHTS_BUMP_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x73;
+  puVar6 = auStack_234;
+  puVar5 = auStack_23c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x74;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(5);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x73;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  _resize___vector_VCVertexShader__V__allocator_VCVertexShader___std___std__QAEXI_Z(6);
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_SPOT_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x75;
+  puVar6 = auStack_244;
+  puVar5 = auStack_24c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x76;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(0);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x75;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_SPOT_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x77;
+  puVar6 = auStack_254;
+  puVar5 = auStack_25c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x78;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(1);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x77;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_SPOT_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x79;
+  puVar6 = auStack_264;
+  puVar5 = auStack_26c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x7a;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(2);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x79;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_SPOT_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x7b;
+  puVar6 = auStack_274;
+  puVar5 = auStack_27c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x7c;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(3);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x7b;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_SPOT_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x7d;
+  puVar6 = auStack_284;
+  puVar5 = auStack_28c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x7e;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(4);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x7d;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_5LIGHTS_SPOT_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0x7f;
+  puVar6 = auStack_294;
+  puVar5 = auStack_29c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0x80;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(5);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0x7f;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  uVar2 = _GetPixelShaderVersion_CDisplayManager__QBEKXZ();
+  if (0x577 < uVar2) {
+    _resize___vector_VCVertexShader__V__allocator_VCVertexShader___std___std__QAEXI_Z(6);
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x81;
+    puVar6 = auStack_2a4;
+    puVar5 = auStack_2ac;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x82;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(0);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x81;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x83;
+    puVar6 = auStack_2b4;
+    puVar5 = auStack_2bc;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x84;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(1);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x83;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x85;
+    puVar6 = auStack_2c4;
+    puVar5 = auStack_2cc;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x86;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(2);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x85;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x87;
+    puVar6 = auStack_2d4;
+    puVar5 = auStack_2dc;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x88;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(3);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x87;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x89;
+    puVar6 = auStack_2e4;
+    puVar5 = auStack_2ec;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x8a;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(4);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x89;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_5LIGHTS_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x8b;
+    puVar6 = auStack_2f4;
+    puVar5 = auStack_2fc;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x8c;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(5);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x8b;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    _resize___vector_VCVertexShader__V__allocator_VCVertexShader___std___std__QAEXI_Z(6);
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_BUMP_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x8d;
+    puVar6 = auStack_304;
+    puVar5 = auStack_30c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x8e;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(0);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x8d;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_BUMP_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x8f;
+    puVar6 = auStack_314;
+    puVar5 = auStack_31c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x90;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(1);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x8f;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_BUMP_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x91;
+    puVar6 = auStack_324;
+    puVar5 = auStack_32c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x92;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(2);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x91;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_BUMP_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x93;
+    puVar6 = auStack_334;
+    puVar5 = auStack_33c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x94;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(3);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x93;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_BUMP_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x95;
+    puVar6 = auStack_344;
+    puVar5 = auStack_34c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x96;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(4);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x95;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_5LIGHTS_BUMP_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x97;
+    puVar6 = auStack_354;
+    puVar5 = auStack_35c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x98;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(5);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x97;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    _resize___vector_VCVertexShader__V__allocator_VCVertexShader___std___std__QAEXI_Z(6);
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_SPOT_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x99;
+    puVar6 = auStack_364;
+    puVar5 = auStack_36c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x9a;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(0);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x99;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_SPOT_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x9b;
+    puVar6 = auStack_374;
+    puVar5 = auStack_37c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x9c;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(1);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x9b;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_SPOT_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x9d;
+    puVar6 = auStack_384;
+    puVar5 = auStack_38c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0x9e;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(2);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x9d;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_SPOT_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0x9f;
+    puVar6 = auStack_394;
+    puVar5 = auStack_39c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0xa0;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(3);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0x9f;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_SPOT_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0xa1;
+    puVar6 = auStack_3a4;
+    puVar5 = auStack_3ac;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0xa2;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(4);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0xa1;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_5LIGHTS_SPOT_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0xa3;
+    puVar6 = auStack_3b4;
+    puVar5 = auStack_3bc;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    uStack_8._0_1_ = 0xa4;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(5);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    uStack_8._0_1_ = 0xa3;
+    __1CVertexShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+  }
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_BACKGROUND",0xffffffff);
+  uStack_8._0_1_ = 0xa5;
+  puVar6 = auStack_3c4;
+  puVar5 = auStack_3cc;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xb);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0xa6;
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0xa5;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_BACKGROUND_ALPHA",0xffffffff);
+  uStack_8._0_1_ = 0xa7;
+  puVar6 = auStack_3d4;
+  puVar5 = auStack_3dc;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xb);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0xa8;
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0xa7;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_PROC_TEXTURE",0xffffffff);
+  uStack_8._0_1_ = 0xa9;
+  puVar6 = auStack_3e4;
+  puVar5 = auStack_3ec;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xd);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0xaa;
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  uStack_8._0_1_ = 0xa9;
+  __1CVertexShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("PSHADER_LANDSCAPE_FOREGROUND_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0xab;
+  puVar6 = auStack_3f4;
+  puVar5 = auStack_3fc;
+  _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+  uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0xac;
+  __4CPixelShader__QAEXABV0__Z(uVar1);
+  uStack_8._0_1_ = 0xab;
+  __1CPixelShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("PSHADER_LANDSCAPE_FOREGROUND_BUMP_SHADOWED",0xffffffff);
+  uStack_8._0_1_ = 0xad;
+  puVar6 = auStack_404;
+  puVar5 = auStack_40c;
+  _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+  uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0xae;
+  __4CPixelShader__QAEXABV0__Z(uVar1);
+  uStack_8._0_1_ = 0xad;
+  __1CPixelShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  uVar2 = _GetPixelShaderVersion_CDisplayManager__QBEKXZ();
+  if (0x577 < uVar2) {
+    __0CCharString__QAE_PBDJ_Z("PSHADER_LANDSCAPE_FOREGROUND_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0xaf;
+    puVar6 = auStack_414;
+    puVar5 = auStack_41c;
+    _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+    uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+    uStack_8._0_1_ = 0xb0;
+    __4CPixelShader__QAEXABV0__Z(uVar1);
+    uStack_8._0_1_ = 0xaf;
+    __1CPixelShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z("PSHADER_LANDSCAPE_FOREGROUND_BUMP_COLBUFF_SHADOWED",0xffffffff);
+    uStack_8._0_1_ = 0xb1;
+    puVar6 = auStack_424;
+    puVar5 = auStack_42c;
+    _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+    uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+    uStack_8._0_1_ = 0xb2;
+    __4CPixelShader__QAEXABV0__Z(uVar1);
+    uStack_8._0_1_ = 0xb1;
+    __1CPixelShader__UAE_XZ();
+    uStack_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+  }
+  __0CCharString__QAE_PBDJ_Z("PSHADER_LANDSCAPE_FOREGROUND",0xffffffff);
+  uStack_8._0_1_ = 0xb3;
+  puVar6 = auStack_434;
+  puVar5 = auStack_43c;
+  _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+  uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0xb4;
+  __4CPixelShader__QAEXABV0__Z(uVar1);
+  uStack_8._0_1_ = 0xb3;
+  __1CPixelShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("PSHADER_DIFFUSE_ONLY",0xffffffff);
+  uStack_8._0_1_ = 0xb5;
+  puVar6 = auStack_444;
+  puVar5 = auStack_44c;
+  _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+  uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0xb6;
+  __4CPixelShader__QAEXABV0__Z(uVar1);
+  uStack_8._0_1_ = 0xb5;
+  __1CPixelShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("PSHADER_LANDSCAPE_BACKGROUND",0xffffffff);
+  uStack_8._0_1_ = 0xb7;
+  puVar6 = auStack_454;
+  puVar5 = auStack_45c;
+  _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+  uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0xb8;
+  __4CPixelShader__QAEXABV0__Z(uVar1);
+  uStack_8._0_1_ = 0xb7;
+  __1CPixelShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("PSHADER_LANDSCAPE_PROC_TEXTURE",0xffffffff);
+  uStack_8._0_1_ = 0xb9;
+  puVar6 = auStack_464;
+  puVar5 = auStack_46c;
+  _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+  uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+  uStack_8._0_1_ = 0xba;
+  __4CPixelShader__QAEXABV0__Z(uVar1);
+  uStack_8._0_1_ = 0xb9;
+  __1CPixelShader__UAE_XZ();
+  uStack_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  param_1[0x398] = param_1 + 0x38e;
+  param_1[0x399] = param_1 + 0x390;
+  param_1[0x381] = param_1 + 0x361;
+  param_1[0x382] = param_1 + 0x366;
+  param_1[899] = param_1 + 0x36b;
+  _BuildBlendingTables_CEngineLandscapeRenderer__AAEXXZ();
+  pvVar3 = operator_new(0xb0);
+  uStack_8 = CONCAT31(uStack_8._1_3_,0xbb);
+  if (pvVar3 == (void *)0x0) {
+    uStack_670 = 0;
+  }
+  else {
+    uStack_670 = __0CEngineLandscapeMemoryManager__QAE_ABVCEngineMemoryInit___Z(param_2);
+  }
+  param_1[0x3f2] = uStack_670;
+  ExceptionList = pvStack_10;
+  return param_1;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ??0CEngineLandscapeRenderer@@QAE@ABVCEngineMemoryInit@@@Z @ 02c80bf0 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* [ported from ego_r via strfp] */
+
+undefined4 * __thiscall
+__0CEngineLandscapeRenderer__QAE_ABVCEngineMemoryInit___Z(undefined4 *param_1,undefined4 param_2)
+
+{
+  undefined4 uVar1;
+  uint uVar2;
+  void *pvVar3;
+  bool bVar4;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined4 local_670;
+  undefined4 local_4bc;
+  undefined4 local_4b8;
+  undefined4 local_4b4;
+  undefined4 local_4a8;
+  undefined4 local_4a4;
+  undefined4 local_4a0;
+  undefined4 local_49c;
+  undefined4 local_498;
+  undefined4 local_494;
+  undefined4 local_490;
+  undefined4 local_48c;
+  undefined4 local_488;
+  undefined4 local_484;
+  undefined4 local_480;
+  undefined1 local_46c [8];
+  undefined1 local_464 [8];
+  undefined1 local_45c [8];
+  undefined1 local_454 [8];
+  undefined1 local_44c [8];
+  undefined1 local_444 [8];
+  undefined1 local_43c [8];
+  undefined1 local_434 [8];
+  undefined1 local_42c [8];
+  undefined1 local_424 [8];
+  undefined1 local_41c [8];
+  undefined1 local_414 [8];
+  undefined1 local_40c [8];
+  undefined1 local_404 [8];
+  undefined1 local_3fc [8];
+  undefined1 local_3f4 [8];
+  undefined1 local_3ec [8];
+  undefined1 local_3e4 [8];
+  undefined1 local_3dc [8];
+  undefined1 local_3d4 [8];
+  undefined1 local_3cc [8];
+  undefined1 local_3c4 [8];
+  undefined1 local_3bc [8];
+  undefined1 local_3b4 [8];
+  undefined1 local_3ac [8];
+  undefined1 local_3a4 [8];
+  undefined1 local_39c [8];
+  undefined1 local_394 [8];
+  undefined1 local_38c [8];
+  undefined1 local_384 [8];
+  undefined1 local_37c [8];
+  undefined1 local_374 [8];
+  undefined1 local_36c [8];
+  undefined1 local_364 [8];
+  undefined1 local_35c [8];
+  undefined1 local_354 [8];
+  undefined1 local_34c [8];
+  undefined1 local_344 [8];
+  undefined1 local_33c [8];
+  undefined1 local_334 [8];
+  undefined1 local_32c [8];
+  undefined1 local_324 [8];
+  undefined1 local_31c [8];
+  undefined1 local_314 [8];
+  undefined1 local_30c [8];
+  undefined1 local_304 [8];
+  undefined1 local_2fc [8];
+  undefined1 local_2f4 [8];
+  undefined1 local_2ec [8];
+  undefined1 local_2e4 [8];
+  undefined1 local_2dc [8];
+  undefined1 local_2d4 [8];
+  undefined1 local_2cc [8];
+  undefined1 local_2c4 [8];
+  undefined1 local_2bc [8];
+  undefined1 local_2b4 [8];
+  undefined1 local_2ac [8];
+  undefined1 local_2a4 [8];
+  undefined1 local_29c [8];
+  undefined1 local_294 [8];
+  undefined1 local_28c [8];
+  undefined1 local_284 [8];
+  undefined1 local_27c [8];
+  undefined1 local_274 [8];
+  undefined1 local_26c [8];
+  undefined1 local_264 [8];
+  undefined1 local_25c [8];
+  undefined1 local_254 [8];
+  undefined1 local_24c [8];
+  undefined1 local_244 [8];
+  undefined1 local_23c [8];
+  undefined1 local_234 [8];
+  undefined1 local_22c [8];
+  undefined1 local_224 [8];
+  undefined1 local_21c [8];
+  undefined1 local_214 [8];
+  undefined1 local_20c [8];
+  undefined1 local_204 [8];
+  undefined1 local_1fc [8];
+  undefined1 local_1f4 [8];
+  undefined1 local_1ec [8];
+  undefined1 local_1e4 [8];
+  undefined1 local_1dc [8];
+  undefined1 local_1d4 [8];
+  undefined1 local_1cc [8];
+  undefined1 local_1c4 [8];
+  undefined1 local_1bc [8];
+  undefined1 local_1b4 [8];
+  undefined1 local_1ac [8];
+  undefined1 local_1a4 [8];
+  undefined1 local_19c [8];
+  undefined1 local_194 [8];
+  undefined1 local_18c [8];
+  undefined1 local_184 [8];
+  undefined1 local_17c [8];
+  undefined1 local_174 [8];
+  undefined1 local_16c [8];
+  undefined1 local_164 [8];
+  undefined1 local_15c [8];
+  undefined1 local_154 [8];
+  undefined1 local_14c [8];
+  undefined1 local_144 [8];
+  undefined1 local_13c [8];
+  undefined1 local_134 [8];
+  undefined1 local_12c [8];
+  undefined1 local_124 [8];
+  undefined1 local_11c [8];
+  undefined1 local_114 [8];
+  undefined1 local_10c [8];
+  void *local_104;
+  undefined4 local_100;
+  undefined1 local_fc [8];
+  void *local_f4;
+  undefined4 local_f0;
+  undefined1 local_ec [28];
+  void *local_d0;
+  undefined4 local_cc;
+  undefined1 local_c8 [8];
+  undefined4 local_c0;
+  void *local_bc;
+  undefined4 local_b8;
+  undefined1 local_b4 [8];
+  undefined4 local_ac;
+  void *local_a8;
+  undefined4 local_a4;
+  undefined1 local_a0 [8];
+  void *local_98;
+  undefined4 local_94;
+  undefined1 local_90 [8];
+  void *local_88;
+  undefined4 local_84;
+  undefined1 local_80 [8];
+  void *local_78;
+  undefined4 local_74;
+  undefined1 local_70 [8];
+  void *local_68;
+  undefined4 local_64;
+  undefined1 local_60 [8];
+  void *local_58;
+  undefined4 local_54;
+  undefined1 local_50 [8];
+  void *local_48;
+  undefined4 local_44;
+  undefined1 local_40 [8];
+  void *local_38;
+  undefined4 local_34;
+  undefined1 local_30 [8];
+  void *local_28;
+  undefined4 local_24;
+  undefined1 local_20 [8];
+  void *local_18;
+  undefined4 local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03e58193;
+  local_10 = ExceptionList;
+  ExceptionList = &local_10;
+  __0CEngineComponent__QAE_XZ();
+  local_8 = 0;
+  *param_1 = CEngineLandscapeRenderer::vftable;
+  __0CLandscapeGPUUpdateQueue__QAE_XZ();
+  local_8._0_1_ = 1;
+  __0CEngineLandscapeMeshBuilder__QAE_XZ();
+  local_8._0_1_ = 2;
+  __0__CArray_UCLandscapeTheme____QAE_XZ();
+  local_8._0_1_ = 3;
+  __0CVertexShader__QAE_XZ();
+  local_8._0_1_ = 4;
+  __0CVertexShader__QAE_XZ();
+  local_8._0_1_ = 5;
+  __0CVertexShader__QAE_XZ();
+  local_8._0_1_ = 6;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  local_8._0_1_ = 7;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  local_8._0_1_ = 8;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  local_8._0_1_ = 9;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  local_8._0_1_ = 10;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  local_8._0_1_ = 0xb;
+  __0CVertexShader__QAE_XZ();
+  local_8._0_1_ = 0xc;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  local_8._0_1_ = 0xd;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  local_8._0_1_ = 0xe;
+  __0__CArray_VCVertexShader____QAE_XZ();
+  local_8._0_1_ = 0xf;
+  __0CVertexShader__QAE_XZ();
+  local_8._0_1_ = 0x10;
+  __0CVertexShader__QAE_XZ();
+  local_8._0_1_ = 0x11;
+  __0CPixelShader__QAE_XZ();
+  local_8._0_1_ = 0x12;
+  __0CPixelShader__QAE_XZ();
+  local_8._0_1_ = 0x13;
+  __0CPixelShader__QAE_XZ();
+  local_8._0_1_ = 0x14;
+  __0CPixelShader__QAE_XZ();
+  local_8._0_1_ = 0x15;
+  __0CPixelShader__QAE_XZ();
+  local_8._0_1_ = 0x16;
+  __0CPixelShader__QAE_XZ();
+  local_8._0_1_ = 0x17;
+  __0CPixelShader__QAE_XZ();
+  local_8._0_1_ = 0x18;
+  __0CPixelShader__QAE_XZ();
+  local_8._0_1_ = 0x19;
+  __0CIndexBuffer__QAE_XZ();
+  local_8._0_1_ = 0x1a;
+  _eh_vector_constructor_iterator_(param_1 + 0x3a1,8,5,__0CTexture__QAE_XZ,__1CTexture__QAE_XZ);
+  local_8._0_1_ = 0x1b;
+  __0__CArray_UCSubPatchSorterEntry_CEngineLandscapeRenderer____QAE_XZ();
+  local_8._0_1_ = 0x1c;
+  __0__CArray_UCBackgroundLoadingOcclusionBoxTask_CEngineLandscapeRenderer____QAE_XZ();
+  local_8._0_1_ = 0x1d;
+  __0__CArray_J__QAE_XZ();
+  local_8._0_1_ = 0x1e;
+  __0CLandscapeSettings_CEngineLandscapeRenderer__QAE_XZ();
+  __0__CArray_G__QAE_XZ();
+  local_8._0_1_ = 0x1f;
+  __0__CArray_VCTVertexLandscapeBackground____QAE_XZ();
+  local_8._0_1_ = 0x20;
+  __0CLandscapePatchTesselator__QAE_XZ();
+  local_8._0_1_ = 0x21;
+  __0CFastForegroundTextureLoadInfo_CEngineLandscapeRenderer__QAE_XZ();
+  local_8._0_1_ = 0x22;
+  param_1[0x3ba] = _DAT_04434914;
+  param_1[0x3bb] = _DAT_04434918;
+  param_1[0x3bd] = _DAT_04067328;
+  param_1[0x3be] = _DAT_04022f20;
+  _CalcForegroundFadeFactors_CEngineLandscapeRenderer__QAEXXZ();
+  *(undefined1 *)(param_1 + 0x3bc) = 1;
+  *(undefined1 *)((int)param_1 + 0xef1) = 1;
+  *(undefined1 *)((int)param_1 + 0xef2) = 1;
+  *(undefined1 *)(param_1 + 0x3c7) = 1;
+  *(undefined1 *)((int)param_1 + 0xf1d) = 1;
+  *(undefined1 *)((int)param_1 + 0xf29) = 0;
+  param_1[0x3cb] = 0x8000;
+  param_1[0x3c8] = 0x3f800000;
+  param_1[0x3c9] = _DAT_04434920;
+  *(undefined1 *)(param_1 + 0x3ca) = 1;
+  *(undefined1 *)((int)param_1 + 0xf1f) = 1;
+  *(undefined1 *)(param_1 + 0x3cc) = 1;
+  *(undefined1 *)((int)param_1 + 0xf1e) = 0;
+  _BuildLODBands_CEngineLandscapeRenderer__AAEXXZ();
+  _BuildThemes_CEngineLandscapeRenderer__AAEXXZ();
+  local_18 = operator_new(0x14);
+  local_8._0_1_ = 0x23;
+  bVar4 = local_18 == (void *)0x0;
+  if (bVar4) {
+    local_480 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableForeground",0xffffffff);
+    local_8 = CONCAT31(local_8._1_3_,0x24);
+    local_480 = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(local_20,param_1 + 0x3bc);
+  }
+  local_14 = local_480;
+  local_8 = 0x25;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(local_480);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(local_480);
+  local_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_28 = operator_new(0x14);
+  local_8._0_1_ = 0x26;
+  bVar4 = local_28 == (void *)0x0;
+  if (bVar4) {
+    local_484 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableBackground",0xffffffff);
+    local_8 = CONCAT31(local_8._1_3_,0x27);
+    local_484 = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(local_30,(int)param_1 + 0xef1);
+  }
+  local_24 = local_484;
+  local_8 = 0x28;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(local_484);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(local_484);
+  local_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_38 = operator_new(0x14);
+  local_8._0_1_ = 0x29;
+  bVar4 = local_38 == (void *)0x0;
+  if (bVar4) {
+    local_488 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableLandscapeLODUpdate",0xffffffff);
+    local_8 = CONCAT31(local_8._1_3_,0x2a);
+    local_488 = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(local_40,param_1 + 0x3c7);
+  }
+  local_34 = local_488;
+  local_8 = 0x2b;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(local_488);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(local_488);
+  local_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_48 = operator_new(0x14);
+  local_8._0_1_ = 0x2c;
+  bVar4 = local_48 == (void *)0x0;
+  if (bVar4) {
+    local_48c = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableLandscapeFog",0xffffffff);
+    local_8 = CONCAT31(local_8._1_3_,0x2d);
+    local_48c = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(local_50,(int)param_1 + 0xf1d);
+  }
+  local_44 = local_48c;
+  local_8 = 0x2e;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(local_48c);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(local_48c);
+  local_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_58 = operator_new(0x14);
+  local_8._0_1_ = 0x2f;
+  bVar4 = local_58 == (void *)0x0;
+  if (bVar4) {
+    local_490 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableBackgroundWater",0xffffffff);
+    local_8 = CONCAT31(local_8._1_3_,0x30);
+    local_490 = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(local_60,(int)param_1 + 0xef2);
+  }
+  local_54 = local_490;
+  local_8 = 0x31;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(local_490);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(local_490);
+  local_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_68 = operator_new(0x14);
+  local_8._0_1_ = 0x32;
+  bVar4 = local_68 == (void *)0x0;
+  if (bVar4) {
+    local_494 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableForegroundWithoutGameMap",0xffffffff);
+    local_8 = CONCAT31(local_8._1_3_,0x33);
+    local_494 = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(local_70,param_1 + 0x3ca);
+  }
+  local_64 = local_494;
+  local_8 = 0x34;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(local_494);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(local_494);
+  local_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_78 = operator_new(0x14);
+  local_8._0_1_ = 0x35;
+  bVar4 = local_78 == (void *)0x0;
+  if (bVar4) {
+    local_498 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableLandscapeBumpMapping",0xffffffff);
+    local_8 = CONCAT31(local_8._1_3_,0x36);
+    local_498 = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(local_80,(int)param_1 + 0xf1f);
+  }
+  local_74 = local_498;
+  local_8 = 0x37;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(local_498);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(local_498);
+  local_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_88 = operator_new(0x14);
+  local_8._0_1_ = 0x38;
+  bVar4 = local_88 == (void *)0x0;
+  if (bVar4) {
+    local_49c = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("EnableLandscapeTesselation",0xffffffff);
+    local_8 = CONCAT31(local_8._1_3_,0x39);
+    local_49c = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(local_90,param_1 + 0x3cc);
+  }
+  local_84 = local_49c;
+  local_8 = 0x3a;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(local_49c);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(local_49c);
+  local_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_98 = operator_new(0x14);
+  local_8._0_1_ = 0x3b;
+  bVar4 = local_98 == (void *)0x0;
+  if (bVar4) {
+    local_4a0 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("LandscapeLODUpdateTime",0xffffffff);
+    local_8 = CONCAT31(local_8._1_3_,0x3c);
+    local_4a0 = __0CConsoleVariable__QAE_ABVCCharString__AAM_Z(local_a0,param_1 + 0x3c8);
+  }
+  local_94 = local_4a0;
+  local_8 = 0x3d;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(local_4a0);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(local_4a0);
+  local_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_a8 = operator_new(0x28);
+  local_8._0_1_ = 0x3e;
+  bVar4 = local_a8 == (void *)0x0;
+  if (bVar4) {
+    local_4a4 = 0;
+  }
+  else {
+    local_ac = 3;
+    __0CCharString__QAE_PBDJ_Z("SetLandscapeDetail",0xffffffff);
+    local_8 = CONCAT31(local_8._1_3_,0x3f);
+    local_4a4 = __0__CConsoleCommand_VCEngineLandscapeRenderer____QAE_ABVCCharString__AAVCEngineLandscapeRenderer__P6IX1ABV__vector_VCGenericVar__V__allocator_VCGenericVar___std___std___ZABW4EGenericVarType___Z
+                          (local_b4,param_1,&LAB_018306b2,&local_ac);
+  }
+  local_a4 = local_4a4;
+  local_8 = 0x40;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(local_4a4);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(local_4a4);
+  local_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_bc = operator_new(0x28);
+  local_8._0_1_ = 0x41;
+  bVar4 = local_bc == (void *)0x0;
+  if (bVar4) {
+    local_4a8 = 0;
+  }
+  else {
+    local_c0 = 3;
+    __0CCharString__QAE_PBDJ_Z("SetProcTextureDetail",0xffffffff);
+    local_8 = CONCAT31(local_8._1_3_,0x42);
+    local_4a8 = __0__CConsoleCommand_VCEngineLandscapeRenderer____QAE_ABVCCharString__AAVCEngineLandscapeRenderer__P6IX1ABV__vector_VCGenericVar__V__allocator_VCGenericVar___std___std___ZABW4EGenericVarType___Z
+                          (local_c8,param_1,&LAB_017aa23d,&local_c0);
+  }
+  local_b8 = local_4a8;
+  local_8 = 0x43;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(local_4a8);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(local_4a8);
+  local_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_d0 = operator_new(0x28);
+  local_8._0_1_ = 0x44;
+  bVar4 = local_d0 == (void *)0x0;
+  if (bVar4) {
+    local_4b4 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("SetForegroundFade",0xffffffff);
+    local_8 = CONCAT31(local_8._1_3_,0x45);
+    uVar1 = __0CConsoleCommandParameters__QAE_W4EGenericVarType__0_Z(3,3);
+    local_8 = 0x46;
+    local_4b4 = __0__CConsoleCommand_VCEngineLandscapeRenderer____QAE_ABVCCharString__AAVCEngineLandscapeRenderer__P6IX1ABV__vector_VCGenericVar__V__allocator_VCGenericVar___std___std___ZABVCConsoleCommandParameters___Z
+                          (local_ec,param_1,&LAB_017bb93e,uVar1);
+  }
+  local_cc = local_4b4;
+  local_8 = 0x48;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(local_4b4);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(local_4b4);
+  local_8 = 0x47;
+  if (!bVar4) {
+    __1CConsoleCommandParameters__QAE_XZ();
+  }
+  local_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_f4 = operator_new(0x14);
+  local_8._0_1_ = 0x49;
+  bVar4 = local_f4 == (void *)0x0;
+  if (bVar4) {
+    local_4b8 = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("ForegroundMaxPixelsPerTexel",0xffffffff);
+    local_8 = CONCAT31(local_8._1_3_,0x4a);
+    local_4b8 = __0CConsoleVariable__QAE_ABVCCharString__AAM_Z(local_fc,param_1 + 0x3c9);
+  }
+  local_f0 = local_4b8;
+  local_8 = 0x4b;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(local_4b8);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(local_4b8);
+  local_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_104 = operator_new(0x14);
+  local_8._0_1_ = 0x4c;
+  bVar4 = local_104 == (void *)0x0;
+  if (bVar4) {
+    local_4bc = 0;
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("DrawLandscapeDebugView",0xffffffff);
+    local_8 = CONCAT31(local_8._1_3_,0x4d);
+    local_4bc = __0CConsoleVariable__QAE_ABVCCharString__AA_N_Z(local_10c,(int)param_1 + 0xf29);
+  }
+  local_100 = local_4bc;
+  local_8 = 0x4e;
+  _Get___CTBaseSingleton_VCConsole____SIAAVCConsole__XZ(local_4bc);
+  _AddInput_CConsole__QAEXPAVCConsoleInputBase___Z(local_4bc);
+  local_8 = 0x22;
+  if (!bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_BLACKOUT_PASS",0xffffffff);
+  local_8._0_1_ = 0x4f;
+  puVar6 = local_114;
+  puVar5 = local_11c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x50;
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x4f;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  _resize___vector_VCVertexShader__V__allocator_VCVertexShader___std___std__QAEXI_Z(6);
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND",0xffffffff);
+  local_8._0_1_ = 0x51;
+  puVar6 = local_124;
+  puVar5 = local_12c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x52;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(0);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x51;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS",0xffffffff);
+  local_8._0_1_ = 0x53;
+  puVar6 = local_134;
+  puVar5 = local_13c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x54;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(1);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x53;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS",0xffffffff);
+  local_8._0_1_ = 0x55;
+  puVar6 = local_144;
+  puVar5 = local_14c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x56;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(2);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x55;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS",0xffffffff);
+  local_8._0_1_ = 0x57;
+  puVar6 = local_154;
+  puVar5 = local_15c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x58;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(3);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x57;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS",0xffffffff);
+  local_8._0_1_ = 0x59;
+  puVar6 = local_164;
+  puVar5 = local_16c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x5a;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(4);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x59;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_5LIGHTS",0xffffffff);
+  local_8._0_1_ = 0x5b;
+  puVar6 = local_174;
+  puVar5 = local_17c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x5c;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(5);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x5b;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  _resize___vector_VCVertexShader__V__allocator_VCVertexShader___std___std__QAEXI_Z(6);
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x5d;
+  puVar6 = local_184;
+  puVar5 = local_18c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x5e;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(0);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x5d;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x5f;
+  puVar6 = local_194;
+  puVar5 = local_19c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x60;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(1);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x5f;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x61;
+  puVar6 = local_1a4;
+  puVar5 = local_1ac;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x62;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(2);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x61;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_SHADOWED",0xffffffff);
+  local_8._0_1_ = 99;
+  puVar6 = local_1b4;
+  puVar5 = local_1bc;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 100;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(3);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 99;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x65;
+  puVar6 = local_1c4;
+  puVar5 = local_1cc;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x66;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(4);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x65;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_5LIGHTS_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x67;
+  puVar6 = local_1d4;
+  puVar5 = local_1dc;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x68;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(5);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x67;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  _resize___vector_VCVertexShader__V__allocator_VCVertexShader___std___std__QAEXI_Z(6);
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_BUMP_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x69;
+  puVar6 = local_1e4;
+  puVar5 = local_1ec;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x6a;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(0);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x69;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_BUMP_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x6b;
+  puVar6 = local_1f4;
+  puVar5 = local_1fc;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x6c;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(1);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x6b;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_BUMP_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x6d;
+  puVar6 = local_204;
+  puVar5 = local_20c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x6e;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(2);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x6d;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_BUMP_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x6f;
+  puVar6 = local_214;
+  puVar5 = local_21c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x70;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(3);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x6f;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_BUMP_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x71;
+  puVar6 = local_224;
+  puVar5 = local_22c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x72;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(4);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x71;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_5LIGHTS_BUMP_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x73;
+  puVar6 = local_234;
+  puVar5 = local_23c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x74;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(5);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x73;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  _resize___vector_VCVertexShader__V__allocator_VCVertexShader___std___std__QAEXI_Z(6);
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_SPOT_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x75;
+  puVar6 = local_244;
+  puVar5 = local_24c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x76;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(0);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x75;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_SPOT_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x77;
+  puVar6 = local_254;
+  puVar5 = local_25c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x78;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(1);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x77;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_SPOT_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x79;
+  puVar6 = local_264;
+  puVar5 = local_26c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x7a;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(2);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x79;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_SPOT_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x7b;
+  puVar6 = local_274;
+  puVar5 = local_27c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x7c;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(3);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x7b;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_SPOT_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x7d;
+  puVar6 = local_284;
+  puVar5 = local_28c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x7e;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(4);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x7d;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_5LIGHTS_SPOT_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0x7f;
+  puVar6 = local_294;
+  puVar5 = local_29c;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0x80;
+  __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(5);
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0x7f;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  uVar2 = _GetPixelShaderVersion_CDisplayManager__QBEKXZ();
+  if (0x577 < uVar2) {
+    _resize___vector_VCVertexShader__V__allocator_VCVertexShader___std___std__QAEXI_Z(6);
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x81;
+    puVar6 = local_2a4;
+    puVar5 = local_2ac;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x82;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(0);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x81;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x83;
+    puVar6 = local_2b4;
+    puVar5 = local_2bc;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x84;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(1);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x83;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x85;
+    puVar6 = local_2c4;
+    puVar5 = local_2cc;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x86;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(2);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x85;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x87;
+    puVar6 = local_2d4;
+    puVar5 = local_2dc;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x88;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(3);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x87;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x89;
+    puVar6 = local_2e4;
+    puVar5 = local_2ec;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x8a;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(4);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x89;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_5LIGHTS_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x8b;
+    puVar6 = local_2f4;
+    puVar5 = local_2fc;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x8c;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(5);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x8b;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    _resize___vector_VCVertexShader__V__allocator_VCVertexShader___std___std__QAEXI_Z(6);
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_BUMP_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x8d;
+    puVar6 = local_304;
+    puVar5 = local_30c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x8e;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(0);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x8d;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_BUMP_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x8f;
+    puVar6 = local_314;
+    puVar5 = local_31c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x90;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(1);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x8f;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_BUMP_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x91;
+    puVar6 = local_324;
+    puVar5 = local_32c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x92;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(2);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x91;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_BUMP_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x93;
+    puVar6 = local_334;
+    puVar5 = local_33c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x94;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(3);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x93;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_BUMP_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x95;
+    puVar6 = local_344;
+    puVar5 = local_34c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x96;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(4);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x95;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_5LIGHTS_BUMP_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x97;
+    puVar6 = local_354;
+    puVar5 = local_35c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x98;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(5);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x97;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    _resize___vector_VCVertexShader__V__allocator_VCVertexShader___std___std__QAEXI_Z(6);
+    __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_FOREGROUND_SPOT_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x99;
+    puVar6 = local_364;
+    puVar5 = local_36c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x9a;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(0);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x99;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_SPOT_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x9b;
+    puVar6 = local_374;
+    puVar5 = local_37c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x9c;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(1);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x9b;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_2LIGHTS_SPOT_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x9d;
+    puVar6 = local_384;
+    puVar5 = local_38c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0x9e;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(2);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x9d;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_SPOT_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0x9f;
+    puVar6 = local_394;
+    puVar5 = local_39c;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0xa0;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(3);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0x9f;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_4LIGHTS_SPOT_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0xa1;
+    puVar6 = local_3a4;
+    puVar5 = local_3ac;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0xa2;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(4);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0xa1;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z
+              ("VSHADER_LANDSCAPE_FOREGROUND_5LIGHTS_SPOT_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0xa3;
+    puVar6 = local_3b4;
+    puVar5 = local_3bc;
+    _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xc);
+    uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6)
+    ;
+    local_8._0_1_ = 0xa4;
+    __A__CArray_VCVertexShader____QAEAAVCVertexShader__I_Z(5);
+    __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+    local_8._0_1_ = 0xa3;
+    __1CVertexShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+  }
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_BACKGROUND",0xffffffff);
+  local_8._0_1_ = 0xa5;
+  puVar6 = local_3c4;
+  puVar5 = local_3cc;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xb);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0xa6;
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0xa5;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_BACKGROUND_ALPHA",0xffffffff);
+  local_8._0_1_ = 0xa7;
+  puVar6 = local_3d4;
+  puVar5 = local_3dc;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xb);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0xa8;
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0xa7;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("VSHADER_LANDSCAPE_PROC_TEXTURE",0xffffffff);
+  local_8._0_1_ = 0xa9;
+  puVar6 = local_3e4;
+  puVar5 = local_3ec;
+  _GetVShaderResource_CEngineResourceManager__QBEPBVCShaderResource__W4EShaderBankNo___Z(0xd);
+  uVar1 = _GetVertexShader_CShaderResource__QBE_AVCVertexShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0xaa;
+  __4CVertexShader__QAEABV0_ABV0__Z(uVar1);
+  local_8._0_1_ = 0xa9;
+  __1CVertexShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("PSHADER_LANDSCAPE_FOREGROUND_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0xab;
+  puVar6 = local_3f4;
+  puVar5 = local_3fc;
+  _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+  uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0xac;
+  __4CPixelShader__QAEXABV0__Z(uVar1);
+  local_8._0_1_ = 0xab;
+  __1CPixelShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("PSHADER_LANDSCAPE_FOREGROUND_BUMP_SHADOWED",0xffffffff);
+  local_8._0_1_ = 0xad;
+  puVar6 = local_404;
+  puVar5 = local_40c;
+  _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+  uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0xae;
+  __4CPixelShader__QAEXABV0__Z(uVar1);
+  local_8._0_1_ = 0xad;
+  __1CPixelShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  uVar2 = _GetPixelShaderVersion_CDisplayManager__QBEKXZ();
+  if (0x577 < uVar2) {
+    __0CCharString__QAE_PBDJ_Z("PSHADER_LANDSCAPE_FOREGROUND_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0xaf;
+    puVar6 = local_414;
+    puVar5 = local_41c;
+    _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+    uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+    local_8._0_1_ = 0xb0;
+    __4CPixelShader__QAEXABV0__Z(uVar1);
+    local_8._0_1_ = 0xaf;
+    __1CPixelShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+    __0CCharString__QAE_PBDJ_Z("PSHADER_LANDSCAPE_FOREGROUND_BUMP_COLBUFF_SHADOWED",0xffffffff);
+    local_8._0_1_ = 0xb1;
+    puVar6 = local_424;
+    puVar5 = local_42c;
+    _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+    uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+    local_8._0_1_ = 0xb2;
+    __4CPixelShader__QAEXABV0__Z(uVar1);
+    local_8._0_1_ = 0xb1;
+    __1CPixelShader__UAE_XZ();
+    local_8._0_1_ = 0x22;
+    __1CCharString__QAE_XZ();
+  }
+  __0CCharString__QAE_PBDJ_Z("PSHADER_LANDSCAPE_FOREGROUND",0xffffffff);
+  local_8._0_1_ = 0xb3;
+  puVar6 = local_434;
+  puVar5 = local_43c;
+  _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+  uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0xb4;
+  __4CPixelShader__QAEXABV0__Z(uVar1);
+  local_8._0_1_ = 0xb3;
+  __1CPixelShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("PSHADER_DIFFUSE_ONLY",0xffffffff);
+  local_8._0_1_ = 0xb5;
+  puVar6 = local_444;
+  puVar5 = local_44c;
+  _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+  uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0xb6;
+  __4CPixelShader__QAEXABV0__Z(uVar1);
+  local_8._0_1_ = 0xb5;
+  __1CPixelShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("PSHADER_LANDSCAPE_BACKGROUND",0xffffffff);
+  local_8._0_1_ = 0xb7;
+  puVar6 = local_454;
+  puVar5 = local_45c;
+  _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+  uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0xb8;
+  __4CPixelShader__QAEXABV0__Z(uVar1);
+  local_8._0_1_ = 0xb7;
+  __1CPixelShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  __0CCharString__QAE_PBDJ_Z("PSHADER_LANDSCAPE_PROC_TEXTURE",0xffffffff);
+  local_8._0_1_ = 0xb9;
+  puVar6 = local_464;
+  puVar5 = local_46c;
+  _GetPShaderResource_CEngineResourceManager__QBEPBVCShaderResource__XZ(puVar5,puVar6);
+  uVar1 = _GetPixelShader_CShaderResource__QBE_AVCPixelShader__ABVCCharString___Z(puVar5,puVar6);
+  local_8._0_1_ = 0xba;
+  __4CPixelShader__QAEXABV0__Z(uVar1);
+  local_8._0_1_ = 0xb9;
+  __1CPixelShader__UAE_XZ();
+  local_8._0_1_ = 0x22;
+  __1CCharString__QAE_XZ();
+  param_1[0x398] = param_1 + 0x38e;
+  param_1[0x399] = param_1 + 0x390;
+  param_1[0x381] = param_1 + 0x361;
+  param_1[0x382] = param_1 + 0x366;
+  param_1[899] = param_1 + 0x36b;
+  _BuildBlendingTables_CEngineLandscapeRenderer__AAEXXZ();
+  pvVar3 = operator_new(0xb0);
+  local_8 = CONCAT31(local_8._1_3_,0xbb);
+  if (pvVar3 == (void *)0x0) {
+    local_670 = 0;
+  }
+  else {
+    local_670 = __0CEngineLandscapeMemoryManager__QAE_ABVCEngineMemoryInit___Z(param_2);
+  }
+  param_1[0x3f2] = local_670;
+  ExceptionList = local_10;
+  return param_1;
+}
+
+ (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /FableWin.exe (HeadlessAnalyzer)  

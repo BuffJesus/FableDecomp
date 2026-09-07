@@ -1,0 +1,3 @@
+#include <stdio.h>
+struct Pair{int key;int value;};static bool Find(bool bit,Pair* begin,Pair* end,int key,int* out){if(!bit)return false;Pair* p=begin;while(p!=end&&p->key<key)++p;if(p==end||p->key>key)p=end;*out=p->value;return true;}
+int main(){Pair p[4]={{4,40},{0xe8,80},{0xff,90},{0,77}};int out=0;if(!Find(true,p,p+3,4,&out)||out!=40)return 1;if(!Find(true,p,p+3,0xe8,&out)||out!=80)return 2;if(Find(false,p,p+3,4,&out))return 3;if(!Find(true,p+2,p+3,4,&out)||out!=77)return 4;puts("CTC_INTERFACE_PAIR_PASS");return 0;}

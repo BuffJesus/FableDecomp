@@ -1,0 +1,86 @@
+//=== ?Normalise@C2DVector@@QAEAAV1@XZ @ 031d7730 (seed 031d7730) ===
+
+/* [ported from ego_r via strfp] */
+
+float * _Normalise_C2DVector__QAEAAV1_XZ(void)
+
+{
+  float *in_ECX;
+  float10 fVar1;
+  float10 fVar2;
+  
+  fVar1 = (float10)_GFSqr__YIMM_Z(*in_ECX);
+  fVar2 = (float10)_GFSqr__YIMM_Z(in_ECX[1]);
+  fVar1 = (float10)_GFFastOneOverSqrt__YIMM_Z((float)(fVar2 + (float10)(double)fVar1));
+  *in_ECX = *in_ECX * (float)fVar1;
+  in_ECX[1] = in_ECX[1] * (float)fVar1;
+  return in_ECX;
+}
+
+
+// CALLEES of ?Normalise@C2DVector@@QAEAAV1@XZ:
+//   01840670  ?GFSqr@@YIMM@Z
+//   017ed1c3  ?GFFastOneOverSqrt@@YIMM@Z
+
+//=== ?GetMagnitude@C2DVector@@QBEMXZ @ 02089cb0 (seed 02089cb0) ===
+
+/* [ported from ego_r via strfp] */
+
+void _GetMagnitude_C2DVector__QBEMXZ(void)
+
+{
+  float *in_ECX;
+  
+  _GFFastSqrt__YIMM_Z(in_ECX[1] * in_ECX[1] + *in_ECX * *in_ECX);
+  return;
+}
+
+
+// CALLEES of ?GetMagnitude@C2DVector@@QBEMXZ:
+//   018564cf  ?GFFastSqrt@@YIMM@Z
+
+//=== ?Normalise@C3DVector@@QAEAAV1@XZ @ 01acdfd0 (seed 01acdfd0) ===
+
+/* [ported from ego_r via strfp] */
+
+float * _Normalise_C3DVector__QAEAAV1_XZ(void)
+
+{
+  float fVar1;
+  float *in_ECX;
+  float10 fVar2;
+  float10 fVar3;
+  float10 fVar4;
+  
+  fVar2 = (float10)_GFSqr__YIMM_Z(*in_ECX);
+  fVar3 = (float10)_GFSqr__YIMM_Z(in_ECX[1]);
+  fVar4 = (float10)_GFSqr__YIMM_Z(in_ECX[2]);
+  fVar2 = (float10)_GFFastOneOverSqrt__YIMM_Z
+                             ((float)(fVar4 + (float10)(double)(fVar3 + (float10)(double)fVar2)));
+  fVar1 = (float)fVar2;
+  *in_ECX = *in_ECX * fVar1;
+  in_ECX[1] = in_ECX[1] * fVar1;
+  in_ECX[2] = in_ECX[2] * fVar1;
+  return in_ECX;
+}
+
+
+// CALLEES of ?Normalise@C3DVector@@QAEAAV1@XZ:
+//   01840670  ?GFSqr@@YIMM@Z
+//   017ed1c3  ?GFFastOneOverSqrt@@YIMM@Z
+
+//=== ?Dot@C3DVector@@QBE?BMABV1@@Z @ 01d89990 (seed 01d89990) ===
+
+/* [ported from ego_r via strfp] */
+
+float10 _Dot_C3DVector__QBE_BMABV1__Z(float *param_1)
+
+{
+  float *in_ECX;
+  
+  return (float10)(in_ECX[2] * param_1[2] + in_ECX[1] * param_1[1] + *in_ECX * *param_1);
+}
+
+
+// CALLEES of ?Dot@C3DVector@@QBE?BMABV1@@Z:
+

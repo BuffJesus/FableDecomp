@@ -1,0 +1,3 @@
+#pragma optimize("s",on)
+#include <stdlib.h>
+struct CircularNode_00655ad8{CircularNode_00655ad8* next;CircularNode_00655ad8* previous;};void** __fastcall std_list_allocate_sentinel(void** out,void* unusedRegister,void* unusedStack){(void)unusedRegister;(void)unusedStack;*(unsigned long*)out&=0;CircularNode_00655ad8* node=(CircularNode_00655ad8*)malloc(0x10);node->next=node;node->previous=node;*out=node;return out;}

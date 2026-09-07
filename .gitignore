@@ -73,3 +73,18 @@ imgui.ini
 
 # Retail-derived scratch/oracle bytes must remain local.
 /scratch_frn/retail.bin
+
+# local mod staging / scratch (Phase 0 hygiene)
+/mods/
+/rebuild/_residue_verify/
+/rebuild/workflows/
+
+# root-level scratch never belongs in the tree (hygiene 2026-09-07)
+/*.obj
+/*.bin
+/*.ilk
+/*.pdb
+/CON
+/imgui.ini
+/out_dat.txt
+/[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]*

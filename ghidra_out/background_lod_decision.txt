@@ -1,0 +1,1202 @@
+﻿INFO  Using log config file: jar:file:/D:/Subuwu/tools/ghidra-public/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (1734 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (4144 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\GnuDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BytePatterns\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\JVM\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SystemEmulation\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\8051\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FileFormats\ghidra_scripts
+    D:\Documents\FableTLC\tools\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BSim\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\VersionTracking\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PDB\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\PIC\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Base\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Extensions\XEXLoaderWV\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    C:\Users\Cornelio\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\DATA\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Decompiler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\Atmel\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PyGhidra\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FunctionID\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessAnalyzer)  
+INFO  Opening project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessProject)  
+INFO  Removed old presave file: D:\Documents\FableTLC\ghidra_proj\FableTLC.rep\idata\00\~00000002.db\tmp16316697854431162302.ps (LocalBufferFile)  
+INFO  REPORT: Processing project file: /FableWin.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: DecompByName.java 'BuildLODSubSectionBuffersTriangle' 'BuildTreeSubdivideIntoPowersOf2' 'CLODDynamicBuildInfo'  (HeadlessAnalyzer)  
+INFO  SCRIPT: D:\Documents\FableTLC\tools\ghidra_scripts\DecompByName.java (HeadlessAnalyzer)  
+INFO  DecompByName.java> ==================== ?BuildTreeSubdivideIntoPowersOf2@CLandscapeBackgroundDynamicBuildTemplate@@AAEXABUCTopologySizeGrid@1@JMJPBV?$CArray@J@@@Z @ 017d5b54 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+void __thiscall
+_BuildTreeSubdivideIntoPowersOf2_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+          (int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4,int param_5,
+          undefined4 param_6)
+
+{
+  code *pcVar1;
+  char cVar2;
+  byte bVar3;
+  BOOL BVar4;
+  void *pvVar5;
+  undefined1 *puVar6;
+  undefined1 *puVar7;
+  undefined1 *puVar8;
+  undefined4 uVar9;
+  undefined4 uVar10;
+  undefined4 uStack_6c;
+  undefined4 uStack_68;
+  undefined4 uStack_64;
+  undefined4 uStack_60;
+  undefined1 auStack_38 [8];
+  undefined1 auStack_30 [8];
+  undefined1 auStack_28 [11];
+  char cStack_1d;
+  uint uStack_1c;
+  uint uStack_18;
+  char cStack_12;
+  char cStack_11;
+  void *pvStack_10;
+  undefined1 *puStack_c;
+  int iStack_8;
+  
+  iStack_8 = 0xffffffff;
+  puStack_c = &LAB_03e7baf4;
+  pvStack_10 = ExceptionList;
+  if ((*(int *)(param_1 + 0xa0) != 0) ||
+     (ExceptionList = &pvStack_10, *(int *)(param_1 + 0xa4) != 0)) {
+    ExceptionList = &pvStack_10;
+    __0CWideString__QAE_PB_W_Z(L"Engine_Landscape_Background_Dynamic_Build_Template.cpp");
+    iStack_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0446568d,0xffffffff);
+    iStack_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z("(!Branch[0]) && (!Branch[1])",0xffffffff);
+    iStack_8._0_1_ = 2;
+    uVar10 = 1;
+    uVar9 = 0x189;
+    puVar8 = auStack_28;
+    puVar7 = auStack_30;
+    puVar6 = auStack_38;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar6,puVar7,puVar8,0x189,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar6,puVar7,puVar8,uVar9,uVar10);
+    cStack_1d = '\x01' - (cVar2 != '\x01');
+    iStack_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    iStack_8 = (uint)iStack_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    iStack_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if ((cStack_1d != '\0') && (BVar4 = IsDebuggerPresent(), BVar4 != 0)) {
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+  }
+  *(undefined1 *)(param_1 + 0xce) = 8;
+  *(undefined1 *)(param_1 + 0xcd) = 8;
+  *(undefined1 *)(param_1 + 0xcc) = 8;
+  cStack_12 = '\0';
+  cStack_11 = '\0';
+  if ((2 < *(ushort *)(param_1 + 200)) &&
+     ((param_5 < (int)(uint)*(ushort *)(param_1 + 200) ||
+      (cVar2 = _GFIsPowerOfTwo__YI_NK_Z(), cVar2 == '\0')))) {
+    cStack_12 = '\x01';
+  }
+  if ((2 < *(ushort *)(param_1 + 0xca)) &&
+     ((param_5 < (int)(uint)*(ushort *)(param_1 + 0xca) ||
+      (cVar2 = _GFIsPowerOfTwo__YI_NK_Z(), cVar2 == '\0')))) {
+    cStack_11 = '\x01';
+  }
+  if ((cStack_12 != '\0') && (cStack_11 != '\0')) {
+    if (*(ushort *)(param_1 + 200) < *(ushort *)(param_1 + 0xca)) {
+      cStack_12 = '\0';
+    }
+    else {
+      cStack_11 = '\0';
+    }
+  }
+  if (cStack_12 == '\0') {
+    if (cStack_11 == '\0') {
+      _BuildTree_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+                (param_2,param_3,param_4,param_5,param_6);
+    }
+    else {
+      uStack_1c = *(ushort *)(param_1 + 0xca) / 2;
+      cVar2 = _GFIsPowerOfTwo__YI_NK_Z();
+      if (cVar2 == '\0') {
+        bVar3 = _GFGetTopBit__YIKK_Z();
+        uStack_1c = 1 << (bVar3 & 0x1f);
+      }
+      pvVar5 = operator_new(0xd0);
+      iStack_8 = 5;
+      if (pvVar5 == (void *)0x0) {
+        uStack_68 = 0;
+      }
+      else {
+        uStack_68 = __0CLandscapeBackgroundDynamicBuildTemplate__QAE_PAVCEngineLandscapeMap__JJJJ_Z
+                              (*(undefined4 *)(param_1 + 0xa8),*(undefined2 *)(param_1 + 0xc4),
+                               *(undefined2 *)(param_1 + 0xc6),*(undefined2 *)(param_1 + 200),
+                               uStack_1c);
+      }
+      iStack_8 = 0xffffffff;
+      *(undefined4 *)(param_1 + 0xa0) = uStack_68;
+      pvVar5 = operator_new(0xd0);
+      iStack_8 = 6;
+      if (pvVar5 == (void *)0x0) {
+        uStack_6c = 0;
+      }
+      else {
+        uStack_6c = __0CLandscapeBackgroundDynamicBuildTemplate__QAE_PAVCEngineLandscapeMap__JJJJ_Z
+                              (*(undefined4 *)(param_1 + 0xa8),*(undefined2 *)(param_1 + 0xc4),
+                               *(ushort *)(param_1 + 0xc6) + uStack_1c,
+                               *(undefined2 *)(param_1 + 200),
+                               *(ushort *)(param_1 + 0xca) - uStack_1c);
+      }
+      iStack_8 = 0xffffffff;
+      *(undefined4 *)(param_1 + 0xa4) = uStack_6c;
+      _BuildTreeSubdivideIntoPowersOf2_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+                (param_2,param_3,param_4,param_5,param_6);
+      _BuildTreeSubdivideIntoPowersOf2_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+                (param_2,param_3,param_4,param_5,param_6);
+      _CalculateBoundingBoxes_CLandscapeBackgroundDynamicBuildTemplate__AAEX_N0_Z(0,1);
+      if ((*(short *)(param_1 + 200) == 0x10) && (*(short *)(param_1 + 0xca) == 0x10)) {
+        _CopyBoundingBoxToAllChildren_CLandscapeBackgroundDynamicBuildTemplate__AAEXABVC3DBoundingBox___Z
+                  (param_1 + 0xac);
+      }
+    }
+  }
+  else {
+    uStack_18 = *(ushort *)(param_1 + 200) / 2;
+    cVar2 = _GFIsPowerOfTwo__YI_NK_Z();
+    if (cVar2 == '\0') {
+      bVar3 = _GFGetTopBit__YIKK_Z();
+      uStack_18 = 1 << (bVar3 & 0x1f);
+    }
+    pvVar5 = operator_new(0xd0);
+    iStack_8 = 3;
+    if (pvVar5 == (void *)0x0) {
+      uStack_60 = 0;
+    }
+    else {
+      uStack_60 = __0CLandscapeBackgroundDynamicBuildTemplate__QAE_PAVCEngineLandscapeMap__JJJJ_Z
+                            (*(undefined4 *)(param_1 + 0xa8),*(undefined2 *)(param_1 + 0xc4),
+                             *(undefined2 *)(param_1 + 0xc6),uStack_18,
+                             *(undefined2 *)(param_1 + 0xca));
+    }
+    iStack_8 = 0xffffffff;
+    *(undefined4 *)(param_1 + 0xa0) = uStack_60;
+    pvVar5 = operator_new(0xd0);
+    iStack_8 = 4;
+    if (pvVar5 == (void *)0x0) {
+      uStack_64 = 0;
+    }
+    else {
+      uStack_64 = __0CLandscapeBackgroundDynamicBuildTemplate__QAE_PAVCEngineLandscapeMap__JJJJ_Z
+                            (*(undefined4 *)(param_1 + 0xa8),*(ushort *)(param_1 + 0xc4) + uStack_18
+                             ,*(undefined2 *)(param_1 + 0xc6),*(ushort *)(param_1 + 200) - uStack_18
+                             ,*(undefined2 *)(param_1 + 0xca));
+    }
+    iStack_8 = 0xffffffff;
+    *(undefined4 *)(param_1 + 0xa4) = uStack_64;
+    _BuildTreeSubdivideIntoPowersOf2_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+              (param_2,param_3,param_4,param_5,param_6);
+    _BuildTreeSubdivideIntoPowersOf2_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+              (param_2,param_3,param_4,param_5,param_6);
+    _CalculateBoundingBoxes_CLandscapeBackgroundDynamicBuildTemplate__AAEX_N0_Z(0,1);
+    if ((*(short *)(param_1 + 200) == 0x10) && (*(short *)(param_1 + 0xca) == 0x10)) {
+      _CopyBoundingBoxToAllChildren_CLandscapeBackgroundDynamicBuildTemplate__AAEXABVC3DBoundingBox___Z
+                (param_1 + 0xac);
+    }
+  }
+  ExceptionList = pvStack_10;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?PeekLODInfo@CLandscapeBackgroundDynamicBuildTemplate@@QBEABUCLODDynamicBuildInfo@1@K@Z @ 018291c3 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+int __thiscall
+_PeekLODInfo_CLandscapeBackgroundDynamicBuildTemplate__QBEABUCLODDynamicBuildInfo_1_K_Z
+          (int param_1,uint param_2)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  int iVar4;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined1 *puVar7;
+  undefined4 uVar8;
+  undefined4 uVar9;
+  undefined1 auStack_2c [8];
+  undefined1 auStack_24 [8];
+  undefined1 auStack_1c [11];
+  char cStack_11;
+  void *pvStack_10;
+  undefined1 *puStack_c;
+  int iStack_8;
+  
+  iStack_8 = 0xffffffff;
+  puStack_c = &LAB_03e7acd8;
+  pvStack_10 = ExceptionList;
+  if (7 < param_2) {
+    ExceptionList = &pvStack_10;
+    __0CWideString__QAE_PB_W_Z
+              (
+              L"e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fableengine\\Engine_Landscape_Background_Dynamic_Build_Template.hpp"
+              );
+    iStack_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+    iStack_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z("index<LANDSCAPE_LOD_BAND_COUNT",0xffffffff);
+    iStack_8._0_1_ = 2;
+    uVar9 = 1;
+    uVar8 = 0x43;
+    puVar7 = auStack_1c;
+    puVar6 = auStack_24;
+    puVar5 = auStack_2c;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0x43,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar5,puVar6,puVar7,uVar8,uVar9);
+    cStack_11 = '\x01' - (cVar2 != '\x01');
+    iStack_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    iStack_8 = (uint)iStack_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    iStack_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if (cStack_11 != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        iVar4 = (*pcVar1)();
+        return iVar4;
+      }
+    }
+  }
+  ExceptionList = pvStack_10;
+  return param_2 * 0x14 + param_1;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?BuildLODSubSectionBuffersTriangle@CLandscapeBackgroundPatch@@AAEXPAVCTVertexLandscapeBackground@@PAGPAM2AAVCLODVertexGrid@1@JJJJJJAAUCEdgeToFanBaseMapper@1@@Z @ 01848d61 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02ce7139) */
+/* WARNING: Type propagation algorithm not settling */
+
+void __thiscall
+_BuildLODSubSectionBuffersTriangle_CLandscapeBackgroundPatch__AAEXPAVCTVertexLandscapeBackground__PAGPAM2AAVCLODVertexGrid_1_JJJJJJAAUCEdgeToFanBaseMapper_1__Z
+          (int param_1,undefined4 param_2,int param_3,undefined4 param_4,undefined4 param_5,
+          undefined4 param_6,int param_7,int param_8,int param_9,int param_10,undefined4 param_11,
+          undefined4 param_12,undefined4 param_13)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  int iVar4;
+  int *piVar5;
+  undefined4 *puVar6;
+  undefined2 *puVar7;
+  undefined2 *puVar8;
+  undefined1 *puVar9;
+  undefined1 *puVar10;
+  undefined1 *puVar11;
+  undefined4 uVar12;
+  undefined4 uVar13;
+  int iStack_bc;
+  int iStack_b8;
+  int iStack_b4;
+  int iStack_b0;
+  undefined1 auStack_a8 [8];
+  undefined1 auStack_a0 [8];
+  undefined1 auStack_98 [11];
+  char cStack_8d;
+  undefined1 auStack_8c [8];
+  undefined1 auStack_84 [8];
+  undefined1 auStack_7c [11];
+  char cStack_71;
+  int iStack_70;
+  int iStack_6c;
+  int iStack_68;
+  int iStack_64;
+  int iStack_60;
+  int iStack_5c;
+  int iStack_58;
+  uint auStack_54 [6];
+  uint auStack_3c [3];
+  int iStack_30;
+  undefined4 uStack_2c;
+  int iStack_28;
+  int iStack_24;
+  undefined1 uStack_1d;
+  int iStack_1c;
+  int iStack_18;
+  int iStack_14;
+  void *pvStack_10;
+  undefined1 *puStack_c;
+  int iStack_8;
+  
+  iStack_8 = 0xffffffff;
+  puStack_c = &LAB_03e61bbc;
+  pvStack_10 = ExceptionList;
+  ExceptionList = &pvStack_10;
+  iStack_28 = _PeekMap_CLandscapeBackgroundTreeNode__QBEPAVCEngineLandscapeMap__XZ();
+  if (iStack_28 == 0) {
+    __0CWideString__QAE_PB_W_Z(L"Engine_Landscape_Background_Patch.cpp");
+    iStack_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_04441d56,0xffffffff);
+    iStack_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z(&DAT_044428b4,0xffffffff);
+    iStack_8._0_1_ = 2;
+    uVar13 = 1;
+    uVar12 = 0x798;
+    puVar11 = auStack_7c;
+    puVar10 = auStack_84;
+    puVar9 = auStack_8c;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar9,puVar10,puVar11,0x798,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar9,puVar10,puVar11,uVar12,uVar13);
+    cStack_71 = '\x01' - (cVar2 != '\x01');
+    iStack_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    iStack_8 = (uint)iStack_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    iStack_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if ((cStack_71 != '\0') && (BVar3 = IsDebuggerPresent(), BVar3 != 0)) {
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+  }
+  uStack_2c = _GetLODMap_CEngineLandscapeMap__QAEPAVCEngineLandscapeLODMap__XZ();
+  iStack_30 = (param_7 + param_9) / 2;
+  iStack_14 = (param_8 + param_10) / 2;
+  uStack_1d = 0;
+  if (((iStack_30 == param_7) || (iStack_30 == param_9)) &&
+     ((iStack_14 == param_8 || (iStack_14 == param_10)))) {
+    uStack_1d = 1;
+  }
+  else {
+    iVar4 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                      ((uint)*(ushort *)(param_1 + 0x10c) + iStack_30,
+                       (uint)*(ushort *)(param_1 + 0x10e) + iStack_14);
+    if ((int)(uint)*(byte *)(param_1 + 0x118) <= iVar4) {
+      _BuildLODSubSectionBuffersTriangle_CLandscapeBackgroundPatch__AAEXPAVCTVertexLandscapeBackground__PAGPAM2AAVCLODVertexGrid_1_JJJJJJAAUCEdgeToFanBaseMapper_1__Z
+                (param_2,param_3,param_4,param_5,param_6,param_9,param_10,param_11,param_12,
+                 iStack_30,iStack_14,param_13);
+      _BuildLODSubSectionBuffersTriangle_CLandscapeBackgroundPatch__AAEXPAVCTVertexLandscapeBackground__PAGPAM2AAVCLODVertexGrid_1_JJJJJJAAUCEdgeToFanBaseMapper_1__Z
+                (param_2,param_3,param_4,param_5,param_6,param_11,param_12,param_7,param_8,iStack_30
+                 ,iStack_14,param_13);
+      ExceptionList = pvStack_10;
+      return;
+    }
+  }
+  piVar5 = (int *)_ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_7,param_8);
+  if (*piVar5 < 0) {
+    uVar12 = _BuildVertex_CLandscapeBackgroundPatch__AAEJPAVCTVertexLandscapeBackground__JJPAM1_Z
+                       (param_2,param_7,param_8,param_4,param_5);
+    puVar6 = (undefined4 *)_ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_7,param_8)
+    ;
+    *puVar6 = uVar12;
+  }
+  piVar5 = (int *)_ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_9,param_10);
+  if (*piVar5 < 0) {
+    uVar12 = _BuildVertex_CLandscapeBackgroundPatch__AAEJPAVCTVertexLandscapeBackground__JJPAM1_Z
+                       (param_2,param_9,param_10,param_4,param_5);
+    puVar6 = (undefined4 *)
+             _ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_9,param_10);
+    *puVar6 = uVar12;
+  }
+  piVar5 = (int *)_ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_11,param_12);
+  if (*piVar5 < 0) {
+    uVar12 = _BuildVertex_CLandscapeBackgroundPatch__AAEJPAVCTVertexLandscapeBackground__JJPAM1_Z
+                       (param_2,param_11,param_12,param_4,param_5);
+    puVar6 = (undefined4 *)
+             _ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_11,param_12);
+    *puVar6 = uVar12;
+  }
+  iStack_24 = (uint)*(ushort *)(param_1 + 0x106) * 3;
+  iStack_1c = (uint)*(ushort *)(param_1 + 0x106) * 3 + 1;
+  iStack_18 = (uint)*(ushort *)(param_1 + 0x106) * 3 + 2;
+  puVar7 = (undefined2 *)_ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_7,param_8);
+  *(undefined2 *)(param_3 + iStack_24 * 2) = *puVar7;
+  puVar7 = (undefined2 *)_ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_9,param_10);
+  *(undefined2 *)(param_3 + iStack_1c * 2) = *puVar7;
+  puVar7 = (undefined2 *)_ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_11,param_12)
+  ;
+  *(undefined2 *)(param_3 + iStack_18 * 2) = *puVar7;
+  if (*(short *)(param_1 + 0x106) == -1) {
+    __0CWideString__QAE_PB_W_Z(L"Engine_Landscape_Background_Patch.cpp");
+    iStack_8 = 3;
+    __0CCharString__QAE_PBDJ_Z(&DAT_04441d57,0xffffffff);
+    iStack_8._0_1_ = 4;
+    __0CCharString__QAE_PBDJ_Z("PolyCountIncDegenerates<65535",0xffffffff);
+    iStack_8._0_1_ = 5;
+    uVar13 = 1;
+    uVar12 = 0x7c6;
+    puVar11 = auStack_98;
+    puVar10 = auStack_a0;
+    puVar9 = auStack_a8;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar9,puVar10,puVar11,0x7c6,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar9,puVar10,puVar11,uVar12,uVar13);
+    cStack_8d = '\x01' - (cVar2 != '\x01');
+    iStack_8._0_1_ = 4;
+    __1CCharString__QAE_XZ();
+    iStack_8 = CONCAT31(iStack_8._1_3_,3);
+    __1CCharString__QAE_XZ();
+    iStack_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if ((cStack_8d != '\0') && (BVar3 = IsDebuggerPresent(), BVar3 != 0)) {
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+  }
+  *(short *)(param_1 + 0x106) = *(short *)(param_1 + 0x106) + 1;
+  auStack_54[3] = param_7;
+  auStack_54[4] = param_9;
+  auStack_54[5] = param_11;
+  auStack_3c[0] = param_8;
+  auStack_3c[1] = param_10;
+  auStack_3c[2] = param_12;
+  auStack_54[0] = iStack_24;
+  auStack_54[1] = iStack_1c;
+  auStack_54[2] = iStack_18;
+  iStack_58 = 0;
+  while( true ) {
+    if (2 < iStack_58) {
+      ExceptionList = pvStack_10;
+      return;
+    }
+    iStack_60 = (iStack_58 + 1) % 3;
+    iStack_5c = (iStack_60 + 1) % 3;
+    if ((auStack_54[iStack_58 + 3] == 0) && (auStack_54[iStack_60 + 3] == 0)) {
+      iStack_b0 = iStack_60;
+      if ((int)auStack_54[iStack_58 + 6] < (int)auStack_54[iStack_60 + 6]) {
+        iStack_b0 = iStack_58;
+      }
+      iStack_64 = iStack_b0;
+      puVar7 = (undefined2 *)
+               _ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z
+                         (auStack_54[iStack_5c + 3],auStack_54[iStack_5c + 6]);
+      puVar8 = (undefined2 *)
+               __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                         (auStack_54[iStack_64 + 6]);
+      *puVar8 = *puVar7;
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (auStack_54[iStack_64 + 6]);
+      *(short *)(iVar4 + 6) = (short)auStack_54[iStack_64];
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (auStack_54[iStack_64 + 6]);
+      *(undefined2 *)(iVar4 + 2) = *(undefined2 *)(auStack_54 + iStack_5c + 3);
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (auStack_54[iStack_64 + 6]);
+      *(undefined2 *)(iVar4 + 4) = *(undefined2 *)(auStack_54 + iStack_5c + 6);
+      ExceptionList = pvStack_10;
+      return;
+    }
+    if ((auStack_54[iStack_58 + 3] == (uint)*(ushort *)(param_1 + 0x110)) &&
+       (auStack_54[iStack_60 + 3] == (uint)*(ushort *)(param_1 + 0x110))) {
+      iStack_b4 = iStack_60;
+      if ((int)auStack_54[iStack_58 + 6] < (int)auStack_54[iStack_60 + 6]) {
+        iStack_b4 = iStack_58;
+      }
+      iStack_68 = iStack_b4;
+      puVar7 = (undefined2 *)
+               _ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z
+                         (auStack_54[iStack_5c + 3],auStack_54[iStack_5c + 6]);
+      puVar8 = (undefined2 *)
+               __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                         (auStack_54[iStack_68 + 6]);
+      *puVar8 = *puVar7;
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (auStack_54[iStack_68 + 6]);
+      *(short *)(iVar4 + 6) = (short)auStack_54[iStack_68];
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (auStack_54[iStack_68 + 6]);
+      *(undefined2 *)(iVar4 + 2) = *(undefined2 *)(auStack_54 + iStack_5c + 3);
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (auStack_54[iStack_68 + 6]);
+      *(undefined2 *)(iVar4 + 4) = *(undefined2 *)(auStack_54 + iStack_5c + 6);
+      ExceptionList = pvStack_10;
+      return;
+    }
+    if ((auStack_54[iStack_58 + 6] == 0) && (auStack_54[iStack_60 + 6] == 0)) break;
+    if ((auStack_54[iStack_58 + 6] == (uint)*(ushort *)(param_1 + 0x112)) &&
+       (auStack_54[iStack_60 + 6] == (uint)*(ushort *)(param_1 + 0x112))) {
+      iStack_bc = iStack_60;
+      if ((int)auStack_54[iStack_58 + 3] < (int)auStack_54[iStack_60 + 3]) {
+        iStack_bc = iStack_58;
+      }
+      iStack_70 = iStack_bc;
+      puVar7 = (undefined2 *)
+               _ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z
+                         (auStack_54[iStack_5c + 3],auStack_54[iStack_5c + 6]);
+      puVar8 = (undefined2 *)
+               __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                         (auStack_54[iStack_70 + 3]);
+      *puVar8 = *puVar7;
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (auStack_54[iStack_70 + 3]);
+      *(short *)(iVar4 + 6) = (short)auStack_54[iStack_70];
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (auStack_54[iStack_70 + 3]);
+      *(undefined2 *)(iVar4 + 2) = *(undefined2 *)(auStack_54 + iStack_5c + 3);
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (auStack_54[iStack_70 + 3]);
+      *(undefined2 *)(iVar4 + 4) = *(undefined2 *)(auStack_54 + iStack_5c + 6);
+      ExceptionList = pvStack_10;
+      return;
+    }
+    iStack_58 = iStack_58 + 1;
+  }
+  iStack_b8 = iStack_60;
+  if ((int)auStack_54[iStack_58 + 3] < (int)auStack_54[iStack_60 + 3]) {
+    iStack_b8 = iStack_58;
+  }
+  iStack_6c = iStack_b8;
+  puVar7 = (undefined2 *)
+           _ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z
+                     (auStack_54[iStack_5c + 3],auStack_54[iStack_5c + 6]);
+  puVar8 = (undefined2 *)
+           __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                     (auStack_54[iStack_6c + 3]);
+  *puVar8 = *puVar7;
+  iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                    (auStack_54[iStack_6c + 3]);
+  *(short *)(iVar4 + 6) = (short)auStack_54[iStack_6c];
+  iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                    (auStack_54[iStack_6c + 3]);
+  *(undefined2 *)(iVar4 + 2) = *(undefined2 *)(auStack_54 + iStack_5c + 3);
+  iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                    (auStack_54[iStack_6c + 3]);
+  *(undefined2 *)(iVar4 + 4) = *(undefined2 *)(auStack_54 + iStack_5c + 6);
+  ExceptionList = pvStack_10;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?BuildLODSubSectionBuffersTriangle@CLandscapeBackgroundPatch@@AAEXPAVCTVertexLandscapeBackground@@PAGPAM2AAVCLODVertexGrid@1@JJJJJJAAUCEdgeToFanBaseMapper@1@@Z @ 02ce6c80 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02ce7139) */
+/* WARNING: Type propagation algorithm not settling */
+/* [ported from ego_r via strfp] */
+
+void __thiscall
+_BuildLODSubSectionBuffersTriangle_CLandscapeBackgroundPatch__AAEXPAVCTVertexLandscapeBackground__PAGPAM2AAVCLODVertexGrid_1_JJJJJJAAUCEdgeToFanBaseMapper_1__Z
+          (int param_1,undefined4 param_2,int param_3,undefined4 param_4,undefined4 param_5,
+          undefined4 param_6,int param_7,int param_8,int param_9,int param_10,undefined4 param_11,
+          undefined4 param_12,undefined4 param_13)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  int iVar4;
+  int *piVar5;
+  undefined4 *puVar6;
+  undefined2 *puVar7;
+  undefined2 *puVar8;
+  undefined1 *puVar9;
+  undefined1 *puVar10;
+  undefined1 *puVar11;
+  undefined4 uVar12;
+  undefined4 uVar13;
+  int local_bc;
+  int local_b8;
+  int local_b4;
+  int local_b0;
+  undefined1 local_a8 [8];
+  undefined1 local_a0 [8];
+  undefined1 local_98 [11];
+  char local_8d;
+  undefined1 local_8c [8];
+  undefined1 local_84 [8];
+  undefined1 local_7c [11];
+  char local_71;
+  int local_70;
+  int local_6c;
+  int local_68;
+  int local_64;
+  int local_60;
+  int local_5c;
+  int local_58;
+  uint local_54 [6];
+  uint local_3c [3];
+  int local_30;
+  undefined4 local_2c;
+  int local_28;
+  int local_24;
+  undefined1 local_1d;
+  int local_1c;
+  int local_18;
+  int local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  int local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03e61bbc;
+  local_10 = ExceptionList;
+  ExceptionList = &local_10;
+  local_28 = _PeekMap_CLandscapeBackgroundTreeNode__QBEPAVCEngineLandscapeMap__XZ();
+  if (local_28 == 0) {
+    __0CWideString__QAE_PB_W_Z(L"Engine_Landscape_Background_Patch.cpp");
+    local_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_04441d56,0xffffffff);
+    local_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z(&DAT_044428b4,0xffffffff);
+    local_8._0_1_ = 2;
+    uVar13 = 1;
+    uVar12 = 0x798;
+    puVar11 = local_7c;
+    puVar10 = local_84;
+    puVar9 = local_8c;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar9,puVar10,puVar11,0x798,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar9,puVar10,puVar11,uVar12,uVar13);
+    local_71 = '\x01' - (cVar2 != '\x01');
+    local_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    local_8 = (uint)local_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if ((local_71 != '\0') && (BVar3 = IsDebuggerPresent(), BVar3 != 0)) {
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+  }
+  local_2c = _GetLODMap_CEngineLandscapeMap__QAEPAVCEngineLandscapeLODMap__XZ();
+  local_30 = (param_7 + param_9) / 2;
+  local_14 = (param_8 + param_10) / 2;
+  local_1d = 0;
+  if (((local_30 == param_7) || (local_30 == param_9)) &&
+     ((local_14 == param_8 || (local_14 == param_10)))) {
+    local_1d = 1;
+  }
+  else {
+    iVar4 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                      ((uint)*(ushort *)(param_1 + 0x10c) + local_30,
+                       (uint)*(ushort *)(param_1 + 0x10e) + local_14);
+    if ((int)(uint)*(byte *)(param_1 + 0x118) <= iVar4) {
+      _BuildLODSubSectionBuffersTriangle_CLandscapeBackgroundPatch__AAEXPAVCTVertexLandscapeBackground__PAGPAM2AAVCLODVertexGrid_1_JJJJJJAAUCEdgeToFanBaseMapper_1__Z
+                (param_2,param_3,param_4,param_5,param_6,param_9,param_10,param_11,param_12,local_30
+                 ,local_14,param_13);
+      _BuildLODSubSectionBuffersTriangle_CLandscapeBackgroundPatch__AAEXPAVCTVertexLandscapeBackground__PAGPAM2AAVCLODVertexGrid_1_JJJJJJAAUCEdgeToFanBaseMapper_1__Z
+                (param_2,param_3,param_4,param_5,param_6,param_11,param_12,param_7,param_8,local_30,
+                 local_14,param_13);
+      ExceptionList = local_10;
+      return;
+    }
+  }
+  piVar5 = (int *)_ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_7,param_8);
+  if (*piVar5 < 0) {
+    uVar12 = _BuildVertex_CLandscapeBackgroundPatch__AAEJPAVCTVertexLandscapeBackground__JJPAM1_Z
+                       (param_2,param_7,param_8,param_4,param_5);
+    puVar6 = (undefined4 *)_ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_7,param_8)
+    ;
+    *puVar6 = uVar12;
+  }
+  piVar5 = (int *)_ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_9,param_10);
+  if (*piVar5 < 0) {
+    uVar12 = _BuildVertex_CLandscapeBackgroundPatch__AAEJPAVCTVertexLandscapeBackground__JJPAM1_Z
+                       (param_2,param_9,param_10,param_4,param_5);
+    puVar6 = (undefined4 *)
+             _ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_9,param_10);
+    *puVar6 = uVar12;
+  }
+  piVar5 = (int *)_ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_11,param_12);
+  if (*piVar5 < 0) {
+    uVar12 = _BuildVertex_CLandscapeBackgroundPatch__AAEJPAVCTVertexLandscapeBackground__JJPAM1_Z
+                       (param_2,param_11,param_12,param_4,param_5);
+    puVar6 = (undefined4 *)
+             _ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_11,param_12);
+    *puVar6 = uVar12;
+  }
+  local_24 = (uint)*(ushort *)(param_1 + 0x106) * 3;
+  local_1c = (uint)*(ushort *)(param_1 + 0x106) * 3 + 1;
+  local_18 = (uint)*(ushort *)(param_1 + 0x106) * 3 + 2;
+  puVar7 = (undefined2 *)_ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_7,param_8);
+  *(undefined2 *)(param_3 + local_24 * 2) = *puVar7;
+  puVar7 = (undefined2 *)_ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_9,param_10);
+  *(undefined2 *)(param_3 + local_1c * 2) = *puVar7;
+  puVar7 = (undefined2 *)_ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z(param_11,param_12)
+  ;
+  *(undefined2 *)(param_3 + local_18 * 2) = *puVar7;
+  if (*(short *)(param_1 + 0x106) == -1) {
+    __0CWideString__QAE_PB_W_Z(L"Engine_Landscape_Background_Patch.cpp");
+    local_8 = 3;
+    __0CCharString__QAE_PBDJ_Z(&DAT_04441d57,0xffffffff);
+    local_8._0_1_ = 4;
+    __0CCharString__QAE_PBDJ_Z("PolyCountIncDegenerates<65535",0xffffffff);
+    local_8._0_1_ = 5;
+    uVar13 = 1;
+    uVar12 = 0x7c6;
+    puVar11 = local_98;
+    puVar10 = local_a0;
+    puVar9 = local_a8;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar9,puVar10,puVar11,0x7c6,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar9,puVar10,puVar11,uVar12,uVar13);
+    local_8d = '\x01' - (cVar2 != '\x01');
+    local_8._0_1_ = 4;
+    __1CCharString__QAE_XZ();
+    local_8 = CONCAT31(local_8._1_3_,3);
+    __1CCharString__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if ((local_8d != '\0') && (BVar3 = IsDebuggerPresent(), BVar3 != 0)) {
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+  }
+  *(short *)(param_1 + 0x106) = *(short *)(param_1 + 0x106) + 1;
+  local_54[3] = param_7;
+  local_54[4] = param_9;
+  local_54[5] = param_11;
+  local_3c[0] = param_8;
+  local_3c[1] = param_10;
+  local_3c[2] = param_12;
+  local_54[0] = local_24;
+  local_54[1] = local_1c;
+  local_54[2] = local_18;
+  local_58 = 0;
+  while( true ) {
+    if (2 < local_58) {
+      ExceptionList = local_10;
+      return;
+    }
+    local_60 = (local_58 + 1) % 3;
+    local_5c = (local_60 + 1) % 3;
+    if ((local_54[local_58 + 3] == 0) && (local_54[local_60 + 3] == 0)) {
+      local_b0 = local_60;
+      if ((int)local_54[local_58 + 6] < (int)local_54[local_60 + 6]) {
+        local_b0 = local_58;
+      }
+      local_64 = local_b0;
+      puVar7 = (undefined2 *)
+               _ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z
+                         (local_54[local_5c + 3],local_54[local_5c + 6]);
+      puVar8 = (undefined2 *)
+               __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                         (local_54[local_64 + 6]);
+      *puVar8 = *puVar7;
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (local_54[local_64 + 6]);
+      *(short *)(iVar4 + 6) = (short)local_54[local_64];
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (local_54[local_64 + 6]);
+      *(undefined2 *)(iVar4 + 2) = *(undefined2 *)(local_54 + local_5c + 3);
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (local_54[local_64 + 6]);
+      *(undefined2 *)(iVar4 + 4) = *(undefined2 *)(local_54 + local_5c + 6);
+      ExceptionList = local_10;
+      return;
+    }
+    if ((local_54[local_58 + 3] == (uint)*(ushort *)(param_1 + 0x110)) &&
+       (local_54[local_60 + 3] == (uint)*(ushort *)(param_1 + 0x110))) {
+      local_b4 = local_60;
+      if ((int)local_54[local_58 + 6] < (int)local_54[local_60 + 6]) {
+        local_b4 = local_58;
+      }
+      local_68 = local_b4;
+      puVar7 = (undefined2 *)
+               _ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z
+                         (local_54[local_5c + 3],local_54[local_5c + 6]);
+      puVar8 = (undefined2 *)
+               __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                         (local_54[local_68 + 6]);
+      *puVar8 = *puVar7;
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (local_54[local_68 + 6]);
+      *(short *)(iVar4 + 6) = (short)local_54[local_68];
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (local_54[local_68 + 6]);
+      *(undefined2 *)(iVar4 + 2) = *(undefined2 *)(local_54 + local_5c + 3);
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (local_54[local_68 + 6]);
+      *(undefined2 *)(iVar4 + 4) = *(undefined2 *)(local_54 + local_5c + 6);
+      ExceptionList = local_10;
+      return;
+    }
+    if ((local_54[local_58 + 6] == 0) && (local_54[local_60 + 6] == 0)) break;
+    if ((local_54[local_58 + 6] == (uint)*(ushort *)(param_1 + 0x112)) &&
+       (local_54[local_60 + 6] == (uint)*(ushort *)(param_1 + 0x112))) {
+      local_bc = local_60;
+      if ((int)local_54[local_58 + 3] < (int)local_54[local_60 + 3]) {
+        local_bc = local_58;
+      }
+      local_70 = local_bc;
+      puVar7 = (undefined2 *)
+               _ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z
+                         (local_54[local_5c + 3],local_54[local_5c + 6]);
+      puVar8 = (undefined2 *)
+               __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                         (local_54[local_70 + 3]);
+      *puVar8 = *puVar7;
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (local_54[local_70 + 3]);
+      *(short *)(iVar4 + 6) = (short)local_54[local_70];
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (local_54[local_70 + 3]);
+      *(undefined2 *)(iVar4 + 2) = *(undefined2 *)(local_54 + local_5c + 3);
+      iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                        (local_54[local_70 + 3]);
+      *(undefined2 *)(iVar4 + 4) = *(undefined2 *)(local_54 + local_5c + 6);
+      ExceptionList = local_10;
+      return;
+    }
+    local_58 = local_58 + 1;
+  }
+  local_b8 = local_60;
+  if ((int)local_54[local_58 + 3] < (int)local_54[local_60 + 3]) {
+    local_b8 = local_58;
+  }
+  local_6c = local_b8;
+  puVar7 = (undefined2 *)
+           _ID_CLODVertexGrid_CLandscapeBackgroundPatch__QAEAAJJJ_Z
+                     (local_54[local_5c + 3],local_54[local_5c + 6]);
+  puVar8 = (undefined2 *)
+           __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                     (local_54[local_6c + 3]);
+  *puVar8 = *puVar7;
+  iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                    (local_54[local_6c + 3]);
+  *(short *)(iVar4 + 6) = (short)local_54[local_6c];
+  iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                    (local_54[local_6c + 3]);
+  *(undefined2 *)(iVar4 + 2) = *(undefined2 *)(local_54 + local_5c + 3);
+  iVar4 = __A__CArray_UCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch____QAEAAUCEdgeToFanBaseMapperElement_CLandscapeBackgroundPatch__I_Z
+                    (local_54[local_6c + 3]);
+  *(undefined2 *)(iVar4 + 4) = *(undefined2 *)(local_54 + local_5c + 6);
+  ExceptionList = local_10;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?PeekLODInfo@CLandscapeBackgroundDynamicBuildTemplate@@QBEABUCLODDynamicBuildInfo@1@K@Z @ 02de8030 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+int __thiscall
+_PeekLODInfo_CLandscapeBackgroundDynamicBuildTemplate__QBEABUCLODDynamicBuildInfo_1_K_Z
+          (int param_1,uint param_2)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  int iVar4;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined1 *puVar7;
+  undefined4 uVar8;
+  undefined4 uVar9;
+  undefined1 local_2c [8];
+  undefined1 local_24 [8];
+  undefined1 local_1c [11];
+  char local_11;
+  void *local_10;
+  undefined1 *puStack_c;
+  int local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03e7acd8;
+  local_10 = ExceptionList;
+  if (7 < param_2) {
+    ExceptionList = &local_10;
+    __0CWideString__QAE_PB_W_Z
+              (
+              L"e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fableengine\\Engine_Landscape_Background_Dynamic_Build_Template.hpp"
+              );
+    local_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+    local_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z("index<LANDSCAPE_LOD_BAND_COUNT",0xffffffff);
+    local_8._0_1_ = 2;
+    uVar9 = 1;
+    uVar8 = 0x43;
+    puVar7 = local_1c;
+    puVar6 = local_24;
+    puVar5 = local_2c;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0x43,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar5,puVar6,puVar7,uVar8,uVar9);
+    local_11 = '\x01' - (cVar2 != '\x01');
+    local_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    local_8 = (uint)local_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if (local_11 != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        iVar4 = (*pcVar1)();
+        return iVar4;
+      }
+    }
+  }
+  ExceptionList = local_10;
+  return param_2 * 0x14 + param_1;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ??0CLODDynamicBuildInfo@CLandscapeBackgroundDynamicBuildTemplate@@QAE@XZ @ 02df2920 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+int __fastcall __0CLODDynamicBuildInfo_CLandscapeBackgroundDynamicBuildTemplate__QAE_XZ(int param_1)
+
+{
+  *(undefined4 *)(param_1 + 4) = 0;
+  *(undefined4 *)(param_1 + 8) = 0;
+  *(undefined2 *)(param_1 + 0xc) = 0;
+  *(undefined2 *)(param_1 + 0xe) = 0;
+  *(undefined2 *)(param_1 + 0x10) = 0;
+  *(undefined2 *)(param_1 + 0x12) = 0;
+  return param_1;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ??1CLODDynamicBuildInfo@CLandscapeBackgroundDynamicBuildTemplate@@QAE@XZ @ 02df2980 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+void __fastcall
+__1CLODDynamicBuildInfo_CLandscapeBackgroundDynamicBuildTemplate__QAE_XZ(int param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+  }
+  if (*(int *)(param_1 + 8) != 0) {
+    ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+  }
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?BuildTreeSubdivideIntoPowersOf2@CLandscapeBackgroundDynamicBuildTemplate@@AAEXABUCTopologySizeGrid@1@JMJPBV?$CArray@J@@@Z @ 02df3180 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+void __thiscall
+_BuildTreeSubdivideIntoPowersOf2_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+          (int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4,int param_5,
+          undefined4 param_6)
+
+{
+  code *pcVar1;
+  char cVar2;
+  byte bVar3;
+  BOOL BVar4;
+  void *pvVar5;
+  undefined1 *puVar6;
+  undefined1 *puVar7;
+  undefined1 *puVar8;
+  undefined4 uVar9;
+  undefined4 uVar10;
+  undefined4 local_6c;
+  undefined4 local_68;
+  undefined4 local_64;
+  undefined4 local_60;
+  undefined1 local_38 [8];
+  undefined1 local_30 [8];
+  undefined1 local_28 [11];
+  char local_1d;
+  uint local_1c;
+  uint local_18;
+  char local_12;
+  char local_11;
+  void *local_10;
+  undefined1 *puStack_c;
+  int local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03e7baf4;
+  local_10 = ExceptionList;
+  if ((*(int *)(param_1 + 0xa0) != 0) || (ExceptionList = &local_10, *(int *)(param_1 + 0xa4) != 0))
+  {
+    ExceptionList = &local_10;
+    __0CWideString__QAE_PB_W_Z(L"Engine_Landscape_Background_Dynamic_Build_Template.cpp");
+    local_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0446568d,0xffffffff);
+    local_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z("(!Branch[0]) && (!Branch[1])",0xffffffff);
+    local_8._0_1_ = 2;
+    uVar10 = 1;
+    uVar9 = 0x189;
+    puVar8 = local_28;
+    puVar7 = local_30;
+    puVar6 = local_38;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar6,puVar7,puVar8,0x189,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar6,puVar7,puVar8,uVar9,uVar10);
+    local_1d = '\x01' - (cVar2 != '\x01');
+    local_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    local_8 = (uint)local_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if ((local_1d != '\0') && (BVar4 = IsDebuggerPresent(), BVar4 != 0)) {
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+  }
+  *(undefined1 *)(param_1 + 0xce) = 8;
+  *(undefined1 *)(param_1 + 0xcd) = 8;
+  *(undefined1 *)(param_1 + 0xcc) = 8;
+  local_12 = '\0';
+  local_11 = '\0';
+  if ((2 < *(ushort *)(param_1 + 200)) &&
+     ((param_5 < (int)(uint)*(ushort *)(param_1 + 200) ||
+      (cVar2 = _GFIsPowerOfTwo__YI_NK_Z(), cVar2 == '\0')))) {
+    local_12 = '\x01';
+  }
+  if ((2 < *(ushort *)(param_1 + 0xca)) &&
+     ((param_5 < (int)(uint)*(ushort *)(param_1 + 0xca) ||
+      (cVar2 = _GFIsPowerOfTwo__YI_NK_Z(), cVar2 == '\0')))) {
+    local_11 = '\x01';
+  }
+  if ((local_12 != '\0') && (local_11 != '\0')) {
+    if (*(ushort *)(param_1 + 200) < *(ushort *)(param_1 + 0xca)) {
+      local_12 = '\0';
+    }
+    else {
+      local_11 = '\0';
+    }
+  }
+  if (local_12 == '\0') {
+    if (local_11 == '\0') {
+      _BuildTree_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+                (param_2,param_3,param_4,param_5,param_6);
+    }
+    else {
+      local_1c = *(ushort *)(param_1 + 0xca) / 2;
+      cVar2 = _GFIsPowerOfTwo__YI_NK_Z();
+      if (cVar2 == '\0') {
+        bVar3 = _GFGetTopBit__YIKK_Z();
+        local_1c = 1 << (bVar3 & 0x1f);
+      }
+      pvVar5 = operator_new(0xd0);
+      local_8 = 5;
+      if (pvVar5 == (void *)0x0) {
+        local_68 = 0;
+      }
+      else {
+        local_68 = __0CLandscapeBackgroundDynamicBuildTemplate__QAE_PAVCEngineLandscapeMap__JJJJ_Z
+                             (*(undefined4 *)(param_1 + 0xa8),*(undefined2 *)(param_1 + 0xc4),
+                              *(undefined2 *)(param_1 + 0xc6),*(undefined2 *)(param_1 + 200),
+                              local_1c);
+      }
+      local_8 = 0xffffffff;
+      *(undefined4 *)(param_1 + 0xa0) = local_68;
+      pvVar5 = operator_new(0xd0);
+      local_8 = 6;
+      if (pvVar5 == (void *)0x0) {
+        local_6c = 0;
+      }
+      else {
+        local_6c = __0CLandscapeBackgroundDynamicBuildTemplate__QAE_PAVCEngineLandscapeMap__JJJJ_Z
+                             (*(undefined4 *)(param_1 + 0xa8),*(undefined2 *)(param_1 + 0xc4),
+                              *(ushort *)(param_1 + 0xc6) + local_1c,*(undefined2 *)(param_1 + 200),
+                              *(ushort *)(param_1 + 0xca) - local_1c);
+      }
+      local_8 = 0xffffffff;
+      *(undefined4 *)(param_1 + 0xa4) = local_6c;
+      _BuildTreeSubdivideIntoPowersOf2_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+                (param_2,param_3,param_4,param_5,param_6);
+      _BuildTreeSubdivideIntoPowersOf2_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+                (param_2,param_3,param_4,param_5,param_6);
+      _CalculateBoundingBoxes_CLandscapeBackgroundDynamicBuildTemplate__AAEX_N0_Z(0,1);
+      if ((*(short *)(param_1 + 200) == 0x10) && (*(short *)(param_1 + 0xca) == 0x10)) {
+        _CopyBoundingBoxToAllChildren_CLandscapeBackgroundDynamicBuildTemplate__AAEXABVC3DBoundingBox___Z
+                  (param_1 + 0xac);
+      }
+    }
+  }
+  else {
+    local_18 = *(ushort *)(param_1 + 200) / 2;
+    cVar2 = _GFIsPowerOfTwo__YI_NK_Z();
+    if (cVar2 == '\0') {
+      bVar3 = _GFGetTopBit__YIKK_Z();
+      local_18 = 1 << (bVar3 & 0x1f);
+    }
+    pvVar5 = operator_new(0xd0);
+    local_8 = 3;
+    if (pvVar5 == (void *)0x0) {
+      local_60 = 0;
+    }
+    else {
+      local_60 = __0CLandscapeBackgroundDynamicBuildTemplate__QAE_PAVCEngineLandscapeMap__JJJJ_Z
+                           (*(undefined4 *)(param_1 + 0xa8),*(undefined2 *)(param_1 + 0xc4),
+                            *(undefined2 *)(param_1 + 0xc6),local_18,*(undefined2 *)(param_1 + 0xca)
+                           );
+    }
+    local_8 = 0xffffffff;
+    *(undefined4 *)(param_1 + 0xa0) = local_60;
+    pvVar5 = operator_new(0xd0);
+    local_8 = 4;
+    if (pvVar5 == (void *)0x0) {
+      local_64 = 0;
+    }
+    else {
+      local_64 = __0CLandscapeBackgroundDynamicBuildTemplate__QAE_PAVCEngineLandscapeMap__JJJJ_Z
+                           (*(undefined4 *)(param_1 + 0xa8),*(ushort *)(param_1 + 0xc4) + local_18,
+                            *(undefined2 *)(param_1 + 0xc6),*(ushort *)(param_1 + 200) - local_18,
+                            *(undefined2 *)(param_1 + 0xca));
+    }
+    local_8 = 0xffffffff;
+    *(undefined4 *)(param_1 + 0xa4) = local_64;
+    _BuildTreeSubdivideIntoPowersOf2_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+              (param_2,param_3,param_4,param_5,param_6);
+    _BuildTreeSubdivideIntoPowersOf2_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+              (param_2,param_3,param_4,param_5,param_6);
+    _CalculateBoundingBoxes_CLandscapeBackgroundDynamicBuildTemplate__AAEX_N0_Z(0,1);
+    if ((*(short *)(param_1 + 200) == 0x10) && (*(short *)(param_1 + 0xca) == 0x10)) {
+      _CopyBoundingBoxToAllChildren_CLandscapeBackgroundDynamicBuildTemplate__AAEXABVC3DBoundingBox___Z
+                (param_1 + 0xac);
+    }
+  }
+  ExceptionList = local_10;
+  return;
+}
+
+ (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /FableWin.exe (HeadlessAnalyzer)  

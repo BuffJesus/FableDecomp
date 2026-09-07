@@ -1,0 +1,127 @@
+//=== ?GFInitMaths@@YIXXZ @ 03193c30 (seed 03193c30) ===
+03193c30: 55                  PUSH EBP
+03193c31: 8bec                MOV EBP,ESP
+03193c33: 83ec34              SUB ESP,0x34
+03193c36: c745f048ecbb04      MOV dword ptr [EBP + -0x10],0x4bbec48  ; DAT_04bbec48
+03193c3d: 33c0                XOR EAX,EAX
+03193c3f: 7402                JZ 0x03193c43
+03193c41: eb60                JMP 0x03193ca3
+03193c43: c745fc00000000      MOV dword ptr [EBP + -0x4],0x0
+03193c4a: eb09                JMP 0x03193c55
+03193c4c: 8b4dfc              MOV ECX,dword ptr [EBP + -0x4]
+03193c4f: 83c101              ADD ECX,0x1
+03193c52: 894dfc              MOV dword ptr [EBP + -0x4],ECX
+03193c55: 817dfc80000000      CMP dword ptr [EBP + -0x4],0x80
+03193c5c: 7345                JNC 0x03193ca3
+03193c5e: 8b55fc              MOV EDX,dword ptr [EBP + -0x4]
+03193c61: c1e211              SHL EDX,0x11
+03193c64: 81ca0000003f        OR EDX,0x3f000000
+03193c6a: 8955f8              MOV dword ptr [EBP + -0x8],EDX
+03193c6d: 51                  PUSH ECX
+03193c6e: d945f8              FLD float ptr [EBP + -0x8]
+03193c71: d91c24              FSTP float ptr [ESP]
+03193c74: e8babb6afe          CALL 0x0183f833  ; ?sqrt@@YAMM@Z
+03193c79: 83c404              ADD ESP,0x4
+03193c7c: d9e8                FLD1
+03193c7e: def1                FDIVRP
+03193c80: d95df4              FSTP float ptr [EBP + -0xc]
+03193c83: 8b45f4              MOV EAX,dword ptr [EBP + -0xc]
+03193c86: 0500200000          ADD EAX,0x2000
+03193c8b: c1e80f              SHR EAX,0xf
+03193c8e: 25ff000000          AND EAX,0xff
+03193c93: 8b4df0              MOV ECX,dword ptr [EBP + -0x10]
+03193c96: 8901                MOV dword ptr [ECX],EAX  ; DAT_04bbec48
+03193c98: 8b55f0              MOV EDX,dword ptr [EBP + -0x10]
+03193c9b: 83c204              ADD EDX,0x4
+03193c9e: 8955f0              MOV dword ptr [EBP + -0x10],EDX  ; DAT_04bbec4c
+03193ca1: eba9                JMP 0x03193c4c
+03193ca3: c70548edbb04ff000000MOV dword ptr [0x04bbed48],0xff  ; DAT_04bbed48
+03193cad: 33c0                XOR EAX,EAX
+03193caf: 7402                JZ 0x03193cb3
+03193cb1: eb57                JMP 0x03193d0a
+03193cb3: c745fc00000000      MOV dword ptr [EBP + -0x4],0x0
+03193cba: eb09                JMP 0x03193cc5
+03193cbc: 8b4dfc              MOV ECX,dword ptr [EBP + -0x4]
+03193cbf: 83c101              ADD ECX,0x1
+03193cc2: 894dfc              MOV dword ptr [EBP + -0x4],ECX
+03193cc5: 817dfc00040000      CMP dword ptr [EBP + -0x4],0x400
+03193ccc: 733c                JNC 0x03193d0a
+03193cce: 8b55fc              MOV EDX,dword ptr [EBP + -0x4]
+03193cd1: d1e2                SHL EDX,0x1
+03193cd3: 8955e8              MOV dword ptr [EBP + -0x18],EDX
+03193cd6: c745ec00000000      MOV dword ptr [EBP + -0x14],0x0
+03193cdd: df6de8              FILD qword ptr [EBP + -0x18]
+03193ce0: dc0db09b3d04        FMUL double ptr [0x043d9bb0]  ; DAT_043d9bb0
+03193ce6: dc35a8000804        FDIV double ptr [0x040800a8]  ; DAT_040800a8
+03193cec: d95de4              FSTP float ptr [EBP + -0x1c]
+03193cef: d945e4              FLD float ptr [EBP + -0x1c]
+03193cf2: 51                  PUSH ECX
+03193cf3: d91c24              FSTP float ptr [ESP]
+03193cf6: e8727161fe          CALL 0x017aae6d  ; ?cos@@YAMM@Z
+03193cfb: 83c404              ADD ESP,0x4
+03193cfe: 8b45fc              MOV EAX,dword ptr [EBP + -0x4]
+03193d01: d91c8540dcbb04      FSTP float ptr [EAX*0x4 + 0x4bbdc40]  ; DAT_04bbdc40
+03193d08: ebb2                JMP 0x03193cbc
+03193d0a: d90540dcbb04        FLD float ptr [0x04bbdc40]  ; DAT_04bbdc40
+03193d10: d91d40ecbb04        FSTP float ptr [0x04bbec40]  ; DAT_04bbec40
+03193d16: 33c9                XOR ECX,ECX
+03193d18: 7402                JZ 0x03193d1c
+03193d1a: eb57                JMP 0x03193d73
+03193d1c: c745fc00000000      MOV dword ptr [EBP + -0x4],0x0
+03193d23: eb09                JMP 0x03193d2e
+03193d25: 8b55fc              MOV EDX,dword ptr [EBP + -0x4]
+03193d28: 83c201              ADD EDX,0x1
+03193d2b: 8955fc              MOV dword ptr [EBP + -0x4],EDX
+03193d2e: 817dfc01040000      CMP dword ptr [EBP + -0x4],0x401
+03193d35: 733c                JNC 0x03193d73
+03193d37: 8b45fc              MOV EAX,dword ptr [EBP + -0x4]
+03193d3a: 8945dc              MOV dword ptr [EBP + -0x24],EAX
+03193d3d: c745e000000000      MOV dword ptr [EBP + -0x20],0x0
+03193d44: df6ddc              FILD qword ptr [EBP + -0x24]
+03193d47: dc3588714904        FDIV double ptr [0x04497188]  ; DAT_04497188
+03193d4d: dcc0                FADD ST0,ST0
+03193d4f: dc2570df0104        FSUB double ptr [0x0401df70]  ; DAT_0401df70
+03193d55: d95dd8              FSTP float ptr [EBP + -0x28]
+03193d58: d945d8              FLD float ptr [EBP + -0x28]
+03193d5b: 51                  PUSH ECX
+03193d5c: d91c24              FSTP float ptr [ESP]
+03193d5f: e82b9e62fe          CALL 0x017bdb8f  ; ?acos@@YAMM@Z
+03193d64: 83c404              ADD ESP,0x4
+03193d67: 8b4dfc              MOV ECX,dword ptr [EBP + -0x4]
+03193d6a: d91c8d20bcbb04      FSTP float ptr [ECX*0x4 + 0x4bbbc20]  ; DAT_04bbbc20
+03193d71: ebb2                JMP 0x03193d25
+03193d73: d9ee                FLDZ
+03193d75: d91d24ccbb04        FSTP float ptr [0x04bbcc24]  ; DAT_04bbcc24
+03193d7b: 33d2                XOR EDX,EDX
+03193d7d: 7402                JZ 0x03193d81
+03193d7f: eb57                JMP 0x03193dd8
+03193d81: c745fc00000000      MOV dword ptr [EBP + -0x4],0x0
+03193d88: eb09                JMP 0x03193d93
+03193d8a: 8b45fc              MOV EAX,dword ptr [EBP + -0x4]
+03193d8d: 83c001              ADD EAX,0x1
+03193d90: 8945fc              MOV dword ptr [EBP + -0x4],EAX
+03193d93: 817dfc01040000      CMP dword ptr [EBP + -0x4],0x401
+03193d9a: 733c                JNC 0x03193dd8
+03193d9c: 8b4dfc              MOV ECX,dword ptr [EBP + -0x4]
+03193d9f: 894dd0              MOV dword ptr [EBP + -0x30],ECX
+03193da2: c745d400000000      MOV dword ptr [EBP + -0x2c],0x0
+03193da9: df6dd0              FILD qword ptr [EBP + -0x30]
+03193dac: dc3588714904        FDIV double ptr [0x04497188]  ; DAT_04497188
+03193db2: dcc0                FADD ST0,ST0
+03193db4: dc2570df0104        FSUB double ptr [0x0401df70]  ; DAT_0401df70
+03193dba: d95dcc              FSTP float ptr [EBP + -0x34]
+03193dbd: d945cc              FLD float ptr [EBP + -0x34]
+03193dc0: 51                  PUSH ECX
+03193dc1: d91c24              FSTP float ptr [ESP]
+03193dc4: e8494d67fe          CALL 0x01808b12  ; ?asin@@YAMM@Z
+03193dc9: 83c404              ADD ESP,0x4
+03193dcc: 8b55fc              MOV EDX,dword ptr [EBP + -0x4]
+03193dcf: d91c9530ccbb04      FSTP float ptr [EDX*0x4 + 0x4bbcc30]  ; DAT_04bbcc30
+03193dd6: ebb2                JMP 0x03193d8a
+03193dd8: d9ee                FLDZ
+03193dda: d91d34dcbb04        FSTP float ptr [0x04bbdc34]  ; DAT_04bbdc34
+03193de0: 8be5                MOV ESP,EBP
+03193de2: 5d                  POP EBP
+03193de3: c3                  RET
+
+//=== 260 : NO FUNCTION ===

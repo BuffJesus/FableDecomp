@@ -1,0 +1,131 @@
+﻿INFO  Using log config file: jar:file:/D:/Subuwu/tools/ghidra-public/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (1208 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (2988 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\GnuDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BytePatterns\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\JVM\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SystemEmulation\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\8051\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FileFormats\ghidra_scripts
+    D:\Documents\FableTLC\tools\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BSim\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\VersionTracking\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PDB\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\PIC\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Base\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Extensions\XEXLoaderWV\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    C:\Users\Cornelio\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\DATA\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Decompiler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\Atmel\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PyGhidra\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FunctionID\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessAnalyzer)  
+INFO  Opening project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessProject)  
+INFO  REPORT: Processing project file: /FableWin.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: DecompByName.java 'GetLODZBandAtZ' 'GetSettings_CLandscape' 'LandscapeSettings'  (HeadlessAnalyzer)  
+INFO  SCRIPT: D:\Documents\FableTLC\tools\ghidra_scripts\DecompByName.java (HeadlessAnalyzer)  
+INFO  DecompByName.java> ==================== ?GetLODZBandAtZ@CEngineLandscapeRenderer@@QAEJM@Z @ 01810c90 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02de663d) */
+
+int __thiscall _GetLODZBandAtZ_CEngineLandscapeRenderer__QAEJM_Z(int param_1,float param_2)
+
+{
+  int iStack_8;
+  
+  iStack_8 = 2;
+  while( true ) {
+    if (7 < iStack_8) {
+      return 7;
+    }
+    if (param_2 < *(float *)(param_1 + 0xd10 + iStack_8 * 4)) break;
+    iStack_8 = iStack_8 + 1;
+  }
+  return iStack_8 + -1;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?GetSettings@CEngineLandscapeRenderer@@QAEABUCLandscapeSettings@1@XZ @ 0181c2b6 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+int __fastcall _GetSettings_CEngineLandscapeRenderer__QAEABUCLandscapeSettings_1_XZ(int param_1)
+
+{
+  return param_1 + 0xee8;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ??0CLandscapeSettings@CEngineLandscapeRenderer@@QAE@XZ @ 01840954 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+undefined4 __fastcall __0CLandscapeSettings_CEngineLandscapeRenderer__QAE_XZ(undefined4 param_1)
+
+{
+  __0C4DVector__QAE_XZ();
+  __0C4DVector__QAE_XZ();
+  return param_1;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ??0CLandscapeSettings@CEngineLandscapeRenderer@@QAE@XZ @ 02c847e0 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+undefined4 __fastcall __0CLandscapeSettings_CEngineLandscapeRenderer__QAE_XZ(undefined4 param_1)
+
+{
+  __0C4DVector__QAE_XZ();
+  __0C4DVector__QAE_XZ();
+  return param_1;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?GetSettings@CEngineLandscapeRenderer@@QAEABUCLandscapeSettings@1@XZ @ 02c88d50 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+int __fastcall _GetSettings_CEngineLandscapeRenderer__QAEABUCLandscapeSettings_1_XZ(int param_1)
+
+{
+  return param_1 + 0xee8;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?GetLODZBandAtZ@CEngineLandscapeRenderer@@QAEJM@Z @ 02de6630 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02de663d) */
+/* [ported from ego_r via strfp] */
+
+int __thiscall _GetLODZBandAtZ_CEngineLandscapeRenderer__QAEJM_Z(int param_1,float param_2)
+
+{
+  int local_8;
+  
+  local_8 = 2;
+  while( true ) {
+    if (7 < local_8) {
+      return 7;
+    }
+    if (param_2 < *(float *)(param_1 + 0xd10 + local_8 * 4)) break;
+    local_8 = local_8 + 1;
+  }
+  return local_8 + -1;
+}
+
+ (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /FableWin.exe (HeadlessAnalyzer)  

@@ -1,0 +1,2 @@
+#include <cstdio>
+struct Handle{long a;unsigned long b;unsigned char c,pad[3];};static Handle* Run(Handle* h){h->a=-1;h->b=0;h->c=0;return h;}int main(){Handle h={7,8,9,{1,2,3}};if(Run(&h)!=&h||h.a!=-1||h.b||h.c||h.pad[0]!=1||h.pad[2]!=3)return 1;std::printf("HANDLE_INIT_INVALID_PASS\n");return 0;}

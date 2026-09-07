@@ -1,0 +1,1383 @@
+{
+  "schema": "fable-fse-address-name-map/0.1",
+  "sources": [
+    "D:\\Code\\ForgeFSE\\FableScriptExtender",
+    "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender"
+  ],
+  "summary": {
+    "addresses": 80,
+    "agreesWithManifest": 7,
+    "clashesWithManifest": 63,
+    "notInManifest": 10,
+    "ambiguousAcrossTrees": 0,
+    "helperQueueAddresses": 12,
+    "helperQueueCalls": 195,
+    "helperQueueScriptsMax": 15,
+    "helperQueueClashes": 12
+  },
+  "entries": [
+    {
+      "address": "0x004045C0",
+      "fseNames": [
+        "CPersistContext_Transfer_bool"
+      ],
+      "fseSymbols": [
+        "CPersistContext_Transfer_bool_API"
+      ],
+      "manifestName": "CPersistContext::CPersistContext::Transfer<signed char>",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0040F020",
+      "fseNames": [
+        "InterfaceMap_LowerBound"
+      ],
+      "fseSymbols": [
+        "InterfaceMap_LowerBound_API"
+      ],
+      "manifestName": "CVectorMap<ETCInterfaceType::LowerBound",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00410620",
+      "fseNames": [
+        "CPersistContext_Transfer_float"
+      ],
+      "fseSymbols": [
+        "CPersistContext_Transfer_float_API"
+      ],
+      "manifestName": "CPersistContext::Transfer<signed_char>",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x004106F0",
+      "fseNames": [
+        "CPersistContext_Transfer_uint"
+      ],
+      "fseSymbols": [
+        "CPersistContext_Transfer_uint_API"
+      ],
+      "manifestName": "CPersistContext::Transfer<signed_char>",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x004109A0",
+      "fseNames": [
+        "CPersistContext_Transfer_string"
+      ],
+      "fseSymbols": [
+        "CPersistContext_Transfer_string_API"
+      ],
+      "manifestName": "CPersistContext::Transfer<CIntelligentPointer<CThing>_>",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00410BE0",
+      "fseNames": [
+        "CPersistContext_Transfer_int"
+      ],
+      "fseSymbols": [
+        "CPersistContext_Transfer_int_API"
+      ],
+      "manifestName": "CPersistContext::Transfer<signed_char>",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00415070",
+      "fseNames": [
+        "GetLanguage"
+      ],
+      "fseSymbols": [
+        "GetLanguage_API"
+      ],
+      "manifestName": "_global::GetLanguage",
+      "verdict": "agrees",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00418289",
+      "fseNames": [
+        "target"
+      ],
+      "fseSymbols": [
+        "target"
+      ],
+      "manifestName": "CMainGameComponent::?Update@CMainGameComponent@@MAEXXZ",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0049E2C0",
+      "fseNames": [
+        "CWorld_SetAsLoadingRegion"
+      ],
+      "fseSymbols": [
+        "CWorld_SetAsLoadingRegion_API"
+      ],
+      "manifestName": "CWorld::SetAsLoadingRegion",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0049EAF0",
+      "fseNames": [
+        "CWorld_HandleMoveHeroToRegionGameEvent"
+      ],
+      "fseSymbols": [
+        "CWorld_HandleMoveHeroToRegionGameEvent_API"
+      ],
+      "manifestName": "CWorld::HandleMoveHeroToRegionGameEvent",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x004FB880",
+      "fseNames": [
+        "CWorldMap_GetMapNumberFromScriptName"
+      ],
+      "fseSymbols": [
+        "CWorldMap_GetMapNumberFromScriptName_API"
+      ],
+      "manifestName": "CWorldMap::GetMapNumberFromScriptName",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x004FC190",
+      "fseNames": [
+        "CWorldMap_GetRegionNumberMapIsIn"
+      ],
+      "fseSymbols": [
+        "CWorldMap_GetRegionNumberMapIsIn_API"
+      ],
+      "manifestName": "CWorldMap::GetRegionNumberMapIsIn",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00500540",
+      "fseNames": [
+        "CWorldMap_LoadRegion"
+      ],
+      "fseSymbols": [
+        "CWorldMap_LoadRegion_API"
+      ],
+      "manifestName": "CWorldMap::LoadRegion",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x005063E0",
+      "fseNames": [
+        "CWorldMap_SetPlayerPos"
+      ],
+      "fseSymbols": [
+        "CWorldMap_SetPlayerPos_API"
+      ],
+      "manifestName": "CWorldMap::SetPlayerPos",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0050AF10",
+      "fseNames": [
+        "CWorldMap_ActivateNavMap"
+      ],
+      "fseSymbols": [
+        "CWorldMap_ActivateNavMap_API"
+      ],
+      "manifestName": "CWorldMap::ActivateNavMap",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0063A300",
+      "fseNames": [
+        "CWorldMap_GetGroundSizeZAt"
+      ],
+      "fseSymbols": [
+        "CWorldMap_GetGroundSizeZAt_API"
+      ],
+      "manifestName": "CWorldMap::GetGroundSizeZAt",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0066B280",
+      "fseNames": [
+        "SoundPlayer_PlayIndexRange"
+      ],
+      "fseSymbols": [
+        "SoundPlayer_PlayIndexRange_API"
+      ],
+      "manifestName": "_global::CAnimateThing_PlayRandomSound",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x006E7AB0",
+      "fseNames": [
+        "CleanupMoviePImp"
+      ],
+      "fseSymbols": [
+        "CleanupMoviePImp_API"
+      ],
+      "manifestName": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x007ADD50",
+      "fseNames": [
+        "StdMap_Bool_Destroy"
+      ],
+      "fseSymbols": [
+        "StdMap_Bool_Destroy_API"
+      ],
+      "manifestName": "_global::LTextTreeWalkThrough_Destructor",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ],
+      "helperQueue": {
+        "category": "lifecycle-cleanup",
+        "calls": 2,
+        "scripts": 2,
+        "roles": "destructor",
+        "helperNames": "LTextTreeWalkThrough_Destructor"
+      }
+    },
+    {
+      "address": "0x007E74D0",
+      "fseNames": [
+        "CSGROSTB_Destroy"
+      ],
+      "fseSymbols": [
+        "CSGROSTB_Destroy_API"
+      ],
+      "manifestName": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x008ADF10",
+      "fseNames": [
+        "StdMap_Bool_OperatorBracket"
+      ],
+      "fseSymbols": [
+        "StdMap_Bool_OperatorBracket_API"
+      ],
+      "manifestName": "map<CCharString::operator[]",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x008D4840",
+      "fseNames": [
+        "getEvent"
+      ],
+      "fseSymbols": [
+        "getEvent"
+      ],
+      "manifestName": "GetEvent<NEntityEvents::CEventHitBy,CFilter_Bind3<NEntityEvents::CIsEventCreatedAfter,NEntityEvents::CIsEventCreatedBeforeOrOn,NEntityEvents::GetEvent<NEntityEvents::CEventHitBy,CFilter_Bind3<NEntityEvents::CIsEventCreatedAfter,NEntityEvents::CIsEventCreatedBeforeOrOn,NEntityEvents::CIsHitEventHitByThingWithScriptName>_>",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaEntityAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\LuaEntityAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0099A380",
+      "fseNames": [
+        "CBaseObject_Construct"
+      ],
+      "fseSymbols": [
+        "CBaseObject_Construct_API"
+      ],
+      "manifestName": "CBaseIntelligentPointer::CBaseIntelligentPointer",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0099A3B0",
+      "fseNames": [
+        "CBaseObject_Assign"
+      ],
+      "fseSymbols": [
+        "CBaseObject_Assign_API"
+      ],
+      "manifestName": "CFourierAnalysis::CFourierAnalysis",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ],
+      "helperQueue": {
+        "category": "object-lifetime",
+        "calls": 11,
+        "scripts": 4,
+        "roles": "Main",
+        "helperNames": "CFourierAnalysis::CFourierAnalysis"
+      }
+    },
+    {
+      "address": "0x0099A430",
+      "fseNames": [
+        "CBaseObject_Destroy"
+      ],
+      "fseSymbols": [
+        "CBaseObject_Destroy_API"
+      ],
+      "manifestName": "CPhysicsMeshInfo::~CPhysicsMeshInfo",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ],
+      "helperQueue": {
+        "category": "object-lifetime",
+        "calls": 20,
+        "scripts": 13,
+        "roles": "Main",
+        "helperNames": "CPhysicsMeshInfo::~CPhysicsMeshInfo"
+      }
+    },
+    {
+      "address": "0x0099B510",
+      "fseNames": [
+        "dtor"
+      ],
+      "fseSymbols": [
+        "dtor"
+      ],
+      "manifestName": "CWideString::CWideString::~CWideString",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestState.cpp"
+      ]
+    },
+    {
+      "address": "0x0099B6B0",
+      "fseNames": [
+        "ctor"
+      ],
+      "fseSymbols": [
+        "ctor"
+      ],
+      "manifestName": "CWideString::CWideString::CWideString",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestState.cpp"
+      ]
+    },
+    {
+      "address": "0x0099E4C0",
+      "fseNames": [
+        "CCharString_ToConstChar"
+      ],
+      "fseSymbols": [
+        "CCharString_ToConstChar_API"
+      ],
+      "manifestName": "CCharString::operator_char_const*",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0099E7F0",
+      "fseNames": [
+        "GFCharStringToInt"
+      ],
+      "fseSymbols": [
+        "GFCharStringToInt_API"
+      ],
+      "manifestName": "_global::GFCharStringToInt",
+      "verdict": "agrees",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0099EAE0",
+      "fseNames": [
+        "CCharString_Destroy"
+      ],
+      "fseSymbols": [
+        "CCharString_Destroy"
+      ],
+      "manifestName": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0099EBF0",
+      "fseNames": [
+        "CCharString_Construct_Literal"
+      ],
+      "fseSymbols": [
+        "CCharString_Construct_Literal"
+      ],
+      "manifestName": "CCharString::CCharString",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0099EC30",
+      "fseNames": [
+        "CCharString_Construct_Copy"
+      ],
+      "fseSymbols": [
+        "CCharString_Construct_Copy"
+      ],
+      "manifestName": "CCharString::CCharString",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0099EFB0",
+      "fseNames": [
+        "CCharString_Assign"
+      ],
+      "fseSymbols": [
+        "CCharString_Assign_API"
+      ],
+      "manifestName": "CCharString::operator=",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0099F690",
+      "fseNames": [
+        "CCharString_OperatorPlus"
+      ],
+      "fseSymbols": [
+        "CCharString_OperatorPlus_API"
+      ],
+      "manifestName": "_global::CCharString_OperatorPlus_API",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ],
+      "helperQueue": {
+        "category": "engine-or-script-helper",
+        "calls": 3,
+        "scripts": 2,
+        "roles": "Init,Main",
+        "helperNames": "CCharString_OperatorPlus_API"
+      }
+    },
+    {
+      "address": "0x0099F830",
+      "fseNames": [
+        "GFIntToCharString"
+      ],
+      "fseSymbols": [
+        "GFIntToCharString_API"
+      ],
+      "manifestName": "_global::GFIntToCharString_API",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ],
+      "helperQueue": {
+        "category": "engine-or-script-helper",
+        "calls": 2,
+        "scripts": 2,
+        "roles": "Init,Main",
+        "helperNames": "GFIntToCharString_API"
+      }
+    },
+    {
+      "address": "0x009BE420",
+      "fseNames": [
+        "ClearRenderTarget_Fn"
+      ],
+      "fseSymbols": [
+        "ClearRenderTarget_Fn"
+      ],
+      "manifestName": "CDisplayManager::ClearRenderTarget",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x009FC450",
+      "fseNames": [
+        "CResource_SetAsMRU"
+      ],
+      "fseSymbols": [
+        "CResource_SetAsMRU"
+      ],
+      "manifestName": "CResource::SetAsMRU",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x009FDE80",
+      "fseNames": [
+        "CFrameData_BeginLoading"
+      ],
+      "fseSymbols": [
+        "CFrameData_BeginLoading"
+      ],
+      "manifestName": "CFrameData::BeginLoading",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00A01920",
+      "fseNames": [
+        "GetSoundIndexFromSymbol"
+      ],
+      "fseSymbols": [
+        "GetSoundIndexFromSymbol_API"
+      ],
+      "manifestName": "CASoundBank::GetSoundIndexFromSymbol",
+      "verdict": "agrees",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00B41E50",
+      "fseNames": [
+        "target"
+      ],
+      "fseSymbols": [
+        "target"
+      ],
+      "manifestName": "CEngineMap::OpenRetailStaticMap",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00B9A4A0",
+      "fseNames": [
+        "target"
+      ],
+      "fseSymbols": [
+        "target"
+      ],
+      "manifestName": "CEnginePrimitiveManagerRepeatedStaticMeshes::CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00B9AC30",
+      "fseNames": [
+        "target"
+      ],
+      "fseSymbols": [
+        "target"
+      ],
+      "manifestName": "CEnginePrimitiveManagerRepeatedStaticMeshes::CEnginePrimitiveManagerRepeatedStaticMeshes::RenderSubPrimitive",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00BDE680",
+      "fseNames": [
+        "target"
+      ],
+      "fseSymbols": [
+        "target"
+      ],
+      "manifestName": "CObjectTypeCollection::Load",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00BE6F70",
+      "fseNames": [
+        "target"
+      ],
+      "fseSymbols": [
+        "target"
+      ],
+      "manifestName": "CLandscapeBackgroundPatch::Render",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00BF4130",
+      "fseNames": [
+        "target"
+      ],
+      "fseSymbols": [
+        "target"
+      ],
+      "manifestName": "CEngineLandscapePatch::LoadTextures",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00BF4570",
+      "fseNames": [
+        "target"
+      ],
+      "fseSymbols": [
+        "target"
+      ],
+      "manifestName": "CEngineLandscapePatch::RenderForeground",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00BFE6B4",
+      "fseNames": [
+        "target"
+      ],
+      "fseSymbols": [
+        "target"
+      ],
+      "manifestName": null,
+      "verdict": "not-in-manifest",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00BFEA0E",
+      "fseNames": [
+        "Game_malloc"
+      ],
+      "fseSymbols": [
+        "Game_malloc"
+      ],
+      "manifestName": "_global::malloc",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ],
+      "helperQueue": {
+        "category": "runtime-support",
+        "calls": 2,
+        "scripts": 2,
+        "roles": "Main",
+        "helperNames": "malloc"
+      }
+    },
+    {
+      "address": "0x00BFEA14",
+      "fseNames": [
+        "Game_free"
+      ],
+      "fseSymbols": [
+        "Game_free"
+      ],
+      "manifestName": "_global::free",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ],
+      "helperQueue": {
+        "category": "runtime-support",
+        "calls": 15,
+        "scripts": 7,
+        "roles": "Main",
+        "helperNames": "free"
+      }
+    },
+    {
+      "address": "0x00CB5AC0",
+      "fseNames": [
+        "CheckSection"
+      ],
+      "fseSymbols": [
+        "CheckSection"
+      ],
+      "manifestName": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CB5C90",
+      "fseNames": [
+        "AddScript"
+      ],
+      "fseSymbols": [
+        "AddScript"
+      ],
+      "manifestName": "_global::AddScript",
+      "verdict": "agrees",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CB7940",
+      "fseNames": [
+        "IsActiveThreadTerminating_Quest"
+      ],
+      "fseSymbols": [
+        "IsActiveThreadTerminating_Quest_API"
+      ],
+      "manifestName": "CScriptBase::IsActiveThreadTerminating",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CB7E50",
+      "fseNames": [
+        "AddSpawnedFunction"
+      ],
+      "fseSymbols": [
+        "AddSpawnedFunction_func"
+      ],
+      "manifestName": "CGuiVarTransferStruct::Add",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CB8110",
+      "fseNames": [
+        "CScriptBase_Construct"
+      ],
+      "fseSymbols": [
+        "CScriptBase_Construct"
+      ],
+      "manifestName": "CHeroMorphDef::CHeroMorphDef",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CB8230",
+      "fseNames": [
+        "AddEntityScriptBinding"
+      ],
+      "fseSymbols": [
+        "AddEntityScriptBinding_API"
+      ],
+      "manifestName": "CScriptBase::AddEntityScriptBinding",
+      "verdict": "agrees",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CB8930",
+      "fseNames": [
+        "PostAddScriptedEntities_CScriptBase"
+      ],
+      "fseSymbols": [
+        "PostAddScriptedEntities_CScriptBase_API"
+      ],
+      "manifestName": "CTCVillage::OnInitialActivate",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CBE2FF",
+      "fseNames": [
+        "IsDistanceBetweenThingsUnder"
+      ],
+      "fseSymbols": [
+        "IsDistanceBetweenThingsUnder_API"
+      ],
+      "manifestName": "_global::IsDistanceBetweenThingsUnder",
+      "verdict": "agrees",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CBE716",
+      "fseNames": [
+        "FadeOutAndKillEntity"
+      ],
+      "fseSymbols": [
+        "FadeOutAndKillEntity_API",
+        "FadeOutAndKillEntity_Func"
+      ],
+      "manifestName": "_global::FadeOutAndKillEntity",
+      "verdict": "agrees",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CBE87F",
+      "fseNames": [
+        "AddLogbookStoryEntry"
+      ],
+      "fseSymbols": [
+        "AddLogbookStoryEntry_API",
+        "AddLogbookStoryEntry_Func"
+      ],
+      "manifestName": "CSubtitleRenderer::SetText",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ],
+      "helperQueue": {
+        "category": "engine-or-script-helper",
+        "calls": 21,
+        "scripts": 4,
+        "roles": "Main",
+        "helperNames": "CSubtitleRenderer::SetText"
+      }
+    },
+    {
+      "address": "0x00CBE960",
+      "fseNames": [
+        "AddLogbookStoryEntryString"
+      ],
+      "fseSymbols": [
+        "AddLogbookStoryEntryString_API"
+      ],
+      "manifestName": "CSubtitleRenderer::SetText",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ],
+      "helperQueue": {
+        "category": "engine-or-script-helper",
+        "calls": 13,
+        "scripts": 8,
+        "roles": "Main",
+        "helperNames": "CSubtitleRenderer::SetText"
+      }
+    },
+    {
+      "address": "0x00CBFAB8",
+      "fseNames": [
+        "SetScriptActiveStatus"
+      ],
+      "fseSymbols": [
+        "SetScriptActiveStatus_Func"
+      ],
+      "manifestName": "CRegion::SetMiniMapRegionExitTextOffsetX",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CBFB7D",
+      "fseNames": [
+        "RunCutsceneMacro"
+      ],
+      "fseSymbols": [
+        "RunCutsceneMacro_Func"
+      ],
+      "manifestName": "_global::RunCutsceneMacro_Func",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ],
+      "helperQueue": {
+        "category": "engine-or-script-helper",
+        "calls": 44,
+        "scripts": 15,
+        "roles": "Main",
+        "helperNames": "RunCutsceneMacro_Func"
+      }
+    },
+    {
+      "address": "0x00CD23B9",
+      "fseNames": [
+        "InitScriptObjectHelper1"
+      ],
+      "fseSymbols": [
+        "InitScriptObjectHelper1_API"
+      ],
+      "manifestName": "C3DMeshInfo::HasPhysicsMesh",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CD2770",
+      "fseNames": [
+        "InitScriptObjectHelper2"
+      ],
+      "fseSymbols": [
+        "InitScriptObjectHelper2_API"
+      ],
+      "manifestName": "CMemoryDataOutputStream::Clear",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CD3D2E",
+      "fseNames": [
+        "StdMap_OperatorBracket"
+      ],
+      "fseSymbols": [
+        "StdMap_OperatorBracket_API"
+      ],
+      "manifestName": "map<CCharString::operator[]",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CD4AC0",
+      "fseNames": [
+        "pEmptyDataAlloc"
+      ],
+      "fseSymbols": [
+        "pEmptyDataAlloc"
+      ],
+      "manifestName": "_gapscan::sub_00cd4ac0",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CDB355",
+      "fseNames": [
+        "hA"
+      ],
+      "fseSymbols": [
+        "hA"
+      ],
+      "manifestName": null,
+      "verdict": "not-in-manifest",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\dllmain.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\dllmain.cpp"
+      ]
+    },
+    {
+      "address": "0x00CDBD20",
+      "fseNames": [
+        "pSunnyvaleDataAlloc"
+      ],
+      "fseSymbols": [
+        "pSunnyvaleDataAlloc_func"
+      ],
+      "manifestName": "_global::pSunnyvaleDataAlloc_func",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00CDBF70",
+      "fseNames": [
+        "StdMap_Construct"
+      ],
+      "fseSymbols": [
+        "StdMap_Construct_API"
+      ],
+      "manifestName": "_global::StdMap_Construct_API",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ],
+      "helperQueue": {
+        "category": "runtime-support",
+        "calls": 28,
+        "scripts": 13,
+        "roles": "Main",
+        "helperNames": "StdMap_Construct_API"
+      }
+    },
+    {
+      "address": "0x00CDBFB0",
+      "fseNames": [
+        "StdMap_Destroy"
+      ],
+      "fseSymbols": [
+        "StdMap_Destroy_API"
+      ],
+      "manifestName": "_global::StdMap_Destroy_API",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ],
+      "helperQueue": {
+        "category": "runtime-support",
+        "calls": 34,
+        "scripts": 15,
+        "roles": "Main,destructor",
+        "helperNames": "StdMap_Destroy_API"
+      }
+    },
+    {
+      "address": "0x00CDD450",
+      "fseNames": [
+        "CSpawnedFunc_Construct"
+      ],
+      "fseSymbols": [
+        "CSpawnedFunc_Construct"
+      ],
+      "manifestName": "CSpawnedFunc<NScript::CSpawnedFunc<NScript::CExpression_FollowScript>",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x00F35B30",
+      "fseNames": [
+        "IsActiveThreadTerminating_Entity"
+      ],
+      "fseSymbols": [
+        "IsActiveThreadTerminating_Entity_API"
+      ],
+      "manifestName": "CCreatureAction_TrollWhackGroundBase::Initialise",
+      "verdict": "clash",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x01238C8C",
+      "fseNames": [
+        "g_pCScriptThingVTable"
+      ],
+      "fseSymbols": [
+        "g_pCScriptThingVTable"
+      ],
+      "manifestName": null,
+      "verdict": "not-in-manifest",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x01260EF4",
+      "fseNames": [
+        "g_pMovieObjectVTable"
+      ],
+      "fseSymbols": [
+        "g_pMovieObjectVTable"
+      ],
+      "manifestName": null,
+      "verdict": "not-in-manifest",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0127094C",
+      "fseNames": [
+        "g_pCScriptGameResourceObjectScriptedThingBaseVTable"
+      ],
+      "fseSymbols": [
+        "g_pCScriptGameResourceObjectScriptedThingBaseVTable"
+      ],
+      "manifestName": null,
+      "verdict": "not-in-manifest",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x012EA57C",
+      "fseNames": [
+        "g_pEntityScriptBindingVTable"
+      ],
+      "fseSymbols": [
+        "g_pEntityScriptBindingVTable"
+      ],
+      "manifestName": null,
+      "verdict": "not-in-manifest",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x012F5C24",
+      "fseNames": [
+        "pVTable"
+      ],
+      "fseSymbols": [
+        "pVTable"
+      ],
+      "manifestName": null,
+      "verdict": "not-in-manifest",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.h",
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestHost.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.h",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\LuaQuestHost.cpp"
+      ]
+    },
+    {
+      "address": "0x013B86A0",
+      "fseNames": [
+        "g_pMainGameComponent"
+      ],
+      "fseSymbols": [
+        "g_pMainGameComponent"
+      ],
+      "manifestName": null,
+      "verdict": "not-in-manifest",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x01436E1C",
+      "fseNames": [
+        "g_ppDisplayManager"
+      ],
+      "fseSymbols": [
+        "g_ppDisplayManager"
+      ],
+      "manifestName": null,
+      "verdict": "not-in-manifest",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    },
+    {
+      "address": "0x0143E8F8",
+      "fseNames": [
+        "g_pDSTGame"
+      ],
+      "fseSymbols": [
+        "g_pDSTGame"
+      ],
+      "manifestName": null,
+      "verdict": "not-in-manifest",
+      "ambiguous": false,
+      "sources": [
+        "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "D:\\Code\\ForgeFSE\\FableScriptExtender\\FableAPI.cpp"
+      ]
+    }
+  ]
+}

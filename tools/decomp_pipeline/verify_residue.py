@@ -8,7 +8,7 @@ under VC7.1 /O2 /Oy, compares to the retail oracle bytes, runs the behaviour tes
 
 Usage: python verify_residue.py <workflow_output.json> <residue_oracle.tsv> [--land]
 """
-import csv, json, re, subprocess, os, html, sys, glob
+import csv, json, re, subprocess, os, sys, glob
 from pathlib import Path
 
 ROOT = Path(r"D:\Documents\FableTLC")
@@ -16,12 +16,15 @@ VC = Path(r"D:\Tools\vc71")
 WORK = Path(os.environ.get("RESIDUE_WORK", ROOT / "rebuild" / "_residue_verify"))
 WORK.mkdir(parents=True, exist_ok=True)
 OBJDUMP = r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe"
-DS = re.compile(r"^\s*[0-9a-fA-F]+\s+<(.+)>:$"); DB = re.compile(r"^\s*[0-9a-fA-F]+:\s+((?:[0-9a-fA-F]{2}\s+)+)")
+DS = re.compile(r"^\s*([0-9a-fA-F]+)\s+<(.+)>:$"); DB = re.compile(r"^\s*[0-9a-fA-F]+:\s+((?:[0-9a-fA-F]{2}\s+)+)")
 RL = re.compile(r"^([0-9a-fA-F]{8})\s+\S+\s+.+$")
 PRAGMAS = ["", '#pragma optimize("s",on)', '#pragma optimize("t",on)', '#pragma optimize("g",on)']
 
 def vc71(s):
-    s = html.unescape(s).replace("__thiscall", "__fastcall")
+    for encoded, decoded in (("&lt;", "<"), ("&gt;", ">"), ("&quot;", '"'),
+                             ("&apos;", "'"), ("&amp;", "&")):
+        s = s.replace(encoded, decoded)
+    s = s.replace("__thiscall", "__fastcall")
     return "\n".join(l for l in s.splitlines() if "static_assert" not in l)
 
 def obj_text(path, leaf):
@@ -30,7 +33,10 @@ def obj_text(path, leaf):
     for line in pr.stdout.splitlines():
         if line.startswith("Disassembly of section .text:"): sec += 1; cur = None; continue
         s = DS.match(line)
-        if s: cur = {"symbol": s.group(1), "section": sec, "bytes": bytearray()}; fns.append(cur); continue
+        if s:
+            if int(s.group(1), 16) == 0 or cur is None:
+                cur = {"symbol": s.group(2), "section": sec, "bytes": bytearray()}; fns.append(cur)
+            continue
         e = DB.match(line)
         if e and cur is not None: cur["bytes"].extend(bytes.fromhex(e.group(1)))
     if not fns: raise RuntimeError("no funcs")

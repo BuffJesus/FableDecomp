@@ -8,7 +8,7 @@ prioritized, evidence-backed spec of candidate NEW FSE/Lua bindings.
 ## Sources (every claim below cites ≥2 of these)
 1. **Catalog** `ghidra_out/gamescriptinterface_catalog.tsv` — 891 native methods + retail
    addresses (name→addr). All 101 candidates resolve to a retail address here (**101/101**).
-2. **FSE manifest** `refs/fse_api_manifest.json` — 931 (2,324 name tokens) already-bound Lua
+2. **FSE manifest** `refs/fse_api_manifest.json` — 933 already-bound Lua
    functions, each with `scope`/`returnType`/`parameters`/`category`/`description`. Used to
    detect *variant duplicates* (native base method already re-exposed under a typed name) and
    to model the binding shape (types, blocking flag).

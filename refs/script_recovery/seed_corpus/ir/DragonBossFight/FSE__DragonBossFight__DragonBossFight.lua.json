@@ -1,0 +1,935 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/DragonBossFight/DragonBossFight.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 15,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 12
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 13
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 14
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 15
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddQuestRegion",
+          "line": 17
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddQuestRegion",
+          "line": 18
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 19
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 35,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "GetStateInt",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferInt",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 42,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "FinalizeEntityBindings",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "CreateThread",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 10
+        }
+      ]
+    },
+    {
+      "name": "SpawnMinions",
+      "parameters": [
+        "quest",
+        "minionSpawnPoints"
+      ],
+      "line": 53,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateEffectAtPos",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateCreature",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "name": "SpawnSummoners",
+      "parameters": [
+        "quest",
+        "summonerSpawnPoints"
+      ],
+      "line": 76,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateEffectAtPos",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateCreature",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "name": "RunEnemySpawning",
+      "parameters": [
+        "quest"
+      ],
+      "line": 102,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetAllThingsWithScriptName",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "GetAllThingsWithScriptName",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 15
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "name": "JackTaunts",
+      "parameters": [
+        "quest"
+      ],
+      "line": 130,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "RegisterTimer",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "StartAmbientConversation",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLineToConversation",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "DeregisterTimer",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "name": "DoMission",
+      "parameters": [
+        "quest"
+      ],
+      "line": 161,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetActiveQuestName",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestCardObjective",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "IsRegionLoaded",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeScreenOutUntilNextCallToFadeScreenIn",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "GetAllCreaturesExcludingHero",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetInLimbo",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "OverrideMusic",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestCardObjective",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "KickOffQuestStartScreen",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "FadeScreenIn",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTeleportingAsActive",
+          "line": 34
+        },
+        {
+          "receiver": "quest",
+          "name": "DisplayQuestInfo",
+          "line": 35
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 37
+        },
+        {
+          "receiver": "quest",
+          "name": "AddQuestInfoBarHealth",
+          "line": 39
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 41
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateThread",
+          "line": 45
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateThread",
+          "line": 46
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 48
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 50
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 51
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 53
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 55
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 57
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 58
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 64
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTeleportingAsActive",
+          "line": 65
+        },
+        {
+          "receiver": "quest",
+          "name": "GetAllThingsWithDefName",
+          "line": 68
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 71
+        },
+        {
+          "receiver": "quest",
+          "name": "GetAllThingsWithDefName",
+          "line": 74
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 77
+        },
+        {
+          "receiver": "quest",
+          "name": "GetAllThingsWithDefName",
+          "line": 80
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 83
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 87
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCutsceneActionMode",
+          "line": 89
+        },
+        {
+          "receiver": "quest",
+          "name": "StartCutscene",
+          "line": 90
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 91
+        },
+        {
+          "receiver": "quest",
+          "name": "SetCutsceneActionMode",
+          "line": 92
+        },
+        {
+          "receiver": "quest",
+          "name": "GetCutsceneFlag",
+          "line": 94
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 95
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 98
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 99
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntryString",
+          "line": 100
+        },
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 101
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetInLimbo",
+          "line": 105
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestAsCompleted",
+          "line": 109
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 112
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHeroMorality",
+          "line": 115
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayAVIMovie",
+          "line": 116
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayAVIMovie",
+          "line": 118
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroMorality",
+          "line": 121
+        },
+        {
+          "receiver": "quest",
+          "name": "StopOverrideMusic",
+          "line": 122
+        },
+        {
+          "receiver": "quest",
+          "name": "SetHUDEnabled",
+          "line": 123
+        },
+        {
+          "receiver": "quest",
+          "name": "DisplayQuestInfo",
+          "line": 124
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 125
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 127
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayCutscene",
+          "line": 128
+        },
+        {
+          "receiver": "quest",
+          "name": "AddLogbookStoryEntryString",
+          "line": 129
+        },
+        {
+          "receiver": "quest",
+          "name": "SetMasterGameState",
+          "line": 130
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetInLimbo",
+          "line": 134
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestAsCompleted",
+          "line": 138
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 141
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHeroMorality",
+          "line": 144
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayAVIMovie",
+          "line": 145
+        },
+        {
+          "receiver": "quest",
+          "name": "PlayAVIMovie",
+          "line": 147
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroMorality",
+          "line": 150
+        },
+        {
+          "receiver": "quest",
+          "name": "StopOverrideMusic",
+          "line": 151
+        },
+        {
+          "receiver": "quest",
+          "name": "SetHUDEnabled",
+          "line": 152
+        },
+        {
+          "receiver": "quest",
+          "name": "DisplayQuestInfo",
+          "line": 153
+        },
+        {
+          "receiver": "quest",
+          "name": "DeactivateQuestLater",
+          "line": 154
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 157
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "DragonState",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "MinionSpawningEnabled",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "NextSummonerSpawnPoint",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "NumFlyBysBetweenSummonerSpawns",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "NumFlyBysSinceLastSummonerSpawn",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "NumMinions",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "NumSummoners",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SummonerSpawningEnabled",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "TargetNumMinions",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "TargetNumSummoners",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "Dragon",
+      "script": "DragonBossFight/Entities/Dragon",
+      "line": 47
+    }
+  ],
+  "references": {
+    "textTags": [
+      "TEXT_QST_B05_JACK_TAUNT_",
+      "TEXT_QST_B05_MASK_CHOICE",
+      "TEXT_QST_LOG_STORY_PLATINUM_380",
+      "TEXT_QST_LOG_STORY_PLATINUM_385",
+      "TEXT_QUEST_DRAGON_BOSS_OBJECTIVE_01",
+      "TEXT_QUEST_DRAGON_BOSS_OBJECTIVE_02"
+    ],
+    "cutscenes": [
+      "CS_DRAGON_DEATH",
+      "CS_DRAGON_INTRO",
+      "CS_DRAGON_OUTRO_CHOICE",
+      "CS_DRAGON_OUTRO_EVIL",
+      "CS_DRAGON_OUTRO_GOOD"
+    ],
+    "regions": []
+  }
+}

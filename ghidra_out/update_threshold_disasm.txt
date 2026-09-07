@@ -1,0 +1,519 @@
+//=== ?UpdateThresholdPoint@CEngineLandscapeLODMap@@QAEXJJM@Z @ 02e02010 (seed 02e02010) ===
+02e02010: 55                  PUSH EBP
+02e02011: 8bec                MOV EBP,ESP
+02e02013: 83ec3c              SUB ESP,0x3c
+02e02016: 894de8              MOV dword ptr [EBP + -0x18],ECX
+02e02019: 837d0800            CMP dword ptr [EBP + 0x8],0x0
+02e0201d: 7c1c                JL 0x02e0203b
+02e0201f: 837d0c00            CMP dword ptr [EBP + 0xc],0x0
+02e02023: 7c16                JL 0x02e0203b
+02e02025: 8b45e8              MOV EAX,dword ptr [EBP + -0x18]
+02e02028: 8b4d08              MOV ECX,dword ptr [EBP + 0x8]
+02e0202b: 3b480c              CMP ECX,dword ptr [EAX + 0xc]
+02e0202e: 7f0b                JG 0x02e0203b
+02e02030: 8b55e8              MOV EDX,dword ptr [EBP + -0x18]
+02e02033: 8b450c              MOV EAX,dword ptr [EBP + 0xc]
+02e02036: 3b4210              CMP EAX,dword ptr [EDX + 0x10]
+02e02039: 7e05                JLE 0x02e02040
+02e0203b: e906050000          JMP 0x02e02546
+02e02040: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e02043: 51                  PUSH ECX
+02e02044: 8b5508              MOV EDX,dword ptr [EBP + 0x8]
+02e02047: 52                  PUSH EDX
+02e02048: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e0204b: e80c4b9efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e02050: 8945fc              MOV dword ptr [EBP + -0x4],EAX
+02e02053: 8b45fc              MOV EAX,dword ptr [EBP + -0x4]
+02e02056: 8945f4              MOV dword ptr [EBP + -0xc],EAX
+02e02059: 837dfc00            CMP dword ptr [EBP + -0x4],0x0
+02e0205d: 754b                JNZ 0x02e020aa
+02e0205f: 51                  PUSH ECX
+02e02060: d94510              FLD float ptr [EBP + 0x10]
+02e02063: d91c24              FSTP float ptr [ESP]
+02e02066: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e02069: 51                  PUSH ECX
+02e0206a: 8b5508              MOV EDX,dword ptr [EBP + 0x8]
+02e0206d: 52                  PUSH EDX
+02e0206e: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e02071: e89a6ba1fe          CALL 0x01818c10  ; ?CalculateBaseZThreshold@CEngineLandscapeLODMap@@AAEMJJM@Z
+02e02076: d95dec              FSTP float ptr [EBP + -0x14]
+02e02079: 51                  PUSH ECX
+02e0207a: d945ec              FLD float ptr [EBP + -0x14]
+02e0207d: d91c24              FSTP float ptr [ESP]
+02e02080: 8b0d8c80ac04        MOV ECX,dword ptr [0x04ac808c]  ; DAT_04ac808c
+02e02086: e805eca0fe          CALL 0x01810c90  ; ?GetLODZBandAtZ@CEngineLandscapeRenderer@@QAEJM@Z
+02e0208b: 8945f0              MOV dword ptr [EBP + -0x10],EAX
+02e0208e: 8b45f4              MOV EAX,dword ptr [EBP + -0xc]
+02e02091: 3b45f0              CMP EAX,dword ptr [EBP + -0x10]
+02e02094: 7e08                JLE 0x02e0209e
+02e02096: 8b4df4              MOV ECX,dword ptr [EBP + -0xc]
+02e02099: 894de4              MOV dword ptr [EBP + -0x1c],ECX
+02e0209c: eb06                JMP 0x02e020a4
+02e0209e: 8b55f0              MOV EDX,dword ptr [EBP + -0x10]
+02e020a1: 8955e4              MOV dword ptr [EBP + -0x1c],EDX
+02e020a4: 8b45e4              MOV EAX,dword ptr [EBP + -0x1c]
+02e020a7: 8945f4              MOV dword ptr [EBP + -0xc],EAX
+02e020aa: c745f801000000      MOV dword ptr [EBP + -0x8],0x1
+02e020b1: 837d0800            CMP dword ptr [EBP + 0x8],0x0
+02e020b5: 752c                JNZ 0x02e020e3
+02e020b7: 837d0c00            CMP dword ptr [EBP + 0xc],0x0
+02e020bb: 7526                JNZ 0x02e020e3
+02e020bd: 8b4dfc              MOV ECX,dword ptr [EBP + -0x4]
+02e020c0: 3b4df4              CMP ECX,dword ptr [EBP + -0xc]
+02e020c3: 7c05                JL 0x02e020ca
+02e020c5: e97c040000          JMP 0x02e02546
+02e020ca: 8b55f4              MOV EDX,dword ptr [EBP + -0xc]
+02e020cd: 52                  PUSH EDX
+02e020ce: 8b450c              MOV EAX,dword ptr [EBP + 0xc]
+02e020d1: 50                  PUSH EAX
+02e020d2: 8b4d08              MOV ECX,dword ptr [EBP + 0x8]
+02e020d5: 51                  PUSH ECX
+02e020d6: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e020d9: e831489dfe          CALL 0x017d690f  ; ?SetLODBandThreshold@CEngineLandscapeLODMap@@AAEXJJJ@Z
+02e020de: e963040000          JMP 0x02e02546
+02e020e3: 33d2                XOR EDX,EDX
+02e020e5: 7402                JZ 0x02e020e9
+02e020e7: eb1e                JMP 0x02e02107
+02e020e9: 8b4508              MOV EAX,dword ptr [EBP + 0x8]
+02e020ec: 2345f8              AND EAX,dword ptr [EBP + -0x8]
+02e020ef: 7402                JZ 0x02e020f3
+02e020f1: eb14                JMP 0x02e02107
+02e020f3: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e020f6: 234df8              AND ECX,dword ptr [EBP + -0x8]
+02e020f9: 7402                JZ 0x02e020fd
+02e020fb: eb0a                JMP 0x02e02107
+02e020fd: 8b55f8              MOV EDX,dword ptr [EBP + -0x8]
+02e02100: d1e2                SHL EDX,0x1
+02e02102: 8955f8              MOV dword ptr [EBP + -0x8],EDX
+02e02105: ebe2                JMP 0x02e020e9
+02e02107: 8b4508              MOV EAX,dword ptr [EBP + 0x8]
+02e0210a: 23450c              AND EAX,dword ptr [EBP + 0xc]
+02e0210d: 2345f8              AND EAX,dword ptr [EBP + -0x8]
+02e02110: 0f8421010000        JZ 0x02e02237
+02e02116: 8b4d08              MOV ECX,dword ptr [EBP + 0x8]
+02e02119: 2b4df8              SUB ECX,dword ptr [EBP + -0x8]
+02e0211c: 783c                JS 0x02e0215a
+02e0211e: 8b550c              MOV EDX,dword ptr [EBP + 0xc]
+02e02121: 52                  PUSH EDX
+02e02122: 8b4508              MOV EAX,dword ptr [EBP + 0x8]
+02e02125: 2b45f8              SUB EAX,dword ptr [EBP + -0x8]
+02e02128: 50                  PUSH EAX
+02e02129: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e0212c: e82b4a9efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e02131: 3945f4              CMP dword ptr [EBP + -0xc],EAX
+02e02134: 7e08                JLE 0x02e0213e
+02e02136: 8b4df4              MOV ECX,dword ptr [EBP + -0xc]
+02e02139: 894de0              MOV dword ptr [EBP + -0x20],ECX
+02e0213c: eb16                JMP 0x02e02154
+02e0213e: 8b550c              MOV EDX,dword ptr [EBP + 0xc]
+02e02141: 52                  PUSH EDX
+02e02142: 8b4508              MOV EAX,dword ptr [EBP + 0x8]
+02e02145: 2b45f8              SUB EAX,dword ptr [EBP + -0x8]
+02e02148: 50                  PUSH EAX
+02e02149: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e0214c: e80b4a9efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e02151: 8945e0              MOV dword ptr [EBP + -0x20],EAX
+02e02154: 8b4de0              MOV ECX,dword ptr [EBP + -0x20]
+02e02157: 894df4              MOV dword ptr [EBP + -0xc],ECX
+02e0215a: 8b5508              MOV EDX,dword ptr [EBP + 0x8]
+02e0215d: 0355f8              ADD EDX,dword ptr [EBP + -0x8]
+02e02160: 8b45e8              MOV EAX,dword ptr [EBP + -0x18]
+02e02163: 3b500c              CMP EDX,dword ptr [EAX + 0xc]
+02e02166: 7f3c                JG 0x02e021a4
+02e02168: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e0216b: 51                  PUSH ECX
+02e0216c: 8b5508              MOV EDX,dword ptr [EBP + 0x8]
+02e0216f: 0355f8              ADD EDX,dword ptr [EBP + -0x8]
+02e02172: 52                  PUSH EDX
+02e02173: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e02176: e8e1499efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e0217b: 3945f4              CMP dword ptr [EBP + -0xc],EAX
+02e0217e: 7e08                JLE 0x02e02188
+02e02180: 8b45f4              MOV EAX,dword ptr [EBP + -0xc]
+02e02183: 8945dc              MOV dword ptr [EBP + -0x24],EAX
+02e02186: eb16                JMP 0x02e0219e
+02e02188: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e0218b: 51                  PUSH ECX
+02e0218c: 8b5508              MOV EDX,dword ptr [EBP + 0x8]
+02e0218f: 0355f8              ADD EDX,dword ptr [EBP + -0x8]
+02e02192: 52                  PUSH EDX
+02e02193: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e02196: e8c1499efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e0219b: 8945dc              MOV dword ptr [EBP + -0x24],EAX
+02e0219e: 8b45dc              MOV EAX,dword ptr [EBP + -0x24]
+02e021a1: 8945f4              MOV dword ptr [EBP + -0xc],EAX
+02e021a4: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e021a7: 2b4df8              SUB ECX,dword ptr [EBP + -0x8]
+02e021aa: 783c                JS 0x02e021e8
+02e021ac: 8b550c              MOV EDX,dword ptr [EBP + 0xc]
+02e021af: 2b55f8              SUB EDX,dword ptr [EBP + -0x8]
+02e021b2: 52                  PUSH EDX
+02e021b3: 8b4508              MOV EAX,dword ptr [EBP + 0x8]
+02e021b6: 50                  PUSH EAX
+02e021b7: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e021ba: e89d499efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e021bf: 3945f4              CMP dword ptr [EBP + -0xc],EAX
+02e021c2: 7e08                JLE 0x02e021cc
+02e021c4: 8b4df4              MOV ECX,dword ptr [EBP + -0xc]
+02e021c7: 894dd8              MOV dword ptr [EBP + -0x28],ECX
+02e021ca: eb16                JMP 0x02e021e2
+02e021cc: 8b550c              MOV EDX,dword ptr [EBP + 0xc]
+02e021cf: 2b55f8              SUB EDX,dword ptr [EBP + -0x8]
+02e021d2: 52                  PUSH EDX
+02e021d3: 8b4508              MOV EAX,dword ptr [EBP + 0x8]
+02e021d6: 50                  PUSH EAX
+02e021d7: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e021da: e87d499efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e021df: 8945d8              MOV dword ptr [EBP + -0x28],EAX
+02e021e2: 8b4dd8              MOV ECX,dword ptr [EBP + -0x28]
+02e021e5: 894df4              MOV dword ptr [EBP + -0xc],ECX
+02e021e8: 8b550c              MOV EDX,dword ptr [EBP + 0xc]
+02e021eb: 0355f8              ADD EDX,dword ptr [EBP + -0x8]
+02e021ee: 8b45e8              MOV EAX,dword ptr [EBP + -0x18]
+02e021f1: 3b5010              CMP EDX,dword ptr [EAX + 0x10]
+02e021f4: 7f3c                JG 0x02e02232
+02e021f6: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e021f9: 034df8              ADD ECX,dword ptr [EBP + -0x8]
+02e021fc: 51                  PUSH ECX
+02e021fd: 8b5508              MOV EDX,dword ptr [EBP + 0x8]
+02e02200: 52                  PUSH EDX
+02e02201: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e02204: e853499efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e02209: 3945f4              CMP dword ptr [EBP + -0xc],EAX
+02e0220c: 7e08                JLE 0x02e02216
+02e0220e: 8b45f4              MOV EAX,dword ptr [EBP + -0xc]
+02e02211: 8945d4              MOV dword ptr [EBP + -0x2c],EAX
+02e02214: eb16                JMP 0x02e0222c
+02e02216: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e02219: 034df8              ADD ECX,dword ptr [EBP + -0x8]
+02e0221c: 51                  PUSH ECX
+02e0221d: 8b5508              MOV EDX,dword ptr [EBP + 0x8]
+02e02220: 52                  PUSH EDX
+02e02221: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e02224: e833499efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e02229: 8945d4              MOV dword ptr [EBP + -0x2c],EAX
+02e0222c: 8b45d4              MOV EAX,dword ptr [EBP + -0x2c]
+02e0222f: 8945f4              MOV dword ptr [EBP + -0xc],EAX
+02e02232: e9fa010000          JMP 0x02e02431
+02e02237: 837df801            CMP dword ptr [EBP + -0x8],0x1
+02e0223b: 0f8ef0010000        JLE 0x02e02431
+02e02241: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e02244: 99                  CDQ
+02e02245: 2bc2                SUB EAX,EDX
+02e02247: d1f8                SAR EAX,0x1
+02e02249: 8b4d08              MOV ECX,dword ptr [EBP + 0x8]
+02e0224c: 2bc8                SUB ECX,EAX
+02e0224e: 786d                JS 0x02e022bd
+02e02250: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e02253: 99                  CDQ
+02e02254: 2bc2                SUB EAX,EDX
+02e02256: d1f8                SAR EAX,0x1
+02e02258: 8b550c              MOV EDX,dword ptr [EBP + 0xc]
+02e0225b: 2bd0                SUB EDX,EAX
+02e0225d: 785e                JS 0x02e022bd
+02e0225f: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e02262: 99                  CDQ
+02e02263: 2bc2                SUB EAX,EDX
+02e02265: d1f8                SAR EAX,0x1
+02e02267: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e0226a: 2bc8                SUB ECX,EAX
+02e0226c: 51                  PUSH ECX
+02e0226d: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e02270: 99                  CDQ
+02e02271: 2bc2                SUB EAX,EDX
+02e02273: d1f8                SAR EAX,0x1
+02e02275: 8b5508              MOV EDX,dword ptr [EBP + 0x8]
+02e02278: 2bd0                SUB EDX,EAX
+02e0227a: 52                  PUSH EDX
+02e0227b: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e0227e: e8d9489efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e02283: 3945f4              CMP dword ptr [EBP + -0xc],EAX
+02e02286: 7e08                JLE 0x02e02290
+02e02288: 8b45f4              MOV EAX,dword ptr [EBP + -0xc]
+02e0228b: 8945d0              MOV dword ptr [EBP + -0x30],EAX
+02e0228e: eb27                JMP 0x02e022b7
+02e02290: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e02293: 99                  CDQ
+02e02294: 2bc2                SUB EAX,EDX
+02e02296: d1f8                SAR EAX,0x1
+02e02298: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e0229b: 2bc8                SUB ECX,EAX
+02e0229d: 51                  PUSH ECX
+02e0229e: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e022a1: 99                  CDQ
+02e022a2: 2bc2                SUB EAX,EDX
+02e022a4: d1f8                SAR EAX,0x1
+02e022a6: 8b5508              MOV EDX,dword ptr [EBP + 0x8]
+02e022a9: 2bd0                SUB EDX,EAX
+02e022ab: 52                  PUSH EDX
+02e022ac: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e022af: e8a8489efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e022b4: 8945d0              MOV dword ptr [EBP + -0x30],EAX
+02e022b7: 8b45d0              MOV EAX,dword ptr [EBP + -0x30]
+02e022ba: 8945f4              MOV dword ptr [EBP + -0xc],EAX
+02e022bd: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e022c0: 99                  CDQ
+02e022c1: 2bc2                SUB EAX,EDX
+02e022c3: d1f8                SAR EAX,0x1
+02e022c5: 034508              ADD EAX,dword ptr [EBP + 0x8]
+02e022c8: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e022cb: 3b410c              CMP EAX,dword ptr [ECX + 0xc]
+02e022ce: 7f69                JG 0x02e02339
+02e022d0: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e022d3: 99                  CDQ
+02e022d4: 2bc2                SUB EAX,EDX
+02e022d6: d1f8                SAR EAX,0x1
+02e022d8: 8b550c              MOV EDX,dword ptr [EBP + 0xc]
+02e022db: 2bd0                SUB EDX,EAX
+02e022dd: 785a                JS 0x02e02339
+02e022df: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e022e2: 99                  CDQ
+02e022e3: 2bc2                SUB EAX,EDX
+02e022e5: d1f8                SAR EAX,0x1
+02e022e7: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e022ea: 2bc8                SUB ECX,EAX
+02e022ec: 51                  PUSH ECX
+02e022ed: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e022f0: 99                  CDQ
+02e022f1: 2bc2                SUB EAX,EDX
+02e022f3: d1f8                SAR EAX,0x1
+02e022f5: 034508              ADD EAX,dword ptr [EBP + 0x8]
+02e022f8: 50                  PUSH EAX
+02e022f9: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e022fc: e85b489efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e02301: 3945f4              CMP dword ptr [EBP + -0xc],EAX
+02e02304: 7e08                JLE 0x02e0230e
+02e02306: 8b55f4              MOV EDX,dword ptr [EBP + -0xc]
+02e02309: 8955cc              MOV dword ptr [EBP + -0x34],EDX
+02e0230c: eb25                JMP 0x02e02333
+02e0230e: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e02311: 99                  CDQ
+02e02312: 2bc2                SUB EAX,EDX
+02e02314: d1f8                SAR EAX,0x1
+02e02316: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e02319: 2bc8                SUB ECX,EAX
+02e0231b: 51                  PUSH ECX
+02e0231c: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e0231f: 99                  CDQ
+02e02320: 2bc2                SUB EAX,EDX
+02e02322: d1f8                SAR EAX,0x1
+02e02324: 034508              ADD EAX,dword ptr [EBP + 0x8]
+02e02327: 50                  PUSH EAX
+02e02328: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e0232b: e82c489efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e02330: 8945cc              MOV dword ptr [EBP + -0x34],EAX
+02e02333: 8b55cc              MOV EDX,dword ptr [EBP + -0x34]
+02e02336: 8955f4              MOV dword ptr [EBP + -0xc],EDX
+02e02339: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e0233c: 99                  CDQ
+02e0233d: 2bc2                SUB EAX,EDX
+02e0233f: d1f8                SAR EAX,0x1
+02e02341: 8b4d08              MOV ECX,dword ptr [EBP + 0x8]
+02e02344: 2bc8                SUB ECX,EAX
+02e02346: 786d                JS 0x02e023b5
+02e02348: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e0234b: 99                  CDQ
+02e0234c: 2bc2                SUB EAX,EDX
+02e0234e: d1f8                SAR EAX,0x1
+02e02350: 03450c              ADD EAX,dword ptr [EBP + 0xc]
+02e02353: 8b55e8              MOV EDX,dword ptr [EBP + -0x18]
+02e02356: 3b4210              CMP EAX,dword ptr [EDX + 0x10]
+02e02359: 7f5a                JG 0x02e023b5
+02e0235b: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e0235e: 99                  CDQ
+02e0235f: 2bc2                SUB EAX,EDX
+02e02361: d1f8                SAR EAX,0x1
+02e02363: 03450c              ADD EAX,dword ptr [EBP + 0xc]
+02e02366: 50                  PUSH EAX
+02e02367: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e0236a: 99                  CDQ
+02e0236b: 2bc2                SUB EAX,EDX
+02e0236d: d1f8                SAR EAX,0x1
+02e0236f: 8b4d08              MOV ECX,dword ptr [EBP + 0x8]
+02e02372: 2bc8                SUB ECX,EAX
+02e02374: 51                  PUSH ECX
+02e02375: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e02378: e8df479efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e0237d: 3945f4              CMP dword ptr [EBP + -0xc],EAX
+02e02380: 7e08                JLE 0x02e0238a
+02e02382: 8b55f4              MOV EDX,dword ptr [EBP + -0xc]
+02e02385: 8955c8              MOV dword ptr [EBP + -0x38],EDX
+02e02388: eb25                JMP 0x02e023af
+02e0238a: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e0238d: 99                  CDQ
+02e0238e: 2bc2                SUB EAX,EDX
+02e02390: d1f8                SAR EAX,0x1
+02e02392: 03450c              ADD EAX,dword ptr [EBP + 0xc]
+02e02395: 50                  PUSH EAX
+02e02396: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e02399: 99                  CDQ
+02e0239a: 2bc2                SUB EAX,EDX
+02e0239c: d1f8                SAR EAX,0x1
+02e0239e: 8b4d08              MOV ECX,dword ptr [EBP + 0x8]
+02e023a1: 2bc8                SUB ECX,EAX
+02e023a3: 51                  PUSH ECX
+02e023a4: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e023a7: e8b0479efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e023ac: 8945c8              MOV dword ptr [EBP + -0x38],EAX
+02e023af: 8b55c8              MOV EDX,dword ptr [EBP + -0x38]
+02e023b2: 8955f4              MOV dword ptr [EBP + -0xc],EDX
+02e023b5: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e023b8: 99                  CDQ
+02e023b9: 2bc2                SUB EAX,EDX
+02e023bb: d1f8                SAR EAX,0x1
+02e023bd: 034508              ADD EAX,dword ptr [EBP + 0x8]
+02e023c0: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e023c3: 3b410c              CMP EAX,dword ptr [ECX + 0xc]
+02e023c6: 7f69                JG 0x02e02431
+02e023c8: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e023cb: 99                  CDQ
+02e023cc: 2bc2                SUB EAX,EDX
+02e023ce: d1f8                SAR EAX,0x1
+02e023d0: 03450c              ADD EAX,dword ptr [EBP + 0xc]
+02e023d3: 8b55e8              MOV EDX,dword ptr [EBP + -0x18]
+02e023d6: 3b4210              CMP EAX,dword ptr [EDX + 0x10]
+02e023d9: 7f56                JG 0x02e02431
+02e023db: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e023de: 99                  CDQ
+02e023df: 2bc2                SUB EAX,EDX
+02e023e1: d1f8                SAR EAX,0x1
+02e023e3: 03450c              ADD EAX,dword ptr [EBP + 0xc]
+02e023e6: 50                  PUSH EAX
+02e023e7: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e023ea: 99                  CDQ
+02e023eb: 2bc2                SUB EAX,EDX
+02e023ed: d1f8                SAR EAX,0x1
+02e023ef: 034508              ADD EAX,dword ptr [EBP + 0x8]
+02e023f2: 50                  PUSH EAX
+02e023f3: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e023f6: e861479efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e023fb: 3945f4              CMP dword ptr [EBP + -0xc],EAX
+02e023fe: 7e08                JLE 0x02e02408
+02e02400: 8b45f4              MOV EAX,dword ptr [EBP + -0xc]
+02e02403: 8945c4              MOV dword ptr [EBP + -0x3c],EAX
+02e02406: eb23                JMP 0x02e0242b
+02e02408: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e0240b: 99                  CDQ
+02e0240c: 2bc2                SUB EAX,EDX
+02e0240e: d1f8                SAR EAX,0x1
+02e02410: 03450c              ADD EAX,dword ptr [EBP + 0xc]
+02e02413: 50                  PUSH EAX
+02e02414: 8b45f8              MOV EAX,dword ptr [EBP + -0x8]
+02e02417: 99                  CDQ
+02e02418: 2bc2                SUB EAX,EDX
+02e0241a: d1f8                SAR EAX,0x1
+02e0241c: 034508              ADD EAX,dword ptr [EBP + 0x8]
+02e0241f: 50                  PUSH EAX
+02e02420: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e02423: e834479efe          CALL 0x017e6b5c  ; ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z
+02e02428: 8945c4              MOV dword ptr [EBP + -0x3c],EAX
+02e0242b: 8b4dc4              MOV ECX,dword ptr [EBP + -0x3c]
+02e0242e: 894df4              MOV dword ptr [EBP + -0xc],ECX
+02e02431: 8b55fc              MOV EDX,dword ptr [EBP + -0x4]
+02e02434: 3b55f4              CMP EDX,dword ptr [EBP + -0xc]
+02e02437: 7c05                JL 0x02e0243e
+02e02439: e908010000          JMP 0x02e02546
+02e0243e: 8b45f4              MOV EAX,dword ptr [EBP + -0xc]
+02e02441: 50                  PUSH EAX
+02e02442: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e02445: 51                  PUSH ECX
+02e02446: 8b5508              MOV EDX,dword ptr [EBP + 0x8]
+02e02449: 52                  PUSH EDX
+02e0244a: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e0244d: e8bd449dfe          CALL 0x017d690f  ; ?SetLODBandThreshold@CEngineLandscapeLODMap@@AAEXJJJ@Z
+02e02452: 8b4508              MOV EAX,dword ptr [EBP + 0x8]
+02e02455: 2345f8              AND EAX,dword ptr [EBP + -0x8]
+02e02458: 0f84b4000000        JZ 0x02e02512
+02e0245e: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e02461: 234df8              AND ECX,dword ptr [EBP + -0x8]
+02e02464: 7476                JZ 0x02e024dc
+02e02466: 51                  PUSH ECX
+02e02467: d94510              FLD float ptr [EBP + 0x10]
+02e0246a: d91c24              FSTP float ptr [ESP]
+02e0246d: 8b550c              MOV EDX,dword ptr [EBP + 0xc]
+02e02470: 2b55f8              SUB EDX,dword ptr [EBP + -0x8]
+02e02473: 52                  PUSH EDX
+02e02474: 8b4508              MOV EAX,dword ptr [EBP + 0x8]
+02e02477: 2b45f8              SUB EAX,dword ptr [EBP + -0x8]
+02e0247a: 50                  PUSH EAX
+02e0247b: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e0247e: e8434b99fe          CALL 0x01796fc6  ; ?UpdateThresholdPoint@CEngineLandscapeLODMap@@QAEXJJM@Z
+02e02483: 51                  PUSH ECX
+02e02484: d94510              FLD float ptr [EBP + 0x10]
+02e02487: d91c24              FSTP float ptr [ESP]
+02e0248a: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e0248d: 2b4df8              SUB ECX,dword ptr [EBP + -0x8]
+02e02490: 51                  PUSH ECX
+02e02491: 8b5508              MOV EDX,dword ptr [EBP + 0x8]
+02e02494: 0355f8              ADD EDX,dword ptr [EBP + -0x8]
+02e02497: 52                  PUSH EDX
+02e02498: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e0249b: e8264b99fe          CALL 0x01796fc6  ; ?UpdateThresholdPoint@CEngineLandscapeLODMap@@QAEXJJM@Z
+02e024a0: 51                  PUSH ECX
+02e024a1: d94510              FLD float ptr [EBP + 0x10]
+02e024a4: d91c24              FSTP float ptr [ESP]
+02e024a7: 8b450c              MOV EAX,dword ptr [EBP + 0xc]
+02e024aa: 0345f8              ADD EAX,dword ptr [EBP + -0x8]
+02e024ad: 50                  PUSH EAX
+02e024ae: 8b4d08              MOV ECX,dword ptr [EBP + 0x8]
+02e024b1: 2b4df8              SUB ECX,dword ptr [EBP + -0x8]
+02e024b4: 51                  PUSH ECX
+02e024b5: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e024b8: e8094b99fe          CALL 0x01796fc6  ; ?UpdateThresholdPoint@CEngineLandscapeLODMap@@QAEXJJM@Z
+02e024bd: 51                  PUSH ECX
+02e024be: d94510              FLD float ptr [EBP + 0x10]
+02e024c1: d91c24              FSTP float ptr [ESP]
+02e024c4: 8b550c              MOV EDX,dword ptr [EBP + 0xc]
+02e024c7: 0355f8              ADD EDX,dword ptr [EBP + -0x8]
+02e024ca: 52                  PUSH EDX
+02e024cb: 8b4508              MOV EAX,dword ptr [EBP + 0x8]
+02e024ce: 0345f8              ADD EAX,dword ptr [EBP + -0x8]
+02e024d1: 50                  PUSH EAX
+02e024d2: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e024d5: e8ec4a99fe          CALL 0x01796fc6  ; ?UpdateThresholdPoint@CEngineLandscapeLODMap@@QAEXJJM@Z
+02e024da: eb34                JMP 0x02e02510
+02e024dc: 51                  PUSH ECX
+02e024dd: d94510              FLD float ptr [EBP + 0x10]
+02e024e0: d91c24              FSTP float ptr [ESP]
+02e024e3: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e024e6: 2b4df8              SUB ECX,dword ptr [EBP + -0x8]
+02e024e9: 51                  PUSH ECX
+02e024ea: 8b5508              MOV EDX,dword ptr [EBP + 0x8]
+02e024ed: 52                  PUSH EDX
+02e024ee: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e024f1: e8d04a99fe          CALL 0x01796fc6  ; ?UpdateThresholdPoint@CEngineLandscapeLODMap@@QAEXJJM@Z
+02e024f6: 51                  PUSH ECX
+02e024f7: d94510              FLD float ptr [EBP + 0x10]
+02e024fa: d91c24              FSTP float ptr [ESP]
+02e024fd: 8b450c              MOV EAX,dword ptr [EBP + 0xc]
+02e02500: 0345f8              ADD EAX,dword ptr [EBP + -0x8]
+02e02503: 50                  PUSH EAX
+02e02504: 8b4d08              MOV ECX,dword ptr [EBP + 0x8]
+02e02507: 51                  PUSH ECX
+02e02508: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e0250b: e8b64a99fe          CALL 0x01796fc6  ; ?UpdateThresholdPoint@CEngineLandscapeLODMap@@QAEXJJM@Z
+02e02510: eb34                JMP 0x02e02546
+02e02512: 51                  PUSH ECX
+02e02513: d94510              FLD float ptr [EBP + 0x10]
+02e02516: d91c24              FSTP float ptr [ESP]
+02e02519: 8b550c              MOV EDX,dword ptr [EBP + 0xc]
+02e0251c: 52                  PUSH EDX
+02e0251d: 8b4508              MOV EAX,dword ptr [EBP + 0x8]
+02e02520: 2b45f8              SUB EAX,dword ptr [EBP + -0x8]
+02e02523: 50                  PUSH EAX
+02e02524: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e02527: e89a4a99fe          CALL 0x01796fc6  ; ?UpdateThresholdPoint@CEngineLandscapeLODMap@@QAEXJJM@Z
+02e0252c: 51                  PUSH ECX
+02e0252d: d94510              FLD float ptr [EBP + 0x10]
+02e02530: d91c24              FSTP float ptr [ESP]
+02e02533: 8b4d0c              MOV ECX,dword ptr [EBP + 0xc]
+02e02536: 51                  PUSH ECX
+02e02537: 8b5508              MOV EDX,dword ptr [EBP + 0x8]
+02e0253a: 0355f8              ADD EDX,dword ptr [EBP + -0x8]
+02e0253d: 52                  PUSH EDX
+02e0253e: 8b4de8              MOV ECX,dword ptr [EBP + -0x18]
+02e02541: e8804a99fe          CALL 0x01796fc6  ; ?UpdateThresholdPoint@CEngineLandscapeLODMap@@QAEXJJM@Z
+02e02546: 8be5                MOV ESP,EBP
+02e02548: 5d                  POP EBP
+02e02549: c20c00              RET 0xc
+

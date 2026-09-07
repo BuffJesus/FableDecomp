@@ -1,0 +1,3 @@
+#include <stdlib.h>
+struct ListSentinel_004ab470 { ListSentinel_004ab470* next; ListSentinel_004ab470* previous; unsigned long reserved; };
+void** __fastcall ListNode_AllocateSelfLinked(void** owner, void* unusedRegister, void* unusedStack) { (void)unusedRegister; (void)unusedStack; *owner = 0; ListSentinel_004ab470* node = (ListSentinel_004ab470*)malloc(0x0c); node->next = node; node->previous = node; *owner = node; return owner; }

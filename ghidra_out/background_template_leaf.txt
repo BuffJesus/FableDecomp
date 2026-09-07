@@ -1,0 +1,787 @@
+//=== ?BuildTree@CLandscapeBackgroundDynamicBuildTemplate@@AAEXABUCTopologySizeGrid@1@JMJPBV?$CArray@J@@@Z @ 02df3870 (seed 02df3870) ===
+
+/* WARNING: Removing unreachable block (ram,0x02df4aa9) */
+/* WARNING: Removing unreachable block (ram,0x02df49b4) */
+/* WARNING: Removing unreachable block (ram,0x02df40d8) */
+/* WARNING: Removing unreachable block (ram,0x02df41c8) */
+/* WARNING: Removing unreachable block (ram,0x02df3d37) */
+/* WARNING: Removing unreachable block (ram,0x02df3d06) */
+/* WARNING: Removing unreachable block (ram,0x02df43f3) */
+/* WARNING: Removing unreachable block (ram,0x02df49fc) */
+/* WARNING: Removing unreachable block (ram,0x02df4aee) */
+/* WARNING: Removing unreachable block (ram,0x02df4ffe) */
+/* [ported from ego_r via strfp] */
+
+void _BuildTree_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+               (int *param_1,int param_2,float param_3,undefined4 param_4,int param_5)
+
+{
+  float fVar1;
+  code *pcVar2;
+  bool bVar3;
+  char cVar4;
+  BOOL BVar5;
+  void *pvVar6;
+  undefined4 *puVar7;
+  uint uVar8;
+  float *pfVar9;
+  int in_ECX;
+  uint uVar10;
+  float10 fVar11;
+  undefined4 uVar12;
+  undefined1 *puVar13;
+  undefined1 *puVar14;
+  undefined4 uVar15;
+  undefined1 *puVar16;
+  undefined4 uVar17;
+  undefined4 uVar18;
+  int iVar19;
+  undefined4 uVar20;
+  size_t sVar21;
+  uint *puVar22;
+  undefined4 local_22c;
+  undefined4 local_228;
+  undefined4 local_224;
+  undefined4 local_220;
+  float local_214;
+  float local_210;
+  uint local_20c;
+  char local_208;
+  char local_204;
+  undefined4 local_1f8;
+  ushort local_1f2;
+  undefined4 local_1e8;
+  ushort local_1e2;
+  float local_1e0;
+  undefined4 local_1d4;
+  undefined4 local_1c8;
+  undefined1 local_180 [8];
+  undefined1 local_178 [8];
+  undefined1 local_170 [11];
+  char local_165;
+  int local_164;
+  int local_160;
+  int local_15c;
+  int local_158;
+  void *local_154;
+  undefined4 local_150;
+  int local_14c;
+  int local_148;
+  int local_144;
+  int local_140;
+  void *local_13c;
+  undefined4 local_138;
+  undefined1 local_134 [8];
+  undefined1 local_12c [8];
+  undefined1 local_124 [11];
+  char local_119;
+  undefined1 local_118 [8];
+  undefined1 local_110 [8];
+  undefined1 local_108 [11];
+  char local_fd;
+  undefined1 local_fc [8];
+  undefined1 local_f4 [8];
+  undefined1 local_ec [11];
+  char local_e1;
+  undefined1 local_e0 [8];
+  undefined1 local_d8 [8];
+  undefined1 local_d0 [11];
+  char local_c5;
+  undefined1 local_c4 [8];
+  undefined1 local_bc [8];
+  undefined1 local_b4 [11];
+  char local_a9;
+  int local_a8;
+  float local_a4;
+  int local_a0;
+  int local_9c;
+  float local_98;
+  int local_94;
+  uint local_90;
+  float local_8c;
+  float local_88;
+  uint local_84;
+  uint local_80;
+  uint local_7c;
+  uint local_78;
+  uint local_74;
+  float local_70;
+  undefined1 *local_6c;
+  int local_68;
+  float local_64;
+  int local_60;
+  int local_5c;
+  char local_55;
+  int local_54;
+  int local_3c;
+  uint local_38;
+  int local_20;
+  char local_1b;
+  char local_1a;
+  char local_19;
+  float local_18;
+  float local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  int local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03e7bc4a;
+  local_10 = ExceptionList;
+  if ((*(ushort *)(in_ECX + 200) < 0x10) && (0x10 < *(ushort *)(in_ECX + 0xca))) {
+    bVar3 = true;
+  }
+  else {
+    bVar3 = false;
+  }
+  ExceptionList = &local_10;
+  if (bVar3) {
+    ExceptionList = &local_10;
+    __0CWideString__QAE_PB_W_Z(L"Engine_Landscape_Background_Dynamic_Build_Template.cpp");
+    local_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0446568e,0xffffffff);
+    local_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z
+              ("NOT (Width<LANDSCAPE_PATCH_SIZE && Height>LANDSCAPE_PATCH_SIZE)",0xffffffff);
+    local_8._0_1_ = 2;
+    uVar20 = 1;
+    uVar18 = 0x1e8;
+    puVar16 = local_b4;
+    puVar14 = local_bc;
+    puVar13 = local_c4;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar13,puVar14,puVar16,0x1e8,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar4 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar13,puVar14,puVar16,uVar18,uVar20);
+    local_a9 = '\x01' - (cVar4 != '\x01');
+    local_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    local_8 = (uint)local_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if ((local_a9 != '\0') && (BVar5 = IsDebuggerPresent(), BVar5 != 0)) {
+      pcVar2 = (code *)swi(3);
+      (*pcVar2)();
+      return;
+    }
+  }
+  if ((*(ushort *)(in_ECX + 0xca) < 0x10) && (0x10 < *(ushort *)(in_ECX + 200))) {
+    bVar3 = true;
+  }
+  else {
+    bVar3 = false;
+  }
+  if (bVar3) {
+    __0CWideString__QAE_PB_W_Z(L"Engine_Landscape_Background_Dynamic_Build_Template.cpp");
+    local_8 = 3;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0446568f,0xffffffff);
+    local_8._0_1_ = 4;
+    __0CCharString__QAE_PBDJ_Z
+              ("NOT (Height<LANDSCAPE_PATCH_SIZE && Width>LANDSCAPE_PATCH_SIZE)",0xffffffff);
+    local_8._0_1_ = 5;
+    uVar20 = 1;
+    uVar18 = 0x1e9;
+    puVar16 = local_d0;
+    puVar14 = local_d8;
+    puVar13 = local_e0;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar13,puVar14,puVar16,0x1e9,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar4 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar13,puVar14,puVar16,uVar18,uVar20);
+    local_c5 = '\x01' - (cVar4 != '\x01');
+    local_8._0_1_ = 4;
+    __1CCharString__QAE_XZ();
+    local_8 = CONCAT31(local_8._1_3_,3);
+    __1CCharString__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if ((local_c5 != '\0') && (BVar5 = IsDebuggerPresent(), BVar5 != 0)) {
+      pcVar2 = (code *)swi(3);
+      (*pcVar2)();
+      return;
+    }
+  }
+  cVar4 = _GFIsPowerOfTwo__YI_NK_Z();
+  if ((cVar4 == '\0') || (cVar4 = _GFIsPowerOfTwo__YI_NK_Z(), cVar4 == '\0')) {
+    __0CWideString__QAE_PB_W_Z(L"Engine_Landscape_Background_Dynamic_Build_Template.cpp");
+    local_8 = 6;
+    __0CCharString__QAE_PBDJ_Z(&DAT_044656fe,0xffffffff);
+    local_8._0_1_ = 7;
+    __0CCharString__QAE_PBDJ_Z("GFIsPowerOfTwo(Height) && GFIsPowerOfTwo(Width)",0xffffffff);
+    local_8._0_1_ = 8;
+    uVar20 = 1;
+    uVar18 = 0x1ea;
+    puVar16 = local_ec;
+    puVar14 = local_f4;
+    puVar13 = local_fc;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar13,puVar14,puVar16,0x1ea,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar4 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar13,puVar14,puVar16,uVar18,uVar20);
+    local_e1 = '\x01' - (cVar4 != '\x01');
+    local_8._0_1_ = 7;
+    __1CCharString__QAE_XZ();
+    local_8 = CONCAT31(local_8._1_3_,6);
+    __1CCharString__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if ((local_e1 != '\0') && (BVar5 = IsDebuggerPresent(), BVar5 != 0)) {
+      pcVar2 = (code *)swi(3);
+      (*pcVar2)();
+      return;
+    }
+  }
+  if ((*(int *)(in_ECX + 0xa0) != 0) || (*(int *)(in_ECX + 0xa4) != 0)) {
+    __0CWideString__QAE_PB_W_Z(L"Engine_Landscape_Background_Dynamic_Build_Template.cpp");
+    local_8 = 9;
+    __0CCharString__QAE_PBDJ_Z(&DAT_044656ff,0xffffffff);
+    local_8._0_1_ = 10;
+    __0CCharString__QAE_PBDJ_Z("(!Branch[0]) && (!Branch[1])",0xffffffff);
+    local_8._0_1_ = 0xb;
+    uVar20 = 1;
+    uVar18 = 0x1eb;
+    puVar16 = local_108;
+    puVar14 = local_110;
+    puVar13 = local_118;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar13,puVar14,puVar16,0x1eb,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar4 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar13,puVar14,puVar16,uVar18,uVar20);
+    local_fd = '\x01' - (cVar4 != '\x01');
+    local_8._0_1_ = 10;
+    __1CCharString__QAE_XZ();
+    local_8 = CONCAT31(local_8._1_3_,9);
+    __1CCharString__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if ((local_fd != '\0') && (BVar5 = IsDebuggerPresent(), BVar5 != 0)) {
+      pcVar2 = (code *)swi(3);
+      (*pcVar2)();
+      return;
+    }
+  }
+  if (7 < param_2) {
+    param_2 = 7;
+  }
+  __0__CArray_M__QAE_I_Z(0x200);
+  local_8 = 0xc;
+  __0__CArray_M__QAE_I_Z(0x200);
+  local_8 = CONCAT31(local_8._1_3_,0xd);
+  sVar21 = 0x10;
+  iVar19 = 0;
+  pvVar6 = (void *)_GetAsCArray___CArray_M__QAEPAMXZ();
+  memset(pvVar6,iVar19,sVar21);
+  sVar21 = 0x10;
+  iVar19 = 0;
+  pvVar6 = (void *)_GetAsCArray___CArray_M__QAEPAMXZ();
+  memset(pvVar6,iVar19,sVar21);
+  for (local_5c = 0; local_5c < (int)(uint)*(ushort *)(in_ECX + 0xca); local_5c = local_5c + 1) {
+    for (local_60 = 0; local_60 < (int)(uint)*(ushort *)(in_ECX + 200); local_60 = local_60 + 1) {
+      pfVar9 = (float *)__A__CArray_M__QAEAAMI_Z(local_60);
+      fVar1 = *pfVar9;
+      pfVar9 = (float *)_Hora_CTopologySizeGrid_CLandscapeBackgroundDynamicBuildTemplate__QBEABMJJ_Z
+                                  (((uint)*(ushort *)(in_ECX + 0xc4) + local_60) - *param_1,
+                                   ((uint)*(ushort *)(in_ECX + 0xc6) + local_5c) - param_1[1]);
+      if (fVar1 <= *pfVar9) {
+        puVar7 = (undefined4 *)
+                 _Hora_CTopologySizeGrid_CLandscapeBackgroundDynamicBuildTemplate__QBEABMJJ_Z
+                           (((uint)*(ushort *)(in_ECX + 0xc4) + local_60) - *param_1,
+                            ((uint)*(ushort *)(in_ECX + 0xc6) + local_5c) - param_1[1]);
+        local_1c8 = *puVar7;
+      }
+      else {
+        puVar7 = (undefined4 *)__A__CArray_M__QAEAAMI_Z(local_60);
+        local_1c8 = *puVar7;
+      }
+      puVar7 = (undefined4 *)__A__CArray_M__QAEAAMI_Z(local_60);
+      *puVar7 = local_1c8;
+      pfVar9 = (float *)__A__CArray_M__QAEAAMI_Z(local_5c);
+      fVar1 = *pfVar9;
+      pfVar9 = (float *)_Vert_CTopologySizeGrid_CLandscapeBackgroundDynamicBuildTemplate__QBEABMJJ_Z
+                                  (((uint)*(ushort *)(in_ECX + 0xc4) + local_60) - *param_1,
+                                   ((uint)*(ushort *)(in_ECX + 0xc6) + local_5c) - param_1[1]);
+      if (fVar1 <= *pfVar9) {
+        puVar7 = (undefined4 *)
+                 _Vert_CTopologySizeGrid_CLandscapeBackgroundDynamicBuildTemplate__QBEABMJJ_Z
+                           (((uint)*(ushort *)(in_ECX + 0xc4) + local_60) - *param_1,
+                            ((uint)*(ushort *)(in_ECX + 0xc6) + local_5c) - param_1[1]);
+        local_1d4 = *puVar7;
+      }
+      else {
+        puVar7 = (undefined4 *)__A__CArray_M__QAEAAMI_Z(local_5c);
+        local_1d4 = *puVar7;
+      }
+      puVar7 = (undefined4 *)__A__CArray_M__QAEAAMI_Z(local_5c);
+      *puVar7 = local_1d4;
+    }
+  }
+  if (param_2 < 1) {
+    __0CWideString__QAE_PB_W_Z(L"Engine_Landscape_Background_Dynamic_Build_Template.cpp");
+    local_8._0_1_ = 0xe;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0446571a,0xffffffff);
+    local_8._0_1_ = 0xf;
+    __0CCharString__QAE_PBDJ_Z("max_lod_band>=LANDSCAPE_MIN_LOD_BAND",0xffffffff);
+    local_8._0_1_ = 0x10;
+    uVar20 = 1;
+    uVar18 = 0x200;
+    puVar16 = local_124;
+    puVar14 = local_12c;
+    puVar13 = local_134;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar13,puVar14,puVar16,0x200,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar4 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar13,puVar14,puVar16,uVar18,uVar20);
+    local_119 = '\x01' - (cVar4 != '\x01');
+    local_8._0_1_ = 0xf;
+    __1CCharString__QAE_XZ();
+    local_8._0_1_ = 0xe;
+    __1CCharString__QAE_XZ();
+    local_8 = CONCAT31(local_8._1_3_,0xd);
+    __1CWideString__QAE_XZ();
+    if ((local_119 != '\0') && (BVar5 = IsDebuggerPresent(), BVar5 != 0)) {
+      pcVar2 = (code *)swi(3);
+      (*pcVar2)();
+      return;
+    }
+  }
+  *(undefined1 *)(in_ECX + 0xcd) = 1;
+  *(undefined1 *)(in_ECX + 0xcc) = (undefined1)param_2;
+  local_14 = 1e+30;
+  if (param_5 != 0) {
+    _CalculateBoundingBoxes_CLandscapeBackgroundDynamicBuildTemplate__AAEX_N0_Z(0,0);
+    fVar11 = (float10)_FindShortestDistanceToObservingMapSet_CEngineWorldMap__QAEMABVC3DBoundingBox__ABV__CArray_J___Z
+                                (in_ECX + 0xac,param_5);
+    local_64 = (float)fVar11;
+    fVar11 = (float10)_FindThurthestDistanceToObservingMapSet_CEngineWorldMap__QAEMABVC3DBoundingBox__ABV__CArray_J___Z
+                                (in_ECX + 0xac,param_5);
+    local_14 = (float)fVar11;
+    while (((int)(uint)*(byte *)(in_ECX + 0xcd) < (int)(*(byte *)(in_ECX + 0xcc) - 1) &&
+           (fVar11 = (float10)_GetLODZBandZ_CEngineLandscapeRenderer__QAEMJ_Z
+                                        (*(byte *)(in_ECX + 0xcd) + 1), fVar11 < (float10)local_64))
+          ) {
+      *(char *)(in_ECX + 0xcd) = *(char *)(in_ECX + 0xcd) + '\x01';
+    }
+  }
+  local_3c = 0x20;
+  local_54 = 0x20;
+  local_55 = '\0';
+  local_1b = '\0';
+  local_18 = 0.0;
+  *(undefined1 *)(in_ECX + 0xce) = 8;
+  for (local_38 = (uint)*(byte *)(in_ECX + 0xcc);
+      (int)(uint)*(byte *)(in_ECX + 0xcd) <= (int)local_38; local_38 = local_38 - 1) {
+    local_55 = '\0';
+    local_1b = '\0';
+    if ((local_38 == 1) &&
+       ((0x10 < *(ushort *)(in_ECX + 200) || (0x10 < *(ushort *)(in_ECX + 0xca))))) break;
+    local_68 = 0;
+    fVar11 = (float10)_GetLODZBandZ_CEngineLandscapeRenderer__QAEMJ_Z(local_38);
+    iVar19 = _GetSettings_CEngineLandscapeRenderer__QAEABUCLandscapeSettings_1_XZ();
+    if ((float)fVar11 <= *(float *)(iVar19 + 0xc)) {
+      iVar19 = _GetSettings_CEngineLandscapeRenderer__QAEABUCLandscapeSettings_1_XZ();
+      local_1e0 = *(float *)(iVar19 + 0xc);
+    }
+    else {
+      fVar11 = (float10)_GetLODZBandZ_CEngineLandscapeRenderer__QAEMJ_Z(local_38);
+      local_1e0 = (float)fVar11;
+    }
+    local_70 = local_1e0;
+    local_18 = 800.0 / (local_1e0 * 2.0 * param_3);
+    local_6c = (undefined1 *)(local_38 * 0x14 + in_ECX);
+    while( true ) {
+      local_74 = 1;
+      if (1 < (int)local_38) {
+        if (*(ushort *)(in_ECX + 0xca) < *(ushort *)(in_ECX + 200)) {
+          local_1e2 = *(ushort *)(in_ECX + 200);
+        }
+        else {
+          local_1e2 = *(ushort *)(in_ECX + 0xca);
+        }
+        local_74 = (uint)((longlong)((ulonglong)local_1e2 << 4) / (longlong)local_3c);
+        if ((int)local_74 < 1) {
+          local_74 = 1;
+        }
+        else if ((int)(uint)*(ushort *)(in_ECX + 200) < (int)local_74) {
+          local_74 = (uint)*(ushort *)(in_ECX + 200);
+        }
+      }
+      local_13c = operator_new(0x10);
+      local_8._0_1_ = 0x11;
+      if (local_13c == (void *)0x0) {
+        local_1e8 = 0;
+      }
+      else {
+        local_1e8 = __0CSubPatchTreeLODLockElement__QAE_XZ();
+      }
+      local_138 = local_1e8;
+      local_8 = CONCAT31(local_8._1_3_,0xd);
+      *(undefined4 *)(local_6c + 4) = local_1e8;
+      local_78 = (uint)*(ushort *)(in_ECX + 200);
+      puVar22 = &local_78;
+      uVar17 = 0x3f800000;
+      uVar15 = 0;
+      uVar10 = (uint)*(ushort *)(in_ECX + 200);
+      uVar12 = 0;
+      uVar20 = 0;
+      uVar8 = local_74;
+      uVar18 = _GetAsCArray___CArray_M__QAEPAMXZ(0,0,uVar10,0,0x3f800000,local_74,puVar22);
+      cVar4 = _BuildTree_CSubPatchTreeLODLockElement__QAE_NMJPAMJJJMMJPAJ_Z
+                        (local_18,local_3c,uVar18,uVar20,uVar12,uVar10,uVar15,uVar17,uVar8,puVar22);
+      if (cVar4 != '\0') break;
+      local_14c = *(int *)(local_6c + 4);
+      local_148 = local_14c;
+      if (local_14c != 0) {
+        ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+      }
+      *(undefined4 *)(local_6c + 4) = 0;
+      if (local_3c == 0x80) goto LAB_02df43f8;
+      local_3c = local_3c << 1;
+    }
+    *(undefined2 *)(local_6c + 0xc) = (undefined2)local_78;
+    local_55 = '\x01';
+    local_68 = local_3c;
+    cVar4 = _IsSplit_CSubPatchTreeLODLockElement__QBE_NXZ();
+    if (cVar4 == '\0') {
+      local_144 = *(int *)(local_6c + 4);
+      local_140 = local_144;
+      if (local_144 != 0) {
+        ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+      }
+      *(undefined4 *)(local_6c + 4) = 0;
+    }
+LAB_02df43f8:
+    if (*(ushort *)(in_ECX + 0xca) < *(ushort *)(in_ECX + 200)) {
+      local_1f2 = *(ushort *)(in_ECX + 200);
+    }
+    else {
+      local_1f2 = *(ushort *)(in_ECX + 0xca);
+    }
+    local_7c = (uint)((longlong)((ulonglong)local_1f2 << 4) / (longlong)local_54);
+    if ((int)local_7c < 1) {
+      local_7c = 1;
+    }
+    else if ((int)(uint)*(ushort *)(in_ECX + 0xca) < (int)local_7c) {
+      local_7c = (uint)*(ushort *)(in_ECX + 0xca);
+    }
+    local_154 = operator_new(0x10);
+    local_8._0_1_ = 0x12;
+    if (local_154 == (void *)0x0) {
+      local_1f8 = 0;
+    }
+    else {
+      local_1f8 = __0CSubPatchTreeLODLockElement__QAE_XZ();
+    }
+    local_150 = local_1f8;
+    local_8 = CONCAT31(local_8._1_3_,0xd);
+    *(undefined4 *)(local_6c + 8) = local_1f8;
+    local_80 = (uint)*(ushort *)(in_ECX + 0xca);
+    puVar22 = &local_80;
+    uVar17 = 0x3f800000;
+    uVar15 = 0;
+    uVar10 = (uint)*(ushort *)(in_ECX + 0xca);
+    uVar12 = 0;
+    uVar20 = 1;
+    uVar8 = local_7c;
+    uVar18 = _GetAsCArray___CArray_M__QAEPAMXZ(1,0,uVar10,0,0x3f800000,local_7c,puVar22);
+    cVar4 = _BuildTree_CSubPatchTreeLODLockElement__QAE_NMJPAMJJJMMJPAJ_Z
+                      (local_18,local_54,uVar18,uVar20,uVar12,uVar10,uVar15,uVar17,uVar8,puVar22);
+    if (cVar4 == '\0') {
+      local_164 = *(int *)(local_6c + 8);
+      local_160 = local_164;
+      if (local_164 != 0) {
+        ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+      }
+      *(undefined4 *)(local_6c + 8) = 0;
+      if (local_54 == 0x80) goto LAB_02df4603;
+      local_54 = local_54 << 1;
+      goto LAB_02df43f8;
+    }
+    *(undefined2 *)(local_6c + 0xe) = (undefined2)local_80;
+    local_1b = '\x01';
+    cVar4 = _IsSplit_CSubPatchTreeLODLockElement__QBE_NXZ();
+    if (cVar4 == '\0') {
+      local_15c = *(int *)(local_6c + 8);
+      local_158 = local_15c;
+      if (local_15c != 0) {
+        ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+      }
+      *(undefined4 *)(local_6c + 8) = 0;
+    }
+LAB_02df4603:
+    if ((local_55 == '\0') || (local_1b == '\0')) break;
+    if (((local_38 == *(byte *)(in_ECX + 0xcc)) || (local_38 == *(byte *)(in_ECX + 0xcd))) ||
+       (fVar11 = (float10)_GetLODZBandZ_CEngineLandscapeRenderer__QAEMJ_Z(local_38),
+       fVar11 < (float10)local_14)) {
+      *local_6c = 1;
+      *(undefined1 *)(in_ECX + 0xce) = (undefined1)local_38;
+      *(undefined2 *)(local_6c + 0x10) = (undefined2)local_3c;
+      *(undefined2 *)(local_6c + 0x12) = (undefined2)local_54;
+    }
+    else {
+      *local_6c = 0;
+    }
+  }
+  if ((local_55 == '\0') || (local_1b == '\0')) {
+    local_20 = local_38 * 0x14 + in_ECX;
+    if ((*(ushort *)(in_ECX + 200) < 0x11) && (0x10 < *(ushort *)(in_ECX + 0xca))) {
+      local_1a = '\0';
+      local_19 = '\x01';
+    }
+    else if ((*(ushort *)(in_ECX + 0xca) < 0x11) && (0x10 < *(ushort *)(in_ECX + 200))) {
+      local_19 = '\0';
+      local_1a = '\x01';
+    }
+    else {
+      if ((local_55 == '\0') && (2 < *(ushort *)(in_ECX + 200))) {
+        local_204 = '\x01';
+      }
+      else {
+        local_204 = '\0';
+      }
+      local_1a = local_204;
+      if ((local_1b == '\0') && (2 < *(ushort *)(in_ECX + 0xca))) {
+        local_208 = '\x01';
+      }
+      else {
+        local_208 = '\0';
+      }
+      local_19 = local_208;
+    }
+    if ((local_1a != '\0') && (local_19 != '\0')) {
+      uVar8 = (uint)((longlong)((ulonglong)*(ushort *)(in_ECX + 200) << 4) / (longlong)local_3c);
+      local_20c = (uint)((longlong)((ulonglong)*(ushort *)(in_ECX + 0xca) << 4) / (longlong)local_54
+                        );
+      if ((int)local_20c < (int)uVar8) {
+        local_20c = uVar8;
+      }
+      local_90 = local_20c;
+      local_84 = local_20c;
+      if ((int)local_20c < 1) {
+        local_90 = 1;
+      }
+      else if ((int)(uint)*(ushort *)(in_ECX + 200) < (int)local_20c) {
+        local_90 = (uint)*(ushort *)(in_ECX + 200);
+      }
+      if ((int)local_20c < 1) {
+        local_84 = 1;
+      }
+      else if ((int)(uint)*(ushort *)(in_ECX + 0xca) < (int)local_20c) {
+        local_84 = (uint)*(ushort *)(in_ECX + 0xca);
+      }
+      local_88 = 0.0;
+      local_8c = 0.0;
+      for (local_94 = 0; local_94 < (int)(uint)*(ushort *)(in_ECX + 200);
+          local_94 = local_94 + local_90) {
+        local_98 = 0.0;
+        for (local_9c = local_94; local_9c < (int)(local_94 + local_90); local_9c = local_9c + 1) {
+          pfVar9 = (float *)__A__CArray_M__QAEAAMI_Z(local_9c);
+          if (local_98 <= *pfVar9) {
+            pfVar9 = (float *)__A__CArray_M__QAEAAMI_Z(local_9c);
+            local_210 = *pfVar9;
+          }
+          else {
+            local_210 = local_98;
+          }
+          local_98 = local_210;
+        }
+        local_88 = local_18 * local_98 * (float)(int)local_90 + local_88;
+      }
+      for (local_a0 = 0; local_a0 < (int)(uint)*(ushort *)(in_ECX + 0xca);
+          local_a0 = local_a0 + local_84) {
+        local_a4 = 0.0;
+        for (local_a8 = local_a0; local_a8 < (int)(local_a0 + local_84); local_a8 = local_a8 + 1) {
+          pfVar9 = (float *)__A__CArray_M__QAEAAMI_Z(local_a8);
+          if (local_a4 <= *pfVar9) {
+            pfVar9 = (float *)__A__CArray_M__QAEAAMI_Z(local_a8);
+            local_214 = *pfVar9;
+          }
+          else {
+            local_214 = local_a4;
+          }
+          local_a4 = local_214;
+        }
+        local_8c = local_18 * local_a4 * (float)(int)local_84 + local_8c;
+      }
+      if (*(int *)(local_20 + 4) != 0) {
+        ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+      }
+      if (*(int *)(local_20 + 8) != 0) {
+        ___GCSubPatchTreeLODLockElement__QAEPAXI_Z(1);
+      }
+      *(undefined4 *)(local_20 + 4) = 0;
+      *(undefined4 *)(local_20 + 8) = 0;
+      if (local_88 <= local_8c) {
+        local_1a = '\0';
+      }
+      else {
+        local_19 = '\0';
+      }
+    }
+    if (local_1a == '\0') {
+      if (local_19 == '\0') {
+        for (; (int)(uint)*(byte *)(in_ECX + 0xcd) <= (int)local_38; local_38 = local_38 - 1) {
+          if ((local_38 == *(byte *)(in_ECX + 0xcd)) || (local_38 == *(byte *)(in_ECX + 0xcc))) {
+            *(undefined1 *)(in_ECX + local_38 * 0x14) = 1;
+          }
+          else {
+            *(undefined1 *)(in_ECX + local_38 * 0x14) = 0;
+          }
+          *(undefined2 *)(in_ECX + 0x10 + local_38 * 0x14) = (undefined2)local_3c;
+          *(undefined2 *)(in_ECX + 0x12 + local_38 * 0x14) = (undefined2)local_54;
+          *(undefined2 *)(in_ECX + 0xc + local_38 * 0x14) = *(undefined2 *)(in_ECX + 200);
+          *(undefined2 *)(in_ECX + 0xe + local_38 * 0x14) = *(undefined2 *)(in_ECX + 0xca);
+        }
+        *(undefined1 *)(in_ECX + 0xce) = *(undefined1 *)(in_ECX + 0xcd);
+      }
+      else {
+        pvVar6 = operator_new(0xd0);
+        local_8._0_1_ = 0x18;
+        if (pvVar6 == (void *)0x0) {
+          local_228 = 0;
+        }
+        else {
+          local_228 = __0CLandscapeBackgroundDynamicBuildTemplate__QAE_PAVCEngineLandscapeMap__JJJJ_Z
+                                (*(undefined4 *)(in_ECX + 0xa8),*(undefined2 *)(in_ECX + 0xc4),
+                                 *(undefined2 *)(in_ECX + 0xc6),*(undefined2 *)(in_ECX + 200),
+                                 *(ushort *)(in_ECX + 0xca) / 2);
+        }
+        local_8._0_1_ = 0xd;
+        *(undefined4 *)(in_ECX + 0xa0) = local_228;
+        pvVar6 = operator_new(0xd0);
+        local_8._0_1_ = 0x19;
+        if (pvVar6 == (void *)0x0) {
+          local_22c = 0;
+        }
+        else {
+          local_22c = __0CLandscapeBackgroundDynamicBuildTemplate__QAE_PAVCEngineLandscapeMap__JJJJ_Z
+                                (*(undefined4 *)(in_ECX + 0xa8),*(undefined2 *)(in_ECX + 0xc4),
+                                 (uint)*(ushort *)(in_ECX + 0xc6) + *(ushort *)(in_ECX + 0xca) / 2,
+                                 *(undefined2 *)(in_ECX + 200),*(ushort *)(in_ECX + 0xca) / 2);
+        }
+        local_8 = CONCAT31(local_8._1_3_,0xd);
+        *(undefined4 *)(in_ECX + 0xa4) = local_22c;
+        _BuildTree_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+                  (param_1,*(undefined1 *)(in_ECX + 0xce),param_3,param_4,param_5);
+        _BuildTree_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+                  (param_1,*(undefined1 *)(in_ECX + 0xce),param_3,param_4,param_5);
+      }
+    }
+    else {
+      pvVar6 = operator_new(0xd0);
+      local_8._0_1_ = 0x16;
+      if (pvVar6 == (void *)0x0) {
+        local_220 = 0;
+      }
+      else {
+        local_220 = __0CLandscapeBackgroundDynamicBuildTemplate__QAE_PAVCEngineLandscapeMap__JJJJ_Z
+                              (*(undefined4 *)(in_ECX + 0xa8),*(undefined2 *)(in_ECX + 0xc4),
+                               *(undefined2 *)(in_ECX + 0xc6),*(ushort *)(in_ECX + 200) / 2,
+                               *(undefined2 *)(in_ECX + 0xca));
+      }
+      local_8._0_1_ = 0xd;
+      *(undefined4 *)(in_ECX + 0xa0) = local_220;
+      pvVar6 = operator_new(0xd0);
+      local_8._0_1_ = 0x17;
+      if (pvVar6 == (void *)0x0) {
+        local_224 = 0;
+      }
+      else {
+        local_224 = __0CLandscapeBackgroundDynamicBuildTemplate__QAE_PAVCEngineLandscapeMap__JJJJ_Z
+                              (*(undefined4 *)(in_ECX + 0xa8),
+                               (uint)*(ushort *)(in_ECX + 0xc4) + *(ushort *)(in_ECX + 200) / 2,
+                               *(undefined2 *)(in_ECX + 0xc6),*(ushort *)(in_ECX + 200) / 2,
+                               *(undefined2 *)(in_ECX + 0xca));
+      }
+      local_8 = CONCAT31(local_8._1_3_,0xd);
+      *(undefined4 *)(in_ECX + 0xa4) = local_224;
+      _BuildTree_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+                (param_1,*(undefined1 *)(in_ECX + 0xce),param_3,param_4,param_5);
+      _BuildTree_CLandscapeBackgroundDynamicBuildTemplate__AAEXABUCTopologySizeGrid_1_JMJPBV__CArray_J___Z
+                (param_1,*(undefined1 *)(in_ECX + 0xce),param_3,param_4,param_5);
+    }
+    _CalculateBoundingBoxes_CLandscapeBackgroundDynamicBuildTemplate__AAEX_N0_Z(0,1);
+    if ((*(short *)(in_ECX + 200) == 0x10) && (*(short *)(in_ECX + 0xca) == 0x10)) {
+      _CopyBoundingBoxToAllChildren_CLandscapeBackgroundDynamicBuildTemplate__AAEXABVC3DBoundingBox___Z
+                (in_ECX + 0xac);
+    }
+    local_8 = CONCAT31(local_8._1_3_,0xc);
+    __1__CArray_M__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1__CArray_M__QAE_XZ();
+  }
+  else {
+    _CalculateBoundingBoxes_CLandscapeBackgroundDynamicBuildTemplate__AAEX_N0_Z(0,0);
+    if (((7 < *(byte *)(in_ECX + 0xcc)) || (7 < *(byte *)(in_ECX + 0xce))) ||
+       (7 < *(byte *)(in_ECX + 0xcd))) {
+      __0CWideString__QAE_PB_W_Z(L"Engine_Landscape_Background_Dynamic_Build_Template.cpp");
+      local_8._0_1_ = 0x13;
+      __0CCharString__QAE_PBDJ_Z(&DAT_0446571b,0xffffffff);
+      local_8._0_1_ = 0x14;
+      __0CCharString__QAE_PBDJ_Z
+                ("LastBand<LANDSCAPE_LOD_BAND_COUNT && FirstNonSplitBand<LANDSCAPE_LOD_BAND_COUNT && FirstBand<LANDSCAPE_LOD_BAND_COUNT"
+                 ,0xffffffff);
+      local_8._0_1_ = 0x15;
+      uVar20 = 1;
+      uVar18 = 0x29e;
+      puVar16 = local_170;
+      puVar14 = local_178;
+      puVar13 = local_180;
+      _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar13,puVar14,puVar16,0x29e,1);
+      _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+      cVar4 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (puVar13,puVar14,puVar16,uVar18,uVar20);
+      local_165 = '\x01' - (cVar4 != '\x01');
+      local_8._0_1_ = 0x14;
+      __1CCharString__QAE_XZ();
+      local_8._0_1_ = 0x13;
+      __1CCharString__QAE_XZ();
+      local_8 = CONCAT31(local_8._1_3_,0xd);
+      __1CWideString__QAE_XZ();
+      if ((local_165 != '\0') && (BVar5 = IsDebuggerPresent(), BVar5 != 0)) {
+        pcVar2 = (code *)swi(3);
+        (*pcVar2)();
+        return;
+      }
+    }
+    local_8 = CONCAT31(local_8._1_3_,0xc);
+    __1__CArray_M__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1__CArray_M__QAE_XZ();
+  }
+  ExceptionList = local_10;
+  return;
+}
+
+
+// CALLEES of ?BuildTree@CLandscapeBackgroundDynamicBuildTemplate@@AAEXABUCTopologySizeGrid@1@JMJPBV?$CArray@J@@@Z:
+//   0184fffd  ?BuildTree@CSubPatchTreeLODLockElement@@QAE_NMJPAMJJJMMJPAJ@Z
+//   0184afa3  ?GetLODZBandZ@CEngineLandscapeRenderer@@QAEMJ@Z
+//   EXTERNAL:00000128  IsDebuggerPresent
+//   0181c2b6  ?GetSettings@CEngineLandscapeRenderer@@QAEABUCLandscapeSettings@1@XZ
+//   017c8576  ?GFIsPowerOfTwo@@YI_NK@Z
+//   0181c126  ??0CCharString@@QAE@PBDJ@Z
+//   018242c2  ??A?$CArray@M@@QAEAAMI@Z
+//   0183544b  ??1?$CArray@M@@QAE@XZ
+//   01806cc7  ?BuildTree@CLandscapeBackgroundDynamicBuildTemplate@@AAEXABUCTopologySizeGrid@1@JMJPBV?$CArray@J@@@Z
+//   0180c118  ??0CSubPatchTreeLODLockElement@@QAE@XZ
+//   0183552c  ?DoErrorMessage@CDebugManager@@QAE_NABVCCharString@@0ABVCWideString@@KW4EErrorType@NDebugManager@@@Z
+//   0181912e  ??_GCSubPatchTreeLODLockElement@@QAEPAXI@Z
+//   0182e088  ?FindShortestDistanceToObservingMapSet@CEngineWorldMap@@QAEMABVC3DBoundingBox@@ABV?$CArray@J@@@Z
+//   017967b5  ??0?$CArray@M@@QAE@I@Z
+//   017d4b1e  ??0CLandscapeBackgroundDynamicBuildTemplate@@QAE@PAVCEngineLandscapeMap@@JJJJ@Z
+//   01846462  memset
+//   017ae702  ?CalculateBoundingBoxes@CLandscapeBackgroundDynamicBuildTemplate@@AAEX_N0@Z
+//   017dc6fc  ?GetDebugManager@CSystemManager@@QAEPAVCDebugManager@@XZ
+//   017fd127  ?IsSplit@CSubPatchTreeLODLockElement@@QBE_NXZ
+//   017f059e  ??0CWideString@@QAE@PB_W@Z
+//   01838538  operator_new
+//   01821ef5  ?CopyBoundingBoxToAllChildren@CLandscapeBackgroundDynamicBuildTemplate@@AAEXABVC3DBoundingBox@@@Z
+//   017bb7ef  ?Vert@CTopologySizeGrid@CLandscapeBackgroundDynamicBuildTemplate@@QBEABMJJ@Z
+//   017f8bae  ?GFGetSystemManager@@YIPAVCSystemManager@@XZ
+//   017b7c35  ?FindThurthestDistanceToObservingMapSet@CEngineWorldMap@@QAEMABVC3DBoundingBox@@ABV?$CArray@J@@@Z
+//   017e7ad9  ?GetAsCArray@?$CArray@M@@QAEPAMXZ
+//   01822233  ??1CCharString@@QAE@XZ
+//   017c42cd  ?Hora@CTopologySizeGrid@CLandscapeBackgroundDynamicBuildTemplate@@QBEABMJJ@Z
+//   017ea333  ??1CWideString@@QAE@XZ
+

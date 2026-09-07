@@ -201,7 +201,7 @@ mentions in the function manual / history, never a format spec):
     Aeon + Lost Content). (`MOD_PACKS.md`, `FMP_FORMAT.md`)
 26. **Load-order model** — Fable has *no* runtime load-order arbitration; FableForge constructs the
     merged result itself (LOOT/Wrye-Bash-style masterlist). (`LOAD_ORDER.md`)
-27. **Unified node scripting** — `forge::questnodes`: 104 FQT nodes + 931 FSE fns → Lua codegen.
+27. **Unified node scripting** — `forge::questnodes`: 104 FQT nodes + 933 FSE fns → Lua codegen.
     (`UNIFIED_SCRIPTING.md`)
 28. **CGameScriptInterface API catalog** — 891 methods + 101 candidate FSE bindings, vtable base
     `0x1260F0C`. (`SCRIPT_BINDINGS_CANDIDATES.md`)

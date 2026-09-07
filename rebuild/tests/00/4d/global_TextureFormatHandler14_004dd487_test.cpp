@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct Node{unsigned long state,payload;Node* next;Node* prev;};struct Owner{Node* node;unsigned long count;};static Owner* Init(Owner* owner,Node* node){owner->node=node;owner->count=0;node->state=0;node->payload=0;node->next=node;node->prev=node;return owner;}int main(){Node node={1,2,0,0};Owner owner={0,9};if(Init(&owner,&node)!=&owner)return 1;if(owner.node!=&node||owner.count!=0||node.state!=0||node.payload!=0)return 2;if(node.next!=&node||node.prev!=&node)return 3;puts("LISTINIT_004dd487_PASS");return 0;}

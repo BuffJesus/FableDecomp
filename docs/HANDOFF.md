@@ -1,5 +1,117 @@
 # HANDOFF — resume here
 
+## 2026-08-29 — dual-lane continuation: StatueMaster state + UpdateLines gate
+
+- `mods/StatueMasterRestoration/WorldEventState.lua` now implements the five
+  evidence-backed reconstruction seals (Flame, Sharpening/Steel, Silver,
+  Piercing/Diamond, Lightning). It rejects unknown categories, debounces repeat
+  awards, reports completion/count, and migrates the first prototype's
+  `FSE_SM_RECON_LOOKOUT_SEAL` into the Piercing seal. The existing Lookout Point
+  hit consumer is wired through it. Executable Lua/package tests pass **4/4**.
+- This is architecture, not a parity claim. Only Lookout/Piercing has an entity
+  binding. No satellite locations, final presentation, or reward were invented.
+  The ten-case live hit bridge probe remains user-driven and mandatory.
+- `0x00890750 CGameScriptInterface::AddLineToConversation` was recovered from
+  the interrupted workflow journal, independently reverified as
+  `RELOCATION_MATCH PASS`, and landed.
+- `0x00A781A0 CNavQuadTree::UpdateLines` now compiles under VC7.1 using the
+  recovered packed tree/geometry declarations. Current byte result is honest
+  `DIFFER(1337v1244)`. Its empty-area path executes successfully in
+  `work/nav_update_00a781a0_test.cpp`.
+- A one-cell fixture exposed and then resolved a real modelling issue: the
+  retail body strides its line-cell array by four bytes and treats each entry
+  as a sentinel pointer, while VC7.1 `std::list<C2DLineF>` is larger. The
+  candidate now uses the proven raw `CNavLineCellVector` contract. Its fixture
+  exercises a real 8x8 cell, inserts a line spanning `(1,1)` to `(7,7)`, checks
+  the copied endpoints and sentinel links, and exits cleanly. The remaining
+  work is broader edge/intersection coverage and source-shape reduction toward
+  the 1,244-byte retail body—not basic type recovery.
+- Ranked successors were preflighted. `0x00A7A8D0 CNavQuadTree::Initialise`
+  still contains prohibited inline assembly plus false decompiler types
+  (`std::byte`, `NHeroInformationScreens::CBase`) and must be structurally
+  re-authored rather than mechanically promoted. `0x00A79B30
+  CNavQuadTreeNode::Initialise` is the cleaner next target: after mechanical
+  C++98 normalization and the shared header, its blockers reduce to helper
+  calling forms, allocation spelling, and four node constructors; it contains
+  no asm bake.
+
+## 2026-08-28 — Lookout Point statue prototype ready for live probe
+
+- Added the explicitly reconstructed, non-parity package at
+  `mods/StatueMasterRestoration`. Entity script id 61 preserves the rotating
+  Lookout Point statue, makes it targetable/effectively indestructible, observes
+  hero weapon hits, and stores only namespaced `FSE_SM_RECON_*` state.
+- ForgeFSE now binds entity method
+  `MsgGetHitByWeaponAugmentations(hitterScriptName)`. It performs one native
+  hitter/time-window lookup through `CTCEntityEvents` type `0x42`, immediately
+  copies the matched `CEventHitBy` augmentation vector, and returns Lua-owned
+  `found`, `types`, `typeIds`, and `augmentationMask` values. It does not call
+  the boolean weapon API first and does not retain event/vector pointers.
+- All ten retail bit values translate to stable names. The reconstructed
+  Lookout seal accepts Piercing/Diamond `0x10`; wrong and unknown types fail
+  closed. Persistent seal checking prevents a scanned event from awarding twice.
+- `mods/StatueMasterRestoration/RUNTIME_PROBE.md` is tomorrow's entry point. The
+  script emits `SM_HIT_PROBE` rows for `primary`, `repeat_same_window`, and
+  `post_yield` phases with world frame, names, IDs, mask, acceptance, and award
+  state. Run the ten-case matrix, especially augmented bows, weapon swapping,
+  non-hero hits, and polling after a yield. Projectile classification remains
+  explicitly `unverified` pending the live result.
+- Offline verification passed: standalone Lua mocks ran against ForgeFSE's
+  embedded Lua 5.4 sources; focused package tests pass **3/3**; ForgeFSE Release
+  x86 builds with zero warnings/errors. The last built DLL is
+  `D:\Code\ForgeFSE\Release\FableScriptExtender.dll`, SHA-256
+  `782FBF130EBA4E513BD6326591EF1E3EE63A28C26D8299B2C09D274B9509B6E0`.
+  It was **not deployed**.
+- Preserve both dirty repositories. ForgeFSE's native-overlay audit currently
+  stops on a pre-existing 931-manifest/933-overlay count mismatch; do not
+  conflate that generated-artifact mismatch with the clean C++ build.
+
+## 2026-08-28 — Statue hit augmentation RE ready for ForgeFSE
+
+- Added `docs/STATUE_WEAPON_AUGMENTATION_RE.md` with the retail/PDB call path,
+  layouts, addresses, proposed binding, safety rules, and runtime probe matrix.
+- Key result: use the matched `CEventHitBy`'s copied `CHitParameters` augmentation
+  vector at `+0x40`; do not infer augmentations from current/previous weapon name.
+- Retail anchors: `CGameScriptThing::MsgIsHitByWithWeapon @ 0x008D1130`, its
+  weapon-filtered `GetEvent @ 0x008D49B0`, and
+  `CTCObjectAugmentations::HasAugmentationOfType @ 0x007660C0` as a cross-check.
+- Numeric values are now retail-data-verified: Steel `0x01`, Silver `0x02`,
+  Fire `0x04`, Lightning `0x08`, Diamond `0x10`; the enum is a bitmask.
+- Decompiled cursor behavior is also pinned: event lookup is non-destructive
+  and uses `createdAfter < eventTick <= createdBeforeOrOn`.  Implement one
+  native lookup returning the matched event's copied augmentation table; never
+  split detection and retrieval across two Lua calls.
+- Remaining work is runtime validation, not static RE: run the seven-case probe
+  against the new binding, especially projectile population and coroutine-yield
+  repeat behavior, before the quest implementation consumes it.
+
+## 2026-08-28 — AlbionSecrets tutorial API header reconciled
+
+- Preserved attribution explicitly: **AlbionSecrets/eeeeeAeoN** is the original
+  FSE developer and authored the `StatueMaster` Lua port; **odarenkoas** authored
+  the separate custom quest-layer experiments.
+- Audited AlbionSecrets' 2025-11-05 `ALL-INTERFACE-FUNCTIONS-FOR-FSE.h`. Its 947
+  declarations normalize to **933 unique Lua-facing names**: 88 Entity and 845
+  Quest, with 14 additional overload declarations.
+- Corrected the former 931-row manifest by adding the genuinely registered Quest
+  APIs `StartAmbientConversation` and `AddLineToConversation`. Regenerated the
+  Ghidra API header/index and the native overlay.
+- Added `tools/audit_fse_tutorial_api.py`; it now reports 947/933 with no
+  header-only or manifest-only names. `tools/validate_tooling_sdk.py` passes with
+  933 functions, 483 recommendations, 370 verified recommendations, and zero
+  approved hooks. ForgeFSE's Quest-binding audit is clean at 458/458.
+- Full evidence and the normalized-overload caveat are in
+  `docs/FSE_TUTORIAL_API_AUDIT.md`. The prior `StatueMaster` behavioral audit is
+  in `docs/STATUEMASTER_LUA_PORT_AUDIT.md`.
+- FableForge's vendored manifest, native-overlay test, quest-node count tests,
+  headers, and current scripting docs were advanced from 931/843 Quest to
+  933/845 Quest. Release build succeeded and all **14/14 CTests pass**. This was
+  a nonvisual integration pass; no runtime deployment or screenshot work ran.
+- `00A781A0 CNavQuadTree::UpdateLines` remains the active fixture-first native
+  parity target. Its promotion inputs and landed `InitialiseLines` dependency
+  were rechecked; do not promote its 16-KiB structural lift without a focused
+  list-clearing and line-to-grid behavior oracle.
+
 ## 2026-08-14 — parity crawl surge (batch136–149, ledger 4518 -> 4839, +289 byte-exact) RESUME HERE
 - batch148 (bca31d4) 22, batch149 (0ad8d00) **PARTIAL 8/24** — the workflow hit the ACCOUNT session
   limit mid-run (resets 10:30am America/Edmonton); 15 agents never executed. Only the 9 ATTEMPTED
@@ -656,6 +768,14 @@ green).*
   the unknown-code fallback, including every retail message literal. An
   explicit `0x2C` POD slot layout preserves VC7.1's distinct case temporaries
   without pretending those slots are recovered higher-level owners.
+  On 2026-08-26 its missing catalog/oracle registration was restored. The verifier had been
+  splitting nonzero COFF switch labels such as `$L779` into false functions and comparing only
+  the 42-byte prologue; `obj_text` now retains those labels inside their enclosing `.text`
+  contribution. Independent verification, the focused fixture, selected build, and parity refresh
+  all pass; aggregate parity is now 18,212 compared / 8,066 raw / 10,105 relocation / 41 differing.
+  The same nonzero-label rule is now applied in `catalog_parity_audit.py`, `check_one.py`,
+  `crack_residue.py`, `verify_residue.py`, and the permuter scorer; all six parsers independently
+  recover the full 744-byte object body, and all modified Python modules pass `py_compile`.
 - `CGame::Play @ 0x00412F90` is now an exact 394-byte, 23-relocation
   match. Its focused fixture covers the definition-compilation disposal path,
   main-game construction and string-init lifetime, legacy frontend selection,
@@ -9723,7 +9843,2390 @@ Corrections made this session (do not re-inherit the old claims):
 - Region atmosphere: REGION def -> EnvironmentTheme -> ENVIRONMENT_THEME_DAY (7 time-of-day entries,
   sun/moon angles). There is exactly ONE SKY_DEF, so editing it repaints all of Albion.
 
-Still outstanding, in order: mesh previews for things (both links now closed — def Graphic.modelId,
-and `_prim_geometry` in the Blender addon as the geometry decoder to port), an entity palette with
-drag-to-place, a CTC property inspector, thing->node-graph->ForgeFSE script binding, and then the
-in-game test that has never been run: repack the WAD, install, launch, read the sign in Greatwood_1.
+Things-editor correction (2026-08-26): the FableForge worktree is ahead of this old resume note.
+Compiled LOD0 geometry decoding, filled textured mesh previews, terrain depth, foliage preview,
+selection boxes, and transform gizmos are already implemented. Still outstanding, in order: an
+entity palette with drag-to-place, a CTC property inspector, thing->node-graph->ForgeFSE script
+binding, and then the in-game test that has never been run: repack the WAD, install, launch, read
+the sign in Greatwood_1.
+
+Offline decomp continuation (2026-08-26): `0x0088F610
+CGameScriptInterface::IsSoundPlaying` is landed as an 11-byte `RELOCATION_MATCH`, passes its focused
+behavior fixture, and passes a selected catalog build. `0x0088F710 EntitySetCombatEnabled` is now
+also landed: its recovered four-byte `CCharString` temporary and genuine member-function-pointer
+dispatch are a 189-byte `RELOCATION_MATCH`, with ordered four-state behavior and selected build
+passing. `0x0088FDC0 SetTimeOfDay` is landed as a 60-byte `RELOCATION_MATCH`; direct volatile wrap
+reads recover the x87 comparison shape while preserving the original inclusive wrap semantics,
+and its multi-wrap/exact-wrap/negative fixture plus selected build pass. No game or visual/runtime
+test was launched.
+
+The same offline pass subsequently landed `0x0088FE90 FastForwardTimeTo` as a 65-byte
+`RELOCATION_MATCH`; wrapped/scaled time, independent speed forwarding, focused behavior, and the
+selected catalog build pass. Two genuine same-semantics residues are staged but deliberately not
+landed: `0x0088F480 ApplyScriptBrush` is `DIFFER(25v25)` after correcting the generated second call
+to a zero-argument notification (only scratch `EAX`/`EDX` assignment differs), and `0x006E7690
+DeregisterTimer` is `DIFFER(75v74)` with its sentinel/erase/free/decrement behavior passing (only
+the `foundNode = this` local initialization shape remains). Treat both as bounded permuter targets,
+not reasons to weaken the parity gate.
+
+`0x0088FC90 HeroHasExpression` then landed as a 40-byte `RELOCATION_MATCH`. The key correction was
+that retail's two hero-resolver helpers are chained zero-argument member calls, not cdecl helpers
+receiving pushed owner pointers. Null hero, blocked flag `0x91 & 1`, available/unavailable return
+propagation, and the selected catalog build all pass.
+
+`0x008AA010 ClearGossip` landed as a 64-byte `RELOCATION_MATCH`, with four-byte key-copy,
+map-lookup, full-range erase, two-lifetime behavior, and selected build passing. Its landed fixture
+was hardened to capture the key value during lookup rather than dereference a destroyed temporary.
+Two more non-landed residues are fully behavior-covered: `0x0088FD00 EntitySetInLimbo` is
+`DIFFER(82v84)` solely around early versus epilogue `EBX` restoration, and `0x0088E2A0
+IsLevelLoaded` is `DIFFER(87v94)` around argument-versus-receiver evaluation order; do not weaken
+the parity gate for either.
+
+Further behavior-complete residues: `0x00894DD0 EntitySetAsMarryable` is `DIFFER(124v131)` because
+VC7.1 combines its adjacent marryable bit-3/bit-4 updates while retail retains two stages and
+`EBX`; `0x008984E0 SetWeaponOutCrimeEnabled` is exact-length `DIFFER(91v91)`, with resolver,
+eligibility, lower-bound, sentinel/high-key and enable/disable behavior all passing, but retail's
+target/map scratch assignment uses unsaved `EDI` plus saved `ESI`. Keep these in the permuter lane;
+do not replace them with naked byte emission or relax ABI/parity requirements.
+
+The related `0x0089B3F0 SetHeroAsWearing` is behavior-complete `DIFFER(94v96)` and confirms the
+same unsaved-`EDI` target / saved-`ESI` embedded-map compiler family. The pass then switched to the
+tiny quick-win ledger and landed twelve allocator-family members: `00451303`, `0043006f`,
+`00451022`, `0045121c`, `00450ebb`, `00450f08`, `00450fd5`, `004512b6`, `00450f2c`, `00451182`,
+`00451135`, and `00451269`. Every member is a 22-byte `RELOCATION_MATCH["s"]`, passes its own
+allocation/out-pointer behavior fixture, and passes an individual selected catalog build. The
+important recovered ABI is three-parameter fastcall: output in `ECX`, an unused `EDX` argument,
+one unused stack argument (`ret 4`), plus the retail `and [out],0` nulling shape. Allocation sizes
+are preserved per member (`0x14`, `0x18`, or `0x24`).
+
+The allocator harvest now totals eighteen newly landed members after adding `004510e8`,
+`0045106f`, `00430022`, `0042acec`, `004511cf`, and `00450f79`; each independently passes parity,
+behavior, and a one-object selected build. A delayed lander response briefly caused duplicate E/L
+catalog blocks during a retry; the duplicate blocks were removed, and catalog/oracle/source/test
+multiplicity is verified exactly one for each. Three related 12-byte node-copy routines remain
+honest exact-length residues: `00429fe3`, `0042a008`, and `00429fbe` are `DIFFER(26v26)` because
+retail uses `pop; lea +8; test` while VC7.1 folds to `add +8; je`; their `malloc(12)` and offset-8
+copy behavior passes.
+
+`0043f510 FreePointerArray` and `0043f560 Vector_FreeElementPointers` then landed as independent
+43-byte `RELOCATION_MATCH` functions. Their recovered ABI is stdcall (`ret 8`), not the generated
+cdecl prototype. Both pass begin-inclusive/end-exclusive traversal, null-skip, empty-range and
+two-allocation behavior plus individual one-object selected builds.
+
+Two non-owning tiny helpers then landed with full exact parity: `00c61ce0 Getter_TripleDeref` is a
+15-byte `MATCH`, and `00c62a30 StreamBuffer_AdvancePosition` is a 19-byte `MATCH`; pointer-chain,
+signed stride/count, zero and negative movement fixtures plus individual builds pass. Two adjacent
+helpers remain behavior-complete residues: `00c20ef0 IsStateStreaming_2to4` is `DIFFER(46v41)`
+around preserving `this` across the stub call, and `00e7f7d0 GetFloatTableEntryByIndex` is
+`DIFFER(34v27)` around global-owner/index codegen. Their branch/index fixtures pass.
+
+The four RB-tree iterator-to-maximum helpers (`0042a58d`, `0042a59e`, `0042a5af`, `0042a5c0`)
+then landed as independent 17-byte `RELOCATION_MATCH["s"]` functions. Current-node forwarding,
+returned-maximum storage, iterator-address return behavior, and individual one-object builds pass.
+
+Three list wrappers then landed: `0042b687 LinkedList_PushFront` and `0042b6b8
+Std_List_PushFront` are 26-byte `RELOCATION_MATCH["s"]` member functions; the decisive recovered
+type is a non-trivially copied, force-inlined four-byte iterator aggregate, which makes VC7.1 emit
+retail's frame/local stack-copy sequence. `00450d90 LinkedList_Initialize` is a 27-byte
+`RELOCATION_MATCH["s"]` with the allocator-family hidden fastcall parameters and a self-linked
+32-byte sentinel. Forwarding/copy/sentinel behavior and individual builds pass.
+
+Two more helpers landed: `008702d0 Handle_InitInvalid` is a 17-byte exact `MATCH` after recovering
+its handle-pointer return in `EAX`, and `00c44b50 InputEvent_CheckKeyAndGetFrames` is a 34-byte
+`RELOCATION_MATCH` after correcting the key type to unsigned and forwarding it to the conditional
+frames call. `00410d80 bitset_advance_iterator` remains behavior-complete `DIFFER(50v48)`; its true
+ABI is eight-argument stdcall with state in arguments 1/3/4/5 and three trailing unused arguments,
+but VC7.1 hoists `cursor += 4` relative to retail's `[cursor+4]` load. `00449b60
+GetMultiplayerColour` is boundary-quarantined because the PE fallback's 163-byte span includes its
+switch table and a following function; require an authoritative Ghidra boundary before promotion.
+
+The six-member tree payload allocation family then landed: `0045c4d2`, `00431471`, and `0045c8a1
+TreeNode_AllocData`, together with `0042b5a8 BinarySearchTreeNode_Create`, `0042b5ca
+BinarySearchTreeNode_CreateDuplicate`, and `0042b5ec BinarySearchTreeNode_CreateCopy`. Each is a
+34-byte `RELOCATION_MATCH["s"]`. The missing contract was the return value: retail returns the
+24-byte allocation base in `EAX` while copying the two-dword input payload at `base + 0x10`, using
+stdcall cleanup (`ret 4`). The fixtures explicitly distinguish returned base from embedded payload,
+and all six individual selected builds pass. This closes the earlier 32-vs-34 TreeNode residue.
+
+The adjacent list-removal family also landed: `00429ab9 DoublyLinkedList_Unlink`, `00429b02
+LinkedList_Unlink_and_Free`, and `00429b52 LinkedList_RemoveNode` are independent 32-byte
+`RELOCATION_MATCH["s"]` functions. The generated first member's cdecl and reversed-field labels
+were incorrect; retail establishes the same stdcall (`ret 8`) predecessor/successor contract for
+all three. Their fixtures cover both neighbor rewrites, freeing the removed node, and returning the
+cursor to the predecessor through the caller's pointer. Every selected one-object build passes.
+
+`00433db5 STL_AllocateAndInitializeArray` then landed as a 50-byte `RELOCATION_MATCH`. The recovered
+stdcall wrapper allocates `count * 4` bytes only for nonzero counts, forwards the source range and
+destination to `_Uninit_copy`, and returns the allocation (`ret 12`). Its focused zero/nonzero and
+forwarding fixture passes, as does its selected one-object catalog build.
+
+Two byte-identical buffer-move specializations then landed: `00436a80 Vector_EraseAndMove` and
+`00440550 Buffer_MoveData` are 58-byte `RELOCATION_MATCH` functions. The real ABI is fastcall with
+`self` in `ECX`, an unused `EDX` slot, destination/source on the stack, and `ret 8`; the generated
+three-argument thiscall guess incorrectly placed destination in `EDX`. Initializing a register-sized
+integer from the tail before comparing it to source reproduces retail's `EAX` source / `ESI` tail
+schedule. Empty-tail retargeting, overlapping move, destination return, tail update, and individual
+selected builds all pass.
+
+`0042cd61 FID_conflict_max_size` also landed as a 35-byte `RELOCATION_MATCH["s"]`. Its key is a
+four-byte value whose stack address is passed to a genuine C++ member lookup on the tree at
+`self + 0x144`; the result is node field `+0x18`, or `0xffffffff` for the header sentinel. Expressing
+the non-sentinel path first recovers retail's joined epilogue. Focused sentinel/value behavior and
+the selected build pass.
+
+`00411b00 vector_push_back_copy` then landed as a 38-byte `RELOCATION_MATCH["s"]`. The wrapper uses
+`ECX` for the vector, an unused `EDX` slot, two stack arguments, and `ret 8`. Its inner copy helper
+is a five-argument fastcall: first/last in `ECX`/`EDX`, followed by destination, the address of the
+destination parameter, and a null tag. Keeping a distinct register result reproduces retail's
+saved-`EDI` destination lifetime. Range forwarding, copied content, end update, destination return,
+and the selected build pass.
+
+`004128a0 Vector_PushBack` landed next as a 59-byte `RELOCATION_MATCH`. Its outer ABI is `ECX`
+vector, unused `EDX`, one stack value, and `ret 4`. The spare-capacity path invokes a genuine member
+copy operation at the current finish and advances it by four bytes; the full-capacity path forwards
+finish, value, the address of the value parameter, and two unit counts to a genuine member insert.
+Both paths and its selected one-object build pass.
+
+Three more quick-win promotions followed. `0042ab33 LinkedList_Insert_Before` and `0042ab8a
+Std_List_Insert` are 37-byte `RELOCATION_MATCH["s"]` functions with stdcall outer `ret 12` and a
+one-value stdcall allocator; their predecessor/target splice, output publication, value forwarding,
+and individual builds pass. `004303f0 CMemoryBlock_Destructor` is a 54-byte `RELOCATION_MATCH`
+after recovering one-byte packing and the owned heap pointer at unaligned offset `+0x29`; free,
+vtable install, base destruction, conditional delete, return, and both flag paths pass.
+`0040f0a0 Compare_Unsigned16Array` is a 56-byte `RELOCATION_MATCH`; equal, unequal-length,
+unequal-content, empty, and high-unsigned-halfword behavior plus its selected build pass.
+
+Two nearby functions remain honestly bounded rather than falsely promoted. `00450ccc
+Buffer_InitializeWithSize` is behavior-complete `DIFFER(46v46)`: the member ABI, two stack args,
+`ret 8`, zero/nonzero allocation, pointer triplet, end arithmetic, and returned receiver agree, but
+retail schedules `ESI = this` earlier in the prologue. `00451583 VertexListInsertVertices` passes
+initialization forwarding, positive repeated-byte fill, zero/negative counts, end update, and return;
+VC7.1's decision to retain versus reload the count across the initializer call remains the byte-level
+residue.
+
+The recovered move ABI then yielded two more exact family members: `00440590 Buffer_Relocate` and
+`0040f390 Buffer_RellocateAndUpdateWritePointer` are 58-byte `RELOCATION_MATCH` functions alongside
+`00436a80` and `00440550`. Empty-tail retargeting, overlapping move, returned destination, updated
+tail, and both selected builds pass. `0042ac0a DoublyLinkedList_InitializeEmpty` landed as a 27-byte
+`RELOCATION_MATCH` using the allocator-family `ECX` output / unused `EDX` / unused stack argument
+ABI (`ret 4`); its 12-byte sentinel is self-linked and published correctly. `0042cd3e
+FID_conflict_max_size` landed as a 35-byte `RELOCATION_MATCH["s"]` twin of `0042cd61`, using tree
+offset `+0x150`; sentinel/value and stack-key-address behavior plus its selected build pass.
+
+Two vector copies remain bounded residues. `00440e00 Vector_CopyElements` is behavior-complete
+`DIFFER(58v59)` under both RTM and QFE VC7.1 because retail assigns count/source/destination to
+`ESI`/`EDI`/`EDX` and chooses a different alignment shape. `0043212b Vector_AllocateAndCopy` passes
+zero/nonzero allocation and 12-byte triple copying; a typed aggregate reduces the body from 103 to
+88 bytes versus 80 retail, but VC7.1 still collapses the retained delta and saves extra registers.
+Do not weaken parity for either.
+
+Two GUI tree-pane destructor forms landed. `00443bd0 CGuiControlTreePane_Destructor_2` is a 59-byte
+`RELOCATION_MATCH`: it clears the tree at `+0x64`, frees its storage, invokes base cleanup,
+conditionally deletes for flag bit 0, and returns the receiver. `00444e50
+CGuiControlTreePane_Destructor_5` is a 60-byte `RELOCATION_MATCH`: it is null-safe and performs
+ordered cleanup at `+0x68` then `+0x64`, followed by storage free, base cleanup, and unconditional
+delete. Focused order/null/flag fixtures and both selected builds pass.
+
+Five byte-identical polymorphic range cleanup thunks then landed: `004437e0`, `004438b0`,
+`004439e0`, `00443ac0`, and `00443b20 Catch_0047e8cc` are 63-byte `RELOCATION_MATCH` functions.
+Each handles null, walks `[begin,end)` in 8-byte objects, calls virtual slot zero with flag 0, frees
+non-null backing storage, and deletes the owner. Their null/three-entry fixtures and all individual
+selected builds pass.
+
+Two adjacent algorithms remain bounded. `0040fbf0 CWideString_FillBackward` passes overlapping
+backward copy and empty-range behavior with its recovered four-parameter fastcall / `ret 8` ABI,
+but VC7.1 allocates result/count lifetimes differently. `00440d70 Vector_EraseRange` is
+behavior-complete `DIFFER(77v77)` after recovering the shared five-argument move helper, 8-byte
+virtual destruction loop, finish update, and returned first iterator; its only remaining mismatch
+is saved-register assignment and final-store scheduling.
+
+Fifteen list-node initialization wrappers then landed as independent 42-byte `RELOCATION_MATCH`
+functions: `0045170f`, B/C/D/E/F/H/I/J/K/L/M/N at `00451739`, `0045177a`, `004517bb`,
+`004517e5`, `00451835`, `004518b7`, `00451916`, `00451957`, `00451998`, `004519d9`,
+`00451a1a`, and `00451a5b`, plus `004301c9 ListNode_Construct` and `0043019f
+LinkedList_Initialize`. The exact contract is a size-optimized member wrapper calling a one-value
+stdcall initializer; the direct post-`ESI` stack push saves the decisive byte. Each clears owner
+count, one-byte node state at `+0`, dword payload at `+4`, and self-links `+8/+0x0c`. All focused
+fixtures and all fifteen selected builds pass.
+
+`0042aadc LinkedList_InsertBefore` joined `0042ab33`/`0042ab8a` as the third 37-byte
+`RELOCATION_MATCH["s"]` splice wrapper; allocator forwarding, four link updates, output publication,
+return, and its selected build pass. `00450e3a Array_Initialize` remains behavior-complete
+`DIFFER(52v52)`: its two-stack-argument member ABI (`ret 8`), zero/nonzero `count * 4` allocation,
+pointer triplet and return agree, but it reproduces the same early-`ESI = this` scheduling residue
+as `00450ccc Buffer_InitializeWithSize`.
+
+Four more wrappers extend the same node-initialization family to twenty-two members: `0042b72b
+CTexture_InitEmpty_56bytes`, `0042b76c CTexture_InitEmpty_24bytes`, `0042b7ee
+CTexture_InitEmpty_28bytes`, and `0042b7ad LinkedList_InitializeNode` are independent 42-byte
+`RELOCATION_MATCH` functions. Their differing allocator targets do not change the wrapper contract:
+one-byte state/dword payload clearing, count reset, self-links, return, behavior fixtures, and all
+four selected builds pass.
+
+`00449320 CList_PushBack` remains behavior-complete `DIFFER(64v64)`. Spare-capacity two-dword copy,
+nullable reference-count increment, eight-byte finish advance, and full-capacity five-argument
+reallocation forwarding pass. Size optimization recovers retail's direct stack argument form, but
+merges the epilogue and reloads the source rather than preserving its first dword in `ESI`; do not
+land it without closing that exact-length compiler residue.
+
+The list-node initializer family is now complete through the visible G/O gaps and totals eighteen
+members after adding `00451876 ListNode_Init_G`, `00451a9c ListNode_Init_O`, and `00451add
+CList_Initialize`. These three are also 42-byte `RELOCATION_MATCH` functions with focused behavior
+and individual selected builds passing. The polymorphic cleanup family gained a sixth identical
+63-byte member at `00443980 Catch_0047e8cc`; its null/range/free/delete fixture and selected build
+pass.
+
+Two `Buffer_AllocateAndZero` twins (`00411910`, `00410f30`) are behavior-complete residues. Zero and
+seven-byte allocation, dword/tail-byte zeroing, endpoints, and returned receiver pass. Manual loops
+emit 114 bytes; intrinsic `memset` emits the right `rep stosd`/`rep stosb` core but collapses the
+separately live retail allocation/write registers to 69 versus 77 bytes. `00443840
+CGuiControlTreePane_Destructor_1` is likewise exact-length `DIFFER(76v76)`: null handling, the
+fastcall sort cleanup at `+0x28`, 8-byte virtual destruction, free, and owner delete agree, but
+retail and VC7.1 swap the saved owner/end register assignment. Keep all three out of the catalog.
+
+The next quick-win pass recovered three contracts but produced no landable byte match.
+`00ca9c80 Object_AcquireField26` is `DIFFER(53v58)`: slot `0x38` acquires from `+0x9c` into
+`+0x98`, then a nonnegative result and enabled dependency gate a slot-`0x14` release.
+`00ca8610 COM_QueryInterface_012a9a24` is `DIFFER(67v70)`: it probes identity through slot
+`0x24`, returns `0x80040208` for self identity, otherwise queries IID `012a9a24` into `+0x9c`
+and returns only failing HRESULTs. `00c8bae0 Script_GetEntryPointer` is `DIFFER(40v43)` with
+inactive, negative/mode-selected, bounds, and 16-byte-stride cases passing. Retail copies the
+index to `EAX` and reuses `EDX` for the active flag; ordinary VC7.1 source retains a memory
+compare. Treat all three as bounded scheduling residues, not relaxed landing candidates.
+
+`0042c48b CTC_FindInterface_0x11` then landed as a 75-byte `RELOCATION_MATCH`.
+Its exact source shape retains the bitset helper's wider result long enough to test `AL`, reuses
+the saved receiver as the map at `+0x44`, lower-bounds key `0x11`, substitutes the map end when
+missing, writes the selected pair's second dword, and emits retail's explicit true/false `AL`
+epilogue. Focused absent/present/sentinel behavior and the selected VC7.1 build pass. Source,
+test, oracle, and compiled-ledger multiplicity are each one.
+
+`00441c20 TreePane_DestructorHelper` is a bounded `DIFFER(69v75)` residue. It calls tree cleanup
+on `this+0x3c`, frees that storage, virtually destroys the `[+0x1c,+0x20)` range in 8-byte steps
+with flag zero, then frees the range backing store. Behavior passes. Both global-fastcall and
+natural member formulations make VC7.1 assign owner/current/end to `ESI/EDI/EBX`; retail assigns
+`EBX/ESI/EDI`, accounting for the remaining prologue, addressing, and epilogue delta.
+
+`00441800 Catch_0047e8cc` is behavior-complete `DIFFER(83v99)`. It first virtually destroys
+`[+0x28,+0x2c)` in 8-byte steps and frees `+0x28`, then repeats for `[+0x1c,+0x20)` and frees
+`+0x1c`; empty and populated two-range fixtures pass. Retail preserves the owner in `EDI`, uses
+`ESI` for each iterator, and contains one-byte and seven-byte loop-alignment NOP regions. VC7.1
+assigns owner/iterator as `ESI/EDI` and emits the compact 83-byte form, so keep it out of parity
+totals unless both register coloring and alignment are reproduced.
+
+`0088fd00 CGameScriptInterface::EntitySetInLimbo` is behavior-complete `DIFFER(80v84)`. It resolves
+the script thing through virtual slot `0x2c`, rejects null/inactive things, forwards the limbo bool,
+and conditionally replaces bit 6 at `+0x92`. A volatile full-width parameter read reproduces
+retail's `push EBX / mov EBX,[stack] / push EBX` call setup; VC7.1 then shrink-wraps the `pop EBX`
+before the bit update instead of reusing `BL`, leaving the final four-byte scheduling delta.
+
+`00caa040 GetBufferOffset_Locked` is behavior-complete exact-length `DIFFER(60v60)`. It derives the
+critical section as null only for receiver `0x0c`, otherwise `self+4`, calls the imported enter/leave
+functions, stores `(+0x2c - +0x30) + +0x20`, and returns zero. Volatile field reads and the explicit
+import declarations recover retail's branch shape, IAT calls, and length. The sole mismatch is
+arithmetic coloring: retail uses `ECX/EAX/EDX` for write/read/base and accumulates in `ECX`; VC7.1
+uses `ECX/EDX/EAX` and accumulates in `EAX`.
+
+The exact `CTC_FindInterface` source shape generalized to two more landings. `0042c521
+CTC_FindInterface_4` is a 75-byte `RELOCATION_MATCH`, and `0042c64d
+CTCBase_FindInterfaceType_0xe8` is a 76-byte `RELOCATION_MATCH`; the latter intentionally keeps
+key `0xe8` in `EDI`, accounting for its one-byte/prologue difference. Both bitset gates, lower-bound
+selection, sentinel fallback, second-dword output, explicit boolean epilogues, focused fixtures,
+and individual selected builds pass. Each address has exactly one source, test, oracle, and
+compiled-ledger entry.
+
+`00c942b0 Audio_ComputeLog2WeightedCoeff` is not an ordinary five-parameter function despite its
+lifted placeholder signature: retail consumes live caller values from `ESI` and `EDI` while cleaning
+only three stack arguments (`ret 0x0c`). Leave it for the custom-ABI lane; do not model those live
+registers as extra stack parameters merely to make a conventional prototype compile.
+
+The contiguous interface-lookup family is now complete through `0042c8f4`. Fourteen additional
+functions landed as independent `RELOCATION_MATCH` entries: small-key 75-byte bodies at
+`0042c4d6`, `0042c56c`, `0042c5b7`, `0042c602`, `0042c699`, `0042c6e4`, `0042c72f`,
+`0042c77a`, and `0042c7c5`; and saved-`EDI` 76-byte bodies at `0042c43f`, `0042c810`,
+`0042c85c`, `0042c8a8`, and `0042c8f4`. The split is purely key width: values below `0x80`
+use the immediate-key shape, while `0xd0`, `0xf6`, `0xfc`, `0x10d`, and `0x10e` retain the key
+in `EDI`. All fourteen behavior fixtures and address-scoped VC7.1 builds pass. A post-landing audit
+found exactly one oracle, compiled-ledger, source, and test entry per address. Including the earlier
+`0042c48b`, `0042c521`, and `0042c64d` wins, this recovered family now totals seventeen functions.
+
+`00ca5e70 CritSec_GetDividedValue_Locked` is behavior-complete `DIFFER(90v107)`, with an important
+lift correction: retail forms the signed 64-bit dividend from high dword `+0x114` and low dword
+`(+0x110 - 1)`, then divides it by signed field `+0x00`; it does not divide field `+0x00` by the
+64-bit pair. Null output returns `0x80004003`. Otherwise it locks the critical section located at
+interface pointer `-0x64`, returns zero for inactive/low-state cases, stores the quotient, unlocks,
+and returns zero. Focused division/failure behavior passes. VC7.1 merges the distinct retail
+failure and success unlock/return paths and selects a compact explicit-helper call, leaving the
+17-byte layout delta; keep it out of parity totals.
+
+`0042ab01 Std_DoubleLinkedList_CreateNode` landed as a 27-byte `RELOCATION_MATCH`. Its recovered
+ABI takes the output in `ECX`, ignores `EDX` plus one stack argument (`ret 4`), clears the output,
+allocates a 12-byte sentinel, self-links offsets zero/four, republishes it, and returns the output
+pointer. Focused behavior, selected build, and one-entry source/test/oracle/ledger checks pass.
+
+Two 35-byte range-copy twins remain exact-length residues: `0045493e Copy_MemoryStepped` and
+`0045bcc1 CActiveFile_CopyRange` use `ECX`/`EDX` begin/end, destination plus one unused stack
+argument (`ret 8`), overlap-safe `memmove`, and return the advanced destination. Behavior passes;
+retail copies `EDX` to `ESI` before subtracting `ECX`, while VC7.1 subtracts in `EDX` then copies
+to `ESI`. `0045c71c CActiveFile_AssignVector4` is `DIFFER(55v63)`: allocation, empty range, and
+dword copying pass, but VC7.1 strength-reduces retail's saved allocation-minus-source delta into
+two directly advancing pointers.
+
+The repository-wide automation briefly regenerated `manifest/functions.tsv` without merged
+`_gapscan` starts. The verifier rejected work before mutation; the prescribed
+`manifest_add_gaps.py --write` repair restored 7,529 xref-confirmed starts (49,568 -> 57,097 rows).
+
+`004d55d0 CTCCoopSpirit::Construct` landed as a 29-byte `RELOCATION_MATCH`. It receives the thing
+in `ECX`, allocates 0x34 bytes, placement-constructs `CTCCoopSpirit` when allocation succeeds, and
+returns null otherwise. Focused allocation/null behavior and its selected build pass.
+
+Four tiny forwarding catches landed independently: `00447390 Catch_0040d959` is a 13-byte control-
+scheme forwarder using field `+0x7a4`; `00449960` and `00449970 Catch_0040d959` are distinct
+10-byte current-player-index forwarders using `+0x1c`; and `00449980 Catch_0042ae0a` is a 16-byte
+current-player lookup followed by a tail jump into environment drawing. All four are
+`RELOCATION_MATCH`, all focused fixtures and address-scoped builds pass, and the six-address audit
+covering these four plus `0042ab01` and `004d55d0` found exactly one source, test, oracle, and
+compiled-ledger entry per address.
+
+`0045bbc5 Vector_AllocateAndCopyRGB` is behavior-complete exact-length `DIFFER(68v68)`. It uses a
+three-stack-argument callee-clean ABI (`ret 0x0c`), allocates `count * 4`, preserves null for zero,
+walks `[first,last)` in four-byte elements, calls the recovered fastcall RGB constructor with
+destination/source, and returns the allocation. Empty/nonempty and copy fixtures pass. Retail
+assigns the source iterator to `ESI` and allocation-minus-source delta to `EDI`; VC7.1 assigns them
+to `EDI`/`ESI`. Keep it out of parity totals until that saved-register coloring closes.
+
+`004495d0 SoundPair_MakeHeap` is behavior-complete. The independent sweep reports
+`DIFFER(84v82)`, while a direct base `/O2` compile reaches retail's 82-byte length. The recovered
+contract treats entries as 12-byte pairs, computes `(last-first)/12`, repeatedly halves to obtain
+heap depth, forwards `depth*2`, root zero, and the comparator into the fastcall sift-down helper,
+then forwards the same range/comparator into standard make-heap. Fixtures cover depths 0/2/4/6.
+Retail preserves first/last/depth/comparator in three saved registers plus `ECX`; VC7.1's speed
+form colors those lifetimes across four saved registers. Do not land without exact register parity.
+
+`0042cde0 CompareAndCountAllocations` was decoded far enough to reject the lifted ordinary-call
+assumption. It initializes two receiver locals, invokes the comparison member, pushes three
+arguments into the count helper, but performs only `add esp,8` afterward before constructing two
+stack arguments for receiver cleanup. That implies a mixed/custom callee-cleanup contract. Recover
+the count helper first; an ordinary three-argument cdecl model would corrupt the stack.
+
+`0042a8bd MemoryAllocator_CountAllocatedBlocks` landed as a 35-byte `RELOCATION_MATCH`. It loads
+the current node from the first pointer, the sentinel from the second, repeatedly calls the
+one-argument cdecl next-node helper, increments a counter, and returns on sentinel equality.
+Empty/two-node behavior, its selected build, and one-entry source/test/oracle/ledger checks pass.
+
+Two adjacent iterator helpers remain bounded. `00410550 MemoryPool_AdvancePointer` is
+`DIFFER(61v67)`: fast `current += 4`, slow active-block free, rotation-cursor advance, next-block
+load, `+0x80` end publication, and current publication pass; VC7.1 merges retail's duplicated
+store/return epilogues. `00410d80 bitset_advance_iterator` is exact-length `DIFFER(48v48)` after
+recovering its eight-slot stdcall ABI (`ret 0x20`). Direct and cross-block advancement pass. Retail
+loads `[cursor+4]` then increments cursor by four, while VC7.1 canonicalizes this to a hoisted
+increment followed by `[cursor]`; do not weaken parity for either.
+
+`0042bf06 CEngineSceneGrid_Initialize` is behavior-complete `DIFFER(41v47)`. It is a one-stack-
+argument member (`ret 4`), passes the last byte of that parameter slot to a one-argument callee-
+clean scratch/list initializer, then forwards `field0->bounds`, `**parameter`, and `*parameter`
+into `GetCellBoundingBox`, returning the receiver. Disabling frame-pointer omission recovers
+retail's `EBP` frame. VC7.1 still emits three direct pushes, whereas retail stages value/pointer
+registers and overwrites the reserved top stack slot with the bounds pointer; keep it unlanded.
+
+`00443540 Catch_0047e8cc` landed as the seventh independent 63-byte `RELOCATION_MATCH` member of
+the null-safe polymorphic cleanup family. It destroys `[+0x1c,+0x20)` in 8-byte entries through
+virtual slot zero/flag zero, frees non-null range storage, and deletes the owner. Null/three-entry
+behavior, selected build, and one-entry multiplicity checks pass.
+
+Two push-back helpers are now bounded. `004121d0 Std_Vector_PushBack_WithGrow` is `DIFFER(48v50)`:
+four-byte spare-capacity construction, end advance, and five-argument callee-clean growth forwarding
+pass; VC7.1 merges the separate retail fast/growth returns. `004428b0 vector_push_back` is exact-
+length `DIFFER(58v58)` with equivalent eight-byte behavior; retail saves the first copied dword in
+`ESI` and uses `EDX` for the slow-path value-reference address, while VC7.1 reloads the source and
+uses `ECX`.
+
+Two distinct cleanup variants remain behavior-complete. `00441b90 Catch_0047e8cc` is
+`DIFFER(60v67)` and performs a `+0x34` heap free before the standard 8-byte range cleanup/free.
+`00442e60 Catch_0047e8cc` is `DIFFER(72v78)` and orders smart-pointer cleanup at `+0x28`, range
+destruction/free, optional owner delete for flag bit zero, and returned receiver. Their fixtures
+pass; both remaining gaps are saved-register and common-epilogue compaction.
+
+The remaining GUI tree-pane destructor twins landed exactly. `00443c10
+CGuiControlTreePane_Destructor_3` is a 59-byte `RELOCATION_MATCH` sharing `_2`'s tree cleanup at
+`+0x64`, backing free, base cleanup, flag-bit-zero conditional delete, and returned receiver.
+`00444e10 CGuiControlTreePane_Destructor_4` is a 60-byte `RELOCATION_MATCH` sharing `_5`'s null
+guard, ordered `+0x68` then `+0x64` cleanup, backing free, base cleanup, and unconditional owner
+delete. Both reused focused fixtures, both address-scoped builds pass, and each has exactly one
+source, test, oracle, and compiled-ledger entry. The `_2.._5` set is now landed; `_1` remains the
+documented exact-length saved-register residue.
+
+Four more `Catch_0047e8cc` bodies are now bounded, with no parity claims.
+`00442190` and `00442280` are offset variants of a two-range polymorphic cleanup
+and compile as `DIFFER(83v99)`. `00442d50` and `004430f0` are relocation twins
+of the already recovered smart-pointer/range/conditional-delete destructor and
+compile as `DIFFER(72v78)`, identical to `00442e60` apart from the first cleanup
+callee. Their behavior fixtures pass; do not recycle these through ordinary ABI
+recovery unless pursuing VC7.1 branch/register scheduling explicitly.
+
+`00432ff0 Vector_AllocateAndCopyCCharString` is newly bounded at
+`DIFFER(80v71)`. It uses three callee-clean stack arguments (`ret 0x0c`), returns
+null for zero count or allocates `count * 4`, then placement-copy-constructs each
+four-byte `CCharString` in `[first,last)` and returns the allocation. The behavior
+fixture passes; current VC7.1 output keeps nine extra bytes around placement and
+copy scheduling, so this remains outside parity totals.
+
+`009f1810 CGameEvent::CompressIntoBuffer` is now landed as a raw 82-byte `MATCH`.
+The recovered layout is type word `+0x00`, player `+0x04`, payload `+0x05`,
+end position `+0x25`, and replacement flag `+0x27`. It emits the replacement
+bit in the serialized type, writes the four-byte header, copies `EndPos` bytes,
+and returns `EndPos + 4`. Literal lifted loops compile larger, but a stepwise
+output cursor (`u16 type`, advance two, player, length, payload) plus `std::memcpy`
+reproduces retail's paired `rep movsd`/`rep movsb` and pointer-difference return.
+Empty and seven-byte payload fixtures plus the selected catalog build pass.
+
+Its inverse `009f1870 CGameEvent::InitFromCompressedBuffer` is behavior-complete at
+`DIFFER(118v124)`. It consumes the header stepwise, extracts replacement bit `0x8000`, masks type
+to 15 bits when set, assigns player, clears `EndPos`, sets `Valid`, copies the encoded byte count
+with intrinsic `memcpy`, accumulates `EndPos`, and returns header-plus-payload bytes consumed. Empty
+and seven-byte replacement records pass. Retail zeroes a 32-bit accumulator before loading its low
+word and spills both player and length byte locals; natural VC7.1 retains player in `CL`, while
+volatile/address-forced spill experiments expand to 138/141 bytes. Keep the 118-byte natural form
+bounded. This does not change the existing safety finding: retail trusts the encoded byte length
+and can overwrite the 32-byte payload when fed malformed data.
+
+`SetQuestInfoName @ 0x00891940` was another stale actionable queue entry from the poisoned text-bank
+lift family. Retail constructs and hashes a temporary `CCharString`, obtains an opaque token from
+`0x009CC410`, destroys the string at `0x0099EAE0` before the success branch, then uses a distinct
+stack lookup object with `0x009C9070` and a separately reference-counted bank handle. The generated
+source instead casts the token's upper bits to an unrelated
+`pair<EHeroMorphType,CParticleMorphs::CEntry>`, conflating morph-template and text-bank ownership.
+Both the Wave 3 source and candidate snapshot now carry `RE_AGENT_SEMANTIC_REVIEW`; reconstruct the
+real lookup object/handle ABI from the retail callees before promotion.
+
+`GetHero @ 0x00891CA0` was likewise a fabricated generated lift. Its 173-byte retail body resolves
+`this+0x14` through `0x00449970` and `0x00487DC0`, uses either `0x004C7E50(target,&local)` or the
+`0x008CFF40` fallback, assigns the resulting script thing into `this+0x30` through `0x008AB980`,
+then performs the local shared-handle decrement/destroy/free sequence and reinitializes that local.
+The generated source instead invents six nested alive predicates, a morph pair read from incoming
+`EDI`, and impossible pointer `operator&&` overloads. Both generated copies now carry
+`RE_AGENT_SEMANTIC_REVIEW`; recover the real target-wrapper/shared-handle types before authoring.
+
+`008a9ae0 CGameScriptInterface::MsgOnBoastsMade` is now behavior-complete and bounded at
+`DIFFER(279v352)`. Retail calls the distinct frame accessors at `006e7510` and `006e7530`, obtains
+the message manager from `this->context(+0x04)->+0x60`, allocates a 12-byte list sentinel, and runs
+the `006178f0` most-recent query with message type `0x29`, `HasExtraData`, and the two-frame bound.
+Each result dereferences event `+0x3c`, copies the long at extra-data `+0x00` and the genuine
+`CCharString` at `+0x0c`, then appends an eight-byte pair. The non-growth path uses the copy
+constructor at `0099ec30`; the growth path is the vector receiver helper at `0074fce0`; the local
+string is destroyed by `0099eae0`. It returns true exactly when the temporary result list is
+nonempty and frees every node plus the sentinel. The focused empty, spare-capacity, and growth
+fixture passes. Keep it out of parity totals: the clean VC7.1 reconstruction is shorter because
+retail duplicates the old STL list-cleanup tails and preserves a different register/local schedule.
+
+`00896390 CGameScriptInterface::OpenChest` is removed from the actionable promotion lane pending
+semantic recovery. Although its broad chest/hero branch structure resembles retail, the generated
+source invents inline-assembly `Catch_0040D959` and `_Cons_val @ 00488DC2` register shims for the
+hero-resolution sequence that retail actually calls at `00449970` then `00487DC0`. It also names
+action and physics temporaries from poisoned symbols rather than recovered ownership ABIs. Both
+generated copies carry `RE_AGENT_SEMANTIC_REVIEW`; recover those callees and the `007EE7E0` action
+construction/`006644F0` set-action cleanup contract before authoring this 704-byte function.
+
+`00c93b30 Audio_ApplyGainTableToBuffer` is behavior-complete and bounded at `DIFFER(250v260)`.
+Its recovered fastcall ABI receives the sample-count pointer in `ECX`, input buffer in `EDX`, and
+gain-index buffer, output buffer, and maximum count on the stack (`ret 0x0c`). It clamps work to
+`min(*sampleCount,maxSamples)`, handles groups of four through indexed reads from the global float
+gain table at `013a3948`, processes the scalar remainder, then zero-fills every unprocessed output
+sample through the original total count. The fixture covers a six-of-nine clamp with zero tail,
+the below-four scalar path, and a zero-limit path. Natural VC7.1 output is ten bytes shorter; retail
+uses a different `EBX/ESI/EBP` assignment and pointer-difference schedule, so no parity claim is made.
+
+`0045d264 CActiveFile_AssignVector8` is behavior-complete and bounded at `DIFFER(77v68)`. It is a
+three-argument stdcall helper (`ret 0x0c`): allocate `count * 8` bytes unless count is zero, then
+copy every two-dword element in `[first,last)` into the corresponding allocation slot. Empty range,
+three-element copy, and null-destination/allocation-failure behavior pass. A literal pointer-delta
+lift expands further to 80 bytes; the clearer typed form is retained. Retail delays its `ESI`/`EDI`
+saves until the nonempty branch and compares against the end pointer on the stack, which natural
+VC7.1 does not reproduce.
+
+Two omitted tree-payload allocator members now land exactly with the already-proven family.
+`0045d901 TreeNode_AllocData` is a 34-byte `RELOCATION_MATCH["s"]`: it allocates 24 bytes,
+copies two dwords to `base + 0x10`, returns the allocation base in `EAX`, and cleans its one stack
+argument. `0045e2b1 TreeNode_AllocData_Byte` is the parallel 34-byte
+`RELOCATION_MATCH["s"]`, copying a dword plus the following byte to `base + 0x10/+0x14` while
+preserving the same allocation-base return and stdcall cleanup. Focused payload/return fixtures and
+both selected builds pass. The former extends the two-dword family to seven members; the latter
+establishes the byte-tag specialization without inheriting the generated lift's false `void` return.
+
+Two more byte-tag allocator instances were below the promotion queue's 100-row display cutoff but
+landed from the same proven source: `0045de2f` and `0045e797 TreeNode_AllocData_Byte` are each
+34-byte `RELOCATION_MATCH["s"]` functions. Both allocate 24 bytes, copy the input dword and byte
+to `base + 0x10/+0x14`, return the allocation base, and use stdcall `ret 4`; their focused fixtures
+and selected builds pass. `0045de2f`'s generated cdecl/void declaration was specifically wrong.
+
+`0045deba Map_EraseNode` landed as a 47-byte `RELOCATION_MATCH["s"]`. It preserves the receiver,
+forwards the supplied node plus allocator-base offsets `+4/+8/+0x0c` to the four-argument cdecl
+erase helper, frees a nonnull returned allocation, decrements the receiver count at `+4`, and
+returns with `ret 4`. Both returned-memory and null-return fixtures pass, as does the selected
+build. The first oracle attempt incorrectly used 45 bytes and omitted the three-byte return tail;
+the authoritative boundary is `0045deba..0045dee9` (47 bytes).
+
+A retail-byte family sweep then closed every remaining exact instance of the proven 34-byte
+tree-node allocator grammar. Matching ignored only the four-byte relative displacement of the
+allocator call and required an authoritative manifest start. Twenty-seven two-dword members landed:
+`0045f13d`, `0046149e`, `004615c3`, `004622ec`, `00462411`, `004630e7`, `004e4429`,
+`004e4d19`, `004e4eca`, `004e4fef`, `004e55cf`, `004e597b`, `004e6210`, `004e6623`,
+`004e6748`, `004e9ab1`, `004ec31c`, `004f930a`, `004f9a6e`, `005794a1`, `00580428`,
+`0059388f`, `0059afab`, `005b2029`, `005b206c`, `005f8c1f`, and `005f8c41`. The tagged
+dword-plus-byte member `005baf06` landed as well. Every body is a 34-byte
+`RELOCATION_MATCH["s"]`, every focused fixture and all 28 selected builds pass, and the
+catalog/oracle/source/test/PASS-ledger multiplicity audit reports exactly one artifact per address.
+Parity is now 18,245 compared / 8,066 raw / 10,138 relocation / 41 differing / zero missing.
+
+The same masked-family method closed the 47-byte erase/free member grammar. Ignoring only its two
+relative call displacements, retail contains ten authoritative instances; `0045deba` was already
+landed and the nine uncovered twins are `0042adb6 BinarySearchTree_EraseNode`, `0057926b
+ListNode_RemoveByData`, `00579300 Container_EraseNode`, `0057fe82 Container_EraseAndFree`,
+`005b1d09`/`005b1d71 Container_EraseOne_And_Free`, `005bacbd RBTree_EraseNode`, and
+`005cc0cb`/`005d8417 CMemoryAllocator_RemoveEntry`. Each is a 47-byte
+`RELOCATION_MATCH["s"]` with the same node plus allocator `+4/+8/+0x0c` forwarding, conditional
+free, count decrement, and `ret 4`. All nine focused fixtures and selected builds pass, and the
+one-per-address artifact audit passes. Parity is now 18,254 compared / 8,066 raw / 10,147
+relocation / 41 differing / zero missing.
+
+The structured bounded ledger was also reconciled with thirteen older, already documented residues
+that had leaked back into promotion ranking: `00c20ef0`, `00e7f7d0`, the three 12-byte node
+allocators (`00429fbe`, `00429fe3`, `0042a008`), the range-copy twins (`0045493e`, `0045bcc1`),
+`0045c71c`, `00440d70`, `00440e00`, `00410d80`, `004121d0`, and `00410550`. No parity status
+changed; the refresh now reports 287 promotion candidates, 83 bounded exclusions, and 62 semantic
+quarantines.
+
+The fse2 P1 tail is complete. `00893ec0 CGameScriptInterface::MsgOnHeroSlept`
+landed as a 110-byte `RELOCATION_MATCH` after extending the first frame-limit
+lifetime across the second `GetMaxWorldFrameForMessages` call, which recovered
+retail's saved-`EDI` allocation. Its bound message filter (type `0x42`), most-
+recent lookup, conditional day output, false path, behavior fixture, selected
+build, and one-entry source/test/oracle/ledger audit all pass.
+
+Two batch11 retry rows were boundary corruption rather than codegen failures.
+`00450a90` and `00450a14 _Destroy` each end after 28 bytes; their prior 34/40-
+byte rows had swallowed two/four adjacent `ret 4` thunks. With corrected oracle
+rows, both fastcall `[first,last)` virtual-destroy loops land as size-optimized
+`MATCH`, using element strides `0x54` and `0x40`. Both selected builds and
+multiplicity audits pass.
+
+`0089b450 CGameScriptInterface::ChangeHeroHairstyle` is bounded but unlanded at
+`DIFFER(116v113)`. The resolver/null/flag gates, interface key `0x5e`, lower-bound
+sentinel handling, definition-name lookup, and positive-index appearance replace
+all pass. Retail delays the `ESI` save until the interface-map branch; current
+VC7.1 source saves it at entry. Keep this in the register-scheduling lane.
+
+Queue maintenance is now catalog-aware. `tools/build_reconstruction_backlog.py`
+filters compiled addresses from the hand-ranked fse2 and combined active queues
+while preserving their priority/reason metadata and reranking survivors. The
+first refresh removed 51 stale fse2 rows (74 to 23) and 121 stale combined rows
+(191 to 70); after the two batch11 landings the active queue is 68. P0/P1 fse2
+are complete, and the real remaining fse2 head begins at P2.
+The same refresh now rebuilds `pending_batch_status.tsv` directly from every
+pending batch oracle and the compiled ledger, eliminating the severely stale
+batch counts that previously survived landing waves.
+
+`00898ec0 CGameScriptInterface::SetHeroHandLampAsLit` is bounded at
+`DIFFER(113v114)`. It resolves the hero target, rejects null/flag-bit-zero,
+branches on signed byte `+0x24`, looks up light interface key `0x27` for the
+negative mode, and otherwise reproduces retail's unusual raw argument used as
+both receiver and `SetActive` value. Making the by-value argument volatile
+recovered independent loads and reduced the gap from five bytes to one; the
+remaining difference is pop/receiver call scheduling, so do not land it.
+
+Two more swallowed-oracle rows produced exact wins. `00456010
+~CPatchTesselationEdgeStrip` is 39 bytes rather than 61 and landed as a size-
+optimized `RELOCATION_MATCH`, freeing non-null fields `+0x50` then `+0x3c`
+before tail-calling its base destructor. `00450b1b _Destroy` is 31 bytes rather
+than 94 and landed as a size-optimized `MATCH`; it is the same fastcall virtual-
+destroy range loop with stride `0xc4`. Both selected builds and one-entry
+source/test/oracle/ledger audits pass.
+
+The other corrected batch tails are behavior residues. `0045641a OnDie` is a
+true 39-byte body but compiles as `DIFFER(46v39)` with both RTM and QFE VC7.1:
+free `+0x34`, cleanup `+0x28`, vtable reset, then `(ECX=this, DL=1, stack 0)`
+base forwarding pass, but retail tail-jumps where both compilers call and emit
+an epilogue. `0044fa6d ~CBossDef` is 41 rather than 77 bytes; reverse cleanup
+of `+0x50`, `+0x4c`, and `+0x28` is recovered, while the ordinary generated
+destructor is `DIFFER(62v41)` and does not reproduce retail's custom vtable/
+fastcall tail-destructor sequence.
+
+`00892cf0 CGameScriptInterface::SetCreatureGeneratorsEnabled` is now bounded as
+a custom/live-register residue. The conventional member implementation passes
+whole-world flag updates and positive named-region category updates at
+`DIFFER(92v117)`. Retail's null-string branch, however, saves incoming `ESI`,
+loads only the empty-literal side into `EDI`, and executes a one-byte
+`repe cmpsb` without assigning `ESI` in the function. Preserve that fact: the
+branch has an external live-register precondition (or original undefined-code
+artifact) that an ordinary self-contained C++ member cannot honestly express.
+
+The adjacent creation wrappers are fully decoded, behavior-complete, and exact-
+length residues. `0089fda0 CGameScriptInterface::CreateRumble` is
+`DIFFER(120v120)`. Retail's `ret 0x14` exposed a missing scalar in the lift: its
+five stack dwords are result, position, two scalar factory inputs, and the owned
+name object. The fastcall factory's `DL` input is a byte false (`xor dl,dl`), not
+the previously claimed 32-bit masked argument. `0089fd20 CreatePhysicalBarrier`
+is `DIFFER(123v123)` with null-end-to-start substitution and a fastcall
+start/end/radius factory. Both wrappers correctly assign the name, bind a live
+thing to the script result, construct/zero the fallback result, destroy the owned
+name, and return it. Their only remaining mismatch is the same failure-path
+instruction order: retail publishes the result vtable before materializing the
+name-cleanup receiver; VC7.1 hoists that `lea` immediately after base initialization.
+
+Two adjacent fse2 inventory wrappers landed exactly. `00896e60
+SetPreferredQuickAccessItem` is a 127-byte `RELOCATION_MATCH`: it resolves and
+capability-gates the hero, lower-bounds interface key `0x11`, rejects a null
+inventory, adds the context-sensitive item for slots above `-1`, and removes it
+otherwise. Comparing the returned key to literal `0x11`—rather than reloading
+the local search key—closed the final three bytes. `00898b30
+SetWeaponAsHerosActiveWeapon` is also a 127-byte `RELOCATION_MATCH`, with positive
+definition lookup, hero/interface key `0x13`, inventory-count gating, and active-
+weapon selection with a null component. Both focused fixtures, selected builds,
+and one-entry source/test/oracle/ledger audits pass.
+
+`0088e3d0 MiniMapAllowRouteBetweenRegions` is corrected and bounded at
+`DIFFER(33v33)`. The provider virtual at slot `0x30` consumes the two region
+references plus allow flag and returns a world map; the subsequent world-map
+method takes no arguments, contrary to the lift's duplicated-argument signature.
+Retail preloads allow/region-two and uses `EDX` for the provider vtable, while
+ordinary VC7.1 virtual-call source colors those values across `EDX`/`EAX` in a
+different evaluation order. Keep it in the register-permuter lane.
+
+The paired level-message wrappers are behavior-complete exact-length residues.
+The fse1 retry `00890820 FadeScreenOut` is behavior-complete at
+`DIFFER(85v80)`. It rejects only when target byte `+0xbc` is active and script
+override byte `+0x2d` is clear, otherwise repacks the four color bytes in retail
+order, forwards the two floats plus by-value color to the fade helper, and
+returns true. The remaining five bytes are retail's branch-specific high-word
+color load versus ordinary VC7.1 local-copy scheduling.
+
+The fse1 retry `0089c850 RemoveOpinionDeedStillSearchingForWitnesses` is
+behavior-complete at `DIFFER(77v79)`. It unwraps the entity, requires capability
+`0x20000`, lower-bounds deed-log interface key `0x51`, and forwards the incoming
+`long` to the component removal method while preserving retail's sentinel
+precondition. Its two-byte gap is the same stack-push versus explicit-load
+instruction selection seen in `EntitySetAppearanceSeed`.
+
+The 79-byte opinion setter trio is independently behavior-gated at
+`DIFFER(82v79)` per member: `0089c330 EntitySetOpinionDeedTypeEnabled`,
+`0089c380 EntitySetOpinionAttitudeEnabled`, and `0089c3d0
+EntitySetOpinionReactionEnabled`. Each unwraps the entity, requires the signed
+capability byte at `+0x29`, lower-bounds opinion interface key `0x4f`, and stores
+the incoming bool at the enum index in component arrays `+0x3c`, `+0x24`, and
+`+0x30` respectively. Their common three-byte gap is signed-capability codegen.
+
+The fse1 retry `0089c510 OpinionSourceSetAsAttentionGrabbing` is
+behavior-complete and exact-length at `DIFFER(74v74)`. It unwraps the entity,
+requires capability `0x10000` at `+0x28`, lower-bounds opinion-source interface
+key `0x50`, and stores the incoming bool at component byte `+0x77`. Its old
+sentinel quarantine is the same validated retail precondition as the appearance
+seed and screen-filter wrappers.
+
+`008a0bc0 EntitySetAppearanceSeed` is behavior-complete at `DIFFER(74v76)`.
+It is the setter sibling of `008a0c10`: null/capability gates and interface key
+`3` match, followed by the component seed method. Retail explicitly loads the
+by-value seed into `EDX` before pushing it; RTM VC7.1 pushes the stack value
+directly even when volatile, leaving the two-byte instruction-selection gap.
+
+The fse1 retry `006e7690 DeregisterTimer` is behavior-complete at
+`DIFFER(78v74)`. Its true signature takes one `long` (`ret 4`). The find helper
+always writes the node output, so retail does not initialize that local despite
+the old lift's `foundNode = this`. On a non-head result it calls the raw erase
+helper with the node and head-field addresses `+4/+8/+0xc`, frees a returned
+allocation, and decrements the timer count at `this+0x40`. Four bytes of
+erase/free call scheduling remain.
+
+The fse1 retry `008a0c10 EntityGetAppearanceSeed` is behavior-complete and
+exact-length at `DIFFER(73v73)`. It unwraps the entity, preserves the output on
+null or missing capability bit `0x08` at `+0x20`, lower-bounds appearance
+interface key `3`, and writes component seed `+0x18`. Like `00897150`, retail
+unconditionally dereferences the selected/sentinel entry, confirming the same
+interface-presence precondition rather than requiring an invented guard.
+
+The fse1 retry `00897150
+UnSetThingAndCarriedItemsNotAffectedByScreenFilter` is behavior-complete and
+exact-length at `DIFFER(64v64)`. Its 64-byte oracle boundary is confirmed.
+Retail lower-bounds interface key `0x46`, substitutes the map end sentinel on
+miss, and then unconditionally dereferences entry `+4`; the old
+`possible-end-sentinel-dereference` quarantine therefore describes an actual
+retail precondition, not a lift bug to guard away. The component byte at `+0x1c`
+is cleared when entity capability byte `+0x28` contains `0x40`.
+
+`0089c670 EntityPostOpinionDeedToRecipient` and `0089c710
+EntityPostOpinionDeedToRecipientVillage` are independently behavior-complete at
+`DIFFER(167v160)`. Both unwrap subject and recipient, require recipient type
+byte `+0x10 == 1`, the signed receiver flag at `+0x29`, and subject capability
+`0x20000`, then lower-bound deed-log key `0x51` and reuse that local's low byte
+for deeds 3 through 10. Their only semantic difference is post mode `1` versus
+`4`. The common seven-byte gap is signed-flag/register scheduling.
+
+The other gift classification siblings are independently behavior-gated:
+`00894c90 IsGiftFriendly` is `DIFFER(185v158)` for classification value `0`,
+and `00894d30 IsGiftOffensive` is `DIFFER(184v159)` for value `2`. Both reproduce
+the same outer/inner definition acquisition and all success/failure refcount
+release paths. Their remaining gaps are the same smart-pointer cleanup codegen,
+not inferred parity from the romantic member.
+
+`00894bf0 IsGiftRomantic` is behavior-complete at `DIFFER(184v159)`. It resolves
+the gift definition, obtains the outer gift def and inner classification subdef,
+tests classification field `+0x28` for romantic value `1`, and reproduces both
+reference-count release paths including virtual slot-`0x04` destruction.
+Explicit refcount temporaries improved the generated body by ten bytes; the
+remaining 25-byte gap is smart-pointer cleanup codegen. Friendly/offensive are
+structural siblings but remain fresh until independently gated.
+
+`00893b00 MsgOnExpressionPerformed` is behavior-complete at
+`DIFFER(154v151)`. It calls both distinct retail world-frame accessors
+(`006e7510` reads frame field `+0x18`; `006e7530` reads `+0x1c`), assembles the
+type-`0x2a` nested filter, finds the newest message, resolves its definition
+index at event `+0x3c`, looks up the expression string, assigns the output, and
+destroys the temporary. The remaining three bytes are filter-local scheduling.
+
+`0089c7b0 EntityPostOpinionDeedKeepSearchingForWitnesses` is behavior-complete
+and exact-length at `DIFFER(147v147)`. It unwraps the subject, capability-gates
+bit `0x20000`, lower-bounds deed-log interface key `0x51`, converts deed types
+3 through 10 to the keep-searching flag, unwraps the witness, obtains the
+subject position, and posts deed type `7`. Modeling the boolean-looking ABI
+slots as dwords preserved retail's reuse of the key local and closed a nine-byte
+gap; only register/evaluation order differs.
+
+`0089fc80 CreateExplosion` is behavior-complete at `DIFFER(150v147)`. The
+correct hidden-result ABI resolves a positive definition, dispatches the
+two- or three-argument fastcall factory based on the optional velocity, rejects
+flagged results, assigns the owned trailing vector into explosion `+0x74`,
+binds the script result, and destroys that owned vector on both success and
+fallback paths. Its remaining three bytes are the same fallback-initialization
+scheduling residue as the adjacent creation wrappers.
+
+`0088f570 Play2DSound` is behavior-complete at `DIFFER(150v147)`. It resolves
+the symbol through the global sound bank, returns global `0x0129d25c` on a zero
+index, builds retail's eight-dword `1,1,0,1,1,0x8010,0,-1` parameter block,
+gets the player through provider virtual slot `0x24`, and invokes player slot
+`0x0c`. The remaining three bytes are parameter-store/register scheduling.
+
+`00896120 TryToRespawnDefNamed` is corrected and behavior-complete at
+`DIFFER(146v143)`. Retail's `ret 0x10` and initial `[esp+8]` virtual call prove
+the lift omitted a source `CScriptThing const&` parameter between the hidden
+result pointer and the definition name. The wrapper unwraps that source,
+capability-gates it, lower-bounds village interface key `0x22`, attempts the
+name/position respawn, binds a successful creature into the result, or builds
+the zero/null script-thing fallback with vtable `0x01238c8c`. Only three bytes
+of result-initialization scheduling remain.
+
+`00897190 GetNumberOfItemsOfTypeInInventory` is behavior-complete at
+`DIFFER(139v137)`. It resolves the positive definition index, gates the entity,
+uses inventory interface key `0x11` when capability bit `0x20000` is set, and
+otherwise reproduces retail's unusual fallback receiver at the incoming name
+reference. The remaining two bytes are optimized instruction selection.
+
+`008953a0 IsHeroPerformingExpression` and `008955c0 IsEntityFollowingHero` are
+behavior-complete bounded residues. The expression wrapper is
+`DIFFER(151v136)`: hero resolution and gates, interface key `0x8f`, empty-name
+success, expression query, and iterator-content test all pass. The following
+wrapper is `DIFFER(143v136)`: entity validity/unwrap, hero capability gate,
+interface key `0xbc`, null-component handling, and follower query all pass.
+Replacing fixed-address function pointers with ordinary member declarations
+improved both candidates, leaving only VC7.1 register lifetime and branch/code
+shape differences. Scratch workflow/oracle: `rebuild/build/expression_follow.json`
+and `rebuild/build/expression_follow_oracle.tsv`.
+
+`008931b0 MsgIsLevelLoaded` and `00893240 MsgIsLevelUnloaded` are each
+`DIFFER(135v135)`, differing in retail only by call relocations and event code
+`0x24` versus `0x25`. The recovered machine ABI treats the apparent reference
+as a mutable pointer stack slot, which retail reuses for that event code after
+map lookup. Both preserve the nonzero map number in `EDI`, preserve the first
+frame limit in `EBX` across the second frame call, assemble the three-pointer
+message filter, and convert the returned message pointer to bool. Their remaining
+delta is only the register/store schedule used to materialize the filter locals.
+
+`00891070 CameraUseCameraPoint` is behavior-complete at `DIFFER(75v83)`. The
+reviewed reconstruction resolves only the second `CScriptThing`, returns solely
+for a null resolved thing or null camera component at `CThing+0x60`, obtains the
+right-handed orientation through component vtable slot `+0x120`, and forwards
+the component position at `+0x0c` through interface vtable slot `+0x66c`.
+This explicitly excludes the invented `CThing+0x91` flag branch identified in
+the earlier semantic review. The remaining eight bytes are VC7.1 register and
+stack scheduling residue. Scratch workflow/oracle:
+`rebuild/build/camera_use_camera_point.json` and
+`rebuild/build/camera_use_camera_point_oracle.tsv`.
+
+`008961b0 ClearHeroEnemyOfGuards` is behavior-complete at exact-length
+`DIFFER(83v83)`. It resolves the supplied script thing, rejects null and owner
+flag bit `+0x91:0`, requires capability bit `+0x24:2`, lower-bounds interface
+key `0x22`, preserves retail's selected-end sentinel dereference precondition,
+and clears the component dword at `+0xd4`. The byte delta is only register and
+store scheduling. Scratch workflow/oracle:
+`rebuild/build/clear_hero_enemy_guards.json` and
+`rebuild/build/clear_hero_enemy_guards_oracle.tsv`.
+
+`0089e130 EntitySetMaxNumberOfAttackers` is behavior-complete at exact-length
+`DIFFER(83v83)`. It resolves the supplied entity, rejects null and owner flag
+bit `+0x91:0`, requires capability bit `0x400000` at `+0x24`, lower-bounds
+interface key `0x36`, preserves retail's selected-end sentinel dereference
+precondition, and stores the incoming maximum at component `+0x44`. Only the
+register/store schedule differs. Scratch workflow/oracle:
+`rebuild/build/set_max_attackers.json` and
+`rebuild/build/set_max_attackers_oracle.tsv`.
+
+`00896060 SetVillageLimbo` is behavior-complete at `DIFFER(83v85)`. It resolves
+the supplied village thing, rejects null and owner flag bit `+0x91:0`, requires
+capability bit `+0x24:2`, lower-bounds interface key `0x22`, preserves the
+selected-end sentinel dereference precondition, and forwards the incoming bool
+to `CTCVillage::SetVillageLimbo`. The remaining two bytes are call/register
+scheduling. Scratch workflow/oracle: `rebuild/build/set_village_limbo.json` and
+`rebuild/build/set_village_limbo_oracle.tsv`.
+
+`00896270 EnableGuards` is behavior-complete at `DIFFER(83v85)`. It is the
+same resolver, eligibility, interface-`0x22`, and selected-end sentinel shape
+as `SetVillageLimbo`, then forwards the incoming bool to
+`CTCVillage::EnableGuards`. The matching two-byte residue is call/register
+scheduling. Scratch workflow/oracle: `rebuild/build/enable_guards.json` and
+`rebuild/build/enable_guards_oracle.tsv`.
+
+`008978e0 EntitySetAsAbleToRegionFollowWhenMarried` is behavior-complete at
+exact-length `DIFFER(86v86)`. It resolves the supplied entity, rejects null and
+owner flag bit `+0x91:0`, requires capability bit `0x00800000` at `+0x38`,
+lower-bounds interface key `0xd7`, preserves retail's selected-end sentinel
+precondition, and stores the incoming bool at component `+0x1c`. Only register
+and store scheduling differs. Scratch workflow/oracle:
+`rebuild/build/set_region_follow_married.json` and
+`rebuild/build/set_region_follow_married_oracle.tsv`.
+
+`00898fa0 GetHeroGold` is behavior-complete at exact-length `DIFFER(86v86)`.
+It resolves the hero through the two chained member helpers rooted at
+`this+0x14`, returns zero for null/ineligible heroes, requires capability bit
+`+0x20:4`, lower-bounds interface key `4`, preserves the selected-end sentinel
+precondition, and returns the component dword at `+0x3c`. The remaining byte
+delta is register/local scheduling. Scratch workflow/oracle:
+`rebuild/build/get_hero_gold.json` and
+`rebuild/build/get_hero_gold_oracle.tsv`.
+
+`00895130 SetTrapAsActive` is corrected and behavior-complete at exact-length
+`DIFFER(88v88)`. The generated snapshot incorrectly ignored its `CScriptThing`
+argument and resolved through `this`; retail begins from `[esp+4]` and resolves
+the supplied thing through slot `+0x2c`. It then requires only capability bit
+`0x20000000` at target `+0x2c` (there is no `+0x91` gate), lower-bounds
+interface key `0x7d`, preserves the selected-end sentinel precondition, and
+dispatches to the adjacent active/inactive trap member helpers based on the
+incoming bool. Only register and branch scheduling differs. Scratch
+workflow/oracle: `rebuild/build/set_trap_active.json` and
+`rebuild/build/set_trap_active_oracle.tsv`.
+
+`00897880 GetHeroTitle` is behavior-complete at exact-length
+`DIFFER(88v88)`. It shares the two-hop hero resolver with `GetHeroGold`, rejects
+null/ineligible heroes, requires capability bit `0x200` at `+0x24`,
+lower-bounds interface key `0x29`, preserves the selected-end sentinel
+precondition, and returns the title enum stored at component `+0x10`. Only
+register/local scheduling differs. Scratch workflow/oracle:
+`rebuild/build/get_hero_title.json` and
+`rebuild/build/get_hero_title_oracle.tsv`.
+
+`0089ef30 SetMoralityChangingAsEnabled` is behavior-complete at exact-length
+`DIFFER(88v88)`. It uses the two-hop hero resolver, rejects null/ineligible
+heroes, requires capability bit `+0x20:4`, lower-bounds interface key `4`,
+preserves the selected-end sentinel precondition, and stores the incoming bool
+at component `+0x2c`. The delta is register/local scheduling only. Scratch
+workflow/oracle: `rebuild/build/set_morality_changing.json` and
+`rebuild/build/set_morality_changing_oracle.tsv`.
+
+`008a0f70 SetReadableObjectText` is behavior-complete at exact-length
+`DIFFER(88v88)`. It resolves the supplied script thing, rejects null and owner
+flag bit `+0x91:0`, requires capability bit `0x2000` at `+0x20`, lower-bounds
+interface key `0x0d`, preserves the selected-end sentinel precondition, and
+assigns the incoming `CWideString` into component field `+0x18`. Only register
+and call scheduling differs. Scratch workflow/oracle:
+`rebuild/build/set_readable_text.json` and
+`rebuild/build/set_readable_text_oracle.tsv`.
+
+`00897c90 GetNumberOfTimesHeroHasHadSex` is behavior-complete at exact-length
+`DIFFER(89v89)`. It uses the two-hop hero resolver, the standard null/`+0x91`
+and `+0x20:4` eligibility gates, lower-bounds hero-stats interface key `4`,
+preserves the selected-end sentinel precondition, and returns dword `+0x154`.
+Only register/local scheduling differs. Scratch workflow/oracle:
+`rebuild/build/get_hero_sex_count.json` and
+`rebuild/build/get_hero_sex_count_oracle.tsv`.
+
+`008962d0 EnableVillagerDefTypes` is behavior-complete at `DIFFER(88v90)`.
+It resolves the supplied village thing, applies the standard `+0x91:0` and
+`+0x24:2` gates, lower-bounds village interface key `0x22`, preserves the
+selected-end sentinel precondition, and forwards the incoming bool and
+definition-name reference to `CTCVillage::EnableVillagerDefTypes`. The
+remaining two bytes are call/register scheduling. Scratch workflow/oracle:
+`rebuild/build/enable_villager_def_types.json` and
+`rebuild/build/enable_villager_def_types_oracle.tsv`.
+
+`00897090 SetWhetherToFailQuestOnDeath` is behavior-complete at exact-length
+`DIFFER(91v91)`. It uses the two-hop hero resolver, standard hero-stats gates,
+interface key `4`, and the selected-end sentinel precondition, then stores the
+incoming bool at component `+0x174`. Only register/local scheduling differs.
+Scratch workflow/oracle: `rebuild/build/set_fail_quest_on_death.json` and
+`rebuild/build/set_fail_quest_on_death_oracle.tsv`.
+
+The hero-history setter trio is behavior-complete at exact-length
+`DIFFER(91v91)` for every member. `00897cf0 SetNumberOfTimesHeroHasHadSex`
+stores the incoming dword at hero-stats `+0x154`; `00897d50
+SetHeroAsHavingHadSex` stores its bool at `+0x158`; and `00897db0
+SetHeroAsHavingHadGaySex` stores its bool at `+0x159`. All share the proven
+two-hop hero resolver, eligibility gates, interface-key-4 lower-bound, and
+selected-end sentinel precondition. Their remaining deltas are register/local
+scheduling. Scratch workflows/oracles: `rebuild/build/set_hero_sex_count.json`,
+`rebuild/build/set_hero_had_sex.json`, and
+`rebuild/build/set_hero_had_gay_sex.json` with their matching `_oracle.tsv`
+files.
+
+`00898540 SetGuardsIgnoreCrimes` is behavior-complete at exact-length
+`DIFFER(91v91)`. It uses the two-hop resolver, rejects null/blocked targets,
+requires capability bit `0x20000` at `+0x28`, lower-bounds interface key
+`0x51`, preserves the selected-end sentinel precondition, and stores the
+incoming bool at component `+0x2d`. Its byte residue is the same register/local
+scheduling family as `SetWeaponOutCrimeEnabled`. Scratch workflow/oracle:
+`rebuild/build/set_guards_ignore_crimes.json` and
+`rebuild/build/set_guards_ignore_crimes_oracle.tsv`.
+
+`008a1650 GetBestScoreBlackjack` is behavior-complete at exact-length
+`DIFFER(94v94)`. It uses the two-hop hero resolver, standard hero-stats gates,
+interface key `4`, and selected-end sentinel precondition, then loads the float
+at component `+0x180` and converts it to long through VC7.1's conversion
+helper. Only register/local scheduling differs. The adjacent score getters use
+the same body with fields `+0x184`, `+0x188`, and `+0x18c`. Scratch
+workflow/oracle: `rebuild/build/get_best_score_blackjack.json` and
+`rebuild/build/get_best_score_blackjack_oracle.tsv`.
+
+The remaining score getter trio is also behavior-complete at exact-length
+`DIFFER(94v94)` for every member. `008a16b0 GetBestScoreCoinGolfOakVale`,
+`008a1710 GetBestScoreCoinGolfSnowSpire`, and `008a1770
+GetBestScoreShoveHaPenny` use hero-stats float fields `+0x184`, `+0x188`, and
+`+0x18c` respectively, with the same resolver, key-4 sentinel lookup, and
+VC7.1 float-to-long conversion as Blackjack. Only register/local scheduling
+differs. Scratch workflows/oracles are `rebuild/build/get_best_score_oakvale*`,
+`rebuild/build/get_best_score_snowspire*`, and
+`rebuild/build/get_best_score_shove*`.
+
+`0088ead0 EntitySetAsDamageable` is behavior-complete at `DIFFER(97v95)`.
+It calls script-thing predicate slot `+0x12c`, resolves through slot `+0x2c`,
+requires thing flag `+0x6c:1`, replaces only bit 0 at thing `+0xbc` from the
+incoming bool, and notifies interface vtable slots `+0x838` and `+0x83c` in
+order with the same entity/bool pair. The remaining two bytes are register and
+call scheduling. Scratch workflow/oracle:
+`rebuild/build/entity_set_damageable.json` and
+`rebuild/build/entity_set_damageable_oracle.tsv`.
+
+`00899000 GiveHeroExperience` is behavior-complete at `DIFFER(93v95)`. It uses
+the two-hop hero resolver, rejects null/blocked targets, requires capability
+bit `0x100` at `+0x2c`, lower-bounds interface key `0x68`, preserves the
+selected-end sentinel precondition, and forwards the incoming amount to
+`CTCHeroExperience::AddExperience`. The remaining two bytes are call/register
+scheduling. Scratch workflow/oracle: `rebuild/build/give_hero_experience.json`
+and `rebuild/build/give_hero_experience_oracle.tsv`.
+
+`008a12a0 GetNumHousesOwned` landed as a 95-byte `RELOCATION_MATCH` with
+behavior and selected build PASS. It uses the two-hop hero resolver, standard
+hero-stats eligibility gates and interface-key-4 sentinel lookup, then returns
+the sum of component dwords `+0xe4` and `+0xe0` in retail order. Workflow and
+oracle: `rebuild/build/get_num_houses_owned.json` and
+`rebuild/build/get_num_houses_owned_oracle.tsv`.
+
+The post-FSE1 queue audit found that all 21 rows in
+`rebuild/backlog/fse2_remaining_ranked.tsv` already have explicit
+behavior-complete bounded entries in this handoff. The first three rechecked
+rows remain `ChangeHeroHairstyle DIFFER(116v113)`, `SetHeroHandLampAsLit
+DIFFER(113v114)`, and `SetCreatureGeneratorsEnabled DIFFER(92v117)`; ranks 4
+and 5 are the already documented exact-length creation residues. Treat this
+TSV as an unlanded-residue ledger, not an actionable retry queue. With FSE1
+retries exhausted too, the next offline work source is the non-quarantined
+promotion queue, beginning with the small `0088f480 ApplyScriptBrush`
+candidate rather than reopening bounded permutations.
+## 2026-08-26 promotion-queue disposition repair
+
+`tools/build_promotion_queue.py` now consumes `rebuild/backlog/active_candidate_queue.tsv` and
+excludes candidates whose parity attempt is already classified `bounded`. This removed 61 real
+catalog overlaps (318 uncompiled candidates remain, including the quarantined tail) instead of repeatedly resurfacing documented
+same-semantics compiler residue such as `ApplyScriptBrush` and `DeregisterTimer`. The generated
+report exposes the exclusion count and no longer duplicates module names when the candidate name is
+already qualified.
+
+`SetThingAsConscious @ 0x008A9610` was the next apparent small candidate, but the earlier review
+already established that its BSim-derived GUI/lightning action constructor/destructor identities
+are not credible. Both its Wave 3 source and candidate snapshot now carry the established
+`RE_AGENT_SEMANTIC_REVIEW` marker, placing it in quarantine until those identities are recovered
+from retail. No game or visual/runtime test was launched.
+
+The next candidate, `RemoveAllCutSceneSkippedMessages @ 0x0089AF30`, was reconstructed directly
+against its 182-byte retail body. Its focused fixture covers the type-`0x32` query result, removal
+of a matching manager entry, preservation of unmatched entries, virtual destruction, entry free,
+and complete temporary-list cleanup. VC7.1 produces an exact-length `DIFFER(182v182)` with behavior
+PASS; the remaining differences are local-initialization and cleanup register scheduling. A direct
+`std::list` spelling was also tested and rejected because VC7.1 expands it to a materially larger
+body with out-of-line iterator/container helpers. The exact-length hand-inlined form is now a
+bounded permuter residue in the active queue.
+
+This pass also fixed two parity-harness defects. The three authoring verifiers now decode only the
+five actual XML markup entities rather than applying blanket `html.unescape()`, which corrupted
+valid C++ `&empty;` tokens into Unicode U+2205. `verify_and_land.py` additionally accepts an isolated
+scratch root through `LANDVERIFY_WORK`, preventing concurrent same-address verification collisions.
+
+`ChangeHeroHealthBy @ 0x00891720` then landed as a 201-byte `RELOCATION_MATCH`. Byte-led review
+corrected the generated parameter semantics: the first boolean is passed to virtual slot `0xEC`
+and gates construction of the `0xAC`-byte `CCreatureAction_StabbedToDeath` temporary, whereas the
+second boolean independently gates the negative-amount GUI notification. Null resolution, blocked
+hero, independent flag combinations, strict death threshold, temporary construct/set/destruct,
+positive damage magnitude, and the selected catalog build pass.
+
+That review also disproved the landed name at `0x00437940`. Its complete 11-byte body is a
+`CPlayerGui::AddDamageChange(float,bool)` tail forwarder: load the `NPlayerGui::CDrawDamage*` at
+`CPlayerGui + 0x1C0`, then jump to donor-identified `CDrawDamage::AddDamageChange @ 0x006472B2`.
+`rebuild/corrections/function_overrides.tsv` now carries the corrected prototype, the compiled
+source expresses the real owner/target relationship, and a two-case forwarding fixture replaces
+the former unconditional PASS placeholder. Its selected build retains relocation-normalized exact
+parity. No game or visual/runtime test was launched.
+
+The required bootstrap/refresh also consumed the current workspace's accumulated gap-scan and
+Wave 3 inputs: the function manifest is now **57,097 unique, address-sorted rows**, and `_gapscan`
+falls from the prior 7,529 checkpoint to **4,290** as discovered boundaries are promoted into named
+or candidate rows. This is a deterministic manifest expansion rather than an address collision;
+the duplicate-address audit is zero. Promotion state is now 316 uncompiled candidates, 62 bounded
+exclusions, and 47 semantic-review quarantines. Retail parity reports cover 18,204 compiled objects
+with 8,063 raw matches, 10,100 relocation matches, 41 differences, and zero missing oracles.
+
+The promotion hazard detector now recognizes any assigned pointer field ending in `End` or
+`Sentinel`, not only the earlier `m_p...End` spelling. This correctly quarantined
+`CheckForCameraMessage @ 0x006E7920`: retail's failed type-`0x3F` lookup selects the interface-map
+end sentinel and reads its `+4` value, adjacent to a dead `xor al,al; jne` sequence. The generalized
+rule found nine additional previously missed sentinel-dereference candidates; semantic quarantine
+rose from 47 to 57.
+
+`PlaySoundAtPos @ 0x00891170` is now behavior-complete at exact-length `DIFFER(164v164)`. The
+fixture covers zero/nonzero sound lookup, null/blocked emitter gates, all eight `CSoundInit` fields,
+success propagation, and the invalid-handle fallback. Retail review also corrected a poisoned
+four-method cluster: `0x00836810` is `CThingSoundEmitter::PlaySample`, `0x00836840` is
+`PlaySoundEvent`, `0x00836870` is `IsSamplePlaying`, and `0x008368A0` is
+`IsSampleLoadedAndPlaying`, matching consecutive Ego donor symbols and retail stack cleanup. The
+wrapper's only remaining difference is free `ECX`/`EDX` coloring for the retained sound-global
+pointer, so it is bounded rather than landed.
+
+`CPlayerManager::IsMultiplayerGameActive @ 0x00449D20` then landed as a 111-byte
+`RELOCATION_MATCH`. The crucial source shape is the vector-like player store at `+0x0C..+0x10`:
+calling its inlined `size()` and indexed access reproduces retail's begin-pointer reload and
+alignment NOP exactly. The fixture covers empty and sparse stores, main/neutral-player exclusion,
+null and blocked activity objects, and a valid non-main seated player; the selected catalog build
+passes. This is reconstruction of the genuine retail predicate only and does not claim that the
+incomplete multiplayer systems it gates are safe to activate.
+
+`CNetworkClient::InitialiseAsLocal @ 0x004AE940` then landed as a 74-byte
+`RELOCATION_MATCH`. Failure leaves client state unchanged; success clears `+0x2661`, pointers at
+`+0x2664/+0x2668`, and frame `+0x266C`, stores the component at `+0x2678`, and sets
+`+0x2662/+0x2660`. The selected build and focused fixture pass. Direct retail rel32 decoding also
+resolves its first call to `0x0099A350`; that six-byte callee sets `this+4=1` and returns true.
+`0x4EBA10` was only the old base-zero disassembly rendering. The callee's BSim `CXMVPlaybackInfo`
+class label remains rejected, so the reconstruction names it only as an unnamed network-base
+initializer.
+
+`MsgOnGameSavedManually @ 0x00893E70` is behavior-complete at exact-length
+`DIFFER(80v80)`. Retail calls the distinct frame accessors at `0x006E7510` (`+0x18`) and
+`0x006E7530` (`+0x1C`), stores both in the eight-byte visibility filter, binds that filter to
+type `0x3E`, and returns whether `FindMostRecentMessage` succeeds. The generated snapshot had
+incorrectly modeled one frame accessor called twice and a one-long visibility filter. Inline filter
+constructors recover retail's stack layout and all instruction shapes; only the order of three
+independent local stores remains different, so the corrected form is bounded.
+
+`SetQuestInfoText @ 0x00891A00` was a stale promotion-queue entry despite the earlier retail review
+rejecting its generated source. Both the Wave 3 source and candidate snapshot now carry
+`RE_AGENT_SEMANTIC_REVIEW`: the lift mixes an unrelated morph-entry allocator/template into the
+text-bank path, aliases parameter storage as incompatible temporaries, and destroys the wrong local.
+It remains quarantined until a byte-led reconstruction replaces those invented identities.
+
+`MsgIsTutorialClickedPast @ 0x008943C0` is behavior-complete at exact-length
+`DIFFER(125v125)`. Retail returns true without querying when the global byte at `0x01375740` is
+clear. When set, it calls `0x0040D2A0`, uses manager byte `+0x0C` to select the enable byte at
+`+0xD7` (nonzero selector) or `+0x17` (zero selector), and again returns true when the selected
+byte is clear. Only the enabled path calls the distinct `0x006E7510`/`0x006E7530` frame accessors,
+builds the type-`0x12` two-bound filter, and returns whether `FindMostRecentMessage` succeeds. The
+focused fixture covers all gate selections, default-true exits, and query outcomes; the exact-size
+VC7.1 result is retained as a bounded compiler-scheduling residue rather than falsely landed.
+
+`CameraDefault @ 0x00890FF0` then landed as a 115-byte `RELOCATION_MATCH`. It resolves a camera
+target through the global owner at `0x013B86A0 + 0x1C` and helpers `0x00449970`/`0x00487DC0`;
+null targets and targets with flag bit 0 at `+0x91` set return without touching the interface's
+layer counter. Accepted targets obtain the camera manager through the provider at
+`this->world + 0x34`, vtable slot `0x24`. A negative counter calls `0x00698950` to release scripted
+control and stores `-1`; a nonnegative counter calls `0x0069A990` to reset the camera, invokes the
+interface virtual slot `0x1C` exactly `counter + 1` times while decrementing, and stores `-1`.
+The focused fixture covers rejection, negative, zero, and multi-layer paths, and the selected
+catalog build passes. The invalid generated `do` loop (a body-scoped local referenced by its
+condition) was replaced by the genuine counter-driven form. No game or visual/runtime test ran.
+
+`CProcessedInput::AddGameEvent @ 0x00A0D340` then landed as a raw 71-byte `MATCH`. Retail treats
+`CProcessedInput + 0x08` as four inline 40-byte `CGameEvent` slots, indexes them with the unsigned
+byte at `+0xA8`, sets processed-event type `1` at `+0x04`, copies the full event with ten dwords,
+overwrites copied byte `+4` with the processed-input player byte at `this+0`, and increments the
+count byte. The natural aggregate assignment emits retail's `rep movsd`; source order matters,
+with `type = 1` preceding the indexed copy even though VC7.1 schedules the store after destination
+address calculation. The fixture verifies slot isolation, all non-player bytes, the player
+override, count/type updates, and the selected catalog build passes.
+
+`CMainGameComponent::CheckSync @ 0x004165E8` is behavior-complete at `DIFFER(132v134)`, confirming
+that the retail function is intentionally gutted rather than merely mistranslated. It calls
+`PeekWorldChecksum`, iterates the package count, filters event type `1`, copies each matching event
+into a 32-byte buffer, reads three four-byte values, and discards every value without comparison or
+state update. Direct executable review corrects the generated helper map: count `0x009F16E0`,
+indexed event `0x009F16D0`, copy-to-buffer `0x009F17A0`, and buffer read `0x009F18F0`. The focused
+fixture covers empty packages, non-sync events, sync-event visitation, and all three reads. Retail
+combines an optimized loop with a retained frame pointer and only saved `ESI`; the closest natural
+VC7.1 member spelling omits the frame pointer and is two bytes shorter, while forcing `Oy-` retains
+an extra package register and grows the body. Keep it bounded; do not confuse the future co-op
+checksum implementation with retail parity.
+
+`CGameEventPackageSet::CompressIntoBuffer @ 0x009F19A0` then landed as a raw 215-byte `MATCH`.
+This corrects the generated event overlay: the 40-byte event is `long Type` at `+0`, `Player` at
+`+4`, 32 payload bytes at `+5`, `EndPos` at `+0x25`, `Valid` at `+0x26`, and `Replacement` at
+`+0x27`; there is no separate event-ID field followed by a type byte. The package-set stream starts
+with one package-count byte. Each package contributes one event-count byte and its four-byte
+sequence, followed by records `[u16 low(Type)|Replacement<<15][u8 Player][u8 EndPos][payload]`.
+Retail keeps biased cursors at package `EventCount` and event `Player`, which explains its negative
+sequence/type loads; the reconstruction expresses those cursors without falsifying the public
+layout. `std::memcpy` is essential for VC7.1's `rep movsd/rep movsb` lowering. The focused fixture
+covers empty sets, an empty second package, replacement-bit encoding, a five-byte payload, exact
+offset/length accounting, and the selected catalog build passes.
+
+`CNetworkClient::GetLocalGameEventPackageSet @ 0x004AEAA0` then landed as a 252-byte
+`RELOCATION_MATCH[/GS]`. Retail initializes a stack `CGameEvent` with player `0xFF` and valid byte
+zero, calls `CMainGameComponent::IsTimeForServerUpdate(this->LocalFrame) @ 0x0041674A`, and proceeds
+only when the returned byte is exactly `1`. The success path creates type `1`, valid `1`,
+non-replacement event data by appending checksum1 (`+0x2670`), checksum2 (`+0x2674`), and the old
+frame (`+0x266C`) as three four-byte values through `CGameEvent::Append @ 0x009F1760`. It increments
+the frame, adds the event to the inline local package at `+0x2010`, stores the incremented frame as
+that package's sequence, initializes the caller's package set (`0x009F1720`), copies the local
+package into it (`0x009F16F0`), and clears the local package count (`0x009F16C0`). The generated lift
+had modeled the append receiver as an inner byte buffer; retail passes the complete event. The
+fixture covers false and noncanonical-true gate bytes, ordered payload values, old/new frame roles,
+output initialization/copy, local clear, and selected `/GS` build.
+
+`CMainGameComponent::UpdateFromEventPackageSet @ 0x0041726D` is behavior-complete at exact-length
+`DIFFER(189v189)`. Direct retail review corrects the generated package-set helper addresses to
+`GetCount @ 0x009F1750` and `GetPackage @ 0x009F1730`. For each package whose sequence is strictly
+greater than `InputServerFrame +0x4C`, it processes events, computes the caught-up boolean from the
+old `InputServerFrame == CurrentServerFrame`, sets byte `+0x161E1` when caught up, forwards the
+package/boolean to `CWorld::Update`, confirms display feedback, assigns the package sequence to the
+input frame, assigns `max(CurrentServerFrame, sequence)` to `+0x48`, obtains the world checksum,
+and calls the embedded `CNetworkClient @ +0x13AB8` with `(frame, checksum, WorldSeed +0x1613C)`
+before `CDisplayEngine::WorldUpdate`. The generated layout's seed/flag offsets are correct only when
+the opaque embedded-client span is padded through `+0x1613C`; an initial authored overlay exposed
+and corrected an eight-byte shortfall. The fixture covers stale/equal/new packages, caught-up and
+not-caught-up paths, monotonic current-frame behavior, and all downstream call counts. Remaining
+differences are the loop-index/current-package register assignment and equivalent local scheduling.
+
+The 26-byte linked-list node allocator residue is now complete across the retail image. A masked
+scan that ignores only the allocator-call displacement finds eight authoritative bodies. In addition
+to `00429fbe`, `00429fe3`, and `0042a008`, focused verification now covers `00493a40`, `0053c879`,
+`0057f525`, `00592ad3`, and `005f807c`; all five additions are behavior PASS and exact-length
+`DIFFER(26v26)`. Each allocates 12 bytes and copies the source dword to `base + 8`; retail's
+`pop ecx; lea ecx,[eax+8]; test ecx` versus the compiler's folded address test remains the common
+bounded residue. The structured ledger now accounts for all eight family members (91 total rows).
+After refresh, parity remains 18,254 compared / 8,066 raw / 10,147 relocation / 41 differing / zero
+missing, and the promotion queue reports 280 candidates, 84 bounded exclusions, and 62 semantic
+quarantines. No game, visual, or runtime test was launched.
+
+The compact list unlink/free family is also complete. Masking only the `free` call relocation in
+`00429ab9` finds seven authoritative bodies; the four uncovered `std_list_node_unlink[_and_free]`
+twins at `0053c7b9`, `00655125`, `006553d0`, and `006553fd` are now behavior PASS,
+`RELOCATION_MATCH["s"]`, landed, and selected-build PASS. The 7/7 rescan confirms complete coverage.
+Aggregate parity advances to 18,369 compared / 8,066 raw / 10,262 relocation / 41 differing / zero
+missing. No game, visual, or runtime test was launched.
+
+The buffer-move completeness scan found 42 exact 58-byte retail bodies after masking only the
+`memmove` relocation, but just four are authoritative manifest starts and all four were already
+landed. The remaining 38 are intentionally discovery-only pending a separate boundary-import audit.
+
+The 37-byte list-insert family is now complete for authoritative scope: 34 retail hits, 33 accepted
+starts, and 33 landed. Ten new starts had list-consistent names; 20 more had poisoned propagated
+`luaV_Cclosure` or creature-action identities that the exact splice/`ret 12` body disproves.
+`function_overrides.tsv` now assigns those 20 neutral address-unique `ListNode_InsertBefore_*`
+names. All 30 additions are behavior PASS, relocation matches, multiplicity-clean, and individual
+selected-build PASS. Aggregate parity is now 18,399 compared / 8,066 raw / 10,292 relocation / 41
+differing / zero missing. No game, visual, or runtime test was launched.
+
+The polymorphic range-cleanup family is now complete at 19/19 authoritative starts. Twelve accepted
+`_gapscan` bodies with generic `sub_*` labels exactly match the proven 63-byte grammar after masking
+only free/delete relocations. They now carry neutral `PolymorphicRangeCleanup_<address>` overrides,
+are behavior PASS for null and three-entry destruction, relocation matches, multiplicity-clean, and
+selected-build PASS. The task list also reconciles the earlier stale tree-payload count from 6 to the
+already proven 34-member family. Aggregate parity is now 18,411 compared / 8,066 raw / 10,304
+relocation / 41 differing / zero missing. No game, visual, or runtime test was launched.
+
+The compact tree/vector wrapper audit found no tree-lookup gaps: each embedded-tree layout has its
+single authoritative body landed. The vector-copy body has 25 additional non-manifest exact twins,
+retained as discovery-only. The vector push-back grammar did expose one authoritative twin:
+`0044bff0 std::vector::push_back` is now behavior PASS for spare-capacity and growth paths, a
+59-byte relocation match, landed, and selected-build PASS. Its family is 2/2 complete. Aggregate
+parity is now 18,443 compared / 8,066 raw / 10,336 relocation / 41 differing / zero missing. No
+game, visual, or runtime test was launched.
+
+The 26-byte list push-front wrapper family is now complete at 33/33 authoritative starts. Thirty-one
+uncovered bodies had propagated Lua/UI/action/change-log labels that their byte-identical frame,
+iterator-copy, inner-insert call, and `ret 4` contract disprove. They now carry neutral
+`ListPushFrontWrapper_<address>` overrides; all are behavior PASS, `RELOCATION_MATCH["s"]`,
+multiplicity-clean, and individual selected-build PASS. The GUI tree-pane destructor inventory was
+also reconciled from two to four already-landed members after separate 59-byte and 60-byte scans
+confirmed both twin pairs complete. Aggregate parity is now 18,442 compared / 8,066 raw / 10,335
+relocation / 41 differing / zero missing. No game, visual, or runtime test was launched.
+
+A follow-on masked-family audit expanded the compact 22-byte output-pointer allocator family from
+22 landed bodies to complete `62/62` retail coverage. Ignoring only the allocation-size immediate
+and allocator call displacement exposed 40 authoritative starts, from `004857bc` through
+`00cd2860`. All 40 are behavior PASS, `RELOCATION_MATCH["s"]`, landed with exactly one catalog,
+source, test, oracle, and parity row, and pass individual selected catalog builds. The fixed grammar
+is fastcall output in `ECX`, unused `EDX`, one unused callee-clean stack argument, compact output
+clear, allocation/publication, output-pointer return, and `ret 4`; allocation sizes span `0x14` to
+`0x58`. The reusable `tools/scan_masked_retail_pattern.py` scanner records this kind of family audit
+without hard-coding PE offsets. Aggregate parity is now 18,294 compared / 8,066 raw / 10,187
+relocation / 41 differing / zero missing. The refreshed queue reports 295 promotion candidates,
+84 bounded exclusions, and 63 semantic quarantines. No game, visual, or runtime test was launched.
+
+Two more masked-family audits are complete. The 43-byte free-pointer loop now has all six
+authoritative bodies landed after adding `0048c820`, `007b3b50`, and `00913690`; all three pass
+empty/null/two-allocation behavior, relocation parity, and selected builds. The 17-byte
+iterator/forward/store/return grammar has 69 authoritative bodies. Its 28 previously uncovered
+RB-tree/max-node starts (from `0042a5d1` through `00cd265b`) are now behavior PASS,
+`RELOCATION_MATCH["s"]`, landed, and selected-build PASS. The remaining 41 were already cataloged,
+including CRegion helpers with a different callee meaning, so the new batch was deliberately limited
+to manifest names explicitly identifying RB-tree/max-node semantics. Multiplicity is exactly one
+catalog/source/test/oracle row for all 31 additions, and the post-landing scan is 69/69 covered.
+Aggregate parity is now 18,325 compared / 8,066 raw / 10,218 relocation / 41 differing / zero
+missing. No game, visual, or runtime test was launched.
+
+The 42-byte list/sentinel initialization family is now complete at 62/62 authoritative retail
+starts. A scan masking only the initializer call relocation found 40 uncovered twins from
+`00485ac5` through `00cd2d61`, including 19 texture-format handlers and the later container,
+queue, hash, render-node, CList, and CTree initializers. Every body clears owner count, node state
+and payload, then self-links next/previous pointers. All 40 are behavior PASS, relocation matches,
+landed with exactly one catalog/source/test/oracle row, and pass individual selected builds. The
+aggregate report is now 18,365 compared / 8,066 raw / 10,258 relocation / 41 differing / zero
+missing; queue totals remain 295 promotion candidates, 84 bounded exclusions, and 63 semantic
+quarantines. No game, visual, or runtime test was launched.
+
+The separate 27-byte circular list/sentinel initializer grammar is now complete at 37/37
+authoritative retail starts. Starting from `0042ac0a` and masking only the allocation-size byte and
+allocator-call displacement exposed 34 uncovered bodies from `0042ab58` through `0065f2e5`.
+They allocate 12, 16, 20, 32, 36, 44, or 52 bytes, self-link node offsets `+0/+4`, publish the
+sentinel through the fastcall output pointer, return that output pointer, and clean the one unused
+stack argument with `ret 4`. All 34 additions are behavior PASS, `RELOCATION_MATCH["s"]`,
+multiplicity-clean, and individual selected-build PASS. Exact body evidence also corrects the
+propagated CTC-constructor labels at `005792bf` and `0057fda2` to neutral
+`CircularListInitialize_*` identities. The post-landing rescan is 37 hits / 37 authoritative / 37
+landed. Aggregate parity is now 18,477 compared / 8,066 raw / 10,370 relocation / 41 differing /
+zero missing; the queue reports 295 promotion candidates, 84 bounded exclusions, and 63 semantic
+quarantines. No game, visual, or runtime test was launched.
+
+`CTCCoopSpirit::OnCreate @ 0x006700f0` is no longer a review-only poisoned lift. Direct retail
+reconstruction lands as a 162-byte `RELOCATION_MATCH`: it initializes the particle-emitter
+intelligent pointer to null, calls base `OnCreate @ 0x00686850`, clears movement/timer/master/
+counter/score state, reads the owning thing's 16-bit definition index at `+0x8c`, resolves the
+definition through the manager sequence at `0x006869d0`/`0x0042af3c`, extracts the coop-spirit
+subdefinition through `0x00670b90` into `this+0x28`, and releases the temporary reference (including
+the final-reference virtual destruction path). This byte evidence rejects the generated
+morph-entry, drunkenness-definition, `_Cons_val`, and unrelated subdefinition identities. Focused
+retained/final-release behavior, multiplicity, and the individual selected catalog build pass.
+Aggregate parity is now 18,478 compared / 8,066 raw / 10,371 relocation / 41 differing / zero
+missing. The refreshed promotion queue has 294 candidates, 84 bounded exclusions, and 63 semantic
+quarantines. No game, visual, or runtime test was launched.
+
+`CTCCoopSpirit::SwapToHero @ 0x0066ff20` is also promoted from its review-only Wave 3 state. The
+byte-led 175-byte `RELOCATION_MATCH` acquires the draw environment, copies the spirit thing's
+three-dword position to a local, sign-extends hero slot byte `+0x90`, performs the manager swap,
+creates and adds the swap child with the saved environment, destroys that temporary, resolves the
+new player, forwards the saved position through the player's field-`+0x60` object virtual slot
+`0x7c`, and finally copies thing field `+0xb0` to `+0xb4`. Neutral address-specific seams replace
+the generated lift's incorrect helper identities while preserving retail call and lifetime order.
+Focused ordering/value behavior, one-entry multiplicity, and the individual selected catalog build
+pass. Aggregate parity is now 18,479 compared / 8,066 raw / 10,372 relocation / 41 differing /
+zero missing; the refreshed queue has 293 promotion candidates, 84 bounded exclusions, and 63
+semantic quarantines. No game, visual, or runtime test was launched.
+
+The remaining adjacent hero-marriage query family is now out of semantic quarantine.
+`GetHeroHasDivorcedMarriage @ 0x00897b70` is a 92-byte `RELOCATION_MATCH` twin using marriage
+state 5. `GetHeroHasCurrentMarriage @ 0x00897b10` shares the resolver/gate/key-4/sentinel prefix but
+is an independent 88-byte `RELOCATION_MATCH` ending in the no-argument hero-stats query at
+`0x0057ac4b`. `GetHeroHasMarried @ 0x00897aa0` is a 100-byte `RELOCATION_MATCH` that instead reads
+the hero-stats marriage-list head at `+0x1d8` and returns whether `head->next != head`. Fixtures
+cover null/flag/capability gates, direct and populated-sentinel lookup, state 5, the current-marriage
+return, and empty/nonempty list behavior. All three selected builds and one-entry multiplicity
+checks pass. Aggregate parity is now 18,599 compared / 8,066 raw / 10,492 relocation / 41 differing
+/ zero missing. The refreshed queue has 297 promotion candidates, 84 bounded exclusions, and 59
+semantic quarantines. No game, visual, or runtime test was launched.
+
+`CGameScriptInterface::GetAllCreaturesExcludingHero @ 0x008a89d0` now lands as a 276-byte
+`RELOCATION_MATCH`. The exact body obtains a temporary creature-pointer array through the
+specialized search seam (where the named hero-exclusion policy resides), reserves the caller's
+output, converts every pointer to a 12-byte `CScriptThing`, appends either in spare capacity or via
+the vector-growth helper, acquires the appended reference, releases and resets the conversion
+temporary, frees the search array, and returns `(finish-begin)/12`. The generated nested predicate
+and unrelated reset type names remain intentionally unclaimed. A single explicit three-byte
+`lea ecx,[ecx+0]` alignment NOP is required because MASM otherwise shortens it. Empty/populated
+ownership behavior, one-entry multiplicity, and the selected catalog build pass. Aggregate parity
+is now 18,480 compared / 8,066 raw / 10,373 relocation / 41 differing / zero missing; the queue has
+292 promotion candidates, 84 bounded exclusions, and 63 semantic quarantines. No game, visual, or
+runtime test was launched.
+
+`CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom @ 0x008a9c40` now lands as a
+358-byte `RELOCATION_MATCH`. Retail resolves the supplied definition name to a global search key,
+obtains a temporary `CThing*` range, returns zero (and frees storage when present) for an empty
+range, reserves the caller's output vector, obtains the three-dword distance origin through the
+source `CScriptThing` virtual slot `0x18`, and sorts the pointer range before conversion. Each
+result then follows the proven 12-byte `CScriptThing` append/reference-acquire and temporary-release
+grammar; the temporary pointer range is freed and the function returns the caller vector's total
+size. Neutral seams retain the specialized search/sort policies without adopting the generated
+lift's speculative filter identities. Empty and populated distance-order behavior, one-entry
+multiplicity, and the selected catalog build pass. Aggregate parity is now 18,481 compared / 8,066
+raw / 10,374 relocation / 41 differing / zero missing; the refreshed queue has 291 promotion
+candidates, 84 bounded exclusions, and 63 semantic quarantines. No game, visual, or runtime test
+was launched.
+
+`CNavQuadTree::IsAreaBlockedByLines @ 0x00a76f30` now lands as a 371-byte
+`RELOCATION_MATCH`, closing the first target in the deeper navigation batch called out by the
+earlier handoff. The function ignores its owner state and walks the caller-supplied vector of
+sentinel-headed `C2DLineF` lists. For each line, retail's exact x87 sequence selects min/max X/Y and
+rejects non-overlap against the box using the global tolerance at `0x0129ba3c`; surviving lines
+block when either endpoint is contained or the line/box intersection helper succeeds. Empty lists,
+broad-phase rejection, endpoint containment, intersection-only success, and complete miss behavior
+pass, along with one-entry multiplicity and the selected catalog build. Aggregate parity is now
+18,482 compared / 8,066 raw / 10,375 relocation / 41 differing / zero missing; the refreshed queue
+has 290 promotion candidates, 84 bounded exclusions, and 63 semantic quarantines. No game, visual,
+or runtime test was launched.
+
+`CGameScriptInterface::GetAllCreaturesInAreaWithScriptName @ 0x008a86c0` now lands as a
+452-byte `RELOCATION_MATCH`. Retail converts the supplied position X/Y and radius through
+`__ftol2`, forming the integer rough-area box `(x-r,y-r,x+r,y+r)`. A null/empty script name selects
+the potential-customer search at `0x008ad710`; a nonempty name is copied, supplied to the named-
+creature search at `0x008ad950`, and destroyed immediately afterward. Empty results free any
+temporary storage and return zero. Populated results reserve the caller vector and use the same
+proven 12-byte `CScriptThing` append/reference-acquire/temporary-release grammar before freeing the
+creature-pointer array and returning total output size. Search selection, box construction,
+cleanup, empty/populated counts, one-entry multiplicity, and the selected catalog build pass.
+Aggregate parity is now 18,483 compared / 8,066 raw / 10,376 relocation / 41 differing / zero
+missing; the queue has 289 promotion candidates, 84 bounded exclusions, and 63 semantic
+quarantines. No game, visual, or runtime test was launched.
+
+`entry @ 0x00401067` was audited rather than falsely promoted. Retail is the compiler-owned
+CRT/SEH shell: PE managed-metadata detection, CRT global/table initialization, multibyte command-
+line parsing, WinMain dispatch, `exit` versus `_cexit`, plus compiler unwind/filter tails. The
+generated structured body cannot represent the complete exception machinery, and the terminating
+paths cannot receive a meaningful focused check in the current offline-only lane. This agrees with
+the existing `FULL_DECOMP.md` requirement to defer exact entry parity until the GFMain integration
+boundary is useful. Both the Wave 3 source and candidate snapshot now carry
+`RE_AGENT_SEMANTIC_REVIEW`; do not remove that marker merely to compile the candidate.
+
+The deeper navigation pass audited `CNavQuadTree::UpdateLines @ 0x00a781a0` and closed its first
+missing dependency rather than landing a 1,244-byte opaque blob. Retail `UpdateLines` constructs a
+temporary grid of 16-byte cell boxes, clears every affected sentinel list, clips each source line's
+cell range using the exact x87 half-cell rounding rules, tests endpoint containment or line/box
+intersection, and allocates/splices 24-byte line nodes into every covered cell. The generated
+inclusive box-index comparison is safe only because the preceding clipped `< max` loops cannot
+produce `count`; the node allocation path intentionally assumes success. These facts should be
+covered by phase-isolated fixtures before promotion.
+
+`Vector_ConstructInitialized_C2DLineF @ 0x00a80360` now lands as the exact 122-byte
+`RELOCATION_MATCH` dependency. It clears the vector triple, allocates `count * 16`, repeats VC7.1's
+unspecified 16-byte POD default seed across the allocation, sets finish and capacity to the same
+end pointer, and returns the vector object. Zero/three-element allocation, endpoint, and repeated-
+copy behavior, one-entry multiplicity, and the selected catalog build pass. Aggregate parity is
+now 18,484 compared / 8,066 raw / 10,377 relocation / 41 differing / zero missing. Queue state is
+289 promotion candidates, 84 bounded exclusions, and 64 semantic quarantines. No game, visual, or
+runtime test was launched.
+
+The list-sentinel default-constructor grammar is now complete at 109/109 authoritative retail
+starts. Each 32-byte body clears the caller-owned head pointer, allocates a 12-byte node, self-links
+offsets `+0/+4`, publishes the node through the fastcall owner, returns that owner, and removes the
+single unused stack argument with `ret 4`. The first sweep oracle was incorrectly truncated at 30
+bytes (ending on the `c2` opcode); restoring the complete three-byte return made the proven VC7.1
+source an exact `RELOCATION_MATCH` across the family. All 109 focused fixtures and individual
+selected catalog builds pass, the post-land masked scan is 109 hits / 109 authoritative / 109
+landed, and source/test/catalog/oracle multiplicity is one per address. This closes the
+`00a80480` and `00a80520` constructor dependencies adjacent to the active navigation work. The
+override ledger also corrects poisoned `004ab4d0` from `std::vector_Initialize_Circular` to neutral
+`ListSentinel_DefaultConstruct_004ab4d0`; it now has 224 rows and no duplicate addresses.
+Aggregate parity is 18,593 compared / 8,066 raw / 10,486 relocation / 41 differing / zero missing.
+The refreshed queue reports 302 promotion candidates, 84 bounded exclusions, and 64 semantic
+quarantines; the bounded working ledger remains 91 rows. The manifest remains 57,097 unique,
+sorted rows with 4,290 `_gapscan` entries. No game, visual, or runtime test was launched.
+
+`C2DLineF::IntersectsWith(C2DBoxF const*) @ 0x00a57bd0`, the remaining non-CRT call dependency
+inside `CNavQuadTree::UpdateLines`, now lands as a 227-byte `RELOCATION_MATCH`. Retail copies the
+box into four local `C2DLineF` edges in bottom, right, top, left order, then calls the existing
+line/line intersection overload at `0x00a56c80` with a shared output point and the global tolerance
+at `0x0129ba3c`, short-circuiting on the first hit. The exact VC7.1 schedule materializes the
+boolean result as full-register zero/one; callers consume the compatible low-byte result. Focused
+fixtures validate all four edge layouts and hit positions, short-circuit counts, and complete miss.
+One-entry source/test/catalog/oracle multiplicity and the selected catalog build pass. Aggregate
+parity is now 18,594 compared / 8,066 raw / 10,487 relocation / 41 differing / zero missing. Queue
+state remains 302 promotion candidates, 84 bounded exclusions, and 64 semantic quarantines. No
+game, visual, or runtime test was launched.
+
+`CGameScriptInterface::GetHeroHasChildren @ 0x00897bd0` is no longer a semantic-review candidate.
+The exact 92-byte `RELOCATION_MATCH` resolves the hero through `0x00449970` and retail
+`0x00487dc0`, rejecting the generated lift's mid-instruction `0x00487dc2` target. It returns false
+for a null hero, hero flag `+0x91 & 1`, or missing capability `+0x20 & 0x10`; otherwise it
+lower-bounds interface-map key 4 at hero `+0x44`. Retail intentionally substitutes the populated
+end sentinel when the lookup returns end or a key above 4, then calls the selected hero-stats
+component's marriage-state query with state 4. Focused null/flag/capability, direct-entry,
+key-too-large, sentinel, and call-argument behavior passes, as do one-entry multiplicity and the
+selected catalog build. Aggregate parity is now 18,595 compared / 8,066 raw / 10,488 relocation /
+41 differing / zero missing. The refreshed queue has 301 promotion candidates, 84 bounded
+exclusions, and 63 semantic quarantines. No game, visual, or runtime test was launched.
+
+The immediate sibling `CGameScriptInterface::GetHeroHasMurderedWife @ 0x00897c30` now lands as a
+second 92-byte `RELOCATION_MATCH`. Its resolver, hero gates, key-4 lower-bound lookup, and
+intentional populated-sentinel fallback are byte-identical to `GetHeroHasChildren`; only the final
+hero-stats marriage-state argument changes from 4 to 7. Direct-entry, key-too-large, sentinel,
+null/flag/capability, and state-7 behavior passes, with one-entry multiplicity and selected catalog
+build. Aggregate parity is now 18,596 compared / 8,066 raw / 10,489 relocation / 41 differing /
+zero missing. The refreshed queue has 300 promotion candidates, 84 bounded exclusions, and 62
+semantic quarantines. No game, visual, or runtime test was launched.
+
+## Offline decomp shutdown checkpoint (2026-08-26)
+
+The complete adjacent hero-marriage query family is landed. In addition to the children/state-4
+and murdered-wife/state-7 members above, `GetHeroHasDivorcedMarriage @ 0x00897b70` is the 92-byte
+state-5 twin, `GetHeroHasCurrentMarriage @ 0x00897b10` is an 88-byte no-argument stats-query
+variant, and `GetHeroHasMarried @ 0x00897aa0` is a 100-byte marriage-list nonempty check at
+hero-stats `+0x1d8`. All five are `RELOCATION_MATCH` with null/flag/capability, direct-entry,
+populated-sentinel, result-specific behavior, selected builds, and one-per-address artifacts.
+
+`CGameScriptInterface::SetThingAsConscious @ 0x008a9610` supersedes the earlier quarantine note.
+The exact 162-byte `RELOCATION_MATCH` validates and resolves the script thing, rejects null or
+creature gates `+0x91 & 1`, missing `+0x6c & 8`, or missing `+0x24 & 0x20000`, constructs the
+conscious action through `0x008ae1b0` or the unconscious/reason-bearing action through
+`0x008eda90`, installs it through `0x006644f0`, and destroys the temporary through `0x0062e900`.
+Neutral address-specific seams replace the generated lift's unrelated GUI/combat/lightning names.
+Both branches, reason forwarding, every gate, cleanup order, multiplicity, and selected build pass.
+
+`CGameScriptInterface::RemoveHeroHairstyle @ 0x0089b4d0` also leaves quarantine as an exact
+91-byte `RELOCATION_MATCH`. Retail resolves through `0x00449970` and `0x00487dc0`, rejecting the
+generated lift's poisoned `0x0040d959`, checks hero flags, lower-bounds interface key `0x5e`, uses
+the populated sentinel fallback, and calls `0x00706640` with `false`. Direct/sentinel/key-too-large
+lookup, gates, forwarded value, multiplicity, and selected build pass.
+
+Final offline aggregate at shutdown is 18,601 compared / 8,066 raw / 10,494 relocation / 41
+differing / zero missing. The queue contains 295 promotion candidates, 84 bounded exclusions, and
+57 semantic quarantines; the active bounded ledger remains 91 rows. Manifest invariants are 57,097
+unique sorted rows with 4,290 `_gapscan`; the override ledger is 224 rows with zero duplicates. No
+game, visual, or runtime test was launched.
+
+Resume by refreshing queues if the worktree changed, then inspect `008a1590`, `008a15f0`, and
+`008a17d0 GetBestTime*`. `CNavQuadTree::UpdateLines @ 0x00a781a0` remains fixture-first; its
+bounded dependencies `00a80360`, `00a80480`, `00a80520`, and `00a57bd0` are landed. Stage46 remains
+runtime-gated and must not be promoted from offline evidence.
+
+## Offline decomp and FSE script audit continuation (2026-08-28)
+
+The adjacent `GetBestTime*` family is now out of semantic quarantine. `008a1590
+CGameScriptInterface::GetBestTimePairs`, `008a15f0 GetBestTimeSorting`, and `008a17d0
+GetBestTimeGuessTheAddition` are independent 93-byte `RELOCATION_MATCH` bodies. All three use the
+same `00449970` / `00487de0` hero resolution, hero gates, key-4 interface-map lower bound through
+`00436570`, and populated-sentinel fallback. Their successful paths read hero-stats fields
+`+0x178`, `+0x17c`, and `+0x190`; every rejected path returns the float at `0122dedc`. Direct,
+sentinel, key-too-large, null, flag, and capability behavior passes for each function, as do the
+selected and complete 18,604-object VC7.1 builds.
+
+The canonical refresh completed successfully: 18,604 compared, 8,066 raw matches, 10,495
+relocation matches, 43 differing, and zero missing oracles. The promotion report now has 380
+candidates before display truncation, 84 bounded exclusions, and 56 semantic quarantines. The
+three completed addresses disappeared from quarantine as expected. The refreshed ForgeFSE audit
+also remains clean at 457/457 quest bindings.
+
+`D:\Downloads\StatueMaster.zip`, authored by AlbionSecrets (the original FSE developer), was
+audited against native TLC `Fable.exe` and the PDB-backed FableWin implementation. The central
+time/facing/text/chest behavior agrees, including the unused Guild position, but the submitted Lua
+is not fully behavior-identical: retail unlocks the cellar at pointing position 1 only when
+`TraderToEscort` resolves non-null, while the port comments out that lookup and unlocks
+unconditionally. The exact evidence and correction are in `docs/STATUEMASTER_LUA_PORT_AUDIT.md`.
+That document separately attributes the custom quest-layer experiments to odarenkoas and records
+their cross-quest global thread-adapter collision risk; they are not upstream AlbionSecrets/FSE
+code.
+
+**NEXT OFFLINE RESUME:** keep `00a781a0 CNavQuadTree::UpdateLines` fixture-first now that its
+bounded dependencies are landed, or take the newly ranked non-quarantined promotion head after
+reviewing the refreshed queue. Do not claim the stage46 runtime gate from offline evidence.
+
+## SESSION-CLEAR CHECKPOINT — 2026-08-28 StatueMaster marathon
+
+This checkpoint supersedes the short StatueMaster paragraph above for all
+quest/cut-content conclusions. No visual work or game runtime test was done.
+
+### Durable conclusions
+
+- Three available PC gameplay builds agree: `SM_Guild` is initialized and
+  detectable, but there is no Guild text or reward branch. PC falls through to
+  the Nowhere readable state.
+- Retail localization retains `TEXT_QST_061_STATUE_GUILD` (ID 3497), proving a
+  distinct Guild-facing message was authored. The original Xbox executable is
+  not local; do not generalize the PC branch removal to every Xbox build.
+- Five orphan Statue Master inscriptions—Fire, Steel, Silver, Diamond, and
+  Lightning—match five old augmentation categories in `game.bin` exactly.
+  Retail naming maps Steel to Sharpening and Diamond to Piercing.
+- No PC executable, level file, quest file, definition/script catalog, numeric
+  ID, CRC form, PDB class, or placed entity connects those inscription tags to
+  runnable logic. There is no surviving object waiting for those strikes.
+- All corresponding augmentation placements are normal chest contents. The
+  Greatwood StatueMaster chest contains Piercing and is flanked by two unique,
+  unscripted Lookout Point statues: a strong physical fossil, not proof of a
+  live puzzle.
+- `TraderToEscort` is the dynamically spawned repeatable `QR_EscortTrader`
+  creature. Native cellar unlock requires both Bowerstone direction and this
+  non-null object. The Lua port bypasses that condition.
+
+### Proposed restoration, clearly non-parity
+
+The most evidence-compatible recreation is a hub-and-satellites environmental
+puzzle. The rotating Lookout Point statue locates active regions; satellite
+statues accept Flame, Sharpening/Steel, Silver, Piercing/Diamond, and Lightning
+weapon hits; a persistent master quest records five seals and reveals local
+secrets. The Guild can be a tutorial, progress shrine, or final resolution, but
+only its direction message is recovered. Preserve `TraderToEscort` as the
+Bowerstone world-state gate and provide a fair in-world hint. Do not claim a
+Singing Sword or any specific Guild reward as recovered content.
+
+### Canonical files and package
+
+- `docs/STATUEMASTER_DEEP_RESEARCH_REPORT.md` — concise evidence report plus
+  reconstruction boundary.
+- `docs/STATUEMASTER_LUA_PORT_AUDIT.md` — native parity details, exact functions,
+  TraderToEscort lifecycle, and quest-layer cautions.
+- `report-source.md` — canonical deep-research source and claim/source ledger.
+- `dist/FSE_RE_Developer_Pack_2026-08-28.zip` — DM-ready FSE developer handoff;
+  rebuild after syncing the two StatueMaster documents.
+
+### Next-marathon entry points
+
+1. Highest-value missing evidence: obtain a legally sourced original Xbox
+   `default.xbe` and corresponding language bank, then xref the Guild and five
+   inscription tags.
+2. If implementing restoration rather than parity, first make a minimal FSE
+   prototype proving targetable indestructible statue hit detection and weapon
+   augmentation inspection. Keep reconstructed state names namespaced.
+3. For general decomp/parity, resume the existing offline lane at
+   `00a781a0 CNavQuadTree::UpdateLines` fixture-first or refresh and take the
+   ranked non-quarantined head. Stage46 remains runtime-gated.
+4. Continue frontend work from its latest dedicated checkpoint; this
+   StatueMaster session intentionally made no frontend or visual changes.
+
+## SESSION-CLEAR CHECKPOINT — 2026-08-29 two-lane resume (parity heads + Xbox XBE)
+
+Written mid-run so the session can be resumed cold. Two ultracode workflows were
+in flight when this was written; their results are NOT yet folded in. No landing,
+no commit, and no game runtime test was performed.
+
+### Correction to the 2026-08-28 checkpoint
+
+The StatueMaster marathon's next-marathon entry point #1 said to "obtain a
+legally sourced original Xbox `default.xbe`". **That item was already satisfied
+and the report's premise was wrong.** The Xbox executable is extracted locally at
+`D:\tmp\fable_xbox\extracted\default.xbe` (10.38 MB, XBEH, BaseAddr `0x00010000`,
+EntryPoint `0x001E6A74`), from the disc documented in `docs/XBOX_DISC_ASSESSMENT.md`
+on 2026-08-09 — nineteen days *before* the report claimed it was unavailable.
+`docs/STATUEMASTER_DEEP_RESEARCH_REPORT.md` has been corrected in place at three
+points. The reading toolkit (`tools/xbox_re/xbe_info.py`, `xbe_xref.py`,
+`xbe_pc_diff.py`, `xdvdfs.py`, `xextract.py`; stdlib + capstone, no Ghidra) already
+exists and works.
+
+### Lane A — ranked manual-lift promotion heads (offline parity lane)
+
+Resumes entry point #3. Staged and durable in the session scratchpad
+`.../scratchpad/navlift/`:
+
+- `heads_oracle.tsv` — retail oracle rows for the five ranked non-quarantined
+  promotion heads, extracted with `tools/decomp_pipeline/pe_oracle.py extract`
+  (self-validation on that run: 18,543 match / 61 mismatch of 18,604 known rows).
+- `trim_overcapture.py --oracle` then `trim_tailjmp.py --oracle`: **0 rows
+  trimmed** — all five spans are clean, no boundary over-capture to recover.
+- `bundles/<addr>.txt` — per-target retail hex + full capstone x86-32 disassembly.
+- `targets.json` / `targets_lite.json` — authoring bundles.
+
+REAL retail body sizes (the promotion queue's "Source bytes" column is the
+*candidate C++* size, not the retail body — do not confuse them again):
+
+| Address | Function | Retail bytes | Queue rank |
+|---|---|---:|---:|
+| `0x00890750` | `CGameScriptInterface::AddLineToConversation` | **97** | 1 |
+| `0x00A781A0` | `CNavQuadTree::UpdateLines` | 1244 | 2 |
+| `0x00A7A8D0` | `CNavQuadTree::Initialise` | 1665 | 3 |
+| `0x00A79B30` | `CNavQuadTreeNode::Initialise` | 1381 | 4 |
+| `0x0050A650` | `CWorldMap::GetMapNavigationAreaInit` | 2233 | 5 |
+
+`0x00890750` at 97 bytes is a thin forwarder and the realistic byte-parity win of
+the set; the four nav bodies are large and their honest target is
+compiles-with-a-real-behaviour-fixture, not parity.
+
+Their queue-reported first blockers are missing type declarations, not codegen:
+`C2DVector`, `C2DLineF`, `CANavQuadTreeNode`, `EHeroMorphType`,
+`CScriptConversationManager`. The three CNavQuadTree entries share the 2D/nav
+types, so one declaration block unblocks three targets.
+
+Workflow `wf_f938aa15-1ea` (task `wrfkrc3g8`): recon fan-out (nav types / script
+interface types / harness landing template) -> one author agent per target
+self-verifying against `verify_and_land.py` **dry-run** -> adversarial verifier
+per target that re-runs the harness independently and checks for `__asm`/naked/
+`_emit` bakes, vacuous fixtures, and dishonest status claims. Nothing lands until
+those verdicts are read.
+
+### Lane B — Xbox XBE StatueMaster cross-version xref
+
+Workflow `wf_cff47a1d-5da`. Settles the questions the 2026-08-28 report deferred
+on the false "no XBE" premise.
+
+Established inline before launching (verify, do not just trust):
+
+- PC `Fable.exe` and Xbox `default.xbe` carry the **identical** `SM_` state string
+  set: `SM_Guild`, `SM_Center`, `SM_Greatwood`, `SM_Bowerstone`, `SM_Nothing`.
+  Note the real fifth state is `SM_Nothing`; earlier notes wrote "SM_Nowhere".
+- The Xbox retail text header (`Data__Defs__RetailHeaders__text.h`, extracted)
+  carries the same statue tags at the same numeric ids as PC, including
+  `TEXT_QST_061_STATUE_GUILD = 3497`.
+- XBE strings include `StatueMasterCellarDoors`, `StatueMasterChest`,
+  `StatueMasterStatue`, `V_StatueMaster`, `LookoutPoint`, `LookoutPointBeggar`,
+  `DemonDoor_LookoutPoint`.
+- **The XBE has 66 `S_Q*` per-quest code overlays.** The completed registry xref
+  identifies `S_VSM` as StatueMaster; `S_QSMS` is `QS_MeetSister` and `S_PSM` is
+  `PersonalScriptMain`. This is the structural advantage the XBE has over PC's
+  flat `.text`: quest code is in its own named section. Any xref pass that
+  searches only the resident `.text` is INVALID.
+
+Given the identical `SM_` string sets, the **expected** outcome is a clean
+negative — the Xbox build has no Guild branch either, and the prior report's
+refusal to generalize was over-cautious rather than protective. A clean negative
+is a real, publishable answer and retires the item either way. Do not let an
+agent launder an unsearched-overlay artifact into a false "Xbox has it, PC does
+not" asymmetry; the workflow judges each claim on exactly that lens.
+
+### NEXT RESUME
+
+1. Read both workflow results before anything else (task outputs, or the
+   `journal.jsonl` in each run's transcript dir). Neither has been folded into
+   docs, landed, or committed.
+2. Lane A: land only verifier-confirmed wins, via
+   `verify_and_land.py <land.json> <oracle.tsv> --land`, then append every
+   attempted address to the durable `tools/decomp_pipeline/crawl/gen_tried.txt`
+   (union in python — that file has NO trailing newline, so `cat` merges tokens).
+   Commit LEAN: `build_candidates.ps1` + new `src/compiled/**` + `tests/**` +
+   `oracles/auto-re-candidates.tsv` + `gen_tried.txt` only.
+3. Lane B: save the synthesis as `docs/STATUEMASTER_XBOX_XREF.md`, apply its
+   corrections to the two StatueMaster docs, and rebuild
+   `dist/FSE_RE_Developer_Pack_*.zip` only after those two are in sync.
+4. Stage46 and every runtime claim remain runtime-gated and USER-driven.
+
+### Recovered workflow results
+
+- Lane A: `0x00890750 CGameScriptInterface::AddLineToConversation` independently
+  reproduced `RELOCATION_MATCH PASS` and was landed on 2026-08-29. The four
+  large navigation targets did not complete before the usage cutoff.
+- Lane B: the completed agent evidence was recovered from the workflow journal;
+  only its final synthesis step had failed. The consolidated result is now in
+  `docs/STATUEMASTER_XBOX_XREF.md`: `S_VSM` is the real overlay, and Xbox has
+  the same absent Guild branch and orphan inscription tags as PC.
+
+### Tooling gotcha found this session
+
+Resuming a Workflow via `{scriptPath, resumeFromRunId}` was rejected by the
+permission layer with "script contains control characters that would be hidden in
+the approval dialog", on a file containing no control characters at all (verified:
+zero chars < 0x20 other than newline; only non-ASCII is U+2014). The identical
+text passed when sent inline. **Resume with inline `script` + `resumeFromRunId`**,
+not `scriptPath`. Recon-phase agents still cache-hit as long as their prompts are
+byte-identical.
+
+## STATUEMASTER LIVE/OFFLINE CHECKPOINT — 2026-08-29
+
+### Native hit bridge: validated melee cases
+
+ForgeTest's solid `ForgeHitTarget` produced four independent primary captures:
+
+- two Flame strikes: `types=Flame|typeIds=4|mask=4`;
+- two unaugmented strikes: empty types/IDs and `mask=0`.
+
+All four repeated unchanged within the same script execution window, then
+returned `found=0` after the next coroutine yield. The production bridge was
+using the retail hitter-name filter at `0x008D4840`, so
+`SCRIPT_NAME_HERO` filtering, positive/negative melee discrimination,
+non-consuming same-window lookup, and window expiry are live-validated
+together. Multi-augmentation, projectile, weapon-swap, and non-Hero cases remain
+runtime work.
+
+The two corrections that made this work are durable:
+
+- resolve the wrapped native entity via virtual `GetPThing` (vtable slot 11),
+  not a guessed local `CGameScriptThing` member layout;
+- retail `CHitParameters` stores the augmentation vector at
+  `+0x3C/+0x40/+0x44`. Do not import FableWin's newer debug-STL `+0x44` vector
+  layout into retail.
+
+### World-event package
+
+Working tree package: `mods/StatueMasterRestoration/`.
+
+- Lookout's rotating statue is now the hub, not the Piercing target. It preserves
+  retail Bowerstone/Greatwood/Nowhere readable behavior. Only after all five
+  reconstructed seals are complete does Guild-facing direction 2 expose the
+  orphan `TEXT_QST_061_STATUE_GUILD` line.
+- Dedicated wrappers exist for all five seal types. The master quest now calls
+  `AddEntityBinding` for all six entities; an earlier draft only registered the
+  satellite hosts in `quests.lua` and would have left placed satellites inert.
+- Piercing is anchored to the western shipped statue flanking
+  `StatueMasterChest` in `Greatwood_1.tng`, UID `18446741874686296191`, position
+  `(38.290527,120.253418,31.715561)`. A minimal unapplied patch is at
+  `mods/StatueMasterRestoration/patches/Greatwood_1.piercing-seal.patch`.
+- `PLACEMENT_PLAN.md` inventories all shipped matching augmentation rewards.
+  Silver/GraveyardPath is the strongest next candidate. The remaining Flame,
+  Sharpening, and Lightning choices are explicitly not settled.
+- This was the pre-deployment checkpoint. It was superseded by the completed
+  guarded ForgeTest deployment below; the Greatwood TNG patch remains unapplied.
+- Persistence audit found that `SetStateString` is process-local. The quest now
+  implements `OnPersist` and transfers all five seal strings plus the completion
+  debounce through `PersistTransferString`; the load path is mock-tested.
+- Runtime-module audit found that ForgeFSE's isolated quest/entity Lua states did
+  not open `sol::lib::package`, so shared-module `require(...)` calls would fail.
+  `D:\Code\ForgeFSE` now opens the package library and prepends
+  `FSE/?.lua;FSE/?/init.lua` in both state constructors. Release/x86 builds
+  successfully. Candidate DLL SHA-256 is
+  `3C26465CE52D4C73F2B0C3F66F635491046D703CE30DA63D3ACCB0CF3E665591`.
+  The candidate was subsequently installed after PID 9984 exited. It still
+  requires the clean-restart runtime smoke test described below.
+
+Shareable RE corrections are in `FSE_RE_UPDATE_2026-08-29.md`. The augmentation
+bridge was live-tested in the older DLL whose SHA-256 was
+`8AB6B0C43A56D70B46ECFBDE94528540E836B644865AA96149EAD26904245399`.
+The currently built and installed DLL also contains the package-loader changes;
+its distinct hash is recorded below.
+
+### ForgeTest five-seal deployment (completed offline)
+
+The game process had exited before the guarded installer ran, so the staged
+harness was installed safely. Backup directory:
+
+`C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\FSE\backups\StatueMasterRestoration-20260829-111339`
+
+Installed DLL SHA-256 is the package-loader candidate
+`3C26465CE52D4C73F2B0C3F66F635491046D703CE30DA63D3ACCB0CF3E665591`.
+The installed `quests.lua` now registers the distinct custom quest
+`StatueMasterRestoration` and six entity scripts. `FSE_Master` activates it,
+then ForgeTest arrival runs `ForgeTestHarness.Prepare`.
+
+The harness creates five `OBJECT_LOOKOUT_POINT_KNIGHT_STATUE_01` targets in a
+west-to-east row (Flame, Sharpening, Silver, Piercing, Lightning) and grants,
+only when absent:
+
+- The Avenger (`OBJECT_LEGENDARY_LONGSWORD_02`): Flame + Lightning;
+- Ronok (`OBJECT_LEGENDARY_AXE`): Sharpening + Silver;
+- Murren Greathammer (`OBJECT_LEGENDARY_WARHAMMER`): Piercing + Experience.
+
+Six mock suites pass and installed-module resolution passes for three quests and
+eight entity scripts. The game has not been launched against this candidate.
+Follow `mods/StatueMasterRestoration/FORGETEST_TEST_PLAN.md` on the next manual
+start. If the stone object lacks `CTCEntityEvents`, logs now report the structural
+`entity_events` failure once; change only the ForgeTest target definition to the
+known-good bandit fallback.
+
+Offline hardening after deployment: all six Lua mocks execute, all five
+package-level Python checks pass, and all 19 Lua files parse. The installed tree
+was independently audited from the Steam FSE path: all three quests and eight
+registered entity modules exist and parse, and the installed/candidate DLL hashes
+match. Both installer idempotence and rollback preflights pass. The new
+`Restore-ForgeTestHarness.ps1` selects the newest timestamped backup, refuses
+backup paths outside `FSE\backups`, refuses a live game process, and restores the
+three modified files without recursively deleting the inert package directory.
+
+### StatueMaster world-placement backend (headless, 2026-08-29)
+
+No visual process was launched and no retail level/WAD was modified. The
+evidence-constrained route model preserves the retail hub bearings: Greatwood
+routes to Piercing/Flame/Lightning, Bowerstone to Silver, and Guild to
+Sharpening. These are broad travel hints, not one-to-one compass selectors.
+
+`mods/StatueMasterRestoration/placements.json` is now canonical. It records
+source TNG hashes, evidence grades, target UIDs/definitions/coordinates, and
+matching reward locations.
+`Test-PlacementManifest.ps1` verifies all five categories, three bearings,
+source hashes, reward presence, unique UIDs, pristine script names, and target
+geometry. `Stage-WorldPlacements.ps1` defaults to the one locked Piercing edit;
+Silver needs `-IncludeProposed`, while candidate-grade placements cannot be
+staged. `Test-StagedWorldPlacements.ps1` independently proved the generated
+Greatwood and optional Graveyard files differ from retail by exactly one
+`ScriptName` line each. Disposable validation output was removed afterward.
+
+`RoutePlanner.lua` supplies stable next-unsolved selection and per-bearing
+solved/total counts. The Lookout controller emits `SM_ROUTE_HINT` diagnostics
+without replacing retail readable text. Seven Lua mocks and six package-level
+checks pass. The full placement matrix, packaging safety gate, and remaining
+runtime promotion checklist are in `WORLD_PLACEMENT_TASKS.md`.
+
+Subsequent static placement closure found that the Lookout statue, Greatwood
+wall pillar, Graveyard gargoyle, and Snowspire sculpture all carry
+`CTargetingDef`, `CHitLocationsDef`, and `CActionUseDef` in retail `game.bin`.
+Thus the reused props are target-capable at the compiled-definition layer;
+runtime event ownership and collision remain the honest gates. The old
+Snowspire knight candidate was replaced by `OBJECT_SS_SCULPTURE_04` UID
+`18446741874686313299`, only 11.1 horizontal units from the Sharpening reward
+cupboard instead of 28.7.
+
+Lightning now has a headlessly derived provisional authored placement:
+`Darkwood_11` local `(76,42,32.5)`, UID `18446741874686400000`. It is 8.2 units
+from the matching chest, on a flat 5x5 terrain sample with 24/25 cells marked
+walkable; no solid placed object is closer than the chest. This is still
+candidate-grade pending a visual collision/sight-line pass.
+`Stage-AuthoredCandidates.ps1` generates the target into an output-only tree via
+the Forge CLI, and `Test-StagedAuthoredCandidates.ps1` proved that removing its
+single inserted block restores the retail TNG byte-for-byte. No game, GUI,
+retail TNG, or WAD was launched or modified.
+
+### StatueMaster final reward backend (headless, 2026-08-29)
+
+The final reward is staged as **The Statue Master's Hammer**, using the CC BY
+4.0 model by `angeldavidvillanueva`; attribution, URL, license deed, archive
+hash, and evidence screenshot are preserved in the package. Retail donor chain:
+`OBJECT_LEGENDARY_WARHAMMER` 5521 -> model 7943 ->
+`MESH_HAMMER_GREAT_LEGENDARY_01`. The custom candidate uses a 180-degree X
+correction and uniform 10x scale.
+
+Headless IDs: mesh 8114; textures 6294/6295/6296; object 14761; private
+augmentation/inventory components 14762/14763; English title/details
+28914/28915. Built-ins are exact retail indices
+`[2880,2877,2879,2878,2882]` (combined mask 31).
+
+`Build-HammerRewardStage.ps1` creates a complete output-only tree and refuses a
+running game, installed-game destination, or non-fresh output root.
+`verify_hammer_stage.py` proves zero changed old bank/text/definition entries,
+private component ownership, cross-bank IDs, and semantic CompiledDefs
+round-trip. Integrated stage: `work/statuemaster-hammer-package`. Nothing was
+installed; `RewardPlan.Enabled` remains false pending visual and save/load
+validation.
+## StatueMaster hammer clean reproduction and documentation audit — 2026-08-29
+
+- Ran `Build-HammerRewardStage.ps1` from an absent output root into
+  `work/statuemaster-hammer-repro-20260829`. The complete output-only build and
+  integrated verifier passed; this proves the orchestrator, not merely the
+  previously staged files.
+- Compared SHA-256 for `graphics.big`, `textures.big`, English `text.big`,
+  `game.bin`, and `names.bin` against the first integrated stage. All five are
+  byte-identical. No installed-game path was written.
+- Added a reward failure-path mock: an inventory rejection returns
+  `give-failed:*`, awards no item, and does not consume `REWARD_GRANTED`; a
+  subsequent successful retry grants exactly once.
+- Reconciled stale reward/license wording in the package README and superseded
+  Flame/Lightning placement candidates in `PLACEMENT_PLAN.md` with the
+  canonical `placements.json` decisions. Runtime granting remains disabled
+  pending the documented visual/save gates.
+## StatueMaster world WAD backend and seal revisit fix — 2026-08-29
+
+- Added `Build-WorldWadCandidate.ps1`, a guarded output-only pipeline that
+  stages TNGs, verifies their exact edits, repacks a workspace WAD candidate,
+  and invokes an independent archive verifier. Default mode includes only the
+  locked Piercing edit; Silver and authored Lightning require separate explicit
+  switches.
+- Added `tools/verify_world_wad.py`. It independently parses the base and
+  candidate archives, requires identical 798-entry name sets, compares every
+  payload, validates the exact expected changes against staged bytes, and
+  requires all payload offsets plus the footer to be 2,048-byte aligned.
+- Default build passed with 797/798 payloads unchanged; explicit three-target
+  build passed with 795/798 unchanged. The full candidate SHA-256 is
+  `8E26783A4DC370056A8BDE33949ECB4D2A143C383A8C219A7B2A97EA25311F4F`.
+  Extraction round-tripped all three changed TNGs byte-identically. Nothing was
+  installed.
+- Fixed transient seal state that was incorrectly cached for the whole Lua
+  process. Entity initialization now resets marker, bridge-error, wrong-strike,
+  and punishment debounces per map visit, so awarded visuals return after a
+  revisit and the HITS-style punishment is truly once per visit. A revisit mock
+  covers marker recreation and a fresh two-strike punishment sequence.
+## StatueMaster hammer geometry integrity gate — 2026-08-29
+
+- Strengthened `tools/verify_hammer_stage.py` beyond count/material checks. It
+  now requires three material geometries, finite vertex and UV data, one UV per
+  triangle corner, normalized-atlas UV ranges, valid/distinct triangle indices,
+  non-zero triangle area, and decoded bounds matching the bounds stored in the
+  compiled mesh header.
+- The integrated hammer stage passes the stronger gate: 6,337 decoded vertices,
+  9,616 non-degenerate triangles, three expected texture bindings, and matching
+  compiled bounds. This reduces the first runtime gate to presentation concerns
+  (grip/orientation/scale/culling in the game renderer), rather than basic mesh
+  corruption.
+
+## Decomp parity crawl checkpoint — 2026-08-29
+
+- Made `tools/decomp_pipeline/crawl/next_smallest.py` accept a
+  `DECOMP_CRAWL_SCR` override, then generated and trimmed the fresh
+  `work/crawl_batch150` oracle (zero over-captured or tail-jump rows).
+- Landed six VC7.1 candidates after independent source parity, executable
+  behavior fixtures, and selected production-catalog rebuilds:
+  `00416231 GetCurrentGameTime`, `006bf7b0 BoughtSomething`,
+  `007e33a0 OnPostParentRelocation`, and `CreateCRC` at `00a5f6a0`,
+  `00a62580`, and `00a63890`. The relocation setter is an exact `MATCH`; the
+  other five are `RELOCATION_MATCH`.
+- `00661640 CThingFilter_IsNot::operator()` passes its behavior fixture but is
+  honestly retained as `DIFFER(18v12)` and was added to the attempted ledger.
+- `00a79b30 CNavQuadTreeNode::Initialise` now has an improved scratch source
+  that compiles to the exact retail length (1381 bytes) and reproduces the
+  retail constructor/switch branch shapes. It remains unlanded: VC7.1 allocates
+  `0x48` stack bytes versus retail's `0x44`, shifting stack references despite
+  equal total length. Continue from the `lv_00a79b30` scratch bundle; do not
+  weaken its existing behavior gate.
+- The following Batch 151 candidates were subsequently landed and each passed
+  its selected production-catalog rebuild: exact `MATCH` at
+  `00749dd0 CTCCreatureGenerator::SetAsActive`, `00caa6e0 CTexture::Uninitialise`,
+  and `00cacd60 CTexture::Uninitialise`; `RELOCATION_MATCH` at
+  `00747b00 CTCStealth::IsAvailableForAttack` and
+  `009bd090 CTCTrophy::OnShowTrophyInitialise`. The texture bodies also correct
+  the release-slot ABI to a stack-passed callee convention; Trophy's 13-byte
+  body demonstrates that its effective retail method takes no `CThing*`
+  argument despite the current manifest prototype.
+- Batch 152 allocation wrappers `00c33470` and `00c36090` pass behavior but
+  remain unlanded at `DIFFER(16v14)`: honest VC7.1 C++ emits `add esp,4` where
+  retail uses `pop ecx`. Do not replace this with naked assembly or baked bytes.
+- `008ad5c0 SetStaticCast<NUISystem::CComponent>` now has a behavior-backed
+  candidate with the corrected no-effective-argument wrapper shape, but remains
+  an honest `DIFFER(13v13)` because VC7.1 chooses a different register for the
+  first counted-pointer field. It is not landed.
+
+## Decomp break / cold-resume instructions — 2026-08-29
+
+- This session's final result is **11 landed functions**: four exact matches and
+  seven relocation matches. Every target has exactly one catalog entry, oracle
+  row, compiled source, and behavior fixture; all 11 passed a selected
+  `rebuild/build_candidates.ps1 -Address <address>` production rebuild.
+- Durable crawl state is `tools/decomp_pipeline/crawl/gen_tried.txt` with 5,677
+  unique whitespace-delimited addresses. The file intentionally contains a
+  legacy space-delimited first line; count it with whitespace tokenization, not
+  `Measure-Object -Line`. Batch-local ledgers are stale snapshots and must be
+  refreshed from the durable ledger before generating another batch.
+- Resume smallest-first work in a new directory (do not reuse Batch 150/152):
+  create `work/crawl_batch153`, copy the durable `gen_tried.txt` into it, set
+  `DECOMP_CRAWL_SCR` to that absolute directory, then run
+  `python tools/decomp_pipeline/crawl/next_smallest.py 8 gen_batch153`, followed
+  by `trim_overcapture.py` and `trim_tailjmp.py` on its oracle TSV.
+- Existing evidence bundles remain in `work/crawl_batch150` and
+  `work/crawl_batch152`. The improved nav-tree source/fixture/oracle bundle is
+  still present at the absolute `lv_00a79b30` scratch path documented above.
+- Next target policy: prefer new structural leaves; do not requeue the four
+  behavior-passing DIFFERs or land `00a79b30` until byte parity is real. Require
+  `MATCH`/`RELOCATION_MATCH` plus behavior `PASS`, then rerun the selected
+  production catalog target before reporting a landing.
+
+## Aeon FSE upstream review and two-package corpus ingest — 2026-09-02
+
+- Reviewed `eeeeeAeoN/FableScriptExtender` @ master. Full write-up:
+  `docs/AEON_FSE_UPSTREAM_2026-09-02.md`.
+- Upstream added **14 Lua bindings, zero removed** (cutscene session control,
+  logbook entries, `GetAngleXY`, `FadeOutAndKillEntity`, `GetDistanceBetweenThings`,
+  `SetMasterGameState`, entity-scope `SetIsPushableByHero`) plus a `lua_newthread`
+  per-thread coroutine-stack refactor of `LuaQuestHost`.
+- Those additions cover **all six capabilities** our compatibility report listed
+  as conversion blockers. Refreshed `refs/fse_api_manifest.json` (933 -> 947) via
+  the new `tools/script_recovery/update_fse_manifest_2026_09.py`.
+- Ingested Aeon's two new ports, `StatueMaster.zip` (retail `V_StatueMaster`) and
+  `DragonBossFight.zip` (retail `Q_DragonBossFight`). The other six zips are
+  byte-identical to the already-ingested corpus. Corpus is now 8 packages /
+  25 scripts; compatibility report is **0 missing APIs**, 0 validation errors;
+  catalog matched seeds 6 -> 8; priority-0 queue rows 6 -> 8.
+- Independent cross-check: every `quests.lua` binding in both new packages is
+  present in our retail lifecycle IR. Found a real upstream port gap — retail
+  `Q_DragonBossFight` binds `DBMinion`, `DBSummoner` and `Dragon`, but Aeon's
+  `quests.lua` registers only `Dragon` although all three `.lua` files ship.
+- `tools/script_recovery` suite: **94 passed**. Foundation audit is **16/18** with
+  exactly two honest, pinned gaps (`test_verify_foundation.KNOWN_PENDING`):
+  1. ForgeFSE (`D:\Code\ForgeFSE`) has not ported the 11 upstream bindings the
+     corpus calls - runtime audit is `100/111 callable, 10 missing, 1 wrong-scope`
+     against ForgeFSE vs `111/111` against upstream. **This is the next action.**
+     ForgeFSE has no git remote and is 8 commits ahead with a dirty tree, so this
+     is a manual three-way port; it must preserve ForgeFSE's `sol::lib::package` +
+     `package.path` setup, which upstream lacks.
+  2. `V_StatueMaster` and `Q_DragonBossFight` need a Ghidra anchor-discovery run
+     (`decompile_native_script.py`) - their clusters are decompiled already, only
+     `evidenceAnchors` is empty.
+- Aeon reports retail `V_StatueMaster` has **unused code detecting the statue
+  pointing at the Guild**, and assumes a reward was intended there and cut.
+  CORRECTION to an earlier line in this session: our Statue Master's Hammer is
+  **authored by us**, not a recovered cut reward - it is a new
+  `OBJECT_STATUEMASTER_HAMMER` on a CC BY 4.0 model over the
+  `OBJECT_LEGENDARY_WARHAMMER` donor chain (`mods/StatueMasterRestoration/RewardPlan.lua`,
+  staged in `work/statuemaster-hammer-package`, `RewardPlan.Enabled = false`).
+  No cut retail reward for this quest has ever been located; do not treat Aeon's
+  unused branch as its origin without proving it from the retail code.
+- `Q_WaspBoss` is in progress upstream.
+
+## ForgeFSE: 14 upstream FSE bindings ported — 2026-09-02
+
+- Ported all 14 upstream bindings into `D:\Code\ForgeFSE`. Its `LuaManager.cpp`
+  binding table is now a strict superset of upstream: **984 rows = upstream 943 +
+  our 41**, zero upstream rows missing, none of ours lost. Release x86
+  `/t:Rebuild` is clean; `D:\Code\ForgeFSE\Release\FableScriptExtender.dll`
+  rebuilt (4,658,688 bytes).
+- Corpus audit against the ported fork: **`111/111 callable, 0 missing,
+  0 wrong-scope`** (was `100/111, 10 missing, 1 wrong-scope`). Foundation audit is
+  now **17/18**; the single remaining gap is the Ghidra anchor-discovery run for
+  `V_StatueMaster` and `Q_DragonBossFight`. `tools/script_recovery`: 94 passed.
+- **A real ABI bug in our own fork surfaced during the port** and is fixed:
+  ForgeFSE's `tSetIsPushableByHero` typedef took `CScriptThing*`, but retail takes
+  `CScriptThing` **by value** as a refcounted handle copy. That is what Aeon's
+  "fixed SetPushableByHero" commit changed. ForgeFSE's quest-scope
+  `SetIsPushableByHero` had been passing a pointer where retail expects the
+  struct, so it was broken before this port; it now bumps `pImp.Info->RefCount`
+  and passes the copy by value.
+- New API pointers wired in `FableAPI.{h,cpp}`: `FadeOutAndKillEntity_API`
+  `0x00CBE716`, `AddLogbookStoryEntry_API` `0x00CBE87F`,
+  `AddLogbookStoryEntryString_API` `0x00CBE960`, plus the cutscene flag-map
+  accessors `StdMap_Bool_OperatorBracket_API` `0x008ADF10` and
+  `StdMap_Bool_Destroy_API` `0x007ADD50`. **Addresses are Aeon's and are not yet
+  runtime-confirmed by us** - our own BSim label for `0x00CBE87F` is
+  `CSubtitleRenderer::SetText` at sim 0.51, but all three sit in the `0x00CBxxxx`
+  script-interface thunk band, so per CLAUDE.md the FSE ASLR address wins. A live
+  probe of the three is the cheapest next validation.
+- **Not committed.** The ForgeFSE tree already carried heavy uncommitted work in
+  the same files (`+3404/-128` over 16 files), so the port cannot be isolated into
+  its own commit by file. It sits in the working tree for review.
+- **Not ported:** the `lua_newthread` threading refactor. Aeon's release note:
+  *"a totally refactored threading system to mirror the original game's script
+  thread execution more closely."* It changes how every script thread executes,
+  our `LuaQuestHost` has diverged from upstream's (`sol::lib::package` +
+  `package.path` for `require`), and no corpus script needs it. Do it as its own
+  reviewed change.
+- Full detail: `docs/AEON_FSE_UPSTREAM_2026-09-02.md`.
+
+## ForgeFSE: upstream threading refactor ported — 2026-09-02
+
+- Ported Aeon's `lua_newthread` threading refactor into
+  `D:\Code\ForgeFSE\FableScriptExtender\LuaQuestHost.{h,cpp}`. Aeon's release note:
+  *"a totally refactored threading system to mirror the original game's script
+  thread execution more closely."* Release x86 `/t:Rebuild` clean; corpus audit
+  still `111/111 callable`; foundation audit 17/18; 94 tests pass.
+- After the port a newline-normalised diff against upstream leaves **only three
+  differences, all deliberately ours**: the `sol::lib::package` + `package.path`
+  block, our `Destructor(bool)`, and doc comments. All thread logic is upstream's.
+- Substance: one dedicated `lua_State` coroutine stack per execution context
+  (`Main()` plus each `CreateThread` slot), anchored via
+  `luaL_ref(LUA_REGISTRYINDEX)` and released by the new `CleanupThreads()`;
+  `m_threadFunctions`/`m_threadArgs` collapsed into
+  `std::map<int, QuestThreadInfo>`; `Main()` and `ThreadRunner<N>` now bail on
+  `IsActiveThreadTerminating_Quest_API` / `IsActiveThreadTerminating_API`
+  (`Main()` had no guard at all before); `ThreadRunner<N>` no longer silently
+  swallows C++ exceptions or a missing Lua function.
+- **Merge decision worth knowing:** `Destructor(bool)` conflicted. Ours honours the
+  scalar-deleting-destructor contract (commit `43ecd61`, defect B2) because
+  `QuestAllocator<N>` uses a plain `new` with no deleter block - without it a
+  `LuaQuestHost` + its isolated Lua VM leaked every load. **Upstream's version
+  never deletes and still leaks the host.** Kept ours; `~LuaQuestHost()` runs
+  `CleanupThreads()` on the deleting path and the `else` branch calls it directly,
+  so both fixes survive.
+- **Deliberately not ported:** `LuaEntityHost::Main`'s guard. Upstream switched it
+  to parent-quest + interface checks; ours uses
+  `IsActiveThreadTerminating_Entity_API(this)`, which is the entity-specific API
+  and more precise. Left alone.
+- **Not runtime-tested.** Builds clean, diff is clean, nothing exercised in-game.
+  The test that matters is a script spawning `CreateThread` threads that block
+  inside them (`HerosOldHouse` is the candidate) plus a region unload to prove
+  `CleanupThreads()` runs with no double-unref. Still uncommitted, same reason as
+  the binding port.
+
+## Decomp parity crawl — batch 153 landed 8/8 — 2026-09-02
+
+- Followed the cold-resume instructions exactly: fresh `work/crawl_batch153`,
+  durable `gen_tried.txt` copied in, `DECOMP_CRAWL_SCR` pointed at it,
+  `next_smallest.py 8 gen_batch153`, then `trim_overcapture.py` and
+  `trim_tailjmp.py`. Both trimmers reported **0 rows** - the oracle was clean.
+  Eligible pool 11,634; 8 targets at 12-15 bytes.
+- Authored all 8 by hand (no workflow) and **every one won on the first pass**:
+  one exact `MATCH`, seven `RELOCATION_MATCH`, all 8 behaviour `PASS`, all 8
+  landed, and all 8 pass a selected `rebuild/build_candidates.ps1 -Address`
+  production rebuild.
+
+  | Address | Landed as | Parity |
+  |---|---|---|
+  | `009f2010` | `GlobalCriticalSection::LeaveSharedLock` | RELOCATION_MATCH |
+  | `007a5420` | `CBaseObjectPropertyForwarder::NotifyOwnerProperty150` | RELOCATION_MATCH |
+  | `007cbee0` | `CBaseObjectPropertyForwarder::NotifyOwnerProperty136` | RELOCATION_MATCH |
+  | `0084f1b0` | `CParticleMorphsAccessor::GetMorphEntryItem` | RELOCATION_MATCH |
+  | `00cd2790` | `_List_const_iterator_..._CPendingQuery::GetPredecessorIterator` | **MATCH** |
+  | `004159e0` | `CGameEvent::AddUBYTE` | RELOCATION_MATCH |
+  | `006e72a0` | `CGameScriptInterface::Validate` | RELOCATION_MATCH |
+  | `00728460` | `CTCRandomAppearanceMorph::AddToInterface` | RELOCATION_MATCH |
+
+- Durable ledger `tools/decomp_pipeline/crawl/gen_tried.txt` 5,677 -> 5,685.
+  Catalog now holds 18,624 landed addresses.
+- **Four manifest names were BSim mislabels and are renamed on landing**, with the
+  mislabel recorded in each source comment. `009f2010`, `007a5420` and `007cbee0`
+  were labelled `_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,...>`
+  and `0084f1b0` `_Cons_val<std::allocator<std::pair<EHeroMorphType,...>>>`; none
+  of the four bodies is a `_Dest_val`/`_Cons_val`. `009f2010` is
+  `LeaveCriticalSection(&g_lock)` - the IAT slot at `0x0143FE10` resolves to
+  KERNEL32 via the new `work/crawl_batch153/iat_lookup.py`.
+- `00cd2790` is labelled `operator--` in the manifest but **never writes back to
+  `this`**: it returns a fresh iterator over the node link at +8 through the hidden
+  sret slot (`ret 4`, no visible argument). Landed under the mechanical name
+  `GetPredecessorIterator` with that discrepancy in the comment, and the behaviour
+  fixture asserts the non-mutation.
+- Two reusable helpers now live in `work/crawl_batch153/`: `disasm.py` (capstone
+  disassembly of an oracle TSV at real VAs, resolving call targets against
+  `rebuild/manifest/functions.tsv`) and `iat_lookup.py` (IAT slot VA -> DLL+symbol).
+  Both are batch-agnostic - point them at any oracle/address.
+- Confirms the CLAUDE.md tail-call rule from both directions in one batch:
+  `0084f1b0` (value-returning member forwarder) and `006e72a0` (void forwarder with
+  no pushed args) both tail-call to `jmp` and match retail, while `007a5420`,
+  `007cbee0` and `00728460` keep `call; ret` because each owns stack arguments the
+  callee would not clean.
+- Batch 154 is generated the same way; resume from `work/crawl_batch154`.
+
+## Decomp parity crawl — batch 154 landed 7/8 — 2026-09-02
+
+- `work/crawl_batch154`, 10-target request trimmed to 8 clean rows (both trimmers
+  reported 0). First pass gave 5 wins; two of the three misses were structural
+  model errors and were fixed and landed, so **7 of 8 landed**, all
+  catalog-rebuild PASS.
+
+  | Address | Landed as | Parity |
+  |---|---|---|
+  | `00749d70` | `CTCCreatureGenerator::SetAlwaysCreateCreaturesOnTrigger` | **MATCH** |
+  | `007ea240` | `CTargetingFlags::AddTargetingFlag` | **MATCH** |
+  | `008f09c0` | `CQuestCardScreen::SelectCard` | **MATCH** |
+  | `00993e50` | `CDataStream::WriteCBYTE` | **MATCH** (after fixup) |
+  | `00a55c00` | `CFourFlagState::Init` | **MATCH** |
+  | `00a23de0` | `C3DMeshLODInfo::IsResourceLoaded` | RELOCATION_MATCH (after fixup) |
+  | `00bdc060` | `CEngineLandscapeBackground::RenderBackground` | RELOCATION_MATCH |
+
+- **Two reusable authoring lessons**, both caught by the new probe loop:
+  1. `00993e50` was `DIFFER(15v15)` on **one byte**: `call [eax+0x10]` vs
+     `[eax+0x0c]`. The virtual being dispatched is vftable **slot 4**, so the model
+     needs four preceding virtuals, not three. Count vtable slots off the
+     displacement before authoring a virtual-dispatch body.
+  2. `00a23de0` was `DIFFER(15v15)` with *identical instructions in the opposite
+     block order*. Retail lays the constant-return block LAST and falls through to
+     the tail-call; writing `if (p == 0) return true; return p->IsFinished();`
+     inverts that. Test the **non**-null case first when retail's early exit is the
+     tail-call.
+- **`00995e70 PeekData` is an honest un-landed `DIFFER(16v15)`** after three
+  attempts; stopped there per the loop-prevention rule and added to the ledger.
+  Retail is `mov edx,[ecx+0xc] / lea eax,[ecx+8] / mov ecx,[eax] / sub edx,ecx /
+  je +2 / mov eax,ecx / ret`. The `sub` (not `cmp`) is reproducible with a
+  `end - begin == 0` test, but VC7.1 will not read the +8 field *through* the
+  `lea`'d address - it always emits `mov edx,[ecx+8]` directly, costing one byte.
+  The field meanings are also unestablished; do not land a guess. Resume by
+  attacking the load-through-lea, not the comparison.
+- New helper: `work/crawl_batch154/probe.py` - compiles one candidate with the
+  exact parity flags, disassembles it beside the retail oracle row (looked up by
+  `@<addr>` across every batch oracle) and prints MATCH / RELOCATION_MATCH /
+  DIFFER. This is the fast iteration loop for a DIFFER; it imports
+  `verify_and_land` so the compile, symbol selection and relocation masking are
+  the harness's own, not a reimplementation.
+- Durable ledger 5,685 -> 5,693. Catalog 18,624 -> 18,631 landed addresses.
+- Batch 155 (10 targets) is generating in `work/crawl_batch155`.
+
+## Script-recovery lane: readiness refresh + a two-fork problem — 2026-09-02
+
+**`refs/script_recovery/native_conversion_readiness.json` was stale and is
+regenerated.** Two things were wrong with how it had been produced:
+
+1. Its recorded `sources` omit `--vtable-slots` and `--interface-catalog`, so a
+   naive re-run silently drops interface resolution to zero (1,708 resolved
+   interface calls -> 0, and the file shrinks from ~26.9k lines to ~200). Both
+   flags are required. The interface catalog is
+   `ghidra_out/gamescriptinterface_catalog.tsv`; the slots table is
+   `ghidra_out/script_recovery/gamescriptinterface_vtable_slots.tsv`. The `sources`
+   block should be extended to record them - it currently lies by omission.
+2. It was generated against **`D:\Code\ForgeFSE-retail-shadow`**, not
+   `D:\Code\ForgeFSE`. Those are two diverged forks.
+
+**The two-fork problem.** `ForgeFSE-retail-shadow` is a separate, further-along
+fork whose head is `5acb832 Guard retail wide string ABI usage`:
+
+- **Shadow has 16 quest bindings main lacks:** `DisableFishingSpot`,
+  `IsFishingSpotEnabled`, `UpdateFishWeight`, `HeroStopDigging`,
+  `GiveHeroQuestCardDirectly`, `SetQuestCardGoldReward`,
+  `SetQuestCardRenownReward`, `SetHeroGuideToShowQuestCardsWhenSpokenTo`,
+  `MsgOnRegionLoaded`, `MsgOnRegionUnloaded`, `SetCutsceneMode`,
+  `SetToDisplayTutorialsDuringCutscenes`, `IsDPadButtonHeldForExpression`,
+  `OverrideAutomaticHouseLocking`, `AddLogBookEntry` (its own retail-wide-string
+  form), `UpdateOnlineScore_Archery`. These are exactly the names the readiness
+  report lists as `missingForgeRuntimeMethods` when pointed at main.
+- **Main has 7 shadow lacks** - and they are all from today's upstream port:
+  entity-scope `FadeOutAndKillEntity`, `AddLogbookStoryEntryString`,
+  `GetCutsceneFlag`, `SetCutsceneActionMode`, `RunCutsceneWithSetup`,
+  `GetDistanceBetweenThings`, `SetMasterGameState`.
+- Shadow **already had** `StartCutscene`, `RunCutscene`, `EndCutscene`,
+  `GetAngleXY`, `AddLogbookStoryEntry` and quest-scope `FadeOutAndKillEntity`
+  before today. So the earlier statement "ForgeFSE lacks all 14" is true only of
+  the **main** fork, which is the one `forgefse_runtime_audit.json` tracks and the
+  one today's port went into. **Today's 14 bindings are NOT in the shadow fork.**
+
+**Open decision for the user: which fork is canonical.** Nothing here picks one.
+The regenerated readiness file is pointed at **main**, for consistency with
+`forgefse_runtime_audit.json`; that is a reporting choice, not a verdict. If
+shadow is the real retail-script runtime, today's port has to be applied there too
+and the runtime audit repointed.
+
+**What "converting all in-game scripts to Lua" actually stands at.** Honest
+numbers, not aspiration:
+
+- 161 retail scripts catalogued; **all 161** have complete 5-method lifecycle IR
+  and verified script-interface fields; 615/615 entity bindings complete.
+- **Zero have been converted to Lua by us.** The only Lua versions of retail
+  scripts in the tree are **Aeon's 8 hand-ports**. The 28 files in
+  `generated_helper_lua/` are native *helper* bodies, all
+  `deploymentEligible: false`.
+- Remaining stages: **69 scripts at `manual-lua-reconstruction`**, **92 at
+  `map-native-helpers`** (blocked on 126 unresolved native helper methods /
+  584 call sites; 26 methods / 992 calls are resolved).
+- Only **6 of 161** have anchored native decompilation.
+
+So the lane is "the analysis substrate is complete, the conversion has not
+started". The realistic next step is not bulk conversion - it is the 92
+`map-native-helpers` scripts' helper backlog, or picking one high-value script and
+hand-reconstructing it end to end against its trace fixtures the way Aeon does.
+
+## ForgeFSE canonical fork resolved + port redone on it — 2026-09-02
+
+**`D:\Code\ForgeFSE-retail-shadow` is canonical.** It is a *descendant* of
+`D:\Code\ForgeFSE`: commit `6ccbc59 Integrate existing ForgeFSE working changes`
+sits directly on main's head `43ecd61`, and it carries 12 further commits ending
+at `5acb832 Guard retail wide string ABI usage` (2026-08-31). Main's head is
+2026-08-10 with a dirty tree. Shadow's tree was clean.
+
+Earlier today's port went into **main**, the stale fork. It has been redone on
+shadow, on branch **`feat/upstream-fse-2026-09-02`**, commit **`3f417ee`**
+(shadow `master` untouched). Release x86 `/t:Rebuild` clean.
+
+- Shadow's binding table is now **1000 rows = upstream's 943 + our 57**, with
+  **zero** upstream rows missing. Corpus audit against it: **111/111 callable,
+  0 missing, 0 wrong-scope**.
+- Shadow already had `StartCutscene`/`RunCutscene`/`EndCutscene`/`GetAngleXY`/
+  `AddLogbookStoryEntry`/quest-scope `FadeOutAndKillEntity` (its own commits
+  `a8d6d83`, `bb80b8a`). Only 7 upstream bindings were genuinely absent.
+
+**Two real defects found and fixed in the canonical fork:**
+
+1. **`FadeOutAndKillEntity` ABI was wrong.** Retail `0x00CBE716` disassembles as
+   `mov esi,ecx` / `mov bl,dl` / `fld dword ptr [ebp+8]` - under `__fastcall`
+   argument 2 is a **bool in DL** and argument 3 is a **float** in the first stack
+   slot. Shadow's typedef declared `(thing, float duration, bool flag, bool)`, so
+   the float's bit pattern went into EDX and a bool went where retail reads a
+   float. Upstream had the correct order independently; the binary is the
+   tiebreak. The Lua-facing order was identical in both forks, so no script had to
+   change.
+2. **Shadow's cutscene session was incompatible with the retail script ports.**
+   Its Lua signature was `RunCutscene(name, setupCondition, skippable)` - the
+   reverse of upstream's `(name, skippable, setupcond)`, which is what Aeon's
+   scripts call. `HerosOldHouse` uses `RunCutscene("CS_..._SETUP", false, false)`
+   and `RunCutscene("CS_..._INTRO_1", true, false)`; under shadow's order every
+   dialogue cutscene came out unskippable and `setupCondition` landed on the wrong
+   macro. Shadow also passed `nullptr` for the flag map (so `GetCutsceneFlag` could
+   not exist) and never placed actors under script control - the bug Aeon's release
+   notes call "the actors not registering when running cutscenes". `DragonBossFight`
+   additionally calls `RunCutscene` with one argument and `StartCutscene` with two,
+   neither of which shadow's non-optional signatures accept. Replaced with
+   upstream's session; `StartMovieSequence`/`EndMovieSequence` keep their own
+   `m_pCurrentMovieHandle` / `m_pCurrentCutsceneActorMap` members.
+
+**Audits repointed at shadow** (`forgefse_runtime_audit.json`,
+`native_conversion_readiness.json`). `missingForgeRuntimeMethods` is back to the
+single genuine `MsgOnLevelLoaded` (ABI-blocked: retail writes
+`std::list<CCharString>`), confirming shadow is the runtime these reports were
+always meant to describe.
+
+**Manifest correction, two independent sources.** Shadow binds `0xCBE87F` as
+`AddLogbookStoryEntry` (`FableAPI.cpp:456`) and upstream binds the same address to
+the same name - arrived at separately. Our manifest labels it
+`CSubtitleRenderer::SetText` from a BSim match at similarity **0.51**. Two
+independent FSE implementations outweigh that, per the CLAUDE.md rule for the
+`0x00CBxxxx` script-interface thunk band.
+
+New tool `tools/script_recovery/build_fse_address_map.py` harvests every
+`<name>_API|_Func = ASLR<...>(0x...)` binding from both forks into
+`refs/script_recovery/fse_address_name_map.json` and cross-checks it against the
+manifest: **80 addresses, 63 clash with the manifest name**, and **12 sit in the
+native helper backlog covering 195 call sites** across up to 15 scripts. Those 12
+are named by FSE and mis-named by BSim - the highest-value naming corrections
+available for the `map-native-helpers` stage. Feeding this map into
+`analyze_native_conversion_readiness.py` (address-keyed, so it beats the name
+matcher) is the concrete next step for that stage.
+
+Still un-run: `verify_and_land`-style runtime validation of any of it. Nothing in
+either fork has been exercised in-game today.
+
+## FSE address map wired into the readiness analyzer — 2026-09-02
+
+`analyze_native_conversion_readiness.py` gained an **opt-in** `--fse-address-map`.
+It renames a call's callee when FSE names that target address authoritatively, so
+that a call BSim mislabels stops looking like an unlifted native helper and is
+classified as what it is - an FSE API call a Lua reconstruction can just make.
+Without the flag the analyzer behaves exactly as before (verified by a control
+run: identical numbers, `fseRenamedCalls: 0`).
+
+**Measured effect: 34 call sites across 11 scripts; unresolved helper calls
+584 -> 550.** Those 34 are the `AddLogbookStoryEntry` (21) + `AddLogbookStoryEntryString`
+(13) pair at `0x00CBE87F` / `0x00CBE960`, which the manifest calls
+`CSubtitleRenderer::SetText`. Helper *methods* stay at 126 and the stage split is
+unchanged at 69 / 92.
+
+**Correction to the previous entry.** That entry said the map covers "12 addresses
+/ 195 call sites" of the helper backlog, implying that much was recoverable. Only
+**2** of those 12 are FSE APIs. The other ten - `RunCutsceneMacro`,
+`StdMap_Construct` / `StdMap_Destroy` / `StdMap_Bool_Destroy`, `Game_malloc`,
+`Game_free`, `CBaseObject_Assign`, `CBaseObject_Destroy`,
+`CCharString_OperatorPlus`, `GFIntToCharString` - are allocator/CRT/STL
+infrastructure, not script-callable API. 34 sites, not 195.
+
+**The API-name filter is load-bearing, and the control run is what caught it.**
+Renaming unfiltered moved **7,410** call sites and pushed unresolved helper calls
+from 584 to **7,364**, with every one of the 161 scripts falling into
+`map-native-helpers`. The reason: `OPAQUE_RE` and `is_infrastructure_call` exclude
+allocator/CRT/STL traffic by matching the *retail* names (`free`, `malloc`,
+`rand`, `CCharString__*`), so renaming those to their FSE spellings defeats both
+classifiers and reclassifies ordinary memory traffic as unlifted script helpers.
+Renames are now confined to addresses whose FSE name is in the API manifest. Any
+future widening of this map must re-run the no-flag control first.
+
+`sources` in the output now records `vtableSlots`, `interfaceCatalog` and
+`fseAddressMap`, closing the reproducibility hole noted in the previous entry.
+
+Gate updated in `verify_foundation.py` (`584 -> 550`, plus a `fseRenamedCalls == 34`
+assertion so a silent widening of the rename set fails the audit). 94 tests pass;
+foundation audit still 17/18 with the Ghidra anchor run the only gap.
+
+## The `map-native-helpers` stage is mostly not a blocker — 2026-09-02
+
+Breaking the 550 unresolved helper calls down by the analyzer's own
+`native_helper_category` (reproduce by grouping
+`native_conversion_readiness.json` -> `nativeHelperBacklog` on `category`):
+
+| category | methods | calls | scripts |
+|---|---:|---:|---:|
+| runtime-support | 18 | 207 | 38 |
+| object-lifetime | 12 | 156 | 46 |
+| engine-or-script-helper | 58 | 146 | 50 |
+| lifecycle-cleanup | 37 | 39 | 39 |
+| script-runtime | 1 | 2 | 2 |
+| **total** | **126** | **550** | |
+
+**402 of the 550 calls (73%) are non-semantic** - `runtime-support`,
+`object-lifetime` and `lifecycle-cleanup`. Concretely that is `CTimer::~CTimer`,
+`CScriptThing::CScriptThing`, `CPhysicsMeshInfo::~CPhysicsMeshInfo`,
+`CCarriedReadableDef::CCarriedReadableDef`, `free`, `rand`, `__ftol2`, `strstr`,
+`resize`, `push_back`, `std__vector__Reallocate`, `StdMap_Construct/Destroy`.
+These are artifacts of the scripts having been **compiled C++**; a Lua port never
+lifts them, because the FSE host owns object lifetime and Lua owns its own
+containers. They should not be counted as conversion blockers.
+
+The remaining 148 calls / 59 methods are nominally semantic, but the top of that
+list is also not script logic: `RunCutsceneMacro_Func` (44 calls, 15 scripts) is
+the host's own cutscene runner, already wrapped by `LuaQuestState::RunCutscene`;
+`CCharString_OperatorPlus_API` and `GFIntToCharString_API` are string
+infrastructure; `_CIfmod` and `fpatan` are CRT math; `CScriptBase::KillSpawnedFunction`
+is host thread management. Strip those and the genuine tail is roughly **52
+methods, nearly all one-script one-offs at 2-6 calls each** - per-script logic
+that hand reconstruction absorbs anyway.
+
+**Consequence for the lane.** "92 scripts blocked on `map-native-helpers`" is a
+metric artifact, not a real gate. There is no helper-lifting project standing
+between us and converting scripts. The honest bottleneck is per-script
+reconstruction effort - which is exactly what Aeon is doing by hand, and why his
+8 ports are the only retail scripts in Lua today.
+
+Caveat: this is a classification-based estimate off `native_helper_category`, not
+a proof. It has not been validated by attempting a conversion that ignores the
+non-semantic helpers. The cheapest way to test it is to take one
+`map-native-helpers` script with no semantic helpers left and reconstruct it
+against its trace fixtures; if that lands, the stage split should be recomputed
+with the non-semantic categories excluded.

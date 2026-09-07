@@ -1,0 +1,3 @@
+//=== ?GFFloatToLongNear@@YIJM@Z @ 017d2463 (seed 017d2463) ===
+017d2463: e9b81b0f00          JMP 0x018c4020
+

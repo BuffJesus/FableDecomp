@@ -19,23 +19,12 @@ Quests = {
         }
     },
 
-    QS_MeetSister = {
-        name = "MeetSister",
-        file = "MeetSister/MeetSister",
-        id = 1003,
+    QS_GuardianTrophyDealerInfo = {
+        name = "GuardianTrophyDealerInfo",
+        file = "GuardianTrophyDealerInfo/GuardianTrophyDealerInfo",
+        id = 1005,
         entity_scripts = {
-            { name = "MeetSisterMessenger", file = "MeetSister/Entities/MeetSisterMessenger", id = 66 },
-            { name = "MeetSisterSister", file = "MeetSister/Entities/MeetSisterSister", id = 67 },
-        }
-    },
-
-    MazeResearch = {
-        name = "MazeResearch",
-        file = "MazeResearch/MazeResearch",
-        id = 1002,
-        entity_scripts = {
-            { name = "EmptyGrave", file = "MazeResearch/Entities/EmptyGrave", id = 64 },
-            { name = "HistoryBookcase", file = "MazeResearch/Entities/HistoryBookcase", id = 65 },
+            { name = "GTDI_Maze", file = "GuardianTrophyDealerInfo/Entities/GTDI_Maze", id = 69 },
         }
     },
 
@@ -50,12 +39,43 @@ Quests = {
         }
     },
 
-    QS_GuardianTrophyDealerInfo = {
-        name = "GuardianTrophyDealerInfo",
-        file = "GuardianTrophyDealerInfo/GuardianTrophyDealerInfo",
-        id = 1005,
+    MazeResearch = {
+        name = "MazeResearch",
+        file = "MazeResearch/MazeResearch",
+        id = 1002,
         entity_scripts = {
-            { name = "GTDI_Maze", file = "GuardianTrophyDealerInfo/Entities/GTDI_Maze", id = 69 },
+            { name = "EmptyGrave", file = "MazeResearch/Entities/EmptyGrave", id = 64 },
+            { name = "HistoryBookcase", file = "MazeResearch/Entities/HistoryBookcase", id = 65 },
+        }
+    },
+
+    QS_MeetSister = {
+        name = "MeetSister",
+        file = "MeetSister/MeetSister",
+        id = 1003,
+        entity_scripts = {
+            { name = "MeetSisterMessenger", file = "MeetSister/Entities/MeetSisterMessenger", id = 66 },
+            { name = "MeetSisterSister", file = "MeetSister/Entities/MeetSisterSister", id = 67 },
+        }
+    },
+
+    StatueMaster = {
+        name = "StatueMaster",
+        file = "StatueMaster/StatueMaster",
+        id = 1001,
+        entity_scripts = {
+            { name = "StatueMasterStatue", file = "StatueMaster/Entities/StatueMasterStatue", id = 61 },
+            { name = "StatueMasterCellarDoors", file = "StatueMaster/Entities/StatueMasterCellarDoors", id = 62 },
+            { name = "StatueMasterChest", file = "StatueMaster/Entities/StatueMasterChest", id = 63 },
+        }
+    },
+
+    DragonBossFight = {
+        name = "DragonBossFight",
+        file = "DragonBossFight/DragonBossFight",
+        id = 1009,
+        entity_scripts = {
+            { name = "Dragon", file = "DragonBossFight/Entities/Dragon", id = 83 },
         }
     },
 

@@ -1,3 +1,5 @@
+// RE_AGENT_SEMANTIC_REVIEW: generated lift invents a morph-entry pair for the
+// opaque text-bank lookup token and aliases incompatible temporary lifetimes.
 void CGameScriptInterface::SetQuestInfoName(const char* name) const
 {
     struct DataBankRootOverlay

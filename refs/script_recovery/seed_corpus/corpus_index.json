@@ -88,112 +88,45 @@
       ]
     },
     {
-      "name": "MeetSister",
-      "sourceArchive": "D:\\Downloads\\MeetSister.zip",
-      "archiveSha256": "4B0AA00054047316A905477CE9469AC3C36AB35609EABA1C1B4ADDB9F775B631",
+      "name": "GuardianTrophyDealerInfo",
+      "sourceArchive": "D:\\Downloads\\GuardianTrophyDealerInfo.zip",
+      "archiveSha256": "0A0D254C1516CBCCE2644F1FC946A22AB6D8C3CDA0EBBFFFAFA2F376C951F5AE",
       "evidenceLevel": "reconstructed-source",
       "registry": [
         {
-          "key": "QS_MeetSister",
-          "name": "MeetSister",
-          "file": "MeetSister/MeetSister",
-          "id": 1003,
+          "key": "QS_GuardianTrophyDealerInfo",
+          "name": "GuardianTrophyDealerInfo",
+          "file": "GuardianTrophyDealerInfo/GuardianTrophyDealerInfo",
+          "id": 1005,
           "kind": "quest",
           "entities": [
             {
-              "name": "MeetSisterMessenger",
-              "file": "MeetSister/Entities/MeetSisterMessenger",
-              "id": 66
-            },
-            {
-              "name": "MeetSisterSister",
-              "file": "MeetSister/Entities/MeetSisterSister",
-              "id": 67
+              "name": "GTDI_Maze",
+              "file": "GuardianTrophyDealerInfo/Entities/GTDI_Maze",
+              "id": 69
             }
           ]
         }
       ],
       "files": [
         {
-          "path": "FSE/MeetSister/Entities/MeetSisterMessenger.lua",
-          "sha256": "A78BFACA66CA91D985B25308425CDECBBB166EB9F247DA85FF518CDD8BF68958",
-          "size": 773,
-          "ir": "ir/MeetSister/FSE__MeetSister__Entities__MeetSisterMessenger.lua.json",
+          "path": "FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+          "sha256": "D80808673082FBADBF74FC3F025F73F9D44B01B3B0DF1B77F6548B80D2BC02CD",
+          "size": 3762,
+          "ir": "ir/GuardianTrophyDealerInfo/FSE__GuardianTrophyDealerInfo__Entities__GTDI_Maze.lua.json",
           "kind": "entity"
         },
         {
-          "path": "FSE/MeetSister/Entities/MeetSisterSister.lua",
-          "sha256": "6D3BF1464C57EA9ED4451D3483384296E274EA74B80413CDF8BAE7D07EA11631",
-          "size": 823,
-          "ir": "ir/MeetSister/FSE__MeetSister__Entities__MeetSisterSister.lua.json",
-          "kind": "entity"
-        },
-        {
-          "path": "FSE/MeetSister/MeetSister.lua",
-          "sha256": "2F9F61757F0A9D80B8E272B1D3153409D8213E5BD3EB92CF1EE667AD5AEAC3FC",
-          "size": 749,
-          "ir": "ir/MeetSister/FSE__MeetSister__MeetSister.lua.json",
+          "path": "FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+          "sha256": "62573209B4AD0B02654710A0E7A446A92C996073A678E26DFABAB1E377047A18",
+          "size": 1620,
+          "ir": "ir/GuardianTrophyDealerInfo/FSE__GuardianTrophyDealerInfo__GuardianTrophyDealerInfo.lua.json",
           "kind": "quest"
         },
         {
           "path": "FSE/quests.lua",
-          "sha256": "718F881C7D1B6DFF98A718B6A642FCF1B9C4A58B05FECDBFE568567E98D13266",
-          "size": 474
-        }
-      ]
-    },
-    {
-      "name": "MazeResearch",
-      "sourceArchive": "D:\\Downloads\\MazeResearch.zip",
-      "archiveSha256": "35A4B74EC1E5A50F336BEEA131E0E07276F2C71BE507F0540A13D9ED2FF91EC2",
-      "evidenceLevel": "reconstructed-source",
-      "registry": [
-        {
-          "key": "MazeResearch",
-          "name": "MazeResearch",
-          "file": "MazeResearch/MazeResearch",
-          "id": 1002,
-          "kind": "script",
-          "entities": [
-            {
-              "name": "EmptyGrave",
-              "file": "MazeResearch/Entities/EmptyGrave",
-              "id": 64
-            },
-            {
-              "name": "HistoryBookcase",
-              "file": "MazeResearch/Entities/HistoryBookcase",
-              "id": 65
-            }
-          ]
-        }
-      ],
-      "files": [
-        {
-          "path": "FSE/MazeResearch/Entities/EmptyGrave.lua",
-          "sha256": "448BC588F0144FE666BD3216BE5D6DE2FC3F99B9A1E86E2674E7E81E36DD67EF",
-          "size": 2328,
-          "ir": "ir/MazeResearch/FSE__MazeResearch__Entities__EmptyGrave.lua.json",
-          "kind": "entity"
-        },
-        {
-          "path": "FSE/MazeResearch/Entities/HistoryBookcase.lua",
-          "sha256": "B48BB2857167AC2A909D3A6D8264D4E6F52673F47CF3BA009E9B115BAFCC13F6",
-          "size": 1885,
-          "ir": "ir/MazeResearch/FSE__MazeResearch__Entities__HistoryBookcase.lua.json",
-          "kind": "entity"
-        },
-        {
-          "path": "FSE/MazeResearch/MazeResearch.lua",
-          "sha256": "D6CF51AF31F1907FDE44D8211F6DE8F9E2398DBF533C9B987A7BB80CC8970CAB",
-          "size": 1158,
-          "ir": "ir/MazeResearch/FSE__MazeResearch__MazeResearch.lua.json",
-          "kind": "script"
-        },
-        {
-          "path": "FSE/quests.lua",
-          "sha256": "54FB01DF0EA049A0E6145B449A859C209A74D2F4DD73CC5B14A0878375A16988",
-          "size": 516
+          "sha256": "E21871D4B7380E25E26F38C1B5B03A148128418EF7309E04DFAD456986078FC9",
+          "size": 477
         }
       ]
     },
@@ -265,45 +198,243 @@
       ]
     },
     {
-      "name": "GuardianTrophyDealerInfo",
-      "sourceArchive": "D:\\Downloads\\GuardianTrophyDealerInfo.zip",
-      "archiveSha256": "0A0D254C1516CBCCE2644F1FC946A22AB6D8C3CDA0EBBFFFAFA2F376C951F5AE",
+      "name": "MazeResearch",
+      "sourceArchive": "D:\\Downloads\\MazeResearch.zip",
+      "archiveSha256": "35A4B74EC1E5A50F336BEEA131E0E07276F2C71BE507F0540A13D9ED2FF91EC2",
       "evidenceLevel": "reconstructed-source",
       "registry": [
         {
-          "key": "QS_GuardianTrophyDealerInfo",
-          "name": "GuardianTrophyDealerInfo",
-          "file": "GuardianTrophyDealerInfo/GuardianTrophyDealerInfo",
-          "id": 1005,
-          "kind": "quest",
+          "key": "MazeResearch",
+          "name": "MazeResearch",
+          "file": "MazeResearch/MazeResearch",
+          "id": 1002,
+          "kind": "script",
           "entities": [
             {
-              "name": "GTDI_Maze",
-              "file": "GuardianTrophyDealerInfo/Entities/GTDI_Maze",
-              "id": 69
+              "name": "EmptyGrave",
+              "file": "MazeResearch/Entities/EmptyGrave",
+              "id": 64
+            },
+            {
+              "name": "HistoryBookcase",
+              "file": "MazeResearch/Entities/HistoryBookcase",
+              "id": 65
             }
           ]
         }
       ],
       "files": [
         {
-          "path": "FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-          "sha256": "D80808673082FBADBF74FC3F025F73F9D44B01B3B0DF1B77F6548B80D2BC02CD",
-          "size": 3762,
-          "ir": "ir/GuardianTrophyDealerInfo/FSE__GuardianTrophyDealerInfo__Entities__GTDI_Maze.lua.json",
+          "path": "FSE/MazeResearch/Entities/EmptyGrave.lua",
+          "sha256": "448BC588F0144FE666BD3216BE5D6DE2FC3F99B9A1E86E2674E7E81E36DD67EF",
+          "size": 2328,
+          "ir": "ir/MazeResearch/FSE__MazeResearch__Entities__EmptyGrave.lua.json",
           "kind": "entity"
         },
         {
-          "path": "FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
-          "sha256": "62573209B4AD0B02654710A0E7A446A92C996073A678E26DFABAB1E377047A18",
-          "size": 1620,
-          "ir": "ir/GuardianTrophyDealerInfo/FSE__GuardianTrophyDealerInfo__GuardianTrophyDealerInfo.lua.json",
+          "path": "FSE/MazeResearch/Entities/HistoryBookcase.lua",
+          "sha256": "B48BB2857167AC2A909D3A6D8264D4E6F52673F47CF3BA009E9B115BAFCC13F6",
+          "size": 1885,
+          "ir": "ir/MazeResearch/FSE__MazeResearch__Entities__HistoryBookcase.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/MazeResearch/MazeResearch.lua",
+          "sha256": "D6CF51AF31F1907FDE44D8211F6DE8F9E2398DBF533C9B987A7BB80CC8970CAB",
+          "size": 1158,
+          "ir": "ir/MazeResearch/FSE__MazeResearch__MazeResearch.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "54FB01DF0EA049A0E6145B449A859C209A74D2F4DD73CC5B14A0878375A16988",
+          "size": 516
+        }
+      ]
+    },
+    {
+      "name": "MeetSister",
+      "sourceArchive": "D:\\Downloads\\MeetSister.zip",
+      "archiveSha256": "4B0AA00054047316A905477CE9469AC3C36AB35609EABA1C1B4ADDB9F775B631",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "QS_MeetSister",
+          "name": "MeetSister",
+          "file": "MeetSister/MeetSister",
+          "id": 1003,
+          "kind": "quest",
+          "entities": [
+            {
+              "name": "MeetSisterMessenger",
+              "file": "MeetSister/Entities/MeetSisterMessenger",
+              "id": 66
+            },
+            {
+              "name": "MeetSisterSister",
+              "file": "MeetSister/Entities/MeetSisterSister",
+              "id": 67
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+          "sha256": "A78BFACA66CA91D985B25308425CDECBBB166EB9F247DA85FF518CDD8BF68958",
+          "size": 773,
+          "ir": "ir/MeetSister/FSE__MeetSister__Entities__MeetSisterMessenger.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/MeetSister/Entities/MeetSisterSister.lua",
+          "sha256": "6D3BF1464C57EA9ED4451D3483384296E274EA74B80413CDF8BAE7D07EA11631",
+          "size": 823,
+          "ir": "ir/MeetSister/FSE__MeetSister__Entities__MeetSisterSister.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/MeetSister/MeetSister.lua",
+          "sha256": "2F9F61757F0A9D80B8E272B1D3153409D8213E5BD3EB92CF1EE667AD5AEAC3FC",
+          "size": 749,
+          "ir": "ir/MeetSister/FSE__MeetSister__MeetSister.lua.json",
           "kind": "quest"
         },
         {
           "path": "FSE/quests.lua",
-          "sha256": "E21871D4B7380E25E26F38C1B5B03A148128418EF7309E04DFAD456986078FC9",
-          "size": 477
+          "sha256": "718F881C7D1B6DFF98A718B6A642FCF1B9C4A58B05FECDBFE568567E98D13266",
+          "size": 474
+        }
+      ]
+    },
+    {
+      "name": "StatueMaster",
+      "sourceArchive": "D:\\Downloads\\StatueMaster.zip",
+      "archiveSha256": "EA39505A93C611BAD2DAB7EAD99EA05101465B44B41E6C2DCEA6D7D7912FFDBF",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "StatueMaster",
+          "name": "StatueMaster",
+          "file": "StatueMaster/StatueMaster",
+          "id": 1001,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "StatueMasterStatue",
+              "file": "StatueMaster/Entities/StatueMasterStatue",
+              "id": 61
+            },
+            {
+              "name": "StatueMasterCellarDoors",
+              "file": "StatueMaster/Entities/StatueMasterCellarDoors",
+              "id": 62
+            },
+            {
+              "name": "StatueMasterChest",
+              "file": "StatueMaster/Entities/StatueMasterChest",
+              "id": 63
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua",
+          "sha256": "F244C695405A23CBDDCEA803AA58C02BC74C4BA3555CC31D1BB08E3DFA74EEDA",
+          "size": 1800,
+          "ir": "ir/StatueMaster/FSE__StatueMaster__Entities__StatueMasterCellarDoors.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/StatueMaster/Entities/StatueMasterChest.lua",
+          "sha256": "EEE87477EC6E2CBA5DB12174D59B9C9E631BCFC757ACF7A0BAAD990B322AC9D9",
+          "size": 1064,
+          "ir": "ir/StatueMaster/FSE__StatueMaster__Entities__StatueMasterChest.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/StatueMaster/Entities/StatueMasterStatue.lua",
+          "sha256": "C98C8DBFDA24AB217F5B4DB832087107B8CA5CB5AE1DCA32FC2CB9710FC99141",
+          "size": 2254,
+          "ir": "ir/StatueMaster/FSE__StatueMaster__Entities__StatueMasterStatue.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/StatueMaster/Entities/StatuePointing.lua",
+          "sha256": "5BA94528191A70194648E82669D93DFAFAA2EF15281166099F54EE883D3206B0",
+          "size": 678,
+          "ir": "ir/StatueMaster/FSE__StatueMaster__Entities__StatuePointing.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/StatueMaster/StatueMaster.lua",
+          "sha256": "1DD35D9D8ED03FD2FDEA692E52C0A10670C47A2DBEE96C88D9C22749F22C9AEB",
+          "size": 2467,
+          "ir": "ir/StatueMaster/FSE__StatueMaster__StatueMaster.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "CDC4BDEF34FBD286C34B65867FA98C5E1E7665F6AED3FAB310C63420107DE5B7",
+          "size": 649
+        }
+      ]
+    },
+    {
+      "name": "DragonBossFight",
+      "sourceArchive": "D:\\Downloads\\DragonBossFight.zip",
+      "archiveSha256": "E13F8A4244636AFFC4FF6407603D87B9682E660E85639FE89B7C19B654F8A8B7",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "DragonBossFight",
+          "name": "DragonBossFight",
+          "file": "DragonBossFight/DragonBossFight",
+          "id": 1009,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "Dragon",
+              "file": "DragonBossFight/Entities/Dragon",
+              "id": 83
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/DragonBossFight/DragonBossFight.lua",
+          "sha256": "F54F75E3101E1B69079C58C0880F4CC631D0F2D1C06FAF8DCA938507F2D9034F",
+          "size": 12476,
+          "ir": "ir/DragonBossFight/FSE__DragonBossFight__DragonBossFight.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/DragonBossFight/Entities/DBMinion.lua",
+          "sha256": "FC7420EB872B84749F35CBBA885D40ED158263DE50684E985B55F4178820E0B0",
+          "size": 1726,
+          "ir": "ir/DragonBossFight/FSE__DragonBossFight__Entities__DBMinion.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/DragonBossFight/Entities/DBSummoner.lua",
+          "sha256": "99413357BB5513A0A87D9908C09BC822A6130350E6A68747201B25DEC24A1589",
+          "size": 1757,
+          "ir": "ir/DragonBossFight/FSE__DragonBossFight__Entities__DBSummoner.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/DragonBossFight/Entities/Dragon.lua",
+          "sha256": "1FE8B57F1285F1AD6586984C0B8FB5FE0C4AA9BDD1F53C2E0656BEEBDC27C3D1",
+          "size": 4565,
+          "ir": "ir/DragonBossFight/FSE__DragonBossFight__Entities__Dragon.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "A95099136DAC8E9977B934F9C8A57DDC5326BC4C386C0C138B41C0384D735139",
+          "size": 423
         }
       ]
     }

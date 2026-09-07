@@ -22,6 +22,8 @@ SEEDS = {
     "MazeResearch": "V_MazeResearch",
     "HerosOldHouse": "Q_HerosOldHouse",
     "GuardianTrophyDealerInfo": "QS_GuardianTrophyDealerInfo",
+    "StatueMaster": "V_StatueMaster",
+    "DragonBossFight": "Q_DragonBossFight",
 }
 
 

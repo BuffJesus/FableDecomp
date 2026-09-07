@@ -19,7 +19,7 @@ different, and that difference sets the whole strategy.
 | Image base | guest 0x82000000 | **0x400000** (verified in the FSE log) |
 | To even *read* the code | XEXLoaderWV to decrypt + static **recompilation** (ReXGlue) to run | **Ghidra loads it directly.** No decrypt, no recomp, no runtime. |
 | Existing RE community | ~none (bleeding edge) | **~20 years mature** (fabletlcmod.com, Fable Explorer, FSE, unofficial patch) |
-| Scripting hook | had to be reversed from scratch | **FableScriptExtender already did it** — 931-function API map ships in `refs/fse_api_manifest.json` |
+| Scripting hook | had to be reversed from scratch | **FableScriptExtender already did it** — 933-function API map ships in `refs/fse_api_manifest.json` |
 
 Consequences:
 
@@ -115,7 +115,7 @@ Researched this session. **We build on these rather than re-deriving them.**
 - It **already reverse-engineered the game's C++ scripting API**: `CScriptThing`, `CWorld`,
   `CThingManager`, `CHero`, plus VMTables — and injects a Lua VM via a JMP hook at `0xCDB355`
   (native script-registration site).
-- **`refs/fse_api_manifest.json` (895 KB, 931 functions)** is a ready-made symbol/type catalog.
+- **`refs/fse_api_manifest.json` (933 functions)** is a ready-made symbol/type catalog.
   `tools/fse_import/fse_manifest_to_ghidra.py` converts it into:
     - **`fse_api.h`** → parse into Ghidra (`File > Parse C Source` → *Apply Function Datatypes*)
       to seed real names/signatures/types instead of blank `sub_XXXXXX`.
@@ -201,7 +201,7 @@ failing call >2×; verify with evidence; log every change).
 - [ ] Import-table + RTTI pass: MSVC RTTI is usually intact → recover C++ class names/vtables
       wholesale (Ghidra's RTTI analyzer + `FindAccessors`). This alone names a large fraction of classes.
 - [ ] String-xref sweep (`FindStrXref`) → name error/log/asset-path handlers.
-- [ ] FSE call-site pass: for each of the 931 manifest functions, locate the engine target it wraps
+- [ ] FSE call-site pass: for each of the 933 manifest functions, locate the engine target it wraps
       and apply the manifest name/signature. Produces `ghidra_out/labels_fse_targets.tsv`.
 - [ ] Lua-natives pass (`FindLuaNatives*`) → the game's own Lua binding tables.
 - [ ] **Deliverable:** `docs/SYSTEMS_ANALYSIS.md` skeleton — every major subsystem located and named

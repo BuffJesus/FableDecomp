@@ -1,0 +1,590 @@
+//=== Normalise @ 00a14540 (seed a14540) ===
+00a14540: 83ec08              SUB ESP,0x8
+00a14543: 8bc1                MOV EAX,ECX
+00a14545: d900                FLD float ptr [EAX]
+00a14547: 56                  PUSH ESI
+00a14548: d94004              FLD float ptr [EAX + 0x4]
+00a1454b: be7c010000          MOV ESI,0x17c
+00a14550: d9c0                FLD ST0
+00a14552: d8c9                FMUL ST1
+00a14554: d9c2                FLD ST2
+00a14556: d8cb                FMUL ST3
+00a14558: dec1                FADDP
+00a1455a: d95c2408            FSTP float ptr [ESP + 0x8]
+00a1455e: 8b4c2408            MOV ECX,dword ptr [ESP + 0x8]
+00a14562: 8bd1                MOV EDX,ECX
+00a14564: ddd8                FSTP ST0
+00a14566: c1ea17              SHR EDX,0x17
+00a14569: ddd8                FSTP ST0
+00a1456b: c1e911              SHR ECX,0x11
+00a1456e: 81e2ff000000        AND EDX,0xff
+00a14574: 2bf2                SUB ESI,EDX
+00a14576: 83e17f              AND ECX,0x7f
+00a14579: 8b0c8d58e53c01      MOV ECX,dword ptr [ECX*0x4 + 0x13ce558]  ; DAT_013ce558
+00a14580: c1e616              SHL ESI,0x16
+00a14583: 81e6000080ff        AND ESI,0xff800000
+00a14589: c1e10f              SHL ECX,0xf
+00a1458c: 0bf1                OR ESI,ECX
+00a1458e: 89742404            MOV dword ptr [ESP + 0x4],ESI
+00a14592: d9442404            FLD float ptr [ESP + 0x4]
+00a14596: 5e                  POP ESI
+00a14597: d80c24              FMUL float ptr [ESP]
+00a1459a: d84c2404            FMUL float ptr [ESP + 0x4]
+00a1459e: d82dd4de2201        FSUBR float ptr [0x0122ded4]  ; DAT_0122ded4
+00a145a4: d80c24              FMUL float ptr [ESP]
+00a145a7: d80d9cf52201        FMUL float ptr [0x0122f59c]  ; DAT_0122f59c
+00a145ad: d9c0                FLD ST0
+00a145af: d808                FMUL float ptr [EAX]
+00a145b1: d918                FSTP float ptr [EAX]
+00a145b3: d84804              FMUL float ptr [EAX + 0x4]
+00a145b6: d95804              FSTP float ptr [EAX + 0x4]
+00a145b9: 83c408              ADD ESP,0x8
+00a145bc: c3                  RET
+
+//=== PeekMapNormal @ 00b3f5e0 (seed b3f5e0) ===
+00b3f5e0: 83ec30              SUB ESP,0x30
+00b3f5e3: 8b442438            MOV EAX,dword ptr [ESP + 0x38]
+00b3f5e7: 8b158c6e4301        MOV EDX,dword ptr [0x01436e8c]  ; DAT_01436e8c
+00b3f5ed: 53                  PUSH EBX
+00b3f5ee: 8b5c2440            MOV EBX,dword ptr [ESP + 0x40]
+00b3f5f2: 55                  PUSH EBP
+00b3f5f3: 56                  PUSH ESI
+00b3f5f4: 8bf1                MOV ESI,ECX
+00b3f5f6: 0fb74e5c            MOVZX ECX,word ptr [ESI + 0x5c]
+00b3f5fa: 48                  DEC EAX
+00b3f5fb: 3bc1                CMP EAX,ECX
+00b3f5fd: 57                  PUSH EDI
+00b3f5fe: 8bfb                MOV EDI,EBX
+00b3f600: 897c2420            MOV dword ptr [ESP + 0x20],EDI
+00b3f604: 89442410            MOV dword ptr [ESP + 0x10],EAX
+00b3f608: 894c241c            MOV dword ptr [ESP + 0x1c],ECX
+00b3f60c: 7d1b                JGE 0x00b3f629
+00b3f60e: 0fb74e5e            MOVZX ECX,word ptr [ESI + 0x5e]
+00b3f612: 3bd9                CMP EBX,ECX
+00b3f614: 7d13                JGE 0x00b3f629
+00b3f616: 85c0                TEST EAX,EAX
+00b3f618: 7c0f                JL 0x00b3f629
+00b3f61a: 85db                TEST EBX,EBX
+00b3f61c: 7c0b                JL 0x00b3f629
+00b3f61e: 8b4e08              MOV ECX,dword ptr [ESI + 0x8]
+00b3f621: 85c9                TEST ECX,ECX
+00b3f623: 0f85f3000000        JNZ 0x00b3f71c
+00b3f629: 0fb77e60            MOVZX EDI,word ptr [ESI + 0x60]
+00b3f62d: 8b6a18              MOV EBP,dword ptr [EDX + 0x18]
+00b3f630: 8bcf                MOV ECX,EDI
+00b3f632: 2bcd                SUB ECX,EBP
+00b3f634: 0fb76e62            MOVZX EBP,word ptr [ESI + 0x62]
+00b3f638: 03c8                ADD ECX,EAX
+00b3f63a: 8bc5                MOV EAX,EBP
+00b3f63c: 2b421c              SUB EAX,dword ptr [EDX + 0x1c]
+00b3f63f: 03c3                ADD EAX,EBX
+00b3f641: 85c9                TEST ECX,ECX
+00b3f643: 0f8c9e000000        JL 0x00b3f6e7
+00b3f649: 85c0                TEST EAX,EAX
+00b3f64b: 0f8c96000000        JL 0x00b3f6e7
+00b3f651: 8b5a10              MOV EBX,dword ptr [EDX + 0x10]
+00b3f654: c1e305              SHL EBX,0x5
+00b3f657: 3bcb                CMP ECX,EBX
+00b3f659: 0f8d84000000        JGE 0x00b3f6e3
+00b3f65f: 8b5a14              MOV EBX,dword ptr [EDX + 0x14]
+00b3f662: c1e305              SHL EBX,0x5
+00b3f665: 3bc3                CMP EAX,EBX
+00b3f667: 7d7a                JGE 0x00b3f6e3
+00b3f669: c1f805              SAR EAX,0x5
+00b3f66c: 0faf4210            IMUL EAX,dword ptr [EDX + 0x10]
+00b3f670: c1f905              SAR ECX,0x5
+00b3f673: 03c1                ADD EAX,ECX
+00b3f675: 8b4a0c              MOV ECX,dword ptr [EDX + 0xc]
+00b3f678: 0fbf0441            MOVSX EAX,word ptr [ECX + EAX*0x2]
+00b3f67c: 85c0                TEST EAX,EAX
+00b3f67e: 7e63                JLE 0x00b3f6e3
+00b3f680: 8b4a20              MOV ECX,dword ptr [EDX + 0x20]
+00b3f683: 8b0c81              MOV ECX,dword ptr [ECX + EAX*0x4]
+00b3f686: 85c9                TEST ECX,ECX
+00b3f688: 7459                JZ 0x00b3f6e3
+00b3f68a: 0fb74162            MOVZX EAX,word ptr [ECX + 0x62]
+00b3f68e: 8b5c244c            MOV EBX,dword ptr [ESP + 0x4c]
+00b3f692: 2be8                SUB EBP,EAX
+00b3f694: 0fb74160            MOVZX EAX,word ptr [ECX + 0x60]
+00b3f698: 03eb                ADD EBP,EBX
+00b3f69a: 2bf8                SUB EDI,EAX
+00b3f69c: 8b442410            MOV EAX,dword ptr [ESP + 0x10]
+00b3f6a0: 896c2418            MOV dword ptr [ESP + 0x18],EBP
+00b3f6a4: 0fb7695c            MOVZX EBP,word ptr [ECX + 0x5c]
+00b3f6a8: 03f8                ADD EDI,EAX
+00b3f6aa: 3bfd                CMP EDI,EBP
+00b3f6ac: 897c2414            MOV dword ptr [ESP + 0x14],EDI
+00b3f6b0: 7d39                JGE 0x00b3f6eb
+00b3f6b2: 0fb7695e            MOVZX EBP,word ptr [ECX + 0x5e]
+00b3f6b6: 8b7c2418            MOV EDI,dword ptr [ESP + 0x18]
+00b3f6ba: 3bfd                CMP EDI,EBP
+00b3f6bc: 7d2d                JGE 0x00b3f6eb
+00b3f6be: 8b6c2414            MOV EBP,dword ptr [ESP + 0x14]
+00b3f6c2: 85ed                TEST EBP,EBP
+00b3f6c4: 7c25                JL 0x00b3f6eb
+00b3f6c6: 85ff                TEST EDI,EDI
+00b3f6c8: 7c21                JL 0x00b3f6eb
+00b3f6ca: 83790800            CMP dword ptr [ECX + 0x8],0x0
+00b3f6ce: 741b                JZ 0x00b3f6eb
+00b3f6d0: 57                  PUSH EDI
+00b3f6d1: 55                  PUSH EBP
+00b3f6d2: e8e9420000          CALL 0x00b439c0  ; PeekLandscapeHeight
+00b3f6d7: d95c2414            FSTP float ptr [ESP + 0x14]
+00b3f6db: 8b158c6e4301        MOV EDX,dword ptr [0x01436e8c]  ; DAT_01436e8c
+00b3f6e1: eb78                JMP 0x00b3f75b
+00b3f6e3: 8b5c244c            MOV EBX,dword ptr [ESP + 0x4c]
+00b3f6e7: 8b442410            MOV EAX,dword ptr [ESP + 0x10]
+00b3f6eb: 85c0                TEST EAX,EAX
+00b3f6ed: 7d04                JGE 0x00b3f6f3
+00b3f6ef: 33c0                XOR EAX,EAX
+00b3f6f1: eb0b                JMP 0x00b3f6fe
+00b3f6f3: 8b4c241c            MOV ECX,dword ptr [ESP + 0x1c]
+00b3f6f7: 49                  DEC ECX
+00b3f6f8: 3bc1                CMP EAX,ECX
+00b3f6fa: 7e02                JLE 0x00b3f6fe
+00b3f6fc: 8bc1                MOV EAX,ECX
+00b3f6fe: 85db                TEST EBX,EBX
+00b3f700: 7d04                JGE 0x00b3f706
+00b3f702: 33ff                XOR EDI,EDI
+00b3f704: eb0f                JMP 0x00b3f715
+00b3f706: 0fb74e5e            MOVZX ECX,word ptr [ESI + 0x5e]
+00b3f70a: 8d79ff              LEA EDI,[ECX + -0x1]
+00b3f70d: 3bdf                CMP EBX,EDI
+00b3f70f: 7f04                JG 0x00b3f715
+00b3f711: 8b7c2420            MOV EDI,dword ptr [ESP + 0x20]
+00b3f715: 8b4e08              MOV ECX,dword ptr [ESI + 0x8]
+00b3f718: 85c9                TEST ECX,ECX
+00b3f71a: 7437                JZ 0x00b3f753
+00b3f71c: 8b4e08              MOV ECX,dword ptr [ESI + 0x8]
+00b3f71f: 8b11                MOV EDX,dword ptr [ECX]
+00b3f721: 680000803f          PUSH 0x3f800000  ; DAT_3f800000
+00b3f726: 57                  PUSH EDI
+00b3f727: 50                  PUSH EAX
+00b3f728: ff5214              CALL dword ptr [EDX + 0x14]
+00b3f72b: d80db0712501        FMUL float ptr [0x012571b0]  ; DAT_012571b0
+00b3f731: d95c2420            FSTP float ptr [ESP + 0x20]
+00b3f735: d9442420            FLD float ptr [ESP + 0x20]
+00b3f739: db5c241c            FISTP dword ptr [ESP + 0x1c]
+00b3f73d: db44241c            FILD dword ptr [ESP + 0x1c]
+00b3f741: 8b158c6e4301        MOV EDX,dword ptr [0x01436e8c]  ; DAT_01436e8c
+00b3f747: d80d341f2a01        FMUL float ptr [0x012a1f34]  ; DAT_012a1f34
+00b3f74d: d95c2414            FSTP float ptr [ESP + 0x14]
+00b3f751: eb08                JMP 0x00b3f75b
+00b3f753: c744241400000000    MOV dword ptr [ESP + 0x14],0x0
+00b3f75b: 8b442448            MOV EAX,dword ptr [ESP + 0x48]
+00b3f75f: 0fb74e5c            MOVZX ECX,word ptr [ESI + 0x5c]
+00b3f763: 40                  INC EAX
+00b3f764: 3bc1                CMP EAX,ECX
+00b3f766: 8bfb                MOV EDI,EBX
+00b3f768: 897c2418            MOV dword ptr [ESP + 0x18],EDI
+00b3f76c: 89442410            MOV dword ptr [ESP + 0x10],EAX
+00b3f770: 7d1b                JGE 0x00b3f78d
+00b3f772: 0fb74e5e            MOVZX ECX,word ptr [ESI + 0x5e]
+00b3f776: 3bd9                CMP EBX,ECX
+00b3f778: 7d13                JGE 0x00b3f78d
+00b3f77a: 85c0                TEST EAX,EAX
+00b3f77c: 7c0f                JL 0x00b3f78d
+00b3f77e: 85db                TEST EBX,EBX
+00b3f780: 7c0b                JL 0x00b3f78d
+00b3f782: 8b4e08              MOV ECX,dword ptr [ESI + 0x8]
+00b3f785: 85c9                TEST ECX,ECX
+00b3f787: 0f85f3000000        JNZ 0x00b3f880
+00b3f78d: 0fb77e60            MOVZX EDI,word ptr [ESI + 0x60]
+00b3f791: 8b6a18              MOV EBP,dword ptr [EDX + 0x18]
+00b3f794: 8bcf                MOV ECX,EDI
+00b3f796: 2bcd                SUB ECX,EBP
+00b3f798: 0fb76e62            MOVZX EBP,word ptr [ESI + 0x62]
+00b3f79c: 03c8                ADD ECX,EAX
+00b3f79e: 8bc5                MOV EAX,EBP
+00b3f7a0: 2b421c              SUB EAX,dword ptr [EDX + 0x1c]
+00b3f7a3: 03c3                ADD EAX,EBX
+00b3f7a5: 85c9                TEST ECX,ECX
+00b3f7a7: 0f8c9e000000        JL 0x00b3f84b
+00b3f7ad: 85c0                TEST EAX,EAX
+00b3f7af: 0f8c96000000        JL 0x00b3f84b
+00b3f7b5: 8b5a10              MOV EBX,dword ptr [EDX + 0x10]
+00b3f7b8: c1e305              SHL EBX,0x5
+00b3f7bb: 3bcb                CMP ECX,EBX
+00b3f7bd: 0f8d84000000        JGE 0x00b3f847
+00b3f7c3: 8b5a14              MOV EBX,dword ptr [EDX + 0x14]
+00b3f7c6: c1e305              SHL EBX,0x5
+00b3f7c9: 3bc3                CMP EAX,EBX
+00b3f7cb: 7d7a                JGE 0x00b3f847
+00b3f7cd: c1f805              SAR EAX,0x5
+00b3f7d0: 0faf4210            IMUL EAX,dword ptr [EDX + 0x10]
+00b3f7d4: c1f905              SAR ECX,0x5
+00b3f7d7: 03c1                ADD EAX,ECX
+00b3f7d9: 8b4a0c              MOV ECX,dword ptr [EDX + 0xc]
+00b3f7dc: 0fbf0441            MOVSX EAX,word ptr [ECX + EAX*0x2]
+00b3f7e0: 85c0                TEST EAX,EAX
+00b3f7e2: 7e63                JLE 0x00b3f847
+00b3f7e4: 8b4a20              MOV ECX,dword ptr [EDX + 0x20]
+00b3f7e7: 8b0c81              MOV ECX,dword ptr [ECX + EAX*0x4]
+00b3f7ea: 85c9                TEST ECX,ECX
+00b3f7ec: 7459                JZ 0x00b3f847
+00b3f7ee: 0fb74162            MOVZX EAX,word ptr [ECX + 0x62]
+00b3f7f2: 8b5c244c            MOV EBX,dword ptr [ESP + 0x4c]
+00b3f7f6: 2be8                SUB EBP,EAX
+00b3f7f8: 0fb74160            MOVZX EAX,word ptr [ECX + 0x60]
+00b3f7fc: 03eb                ADD EBP,EBX
+00b3f7fe: 2bf8                SUB EDI,EAX
+00b3f800: 8b442410            MOV EAX,dword ptr [ESP + 0x10]
+00b3f804: 896c2420            MOV dword ptr [ESP + 0x20],EBP
+00b3f808: 0fb7695c            MOVZX EBP,word ptr [ECX + 0x5c]
+00b3f80c: 03f8                ADD EDI,EAX
+00b3f80e: 3bfd                CMP EDI,EBP
+00b3f810: 897c241c            MOV dword ptr [ESP + 0x1c],EDI
+00b3f814: 7d39                JGE 0x00b3f84f
+00b3f816: 0fb7695e            MOVZX EBP,word ptr [ECX + 0x5e]
+00b3f81a: 8b7c2420            MOV EDI,dword ptr [ESP + 0x20]
+00b3f81e: 3bfd                CMP EDI,EBP
+00b3f820: 7d2d                JGE 0x00b3f84f
+00b3f822: 8b6c241c            MOV EBP,dword ptr [ESP + 0x1c]
+00b3f826: 85ed                TEST EBP,EBP
+00b3f828: 7c25                JL 0x00b3f84f
+00b3f82a: 85ff                TEST EDI,EDI
+00b3f82c: 7c21                JL 0x00b3f84f
+00b3f82e: 83790800            CMP dword ptr [ECX + 0x8],0x0
+00b3f832: 741b                JZ 0x00b3f84f
+00b3f834: 57                  PUSH EDI
+00b3f835: 55                  PUSH EBP
+00b3f836: e885410000          CALL 0x00b439c0  ; PeekLandscapeHeight
+00b3f83b: d95c2418            FSTP float ptr [ESP + 0x18]
+00b3f83f: 8b158c6e4301        MOV EDX,dword ptr [0x01436e8c]  ; DAT_01436e8c
+00b3f845: eb78                JMP 0x00b3f8bf
+00b3f847: 8b5c244c            MOV EBX,dword ptr [ESP + 0x4c]
+00b3f84b: 8b442410            MOV EAX,dword ptr [ESP + 0x10]
+00b3f84f: 85c0                TEST EAX,EAX
+00b3f851: 7d04                JGE 0x00b3f857
+00b3f853: 33c0                XOR EAX,EAX
+00b3f855: eb0b                JMP 0x00b3f862
+00b3f857: 0fb74e5c            MOVZX ECX,word ptr [ESI + 0x5c]
+00b3f85b: 49                  DEC ECX
+00b3f85c: 3bc1                CMP EAX,ECX
+00b3f85e: 7e02                JLE 0x00b3f862
+00b3f860: 8bc1                MOV EAX,ECX
+00b3f862: 85db                TEST EBX,EBX
+00b3f864: 7d04                JGE 0x00b3f86a
+00b3f866: 33ff                XOR EDI,EDI
+00b3f868: eb0f                JMP 0x00b3f879
+00b3f86a: 0fb74e5e            MOVZX ECX,word ptr [ESI + 0x5e]
+00b3f86e: 8d79ff              LEA EDI,[ECX + -0x1]
+00b3f871: 3bdf                CMP EBX,EDI
+00b3f873: 7f04                JG 0x00b3f879
+00b3f875: 8b7c2418            MOV EDI,dword ptr [ESP + 0x18]
+00b3f879: 8b4e08              MOV ECX,dword ptr [ESI + 0x8]
+00b3f87c: 85c9                TEST ECX,ECX
+00b3f87e: 7437                JZ 0x00b3f8b7
+00b3f880: 8b4e08              MOV ECX,dword ptr [ESI + 0x8]
+00b3f883: 8b11                MOV EDX,dword ptr [ECX]
+00b3f885: 680000803f          PUSH 0x3f800000  ; DAT_3f800000
+00b3f88a: 57                  PUSH EDI
+00b3f88b: 50                  PUSH EAX
+00b3f88c: ff5214              CALL dword ptr [EDX + 0x14]
+00b3f88f: d80db0712501        FMUL float ptr [0x012571b0]  ; DAT_012571b0
+00b3f895: d95c2420            FSTP float ptr [ESP + 0x20]
+00b3f899: d9442420            FLD float ptr [ESP + 0x20]
+00b3f89d: db5c241c            FISTP dword ptr [ESP + 0x1c]
+00b3f8a1: db44241c            FILD dword ptr [ESP + 0x1c]
+00b3f8a5: 8b158c6e4301        MOV EDX,dword ptr [0x01436e8c]  ; DAT_01436e8c
+00b3f8ab: d80d341f2a01        FMUL float ptr [0x012a1f34]  ; DAT_012a1f34
+00b3f8b1: d95c2418            FSTP float ptr [ESP + 0x18]
+00b3f8b5: eb08                JMP 0x00b3f8bf
+00b3f8b7: c744241800000000    MOV dword ptr [ESP + 0x18],0x0
+00b3f8bf: 0fb7465c            MOVZX EAX,word ptr [ESI + 0x5c]
+00b3f8c3: 8b7c2448            MOV EDI,dword ptr [ESP + 0x48]
+00b3f8c7: 3bf8                CMP EDI,EAX
+00b3f8c9: 8d6bff              LEA EBP,[EBX + -0x1]
+00b3f8cc: 896c2410            MOV dword ptr [ESP + 0x10],EBP
+00b3f8d0: 897c2420            MOV dword ptr [ESP + 0x20],EDI
+00b3f8d4: 7d1b                JGE 0x00b3f8f1
+00b3f8d6: 0fb7465e            MOVZX EAX,word ptr [ESI + 0x5e]
+00b3f8da: 3be8                CMP EBP,EAX
+00b3f8dc: 7d13                JGE 0x00b3f8f1
+00b3f8de: 85ff                TEST EDI,EDI
+00b3f8e0: 7c0f                JL 0x00b3f8f1
+00b3f8e2: 85ed                TEST EBP,EBP
+00b3f8e4: 7c0b                JL 0x00b3f8f1
+00b3f8e6: 8b4608              MOV EAX,dword ptr [ESI + 0x8]
+00b3f8e9: 85c0                TEST EAX,EAX
+00b3f8eb: 0f85ec000000        JNZ 0x00b3f9dd
+00b3f8f1: 0fb77e60            MOVZX EDI,word ptr [ESI + 0x60]
+00b3f8f5: 8b5a18              MOV EBX,dword ptr [EDX + 0x18]
+00b3f8f8: 8b442448            MOV EAX,dword ptr [ESP + 0x48]
+00b3f8fc: 8bcf                MOV ECX,EDI
+00b3f8fe: 2bcb                SUB ECX,EBX
+00b3f900: 0fb75e62            MOVZX EBX,word ptr [ESI + 0x62]
+00b3f904: 03c8                ADD ECX,EAX
+00b3f906: 8bc3                MOV EAX,EBX
+00b3f908: 2b421c              SUB EAX,dword ptr [EDX + 0x1c]
+00b3f90b: 03c5                ADD EAX,EBP
+00b3f90d: 85c9                TEST ECX,ECX
+00b3f90f: 0f8c8f000000        JL 0x00b3f9a4
+00b3f915: 85c0                TEST EAX,EAX
+00b3f917: 0f8c87000000        JL 0x00b3f9a4
+00b3f91d: 8b6a10              MOV EBP,dword ptr [EDX + 0x10]
+00b3f920: c1e505              SHL EBP,0x5
+00b3f923: 3bcd                CMP ECX,EBP
+00b3f925: 7d79                JGE 0x00b3f9a0
+00b3f927: 8b6a14              MOV EBP,dword ptr [EDX + 0x14]
+00b3f92a: c1e505              SHL EBP,0x5
+00b3f92d: 3bc5                CMP EAX,EBP
+00b3f92f: 7d6f                JGE 0x00b3f9a0
+00b3f931: c1f805              SAR EAX,0x5
+00b3f934: 0faf4210            IMUL EAX,dword ptr [EDX + 0x10]
+00b3f938: c1f905              SAR ECX,0x5
+00b3f93b: 03c1                ADD EAX,ECX
+00b3f93d: 8b4a0c              MOV ECX,dword ptr [EDX + 0xc]
+00b3f940: 0fbf0441            MOVSX EAX,word ptr [ECX + EAX*0x2]
+00b3f944: 85c0                TEST EAX,EAX
+00b3f946: 7e58                JLE 0x00b3f9a0
+00b3f948: 8b4a20              MOV ECX,dword ptr [EDX + 0x20]
+00b3f94b: 8b0c81              MOV ECX,dword ptr [ECX + EAX*0x4]
+00b3f94e: 85c9                TEST ECX,ECX
+00b3f950: 744e                JZ 0x00b3f9a0
+00b3f952: 0fb74162            MOVZX EAX,word ptr [ECX + 0x62]
+00b3f956: 8b6c2410            MOV EBP,dword ptr [ESP + 0x10]
+00b3f95a: 2bd8                SUB EBX,EAX
+00b3f95c: 0fb74160            MOVZX EAX,word ptr [ECX + 0x60]
+00b3f960: 2bf8                SUB EDI,EAX
+00b3f962: 8b442448            MOV EAX,dword ptr [ESP + 0x48]
+00b3f966: 03f8                ADD EDI,EAX
+00b3f968: 0fb7415c            MOVZX EAX,word ptr [ECX + 0x5c]
+00b3f96c: 03dd                ADD EBX,EBP
+00b3f96e: 3bf8                CMP EDI,EAX
+00b3f970: 7d32                JGE 0x00b3f9a4
+00b3f972: 0fb7415e            MOVZX EAX,word ptr [ECX + 0x5e]
+00b3f976: 3bd8                CMP EBX,EAX
+00b3f978: 7d2a                JGE 0x00b3f9a4
+00b3f97a: 85ff                TEST EDI,EDI
+00b3f97c: 7c26                JL 0x00b3f9a4
+00b3f97e: 85db                TEST EBX,EBX
+00b3f980: 7c22                JL 0x00b3f9a4
+00b3f982: 8b4108              MOV EAX,dword ptr [ECX + 0x8]
+00b3f985: 85c0                TEST EAX,EAX
+00b3f987: 741b                JZ 0x00b3f9a4
+00b3f989: 53                  PUSH EBX
+00b3f98a: 57                  PUSH EDI
+00b3f98b: e830400000          CALL 0x00b439c0  ; PeekLandscapeHeight
+00b3f990: d95c2410            FSTP float ptr [ESP + 0x10]
+00b3f994: 8b158c6e4301        MOV EDX,dword ptr [0x01436e8c]  ; DAT_01436e8c
+00b3f99a: 8b5c244c            MOV EBX,dword ptr [ESP + 0x4c]
+00b3f99e: eb7c                JMP 0x00b3fa1c
+00b3f9a0: 8b6c2410            MOV EBP,dword ptr [ESP + 0x10]
+00b3f9a4: 8b4c2448            MOV ECX,dword ptr [ESP + 0x48]
+00b3f9a8: 85c9                TEST ECX,ECX
+00b3f9aa: 7d04                JGE 0x00b3f9b0
+00b3f9ac: 33ff                XOR EDI,EDI
+00b3f9ae: eb0f                JMP 0x00b3f9bf
+00b3f9b0: 0fb7465c            MOVZX EAX,word ptr [ESI + 0x5c]
+00b3f9b4: 48                  DEC EAX
+00b3f9b5: 3bc8                CMP ECX,EAX
+00b3f9b7: 8bf8                MOV EDI,EAX
+00b3f9b9: 7f04                JG 0x00b3f9bf
+00b3f9bb: 8b7c2420            MOV EDI,dword ptr [ESP + 0x20]
+00b3f9bf: 85ed                TEST EBP,EBP
+00b3f9c1: 7d04                JGE 0x00b3f9c7
+00b3f9c3: 33ed                XOR EBP,EBP
+00b3f9c5: eb0b                JMP 0x00b3f9d2
+00b3f9c7: 0fb7465e            MOVZX EAX,word ptr [ESI + 0x5e]
+00b3f9cb: 48                  DEC EAX
+00b3f9cc: 3be8                CMP EBP,EAX
+00b3f9ce: 7e02                JLE 0x00b3f9d2
+00b3f9d0: 8be8                MOV EBP,EAX
+00b3f9d2: 8b4608              MOV EAX,dword ptr [ESI + 0x8]
+00b3f9d5: 85c0                TEST EAX,EAX
+00b3f9d7: 8b5c244c            MOV EBX,dword ptr [ESP + 0x4c]
+00b3f9db: 7437                JZ 0x00b3fa14
+00b3f9dd: 8b4e08              MOV ECX,dword ptr [ESI + 0x8]
+00b3f9e0: 8b11                MOV EDX,dword ptr [ECX]
+00b3f9e2: 680000803f          PUSH 0x3f800000  ; DAT_3f800000
+00b3f9e7: 55                  PUSH EBP
+00b3f9e8: 57                  PUSH EDI
+00b3f9e9: ff5214              CALL dword ptr [EDX + 0x14]
+00b3f9ec: d80db0712501        FMUL float ptr [0x012571b0]  ; DAT_012571b0
+00b3f9f2: d95c244c            FSTP float ptr [ESP + 0x4c]
+00b3f9f6: d944244c            FLD float ptr [ESP + 0x4c]
+00b3f9fa: db5c2420            FISTP dword ptr [ESP + 0x20]
+00b3f9fe: db442420            FILD dword ptr [ESP + 0x20]
+00b3fa02: 8b158c6e4301        MOV EDX,dword ptr [0x01436e8c]  ; DAT_01436e8c
+00b3fa08: d80d341f2a01        FMUL float ptr [0x012a1f34]  ; DAT_012a1f34
+00b3fa0e: d95c2410            FSTP float ptr [ESP + 0x10]
+00b3fa12: eb08                JMP 0x00b3fa1c
+00b3fa14: c744241000000000    MOV dword ptr [ESP + 0x10],0x0
+00b3fa1c: 0fb7465c            MOVZX EAX,word ptr [ESI + 0x5c]
+00b3fa20: 8b4c2448            MOV ECX,dword ptr [ESP + 0x48]
+00b3fa24: 3bc8                CMP ECX,EAX
+00b3fa26: 8d6b01              LEA EBP,[EBX + 0x1]
+00b3fa29: 896c244c            MOV dword ptr [ESP + 0x4c],EBP
+00b3fa2d: 894c2420            MOV dword ptr [ESP + 0x20],ECX
+00b3fa31: 7d1b                JGE 0x00b3fa4e
+00b3fa33: 0fb7465e            MOVZX EAX,word ptr [ESI + 0x5e]
+00b3fa37: 3be8                CMP EBP,EAX
+00b3fa39: 7d13                JGE 0x00b3fa4e
+00b3fa3b: 85c9                TEST ECX,ECX
+00b3fa3d: 7c0f                JL 0x00b3fa4e
+00b3fa3f: 85ed                TEST EBP,EBP
+00b3fa41: 7c0b                JL 0x00b3fa4e
+00b3fa43: 8b4608              MOV EAX,dword ptr [ESI + 0x8]
+00b3fa46: 85c0                TEST EAX,EAX
+00b3fa48: 0f85d2000000        JNZ 0x00b3fb20
+00b3fa4e: 0fb77e60            MOVZX EDI,word ptr [ESI + 0x60]
+00b3fa52: 8b5a18              MOV EBX,dword ptr [EDX + 0x18]
+00b3fa55: 8b442448            MOV EAX,dword ptr [ESP + 0x48]
+00b3fa59: 8bcf                MOV ECX,EDI
+00b3fa5b: 2bcb                SUB ECX,EBX
+00b3fa5d: 0fb75e62            MOVZX EBX,word ptr [ESI + 0x62]
+00b3fa61: 03c8                ADD ECX,EAX
+00b3fa63: 8bc3                MOV EAX,EBX
+00b3fa65: 2b421c              SUB EAX,dword ptr [EDX + 0x1c]
+00b3fa68: 03c5                ADD EAX,EBP
+00b3fa6a: 85c9                TEST ECX,ECX
+00b3fa6c: 7c7d                JL 0x00b3faeb
+00b3fa6e: 85c0                TEST EAX,EAX
+00b3fa70: 7c79                JL 0x00b3faeb
+00b3fa72: 8b6a10              MOV EBP,dword ptr [EDX + 0x10]
+00b3fa75: c1e505              SHL EBP,0x5
+00b3fa78: 3bcd                CMP ECX,EBP
+00b3fa7a: 7d6b                JGE 0x00b3fae7
+00b3fa7c: 8b6a14              MOV EBP,dword ptr [EDX + 0x14]
+00b3fa7f: c1e505              SHL EBP,0x5
+00b3fa82: 3bc5                CMP EAX,EBP
+00b3fa84: 7d61                JGE 0x00b3fae7
+00b3fa86: c1f805              SAR EAX,0x5
+00b3fa89: 0faf4210            IMUL EAX,dword ptr [EDX + 0x10]
+00b3fa8d: c1f905              SAR ECX,0x5
+00b3fa90: 03c1                ADD EAX,ECX
+00b3fa92: 8b4a0c              MOV ECX,dword ptr [EDX + 0xc]
+00b3fa95: 0fbf0441            MOVSX EAX,word ptr [ECX + EAX*0x2]
+00b3fa99: 85c0                TEST EAX,EAX
+00b3fa9b: 7e4a                JLE 0x00b3fae7
+00b3fa9d: 8b5220              MOV EDX,dword ptr [EDX + 0x20]
+00b3faa0: 8b0c82              MOV ECX,dword ptr [EDX + EAX*0x4]
+00b3faa3: 85c9                TEST ECX,ECX
+00b3faa5: 7440                JZ 0x00b3fae7
+00b3faa7: 0fb74162            MOVZX EAX,word ptr [ECX + 0x62]
+00b3faab: 0fb75160            MOVZX EDX,word ptr [ECX + 0x60]
+00b3faaf: 8b6c244c            MOV EBP,dword ptr [ESP + 0x4c]
+00b3fab3: 2bd8                SUB EBX,EAX
+00b3fab5: 8b442448            MOV EAX,dword ptr [ESP + 0x48]
+00b3fab9: 2bfa                SUB EDI,EDX
+00b3fabb: 0fb7515c            MOVZX EDX,word ptr [ECX + 0x5c]
+00b3fabf: 03f8                ADD EDI,EAX
+00b3fac1: 03dd                ADD EBX,EBP
+00b3fac3: 3bfa                CMP EDI,EDX
+00b3fac5: 7d24                JGE 0x00b3faeb
+00b3fac7: 0fb7415e            MOVZX EAX,word ptr [ECX + 0x5e]
+00b3facb: 3bd8                CMP EBX,EAX
+00b3facd: 7d1c                JGE 0x00b3faeb
+00b3facf: 85ff                TEST EDI,EDI
+00b3fad1: 7c18                JL 0x00b3faeb
+00b3fad3: 85db                TEST EBX,EBX
+00b3fad5: 7c14                JL 0x00b3faeb
+00b3fad7: 8b4108              MOV EAX,dword ptr [ECX + 0x8]
+00b3fada: 85c0                TEST EAX,EAX
+00b3fadc: 740d                JZ 0x00b3faeb
+00b3fade: 53                  PUSH EBX
+00b3fadf: 57                  PUSH EDI
+00b3fae0: e8db3e0000          CALL 0x00b439c0  ; PeekLandscapeHeight
+00b3fae5: eb6e                JMP 0x00b3fb55
+00b3fae7: 8b6c244c            MOV EBP,dword ptr [ESP + 0x4c]
+00b3faeb: 8b4c2448            MOV ECX,dword ptr [ESP + 0x48]
+00b3faef: 85c9                TEST ECX,ECX
+00b3faf1: 7d04                JGE 0x00b3faf7
+00b3faf3: 33c9                XOR ECX,ECX
+00b3faf5: eb0f                JMP 0x00b3fb06
+00b3faf7: 0fb7465c            MOVZX EAX,word ptr [ESI + 0x5c]
+00b3fafb: 48                  DEC EAX
+00b3fafc: 3bc8                CMP ECX,EAX
+00b3fafe: 8bc8                MOV ECX,EAX
+00b3fb00: 7f04                JG 0x00b3fb06
+00b3fb02: 8b4c2420            MOV ECX,dword ptr [ESP + 0x20]
+00b3fb06: 85ed                TEST EBP,EBP
+00b3fb08: 7d04                JGE 0x00b3fb0e
+00b3fb0a: 33ed                XOR EBP,EBP
+00b3fb0c: eb0b                JMP 0x00b3fb19
+00b3fb0e: 0fb7465e            MOVZX EAX,word ptr [ESI + 0x5e]
+00b3fb12: 48                  DEC EAX
+00b3fb13: 3be8                CMP EBP,EAX
+00b3fb15: 7e02                JLE 0x00b3fb19
+00b3fb17: 8be8                MOV EBP,EAX
+00b3fb19: 8b4608              MOV EAX,dword ptr [ESI + 0x8]
+00b3fb1c: 85c0                TEST EAX,EAX
+00b3fb1e: 742f                JZ 0x00b3fb4f
+00b3fb20: 8b7608              MOV ESI,dword ptr [ESI + 0x8]
+00b3fb23: 8b16                MOV EDX,dword ptr [ESI]
+00b3fb25: 680000803f          PUSH 0x3f800000  ; DAT_3f800000
+00b3fb2a: 55                  PUSH EBP
+00b3fb2b: 51                  PUSH ECX
+00b3fb2c: 8bce                MOV ECX,ESI
+00b3fb2e: ff5214              CALL dword ptr [EDX + 0x14]
+00b3fb31: d80db0712501        FMUL float ptr [0x012571b0]  ; DAT_012571b0
+00b3fb37: d95c244c            FSTP float ptr [ESP + 0x4c]
+00b3fb3b: d944244c            FLD float ptr [ESP + 0x4c]
+00b3fb3f: db5c2448            FISTP dword ptr [ESP + 0x48]
+00b3fb43: db442448            FILD dword ptr [ESP + 0x48]
+00b3fb47: d80d341f2a01        FMUL float ptr [0x012a1f34]  ; DAT_012a1f34
+00b3fb4d: eb06                JMP 0x00b3fb55
+00b3fb4f: d905dcde2201        FLD float ptr [0x0122dedc]  ; DAT_0122dedc
+00b3fb55: d9442414            FLD float ptr [ESP + 0x14]
+00b3fb59: 8d4c2424            LEA ECX,[ESP + 0x24]
+00b3fb5d: d8642418            FSUB float ptr [ESP + 0x18]
+00b3fb61: c744242800000040    MOV dword ptr [ESP + 0x28],0x40000000
+00b3fb69: c744243000000040    MOV dword ptr [ESP + 0x30],0x40000000
+00b3fb71: d95c2424            FSTP float ptr [ESP + 0x24]
+00b3fb75: d9442410            FLD float ptr [ESP + 0x10]
+00b3fb79: d8e1                FSUB ST0,ST1
+00b3fb7b: d95c242c            FSTP float ptr [ESP + 0x2c]
+00b3fb7f: ddd8                FSTP ST0
+00b3fb81: e8ba49edff          CALL 0x00a14540  ; Normalise
+00b3fb86: 8d4c242c            LEA ECX,[ESP + 0x2c]
+00b3fb8a: e8b149edff          CALL 0x00a14540  ; Normalise
+00b3fb8f: d9442430            FLD float ptr [ESP + 0x30]
+00b3fb93: d84c2428            FMUL float ptr [ESP + 0x28]
+00b3fb97: ba7c010000          MOV EDX,0x17c
+00b3fb9c: 5f                  POP EDI
+00b3fb9d: 5e                  POP ESI
+00b3fb9e: d9542434            FST float ptr [ESP + 0x34]
+00b3fba2: 5d                  POP EBP
+00b3fba3: d84c2430            FMUL float ptr [ESP + 0x30]
+00b3fba7: 5b                  POP EBX
+00b3fba8: d9442414            FLD float ptr [ESP + 0x14]
+00b3fbac: d84c2414            FMUL float ptr [ESP + 0x14]
+00b3fbb0: dec1                FADDP
+00b3fbb2: d944241c            FLD float ptr [ESP + 0x1c]
+00b3fbb6: d84c241c            FMUL float ptr [ESP + 0x1c]
+00b3fbba: dec1                FADDP
+00b3fbbc: d95c2438            FSTP float ptr [ESP + 0x38]
+00b3fbc0: 8b442438            MOV EAX,dword ptr [ESP + 0x38]
+00b3fbc4: 8bc8                MOV ECX,EAX
+00b3fbc6: c1e811              SHR EAX,0x11
+00b3fbc9: c1e917              SHR ECX,0x17
+00b3fbcc: 81e1ff000000        AND ECX,0xff
+00b3fbd2: 83e07f              AND EAX,0x7f
+00b3fbd5: 8b048558e53c01      MOV EAX,dword ptr [EAX*0x4 + 0x13ce558]  ; DAT_013ce558
+00b3fbdc: 2bd1                SUB EDX,ECX
+00b3fbde: c1e216              SHL EDX,0x16
+00b3fbe1: c1e00f              SHL EAX,0xf
+00b3fbe4: 81e2000080ff        AND EDX,0xff800000
+00b3fbea: 0bd0                OR EDX,EAX
+00b3fbec: 8954243c            MOV dword ptr [ESP + 0x3c],EDX
+00b3fbf0: d944243c            FLD float ptr [ESP + 0x3c]
+00b3fbf4: d84c243c            FMUL float ptr [ESP + 0x3c]
+00b3fbf8: 8b442434            MOV EAX,dword ptr [ESP + 0x34]
+00b3fbfc: d84c2438            FMUL float ptr [ESP + 0x38]
+00b3fc00: d82dd4de2201        FSUBR float ptr [0x0122ded4]  ; DAT_0122ded4
+00b3fc06: d84c243c            FMUL float ptr [ESP + 0x3c]
+00b3fc0a: d80d9cf52201        FMUL float ptr [0x0122f59c]  ; DAT_0122f59c
+00b3fc10: d954243c            FST float ptr [ESP + 0x3c]
+00b3fc14: d84c2414            FMUL float ptr [ESP + 0x14]
+00b3fc18: d944243c            FLD float ptr [ESP + 0x3c]
+00b3fc1c: d84c241c            FMUL float ptr [ESP + 0x1c]
+00b3fc20: d944242c            FLD float ptr [ESP + 0x2c]
+00b3fc24: d84c243c            FMUL float ptr [ESP + 0x3c]
+00b3fc28: d9ca                FXCH ST2
+00b3fc2a: d918                FSTP float ptr [EAX]
+00b3fc2c: d95804              FSTP float ptr [EAX + 0x4]
+00b3fc2f: d95808              FSTP float ptr [EAX + 0x8]
+00b3fc32: 83c430              ADD ESP,0x30
+00b3fc35: c20c00              RET 0xc
+

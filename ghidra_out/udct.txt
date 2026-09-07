@@ -1,0 +1,429 @@
+//=== UpdateDiskCacheTexture @ 00b2d330 (seed 0x00b2d330) ===
+
+/* [bsim sim=0.6750092622646626 <- ego_r]
+   private: bool __thiscall CEngineSurfaceCompositionManager::UpdateDiskCacheTexture(class
+   CCompositeSurfaceCache &,unsigned long,bool) */
+
+bool __thiscall
+CEngineSurfaceCompositionManager::UpdateDiskCacheTexture
+          (CEngineSurfaceCompositionManager *this,CCompositeSurfaceCache *param_1,ulong param_2,
+          bool param_3)
+
+{
+  int *piVar1;
+  CGraphicDataBank *this_00;
+  CGraphicFrameData *pCVar2;
+  int *piVar3;
+  bool bVar4;
+  bool bVar5;
+  undefined4 uVar6;
+  undefined3 extraout_var;
+  CFileInfo *pCVar7;
+  undefined3 extraout_var_00;
+  CGraphicInfoFrame *pCVar8;
+  CFrameData *pCVar9;
+  uint uVar10;
+  CEngineTextureMorph *pCVar11;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_02;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_03;
+  int iVar12;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_04;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_05;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_06;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_07;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar13;
+  int iVar14;
+  int iVar15;
+  ulong uVar16;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  double dVar17;
+  undefined3 in_stack_0000000d;
+  undefined *puVar18;
+  uint local_48;
+  CCharString local_44 [4];
+  CEngineTextureMorph *local_40;
+  uint local_3c;
+  CEngineSurfaceCompositionManager *local_38;
+  CSurface *local_34;
+  ulong uStack_30;
+  long lStack_2c;
+  CGPUScratchBufferTextureManager *pCStack_28;
+  int *local_24;
+  int *piStack_20;
+  undefined4 local_1c;
+  undefined4 local_18;
+  long lStack_14;
+  void *pvStack_c;
+  undefined4 uStack_8;
+  
+  this_00 = *(CGraphicDataBank **)(DAT_01436e98 + 0x954);
+  if (*(uint *)(param_1 + 0x20) <
+      (uint)((*(int *)(this_00 + 0x1e4) - *(int *)(this_00 + 0x1e0)) / 0x2c)) {
+    iVar14 = *(uint *)(param_1 + 0x20) * 0x2c + *(int *)(this_00 + 0x1e0);
+  }
+  else {
+    iVar14 = 0;
+  }
+  pCVar8 = *(CGraphicInfoFrame **)(iVar14 + 0x28);
+  local_40 = (CEngineTextureMorph *)(param_1 + 0x20);
+  local_38 = this;
+  CGraphicDataBank::FrameEnd(this_00);
+  ::_E2();
+  local_1c = *(undefined4 *)(param_1 + 0x20);
+  local_18 = *(undefined4 *)(param_1 + 0x24);
+  uVar6 = GFIntToCharString_API();
+  puVar18 = &DAT_0122e630;
+  GFIntToCharString_API(&DAT_0122e630,uVar6);
+  CCharString__AppendCString(puVar18);
+  CCharString__AppendData(uVar6);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_34,extraout_EDX
+             ,unaff_EDI);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_3c,
+             extraout_EDX_00,unaff_EDI);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_48,
+             extraout_EDX_01,unaff_EDI);
+  bVar4 = CQuestManager::OnQuestStartScreenDisplayed((CQuestManager *)(this + 0x8c),local_44);
+  *(int *)(param_1 + 0x58) = CONCAT31(extraout_var,bVar4);
+  iVar14 = RBTree_FindLE(&local_1c);
+  if ((iVar14 != *(int *)(this + 0x9bc)) &&
+     (bVar5 = IsNearlyIdentical(this,local_40,(CEngineTextureMorph *)(iVar14 + 0x18),
+                                *(float *)(this + 0x9c8)), ppVar13 = extraout_EDX_02, bVar5)) {
+LAB_00b2d9d6:
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)local_44,ppVar13,
+               unaff_EDI);
+    return false;
+  }
+  if (CONCAT31(extraout_var,bVar4) == 0) {
+    pCVar7 = ::operator_new(100);
+    if (pCVar7 == (CFileInfo *)0x0) {
+      pCVar7 = (CFileInfo *)0x0;
+    }
+    else {
+      *(undefined ***)pCVar7 = &PTR_LAB_0129c888;
+      *(undefined4 *)(pCVar7 + 4) = 0xffffffff;
+      *(undefined4 *)(pCVar7 + 8) = 0xffffffff;
+      *(undefined4 *)(pCVar7 + 0xc) = 0xffffffff;
+      *(undefined4 *)(pCVar7 + 0x10) = 0xffffffff;
+      *(undefined4 *)(pCVar7 + 0x14) = 0xffffffff;
+      *(undefined4 *)(pCVar7 + 0x18) = 0xffffffff;
+      *(undefined4 *)(pCVar7 + 0x1c) = 0xffffffff;
+      *(undefined4 *)(pCVar7 + 0x20) = 0xffffffff;
+      *(undefined4 *)(pCVar7 + 0x24) = 0xffffffff;
+      *(undefined4 *)(pCVar7 + 0x28) = 0xffffffff;
+      *(undefined4 *)(pCVar7 + 0x2c) = 0xffffffff;
+      *(undefined4 *)(pCVar7 + 0x30) = 0xffffffff;
+      *(undefined4 *)(pCVar7 + 0x34) = 0xffffffff;
+      *(undefined4 *)(pCVar7 + 0x38) = 0xffffffff;
+    }
+    ::CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>
+              ((CCountedPointer<CFileInstaller::CFileInfo_const_> *)&local_24,pCVar7);
+    piVar3 = local_24;
+    (**(code **)(*local_24 + 4))(local_24);
+    CCharString::CCharString((CCharString *)&local_3c,"",-1);
+    piVar1 = piStack_20;
+    if (piStack_20 != (int *)0x0) {
+      *piStack_20 = *piStack_20 + 1;
+    }
+    Map_InsertOrReplacePair(local_44,0,&local_3c,piVar3,piStack_20);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_3c,
+               extraout_EDX_03,unaff_EDI);
+    bVar4 = CQuestManager::OnQuestStartScreenDisplayed((CQuestManager *)(this + 0x8c),local_44);
+    *(uint *)(param_1 + 0x58) = CONCAT31(extraout_var_00,bVar4);
+    if ((piVar1 != (int *)0x0) && (*piVar1 = *piVar1 + -1, *piVar1 == 0)) {
+      (*(code *)piVar1[1])();
+      operator_delete(piVar1);
+    }
+  }
+  GetDimensionsAndAdjustMipmapLevel(this,(C2DExtentsI *)&local_24,pCVar8,&param_2);
+  if (*(char *)(*(int *)(pCVar8 + 0xc) + 0x10) != '\0') {
+    local_3c = CONCAT31(local_3c._1_3_,1);
+    if (param_3 == false) goto LAB_00b2d540;
+  }
+  local_3c = local_3c & 0xffffff00;
+LAB_00b2d540:
+  pCStack_28 = (CGPUScratchBufferTextureManager *)(DAT_01436e98 + 0x3190);
+  if (local_24 == (int *)0x0) {
+    iVar15 = -1;
+  }
+  else if (local_24 < (int *)0x80000000) {
+    iVar14 = (int)local_24 + 1;
+    uVar10 = 0x10000 - iVar14 >> 0x1f & 0x10;
+    iVar15 = uVar10 + ((1 << (char)uVar10 + 8) - iVar14 >> 0x1f & 8U);
+    iVar15 = iVar15 + ((1 << (char)iVar15 + 4) - iVar14 >> 0x1f & 4U);
+    iVar15 = iVar15 + ((1 << (char)iVar15 + 2) - iVar14 >> 0x1f & 2U);
+    iVar15 = ((1 << (char)iVar15 + 1) - iVar14 >> 0x1f & 1U) + iVar15;
+  }
+  else {
+    iVar15 = 0x1f;
+  }
+  if (piStack_20 == (int *)0x0) {
+    iVar12 = -1;
+  }
+  else if (piStack_20 < (int *)0x80000000) {
+    iVar14 = (int)piStack_20 + 1;
+    uVar10 = 0x10000 - iVar14 >> 0x1f & 0x10;
+    iVar12 = uVar10 + ((1 << (char)uVar10 + 8) - iVar14 >> 0x1f & 8U);
+    iVar12 = iVar12 + ((1 << (char)iVar12 + 4) - iVar14 >> 0x1f & 4U);
+    iVar12 = iVar12 + ((1 << (char)iVar12 + 2) - iVar14 >> 0x1f & 2U);
+    iVar12 = ((1 << (char)iVar12 + 1) - iVar14 >> 0x1f & 1U) + iVar12;
+  }
+  else {
+    iVar12 = 0x1f;
+  }
+  if (local_3c._0_1_ == (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>)0x0) {
+    iVar14 = iVar12 + 0x1df + iVar15 * 4;
+  }
+  else {
+    iVar14 = iVar12 + 0x1ef + iVar15 * 4;
+  }
+  lStack_14 = *(long *)(this + iVar14 * 8);
+  lStack_2c = *(long *)(this + iVar14 * 8 + 4);
+  local_34 = CGPUScratchBufferTextureManager::StartSurfaceUse(pCStack_28,lStack_2c);
+  uVar16 = *(int *)(local_40 + 0xc) - *(int *)(local_40 + 8) >> 4;
+  uStack_30 = uVar16;
+  CSimpleMemoryPool::New<C3DAnimationSequence>((CSimpleMemoryPool *)&pvStack_c,uVar16);
+  local_48 = 0;
+  if (uVar16 != 0) {
+    local_40 = (CEngineTextureMorph *)0x0;
+    do {
+      pCVar8 = GetGraphicInfo(this,*(ulong *)(local_40 + *(int *)(param_1 + 0x28)));
+      uVar16 = param_2;
+      pCVar9 = *(CFrameData **)(pCVar8 + 8);
+      if (pCVar9 == (CFrameData *)0x0) {
+        pCVar9 = ::operator_new(0x44);
+        if (pCVar9 == (CFrameData *)0x0) {
+          pCVar9 = (CFrameData *)0x0;
+        }
+        else {
+          pCVar9 = (CFrameData *)CGraphicInfoFrame::CFrameData::CFrameData(pCVar9,pCVar8);
+        }
+        piVar3 = *(int **)(pCVar8 + 8);
+        if (piVar3 != (int *)0x0) {
+          piVar1 = piVar3 + 1;
+          *piVar1 = *piVar1 + -1;
+          if (*piVar1 == 0) {
+            (**(code **)(*piVar3 + 4))();
+          }
+          *(undefined4 *)(pCVar8 + 8) = 0;
+        }
+        *(CFrameData **)(pCVar8 + 8) = pCVar9;
+        uVar16 = param_2;
+LAB_00b2d832:
+        CGraphicInfoFrame::CFrameData::BeginLoading(pCVar9,uVar16,0x19);
+        bVar4 = CGraphicInfoFrame::InternalGetFrameForcedLoading(pCVar8,0x19);
+        if (bVar4) {
+          pCVar2 = *(CGraphicFrameData **)((int)pvStack_c + local_48 * 4);
+          iVar14 = *(int *)(pCVar8 + 8);
+          if ((pCVar2 != (CGraphicFrameData *)0x0) &&
+             (*(int *)pCVar2 = *(int *)pCVar2 + -1, *(int *)pCVar2 == 0)) {
+            if (((byte)pCVar2[0x1a] & 0x10) != 0) {
+              CGraphicFrameData::Uninitialise(pCVar2);
+            }
+            piVar3 = *(int **)(pCVar2 + 0xc);
+            if (piVar3 != (int *)0x0) {
+              *piVar3 = *piVar3 + -1;
+              if (**(int **)(pCVar2 + 0xc) == 0) {
+                (*(code *)(*(int **)(pCVar2 + 0xc))[1])();
+                operator_delete(*(void **)(pCVar2 + 0xc));
+              }
+            }
+            *(undefined4 *)(pCVar2 + 8) = 0;
+            *(undefined4 *)(pCVar2 + 0xc) = 0;
+            operator_delete(pCVar2);
+          }
+          piVar3 = *(int **)(iVar14 + 0x1c);
+          *(int **)((int)pvStack_c + local_48 * 4) = piVar3;
+          if (piVar3 != (int *)0x0) {
+            *piVar3 = *piVar3 + 1;
+          }
+          goto LAB_00b2d8ab;
+        }
+LAB_00b2d9be:
+        std::_Destroy_range<std::allocator<CGraphicFrame>_>(pvStack_c,uStack_8,&param_2);
+        ppVar13 = extraout_EDX_06;
+        if (pvStack_c != (void *)0x0) {
+          free(pvStack_c);
+          ppVar13 = extraout_EDX_07;
+        }
+        goto LAB_00b2d9d6;
+      }
+      if (*(int *)(pCVar9 + 0x1c) == 0) goto LAB_00b2d832;
+      if (param_2 < (uint)(int)(char)pCVar9[0x38]) {
+        CGraphicInfoFrame::CFrameData::BeginLoading(pCVar9,param_2,0x19);
+        pCVar9 = *(CFrameData **)(pCVar8 + 8);
+        if (*(int *)(pCVar9 + 0x30) != 0) goto LAB_00b2d832;
+        pCVar2 = *(CGraphicFrameData **)((int)pvStack_c + local_48 * 4);
+        if ((pCVar2 != (CGraphicFrameData *)0x0) &&
+           (*(int *)pCVar2 = *(int *)pCVar2 + -1, *(int *)pCVar2 == 0)) {
+          if (((byte)pCVar2[0x1a] & 0x10) != 0) {
+            CGraphicFrameData::Uninitialise(pCVar2);
+          }
+          piVar3 = *(int **)(pCVar2 + 0xc);
+          if (piVar3 != (int *)0x0) {
+            *piVar3 = *piVar3 + -1;
+            if (**(int **)(pCVar2 + 0xc) == 0) {
+              (*(code *)(*(int **)(pCVar2 + 0xc))[1])();
+              operator_delete(*(void **)(pCVar2 + 0xc));
+            }
+          }
+          *(undefined4 *)(pCVar2 + 8) = 0;
+          *(undefined4 *)(pCVar2 + 0xc) = 0;
+          operator_delete(pCVar2);
+        }
+        piVar3 = *(int **)(pCVar9 + 0x1c);
+        *(int **)((int)pvStack_c + local_48 * 4) = piVar3;
+        if (piVar3 != (int *)0x0) {
+          *piVar3 = *piVar3 + 1;
+        }
+      }
+      else {
+        pCVar2 = *(CGraphicFrameData **)((int)pvStack_c + local_48 * 4);
+        if ((pCVar2 != (CGraphicFrameData *)0x0) &&
+           (*(int *)pCVar2 = *(int *)pCVar2 + -1, *(int *)pCVar2 == 0)) {
+          if (((byte)pCVar2[0x1a] & 0x10) != 0) {
+            CGraphicFrameData::Uninitialise(pCVar2);
+          }
+          piVar3 = *(int **)(pCVar2 + 0xc);
+          if (piVar3 != (int *)0x0) {
+            *piVar3 = *piVar3 + -1;
+            if (**(int **)(pCVar2 + 0xc) == 0) {
+              (*(code *)(*(int **)(pCVar2 + 0xc))[1])();
+              operator_delete(*(void **)(pCVar2 + 0xc));
+            }
+          }
+          *(undefined4 *)(pCVar2 + 8) = 0;
+          *(undefined4 *)(pCVar2 + 0xc) = 0;
+          operator_delete(pCVar2);
+        }
+        piVar3 = *(int **)(pCVar9 + 0x1c);
+        *(int **)((int)pvStack_c + local_48 * 4) = piVar3;
+        if (piVar3 != (int *)0x0) {
+          *piVar3 = *piVar3 + 1;
+        }
+      }
+LAB_00b2d8ab:
+      if (*(int *)(pCVar8 + 8) == 0) {
+        uVar10 = 0xffffffff;
+      }
+      else {
+        uVar10 = (uint)*(char *)(*(int *)(pCVar8 + 8) + 0x38);
+      }
+      if (param_2 < uVar10) goto LAB_00b2d9be;
+      local_48 = local_48 + 1;
+      local_40 = local_40 + 0x10;
+      this = local_38;
+    } while (local_48 < uStack_30);
+  }
+  bVar4 = SUB41(local_3c,0);
+  RenderToTexture(this,(CTexture *)local_34,(C2DExtentsI *)&local_24,bVar4,SUB41(_param_3,0),
+                  (CEngineTextureMorph *)(param_1 + 0x20),(CArray<CGraphicFrame> *)&pvStack_c,
+                  lStack_14);
+  pCVar11 = std::
+            map<std::pair<long,long>,CEngineTextureMorph,std::less<std::pair<long,long>_>,std::allocator<std::pair<std::pair<long,long>_const_,CEngineTextureMorph>_>_>
+            ::operator[]((map<std::pair<long,long>,CEngineTextureMorph,std::less<std::pair<long,long>_>,std::allocator<std::pair<std::pair<long,long>_const_,CEngineTextureMorph>_>_>
+                          *)(this + 0x9bc),(pair<long,long> *)&local_1c);
+  *(undefined4 *)pCVar11 = *(undefined4 *)(param_1 + 0x20);
+  *(undefined4 *)(pCVar11 + 4) = *(undefined4 *)(param_1 + 0x24);
+  std__vector__operator_(param_1 + 0x28);
+  *(ulong *)(param_1 + 0x48) = param_2;
+  dVar17 = GFGetTime();
+  *(double *)(param_1 + 0x60) = dVar17;
+  ::_E2();
+  WriteTextureToBank(this,(CTexture *)local_34,(CGraphicDataBank *)(this + 0x8c),
+                     *(ulong *)(param_1 + 0x58),bVar4);
+  ::_E2(lStack_2c);
+  std::_Destroy_range<std::allocator<CGraphicFrame>_>(pvStack_c,uStack_8,&param_2);
+  ppVar13 = extraout_EDX_04;
+  if (pvStack_c != (void *)0x0) {
+    free(pvStack_c);
+    ppVar13 = extraout_EDX_05;
+  }
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)local_44,ppVar13,
+             unaff_EDI);
+  return true;
+}
+
+
+// CALLEES of UpdateDiskCacheTexture:
+//   0099f570  CCharString::AppendData
+//   009cd620  Map_InsertOrReplacePair
+//   0099f600  CCharString::AppendCString
+//   0099f830  GFIntToCharString_API
+//   00b2b180  RenderToTexture
+//   00b2f5e0  operator[]
+//   00b2aef0  GetDimensionsAndAdjustMipmapLevel
+//   0099ebf0  CCharString
+//   00b2ec80  New<C3DAnimationSequence>
+//   00f36f00  $E2
+//   00b2e340  CCountedPointer<CFileInstaller::CFileInfo_const_>
+//   00bfe9bc  operator_delete
+//   009fcba0  Uninitialise
+//   006cade0  std::vector::operator=
+//   00b2bd80  WriteTextureToBank
+//   009fd660  FrameEnd
+//   009ccdc0  OnQuestStartScreenDisplayed
+//   009fde80  BeginLoading
+//   00b2e630  RBTree_FindLE
+//   00b2b050  IsNearlyIdentical
+//   00f36ee0  StartSurfaceUse
+//   00bfea1a  operator_new
+//   00bfea14  free
+//   00b2b790  GetGraphicInfo
+//   0099eae0  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+//   009e1bc0  GFGetTime
+//   00a0af80  $E2
+//   009fe380  CFrameData
+//   00b2efb0  _Destroy_range<std::allocator<CGraphicFrame>_>
+//   009ff6b0  InternalGetFrameForcedLoading
+
+//=== _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> @ 00b2dfd0 (seed 0x00b2e000) ===
+
+/* [bsim sim=0.7543551345493344 <- ego_r]
+   void __fastcall std::_Dest_val<class std::allocator<class CCountedPointer<class
+   QuadricOptimiserInternals::COptimisedPrimitive> >,class CCountedPointer<class
+   QuadricOptimiserInternals::COptimisedPrimitive> >(class std::allocator<class
+   CCountedPointer<class QuadricOptimiserInternals::COptimisedPrimitive> > &,class
+   CCountedPointer<class QuadricOptimiserInternals::COptimisedPrimitive> *) */
+
+void __fastcall
+std::
+_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+          (allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *param_1,
+          CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *param_2)
+
+{
+  int *piVar1;
+  
+  piVar1 = *(int **)(param_1 + 4);
+  if (piVar1 != (int *)0x0) {
+    *piVar1 = *piVar1 + -1;
+    if (**(int **)(param_1 + 4) == 0) {
+      (*(code *)(*(int **)(param_1 + 4))[1])();
+      operator_delete(*(void **)(param_1 + 4));
+    }
+  }
+  *(undefined4 *)param_1 = 0;
+  *(undefined4 *)(param_1 + 4) = 0;
+  return;
+}
+
+
+// CALLEES of _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>:
+//   00bfe9bc  operator_delete
+

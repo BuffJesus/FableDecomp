@@ -156,6 +156,60 @@ def main() -> int:
     backlog = rebuild / "backlog"
     write_tsv(backlog / "modules.tsv", module_rows)
     write_tsv(backlog / "functions.tsv", function_rows)
+
+    # These hand-ranked queues carry product priority/reason fields that cannot be
+    # reconstructed from the manifest alone.  Preserve that ordering metadata, but
+    # remove addresses that have since passed the canonical VC7.1 compile gate.
+    # Without this refresh, completed fse2 waves remain at the head indefinitely
+    # and make the ostensibly "remaining" queues actively misleading.
+    refreshed_ranked: dict[str, tuple[int, int]] = {}
+    for filename in ("fse2_remaining_ranked.tsv", "active_candidate_queue.tsv"):
+        ranked_path = backlog / filename
+        if not ranked_path.exists():
+            continue
+        ranked_rows = read_tsv(ranked_path)
+        before = len(ranked_rows)
+        ranked_rows = [
+            row for row in ranked_rows
+            if row.get("address", "").lower() not in compiled
+        ]
+        if filename == "active_candidate_queue.tsv":
+            priority_order = {"P0": 0, "P1": 1, "P2": 2, "P3": 3}
+            ranked_rows.sort(
+                key=lambda row: (
+                    priority_order.get(row.get("priority", ""), 9),
+                    row.get("attempt", "") in {"bounded", "residue"},
+                    int(row.get("rank", "0") or 0),
+                )
+            )
+        for rank, row in enumerate(ranked_rows, 1):
+            row["rank"] = str(rank)
+        write_tsv(ranked_path, ranked_rows)
+        refreshed_ranked[filename] = (before, len(ranked_rows))
+
+    pending_dir = rebuild / "oracles" / "pending"
+    batch_status_rows: list[dict[str, object]] = []
+    for oracle_file in sorted(
+        pending_dir.glob("batch*_oracle.tsv"),
+        key=lambda path: int(path.stem.removeprefix("batch").removesuffix("_oracle")),
+    ):
+        batch = oracle_file.stem.removesuffix("_oracle")
+        batch_oracles = read_tsv(oracle_file)
+        landed = sum(
+            row.get("address", "").lower() in compiled
+            for row in batch_oracles
+        )
+        batch_status_rows.append(
+            {
+                "batch": batch,
+                "total": len(batch_oracles),
+                "landed": landed,
+                "remaining": len(batch_oracles) - landed,
+            }
+        )
+    if batch_status_rows:
+        write_tsv(backlog / "pending_batch_status.tsv", batch_status_rows)
+
     quick_wins: list[dict[str, object]] = []
     for address, candidate in gate.items():
         if address in compiled:
@@ -232,7 +286,14 @@ def main() -> int:
     temp = backlog / "README.md.tmp"
     temp.write_text("\n".join(lines), encoding="utf-8")
     temp.replace(backlog / "README.md")
-    print(f"modules={len(module_rows)} queued_functions={len(function_rows)}")
+    refresh_summary = " ".join(
+        f"{name}={before}->{after}"
+        for name, (before, after) in refreshed_ranked.items()
+    )
+    print(
+        f"modules={len(module_rows)} queued_functions={len(function_rows)}"
+        + (f" {refresh_summary}" if refresh_summary else "")
+    )
     return 0
 
 

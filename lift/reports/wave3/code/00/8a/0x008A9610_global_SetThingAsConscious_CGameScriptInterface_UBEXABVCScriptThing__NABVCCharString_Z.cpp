@@ -1,6 +1,10 @@
 #include <cstddef>
 #include <cstdint>
 
+// RE_AGENT_SEMANTIC_REVIEW: structural PASS only. The inferred action
+// constructor/destructor symbols belong to unrelated GUI/lightning classes;
+// recover their actual creature-action identities from retail before promotion.
+
 class CCharString;
 class CCreatureActionBase;
 class CGameScriptInterface;

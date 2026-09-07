@@ -1,0 +1,679 @@
+﻿INFO  Using log config file: jar:file:/D:/Subuwu/tools/ghidra-public/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (1098 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (2623 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\GnuDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BytePatterns\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\JVM\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SystemEmulation\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\8051\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FileFormats\ghidra_scripts
+    D:\Documents\FableTLC\tools\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BSim\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\VersionTracking\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PDB\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\PIC\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Base\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Extensions\XEXLoaderWV\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    C:\Users\Cornelio\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\DATA\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Decompiler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\Atmel\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PyGhidra\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FunctionID\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessAnalyzer)  
+INFO  Opening project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessProject)  
+INFO  REPORT: Processing project file: /FableWin.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: DecompByName.java 'PeekMapNormal' 'PeekLandscapeHeight'  (HeadlessAnalyzer)  
+INFO  SCRIPT: D:\Documents\FableTLC\tools\ghidra_scripts\DecompByName.java (HeadlessAnalyzer)  
+INFO  DecompByName.java> ==================== ?PeekLandscapeHeight@CEngineWorldMap@@QBEMJJ@Z @ 017c9692 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+float10 _PeekLandscapeHeight_CEngineWorldMap__QBEMJJ_Z(int param_1,int param_2)
+
+{
+  int iVar1;
+  float10 fVar2;
+  undefined4 extraout_var;
+  
+  iVar1 = _GetMap_CEngineWorldMap__QBEPAVCEngineMap__JJ_Z(param_1,param_2);
+  if (iVar1 == 0) {
+    fVar2 = (float10)0;
+  }
+  else {
+    iVar1 = _PeekWorldY_CEngineMap__QBEJXZ(extraout_var);
+    param_2 = param_2 - iVar1;
+    iVar1 = _PeekWorldX_CEngineMap__QBEJXZ(param_2);
+    fVar2 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(param_1 - iVar1,param_2);
+  }
+  return fVar2;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?PeekMapNormal@CEngineMap@@QBE?AVC3DVector@@JJ@Z @ 017d3b97 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+undefined4 __thiscall
+_PeekMapNormal_CEngineMap__QBE_AVC3DVector__JJ_Z
+          (int param_1,undefined4 param_2,int param_3,int param_4)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  float10 fVar4;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined1 *puVar7;
+  undefined4 uVar8;
+  undefined4 uVar9;
+  undefined1 auStack_94 [8];
+  undefined1 auStack_8c [8];
+  undefined1 auStack_84 [11];
+  char cStack_79;
+  undefined1 auStack_78 [8];
+  undefined1 auStack_70 [8];
+  undefined1 auStack_68 [11];
+  char cStack_5d;
+  undefined1 auStack_5c [8];
+  undefined1 auStack_54 [8];
+  undefined1 auStack_4c [11];
+  char cStack_41;
+  float fStack_40;
+  float fStack_3c;
+  undefined4 uStack_38;
+  float fStack_34;
+  undefined1 auStack_30 [16];
+  undefined4 uStack_20;
+  float fStack_1c;
+  float fStack_18;
+  float fStack_14;
+  void *pvStack_10;
+  undefined1 *puStack_c;
+  int iStack_8;
+  
+  iStack_8 = 0xffffffff;
+  puStack_c = &LAB_03e6cfc6;
+  pvStack_10 = ExceptionList;
+  ExceptionList = &pvStack_10;
+  if (*(int *)(param_1 + 8) == 0) {
+    ExceptionList = &pvStack_10;
+    __0CWideString__QAE_PB_W_Z(L"Engine_World_Map.cpp");
+    iStack_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_044508c3,0xffffffff);
+    iStack_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z("GameMap",0xffffffff);
+    iStack_8._0_1_ = 2;
+    uVar9 = 1;
+    uVar8 = 0x161;
+    puVar7 = auStack_4c;
+    puVar6 = auStack_54;
+    puVar5 = auStack_5c;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0x161,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar5,puVar6,puVar7,uVar8,uVar9);
+    cStack_41 = '\x01' - (cVar2 != '\x01');
+    iStack_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    iStack_8 = (uint)iStack_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    iStack_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if (cStack_41 != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar8 = (*pcVar1)();
+        return uVar8;
+      }
+    }
+  }
+  __0CFTOLScopeTrapper__QAE_XZ();
+  iStack_8 = 3;
+  if ((param_3 < 0) || ((int)(uint)*(ushort *)(param_1 + 0x70) < param_3)) {
+    __0CWideString__QAE_PB_W_Z(L"Engine_World_Map.cpp");
+    iStack_8._0_1_ = 4;
+    __0CCharString__QAE_PBDJ_Z(&DAT_044508e2,0xffffffff);
+    iStack_8._0_1_ = 5;
+    __0CCharString__QAE_PBDJ_Z("xp>=0 && xp<=MapWidth",0xffffffff);
+    iStack_8._0_1_ = 6;
+    uVar9 = 1;
+    uVar8 = 0x165;
+    puVar7 = auStack_68;
+    puVar6 = auStack_70;
+    puVar5 = auStack_78;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0x165,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar5,puVar6,puVar7,uVar8,uVar9);
+    cStack_5d = '\x01' - (cVar2 != '\x01');
+    iStack_8._0_1_ = 5;
+    __1CCharString__QAE_XZ();
+    iStack_8._0_1_ = 4;
+    __1CCharString__QAE_XZ();
+    iStack_8 = CONCAT31(iStack_8._1_3_,3);
+    __1CWideString__QAE_XZ();
+    if (cStack_5d != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar8 = (*pcVar1)();
+        return uVar8;
+      }
+    }
+  }
+  if ((param_4 < 0) || ((int)(uint)*(ushort *)(param_1 + 0x72) < param_4)) {
+    __0CWideString__QAE_PB_W_Z(L"Engine_World_Map.cpp");
+    iStack_8._0_1_ = 7;
+    __0CCharString__QAE_PBDJ_Z(&DAT_044508e3,0xffffffff);
+    iStack_8._0_1_ = 8;
+    __0CCharString__QAE_PBDJ_Z("yp>=0 && yp<=MapHeight",0xffffffff);
+    iStack_8._0_1_ = 9;
+    uVar9 = 1;
+    uVar8 = 0x166;
+    puVar7 = auStack_84;
+    puVar6 = auStack_8c;
+    puVar5 = auStack_94;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0x166,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar5,puVar6,puVar7,uVar8,uVar9);
+    cStack_79 = '\x01' - (cVar2 != '\x01');
+    iStack_8._0_1_ = 8;
+    __1CCharString__QAE_XZ();
+    iStack_8._0_1_ = 7;
+    __1CCharString__QAE_XZ();
+    iStack_8 = CONCAT31(iStack_8._1_3_,3);
+    __1CWideString__QAE_XZ();
+    if (cStack_79 != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar8 = (*pcVar1)();
+        return uVar8;
+      }
+    }
+  }
+  fVar4 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(param_3 + -1,param_4);
+  fStack_40 = (float)fVar4;
+  fVar4 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(param_3 + 1,param_4);
+  fStack_3c = (float)fVar4;
+  fVar4 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(param_3,param_4 + -1);
+  fStack_18 = (float)fVar4;
+  fVar4 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(param_3,param_4 + 1);
+  fStack_14 = (float)fVar4;
+  __0C2DVector__QAE_MM_Z(fStack_40 - fStack_3c,_DAT_0402a320);
+  __0C2DVector__QAE_MM_Z(fStack_18 - fStack_14,_DAT_0402a320);
+  _Normalise_C2DVector__QAEAAV1_XZ();
+  _Normalise_C2DVector__QAEAAV1_XZ();
+  __0C3DVector__QAE_MMM_Z(uStack_20,uStack_38,fStack_1c * fStack_34);
+  _Normalise_C3DVector__QAEAAV1_XZ();
+  __0C3DVector__QAE_ABV0__Z(auStack_30);
+  iStack_8 = 0xffffffff;
+  __1CFTOLScopeTrapper__QAE_XZ();
+  ExceptionList = pvStack_10;
+  return param_2;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z @ 0182a915 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+float10 __thiscall _PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(int param_1,int param_2,int param_3)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  float10 fVar4;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined1 *puVar7;
+  undefined4 uVar8;
+  undefined4 uVar9;
+  undefined1 auStack_3c [8];
+  undefined1 auStack_34 [8];
+  undefined1 auStack_2c [11];
+  char cStack_21;
+  float fStack_20;
+  float fStack_1c;
+  int iStack_18;
+  void *pvStack_10;
+  undefined1 *puStack_c;
+  int iStack_8;
+  
+  iStack_8 = 0xffffffff;
+  puStack_c = &LAB_03e5f850;
+  pvStack_10 = ExceptionList;
+  ExceptionList = &pvStack_10;
+  __0CFTOLScopeTrapper__QAE_XZ();
+  iStack_8 = 0;
+  cVar2 = _MapHasDataAtPoint_CEngineMap__QBE_NJJ_Z(param_2,param_3);
+  if (cVar2 == '\0') {
+    iStack_18 = _GetMap_CEngineWorldMap__QBEPAVCEngineMap__JJ_Z
+                          ((uint)*(ushort *)(param_1 + 0x74) + param_2,
+                           (uint)*(ushort *)(param_1 + 0x76) + param_3);
+    if ((iStack_18 != 0) &&
+       (cVar2 = _MapHasDataAtPoint_CEngineMap__QBE_NJJ_Z
+                          (((uint)*(ushort *)(param_1 + 0x74) + param_2) -
+                           (uint)*(ushort *)(iStack_18 + 0x74),
+                           ((uint)*(ushort *)(param_1 + 0x76) + param_3) -
+                           (uint)*(ushort *)(iStack_18 + 0x76)), cVar2 != '\0')) {
+      fVar4 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z
+                                 (((uint)*(ushort *)(param_1 + 0x74) + param_2) -
+                                  (uint)*(ushort *)(iStack_18 + 0x74),
+                                  ((uint)*(ushort *)(param_1 + 0x76) + param_3) -
+                                  (uint)*(ushort *)(iStack_18 + 0x76));
+      fStack_1c = (float)fVar4;
+      iStack_8 = 0xffffffff;
+      __1CFTOLScopeTrapper__QAE_XZ();
+      ExceptionList = pvStack_10;
+      return (float10)fStack_1c;
+    }
+    if (param_2 < 0) {
+      param_2 = 0;
+    }
+    else if ((int)(*(ushort *)(param_1 + 0x70) - 1) < param_2) {
+      param_2 = *(ushort *)(param_1 + 0x70) - 1;
+    }
+    if (param_3 < 0) {
+      param_3 = 0;
+    }
+    else if ((int)(*(ushort *)(param_1 + 0x72) - 1) < param_3) {
+      param_3 = *(ushort *)(param_1 + 0x72) - 1;
+    }
+  }
+  if (*(int *)(param_1 + 8) == 0) {
+    if (*(int *)(param_1 + 0x7c) == 0) {
+      __0CWideString__QAE_PB_W_Z
+                (
+                L"e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fableengine\\engine_world_map_inline.hpp"
+                );
+      iStack_8._0_1_ = 1;
+      __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+      iStack_8._0_1_ = 2;
+      __0CCharString__QAE_PBDJ_Z("EdgeHeights",0xffffffff);
+      iStack_8._0_1_ = 3;
+      uVar9 = 1;
+      uVar8 = 0xfa;
+      puVar7 = auStack_2c;
+      puVar6 = auStack_34;
+      puVar5 = auStack_3c;
+      _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0xfa,1);
+      _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+      cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (puVar5,puVar6,puVar7,uVar8,uVar9);
+      cStack_21 = '\x01' - (cVar2 != '\x01');
+      iStack_8._0_1_ = 2;
+      __1CCharString__QAE_XZ();
+      iStack_8._0_1_ = 1;
+      __1CCharString__QAE_XZ();
+      iStack_8 = (uint)iStack_8._1_3_ << 8;
+      __1CWideString__QAE_XZ();
+      if ((cStack_21 != '\0') && (BVar3 = IsDebuggerPresent(), BVar3 != 0)) {
+        pcVar1 = (code *)swi(3);
+        fVar4 = (float10)(*pcVar1)();
+        return fVar4;
+      }
+    }
+    if (*(int *)(param_1 + 0x7c) == 0) {
+      iStack_8 = 0xffffffff;
+      __1CFTOLScopeTrapper__QAE_XZ();
+      fVar4 = (float10)0.0;
+    }
+    else {
+      fVar4 = (float10)_PeekHeight_CEngineStaticMapEdgeHeights__QAEMJJ_Z(param_2,param_3);
+      iStack_8 = 0xffffffff;
+      __1CFTOLScopeTrapper__QAE_XZ();
+      fVar4 = (float10)(float)fVar4;
+    }
+  }
+  else {
+    fVar4 = (float10)(**(code **)(**(int **)(param_1 + 8) + 0x14))(param_2,param_3,0x3f800000);
+    fVar4 = (float10)_QuantiseLandscapeHeight_CEngineMap__ABEMM_Z((float)fVar4);
+    fStack_20 = (float)fVar4;
+    iStack_8 = 0xffffffff;
+    __1CFTOLScopeTrapper__QAE_XZ();
+    fVar4 = (float10)fStack_20;
+  }
+  ExceptionList = pvStack_10;
+  return fVar4;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z @ 02ccc750 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+float10 __thiscall _PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(int param_1,int param_2,int param_3)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  float10 fVar4;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined1 *puVar7;
+  undefined4 uVar8;
+  undefined4 uVar9;
+  undefined1 local_3c [8];
+  undefined1 local_34 [8];
+  undefined1 local_2c [11];
+  char local_21;
+  float local_20;
+  float local_1c;
+  int local_18;
+  void *local_10;
+  undefined1 *puStack_c;
+  int local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03e5f850;
+  local_10 = ExceptionList;
+  ExceptionList = &local_10;
+  __0CFTOLScopeTrapper__QAE_XZ();
+  local_8 = 0;
+  cVar2 = _MapHasDataAtPoint_CEngineMap__QBE_NJJ_Z(param_2,param_3);
+  if (cVar2 == '\0') {
+    local_18 = _GetMap_CEngineWorldMap__QBEPAVCEngineMap__JJ_Z
+                         ((uint)*(ushort *)(param_1 + 0x74) + param_2,
+                          (uint)*(ushort *)(param_1 + 0x76) + param_3);
+    if ((local_18 != 0) &&
+       (cVar2 = _MapHasDataAtPoint_CEngineMap__QBE_NJJ_Z
+                          (((uint)*(ushort *)(param_1 + 0x74) + param_2) -
+                           (uint)*(ushort *)(local_18 + 0x74),
+                           ((uint)*(ushort *)(param_1 + 0x76) + param_3) -
+                           (uint)*(ushort *)(local_18 + 0x76)), cVar2 != '\0')) {
+      fVar4 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z
+                                 (((uint)*(ushort *)(param_1 + 0x74) + param_2) -
+                                  (uint)*(ushort *)(local_18 + 0x74),
+                                  ((uint)*(ushort *)(param_1 + 0x76) + param_3) -
+                                  (uint)*(ushort *)(local_18 + 0x76));
+      local_1c = (float)fVar4;
+      local_8 = 0xffffffff;
+      __1CFTOLScopeTrapper__QAE_XZ();
+      ExceptionList = local_10;
+      return (float10)local_1c;
+    }
+    if (param_2 < 0) {
+      param_2 = 0;
+    }
+    else if ((int)(*(ushort *)(param_1 + 0x70) - 1) < param_2) {
+      param_2 = *(ushort *)(param_1 + 0x70) - 1;
+    }
+    if (param_3 < 0) {
+      param_3 = 0;
+    }
+    else if ((int)(*(ushort *)(param_1 + 0x72) - 1) < param_3) {
+      param_3 = *(ushort *)(param_1 + 0x72) - 1;
+    }
+  }
+  if (*(int *)(param_1 + 8) == 0) {
+    if (*(int *)(param_1 + 0x7c) == 0) {
+      __0CWideString__QAE_PB_W_Z
+                (
+                L"e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fableengine\\engine_world_map_inline.hpp"
+                );
+      local_8._0_1_ = 1;
+      __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+      local_8._0_1_ = 2;
+      __0CCharString__QAE_PBDJ_Z("EdgeHeights",0xffffffff);
+      local_8._0_1_ = 3;
+      uVar9 = 1;
+      uVar8 = 0xfa;
+      puVar7 = local_2c;
+      puVar6 = local_34;
+      puVar5 = local_3c;
+      _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0xfa,1);
+      _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+      cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (puVar5,puVar6,puVar7,uVar8,uVar9);
+      local_21 = '\x01' - (cVar2 != '\x01');
+      local_8._0_1_ = 2;
+      __1CCharString__QAE_XZ();
+      local_8._0_1_ = 1;
+      __1CCharString__QAE_XZ();
+      local_8 = (uint)local_8._1_3_ << 8;
+      __1CWideString__QAE_XZ();
+      if ((local_21 != '\0') && (BVar3 = IsDebuggerPresent(), BVar3 != 0)) {
+        pcVar1 = (code *)swi(3);
+        fVar4 = (float10)(*pcVar1)();
+        return fVar4;
+      }
+    }
+    if (*(int *)(param_1 + 0x7c) == 0) {
+      local_8 = 0xffffffff;
+      __1CFTOLScopeTrapper__QAE_XZ();
+      fVar4 = (float10)0.0;
+    }
+    else {
+      fVar4 = (float10)_PeekHeight_CEngineStaticMapEdgeHeights__QAEMJJ_Z(param_2,param_3);
+      local_8 = 0xffffffff;
+      __1CFTOLScopeTrapper__QAE_XZ();
+      fVar4 = (float10)(float)fVar4;
+    }
+  }
+  else {
+    fVar4 = (float10)(**(code **)(**(int **)(param_1 + 8) + 0x14))(param_2,param_3,0x3f800000);
+    fVar4 = (float10)_QuantiseLandscapeHeight_CEngineMap__ABEMM_Z((float)fVar4);
+    local_20 = (float)fVar4;
+    local_8 = 0xffffffff;
+    __1CFTOLScopeTrapper__QAE_XZ();
+    fVar4 = (float10)local_20;
+  }
+  ExceptionList = local_10;
+  return fVar4;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?PeekLandscapeHeight@CEngineWorldMap@@QBEMJJ@Z @ 02d3b1f0 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+float10 _PeekLandscapeHeight_CEngineWorldMap__QBEMJJ_Z(int param_1,int param_2)
+
+{
+  int iVar1;
+  float10 fVar2;
+  undefined4 extraout_var;
+  
+  iVar1 = _GetMap_CEngineWorldMap__QBEPAVCEngineMap__JJ_Z(param_1,param_2);
+  if (iVar1 == 0) {
+    fVar2 = (float10)0;
+  }
+  else {
+    iVar1 = _PeekWorldY_CEngineMap__QBEJXZ(extraout_var);
+    param_2 = param_2 - iVar1;
+    iVar1 = _PeekWorldX_CEngineMap__QBEJXZ(param_2);
+    fVar2 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(param_1 - iVar1,param_2);
+  }
+  return fVar2;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?PeekMapNormal@CEngineMap@@QBE?AVC3DVector@@JJ@Z @ 02d5c670 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* [ported from ego_r via strfp] */
+
+undefined4 __thiscall
+_PeekMapNormal_CEngineMap__QBE_AVC3DVector__JJ_Z
+          (int param_1,undefined4 param_2,int param_3,int param_4)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  float10 fVar4;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined1 *puVar7;
+  undefined4 uVar8;
+  undefined4 uVar9;
+  undefined1 local_94 [8];
+  undefined1 local_8c [8];
+  undefined1 local_84 [11];
+  char local_79;
+  undefined1 local_78 [8];
+  undefined1 local_70 [8];
+  undefined1 local_68 [11];
+  char local_5d;
+  undefined1 local_5c [8];
+  undefined1 local_54 [8];
+  undefined1 local_4c [11];
+  char local_41;
+  float local_40;
+  float local_3c;
+  undefined4 local_38;
+  float local_34;
+  undefined1 local_30 [16];
+  undefined4 local_20;
+  float local_1c;
+  float local_18;
+  float local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  int local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03e6cfc6;
+  local_10 = ExceptionList;
+  ExceptionList = &local_10;
+  if (*(int *)(param_1 + 8) == 0) {
+    ExceptionList = &local_10;
+    __0CWideString__QAE_PB_W_Z(L"Engine_World_Map.cpp");
+    local_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_044508c3,0xffffffff);
+    local_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z("GameMap",0xffffffff);
+    local_8._0_1_ = 2;
+    uVar9 = 1;
+    uVar8 = 0x161;
+    puVar7 = local_4c;
+    puVar6 = local_54;
+    puVar5 = local_5c;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0x161,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar5,puVar6,puVar7,uVar8,uVar9);
+    local_41 = '\x01' - (cVar2 != '\x01');
+    local_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    local_8 = (uint)local_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if (local_41 != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar8 = (*pcVar1)();
+        return uVar8;
+      }
+    }
+  }
+  __0CFTOLScopeTrapper__QAE_XZ();
+  local_8 = 3;
+  if ((param_3 < 0) || ((int)(uint)*(ushort *)(param_1 + 0x70) < param_3)) {
+    __0CWideString__QAE_PB_W_Z(L"Engine_World_Map.cpp");
+    local_8._0_1_ = 4;
+    __0CCharString__QAE_PBDJ_Z(&DAT_044508e2,0xffffffff);
+    local_8._0_1_ = 5;
+    __0CCharString__QAE_PBDJ_Z("xp>=0 && xp<=MapWidth",0xffffffff);
+    local_8._0_1_ = 6;
+    uVar9 = 1;
+    uVar8 = 0x165;
+    puVar7 = local_68;
+    puVar6 = local_70;
+    puVar5 = local_78;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0x165,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar5,puVar6,puVar7,uVar8,uVar9);
+    local_5d = '\x01' - (cVar2 != '\x01');
+    local_8._0_1_ = 5;
+    __1CCharString__QAE_XZ();
+    local_8._0_1_ = 4;
+    __1CCharString__QAE_XZ();
+    local_8 = CONCAT31(local_8._1_3_,3);
+    __1CWideString__QAE_XZ();
+    if (local_5d != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar8 = (*pcVar1)();
+        return uVar8;
+      }
+    }
+  }
+  if ((param_4 < 0) || ((int)(uint)*(ushort *)(param_1 + 0x72) < param_4)) {
+    __0CWideString__QAE_PB_W_Z(L"Engine_World_Map.cpp");
+    local_8._0_1_ = 7;
+    __0CCharString__QAE_PBDJ_Z(&DAT_044508e3,0xffffffff);
+    local_8._0_1_ = 8;
+    __0CCharString__QAE_PBDJ_Z("yp>=0 && yp<=MapHeight",0xffffffff);
+    local_8._0_1_ = 9;
+    uVar9 = 1;
+    uVar8 = 0x166;
+    puVar7 = local_84;
+    puVar6 = local_8c;
+    puVar5 = local_94;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0x166,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar5,puVar6,puVar7,uVar8,uVar9);
+    local_79 = '\x01' - (cVar2 != '\x01');
+    local_8._0_1_ = 8;
+    __1CCharString__QAE_XZ();
+    local_8._0_1_ = 7;
+    __1CCharString__QAE_XZ();
+    local_8 = CONCAT31(local_8._1_3_,3);
+    __1CWideString__QAE_XZ();
+    if (local_79 != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar8 = (*pcVar1)();
+        return uVar8;
+      }
+    }
+  }
+  fVar4 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(param_3 + -1,param_4);
+  local_40 = (float)fVar4;
+  fVar4 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(param_3 + 1,param_4);
+  local_3c = (float)fVar4;
+  fVar4 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(param_3,param_4 + -1);
+  local_18 = (float)fVar4;
+  fVar4 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(param_3,param_4 + 1);
+  local_14 = (float)fVar4;
+  __0C2DVector__QAE_MM_Z(local_40 - local_3c,_DAT_0402a320);
+  __0C2DVector__QAE_MM_Z(local_18 - local_14,_DAT_0402a320);
+  _Normalise_C2DVector__QAEAAV1_XZ();
+  _Normalise_C2DVector__QAEAAV1_XZ();
+  __0C3DVector__QAE_MMM_Z(local_20,local_38,local_1c * local_34);
+  _Normalise_C3DVector__QAEAAV1_XZ();
+  __0C3DVector__QAE_ABV0__Z(local_30);
+  local_8 = 0xffffffff;
+  __1CFTOLScopeTrapper__QAE_XZ();
+  ExceptionList = local_10;
+  return param_2;
+}
+
+ (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /FableWin.exe (HeadlessAnalyzer)  

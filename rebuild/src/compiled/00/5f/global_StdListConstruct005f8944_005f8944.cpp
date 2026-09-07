@@ -1,0 +1,3 @@
+#pragma optimize("s",on)
+#include <stdlib.h>
+struct CircularNode_005f8944{CircularNode_005f8944* next;CircularNode_005f8944* previous;};void** __fastcall StdList_Construct_005f8944(void** out,void* unusedRegister,void* unusedStack){(void)unusedRegister;(void)unusedStack;*(unsigned long*)out&=0;CircularNode_005f8944* node=(CircularNode_005f8944*)malloc(0xc);node->next=node;node->previous=node;*out=node;return out;}

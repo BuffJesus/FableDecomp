@@ -1,0 +1,48 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/StatueMaster/Entities/StatueMasterChest.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 24,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 8
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "SM_Angle",
+      "types": [
+        "string"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

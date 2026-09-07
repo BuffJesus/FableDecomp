@@ -1,0 +1,3 @@
+#include <cstdio>
+#include <cstdlib>
+static void** __fastcall Run(void** out,void*,void*){*(unsigned long*)out&=0;*out=std::malloc(0x18);return out;}int main(){void* storage=(void*)1;void** returned=Run(&storage,0,0);if(returned!=&storage||storage==0)return 1;unsigned char* bytes=(unsigned char*)storage;for(int i=0;i<0x18;++i)bytes[i]=(unsigned char)(0x80+i);std::free(storage);std::printf("STACK_INITIALIZE_PASS\n");return 0;}

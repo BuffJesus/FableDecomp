@@ -1,0 +1,3 @@
+#include <cstdio>
+#include <cstdlib>
+static int visited,freed;static void Run(void** begin,void** end){for(;begin<end;++begin){++visited;if(*begin){std::free(*begin);++freed;}}}int main(){void* values[3]={std::malloc(4),0,std::malloc(8)};if(!values[0]||!values[2])return 1;Run(values,values+3);if(visited!=3||freed!=2)return 2;Run(values,values);if(visited!=3)return 3;std::printf("FREE_POINTER_ARRAY_PASS\n");return 0;}

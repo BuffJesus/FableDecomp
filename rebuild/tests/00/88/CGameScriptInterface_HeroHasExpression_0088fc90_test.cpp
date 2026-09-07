@@ -1,0 +1,2 @@
+#include <cstdio>
+struct Expression{int id;};struct Hero{unsigned char blocked;bool available;int calls;const Expression* seen;};static bool Run(Hero* h,const Expression& e){if(h&&!(h->blocked&1)){++h->calls;h->seen=&e;return h->available;}return false;}int main(){Expression e={7};if(Run(0,e))return 1;Hero blocked={1,true,0,0};if(Run(&blocked,e)||blocked.calls)return 2;Hero yes={0,true,0,0};if(!Run(&yes,e)||yes.calls!=1||yes.seen!=&e)return 3;Hero no={0,false,0,0};if(Run(&no,e)||no.calls!=1||no.seen!=&e)return 4;std::printf("HERO_HAS_EXPRESSION_PASS\n");return 0;}

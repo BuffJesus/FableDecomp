@@ -1,0 +1,3 @@
+#include <stdlib.h>
+struct ListSentinel_00b83170 { ListSentinel_00b83170* next; ListSentinel_00b83170* previous; unsigned long reserved; };
+void** __fastcall List_InitializeNode_12Bytes_SecondForm(void** owner, void* unusedRegister, void* unusedStack) { (void)unusedRegister; (void)unusedStack; *owner = 0; ListSentinel_00b83170* node = (ListSentinel_00b83170*)malloc(0x0c); node->next = node; node->previous = node; *owner = node; return owner; }

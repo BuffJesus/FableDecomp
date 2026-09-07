@@ -1,0 +1,3 @@
+#include <stdlib.h>
+struct ListSentinel_007a6170 { ListSentinel_007a6170* next; ListSentinel_007a6170* previous; unsigned long reserved; };
+void** __fastcall ListHead_InitCircular_0xc_007a6170(void** owner, void* unusedRegister, void* unusedStack) { (void)unusedRegister; (void)unusedStack; *owner = 0; ListSentinel_007a6170* node = (ListSentinel_007a6170*)malloc(0x0c); node->next = node; node->previous = node; *owner = node; return owner; }

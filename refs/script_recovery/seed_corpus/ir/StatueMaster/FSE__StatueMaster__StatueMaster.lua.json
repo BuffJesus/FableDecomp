@@ -1,0 +1,163 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/StatueMaster/StatueMaster.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 17,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 22,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "FinalizeEntityBindings",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetThingWithScriptName",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetThingWithScriptName",
+          "line": 12
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetThingWithScriptName",
+          "line": 13
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetThingWithScriptName",
+          "line": 14
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetThingWithScriptName",
+          "line": 15
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 18
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateString",
+          "line": 31
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateString",
+          "line": 32
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateString",
+          "line": 33
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateString",
+          "line": 34
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 36
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "SM_Angle0",
+      "types": [
+        "string"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SM_Angle1",
+      "types": [
+        "string"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SM_Angle2",
+      "types": [
+        "string"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "SM_Angle3",
+      "types": [
+        "string"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "StatueMasterStatue",
+      "script": "StatueMaster/Entities/StatueMasterStatue",
+      "line": 27
+    },
+    {
+      "name": "StatueMasterCellarDoors",
+      "script": "StatueMaster/Entities/StatueMasterCellarDoors",
+      "line": 28
+    },
+    {
+      "name": "StatueMasterChest",
+      "script": "StatueMaster/Entities/StatueMasterChest",
+      "line": 29
+    }
+  ],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

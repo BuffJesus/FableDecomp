@@ -126311,6 +126311,3934 @@ $catalog = @(
         TestSource = '00/a0/CMessageEventFilterIsOriginatedByThing_CMessageEventFilterIsOriginatedByThing_00a04380_test.cpp'
         PassPattern = 'PASS_00a04380'
     }
+    [pscustomobject]@{
+        Address = '0045bcf2'
+        Module = '_global'
+        Source = '00/45/global_CActiveFileAllocateAndCopy_0045bcf2.cpp'
+        TestSource = '00/45/global_CActiveFileAllocateAndCopy_0045bcf2_test.cpp'
+        PassPattern = 'CACTIVEFILE_ALLOC_COPY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454961'
+        Module = 'CActiveFile'
+        Source = '00/45/CActiveFile_CActiveFileAllocateArray_00454961.cpp'
+        TestSource = '00/45/CActiveFile_CActiveFileAllocateArray_00454961_test.cpp'
+        PassPattern = 'CACTIVEFILE_ALLOC_ARRAY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9cb60'
+        Module = '_global'
+        Source = '00/c9/global_MathComputeByteChunkCount_00c9cb60.cpp'
+        TestSource = '00/c9/global_MathComputeByteChunkCount_00c9cb60_test.cpp'
+        PassPattern = 'MATH_BYTE_CHUNK_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042ac52'
+        Module = '_global'
+        Source = '00/42/global_AllocatorAlloc56bytes_0042ac52.cpp'
+        TestSource = '00/42/global_AllocatorAlloc56bytes_0042ac52_test.cpp'
+        PassPattern = 'ALLOC_56_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042ac9f'
+        Module = '_global'
+        Source = '00/42/global_AllocatorAlloc24bytes_0042ac9f.cpp'
+        TestSource = '00/42/global_AllocatorAlloc24bytes_0042ac9f_test.cpp'
+        PassPattern = 'ALLOC_24_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042ad10'
+        Module = '_global'
+        Source = '00/42/global_AllocatorAlloc28bytes_0042ad10.cpp'
+        TestSource = '00/42/global_AllocatorAlloc28bytes_0042ad10_test.cpp'
+        PassPattern = 'ALLOC_28_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450e6e'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNode_00450e6e.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNode_00450e6e_test.cpp'
+        PassPattern = 'LIST_NODE_ALLOC_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f610'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_IsSoundPlaying_0088f610.cpp'
+        TestSource = '00/88/CGameScriptInterface_IsSoundPlaying_0088f610_test.cpp'
+        PassPattern = 'IS_SOUND_PLAYING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f710'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetCombatEnabled_0088f710.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetCombatEnabled_0088f710_test.cpp'
+        PassPattern = 'ENTITY_SET_COMBAT_ENABLED_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fdc0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_SetTimeOfDay_0088fdc0.cpp'
+        TestSource = '00/88/CGameScriptInterface_SetTimeOfDay_0088fdc0_test.cpp'
+        PassPattern = 'SET_TIME_OF_DAY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fe90'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_FastForwardTimeTo_0088fe90.cpp'
+        TestSource = '00/88/CGameScriptInterface_FastForwardTimeTo_0088fe90_test.cpp'
+        PassPattern = 'FAST_FORWARD_TIME_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fc90'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_HeroHasExpression_0088fc90.cpp'
+        TestSource = '00/88/CGameScriptInterface_HeroHasExpression_0088fc90_test.cpp'
+        PassPattern = 'HERO_HAS_EXPRESSION_PASS'
+    }
+    [pscustomobject]@{
+        Address = '008aa010'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_ClearGossip_008aa010.cpp'
+        TestSource = '00/8a/CGameScriptInterface_ClearGossip_008aa010_test.cpp'
+        PassPattern = 'CLEAR_GOSSIP_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451303'
+        Module = '_global'
+        Source = '00/45/global_CListAllocateNode_00451303.cpp'
+        TestSource = '00/45/global_CListAllocateNode_00451303_test.cpp'
+        PassPattern = 'CLIST_ALLOCATE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0043006f'
+        Module = '_global'
+        Source = '00/43/global_StackInitialize_0043006f.cpp'
+        TestSource = '00/43/global_StackInitialize_0043006f_test.cpp'
+        PassPattern = 'STACK_INITIALIZE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451022'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNodeVariantG_00451022.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNodeVariantG_00451022_test.cpp'
+        PassPattern = 'LISTNODE_G_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045121c'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNodeVariantM_0045121c.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNodeVariantM_0045121c_test.cpp'
+        PassPattern = 'LISTNODE_M_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450ebb'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNodeVariantB_00450ebb.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNodeVariantB_00450ebb_test.cpp'
+        PassPattern = 'LISTNODE_B_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450f08'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNodeVariantC_00450f08.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNodeVariantC_00450f08_test.cpp'
+        PassPattern = 'LISTNODE_C_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450fd5'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNodeVariantF_00450fd5.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNodeVariantF_00450fd5_test.cpp'
+        PassPattern = 'LISTNODE_F_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004512b6'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNodeVariantO_004512b6.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNodeVariantO_004512b6_test.cpp'
+        PassPattern = 'LISTNODE_O_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450f2c'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNodeVariantD_00450f2c.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNodeVariantD_00450f2c_test.cpp'
+        PassPattern = 'LISTNODE_D_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451182'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNodeVariantK_00451182.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNodeVariantK_00451182_test.cpp'
+        PassPattern = 'LISTNODE_K_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451135'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNodeVariantJ_00451135.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNodeVariantJ_00451135_test.cpp'
+        PassPattern = 'LISTNODE_J_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451269'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNodeVariantN_00451269.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNodeVariantN_00451269_test.cpp'
+        PassPattern = 'LISTNODE_N_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004510e8'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNodeVariantI_004510e8.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNodeVariantI_004510e8_test.cpp'
+        PassPattern = 'LISTNODE_I_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045106f'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNodeVariantH_0045106f.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNodeVariantH_0045106f_test.cpp'
+        PassPattern = 'LISTNODE_H_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00430022'
+        Module = '_global'
+        Source = '00/43/global_QueueInitialize_00430022.cpp'
+        TestSource = '00/43/global_QueueInitialize_00430022_test.cpp'
+        PassPattern = 'QUEUE_INITIALIZE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042acec'
+        Module = '_global'
+        Source = '00/42/global_LinkedListInitialize_0042acec.cpp'
+        TestSource = '00/42/global_LinkedListInitialize_0042acec_test.cpp'
+        PassPattern = 'LINKED_LIST_INITIALIZE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004511cf'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNodeVariantL_004511cf.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNodeVariantL_004511cf_test.cpp'
+        PassPattern = 'LISTNODE_L_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450f79'
+        Module = '_global'
+        Source = '00/45/global_ListNodeAllocateNodeVariantE_00450f79.cpp'
+        TestSource = '00/45/global_ListNodeAllocateNodeVariantE_00450f79_test.cpp'
+        PassPattern = 'LISTNODE_E_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0043f510'
+        Module = '_global'
+        Source = '00/43/global_FreePointerArray_0043f510.cpp'
+        TestSource = '00/43/global_FreePointerArray_0043f510_test.cpp'
+        PassPattern = 'FREE_POINTER_ARRAY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0043f560'
+        Module = '_global'
+        Source = '00/43/global_VectorFreeElementPointers_0043f560.cpp'
+        TestSource = '00/43/global_VectorFreeElementPointers_0043f560_test.cpp'
+        PassPattern = 'VECTOR_FREE_POINTERS_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c61ce0'
+        Module = '_global'
+        Source = '00/c6/global_GetterTripleDeref_00c61ce0.cpp'
+        TestSource = '00/c6/global_GetterTripleDeref_00c61ce0_test.cpp'
+        PassPattern = 'GETTER_TRIPLE_DEREF_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c62a30'
+        Module = '_global'
+        Source = '00/c6/global_StreamBufferAdvancePosition_00c62a30.cpp'
+        TestSource = '00/c6/global_StreamBufferAdvancePosition_00c62a30_test.cpp'
+        PassPattern = 'STREAM_BUFFER_ADVANCE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042a59e'
+        Module = '_global'
+        Source = '00/42/global_RBTreeIteratorMoveToMaxB_0042a59e.cpp'
+        TestSource = '00/42/global_RBTreeIteratorMoveToMaxB_0042a59e_test.cpp'
+        PassPattern = 'RBTREE_MAX_B_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042a5c0'
+        Module = '_global'
+        Source = '00/42/global_RBTreeIteratorMoveToMaxD_0042a5c0.cpp'
+        TestSource = '00/42/global_RBTreeIteratorMoveToMaxD_0042a5c0_test.cpp'
+        PassPattern = 'RBTREE_MAX_D_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042a58d'
+        Module = '_global'
+        Source = '00/42/global_RBTreeIteratorMoveToMaxA_0042a58d.cpp'
+        TestSource = '00/42/global_RBTreeIteratorMoveToMaxA_0042a58d_test.cpp'
+        PassPattern = 'RBTREE_MAX_A_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042a5af'
+        Module = '_global'
+        Source = '00/42/global_RBTreeIteratorMoveToMaxC_0042a5af.cpp'
+        TestSource = '00/42/global_RBTreeIteratorMoveToMaxC_0042a5af_test.cpp'
+        PassPattern = 'RBTREE_MAX_C_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b687'
+        Module = '_global'
+        Source = '00/42/global_LinkedListPushFront_0042b687.cpp'
+        TestSource = '00/42/global_LinkedListPushFront_0042b687_test.cpp'
+        PassPattern = 'LINKED_LIST_PUSH_FRONT_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b6b8'
+        Module = '_global'
+        Source = '00/42/global_StdListPushFront_0042b6b8.cpp'
+        TestSource = '00/42/global_StdListPushFront_0042b6b8_test.cpp'
+        PassPattern = 'STD_LIST_PUSH_FRONT_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450d90'
+        Module = '_global'
+        Source = '00/45/global_LinkedListInitialize_00450d90.cpp'
+        TestSource = '00/45/global_LinkedListInitialize_00450d90_test.cpp'
+        PassPattern = 'LINKED_LIST_INITIALIZE32_PASS'
+    }
+    [pscustomobject]@{
+        Address = '008702d0'
+        Module = '_global'
+        Source = '00/87/global_HandleInitInvalid008702d0_008702d0.cpp'
+        TestSource = '00/87/global_HandleInitInvalid008702d0_008702d0_test.cpp'
+        PassPattern = 'HANDLE_INIT_INVALID_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c44b50'
+        Module = '_global'
+        Source = '00/c4/global_InputEventCheckKeyAndGetFrames_00c44b50.cpp'
+        TestSource = '00/c4/global_InputEventCheckKeyAndGetFrames_00c44b50_test.cpp'
+        PassPattern = 'INPUT_EVENT_CHECK_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045c4d2'
+        Module = '_global'
+        Source = '00/45/global_TreeNodeAllocData_0045c4d2.cpp'
+        TestSource = '00/45/global_TreeNodeAllocData_0045c4d2_test.cpp'
+        PassPattern = 'TREE_NODE_ALLOC_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00431471'
+        Module = '_global'
+        Source = '00/43/global_TreeNodeAllocData_00431471.cpp'
+        TestSource = '00/43/global_TreeNodeAllocData_00431471_test.cpp'
+        PassPattern = 'TREE_NODE_ALLOC_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045c8a1'
+        Module = '_global'
+        Source = '00/45/global_TreeNodeAllocData_0045c8a1.cpp'
+        TestSource = '00/45/global_TreeNodeAllocData_0045c8a1_test.cpp'
+        PassPattern = 'TREE_NODE_ALLOC_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b5a8'
+        Module = '_global'
+        Source = '00/42/global_BinarySearchTreeNodeCreate_0042b5a8.cpp'
+        TestSource = '00/42/global_BinarySearchTreeNodeCreate_0042b5a8_test.cpp'
+        PassPattern = 'BST_CREATE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b5ca'
+        Module = '_global'
+        Source = '00/42/global_BinarySearchTreeNodeCreateDuplicate_0042b5ca.cpp'
+        TestSource = '00/42/global_BinarySearchTreeNodeCreateDuplicate_0042b5ca_test.cpp'
+        PassPattern = 'BST_CREATE_DUP_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b5ec'
+        Module = '_global'
+        Source = '00/42/global_BinarySearchTreeNodeCreateCopy_0042b5ec.cpp'
+        TestSource = '00/42/global_BinarySearchTreeNodeCreateCopy_0042b5ec_test.cpp'
+        PassPattern = 'BST_CREATE_COPY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00429b02'
+        Module = '_global'
+        Source = '00/42/global_LinkedListUnlinkandFree_00429b02.cpp'
+        TestSource = '00/42/global_LinkedListUnlinkandFree_00429b02_test.cpp'
+        PassPattern = 'LINKEDLIST_UNLINK_FREE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00429ab9'
+        Module = '_global'
+        Source = '00/42/global_DoublyLinkedListUnlink_00429ab9.cpp'
+        TestSource = '00/42/global_DoublyLinkedListUnlink_00429ab9_test.cpp'
+        PassPattern = 'DOUBLY_LINKEDLIST_UNLINK_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00429b52'
+        Module = '_global'
+        Source = '00/42/global_LinkedListRemoveNode_00429b52.cpp'
+        TestSource = '00/42/global_LinkedListRemoveNode_00429b52_test.cpp'
+        PassPattern = 'LINKEDLIST_REMOVE_NODE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00433db5'
+        Module = '_global'
+        Source = '00/43/global_STLAllocateAndInitializeArray_00433db5.cpp'
+        TestSource = '00/43/global_STLAllocateAndInitializeArray_00433db5_test.cpp'
+        PassPattern = 'STL_ALLOCATE_ARRAY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00436a80'
+        Module = '_global'
+        Source = '00/43/global_VectorEraseAndMove_00436a80.cpp'
+        TestSource = '00/43/global_VectorEraseAndMove_00436a80_test.cpp'
+        PassPattern = 'VECTOR_ERASE_MOVE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00440550'
+        Module = '_global'
+        Source = '00/44/global_BufferMoveData_00440550.cpp'
+        TestSource = '00/44/global_BufferMoveData_00440550_test.cpp'
+        PassPattern = 'BUFFER_MOVE_DATA_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042cd61'
+        Module = '_global'
+        Source = '00/42/global_FIDconflictmaxsize_0042cd61.cpp'
+        TestSource = '00/42/global_FIDconflictmaxsize_0042cd61_test.cpp'
+        PassPattern = 'FID_MAX_SIZE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00411b00'
+        Module = '_global'
+        Source = '00/41/global_vectorpushbackcopy_00411b00.cpp'
+        TestSource = '00/41/global_vectorpushbackcopy_00411b00_test.cpp'
+        PassPattern = 'VECTOR_PUSH_COPY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004128a0'
+        Module = '_global'
+        Source = '00/41/global_VectorPushBack_004128a0.cpp'
+        TestSource = '00/41/global_VectorPushBack_004128a0_test.cpp'
+        PassPattern = 'VECTOR_PUSH_BACK_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042ab33'
+        Module = '_global'
+        Source = '00/42/global_LinkedListInsertBefore_0042ab33.cpp'
+        TestSource = '00/42/global_LinkedListInsertBefore_0042ab33_test.cpp'
+        PassPattern = 'LIST_INSERT_PAIR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042ab8a'
+        Module = '_global'
+        Source = '00/42/global_StdListInsert_0042ab8a.cpp'
+        TestSource = '00/42/global_StdListInsert_0042ab8a_test.cpp'
+        PassPattern = 'LIST_INSERT_PAIR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004303f0'
+        Module = '_global'
+        Source = '00/43/global_CMemoryBlockDestructor_004303f0.cpp'
+        TestSource = '00/43/global_CMemoryBlockDestructor_004303f0_test.cpp'
+        PassPattern = 'MEMORY_BLOCK_DESTRUCTOR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0040f0a0'
+        Module = '_global'
+        Source = '00/40/global_CompareUnsigned16Array_0040f0a0.cpp'
+        TestSource = '00/40/global_CompareUnsigned16Array_0040f0a0_test.cpp'
+        PassPattern = 'COMPARE_U16_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00440590'
+        Module = '_global'
+        Source = '00/44/global_BufferRelocate_00440590.cpp'
+        TestSource = '00/44/global_BufferRelocate_00440590_test.cpp'
+        PassPattern = 'BUFFER_RELOCATE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042ac0a'
+        Module = '_global'
+        Source = '00/42/global_DoublyLinkedListInitializeEmpty_0042ac0a.cpp'
+        TestSource = '00/42/global_DoublyLinkedListInitializeEmpty_0042ac0a_test.cpp'
+        PassPattern = 'DLIST_INITIALIZE_EMPTY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0040f390'
+        Module = '_global'
+        Source = '00/40/global_BufferRellocateAndUpdateWritePointer_0040f390.cpp'
+        TestSource = '00/40/global_BufferRellocateAndUpdateWritePointer_0040f390_test.cpp'
+        PassPattern = 'BUFFER_RELOCATE_WRITE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042cd3e'
+        Module = '_global'
+        Source = '00/42/global_FIDconflictmaxsize_0042cd3e.cpp'
+        TestSource = '00/42/global_FIDconflictmaxsize_0042cd3e_test.cpp'
+        PassPattern = 'FID_MAX_SIZE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443bd0'
+        Module = '_global'
+        Source = '00/44/global_CGuiControlTreePaneDestructor2_00443bd0.cpp'
+        TestSource = '00/44/global_CGuiControlTreePaneDestructor2_00443bd0_test.cpp'
+        PassPattern = 'GUI_TREE_DTOR2_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00444e50'
+        Module = '_global'
+        Source = '00/44/global_CGuiControlTreePaneDestructor5_00444e50.cpp'
+        TestSource = '00/44/global_CGuiControlTreePaneDestructor5_00444e50_test.cpp'
+        PassPattern = 'GUI_TREE_DTOR5_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004437e0'
+        Module = '_global'
+        Source = '00/44/global_Catch0047e8cc_004437e0.cpp'
+        TestSource = '00/44/global_Catch0047e8cc_004437e0_test.cpp'
+        PassPattern = 'CATCH_DTOR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004438b0'
+        Module = '_global'
+        Source = '00/44/global_Catch0047e8cc_004438b0.cpp'
+        TestSource = '00/44/global_Catch0047e8cc_004438b0_test.cpp'
+        PassPattern = 'CATCH_DTOR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004439e0'
+        Module = '_global'
+        Source = '00/44/global_Catch0047e8cc_004439e0.cpp'
+        TestSource = '00/44/global_Catch0047e8cc_004439e0_test.cpp'
+        PassPattern = 'CATCH_DTOR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443ac0'
+        Module = '_global'
+        Source = '00/44/global_Catch0047e8cc_00443ac0.cpp'
+        TestSource = '00/44/global_Catch0047e8cc_00443ac0_test.cpp'
+        PassPattern = 'CATCH_DTOR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443b20'
+        Module = '_global'
+        Source = '00/44/global_Catch0047e8cc_00443b20.cpp'
+        TestSource = '00/44/global_Catch0047e8cc_00443b20_test.cpp'
+        PassPattern = 'CATCH_DTOR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045170f'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInit_0045170f.cpp'
+        TestSource = '00/45/global_ListNodeInit_0045170f_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451739'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInitB_00451739.cpp'
+        TestSource = '00/45/global_ListNodeInitB_00451739_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045177a'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInitC_0045177a.cpp'
+        TestSource = '00/45/global_ListNodeInitC_0045177a_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004517bb'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInitD_004517bb.cpp'
+        TestSource = '00/45/global_ListNodeInitD_004517bb_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004517e5'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInitE_004517e5.cpp'
+        TestSource = '00/45/global_ListNodeInitE_004517e5_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451835'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInitF_00451835.cpp'
+        TestSource = '00/45/global_ListNodeInitF_00451835_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004518b7'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInitH_004518b7.cpp'
+        TestSource = '00/45/global_ListNodeInitH_004518b7_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451916'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInitI_00451916.cpp'
+        TestSource = '00/45/global_ListNodeInitI_00451916_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451957'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInitJ_00451957.cpp'
+        TestSource = '00/45/global_ListNodeInitJ_00451957_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451998'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInitK_00451998.cpp'
+        TestSource = '00/45/global_ListNodeInitK_00451998_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004519d9'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInitL_004519d9.cpp'
+        TestSource = '00/45/global_ListNodeInitL_004519d9_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451a1a'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInitM_00451a1a.cpp'
+        TestSource = '00/45/global_ListNodeInitM_00451a1a_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451a5b'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInitN_00451a5b.cpp'
+        TestSource = '00/45/global_ListNodeInitN_00451a5b_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004301c9'
+        Module = '_global'
+        Source = '00/43/global_ListNodeConstruct_004301c9.cpp'
+        TestSource = '00/43/global_ListNodeConstruct_004301c9_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042aadc'
+        Module = '_global'
+        Source = '00/42/global_LinkedListInsertBefore_0042aadc.cpp'
+        TestSource = '00/42/global_LinkedListInsertBefore_0042aadc_test.cpp'
+        PassPattern = 'LIST_INSERT_PAIR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0043019f'
+        Module = '_global'
+        Source = '00/43/global_LinkedListInitialize_0043019f.cpp'
+        TestSource = '00/43/global_LinkedListInitialize_0043019f_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451876'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInitG_00451876.cpp'
+        TestSource = '00/45/global_ListNodeInitG_00451876_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451a9c'
+        Module = '_global'
+        Source = '00/45/global_ListNodeInitO_00451a9c.cpp'
+        TestSource = '00/45/global_ListNodeInitO_00451a9c_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451add'
+        Module = '_global'
+        Source = '00/45/global_CListInitialize_00451add.cpp'
+        TestSource = '00/45/global_CListInitialize_00451add_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443980'
+        Module = '_global'
+        Source = '00/44/global_Catch0047e8cc_00443980.cpp'
+        TestSource = '00/44/global_Catch0047e8cc_00443980_test.cpp'
+        PassPattern = 'CATCH_DTOR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b72b'
+        Module = '_global'
+        Source = '00/42/global_CTextureInitEmpty56bytes_0042b72b.cpp'
+        TestSource = '00/42/global_CTextureInitEmpty56bytes_0042b72b_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b76c'
+        Module = '_global'
+        Source = '00/42/global_CTextureInitEmpty24bytes_0042b76c.cpp'
+        TestSource = '00/42/global_CTextureInitEmpty24bytes_0042b76c_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b7ad'
+        Module = '_global'
+        Source = '00/42/global_LinkedListInitializeNode_0042b7ad.cpp'
+        TestSource = '00/42/global_LinkedListInitializeNode_0042b7ad_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b7ee'
+        Module = '_global'
+        Source = '00/42/global_CTextureInitEmpty28bytes_0042b7ee.cpp'
+        TestSource = '00/42/global_CTextureInitEmpty28bytes_0042b7ee_test.cpp'
+        PassPattern = 'LISTNODE_INIT_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c48b'
+        Module = '_global'
+        Source = '00/42/global_CTCFindInterface0x11_0042c48b.cpp'
+        TestSource = '00/42/global_CTCFindInterface0x11_0042c48b_test.cpp'
+        PassPattern = 'FIND_INTERFACE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c521'
+        Module = '_global'
+        Source = '00/42/global_CTCFindInterface4_0042c521.cpp'
+        TestSource = '00/42/global_CTCFindInterface4_0042c521_test.cpp'
+        PassPattern = 'CTC_INTERFACE_PAIR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c64d'
+        Module = '_global'
+        Source = '00/42/global_CTCBaseFindInterfaceType0xe8_0042c64d.cpp'
+        TestSource = '00/42/global_CTCBaseFindInterfaceType0xe8_0042c64d_test.cpp'
+        PassPattern = 'CTC_INTERFACE_PAIR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c43f'
+        Module = '_global'
+        Source = '00/42/global_CTCFindInterface0x10e_0042c43f.cpp'
+        TestSource = '00/42/global_CTCFindInterface0x10e_0042c43f_test.cpp'
+        PassPattern = 'CTC_INTERFACE_REMAINING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c4d6'
+        Module = '_global'
+        Source = '00/42/global_CTCFindInterface0x17_0042c4d6.cpp'
+        TestSource = '00/42/global_CTCFindInterface0x17_0042c4d6_test.cpp'
+        PassPattern = 'CTC_INTERFACE_REMAINING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c56c'
+        Module = '_global'
+        Source = '00/42/global_CTCBaseFindInterfaceType0x19_0042c56c.cpp'
+        TestSource = '00/42/global_CTCBaseFindInterfaceType0x19_0042c56c_test.cpp'
+        PassPattern = 'CTC_INTERFACE_REMAINING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c5b7'
+        Module = '_global'
+        Source = '00/42/global_CTCBaseFindInterfaceType0x16_0042c5b7.cpp'
+        TestSource = '00/42/global_CTCBaseFindInterfaceType0x16_0042c5b7_test.cpp'
+        PassPattern = 'CTC_INTERFACE_REMAINING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c602'
+        Module = '_global'
+        Source = '00/42/global_CTCBaseFindInterfaceType0x29_0042c602.cpp'
+        TestSource = '00/42/global_CTCBaseFindInterfaceType0x29_0042c602_test.cpp'
+        PassPattern = 'CTC_INTERFACE_REMAINING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c699'
+        Module = '_global'
+        Source = '00/42/global_CTCBaseFindInterfaceType0x1b_0042c699.cpp'
+        TestSource = '00/42/global_CTCBaseFindInterfaceType0x1b_0042c699_test.cpp'
+        PassPattern = 'CTC_INTERFACE_REMAINING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c6e4'
+        Module = '_global'
+        Source = '00/42/global_CTCBaseFindInterfaceType0x6f_0042c6e4.cpp'
+        TestSource = '00/42/global_CTCBaseFindInterfaceType0x6f_0042c6e4_test.cpp'
+        PassPattern = 'CTC_INTERFACE_REMAINING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c72f'
+        Module = '_global'
+        Source = '00/42/global_CTCBaseFindInterfaceType0x13_0042c72f.cpp'
+        TestSource = '00/42/global_CTCBaseFindInterfaceType0x13_0042c72f_test.cpp'
+        PassPattern = 'CTC_INTERFACE_REMAINING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c77a'
+        Module = '_global'
+        Source = '00/42/global_CTCBaseFindInterfaceType0x14_0042c77a.cpp'
+        TestSource = '00/42/global_CTCBaseFindInterfaceType0x14_0042c77a_test.cpp'
+        PassPattern = 'CTC_INTERFACE_REMAINING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c7c5'
+        Module = '_global'
+        Source = '00/42/global_CTCBaseFindInterfaceType0x12_0042c7c5.cpp'
+        TestSource = '00/42/global_CTCBaseFindInterfaceType0x12_0042c7c5_test.cpp'
+        PassPattern = 'CTC_INTERFACE_REMAINING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c810'
+        Module = '_global'
+        Source = '00/42/global_CTCBaseFindInterfaceType0xf6_0042c810.cpp'
+        TestSource = '00/42/global_CTCBaseFindInterfaceType0xf6_0042c810_test.cpp'
+        PassPattern = 'CTC_INTERFACE_REMAINING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c85c'
+        Module = '_global'
+        Source = '00/42/global_CTCBaseFindInterfaceType0x10d_0042c85c.cpp'
+        TestSource = '00/42/global_CTCBaseFindInterfaceType0x10d_0042c85c_test.cpp'
+        PassPattern = 'CTC_INTERFACE_REMAINING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c8a8'
+        Module = '_global'
+        Source = '00/42/global_CTCBaseFindInterfaceType0xd0_0042c8a8.cpp'
+        TestSource = '00/42/global_CTCBaseFindInterfaceType0xd0_0042c8a8_test.cpp'
+        PassPattern = 'CTC_INTERFACE_REMAINING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042c8f4'
+        Module = '_global'
+        Source = '00/42/global_CTCBaseFindInterfaceType0xfc_0042c8f4.cpp'
+        TestSource = '00/42/global_CTCBaseFindInterfaceType0xfc_0042c8f4_test.cpp'
+        PassPattern = 'CTC_INTERFACE_REMAINING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042ab01'
+        Module = '_global'
+        Source = '00/42/global_StdDoubleLinkedListCreateNode_0042ab01.cpp'
+        TestSource = '00/42/global_StdDoubleLinkedListCreateNode_0042ab01_test.cpp'
+        PassPattern = 'UNSEEN_SMALL_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d55d0'
+        Module = 'CTCCoopSpirit'
+        Source = '00/4d/CTCCoopSpirit_Construct_004d55d0.cpp'
+        TestSource = '00/4d/CTCCoopSpirit_Construct_004d55d0_test.cpp'
+        PassPattern = 'COOP_SPIRIT_CONSTRUCT_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00447390'
+        Module = '_global'
+        Source = '00/44/global_Catch0040d959_00447390.cpp'
+        TestSource = '00/44/global_Catch0040d959_00447390_test.cpp'
+        PassPattern = 'TINY_CATCHES_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00449960'
+        Module = '_global'
+        Source = '00/44/global_Catch0040d959_00449960.cpp'
+        TestSource = '00/44/global_Catch0040d959_00449960_test.cpp'
+        PassPattern = 'TINY_CATCHES_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00449970'
+        Module = '_global'
+        Source = '00/44/global_Catch0040d959_00449970.cpp'
+        TestSource = '00/44/global_Catch0040d959_00449970_test.cpp'
+        PassPattern = 'TINY_CATCHES_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00449980'
+        Module = '_global'
+        Source = '00/44/global_Catch0042ae0a_00449980.cpp'
+        TestSource = '00/44/global_Catch0042ae0a_00449980_test.cpp'
+        PassPattern = 'TINY_CATCHES_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042a8bd'
+        Module = '_global'
+        Source = '00/42/global_MemoryAllocatorCountAllocatedBlocks_0042a8bd.cpp'
+        TestSource = '00/42/global_MemoryAllocatorCountAllocatedBlocks_0042a8bd_test.cpp'
+        PassPattern = 'ALLOCATOR_POOL_PAIR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443540'
+        Module = '_global'
+        Source = '00/44/global_Catch0047e8cc_00443540.cpp'
+        TestSource = '00/44/global_Catch0047e8cc_00443540_test.cpp'
+        PassPattern = 'CATCH_DTOR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443c10'
+        Module = '_global'
+        Source = '00/44/global_CGuiControlTreePaneDestructor3_00443c10.cpp'
+        TestSource = '00/44/global_CGuiControlTreePaneDestructor3_00443c10_test.cpp'
+        PassPattern = 'GUI_TREE_DTOR2_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00444e10'
+        Module = '_global'
+        Source = '00/44/global_CGuiControlTreePaneDestructor4_00444e10.cpp'
+        TestSource = '00/44/global_CGuiControlTreePaneDestructor4_00444e10_test.cpp'
+        PassPattern = 'GUI_TREE_DTOR5_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00893ec0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_MsgOnHeroSlept_00893ec0.cpp'
+        TestSource = '00/89/CGameScriptInterface_MsgOnHeroSlept_00893ec0_test.cpp'
+        PassPattern = 'MSG_HERO_SLEPT_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450a90'
+        Module = 'vector_CIntelligentPointer_CThing_const'
+        Source = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450a90.cpp'
+        TestSource = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450a90_test.cpp'
+        PassPattern = 'DESTROY_450A90_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450a14'
+        Module = 'vector_CIntelligentPointer_CThing_const'
+        Source = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450a14.cpp'
+        TestSource = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450a14_test.cpp'
+        PassPattern = 'DESTROY_450A14_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456010'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = '00/45/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00456010.cpp'
+        TestSource = '00/45/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00456010_test.cpp'
+        PassPattern = 'PATCH_EDGE_DTOR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450b1b'
+        Module = 'vector_CIntelligentPointer_CThing_const'
+        Source = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450b1b.cpp'
+        TestSource = '00/45/vectorCIntelligentPointerCThingconst_Destroy_00450b1b_test.cpp'
+        PassPattern = 'DESTROY_450B1B_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00896e60'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_SetPreferredQuickAccessItem_00896e60.cpp'
+        TestSource = '00/89/CGameScriptInterface_SetPreferredQuickAccessItem_00896e60_test.cpp'
+        PassPattern = 'PREFERRED_QUICK_ITEM_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00898b30'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_SetWeaponAsHerosActiveWeapon_00898b30.cpp'
+        TestSource = '00/89/CGameScriptInterface_SetWeaponAsHerosActiveWeapon_00898b30_test.cpp'
+        PassPattern = 'ACTIVE_WEAPON_PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a12a0'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_GetNumHousesOwned_008a12a0.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetNumHousesOwned_008a12a0_test.cpp'
+        PassPattern = 'GET_NUM_HOUSES_OWNED_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00891720'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_ChangeHeroHealthBy_00891720.cpp'
+        TestSource = '00/89/CGameScriptInterface_ChangeHeroHealthBy_00891720_test.cpp'
+        PassPattern = 'CHANGE_HERO_HEALTH_BY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00449d20'
+        Module = 'CPlayerManager'
+        Source = '00/44/CPlayerManager_IsMultiplayerGameActive_00449d20.cpp'
+        TestSource = '00/44/CPlayerManager_IsMultiplayerGameActive_00449d20_test.cpp'
+        PassPattern = 'IS_MULTIPLAYER_GAME_ACTIVE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ae940'
+        Module = 'CNetworkClient'
+        Source = '00/4a/CNetworkClient_InitialiseAsLocal_004ae940.cpp'
+        TestSource = '00/4a/CNetworkClient_InitialiseAsLocal_004ae940_test.cpp'
+        PassPattern = 'INITIALISE_AS_LOCAL_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890ff0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_CameraDefault_00890ff0.cpp'
+        TestSource = '00/89/CGameScriptInterface_CameraDefault_00890ff0_test.cpp'
+        PassPattern = 'CAMERA_DEFAULT_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0d340'
+        Module = 'CProcessedInput'
+        Source = '00/a0/CProcessedInput_AddGameEvent_00a0d340.cpp'
+        TestSource = '00/a0/CProcessedInput_AddGameEvent_00a0d340_test.cpp'
+        PassPattern = 'PROCESSED_INPUT_ADD_GAME_EVENT_PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f19a0'
+        Module = 'CGameEventPackageSet'
+        Source = '00/9f/CGameEventPackageSet_CompressIntoBuffer_009f19a0.cpp'
+        TestSource = '00/9f/CGameEventPackageSet_CompressIntoBuffer_009f19a0_test.cpp'
+        PassPattern = 'PACKAGE_SET_COMPRESS_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aeaa0'
+        Module = 'CNetworkClient'
+        Source = '00/4a/CNetworkClient_GetLocalGameEventPackageSet_004aeaa0.cpp'
+        TestSource = '00/4a/CNetworkClient_GetLocalGameEventPackageSet_004aeaa0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = 'NETWORK_GET_LOCAL_PACKAGE_SET_PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f1810'
+        Module = 'CGameEvent'
+        Source = '00/9f/CGameEvent_CompressIntoBuffer_009f1810.cpp'
+        TestSource = '00/9f/CGameEvent_CompressIntoBuffer_009f1810_test.cpp'
+        PassPattern = 'GAME_EVENT_COMPRESS_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00401c00'
+        Module = '_global'
+        Source = '00/40/global_GFHandleSystemInitError_00401c00.cpp'
+        TestSource = '00/40/global_GFHandleSystemInitError_00401c00_test.cpp'
+        PassPattern = 'FABLETLC_GF_HANDLE_SYSTEM_INIT_ERROR_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045d901'
+        Module = '_global'
+        Source = '00/45/global_TreeNodeAllocData_0045d901.cpp'
+        TestSource = '00/45/global_TreeNodeAllocData_0045d901_test.cpp'
+        PassPattern = 'TREE_NODE_ALLOC_D901_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045e2b1'
+        Module = '_global'
+        Source = '00/45/global_TreeNodeAllocDataByte_0045e2b1.cpp'
+        TestSource = '00/45/global_TreeNodeAllocDataByte_0045e2b1_test.cpp'
+        PassPattern = 'TREE_NODE_ALLOC_BYTE_E2B1_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045de2f'
+        Module = '_global'
+        Source = '00/45/global_TreeNodeAllocDataByte_0045de2f.cpp'
+        TestSource = '00/45/global_TreeNodeAllocDataByte_0045de2f_test.cpp'
+        PassPattern = 'TREE_NODE_ALLOC_BYTE_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045e797'
+        Module = '_global'
+        Source = '00/45/global_TreeNodeAllocDataByte_0045e797.cpp'
+        TestSource = '00/45/global_TreeNodeAllocDataByte_0045e797_test.cpp'
+        PassPattern = 'TREE_NODE_ALLOC_BYTE_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045deba'
+        Module = '_global'
+        Source = '00/45/global_MapEraseNode_0045deba.cpp'
+        TestSource = '00/45/global_MapEraseNode_0045deba_test.cpp'
+        PassPattern = 'MAP_ERASE_NODE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045f13d'
+        Module = '_global'
+        Source = '00/45/global_TreeNodeAllocData_0045f13d.cpp'
+        TestSource = '00/45/global_TreeNodeAllocData_0045f13d_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046149e'
+        Module = '_global'
+        Source = '00/46/global_TreeNodeAllocData_0046149e.cpp'
+        TestSource = '00/46/global_TreeNodeAllocData_0046149e_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004615c3'
+        Module = '_global'
+        Source = '00/46/global_TreeNodeAllocData_004615c3.cpp'
+        TestSource = '00/46/global_TreeNodeAllocData_004615c3_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004622ec'
+        Module = '_global'
+        Source = '00/46/global_TreeNodeAllocData_004622ec.cpp'
+        TestSource = '00/46/global_TreeNodeAllocData_004622ec_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00462411'
+        Module = '_global'
+        Source = '00/46/global_TreeNodeAllocData_00462411.cpp'
+        TestSource = '00/46/global_TreeNodeAllocData_00462411_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004630e7'
+        Module = '_global'
+        Source = '00/46/global_TreeNodeAllocData_004630e7.cpp'
+        TestSource = '00/46/global_TreeNodeAllocData_004630e7_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e4429'
+        Module = '_global'
+        Source = '00/4e/global_AllocAndCopyFields_004e4429.cpp'
+        TestSource = '00/4e/global_AllocAndCopyFields_004e4429_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e4d19'
+        Module = '_global'
+        Source = '00/4e/global_TreeNodeAllocData_004e4d19.cpp'
+        TestSource = '00/4e/global_TreeNodeAllocData_004e4d19_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e4eca'
+        Module = '_global'
+        Source = '00/4e/global_TreeNodeAllocData_004e4eca.cpp'
+        TestSource = '00/4e/global_TreeNodeAllocData_004e4eca_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e4fef'
+        Module = '_global'
+        Source = '00/4e/global_TreeNodeAllocData_004e4fef.cpp'
+        TestSource = '00/4e/global_TreeNodeAllocData_004e4fef_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e55cf'
+        Module = '_global'
+        Source = '00/4e/global_TreeNodeAllocData_004e55cf.cpp'
+        TestSource = '00/4e/global_TreeNodeAllocData_004e55cf_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e597b'
+        Module = '_global'
+        Source = '00/4e/global_TreeNodeAllocData_004e597b.cpp'
+        TestSource = '00/4e/global_TreeNodeAllocData_004e597b_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e6210'
+        Module = '_global'
+        Source = '00/4e/global_TreeNodeAllocData_004e6210.cpp'
+        TestSource = '00/4e/global_TreeNodeAllocData_004e6210_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e6623'
+        Module = '_global'
+        Source = '00/4e/global_TreeNodeAllocData_004e6623.cpp'
+        TestSource = '00/4e/global_TreeNodeAllocData_004e6623_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e6748'
+        Module = '_global'
+        Source = '00/4e/global_TreeNodeAllocData_004e6748.cpp'
+        TestSource = '00/4e/global_TreeNodeAllocData_004e6748_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e9ab1'
+        Module = '_global'
+        Source = '00/4e/global_TreeNodeAllocData_004e9ab1.cpp'
+        TestSource = '00/4e/global_TreeNodeAllocData_004e9ab1_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ec31c'
+        Module = '_global'
+        Source = '00/4e/global_TreeNodeAllocData_004ec31c.cpp'
+        TestSource = '00/4e/global_TreeNodeAllocData_004ec31c_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004f930a'
+        Module = '_global'
+        Source = '00/4f/global_TreeNodeAllocate24Byte_004f930a.cpp'
+        TestSource = '00/4f/global_TreeNodeAllocate24Byte_004f930a_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004f9a6e'
+        Module = '_global'
+        Source = '00/4f/global_TreeNodeAllocate24Byte_004f9a6e.cpp'
+        TestSource = '00/4f/global_TreeNodeAllocate24Byte_004f9a6e_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005794a1'
+        Module = '_global'
+        Source = '00/57/global_AllocPairGeneric_005794a1.cpp'
+        TestSource = '00/57/global_AllocPairGeneric_005794a1_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00580428'
+        Module = '_global'
+        Source = '00/58/global_AllocPairGeneric_00580428.cpp'
+        TestSource = '00/58/global_AllocPairGeneric_00580428_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059388f'
+        Module = '_global'
+        Source = '00/59/global_AllocPairGeneric_0059388f.cpp'
+        TestSource = '00/59/global_AllocPairGeneric_0059388f_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059afab'
+        Module = '_global'
+        Source = '00/59/global_AllocatorNodeAllocate24Byte_0059afab.cpp'
+        TestSource = '00/59/global_AllocatorNodeAllocate24Byte_0059afab_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b2029'
+        Module = '_global'
+        Source = '00/5b/global_AllocPairGeneric_005b2029.cpp'
+        TestSource = '00/5b/global_AllocPairGeneric_005b2029_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b206c'
+        Module = '_global'
+        Source = '00/5b/global_AllocPairGeneric_005b206c.cpp'
+        TestSource = '00/5b/global_AllocPairGeneric_005b206c_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f8c1f'
+        Module = '_global'
+        Source = '00/5f/global_TreeNodeAllocate24Byte_005f8c1f.cpp'
+        TestSource = '00/5f/global_TreeNodeAllocate24Byte_005f8c1f_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f8c41'
+        Module = '_global'
+        Source = '00/5f/global_BinaryTreeAllocateNode_005f8c41.cpp'
+        TestSource = '00/5f/global_BinaryTreeAllocateNode_005f8c41_test.cpp'
+        PassPattern = 'TREE_NODE_PAIR_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005baf06'
+        Module = '_global'
+        Source = '00/5b/global_TreeNodeAllocateWithTag_005baf06.cpp'
+        TestSource = '00/5b/global_TreeNodeAllocateWithTag_005baf06_test.cpp'
+        PassPattern = 'TREE_NODE_TAG_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042adb6'
+        Module = '_global'
+        Source = '00/42/global_BinarySearchTreeEraseNode_0042adb6.cpp'
+        TestSource = '00/42/global_BinarySearchTreeEraseNode_0042adb6_test.cpp'
+        PassPattern = 'MAP_ERASE_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057926b'
+        Module = '_global'
+        Source = '00/57/global_ListNodeRemoveByData_0057926b.cpp'
+        TestSource = '00/57/global_ListNodeRemoveByData_0057926b_test.cpp'
+        PassPattern = 'MAP_ERASE_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00579300'
+        Module = '_global'
+        Source = '00/57/global_ContainerEraseNode_00579300.cpp'
+        TestSource = '00/57/global_ContainerEraseNode_00579300_test.cpp'
+        PassPattern = 'MAP_ERASE_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057fe82'
+        Module = '_global'
+        Source = '00/57/global_ContainerEraseAndFree_0057fe82.cpp'
+        TestSource = '00/57/global_ContainerEraseAndFree_0057fe82_test.cpp'
+        PassPattern = 'MAP_ERASE_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b1d09'
+        Module = '_global'
+        Source = '00/5b/global_ContainerEraseOneAndFree_005b1d09.cpp'
+        TestSource = '00/5b/global_ContainerEraseOneAndFree_005b1d09_test.cpp'
+        PassPattern = 'MAP_ERASE_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b1d71'
+        Module = '_global'
+        Source = '00/5b/global_ContainerEraseOneAndFree2_005b1d71.cpp'
+        TestSource = '00/5b/global_ContainerEraseOneAndFree2_005b1d71_test.cpp'
+        PassPattern = 'MAP_ERASE_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bacbd'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeEraseNode_005bacbd.cpp'
+        TestSource = '00/5b/global_RBTreeEraseNode_005bacbd_test.cpp'
+        PassPattern = 'MAP_ERASE_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005cc0cb'
+        Module = '_global'
+        Source = '00/5c/global_CMemoryAllocatorRemoveEntry_005cc0cb.cpp'
+        TestSource = '00/5c/global_CMemoryAllocatorRemoveEntry_005cc0cb_test.cpp'
+        PassPattern = 'MAP_ERASE_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d8417'
+        Module = '_global'
+        Source = '00/5d/global_CMemoryAllocatorRemoveEntry_005d8417.cpp'
+        TestSource = '00/5d/global_CMemoryAllocatorRemoveEntry_005d8417_test.cpp'
+        PassPattern = 'MAP_ERASE_FAMILY_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004857bc'
+        Module = '_global'
+        Source = '00/48/global_ListNodeAllocateCircularNode_004857bc.cpp'
+        TestSource = '00/48/global_ListNodeAllocateCircularNode_004857bc_test.cpp'
+        PassPattern = 'ALLOC22_004857bc_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004db771'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct_004db771.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct_004db771_test.cpp'
+        PassPattern = 'ALLOC22_004db771_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004db7be'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct2_004db7be.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct2_004db7be_test.cpp'
+        PassPattern = 'ALLOC22_004db7be_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004db7e2'
+        Module = '_global'
+        Source = '00/4d/global_Alloc28ByteStruct_004db7e2.cpp'
+        TestSource = '00/4d/global_Alloc28ByteStruct_004db7e2_test.cpp'
+        PassPattern = 'ALLOC22_004db7e2_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004db82f'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct3_004db82f.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct3_004db82f_test.cpp'
+        PassPattern = 'ALLOC22_004db82f_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004db8b3'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct4_004db8b3.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct4_004db8b3_test.cpp'
+        PassPattern = 'ALLOC22_004db8b3_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004db8d7'
+        Module = '_global'
+        Source = '00/4d/global_Alloc40ByteStruct_004db8d7.cpp'
+        TestSource = '00/4d/global_Alloc40ByteStruct_004db8d7_test.cpp'
+        PassPattern = 'ALLOC22_004db8d7_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004db8fb'
+        Module = '_global'
+        Source = '00/4d/global_Alloc32ByteStruct_004db8fb.cpp'
+        TestSource = '00/4d/global_Alloc32ByteStruct_004db8fb_test.cpp'
+        PassPattern = 'ALLOC22_004db8fb_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004db948'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct5_004db948.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct5_004db948_test.cpp'
+        PassPattern = 'ALLOC22_004db948_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004db97b'
+        Module = '_global'
+        Source = '00/4d/global_Alloc64ByteStruct_004db97b.cpp'
+        TestSource = '00/4d/global_Alloc64ByteStruct_004db97b_test.cpp'
+        PassPattern = 'ALLOC22_004db97b_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004db9c8'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct6_004db9c8.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct6_004db9c8_test.cpp'
+        PassPattern = 'ALLOC22_004db9c8_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dba15'
+        Module = '_global'
+        Source = '00/4d/global_Alloc28ByteStruct2_004dba15.cpp'
+        TestSource = '00/4d/global_Alloc28ByteStruct2_004dba15_test.cpp'
+        PassPattern = 'ALLOC22_004dba15_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dba62'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct7_004dba62.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct7_004dba62_test.cpp'
+        PassPattern = 'ALLOC22_004dba62_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dbaaf'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct8_004dbaaf.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct8_004dbaaf_test.cpp'
+        PassPattern = 'ALLOC22_004dbaaf_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dbafc'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct9_004dbafc.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct9_004dbafc_test.cpp'
+        PassPattern = 'ALLOC22_004dbafc_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dbb49'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct10_004dbb49.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct10_004dbb49_test.cpp'
+        PassPattern = 'ALLOC22_004dbb49_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dbb6d'
+        Module = '_global'
+        Source = '00/4d/global_Alloc48ByteStruct_004dbb6d.cpp'
+        TestSource = '00/4d/global_Alloc48ByteStruct_004dbb6d_test.cpp'
+        PassPattern = 'ALLOC22_004dbb6d_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dbbba'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct11_004dbbba.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct11_004dbbba_test.cpp'
+        PassPattern = 'ALLOC22_004dbbba_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dbc16'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct12_004dbc16.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct12_004dbc16_test.cpp'
+        PassPattern = 'ALLOC22_004dbc16_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dbc63'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct13_004dbc63.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct13_004dbc63_test.cpp'
+        PassPattern = 'ALLOC22_004dbc63_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dbcb0'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct14_004dbcb0.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct14_004dbcb0_test.cpp'
+        PassPattern = 'ALLOC22_004dbcb0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dbcfd'
+        Module = '_global'
+        Source = '00/4d/global_Alloc24ByteStruct15_004dbcfd.cpp'
+        TestSource = '00/4d/global_Alloc24ByteStruct15_004dbcfd_test.cpp'
+        PassPattern = 'ALLOC22_004dbcfd_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057932f'
+        Module = '_global'
+        Source = '00/57/global_Alloc24ByteStruct16_0057932f.cpp'
+        TestSource = '00/57/global_Alloc24ByteStruct16_0057932f_test.cpp'
+        PassPattern = 'ALLOC22_0057932f_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057937c'
+        Module = '_global'
+        Source = '00/57/global_Alloc24ByteStruct17_0057937c.cpp'
+        TestSource = '00/57/global_Alloc24ByteStruct17_0057937c_test.cpp'
+        PassPattern = 'ALLOC22_0057937c_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005793a0'
+        Module = '_global'
+        Source = '00/57/global_Alloc72ByteStruct_005793a0.cpp'
+        TestSource = '00/57/global_Alloc72ByteStruct_005793a0_test.cpp'
+        PassPattern = 'ALLOC22_005793a0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005793c4'
+        Module = '_global'
+        Source = '00/57/global_Alloc72ByteStruct2_005793c4.cpp'
+        TestSource = '00/57/global_Alloc72ByteStruct2_005793c4_test.cpp'
+        PassPattern = 'ALLOC22_005793c4_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00579411'
+        Module = '_global'
+        Source = '00/57/global_Alloc24ByteStruct18_00579411.cpp'
+        TestSource = '00/57/global_Alloc24ByteStruct18_00579411_test.cpp'
+        PassPattern = 'ALLOC22_00579411_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057fe26'
+        Module = '_global'
+        Source = '00/57/global_Alloc88ByteStruct_0057fe26.cpp'
+        TestSource = '00/57/global_Alloc88ByteStruct_0057fe26_test.cpp'
+        PassPattern = 'ALLOC22_0057fe26_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005932ea'
+        Module = '_global'
+        Source = '00/59/global_Alloc24ByteStruct19_005932ea.cpp'
+        TestSource = '00/59/global_Alloc24ByteStruct19_005932ea_test.cpp'
+        PassPattern = 'ALLOC22_005932ea_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00593351'
+        Module = '_global'
+        Source = '00/59/global_Alloc48ByteStruct2_00593351.cpp'
+        TestSource = '00/59/global_Alloc48ByteStruct2_00593351_test.cpp'
+        PassPattern = 'ALLOC22_00593351_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059af5f'
+        Module = '_global'
+        Source = '00/59/global_Allocate24Byte_0059af5f.cpp'
+        TestSource = '00/59/global_Allocate24Byte_0059af5f_test.cpp'
+        PassPattern = 'ALLOC22_0059af5f_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b1c79'
+        Module = '_global'
+        Source = '00/5b/global_Allocate28Byte_005b1c79.cpp'
+        TestSource = '00/5b/global_Allocate28Byte_005b1c79_test.cpp'
+        PassPattern = 'ALLOC22_005b1c79_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b1c9d'
+        Module = '_global'
+        Source = '00/5b/global_Allocate24ByteVariant_005b1c9d.cpp'
+        TestSource = '00/5b/global_Allocate24ByteVariant_005b1c9d_test.cpp'
+        PassPattern = 'ALLOC22_005b1c9d_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b1cc1'
+        Module = '_global'
+        Source = '00/5b/global_Allocate28ByteVariant_005b1cc1.cpp'
+        TestSource = '00/5b/global_Allocate28ByteVariant_005b1cc1_test.cpp'
+        PassPattern = 'ALLOC22_005b1cc1_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b1ce5'
+        Module = '_global'
+        Source = '00/5b/global_Allocate24ByteVariant2_005b1ce5.cpp'
+        TestSource = '00/5b/global_Allocate24ByteVariant2_005b1ce5_test.cpp'
+        PassPattern = 'ALLOC22_005b1ce5_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005babe1'
+        Module = '_global'
+        Source = '00/5b/global_Allocate20Bytes_005babe1.cpp'
+        TestSource = '00/5b/global_Allocate20Bytes_005babe1_test.cpp'
+        PassPattern = 'ALLOC22_005babe1_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bac2e'
+        Module = '_global'
+        Source = '00/5b/global_Allocate24Bytes_005bac2e.cpp'
+        TestSource = '00/5b/global_Allocate24Bytes_005bac2e_test.cpp'
+        PassPattern = 'ALLOC22_005bac2e_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f895f'
+        Module = '_global'
+        Source = '00/5f/global_Allocate24ByteVariant3_005f895f.cpp'
+        TestSource = '00/5f/global_Allocate24ByteVariant3_005f895f_test.cpp'
+        PassPattern = 'ALLOC22_005f895f_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd283c'
+        Module = '_global'
+        Source = '00/cd/global_CListAllocateNode_00cd283c.cpp'
+        TestSource = '00/cd/global_CListAllocateNode_00cd283c_test.cpp'
+        PassPattern = 'ALLOC22_00cd283c_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd2860'
+        Module = '_global'
+        Source = '00/cd/global_CTreeAllocateNode_00cd2860.cpp'
+        TestSource = '00/cd/global_CTreeAllocateNode_00cd2860_test.cpp'
+        PassPattern = 'ALLOC22_00cd2860_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048c820'
+        Module = '_global'
+        Source = '00/48/global_ArrayFreeElements_0048c820.cpp'
+        TestSource = '00/48/global_ArrayFreeElements_0048c820_test.cpp'
+        PassPattern = 'FREEPTR_0048c820_PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b3b50'
+        Module = '_global'
+        Source = '00/7b/global_BufferFreeAll_007b3b50.cpp'
+        TestSource = '00/7b/global_BufferFreeAll_007b3b50_test.cpp'
+        PassPattern = 'FREEPTR_007b3b50_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00913690'
+        Module = '_global'
+        Source = '00/91/global_FreeBufferArray_00913690.cpp'
+        TestSource = '00/91/global_FreeBufferArray_00913690_test.cpp'
+        PassPattern = 'FREEPTR_00913690_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042a5d1'
+        Module = '_global'
+        Source = '00/42/global_RBTreeIteratorSetToMaxNode0042a5d1_0042a5d1.cpp'
+        TestSource = '00/42/global_RBTreeIteratorSetToMaxNode0042a5d1_0042a5d1_test.cpp'
+        PassPattern = 'RBTREEMAX_0042a5d1_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042a5e2'
+        Module = '_global'
+        Source = '00/42/global_RBTreeIteratorSetToMaxNode0042a5e2_0042a5e2.cpp'
+        TestSource = '00/42/global_RBTreeIteratorSetToMaxNode0042a5e2_0042a5e2_test.cpp'
+        PassPattern = 'RBTREEMAX_0042a5e2_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00485616'
+        Module = 'RBTree'
+        Source = '00/48/RBTree_GetMaxNode_00485616.cpp'
+        TestSource = '00/48/RBTree_GetMaxNode_00485616_test.cpp'
+        PassPattern = 'RBTREEMAX_00485616_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00579089'
+        Module = '_global'
+        Source = '00/57/global_RBTreeGetMaxNode_00579089.cpp'
+        TestSource = '00/57/global_RBTreeGetMaxNode_00579089_test.cpp'
+        PassPattern = 'RBTREEMAX_00579089_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057909a'
+        Module = '_global'
+        Source = '00/57/global_RBTreeGetMaxNodeAlt_0057909a.cpp'
+        TestSource = '00/57/global_RBTreeGetMaxNodeAlt_0057909a_test.cpp'
+        PassPattern = 'RBTREEMAX_0057909a_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005790ab'
+        Module = '_global'
+        Source = '00/57/global_RBTreeGetMaxNodeVariant_005790ab.cpp'
+        TestSource = '00/57/global_RBTreeGetMaxNodeVariant_005790ab_test.cpp'
+        PassPattern = 'RBTREEMAX_005790ab_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057f6a9'
+        Module = '_global'
+        Source = '00/57/global_RBTreeGetMaxNode2_0057f6a9.cpp'
+        TestSource = '00/57/global_RBTreeGetMaxNode2_0057f6a9_test.cpp'
+        PassPattern = 'RBTREEMAX_0057f6a9_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057f6ba'
+        Module = '_global'
+        Source = '00/57/global_RBTreeGetMaxNode3_0057f6ba.cpp'
+        TestSource = '00/57/global_RBTreeGetMaxNode3_0057f6ba_test.cpp'
+        PassPattern = 'RBTREEMAX_0057f6ba_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00592545'
+        Module = '_global'
+        Source = '00/59/global_RBTreeGetMaxNode4_00592545.cpp'
+        TestSource = '00/59/global_RBTreeGetMaxNode4_00592545_test.cpp'
+        PassPattern = 'RBTREEMAX_00592545_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005925ec'
+        Module = '_global'
+        Source = '00/59/global_RBTreeGetMaxNode5_005925ec.cpp'
+        TestSource = '00/59/global_RBTreeGetMaxNode5_005925ec_test.cpp'
+        PassPattern = 'RBTREEMAX_005925ec_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00592abf'
+        Module = '_global'
+        Source = '00/59/global_RBTreeGetMaxNode6_00592abf.cpp'
+        TestSource = '00/59/global_RBTreeGetMaxNode6_00592abf_test.cpp'
+        PassPattern = 'RBTREEMAX_00592abf_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005931a4'
+        Module = '_global'
+        Source = '00/59/global_RBTreeGetMaxNode7_005931a4.cpp'
+        TestSource = '00/59/global_RBTreeGetMaxNode7_005931a4_test.cpp'
+        PassPattern = 'RBTREEMAX_005931a4_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059adcd'
+        Module = '_global'
+        Source = '00/59/global_RBTreeIteratorSetToMaxNode0059adcd_0059adcd.cpp'
+        TestSource = '00/59/global_RBTreeIteratorSetToMaxNode0059adcd_0059adcd_test.cpp'
+        PassPattern = 'RBTREEMAX_0059adcd_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b198d'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeIteratorSetToMaxNode005b198d_005b198d.cpp'
+        TestSource = '00/5b/global_RBTreeIteratorSetToMaxNode005b198d_005b198d_test.cpp'
+        PassPattern = 'RBTREEMAX_005b198d_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b199e'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeIteratorSetToMaxNode005b199e_005b199e.cpp'
+        TestSource = '00/5b/global_RBTreeIteratorSetToMaxNode005b199e_005b199e_test.cpp'
+        PassPattern = 'RBTREEMAX_005b199e_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b19af'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeIteratorSetToMaxNode005b19af_005b19af.cpp'
+        TestSource = '00/5b/global_RBTreeIteratorSetToMaxNode005b19af_005b19af_test.cpp'
+        PassPattern = 'RBTREEMAX_005b19af_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b19c0'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeIteratorSetToMaxNode005b19c0_005b19c0.cpp'
+        TestSource = '00/5b/global_RBTreeIteratorSetToMaxNode005b19c0_005b19c0_test.cpp'
+        PassPattern = 'RBTREEMAX_005b19c0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ba88b'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeIteratorSetToMaxNode005ba88b_005ba88b.cpp'
+        TestSource = '00/5b/global_RBTreeIteratorSetToMaxNode005ba88b_005ba88b_test.cpp'
+        PassPattern = 'RBTREEMAX_005ba88b_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ba89c'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeIteratorSetToMaxNode005ba89c_005ba89c.cpp'
+        TestSource = '00/5b/global_RBTreeIteratorSetToMaxNode005ba89c_005ba89c_test.cpp'
+        PassPattern = 'RBTREEMAX_005ba89c_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ba8ad'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeIteratorSetToMaxNode005ba8ad_005ba8ad.cpp'
+        TestSource = '00/5b/global_RBTreeIteratorSetToMaxNode005ba8ad_005ba8ad_test.cpp'
+        PassPattern = 'RBTREEMAX_005ba8ad_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ba8be'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeIteratorSetToMaxNode005ba8be_005ba8be.cpp'
+        TestSource = '00/5b/global_RBTreeIteratorSetToMaxNode005ba8be_005ba8be_test.cpp'
+        PassPattern = 'RBTREEMAX_005ba8be_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005cbfe9'
+        Module = '_global'
+        Source = '00/5c/global_RBTreeIteratorSetToMaxNode005cbfe9_005cbfe9.cpp'
+        TestSource = '00/5c/global_RBTreeIteratorSetToMaxNode005cbfe9_005cbfe9_test.cpp'
+        PassPattern = 'RBTREEMAX_005cbfe9_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d839d'
+        Module = '_global'
+        Source = '00/5d/global_RBTreeIteratorSetToMaxNode005d839d_005d839d.cpp'
+        TestSource = '00/5d/global_RBTreeIteratorSetToMaxNode005d839d_005d839d_test.cpp'
+        PassPattern = 'RBTREEMAX_005d839d_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f82d9'
+        Module = '_global'
+        Source = '00/5f/global_RBTreeIteratorSetToMaxNode005f82d9_005f82d9.cpp'
+        TestSource = '00/5f/global_RBTreeIteratorSetToMaxNode005f82d9_005f82d9_test.cpp'
+        PassPattern = 'RBTREEMAX_005f82d9_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f82ea'
+        Module = '_global'
+        Source = '00/5f/global_RBTreeIteratorSetToMaxNode005f82ea_005f82ea.cpp'
+        TestSource = '00/5f/global_RBTreeIteratorSetToMaxNode005f82ea_005f82ea_test.cpp'
+        PassPattern = 'RBTREEMAX_005f82ea_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd2639'
+        Module = '_global'
+        Source = '00/cd/global_RBTreeGetMaxNodePtr_00cd2639.cpp'
+        TestSource = '00/cd/global_RBTreeGetMaxNodePtr_00cd2639_test.cpp'
+        PassPattern = 'RBTREEMAX_00cd2639_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd264a'
+        Module = '_global'
+        Source = '00/cd/global_RBTreeGetMaxNodePtr_00cd264a.cpp'
+        TestSource = '00/cd/global_RBTreeGetMaxNodePtr_00cd264a_test.cpp'
+        PassPattern = 'RBTREEMAX_00cd264a_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd265b'
+        Module = '_global'
+        Source = '00/cd/global_RBTreeGetMaxNodePtr_00cd265b.cpp'
+        TestSource = '00/cd/global_RBTreeGetMaxNodePtr_00cd265b_test.cpp'
+        PassPattern = 'RBTREEMAX_00cd265b_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00485ac5'
+        Module = '_global'
+        Source = '00/48/global_ListNodeInitializeCircular_00485ac5.cpp'
+        TestSource = '00/48/global_ListNodeInitializeCircular_00485ac5_test.cpp'
+        PassPattern = 'LISTINIT_00485ac5_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd0ee'
+        Module = '_global'
+        Source = '00/4d/global_CopyBackBufferToTextureInitSurface1_004dd0ee.cpp'
+        TestSource = '00/4d/global_CopyBackBufferToTextureInitSurface1_004dd0ee_test.cpp'
+        PassPattern = 'LISTINIT_004dd0ee_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd12f'
+        Module = '_global'
+        Source = '00/4d/global_CopyBackBufferToTextureInitSurface2_004dd12f.cpp'
+        TestSource = '00/4d/global_CopyBackBufferToTextureInitSurface2_004dd12f_test.cpp'
+        PassPattern = 'LISTINIT_004dd12f_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd170'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler01_004dd170.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler01_004dd170_test.cpp'
+        PassPattern = 'LISTINIT_004dd170_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd19a'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler02_004dd19a.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler02_004dd19a_test.cpp'
+        PassPattern = 'LISTINIT_004dd19a_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd1f2'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler03_004dd1f2.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler03_004dd1f2_test.cpp'
+        PassPattern = 'LISTINIT_004dd1f2_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd233'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler04_004dd233.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler04_004dd233_test.cpp'
+        PassPattern = 'LISTINIT_004dd233_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd25d'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler05_004dd25d.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler05_004dd25d_test.cpp'
+        PassPattern = 'LISTINIT_004dd25d_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd287'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler06_004dd287.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler06_004dd287_test.cpp'
+        PassPattern = 'LISTINIT_004dd287_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd2d7'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler07_004dd2d7.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler07_004dd2d7_test.cpp'
+        PassPattern = 'LISTINIT_004dd2d7_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd301'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler08_004dd301.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler08_004dd301_test.cpp'
+        PassPattern = 'LISTINIT_004dd301_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd342'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler09_004dd342.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler09_004dd342_test.cpp'
+        PassPattern = 'LISTINIT_004dd342_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd383'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler10_004dd383.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler10_004dd383_test.cpp'
+        PassPattern = 'LISTINIT_004dd383_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd3c4'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler11_004dd3c4.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler11_004dd3c4_test.cpp'
+        PassPattern = 'LISTINIT_004dd3c4_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd405'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler12_004dd405.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler12_004dd405_test.cpp'
+        PassPattern = 'LISTINIT_004dd405_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd446'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler13_004dd446.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler13_004dd446_test.cpp'
+        PassPattern = 'LISTINIT_004dd446_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd487'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler14_004dd487.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler14_004dd487_test.cpp'
+        PassPattern = 'LISTINIT_004dd487_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd4b1'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler15_004dd4b1.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler15_004dd4b1_test.cpp'
+        PassPattern = 'LISTINIT_004dd4b1_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd501'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler16_004dd501.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler16_004dd501_test.cpp'
+        PassPattern = 'LISTINIT_004dd501_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd542'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler17_004dd542.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler17_004dd542_test.cpp'
+        PassPattern = 'LISTINIT_004dd542_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd583'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler18_004dd583.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler18_004dd583_test.cpp'
+        PassPattern = 'LISTINIT_004dd583_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd5c4'
+        Module = '_global'
+        Source = '00/4d/global_TextureFormatHandler19_004dd5c4.cpp'
+        TestSource = '00/4d/global_TextureFormatHandler19_004dd5c4_test.cpp'
+        PassPattern = 'LISTINIT_004dd5c4_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00579599'
+        Module = '_global'
+        Source = '00/57/global_ContainerInitSmall1_00579599.cpp'
+        TestSource = '00/57/global_ContainerInitSmall1_00579599_test.cpp'
+        PassPattern = 'LISTINIT_00579599_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005795ec'
+        Module = '_global'
+        Source = '00/57/global_ContainerInitSmall2_005795ec.cpp'
+        TestSource = '00/57/global_ContainerInitSmall2_005795ec_test.cpp'
+        PassPattern = 'LISTINIT_005795ec_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057962d'
+        Module = '_global'
+        Source = '00/57/global_ContainerInitMedium1_0057962d.cpp'
+        TestSource = '00/57/global_ContainerInitMedium1_0057962d_test.cpp'
+        PassPattern = 'LISTINIT_0057962d_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00579657'
+        Module = '_global'
+        Source = '00/57/global_ContainerInitMedium2_00579657.cpp'
+        TestSource = '00/57/global_ContainerInitMedium2_00579657_test.cpp'
+        PassPattern = 'LISTINIT_00579657_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00579681'
+        Module = '_global'
+        Source = '00/57/global_ContainerInitSmall3_00579681.cpp'
+        TestSource = '00/57/global_ContainerInitSmall3_00579681_test.cpp'
+        PassPattern = 'LISTINIT_00579681_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005805e3'
+        Module = '_global'
+        Source = '00/58/global_ContainerInitLarge_005805e3.cpp'
+        TestSource = '00/58/global_ContainerInitLarge_005805e3_test.cpp'
+        PassPattern = 'LISTINIT_005805e3_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00593a9d'
+        Module = '_global'
+        Source = '00/59/global_QueueInit_00593a9d.cpp'
+        TestSource = '00/59/global_QueueInit_00593a9d_test.cpp'
+        PassPattern = 'LISTINIT_00593a9d_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00593b3f'
+        Module = '_global'
+        Source = '00/59/global_HashBucketInit_00593b3f.cpp'
+        TestSource = '00/59/global_HashBucketInit_00593b3f_test.cpp'
+        PassPattern = 'LISTINIT_00593b3f_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059b06e'
+        Module = '_global'
+        Source = '00/59/global_RenderInitializeNode24Byte_0059b06e.cpp'
+        TestSource = '00/59/global_RenderInitializeNode24Byte_0059b06e_test.cpp'
+        PassPattern = 'LISTINIT_0059b06e_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b20f5'
+        Module = '_global'
+        Source = '00/5b/global_RenderInitializeNode28Byte_005b20f5.cpp'
+        TestSource = '00/5b/global_RenderInitializeNode28Byte_005b20f5_test.cpp'
+        PassPattern = 'LISTINIT_005b20f5_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b2136'
+        Module = '_global'
+        Source = '00/5b/global_RenderInitializeNode24ByteVar_005b2136.cpp'
+        TestSource = '00/5b/global_RenderInitializeNode24ByteVar_005b2136_test.cpp'
+        PassPattern = 'LISTINIT_005b2136_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b2177'
+        Module = '_global'
+        Source = '00/5b/global_RenderInitializeNode28ByteVar_005b2177.cpp'
+        TestSource = '00/5b/global_RenderInitializeNode28ByteVar_005b2177_test.cpp'
+        PassPattern = 'LISTINIT_005b2177_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b21ca'
+        Module = '_global'
+        Source = '00/5b/global_RenderInitializeNode24ByteVar2_005b21ca.cpp'
+        TestSource = '00/5b/global_RenderInitializeNode24ByteVar2_005b21ca_test.cpp'
+        PassPattern = 'LISTINIT_005b21ca_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bb025'
+        Module = '_global'
+        Source = '00/5b/global_ListInitializeEmpty20Bytes_005bb025.cpp'
+        TestSource = '00/5b/global_ListInitializeEmpty20Bytes_005bb025_test.cpp'
+        PassPattern = 'LISTINIT_005bb025_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bb066'
+        Module = '_global'
+        Source = '00/5b/global_ListInitializeEmpty24Bytes_005bb066.cpp'
+        TestSource = '00/5b/global_ListInitializeEmpty24Bytes_005bb066_test.cpp'
+        PassPattern = 'LISTINIT_005bb066_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f8fbc'
+        Module = '_global'
+        Source = '00/5f/global_RenderInitializeNode24ByteVar3_005f8fbc.cpp'
+        TestSource = '00/5f/global_RenderInitializeNode24ByteVar3_005f8fbc_test.cpp'
+        PassPattern = 'LISTINIT_005f8fbc_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd2d37'
+        Module = '_global'
+        Source = '00/cd/global_CListInitSentinelNode_00cd2d37.cpp'
+        TestSource = '00/cd/global_CListInitSentinelNode_00cd2d37_test.cpp'
+        PassPattern = 'LISTINIT_00cd2d37_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd2d61'
+        Module = '_global'
+        Source = '00/cd/global_CTreeInitSentinelNode_00cd2d61.cpp'
+        TestSource = '00/cd/global_CTreeInitSentinelNode_00cd2d61_test.cpp'
+        PassPattern = 'LISTINIT_00cd2d61_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053c7b9'
+        Module = '_global'
+        Source = '00/53/global_stdlistnodeunlink_0053c7b9.cpp'
+        TestSource = '00/53/global_stdlistnodeunlink_0053c7b9_test.cpp'
+        PassPattern = 'UNLINK_0053c7b9_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655125'
+        Module = '_global'
+        Source = '00/65/global_stdlistnodeunlinkandfree_00655125.cpp'
+        TestSource = '00/65/global_stdlistnodeunlinkandfree_00655125_test.cpp'
+        PassPattern = 'UNLINK_00655125_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006553d0'
+        Module = '_global'
+        Source = '00/65/global_stdlistnodeunlinkandfree_006553d0.cpp'
+        TestSource = '00/65/global_stdlistnodeunlinkandfree_006553d0_test.cpp'
+        PassPattern = 'UNLINK_006553d0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006553fd'
+        Module = '_global'
+        Source = '00/65/global_stdlistnodeunlinkandfree_006553fd.cpp'
+        TestSource = '00/65/global_stdlistnodeunlinkandfree_006553fd_test.cpp'
+        PassPattern = 'UNLINK_006553fd_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00493c7d'
+        Module = '_global'
+        Source = '00/49/global_ListNodeInsertAtPosition_00493c7d.cpp'
+        TestSource = '00/49/global_ListNodeInsertAtPosition_00493c7d_test.cpp'
+        PassPattern = 'LISTINSERT_00493c7d_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053c97c'
+        Module = 'std::list'
+        Source = '00/53/stdlist_Constructsingle_0053c97c.cpp'
+        TestSource = '00/53/stdlist_Constructsingle_0053c97c_test.cpp'
+        PassPattern = 'LISTINSERT_0053c97c_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053ca7b'
+        Module = '_global'
+        Source = '00/53/global_stdlistnodeinsert_0053ca7b.cpp'
+        TestSource = '00/53/global_stdlistnodeinsert_0053ca7b_test.cpp'
+        PassPattern = 'LISTINSERT_0053ca7b_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057fe01'
+        Module = '_global'
+        Source = '00/57/global_LinkedListInsertNode_0057fe01.cpp'
+        TestSource = '00/57/global_LinkedListInsertNode_0057fe01_test.cpp'
+        PassPattern = 'LISTINSERT_0057fe01_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005931b5'
+        Module = '_global'
+        Source = '00/59/global_DoublyLinkedListInsert_005931b5.cpp'
+        TestSource = '00/59/global_DoublyLinkedListInsert_005931b5_test.cpp'
+        PassPattern = 'LISTINSERT_005931b5_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00593b1a'
+        Module = '_global'
+        Source = '00/59/global_ListNodeCreate_00593b1a.cpp'
+        TestSource = '00/59/global_ListNodeCreate_00593b1a_test.cpp'
+        PassPattern = 'LISTINSERT_00593b1a_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f88c8'
+        Module = '_global'
+        Source = '00/5f/global_LinkedListInsertNodeBefore_005f88c8.cpp'
+        TestSource = '00/5f/global_LinkedListInsertNodeBefore_005f88c8_test.cpp'
+        PassPattern = 'LISTINSERT_005f88c8_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655af3'
+        Module = '_global'
+        Source = '00/65/global_stdlistinsertnodebefore_00655af3.cpp'
+        TestSource = '00/65/global_stdlistinsertnodebefore_00655af3_test.cpp'
+        PassPattern = 'LISTINSERT_00655af3_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655b84'
+        Module = '_global'
+        Source = '00/65/global_stdlistinsertnodebefore2_00655b84.cpp'
+        TestSource = '00/65/global_stdlistinsertnodebefore2_00655b84_test.cpp'
+        PassPattern = 'LISTINSERT_00655b84_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655bc4'
+        Module = '_global'
+        Source = '00/65/global_stdlistinsertnodebefore3_00655bc4.cpp'
+        TestSource = '00/65/global_stdlistinsertnodebefore3_00655bc4_test.cpp'
+        PassPattern = 'LISTINSERT_00655bc4_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057929a'
+        Module = '_global'
+        Source = '00/57/global_ListNodeInsertBefore0057929a_0057929a.cpp'
+        TestSource = '00/57/global_ListNodeInsertBefore0057929a_0057929a_test.cpp'
+        PassPattern = 'LISTINSERT_0057929a_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057fd7d'
+        Module = '_global'
+        Source = '00/57/global_ListNodeInsertBefore0057fd7d_0057fd7d.cpp'
+        TestSource = '00/57/global_ListNodeInsertBefore0057fd7d_0057fd7d_test.cpp'
+        PassPattern = 'LISTINSERT_0057fd7d_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00593ade'
+        Module = '_global'
+        Source = '00/59/global_ListNodeInsertBefore00593ade_00593ade.cpp'
+        TestSource = '00/59/global_ListNodeInsertBefore00593ade_00593ade_test.cpp'
+        PassPattern = 'LISTINSERT_00593ade_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bb0a7'
+        Module = '_global'
+        Source = '00/5b/global_ListNodeInsertBefore005bb0a7_005bb0a7.cpp'
+        TestSource = '00/5b/global_ListNodeInsertBefore005bb0a7_005bb0a7_test.cpp'
+        PassPattern = 'LISTINSERT_005bb0a7_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d8626'
+        Module = '_global'
+        Source = '00/5d/global_ListNodeInsertBefore005d8626_005d8626.cpp'
+        TestSource = '00/5d/global_ListNodeInsertBefore005d8626_005d8626_test.cpp'
+        PassPattern = 'LISTINSERT_005d8626_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f891f'
+        Module = '_global'
+        Source = '00/5f/global_ListNodeInsertBefore005f891f_005f891f.cpp'
+        TestSource = '00/5f/global_ListNodeInsertBefore005f891f_005f891f_test.cpp'
+        PassPattern = 'LISTINSERT_005f891f_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655f8b'
+        Module = '_global'
+        Source = '00/65/global_ListNodeInsertBefore00655f8b_00655f8b.cpp'
+        TestSource = '00/65/global_ListNodeInsertBefore00655f8b_00655f8b_test.cpp'
+        PassPattern = 'LISTINSERT_00655f8b_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655fb0'
+        Module = '_global'
+        Source = '00/65/global_ListNodeInsertBefore00655fb0_00655fb0.cpp'
+        TestSource = '00/65/global_ListNodeInsertBefore00655fb0_00655fb0_test.cpp'
+        PassPattern = 'LISTINSERT_00655fb0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065600a'
+        Module = '_global'
+        Source = '00/65/global_ListNodeInsertBefore0065600a_0065600a.cpp'
+        TestSource = '00/65/global_ListNodeInsertBefore0065600a_0065600a_test.cpp'
+        PassPattern = 'LISTINSERT_0065600a_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00656239'
+        Module = '_global'
+        Source = '00/65/global_ListNodeInsertBefore00656239_00656239.cpp'
+        TestSource = '00/65/global_ListNodeInsertBefore00656239_00656239_test.cpp'
+        PassPattern = 'LISTINSERT_00656239_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065fcca'
+        Module = '_global'
+        Source = '00/65/global_ListNodeInsertBefore0065fcca_0065fcca.cpp'
+        TestSource = '00/65/global_ListNodeInsertBefore0065fcca_0065fcca_test.cpp'
+        PassPattern = 'LISTINSERT_0065fcca_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065fcef'
+        Module = '_global'
+        Source = '00/65/global_ListNodeInsertBefore0065fcef_0065fcef.cpp'
+        TestSource = '00/65/global_ListNodeInsertBefore0065fcef_0065fcef_test.cpp'
+        PassPattern = 'LISTINSERT_0065fcef_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065fd14'
+        Module = '_global'
+        Source = '00/65/global_ListNodeInsertBefore0065fd14_0065fd14.cpp'
+        TestSource = '00/65/global_ListNodeInsertBefore0065fd14_0065fd14_test.cpp'
+        PassPattern = 'LISTINSERT_0065fd14_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065fd39'
+        Module = '_global'
+        Source = '00/65/global_ListNodeInsertBefore0065fd39_0065fd39.cpp'
+        TestSource = '00/65/global_ListNodeInsertBefore0065fd39_0065fd39_test.cpp'
+        PassPattern = 'LISTINSERT_0065fd39_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065fd5e'
+        Module = '_global'
+        Source = '00/65/global_ListNodeInsertBefore0065fd5e_0065fd5e.cpp'
+        TestSource = '00/65/global_ListNodeInsertBefore0065fd5e_0065fd5e_test.cpp'
+        PassPattern = 'LISTINSERT_0065fd5e_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065fd83'
+        Module = '_global'
+        Source = '00/65/global_ListNodeInsertBefore0065fd83_0065fd83.cpp'
+        TestSource = '00/65/global_ListNodeInsertBefore0065fd83_0065fd83_test.cpp'
+        PassPattern = 'LISTINSERT_0065fd83_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065fda8'
+        Module = '_global'
+        Source = '00/65/global_ListNodeInsertBefore0065fda8_0065fda8.cpp'
+        TestSource = '00/65/global_ListNodeInsertBefore0065fda8_0065fda8_test.cpp'
+        PassPattern = 'LISTINSERT_0065fda8_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065fdcd'
+        Module = '_global'
+        Source = '00/65/global_ListNodeInsertBefore0065fdcd_0065fdcd.cpp'
+        TestSource = '00/65/global_ListNodeInsertBefore0065fdcd_0065fdcd_test.cpp'
+        PassPattern = 'LISTINSERT_0065fdcd_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065fdf2'
+        Module = '_global'
+        Source = '00/65/global_ListNodeInsertBefore0065fdf2_0065fdf2.cpp'
+        TestSource = '00/65/global_ListNodeInsertBefore0065fdf2_0065fdf2_test.cpp'
+        PassPattern = 'LISTINSERT_0065fdf2_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006605d5'
+        Module = '_global'
+        Source = '00/66/global_ListNodeInsertBefore006605d5_006605d5.cpp'
+        TestSource = '00/66/global_ListNodeInsertBefore006605d5_006605d5_test.cpp'
+        PassPattern = 'LISTINSERT_006605d5_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443580'
+        Module = '_gapscan'
+        Source = '00/44/gapscan_PolymorphicRangeCleanup00443580_00443580.cpp'
+        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443580_00443580_test.cpp'
+        PassPattern = 'POLYCLEAN_00443580_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004435c0'
+        Module = '_gapscan'
+        Source = '00/44/gapscan_PolymorphicRangeCleanup004435c0_004435c0.cpp'
+        TestSource = '00/44/gapscan_PolymorphicRangeCleanup004435c0_004435c0_test.cpp'
+        PassPattern = 'POLYCLEAN_004435c0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443600'
+        Module = '_gapscan'
+        Source = '00/44/gapscan_PolymorphicRangeCleanup00443600_00443600.cpp'
+        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443600_00443600_test.cpp'
+        PassPattern = 'POLYCLEAN_00443600_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443640'
+        Module = '_gapscan'
+        Source = '00/44/gapscan_PolymorphicRangeCleanup00443640_00443640.cpp'
+        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443640_00443640_test.cpp'
+        PassPattern = 'POLYCLEAN_00443640_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443680'
+        Module = '_gapscan'
+        Source = '00/44/gapscan_PolymorphicRangeCleanup00443680_00443680.cpp'
+        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443680_00443680_test.cpp'
+        PassPattern = 'POLYCLEAN_00443680_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004436c0'
+        Module = '_gapscan'
+        Source = '00/44/gapscan_PolymorphicRangeCleanup004436c0_004436c0.cpp'
+        TestSource = '00/44/gapscan_PolymorphicRangeCleanup004436c0_004436c0_test.cpp'
+        PassPattern = 'POLYCLEAN_004436c0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443700'
+        Module = '_gapscan'
+        Source = '00/44/gapscan_PolymorphicRangeCleanup00443700_00443700.cpp'
+        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443700_00443700_test.cpp'
+        PassPattern = 'POLYCLEAN_00443700_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443740'
+        Module = '_gapscan'
+        Source = '00/44/gapscan_PolymorphicRangeCleanup00443740_00443740.cpp'
+        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443740_00443740_test.cpp'
+        PassPattern = 'POLYCLEAN_00443740_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443780'
+        Module = '_gapscan'
+        Source = '00/44/gapscan_PolymorphicRangeCleanup00443780_00443780.cpp'
+        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443780_00443780_test.cpp'
+        PassPattern = 'POLYCLEAN_00443780_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004438f0'
+        Module = '_gapscan'
+        Source = '00/44/gapscan_PolymorphicRangeCleanup004438f0_004438f0.cpp'
+        TestSource = '00/44/gapscan_PolymorphicRangeCleanup004438f0_004438f0_test.cpp'
+        PassPattern = 'POLYCLEAN_004438f0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443a20'
+        Module = '_gapscan'
+        Source = '00/44/gapscan_PolymorphicRangeCleanup00443a20_00443a20.cpp'
+        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443a20_00443a20_test.cpp'
+        PassPattern = 'POLYCLEAN_00443a20_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00443a60'
+        Module = '_gapscan'
+        Source = '00/44/gapscan_PolymorphicRangeCleanup00443a60_00443a60.cpp'
+        TestSource = '00/44/gapscan_PolymorphicRangeCleanup00443a60_00443a60_test.cpp'
+        PassPattern = 'POLYCLEAN_00443a60_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b646'
+        Module = '_global'
+        Source = '00/42/global_ListPushFrontWrapper0042b646_0042b646.cpp'
+        TestSource = '00/42/global_ListPushFrontWrapper0042b646_0042b646_test.cpp'
+        PassPattern = 'LISTPUSH_0042b646_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00493d16'
+        Module = '_global'
+        Source = '00/49/global_ListPushFrontWrapper00493d16_00493d16.cpp'
+        TestSource = '00/49/global_ListPushFrontWrapper00493d16_00493d16_test.cpp'
+        PassPattern = 'LISTPUSH_00493d16_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053cae8'
+        Module = '_global'
+        Source = '00/53/global_ListPushFrontWrapper0053cae8_0053cae8.cpp'
+        TestSource = '00/53/global_ListPushFrontWrapper0053cae8_0053cae8_test.cpp'
+        PassPattern = 'LISTPUSH_0053cae8_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057955a'
+        Module = '_global'
+        Source = '00/57/global_ListPushFrontWrapper0057955a_0057955a.cpp'
+        TestSource = '00/57/global_ListPushFrontWrapper0057955a_0057955a_test.cpp'
+        PassPattern = 'LISTPUSH_0057955a_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0058056f'
+        Module = '_global'
+        Source = '00/58/global_ListPushFrontWrapper0058056f_0058056f.cpp'
+        TestSource = '00/58/global_ListPushFrontWrapper0058056f_0058056f_test.cpp'
+        PassPattern = 'LISTPUSH_0058056f_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005805c9'
+        Module = '_global'
+        Source = '00/58/global_ListPushFrontWrapper005805c9_005805c9.cpp'
+        TestSource = '00/58/global_ListPushFrontWrapper005805c9_005805c9_test.cpp'
+        PassPattern = 'LISTPUSH_005805c9_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005939ee'
+        Module = '_global'
+        Source = '00/59/global_ListPushFrontWrapper005939ee_005939ee.cpp'
+        TestSource = '00/59/global_ListPushFrontWrapper005939ee_005939ee_test.cpp'
+        PassPattern = 'LISTPUSH_005939ee_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00593f00'
+        Module = '_global'
+        Source = '00/59/global_ListPushFrontWrapper00593f00_00593f00.cpp'
+        TestSource = '00/59/global_ListPushFrontWrapper00593f00_00593f00_test.cpp'
+        PassPattern = 'LISTPUSH_00593f00_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00593f1f'
+        Module = '_global'
+        Source = '00/59/global_ListPushFrontWrapper00593f1f_00593f1f.cpp'
+        TestSource = '00/59/global_ListPushFrontWrapper00593f1f_00593f1f_test.cpp'
+        PassPattern = 'LISTPUSH_00593f1f_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bb3ef'
+        Module = '_global'
+        Source = '00/5b/global_ListPushFrontWrapper005bb3ef_005bb3ef.cpp'
+        TestSource = '00/5b/global_ListPushFrontWrapper005bb3ef_005bb3ef_test.cpp'
+        PassPattern = 'LISTPUSH_005bb3ef_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d86b2'
+        Module = '_global'
+        Source = '00/5d/global_ListPushFrontWrapper005d86b2_005d86b2.cpp'
+        TestSource = '00/5d/global_ListPushFrontWrapper005d86b2_005d86b2_test.cpp'
+        PassPattern = 'LISTPUSH_005d86b2_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f8f50'
+        Module = '_global'
+        Source = '00/5f/global_ListPushFrontWrapper005f8f50_005f8f50.cpp'
+        TestSource = '00/5f/global_ListPushFrontWrapper005f8f50_005f8f50_test.cpp'
+        PassPattern = 'LISTPUSH_005f8f50_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f8f6f'
+        Module = '_global'
+        Source = '00/5f/global_ListPushFrontWrapper005f8f6f_005f8f6f.cpp'
+        TestSource = '00/5f/global_ListPushFrontWrapper005f8f6f_005f8f6f_test.cpp'
+        PassPattern = 'LISTPUSH_005f8f6f_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655eb4'
+        Module = '_global'
+        Source = '00/65/global_ListPushFrontWrapper00655eb4_00655eb4.cpp'
+        TestSource = '00/65/global_ListPushFrontWrapper00655eb4_00655eb4_test.cpp'
+        PassPattern = 'LISTPUSH_00655eb4_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655f36'
+        Module = '_global'
+        Source = '00/65/global_ListPushFrontWrapper00655f36_00655f36.cpp'
+        TestSource = '00/65/global_ListPushFrontWrapper00655f36_00655f36_test.cpp'
+        PassPattern = 'LISTPUSH_00655f36_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655f62'
+        Module = '_global'
+        Source = '00/65/global_ListPushFrontWrapper00655f62_00655f62.cpp'
+        TestSource = '00/65/global_ListPushFrontWrapper00655f62_00655f62_test.cpp'
+        PassPattern = 'LISTPUSH_00655f62_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065617d'
+        Module = '_global'
+        Source = '00/65/global_ListPushFrontWrapper0065617d_0065617d.cpp'
+        TestSource = '00/65/global_ListPushFrontWrapper0065617d_0065617d_test.cpp'
+        PassPattern = 'LISTPUSH_0065617d_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00656197'
+        Module = '_global'
+        Source = '00/65/global_ListPushFrontWrapper00656197_00656197.cpp'
+        TestSource = '00/65/global_ListPushFrontWrapper00656197_00656197_test.cpp'
+        PassPattern = 'LISTPUSH_00656197_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006561c8'
+        Module = '_global'
+        Source = '00/65/global_ListPushFrontWrapper006561c8_006561c8.cpp'
+        TestSource = '00/65/global_ListPushFrontWrapper006561c8_006561c8_test.cpp'
+        PassPattern = 'LISTPUSH_006561c8_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006567ec'
+        Module = '_global'
+        Source = '00/65/global_ListPushFrontWrapper006567ec_006567ec.cpp'
+        TestSource = '00/65/global_ListPushFrontWrapper006567ec_006567ec_test.cpp'
+        PassPattern = 'LISTPUSH_006567ec_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006604d1'
+        Module = '_global'
+        Source = '00/66/global_ListPushFrontWrapper006604d1_006604d1.cpp'
+        TestSource = '00/66/global_ListPushFrontWrapper006604d1_006604d1_test.cpp'
+        PassPattern = 'LISTPUSH_006604d1_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006604eb'
+        Module = '_global'
+        Source = '00/66/global_ListPushFrontWrapper006604eb_006604eb.cpp'
+        TestSource = '00/66/global_ListPushFrontWrapper006604eb_006604eb_test.cpp'
+        PassPattern = 'LISTPUSH_006604eb_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00660505'
+        Module = '_global'
+        Source = '00/66/global_ListPushFrontWrapper00660505_00660505.cpp'
+        TestSource = '00/66/global_ListPushFrontWrapper00660505_00660505_test.cpp'
+        PassPattern = 'LISTPUSH_00660505_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066051f'
+        Module = '_global'
+        Source = '00/66/global_ListPushFrontWrapper0066051f_0066051f.cpp'
+        TestSource = '00/66/global_ListPushFrontWrapper0066051f_0066051f_test.cpp'
+        PassPattern = 'LISTPUSH_0066051f_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00660539'
+        Module = '_global'
+        Source = '00/66/global_ListPushFrontWrapper00660539_00660539.cpp'
+        TestSource = '00/66/global_ListPushFrontWrapper00660539_00660539_test.cpp'
+        PassPattern = 'LISTPUSH_00660539_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00660553'
+        Module = '_global'
+        Source = '00/66/global_ListPushFrontWrapper00660553_00660553.cpp'
+        TestSource = '00/66/global_ListPushFrontWrapper00660553_00660553_test.cpp'
+        PassPattern = 'LISTPUSH_00660553_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066056d'
+        Module = '_global'
+        Source = '00/66/global_ListPushFrontWrapper0066056d_0066056d.cpp'
+        TestSource = '00/66/global_ListPushFrontWrapper0066056d_0066056d_test.cpp'
+        PassPattern = 'LISTPUSH_0066056d_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00660587'
+        Module = '_global'
+        Source = '00/66/global_ListPushFrontWrapper00660587_00660587.cpp'
+        TestSource = '00/66/global_ListPushFrontWrapper00660587_00660587_test.cpp'
+        PassPattern = 'LISTPUSH_00660587_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006605a1'
+        Module = '_global'
+        Source = '00/66/global_ListPushFrontWrapper006605a1_006605a1.cpp'
+        TestSource = '00/66/global_ListPushFrontWrapper006605a1_006605a1_test.cpp'
+        PassPattern = 'LISTPUSH_006605a1_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006605bb'
+        Module = '_global'
+        Source = '00/66/global_ListPushFrontWrapper006605bb_006605bb.cpp'
+        TestSource = '00/66/global_ListPushFrontWrapper006605bb_006605bb_test.cpp'
+        PassPattern = 'LISTPUSH_006605bb_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00660fc9'
+        Module = '_global'
+        Source = '00/66/global_ListPushFrontWrapper00660fc9_00660fc9.cpp'
+        TestSource = '00/66/global_ListPushFrontWrapper00660fc9_00660fc9_test.cpp'
+        PassPattern = 'LISTPUSH_00660fc9_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044bff0'
+        Module = 'std::vector'
+        Source = '00/44/stdvector_pushback_0044bff0.cpp'
+        TestSource = '00/44/stdvector_pushback_0044bff0_test.cpp'
+        PassPattern = 'STD_VECTOR_PUSH_BACK_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042ab58'
+        Module = 'std::list'
+        Source = '00/42/stdlist_list_0042ab58.cpp'
+        TestSource = '00/42/stdlist_list_0042ab58_test.cpp'
+        PassPattern = 'CIRCULARINIT_0042ab58_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042abaf'
+        Module = 'std::list'
+        Source = '00/42/stdlist_list_0042abaf.cpp'
+        TestSource = '00/42/stdlist_list_0042abaf_test.cpp'
+        PassPattern = 'CIRCULARINIT_0042abaf_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00493bc2'
+        Module = '_global'
+        Source = '00/49/global_ListNodeCreateCircularSentinel_00493bc2.cpp'
+        TestSource = '00/49/global_ListNodeCreateCircularSentinel_00493bc2_test.cpp'
+        PassPattern = 'CIRCULARINIT_00493bc2_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004db60e'
+        Module = '_global'
+        Source = '00/4d/global_ListNodeInitSelfLinked10_004db60e.cpp'
+        TestSource = '00/4d/global_ListNodeInitSelfLinked10_004db60e_test.cpp'
+        PassPattern = 'CIRCULARINIT_004db60e_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004db674'
+        Module = '_global'
+        Source = '00/4d/global_ListNodeInitSelfLinked34_004db674.cpp'
+        TestSource = '00/4d/global_ListNodeInitSelfLinked34_004db674_test.cpp'
+        PassPattern = 'CIRCULARINIT_004db674_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004db72d'
+        Module = '_global'
+        Source = '00/4d/global_ListNodeInitSelfLinked14_004db72d.cpp'
+        TestSource = '00/4d/global_ListNodeInitSelfLinked14_004db72d_test.cpp'
+        PassPattern = 'CIRCULARINIT_004db72d_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053c94a'
+        Module = '_global'
+        Source = '00/53/global_ListSentinelInit_0053c94a.cpp'
+        TestSource = '00/53/global_ListSentinelInit_0053c94a_test.cpp'
+        PassPattern = 'CIRCULARINIT_0053c94a_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053c9a1'
+        Module = '_global'
+        Source = '00/53/global_StdListInitialize_0053c9a1.cpp'
+        TestSource = '00/53/global_StdListInitialize_0053c9a1_test.cpp'
+        PassPattern = 'CIRCULARINIT_0053c9a1_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005792bf'
+        Module = '_global'
+        Source = '00/57/global_CircularListInitialize005792bf_005792bf.cpp'
+        TestSource = '00/57/global_CircularListInitialize005792bf_005792bf_test.cpp'
+        PassPattern = 'CIRCULARINIT_005792bf_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057fda2'
+        Module = '_global'
+        Source = '00/57/global_CircularListInitialize0057fda2_0057fda2.cpp'
+        TestSource = '00/57/global_CircularListInitialize0057fda2_0057fda2_test.cpp'
+        PassPattern = 'CIRCULARINIT_0057fda2_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005931da'
+        Module = '_global'
+        Source = '00/59/global_DoublyLinkedListInitHead_005931da.cpp'
+        TestSource = '00/59/global_DoublyLinkedListInitHead_005931da_test.cpp'
+        PassPattern = 'CIRCULARINIT_005931da_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059326d'
+        Module = '_global'
+        Source = '00/59/global_ListHeadInitLarge_0059326d.cpp'
+        TestSource = '00/59/global_ListHeadInitLarge_0059326d_test.cpp'
+        PassPattern = 'CIRCULARINIT_0059326d_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00593288'
+        Module = '_global'
+        Source = '00/59/global_ListHeadInitLarge_00593288.cpp'
+        TestSource = '00/59/global_ListHeadInitLarge_00593288_test.cpp'
+        PassPattern = 'CIRCULARINIT_00593288_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bab9d'
+        Module = '_global'
+        Source = '00/5b/global_DoublyLinkedListInitializeEmpty12Bytes_005bab9d.cpp'
+        TestSource = '00/5b/global_DoublyLinkedListInitializeEmpty12Bytes_005bab9d_test.cpp'
+        PassPattern = 'CIRCULARINIT_005bab9d_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d84b6'
+        Module = '_global'
+        Source = '00/5d/global_DoublyLinkedListInitSentinelNode_005d84b6.cpp'
+        TestSource = '00/5d/global_DoublyLinkedListInitSentinelNode_005d84b6_test.cpp'
+        PassPattern = 'CIRCULARINIT_005d84b6_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f88ed'
+        Module = '_global'
+        Source = '00/5f/global_stdCircularListConstruct_005f88ed.cpp'
+        TestSource = '00/5f/global_stdCircularListConstruct_005f88ed_test.cpp'
+        PassPattern = 'CIRCULARINIT_005f88ed_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f8944'
+        Module = '_global'
+        Source = '00/5f/global_StdListConstruct005f8944_005f8944.cpp'
+        TestSource = '00/5f/global_StdListConstruct005f8944_005f8944_test.cpp'
+        PassPattern = 'CIRCULARINIT_005f8944_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655ad8'
+        Module = '_global'
+        Source = '00/65/global_stdlistallocatesentinel_00655ad8.cpp'
+        TestSource = '00/65/global_stdlistallocatesentinel_00655ad8_test.cpp'
+        PassPattern = 'CIRCULARINIT_00655ad8_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655b18'
+        Module = '_global'
+        Source = '00/65/global_stdlistallocatesentinel0x14_00655b18.cpp'
+        TestSource = '00/65/global_stdlistallocatesentinel0x14_00655b18_test.cpp'
+        PassPattern = 'CIRCULARINIT_00655b18_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655b33'
+        Module = '_global'
+        Source = '00/65/global_stdlistallocatesentinel0x10_00655b33.cpp'
+        TestSource = '00/65/global_stdlistallocatesentinel0x10_00655b33_test.cpp'
+        PassPattern = 'CIRCULARINIT_00655b33_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655b4e'
+        Module = '_global'
+        Source = '00/65/global_stdlistallocatesentinel0x34_00655b4e.cpp'
+        TestSource = '00/65/global_stdlistallocatesentinel0x34_00655b4e_test.cpp'
+        PassPattern = 'CIRCULARINIT_00655b4e_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655b69'
+        Module = '_global'
+        Source = '00/65/global_stdlistallocatesentinel0x2c_00655b69.cpp'
+        TestSource = '00/65/global_stdlistallocatesentinel0x2c_00655b69_test.cpp'
+        PassPattern = 'CIRCULARINIT_00655b69_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655ba9'
+        Module = '_global'
+        Source = '00/65/global_stdlistallocatesentinel0x142_00655ba9.cpp'
+        TestSource = '00/65/global_stdlistallocatesentinel0x142_00655ba9_test.cpp'
+        PassPattern = 'CIRCULARINIT_00655ba9_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655be9'
+        Module = '_global'
+        Source = '00/65/global_stdlistallocatesentinel0x143_00655be9.cpp'
+        TestSource = '00/65/global_stdlistallocatesentinel0x143_00655be9_test.cpp'
+        PassPattern = 'CIRCULARINIT_00655be9_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f1ad'
+        Module = '_global'
+        Source = '00/65/global_DoublyLinkedListInitializeEmpty_0065f1ad.cpp'
+        TestSource = '00/65/global_DoublyLinkedListInitializeEmpty_0065f1ad_test.cpp'
+        PassPattern = 'CIRCULARINIT_0065f1ad_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f1df'
+        Module = '_global'
+        Source = '00/65/global_DoublyLinkedListInitializeEmpty_0065f1df.cpp'
+        TestSource = '00/65/global_DoublyLinkedListInitializeEmpty_0065f1df_test.cpp'
+        PassPattern = 'CIRCULARINIT_0065f1df_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f211'
+        Module = '_global'
+        Source = '00/65/global_DoublyLinkedListInitializeEmpty_0065f211.cpp'
+        TestSource = '00/65/global_DoublyLinkedListInitializeEmpty_0065f211_test.cpp'
+        PassPattern = 'CIRCULARINIT_0065f211_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f243'
+        Module = '_global'
+        Source = '00/65/global_DoublyLinkedListInitializeEmpty_0065f243.cpp'
+        TestSource = '00/65/global_DoublyLinkedListInitializeEmpty_0065f243_test.cpp'
+        PassPattern = 'CIRCULARINIT_0065f243_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f25e'
+        Module = '_global'
+        Source = '00/65/global_DoublyLinkedListInitializeEmpty_0065f25e.cpp'
+        TestSource = '00/65/global_DoublyLinkedListInitializeEmpty_0065f25e_test.cpp'
+        PassPattern = 'CIRCULARINIT_0065f25e_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f279'
+        Module = '_global'
+        Source = '00/65/global_DoublyLinkedListInitializeEmpty_0065f279.cpp'
+        TestSource = '00/65/global_DoublyLinkedListInitializeEmpty_0065f279_test.cpp'
+        PassPattern = 'CIRCULARINIT_0065f279_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f294'
+        Module = '_global'
+        Source = '00/65/global_DoublyLinkedListInitializeEmpty_0065f294.cpp'
+        TestSource = '00/65/global_DoublyLinkedListInitializeEmpty_0065f294_test.cpp'
+        PassPattern = 'CIRCULARINIT_0065f294_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f2af'
+        Module = '_global'
+        Source = '00/65/global_DoublyLinkedListInitializeEmpty_0065f2af.cpp'
+        TestSource = '00/65/global_DoublyLinkedListInitializeEmpty_0065f2af_test.cpp'
+        PassPattern = 'CIRCULARINIT_0065f2af_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f2ca'
+        Module = '_global'
+        Source = '00/65/global_DoublyLinkedListInitializeEmpty_0065f2ca.cpp'
+        TestSource = '00/65/global_DoublyLinkedListInitializeEmpty_0065f2ca_test.cpp'
+        PassPattern = 'CIRCULARINIT_0065f2ca_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f2e5'
+        Module = '_global'
+        Source = '00/65/global_DoublyLinkedListInitializeEmpty_0065f2e5.cpp'
+        TestSource = '00/65/global_DoublyLinkedListInitializeEmpty_0065f2e5_test.cpp'
+        PassPattern = 'CIRCULARINIT_0065f2e5_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006700f0'
+        Module = 'CTCCoopSpirit'
+        Source = '00/67/CTCCoopSpirit_OnCreate_006700f0.cpp'
+        TestSource = '00/67/CTCCoopSpirit_OnCreate_006700f0_test.cpp'
+        PassPattern = 'COOP_SPIRIT_ONCREATE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066ff20'
+        Module = 'CTCCoopSpirit'
+        Source = '00/66/CTCCoopSpirit_SwapToHero_0066ff20.cpp'
+        TestSource = '00/66/CTCCoopSpirit_SwapToHero_0066ff20_test.cpp'
+        PassPattern = 'COOP_SPIRIT_SWAP_TO_HERO_PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a89d0'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_GetAllCreaturesExcludingHero_008a89d0.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetAllCreaturesExcludingHero_008a89d0_test.cpp'
+        PassPattern = 'GET_ALL_CREATURES_EXCLUDING_HERO_PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a9c40'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_GetAllThingsWithDefNameByDistanceFrom_008a9c40.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetAllThingsWithDefNameByDistanceFrom_008a9c40_test.cpp'
+        PassPattern = 'GET_THINGS_BY_DEF_DISTANCE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a76f30'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_IsAreaBlockedByLines_00a76f30.cpp'
+        TestSource = '00/a7/CNavQuadTree_IsAreaBlockedByLines_00a76f30_test.cpp'
+        PassPattern = 'NAV_AREA_BLOCKED_BY_LINES_PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a86c0'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_GetAllCreaturesInAreaWithScriptName_008a86c0.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetAllCreaturesInAreaWithScriptName_008a86c0_test.cpp'
+        PassPattern = 'GET_CREATURES_AREA_SCRIPT_NAME_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a80360'
+        Module = '_global'
+        Source = '00/a8/global_VectorConstructInitializedC2DLineF_00a80360.cpp'
+        TestSource = '00/a8/global_VectorConstructInitializedC2DLineF_00a80360_test.cpp'
+        PassPattern = 'VECTOR_C2DLINEF_CONSTRUCT_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004368e0'
+        Module = '_global'
+        Source = '00/43/global_StdListConstruct004368e0_004368e0.cpp'
+        TestSource = '00/43/global_StdListConstruct004368e0_004368e0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_004368e0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004369e0'
+        Module = '_global'
+        Source = '00/43/global_StdListConstruct004369e0_004369e0.cpp'
+        TestSource = '00/43/global_StdListConstruct004369e0_004369e0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_004369e0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044b950'
+        Module = '_global'
+        Source = '00/44/global_StdListConstruct0044b950_0044b950.cpp'
+        TestSource = '00/44/global_StdListConstruct0044b950_0044b950_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0044b950_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044b9f0'
+        Module = '_global'
+        Source = '00/44/global_StdListConstruct0044b9f0_0044b9f0.cpp'
+        TestSource = '00/44/global_StdListConstruct0044b9f0_0044b9f0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0044b9f0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ab470'
+        Module = '_global'
+        Source = '00/4a/global_ListNodeAllocateSelfLinked_004ab470.cpp'
+        TestSource = '00/4a/global_ListNodeAllocateSelfLinked_004ab470_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_004ab470_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ab4d0'
+        Module = '_global'
+        Source = '00/4a/global_ListSentinelDefaultConstruct004ab4d0_004ab4d0.cpp'
+        TestSource = '00/4a/global_ListSentinelDefaultConstruct004ab4d0_004ab4d0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_004ab4d0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ac030'
+        Module = '_global'
+        Source = '00/4a/global_DListInitEmpty_004ac030.cpp'
+        TestSource = '00/4a/global_DListInitEmpty_004ac030_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_004ac030_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ac060'
+        Module = '_global'
+        Source = '00/4a/global_ListNodeAllocateSelfLinkedRegionLoad_004ac060.cpp'
+        TestSource = '00/4a/global_ListNodeAllocateSelfLinkedRegionLoad_004ac060_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_004ac060_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c3530'
+        Module = '_global'
+        Source = '00/4c/global_StdListInitialize_004c3530.cpp'
+        TestSource = '00/4c/global_StdListInitialize_004c3530_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_004c3530_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c3e10'
+        Module = '_global'
+        Source = '00/4c/global_StdListInitialize_004c3e10.cpp'
+        TestSource = '00/4c/global_StdListInitialize_004c3e10_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_004c3e10_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004cc200'
+        Module = '_global'
+        Source = '00/4c/global_StdListConstruct004cc200_004cc200.cpp'
+        TestSource = '00/4c/global_StdListConstruct004cc200_004cc200_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_004cc200_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004cc800'
+        Module = '_global'
+        Source = '00/4c/global_StdListConstruct004cc800_004cc800.cpp'
+        TestSource = '00/4c/global_StdListConstruct004cc800_004cc800_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_004cc800_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005128f0'
+        Module = '_global'
+        Source = '00/51/global_DListInit0xc_005128f0.cpp'
+        TestSource = '00/51/global_DListInit0xc_005128f0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_005128f0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00514300'
+        Module = '_global'
+        Source = '00/51/global_DListInit0xc_00514300.cpp'
+        TestSource = '00/51/global_DListInit0xc_00514300_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00514300_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005150c0'
+        Module = '_global'
+        Source = '00/51/global_StdListInitializeEmpty_005150c0.cpp'
+        TestSource = '00/51/global_StdListInitializeEmpty_005150c0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_005150c0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052d5a0'
+        Module = '_global'
+        Source = '00/52/global_StdListInitialize_0052d5a0.cpp'
+        TestSource = '00/52/global_StdListInitialize_0052d5a0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0052d5a0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052d620'
+        Module = '_global'
+        Source = '00/52/global_StdListInitialize_0052d620.cpp'
+        TestSource = '00/52/global_StdListInitialize_0052d620_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0052d620_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00554fa0'
+        Module = '_global'
+        Source = '00/55/global_CircularLinkedListInitializeSmall_00554fa0.cpp'
+        TestSource = '00/55/global_CircularLinkedListInitializeSmall_00554fa0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00554fa0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00555040'
+        Module = '_global'
+        Source = '00/55/global_CircularLinkedListInitializeSmall_00555040.cpp'
+        TestSource = '00/55/global_CircularLinkedListInitializeSmall_00555040_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00555040_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00557660'
+        Module = '_global'
+        Source = '00/55/global_CircularLinkedListInitializeSmall_00557660.cpp'
+        TestSource = '00/55/global_CircularLinkedListInitializeSmall_00557660_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00557660_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00557740'
+        Module = '_global'
+        Source = '00/55/global_CircularLinkedListInitializeSmall_00557740.cpp'
+        TestSource = '00/55/global_CircularLinkedListInitializeSmall_00557740_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00557740_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00558a80'
+        Module = '_global'
+        Source = '00/55/global_CircularLinkedListInitializeSmall_00558a80.cpp'
+        TestSource = '00/55/global_CircularLinkedListInitializeSmall_00558a80_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00558a80_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00558ae0'
+        Module = '_global'
+        Source = '00/55/global_CircularLinkedListInitializeSmall_00558ae0.cpp'
+        TestSource = '00/55/global_CircularLinkedListInitializeSmall_00558ae0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00558ae0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055c2e0'
+        Module = '_global'
+        Source = '00/55/global_CircularLinkedListInitializeSmall_0055c2e0.cpp'
+        TestSource = '00/55/global_CircularLinkedListInitializeSmall_0055c2e0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0055c2e0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055c390'
+        Module = '_global'
+        Source = '00/55/global_CircularLinkedListInitializeSmall_0055c390.cpp'
+        TestSource = '00/55/global_CircularLinkedListInitializeSmall_0055c390_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0055c390_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00615340'
+        Module = '_global'
+        Source = '00/61/global_StdListInitEmpty00615340_00615340.cpp'
+        TestSource = '00/61/global_StdListInitEmpty00615340_00615340_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00615340_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006153a0'
+        Module = '_global'
+        Source = '00/61/global_StdListInitEmpty006153a0_006153a0.cpp'
+        TestSource = '00/61/global_StdListInitEmpty006153a0_006153a0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_006153a0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00615400'
+        Module = '_global'
+        Source = '00/61/global_StdListInitEmpty00615400_00615400.cpp'
+        TestSource = '00/61/global_StdListInitEmpty00615400_00615400_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00615400_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00615460'
+        Module = '_global'
+        Source = '00/61/global_StdListInitEmpty00615460_00615460.cpp'
+        TestSource = '00/61/global_StdListInitEmpty00615460_00615460_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00615460_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006154c0'
+        Module = '_global'
+        Source = '00/61/global_StdListInitEmpty006154c0_006154c0.cpp'
+        TestSource = '00/61/global_StdListInitEmpty006154c0_006154c0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_006154c0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00615520'
+        Module = '_global'
+        Source = '00/61/global_DoublyLinkedListInitializeHead_00615520.cpp'
+        TestSource = '00/61/global_DoublyLinkedListInitializeHead_00615520_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00615520_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006167f0'
+        Module = '_global'
+        Source = '00/61/global_StdListInitEmpty006167f0_006167f0.cpp'
+        TestSource = '00/61/global_StdListInitEmpty006167f0_006167f0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_006167f0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00616820'
+        Module = '_global'
+        Source = '00/61/global_StdListInitEmpty00616820_00616820.cpp'
+        TestSource = '00/61/global_StdListInitEmpty00616820_00616820_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00616820_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00616850'
+        Module = '_global'
+        Source = '00/61/global_StdListInitEmpty00616850_00616850.cpp'
+        TestSource = '00/61/global_StdListInitEmpty00616850_00616850_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00616850_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00616880'
+        Module = '_global'
+        Source = '00/61/global_StdListInitEmpty00616880_00616880.cpp'
+        TestSource = '00/61/global_StdListInitEmpty00616880_00616880_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00616880_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006168b0'
+        Module = '_global'
+        Source = '00/61/global_StdListInitEmpty006168b0_006168b0.cpp'
+        TestSource = '00/61/global_StdListInitEmpty006168b0_006168b0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_006168b0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006168e0'
+        Module = '_global'
+        Source = '00/61/global_StdListInitEmpty006168e0_006168e0.cpp'
+        TestSource = '00/61/global_StdListInitEmpty006168e0_006168e0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_006168e0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063f340'
+        Module = '_global'
+        Source = '00/63/global_StdListInitEmpty0063f340_0063f340.cpp'
+        TestSource = '00/63/global_StdListInitEmpty0063f340_0063f340_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0063f340_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063f450'
+        Module = '_global'
+        Source = '00/63/global_StdListInitEmpty0063f450_0063f450.cpp'
+        TestSource = '00/63/global_StdListInitEmpty0063f450_0063f450_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0063f450_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067aeb0'
+        Module = '_global'
+        Source = '00/67/global_StdListInitEmpty0067aeb0_0067aeb0.cpp'
+        TestSource = '00/67/global_StdListInitEmpty0067aeb0_0067aeb0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0067aeb0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067b570'
+        Module = '_global'
+        Source = '00/67/global_StdListInitEmpty0067b570_0067b570.cpp'
+        TestSource = '00/67/global_StdListInitEmpty0067b570_0067b570_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0067b570_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00685ba0'
+        Module = '_global'
+        Source = '00/68/global_StdListInitEmpty00685ba0_00685ba0.cpp'
+        TestSource = '00/68/global_StdListInitEmpty00685ba0_00685ba0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00685ba0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006860c0'
+        Module = '_global'
+        Source = '00/68/global_DoubleLinkedListInitializeEmpty_006860c0.cpp'
+        TestSource = '00/68/global_DoubleLinkedListInitializeEmpty_006860c0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_006860c0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f09b0'
+        Module = '_global'
+        Source = '00/6f/global_StdListInitEmpty006f09b0_006f09b0.cpp'
+        TestSource = '00/6f/global_StdListInitEmpty006f09b0_006f09b0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_006f09b0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f18f0'
+        Module = '_global'
+        Source = '00/6f/global_ListHeadInitCircular0xc006f18f0_006f18f0.cpp'
+        TestSource = '00/6f/global_ListHeadInitCircular0xc006f18f0_006f18f0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_006f18f0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fe640'
+        Module = '_global'
+        Source = '00/6f/global_stdlistctor_006fe640.cpp'
+        TestSource = '00/6f/global_stdlistctor_006fe640_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_006fe640_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fe6e0'
+        Module = '_global'
+        Source = '00/6f/global_stdlistctor_006fe6e0.cpp'
+        TestSource = '00/6f/global_stdlistctor_006fe6e0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_006fe6e0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00710040'
+        Module = '_global'
+        Source = '00/71/global_stdlistctor_00710040.cpp'
+        TestSource = '00/71/global_stdlistctor_00710040_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00710040_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00711f00'
+        Module = '_global'
+        Source = '00/71/global_stdlistctor_00711f00.cpp'
+        TestSource = '00/71/global_stdlistctor_00711f00_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00711f00_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075f560'
+        Module = '_global'
+        Source = '00/75/global_DoublyLinkedListInit_0075f560.cpp'
+        TestSource = '00/75/global_DoublyLinkedListInit_0075f560_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0075f560_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075f780'
+        Module = '_global'
+        Source = '00/75/global_ListHeadInitCircular0xc0075f780_0075f780.cpp'
+        TestSource = '00/75/global_ListHeadInitCircular0xc0075f780_0075f780_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0075f780_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00784fb0'
+        Module = '_global'
+        Source = '00/78/global_ListHeadInitCircular0xc00784fb0_00784fb0.cpp'
+        TestSource = '00/78/global_ListHeadInitCircular0xc00784fb0_00784fb0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00784fb0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00785d00'
+        Module = '_global'
+        Source = '00/78/global_ListHeadInitCircular0xc00785d00_00785d00.cpp'
+        TestSource = '00/78/global_ListHeadInitCircular0xc00785d00_00785d00_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00785d00_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00792220'
+        Module = '_global'
+        Source = '00/79/global_ListHeadInitCircular0xc00792220_00792220.cpp'
+        TestSource = '00/79/global_ListHeadInitCircular0xc00792220_00792220_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00792220_PASS'
+    }
+    [pscustomobject]@{
+        Address = '007926c0'
+        Module = '_global'
+        Source = '00/79/global_RBTreeAllocateNode_007926c0.cpp'
+        TestSource = '00/79/global_RBTreeAllocateNode_007926c0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_007926c0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a6170'
+        Module = '_global'
+        Source = '00/7a/global_ListHeadInitCircular0xc007a6170_007a6170.cpp'
+        TestSource = '00/7a/global_ListHeadInitCircular0xc007a6170_007a6170_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_007a6170_PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a6320'
+        Module = '_global'
+        Source = '00/7a/global_ListHeadInitCircular0xc007a6320_007a6320.cpp'
+        TestSource = '00/7a/global_ListHeadInitCircular0xc007a6320_007a6320_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_007a6320_PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e6da0'
+        Module = '_global'
+        Source = '00/7e/global_stdlistInitEmpty_007e6da0.cpp'
+        TestSource = '00/7e/global_stdlistInitEmpty_007e6da0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_007e6da0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e6f50'
+        Module = '_global'
+        Source = '00/7e/global_stdlistInitEmpty_007e6f50.cpp'
+        TestSource = '00/7e/global_stdlistInitEmpty_007e6f50_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_007e6f50_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00814860'
+        Module = '_global'
+        Source = '00/81/global_stdlistAllocateNode_00814860.cpp'
+        TestSource = '00/81/global_stdlistAllocateNode_00814860_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00814860_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00814980'
+        Module = '_global'
+        Source = '00/81/global_stdlistAllocateNode_00814980.cpp'
+        TestSource = '00/81/global_stdlistAllocateNode_00814980_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00814980_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00827e20'
+        Module = '_global'
+        Source = '00/82/global_ListHeadInitCircular0xc00827e20_00827e20.cpp'
+        TestSource = '00/82/global_ListHeadInitCircular0xc00827e20_00827e20_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00827e20_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00828c20'
+        Module = '_global'
+        Source = '00/82/global_ListHeadInitCircular0xc00828c20_00828c20.cpp'
+        TestSource = '00/82/global_ListHeadInitCircular0xc00828c20_00828c20_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00828c20_PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f9f30'
+        Module = '_global'
+        Source = '00/8f/global_ListSentinelCtorszc008f9f30_008f9f30.cpp'
+        TestSource = '00/8f/global_ListSentinelCtorszc008f9f30_008f9f30_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_008f9f30_PASS'
+    }
+    [pscustomobject]@{
+        Address = '008fa040'
+        Module = '_global'
+        Source = '00/8f/global_ListSentinelCtorszc008fa040_008fa040.cpp'
+        TestSource = '00/8f/global_ListSentinelCtorszc008fa040_008fa040_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_008fa040_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090b730'
+        Module = '_global'
+        Source = '00/90/global_LinkedListInitializeTiny_0090b730.cpp'
+        TestSource = '00/90/global_LinkedListInitializeTiny_0090b730_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0090b730_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090b7b0'
+        Module = '_global'
+        Source = '00/90/global_LinkedListInitializeTiny_0090b7b0.cpp'
+        TestSource = '00/90/global_LinkedListInitializeTiny_0090b7b0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0090b7b0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090b920'
+        Module = '_global'
+        Source = '00/90/global_LinkedListInitializeTiny_0090b920.cpp'
+        TestSource = '00/90/global_LinkedListInitializeTiny_0090b920_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0090b920_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090b950'
+        Module = '_global'
+        Source = '00/90/global_LinkedListInitializeTiny_0090b950.cpp'
+        TestSource = '00/90/global_LinkedListInitializeTiny_0090b950_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0090b950_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091b8f0'
+        Module = '_global'
+        Source = '00/91/global_LinkedListInitializeTiny_0091b8f0.cpp'
+        TestSource = '00/91/global_LinkedListInitializeTiny_0091b8f0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0091b8f0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091b990'
+        Module = '_global'
+        Source = '00/91/global_LinkedListInitializeTiny_0091b990.cpp'
+        TestSource = '00/91/global_LinkedListInitializeTiny_0091b990_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_0091b990_PASS'
+    }
+    [pscustomobject]@{
+        Address = '009368f0'
+        Module = '_global'
+        Source = '00/93/global_LinkedListInitializeTiny_009368f0.cpp'
+        TestSource = '00/93/global_LinkedListInitializeTiny_009368f0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_009368f0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00936a00'
+        Module = '_global'
+        Source = '00/93/global_LinkedListInitializeTiny_00936a00.cpp'
+        TestSource = '00/93/global_LinkedListInitializeTiny_00936a00_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00936a00_PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c2200'
+        Module = '_global'
+        Source = '00/9c/global_ListSentinelCtorszc009c2200_009c2200.cpp'
+        TestSource = '00/9c/global_ListSentinelCtorszc009c2200_009c2200_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_009c2200_PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c2540'
+        Module = '_global'
+        Source = '00/9c/global_ListSentinelCtorszc009c2540_009c2540.cpp'
+        TestSource = '00/9c/global_ListSentinelCtorszc009c2540_009c2540_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_009c2540_PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c67b0'
+        Module = '_global'
+        Source = '00/9c/global_ListSentinelCtorszc009c67b0_009c67b0.cpp'
+        TestSource = '00/9c/global_ListSentinelCtorszc009c67b0_009c67b0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_009c67b0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c6b60'
+        Module = '_global'
+        Source = '00/9c/global_ListSentinelCtorszc009c6b60_009c6b60.cpp'
+        TestSource = '00/9c/global_ListSentinelCtorszc009c6b60_009c6b60_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_009c6b60_PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f97a0'
+        Module = '_global'
+        Source = '00/9f/global_DoublyLinkedListInitNode12bytes_009f97a0.cpp'
+        TestSource = '00/9f/global_DoublyLinkedListInitNode12bytes_009f97a0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_009f97a0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f9870'
+        Module = '_global'
+        Source = '00/9f/global_DoublyLinkedListInitNode12bytesAlt_009f9870.cpp'
+        TestSource = '00/9f/global_DoublyLinkedListInitNode12bytesAlt_009f9870_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_009f9870_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a212d0'
+        Module = '_global'
+        Source = '00/a2/global_DoublyLinkedListInitNode12bytesAlt2_00a212d0.cpp'
+        TestSource = '00/a2/global_DoublyLinkedListInitNode12bytesAlt2_00a212d0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a212d0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a21370'
+        Module = '_global'
+        Source = '00/a2/global_DoublyLinkedListInitNode12bytesAlt3_00a21370.cpp'
+        TestSource = '00/a2/global_DoublyLinkedListInitNode12bytesAlt3_00a21370_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a21370_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a21410'
+        Module = '_global'
+        Source = '00/a2/global_DoublyLinkedListInitNode12bytesAlt4_00a21410.cpp'
+        TestSource = '00/a2/global_DoublyLinkedListInitNode12bytesAlt4_00a21410_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a21410_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a21860'
+        Module = '_global'
+        Source = '00/a2/global_DoublyLinkedListInitNode12bytes_00a21860.cpp'
+        TestSource = '00/a2/global_DoublyLinkedListInitNode12bytes_00a21860_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a21860_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a218c0'
+        Module = '_global'
+        Source = '00/a2/global_DoublyLinkedListInitNode12bytesv2_00a218c0.cpp'
+        TestSource = '00/a2/global_DoublyLinkedListInitNode12bytesv2_00a218c0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a218c0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a21920'
+        Module = '_global'
+        Source = '00/a2/global_DoublyLinkedListInitNode12bytesv3_00a21920.cpp'
+        TestSource = '00/a2/global_DoublyLinkedListInitNode12bytesv3_00a21920_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a21920_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a37680'
+        Module = '_global'
+        Source = '00/a3/global_DoublyLinkedListInitNode12bytesv4_00a37680.cpp'
+        TestSource = '00/a3/global_DoublyLinkedListInitNode12bytesv4_00a37680_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a37680_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a37760'
+        Module = '_global'
+        Source = '00/a3/global_DoublyLinkedListInitNode12bytesv5_00a37760.cpp'
+        TestSource = '00/a3/global_DoublyLinkedListInitNode12bytesv5_00a37760_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a37760_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3ff40'
+        Module = '_global'
+        Source = '00/a3/global_StdListDefaultCtora3ff40_00a3ff40.cpp'
+        TestSource = '00/a3/global_StdListDefaultCtora3ff40_00a3ff40_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a3ff40_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a40150'
+        Module = '_global'
+        Source = '00/a4/global_StdListDefaultCtora40150_00a40150.cpp'
+        TestSource = '00/a4/global_StdListDefaultCtora40150_00a40150_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a40150_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a47ed0'
+        Module = '_global'
+        Source = '00/a4/global_StdListDefaultCtora47ed0_00a47ed0.cpp'
+        TestSource = '00/a4/global_StdListDefaultCtora47ed0_00a47ed0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a47ed0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a47f30'
+        Module = '_global'
+        Source = '00/a4/global_StdListDefaultCtora47f30_00a47f30.cpp'
+        TestSource = '00/a4/global_StdListDefaultCtora47f30_00a47f30_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a47f30_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a7f4b0'
+        Module = '_global'
+        Source = '00/a7/global_StdListDefaultCtora7f4b0_00a7f4b0.cpp'
+        TestSource = '00/a7/global_StdListDefaultCtora7f4b0_00a7f4b0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a7f4b0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a7f550'
+        Module = '_global'
+        Source = '00/a7/global_StdListDefaultCtora7f550_00a7f550.cpp'
+        TestSource = '00/a7/global_StdListDefaultCtora7f550_00a7f550_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a7f550_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a80480'
+        Module = '_global'
+        Source = '00/a8/global_StdListDefaultCtora80480_00a80480.cpp'
+        TestSource = '00/a8/global_StdListDefaultCtora80480_00a80480_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a80480_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a80520'
+        Module = '_global'
+        Source = '00/a8/global_StdListDefaultCtora80520_00a80520.cpp'
+        TestSource = '00/a8/global_StdListDefaultCtora80520_00a80520_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00a80520_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af66f0'
+        Module = '_global'
+        Source = '00/af/global_StdListConstructaf66f0_00af66f0.cpp'
+        TestSource = '00/af/global_StdListConstructaf66f0_00af66f0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00af66f0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af6750'
+        Module = '_global'
+        Source = '00/af/global_StdListConstructaf6750_00af6750.cpp'
+        TestSource = '00/af/global_StdListConstructaf6750_00af6750_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00af6750_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af6bf0'
+        Module = '_global'
+        Source = '00/af/global_StdListConstructaf6bf0_00af6bf0.cpp'
+        TestSource = '00/af/global_StdListConstructaf6bf0_00af6bf0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00af6bf0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af6c40'
+        Module = '_global'
+        Source = '00/af/global_StdListConstructaf6c40_00af6c40.cpp'
+        TestSource = '00/af/global_StdListConstructaf6c40_00af6c40_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00af6c40_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b43b90'
+        Module = '_global'
+        Source = '00/b4/global_ListInitializeNode12Bytes_00b43b90.cpp'
+        TestSource = '00/b4/global_ListInitializeNode12Bytes_00b43b90_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00b43b90_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b43d00'
+        Module = '_global'
+        Source = '00/b4/global_ListInitializeNode12BytesAlt_00b43d00.cpp'
+        TestSource = '00/b4/global_ListInitializeNode12BytesAlt_00b43d00_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00b43d00_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b83170'
+        Module = '_global'
+        Source = '00/b8/global_ListInitializeNode12BytesSecondForm_00b83170.cpp'
+        TestSource = '00/b8/global_ListInitializeNode12BytesSecondForm_00b83170_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00b83170_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b83930'
+        Module = '_global'
+        Source = '00/b8/global_ListInitializeNode12BytesThirdForm_00b83930.cpp'
+        TestSource = '00/b8/global_ListInitializeNode12BytesThirdForm_00b83930_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00b83930_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdaa10'
+        Module = '_global'
+        Source = '00/bd/global_LinkedListInitializeSmall_00bdaa10.cpp'
+        TestSource = '00/bd/global_LinkedListInitializeSmall_00bdaa10_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00bdaa10_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdaaa0'
+        Module = '_global'
+        Source = '00/bd/global_StdListConstructbdaaa0_00bdaaa0.cpp'
+        TestSource = '00/bd/global_StdListConstructbdaaa0_00bdaaa0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00bdaaa0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdab30'
+        Module = '_global'
+        Source = '00/bd/global_StdListConstructbdab30_00bdab30.cpp'
+        TestSource = '00/bd/global_StdListConstructbdab30_00bdab30_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00bdab30_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdac50'
+        Module = '_global'
+        Source = '00/bd/global_StdListConstructbdac50_00bdac50.cpp'
+        TestSource = '00/bd/global_StdListConstructbdac50_00bdac50_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00bdac50_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdacc0'
+        Module = '_global'
+        Source = '00/bd/global_StdListConstructbdacc0_00bdacc0.cpp'
+        TestSource = '00/bd/global_StdListConstructbdacc0_00bdacc0_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00bdacc0_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdad30'
+        Module = '_global'
+        Source = '00/bd/global_StdListConstructbdad30_00bdad30.cpp'
+        TestSource = '00/bd/global_StdListConstructbdad30_00bdad30_test.cpp'
+        PassPattern = 'LIST_SENTINEL_CTOR_00bdad30_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a57bd0'
+        Module = 'C2DLineF'
+        Source = '00/a5/C2DLineF_IntersectsWith_00a57bd0.cpp'
+        TestSource = '00/a5/C2DLineF_IntersectsWith_00a57bd0_test.cpp'
+        PassPattern = 'C2DLINE_BOX_INTERSECTS_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00897bd0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_GetHeroHasChildren_00897bd0.cpp'
+        TestSource = '00/89/CGameScriptInterface_GetHeroHasChildren_00897bd0_test.cpp'
+        PassPattern = 'GET_HERO_HAS_CHILDREN_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00897c30'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_GetHeroHasMurderedWife_00897c30.cpp'
+        TestSource = '00/89/CGameScriptInterface_GetHeroHasMurderedWife_00897c30_test.cpp'
+        PassPattern = 'GET_HERO_HAS_MURDERED_WIFE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00897b70'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_GetHeroHasDivorcedMarriage_00897b70.cpp'
+        TestSource = '00/89/CGameScriptInterface_GetHeroHasDivorcedMarriage_00897b70_test.cpp'
+        PassPattern = 'GET_HERO_HAS_DIVORCED_MARRIAGE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00897b10'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_GetHeroHasCurrentMarriage_00897b10.cpp'
+        TestSource = '00/89/CGameScriptInterface_GetHeroHasCurrentMarriage_00897b10_test.cpp'
+        PassPattern = 'GET_HERO_HAS_CURRENT_MARRIAGE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00897aa0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_GetHeroHasMarried_00897aa0.cpp'
+        TestSource = '00/89/CGameScriptInterface_GetHeroHasMarried_00897aa0_test.cpp'
+        PassPattern = 'GET_HERO_HAS_MARRIED_PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a9610'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_SetThingAsConscious_008a9610.cpp'
+        TestSource = '00/8a/CGameScriptInterface_SetThingAsConscious_008a9610_test.cpp'
+        PassPattern = 'SET_THING_AS_CONSCIOUS_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089b4d0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_RemoveHeroHairstyle_0089b4d0.cpp'
+        TestSource = '00/89/CGameScriptInterface_RemoveHeroHairstyle_0089b4d0_test.cpp'
+        PassPattern = 'REMOVE_HERO_HAIRSTYLE_PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a1590'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_GetBestTimePairs_008a1590.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetBestTimePairs_008a1590_test.cpp'
+        PassPattern = 'GET_BEST_TIME_PAIRS_PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a15f0'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_GetBestTimeSorting_008a15f0.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetBestTimeSorting_008a15f0_test.cpp'
+        PassPattern = 'GET_BEST_TIME_SORTING_PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a17d0'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_GetBestTimeGuessTheAddition_008a17d0.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetBestTimeGuessTheAddition_008a17d0_test.cpp'
+        PassPattern = 'GET_BEST_TIME_ADDITION_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890750'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_AddLineToConversation_00890750.cpp'
+        TestSource = '00/89/CGameScriptInterface_AddLineToConversation_00890750_test.cpp'
+        PassPattern = 'FABLETLC_ADD_LINE_TO_CONVERSATION PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5f6a0'
+        Module = 'CStreamingFontBankStateBlock'
+        Source = '00/a5/CStreamingFontBankStateBlock_CreateCRC_00a5f6a0.cpp'
+        TestSource = '00/a5/CStreamingFontBankStateBlock_CreateCRC_00a5f6a0_test.cpp'
+        PassPattern = 'CRC_STATE_BLOCKS PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a62580'
+        Module = 'CShaderBankStateBlock'
+        Source = '00/a6/CShaderBankStateBlock_CreateCRC_00a62580.cpp'
+        TestSource = '00/a6/CShaderBankStateBlock_CreateCRC_00a62580_test.cpp'
+        PassPattern = 'CRC_STATE_BLOCKS PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a63890'
+        Module = 'CFontBankStateBlock'
+        Source = '00/a6/CFontBankStateBlock_CreateCRC_00a63890.cpp'
+        TestSource = '00/a6/CFontBankStateBlock_CreateCRC_00a63890_test.cpp'
+        PassPattern = 'CRC_STATE_BLOCKS PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e33a0'
+        Module = 'CLandscapeBackgroundSubNodeSplitBranch'
+        Source = '00/7e/CLandscapeBackgroundSubNodeSplitBranch_OnPostParentRelocation_007e33a0.cpp'
+        TestSource = '00/7e/CLandscapeBackgroundSubNodeSplitBranch_OnPostParentRelocation_007e33a0_test.cpp'
+        PassPattern = 'POST_PARENT_RELOCATION PASS'
+    }
+    [pscustomobject]@{
+        Address = '00416231'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_GetCurrentGameTime_00416231.cpp'
+        TestSource = '00/41/CMainGameComponent_GetCurrentGameTime_00416231_test.cpp'
+        PassPattern = 'CURRENT_GAME_TIME PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bf7b0'
+        Module = 'CAIStateGroup_BuyFromSeller'
+        Source = '00/6b/CAIStateGroupBuyFromSeller_BoughtSomething_006bf7b0.cpp'
+        TestSource = '00/6b/CAIStateGroupBuyFromSeller_BoughtSomething_006bf7b0_test.cpp'
+        PassPattern = 'BOUGHT_SOMETHING PASS'
+    }
+    [pscustomobject]@{
+        Address = '00749dd0'
+        Module = 'CTCCreatureGenerator'
+        Source = '00/74/CTCCreatureGenerator_SetAsActive_00749dd0.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_SetAsActive_00749dd0_test.cpp'
+        PassPattern = 'CREATURE_GENERATOR_ACTIVE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00747b00'
+        Module = 'CTCStealth'
+        Source = '00/74/CTCStealth_IsAvailableForAttack_00747b00.cpp'
+        TestSource = '00/74/CTCStealth_IsAvailableForAttack_00747b00_test.cpp'
+        PassPattern = 'STEALTH_ATTACK_AVAILABILITY PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bd090'
+        Module = 'CTCTrophy'
+        Source = '00/9b/CTCTrophy_OnShowTrophyInitialise_009bd090.cpp'
+        TestSource = '00/9b/CTCTrophy_OnShowTrophyInitialise_009bd090_test.cpp'
+        PassPattern = 'TROPHY_INITIALISE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caa6e0'
+        Module = 'CTexture'
+        Source = '00/ca/CTexture_Uninitialise_00caa6e0.cpp'
+        TestSource = '00/ca/CTexture_Uninitialise_00caa6e0_test.cpp'
+        PassPattern = 'TEXTURE_UNINITIALISE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cacd60'
+        Module = 'CTexture'
+        Source = '00/ca/CTexture_Uninitialise_00cacd60.cpp'
+        TestSource = '00/ca/CTexture_Uninitialise_00cacd60_test.cpp'
+        PassPattern = 'TEXTURE_UNINITIALISE PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f2010'
+        Module = 'GlobalCriticalSection'
+        Source = '00/9f/GlobalCriticalSection_LeaveSharedLock_009f2010.cpp'
+        TestSource = '00/9f/GlobalCriticalSection_LeaveSharedLock_009f2010_test.cpp'
+        PassPattern = 'LEAVE_SHARED_LOCK PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a5420'
+        Module = 'CBaseObjectPropertyForwarder'
+        Source = '00/7a/CBaseObjectPropertyForwarder_NotifyOwnerProperty150_007a5420.cpp'
+        TestSource = '00/7a/CBaseObjectPropertyForwarder_NotifyOwnerProperty150_007a5420_test.cpp'
+        PassPattern = 'NOTIFY_PROPERTY_150 PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cbee0'
+        Module = 'CBaseObjectPropertyForwarder'
+        Source = '00/7c/CBaseObjectPropertyForwarder_NotifyOwnerProperty136_007cbee0.cpp'
+        TestSource = '00/7c/CBaseObjectPropertyForwarder_NotifyOwnerProperty136_007cbee0_test.cpp'
+        PassPattern = 'NOTIFY_PROPERTY_136 PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084f1b0'
+        Module = 'CParticleMorphsAccessor'
+        Source = '00/84/CParticleMorphsAccessor_GetMorphEntryItem_0084f1b0.cpp'
+        TestSource = '00/84/CParticleMorphsAccessor_GetMorphEntryItem_0084f1b0_test.cpp'
+        PassPattern = 'GET_MORPH_ENTRY_ITEM PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd2790'
+        Module = '_List_const_iterator_CVsyncCallbackTimer_CPendingQuery'
+        Source = '00/cd/ListconstiteratorCVsyncCallbackTimerCPendingQuery_GetPredecessorIterator_00cd2790.cpp'
+        TestSource = '00/cd/ListconstiteratorCVsyncCallbackTimerCPendingQuery_GetPredecessorIterator_00cd2790_test.cpp'
+        PassPattern = 'PREDECESSOR_ITERATOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '004159e0'
+        Module = 'CGameEvent'
+        Source = '00/41/CGameEvent_AddUBYTE_004159e0.cpp'
+        TestSource = '00/41/CGameEvent_AddUBYTE_004159e0_test.cpp'
+        PassPattern = 'ADD_UBYTE PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e72a0'
+        Module = 'CGameScriptInterface'
+        Source = '00/6e/CGameScriptInterface_Validate_006e72a0.cpp'
+        TestSource = '00/6e/CGameScriptInterface_Validate_006e72a0_test.cpp'
+        PassPattern = 'VALIDATE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00728460'
+        Module = 'CTCRandomAppearanceMorph'
+        Source = '00/72/CTCRandomAppearanceMorph_AddToInterface_00728460.cpp'
+        TestSource = '00/72/CTCRandomAppearanceMorph_AddToInterface_00728460_test.cpp'
+        PassPattern = 'ADD_TO_INTERFACE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00749d70'
+        Module = 'CTCCreatureGenerator'
+        Source = '00/74/CTCCreatureGenerator_SetAlwaysCreateCreaturesOnTrigger_00749d70.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_SetAlwaysCreateCreaturesOnTrigger_00749d70_test.cpp'
+        PassPattern = 'SET_ALWAYS_CREATE PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ea240'
+        Module = 'CTargetingFlags'
+        Source = '00/7e/CTargetingFlags_AddTargetingFlag_007ea240.cpp'
+        TestSource = '00/7e/CTargetingFlags_AddTargetingFlag_007ea240_test.cpp'
+        PassPattern = 'ADD_TARGETING_FLAG PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f09c0'
+        Module = 'CQuestCardScreen'
+        Source = '00/8f/CQuestCardScreen_SelectCard_008f09c0.cpp'
+        TestSource = '00/8f/CQuestCardScreen_SelectCard_008f09c0_test.cpp'
+        PassPattern = 'SELECT_CARD PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a55c00'
+        Module = 'CFourFlagState'
+        Source = '00/a5/CFourFlagState_Init_00a55c00.cpp'
+        TestSource = '00/a5/CFourFlagState_Init_00a55c00_test.cpp'
+        PassPattern = 'FOUR_FLAG_INIT PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdc060'
+        Module = 'CEngineLandscapeBackground'
+        Source = '00/bd/CEngineLandscapeBackground_RenderBackground_00bdc060.cpp'
+        TestSource = '00/bd/CEngineLandscapeBackground_RenderBackground_00bdc060_test.cpp'
+        PassPattern = 'RENDER_BACKGROUND PASS'
+    }
+    [pscustomobject]@{
+        Address = '00993e50'
+        Module = 'CDataStream'
+        Source = '00/99/CDataStream_WriteCBYTE_00993e50.cpp'
+        TestSource = '00/99/CDataStream_WriteCBYTE_00993e50_test.cpp'
+        PassPattern = 'WRITE_CBYTE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a23de0'
+        Module = 'C3DMeshLODInfo'
+        Source = '00/a2/C3DMeshLODInfo_IsResourceLoaded_00a23de0.cpp'
+        TestSource = '00/a2/C3DMeshLODInfo_IsResourceLoaded_00a23de0_test.cpp'
+        PassPattern = 'IS_RESOURCE_LOADED PASS'
+    }
 )
 
 $requestedAddresses = @(

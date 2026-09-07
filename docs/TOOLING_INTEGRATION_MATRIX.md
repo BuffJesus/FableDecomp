@@ -48,9 +48,9 @@ relationships that can improve FQT and future native modding tools.
 ## Shared native-evidence overlay
 
 `tools/export_fse_native_overlay.py` now publishes the same schema-1.1 overlay to all three active
-consumers. The current dataset covers all 931 FSE declarations: 442 unique exact-name matches, 76
-ambiguous matches, 413 unmatched declarations, 462 owner-aligned recommendations, and 53 verified
-engine implementations. None of the 462 recommended bindings is one of those verified lifts yet.
+consumers. The current dataset covers all 933 normalized FSE declarations: 441 unique exact-name
+matches, 78 ambiguous matches, 414 unmatched declarations, 483 owner-aligned recommendations, and
+370 verified recommended bindings. Generated recommendations still do not constitute hook approval.
 Recommendations remain research evidence; none are approved runtime hooks.
 
 | Consumer | Applied use | Safety boundary |

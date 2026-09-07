@@ -1,0 +1,3 @@
+#include <stdlib.h>
+struct ListSentinel_0091b8f0 { ListSentinel_0091b8f0* next; ListSentinel_0091b8f0* previous; unsigned long reserved; };
+void** __fastcall LinkedList_InitializeTiny(void** owner, void* unusedRegister, void* unusedStack) { (void)unusedRegister; (void)unusedStack; *owner = 0; ListSentinel_0091b8f0* node = (ListSentinel_0091b8f0*)malloc(0x0c); node->next = node; node->previous = node; *owner = node; return owner; }

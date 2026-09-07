@@ -1,0 +1,51 @@
+//=== ?GFInitMaths@@YIXXZ @ 03193c30 (seed 03193c30) ===
+
+/* WARNING: Removing unreachable block (ram,0x03193d1a) */
+/* WARNING: Removing unreachable block (ram,0x03193c41) */
+/* WARNING: Removing unreachable block (ram,0x03193cb1) */
+/* WARNING: Removing unreachable block (ram,0x03193d7f) */
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* [ported from ego_r via strfp] */
+
+void _GFInitMaths__YIXXZ(void)
+
+{
+  float10 fVar1;
+  uint *local_14;
+  uint local_8;
+  
+  local_14 = &DAT_04bbec48;
+  for (local_8 = 0; local_8 < 0x80; local_8 = local_8 + 1) {
+    fVar1 = (float10)_sqrt__YAMM_Z(local_8 << 0x11 | 0x3f000000);
+    *local_14 = (int)(float)((float10)1 / fVar1) + 0x2000U >> 0xf & 0xff;
+    local_14 = local_14 + 1;
+  }
+  _DAT_04bbed48 = 0xff;
+  for (local_8 = 0; local_8 < 0x400; local_8 = local_8 + 1) {
+    fVar1 = (float10)_cos__YAMM_Z((float)(((float10)(local_8 << 1) * (float10)3.1415927410125732) /
+                                         (float10)1024.0));
+    *(float *)(&DAT_04bbdc40 + local_8 * 4) = (float)fVar1;
+  }
+  _DAT_04bbec40 = _DAT_04bbdc40;
+  for (local_8 = 0; local_8 < 0x401; local_8 = local_8 + 1) {
+    fVar1 = (float10)_acos__YAMM_Z((float)(((float10)local_8 / (float10)1025.0 +
+                                           (float10)local_8 / (float10)1025.0) - (float10)1.0));
+    *(float *)(&DAT_04bbbc20 + local_8 * 4) = (float)fVar1;
+  }
+  _DAT_04bbcc24 = 0;
+  for (local_8 = 0; local_8 < 0x401; local_8 = local_8 + 1) {
+    fVar1 = (float10)_asin__YAMM_Z((float)(((float10)local_8 / (float10)1025.0 +
+                                           (float10)local_8 / (float10)1025.0) - (float10)1.0));
+    *(float *)(&DAT_04bbcc30 + local_8 * 4) = (float)fVar1;
+  }
+  _DAT_04bbdc34 = 0;
+  return;
+}
+
+
+// CALLEES of ?GFInitMaths@@YIXXZ:
+//   017bdb8f  ?acos@@YAMM@Z
+//   017aae6d  ?cos@@YAMM@Z
+//   01808b12  ?asin@@YAMM@Z
+//   0183f833  ?sqrt@@YAMM@Z
+

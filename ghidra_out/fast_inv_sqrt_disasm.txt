@@ -1,0 +1,33 @@
+//=== ?GFFastOneOverSqrt@@YIMM@Z @ 01ace0a0 (seed 01ace0a0) ===
+01ace0a0: 55                  PUSH EBP
+01ace0a1: 8bec                MOV EBP,ESP
+01ace0a3: 83ec08              SUB ESP,0x8
+01ace0a6: 8b4508              MOV EAX,dword ptr [EBP + 0x8]
+01ace0a9: c1e817              SHR EAX,0x17
+01ace0ac: 25ff000000          AND EAX,0xff
+01ace0b1: b97c010000          MOV ECX,0x17c
+01ace0b6: 2bc8                SUB ECX,EAX
+01ace0b8: d1e9                SHR ECX,0x1
+01ace0ba: c1e117              SHL ECX,0x17
+01ace0bd: 8b5508              MOV EDX,dword ptr [EBP + 0x8]
+01ace0c0: c1ea11              SHR EDX,0x11
+01ace0c3: 83e27f              AND EDX,0x7f
+01ace0c6: 8b049548ecbb04      MOV EAX,dword ptr [EDX*0x4 + 0x4bbec48]  ; DAT_04bbec48
+01ace0cd: c1e00f              SHL EAX,0xf
+01ace0d0: 0bc8                OR ECX,EAX
+01ace0d2: 894df8              MOV dword ptr [EBP + -0x8],ECX
+01ace0d5: d945f8              FLD float ptr [EBP + -0x8]
+01ace0d8: d95dfc              FSTP float ptr [EBP + -0x4]
+01ace0db: d945fc              FLD float ptr [EBP + -0x4]
+01ace0de: d84dfc              FMUL float ptr [EBP + -0x4]
+01ace0e1: d84d08              FMUL float ptr [EBP + 0x8]
+01ace0e4: dc2d50df0104        FSUBR double ptr [0x0401df50]  ; DAT_0401df50
+01ace0ea: d84dfc              FMUL float ptr [EBP + -0x4]
+01ace0ed: dc0db82e0204        FMUL double ptr [0x04022eb8]  ; DAT_04022eb8
+01ace0f3: d95dfc              FSTP float ptr [EBP + -0x4]
+01ace0f6: d945fc              FLD float ptr [EBP + -0x4]
+01ace0f9: 8be5                MOV ESP,EBP
+01ace0fb: 5d                  POP EBP
+01ace0fc: c20400              RET 0x4
+
+//=== 140 : NO FUNCTION ===

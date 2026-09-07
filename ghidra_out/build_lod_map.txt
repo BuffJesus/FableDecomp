@@ -1,0 +1,52 @@
+//=== ?BuildLODMap@CEngineLandscapeMap@@AAEXXZ @ 02cced10 (seed 02cced10) ===
+
+/* [ported from ego_r via strfp] */
+
+void _BuildLODMap_CEngineLandscapeMap__AAEXXZ(void)
+
+{
+  void *pvVar1;
+  undefined4 *puVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  int in_ECX;
+  undefined4 uVar5;
+  undefined4 local_20;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03e5fa7b;
+  local_10 = ExceptionList;
+  if (*(int *)(in_ECX + 0x74) == 0) {
+    ExceptionList = &local_10;
+    pvVar1 = operator_new(0x14);
+    local_8 = 0;
+    if (pvVar1 == (void *)0x0) {
+      local_20 = 0;
+    }
+    else {
+      local_20 = __0CEngineLandscapeLODMap__QAE_PBVCEngineMap___Z(*(undefined4 *)(in_ECX + 0x14));
+    }
+    local_8 = 0xffffffff;
+    *(undefined4 *)(in_ECX + 0x74) = local_20;
+    puVar2 = (undefined4 *)_GetSettings_CEngineLandscapeRenderer__QAEABUCLandscapeSettings_1_XZ();
+    uVar5 = *puVar2;
+    uVar3 = _PeekHeight_CEngineLandscapeMap__QBEJXZ(uVar5);
+    uVar4 = _PeekWidth_CEngineLandscapeMap__QBEJXZ(uVar3);
+    _UpdateThresholdPointArea_CEngineLandscapeLODMap__QAEXJJJJM_Z(0,0,uVar4,uVar3,uVar5);
+  }
+  ExceptionList = local_10;
+  return;
+}
+
+
+// CALLEES of ?BuildLODMap@CEngineLandscapeMap@@AAEXXZ:
+//   01838538  operator_new
+//   017c4db8  ?PeekHeight@CEngineLandscapeMap@@QBEJXZ
+//   017f88fc  ?PeekWidth@CEngineLandscapeMap@@QBEJXZ
+//   018386aa  ?UpdateThresholdPointArea@CEngineLandscapeLODMap@@QAEXJJJJM@Z
+//   0181c2b6  ?GetSettings@CEngineLandscapeRenderer@@QAEABUCLandscapeSettings@1@XZ
+//   01826d10  ??0CEngineLandscapeLODMap@@QAE@PBVCEngineMap@@@Z
+

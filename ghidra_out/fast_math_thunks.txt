@@ -1,0 +1,9 @@
+//=== ?GFFastOneOverSqrt@@YIMM@Z @ 017ed1c3 (seed 017ed1c3) ===
+017ed1c3: e9d80e2e00          JMP 0x01ace0a0
+
+//=== ?sqrt@@YAMM@Z @ 0183f833 (seed 0183f833) ===
+0183f833: e958313100          JMP 0x01b52990
+
+//=== ?Normalise@C2DVector@@QAEAAV1@XZ @ 01825d07 (seed 01825d07) ===
+01825d07: e9241a9b01          JMP 0x031d7730
+

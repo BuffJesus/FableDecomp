@@ -1,0 +1,3 @@
+#include <cstdio>
+static int Route(bool target,unsigned char flags,unsigned long capabilities,bool inventory,int slot){if(!target||(flags&1)||!(capabilities&0x20000)||!inventory)return 0;return slot>-1?1:2;}
+int main(){if(Route(true,0,0x20000,true,0)!=1||Route(true,0,0x20000,true,-1)!=2||Route(true,1,0x20000,true,0)||Route(false,0,0x20000,true,0))return 1;puts("PREFERRED_QUICK_ITEM_PASS");return 0;}

@@ -56,6 +56,19 @@
     },
     {
       "priority": 0,
+      "name": "Q_DragonBossFight",
+      "kind": "quest",
+      "section": "S_QDBF",
+      "allocatorAddress": "0x00D27240",
+      "seedPackage": "DragonBossFight",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_DragonBossFight.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_DragonBossFight.json",
+      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
+    },
+    {
+      "priority": 0,
       "name": "Q_HerosOldHouse",
       "kind": "quest",
       "section": "S_QHOH",
@@ -78,6 +91,19 @@
       "evidence": "native-operation-ir",
       "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_MazeResearch.json",
       "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_MazeResearch.json",
+      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
+    },
+    {
+      "priority": 0,
+      "name": "V_StatueMaster",
+      "kind": "village",
+      "section": "S_VSM",
+      "allocatorAddress": "0x00ED4A40",
+      "seedPackage": "StatueMaster",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_StatueMaster.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_StatueMaster.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -234,19 +260,6 @@
       "evidence": "native-operation-ir-address-resolved",
       "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_CinemaTest.json",
       "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_CinemaTest.json",
-      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
-    },
-    {
-      "priority": 20,
-      "name": "Q_DragonBossFight",
-      "kind": "quest",
-      "section": "S_QDBF",
-      "allocatorAddress": "0x00D27240",
-      "seedPackage": "",
-      "stage": "compare-runtime-trace",
-      "evidence": "native-operation-ir-address-resolved",
-      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_DragonBossFight.json",
-      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_DragonBossFight.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1365,19 +1378,6 @@
       "evidence": "native-operation-ir-address-resolved",
       "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_SingingStones.json",
       "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_SingingStones.json",
-      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
-    },
-    {
-      "priority": 30,
-      "name": "V_StatueMaster",
-      "kind": "village",
-      "section": "S_VSM",
-      "allocatorAddress": "0x00ED4A40",
-      "seedPackage": "",
-      "stage": "compare-runtime-trace",
-      "evidence": "native-operation-ir-address-resolved",
-      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_StatueMaster.json",
-      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_StatueMaster.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {

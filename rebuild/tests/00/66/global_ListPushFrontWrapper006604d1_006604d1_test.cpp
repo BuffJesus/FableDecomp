@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct List{unsigned long first;unsigned long* address;unsigned long seenFirst,copy;void Push(unsigned long value){address=&value;seenFirst=first;copy=value;}};int main(){List list={0x1234,0,0,0};list.Push(0x89ab);if(!list.address||list.seenFirst!=0x1234||list.copy!=0x89ab)return 1;puts("LISTPUSH_006604d1_PASS");return 0;}

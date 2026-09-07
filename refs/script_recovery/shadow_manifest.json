@@ -111,6 +111,30 @@
       "saveWritesAllowed": false
     },
     {
+      "nativeName": "Q_DragonBossFight",
+      "nativeSection": "S_QDBF",
+      "package": "DragonBossFight",
+      "luaFile": "DragonBossFight/DragonBossFight",
+      "kind": "quest",
+      "mode": "shadow",
+      "evidenceLevel": "reconstructed-source",
+      "archiveSha256": "E13F8A4244636AFFC4FF6407603D87B9682E660E85639FE89B7C19B654F8A8B7",
+      "mutatingCallsAllowed": false,
+      "saveWritesAllowed": false
+    },
+    {
+      "nativeName": "Q_DragonBossFight::Dragon",
+      "nativeSection": "S_QDBF",
+      "package": "DragonBossFight",
+      "luaFile": "DragonBossFight/Entities/Dragon",
+      "kind": "entity",
+      "mode": "shadow",
+      "evidenceLevel": "reconstructed-source",
+      "archiveSha256": "E13F8A4244636AFFC4FF6407603D87B9682E660E85639FE89B7C19B654F8A8B7",
+      "mutatingCallsAllowed": false,
+      "saveWritesAllowed": false
+    },
+    {
       "nativeName": "Q_HerosOldHouse",
       "nativeSection": "S_QHOH",
       "package": "HerosOldHouse",
@@ -191,6 +215,54 @@
       "mode": "shadow",
       "evidenceLevel": "reconstructed-source",
       "archiveSha256": "35A4B74EC1E5A50F336BEEA131E0E07276F2C71BE507F0540A13D9ED2FF91EC2",
+      "mutatingCallsAllowed": false,
+      "saveWritesAllowed": false
+    },
+    {
+      "nativeName": "V_StatueMaster",
+      "nativeSection": "S_VSM",
+      "package": "StatueMaster",
+      "luaFile": "StatueMaster/StatueMaster",
+      "kind": "village",
+      "mode": "shadow",
+      "evidenceLevel": "reconstructed-source",
+      "archiveSha256": "EA39505A93C611BAD2DAB7EAD99EA05101465B44B41E6C2DCEA6D7D7912FFDBF",
+      "mutatingCallsAllowed": false,
+      "saveWritesAllowed": false
+    },
+    {
+      "nativeName": "V_StatueMaster::StatueMasterCellarDoors",
+      "nativeSection": "S_VSM",
+      "package": "StatueMaster",
+      "luaFile": "StatueMaster/Entities/StatueMasterCellarDoors",
+      "kind": "entity",
+      "mode": "shadow",
+      "evidenceLevel": "reconstructed-source",
+      "archiveSha256": "EA39505A93C611BAD2DAB7EAD99EA05101465B44B41E6C2DCEA6D7D7912FFDBF",
+      "mutatingCallsAllowed": false,
+      "saveWritesAllowed": false
+    },
+    {
+      "nativeName": "V_StatueMaster::StatueMasterChest",
+      "nativeSection": "S_VSM",
+      "package": "StatueMaster",
+      "luaFile": "StatueMaster/Entities/StatueMasterChest",
+      "kind": "entity",
+      "mode": "shadow",
+      "evidenceLevel": "reconstructed-source",
+      "archiveSha256": "EA39505A93C611BAD2DAB7EAD99EA05101465B44B41E6C2DCEA6D7D7912FFDBF",
+      "mutatingCallsAllowed": false,
+      "saveWritesAllowed": false
+    },
+    {
+      "nativeName": "V_StatueMaster::StatueMasterStatue",
+      "nativeSection": "S_VSM",
+      "package": "StatueMaster",
+      "luaFile": "StatueMaster/Entities/StatueMasterStatue",
+      "kind": "entity",
+      "mode": "shadow",
+      "evidenceLevel": "reconstructed-source",
+      "archiveSha256": "EA39505A93C611BAD2DAB7EAD99EA05101465B44B41E6C2DCEA6D7D7912FFDBF",
       "mutatingCallsAllowed": false,
       "saveWritesAllowed": false
     }

@@ -1,0 +1,3 @@
+#include <stdlib.h>
+struct ListSentinel_0055c2e0 { ListSentinel_0055c2e0* next; ListSentinel_0055c2e0* previous; unsigned long reserved; };
+void** __fastcall CircularLinkedList_InitializeSmall(void** owner, void* unusedRegister, void* unusedStack) { (void)unusedRegister; (void)unusedStack; *owner = 0; ListSentinel_0055c2e0* node = (ListSentinel_0055c2e0*)malloc(0x0c); node->next = node; node->previous = node; *owner = node; return owner; }

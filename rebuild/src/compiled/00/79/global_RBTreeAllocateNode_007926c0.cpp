@@ -1,0 +1,3 @@
+#include <stdlib.h>
+struct ListSentinel_007926c0 { ListSentinel_007926c0* next; ListSentinel_007926c0* previous; unsigned long reserved; };
+void** __fastcall RBTree_AllocateNode(void** owner, void* unusedRegister, void* unusedStack) { (void)unusedRegister; (void)unusedStack; *owner = 0; ListSentinel_007926c0* node = (ListSentinel_007926c0*)malloc(0x0c); node->next = node; node->previous = node; *owner = node; return owner; }

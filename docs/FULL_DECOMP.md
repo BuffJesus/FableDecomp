@@ -220,7 +220,7 @@ tracked separately and must not be presented as completed buildable source.
 ### Downstream native-evidence consumers (2026-07-22 19:25 MDT)
 
 The FSE-to-engine overlay is now an actively validated interface rather than a passive report. Its
-931 rows are mirrored to FableForge, ForgeFSE, and FQT. FableForge parses the evidence for native
+933 rows are mirrored to FableForge, ForgeFSE, and FQT. FableForge parses the evidence for native
 backing inspection (6/6 CTests pass); FQT annotates its API Reference while keeping verified engine
 implementation separate from binding approval (190/190 tests pass); and ForgeFSE validates every
 manifest key, count, candidate address, and safety-policy flag before runtime binding work. Current
@@ -407,7 +407,7 @@ This binary is unusually friendly for a full decomp:
 - **Two ready-made answer keys** for large swaths of the code:
   - **EgoCore** source = every asset/resource/level/def/audio format parser in readable C++
     (the whole resource-loading half of the engine has a reference implementation).
-  - **FSE** manifest/source = the gameplay/script API surface (931 functions, real signatures).
+  - **FSE** manifest/source = the gameplay/script API surface (933 functions, real signatures).
 - **Sibling priors** from Fable2RE for shared-lineage subsystems (Will/spells, Babel text,
   appearance, Havok/anim, the string-hash resource index).
 

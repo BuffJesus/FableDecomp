@@ -1,3 +1,7 @@
+// RE_AGENT_SEMANTIC_REVIEW: boundary quarantine. The available PE fallback
+// span includes following code; do not promote until an authoritative 123-byte
+// oracle boundary is exported and the jump-table relocations are represented.
+
 CRGBColour CPlayerManager::GetMultiplayerColour(long player_number) const
 {
     switch (player_number)

@@ -1,0 +1,85 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 24,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsLocked",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsLocked",
+          "line": 23
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsUsedByHero",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "DisplayGameInfo",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "MsgIsGameInfoClickedPast",
+          "line": 29
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 36
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "SM_Angle",
+      "types": [
+        "string"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_061_CELLAR_LOCKED"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

@@ -162,6 +162,63 @@
       ],
       "luaPersistenceOnly": [],
       "nativePersistenceOnly": []
+    },
+    {
+      "package": "StatueMaster",
+      "nativeScript": "V_StatueMaster",
+      "sharedLiterals": [
+        "SM_Bowerstone",
+        "SM_Center",
+        "SM_Greatwood",
+        "SM_Guild",
+        "SM_Nothing",
+        "StatueMasterCellarDoors",
+        "StatueMasterChest",
+        "StatueMasterStatue"
+      ],
+      "nativeEntityBindings": [
+        "StatueMasterCellarDoors",
+        "StatueMasterChest",
+        "StatueMasterStatue"
+      ],
+      "luaBindingsFoundNative": [
+        "StatueMasterCellarDoors",
+        "StatueMasterChest",
+        "StatueMasterStatue"
+      ],
+      "luaBindingsMissingNativeLifecycle": [],
+      "nativeBindingsMissingLua": [],
+      "sharedPersistenceKeys": [],
+      "luaPersistenceOnly": [],
+      "nativePersistenceOnly": []
+    },
+    {
+      "package": "DragonBossFight",
+      "nativeScript": "Q_DragonBossFight",
+      "sharedLiterals": [
+        "",
+        "DoMission",
+        "Dragon",
+        "DragonCliff2"
+      ],
+      "nativeEntityBindings": [
+        "DBMinion",
+        "DBSummoner",
+        "Dragon"
+      ],
+      "luaBindingsFoundNative": [
+        "Dragon"
+      ],
+      "luaBindingsMissingNativeLifecycle": [],
+      "nativeBindingsMissingLua": [
+        "DBMinion",
+        "DBSummoner"
+      ],
+      "sharedPersistenceKeys": [],
+      "luaPersistenceOnly": [
+        "DragonState"
+      ],
+      "nativePersistenceOnly": []
     }
   ]
 }

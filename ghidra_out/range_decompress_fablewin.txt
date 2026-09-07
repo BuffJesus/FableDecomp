@@ -1,0 +1,565 @@
+//=== ?Decompress@CRangeCompressor@@QAEXPBEJJPAX@Z @ 033182e0 (seed 033182e0) ===
+
+/* WARNING: Removing unreachable block (ram,0x03318c7a) */
+/* WARNING: Removing unreachable block (ram,0x03318dae) */
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* [ported from ego_r via strfp] */
+
+void _Decompress_CRangeCompressor__QAEXPBEJJPAX_Z
+               (uint *param_1,int param_2,int param_3,void *param_4)
+
+{
+  code *pcVar1;
+  bool bVar2;
+  bool bVar3;
+  bool bVar4;
+  bool bVar5;
+  bool bVar6;
+  bool bVar7;
+  bool bVar8;
+  bool bVar9;
+  bool bVar10;
+  bool bVar11;
+  bool bVar12;
+  bool bVar13;
+  char cVar14;
+  BOOL BVar15;
+  uint uVar16;
+  float10 fVar17;
+  char local_194;
+  char local_190;
+  char local_18c;
+  char local_188;
+  char local_184;
+  undefined1 local_178 [8];
+  undefined1 local_170 [8];
+  undefined1 local_168 [11];
+  char local_15d;
+  undefined1 local_15c [8];
+  undefined1 local_154 [8];
+  undefined1 local_14c [11];
+  char local_141;
+  undefined1 local_140 [8];
+  undefined1 local_138 [8];
+  undefined1 local_130 [11];
+  char local_125;
+  undefined1 local_124 [8];
+  undefined1 local_11c [8];
+  undefined1 local_114 [11];
+  char local_109;
+  undefined1 local_108 [8];
+  undefined1 local_100 [8];
+  undefined1 local_f8 [11];
+  char local_ed;
+  uint local_ec;
+  int local_e8;
+  uint local_e4;
+  int local_e0;
+  uint local_dc;
+  int local_d8;
+  undefined4 local_d4;
+  uint local_d0;
+  int local_cc;
+  uint local_c8;
+  uint local_c4;
+  uint local_c0 [17];
+  uint local_7c;
+  undefined4 local_78 [17];
+  uint local_34;
+  uint local_30;
+  int local_2c;
+  int local_24;
+  int local_20;
+  byte local_19;
+  int local_18;
+  void *local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03f0b2e6;
+  local_10 = ExceptionList;
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  if ((param_2 < 1) || (ExceptionList = &local_10, param_3 < 1)) {
+    ExceptionList = &local_10;
+    if (DAT_04bac270 == 0) {
+LAB_033183dc:
+      local_184 = '\x01';
+    }
+    else {
+      ExceptionList = &local_10;
+      __0CWideString__QAE_PB_W_Z(L"lib_range_compressor.cpp");
+      local_8 = 0;
+      __0CCharString__QAE_PBDJ_Z(&DAT_0450350b,0xffffffff);
+      local_8 = 1;
+      __0CCharString__QAE_PBDJ_Z("element_count>0 && element_size>0",0xffffffff);
+      local_8 = 2;
+      bVar4 = true;
+      bVar3 = true;
+      bVar2 = true;
+      cVar14 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                         (local_108,local_100,local_f8,0x216,1);
+      if (cVar14 == '\x01') goto LAB_033183dc;
+      local_184 = '\0';
+    }
+    local_ed = local_184;
+    local_8 = 1;
+    if (bVar3) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 0;
+    if (bVar4) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 0xffffffff;
+    if (bVar2) {
+      __1CWideString__QAE_XZ();
+    }
+    if ((local_ed != '\0') && (BVar15 = IsDebuggerPresent(), BVar15 != 0)) {
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+  }
+  bVar13 = false;
+  bVar12 = false;
+  bVar11 = false;
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  fVar17 = (float10)_GFGetTime__YINXZ();
+  _DAT_04bbfb20 = (double)((float10)_DAT_04bbfb20 - fVar17);
+  DAT_04bbfb28 = param_2 * param_3 + DAT_04bbfb28;
+  if (*(char *)param_1 == '\0') {
+    memcpy(param_4,(char *)((int)param_1 + 1),param_2 * param_3);
+    fVar17 = (float10)_GFGetTime__YINXZ();
+    _DAT_04bbfb20 = (double)(fVar17 + (float10)_DAT_04bbfb20);
+    ExceptionList = local_10;
+    return;
+  }
+  param_1 = (uint *)((int)param_1 + 1);
+  local_14 = param_4;
+  while( true ) {
+    bVar10 = false;
+    bVar9 = false;
+    bVar8 = false;
+    bVar7 = false;
+    bVar6 = false;
+    bVar5 = false;
+    local_19 = (byte)*param_1;
+    if ((local_19 & 0x80) != 0) break;
+    local_cc = _GetBlockSizeFromFlags_CRangeCompressor__AAEJK_Z(local_19);
+    local_30 = local_cc << 3;
+    local_2c = (int)local_30 >> 0x1f;
+    if ((local_2c < 0) || ((-1 < local_2c && ((0 < local_2c || (0x7fffffff < local_30)))))) {
+      if (DAT_04bac270 != 0) {
+        __0CWideString__QAE_PB_W_Z(L"lib_range_compressor.cpp");
+        local_8 = 6;
+        __0CCharString__QAE_PBDJ_Z
+                  ("PREfix security check - \'block_size*8\' causing buffer overflow/underflow.",
+                   0xffffffff);
+        local_8 = 7;
+        __0CCharString__QAE_PBDJ_Z(&DAT_0450355f,0xffffffff);
+        local_8 = 8;
+        bVar10 = true;
+        bVar9 = true;
+        bVar8 = true;
+        cVar14 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                           (local_140,local_138,local_130,0x248,1);
+        if (cVar14 != '\x01') {
+          local_18c = '\0';
+          goto LAB_03318798;
+        }
+      }
+      local_18c = '\x01';
+LAB_03318798:
+      local_125 = local_18c;
+      local_8 = 7;
+      if (bVar8) {
+        __1CCharString__QAE_XZ();
+      }
+      local_8 = 6;
+      if (bVar9) {
+        __1CCharString__QAE_XZ();
+      }
+      local_8 = 0xffffffff;
+      if (bVar10) {
+        __1CWideString__QAE_XZ();
+      }
+      if (local_125 == '\0') {
+        ExceptionList = local_10;
+        return;
+      }
+      BVar15 = IsDebuggerPresent();
+      if (BVar15 == 0) {
+        ExceptionList = local_10;
+        return;
+      }
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+    local_d0 = (uint)*(byte *)((int)param_1 + 1);
+    param_1 = (uint *)((int)param_1 + 2);
+    if (local_cc * 8 < (int)local_d0) {
+      if (DAT_04bac270 == 0) {
+LAB_03318926:
+        local_190 = '\x01';
+      }
+      else {
+        __0CWideString__QAE_PB_W_Z(L"lib_range_compressor.cpp");
+        local_8 = 9;
+        __0CCharString__QAE_PBDJ_Z(&DAT_0450356e,0xffffffff);
+        local_8 = 10;
+        __0CCharString__QAE_PBDJ_Z("bit_count<=block_size*8",0xffffffff);
+        local_8 = 0xb;
+        bVar4 = true;
+        bVar3 = true;
+        bVar2 = true;
+        cVar14 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                           (local_15c,local_154,local_14c,0x24e,1);
+        if (cVar14 == '\x01') goto LAB_03318926;
+        local_190 = '\0';
+      }
+      local_141 = local_190;
+      local_8 = 10;
+      if (bVar2) {
+        bVar2 = false;
+        __1CCharString__QAE_XZ();
+      }
+      local_8 = 9;
+      if (bVar3) {
+        bVar3 = false;
+        __1CCharString__QAE_XZ();
+      }
+      local_8 = 0xffffffff;
+      if (bVar4) {
+        bVar4 = false;
+        __1CWideString__QAE_XZ();
+      }
+      if ((local_141 != '\0') && (BVar15 = IsDebuggerPresent(), BVar15 != 0)) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+    local_20 = 0;
+    local_c4 = 0;
+    local_7c = 0;
+    local_18 = 0;
+    if ((local_19 & 0x11) != 0) {
+      local_20 = _ReadVarSizedUInt_CRangeCompressor__AAEKPBEJ_Z(param_1,local_cc);
+      param_1 = (uint *)((int)param_1 + local_cc);
+    }
+    if ((local_19 & 2) != 0) {
+      local_c4 = (uint)(byte)*param_1;
+      if ((local_c4 == 0) || (0x1f < local_c4)) {
+        if (DAT_04bac270 == 0) {
+LAB_03318b11:
+          local_194 = '\x01';
+        }
+        else {
+          __0CWideString__QAE_PB_W_Z(L"lib_range_compressor.cpp");
+          local_8 = 0xc;
+          __0CCharString__QAE_PBDJ_Z(&DAT_0450356f,0xffffffff);
+          local_8 = 0xd;
+          __0CCharString__QAE_PBDJ_Z("range_shift>0 && range_shift<32",0xffffffff);
+          local_8 = 0xe;
+          bVar13 = true;
+          bVar12 = true;
+          bVar11 = true;
+          cVar14 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                             (local_178,local_170,local_168,0x262,1);
+          if (cVar14 == '\x01') goto LAB_03318b11;
+          local_194 = '\0';
+        }
+        local_15d = local_194;
+        local_8 = 0xd;
+        if (bVar11) {
+          bVar11 = false;
+          __1CCharString__QAE_XZ();
+        }
+        local_8 = 0xc;
+        if (bVar12) {
+          bVar12 = false;
+          __1CCharString__QAE_XZ();
+        }
+        local_8 = 0xffffffff;
+        if (bVar13) {
+          bVar13 = false;
+          __1CWideString__QAE_XZ();
+        }
+        if ((local_15d != '\0') && (BVar15 = IsDebuggerPresent(), BVar15 != 0)) {
+          pcVar1 = (code *)swi(3);
+          (*pcVar1)();
+          return;
+        }
+      }
+      param_1 = (uint *)((int)param_1 + 1);
+    }
+    if ((local_19 & 8) != 0) {
+      local_7c = _ReadVarSizedUInt_CRangeCompressor__AAEKPBEJ_Z(param_1,local_cc);
+      param_1 = (uint *)((int)param_1 + local_cc);
+    }
+    if ((local_19 & 4) != 0) {
+      local_d4 = _ReadVarSizedUInt_CRangeCompressor__AAEKPBEJ_Z(param_1,local_cc);
+      local_18 = _CalcShuffleOperations_CRangeCompressor__AAEJKPAK0_Z(local_d4,local_c0,local_78);
+      param_1 = (uint *)((int)param_1 + local_cc);
+    }
+    local_34 = (1 << ((byte)local_d0 & 0x1f)) - 1;
+    local_24 = 0x20;
+    if (local_d0 == 0) {
+      local_24 = 0;
+    }
+    local_c8 = 0;
+    for (local_d8 = 0; local_d8 < param_2; local_d8 = local_d8 + 1) {
+      if (local_d0 == 0x20) {
+        local_dc = *param_1;
+        param_1 = param_1 + 1;
+      }
+      else {
+        if (local_24 == 0x20) {
+          local_c8 = *param_1;
+          param_1 = param_1 + 1;
+          local_24 = 0;
+        }
+        uVar16 = local_c8 >> ((byte)local_24 & 0x1f);
+        local_dc = uVar16 & local_34;
+        local_24 = local_24 + local_d0;
+        if (0x20 < local_24) {
+          local_c8 = *param_1;
+          param_1 = param_1 + 1;
+          local_e0 = local_24 + -0x20;
+          local_dc = local_34 & (local_c8 << ((char)local_d0 - (char)local_e0 & 0x1fU) | uVar16);
+          local_24 = local_24 + -0x20;
+        }
+      }
+      if ((local_19 & 1) != 0) {
+        local_dc = local_dc + local_20 & *(uint *)(&DAT_04a69e1c + local_cc * 4);
+      }
+      local_dc = local_dc << ((byte)local_c4 & 0x1f);
+      if ((local_19 & 4) != 0) {
+        local_e4 = 0;
+        for (local_e8 = 0; local_e8 < local_18; local_e8 = local_e8 + 1) {
+          local_ec = local_dc << ((byte)local_78[local_e8] & 0x1f) & local_c0[local_e8];
+          local_e4 = local_e4 | local_ec;
+        }
+        local_dc = local_e4;
+      }
+      local_dc = local_dc | local_7c;
+      if ((local_19 & 0x10) != 0) {
+        local_dc = local_dc + local_20 & *(uint *)(&DAT_04a69e1c + local_cc * 4);
+      }
+      _WriteVarSizedUInt_CRangeCompressor__AAEXKPAEJ_Z
+                (local_dc,(void *)(local_d8 * param_3 + (int)local_14),local_cc);
+    }
+    local_14 = (void *)((int)local_14 + local_cc);
+  }
+  if (local_19 == 0x80) goto LAB_03318667;
+  if (DAT_04bac270 == 0) {
+LAB_033185cf:
+    local_188 = '\x01';
+  }
+  else {
+    __0CWideString__QAE_PB_W_Z(L"lib_range_compressor.cpp");
+    local_8 = 3;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0450355e,0xffffffff);
+    local_8 = 4;
+    __0CCharString__QAE_PBDJ_Z("flags == COMPRESSION_SCRIPT_BLOCK_END_MARKER",0xffffffff);
+    local_8 = 5;
+    bVar7 = true;
+    bVar6 = true;
+    bVar5 = true;
+    cVar14 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                       (local_124,local_11c,local_114,0x23a,1);
+    if (cVar14 == '\x01') goto LAB_033185cf;
+    local_188 = '\0';
+  }
+  local_109 = local_188;
+  local_8 = 4;
+  if (bVar5) {
+    __1CCharString__QAE_XZ();
+  }
+  local_8 = 3;
+  if (bVar6) {
+    __1CCharString__QAE_XZ();
+  }
+  local_8 = 0xffffffff;
+  if (bVar7) {
+    __1CWideString__QAE_XZ();
+  }
+  if ((local_109 != '\0') && (BVar15 = IsDebuggerPresent(), BVar15 != 0)) {
+    pcVar1 = (code *)swi(3);
+    (*pcVar1)();
+    return;
+  }
+LAB_03318667:
+  fVar17 = (float10)_GFGetTime__YINXZ();
+  _DAT_04bbfb20 = (double)(fVar17 + (float10)_DAT_04bbfb20);
+  ExceptionList = local_10;
+  return;
+}
+
+
+// CALLEES of ?Decompress@CRangeCompressor@@QAEXPBEJJPAX@Z:
+//   017fabc0  ?CalcShuffleOperations@CRangeCompressor@@AAEJKPAK0@Z
+//   0180d9af  ?WriteVarSizedUInt@CRangeCompressor@@AAEXKPAEJ@Z
+//   0183552c  ?DoErrorMessage@CDebugManager@@QAE_NABVCCharString@@0ABVCWideString@@KW4EErrorType@NDebugManager@@@Z
+//   0182d02f  ?ReadVarSizedUInt@CRangeCompressor@@AAEKPBEJ@Z
+//   01822233  ??1CCharString@@QAE@XZ
+//   017ea333  ??1CWideString@@QAE@XZ
+//   01842ef7  ?GFGetTime@@YINXZ
+//   017f8195  memcpy
+//   01794e1a  ?GetBlockSizeFromFlags@CRangeCompressor@@AAEJK@Z
+//   017f059e  ??0CWideString@@QAE@PB_W@Z
+//   EXTERNAL:00000128  IsDebuggerPresent
+//   0181c126  ??0CCharString@@QAE@PBDJ@Z
+
+//=== ?WriteVarSizedUInt@CRangeCompressor@@AAEXKPAEJ@Z @ 03317e90 (seed 03317f40) ===
+
+/* [ported from ego_r via strfp] */
+
+void _WriteVarSizedUInt_CRangeCompressor__AAEXKPAEJ_Z(uint param_1,uint *param_2,int param_3)
+
+{
+  code *pcVar1;
+  bool bVar2;
+  bool bVar3;
+  bool bVar4;
+  bool bVar5;
+  bool bVar6;
+  bool bVar7;
+  char cVar8;
+  BOOL BVar9;
+  char local_58;
+  char local_54;
+  undefined1 local_48 [8];
+  undefined1 local_40 [8];
+  undefined1 local_38 [11];
+  char local_2d;
+  undefined1 local_2c [8];
+  undefined1 local_24 [8];
+  undefined1 local_1c [11];
+  char local_11;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03f0b086;
+  local_10 = ExceptionList;
+  bVar7 = false;
+  bVar6 = false;
+  bVar5 = false;
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  if (param_3 == 4) {
+    *param_2 = param_1;
+    return;
+  }
+  if (param_3 != 2) {
+    if ((param_3 == 1) && (param_1 < 0x100)) goto LAB_03318111;
+    ExceptionList = &local_10;
+    if (DAT_04bac270 == 0) {
+LAB_033180a0:
+      local_58 = '\x01';
+    }
+    else {
+      ExceptionList = &local_10;
+      __0CWideString__QAE_PB_W_Z(L"lib_range_compressor.cpp");
+      local_8 = 3;
+      __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+      local_8 = 4;
+      __0CCharString__QAE_PBDJ_Z("byte_count==1 && value<256",0xffffffff);
+      local_8 = 5;
+      bVar7 = true;
+      bVar6 = true;
+      bVar5 = true;
+      cVar8 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (local_48,local_40,local_38,0x13a,1);
+      if (cVar8 == '\x01') goto LAB_033180a0;
+      local_58 = '\0';
+    }
+    local_2d = local_58;
+    local_8 = 4;
+    if (bVar5) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 3;
+    if (bVar6) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 0xffffffff;
+    if (bVar7) {
+      __1CWideString__QAE_XZ();
+    }
+    if ((local_2d != '\0') && (BVar9 = IsDebuggerPresent(), BVar9 != 0)) {
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+LAB_03318111:
+    *(undefined1 *)param_2 = (undefined1)param_1;
+    ExceptionList = local_10;
+    return;
+  }
+  if (param_1 < 0x10000) goto LAB_03317fe7;
+  ExceptionList = &local_10;
+  if (DAT_04bac270 == 0) {
+LAB_03317f76:
+    local_54 = '\x01';
+  }
+  else {
+    ExceptionList = &local_10;
+    __0CWideString__QAE_PB_W_Z(L"lib_range_compressor.cpp");
+    local_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+    local_8 = 1;
+    __0CCharString__QAE_PBDJ_Z("value<65536",0xffffffff);
+    local_8 = 2;
+    bVar4 = true;
+    bVar3 = true;
+    bVar2 = true;
+    cVar8 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (local_2c,local_24,local_1c,0x135,1);
+    if (cVar8 == '\x01') goto LAB_03317f76;
+    local_54 = '\0';
+  }
+  local_11 = local_54;
+  local_8 = 1;
+  if (bVar3) {
+    __1CCharString__QAE_XZ();
+  }
+  local_8 = 0;
+  if (bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_8 = 0xffffffff;
+  if (bVar2) {
+    __1CWideString__QAE_XZ();
+  }
+  if ((local_11 != '\0') && (BVar9 = IsDebuggerPresent(), BVar9 != 0)) {
+    pcVar1 = (code *)swi(3);
+    (*pcVar1)();
+    return;
+  }
+LAB_03317fe7:
+  *(undefined2 *)param_2 = (undefined2)param_1;
+  ExceptionList = local_10;
+  return;
+}
+
+
+// CALLEES of ?WriteVarSizedUInt@CRangeCompressor@@AAEXKPAEJ@Z:
+//   0183552c  ?DoErrorMessage@CDebugManager@@QAE_NABVCCharString@@0ABVCWideString@@KW4EErrorType@NDebugManager@@@Z
+//   01822233  ??1CCharString@@QAE@XZ
+//   017ea333  ??1CWideString@@QAE@XZ
+//   017f059e  ??0CWideString@@QAE@PB_W@Z
+//   EXTERNAL:00000128  IsDebuggerPresent
+//   0181c126  ??0CCharString@@QAE@PBDJ@Z
+
+//=== 03317d80 : NO FUNCTION ===

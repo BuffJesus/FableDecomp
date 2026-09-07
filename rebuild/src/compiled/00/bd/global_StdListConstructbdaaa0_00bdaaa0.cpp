@@ -1,0 +1,3 @@
+#include <stdlib.h>
+struct ListSentinel_00bdaaa0 { ListSentinel_00bdaaa0* next; ListSentinel_00bdaaa0* previous; unsigned long reserved; };
+void** __fastcall StdList_Construct_bdaaa0(void** owner, void* unusedRegister, void* unusedStack) { (void)unusedRegister; (void)unusedStack; *owner = 0; ListSentinel_00bdaaa0* node = (ListSentinel_00bdaaa0*)malloc(0x0c); node->next = node; node->previous = node; *owner = node; return owner; }

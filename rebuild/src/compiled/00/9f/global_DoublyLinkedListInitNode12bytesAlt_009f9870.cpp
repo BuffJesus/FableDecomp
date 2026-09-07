@@ -1,0 +1,3 @@
+#include <stdlib.h>
+struct ListSentinel_009f9870 { ListSentinel_009f9870* next; ListSentinel_009f9870* previous; unsigned long reserved; };
+void** __fastcall DoublyLinkedList_InitNode_12bytes_Alt(void** owner, void* unusedRegister, void* unusedStack) { (void)unusedRegister; (void)unusedStack; *owner = 0; ListSentinel_009f9870* node = (ListSentinel_009f9870*)malloc(0x0c); node->next = node; node->previous = node; *owner = node; return owner; }

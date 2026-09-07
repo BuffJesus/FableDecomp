@@ -1,0 +1,2 @@
+#include <cstdio>
+struct Buffer{long position,stride;};static void Run(Buffer& b,long count){b.position+=b.stride*count*2;}int main(){Buffer b={10,4};Run(b,3);if(b.position!=34)return 1;Run(b,-2);if(b.position!=18)return 2;Run(b,0);if(b.position!=18)return 3;std::printf("STREAM_BUFFER_ADVANCE_PASS\n");return 0;}

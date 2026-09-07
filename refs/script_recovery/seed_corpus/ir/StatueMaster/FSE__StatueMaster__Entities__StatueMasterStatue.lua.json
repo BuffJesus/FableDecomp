@@ -1,0 +1,102 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/StatueMaster/Entities/StatueMasterStatue.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 24,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "SetReadableObjectTextTag",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 33,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetCutsceneBehaviour",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetFacingAngle",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "SetReadableObjectTextTag",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "SetReadableObjectTextTag",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "SetReadableObjectTextTag",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 30
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "SM_Angle",
+      "types": [
+        "string"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_061_STATUE_BOWERSTONE",
+      "TEXT_QST_061_STATUE_GREATWOOD",
+      "TEXT_QST_061_STATUE_NOWHERE"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

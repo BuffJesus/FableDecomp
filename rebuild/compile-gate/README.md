@@ -1,13 +1,13 @@
 # Auto-RE candidate compile gate
 
-Generated: `2026-08-19T21:34:38-06:00`
+Generated: `2026-09-03T20:20:11-06:00`
 
 | Gate | Passing | Total |
 |---|---:|---:|
-| Source integrity | 896 | 896 |
-| 32-bit host C++20 syntax | 441 | 896 |
-| No detected VC7.1 language blockers | 69 | 896 |
-| Ready for VC7.1 module compilation | 41 | 896 |
+| Source integrity | 1066 | 1066 |
+| 32-bit host C++20 syntax | 575 | 1066 |
+| No detected VC7.1 language blockers | 71 | 1066 |
+| Ready for VC7.1 module compilation | 43 | 1066 |
 
 A checker PASS is not a compiler PASS. The host syntax gate supplies only standard-library and calling-convention compatibility; missing engine declarations must be resolved through real module headers.
 
@@ -17,20 +17,22 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 |---|---:|
 | `offsetof` | 61 |
 | `class CGameScriptInterface` | 41 |
-| `CCharString` | 29 |
-| `CGameScriptInterface` | 23 |
+| `CCharString` | 32 |
+| `CGameScriptInterface` | 24 |
 | `mov` | 15 |
+| `self` | 13 |
 | `CTCBase` | 13 |
-| `C2DVector` | 13 |
+| `CDataOutputStream` | 13 |
 | `std` | 12 |
-| `self` | 12 |
 | `CKeyPairCompareLess` | 12 |
 | `ETCInterfaceType` | 12 |
+| `C2DVector` | 12 |
+| `stream` | 12 |
 | `CMouseDX` | 12 |
 | `CMemoryAllocatorFixedSize` | 11 |
-| `CNavQuadTree` | 10 |
+| `CScriptThing` | 10 |
 | `CWideString` | 9 |
-| `CScriptThing` | 9 |
+| `CNavQuadTree` | 9 |
 | `C3DVector` | 8 |
 | `EThemePaintType` | 8 |
 | `CDefinitionManager` | 7 |
@@ -40,10 +42,8 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 | `CGraphicInfoFrame` | 7 |
 | `CGameEvent` | 6 |
 | `next` | 6 |
+| `CDataInputStream` | 6 |
 | `CTCCoopSpirit` | 6 |
 | `CQuestManager` | 6 |
-| `CANavQuadTreeNode` | 6 |
-| `CEngineLandscapePatch` | 6 |
-| `CMemoryAllocatorVariableSize` | 5 |
 
 Full per-candidate results are in `candidates.tsv`.

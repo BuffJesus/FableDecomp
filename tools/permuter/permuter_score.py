@@ -23,7 +23,7 @@ OBJDUMP = os.environ.get("OBJDUMP",
     r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe")
 DEFAULT_ORACLE = ROOT / "rebuild" / "oracles" / "auto-re-candidates.tsv"
 
-_DS = re.compile(r"^\s*[0-9a-fA-F]+\s+<(.+)>:$")
+_DS = re.compile(r"^\s*([0-9a-fA-F]+)\s+<(.+)>:$")
 _DB = re.compile(r"^\s*[0-9a-fA-F]+:\s+((?:[0-9a-fA-F]{2}\s+)+)")
 _RL = re.compile(r"^([0-9a-fA-F]{8})\s+\S+\s+.+$")
 
@@ -41,7 +41,9 @@ def _obj_text(obj, leaf):
             sec += 1; cur = None; continue
         s = _DS.match(line)
         if s:
-            cur = {"symbol": s.group(1), "section": sec, "bytes": bytearray()}; fns.append(cur); continue
+            if int(s.group(1), 16) == 0 or cur is None:
+                cur = {"symbol": s.group(2), "section": sec, "bytes": bytearray()}; fns.append(cur)
+            continue
         e = _DB.match(line)
         if e and cur is not None:
             cur["bytes"].extend(bytes.fromhex(e.group(1)))

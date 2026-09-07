@@ -1,0 +1,3 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct Node{Node* next;Node* previous;};static void** Run(void** out){*(unsigned long*)out&=0;Node* node=(Node*)malloc(0x10);if(!node)return 0;node->next=node;node->previous=node;*out=node;return out;}int main(){void* head=(void*)1;if(Run(&head)!=&head||!head)return 1;Node* node=(Node*)head;if(node->next!=node||node->previous!=node)return 2;((unsigned char*)node)[0xf]=0x5a;free(node);puts("CIRCULARINIT_005d84b6_PASS");return 0;}

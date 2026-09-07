@@ -7,7 +7,7 @@ Without --land: dry-run report only. With --land: writes src/tests/catalog/oracl
 Candidates without an authoritative manifest function start are always rejected. The prune
 flag removes already-landed outside-manifest rows from this specific authoring payload. The
 report mode strictly validates and prunes a saved mid-function-fragment audit."""
-import csv, json, re, subprocess, os, html, sys
+import csv, json, re, subprocess, os, sys
 from pathlib import Path
 
 ROOT = Path(r"D:\Documents\FableTLC")
@@ -18,16 +18,23 @@ QFE = Path(os.environ.get("VC71_QFE", r"D:\Tools\vc71-qfe4035"))
 CL_EXE = VC / "bin" / "cl.exe"   # active compiler (reset by use_qfe())
 CC_BIN = VC / "bin"             # active compiler's bin dir (for PATH)
 SP = ROOT / "rebuild" / "build"
-WORK_ROOT = SP / "landverify"; WORK_ROOT.mkdir(parents=True, exist_ok=True)
+WORK_ROOT = Path(os.environ.get("LANDVERIFY_WORK", SP / "landverify"))
+WORK_ROOT.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from artifact_layout import shard_directory
 
 OBJDUMP = r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe"
-DS = re.compile(r"^\s*[0-9a-fA-F]+\s+<(.+)>:$"); DB = re.compile(r"^\s*[0-9a-fA-F]+:\s+((?:[0-9a-fA-F]{2}\s+)+)")
+DS = re.compile(r"^\s*([0-9a-fA-F]+)\s+<(.+)>:$"); DB = re.compile(r"^\s*[0-9a-fA-F]+:\s+((?:[0-9a-fA-F]{2}\s+)+)")
 RL = re.compile(r"^([0-9a-fA-F]{8})\s+\S+\s+.+$")
 
 def vc71(s):
-    s = html.unescape(s).replace("__thiscall", "__fastcall")
+    # Agent payloads sometimes encode the five XML entities, but blanket
+    # html.unescape() also rewrites valid C++ tokens such as `&empty;` to U+2205.
+    # Decode only the markup entities that can actually wrap source text.
+    for encoded, decoded in (("&lt;", "<"), ("&gt;", ">"), ("&quot;", '"'),
+                             ("&apos;", "'"), ("&amp;", "&")):
+        s = s.replace(encoded, decoded)
+    s = s.replace("__thiscall", "__fastcall")
     return "\n".join(l for l in s.splitlines() if "static_assert" not in l)
 
 def obj_text(path, leaf):
@@ -36,7 +43,16 @@ def obj_text(path, leaf):
     for line in pr.stdout.splitlines():
         if line.startswith("Disassembly of section .text:"): sec+=1;cur=None;continue
         s=DS.match(line)
-        if s: cur={"symbol":s.group(1),"section":sec,"bytes":bytearray()};fns.append(cur);continue
+        if s:
+            # COFF objdump prints basic-block labels (for example `$L779`) with
+            # the same header syntax as function symbols. They are non-zero
+            # offsets within the current .text contribution and must not split
+            # the enclosing function, or parity sees only the prologue through
+            # the first switch label. Real functions in these VC7.1 objects
+            # begin at offset zero in their own .text/COMDAT contribution.
+            if int(s.group(1), 16) == 0 or cur is None:
+                cur={"symbol":s.group(2),"section":sec,"bytes":bytearray()};fns.append(cur)
+            continue
         e=DB.match(line)
         if e and cur is not None: cur["bytes"].extend(bytes.fromhex(e.group(1)))
     if not fns: raise RuntimeError("no funcs")
@@ -243,6 +259,58 @@ def prune_fragment_report(report_path, catp):
     )
     prune_outside_manifest(addresses, catp)
 
+BASE_FLAGS=["/O2","/Oy","/W3"]
+# Extra flag variants tried when the base flags miss. Retail Fable.exe was built
+# by VC7.1 QFE 4035, whose /GS stack-cookie and /Oa (assume-no-aliasing) codegen
+# differ from our RTM 3077. Several functions only reach byte-parity with these;
+# BASE_FLAGS is always tried first so a win here can only upgrade a DIFFER, never
+# regress an existing match. The winning extra flags are recorded per-catalog-entry
+# (CompilerFlags) so the real build reproduces the exact retail bytes.
+EXTRA_FLAGSETS=[[], ["/GS"], ["/Oa"], ["/GS","/Oa"]]
+
+def parity_of(srctext, addr, leaf, retail, work, e, extra=(), base_flags=None, text_extractor=None):
+    """Compile one TU and grade its .text against the retail oracle bytes.
+
+    Returns (status, built_bytes, section). Status is MATCH / RELOCATION_MATCH /
+    DIFFER(NvM) / SRC_FAIL / OBJDUMP_ERR. Module-level so retype_landed.py and the
+    jump-table lander can reuse it; `text_extractor` swaps obj_text for the raw-COFF
+    reader when a function embeds a jump table."""
+    flags = list(BASE_FLAGS if base_flags is None else base_flags)
+    extract = text_extractor or obj_text
+    sp=work/f"{addr}.cpp"; sp.write_text(srctext,encoding="utf-8")
+    obj=work/f"{addr}.obj"; obj.unlink(missing_ok=True)
+    cp=cl(["/nologo","/c"]+flags+list(extra)+[f"/Fo{obj}",str(sp)],e)
+    if cp.returncode or not obj.exists(): return "SRC_FAIL",None,None
+    try: built,sec,_=extract(obj,leaf)
+    except Exception: return "OBJDUMP_ERR",None,None
+    rel=obj_relocs(obj,sec)
+    if retail==built: return "MATCH",built,sec
+    if mask(retail,rel)==mask(built,rel): return "RELOCATION_MATCH",built,sec
+    return f"DIFFER({len(built)}v{len(retail)})",built,sec
+
+def behaviour_of(test_text, addr, patt, work, e, sobj=None):
+    """Compile+link+run the behaviour test. PASS / FAIL / TCC_FAIL / LINK_FAIL.
+
+    Tries a self-contained test link first, then falls back to linking the source
+    object (`sobj`, the last parity_of() compile) with the test object."""
+    tp=work/f"{addr}.test.cpp"; tp.write_text(test_text,encoding="utf-8")
+    tobj=work/f"{addr}.t.obj"; exe=work/f"{addr}.exe"; tobj.unlink(missing_ok=True); exe.unlink(missing_ok=True)
+    tc=cl(["/nologo","/c","/Od","/W3",f"/Fo{tobj}",str(tp)],e)
+    if tc.returncode!=0 or not tobj.exists():
+        return "TCC_FAIL"
+    def _run_exe():
+        rn=subprocess.run([str(exe)],capture_output=True,text=True,env=e)
+        return "PASS" if (rn.returncode==0 and re.search(re.escape(patt),rn.stdout or "")) else "FAIL"
+    lk=subprocess.run([str(VC/"bin"/"link.exe"),"/nologo",f"/out:{exe}",str(tobj)],capture_output=True,text=True,env=e)
+    if lk.returncode==0 and exe.exists():
+        return _run_exe()
+    if sobj is not None and Path(sobj).exists():
+        exe.unlink(missing_ok=True)
+        lk2=subprocess.run([str(VC/"bin"/"link.exe"),"/nologo",f"/out:{exe}",str(sobj),str(tobj)],capture_output=True,text=True,env=e)
+        if lk2.returncode==0 and exe.exists():
+            return _run_exe()
+    return "LINK_FAIL"
+
 def main():
     catp = ROOT/"rebuild"/"build_candidates.ps1"
     if "--prune-fragment-report" in sys.argv:
@@ -295,25 +363,6 @@ def main():
     if prune:
         prune_outside_manifest(outside_manifest, catp)
     landed_addrs = cataloged_addresses(catp)
-    BASE_FLAGS=["/O2","/Oy","/W3"]
-    # Extra flag variants tried when the base flags miss. Retail Fable.exe was built
-    # by VC7.1 QFE 4035, whose /GS stack-cookie and /Oa (assume-no-aliasing) codegen
-    # differ from our RTM 3077. Several functions only reach byte-parity with these;
-    # BASE_FLAGS is always tried first so a win here can only upgrade a DIFFER, never
-    # regress an existing match. The winning extra flags are recorded per-catalog-entry
-    # (CompilerFlags) so the real build reproduces the exact retail bytes.
-    EXTRA_FLAGSETS=[[], ["/GS"], ["/Oa"], ["/GS","/Oa"]]
-    def parity_of(srctext, addr, leaf, retail, work, extra=()):
-        sp=work/f"{addr}.cpp"; sp.write_text(srctext,encoding="utf-8")
-        obj=work/f"{addr}.obj"; obj.unlink(missing_ok=True)
-        cp=cl(["/nologo","/c"]+BASE_FLAGS+list(extra)+[f"/Fo{obj}",str(sp)],e)
-        if cp.returncode or not obj.exists(): return "SRC_FAIL",None,None
-        try: built,sec,_=obj_text(obj,leaf)
-        except Exception: return "OBJDUMP_ERR",None,None
-        rel=obj_relocs(obj,sec)
-        if retail==built: return "MATCH",built,sec
-        if mask(retail,rel)==mask(built,rel): return "RELOCATION_MATCH",built,sec
-        return f"DIFFER({len(built)}v{len(retail)})",built,sec
     print(f"{'addr':10} {'parity':16} {'behav':6} name")
     for c in data:
         addr=c["address"].lower().replace("0x","")
@@ -326,17 +375,16 @@ def main():
         if not o: print(f"{addr:10} {'NO_ORACLE':16} {'-':6} {name}"); continue
         work=shard_directory(WORK_ROOT, addr, leaf=True); work.mkdir(parents=True, exist_ok=True)
         src0=vc71(c["source_cpp"]); tst=vc71(c["test_cpp"]); patt=c["pass_pattern"]; mod=c.get("module","_global")
-        tp=work/f"{addr}.test.cpp"; tp.write_text(tst,encoding="utf-8")
         retail=bytes.fromhex(o["bytes"])
         # try base source/flags, then a pragma x extra-flag sweep (permuter integrated).
-        src=src0; winflags=[]; st,_,_=parity_of(src, addr, leaf, retail, work)
+        src=src0; winflags=[]; st,_,_=parity_of(src, addr, leaf, retail, work, e)
         if not st.startswith(("MATCH","RELOCATION")):
             done=False
             for xf in EXTRA_FLAGSETS:
                 for P in PRAGMAS:
                     if not xf and not P: continue  # already tried base above
                     cand=(P+"\n"+src0) if P else src0
-                    st2,_,_=parity_of(cand, addr, leaf, retail, work, extra=xf)
+                    st2,_,_=parity_of(cand, addr, leaf, retail, work, e, extra=xf)
                     if st2.startswith(("MATCH","RELOCATION")):
                         src=cand; winflags=xf
                         tag=(P.split('(')[1].split(',')[0] if P else "")
@@ -345,29 +393,9 @@ def main():
                 if done: break
         # recompile the winning (src, winflags) last so sobj holds the winning object
         if st.startswith(("MATCH","RELOCATION")):
-            parity_of(src, addr, leaf, retail, work, extra=winflags)
-        tobj=work/f"{addr}.t.obj"; exe=work/f"{addr}.exe"; tobj.unlink(missing_ok=True); exe.unlink(missing_ok=True)
+            parity_of(src, addr, leaf, retail, work, e, extra=winflags)
         sobj=work/f"{addr}.obj"  # source object from the last parity_of(src) compile
-        beh="TCC_FAIL"
-        tc=cl(["/nologo","/c","/Od","/W3",f"/Fo{tobj}",str(tp)],e)
-        if tc.returncode==0 and tobj.exists():
-            def _run_exe():
-                rn=subprocess.run([str(exe)],capture_output=True,text=True,env=e)
-                return "PASS" if (rn.returncode==0 and re.search(re.escape(patt),rn.stdout or "")) else "FAIL"
-            # 1) test-only link (self-contained test)
-            lk=subprocess.run([str(VC/"bin"/"link.exe"),"/nologo",f"/out:{exe}",str(tobj)],capture_output=True,text=True,env=e)
-            if lk.returncode==0 and exe.exists():
-                beh=_run_exe()
-            else:
-                # 2) fallback: link source.obj + test.obj together (thunk/accessor where the
-                #    tested fn lives in source and the test provides its _impl mocks). Duplicate
-                #    symbols just fail again -> no regression vs the test-only LINK_FAIL.
-                beh="LINK_FAIL"
-                if sobj.exists():
-                    exe.unlink(missing_ok=True)
-                    lk2=subprocess.run([str(VC/"bin"/"link.exe"),"/nologo",f"/out:{exe}",str(sobj),str(tobj)],capture_output=True,text=True,env=e)
-                    if lk2.returncode==0 and exe.exists():
-                        beh=_run_exe()
+        beh=behaviour_of(tst, addr, patt, work, e, sobj)
         print(f"{addr:10} {st:16} {beh:6} {name}")
         if st.startswith(("MATCH","RELOCATION_MATCH")) and beh=="PASS":
             base=make_base(mod, leaf, addr)

@@ -1,3 +1,6 @@
+// RE_AGENT_SEMANTIC_REVIEW: generated register-ABI shims hard-code unrelated
+// 0x0040D959/0x00488DC2 targets where retail calls 0x00449970/0x00487DC0;
+// ownership and action temporaries must be recovered from the genuine callees.
 #include <cstddef>
 #include <cstdint>
 #include <new>

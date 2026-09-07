@@ -1,0 +1,1434 @@
+﻿INFO  Using log config file: jar:file:/D:/Subuwu/tools/ghidra-public/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (1818 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (4157 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\GnuDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BytePatterns\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\JVM\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SystemEmulation\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\8051\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FileFormats\ghidra_scripts
+    D:\Documents\FableTLC\tools\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BSim\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\VersionTracking\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PDB\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\PIC\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Base\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Extensions\XEXLoaderWV\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    C:\Users\Cornelio\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\DATA\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Decompiler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\Atmel\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PyGhidra\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FunctionID\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessAnalyzer)  
+INFO  Opening project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessProject)  
+INFO  REPORT: Processing project file: /FableWin.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: DecompByName.java 'UpdateThresholdPointArea' 'EngineLandscapeLODMap'  (HeadlessAnalyzer)  
+INFO  SCRIPT: D:\Documents\FableTLC\tools\ghidra_scripts\DecompByName.java (HeadlessAnalyzer)  
+INFO  DecompByName.java> ==================== ?LockThresholdPoint@CEngineLandscapeLODMap@@QAEXJJJ@Z @ 01796431 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02e01a90) */
+
+void __thiscall
+_LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z
+          (int param_1,uint param_2,uint param_3,int param_4)
+
+{
+  int iVar1;
+  uint uStack_c;
+  
+  if (((((-1 < (int)param_2) && (-1 < (int)param_3)) && ((int)param_2 <= *(int *)(param_1 + 0xc)))
+      && (((int)param_3 <= *(int *)(param_1 + 0x10) &&
+          (iVar1 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2,param_3),
+          iVar1 < param_4)))) &&
+     ((_SetLODBandThreshold_CEngineLandscapeLODMap__AAEXJJJ_Z(param_2,param_3,param_4), param_2 != 0
+      || (param_3 != 0)))) {
+    for (uStack_c = 1; ((param_2 & uStack_c) == 0 && ((param_3 & uStack_c) == 0));
+        uStack_c = uStack_c << 1) {
+    }
+    if ((param_2 & uStack_c) == 0) {
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z(param_2 - uStack_c,param_3,param_4);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z(param_2 + uStack_c,param_3,param_4);
+    }
+    else if ((param_3 & uStack_c) == 0) {
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z(param_2,param_3 - uStack_c,param_4);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z(param_2,param_3 + uStack_c,param_4);
+    }
+    else {
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z
+                (param_2 - uStack_c,param_3 - uStack_c,param_4);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z
+                (param_2 + uStack_c,param_3 - uStack_c,param_4);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z
+                (param_2 - uStack_c,param_3 + uStack_c,param_4);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z
+                (param_2 + uStack_c,param_3 + uStack_c,param_4);
+    }
+  }
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?UpdateThresholdPoint@CEngineLandscapeLODMap@@QAEXJJM@Z @ 01796fc6 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02e020e7) */
+
+void __thiscall
+_UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z
+          (int param_1,uint param_2,uint param_3,undefined4 param_4)
+
+{
+  int iVar1;
+  int iVar2;
+  float10 fVar3;
+  int iStack_40;
+  int iStack_3c;
+  int iStack_38;
+  int iStack_34;
+  int iStack_30;
+  int iStack_2c;
+  int iStack_28;
+  int iStack_24;
+  int iStack_20;
+  int iStack_10;
+  uint uStack_c;
+  
+  if ((((-1 < (int)param_2) && (-1 < (int)param_3)) && ((int)param_2 <= *(int *)(param_1 + 0xc))) &&
+     ((int)param_3 <= *(int *)(param_1 + 0x10))) {
+    iVar1 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2,param_3);
+    iStack_10 = iVar1;
+    if (iVar1 == 0) {
+      fVar3 = (float10)_CalculateBaseZThreshold_CEngineLandscapeLODMap__AAEMJJM_Z
+                                 (param_2,param_3,param_4);
+      iStack_20 = _GetLODZBandAtZ_CEngineLandscapeRenderer__QAEJM_Z((float)fVar3);
+      if (iStack_20 < 0) {
+        iStack_20 = iVar1;
+      }
+      iStack_10 = iStack_20;
+    }
+    uStack_c = 1;
+    if ((param_2 == 0) && (param_3 == 0)) {
+      if (iVar1 < iStack_10) {
+        _SetLODBandThreshold_CEngineLandscapeLODMap__AAEXJJJ_Z(0,0,iStack_10);
+      }
+    }
+    else {
+      for (; ((param_2 & uStack_c) == 0 && ((param_3 & uStack_c) == 0)); uStack_c = uStack_c << 1) {
+      }
+      if ((param_2 & param_3 & uStack_c) == 0) {
+        if (1 < (int)uStack_c) {
+          if ((-1 < (int)(param_2 - (int)uStack_c / 2)) && (-1 < (int)(param_3 - (int)uStack_c / 2))
+             ) {
+            iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                              (param_2 - (int)uStack_c / 2,param_3 - (int)uStack_c / 2);
+            if (iVar2 < iStack_10) {
+              iStack_34 = iStack_10;
+            }
+            else {
+              iStack_34 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                    (param_2 - (int)uStack_c / 2,param_3 - (int)uStack_c / 2);
+            }
+            iStack_10 = iStack_34;
+          }
+          if (((int)((int)uStack_c / 2 + param_2) <= *(int *)(param_1 + 0xc)) &&
+             (-1 < (int)(param_3 - (int)uStack_c / 2))) {
+            iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                              ((int)uStack_c / 2 + param_2,param_3 - (int)uStack_c / 2);
+            if (iVar2 < iStack_10) {
+              iStack_38 = iStack_10;
+            }
+            else {
+              iStack_38 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                    ((int)uStack_c / 2 + param_2,param_3 - (int)uStack_c / 2);
+            }
+            iStack_10 = iStack_38;
+          }
+          if ((-1 < (int)(param_2 - (int)uStack_c / 2)) &&
+             ((int)((int)uStack_c / 2 + param_3) <= *(int *)(param_1 + 0x10))) {
+            iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                              (param_2 - (int)uStack_c / 2,(int)uStack_c / 2 + param_3);
+            if (iVar2 < iStack_10) {
+              iStack_3c = iStack_10;
+            }
+            else {
+              iStack_3c = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                    (param_2 - (int)uStack_c / 2,(int)uStack_c / 2 + param_3);
+            }
+            iStack_10 = iStack_3c;
+          }
+          if (((int)((int)uStack_c / 2 + param_2) <= *(int *)(param_1 + 0xc)) &&
+             ((int)((int)uStack_c / 2 + param_3) <= *(int *)(param_1 + 0x10))) {
+            iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                              ((int)uStack_c / 2 + param_2,(int)uStack_c / 2 + param_3);
+            if (iVar2 < iStack_10) {
+              iStack_40 = iStack_10;
+            }
+            else {
+              iStack_40 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                    ((int)uStack_c / 2 + param_2,(int)uStack_c / 2 + param_3);
+            }
+            iStack_10 = iStack_40;
+          }
+        }
+      }
+      else {
+        if (-1 < (int)(param_2 - uStack_c)) {
+          iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2 - uStack_c,param_3)
+          ;
+          if (iVar2 < iStack_10) {
+            iStack_24 = iStack_10;
+          }
+          else {
+            iStack_24 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                  (param_2 - uStack_c,param_3);
+          }
+          iStack_10 = iStack_24;
+        }
+        if ((int)(param_2 + uStack_c) <= *(int *)(param_1 + 0xc)) {
+          iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2 + uStack_c,param_3)
+          ;
+          if (iVar2 < iStack_10) {
+            iStack_28 = iStack_10;
+          }
+          else {
+            iStack_28 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                  (param_2 + uStack_c,param_3);
+          }
+          iStack_10 = iStack_28;
+        }
+        if (-1 < (int)(param_3 - uStack_c)) {
+          iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2,param_3 - uStack_c)
+          ;
+          if (iVar2 < iStack_10) {
+            iStack_2c = iStack_10;
+          }
+          else {
+            iStack_2c = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                  (param_2,param_3 - uStack_c);
+          }
+          iStack_10 = iStack_2c;
+        }
+        if ((int)(param_3 + uStack_c) <= *(int *)(param_1 + 0x10)) {
+          iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2,param_3 + uStack_c)
+          ;
+          if (iVar2 < iStack_10) {
+            iStack_30 = iStack_10;
+          }
+          else {
+            iStack_30 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                  (param_2,param_3 + uStack_c);
+          }
+          iStack_10 = iStack_30;
+        }
+      }
+      if (iVar1 < iStack_10) {
+        _SetLODBandThreshold_CEngineLandscapeLODMap__AAEXJJJ_Z(param_2,param_3,iStack_10);
+        if ((param_2 & uStack_c) == 0) {
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z
+                    (param_2 - uStack_c,param_3,param_4);
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z
+                    (param_2 + uStack_c,param_3,param_4);
+        }
+        else if ((param_3 & uStack_c) == 0) {
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z
+                    (param_2,param_3 - uStack_c,param_4);
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z
+                    (param_2,param_3 + uStack_c,param_4);
+        }
+        else {
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z
+                    (param_2 - uStack_c,param_3 - uStack_c,param_4);
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z
+                    (param_2 + uStack_c,param_3 - uStack_c,param_4);
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z
+                    (param_2 - uStack_c,param_3 + uStack_c,param_4);
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z
+                    (param_2 + uStack_c,param_3 + uStack_c,param_4);
+        }
+      }
+    }
+  }
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?InvalidateThresholdPoint@CEngineLandscapeLODMap@@QAEXJJ@Z @ 017a6142 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02e01ecc) */
+
+void __thiscall
+_InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z(int param_1,uint param_2,uint param_3)
+
+{
+  int iVar1;
+  uint uStack_c;
+  
+  if (((((-1 < (int)param_2) && (-1 < (int)param_3)) && ((int)param_2 <= *(int *)(param_1 + 0xc)))
+      && (((int)param_3 <= *(int *)(param_1 + 0x10) &&
+          (iVar1 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2,param_3),
+          iVar1 != 0)))) &&
+     ((_SetLODBandThreshold_CEngineLandscapeLODMap__AAEXJJJ_Z(param_2,param_3,0), param_2 != 0 ||
+      (param_3 != 0)))) {
+    for (uStack_c = 1; ((param_2 & uStack_c) == 0 && ((param_3 & uStack_c) == 0));
+        uStack_c = uStack_c << 1) {
+    }
+    if ((param_2 & uStack_c) == 0) {
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z(param_2 - uStack_c,param_3);
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z(param_2 + uStack_c,param_3);
+    }
+    else if ((param_3 & uStack_c) == 0) {
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z(param_2,param_3 - uStack_c);
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z(param_2,param_3 + uStack_c);
+    }
+    else {
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z
+                (param_2 - uStack_c,param_3 - uStack_c);
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z
+                (param_2 + uStack_c,param_3 - uStack_c);
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z
+                (param_2 - uStack_c,param_3 + uStack_c);
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z
+                (param_2 + uStack_c,param_3 + uStack_c);
+    }
+  }
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ??1CEngineLandscapeLODMap@@UAE@XZ @ 017ab9bc ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+void __fastcall __1CEngineLandscapeLODMap__UAE_XZ(undefined4 *param_1)
+
+{
+  *param_1 = CEngineLandscapeLODMap::vftable;
+  operator_delete((void *)param_1[1]);
+  param_1[1] = 0;
+  __1CBaseClassNonCopyable__MAE_XZ();
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ??_GCEngineLandscapeLODMap@@UAEPAXI@Z @ 017ccf04 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+void * __thiscall ___GCEngineLandscapeLODMap__UAEPAXI_Z(void *param_1,uint param_2)
+
+{
+  __1CEngineLandscapeLODMap__UAE_XZ();
+  if ((param_2 & 1) != 0) {
+    operator_delete(param_1);
+  }
+  return param_1;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?SetLODBandThreshold@CEngineLandscapeLODMap@@AAEXJJJ@Z @ 017d690f ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+void __thiscall
+_SetLODBandThreshold_CEngineLandscapeLODMap__AAEXJJJ_Z
+          (int param_1,int param_2,int param_3,int param_4)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  undefined1 *puVar4;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined4 uVar7;
+  undefined4 uVar8;
+  undefined1 auStack_48 [8];
+  undefined1 auStack_40 [8];
+  undefined1 auStack_38 [11];
+  char cStack_2d;
+  undefined1 auStack_2c [8];
+  undefined1 auStack_24 [8];
+  undefined1 auStack_1c [11];
+  char cStack_11;
+  void *pvStack_10;
+  undefined1 *puStack_c;
+  int iStack_8;
+  
+  iStack_8 = 0xffffffff;
+  puStack_c = &LAB_03e7cc60;
+  pvStack_10 = ExceptionList;
+  if ((param_4 < 0) || (ExceptionList = &pvStack_10, 0x3f < param_4)) {
+    ExceptionList = &pvStack_10;
+    __0CWideString__QAE_PB_W_Z
+              (
+              L"e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fableengine\\engine_landscape_lod_map.hpp"
+              );
+    iStack_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+    iStack_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z("band>=0 && band<64",0xffffffff);
+    iStack_8._0_1_ = 2;
+    uVar8 = 1;
+    uVar7 = 0x41;
+    puVar6 = auStack_1c;
+    puVar5 = auStack_24;
+    puVar4 = auStack_2c;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar4,puVar5,puVar6,0x41,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar4,puVar5,puVar6,uVar7,uVar8);
+    cStack_11 = '\x01' - (cVar2 != '\x01');
+    iStack_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    iStack_8 = (uint)iStack_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    iStack_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if (cStack_11 != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+  }
+  if ((((param_2 < 0) || (param_3 < 0)) || (*(int *)(param_1 + 0xc) < param_2)) ||
+     (*(int *)(param_1 + 0x10) < param_3)) {
+    __0CWideString__QAE_PB_W_Z
+              (
+              L"e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fableengine\\engine_landscape_lod_map.hpp"
+              );
+    iStack_8 = 3;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+    iStack_8._0_1_ = 4;
+    __0CCharString__QAE_PBDJ_Z("x>=0 && y>=0 && x<=MapWidth && y<=MapHeight",0xffffffff);
+    iStack_8._0_1_ = 5;
+    uVar8 = 1;
+    uVar7 = 0x42;
+    puVar6 = auStack_38;
+    puVar5 = auStack_40;
+    puVar4 = auStack_48;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar4,puVar5,puVar6,0x42,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar4,puVar5,puVar6,uVar7,uVar8);
+    cStack_2d = '\x01' - (cVar2 != '\x01');
+    iStack_8._0_1_ = 4;
+    __1CCharString__QAE_XZ();
+    iStack_8 = CONCAT31(iStack_8._1_3_,3);
+    __1CCharString__QAE_XZ();
+    iStack_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if (cStack_2d != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+  }
+  *(undefined1 *)((*(int *)(param_1 + 0xc) + 1) * param_3 + param_2 + *(int *)(param_1 + 4)) =
+       (undefined1)param_4;
+  ExceptionList = pvStack_10;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?GetLODMap@CEngineLandscapeMap@@QAEPAVCEngineLandscapeLODMap@@XZ @ 017e64d1 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+undefined4 __fastcall _GetLODMap_CEngineLandscapeMap__QAEPAVCEngineLandscapeLODMap__XZ(int param_1)
+
+{
+  return *(undefined4 *)(param_1 + 0x74);
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z @ 017e6b5c ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+uint __thiscall
+_PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(int param_1,int param_2,int param_3)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  uint uVar4;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined1 *puVar7;
+  undefined4 uVar8;
+  undefined4 uVar9;
+  undefined1 auStack_2c [8];
+  undefined1 auStack_24 [8];
+  undefined1 auStack_1c [11];
+  char cStack_11;
+  void *pvStack_10;
+  undefined1 *puStack_c;
+  int iStack_8;
+  
+  iStack_8 = 0xffffffff;
+  puStack_c = &LAB_03e61bf8;
+  pvStack_10 = ExceptionList;
+  if ((((param_2 < 0) || (param_3 < 0)) || (*(int *)(param_1 + 0xc) < param_2)) ||
+     (*(int *)(param_1 + 0x10) < param_3)) {
+    ExceptionList = &pvStack_10;
+    __0CWideString__QAE_PB_W_Z
+              (
+              L"e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fableengine\\Engine_Landscape_lod_map.hpp"
+              );
+    iStack_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+    iStack_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z("x>=0 && y>=0 && x<=MapWidth && y<=MapHeight",0xffffffff);
+    iStack_8._0_1_ = 2;
+    uVar9 = 1;
+    uVar8 = 0x4a;
+    puVar7 = auStack_1c;
+    puVar6 = auStack_24;
+    puVar5 = auStack_2c;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0x4a,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar5,puVar6,puVar7,uVar8,uVar9);
+    cStack_11 = '\x01' - (cVar2 != '\x01');
+    iStack_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    iStack_8 = (uint)iStack_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    iStack_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if (cStack_11 != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar4 = (*pcVar1)();
+        return uVar4;
+      }
+    }
+  }
+  ExceptionList = pvStack_10;
+  return (uint)*(byte *)(*(int *)(param_1 + 4) + (*(int *)(param_1 + 0xc) + 1) * param_3 + param_2);
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?CalculateBaseZThreshold@CEngineLandscapeLODMap@@AAEMJJM@Z @ 01818c10 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+float10 __thiscall
+_CalculateBaseZThreshold_CEngineLandscapeLODMap__AAEMJJM_Z
+          (int param_1,uint param_2,uint param_3,float param_4)
+
+{
+  float fVar1;
+  float10 fVar2;
+  float10 fVar3;
+  float fStack_7c;
+  uint uStack_64;
+  uint uStack_60;
+  undefined1 auStack_5c [12];
+  float fStack_50;
+  float fStack_4c;
+  uint uStack_48;
+  uint uStack_44;
+  undefined1 auStack_40 [20];
+  uint uStack_2c;
+  float fStack_28;
+  float fStack_24;
+  float fStack_20;
+  undefined1 auStack_1c [20];
+  float fStack_8;
+  
+  for (uStack_48 = 1; (((param_2 | param_3) & uStack_48) == 0 && (uStack_48 != 0));
+      uStack_48 = uStack_48 << 1) {
+  }
+  if ((param_2 & uStack_48) == 0) {
+    uStack_44 = param_2;
+    uStack_2c = param_3 - uStack_48;
+    uStack_64 = param_2;
+    uStack_60 = param_3 + uStack_48;
+  }
+  else {
+    uStack_64 = uStack_48;
+    if ((param_3 & uStack_48) == 0) {
+      uStack_44 = -uStack_48;
+      uStack_2c = param_3;
+      uStack_60 = param_3;
+    }
+    else {
+      if (((param_2 ^ param_3) & uStack_48 << 1) == 0) {
+        uStack_44 = -uStack_48;
+      }
+      else {
+        uStack_64 = -uStack_48;
+        uStack_44 = uStack_48;
+      }
+      uStack_2c = param_3 - uStack_48;
+      uStack_60 = param_3 + uStack_48;
+    }
+    uStack_44 = param_2 + uStack_44;
+    uStack_64 = param_2 + uStack_64;
+  }
+  fVar1 = _DAT_0434bb8c;
+  if (((((-1 < (int)uStack_44) && (-1 < (int)uStack_64)) &&
+       ((int)uStack_44 <= *(int *)(param_1 + 0xc))) &&
+      (((int)uStack_64 <= *(int *)(param_1 + 0xc) && (-1 < (int)uStack_2c)))) &&
+     ((-1 < (int)uStack_60 &&
+      (((int)uStack_2c <= *(int *)(param_1 + 0x10) && ((int)uStack_60 <= *(int *)(param_1 + 0x10))))
+      ))) {
+    fVar2 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(param_2,param_3);
+    fStack_50 = (float)fVar2;
+    fVar2 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(uStack_44,uStack_2c);
+    fStack_20 = (float)fVar2;
+    fVar2 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(uStack_64,uStack_60);
+    fStack_8 = (fStack_20 + (float)fVar2) / (float)_DAT_0401df60;
+    fVar2 = (float10)_fabs__YAMM_Z(fStack_8 - fStack_50);
+    fStack_24 = (float)fVar2;
+    fStack_28 = (fStack_24 * (float)_DAT_04351ad0) / param_4;
+    _PeekMapNormal_CEngineMap__QBE_AVC3DVector__JJ_Z(auStack_5c,param_2,param_3);
+    _PeekMapNormal_CEngineMap__QBE_AVC3DVector__JJ_Z(auStack_1c,uStack_44,uStack_2c);
+    _PeekMapNormal_CEngineMap__QBE_AVC3DVector__JJ_Z(auStack_40,uStack_64,uStack_60);
+    fVar2 = (float10)_Dot_C3DVector__QBE_BMABV1__Z(auStack_1c);
+    fVar3 = (float10)_Dot_C3DVector__QBE_BMABV1__Z(auStack_40);
+    if (fVar3 <= (float10)(double)fVar2) {
+      fVar2 = (float10)_Dot_C3DVector__QBE_BMABV1__Z(auStack_40);
+    }
+    else {
+      fVar2 = (float10)_Dot_C3DVector__QBE_BMABV1__Z(auStack_1c);
+    }
+    fStack_7c = (float)fVar2;
+    fStack_4c = 1.0 - fStack_7c;
+    __0C2DVector__QAE_MM_Z((float)(int)(param_2 - uStack_44),(float)(int)(param_3 - uStack_2c));
+    fVar2 = (float10)_GetMagnitude_C2DVector__QBEMXZ();
+    fVar1 = ((float)(fVar2 * (float10)fStack_4c) * (float)_DAT_04351ad0) / param_4;
+    if (fVar1 < fStack_28) {
+      fVar1 = fStack_28;
+    }
+  }
+  return (float10)fVar1;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ??0CEngineLandscapeLODMap@@QAE@PBVCEngineMap@@@Z @ 01826d10 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+undefined4 * __thiscall
+__0CEngineLandscapeLODMap__QAE_PBVCEngineMap___Z(undefined4 *param_1,undefined4 param_2)
+
+{
+  undefined4 uVar1;
+  void *pvVar2;
+  void *pvStack_10;
+  undefined1 *puStack_c;
+  undefined4 uStack_8;
+  
+  uStack_8 = 0xffffffff;
+  puStack_c = &LAB_03e7cc18;
+  pvStack_10 = ExceptionList;
+  ExceptionList = &pvStack_10;
+  FID_conflict_IConnectionPoint();
+  uStack_8 = 0;
+  *param_1 = CEngineLandscapeLODMap::vftable;
+  param_1[2] = param_2;
+  uVar1 = _PeekWidth_CEngineMap__QBEJXZ();
+  param_1[3] = uVar1;
+  uVar1 = _PeekHeight_CEngineMap__QBEJXZ();
+  param_1[4] = uVar1;
+  pvVar2 = operator_new__((param_1[3] + 1) * (param_1[4] + 1));
+  param_1[1] = pvVar2;
+  memset((void *)param_1[1],0,(param_1[3] + 1) * (param_1[4] + 1));
+  ExceptionList = pvStack_10;
+  return param_1;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?GetMemoryStats@CEngineLandscapeLODMap@@QAEXPAUCLandscapeMemoryStats@@@Z @ 01836ae4 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+void __thiscall
+_GetMemoryStats_CEngineLandscapeLODMap__QAEXPAUCLandscapeMemoryStats___Z(int param_1,int param_2)
+
+{
+  *(int *)(param_2 + 0x28) =
+       (*(int *)(param_1 + 0xc) + 1) * (*(int *)(param_1 + 0x10) + 1) + *(int *)(param_2 + 0x28);
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?UpdateThresholdPointArea@CEngineLandscapeLODMap@@QAEXJJJJM@Z @ 018386aa ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02e0274f) */
+/* WARNING: Removing unreachable block (ram,0x02e0272d) */
+
+void _UpdateThresholdPointArea_CEngineLandscapeLODMap__QAEXJJJJM_Z
+               (int param_1,int param_2,int param_3,int param_4,undefined4 param_5)
+
+{
+  undefined4 uStack_c;
+  undefined4 uStack_8;
+  
+  for (uStack_8 = param_2; uStack_8 <= param_2 + param_4; uStack_8 = uStack_8 + 1) {
+    for (uStack_c = param_1; uStack_c <= param_1 + param_3; uStack_c = uStack_c + 1) {
+      _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z(uStack_c,uStack_8,param_5);
+    }
+  }
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?InvalidateThresholdPointArea@CEngineLandscapeLODMap@@QAEXJJJJ@Z @ 01859977 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02e026cf) */
+/* WARNING: Removing unreachable block (ram,0x02e026ad) */
+
+void _InvalidateThresholdPointArea_CEngineLandscapeLODMap__QAEXJJJJ_Z
+               (int param_1,int param_2,int param_3,int param_4)
+
+{
+  undefined4 uStack_c;
+  undefined4 uStack_8;
+  
+  for (uStack_8 = param_2; uStack_8 <= param_2 + param_4; uStack_8 = uStack_8 + 1) {
+    for (uStack_c = param_1; uStack_c <= param_1 + param_3; uStack_c = uStack_c + 1) {
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z(uStack_c,uStack_8);
+    }
+  }
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?PeekLODBandThreshold@CEngineLandscapeLODMap@@QBEJJJ@Z @ 02ce7770 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+uint __thiscall
+_PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(int param_1,int param_2,int param_3)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  uint uVar4;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined1 *puVar7;
+  undefined4 uVar8;
+  undefined4 uVar9;
+  undefined1 local_2c [8];
+  undefined1 local_24 [8];
+  undefined1 local_1c [11];
+  char local_11;
+  void *local_10;
+  undefined1 *puStack_c;
+  int local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03e61bf8;
+  local_10 = ExceptionList;
+  if ((((param_2 < 0) || (param_3 < 0)) || (*(int *)(param_1 + 0xc) < param_2)) ||
+     (*(int *)(param_1 + 0x10) < param_3)) {
+    ExceptionList = &local_10;
+    __0CWideString__QAE_PB_W_Z
+              (
+              L"e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fableengine\\Engine_Landscape_lod_map.hpp"
+              );
+    local_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+    local_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z("x>=0 && y>=0 && x<=MapWidth && y<=MapHeight",0xffffffff);
+    local_8._0_1_ = 2;
+    uVar9 = 1;
+    uVar8 = 0x4a;
+    puVar7 = local_1c;
+    puVar6 = local_24;
+    puVar5 = local_2c;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0x4a,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar5,puVar6,puVar7,uVar8,uVar9);
+    local_11 = '\x01' - (cVar2 != '\x01');
+    local_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    local_8 = (uint)local_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if (local_11 != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar4 = (*pcVar1)();
+        return uVar4;
+      }
+    }
+  }
+  ExceptionList = local_10;
+  return (uint)*(byte *)(*(int *)(param_1 + 4) + (*(int *)(param_1 + 0xc) + 1) * param_3 + param_2);
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?GetLODMap@CEngineLandscapeMap@@QAEPAVCEngineLandscapeLODMap@@XZ @ 02ce78d0 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+undefined4 __fastcall _GetLODMap_CEngineLandscapeMap__QAEPAVCEngineLandscapeLODMap__XZ(int param_1)
+
+{
+  return *(undefined4 *)(param_1 + 0x74);
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ??0CEngineLandscapeLODMap@@QAE@PBVCEngineMap@@@Z @ 02e01310 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+undefined4 * __thiscall
+__0CEngineLandscapeLODMap__QAE_PBVCEngineMap___Z(undefined4 *param_1,undefined4 param_2)
+
+{
+  undefined4 uVar1;
+  void *pvVar2;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03e7cc18;
+  local_10 = ExceptionList;
+  ExceptionList = &local_10;
+  FID_conflict_IConnectionPoint();
+  local_8 = 0;
+  *param_1 = CEngineLandscapeLODMap::vftable;
+  param_1[2] = param_2;
+  uVar1 = _PeekWidth_CEngineMap__QBEJXZ();
+  param_1[3] = uVar1;
+  uVar1 = _PeekHeight_CEngineMap__QBEJXZ();
+  param_1[4] = uVar1;
+  pvVar2 = operator_new__((param_1[3] + 1) * (param_1[4] + 1));
+  param_1[1] = pvVar2;
+  memset((void *)param_1[1],0,(param_1[3] + 1) * (param_1[4] + 1));
+  ExceptionList = local_10;
+  return param_1;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ??_GCEngineLandscapeLODMap@@UAEPAXI@Z @ 02e01410 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+void * __thiscall ___GCEngineLandscapeLODMap__UAEPAXI_Z(void *param_1,uint param_2)
+
+{
+  __1CEngineLandscapeLODMap__UAE_XZ();
+  if ((param_2 & 1) != 0) {
+    operator_delete(param_1);
+  }
+  return param_1;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?GetMemoryStats@CEngineLandscapeLODMap@@QAEXPAUCLandscapeMemoryStats@@@Z @ 02e01450 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+void __thiscall
+_GetMemoryStats_CEngineLandscapeLODMap__QAEXPAUCLandscapeMemoryStats___Z(int param_1,int param_2)
+
+{
+  *(int *)(param_2 + 0x28) =
+       (*(int *)(param_1 + 0xc) + 1) * (*(int *)(param_1 + 0x10) + 1) + *(int *)(param_2 + 0x28);
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ??1CEngineLandscapeLODMap@@UAE@XZ @ 02e01490 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+void __fastcall __1CEngineLandscapeLODMap__UAE_XZ(undefined4 *param_1)
+
+{
+  *param_1 = CEngineLandscapeLODMap::vftable;
+  operator_delete((void *)param_1[1]);
+  param_1[1] = 0;
+  __1CBaseClassNonCopyable__MAE_XZ();
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?CalculateBaseZThreshold@CEngineLandscapeLODMap@@AAEMJJM@Z @ 02e014e0 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* [ported from ego_r via strfp] */
+
+float10 __thiscall
+_CalculateBaseZThreshold_CEngineLandscapeLODMap__AAEMJJM_Z
+          (int param_1,uint param_2,uint param_3,float param_4)
+
+{
+  float fVar1;
+  float10 fVar2;
+  float10 fVar3;
+  float local_7c;
+  uint local_64;
+  uint local_60;
+  undefined1 local_5c [12];
+  float local_50;
+  float local_4c;
+  uint local_48;
+  uint local_44;
+  undefined1 local_40 [20];
+  uint local_2c;
+  float local_28;
+  float local_24;
+  float local_20;
+  undefined1 local_1c [20];
+  float local_8;
+  
+  for (local_48 = 1; (((param_2 | param_3) & local_48) == 0 && (local_48 != 0));
+      local_48 = local_48 << 1) {
+  }
+  if ((param_2 & local_48) == 0) {
+    local_44 = param_2;
+    local_2c = param_3 - local_48;
+    local_64 = param_2;
+    local_60 = param_3 + local_48;
+  }
+  else {
+    local_64 = local_48;
+    if ((param_3 & local_48) == 0) {
+      local_44 = -local_48;
+      local_2c = param_3;
+      local_60 = param_3;
+    }
+    else {
+      if (((param_2 ^ param_3) & local_48 << 1) == 0) {
+        local_44 = -local_48;
+      }
+      else {
+        local_64 = -local_48;
+        local_44 = local_48;
+      }
+      local_2c = param_3 - local_48;
+      local_60 = param_3 + local_48;
+    }
+    local_44 = param_2 + local_44;
+    local_64 = param_2 + local_64;
+  }
+  fVar1 = _DAT_0434bb8c;
+  if (((((-1 < (int)local_44) && (-1 < (int)local_64)) && ((int)local_44 <= *(int *)(param_1 + 0xc))
+       ) && (((int)local_64 <= *(int *)(param_1 + 0xc) && (-1 < (int)local_2c)))) &&
+     ((-1 < (int)local_60 &&
+      (((int)local_2c <= *(int *)(param_1 + 0x10) && ((int)local_60 <= *(int *)(param_1 + 0x10))))))
+     ) {
+    fVar2 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(param_2,param_3);
+    local_50 = (float)fVar2;
+    fVar2 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(local_44,local_2c);
+    local_20 = (float)fVar2;
+    fVar2 = (float10)_PeekLandscapeHeight_CEngineMap__QBEMJJ_Z(local_64,local_60);
+    local_8 = (local_20 + (float)fVar2) / (float)_DAT_0401df60;
+    fVar2 = (float10)_fabs__YAMM_Z(local_8 - local_50);
+    local_24 = (float)fVar2;
+    local_28 = (local_24 * (float)_DAT_04351ad0) / param_4;
+    _PeekMapNormal_CEngineMap__QBE_AVC3DVector__JJ_Z(local_5c,param_2,param_3);
+    _PeekMapNormal_CEngineMap__QBE_AVC3DVector__JJ_Z(local_1c,local_44,local_2c);
+    _PeekMapNormal_CEngineMap__QBE_AVC3DVector__JJ_Z(local_40,local_64,local_60);
+    fVar2 = (float10)_Dot_C3DVector__QBE_BMABV1__Z(local_1c);
+    fVar3 = (float10)_Dot_C3DVector__QBE_BMABV1__Z(local_40);
+    if (fVar3 <= (float10)(double)fVar2) {
+      fVar2 = (float10)_Dot_C3DVector__QBE_BMABV1__Z(local_40);
+    }
+    else {
+      fVar2 = (float10)_Dot_C3DVector__QBE_BMABV1__Z(local_1c);
+    }
+    local_7c = (float)fVar2;
+    local_4c = 1.0 - local_7c;
+    __0C2DVector__QAE_MM_Z((float)(int)(param_2 - local_44),(float)(int)(param_3 - local_2c));
+    fVar2 = (float10)_GetMagnitude_C2DVector__QBEMXZ();
+    fVar1 = ((float)(fVar2 * (float10)local_4c) * (float)_DAT_04351ad0) / param_4;
+    if (fVar1 < local_28) {
+      fVar1 = local_28;
+    }
+  }
+  return (float10)fVar1;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?CheckLockThresholdStructure@CEngineLandscapeLODMap@@QAEXJJJ@Z @ 02e01840 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02e018ac) */
+/* [ported from ego_r via strfp] */
+
+void __thiscall
+_CheckLockThresholdStructure_CEngineLandscapeLODMap__QAEXJJJ_Z
+          (int param_1,uint param_2,uint param_3,int param_4)
+
+{
+  int iVar1;
+  uint local_c;
+  
+  if (((((-1 < (int)param_2) && (-1 < (int)param_3)) && ((int)param_2 <= *(int *)(param_1 + 0xc)))
+      && (((int)param_3 <= *(int *)(param_1 + 0x10) &&
+          (iVar1 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2,param_3),
+          iVar1 < param_4)))) && ((param_2 != 0 && (param_3 != 0)))) {
+    for (local_c = 1; ((param_2 & local_c) == 0 && ((param_3 & local_c) == 0));
+        local_c = local_c << 1) {
+    }
+    if ((param_2 & local_c) == 0) {
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z(param_2 - local_c,param_3,iVar1);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z(param_2 + local_c,param_3,iVar1);
+    }
+    else if ((param_3 & local_c) == 0) {
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z(param_2,param_3 - local_c,iVar1);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z(param_2,param_3 + local_c,iVar1);
+    }
+    else {
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z
+                (param_2 - local_c,param_3 - local_c,iVar1);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z
+                (param_2 + local_c,param_3 - local_c,iVar1);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z
+                (param_2 - local_c,param_3 + local_c,iVar1);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z
+                (param_2 + local_c,param_3 + local_c,iVar1);
+    }
+  }
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?LockThresholdPoint@CEngineLandscapeLODMap@@QAEXJJJ@Z @ 02e01a10 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02e01a90) */
+/* [ported from ego_r via strfp] */
+
+void __thiscall
+_LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z
+          (int param_1,uint param_2,uint param_3,int param_4)
+
+{
+  int iVar1;
+  uint local_c;
+  
+  if (((((-1 < (int)param_2) && (-1 < (int)param_3)) && ((int)param_2 <= *(int *)(param_1 + 0xc)))
+      && (((int)param_3 <= *(int *)(param_1 + 0x10) &&
+          (iVar1 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2,param_3),
+          iVar1 < param_4)))) &&
+     ((_SetLODBandThreshold_CEngineLandscapeLODMap__AAEXJJJ_Z(param_2,param_3,param_4), param_2 != 0
+      || (param_3 != 0)))) {
+    for (local_c = 1; ((param_2 & local_c) == 0 && ((param_3 & local_c) == 0));
+        local_c = local_c << 1) {
+    }
+    if ((param_2 & local_c) == 0) {
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z(param_2 - local_c,param_3,param_4);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z(param_2 + local_c,param_3,param_4);
+    }
+    else if ((param_3 & local_c) == 0) {
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z(param_2,param_3 - local_c,param_4);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z(param_2,param_3 + local_c,param_4);
+    }
+    else {
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z
+                (param_2 - local_c,param_3 - local_c,param_4);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z
+                (param_2 + local_c,param_3 - local_c,param_4);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z
+                (param_2 - local_c,param_3 + local_c,param_4);
+      _LockThresholdPoint_CEngineLandscapeLODMap__QAEXJJJ_Z
+                (param_2 + local_c,param_3 + local_c,param_4);
+    }
+  }
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?SetLODBandThreshold@CEngineLandscapeLODMap@@AAEXJJJ@Z @ 02e01c00 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* [ported from ego_r via strfp] */
+
+void __thiscall
+_SetLODBandThreshold_CEngineLandscapeLODMap__AAEXJJJ_Z
+          (int param_1,int param_2,int param_3,int param_4)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  undefined1 *puVar4;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined4 uVar7;
+  undefined4 uVar8;
+  undefined1 local_48 [8];
+  undefined1 local_40 [8];
+  undefined1 local_38 [11];
+  char local_2d;
+  undefined1 local_2c [8];
+  undefined1 local_24 [8];
+  undefined1 local_1c [11];
+  char local_11;
+  void *local_10;
+  undefined1 *puStack_c;
+  int local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03e7cc60;
+  local_10 = ExceptionList;
+  if ((param_4 < 0) || (ExceptionList = &local_10, 0x3f < param_4)) {
+    ExceptionList = &local_10;
+    __0CWideString__QAE_PB_W_Z
+              (
+              L"e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fableengine\\engine_landscape_lod_map.hpp"
+              );
+    local_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+    local_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z("band>=0 && band<64",0xffffffff);
+    local_8._0_1_ = 2;
+    uVar8 = 1;
+    uVar7 = 0x41;
+    puVar6 = local_1c;
+    puVar5 = local_24;
+    puVar4 = local_2c;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar4,puVar5,puVar6,0x41,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar4,puVar5,puVar6,uVar7,uVar8);
+    local_11 = '\x01' - (cVar2 != '\x01');
+    local_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    local_8 = (uint)local_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if (local_11 != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+  }
+  if ((((param_2 < 0) || (param_3 < 0)) || (*(int *)(param_1 + 0xc) < param_2)) ||
+     (*(int *)(param_1 + 0x10) < param_3)) {
+    __0CWideString__QAE_PB_W_Z
+              (
+              L"e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fableengine\\engine_landscape_lod_map.hpp"
+              );
+    local_8 = 3;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+    local_8._0_1_ = 4;
+    __0CCharString__QAE_PBDJ_Z("x>=0 && y>=0 && x<=MapWidth && y<=MapHeight",0xffffffff);
+    local_8._0_1_ = 5;
+    uVar8 = 1;
+    uVar7 = 0x42;
+    puVar6 = local_38;
+    puVar5 = local_40;
+    puVar4 = local_48;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar4,puVar5,puVar6,0x42,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar4,puVar5,puVar6,uVar7,uVar8);
+    local_2d = '\x01' - (cVar2 != '\x01');
+    local_8._0_1_ = 4;
+    __1CCharString__QAE_XZ();
+    local_8 = CONCAT31(local_8._1_3_,3);
+    __1CCharString__QAE_XZ();
+    local_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if (local_2d != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+  }
+  *(undefined1 *)((*(int *)(param_1 + 0xc) + 1) * param_3 + param_2 + *(int *)(param_1 + 4)) =
+       (undefined1)param_4;
+  ExceptionList = local_10;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?InvalidateThresholdPoint@CEngineLandscapeLODMap@@QAEXJJ@Z @ 02e01e50 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02e01ecc) */
+/* [ported from ego_r via strfp] */
+
+void __thiscall
+_InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z(int param_1,uint param_2,uint param_3)
+
+{
+  int iVar1;
+  uint local_c;
+  
+  if (((((-1 < (int)param_2) && (-1 < (int)param_3)) && ((int)param_2 <= *(int *)(param_1 + 0xc)))
+      && (((int)param_3 <= *(int *)(param_1 + 0x10) &&
+          (iVar1 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2,param_3),
+          iVar1 != 0)))) &&
+     ((_SetLODBandThreshold_CEngineLandscapeLODMap__AAEXJJJ_Z(param_2,param_3,0), param_2 != 0 ||
+      (param_3 != 0)))) {
+    for (local_c = 1; ((param_2 & local_c) == 0 && ((param_3 & local_c) == 0));
+        local_c = local_c << 1) {
+    }
+    if ((param_2 & local_c) == 0) {
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z(param_2 - local_c,param_3);
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z(param_2 + local_c,param_3);
+    }
+    else if ((param_3 & local_c) == 0) {
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z(param_2,param_3 - local_c);
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z(param_2,param_3 + local_c);
+    }
+    else {
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z
+                (param_2 - local_c,param_3 - local_c);
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z
+                (param_2 + local_c,param_3 - local_c);
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z
+                (param_2 - local_c,param_3 + local_c);
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z
+                (param_2 + local_c,param_3 + local_c);
+    }
+  }
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?UpdateThresholdPoint@CEngineLandscapeLODMap@@QAEXJJM@Z @ 02e02010 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02e020e7) */
+/* [ported from ego_r via strfp] */
+
+void __thiscall
+_UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z
+          (int param_1,uint param_2,uint param_3,undefined4 param_4)
+
+{
+  int iVar1;
+  int iVar2;
+  float10 fVar3;
+  int local_40;
+  int local_3c;
+  int local_38;
+  int local_34;
+  int local_30;
+  int local_2c;
+  int local_28;
+  int local_24;
+  int local_20;
+  int local_10;
+  uint local_c;
+  
+  if ((((-1 < (int)param_2) && (-1 < (int)param_3)) && ((int)param_2 <= *(int *)(param_1 + 0xc))) &&
+     ((int)param_3 <= *(int *)(param_1 + 0x10))) {
+    iVar1 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2,param_3);
+    local_10 = iVar1;
+    if (iVar1 == 0) {
+      fVar3 = (float10)_CalculateBaseZThreshold_CEngineLandscapeLODMap__AAEMJJM_Z
+                                 (param_2,param_3,param_4);
+      local_20 = _GetLODZBandAtZ_CEngineLandscapeRenderer__QAEJM_Z((float)fVar3);
+      if (local_20 < 0) {
+        local_20 = iVar1;
+      }
+      local_10 = local_20;
+    }
+    local_c = 1;
+    if ((param_2 == 0) && (param_3 == 0)) {
+      if (iVar1 < local_10) {
+        _SetLODBandThreshold_CEngineLandscapeLODMap__AAEXJJJ_Z(0,0,local_10);
+      }
+    }
+    else {
+      for (; ((param_2 & local_c) == 0 && ((param_3 & local_c) == 0)); local_c = local_c << 1) {
+      }
+      if ((param_2 & param_3 & local_c) == 0) {
+        if (1 < (int)local_c) {
+          if ((-1 < (int)(param_2 - (int)local_c / 2)) && (-1 < (int)(param_3 - (int)local_c / 2)))
+          {
+            iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                              (param_2 - (int)local_c / 2,param_3 - (int)local_c / 2);
+            if (iVar2 < local_10) {
+              local_34 = local_10;
+            }
+            else {
+              local_34 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                   (param_2 - (int)local_c / 2,param_3 - (int)local_c / 2);
+            }
+            local_10 = local_34;
+          }
+          if (((int)((int)local_c / 2 + param_2) <= *(int *)(param_1 + 0xc)) &&
+             (-1 < (int)(param_3 - (int)local_c / 2))) {
+            iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                              ((int)local_c / 2 + param_2,param_3 - (int)local_c / 2);
+            if (iVar2 < local_10) {
+              local_38 = local_10;
+            }
+            else {
+              local_38 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                   ((int)local_c / 2 + param_2,param_3 - (int)local_c / 2);
+            }
+            local_10 = local_38;
+          }
+          if ((-1 < (int)(param_2 - (int)local_c / 2)) &&
+             ((int)((int)local_c / 2 + param_3) <= *(int *)(param_1 + 0x10))) {
+            iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                              (param_2 - (int)local_c / 2,(int)local_c / 2 + param_3);
+            if (iVar2 < local_10) {
+              local_3c = local_10;
+            }
+            else {
+              local_3c = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                   (param_2 - (int)local_c / 2,(int)local_c / 2 + param_3);
+            }
+            local_10 = local_3c;
+          }
+          if (((int)((int)local_c / 2 + param_2) <= *(int *)(param_1 + 0xc)) &&
+             ((int)((int)local_c / 2 + param_3) <= *(int *)(param_1 + 0x10))) {
+            iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                              ((int)local_c / 2 + param_2,(int)local_c / 2 + param_3);
+            if (iVar2 < local_10) {
+              local_40 = local_10;
+            }
+            else {
+              local_40 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                   ((int)local_c / 2 + param_2,(int)local_c / 2 + param_3);
+            }
+            local_10 = local_40;
+          }
+        }
+      }
+      else {
+        if (-1 < (int)(param_2 - local_c)) {
+          iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2 - local_c,param_3);
+          if (iVar2 < local_10) {
+            local_24 = local_10;
+          }
+          else {
+            local_24 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                 (param_2 - local_c,param_3);
+          }
+          local_10 = local_24;
+        }
+        if ((int)(param_2 + local_c) <= *(int *)(param_1 + 0xc)) {
+          iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2 + local_c,param_3);
+          if (iVar2 < local_10) {
+            local_28 = local_10;
+          }
+          else {
+            local_28 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                 (param_2 + local_c,param_3);
+          }
+          local_10 = local_28;
+        }
+        if (-1 < (int)(param_3 - local_c)) {
+          iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2,param_3 - local_c);
+          if (iVar2 < local_10) {
+            local_2c = local_10;
+          }
+          else {
+            local_2c = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                 (param_2,param_3 - local_c);
+          }
+          local_10 = local_2c;
+        }
+        if ((int)(param_3 + local_c) <= *(int *)(param_1 + 0x10)) {
+          iVar2 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z(param_2,param_3 + local_c);
+          if (iVar2 < local_10) {
+            local_30 = local_10;
+          }
+          else {
+            local_30 = _PeekLODBandThreshold_CEngineLandscapeLODMap__QBEJJJ_Z
+                                 (param_2,param_3 + local_c);
+          }
+          local_10 = local_30;
+        }
+      }
+      if (iVar1 < local_10) {
+        _SetLODBandThreshold_CEngineLandscapeLODMap__AAEXJJJ_Z(param_2,param_3,local_10);
+        if ((param_2 & local_c) == 0) {
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z(param_2 - local_c,param_3,param_4)
+          ;
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z(param_2 + local_c,param_3,param_4)
+          ;
+        }
+        else if ((param_3 & local_c) == 0) {
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z(param_2,param_3 - local_c,param_4)
+          ;
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z(param_2,param_3 + local_c,param_4)
+          ;
+        }
+        else {
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z
+                    (param_2 - local_c,param_3 - local_c,param_4);
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z
+                    (param_2 + local_c,param_3 - local_c,param_4);
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z
+                    (param_2 - local_c,param_3 + local_c,param_4);
+          _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z
+                    (param_2 + local_c,param_3 + local_c,param_4);
+        }
+      }
+    }
+  }
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?InvalidateThresholdPointArea@CEngineLandscapeLODMap@@QAEXJJJJ@Z @ 02e026a0 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02e026cf) */
+/* WARNING: Removing unreachable block (ram,0x02e026ad) */
+/* [ported from ego_r via strfp] */
+
+void _InvalidateThresholdPointArea_CEngineLandscapeLODMap__QAEXJJJJ_Z
+               (int param_1,int param_2,int param_3,int param_4)
+
+{
+  undefined4 local_c;
+  undefined4 local_8;
+  
+  for (local_8 = param_2; local_8 <= param_2 + param_4; local_8 = local_8 + 1) {
+    for (local_c = param_1; local_c <= param_1 + param_3; local_c = local_c + 1) {
+      _InvalidateThresholdPoint_CEngineLandscapeLODMap__QAEXJJ_Z(local_c,local_8);
+    }
+  }
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompByName.java> ==================== ?UpdateThresholdPointArea@CEngineLandscapeLODMap@@QAEXJJJJM@Z @ 02e02720 ==================== (GhidraScript)  
+INFO  DecompByName.java> 
+/* WARNING: Removing unreachable block (ram,0x02e0274f) */
+/* WARNING: Removing unreachable block (ram,0x02e0272d) */
+/* [ported from ego_r via strfp] */
+
+void _UpdateThresholdPointArea_CEngineLandscapeLODMap__QAEXJJJJM_Z
+               (int param_1,int param_2,int param_3,int param_4,undefined4 param_5)
+
+{
+  undefined4 local_c;
+  undefined4 local_8;
+  
+  for (local_8 = param_2; local_8 <= param_2 + param_4; local_8 = local_8 + 1) {
+    for (local_c = param_1; local_c <= param_1 + param_3; local_c = local_c + 1) {
+      _UpdateThresholdPoint_CEngineLandscapeLODMap__QAEXJJM_Z(local_c,local_8,param_5);
+    }
+  }
+  return;
+}
+
+ (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /FableWin.exe (HeadlessAnalyzer)  

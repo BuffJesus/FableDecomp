@@ -79,6 +79,69 @@ def api_match(callee: str, api_names: list[str]) -> str | None:
     return match.group(1) if match else None
 
 
+def load_fse_address_names(path: Path | None) -> dict[int, str]:
+    """address -> FSE API name, from build_fse_address_map.py.
+
+    The native helper backlog is keyed by target address but *named* from
+    Ghidra/BSim, which mislabels the 0x00CBxxxx script-interface thunk band - e.g.
+    0x00CBE87F arrives as `CSubtitleRenderer::SetText` (BSim similarity 0.51) when
+    two independent FSE trees both bind it as AddLogbookStoryEntry. A call with a
+    correct API name is not an unlifted helper at all: a Lua reconstruction calls
+    the API directly. Renaming those callees therefore moves them out of the
+    helper backlog and into the ordinary API-call bucket.
+
+    Only unambiguous entries are used. An address bound to more than one name
+    across the FSE trees is skipped rather than guessed.
+    """
+    if not path or not path.exists():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8-sig"))
+    names: dict[int, str] = {}
+    for entry in payload["entries"]:
+        if entry.get("ambiguous"):
+            continue
+        fse = entry.get("fseNames") or []
+        if len(fse) != 1:
+            continue
+        names[int(entry["address"], 16)] = fse[0]
+    return names
+
+
+def apply_fse_names(ir: dict[str, Any], names: dict[int, str],
+                    api_names: set[str]) -> int:
+    """Rewrite call callees in place where FSE names the target address AND that
+    name is a real FSE API. Returns the number of call sites renamed; keeps the
+    old name as `bsimName`.
+
+    The API-name filter is load-bearing, not a nicety. FSE also binds addresses
+    for the allocator, the CRT and the STL (Game_free, Game_malloc, rand,
+    __ftol2, StdMap_Construct, CCharString_OperatorPlus, ...). Those callees are
+    deliberately excluded from the helper backlog upstream of here by
+    OPAQUE_RE / is_infrastructure_call, which match on the *retail* names -
+    renaming them defeats both classifiers. Doing this unfiltered moved 7,410
+    call sites and pushed the unresolved-helper count from 584 to 7,364, i.e. it
+    reclassified all of the allocator/CRT traffic as unlifted script helpers.
+    Renaming is therefore confined to addresses whose FSE name is one the Lua
+    reconstruction can actually call.
+    """
+    if not names or not api_names:
+        return 0
+    renamed = 0
+    for life in ir["lifecycle"]:
+        for call in life["calls"]:
+            addr = call.get("targetAddress")
+            if not addr:
+                continue
+            fse = names.get(int(addr, 16))
+            if not fse or fse == call["callee"] or fse not in api_names:
+                continue
+            call["bsimName"] = call["callee"]
+            call["fseName"] = fse
+            call["callee"] = fse
+            renamed += 1
+    return renamed
+
+
 def load_interface_methods(slots_path: Path | None, catalog_path: Path | None) -> dict[str, dict[str, str]]:
     if not slots_path or not catalog_path:
         return {}
@@ -106,7 +169,8 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
             slots_path: Path | None = None, interface_catalog_path: Path | None = None,
             interface_field_evidence_path: Path | None = None,
             lua_manager_path: Path | None = None,
-            helper_ir_path: Path | None = None) -> dict[str, Any]:
+            helper_ir_path: Path | None = None,
+            fse_address_map_path: Path | None = None) -> dict[str, Any]:
     catalog = json.loads(catalog_path.read_text(encoding="utf-8-sig"))
     manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
     api_names = sorted({row["name"] for row in manifest["functions"]}, key=len, reverse=True)
@@ -131,9 +195,16 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
                 if row["verified"].lower() == "true"
             }
     kinds = {row["name"]: row["kind"] for row in catalog["scripts"]}
+    fse_names = load_fse_address_names(fse_address_map_path)
+    fse_renamed_calls = 0
+    fse_renamed_scripts = 0
     rows = []
     for path in sorted(ir_dir.glob("*.json")):
         ir = json.loads(path.read_text(encoding="utf-8-sig"))
+        renamed = apply_fse_names(ir, fse_names, set(api_names))
+        if renamed:
+            fse_renamed_calls += renamed
+            fse_renamed_scripts += 1
         calls = [call["callee"] for life in ir["lifecycle"] for call in life["calls"]]
         indirect = [call for life in ir["lifecycle"] for call in life.get("indirectCalls", [])]
         direct_targets = [dict(call, role=life["role"])
@@ -324,12 +395,18 @@ def analyze(catalog_path: Path, ir_dir: Path, manifest_path: Path,
     return {
         "schema": "forgefse-native-conversion-readiness/0.1",
         "sources": {"catalog": str(catalog_path.resolve()), "ir": str(ir_dir.resolve()),
+                    "vtableSlots": str(slots_path.resolve()) if slots_path else None,
+                    "interfaceCatalog": str(interface_catalog_path.resolve()) if interface_catalog_path else None,
+                    "fseAddressMap": str(fse_address_map_path.resolve()) if fse_address_map_path else None,
                     "apiManifest": str(manifest_path.resolve()),
                     "interfaceFieldEvidence": (str(interface_field_evidence_path.resolve())
                                                if interface_field_evidence_path else None),
                     "luaManager": str(lua_manager_path.resolve()) if lua_manager_path else None,
                     "helperIr": str(helper_ir_path.resolve()) if helper_ir_path else None},
         "summary": {"scripts": len(rows), "anchored": sum(row["anchored"] for row in rows),
+                    "fseRenamedCalls": fse_renamed_calls,
+                    "fseRenamedScripts": fse_renamed_scripts,
+                    "fseNamedAddresses": len(fse_names),
                     "lifecycleComplete": sum(row["lifecycleFunctions"] == 5 for row in rows),
                     "verifiedScriptInterfaceFields": len(verified_interface_fields),
                     "resolvedInterfaceCalls": sum(len(row["resolvedInterfaceCalls"]) for row in rows),
@@ -379,11 +456,14 @@ def main() -> int:
     parser.add_argument("--interface-field-evidence", type=Path)
     parser.add_argument("--lua-manager", type=Path)
     parser.add_argument("--helper-ir", type=Path)
+    parser.add_argument("--fse-address-map", type=Path,
+                        help="build_fse_address_map.py output; renames helper callees "
+                             "whose target address FSE names authoritatively")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     result = analyze(args.catalog, args.ir, args.api_manifest, args.vtable_slots,
                      args.interface_catalog, args.interface_field_evidence, args.lua_manager,
-                     args.helper_ir)
+                     args.helper_ir, args.fse_address_map)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result["summary"], sort_keys=True))

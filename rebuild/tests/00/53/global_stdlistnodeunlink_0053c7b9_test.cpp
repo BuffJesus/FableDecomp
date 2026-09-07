@@ -1,0 +1,3 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct Node{Node* prev;Node* next;};static void Unlink(Node** cursor,Node* node){Node* next=node->next;Node* prev=node->prev;next->prev=prev;prev->next=next;free(node);*cursor=prev;}int main(){Node left,right;Node* node=(Node*)malloc(sizeof(Node));if(!node)return 2;Node* cursor=node;left.next=node;right.prev=node;node->prev=&left;node->next=&right;Unlink(&cursor,node);if(left.next!=&right||right.prev!=&left||cursor!=&left)return 1;puts("UNLINK_0053c7b9_PASS");return 0;}

@@ -1,0 +1,22 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/StatueMaster/Entities/StatuePointing.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [],
+  "state": [
+    {
+      "name": "SM_Angle",
+      "types": [
+        "string"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

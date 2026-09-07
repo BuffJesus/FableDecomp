@@ -21,7 +21,7 @@ ROOT = Path(r"D:\Documents\FableTLC")
 VC = Path(r"D:\Tools\vc71")
 SP = Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\d87e94eb-5fcd-4ea2-9871-8c5904962855\scratchpad\audit_work")
 OBJDUMP = r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe"
-DS = re.compile(r"^\s*[0-9a-fA-F]+\s+<(.+)>:$"); DB = re.compile(r"^\s*[0-9a-fA-F]+:\s+((?:[0-9a-fA-F]{2}\s+)+)")
+DS = re.compile(r"^\s*([0-9a-fA-F]+)\s+<(.+)>:$"); DB = re.compile(r"^\s*[0-9a-fA-F]+:\s+((?:[0-9a-fA-F]{2}\s+)+)")
 RL = re.compile(r"^([0-9a-fA-F]{8})\s+\S+\s+.+$")
 
 # Frame-pointer variants to try. /Oy omits the frame pointer, /Oy- keeps it.
@@ -49,7 +49,10 @@ def obj_text(path, leaf):
     for line in pr.stdout.splitlines():
         if line.startswith("Disassembly of section .text:"): sec += 1; cur = None; continue
         s = DS.match(line)
-        if s: cur = {"symbol": s.group(1), "section": sec, "bytes": bytearray()}; fns.append(cur); continue
+        if s:
+            if int(s.group(1), 16) == 0 or cur is None:
+                cur = {"symbol": s.group(2), "section": sec, "bytes": bytearray()}; fns.append(cur)
+            continue
         e = DB.match(line)
         if e and cur is not None: cur["bytes"].extend(bytes.fromhex(e.group(1)))
     if not fns: raise RuntimeError("no funcs")

@@ -1,6 +1,11 @@
 #include <cstddef>
 #include <cstdint>
 
+// RE_AGENT_SEMANTIC_REVIEW: structural PASS only. Retail's failed type-0x3F
+// lookup selects the interface-map end sentinel and then reads its +4 value;
+// preserve as byte evidence, not safe promotable C++, until sentinel semantics
+// and the adjacent dead `xor al,al; jne` path are understood.
+
 class CBaseIntelligentPointer;
 class CBaseObject;
 class CCharString;

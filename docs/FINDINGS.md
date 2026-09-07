@@ -705,7 +705,7 @@ this IS the editor that did it.
 ## 2026-07-19 - CGameScriptInterface: the native scripting API (891 methods)
 
 **Claim:** retail TLC exposes a native game-scripting interface of 891 methods —
-the native counterpart to FSE's 931-function Lua API. FSE wraps 790 of them; 101
+the native counterpart to FSE's 933-function Lua API. FSE wraps 790 of them; 101
 native methods have NO FSE binding.
 
 **Method/evidence:** `DecompByName.java` (new, general "decompile all functions
@@ -970,7 +970,7 @@ with the full spec in its docstring). This is the C++ port contract.
 (`ghidra_out/native_methods_not_in_fse.txt`) are now a prioritized, evidence-backed
 binding spec: **101/101 resolved** to a retail address (all present in
 `gamescriptinterface_catalog.tsv`) and cross-checked against `refs/fse_api_manifest.json`
-(931 already-bound functions). Full spec: `docs/SCRIPT_BINDINGS_CANDIDATES.md`.
+(933 already-bound functions). Full spec: `docs/SCRIPT_BINDINGS_CANDIDATES.md`.
 
 **Method/evidence (≥2 sources per claim):** catalog gives name→retail addr for all 101;
 manifest gives FSE's binding taxonomy (2 scopes — Quest/Entity — with typed parameters,
@@ -1348,17 +1348,19 @@ The subsystem is not dead — it is one flag away from running.
 - **The single gate: byte flag `[CNetworkClient+0x2662]`.** Guards `Update` (`0x4ae9d0`),
   `IsFreeToRender`… actually `GetGameEventPackageSet` (`0x4aeba0`), and the update path — each
   early-returns when clear. `CNetworkClient::InitialiseAsLocal` (`0x4ae940`) is what SETS that flag
-  (+ the active flag) to 1, gated only by a runtime precondition at `0x4eba10`.
+  (+ the active flag) to 1 after the unnamed base initializer at retail `0x0099A350` succeeds.
 - **`CPlayerManager::IsMultiplayerGameActive` (`0x00449d20`) is UNGATED** — real per-slot scan of the
   player vector; returns true once co-op players are seated. `GetMultiplayerColour` (`0x449b60`) is
   live with hardcoded P1..P4 colours (blue/red/cyan/green).
 - **Full event-package pipeline is LIVE:** serialize (`CGameEvent::CompressIntoBuffer` `0x9f1810`,
-  `CGameEventPackageSet::CompressIntoBuffer` `0x9f19a0`), deserialize (`0x9f1870`/`0x9f1ac0`), ingest
+  `CGameEventPackageSet::CompressIntoBuffer` `0x9f19a0`, now a raw 215-byte `MATCH` proving the
+  `[u8 package count]` and per-package `[u8 event count][u32 sequence]` framing), deserialize (`0x9f1870`/`0x9f1ac0`), ingest
   (`ProcessEventPackage` `0x416670`, `UpdateFromEventPackageSet` `0x41726d`), input capture
-  (`CProcessedInput::AddGameEvent` `0xa0d340`), and the co-op-spirit entity (`OnCreate` `0x6700f0`,
+  (`CProcessedInput::AddGameEvent` `0xa0d340`, now a raw 71-byte `MATCH` confirming four inline
+  40-byte event slots, player-byte overwrite, and byte-count increment), and the co-op-spirit entity (`OnCreate` `0x6700f0`,
   `UpdateAttractionToMaster` `0x6701a0`, `SwapToHero` `0x66ff20`, `EAMoveSpirit` `0x62c0e0`).
-- **Shortest path to first sign of life:** force `InitialiseAsLocal` `0x4ae940` to run (or NOP its
-  `0x4eba10` predicate) so `[+0x2662]=1` — that lights the update + package-pump path. Directly
+- **Shortest path to first sign of life:** call `InitialiseAsLocal` `0x4ae940` so `[+0x2662]=1` and
+  the required `+0x2678` component back-pointer is installed — that lights the update + package-pump path. Directly
   poking the `+0x2662` byte is a faster probe.
 - **Only genuine gutting: `CheckSync` (`0x4165e8`)** — deserializes three sync fields then DROPS them;
   no desync compare/report. Co-op will run but can't detect/correct divergence. This is the one piece
@@ -1395,9 +1397,9 @@ Full write-up: `docs/COOP_REVIVAL.md`. Byte-solid (opcode-proven): enable gate =
 format `[u16 hdr(15-bit id|0x8000 flag)][u8 sub][u8 len][payload]` (Compress=pack dense, not compression);
 CheckSync 0x004165E8 is genuinely STUBBED (reads 3 remote u32s + world checksum, discards all, no compare).
 CNetworkClient is embedded at `CMainGameComponent+0x13AB8`.
-**Corrections to the earlier co-op section (all same-lineage phantoms):** (1) the InitialiseAsLocal base-init
-precondition `0x4EBA10` is a flat-disassembler ARTIFACT, not a resolved address — real target is
-relocation-masked/UNKNOWN. (2) UpdateFromEventPackageSet's world forward is `0x0049DFB0 CWorld::Update`, not
+**Corrections to the earlier co-op section (all same-lineage phantoms):** (1) `0x4EBA10` is a
+flat-disassembler base-zero artifact; the retail rel32 resolves to `0x0099A350`, whose six-byte body
+sets `this+4=1` and returns true (class identity remains unknown). (2) UpdateFromEventPackageSet's world forward is `0x0049DFB0 CWorld::Update`, not
 `0x0049E0B0`. (3) the package/event loop accessors are structural GetCount/GetAt but engine_api.tsv only
 BSim-mislabels them (no TSV name confirms). Raw-poking +0x2662 without InitialiseAsLocal storing +0x2678 can
 CTD (forwarder null-deref) — enable via InitialiseAsLocal, not a bare poke.
@@ -1789,3 +1791,203 @@ world position/scale. Stage45 now emits the native representation and validates
 300/300 authored grass instances with zero unbound records. A separate bug in
 `foliage instances` skipped later frames whenever a compressed size changed the
 scanner's modulo-four alignment; that validation bug is fixed as well.
+
+## 2026-08-26 — MsgOnBoastsMade ownership and ABI
+
+Retail `008a9ae0` queries type `0x29` messages with extra data between two distinct world-frame
+bounds. Event `+0x3c` points to data containing a long at `+0x00` and `CCharString` at `+0x0c`;
+results append as eight-byte pairs. `0099ec30` is the string copy constructor, `0099eae0` is its
+destructor, and `0074fce0` is the receiver-based vector growth helper. The function returns whether
+the temporary result list was nonempty and frees every list allocation. The natural reconstruction
+passes its focused fixture but is `DIFFER(279v352)`, so it is bounded rather than counted as parity.
+
+The verifier also had a COFF parsing defect: objdump basic-block labels share the function-header
+syntax, but nonzero labels are offsets within the current VC7.1 `.text` contribution. Treating each
+as a new function truncated switch dispatchers. Keeping nonzero labels attached restored the known
+744-byte `GFHandleSystemInitError` relocation match and its missing landing metadata.
+
+`00c93b30 Audio_ApplyGainTableToBuffer` uses a five-argument fastcall ABI: count pointer and input
+occupy `ECX`/`EDX`; gain indexes, output, and limit are callee-clean stack arguments. It applies
+`gainTable[index] * input` up to the clamped limit, unrolled four samples at a time, then writes
+float zero through the original sample count. Its behavior is proven offline; 250/260-byte codegen
+remains bounded.
+
+`0045d264 CActiveFile_AssignVector8` is a callee-clean three-stack-argument allocator/copy helper.
+It allocates `count * 8` and copies a half-open range of two-dword values; zero count yields null,
+and a null allocation suppresses stores. Its focused fixture passes, while 77/68-byte register and
+end-pointer scheduling remains bounded.
+
+The 24-byte tree-node allocator grammar has another exact two-dword member at `0045d901` and a
+dword-plus-byte specialization at `0045e2b1`. Both return the allocation base despite generated
+`void` prototypes, place payload at `base + 0x10`, clean one stack argument, and compile to retail's
+34-byte relocation-matching body under size optimization.
+
+The dword-plus-byte specialization also occurs at `0045de2f` and `0045e797`; both are exact
+34-byte relocation matches under the corrected stdcall/allocation-base-return contract.
+`0045deba Map_EraseNode` is a 47-byte size-optimized member that forwards node and allocator
+offsets `+4/+8/+0x0c`, frees the returned node when nonnull, and decrements count `+4`. Its initial
+45-byte boundary was two bytes short because the full three-byte `ret 4` tail had not been counted.
+
+A masked retail `.text` scan (ignoring only the allocator call displacement) finds 34 exact
+two-dword instances of the 34-byte node allocator and four exact dword-plus-byte instances. After
+the 2026-08-26 sweep, all 38 authoritative starts are landed. The newly added set contributes 28
+relocation matches; its source names vary (`TreeNode_AllocData`, `AllocPair_Generic`,
+`TreeNode_Allocate_24Byte`, and others), but the executable bodies prove one shared allocation,
+payload-at-`+0x10`, allocation-base-return, stdcall grammar.
+
+Masking only the two relative calls in `0045deba` identifies ten exact 47-byte erase/free members
+across allocator, tree, list, and container code. All ten are now landed. Despite different generated
+names, every body forwards the same node and allocator offsets, conditionally frees the helper's
+result, decrements count `+4`, and returns with one-argument member cleanup.
+
+Masking only the allocator-call displacement in the 26-byte `00429fe3` node-allocation residue finds
+eight exact retail bodies. The previously documented three and the five additional authoritative
+starts (`00493a40`, `0053c879`, `0057f525`, `00592ad3`, and `005f807c`) all pass the same focused
+12-byte-allocation and payload-at-`+8` fixture. Natural VC7.1 output remains exact-length
+`DIFFER(26v26)` for every member because it folds retail's `pop/lea/test` sequence into a different
+address-test and cleanup schedule. All eight are now explicitly bounded; none is falsely promoted.
+
+The compact output-pointer allocator grammar is substantially larger than its original 18-member
+documentation suggested. Masking the allocation-size immediate and allocator-call displacement in
+the 22-byte `00451303` body finds 62 authoritative retail starts. The fixed instructions establish
+fastcall `ECX` output, unused `EDX`, one unused callee-clean stack argument, `and [out],0`, allocation,
+publication through the output pointer, and return of that pointer. The 40 previously uncovered
+members cover sizes `0x14`, `0x18`, `0x1c`, `0x20`, `0x28`, `0x30`, `0x40`, `0x48`, and `0x58`;
+all compile as `RELOCATION_MATCH["s"]`, pass focused allocation/publication fixtures, and pass their
+individual selected builds. A post-landing rescan reports 62 hits, 62 authoritative, 62 landed.
+
+The 43-byte free-pointer loop rooted at `0043f510` has six authoritative retail instances after
+masking only the `free` call relocation. The previously uncovered `0048c820`, `007b3b50`, and
+`00913690` use the same stdcall two-range ABI, skip null elements, and free every nonnull pointer in
+the half-open range. All three pass empty/null/two-allocation fixtures, relocation parity, and their
+selected builds; the family rescan is now six hits and six landed.
+
+The 17-byte iterator/max-node forwarder grammar occurs at 69 authoritative starts. Forty-one were
+already landed, including CRegion helpers whose callee gives the identical machine shape but a
+different semantic label. Restricting the new batch to the 28 manifest starts explicitly named as
+RB-tree/max-node operations avoids conflating those semantics. Every addition forwards the current
+node, stores the helper result, returns the iterator, and compiles to `RELOCATION_MATCH["s"]`; all
+focused fixtures and selected builds pass. The complete machine-family rescan is 69/69 landed, while
+the semantically named RB-tree/max-node subset now contains 32 functions.
+
+The 42-byte list/sentinel initialization grammar rooted at `0045170f` also has 62 authoritative
+retail instances rather than the 22 originally documented. Masking only the initializer call
+relocation exposes 40 uncovered bodies, including the texture-format handler block at
+`004dd170..004dd5c4`, later container/render initializers, and `00cd2d37/00cd2d61`. The invariant
+post-call body clears owner count, node state and payload, then self-links the node's next/previous
+pointers. All 40 compile to relocation parity, pass the focused owner/node state fixture, and pass
+individual selected builds. The post-landing masked rescan reports 62 authoritative hits, all landed.
+
+The 32-byte list unlink/free grammar has seven authoritative retail bodies when only the `free` call
+relocation is masked. Four previously uncovered `std_list_node_unlink[_and_free]` starts at
+`0053c7b9`, `00655125`, `006553d0`, and `006553fd` relink predecessor/successor pointers, free the
+removed node, and publish the predecessor through the caller cursor exactly like the original trio.
+All four pass focused link/cursor behavior, size-optimized relocation parity, and selected builds;
+the complete family rescan is now 7/7 landed.
+
+The 58-byte buffer move/relocate body occurs 42 times in retail when only its `memmove` relocation is
+masked, but only four addresses are authoritative manifest starts; all four were already landed.
+The other 38 exact bodies remain discovery-only because the verifier correctly refuses to bypass the
+manifest gate. This is evidence for a future boundary-import audit, not permission to manufacture
+catalog entries at unaccepted addresses.
+
+The 37-byte list-insert splice has 34 retail hits, 33 authoritative starts, and one non-manifest body.
+Thirty authoritative starts were uncovered. Ten had semantically consistent list names and landed
+directly. Twenty carried impossible propagated `luaV_Cclosure` or creature-action labels despite an
+exact stdcall `ret 12` splice body; explicit overrides now name them `ListNode_InsertBefore_<address>`.
+All 30 forward the value to an allocator, splice its result between predecessor and target, publish it
+through the output pointer, return that pointer, pass focused link/value behavior, and pass individual
+selected builds. The authoritative family is now 33/33 landed; the lone non-manifest body remains
+excluded by policy.
+
+The polymorphic range-cleanup body rooted at `004437e0` has 19 authoritative retail instances when
+only its free/delete call relocations are masked. Seven were already cataloged; the other 12 were
+accepted `_gapscan` starts with content-free `sub_*` labels. Neutral address-unique
+`PolymorphicRangeCleanup_*` overrides now describe the proven behavior without inventing an owner
+type. Every addition is null-safe, destroys each eight-byte range element through virtual slot zero
+with flag zero, frees nonnull backing storage, deletes the owner, passes null/three-entry behavior,
+and passes its selected build. The family is now 19/19 landed.
+
+The 26-byte frame-based list push-front wrapper has 33 authoritative retail instances. The original
+two names were accurate; the other 31 carried a mixture of Lua, UI, change-log, action, and list
+labels despite byte-identical iterator-copy and inner-splice forwarding. Neutral address-unique
+`ListPushFrontWrapper_*` overrides replace those propagated identities. Every wrapper forwards the
+value address, a non-trivially copied four-byte first iterator, and the copied value to the inner
+insert, uses `ret 4`, passes focused forwarding behavior, and compiles to
+`RELOCATION_MATCH["s"]`. The complete family is now 33/33 landed.
+
+The two 35-byte tree-lookup accessor layouts (`self + 0x144` and `self + 0x150`) each have exactly
+one authoritative retail body and were already complete. The 38-byte vector-copy wrapper has 26
+byte-identical retail bodies after masking its inner call, but only `00411b00` is an authoritative
+start; the other 25 remain discovery-only. In contrast, the 59-byte vector push-back grammar has two
+authoritative starts. The uncovered `0044bff0 std::vector::push_back` passes spare-capacity copy,
+finish advancement, capacity-growth forwarding, relocation parity, and its selected build. That
+family is now 2/2 landed.
+# 2026-08-28 — StatueMaster cut-design and augmentation-category recovery
+
+An exhaustive cross-build/data audit materially sharpens the StatueMaster
+picture. TLC retail `Fable.exe`, PDB-backed `FableWin.exe`, and PDB-backed
+`ego_r.exe` all initialize `SM_Guild` but contain no
+`TEXT_QST_061_STATUE_GUILD` reference or Guild reward/presentation branch. The
+retail and Xbox-lineage text headers retain that tag at ID 3497, and English
+`text.big` decodes it as “The statue is pointing to the Guild.” The available
+PC builds therefore removed a distinct Guild presentation state. The original
+Xbox `default.xbe` is unavailable locally and remains a material cross-version
+gap, especially because a 2004 player recalled seeing a Guild Hall direction.
+
+Five further orphan localized tags survive: Fire, Steel, Silver, Diamond, and
+Lightning Statue Master inscriptions. None is referenced by any of the three
+PC executables, extracted TNG/GTG/QST/INI, compiled game/script catalog, or
+plausible numeric-ID/CRC representation. No surviving hit-response entity is
+bound to them. However, `game.bin` preserves exactly five matching augmentation
+inventory categories: Flame, Extra Damage (localized Steel), Silver, Diamond,
+and Lightning. Retail objects map Extra Damage/Steel to
+`OBJECT_SHARPENING_AUGMENTATION` and Diamond to
+`OBJECT_PIERCING_AUGMENTATION`. This exact mapping is high-confidence evidence
+for an abandoned augmentation-keyed Statue Master design.
+
+All extracted placements of the five retail augmentation objects are ordinary
+chest contents. The strongest physical fossil is Greatwood: the scripted
+StatueMaster chest contains Piercing and is flanked by two unique
+`OBJECT_LOOKOUT_POINT_STATUE` objects with blank readable overrides and no
+scripts. This supports, but does not prove, a former Diamond/Piercing strike
+puzzle. The released generic statue text concerns disturbed plants.
+
+The native Bowerstone cellar branch additionally requires the dynamically
+spawned `QR_EscortTrader` creature named `TraderToEscort`. Exact TLC xrefs show
+that StatueMaster is the only consumer outside the escort quest itself. The
+submitted Lua port comments out the lookup and is therefore not behaviorally
+identical. Full evidence: `docs/STATUEMASTER_LUA_PORT_AUDIT.md`; synthesized
+report and explicitly speculative restoration design:
+`docs/STATUEMASTER_DEEP_RESEARCH_REPORT.md`.
+
+## 2026-08-28 — Hit-local weapon augmentation inspection
+
+The authoritative augmentation source for a scripted statue strike is the
+matched `CEventHitBy` payload, not the hero's current/previously wielded weapon.
+`CEventHitBase` owns a counted `CHitParameters`; retail's 0x60-byte hit parameters
+store `vector<EObjectAugmentationType>` at `+0x3C`, hitter at `+0x50`, and the
+exact striking weapon at `+0x58`.  Retail `CGameScriptThing::MsgIsHitByWithWeapon`
+at `0x008D1130` already performs the required event/time/hitter/weapon filtering
+but returns only a boolean. ForgeFSE now has a sibling Lua query,
+`MsgGetHitByWeaponAugmentations`, which copies the matched hit's augmentation
+vector into Lua-owned names, IDs, and an ORed mask. This preserves
+multi-augmentation and projectile correctness and avoids equipped-weapon races.
+Full implementation handoff: `docs/STATUE_WEAPON_AUGMENTATION_RE.md`.
+
+Retail `game.bin` additionally pins the five required bit values:
+Sharpening/Steel `0x01`, Silver `0x02`, Flame/Fire `0x04`, Lightning `0x08`,
+and Piercing/Diamond `0x10`.  The full ten-definition sequence also includes
+Health `0x20`, Mana `0x40`, Experience `0x80`, Hobbe Killer `0x100`, and Bandit
+Slayer `0x200`.  `HasCombinationOfAugmentations @ 0x00766050` confirms bitmask
+semantics by ORing installed types and testing containment.  Decompiled
+`MsgIsHitByWithWeapon @ 0x008D1130` and its `GetEvent @ 0x008D49B0` show that
+events are not removed: lookup uses `createdAfter < eventTick <=
+createdBeforeOrOn`, with boundaries supplied by the script execution context.
+
+The non-parity Lookout Point prototype consumes this table in the same Lua call
+that locates the event, accepts Piercing/Diamond `0x10`, and debounces its
+namespaced seal. Its structured probe deliberately repeats the lookup in the
+same window and after one yield so live testing can confirm the recovered cursor
+model. Offline Lua mocks and the Release x86 build pass; projectile and
+coroutine-window behavior remain runtime claims, not yet established results.

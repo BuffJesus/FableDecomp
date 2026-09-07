@@ -242,6 +242,8 @@ void ReleaseThing(CScriptThing* pThing);
 void LogReceivedPointer(CScriptThing* pThing, void * context);
 void StartMovieSequence(void);
 void EndMovieSequence(void);
+int StartAmbientConversation(void * spSpeaker, void * spListener, void * soundIn2D, void * playDuringCutscene);
+void AddLineToConversation(int conversationID, void * textKey, void * spSpeaker, void * spListener, void * showSubtitle);
 void RemoveConversation(int conversationID, void * cutOffSpeech);
 void DontPopulateNextLoadedRegion(void);
 void DisplayQuestInfo(bool bDisplay);

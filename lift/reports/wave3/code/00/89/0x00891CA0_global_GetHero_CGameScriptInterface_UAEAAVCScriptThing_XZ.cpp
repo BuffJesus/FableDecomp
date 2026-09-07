@@ -1,4 +1,6 @@
 #include <cstddef>
+// RE_AGENT_SEMANTIC_REVIEW: retail is a target-resolve/CScriptThing assignment
+// with shared-handle cleanup; the generated predicate/morph/operator&& model is fabricated.
 #include <cstdint>
 #include <new>
 #include <utility>

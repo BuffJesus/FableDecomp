@@ -1,0 +1,25 @@
+//=== ?GetLODZBandAtZ@CEngineLandscapeRenderer@@QAEJM@Z @ 02de6630 (seed 02de6630) ===
+
+/* WARNING: Removing unreachable block (ram,0x02de663d) */
+/* [ported from ego_r via strfp] */
+
+int _GetLODZBandAtZ_CEngineLandscapeRenderer__QAEJM_Z(float param_1)
+
+{
+  int in_ECX;
+  int local_8;
+  
+  local_8 = 2;
+  while( true ) {
+    if (7 < local_8) {
+      return 7;
+    }
+    if (param_1 < *(float *)(in_ECX + 0xd10 + local_8 * 4)) break;
+    local_8 = local_8 + 1;
+  }
+  return local_8 + -1;
+}
+
+
+// CALLEES of ?GetLODZBandAtZ@CEngineLandscapeRenderer@@QAEJM@Z:
+

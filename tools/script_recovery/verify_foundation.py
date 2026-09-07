@@ -13,6 +13,17 @@ def load(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
+def registered_script_names(packages: list[dict[str, Any]]) -> set[str]:
+    """Every script name declared in a package `quests.lua` registry."""
+    names: set[str] = set()
+    for package in packages:
+        for row in package["registry"]:
+            names.add(row["file"])
+            for entity in row.get("entities", []):
+                names.add(entity["file"])
+    return names
+
+
 def verify(root: Path) -> dict[str, Any]:
     checks: list[dict[str, Any]] = []
 
@@ -26,11 +37,11 @@ def verify(root: Path) -> dict[str, Any]:
     registry_files = [row for row in lua_files if row["path"].lower().endswith("/quests.lua")]
     script_files = [row for row in lua_files if row not in registry_files]
     ir_files = [row for row in script_files if "ir" in row]
-    check("six seed packages ingested", len(packages) == 6, [row["name"] for row in packages])
+    check("eight seed packages ingested", len(packages) == 8, [row["name"] for row in packages])
     hashes_ok = all(row.get("archiveSha256") and len(row["archiveSha256"]) == 64 for row in packages)
     check("archive provenance hashed", hashes_ok, [row.get("archiveSha256") for row in packages])
     check("all executable Lua scripts have normalized IR",
-          len(registry_files) == 6 and len(script_files) == len(ir_files) == 16,
+          len(registry_files) == 8 and len(script_files) == len(ir_files) == 25,
           {"registries": len(registry_files), "scripts": len(script_files), "ir": len(ir_files)})
     check("merged registry emitted", (corpus / "combined_registry.lua").is_file(), "combined_registry.lua")
 
@@ -63,11 +74,14 @@ def verify(root: Path) -> dict[str, Any]:
                for row in manifest["entries"])
     identities = [row["nativeName"] for row in manifest["entries"]]
     entity_count = sum(row.get("kind") == "entity" for row in manifest["entries"])
+    registered = {f"FSE/{name}.lua" for name in registered_script_names(packages)}
+    unregistered = sorted(row["path"] for row in script_files if row["path"] not in registered)
     check("reconstructed scripts are shadow-only",
-          len(manifest["entries"]) == len(script_files) == 16 and entity_count == 10 and
+          len(manifest["entries"]) == 22 and entity_count == 14 and
+          len(script_files) == 25 and len(unregistered) == 3 and
           len(set(identities)) == len(identities) and safe,
           {"default": manifest["defaultMode"], "entries": len(manifest["entries"]),
-           "entities": entity_count})
+           "entities": entity_count, "unregisteredScripts": unregistered})
 
     traces = sorted((root / "traces").glob("*.json"))
     trace_rows = [load(path) for path in traces]
@@ -81,10 +95,12 @@ def verify(root: Path) -> dict[str, Any]:
     anchored = [row for row in cluster_rows if row.get("evidenceAnchors")]
     seed_names = {row["nativeName"] for row in catalog.get("seedCorrelations", [])
                   if row.get("status") == "matched"}
+    anchored_names = {row["script"] for row in anchored}
     check("anchored native decompilation proven",
-          len(cluster_rows) >= 16 and {row["script"] for row in anchored} == seed_names,
-          [{"script": row["script"], "allocator": row["allocatorAddress"],
-            "anchors": row.get("evidenceAnchors", [])} for row in cluster_rows])
+          len(cluster_rows) >= 16 and anchored_names == seed_names,
+          {"anchored": sorted(anchored_names),
+           "seedsWithoutAnchors": sorted(seed_names - anchored_names),
+           "clusters": len(cluster_rows)})
 
     operation_irs = sorted((root / "native_operation_ir").glob("*.json"))
     operation_rows = [load(path) for path in operation_irs]
@@ -137,8 +153,15 @@ def verify(root: Path) -> dict[str, Any]:
           readiness_summary["resolvedNativeHelperMethods"] == 26 and
           readiness_summary["resolvedNativeHelperCalls"] == 992 and
           readiness_summary["scriptsWithResolvedNativeHelpers"] == 160 and
-          readiness_summary["unresolvedNativeHelperMethods"] == 127 and
-          readiness_summary["unresolvedNativeHelperCalls"] == 585 and
+          # 127/585 before 2026-09-02. Enlarging the FSE API manifest to 947
+          # functions resolved one more helper method (and its call site), and
+          # --fse-address-map then reclassified 34 more call sites: the
+          # AddLogbookStoryEntry / AddLogbookStoryEntryString pair, which BSim
+          # mislabels as CSubtitleRenderer::SetText, are FSE API calls rather than
+          # unlifted helpers. 585 -> 584 -> 550.
+          readiness_summary["unresolvedNativeHelperMethods"] == 126 and
+          readiness_summary["unresolvedNativeHelperCalls"] == 550 and
+          readiness_summary["fseRenamedCalls"] == 34 and
           readiness_summary["stages"] == {
               "manual-lua-reconstruction": 69, "map-native-helpers": 92} and
           len(archery["resolvedNativeHelpers"]) == 5 and
@@ -165,7 +188,7 @@ def verify(root: Path) -> dict[str, Any]:
     bindings_missing = {row["package"]: row["luaBindingsMissingNativeLifecycle"]
                         for row in comparison["scripts"] if row["luaBindingsMissingNativeLifecycle"]}
     check("all reconstructed parent bindings correlate with native lifecycle evidence",
-          len(comparison["scripts"]) == 6 and not bindings_missing, bindings_missing)
+          len(comparison["scripts"]) == 8 and not bindings_missing, bindings_missing)
 
     passed = sum(row["passed"] for row in checks)
     return {"schema": "fable-script-recovery-foundation-audit/0.1",

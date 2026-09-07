@@ -11,7 +11,7 @@ is the missing complementary piece: *how the engine itself works*, not *what the
 | Tool | Location | Role |
 |---|---|---|
 | **FableScriptExtender (FSE)** source | `D:\Code\FQT\SourceFilesToReference\FSE\FableScriptExtender-master\` (46 `.cpp/.h`) | The injection DLL + reversed C++ API. Hook at `0xCDB355`, `g_fableBase`-relative engine pointers. Our #1 symbol source and the framework we extend. Installed & running in the game (`.../FSE/`). |
-| **FSE API manifest** | `refs/fse_api_manifest.json` (copied) | 931-function catalog, `generated-from-header`. → `tools/fse_import/` turns it into `fse_api.h` (Ghidra) + `fse_api_index.md` (roadmap). |
+| **FSE API manifest** | `refs/fse_api_manifest.json` (copied) | 933-function catalog, audited against AlbionSecrets' tutorial header. → `tools/fse_import/` turns it into `fse_api.h` (Ghidra) + `fse_api_index.md` (roadmap). |
 | **FQT (Fable Quest Tool)** | `D:\Code\FQT\FQT\` (WPF/.NET 8) | Visual quest editor → FSE Lua. Downstream consumer: decompiled name-tables can auto-feed its hand-curated `GameData.cs`. |
 | **EgoCore** (source + patched headless CLI) | `C:\Users\Cornelio\Documents\EgoCoreInspect\EgoCore-master\` | ★ **The completed data-format RE** — see §EgoCore below. Same author as FSE (eeeeeAeoN). Full `.big`/`.lut`/`.lug`/BBM-mesh/anim/LUG-MET-audio/font/lipsync/WAD/def parsers + compilers in C++. Our patched build runs **headless only** (`--list/--batch/--batch-many/--extract-textures/--extract-audio`). |
 | **Fable asset staging** | `D:\Code\Fable\{TLC,ChocolateBox,TOA,Anniversary}` | Extracted region/character assets (TLC = this game; ChocolateBox = Fable2; TOA = an Unreal project). Cross-ref for format work. |
@@ -66,7 +66,7 @@ loaders in Ghidra, EgoCore's source is the answer key.
 
 ## Division of labour (why this project is worth doing given all the above)
 
-The community solved **data**. FSE solved **scripting access** (a fixed set of ~931 API calls). What
+The community solved **data**. FSE solved **scripting access** (a fixed set of 933 API calls). What
 is *still missing* and only a native-exe decompilation provides:
 
 1. **The engine internals between the known edges** — how World/ThingManager/Hero/combat/Will/save

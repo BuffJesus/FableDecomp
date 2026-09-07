@@ -1,0 +1,88 @@
+//=== ?GetMap@CEngineWorldMap@@QBEPAVCEngineMap@@JJ@Z @ 017d6540 (seed 017d6540) ===
+
+undefined4 _GetMap_CEngineWorldMap__QBEPAVCEngineMap__JJ_Z(int param_1,int param_2)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  undefined4 *puVar4;
+  int in_ECX;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  undefined1 *puVar7;
+  undefined4 uVar8;
+  undefined4 uVar9;
+  undefined1 auStack_30 [8];
+  undefined1 auStack_28 [8];
+  undefined1 auStack_20 [11];
+  char cStack_15;
+  int iStack_14;
+  void *pvStack_10;
+  undefined1 *puStack_c;
+  int iStack_8;
+  
+  iStack_8 = 0xffffffff;
+  puStack_c = &LAB_03e5f548;
+  pvStack_10 = ExceptionList;
+  ExceptionList = &pvStack_10;
+  if (*(int *)(in_ECX + 0xc) == 0) {
+    ExceptionList = &pvStack_10;
+    __0CWideString__QAE_PB_W_Z
+              (
+              L"e:\\fabletlc\\fable tlc build repository\\bbbprojects\\fable1_5mainpc\\fableengine\\engine_world_map_inline.hpp"
+              );
+    iStack_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0401a250,0xffffffff);
+    iStack_8._0_1_ = 1;
+    __0CCharString__QAE_PBDJ_Z(&DAT_04440560,0xffffffff);
+    iStack_8._0_1_ = 2;
+    uVar9 = 1;
+    uVar8 = 0x6f;
+    puVar7 = auStack_20;
+    puVar6 = auStack_28;
+    puVar5 = auStack_30;
+    _GFGetSystemManager__YIPAVCSystemManager__XZ(puVar5,puVar6,puVar7,0x6f,1);
+    _GetDebugManager_CSystemManager__QAEPAVCDebugManager__XZ();
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (puVar5,puVar6,puVar7,uVar8,uVar9);
+    cStack_15 = '\x01' - (cVar2 != '\x01');
+    iStack_8._0_1_ = 1;
+    __1CCharString__QAE_XZ();
+    iStack_8 = (uint)iStack_8._1_3_ << 8;
+    __1CCharString__QAE_XZ();
+    iStack_8 = 0xffffffff;
+    __1CWideString__QAE_XZ();
+    if (cStack_15 != '\0') {
+      BVar3 = IsDebuggerPresent();
+      if (BVar3 != 0) {
+        pcVar1 = (code *)swi(3);
+        uVar8 = (*pcVar1)();
+        return uVar8;
+      }
+    }
+  }
+  param_1 = param_1 - *(int *)(in_ECX + 0x18);
+  param_2 = param_2 - *(int *)(in_ECX + 0x1c);
+  if ((((param_1 < 0) || (param_2 < 0)) || (*(int *)(in_ECX + 0x10) * 0x20 <= param_1)) ||
+     (*(int *)(in_ECX + 0x14) * 0x20 <= param_2)) {
+    uVar8 = 0;
+  }
+  else {
+    iStack_14 = (int)*(short *)(*(int *)(in_ECX + 0xc) +
+                               ((param_1 >> 5) + (param_2 >> 5) * *(int *)(in_ECX + 0x10)) * 2);
+    if (iStack_14 < 1) {
+      uVar8 = 0;
+    }
+    else {
+      puVar4 = (undefined4 *)__A__CArray_PAVCEngineMap____QBEABQAVCEngineMap__I_Z(iStack_14);
+      uVar8 = *puVar4;
+    }
+  }
+  ExceptionList = pvStack_10;
+  return uVar8;
+}
+
+
+// CALLEES of ?GetMap@CEngineWorldMap@@QBEPAVCEngineMap@@JJ@Z:
+

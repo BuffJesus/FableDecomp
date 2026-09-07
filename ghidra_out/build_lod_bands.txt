@@ -1,0 +1,25 @@
+//=== ?BuildLODBands@CEngineLandscapeRenderer@@AAEXXZ @ 02c86550 (seed 02c86550) ===
+
+/* WARNING: Removing unreachable block (ram,0x02c8657f) */
+/* [ported from ego_r via strfp] */
+
+void _BuildLODBands_CEngineLandscapeRenderer__AAEXXZ(void)
+
+{
+  int in_ECX;
+  undefined4 local_c;
+  undefined4 local_8;
+  
+  *(undefined4 *)(in_ECX + 0xd10) = 0;
+  *(undefined4 *)(in_ECX + 0xd14) = 0;
+  local_8 = *(float *)(in_ECX + 0xef8);
+  for (local_c = 2; local_c < 8; local_c = local_c + 1) {
+    *(float *)(in_ECX + 0xd10 + local_c * 4) = local_8;
+    local_8 = local_8 * 2.0;
+  }
+  return;
+}
+
+
+// CALLEES of ?BuildLODBands@CEngineLandscapeRenderer@@AAEXXZ:
+

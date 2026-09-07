@@ -1,0 +1,3 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct Entry{int destroyed;int flags;};struct State{Entry* begin;Entry* end;};static int ownerDeletes,destroyed,flagsOr;static void Run(State* self){if(self){for(Entry* p=self->begin;p!=self->end;++p){p->destroyed=1;p->flags=0;++destroyed;flagsOr|=p->flags;}if(self->begin)free(self->begin);++ownerDeletes;}}int main(){Run(0);if(ownerDeletes)return 1;State s;s.begin=(Entry*)malloc(3*sizeof(Entry));if(!s.begin)return 3;s.end=s.begin+3;for(Entry* p=s.begin;p!=s.end;++p){p->destroyed=0;p->flags=-1;}Run(&s);if(destroyed!=3||flagsOr!=0||ownerDeletes!=1)return 2;puts("POLYCLEAN_00443640_PASS");return 0;}

@@ -8489,6 +8489,1726 @@
       "verdict": "PASS",
       "parity_status": "green",
       "timestamp": "2026-08-07T12:56:54"
+    },
+    "0045370a": {
+      "address": "0x0045370A",
+      "class_name": "",
+      "function_name": "CThingBuildingDef_CopyAssign_2",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-16T14:42:59"
+    },
+    "0045493e": {
+      "address": "0x0045493E",
+      "class_name": "",
+      "function_name": "Copy_MemoryStepped",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-16T14:44:16"
+    },
+    "00458833": {
+      "address": "0x00458833",
+      "class_name": "",
+      "function_name": "CPhysicalPrimitiveInit_Transfer",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T19:59:33"
+    },
+    "00459af3": {
+      "address": "0x00459AF3",
+      "class_name": "",
+      "function_name": "CParentDefClassBase_ConstructorWithVectors",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T20:02:42"
+    },
+    "0045baaa": {
+      "address": "0x0045BAAA",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignFrom",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T20:04:03"
+    },
+    "0045bbc5": {
+      "address": "0x0045BBC5",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopyRGB",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T20:04:48"
+    },
+    "0045bcc1": {
+      "address": "0x0045BCC1",
+      "class_name": "",
+      "function_name": "CActiveFile_CopyRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-20T20:05:34"
+    },
+    "0045bcf2": {
+      "address": "0x0045BCF2",
+      "class_name": "",
+      "function_name": "CActiveFile_AllocateAndCopy",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T20:56:32"
+    },
+    "0045c19f": {
+      "address": "0x0045C19F",
+      "class_name": "",
+      "function_name": "CTCCarryable_AssignTreeStructure",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T20:57:34"
+    },
+    "0045c3cf": {
+      "address": "0x0045C3CF",
+      "class_name": "",
+      "function_name": "CTCCarryable_AssignClonedTree",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T20:59:06"
+    },
+    "0045c442": {
+      "address": "0x0045C442",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T21:58:28"
+    },
+    "0045c4d2": {
+      "address": "0x0045C4D2",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-20T21:59:42"
+    },
+    "0045c64d": {
+      "address": "0x0045C64D",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignUndefinedVector4",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-21T19:57:33"
+    },
+    "0045c71c": {
+      "address": "0x0045C71C",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignVector4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-21T20:00:37"
+    },
+    "0045c79e": {
+      "address": "0x0045C79E",
+      "class_name": "",
+      "function_name": "CTCCarryable_CopyAssign",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-21T20:01:52"
+    },
+    "0045c811": {
+      "address": "0x0045C811",
+      "class_name": "",
+      "function_name": "CTCCarryable_Clone_Tree",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-21T20:03:50"
+    },
+    "0045c8a1": {
+      "address": "0x0045C8A1",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-21T20:05:26"
+    },
+    "0045c8d3": {
+      "address": "0x0045C8D3",
+      "class_name": "",
+      "function_name": "CSpecialEffectsDef_TransferMap",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:01:01"
+    },
+    "0045c91d": {
+      "address": "0x0045C91D",
+      "class_name": "",
+      "function_name": "BinarySearchTree_WriteRangeToStream",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:03:42"
+    },
+    "0045ca09": {
+      "address": "0x0045CA09",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindOrInsert",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:07:52"
+    },
+    "0045ca8f": {
+      "address": "0x0045CA8F",
+      "class_name": "",
+      "function_name": "BinarySearchTree_InsertNode",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:13:13"
+    },
+    "0045cc79": {
+      "address": "0x0045CC79",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignUndefinedVector24",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:14:29"
+    },
+    "0045cd9b": {
+      "address": "0x0045CD9B",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignVector24",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T15:16:43"
+    },
+    "0045cfde": {
+      "address": "0x0045CFDE",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignUndefinedVector12",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:27:29"
+    },
+    "0045d125": {
+      "address": "0x0045D125",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignVector12",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T15:29:35"
+    },
+    "0045d183": {
+      "address": "0x0045D183",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignUndefinedVector8",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:36:47"
+    },
+    "0045d264": {
+      "address": "0x0045D264",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignVector8",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T15:39:39"
+    },
+    "0045d7fe": {
+      "address": "0x0045D7FE",
+      "class_name": "",
+      "function_name": "CTCCarryable_AssignClonedTree2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:41:42"
+    },
+    "0045d871": {
+      "address": "0x0045D871",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:43:21"
+    },
+    "0045d901": {
+      "address": "0x0045D901",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T15:45:13"
+    },
+    "0045da9a": {
+      "address": "0x0045DA9A",
+      "class_name": "",
+      "function_name": "UpdateShadowScene_WriteMapData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:47:32"
+    },
+    "0045dbf2": {
+      "address": "0x0045DBF2",
+      "class_name": "",
+      "function_name": "RBTree_InsertWithFind",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:49:28"
+    },
+    "0045dc78": {
+      "address": "0x0045DC78",
+      "class_name": "",
+      "function_name": "RBTree_InsertNewNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:51:46"
+    },
+    "0045dd2c": {
+      "address": "0x0045DD2C",
+      "class_name": "",
+      "function_name": "CTCCarryable_CopyAssign",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:59:00"
+    },
+    "0045dd9f": {
+      "address": "0x0045DD9F",
+      "class_name": "",
+      "function_name": "CTCCarryable_CloneDeep",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:02:06"
+    },
+    "0045de2f": {
+      "address": "0x0045DE2F",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData_Byte",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T16:03:20"
+    },
+    "0045deba": {
+      "address": "0x0045DEBA",
+      "class_name": "",
+      "function_name": "Map_EraseNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:04:32"
+    },
+    "0045df1e": {
+      "address": "0x0045DF1E",
+      "class_name": "",
+      "function_name": "Save_WriteMemoryAllocatorAreas",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:05:42"
+    },
+    "0045e074": {
+      "address": "0x0045E074",
+      "class_name": "",
+      "function_name": "RBTree_InsertWithFind2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:07:46"
+    },
+    "0045e0fa": {
+      "address": "0x0045E0FA",
+      "class_name": "",
+      "function_name": "RBTree_InsertNewNode2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:08:57"
+    },
+    "0045e1ae": {
+      "address": "0x0045E1AE",
+      "class_name": "",
+      "function_name": "CTCCarryable_AssignClonedTree3",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:10:13"
+    },
+    "0045e221": {
+      "address": "0x0045E221",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:11:43"
+    },
+    "0045e2b1": {
+      "address": "0x0045E2B1",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData_Byte",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T16:13:29"
+    },
+    "0045e33f": {
+      "address": "0x0045E33F",
+      "class_name": "",
+      "function_name": "UpdateShadowScene_WriteMapDataWithBool",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:15:00"
+    },
+    "0045e42e": {
+      "address": "0x0045E42E",
+      "class_name": "",
+      "function_name": "RBTree_InsertWithFind3",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:17:05"
+    },
+    "0045e4b4": {
+      "address": "0x0045E4B4",
+      "class_name": "",
+      "function_name": "RBTree_InsertNewNode3",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:18:57"
+    },
+    "0045e694": {
+      "address": "0x0045E694",
+      "class_name": "",
+      "function_name": "CTCCarryable_AssignClonedTree4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:20:14"
+    },
+    "0045e707": {
+      "address": "0x0045E707",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:27:34"
+    },
+    "0045e797": {
+      "address": "0x0045E797",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData_Byte",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T16:29:30"
+    },
+    "0045ec32": {
+      "address": "0x0045EC32",
+      "class_name": "",
+      "function_name": "Shadow_WriteAllocatorData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:02:12"
+    },
+    "0045ed88": {
+      "address": "0x0045ED88",
+      "class_name": "",
+      "function_name": "RBTree_InsertWithFind4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:06:56"
+    },
+    "0045ee0e": {
+      "address": "0x0045EE0E",
+      "class_name": "",
+      "function_name": "RBTree_InsertNewNode4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:11:10"
+    },
+    "0045efe5": {
+      "address": "0x0045EFE5",
+      "class_name": "",
+      "function_name": "CVector_CopyRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T18:14:47"
+    },
+    "0045f008": {
+      "address": "0x0045F008",
+      "class_name": "",
+      "function_name": "CActiveFile_AllocateAndCopyVector",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:16:51"
+    },
+    "0045f03a": {
+      "address": "0x0045F03A",
+      "class_name": "",
+      "function_name": "CTCCarryable_AssignClonedTree5",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:18:46"
+    },
+    "0045f0ad": {
+      "address": "0x0045F0AD",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:21:50"
+    },
+    "0045f13d": {
+      "address": "0x0045F13D",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T18:23:34"
+    },
+    "0045f31f": {
+      "address": "0x0045F31F",
+      "class_name": "",
+      "function_name": "Shadow_WriteAllocatorDataVariant",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:28:08"
+    },
+    "0045f477": {
+      "address": "0x0045F477",
+      "class_name": "",
+      "function_name": "RBTree_InsertWithFind5",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:30:31"
+    },
+    "0045f4fd": {
+      "address": "0x0045F4FD",
+      "class_name": "",
+      "function_name": "RBTree_InsertNewNode5",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:34:11"
+    },
+    "0046085b": {
+      "address": "0x0046085B",
+      "class_name": "",
+      "function_name": "CActiveFile_AllocateAndCopyValue",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T18:36:26"
+    },
+    "00460aca": {
+      "address": "0x00460ACA",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignUndefinedVector20",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:58:20"
+    },
+    "00460bec": {
+      "address": "0x00460BEC",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignVector20",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T18:59:39"
+    },
+    "00460c41": {
+      "address": "0x00460C41",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignUndefinedVector8_2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T19:00:55"
+    },
+    "0045e808": {
+      "address": "0x0045E808",
+      "class_name": "",
+      "function_name": "COpinionPersonalityDef_TransferArray",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T19:13:52"
+    },
+    "00460d22": {
+      "address": "0x00460D22",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_8",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T19:15:46"
+    },
+    "00460e66": {
+      "address": "0x00460E66",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_16",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T19:17:13"
+    },
+    "00460fc6": {
+      "address": "0x00460FC6",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_12",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T19:18:16"
+    },
+    "00461136": {
+      "address": "0x00461136",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_84",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T19:20:11"
+    },
+    "004612d6": {
+      "address": "0x004612D6",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_8",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T19:24:01"
+    },
+    "0046140e": {
+      "address": "0x0046140E",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T19:57:26"
+    },
+    "0046149e": {
+      "address": "0x0046149E",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T19:59:51"
+    },
+    "004614c0": {
+      "address": "0x004614C0",
+      "class_name": "",
+      "function_name": "CTCCarryable_CopyConstructor",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:01:26"
+    },
+    "00461533": {
+      "address": "0x00461533",
+      "class_name": "",
+      "function_name": "Tree_Clone_Recursive",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:03:29"
+    },
+    "004615c3": {
+      "address": "0x004615C3",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T20:06:36"
+    },
+    "00461695": {
+      "address": "0x00461695",
+      "class_name": "",
+      "function_name": "SerializeAllocationAreas",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:14:22"
+    },
+    "00461786": {
+      "address": "0x00461786",
+      "class_name": "",
+      "function_name": "RBTree_LowerBound",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:17:43"
+    },
+    "0046180c": {
+      "address": "0x0046180C",
+      "class_name": "",
+      "function_name": "RBTree_Insert_Internal",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:18:50"
+    },
+    "004618c9": {
+      "address": "0x004618C9",
+      "class_name": "",
+      "function_name": "SerializeAllocationAreas",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:21:17"
+    },
+    "004619ba": {
+      "address": "0x004619BA",
+      "class_name": "",
+      "function_name": "RBTree_LowerBound",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:25:51"
+    },
+    "00461a40": {
+      "address": "0x00461A40",
+      "class_name": "",
+      "function_name": "RBTree_Insert_Internal",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:47:33"
+    },
+    "00461bf0": {
+      "address": "0x00461BF0",
+      "class_name": "",
+      "function_name": "CTCCarryable_AssignmentOperator",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:49:16"
+    },
+    "00461c63": {
+      "address": "0x00461C63",
+      "class_name": "",
+      "function_name": "Tree_Clone_Recursive",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:51:29"
+    },
+    "00461cf3": {
+      "address": "0x00461CF3",
+      "class_name": "",
+      "function_name": "Allocator_Alloc_Struct_Smaller",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:53:52"
+    },
+    "00461e70": {
+      "address": "0x00461E70",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_4",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T20:55:34"
+    },
+    "004621e9": {
+      "address": "0x004621E9",
+      "class_name": "",
+      "function_name": "CTCCarryable_CloneTree",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:57:14"
+    },
+    "0046225c": {
+      "address": "0x0046225C",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:59:11"
+    },
+    "0046230e": {
+      "address": "0x0046230E",
+      "class_name": "",
+      "function_name": "CTCCarryable_assign_copy",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T21:01:13"
+    },
+    "00462381": {
+      "address": "0x00462381",
+      "class_name": "",
+      "function_name": "CTCCarryable_CloneDeep",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T21:08:30"
+    },
+    "004625a3": {
+      "address": "0x004625A3",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T21:11:09"
+    },
+    "00462c5f": {
+      "address": "0x00462C5F",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_12",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T21:15:06"
+    },
+    "00462cb0": {
+      "address": "0x00462CB0",
+      "class_name": "",
+      "function_name": "CActiveFile_CopyAssign",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T21:18:34"
+    },
+    "00462dc1": {
+      "address": "0x00462DC1",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_12",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T21:20:49"
+    },
+    "00462e78": {
+      "address": "0x00462E78",
+      "class_name": "",
+      "function_name": "CSimpleMemoryPool_AssignFrom",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T21:24:06"
+    },
+    "00462f1f": {
+      "address": "0x00462F1F",
+      "class_name": "",
+      "function_name": "Copy_MemoryRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T21:25:24"
+    },
+    "00463057": {
+      "address": "0x00463057",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T21:28:23"
+    },
+    "00463258": {
+      "address": "0x00463258",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_8",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T21:42:33"
+    },
+    "0046367a": {
+      "address": "0x0046367A",
+      "class_name": "",
+      "function_name": "TransferMap_WriteEntry",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T21:44:20"
+    },
+    "004636cf": {
+      "address": "0x004636CF",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindOrInsert",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T21:46:13"
+    },
+    "00463871": {
+      "address": "0x00463871",
+      "class_name": "",
+      "function_name": "CEngineSceneGrid_InitFromCell",
+      "success": false,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-26T21:48:54"
+    },
+    "004638c8": {
+      "address": "0x004638C8",
+      "class_name": "",
+      "function_name": "CEngineSceneGrid_InsertBoundingBoxNode",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T08:43:17"
+    },
+    "00463901": {
+      "address": "0x00463901",
+      "class_name": "",
+      "function_name": "CEngineSceneGrid_AllocBoundingBoxNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T09:04:42"
+    },
+    "00463cdb": {
+      "address": "0x00463CDB",
+      "class_name": "",
+      "function_name": "SerializeAllocationAreas",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:09:36"
+    },
+    "00463e2e": {
+      "address": "0x00463E2E",
+      "class_name": "",
+      "function_name": "BinarySearchTree_LowerBound",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:14:10"
+    },
+    "00463eb4": {
+      "address": "0x00463EB4",
+      "class_name": "",
+      "function_name": "RBTree_Insert_Internal",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:18:58"
+    },
+    "004640d1": {
+      "address": "0x004640D1",
+      "class_name": "",
+      "function_name": "Vector_RShift_4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T09:21:36"
+    },
+    "00464100": {
+      "address": "0x00464100",
+      "class_name": "",
+      "function_name": "Vector_InsertElements_Realloc",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:27:12"
+    },
+    "00464226": {
+      "address": "0x00464226",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:30:43"
+    },
+    "004645e0": {
+      "address": "0x004645E0",
+      "class_name": "",
+      "function_name": "SerializeAllocationAreas",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:33:15"
+    },
+    "00464733": {
+      "address": "0x00464733",
+      "class_name": "",
+      "function_name": "RBTree_LowerBound",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:37:26"
+    },
+    "004647b9": {
+      "address": "0x004647B9",
+      "class_name": "",
+      "function_name": "RBTree_Insert_Internal",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:39:37"
+    },
+    "0046496f": {
+      "address": "0x0046496F",
+      "class_name": "",
+      "function_name": "std_vector_push_copy_element",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T09:41:00"
+    },
+    "00464aab": {
+      "address": "0x00464AAB",
+      "class_name": "",
+      "function_name": "Vector_CopyRangeForward",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T10:32:02"
+    },
+    "00464ace": {
+      "address": "0x00464ACE",
+      "class_name": "",
+      "function_name": "Vector_InsertN_uint32",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:09:09"
+    },
+    "00464b9a": {
+      "address": "0x00464B9A",
+      "class_name": "",
+      "function_name": "TransferCSimVoice",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:10:50"
+    },
+    "0046591d": {
+      "address": "0x0046591D",
+      "class_name": "",
+      "function_name": "VectorInsert_CopyRange",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T10:12:05"
+    },
+    "0046594c": {
+      "address": "0x0046594C",
+      "class_name": "",
+      "function_name": "Vector_InsertElements_Realloc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:44:06"
+    },
+    "00465a72": {
+      "address": "0x00465A72",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:46:14"
+    },
+    "00465d36": {
+      "address": "0x00465D36",
+      "class_name": "",
+      "function_name": "RBTree_LowerBound",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:47:15"
+    },
+    "00465dbc": {
+      "address": "0x00465DBC",
+      "class_name": "",
+      "function_name": "RBTree_InsertNode",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:50:11"
+    },
+    "00465e44": {
+      "address": "0x00465E44",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_InitFromRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:51:27"
+    },
+    "004661c5": {
+      "address": "0x004661C5",
+      "class_name": "",
+      "function_name": "Tree_Clone_Recursive",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:52:41"
+    },
+    "00466255": {
+      "address": "0x00466255",
+      "class_name": "",
+      "function_name": "Allocator_Alloc_Pair_With_CCharString",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T11:10:19"
+    },
+    "0046656f": {
+      "address": "0x0046656F",
+      "class_name": "",
+      "function_name": "CDialogueLayerDef_AllocateAndConstruct",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T12:39:08"
+    },
+    "00466848": {
+      "address": "0x00466848",
+      "class_name": "",
+      "function_name": "LinkedList_TransferBinaryMetadata",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T12:41:39"
+    },
+    "00466939": {
+      "address": "0x00466939",
+      "class_name": "",
+      "function_name": "RBTree_LowerBound",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T12:45:18"
+    },
+    "004669bf": {
+      "address": "0x004669BF",
+      "class_name": "",
+      "function_name": "RBTree_InsertNode",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T12:50:02"
+    },
+    "00466de5": {
+      "address": "0x00466DE5",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T12:59:02"
+    },
+    "00466e1e": {
+      "address": "0x00466E1E",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:02:15"
+    },
+    "00466f74": {
+      "address": "0x00466F74",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:04:16"
+    },
+    "00466281": {
+      "address": "0x00466281",
+      "class_name": "",
+      "function_name": "CDialogueLayerDef_Vector_AssignRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:15:21"
+    },
+    "004672d6": {
+      "address": "0x004672D6",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T13:22:26"
+    },
+    "0046730f": {
+      "address": "0x0046730F",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:26:04"
+    },
+    "00467465": {
+      "address": "0x00467465",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:30:40"
+    },
+    "004676bb": {
+      "address": "0x004676BB",
+      "class_name": "",
+      "function_name": "VectorInsert_MoveBack",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T13:32:36"
+    },
+    "004676ef": {
+      "address": "0x004676EF",
+      "class_name": "",
+      "function_name": "Vector_FillInsert",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:34:15"
+    },
+    "0046780e": {
+      "address": "0x0046780E",
+      "class_name": "",
+      "function_name": "Vector_CopyRange",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T13:35:34"
+    },
+    "00467831": {
+      "address": "0x00467831",
+      "class_name": "",
+      "function_name": "VectorInsert_ExpandWithFill",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:39:01"
+    },
+    "00468fe3": {
+      "address": "0x00468FE3",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T13:39:51"
+    },
+    "00469012": {
+      "address": "0x00469012",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:45:01"
+    },
+    "0046916b": {
+      "address": "0x0046916B",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:47:25"
+    },
+    "00469309": {
+      "address": "0x00469309",
+      "class_name": "",
+      "function_name": "Serialization_WriteParticleEffect",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:49:15"
+    },
+    "004695b3": {
+      "address": "0x004695B3",
+      "class_name": "",
+      "function_name": "RBTree_LowerBound",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:51:03"
+    },
+    "00469639": {
+      "address": "0x00469639",
+      "class_name": "",
+      "function_name": "RBTree_InsertNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:52:55"
+    },
+    "0046988f": {
+      "address": "0x0046988F",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T13:54:00"
+    },
+    "004698be": {
+      "address": "0x004698BE",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:56:36"
+    },
+    "004699e4": {
+      "address": "0x004699E4",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T14:11:59"
+    },
+    "00469e3e": {
+      "address": "0x00469E3E",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T14:13:29"
+    },
+    "00469e74": {
+      "address": "0x00469E74",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T14:17:43"
+    },
+    "00469fc8": {
+      "address": "0x00469FC8",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T14:31:22"
+    },
+    "0046ad17": {
+      "address": "0x0046AD17",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T14:38:00"
+    },
+    "0046ad59": {
+      "address": "0x0046AD59",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T14:43:11"
+    },
+    "0046aecc": {
+      "address": "0x0046AECC",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T15:20:31"
+    },
+    "0046b182": {
+      "address": "0x0046B182",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T15:21:42"
+    },
+    "0046b1b8": {
+      "address": "0x0046B1B8",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T15:24:00"
+    },
+    "0046b30c": {
+      "address": "0x0046B30C",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T15:25:31"
+    },
+    "0046b6c1": {
+      "address": "0x0046B6C1",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T15:27:24"
+    },
+    "0046b6f6": {
+      "address": "0x0046B6F6",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T15:32:39"
+    },
+    "0046b83e": {
+      "address": "0x0046B83E",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T15:36:15"
+    },
+    "0046bba2": {
+      "address": "0x0046BBA2",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T15:37:04"
+    },
+    "0046bbdb": {
+      "address": "0x0046BBDB",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T15:39:38"
+    },
+    "0046bd31": {
+      "address": "0x0046BD31",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T15:43:52"
+    },
+    "0046bf72": {
+      "address": "0x0046BF72",
+      "class_name": "",
+      "function_name": "$E1",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-08-27T16:00:35"
+    },
+    "0046bfe0": {
+      "address": "0x0046BFE0",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T16:01:19"
+    },
+    "0046c022": {
+      "address": "0x0046C022",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T16:04:52"
+    },
+    "0046eabd": {
+      "address": "0x0046EABD",
+      "class_name": "",
+      "function_name": "CActiveFile_Copy",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T16:06:34"
+    },
+    "0046eb9e": {
+      "address": "0x0046EB9E",
+      "class_name": "",
+      "function_name": "CActiveFile_CopyConstruct",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T16:12:17"
+    },
+    "0046ec57": {
+      "address": "0x0046EC57",
+      "class_name": "",
+      "function_name": "CExpression_DigScript_CloneDeep",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T16:15:47"
+    },
+    "0046ed15": {
+      "address": "0x0046ED15",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignQuickAccessItems",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-28T19:17:06"
+    },
+    "0046efb8": {
+      "address": "0x0046EFB8",
+      "class_name": "",
+      "function_name": "Vector_CopyElements",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-28T19:20:00"
+    },
+    "0046f020": {
+      "address": "0x0046F020",
+      "class_name": "",
+      "function_name": "CQuickAccessItemButtonGuiDef_CopyConstructArray",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-28T19:22:56"
+    },
+    "00890750": {
+      "address": "0x00890750",
+      "class_name": "",
+      "function_name": "?AddLineToConversation@CGameScriptInterface@@UBEXJABVCCharString@@_NABVCScriptThing@@2@Z",
+      "success": false,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-28T19:29:20"
     }
   },
   "runs": [
@@ -17861,6 +19581,1916 @@
       "verdict": "PASS",
       "parity_status": "red",
       "timestamp": "2026-08-09T17:30:51"
+    },
+    {
+      "address": "0x0045370A",
+      "class_name": "",
+      "function_name": "CThingBuildingDef_CopyAssign_2",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-16T14:42:59"
+    },
+    {
+      "address": "0x0045493E",
+      "class_name": "",
+      "function_name": "Copy_MemoryStepped",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-16T14:44:16"
+    },
+    {
+      "address": "0x00458833",
+      "class_name": "",
+      "function_name": "CPhysicalPrimitiveInit_Transfer",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T19:59:33"
+    },
+    {
+      "address": "0x00459AF3",
+      "class_name": "",
+      "function_name": "CParentDefClassBase_ConstructorWithVectors",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T20:02:42"
+    },
+    {
+      "address": "0x0045BAAA",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignFrom",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T20:04:03"
+    },
+    {
+      "address": "0x0045BBC5",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopyRGB",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T20:04:48"
+    },
+    {
+      "address": "0x0045BCC1",
+      "class_name": "",
+      "function_name": "CActiveFile_CopyRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-20T20:05:34"
+    },
+    {
+      "address": "0x0045BCF2",
+      "class_name": "",
+      "function_name": "CActiveFile_AllocateAndCopy",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T20:56:32"
+    },
+    {
+      "address": "0x0045C19F",
+      "class_name": "",
+      "function_name": "CTCCarryable_AssignTreeStructure",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T20:57:34"
+    },
+    {
+      "address": "0x0045C3CF",
+      "class_name": "",
+      "function_name": "CTCCarryable_AssignClonedTree",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T20:59:06"
+    },
+    {
+      "address": "0x0045C442",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-20T21:58:28"
+    },
+    {
+      "address": "0x0045C4D2",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-20T21:59:42"
+    },
+    {
+      "address": "0x0045C64D",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignUndefinedVector4",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-21T19:57:33"
+    },
+    {
+      "address": "0x0045C71C",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignVector4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-21T20:00:37"
+    },
+    {
+      "address": "0x0045C79E",
+      "class_name": "",
+      "function_name": "CTCCarryable_CopyAssign",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-21T20:01:52"
+    },
+    {
+      "address": "0x0045C811",
+      "class_name": "",
+      "function_name": "CTCCarryable_Clone_Tree",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-21T20:03:50"
+    },
+    {
+      "address": "0x0045C8A1",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-21T20:05:26"
+    },
+    {
+      "address": "0x0045C8D3",
+      "class_name": "",
+      "function_name": "CSpecialEffectsDef_TransferMap",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:01:01"
+    },
+    {
+      "address": "0x0045C91D",
+      "class_name": "",
+      "function_name": "BinarySearchTree_WriteRangeToStream",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:03:42"
+    },
+    {
+      "address": "0x0045CA09",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindOrInsert",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:07:52"
+    },
+    {
+      "address": "0x0045CA8F",
+      "class_name": "",
+      "function_name": "BinarySearchTree_InsertNode",
+      "success": false,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-26T15:10:25"
+    },
+    {
+      "address": "0x0045CA8F",
+      "class_name": "",
+      "function_name": "BinarySearchTree_InsertNode",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:13:13"
+    },
+    {
+      "address": "0x0045CC79",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignUndefinedVector24",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:14:29"
+    },
+    {
+      "address": "0x0045CD9B",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignVector24",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T15:16:43"
+    },
+    {
+      "address": "0x0045CFDE",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignUndefinedVector12",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:24:24"
+    },
+    {
+      "address": "0x0045CFDE",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignUndefinedVector12",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:27:29"
+    },
+    {
+      "address": "0x0045D125",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignVector12",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T15:29:35"
+    },
+    {
+      "address": "0x0045D183",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignUndefinedVector8",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:34:50"
+    },
+    {
+      "address": "0x0045D183",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignUndefinedVector8",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:36:47"
+    },
+    {
+      "address": "0x0045D264",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignVector8",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T15:39:39"
+    },
+    {
+      "address": "0x0045D7FE",
+      "class_name": "",
+      "function_name": "CTCCarryable_AssignClonedTree2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:41:42"
+    },
+    {
+      "address": "0x0045D871",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:43:21"
+    },
+    {
+      "address": "0x0045D901",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T15:45:13"
+    },
+    {
+      "address": "0x0045DA9A",
+      "class_name": "",
+      "function_name": "UpdateShadowScene_WriteMapData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:47:32"
+    },
+    {
+      "address": "0x0045DBF2",
+      "class_name": "",
+      "function_name": "RBTree_InsertWithFind",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:49:28"
+    },
+    {
+      "address": "0x0045DC78",
+      "class_name": "",
+      "function_name": "RBTree_InsertNewNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:51:46"
+    },
+    {
+      "address": "0x0045DD2C",
+      "class_name": "",
+      "function_name": "CTCCarryable_CopyAssign",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T15:59:00"
+    },
+    {
+      "address": "0x0045DD9F",
+      "class_name": "",
+      "function_name": "CTCCarryable_CloneDeep",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:02:06"
+    },
+    {
+      "address": "0x0045DE2F",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData_Byte",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T16:03:20"
+    },
+    {
+      "address": "0x0045DEBA",
+      "class_name": "",
+      "function_name": "Map_EraseNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:04:32"
+    },
+    {
+      "address": "0x0045DF1E",
+      "class_name": "",
+      "function_name": "Save_WriteMemoryAllocatorAreas",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:05:42"
+    },
+    {
+      "address": "0x0045E074",
+      "class_name": "",
+      "function_name": "RBTree_InsertWithFind2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:07:46"
+    },
+    {
+      "address": "0x0045E0FA",
+      "class_name": "",
+      "function_name": "RBTree_InsertNewNode2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:08:57"
+    },
+    {
+      "address": "0x0045E1AE",
+      "class_name": "",
+      "function_name": "CTCCarryable_AssignClonedTree3",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:10:13"
+    },
+    {
+      "address": "0x0045E221",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:11:43"
+    },
+    {
+      "address": "0x0045E2B1",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData_Byte",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T16:13:29"
+    },
+    {
+      "address": "0x0045E33F",
+      "class_name": "",
+      "function_name": "UpdateShadowScene_WriteMapDataWithBool",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:15:00"
+    },
+    {
+      "address": "0x0045E42E",
+      "class_name": "",
+      "function_name": "RBTree_InsertWithFind3",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:17:05"
+    },
+    {
+      "address": "0x0045E4B4",
+      "class_name": "",
+      "function_name": "RBTree_InsertNewNode3",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:18:57"
+    },
+    {
+      "address": "0x0045E694",
+      "class_name": "",
+      "function_name": "CTCCarryable_AssignClonedTree4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:20:14"
+    },
+    {
+      "address": "0x0045E707",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:26:51"
+    },
+    {
+      "address": "0x0045E707",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T16:27:34"
+    },
+    {
+      "address": "0x0045E797",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData_Byte",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T16:29:30"
+    },
+    {
+      "address": "0x0045EC32",
+      "class_name": "",
+      "function_name": "",
+      "success": false,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-26T18:00:00"
+    },
+    {
+      "address": "0x0045EC32",
+      "class_name": "",
+      "function_name": "Shadow_WriteAllocatorData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:02:12"
+    },
+    {
+      "address": "0x0045ED88",
+      "class_name": "",
+      "function_name": "RBTree_InsertWithFind4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:06:56"
+    },
+    {
+      "address": "0x0045EE0E",
+      "class_name": "",
+      "function_name": "RBTree_InsertNewNode4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:11:10"
+    },
+    {
+      "address": "0x0045EFE5",
+      "class_name": "",
+      "function_name": "CVector_CopyRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T18:14:47"
+    },
+    {
+      "address": "0x0045F008",
+      "class_name": "",
+      "function_name": "CActiveFile_AllocateAndCopyVector",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:16:51"
+    },
+    {
+      "address": "0x0045F03A",
+      "class_name": "",
+      "function_name": "CTCCarryable_AssignClonedTree5",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:18:46"
+    },
+    {
+      "address": "0x0045F0AD",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:21:50"
+    },
+    {
+      "address": "0x0045F13D",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T18:23:34"
+    },
+    {
+      "address": "0x0045F31F",
+      "class_name": "",
+      "function_name": "Shadow_WriteAllocatorDataVariant",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:28:08"
+    },
+    {
+      "address": "0x0045F477",
+      "class_name": "",
+      "function_name": "RBTree_InsertWithFind5",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:30:31"
+    },
+    {
+      "address": "0x0045F4FD",
+      "class_name": "",
+      "function_name": "RBTree_InsertNewNode5",
+      "success": false,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-26T18:32:25"
+    },
+    {
+      "address": "0x0045F4FD",
+      "class_name": "",
+      "function_name": "RBTree_InsertNewNode5",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:34:11"
+    },
+    {
+      "address": "0x0046085B",
+      "class_name": "",
+      "function_name": "CActiveFile_AllocateAndCopyValue",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T18:36:26"
+    },
+    {
+      "address": "0x00460ACA",
+      "class_name": "",
+      "function_name": "",
+      "success": false,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-26T18:54:58"
+    },
+    {
+      "address": "0x00460ACA",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignUndefinedVector20",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T18:58:20"
+    },
+    {
+      "address": "0x00460BEC",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignVector20",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T18:59:39"
+    },
+    {
+      "address": "0x00460C41",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignUndefinedVector8_2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T19:00:55"
+    },
+    {
+      "address": "0x0045E808",
+      "class_name": "",
+      "function_name": "COpinionPersonalityDef_TransferArray",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T19:13:52"
+    },
+    {
+      "address": "0x00460D22",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_8",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T19:15:46"
+    },
+    {
+      "address": "0x00460E66",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_16",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T19:17:13"
+    },
+    {
+      "address": "0x00460FC6",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_12",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T19:18:16"
+    },
+    {
+      "address": "0x00461136",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_84",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T19:20:11"
+    },
+    {
+      "address": "0x004612D6",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_8",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T19:24:01"
+    },
+    {
+      "address": "0x0046140E",
+      "class_name": "",
+      "function_name": "",
+      "success": false,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-26T19:55:53"
+    },
+    {
+      "address": "0x0046140E",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T19:57:26"
+    },
+    {
+      "address": "0x0046149E",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T19:59:51"
+    },
+    {
+      "address": "0x004614C0",
+      "class_name": "",
+      "function_name": "CTCCarryable_CopyConstructor",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:01:26"
+    },
+    {
+      "address": "0x00461533",
+      "class_name": "",
+      "function_name": "Tree_Clone_Recursive",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:03:29"
+    },
+    {
+      "address": "0x004615C3",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T20:06:36"
+    },
+    {
+      "address": "0x00461695",
+      "class_name": "",
+      "function_name": "SerializeAllocationAreas",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:13:01"
+    },
+    {
+      "address": "0x00461695",
+      "class_name": "",
+      "function_name": "SerializeAllocationAreas",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:14:22"
+    },
+    {
+      "address": "0x00461786",
+      "class_name": "",
+      "function_name": "RBTree_LowerBound",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:17:43"
+    },
+    {
+      "address": "0x0046180C",
+      "class_name": "",
+      "function_name": "RBTree_Insert_Internal",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:18:50"
+    },
+    {
+      "address": "0x004618C9",
+      "class_name": "",
+      "function_name": "SerializeAllocationAreas",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:21:17"
+    },
+    {
+      "address": "0x004619BA",
+      "class_name": "",
+      "function_name": "RBTree_LowerBound",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:25:51"
+    },
+    {
+      "address": "0x00461A40",
+      "class_name": "",
+      "function_name": "RBTree_Insert_Internal",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:47:33"
+    },
+    {
+      "address": "0x00461BF0",
+      "class_name": "",
+      "function_name": "CTCCarryable_AssignmentOperator",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:49:16"
+    },
+    {
+      "address": "0x00461C63",
+      "class_name": "",
+      "function_name": "Tree_Clone_Recursive",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:51:29"
+    },
+    {
+      "address": "0x00461CF3",
+      "class_name": "",
+      "function_name": "Allocator_Alloc_Struct_Smaller",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:53:52"
+    },
+    {
+      "address": "0x00461E70",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_4",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T20:55:34"
+    },
+    {
+      "address": "0x004621E9",
+      "class_name": "",
+      "function_name": "CTCCarryable_CloneTree",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:57:14"
+    },
+    {
+      "address": "0x0046225C",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T20:59:11"
+    },
+    {
+      "address": "0x0046230E",
+      "class_name": "",
+      "function_name": "CTCCarryable_assign_copy",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T21:01:13"
+    },
+    {
+      "address": "0x00462381",
+      "class_name": "",
+      "function_name": "",
+      "success": false,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-26T21:06:30"
+    },
+    {
+      "address": "0x00462381",
+      "class_name": "",
+      "function_name": "CTCCarryable_CloneDeep",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T21:08:30"
+    },
+    {
+      "address": "0x004625A3",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T21:11:09"
+    },
+    {
+      "address": "0x00462C5F",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_12",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T21:15:06"
+    },
+    {
+      "address": "0x00462CB0",
+      "class_name": "",
+      "function_name": "CActiveFile_CopyAssign",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T21:18:34"
+    },
+    {
+      "address": "0x00462DC1",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_12",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T21:20:49"
+    },
+    {
+      "address": "0x00462E78",
+      "class_name": "",
+      "function_name": "CSimpleMemoryPool_AssignFrom",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T21:24:06"
+    },
+    {
+      "address": "0x00462F1F",
+      "class_name": "",
+      "function_name": "Copy_MemoryRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T21:25:24"
+    },
+    {
+      "address": "0x00463057",
+      "class_name": "",
+      "function_name": "TreeNode_CloneDeep",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T21:28:23"
+    },
+    {
+      "address": "0x00463258",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy_8",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-26T21:42:33"
+    },
+    {
+      "address": "0x0046367A",
+      "class_name": "",
+      "function_name": "TransferMap_WriteEntry",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T21:44:20"
+    },
+    {
+      "address": "0x004636CF",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindOrInsert",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-26T21:46:13"
+    },
+    {
+      "address": "0x00463871",
+      "class_name": "",
+      "function_name": "CEngineSceneGrid_InitFromCell",
+      "success": false,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-26T21:47:35"
+    },
+    {
+      "address": "0x00463871",
+      "class_name": "",
+      "function_name": "CEngineSceneGrid_InitFromCell",
+      "success": false,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-26T21:48:54"
+    },
+    {
+      "address": "0x004638C8",
+      "class_name": "",
+      "function_name": "CEngineSceneGrid_InsertBoundingBoxNode",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T08:43:17"
+    },
+    {
+      "address": "0x00463901",
+      "class_name": "",
+      "function_name": "CEngineSceneGrid_AllocBoundingBoxNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T09:04:42"
+    },
+    {
+      "address": "0x00463CDB",
+      "class_name": "",
+      "function_name": "SerializeAllocationAreas",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:09:36"
+    },
+    {
+      "address": "0x00463E2E",
+      "class_name": "",
+      "function_name": "BinarySearchTree_LowerBound",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:14:10"
+    },
+    {
+      "address": "0x00463EB4",
+      "class_name": "",
+      "function_name": "RBTree_Insert_Internal",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:18:58"
+    },
+    {
+      "address": "0x004640D1",
+      "class_name": "",
+      "function_name": "Vector_RShift_4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T09:21:36"
+    },
+    {
+      "address": "0x00464100",
+      "class_name": "",
+      "function_name": "Vector_InsertElements_Realloc",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:27:12"
+    },
+    {
+      "address": "0x00464226",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:30:43"
+    },
+    {
+      "address": "0x004645E0",
+      "class_name": "",
+      "function_name": "SerializeAllocationAreas",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:33:15"
+    },
+    {
+      "address": "0x00464733",
+      "class_name": "",
+      "function_name": "RBTree_LowerBound",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:37:26"
+    },
+    {
+      "address": "0x004647B9",
+      "class_name": "",
+      "function_name": "RBTree_Insert_Internal",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T09:39:37"
+    },
+    {
+      "address": "0x0046496F",
+      "class_name": "",
+      "function_name": "std_vector_push_copy_element",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T09:41:00"
+    },
+    {
+      "address": "0x00464AAB",
+      "class_name": "",
+      "function_name": "",
+      "success": false,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-27T10:06:49"
+    },
+    {
+      "address": "0x00464ACE",
+      "class_name": "",
+      "function_name": "Vector_InsertN_uint32",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:09:09"
+    },
+    {
+      "address": "0x00464B9A",
+      "class_name": "",
+      "function_name": "TransferCSimVoice",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:10:50"
+    },
+    {
+      "address": "0x0046591D",
+      "class_name": "",
+      "function_name": "VectorInsert_CopyRange",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T10:12:05"
+    },
+    {
+      "address": "0x00464AAB",
+      "class_name": "",
+      "function_name": "Vector_CopyRangeForward",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T10:32:02"
+    },
+    {
+      "address": "0x0046594C",
+      "class_name": "",
+      "function_name": "",
+      "success": false,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-27T10:42:33"
+    },
+    {
+      "address": "0x0046594C",
+      "class_name": "",
+      "function_name": "Vector_InsertElements_Realloc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:44:06"
+    },
+    {
+      "address": "0x00465A72",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:46:14"
+    },
+    {
+      "address": "0x00465D36",
+      "class_name": "",
+      "function_name": "RBTree_LowerBound",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:47:15"
+    },
+    {
+      "address": "0x00465DBC",
+      "class_name": "",
+      "function_name": "RBTree_InsertNode",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:50:11"
+    },
+    {
+      "address": "0x00465E44",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_InitFromRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:51:27"
+    },
+    {
+      "address": "0x004661C5",
+      "class_name": "",
+      "function_name": "Tree_Clone_Recursive",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T10:52:41"
+    },
+    {
+      "address": "0x00466255",
+      "class_name": "",
+      "function_name": "Allocator_Alloc_Pair_With_CCharString",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T11:10:19"
+    },
+    {
+      "address": "0x0046656F",
+      "class_name": "",
+      "function_name": "",
+      "success": false,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-27T12:36:28"
+    },
+    {
+      "address": "0x0046656F",
+      "class_name": "",
+      "function_name": "CDialogueLayerDef_AllocateAndConstruct",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T12:39:08"
+    },
+    {
+      "address": "0x00466848",
+      "class_name": "",
+      "function_name": "LinkedList_TransferBinaryMetadata",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T12:41:39"
+    },
+    {
+      "address": "0x00466939",
+      "class_name": "",
+      "function_name": "RBTree_LowerBound",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T12:45:18"
+    },
+    {
+      "address": "0x004669BF",
+      "class_name": "",
+      "function_name": "RBTree_InsertNode",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T12:50:02"
+    },
+    {
+      "address": "0x00466DE5",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T12:59:02"
+    },
+    {
+      "address": "0x00466E1E",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:02:15"
+    },
+    {
+      "address": "0x00466F74",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:04:16"
+    },
+    {
+      "address": "0x00466281",
+      "class_name": "",
+      "function_name": "CDialogueLayerDef_Vector_AssignRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:15:21"
+    },
+    {
+      "address": "0x004672D6",
+      "class_name": "",
+      "function_name": "",
+      "success": false,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-27T13:21:05"
+    },
+    {
+      "address": "0x004672D6",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T13:22:26"
+    },
+    {
+      "address": "0x0046730F",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:26:04"
+    },
+    {
+      "address": "0x00467465",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:30:40"
+    },
+    {
+      "address": "0x004676BB",
+      "class_name": "",
+      "function_name": "VectorInsert_MoveBack",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T13:32:36"
+    },
+    {
+      "address": "0x004676EF",
+      "class_name": "",
+      "function_name": "Vector_FillInsert",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:34:15"
+    },
+    {
+      "address": "0x0046780E",
+      "class_name": "",
+      "function_name": "Vector_CopyRange",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T13:35:34"
+    },
+    {
+      "address": "0x00467831",
+      "class_name": "",
+      "function_name": "VectorInsert_ExpandWithFill",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:39:01"
+    },
+    {
+      "address": "0x00468FE3",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T13:39:51"
+    },
+    {
+      "address": "0x00469012",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:45:01"
+    },
+    {
+      "address": "0x0046916B",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:47:25"
+    },
+    {
+      "address": "0x00469309",
+      "class_name": "",
+      "function_name": "Serialization_WriteParticleEffect",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:49:15"
+    },
+    {
+      "address": "0x004695B3",
+      "class_name": "",
+      "function_name": "RBTree_LowerBound",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:51:03"
+    },
+    {
+      "address": "0x00469639",
+      "class_name": "",
+      "function_name": "RBTree_InsertNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:52:55"
+    },
+    {
+      "address": "0x0046988F",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T13:54:00"
+    },
+    {
+      "address": "0x004698BE",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T13:56:36"
+    },
+    {
+      "address": "0x004699E4",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T14:11:59"
+    },
+    {
+      "address": "0x00469E3E",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T14:13:29"
+    },
+    {
+      "address": "0x00469E74",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T14:17:43"
+    },
+    {
+      "address": "0x00469FC8",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T14:31:22"
+    },
+    {
+      "address": "0x0046AD17",
+      "class_name": "",
+      "function_name": "",
+      "success": false,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-27T14:36:37"
+    },
+    {
+      "address": "0x0046AD17",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T14:38:00"
+    },
+    {
+      "address": "0x0046AD59",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T14:43:11"
+    },
+    {
+      "address": "0x0046AECC",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T15:20:31"
+    },
+    {
+      "address": "0x0046B182",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T15:21:42"
+    },
+    {
+      "address": "0x0046B1B8",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T15:24:00"
+    },
+    {
+      "address": "0x0046B30C",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T15:25:31"
+    },
+    {
+      "address": "0x0046B6C1",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T15:27:24"
+    },
+    {
+      "address": "0x0046B6F6",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T15:32:39"
+    },
+    {
+      "address": "0x0046B83E",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T15:36:15"
+    },
+    {
+      "address": "0x0046BBA2",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T15:37:04"
+    },
+    {
+      "address": "0x0046BBDB",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T15:39:38"
+    },
+    {
+      "address": "0x0046BD31",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T15:43:52"
+    },
+    {
+      "address": "0x0046BF72",
+      "class_name": "",
+      "function_name": "$E1",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-27T15:58:13"
+    },
+    {
+      "address": "0x0046BF72",
+      "class_name": "",
+      "function_name": "$E1",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-08-27T16:00:35"
+    },
+    {
+      "address": "0x0046BFE0",
+      "class_name": "",
+      "function_name": "Vector_Erase",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T16:01:19"
+    },
+    {
+      "address": "0x0046C022",
+      "class_name": "",
+      "function_name": "Vector_Insert",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T16:04:52"
+    },
+    {
+      "address": "0x0046EABD",
+      "class_name": "",
+      "function_name": "CActiveFile_Copy",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T16:06:34"
+    },
+    {
+      "address": "0x0046EB9E",
+      "class_name": "",
+      "function_name": "CActiveFile_CopyConstruct",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T16:09:19"
+    },
+    {
+      "address": "0x0046EB9E",
+      "class_name": "",
+      "function_name": "CActiveFile_CopyConstruct",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-27T16:12:17"
+    },
+    {
+      "address": "0x0046EC57",
+      "class_name": "",
+      "function_name": "CExpression_DigScript_CloneDeep",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-27T16:15:47"
+    },
+    {
+      "address": "0x0046ED15",
+      "class_name": "",
+      "function_name": "CActiveFile_AssignQuickAccessItems",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-28T19:17:06"
+    },
+    {
+      "address": "0x0046EFB8",
+      "class_name": "",
+      "function_name": "Vector_CopyElements",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-28T19:20:00"
+    },
+    {
+      "address": "0x0046F020",
+      "class_name": "",
+      "function_name": "CQuickAccessItemButtonGuiDef_CopyConstructArray",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-28T19:22:56"
+    },
+    {
+      "address": "0x00890750",
+      "class_name": "",
+      "function_name": "?AddLineToConversation@CGameScriptInterface@@UBEXJABVCCharString@@_NABVCScriptThing@@2@Z",
+      "success": false,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-28T19:28:28"
+    },
+    {
+      "address": "0x00890750",
+      "class_name": "",
+      "function_name": "?AddLineToConversation@CGameScriptInterface@@UBEXJABVCCharString@@_NABVCScriptThing@@2@Z",
+      "success": false,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-28T19:29:20"
     }
   ]
 }

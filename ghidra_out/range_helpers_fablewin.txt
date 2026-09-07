@@ -1,0 +1,153 @@
+//=== ?GetBlockSizeFromFlags@CRangeCompressor@@AAEJK@Z @ 03316d40 (seed 03316d40) ===
+
+/* [ported from ego_r via strfp] */
+
+undefined4 _GetBlockSizeFromFlags_CRangeCompressor__AAEJK_Z(uint param_1)
+
+{
+  undefined4 uVar1;
+  
+  if ((param_1 & 0x40) == 0) {
+    if ((param_1 & 0x20) == 0) {
+      uVar1 = 1;
+    }
+    else {
+      uVar1 = 2;
+    }
+  }
+  else {
+    uVar1 = 4;
+  }
+  return uVar1;
+}
+
+
+// CALLEES of ?GetBlockSizeFromFlags@CRangeCompressor@@AAEJK@Z:
+
+//=== ?ReadVarSizedUInt@CRangeCompressor@@AAEKPBEJ@Z @ 03316d80 (seed 03316d80) ===
+
+/* [ported from ego_r via strfp] */
+
+uint _ReadVarSizedUInt_CRangeCompressor__AAEKPBEJ_Z(uint *param_1,int param_2)
+
+{
+  code *pcVar1;
+  bool bVar2;
+  bool bVar3;
+  bool bVar4;
+  char cVar5;
+  BOOL BVar6;
+  uint uVar7;
+  char local_38;
+  undefined1 local_2c [8];
+  undefined1 local_24 [8];
+  undefined1 local_1c [11];
+  char local_11;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03f0acfb;
+  local_10 = ExceptionList;
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  if (param_2 == 4) {
+    return *param_1;
+  }
+  if (param_2 == 2) {
+    return (uint)(ushort)*param_1;
+  }
+  if (param_2 == 1) goto LAB_03316ee2;
+  ExceptionList = &local_10;
+  if (DAT_04bac270 == 0) {
+LAB_03316e71:
+    local_38 = '\x01';
+  }
+  else {
+    ExceptionList = &local_10;
+    __0CWideString__QAE_PB_W_Z(L"lib_range_compressor.cpp");
+    local_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_0450342e,0xffffffff);
+    local_8 = 1;
+    __0CCharString__QAE_PBDJ_Z("byte_count==1",0xffffffff);
+    local_8 = 2;
+    bVar4 = true;
+    bVar3 = true;
+    bVar2 = true;
+    cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (local_2c,local_24,local_1c,0x14d,1);
+    if (cVar5 == '\x01') goto LAB_03316e71;
+    local_38 = '\0';
+  }
+  local_11 = local_38;
+  local_8 = 1;
+  if (bVar3) {
+    __1CCharString__QAE_XZ();
+  }
+  local_8 = 0;
+  if (bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_8 = 0xffffffff;
+  if (bVar2) {
+    __1CWideString__QAE_XZ();
+  }
+  if ((local_11 != '\0') && (BVar6 = IsDebuggerPresent(), BVar6 != 0)) {
+    pcVar1 = (code *)swi(3);
+    uVar7 = (*pcVar1)();
+    return uVar7;
+  }
+LAB_03316ee2:
+  ExceptionList = local_10;
+  return (uint)(byte)*param_1;
+}
+
+
+// CALLEES of ?ReadVarSizedUInt@CRangeCompressor@@AAEKPBEJ@Z:
+//   0183552c  ?DoErrorMessage@CDebugManager@@QAE_NABVCCharString@@0ABVCWideString@@KW4EErrorType@NDebugManager@@@Z
+//   01822233  ??1CCharString@@QAE@XZ
+//   017f059e  ??0CWideString@@QAE@PB_W@Z
+//   EXTERNAL:00000128  IsDebuggerPresent
+//   017ea333  ??1CWideString@@QAE@XZ
+//   0181c126  ??0CCharString@@QAE@PBDJ@Z
+
+//=== ?CalcShuffleOperations@CRangeCompressor@@AAEJKPAK0@Z @ 033181d0 (seed 033181d0) ===
+
+/* WARNING: Removing unreachable block (ram,0x0331822c) */
+/* WARNING: Removing unreachable block (ram,0x033181eb) */
+/* [ported from ego_r via strfp] */
+
+int _CalcShuffleOperations_CRangeCompressor__AAEJKPAK0_Z(uint param_1,int param_2,int param_3)
+
+{
+  int local_18;
+  uint local_14;
+  int local_10;
+  int local_c;
+  int local_8;
+  
+  local_c = 0;
+  local_8 = 0;
+  for (local_10 = 0; local_10 < 0x20; local_10 = local_10 + 1) {
+    if ((1 << ((byte)local_10 & 0x1f) & param_1) != 0) {
+      local_18 = local_10;
+      local_14 = 0;
+      while ((local_18 < 0x20 && ((1 << ((byte)local_18 & 0x1f) & param_1) != 0))) {
+        local_14 = 1 << ((byte)local_18 & 0x1f) | local_14;
+        local_18 = local_18 + 1;
+      }
+      *(uint *)(param_2 + local_c * 4) = local_14;
+      *(int *)(param_3 + local_c * 4) = local_10 - local_8;
+      local_c = local_c + 1;
+      local_8 = (local_18 - local_10) + local_8;
+      local_10 = local_18;
+    }
+  }
+  return local_c;
+}
+
+
+// CALLEES of ?CalcShuffleOperations@CRangeCompressor@@AAEJKPAK0@Z:
+

@@ -1,0 +1,45 @@
+//=== ?GFSqr@@YIMM@Z @ 01ace080 (seed 01ace080) ===
+
+/* [ported from ego_r via strfp] */
+
+float10 _GFSqr__YIMM_Z(float param_1)
+
+{
+  return (float10)(param_1 * param_1);
+}
+
+
+// CALLEES of ?GFSqr@@YIMM@Z:
+
+//=== ?GFFastOneOverSqrt@@YIMM@Z @ 01ace0a0 (seed 01ace0a0) ===
+
+/* [ported from ego_r via strfp] */
+
+float10 _GFFastOneOverSqrt__YIMM_Z(float param_1)
+
+{
+  float fVar1;
+  
+  fVar1 = (float)((0x17c - ((uint)param_1 >> 0x17 & 0xff) >> 1) << 0x17 |
+                 (&DAT_04bbec48)[(uint)param_1 >> 0x11 & 0x7f] << 0xf);
+  return (float10)((3.0 - fVar1 * fVar1 * param_1) * fVar1 * 0.5);
+}
+
+
+// CALLEES of ?GFFastOneOverSqrt@@YIMM@Z:
+
+//=== ?GFFastSqrt@@YIMM@Z @ 01d9faf0 (seed 01d9faf0) ===
+
+/* [ported from ego_r via strfp] */
+
+void _GFFastSqrt__YIMM_Z(undefined4 param_1)
+
+{
+  _sqrt__YAMM_Z(param_1);
+  return;
+}
+
+
+// CALLEES of ?GFFastSqrt@@YIMM@Z:
+//   0183f833  ?sqrt@@YAMM@Z
+

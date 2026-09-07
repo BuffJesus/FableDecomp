@@ -1,4 +1,6 @@
 #include <cstddef>
+// RE_AGENT_SEMANTIC_REVIEW: generated lift conflates text-bank lookup with an
+// unrelated morph-entry allocator/template and aliases incompatible lifetimes.
 #include <cstdint>
 #include <new>
 #include <utility>

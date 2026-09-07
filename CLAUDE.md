@@ -10,7 +10,7 @@ guest↔host membase math). This is Ghidra static analysis + ordinary native (x3
 of a clean PE32 at ImageBase `0x400000`.
 
 ## Biggest assets (use them, don't re-derive)
-- **FSE manifest** `refs/fse_api_manifest.json` — 931 reversed API functions. Run
+- **FSE manifest** `refs/fse_api_manifest.json` — 933 reversed API functions. Run
   `python tools/fse_import/fse_manifest_to_ghidra.py` → `fse_api.h` (parse into Ghidra) +
   `fse_api_index.md` (RE roadmap).
 - **FSE source (local):** `D:\Code\FQT\SourceFilesToReference\FSE\FableScriptExtender-master\`

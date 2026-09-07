@@ -251,6 +251,11 @@ try {
     Invoke-Checked 'artifact layout index' {
         & $python (Join-Path $tools 'organize_decomp_artifacts.py') --root $root --apply --allow-active
     }
+    Invoke-Checked 'root workspace janitor' {
+        # Sweeps root-level *.obj / scratch sources into work/scratch so they never
+        # reach the public tree (hygiene pass 2026-09-07).
+        & (Join-Path $tools 'organize_workspace.ps1') -MinimumAgeMinutes 30
+    }
     $newState = [ordered]@{
         fingerprint = $fingerprint
         completed_at = (Get-Date).ToString('o')

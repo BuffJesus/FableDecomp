@@ -1,89 +1,24 @@
 {
   "schema": "forgefse-runtime-script-audit/0.1",
-  "source": "D:\\Code\\ForgeFSE\\FableScriptExtender\\LuaManager.cpp",
+  "source": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaManager.cpp",
   "summary": {
-    "registeredQuestBindings": 881,
-    "registeredEntityBindings": 89,
-    "requiredCalls": 84,
-    "callable": 77,
-    "missing": 6,
-    "wrongScope": 1
+    "registeredQuestBindings": 908,
+    "registeredEntityBindings": 92,
+    "requiredCalls": 111,
+    "callable": 111,
+    "missing": 0,
+    "wrongScope": 0
   },
   "calls": [
     {
       "scope": "Quest",
-      "name": "RunCutscene",
-      "count": 11,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "missing"
-    },
-    {
-      "scope": "Quest",
-      "name": "EndCutscene",
-      "count": 8,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "missing"
-    },
-    {
-      "scope": "Quest",
-      "name": "FadeOutAndKillEntity",
-      "count": 6,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "missing"
-    },
-    {
-      "scope": "Quest",
-      "name": "StartCutscene",
-      "count": 5,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "missing"
-    },
-    {
-      "scope": "Entity",
-      "name": "GetAngleXY",
-      "count": 2,
-      "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
-      ],
-      "status": "missing"
-    },
-    {
-      "scope": "Quest",
-      "name": "AddLogbookStoryEntry",
-      "count": 1,
-      "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
-      ],
-      "status": "missing"
-    },
-    {
-      "scope": "Entity",
-      "name": "SetIsPushableByHero",
-      "count": 1,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
-      ],
-      "status": "wrong-scope"
-    },
-    {
-      "scope": "Quest",
       "name": "Log",
-      "count": 50,
+      "count": 119,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
@@ -99,35 +34,21 @@
         "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
         "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
         "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
-        "MeetSister:FSE/MeetSister/MeetSister.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "GetStateBool",
-      "count": 33,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
-        "MazeResearch:FSE/MazeResearch/MazeResearch.lua"
+        "MeetSister:FSE/MeetSister/MeetSister.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterChest.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua",
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
       "name": "SetStateBool",
-      "count": 33,
+      "count": 42,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
@@ -147,8 +68,12 @@
     {
       "scope": "Quest",
       "name": "NewScriptFrame",
-      "count": 26,
+      "count": 41,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
@@ -161,28 +86,77 @@
         "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
         "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
         "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua"
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua"
       ],
       "status": "callable"
     },
     {
-      "scope": "Entity",
-      "name": "ReleaseControl",
-      "count": 24,
+      "scope": "Quest",
+      "name": "GetStateBool",
+      "count": 35,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetStateInt",
+      "count": 33,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetThingWithScriptName",
+      "count": 32,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterChest.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua",
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
       "name": "GetActiveQuestName",
-      "count": 23,
+      "count": 24,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
@@ -202,23 +176,27 @@
       "status": "callable"
     },
     {
-      "scope": "Quest",
-      "name": "GetThingWithScriptName",
-      "count": 20,
+      "scope": "Entity",
+      "name": "ReleaseControl",
+      "count": 24,
       "consumers": [
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetStateInt",
+      "count": 21,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua"
       ],
       "status": "callable"
     },
@@ -232,6 +210,52 @@
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "DeregisterTimer",
+      "count": 15,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddEntityBinding",
+      "count": 14,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "MeetSister:FSE/MeetSister/MeetSister.lua",
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetQuestCardObjective",
+      "count": 13,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "MeetSister:FSE/MeetSister/MeetSister.lua"
       ],
       "status": "callable"
     },
@@ -250,10 +274,29 @@
     },
     {
       "scope": "Quest",
-      "name": "DeregisterTimer",
+      "name": "GetHero",
       "count": 12,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "RunCutscene",
+      "count": 12,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
       ],
@@ -301,32 +344,104 @@
     },
     {
       "scope": "Quest",
-      "name": "SetQuestCardObjective",
+      "name": "PlayCutscene",
       "count": 11,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
-        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
-        "MeetSister:FSE/MeetSister/MeetSister.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "AddEntityBinding",
+      "name": "DeactivateQuestLater",
       "count": 10,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
         "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
-        "MeetSister:FSE/MeetSister/MeetSister.lua"
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "RemoveThing",
+      "count": 10,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterChest.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetTimer",
+      "count": 10,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EndCutscene",
+      "count": 9,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetTimer",
+      "count": 9,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetQuestAsCompleted",
+      "count": 9,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
       ],
       "status": "callable"
     },
@@ -345,33 +460,30 @@
     },
     {
       "scope": "Quest",
-      "name": "DeactivateQuestLater",
+      "name": "FinalizeEntityBindings",
       "count": 8,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
         "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
+        "MeetSister:FSE/MeetSister/MeetSister.lua",
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "GetHero",
+      "name": "GetHealth",
       "count": 8,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
       ],
       "status": "callable"
     },
@@ -390,30 +502,14 @@
     },
     {
       "scope": "Quest",
-      "name": "PlayCutscene",
-      "count": 7,
+      "name": "AddLineToConversation",
+      "count": 6,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "SetQuestAsCompleted",
-      "count": 7,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/ExtraBooty.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
       ],
       "status": "callable"
     },
@@ -429,15 +525,24 @@
     },
     {
       "scope": "Quest",
-      "name": "FinalizeEntityBindings",
+      "name": "FadeOutAndKillEntity",
       "count": 6,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/GuardianSisterInfo2.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "IsRegionLoaded",
+      "count": 6,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua",
         "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MazeResearch:FSE/MazeResearch/MazeResearch.lua",
-        "MeetSister:FSE/MeetSister/MeetSister.lua"
+        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua"
       ],
       "status": "callable"
     },
@@ -492,9 +597,10 @@
     },
     {
       "scope": "Quest",
-      "name": "SetTimer",
+      "name": "RegisterTimer",
       "count": 6,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
@@ -503,11 +609,23 @@
     },
     {
       "scope": "Quest",
-      "name": "AddLineToConversation",
-      "count": 5,
+      "name": "StartAmbientConversation",
+      "count": 6,
       "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "StartCutscene",
+      "count": 6,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
       ],
@@ -521,6 +639,27 @@
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetFacingAngle",
+      "count": 5,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "EntitySetInLimbo",
+      "count": 5,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua"
       ],
       "status": "callable"
     },
@@ -550,29 +689,6 @@
     },
     {
       "scope": "Quest",
-      "name": "IsRegionLoaded",
-      "count": 5,
-      "consumers": [
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/GuardianSisterInfo.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "StartAmbientConversation",
-      "count": 5,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
       "name": "ClearThingHasInformation",
       "count": 4,
       "consumers": [
@@ -585,11 +701,22 @@
     },
     {
       "scope": "Quest",
-      "name": "EntitySetFacingAngle",
+      "name": "CreateEffectAtPos",
       "count": 4,
       "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "CreateThread",
+      "count": 4,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua"
       ],
       "status": "callable"
     },
@@ -606,23 +733,11 @@
     },
     {
       "scope": "Quest",
-      "name": "GetHealth",
+      "name": "GiveHeroMorality",
       "count": 4,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "GetTimer",
-      "count": 4,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
       ],
       "status": "callable"
     },
@@ -637,13 +752,57 @@
     },
     {
       "scope": "Quest",
-      "name": "RemoveThing",
+      "name": "PlayAVIMovie",
       "count": 4,
       "consumers": [
-        "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterMessenger.lua",
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetReadableObjectTextTag",
+      "count": 4,
+      "consumers": [
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetStateString",
+      "count": 4,
+      "consumers": [
+        "StatueMaster:FSE/StatueMaster/StatueMaster.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "DisplayQuestInfo",
+      "count": 3,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "FadeScreenIn",
+      "count": 3,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
         "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetAllThingsWithDefName",
+      "count": 3,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
       ],
       "status": "callable"
     },
@@ -678,10 +837,32 @@
     },
     {
       "scope": "Entity",
+      "name": "IsDead",
+      "count": 3,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
       "name": "IsPerformingScriptTask",
       "count": 3,
       "consumers": [
         "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "MsgIsUsedByHero",
+      "count": 3,
+      "consumers": [
+        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua"
       ],
       "status": "callable"
     },
@@ -692,17 +873,6 @@
       "consumers": [
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "RegisterTimer",
-      "count": 3,
-      "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
       ],
       "status": "callable"
     },
@@ -719,11 +889,57 @@
     },
     {
       "scope": "Quest",
-      "name": "CreateEffectAtPos",
+      "name": "SetMasterGameState",
+      "count": 3,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetTeleportingAsActive",
+      "count": 3,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddLogbookStoryEntryString",
       "count": 2,
       "consumers": [
-        "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/GhostFisherman.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddQuestRegion",
+      "count": 2,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "CreateCreature",
+      "count": 2,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "DisplayGameInfo",
+      "count": 2,
+      "consumers": [
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua"
       ],
       "status": "callable"
     },
@@ -739,6 +955,15 @@
     },
     {
       "scope": "Quest",
+      "name": "EntitySetAsLocked",
+      "count": 2,
+      "consumers": [
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
       "name": "EntitySetAsOpinionSourceByString",
       "count": 2,
       "consumers": [
@@ -749,20 +974,29 @@
     },
     {
       "scope": "Quest",
-      "name": "EntitySetInLimbo",
+      "name": "GetAllThingsWithScriptName",
       "count": 2,
       "consumers": [
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "GetAngleXY",
+      "count": 2,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
       ],
       "status": "callable"
     },
     {
       "scope": "Quest",
-      "name": "FadeScreenIn",
+      "name": "GetHeroMorality",
       "count": 2,
       "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua",
-        "MeetSister:FSE/MeetSister/Entities/MeetSisterSister.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
       ],
       "status": "callable"
     },
@@ -778,20 +1012,58 @@
     },
     {
       "scope": "Quest",
-      "name": "GiveHeroMorality",
+      "name": "GiveThingBestEnemyTarget",
       "count": 2,
       "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBMinion.lua",
+        "DragonBossFight:FSE/DragonBossFight/Entities/DBSummoner.lua"
       ],
       "status": "callable"
     },
     {
-      "scope": "Entity",
-      "name": "MsgIsUsedByHero",
+      "scope": "Quest",
+      "name": "KickOffQuestStartScreen",
       "count": 2,
       "consumers": [
-        "MazeResearch:FSE/MazeResearch/Entities/EmptyGrave.lua",
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua",
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "MsgIsGameInfoClickedPast",
+      "count": 2,
+      "consumers": [
+        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua",
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetCutsceneActionMode",
+      "count": 2,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "SetHUDEnabled",
+      "count": 2,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "StopOverrideMusic",
+      "count": 2,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
       ],
       "status": "callable"
     },
@@ -806,10 +1078,28 @@
     },
     {
       "scope": "Quest",
+      "name": "AddLogbookStoryEntry",
+      "count": 1,
+      "consumers": [
+        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
       "name": "AddQuestCard",
       "count": 1,
       "consumers": [
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "AddQuestInfoBarHealth",
+      "count": 1,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
       ],
       "status": "callable"
     },
@@ -833,24 +1123,6 @@
     },
     {
       "scope": "Quest",
-      "name": "CreateThread",
-      "count": 1,
-      "consumers": [
-        "HerosOldHouse:FSE/HerosOldHouse/HerosOldHouse.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "DisplayGameInfo",
-      "count": 1,
-      "consumers": [
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
       "name": "EntitySetAlpha",
       "count": 1,
       "consumers": [
@@ -869,10 +1141,46 @@
     },
     {
       "scope": "Quest",
+      "name": "EntitySetCutsceneBehaviour",
+      "count": 1,
+      "consumers": [
+        "StatueMaster:FSE/StatueMaster/Entities/StatueMasterStatue.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "FadeScreenOutUntilNextCallToFadeScreenIn",
+      "count": 1,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
       "name": "ForceShipsVisible",
       "count": 1,
       "consumers": [
         "GuardianSisterInfo2:FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetAllCreaturesExcludingHero",
+      "count": 1,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "GetCutsceneFlag",
+      "count": 1,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
       ],
       "status": "callable"
     },
@@ -896,19 +1204,10 @@
     },
     {
       "scope": "Quest",
-      "name": "KickOffQuestStartScreen",
+      "name": "IsCreatureFlying",
       "count": 1,
       "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "MsgIsGameInfoClickedPast",
-      "count": 1,
-      "consumers": [
-        "MazeResearch:FSE/MazeResearch/Entities/HistoryBookcase.lua"
+        "DragonBossFight:FSE/DragonBossFight/Entities/Dragon.lua"
       ],
       "status": "callable"
     },
@@ -922,11 +1221,38 @@
       "status": "callable"
     },
     {
+      "scope": "Quest",
+      "name": "OverrideMusic",
+      "count": 1,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Quest",
+      "name": "PersistTransferInt",
+      "count": 1,
+      "consumers": [
+        "DragonBossFight:FSE/DragonBossFight/DragonBossFight.lua"
+      ],
+      "status": "callable"
+    },
+    {
       "scope": "Entity",
       "name": "SetFriendsWithEverythingFlag",
       "count": 1,
       "consumers": [
         "GuardianSisterInfo:FSE/GuardianSisterInfo/Entities/MazeAtTavern.lua"
+      ],
+      "status": "callable"
+    },
+    {
+      "scope": "Entity",
+      "name": "SetIsPushableByHero",
+      "count": 1,
+      "consumers": [
+        "HerosOldHouse:FSE/HerosOldHouse/Entities/FishermansWife.lua"
       ],
       "status": "callable"
     },
@@ -951,15 +1277,6 @@
     {
       "scope": "Quest",
       "name": "SetTeleporterAsActive",
-      "count": 1,
-      "consumers": [
-        "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
-      ],
-      "status": "callable"
-    },
-    {
-      "scope": "Quest",
-      "name": "SetTeleportingAsActive",
       "count": 1,
       "consumers": [
         "GuardianTrophyDealerInfo:FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"

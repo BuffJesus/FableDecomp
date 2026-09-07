@@ -1,283 +1,11 @@
 [
   {
-    "package": "GuardianSisterInfo2",
-    "path": "FSE/GuardianSisterInfo2/Entities/MazeAtTavern.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 87,
-    "message": "quest API 'FadeOutAndKillEntity' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "MeetSister",
-    "path": "FSE/MeetSister/MeetSister.lua",
-    "severity": "warning",
-    "code": "no-obvious-yield",
-    "line": 9,
-    "message": "Main has no recognized yield/blocking operation"
-  },
-  {
-    "package": "MazeResearch",
-    "path": "FSE/MazeResearch/MazeResearch.lua",
-    "severity": "warning",
-    "code": "no-obvious-yield",
-    "line": 9,
-    "message": "Main has no recognized yield/blocking operation"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 3,
-    "message": "entity API 'GetAngleXY' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
-    "severity": "error",
-    "code": "wrong-api-scope",
-    "line": 16,
-    "message": "'SetIsPushableByHero' is a quest API but is called on me"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 65,
-    "message": "quest API 'FadeOutAndKillEntity' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 73,
-    "message": "quest API 'FadeOutAndKillEntity' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 104,
-    "message": "quest API 'StartCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 109,
-    "message": "quest API 'RunCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 110,
-    "message": "quest API 'EndCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 132,
-    "message": "quest API 'EndCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 136,
-    "message": "quest API 'RunCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 137,
-    "message": "quest API 'EndCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 147,
-    "message": "quest API 'StartCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 148,
-    "message": "quest API 'RunCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 149,
-    "message": "quest API 'EndCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 179,
-    "message": "quest API 'FadeOutAndKillEntity' is not present in the ForgeFSE manifest"
-  },
-  {
     "package": "HerosOldHouse",
     "path": "FSE/HerosOldHouse/Entities/FishermansWife.lua",
     "severity": "warning",
     "code": "partial-persistence",
     "line": 1,
     "message": "State referenced but not persisted: Helped, Helping, WifeAttacked, WifeAttackedAndLeft"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 37,
-    "message": "quest API 'FadeOutAndKillEntity' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 49,
-    "message": "quest API 'StartCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 50,
-    "message": "quest API 'RunCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 51,
-    "message": "quest API 'RunCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 57,
-    "message": "quest API 'RunCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 70,
-    "message": "quest API 'RunCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 73,
-    "message": "quest API 'EndCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 84,
-    "message": "quest API 'StartCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 85,
-    "message": "quest API 'RunCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 86,
-    "message": "quest API 'RunCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 87,
-    "message": "quest API 'EndCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 98,
-    "message": "quest API 'StartCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 99,
-    "message": "quest API 'RunCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 104,
-    "message": "quest API 'RunCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 105,
-    "message": "quest API 'EndCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 119,
-    "message": "quest API 'EndCutscene' is not present in the ForgeFSE manifest"
-  },
-  {
-    "package": "HerosOldHouse",
-    "path": "FSE/HerosOldHouse/Entities/GhostFisherman.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 141,
-    "message": "quest API 'FadeOutAndKillEntity' is not present in the ForgeFSE manifest"
   },
   {
     "package": "HerosOldHouse",
@@ -296,19 +24,51 @@
     "message": "State referenced but not persisted: MissionAborted, WifeAttacked, WifeAttackedAndLeft"
   },
   {
-    "package": "GuardianTrophyDealerInfo",
-    "path": "FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 3,
-    "message": "entity API 'GetAngleXY' is not present in the ForgeFSE manifest"
+    "package": "MazeResearch",
+    "path": "FSE/MazeResearch/MazeResearch.lua",
+    "severity": "warning",
+    "code": "no-obvious-yield",
+    "line": 9,
+    "message": "Main has no recognized yield/blocking operation"
   },
   {
-    "package": "GuardianTrophyDealerInfo",
-    "path": "FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
-    "severity": "error",
-    "code": "unknown-api",
-    "line": 71,
-    "message": "quest API 'AddLogbookStoryEntry' is not present in the ForgeFSE manifest"
+    "package": "MeetSister",
+    "path": "FSE/MeetSister/MeetSister.lua",
+    "severity": "warning",
+    "code": "no-obvious-yield",
+    "line": 9,
+    "message": "Main has no recognized yield/blocking operation"
+  },
+  {
+    "package": "StatueMaster",
+    "path": "FSE/StatueMaster/Entities/StatueMasterChest.lua",
+    "severity": "warning",
+    "code": "no-obvious-yield",
+    "line": 24,
+    "message": "Main has no recognized yield/blocking operation"
+  },
+  {
+    "package": "StatueMaster",
+    "path": "FSE/StatueMaster/StatueMaster.lua",
+    "severity": "warning",
+    "code": "no-obvious-yield",
+    "line": 22,
+    "message": "Main has no recognized yield/blocking operation"
+  },
+  {
+    "package": "DragonBossFight",
+    "path": "FSE/DragonBossFight/DragonBossFight.lua",
+    "severity": "warning",
+    "code": "no-obvious-yield",
+    "line": 42,
+    "message": "Main has no recognized yield/blocking operation"
+  },
+  {
+    "package": "DragonBossFight",
+    "path": "FSE/DragonBossFight/DragonBossFight.lua",
+    "severity": "warning",
+    "code": "partial-persistence",
+    "line": 1,
+    "message": "State referenced but not persisted: MinionSpawningEnabled, NextSummonerSpawnPoint, NumFlyBysBetweenSummonerSpawns, NumFlyBysSinceLastSummonerSpawn, NumMinions, NumSummoners, SummonerSpawningEnabled, TargetNumMinions, TargetNumSummoners"
   }
 ]

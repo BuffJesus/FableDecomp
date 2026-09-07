@@ -1,0 +1,59 @@
+//=== Math_InitializeCosineLookup @ 00a0db60 (seed a0db60) ===
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* [forge-autoname4 conf=high] Caller Initialise; fills lookup tables: DAT_013ce558 (sqrt scaled),
+   DAT_013cd550 (cosines), DAT_013cb530 (acos), DAT_013cc540 (asin) */
+
+void Math_InitializeCosineLookup(void)
+
+{
+  uint uVar1;
+  uint uVar2;
+  uint *puVar3;
+  int iVar4;
+  float10 fVar5;
+  
+  uVar1 = 0;
+  puVar3 = &DAT_013ce558;
+  do {
+    *puVar3 = (int)(1.0 / SQRT((float)((uVar1 | 0x1f80) << 0x11))) + 0x2000U >> 0xf & 0xff;
+    uVar1 = uVar1 + 1;
+    puVar3 = puVar3 + 1;
+  } while (uVar1 < 0x80);
+  iVar4 = 0;
+  _DAT_013ce658 = 0xff;
+  uVar1 = 0;
+  do {
+    fVar5 = (float10)iVar4;
+    if (iVar4 < 0) {
+      fVar5 = fVar5 + (float10)4.2949673e+09;
+    }
+    uVar2 = uVar1 + 4;
+    iVar4 = iVar4 + 2;
+    fVar5 = (float10)fcos(fVar5 * (float10)0.0030679617);
+    *(float *)((int)&DAT_013cd550 + uVar1) = (float)fVar5;
+    uVar1 = uVar2;
+  } while (uVar2 < 0x1000);
+  _DAT_013ce550 = DAT_013cd550;
+  uVar1 = 0;
+  do {
+    fVar5 = (float10)_CIacos();
+    (&DAT_013cb530)[uVar1] = (float)fVar5;
+    uVar1 = uVar1 + 1;
+  } while (uVar1 < 0x401);
+  _DAT_013cc534 = 0;
+  uVar1 = 0;
+  do {
+    fVar5 = (float10)_CIasin();
+    (&DAT_013cc540)[uVar1] = (float)fVar5;
+    uVar1 = uVar1 + 1;
+  } while (uVar1 < 0x401);
+  _DAT_013cd544 = 0;
+  return;
+}
+
+
+// CALLEES of Math_InitializeCosineLookup:
+//   00bfedc4  _CIasin
+//   00bfeba2  _CIacos
+

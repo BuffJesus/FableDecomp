@@ -1,0 +1,3 @@
+#include <cstdio>
+#include <cstdlib>
+static unsigned calls;static void Release(void* p){if(p){++calls;std::free(p);}}static void Run(void** begin,void** end){for(;begin<end;++begin)Release(*begin);}int main(){void* empty[1]={0};Run(empty,empty);void* values[3]={std::malloc(4),0,std::malloc(8)};if(!values[0]||!values[2])return 1;Run(values,values+3);if(calls!=2)return 1;std::printf("FREEPTR_00913690_PASS\n");return 0;}

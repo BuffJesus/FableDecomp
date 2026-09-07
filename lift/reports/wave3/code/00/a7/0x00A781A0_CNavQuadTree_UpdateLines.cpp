@@ -1,6 +1,7 @@
+#include "candidates/nav_quad_tree_initialise_lines_compiled.h"
+
 #include <cmath>
 #include <cstddef>
-#include <cstdint>
 #include <cstdlib>
 #include <list>
 #include <vector>
@@ -51,14 +52,14 @@ namespace
     static_assert(offsetof(C2DLineFListNodeBase, Next) == 0x0);
     static_assert(offsetof(C2DLineFListNodeBase, Prev) == 0x4);
 
-    struct C2DLineFListNode
+    struct UpdateLinesListNode
     {
         C2DLineFListNodeBase Links;
         C2DLineFOverlay Value;
     };
-    static_assert(sizeof(C2DLineFListNode) == 0x18);
-    static_assert(offsetof(C2DLineFListNode, Links) == 0x0);
-    static_assert(offsetof(C2DLineFListNode, Value) == 0x8);
+    static_assert(sizeof(UpdateLinesListNode) == 0x18);
+    static_assert(offsetof(UpdateLinesListNode, Links) == 0x0);
+    static_assert(offsetof(UpdateLinesListNode, Value) == 0x8);
 
     struct C2DLineFListOverlay
     {
@@ -95,6 +96,7 @@ namespace
     // +0x8 exists because the helper is called as a local std::vector-like object.
     struct VectorConstructInitializedC2DLineFResultOverlay
     {
+        void Construct(int count);
         void* First;
         void* Last;
         void* End;
@@ -104,42 +106,44 @@ namespace
     static_assert(offsetof(VectorConstructInitializedC2DLineFResultOverlay, Last) == 0x4);
     static_assert(offsetof(VectorConstructInitializedC2DLineFResultOverlay, End) == 0x8);
 
-    [[nodiscard]] static int Ftol2(const float value)
+    static int Ftol2(const float value)
     {
-        return static_cast<int>(std::nearbyint(value));
+        return static_cast<int>(value);
     }
 
-    void __thiscall Vector_ConstructInitialized_C2DLineF(
-        VectorConstructInitializedC2DLineFResultOverlay* self,
-        int count);
+    void VectorConstructInitializedC2DLineFResultOverlay::Construct(int count)
+    {
+        First = count > 0 ? std::malloc(count * 0x10) : 0;
+        Last = First ? static_cast<unsigned char*>(First) + count * 0x10 : 0;
+        End = Last;
+    }
 }
 
 void CNavQuadTree::UpdateLines(
-    std::vector<std::list<C2DLineF>>& lineLists,
+    CNavLineCellVector& lineLists,
     const std::vector<C2DLineF>& lines,
     const C2DBoxI& area) const
 {
-    const auto& lineListsRaw =
+    const C2DLineFListVectorOverlay& lineListsRaw =
         reinterpret_cast<C2DLineFListVectorOverlay&>(lineLists);
-    const auto& linesRaw =
+    const C2DLineFVectorOverlay& linesRaw =
         reinterpret_cast<const C2DLineFVectorOverlay&>(lines);
-    const auto& areaRaw =
+    const C2DBoxIOverlay& areaRaw =
         reinterpret_cast<const C2DBoxIOverlay&>(area);
 
     const int iVar9 = Ftol2(MapWidth * DAT_0123095c);
 
-    VectorConstructInitializedC2DLineFResultOverlay local_8c{};
-    Vector_ConstructInitialized_C2DLineF(
-        &local_8c,
+    VectorConstructInitializedC2DLineFResultOverlay local_8c = {0};
+    local_8c.Construct(
         (areaRaw.MaxX - areaRaw.MinX) * (areaRaw.MaxY - areaRaw.MinY));
 
-    std::uint32_t local_18 = static_cast<std::uint32_t>(areaRaw.MinX);
-    if (local_18 < static_cast<std::uint32_t>(areaRaw.MaxX))
+    unsigned int local_18 = static_cast<unsigned int>(areaRaw.MinX);
+    if (local_18 < static_cast<unsigned int>(areaRaw.MaxX))
     {
         do
         {
-            std::uint32_t local_1c = static_cast<std::uint32_t>(areaRaw.MinY);
-            if (local_1c < static_cast<std::uint32_t>(areaRaw.MaxY))
+            unsigned int local_1c = static_cast<unsigned int>(areaRaw.MinY);
+            if (local_1c < static_cast<unsigned int>(areaRaw.MaxY))
             {
                 float fVar4 = static_cast<float>(static_cast<int>(local_18));
                 if (static_cast<int>(local_18) < 0)
@@ -153,18 +157,18 @@ void CNavQuadTree::UpdateLines(
 
                 do
                 {
-                    const float fVar5 = fVar4 + MapPos.x;
+                    const float fVar5 = fVar4 + MapPos.X;
 
                     float fVar6 = static_cast<float>(static_cast<int>(local_1c));
                     if (static_cast<int>(local_1c) < 0)
                     {
                         fVar6 = fVar6 + DAT_0122dcb4;
                     }
-                    fVar6 = fVar6 * DAT_0125916c + MapPos.y;
+                    fVar6 = fVar6 * DAT_0125916c + MapPos.Y;
 
                     float* const pfVar10 = reinterpret_cast<float*>(
-                        reinterpret_cast<std::uintptr_t>(local_8c.First) +
-                        static_cast<std::uintptr_t>(
+                        reinterpret_cast<unsigned long>(local_8c.First) +
+                        static_cast<unsigned long>(
                             (((areaRaw.MaxX - areaRaw.MinX) *
                                   (static_cast<int>(local_1c) - areaRaw.MinY) -
                               areaRaw.MinX) +
@@ -176,9 +180,9 @@ void CNavQuadTree::UpdateLines(
                     pfVar10[2] = fVar5 + DAT_0125916c;
                     pfVar10[3] = fVar6 + DAT_0125916c;
 
-                    auto* const piVar17 = reinterpret_cast<C2DLineFListOverlay*>(
-                        reinterpret_cast<std::uintptr_t>(lineListsRaw.First) +
-                        static_cast<std::uintptr_t>(local_c));
+                    C2DLineFListOverlay* const piVar17 = reinterpret_cast<C2DLineFListOverlay*>(
+                        reinterpret_cast<unsigned long>(lineListsRaw.First) +
+                        static_cast<unsigned long>(local_c));
                     C2DLineFListNodeBase* const head = piVar17->Head;
                     C2DLineFListNodeBase* node = head->Next;
 
@@ -196,11 +200,11 @@ void CNavQuadTree::UpdateLines(
                     local_c = local_c + iVar9 * 4;
                     head->Prev = head;
                     local_1c = local_1c + 1;
-                } while (local_1c < static_cast<std::uint32_t>(areaRaw.MaxY));
+                } while (local_1c < static_cast<unsigned int>(areaRaw.MaxY));
             }
 
             local_18 = local_18 + 1;
-        } while (local_18 < static_cast<std::uint32_t>(areaRaw.MaxX));
+        } while (local_18 < static_cast<unsigned int>(areaRaw.MaxX));
     }
 
     const C2DLineF* pCVar15 = linesRaw.First;
@@ -209,7 +213,7 @@ void CNavQuadTree::UpdateLines(
     {
         do
         {
-            const auto& lineRaw =
+            const C2DLineFOverlay& lineRaw =
                 reinterpret_cast<const C2DLineFOverlay&>(*pCVar15);
 
             double local_14 = static_cast<double>(lineRaw.End.x);
@@ -220,8 +224,8 @@ void CNavQuadTree::UpdateLines(
                 pdVar11 = &local_28;
             }
 
-            float fVar4 = (static_cast<float>(*pdVar11) - MapPos.x) * DAT_0123095c;
-            int local_40 = static_cast<int>(std::nearbyint(fVar4 + 0.5f));
+            float fVar4 = (static_cast<float>(*pdVar11) - MapPos.X) * DAT_0123095c;
+            int local_40 = static_cast<int>(fVar4 + 0.5f);
             if (fVar4 == static_cast<float>(local_40) - 1.0f)
             {
                 local_40 = local_40 - 1;
@@ -241,8 +245,8 @@ void CNavQuadTree::UpdateLines(
                 pdVar11 = &local_28;
             }
 
-            fVar4 = (static_cast<float>(*pdVar11) - MapPos.y) * DAT_0123095c;
-            int local_48 = static_cast<int>(std::nearbyint(fVar4 + 0.5f));
+            fVar4 = (static_cast<float>(*pdVar11) - MapPos.Y) * DAT_0123095c;
+            int local_48 = static_cast<int>(fVar4 + 0.5f);
             if (fVar4 == static_cast<float>(local_48) - 1.0f)
             {
                 local_48 = local_48 - 1;
@@ -262,8 +266,8 @@ void CNavQuadTree::UpdateLines(
                 pdVar11 = &local_14;
             }
 
-            fVar4 = (static_cast<float>(*pdVar11) - MapPos.x) * DAT_0123095c;
-            int local_44 = static_cast<int>(std::nearbyint(fVar4 - 0.5f));
+            fVar4 = (static_cast<float>(*pdVar11) - MapPos.X) * DAT_0123095c;
+            int local_44 = static_cast<int>(fVar4 - 0.5f);
             if (fVar4 == static_cast<float>(local_44) + 1.0f)
             {
                 local_44 = local_44 + 1;
@@ -285,9 +289,9 @@ void CNavQuadTree::UpdateLines(
                 pdVar11 = &local_14;
             }
 
-            fVar4 = (static_cast<float>(*pdVar11) - MapPos.y) * DAT_0123095c;
-            std::uint32_t local_30 =
-                static_cast<std::uint32_t>(std::nearbyint(fVar4 - 0.5f));
+            fVar4 = (static_cast<float>(*pdVar11) - MapPos.Y) * DAT_0123095c;
+            unsigned int local_30 =
+                static_cast<unsigned int>(static_cast<int>(fVar4 - 0.5f));
             if (fVar4 == static_cast<float>(static_cast<int>(local_30)) + 1.0f)
             {
                 local_30 = local_30 + 1;
@@ -295,7 +299,7 @@ void CNavQuadTree::UpdateLines(
 
             if (static_cast<int>(local_30) < areaRaw.MinY)
             {
-                local_30 = static_cast<std::uint32_t>(areaRaw.MinY);
+                local_30 = static_cast<unsigned int>(areaRaw.MinY);
             }
 
             local_20 = local_8;
@@ -312,8 +316,8 @@ void CNavQuadTree::UpdateLines(
 
                         do
                         {
-                            const std::uint32_t uVar2 =
-                                static_cast<std::uint32_t>(areaRaw.MinY);
+                            const unsigned int uVar2 =
+                                static_cast<unsigned int>(areaRaw.MinY);
                             const int iVar1 = areaRaw.MinX;
                             const int iVar16 = areaRaw.MaxX - iVar1;
 
@@ -327,29 +331,29 @@ void CNavQuadTree::UpdateLines(
                             pCVar15 = local_1c_line;
                             if ((lVar18 < 0) || (0x7fffffffLL < lVar18))
                             {
-                                if (local_8c.First != nullptr)
+                                if (local_8c.First != 0)
                                 {
                                     std::free(local_8c.First);
                                 }
                                 return;
                             }
 
-                            const std::uint32_t uVar12 =
-                                ((local_18 - static_cast<std::uint32_t>(areaRaw.MinY)) *
-                                     static_cast<std::uint32_t>(iVar16) -
-                                 static_cast<std::uint32_t>(areaRaw.MinX)) +
-                                static_cast<std::uint32_t>(local_8);
+                            const unsigned int uVar12 =
+                                ((local_18 - static_cast<unsigned int>(areaRaw.MinY)) *
+                                     static_cast<unsigned int>(iVar16) -
+                                 static_cast<unsigned int>(areaRaw.MinX)) +
+                                static_cast<unsigned int>(local_8);
 
-                            if ((uVar12 <= static_cast<std::uint32_t>(
-                                             (reinterpret_cast<std::uintptr_t>(local_8c.Last) -
-                                              reinterpret_cast<std::uintptr_t>(local_8c.First)) >>
+                            if ((uVar12 <= static_cast<unsigned int>(
+                                             (reinterpret_cast<unsigned long>(local_8c.Last) -
+                                              reinterpret_cast<unsigned long>(local_8c.First)) >>
                                              4)) &&
                                 (-1 < static_cast<int>(uVar12)))
                             {
-                                auto* const pCVar14 = reinterpret_cast<C2DBoxF*>(
-                                    reinterpret_cast<std::uintptr_t>(local_8c.First) +
-                                    static_cast<std::uintptr_t>(uVar12) * 0x10);
-                                const auto& boxRaw =
+                                C2DBoxF* const pCVar14 = reinterpret_cast<C2DBoxF*>(
+                                    reinterpret_cast<unsigned long>(local_8c.First) +
+                                    static_cast<unsigned long>(uVar12) * 0x10);
+                                const C2DBoxFOverlay& boxRaw =
                                     reinterpret_cast<const C2DBoxFOverlay&>(*pCVar14);
 
                                 bool bVar8;
@@ -361,18 +365,16 @@ void CNavQuadTree::UpdateLines(
                                       (lineRaw.End.x < boxRaw.MaxX) &&
                                       (boxRaw.MinY <= lineRaw.End.y) &&
                                       (lineRaw.End.y < boxRaw.MaxY)) ||
-                                     ((bVar8 = C2DLineF::IntersectsWith(
-                                           const_cast<C2DLineF*>(local_1c_line),
-                                           pCVar14)),
+                                    ((bVar8 = local_1c_line->IntersectsWith(pCVar14)),
                                       bVar8)))
                                 {
-                                    auto* const list = reinterpret_cast<C2DLineFListOverlay*>(
-                                        reinterpret_cast<std::uintptr_t>(lineListsRaw.First) +
-                                        static_cast<std::uintptr_t>(local_20));
-                                    auto* const newNode =
-                                        static_cast<C2DLineFListNode*>(std::malloc(0x18));
+                                    C2DLineFListOverlay* const list = reinterpret_cast<C2DLineFListOverlay*>(
+                                        reinterpret_cast<unsigned long>(lineListsRaw.First) +
+                                        static_cast<unsigned long>(local_20));
+                                    UpdateLinesListNode* const newNode =
+                                        static_cast<UpdateLinesListNode*>(std::malloc(0x18));
 
-                                    if (newNode + 1 != nullptr)
+                                    if (newNode + 1 != 0)
                                     {
                                         newNode->Value.Start = lineRaw.Start;
                                         newNode->Value.End = lineRaw.End;
@@ -397,12 +399,12 @@ void CNavQuadTree::UpdateLines(
             }
 
             pCVar15 = reinterpret_cast<const C2DLineF*>(
-                reinterpret_cast<const std::uint8_t*>(pCVar15) + 0x10);
+                reinterpret_cast<const unsigned char*>(pCVar15) + 0x10);
             local_1c_line = pCVar15;
         } while (pCVar15 != linesRaw.Last);
     }
 
-    if (local_8c.First != nullptr)
+    if (local_8c.First != 0)
     {
         std::free(local_8c.First);
     }

@@ -1,113 +1,113 @@
 # Curated C++ promotion queue
 
-Generated: `2026-08-20T19:54:42-06:00`
+Generated: `2026-08-28T20:12:49-06:00`
 
-Uncompiled auto-RE candidates: **460**. Showing: **100**. Semantic-review quarantine: **87**.
+Uncompiled auto-RE candidates after bounded exclusions: **384**. Showing: **100**. Already-bounded parity residues excluded: **84**. Semantic-review quarantine: **56**.
 
 Ranking favors checker/integrity/signature PASS and candidates without known source-level hazards, then the smallest declaration, dependency, VC7.1, and source-size repair surface. Structural fidelity does not by itself make an unsafe C++ expression promotable; every promotion still needs semantic review, a focused behavior oracle, and retail comparison.
 
 | Rank | Address | Owner/function | Lane | Signature | Hazards | Missing deps | VC7.1 fixes | Source bytes | First blocker |
 |---:|---|---|---|---|---|---:|---:|---:|---|
-| 1 | `0x0088F610` | `CGameScriptInterface::CGameScriptInterface::IsSoundPlaying` | `vc71-port` | `PASS` |  | 0 | 4 | 787 |  |
-| 2 | `0x0088F710` | `CGameScriptInterface::CGameScriptInterface::EntitySetCombatEnabled` | `vc71-port` | `PASS` |  | 0 | 5 | 1715 |  |
-| 3 | `0x00401C00` | `GFHandleSystemInitError` | `vc71-port` | `PASS` |  | 0 | 5 | 9567 |  |
-| 4 | `0x0088FDC0` | `CGameScriptInterface::CGameScriptInterface::SetTimeOfDay` | `vc71-port` | `PASS` |  | 0 | 6 | 1376 |  |
-| 5 | `0x0088FE90` | `CGameScriptInterface::CGameScriptInterface::FastForwardTimeTo` | `vc71-port` | `PASS` |  | 0 | 6 | 1528 |  |
-| 6 | `0x0088F480` | `CGameScriptInterface::CGameScriptInterface::ApplyScriptBrush` | `vc71-port` | `PASS` |  | 0 | 7 | 1510 |  |
-| 7 | `0x006E7690` | `CGameScriptInterface::CGameScriptInterface::DeregisterTimer` | `vc71-port` | `PASS` |  | 0 | 9 | 1559 |  |
-| 8 | `0x0088FC90` | `CGameScriptInterface::CGameScriptInterface::HeroHasExpression` | `vc71-port` | `PASS` |  | 0 | 12 | 1943 |  |
-| 9 | `0x0088FD00` | `CGameScriptInterface::CGameScriptInterface::EntitySetInLimbo` | `vc71-port` | `PASS` |  | 0 | 13 | 1625 |  |
-| 10 | `0x00893240` | `CGameScriptInterface::CGameScriptInterface::MsgIsLevelUnloaded` | `vc71-port` | `PASS` |  | 0 | 16 | 3236 |  |
-| 11 | `0x00891070` | `CGameScriptInterface::CGameScriptInterface::CameraUseCameraPoint` | `vc71-port` | `PASS` |  | 0 | 18 | 3093 |  |
-| 12 | `0x008A9610` | `CGameScriptInterface::CGameScriptInterface::SetThingAsConscious` | `vc71-port` | `PASS` |  | 0 | 20 | 3648 |  |
-| 13 | `0x008931B0` | `CGameScriptInterface::CGameScriptInterface::MsgIsLevelLoaded` | `vc71-port` | `PASS` |  | 0 | 20 | 3672 |  |
-| 14 | `0x0089AF30` | `CGameScriptInterface::CGameScriptInterface::RemoveAllCutSceneSkippedMessages` | `vc71-port` | `PASS` |  | 0 | 20 | 4247 |  |
-| 15 | `0x00894DD0` | `CGameScriptInterface::CGameScriptInterface::EntitySetAsMarryable` | `vc71-port` | `PASS` |  | 0 | 22 | 2481 |  |
-| 16 | `0x0089B3F0` | `CGameScriptInterface::CGameScriptInterface::SetHeroAsWearing` | `vc71-port` | `PASS` |  | 0 | 24 | 2715 |  |
-| 17 | `0x0089E130` | `CGameScriptInterface::CGameScriptInterface::EntitySetMaxNumberOfAttackers` | `vc71-port` | `PASS` |  | 0 | 24 | 2810 |  |
-| 18 | `0x008984E0` | `CGameScriptInterface::CGameScriptInterface::SetWeaponOutCrimeEnabled` | `vc71-port` | `PASS` |  | 0 | 25 | 3309 |  |
-| 19 | `0x0088F570` | `CGameScriptInterface::CGameScriptInterface::Play2DSound` | `vc71-port` | `PASS` |  | 0 | 29 | 3029 |  |
-| 20 | `0x00891720` | `CGameScriptInterface::CGameScriptInterface::ChangeHeroHealthBy` | `vc71-port` | `PASS` |  | 0 | 31 | 5204 |  |
-| 21 | `0x006E7920` | `CGameScriptInterface::CGameScriptInterface::CheckForCameraMessage` | `vc71-port` | `PASS` |  | 0 | 31 | 5901 |  |
-| 22 | `0x008AA010` | `CGameScriptInterface::CGameScriptInterface::ClearGossip` | `declaration-fix` | `PASS` |  | 0 | 5 | 1275 | static assertion failed |
-| 23 | `0x0088E2A0` | `CGameScriptInterface::CGameScriptInterface::IsLevelLoaded` | `declaration-fix` | `PASS` |  | 0 | 11 | 2394 | static assertion failed |
-| 24 | `0x00892CF0` | `CGameScriptInterface::CGameScriptInterface::SetCreatureGeneratorsEnabled` | `declaration-fix` | `PASS` |  | 0 | 14 | 3296 | jump to label 'SetWorldFlag' |
-| 25 | `0x00894C90` | `CGameScriptInterface::CGameScriptInterface::IsGiftFriendly` | `declaration-fix` | `PASS` |  | 0 | 16 | 5128 | invalid conversion from 'const void*' to 'void*' [-fpermissive] |
-| 26 | `0x00894BF0` | `CGameScriptInterface::CGameScriptInterface::IsGiftRomantic` | `declaration-fix` | `PASS` |  | 0 | 16 | 5210 | invalid conversion from 'const void*' to 'void*' [-fpermissive] |
-| 27 | `0x00894D30` | `CGameScriptInterface::CGameScriptInterface::IsGiftOffensive` | `declaration-fix` | `PASS` |  | 0 | 16 | 5212 | invalid conversion from 'const void*' to 'void*' [-fpermissive] |
-| 28 | `0x0089C330` | `CGameScriptInterface::CGameScriptInterface::EntitySetOpinionDeedTypeEnabled` | `declaration-fix` | `PASS` |  | 0 | 27 | 3325 | incomplete type '{anonymous}::OpinionDeedInterfaceMap' {aka '{anonymous}::CVectorMap<{anonymous}::ETCInterfaceType, CTCBase*, {anonymous}::CKeyPairCompareLess<{anonymous}::ETCInterfaceType, CTCBase*> >'} used in nested name specifier |
-| 29 | `0x0089C3D0` | `CGameScriptInterface::CGameScriptInterface::EntitySetOpinionReactionEnabled` | `declaration-fix` | `PASS` |  | 0 | 29 | 3454 | incomplete type '{anonymous}::OpinionReactionInterfaceMap' {aka '{anonymous}::CVectorMap<{anonymous}::ETCInterfaceType, CTCBase*, {anonymous}::CKeyPairCompareLess<{anonymous}::ETCInterfaceType, CTCBase*> >'} used in nested name specifier |
-| 30 | `0x00891170` | `CGameScriptInterface::CGameScriptInterface::PlaySoundAtPos` | `declaration-fix` | `PASS` |  | 0 | 33 | 3318 | 'reinterpret_cast' from integer to pointer |
-| 31 | `0x008981C0` | `CGameScriptInterface::CGameScriptInterface::AddTattooToHero` | `declaration-fix` | `PASS` |  | 0 | 48 | 9170 | static assertion failed |
-| 32 | `0x0089FEB0` | `CGameScriptInterface::CGameScriptInterface::AddCrimeCommitted` | `declaration-fix` | `PASS` |  | 0 | 69 | 12255 | 'reinterpret_cast' from integer to pointer |
-| 33 | `0x00449B60` | `CPlayerManager::GetMultiplayerColour` | `dependency-stub` | `PASS` |  | 1 | 0 | 436 | 'CRGBColour' does not name a type |
-| 34 | `0x00449D20` | `CPlayerManager::IsMultiplayerGameActive` | `dependency-stub` | `PASS` |  | 1 | 4 | 1695 | 'reinterpret_cast' from integer to pointer |
-| 35 | `0x0088E3D0` | `CGameScriptInterface::CGameScriptInterface::MiniMapAllowRouteBetweenRegions` | `dependency-stub` | `PASS` |  | 1 | 7 | 1391 | invalid use of incomplete type 'class CGameScriptInterface' |
-| 36 | `0x00893E70` | `CGameScriptInterface::CGameScriptInterface::MsgOnGameSavedManually` | `dependency-stub` | `PASS` |  | 1 | 9 | 2300 | macro 'offsetof' passed 3 arguments, but takes just 2 |
-| 37 | `0x00893EC0` | `CGameScriptInterface::CGameScriptInterface::MsgOnHeroSlept` | `dependency-stub` | `PASS` |  | 1 | 9 | 2000 | 'CGameScriptInterface' has not been declared |
-| 38 | `0x004AE940` | `CNetworkClient::InitialiseAsLocal` | `dependency-stub` | `PASS` |  | 3 | 4 | 580 | 'CNetworkClient' has not been declared |
-| 39 | `0x00891A00` | `CGameScriptInterface::CGameScriptInterface::SetQuestInfoText` | `manual-lift` | `PASS` |  | 0 | 39 | 5228 | static assertion failed |
-| 40 | `0x0088EAD0` | `CGameScriptInterface::CGameScriptInterface::EntitySetAsDamageable` | `manual-lift` | `PASS` |  | 1 | 18 | 2384 | invalid use of incomplete type 'class CGameScriptInterface' |
-| 41 | `0x008943C0` | `CGameScriptInterface::CGameScriptInterface::MsgIsTutorialClickedPast` | `manual-lift` | `PASS` |  | 1 | 21 | 3529 | macro 'offsetof' passed 3 arguments, but takes just 2 |
-| 42 | `0x0089C380` | `CGameScriptInterface::CGameScriptInterface::EntitySetOpinionAttitudeEnabled` | `manual-lift` | `PASS` |  | 1 | 24 | 3222 | macro 'offsetof' passed 3 arguments, but takes just 2 |
-| 43 | `0x008A1650` | `CGameScriptInterface::CGameScriptInterface::GetBestScoreBlackjack` | `manual-lift` | `PASS` |  | 1 | 26 | 3934 | 'reinterpret_cast' from integer to pointer |
-| 44 | `0x008A1770` | `CGameScriptInterface::CGameScriptInterface::GetBestScoreShoveHaPenny` | `manual-lift` | `PASS` |  | 1 | 26 | 4325 | 'reinterpret_cast' from integer to pointer |
-| 45 | `0x008A1710` | `CGameScriptInterface::CGameScriptInterface::GetBestScoreCoinGolfSnowSpire` | `manual-lift` | `PASS` |  | 1 | 26 | 4445 | 'reinterpret_cast' from integer to pointer |
-| 46 | `0x00890FF0` | `CGameScriptInterface::CGameScriptInterface::CameraDefault` | `manual-lift` | `PASS` |  | 1 | 27 | 3783 | 'field48' was not declared in this scope |
-| 47 | `0x0089C7B0` | `CGameScriptInterface::CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses` | `manual-lift` | `PASS` |  | 1 | 27 | 4897 | macro 'offsetof' passed 3 arguments, but takes just 2 |
-| 48 | `0x008A9AE0` | `CGameScriptInterface::CGameScriptInterface::MsgOnBoastsMade` | `manual-lift` | `PASS` |  | 1 | 35 | 8369 | field 'boastText' has incomplete type 'CCharString' |
-| 49 | `0x009F19A0` | `CGameEventPackageSet::CompressIntoBuffer` | `manual-lift` | `PASS` |  | 1 | 45 | 3986 | 'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'? |
-| 50 | `0x00A0D340` | `CProcessedInput::AddGameEvent` | `manual-lift` | `PASS` |  | 2 | 15 | 1266 | 'CProcessedInput' has not been declared |
-| 51 | `0x004165E8` | `CMainGameComponent::CheckSync` | `manual-lift` | `PASS` |  | 2 | 20 | 2016 | 'reinterpret_cast' from integer to pointer |
-| 52 | `0x00891CA0` | `CGameScriptInterface::CGameScriptInterface::GetHero` | `manual-lift` | `PASS` |  | 2 | 37 | 5438 | 'CScriptThing* NScript::operator&&(GetHeroPredicate5*, CIsThingAlive*)' must have an argument of class or enumerated type |
-| 53 | `0x00896390` | `CGameScriptInterface::CGameScriptInterface::OpenChest` | `manual-lift` | `PASS` |  | 2 | 77 | 14865 | macro 'offsetof' passed 3 arguments, but takes just 2 |
-| 54 | `0x004AEAA0` | `CNetworkClient::GetLocalGameEventPackageSet` | `manual-lift` | `PASS` |  | 3 | 16 | 2398 | 'CNetworkClient' has not been declared |
-| 55 | `0x00896A30` | `CGameScriptInterface::CGameScriptInterface::SetQuestCardObjective` | `manual-lift` | `PASS` |  | 3 | 29 | 3566 | 'ETCInterfaceType' was not declared in this scope |
-| 56 | `0x0041726D` | `CMainGameComponent::UpdateFromEventPackageSet` | `manual-lift` | `PASS` |  | 3 | 31 | 4223 | 'reinterpret_cast' from integer to pointer |
-| 57 | `0x00401067` | `entry` | `manual-lift` | `PASS` |  | 3 | 50 | 6397 | static assertion failed |
-| 58 | `0x00890820` | `CGameScriptInterface::CGameScriptInterface::FadeScreenOut` | `manual-lift` | `PASS` |  | 4 | 14 | 1422 | 'CRGBColour' was not declared in this scope |
-| 59 | `0x009F1810` | `CGameEvent::CompressIntoBuffer` | `manual-lift` | `PASS` |  | 6 | 0 | 931 | 'CGameEvent' has not been declared |
-| 60 | `0x00893B00` | `CGameScriptInterface::CGameScriptInterface::MsgOnExpressionPerformed` | `manual-lift` | `PASS` |  | 6 | 17 | 3018 | 'CDefinitionManager' does not name a type |
-| 61 | `0x009F1870` | `CGameEvent::InitFromCompressedBuffer` | `manual-lift` | `PASS` |  | 7 | 7 | 1460 | 'CGameEvent' does not name a type |
-| 62 | `0x00A76F30` | `CNavQuadTree::IsAreaBlockedByLines` | `manual-lift` | `PASS` |  | 9 | 24 | 6417 | 'list' in namespace 'std' does not name a template type |
-| 63 | `0x0062C0E0` | `CWorld::EAMoveSpirit` | `manual-lift` | `PASS` |  | 10 | 33 | 3624 | 'CWorld' has not been declared |
-| 64 | `0x00891940` | `CGameScriptInterface::CGameScriptInterface::SetQuestInfoName` | `manual-lift` | `PASS` |  | 11 | 25 | 2863 | 'CGameScriptInterface' has not been declared |
-| 65 | `0x00A781A0` | `CNavQuadTree::UpdateLines` | `manual-lift` | `PASS` |  | 12 | 75 | 16017 | 'C2DVector' does not name a type |
-| 66 | `0x00A7A8D0` | `CNavQuadTree::Initialise` | `manual-lift` | `PASS` |  | 13 | 142 | 26841 | 'C2DLineF' was not declared in this scope |
-| 67 | `0x008A1B10` | `CGameScriptInterface::CGameScriptInterface::GetSleepingPositionAndOrientationFromBed` | `manual-lift` | `PASS` |  | 15 | 21 | 3084 | 'CGameScriptInterface' has not been declared |
-| 68 | `0x008A89D0` | `CGameScriptInterface::CGameScriptInterface::GetAllCreaturesExcludingHero` | `manual-lift` | `PASS` |  | 17 | 22 | 4932 | 'CGameScriptInterface' has not been declared |
-| 69 | `0x006700F0` | `CTCCoopSpirit::OnCreate` | `manual-lift` | `PASS` |  | 18 | 39 | 4196 | 'CDefClassBase' does not name a type |
-| 70 | `0x00A79B30` | `CNavQuadTreeNode::Initialise` | `manual-lift` | `PASS` |  | 18 | 78 | 15716 | 'CANavQuadTreeNode' does not name a type |
-| 71 | `0x0066FF20` | `CTCCoopSpirit::SwapToHero` | `manual-lift` | `PASS` |  | 20 | 40 | 5478 | 'CVertexBufferWin32' does not name a type |
-| 72 | `0x008A86C0` | `CGameScriptInterface::CGameScriptInterface::GetAllCreaturesInAreaWithScriptName` | `manual-lift` | `PASS` |  | 21 | 32 | 7865 | 'CThingSearchTools' does not name a type |
-| 73 | `0x008A9C40` | `CGameScriptInterface::CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom` | `manual-lift` | `PASS` |  | 23 | 33 | 6214 | 'CGameScriptInterface' has not been declared |
-| 74 | `0x0050A650` | `CWorldMap::GetMapNavigationAreaInit` | `manual-lift` | `PASS` |  | 26 | 93 | 25507 | use of enum 'EHeroMorphType' without previous declaration |
-| 75 | `0x00897150` | `CGameScriptInterface::CGameScriptInterface::UnSetThingAndCarriedItemsNotAffectedByScreenFilter` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 17 | 2298 |  |
-| 76 | `0x00896060` | `CGameScriptInterface::CGameScriptInterface::SetVillageLimbo` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 17 | 2540 | incomplete type 'CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >' used in nested name specifier |
-| 77 | `0x00897B10` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasCurrentMarriage` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 22 | 3511 | 'reinterpret_cast' from integer to pointer |
-| 78 | `0x00897BD0` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasChildren` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 3699 |  |
-| 79 | `0x0089B4D0` | `CGameScriptInterface::CGameScriptInterface::RemoveHeroHairstyle` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 3883 |  |
-| 80 | `0x008A1590` | `CGameScriptInterface::CGameScriptInterface::GetBestTimePairs` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 2907 | 'reinterpret_cast' from integer to pointer |
-| 81 | `0x008A15F0` | `CGameScriptInterface::CGameScriptInterface::GetBestTimeSorting` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 2923 | 'reinterpret_cast' from integer to pointer |
-| 82 | `0x008A17D0` | `CGameScriptInterface::CGameScriptInterface::GetBestTimeGuessTheAddition` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 2925 | 'reinterpret_cast' from integer to pointer |
-| 83 | `0x00897C30` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasMurderedWife` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 25 | 3866 |  |
-| 84 | `0x00897B70` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasDivorcedMarriage` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 25 | 3958 |  |
-| 85 | `0x00897C90` | `CGameScriptInterface::CGameScriptInterface::GetNumberOfTimesHeroHasHadSex` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 25 | 4150 | 'reinterpret_cast' from integer to pointer |
-| 86 | `0x008A16B0` | `CGameScriptInterface::CGameScriptInterface::GetBestScoreCoinGolfOakVale` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 25 | 3055 | 'reinterpret_cast' from integer to pointer |
-| 87 | `0x00897030` | `CGameScriptInterface::CGameScriptInterface::IsToFailQuestOnDeath` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 3608 | 'reinterpret_cast' from integer to pointer |
-| 88 | `0x00897480` | `CGameScriptInterface::CGameScriptInterface::IsPlayerWieldingWeapon` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 3816 | 'reinterpret_cast' from integer to pointer |
-| 89 | `0x00897AA0` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasMarried` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 4053 | 'reinterpret_cast' from integer to pointer |
-| 90 | `0x0089EF30` | `CGameScriptInterface::CGameScriptInterface::SetMoralityChangingAsEnabled` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 4105 | 'reinterpret_cast' from integer to pointer |
-| 91 | `0x00897CF0` | `CGameScriptInterface::CGameScriptInterface::SetNumberOfTimesHeroHasHadSex` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 4233 | 'reinterpret_cast' from integer to pointer |
-| 92 | `0x0089B450` | `CGameScriptInterface::CGameScriptInterface::ChangeHeroHairstyle` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 4577 | 'reinterpret_cast' from integer to pointer |
-| 93 | `0x00898540` | `CGameScriptInterface::CGameScriptInterface::SetGuardsIgnoreCrimes` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 3851 | 'reinterpret_cast' from integer to pointer |
-| 94 | `0x00897D50` | `CGameScriptInterface::CGameScriptInterface::SetHeroAsHavingHadSex` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 4045 | 'reinterpret_cast' from integer to pointer |
-| 95 | `0x00897DB0` | `CGameScriptInterface::CGameScriptInterface::SetHeroAsHavingHadGaySex` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 4116 | 'reinterpret_cast' from integer to pointer |
-| 96 | `0x008A12A0` | `CGameScriptInterface::CGameScriptInterface::GetNumHousesOwned` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 4167 | 'reinterpret_cast' from integer to pointer |
-| 97 | `0x00896E60` | `CGameScriptInterface::CGameScriptInterface::SetPreferredQuickAccessItem` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 4497 | 'reinterpret_cast' from integer to pointer |
-| 98 | `0x00897090` | `CGameScriptInterface::CGameScriptInterface::SetWhetherToFailQuestOnDeath` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 28 | 3143 |  |
-| 99 | `0x00898DB0` | `CGameScriptInterface::CGameScriptInterface::TakeObjectFromHero` | `semantic-review` | `PASS` | possible-end-sentinel-dereference;process-termination | 0 | 28 | 4845 |  |
-| 100 | `0x00898EC0` | `CGameScriptInterface::CGameScriptInterface::SetHeroHandLampAsLit` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 28 | 3960 | 'reinterpret_cast' from integer to pointer |
+| 1 | `0x00890750` | `CGameScriptInterface::AddLineToConversation` | `manual-lift` | `PASS` |  | 9 | 11 | 1982 | 'CScriptConversationManager' does not name a type |
+| 2 | `0x00A781A0` | `CNavQuadTree::UpdateLines` | `manual-lift` | `PASS` |  | 12 | 75 | 16017 | 'C2DVector' does not name a type |
+| 3 | `0x00A7A8D0` | `CNavQuadTree::Initialise` | `manual-lift` | `PASS` |  | 13 | 142 | 26841 | 'C2DLineF' was not declared in this scope |
+| 4 | `0x00A79B30` | `CNavQuadTreeNode::Initialise` | `manual-lift` | `PASS` |  | 18 | 78 | 15716 | 'CANavQuadTreeNode' does not name a type |
+| 5 | `0x0050A650` | `CWorldMap::GetMapNavigationAreaInit` | `manual-lift` | `PASS` |  | 26 | 93 | 25507 | use of enum 'EHeroMorphType' without previous declaration |
+| 6 | `0x00897030` | `CGameScriptInterface::IsToFailQuestOnDeath` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 3608 | 'reinterpret_cast' from integer to pointer |
+| 7 | `0x00897480` | `CGameScriptInterface::IsPlayerWieldingWeapon` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 3816 | 'reinterpret_cast' from integer to pointer |
+| 8 | `0x00898DB0` | `CGameScriptInterface::TakeObjectFromHero` | `semantic-review` | `PASS` | possible-end-sentinel-dereference;process-termination | 0 | 28 | 4845 |  |
+| 9 | `0x00898840` | `CGameScriptInterface::ConfiscateItemsOfTypeFromHero` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 28 | 6295 | 'reinterpret_cast' from integer to pointer |
+| 10 | `0x00898E60` | `CGameScriptInterface::IsHeroHandLampLit` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 29 | 3806 | 'reinterpret_cast' from integer to pointer |
+| 11 | `0x0089CD70` | `CGameScriptInterface::CanThingBe_Heard_ByOtherThing` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 30 | 4433 |  |
+| 12 | `0x006E7920` | `CGameScriptInterface::CheckForCameraMessage` | `semantic-review` | `PASS` | explicit-review-marker;possible-end-sentinel-dereference | 0 | 31 | 6201 |  |
+| 13 | `0x008986D0` | `CGameScriptInterface::ConfiscateAllHeroItems` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 31 | 6335 |  |
+| 14 | `0x008A0820` | `CGameScriptInterface::CancelHeroTeleportEffects` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 35 | 5392 |  |
+| 15 | `0x008A03F0` | `CGameScriptInterface::ClearThingBestEnemyTarget` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 37 | 4871 |  |
+| 16 | `0x00898940` | `CGameScriptInterface::ReturnAllConfiscatedItemsToHero` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 37 | 6734 | 'reinterpret_cast' from integer to pointer |
+| 17 | `0x00898600` | `CGameScriptInterface::RemoveAllHeroWeapons` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 38 | 5077 | 'reinterpret_cast' from integer to pointer |
+| 18 | `0x00891A00` | `CGameScriptInterface::SetQuestInfoText` | `semantic-review` | `PASS` | explicit-review-marker | 0 | 39 | 5388 | static assertion failed |
+| 19 | `0x00895190` | `CGameScriptInterface::GiveThingItemInSlot` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 40 | 8843 |  |
+| 20 | `0x008981C0` | `CGameScriptInterface::AddTattooToHero` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 48 | 9170 | static assertion failed |
+| 21 | `0x006E7820` | `CGameScriptInterface::WaitForCameraMessage` | `semantic-review` | `PASS` | address-reinterpret-call;possible-end-sentinel-dereference | 0 | 52 | 7728 |  |
+| 22 | `0x00898410` | `CGameScriptInterface::SetHeroWeaponsAsUsable` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 54 | 7742 | 'reinterpret_cast' from integer to pointer |
+| 23 | `0x00898340` | `CGameScriptInterface::SetHeroWillAsUsable` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 57 | 7792 | 'reinterpret_cast' from integer to pointer |
+| 24 | `0x00892850` | `CGameScriptInterface::AddScreenMessage` | `semantic-review` | `PASS` | explicit-review-marker | 0 | 59 | 8341 |  |
+| 25 | `0x0089FEB0` | `CGameScriptInterface::AddCrimeCommitted` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 69 | 12255 | 'reinterpret_cast' from integer to pointer |
+| 26 | `0x00449B60` | `CPlayerManager::GetMultiplayerColour` | `semantic-review` | `PASS` | explicit-review-marker | 1 | 0 | 673 | 'CRGBColour' does not name a type |
+| 27 | `0x008977F0` | `CGameScriptInterface::ApplyHeroPenaltyForDeath` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 1 | 30 | 4820 | invalid use of incomplete type 'class CGameScriptInterface' |
+| 28 | `0x008973A0` | `CGameScriptInterface::IsPlayerCarryingItemOfType` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 1 | 32 | 4555 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 29 | `0x0089C560` | `CGameScriptInterface::EntityPostOpinionDeedToAll` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 1 | 35 | 5377 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 30 | `0x008954A0` | `CGameScriptInterface::EntityFollowThing` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 1 | 38 | 6704 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 31 | `0x008A7980` | `CGameScriptInterface::EntityStopFollowing` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 1 | 45 | 5978 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 32 | `0x008A8C60` | `CGameScriptInterface::EntitySetAsSittingOnFloor` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 1 | 48 | 9898 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 33 | `0x008A0CB0` | `CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 1 | 51 | 8729 | invalid use of incomplete type 'class CGameScriptInterface' |
+| 34 | `0x008A23B0` | `CGameScriptInterface::SetWanderCentrePoint` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 1 | 53 | 6956 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 35 | `0x008A0260` | `CGameScriptInterface::GiveThingBestEnemyTarget` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 1 | 56 | 8469 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 36 | `0x008A93A0` | `CGameScriptInterface::EntityWillTeleportToArea` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 1 | 68 | 10847 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 37 | `0x008A99F0` | `CGameScriptInterface::SetThingAndCarriedItemsNotAffectedByScreenFilter` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 2 | 37 | 6584 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 38 | `0x00891CA0` | `CGameScriptInterface::GetHero` | `semantic-review` | `PASS` | explicit-review-marker | 2 | 37 | 5612 | 'CScriptThing* NScript::operator&&(GetHeroPredicate5*, CIsThingAlive*)' must have an argument of class or enumerated type |
+| 39 | `0x00896B60` | `CGameScriptInterface::KickOffQuestStartScreen` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 2 | 53 | 8379 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 40 | `0x00896390` | `CGameScriptInterface::OpenChest` | `semantic-review` | `PASS` | explicit-review-marker | 2 | 77 | 15099 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 41 | `0x00898F40` | `CGameScriptInterface::GiveHeroGold` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 3 | 17 | 2160 | 'ETCInterfaceType' was not declared in this scope |
+| 42 | `0x00896A30` | `CGameScriptInterface::SetQuestCardObjective` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 3 | 29 | 3566 | 'ETCInterfaceType' was not declared in this scope |
+| 43 | `0x009F1AC0` | `CGameEventPackageSet::InitFromCompressedBuffer` | `semantic-review` | `PASS` | address-reinterpret-call | 3 | 41 | 3193 | 'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'? |
+| 44 | `0x00401067` | `entry` | `semantic-review` | `PASS` | explicit-review-marker | 3 | 50 | 6649 | static assertion failed |
+| 45 | `0x008A8F20` | `CGameScriptInterface::GetItemDefNamesFromContainer` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 4 | 22 | 3561 | 'CDefinitionManager' does not name a type |
+| 46 | `0x00670710` | `CTCCoopSpirit::UpdateScore` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 10 | 25 | 4000 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 47 | `0x0062C0E0` | `CWorld::EAMoveSpirit` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 10 | 33 | 3624 | 'CWorld' has not been declared |
+| 48 | `0x0089B110` | `CGameScriptInterface::StartMovieSequence` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 10 | 45 | 4802 | static assertion failed |
+| 49 | `0x00891940` | `CGameScriptInterface::SetQuestInfoName` | `semantic-review` | `PASS` | explicit-review-marker | 11 | 25 | 3022 | 'CGameScriptInterface' has not been declared |
+| 50 | `0x008A1B10` | `CGameScriptInterface::GetSleepingPositionAndOrientationFromBed` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 15 | 21 | 3084 | 'CGameScriptInterface' has not been declared |
+| 51 | `0x006701A0` | `CTCCoopSpirit::UpdateAttractionToMaster` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 16 | 32 | 4683 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 52 | `0x00462F1F` | `Copy_MemoryRange` | `compile-now` | `REVIEW` |  | 0 | 0 | 573 |  |
+| 53 | `0x0046780E` | `Vector_CopyRange` | `compile-now` | `REVIEW` |  | 0 | 0 | 585 |  |
+| 54 | `0x0045F008` | `CActiveFile_AllocateAndCopyVector` | `vc71-port` | `REVIEW` |  | 0 | 2 | 533 |  |
+| 55 | `0x00C92F10` | `DSP_ComputeRunningMinEnvelope` | `vc71-port` | `REVIEW` |  | 0 | 2 | 2187 |  |
+| 56 | `0x0045EFE5` | `CVector_CopyRange` | `vc71-port` | `REVIEW` |  | 0 | 3 | 533 |  |
+| 57 | `0x00464AAB` | `Vector_CopyRangeForward` | `vc71-port` | `REVIEW` |  | 0 | 3 | 539 |  |
+| 58 | `0x0042C1C1` | `CMemoryAllocatorVariableSize_FindInsertPointLeft` | `vc71-port` | `REVIEW` |  | 0 | 4 | 5661 |  |
+| 59 | `0x0046496F` | `std_vector_push_copy_element` | `vc71-port` | `REVIEW` |  | 0 | 5 | 756 |  |
+| 60 | `0x00462DC1` | `Vector_AllocateAndCopy_12` | `vc71-port` | `REVIEW` |  | 0 | 6 | 869 |  |
+| 61 | `0x004698BE` | `Vector_Insert` | `vc71-port` | `REVIEW` |  | 0 | 6 | 3276 |  |
+| 62 | `0x00466E1E` | `Vector_Insert` | `vc71-port` | `REVIEW` |  | 0 | 6 | 4066 |  |
+| 63 | `0x004612D6` | `Vector_AllocateAndCopy_8` | `vc71-port` | `REVIEW` |  | 0 | 7 | 970 |  |
+| 64 | `0x00468FE3` | `Vector_Erase` | `vc71-port` | `REVIEW` |  | 0 | 8 | 907 |  |
+| 65 | `0x004640D1` | `Vector_RShift_4` | `vc71-port` | `REVIEW` |  | 0 | 8 | 933 |  |
+| 66 | `0x00411B90` | `std_vector_assign` | `vc71-port` | `REVIEW` |  | 0 | 8 | 2436 |  |
+| 67 | `0x0046594C` | `Vector_InsertElements_Realloc` | `vc71-port` | `REVIEW` |  | 0 | 8 | 3570 |  |
+| 68 | `0x00463901` | `CEngineSceneGrid_AllocBoundingBoxNode` | `vc71-port` | `REVIEW` |  | 0 | 9 | 747 |  |
+| 69 | `0x00450CCC` | `Buffer_InitializeWithSize` | `vc71-port` | `REVIEW` |  | 0 | 9 | 827 |  |
+| 70 | `0x0046085B` | `CActiveFile_AllocateAndCopyValue` | `vc71-port` | `REVIEW` |  | 0 | 9 | 856 |  |
+| 71 | `0x00451583` | `VertexListInsertVertices` | `vc71-port` | `REVIEW` |  | 0 | 9 | 871 |  |
+| 72 | `0x00460D22` | `Vector_AllocateAndCopy_8` | `vc71-port` | `REVIEW` |  | 0 | 9 | 907 |  |
+| 73 | `0x0046988F` | `Vector_Erase` | `vc71-port` | `REVIEW` |  | 0 | 9 | 986 |  |
+| 74 | `0x0046BBA2` | `Vector_Erase` | `vc71-port` | `REVIEW` |  | 0 | 9 | 1005 |  |
+| 75 | `0x00466DE5` | `Vector_Erase` | `vc71-port` | `REVIEW` |  | 0 | 9 | 1078 |  |
+| 76 | `0x00460BEC` | `CActiveFile_AssignVector20` | `vc71-port` | `REVIEW` |  | 0 | 9 | 1197 |  |
+| 77 | `0x0046656F` | `CDialogueLayerDef_AllocateAndConstruct` | `vc71-port` | `REVIEW` |  | 0 | 9 | 1362 |  |
+| 78 | `0x00C37000` | `IntelligentPointer_BuildAndDispatchFloat` | `vc71-port` | `REVIEW` |  | 0 | 9 | 1429 |  |
+| 79 | `0x0045DF1E` | `Save_WriteMemoryAllocatorAreas` | `vc71-port` | `REVIEW` |  | 0 | 9 | 1728 |  |
+| 80 | `0x00465DBC` | `RBTree_InsertNode` | `vc71-port` | `REVIEW` |  | 0 | 9 | 2345 |  |
+| 81 | `0x004669BF` | `RBTree_InsertNode` | `vc71-port` | `REVIEW` |  | 0 | 9 | 2498 |  |
+| 82 | `0x0042AEB5` | `BinarySearchTree_FindByUintComparator` | `vc71-port` | `REVIEW` |  | 0 | 10 | 1300 |  |
+| 83 | `0x00C36E00` | `CSBAgents_BuildAndDispatch_SummonerLightning` | `vc71-port` | `REVIEW` |  | 0 | 10 | 1440 |  |
+| 84 | `0x0042B4F3` | `BinarySearchTree_FindLessOrEqual_Copy` | `vc71-port` | `REVIEW` |  | 0 | 10 | 1513 |  |
+| 85 | `0x0046B6C1` | `Vector_Erase` | `vc71-port` | `REVIEW` |  | 0 | 10 | 1713 |  |
+| 86 | `0x00409090` | `Engine_FindPrimitiveInArray` | `vc71-port` | `REVIEW` |  | 0 | 10 | 2100 |  |
+| 87 | `0x0045EE0E` | `RBTree_InsertNewNode4` | `vc71-port` | `REVIEW` |  | 0 | 10 | 2256 |  |
+| 88 | `0x00464733` | `RBTree_LowerBound` | `vc71-port` | `REVIEW` |  | 0 | 10 | 2597 |  |
+| 89 | `0x0045DBF2` | `RBTree_InsertWithFind` | `vc71-port` | `REVIEW` |  | 0 | 10 | 2903 |  |
+| 90 | `0x0045CD9B` | `CActiveFile_AssignVector24` | `vc71-port` | `REVIEW` |  | 0 | 11 | 978 |  |
+| 91 | `0x0046B182` | `Vector_Erase` | `vc71-port` | `REVIEW` |  | 0 | 11 | 1076 |  |
+| 92 | `0x00460FC6` | `Vector_AllocateAndCopy_12` | `vc71-port` | `REVIEW` |  | 0 | 11 | 1138 |  |
+| 93 | `0x00410ED0` | `Std_Deque_PopFront_ChunkBased` | `vc71-port` | `REVIEW` |  | 0 | 11 | 1169 |  |
+| 94 | `0x00461136` | `Vector_AllocateAndCopy_84` | `vc71-port` | `REVIEW` |  | 0 | 11 | 1295 |  |
+| 95 | `0x0042AD91` | `BinarySearchTree_FindExact` | `vc71-port` | `REVIEW` |  | 0 | 11 | 1440 |  |
+| 96 | `0x004638C8` | `CEngineSceneGrid_InsertBoundingBoxNode` | `vc71-port` | `REVIEW` |  | 0 | 11 | 2071 |  |
+| 97 | `0x0045DC78` | `RBTree_InsertNewNode` | `vc71-port` | `REVIEW` |  | 0 | 11 | 2121 |  |
+| 98 | `0x00463258` | `Vector_AllocateAndCopy_8` | `vc71-port` | `REVIEW` |  | 0 | 12 | 1058 |  |
+| 99 | `0x00449320` | `CList_PushBack` | `vc71-port` | `REVIEW` |  | 0 | 12 | 1339 |  |
+| 100 | `0x0086FA00` | `CPersistInfo_InsertionSortStep_0086fa00` | `vc71-port` | `REVIEW` |  | 0 | 12 | 1701 |  |
 
 ## Semantic-review quarantine
 
@@ -115,29 +115,29 @@ These candidates may structurally match the retail path, but their generated C++
 
 | Address | Owner/function | Hazards |
 |---|---|---|
-| `0x00897150` | `CGameScriptInterface::CGameScriptInterface::UnSetThingAndCarriedItemsNotAffectedByScreenFilter` | possible-end-sentinel-dereference |
-| `0x00896060` | `CGameScriptInterface::CGameScriptInterface::SetVillageLimbo` | possible-end-sentinel-dereference |
-| `0x00897B10` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasCurrentMarriage` | possible-end-sentinel-dereference |
-| `0x00897BD0` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasChildren` | possible-end-sentinel-dereference |
-| `0x0089B4D0` | `CGameScriptInterface::CGameScriptInterface::RemoveHeroHairstyle` | possible-end-sentinel-dereference |
-| `0x008A1590` | `CGameScriptInterface::CGameScriptInterface::GetBestTimePairs` | possible-end-sentinel-dereference |
-| `0x008A15F0` | `CGameScriptInterface::CGameScriptInterface::GetBestTimeSorting` | possible-end-sentinel-dereference |
-| `0x008A17D0` | `CGameScriptInterface::CGameScriptInterface::GetBestTimeGuessTheAddition` | possible-end-sentinel-dereference |
-| `0x00897C30` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasMurderedWife` | possible-end-sentinel-dereference |
-| `0x00897B70` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasDivorcedMarriage` | possible-end-sentinel-dereference |
-| `0x00897C90` | `CGameScriptInterface::CGameScriptInterface::GetNumberOfTimesHeroHasHadSex` | possible-end-sentinel-dereference |
-| `0x008A16B0` | `CGameScriptInterface::CGameScriptInterface::GetBestScoreCoinGolfOakVale` | possible-end-sentinel-dereference |
-| `0x00897030` | `CGameScriptInterface::CGameScriptInterface::IsToFailQuestOnDeath` | possible-end-sentinel-dereference |
-| `0x00897480` | `CGameScriptInterface::CGameScriptInterface::IsPlayerWieldingWeapon` | possible-end-sentinel-dereference |
-| `0x00897AA0` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasMarried` | possible-end-sentinel-dereference |
-| `0x0089EF30` | `CGameScriptInterface::CGameScriptInterface::SetMoralityChangingAsEnabled` | possible-end-sentinel-dereference |
-| `0x00897CF0` | `CGameScriptInterface::CGameScriptInterface::SetNumberOfTimesHeroHasHadSex` | possible-end-sentinel-dereference |
-| `0x0089B450` | `CGameScriptInterface::CGameScriptInterface::ChangeHeroHairstyle` | possible-end-sentinel-dereference |
-| `0x00898540` | `CGameScriptInterface::CGameScriptInterface::SetGuardsIgnoreCrimes` | possible-end-sentinel-dereference |
-| `0x00897D50` | `CGameScriptInterface::CGameScriptInterface::SetHeroAsHavingHadSex` | possible-end-sentinel-dereference |
-| `0x00897DB0` | `CGameScriptInterface::CGameScriptInterface::SetHeroAsHavingHadGaySex` | possible-end-sentinel-dereference |
-| `0x008A12A0` | `CGameScriptInterface::CGameScriptInterface::GetNumHousesOwned` | possible-end-sentinel-dereference |
-| `0x00896E60` | `CGameScriptInterface::CGameScriptInterface::SetPreferredQuickAccessItem` | possible-end-sentinel-dereference |
-| `0x00897090` | `CGameScriptInterface::CGameScriptInterface::SetWhetherToFailQuestOnDeath` | possible-end-sentinel-dereference |
-| `0x00898DB0` | `CGameScriptInterface::CGameScriptInterface::TakeObjectFromHero` | possible-end-sentinel-dereference;process-termination |
-|  | _62 additional quarantined candidates omitted_ |  |
+| `0x00897030` | `CGameScriptInterface::IsToFailQuestOnDeath` | possible-end-sentinel-dereference |
+| `0x00897480` | `CGameScriptInterface::IsPlayerWieldingWeapon` | possible-end-sentinel-dereference |
+| `0x00898DB0` | `CGameScriptInterface::TakeObjectFromHero` | possible-end-sentinel-dereference;process-termination |
+| `0x00898840` | `CGameScriptInterface::ConfiscateItemsOfTypeFromHero` | possible-end-sentinel-dereference |
+| `0x00898E60` | `CGameScriptInterface::IsHeroHandLampLit` | possible-end-sentinel-dereference |
+| `0x0089CD70` | `CGameScriptInterface::CanThingBe_Heard_ByOtherThing` | possible-end-sentinel-dereference |
+| `0x006E7920` | `CGameScriptInterface::CheckForCameraMessage` | explicit-review-marker;possible-end-sentinel-dereference |
+| `0x008986D0` | `CGameScriptInterface::ConfiscateAllHeroItems` | possible-end-sentinel-dereference |
+| `0x008A0820` | `CGameScriptInterface::CancelHeroTeleportEffects` | possible-end-sentinel-dereference |
+| `0x008A03F0` | `CGameScriptInterface::ClearThingBestEnemyTarget` | possible-end-sentinel-dereference |
+| `0x00898940` | `CGameScriptInterface::ReturnAllConfiscatedItemsToHero` | possible-end-sentinel-dereference |
+| `0x00898600` | `CGameScriptInterface::RemoveAllHeroWeapons` | possible-end-sentinel-dereference |
+| `0x00891A00` | `CGameScriptInterface::SetQuestInfoText` | explicit-review-marker |
+| `0x00895190` | `CGameScriptInterface::GiveThingItemInSlot` | possible-end-sentinel-dereference |
+| `0x008981C0` | `CGameScriptInterface::AddTattooToHero` | possible-end-sentinel-dereference |
+| `0x006E7820` | `CGameScriptInterface::WaitForCameraMessage` | address-reinterpret-call;possible-end-sentinel-dereference |
+| `0x00898410` | `CGameScriptInterface::SetHeroWeaponsAsUsable` | possible-end-sentinel-dereference |
+| `0x00898340` | `CGameScriptInterface::SetHeroWillAsUsable` | possible-end-sentinel-dereference |
+| `0x00892850` | `CGameScriptInterface::AddScreenMessage` | explicit-review-marker |
+| `0x0089FEB0` | `CGameScriptInterface::AddCrimeCommitted` | possible-end-sentinel-dereference |
+| `0x00449B60` | `CPlayerManager::GetMultiplayerColour` | explicit-review-marker |
+| `0x008977F0` | `CGameScriptInterface::ApplyHeroPenaltyForDeath` | possible-end-sentinel-dereference |
+| `0x008973A0` | `CGameScriptInterface::IsPlayerCarryingItemOfType` | possible-end-sentinel-dereference |
+| `0x0089C560` | `CGameScriptInterface::EntityPostOpinionDeedToAll` | possible-end-sentinel-dereference |
+| `0x008954A0` | `CGameScriptInterface::EntityFollowThing` | possible-end-sentinel-dereference |
+|  | _31 additional quarantined candidates omitted_ |  |

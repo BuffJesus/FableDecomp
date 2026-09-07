@@ -74,11 +74,18 @@ The matching entrance is trivial — `DefinitionType "REGION_ENTRANCE_POINT"`, a
 
 **Two facts that decide the whole feature:**
 
-1. `EntranceConnectedToUID` is a **real TNG `UID` of a `REGION_ENTRANCE_POINT` in a different
-   level's TNG**. Verified by resolution: `1005154838415147012` -> `LostBay_Leadout_01.tng`,
-   `1005154838415147013` -> `NorthernWastes2.tng`, `1056628475269480453` -> `Witchwood_9.tng`,
-   `1056628475269480455` -> `ArenaHallOfHeroes.tng`. Linking is **cross-file by global UID**, so the
-   editor must resolve and allocate UIDs across every TNG in the project at once.
+1. `EntranceConnectedToUID` is the **runtime-remapped identity** of a
+   `REGION_ENTRANCE_POINT` in a different level's TNG, not a literal copy of
+   that file's serialized `UID`. Retail TNG thing IDs use the
+   `0xFFFFFE00xxxxxxxx` map-local serialization sentinel and deliberately repeat
+   between maps. A cross-map reference replaces the sentinel with the
+   destination WLD MapUID: `(MapUID << 40) | localThingId32`. For example,
+   `178605768327561327 = 0x027A89000000006F`; WLD MapUID `0x027A89` selects
+   `LookoutPoint`, whose serialized local thing `0x...006F` is the entrance.
+   `forge tng transition-audit` validates this over retail FinalAlbion: all 129
+   region-exit links and all 53 interactive-teleporter links resolve uniquely,
+   and every target is `REGION_ENTRANCE_POINT`. The editor must allocate a safe
+   local ID and build cross-file references with the destination MapUID.
 2. `Position*` in a TNG is **map-relative, not world-absolute**. The exit above sits at
    (30.9, 156.0) inside `Greatwood_1`, whose WLD origin is `MapX 3264 / MapY 3296` and whose bounds
    are 96 x 192. Placing at world coordinates would parse perfectly and land the object ~3 km away.

@@ -300,12 +300,15 @@ indices → textures.big / graphics.big. Write via `big_write rebuild(edits=)`.
 
 ## 12. Teleport / cross-region movement (ForgeFSE) — PROVEN
 
-`GoToMapSlot(mapSlot,x,y,z)`: `GetRegionNumberMapIsIn @0x004FC190` →
-`LoadRegion @0x00500540` (force) → `SetPlayerPos @0x005063E0` →
-`ActivateNavMap @0x0050AF10` → `EntityTeleportToPosition`. Bare
-`EntityTeleportToPosition` no-ops from a non-adjacent region; the force
-`LoadRegion` streams a distant/new region. Correct `CWorld` vtable slot for
-`ResolveWorldMap` = **12 (0x30)**; slot 13 crashes.
+`GoToMapSlot(mapSlot,x,y,z)` delegates to the retail
+`EntityTeleportToPosition` path (CGSI vtable slot 473 / `0x764`). The retail
+hero branch builds a move-region game event and calls
+`CWorld::HandleMoveHeroToRegionGameEvent @0x0049EAF0`, which owns the normal
+region streaming, map/nav activation, render lifecycle, and final placement.
+The previous hand-built `LoadRegion -> SetPlayerPos -> ActivateNavMap` bridge
+was removed after live evidence showed it entered the target render path but
+did not complete the retail transition lifecycle. Correct `CWorld` vtable slot
+for `ResolveWorldMap` = **12 (0x30)**; slot 13 crashes.
 
 ---
 
@@ -414,7 +417,7 @@ strips) and `Ego_d.pdb` (269 MB engine symbols; use `ego_r.exe` for code bodies,
 | Appearance / hero morph | 100% | overlay author | PROVEN / staged |
 | Demon-door lipsync | validated | — | PROVEN |
 | Controller enums | empirical | data-edit | PROVEN (some names unsourced) |
-| Custom region (live) | — | full assembly | **PROVEN live (teleport + walk)** |
+| Custom region (live) | — | full assembly | **64x64 package offline-clean; post-handoff arrival unresolved** |
 
 **Biggest open items:** STB baked-chunk HDR quadtree grammar (arbitrary new
 terrain topology); mesh vertex/index engine call-site for the chunked-LZO inflate
@@ -426,3 +429,37 @@ live engine-acceptance tests for audio/dialogue *adds*; font glyph-metric format
 *Shared freely. Addresses are for those exact binaries — verify against yours.
 Happy to hand over any of the byte-exact reader/writer code (a C++ lib + Python
 tools) or trade format notes.*
+
+### 2026-08-12 ForgeFSE handoff correction
+
+The current 64x64 ForgeTest package passes the FableForge offline gates, but
+the latest valid gameplay run does not prove post-handoff arrival. The measured
+native sequence reaches `LoadRegion(host region)`, `SetPlayerPos`,
+`ActivateNavMap`, and the retail `EntityTeleportToPosition` handoff; no later
+`ForgeTest` arrival or target-render record follows. Do not describe the current
+64x64 terrain as live teleport-and-walk proven until that log evidence exists.
+
+The old NPC-at-hero symptom was an unconditional post-teleport spawn. The
+deployed script now gates `ForgeNPC` on the hero's map name and target bounds.
+`text.big` also contains the verified ForgeFSE About branding. Texture pinning
+and custom terrain-texture replacement remain deferred.
+# 2026-08-28 StatueMaster / FSE research checkpoint
+
+- Retail TLC plus two PDB-backed PC gameplay builds initialize `SM_Guild` but
+  have no Guild text/reward branch. An orphan localized Guild direction message
+  survives; original Xbox `default.xbe` remains unavailable and unresolved.
+- Five orphan Statue Master signs (Fire, Steel, Silver, Diamond, Lightning)
+  exactly match five old `game.bin` augmentation categories. Retail names map
+  Steel to Sharpening and Diamond to Piercing.
+- No surviving PC script, definition, level object, PDB class, numeric ID, or
+  CRC reference implements the implied hit puzzle. Matching augmentation items
+  are ordinary chest contents.
+- Greatwood's Piercing StatueMaster chest is flanked by two unique unscripted
+  statues, the strongest physical remnant of the older concept.
+- Native Bowerstone cellar behavior requires the live repeatable escort NPC
+  `TraderToEscort`; the reviewed Lua port bypasses this check.
+- Proposed restoration: central locator plus five augmentation-responsive
+  satellite statues and persistent seals, with Guild as tutorial/progress/final
+  state. This is evidence-constrained reconstruction, not parity.
+- Canonical detail: `docs/STATUEMASTER_DEEP_RESEARCH_REPORT.md` and
+  `docs/STATUEMASTER_LUA_PORT_AUDIT.md`.

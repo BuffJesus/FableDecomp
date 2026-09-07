@@ -1,0 +1,2 @@
+#include <cstdio>
+static void* seen;static void* result;static void* GetMax(void* node){seen=node;return result;}static void** __fastcall Run(void** iterator){*iterator=GetMax(*iterator);return iterator;}int main(){int input,maximum;void* iterator=&input;result=&maximum;if(Run(&iterator)!=&iterator||seen!=&input||iterator!=&maximum)return 1;std::printf("RBTREEMAX_005cbfe9_PASS\n");return 0;}

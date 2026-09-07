@@ -1,0 +1,182 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/DragonBossFight/Entities/DBMinion.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 5,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "name": "OnPredicateFail",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 12,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 4
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GetTimer",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTimer",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 25,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveThingBestEnemyTarget",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 16
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 17
+        },
+        {
+          "receiver": "me",
+          "name": "IsDead",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 29
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "DragonState",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "MinionSpawnDelayTimer",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "NumMinions",
+      "types": [
+        "int"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

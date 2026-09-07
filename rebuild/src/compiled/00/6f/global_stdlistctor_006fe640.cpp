@@ -1,0 +1,3 @@
+#include <stdlib.h>
+struct ListSentinel_006fe640 { ListSentinel_006fe640* next; ListSentinel_006fe640* previous; unsigned long reserved; };
+void** __fastcall std_list_ctor(void** owner, void* unusedRegister, void* unusedStack) { (void)unusedRegister; (void)unusedStack; *owner = 0; ListSentinel_006fe640* node = (ListSentinel_006fe640*)malloc(0x0c); node->next = node; node->previous = node; *owner = node; return owner; }

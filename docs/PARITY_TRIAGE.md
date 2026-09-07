@@ -112,3 +112,20 @@ NOT affect this residue (swept, all identical). Compiler build is 13.10.3077 (VC
 INTEGRITY NOTE: the mass-loop had landed a named-local Std_Move_Backward that passes behavior but
 DIFFERs from retail (does not byte-match). Replaced with the matching form. Worth a catalog-wide
 recompile-vs-oracle sweep to find other behavior-pass-but-not-byte-match lands.
+
+## Smallest-first crawl harvest — 2026-08-29
+
+Eleven additional functions were promoted through all three gates: retail-byte
+comparison, executable behavior fixture, and a selected production-catalog rebuild.
+
+- Exact `MATCH`: `007e33a0 OnPostParentRelocation`, `00749dd0 SetAsActive`,
+  and both `CTexture::Uninitialise` bodies (`00caa6e0`, `00cacd60`).
+- `RELOCATION_MATCH`: `00416231 GetCurrentGameTime`, `006bf7b0 BoughtSomething`,
+  three bank-state `CreateCRC` bodies (`00a5f6a0`, `00a62580`, `00a63890`),
+  `00747b00 IsAvailableForAttack`, and `009bd090 OnShowTrophyInitialise`.
+
+Retained behavior-passing near-misses: `00661640` (`18v12`), allocation wrappers
+`00c33470`/`00c36090` (`16v14`, `add esp,4` versus retail `pop ecx`), and
+`008ad5c0` (`13v13`, register allocation). These are evidence, not landings.
+`00a79b30 CNavQuadTreeNode::Initialise` reached the exact 1,381-byte retail
+length but still differs because its stack frame is `0x48` rather than `0x44`.
