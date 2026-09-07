@@ -1,6 +1,6 @@
+#include "engine/CCombatAbilityStrafeDef.h"
 #include <cstdio>
 
-struct CCombatAbilityStrafeDef { int dummy; };
 
 unsigned long __fastcall CCombatAbilityStrafeDef_GetSizeofClass(const CCombatAbilityStrafeDef* self)
 {

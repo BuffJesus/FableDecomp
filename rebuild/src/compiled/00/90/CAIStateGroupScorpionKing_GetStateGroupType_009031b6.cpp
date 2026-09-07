@@ -1,4 +1,7 @@
 #pragma optimize("s",on)
 // Constant-return member: returns 1. __fastcall this=ecx.
-struct T { int Get(); };
-int T::Get() { return 1; }
+#include "engine/CAIStateGroup_ScorpionKing.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAIStateGroup_ScorpionKing_Methods : CAIStateGroup_ScorpionKing {
+    int Get();
+};
+int CAIStateGroup_ScorpionKing_Methods::Get() { return 1; }

@@ -1,4 +1,7 @@
 #pragma optimize("s",on)
 // Constant-return member: returns 1. __fastcall this=ecx.
-struct T { int Get(); };
-int T::Get() { return 1; }
+#include "engine/CAIStateGroup_MazeDefensiveMeleeCombat.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAIStateGroup_MazeDefensiveMeleeCombat_Methods : CAIStateGroup_MazeDefensiveMeleeCombat {
+    int Get();
+};
+int CAIStateGroup_MazeDefensiveMeleeCombat_Methods::Get() { return 1; }

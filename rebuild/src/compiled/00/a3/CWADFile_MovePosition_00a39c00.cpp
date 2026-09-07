@@ -1,2 +1,5 @@
-struct S { char pad[0xc]; long fv; void MovePosition(long a); };
-void S::MovePosition(long a){ this->fv += a; }
+#include "engine/CWADFile.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CWADFile_Methods : CWADFile {
+    void MovePosition(long a);
+};
+void CWADFile_Methods::MovePosition(long a){ this->FilePos += a; }

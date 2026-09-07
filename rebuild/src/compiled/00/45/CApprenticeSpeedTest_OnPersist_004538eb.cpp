@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
-struct CApprenticeSpeedTest { int dummy; };
 
+#include "engine/CApprenticeSpeedTest.h"  // retyped onto the PDB layout; byte parity re-verified
 extern void __stdcall Persist_Serialize(int id, float* pf, unsigned char* pb);
 
 CApprenticeSpeedTest* __fastcall CApprenticeSpeedTest_OnPersist(CApprenticeSpeedTest* self)

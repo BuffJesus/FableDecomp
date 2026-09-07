@@ -7,6 +7,7 @@
 // The SetFilePointer call is emitted as an indirect call through the IAT slot,
 // modeled here as a function-pointer global.
 
+#include "engine/CDiskFileWin32.h"  // retyped onto the PDB layout; byte parity re-verified
 typedef unsigned long DWORD_0099abd0;
 
 extern "C" DWORD_0099abd0 (__stdcall *CDiskFileWin32_SetFilePointerIAT_0099abd0)(
@@ -15,17 +16,10 @@ extern "C" DWORD_0099abd0 (__stdcall *CDiskFileWin32_SetFilePointerIAT_0099abd0)
     long* lpDistanceToMoveHigh,
     DWORD_0099abd0 dwMoveMethod);
 
-struct CDiskFileWin32_0099abd0
-{
-    char pad0[8];
-    long position; // +0x08
-    char pad2[4];  // +0x0C
-    void* handle;  // +0x10
-};
 
 extern "C" long __fastcall
-GetPosition_0099abd0(CDiskFileWin32_0099abd0* self)
+GetPosition_0099abd0(CDiskFileWin32* self)
 {
-    CDiskFileWin32_SetFilePointerIAT_0099abd0(self->handle, 0, 0, 1 /*FILE_CURRENT*/);
-    return self->position;
+    CDiskFileWin32_SetFilePointerIAT_0099abd0(self->WinFileHandle, 0, 0, 1 /*FILE_CURRENT*/);
+    return self->Position;
 }

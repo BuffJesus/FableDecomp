@@ -1,6 +1,6 @@
 // CTCPerceiveThing::IsUpdatingThisFrame @ 0x007443f0
 // bool __fastcall, modeled as __fastcall (this in ecx).
-// Retail: (GetFrameCount() % 4) == this->m_updateFrame
+// Retail: (GetFrameCount() % 4) == this->UpdateOffset
 //
 // Retail disasm target:
 //   push esi
@@ -11,7 +11,7 @@
 //   dec  eax
 //   or   eax,0xfffffffc
 //   inc  eax
-//   sub  eax,[esi+0x38]           ; - this->m_updateFrame
+//   sub  eax,[esi+0x38]           ; - this->UpdateOffset
 //   neg  eax
 //   sbb  eax,eax
 //   inc  eax                      ; (result==0) ? 1 : 0
@@ -19,16 +19,12 @@
 //   ret
 
 // Engine global frame-count getter; call rel32 is relocation-masked in parity.
+#include "engine/CTCPerceiveThing.h"  // retyped onto the PDB layout; byte parity re-verified
 extern int __cdecl GetFrameCount(void);
 
-struct CTCPerceiveThing
-{
-    char  _pad0[0x38];
-    int   m_updateFrame;   // +0x38
-};
 
 // __fastcall places 'this' in ecx, byte-identical to __fastcall for a this-only accessor.
 bool __fastcall CTCPerceiveThing_IsUpdatingThisFrame(CTCPerceiveThing *self)
 {
-    return (GetFrameCount() % 4) == self->m_updateFrame;
+    return (GetFrameCount() % 4) == self->UpdateOffset;
 }

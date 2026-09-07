@@ -1,3 +1,6 @@
 // Constant-return member: returns true. __fastcall this=ecx.
-struct T { bool Get(); };
-bool T::Get() { return true; }
+#include "engine/CAIStateGroup_BanditPlayDice.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAIStateGroup_BanditPlayDice_Methods : CAIStateGroup_BanditPlayDice {
+    bool Get();
+};
+bool CAIStateGroup_BanditPlayDice_Methods::Get() { return true; }

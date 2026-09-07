@@ -1,3 +1,4 @@
+#include "engine/CAIStateGroupBase.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CWorldMap;
 
 struct CInner {
@@ -18,10 +19,9 @@ struct CInner {
 };
 
 struct CMid { char pad[0x24]; CInner* inner; };
-struct CHolder { char pad[0x1c]; CMid* mid; };
-struct CAIStateGroupBase { char pad[0x4]; CHolder* holder; };
+struct CAIBrain { char pad[0x1c]; CMid* mid; };
 
 CWorldMap* __fastcall CAIStateGroupBase_PeekWorldMap(CAIStateGroupBase* self)
 {
-    return self->holder->mid->inner->PeekWorldMap();
+    return self->PBrain->mid->inner->PeekWorldMap();
 }

@@ -1,2 +1,5 @@
-struct C_008c9610 { char pad[0x114]; unsigned char f; unsigned char M(); };
-unsigned char C_008c9610::M(){ return this->f; }
+#include "engine/CCreatureAction_BanditKingUnstuck.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CCreatureAction_BanditKingUnstuck_Methods : CCreatureAction_BanditKingUnstuck {
+    unsigned char M();
+};
+unsigned char CCreatureAction_BanditKingUnstuck_Methods::M(){ return this->f; }

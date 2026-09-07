@@ -1,4 +1,7 @@
 // Empty virtual hook (CGameComponent::Init and friends): __fastcall this=ecx, no args,
 // no cleanup -> a bare `ret`.
-struct T { void Init(); };
-void T::Init() {}
+#include "engine/CStartupDefinitionManager.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CStartupDefinitionManager_Methods : CStartupDefinitionManager {
+    void Init();
+};
+void CStartupDefinitionManager_Methods::Init() {}

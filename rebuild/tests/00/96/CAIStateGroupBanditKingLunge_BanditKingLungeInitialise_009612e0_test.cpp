@@ -1,3 +1,4 @@
+#include "engine/CAIStateGroup_BanditKingLunge.h"
 #include <cstdio>
 
 struct CAIBrain { int x; };
@@ -6,11 +7,6 @@ struct CCharString { int x; };
 
 typedef long EScriptAIPriority;
 
-struct CAIStateGroup_BanditKingLunge {
-    unsigned int vtbl;
-    char pad[0x18];
-    long TimeOfLastLunge;
-};
 
 static int g_called = 0;
 static CAIStateGroup_BanditKingLunge* g_self_seen = 0;

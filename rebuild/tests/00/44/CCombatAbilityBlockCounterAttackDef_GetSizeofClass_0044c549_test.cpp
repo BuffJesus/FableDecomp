@@ -1,6 +1,6 @@
+#include "engine/CCombatAbilityBlockCounterAttackDef.h"
 #include <cstdio>
 
-struct CCombatAbilityBlockCounterAttackDef { int dummy; };
 
 unsigned long __fastcall CCombatAbilityBlockCounterAttackDef_GetSizeofClass(const CCombatAbilityBlockCounterAttackDef* self)
 {

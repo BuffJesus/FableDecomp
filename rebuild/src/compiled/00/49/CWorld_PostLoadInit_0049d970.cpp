@@ -1,2 +1,5 @@
-struct C_0049d970 { char pad[0x80]; unsigned char f80; void PostLoadInit(); };
-void C_0049d970::PostLoadInit(){ this->f80 = 1; }
+#include "engine/CWorld.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CWorld_Methods : CWorld {
+    void PostLoadInit();
+};
+void CWorld_Methods::PostLoadInit(){ this->JustLoaded = 1; }

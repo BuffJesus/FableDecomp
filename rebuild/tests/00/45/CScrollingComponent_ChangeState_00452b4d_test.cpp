@@ -1,3 +1,4 @@
+#include "engine/CScrollingComponent.h"
 #include <cstdio>
 
 static int g_flags = 0;
@@ -10,13 +11,6 @@ struct IVisitor {
     virtual void f02(void* a, void* b) { g_slot2++; g_seen = a; }
 };
 
-struct CScrollingComponent {
-    char pad[0x18];
-    int  state;    /* +0x18 */
-    char pad2[0x08];
-    void* field24; /* +0x24 */
-    void* field28; /* +0x28 */
-};
 
 struct ScopeGuard { char buf[0x18]; void init(int flag); };
 void ScopeGuard::init(int flag) { g_flags |= 2; }

@@ -1,10 +1,6 @@
 // Byte-exact reconstruction of CCreatureAction_SpiritReturnToHero::Initialise @ 0x008546a0
+#include "engine/CCreatureAction_SpiritReturnToHero.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CCreatureActionBase { };
-struct CCreatureAction_SpiritReturnToHero {
-    char pad[0x10];
-    long field_10;   // +0x10
-    int  field_14;   // +0x14
-};
 
 // Base class Initialise (call 0x694d10), this-call void
 void __fastcall CCreatureActionBase_Initialise(CCreatureAction_SpiritReturnToHero* self);

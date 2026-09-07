@@ -1,7 +1,7 @@
-struct S;
-extern int __fastcall re_call(S*);
-struct S { char pad[0x2C]; int result; };
-void __fastcall OnReplaceKidGroup(S* self)
+#include "engine/CAIStateGroup_MinionKidGroupTag.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAIStateGroup_MinionKidGroupTag;
+extern int __fastcall re_call(CAIStateGroup_MinionKidGroupTag*);
+void __fastcall OnReplaceKidGroup(CAIStateGroup_MinionKidGroupTag* self)
 {
-    self->result = re_call(self);
+    self->FrameLastPlayedIn = re_call(self);
 }

@@ -1,13 +1,7 @@
-struct CInputProcessControlCreatureRightStick {
-    char pad[0x28];
-    char flagA;
-    char flagB;
-    char flagC;
-    void Init();
-};
 
+#include "engine/CInputProcessControlCreatureRightStick.h"  // retyped onto the PDB layout; byte parity re-verified
 void __fastcall CInputProcessControlCreatureRightStick_Init(CInputProcessControlCreatureRightStick* self) {
-    self->flagA = 0;
-    self->flagB = 0;
-    self->flagC = 0;
+    self->PushingCameraModeUp = 0;
+    self->PushingCameraModeDown = 0;
+    self->LookingAround = 0;
 }

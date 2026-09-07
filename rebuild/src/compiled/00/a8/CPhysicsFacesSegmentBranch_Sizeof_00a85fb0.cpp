@@ -1,15 +1,14 @@
-struct ISized {
-    virtual ~ISized();
+#include "engine/CPhysicsFacesSegmentBranch.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CIPhysicsFacesSegmentBase {
+    virtual ~CIPhysicsFacesSegmentBase();
     virtual long Sizeof();
 };
 
-struct CPhysicsFacesSegmentBranch {
-    char pad[0x14];
-    ISized* m14;   // +0x14
-    ISized* m18;   // +0x18
+struct CPhysicsFacesSegmentBranch_Methods : CPhysicsFacesSegmentBranch {
+    // +0x18
     long Sizeof();
 };
 
-long CPhysicsFacesSegmentBranch::Sizeof() {
-    return this->m14->Sizeof() + this->m18->Sizeof() + 0x1c;
+long CPhysicsFacesSegmentBranch_Methods::Sizeof() {
+    return this->PositiveChild->Sizeof() + this->NegativeChild->Sizeof() + 0x1c;
 }

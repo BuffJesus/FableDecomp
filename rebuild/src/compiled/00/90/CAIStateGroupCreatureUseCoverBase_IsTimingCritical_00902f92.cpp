@@ -1,2 +1,5 @@
-struct C_00902f92 { char pad[0x1e]; unsigned char f; unsigned char M(); };
-unsigned char C_00902f92::M(){ return this->f; }
+#include "engine/CAIStateGroup_CreatureUseCoverBase.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAIStateGroup_CreatureUseCoverBase_Methods : CAIStateGroup_CreatureUseCoverBase {
+    unsigned char M();
+};
+unsigned char CAIStateGroup_CreatureUseCoverBase_Methods::M(){ return this->TimingCritical; }

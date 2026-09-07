@@ -4,6 +4,7 @@
 // The invoked object at [Inner+0x60]. Its used method is the 37th virtual (byte
 // offset 0x90 = index 36). Declaring 36 leading virtuals + the real one makes VC71
 // emit a proper __fastcall virtual call (this in ecx, one arg pushed).
+#include "engine/CCreatureAction_NymphSummonOutOf.h"  // retyped onto the PDB layout; byte parity re-verified
 struct Target {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
@@ -25,10 +26,6 @@ struct Inner {
 // callee at 0xa01b50: __fastcall(ecx = self+8) -> Inner*
 extern Inner* __fastcall sub_a01b50(void* ecxSub);
 
-struct CCreatureAction_NymphSummonOutOf {
-    char pad0[8];
-    char sub8[4];   // subobject region begins at +8
-};
 
 // base method tail-jumped to: 0x859a20, __fastcall(self)
 extern void __fastcall base_FinishAction_859a20(CCreatureAction_NymphSummonOutOf* self);

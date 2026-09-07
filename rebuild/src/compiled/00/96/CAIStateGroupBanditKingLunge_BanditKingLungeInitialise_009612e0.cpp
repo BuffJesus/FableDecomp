@@ -1,14 +1,10 @@
+#include "engine/CAIStateGroup_BanditKingLunge.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CAIBrain;
 struct CThingAICreature;
 struct CCharString;
 
 typedef long EScriptAIPriority;
 
-struct CAIStateGroup_BanditKingLunge {
-    unsigned int vtbl;
-    char pad[0x18];
-    long TimeOfLastLunge;
-};
 
 extern "C" void __fastcall CAIStateGroupBase_Initialise(CAIStateGroup_BanditKingLunge* self, void* edx, CAIBrain& brain, CThingAICreature& creature, long param3, EScriptAIPriority priority, CCharString const& name);
 

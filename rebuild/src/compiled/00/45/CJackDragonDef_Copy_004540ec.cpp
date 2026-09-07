@@ -1,4 +1,4 @@
-struct CJackDragonDef { char pad[4]; };
+#include "engine/CJackDragonDef.h"  // retyped onto the PDB layout; byte parity re-verified
 extern void __fastcall CJackDragonDef_CopyImpl(CJackDragonDef* self, void* dummy, const CJackDragonDef* src);
 
 void __fastcall CJackDragonDef_Copy(CJackDragonDef* self, void* dummy, const CJackDragonDef* src)

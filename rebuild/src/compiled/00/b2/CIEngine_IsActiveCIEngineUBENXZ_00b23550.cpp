@@ -1,8 +1,5 @@
-struct CIEngine {
-  char pad[0x8];
-  bool active;
-};
 
+#include "engine/CIEngine.h"  // retyped onto the PDB layout; byte parity re-verified
 bool __fastcall CIEngine_IsActive(const CIEngine* self) {
-  return self->active;
+  return self->Active;
 }

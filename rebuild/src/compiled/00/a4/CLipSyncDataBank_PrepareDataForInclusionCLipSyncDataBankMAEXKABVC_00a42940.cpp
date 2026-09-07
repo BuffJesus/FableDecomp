@@ -7,6 +7,7 @@
 // virtual destructor via [esi+4] (ecx=[esi+8]) then frees the block via a
 // dedicated deallocator at 0x00bfe9bc. ret 0x1c pops 28 bytes of args.
 
+#include "engine/CLipSyncDataBank.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CWorldMap;
 struct CArrayCCharString;
 struct CDataOutputStream;
@@ -24,7 +25,6 @@ struct CBankStateBlockRef {
 // The dedicated deallocator (operator delete-ish) at 0x00bfe9bc.
 extern "C" void __cdecl BankStateBlockFree(CBankStateBlockRef* p);
 
-struct CLipSyncDataBank { void* vft; };
 
 // __fastcall member modelled as __fastcall(self, edxDummy, args...).
 // Params (28 bytes = 7 dwords):

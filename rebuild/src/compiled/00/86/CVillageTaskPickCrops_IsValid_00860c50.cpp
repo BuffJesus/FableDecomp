@@ -1,3 +1,3 @@
+#include "engine/CVillageTaskPickCrops.h"  // retyped onto the PDB layout; byte parity re-verified
 extern int __fastcall probe(void*);
-struct S { char pad2[0x40]; };
-bool __fastcall IsValid(S* self){ return probe(reinterpret_cast<char*>(self)+8) != 0; }
+bool __fastcall IsValid(CVillageTaskPickCrops* self){ return probe(reinterpret_cast<char*>(self)+8) != 0; }

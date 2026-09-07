@@ -2,12 +2,9 @@
 // This-only member accessor modeled as __fastcall (object ptr arrives in ecx,
 // byte-identical to __fastcall for a this-only method). Compile: cl /c /O2 /Oy /W3
 
-struct CGameCameraManager {
-    char _pad[0xC0];
-    int  m_noControlStartTime; // +0xC0
-};
 
 // Engine callee: returns a monotonically increasing millisecond tick (int in eax).
+#include "engine/CGameCameraManager.h"  // retyped onto the PDB layout; byte parity re-verified
 extern int __cdecl GetEngineTimeMs(void);
 
 // Relocation-masked globals read directly by the accessor.
@@ -16,8 +13,8 @@ extern int   g_noControlTimeDivisor;         // ds:0x1375550, read via fidiv (in
 
 float __fastcall CGameCameraManager_GetNoControlMovementTime(CGameCameraManager *self)
 {
-    if (self->m_noControlStartTime == 0)
+    if (self->InsideHeroCount == 0)
         return g_defaultNoControlMovementTime;
 
-    return (float)(GetEngineTimeMs() - self->m_noControlStartTime) / g_noControlTimeDivisor;
+    return (float)(GetEngineTimeMs() - self->InsideHeroCount) / g_noControlTimeDivisor;
 }

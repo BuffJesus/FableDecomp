@@ -1,2 +1,5 @@
-struct C_00a75a90 { char pad[0x1c]; unsigned char f; unsigned char M(); };
-unsigned char C_00a75a90::M(){ return this->f; }
+#include "engine/CNavNavigableLeafNode.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CNavNavigableLeafNode_Methods : CNavNavigableLeafNode {
+    unsigned char M();
+};
+unsigned char CNavNavigableLeafNode_Methods::M(){ return this->PreferabilityCost; }

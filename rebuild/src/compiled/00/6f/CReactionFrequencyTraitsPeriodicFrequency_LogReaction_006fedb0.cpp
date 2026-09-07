@@ -1,11 +1,8 @@
 #pragma optimize("t",on)
 
+#include "engine/CReactionFrequencyTraits_PeriodicFrequency.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CThingAICreature;
 
-struct CReactionFrequencyTraits_PeriodicFrequency {
-    char pad[0x1c];
-    int result;
-};
 
 extern "C" int __fastcall Helper_LR(CReactionFrequencyTraits_PeriodicFrequency* self);
 
@@ -14,5 +11,5 @@ void __fastcall LogReaction(CReactionFrequencyTraits_PeriodicFrequency* self,
                             const CThingAICreature& c, bool flag)
 {
     if (flag)
-        self->result = Helper_LR(self);
+        self->LastHappenedFrame = Helper_LR(self);
 }

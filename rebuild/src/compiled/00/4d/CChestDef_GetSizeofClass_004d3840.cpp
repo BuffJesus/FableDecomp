@@ -1,4 +1,7 @@
 #pragma optimize("s",on)
 // Constant-return member: returns 60. __fastcall this=ecx.
-struct T { int Get(); };
-int T::Get() { return 60; }
+#include "engine/CChestDef.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CChestDef_Methods : CChestDef {
+    int Get();
+};
+int CChestDef_Methods::Get() { return 60; }

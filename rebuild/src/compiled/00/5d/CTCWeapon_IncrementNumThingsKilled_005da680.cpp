@@ -1,3 +1,4 @@
+#include "engine/CTCWeapon.h"  // retyped onto the PDB layout; byte parity re-verified
 struct Thing {
     unsigned char pad_00[0x6c];
     unsigned char flags6c;
@@ -5,16 +6,14 @@ struct Thing {
     unsigned char flags91;
 };
 
-struct CTCWeapon {
-    unsigned char pad_00[0x1c];
-    int numThingsKilled;
+struct CTCWeapon_Methods : CTCWeapon {
     __declspec(dllexport) void IncrementNumThingsKilled(Thing* thing);
 };
 
-void CTCWeapon::IncrementNumThingsKilled(Thing* thing)
+void CTCWeapon_Methods::IncrementNumThingsKilled(Thing* thing)
 {
     if (thing == 0) return;
     if (thing->flags91 & 0x1) return;
     if (!(thing->flags6c & 0x8)) return;
-    ++this->numThingsKilled;
+    ++this->NumThingsKilled;
 }

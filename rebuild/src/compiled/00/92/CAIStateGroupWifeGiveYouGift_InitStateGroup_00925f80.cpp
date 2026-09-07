@@ -1,6 +1,6 @@
+#include "engine/CAIStateGroup_WifeGiveYouGift.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CWorld; struct CThingAICreature;
-struct CAIStateGroup_WifeGiveYouGift {
-    char pad[0x14]; int f14; int f18; unsigned char b1c;
+struct CAIStateGroup_WifeGiveYouGift_Methods : CAIStateGroup_WifeGiveYouGift {
     void InitStateGroup(const CWorld&, CThingAICreature&);
 };
-void CAIStateGroup_WifeGiveYouGift::InitStateGroup(const CWorld&, CThingAICreature&){ f14=0; f18=0; b1c=0; }
+void CAIStateGroup_WifeGiveYouGift_Methods::InitStateGroup(const CWorld&, CThingAICreature&){ FrameToSpeakNext=0; GiftToGiveDef=0; DeliveredGiveSpeech=0; }

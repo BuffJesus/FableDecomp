@@ -1,2 +1,5 @@
-struct C00690d20 { char pad[0x28]; unsigned long f; void M(); };
-void C00690d20::M(){ this->f = 0u; }
+#include "engine/CInputProcessParalysed.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CInputProcessParalysed_Methods : CInputProcessParalysed {
+    void M();
+};
+void CInputProcessParalysed_Methods::M(){ this->ButtonsMashed = 0u; }

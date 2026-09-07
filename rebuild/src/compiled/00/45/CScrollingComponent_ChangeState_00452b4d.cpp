@@ -1,18 +1,12 @@
 #pragma optimize("gs",on)
 
+#include "engine/CScrollingComponent.h"  // retyped onto the PDB layout; byte parity re-verified
 struct IVisitor {
     virtual void f00();
     virtual void f01(void* a, void* b);   /* vtbl +0x4 */
     virtual void f02(void* a, void* b);   /* vtbl +0x8 */
 };
 
-struct CScrollingComponent {
-    char pad[0x18];
-    int  state;    /* +0x18 */
-    char pad2[0x08];
-    void* field24; /* +0x24 */
-    void* field28; /* +0x28 */
-};
 
 struct ScopeGuard { char buf[0x18]; void init(int flag); };
 

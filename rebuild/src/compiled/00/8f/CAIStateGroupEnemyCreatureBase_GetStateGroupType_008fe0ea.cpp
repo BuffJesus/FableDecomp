@@ -1,4 +1,7 @@
 #pragma optimize("s",on)
 // Constant-return member: returns 1. __fastcall this=ecx.
-struct T { int Get(); };
-int T::Get() { return 1; }
+#include "engine/CAIStateGroup_EnemyCreatureBase.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAIStateGroup_EnemyCreatureBase_Methods : CAIStateGroup_EnemyCreatureBase {
+    int Get();
+};
+int CAIStateGroup_EnemyCreatureBase_Methods::Get() { return 1; }

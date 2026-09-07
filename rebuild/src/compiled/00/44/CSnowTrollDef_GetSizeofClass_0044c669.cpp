@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
-struct CSnowTrollDef { int dummy; };
 
+#include "engine/CSnowTrollDef.h"  // retyped onto the PDB layout; byte parity re-verified
 unsigned long __fastcall CSnowTrollDef_GetSizeofClass(const CSnowTrollDef* self)
 {
     (void)self;

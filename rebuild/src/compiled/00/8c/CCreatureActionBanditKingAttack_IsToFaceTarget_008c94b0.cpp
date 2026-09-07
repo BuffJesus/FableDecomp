@@ -1,3 +1,6 @@
+#include "engine/CCreatureAction_BanditKingAttack.h"  // retyped onto the PDB layout; byte parity re-verified
 #include "rebuild_abi.h"
-struct CCreatureAction_BanditKingAttack { char pad[0x114]; unsigned char m_v; char IsToFaceTarget(); };
-char CCreatureAction_BanditKingAttack::IsToFaceTarget(){ return (char)m_v; }
+struct CCreatureAction_BanditKingAttack_Methods : CCreatureAction_BanditKingAttack {
+    char IsToFaceTarget();
+};
+char CCreatureAction_BanditKingAttack_Methods::IsToFaceTarget(){ return (char)m_v; }

@@ -1,3 +1,4 @@
+#include "engine/CGroundNavigatorExternalInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct C2DVector {
     float x;
     float y;
@@ -10,18 +11,17 @@ struct Navigator {
     C2DVector pos;     // 0x0c
 };
 
-struct NavHolder {
+struct CThingCreatureBase {
     char pad0[0x60];   // 0x00
     Navigator* nav;    // 0x60
 };
 
-struct CGroundNavigatorExternalInterface {
-    char pad0[4];      // 0x00
-    NavHolder* holder; // 0x04
+struct CGroundNavigatorExternalInterface_Methods : CGroundNavigatorExternalInterface {
+    // 0x04
     C2DVector PeekNavigatorPosition2D();
 };
 
-C2DVector CGroundNavigatorExternalInterface::PeekNavigatorPosition2D()
+C2DVector CGroundNavigatorExternalInterface_Methods::PeekNavigatorPosition2D()
 {
-    return this->holder->nav->pos;
+    return this->Creature->nav->pos;
 }

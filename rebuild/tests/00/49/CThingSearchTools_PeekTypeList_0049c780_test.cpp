@@ -1,30 +1,27 @@
+#include "engine/CThingSearchTools.h"
 #include <cstdio>
 
 struct TypeList { char data[20]; }; // sizeof 20
 
-struct TypeArrays {
+struct CThingManager {
     TypeList* base;
     TypeList* lists;
 };
 
-struct CThingSearchTools {
-    char pad[8];
-    TypeArrays* arrays;
-};
 
 TypeList* __fastcall CThingSearchTools_PeekTypeList(CThingSearchTools* self, int /*edx*/, int type)
 {
-    return self->arrays->lists + (unsigned char)type;
+    return self->ThingManager->lists + (unsigned char)type;
 }
 
 int main()
 {
     TypeList lists[10];
-    TypeArrays arr;
+    CThingManager arr;
     arr.base = 0;
     arr.lists = lists;
     CThingSearchTools tools;
-    tools.arrays = &arr;
+    tools.ThingManager = &arr;
 
     for (int t = 0; t < 5; ++t) {
         TypeList* got = CThingSearchTools_PeekTypeList(&tools, 0, t);

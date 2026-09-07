@@ -1,5 +1,5 @@
-struct CDecal { int dummy; };
 
+#include "engine/CDecal.h"  // retyped onto the PDB layout; byte parity re-verified
 void __fastcall CDecal_Dtor(CDecal* self);
 void __fastcall CDecal_OpDelete(CDecal* self);
 

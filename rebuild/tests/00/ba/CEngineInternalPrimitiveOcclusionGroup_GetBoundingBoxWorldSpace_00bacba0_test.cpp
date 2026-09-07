@@ -1,17 +1,18 @@
+#include "engine/CEngineInternalPrimitiveOcclusionGroup.h"
 #include <stdio.h>
 
 struct C3DBoundingBox { float mn[3]; float mx[3]; };
 
-struct COcclusionInner {
+struct CEngineSceneGrid {
     int tag;
     bool occ(C3DBoundingBox& bbox, int f58, int f5c);
 };
 
-static COcclusionInner* g_self;
+static CEngineSceneGrid* g_self;
 static C3DBoundingBox* g_bbox;
 static int g_f58, g_f5c;
 
-bool COcclusionInner::occ(C3DBoundingBox& bbox, int f58, int f5c)
+bool CEngineSceneGrid::occ(C3DBoundingBox& bbox, int f58, int f5c)
 {
     g_self = this;
     g_bbox = &bbox;
@@ -20,12 +21,6 @@ bool COcclusionInner::occ(C3DBoundingBox& bbox, int f58, int f5c)
     return true;
 }
 
-struct CEngineInternalPrimitiveOcclusionGroup {
-    char pad[0x54];
-    COcclusionInner* f54;
-    int f58;
-    int f5c;
-};
 
 bool __fastcall CEngineInternalPrimitiveOcclusionGroup_GetBoundingBoxWorldSpace(
         CEngineInternalPrimitiveOcclusionGroup* self, int /*edx*/, C3DBoundingBox& bbox);
@@ -33,10 +28,10 @@ bool __fastcall CEngineInternalPrimitiveOcclusionGroup_GetBoundingBoxWorldSpace(
 int main()
 {
     CEngineInternalPrimitiveOcclusionGroup obj;
-    COcclusionInner inner; inner.tag = 0x1234;
-    obj.f54 = &inner;
-    obj.f58 = 0x58585858;
-    obj.f5c = 0x5c5c5c5c;
+    CEngineSceneGrid inner; inner.tag = 0x1234;
+    obj.Grid = &inner;
+    obj.GridX = 0x58585858;
+    obj.GridY = 0x5c5c5c5c;
     C3DBoundingBox bb;
 
     bool r = CEngineInternalPrimitiveOcclusionGroup_GetBoundingBoxWorldSpace(&obj, 0, bb);

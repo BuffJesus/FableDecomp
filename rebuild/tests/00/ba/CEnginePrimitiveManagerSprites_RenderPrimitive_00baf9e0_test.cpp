@@ -1,3 +1,4 @@
+#include "engine/CEnginePrimitiveManagerSprites.h"
 #include <cstdio>
 
 typedef int ERendered;
@@ -6,10 +7,6 @@ typedef int EEngineRenderLayer;
 struct CEngineInternalPrimitiveBase { int tag; };
 struct CEngineSubPrimitiveChain { int dummy; };
 
-struct CEnginePrimitiveManagerSprites {
-    char pad0[8];
-    char enabled;
-};
 
 static int g_helperCalls = 0;
 static int g_lastTag = -1;

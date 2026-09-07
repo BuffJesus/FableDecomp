@@ -1,3 +1,4 @@
+#include "engine/CMovableResourceMemoryPool.h"  // retyped onto the PDB layout; byte parity re-verified
 struct IValidatable
 {
     void* vtbl[4];
@@ -5,14 +6,11 @@ struct IValidatable
 
 typedef void (__fastcall *ValidateFn)(void* self);
 
-struct CMovableResourceMemoryPool
-{
-    void* vtbl0;
-
+struct CMovableResourceMemoryPool_Methods : CMovableResourceMemoryPool {
     void ValidateResource(void* p);
 };
 
-void CMovableResourceMemoryPool::ValidateResource(void* p)
+void CMovableResourceMemoryPool_Methods::ValidateResource(void* p)
 {
     ValidateFn fn = (ValidateFn)(*(void***)p)[3];
     fn(p);

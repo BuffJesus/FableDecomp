@@ -1,4 +1,7 @@
 #pragma optimize("s",on)
 // Constant-return member: returns 1. __fastcall this=ecx.
-struct T { int Get(); };
-int T::Get() { return 1; }
+#include "engine/CCombatAbilityBlockingData.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CCombatAbilityBlockingData_Methods : CCombatAbilityBlockingData {
+    int Get();
+};
+int CCombatAbilityBlockingData_Methods::Get() { return 1; }

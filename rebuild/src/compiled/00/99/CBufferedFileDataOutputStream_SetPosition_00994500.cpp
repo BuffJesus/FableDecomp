@@ -1,2 +1,5 @@
-struct C_00994500 { char pad[0x20]; unsigned long f; void M(unsigned long v); };
-void C_00994500::M(unsigned long v){ this->f = v; }
+#include "engine/CBufferedFileDataOutputStream.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CBufferedFileDataOutputStream_Methods : CBufferedFileDataOutputStream {
+    void M(unsigned long v);
+};
+void CBufferedFileDataOutputStream_Methods::M(unsigned long v){ this->FilePos = v; }

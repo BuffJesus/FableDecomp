@@ -1,7 +1,7 @@
-struct S;
-extern int __fastcall re_call(S*);
-struct S { char pad[0x24]; int result; };
-void __fastcall OnReplace(S* self)
+#include "engine/CAIStateGroup_MinionReactToNoise.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAIStateGroup_MinionReactToNoise;
+extern int __fastcall re_call(CAIStateGroup_MinionReactToNoise*);
+void __fastcall OnReplace(CAIStateGroup_MinionReactToNoise* self)
 {
-    self->result = re_call(self);
+    self->FrameOfLastInteraction = re_call(self);
 }

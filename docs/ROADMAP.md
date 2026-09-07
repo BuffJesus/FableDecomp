@@ -7,7 +7,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 
 ## Current focus (2026-09)
 
-- [ ] Typed shared headers: 2026-09-07 pilot applied 105 byte-exact retypes (92 CGameScriptInterface); `--all-trusted` generated 946 OK / 268 quarantined headers; next = `retype_landed.py --all --apply`, then vtable-typed `this` and CCountedPointer<T> members (top skip reasons in `rebuild/backlog/retype_log.tsv`) — `tools/decomp_pipeline/`
+- [ ] Typed shared headers: 2026-09-07 `--all-trusted` = 969 compiling headers (244 quarantined); `retype_landed.py --all --apply` retyped 427 landed TUs byte-exact. Next lever = the skip reasons in `rebuild/backlog/retype_log.tsv`: NO_EXACT_MAP 293 (opaque CCountedPointer<T>/composite members), PARITY_CHANGED 108, VIRTUAL_THIS 62 + VTABLE_TYPED 37 (vtable-modelled `this`), PARTIAL_SUB 34 — `tools/decomp_pipeline/`
 - [x] 2026-09-07 Aeon's 12 new Lua ports ingested (20 packages, 71 scripts; foundation audit 15/18) — `docs/scripts/AEON_LUA_PORTS.md`
 - [ ] Port the 12 FSE 6.9.26 bindings LUAGameflow needs into ForgeFSE-retail-shadow; add package→native-name aliases so the new seeds correlate (8/20 today) — `docs/scripts/AEON_LUA_PORTS.md`
 - [ ] Keep the parity crawl moving from `work/crawl_batch155` (ledger 5,693; catalog 18,631 landed) — `docs/pipeline/FULL_DECOMP.md`

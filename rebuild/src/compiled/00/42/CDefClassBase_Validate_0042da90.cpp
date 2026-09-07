@@ -1,3 +1,6 @@
 // Empty member hook. __fastcall this=ecx.
-struct T { void Hook(int a0, int a1); };
-void T::Hook(int a0, int a1) {}
+#include "engine/CDefClassBase.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CDefClassBase_Methods : CDefClassBase {
+    void Hook(int a0, int a1);
+};
+void CDefClassBase_Methods::Hook(int a0, int a1) {}

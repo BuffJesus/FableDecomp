@@ -1,2 +1,5 @@
-struct C005db310 { char pad[0x8]; unsigned long f; void M(); };
-void C005db310::M(){ this->f = 0xffffffffu; }
+#include "engine/CAnimComponentCombatRecoil.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAnimComponentCombatRecoil_Methods : CAnimComponentCombatRecoil {
+    void M();
+};
+void CAnimComponentCombatRecoil_Methods::M(){ this->RecoilAnimIndex = 0xffffffffu; }

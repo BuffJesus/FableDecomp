@@ -1,3 +1,4 @@
+#include "engine/CStreamingFontBankStateBlock.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CBankStateBlock {
     int f0;
     int f4;
@@ -6,11 +7,11 @@ struct CBankStateBlock {
     char f10;
 };
 
-struct CStreamingFontBankStateBlock {
+struct CStreamingFontBankStateBlock_Methods : CStreamingFontBankStateBlock {
     void GetDefault(CBankStateBlock &out);
 };
 
-void CStreamingFontBankStateBlock::GetDefault(CBankStateBlock &out)
+void CStreamingFontBankStateBlock_Methods::GetDefault(CBankStateBlock &out)
 {
     out.f4 = 0;
     out.f8 = 0x190;

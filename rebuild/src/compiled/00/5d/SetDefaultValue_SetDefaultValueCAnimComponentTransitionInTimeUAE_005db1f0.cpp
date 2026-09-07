@@ -1,2 +1,5 @@
-struct C005db1f0 { char pad[0x8]; unsigned long f; void M(); };
-void C005db1f0::M(){ this->f = 3u; }
+#include "engine/CAnimComponentTransitionInTime.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAnimComponentTransitionInTime_Methods : CAnimComponentTransitionInTime {
+    void M();
+};
+void CAnimComponentTransitionInTime_Methods::M(){ this->TransitionInTime = 3u; }

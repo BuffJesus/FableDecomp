@@ -1,3 +1,6 @@
-struct I009be210 { char pad[0x10]; unsigned long f; };
-struct C009be210 { char pad[0x4]; I009be210* p; unsigned long M(); };
-unsigned long C009be210::M(){ return this->p->f; }
+#include "engine/CVertexShader.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CVertexShaderData { char pad[0x10]; unsigned long f; };
+struct CVertexShader_Methods : CVertexShader {
+    unsigned long M();
+};
+unsigned long CVertexShader_Methods::M(){ return this->Data->f; }

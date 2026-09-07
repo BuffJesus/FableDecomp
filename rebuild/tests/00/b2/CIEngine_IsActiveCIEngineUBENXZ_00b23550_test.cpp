@@ -1,19 +1,16 @@
+#include "engine/CIEngine.h"
 #include <cstdio>
 
-struct CIEngine {
-  char pad[0x8];
-  bool active;
-};
 
 bool __fastcall CIEngine_IsActive(const CIEngine* self) {
-  return self->active;
+  return self->Active;
 }
 
 int main() {
   CIEngine e;
-  e.active = true;
+  e.Active = true;
   if (CIEngine_IsActive(&e) != true) { std::printf("FAIL true\n"); return 1; }
-  e.active = false;
+  e.Active = false;
   if (CIEngine_IsActive(&e) != false) { std::printf("FAIL false\n"); return 1; }
   std::printf("CIEngine_00b23550_TEST PASS\n");
   return 0;

@@ -1,2 +1,5 @@
-struct S { int f0; int f4; char M(); };
-char S::M(){ if(this->f4 >= 0) return 1; return this->f0 == -1; }
+#include "engine/CCombatAbility.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CCombatAbility_Methods : CCombatAbility {
+    char M();
+};
+char CCombatAbility_Methods::M(){ if(this->ActiveTimer >= 0) return 1; return this->RepeatTimer == -1; }

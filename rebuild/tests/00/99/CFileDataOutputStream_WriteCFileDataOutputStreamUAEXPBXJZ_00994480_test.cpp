@@ -1,26 +1,22 @@
+#include "engine/CFileDataOutputStream.h"
 #include <cstdio>
 
-struct ISink {
+struct CAFile {
     virtual void v0() = 0;
     virtual void v1() = 0;
     virtual void v2() = 0;
     virtual void v3() = 0;
     virtual void v4(const void* p, long n, int zero) = 0;
 };
-struct CFileDataOutputStream {
-    void* field0;
-    void* field4;
-    ISink* sink;
-};
 
 void __fastcall Write(CFileDataOutputStream* self, int, const void* p, long n);
 
-static ISink* g_self;
+static CAFile* g_self;
 static long   g_n;
 static const void* g_p;
 static int    g_zero = 99;
 
-struct Sink : ISink {
+struct Sink : CAFile {
     void v0() {}
     void v1() {}
     void v2() {}
@@ -34,7 +30,7 @@ int main()
 {
     Sink sink;
     CFileDataOutputStream s;
-    s.sink = &sink;
+    s.File = &sink;
 
     char buf[4];
     Write(&s, 0, &buf[0], 42);

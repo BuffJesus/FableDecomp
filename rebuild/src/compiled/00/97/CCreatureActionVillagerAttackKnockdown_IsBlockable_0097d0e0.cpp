@@ -1,2 +1,5 @@
-struct C_0097d0e0 { char pad[0x114]; unsigned char f; unsigned char M(); };
-unsigned char C_0097d0e0::M(){ return this->f; }
+#include "engine/CCreatureAction_VillagerAttackKnockdown.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CCreatureAction_VillagerAttackKnockdown_Methods : CCreatureAction_VillagerAttackKnockdown {
+    unsigned char M();
+};
+unsigned char CCreatureAction_VillagerAttackKnockdown_Methods::M(){ return this->f; }

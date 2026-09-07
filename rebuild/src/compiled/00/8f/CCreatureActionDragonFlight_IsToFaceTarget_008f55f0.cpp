@@ -1,2 +1,5 @@
-struct C_008f55f0 { char pad[0x114]; unsigned char f; unsigned char M(); };
-unsigned char C_008f55f0::M(){ return this->f; }
+#include "engine/CCreatureAction_DragonFlight.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CCreatureAction_DragonFlight_Methods : CCreatureAction_DragonFlight {
+    unsigned char M();
+};
+unsigned char CCreatureAction_DragonFlight_Methods::M(){ return this->f; }

@@ -1,2 +1,5 @@
-struct C_00915880 { char pad[0x14]; unsigned char f; void M(); };
-void C_00915880::M(){ this->f = 0; }
+#include "engine/CAIStateGroup_MoveGoodsBase.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAIStateGroup_MoveGoodsBase_Methods : CAIStateGroup_MoveGoodsBase {
+    void M();
+};
+void CAIStateGroup_MoveGoodsBase_Methods::M(){ this->DroppingGoods = 0; }

@@ -1,14 +1,8 @@
+#include "engine/CDiskFileWin32.h"
 #include <cstdio>
 
-struct CDiskFileWin32_0099abd0
-{
-    char pad0[8];
-    long position; // +0x08
-    char pad2[4];  // +0x0C
-    void* handle;  // +0x10
-};
 
-extern "C" long __fastcall GetPosition_0099abd0(CDiskFileWin32_0099abd0* self);
+extern "C" long __fastcall GetPosition_0099abd0(CDiskFileWin32* self);
 
 static int g_calls;
 static void* g_handle;
@@ -35,11 +29,11 @@ extern "C" unsigned long (__stdcall *CDiskFileWin32_SetFilePointerIAT_0099abd0)(
 
 int main()
 {
-    CDiskFileWin32_0099abd0 obj;
-    obj.position = 0x12345678;
-    obj.handle = (void*)0xABCD1234;
+    CDiskFileWin32 obj;
+    obj.Position = 0x12345678;
+    obj.WinFileHandle = (void*)0xABCD1234;
 
-    typedef long (__fastcall *GetPosFn)(CDiskFileWin32_0099abd0*);
+    typedef long (__fastcall *GetPosFn)(CDiskFileWin32*);
     GetPosFn volatile fn = &GetPosition_0099abd0;
 
     long r = fn(&obj);

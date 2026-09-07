@@ -1,3 +1,6 @@
 // Constant-true predicate: `mov al,1; ret`. __fastcall this=ecx, no args.
-struct T { bool OnPostDeviceReset(); };
-bool T::OnPostDeviceReset() { return true; }
+#include "engine/CParentDefClassBase.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CParentDefClassBase_Methods : CParentDefClassBase {
+    bool OnPostDeviceReset();
+};
+bool CParentDefClassBase_Methods::OnPostDeviceReset() { return true; }

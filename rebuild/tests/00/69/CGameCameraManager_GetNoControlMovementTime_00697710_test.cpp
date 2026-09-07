@@ -1,9 +1,6 @@
+#include "engine/CGameCameraManager.h"
 #include <stdio.h>
 
-struct CGameCameraManager {
-    char _pad[0xC0];
-    int  m_noControlStartTime; // +0xC0
-};
 
 extern int __cdecl GetEngineTimeMs(void);
 extern float g_defaultNoControlMovementTime;
@@ -23,11 +20,11 @@ int main(void)
     for (int i = 0; i < (int)sizeof(cm); ++i) ((char*)&cm)[i] = 0;
 
     // Case 1: start time == 0 -> returns the default global (fld path).
-    cm.m_noControlStartTime = 0;
+    cm.InsideHeroCount = 0;
     float r0 = CGameCameraManager_GetNoControlMovementTime(&cm);
 
     // Case 2: start time set -> (now - start)/divisor. now=5500 -> (5500-2500)/1000 = 3.0
-    cm.m_noControlStartTime = 2500;
+    cm.InsideHeroCount = 2500;
     float r1 = CGameCameraManager_GetNoControlMovementTime(&cm);
 
     int ok = (r0 == -1.0f) && (r1 == 3.0f);

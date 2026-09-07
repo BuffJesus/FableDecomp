@@ -1,5 +1,5 @@
+#include "engine/CCreatureStatsDef.h"
 #include <cstdio>
-struct CCreatureStatsDef {};
 unsigned long __fastcall CCreatureStatsDef_GetSizeofClass(CCreatureStatsDef* self)
 {
     (void)self;

@@ -1,3 +1,4 @@
+#include "engine/CGameEventPackageSet.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CGameEventPackageOverlay {
     unsigned long Unknown0x00;
     unsigned long EventCount;
@@ -11,13 +12,13 @@ struct CGameEventPackageSetOverlay {
 
 struct CGameEventPackage;
 
-struct CGameEventPackageSet {
+struct CGameEventPackageSet_Methods : CGameEventPackageSet {
     void AddPackage(CGameEventPackage const* package);
 };
 
 extern "C" void* memcpy(void*, const void*, unsigned int);
 
-void CGameEventPackageSet::AddPackage(CGameEventPackage const* package)
+void CGameEventPackageSet_Methods::AddPackage(CGameEventPackage const* package)
 {
     CGameEventPackageSetOverlay* const set = reinterpret_cast<CGameEventPackageSetOverlay*>(this);
     unsigned char* destination =

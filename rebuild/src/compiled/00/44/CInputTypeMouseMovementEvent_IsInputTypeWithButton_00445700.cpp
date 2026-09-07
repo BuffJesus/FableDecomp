@@ -1,3 +1,6 @@
 // Constant-return member: returns false. __fastcall this=ecx.
-struct T { bool Get(int a0); };
-bool T::Get(int a0) { return false; }
+#include "engine/CInputTypeMouseMovementEvent.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CInputTypeMouseMovementEvent_Methods : CInputTypeMouseMovementEvent {
+    bool Get(int a0);
+};
+bool CInputTypeMouseMovementEvent_Methods::Get(int a0) { return false; }

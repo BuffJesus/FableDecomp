@@ -1,2 +1,5 @@
-struct C_00405fa0 { char pad[0x4]; unsigned long f; unsigned long M(); };
-unsigned long C_00405fa0::M(){ return this->f; }
+#include "engine/CDataInputStream.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CDataInputStream_Methods : CDataInputStream {
+    unsigned long M();
+};
+unsigned long CDataInputStream_Methods::M(){ return this->StreamPos; }

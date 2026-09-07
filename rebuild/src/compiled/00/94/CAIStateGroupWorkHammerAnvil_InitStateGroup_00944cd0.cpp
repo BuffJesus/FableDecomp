@@ -1,3 +1,6 @@
+#include "engine/CAIStateGroup_WorkHammerAnvil.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CWorld; struct CThingAICreature;
-struct S { char pad[0x14]; unsigned char b14; char pad2[0x2f]; int f44; int f48; void Init(const CWorld&, CThingAICreature&); };
-void S::Init(const CWorld&, CThingAICreature&){ f44=0; b14=0; f48=0; }
+struct CAIStateGroup_WorkHammerAnvil_Methods : CAIStateGroup_WorkHammerAnvil {
+    void Init(const CWorld&, CThingAICreature&);
+};
+void CAIStateGroup_WorkHammerAnvil_Methods::Init(const CWorld&, CThingAICreature&){ ActionPointIndex=0; TookActionPoint=0; NextFrameHammer=0; }

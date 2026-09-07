@@ -4,11 +4,8 @@
 // object pointer arrives in ECX (byte-identical to __fastcall for a this-only
 // method). VC7.1 /O2 emits "xor eax,eax; ret" for "return 0;".
 
-struct CIEngine
-{
-    void *vftable;
-};
 
+#include "engine/CIEngine.h"  // retyped onto the PDB layout; byte parity re-verified
 long __fastcall CIEngine_GetStaticMapUpdatePassCount(CIEngine *thisptr)
 {
     (void)thisptr;

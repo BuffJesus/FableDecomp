@@ -1,17 +1,13 @@
 // Standalone behaviour test for CTCPerceiveThing::IsUpdatingThisFrame @ 0x007443f0
+#include "engine/CTCPerceiveThing.h"
 #include <stdio.h>
 
 extern int __cdecl GetFrameCount(void);
 
-struct CTCPerceiveThing
-{
-    char  _pad0[0x38];
-    int   m_updateFrame;   // +0x38
-};
 
 bool __fastcall CTCPerceiveThing_IsUpdatingThisFrame(CTCPerceiveThing *self)
 {
-    return (GetFrameCount() % 4) == self->m_updateFrame;
+    return (GetFrameCount() % 4) == self->UpdateOffset;
 }
 
 // Controllable stub for the extern frame counter.
@@ -21,7 +17,7 @@ int __cdecl GetFrameCount(void) { return g_frame; }
 int main(void)
 {
     CTCPerceiveThing obj;
-    obj.m_updateFrame = 2;
+    obj.UpdateOffset = 2;
 
     // frame 6 -> 6 % 4 == 2 -> should match field (2) -> true
     g_frame = 6;
@@ -36,7 +32,7 @@ int main(void)
     bool r3 = CTCPerceiveThing_IsUpdatingThisFrame(&obj);
 
     // negative frame -2 -> -2 % 4 == -2 (signed) -> field -2 matches
-    obj.m_updateFrame = -2;
+    obj.UpdateOffset = -2;
     g_frame = -2;
     bool r4 = CTCPerceiveThing_IsUpdatingThisFrame(&obj);
 

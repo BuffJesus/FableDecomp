@@ -1,6 +1,6 @@
+#include "engine/CSnowTrollDef.h"
 #include <cstdio>
 
-struct CSnowTrollDef { int dummy; };
 
 unsigned long __fastcall CSnowTrollDef_GetSizeofClass(const CSnowTrollDef* self)
 {

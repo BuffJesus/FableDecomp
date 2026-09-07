@@ -1,9 +1,6 @@
 // Byte-exact reconstruction of CCombatSequence_ScorpionLungeAttack::IsValid @ 0x00906fa0
-struct CCombatSequence_ScorpionLungeAttack {
-    char pad[0x28];
-    int field28; // +0x28
-};
 
+#include "engine/CCombatSequence_ScorpionLungeAttack.h"  // retyped onto the PDB layout; byte parity re-verified
 extern int g_globalMultiplier;                 // ds:0x1375550
 extern "C" int __cdecl GetCurrentValue();      // 0x49d870
 

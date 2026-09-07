@@ -1,2 +1,5 @@
-struct C_00b38cb0 { unsigned long M(); };
-unsigned long C_00b38cb0::M() { return 3; }
+#include "engine/CEnginePrimitiveRenderer.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CEnginePrimitiveRenderer_Methods : CEnginePrimitiveRenderer {
+    unsigned long M();
+};
+unsigned long CEnginePrimitiveRenderer_Methods::M() { return 3; }

@@ -1,11 +1,6 @@
-struct CMemoryFile {
-    int _pad0;
-    int _pad4;
-    int _pad8;
-    long m_length;
-};
 
+#include "engine/CMemoryFile.h"  // retyped onto the PDB layout; byte parity re-verified
 long __fastcall CMemoryFile_GetLength(const CMemoryFile* self)
 {
-    return self->m_length;
+    return self->Length;
 }

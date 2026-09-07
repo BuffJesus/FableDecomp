@@ -1,14 +1,11 @@
 // CEnginePrimitiveManagerSprites::RenderPrimitive @ 0x00baf9e0
+#include "engine/CEnginePrimitiveManagerSprites.h"  // retyped onto the PDB layout; byte parity re-verified
 typedef int ERendered;
 typedef int EEngineRenderLayer;
 
 struct CEngineInternalPrimitiveBase { int dummy; };
 struct CEngineSubPrimitiveChain { int dummy; };
 
-struct CEnginePrimitiveManagerSprites {
-    char pad0[8];
-    char enabled;   // +8
-};
 
 // callee at 0xbade40: takes the primitive ref (one stack arg), stdcall (self-cleans)
 extern "C" void __stdcall SpriteHelper(CEngineInternalPrimitiveBase &prim);

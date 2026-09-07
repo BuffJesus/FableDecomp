@@ -1,2 +1,5 @@
-struct C0095a3b0 { char pad[0x20]; unsigned long f; void M(); };
-void C0095a3b0::M(){ this->f = 0u; }
+#include "engine/CAIStateGroup_HoverHornetQueenTakeDamage.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAIStateGroup_HoverHornetQueenTakeDamage_Methods : CAIStateGroup_HoverHornetQueenTakeDamage {
+    void M();
+};
+void CAIStateGroup_HoverHornetQueenTakeDamage_Methods::M(){ this->RangeAttackCount = 0u; }

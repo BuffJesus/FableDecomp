@@ -2,6 +2,7 @@
 // ?PrepareDataForInclusion@CShaderDataBank@@MAEXKABV?$CArray@VCCharString@@@@KV?$CCountedPointer@VCBankStateBlock@@@@AAVCDataOutputStream@@2@Z
 // this-call member with a by-value CCountedPointer arg; body only touches that arg's control block.
 
+#include "engine/CShaderDataBank.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CWorldMap;
 struct CArrayCS;
 struct CDataOutputStream;
@@ -16,7 +17,6 @@ struct RefBlock {
 // cdecl deleter (operator delete style free)
 extern "C" void __cdecl free_block(void* p);
 
-struct CShaderDataBank { char pad[4]; };
 
 // The by-value CCountedPointer arg lands as a stack dword = pointer to RefBlock.
 // __fastcall: self->ecx, edxDummy->edx (consumed from stack model), rest on stack.

@@ -1,2 +1,5 @@
-struct C_008b8670 { char pad[0x115]; unsigned char f; unsigned char M(); };
-unsigned char C_008b8670::M(){ return this->f; }
+#include "engine/CCreatureAction_PlayCombatAnimation.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CCreatureAction_PlayCombatAnimation_Methods : CCreatureAction_PlayCombatAnimation {
+    unsigned char M();
+};
+unsigned char CCreatureAction_PlayCombatAnimation_Methods::M(){ return this->f_2; }

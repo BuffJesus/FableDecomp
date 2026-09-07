@@ -1,2 +1,5 @@
-struct C005db220 { char pad[0x8]; unsigned long f; void M(); };
-void C005db220::M(){ this->f = 2u; }
+#include "engine/CAnimComponentDelayTime.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAnimComponentDelayTime_Methods : CAnimComponentDelayTime {
+    void M();
+};
+void CAnimComponentDelayTime_Methods::M(){ this->Delay = 2u; }

@@ -1,2 +1,5 @@
-struct C_00b86970 { char pad[0x18]; unsigned long f; void M(); };
-void C_00b86970::M(){ this->f = 0xffffffff; }
+#include "engine/CEngineScreenEffectDisplacementRenderer.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CEngineScreenEffectDisplacementRenderer_Methods : CEngineScreenEffectDisplacementRenderer {
+    void M();
+};
+void CEngineScreenEffectDisplacementRenderer_Methods::M(){ this->DynamicTexturePageHandle = 0xffffffff; }

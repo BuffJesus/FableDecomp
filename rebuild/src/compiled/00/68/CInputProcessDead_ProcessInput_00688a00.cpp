@@ -8,9 +8,9 @@
 // that under __fastcall we give a dummy edx param, then the two refs land on
 // the stack -> callee cleans 8 bytes -> `ret 8`.
 
+#include "engine/CInputProcessDead.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CInputEvent { int _pad; };
 struct CProcessedInput { int _pad; };
-struct CInputProcessDead { int _pad; };
 
 void __fastcall ProcessInput(CInputProcessDead* self,
                              int edx_dummy,

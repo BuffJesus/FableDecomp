@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
-struct CCombatAbilityBlockCounterAttackDef { int dummy; };
 
+#include "engine/CCombatAbilityBlockCounterAttackDef.h"  // retyped onto the PDB layout; byte parity re-verified
 unsigned long __fastcall CCombatAbilityBlockCounterAttackDef_GetSizeofClass(const CCombatAbilityBlockCounterAttackDef* self)
 {
     (void)self;

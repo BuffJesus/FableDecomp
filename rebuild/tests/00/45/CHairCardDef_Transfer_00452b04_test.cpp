@@ -1,3 +1,4 @@
+#include "engine/CHairCardDef.h"
 #include <cstdio>
 
 void* g_last_field = 0;
@@ -9,21 +10,17 @@ struct CTransferObject {
     }
 };
 
-struct CHairCardDef {
-    char pad[0x28];
-    int field28;
-};
 
 void __fastcall CHairCardDef_Transfer(CHairCardDef* self, int /*edx*/, CTransferObject* other) {
-    other->Accept(&self->field28);
+    other->Accept(&self->HairObject);
 }
 
 int main() {
     CHairCardDef def;
-    def.field28 = 1234;
+    def.HairObject = 1234;
     CTransferObject other;
     CHairCardDef_Transfer(&def, 0, &other);
-    if (g_last_other == (void*)&other && g_last_field == (void*)&def.field28) {
+    if (g_last_other == (void*)&other && g_last_field == (void*)&def.HairObject) {
         std::printf("CHairCardDef_00452b04_TEST PASS\n");
         return 0;
     }

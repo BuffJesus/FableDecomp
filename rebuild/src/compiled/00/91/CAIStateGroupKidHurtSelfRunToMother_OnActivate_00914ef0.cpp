@@ -1,2 +1,5 @@
-struct C_00914ef0 { char pad[0x14]; unsigned char f; void M(); };
-void C_00914ef0::M(){ this->f = 0; }
+#include "engine/CAIStateGroup_KidHurtSelfRunToMother.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAIStateGroup_KidHurtSelfRunToMother_Methods : CAIStateGroup_KidHurtSelfRunToMother {
+    void M();
+};
+void CAIStateGroup_KidHurtSelfRunToMother_Methods::M(){ this->AddedSadMode = 0; }

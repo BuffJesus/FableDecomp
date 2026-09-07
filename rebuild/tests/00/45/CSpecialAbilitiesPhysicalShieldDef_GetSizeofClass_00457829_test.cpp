@@ -1,6 +1,6 @@
+#include "engine/CSpecialAbilitiesPhysicalShieldDef.h"
 #include <cstdio>
 
-struct CSpecialAbilitiesPhysicalShieldDef {};
 
 unsigned long __fastcall CSpecialAbilitiesPhysicalShieldDef_GetSizeofClass(const CSpecialAbilitiesPhysicalShieldDef* self)
 {

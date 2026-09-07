@@ -1,2 +1,5 @@
-struct C00ab6ae0 { char pad[0xd1c]; float f; float M(); };
-float C00ab6ae0::M(){ return this->f; }
+#include "engine/CJoystickDX.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CJoystickDX_Methods : CJoystickDX {
+    float M();
+};
+float CJoystickDX_Methods::M(){ return this->f_2; }

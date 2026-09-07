@@ -1,3 +1,4 @@
+#include "engine/CAIStateGroup_JackOfBladesStage2.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CObjB;
 
 // 0x6b3950 : thiscall member, two stack args, cleans own stack
@@ -10,9 +11,6 @@ struct CObjB {
     CObjC* field18; // +0x18
 };
 
-struct CAIStateGroup_JackOfBladesStage2 {
-    char pad[4];
-};
 
 // 0x972110 : member on self, result discarded
 extern void __fastcall Sub_972110(CAIStateGroup_JackOfBladesStage2* self);

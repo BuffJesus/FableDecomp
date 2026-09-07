@@ -1,22 +1,19 @@
+#include "engine/CDiskFileWin32.h"
 #include <cstdio>
 
-struct CDiskFileWin32 {
-    char pad[0xc];
-    long length;
-};
 
 long __fastcall CDiskFileWin32_GetLength(const CDiskFileWin32* self) {
-    return self->length;
+    return self->Length;
 }
 
 int main() {
     CDiskFileWin32 obj;
-    obj.length = 12345;
+    obj.Length = 12345;
     if (CDiskFileWin32_GetLength(&obj) != 12345) {
         std::printf("FAIL: wrong length\n");
         return 1;
     }
-    obj.length = -7;
+    obj.Length = -7;
     if (CDiskFileWin32_GetLength(&obj) != -7) {
         std::printf("FAIL: wrong length neg\n");
         return 1;

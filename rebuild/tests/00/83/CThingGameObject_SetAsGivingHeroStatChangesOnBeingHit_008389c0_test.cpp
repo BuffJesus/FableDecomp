@@ -1,9 +1,6 @@
+#include "engine/CThingGameObject.h"
 #include <stdio.h>
 
-struct CThingGameObject {
-    char pad[0xc8];
-    unsigned char flags;
-};
 
 void model(CThingGameObject *self, bool value)
 {

@@ -1,15 +1,13 @@
 #pragma optimize("s",on)
-struct CCategory {
-    char pad[0x20];
-    long field20;
-    long field24;
+#include "engine/CCategory.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CCategory_Methods : CCategory {
     void SetSelectedItemIndex(long index);
 };
 
-void CCategory::SetSelectedItemIndex(long index)
+void CCategory_Methods::SetSelectedItemIndex(long index)
 {
-    this->field20 = index;
-    this->field24 = index;
+    this->GlobalDefIndex = index;
+    this->SelectedItemIndex = index;
     if (index == -1)
-        this->field24 = 0;
+        this->SelectedItemIndex = 0;
 }

@@ -9,13 +9,11 @@
 // The body simply returns 0, which the compiler emits as `xor eax,eax; ret`.
 
 // Opaque forward declaration of the returned map type (never dereferenced here).
+#include "engine/CDefClassBase.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CVectorMap_ulong_CSubDefInfo;
 
 // The CDefClassBase object; layout is irrelevant to this null-returning accessor,
 // but we give it a vtable slot so the shape mirrors a real object.
-struct CDefClassBase {
-    void **vptr;
-};
 
 // __fastcall models __fastcall: `this` in ECX. No 2nd arg, so EDX is unused.
 CVectorMap_ulong_CSubDefInfo * __fastcall

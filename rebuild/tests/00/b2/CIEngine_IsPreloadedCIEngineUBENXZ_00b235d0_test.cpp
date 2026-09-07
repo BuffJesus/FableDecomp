@@ -1,6 +1,6 @@
+#include "engine/CIEngine.h"
 #include <cstdio>
 
-struct CIEngine { };
 
 bool __fastcall CIEngine_IsPreloaded(const CIEngine* self)
 {

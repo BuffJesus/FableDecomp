@@ -6,11 +6,8 @@
 // (byte-identical to __fastcall for a this-only accessor). VC7.1 emits the
 // bool-false return as 'xor al,al' rather than 'mov eax,0'.
 
-struct CDefClassBase
-{
-    void* vftable;
-};
 
+#include "engine/CDefClassBase.h"  // retyped onto the PDB layout; byte parity re-verified
 extern "C" bool __fastcall CDefClassBase_IsParentDef(CDefClassBase* self)
 {
     (void)self;      // 'this' arrives in ecx, unused by the accessor

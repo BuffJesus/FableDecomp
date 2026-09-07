@@ -1,2 +1,5 @@
-struct C005db1c0 { char pad[0x8]; unsigned long f; void M(); };
-void C005db1c0::M(){ this->f = 0u; }
+#include "engine/CAnimComponentFlags.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAnimComponentFlags_Methods : CAnimComponentFlags {
+    void M();
+};
+void CAnimComponentFlags_Methods::M(){ this->Flags = 0u; }

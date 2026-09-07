@@ -1,32 +1,28 @@
+#include "engine/CJoystickDX.h"
 #include <stdio.h>
 
 struct C2DVector { float x; float y; };
 
-struct CJoystickDX {
-    char pad[0xd18];
-    float fd18;
-    float fd1c;
-};
 
 void __fastcall CJoystickDX_SetAxes(CJoystickDX* self, int /*edx*/, const C2DVector& v)
 {
-    self->fd18 = v.x;
-    self->fd1c = v.y;
+    self->f = v.x;
+    self->f_2 = v.y;
 }
 
 int main()
 {
     CJoystickDX obj;
-    obj.fd18 = -1.0f;
-    obj.fd1c = -1.0f;
+    obj.f = -1.0f;
+    obj.f_2 = -1.0f;
     C2DVector v;
     v.x = 3.5f;
     v.y = 7.25f;
     CJoystickDX_SetAxes(&obj, 0, v);
-    if (obj.fd18 == 3.5f && obj.fd1c == 7.25f) {
+    if (obj.f == 3.5f && obj.f_2 == 7.25f) {
         printf("00ab78e0_TEST PASS\n");
     } else {
-        printf("FAIL %f %f\n", obj.fd18, obj.fd1c);
+        printf("FAIL %f %f\n", obj.f, obj.f_2);
     }
     return 0;
 }

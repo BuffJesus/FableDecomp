@@ -1,7 +1,7 @@
-struct S;
-extern int __fastcall re_call(S*);
-struct S { char pad[0x28]; int result; };
-void __fastcall OnStart(S* self)
+#include "engine/CCombatSequence_ScorpionLungeAttack.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CCombatSequence_ScorpionLungeAttack;
+extern int __fastcall re_call(CCombatSequence_ScorpionLungeAttack*);
+void __fastcall OnStart(CCombatSequence_ScorpionLungeAttack* self)
 {
-    self->result = re_call(self);
+    self->field28 = re_call(self);
 }

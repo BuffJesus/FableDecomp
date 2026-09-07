@@ -1,20 +1,20 @@
-struct PoolBlock {
+#include "engine/CSimpleMemoryPool.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CMemoryBlock {
     char pad0[0x10];
     unsigned long size;   // +0x10
-    PoolBlock* next;      // +0x14
+    CMemoryBlock* next;      // +0x14
 };
 
-struct CSimpleMemoryPool {
-    void* pad0;           // +0x00
-    PoolBlock* head;      // +0x04
+struct CSimpleMemoryPool_Methods : CSimpleMemoryPool {
+    // +0x04
 
     unsigned long CalculateMemoryAllocatedByPool();
 };
 
-unsigned long CSimpleMemoryPool::CalculateMemoryAllocatedByPool()
+unsigned long CSimpleMemoryPool_Methods::CalculateMemoryAllocatedByPool()
 {
     unsigned long total = 0;
-    PoolBlock* b = this->head;
+    CMemoryBlock* b = this->FirstMemoryBlock;
     while (b != 0) {
         total += b->size;
         b = b->next;

@@ -1,3 +1,6 @@
-struct Sub { int Method(int); };
-struct C { char pad[4]; Sub* f4; int f8; int GetLength(); };
-int C::GetLength(){ return this->f4->Method(this->f8); }
+#include "engine/CWADFile.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CBankFileAsync { int Method(int); };
+struct CWADFile_Methods : CWADFile {
+    int GetLength();
+};
+int CWADFile_Methods::GetLength(){ return this->Bank->Method(this->Index); }

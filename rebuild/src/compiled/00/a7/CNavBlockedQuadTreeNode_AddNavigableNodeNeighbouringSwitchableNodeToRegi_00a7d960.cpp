@@ -1,3 +1,6 @@
 // Constant-return member: returns false. __fastcall this=ecx.
-struct T { bool Get(int a0, int a1); };
-bool T::Get(int a0, int a1) { return false; }
+#include "engine/CNavBlockedQuadTreeNode.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CNavBlockedQuadTreeNode_Methods : CNavBlockedQuadTreeNode {
+    bool Get(int a0, int a1);
+};
+bool CNavBlockedQuadTreeNode_Methods::Get(int a0, int a1) { return false; }

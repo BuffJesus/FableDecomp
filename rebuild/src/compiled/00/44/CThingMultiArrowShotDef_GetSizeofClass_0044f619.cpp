@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
-struct CThingMultiArrowShotDef { int dummy; };
 
+#include "engine/CThingMultiArrowShotDef.h"  // retyped onto the PDB layout; byte parity re-verified
 unsigned long __fastcall CThingMultiArrowShotDef_GetSizeofClass(const CThingMultiArrowShotDef* self)
 {
     (void)self;

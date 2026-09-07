@@ -1,2 +1,5 @@
-struct C00b23540 { char pad[0x8]; unsigned char f; void M(); };
-void C00b23540::M(){ this->f = 0u; }
+#include "engine/CIEngine.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CIEngine_Methods : CIEngine {
+    void M();
+};
+void CIEngine_Methods::M(){ this->Active = 0u; }

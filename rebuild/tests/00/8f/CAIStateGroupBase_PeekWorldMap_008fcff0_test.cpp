@@ -1,3 +1,4 @@
+#include "engine/CAIStateGroupBase.h"
 #include <cstdio>
 
 struct CWorldMap { int tag; };
@@ -20,8 +21,7 @@ struct CInner {
 };
 
 struct CMid { char pad[0x24]; CInner* inner; };
-struct CHolder { char pad[0x1c]; CMid* mid; };
-struct CAIStateGroupBase { char pad[0x4]; CHolder* holder; };
+struct CAIBrain { char pad[0x1c]; CMid* mid; };
 
 static CWorldMap g_wm = { 0xABCD };
 
@@ -32,14 +32,14 @@ CWorldMap* CInner::PeekWorldMap() { return 0; }
 
 CWorldMap* __fastcall CAIStateGroupBase_PeekWorldMap(CAIStateGroupBase* self)
 {
-    return self->holder->mid->inner->PeekWorldMap();
+    return self->PBrain->mid->inner->PeekWorldMap();
 }
 
 int main() {
     CInnerImpl innerObj;
     CMid midObj; midObj.inner = &innerObj;
-    CHolder holderObj; holderObj.mid = &midObj;
-    CAIStateGroupBase baseObj; baseObj.holder = &holderObj;
+    CAIBrain holderObj; holderObj.mid = &midObj;
+    CAIStateGroupBase baseObj; baseObj.PBrain = &holderObj;
     CWorldMap* r = CAIStateGroupBase_PeekWorldMap(&baseObj);
     if (r == &g_wm && r->tag == 0xABCD) {
         std::printf("CAIStateGroupBase_008fcff0_TEST PASS\n");

@@ -1,9 +1,8 @@
-// `return this->ptr != 0;` (xor/test/setne). __fastcall this=ecx.
+// `return this->Index != 0;` (xor/test/setne). __fastcall this=ecx.
+#include "engine/CWADFile.h"  // retyped onto the PDB layout; byte parity re-verified
 #pragma pack(push,1)
-struct T {
-    char pad_0[0x8];
-    int ptr;
+struct CWADFile_Methods : CWADFile {
     bool IsSet();
 };
 #pragma pack(pop)
-bool T::IsSet() { return this->ptr != 0; }
+bool CWADFile_Methods::IsSet() { return this->Index != 0; }

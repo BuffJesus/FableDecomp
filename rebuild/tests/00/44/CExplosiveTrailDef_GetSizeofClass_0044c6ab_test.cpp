@@ -1,6 +1,6 @@
+#include "engine/CExplosiveTrailDef.h"
 #include <cstdio>
 
-struct CExplosiveTrailDef { int dummy; };
 
 unsigned long __fastcall CExplosiveTrailDef_GetSizeofClass(const CExplosiveTrailDef* self)
 {

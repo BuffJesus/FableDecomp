@@ -1,2 +1,5 @@
-struct C_00b5ec60 { char pad[0x30]; unsigned long f; void M(); };
-void C_00b5ec60::M(){ this->f = 0xffffffff; }
+#include "engine/CEngineScreenEffectGlowRenderer.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CEngineScreenEffectGlowRenderer_Methods : CEngineScreenEffectGlowRenderer {
+    void M();
+};
+void CEngineScreenEffectGlowRenderer_Methods::M(){ this->DynamicTexturePageHandle = 0xffffffff; }

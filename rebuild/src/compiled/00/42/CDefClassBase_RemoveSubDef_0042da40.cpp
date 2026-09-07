@@ -1,3 +1,6 @@
 // Empty one-argument member: `ret 4`. __fastcall this=ecx, one stack arg.
-struct T { void SetInstantiationName(const char* name); };
-void T::SetInstantiationName(const char* name) {}
+#include "engine/CDefClassBase.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CDefClassBase_Methods : CDefClassBase {
+    void SetInstantiationName(const char* name);
+};
+void CDefClassBase_Methods::SetInstantiationName(const char* name) {}

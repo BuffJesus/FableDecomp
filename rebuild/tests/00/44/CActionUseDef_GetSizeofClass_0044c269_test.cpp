@@ -1,8 +1,8 @@
+#include "engine/CActionUseDef.h"
 #include <cstdio>
 
 typedef unsigned long ulong;
 
-struct CActionUseDef {};
 
 ulong __fastcall CActionUseDef_GetSizeofClass(const CActionUseDef* self)
 {
