@@ -24,7 +24,8 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [x] 2026-09-07 `docs_reorg.py --check-links --check-root` clean; `update_readme_progress.py --check` clean; both run in CI (`.github/workflows/docs-consistency.yml`)
 - [x] 2026-09-07 `rebuild/COVERAGE.md` regenerated with genuine-C++ / asm-bake / readability rows; README rows generated from it
 - [ ] Re-home `docs/journal/FINDINGS_LOG.md` facts into the reference docs (`docs_reorg.py --check-findings` lists the orphans), then enable that check in CI
-- [ ] Merge doc families (BIG×7, SAVE×8, MESH×4, QUEST_CARD×6, NAV×2, …) into one doc each — mapping notes in `tools/docs_reorg_map.tsv`
+- [x] 2026-09-07 doc families merged: `formats/SAVE.md` (8→1), `formats/BIG.md` (3→1), `formats/MESH.md` (4→1), `engine/QUEST_CARDS.md` (5→1), `engine/NAVIGATION.md` (2→1); sources left as 3-line stubs
+- [ ] Remaining family merges: ANIM×2, TEXTURE×2, AUDIO×4 (LUG/LUT/DIALOGUE), TEXT×2, DEFS×6, HERO_APPEARANCE×4, INPUT×3, GAME_ENTRY_PATHS×3, QUEST_SCRIPTS×3 — mapping notes in `tools/docs_reorg_map.tsv`
 - [ ] Turn `rebuild/build_candidates.ps1` (130k lines of PowerShell objects) into a TSV + small driver
 - [ ] Prune superseded intake drafts (`lift/reports`, `rebuild/candidates/snapshots`) whose address is already landed
 - [ ] Archive FQT-era one-off scripts out of `tools/` (`*Fqt*`, `*_f2scene_*`) into FableForge or `tools/archive/`
@@ -37,8 +38,8 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [x] 100% mechanically named (49,568/49,568); 99.2% accepted naming quality; 40 names in review tail
 - [x] FSE manifest corrected to 933 functions and propagated to FableForge
 - [x] FSE address map (`refs/script_recovery/fse_address_name_map.json`, 80 addrs, 63 manifest clashes) wired into readiness analyzer
-- [ ] Typed shared headers `rebuild/include/engine/` — 5 generated (CGameScriptInterface, CPlayerGui, CWorldMap, CLandscapeBackgroundPatch, CCreatureActionBase), all compile; `--all-trusted` sweep pending
-- [ ] `retype_landed.py` rewriter fixes so the CGameScriptInterface batch passes >10/40 byte-exact; then `--apply`
+- [x] 2026-09-07 typed shared headers `rebuild/include/engine/`: 962 compiling headers from the PDB layouts, per-header compile check, quarantine on donor/retail conflict
+- [x] 2026-09-07 `retype_landed.py` applied to 485 landed TUs byte-exact (see Current focus for the skip-reason worklist)
 - [ ] Bulk `.gdt` import of donor struct layouts into the Ghidra DB (open)
 - [ ] Calling convention known 77.7% -> close the 11,031 unknown-CC functions
 - [ ] Complete prototypes 69.2% -> close the 15,280 incomplete ones

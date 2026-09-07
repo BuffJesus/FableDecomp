@@ -863,4 +863,4 @@ if __name__ == "__main__":
               f"nodes={hdr['totalNodeCount']}")
         print(f"  node kinds: {_histogram(nodes)}")
     print(f"\n=== ALL SECTIONS ROUND-TRIP BYTE-IDENTICAL: {all_ok} ===")
-    sys.exit
+    sys.exit(0 if all_ok else 1)

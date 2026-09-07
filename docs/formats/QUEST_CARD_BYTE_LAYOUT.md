@@ -40,7 +40,7 @@ exactly. To author from scratch, emit the 18 fields **in this order**, each as
 | 8 | RenownReward | `0x3894FDA8` | int32 | 200 | static; on-screen renown from `CTCQuestCard+0x30` via setter |
 | 9 | GoldReward | `0xFFBE5968` | int32 | 500 | static; on-screen gold from `CTCQuestCard+0x2c` via setter |
 | 10 | RewardObjects | `0x5A24DE1F` | Vector_J | count=1 | `[u32 count][u32 GameBINEntryID]*count`; opaque — leave empty (count=0) for from-scratch |
-| 11 | IsCoreQuest | `0x3995EBC1` | bool (1 B) | 1 | **also selects card art** (see QUEST_CARD_TEXTURE_BINDING.md) |
+| 11 | IsCoreQuest | `0x3995EBC1` | bool (1 B) | 1 | **also selects card art** (see ../engine/QUEST_CARDS.md orb art) |
 | 12 | IsVignette | `0x3C9E385B` | bool (1 B) | 0 | **also selects card art** |
 | 13 | IsExclusive | `0xD5A09700` | bool (1 B) | 0 | |
 | 14 | MakeVignetteRouteAppearOnMinimap | `0x0C32773A` | bool (1 B) | 0 | |
@@ -91,5 +91,5 @@ data — the skeleton carries no quest identity.
 - Byte-exact measurement: defdecode round-trip of `OBJECT_QUEST_CARD_WASP_MENACE` (OBJECT
   entry 3713 → CQuestCardDef entry 12298) from a real appended game.bin build; crc0 tag
   search located each field; tag order matches def schema field order.
-- `docs/engine/QUEST_CARD_SYSTEM.md`, `docs/engine/QUEST_CARD_EMPTY_FIX.md`, `docs/formats/DEF_LOAD_CONTRACT.md`.
+- [../engine/QUEST_CARDS.md](../engine/QUEST_CARDS.md) (script API, display map, empty-card fix), `docs/formats/DEF_LOAD_CONTRACT.md`.
 - FableForge `questcard.hpp:28-102`, `chocolatebox_def.xml` CQuestCardDef schema.

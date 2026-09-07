@@ -122,7 +122,7 @@ python tools/lev_rw.py edittest  work/level_samples/BarrowFields/BarrowFields.le
 - **Cell byte +20 is now classified** (2026-07-20, navmesh RE): it is the per-cell
   **preferred-path flag** — navmesh TopologyWeights = 0xFF if `+15`==0, else 0x00 if `+20`==1
   (preferred, A* cost 0), else 0x80 (normal). Corpus-validated with 0 exceptions over all 149
-  nav-bearing retail LEVs (201,951 cells). See `docs/engine/NAVMESH_RE.md`.
+  nav-bearing retail LEVs (201,951 cells). See `docs/engine/NAVIGATION.md`.
 - **Cell bytes +0..+4 and +16..+19 remain unclassified** (9 of 21 bytes). They are
   preserved verbatim and untouched by the edit API, so byte-exactness holds, but their
   meaning is not yet reversed. FableForge doesn't read them either. Classifying them is a
