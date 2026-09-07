@@ -305,6 +305,37 @@ checksums, tick/sequence diagnostics, mismatch reporting, and recovery in
 ordinary tested code. An in-place parity experiment can follow once the three
 field meanings are grounded.
 
+### UPDATE 2026-08-10 — tag-1 producer FOUND, field identities corrected
+
+The tag-1 sync-event **producer** is `CNetworkClient::GetLocalGameEventPackageSet`
+(`0x004AEAA0`). Once `CMainGameComponent::IsTimeForServerUpdate(LocalFrame)` is true it
+builds a single event with `Type = 1` whose payload is written by three
+`CMemoryBuffer::Copy(&buf, 4, &x)` calls, in this order:
+
+1. `Checksum1`  (client field, stored at `CNetworkClient+0x2670`)
+2. `Checksum2`  (client field, stored at `CNetworkClient+0x2674`)
+3. `LocalFrame` (u32)
+
+then `AddPackage`s it and `++LocalFrame`. So the three u32s `CheckSync` reads back
+(`r0,r1,r2`) are **`Checksum1`, `Checksum2`, `frame` — NOT the `seq`/`high-water` pair
+the §5 spec hypothesised.** That hypothesis (`l1=this+0x4C`, `l2=this+0x48`) is
+**refuted**; both companions are world-state checksums.
+
+Where the checksums come from: `CNetworkClient::Update(timeStamp, checksum1, checksum2)`
+(`0x004AE9D0`) stores its two checksum args into `+0x2670/+0x2674`; `Update` is poked from
+`UpdateFromEventPackageSet` (`0x0041726D`). The two are almost certainly two world
+checksums (two regions or two hash variants); the local comparison side is
+`PeekWorldChecksum → CWorld::GetChecksum` (`0x0049E200`). **Still to pin:** exactly what
+the caller passes as `checksum1` vs `checksum2` (confirm both are `CWorld::GetChecksum`
+outputs and what distinguishes them).
+
+**Corrected `CheckSync` rebuild spec:** for each tag==1 event, read `r0=Checksum1`,
+`r1=Checksum2`, `r2=frame`; compute the local world checksum(s) via
+`CWorld::GetChecksum(this+0x24)`; if `frame` matches the applied frame and a local
+checksum ≠ its remote counterpart, latch a desync flag (candidate sinks `+0x161E1`,
+`+0x1613C`). This is now grounded enough to author as an oracle `.cpp` — the last open
+item is the checksum1-vs-checksum2 distinction, not the field layout.
+
 ## Retail revival experiment (ordered) — with the verifier's crash caveats
 1. **Recover seating before enabling it** — identify exactly how a non-main
    `CPlayer*` enters the four-slot manager and how its creature is attached.
@@ -316,8 +347,10 @@ field meanings are grounded.
    NOP the unresolved base-init guard: recover its target and preconditions before testing this path in
    an isolated harness.
 3. **Confirm the pipeline moves** — watch `+0x4C`/`+0x48` advance as events apply.
-4. **Recover the tag-1 producer, then rebuild CheckSync** (§5) so the three
-   compared fields are known before any desync policy is invented.
+4. **Rebuild CheckSync** (§5) — the tag-1 producer is now found
+   (`GetLocalGameEventPackageSet 0x004AEAA0`) and the three fields are
+   `Checksum1/Checksum2/frame`; only the checksum1-vs-checksum2 distinction is
+   still open. Author the desync compare + latch as an oracle `.cpp`.
 5. Only then diff `InitialiseAsNetworkClient/Host` (near `0x4AE940`) to learn the host/client mode-byte
    pattern before wiring a transport (LSocket / Steamworks P2P / GameNetworkingSockets).
 
@@ -325,6 +358,86 @@ This experiment is not the critical path for the first modern ghost-player
 milestone. That milestone should use offline two-creature proof, loopback, and
 host-authoritative sidecar replication while the retail pipeline continues to
 be recovered independently.
+
+---
+
+## First offline two-player milestone — task breakdown (2026-08-10)
+
+The critical-path milestone for Route A (modern sidecar). Goal: **two hero creatures in
+one loaded region, in one process, each driven by a separate input device, with clean
+teardown — and NO networking.** Everything downstream (IDs, transport, authority,
+CoopSpirit presentation) depends on this working first. Do not start on transport or
+`CheckSync` until this passes.
+
+**Guiding rule:** keep the retail `CNetworkClient` gate (`+0x2662`) OFF for this entire
+milestone. We are exercising the *player/creature* seams, not the dormant network pipeline.
+Seating a second non-main player will flip `IsMultiplayerGameActive` (`0x00449D20`) to
+true — watch for residual paths waking up; if anything destabilises, neutralise the
+`CNetworkClient::Update` forwarder rather than the predicate.
+
+### Phase 0 — harness & instrumentation
+- [ ] Stand up an isolated test build/hook harness that can call into a live retail
+      process (x32dbg script or a DLL hook) — reuse the visual-checkpoint launch pattern.
+- [ ] Log `CPlayerManager` slot vector state (begin/current/end at `+0x0C..+0x10`) and
+      each seated `CPlayer*` + its `playerIndex (+0x28)`.
+- [ ] Confirm from a clean New Game that exactly one player (the main hero) is seated and
+      `IsMultiplayerGameActive` returns false. This is the baseline.
+
+### Phase 1 — seat a second player (no creature yet)
+- [ ] Call `CPlayerManager::AddPlayerOrAI` (`0x0044A1A0`) with `playerNumber = 1`. Verify
+      a new `CPlayer` lands in the slot vector and `PlayerInit` (`0x004473..`/via init
+      struct) runs without CTD.
+- [ ] Verify `GetPlayer(1)` (`0x004498C0`/`0x00449910`), `IsPlayer(1)` (`0x00449880`), and
+      `GetPlayerDefIndexFromNumber(1)` (`0x004497E0`) return sane values.
+- [ ] Note whether `IsMultiplayerGameActive` now returns true and whether anything
+      crashes on the next frame. Record the exact fault if so (WER offset + 0x400000).
+
+### Phase 2 — attach a controllable creature
+- [ ] Create a `CThingPlayerCreature` (EgoMP lead: `Create @ 0x006AC910`) in the current
+      region and attach it via `CPlayer::SetControlledCreature` (`0x00487CF0`).
+- [ ] Position it near the main hero with `SetPosition` (`0x006B0C10`).
+- [ ] Confirm it renders and physics-ticks (no fall-through-world, no null-anim).
+
+### Phase 3 — independent input
+- [ ] Map a second controller/keyboard device to player 1 via
+      `GetPlayerNumberFromJoystickDeviceNumber` (`0x00449990`) /
+      `IsPlayerAssociatedWithJoystickDeviceNumber` (`0x004499E0`).
+- [ ] Drive movement/facing through the recovered motion seams
+      (`ResolveMovementAcceleration 0x006AB770`, `ResolveFacingDirection 0x006AB820`).
+      Verify the two heroes move fully independently — no shared input bleed.
+- [ ] Decide camera policy for the test: simplest is shared follow-cam on the main hero
+      (player 1 off-screen is fine for the milestone). Split-screen is a later concern —
+      recall player 4 is the slot with no draw environment, players 0–3 each get one.
+
+### Phase 4 — teardown
+- [ ] Remove player 1 and its creature; confirm `DestroyPlayers` (`0x0044A070`) /
+      slot-vector shrink runs clean.
+- [ ] Return to the front-end / load a save with no leaked entity, no dangling controller
+      map, no CTD. `IsMultiplayerGameActive` back to false.
+
+### Acceptance test (all must hold)
+1. Two hero creatures visible and physics-active in one region, one process.
+2. Each is driven by a distinct input device, independently.
+3. Full session runs ≥5 min with no CTD and no desync-path involvement (net gate off).
+4. Clean teardown to a stable single-player state.
+
+### Known risks / open unknowns to resolve during the milestone
+- Does flipping `IsMultiplayerGameActive` true wake any residual native path even with
+  the net gate off? (Phase 1 answers this.)
+- Region-ready barrier: if the second creature is ever spawned across a region boundary,
+  it must wait for `UpdateRegionLoad` (`0x004A3740`) /
+  `CWorldMap::PostRegionLoad` (`0x005064C0`) to finish — but for a same-region spawn this
+  is a no-op. Keep both heroes in one already-loaded region for v1.
+- Save integration is explicitly OUT of scope here — no persistence of the second player.
+- Addresses tagged "EgoMP lead" (`0x006AC910`, `0x00487CF0`, `0x006AB770`, `0x006AB820`,
+  `0x006B0C10`) are prototype-sourced and must be independently verified against retail
+  bytes before relying on them.
+
+*Once this passes:* add stable entity IDs + a replication registry, then loopback
+transport, then host-authoritative snapshots — see `EGOMP_MULTIPLAYER_AUDIT.md`
+"Recommended adoption path" for the full sequence.
+
+---
 
 *Artifacts: `work/coop_re/` (bundles, `checksync_md.txt`, `summary.txt`). Full synthesis + verify in the
 task output journal. Supersedes/refines the co-op section of `FINDINGS.md`; the former `0x4EBA10`
