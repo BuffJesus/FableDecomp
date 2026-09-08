@@ -70,7 +70,7 @@
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Barrel.lua",
       "fixtures": [],
       "evidence": "native-decompile",
-      "status": "not-implemented"
+      "status": "not-applicable (retail body empty / data only)"
     },
     {
       "script": "NOVI_Barrel",
@@ -190,7 +190,7 @@
       "luaLocation": "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
       "fixtures": [],
       "evidence": "native-decompile",
-      "status": "not-implemented"
+      "status": "not-applicable (retail body empty / data only)"
     },
     {
       "script": "NOVI_CreatedBeetle",
@@ -273,6 +273,26 @@
       "status": "implemented-and-traced"
     },
     {
+      "script": "NOVI_Theresa",
+      "nativeFunction": "Init",
+      "address": "0x00DAC4F0",
+      "operations": 7,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_Theresa",
+      "nativeFunction": "Main",
+      "address": "0x00DB97A0",
+      "operations": 48,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
       "script": "NOVI_Victim",
       "nativeFunction": "Init",
       "address": "0x00DAEEB0",
@@ -330,7 +350,7 @@
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Villager.lua",
       "fixtures": [],
       "evidence": "native-decompile",
-      "status": "not-implemented"
+      "status": "not-applicable (retail body empty / data only)"
     },
     {
       "script": "OVI_DeadFather",
@@ -360,7 +380,7 @@
       "luaLocation": "NewOakValeIntro/Entities/OVI_DeadFather.lua",
       "fixtures": [],
       "evidence": "native-decompile",
-      "status": "not-implemented"
+      "status": "not-applicable (retail body empty / data only)"
     },
     {
       "script": "Q_NewOakValeIntro",
@@ -524,12 +544,12 @@
     }
   ],
   "summary": {
-    "functions": 50,
-    "implementedAndTraced": 28,
+    "functions": 52,
+    "implementedAndTraced": 30,
     "implementedUntraced": 0,
     "uncertain": 6,
     "apiBlocked": 10,
-    "notImplemented": 4,
-    "notApplicable": 2
+    "notImplemented": 0,
+    "notApplicable": 6
   }
 }

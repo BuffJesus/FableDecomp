@@ -39,7 +39,9 @@
       "initValue": "false",
       "survivesSaveLoad": true,
       "retailPersistence": "OnPersist Transfer<signed char>",
-      "writtenBy": [],
+      "writtenBy": [
+        "NOVI_Theresa"
+      ],
       "readBy": [],
       "phasesWhereItMatters": [
         "init",
@@ -131,7 +133,9 @@
       "writtenBy": [
         "NOVI_LiveFather"
       ],
-      "readBy": [],
+      "readBy": [
+        "NOVI_Theresa"
+      ],
       "phasesWhereItMatters": []
     },
     {
@@ -142,7 +146,9 @@
       "survivesSaveLoad": false,
       "retailPersistence": "reset by Init on load",
       "writtenBy": [],
-      "readBy": [],
+      "readBy": [
+        "NOVI_Theresa"
+      ],
       "phasesWhereItMatters": []
     },
     {
@@ -156,7 +162,8 @@
         "NOVI_Bully"
       ],
       "readBy": [
-        "NOVI_Bully"
+        "NOVI_Bully",
+        "NOVI_Theresa"
       ],
       "phasesWhereItMatters": []
     },
@@ -467,7 +474,9 @@
       "initValue": "false",
       "survivesSaveLoad": false,
       "retailPersistence": "reset by Init on load",
-      "writtenBy": [],
+      "writtenBy": [
+        "NOVI_Theresa"
+      ],
       "readBy": [],
       "phasesWhereItMatters": []
     },

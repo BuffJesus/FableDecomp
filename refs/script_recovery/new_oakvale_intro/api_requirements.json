@@ -593,6 +593,55 @@
           "evidence": "native-decompile"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Init",
+          "seq": 1,
+          "native": "this[0x1d] = 0 (DoneIntro); this[0x1c] = 0 (spoken_already)",
+          "evidence": "native-decompile + PDB-name"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 10,
+          "native": "[esp+0x17] = 0 (given_chocs stack local)",
+          "evidence": "native-disassembly 0x00DB982B"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 12,
+          "native": "if (this[0x1d] == 0) -> intro (DoneIntro)",
+          "evidence": "native-decompile + PDB-name"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 23,
+          "native": "if (answer == 1)",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 26,
+          "native": "*(PARENT+0x95) = 1 (GivenTheresaChocs)",
+          "evidence": "native-decompile + PDB-name"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 30,
+          "native": "[esp+0x17] = 1 (given_chocs)",
+          "evidence": "native-disassembly 0x00DB9E62"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 52,
+          "native": "*(PARENT+0x50) = 1 (AttackOver)",
+          "evidence": "native-decompile + PDB-name"
+        },
+        {
           "script": "NOVI_Victim",
           "function": "Init",
           "seq": 1,
@@ -651,6 +700,7 @@
         "NOVI_Bully#70: keys cycle _10, _20, _30, _40",
         "NOVI_TeddyGirl#36: -> PLEA_POST_BEATEN, DoneIntro=1",
         "NOVI_TeddyGirl#37: -> BAD_FEELING then ClearThingHasInformation(?)",
+        "NOVI_Theresa#10: decompiler rendered it as unaff_EDI / cVar28; disassembly proves a zero-initialised stack byte",
         "NOVI_Victim#28: GivenHeroTeddy is reused as 'brat-hit cutscene already played' (retail)"
       ],
       "fallbackStatus": "direct",
@@ -1244,6 +1294,55 @@
           "evidence": "native-decompile"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Init",
+          "seq": 1,
+          "native": "this[0x1d] = 0 (DoneIntro); this[0x1c] = 0 (spoken_already)",
+          "evidence": "native-decompile + PDB-name"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 10,
+          "native": "[esp+0x17] = 0 (given_chocs stack local)",
+          "evidence": "native-disassembly 0x00DB982B"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 12,
+          "native": "if (this[0x1d] == 0) -> intro (DoneIntro)",
+          "evidence": "native-decompile + PDB-name"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 23,
+          "native": "if (answer == 1)",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 26,
+          "native": "*(PARENT+0x95) = 1 (GivenTheresaChocs)",
+          "evidence": "native-decompile + PDB-name"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 30,
+          "native": "[esp+0x17] = 1 (given_chocs)",
+          "evidence": "native-disassembly 0x00DB9E62"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 52,
+          "native": "*(PARENT+0x50) = 1 (AttackOver)",
+          "evidence": "native-decompile + PDB-name"
+        },
+        {
           "script": "NOVI_Victim",
           "function": "Init",
           "seq": 1,
@@ -1302,6 +1401,7 @@
         "NOVI_Bully#70: keys cycle _10, _20, _30, _40",
         "NOVI_TeddyGirl#36: -> PLEA_POST_BEATEN, DoneIntro=1",
         "NOVI_TeddyGirl#37: -> BAD_FEELING then ClearThingHasInformation(?)",
+        "NOVI_Theresa#10: decompiler rendered it as unaff_EDI / cVar28; disassembly proves a zero-initialised stack byte",
         "NOVI_Victim#28: GivenHeroTeddy is reused as 'brat-hit cutscene already played' (retail)"
       ],
       "fallbackStatus": "direct",
@@ -1367,6 +1467,13 @@
           "function": "Init",
           "seq": 2,
           "native": "GSI->EntitySetAsDamageable(me,0)",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Init",
+          "seq": 2,
+          "native": "GSI->EntitySetAsDamageable(me, 0)",
           "evidence": "native-decompile"
         },
         {
@@ -1454,6 +1561,13 @@
           "evidence": "native-decompile"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Init",
+          "seq": 3,
+          "native": "GSI->EntitySetAsKillable(me, 0, 0)",
+          "evidence": "native-decompile"
+        },
+        {
           "script": "NOVI_Victim",
           "function": "Init",
           "seq": 3,
@@ -1492,6 +1606,7 @@
         "NOVI_Guard#2: stack slots uStack_14=0,uStack_18=0,pCStack_1c=me",
         "NOVI_LiveFather#3: retail 3rd arg false; ForgeFSE binding hardcodes true",
         "NOVI_TeddyGirl#3: third retail arg unbound",
+        "NOVI_Theresa#3: retail 3rd arg false; ForgeFSE hardcodes true",
         "NOVI_Victim#3: retail 3rd arg (0) has no ForgeFSE counterpart",
         "NOVI_Villager#3: retail passes a third arg (0) the FSE binding does not expose",
         "Q_NewOakValeIntro#21: ForgeFSE wrapper takes (thing, bool); retail third bool (0) is dropped by the wrapper"
@@ -1562,6 +1677,13 @@
           "evidence": "native-decompile"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Init",
+          "seq": 4,
+          "native": "GSI->EntitySetAsToAddToComboMultiplierWhenHit(me, 0)",
+          "evidence": "native-decompile"
+        },
+        {
           "script": "NOVI_Victim",
           "function": "Init",
           "seq": 4,
@@ -1625,6 +1747,13 @@
           "evidence": "native-decompile"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Init",
+          "seq": 6,
+          "native": "GSI->SetIsPushableByHero(ME_THING, 0)",
+          "evidence": "native-decompile"
+        },
+        {
           "script": "NOVI_Victim",
           "function": "Init",
           "seq": 6,
@@ -1676,6 +1805,13 @@
           "function": "Init",
           "seq": 5,
           "native": "GSI->EntitySetAsUseMovementInActions(me,0)",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Init",
+          "seq": 7,
+          "native": "GSI->EntitySetAsUseMovementInActions(me, 0)",
           "evidence": "native-decompile"
         },
         {
@@ -1742,6 +1878,13 @@
           "evidence": "native-decompile"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Init",
+          "seq": 5,
+          "native": "GSI->SetThingHasInformation(me, 0, 1, 0)",
+          "evidence": "native-disassembly 0x00DAC530"
+        },
+        {
           "script": "NOVI_Victim",
           "function": "Init",
           "seq": 5,
@@ -1757,6 +1900,7 @@
         "NOVI_Bully#5: retail has 4 args; ForgeFSE binding takes 2",
         "NOVI_LiveFather#5: retail trailing args (true, false); ForgeFSE hardcodes (false, false)",
         "NOVI_TeddyGirl#5: binding takes 2 args",
+        "NOVI_Theresa#5: retail trailing args (true, false); ForgeFSE hardcodes (false, false)",
         "NOVI_Victim#5: retail 4 args; ForgeFSE 2"
       ],
       "fallbackStatus": "direct",
@@ -1829,6 +1973,20 @@
           "function": "Main",
           "seq": 55,
           "native": "LAB_00db9720: NewScriptFrame; if IsTerminating -> ~res, return; goto LAB_00db8b00",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 8,
+          "native": "NewScriptFrame(); if (IsTerminating()) return;",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 54,
+          "native": "LAB_00dba40f: NewScriptFrame; if IsTerminating -> release marker + meRes, return; loop",
           "evidence": "native-decompile"
         },
         {
@@ -2306,6 +2464,34 @@
           "evidence": "native-decompile"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 11,
+          "native": "loop head: while (!StartScriptingEntity(me, res, 4)) { NewScriptFrame; if IsTerminating -> release marker+res, return }",
+          "evidence": "native-decompile + disassembly 0x00DB987D"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 16,
+          "native": "StartScriptingEntity(GetHero(), heroRes, 4) (single call, no wait)",
+          "evidence": "native-disassembly 0x00DB99F9-0x00DB9A0D"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 22,
+          "native": "while (MsgIsQuestionAnsweredYesOrNo() < 0) { NewScriptFrame; if IsTerminating -> PauseAll(0), ~movie, map dtor, ~heroRes }",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 55,
+          "native": "LAB_00dbb2e8: ~CScriptThing(marker); ~CScriptGameResourceObjectScriptedThingBase(meRes); return",
+          "evidence": "native-decompile"
+        },
+        {
           "script": "NOVI_Victim",
           "function": "Main",
           "seq": 9,
@@ -2475,6 +2661,8 @@
         "NOVI_LiveFather#31: second acquire inside the talk branch",
         "NOVI_LiveFather#56: reached from every exit path",
         "NOVI_TeddyGirl#9: priority dropped",
+        "NOVI_Theresa#11: re-acquired every loop iteration",
+        "NOVI_Theresa#55: reached from every exit path",
         "NOVI_Victim#18: priority 4 visible",
         "NOVI_Villager#7: moved from loop top to end of the hit phase; no-op when nothing is held",
         "NOVI_Villager#31: count = (vector.end - vector.begin) >> 2; the retry yields a frame between rolls; math.random replaces rand()% (inference)",
@@ -2580,6 +2768,13 @@
           "seq": 7,
           "native": "GSI->GetThingWithScriptName(\"NOVI_Bully\")",
           "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 9,
+          "native": "marker = GSI->GetThingWithScriptName(\"M_TriggerOutro\")",
+          "evidence": "native-decompile + disassembly 0x00DB9844 (slot 0x120)"
         },
         {
           "script": "NOVI_Victim",
@@ -2756,6 +2951,48 @@
           "evidence": "native-disassembly 0x00DB95E4-0x00DB95FC"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 18,
+          "native": "StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); FixMovieSequenceCamera(1)",
+          "evidence": "native-disassembly 0x00DB9AD1-0x00DB9AF9"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 33,
+          "native": "[talked_with_chocs] StartMovieSequence(\"\"); PauseAll(1); GiveHeroYesNoQuestion(q, yes, no, \"\", 1); wait MsgIsQuestionAnsweredYesOrNo >= 0",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 39,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); speak TEXT_QST_048_THERESA_BETTER_PRESENT (alive-guarded); PauseAll(0); ~movie",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 41,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); if (!given_chocs) { if (!this[0x1c]) { this[0x1c]=1; speak GET_PRESENT } else speak REALLY_GET_PRESENT } else speak HELLO; PauseAll(0); ~movie",
+          "evidence": "native-decompile + disassembly 0x00DBA93B ([esp+0x17] read)"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 43,
+          "native": "EntitySetThingAsAllyOfThing(me, GetHero()); EntitySetThingAsAllyOfThing(GetHero(), me); AddBadDeed(PARENT, 2); StartMovieSequence(\"\"); PauseAll(1); speak TEXT_QST_048_THERESA_DONT_HIT (alive-guarded); PauseAll(0); ~movie",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 47,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); StartScriptingEntity(GetHero(), heroRes, 4); map{HERO: hero, Theresa: me}",
+          "evidence": "native-disassembly 0x00DBB160-0x00DBB20A"
+        },
+        {
           "script": "Q_NewOakValeIntro",
           "function": "PostAttackStuff",
           "seq": 42,
@@ -2766,6 +3003,7 @@
       "signatureConfidence": "high",
       "semanticDifferences": [
         "NOVI_AffairMan#13: HIT branch",
+        "NOVI_Theresa#47: no FixMovieSequenceCamera in this block",
         "Q_NewOakValeIntro#42: RunCutsceneMacro_Func has no direct binding; PlayCutscene(name, actors) is the seed-corpus convention for it (cross-script-evidence). Whether PlayCutscene already brackets the movie sequence is unverified."
       ],
       "fallbackStatus": "host-managed",
@@ -2883,6 +3121,55 @@
           "evidence": "native-decompile"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 18,
+          "native": "StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); FixMovieSequenceCamera(1)",
+          "evidence": "native-disassembly 0x00DB9AD1-0x00DB9AF9"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 31,
+          "native": "LAB_00db9e86: FixMovieSequenceCamera(0); this[0x1d] = 1; PauseAllNonScriptedEntities(0); ~movie; map dtor; ~heroRes",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 33,
+          "native": "[talked_with_chocs] StartMovieSequence(\"\"); PauseAll(1); GiveHeroYesNoQuestion(q, yes, no, \"\", 1); wait MsgIsQuestionAnsweredYesOrNo >= 0",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 39,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); speak TEXT_QST_048_THERESA_BETTER_PRESENT (alive-guarded); PauseAll(0); ~movie",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 41,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); if (!given_chocs) { if (!this[0x1c]) { this[0x1c]=1; speak GET_PRESENT } else speak REALLY_GET_PRESENT } else speak HELLO; PauseAll(0); ~movie",
+          "evidence": "native-decompile + disassembly 0x00DBA93B ([esp+0x17] read)"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 43,
+          "native": "EntitySetThingAsAllyOfThing(me, GetHero()); EntitySetThingAsAllyOfThing(GetHero(), me); AddBadDeed(PARENT, 2); StartMovieSequence(\"\"); PauseAll(1); speak TEXT_QST_048_THERESA_DONT_HIT (alive-guarded); PauseAll(0); ~movie",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 47,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); StartScriptingEntity(GetHero(), heroRes, 4); map{HERO: hero, Theresa: me}",
+          "evidence": "native-disassembly 0x00DBB160-0x00DBB20A"
+        },
+        {
           "script": "Q_NewOakValeIntro",
           "function": "PostAttackStuff",
           "seq": 42,
@@ -2894,6 +3181,8 @@
       "semanticDifferences": [
         "NOVI_AffairMan#14: argument dropped; cleanup passes 0 so entry is inferred true",
         "NOVI_Guard#30: arg dropped; every exit path calls PauseAllNonScriptedEntities(0), so the entry value is true",
+        "NOVI_Theresa#31: reached with or without the chocolate hand-over",
+        "NOVI_Theresa#47: no FixMovieSequenceCamera in this block",
         "Q_NewOakValeIntro#42: RunCutsceneMacro_Func has no direct binding; PlayCutscene(name, actors) is the seed-corpus convention for it (cross-script-evidence). Whether PlayCutscene already brackets the movie sequence is unverified."
       ],
       "fallbackStatus": "host-managed",
@@ -3163,6 +3452,27 @@
           "evidence": "native-decompile"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 39,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); speak TEXT_QST_048_THERESA_BETTER_PRESENT (alive-guarded); PauseAll(0); ~movie",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 41,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); if (!given_chocs) { if (!this[0x1c]) { this[0x1c]=1; speak GET_PRESENT } else speak REALLY_GET_PRESENT } else speak HELLO; PauseAll(0); ~movie",
+          "evidence": "native-decompile + disassembly 0x00DBA93B ([esp+0x17] read)"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 43,
+          "native": "EntitySetThingAsAllyOfThing(me, GetHero()); EntitySetThingAsAllyOfThing(GetHero(), me); AddBadDeed(PARENT, 2); StartMovieSequence(\"\"); PauseAll(1); speak TEXT_QST_048_THERESA_DONT_HIT (alive-guarded); PauseAll(0); ~movie",
+          "evidence": "native-decompile"
+        },
+        {
           "script": "NOVI_Victim",
           "function": "Main",
           "seq": 19,
@@ -3346,6 +3656,20 @@
           "seq": 34,
           "native": "me->MsgIsTalkedToBy(\"SCRIPT_NAME_HERO\")",
           "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 32,
+          "native": "talked_with_chocs = me.MsgIsTalkedToBy(HERO) && IsObjectInThingsPossession(box, GetHero())",
+          "evidence": "CScriptThing vtable slot 0x6c = MsgIsTalkedToBy + disassembly 0x00DB9F0A-0x00DB9F53"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 40,
+          "native": "[else] if (me.MsgIsTalkedToBy(HERO))",
+          "evidence": "native-disassembly 0x00DBA8C4"
         },
         {
           "script": "NOVI_Victim",
@@ -3545,6 +3869,27 @@
           "evidence": "native-decompile"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 14,
+          "native": "while (!IsDistanceBetweenThingsUnder(me, GetHero(), 5.0f) && res.IsPerformingScriptTask()) { NewScriptFrame; IsTerminating }",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 15,
+          "native": "if (IsDistanceBetweenThingsUnder(me, GetHero(), 5.0f)) break; NewScriptFrame; (IsTerminating at loop head)",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 45,
+          "native": "LAB_00dba3d6/3e3: if (given_chocs && IsDistanceBetweenThingsUnder(GetHero(), marker, 2.0f))",
+          "evidence": "native-decompile + disassembly 0x00DBA3DB-0x00DBA3F9"
+        },
+        {
           "script": "NOVI_Villager",
           "function": "Main",
           "seq": 27,
@@ -3573,7 +3918,9 @@
         "NOVI_BarrelMan#36: CanThingBe_Seen arg order (me, hero) vs (hero, me) not recoverable from the decompile",
         "NOVI_BarrelMan#73: CRT rand() replaced by math.random",
         "NOVI_Guard#22: the first (pre-loop) check's distance register is polluted by the previous call's literal 1; the in-loop re-check uses DAT_013ac840 = 3.0, assumed for both",
-        "NOVI_TeddyGirl#27: the 'thing' at &uStack_14c is the NOVI_Bully lookup from seq 7 (inference from the object built at lines 16-22)"
+        "NOVI_TeddyGirl#27: the 'thing' at &uStack_14c is the NOVI_Bully lookup from seq 7 (inference from the object built at lines 16-22)",
+        "NOVI_Theresa#15: decompiler's CCreatureAction_TrollWhackGroundBase::Initialise is really the second IsTerminating() call (0x00DB99DB)",
+        "NOVI_Theresa#45: checked after every non-intro branch"
       ],
       "fallbackStatus": "direct",
       "blocked": false
@@ -3660,6 +4007,13 @@
           "seq": 50,
           "native": "GSI->ClearThingHasInformation(me)",
           "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 29,
+          "native": "GSI->ClearThingHasInformation(me)",
+          "evidence": "native-decompile (this + 8)"
         }
       ],
       "signatureConfidence": "low",
@@ -3815,6 +4169,20 @@
           "seq": 15,
           "native": "GSI->GiveHeroYesNoQuestion(TEXT_QST_048_GIVE_TEDDY_TO_GIRL, TEXT_OBJECT_HERO_ANSWER_YES, TEXT_OBJECT_HERO_ANSWER_NO, \"\")",
           "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 21,
+          "native": "GiveHeroYesNoQuestion(\"TEXT_QST_048_GIVE_CHOCOLATE_BOX\", \"TEXT_OBJECT_HERO_ANSWER_YES\", \"TEXT_OBJECT_HERO_ANSWER_NO\", \"\", 1)",
+          "evidence": "native-disassembly 0x00DB9BD9-0x00DB9BF5"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 33,
+          "native": "[talked_with_chocs] StartMovieSequence(\"\"); PauseAll(1); GiveHeroYesNoQuestion(q, yes, no, \"\", 1); wait MsgIsQuestionAnsweredYesOrNo >= 0",
+          "evidence": "native-decompile"
         }
       ],
       "signatureConfidence": "high",
@@ -3963,6 +4331,20 @@
           "seq": 31,
           "native": "walk loop to manStart.GetPos() within 2.0",
           "evidence": "native-decompile + asm (0xdb5915 reads [esp+0x28] = ManStart lookup at base+0x24; GuardPoint is at base+0x30)"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 14,
+          "native": "while (!IsDistanceBetweenThingsUnder(me, GetHero(), 5.0f) && res.IsPerformingScriptTask()) { NewScriptFrame; IsTerminating }",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 44,
+          "native": "[else] if (given_chocs) goto outro-check; else if (!res.IsPerformingScriptTask()) res.PlayCombatAnimation(\"SKIP\", true,false,false,true,false,false)",
+          "evidence": "native-decompile + disassembly 0x00DBADF2"
         }
       ],
       "signatureConfidence": "high",
@@ -4688,6 +5070,13 @@
           "evidence": "inference"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 43,
+          "native": "EntitySetThingAsAllyOfThing(me, GetHero()); EntitySetThingAsAllyOfThing(GetHero(), me); AddBadDeed(PARENT, 2); StartMovieSequence(\"\"); PauseAll(1); speak TEXT_QST_048_THERESA_DONT_HIT (alive-guarded); PauseAll(0); ~movie",
+          "evidence": "native-decompile"
+        },
+        {
           "script": "NOVI_Victim",
           "function": "Main",
           "seq": 26,
@@ -5390,6 +5779,13 @@
           "seq": 33,
           "native": "GSI->RemoveThing(?)",
           "evidence": "inference"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 24,
+          "native": "GetAllThingsWithScriptName(\"NOVI_Guard\", vec); KillAllThingsInVector(GSI, vec, false)",
+          "evidence": "native-decompile + helper decompile 0x00CBED82 (PDB name, bsim 1.0): for each thing: if IsAlive() RemoveThing(thing, false, true)"
         }
       ],
       "signatureConfidence": "low",
@@ -6019,10 +6415,40 @@
           "seq": 72,
           "native": "LAB_00db684c: PauseAllNonScriptedEntities(false); ~movie",
           "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 31,
+          "native": "LAB_00db9e86: FixMovieSequenceCamera(0); this[0x1d] = 1; PauseAllNonScriptedEntities(0); ~movie; map dtor; ~heroRes",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 39,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); speak TEXT_QST_048_THERESA_BETTER_PRESENT (alive-guarded); PauseAll(0); ~movie",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 41,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); if (!given_chocs) { if (!this[0x1c]) { this[0x1c]=1; speak GET_PRESENT } else speak REALLY_GET_PRESENT } else speak HELLO; PauseAll(0); ~movie",
+          "evidence": "native-decompile + disassembly 0x00DBA93B ([esp+0x17] read)"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 43,
+          "native": "EntitySetThingAsAllyOfThing(me, GetHero()); EntitySetThingAsAllyOfThing(GetHero(), me); AddBadDeed(PARENT, 2); StartMovieSequence(\"\"); PauseAll(1); speak TEXT_QST_048_THERESA_DONT_HIT (alive-guarded); PauseAll(0); ~movie",
+          "evidence": "native-decompile"
         }
       ],
       "signatureConfidence": "high",
-      "semanticDifferences": [],
+      "semanticDifferences": [
+        "NOVI_Theresa#31: reached with or without the chocolate hand-over"
+      ],
       "fallbackStatus": "direct",
       "blocked": false
     },
@@ -6081,6 +6507,13 @@
           "seq": 48,
           "native": "LAB_00db9499: hit = me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(0xE, HERO))",
           "evidence": "CScriptThing vtable slots 0x54/0xa8/0xa4 (retail exe dump) + disassembly 0x00DB94C1-0x00DB9527"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 42,
+          "native": "[else] hit = me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(0xE, HERO))",
+          "evidence": "CScriptThing vtable slots 0x54/0xa8/0xa4 + disassembly 0x00DBABD7-0x00DBAC3F"
         }
       ],
       "signatureConfidence": "high",
@@ -6109,6 +6542,13 @@
           "seq": 48,
           "native": "LAB_00db9499: hit = me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(0xE, HERO))",
           "evidence": "CScriptThing vtable slots 0x54/0xa8/0xa4 (retail exe dump) + disassembly 0x00DB94C1-0x00DB9527"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 42,
+          "native": "[else] hit = me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(0xE, HERO))",
+          "evidence": "CScriptThing vtable slots 0x54/0xa8/0xa4 + disassembly 0x00DBABD7-0x00DBAC3F"
         }
       ],
       "signatureConfidence": "high",
@@ -6137,6 +6577,13 @@
           "seq": 48,
           "native": "LAB_00db9499: hit = me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(0xE, HERO))",
           "evidence": "CScriptThing vtable slots 0x54/0xa8/0xa4 (retail exe dump) + disassembly 0x00DB94C1-0x00DB9527"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 42,
+          "native": "[else] hit = me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(0xE, HERO))",
+          "evidence": "CScriptThing vtable slots 0x54/0xa8/0xa4 + disassembly 0x00DBABD7-0x00DBAC3F"
         }
       ],
       "signatureConfidence": "high",
@@ -6203,6 +6650,13 @@
           "seq": 63,
           "native": "GSI->FadeScreenOut(1.0, 1.0, CRGBColour 0xff000000); GSI->Pause(2.0)",
           "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 50,
+          "native": "FadeScreenOut(0.5f, 0.0f, CRGBColour{0,0,0,255})",
+          "evidence": "native-disassembly 0x00DBB270-0x00DBB28D"
         }
       ],
       "signatureConfidence": "high",
@@ -6958,6 +7412,13 @@
           "evidence": "native-decompile"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 27,
+          "native": "GSI->TakeObjectFromHero(\"OBJECT_CHOCOLATE_BOX_UNGIVEABLE\")",
+          "evidence": "GSI vtable slot 0x1f4 = TakeObjectFromHero (retail exe dump)"
+        },
+        {
           "script": "Q_NewOakValeIntro",
           "function": "PostAttackStuff",
           "seq": 37,
@@ -7024,6 +7485,20 @@
           "seq": 25,
           "native": "MsgIsPresentedWithItem(&item) && CCharString::operator!=(item, ?) && !FoundTeddy",
           "evidence": "inference"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 36,
+          "native": "[else] if (me.MsgIsPresentedWithItem(item) && item == \"OBJECT_CHOCOLATE_BOX_UNGIVEABLE\")",
+          "evidence": "CScriptThing vtable slot 0x8c = MsgIsPresentedWithItem + disassembly 0x00DBA499-0x00DBA59A (Compare against 0x012D8F24)"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 38,
+          "native": "LAB_00dba4c8: if (me.MsgIsPresentedWithItem(item) && item != box)",
+          "evidence": "native-decompile (second query + CCharString NotEqual)"
         }
       ],
       "signatureConfidence": "low",
@@ -7031,7 +7506,8 @@
         "NOVI_Bully#22: an inline 29-byte strcmp against \"\" handles the null-name case (always false)",
         "NOVI_Bully#23: second half of the condition is lost in the decompile; inference: any non-teddy item",
         "NOVI_TeddyGirl#21: else branch of seq 8; slot 0x8c",
-        "NOVI_TeddyGirl#25: comparison operand dropped; read as 'item is not the teddy'"
+        "NOVI_TeddyGirl#25: comparison operand dropped; read as 'item is not the teddy'",
+        "NOVI_Theresa#38: retail re-queries the message"
       ],
       "fallbackStatus": "direct",
       "blocked": false
@@ -7153,6 +7629,13 @@
           "evidence": "native-decompile"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 35,
+          "native": "PauseAllNonScriptedEntities(0); ~movie",
+          "evidence": "native-decompile"
+        },
+        {
           "script": "NOVI_Victim",
           "function": "Main",
           "seq": 23,
@@ -7173,6 +7656,7 @@
         "NOVI_Guard#40: movie object destructor mapped to EndMovieSequence (inference)",
         "NOVI_LiveFather#28: hero resource release is host-managed",
         "NOVI_LiveFather#47: same pair on every terminate path inside the talk branch (LAB_00db8d23 / LAB_00db974b)",
+        "NOVI_Theresa#35: same pair on the terminate paths LAB_00dbaf2e / LAB_00dbaf53 / LAB_00dbaf84 / LAB_00dbafb6",
         "NOVI_Villager#16: movie destructor mapped to EndMovieSequence (inference)"
       ],
       "fallbackStatus": "direct",
@@ -7278,6 +7762,13 @@
           "seq": 56,
           "native": "PARENT+0x6c BullySubdued = 1; GSI->RemoveQuestInfoElement(<PARENT+0x64>)",
           "evidence": "native-decompile + PDB-name"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 46,
+          "native": "DisplayQuestInfo(0); RemoveQuestInfoElement(*(PARENT+0x64)); RemoveQuestInfoElement(*(PARENT+0x5c)); RemoveQuestInfoElement(*(PARENT+0x60))",
+          "evidence": "native-disassembly 0x00DBB0F4-0x00DBB12C + PDB-name offsets"
         },
         {
           "script": "Q_NewOakValeIntro",
@@ -7744,6 +8235,13 @@
           "seq": 12,
           "native": "map[\"Hero\"] = heroRes; map[\"Father\"] = meRes",
           "evidence": "native-decompile + string refs 0x012C4570/0x012D9794"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 17,
+          "native": "map[\"HERO\"] = heroRes; map[\"THER\"] = meRes",
+          "evidence": "native-decompile + string refs 0x01255174/0x012D9920"
         }
       ],
       "signatureConfidence": "high",
@@ -7772,6 +8270,20 @@
           "evidence": "native-decompile"
         },
         {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 18,
+          "native": "StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); FixMovieSequenceCamera(1)",
+          "evidence": "native-disassembly 0x00DB9AD1-0x00DB9AF9"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 31,
+          "native": "LAB_00db9e86: FixMovieSequenceCamera(0); this[0x1d] = 1; PauseAllNonScriptedEntities(0); ~movie; map dtor; ~heroRes",
+          "evidence": "native-decompile"
+        },
+        {
           "script": "Q_NewOakValeIntro",
           "function": "PostAttackStuff",
           "seq": 42,
@@ -7781,6 +8293,7 @@
       ],
       "signatureConfidence": "high",
       "semanticDifferences": [
+        "NOVI_Theresa#31: reached with or without the chocolate hand-over",
         "Q_NewOakValeIntro#42: RunCutsceneMacro_Func has no direct binding; PlayCutscene(name, actors) is the seed-corpus convention for it (cross-script-evidence). Whether PlayCutscene already brackets the movie sequence is unverified."
       ],
       "fallbackStatus": "host-managed",
@@ -7798,11 +8311,34 @@
           "seq": 16,
           "native": "RunCutsceneMacro_Func(\"CS_OAKVALE_INTRO_FATHER\", map, 0, 0, 0, 1)",
           "evidence": "native-disassembly 0x00DB88EB-0x00DB88F8 + ForgeFSE LuaQuestState::RunCutsceneWithSetup"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 19,
+          "native": "RunCutsceneMacro_Func(\"CS_OAKVALE_INTRO_THERESA_MEET\", map, 0, 0, 0, 1)",
+          "evidence": "native-disassembly 0x00DB9B12-0x00DB9B28"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 25,
+          "native": "RunCutsceneMacro_Func(\"CS_OAKVALE_INTRO_THERESA_MEET_YES\", map{HERO,THER}, 0, 0, 0, 1)",
+          "evidence": "native-disassembly 0x00DB9D6B-0x00DB9D7A"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 48,
+          "native": "RunCutsceneMacro_Func(\"CS_OAKVALE_INTRO_THERESA\", map, 0, 0, 0, 1)",
+          "evidence": "native-disassembly 0x00DBB228-0x00DBB238"
         }
       ],
       "signatureConfidence": "high",
       "semanticDifferences": [
-        "NOVI_LiveFather#16: ForgeFSE wrapper re-issues StartMovieSequence/PauseAll(true) before and PauseAll(false)+movie dtor after the macro"
+        "NOVI_LiveFather#16: ForgeFSE wrapper re-issues StartMovieSequence/PauseAll(true) before and PauseAll(false)+movie dtor after the macro",
+        "NOVI_Theresa#19: ForgeFSE wrapper re-issues StartMovieSequence/PauseAll and tears them down after the macro",
+        "NOVI_Theresa#25: no StartMovieSequence/FixCamera of its own (still inside the MEET movie block)"
       ],
       "fallbackStatus": "direct",
       "blocked": false
@@ -7909,6 +8445,13 @@
           "seq": 27,
           "native": "GSI->DisplayQuestInfo(1)",
           "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 46,
+          "native": "DisplayQuestInfo(0); RemoveQuestInfoElement(*(PARENT+0x64)); RemoveQuestInfoElement(*(PARENT+0x5c)); RemoveQuestInfoElement(*(PARENT+0x60))",
+          "evidence": "native-disassembly 0x00DBB0F4-0x00DBB12C + PDB-name offsets"
         }
       ],
       "signatureConfidence": "high",
@@ -7935,6 +8478,20 @@
           "seq": 44,
           "native": "LAB_00db8eea: if (IsObjectInThingsPossession(chocs, hero)) { speak GIVE_PRESENT; ClearThingHasInformation(me) }",
           "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 20,
+          "native": "if (IsObjectInThingsPossession(\"OBJECT_CHOCOLATE_BOX_UNGIVEABLE\", GetHero()))",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 32,
+          "native": "talked_with_chocs = me.MsgIsTalkedToBy(HERO) && IsObjectInThingsPossession(box, GetHero())",
+          "evidence": "CScriptThing vtable slot 0x6c = MsgIsTalkedToBy + disassembly 0x00DB9F0A-0x00DB9F53"
         }
       ],
       "signatureConfidence": "high",
@@ -7954,6 +8511,13 @@
           "seq": 46,
           "native": "else { speak IS_ENOUGH; SetQuestCardObjective(GetActiveQuestName(), \"TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_01\", \"\", \"\") }",
           "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 28,
+          "native": "SetQuestCardObjective(GetActiveQuestName(), \"TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_05\", \"\", \"\")",
+          "evidence": "native-decompile"
         }
       ],
       "signatureConfidence": "high",
@@ -7972,6 +8536,13 @@
           "function": "Main",
           "seq": 46,
           "native": "else { speak IS_ENOUGH; SetQuestCardObjective(GetActiveQuestName(), \"TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_01\", \"\", \"\") }",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 28,
+          "native": "SetQuestCardObjective(GetActiveQuestName(), \"TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_05\", \"\", \"\")",
           "evidence": "native-decompile"
         },
         {
@@ -8035,6 +8606,11 @@
           "script": "NOVI_LiveFather",
           "reason": "ForgeFSE binding takes 2 args and hardcodes the 3rd as true",
           "luaLocation": "Init"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "reason": "ForgeFSE binding takes 2 args and hardcodes the 3rd as true",
+          "luaLocation": "Init"
         }
       ],
       "signatureConfidence": "n/a",
@@ -8050,6 +8626,11 @@
       "nativeEvidence": [
         {
           "script": "NOVI_LiveFather",
+          "reason": "ForgeFSE binding takes 2 args and hardcodes the trailing pair as (false, false)",
+          "luaLocation": "Init"
+        },
+        {
+          "script": "NOVI_Theresa",
           "reason": "ForgeFSE binding takes 2 args and hardcodes the trailing pair as (false, false)",
           "luaLocation": "Init"
         }
@@ -8068,6 +8649,11 @@
         {
           "script": "NOVI_LiveFather",
           "reason": "ForgeFSE me:Speak is blocking; the per-frame terminate check inside the wait is host-managed and not observable from Lua",
+          "luaLocation": "speak_if_alive"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "reason": "ForgeFSE me:Speak is blocking; per-frame terminate check inside the wait is host-managed",
           "luaLocation": "speak_if_alive"
         }
       ],
@@ -8274,6 +8860,400 @@
           "script": "NOVI_TeddyGirl",
           "reason": "priority argument dropped by decompiler",
           "luaLocation": "NOVI.acquire(..., DEFAULT_PRIORITY)"
+        }
+      ],
+      "signatureConfidence": "n/a",
+      "semanticDifferences": [],
+      "fallbackStatus": "explicit-gap",
+      "blocked": true
+    },
+    {
+      "operation": "PlayCombatAnimation",
+      "proposedForgeCall": "PlayCombatAnimation",
+      "bindingExists": true,
+      "bindingScope": "Entity",
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 13,
+          "native": "res.PlayCombatAnimation(\"SKIP\", true, false, false, true, false, false)",
+          "evidence": "native-disassembly 0x00DB9906-0x00DB991E"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 44,
+          "native": "[else] if (given_chocs) goto outro-check; else if (!res.IsPerformingScriptTask()) res.PlayCombatAnimation(\"SKIP\", true,false,false,true,false,false)",
+          "evidence": "native-decompile + disassembly 0x00DBADF2"
+        }
+      ],
+      "signatureConfidence": "high",
+      "semanticDifferences": [
+        "NOVI_Theresa#13: six retail bools not representable"
+      ],
+      "fallbackStatus": "direct",
+      "blocked": false
+    },
+    {
+      "operation": "passes true)",
+      "proposedForgeCall": "passes true)",
+      "bindingExists": false,
+      "bindingScope": null,
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 21,
+          "native": "GiveHeroYesNoQuestion(\"TEXT_QST_048_GIVE_CHOCOLATE_BOX\", \"TEXT_OBJECT_HERO_ANSWER_YES\", \"TEXT_OBJECT_HERO_ANSWER_NO\", \"\", 1)",
+          "evidence": "native-disassembly 0x00DB9BD9-0x00DB9BF5"
+        }
+      ],
+      "signatureConfidence": "high",
+      "semanticDifferences": [],
+      "fallbackStatus": "direct",
+      "blocked": true
+    },
+    {
+      "operation": "GetAllThingsWithScriptName",
+      "proposedForgeCall": "GetAllThingsWithScriptName",
+      "bindingExists": true,
+      "bindingScope": "Quest",
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 24,
+          "native": "GetAllThingsWithScriptName(\"NOVI_Guard\", vec); KillAllThingsInVector(GSI, vec, false)",
+          "evidence": "native-decompile + helper decompile 0x00CBED82 (PDB name, bsim 1.0): for each thing: if IsAlive() RemoveThing(thing, false, true)"
+        },
+        {
+          "script": "Q_NewOakValeIntro",
+          "function": "PostAttackStuff",
+          "seq": 36,
+          "native": "loop: GetThingWithScriptName(\"M_PostAttackStart\"); until GetAllThingsWithScriptName(\"M_PostAttackStart\") count != 0",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "Q_NewOakValeIntro",
+          "function": "WatchBarrels",
+          "seq": 48,
+          "native": "until GetAllThingsWithScriptName(\"NOVI_Barrel\", vec) >= 1",
+          "evidence": "native-decompile"
+        }
+      ],
+      "signatureConfidence": "high",
+      "semanticDifferences": [],
+      "fallbackStatus": "direct",
+      "blocked": false
+    },
+    {
+      "operation": "IsAlive",
+      "proposedForgeCall": "IsAlive",
+      "bindingExists": true,
+      "bindingScope": "Entity",
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 24,
+          "native": "GetAllThingsWithScriptName(\"NOVI_Guard\", vec); KillAllThingsInVector(GSI, vec, false)",
+          "evidence": "native-decompile + helper decompile 0x00CBED82 (PDB name, bsim 1.0): for each thing: if IsAlive() RemoveThing(thing, false, true)"
+        }
+      ],
+      "signatureConfidence": "high",
+      "semanticDifferences": [],
+      "fallbackStatus": "direct",
+      "blocked": false
+    },
+    {
+      "operation": "see seq 24",
+      "proposedForgeCall": "see seq 24",
+      "bindingExists": false,
+      "bindingScope": null,
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 34,
+          "native": "if (answer == 1) { kill guards; speak HELLO (alive-guarded); GivenTheresaChocs=1; TakeObjectFromHero(box); SetQuestCardObjective(..05..); ClearThingHasInformation(me); given_chocs=1 } else { speak REALLY_GET_PRESENT }",
+          "evidence": "native-decompile + disassembly 0x00DBA2F6"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 37,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); GetAllThingsWithScriptName(\"NOVI_Guard\") + KillAllThingsInVector(false); speak HELLO (alive-guarded); GivenTheresaChocs=1; TakeObjectFromHero(box); SetQuestCardObjective(..05..); ClearThingHasInformation(me); PauseAll(0); ~movie; given_chocs=1",
+          "evidence": "native-decompile + disassembly 0x00DBA7E5"
+        }
+      ],
+      "signatureConfidence": "high",
+      "semanticDifferences": [],
+      "fallbackStatus": "direct",
+      "blocked": true
+    },
+    {
+      "operation": "27",
+      "proposedForgeCall": "27",
+      "bindingExists": false,
+      "bindingScope": null,
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 34,
+          "native": "if (answer == 1) { kill guards; speak HELLO (alive-guarded); GivenTheresaChocs=1; TakeObjectFromHero(box); SetQuestCardObjective(..05..); ClearThingHasInformation(me); given_chocs=1 } else { speak REALLY_GET_PRESENT }",
+          "evidence": "native-decompile + disassembly 0x00DBA2F6"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 37,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); GetAllThingsWithScriptName(\"NOVI_Guard\") + KillAllThingsInVector(false); speak HELLO (alive-guarded); GivenTheresaChocs=1; TakeObjectFromHero(box); SetQuestCardObjective(..05..); ClearThingHasInformation(me); PauseAll(0); ~movie; given_chocs=1",
+          "evidence": "native-decompile + disassembly 0x00DBA7E5"
+        }
+      ],
+      "signatureConfidence": "high",
+      "semanticDifferences": [],
+      "fallbackStatus": "direct",
+      "blocked": true
+    },
+    {
+      "operation": "28",
+      "proposedForgeCall": "28",
+      "bindingExists": false,
+      "bindingScope": null,
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 34,
+          "native": "if (answer == 1) { kill guards; speak HELLO (alive-guarded); GivenTheresaChocs=1; TakeObjectFromHero(box); SetQuestCardObjective(..05..); ClearThingHasInformation(me); given_chocs=1 } else { speak REALLY_GET_PRESENT }",
+          "evidence": "native-decompile + disassembly 0x00DBA2F6"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 37,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); GetAllThingsWithScriptName(\"NOVI_Guard\") + KillAllThingsInVector(false); speak HELLO (alive-guarded); GivenTheresaChocs=1; TakeObjectFromHero(box); SetQuestCardObjective(..05..); ClearThingHasInformation(me); PauseAll(0); ~movie; given_chocs=1",
+          "evidence": "native-decompile + disassembly 0x00DBA7E5"
+        }
+      ],
+      "signatureConfidence": "high",
+      "semanticDifferences": [],
+      "fallbackStatus": "direct",
+      "blocked": true
+    },
+    {
+      "operation": "29 + Speak",
+      "proposedForgeCall": "29 + Speak",
+      "bindingExists": false,
+      "bindingScope": null,
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 34,
+          "native": "if (answer == 1) { kill guards; speak HELLO (alive-guarded); GivenTheresaChocs=1; TakeObjectFromHero(box); SetQuestCardObjective(..05..); ClearThingHasInformation(me); given_chocs=1 } else { speak REALLY_GET_PRESENT }",
+          "evidence": "native-decompile + disassembly 0x00DBA2F6"
+        },
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 37,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); GetAllThingsWithScriptName(\"NOVI_Guard\") + KillAllThingsInVector(false); speak HELLO (alive-guarded); GivenTheresaChocs=1; TakeObjectFromHero(box); SetQuestCardObjective(..05..); ClearThingHasInformation(me); PauseAll(0); ~movie; given_chocs=1",
+          "evidence": "native-decompile + disassembly 0x00DBA7E5"
+        }
+      ],
+      "signatureConfidence": "high",
+      "semanticDifferences": [],
+      "fallbackStatus": "direct",
+      "blocked": true
+    },
+    {
+      "operation": "quest helper AddBadDeed",
+      "proposedForgeCall": "quest helper AddBadDeed",
+      "bindingExists": false,
+      "bindingScope": null,
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 43,
+          "native": "EntitySetThingAsAllyOfThing(me, GetHero()); EntitySetThingAsAllyOfThing(GetHero(), me); AddBadDeed(PARENT, 2); StartMovieSequence(\"\"); PauseAll(1); speak TEXT_QST_048_THERESA_DONT_HIT (alive-guarded); PauseAll(0); ~movie",
+          "evidence": "native-decompile"
+        }
+      ],
+      "signatureConfidence": "high",
+      "semanticDifferences": [],
+      "fallbackStatus": "direct",
+      "blocked": true
+    },
+    {
+      "operation": "RunCutsceneWithSetup actors",
+      "proposedForgeCall": "RunCutsceneWithSetup actors",
+      "bindingExists": false,
+      "bindingScope": null,
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 47,
+          "native": "StartMovieSequence(\"\"); PauseAll(1); StartScriptingEntity(GetHero(), heroRes, 4); map{HERO: hero, Theresa: me}",
+          "evidence": "native-disassembly 0x00DBB160-0x00DBB20A"
+        }
+      ],
+      "signatureConfidence": "high",
+      "semanticDifferences": [
+        "NOVI_Theresa#47: no FixMovieSequenceCamera in this block"
+      ],
+      "fallbackStatus": "direct",
+      "blocked": true
+    },
+    {
+      "operation": "PlayAVIMovie",
+      "proposedForgeCall": "PlayAVIMovie",
+      "bindingExists": true,
+      "bindingScope": "Quest",
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 49,
+          "native": "PlayAVIMovie(\"Data\\\\Video\\\\1_raid_on_oak_vale_comp.xmv\")",
+          "evidence": "GSI vtable slot 0x5c4 = PlayAVIMovie + native-decompile"
+        }
+      ],
+      "signatureConfidence": "high",
+      "semanticDifferences": [],
+      "fallbackStatus": "direct",
+      "blocked": false
+    },
+    {
+      "operation": "OverrideMusic",
+      "proposedForgeCall": "OverrideMusic",
+      "bindingExists": true,
+      "bindingScope": "Quest",
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 51,
+          "native": "OverrideMusic(0x19, 0, 0)",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "Q_NewOakValeIntro",
+          "function": "DoMission",
+          "seq": 28,
+          "native": "OverrideMusic(19, 0, 1)",
+          "evidence": "native-decompile"
+        }
+      ],
+      "signatureConfidence": "high",
+      "semanticDifferences": [],
+      "fallbackStatus": "direct",
+      "blocked": false
+    },
+    {
+      "operation": "PauseAllNonScriptedEntities + EndMovieSequence + host-managed",
+      "proposedForgeCall": "PauseAllNonScriptedEntities + EndMovieSequence + host-managed",
+      "bindingExists": false,
+      "bindingScope": null,
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "function": "Main",
+          "seq": 53,
+          "native": "map dtor; ~heroRes; PauseAllNonScriptedEntities(0); ~movie; IsTerminating (result unused); goto LAB_00dbb2e8 (release marker + meRes); return",
+          "evidence": "native-decompile"
+        }
+      ],
+      "signatureConfidence": "high",
+      "semanticDifferences": [
+        "NOVI_Theresa#53: the entity script ends here; no further loop"
+      ],
+      "fallbackStatus": "host-managed",
+      "blocked": true
+    },
+    {
+      "operation": "CScriptGameResourceObjectScriptedThingBase::PlayCombatAnimation(\"SKIP\", true, false, false, true, false, false)",
+      "proposedForgeCall": null,
+      "bindingExists": false,
+      "bindingScope": null,
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "reason": "ForgeFSE me:PlayCombatAnimation(animName, allowLooking) exposes only one of the six retail bools (non-blocking, prepends ClearCommands)",
+          "luaLocation": "skip_until_hero_near, handle_frame idle branch"
+        }
+      ],
+      "signatureConfidence": "n/a",
+      "semanticDifferences": [],
+      "fallbackStatus": "explicit-gap",
+      "blocked": true
+    },
+    {
+      "operation": "StartScriptingEntity(hero, res, priority 4) single call before each cutscene",
+      "proposedForgeCall": null,
+      "bindingExists": false,
+      "bindingScope": null,
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "reason": "ForgeFSE RunCutsceneWithSetup acquires actors itself with SCRIPT_AI_PRIORITY_HIGHEST",
+          "luaLocation": "meet_hero, play_outro (comments)"
+        }
+      ],
+      "signatureConfidence": "n/a",
+      "semanticDifferences": [],
+      "fallbackStatus": "explicit-gap",
+      "blocked": true
+    },
+    {
+      "operation": "FadeScreenOut(0.5f, 0.0f, CRGBColour(0,0,0,255))",
+      "proposedForgeCall": null,
+      "bindingExists": false,
+      "bindingScope": null,
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "reason": "ForgeFSE binding takes (fadeTime, holdTime) and hardcodes black",
+          "luaLocation": "play_outro"
+        }
+      ],
+      "signatureConfidence": "n/a",
+      "semanticDifferences": [],
+      "fallbackStatus": "explicit-gap",
+      "blocked": true
+    },
+    {
+      "operation": "MsgIsPresentedWithItem(CCharString& itemName)",
+      "proposedForgeCall": null,
+      "bindingExists": false,
+      "bindingScope": null,
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "reason": "ForgeFSE returns only the bool and publishes the item name in global g_PresentedItemName",
+          "luaLocation": "presented_item"
+        }
+      ],
+      "signatureConfidence": "n/a",
+      "semanticDifferences": [],
+      "fallbackStatus": "explicit-gap",
+      "blocked": true
+    },
+    {
+      "operation": "GiveHeroYesNoQuestion + MsgIsQuestionAnsweredYesOrNo frame-wait with PauseAll(0)/~movie on termination",
+      "proposedForgeCall": null,
+      "bindingExists": false,
+      "bindingScope": null,
+      "nativeEvidence": [
+        {
+          "script": "NOVI_Theresa",
+          "reason": "ForgeFSE binding blocks internally; termination cleanup inside the wait is host-managed",
+          "luaLocation": "meet_hero, offer_chocolates"
         }
       ],
       "signatureConfidence": "n/a",
@@ -9297,25 +10277,6 @@
       "blocked": false
     },
     {
-      "operation": "OverrideMusic",
-      "proposedForgeCall": "OverrideMusic",
-      "bindingExists": true,
-      "bindingScope": "Quest",
-      "nativeEvidence": [
-        {
-          "script": "Q_NewOakValeIntro",
-          "function": "DoMission",
-          "seq": 28,
-          "native": "OverrideMusic(19, 0, 1)",
-          "evidence": "native-decompile"
-        }
-      ],
-      "signatureConfidence": "high",
-      "semanticDifferences": [],
-      "fallbackStatus": "direct",
-      "blocked": false
-    },
-    {
       "operation": "SetQuestAsCompleted",
       "proposedForgeCall": "SetQuestAsCompleted",
       "bindingExists": true,
@@ -9368,32 +10329,6 @@
           "function": "AttackStuff",
           "seq": 34,
           "native": "SetTimeOfDay(23.0); TransitionToTheme(\"ENVIRONMENT_OV_POSTATTACK\", 0.0)",
-          "evidence": "native-decompile"
-        }
-      ],
-      "signatureConfidence": "high",
-      "semanticDifferences": [],
-      "fallbackStatus": "direct",
-      "blocked": false
-    },
-    {
-      "operation": "GetAllThingsWithScriptName",
-      "proposedForgeCall": "GetAllThingsWithScriptName",
-      "bindingExists": true,
-      "bindingScope": "Quest",
-      "nativeEvidence": [
-        {
-          "script": "Q_NewOakValeIntro",
-          "function": "PostAttackStuff",
-          "seq": 36,
-          "native": "loop: GetThingWithScriptName(\"M_PostAttackStart\"); until GetAllThingsWithScriptName(\"M_PostAttackStart\") count != 0",
-          "evidence": "native-decompile"
-        },
-        {
-          "script": "Q_NewOakValeIntro",
-          "function": "WatchBarrels",
-          "seq": 48,
-          "native": "until GetAllThingsWithScriptName(\"NOVI_Barrel\", vec) >= 1",
           "evidence": "native-decompile"
         }
       ],

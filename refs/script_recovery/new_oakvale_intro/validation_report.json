@@ -70,6 +70,7 @@
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
@@ -139,9 +140,6 @@
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "NewOakValeIntro/Entities/NOVI_Theresa.lua"
-    ],
-    "Entity.MsgIsTalkedToByHero": [
-      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua"
     ],
     "Entity.PlayAnimation": [
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
@@ -1076,9 +1074,7 @@
       "NewOakValeIntro/deeds.lua"
     ]
   },
-  "errors": [
-    "missing ForgeFSE binding: Entity.MsgIsTalkedToByHero"
-  ],
+  "errors": [],
   "files": [
     {
       "compiles": true,
@@ -1289,11 +1285,7 @@
       "trace": "match"
     }
   ],
-  "missingApis": {
-    "Entity.MsgIsTalkedToByHero": [
-      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua"
-    ]
-  },
+  "missingApis": {},
   "registration": {
     "bindingsInMain": 16,
     "entities": 16,
@@ -1301,11 +1293,11 @@
     "questId": 1100
   },
   "summary": {
-    "errors": 1,
+    "errors": 0,
     "fixtures": 12,
     "fixturesPassed": 12,
     "luaFiles": 22,
-    "missingApis": 1,
+    "missingApis": 0,
     "syntaxErrors": 0,
     "unsupportedCallSites": 21,
     "warnings": 0,

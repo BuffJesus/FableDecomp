@@ -215,7 +215,11 @@
     {
       "arguments": [
         "CREATURE_OAKVALE_STAG_BEETLE",
-        "1.0,2.0,3.0",
+        {
+          "x": 1.0,
+          "y": 2.0,
+          "z": 3.0
+        },
         "NOVI_CreatedBeetle"
       ],
       "event": "api-call",
@@ -284,7 +288,11 @@
     {
       "arguments": [
         "CREATURE_OAKVALE_STAG_BEETLE",
-        "1.0,2.0,3.0",
+        {
+          "x": 1.0,
+          "y": 2.0,
+          "z": 3.0
+        },
         "NOVI_CreatedBeetle"
       ],
       "event": "api-call",

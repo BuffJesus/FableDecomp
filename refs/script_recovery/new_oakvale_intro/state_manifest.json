@@ -897,6 +897,83 @@
       ],
       "confidence": "medium"
     },
+    "NOVI_Theresa": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa",
+      "phases": [
+        {
+          "id": "init",
+          "entry": "Init",
+          "exit": "return",
+          "luaFunction": "Init"
+        },
+        {
+          "id": "skip_until_near",
+          "entry": "Main, DoneIntro == false",
+          "exit": "hero within 5.0",
+          "luaFunction": "skip_until_hero_near"
+        },
+        {
+          "id": "meet_cutscene",
+          "entry": "hero near",
+          "exit": "DoneIntro = true, movie ended",
+          "luaFunction": "meet_hero"
+        },
+        {
+          "id": "idle_loop",
+          "entry": "DoneIntro == true",
+          "exit": "outro played (Main returns) or termination",
+          "luaFunction": "run / handle_frame"
+        },
+        {
+          "id": "offer_chocolates",
+          "entry": "talked to while hero carries the box",
+          "exit": "movie ended",
+          "luaFunction": "offer_chocolates"
+        },
+        {
+          "id": "presented_chocolates",
+          "entry": "MsgIsPresentedWithItem == box",
+          "exit": "movie ended",
+          "luaFunction": "accept_presented_chocolates"
+        },
+        {
+          "id": "presented_other",
+          "entry": "MsgIsPresentedWithItem != box",
+          "exit": "movie ended",
+          "luaFunction": "reject_present"
+        },
+        {
+          "id": "nag",
+          "entry": "talked to without the box",
+          "exit": "movie ended",
+          "luaFunction": "nag_for_present"
+        },
+        {
+          "id": "dont_hit",
+          "entry": "hit by hero",
+          "exit": "movie ended",
+          "luaFunction": "react_to_attack"
+        },
+        {
+          "id": "outro",
+          "entry": "given_chocs && hero within 2.0 of M_TriggerOutro",
+          "exit": "AttackOver = true; Main returns",
+          "luaFunction": "play_outro"
+        }
+      ],
+      "parentFieldsRead": [
+        "GUIBullyHealthCounter",
+        "GUIGoodDeedCounter",
+        "GUIBarrelCounter"
+      ],
+      "parentFieldsWritten": [
+        "GivenTheresaChocs",
+        "AttackOver",
+        "BadDeedsPerformed (via AddBadDeed)",
+        "WhichBadDeedsPerformed[2] (via AddBadDeed, inference)"
+      ],
+      "confidence": "medium"
+    },
     "NOVI_Victim": {
       "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_Victim",
       "phases": [
