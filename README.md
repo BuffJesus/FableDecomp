@@ -70,13 +70,13 @@ a worklist, not the intended end state.
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Verified functional or matching reconstruction | **18,831 · 37.99%** |
-| Byte-identical reconstruction | **8,156 · 16.45%** |
+| Verified functional or matching reconstruction | **18,833 · 37.99%** |
+| Byte-identical reconstruction | **8,157 · 16.46%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
 Current functional-or-matching coverage is **37.99%** of the 49,568-function catalog.
-Of that verified set, **16.45%** is byte-identical C++.
+Of that verified set, **16.46%** is byte-identical C++.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -93,9 +93,9 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,857** |
-| Reconstruction | Verified functional or matching C++ | **18,831** (37.99%) |
-| Reconstruction | — of which byte-**identical** C++ | 8,156 (16.45%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,859** |
+| Reconstruction | Verified functional or matching C++ | **18,833** (37.99%) |
+| Reconstruction | — of which byte-**identical** C++ | 8,157 (16.46%) |
 | Reconstruction | — of which hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 292 |
 | Readability | Landed sources typed onto shared PDB-named engine headers | 680 |
 | Readability | Throwaway local `struct T {...}` declarations remaining | 4,410 |

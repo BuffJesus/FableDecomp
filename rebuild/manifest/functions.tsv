@@ -29505,7 +29505,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008f03b0	CoinVector_Move_And_Destruct	_global	unknown	undefined	0		0	yes	accepted									
 008f0450	Vector_Reallocate	_global	unknown	undefined	0		0	yes	accepted									
 008f0570	CoinVector_InsertOrReallocate	_global	unknown	undefined	0		0	yes	accepted									
-008f0620	Turn	CCard	__thiscall	void	1	CCard *	1	yes	accepted									
+008f0620	Turn	CCard	__thiscall	void	1	CCard *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CCard_Turn_008f0620.cpp
 008f0660	Move	CCard	__thiscall	void	3	CCard *,C3DVector *,bool	1	yes	accepted									
 008f06f0	CTCTavernGame_UpdateCardTilt	_global	unknown	undefined	0		0	yes	accepted									
 008f0920	OnPersist	CQR_EscortTrader_ManagerScript	__thiscall	void	2	CQR_EscortTrader_ManagerScript *,CPersistContext *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CQREscortTraderManagerScript_OnPersist_008f0920.cpp
@@ -35770,7 +35770,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a13af0	Vector_PushRefcountedItem	_global	unknown	undefined	0		0	yes	accepted									
 00a13b80	operator+=	C2DCoordI	__thiscall	C2DCoordI *	2	C2DCoordI *,C2DVector *	1	yes	accepted									
 00a13bb0	operator+=	C2DCoordI	__thiscall	C2DCoordI *	2	C2DCoordI *,C2DVector *	1	yes	accepted									
-00a13be0	operator+=	C3DCoordI	__thiscall	C3DCoordI *	2	C3DCoordI *,C3DVector *	1	yes	accepted									
+00a13be0	operator+=	C3DCoordI	__thiscall	C3DCoordI *	2	C3DCoordI *,C3DVector *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a1\C3DCoordI_operator_00a13be0.cpp
 00a13c20	operator-=	C3DCoordI	__thiscall	C3DCoordI *	2	C3DCoordI *,C3DVector *	1	yes	accepted									
 00a13c60	Rotate	C3DVector	__thiscall	void	3	C3DVector *,C3DVector *,float	1	yes	accepted									
 00a13ce0	ToString	C3DVector	__thiscall	CCharString	1	C3DVector *	1	yes	accepted									

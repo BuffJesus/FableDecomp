@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct C3DVector { float X; float Y; float Z; }; struct C3DCoordI { long X; long Y; long Z; C3DCoordI& operator+=(const C3DVector& offset); }; int main() { C3DCoordI value = { 10, -4, 2 }; C3DVector offset = { 2.75f, -3.25f, 5.5f }; C3DCoordI* result = &(value += offset); if (result != &value || value.X != 12 || value.Y != -7 || value.Z != 7) return 1; printf("COORD_ADD_VECTOR PASS\n"); return 0; }

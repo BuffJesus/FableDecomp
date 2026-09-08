@@ -132394,6 +132394,20 @@ $catalog = @(
         TestSource = '00/70/CGameScriptThingManager_HasScriptThing_00704790_test.cpp'
         PassPattern = 'HAS_SCRIPT_THING PASS'
     }
+    [pscustomobject]@{
+        Address = '008f0620'
+        Module = 'CCard'
+        Source = '00/8f/CCard_Turn_008f0620.cpp'
+        TestSource = '00/8f/CCard_Turn_008f0620_test.cpp'
+        PassPattern = 'CARD_TURN PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a13be0'
+        Module = 'C3DCoordI'
+        Source = '00/a1/C3DCoordI_operator_00a13be0.cpp'
+        TestSource = '00/a1/C3DCoordI_operator_00a13be0_test.cpp'
+        PassPattern = 'COORD_ADD_VECTOR PASS'
+    }
 )
 
 $requestedAddresses = @(

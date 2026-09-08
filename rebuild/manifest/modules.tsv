@@ -35,7 +35,7 @@ C3DAnimationUtil	0	327	0	0	0	0	0	0	0	0	0
 C3DBoundingBox	0	8	7	0	0	0	0	0	0	0	0
 C3DBoundingSphere	0	5	5	0	0	0	0	0	0	0	0
 C3DClothPrimitive	0	7	6	0	0	0	0	0	0	0	0
-C3DCoordI	0	2	2	0	0	0	0	0	0	0	0
+C3DCoordI	0	2	2	0	0	1	1	0	1	0	0
 C3DDummyObject	0	4	0	0	0	0	0	0	0	0	0
 C3DGeneratorObject	0	2	1	0	0	0	0	0	0	0	0
 C3DGroup2	0	13	0	0	0	3	3	3	0	0	0
@@ -596,7 +596,7 @@ CCampHostage	3	0	0	0	0	0	0	0	0	0	0
 CCampHostage2	3	1	1	0	0	0	0	0	0	0	0
 CCampHostageDoor	4	1	1	0	0	0	0	0	0	0	0
 CCampHostageGuard	4	0	0	0	0	0	0	0	0	0	0
-CCard	3	2	2	0	0	0	0	0	0	0	0
+CCard	3	2	2	0	0	1	1	1	0	0	0
 CCardDef	2	4	3	0	0	3	3	1	2	0	0
 CCardPositionsDef	1	10	3	0	0	3	3	1	2	0	0
 CCardinalSpline	1	1	1	0	0	0	0	0	0	0	0
