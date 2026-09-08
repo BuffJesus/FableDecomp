@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct P{int a,b;P&operator=(const P&x){a=x.a;b=x.b;return *this;}};int main(){P a={0,0},b={3,7};P&r=(a=b);if(&r!=&a||a.a!=3||a.b!=7)return 1;printf("VECTOR_STRING_PAIR_ASSIGN PASS\n");return 0;}

@@ -131967,6 +131967,90 @@ $catalog = @(
         TestSource = '00/5b/CTCInventoryBase_SetInventoryAnimRenderBox_005bc58f_test.cpp'
         PassPattern = 'INVENTORY_ANIM_RENDER_BOX PASS'
     }
+    [pscustomobject]@{
+        Address = '00691c20'
+        Module = 'CInputProcessCreatureMovementWatchForControlAngleChange'
+        Source = '00/69/CInputProcessCreatureMovementWatchForControlAngleChange_Init_00691c20.cpp'
+        TestSource = '00/69/CInputProcessCreatureMovementWatchForControlAngleChange_Init_00691c20_test.cpp'
+        PassPattern = 'CONTROL_ANGLE_INIT PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db280'
+        Module = 'CAnimComponentCombatHandedness'
+        Source = '00/5d/CAnimComponentCombatHandedness_TransferBinaryOut_005db280.cpp'
+        TestSource = '00/5d/CAnimComponentCombatHandedness_TransferBinaryOut_005db280_test.cpp'
+        PassPattern = 'COMBAT_HANDEDNESS_BINARY_OUT PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db2e0'
+        Module = 'CAnimComponentCombatComboChain'
+        Source = '00/5d/CAnimComponentCombatComboChain_TransferBinaryOut_005db2e0.cpp'
+        TestSource = '00/5d/CAnimComponentCombatComboChain_TransferBinaryOut_005db2e0_test.cpp'
+        PassPattern = 'COMBAT_COMBO_CHAIN_BINARY_OUT PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fed00'
+        Module = 'CReactionFrequencyTraits_LinearTime'
+        Source = '00/6f/CReactionFrequencyTraitsLinearTime_TransferBinaryOut_006fed00.cpp'
+        TestSource = '00/6f/CReactionFrequencyTraitsLinearTime_TransferBinaryOut_006fed00_test.cpp'
+        PassPattern = 'REACTION_LINEAR_TIME_BINARY_OUT PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aae220'
+        Module = 'C3DAnimFileTimingEventChunk'
+        Source = '00/aa/C3DAnimFileTimingEventChunk_WriteToFile_00aae220.cpp'
+        TestSource = '00/aa/C3DAnimFileTimingEventChunk_WriteToFile_00aae220_test.cpp'
+        PassPattern = 'ANIM_TIMING_EVENT_WRITE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac6f50'
+        Module = 'COptimisedFace'
+        Source = '00/ac/COptimisedFace_RemapIndex_00ac6f50.cpp'
+        TestSource = '00/ac/COptimisedFace_RemapIndex_00ac6f50_test.cpp'
+        PassPattern = 'OPTIMISED_FACE_REMAP_INDEX PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b23f90'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_Enable3DSceneRendering_00b23f90.cpp'
+        TestSource = '00/b2/CEngine_Enable3DSceneRendering_00b23f90_test.cpp'
+        PassPattern = 'ENGINE_ENABLE_3D_SCENE_RENDERING PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b23fd0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_Enable2DSceneRendering_00b23fd0.cpp'
+        TestSource = '00/b2/CEngine_Enable2DSceneRendering_00b23fd0_test.cpp'
+        PassPattern = 'ENGINE_ENABLE_2D_SCENE_RENDERING PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062f790'
+        Module = 'CStopWatch'
+        Source = '00/62/CStopWatch_GetTicks_0062f790.cpp'
+        TestSource = '00/62/CStopWatch_GetTicks_0062f790_test.cpp'
+        PassPattern = 'STOPWATCH_GET_TICKS PASS'
+    }
+    [pscustomobject]@{
+        Address = '00654eb6'
+        Module = 'pair<C3DVector,CCharString>'
+        Source = '00/65/pairC3DVectorCCharString_operator_00654eb6.cpp'
+        TestSource = '00/65/pairC3DVectorCCharString_operator_00654eb6_test.cpp'
+        PassPattern = 'VECTOR_STRING_PAIR_ASSIGN PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e8bd0'
+        Module = 'CCombatWheel'
+        Source = '00/6e/CCombatWheel_ResetRings_006e8bd0.cpp'
+        TestSource = '00/6e/CCombatWheel_ResetRings_006e8bd0_test.cpp'
+        PassPattern = 'COMBAT_WHEEL_RESET_RINGS PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088b8c0'
+        Module = 'CAIBrain'
+        Source = '00/88/CAIBrain_SetAllStateGroupsEnabled_0088b8c0.cpp'
+        TestSource = '00/88/CAIBrain_SetAllStateGroupsEnabled_0088b8c0_test.cpp'
+        PassPattern = 'AI_BRAIN_ENABLE_STATE_GROUPS PASS'
+    }
 )
 
 $requestedAddresses = @(

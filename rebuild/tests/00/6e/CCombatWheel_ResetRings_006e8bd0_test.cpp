@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct R{int value;void Reset(){value=0;}};int main(){R r[3]={{1},{2},{3}};for(R*p=r;p!=r+3;++p)p->Reset();if(r[0].value||r[2].value)return 1;printf("COMBAT_WHEEL_RESET_RINGS PASS\n");return 0;}

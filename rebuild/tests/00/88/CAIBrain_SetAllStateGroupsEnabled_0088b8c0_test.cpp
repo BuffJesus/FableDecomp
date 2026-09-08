@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct G{bool enabled;};int main(){G a={false},b={false};G*p[2]={&a,&b};for(int i=0;i<2;++i)p[i]->enabled=true;if(!a.enabled||!b.enabled)return 1;printf("AI_BRAIN_ENABLE_STATE_GROUPS PASS\n");return 0;}
