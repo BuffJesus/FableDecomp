@@ -1,26 +1,17 @@
-// Byte-exact reconstruction of CGameCameraManager::GetRenderCamera 0x00697f30
-// ?GetRenderCamera@CGameCameraManager@@UBE?AVCCamera@@M@Z
-//
-// Virtual const member returning CCamera by value. Forwards its hidden
-// return-slot (esi = [esp+8]) directly to another thiscall member at 0x6978d0,
-// passing (m, &field4, &field3c). Return-slot chaining via copy-elision keeps
-// the retail push;call;ret shape (no local temp / rep movsl).
+#include "engine/CGameCameraManager.h"
 
 struct CCamera { char data[0x40]; };
-struct CFieldA { char pad[4]; };
-struct CFieldB { char pad[4]; };
-
-struct CGameCameraManager {
-    virtual CCamera GetRenderCamera(float m) const;              // slot -> 0x00697f30
-    CCamera Helper6978d0(float m, CFieldA* a, CFieldB* b) const; // 0x006978d0
-
-    // vptr occupies +0x00
-    CFieldA field4;          // +0x04
-    char    pad8[0x34];      // +0x08 .. +0x3b
-    CFieldB field3c;         // +0x3c
+struct CameraState { char data[4]; };
+struct CGameCameraManagerMethods : CGameCameraManager {
+    virtual CCamera GetRenderCamera(float zoom) const;
+    CCamera Helper6978d0(float zoom, CameraState* camera, CameraState* oldCamera) const;
 };
 
-CCamera CGameCameraManager::GetRenderCamera(float m) const
-{
-    return Helper6978d0(m, (CFieldA*)&field4, (CFieldB*)&field3c);
+CCamera CGameCameraManagerMethods::GetRenderCamera(float zoom) const {
+    const CGameCameraManager* manager =
+        reinterpret_cast<const CGameCameraManager*>(this);
+    return Helper6978d0(
+        zoom,
+        reinterpret_cast<CameraState*>(const_cast<unsigned char*>(manager->Camera)),
+        reinterpret_cast<CameraState*>(const_cast<unsigned char*>(manager->OldCamera)));
 }
