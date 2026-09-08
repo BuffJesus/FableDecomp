@@ -132387,6 +132387,13 @@ $catalog = @(
         TestSource = '00/a1/global_WordWrapFindNonWhiteSpaceForward_00a10310_test.cpp'
         PassPattern = 'WORD_WRAP_FORWARD PASS'
     }
+    [pscustomobject]@{
+        Address = '00704790'
+        Module = 'CGameScriptThingManager'
+        Source = '00/70/CGameScriptThingManager_HasScriptThing_00704790.cpp'
+        TestSource = '00/70/CGameScriptThingManager_HasScriptThing_00704790_test.cpp'
+        PassPattern = 'HAS_SCRIPT_THING PASS'
+    }
 )
 
 $requestedAddresses = @(

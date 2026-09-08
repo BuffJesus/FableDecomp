@@ -1790,7 +1790,7 @@ CGameNavigatorManagerExternalInterface	2	2	2	0	0	0	0	0	0	0	0
 CGamePlayerInterface	41	24	23	0	0	13	13	13	0	0	0
 CGameScriptInterface	935	953	948	441	0	399	399	56	342	0	0
 CGameScriptThing	81	91	88	3	0	11	11	6	5	0	0
-CGameScriptThingManager	5	6	5	0	0	0	0	0	0	0	0
+CGameScriptThingManager	5	6	5	0	0	1	1	1	0	0	0
 CGameTimeManager	27	13	13	0	0	0	0	0	0	0	0
 CGameflowAssistanceScript	9	7	7	0	0	2	2	2	0	0	0
 CGameflowScript	8	3	3	0	0	0	0	0	0	0	0

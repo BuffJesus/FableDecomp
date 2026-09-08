@@ -18086,7 +18086,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007045f0	Reset	CCountedPointer<CIPhysicsFacesSegmentBase_const_>	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
 007046d0	SetAnimationMemoryPool	CMeshDataBank	__thiscall	void	3	CMeshDataBank *,CCountedPointer<CMovableResourceMemoryPool>,bool	1	yes	accepted									
 00704730	CScriptThing	CScriptThing	__thiscall	undefined	2	CScriptThing *,CScriptThing *	0	yes	accepted									
-00704790	HasScriptThing	CGameScriptThingManager	__thiscall	bool	2	CGameScriptThingManager *,CThing *	1	yes	accepted									
+00704790	HasScriptThing	CGameScriptThingManager	__thiscall	bool	2	CGameScriptThingManager *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CGameScriptThingManager_HasScriptThing_00704790.cpp
 007047d0	FrameUpdate	CGameScriptThingManager	__thiscall	void	1	CGameScriptThingManager *	1	yes	accepted									
 00704860	CreateScriptThing	CGameScriptThingManager	__thiscall	CScriptThing	2	CGameScriptThingManager *,CThing *	1	yes	accepted									
 00704a80	CGameScriptThingManager	CGameScriptThingManager	__thiscall	undefined	1	CGameScriptThingManager *	0	yes	accepted									
