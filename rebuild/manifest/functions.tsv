@@ -35494,7 +35494,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a03ec0	CInputEvent::SetAsRightMouseButtonReleased	CInputEvent	__thiscall	void	4	CInputEvent *,C2DVector const &,double,double	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CInputEvent_SetAsRightMouseButtonReleased_00a03ec0.cpp
 00a03ef0	SetAsExtraMouseButtonPressed	CInputEvent	__thiscall	void	4	CInputEvent *,C2DVector *,double,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CInputEvent_SetAsExtraMouseButtonPressed_00a03ef0.cpp
 00a03f20	SetAsExtraMouseButtonHeld	CInputEvent	__thiscall	void	6	CInputEvent *,C2DVector *,C3DVector *,double,double,long	1	yes	accepted									
-00a03f70	SetAsExtraMouseButtonReleased	CInputEvent	__thiscall	void	5	CInputEvent *,C2DVector *,double,double,long	1	yes	accepted									
+00a03f70	SetAsExtraMouseButtonReleased	CInputEvent	__thiscall	void	5	CInputEvent *,C2DVector *,double,double,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CInputEvent_SetAsExtraMouseButtonReleased_00a03f70.cpp
 00a03fb0	SetAsMouseMovement	CInputEvent	__thiscall	void	4	CInputEvent *,C2DVector *,C3DVector *,double	1	yes	accepted									
 00a04000	SetAsKeyboardKeyHeld	CInputEvent	__thiscall	void	4	CInputEvent *,EInputKey,double,double	1	yes	accepted									
 00a04030	CInputEvent::SetAsJoystickPosition	CInputEvent	__thiscall	void	3	CInputEvent *,C2DVector const &,double	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CInputEvent_SetAsJoystickPosition_00a04030.cpp

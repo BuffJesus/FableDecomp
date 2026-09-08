@@ -1996,7 +1996,7 @@ CInitRumble	0	1	0	0	0	0	0	0	0	0	0
 CInitialQuestsDialog	4	0	0	0	0	0	0	0	0	0	0
 CInitialScreamerPoint	2	1	1	0	0	0	0	0	0	0	0
 CInkeyBuffer	4	2	2	0	0	0	0	0	0	0	0
-CInputEvent	40	33	30	0	0	14	14	14	0	0	0
+CInputEvent	40	33	30	0	0	15	15	15	0	0	0
 CInputEventPackage	1	2	2	0	0	0	0	0	0	0	0
 CInputManager	27	30	29	0	0	3	3	3	0	0	0
 CInputManagerDX	0	5	4	0	0	0	0	0	0	0	0

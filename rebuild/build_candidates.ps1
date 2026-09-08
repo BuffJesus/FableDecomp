@@ -132345,6 +132345,13 @@ $catalog = @(
         TestSource = '00/9f/CResource_ListRemove_009fbfb0_test.cpp'
         PassPattern = 'RESOURCE_LIST_REMOVE PASS'
     }
+    [pscustomobject]@{
+        Address = '00a03f70'
+        Module = 'CInputEvent'
+        Source = '00/a0/CInputEvent_SetAsExtraMouseButtonReleased_00a03f70.cpp'
+        TestSource = '00/a0/CInputEvent_SetAsExtraMouseButtonReleased_00a03f70_test.cpp'
+        PassPattern = 'EXTRA_MOUSE_RELEASED PASS'
+    }
 )
 
 $requestedAddresses = @(
