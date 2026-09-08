@@ -93,7 +93,7 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,604** |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,644** |
 | Reconstruction | Verified functional or matching C++ | **18,579** (37.48%) |
 | Reconstruction | — of which byte-**identical** C++ | 8,082 (16.30%) |
 | Reconstruction | — of which hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 292 |
@@ -107,7 +107,7 @@ parity, coverage, and naming reports:
 | Boot path | Current Phase 10 direct calls proven | **21 / 21** (100.00%) |
 | Modern C++23 | GFMain phases promoted into the modern startup lane | **0 / 10** (0.00%) |
 
-Counts above are from the 2026-09-07 canonical refresh:
+Counts above are from the 2026-09-08 canonical refresh:
 `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-parity.json`,
 `rebuild/COVERAGE.md`, and the naming-quality reports.
 

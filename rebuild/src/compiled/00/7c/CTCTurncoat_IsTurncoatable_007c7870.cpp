@@ -1,26 +1,21 @@
-struct CTCInner
-{
-    char pad[0x25];
-    char flag;      // +0x25
+#include "engine/CTCTurncoat.h"
+
+// Retail CTurncoatDef is 0x54 bytes rather than the donor's 0x58, but the
+// PDB-backed Turncoatable member agrees at +0x25.
+struct CRetailTurncoatDef {
+    unsigned char _base[0x25];
+    bool Turncoatable;
 };
 
-struct CTCTurncoat
-{
-    char pad0[0x14];
-    CTCInner* inner;   // +0x14
-    char pad1[0x2c - 0x18];
-    char enabled;      // +0x2c
-
+struct CTCTurncoat_Methods : CTCTurncoat {
     int IsTurncoatable();
 };
 
-int CTCTurncoat::IsTurncoatable()
-{
-    if (this->enabled)
-    {
-        CTCInner* p = this->inner;
-        if (p->flag)
-            return 1;
+int CTCTurncoat_Methods::IsTurncoatable() {
+    if (TurncoatOverride) {
+        const CRetailTurncoatDef* definition =
+            reinterpret_cast<const CRetailTurncoatDef*>(PDef_Object);
+        if (definition->Turncoatable) return 1;
     }
     return 0;
 }

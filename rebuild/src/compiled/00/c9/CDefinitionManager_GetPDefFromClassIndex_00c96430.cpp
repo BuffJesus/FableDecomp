@@ -1,11 +1,6 @@
-struct CDefClassBase;
+#include "engine/CDefinitionManager.h"
 
-struct CDefinitionManager
-{
-    void* vfptr;
-    char pad0[0x18 - 4];
-    const CDefClassBase** m_classArray; // offset 0x18
-};
+struct CDefClassBase;
 
 long __stdcall ValidateClassIndex(CDefinitionManager* mgr, long classIndex);
 
@@ -14,5 +9,7 @@ const CDefClassBase* __fastcall GetPDefFromClassIndex(CDefinitionManager* self, 
     long idx = ValidateClassIndex(self, classIndex);
     if (idx < 0)
         return (const CDefClassBase*)idx;
-    return self->m_classArray[idx];
+    const CDefClassBase* const* classArray =
+        static_cast<const CDefClassBase* const*>(self->m_classArray);
+    return classArray[idx];
 }

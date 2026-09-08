@@ -1,2 +1,5 @@
-struct C_008fe87c { char pad[0x2d]; unsigned char f; unsigned char M(); };
-unsigned char C_008fe87c::M(){ return this->f; }
+#include "engine/CAIStateGroup_ApprenticeHero.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CAIStateGroup_ApprenticeHero_Methods : CAIStateGroup_ApprenticeHero {
+    unsigned char M();
+};
+unsigned char CAIStateGroup_ApprenticeHero_Methods::M(){ return this->Critical; }

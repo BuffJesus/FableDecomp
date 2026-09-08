@@ -5,6 +5,8 @@ C3DAnimation2	0x40	long	MemoryHandle	4	Held*	held	4	AGREE_KIND_SOFT	C3DAnimation
 C3DAnimationTransitionState	0x10	float	Progress	4	float	f10	4	AGREE	C3DAnimationTransitionState_FindDominantAnimation_00710540.cpp
 C3DAnimationTransitionState	0x8	CIVCountedPointeeBase*	StartState_Object	4	IAnim*	a8	4	AGREE	C3DAnimationTransitionState_FindDominantAnimation_00710540.cpp
 C3DAnimationTransitionState	0xc	CIVCountedPointeeBase*	EndState_Object	4	IAnim*	ac	4	AGREE	C3DAnimationTransitionState_FindDominantAnimation_00710540.cpp
+C3DMesh2	0x0	void*	__vftable	4	char	m_leading	229	CONFLICT	C3DMesh2_CanRelocateData_00a8ca00.cpp
+C3DMesh2	0xe5	CMatrix3x4	InverseTransform	48	bool	m_bRelocationBlocked	1	CONTAINED	C3DMesh2_CanRelocateData_00a8ca00.cpp
 C3DMeshFileEngineMaterialChunk	0x0	void*	__vftable	4	char*	m_data	4	AGREE	C3DMeshFileEngineMaterialChunk_GetChunkDescriptionC3DMeshFileEngineMaterialChun_00ac6270.cpp
 C3DMeshFilePartitionChunk	0x10	C3DMeshPartitionElement*	PartitionTree_Data	4	Sub*	f10	4	AGREE	C3DMeshFilePartitionChun_WriteToFile_00ac2920.cpp
 C3DMeshFileVerticesChunk	0x0	void*	__vftable	4	char*	Data	4	AGREE	C3DMeshFileVerticesChunk_GetChunkDescriptionC3DMeshFileVerticesChunkUBEBV_00abec70.cpp
@@ -13,13 +15,14 @@ C3DMeshFileXVertexDataChunk	0x0	void*	__vftable	4	char*	Data	4	AGREE	C3DMeshFile
 C3DMeshInfo	0x3c	long	PhysicsMeshIndex	4	int	idx	4	AGREE	C3DMeshInfo_PeekPhysicsMesh_00a24a70.cpp
 C3DMeshInfo	0x4	unsigned char	_pad_0x04	4	A*	f4	4	RETAIL_ONLY	C3DMeshInfo_PeekPhysicsMesh_00a24a70.cpp
 C3DMeshInfo	0x4	unsigned char	_pad_0x04	4	long	f4	4	RETAIL_ONLY	previous header
+C3DMeshLODInfo	0x0	void*	__vftable	4	char	m_leading	36	CONFLICT	C3DMeshLODInfo_IsResourceLoaded_00a23de0.cpp
+C3DMeshLODInfo	0x24	CBankFileAsyncData*	FileData_Data	4	CBankFileAsyncData*	m_pAsyncData	4	AGREE	C3DMeshLODInfo_IsResourceLoaded_00a23de0.cpp
 CAIStateGroupBase	0x4	CAIBrain*	PBrain	4	CHolder*	holder	4	AGREE	CAIStateGroupBase_PeekWorldMap_008fcff0.cpp
 CAIStateGroupBase	0x4	CAIBrain*	PBrain	4	Inner*	p	4	AGREE	CAIStateGroupBase_GetPWorldSeed_008fcfd0.cpp
 CAIStateGroup_ApprenticeHero	0x14	long	NextFramePractice	4	int	f14	4	AGREE	CAIStateGroupApprenticeHero_InitStateGroup_00929e80.cpp
 CAIStateGroup_ApprenticeHero	0x18	CThingGameObject*	PDummy	4	int	f18	4	AGREE_KIND_SOFT	CAIStateGroupApprenticeHero_InitStateGroup_00929e80.cpp
 CAIStateGroup_ApprenticeHero	0x20	CThingAICreature*	PracticeOpponent	4	int	f20	4	AGREE_KIND_SOFT	CAIStateGroupApprenticeHero_InitStateGroup_00929e80.cpp
 CAIStateGroup_ApprenticeHero	0x2d	bool	Critical	1	unsigned char	b2d	1	AGREE	CAIStateGroupApprenticeHero_InitStateGroup_00929e80.cpp
-CAIStateGroup_ApprenticeHero	0x2d	bool	Critical	1	unsigned char	f	1	AGREE	CAIStateGroupApprenticeHero_IsTimingCritical_008fe87c.cpp
 CAIStateGroup_BalverineCornered	0x24	unsigned long	TimeOfLastJump	4	unsigned long	f	4	AGREE	CAIStateGroupBalverineCornered_InitStateGroup_0094f080.cpp
 CAIStateGroup_BalverineJumpAtFleeingEnemy	0x1c	long	WaitUntilWorldFrameForNextAttempt	4	unsigned long	f	4	AGREE	CAIStateGroupBalverineJumpAtFleeingEnemy_InitStateGroup_0094f170.cpp
 CAIStateGroup_BanditGossip	0x24	bool	WasCarryingWeapon	1	char	flag	1	AGREE	CAIStateGroupBanditGossip_OnReplaceCAIStateGroupBanditGossipMAEXXZ_0090e590.cpp
@@ -45,15 +48,12 @@ CAIStateGroup_EatAtTable	0x48	float	Duration	4	unsigned long	f	4	CONFLICT	CAISta
 CAIStateGroup_FollowPlayer	0x18	CIntelligentPointer<CThingPlayerCreature>	Player	8	float	f1c	4	CONTAINED	CAIStateGroupFollowPlayer_OnActivateCAIStateGroupFollowPlayerUAEXXZ_0094ef70.cpp
 CAIStateGroup_GameMaster	0x0	void*	__vftable	4	char	p	4	AGREE_KIND_SOFT	CAIStateGroupGameMaster_OnActivate_0094c7b0.cpp
 CAIStateGroup_GameMaster	0x4	unsigned char	_pad_0x04	4	A*	f4	4	RETAIL_ONLY	CAIStateGroupGameMaster_OnActivate_0094c7b0.cpp
-CAIStateGroup_GameMaster	0x4	unsigned char	_pad_0x04	4	long	f4	4	RETAIL_ONLY	previous header
 CAIStateGroup_GameMaster	0x8	unsigned char	_pad_0x08	4	char	pac	164	CONFLICT	CAIStateGroupGameMaster_OnActivate_0094c7b0.cpp
 CAIStateGroup_GameMaster	0xac	bool	WasAllowedToFollowPlayer	1	unsigned char	fac	1	AGREE	CAIStateGroupGameMaster_OnActivate_0094c7b0.cpp
 CAIStateGroup_GazeAtHome	0x4	unsigned char	_base_0x04	44	P*	f4	4	RETAIL_ONLY	CAIStateGroupGazeAtHome_GetOwner_00919000.cpp
 CAIStateGroup_GazeAtHome	0x4	unsigned char	_base_0x04	44	long	f4	4	RETAIL_ONLY	previous header
 CAIStateGroup_GazeAtWork	0x4	unsigned char	_base_0x04	44	P*	f4	4	RETAIL_ONLY	CAIStateGroupGazeAtWork_GetOwner_00919020.cpp
 CAIStateGroup_GazeAtWork	0x4	unsigned char	_base_0x04	44	long	f4	4	RETAIL_ONLY	previous header
-CAIStateGroup_HoverHornetQueen	0x54	vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>	CircleMarkers	16	Sub50	m50	4	CONTAINED	CAIStateGroupHoverHornetQueen_OnReplace_0095ab30.cpp
-CAIStateGroup_HoverHornetQueen	0x58	vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>	CircleMarkers	16	unsigned int	m54	4	CONTAINED	CAIStateGroupHoverHornetQueen_OnReplace_0095ab30.cpp
 CAIStateGroup_HoverHornetQueen	0x60	vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>	CircleMarkers	16	unsigned char	f	1	CONTAINED	CAIStateGroupHoverHornetQueen_IsTimingCritical_0090313b.cpp
 CAIStateGroup_HoverHornetQueenTakeDamage	0x20	long	RangeAttackCount	4	unsigned long	f	4	AGREE	CAIStateGroupHoverHornetQueenTakeDamage_OnReplace_0095a3b0.cpp
 CAIStateGroup_JackDragon	0x4c	long	FrameOfLastSlam	4	int	timerA	4	AGREE	CAIStateGroupJackDragon_ResetTimers_0094f9e0.cpp
@@ -113,6 +113,8 @@ CAIStateGroup_ServeFood	0x18	CThing*	Table	4	char	b	4	AGREE_KIND_SOFT	CAIStateGr
 CAIStateGroup_ServeFood	0x1c	long	Seat	4	int	f1c	4	AGREE	CAIStateGroupServeFood_InitStateGroup_00922fa0.cpp
 CAIStateGroup_ServeFood	0x20	float	ServePos_X	4	char	c	36	CONFLICT	CAIStateGroupServeFood_InitStateGroup_00922fa0.cpp
 CAIStateGroup_ServeFood	0x44	long	ServeActionPoint	4	int	f44	4	AGREE	CAIStateGroupServeFood_InitStateGroup_00922fa0.cpp
+CAIStateGroup_ServeFoodAtHome	0x4	unsigned char	_base_0x04	72	CStateGroupOwner*	m_pOwner	4	RETAIL_ONLY	CAIStateGroupServeFoodAtHome_GetBuilding_00902ca7.cpp
+CAIStateGroup_ServeFoodAtTavern	0x4	unsigned char	_base_0x04	72	CStateGroupOwner*	m_pOwner	4	RETAIL_ONLY	CAIStateGroupServeFoodAtTavern_GetBuilding_00902cdc.cpp
 CAIStateGroup_StandStill	0x0	void*	__vftable	4	int	x	4	AGREE_KIND_SOFT	CAIStateGroupStandStill_Update_0091bcf0.cpp
 CAIStateGroup_TavernServer	0x34	CIntelligentPointer<CThingBuilding>	PPub	8	Sub	sub	4	CONTAINED	CAIStateGroupTavernServer_WanderWithinTavern_00966ad0.cpp
 CAIStateGroup_WifeGiveYouGift	0x14	long	FrameToSpeakNext	4	int	f14	4	AGREE	CAIStateGroupWifeGiveYouGift_InitStateGroup_00925f80.cpp
@@ -279,7 +281,6 @@ CComponent	0xa0	float	PositionTimeElapsed	4	int	fa0	4	CONFLICT	CComponent_ResetS
 CComponent	0xa4	float	PositionTime	4	int	fa4	4	CONFLICT	CComponent_ResetState_0052e6b0.cpp
 CComponent	0xa8	float	ZoomTimeElapsed	4	int	fa8	4	CONFLICT	CComponent_ResetState_0052e6b0.cpp
 CConfigOptionsDefaultsDef	size			120	sizeof	GetSizeofClass	116	SIZE_CONFLICT	GetSizeofClass
-CConsoleCommandBase	0x4	unsigned char	_pad_0x04	4	char	m_field4	1	RETAIL_ONLY	CConsoleCommandBase_GetFormattedNameCConsoleCommandBaseMBEAVCCharStr_009ea3a0.cpp
 CConsoleCommandBase	0x4	unsigned char	_pad_0x04	4	unsigned char	m_field4	1	RETAIL_ONLY	previous header
 CContainerRewardHeroDef	0x28	CArray<CDefIndex>	ObjectFamilies	16	Member28	m28	4	CONTAINED	CContainerRewardHeroDef_Copy_004e249b.cpp
 CContainerRewardHeroDef	size			56	sizeof	GetSizeofClass	52	SIZE_CONFLICT	GetSizeofClass
@@ -321,9 +322,7 @@ CCreatureAction_GetUpFromSitting	0x14	unsigned char	_pad_0x14	4	int	m_b	4	RETAIL
 CCreatureAction_IceTrollIcicleAssaultLoop	0x0	void*	__vftable	4	char	d	1	CONFLICT	CCreatureActionIceTrollIcicleAssaultLoop_IsStrikeAction_008e4540.cpp
 CCreatureAction_JackGetUp	0x0	void*	__vftable	4	char	d	1	CONFLICT	CCreatureActionJackGetUp_IsToEvadeAllHits_008c3890.cpp
 CCreatureAction_LeapLong	0x114	unsigned char	_pad_0x114	4	unsigned char	b114	1	RETAIL_ONLY	previous header
-CCreatureAction_NymphGetHit	0x10	unsigned char	_pad_0x10	4	int	m_a	4	RETAIL_ONLY	CCreatureActionNymphGetHit_OnAnimationLoadedCCreatureActionNymphGetHitUAEXX_008c9dd0.cpp
 CCreatureAction_NymphGetHit	0x10	unsigned char	_pad_0x10	4	long	m_a	4	RETAIL_ONLY	previous header
-CCreatureAction_NymphGetHit	0x14	unsigned char	_pad_0x14	4	int	m_b	4	RETAIL_ONLY	CCreatureActionNymphGetHit_OnAnimationLoadedCCreatureActionNymphGetHitUAEXX_008c9dd0.cpp
 CCreatureAction_NymphGetHit	0x14	unsigned char	_pad_0x14	4	long	m_b	4	RETAIL_ONLY	previous header
 CCreatureAction_NymphSummonOutOf	0x8	unsigned char	_base_0x04	296	unsigned char	sub8	4	RETAIL_ONLY	previous header
 CCreatureAction_PerformExpression	0xa8	unsigned char	_pad_0xa8	4	Inner*	p	4	RETAIL_ONLY	CCreatureActionPerformExpression_IsToHaveEmptyHands_00842c20.cpp
@@ -331,7 +330,6 @@ CCreatureAction_PerformExpression	0xa8	unsigned char	_pad_0xa8	4	Inner*	p	4	RETA
 CCreatureAction_PerformExpression	0xa8	unsigned char	_pad_0xa8	4	long	p	4	RETAIL_ONLY	previous header
 CCreatureAction_PerformExpressionExtended	0xa8	unsigned char	_pad_0xa8	4	Inner*	p	4	RETAIL_ONLY	CCreatureActionPerformExpression_IsToReplaceItemIfRemovedExt_00842c40.cpp
 CCreatureAction_PerformExpressionExtended	0xa8	unsigned char	_pad_0xa8	4	long	p	4	RETAIL_ONLY	previous header
-CCreatureAction_PickCrop	0xa8	unsigned char	_pad_0xa8	4	Sub	sub	4	RETAIL_ONLY	CCreatureActionPickCrop_PerformAction_00844720.cpp
 CCreatureAction_PickCrop	0xa8	unsigned char	_pad_0xa8	4	long	sub	4	RETAIL_ONLY	previous header
 CCreatureAction_PlayAnimation	0xa8	unsigned char	_pad_0xa8	4	unsigned char	f	1	RETAIL_ONLY	previous header
 CCreatureAction_PlayAnimation	0xa9	unsigned char	_pad_0xa8	4	unsigned char	f_2	1	RETAIL_ONLY	previous header
@@ -342,8 +340,8 @@ CCreatureAction_PlayCombatAnimation	0x116	unsigned char	_pad_0x114	4	unsigned ch
 CCreatureAction_PlayIntoLoopOutOfAnimation	0xb8	long	NumberOfTimesToLoop	4	unsigned char	f	1	CONFLICT	CCreatureActionPlayIntoLoopOutOfAnimation_IsUsingAnimationMovement_0084a860.cpp
 CCreatureAction_RiseUp	0x0	void*	__vftable	4	char	d	1	CONFLICT	CCreatureActionRiseUp_IsOverrideableByActionOfSamePriority_0074db90.cpp
 CCreatureAction_RiseUp	0x114	unsigned char	_pad_0x114	4	unsigned char	f	1	RETAIL_ONLY	CCreatureActionRiseUp_IsToFaceTargetAtStart_0074db70.cpp
-CCreatureAction_ScorpionRecover	0x8	unsigned char	_base_0x04	296	Member8	m8	4	RETAIL_ONLY	CCreatureActionScorpionRecover_InitialiseCCreatureActionScorpionRecoverUAEXXZ_008c3ee0.cpp
-CCreatureAction_SpiritAttack	0x10	unsigned char	_pad_0x10	4	int	field10	4	RETAIL_ONLY	CCreatureActionSpiritAttack_InitialiseCCreatureActionSpiritAttackUAEXXZ_008545f0.cpp
+CCreatureAction_ScorpionRecover	0x8	unsigned char	_base_0x04	296	Member8	m8	4	RETAIL_ONLY	previous header
+CCreatureAction_SpiritAttack	0x10	unsigned char	_pad_0x10	4	int	field10	4	RETAIL_ONLY	previous header
 CCreatureAction_SpiritReturnToHero	0x10	unsigned char	_base_0x04	176	long	field_10	4	RETAIL_ONLY	previous header
 CCreatureAction_SpiritReturnToHero	0x14	unsigned char	_base_0x04	176	long	field_14	4	RETAIL_ONLY	previous header
 CCreatureAction_StartBlocking	0x10	unsigned char	_base_0x04	296	int	field_10	4	RETAIL_ONLY	CCreatureActionStartBlocking_CCreatureActionStartBlockingFrameUpdate_008552e0.cpp
@@ -357,7 +355,6 @@ CCreatureAction_StartBlocking	0xc	unsigned char	_base_0x04	296	long	field_c	4	RE
 CCreatureAction_TentacleIdle	0x0	void*	__vftable	4	char	d	1	CONFLICT	CCreatureActionTentacleIdle_IsMovementUsingPhysics_008cf970.cpp
 CCreatureAction_TentacleStrikeLoop	0x0	void*	__vftable	4	char	d	1	CONFLICT	CCreatureActionTentacleStrikeLoop_IsMovementUsingPhysics_008cf9f0.cpp
 CCreatureAction_TentacleStrikeOutOf	0x0	void*	__vftable	4	char	d	1	CONFLICT	CCreatureActionTentacleStrikeOutOf_IsOverrideableByActionOfSamePriority_008cfa80.cpp
-CCreatureAction_TrollAngryGroundPound	0x8	unsigned char	_base_0x04	296	CSubObject	sub	4	RETAIL_ONLY	CCreatureActionTrollAngryGroundPound_PerformActionCCreatureActionTrollAngryGroundPoun_008c63a0.cpp
 CCreatureAction_TrollAngryGroundPound	0x8	unsigned char	_base_0x04	296	long	sub	4	RETAIL_ONLY	previous header
 CCreatureAction_UndeadIdleUnderground	0x0	void*	__vftable	4	char	d	1	CONFLICT	CCreatureActionUndeadIdleUnderground_GetAnimationTransitionInTime_0074dd70.cpp
 CCreatureAction_UndeadRiseUp	0x118	unsigned char	_pad_0x118	4	unsigned char	f	1	RETAIL_ONLY	previous header
@@ -379,7 +376,7 @@ CCriticalSectionLock	0x4	bool	Locked	1	unsigned char	m_bLocked	1	AGREE	CCritical
 CDataInputStream	0x4	unsigned long	StreamPos	4	unsigned long	f	4	AGREE	CDataInputStream_GetPosition_00405fa0.cpp
 CDecapitationDef	0x28	long	BodyParticleEffect	4	CMember	m28	4	AGREE	CDecapitationDef_TransferCDecapitationDefUAEXAAVCPersistContextZ_004ded4e.cpp
 CDecapitationDef	0x2c	long	Head	4	CMember	m2c	4	AGREE	CDecapitationDef_TransferCDecapitationDefUAEXAAVCPersistContextZ_004ded4e.cpp
-CDefinitionManager	0x18	unsigned char	_pad_0x18	4	const CDefClassBase**	m_classArray	4	RETAIL_ONLY	CDefinitionManager_GetPDefFromClassIndex_00c96430.cpp
+CDefinitionManager	0x18	unsigned char	_pad_0x18	4	const CDefClassBase**	m_classArray	4	RETAIL_ONLY	previous header
 CDefinitionManager	0x78	CVectorMap<unsigned_long,long,CKeyPairCompareLess<unsigned_long,long>_>	NameCRCToIndexMap	20	Slot*	s_first	4	CONTAINED	CDefinitionManager_ClearInstantiatedDefs_009ad950.cpp
 CDefinitionManager	0x7c	CVectorMap<unsigned_long,long,CKeyPairCompareLess<unsigned_long,long>_>	NameCRCToIndexMap	20	Slot*	s_last	4	CONTAINED	CDefinitionManager_ClearInstantiatedDefs_009ad950.cpp
 CDefinitionManager	0xa4	CArray<unsigned_char>	CompressedDefData	16	CDef**	d_first	4	CONTAINED	CDefinitionManager_ClearInstantiatedDefs_009ad950.cpp
@@ -398,13 +395,12 @@ CDragonActionNapalmDef	0x2c	float	WindSpeed	4	Field	f1	4	CONFLICT	CDragonActionN
 CDragonActionNapalmDef	0x30	float	TimeBeforeAddOfMouthEffect	4	Field	f2	4	CONFLICT	CDragonActionNapalmDef_TransferCDragonActionNapalmDefUAEXAAVCPersistCon_00452c94.cpp
 CDragonActionNapalmDef	0x34	float	TimeBeforeAddExplosion	4	Field	f3	4	CONFLICT	CDragonActionNapalmDef_TransferCDragonActionNapalmDefUAEXAAVCPersistCon_00452c94.cpp
 CDrawMiniMap	0x100	CMiniMapDisplay	MiniMap	220	Sub	sub	4	CONTAINED	CDrawMiniMap_SetAsActive_00643e2e.cpp
-CDrawMiniMap	0x18	unsigned char	_pad_0x18	4	unsigned char	f_18	1	RETAIL_ONLY	CDrawMiniMap_ClearPrimitivesIfNecessary_00643de5.cpp
+CDrawMiniMap	0x18	unsigned char	_pad_0x18	4	unsigned char	f_18	1	RETAIL_ONLY	previous header
 CDrawMiniMap	0x28	unsigned char	_pad_0x28	4	CMiniMapDisplay	disp	4	RETAIL_ONLY	CDrawMiniMap_SetRegion_0064dfde.cpp
-CDrawMiniMap	0x28	unsigned char	_pad_0x28	4	SubObj	sub	4	RETAIL_ONLY	CDrawMiniMap_ClearPrimitivesIfNecessary_00643de5.cpp
+CDrawMiniMap	0x28	unsigned char	_pad_0x28	4	CMiniMapDisplay	disp	4	RETAIL_ONLY	previous header
 CDrawMiniMap	0xc	unsigned char	_pad_0x0c	4	char*	f_c	4	RETAIL_ONLY	CDrawMiniMap_SetRegion_0064dfde.cpp
 CDrawMiniMap	0xc	unsigned char	_pad_0x0c	4	long	f_c	4	RETAIL_ONLY	previous header
 CDrawMiniMap	0xe9	CMiniMapDisplay	MiniMap	220	char	active	1	CONTAINED	CDrawMiniMap_SetAsActive_00643e2e.cpp
-CDrawMiniMap	0xee	CMiniMapDisplay	MiniMap	220	unsigned char	f_eb	1	CONTAINED	CDrawMiniMap_ClearPrimitivesIfNecessary_00643de5.cpp
 CDrawQuickAccessIcons	0x3c	float	FullyChargedTime	4	int	f3c	4	CONFLICT	CDrawQuickAccessIcons_ToggleFlash_00643fe4.cpp
 CDriveManager	0x4	CSystemManager*	SystemManager	4	void*	f4	4	AGREE	CDriveManager_Initialise_009e4ad0.cpp
 CDrunkennessDef	0x28	float	DrunkennessThresholdMult	4	unsigned long	field28	4	CONFLICT	CDrunkennessDef_Copy_004e0f1b.cpp
@@ -496,7 +492,6 @@ CEngineInternalPrimitiveParticleSpriteGroup	0xb2	unsigned char	_pad_0xb0	4	char	
 CEngineInternalPrimitiveParticleSpriteGroup	0xb4	unsigned char	_pad_0xb4	4	unsigned long	fb4	4	RETAIL_ONLY	CEngineInternalPrimitiveParticleSpriteGroup_Update_00bbf320.cpp
 CEngineInternalPrimitiveParticleSpriteGroup	0xb8	unsigned char	_pad_0xb8	4	unsigned long	fb8	4	RETAIL_ONLY	CEngineInternalPrimitiveParticleSpriteGroup_Update_00bbf320.cpp
 CEngineInternalPrimitiveParticleSpriteGroup	0xc	unsigned char	_pad_0x0c	4	unsigned long	fc	4	RETAIL_ONLY	CEngineInternalPrimitiveParticleSpriteGroup_Update_00bbf320.cpp
-CEngineInternalPrimitiveRepeatedStaticMesh	0x50	C3DMeshInfo*	MeshInfo	4	SubMesh*	m50	4	AGREE	CEngineInternalPrimitiveRepeatedStaticMesh_CollectStats_00b98de0.cpp
 CEngineInternalPrimitiveRepeatedStaticMesh	0x58	C3DBoundingBox	BoundingBox	24	P_00b98d70	v	4	CONTAINED	CEngineInternalPrimitiveRepeatedStaticMesh_GetBoundingBoxWorldSpace_00b98d70.cpp
 CEngineInternalPrimitiveRepeatedZSprite	0x74	C3DBoundingBox	BoundingBox	24	P_00baa430	v	4	CONTAINED	CEngineInternalPrimitiveRepeatedZSprite_GetBoundingBoxWorldSpace_00baa430.cpp
 CEngineInternalPrimitiveSprite	0x48	float	WorldPos_X	4	Vec3	pos	4	CONFLICT	CEngineInternalPrimitive2DStaticMesh_GetWorldPosition_00bb16e0.cpp
@@ -524,6 +519,7 @@ CEngineInternalPrimitiveWeatherMask	0x4c	C3DBoundingSphere	BSphere	16	V6	blk58	4
 CEngineInternalPrimitiveWeatherMask	0x50	C3DBoundingSphere	BSphere	16	V12	blk70	4	CONTAINED	CEngineInternalPrimitiveWeatherMask_Update_00bb6980.cpp
 CEngineInternalPrimitiveWeatherMask	0xc	unsigned char	_pad_0x0c	4	unsigned long	fc	4	RETAIL_ONLY	CEngineInternalPrimitiveWeatherMask_Update_00bb6980.cpp
 CEngineLandscapeMap	0x4	CLandscapeBackgroundTreeNode*	PatchTree	4	CBackgroundTesselator*	m_tess	4	AGREE	CEngineLandscapeMap_UpdateBackgroundTesselation_00bdc020.cpp
+CEngineLandscapeMap	0x4	CLandscapeBackgroundTreeNode*	PatchTree	4	CLandscapeBackgroundMap*	m_pBackgroundMap	4	AGREE	CEngineLandscapeMap_IsBackgroundAtFullDetailInArea_00bdc150.cpp
 CEngineLandscapeMap	0x5c	long	CreationFlags	4	char	m_updating	1	CONFLICT	CEngineLandscapeMap_UpdateBackgroundTesselation_00bdc020.cpp
 CEngineLandscapeMap	0x5c	long	CreationFlags	4	unsigned char	f	1	CONFLICT	CEngineLandscapeMap_CanRelocateData_00bdc140.cpp
 CEngineLandscapeMap	0x8	CEngineLandscapePatch*	Patches	4	char	m_fill	84	CONFLICT	CEngineLandscapeMap_UpdateBackgroundTesselation_00bdc020.cpp
@@ -541,9 +537,11 @@ CEngineLocalDetailLayerDef	0x40	vector<float,std::allocator<float>_>	SpacingFrom
 CEngineLocalDetailLayerDef	size			96	sizeof	GetSizeofClass	84	SIZE_CONFLICT	GetSizeofClass
 CEngineLocalDetailObjectDef	size			140	sizeof	GetSizeofClass	136	SIZE_CONFLICT	GetSizeofClass
 CEnginePrimitiveManager2DSprites	0x8	unsigned char	_pad_0x08	4	unsigned char	active	1	RETAIL_ONLY	CEnginePrimitiveManager2DSprites_Render2DPrimitive_00baced0.cpp
+CEnginePrimitiveManager2DSprites	0x8	unsigned char	_pad_0x08	4	unsigned char	active	1	RETAIL_ONLY	previous header
 CEnginePrimitiveManagerSprites	0x8	unsigned char	_base_0x04	8	unsigned char	enabled	1	RETAIL_ONLY	previous header
-CEngineScreenEffectColourFilter	0x44	bool	EffectSupported	1	unsigned char	field44	1	AGREE	CEngineScreenEffectColourFilter_SetEffectQuality_00b5a0b0.cpp
-CEngineScreenEffectColourFilter	0x8	unsigned char	_pad_0x08	4	unsigned char	enabled	1	RETAIL_ONLY	CEngineScreenEffectColourFilter_SetEffectQuality_00b5a0b0.cpp
+CEngineSceneGridCell	0x0	CEngineSceneGridCell*	Parent	4	CEngineSceneGridCell*	Parent	4	AGREE	CEngineSceneGridCell_InvalidateAll_00b91710.cpp
+CEngineSceneGridCell	0x4	CEngineInternalPrimitiveBase*	FirstPrimitive	4	char	m_between04And44	64	CONFLICT	CEngineSceneGridCell_InvalidateAll_00b91710.cpp
+CEngineSceneGridCell	0x44	bitfield group: uchar:1	HasOcclusionResults	1	unsigned char	m_validFlags	1	CONTAINED	CEngineSceneGridCell_InvalidateAll_00b91710.cpp
 CEngineScreenEffectColourFilter	0x8	unsigned char	_pad_0x08	4	unsigned char	enabled	1	RETAIL_ONLY	previous header
 CEngineScreenEffectDisplacementRenderer	0x18	long	DynamicTexturePageHandle	4	unsigned long	f	4	AGREE	CEngineScreenEffectDisplacementRenderer_OnReleaseDefaultPoolResources_00b86970.cpp
 CEngineScreenEffectGlowRenderer	0x30	long	DynamicTexturePageHandle	4	unsigned long	f	4	AGREE	CEngineScreenEffectGlowRenderer_OnReleaseDefaultPoolResources_00b5ec60.cpp
@@ -626,9 +624,8 @@ CGameScriptInterface	0x24	long	CurrentScriptLevelID	4	unsigned int	field24	4	AGR
 CGameScriptInterface	0x28	long	CurrentScriptID	4	unsigned char	_p24	105	CONFLICT	CGameScriptInterface_IsThingAChest_008a0eb0.cpp
 CGameScriptInterface	0x3c	map<long,long,std::less<long>,std::allocator<std::pair<long_const_,long>_>_>	ScriptTimers	16	TimerMap	map	4	CONTAINED	CGameScriptInterface_GetTimer_006e7710.cpp
 CGameScriptInterface	0x3c	map<long,long,std::less<long>,std::allocator<std::pair<long_const_,long>_>_>	ScriptTimers	16	Tree	tree	4	CONTAINED	CGameScriptInterface_SetTimer_006e76e0.cpp
-CGameScriptInterface	0x4	CWorld*	World	4	CGSIOverrideMusicInner*	inner	4	AGREE	CGameScriptInterface_OverrideMusic_00891220.cpp
+CGameScriptInterface	0x4	CWorld*	World	4	CGSIAddLineToConversationWorld*	m_pWorld	4	AGREE	CGameScriptInterface_AddLineToConversation_00890750.cpp
 CGameScriptInterface	0x4	CWorld*	World	4	MapNode*	head	4	AGREE	CGameScriptInterface_IsSleepingTime_00896210.cpp
-CGameScriptInterface	0x4	CWorld*	World	4	WorldProvider*	worldProvider	4	AGREE	CGameScriptInterface_IsRegionLoaded_0088e300.cpp
 CGameScriptInterface	0x4	CWorld*	World	4	float	y	4	CONFLICT	CGameScriptInterface_CameraEarthquakeIntensityAtPos_0088ed20.cpp
 CGameScriptInterface	0x4	CWorld*	World	4	unsigned char	_p0	32	CONFLICT	CGameScriptInterface_IsThingAChest_008a0eb0.cpp
 CGameScriptInterface	0x48	map<long,long,std::less<long>,std::allocator<std::pair<long_const_,long>_>_>	ScriptTimers	16	int	field48	4	CONTAINED	CGameScriptInterface_CameraResetToViewBehindHero_00890fc0.cpp
@@ -653,8 +650,9 @@ CGraphicDataBank	0x0	void*	__vftable	4	char	p	480	CONFLICT	CGraphicDataBank_Noti
 CGraphicDataBank	0x1e0	unsigned char	_pad_0x1e0	4	Sub	s1e0	4	RETAIL_ONLY	CGraphicDataBank_NotifyBankSize_009ff8b0.cpp
 CGraphicDataBank	0x1e0	unsigned char	_pad_0x1e0	4	char*	f1e0	4	RETAIL_ONLY	CGraphicDataBank_NotifyEntryRemoved_009fd970.cpp
 CGraphicFrame	0x0	CGraphicFrameData*	FrameData	4	int	ptr	4	AGREE_KIND_SOFT	CGraphicFrame_IsInitialised_00c31960.cpp
+CGraphicInfoFrame	0x0	void*	__vftable	4	char	m_leading	12	CONFLICT	CGraphicInfoFrame_GetBlankTexture_009fd3f0.cpp
+CGraphicInfoFrame	0xc	CGraphicInfo*	GraphicInfo	4	CGraphicDataBank*	m_pDataBank	4	AGREE	CGraphicInfoFrame_GetBlankTexture_009fd3f0.cpp
 CGroundNavigatorExternalInterface	0x0	void*	__vftable	4	char	p	4	AGREE_KIND_SOFT	CGroundNavigatorExternalInterface_IsPlayer_006cb5f0.cpp
-CGroundNavigatorExternalInterface	0x4	CThingCreatureBase*	Creature	4	CGroundNavigator*	nav	4	AGREE	CGroundNavigatorExternalInterface_FindPosZAt_006cd970.cpp
 CGroundNavigatorExternalInterface	0x4	CThingCreatureBase*	Creature	4	S*	f4	4	AGREE	CGroundNavigatorExternalInterface_IsPlayer_006cb5f0.cpp
 CGuiVarTransferFloat	0x0	void*	__vftable	4	int	f0	4	AGREE_KIND_SOFT	CGuiVarTransferFloat_TransferFromGui_00c3ca30.cpp
 CGuiVarTransferFloat	0x4	unsigned char	_pad_0x04	4	int	f4	4	RETAIL_ONLY	CGuiVarTransferFloat_TransferFromGui_00c3ca30.cpp
@@ -718,12 +716,10 @@ CKeyboardDX	0x341c	CInputManagerDX*	InputManagerDX	4	unsigned char	keyStates	256
 CKeyboardDX	0x351c	signed char[256]	KeyStates	256	unsigned short	keyMap	512	CONFLICT	CKeyboardDX_IsKeyPressed_00ab6220.cpp
 CKrakenDef	size			128	sizeof	GetSizeofClass	124	SIZE_CONFLICT	GetSizeofClass
 CLandscapeBackgroundPatch	0x4	CLandscapeBackgroundTreeNode*	Parent	4	unsigned long	f	4	AGREE_KIND_SOFT	CLandscapeBackgroundPatch_OnPostParentRelocation_00be8db0.cpp
-CLandscapeBackgroundSubNodeSplitBranch	0x4	CLandscapeBackgroundTreeNode	LeftBranch	240	Sub	sub0	4	CONTAINED	CLandscapeBackgroundSubNodeSplitBranch_OnPostRelocationCLandscapeBackgroundSubNodeSplit_00bf6d10.cpp
-CLandscapeBackgroundSubNodeSplitBranch	0xec	CLandscapeBackgroundTreeNode	LeftBranch	240	Sub	sub1	4	CONTAINED	CLandscapeBackgroundSubNodeSplitBranch_OnPostRelocationCLandscapeBackgroundSubNodeSplit_00bf6d10.cpp
+CLandscapeBackgroundSubNodeSplitBranch	0x0	void*	__vftable	4	unsigned char	data	4	AGREE_KIND_SOFT	CLandscapeBackgroundSubNodeSplitBranch_OnPostRelocationCLandscapeBackgroundSubNodeSplit_00bf6d10.cpp
 CLandscapeBackgroundTreeNode	0xa4	CLandscapeBackgroundTreeNode*	Parent	4	Inner*	inner	4	AGREE	CLandscapeBackgroundTreeNode_CanRelocateData_00bf6b50.cpp
 CLandscapeLayerMesh	0x0	void*	__vftable	4	char	p	64	CONFLICT	CLandscapeLayerMesh_CanRelocateData_00bfddb0.cpp
 CLandscapeLayerMesh	0x40	CEngineLandscapeMap*	Map	4	S*	f40	4	AGREE	CLandscapeLayerMesh_CanRelocateData_00bfddb0.cpp
-CLandscapePatchTesselator	0x14	unsigned char	_pad_0x14	4	BridgeBuffer	m_bridge	4	RETAIL_ONLY	CLandscapePatchTesselator_SetBridgeVertexBufferSize_00b6ccf0.cpp
 CLandscapePatchTesselator	0x14	unsigned char	_pad_0x14	4	BridgeVertex*	m_begin	4	RETAIL_ONLY	CLandscapePatchTesselator_GetBridgeVertexBufferSize_00b6c990.cpp
 CLandscapePatchTesselator	0x14	unsigned char	_pad_0x14	4	long	m_begin	4	RETAIL_ONLY	previous header
 CLandscapePatchTesselator	0x18	CArray<CTVertexLandscapeBackground>	BridgeVertexBuffer	16	BridgeVertex*	m_end	4	CONTAINED	CLandscapePatchTesselator_GetBridgeVertexBufferSize_00b6c990.cpp
@@ -790,10 +786,8 @@ CMultiStaticMeshDef	0x28	vector<CMultiStaticMeshEntryDef,std::allocator<CMultiSt
 CMultiStaticMeshDef	size			56	sizeof	GetSizeofClass	52	SIZE_CONFLICT	GetSizeofClass
 CNavBlockedQuadTreeNode	0x0	void*	__vftable	4	int	x	4	AGREE_KIND_SOFT	CNavBlockedQuadTreeNode_GetMemoryUsage_00a76290.cpp
 CNavNavigableLeafNode	0x18	CSmallVector<CANavQuadTreeNode_const_*,8>	Neighbours	8	signed char	m_kind	1	CONTAINED	CNavNavigableLeafNode_GetMemoryUsage_00a76500.cpp
-CNavSwitchableLeafNode	0x18	unsigned char	_pad_0x18	4	unsigned char	f_18	1	RETAIL_ONLY	CNavSwitchableLeafNode_HasNeighbours_00a76530.cpp
+CNavSwitchableLeafNode	0x18	unsigned char	_pad_0x18	4	unsigned char	f_18	1	RETAIL_ONLY	previous header
 CNavSwitchableLeafNode	0x1c	unsigned char	_pad_0x1c	4	unsigned char	b1c	1	RETAIL_ONLY	previous header
-CNavSwitchableLeafNode	0xf	unsigned char	_pad_0x0c	4	unsigned char	f_0f	1	RETAIL_ONLY	CNavSwitchableLeafNode_HasNeighbours_00a76530.cpp
-CNavSwitchableLeafNode	0xf	unsigned char	_pad_0x0c	4	unsigned char	m_disabled	1	RETAIL_ONLY	CNavSwitchableLeafNode_GetRegionID_00a75be0.cpp
 CNavSwitchableLeafNode	0xf	unsigned char	_pad_0x0c	4	unsigned char	m_disabled	1	RETAIL_ONLY	previous header
 CNavigatorAStar	0x19	unsigned char	_pad_0x18	4	unsigned char	flag19	1	RETAIL_ONLY	CNavigatorAStar_Interrupt_00a1a150.cpp
 CNavigatorAStar	0x1c	unsigned char	_pad_0x1c	4	char*	sub	4	RETAIL_ONLY	CNavigatorAStar_Interrupt_00a1a150.cpp
@@ -841,8 +835,12 @@ CPhysicsFacesSegmentBranch	0x18	CIPhysicsFacesSegmentBase*	NegativeChild	4	ISize
 CPhysicsFacesSegmentLeaf	0x4	CArray<unsigned_short>	TriangleListIndex	16	short*	begin	4	CONTAINED	CPhysicsFacesSegmentLeaf_Sizeof_00a86100.cpp
 CPhysicsFacesSegmentLeaf	0xc	CArray<unsigned_short>	TriangleListIndex	16	short*	end	4	CONTAINED	CPhysicsFacesSegmentLeaf_Sizeof_00a86100.cpp
 CPixelFormat	0x0	long	FormatIndex	4	int	fmt	4	AGREE	CPixelFormat_GetByteColourDepth_009e3800.cpp
+CPlayer	0x0	void*	__vftable	4	char	m_leading	16	CONFLICT	CPlayer_IsMainPlayer_00487520.cpp
+CPlayer	0x10	CPlayerManager*	PlayerManager	4	CPlayerManager*	PlayerManager	4	AGREE	CPlayer_IsMainPlayer_00487520.cpp
+CPlayer	0x14	CMainGameComponent*	Component	4	char	m_between14And28	20	CONFLICT	CPlayer_IsMainPlayer_00487520.cpp
 CPlayer	0x217	list<EPlayerMode,std::allocator<EPlayerMode>_>	PlayerModes	12	unsigned char	aggressive	1	CONTAINED	CPlayer_ToggleAggressiveMode_00487e90.cpp
 CPlayer	0x24	CWorldMap*	PWorldMap	4	long	m28	4	AGREE_KIND_SOFT	CPlayer_IsUsingJoystickDeviceNumber_004874f0.cpp
+CPlayer	0x28	long	Number	4	long	Number	4	AGREE	CPlayer_IsMainPlayer_00487520.cpp
 CPlayerDef	0x3c	unsigned char	_pad_0x3c	4	CSubA	m3c	4	RETAIL_ONLY	CPlayerDef_TransferCPlayerDefUAEXAAVCPersistContextZ_00459582.cpp
 CPlayerDef	0x3c	unsigned char	_pad_0x3c	4	unsigned int	f3c	4	RETAIL_ONLY	CPlayerDef_Copy_00462888.cpp
 CPlayerDef	0x40	long	CharacterDef	4	CSubB	m40	4	AGREE	CPlayerDef_TransferCPlayerDefUAEXAAVCPersistContextZ_00459582.cpp
@@ -967,6 +965,7 @@ CScrollingComponent	0x24	unsigned char	_base_0x04	392	long	field24	4	RETAIL_ONLY
 CScrollingComponent	0x24	unsigned char	_base_0x04	392	void*	field24	4	RETAIL_ONLY	CScrollingComponent_ChangeState_00452b4d.cpp
 CScrollingComponent	0x28	unsigned char	_base_0x04	392	long	field28	4	RETAIL_ONLY	previous header
 CScrollingComponent	0x28	unsigned char	_base_0x04	392	void*	field28	4	RETAIL_ONLY	CScrollingComponent_ChangeState_00452b4d.cpp
+CShaderBankStateBlock	0x4	CStateBlock	State	8	int	crcData	4	CONTAINED	CShaderBankStateBlock_CreateCRC_00a62580.cpp
 CShaderDataBank	0x0	void*	__vftable	4	int	x	4	AGREE_KIND_SOFT	CShaderDataBank_CloseCShaderDataBankUAEXXZ_00a62110.cpp
 CShopDef	size			224	sizeof	GetSizeofClass	208	SIZE_CONFLICT	GetSizeofClass
 CShoveHaPennyRegionDef	0x28	float	Start	4	unsigned int	f28	4	CONFLICT	CShoveHaPennyRegionDef_Copy_004eafc9.cpp
@@ -1036,10 +1035,9 @@ CSpecialAbilitiesTurncoatSpellDef	size			144	sizeof	GetSizeofClass	120	SIZE_CONF
 CSpecialAbilitiesUnholyPowerDef	size			312	sizeof	GetSizeofClass	252	SIZE_CONFLICT	GetSizeofClass
 CSpecialEffectsDef	size			56	sizeof	GetSizeofClass	52	SIZE_CONFLICT	GetSizeofClass
 CStaticFontBank	0x4	unsigned char	_pad_0x04	4	long	m_maxHeight	4	RETAIL_ONLY	previous header
-CStaticFontBank	0x4	unsigned char	_pad_0x04	4	unsigned int	m_maxHeight	4	RETAIL_ONLY	CStaticFontBank_GetFontMaxHeight_00ab7a50.cpp
 CStreamingFontBank	0x4	unsigned char	_pad_0x04	4	long	m_maxHeight	4	RETAIL_ONLY	previous header
-CStreamingFontBank	0x4	unsigned char	_pad_0x04	4	unsigned int	m_maxHeight	4	RETAIL_ONLY	CStreamingFontBank_GetFontMaxHeight_009a0ea0.cpp
 CStreamingFontBankStateBlock	0x0	void*	__vftable	4	char	a	4	AGREE_KIND_SOFT	CStreamingFontBankStateBlock_Set_00a5ee40.cpp
+CStreamingFontBankStateBlock	0x4	CStateBlock	State	16	int	crcData	4	CONTAINED	CStreamingFontBankStateBlock_CreateCRC_00a5f6a0.cpp
 CStreamingFontBankStateBlock	0x4	CStateBlock	State	16	unsigned char	f10	1	CONTAINED	CStreamingFontBankStateBlock_Set_00a5ee40.cpp
 CStreamingFontDataBank	0x0	void*	__vftable	4	int	x	4	AGREE_KIND_SOFT	CStreamingFontDataBank_CloseCStreamingFontDataBankUAEXXZ_00a5f420.cpp
 CStreamingFontDataBankEntry	0x4	CFontBank*	Font_Data	4	int	ptr	4	AGREE_KIND_SOFT	CStreamingFontDataBankEntry_IsLoaded_00a5f220.cpp
@@ -1067,10 +1065,14 @@ CTCCombat	0x4	unsigned char	_pad_0x04	4	long	obj	4	RETAIL_ONLY	previous header
 CTCCombat	0x50	CDefPointeeBase*	PBlockCounterAbility_Object	4	int	f50	4	AGREE_KIND_SOFT	CTCCombat_OnHit_007332d0.cpp
 CTCCombat	0x68	vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>	AlwaysBlockThings	16	int	field_68	4	CONTAINED	CTCCombat_IsVulnerableToUnblockableAttack_007331c0.cpp
 CTCCoopSpirit	0x0	void*	__vftable	4	unsigned char	storage	52	CONFLICT	CTCCoopSpirit_Construct_004d55d0.cpp
+CTCCreatureGenerator	0x0	void*	__vftable	4	char	m_leading	80	CONFLICT	CTCCreatureGenerator_SetAlwaysCreateCreaturesOnTrigger_00749d70.cpp
 CTCCreatureGenerator	0x18	CArray<CDefIndex>	CreatureFamilies	16	ListNode*	list	4	CONTAINED	CTCCreatureGenerator_IsDepleted_00749e20.cpp
 CTCCreatureGenerator	0x1c	list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>	CreatedCreatures	12	intrusive list	head	4	CONTAINED	CTCCreatureGenerator_IsDepleted_00749e20.cpp
 CTCCreatureGenerator	0x44	TGenerationParameters	GenParams	36	int	f40	4	CONTAINED	CTCCreatureGenerator_IsDepleted_00749e20.cpp
+CTCCreatureGenerator	0x4c	TGenerationParameters	GenParams	36	bool	active	1	CONTAINED	CTCCreatureGenerator_SetAsActive_00749dd0.cpp
+CTCCreatureGenerator	0x50	TGenerationParameters	GenParams	36	bool	m_bSuppressCreateOnTrigger	1	CONTAINED	CTCCreatureGenerator_SetAlwaysCreateCreaturesOnTrigger_00749d70.cpp
 CTCCreatureGenerator	0x58	TGenerationParameters	GenParams	36	int	f54	4	CONTAINED	CTCCreatureGenerator_IsDepleted_00749e20.cpp
+CTCCreatureGenerator	0x5c	bool	Active	1	unsigned char	activationState	1	AGREE	CTCCreatureGenerator_SetAsActive_00749dd0.cpp
 CTCCreatureGenerator	0x88	vector<C3DVector,std::allocator<C3DVector>_>	HiddenPositions	16	int	f84	4	CONTAINED	CTCCreatureGenerator_IsDepleted_00749e20.cpp
 CTCCreatureNavigation	0x50	vector<CSteeringAgent_const_*,std::allocator<CSteeringAgent_const_*>_>	Agents	16	int	cur	4	CONTAINED	CTCCreatureNavigation_IsCurrentlyNavigating_006cb8f0.cpp
 CTCCreatureNavigation	0x55	long	NextUpdate	4	unsigned char	flag	1	CONFLICT	CTCCreatureNavigation_SetAsAbleToMoveThroughSolidObjects_006cb9d0.cpp
@@ -1165,16 +1167,19 @@ CTCQuestCompletionUI	0xc0	CText*	PGoldText	4	unsigned char	m_c0	1	CONFLICT	CTCQu
 CTCShotDefinitionProjectile	0x0	void*	__vftable	4	void*	m0	4	AGREE	CTCShotDefinitionProjectile_UpdateMovement_007bbc47.cpp
 CTCShotDefinitionProjectile	0x4	unsigned char	_pad_0x04	4	M4*	m4	4	RETAIL_ONLY	CTCShotDefinitionProjectile_UpdateMovement_007bbc47.cpp
 CTCShotDefinitionProjectile	0x4	unsigned char	_pad_0x04	4	long	m4	4	RETAIL_ONLY	previous header
-CTCSpotLight	0x10	CSpotLightInfo*	PLightInfo_Data	4	float*	f10	4	AGREE	CTCSpotLight_SetAngle_00731be0.cpp
 CTCSpotLight	0x14	CCPPointerInfo*	PLightInfo_Info	4	unsigned long	f	4	AGREE_KIND_SOFT	CTCSpotLight_OnAppearanceClear_00731aa0.cpp
-CTCSpotLight	0x1c	bool	Overridden	1	unsigned char	b1c	1	AGREE	CTCSpotLight_SetAngle_00731be0.cpp
 CTCStockItem	0xc	bool	ForSale	1	char	flag	1	AGREE	CTCStockItem_OnInitialActivate_007f5050.cpp
+CTCTargeted	0x0	void*	__vftable	4	char	m_leading	12	CONFLICT	CTargetingFlags_AddTargetingFlag_007ea240.cpp
 CTCTargeted	0x0	void*	__vftable	4	void*	v	4	AGREE	CTCTargeted_GetNumTargetPoints_007ea2d0.cpp
 CTCTargeted	0x4	unsigned char	_pad_0x04	4	Inner*	obj	4	RETAIL_ONLY	CTCTargeted_GetNumTargetPoints_007ea2d0.cpp
 CTCTargeted	0x4	unsigned char	_pad_0x04	4	long	obj	4	RETAIL_ONLY	previous header
+CTCTargeted	0xc	unsigned long	TargetingFlags	4	unsigned int	m_targetingFlags	4	AGREE	CTargetingFlags_AddTargetingFlag_007ea240.cpp
 CTCTargetingPlayer	0x3c	bool	TargetNextThing	1	unsigned char	f3c	1	AGREE	CTCTargetingPlayer_SetAsPickUpNewLockTarget_008023a0.cpp
 CTCTargetingPlayer	0x40	ETargetNextThingMethod	TargetNextThingMethod	4	unsigned int	f40	4	CONTAINED	CTCTargetingPlayer_SetAsPickUpNewLockTarget_008023a0.cpp
 CTCTargetingPlayer	0x44	long	FrameSetAsTargetNextThing	4	unsigned int	f44	4	AGREE	CTCTargetingPlayer_SetAsPickUpNewLockTarget_008023a0.cpp
+CTCTavernGameCardBase	0x0	void*	__vftable	4	char	m_leading	776	CONFLICT	CQuestCardScreen_SelectCard_008f09c0.cpp
+CTCTavernGameCardBase	0x308	float[52]	BestTimes	208	int	m_selectedIndex	4	CONTAINED	CQuestCardScreen_SelectCard_008f09c0.cpp
+CTCTavernGameCardBase	0x30c	float[52]	BestTimes	208	int	m_highlightedIndex	4	CONTAINED	CQuestCardScreen_SelectCard_008f09c0.cpp
 CTCTrapBase	0x38	vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>	TriggerThings	16	char	f38	1	CONTAINED	CTCTrapBase_ManualTrigger_00788388.cpp
 CTCTrapBase	0x58	CFadeInFadeOutBase	TrapOpener	28	char	f58	1	CONTAINED	CTCTrapBase_ManualTrigger_00788388.cpp
 CTCTurncoat	0x14	CDefPointeeBase*	PDef_Object	4	CTCInner*	inner	4	AGREE	CTCTurncoat_IsTurncoatable_007c7870.cpp
@@ -1183,7 +1188,8 @@ CTCTurncoatSpell	0x3a	CWillButtonHelperTimer	Timer	56	unsigned char	b3a	1	CONTAI
 CTCTurncoatSpell	0x4c	CIntelligentPointer<CThingCreatureBase>	PTarget	8	long	f4c	4	CONTAINED	CTCTurncoatSpell_SetAICast_007c66e0.cpp
 CTCVillage	0xd4	list<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>	CrateTasks	12	int	m_guardEnemyThreshold	4	CONTAINED	CTCVillage_GetIsHeroEnemyOfGuards_00658604.cpp
 CTCWeapon	0x1c	long	NumThingsKilled	4	int	numThingsKilled	4	AGREE	CTCWeapon_IncrementNumThingsKilled_005da680.cpp
-CTCWife	0x20	long	FrameGotMarriedToThePlayer	4	int	f20	4	AGREE	CTCWife_IsMarriedToThePlayer_006cec80.cpp
+CTCWife	0x0	void*	__vftable	4	char	m_leading	164	CONFLICT	CTCWife_ClearAppearanceChangedNoticed_006cecd0.cpp
+CTCWife	0xa4	set<long,std::less<long>,std::allocator<long>_>	ThingsSeenThePlayerWear	16	long	FrameNoticedChangeInAppearance	64	CONFLICT	CTCWife_ClearAppearanceChangedNoticed_006cecd0.cpp
 CTCWillLightning	0x1c	long	AIHoldingDownTimer	4	int	m_timeToCast	4	AGREE	CTCWillLightning_SetTimeToCastLightning_0079f5f0.cpp
 CTCWillLightning	0x5b	CWillButtonHelperTimer	m_tTimer	56	char	m_castFlag	1	CONTAINED	CTCWillLightning_SetTimeToCastLightning_0079f5f0.cpp
 CTargetingDef	size			148	sizeof	GetSizeofClass	144	SIZE_CONFLICT	GetSizeofClass
@@ -1201,7 +1207,6 @@ CTestPos	0x8	unsigned char	_pad_0x08	4	IProvider*	field_8	4	RETAIL_ONLY	CTestPos
 CTestPos	0x8	unsigned char	_pad_0x08	4	long	field_8	4	RETAIL_ONLY	previous header
 CTestPos	0xc	unsigned char	_pad_0x0c	4	int	field_c	4	RETAIL_ONLY	CTestPos_Init_00ca7c60.cpp
 CTestPos	0xc	unsigned char	_pad_0x0c	4	long	field_c	4	RETAIL_ONLY	previous header
-CText	0x15c	unsigned char	_pad_0x15c	4	unsigned char	flags	1	RETAIL_ONLY	CText_GetAlignment_00661e80.cpp
 CText	0x15c	unsigned char	_pad_0x15c	4	unsigned char	flags	1	RETAIL_ONLY	previous header
 CTexture	0x0	IDirect3DTexture9*	PD3DTexture	4	IRefObj*	obj	4	AGREE	CTexture_GetRefCount_009f9d60.cpp
 CTextureReplacementDef	size			56	sizeof	GetSizeofClass	52	SIZE_CONFLICT	GetSizeofClass
@@ -1234,6 +1239,7 @@ CThingObjectDef	size			160	sizeof	GetSizeofClass	156	SIZE_CONFLICT	GetSizeofClas
 CThingPhysical	0x64	unsigned char	_pad_0x64	4	Sub64*	f64	4	RETAIL_ONLY	CThingPhysical_SetScale_006a4b80.cpp
 CThingPhysical	0x64	unsigned char	_pad_0x64	4	long	f64	4	RETAIL_ONLY	previous header
 CThingPhysical	0x9c	unsigned char	_pad_0x9c	4	float	f9c	4	RETAIL_ONLY	CThingPhysical_SetScale_006a4b80.cpp
+CThingPhysical	0x9c	unsigned char	_pad_0x9c	4	float	f9c	4	RETAIL_ONLY	previous header
 CThingPhysicalSwitchDef	size			152	sizeof	GetSizeofClass	148	SIZE_CONFLICT	GetSizeofClass
 CThingSearchTools	0x8	CThingManager*	ThingManager	4	TypeArrays*	arrays	4	AGREE	CThingSearchTools_PeekTypeList_0049c780.cpp
 CThingShotDef	size			176	sizeof	GetSizeofClass	172	SIZE_CONFLICT	GetSizeofClass
@@ -1304,8 +1310,6 @@ CWorldMap	0x18	map<CCharString,long,std::less<CCharString>,std::allocator<std::p
 CWorldMap	0x1c	map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>	LoadedScriptedMapBrushes	16	long	f1c	4	CONTAINED	CWorldMap_GetMapPos_004fc690.cpp
 CWorldMap	0x20	map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>	LoadedScriptedMapBrushes	16	E*	f20	4	CONTAINED	CWorldMap_ActivateTopology_004fcbb0.cpp
 CWorldMap	0x20	map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>	LoadedScriptedMapBrushes	16	E*	f20	4	CONTAINED	CWorldMap_IsMapLoadedOnPlayerProximity_004fd000.cpp
-CWorldMap	0x20	map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>	LoadedScriptedMapBrushes	16	MapEntry*	entries	4	CONTAINED	CWorldMap_GetMapAtCWorldMapUAEAAVCMapABVC2DCoordIZ_004fc130.cpp
-CWorldMap	0x20	map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>	LoadedScriptedMapBrushes	16	MapEntry*	entries	4	CONTAINED	CWorldMap_PeekMapAtCWorldMapUBEABVCMapABVC2DCoordIZ_004fc150.cpp
 CWorldMap	0x20	map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>	LoadedScriptedMapBrushes	16	MapEntry*	entries	4	CONTAINED	CWorldMap_PeekMap_0051ce40.cpp
 CWorldMap	0x20	map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>	LoadedScriptedMapBrushes	16	MapEntry*	f20	4	CONTAINED	CWorldMap_GetMapPos_004fc690.cpp
 CWorldMap	0x20	map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>	LoadedScriptedMapBrushes	16	MapEntry*	m_maps	4	CONTAINED	CWorldMap_GetMap_0051ce20.cpp

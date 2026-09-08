@@ -1,2 +1,9 @@
-struct C_006b7310 { char pad[0xc14]; char sub; void* M(); };
-void* C_006b7310::M(){ return &this->sub; }
+#include "fable_environment_retail.h"
+
+struct CEnvironment_PeekWindDirection : CEnvironmentRetail {
+    const CEnvironmentVector* M() const;
+};
+
+const CEnvironmentVector* CEnvironment_PeekWindDirection::M() const {
+    return &GameTickState.WindDirection;
+}

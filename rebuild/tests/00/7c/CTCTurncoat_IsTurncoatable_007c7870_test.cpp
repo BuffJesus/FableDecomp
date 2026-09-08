@@ -1,38 +1,36 @@
 #include <cstdio>
+#include "engine/CTCTurncoat.h"
 
-struct CTCInner
-{
-    char pad[0x25];
-    char flag;      // +0x25
+struct CRetailTurncoatDef {
+    unsigned char _base[0x25];
+    bool Turncoatable;
 };
 
-struct CTCTurncoat
-{
-    char pad0[0x14];
-    CTCInner* inner;   // +0x14
-    char pad1[0x2c - 0x18];
-    char enabled;      // +0x2c
-
+struct CTCTurncoat_Methods : CTCTurncoat {
     int IsTurncoatable();
 };
 
-int main()
-{
-    CTCInner inner;
-    CTCTurncoat obj;
+int CTCTurncoat_Methods::IsTurncoatable() {
+    if (TurncoatOverride) {
+        const CRetailTurncoatDef* definition =
+            reinterpret_cast<const CRetailTurncoatDef*>(PDef_Object);
+        if (definition->Turncoatable) return 1;
+    }
+    return 0;
+}
 
-    // both true -> 1
-    obj.enabled = 1; obj.inner = &inner; inner.flag = 1;
-    if (obj.IsTurncoatable() != 1) { printf("FAIL1\n"); return 1; }
-
-    // enabled false -> 0 (inner not touched)
-    obj.enabled = 0; inner.flag = 1;
-    if (obj.IsTurncoatable() != 0) { printf("FAIL2\n"); return 1; }
-
-    // enabled true, flag false -> 0
-    obj.enabled = 1; inner.flag = 0;
-    if (obj.IsTurncoatable() != 0) { printf("FAIL3\n"); return 1; }
-
-    printf("TURNCOAT_OK\n");
+int main() {
+    CRetailTurncoatDef definition;
+    CTCTurncoat_Methods turncoat;
+    turncoat.PDef_Object = reinterpret_cast<CDefPointeeBase*>(&definition);
+    turncoat.TurncoatOverride = true;
+    definition.Turncoatable = true;
+    if (turncoat.IsTurncoatable() != 1) return 1;
+    turncoat.TurncoatOverride = false;
+    if (turncoat.IsTurncoatable() != 0) return 2;
+    turncoat.TurncoatOverride = true;
+    definition.Turncoatable = false;
+    if (turncoat.IsTurncoatable() != 0) return 3;
+    std::printf("TURNCOAT_OK\n");
     return 0;
 }

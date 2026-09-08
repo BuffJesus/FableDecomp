@@ -130812,6 +130812,97 @@ $catalog = @(
         TestSource = '00/a2/C3DMeshLODInfo_IsResourceLoaded_00a23de0_test.cpp'
         PassPattern = 'IS_RESOURCE_LOADED PASS'
     }
+    [pscustomobject]@{
+        Address = '00a8ca00'
+        Module = 'C3DMesh2'
+        Source = '00/a8/C3DMesh2_CanRelocateData_00a8ca00.cpp'
+        TestSource = '00/a8/C3DMesh2_CanRelocateData_00a8ca00_test.cpp'
+        PassPattern = 'CAN_RELOCATE_DATA PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b91340'
+        Module = 'CEnginePrimitiveManagerOcclusionBase'
+        Source = '00/b9/CEnginePrimitiveManagerOcclusionBase_RenderBoundingVolume_00b91340.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerOcclusionBase_RenderBoundingVolume_00b91340_test.cpp'
+        PassPattern = 'RENDER_BOUNDING_VOLUME PASS'
+    }
+    [pscustomobject]@{
+        Address = '00902ca7'
+        Module = 'CAIStateGroup_ServeFoodAtHome'
+        Source = '00/90/CAIStateGroupServeFoodAtHome_GetBuilding_00902ca7.cpp'
+        TestSource = '00/90/CAIStateGroupServeFoodAtHome_GetBuilding_00902ca7_test.cpp'
+        PassPattern = 'SERVE_FOOD_HOME_BUILDING PASS'
+    }
+    [pscustomobject]@{
+        Address = '00902cdc'
+        Module = 'CAIStateGroup_ServeFoodAtTavern'
+        Source = '00/90/CAIStateGroupServeFoodAtTavern_GetBuilding_00902cdc.cpp'
+        TestSource = '00/90/CAIStateGroupServeFoodAtTavern_GetBuilding_00902cdc_test.cpp'
+        PassPattern = 'SERVE_FOOD_TAVERN_BUILDING PASS'
+    }
+    [pscustomobject]@{
+        Address = '00548710'
+        Module = 'CUserProfileManager'
+        Source = '00/54/CUserProfileManager_IsCameraResetting_00548710.cpp'
+        TestSource = '00/54/CUserProfileManager_IsCameraResetting_00548710_test.cpp'
+        PassPattern = 'IS_CAMERA_RESETTING PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fd3f0'
+        Module = 'CGraphicInfoFrame'
+        Source = '00/9f/CGraphicInfoFrame_GetBlankTexture_009fd3f0.cpp'
+        TestSource = '00/9f/CGraphicInfoFrame_GetBlankTexture_009fd3f0_test.cpp'
+        PassPattern = 'GET_BLANK_TEXTURE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdc150'
+        Module = 'CEngineLandscapeMap'
+        Source = '00/bd/CEngineLandscapeMap_IsBackgroundAtFullDetailInArea_00bdc150.cpp'
+        TestSource = '00/bd/CEngineLandscapeMap_IsBackgroundAtFullDetailInArea_00bdc150_test.cpp'
+        PassPattern = 'BACKGROUND_FULL_DETAIL PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0c8e0'
+        Module = 'CWStringParser'
+        Source = '00/a0/CWStringParser_Init_00a0c8e0.cpp'
+        TestSource = '00/a0/CWStringParser_Init_00a0c8e0_test.cpp'
+        PassPattern = 'WSTRING_PARSER_INIT PASS'
+    }
+    [pscustomobject]@{
+        Address = '00661f20'
+        Module = 'CTCUserActionPointBase'
+        Source = '00/66/CTCUserActionPointBase_IsActionPointFree_00661f20.cpp'
+        TestSource = '00/66/CTCUserActionPointBase_IsActionPointFree_00661f20_test.cpp'
+        PassPattern = 'ACTION_POINT_FREE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00487520'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_IsMainPlayer_00487520.cpp'
+        TestSource = '00/48/CPlayer_IsMainPlayer_00487520_test.cpp'
+        PassPattern = 'IS_MAIN_PLAYER PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a61f40'
+        Module = 'CShaderBankStateBlock'
+        Source = '00/a6/CShaderBankStateBlock_Set_00a61f40.cpp'
+        TestSource = '00/a6/CShaderBankStateBlock_Set_00a61f40_test.cpp'
+        PassPattern = 'SHADER_STATE_SET PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b91710'
+        Module = 'CEngineSceneGridCell'
+        Source = '00/b9/CEngineSceneGridCell_InvalidateAll_00b91710.cpp'
+        TestSource = '00/b9/CEngineSceneGridCell_InvalidateAll_00b91710_test.cpp'
+        PassPattern = 'SCENE_GRID_INVALIDATE PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cecd0'
+        Module = 'CTCWife'
+        Source = '00/6c/CTCWife_ClearAppearanceChangedNoticed_006cecd0.cpp'
+        TestSource = '00/6c/CTCWife_ClearAppearanceChangedNoticed_006cecd0_test.cpp'
+        PassPattern = 'WIFE_APPEARANCE_NOTICE_CLEAR PASS'
+    }
 )
 
 $requestedAddresses = @(

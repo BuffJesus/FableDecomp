@@ -11,7 +11,7 @@
 #pragma pack(push, 1)
 struct CAIStateGroup_GameMaster {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    long          f4;                                        // +0x04 retail-only long (previous header)
+    void*         f4;                                        // +0x04 retail-only A* (CAIStateGroupGameMaster_OnActivate_0094c7b0.cpp)
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
     unsigned char _pad_0x10[0x4];                            // +0x10

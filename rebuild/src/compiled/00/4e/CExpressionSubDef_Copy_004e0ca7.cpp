@@ -1,14 +1,11 @@
-struct CDefClassBase { int base[10]; int f28; };
+#include "engine/CExpressionSubDef.h"
 
-struct CExpressionSubDef {
-    int base[10];
-    int f28;
-    // base class copy: real __fastcall member (this in ECX, src pushed on stack)
-    void BaseClone(const CDefClassBase* src);
+struct CExpressionSubDef_Methods : CExpressionSubDef {
+    void BaseClone(const CExpressionSubDef* source);
 };
 
-void __fastcall CExpressionSubDef_Copy(CExpressionSubDef* self, int /*edx*/, const CDefClassBase* src)
-{
+void __fastcall CExpressionSubDef_Copy(
+    CExpressionSubDef_Methods* self, int /*edx*/, const CExpressionSubDef* src) {
     self->BaseClone(src);
-    self->f28 = ((const CExpressionSubDef*)src)->f28;
+    self->ExpressionDef = src->ExpressionDef;
 }

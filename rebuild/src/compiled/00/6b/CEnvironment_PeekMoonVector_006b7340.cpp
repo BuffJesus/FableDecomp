@@ -1,2 +1,9 @@
-struct C_006b7340 { char pad[0xc3c]; char sub; void* M(); };
-void* C_006b7340::M(){ return &this->sub; }
+#include "fable_environment_retail.h"
+
+struct CEnvironment_PeekMoonVector : CEnvironmentRetail {
+    const CEnvironmentVector* M() const;
+};
+
+const CEnvironmentVector* CEnvironment_PeekMoonVector::M() const {
+    return &GameTickState.MoonVector;
+}

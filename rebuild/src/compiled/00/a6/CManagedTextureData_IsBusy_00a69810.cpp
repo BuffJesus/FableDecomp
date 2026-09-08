@@ -1,30 +1,27 @@
-// CManagedTextureData::IsBusy  @ retail 0x00a69810
+// CManagedTextureData_Methods::IsBusy  @ retail 0x00a69810
 // __fastcall bool IsBusy(CManagedTextureData* this)
 //
-// Reads a "busy" flag at +0x4a; if set, re-queries the underlying
-// resource object at +0x20 (a __fastcall query at 0x9f9d50) and
+// Reads a "BusyFlag" flag at +0x4a; if set, re-queries the underlying
+// Texture_Data object at +0x20 (a __fastcall query at 0x9f9d50) and
 // caches the result back into +0x4a; returns the flag.
 
-struct CTextureResource
+#include "engine/CManagedTextureData.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CTexture
 {
     bool CheckBusy();   // __fastcall @ 0x9f9d50
 };
 
-struct CManagedTextureData
-{
-    char pad00[0x20];
-    CTextureResource* resource;   // +0x20
-    char pad24[0x4a - 0x24];
-    bool busy;                    // +0x4a
+struct CManagedTextureData_Methods : CManagedTextureData {
+    // +0x4a
 
     bool IsBusy();
 };
 
-bool CManagedTextureData::IsBusy()
+bool CManagedTextureData_Methods::IsBusy()
 {
-    if (this->busy)
+    if (this->BusyFlag)
     {
-        this->busy = this->resource->CheckBusy();
+        this->BusyFlag = this->Texture_Data->CheckBusy();
     }
-    return this->busy;
+    return this->BusyFlag;
 }

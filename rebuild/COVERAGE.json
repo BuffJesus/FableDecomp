@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T21:34:44-06:00",
+  "generated_at": "2026-09-08T06:38:00-06:00",
   "catalog_functions": 49568,
   "manifest_rows": 57097,
   "modules": 3433,
@@ -9,8 +9,8 @@
   "agent_candidates": 1066,
   "agent_pass": 1053,
   "agent_fail": 12,
-  "compiled_candidates": 18604,
-  "behavior_tested_candidates": 18604,
+  "compiled_candidates": 18644,
+  "behavior_tested_candidates": 18644,
   "candidate_retail_matches": 8066,
   "candidate_relocation_matches": 10495,
   "lift_matching": 16,

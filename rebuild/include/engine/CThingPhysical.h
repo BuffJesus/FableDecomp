@@ -49,7 +49,7 @@ struct CThingPhysical {
     unsigned char _pad_0x90[0x4];                            // +0x90
     unsigned char _pad_0x94[0x4];                            // +0x94
     unsigned char _pad_0x98[0x4];                            // +0x98
-    float         f9c;                                       // +0x9c retail-only float (CThingPhysical_SetScale_006a4b80.cpp)
+    float         f9c;                                       // +0x9c retail-only float (previous header)
     unsigned char _pad_0xa0[0x4];                            // +0xa0
     unsigned char _pad_0xa4[0x4];                            // +0xa4
     unsigned char HealthOverTimeEffects[0xc];                // +0xa8 list<CThingPhysical::CHealthOverTimeHelper,std::allocator<CThingPhysical::CHealthOverTimeHelper>_>

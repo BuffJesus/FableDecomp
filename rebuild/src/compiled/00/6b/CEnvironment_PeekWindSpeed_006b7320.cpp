@@ -1,2 +1,9 @@
-struct C006b7320 { char pad[0xc10]; float f; float M(); };
-float C006b7320::M(){ return this->f; }
+#include "fable_environment_retail.h"
+
+struct CEnvironment_PeekWindSpeed : CEnvironmentRetail {
+    float M() const;
+};
+
+float CEnvironment_PeekWindSpeed::M() const {
+    return GameTickState.WindSpeed;
+}
