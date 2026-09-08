@@ -1,24 +1,24 @@
-struct CEntity;
-struct CGameScriptInterface;
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 
-struct CGSIVtbl {
-    void* slot0[11];
-    CEntity* (__fastcall* getEntity)(CGameScriptInterface* self); // +0x2c
-};
-struct CGameScriptInterface {
-    CGSIVtbl* vt;
-};
-struct CEntity {
-    unsigned char _pad[0x91];
-    unsigned char flags; // +0x91
+struct CWeaponEntityView {
+    unsigned char _pad_0x00[0x91];
+    unsigned char Flags;
 };
 
-extern "C" bool __fastcall CheckMeleeWield(CEntity* e);
+struct CGameScriptInterfaceEntityVTable {
+    void* slots[11];
+    CWeaponEntityView* (__fastcall* GetEntity)(CGameScriptInterface* self);
+};
 
-bool __stdcall CGameScriptInterface_IsEntityWieldingMeleeWeapon(CGameScriptInterface* self)
+extern "C" bool __fastcall CheckMeleeWield(CWeaponEntityView* entity);
+
+bool __stdcall CGameScriptInterface_IsEntityWieldingMeleeWeapon(
+    CGameScriptInterface* self)
 {
-    CEntity* e = self->vt->getEntity(self);
-    if (e != 0 && (e->flags & 1) == 0)
-        return CheckMeleeWield(e);
+    CGameScriptInterfaceEntityVTable* vtable =
+        (CGameScriptInterfaceEntityVTable*)self->__vftable;
+    CWeaponEntityView* entity = vtable->GetEntity(self);
+    if (entity != 0 && (entity->Flags & 1) == 0)
+        return CheckMeleeWield(entity);
     return false;
 }

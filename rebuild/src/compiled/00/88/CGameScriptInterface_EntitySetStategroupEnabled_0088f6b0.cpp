@@ -1,29 +1,23 @@
-// CGameScriptInterface::EntitySetStategroupEnabled @ 0088f6b0
-// __stdcall free-function model (ret 0xc, 3 dword params).
-// self->vt slot 0x2c is a __fastcall getter returning an Entity*.
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 
-struct Entity;
-
-struct Self;
-struct SelfVtbl {
-    void* slot[0x2c / 4];                 // 0x00..0x28
-    Entity* (__fastcall* getEntity)(Self*); // +0x2c  (__fastcall: this in ecx)
+struct CScriptEntityStateGroupView {
+    unsigned char _pad_0x00[0x10];
+    char Enabled;
+    void SetStategroup(int stateGroup, int enabled);
 };
 
-struct Entity {
-    char pad[0x10];
-    char enabled;                          // +0x10
-    void SetStategroup(int a2, int a3);    // __fastcall member
+struct CGameScriptInterfaceEntityVTable {
+    void* slots[0x2c / 4];
+    CScriptEntityStateGroupView* (__fastcall* GetEntity)(CGameScriptInterface*);
 };
 
-struct Self {
-    SelfVtbl* vt;                          // +0x0
-};
-
-void __stdcall CGameScriptInterface_EntitySetStategroupEnabled(Self* self, int a2, int a3)
+void __stdcall CGameScriptInterface_EntitySetStategroupEnabled(
+    CGameScriptInterface* self, int stateGroup, int enabled)
 {
-    Entity* e = self->vt->getEntity(self);
-    if (e && e->enabled == 1) {
-        e->SetStategroup(a2, a3);
+    CGameScriptInterfaceEntityVTable* vtable =
+        (CGameScriptInterfaceEntityVTable*)self->__vftable;
+    CScriptEntityStateGroupView* entity = vtable->GetEntity(self);
+    if (entity && entity->Enabled == 1) {
+        entity->SetStategroup(stateGroup, enabled);
     }
 }

@@ -1,21 +1,19 @@
-struct Entity {
-    void* vt;
-    unsigned char pad[0x91 - 4];
-    unsigned char flags; // +0x91
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+
+struct CAttackEntityView {
+    void* __vftable;
+    unsigned char _pad_0x04[0x91 - 4];
+    unsigned char Flags;
 };
 
-struct CGameScriptInterface;
-typedef Entity* (__fastcall* GetEntityFn)(CGameScriptInterface*);
-struct CGameScriptInterface {
-    void** vt;
-};
-
-extern char __fastcall Entity_CanAttack(Entity* self);
+typedef CAttackEntityView* (__fastcall* GetAttackEntityFn)(CGameScriptInterface*);
+extern char __fastcall Entity_CanAttack(CAttackEntityView* self);
 
 bool __stdcall CGameScriptInterface_IsEntityAbleToAttack(CGameScriptInterface* self)
 {
-    Entity* e = ((GetEntityFn*)self->vt)[0x2c / 4](self);
-    if (e != 0 && (e->flags & 0x1) == 0)
-        return Entity_CanAttack(e);
+    GetAttackEntityFn* vtable = (GetAttackEntityFn*)self->__vftable;
+    CAttackEntityView* entity = vtable[0x2c / 4](self);
+    if (entity != 0 && (entity->Flags & 1) == 0)
+        return Entity_CanAttack(entity);
     return false;
 }
