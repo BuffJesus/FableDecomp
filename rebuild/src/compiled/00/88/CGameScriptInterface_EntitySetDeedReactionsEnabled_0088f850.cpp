@@ -1,17 +1,24 @@
-// CGameScriptInterface::EntitySetDeedReactionsEnabled @ 0088f850
-struct Local {
-    int a;
-    Local(int x, int y);
-    ~Local();
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+
+struct CDeedReactionName {
+    int Value;
+    CDeedReactionName(int value, int length);
+    ~CDeedReactionName();
 };
 
-struct CGameScriptInterface;
-typedef void (__fastcall *PFN)(CGameScriptInterface*, Local*, int, Local*, int);
-struct VT { PFN slots[0x300]; };
-struct CGameScriptInterface { VT* vt; };
+typedef void (__fastcall *SetDeedReactionsFn)(
+    CGameScriptInterface*, CDeedReactionName*, int,
+    CDeedReactionName*, int);
 
-void __fastcall CGameScriptInterface_EntitySetDeedReactionsEnabled(CGameScriptInterface* self, int, int entity, int enabled)
+struct CGameScriptInterfaceDeedVTable {
+    SetDeedReactionsFn Slots[0x300];
+};
+
+void __fastcall CGameScriptInterface_EntitySetDeedReactionsEnabled(
+    CGameScriptInterface* self, int, int entity, int enabled)
 {
-    Local loc(0x1275988, -1);
-    self->vt->slots[0x938/4](self, &loc, entity, &loc, enabled);
+    CDeedReactionName name(0x1275988, -1);
+    CGameScriptInterfaceDeedVTable* vtable =
+        (CGameScriptInterfaceDeedVTable*)self->__vftable;
+    vtable->Slots[0x938 / 4](self, &name, entity, &name, enabled);
 }

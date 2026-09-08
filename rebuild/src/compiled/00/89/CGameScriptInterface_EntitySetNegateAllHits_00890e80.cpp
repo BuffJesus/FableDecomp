@@ -1,26 +1,30 @@
-struct Entity {
-    unsigned char _p0[0x6c];
-    unsigned char f6c;
-    unsigned char _p6d[0x24];
-    unsigned char f91;
-    unsigned char _p92[0x2a];
-    unsigned char fbc;
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+
+struct CCombatToggleEntityView {
+    unsigned char _pad_0x00[0x6c];
+    unsigned char CombatFlags;
+    unsigned char _pad_0x6d[0x24];
+    unsigned char StateFlags;
+    unsigned char _pad_0x92[0x2a];
+    unsigned char HitFlags;
 };
 
-struct GSIvt {
-    unsigned char _s0[0x2c];
-    Entity* (__fastcall *getEntity)(void* self);
+struct CGameScriptInterfaceCombatVTable {
+    unsigned char _pad_0x00[0x2c];
+    CCombatToggleEntityView* (__fastcall *GetEntity)(void* self);
 };
-struct GSI { GSIvt* vt; };
 
-void __stdcall CGameScriptInterface_EntitySetNegateAllHits(GSI* self, unsigned char value)
+void __stdcall CGameScriptInterface_EntitySetNegateAllHits(
+    CGameScriptInterface* self, unsigned char value)
 {
-    Entity* e = self->vt->getEntity(self);
-    if (!e) return;
-    if (e->f91 & 1) return;
-    if (!(e->f6c & 2)) return;
-    unsigned char cl = (unsigned char)(value << 4);
-    cl ^= e->fbc;
-    cl &= 0x10;
-    e->fbc ^= cl;
+    CGameScriptInterfaceCombatVTable* vtable =
+        (CGameScriptInterfaceCombatVTable*)self->__vftable;
+    CCombatToggleEntityView* entity = vtable->GetEntity(self);
+    if (!entity) return;
+    if (entity->StateFlags & 1) return;
+    if (!(entity->CombatFlags & 2)) return;
+    unsigned char bit = (unsigned char)(value << 4);
+    bit ^= entity->HitFlags;
+    bit &= 0x10;
+    entity->HitFlags ^= bit;
 }

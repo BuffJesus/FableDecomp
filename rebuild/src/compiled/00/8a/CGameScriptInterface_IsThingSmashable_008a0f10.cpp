@@ -1,23 +1,23 @@
-struct Thing {
-    unsigned char _pad0[0x28];
-    unsigned int flags28;   // +0x28
-    unsigned char _pad2[0x65];
-    unsigned char flags91;  // +0x91
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+
+struct CSmashableThingView {
+    unsigned char _pad_0x00[0x28];
+    unsigned int TypeFlags;
+    unsigned char _pad_0x2c[0x65];
+    unsigned char StateFlags;
 };
 
-struct IGSIVtbl {
-    void* slots[11];
-    Thing* (__fastcall* getThing)(void* self); // slot 0x2c/4 = 11
-};
-
-struct CGameScriptInterface {
-    IGSIVtbl* vt;
+struct CGameScriptInterfaceSmashableVTable {
+    void* Slots[11];
+    CSmashableThingView* (__fastcall* GetThing)(void* self);
 };
 
 bool __stdcall CGameScriptInterface_IsThingSmashable(CGameScriptInterface* self)
 {
-    Thing* t = self->vt->getThing(self);
-    if (t && !(t->flags91 & 0x1) && (t->flags28 & 0x4000))
+    CGameScriptInterfaceSmashableVTable* vtable =
+        (CGameScriptInterfaceSmashableVTable*)self->__vftable;
+    CSmashableThingView* thing = vtable->GetThing(self);
+    if (thing && !(thing->StateFlags & 1) && (thing->TypeFlags & 0x4000))
         return true;
     return false;
 }
