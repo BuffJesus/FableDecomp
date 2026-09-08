@@ -37,12 +37,18 @@ meta={int(r["address"],16):r for r in rows if r.get("address")}
 funcset=set(addrs)
 cat=(ROOT/"rebuild/build_candidates.ps1").read_text(encoding="utf-8")
 landed=set(int(m,16) for m in re.findall(r"Address\s*=\s*'([0-9a-fA-F]{8})'",cat))
-# global 'tried' ledger to avoid re-attempting NOWINs across runs
+# Global 'tried' ledger to avoid re-attempting NOWINs across runs.  The
+# repository copy is authoritative; an active scratch directory may contain an
+# additional session-local ledger, so union it instead of letting a stale
+# scratch copy hide durable history.
 tried=set()
-tp=SCR/"gen_tried.txt"
-if not tp.exists():
-    tp=ROOT/"tools/decomp_pipeline/crawl/gen_tried.txt"
-if tp.exists(): tried=set(int(x,16) for x in tp.read_text().split())
+ledger_paths = [ROOT/"tools/decomp_pipeline/crawl/gen_tried.txt"]
+scratch_ledger = SCR/"gen_tried.txt"
+if scratch_ledger != ledger_paths[0]:
+    ledger_paths.append(scratch_ledger)
+for ledger_path in ledger_paths:
+    if ledger_path.exists():
+        tried.update(int(x, 16) for x in ledger_path.read_text().split())
 def body(va):
     o=off(va); nx=nextof.get(va)
     if o is None or nx is None: return b""
