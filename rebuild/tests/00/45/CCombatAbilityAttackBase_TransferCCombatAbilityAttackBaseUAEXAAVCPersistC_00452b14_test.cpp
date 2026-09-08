@@ -1,13 +1,5 @@
 #include <cstdio>
-
-struct CCombatAbilityAttackBase {
-    char pad0[0x28];
-    char sub28[0x18];   // +0x28
-    unsigned char pad40; // +0x40
-    unsigned char pad41; // +0x41
-    char pad42[2];
-    unsigned short field44; // +0x44
-};
+#include "engine/CCombatAbilityAttackBase.h"
 
 static void* g_args[4];
 static int g_n = 0;
@@ -20,10 +12,10 @@ struct CPersistContext {
 
 static void Transfer(CCombatAbilityAttackBase* self, CPersistContext* ctx)
 {
-    ctx->TByte(&self->pad40);
-    ctx->TByte(&self->pad41);
-    ctx->TWord(&self->field44);
-    ctx->TSub(&self->sub28);
+    ctx->TByte(&self->CombatAbility[0x18]);
+    ctx->TByte(&self->CombatAbility[0x19]);
+    ctx->TWord((unsigned short*)&self->CombatAbility[0x1c]);
+    ctx->TSub(&self->CombatAbility[0x00]);
 }
 
 int main()

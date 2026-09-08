@@ -1,20 +1,18 @@
 #pragma optimize("s",on)
+// CSmashableDef::Copy @ 0x00453842
+#include "engine/CSmashableDef.h"  // retyped onto the PDB layout; byte parity re-verified
+
+// Base copy (CBaseDef::Copy @ 0x431f10) is invoked on self+0. The generated
+// header flattens the base subobject, so model the base call through a cast
+// to a local CBaseDef declaring only the member.
 struct CBaseDef {
     void Copy(const CBaseDef* src);
 };
 
-struct CSmashableDef : public CBaseDef {
-    char pad[0x25];
-    unsigned char b25;
-    char pad2[0x28 - 0x26];
-    int d28;
-    int d2c;
-};
-
 void __fastcall CSmashableDef_Copy(CSmashableDef* self, void* edx, const CSmashableDef* src)
 {
-    self->Copy(src);
-    self->b25 = src->b25;
-    self->d28 = src->d28;
-    self->d2c = src->d2c;
+    ((CBaseDef*)self)->Copy((const CBaseDef*)src);
+    self->Smashable = src->Smashable;
+    self->ReplacementObject_Val = src->ReplacementObject_Val;
+    self->SmashParticleEmitter = src->SmashParticleEmitter;
 }

@@ -1,3 +1,7 @@
+// CWorld::LoadWorldFromFile  @ 0x0049e220
+#include "engine/CWorld.h"  // retyped onto the PDB layout; byte parity re-verified
+
+// CAFile vtable model (header gives no typed CAFile): slot 5 = Finish, slot 7 = Read
 struct CAFile
 {
     virtual void V0();
@@ -10,7 +14,8 @@ struct CAFile
     virtual long Read();
 };
 
-struct CWorldFileLoader
+// CWorld.h only forward-declares CWorldMap; local vtable model, slot 3 = Load
+struct CWorldMap
 {
     virtual void V0();
     virtual void V1();
@@ -18,24 +23,26 @@ struct CWorldFileLoader
     virtual void Load(CAFile* file, long value);
 };
 
-struct CWorld
+// CWorld's own vtable reached through the header's plain `void* __vftable`; slot 1 = FinishLoad
+struct CWorldVtbl
 {
-    virtual void V0();
-    virtual void FinishLoad();
-    long pad[4];
-    CWorldFileLoader* loader;
+    void* Slot0;
+    void (__fastcall *FinishLoad)(CWorld* self);
+};
 
+struct CWorld_Methods : CWorld
+{
     void LoadWorldFromFile(CAFile* file, long value);
 };
 
 extern float CWorldLoadTimer();
 
-void CWorld::LoadWorldFromFile(CAFile* file, long value)
+void CWorld_Methods::LoadWorldFromFile(CAFile* file, long value)
 {
     (void)CWorldLoadTimer();
     long result = file->Read();
-    loader->Load(file, value);
+    this->PWorldMap_ptr->Load(file, value);
     file->Finish(result);
-    FinishLoad();
+    ((CWorldVtbl*)this->__vftable)->FinishLoad(this);
     (void)CWorldLoadTimer();
 }

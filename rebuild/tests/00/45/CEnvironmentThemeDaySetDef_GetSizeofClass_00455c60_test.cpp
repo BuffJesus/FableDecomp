@@ -1,11 +1,10 @@
 #include <cstdio>
-
-struct CEnvironmentThemeDaySetDef { char pad[0x6c]; };
+#include "engine/CEnvironmentThemeDaySetDef.h"
 
 unsigned long __fastcall CEnvironmentThemeDaySetDef_GetSizeofClass(const CEnvironmentThemeDaySetDef* self)
 {
     (void)self;
-    return sizeof(CEnvironmentThemeDaySetDef);
+    return 0x6c;
 }
 
 int main()
