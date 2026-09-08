@@ -1,8 +1,6 @@
-struct CTCBuyableHouse {
-    char pad[0x1c];
-    int field_1c;
-    char pad2[0x14];
-    int field_34;
+#include "engine/CTCBuyableHouse.h"
+
+struct CTCBuyableHouse_Methods : CTCBuyableHouse {
     void SetDressLevel(int lvl);
 };
 
@@ -10,6 +8,6 @@ extern int GetNewThing();
 
 void __fastcall CTCBuyableHouse_IncrementDressLevel(CTCBuyableHouse* self)
 {
-    self->SetDressLevel(self->field_1c + 1);
-    self->field_34 = GetNewThing();
+    ((CTCBuyableHouse_Methods*)self)->SetDressLevel(self->CurrentDressLevel + 1);
+    self->FrameToNextCheckIfWeNeedToCreateAnything = GetNewThing();
 }
