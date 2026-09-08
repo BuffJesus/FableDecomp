@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-09-08T16:15:29-06:00`
+Generated: `2026-09-08T16:22:07-06:00`
 
 | Stage | Complete | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|
@@ -15,17 +15,17 @@ Generated: `2026-09-08T16:15:29-06:00`
 | Auto-RE source integrity | 1,066 | 1,066 | 100.000% | Balanced, non-empty source snapshots |
 | Host C++20 syntax pass | 575 | 1,066 | 53.940% | Strict 32-bit translation unit with real declarations |
 | Candidate signature audit clean | 542 | 1,066 | 50.844% | Definition agrees with manifest owner/name/shape and has unique linkage |
-| VC7.1 compiled candidate | 18,853 | 49,568 | 38.035% | Compiles to an object; behavioral parity not yet claimed |
-| Behavior-tested candidate | 18,853 | 49,568 | 38.035% | Local branch/layout oracle passes; retail parity not yet claimed |
-| Candidate retail `.text` match | 8,137 | 49,568 | 16.416% | Generated-candidate track exact matches awaiting promotion |
-| Candidate relocation-masked `.text` match | 10,672 | 49,568 | 21.530% | Exact instruction bytes/layout after masking expected COFF linker fields |
-| Verified functional or matching C++ | 18,827 | 49,568 | 37.982% | Compiled under VC7.1 and checked against retail |
-| Byte-identical C++ | 8,153 | 49,568 | 16.448% | Exact `.text` match (includes asm bakes below) |
-| Byte-identical **genuine** C++ | 7,861 | 49,568 | 15.859% | Exact match from real compiler input; no `__asm`, `naked`, `_emit` |
+| VC7.1 compiled candidate | 18,855 | 49,568 | 38.039% | Compiles to an object; behavioral parity not yet claimed |
+| Behavior-tested candidate | 18,855 | 49,568 | 38.039% | Local branch/layout oracle passes; retail parity not yet claimed |
+| Candidate retail `.text` match | 8,138 | 49,568 | 16.418% | Generated-candidate track exact matches awaiting promotion |
+| Candidate relocation-masked `.text` match | 10,673 | 49,568 | 21.532% | Exact instruction bytes/layout after masking expected COFF linker fields |
+| Verified functional or matching C++ | 18,829 | 49,568 | 37.986% | Compiled under VC7.1 and checked against retail |
+| Byte-identical C++ | 8,154 | 49,568 | 16.450% | Exact `.text` match (includes asm bakes below) |
+| Byte-identical **genuine** C++ | 7,862 | 49,568 | 15.861% | Exact match from real compiler input; no `__asm`, `naked`, `_emit` |
 | Hand-written asm bakes (grade `asm_bake`) | 292 | 601 | — | Byte-exact oracles, **not** reconstruction; de-bake worklist |
-| Landed sources typed onto shared engine headers | 679 | 14,679 | 4.626% | `#include "engine/<Class>.h"` with PDB member names (963 headers) |
+| Landed sources typed onto shared engine headers | 680 | 14,681 | 4.632% | `#include "engine/<Class>.h"` with PDB member names (963 headers) |
 | Generic local struct declarations remaining | 4,410 | — | — | `struct T/Sub/Owner...` throwaways in 3,271 files; retype worklist |
-| Matched retail bytes (genuine C++) | 393,251 | — | — | Bytes of retail `.text` reproduced by genuine landings |
+| Matched retail bytes (genuine C++) | 393,355 | — | — | Bytes of retail `.text` reproduced by genuine landings |
 | Lifted modules | 3 | 3,433 | 0.087% | Module-level reconstruction proof |
 
 ## Interpretation

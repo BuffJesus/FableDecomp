@@ -1,0 +1,4 @@
+#include <stdio.h>
+#include <string.h>
+#include "engine/CDataOutputStream.h"
+struct C2DVector { float X; float Y; }; struct CDataOutputStreamMethods : CDataOutputStream { unsigned char Bytes[8]; int Used; virtual void Method0() {} virtual void Method1() {} virtual void Method2() {} virtual void Method3() {} virtual void WriteBytes(const void* data, int size) { memcpy(Bytes + Used, data, size); Used += size; } void Write2DVector(const C2DVector& value); }; int main() { CDataOutputStreamMethods stream; stream.Used = 0; C2DVector value = { 1.25f, -3.5f }; stream.Write2DVector(value); if (stream.Used != 8 || memcmp(stream.Bytes, &value, 8) != 0) return 1; printf("WRITE_2D_VECTOR PASS\n"); return 0; }

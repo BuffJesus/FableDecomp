@@ -132366,6 +132366,20 @@ $catalog = @(
         TestSource = '00/a3/C2DBoxI_ExtendToContain_00a39e20_test.cpp'
         PassPattern = 'EXTEND_BOX_TO_CONTAIN PASS'
     }
+    [pscustomobject]@{
+        Address = '00750ba0'
+        Module = 'CTCExplodingObject'
+        Source = '00/75/CTCExplodingObject_SetCountdownTimer_00750ba0.cpp'
+        TestSource = '00/75/CTCExplodingObject_SetCountdownTimer_00750ba0_test.cpp'
+        PassPattern = 'SET_COUNTDOWN_TIMER PASS'
+    }
+    [pscustomobject]@{
+        Address = '00993f90'
+        Module = 'CDataOutputStream'
+        Source = '00/99/CDataOutputStream_Write2DVector_00993f90.cpp'
+        TestSource = '00/99/CDataOutputStream_Write2DVector_00993f90_test.cpp'
+        PassPattern = 'WRITE_2D_VECTOR PASS'
+    }
 )
 
 $requestedAddresses = @(

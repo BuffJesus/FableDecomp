@@ -1269,7 +1269,7 @@ CDataBank	21	9	9	0	0	0	0	0	0	0	0
 CDataBankGroupEntry	4	6	6	0	0	0	0	0	0	0	0
 CDataBankTextEntry	4	1	1	0	0	0	0	0	0	0	0
 CDataInputStream	28	30	24	0	0	11	11	8	3	0	0
-CDataOutputStream	30	28	27	0	0	9	9	9	0	0	0
+CDataOutputStream	30	28	27	0	0	10	10	10	0	0	0
 CDateAndTime	6	31	6	0	0	9	9	9	0	0	0
 CDead	1	0	0	0	0	0	0	0	0	0	0
 CDebugManager	29	1	1	0	0	1	1	0	1	0	0
@@ -3303,7 +3303,7 @@ CTCEmoteIcon	14	8	8	0	0	0	0	0	0	0	0
 CTCEnemy	17	11	9	0	0	5	5	0	5	0	0
 CTCEntityEvents	8	2	2	0	0	1	1	0	1	0	0
 CTCExclusiveUse	4	0	0	0	0	0	0	0	0	0	0
-CTCExplodingObject	12	6	4	0	0	0	0	0	0	0	0
+CTCExplodingObject	12	6	4	0	0	1	1	0	1	0	0
 CTCExpression	5	1	1	0	0	0	0	0	0	0	0
 CTCFadeOutAndIn	11	7	5	0	0	1	1	1	0	0	0
 CTCFamilyMember	6	0	0	0	0	0	0	0	0	0	0

@@ -20031,7 +20031,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00750b30	sub_00750b30	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00750b40	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\75\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00750b40.cpp
 00750b80	CTCExplodingObject::vfunc_4	CTCExplodingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00750ba0	SetCountdownTimer	CTCExplodingObject	__thiscall	void	2	CTCExplodingObject *,long	1	yes	accepted									
+00750ba0	SetCountdownTimer	CTCExplodingObject	__thiscall	void	2	CTCExplodingObject *,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\75\CTCExplodingObject_SetCountdownTimer_00750ba0.cpp
 00750be0	CTCExplodingObject	CTCExplodingObject	__thiscall	undefined	2	CTCExplodingObject *,CThing *	0	yes	accepted									
 00750cd0	~CTCExplodingObject	CTCExplodingObject	__thiscall	void	1	CTCExplodingObject *	1	yes	accepted									
 00750d30	CTCExplodingObject::vfunc_1	CTCExplodingObject	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -33132,7 +33132,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00993f00	WriteNullTerminatedWString	CDataOutputStream	__thiscall	void	2	CDataOutputStream *,CWideString *	1	yes	accepted									
 00993f30	WriteColour	CDataOutputStream	__thiscall	void	2	CDataOutputStream *,CRGBColour *	1	yes	accepted									
 00993f60	WritePixelFormat	CDataOutputStream	__thiscall	void	2	CDataOutputStream *,CPixelFormat *	1	yes	accepted									
-00993f90	Write2DVector	CDataOutputStream	__thiscall	void	2	CDataOutputStream *,C2DVector *	1	yes	accepted									
+00993f90	Write2DVector	CDataOutputStream	__thiscall	void	2	CDataOutputStream *,C2DVector *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CDataOutputStream_Write2DVector_00993f90.cpp
 00993fd0	Write3DVector	CDataOutputStream	__thiscall	void	2	CDataOutputStream *,C3DVector *	1	yes	accepted									
 00994070	WriteMatrix3x4	CDataOutputStream	__thiscall	void	2	CDataOutputStream *,CMatrix3x4 *	1	yes	accepted									
 00994180	WriteDateAndTime	CDataOutputStream	__thiscall	void	2	CDataOutputStream *,CDateAndTime *	1	yes	accepted									
