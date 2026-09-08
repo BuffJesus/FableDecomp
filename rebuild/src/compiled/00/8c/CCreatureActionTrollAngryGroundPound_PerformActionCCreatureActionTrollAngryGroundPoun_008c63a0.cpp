@@ -1,25 +1,23 @@
-// CCreatureAction_TrollAngryGroundPound::PerformAction  0x008c63a0
+#include "engine/CCreatureAction_TrollAngryGroundPound.h"
 
-struct CSomeState {
-    char pad[0x1c8];
-    unsigned char flags; // +0x1c8
+struct CTrollGroundPoundState {
+    unsigned char padding[0x1c8];
+    unsigned char flags;
 };
 
-struct CSubObject {
-    CSomeState* GetState();   // external -> real call (returns ptr in eax)
+struct CTrollGroundPoundActionState {
+    CTrollGroundPoundState* GetState();
 };
 
-struct CCreatureAction_TrollAngryGroundPound {
-    char pad0[8];
-    CSubObject sub;           // subobject at +8
-
-    void DoBase();            // external -> real call on 'this'
+struct CCreatureAction_TrollAngryGroundPound_Methods : CCreatureAction_TrollAngryGroundPound {
+    void DoBase();
     void PerformAction();
 };
 
-void CCreatureAction_TrollAngryGroundPound::PerformAction()
+void CCreatureAction_TrollAngryGroundPound_Methods::PerformAction()
 {
     this->DoBase();
-    CSomeState* p = this->sub.GetState();
-    p->flags |= 0x40;
+    CTrollGroundPoundActionState* actionState = (CTrollGroundPoundActionState*)&this->sub;
+    CTrollGroundPoundState* state = actionState->GetState();
+    state->flags |= 0x40;
 }

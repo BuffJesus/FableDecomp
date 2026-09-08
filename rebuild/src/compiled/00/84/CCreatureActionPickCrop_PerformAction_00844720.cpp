@@ -1,19 +1,17 @@
-// CCreatureAction_PickCrop::PerformAction @ 0x00844720
-// push esi; lea esi,[ecx+0xa8]; call Sub::M; test eax,eax; je end;
-//   mov ecx,esi; pop esi; jmp Sub::M  (tail call)  else pop esi; ret
+#include "engine/CCreatureAction_PickCrop.h"
 
-struct Sub {
-    int M();   // __fastcall, returns testable value; body external
+struct CPickCropActionState {
+    int PerformStep();
 };
 
-struct CCreatureAction_PickCrop {
-    char pad[0xa8];
-    Sub sub;   // at +0xa8
+struct CCreatureAction_PickCrop_Methods : CCreatureAction_PickCrop {
     void PerformAction();
 };
 
-void CCreatureAction_PickCrop::PerformAction()
+void CCreatureAction_PickCrop_Methods::PerformAction()
 {
-    if (this->sub.M())
-        this->sub.M();
+    CPickCropActionState* state = (CPickCropActionState*)&this->sub;
+    if (state->PerformStep()) {
+        state->PerformStep();
+    }
 }

@@ -1,15 +1,18 @@
-// CGroundNavigatorExternalInterface::Clone  0x006ce650
+#include "engine/CGroundNavigatorExternalInterface.h"
+
 struct CNavigatorExternalInterface;
-extern "C" void* __cdecl op_new(unsigned int sz);
-struct CGroundNavigatorExternalInterface {
-    CNavigatorExternalInterface* Construct(CGroundNavigatorExternalInterface* src);
+extern "C" void* __cdecl op_new(unsigned int size);
+
+struct CGroundNavigatorExternalInterface_Methods : CGroundNavigatorExternalInterface {
+    CNavigatorExternalInterface* Construct(CGroundNavigatorExternalInterface* source);
     CNavigatorExternalInterface* Clone();
 };
-CNavigatorExternalInterface* CGroundNavigatorExternalInterface::Clone()
+
+CNavigatorExternalInterface* CGroundNavigatorExternalInterface_Methods::Clone()
 {
-    void* p = op_new(0xc);
-    if (p) {
-        return ((CGroundNavigatorExternalInterface*)p)->Construct(this);
+    void* memory = op_new(0xc);
+    if (memory) {
+        return ((CGroundNavigatorExternalInterface_Methods*)memory)->Construct(this);
     }
     return 0;
 }

@@ -1,2 +1,14 @@
-struct CInputProcessManager; struct S { char pad[0x24]; void* f24; bool AddToInterface(CInputProcessManager* m); bool Helper(CInputProcessManager* m); };
-bool S::AddToInterface(CInputProcessManager* m){ this->f24 = m; return this->Helper(m); }
+#include "engine/CInputProcessGameBase.h"
+
+struct CInputProcessManager;
+
+struct CInputProcessGameBase_Methods : CInputProcessGameBase {
+    bool AddToInterface(CInputProcessManager* manager);
+    bool Helper(CInputProcessManager* manager);
+};
+
+bool CInputProcessGameBase_Methods::AddToInterface(CInputProcessManager* manager)
+{
+    this->PGamePlayerInterface = (CGamePlayerInterface*)manager;
+    return this->Helper(manager);
+}

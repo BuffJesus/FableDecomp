@@ -1,2 +1,12 @@
-struct T { void DtorHelper(int flag); };
-void __fastcall Dest_val(T* self){ self->DtorHelper(1); }
+#include "engine/CAIStateGroup_MinionReactToTrespassing.h"
+
+struct CAIStateGroup_MinionReactToTrespassing_Methods
+    : CAIStateGroup_MinionReactToTrespassing {
+    bool IsStillRunnable(bool initialCheck);
+    bool IsRunnable();
+};
+
+bool CAIStateGroup_MinionReactToTrespassing_Methods::IsRunnable()
+{
+    return this->IsStillRunnable(true);
+}

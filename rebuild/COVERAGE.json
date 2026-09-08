@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T21:20:44-06:00",
+  "generated_at": "2026-09-07T21:30:20-06:00",
   "catalog_functions": 49568,
   "manifest_rows": 57097,
   "modules": 3433,
@@ -27,8 +27,8 @@
   "byte_identical_genuine": 7790,
   "asm_bake_matching": 292,
   "asm_bake_files": 600,
-  "landed_using_engine_header": 638,
-  "generic_struct_decls": 4423,
+  "landed_using_engine_header": 649,
+  "generic_struct_decls": 4419,
   "matched_bytes_genuine": 385690,
   "engine_headers_generated": 957,
   "candidate_integrity_pass": 1066,

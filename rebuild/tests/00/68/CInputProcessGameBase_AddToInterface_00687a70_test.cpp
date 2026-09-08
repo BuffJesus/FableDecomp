@@ -1,9 +1,35 @@
+#include "engine/CInputProcessGameBase.h"
 #include <cstdio>
-static void* g_m=0;
+
+static void* g_manager = 0;
 struct CInputProcessManager;
-struct S { char pad[0x24]; void* f24; bool AddToInterface(CInputProcessManager* m); bool Helper(CInputProcessManager* m); };
-bool S::Helper(CInputProcessManager* m){ g_m=m; return true; }
-bool S::AddToInterface(CInputProcessManager* m){ this->f24 = m; return this->Helper(m); }
-int main(){ int x; S o; bool r=o.AddToInterface((CInputProcessManager*)&x);
- if(!r||o.f24!=&x||g_m!=&x){ std::printf("00687a70_TEST FAIL\n"); return 1;}
- std::printf("00687a70_TEST PASS\n"); return 0;}
+
+struct CInputProcessGameBase_Methods : CInputProcessGameBase {
+    bool AddToInterface(CInputProcessManager* manager);
+    bool Helper(CInputProcessManager* manager);
+};
+
+bool CInputProcessGameBase_Methods::Helper(CInputProcessManager* manager)
+{
+    g_manager = manager;
+    return true;
+}
+
+bool CInputProcessGameBase_Methods::AddToInterface(CInputProcessManager* manager)
+{
+    this->PGamePlayerInterface = (CGamePlayerInterface*)manager;
+    return this->Helper(manager);
+}
+
+int main()
+{
+    int value;
+    CInputProcessGameBase_Methods object;
+    bool result = object.AddToInterface((CInputProcessManager*)&value);
+    if (!result || (void*)object.PGamePlayerInterface != &value || g_manager != &value) {
+        std::printf("00687a70_TEST FAIL\n");
+        return 1;
+    }
+    std::printf("00687a70_TEST PASS\n");
+    return 0;
+}
