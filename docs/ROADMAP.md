@@ -7,7 +7,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 
 ## Current focus (2026-09)
 
-- [ ] Typed shared headers: 2026-09-07 `--all-trusted --compile-check` = 957 compiling headers (257 quarantined); automatic passes plus the parity-gated manual tail have retyped 630 landed TUs onto PDB-named headers (141 manual conversions across twenty-eight checkpoints). `VTABLE_TYPED` (37→0), `VIRTUAL_THIS` (54→0), non-source-failure `PARITY_CHANGED` (7→0), and `BEHAV_FAIL` (8→0) are closed. The source-failure parity lane is 43→19 after twelve exact `CScriptThing` proxies, the complete six-function copy/transfer subset, two other recoveries, and four current reclassifications; the ten-entry `AMBIG_ALIGN` review recovered two, reclassified six, and isolated two unnamed donor-layout dependencies — `tools/decomp_pipeline/`
+- [ ] Typed shared headers: 2026-09-07 `--all-trusted --compile-check` = 957 compiling headers (257 quarantined); automatic passes plus the parity-gated manual tail have retyped 633 landed TUs onto PDB-named headers (144 manual conversions across twenty-nine checkpoints). `VTABLE_TYPED` (37→0), `VIRTUAL_THIS` (54→0), non-source-failure `PARITY_CHANGED` (7→0), and `BEHAV_FAIL` (8→0) are closed. The source-failure parity lane is 43→16 after twelve exact `CScriptThing` proxies, the six-function copy/transfer subset, three troll effect-name recoveries, two other recoveries, and four current reclassifications; the ten-entry `AMBIG_ALIGN` review recovered two, reclassified six, and isolated two unnamed donor-layout dependencies — `tools/decomp_pipeline/`
 - [x] 2026-09-07 Aeon's 12 new Lua ports ingested (20 packages, 71 scripts; foundation audit 15/18) — `docs/scripts/AEON_LUA_PORTS.md`
 - [ ] Port the 12 FSE 6.9.26 bindings LUAGameflow needs into ForgeFSE-retail-shadow; add package→native-name aliases so the new seeds correlate (8/20 today) — `docs/scripts/AEON_LUA_PORTS.md`
 - [ ] Keep the parity crawl moving from `work/crawl_batch155` (ledger 5,693; catalog 18,631 landed) — `docs/pipeline/FULL_DECOMP.md`
@@ -39,7 +39,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [x] FSE manifest corrected to 933 functions and propagated to FableForge
 - [x] FSE address map (`refs/script_recovery/fse_address_name_map.json`, 80 addrs, 63 manifest clashes) wired into readiness analyzer
 - [x] 2026-09-07 typed shared headers `rebuild/include/engine/`: 957 compiling headers from the PDB layouts, per-header compile check, quarantine on donor/retail conflict
-- [x] 2026-09-07 automatic and manual parity-gated retyping applied to 630 landed TUs; `VTABLE_TYPED`, `VIRTUAL_THIS`, non-source-failure `PARITY_CHANGED`, and `BEHAV_FAIL` tails closed (see Current focus for the active source-failure parity lane)
+- [x] 2026-09-07 automatic and manual parity-gated retyping applied to 633 landed TUs; `VTABLE_TYPED`, `VIRTUAL_THIS`, non-source-failure `PARITY_CHANGED`, and `BEHAV_FAIL` tails closed (see Current focus for the active source-failure parity lane)
 - [ ] Bulk `.gdt` import of donor struct layouts into the Ghidra DB (open)
 - [ ] Calling convention known 77.7% -> close the 11,031 unknown-CC functions
 - [ ] Complete prototypes 69.2% -> close the 15,280 incomplete ones
