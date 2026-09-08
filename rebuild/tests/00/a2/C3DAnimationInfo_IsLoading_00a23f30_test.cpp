@@ -1,14 +1,35 @@
-#include "rebuild_abi.h"
+#include "engine/C3DAnimationInfo.h"
 #include <cstdio>
-struct CLoader { char pad00[0x30]; void *m_state; };
-struct C3DAnimationInfo { char pad00[0xc]; CLoader *m_loader; bool IsLoading(); };
-bool C3DAnimationInfo::IsLoading(){ CLoader *l=m_loader; if(l && l->m_state) return true; return false; }
-int main(){
-    C3DAnimationInfo a; a.m_loader=0;
-    if(a.IsLoading()){std::printf("B1\n");return 1;}
-    CLoader l; l.m_state=0; a.m_loader=&l;
-    if(a.IsLoading()){std::printf("B2\n");return 1;}
-    l.m_state=(void*)1;
-    if(!a.IsLoading()){std::printf("B3\n");return 1;}
-    std::printf("ISLOADING_OK\n"); return 0;
+
+struct CAnimationDataLoadingView {
+    unsigned char _pad_0x00[0x30];
+    void* LoadingState;
+};
+
+struct C3DAnimationInfo_Methods : C3DAnimationInfo {
+    bool IsLoading();
+};
+
+bool C3DAnimationInfo_Methods::IsLoading()
+{
+    CAnimationDataLoadingView* data =
+        (CAnimationDataLoadingView*)Data_Object;
+    if (data && data->LoadingState) return true;
+    return false;
+}
+
+int main()
+{
+    C3DAnimationInfo_Methods animation;
+    animation.Data_Object = 0;
+    if (animation.IsLoading()) return 1;
+
+    CAnimationDataLoadingView data = {};
+    animation.Data_Object = (CIVCountedPointeeBase*)&data;
+    if (animation.IsLoading()) return 2;
+
+    data.LoadingState = (void*)1;
+    if (!animation.IsLoading()) return 3;
+    std::printf("ISLOADING_OK\n");
+    return 0;
 }

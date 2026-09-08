@@ -1,11 +1,13 @@
-struct CContainmentVolume {
-  int dummy0;
-  char* data;
-};
+#include "engine/CContainmentVolume.h"  // retyped onto the PDB layout; byte parity re-verified
 
-void __fastcall RelocateData(CContainmentVolume* self, int /*edx*/, long a1, void* oldBase, void* newBase, long a4) {
-  (void)a1; (void)a4;
-  if (self->data) {
-    self->data = self->data - (char*)oldBase + (char*)newBase;
-  }
+void __fastcall RelocateData(
+    CContainmentVolume* self, int /*edx*/, long a1,
+    void* oldBase, void* newBase, long a4)
+{
+    (void)a1;
+    (void)a4;
+    if (self->ContainmentPlanes) {
+        self->ContainmentPlanes = (CPlane*)((char*)self->ContainmentPlanes
+            - (char*)oldBase + (char*)newBase);
+    }
 }

@@ -1,10 +1,9 @@
-struct CGameScriptInterface {
-    void* vt; // +0x0
-    unsigned char _pad[0x29]; // to 0x2d
-    char allowFadeIfFaded; // +0x2d
-};
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 
-void __fastcall CGameScriptInterface_SetAllowScreenFadingIfAlreadyFaded(CGameScriptInterface* self, int /*edx*/, char val)
+void __fastcall CGameScriptInterface_SetAllowScreenFadingIfAlreadyFaded(
+    CGameScriptInterface* self, int /*edx*/, char value)
 {
-    self->allowFadeIfFaded = val;
+    // Retail stores the incoming byte verbatim; assigning through bool would
+    // make VC7.1 normalize it to 0/1 and change the instruction sequence.
+    *(char*)&self->AllowScreenFadingIfAlreadyFaded = value;
 }

@@ -1,13 +1,12 @@
-struct CMatrix3x4 { float m[12]; };
+#include "engine/CEngineInternalPrimitive2DStaticMesh.h"  // retyped onto the PDB layout; byte parity re-verified
 
-struct CEngineInternalPrimitive2DStaticMesh {
-    char pad[0x70];
-    CMatrix3x4 transform;
+struct CMatrix3x4 {
+    float m[12];
 };
 
 bool __fastcall CEngineInternalPrimitive2DStaticMesh_SetObjectTransform(
-    CEngineInternalPrimitive2DStaticMesh* self, int /*edx*/, const CMatrix3x4& m)
+    CEngineInternalPrimitive2DStaticMesh* self, int /*edx*/, const CMatrix3x4& matrix)
 {
-    self->transform = m;
+    *(CMatrix3x4*)&self->transform = matrix;
     return true;
 }

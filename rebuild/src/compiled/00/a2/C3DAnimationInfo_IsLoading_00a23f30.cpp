@@ -1,12 +1,20 @@
-#include "rebuild_abi.h"
-// C3DAnimationInfo::IsLoading @ 0x00a23f30
-// mov eax,[ecx+0xc]; test; je L; mov ecx,[eax+0x30]; test; je L; mov al,1; ret; L: xor al,al; ret
-// True when the loader object exists and its pointer field at +0x30 is set.
-struct CLoader { char pad00[0x30]; void *m_state; };
-struct C3DAnimationInfo { char pad00[0xc]; CLoader *m_loader; bool IsLoading(); };
-bool C3DAnimationInfo::IsLoading()
+#include "engine/C3DAnimationInfo.h"  // retyped onto the PDB layout; byte parity re-verified
+
+// Retail's counted pointee has a loader-state pointer at +0x30. The donor header
+// intentionally leaves that pointee opaque, so retain only this retail view.
+struct CAnimationDataLoadingView {
+    unsigned char _pad_0x00[0x30];
+    void* LoadingState;
+};
+
+struct C3DAnimationInfo_Methods : C3DAnimationInfo {
+    bool IsLoading();
+};
+
+bool C3DAnimationInfo_Methods::IsLoading()
 {
-    CLoader *l = m_loader;
-    if (l && l->m_state) return true;
+    CAnimationDataLoadingView* data =
+        (CAnimationDataLoadingView*)Data_Object;
+    if (data && data->LoadingState) return true;
     return false;
 }

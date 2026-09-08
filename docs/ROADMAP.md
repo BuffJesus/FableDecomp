@@ -7,7 +7,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 
 ## Current focus (2026-09)
 
-- [ ] Typed shared headers: 2026-09-07 `--all-trusted` = 969 compiling headers (244 quarantined); automatic passes plus the parity-gated manual tail have retyped 499 landed TUs onto PDB-named headers (14 manual conversions this checkpoint). Next lever = the skip reasons in `rebuild/backlog/retype_log.tsv`: NO_EXACT_MAP 212 (opaque composite members), PARITY_CHANGED 124 (mostly local helper-type renames that no longer compile), VIRTUAL_THIS 54 + VTABLE_TYPED 37 (vtable-modelled `this`), INHERITANCE 29 — `tools/decomp_pipeline/`
+- [ ] Typed shared headers: 2026-09-07 `--all-trusted` = 969 compiling headers (244 quarantined); automatic passes plus the parity-gated manual tail have retyped 507 landed TUs onto PDB-named headers (22 manual conversions across two checkpoints). Next lever = the skip reasons in `rebuild/backlog/retype_log.tsv`: NO_EXACT_MAP 212 (opaque composite members), PARITY_CHANGED 124 (mostly local helper-type renames that no longer compile), VIRTUAL_THIS 54 + VTABLE_TYPED 37 (vtable-modelled `this`), INHERITANCE 29 — `tools/decomp_pipeline/`
 - [x] 2026-09-07 Aeon's 12 new Lua ports ingested (20 packages, 71 scripts; foundation audit 15/18) — `docs/scripts/AEON_LUA_PORTS.md`
 - [ ] Port the 12 FSE 6.9.26 bindings LUAGameflow needs into ForgeFSE-retail-shadow; add package→native-name aliases so the new seeds correlate (8/20 today) — `docs/scripts/AEON_LUA_PORTS.md`
 - [ ] Keep the parity crawl moving from `work/crawl_batch155` (ledger 5,693; catalog 18,631 landed) — `docs/pipeline/FULL_DECOMP.md`
@@ -39,7 +39,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [x] FSE manifest corrected to 933 functions and propagated to FableForge
 - [x] FSE address map (`refs/script_recovery/fse_address_name_map.json`, 80 addrs, 63 manifest clashes) wired into readiness analyzer
 - [x] 2026-09-07 typed shared headers `rebuild/include/engine/`: 962 compiling headers from the PDB layouts, per-header compile check, quarantine on donor/retail conflict
-- [x] 2026-09-07 automatic and manual parity-gated retyping applied to 499 landed TUs (see Current focus for the skip-reason worklist)
+- [x] 2026-09-07 automatic and manual parity-gated retyping applied to 507 landed TUs (see Current focus for the skip-reason worklist)
 - [ ] Bulk `.gdt` import of donor struct layouts into the Ghidra DB (open)
 - [ ] Calling convention known 77.7% -> close the 11,031 unknown-CC functions
 - [ ] Complete prototypes 69.2% -> close the 15,280 incomplete ones
