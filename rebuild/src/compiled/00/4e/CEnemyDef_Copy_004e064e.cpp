@@ -1,14 +1,10 @@
-struct CDefClassBase;
+#include "engine/CEnemyDef.h"
 
-struct CEnemyDef {
-    char pad[0x28];
-    int f28;
-    // base-class copy; member => thiscall(this, src)
-    void base_clone(const CDefClassBase* src);
-};
+struct CDefClassBase;
+struct CEnemyDef_Methods : CEnemyDef { void base_clone(const CDefClassBase* src); };
 
 void __fastcall CEnemyDef_Copy(CEnemyDef* self, int /*edx*/, const CDefClassBase* src)
 {
-    self->base_clone(src);
-    self->f28 = ((const CEnemyDef*)src)->f28;
+    ((CEnemyDef_Methods*)self)->base_clone(src);
+    self->Faction = ((const CEnemyDef*)src)->Faction;
 }

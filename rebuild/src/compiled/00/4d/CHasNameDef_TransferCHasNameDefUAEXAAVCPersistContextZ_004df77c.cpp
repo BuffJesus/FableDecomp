@@ -1,19 +1,14 @@
 #pragma optimize("s",on)
+#include "engine/CHasNameDef.h"
+
 struct CPersistContext {
     void TransferA(int* v);
     void TransferB(int* v);
 };
 
-struct CTCNoiseDef {
-    char pad[0x28];
-    int a;
-    int b;
-    int c;
-};
-
-void __fastcall CTCNoiseDef_Transfer(CTCNoiseDef* self, void* edx, CPersistContext* ctx)
+void __fastcall CHasNameDef_Transfer(CHasNameDef* self, void* /*edx*/, CPersistContext* ctx)
 {
-    ctx->TransferA(&self->a);
-    ctx->TransferB(&self->b);
-    ctx->TransferB(&self->c);
+    ctx->TransferA((int*)&self->DefaultNameTag);
+    ctx->TransferB((int*)&self->Home);
+    ctx->TransferB((int*)&self->Occupation);
 }
