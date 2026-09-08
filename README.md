@@ -70,8 +70,8 @@ a worklist, not the intended end state.
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Verified functional or matching reconstruction | **18,822 · 37.97%** |
-| Byte-identical reconstruction | **8,148 · 16.44%** |
+| Verified functional or matching reconstruction | **18,823 · 37.97%** |
+| Byte-identical reconstruction | **8,149 · 16.44%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
@@ -93,11 +93,11 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,848** |
-| Reconstruction | Verified functional or matching C++ | **18,822** (37.97%) |
-| Reconstruction | — of which byte-**identical** C++ | 8,148 (16.44%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,849** |
+| Reconstruction | Verified functional or matching C++ | **18,823** (37.97%) |
+| Reconstruction | — of which byte-**identical** C++ | 8,149 (16.44%) |
 | Reconstruction | — of which hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 292 |
-| Readability | Landed sources typed onto shared PDB-named engine headers | 672 |
+| Readability | Landed sources typed onto shared PDB-named engine headers | 673 |
 | Readability | Throwaway local `struct T {...}` declarations remaining | 4,410 |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 43 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 0 |

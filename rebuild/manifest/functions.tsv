@@ -10611,7 +10611,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0057ac4b	HasCurrentMarriage	CTCHeroStats	__thiscall	bool	1	CTCHeroStats *	1	yes	accepted									
 0057ac89	PeekMarriageInfo	CTCHeroStats	__thiscall	bool	3	CTCHeroStats *,__uint64,CHeroMarriageInfo *	1	yes	accepted									
 0057acc4	GetHeroSexuality	CTCHeroStats	__thiscall	EHeroSexuality	1	CTCHeroStats *	1	yes	accepted									
-0057ad1d	GetNumberOfCurrentSpouses	CTCHeroStats	__thiscall	long	1	CTCHeroStats *	1	yes	accepted									
+0057ad1d	GetNumberOfCurrentSpouses	CTCHeroStats	__thiscall	long	1	CTCHeroStats *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CTCHeroStats_GetNumberOfCurrentSpouses_0057ad1d.cpp
 0057ad4c	JustGetTheFrikkingText2	_global	__fastcall	CWideString	1	CCharString *	1	yes	accepted									
 0057adb8	ResetTrainingStatus	CTCHeroStats	__thiscall	void	1	CTCHeroStats *	1	yes	accepted									
 0057adf7	RemoveHousePosition	CTCHeroStats	__thiscall	void	3	CTCHeroStats *,CRegion *,C3DVector *	1	yes	accepted									

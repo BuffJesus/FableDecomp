@@ -132331,6 +132331,13 @@ $catalog = @(
         TestSource = '00/a0/CInputEvent_SetAsRightMouseButtonReleased_00a03ec0_test.cpp'
         PassPattern = 'MOUSE_BUTTON_RELEASE PASS'
     }
+    [pscustomobject]@{
+        Address = '0057ad1d'
+        Module = 'CTCHeroStats'
+        Source = '00/57/CTCHeroStats_GetNumberOfCurrentSpouses_0057ad1d.cpp'
+        TestSource = '00/57/CTCHeroStats_GetNumberOfCurrentSpouses_0057ad1d_test.cpp'
+        PassPattern = 'CURRENT_SPOUSES PASS'
+    }
 )
 
 $requestedAddresses = @(
