@@ -132289,6 +132289,20 @@ $catalog = @(
         TestSource = '00/a0/CInputEvent_SetAsRightMouseButtonPressed_00a03e40_test.cpp'
         PassPattern = 'MOUSE_BUTTON_PRESSED PASS'
     }
+    [pscustomobject]@{
+        Address = '0057fc71'
+        Module = 'CTattooDef'
+        Source = '00/57/CTattooDef_GetTypeBalancedAttractiveness_0057fc71.cpp'
+        TestSource = '00/57/CTattooDef_GetTypeBalancedAttractiveness_0057fc71_test.cpp'
+        PassPattern = 'TATTOO_TYPE_BALANCE PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057fc9c'
+        Module = 'CTattooDef'
+        Source = '00/57/CTattooDef_GetTypeBalancedScariness_0057fc9c.cpp'
+        TestSource = '00/57/CTattooDef_GetTypeBalancedScariness_0057fc9c_test.cpp'
+        PassPattern = 'TATTOO_TYPE_BALANCE PASS'
+    }
 )
 
 $requestedAddresses = @(
