@@ -1,31 +1,29 @@
+#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 
-struct CScriptTarget {
-    unsigned char _pad[0x91];
-    unsigned char flags; // +0x91
-    unsigned char _pad2[0x100];
+struct CScriptAttachmentTargetView {
+    unsigned char _pad_0x00[0x91];
+    unsigned char StateFlags;
+    unsigned char _pad_0x92[0x100];
 };
 
-struct CScriptObj;
-
-struct CScriptObjVtbl {
-    void* slots0to10[11]; // 0..0x28
-    CScriptTarget* (__fastcall* GetTarget)(CScriptObj*); // +0x2c
+struct CGameScriptInterfaceAttachmentVTable {
+    void* Slots[11];
+    CScriptAttachmentTargetView* (__fastcall* GetTarget)(CGameScriptInterface*);
 };
 
-struct CScriptObj {
-    CScriptObjVtbl* vt;
+struct CScriptAttachmentComponent {
+    void AttachToScript(int scriptId);
 };
 
-struct CSubObj {
-    void AttachToScript(int arg);
-};
-
-void __stdcall CGameScriptInterface_EntityAttachToScript(CScriptObj* self, int arg)
+void __stdcall CGameScriptInterface_EntityAttachToScript(
+    CGameScriptInterface* self, int scriptId)
 {
-    CScriptTarget* t = self->vt->GetTarget(self);
-    if (t == 0)
+    CGameScriptInterfaceAttachmentVTable* vtable =
+        (CGameScriptInterfaceAttachmentVTable*)self->__vftable;
+    CScriptAttachmentTargetView* target = vtable->GetTarget(self);
+    if (target == 0)
         return;
-    if (t->flags & 1)
+    if (target->StateFlags & 1)
         return;
-    ((CSubObj*)((char*)t + 0x58))->AttachToScript(arg);
+    ((CScriptAttachmentComponent*)((char*)target + 0x58))->AttachToScript(scriptId);
 }
