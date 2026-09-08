@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+#include "engine/CScriptThing.h"
 // CScriptThing::MsgOnCutSceneAnimEvent @ 0x004aaf60
 // mov ecx,[ecx+4]; test; jne L; xor al,al; ret 4; L: mov eax,[ecx]; jmp [eax+0xec]
 // Proxy: forward to the wrapped implementation object at this->f4; false when absent.
@@ -64,10 +65,10 @@ struct CScriptThingInner {
   virtual bool m58(int a0);
   virtual bool m59(int a0);
 };
-struct CScriptThing { void *pad0; CScriptThingInner *m_impl; bool MsgOnCutSceneAnimEvent(int a0); };
-bool CScriptThing::MsgOnCutSceneAnimEvent(int a0)
+struct CScriptThing_Methods : CScriptThing { bool MsgOnCutSceneAnimEvent(int a0); };
+bool CScriptThing_Methods::MsgOnCutSceneAnimEvent(int a0)
 {
-    CScriptThingInner *p = m_impl;
+    CScriptThingInner *p = (CScriptThingInner*)PImp_Data;
     if (!p) return false;
     return p->m59(a0);
 }

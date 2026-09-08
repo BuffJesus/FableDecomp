@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+#include "engine/CScriptThing.h"
 // CScriptThing::MsgReceivedMoney @ 0x004aac40
 // mov ecx,[ecx+4]; test; jne L; xor al,al; ret 4; L: mov eax,[ecx]; jmp [eax+0x88]
 // Proxy: forward to the wrapped implementation object at this->f4; false when absent.
@@ -39,10 +40,10 @@ struct CScriptThingInner {
   virtual bool m33(int a0);
   virtual bool m34(int a0);
 };
-struct CScriptThing { void *pad0; CScriptThingInner *m_impl; bool MsgReceivedMoney(int a0); };
-bool CScriptThing::MsgReceivedMoney(int a0)
+struct CScriptThing_Methods : CScriptThing { bool MsgReceivedMoney(int a0); };
+bool CScriptThing_Methods::MsgReceivedMoney(int a0)
 {
-    CScriptThingInner *p = m_impl;
+    CScriptThingInner *p = (CScriptThingInner*)PImp_Data;
     if (!p) return false;
     return p->m34(a0);
 }

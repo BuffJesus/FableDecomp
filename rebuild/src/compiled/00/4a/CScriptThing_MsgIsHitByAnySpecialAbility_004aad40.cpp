@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+#include "engine/CScriptThing.h"
 // CScriptThing::MsgIsHitByAnySpecialAbility @ 0x004aad40
 // mov ecx,[ecx+4]; test; jne L; xor al,al; ret 4; L: mov eax,[ecx]; jmp [eax+0xa8]
 // Proxy: forward to the wrapped implementation object at this->f4; false when absent.
@@ -47,10 +48,10 @@ struct CScriptThingInner {
   virtual bool m41(int a0);
   virtual bool m42(int a0);
 };
-struct CScriptThing { void *pad0; CScriptThingInner *m_impl; bool MsgIsHitByAnySpecialAbility(int a0); };
-bool CScriptThing::MsgIsHitByAnySpecialAbility(int a0)
+struct CScriptThing_Methods : CScriptThing { bool MsgIsHitByAnySpecialAbility(int a0); };
+bool CScriptThing_Methods::MsgIsHitByAnySpecialAbility(int a0)
 {
-    CScriptThingInner *p = m_impl;
+    CScriptThingInner *p = (CScriptThingInner*)PImp_Data;
     if (!p) return false;
     return p->m42(a0);
 }

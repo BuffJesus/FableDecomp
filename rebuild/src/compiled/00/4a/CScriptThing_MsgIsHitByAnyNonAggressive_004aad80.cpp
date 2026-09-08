@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+#include "engine/CScriptThing.h"
 // CScriptThing::MsgIsHitByAnyNonAggressive @ 0x004aad80
 // mov ecx,[ecx+4]; test; jne L; xor al,al; ret 4; L: mov eax,[ecx]; jmp [eax+0xb0]
 // Proxy: forward to the wrapped implementation object at this->f4; false when absent.
@@ -49,10 +50,10 @@ struct CScriptThingInner {
   virtual bool m43(int a0);
   virtual bool m44(int a0);
 };
-struct CScriptThing { void *pad0; CScriptThingInner *m_impl; bool MsgIsHitByAnyNonAggressive(int a0); };
-bool CScriptThing::MsgIsHitByAnyNonAggressive(int a0)
+struct CScriptThing_Methods : CScriptThing { bool MsgIsHitByAnyNonAggressive(int a0); };
+bool CScriptThing_Methods::MsgIsHitByAnyNonAggressive(int a0)
 {
-    CScriptThingInner *p = m_impl;
+    CScriptThingInner *p = (CScriptThingInner*)PImp_Data;
     if (!p) return false;
     return p->m44(a0);
 }

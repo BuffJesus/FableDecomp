@@ -1,4 +1,5 @@
 #include "rebuild_abi.h"
+#include "engine/CScriptThing.h"
 // CScriptThing::MsgIsPresentedWithItem @ 0x004aac60
 // mov ecx,[ecx+4]; test; jne L; xor al,al; ret 4; L: mov eax,[ecx]; jmp [eax+0x8c]
 // Proxy: forward to the wrapped implementation object at this->f4; false when absent.
@@ -40,10 +41,10 @@ struct CScriptThingInner {
   virtual bool m34(int a0);
   virtual bool m35(int a0);
 };
-struct CScriptThing { void *pad0; CScriptThingInner *m_impl; bool MsgIsPresentedWithItem(int a0); };
-bool CScriptThing::MsgIsPresentedWithItem(int a0)
+struct CScriptThing_Methods : CScriptThing { bool MsgIsPresentedWithItem(int a0); };
+bool CScriptThing_Methods::MsgIsPresentedWithItem(int a0)
 {
-    CScriptThingInner *p = m_impl;
+    CScriptThingInner *p = (CScriptThingInner*)PImp_Data;
     if (!p) return false;
     return p->m35(a0);
 }
