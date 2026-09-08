@@ -130931,6 +130931,69 @@ $catalog = @(
         TestSource = '00/a0/CHandleBasedMemoryPool_InternalSetResource_00a028b0_test.cpp'
         PassPattern = 'HANDLE_POOL_SET_RESOURCE PASS'
     }
+    [pscustomobject]@{
+        Address = '0082fe00'
+        Module = 'CGameScriptInterface'
+        Source = '00/82/CGameScriptInterface_EndCutFade_0082fe00.cpp'
+        TestSource = '00/82/CGameScriptInterface_EndCutFade_0082fe00_test.cpp'
+        PassPattern = 'END_CUT_FADE_0104 PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a219e0'
+        Module = 'list<long>'
+        Source = '00/a2/listlong_popfront_00a219e0.cpp'
+        TestSource = '00/a2/listlong_popfront_00a219e0_test.cpp'
+        PassPattern = 'LIST_LONG_POP_FRONT PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049d310'
+        Module = 'CTCFadeOutAndIn'
+        Source = '00/49/CTCFadeOutAndIn_IsFading_0049d310.cpp'
+        TestSource = '00/49/CTCFadeOutAndIn_IsFading_0049d310_test.cpp'
+        PassPattern = 'FADE_OUT_AND_IN_IS_FADING PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0aa30'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_SetVertexFormat_00a0aa30.cpp'
+        TestSource = '00/a0/CRenderManagerCore_SetVertexFormat_00a0aa30_test.cpp'
+        PassPattern = 'RENDER_MANAGER_SET_VERTEX_FORMAT PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b28b60'
+        Module = 'CIEngine'
+        Source = '00/b2/CIEngine_PeekGlobalAmbientColour_00b28b60.cpp'
+        TestSource = '00/b2/CIEngine_PeekGlobalAmbientColour_00b28b60_test.cpp'
+        PassPattern = 'IENGINE_GLOBAL_AMBIENT_COLOUR PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c4560'
+        Module = 'CThingFilter_AICreatureHasProperty'
+        Source = '00/6c/CThingFilterAICreatureHasProperty_operator_006c4560.cpp'
+        TestSource = '00/6c/CThingFilterAICreatureHasProperty_operator_006c4560_test.cpp'
+        PassPattern = 'AI_CREATURE_PROPERTY_FILTER PASS'
+    }
+    [pscustomobject]@{
+        Address = '00982db0'
+        Module = 'CThingFilter_HasBuildingAsHome'
+        Source = '00/98/CThingFilterHasBuildingAsHome_operator_00982db0.cpp'
+        TestSource = '00/98/CThingFilterHasBuildingAsHome_operator_00982db0_test.cpp'
+        PassPattern = 'HOME_BUILDING_FILTER PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bc450'
+        Module = 'CItem'
+        Source = '00/5b/CItem_IsSameItemTypeAsDefIndex_005bc450.cpp'
+        TestSource = '00/5b/CItem_IsSameItemTypeAsDefIndex_005bc450_test.cpp'
+        PassPattern = 'ITEM_TYPE_DEF_INDEX PASS'
+    }
+    [pscustomobject]@{
+        Address = '008350d0'
+        Module = 'CAnimFilterAnyGroup'
+        Source = '00/83/CAnimFilterAnyGroup_Clone_008350d0.cpp'
+        TestSource = '00/83/CAnimFilterAnyGroup_Clone_008350d0_test.cpp'
+        PassPattern = 'ANIM_FILTER_ANY_GROUP_CLONE PASS'
+    }
 )
 
 $requestedAddresses = @(

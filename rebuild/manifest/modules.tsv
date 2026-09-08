@@ -408,7 +408,7 @@ CAnimComponentStrikeResponseAnim	6	7	7	0	0	3	3	2	1	0	0
 CAnimComponentStrikeSpeedMultiplier	6	7	7	0	0	5	5	3	2	0	0
 CAnimComponentTransitionInTime	6	7	7	0	0	4	4	3	1	0	0
 CAnimEntryLite	1	2	1	0	0	0	0	0	0	0	0
-CAnimFilterAnyGroup	1	1	1	0	0	0	0	0	0	0	0
+CAnimFilterAnyGroup	1	1	1	0	0	1	1	0	0	0	0
 CAnimFilterNoGroup	1	3	3	0	0	3	3	3	0	0	0
 CAnimFilterOf2Groups	1	1	1	0	0	0	0	0	0	0	0
 CAnimFilterOf3Groups	1	1	1	0	0	0	0	0	0	0	0
@@ -1788,7 +1788,7 @@ CGameMap	6	6	5	0	0	1	1	1	0	0	0
 CGameMapCell	2	1	1	0	0	0	0	0	0	0	0
 CGameNavigatorManagerExternalInterface	2	2	2	0	0	0	0	0	0	0	0
 CGamePlayerInterface	41	24	23	0	0	13	13	13	0	0	0
-CGameScriptInterface	935	953	948	441	0	398	398	56	339	0	0
+CGameScriptInterface	935	953	948	441	0	399	399	56	339	0	0
 CGameScriptThing	81	91	88	3	0	11	11	6	5	0	0
 CGameScriptThingManager	5	6	5	0	0	0	0	0	0	0	0
 CGameTimeManager	27	13	13	0	0	0	0	0	0	0	0
@@ -1978,7 +1978,7 @@ CHoverState	1	0	0	0	0	0	0	0	0	0	0
 CHoverable	15	11	10	0	0	5	5	2	3	0	0
 CHybridMultifractal	1	1	1	0	0	0	0	0	0	0	0
 CIDrawMap	1	3	3	0	0	3	3	3	0	0	0
-CIEngine	11	74	74	0	0	73	73	70	3	0	0
+CIEngine	11	74	74	0	0	74	74	70	3	0	0
 CIME	21	8	8	0	0	3	3	0	3	0	0
 CIMEFont	6	2	2	0	0	0	0	0	0	0	0
 CIPhysicsFacesSegmentBase	4	1	1	0	0	0	0	0	0	0	0
@@ -2115,7 +2115,7 @@ CIsThingConscious	1	2	2	0	0	0	0	0	0	0	0
 CIsUsableIciclePoint	0	1	1	0	0	0	0	0	0	0	0
 CIsVariableFalse	1	1	1	0	0	0	0	0	0	0	0
 CIsVeryCloseMotionlessCreature	0	1	1	0	0	0	0	0	0	0	0
-CItem	20	32	29	0	0	5	5	5	0	0	0
+CItem	20	32	29	0	0	6	6	5	0	0	0
 CJackDragonDef	2	3	3	0	0	2	2	2	0	0	0
 CJackOfBladesBattleDef	2	3	3	0	0	2	2	2	0	0	0
 CJames	4	0	0	0	0	0	0	0	0	0	0
@@ -2863,7 +2863,7 @@ CRegister	0	4	0	0	0	0	0	0	0	0	0
 CRegisteredTCInfo	0	5	0	0	0	0	0	0	0	0	0
 CReluctantTrader	3	0	0	0	0	0	0	0	0	0	0
 CRenderManager2D	31	28	26	0	0	1	1	0	1	0	0
-CRenderManagerCore	39	27	25	0	0	2	2	1	1	0	0
+CRenderManagerCore	39	27	25	0	0	3	3	1	1	0	0
 CRenderStateManager	10	9	8	0	0	3	3	2	1	0	0
 CRenderTarget	6	16	14	0	0	8	8	0	8	0	0
 CReplaceSerialise<CFileFormatEditMapBrushHeader	0	3	3	0	0	0	0	0	0	0	0
@@ -3305,7 +3305,7 @@ CTCEntityEvents	8	2	2	0	0	1	1	0	1	0	0
 CTCExclusiveUse	4	0	0	0	0	0	0	0	0	0	0
 CTCExplodingObject	12	6	4	0	0	0	0	0	0	0	0
 CTCExpression	5	1	1	0	0	0	0	0	0	0	0
-CTCFadeOutAndIn	11	7	5	0	0	0	0	0	0	0	0
+CTCFadeOutAndIn	11	7	5	0	0	1	1	0	0	0	0
 CTCFamilyMember	6	0	0	0	0	0	0	0	0	0	0
 CTCFineDialogue	7	3	3	0	0	0	0	0	0	0	0
 CTCFireRangedWeaponOnLeavingStateGroup	8	0	0	0	0	0	0	0	0	0	0
@@ -3614,7 +3614,7 @@ CThingDeadCreature	14	10	9	0	0	0	0	0	0	0	0
 CThingDialog	15	0	0	0	0	0	0	0	0	0	0
 CThingDrainLifeShotDef	2	3	3	0	0	2	2	2	0	0	0
 CThingDrawInformation	0	1	1	0	0	0	0	0	0	0	0
-CThingFilter_AICreatureHasProperty	0	2	2	0	0	0	0	0	0	0	0
+CThingFilter_AICreatureHasProperty	0	2	2	0	0	1	1	0	0	0	0
 CThingFilter_BoundingBoxOverlapsMap	0	1	1	0	0	0	0	0	0	0	0
 CThingFilter_CanBeHitByEpicSpell	0	1	1	0	0	0	0	0	0	0	0
 CThingFilter_CanBeUsedAsCover	0	1	1	0	0	1	1	1	0	0	0
@@ -3624,7 +3624,7 @@ CThingFilter_CanSeeEachOther	0	1	1	0	0	0	0	0	0	0	0
 CThingFilter_CombatCanCollideOrInteractWithThing	0	1	1	0	0	0	0	0	0	0	0
 CThingFilter_CombatIsStrikeToStrike	0	1	1	0	0	0	0	0	0	0	0
 CThingFilter_HasAnyScriptName	0	1	1	0	0	0	0	0	0	0	0
-CThingFilter_HasBuildingAsHome	0	4	4	0	0	2	2	0	2	0	0
+CThingFilter_HasBuildingAsHome	0	4	4	0	0	3	3	0	2	0	0
 CThingFilter_HasDefGlobalIndex	0	1	1	0	0	0	0	0	0	0	0
 CThingFilter_HasDefName	0	1	1	0	0	1	1	0	1	0	0
 CThingFilter_HasFreeActionPoint	0	2	2	0	0	0	0	0	0	0	0
@@ -4546,7 +4546,7 @@ list<CSubTitle	0	1	1	0	0	0	0	0	0	0	0
 list<CTCBase*	0	7	7	0	0	0	0	0	0	0	0
 list<CVsyncCallbackTimer::CPendingQuery	0	1	1	0	0	0	0	0	0	0	0
 list<NUISystem::CList*	0	6	6	0	0	6	6	2	4	0	0
-list<long	0	1	1	0	0	0	0	0	0	0	0
+list<long	0	1	1	0	0	1	1	0	0	0	0
 list<std::pair<long	0	2	2	0	0	1	1	0	1	0	0
 lower_bound<std::_List_const_iterator<std::_List_val<CAnimSet,std::allocator<CAnimSet>_>_>*,std::_List_const_iterator<class_std::_List_val<class_CAnimSet,class_std	0	1	1	0	0	0	0	0	0	0	0
 make_heap<std	0	37	37	0	0	0	0	0	0	0	0

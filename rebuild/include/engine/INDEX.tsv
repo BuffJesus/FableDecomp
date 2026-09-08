@@ -209,6 +209,7 @@ CAnimComponentSetCreatureMode	CAnimComponentSetCreatureMode.h	12	1	OK	2 retail f
 CAnimComponentStrikeResponseAnim	CAnimComponentStrikeResponseAnim.h	12	1	OK	0 retail files
 CAnimComponentStrikeSpeedMultiplier	_quarantine/CAnimComponentStrikeSpeedMultiplier.h	12	2	QUARANTINED	4 conflict(s) in 4 file(s) vs 0 agreeing
 CAnimComponentTransitionInTime	CAnimComponentTransitionInTime.h	12	1	OK	1 retail files
+CAnimFilterAnyGroup	CAnimFilterAnyGroup.h	4	0	OK	1 retail files
 CAnimFilterNoGroup	CAnimFilterNoGroup.h	4	0	OK	0 retail files
 CAnimatingObjectDef	_quarantine/CAnimatingObjectDef.h	76	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
 CAppearanceDef	_quarantine/CAppearanceDef.h	124	15	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing

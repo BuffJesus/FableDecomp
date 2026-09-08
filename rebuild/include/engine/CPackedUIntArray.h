@@ -13,7 +13,7 @@ struct CPackedUIntArray {
     void*         PackedInts;                                // +0x00 ulong *
     unsigned long Size;                                      // +0x04
     unsigned char Bits;                                      // +0x08
-    unsigned char _alignment[0x3];                           // +0x09 retail-only unsigned char (CPackedUIntArray_Sizeof_00a62a60.cpp)
+    unsigned char _alignment[0x3];                           // +0x09 retail-only unsigned char (previous header)
     unsigned long Bias;                                      // +0x0c
 };
 #pragma pack(pop)

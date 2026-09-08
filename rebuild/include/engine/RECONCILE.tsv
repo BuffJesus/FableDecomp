@@ -825,6 +825,7 @@ CPackedUIntArray	0x0	void*	PackedInts	4	unsigned long*	PackedInts	4	AGREE	CPacke
 CPackedUIntArray	0x4	unsigned long	Size	4	unsigned long	Size	4	AGREE	CPackedUIntArray_Sizeof_00a62a60.cpp
 CPackedUIntArray	0x8	unsigned char	Bits	1	unsigned char	Bits	1	AGREE	CPackedUIntArray_Sizeof_00a62a60.cpp
 CPackedUIntArray	0x9	unsigned char	_pad_0x09	3	unsigned char	_alignment	3	RETAIL_ONLY	CPackedUIntArray_Sizeof_00a62a60.cpp
+CPackedUIntArray	0x9	unsigned char	_pad_0x09	3	unsigned char	_alignment	3	RETAIL_ONLY	previous header
 CPackedUIntArray	0xc	unsigned long	Bias	4	unsigned long	Bias	4	AGREE	CPackedUIntArray_Sizeof_00a62a60.cpp
 CParentDefClassBase	0x29	CVectorMap<unsigned_long,CDefClassBase::CSubDefInfo,CKeyPairCompareLess<unsigned_long,CDefClassBase::CSubDefInfo>_>	SubDefInfoMap	20	Sub	field	4	CONTAINED	CParentDefClassBase_GetPSubDefInfoMap_004303e0.cpp
 CParticleAttacherDef	size			56	sizeof	GetSizeofClass	52	SIZE_CONFLICT	GetSizeofClass

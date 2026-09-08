@@ -37,6 +37,21 @@ Batch 162 added four exact matches with behavior fixtures:
 - `00A696D0 CTextureManager::Uninitialise` — named retail overlay for the donor's larger preallocation block
 - `00A028B0 CHandleBasedMemoryPool::InternalSetResource` — typed handle-array/allocation traversal rather than chained offsets
 
-Resume in the remainder of batch 162 and mark each reviewed address in both crawl tried ledgers before
-generating batch 163. Keep the readable-source rule: semantic/PDB names when supported,
+The remainder of batch 162 and batch 163 added seven more verified functions:
+
+- `0082FE00 CGameScriptInterface::EndCutFade` — shared PDB class and named fade operations
+- `00A219E0 list<long>::pop_front` — named sentinel/node unlink
+- `0049D310 CTCFadeOutAndIn::IsFading` — original `FadingIn`/`FadingOut` fields
+- `006C4560 CThingFilter_AICreatureHasProperty::operator()` — PDB `Property` field
+- `00982DB0 CThingFilter_HasBuildingAsHome::operator()` — PDB `HomeBuilding` field
+- `00A0AA30 CRenderManagerCore::SetVertexFormat` — shared manager header and typed Direct3D `SetFVF` slot
+- `00B28B60 CIEngine::PeekGlobalAmbientColour` — named RGBA value type
+
+Batch 164 began with two more verified functions:
+
+- `005BC450 CItem::IsSameItemTypeAsDefIndex` — shared `CItem` header, including the empty-stack guard
+- `008350D0 CAnimFilterAnyGroup::Clone` — genuine stateless C++ clone rather than allocation pseudocode
+
+Resume in the remainder of batch 164 and mark each reviewed address in both crawl tried ledgers before
+generating batch 165. Keep the readable-source rule: semantic/PDB names when supported,
 explicit offset names otherwise, and no landing on a misleading owner or prototype.
