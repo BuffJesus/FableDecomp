@@ -1791,7 +1791,7 @@ CGamePlayerInterface	41	24	23	0	0	13	13	13	0	0	0
 CGameScriptInterface	935	953	948	441	0	399	399	56	342	0	0
 CGameScriptThing	81	91	88	3	0	11	11	6	5	0	0
 CGameScriptThingManager	5	6	5	0	0	1	1	1	0	0	0
-CGameTimeManager	27	13	13	0	0	0	0	0	0	0	0
+CGameTimeManager	27	13	13	0	0	1	1	0	1	0	0
 CGameflowAssistanceScript	9	7	7	0	0	2	2	2	0	0	0
 CGameflowScript	8	3	3	0	0	0	0	0	0	0	0
 CGamesmasterOracleMarker	2	1	1	0	0	0	0	0	0	0	0
@@ -3407,7 +3407,7 @@ CTCOwnedEntity	10	9	6	0	0	0	0	0	0	0	0
 CTCParamsPhysicsBase	0	1	0	0	0	0	0	0	0	0	0
 CTCParticleAttacher	8	3	3	0	0	0	0	0	0	0	0
 CTCParticleAttachmentTracker	7	2	2	0	0	0	0	0	0	0	0
-CTCPerceiveThing	48	30	28	0	0	6	6	0	6	0	0
+CTCPerceiveThing	48	30	28	0	0	7	7	0	7	0	0
 CTCPhotojournalCapture	16	8	6	0	0	0	0	0	0	0	0
 CTCPhysicalShieldSpell	22	13	11	0	0	0	0	0	0	0	0
 CTCPhysicsBase	65	51	49	2	0	9	9	7	2	1	0

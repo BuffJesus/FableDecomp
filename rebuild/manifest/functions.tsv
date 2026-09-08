@@ -16556,7 +16556,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006bb390	Game_IsTimeOfDayInRange	_global	unknown	undefined	0		0	yes	accepted									
 006bb5b0	IsTimeBetween	CGameTimeManager	__thiscall	bool	4	CGameTimeManager *,float,float,float	1	yes	accepted									
 006bb720	FastForwardTimeTo	CGameTimeManager	__thiscall	void	3	CGameTimeManager *,float,float	1	yes	accepted									
-006bb790	IsDay	CGameTimeManager	__thiscall	bool	1	CGameTimeManager *	1	yes	accepted									
+006bb790	IsDay	CGameTimeManager	__thiscall	bool	1	CGameTimeManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6b\CGameTimeManager_IsDay_006bb790.cpp
 006bb810	SetBarPercentage	CThingDrawInformation	__thiscall	void	2	CThingDrawInformation *,float	1	yes	accepted									
 006bb860	sub_006bb860	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 006bb940	sub_006bb940	_gapscan	unknown	undefined	0		0			discovered	gapscan							
@@ -19731,7 +19731,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00744470	CTCPerceiveThing::SetSoundRadius	CTCPerceiveThing	__thiscall	void	2	CTCPerceiveThing *,float	1	yes	accepted									
 007444a0	CTCPerceiveThing::SetSmellRadius	CTCPerceiveThing	__thiscall	void	2	CTCPerceiveThing *,float	1	yes	accepted									
 007444d0	CTCPerceiveThing::SetGiveUpChaseRadius	CTCPerceiveThing	__thiscall	void	2	CTCPerceiveThing *,float	1	yes	accepted									
-00744500	SetSightRadius	CTCPerceiveThing	__thiscall	void	2	CTCPerceiveThing *,float	1	yes	accepted									
+00744500	SetSightRadius	CTCPerceiveThing	__thiscall	void	2	CTCPerceiveThing *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CTCPerceiveThing_SetSightRadius_00744500.cpp
 00744540	SetSightRadius	CTCPerceiveThing	__thiscall	void	2	CTCPerceiveThing *,float	1	yes	accepted									
 00744580	GetExtendedSightRadius	CTCPerceiveThing	__thiscall	float	1	CTCPerceiveThing *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CTCPerceiveThing_GetExtendedSightRadius_00744580.cpp
 007445d0	GetAirResistance	CTCPhysicsBase	__thiscall	float	1	CTCPhysicsBase *	1	yes	accepted									

@@ -805,6 +805,7 @@ CGameJoystickManager	CGameJoystickManager.h	12	2	OK	0 retail files
 CGamePlayerInterface	CGamePlayerInterface.h	2216	18	OK	0 retail files
 CGameScriptInterface	CGameScriptInterface.h	84	16	OK	18 retail files; suspect=CGameScriptInterface_CameraEarthquakeIntensityAtPos_0088ed20.cpp,CGameScriptInterface_ClearAllRumbles_00892df0.cpp,CGameScriptInterface_GetNumHousesOwned_008a12a0.cpp,CGameScriptInterface_IsEntityAbleToAttack_00890280.cpp,CGameScriptInterface_IsEntityWieldingMeleeWeapon_00890220.cpp,CGameScriptInterface_IsEntityWieldingRangedWeapon_00890250.cpp,CGameScriptInterface_IsThingAChest_008a0eb0.cpp,CGameScriptInterface_StartSneaking_008a1300.cpp
 CGameScriptThing	CGameScriptThing.h	72	13	OK	3 retail files; suspect=CGameScriptThing_GetDataStringCGameScriptThingUBEAVCCharStringXZ_008cfe00.cpp,CGameScriptThing_GetName_008cfdf0.cpp,CGameScriptThing_GetPos_008cfe20.cpp
+CGameTimeManager	CGameTimeManager.h	64	14	OK	0 retail files
 CGhostGrannySon	_quarantine/CGhostGrannySon.h	36	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CGiftDef	_quarantine/CGiftDef.h	48	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CGlobalDef	_quarantine/CGlobalDef.h	352	66	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
@@ -1114,6 +1115,7 @@ CTCBase	CTCBase.h	12	3	OK	0 retail files
 CTCBerserk	CTCBerserk.h	120	25	OK	0 retail files
 CTCBoastUI	CTCBoastUI.h	52	7	OK	1 retail files
 CTCBoastingPosition	CTCBoastingPosition.h	56	10	OK	0 retail files
+CTCBoss	CTCBoss.h	80	10	OK	0 retail files
 CTCBulletTime	CTCBulletTime.h	88	18	OK	1 retail files
 CTCBuyableHouse	CTCBuyableHouse.h	76	16	OK	0 retail files
 CTCCombat	CTCCombat.h	172	29	OK	4 retail files

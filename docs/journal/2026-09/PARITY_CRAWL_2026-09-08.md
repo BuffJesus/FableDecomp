@@ -196,3 +196,25 @@ shadows. Their native aliases, archive provenance, generated IR, compatibility
 reports, and known missing bindings are documented in
 `docs/scripts/AEON_LUA_PORTS.md`; this intake does not change native parity
 counts or claim Lua/retail equivalence.
+
+### Batches 335-341: retail-layout checks and typed time/perception recovery
+
+Batches 335 through 341 are reviewed and ledgered. Two PDB-backed functions
+were promoted: `CGameTimeManager::IsDay` uses the named `Time` member and the
+retail day boundaries `1/6` and `7/8`; `CTCPerceiveThing::SetSightRadius` uses
+the shared `CTCPerceiveThing` and `CPerceivedThingDef` headers, preserves the
+`-1.0f` restore-default sentinel, and clamps the restored extended radius to
+the current sight radius. Both pass focused boundary/branch fixtures, the
+strict shared-header gate, selected VC7.1 builds, and relocation-masked retail
+parity. The refreshed totals are 18,862 compiled and behavior-tested
+candidates, 8,141 exact matches, 10,677 relocation matches, 14,688 genuine
+landed entries, and 393,737 genuine matched retail bytes.
+
+Retail/debug divergence remained explicit rather than hidden. A proposed
+`CTextureManager::FrameEnd` implementation confirmed behavior and the retail
+`0x54` pool stride (`FailedAllocations` at `+0x58c`, versus the donor's
+`+0x5cc`) but missed parity and was not landed. The crawl also rejected a
+fourth low-confidence `CDrawGuildSeal::ClearMessages` identity whose `+0x3c4`
+access contradicts the PDB-consistent class, and an
+`IsOriginatedByThing` predicate that reads beyond the donor's eight-byte UID
+filter. Batch 342 is the next crawl target.

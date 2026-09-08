@@ -132415,6 +132415,20 @@ $catalog = @(
         TestSource = '00/40/global_GFSerialiseVectorBinaryOutfloat_0040fd40_test.cpp'
         PassPattern = 'SERIALISE_FLOAT_VECTOR PASS'
     }
+    [pscustomobject]@{
+        Address = '006bb790'
+        Module = 'CGameTimeManager'
+        Source = '00/6b/CGameTimeManager_IsDay_006bb790.cpp'
+        TestSource = '00/6b/CGameTimeManager_IsDay_006bb790_test.cpp'
+        PassPattern = 'GAME_TIME_IS_DAY PASS'
+    }
+    [pscustomobject]@{
+        Address = '00744500'
+        Module = 'CTCPerceiveThing'
+        Source = '00/74/CTCPerceiveThing_SetSightRadius_00744500.cpp'
+        TestSource = '00/74/CTCPerceiveThing_SetSightRadius_00744500_test.cpp'
+        PassPattern = 'PERCEIVE_THING_SET_SIGHT_RADIUS PASS'
+    }
 )
 
 $requestedAddresses = @(

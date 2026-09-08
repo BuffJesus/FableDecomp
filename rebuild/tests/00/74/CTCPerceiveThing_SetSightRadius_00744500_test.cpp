@@ -1,0 +1,4 @@
+#include <stdio.h>
+#include "engine/CTCPerceiveThing.h"
+#include "engine/CPerceivedThingDef.h"
+void __fastcall CTCPerceiveThing_SetSightRadius(CTCPerceiveThing*, float); int main() { CTCPerceiveThing perception = {}; CPerceivedThingDef definition = {}; perception.PDef_Object = reinterpret_cast<CDefPointeeBase*>(&definition); perception.SightRadius = 12.0f; definition.ExtendedSightRadius = 20.0f; CTCPerceiveThing_SetSightRadius(&perception, 7.0f); if (perception.ExtendedSightRadius != 7.0f) return 1; CTCPerceiveThing_SetSightRadius(&perception, -1.0f); if (perception.ExtendedSightRadius != 20.0f) return 2; definition.ExtendedSightRadius = 5.0f; CTCPerceiveThing_SetSightRadius(&perception, -1.0f); if (perception.ExtendedSightRadius != 12.0f) return 3; printf("PERCEIVE_THING_SET_SIGHT_RADIUS PASS\n"); return 0; }
