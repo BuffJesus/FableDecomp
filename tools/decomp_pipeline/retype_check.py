@@ -2,7 +2,7 @@
 """Deterministic gate for a hand-retyped landed function.
 
     python retype_check.py <address> <candidate.cpp> [--apply] [--test <candidate_test.cpp>]
-                           [--baseline <original.cpp> | --baseline-head]
+                           [--baseline <original.cpp> | --baseline-head] [--diff-bytes]
 
 1. Reproduces the CURRENT landed file's parity status (flag ladder, jump-table extractor) —
    BASELINE_FAIL if it cannot.
@@ -32,6 +32,24 @@ from crawl import purity  # noqa: E402
 
 GENERIC = {"T", "Sub", "Owner", "Slot", "Info", "Obj", "S", "Self", "This", "Inner", "Foo",
            "Holder", "Mid", "MidObj", "CamObj"}
+
+
+def print_byte_diff(retail: bytes, built: bytes | None) -> None:
+    if built is None:
+        return
+    print("BYTE_EXPECTED " + retail.hex())
+    print("BYTE_BUILT    " + built.hex())
+    width = max(len(retail), len(built))
+    diffs = []
+    for offset in range(width):
+        expected = retail[offset] if offset < len(retail) else None
+        actual = built[offset] if offset < len(built) else None
+        if expected != actual:
+            diffs.append(
+                f"{offset:04x}:{'--' if expected is None else f'{expected:02x}'}>"
+                f"{'--' if actual is None else f'{actual:02x}'}"
+            )
+    print("BYTE_DIFF " + " ".join(diffs))
 
 
 def main() -> int:
@@ -88,8 +106,8 @@ def main() -> int:
     if base is None:
         print("RESULT BASELINE_FAIL"); return 1
     baseline, flags, extra, ext = base
-    st, _, _ = v.parity_of(v.vc71(cand), addr, leaf, retail, work, e, extra=extra,
-                           base_flags=flags, text_extractor=ext)
+    st, built, _ = v.parity_of(v.vc71(cand), addr, leaf, retail, work, e, extra=extra,
+                               base_flags=flags, text_extractor=ext)
     if st != baseline:
         # give the candidate the same flag ladder chance the baseline had
         alt = R.find_baseline(v.vc71(cand), addr, leaf, retail, work, e, cat)
@@ -97,6 +115,8 @@ def main() -> int:
             st, flags, extra, ext = alt
             v.parity_of(v.vc71(cand), addr, leaf, retail, work, e, extra=extra, base_flags=flags, text_extractor=ext)
         else:
+            if "--diff-bytes" in sys.argv:
+                print_byte_diff(retail, built)
             print(f"RESULT PARITY_CHANGED baseline={baseline} candidate={st}"); return 1
     rel = src_path.relative_to(v.ROOT / "rebuild" / "src" / "compiled")
     test_path = (v.ROOT / "rebuild" / "tests" / rel).with_name(src_path.stem + "_test.cpp")

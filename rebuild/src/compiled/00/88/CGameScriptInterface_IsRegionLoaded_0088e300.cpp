@@ -1,34 +1,30 @@
+#include "engine/CGameScriptInterface.h"
+
 class CCharString;
 class CIDrawEnvironment;
-
-struct CWorldMap {
-    CIDrawEnvironment* GetRegionNumberFromName(const CCharString& regionName);
-};
-
-struct CWorld {
-    CIDrawEnvironment* DrawGetEnvironment();
-};
-
-struct WorldProvider {
-    void** vtable;
-};
-
-struct CGameScriptInterface {
-    WorldProvider* worldProvider;
+struct CWorldMapLookup { CIDrawEnvironment* GetRegionNumberFromName(const CCharString& regionName); };
+struct CWorldEnvironment { CIDrawEnvironment* DrawGetEnvironment(); };
+struct CWorldProvider { void** vtable; };
+typedef void* (__fastcall* GetWorldObjectFn)(CWorldProvider* provider);
+struct CGameScriptInterface_Methods : CGameScriptInterface {
     virtual bool IsRegionLoaded(const CCharString& regionName) const;
 };
 
-typedef void* (__fastcall* GetWorldObjectFn)(WorldProvider* self);
+bool CGameScriptInterface_Methods::IsRegionLoaded(const CCharString& regionName) const {
+    const CGameScriptInterface* scriptInterface =
+        reinterpret_cast<const CGameScriptInterface*>(this);
+    CWorldProvider* provider =
+        reinterpret_cast<CWorldProvider*>(scriptInterface->World);
+    CIDrawEnvironment* region =
+        reinterpret_cast<CWorldMapLookup*>(
+            ((GetWorldObjectFn)provider->vtable[0x34 / 4])(provider))
+            ->GetRegionNumberFromName(regionName);
 
-bool CGameScriptInterface::IsRegionLoaded(const CCharString& regionName) const
-{
-    WorldProvider* wp = this->worldProvider;
-    CIDrawEnvironment* regionEnv =
-        ((CWorldMap*)((GetWorldObjectFn)wp->vtable[0x34 / 4])(wp))->GetRegionNumberFromName(regionName);
-
-    WorldProvider* wp2 = this->worldProvider;
-    CIDrawEnvironment* currentEnv =
-        ((CWorld*)((GetWorldObjectFn)wp2->vtable[0x34 / 4])(wp2))->DrawGetEnvironment();
-
-    return (bool)(regionEnv == currentEnv);
+    CWorldProvider* provider2 =
+        reinterpret_cast<CWorldProvider*>(scriptInterface->World);
+    CIDrawEnvironment* current =
+        reinterpret_cast<CWorldEnvironment*>(
+            ((GetWorldObjectFn)provider2->vtable[0x34 / 4])(provider2))
+            ->DrawGetEnvironment();
+    return (bool)(region == current);
 }
