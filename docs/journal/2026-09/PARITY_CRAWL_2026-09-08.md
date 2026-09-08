@@ -113,3 +113,8 @@ PDB-owned creature/combat action `Clone` methods recovered as ordinary
 landing passed its focused behavior fixture and selected VC7.1 build; relocation
 matches preserve the allocator, copy-constructor, string, or stream call sites.
 Batch 196 is active and continues the same constructor-verified clone seam.
+### Batches 196-200: action-clone continuation and typed field leaves
+
+The marathon continued past checkpoint `1898ef4` through batches 196-200. Retail allocation immediates and PDB owners supported 39 additional ordinary action copy-clones; every clone uses `return new Derived(*this)`, passed its behavior oracle, reproduced retail under relocation masking, and passed the selected VC7.1 build gate. Batch 199 also recovered `CDrawGuildSeal::ClearMessages` as the readable `while (FirstMessage) RemoveMessage(0)` loop. Batch 200 recovered the exact 35-byte `CTCInventoryBase::SetInventoryAnimRenderBox` field copy using the shared `C2DBoxF` member names and an explicit retail `+0xbc` overlay.
+
+Ambiguous batch-198/199/200 rows were not promoted merely because a plausible behavioral implementation compiled. In particular, the two `SetAsKeyboardKeyHeld` rows disagree with their propagated double-parameter prototype and stack cleanup, three `DestroyWaterGenerator` labels cover differing layouts/callees, and the `CMemoryAllocatorFixedSize::Validate` row carries a contradictory `CEngineLandscapePatch*` receiver. Plausible implementations of `CWorldMap::GetLevelScriptName`, `EnlargedUnsignedDivide`, `ResetGlobalScriptDef`, `_Fill_n`, and `CTCHeroStats::SetMaxStamina` passed behavior checks but failed retail parity, so remain unlanded. Batches through 200 are ledgered; batch 201 is active.

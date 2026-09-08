@@ -40,6 +40,8 @@ landed=set(int(m,16) for m in re.findall(r"Address\s*=\s*'([0-9a-fA-F]{8})'",cat
 # global 'tried' ledger to avoid re-attempting NOWINs across runs
 tried=set()
 tp=SCR/"gen_tried.txt"
+if not tp.exists():
+    tp=ROOT/"tools/decomp_pipeline/crawl/gen_tried.txt"
 if tp.exists(): tried=set(int(x,16) for x in tp.read_text().split())
 def body(va):
     o=off(va); nx=nextof.get(va)

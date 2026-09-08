@@ -131680,6 +131680,293 @@ $catalog = @(
         TestSource = '00/8b/CCreatureActionProjectileCrouch_Clone_008b89e0_test.cpp'
         PassPattern = 'CCREATUREACTION_PROJECTILECROUCH_CLONE PASS'
     }
+    [pscustomobject]@{
+        Address = '008b9210'
+        Module = 'CCreatureAction_ScreamerDie'
+        Source = '00/8b/CCreatureActionScreamerDie_Clone_008b9210.cpp'
+        TestSource = '00/8b/CCreatureActionScreamerDie_Clone_008b9210_test.cpp'
+        PassPattern = 'CCREATUREACTION_SCREAMERDIE_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008be400'
+        Module = 'CCreatureAction_CastPhysicalShieldSpell'
+        Source = '00/8b/CCreatureActionCastPhysicalShieldSpell_Clone_008be400.cpp'
+        TestSource = '00/8b/CCreatureActionCastPhysicalShieldSpell_Clone_008be400_test.cpp'
+        PassPattern = 'CCREATUREACTION_CASTPHYSICALSHIELDSPELL_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008be7f0'
+        Module = 'CCreatureAction_CastWillReclaimUndeadFollower'
+        Source = '00/8b/CCreatureActionCastWillReclaimUndeadFollower_Clone_008be7f0.cpp'
+        TestSource = '00/8b/CCreatureActionCastWillReclaimUndeadFollower_Clone_008be7f0_test.cpp'
+        PassPattern = 'CCREATUREACTION_CASTWILLRECLAIMUNDEADFOLLOWER_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008bea80'
+        Module = 'CCreatureAction_TeleportOut'
+        Source = '00/8b/CCreatureActionTeleportOut_Clone_008bea80.cpp'
+        TestSource = '00/8b/CCreatureActionTeleportOut_Clone_008bea80_test.cpp'
+        PassPattern = 'CCREATUREACTION_TELEPORTOUT_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c02d0'
+        Module = 'CCreatureAction_Ambush'
+        Source = '00/8c/CCreatureActionAmbush_Clone_008c02d0.cpp'
+        TestSource = '00/8c/CCreatureActionAmbush_Clone_008c02d0_test.cpp'
+        PassPattern = 'CCREATUREACTION_AMBUSH_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c3ce0'
+        Module = 'CCreatureAction_BriarRoseShotFarOutof'
+        Source = '00/8c/CCreatureActionBriarRoseShotFarOutof_Clone_008c3ce0.cpp'
+        TestSource = '00/8c/CCreatureActionBriarRoseShotFarOutof_Clone_008c3ce0_test.cpp'
+        PassPattern = 'CCREATUREACTION_BRIARROSESHOTFAROUTOF_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c5d10'
+        Module = 'CCreatureAction_ScorpionChargeInto'
+        Source = '00/8c/CCreatureActionScorpionChargeInto_Clone_008c5d10.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionChargeInto_Clone_008c5d10_test.cpp'
+        PassPattern = 'CCREATUREACTION_SCORPIONCHARGEINTO_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c5d90'
+        Module = 'CCreatureAction_ScorpionCharge'
+        Source = '00/8c/CCreatureActionScorpionCharge_Clone_008c5d90.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionCharge_Clone_008c5d90_test.cpp'
+        PassPattern = 'CCREATUREACTION_SCORPIONCHARGE_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c5e10'
+        Module = 'CCreatureAction_ScorpionChargeStrike'
+        Source = '00/8c/CCreatureActionScorpionChargeStrike_Clone_008c5e10.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionChargeStrike_Clone_008c5e10_test.cpp'
+        PassPattern = 'CCREATUREACTION_SCORPIONCHARGESTRIKE_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c7d50'
+        Module = 'CCreatureAction_TrollThrowProjectile'
+        Source = '00/8c/CCreatureActionTrollThrowProjectile_Clone_008c7d50.cpp'
+        TestSource = '00/8c/CCreatureActionTrollThrowProjectile_Clone_008c7d50_test.cpp'
+        PassPattern = 'CCREATUREACTION_TROLLTHROWPROJECTILE_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c9760'
+        Module = 'CCreatureAction_BanditKingThrowWeapons'
+        Source = '00/8c/CCreatureActionBanditKingThrowWeapons_Clone_008c9760.cpp'
+        TestSource = '00/8c/CCreatureActionBanditKingThrowWeapons_Clone_008c9760_test.cpp'
+        PassPattern = 'CCREATUREACTION_BANDITKINGTHROWWEAPONS_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c9830'
+        Module = 'CCreatureAction_BanditKingStuck'
+        Source = '00/8c/CCreatureActionBanditKingStuck_Clone_008c9830.cpp'
+        TestSource = '00/8c/CCreatureActionBanditKingStuck_Clone_008c9830_test.cpp'
+        PassPattern = 'CCREATUREACTION_BANDITKINGSTUCK_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008caaa0'
+        Module = 'CCreatureAction_NymphTeleportOutOfLimbo'
+        Source = '00/8c/CCreatureActionNymphTeleportOutOfLimbo_Clone_008caaa0.cpp'
+        TestSource = '00/8c/CCreatureActionNymphTeleportOutOfLimbo_Clone_008caaa0_test.cpp'
+        PassPattern = 'CCREATUREACTION_NYMPHTELEPORTOUTOFLIMBO_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cef20'
+        Module = 'CCreatureAction_CastAssassinRush'
+        Source = '00/8c/CCreatureActionCastAssassinRush_Clone_008cef20.cpp'
+        TestSource = '00/8c/CCreatureActionCastAssassinRush_Clone_008cef20_test.cpp'
+        PassPattern = 'CCREATUREACTION_CASTASSASSINRUSH_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ceff0'
+        Module = 'CCreatureAction_CastBattleCharge'
+        Source = '00/8c/CCreatureActionCastBattleCharge_Clone_008ceff0.cpp'
+        TestSource = '00/8c/CCreatureActionCastBattleCharge_Clone_008ceff0_test.cpp'
+        PassPattern = 'CCREATUREACTION_CASTBATTLECHARGE_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cf0c0'
+        Module = 'CCreatureAction_BattleChargeImpact'
+        Source = '00/8c/CCreatureActionBattleChargeImpact_Clone_008cf0c0.cpp'
+        TestSource = '00/8c/CCreatureActionBattleChargeImpact_Clone_008cf0c0_test.cpp'
+        PassPattern = 'CCREATUREACTION_BATTLECHARGEIMPACT_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cf160'
+        Module = 'CCreatureAction_BattleChargeMiss'
+        Source = '00/8c/CCreatureActionBattleChargeMiss_Clone_008cf160.cpp'
+        TestSource = '00/8c/CCreatureActionBattleChargeMiss_Clone_008cf160_test.cpp'
+        PassPattern = 'CCREATUREACTION_BATTLECHARGEMISS_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d62f0'
+        Module = 'CCreatureAction_FireMissileWeapon'
+        Source = '00/8d/CCreatureActionFireMissileWeapon_Clone_008d62f0.cpp'
+        TestSource = '00/8d/CCreatureActionFireMissileWeapon_Clone_008d62f0_test.cpp'
+        PassPattern = 'CCREATUREACTION_FIREMISSILEWEAPON_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d63c0'
+        Module = 'CCreatureAction_FireMissileTest'
+        Source = '00/8d/CCreatureActionFireMissileTest_Clone_008d63c0.cpp'
+        TestSource = '00/8d/CCreatureActionFireMissileTest_Clone_008d63c0_test.cpp'
+        PassPattern = 'CCREATUREACTION_FIREMISSILETEST_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e4ef0'
+        Module = 'CCreatureAction_ScorpionTailWithdraw'
+        Source = '00/8e/CCreatureActionScorpionTailWithdraw_Clone_008e4ef0.cpp'
+        TestSource = '00/8e/CCreatureActionScorpionTailWithdraw_Clone_008e4ef0_test.cpp'
+        PassPattern = 'CCREATUREACTION_SCORPIONTAILWITHDRAW_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e4f60'
+        Module = 'CCreatureAction_ScorpionTailPlunge'
+        Source = '00/8e/CCreatureActionScorpionTailPlunge_Clone_008e4f60.cpp'
+        TestSource = '00/8e/CCreatureActionScorpionTailPlunge_Clone_008e4f60_test.cpp'
+        PassPattern = 'CCREATUREACTION_SCORPIONTAILPLUNGE_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e8d30'
+        Module = 'CCreatureAction_BriarRoseConcentrateInto'
+        Source = '00/8e/CCreatureActionBriarRoseConcentrateInto_Clone_008e8d30.cpp'
+        TestSource = '00/8e/CCreatureActionBriarRoseConcentrateInto_Clone_008e8d30_test.cpp'
+        PassPattern = 'CCREATUREACTION_BRIARROSECONCENTRATEINTO_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e8db0'
+        Module = 'CCreatureAction_BriarRoseInvulnerableTeleport'
+        Source = '00/8e/CCreatureActionBriarRoseInvulnerableTeleport_Clone_008e8db0.cpp'
+        TestSource = '00/8e/CCreatureActionBriarRoseInvulnerableTeleport_Clone_008e8db0_test.cpp'
+        PassPattern = 'CCREATUREACTION_BRIARROSEINVULNERABLETELEPORT_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f57c0'
+        Module = 'CCreatureAction_DragonSwoop'
+        Source = '00/8f/CCreatureActionDragonSwoop_Clone_008f57c0.cpp'
+        TestSource = '00/8f/CCreatureActionDragonSwoop_Clone_008f57c0_test.cpp'
+        PassPattern = 'CCREATUREACTION_DRAGONSWOOP_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00910ff0'
+        Module = 'CCreatureAction_DeclarePlayerACriminal'
+        Source = '00/91/CCreatureActionDeclarePlayerACriminal_Clone_00910ff0.cpp'
+        TestSource = '00/91/CCreatureActionDeclarePlayerACriminal_Clone_00910ff0_test.cpp'
+        PassPattern = 'CCREATUREACTION_DECLAREPLAYERACRIMINAL_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092e7e0'
+        Module = 'CCreatureAction_GetInBed'
+        Source = '00/92/CCreatureActionGetInBed_Clone_0092e7e0.cpp'
+        TestSource = '00/92/CCreatureActionGetInBed_Clone_0092e7e0_test.cpp'
+        PassPattern = 'CCREATUREACTION_GETINBED_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00933fd0'
+        Module = 'CCreatureAction_KickCreature'
+        Source = '00/93/CCreatureActionKickCreature_Clone_00933fd0.cpp'
+        TestSource = '00/93/CCreatureActionKickCreature_Clone_00933fd0_test.cpp'
+        PassPattern = 'CCREATUREACTION_KICKCREATURE_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '009406b0'
+        Module = 'CCreatureAction_PickCrop'
+        Source = '00/94/CCreatureActionPickCrop_Clone_009406b0.cpp'
+        TestSource = '00/94/CCreatureActionPickCrop_Clone_009406b0_test.cpp'
+        PassPattern = 'CCREATUREACTION_PICKCROP_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00953b90'
+        Module = 'CCreatureAction_DragonTakeOffIntoFlying'
+        Source = '00/95/CCreatureActionDragonTakeOffIntoFlying_Clone_00953b90.cpp'
+        TestSource = '00/95/CCreatureActionDragonTakeOffIntoFlying_Clone_00953b90_test.cpp'
+        PassPattern = 'CCREATUREACTION_DRAGONTAKEOFFINTOFLYING_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00953dc0'
+        Module = 'CCreatureAction_DragonBurninateInto'
+        Source = '00/95/CCreatureActionDragonBurninateInto_Clone_00953dc0.cpp'
+        TestSource = '00/95/CCreatureActionDragonBurninateInto_Clone_00953dc0_test.cpp'
+        PassPattern = 'CCREATUREACTION_DRAGONBURNINATEINTO_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '009573d0'
+        Module = 'CCreatureAction_BriarRoseIntoInvulnerable'
+        Source = '00/95/CCreatureActionBriarRoseIntoInvulnerable_Clone_009573d0.cpp'
+        TestSource = '00/95/CCreatureActionBriarRoseIntoInvulnerable_Clone_009573d0_test.cpp'
+        PassPattern = 'CCREATUREACTION_BRIARROSEINTOINVULNERABLE_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00957450'
+        Module = 'CCreatureAction_BriarRoseForcePush'
+        Source = '00/95/CCreatureActionBriarRoseForcePush_Clone_00957450.cpp'
+        TestSource = '00/95/CCreatureActionBriarRoseForcePush_Clone_00957450_test.cpp'
+        PassPattern = 'CCREATUREACTION_BRIARROSEFORCEPUSH_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00971840'
+        Module = 'CCreatureAction_DuckAndCover'
+        Source = '00/97/CCreatureActionDuckAndCover_Clone_00971840.cpp'
+        TestSource = '00/97/CCreatureActionDuckAndCover_Clone_00971840_test.cpp'
+        PassPattern = 'CCREATUREACTION_DUCKANDCOVER_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '009775c0'
+        Module = 'CCreatureAction_JackScream'
+        Source = '00/97/CCreatureActionJackScream_Clone_009775c0.cpp'
+        TestSource = '00/97/CCreatureActionJackScream_Clone_009775c0_test.cpp'
+        PassPattern = 'CCREATUREACTION_JACKSCREAM_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00977660'
+        Module = 'CCreatureAction_JackFloatUp'
+        Source = '00/97/CCreatureActionJackFloatUp_Clone_00977660.cpp'
+        TestSource = '00/97/CCreatureActionJackFloatUp_Clone_00977660_test.cpp'
+        PassPattern = 'CCREATUREACTION_JACKFLOATUP_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '0097b5f0'
+        Module = 'CCreatureAction_JumpOutFromCover'
+        Source = '00/97/CCreatureActionJumpOutFromCover_Clone_0097b5f0.cpp'
+        TestSource = '00/97/CCreatureActionJumpOutFromCover_Clone_0097b5f0_test.cpp'
+        PassPattern = 'CCREATUREACTION_JUMPOUTFROMCOVER_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '0097ca80'
+        Module = 'CCreatureAction_ScorpionPrepareTailPlunge'
+        Source = '00/97/CCreatureActionScorpionPrepareTailPlunge_Clone_0097ca80.cpp'
+        TestSource = '00/97/CCreatureActionScorpionPrepareTailPlunge_Clone_0097ca80_test.cpp'
+        PassPattern = 'CCREATUREACTION_SCORPIONPREPARETAILPLUNGE_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '009826a0'
+        Module = 'CCreatureAction_MagicBlast'
+        Source = '00/98/CCreatureActionMagicBlast_Clone_009826a0.cpp'
+        TestSource = '00/98/CCreatureActionMagicBlast_Clone_009826a0_test.cpp'
+        PassPattern = 'CCREATUREACTION_MAGICBLAST_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00982720'
+        Module = 'CCreatureAction_SendMessage'
+        Source = '00/98/CCreatureActionSendMessage_Clone_00982720.cpp'
+        TestSource = '00/98/CCreatureActionSendMessage_Clone_00982720_test.cpp'
+        PassPattern = 'CCREATUREACTION_SENDMESSAGE_CLONE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4b010'
+        Module = 'CDrawGuildSeal'
+        Source = '00/c4/CDrawGuildSeal_ClearMessages_00c4b010.cpp'
+        TestSource = '00/c4/CDrawGuildSeal_ClearMessages_00c4b010_test.cpp'
+        PassPattern = 'DRAW_GUILD_SEAL_CLEAR_MESSAGES PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bc58f'
+        Module = 'CTCInventoryBase'
+        Source = '00/5b/CTCInventoryBase_SetInventoryAnimRenderBox_005bc58f.cpp'
+        TestSource = '00/5b/CTCInventoryBase_SetInventoryAnimRenderBox_005bc58f_test.cpp'
+        PassPattern = 'INVENTORY_ANIM_RENDER_BOX PASS'
+    }
 )
 
 $requestedAddresses = @(
