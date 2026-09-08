@@ -1,22 +1,15 @@
-// Reconstruction of CLandscapeBackgroundSubNodeSplitBranch::OnPostRelocation @ 0x00bf6d10
+#include "engine/CLandscapeBackgroundSubNodeSplitBranch.h"
 
-struct Sub {
-    char pad[4];
-};
+struct RelocatableLandscapeNode { unsigned char data[4]; };
+void __fastcall HelperRelocate(RelocatableLandscapeNode* node);
 
-// Helper at 0xbf6b70: a member taking ecx (this-in-ecx)
-void __fastcall HelperRelocate(Sub* self);
-
-struct CLandscapeBackgroundSubNodeSplitBranch {
-    // vtable ptr occupies +0x00 (has virtual)
-    Sub sub0;           // +0x04
-    char pad1[0xe4];    // +0x08 .. 0xeb
-    Sub sub1;           // +0xec
+struct CLandscapeBackgroundSubNodeSplitBranch_Methods : CLandscapeBackgroundSubNodeSplitBranch {
     virtual void OnPostRelocation();
 };
 
-void CLandscapeBackgroundSubNodeSplitBranch::OnPostRelocation()
-{
-    HelperRelocate(&this->sub0);
-    HelperRelocate(&this->sub1);
+void CLandscapeBackgroundSubNodeSplitBranch_Methods::OnPostRelocation() {
+    CLandscapeBackgroundSubNodeSplitBranch* branch =
+        reinterpret_cast<CLandscapeBackgroundSubNodeSplitBranch*>(this);
+    HelperRelocate(reinterpret_cast<RelocatableLandscapeNode*>(branch->LeftBranch));
+    HelperRelocate(reinterpret_cast<RelocatableLandscapeNode*>(branch->LeftBranch + 0xe8));
 }
