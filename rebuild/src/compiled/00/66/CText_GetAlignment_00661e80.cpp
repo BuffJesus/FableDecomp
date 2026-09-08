@@ -1,12 +1,11 @@
+#include "engine/CText.h"
 #include "rebuild_abi.h"
-// CText::GetAlignment @ 0x00661e80
-struct FableAlign_00661e80
-{
-    char pad[0x15c];
-    unsigned char flags;   // +0x15c
+
+struct CText_Methods : CText {
     char FABLE_FASTCALL get();
 };
-char FABLE_FASTCALL FableAlign_00661e80::get()
+
+char FABLE_FASTCALL CText_Methods::get()
 {
     unsigned char v = this->flags;
     if (v & 4)
