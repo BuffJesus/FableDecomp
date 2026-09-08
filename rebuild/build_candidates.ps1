@@ -132352,6 +132352,13 @@ $catalog = @(
         TestSource = '00/a0/CInputEvent_SetAsExtraMouseButtonReleased_00a03f70_test.cpp'
         PassPattern = 'EXTRA_MOUSE_RELEASED PASS'
     }
+    [pscustomobject]@{
+        Address = '009fbfe0'
+        Module = 'CResourceList'
+        Source = '00/9f/CResourceList_AddResource_009fbfe0.cpp'
+        TestSource = '00/9f/CResourceList_AddResource_009fbfe0_test.cpp'
+        PassPattern = 'ADD_RESOURCE PASS'
+    }
 )
 
 $requestedAddresses = @(

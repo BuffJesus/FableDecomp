@@ -35261,7 +35261,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009fbf70	GetUnusedFrames	CResource	__thiscall	ulong	1	CResource *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\global_GetUnusedFrames_009fbf70.cpp
 009fbf90	ListInsert	CResource	__thiscall	void	3	CResource *,CResource *,CResource *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CResource_ListInsert_009fbf90.cpp
 009fbfb0	ListRemove	CResource	__thiscall	void	1	CResource *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CResource_ListRemove_009fbfb0.cpp
-009fbfe0	AddResource	CResourceList	__thiscall	void	2	CResourceList *,CResource *	1	yes	accepted									
+009fbfe0	AddResource	CResourceList	__thiscall	void	2	CResourceList *,CResource *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CResourceList_AddResource_009fbfe0.cpp
 009fc020	RemoveResource	CResourceBank	__thiscall	void	2	CResourceBank *,CResource *	1	yes	accepted									
 009fc070	GetUnloadableMemory	CResourceList	__thiscall	ulong	2	CResourceList *,ulong	1	yes	accepted									
 009fc100	ResetDebugStats	CResourceList	__thiscall	void	1	CResourceList *	1	yes	accepted									

@@ -2873,7 +2873,7 @@ CReplaceableMeshDef	2	3	3	0	0	3	3	1	2	0	0
 CResolveDialog	4	0	0	0	0	0	0	0	0	0	0
 CResource	11	23	19	0	0	12	12	12	0	0	0
 CResourceBank	5	6	4	0	0	0	0	0	0	0	0
-CResourceList	15	10	8	0	0	1	1	0	1	0	0
+CResourceList	15	10	8	0	0	2	2	1	1	0	0
 CResourceMap	0	1	0	0	0	0	0	0	0	0	0
 CResurrectionItemDef	2	3	3	0	0	3	3	1	2	0	0
 CRidgedMultifractal	1	0	0	0	0	0	0	0	0	0	0

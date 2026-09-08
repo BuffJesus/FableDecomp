@@ -70,13 +70,13 @@ a worklist, not the intended end state.
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Verified functional or matching reconstruction | **18,825 · 37.98%** |
-| Byte-identical reconstruction | **8,151 · 16.44%** |
+| Verified functional or matching reconstruction | **18,826 · 37.98%** |
+| Byte-identical reconstruction | **8,152 · 16.45%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
 Current functional-or-matching coverage is **37.98%** of the 49,568-function catalog.
-Of that verified set, **16.44%** is byte-identical C++.
+Of that verified set, **16.45%** is byte-identical C++.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -93,11 +93,11 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,851** |
-| Reconstruction | Verified functional or matching C++ | **18,825** (37.98%) |
-| Reconstruction | — of which byte-**identical** C++ | 8,151 (16.44%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,852** |
+| Reconstruction | Verified functional or matching C++ | **18,826** (37.98%) |
+| Reconstruction | — of which byte-**identical** C++ | 8,152 (16.45%) |
 | Reconstruction | — of which hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 292 |
-| Readability | Landed sources typed onto shared PDB-named engine headers | 674 |
+| Readability | Landed sources typed onto shared PDB-named engine headers | 675 |
 | Readability | Throwaway local `struct T {...}` declarations remaining | 4,410 |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 43 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 0 |
