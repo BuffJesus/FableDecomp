@@ -220,11 +220,15 @@ CCarrySlotDef	0x28	long	DummyPosName_TablePos	4	A	a	4	AGREE	CCarrySlotDef_Transf
 CCarrySlotDef	0x2c	long	DummyPosIndex	4	B	b	4	AGREE	CCarrySlotDef_TransferCCarrySlotDefUAEXAAVCPersistContextZ_00452256.cpp
 CCarrySlotDef	0x30	bool	PrimarySlot	1	C	c	4	CONFLICT	CCarrySlotDef_TransferCCarrySlotDefUAEXAAVCPersistContextZ_00452256.cpp
 CCarrySlotDef	0x34	long	SecondaryDummyPosName_TablePos	4	A	a2	4	AGREE	CCarrySlotDef_TransferCCarrySlotDefUAEXAAVCPersistContextZ_00452256.cpp
+CCarryingDef	0x28	vector<long,std::allocator<long>_>	AvailableCarrySlots	16	CLongVectorRetail	AvailableCarrySlots	4	CONTAINED	CCarryingDef_Transfer_004e77c8.cpp
+CCarryingDef	0x2c	vector<long,std::allocator<long>_>	AvailableCarrySlots	16	CDefStringRetail	OverriddenDummyObject	4	CONTAINED	CCarryingDef_Transfer_004e77c8.cpp
 CCarryingDef	size			60	sizeof	GetSizeofClass	56	SIZE_CONFLICT	GetSizeofClass
 CCategory	0x3c			48	int	count	4	SIZE_CONFLICT	CCategory_GetHighlightedItemCountInCategory_00713290.cpp
 CCategory	0x8	vector<NInventory::CItem,std::allocator<NInventory::CItem>_>	ItemsInCategory	16	CItem*	item	4	CONTAINED	CCategory_GetItemInSlotWithIndex_005bc9b0.cpp
 CCategory	0x8	vector<NInventory::CItem,std::allocator<NInventory::CItem>_>	ItemsInCategory	16	char*	m_begin	4	CONTAINED	CCategory_GetFirstEmptySlot_005bd96b.cpp
 CCategory	0xc	vector<NInventory::CItem,std::allocator<NInventory::CItem>_>	ItemsInCategory	16	char*	m_end	4	CONTAINED	CCategory_GetFirstEmptySlot_005bd96b.cpp
+CClockDef	0x28	map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>	Sound	16	CCharStringLongMapRetail	Sound	4	CONTAINED	CClockDef_Transfer_004e448d.cpp
+CClockDef	0x2c	map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>	Sound	16	EClockHandType	HandType	4	CONTAINED	CClockDef_Transfer_004e448d.cpp
 CClockDef	size			60	sizeof	GetSizeofClass	56	SIZE_CONFLICT	GetSizeofClass
 CCoinGameObstacleDef	0x28	float	Radius	4	unsigned long	f28	4	CONFLICT	CCoinGameObstacleDef_Copy_004e10a8.cpp
 CCombatAbility	0x0	long	RepeatTimer	4	int	f0	4	AGREE	CCombatAbility_IsUsable_00733340.cpp
@@ -892,6 +896,8 @@ CReplaceableMeshDef	size			56	sizeof	GetSizeofClass	52	SIZE_CONFLICT	GetSizeofCl
 CResource	0x18	unsigned long	LastUsedFrame	4	int	f18	4	AGREE	CResource_SetAsUnloadable_009fbf50.cpp
 CResource	0x8	CResourceList*	ResourceList	4	P*	f8	4	AGREE	CResource_SetAsUnloadable_009fbf50.cpp
 CResurrectionItemDef	0x28	long	OnUseParticleEffect	4	CSubField	sub	4	AGREE	CResurrectionItemDef_Copy_004e1394.cpp
+CRumbleDef	0x28	map<EQuakeStrength,float,std::less<EQuakeStrength>,std::allocator<std::pair<EQuakeStrength_const_,float>_>_>	QuakeIntensities	16	CQuakeStrengthFloatMapRetail	QuakeIntensities	4	CONTAINED	CRumbleDef_Transfer_004e676a.cpp
+CRumbleDef	0x2c	map<EQuakeStrength,float,std::less<EQuakeStrength>,std::allocator<std::pair<EQuakeStrength_const_,float>_>_>	QuakeIntensities	16	CQuakeLengthFloatMapRetail	QuakeDurations	4	CONTAINED	CRumbleDef_Transfer_004e676a.cpp
 CRumbleDef	size			72	sizeof	GetSizeofClass	64	SIZE_CONFLICT	GetSizeofClass
 CScorpionKingBattleDef	size			100	sizeof	GetSizeofClass	96	SIZE_CONFLICT	GetSizeofClass
 CScriptConversation	0x14	vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>	PeopleInConversation	16	SpeakerRec*	speakers	4	CONTAINED	CScriptConversation_GetCurrentSpeaker_006e55b0.cpp
@@ -1172,6 +1178,15 @@ CTCQuestCompletionUI	0x14	vector<NUISystem::CComponent_*,std::allocator<NUISyste
 CTCQuestCompletionUI	0x1c	vector<NUISystem::CComponent_*,std::allocator<NUISystem::CComponent_*>_>	Components	16	unsigned char	m_1c	1	CONTAINED	CTCQuestCompletionUI_IsOverridingScreenFade_005e3e70.cpp
 CTCQuestCompletionUI	0xc	bool	Active	1	unsigned char	m_c	1	AGREE	CTCQuestCompletionUI_IsOverridingScreenFade_005e3e70.cpp
 CTCQuestCompletionUI	0xc0	CText*	PGoldText	4	unsigned char	m_c0	1	CONFLICT	CTCQuestCompletionUI_IsOverridingScreenFade_005e3e70.cpp
+CTCRegionDisplay	0x10	CWideStringData*	CurrentAreaNameExtra_PStringData	4	CWideString	CurrentAreaNameExtra	4	AGREE_KIND_SOFT	CTCRegionDisplay_IsDrawing_00639b70.cpp
+CTCRegionDisplay	0x14	long	FrameNameChanged	4	long	FrameNameChanged	4	AGREE	CTCRegionDisplay_IsDrawing_00639b70.cpp
+CTCRegionDisplay	0x18	long	CurrentAlpha	4	long	CurrentAlpha	4	AGREE	CTCRegionDisplay_IsDrawing_00639b70.cpp
+CTCRegionDisplay	0x1c	long	LastAlpha	4	long	LastAlpha	4	AGREE	CTCRegionDisplay_IsDrawing_00639b70.cpp
+CTCRegionDisplay	0x20	float	DisplayTime	4	float	DisplayTime	4	AGREE	CTCRegionDisplay_IsDrawing_00639b70.cpp
+CTCRegionDisplay	0x24	bool	TimeOut	1	bool	TimeOut	1	AGREE	CTCRegionDisplay_IsDrawing_00639b70.cpp
+CTCRegionDisplay	0x25	bool	InfoDisplay	1	bool	InfoDisplay	1	AGREE	CTCRegionDisplay_IsDrawing_00639b70.cpp
+CTCRegionDisplay	0x26	bool	UpdateWhilePaused	1	bool	UpdateWhilePaused	1	AGREE	CTCRegionDisplay_IsDrawing_00639b70.cpp
+CTCRegionDisplay	0xc	CWideStringData*	CurrentAreaName_PStringData	4	CWideString	CurrentAreaName	4	AGREE_KIND_SOFT	CTCRegionDisplay_IsDrawing_00639b70.cpp
 CTCShotDefinitionProjectile	0x0	void*	__vftable	4	void*	m0	4	AGREE	CTCShotDefinitionProjectile_UpdateMovement_007bbc47.cpp
 CTCShotDefinitionProjectile	0x4	unsigned char	_pad_0x04	4	M4*	m4	4	RETAIL_ONLY	CTCShotDefinitionProjectile_UpdateMovement_007bbc47.cpp
 CTCShotDefinitionProjectile	0x4	unsigned char	_pad_0x04	4	long	m4	4	RETAIL_ONLY	previous header
@@ -1205,6 +1220,8 @@ CTavernDef	0x28	long	BedCost	4	int	f28	4	AGREE	CTavernDef_Copy_004e0f02.cpp
 CTavernGameDef	size			424	sizeof	GetSizeofClass	420	SIZE_CONFLICT	GetSizeofClass
 CTavernGameShoveHaPennyDef	size			520	sizeof	GetSizeofClass	512	SIZE_CONFLICT	GetSizeofClass
 CTavernGameSpotTheAdditionDef	size			152	sizeof	GetSizeofClass	144	SIZE_CONFLICT	GetSizeofClass
+CTavernTableDef	0x25	bool	AddTankards	1	bool	AddTankards	1	AGREE	CTavernTableDef_Transfer_004de9d2.cpp
+CTavernTableDef	0x26	bool	HighQualityTankards	1	bool	HighQualityTankards	1	AGREE	CTavernTableDef_Transfer_004de9d2.cpp
 CTeleporterDef	0x28	float	Radius	4	int	a	4	CONFLICT	CTeleporterDef_TransferCTeleporterDefUAEXAAVCPersistContextZ_004def0f.cpp
 CTeleporterDef	0x2c	long	ActiveEffect	4	int	b	4	AGREE	CTeleporterDef_TransferCTeleporterDefUAEXAAVCPersistContextZ_004def0f.cpp
 CTeleporterDef	0x30	bool	ActiveByProximity	1	int	c	4	CONFLICT	CTeleporterDef_TransferCTeleporterDefUAEXAAVCPersistContextZ_004def0f.cpp

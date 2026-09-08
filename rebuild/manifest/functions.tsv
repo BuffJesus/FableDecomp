@@ -7077,7 +7077,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004de916	CInterestingToVillagersDef::Transfer	CInterestingToVillagersDef	__thiscall	void	2	CInterestingToVillagersDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CInterestingToVillagersDef_Transfer_004de916.cpp
 004de926	?Transfer@CGuardDef@@UAEXAAVCPersistContext@@@Z	CGuardDef	__fastcall	void	0		1	yes	accepted									
 004de9a1	?Transfer@CCrateStackDef@@UAEXAAVCPersistContext@@@Z	CCrateStackDef	__thiscall	void	2	CCarryingDef *,CPersistContext *	1	yes	accepted									
-004de9d2	?Transfer@CTavernTableDef@@UAEXAAVCPersistContext@@@Z	CTavernTableDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted									
+004de9d2	CTavernTableDef::Transfer	CTavernTableDef	__thiscall	void	2	CTavernTableDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTavernTableDef_Transfer_004de9d2.cpp
 004de9f3	CTavernDef::Transfer	CTavernDef	__thiscall	void	2	CTavernDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CTavernDef_Transfer_004de9f3.cpp
 004dea03	CFireballSpellLevelDef::Transfer	CFireballSpellLevelDef	__thiscall	void	2	CFireballSpellLevelDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CFireballSpellLevelDef_Transfer_004dea03.cpp
 004dea13	?Transfer@CThingDrainLifeShotDef@@UAEXAAVCPersistContext@@@Z	CThingDrainLifeShotDef	__thiscall	void	1	CGuiControlComboBox *	1	yes	accepted									
@@ -7650,7 +7650,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e4429	AllocAndCopyFields	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\global_AllocAndCopyFields_004e4429.cpp
 004e444b	CClockDef::Copy	CClockDef	__thiscall	void	2	CClockDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CClockDef_Copy_004e444b.cpp
 004e4450	CThingBuildingDef::operator=_carryable_simple	CThingBuildingDef	unknown	undefined	0		0	yes	accepted									
-004e448d	?Transfer@CClockDef@@UAEXAAVCPersistContext@@@Z	CClockDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted									
+004e448d	CClockDef::Transfer	CClockDef	__thiscall	void	2	CClockDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CClockDef_Transfer_004e448d.cpp
 004e44ae	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e44ae.cpp
 004e44ef	TransferBinaryIn	CPersistTraits<CDefIndex>	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 004e4552	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CLandscapeBackgroundPatch_vectordeletingdestructor_004e4552.cpp
@@ -7764,7 +7764,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e6645	CTCCarryable::operator_assign	CTCCarryable	unknown	undefined	0		0	yes	accepted									
 004e66b8	Tree_CloneRecursive	_global	unknown	undefined	0		0	yes	accepted									
 004e6748	TreeNode_AllocData	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\global_TreeNodeAllocData_004e6748.cpp
-004e676a	?Transfer@CRumbleDef@@UAEXAAVCPersistContext@@@Z	CRumbleDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted									
+004e676a	CRumbleDef::Transfer	CRumbleDef	__thiscall	void	2	CRumbleDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CRumbleDef_Transfer_004e676a.cpp
 004e678b	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineLightingManager_UpdateShadowScene_004e678b.cpp
 004e67c0	WriteAllocatedAreasData	_global	unknown	undefined	0		0	yes	accepted									
 004e6801	TransferBinaryIn	CPersistTraits<std::list<COpinionTransientOffset	__thiscall	void	3	CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_> *,CMemoryDataInputStream *,list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *	1	yes	accepted									
@@ -7829,7 +7829,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e7749	OnKill	CTCCarryable	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CTCCarryable_OnKill_004e7749.cpp
 004e7772	BuildTreeArray	LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\LTextTreeWalkThrough_BuildTreeArray_004e7772.cpp
 004e77b6	ConstructString	_global	__fastcall	bool	2	CWideString *,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\global_ConstructString_004e77b6.cpp
-004e77c8	?Transfer@CCarryingDef@@UAEXAAVCPersistContext@@@Z	CCarryingDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted									
+004e77c8	CCarryingDef::Transfer	CCarryingDef	__thiscall	void	2	CCarryingDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CCarryingDef_Transfer_004e77c8.cpp
 004e77e9	?Transfer@CHeroMorphDef@@UAEXAAVCPersistContext@@@Z	CHeroMorphDef	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted									
 004e7822	CExpressionSet::TransferHelper	CExpressionSet	unknown	undefined	0		0	yes	accepted									
 004e786c	CNavigationLayer	CNavigationLayer	__thiscall	undefined	1	CNavigationLayer *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CNavigationLayer_CNavigationLayer_004e786c.cpp
@@ -13486,7 +13486,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00639930	FinishShowingRegionName	CTCRegionDisplay	__thiscall	void	1	CTCRegionDisplay *	1	yes	accepted									
 006399b0	GlobalUpdate	CTCRegionDisplay	__thiscall	void	2	CTCRegionDisplay *,bool	1	yes	accepted									
 00639a90	SetCurrentAreaName	CTCRegionDisplay	__thiscall	void	6	CTCRegionDisplay *,CWideString *,float,bool,bool,bool	1	yes	accepted									
-00639b70	IsDrawing	CTCRegionDisplay	__thiscall	bool	1	CTCRegionDisplay *	1	yes	accepted									
+00639b70	CTCRegionDisplay::IsDrawing	CTCRegionDisplay	__thiscall	bool	1	CTCRegionDisplay *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\63\CTCRegionDisplay_IsDrawing_00639b70.cpp
 00639ba0	SetCurrentAreaName	CTCRegionDisplay	__thiscall	void	6	CTCRegionDisplay *,CCharString *,float,bool,bool,bool	1	yes	accepted									
 00639e40	GlobalDraw	CTCRegionDisplay	__thiscall	void	2	CTCRegionDisplay *,CInterpolationInfo *	1	yes	accepted									
 0063a1f0	CTCRegionDisplay::vfunc_21	CTCRegionDisplay	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				

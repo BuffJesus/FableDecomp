@@ -247,7 +247,7 @@ CCardPositionsDef	_quarantine/CCardPositionsDef.h	80	2	QUARANTINED	1 conflict(s)
 CCarriedReadableDef	CCarriedReadableDef.h	48	2	OK	0 retail files
 CCarrySlotDef	_quarantine/CCarrySlotDef.h	56	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CCarryableDef	CCarryableDef.h	80	10	OK	0 retail files
-CCarryingDef	_quarantine/CCarryingDef.h	60	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CCarryingDef	_quarantine/CCarryingDef.h	60	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
 CCategory	CCategory.h	48	9	OK	3 retail files; suspect=CCategory_GetHighlightedItemCountInCategory_00713290.cpp
 CCharString		0	0	HAND_OWNED	
 CChestDef	CChestDef.h	60	6	OK	0 retail files
@@ -256,7 +256,7 @@ CChunkedFileRawDataChunk	CChunkedFileRawDataChunk.h	24	2	OK	0 retail files
 CChunkedFileSuperChunk	CChunkedFileSuperChunk.h	52	3	OK	0 retail files
 CClass	CClass.h	17	3	OK	0 retail files
 CClassFactory	CClassFactory.h	40	4	OK	0 retail files
-CClockDef	_quarantine/CClockDef.h	60	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CClockDef	_quarantine/CClockDef.h	60	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
 CCoinGameObstacleDef	_quarantine/CCoinGameObstacleDef.h	44	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CCombatAbility	CCombatAbility.h	8	2	OK	0 retail files
 CCombatAbilityAttackBase	CCombatAbilityAttackBase.h	72	1	OK	0 retail files
@@ -1028,7 +1028,7 @@ CReplaceableMeshDef	_quarantine/CReplaceableMeshDef.h	56	1	QUARANTINED	1 conflic
 CResource	CResource.h	28	5	OK	0 retail files
 CResourceList	CResourceList.h	60	8	OK	0 retail files
 CResurrectionItemDef	CResurrectionItemDef.h	44	1	OK	0 retail files
-CRumbleDef	_quarantine/CRumbleDef.h	72	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CRumbleDef	_quarantine/CRumbleDef.h	72	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
 CSB	CSB.h	12	1	OK	0 retail files
 CSBAgents	CSBAgents.h	16	1	OK	0 retail files
 CSBCAgents	CSBCAgents.h	28	1	OK	0 retail files
@@ -1154,6 +1154,7 @@ CTCPhysicsRigidBody	CTCPhysicsRigidBody.h	624	9	OK	0 retail files
 CTCPhysicsStandard	CTCPhysicsStandard.h	136	11	OK	1 retail files
 CTCQuestCard	CTCQuestCard.h	52	11	OK	0 retail files
 CTCQuestCompletionUI	_quarantine/CTCQuestCompletionUI.h	240	45	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CTCRegionDisplay	CTCRegionDisplay.h	40	9	OK	1 retail files
 CTCShotDefinitionProjectile	CTCShotDefinitionProjectile.h	168	2	OK	1 retail files
 CTCSpotLight	CTCSpotLight.h	44	7	OK	1 retail files
 CTCStealth	CTCStealth.h	80	17	OK	1 retail files
@@ -1180,7 +1181,7 @@ CTavernGameCoinGolfDef	CTavernGameCoinGolfDef.h	92	13	OK	0 retail files
 CTavernGameDef	_quarantine/CTavernGameDef.h	424	93	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CTavernGameShoveHaPennyDef	_quarantine/CTavernGameShoveHaPennyDef.h	520	21	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CTavernGameSpotTheAdditionDef	_quarantine/CTavernGameSpotTheAdditionDef.h	152	22	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
-CTavernTableDef	CTavernTableDef.h	39	2	OK	1 retail files
+CTavernTableDef	CTavernTableDef.h	39	2	OK	2 retail files
 CTeleporterDef	_quarantine/CTeleporterDef.h	52	3	QUARANTINED	2 conflict(s) in 1 file(s) vs 0 agreeing
 CTestPos	CTestPos.h	36	7	OK	1 retail files
 CText	CText.h	444	13	OK	0 retail files

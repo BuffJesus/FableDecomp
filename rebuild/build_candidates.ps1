@@ -131169,6 +131169,41 @@ $catalog = @(
         TestSource = '00/9e/CMemoryFile_Clone_009e97f0_test.cpp'
         PassPattern = 'MEMORY_FILE_CLONE PASS'
     }
+    [pscustomobject]@{
+        Address = '004de9d2'
+        Module = 'CTavernTableDef'
+        Source = '00/4d/CTavernTableDef_Transfer_004de9d2.cpp'
+        TestSource = '00/4d/CTavernTableDef_Transfer_004de9d2_test.cpp'
+        PassPattern = 'TAVERN_TRANSFER PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e448d'
+        Module = 'CClockDef'
+        Source = '00/4e/CClockDef_Transfer_004e448d.cpp'
+        TestSource = '00/4e/CClockDef_Transfer_004e448d_test.cpp'
+        PassPattern = 'CLOCK_TRANSFER PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e676a'
+        Module = 'CRumbleDef'
+        Source = '00/4e/CRumbleDef_Transfer_004e676a.cpp'
+        TestSource = '00/4e/CRumbleDef_Transfer_004e676a_test.cpp'
+        PassPattern = 'RUMBLE_TRANSFER PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e77c8'
+        Module = 'CCarryingDef'
+        Source = '00/4e/CCarryingDef_Transfer_004e77c8.cpp'
+        TestSource = '00/4e/CCarryingDef_Transfer_004e77c8_test.cpp'
+        PassPattern = 'CARRYING_TRANSFER PASS'
+    }
+    [pscustomobject]@{
+        Address = '00639b70'
+        Module = 'CTCRegionDisplay'
+        Source = '00/63/CTCRegionDisplay_IsDrawing_00639b70.cpp'
+        TestSource = '00/63/CTCRegionDisplay_IsDrawing_00639b70_test.cpp'
+        PassPattern = 'REGION_DISPLAY_DRAWING PASS'
+    }
 )
 
 $requestedAddresses = @(

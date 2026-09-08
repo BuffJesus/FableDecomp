@@ -88,3 +88,15 @@ a documented 0x24 retail overlay versus the 0x28 donor class. The animation-comp
 allocation cluster remains unlanded because its propagated member prototypes are actually
 static no-argument factories; the typed physics bitfield model is behavior-correct but
 does not yet reproduce retail's combined 32-byte update.
+
+Batches 183 and 184 added five relocation matches. Four definition serializers now use
+their decorated PDB signatures and original members: `CTavernTableDef::Transfer` writes
+`AddTankards` and `HighQualityTankards`; `CClockDef::Transfer` writes `Sound` and
+`HandType`; `CRumbleDef::Transfer` writes `QuakeIntensities` and `QuakeDurations`; and
+`CCarryingDef::Transfer` writes `AvailableCarrySlots` and `OverriddenDummyObject`. The
+last three use explicit 12-byte retail container overlays where the donor container is
+16 bytes. `CTCRegionDisplay::IsDrawing` expresses the original `CurrentAlpha` and
+`CurrentAreaName` condition. Manual prototype corrections reject the four corrupted
+`CEngine *, C3DBoundingBox *` guesses. Batch 185 is active: the typed navigator position
+accessor passes behavior but remains unlanded at 36 versus 33 bytes, and the propagated
+`PayFines`/callee labels were rejected where their bodies contradict PDB layouts.

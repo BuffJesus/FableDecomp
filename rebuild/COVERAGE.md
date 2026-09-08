@@ -15,11 +15,11 @@ Generated: `2026-09-08T07:54:18-06:00`
 | Auto-RE source integrity | 1,066 | 1,066 | 100.000% | Balanced, non-empty source snapshots |
 | Host C++20 syntax pass | 575 | 1,066 | 53.940% | Strict 32-bit translation unit with real declarations |
 | Candidate signature audit clean | 542 | 1,066 | 50.844% | Definition agrees with manifest owner/name/shape and has unique linkage |
-| VC7.1 compiled candidate | 18,682 | 49,568 | 37.690% | Compiles to an object; behavioral parity not yet claimed |
-| Behavior-tested candidate | 18,682 | 49,568 | 37.690% | Local branch/layout oracle passes; retail parity not yet claimed |
+| VC7.1 compiled candidate | 18,687 | 49,568 | 37.700% | Compiles to an object; behavioral parity not yet claimed |
+| Behavior-tested candidate | 18,687 | 49,568 | 37.700% | Local branch/layout oracle passes; retail parity not yet claimed |
 | Candidate retail `.text` match | 8,070 | 49,568 | 16.281% | Generated-candidate track exact matches awaiting promotion |
-| Candidate relocation-masked `.text` match | 10,516 | 49,568 | 21.215% | Exact instruction bytes/layout after masking expected COFF linker fields |
-| Verified functional or matching C++ | 18,604 | 49,568 | 37.532% | Compiled under VC7.1 and checked against retail |
+| Candidate relocation-masked `.text` match | 10,521 | 49,568 | 21.226% | Exact instruction bytes/layout after masking expected COFF linker fields |
+| Verified functional or matching C++ | 18,609 | 49,568 | 37.542% | Compiled under VC7.1 and checked against retail |
 | Byte-identical C++ | 8,086 | 49,568 | 16.313% | Exact `.text` match (includes asm bakes below) |
 | Byte-identical **genuine** C++ | 7,794 | 49,568 | 15.724% | Exact match from real compiler input; no `__asm`, `naked`, `_emit` |
 | Hand-written asm bakes (grade `asm_bake`) | 292 | 600 | — | Byte-exact oracles, **not** reconstruction; de-bake worklist |

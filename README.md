@@ -70,12 +70,12 @@ a worklist, not the intended end state.
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Verified functional or matching reconstruction | **18,604 · 37.53%** |
+| Verified functional or matching reconstruction | **18,609 · 37.54%** |
 | Byte-identical reconstruction | **8,086 · 16.31%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
-Current functional-or-matching coverage is **37.53%** of the 49,568-function catalog.
+Current functional-or-matching coverage is **37.54%** of the 49,568-function catalog.
 Of that verified set, **16.31%** is byte-identical C++.
 The first 5% byte-match milestone has been passed.
 
@@ -93,8 +93,8 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,682** |
-| Reconstruction | Verified functional or matching C++ | **18,604** (37.53%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,687** |
+| Reconstruction | Verified functional or matching C++ | **18,609** (37.54%) |
 | Reconstruction | — of which byte-**identical** C++ | 8,086 (16.31%) |
 | Reconstruction | — of which hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 292 |
 | Readability | Landed sources typed onto shared PDB-named engine headers | 651 |
@@ -112,7 +112,7 @@ Counts above are from the 2026-09-08 canonical refresh:
 `rebuild/COVERAGE.md`, and the naming-quality reports.
 
 Generated agent output is tracked separately and is never counted merely
-because a structural checker accepted it. The 37.53% figure is intentionally the strict,
+because a structural checker accepted it. The 37.54% figure is intentionally the strict,
 whole-executable denominator. Boot-path figures are a separate view of
 the 3,952-byte `GFMain` coordinator, not an estimate of total engineering time.
 The C++23 startup figure is deliberately separate too: exact x86 parity and
