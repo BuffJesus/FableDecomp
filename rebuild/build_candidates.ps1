@@ -132380,6 +132380,13 @@ $catalog = @(
         TestSource = '00/99/CDataOutputStream_Write2DVector_00993f90_test.cpp'
         PassPattern = 'WRITE_2D_VECTOR PASS'
     }
+    [pscustomobject]@{
+        Address = '00a10310'
+        Module = '_global'
+        Source = '00/a1/global_WordWrapFindNonWhiteSpaceForward_00a10310.cpp'
+        TestSource = '00/a1/global_WordWrapFindNonWhiteSpaceForward_00a10310_test.cpp'
+        PassPattern = 'WORD_WRAP_FORWARD PASS'
+    }
 )
 
 $requestedAddresses = @(

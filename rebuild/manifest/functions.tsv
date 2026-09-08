@@ -35708,7 +35708,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a10170	IsNonEndingChar	_global	unknown	undefined	0		0	yes	accepted									
 00a10240	IsEastAsianChar	_global	unknown	undefined	0		0	yes	accepted									
 00a102b0	WordWrap_CanBreakLineAt	_global	__fastcall	bool	2	wchar_t *,wchar_t *	1	yes	accepted									
-00a10310	WordWrap_FindNonWhiteSpaceForward	_global	__fastcall	wchar_t *	1	wchar_t *	1	yes	accepted									
+00a10310	WordWrap_FindNonWhiteSpaceForward	_global	__fastcall	wchar_t *	1	wchar_t *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a1\global_WordWrapFindNonWhiteSpaceForward_00a10310.cpp
 00a10350	FindNonWhiteSpaceBackward	_global	unknown	undefined	0		0	yes	accepted									
 00a10390	WordWrap_FindNextLineW	_global	__fastcall	wchar_t *	3	wchar_t *,uint,wchar_t * *	1	yes	accepted									
 00a10560	WordWrap_FindNextLineA	_global	__fastcall	char *	3	char *,uint,char * *	1	yes	accepted									

@@ -1,0 +1,4 @@
+#include <stdio.h>
+#include <stddef.h>
+extern const wchar_t* __fastcall WordWrap_FindNonWhiteSpaceForward(const wchar_t* text);
+int main() { const wchar_t first[] = { L' ', L'\t', L'\r', 0x3000, L'X', 0 }; if (WordWrap_FindNonWhiteSpaceForward(first) != first + 4) return 1; const wchar_t newline[] = { L'\n', L'Y', 0 }; if (WordWrap_FindNonWhiteSpaceForward(newline) != newline + 1) return 2; const wchar_t empty[] = { L' ', 0 }; if (WordWrap_FindNonWhiteSpaceForward(empty) != 0) return 3; const wchar_t twoLines[] = { L'\n', L'\n', L'Z', 0 }; if (WordWrap_FindNonWhiteSpaceForward(twoLines) != twoLines + 1) return 4; printf("WORD_WRAP_FORWARD PASS\n"); return 0; }
