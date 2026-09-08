@@ -14,7 +14,7 @@
 
 ## Active lanes and their resume commands
 - Typed headers: `python tools/decomp_pipeline/gen_class_headers.py --all-trusted` (add `--compile-check`), then `python tools/decomp_pipeline/retype_landed.py --class CGameScriptInterface` (dry run; `--apply` only rewrites files that stay byte-exact). Log: `rebuild/backlog/retype_log.tsv`; headers: `rebuild/include/engine/` (`INDEX.tsv`, `RECONCILE.tsv`, `_quarantine/`).
-- Parity crawl: batches through 178 are reviewed in `work/crawl_batch155`; forty-eight readable functions landed on 2026-09-08. Continue evidence review; do not accept propagated labels where the body contradicts the PDB layout or prototype. Details: `docs/journal/2026-09/PARITY_CRAWL_2026-09-08.md`.
+- Parity crawl: batches through 182 are reviewed in `work/crawl_batch155`; fifty-one readable functions landed on 2026-09-08. Continue evidence review; do not accept propagated labels where the body contradicts the PDB layout or prototype. Details: `docs/journal/2026-09/PARITY_CRAWL_2026-09-08.md`.
 - De-bake: `python tools/decomp_pipeline/crawl/bake_families.py` for the live family table; `debake_family.py <template> <genuine.cpp> <prefix> --apply`.
 - Script recovery: `python -m unittest discover -s tools/script_recovery -p 'test_*.py'`; `python tools/script_recovery/verify_foundation.py`; readiness needs `--vtable-slots`, `--interface-catalog`, `--fse-address-map`. Ingest Aeon's 2026-09-06 LUAGameflow batch into `work/aeon_lua_ports/`.
 - ForgeFSE: canonical fork is `D:\Code\ForgeFSE-retail-shadow`, branch `feat/upstream-fse-2026-09-02` (`3f417ee`), untested in-game. `D:\Code\ForgeFSE` is stale.

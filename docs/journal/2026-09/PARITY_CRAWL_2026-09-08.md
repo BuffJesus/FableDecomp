@@ -80,3 +80,11 @@ and `CFadeInFadeOutBase::IsOpen` are exact matches using original state names.
 state and independently identified callees. Layout-conflicting landscape, quadric, and
 definition aliases were rejected; the readable `FtoL` model remains unlanded because it
 does not reproduce retail's explicit x87 store sequence.
+
+Batches 179 through 182 added three functions. `CThingObject::ResetDieOffTimer` and
+`CMusicManager::ResetMusicEntriesOffsets` are exact matches using the PDB-named nested
+definition and registered-music fields. `CMemoryFile::Clone` is a relocation match with
+a documented 0x24 retail overlay versus the 0x28 donor class. The animation-component
+allocation cluster remains unlanded because its propagated member prototypes are actually
+static no-argument factories; the typed physics bitfield model is behavior-correct but
+does not yet reproduce retail's combined 32-byte update.

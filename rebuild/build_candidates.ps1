@@ -131148,6 +131148,27 @@ $catalog = @(
         TestSource = '00/bf/CLandscapeBackgroundLoadTask_ReleaseFileBlockLoad_00bf6410_test.cpp'
         PassPattern = 'BACKGROUND_LOAD_RELEASE PASS'
     }
+    [pscustomobject]@{
+        Address = '00702ce0'
+        Module = 'CThingObject'
+        Source = '00/70/CThingObject_ResetDieOffTimer_00702ce0.cpp'
+        TestSource = '00/70/CThingObject_ResetDieOffTimer_00702ce0_test.cpp'
+        PassPattern = 'THING_OBJECT_DIE_OFF_RESET PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bd870'
+        Module = 'CMusicManager'
+        Source = '00/6b/CMusicManager_ResetMusicEntriesOffsets_006bd870.cpp'
+        TestSource = '00/6b/CMusicManager_ResetMusicEntriesOffsets_006bd870_test.cpp'
+        PassPattern = 'MUSIC_OFFSETS_RESET PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e97f0'
+        Module = 'CMemoryFile'
+        Source = '00/9e/CMemoryFile_Clone_009e97f0.cpp'
+        TestSource = '00/9e/CMemoryFile_Clone_009e97f0_test.cpp'
+        PassPattern = 'MEMORY_FILE_CLONE PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -70,8 +70,8 @@ a worklist, not the intended end state.
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Verified functional or matching reconstruction | **18,601 · 37.53%** |
-| Byte-identical reconstruction | **8,084 · 16.31%** |
+| Verified functional or matching reconstruction | **18,604 · 37.53%** |
+| Byte-identical reconstruction | **8,086 · 16.31%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
@@ -93,9 +93,9 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,679** |
-| Reconstruction | Verified functional or matching C++ | **18,601** (37.53%) |
-| Reconstruction | — of which byte-**identical** C++ | 8,084 (16.31%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,682** |
+| Reconstruction | Verified functional or matching C++ | **18,604** (37.53%) |
+| Reconstruction | — of which byte-**identical** C++ | 8,086 (16.31%) |
 | Reconstruction | — of which hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 292 |
 | Readability | Landed sources typed onto shared PDB-named engine headers | 651 |
 | Readability | Throwaway local `struct T {...}` declarations remaining | 4,417 |
