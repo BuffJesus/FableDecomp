@@ -2187,9 +2187,12 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 004625a3		lift/reports/wave3/code/00/46/0x004625A3_global_Vector_AllocateAndCopy_4.cpp			rebuild/candidates/snapshots/00/46/0x004625A3_global_Vector_AllocateAndCopy_4.cpp	
 004625f8			rebuild/src/compiled/00/46/global_Copy_004625f8.cpp	rebuild/tests/00/46/global_Copy_004625f8_test.cpp		rebuild/build/candidates-Release/00/46/004625f8
 00462678	CThingShotDef		rebuild/src/compiled/00/46/CThingShotDef_Copy_00462678.cpp	rebuild/tests/00/46/CThingShotDef_Copy_00462678_test.cpp		rebuild/build/candidates-Release/00/46/00462678
+0046280e	CCreatureAbilityDef		rebuild/src/compiled/00/46/CCreatureAbilityDef_Copy_0046280e.cpp	rebuild/tests/00/46/CCreatureAbilityDef_Copy_0046280e_test.cpp		rebuild/build/candidates-Release/00/46/0046280e
+0046284b	CThingGroupDef		rebuild/src/compiled/00/46/CThingGroupDef_Copy_0046284b.cpp	rebuild/tests/00/46/CThingGroupDef_Copy_0046284b_test.cpp		rebuild/build/candidates-Release/00/46/0046284b
 00462888	CPlayerDef		rebuild/src/compiled/00/46/CPlayerDef_Copy_00462888.cpp	rebuild/tests/00/46/CPlayerDef_Copy_00462888_test.cpp		rebuild/build/candidates-Release/00/46/00462888
 004628cb			rebuild/src/compiled/00/46/global_Copy_004628cb.cpp	rebuild/tests/00/46/global_Copy_004628cb_test.cpp		rebuild/build/candidates-Release/00/46/004628cb
 00462969	CSimBuildingDef		rebuild/src/compiled/00/46/CSimBuildingDef_Copy_00462969.cpp	rebuild/tests/00/46/CSimBuildingDef_Copy_00462969_test.cpp		rebuild/build/candidates-Release/00/46/00462969
+004629b9	CEngineThemeGroupDef		rebuild/src/compiled/00/46/CEngineThemeGroupDef_Copy_004629b9.cpp	rebuild/tests/00/46/CEngineThemeGroupDef_Copy_004629b9_test.cpp		rebuild/build/candidates-Release/00/46/004629b9
 004629f6			rebuild/src/compiled/00/46/global_Copy_004629f6.cpp	rebuild/tests/00/46/global_Copy_004629f6_test.cpp		rebuild/build/candidates-Release/00/46/004629f6
 00462b10			rebuild/src/compiled/00/46/global_Copy_00462b10.cpp	rebuild/tests/00/46/global_Copy_00462b10_test.cpp		rebuild/build/candidates-Release/00/46/00462b10
 00462c5f		lift/reports/wave3/code/00/46/0x00462C5F_global_Vector_AllocateAndCopy_12.cpp			rebuild/candidates/snapshots/00/46/0x00462C5F_global_Vector_AllocateAndCopy_12.cpp	
@@ -4533,6 +4536,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 004e457e	CMazeBattleDef		rebuild/src/compiled/00/4e/CMazeBattleDef_Copy_004e457e.cpp	rebuild/tests/00/4e/CMazeBattleDef_Copy_004e457e_test.cpp		rebuild/build/candidates-Release/00/4e/004e457e
 004e45f2	CThunderBattleDef		rebuild/src/compiled/00/4e/CThunderBattleDef_Copy_004e45f2.cpp	rebuild/tests/00/4e/CThunderBattleDef_Copy_004e45f2_test.cpp		rebuild/build/candidates-Release/00/4e/004e45f2
 004e4648	CWhisperBattleDef		rebuild/src/compiled/00/4e/CWhisperBattleDef_Copy_004e4648.cpp	rebuild/tests/00/4e/CWhisperBattleDef_Copy_004e4648_test.cpp		rebuild/build/candidates-Release/00/4e/004e4648
+004e468b	CWaspQueenBattleDef		rebuild/src/compiled/00/4e/CWaspQueenBattleDef_Copy_004e468b.cpp	rebuild/tests/00/4e/CWaspQueenBattleDef_Copy_004e468b_test.cpp		rebuild/build/candidates-Release/00/4e/004e468b
 004e46c8	CJackOfBladesBattleDef		rebuild/src/compiled/00/4e/CJackOfBladesBattleDef_Copy_004e46c8.cpp	rebuild/tests/00/4e/CJackOfBladesBattleDef_Copy_004e46c8_test.cpp		rebuild/build/candidates-Release/00/4e/004e46c8
 004e476f	CScorpionKingBattleDef		rebuild/src/compiled/00/4e/CScorpionKingBattleDef_Copy_004e476f.cpp	rebuild/tests/00/4e/CScorpionKingBattleDef_Copy_004e476f_test.cpp		rebuild/build/candidates-Release/00/4e/004e476f
 004e47e3	CTrollBattleDef		rebuild/src/compiled/00/4e/CTrollBattleDef_Copy_004e47e3.cpp	rebuild/tests/00/4e/CTrollBattleDef_Copy_004e47e3_test.cpp		rebuild/build/candidates-Release/00/4e/004e47e3

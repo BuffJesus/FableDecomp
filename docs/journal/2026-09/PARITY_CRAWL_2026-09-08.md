@@ -64,3 +64,11 @@ nearby BSim label also conflicts with the Ego_r symbol at the same address. Thos
 remain unlanded until their concrete derived owners can be established. Continue after
 batch 169, keeping the readable-source rule: semantic/PDB names when supported, explicit
 retail overlays for proven layout deltas, and no landing on a misleading owner or prototype.
+
+Batch 171 added `CTCOnHeroPush::IsAngry`, using the original `DistPushed` member and
+the retail threshold comparison. Batch 172 added `C3DAnimationInfo::Sizeof`, including
+the counted-pointer sizing rule that distinguishes a present payload from its null slot,
+and the RTTI-confirmed `CVertexShaderConstantLayoutEmpty::PeekName` accessor. Batch 173
+added ten PDB-owned animation/mesh file chunk `GetChunkDescription` virtuals. All thirteen
+pass behavior fixtures and relocation parity. The surrounding generic `GetActionName`
+cluster and register/prototype-conflicting helpers were reviewed but not landed.
