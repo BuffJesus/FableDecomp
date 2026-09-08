@@ -8,7 +8,9 @@
       "address": "0x00DB0950",
       "operations": 7,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_affair_man_init"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -18,7 +20,9 @@
       "address": "0x00DB09E0",
       "operations": 60,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_affair_man_main_terminated"
+      ],
       "evidence": "native-decompile",
       "status": "partially API-blocked"
     },
@@ -28,7 +32,9 @@
       "address": "0x00DB2A70",
       "operations": 9,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_affair_wife_init"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -38,7 +44,9 @@
       "address": "0x00DB2B10",
       "operations": 53,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_affair_wife_main_terminated"
+      ],
       "evidence": "native-decompile",
       "status": "partially API-blocked"
     },
@@ -48,7 +56,9 @@
       "address": "0x00DB1E80",
       "operations": 5,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_affair_woman_init"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -58,7 +68,9 @@
       "address": "0x00DB1F00",
       "operations": 37,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_affair_woman_main_terminated"
+      ],
       "evidence": "native-decompile",
       "status": "partially API-blocked"
     },
@@ -78,7 +90,9 @@
       "address": "0x00DB7E10",
       "operations": 8,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Barrel.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_barrel_main_terminated"
+      ],
       "evidence": "native-decompile",
       "status": "partially API-blocked"
     },
@@ -98,7 +112,9 @@
       "address": "0x00DB5260",
       "operations": 9,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_barrel_man_init"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -108,7 +124,9 @@
       "address": "0x00DB5330",
       "operations": 11,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_barrel_man_main_terminated"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -118,7 +136,9 @@
       "address": "0x00DB6BF0",
       "operations": 2,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_barrel_thug_init"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -128,7 +148,9 @@
       "address": "0x00DB6C60",
       "operations": 25,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_barrel_thug_main_terminated"
+      ],
       "evidence": "native-decompile",
       "status": "partially API-blocked"
     },
@@ -138,7 +160,9 @@
       "address": "0x00DB3F00",
       "operations": 3,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_book_trader_init"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -148,7 +172,9 @@
       "address": "0x00DB3FA0",
       "operations": 28,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_book_trader_main_terminated"
+      ],
       "evidence": "native-decompile",
       "status": "partially API-blocked"
     },
@@ -158,7 +184,9 @@
       "address": "0x00DAED30",
       "operations": 7,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Bully.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_bully_init"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -168,7 +196,9 @@
       "address": "0x00DBB310",
       "operations": 61,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Bully.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_bully_main_terminated"
+      ],
       "evidence": "native-decompile",
       "status": "partially API-blocked"
     },
@@ -198,7 +228,9 @@
       "address": "0x00DB80C0",
       "operations": 5,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_created_beetle_main_terminated"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -208,7 +240,9 @@
       "address": "0x00DAC650",
       "operations": 9,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Guard.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_guard_init"
+      ],
       "evidence": "native-decompile",
       "status": "implemented (uncertain args)"
     },
@@ -228,7 +262,9 @@
       "address": "0x00DAC390",
       "operations": 7,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_live_father_init"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -248,7 +284,9 @@
       "address": "0x00DAF000",
       "operations": 5,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_teddy_girl_init"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -258,7 +296,9 @@
       "address": "0x00DAF080",
       "operations": 41,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_teddy_girl_main_terminated"
+      ],
       "evidence": "native-decompile",
       "status": "partially API-blocked"
     },
@@ -278,7 +318,9 @@
       "address": "0x00DAC4F0",
       "operations": 7,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Theresa.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_theresa_init"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -298,7 +340,9 @@
       "address": "0x00DAEEB0",
       "operations": 8,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Victim.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_victim_init"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -308,7 +352,9 @@
       "address": "0x00DBCD60",
       "operations": 27,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Victim.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_victim_main_terminated"
+      ],
       "evidence": "native-decompile",
       "status": "partially API-blocked"
     },
@@ -318,7 +364,9 @@
       "address": "0x00DADF00",
       "operations": 5,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Villager.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_villager_init"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -328,7 +376,9 @@
       "address": "0x00DADF80",
       "operations": 27,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Villager.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_villager_main_terminated"
+      ],
       "evidence": "native-decompile",
       "status": "implemented (uncertain args)"
     },
@@ -358,7 +408,9 @@
       "address": "0x00DB8290",
       "operations": 2,
       "luaLocation": "NewOakValeIntro/Entities/OVI_DeadFather.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_dead_father_init"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -368,7 +420,9 @@
       "address": "0x00DB8300",
       "operations": 9,
       "luaLocation": "NewOakValeIntro/Entities/OVI_DeadFather.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_dead_father_main_terminated"
+      ],
       "evidence": "native-decompile",
       "status": "implemented (uncertain args)"
     },
@@ -399,6 +453,19 @@
       "operations": 7,
       "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
       "fixtures": [
+        "entity_affair_man_main_terminated",
+        "entity_affair_wife_main_terminated",
+        "entity_affair_woman_main_terminated",
+        "entity_barrel_main_terminated",
+        "entity_barrel_man_main_terminated",
+        "entity_barrel_thug_main_terminated",
+        "entity_book_trader_main_terminated",
+        "entity_bully_main_terminated",
+        "entity_created_beetle_main_terminated",
+        "entity_dead_father_main_terminated",
+        "entity_teddy_girl_main_terminated",
+        "entity_victim_main_terminated",
+        "entity_villager_main_terminated",
         "quest_main_fresh_start",
         "quest_main_reload_after_attack"
       ],
@@ -412,6 +479,20 @@
       "operations": 4,
       "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
       "fixtures": [
+        "entity_affair_man_init",
+        "entity_affair_wife_init",
+        "entity_affair_woman_init",
+        "entity_barrel_man_init",
+        "entity_barrel_thug_init",
+        "entity_book_trader_init",
+        "entity_bully_init",
+        "entity_dead_father_init",
+        "entity_guard_init",
+        "entity_live_father_init",
+        "entity_teddy_girl_init",
+        "entity_theresa_init",
+        "entity_victim_init",
+        "entity_villager_init",
         "quest_init_resets"
       ],
       "evidence": "native-decompile",

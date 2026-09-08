@@ -1,46 +1,46 @@
 | script | native function | address | ops | Lua | fixtures | evidence | status |
 |---|---|---|---:|---|---|---|---|
-| NOVI_AffairMan | Init | 0x00DB0950 | 7 | `NewOakValeIntro/Entities/NOVI_AffairMan.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_AffairMan | Main | 0x00DB09E0 | 60 | `NewOakValeIntro/Entities/NOVI_AffairMan.lua` | - | native-decompile | partially API-blocked |
-| NOVI_AffairWife | Init | 0x00DB2A70 | 9 | `NewOakValeIntro/Entities/NOVI_AffairWife.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_AffairWife | Main | 0x00DB2B10 | 53 | `NewOakValeIntro/Entities/NOVI_AffairWife.lua` | - | native-decompile | partially API-blocked |
-| NOVI_AffairWoman | Init | 0x00DB1E80 | 5 | `NewOakValeIntro/Entities/NOVI_AffairWoman.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_AffairWoman | Main | 0x00DB1F00 | 37 | `NewOakValeIntro/Entities/NOVI_AffairWoman.lua` | - | native-decompile | partially API-blocked |
+| NOVI_AffairMan | Init | 0x00DB0950 | 7 | `NewOakValeIntro/Entities/NOVI_AffairMan.lua` | entity_affair_man_init | native-decompile | implemented-and-traced |
+| NOVI_AffairMan | Main | 0x00DB09E0 | 60 | `NewOakValeIntro/Entities/NOVI_AffairMan.lua` | entity_affair_man_main_terminated | native-decompile | partially API-blocked |
+| NOVI_AffairWife | Init | 0x00DB2A70 | 9 | `NewOakValeIntro/Entities/NOVI_AffairWife.lua` | entity_affair_wife_init | native-decompile | implemented-and-traced |
+| NOVI_AffairWife | Main | 0x00DB2B10 | 53 | `NewOakValeIntro/Entities/NOVI_AffairWife.lua` | entity_affair_wife_main_terminated | native-decompile | partially API-blocked |
+| NOVI_AffairWoman | Init | 0x00DB1E80 | 5 | `NewOakValeIntro/Entities/NOVI_AffairWoman.lua` | entity_affair_woman_init | native-decompile | implemented-and-traced |
+| NOVI_AffairWoman | Main | 0x00DB1F00 | 37 | `NewOakValeIntro/Entities/NOVI_AffairWoman.lua` | entity_affair_woman_main_terminated | native-decompile | partially API-blocked |
 | NOVI_Barrel | Init | 0x00CDEBB0 | 0 | `NewOakValeIntro/Entities/NOVI_Barrel.lua` | - | native-decompile | not-applicable (retail body empty / data only) |
-| NOVI_Barrel | Main | 0x00DB7E10 | 8 | `NewOakValeIntro/Entities/NOVI_Barrel.lua` | - | native-decompile | partially API-blocked |
+| NOVI_Barrel | Main | 0x00DB7E10 | 8 | `NewOakValeIntro/Entities/NOVI_Barrel.lua` | entity_barrel_main_terminated | native-decompile | partially API-blocked |
 | NOVI_Barrel | OnPredicateFail | 0x00DB7DB0 | 2 | `NewOakValeIntro/Entities/NOVI_Barrel.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_BarrelMan | Init | 0x00DB5260 | 9 | `NewOakValeIntro/Entities/NOVI_BarrelMan.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_BarrelMan | Main | 0x00DB5330 | 11 | `NewOakValeIntro/Entities/NOVI_BarrelMan.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_BarrelThug | Init | 0x00DB6BF0 | 2 | `NewOakValeIntro/Entities/NOVI_BarrelThug.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_BarrelThug | Main | 0x00DB6C60 | 25 | `NewOakValeIntro/Entities/NOVI_BarrelThug.lua` | - | native-decompile | partially API-blocked |
-| NOVI_BookTrader | Init | 0x00DB3F00 | 3 | `NewOakValeIntro/Entities/NOVI_BookTrader.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_BookTrader | Main | 0x00DB3FA0 | 28 | `NewOakValeIntro/Entities/NOVI_BookTrader.lua` | - | native-decompile | partially API-blocked |
-| NOVI_Bully | Init | 0x00DAED30 | 7 | `NewOakValeIntro/Entities/NOVI_Bully.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_Bully | Main | 0x00DBB310 | 61 | `NewOakValeIntro/Entities/NOVI_Bully.lua` | - | native-decompile | partially API-blocked |
+| NOVI_BarrelMan | Init | 0x00DB5260 | 9 | `NewOakValeIntro/Entities/NOVI_BarrelMan.lua` | entity_barrel_man_init | native-decompile | implemented-and-traced |
+| NOVI_BarrelMan | Main | 0x00DB5330 | 11 | `NewOakValeIntro/Entities/NOVI_BarrelMan.lua` | entity_barrel_man_main_terminated | native-decompile | implemented-and-traced |
+| NOVI_BarrelThug | Init | 0x00DB6BF0 | 2 | `NewOakValeIntro/Entities/NOVI_BarrelThug.lua` | entity_barrel_thug_init | native-decompile | implemented-and-traced |
+| NOVI_BarrelThug | Main | 0x00DB6C60 | 25 | `NewOakValeIntro/Entities/NOVI_BarrelThug.lua` | entity_barrel_thug_main_terminated | native-decompile | partially API-blocked |
+| NOVI_BookTrader | Init | 0x00DB3F00 | 3 | `NewOakValeIntro/Entities/NOVI_BookTrader.lua` | entity_book_trader_init | native-decompile | implemented-and-traced |
+| NOVI_BookTrader | Main | 0x00DB3FA0 | 28 | `NewOakValeIntro/Entities/NOVI_BookTrader.lua` | entity_book_trader_main_terminated | native-decompile | partially API-blocked |
+| NOVI_Bully | Init | 0x00DAED30 | 7 | `NewOakValeIntro/Entities/NOVI_Bully.lua` | entity_bully_init | native-decompile | implemented-and-traced |
+| NOVI_Bully | Main | 0x00DBB310 | 61 | `NewOakValeIntro/Entities/NOVI_Bully.lua` | entity_bully_main_terminated | native-decompile | partially API-blocked |
 | NOVI_Bully | GivenTeddy | 0x00DBCD00 | 4 | `NewOakValeIntro/Entities/NOVI_Bully.lua` | - | native-decompile | implemented-and-traced |
 | NOVI_CreatedBeetle | Init | 0x00CDEBB0 | 0 | `NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua` | - | native-decompile | not-applicable (retail body empty / data only) |
-| NOVI_CreatedBeetle | Main | 0x00DB80C0 | 5 | `NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_Guard | Init | 0x00DAC650 | 9 | `NewOakValeIntro/Entities/NOVI_Guard.lua` | - | native-decompile | implemented (uncertain args) |
+| NOVI_CreatedBeetle | Main | 0x00DB80C0 | 5 | `NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua` | entity_created_beetle_main_terminated | native-decompile | implemented-and-traced |
+| NOVI_Guard | Init | 0x00DAC650 | 9 | `NewOakValeIntro/Entities/NOVI_Guard.lua` | entity_guard_init | native-decompile | implemented (uncertain args) |
 | NOVI_Guard | Main | 0x00DAC760 | 45 | `NewOakValeIntro/Entities/NOVI_Guard.lua` | - | native-decompile | implemented (uncertain args) |
-| NOVI_LiveFather | Init | 0x00DAC390 | 7 | `NewOakValeIntro/Entities/NOVI_LiveFather.lua` | - | native-decompile | implemented-and-traced |
+| NOVI_LiveFather | Init | 0x00DAC390 | 7 | `NewOakValeIntro/Entities/NOVI_LiveFather.lua` | entity_live_father_init | native-decompile | implemented-and-traced |
 | NOVI_LiveFather | Main | 0x00DB86B0 | 49 | `NewOakValeIntro/Entities/NOVI_LiveFather.lua` | - | native-decompile | partially API-blocked |
-| NOVI_TeddyGirl | Init | 0x00DAF000 | 5 | `NewOakValeIntro/Entities/NOVI_TeddyGirl.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_TeddyGirl | Main | 0x00DAF080 | 41 | `NewOakValeIntro/Entities/NOVI_TeddyGirl.lua` | - | native-decompile | partially API-blocked |
+| NOVI_TeddyGirl | Init | 0x00DAF000 | 5 | `NewOakValeIntro/Entities/NOVI_TeddyGirl.lua` | entity_teddy_girl_init | native-decompile | implemented-and-traced |
+| NOVI_TeddyGirl | Main | 0x00DAF080 | 41 | `NewOakValeIntro/Entities/NOVI_TeddyGirl.lua` | entity_teddy_girl_main_terminated | native-decompile | partially API-blocked |
 | NOVI_TeddyGirl | GivenTeddy | 0x00DB0600 | 5 | `NewOakValeIntro/Entities/NOVI_TeddyGirl.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_Theresa | Init | 0x00DAC4F0 | 7 | `NewOakValeIntro/Entities/NOVI_Theresa.lua` | - | native-decompile | implemented-and-traced |
+| NOVI_Theresa | Init | 0x00DAC4F0 | 7 | `NewOakValeIntro/Entities/NOVI_Theresa.lua` | entity_theresa_init | native-decompile | implemented-and-traced |
 | NOVI_Theresa | Main | 0x00DB97A0 | 48 | `NewOakValeIntro/Entities/NOVI_Theresa.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_Victim | Init | 0x00DAEEB0 | 8 | `NewOakValeIntro/Entities/NOVI_Victim.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_Victim | Main | 0x00DBCD60 | 27 | `NewOakValeIntro/Entities/NOVI_Victim.lua` | - | native-decompile | partially API-blocked |
-| NOVI_Villager | Init | 0x00DADF00 | 5 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | - | native-decompile | implemented-and-traced |
-| NOVI_Villager | Main | 0x00DADF80 | 27 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | - | native-decompile | implemented (uncertain args) |
+| NOVI_Victim | Init | 0x00DAEEB0 | 8 | `NewOakValeIntro/Entities/NOVI_Victim.lua` | entity_victim_init | native-decompile | implemented-and-traced |
+| NOVI_Victim | Main | 0x00DBCD60 | 27 | `NewOakValeIntro/Entities/NOVI_Victim.lua` | entity_victim_main_terminated | native-decompile | partially API-blocked |
+| NOVI_Villager | Init | 0x00DADF00 | 5 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | entity_villager_init | native-decompile | implemented-and-traced |
+| NOVI_Villager | Main | 0x00DADF80 | 27 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | entity_villager_main_terminated | native-decompile | implemented (uncertain args) |
 | NOVI_Villager | GetVillagerSpeechIndex | 0x00DAEBF0 | 1 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | - | native-decompile | implemented-and-traced |
 | NOVI_Villager | QuestInit(vectors) | 0x00DAADD0 | 0 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | - | native-decompile | not-applicable (retail body empty / data only) |
-| OVI_DeadFather | Init | 0x00DB8290 | 2 | `NewOakValeIntro/Entities/OVI_DeadFather.lua` | - | native-decompile | implemented-and-traced |
-| OVI_DeadFather | Main | 0x00DB8300 | 9 | `NewOakValeIntro/Entities/OVI_DeadFather.lua` | - | native-decompile | implemented (uncertain args) |
+| OVI_DeadFather | Init | 0x00DB8290 | 2 | `NewOakValeIntro/Entities/OVI_DeadFather.lua` | entity_dead_father_init | native-decompile | implemented-and-traced |
+| OVI_DeadFather | Main | 0x00DB8300 | 9 | `NewOakValeIntro/Entities/OVI_DeadFather.lua` | entity_dead_father_main_terminated | native-decompile | implemented (uncertain args) |
 | OVI_DeadFather | OnPredicateFail | 0x00DB8260 | 0 | `NewOakValeIntro/Entities/OVI_DeadFather.lua` | - | native-decompile | not-applicable (retail body empty / data only) |
 | Q_NewOakValeIntro | RegisterMain | 0x00DAACE0 | 0 | `NewOakValeIntro/NewOakValeIntro.lua` | - | native-decompile | not-applicable (host lifecycle) |
-| Q_NewOakValeIntro | Main | 0x00DABAC0 | 7 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_main_fresh_start, quest_main_reload_after_attack | native-decompile | implemented-and-traced |
-| Q_NewOakValeIntro | Init | 0x00DAADD0 | 4 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_init_resets | native-decompile | implemented-and-traced |
+| Q_NewOakValeIntro | Main | 0x00DABAC0 | 7 | `NewOakValeIntro/NewOakValeIntro.lua` | entity_affair_man_main_terminated, entity_affair_wife_main_terminated, entity_affair_woman_main_terminated, entity_barrel_main_terminated, entity_barrel_man_main_terminated, entity_barrel_thug_main_terminated, entity_book_trader_main_terminated, entity_bully_main_terminated, entity_created_beetle_main_terminated, entity_dead_father_main_terminated, entity_teddy_girl_main_terminated, entity_victim_main_terminated, entity_villager_main_terminated, quest_main_fresh_start, quest_main_reload_after_attack | native-decompile | implemented-and-traced |
+| Q_NewOakValeIntro | Init | 0x00DAADD0 | 4 | `NewOakValeIntro/NewOakValeIntro.lua` | entity_affair_man_init, entity_affair_wife_init, entity_affair_woman_init, entity_barrel_man_init, entity_barrel_thug_init, entity_book_trader_init, entity_bully_init, entity_dead_father_init, entity_guard_init, entity_live_father_init, entity_teddy_girl_init, entity_theresa_init, entity_victim_init, entity_villager_init, quest_init_resets | native-decompile | implemented-and-traced |
 | Q_NewOakValeIntro | OnPersist | 0x00DAADA0 | 1 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_onpersist_roundtrip | native-decompile | implemented-and-traced |
 | Q_NewOakValeIntro | DoMission | 0x00DBDE40 | 20 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_domission_attack_transition, quest_domission_terminated_during_childhood | native-decompile + PDB-name | implemented-and-traced |
 | Q_NewOakValeIntro | AttackStuff | 0x00DBE3C0 | 3 | `NewOakValeIntro/NewOakValeIntro.lua` | - | native-decompile + PDB-name | implemented-and-traced |

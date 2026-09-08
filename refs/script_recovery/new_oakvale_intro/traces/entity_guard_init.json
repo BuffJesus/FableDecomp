@@ -1,0 +1,133 @@
+{
+  "events": [
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false
+      ],
+      "event": "api-call",
+      "name": "EntitySetAsDamageable",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false
+      ],
+      "event": "api-call",
+      "name": "EntitySetAsKillable",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false
+      ],
+      "event": "api-call",
+      "name": "EntitySetAsToAddToComboMultiplierWhenHit",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHomePos",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "z": 6
+        }
+      ],
+      "event": "api-call",
+      "name": "SetWanderCentrePoint",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        0.0
+      ],
+      "event": "api-call",
+      "name": "SetWanderMinDistance",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        6.0
+      ],
+      "event": "api-call",
+      "name": "SetWanderMaxDistance",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        4
+      ],
+      "event": "api-call",
+      "name": "SetScriptingStateGroup",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false
+      ],
+      "event": "api-call",
+      "name": "EntitySheatheWeapons",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Entity.GetHomePos": [
+      {
+        "x": 4,
+        "y": 5,
+        "z": 6
+      }
+    ]
+  },
+  "function": "Init",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Guard.lua",
+  "sourceSha256": "a9b9d04dfbcd4cdb797cfc9c0766cac95a0eadabf64061f25150c244928e1b6e"
+}

@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["NewScriptFrame"],"forbid":["AcquireControl"],"note":"termination before trader control acquisition"},"Quest.NewScriptFrame":[false]}

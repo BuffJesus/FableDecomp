@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Init","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairWife.lua","expect":["EntitySetAsDamageable","EntitySetDeedReactionsEnabled"],"note":"initial protection, information, and deed-reaction flags"}}

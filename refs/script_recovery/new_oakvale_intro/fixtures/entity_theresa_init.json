@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Init","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Theresa.lua","expect":["EntitySetAsDamageable","EntitySetAsUseMovementInActions"],"note":"Theresa interaction, movement, and protection flags"}}

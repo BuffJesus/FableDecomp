@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Init","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Bully.lua","expect":["SetStateBool","EntitySetThingAsAllyOfThing"],"note":"bully encounter bookkeeping and relationship setup"},"Quest.GetHero":[{"handle":"hero","scope":"Entity"}]}

@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Barrel.lua","expect":["NewScriptFrame"],"forbid":["DisplayGameInfo"],"note":"termination before barrel tutorial processing"},"Quest.NewScriptFrame":[false]}

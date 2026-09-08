@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Bully.lua","expect":["NewScriptFrame"],"forbid":["AcquireControl"],"note":"termination before bully encounter processing"},"Quest.NewScriptFrame":[false]}

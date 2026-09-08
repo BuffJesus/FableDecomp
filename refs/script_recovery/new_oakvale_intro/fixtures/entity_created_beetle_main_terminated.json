@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua","expect":["NewScriptFrame"],"forbid":["RegisterTimer"],"note":"termination before lifetime timer allocation"},"Quest.NewScriptFrame":[false]}

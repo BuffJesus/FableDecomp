@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_TeddyGirl.lua","expect":["NewScriptFrame"],"forbid":["GetThingWithScriptName"],"note":"termination before locating the bully"},"Quest.NewScriptFrame":[false]}

@@ -1,0 +1,36 @@
+{
+  "events": [
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        "HUD_ORB_QUEST_CORE"
+      ],
+      "event": "api-call",
+      "name": "MiniMapAddMarker",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false
+      ],
+      "event": "api-call",
+      "name": "SetIsPushableByHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {},
+  "function": "Init",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/OVI_DeadFather.lua",
+  "sourceSha256": "61391772a155b0c8c15ed3771343cc0981b446efe631289e50fb32b438908c0d"
+}

@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairMan.lua","expect":["NewScriptFrame"],"forbid":["AcquireControl"],"note":"termination on the entry frame prevents control acquisition"},"Quest.NewScriptFrame":[false]}

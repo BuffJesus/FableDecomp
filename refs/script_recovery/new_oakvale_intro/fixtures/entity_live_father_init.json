@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Init","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_LiveFather.lua","expect":["EntitySetAsDamageable","EntitySetDeedReactionsEnabled"],"note":"father interaction and protection flags"}}

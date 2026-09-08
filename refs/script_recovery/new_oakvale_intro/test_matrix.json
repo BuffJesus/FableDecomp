@@ -3,6 +3,426 @@
   "script": "Q_NewOakValeIntro",
   "fixtures": [
     {
+      "fixture": "entity_affair_man_init",
+      "function": "Init",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "purpose": "initial protection and interaction flags",
+      "expects": [
+        "EntitySetAsDamageable",
+        "SetIsPushableByHero"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 6
+    },
+    {
+      "fixture": "entity_affair_man_main_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "purpose": "termination on the entry frame prevents control acquisition",
+      "expects": [
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "AcquireControl"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 1
+    },
+    {
+      "fixture": "entity_affair_wife_init",
+      "function": "Init",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "purpose": "initial protection, information, and deed-reaction flags",
+      "expects": [
+        "EntitySetAsDamageable",
+        "EntitySetDeedReactionsEnabled"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 7
+    },
+    {
+      "fixture": "entity_affair_wife_main_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "purpose": "termination on the entry frame prevents the idle loop",
+      "expects": [
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "AcquireControl"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 1
+    },
+    {
+      "fixture": "entity_affair_woman_init",
+      "function": "Init",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "purpose": "initial protection and movement flags",
+      "expects": [
+        "EntitySetAsDamageable",
+        "SetIsPushableByHero"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 5
+    },
+    {
+      "fixture": "entity_affair_woman_main_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "purpose": "termination on the entry frame prevents control acquisition",
+      "expects": [
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "AcquireControl"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 1
+    },
+    {
+      "fixture": "entity_barrel_main_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Barrel.lua",
+      "purpose": "termination before barrel tutorial processing",
+      "expects": [
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "DisplayGameInfo"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 1
+    },
+    {
+      "fixture": "entity_barrel_man_init",
+      "function": "Init",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "purpose": "warehouse phase, timer, meet point, and perception setup",
+      "expects": [
+        "SetTimer",
+        "GetHomePos",
+        "EntitySetSightRadius"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 9
+    },
+    {
+      "fixture": "entity_barrel_man_main_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "purpose": "termination before warehouse behavior setup",
+      "expects": [
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "SetCreatureBrain"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 1
+    },
+    {
+      "fixture": "entity_barrel_thug_init",
+      "function": "Init",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "purpose": "initial encounter and protection flags",
+      "expects": [
+        "EntitySetAsDamageable",
+        "EntitySetAsKillable"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 3
+    },
+    {
+      "fixture": "entity_barrel_thug_main_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "purpose": "termination before the thug introduction",
+      "expects": [
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "StartMovieSequence"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 1
+    },
+    {
+      "fixture": "entity_book_trader_init",
+      "function": "Init",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "purpose": "initial protection and interaction flags",
+      "expects": [
+        "EntitySetAsDamageable",
+        "EntitySetDeedReactionsEnabled"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 7
+    },
+    {
+      "fixture": "entity_book_trader_main_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "purpose": "termination before trader control acquisition",
+      "expects": [
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "AcquireControl"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 1
+    },
+    {
+      "fixture": "entity_bully_init",
+      "function": "Init",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "purpose": "bully encounter bookkeeping and relationship setup",
+      "expects": [
+        "SetStateBool",
+        "EntitySetThingAsAllyOfThing"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 8
+    },
+    {
+      "fixture": "entity_bully_main_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "purpose": "termination before bully encounter processing",
+      "expects": [
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "AcquireControl"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 1
+    },
+    {
+      "fixture": "entity_created_beetle_main_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
+      "purpose": "termination before lifetime timer allocation",
+      "expects": [
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "RegisterTimer"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 1
+    },
+    {
+      "fixture": "entity_dead_father_init",
+      "function": "Init",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/OVI_DeadFather.lua",
+      "purpose": "corpse minimap and pushability setup",
+      "expects": [
+        "MiniMapAddMarker",
+        "SetIsPushableByHero"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 2
+    },
+    {
+      "fixture": "entity_dead_father_main_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/OVI_DeadFather.lua",
+      "purpose": "termination before corpse control and teleport",
+      "expects": [
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "AcquireControl"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 1
+    },
+    {
+      "fixture": "entity_guard_init",
+      "function": "Init",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "purpose": "guard protection, wander, scripting-state, and weapon setup",
+      "expects": [
+        "GetHomePos",
+        "SetWanderCentrePoint",
+        "SetScriptingStateGroup"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 9
+    },
+    {
+      "fixture": "entity_live_father_init",
+      "function": "Init",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "purpose": "father interaction and protection flags",
+      "expects": [
+        "EntitySetAsDamageable",
+        "EntitySetDeedReactionsEnabled"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 6
+    },
+    {
+      "fixture": "entity_teddy_girl_init",
+      "function": "Init",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "purpose": "teddy encounter state and protection flags",
+      "expects": [
+        "EntitySetAsDamageable",
+        "SetThingHasInformation"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 4
+    },
+    {
+      "fixture": "entity_teddy_girl_main_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "purpose": "termination before locating the bully",
+      "expects": [
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "GetThingWithScriptName"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 1
+    },
+    {
+      "fixture": "entity_theresa_init",
+      "function": "Init",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "purpose": "Theresa interaction, movement, and protection flags",
+      "expects": [
+        "EntitySetAsDamageable",
+        "EntitySetAsUseMovementInActions"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 6
+    },
+    {
+      "fixture": "entity_victim_init",
+      "function": "Init",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "purpose": "victim fear, interaction, and protection flags",
+      "expects": [
+        "EntitySetAsScared",
+        "EntitySetAsDamageable"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 7
+    },
+    {
+      "fixture": "entity_victim_main_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "purpose": "termination before victim encounter processing",
+      "expects": [
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "AcquireControl"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 1
+    },
+    {
+      "fixture": "entity_villager_init",
+      "function": "Init",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "purpose": "villager protection and hero alliance setup",
+      "expects": [
+        "EntitySetAsDamageable",
+        "EntitySetThingAsAllyOfThing"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 5
+    },
+    {
+      "fixture": "entity_villager_main_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "purpose": "termination on the mandatory entry frame",
+      "expects": [
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "IsTalkedToByHero"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 1
+    },
+    {
       "fixture": "quest_domission_attack_transition",
       "function": "DoMission",
       "kind": "quest",

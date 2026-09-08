@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Init","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Villager.lua","expect":["EntitySetAsDamageable","EntitySetThingAsAllyOfThing"],"note":"villager protection and hero alliance setup"},"Quest.GetHero":[{"handle":"hero","scope":"Entity"}]}

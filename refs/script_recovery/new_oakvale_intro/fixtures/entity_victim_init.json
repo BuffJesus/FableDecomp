@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Init","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Victim.lua","expect":["EntitySetAsScared","EntitySetAsDamageable"],"note":"victim fear, interaction, and protection flags"}}

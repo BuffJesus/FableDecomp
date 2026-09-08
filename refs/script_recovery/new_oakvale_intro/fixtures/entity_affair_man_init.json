@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Init","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairMan.lua","expect":["EntitySetAsDamageable","SetIsPushableByHero"],"note":"initial protection and interaction flags"}}

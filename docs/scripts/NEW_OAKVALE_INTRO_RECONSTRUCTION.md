@@ -42,7 +42,9 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 12/12 deterministic quest fixtures matching their saved traces.
+ForgeFSE bindings, and 39/39 deterministic fixtures matching their saved traces. These are
+12 quest fixtures, 14 meaningful entity initialization fixtures, and 13 entity entry-frame
+termination fixtures.
 The supporting trace-tool unit suite has 9/9 passing tests.
 
 The coverage manifest classifies 30 functions as implemented and traced, 10 as partly

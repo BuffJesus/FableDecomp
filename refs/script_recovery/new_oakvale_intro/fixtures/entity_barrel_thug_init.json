@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Init","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelThug.lua","expect":["EntitySetAsDamageable","EntitySetAsKillable"],"note":"initial encounter and protection flags"}}

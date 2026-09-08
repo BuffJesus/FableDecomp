@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Init","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelMan.lua","expect":["SetTimer","GetHomePos","EntitySetSightRadius"],"note":"warehouse phase, timer, meet point, and perception setup"},"Quest.GetStateInt(WatchTimer)":[101],"Entity.GetHomePos":[{"x":1,"y":2,"z":3}]}

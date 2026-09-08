@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Init","kind":"entity","source":"NewOakValeIntro/Entities/OVI_DeadFather.lua","expect":["MiniMapAddMarker","SetIsPushableByHero"],"note":"corpse minimap and pushability setup"}}

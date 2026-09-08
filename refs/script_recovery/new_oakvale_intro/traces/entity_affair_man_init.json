@@ -1,0 +1,84 @@
+{
+  "events": [
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false
+      ],
+      "event": "api-call",
+      "name": "EntitySetAsDamageable",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false
+      ],
+      "event": "api-call",
+      "name": "EntitySetAsKillable",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false
+      ],
+      "event": "api-call",
+      "name": "EntitySetAsToAddToComboMultiplierWhenHit",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        false
+      ],
+      "event": "api-call",
+      "name": "SetIsPushableByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false
+      ],
+      "event": "api-call",
+      "name": "EntitySetAsUseMovementInActions",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false
+      ],
+      "event": "api-call",
+      "name": "SetThingHasInformation",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {},
+  "function": "Init",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+  "sourceSha256": "e447e038720c25ac3f8507c41fce7beb6544f49d3435520fe479755fb3820c99"
+}

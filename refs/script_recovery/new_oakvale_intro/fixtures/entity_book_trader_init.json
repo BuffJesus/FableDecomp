@@ -1,0 +1,1 @@
+{"__meta__":{"function":"Init","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["EntitySetAsDamageable","EntitySetDeedReactionsEnabled"],"note":"initial protection and interaction flags"}}

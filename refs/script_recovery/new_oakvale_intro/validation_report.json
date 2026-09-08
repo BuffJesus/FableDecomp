@@ -1189,6 +1189,222 @@
   ],
   "fixtures": [
     {
+      "events": 6,
+      "fixture": "entity_affair_man_init.json",
+      "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 1,
+      "fixture": "entity_affair_man_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 7,
+      "fixture": "entity_affair_wife_init.json",
+      "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 1,
+      "fixture": "entity_affair_wife_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 5,
+      "fixture": "entity_affair_woman_init.json",
+      "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 1,
+      "fixture": "entity_affair_woman_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 1,
+      "fixture": "entity_barrel_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 9,
+      "fixture": "entity_barrel_man_init.json",
+      "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 1,
+      "fixture": "entity_barrel_man_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 3,
+      "fixture": "entity_barrel_thug_init.json",
+      "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 1,
+      "fixture": "entity_barrel_thug_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 7,
+      "fixture": "entity_book_trader_init.json",
+      "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 1,
+      "fixture": "entity_book_trader_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 8,
+      "fixture": "entity_bully_init.json",
+      "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 1,
+      "fixture": "entity_bully_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 1,
+      "fixture": "entity_created_beetle_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 2,
+      "fixture": "entity_dead_father_init.json",
+      "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 1,
+      "fixture": "entity_dead_father_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 9,
+      "fixture": "entity_guard_init.json",
+      "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 6,
+      "fixture": "entity_live_father_init.json",
+      "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 4,
+      "fixture": "entity_teddy_girl_init.json",
+      "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 1,
+      "fixture": "entity_teddy_girl_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 6,
+      "fixture": "entity_theresa_init.json",
+      "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 7,
+      "fixture": "entity_victim_init.json",
+      "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 1,
+      "fixture": "entity_victim_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 5,
+      "fixture": "entity_villager_init.json",
+      "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 1,
+      "fixture": "entity_villager_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 82,
       "fixture": "quest_domission_attack_transition.json",
       "function": "DoMission",
@@ -1294,8 +1510,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 12,
-    "fixturesPassed": 12,
+    "fixtures": 39,
+    "fixturesPassed": 39,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,
