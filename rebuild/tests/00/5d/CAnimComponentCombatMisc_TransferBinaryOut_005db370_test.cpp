@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct O{bool values[2];int n;void write(bool v){values[n++]=v;}};int main(){O o={{false,false},0};o.write(true);o.write(false);if(o.n!=2||!o.values[0]||o.values[1])return 1;printf("COMBAT_MISC_WRITE PASS\n");return 0;}

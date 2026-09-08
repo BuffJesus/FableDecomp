@@ -146,3 +146,21 @@ promoted because their generated control flow or register schedule differed from
 retail oracle. The nine-function combined VC7.1 build passes; 962 of 963 generated
 shared headers compile, with the pre-existing `CGameDefinitionManager` quarantine the
 only failure. Batches through 220 are reviewed; batch 221 is next.
+
+### Batches 221-227: corrected identities and exact state helpers
+
+Batches 221-227 added nine readable functions. Exact matches recover
+`CPlayer::HasMode` as the inlined `std::find` over PDB member `PlayerModes`,
+`CMap::AllocateMapThingUID` as a 64-bit post-increment, `CSurface::GetDimensions`
+through the Direct3D `GetDesc` ABI, both Y-axis `C2DLineF` extent helpers, and the
+in-place `GFLimitReturn<float>` clamp. Relocation matches recover two copies of
+`CBalverineBattleDef::operator=` and `CAnimComponentCombatMisc::TransferBinaryOut`
+over `MeleeFlourish` and `MeleeKnockdown`.
+
+Two propagated identities were corrected from body evidence rather than preserved:
+the first Y helper was a duplicate `GetHighestY` label despite matching the established
+`GetLowestX` instruction template, and the alleged `GFLimitReturn<double>` uses 32-bit
+float loads/stores and has no stable return value. Retail overlays document the smaller
+prefixes before `CPlayer::PlayerModes`, `CMap::ThingUIDCount`, and the three Balverine
+definition fields. All nine pass together under VC7.1. Batches through 227 are reviewed;
+batch 228 is active.

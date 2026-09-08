@@ -1,0 +1,2 @@
+#include <stdio.h>
+static float* limit(float*v,const float*lo,const float*hi){if(*v<*lo)*v=*lo;else if(*v>*hi)*v=*hi;return v;}int main(){float lo=2,hi=8,a=1,b=5,c=9;if(limit(&a,&lo,&hi)!=&a||a!=2||*limit(&b,&lo,&hi)!=5||*limit(&c,&lo,&hi)!=8)return 1;printf("LIMIT_RETURN_FLOAT PASS\n");return 0;}

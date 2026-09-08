@@ -132163,6 +132163,69 @@ $catalog = @(
         TestSource = '00/a5/C2DLineF_GetHighestX_00a56bb0_test.cpp'
         PassPattern = 'LINE_HIGHEST_X PASS'
     }
+    [pscustomobject]@{
+        Address = '0047848c'
+        Module = 'CBalverineBattleDef'
+        Source = '00/47/CBalverineBattleDef_operator_0047848c.cpp'
+        TestSource = '00/47/CBalverineBattleDef_operator_0047848c_test.cpp'
+        PassPattern = 'BALVERINE_BATTLE_ASSIGN_0047848C PASS'
+    }
+    [pscustomobject]@{
+        Address = '00478876'
+        Module = 'CBalverineBattleDef'
+        Source = '00/47/CBalverineBattleDef_operator_00478876.cpp'
+        TestSource = '00/47/CBalverineBattleDef_operator_00478876_test.cpp'
+        PassPattern = 'BALVERINE_BATTLE_ASSIGN_00478876 PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db370'
+        Module = 'CAnimComponentCombatMisc'
+        Source = '00/5d/CAnimComponentCombatMisc_TransferBinaryOut_005db370.cpp'
+        TestSource = '00/5d/CAnimComponentCombatMisc_TransferBinaryOut_005db370_test.cpp'
+        PassPattern = 'COMBAT_MISC_WRITE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00634160'
+        Module = 'CPlayer'
+        Source = '00/63/CPlayer_HasMode_00634160.cpp'
+        TestSource = '00/63/CPlayer_HasMode_00634160_test.cpp'
+        PassPattern = 'PLAYER_HAS_MODE PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081e780'
+        Module = 'CMap'
+        Source = '00/81/CMap_AllocateMapThingUID_0081e780.cpp'
+        TestSource = '00/81/CMap_AllocateMapThingUID_0081e780_test.cpp'
+        PassPattern = 'MAP_THING_UID PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f2f90'
+        Module = 'CSurface'
+        Source = '00/9f/CSurface_GetDimensions_009f2f90.cpp'
+        TestSource = '00/9f/CSurface_GetDimensions_009f2f90_test.cpp'
+        PassPattern = 'SURFACE_DIMENSIONS PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a56be0'
+        Module = 'C2DLineF'
+        Source = '00/a5/C2DLineF_GetLowestY_00a56be0.cpp'
+        TestSource = '00/a5/C2DLineF_GetLowestY_00a56be0_test.cpp'
+        PassPattern = 'LINE_LOWEST_Y PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a56c10'
+        Module = 'C2DLineF'
+        Source = '00/a5/C2DLineF_GetHighestY_00a56c10.cpp'
+        TestSource = '00/a5/C2DLineF_GetHighestY_00a56c10_test.cpp'
+        PassPattern = 'LINE_HIGHEST_Y PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048dae0'
+        Module = '_global'
+        Source = '00/48/global_GFLimitReturnfloat_0048dae0.cpp'
+        TestSource = '00/48/global_GFLimitReturnfloat_0048dae0_test.cpp'
+        PassPattern = 'LIMIT_RETURN_FLOAT PASS'
+    }
 )
 
 $requestedAddresses = @(
