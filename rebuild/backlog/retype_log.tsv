@@ -12363,3 +12363,11 @@ address	class	file	action	baseline	new_status	behaviour	reason
 006f5700	CCombatAction_GenericStrikeResponseBase	CCombatActionGenericStr_IsUsingAnimationMovement_006f5700.cpp	skip				QUARANTINED
 0052e6b0	CComponent	CComponent_ResetState_0052e6b0.cpp	skip				QUARANTINED
 005bc66f	CTCInventoryBase	CTCInventoryBase_ProcessButtonBReleased_005bc66f.cpp	skip				QUARANTINED
+004ae9d0	CNetworkClient	CNetworkClient_Update_004ae9d0.cpp	retype	MATCH	MATCH	PASS	RETYPED
+00713140	CActionDoCreatureAction	CActionDoCreatureAction_CActionDoCreatureAction_00713140.cpp	skip				AMBIG_ALIGN
+00781d80	CTCBoastingPosition	CTCBoastingPosition_IsPositionActivated_00781d80.cpp	skip				AMBIG_ALIGN
+007f76e0	CTCActivationReceptorBase	CTCActivationReceptorBase_Activate_007f76e0.cpp	skip				NO_EXACT_MAP(+0x20 f20)
+00a02170	CHandleBasedMemoryPool	CHandleBasedMemoryPool_EndCritical_00a02170.cpp	skip				NO_EXACT_MAP(+0x44c cs CRIT vs CCharStringData*)
+00bbbe60	CEngineInternalPrimitiveParticleGroup	CEngineInternalPrimitiveParticleGroup_Update_00bbbe60.cpp	skip				AMBIG_ALIGN
+004ae9d0	CNetworkClient	CNetworkClient_Update_004ae9d0.cpp	applied	MATCH	MATCH	PASS	APPLIED
+00781d80	CTCBoastingPosition	CTCBoastingPosition_IsPositionActivated_00781d80.cpp	applied-manual	MATCH	MATCH	PASS	APPLIED_MANUAL

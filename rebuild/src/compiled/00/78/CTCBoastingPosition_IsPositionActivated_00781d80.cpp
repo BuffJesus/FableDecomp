@@ -1,14 +1,9 @@
-
-struct CTCBoastingPosition {
-    unsigned char pad[0x20];
-    unsigned char activated;   /* +0x20 */
-    long value;                /* +0x24 */
-};
+#include "engine/CTCBoastingPosition.h"
 
 char __fastcall IsPositionActivated(CTCBoastingPosition* self, int /*edx*/, long* out)
 {
-    if (self->activated) {
-        *out = self->value;
+    if (self->PositionActivated) {
+        *out = self->BoastIndex;
     }
-    return self->activated;
+    return self->PositionActivated;
 }
