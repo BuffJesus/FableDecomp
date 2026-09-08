@@ -132226,6 +132226,27 @@ $catalog = @(
         TestSource = '00/48/global_GFLimitReturnfloat_0048dae0_test.cpp'
         PassPattern = 'LIMIT_RETURN_FLOAT PASS'
     }
+    [pscustomobject]@{
+        Address = '00654dd4'
+        Module = 'pair<C3DVector,CCharString>'
+        Source = '00/65/pairC3DVectorCCharString_operator_00654dd4.cpp'
+        TestSource = '00/65/pairC3DVectorCCharString_operator_00654dd4_test.cpp'
+        PassPattern = 'VECTOR_STRING_PAIR_ASSIGN PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a04030'
+        Module = 'CInputEvent'
+        Source = '00/a0/CInputEvent_SetAsJoystickPosition_00a04030.cpp'
+        TestSource = '00/a0/CInputEvent_SetAsJoystickPosition_00a04030_test.cpp'
+        PassPattern = 'JOYSTICK_POSITION_EVENT PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a04060'
+        Module = 'CInputEvent'
+        Source = '00/a0/CInputEvent_SetAsJoystickPosition2_00a04060.cpp'
+        TestSource = '00/a0/CInputEvent_SetAsJoystickPosition2_00a04060_test.cpp'
+        PassPattern = 'JOYSTICK_POSITION_EVENT PASS'
+    }
 )
 
 $requestedAddresses = @(
