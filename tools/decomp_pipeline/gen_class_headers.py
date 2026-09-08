@@ -481,11 +481,16 @@ def generate(classes: list[str], donor: dict[str, DonorStruct], mf: label_trust.
         # previous header's `retail-only` lines as evidence so the member (name, offset) survives.
         prev = OUT / f"{cls}.h"
         if prev.exists():
+            live_names = {item[1] for items in prov.values() for item in items}
             for line in prev.read_text(encoding="utf-8", errors="ignore").splitlines():
                 pm = re.match(r"^\s+(.+?)\s+([A-Za-z_]\w*)((?:\[[^\]]+\])*);\s*// \+0x([0-9a-f]+) retail-only\s*(.*?)\s*\(", line)
                 if not pm:
                     continue
                 ctype, nm, suffix, off = pm.group(1).strip(), pm.group(2), pm.group(3), int(pm.group(4), 16)
+                # Current retail evidence supersedes a sticky field with the same name.
+                # This matters when an older parser miscomputed an expression-sized pad.
+                if nm in live_names and not any(item[1] == nm for item in prov.get(off, [])):
+                    continue
                 n = 1
                 for a in re.findall(r"\[([^\]]+)\]", suffix):
                     n *= int(a, 0)

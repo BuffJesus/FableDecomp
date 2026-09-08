@@ -11,8 +11,7 @@
 #pragma pack(push, 1)
 struct CCreatureAction_GetOutOfBed {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char interrupted;                               // +0x04 retail-only (previous header)
-    unsigned char _pad_0x05[0x3];                            // +0x05
+    unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
     unsigned char _pad_0x10[0x4];                            // +0x10
@@ -35,7 +34,9 @@ struct CCreatureAction_GetOutOfBed {
     unsigned char _pad_0x54[0x4];                            // +0x54
     unsigned char _pad_0x58[0x4];                            // +0x58
     unsigned char _pad_0x5c[0x4];                            // +0x5c
-    unsigned char _pad_0x60[0x4];                            // +0x60
+    unsigned char _pad_0x60[0x2];                            // +0x60
+    bool          interrupted;                               // +0x62 retail-only bool (CCreatureActionGetOutOfBed_FinishActionCCreatureActionGetOutOfBedUAEXXZ_008421c0.cpp)
+    unsigned char _pad_0x63[0x1];                            // +0x63
     unsigned char _pad_0x64[0x4];                            // +0x64
     unsigned char _pad_0x68[0x4];                            // +0x68
     unsigned char _pad_0x6c[0x4];                            // +0x6c
@@ -62,7 +63,7 @@ struct CCreatureAction_GetOutOfBed {
 
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_GetOutOfBed) == 0xbc);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_GetOutOfBed, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_GetOutOfBed, interrupted) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_GetOutOfBed, interrupted) == 0x62);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_GetOutOfBed, PBed) == 0xb4);
 
 #endif // FABLE_ENGINE_CCREATUREACTION_GETOUTOFBED_H

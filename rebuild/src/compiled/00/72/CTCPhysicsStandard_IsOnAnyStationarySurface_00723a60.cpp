@@ -1,25 +1,44 @@
-struct Surface { char pad[0x3c]; unsigned char flags; };
-struct PhysObj { char pad0[0x60]; Surface* surface; };
-struct Owner;
-struct OwnerVtbl { char pad0[0x98]; PhysObj* (__fastcall* getPhysObj)(Owner*); };
-struct Owner { OwnerVtbl* vt; };
-struct SurfVtbl { char pad0[0xd0]; bool (__fastcall* isStationary)(Surface*); };
-struct PhysStd;
-struct PhysStdVtbl { char pad0[0xdc]; bool (__fastcall* v_dc)(PhysStd*); bool (__fastcall* v_e0)(PhysStd*); };
-struct PhysStd { PhysStdVtbl* vt; Owner* owner; };
+#include "engine/CTCPhysicsStandard.h"  // retyped onto the PDB layout; byte parity re-verified
 
-bool __fastcall CTCPhysicsStandard_IsOnAnyStationarySurface(PhysStd* self)
+struct CStationarySurfaceView {
+    unsigned char _pad_0x00[0x3c];
+    unsigned char Flags;
+};
+struct CPhysicsOwnerObjectView {
+    unsigned char _pad_0x00[0x60];
+    CStationarySurfaceView* Surface;
+};
+struct CPhysicsOwnerView;
+struct CPhysicsOwnerVTable {
+    unsigned char _pad_0x00[0x98];
+    CPhysicsOwnerObjectView* (__fastcall* GetPhysicsObject)(CPhysicsOwnerView*);
+};
+struct CPhysicsOwnerView { CPhysicsOwnerVTable* __vftable; };
+struct CStationarySurfaceVTable {
+    unsigned char _pad_0x00[0xd0];
+    bool (__fastcall* IsStationary)(CStationarySurfaceView*);
+};
+struct CTCPhysicsStandardVTable {
+    unsigned char _pad_0x00[0xdc];
+    bool (__fastcall* HasStationarySurface)(CTCPhysicsStandard*);
+    bool (__fastcall* IsAlwaysOnSurface)(CTCPhysicsStandard*);
+};
+
+bool __fastcall CTCPhysicsStandard_IsOnAnyStationarySurface(
+    CTCPhysicsStandard* self)
 {
-    if (self->vt->v_e0(self))
+    if (((CTCPhysicsStandardVTable*)self->__vftable)->IsAlwaysOnSurface(self))
         return true;
-    if (self->vt->v_dc(self)) {
-        PhysObj* po = self->owner->vt->getPhysObj(self->owner);
-        if (po) {
-            Surface* s = po->surface;
-            if (s) {
-                if (((SurfVtbl*)*(void**)s)->isStationary(s))
+    if (((CTCPhysicsStandardVTable*)self->__vftable)->HasStationarySurface(self)) {
+        CPhysicsOwnerView* owner = (CPhysicsOwnerView*)self->owner;
+        CPhysicsOwnerObjectView* physics =
+            owner->__vftable->GetPhysicsObject(owner);
+        if (physics) {
+            CStationarySurfaceView* surface = physics->Surface;
+            if (surface) {
+                if (((CStationarySurfaceVTable*)*(void**)surface)->IsStationary(surface))
                     return true;
-                if (po->surface->flags & 1)
+                if (physics->Surface->Flags & 1)
                     return false;
             }
         }

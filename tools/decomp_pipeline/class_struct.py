@@ -11,7 +11,7 @@ Usage:
   python class_struct.py <Class>            # print reconstructed struct
   python class_struct.py --map <out.json>   # {module: struct_text} for all classes
 """
-import glob, os, re, json, sys
+import ast, glob, os, re, json, sys
 from pathlib import Path
 
 ROOT = Path(r"D:\Documents\FableTLC")
@@ -23,7 +23,10 @@ SIZEOF = {"bool": 1, "char": 1, "unsigned char": 1, "signed char": 1, "u8": 1,
           "double": 8, "__int64": 8, "unsigned __int64": 8}
 
 STRUCT_RE = re.compile(r"struct\s+([A-Za-z_]\w*)\s*\{(.*?)\}\s*;", re.DOTALL)
-MEMBER_RE = re.compile(r"([A-Za-z_][\w:<>\* ]*?)\s+(\w+)\s*(\[\s*(0x[0-9a-fA-F]+|\d+)\s*\])?\s*;")
+MEMBER_RE = re.compile(
+    r"([A-Za-z_][\w:<>\* ]*?)\s+(\w+)\s*"
+    r"(\[\s*([0-9a-fA-FxX\s+\-*/()]+)\s*\])?\s*;"
+)
 SIZEOFCLASS_RE = re.compile(r"return\s+(0x[0-9a-fA-F]+|\d+)\s*;")
 
 def type_size(t):
@@ -83,6 +86,33 @@ def is_packed(text, struct_start):
 def type_align(t):
     return min(type_size(t), 4)
 
+def const_int(expr):
+    """Evaluate the integer-only constant expressions used by local pad arrays."""
+    node = ast.parse(expr, mode="eval")
+    allowed_binops = (ast.Add, ast.Sub, ast.Mult, ast.FloorDiv, ast.Div)
+    allowed_unary = (ast.UAdd, ast.USub)
+
+    def visit(n):
+        if isinstance(n, ast.Expression):
+            return visit(n.body)
+        if isinstance(n, ast.Constant) and isinstance(n.value, int):
+            return n.value
+        if isinstance(n, ast.UnaryOp) and isinstance(n.op, allowed_unary):
+            value = visit(n.operand)
+            return value if isinstance(n.op, ast.UAdd) else -value
+        if isinstance(n, ast.BinOp) and isinstance(n.op, allowed_binops):
+            left, right = visit(n.left), visit(n.right)
+            if isinstance(n.op, ast.Add): return left + right
+            if isinstance(n.op, ast.Sub): return left - right
+            if isinstance(n.op, ast.Mult): return left * right
+            return left // right
+        raise ValueError("unsupported constant expression")
+
+    value = visit(node)
+    if value < 0:
+        raise ValueError("negative array bound")
+    return value
+
 def parse_struct(body, packed=True):
     """Return (fields, total_size) with fields = [(offset, type, name, size)] for named,
     non-pad members.  `packed=False` applies VC7.1 natural alignment (align = min(size,4))
@@ -103,7 +133,7 @@ def parse_struct(body, packed=True):
             off += al - (off % al)
         max_align = max(max_align, al)
         if arr is not None:
-            n = int(arr, 0)
+            n = const_int(arr)
             span = n * elt if elt else n
         else:
             span = elt
