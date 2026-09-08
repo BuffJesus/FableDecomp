@@ -1,20 +1,19 @@
-struct CInterpolationInfo;
+#include "engine/CDisplayViewManager.h"
 
-// Object with a vtable whose slot 0 takes (CInterpolationInfo*, bool) as __fastcall.
-struct IRenderable {
-    virtual void Draw(CInterpolationInfo* info, bool b) = 0;   // vtbl slot 0
+struct CInterpolationInfo;
+struct CViewBase {
+    virtual void Draw(CInterpolationInfo* info, bool b) = 0;
 };
 
-struct CDisplayViewManager {
-    IRenderable* pView;   // +0
+struct CDisplayViewManager_Methods : CDisplayViewManager {
     void Render(CInterpolationInfo* info, bool b);
 };
 
-extern IRenderable* __fastcall GetFallbackView_c31a70(CDisplayViewManager* self);
+extern CViewBase* __fastcall GetFallbackView_c31a70(CDisplayViewManager* self);
 
-void CDisplayViewManager::Render(CInterpolationInfo* info, bool b)
+void CDisplayViewManager_Methods::Render(CInterpolationInfo* info, bool b)
 {
-    IRenderable* v = this->pView;
+    CViewBase* v = this->PCurrentView_Data;
     if (v)
         v->Draw(info, b);
     else
