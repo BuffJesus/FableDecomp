@@ -132338,6 +132338,13 @@ $catalog = @(
         TestSource = '00/57/CTCHeroStats_GetNumberOfCurrentSpouses_0057ad1d_test.cpp'
         PassPattern = 'CURRENT_SPOUSES PASS'
     }
+    [pscustomobject]@{
+        Address = '009fbfb0'
+        Module = 'CResource'
+        Source = '00/9f/CResource_ListRemove_009fbfb0.cpp'
+        TestSource = '00/9f/CResource_ListRemove_009fbfb0_test.cpp'
+        PassPattern = 'RESOURCE_LIST_REMOVE PASS'
+    }
 )
 
 $requestedAddresses = @(
