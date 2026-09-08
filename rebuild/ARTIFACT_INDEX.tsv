@@ -13316,6 +13316,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 00a39de0	CWADFile		rebuild/src/compiled/00/a3/CWADFile_IsOpen_00a39de0.cpp	rebuild/tests/00/a3/CWADFile_IsOpen_00a39de0_test.cpp		rebuild/build/candidates-Release/00/a3/00a39de0
 00a39df0	CLandscapeBackgroundPatch		rebuild/src/compiled/00/a3/CLandscapeBackgroundPatch_vectordeletingdestructor_00a39df0.cpp	rebuild/tests/00/a3/CLandscapeBackgroundPatch_vectordeletingdestructor_00a39df0_test.cpp		rebuild/build/candidates-Release/00/a3/00a39df0
 00a39e10	C2DBoxI		rebuild/src/compiled/00/a3/C2DBoxI_ExtendBordersBy_00a39e10.cpp	rebuild/tests/00/a3/C2DBoxI_ExtendBordersBy_00a39e10_test.cpp		rebuild/build/candidates-Release/00/a3/00a39e10
+00a39e20			rebuild/src/compiled/00/a3/C2DBoxI_ExtendToContain_00a39e20.cpp	rebuild/tests/00/a3/C2DBoxI_ExtendToContain_00a39e20_test.cpp		
 00a3a150	C2DBoxI		rebuild/src/compiled/00/a3/C2DBoxI_ValidateOrientationAndFlip_00a3a150.cpp	rebuild/tests/00/a3/C2DBoxI_ValidateOrientationAndFlip_00a3a150_test.cpp		rebuild/build/candidates-Release/00/a3/00a3a150
 00a3a2c0	CWADBankStateBlock		rebuild/src/compiled/00/a3/CWADBankStateBlock_GetDefault_00a3a2c0.cpp	rebuild/tests/00/a3/CWADBankStateBlock_GetDefault_00a3a2c0_test.cpp		rebuild/build/candidates-Release/00/a3/00a3a2c0
 00a3a2d0	CWADBankStateBlock		rebuild/src/compiled/00/a3/CWADBankStateBlock_CreateCRC_00a3a2d0.cpp	rebuild/tests/00/a3/CWADBankStateBlock_CreateCRC_00a3a2d0_test.cpp		rebuild/build/candidates-Release/00/a3/00a3a2d0

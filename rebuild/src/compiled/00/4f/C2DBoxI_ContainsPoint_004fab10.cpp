@@ -1,21 +1,13 @@
 
-struct C2DPointI { int x; int y; };
+#include "engine/C2DBoxI.h"
 
-struct C2DBoxI {
-    int minX; // +0x0
-    int minY; // +0x4
-    int maxX; // +0x8
-    int maxY; // +0xc
-    int ContainsPoint(const C2DPointI* p) const;
-};
-
-int C2DBoxI::ContainsPoint(const C2DPointI* p) const
+int C2DBoxI::ContainsPoint(const C2DCoordI* p) const
 {
-    int x = p->x;
-    if (x >= minX && x < maxX)
+    int x = p->X;
+    if (x >= TLX && x < BRX)
     {
-        int y = p->y;
-        if (y >= minY && y < maxY)
+        int y = p->Y;
+        if (y >= TLY && y < BRY)
             return 1;
     }
     return 0;

@@ -36543,7 +36543,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a39de0	CWADFile::IsOpen	CWADFile	__thiscall	bool	1	CWADFile *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CWADFile_IsOpen_00a39de0.cpp
 00a39df0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CLandscapeBackgroundPatch_vectordeletingdestructor_00a39df0.cpp
 00a39e10	ExtendBordersBy	C2DBoxI	__thiscall	void	2	C2DBoxI *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\C2DBoxI_ExtendBordersBy_00a39e10.cpp
-00a39e20	ExtendToContain	C2DBoxI	__thiscall	void	2	C2DBoxI *,C2DCoordI *	1	yes	accepted									
+00a39e20	ExtendToContain	C2DBoxI	__thiscall	void	2	C2DBoxI *,C2DCoordI *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\C2DBoxI_ExtendToContain_00a39e20.cpp
 00a39fe0	ClipLineTo	C2DBoxI	__thiscall	void	2	C2DBoxI *,C2DLineF *	1	yes	accepted									
 00a3a150	ValidateOrientationAndFlip	C2DBoxI	__thiscall	void	1	C2DBoxI *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\C2DBoxI_ValidateOrientationAndFlip_00a3a150.cpp
 00a3a180	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted									

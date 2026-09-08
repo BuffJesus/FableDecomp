@@ -132359,6 +132359,13 @@ $catalog = @(
         TestSource = '00/9f/CResourceList_AddResource_009fbfe0_test.cpp'
         PassPattern = 'ADD_RESOURCE PASS'
     }
+    [pscustomobject]@{
+        Address = '00a39e20'
+        Module = 'C2DBoxI'
+        Source = '00/a3/C2DBoxI_ExtendToContain_00a39e20.cpp'
+        TestSource = '00/a3/C2DBoxI_ExtendToContain_00a39e20_test.cpp'
+        PassPattern = 'EXTEND_BOX_TO_CONTAIN PASS'
+    }
 )
 
 $requestedAddresses = @(

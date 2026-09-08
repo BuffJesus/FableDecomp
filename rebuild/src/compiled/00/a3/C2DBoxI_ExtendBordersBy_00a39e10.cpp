@@ -1,2 +1,9 @@
-struct C2DBoxI { int a,b,c,d; void ExtendBordersBy(long); };
-void C2DBoxI::ExtendBordersBy(long){ --a; ++c; --b; ++d; }
+#include "engine/C2DBoxI.h"
+
+void C2DBoxI::ExtendBordersBy(long)
+{
+    --TLX;
+    ++BRX;
+    --TLY;
+    ++BRY;
+}

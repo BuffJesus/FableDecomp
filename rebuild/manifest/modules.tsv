@@ -3,7 +3,7 @@ AbilityDataList	0	1	0	0	0	0	0	0	0	0	0
 AllocArrayOfObjects<CLocalDetailPrimitiveMeshZSpriteBatch	0	1	1	0	0	0	0	0	0	0	0
 ArgPasser	0	1	0	0	0	0	0	0	0	0	0
 C2DBoxF	0	3	3	0	0	1	1	1	0	0	0
-C2DBoxI	0	9	8	0	0	3	3	3	0	0	0
+C2DBoxI	0	9	8	0	0	4	4	4	0	0	0
 C2DCoordI	0	6	6	0	0	0	0	0	0	0	0
 C2DLineF	0	15	14	0	0	5	5	4	1	0	0
 C2DVector	0	3	3	0	0	1	1	1	0	0	0
