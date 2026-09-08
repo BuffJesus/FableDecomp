@@ -1,0 +1,2 @@
+#include <stdio.h>
+int main(){unsigned char flags=0;long frames=0;float speed=2,last=0;if(!(flags&2)){flags|=2;if(frames<1)frames=1;last=speed/(float)frames;}if(flags!=2||last!=2.0f)return 1;printf("ANIM_SET_FINISHED PASS\n");return 0;}

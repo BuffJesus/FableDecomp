@@ -1,8 +1,8 @@
 {
   "landed_total": 15089,
-  "files_on_disk": 18973,
-  "files_not_in_manifest": 3884,
-  "unmanifested_genuine": 3861,
+  "files_on_disk": 18979,
+  "files_not_in_manifest": 3890,
+  "unmanifested_genuine": 3867,
   "unmanifested_naked_asm": 22,
   "unmanifested_emit_bake": 1,
   "genuine": 14488,
@@ -19,6 +19,6 @@
   "asm_bake_matching": 292,
   "engine_headers_generated": 962,
   "engine_headers_quarantined": 262,
-  "matched_bytes": 438329,
-  "matched_bytes_genuine": 388678
+  "matched_bytes": 438580,
+  "matched_bytes_genuine": 388929
 }

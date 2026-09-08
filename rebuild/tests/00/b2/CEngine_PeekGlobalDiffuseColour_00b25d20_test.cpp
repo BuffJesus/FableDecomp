@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct C{float r,g,b,a;};int main(){C source={.1f,.2f,.3f,1.f};C* pointer=&source;C result=*pointer;if(result.r!=.1f||result.a!=1.f)return 1;printf("GLOBAL_DIFFUSE_COLOUR PASS\n");return 0;}

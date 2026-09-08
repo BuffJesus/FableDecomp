@@ -132247,6 +132247,48 @@ $catalog = @(
         TestSource = '00/a0/CInputEvent_SetAsJoystickPosition2_00a04060_test.cpp'
         PassPattern = 'JOYSTICK_POSITION_EVENT PASS'
     }
+    [pscustomobject]@{
+        Address = '00b25d20'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_PeekGlobalDiffuseColour_00b25d20.cpp'
+        TestSource = '00/b2/CEngine_PeekGlobalDiffuseColour_00b25d20_test.cpp'
+        PassPattern = 'GLOBAL_DIFFUSE_COLOUR PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aecf0'
+        Module = 'CFrameData'
+        Source = '00/4a/CFrameData_ResetTexture_004aecf0.cpp'
+        TestSource = '00/4a/CFrameData_ResetTexture_004aecf0_test.cpp'
+        PassPattern = 'FRAME_DATA_RESET_TEXTURE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00668a50'
+        Module = 'CAnimSet'
+        Source = '00/66/CAnimSet_SetAsFinished_00668a50.cpp'
+        TestSource = '00/66/CAnimSet_SetAsFinished_00668a50_test.cpp'
+        PassPattern = 'ANIM_SET_FINISHED PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a03c80'
+        Module = 'CInputEvent'
+        Source = '00/a0/CInputEvent_SetAsLeftMouseButtonPressed_00a03c80.cpp'
+        TestSource = '00/a0/CInputEvent_SetAsLeftMouseButtonPressed_00a03c80_test.cpp'
+        PassPattern = 'MOUSE_BUTTON_PRESSED PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a03d90'
+        Module = 'CInputEvent'
+        Source = '00/a0/CInputEvent_SetAsMiddleMouseButtonPressed_00a03d90.cpp'
+        TestSource = '00/a0/CInputEvent_SetAsMiddleMouseButtonPressed_00a03d90_test.cpp'
+        PassPattern = 'MOUSE_BUTTON_PRESSED PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a03e40'
+        Module = 'CInputEvent'
+        Source = '00/a0/CInputEvent_SetAsRightMouseButtonPressed_00a03e40.cpp'
+        TestSource = '00/a0/CInputEvent_SetAsRightMouseButtonPressed_00a03e40_test.cpp'
+        PassPattern = 'MOUSE_BUTTON_PRESSED PASS'
+    }
 )
 
 $requestedAddresses = @(
