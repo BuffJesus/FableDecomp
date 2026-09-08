@@ -258,6 +258,25 @@ def main() -> int:
         address = item["address"].lower()
         object_path = Path(item["object"])
         oracle = oracles.get(address)
+        if not object_path.exists():
+            rows.append({
+                "address": address,
+                "module": item["module"],
+                "status": "OBJECT_MISSING",
+                "retail_bytes": len(bytes.fromhex(oracle["bytes"])) if oracle else "",
+                "object_text_bytes": "",
+                "object_symbol": "",
+                "first_difference": "",
+                "matching_prefix_bytes": "",
+                "relocation_count": "",
+                "relocation_offsets": "",
+                "retail_sha256": (
+                    hashlib.sha256(bytes.fromhex(oracle["bytes"])).hexdigest()
+                    if oracle else ""
+                ),
+                "object_sha256": "",
+            })
+            continue
         object_stat = object_path.stat()
         oracle_sha256 = (
             hashlib.sha256(bytes.fromhex(oracle["bytes"])).hexdigest() if oracle else ""
@@ -351,6 +370,7 @@ def main() -> int:
         "relocation_matching": sum(row["status"] == "RELOCATION_MATCH" for row in rows),
         "differing": sum(row["status"] == "DIFFER" for row in rows),
         "oracle_missing": sum(row["status"] == "ORACLE_MISSING" for row in rows),
+        "object_missing": sum(row["status"] == "OBJECT_MISSING" for row in rows),
     }
     temp = gate / "retail-parity.json.tmp"
     temp.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")

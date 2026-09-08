@@ -132310,6 +132310,27 @@ $catalog = @(
         TestSource = '00/a0/CInputEvent_SetAsExtraMouseButtonPressed_00a03ef0_test.cpp'
         PassPattern = 'EXTRA_MOUSE_INPUT PASS'
     }
+    [pscustomobject]@{
+        Address = '00a03d60'
+        Module = 'CInputEvent'
+        Source = '00/a0/CInputEvent_SetAsLeftMouseButtonReleased_00a03d60.cpp'
+        TestSource = '00/a0/CInputEvent_SetAsLeftMouseButtonReleased_00a03d60_test.cpp'
+        PassPattern = 'MOUSE_BUTTON_RELEASE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a03e10'
+        Module = 'CInputEvent'
+        Source = '00/a0/CInputEvent_SetAsMiddleMouseButtonReleased_00a03e10.cpp'
+        TestSource = '00/a0/CInputEvent_SetAsMiddleMouseButtonReleased_00a03e10_test.cpp'
+        PassPattern = 'MOUSE_BUTTON_RELEASE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a03ec0'
+        Module = 'CInputEvent'
+        Source = '00/a0/CInputEvent_SetAsRightMouseButtonReleased_00a03ec0.cpp'
+        TestSource = '00/a0/CInputEvent_SetAsRightMouseButtonReleased_00a03ec0_test.cpp'
+        PassPattern = 'MOUSE_BUTTON_RELEASE PASS'
+    }
 )
 
 $requestedAddresses = @(
