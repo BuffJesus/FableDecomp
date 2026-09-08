@@ -1,3 +1,9 @@
-struct S; typedef S* (__fastcall* VFn)(S*);
-struct S { VFn* vtbl; char pad[4]; void* f8; };
-S* __fastcall Clone(S* self){ S* p = self->vtbl[0x10/4](self); p->f8 = self->f8; return p; }
+#include "engine/CAnimComponentSetCreatureMode.h"  // retyped onto the PDB layout; byte parity re-verified
+typedef CAnimComponentSetCreatureMode* (__fastcall* CloneCreatureModeFn)(CAnimComponentSetCreatureMode*);
+CAnimComponentSetCreatureMode* __fastcall Clone(CAnimComponentSetCreatureMode* self)
+{
+    CloneCreatureModeFn* vtable = (CloneCreatureModeFn*)self->__vftable;
+    CAnimComponentSetCreatureMode* copy = vtable[0x10 / 4](self);
+    *(long*)copy->Mode = *(long*)self->Mode;
+    return copy;
+}

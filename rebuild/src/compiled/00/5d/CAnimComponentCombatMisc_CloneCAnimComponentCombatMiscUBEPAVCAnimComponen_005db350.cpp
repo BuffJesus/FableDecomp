@@ -1,22 +1,10 @@
-struct CAnimComponentCombatMisc;
-struct Vtbl {
-    void* s0;
-    void* s1;
-    void* s2;
-    void* s3;
-    CAnimComponentCombatMisc* (__fastcall* clone)(CAnimComponentCombatMisc* self); // +0x10
-};
-struct CAnimComponentCombatMisc {
-    Vtbl* vptr;      // +0
-    char pad4[4];    // +4
-    char b8;         // +8
-    char b9;         // +9
-};
-
+#include "engine/CAnimComponentCombatMisc.h"  // retyped onto the PDB layout; byte parity re-verified
+typedef CAnimComponentCombatMisc* (__fastcall* CloneCombatMiscFn)(CAnimComponentCombatMisc*);
 void* __fastcall Clone_CombatMisc(CAnimComponentCombatMisc* self)
 {
-    CAnimComponentCombatMisc* n = self->vptr->clone(self);
-    n->b8 = self->b8;
-    n->b9 = self->b9;
-    return n;
+    CloneCombatMiscFn* vtable = (CloneCombatMiscFn*)self->__vftable;
+    CAnimComponentCombatMisc* copy = vtable[0x10 / 4](self);
+    copy->MeleeFlourish = self->MeleeFlourish;
+    copy->MeleeKnockdown = self->MeleeKnockdown;
+    return copy;
 }

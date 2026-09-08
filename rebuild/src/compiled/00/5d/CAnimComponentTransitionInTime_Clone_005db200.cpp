@@ -1,3 +1,9 @@
-struct S; typedef S* (__fastcall* VFn)(S*);
-struct S { VFn* vtbl; char pad[4]; void* f8; };
-S* __fastcall Clone(S* self){ S* p = self->vtbl[0x10/4](self); p->f8 = self->f8; return p; }
+#include "engine/CAnimComponentTransitionInTime.h"  // retyped onto the PDB layout; byte parity re-verified
+typedef CAnimComponentTransitionInTime* (__fastcall* CloneTransitionFn)(CAnimComponentTransitionInTime*);
+CAnimComponentTransitionInTime* __fastcall Clone(CAnimComponentTransitionInTime* self)
+{
+    CloneTransitionFn* vtable = (CloneTransitionFn*)self->__vftable;
+    CAnimComponentTransitionInTime* copy = vtable[0x10 / 4](self);
+    copy->TransitionInTime = self->TransitionInTime;
+    return copy;
+}
