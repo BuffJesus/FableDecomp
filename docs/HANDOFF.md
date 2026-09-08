@@ -14,7 +14,7 @@
 
 ## Active lanes and their resume commands
 - Typed headers: `python tools/decomp_pipeline/gen_class_headers.py --all-trusted` (add `--compile-check`), then `python tools/decomp_pipeline/retype_landed.py --class CGameScriptInterface` (dry run; `--apply` only rewrites files that stay byte-exact). Log: `rebuild/backlog/retype_log.tsv`; headers: `rebuild/include/engine/` (`INDEX.tsv`, `RECONCILE.tsv`, `_quarantine/`).
-- Parity crawl: batches through 207 are reviewed and batch 208 is active in `work/crawl_batch155`; 177 readable functions landed on 2026-09-08. Continue evidence review; do not accept propagated labels where the body contradicts the PDB layout or prototype. Details: `docs/journal/2026-09/PARITY_CRAWL_2026-09-08.md`.
+- Parity crawl: batches through 214 are reviewed and batch 215 is active in `work/crawl_batch155`; 184 readable functions landed on 2026-09-08. Continue evidence review; do not accept propagated labels where the body contradicts the PDB layout or prototype. Details: `docs/journal/2026-09/PARITY_CRAWL_2026-09-08.md`.
 - Header gate: 963 trusted headers generated; 962 compile, 261 remain layout-quarantined, and `CGameDefinitionManager` remains the single compile quarantine.
 - De-bake: `python tools/decomp_pipeline/crawl/bake_families.py` for the live family table; `debake_family.py <template> <genuine.cpp> <prefix> --apply`.
 - Script recovery: `python -m unittest discover -s tools/script_recovery -p 'test_*.py'`; `python tools/script_recovery/verify_foundation.py`; readiness needs `--vtable-slots`, `--interface-catalog`, `--fse-address-map`. Ingest Aeon's 2026-09-06 LUAGameflow batch into `work/aeon_lua_ports/`.

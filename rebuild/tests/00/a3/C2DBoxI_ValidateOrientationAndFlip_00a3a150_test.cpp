@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct B{long l,t,r,b;void V(){if(r<l){long x=l;l=r;r=x;}if(b<t){long x=t;t=b;b=x;}}};int main(){B x={9,8,1,2};x.V();if(x.l!=1||x.r!=9||x.t!=2||x.b!=8)return 1;printf("BOX_I_VALIDATE_ORIENTATION PASS\n");return 0;}

@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct D{long a,b;float d;void Copy(const D&x){a=x.a;b=x.b;d=x.d;}};int main(){D a={0,0,0},b={2,3,4};a.Copy(b);if(a.a!=2||a.b!=3||a.d!=4)return 1;printf("VILLAGER_INTERACTIONS_COPY PASS\n");return 0;}

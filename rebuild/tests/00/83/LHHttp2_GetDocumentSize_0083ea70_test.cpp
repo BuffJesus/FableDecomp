@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct P{unsigned long n;};int main(){P a={4},b={7};P*p[3]={&a,0,&b};unsigned long n=0;for(int i=0;i<3;++i)if(p[i])n+=p[i]->n;if(n!=11)return 1;printf("HTTP_DOCUMENT_SIZE PASS\n");return 0;}

@@ -132051,6 +132051,55 @@ $catalog = @(
         TestSource = '00/88/CAIBrain_SetAllStateGroupsEnabled_0088b8c0_test.cpp'
         PassPattern = 'AI_BRAIN_ENABLE_STATE_GROUPS PASS'
     }
+    [pscustomobject]@{
+        Address = '00a42140'
+        Module = 'CPlane'
+        Source = '00/a4/CPlane_Initialise_00a42140.cpp'
+        TestSource = '00/a4/CPlane_Initialise_00a42140_test.cpp'
+        PassPattern = 'PLANE_INITIALISE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3a150'
+        Module = 'C2DBoxI'
+        Source = '00/a3/C2DBoxI_ValidateOrientationAndFlip_00a3a150.cpp'
+        TestSource = '00/a3/C2DBoxI_ValidateOrientationAndFlip_00a3a150_test.cpp'
+        PassPattern = 'BOX_I_VALIDATE_ORIENTATION PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045e620'
+        Module = 'CVillagerInteractionsDef'
+        Source = '00/45/CVillagerInteractionsDef_Copy_0045e620.cpp'
+        TestSource = '00/45/CVillagerInteractionsDef_Copy_0045e620_test.cpp'
+        PassPattern = 'VILLAGER_INTERACTIONS_COPY PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e1ddc'
+        Module = 'CCarryingDef'
+        Source = '00/4e/CCarryingDef_Copy_004e1ddc.cpp'
+        TestSource = '00/4e/CCarryingDef_Copy_004e1ddc_test.cpp'
+        PassPattern = 'CARRYING_DEF_COPY PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db3d0'
+        Module = 'CAnimComponentCombatFlourishTargetOffset'
+        Source = '00/5d/CAnimComponentCombatFlourishTargetOffset_TransferBinaryOut_005db3d0.cpp'
+        TestSource = '00/5d/CAnimComponentCombatFlourishTargetOffset_TransferBinaryOut_005db3d0_test.cpp'
+        PassPattern = 'FLOURISH_TARGET_OFFSET_BINARY_OUT PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bf860'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6b/CTCBuyableHouse_MovedInNotification_006bf860.cpp'
+        TestSource = '00/6b/CTCBuyableHouse_MovedInNotification_006bf860_test.cpp'
+        PassPattern = 'BUYABLE_HOUSE_MOVED_IN PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083ea70'
+        Module = 'LHHttp2'
+        Source = '00/83/LHHttp2_GetDocumentSize_0083ea70.cpp'
+        TestSource = '00/83/LHHttp2_GetDocumentSize_0083ea70_test.cpp'
+        PassPattern = 'HTTP_DOCUMENT_SIZE PASS'
+    }
 )
 
 $requestedAddresses = @(

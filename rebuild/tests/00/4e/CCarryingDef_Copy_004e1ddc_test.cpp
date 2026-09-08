@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct D{long slots,dummy;void Copy(const D&x){slots=x.slots;dummy=x.dummy;}};int main(){D a={0,0},b={5,8};a.Copy(b);if(a.slots!=5||a.dummy!=8)return 1;printf("CARRYING_DEF_COPY PASS\n");return 0;}

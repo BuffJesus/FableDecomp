@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct V{float x,y,z;};struct P{V n;float d;bool I(const V*v,float x){n=*v;d=x;return true;}};int main(){V v={1,2,3};P p;if(!p.I(&v,4)||p.n.z!=3||p.d!=4)return 1;printf("PLANE_INITIALISE PASS\n");return 0;}
