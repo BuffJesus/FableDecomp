@@ -52,6 +52,15 @@ Batch 164 began with two more verified functions:
 - `005BC450 CItem::IsSameItemTypeAsDefIndex` — shared `CItem` header, including the empty-stack guard
 - `008350D0 CAnimFilterAnyGroup::Clone` — genuine stateless C++ clone rather than allocation pseudocode
 
-Resume in the remainder of batch 164 and mark each reviewed address in both crawl tried ledgers before
-generating batch 165. Keep the readable-source rule: semantic/PDB names when supported,
-explicit offset names otherwise, and no landing on a misleading owner or prototype.
+Batch 165 added `CCreatureAbilityDef::Copy` and `CThingGroupDef::Copy`; batch 166 added
+`CEngineThemeGroupDef::Copy` and `CWaspQueenBattleDef::Copy`. All four are relocation
+matches with behavior fixtures and original PDB member names. Their retail overlays
+document the consistent four-byte definition-base contraction instead of hiding it in
+anonymous offsets.
+
+Batches 167 through 169 were reviewed without landings. They are dominated by identical
+`GetActionName` bodies propagated onto the generic `CActionDoCreatureAction` owner; one
+nearby BSim label also conflicts with the Ego_r symbol at the same address. Those rows
+remain unlanded until their concrete derived owners can be established. Continue after
+batch 169, keeping the readable-source rule: semantic/PDB names when supported, explicit
+retail overlays for proven layout deltas, and no landing on a misleading owner or prototype.

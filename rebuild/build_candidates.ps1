@@ -130994,6 +130994,34 @@ $catalog = @(
         TestSource = '00/83/CAnimFilterAnyGroup_Clone_008350d0_test.cpp'
         PassPattern = 'ANIM_FILTER_ANY_GROUP_CLONE PASS'
     }
+    [pscustomobject]@{
+        Address = '0046280e'
+        Module = 'CCreatureAbilityDef'
+        Source = '00/46/CCreatureAbilityDef_Copy_0046280e.cpp'
+        TestSource = '00/46/CCreatureAbilityDef_Copy_0046280e_test.cpp'
+        PassPattern = 'CREATURE_ABILITY_DEF_COPY PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046284b'
+        Module = 'CThingGroupDef'
+        Source = '00/46/CThingGroupDef_Copy_0046284b.cpp'
+        TestSource = '00/46/CThingGroupDef_Copy_0046284b_test.cpp'
+        PassPattern = 'THING_GROUP_DEF_COPY PASS'
+    }
+    [pscustomobject]@{
+        Address = '004629b9'
+        Module = 'CEngineThemeGroupDef'
+        Source = '00/46/CEngineThemeGroupDef_Copy_004629b9.cpp'
+        TestSource = '00/46/CEngineThemeGroupDef_Copy_004629b9_test.cpp'
+        PassPattern = 'ENGINE_THEME_GROUP_DEF_COPY PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e468b'
+        Module = 'CWaspQueenBattleDef'
+        Source = '00/4e/CWaspQueenBattleDef_Copy_004e468b.cpp'
+        TestSource = '00/4e/CWaspQueenBattleDef_Copy_004e468b_test.cpp'
+        PassPattern = 'WASP_QUEEN_BATTLE_DEF_COPY PASS'
+    }
 )
 
 $requestedAddresses = @(
