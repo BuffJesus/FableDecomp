@@ -2656,6 +2656,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 0048d890	CTCMapwho		rebuild/src/compiled/00/48/CTCMapwho_OnDie_0048d890.cpp	rebuild/tests/00/48/CTCMapwho_OnDie_0048d890_test.cpp		rebuild/build/candidates-Release/00/48/0048d890
 0048da30	CFadeInFadeOutBase		rebuild/src/compiled/00/48/CFadeInFadeOutBase_IsOpen_0048da30.cpp	rebuild/tests/00/48/CFadeInFadeOutBase_IsOpen_0048da30_test.cpp		rebuild/build/candidates-Release/00/48/0048da30
 0048da89	CFontBank		rebuild/src/compiled/00/48/CFontBank_GetStringWidth_0048da89.cpp	rebuild/tests/00/48/CFontBank_GetStringWidth_0048da89_test.cpp		rebuild/build/candidates-Release/00/48/0048da89
+0048dae0	_global		rebuild/src/compiled/00/48/global_GFLimitReturnfloat_0048dae0.cpp	rebuild/tests/00/48/global_GFLimitReturnfloat_0048dae0_test.cpp		rebuild/build/candidates-Release/00/48/0048dae0
 0048db08	_gapscan		rebuild/src/compiled/00/48/gapscan_sub0048db08_0048db08.cpp	rebuild/tests/00/48/gapscan_sub0048db08_0048db08_test.cpp		rebuild/build/candidates-Release/00/48/0048db08
 0048db13	CPersistContext		rebuild/src/compiled/00/48/CPersistContext_IsBinary_0048db13.cpp	rebuild/tests/00/48/CPersistContext_IsBinary_0048db13_test.cpp		rebuild/build/candidates-Release/00/48/0048db13
 0048db35	CUserProfileManager		rebuild/src/compiled/00/48/CUserProfileManager_IsCameraResetting_0048db35.cpp	rebuild/tests/00/48/CUserProfileManager_IsCameraResetting_0048db35_test.cpp		rebuild/build/candidates-Release/00/48/0048db35
