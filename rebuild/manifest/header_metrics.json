@@ -8,7 +8,7 @@
   "genuine": 14431,
   "naked_asm": 383,
   "emit_bake": 217,
-  "includes_engine_header": 633,
+  "includes_engine_header": 635,
   "includes_any_header": 2181,
   "generic_struct_decls": 4423,
   "files_with_generic_struct": 3284,
