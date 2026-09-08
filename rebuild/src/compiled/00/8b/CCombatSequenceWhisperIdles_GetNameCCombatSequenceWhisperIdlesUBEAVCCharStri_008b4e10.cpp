@@ -1,19 +1,5 @@
-// CCombatSequenceWhisperIdles::GetName  @ retail 0x008b4e10
-// Returns a CCharString by value built from a string literal.
+#include "engine/CCombatSequenceWhisperIdles.h"
 
-struct CCharString {
-    char* m_data;
-    CCharString();
-    CCharString(const char* str, int len);
-    CCharString(const CCharString& o);
-    ~CCharString();
-};
-
-struct CCombatSequenceWhisperIdles {
-    virtual CCharString GetName();
-};
-
-CCharString CCombatSequenceWhisperIdles::GetName()
-{
-    return CCharString((const char*)0x1278e38, -1);
-}
+struct CCharString { char* m_data; CCharString(); CCharString(const char*, int); CCharString(const CCharString&); ~CCharString(); };
+struct CCombatSequenceWhisperIdles_Methods : CCombatSequenceWhisperIdles { CCharString GetName(); };
+CCharString CCombatSequenceWhisperIdles_Methods::GetName() { return CCharString((const char*)0x1278e38, -1); }

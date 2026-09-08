@@ -1,21 +1,6 @@
-// CCombatSequence_GenericRangedAttack::GetName  (retail 0x008b34d0)
-// virtual CCharString GetName() const;  -- returns a fixed literal name.
+#include "engine/CCombatSequence_GenericRangedAttack.h"
 
-struct CCharString {
-    char* m_buf;
-    // ctor at retail 0x0099ebf0: CCharString(const char* s, int len)
-    CCharString(const char* s, int len);
-};
-
-// The literal at retail 0x012786ac.
+struct CCharString { char* m_buf; CCharString(const char*, int); };
 static const char kName[] = "GenericRangedAttack";
-
-struct CCombatSequence_GenericRangedAttack {
-    void* vtbl;
-    virtual CCharString GetName() const;
-};
-
-CCharString CCombatSequence_GenericRangedAttack::GetName() const
-{
-    return CCharString(kName, -1);
-}
+struct CCombatSequence_GenericRangedAttack_Methods : CCombatSequence_GenericRangedAttack { CCharString GetName() const; };
+CCharString CCombatSequence_GenericRangedAttack_Methods::GetName() const { return CCharString(kName, -1); }

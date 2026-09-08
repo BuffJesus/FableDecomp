@@ -1,18 +1,5 @@
-// CCombatSequence_BanditAdvanceFar::GetName
-// Retail 0x008b36a0: builds a CCharString from a fixed string literal and returns it.
+#include "engine/CCombatSequence_BanditAdvanceFar.h"
 
-struct CCharString {
-    char* p;
-    CCharString(const char* s, int len);
-};
-
-struct CActionDoCreatureAction;
-
-struct CCombatSequence_BanditAdvanceFar {
-    virtual CCharString GetName() const;
-};
-
-CCharString CCombatSequence_BanditAdvanceFar::GetName() const
-{
-    return CCharString("CombatSequence_BanditAdvanceFar", -1);
-}
+struct CCharString { char* p; CCharString(const char*, int); };
+struct CCombatSequence_BanditAdvanceFar_Methods : CCombatSequence_BanditAdvanceFar { CCharString GetName() const; };
+CCharString CCombatSequence_BanditAdvanceFar_Methods::GetName() const { return CCharString("CombatSequence_BanditAdvanceFar", -1); }

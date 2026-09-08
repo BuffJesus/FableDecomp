@@ -1,21 +1,6 @@
-// CCombatSequence_FodderSecondaryAttack::GetName  (retail 0x008b3d80)
-// virtual CCharString GetName() const;  -- returns a fixed literal name.
+#include "engine/CCombatSequence_FodderSecondaryAttack.h"
 
-struct CCharString {
-    char* m_buf;
-    // ctor at retail 0x0099ebf0: CCharString(const char* s, int len)
-    CCharString(const char* s, int len);
-};
-
-// The literal at retail 0x01278954.
+struct CCharString { char* m_buf; CCharString(const char*, int); };
 static const char kName[] = "FodderSecondaryAttack";
-
-struct CCombatSequence_FodderSecondaryAttack {
-    void* vtbl;
-    virtual CCharString GetName() const;
-};
-
-CCharString CCombatSequence_FodderSecondaryAttack::GetName() const
-{
-    return CCharString(kName, -1);
-}
+struct CCombatSequence_FodderSecondaryAttack_Methods : CCombatSequence_FodderSecondaryAttack { CCharString GetName() const; };
+CCharString CCombatSequence_FodderSecondaryAttack_Methods::GetName() const { return CCharString(kName, -1); }
