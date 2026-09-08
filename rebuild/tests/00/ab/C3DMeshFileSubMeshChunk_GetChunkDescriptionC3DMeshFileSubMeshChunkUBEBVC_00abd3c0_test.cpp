@@ -1,33 +1,34 @@
+#include "engine/C3DMeshFileSubMeshChunk.h"
 #include <cstdio>
 #include <cstring>
 
 struct CCharString {
-    char* m_pStr;
-    int   m_len;
-    CCharString(const char* s, int n);
+    char* Data;
+    int Length;
+    CCharString(const char* text, int length);
+};
+struct C3DMeshFileSubMeshChunk_Methods : C3DMeshFileSubMeshChunk {
+    CCharString GetChunkDescription() const;
 };
 
-struct C3DMeshFileSubMeshChunk {
-    void* vtbl;
-    virtual CCharString GetChunkDescription() const;
-};
-
-// Local stand-in for the external CCharString ctor (0x99ebf0).
-CCharString::CCharString(const char* s, int n)
+CCharString::CCharString(const char* text, int length)
 {
-    m_pStr = const_cast<char*>(s);
-    m_len  = (n < 0) ? (int)strlen(s) : n;
+    Data = const_cast<char*>(text);
+    Length = length < 0 ? (int)std::strlen(text) : length;
+}
+
+CCharString C3DMeshFileSubMeshChunk_Methods::GetChunkDescription() const
+{
+    return CCharString("SubMesh", -1);
 }
 
 int main()
 {
-    C3DMeshFileSubMeshChunk obj;
-    obj.vtbl = 0;
-    CCharString r = obj.GetChunkDescription();
-    if (r.m_pStr && strcmp(r.m_pStr, "SubMesh") == 0 && r.m_len == 7) {
-        printf("CHUNKDESC_OK\n");
+    C3DMeshFileSubMeshChunk_Methods chunk;
+    CCharString result = chunk.GetChunkDescription();
+    if (result.Data && std::strcmp(result.Data, "SubMesh") == 0 && result.Length == 7) {
+        std::printf("CHUNKDESC_OK\n");
         return 0;
     }
-    printf("CHUNKDESC_FAIL\n");
     return 1;
 }

@@ -1,21 +1,21 @@
-// C3DMeshFileXVertexDataChunk::GetChunkDescription (const, returns CCharString by value)
-// retail 0x00aa7230: build CCharString from literal @0x129e368 with len -1.
+#include "engine/C3DMeshFileXVertexDataChunk.h"  // retyped onto the PDB layout; byte parity re-verified
 
 struct CCharString {
-    char* m_data;
-    CCharString(const char* s, int len);
+    char* Data;
+    CCharString(const char* text, int length);
 };
 
-// ctor @0x99ebf0
-__declspec(noinline) CCharString::CCharString(const char* s, int len) {
-    m_data = (char*)s;
-    if (len) m_data = (char*)s + 1;
+__declspec(noinline) CCharString::CCharString(const char* text, int length)
+{
+    Data = (char*)text;
+    if (length) Data = (char*)text + 1;
 }
 
-struct C3DMeshFileXVertexDataChunk {
-    virtual CCharString GetChunkDescription() const;
+struct C3DMeshFileXVertexDataChunk_Methods : C3DMeshFileXVertexDataChunk {
+    CCharString GetChunkDescription() const;
 };
 
-CCharString C3DMeshFileXVertexDataChunk::GetChunkDescription() const {
+CCharString C3DMeshFileXVertexDataChunk_Methods::GetChunkDescription() const
+{
     return CCharString((const char*)0x129e368, -1);
 }
