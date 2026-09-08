@@ -1,0 +1,99 @@
+{
+  "entity": "NOVI_BookTrader",
+  "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader",
+  "functions": {
+    "Init": {"address": "0x00DB3F00", "decompileFile": "tu/0x00DB3F00_NScript_CQ_NewOakValeIntroScript_CNOVI_BookTrader_.c"},
+    "Main": {"address": "0x00DB3FA0", "decompileFile": "tu/0x00DB3FA0_FUN_00db3fa0.c"}
+  },
+  "localFields": [
+    {"name": "DoneIntro", "offset": "0x1c", "initValue": false, "evidence": "PDB-name"}
+  ],
+  "parentFieldsRead": ["GivenSweets"],
+  "parentFieldsWritten": ["GivenSweets", "BadDeedsPerformed/WhichBadDeedsPerformed[2] (via AddBadDeed)"],
+  "masterDataAccess": [],
+  "textKeys": [
+    "TEXT_QST_048_TRADER_ON_HIT", "TEXT_QST_048_TRADER_INTRO", "TEXT_QST_048_TRADER_INTRO_10", "TEXT_QST_048_TRADER_STILL_GOT",
+    "TEXT_QST_048_TRADER_BUY_SWEETS", "TEXT_QST_048_TRADER_NOT_ENOUGH_CASH", "TEXT_QST_048_TRADER_GIVES_SWEETS",
+    "TEXT_QST_048_TRADER_BUY_LATER", "TEXT_QST_048_TRADER_ROLL_UP", "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_04",
+    "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO"
+  ],
+  "objects": ["OBJECT_CHOCOLATE_BOX_UNGIVEABLE"],
+  "markersAndScriptNames": ["NOVI_Theresa", "SCRIPT_NAME_HERO"],
+  "animations": ["ST_OPINION_NEUTRAL_SHOUTING_WITH_HANDS_CUPPED"],
+  "cutscenes": [
+    {"kind": "StartMovieSequence(\"\") + PauseAllNonScriptedEntities(true)", "where": "react_to_hit, sell_sweets", "evidence": "native-decompile"}
+  ],
+  "constants": [
+    {"name": "SWEETS_PRICE", "value": 3, "source": "GetHeroGold() < 3 line 413; GiveHeroGold(0xfffffffd) line 492", "evidence": "native-decompile"},
+    {"name": "HOME_LEAVE_DISTANCE", "value": 0.1, "source": "IsDistanceFromThingToPositionOver(me, GetHomePos(), 0.1) line 63-65", "evidence": "native-decompile"},
+    {"name": "HOME_ARRIVE_DISTANCE", "value": 2.0, "source": "line 71-76", "evidence": "native-decompile"},
+    {"name": "HOME_MOVE_RADIUS", "value": 0.0, "source": "MoveToPosition args line 88-91", "evidence": "native-decompile"},
+    {"name": "HOME_MOVE_TYPE", "value": 0, "source": "MoveToPosition args line 88-91", "evidence": "native-decompile"},
+    {"name": "SHOUT_HERO_DISTANCE", "value": 20.0, "source": "IsDistanceBetweenThingsUnder(me, hero, 20.0) line 566-568", "evidence": "native-decompile"},
+    {"name": "SHOUT_CHANCE_MODULO", "value": 200, "source": "rand() % 200 == 0 line 565", "evidence": "native-decompile"},
+    {"name": "SPEAK_MIN_HEALTH", "value": 0.0, "source": "_DAT_0122dedc retail .rdata", "evidence": "native-decompile"},
+    {"name": "IDLE_PRIORITY", "value": 3, "source": "piVar25 = 3 before StartScriptingEntity line 42-44", "evidence": "native-decompile"},
+    {"name": "ACTION_PRIORITY", "value": 4, "source": "StartScriptingEntity(me,res,4) lines 176, 581", "evidence": "native-decompile"},
+    {"name": "BAD_DEED_HIT_ME", "value": 2, "source": "AddBadDeed(PARENT,2) line 170", "evidence": "native-decompile"},
+    {"name": "GiveHeroObject amount", "value": -1, "source": "GiveHeroObject(name, 0xffffffff, 0) line 491", "evidence": "native-decompile"}
+  ],
+  "phases": [
+    {"id": "home", "entry": "every loop iteration", "exit": "within 2.0 of home, facing Theresa", "luaFunction": "return_home"},
+    {"id": "hit", "entry": "hero hit me", "exit": "bad deed 2, ON_HIT spoken", "luaFunction": "react_to_hit"},
+    {"id": "sell", "entry": "IsTalkedToByHero (and not hit this frame)", "exit": "sweets given / declined / no cash", "luaFunction": "sell_sweets"},
+    {"id": "shout", "entry": "timer==0 && rand%200==0 && hero within 20", "exit": "ROLL_UP line queued", "luaFunction": "maybe_shout"}
+  ],
+  "operations": [
+    {"seq": 1, "function": "Init", "kind": "state-write", "native": "this[0x1c]=0", "argsKnown": true, "lua": "DoneIntro=false", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 2, "function": "Init", "kind": "call", "native": "EntitySetAsDamageable(me,0); EntitySetAsKillable(me,0,0); EntitySetAsToAddToComboMultiplierWhenHit(me,0); SetThingHasInformation(me,0,1,0)", "argsKnown": true, "lua": "quest:... x4", "forgeBinding": "EntitySetAsDamageable|EntitySetAsKillable|EntitySetAsToAddToComboMultiplierWhenHit|SetThingHasInformation", "evidence": "native-decompile", "note": ""},
+    {"seq": 3, "function": "Init", "kind": "call", "native": "SetIsPushableByHero(me,0); EntitySetAsUseMovementInActions(me,0); EntitySetDeedReactionsEnabled(me,0)", "argsKnown": true, "lua": "quest:SetIsPushableByHero(me,false); quest:EntitySetAsUseMovementInActions(me,false); quest:EntitySetDeedReactionsEnabled(me,false)", "forgeBinding": "SetIsPushableByHero|EntitySetAsUseMovementInActions|EntitySetDeedReactionsEnabled", "evidence": "native-decompile", "note": ""},
+    {"seq": 4, "function": "Main", "kind": "wait", "native": "NewScriptFrame + IsTerminating", "argsKnown": true, "lua": "NOVI.frame", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 5, "function": "Main", "kind": "wait", "native": "StartScriptingEntity(me,res,3) loop (top of every iteration)", "argsKnown": true, "lua": "NOVI.acquire(quest, me, 3)", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 6, "function": "Main", "kind": "branch", "native": "IsDistanceFromThingToPositionOver(me, me->GetHomePos(), 0.1)", "argsKnown": true, "lua": "NOVI.unsupported IsDistanceFromThingToPositionOver", "forgeBinding": "missing", "evidence": "native-decompile", "note": "slot 0x1c = GetHomePos"},
+    {"seq": 7, "function": "Main", "kind": "wait", "native": "while IsDistanceFromThingToPositionOver(me, home, 2.0): NewScriptFrame; MoveToPosition(home,0,0,0,1,...); wait IsPerformingScriptTask", "argsKnown": true, "lua": "return_home loop", "forgeBinding": "missing|MoveToPosition|IsPerformingScriptTask", "evidence": "native-decompile", "note": "terminate -> return"},
+    {"seq": 8, "function": "Main", "kind": "call", "native": "EntitySetFacingAngleTowardsThing(me, GetThingWithScriptName(\"NOVI_Theresa\"))", "argsKnown": true, "lua": "face_theresa", "forgeBinding": "EntitySetFacingAngleTowardsThing|GetThingWithScriptName", "evidence": "native-decompile", "note": ""},
+    {"seq": 9, "function": "Main", "kind": "branch", "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(?,HERO))", "argsKnown": false, "lua": "hero_hit_me()", "forgeBinding": "MsgIsHitByHero|missing|missing", "evidence": "native-decompile", "note": ""},
+    {"seq": 10, "function": "Main", "kind": "call", "native": "EntitySetThingAsAllyOfThing x2 (GetHero); AddBadDeed(PARENT,2)", "argsKnown": false, "lua": "react_to_hit", "forgeBinding": "EntitySetThingAsAllyOfThing", "evidence": "native-decompile", "note": "ally args dropped"},
+    {"seq": 11, "function": "Main", "kind": "call", "native": "StartScriptingEntity(me,res,4); StartMovieSequence; PauseAll(1); if GetHealth>0 Speak(TEXT_QST_048_TRADER_ON_HIT)+wait; face Theresa; PauseAll(0); ~movie; goto loop tail", "argsKnown": true, "lua": "react_to_hit", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": "hit branch skips the talk branch"},
+    {"seq": 12, "function": "Main", "kind": "branch", "native": "me->MsgIsTalkedToBy(HERO)", "argsKnown": true, "lua": "elseif me:IsTalkedToByHero()", "forgeBinding": "IsTalkedToByHero", "evidence": "native-decompile", "note": ""},
+    {"seq": 13, "function": "Main", "kind": "call", "native": "acquire(?); StartMovieSequence; (GSI vtable+0x5ec)(1)", "argsKnown": false, "lua": "NOVI.acquire; begin_cutscene", "forgeBinding": "StartMovieSequence|PauseAllNonScriptedEntities", "evidence": "inference", "note": "slot 0x5ec unresolved in vtable_slots.tsv; adjacent 0x5f0 = PauseAllEntities and the (1)/(0) pattern matches PauseAllNonScriptedEntities elsewhere"},
+    {"seq": 14, "function": "Main", "kind": "branch", "native": "PARENT+0x94 GivenSweets", "argsKnown": true, "lua": "F.get(quest, F.GivenSweets)", "forgeBinding": "n/a", "evidence": "native-decompile", "note": "-> INTRO_10 then face Theresa, PauseAll(0)"},
+    {"seq": 15, "function": "Main", "kind": "call", "native": "Speak(TEXT_QST_048_TRADER_INTRO_10)+wait", "argsKnown": true, "lua": "speak_if_alive(TEXT_INTRO_10)", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": ""},
+    {"seq": 16, "function": "Main", "kind": "branch", "native": "!DoneIntro -> Speak(TRADER_INTRO), DoneIntro=1; else Speak(TRADER_STILL_GOT)", "argsKnown": true, "lua": "if not DoneIntro", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": ""},
+    {"seq": 17, "function": "Main", "kind": "call", "native": "GiveHeroYesNoQuestion(TEXT_QST_048_TRADER_BUY_SWEETS, YES, NO, \"\", 1)", "argsKnown": true, "lua": "quest:GiveHeroYesNoQuestion(...)", "forgeBinding": "GiveHeroYesNoQuestion", "evidence": "native-decompile", "note": "fifth retail arg (1) unbound"},
+    {"seq": 18, "function": "Main", "kind": "wait", "native": "while MsgIsQuestionAnsweredYesOrNo() < 0: NewScriptFrame", "argsKnown": true, "lua": "while answer < 0", "forgeBinding": "MsgIsQuestionAnsweredYesOrNo", "evidence": "native-decompile", "note": "terminate -> 0x5ec(0), ~movie, return"},
+    {"seq": 19, "function": "Main", "kind": "branch", "native": "answer == 1 && GetHeroGold() < 3", "argsKnown": true, "lua": "quest:GetHeroGold() < SWEETS_PRICE", "forgeBinding": "GetHeroGold", "evidence": "native-decompile", "note": "-> NOT_ENOUGH_CASH"},
+    {"seq": 20, "function": "Main", "kind": "call", "native": "Speak(TEXT_QST_048_TRADER_GIVES_SWEETS)+wait; GiveHeroObject(\"OBJECT_CHOCOLATE_BOX_UNGIVEABLE\", -1, 0); GiveHeroGold(-3)", "argsKnown": true, "lua": "speak_if_alive; quest:GiveHeroObject(SWEETS_OBJECT, -1); quest:GiveHeroGold(-3)", "forgeBinding": "SpeakAndWait|GiveHeroObject|GiveHeroGold", "evidence": "native-decompile", "note": ""},
+    {"seq": 21, "function": "Main", "kind": "call", "native": "SetQuestCardObjective(GetActiveQuestName(), TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_04, \"\", \"\")", "argsKnown": true, "lua": "quest:SetQuestCardObjective(...)", "forgeBinding": "SetQuestCardObjective|GetActiveQuestName", "evidence": "native-decompile", "note": ""},
+    {"seq": 22, "function": "Main", "kind": "state-write", "native": "PARENT+0x94 = 1; ClearThingHasInformation(me)", "argsKnown": true, "lua": "F.set(quest, F.GivenSweets, true); quest:ClearThingHasInformation(me)", "forgeBinding": "ClearThingHasInformation", "evidence": "native-decompile", "note": ""},
+    {"seq": 23, "function": "Main", "kind": "call", "native": "answer != 1: Speak(TEXT_QST_048_TRADER_BUY_LATER)+wait", "argsKnown": true, "lua": "speak_if_alive(TEXT_BUY_LATER)", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": ""},
+    {"seq": 24, "function": "Main", "kind": "cleanup", "native": "EntitySetFacingAngleTowardsThing(me, Theresa); PauseAll(0); ~movie", "argsKnown": true, "lua": "face_theresa; end_cutscene", "forgeBinding": "EntitySetFacingAngleTowardsThing|PauseAllNonScriptedEntities", "evidence": "native-decompile", "note": ""},
+    {"seq": 25, "function": "Main", "kind": "branch", "native": "GetTimer(?) == 0 && rand() % 200 == 0 && IsDistanceBetweenThingsUnder(me, GetHero(), 20.0)", "argsKnown": false, "lua": "maybe_shout", "forgeBinding": "GetTimer|IsDistanceBetweenThingsUnder", "evidence": "native-decompile", "note": "timer id dropped; lua uses F.TalkIntermittentTimer (inference)"},
+    {"seq": 26, "function": "Main", "kind": "call", "native": "SetTimer(?, ?)", "argsKnown": false, "lua": "NOVI.unsupported(\"SetTimer\")", "forgeBinding": "SetTimer (args unknown)", "evidence": "native-decompile", "note": ""},
+    {"seq": 27, "function": "Main", "kind": "call", "native": "conv = AddNewConversation(me,0,0); AddPersonToConversation(conv, GetHero())", "argsKnown": true, "lua": "quest:AddNewConversation(me); quest:AddPersonToConversation(conv, hero)", "forgeBinding": "AddNewConversation|AddPersonToConversation", "evidence": "native-decompile", "note": ""},
+    {"seq": 28, "function": "Main", "kind": "wait", "native": "StartScriptingEntity(me,res,4) loop", "argsKnown": true, "lua": "NOVI.acquire(quest, me, 4)", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 29, "function": "Main", "kind": "call", "native": "PlayAnimation(\"ST_OPINION_NEUTRAL_SHOUTING_WITH_HANDS_CUPPED\", 0,0,0,1,DAT_01375748,false)", "argsKnown": false, "lua": "me:PlayAnimation(SHOUT_ANIM)", "forgeBinding": "PlayAnimation", "evidence": "native-decompile", "note": "bool flags unbound"},
+    {"seq": 30, "function": "Main", "kind": "call", "native": "AddLineToConversation(conv, TEXT_QST_048_TRADER_ROLL_UP, 0, ..., GetHero())", "argsKnown": false, "lua": "quest:AddLineToConversation(conv, TEXT_ROLL_UP, me, hero)", "forgeBinding": "AddLineToConversation", "evidence": "native-decompile", "note": "speaker arg partially dropped"},
+    {"seq": 31, "function": "Main", "kind": "wait", "native": "NewScriptFrame + IsTerminating (loop tail)", "argsKnown": true, "lua": "NOVI.frame", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""}
+  ],
+  "apiGaps": [
+    {"retail": "IsDistanceFromThingToPositionOver(thing, pos, f)", "reason": "helper not registered in ForgeFSE", "luaLocation": "return_home"},
+    {"retail": "SetTimer(id, value) in the shout branch", "reason": "both args dropped by the decompiler", "luaLocation": "maybe_shout"},
+    {"retail": "CScriptThing::MsgIsHitByAnySpecialAbilityFrom / MsgIsHitBySpecialAbilityFrom", "reason": "not registered / enum dropped", "luaLocation": "hero_hit_me"},
+    {"retail": "GSI vtable slot 0x5ec(bool)", "reason": "slot not in vtable_slots.tsv; treated as PauseAllNonScriptedEntities (inference)", "luaLocation": "sell_sweets begin/end_cutscene"},
+    {"retail": "~CScriptGameResourceObjectMovieBase", "reason": "modelled as EndMovieSequence (inference)", "luaLocation": "end_cutscene"}
+  ],
+  "uncertainties": [
+    "GetTimer id dropped; F.TalkIntermittentTimer chosen because this is an intermittent ambient line (inference).",
+    "rand() % 200 reproduced with math.random; retail uses CRT rand().",
+    "Slot 0x5ec on the GSI is assumed to be PauseAllNonScriptedEntities.",
+    "AddLineToConversation speaker argument partially dropped; me assumed.",
+    "PlayAnimation flag arguments (incl. DAT_01375748) are not bound in ForgeFSE.",
+    "SpeakAndWait is host-blocking; retail's mid-speech terminate cleanup (0x5ec(0)/PauseAll(0)) cannot fire."
+  ],
+  "cleanupPaths": [
+    {"resource": "control", "acquired": "seq 5 (each iteration), seq 11/13/28", "releasedOn": ["terminate (destructors at return)"], "missingOn": ["normal iteration (retail re-acquires each loop)"]},
+    {"resource": "cutscene(movie+pause)", "acquired": "seq 11, seq 13", "releasedOn": ["normal", "terminate inside yes/no wait", "terminate inside speech wait"], "missingOn": []},
+    {"resource": "conversation", "acquired": "seq 27", "releasedOn": [], "missingOn": ["normal", "terminate"], "note": "retail never removes the ROLL_UP conversation"}
+  ]
+}

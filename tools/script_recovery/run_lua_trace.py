@@ -54,7 +54,18 @@ make_proxy = function(scope, handle)
                     event = "api-call", scope = scope, receiver = handle,
                     name = name, arguments = normalize({...})
                 })
-                local sequence = FIXTURES[key]
+                -- argument-keyed fixtures ("Quest.GetStateBool(AttackOver)") take precedence over the
+                -- plain name so state reads can be scripted per field
+                local first = select(1, ...)
+                local sequence = nil
+                if type(first) == "string" or type(first) == "number" then
+                    local keyed = key .. "(" .. tostring(first) .. ")"
+                    if FIXTURES[keyed] ~= nil then
+                        key = keyed
+                        sequence = FIXTURES[keyed]
+                    end
+                end
+                if sequence == nil then sequence = FIXTURES[key] end
                 if sequence == nil or #sequence == 0 then return nil end
                 local position = (FIXTURE_POS[key] or 0) + 1
                 FIXTURE_POS[key] = position
@@ -121,11 +132,15 @@ def _python_value(value: Any) -> Any:
 
 
 def run_trace(source: Path, function: str, kind: str, fixtures: dict[str, list[Any]],
-              instruction_budget: int = 100_000) -> dict[str, Any]:
+              instruction_budget: int = 100_000, package_path: Path | None = None) -> dict[str, Any]:
     if LuaRuntime is None:
         raise RuntimeError("run_lua_trace requires the Python package 'lupa'")
     runtime = LuaRuntime(unpack_returned_tuples=True)
     runtime.execute(HARNESS)
+    if package_path is not None:
+        # Mirror ForgeFSE's loader (`<FSE>/?.lua`) so multi-module packages can `require` their siblings.
+        root = package_path.resolve().as_posix()
+        runtime.execute(f'package.path = "{root}/?.lua;" .. package.path')
     runtime.globals().ConfigureFixtures(_lua_table(runtime, fixtures))
     source_bytes = source.read_bytes()
     runtime.execute(source_bytes.decode("utf-8-sig"))
@@ -156,9 +171,12 @@ def main() -> int:
     parser.add_argument("--fixtures", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--instruction-budget", type=int, default=100_000)
+    parser.add_argument("--package-path", type=Path,
+                        help="FSE root added to package.path as '<root>/?.lua' (ForgeFSE loader semantics)")
     args = parser.parse_args()
     fixtures = json.loads(args.fixtures.read_text(encoding="utf-8-sig")) if args.fixtures else {}
-    payload = run_trace(args.source, args.function, args.kind, fixtures, args.instruction_budget)
+    payload = run_trace(args.source, args.function, args.kind, fixtures, args.instruction_budget,
+                        args.package_path)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({"events": len(payload["events"]), "output": str(args.output.resolve())}))

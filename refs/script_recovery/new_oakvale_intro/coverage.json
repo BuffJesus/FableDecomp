@@ -1,0 +1,535 @@
+{
+  "schema": "fable-script-coverage/0.1",
+  "script": "Q_NewOakValeIntro",
+  "rows": [
+    {
+      "script": "NOVI_AffairMan",
+      "nativeFunction": "Init",
+      "address": "0x00DB0950",
+      "operations": 7,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_AffairMan",
+      "nativeFunction": "Main",
+      "address": "0x00DB09E0",
+      "operations": 60,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "partially API-blocked"
+    },
+    {
+      "script": "NOVI_AffairWife",
+      "nativeFunction": "Init",
+      "address": "0x00DB2A70",
+      "operations": 9,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_AffairWife",
+      "nativeFunction": "Main",
+      "address": "0x00DB2B10",
+      "operations": 53,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "partially API-blocked"
+    },
+    {
+      "script": "NOVI_AffairWoman",
+      "nativeFunction": "Init",
+      "address": "0x00DB1E80",
+      "operations": 5,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_AffairWoman",
+      "nativeFunction": "Main",
+      "address": "0x00DB1F00",
+      "operations": 37,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "partially API-blocked"
+    },
+    {
+      "script": "NOVI_Barrel",
+      "nativeFunction": "Init",
+      "address": "0x00CDEBB0",
+      "operations": 0,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Barrel.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "not-implemented"
+    },
+    {
+      "script": "NOVI_Barrel",
+      "nativeFunction": "Main",
+      "address": "0x00DB7E10",
+      "operations": 8,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Barrel.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "partially API-blocked"
+    },
+    {
+      "script": "NOVI_Barrel",
+      "nativeFunction": "OnPredicateFail",
+      "address": "0x00DB7DB0",
+      "operations": 2,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Barrel.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_BarrelMan",
+      "nativeFunction": "Init",
+      "address": "0x00DB5260",
+      "operations": 9,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_BarrelMan",
+      "nativeFunction": "Main",
+      "address": "0x00DB5330",
+      "operations": 11,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_BarrelThug",
+      "nativeFunction": "Init",
+      "address": "0x00DB6BF0",
+      "operations": 2,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_BarrelThug",
+      "nativeFunction": "Main",
+      "address": "0x00DB6C60",
+      "operations": 25,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "partially API-blocked"
+    },
+    {
+      "script": "NOVI_BookTrader",
+      "nativeFunction": "Init",
+      "address": "0x00DB3F00",
+      "operations": 3,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_BookTrader",
+      "nativeFunction": "Main",
+      "address": "0x00DB3FA0",
+      "operations": 28,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "partially API-blocked"
+    },
+    {
+      "script": "NOVI_Bully",
+      "nativeFunction": "Init",
+      "address": "0x00DAED30",
+      "operations": 7,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_Bully",
+      "nativeFunction": "Main",
+      "address": "0x00DBB310",
+      "operations": 61,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "partially API-blocked"
+    },
+    {
+      "script": "NOVI_Bully",
+      "nativeFunction": "GivenTeddy",
+      "address": "0x00DBCD00",
+      "operations": 4,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_CreatedBeetle",
+      "nativeFunction": "Init",
+      "address": "0x00CDEBB0",
+      "operations": 0,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "not-implemented"
+    },
+    {
+      "script": "NOVI_CreatedBeetle",
+      "nativeFunction": "Main",
+      "address": "0x00DB80C0",
+      "operations": 5,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_Guard",
+      "nativeFunction": "Init",
+      "address": "0x00DAC650",
+      "operations": 9,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented (uncertain args)"
+    },
+    {
+      "script": "NOVI_Guard",
+      "nativeFunction": "Main",
+      "address": "0x00DAC760",
+      "operations": 45,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented (uncertain args)"
+    },
+    {
+      "script": "NOVI_LiveFather",
+      "nativeFunction": "Init",
+      "address": "0x00DAC390",
+      "operations": 7,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_LiveFather",
+      "nativeFunction": "Main",
+      "address": "0x00DB86B0",
+      "operations": 49,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "partially API-blocked"
+    },
+    {
+      "script": "NOVI_TeddyGirl",
+      "nativeFunction": "Init",
+      "address": "0x00DAF000",
+      "operations": 5,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_TeddyGirl",
+      "nativeFunction": "Main",
+      "address": "0x00DAF080",
+      "operations": 41,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "partially API-blocked"
+    },
+    {
+      "script": "NOVI_TeddyGirl",
+      "nativeFunction": "GivenTeddy",
+      "address": "0x00DB0600",
+      "operations": 5,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_Victim",
+      "nativeFunction": "Init",
+      "address": "0x00DAEEB0",
+      "operations": 8,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_Victim",
+      "nativeFunction": "Main",
+      "address": "0x00DBCD60",
+      "operations": 27,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "partially API-blocked"
+    },
+    {
+      "script": "NOVI_Villager",
+      "nativeFunction": "Init",
+      "address": "0x00DADF00",
+      "operations": 5,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_Villager",
+      "nativeFunction": "Main",
+      "address": "0x00DADF80",
+      "operations": 27,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented (uncertain args)"
+    },
+    {
+      "script": "NOVI_Villager",
+      "nativeFunction": "GetVillagerSpeechIndex",
+      "address": "0x00DAEBF0",
+      "operations": 1,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "NOVI_Villager",
+      "nativeFunction": "QuestInit(vectors)",
+      "address": "0x00DAADD0",
+      "operations": 0,
+      "luaLocation": "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "not-implemented"
+    },
+    {
+      "script": "OVI_DeadFather",
+      "nativeFunction": "Init",
+      "address": "0x00DB8290",
+      "operations": 2,
+      "luaLocation": "NewOakValeIntro/Entities/OVI_DeadFather.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "OVI_DeadFather",
+      "nativeFunction": "Main",
+      "address": "0x00DB8300",
+      "operations": 9,
+      "luaLocation": "NewOakValeIntro/Entities/OVI_DeadFather.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "implemented (uncertain args)"
+    },
+    {
+      "script": "OVI_DeadFather",
+      "nativeFunction": "OnPredicateFail",
+      "address": "0x00DB8260",
+      "operations": 0,
+      "luaLocation": "NewOakValeIntro/Entities/OVI_DeadFather.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "not-implemented"
+    },
+    {
+      "script": "Q_NewOakValeIntro",
+      "nativeFunction": "RegisterMain",
+      "address": "0x00DAACE0",
+      "operations": 0,
+      "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "not-applicable (host lifecycle)"
+    },
+    {
+      "script": "Q_NewOakValeIntro",
+      "nativeFunction": "Main",
+      "address": "0x00DABAC0",
+      "operations": 7,
+      "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
+      "fixtures": [
+        "quest_main_fresh_start",
+        "quest_main_reload_after_attack"
+      ],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "Q_NewOakValeIntro",
+      "nativeFunction": "Init",
+      "address": "0x00DAADD0",
+      "operations": 4,
+      "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
+      "fixtures": [
+        "quest_init_resets"
+      ],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "Q_NewOakValeIntro",
+      "nativeFunction": "OnPersist",
+      "address": "0x00DAADA0",
+      "operations": 1,
+      "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
+      "fixtures": [
+        "quest_onpersist_roundtrip"
+      ],
+      "evidence": "native-decompile",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "Q_NewOakValeIntro",
+      "nativeFunction": "DoMission",
+      "address": "0x00DBDE40",
+      "operations": 20,
+      "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
+      "fixtures": [
+        "quest_domission_attack_transition",
+        "quest_domission_terminated_during_childhood"
+      ],
+      "evidence": "native-decompile + PDB-name",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "Q_NewOakValeIntro",
+      "nativeFunction": "AttackStuff",
+      "address": "0x00DBE3C0",
+      "operations": 3,
+      "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
+      "fixtures": [],
+      "evidence": "native-decompile + PDB-name",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "Q_NewOakValeIntro",
+      "nativeFunction": "PostAttackStuff",
+      "address": "0x00DBEB20",
+      "operations": 8,
+      "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
+      "fixtures": [],
+      "evidence": "native-decompile + PDB-name",
+      "status": "implemented (uncertain args)"
+    },
+    {
+      "script": "Q_NewOakValeIntro",
+      "nativeFunction": "ManageQuestCoreMarkers",
+      "address": "0x00DBE4E0",
+      "operations": 4,
+      "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
+      "fixtures": [
+        "quest_thread_manage_core_markers",
+        "quest_thread_manage_core_markers_terminated_early"
+      ],
+      "evidence": "native-decompile + PDB-name",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "Q_NewOakValeIntro",
+      "nativeFunction": "StartBarrelTimer",
+      "address": "0x00DB4F70",
+      "operations": 4,
+      "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
+      "fixtures": [
+        "quest_thread_start_barrel_timer",
+        "quest_thread_start_barrel_timer_terminated"
+      ],
+      "evidence": "native-decompile (donor label Script_Guard_Duty; pointer stored by Main next to the \"StartBarrelTimer\" name)",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "Q_NewOakValeIntro",
+      "nativeFunction": "WatchBarrels",
+      "address": "0x00DBE890",
+      "operations": 3,
+      "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
+      "fixtures": [
+        "quest_thread_watch_barrels"
+      ],
+      "evidence": "native-decompile (LAB_00dbe890 stored next to the \"WatchBarrels\" name)",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "Q_NewOakValeIntro",
+      "nativeFunction": "WatchForGotGold",
+      "address": "0x00DBE2E0",
+      "operations": 1,
+      "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
+      "fixtures": [
+        "quest_thread_watch_for_got_gold"
+      ],
+      "evidence": "native-decompile (donor label CQ_FireHeartScript::CheckGameEnding; pointer stored next to the \"WatchForGotGold\" name)",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "Q_NewOakValeIntro",
+      "nativeFunction": "AddGoodDeed",
+      "address": "0x00DB0660",
+      "operations": 3,
+      "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
+      "fixtures": [],
+      "evidence": "native-decompile + PDB-name",
+      "status": "implemented (uncertain args)"
+    },
+    {
+      "script": "Q_NewOakValeIntro",
+      "nativeFunction": "AddBadDeed",
+      "address": "0x00DAEA70",
+      "operations": 1,
+      "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
+      "fixtures": [],
+      "evidence": "native-decompile + PDB-name",
+      "status": "implemented-and-traced"
+    },
+    {
+      "script": "Q_NewOakValeIntro",
+      "nativeFunction": "destructor",
+      "address": "0x00DBEFA0",
+      "operations": 0,
+      "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
+      "fixtures": [],
+      "evidence": "native-decompile",
+      "status": "not-applicable (host lifecycle)"
+    }
+  ],
+  "summary": {
+    "functions": 50,
+    "implementedAndTraced": 28,
+    "implementedUntraced": 0,
+    "uncertain": 6,
+    "apiBlocked": 10,
+    "notImplemented": 4,
+    "notApplicable": 2
+  }
+}

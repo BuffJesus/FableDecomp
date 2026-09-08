@@ -1,0 +1,1027 @@
+{
+  "schema": "fable-script-state-manifest/0.1",
+  "script": "Q_NewOakValeIntro",
+  "evidenceLevel": "reconstructed-source",
+  "questPhases": [
+    {
+      "id": "registered-inactive",
+      "entry": "Q_NewOakValeIntro allocated by the quest manager (AddQuest in FinalAlbion.qst)",
+      "exit": "RegisterMain spawns Main",
+      "nativeFunctions": [
+        "RegisterMain@0x00DAACE0"
+      ],
+      "persistentFields": [],
+      "requiredEntities": [],
+      "emittedEvents": [],
+      "interruption": "n/a",
+      "evidence": [
+        "registry-fact",
+        "native-decompile"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "init",
+      "entry": "engine calls Init (fresh activation and every load)",
+      "exit": "fields reset, timers registered, speech lists filled",
+      "nativeFunctions": [
+        "Init@0x00DAADD0",
+        "constructor@0x00DAAC00"
+      ],
+      "persistentFields": [
+        "AttackOver (only survives via OnPersist)"
+      ],
+      "requiredEntities": [],
+      "emittedEvents": [
+        "SetTimer(TalkIntermittentTimer,0)"
+      ],
+      "interruption": "none (straight-line)",
+      "evidence": [
+        "native-decompile"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "main-bind",
+      "entry": "Main thread starts",
+      "exit": "16 entity bindings registered, PostAddScriptedEntities",
+      "nativeFunctions": [
+        "Main@0x00DABAC0"
+      ],
+      "persistentFields": [],
+      "requiredEntities": [
+        "NOVI_LiveFather",
+        "NOVI_Theresa",
+        "NOVI_Guard",
+        "NOVI_Villager",
+        "NOVI_Bully",
+        "NOVI_Victim",
+        "NOVI_TeddyGirl",
+        "NOVI_AffairMan",
+        "NOVI_AffairWoman",
+        "NOVI_AffairWife",
+        "NOVI_BookTrader",
+        "NOVI_BarrelMan",
+        "NOVI_BarrelThug",
+        "NOVI_Barrel",
+        "NOVI_CreatedBeetle",
+        "OVI_DeadFather"
+      ],
+      "emittedEvents": [
+        "AddEntityBinding x16",
+        "FinalizeEntityBindings"
+      ],
+      "interruption": "none",
+      "evidence": [
+        "native-decompile"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "main-reload-after-raid",
+      "entry": "AttackOver == true when Main runs (save made after the raid)",
+      "exit": "post-attack section deactivated; falls through to objective 1 and DoMission",
+      "nativeFunctions": [
+        "Main@0x00DABAC0"
+      ],
+      "persistentFields": [
+        "AttackOver"
+      ],
+      "requiredEntities": [],
+      "emittedEvents": [
+        "DeactivateQuest(Q__OakValeIntro_PostAttack)"
+      ],
+      "interruption": "IsActiveThreadTerminating check before the deactivate",
+      "evidence": [
+        "native-decompile"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "objective-1-and-barrel-watch",
+      "entry": "after bindings",
+      "exit": "objective 1 shown, StartBarrelTimer thread spawned, DoMission entered",
+      "nativeFunctions": [
+        "Main@0x00DABAC0",
+        "StartBarrelTimer@0x00DB4F70"
+      ],
+      "persistentFields": [],
+      "requiredEntities": [],
+      "emittedEvents": [
+        "SetQuestCardObjective(OBJECTIVE_01)",
+        "CreateThread(StartBarrelTimer)"
+      ],
+      "interruption": "none",
+      "evidence": [
+        "native-decompile"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "wait-start-region",
+      "entry": "DoMission start",
+      "exit": "IsRegionLoaded(StartOakVale)",
+      "nativeFunctions": [
+        "DoMission@0x00DBDE40"
+      ],
+      "persistentFields": [],
+      "requiredEntities": [],
+      "emittedEvents": [
+        "IsRegionLoaded polls"
+      ],
+      "interruption": "returns on terminate",
+      "evidence": [
+        "native-decompile"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "childhood-setup",
+      "entry": "AttackOver == false after region load",
+      "exit": "hero is CREATURE_HERO_CHILD, pre-attack section active, clock stopped at 12:00, house open, quest-start screen kicked off, music overridden",
+      "nativeFunctions": [
+        "DoMission@0x00DBDE40"
+      ],
+      "persistentFields": [],
+      "requiredEntities": [
+        "HerosOldHouse"
+      ],
+      "emittedEvents": [
+        "FadeScreenOut(2.0)",
+        "TurnCreatureInto(hero, CREATURE_HERO_CHILD)",
+        "CreateThread x3",
+        "CacheMusicSet(46)",
+        "ActivateQuest(Q_NewOakValeIntro_PreAttack)",
+        "EntitySetAsKillable(hero,false)",
+        "SetTimeAsStopped(true)",
+        "SetTimeOfDay(12)",
+        "SetHeroSleepingAsEnabled(false)",
+        "DisplayMoneyBag(true)",
+        "OverrideAutomaticHouseLocking",
+        "OpenHouseDoors",
+        "KickOffQuestStartScreen",
+        "OverrideMusic(19)"
+      ],
+      "interruption": "one frame after ActivateQuest may terminate; no cleanup of the fade",
+      "evidence": [
+        "native-decompile"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "childhood-free-roam",
+      "entry": "childhood setup done",
+      "exit": "AttackOver set by an entity script (father) -> DoMission wakes",
+      "nativeFunctions": [
+        "DoMission@0x00DBDE40 (wait loop)",
+        "WatchBarrels@0x00DBE890",
+        "WatchForGotGold@0x00DBE2E0",
+        "ManageQuestCoreMarkers@0x00DBE4E0",
+        "StartBarrelTimer@0x00DB4F70",
+        "AddGoodDeed@0x00DB0660",
+        "AddBadDeed@0x00DAEA70"
+      ],
+      "persistentFields": [
+        "AttackOver (set at the end of this phase)"
+      ],
+      "requiredEntities": [
+        "NOVI_LiveFather",
+        "NOVI_BookTrader",
+        "NOVI_Theresa",
+        "NOVI_Barrel",
+        "NOVI_BarrelMan",
+        "NOVI_Bully",
+        "NOVI_Victim",
+        "NOVI_TeddyGirl",
+        "NOVI_AffairMan",
+        "NOVI_AffairWoman",
+        "NOVI_AffairWife",
+        "NOVI_BarrelThug",
+        "NOVI_Guard",
+        "NOVI_Villager"
+      ],
+      "emittedEvents": [
+        "objective 2/3 updates",
+        "deed info boxes",
+        "minimap orb hand-overs",
+        "barrel clock bar"
+      ],
+      "interruption": "every watcher returns on terminate; markers/info bar left as retail leaves them",
+      "evidence": [
+        "native-decompile"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "attack-transition",
+      "entry": "AttackOver == true",
+      "exit": "post-attack section active, pre-attack section deactivated, 23:00, raided theme, objective 6",
+      "nativeFunctions": [
+        "AttackStuff@0x00DBE3C0"
+      ],
+      "persistentFields": [
+        "AttackOver"
+      ],
+      "requiredEntities": [],
+      "emittedEvents": [
+        "ActivateQuest(Q__OakValeIntro_PostAttack)",
+        "DeactivateQuest(Q_NewOakValeIntro_PreAttack)",
+        "SetTimeOfDay(23)",
+        "TransitionToTheme(ENVIRONMENT_OV_POSTATTACK)",
+        "SetQuestCardObjective(OBJECTIVE_06)"
+      ],
+      "interruption": "straight-line, no waits",
+      "evidence": [
+        "native-decompile"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "post-attack-arrival",
+      "entry": "AttackStuff done (or reload with AttackOver)",
+      "exit": "M_PostAttackStart exists, hero teleported, village in limbo, teddy taken, logbook 20, camera reset, fade in",
+      "nativeFunctions": [
+        "PostAttackStuff@0x00DBEB20"
+      ],
+      "persistentFields": [
+        "AttackOver"
+      ],
+      "requiredEntities": [
+        "M_PostAttackStart",
+        "V_OakVale"
+      ],
+      "emittedEvents": [
+        "CacheMusicSet(45)",
+        "EntityTeleportToThing",
+        "SetVillageLimbo(true)",
+        "DisplayMoneyBag(false)",
+        "TakeObjectFromHero(teddy)",
+        "AddLogbookStoryEntry(20)",
+        "CameraResetToViewBehindHero",
+        "CameraDefault",
+        "CacheMusicSet(57)",
+        "FadeScreenIn"
+      ],
+      "interruption": "terminate leaves the village in limbo",
+      "evidence": [
+        "native-decompile",
+        "cross-script-evidence (logbook 10/20/30)"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "find-dead-father",
+      "entry": "fade in done",
+      "exit": "hero within 5.0 of MK_OVI_DADTRIGGER -> DadFound",
+      "nativeFunctions": [
+        "PostAttackStuff@0x00DBEB20",
+        "OVI_DeadFather::Main@0x00DB8300"
+      ],
+      "persistentFields": [],
+      "requiredEntities": [
+        "MK_OVI_DADTRIGGER",
+        "OVI_DeadFather",
+        "MK_OVID_DAD"
+      ],
+      "emittedEvents": [
+        "DadFound=true",
+        "MiniMapRemoveMarker (dead father)"
+      ],
+      "interruption": "returns on terminate",
+      "evidence": [
+        "native-decompile"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "dead-father-cutscene",
+      "entry": "DadFound",
+      "exit": "CS_OAKVALEINTRO_HESDEADJIM finished",
+      "nativeFunctions": [
+        "PostAttackStuff@0x00DBEB20"
+      ],
+      "persistentFields": [],
+      "requiredEntities": [
+        "hero"
+      ],
+      "emittedEvents": [
+        "StartScriptingEntity(hero,4)",
+        "StartMovieSequence",
+        "PauseAllNonScriptedEntities(true)",
+        "FixMovieSequenceCamera(true)",
+        "RunCutsceneMacro(CS_OAKVALEINTRO_HESDEADJIM)",
+        "FixMovieSequenceCamera(false)",
+        "PauseAllNonScriptedEntities(false)"
+      ],
+      "interruption": "retail unwinds through RAII of the movie object; Lua cannot observe mid-cutscene termination",
+      "evidence": [
+        "native-decompile"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "post-attack-cleanup",
+      "entry": "cutscene done",
+      "exit": "village out of limbo, time running, post-attack section deactivated, default theme, music released",
+      "nativeFunctions": [
+        "PostAttackStuff@0x00DBEB20"
+      ],
+      "persistentFields": [],
+      "requiredEntities": [
+        "V_OakVale"
+      ],
+      "emittedEvents": [
+        "SetVillageLimbo(false)",
+        "SetTimeAsStopped(false)",
+        "DeactivateQuest(Q__OakValeIntro_PostAttack)",
+        "ResetToDefaultTheme",
+        "StopOverrideMusic"
+      ],
+      "interruption": "straight-line",
+      "evidence": [
+        "native-decompile"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "completion",
+      "entry": "PostAttackStuff returned normally",
+      "exit": "quest completed and scheduled for deactivation; Gameflow observes MsgOnQuestCompleted",
+      "nativeFunctions": [
+        "DoMission@0x00DBDE40"
+      ],
+      "persistentFields": [],
+      "requiredEntities": [
+        "hero"
+      ],
+      "emittedEvents": [
+        "FadeScreenOut(0.5)",
+        "EntitySetAsKillable(hero,true)",
+        "SetHeroSleepingAsEnabled(true)",
+        "SetQuestAsCompleted",
+        "DeactivateQuestLater"
+      ],
+      "interruption": "none",
+      "evidence": [
+        "native-decompile",
+        "cross-script-evidence (LUAGameflow RunStage_Intro)"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "guild-transition",
+      "entry": "Gameflow sees Q_NewOakValeIntro completed",
+      "exit": "Gameflow activates Hook_Fresco_07_OakValeRaid, Hook_Fresco_09_TimePassing, Hook_Fresco_10_UneasyAlliance, Q_GuildTraining",
+      "nativeFunctions": [
+        "(Gameflow, not this script)"
+      ],
+      "persistentFields": [],
+      "requiredEntities": [],
+      "emittedEvents": [],
+      "interruption": "owned by Gameflow",
+      "evidence": [
+        "cross-script-evidence"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "abort-or-terminate",
+      "entry": "engine terminates the quest thread (quest deactivation, region unload, exit)",
+      "exit": "every loop returns at its next NewScriptFrame",
+      "nativeFunctions": [
+        "all"
+      ],
+      "persistentFields": [
+        "AttackOver"
+      ],
+      "requiredEntities": [],
+      "emittedEvents": [],
+      "interruption": "no retail cleanup beyond destructor-owned tokens; info bar / markers / limbo can be left behind",
+      "evidence": [
+        "native-decompile"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "deviations": [
+    "The brief's 'village attack / raid progression / victim-guard-villager behaviour during the attack' phases do not exist in this script: AttackStuff is a straight-line section swap (pre-attack section off, post-attack section on) with no combat; the raid itself is a Gameflow fresco hook activated after completion.",
+    "There is no separate 'family/father aftermath' quest phase beyond OVI_DeadFather + the HESDEADJIM cutscene; the living father's childhood dialogue is entity-driven (NOVI_LiveFather).",
+    "'Escape / region transition' is the EntityTeleportToThing to M_PostAttackStart inside PostAttackStuff; no region change happens (both sections live in StartOakVale).",
+    "The created-beetle/combat sequence is a side effect of barrel smashing (WatchBarrels), not a tutorial phase.",
+    "Persistence: only AttackOver survives save/load; every childhood sub-state restarts from Init values on load (retail behaviour, not a reconstruction gap)."
+  ],
+  "entityPhases": {
+    "NOVI_AffairMan": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan",
+      "phases": [
+        {
+          "id": "SETUP",
+          "entry": "Main start",
+          "exit": "main resource acquired, woman/wife things fetched",
+          "luaFunction": "Main"
+        },
+        {
+          "id": "HIT",
+          "entry": "hit_by_hero() true",
+          "exit": "next frame",
+          "luaFunction": "react_to_hit"
+        },
+        {
+          "id": "TALK",
+          "entry": "MsgIsTalkedToBy(hero)",
+          "exit": "next frame",
+          "luaFunction": "talked_to_by_hero (confronted_with_wife / ask_hero_to_keep_quiet / SHOO)"
+        },
+        {
+          "id": "COWER",
+          "entry": "idle and wife within 5",
+          "exit": "next frame",
+          "luaFunction": "idle_behaviour"
+        },
+        {
+          "id": "WALK_HOME",
+          "entry": "idle and >0.1 from home pos",
+          "exit": "within 2 of home",
+          "luaFunction": "walk_home"
+        },
+        {
+          "id": "AFFAIR",
+          "entry": "idle, at home, woman within 2, conversation not active, first-comment gate",
+          "exit": "next frame",
+          "luaFunction": "affair_at_home (near_conversation / ranged_conversation / kiss_or_hug)"
+        }
+      ],
+      "parentFieldsRead": [
+        "TalkingToWoman"
+      ],
+      "parentFieldsWritten": [
+        "HeroDiscoveredInfidelity",
+        "ReceiveKiss",
+        "ReceiveHug"
+      ],
+      "confidence": "medium"
+    },
+    "NOVI_AffairWife": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife",
+      "phases": [
+        {
+          "id": "IDLE",
+          "entry": "Main start",
+          "exit": "GoingForHusband set by the yes answer",
+          "luaFunction": "Main loop (react_to_hit / talked_to_by_hero / ask_wheres_husband)"
+        },
+        {
+          "id": "RUN",
+          "entry": "GoingForHusband",
+          "exit": "within 3 of the husband",
+          "luaFunction": "start_running_to_husband + wait_until_husband_reached"
+        },
+        {
+          "id": "ARGUE",
+          "entry": "husband reached",
+          "exit": "termination only",
+          "luaFunction": "argue_with_husband (argue_react_to_hit / argue_talked_to / argue_conversation)"
+        }
+      ],
+      "parentFieldsRead": [
+        "HeroDiscoveredInfidelity"
+      ],
+      "parentFieldsWritten": [],
+      "confidence": "medium"
+    },
+    "NOVI_AffairWoman": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman",
+      "phases": [
+        {
+          "id": "SETUP",
+          "entry": "Main start",
+          "exit": "main resource acquired (priority 4), wife/man things fetched",
+          "luaFunction": "Main"
+        },
+        {
+          "id": "WALK_HOME",
+          "entry": ">0.1 from home pos",
+          "exit": "within 2 of home",
+          "luaFunction": "walk_home"
+        },
+        {
+          "id": "HIT",
+          "entry": "hit_by_hero() true",
+          "exit": "falls through to TALK check",
+          "luaFunction": "react_to_hit"
+        },
+        {
+          "id": "TALK",
+          "entry": "MsgIsTalkedToBy(hero)",
+          "exit": "falls through to RECEIVE",
+          "luaFunction": "talked_to_by_hero"
+        },
+        {
+          "id": "RECEIVE",
+          "entry": "ReceiveKiss / ReceiveHug quest flags",
+          "exit": "flags cleared",
+          "luaFunction": "receive_affection"
+        },
+        {
+          "id": "RUN_OFF",
+          "entry": "wife within 5",
+          "exit": "RemoveThing(me); Main returns",
+          "luaFunction": "run_off"
+        }
+      ],
+      "parentFieldsRead": [
+        "ReceiveKiss",
+        "ReceiveHug"
+      ],
+      "parentFieldsWritten": [
+        "TalkingToWoman",
+        "ReceiveKiss",
+        "ReceiveHug"
+      ],
+      "confidence": "medium"
+    },
+    "NOVI_Barrel": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel",
+      "phases": [
+        {
+          "id": "await_instruction",
+          "entry": "Main start",
+          "exit": "InstructionGiven_Barrels becomes true (by this or any other barrel)",
+          "luaFunction": "Main / show_break_instruction"
+        },
+        {
+          "id": "idle",
+          "entry": "InstructionGiven_Barrels true",
+          "exit": "termination only",
+          "luaFunction": "Main tail loop"
+        }
+      ],
+      "parentFieldsRead": [
+        "InstructionGiven_Barrels"
+      ],
+      "parentFieldsWritten": [
+        "InstructionGiven_Barrels",
+        "BarrelBrokenInstantaneous",
+        "BarrelBrokenPersistent",
+        "BarrelBrokenPos"
+      ],
+      "confidence": "medium"
+    },
+    "NOVI_BarrelMan": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan",
+      "phases": [
+        {
+          "id": "AT_WAREHOUSE(0)",
+          "entry": "Init",
+          "exit": "hero talks / within TALK_RANGE -> ask_favour_and_leave sets AWAY(2)",
+          "luaFunction": "idle_handler / ask_favour_and_leave"
+        },
+        {
+          "id": "WALKING_OFF(1)",
+          "entry": "never written by this class (external or dead)",
+          "exit": "reached M_BarrelManWalkOff -> AWAY(2)",
+          "luaFunction": "walk_off"
+        },
+        {
+          "id": "AWAY(2)",
+          "entry": "walk_off or ask_favour_and_leave",
+          "exit": "GetTimer(WatchTimer)==15 -> teleport to walk-off marker -> RETURNING(3)",
+          "luaFunction": "wait_away"
+        },
+        {
+          "id": "RETURNING(3)",
+          "entry": "wait_away",
+          "exit": "reached M_WHouse_ManStart -> JUDGE_HERO(4)",
+          "luaFunction": "walk_back"
+        },
+        {
+          "id": "JUDGE_HERO(4)",
+          "entry": "walk_back",
+          "exit": "thanks (good deed) or where-gone (bad deed 1) -> DONE(5)",
+          "luaFunction": "judge_hero"
+        },
+        {
+          "id": "DONE(5)",
+          "entry": "judge_hero",
+          "exit": "none (idle handler forever)",
+          "luaFunction": "idle_handler / post_return_remark"
+        }
+      ],
+      "parentFieldsRead": [
+        "WatchTimer",
+        "BarrelBrokenPersistent"
+      ],
+      "parentFieldsWritten": [
+        "WarehouseMeetPoint",
+        "BarrelManSpokenToHeroOnReturn",
+        "BarrelManLeftHeroInCharge"
+      ],
+      "confidence": "medium"
+    },
+    "NOVI_BarrelThug": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug",
+      "phases": [
+        {
+          "id": "intro",
+          "entry": "!DoneIntro (first loop pass)",
+          "exit": "DoneIntro=true, following hero",
+          "luaFunction": "intro"
+        },
+        {
+          "id": "chat",
+          "entry": "IsTalkedToByHero",
+          "exit": "one of TEMPT/WELLDONE/WHY_NOT_SMASH/OUTRO",
+          "luaFunction": "chat"
+        },
+        {
+          "id": "nag",
+          "entry": "!BarrelManSpokenToHeroOnReturn && GetTimer()>0",
+          "exit": "tier line queued, LastTimeSpoken updated",
+          "luaFunction": "nag"
+        },
+        {
+          "id": "hit",
+          "entry": "hero hit me",
+          "exit": "bad deed 2, WHY_HIT",
+          "luaFunction": "react_to_hit"
+        }
+      ],
+      "parentFieldsRead": [
+        "BarrelManLeftHeroInCharge",
+        "BarrelManSpokenToHeroOnReturn",
+        "BarrelBrokenPersistent"
+      ],
+      "parentFieldsWritten": [
+        "BadDeedsPerformed/WhichBadDeedsPerformed[2] (via AddBadDeed)"
+      ],
+      "confidence": "medium"
+    },
+    "NOVI_BookTrader": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader",
+      "phases": [
+        {
+          "id": "home",
+          "entry": "every loop iteration",
+          "exit": "within 2.0 of home, facing Theresa",
+          "luaFunction": "return_home"
+        },
+        {
+          "id": "hit",
+          "entry": "hero hit me",
+          "exit": "bad deed 2, ON_HIT spoken",
+          "luaFunction": "react_to_hit"
+        },
+        {
+          "id": "sell",
+          "entry": "IsTalkedToByHero (and not hit this frame)",
+          "exit": "sweets given / declined / no cash",
+          "luaFunction": "sell_sweets"
+        },
+        {
+          "id": "shout",
+          "entry": "timer==0 && rand%200==0 && hero within 20",
+          "exit": "ROLL_UP line queued",
+          "luaFunction": "maybe_shout"
+        }
+      ],
+      "parentFieldsRead": [
+        "GivenSweets"
+      ],
+      "parentFieldsWritten": [
+        "GivenSweets",
+        "BadDeedsPerformed/WhichBadDeedsPerformed[2] (via AddBadDeed)"
+      ],
+      "confidence": "medium"
+    },
+    "NOVI_Bully": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_Bully",
+      "phases": [
+        {
+          "id": "init",
+          "entry": "Init()",
+          "exit": "return",
+          "luaFunction": "Init"
+        },
+        {
+          "id": "walk_home",
+          "entry": "Main start: acquire + GetHomePos",
+          "exit": "IsDistanceFromThingToPositionOver(me, home, 2.0) == false",
+          "luaFunction": "walk_home"
+        },
+        {
+          "id": "teddy",
+          "entry": "each loop while DoneIntro",
+          "exit": "falls through to talk",
+          "luaFunction": "handle_teddy / offer_teddy_dialogue / accept_presented_teddy / refuse_item"
+        },
+        {
+          "id": "talk",
+          "entry": "MsgIsTalkedToBy(HERO)",
+          "exit": "movie scope closed",
+          "luaFunction": "handle_talk"
+        },
+        {
+          "id": "hit",
+          "entry": "hit_by_hero inline true",
+          "exit": "info bar updated, or run_off (script ends)",
+          "luaFunction": "handle_hit / run_off"
+        },
+        {
+          "id": "intimidate",
+          "entry": "GetTimer()==0 && (!SpokenOnFirstProximity || rand%75==0) && hero within 15 && HitsTaken==0",
+          "exit": "animation queued",
+          "luaFunction": "intimidate"
+        }
+      ],
+      "parentFieldsRead": [
+        "VictimComplainsAboutLosingTeddy",
+        "HeroAttackedVictim",
+        "GUIBullyHealthCounter",
+        "GivenHeroTeddy"
+      ],
+      "parentFieldsWritten": [
+        "SpokeAboutFindingTeddy",
+        "TeddyRuined",
+        "VictimComplainsAboutLosingTeddy",
+        "GUIBullyHealthCounter",
+        "BullySubdued",
+        "VictimShake",
+        "GivenHeroTeddy",
+        "BullyRanOff"
+      ],
+      "confidence": "medium"
+    },
+    "NOVI_CreatedBeetle": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle",
+      "phases": [
+        {
+          "id": "countdown",
+          "entry": "Main start",
+          "exit": "GetTimer(timer) == 0 -> RemoveThing(me)",
+          "luaFunction": "Main"
+        }
+      ],
+      "parentFieldsRead": [],
+      "parentFieldsWritten": [],
+      "confidence": "medium"
+    },
+    "NOVI_Guard": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_Guard",
+      "phases": [
+        {
+          "id": "watch",
+          "entry": "Main loop top",
+          "exit": "each frame",
+          "luaFunction": "Main"
+        },
+        {
+          "id": "chase_and_lecture",
+          "entry": "BadDeedsPerformed > GuardsDealtWithBadDeeds && hero within CHASE_DISTANCE_BY_BAD_DEEDS[min(bad,3)]",
+          "exit": "lecture spoken (GuardsDealtWithBadDeeds = BadDeedsPerformed) or counters no longer unpunished",
+          "luaFunction": "chase_and_lecture / lecture_hero"
+        },
+        {
+          "id": "answer_hero",
+          "entry": "MsgIsTalkedToBy(SCRIPT_NAME_HERO)",
+          "exit": "conversation inactive",
+          "luaFunction": "answer_hero"
+        },
+        {
+          "id": "react_to_hit",
+          "entry": "hero_hit_me",
+          "exit": "ON_HIT line finished",
+          "luaFunction": "react_to_hit"
+        }
+      ],
+      "parentFieldsRead": [
+        "BadDeedsPerformed",
+        "GuardsDealtWithBadDeeds",
+        "GoodDeedsPerformed",
+        "GuardsSpokenOnce",
+        "WhichBadDeedsPerformed[0..4]"
+      ],
+      "parentFieldsWritten": [
+        "GuardsDealtWithBadDeeds",
+        "GuardsSpokenOnce"
+      ],
+      "confidence": "medium"
+    },
+    "NOVI_LiveFather": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather",
+      "phases": [
+        {
+          "id": "init",
+          "entry": "Init",
+          "exit": "return",
+          "luaFunction": "Init"
+        },
+        {
+          "id": "intro_cutscene",
+          "entry": "Main, DadFinishedIntro == false",
+          "exit": "DadFinishedIntro = true, HUD counter created, movie ended -> main loop",
+          "luaFunction": "intro_cutscene"
+        },
+        {
+          "id": "idle_loop",
+          "entry": "Main LAB_00db8aee / after intro",
+          "exit": "only on thread termination",
+          "luaFunction": "run (while loop)"
+        },
+        {
+          "id": "talk",
+          "entry": "MsgIsTalkedToBy(HERO) true",
+          "exit": "movie ended -> hit check",
+          "luaFunction": "talk_to_hero"
+        },
+        {
+          "id": "temper",
+          "entry": "hit by hero (weapon or non-heal ability)",
+          "exit": "movie ended -> NewScriptFrame",
+          "luaFunction": "react_to_attack"
+        }
+      ],
+      "parentFieldsRead": [
+        "DadFinishedIntro",
+        "GoodDeedsPerformed",
+        "BadDeedsPerformed"
+      ],
+      "parentFieldsWritten": [
+        "DadFinishedIntro",
+        "GUIGoodDeedCounter",
+        "BadDeedsPerformed (via AddBadDeed)",
+        "WhichBadDeedsPerformed[2] (via AddBadDeed, inference)"
+      ],
+      "confidence": "medium"
+    },
+    "NOVI_TeddyGirl": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl",
+      "phases": [
+        {
+          "id": "offer",
+          "entry": "IsTalkedToByHero && hero possesses teddy",
+          "exit": "yes -> GivenTeddy / no -> REPEAT_PLEA",
+          "luaFunction": "offer_teddy"
+        },
+        {
+          "id": "present",
+          "entry": "MsgIsPresentedWithItem",
+          "exit": "teddy -> GivenTeddy; other item && !FoundTeddy -> DONT_WANT",
+          "luaFunction": "receive_item"
+        },
+        {
+          "id": "ruined",
+          "entry": "PARENT.SpokeAboutFindingTeddy && bully within 10.0",
+          "exit": "RemoveThing(me) after walking to NOVI_AffairWife",
+          "luaFunction": "teddy_ruined"
+        },
+        {
+          "id": "chat",
+          "entry": "IsTalkedToByHero (second check, no teddy)",
+          "exit": "one line spoken",
+          "luaFunction": "chat"
+        },
+        {
+          "id": "hit",
+          "entry": "hero hit me",
+          "exit": "HeroHitMe=true, bad deed 2, DONT_HIT",
+          "luaFunction": "scold_hero"
+        }
+      ],
+      "parentFieldsRead": [
+        "SpokeAboutFindingTeddy",
+        "TeddyRuined"
+      ],
+      "parentFieldsWritten": [
+        "GoodDeedsPerformed (via AddGoodDeed)",
+        "BadDeedsPerformed/WhichBadDeedsPerformed[2] (via AddBadDeed)"
+      ],
+      "confidence": "medium"
+    },
+    "NOVI_Victim": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_Victim",
+      "phases": [
+        {
+          "id": "init",
+          "entry": "Init()",
+          "exit": "return",
+          "luaFunction": "Init"
+        },
+        {
+          "id": "shake",
+          "entry": "each loop while !BullySubdued and VictimShake",
+          "exit": "flag cleared",
+          "luaFunction": "react_to_taunt"
+        },
+        {
+          "id": "freed",
+          "entry": "BullySubdued and !DoneThanks",
+          "exit": "BullyRanOff observed; pushable/movement restored",
+          "luaFunction": "thanks_setup"
+        },
+        {
+          "id": "talk",
+          "entry": "MsgIsTalkedToBy(HERO)",
+          "exit": "tutorial shown once",
+          "luaFunction": "handle_talk / plea / thanks / show_hitting_friends_info"
+        },
+        {
+          "id": "hit",
+          "entry": "hit_by_hero inline true",
+          "exit": "cutscene or conversation done",
+          "luaFunction": "handle_hit / brat_hit_cutscene / evil_bros_exchange"
+        },
+        {
+          "id": "complain",
+          "entry": "VictimComplainsAboutLosingTeddy set by NOVI_Bully",
+          "exit": "flag cleared",
+          "luaFunction": "complain_about_teddy"
+        }
+      ],
+      "parentFieldsRead": [
+        "BullySubdued",
+        "VictimShake",
+        "BullyRanOff",
+        "HeroAttackedVictim",
+        "GivenHeroTeddy",
+        "VictimComplainsAboutLosingTeddy"
+      ],
+      "parentFieldsWritten": [
+        "VictimShake",
+        "HeroAttackedVictim",
+        "GivenHeroTeddy",
+        "VictimComplainsAboutLosingTeddy"
+      ],
+      "confidence": "medium"
+    },
+    "NOVI_Villager": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_Villager",
+      "phases": [
+        {
+          "id": "idle",
+          "entry": "Main loop top (after one initial frame)",
+          "exit": "each frame",
+          "luaFunction": "Main"
+        },
+        {
+          "id": "react_to_hit",
+          "entry": "hero_hit_me",
+          "exit": "ATTACKED_* line finished, movie closed",
+          "luaFunction": "react_to_hit"
+        },
+        {
+          "id": "answer_hero",
+          "entry": "!hit && MsgIsTalkedToBy(SCRIPT_NAME_HERO)",
+          "exit": "conversation inactive",
+          "luaFunction": "answer_hero"
+        },
+        {
+          "id": "mutter",
+          "entry": "!hit && !talked && GetTimer(TalkIntermittentTimer)==0 && rand()%100==0 && hero within 5.0",
+          "exit": "line queued (not waited on)",
+          "luaFunction": "mutter_about_hero"
+        }
+      ],
+      "parentFieldsRead": [
+        "BadDeedsPerformed",
+        "GoodDeedsPerformed",
+        "TalkIntermittentTimer",
+        "lastVillagerSpeechIdx",
+        "VillagerSpeechMaleGood",
+        "VillagerSpeechMaleBad",
+        "VillagerSpeechMaleBoth",
+        "VillagerSpeechMaleNeither",
+        "VillagerSpeechFemaleGood",
+        "VillagerSpeechFemaleBad",
+        "VillagerSpeechFemaleBoth",
+        "VillagerSpeechFemaleNeither"
+      ],
+      "parentFieldsWritten": [
+        "lastVillagerSpeechIdx",
+        "BadDeedsPerformed/WhichBadDeedsPerformed[2] (via AddBadDeed(PARENT,2))"
+      ],
+      "confidence": "medium"
+    },
+    "OVI_DeadFather": {
+      "nativeClass": "NScript::CQ_NewOakValeIntroScript::COVI_DeadFather",
+      "phases": [
+        {
+          "id": "posed",
+          "entry": "Main start",
+          "exit": "DadFound becomes true",
+          "luaFunction": "Main"
+        },
+        {
+          "id": "found",
+          "entry": "DadFound true -> MiniMapRemoveMarker",
+          "exit": "termination only",
+          "luaFunction": "Main tail loop"
+        }
+      ],
+      "parentFieldsRead": [
+        "DadFound"
+      ],
+      "parentFieldsWritten": [],
+      "confidence": "medium"
+    }
+  }
+}

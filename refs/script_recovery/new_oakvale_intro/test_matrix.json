@@ -1,0 +1,232 @@
+{
+  "schema": "fable-script-test-matrix/0.1",
+  "script": "Q_NewOakValeIntro",
+  "fixtures": [
+    {
+      "fixture": "quest_domission_attack_transition",
+      "function": "DoMission",
+      "kind": "quest",
+      "source": null,
+      "purpose": "childhood set up in-frame; AttackOver flips true after three polls, exercising AttackStuff -> PostAttackStuff -> completion in one run",
+      "expects": [
+        "ActivateQuest",
+        "DeactivateQuest",
+        "SetTimeOfDay",
+        "TransitionToTheme",
+        "SetQuestCardObjective",
+        "EntityTeleportToThing",
+        "SetVillageLimbo",
+        "TakeObjectFromHero",
+        "AddLogbookStoryEntry",
+        "FadeScreenIn",
+        "PlayCutscene",
+        "ResetToDefaultTheme",
+        "StopOverrideMusic",
+        "SetQuestAsCompleted"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 82
+    },
+    {
+      "fixture": "quest_domission_terminated_during_childhood",
+      "function": "DoMission",
+      "kind": "quest",
+      "source": null,
+      "purpose": "thread terminated while waiting for the raid: no attack/post-attack calls may run",
+      "expects": [
+        "ActivateQuest"
+      ],
+      "forbids": [
+        "TransitionToTheme",
+        "SetQuestAsCompleted"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 25
+    },
+    {
+      "fixture": "quest_init_resets",
+      "function": "Init",
+      "kind": "quest",
+      "source": null,
+      "purpose": "Init zeroes the bookkeeping, registers both timers, clears the talk timer",
+      "expects": [
+        "SetStateBool",
+        "SetStateInt",
+        "RegisterTimer",
+        "SetTimer"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 38
+    },
+    {
+      "fixture": "quest_main_fresh_start",
+      "function": "Main",
+      "kind": "quest",
+      "source": null,
+      "purpose": "fresh start: childhood setup then blocks on AttackOver until the frame budget ends",
+      "expects": [
+        "FinalizeEntityBindings",
+        "SetQuestCardObjective",
+        "CreateThread",
+        "TurnCreatureInto",
+        "ActivateQuest",
+        "KickOffQuestStartScreen"
+      ],
+      "forbids": [
+        "DeactivateQuest",
+        "SetQuestAsCompleted"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 52
+    },
+    {
+      "fixture": "quest_main_reload_after_attack",
+      "function": "Main",
+      "kind": "quest",
+      "source": null,
+      "purpose": "AttackOver persisted true: Main tears down the post-attack section, DoMission skips the childhood and runs AttackStuff/PostAttackStuff/completion",
+      "expects": [
+        "DeactivateQuest",
+        "TransitionToTheme",
+        "EntityTeleportToThing",
+        "PlayCutscene",
+        "SetQuestAsCompleted",
+        "DeactivateQuestLater"
+      ],
+      "forbids": [
+        "TurnCreatureInto",
+        "KickOffQuestStartScreen"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 78
+    },
+    {
+      "fixture": "quest_onpersist_roundtrip",
+      "function": "OnPersist",
+      "kind": "quest",
+      "source": null,
+      "purpose": "only AttackOver crosses the save boundary",
+      "expects": [
+        "PersistTransferBool",
+        "SetStateBool"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 3
+    },
+    {
+      "fixture": "quest_thread_manage_core_markers",
+      "function": "ManageQuestCoreMarkers",
+      "kind": "quest",
+      "source": null,
+      "purpose": "orb path father -> trader (tutorial shown) -> Theresa -> father",
+      "expects": [
+        "MiniMapAddMarker",
+        "MiniMapRemoveMarker",
+        "DisplayTutorial",
+        "MsgIsTutorialClickedPast"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 26
+    },
+    {
+      "fixture": "quest_thread_manage_core_markers_terminated_early",
+      "function": "ManageQuestCoreMarkers",
+      "kind": "quest",
+      "source": null,
+      "purpose": "terminated while waiting for gold: the father marker is left in place (retail behaviour)",
+      "expects": [
+        "MiniMapAddMarker"
+      ],
+      "forbids": [
+        "MiniMapRemoveMarker"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 6
+    },
+    {
+      "fixture": "quest_thread_start_barrel_timer",
+      "function": "StartBarrelTimer",
+      "kind": "quest",
+      "source": null,
+      "purpose": "timer armed on the second poll; hero away (red) then at the guard point (green); BarrelMan returns on the third loop",
+      "expects": [
+        "AddQuestInfoBar",
+        "ChangeQuestInfoBarColour",
+        "UpdateQuestInfoBar",
+        "RemoveQuestInfoElement"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 23
+    },
+    {
+      "fixture": "quest_thread_start_barrel_timer_terminated",
+      "function": "StartBarrelTimer",
+      "kind": "quest",
+      "source": null,
+      "purpose": "retail leaves the info bar behind when the thread is terminated mid-watch (documented cleanup gap)",
+      "expects": [
+        "AddQuestInfoBar"
+      ],
+      "forbids": [
+        "RemoveQuestInfoElement"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 7
+    },
+    {
+      "fixture": "quest_thread_watch_barrels",
+      "function": "WatchBarrels",
+      "kind": "quest",
+      "source": null,
+      "purpose": "six barrels; breaks 1..5: first = bad deed 0, 3rd/4th = beetles, 5th = gold; stops at AttackOver",
+      "expects": [
+        "DisplayGameInfo",
+        "CreateCreature",
+        "EntitySetMaxHealth",
+        "AddItemToContainer"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 62
+    },
+    {
+      "fixture": "quest_thread_watch_for_got_gold",
+      "function": "WatchForGotGold",
+      "kind": "quest",
+      "source": null,
+      "purpose": "gold 0,2 then 3: objective 3 fires only when gold exceeds 2",
+      "expects": [
+        "SetQuestCardObjective"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 7
+    }
+  ],
+  "runtimeOnlyBranches": [
+    "actual cutscene playback / camera fixing (CS_OAKVALEINTRO_HESDEADJIM)",
+    "section swap side effects (Q_NewOakValeIntro_PreAttack -> Q__OakValeIntro_PostAttack thing lifetimes)",
+    "TurnCreatureInto hero morph and CREATURE_HERO_CHILD controls",
+    "info-bar colour rendering and timer cadence",
+    "morality amounts (game-data float)",
+    "entity AI actions (FollowThing, Speak, conversations) and their blocking semantics",
+    "region unload/reload thread termination timing"
+  ]
+}

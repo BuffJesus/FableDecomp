@@ -1,0 +1,33 @@
+{
+ "__meta__": {
+  "function": "ManageQuestCoreMarkers",
+  "kind": "quest",
+  "expect": [
+   "MiniMapAddMarker"
+  ],
+  "forbid": [
+   "MiniMapRemoveMarker"
+  ],
+  "note": "terminated while waiting for gold: the father marker is left in place (retail behaviour)"
+ },
+ "Quest.GetThingWithScriptName": [
+  {
+   "handle": "father",
+   "scope": "Entity"
+  },
+  {
+   "handle": "trader",
+   "scope": "Entity"
+  },
+  {
+   "handle": "theresa",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetHeroGold": [
+  0
+ ],
+ "Quest.NewScriptFrame": [
+  false
+ ]
+}

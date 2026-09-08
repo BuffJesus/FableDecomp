@@ -1,0 +1,55 @@
+{
+  "entity": "NOVI_Barrel",
+  "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel",
+  "functions": {
+    "Init": {"address": "0x00CDEBB0", "decompileFile": "tu/0x00CDEBB0_FUN_00cdebb0.c", "note": "shared empty default (ret)"},
+    "Main": {"address": "0x00DB7E10", "decompileFile": "tu/0x00DB7E10_NScript_CQ_NewOakValeIntroScript_CNOVI_Barrel_Main.c"},
+    "OnPredicateFail": {"address": "0x00DB7DB0", "decompileFile": "tu/0x00DB7DB0_NScript_CQ_NewOakValeIntroScript_CNOVI_Barrel_OnPr.c"}
+  },
+  "localFields": [],
+  "parentFieldsRead": ["InstructionGiven_Barrels"],
+  "parentFieldsWritten": ["InstructionGiven_Barrels", "BarrelBrokenInstantaneous", "BarrelBrokenPersistent", "BarrelBrokenPos"],
+  "masterDataAccess": [],
+  "textKeys": ["TEXT_QST_048_INSTRUCTION_BREAK_BARRELS", "TEXT_QST_048_INSTRUCTION_BREAK_BARRELS_PC"],
+  "objects": [],
+  "markersAndScriptNames": ["NOVI_Barrel (script name used by WatchBarrels GetThingsWithScriptName / GetThingWithScriptName)"],
+  "animations": [],
+  "cutscenes": [],
+  "constants": [
+    {"name": "HERO_TRIGGER_DISTANCE", "value": 2.0, "source": "fVar4 = 2.0 before IsDistanceBetweenThingsUnder(me, GetHero())", "evidence": "native-decompile"}
+  ],
+  "phases": [
+    {"id": "await_instruction", "entry": "Main start", "exit": "InstructionGiven_Barrels becomes true (by this or any other barrel)", "luaFunction": "Main / show_break_instruction"},
+    {"id": "idle", "entry": "InstructionGiven_Barrels true", "exit": "termination only", "luaFunction": "Main tail loop"}
+  ],
+  "operations": [
+    {"seq": 1, "function": "Main", "kind": "wait", "native": "GSI->NewScriptFrame(); if (IsTerminating()) return", "argsKnown": true, "lua": "if not NOVI.frame(quest, me) then return end", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 2, "function": "Main", "kind": "branch", "native": "while (PARENT->InstructionGiven_Barrels == false)", "argsKnown": true, "lua": "while not F.get(quest, F.InstructionGiven_Barrels) do", "forgeBinding": "n/a", "evidence": "native-decompile", "note": "re-read every iteration, so another barrel setting it ends this loop too"},
+    {"seq": 3, "function": "Main", "kind": "wait", "native": "GSI->NewScriptFrame(); if (IsTerminating()) return", "argsKnown": true, "lua": "if not NOVI.frame(quest, me) then return end", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 4, "function": "Main", "kind": "branch", "native": "if (IsDistanceBetweenThingsUnder(me, GSI->GetHero(), 2.0))", "argsKnown": true, "lua": "if NOVI.hero_within(quest, me, HERO_TRIGGER_DISTANCE) then", "forgeBinding": "IsDistanceBetweenThingsUnder", "evidence": "native-decompile", "note": ""},
+    {"seq": 5, "function": "Main", "kind": "branch", "native": "if (GSI->IsXbox() == false) key = ..._BREAK_BARRELS_PC else key = ..._BREAK_BARRELS", "argsKnown": true, "lua": "local onXbox = NOVI.unsupported(quest, \"IsXbox\", {}); key = onXbox and TEXT_BREAK_BARRELS or TEXT_BREAK_BARRELS_PC", "forgeBinding": "missing", "evidence": "native-decompile + asm 0xdb7eb8 (ecx=[esi+4] GSI, call [vt+0x18] = cgsi slot 10 IsXbox)", "note": "nil from the gap stub selects the PC key, i.e. the retail PC branch"},
+    {"seq": 6, "function": "Main", "kind": "wait", "native": "GSI->DisplayGameInfo(key); while (!GSI->MsgIsGameInfoClickedPast()) { NewScriptFrame; if terminating return }", "argsKnown": true, "lua": "quest:DisplayGameInfo(key); while not quest:MsgIsGameInfoClickedPast() do if not NOVI.frame(quest, me) then return false end end", "forgeBinding": "DisplayGameInfo / MsgIsGameInfoClickedPast", "evidence": "native-decompile", "note": ""},
+    {"seq": 7, "function": "Main", "kind": "state-write", "native": "PARENT->InstructionGiven_Barrels = true", "argsKnown": true, "lua": "F.set(quest, F.InstructionGiven_Barrels, true)", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 8, "function": "Main", "kind": "wait", "native": "while (!IsTerminating()) GSI->NewScriptFrame()", "argsKnown": true, "lua": "while NOVI.frame(quest, me) do end", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": "idle forever"},
+    {"seq": 9, "function": "OnPredicateFail", "kind": "state-write", "native": "PARENT->BarrelBrokenInstantaneous = true; PARENT->BarrelBrokenPersistent = true", "argsKnown": true, "lua": "F.set(quest, F.BarrelBrokenInstantaneous, true); F.set(quest, F.BarrelBrokenPersistent, true)", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 10, "function": "OnPredicateFail", "kind": "state-write", "native": "PARENT->BarrelBrokenPos = me.GetPos() (CScriptThing vtable +0x18)", "argsKnown": true, "lua": "F.set(quest, F.BarrelBrokenPos, me:GetPos())", "forgeBinding": "GetPos (CScriptThing usertype)", "evidence": "native-decompile + retail vtable scan (0x01238C8C +0x18 = ?GetPos@CScriptThing)", "note": "12-byte C3DVector copy into 0x76..0x81"}
+  ],
+  "apiGaps": [
+    {"retail": "CGameScriptInterface::IsXbox()", "reason": "not registered in ForgeFSE Lua (absent from forge_quest_bindings.txt)", "luaLocation": "show_break_instruction (NOVI.unsupported)"},
+    {"retail": "OnPredicateFail virtual (entity vtable slot 5)", "reason": "ForgeFSE has no predicate-fail hook in the binding lists; the Lua function exists but nothing in the host is known to invoke it", "luaLocation": "OnPredicateFail"}
+  ],
+  "uncertainties": [
+    "What makes the barrel predicate fail (destruction / removal of the thing) is not visible in these decompiles; only the OnPredicateFail side effects are.",
+    "ForgeFSE has no known OnPredicateFail hook, so BarrelBrokenInstantaneous/Persistent/Pos are never set at runtime unless the host adds one.",
+    "IsXbox is unbound; the Lua always takes the PC text branch (retail PC behaviour), the Xbox key is preserved as a constant.",
+    "The idle loop after the instruction is retail behaviour: the barrel script does nothing else until termination."
+  ],
+  "cleanupPaths": [
+    {"resource": "infobar (DisplayGameInfo)", "acquired": "seq 6", "releasedOn": ["normal (clicked past)"], "missingOn": ["terminate (retail returns without dismissing the box)"]}
+  ],
+  "coupling": [
+    "Quest-level thread WatchBarrels (0x00DBE890, not part of this entity) collects all things named NOVI_Barrel, clears BarrelBrokenInstantaneous each time it sees it set and counts breaks: first break -> AddBadDeed(PARENT, 0); break number (count-1) -> AddItemToContainer(NOVI_Barrel thing, OBJECT_GOLD_1); breaks beyond (count-4) -> CreateCreature(CREATURE_OAKVALE_STAG_BEETLE at BarrelBrokenPos, script NOVI_CreatedBeetle) + EntitySetMaxHealth(2.0, true). It stops when AttackOver is set.",
+    "NOVI_BarrelMan reads BarrelBrokenPersistent for his LETDOWN_BROKEN / LETDOWN_NOT_BROKE line.",
+    "InstructionGiven_Barrels is shared by all barrels: the first one the hero approaches shows the instruction, the rest skip it."
+  ]
+}

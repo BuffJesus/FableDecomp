@@ -1,0 +1,67 @@
+{
+ "__meta__": {
+  "function": "ManageQuestCoreMarkers",
+  "kind": "quest",
+  "expect": [
+   "MiniMapAddMarker",
+   "MiniMapRemoveMarker",
+   "DisplayTutorial",
+   "MsgIsTutorialClickedPast"
+  ],
+  "note": "orb path father -> trader (tutorial shown) -> Theresa -> father"
+ },
+ "Quest.GetThingWithScriptName(NOVI_LiveFather)": [
+  {
+   "handle": "father",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetThingWithScriptName(NOVI_BookTrader)": [
+  {
+   "handle": "trader",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetThingWithScriptName(NOVI_Theresa)": [
+  {
+   "handle": "theresa",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetHeroGold": [
+  0,
+  3
+ ],
+ "Quest.IsHeroControlledByPlayer": [
+  false,
+  true
+ ],
+ "Quest.DisplayTutorial": [
+  true
+ ],
+ "Quest.MsgIsTutorialClickedPast": [
+  false,
+  true
+ ],
+ "Quest.GetStateBool(GivenSweets)": [
+  false,
+  true
+ ],
+ "Quest.GetStateBool(GivenTheresaChocs)": [
+  false,
+  true
+ ],
+ "Quest.NewScriptFrame": [
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  false
+ ]
+}

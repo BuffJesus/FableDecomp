@@ -1,0 +1,95 @@
+{
+  "entity": "NOVI_BarrelThug",
+  "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug",
+  "functions": {
+    "Init": {"address": "0x00DB6BF0", "decompileFile": "tu/0x00DB6BF0_NScript_CQ_NewOakValeIntroScript_CNOVI_BarrelThug_.c"},
+    "Main": {"address": "0x00DB6C60", "decompileFile": "tu/0x00DB6C60_FUN_00db6c60.c"}
+  },
+  "localFields": [
+    {"name": "DoneIntro", "offset": "0x1c", "initValue": false, "evidence": "PDB-name"},
+    {"name": "LastTimeSpoken", "offset": "0x20", "initValue": 9999, "evidence": "PDB-name"}
+  ],
+  "parentFieldsRead": ["BarrelManLeftHeroInCharge", "BarrelManSpokenToHeroOnReturn", "BarrelBrokenPersistent"],
+  "parentFieldsWritten": ["BadDeedsPerformed/WhichBadDeedsPerformed[2] (via AddBadDeed)"],
+  "masterDataAccess": [],
+  "textKeys": [
+    "TEXT_QST_048_BARRELTHUG_EXPLAIN", "TEXT_QST_048_BARRELTHUG_SCRMSG_TEMPT", "TEXT_QST_048_BARRELTHUG_SCRMSG_WELLDONE",
+    "TEXT_QST_048_BARRELTHUG_WHY_NOT_SMASH", "TEXT_QST_048_BARRELTHUG_OUTRO", "TEXT_QST_048_BARRELTHUG_WHY_HIT",
+    "TEXT_QST_048_BARRELTHUG_SCRMSG_TEMPT_10", "TEXT_QST_048_BARRELTHUG_SCRMSG_TEMPT_20", "TEXT_QST_048_BARRELTHUG_SCRMSG_TEMPT_30",
+    "TEXT_QST_048_BARRELTHUG_SCRMSG_TEMPT_40", "TEXT_QST_048_BARRELTHUG_SCRMSG_TEMPT_50", "TEXT_QST_048_BARRELTHUG_SCRMSG_TEMPT_60",
+    "TEXT_QST_048_BARRELTHUG_SCRMSG_TEMPT_70", "TEXT_QST_048_BARRELTHUG_SCRMSG_WELLDONE_10", "TEXT_QST_048_BARRELTHUG_SCRMSG_WELLDONE_20",
+    "TEXT_QST_048_BARRELTHUG_SCRMSG_WELLDONE_30", "TEXT_QST_048_BARRELTHUG_SCRMSG_WELLDONE_40"
+  ],
+  "objects": [],
+  "markersAndScriptNames": ["M_WHouse_ManStart", "SCRIPT_NAME_HERO"],
+  "animations": [],
+  "cutscenes": [
+    {"kind": "StartMovieSequence(\"\") + PauseAllNonScriptedEntities(true)", "where": "intro, chat, react_to_hit", "evidence": "native-decompile"}
+  ],
+  "constants": [
+    {"name": "LAST_TIME_INIT", "value": 9999, "source": "Init this+0x20 = 9999", "evidence": "native-decompile"},
+    {"name": "FOLLOW_DISTANCE", "value": 1.0, "source": "FollowThing DAT_3f800000 line 562", "evidence": "native-decompile"},
+    {"name": "SPEAK_MIN_HEALTH", "value": 0.0, "source": "_DAT_0122dedc retail .rdata", "evidence": "native-decompile"},
+    {"name": "SCRMSG_METHOD", "value": 2, "source": "Speak arg pCVar21=2 lines 90,125", "evidence": "native-decompile"},
+    {"name": "BAD_DEED_HIT_ME", "value": 2, "source": "AddBadDeed(PARENT,2) line 440", "evidence": "native-decompile"},
+    {"name": "ACTION_PRIORITY", "value": 4, "source": "StartScriptingEntity(me,res,4) line 458", "evidence": "native-decompile"},
+    {"name": "TEMPT_TIERS", "value": [[10,"_10"],[20,"_20"],[25,"_30"],[30,"_40"],[34,"_50"],[38,"_60"]], "source": "lines 260-320 (0xa,0x14,0x19,0x1e,0x22,0x26)", "evidence": "native-decompile"},
+    {"name": "TEMPT_70 condition", "value": "timer <= 44 && LastTimeSpoken >= 46", "source": "line 323: !(0x2c < t || Last < 0x2e)", "evidence": "native-decompile"},
+    {"name": "WELLDONE_TIERS", "value": [[10,"_10"],[25,"_20"],[35,"_30"]], "source": "lines 348-366 (0xa,0x19,0x23)", "evidence": "native-decompile"},
+    {"name": "WELLDONE_40 condition", "value": "timer <= 44 && LastTimeSpoken >= 46", "source": "line 375", "evidence": "native-decompile"}
+  ],
+  "phases": [
+    {"id": "intro", "entry": "!DoneIntro (first loop pass)", "exit": "DoneIntro=true, following hero", "luaFunction": "intro"},
+    {"id": "chat", "entry": "IsTalkedToByHero", "exit": "one of TEMPT/WELLDONE/WHY_NOT_SMASH/OUTRO", "luaFunction": "chat"},
+    {"id": "nag", "entry": "!BarrelManSpokenToHeroOnReturn && GetTimer()>0", "exit": "tier line queued, LastTimeSpoken updated", "luaFunction": "nag"},
+    {"id": "hit", "entry": "hero hit me", "exit": "bad deed 2, WHY_HIT", "luaFunction": "react_to_hit"}
+  ],
+  "operations": [
+    {"seq": 1, "function": "Init", "kind": "state-write", "native": "this[0x1c]=0; this+0x20=9999", "argsKnown": true, "lua": "DoneIntro=false; LastTimeSpoken=9999", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 2, "function": "Init", "kind": "call", "native": "EntitySetAsDamageable(me,0); EntitySetAsKillable(me,0,0); EntitySetAsToAddToComboMultiplierWhenHit(me,0)", "argsKnown": true, "lua": "quest:... x3", "forgeBinding": "EntitySetAsDamageable|EntitySetAsKillable|EntitySetAsToAddToComboMultiplierWhenHit", "evidence": "native-decompile", "note": "no SetThingHasInformation here"},
+    {"seq": 3, "function": "Main", "kind": "wait", "native": "NewScriptFrame + IsTerminating", "argsKnown": true, "lua": "NOVI.frame", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 4, "function": "Main", "kind": "branch", "native": "this[0x1c]==0 -> intro block (line 35 break -> 508)", "argsKnown": true, "lua": "if not DoneIntro then intro()", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 5, "function": "Main", "kind": "wait", "native": "StartScriptingEntity(me,res,?) loop", "argsKnown": false, "lua": "NOVI.acquire", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 6, "function": "Main", "kind": "wait", "native": "while (!PARENT+0x72 BarrelManLeftHeroInCharge) NewScriptFrame", "argsKnown": true, "lua": "while not F.get(quest, F.BarrelManLeftHeroInCharge)", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 7, "function": "Main", "kind": "call", "native": "EntityTeleportToThing(me, GetThingWithScriptName(\"M_WHouse_ManStart\"))", "argsKnown": true, "lua": "quest:EntityTeleportToThing(me, quest:GetThingWithScriptName(START_MARKER))", "forgeBinding": "EntityTeleportToThing|GetThingWithScriptName", "evidence": "native-decompile", "note": ""},
+    {"seq": 8, "function": "Main", "kind": "call", "native": "EntitySetFacingAngleTowardsThing(me, GetHero())", "argsKnown": true, "lua": "quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero())", "forgeBinding": "EntitySetFacingAngleTowardsThing", "evidence": "native-decompile", "note": ""},
+    {"seq": 9, "function": "Main", "kind": "call", "native": "GSI->Pause(?)", "argsKnown": false, "lua": "NOVI.unsupported(\"Pause\")", "forgeBinding": "Pause (duration unknown)", "evidence": "native-decompile", "note": ""},
+    {"seq": 10, "function": "Main", "kind": "call", "native": "StartMovieSequence(\"\"); PauseAll(1)", "argsKnown": true, "lua": "begin_cutscene", "forgeBinding": "StartMovieSequence|PauseAllNonScriptedEntities", "evidence": "native-decompile", "note": ""},
+    {"seq": 11, "function": "Main", "kind": "call", "native": "if GetHealth(me)>0: Speak(hero, TEXT_QST_048_BARRELTHUG_EXPLAIN, 0)+wait", "argsKnown": true, "lua": "speak_if_alive(TEXT_EXPLAIN)", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": "terminate in wait -> PauseAll(0), ~movie, return"},
+    {"seq": 12, "function": "Main", "kind": "state-write", "native": "this[0x1c]=1", "argsKnown": true, "lua": "DoneIntro = true", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 13, "function": "Main", "kind": "call", "native": "FollowThing(GetHero(), 1.0, 1)", "argsKnown": true, "lua": "me:FollowThing(hero, 1.0, true)", "forgeBinding": "FollowThing", "evidence": "native-decompile", "note": "bool read as avoidObstacles=true"},
+    {"seq": 14, "function": "Main", "kind": "cleanup", "native": "PauseAll(0); ~movie; goto talk check", "argsKnown": true, "lua": "end_cutscene", "forgeBinding": "PauseAllNonScriptedEntities", "evidence": "native-decompile", "note": ""},
+    {"seq": 15, "function": "Main", "kind": "branch", "native": "me->MsgIsTalkedToBy(HERO)", "argsKnown": true, "lua": "me:IsTalkedToByHero()", "forgeBinding": "IsTalkedToByHero", "evidence": "native-decompile", "note": ""},
+    {"seq": 16, "function": "Main", "kind": "call", "native": "StartMovieSequence; PauseAll(1); StartScriptingEntity loop", "argsKnown": false, "lua": "begin_cutscene; NOVI.acquire", "forgeBinding": "StartMovieSequence|host-managed", "evidence": "native-decompile", "note": "movie starts BEFORE the acquire here"},
+    {"seq": 17, "function": "Main", "kind": "branch", "native": "!PARENT+0x73 && !PARENT+0x75 -> Speak(SCRMSG_TEMPT, method 2); !0x73 && 0x75 -> Speak(SCRMSG_WELLDONE, 2); 0x73 && !0x75 -> WHY_NOT_SMASH; 0x73 && 0x75 -> OUTRO", "argsKnown": true, "lua": "chat()", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": ""},
+    {"seq": 18, "function": "Main", "kind": "cleanup", "native": "PauseAll(0); ~movie", "argsKnown": true, "lua": "end_cutscene", "forgeBinding": "PauseAllNonScriptedEntities", "evidence": "native-decompile", "note": ""},
+    {"seq": 19, "function": "Main", "kind": "branch", "native": "!PARENT+0x73 && GetTimer(?) > 0", "argsKnown": false, "lua": "nag()", "forgeBinding": "GetTimer", "evidence": "native-decompile", "note": "timer id dropped; F.WatchTimer chosen (inference)"},
+    {"seq": 20, "function": "Main", "kind": "call", "native": "conv = AddNewConversation(me?); AddPersonToConversation(conv, GetHero())", "argsKnown": false, "lua": "quest:AddNewConversation(me); quest:AddPersonToConversation(conv, hero)", "forgeBinding": "AddNewConversation|AddPersonToConversation", "evidence": "native-decompile", "note": "created BEFORE the tier test; left dangling when no tier matches"},
+    {"seq": 21, "function": "Main", "kind": "branch", "native": "!PARENT+0x75: TEMPT tiers (t<T && Last>T for T in 10,20,25,30,34,38; then t<=44 && Last>=46 -> _70); else skip to hit check", "argsKnown": true, "lua": "pick_tier_line(TEMPT_TIERS, TEXT_TEMPT_70)", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 22, "function": "Main", "kind": "branch", "native": "PARENT+0x75: WELLDONE tiers (10,25,35; then t<=44 && Last>=46 -> _40)", "argsKnown": true, "lua": "pick_tier_line(WELLDONE_TIERS, TEXT_WELLDONE_40)", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 23, "function": "Main", "kind": "call", "native": "AddLineToConversation(conv, <tier key>, ..., GetHero())", "argsKnown": false, "lua": "quest:AddLineToConversation(conv, line, me, hero)", "forgeBinding": "AddLineToConversation", "evidence": "native-decompile", "note": ""},
+    {"seq": 24, "function": "Main", "kind": "state-write", "native": "this+0x20 = GetTimer(?)", "argsKnown": false, "lua": "LastTimeSpoken = quest:GetTimer(NAG_TIMER)", "forgeBinding": "GetTimer", "evidence": "native-decompile", "note": "skipped when no tier matched (goto LAB_00db7924)"},
+    {"seq": 25, "function": "Main", "kind": "branch", "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(?,HERO))", "argsKnown": false, "lua": "hero_hit_me()", "forgeBinding": "MsgIsHitByHero|missing|missing", "evidence": "native-decompile", "note": ""},
+    {"seq": 26, "function": "Main", "kind": "call", "native": "EntitySetThingAsAllyOfThing x2; AddBadDeed(PARENT,2); StartMovieSequence; PauseAll(1); StartScriptingEntity(me,res,4); if alive Speak(TEXT_QST_048_BARRELTHUG_WHY_HIT)+wait; PauseAll(0); ~movie", "argsKnown": false, "lua": "react_to_hit()", "forgeBinding": "EntitySetThingAsAllyOfThing|SpeakAndWait", "evidence": "native-decompile", "note": ""},
+    {"seq": 27, "function": "Main", "kind": "wait", "native": "NewScriptFrame + IsTerminating (loop tail)", "argsKnown": true, "lua": "NOVI.frame", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""}
+  ],
+  "apiGaps": [
+    {"retail": "GSI->Pause(duration)", "reason": "duration argument dropped by the decompiler; Pause is bound but cannot be called faithfully", "luaLocation": "intro"},
+    {"retail": "CScriptThing::MsgIsHitByAnySpecialAbilityFrom / MsgIsHitBySpecialAbilityFrom", "reason": "not registered / enum dropped", "luaLocation": "hero_hit_me"},
+    {"retail": "~CScriptGameResourceObjectMovieBase", "reason": "modelled as EndMovieSequence (inference)", "luaLocation": "end_cutscene"},
+    {"retail": "StartScriptingEntity priority (intro, chat)", "reason": "priority argument dropped", "luaLocation": "NOVI.acquire(..., DEFAULT_PRIORITY)"}
+  ],
+  "uncertainties": [
+    "GetTimer id dropped; F.WatchTimer chosen because the nag tiers track the barrel man's absence (inference).",
+    "Timer direction inferred as counting down from the (t < T && Last > T) tier tests.",
+    "AddNewConversation args dropped; conversation is created before the tier test and never removed (retail).",
+    "FollowThing third argument (immediate 1) mapped to avoidObstacles=true.",
+    "SCRMSG_TEMPT / SCRMSG_WELLDONE selection method 2 read from register assignment order; other Speaks use 0.",
+    "SpeakAndWait is host-blocking; retail's mid-speech terminate cleanup (PauseAll(0)) cannot fire."
+  ],
+  "cleanupPaths": [
+    {"resource": "control", "acquired": "seq 5/16/26", "releasedOn": ["terminate (destructors at return)"], "missingOn": ["normal iteration"]},
+    {"resource": "cutscene(movie+pause)", "acquired": "seq 10/16/26", "releasedOn": ["normal", "terminate inside speech wait"], "missingOn": []},
+    {"resource": "conversation", "acquired": "seq 20", "releasedOn": [], "missingOn": ["normal", "terminate", "no-tier-matched"], "note": "retail never removes it"}
+  ]
+}

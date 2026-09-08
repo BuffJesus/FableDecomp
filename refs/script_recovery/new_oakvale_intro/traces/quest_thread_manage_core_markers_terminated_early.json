@@ -1,0 +1,85 @@
+{
+  "events": [
+    {
+      "arguments": [
+        "NOVI_LiveFather"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NOVI_BookTrader"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NOVI_Theresa"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "father",
+          "scope": "Entity"
+        },
+        "HUD_ORB_QUEST_CORE"
+      ],
+      "event": "api-call",
+      "name": "MiniMapAddMarker",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHeroGold",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Quest.GetHeroGold": [
+      0
+    ],
+    "Quest.GetThingWithScriptName": [
+      {
+        "handle": "father",
+        "scope": "Entity"
+      },
+      {
+        "handle": "trader",
+        "scope": "Entity"
+      },
+      {
+        "handle": "theresa",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.NewScriptFrame": [
+      false
+    ]
+  },
+  "function": "ManageQuestCoreMarkers",
+  "kind": "quest",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua",
+  "sourceSha256": "912f2c79f6addddac3e77e0b54a1b64452e8a8c55ec348a39fee46e45d71f20e"
+}

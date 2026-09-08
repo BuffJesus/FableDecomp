@@ -1,0 +1,110 @@
+{
+  "events": [
+    {
+      "arguments": [
+        "WatchTimer"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        102
+      ],
+      "event": "api-call",
+      "name": "GetTimer",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        45.0,
+        45.0,
+        {
+          "a": 255,
+          "b": 0,
+          "g": 0,
+          "r": 0
+        },
+        {
+          "a": 255,
+          "b": 0,
+          "g": 0,
+          "r": 0
+        },
+        "HUD_CLOCK_ICON",
+        "",
+        1.0
+      ],
+      "event": "api-call",
+      "name": "AddQuestInfoBar",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIBarrelCounter",
+        7
+      ],
+      "event": "api-call",
+      "name": "SetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "M_WHouse_GuardPoint"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BarrelManSpokenToHeroOnReturn"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Quest.AddQuestInfoBar": [
+      7
+    ],
+    "Quest.GetStateBool(BarrelManSpokenToHeroOnReturn)": [
+      false
+    ],
+    "Quest.GetStateInt(WatchTimer)": [
+      102
+    ],
+    "Quest.GetThingWithScriptName": [
+      {
+        "handle": "M_WHouse_GuardPoint",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetTimer": [
+      45
+    ],
+    "Quest.NewScriptFrame": [
+      false
+    ]
+  },
+  "function": "StartBarrelTimer",
+  "kind": "quest",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua",
+  "sourceSha256": "912f2c79f6addddac3e77e0b54a1b64452e8a8c55ec348a39fee46e45d71f20e"
+}

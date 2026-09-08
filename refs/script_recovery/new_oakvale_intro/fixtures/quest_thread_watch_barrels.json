@@ -1,0 +1,139 @@
+{
+ "__meta__": {
+  "function": "WatchBarrels",
+  "kind": "quest",
+  "expect": [
+   "DisplayGameInfo",
+   "CreateCreature",
+   "EntitySetMaxHealth",
+   "AddItemToContainer"
+  ],
+  "note": "six barrels; breaks 1..5: first = bad deed 0, 3rd/4th = beetles, 5th = gold; stops at AttackOver"
+ },
+ "Quest.GetAllThingsWithScriptName": [
+  [
+   {
+    "handle": "b0",
+    "scope": "Entity"
+   },
+   {
+    "handle": "b1",
+    "scope": "Entity"
+   },
+   {
+    "handle": "b2",
+    "scope": "Entity"
+   },
+   {
+    "handle": "b3",
+    "scope": "Entity"
+   },
+   {
+    "handle": "b4",
+    "scope": "Entity"
+   },
+   {
+    "handle": "b5",
+    "scope": "Entity"
+   }
+  ]
+ ],
+ "Quest.NewScriptFrame": [
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  false
+ ],
+ "Quest.GetStateBool(AttackOver)": [
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  true
+ ],
+ "Quest.GetStateBool(BarrelBrokenInstantaneous)": [
+  true,
+  true,
+  true,
+  true,
+  true,
+  false
+ ],
+ "Quest.GetStateInt(BadDeedsPerformed)": [
+  0
+ ],
+ "Quest.GetStateInt(GoodDeedsPerformed)": [
+  0
+ ],
+ "Quest.GetStateBool(WhichBadDeedsPerformed_0)": [
+  false
+ ],
+ "Quest.MsgIsGameInfoClickedPast": [
+  false,
+  true
+ ],
+ "Quest.GetStateString(BarrelBrokenPos)": [
+  "1.0,2.0,3.0"
+ ],
+ "Quest.CreateCreature": [
+  {
+   "handle": "beetle1",
+   "scope": "Entity"
+  },
+  {
+   "handle": "beetle2",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetThingWithScriptName": [
+  {
+   "handle": "b5",
+   "scope": "Entity"
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+{
+ "__meta__": {
+  "function": "WatchForGotGold",
+  "kind": "quest",
+  "expect": [
+   "SetQuestCardObjective"
+  ],
+  "note": "gold 0,2 then 3: objective 3 fires only when gold exceeds 2"
+ },
+ "Quest.GetHeroGold": [
+  0,
+  2,
+  3
+ ],
+ "Quest.NewScriptFrame": [
+  true,
+  true,
+  true,
+  false
+ ],
+ "Quest.GetActiveQuestName": [
+  "Q_NewOakValeIntro"
+ ]
+}

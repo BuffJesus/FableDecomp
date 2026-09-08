@@ -1,0 +1,58 @@
+{
+ "__meta__": {
+  "function": "Main",
+  "kind": "quest",
+  "expect": [
+   "FinalizeEntityBindings",
+   "SetQuestCardObjective",
+   "CreateThread",
+   "TurnCreatureInto",
+   "ActivateQuest",
+   "KickOffQuestStartScreen"
+  ],
+  "forbid": [
+   "DeactivateQuest",
+   "SetQuestAsCompleted"
+  ],
+  "note": "fresh start: childhood setup then blocks on AttackOver until the frame budget ends"
+ },
+ "Quest.GetActiveQuestName": [
+  "Q_NewOakValeIntro"
+ ],
+ "Quest.IsRegionLoaded": [
+  false,
+  true
+ ],
+ "Quest.NewScriptFrame": [
+  true,
+  true,
+  true,
+  true,
+  false
+ ],
+ "Quest.GetStateBool(AttackOver)": [
+  false
+ ],
+ "Quest.RegisterTimer": [
+  101,
+  102
+ ],
+ "Quest.GetStateInt(TalkIntermittentTimer)": [
+  101
+ ],
+ "Quest.GetStateInt(WatchTimer)": [
+  102
+ ],
+ "Quest.GetHero": [
+  {
+   "handle": "hero",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetThingWithScriptName": [
+  {
+   "handle": "HerosOldHouse",
+   "scope": "Entity"
+  }
+ ]
+}

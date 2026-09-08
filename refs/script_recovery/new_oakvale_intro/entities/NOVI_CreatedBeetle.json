@@ -1,0 +1,43 @@
+{
+  "entity": "NOVI_CreatedBeetle",
+  "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle",
+  "functions": {
+    "Init": {"address": "0x00CDEBB0", "decompileFile": "tu/0x00CDEBB0_FUN_00cdebb0.c", "note": "shared empty default (ret)"},
+    "Main": {"address": "0x00DB80C0", "decompileFile": "tu/0x00DB80C0_NScript_CQ_NewOakValeIntroScript_CNOVI_CreatedBeet.c"}
+  },
+  "localFields": [],
+  "parentFieldsRead": [],
+  "parentFieldsWritten": [],
+  "masterDataAccess": [],
+  "textKeys": [],
+  "objects": ["CREATURE_OAKVALE_STAG_BEETLE (spawned by WatchBarrels 0x00DBE890 with script name NOVI_CreatedBeetle; cross-script-evidence)"],
+  "markersAndScriptNames": ["NOVI_CreatedBeetle"],
+  "animations": [],
+  "cutscenes": [],
+  "constants": [
+    {"name": "LIFETIME_SECONDS", "value": 5, "source": "GSI->SetTimer(timer, 5)", "evidence": "native-decompile"}
+  ],
+  "phases": [
+    {"id": "countdown", "entry": "Main start", "exit": "GetTimer(timer) == 0 -> RemoveThing(me)", "luaFunction": "Main"}
+  ],
+  "operations": [
+    {"seq": 1, "function": "Main", "kind": "wait", "native": "GSI->NewScriptFrame(); if (IsTerminating()) return", "argsKnown": true, "lua": "if not NOVI.frame(quest, me) then return end", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 2, "function": "Main", "kind": "call", "native": "timer = GSI->RegisterTimer(); GSI->SetTimer(timer, 5)", "argsKnown": true, "lua": "local timer = quest:RegisterTimer(); quest:SetTimer(timer, LIFETIME_SECONDS)", "forgeBinding": "RegisterTimer / SetTimer", "evidence": "native-decompile", "note": ""},
+    {"seq": 3, "function": "Main", "kind": "wait", "native": "while (GSI->GetTimer(timer) != 0) { NewScriptFrame; if (IsTerminating()) { DeregisterTimer(timer); return } }", "argsKnown": true, "lua": "while quest:GetTimer(timer) ~= 0 do if not NOVI.frame(quest, me) then quest:DeregisterTimer(timer); return end end", "forgeBinding": "GetTimer / DeregisterTimer", "evidence": "native-decompile", "note": "the second GetTimer call in the decompile has its arg dropped; asm/retail sig GetTimer(long) implies the same timer id"},
+    {"seq": 4, "function": "Main", "kind": "call", "native": "if (!IsTerminating()) GSI->RemoveThing(me, true, true)", "argsKnown": true, "lua": "quest:RemoveThing(me)", "forgeBinding": "RemoveThing", "evidence": "native-decompile", "note": "retail sig RemoveThing(const CScriptThing&, bool, bool); binding takes only the thing. The bare IsTerminating guard is folded into the preceding NOVI.frame"},
+    {"seq": 5, "function": "Main", "kind": "cleanup", "native": "GSI->DeregisterTimer(timer)", "argsKnown": true, "lua": "quest:DeregisterTimer(timer)", "forgeBinding": "DeregisterTimer", "evidence": "native-decompile", "note": ""}
+  ],
+  "apiGaps": [
+    {"retail": "RemoveThing(me, true, true)", "reason": "binding drops the two bools (meaning unknown, both true in retail)", "luaLocation": "Main"}
+  ],
+  "uncertainties": [
+    "Meaning of the two RemoveThing bools is unknown; ForgeFSE's single-arg RemoveThing may not use the same defaults.",
+    "GetTimer semantics (count-down to 0 in seconds) assumed to match retail; the loop exits only on exact 0."
+  ],
+  "cleanupPaths": [
+    {"resource": "timer", "acquired": "seq 2", "releasedOn": ["normal", "terminate"], "missingOn": []}
+  ],
+  "coupling": [
+    "Spawned by the quest-level WatchBarrels thread (0x00DBE890) at BarrelBrokenPos once the hero has broken more than (barrelCount-4) barrels; WatchBarrels also sets its max health to 2.0."
+  ]
+}

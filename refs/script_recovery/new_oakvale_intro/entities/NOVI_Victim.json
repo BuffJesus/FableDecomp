@@ -1,0 +1,110 @@
+{
+  "entity": "NOVI_Victim",
+  "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_Victim",
+  "vtable": "0x12d87b8",
+  "functions": {
+    "Init": {"address": "0x00DAEEB0", "decompileFile": "tu/0x00DAEEB0_NScript_CQ_NewOakValeIntroScript_CNOVI_BookTrader_.c", "note": "Ghidra label 'CNOVI_BookTrader::Init' is a wrong donor name (bsim 0.715); NOVI_Victim vtable slot [2] = 0xdaeeb0 (entity_vtables.json). The body writes this+0x1c DisplayedGameInfo / 0x1d DoneThanks which matches the PDB layout of CNOVI_Victim, and the real BookTrader Init is 0x00DB3F00."},
+    "Main": {"address": "0x00DBCD60", "decompileFile": "tu/0x00DBCD60_FUN_00dbcd60.c", "note": "Ghidra label FUN_00dbcd60; NOVI_Victim vtable slot [1] = 0xdbcd60"}
+  },
+  "luaFile": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Victim.lua",
+  "localFields": [
+    {"name": "DisplayedGameInfo", "offset": "0x1c", "type": "bool", "initValue": false, "evidence": "PDB-name + native-decompile (Init)"},
+    {"name": "DoneThanks", "offset": "0x1d", "type": "bool", "initValue": false, "evidence": "PDB-name + native-decompile (Init)"}
+  ],
+  "parentFieldsRead": ["BullySubdued", "VictimShake", "BullyRanOff", "HeroAttackedVictim", "GivenHeroTeddy", "VictimComplainsAboutLosingTeddy"],
+  "parentFieldsWritten": ["VictimShake", "HeroAttackedVictim", "GivenHeroTeddy", "VictimComplainsAboutLosingTeddy"],
+  "masterDataAccess": [],
+  "textKeys": [
+    "TEXT_QST_048_VICTIM_PLEA",
+    "TEXT_QST_048_VICTIM_PLEA_AFTER_ATTACK",
+    "TEXT_QST_048_VICTIM_THANKS",
+    "TEXT_QST_048_VICTIM_THANKS_AFTER_HIT",
+    "TEXT_QST_048_INSTRUCTION_HITTING_FRIENDS_PC",
+    "TEXT_QST_048_INSTRUCTION_HITTING_FRIENDS",
+    "TEXT_QST_048_VICTIM_EVIL_BROS",
+    "TEXT_QST_048_BULLY_HERO_ATTACKS_VICTIM",
+    "TEXT_QST_048_VICTIM_EVIL_BROS_10"
+  ],
+  "objects": [],
+  "markersAndScriptNames": ["NOVI_Bully", "SCRIPT_NAME_HERO"],
+  "animations": [],
+  "cutscenes": [
+    {"name": "CS_OAKVALEINTRO_BRATHIT", "actors": {"HERO": "hero", "BRAT": "me"}, "condition": "first hero hit (GivenHeroTeddy was false)"}
+  ],
+  "constants": [
+    {"name": "ALIVE_HEALTH_THRESHOLD", "value": 0.0, "source": "_DAT_0122dedc, bytes 00000000 read from retail Fable.exe (GetHealth(me) > DAT gates every Speak)", "evidence": "native-rdata-read"},
+    {"name": "BAD_DEED_HIT_VICTIM", "value": 2, "source": "Main: AddBadDeed(PARENT, 2)", "evidence": "native-decompile"},
+    {"name": "PLEA_PRIORITY", "value": 4, "source": "Main: StartScriptingEntity(me, res, 4) in the plea path (only visible priority)", "evidence": "native-decompile"},
+    {"name": "SPEAK_SELECTION", "value": 0, "source": "Main: Speak(..., 0, ...)", "evidence": "native-decompile"},
+    {"name": "SPEAK_SELECTION_EVIL_BROS", "value": 2, "source": "Main: pCVar15 = 2 before Speak(VICTIM_EVIL_BROS) in the bully-dead path", "evidence": "native-decompile"},
+    {"name": "EXCLUDED_ABILITY", "value": 14, "source": "NOVI_Villager Main line 60: MsgIsHitBySpecialAbilityFrom(0xe, HERO); dropped here", "evidence": "cross-script-evidence"}
+  ],
+  "phases": [
+    {"id": "init", "entry": "Init()", "exit": "return", "luaFunction": "Init"},
+    {"id": "shake", "entry": "each loop while !BullySubdued and VictimShake", "exit": "flag cleared", "luaFunction": "react_to_taunt"},
+    {"id": "freed", "entry": "BullySubdued and !DoneThanks", "exit": "BullyRanOff observed; pushable/movement restored", "luaFunction": "thanks_setup"},
+    {"id": "talk", "entry": "MsgIsTalkedToBy(HERO)", "exit": "tutorial shown once", "luaFunction": "handle_talk / plea / thanks / show_hitting_friends_info"},
+    {"id": "hit", "entry": "hit_by_hero inline true", "exit": "cutscene or conversation done", "luaFunction": "handle_hit / brat_hit_cutscene / evil_bros_exchange"},
+    {"id": "complain", "entry": "VictimComplainsAboutLosingTeddy set by NOVI_Bully", "exit": "flag cleared", "luaFunction": "complain_about_teddy"}
+  ],
+  "operations": [
+    {"seq": 1, "function": "Init", "kind": "state-write", "native": "this+0x1d DoneThanks = 0; this+0x1c DisplayedGameInfo = 0", "argsKnown": true, "lua": "DoneThanks = false; DisplayedGameInfo = false", "forgeBinding": "n/a", "evidence": "native-decompile + PDB-name", "note": ""},
+    {"seq": 2, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsDamageable(me, 0)", "argsKnown": true, "lua": "quest:EntitySetAsDamageable(me, false)", "forgeBinding": "EntitySetAsDamageable", "evidence": "native-decompile", "note": ""},
+    {"seq": 3, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsKillable(me, 0, 0)", "argsKnown": true, "lua": "quest:EntitySetAsKillable(me, false)", "forgeBinding": "EntitySetAsKillable", "evidence": "native-decompile", "note": "retail 3rd arg (0) has no ForgeFSE counterpart"},
+    {"seq": 4, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsToAddToComboMultiplierWhenHit(me, 0)", "argsKnown": true, "lua": "quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)", "forgeBinding": "EntitySetAsToAddToComboMultiplierWhenHit", "evidence": "native-decompile", "note": ""},
+    {"seq": 5, "function": "Init", "kind": "call", "native": "GSI->SetThingHasInformation(me, 0, 0, 0)", "argsKnown": true, "lua": "quest:SetThingHasInformation(me, false)", "forgeBinding": "SetThingHasInformation", "evidence": "native-decompile", "note": "retail 4 args; ForgeFSE 2"},
+    {"seq": 6, "function": "Init", "kind": "call", "native": "GSI->SetIsPushableByHero(ME_THING, 0)", "argsKnown": true, "lua": "quest:SetIsPushableByHero(me, false)", "forgeBinding": "SetIsPushableByHero", "evidence": "native-decompile", "note": ""},
+    {"seq": 7, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsUseMovementInActions(me, 0)", "argsKnown": true, "lua": "quest:EntitySetAsUseMovementInActions(me, false)", "forgeBinding": "EntitySetAsUseMovementInActions", "evidence": "native-decompile", "note": ""},
+    {"seq": 8, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsScared(me, 1)", "argsKnown": true, "lua": "quest:EntitySetAsScared(me, true)", "forgeBinding": "EntitySetAsScared", "evidence": "native-decompile", "note": ""},
+    {"seq": 9, "function": "Main", "kind": "wait", "native": "GSI->NewScriptFrame(); if (IsTerminating()) return;", "argsKnown": true, "lua": "if not NOVI.frame(quest, me) then return end", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 10, "function": "Main", "kind": "wait", "native": "while (!StartScriptingEntity(me, res, <prio>)) { NewScriptFrame; terminate -> LAB_00dbde21 }", "argsKnown": false, "lua": "NOVI.acquire(quest, me, ACQUIRE_PRIORITY)", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 11, "function": "Main", "kind": "call", "native": "GSI->GetThingWithScriptName(\"NOVI_Bully\")", "argsKnown": true, "lua": "local bully = quest:GetThingWithScriptName(BULLY_SCRIPT_NAME)", "forgeBinding": "GetThingWithScriptName", "evidence": "native-decompile", "note": "result register muddled; used as facing target (inference)"},
+    {"seq": 12, "function": "Main", "kind": "branch", "native": "loop: if (!PARENT+0x6c BullySubdued) { if (PARENT+0x48 VictimShake) { PARENT+0x48 = 0; GSI->EntitySetFacingAngleTowardsThing() } }", "argsKnown": false, "lua": "react_to_taunt: F.set(VictimShake,false); quest:EntitySetFacingAngleTowardsThing(me, bully)", "forgeBinding": "EntitySetFacingAngleTowardsThing", "evidence": "native-decompile + PDB-name", "note": "facing args dropped; bully inferred"},
+    {"seq": 13, "function": "Main", "kind": "branch", "native": "else if (!this+0x1d DoneThanks) { this+0x1d = 1; GSI->EntitySetAsScared(); while (!PARENT+0x6d BullyRanOff) { NewScriptFrame; terminate -> LAB_00dbde18 } SetIsPushableByHero(me copy, ?); EntitySetAsUseMovementInActions(); ClearThingHasInformation() }", "argsKnown": false, "lua": "thanks_setup", "forgeBinding": "EntitySetAsScared + SetIsPushableByHero + EntitySetAsUseMovementInActions + ClearThingHasInformation", "evidence": "native-decompile + PDB-name", "note": "bool args dropped; inferred as undoing Init (scared=false, pushable=true, movement=true)"},
+    {"seq": 14, "function": "Main", "kind": "branch", "native": "if (MsgIsTalkedToBy(\"SCRIPT_NAME_HERO\")) (slot 0x6c)", "argsKnown": true, "lua": "if not me:IsTalkedToByHero() then return true end", "forgeBinding": "IsTalkedToByHero", "evidence": "native-decompile + FSE CScriptThingVTable", "note": ""},
+    {"seq": 15, "function": "Main", "kind": "branch", "native": "if (!BullySubdued) -> plea path", "argsKnown": true, "lua": "if not F.get(quest, F.BullySubdued) then plea(...)", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 16, "function": "Main", "kind": "call", "native": "GSI->EntitySetAsScared(); GSI->GetHero(); GSI->EntitySetFacingAngleTowardsThing()", "argsKnown": false, "lua": "quest:EntitySetAsScared(me, false); quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero())", "forgeBinding": "EntitySetAsScared + EntitySetFacingAngleTowardsThing", "evidence": "native-decompile", "note": "scared value inferred false (re-set to 1 after the plea)"},
+    {"seq": 17, "function": "Main", "kind": "call", "native": "movie scope ctor: StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1)", "argsKnown": true, "lua": "begin_movie(quest)", "forgeBinding": "StartMovieSequence + PauseAllNonScriptedEntities", "evidence": "native-decompile", "note": ""},
+    {"seq": 18, "function": "Main", "kind": "wait", "native": "while (!StartScriptingEntity(me, res, 4)) { NewScriptFrame; terminate -> LAB_00dbd3e3 }", "argsKnown": true, "lua": "NOVI.acquire(quest, me, PLEA_PRIORITY)", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": "priority 4 visible"},
+    {"seq": 19, "function": "Main", "kind": "branch", "native": "if (!PARENT+0x6f HeroAttackedVictim) { if GetHealth>0 Speak(GetHero(), \"TEXT_QST_048_VICTIM_PLEA\", 0, ...) + wait } else { if GetHealth>0 Speak(GetHero(), \"TEXT_QST_048_VICTIM_PLEA_AFTER_ATTACK\", 0, ...) + wait }", "argsKnown": false, "lua": "speak_if_alive(quest, me, TEXT.PLEA | TEXT.PLEA_AFTER_ATTACK)", "forgeBinding": "Speak", "evidence": "native-decompile + PDB-name", "note": ""},
+    {"seq": 20, "function": "Main", "kind": "cleanup", "native": "GSI->EntitySetAsScared(me, 1); GSI->EntitySetFacingAngleTowardsThing(me, <thing@-0x144>, 0); PauseAllNonScriptedEntities(0); movie dtor", "argsKnown": false, "lua": "quest:EntitySetAsScared(me, true); quest:EntitySetFacingAngleTowardsThing(me, bully); end_movie(quest)", "forgeBinding": "EntitySetAsScared + EntitySetFacingAngleTowardsThing + PauseAllNonScriptedEntities + EndMovieSequence", "evidence": "native-decompile", "note": "facing target inferred (bully); retail has a 3rd arg 0"},
+    {"seq": 21, "function": "Main", "kind": "call", "native": "thanks path: movie scope ctor; StartScriptingEntity(me) loop (terminate -> LAB_00dbd148)", "argsKnown": false, "lua": "begin_movie(quest); NOVI.acquire(quest, me, ACQUIRE_PRIORITY)", "forgeBinding": "StartMovieSequence + PauseAllNonScriptedEntities + host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 22, "function": "Main", "kind": "branch", "native": "if (!HeroAttackedVictim) Speak(GetHero(), \"TEXT_QST_048_VICTIM_THANKS\", 0, ...) else Speak(GetHero(), \"TEXT_QST_048_VICTIM_THANKS_AFTER_HIT\", 0, ...), each gated by GetHealth>0 and followed by the wait loop", "argsKnown": false, "lua": "speak_if_alive(quest, me, TEXT.THANKS | TEXT.THANKS_AFTER_HIT)", "forgeBinding": "Speak", "evidence": "native-decompile + PDB-name", "note": ""},
+    {"seq": 23, "function": "Main", "kind": "cleanup", "native": "PauseAllNonScriptedEntities(0); movie dtor", "argsKnown": true, "lua": "end_movie(quest)", "forgeBinding": "PauseAllNonScriptedEntities + EndMovieSequence", "evidence": "native-decompile", "note": ""},
+    {"seq": 24, "function": "Main", "kind": "branch", "native": "if (!this+0x1c DisplayedGameInfo) { if (!GSI->IsXbox()) DisplayGameInfo(\"TEXT_QST_048_INSTRUCTION_HITTING_FRIENDS_PC\") else DisplayGameInfo(\"TEXT_QST_048_INSTRUCTION_HITTING_FRIENDS\"); while (!MsgIsGameInfoClickedPast()) { NewScriptFrame; terminate -> LAB_00dbde18 } this+0x1c = 1 }", "argsKnown": true, "lua": "show_hitting_friends_info", "forgeBinding": "DisplayGameInfo + MsgIsGameInfoClickedPast; IsXbox missing", "evidence": "native-decompile + PDB-name", "note": ""},
+    {"seq": 25, "function": "Main", "kind": "branch", "native": "hit = MsgIsHitBy(HERO) (0x54) || (MsgIsHitByAnySpecialAbilityFrom(HERO) (0xa8) && !MsgIsHitBySpecialAbilityFrom(<dropped>, HERO) (0xa4))", "argsKnown": false, "lua": "hit_by_hero(me)", "forgeBinding": "MsgIsHitByHero + MsgIsHitByAnySpecialAbilityFromHero + MsgIsHitByHeroSpecialAbility", "evidence": "native-decompile + FSE CScriptThingVTable; ability 0xe cross-script-evidence", "note": ""},
+    {"seq": 26, "function": "Main", "kind": "call", "native": "GetHero(); EntitySetThingAsAllyOfThing(); GetHero(); EntitySetThingAsAllyOfThing()", "argsKnown": false, "lua": "quest:EntitySetThingAsAllyOfThing(me, hero); quest:EntitySetThingAsAllyOfThing(hero, me)", "forgeBinding": "EntitySetThingAsAllyOfThing", "evidence": "native-decompile; order from NOVI_Villager (cross-script-evidence)", "note": ""},
+    {"seq": 27, "function": "Main", "kind": "state-write", "native": "AddBadDeed(PARENT, 2); PARENT+0x6f HeroAttackedVictim = 1", "argsKnown": true, "lua": "Deeds.add_bad(quest, me, BAD_DEED_HIT_VICTIM); F.set(quest, F.HeroAttackedVictim, true)", "forgeBinding": "quest helper", "evidence": "native-decompile + PDB-name", "note": "repeated on every hit"},
+    {"seq": 28, "function": "Main", "kind": "branch", "native": "if (!PARENT+0x6e GivenHeroTeddy) { PARENT+0x6e = 1; ... BRATHIT cutscene }", "argsKnown": true, "lua": "if not F.get(quest, F.GivenHeroTeddy) then F.set(...,true); brat_hit_cutscene(...)", "forgeBinding": "n/a", "evidence": "native-decompile + PDB-name", "note": "GivenHeroTeddy is reused as 'brat-hit cutscene already played' (retail)"},
+    {"seq": 29, "function": "Main", "kind": "wait", "native": "StartScriptingEntity(me) loop; StartScriptingEntity(GetHero()) loop (terminate -> LAB_00dbde18 / LAB_00dbdddc)", "argsKnown": false, "lua": "NOVI.acquire(me); NOVI.acquire(hero)", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 30, "function": "Main", "kind": "call", "native": "actor map [\"HERO\"]=hero res, [\"BRAT\"]=me res; movie scope ctor; FixMovieSequenceCamera(<1>); RunCutsceneMacro_Func(\"CS_OAKVALEINTRO_BRATHIT\"); FixMovieSequenceCamera(0); ClearThingHasInformation(me); EntitySetFacingAngleTowardsThing(me, <thing@-0x138>, 0); PauseAllNonScriptedEntities(0); movie dtor", "argsKnown": false, "lua": "brat_hit_cutscene", "forgeBinding": "RunCutsceneWithSetup + FixMovieSequenceCamera + ClearThingHasInformation + EntitySetFacingAngleTowardsThing", "evidence": "native-decompile", "note": "facing target inferred (bully)"},
+    {"seq": 31, "function": "Main", "kind": "call", "native": "else: conv = AddNewConversation(); GetThingWithScriptName(\"NOVI_Bully\"); if (!CScriptThing::IsAlive(bully))", "argsKnown": false, "lua": "conv = quest:AddNewConversation(me,false,false); bully = quest:GetThingWithScriptName(...); if not bully:IsAlive()", "forgeBinding": "AddNewConversation + GetThingWithScriptName + IsAlive", "evidence": "native-decompile", "note": "AddNewConversation args dropped"},
+    {"seq": 32, "function": "Main", "kind": "call", "native": "bully dead: movie scope ctor; StartScriptingEntity(me) loop; if GetHealth>0 Speak(GetHero(), \"TEXT_QST_048_VICTIM_EVIL_BROS\", 2, ...) + wait; PauseAllNonScriptedEntities(0); movie dtor", "argsKnown": false, "lua": "begin_movie; NOVI.acquire; speak_if_alive(..., TEXT.EVIL_BROS, 2); end_movie", "forgeBinding": "Speak", "evidence": "native-decompile", "note": "selection method 2 visible"},
+    {"seq": 33, "function": "Main", "kind": "call", "native": "bully alive: AddPersonToConversation(); AddLineToConversation(conv, \"TEXT_QST_048_VICTIM_EVIL_BROS\", ...); AddLineToConversation(conv, \"TEXT_QST_048_BULLY_HERO_ATTACKS_VICTIM\", 0, me, <bully res>)", "argsKnown": false, "lua": "AddPersonToConversation(conv, me); AddLineToConversation(conv, EVIL_BROS, me, bully); AddLineToConversation(conv, BULLY_HERO_ATTACKS_VICTIM, bully, me)", "forgeBinding": "AddPersonToConversation + AddLineToConversation", "evidence": "native-decompile", "note": "speaker/listener roles inferred from key names; conversation never removed (retail)"},
+    {"seq": 34, "function": "Main", "kind": "branch", "native": "LAB_00dbdc58: if (PARENT+0x96 VictimComplainsAboutLosingTeddy) { StartScriptingEntity(me) loop; if GetHealth>0 Speak(GetHero(), \"TEXT_QST_048_VICTIM_EVIL_BROS_10\", 0, ...) + wait; PARENT+0x96 = 0 }", "argsKnown": false, "lua": "complain_about_teddy", "forgeBinding": "Speak", "evidence": "native-decompile + PDB-name", "note": "clears the handshake flag NOVI_Bully waits on"},
+    {"seq": 35, "function": "Main", "kind": "wait", "native": "GSI->NewScriptFrame(); TERM = IsTerminating(); loop while !TERM", "argsKnown": true, "lua": "if not NOVI.frame(quest, me) then return end", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""}
+  ],
+  "apiGaps": [
+    {"retail": "IsXbox()", "reason": "not registered in ForgeFSE", "luaLocation": "show_hitting_friends_info: NOVI.unsupported(quest, \"IsXbox\", {}) (nil -> PC text, which is the retail PC outcome)"},
+    {"retail": "StartScriptingEntity(me, resource, EScriptAIPriority) / resource release", "reason": "scheduler host-managed in ForgeFSE; only the plea priority (4) is visible", "luaLocation": "NOVI.acquire(...) calls"},
+    {"retail": "per-frame IsTerminating() inside Speak wait loops", "reason": "me:Speak is blocking in ForgeFSE", "luaLocation": "speak_if_alive"},
+    {"retail": "RunCutsceneMacro_Func(name, actorMap, ...)", "reason": "ForgeFSE RunCutsceneWithSetup(name, actors, flags, ...); retail extra args dropped", "luaLocation": "brat_hit_cutscene"},
+    {"retail": "movie scope object dtor", "reason": "retail RAII object; EndMovieSequence inside the dtor is inferred", "luaLocation": "end_movie"},
+    {"retail": "OnPredicateFail", "reason": "CNOVI_Victim uses the shared vtable slot [5] 0xcdebd0 (no override); no ForgeFSE hook either", "luaLocation": "not emitted"}
+  ],
+  "uncertainties": [
+    "All EntitySetAsScared / SetIsPushableByHero / EntitySetAsUseMovementInActions bool args in Main are dropped; values inferred as undoing Init (scared=false before the plea, pushable/movement=true after the bully runs off).",
+    "EntitySetFacingAngleTowardsThing targets (taunt reaction, after plea, after BRATHIT) are inferred as the bully thing fetched at loop start; only the plea entry is confirmed as GetHero().",
+    "EntitySetThingAsAllyOfThing pair after a hit has dropped args; (me, hero) then (hero, me) taken from NOVI_Villager.",
+    "Conversation speaker/listener roles in evil_bros_exchange are inferred from the text-key names; retail passes (conv, key, 0, me, <bully resource>) for the second line.",
+    "Excluded special-ability enum (0xe) in hit_by_hero comes from NOVI_Villager; dropped here.",
+    "The wrong 'CNOVI_BookTrader::Init' label: identification as Victim's Init rests on the vtable slot and the 0x1c/0x1d field writes; no PDB symbol names this address directly.",
+    "ALIVE_HEALTH_THRESHOLD (0.0) was read from retail Fable.exe .rdata, not from the decompile text."
+  ],
+  "cleanupPaths": [
+    {"resource": "control", "acquired": "seq 10 / 18 / 21 / 29 / 32 / 34", "releasedOn": [], "missingOn": ["normal", "terminate"], "note": "retail never calls a release; resource destructors run on return (LAB_00dbde21)"},
+    {"resource": "movie", "acquired": "seq 17 / 21 / 30 / 32", "releasedOn": ["normal", "terminate"], "missingOn": [], "note": "PauseAllNonScriptedEntities(0) + dtor on every path incl. LAB_00dbddc1/LAB_00dbd3e3/LAB_00dbdda6/LAB_00dbd148/LAB_00dbddea"},
+    {"resource": "conversation", "acquired": "seq 31 / 33", "releasedOn": [], "missingOn": ["normal", "terminate"], "note": "retail never RemoveConversation; in the bully-dead path the conversation is created and then unused"},
+    {"resource": "infobar", "acquired": "seq 24 (DisplayGameInfo)", "releasedOn": ["clicked past"], "missingOn": ["terminate"]}
+  ]
+}

@@ -1,0 +1,80 @@
+{
+ "__meta__": {
+  "function": "Main",
+  "kind": "quest",
+  "expect": [
+   "DeactivateQuest",
+   "TransitionToTheme",
+   "EntityTeleportToThing",
+   "PlayCutscene",
+   "SetQuestAsCompleted",
+   "DeactivateQuestLater"
+  ],
+  "forbid": [
+   "TurnCreatureInto",
+   "KickOffQuestStartScreen"
+  ],
+  "note": "AttackOver persisted true: Main tears down the post-attack section, DoMission skips the childhood and runs AttackStuff/PostAttackStuff/completion"
+ },
+ "Quest.GetActiveQuestName": [
+  "Q_NewOakValeIntro"
+ ],
+ "Quest.IsRegionLoaded": [
+  true
+ ],
+ "Quest.NewScriptFrame": [
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  false
+ ],
+ "Quest.GetStateBool(AttackOver)": [
+  true
+ ],
+ "Quest.GetHero": [
+  {
+   "handle": "hero",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetThingWithScriptName(M_PostAttackStart)": [
+  {
+   "handle": "M_PostAttackStart",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetAllThingsWithScriptName(M_PostAttackStart)": [
+  [
+   {
+    "handle": "M_PostAttackStart",
+    "scope": "Entity"
+   }
+  ]
+ ],
+ "Quest.GetThingWithScriptName(V_OakVale)": [
+  {
+   "handle": "V_OakVale",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetThingWithScriptName(MK_OVI_DADTRIGGER)": [
+  {
+   "handle": "MK_OVI_DADTRIGGER",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.IsDistanceBetweenThingsUnder": [
+  false,
+  false,
+  true
+ ]
+}

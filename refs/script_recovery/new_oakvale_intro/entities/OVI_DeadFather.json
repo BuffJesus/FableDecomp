@@ -1,0 +1,58 @@
+{
+  "entity": "OVI_DeadFather",
+  "nativeClass": "NScript::CQ_NewOakValeIntroScript::COVI_DeadFather",
+  "functions": {
+    "Init": {"address": "0x00DB8290", "decompileFile": "tu/0x00DB8290_FUN_00db8290.c"},
+    "Main": {"address": "0x00DB8300", "decompileFile": "tu/0x00DB8300_NScript_CQ_NewOakValeIntroScript_COVI_DeadFather_M.c"},
+    "OnPredicateFail": {"address": "0x00DB8260", "decompileFile": "tu/0x00DB8260_FUN_00db8260.c", "note": "empty override (ret)"}
+  },
+  "localFields": [],
+  "parentFieldsRead": ["DadFound"],
+  "parentFieldsWritten": [],
+  "masterDataAccess": [],
+  "textKeys": [],
+  "objects": [],
+  "markersAndScriptNames": ["HUD_ORB_QUEST_CORE", "MK_OVID_DAD"],
+  "animations": ["CS_DEAD_DAD"],
+  "cutscenes": [],
+  "constants": [
+    {"name": "SCRIPT_PRIORITY", "value": 4, "source": "asm 0xdb838c: push 4 before StartScriptingEntity (decompile dropped the args)", "evidence": "native-decompile + disassembly"},
+    {"name": "LOOP_FOREVER", "value": -1, "source": "PlayLoopingAnimation(..., 0xffffffff, ...)", "evidence": "native-decompile"},
+    {"name": "FACE_MARKER_FLAG", "value": true, "source": "asm 0xdb844f: push 1 consumed by EntitySetFacingAngle(me, angle, true)", "evidence": "disassembly"}
+  ],
+  "phases": [
+    {"id": "posed", "entry": "Main start", "exit": "DadFound becomes true", "luaFunction": "Main"},
+    {"id": "found", "entry": "DadFound true -> MiniMapRemoveMarker", "exit": "termination only", "luaFunction": "Main tail loop"}
+  ],
+  "operations": [
+    {"seq": 1, "function": "Init", "kind": "call", "native": "GSI->MiniMapAddMarker(me, \"HUD_ORB_QUEST_CORE\")", "argsKnown": true, "lua": "quest:MiniMapAddMarker(me, MINIMAP_MARKER)", "forgeBinding": "MiniMapAddMarker", "evidence": "native-decompile", "note": "arg list dropped by decompiler; the string and this+8 are the only values built for the call"},
+    {"seq": 2, "function": "Init", "kind": "call", "native": "GSI->SetIsPushableByHero(me, false)", "argsKnown": true, "lua": "quest:SetIsPushableByHero(me, false)", "forgeBinding": "SetIsPushableByHero", "evidence": "native-decompile", "note": ""},
+    {"seq": 3, "function": "Main", "kind": "wait", "native": "GSI->NewScriptFrame(); if (IsTerminating()) return", "argsKnown": true, "lua": "if not NOVI.frame(quest, me) then return end", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 4, "function": "Main", "kind": "wait", "native": "while (!GSI->StartScriptingEntity(me, res, 4)) { NewScriptFrame; if terminating goto LAB_00db8507 }", "argsKnown": true, "lua": "if not NOVI.acquire(quest, me, SCRIPT_PRIORITY) then NOVI.release(quest, me); return end", "forgeBinding": "host-managed", "evidence": "native-decompile + disassembly (push 4)", "note": ""},
+    {"seq": 5, "function": "Main", "kind": "call", "native": "GSI->EntityTeleportToThing(me, GSI->GetThingWithScriptName(\"MK_OVID_DAD\"), false)", "argsKnown": true, "lua": "quest:EntityTeleportToThing(me, marker)", "forgeBinding": "EntityTeleportToThing / GetThingWithScriptName", "evidence": "native-decompile + asm 0xdb83f4 (push 0 = trailing bool)", "note": ""},
+    {"seq": 6, "function": "Main", "kind": "call", "native": "GSI->EntitySetFacingAngle(me, GetThingWithScriptName(\"MK_OVID_DAD\").GetAngleXY(), true)", "argsKnown": true, "lua": "marker = quest:GetThingWithScriptName(MARKER_DAD); quest:EntitySetFacingAngle(me, marker:GetAngleXY(), FACE_MARKER_FLAG)", "forgeBinding": "GetThingWithScriptName / GetAngleXY (CScriptThing usertype) / EntitySetFacingAngle", "evidence": "native-decompile + asm 0xdb8453 (call [markerThing+0x28]; CScriptThing vtable 0x01238C8C +0x28 = ?GetAngleXY@CScriptThing) + GSI slot 0x768 = EntitySetFacingAngle", "note": "decompile mislabels the vtable call as GSI->IsActiveThreadTerminating(1) (GSI slot +0x28); retail looks the marker up twice"},
+    {"seq": 7, "function": "Main", "kind": "call", "native": "res.PlayLoopingAnimation(\"CS_DEAD_DAD\", -1, false, true, false, true, true, DAT_01375748(=1), false, false)", "argsKnown": false, "lua": "me:PlayLoopingAnimation(ANIM_DEAD_DAD, LOOP_FOREVER)", "forgeBinding": "PlayLoopingAnimation", "evidence": "native-decompile + asm push sequence 0xdb8486-0xdb849e", "note": "mangled sig is (CCharString&, long, 7x bool) but 8 bool-sized pushes precede the call; exact bool mapping unresolved; binding accepts (name, loopCount, useMovement?, allowLooking?) so only the loop count is passed"},
+    {"seq": 8, "function": "Main", "kind": "wait", "native": "while (PARENT->DadFound == false) { NewScriptFrame; if terminating goto LAB_00db8507 }", "argsKnown": true, "lua": "while not F.get(quest, F.DadFound) do if not NOVI.frame(quest, me) then NOVI.release(quest, me); return end end", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 9, "function": "Main", "kind": "call", "native": "GSI->MiniMapRemoveMarker(me)", "argsKnown": false, "lua": "quest:MiniMapRemoveMarker(me)", "forgeBinding": "MiniMapRemoveMarker", "evidence": "native-decompile", "note": "arg dropped by decompiler; me is the only marker this class added"},
+    {"seq": 10, "function": "Main", "kind": "wait", "native": "do { NewScriptFrame } while (!IsTerminating())", "argsKnown": true, "lua": "while NOVI.frame(quest, me) do end", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": "idle forever"},
+    {"seq": 11, "function": "Main", "kind": "cleanup", "native": "LAB_00db8507: ~CScriptGameResourceObjectScriptedThingBase (scripted control released)", "argsKnown": true, "lua": "NOVI.release(quest, me)", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": "reached on every exit path after the acquire"}
+  ],
+  "apiGaps": [
+    {"retail": "PlayLoopingAnimation(name, -1, bool x7)", "reason": "binding exposes only (name, loopCount, useMovement?, allowLooking?); the retail flag values are not mapped", "luaLocation": "Main"},
+    {"retail": "EntityTeleportToThing(me, marker, false)", "reason": "binding drops the trailing bool", "luaLocation": "Main"},
+    {"retail": "OnPredicateFail virtual (entity vtable slot 5)", "reason": "empty in retail; ForgeFSE has no predicate-fail hook anyway", "luaLocation": "OnPredicateFail"}
+  ],
+  "uncertainties": [
+    "PlayLoopingAnimation bool flags: 8 bool-sized pushes for 7 bool params; which retail flags correspond to the binding's useMovement/allowLooking is unresolved, so only the loop count (-1) is passed.",
+    "The minimap marker is added in Init and only removed when DadFound is set; on termination before that the marker stays (retail behaviour, kept).",
+    "MiniMapAddMarker / MiniMapRemoveMarker argument lists were dropped by the decompiler; (me, \"HUD_ORB_QUEST_CORE\") and (me) are inferred from the values constructed for the calls.",
+    "NOVI.acquire is assumed to return false when the thread terminates during the StartScriptingEntity wait."
+  ],
+  "cleanupPaths": [
+    {"resource": "control", "acquired": "seq 4", "releasedOn": ["normal (unreachable; idle loop)", "terminate"], "missingOn": []},
+    {"resource": "marker", "acquired": "Init seq 1", "releasedOn": ["DadFound set (seq 9)"], "missingOn": ["terminate before DadFound (retail leaves the marker)"]}
+  ],
+  "coupling": [
+    "Waits on quest flag DadFound (PARENT+0x51), set elsewhere in the quest (hero finding the father)."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+ "__meta__": {
+  "function": "StartBarrelTimer",
+  "kind": "quest",
+  "expect": [
+   "AddQuestInfoBar",
+   "ChangeQuestInfoBarColour",
+   "UpdateQuestInfoBar",
+   "RemoveQuestInfoElement"
+  ],
+  "note": "timer armed on the second poll; hero away (red) then at the guard point (green); BarrelMan returns on the third loop"
+ },
+ "Quest.GetStateInt(WatchTimer)": [
+  102
+ ],
+ "Quest.GetTimer": [
+  0,
+  45,
+  44,
+  43
+ ],
+ "Quest.NewScriptFrame": [
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  false
+ ],
+ "Quest.AddQuestInfoBar": [
+  7
+ ],
+ "Quest.GetThingWithScriptName": [
+  {
+   "handle": "M_WHouse_GuardPoint",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetHero": [
+  {
+   "handle": "hero",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.IsDistanceBetweenThingsUnder": [
+  false,
+  true
+ ],
+ "Quest.GetStateBool(BarrelManSpokenToHeroOnReturn)": [
+  false,
+  false,
+  true
+ ]
+}

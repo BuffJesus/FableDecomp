@@ -1,0 +1,394 @@
+{
+  "events": [
+    {
+      "arguments": [
+        "VictimShake",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "DadFound",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "AttackOver",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "DadFinishedIntro",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BullySubdued",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BullyRanOff",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GivenHeroTeddy",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "HeroAttackedVictim",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GoodDeedsPerformed",
+        0
+      ],
+      "event": "api-call",
+      "name": "SetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BadDeedsPerformed",
+        0
+      ],
+      "event": "api-call",
+      "name": "SetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GuardsDealtWithBadDeeds",
+        0
+      ],
+      "event": "api-call",
+      "name": "SetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "HeroDiscoveredInfidelity",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BarrelManLeftHeroInCharge",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BarrelManSpokenToHeroOnReturn",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "InstructionGiven_Barrels",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "ReceiveKiss",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "ReceiveHug",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BarrelBrokenPersistent",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TalkIntermittentTimer"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "RegisterTimer",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TalkIntermittentTimer",
+        101
+      ],
+      "event": "api-call",
+      "name": "SetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "WatchTimer"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "RegisterTimer",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "WatchTimer",
+        102
+      ],
+      "event": "api-call",
+      "name": "SetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TalkIntermittentTimer"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        0,
+        0
+      ],
+      "event": "api-call",
+      "name": "SetTimer",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIBullyHealthCounter",
+        -999
+      ],
+      "event": "api-call",
+      "name": "SetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TeddyRuined",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GuardsSpokenOnce",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TalkingToWoman",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GivenSweets",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GivenTheresaChocs",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "VictimComplainsAboutLosingTeddy",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "WhichBadDeedsPerformed_0",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "WhichBadDeedsPerformed_1",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "WhichBadDeedsPerformed_2",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "WhichBadDeedsPerformed_3",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "WhichBadDeedsPerformed_4",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Quest.GetStateInt(TalkIntermittentTimer)": [
+      null,
+      101
+    ],
+    "Quest.GetStateInt(WatchTimer)": [
+      null,
+      102
+    ],
+    "Quest.RegisterTimer": [
+      101,
+      102
+    ]
+  },
+  "function": "Init",
+  "kind": "quest",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua",
+  "sourceSha256": "912f2c79f6addddac3e77e0b54a1b64452e8a8c55ec348a39fee46e45d71f20e"
+}

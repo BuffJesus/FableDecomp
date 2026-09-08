@@ -1,0 +1,271 @@
+{
+  "events": [
+    {
+      "arguments": [
+        "StartOakVale"
+      ],
+      "event": "api-call",
+      "name": "IsRegionLoaded",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "AttackOver"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        2.0,
+        0.0
+      ],
+      "event": "api-call",
+      "name": "FadeScreenOutUntilNextCallToFadeScreenIn",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        "CREATURE_HERO_CHILD"
+      ],
+      "event": "api-call",
+      "name": "TurnCreatureInto",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "WatchBarrels"
+      ],
+      "event": "api-call",
+      "name": "CreateThread",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "WatchForGotGold"
+      ],
+      "event": "api-call",
+      "name": "CreateThread",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "ManageQuestCoreMarkers"
+      ],
+      "event": "api-call",
+      "name": "CreateThread",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        46
+      ],
+      "event": "api-call",
+      "name": "CacheMusicSet",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "Q_NewOakValeIntro_PreAttack"
+      ],
+      "event": "api-call",
+      "name": "ActivateQuest",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        false
+      ],
+      "event": "api-call",
+      "name": "EntitySetAsKillable",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        true
+      ],
+      "event": "api-call",
+      "name": "SetTimeAsStopped",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        12.0
+      ],
+      "event": "api-call",
+      "name": "SetTimeOfDay",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        false
+      ],
+      "event": "api-call",
+      "name": "SetHeroSleepingAsEnabled",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        true
+      ],
+      "event": "api-call",
+      "name": "DisplayMoneyBag",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "HerosOldHouse"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "HerosOldHouse",
+          "scope": "Entity"
+        },
+        true
+      ],
+      "event": "api-call",
+      "name": "OverrideAutomaticHouseLocking",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "HerosOldHouse",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "OpenHouseDoors",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetActiveQuestName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "Q_NewOakValeIntro",
+        false,
+        true
+      ],
+      "event": "api-call",
+      "name": "KickOffQuestStartScreen",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        19,
+        false,
+        true
+      ],
+      "event": "api-call",
+      "name": "OverrideMusic",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "AttackOver"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Quest.GetActiveQuestName": [
+      "Q_NewOakValeIntro"
+    ],
+    "Quest.GetHero": [
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetStateBool(AttackOver)": [
+      false
+    ],
+    "Quest.GetThingWithScriptName": [
+      {
+        "handle": "HerosOldHouse",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.IsRegionLoaded": [
+      true
+    ],
+    "Quest.NewScriptFrame": [
+      true,
+      false
+    ]
+  },
+  "function": "DoMission",
+  "kind": "quest",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua",
+  "sourceSha256": "912f2c79f6addddac3e77e0b54a1b64452e8a8c55ec348a39fee46e45d71f20e"
+}

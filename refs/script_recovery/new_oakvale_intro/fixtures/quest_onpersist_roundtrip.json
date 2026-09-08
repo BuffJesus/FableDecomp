@@ -1,0 +1,17 @@
+{
+ "__meta__": {
+  "function": "OnPersist",
+  "kind": "quest",
+  "expect": [
+   "PersistTransferBool",
+   "SetStateBool"
+  ],
+  "note": "only AttackOver crosses the save boundary"
+ },
+ "Quest.GetStateBool(AttackOver)": [
+  true
+ ],
+ "Quest.PersistTransferBool": [
+  true
+ ]
+}

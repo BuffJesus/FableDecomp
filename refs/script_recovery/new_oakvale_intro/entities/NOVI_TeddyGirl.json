@@ -1,0 +1,124 @@
+{
+  "entity": "NOVI_TeddyGirl",
+  "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl",
+  "functions": {
+    "Init": {"address": "0x00DAF000", "decompileFile": "tu/0x00DAF000_NScript_CQ_NewOakValeIntroScript_CNOVI_TeddyGirl_I.c"},
+    "Main": {"address": "0x00DAF080", "decompileFile": "tu/0x00DAF080_FUN_00daf080.c"},
+    "GivenTeddy": {"address": "0x00DB0600", "decompileFile": "tu/0x00DB0600_NScript_CQ_NewOakValeIntroScript_CNOVI_TeddyGirl_G.c", "note": "private helper called from Main"}
+  },
+  "localFields": [
+    {"name": "DoneIntro", "offset": "0x1c", "initValue": false, "evidence": "PDB-name"},
+    {"name": "FoundTeddy", "offset": "0x1d", "initValue": false, "evidence": "PDB-name"},
+    {"name": "SpokeAboutFindingTeddy", "offset": "0x1e", "initValue": false, "evidence": "PDB-name", "note": "never read or written by Main (native-decompile)"},
+    {"name": "HeroHitMe", "offset": "0x1f", "initValue": false, "evidence": "PDB-name"}
+  ],
+  "parentFieldsRead": ["SpokeAboutFindingTeddy", "TeddyRuined"],
+  "parentFieldsWritten": ["GoodDeedsPerformed (via AddGoodDeed)", "BadDeedsPerformed/WhichBadDeedsPerformed[2] (via AddBadDeed)"],
+  "masterDataAccess": [
+    {"field": "TeddySolution", "offset": "0x54", "op": "write", "value": "B", "where": "GivenTeddy 0x00DB0600", "evidence": "native-decompile"},
+    {"field": "TeddySolution", "offset": "0x54", "op": "write", "value": "C", "where": "Main teddy_ruined", "evidence": "native-decompile"}
+  ],
+  "textKeys": [
+    "TEXT_QST_048_TEDDYGIRL_LOST_TEDDY", "TEXT_QST_048_TEDDYGIRL_PLEA_POST_BEATEN", "TEXT_QST_048_TEDDYGIRL_FOUND_TEDDY",
+    "TEXT_QST_048_TEDDYGIRL_REPEAT_PLEA", "TEXT_QST_048_TEDDYGIRL_REPEAT_FOUND", "TEXT_QST_048_TEDDYGIRL_DONT_WANT",
+    "TEXT_QST_048_TEDDYGIRL_BAD_FEELING", "TEXT_QST_048_TEDDYGIRL_TEDDY_RUINED", "TEXT_QST_048_TEDDYGIRL_DONT_HIT",
+    "TEXT_QST_048_GIVE_TEDDY_TO_GIRL", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO"
+  ],
+  "objects": ["OBJECT_TEDDY_BEAR_UNGIVEABLE"],
+  "markersAndScriptNames": ["NOVI_Bully", "NOVI_AffairWife", "SCRIPT_NAME_HERO"],
+  "animations": [],
+  "cutscenes": [
+    {"kind": "StartMovieSequence(\"\") + PauseAllNonScriptedEntities(true)", "where": "offer_teddy, receive_item (both branches), chat, scold_hero", "evidence": "native-decompile"}
+  ],
+  "constants": [
+    {"name": "BULLY_NEAR_DISTANCE", "value": 10.0, "source": "IsDistanceBetweenThingsUnder(me, bully, 10.0) line 468", "evidence": "native-decompile"},
+    {"name": "HERO_FAR_DISTANCE", "value": 20.0, "source": "IsDistanceBetweenThingsOver(me, hero, 20.0) line 507-509", "evidence": "native-decompile"},
+    {"name": "WIFE_ARRIVE_RADIUS", "value": 3.0, "source": "MoveToThing 0x40400000 line 501", "evidence": "native-decompile"},
+    {"name": "WIFE_MOVE_TYPE", "value": 1, "source": "MoveToThing arg line 501", "evidence": "native-decompile"},
+    {"name": "SPEAK_MIN_HEALTH", "value": 0.0, "source": "_DAT_0122dedc read from retail .rdata (rdfloat.py)", "evidence": "native-decompile"},
+    {"name": "SPEECH_METHOD", "value": 0, "source": "Speak arg pCVar20=0 on every Speak", "evidence": "native-decompile"},
+    {"name": "BAD_DEED_HIT_ME", "value": 2, "source": "AddBadDeed(PARENT, 2) line 803", "evidence": "native-decompile"},
+    {"name": "WALK_OFF_PRIORITY", "value": 4, "source": "StartScriptingEntity(me, res, 4) line 486", "evidence": "native-decompile"}
+  ],
+  "phases": [
+    {"id": "offer", "entry": "IsTalkedToByHero && hero possesses teddy", "exit": "yes -> GivenTeddy / no -> REPEAT_PLEA", "luaFunction": "offer_teddy"},
+    {"id": "present", "entry": "MsgIsPresentedWithItem", "exit": "teddy -> GivenTeddy; other item && !FoundTeddy -> DONT_WANT", "luaFunction": "receive_item"},
+    {"id": "ruined", "entry": "PARENT.SpokeAboutFindingTeddy && bully within 10.0", "exit": "RemoveThing(me) after walking to NOVI_AffairWife", "luaFunction": "teddy_ruined"},
+    {"id": "chat", "entry": "IsTalkedToByHero (second check, no teddy)", "exit": "one line spoken", "luaFunction": "chat"},
+    {"id": "hit", "entry": "hero hit me", "exit": "HeroHitMe=true, bad deed 2, DONT_HIT", "luaFunction": "scold_hero"}
+  ],
+  "operations": [
+    {"seq": 1, "function": "Init", "kind": "state-write", "native": "this[0x1c..0x1f] = 0", "argsKnown": true, "lua": "DoneIntro=FoundTeddy=SpokeAboutFindingTeddy=HeroHitMe=false", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 2, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsDamageable(me,0)", "argsKnown": true, "lua": "quest:EntitySetAsDamageable(me,false)", "forgeBinding": "EntitySetAsDamageable", "evidence": "native-decompile", "note": ""},
+    {"seq": 3, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsKillable(me,0,0)", "argsKnown": true, "lua": "quest:EntitySetAsKillable(me,false)", "forgeBinding": "EntitySetAsKillable", "evidence": "native-decompile", "note": "third retail arg unbound"},
+    {"seq": 4, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsToAddToComboMultiplierWhenHit(me,0)", "argsKnown": true, "lua": "quest:EntitySetAsToAddToComboMultiplierWhenHit(me,false)", "forgeBinding": "EntitySetAsToAddToComboMultiplierWhenHit", "evidence": "native-decompile", "note": ""},
+    {"seq": 5, "function": "Init", "kind": "call", "native": "GSI->SetThingHasInformation(me,0,1,0)", "argsKnown": true, "lua": "quest:SetThingHasInformation(me,false)", "forgeBinding": "SetThingHasInformation", "evidence": "native-decompile", "note": "binding takes 2 args"},
+    {"seq": 6, "function": "Main", "kind": "wait", "native": "NewScriptFrame + IsTerminating", "argsKnown": true, "lua": "NOVI.frame", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 7, "function": "Main", "kind": "call", "native": "GSI->GetThingWithScriptName(\"NOVI_Bully\")", "argsKnown": true, "lua": "bully = quest:GetThingWithScriptName(BULLY_SCRIPT_NAME)", "forgeBinding": "GetThingWithScriptName", "evidence": "native-decompile", "note": "held for the whole loop"},
+    {"seq": 8, "function": "Main", "kind": "branch", "native": "me->MsgIsTalkedToBy(\"SCRIPT_NAME_HERO\") && GSI->IsObjectInThingsPossession(GetHero(), \"OBJECT_TEDDY_BEAR_UNGIVEABLE\")", "argsKnown": true, "lua": "me:IsTalkedToByHero() and quest:IsObjectInThingsPossession(quest:GetHero(), TEDDY_OBJECT)", "forgeBinding": "IsTalkedToByHero|IsObjectInThingsPossession", "evidence": "native-decompile", "note": "CScriptThing slot 0x6c = MsgIsTalkedToBy (FSE EntityScriptingAPI.h)"},
+    {"seq": 9, "function": "Main", "kind": "wait", "native": "StartScriptingEntity(me,res,?) loop", "argsKnown": false, "lua": "NOVI.acquire(quest, me, DEFAULT_PRIORITY)", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": "priority dropped"},
+    {"seq": 10, "function": "Main", "kind": "call", "native": "GSI->StartMovieSequence(\"\", movie); GSI->PauseAllNonScriptedEntities(1)", "argsKnown": true, "lua": "begin_cutscene(quest)", "forgeBinding": "StartMovieSequence|PauseAllNonScriptedEntities", "evidence": "native-decompile", "note": ""},
+    {"seq": 11, "function": "Main", "kind": "branch", "native": "if (!DoneIntro) { if (!HeroHitMe) ... else ... }", "argsKnown": true, "lua": "if not DoneIntro then if not HeroHitMe", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 12, "function": "Main", "kind": "call", "native": "if GetHealth(me) > 0: Speak(hero, TEXT_QST_048_TEDDYGIRL_LOST_TEDDY, 0,...) + IsPerformingScriptTask wait", "argsKnown": true, "lua": "speak_if_alive(TEXT_LOST_TEDDY)", "forgeBinding": "GetHealth|SpeakAndWait", "evidence": "native-decompile", "note": ""},
+    {"seq": 13, "function": "Main", "kind": "call", "native": "Speak(hero, TEXT_QST_048_TEDDYGIRL_PLEA_POST_BEATEN, 0,...) + wait", "argsKnown": true, "lua": "speak_if_alive(TEXT_PLEA_POST_BEATEN)", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": ""},
+    {"seq": 14, "function": "Main", "kind": "state-write", "native": "this[0x1c] = 1", "argsKnown": true, "lua": "DoneIntro = true", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 15, "function": "Main", "kind": "call", "native": "GSI->GiveHeroYesNoQuestion(TEXT_QST_048_GIVE_TEDDY_TO_GIRL, TEXT_OBJECT_HERO_ANSWER_YES, TEXT_OBJECT_HERO_ANSWER_NO, \"\")", "argsKnown": true, "lua": "quest:GiveHeroYesNoQuestion(...)", "forgeBinding": "GiveHeroYesNoQuestion", "evidence": "native-decompile", "note": ""},
+    {"seq": 16, "function": "Main", "kind": "wait", "native": "while (MsgIsQuestionAnsweredYesOrNo() < 0) NewScriptFrame", "argsKnown": true, "lua": "while answer < 0 do NOVI.frame", "forgeBinding": "MsgIsQuestionAnsweredYesOrNo", "evidence": "native-decompile", "note": "terminate -> PauseAllNonScriptedEntities(0), return"},
+    {"seq": 17, "function": "Main", "kind": "branch", "native": "answer == 1", "argsKnown": true, "lua": "if answer == 1", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 18, "function": "Main", "kind": "call", "native": "Speak(hero, TEXT_QST_048_TEDDYGIRL_FOUND_TEDDY) + wait; GivenTeddy()", "argsKnown": true, "lua": "speak_if_alive(TEXT_FOUND_TEDDY); given_teddy()", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": ""},
+    {"seq": 19, "function": "Main", "kind": "call", "native": "Speak(hero, TEXT_QST_048_TEDDYGIRL_REPEAT_PLEA) + wait", "argsKnown": true, "lua": "speak_if_alive(TEXT_REPEAT_PLEA)", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": "answer != 1"},
+    {"seq": 20, "function": "Main", "kind": "cleanup", "native": "GSI->PauseAllNonScriptedEntities(0); ~CScriptGameResourceObjectMovieBase", "argsKnown": true, "lua": "end_cutscene(quest)", "forgeBinding": "PauseAllNonScriptedEntities|EndMovieSequence", "evidence": "native-decompile", "note": "EndMovieSequence is an inference for the movie dtor"},
+    {"seq": 21, "function": "Main", "kind": "branch", "native": "me->MsgIsPresentedWithItem(&item) && item == \"OBJECT_TEDDY_BEAR_UNGIVEABLE\"", "argsKnown": true, "lua": "presented and item == TEDDY_OBJECT", "forgeBinding": "MsgIsPresentedWithItem", "evidence": "native-decompile", "note": "else branch of seq 8; slot 0x8c"},
+    {"seq": 22, "function": "Main", "kind": "wait", "native": "StartScriptingEntity loop", "argsKnown": false, "lua": "NOVI.acquire", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 23, "function": "Main", "kind": "state-write", "native": "this[0x1c] = 1", "argsKnown": true, "lua": "DoneIntro = true", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 24, "function": "Main", "kind": "call", "native": "StartMovieSequence; PauseAll(1); Speak(FOUND_TEDDY)+wait; GivenTeddy(); PauseAll(0); ~movie", "argsKnown": true, "lua": "begin_cutscene; speak_if_alive(TEXT_FOUND_TEDDY); given_teddy; end_cutscene", "forgeBinding": "StartMovieSequence|SpeakAndWait|PauseAllNonScriptedEntities", "evidence": "native-decompile", "note": ""},
+    {"seq": 25, "function": "Main", "kind": "branch", "native": "MsgIsPresentedWithItem(&item) && CCharString::operator!=(item, ?) && !FoundTeddy", "argsKnown": false, "lua": "elseif not FoundTeddy", "forgeBinding": "MsgIsPresentedWithItem", "evidence": "inference", "note": "comparison operand dropped; read as 'item is not the teddy'"},
+    {"seq": 26, "function": "Main", "kind": "call", "native": "acquire; StartMovieSequence; PauseAll(1); Speak(TEXT_QST_048_TEDDYGIRL_DONT_WANT)+wait; PauseAll(0); ~movie", "argsKnown": true, "lua": "receive_item other-item branch", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": ""},
+    {"seq": 27, "function": "Main", "kind": "branch", "native": "PARENT+0x70 (SpokeAboutFindingTeddy) && IsDistanceBetweenThingsUnder(me, bully, 10.0)", "argsKnown": true, "lua": "F.get(quest, F.SpokeAboutFindingTeddy) and quest:IsDistanceBetweenThingsUnder(me, bully, 10.0)", "forgeBinding": "IsDistanceBetweenThingsUnder", "evidence": "native-decompile", "note": "the 'thing' at &uStack_14c is the NOVI_Bully lookup from seq 7 (inference from the object built at lines 16-22)"},
+    {"seq": 28, "function": "Main", "kind": "call", "native": "conv = AddNewConversation(?); AddPersonToConversation(conv, GetHero()); AddLineToConversation(conv, TEXT_QST_048_TEDDYGIRL_TEDDY_RUINED, 0, me, hero)", "argsKnown": false, "lua": "teddy_ruined conversation", "forgeBinding": "AddNewConversation|AddPersonToConversation|AddLineToConversation", "evidence": "native-decompile", "note": "AddNewConversation args dropped"},
+    {"seq": 29, "function": "Main", "kind": "state-write", "native": "MASTER+0x54 TeddySolution = \"C\"", "argsKnown": true, "lua": "F.set_master(quest, F.master.TeddySolution, \"C\")", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 30, "function": "Main", "kind": "wait", "native": "StartScriptingEntity(me, res, 4) loop", "argsKnown": true, "lua": "NOVI.acquire(quest, me, 4)", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 31, "function": "Main", "kind": "call", "native": "MoveToThing(GetThingWithScriptName(\"NOVI_AffairWife\"), 3.0, 1, false,false,false,true)", "argsKnown": true, "lua": "me:MoveToThing(wife, 3.0, 1)", "forgeBinding": "MoveToThing", "evidence": "native-decompile", "note": "four trailing bools unbound"},
+    {"seq": 32, "function": "Main", "kind": "wait", "native": "while (IsCameraPosOnScreen(me->GetPos()) && !IsDistanceBetweenThingsOver(me, GetHero(), 20.0)) NewScriptFrame", "argsKnown": true, "lua": "while quest:IsCameraPosOnScreen(me:GetPos()) ... NOVI.unsupported IsDistanceBetweenThingsOver", "forgeBinding": "IsCameraPosOnScreen|missing", "evidence": "native-decompile", "note": "slot 0x18 = GetPos"},
+    {"seq": 33, "function": "Main", "kind": "call", "native": "GSI->RemoveThing(?)", "argsKnown": false, "lua": "quest:RemoveThing(me)", "forgeBinding": "RemoveThing", "evidence": "inference", "note": "arg dropped; me is the only thing in scope besides wife"},
+    {"seq": 34, "function": "Main", "kind": "branch", "native": "me->MsgIsTalkedToBy(\"SCRIPT_NAME_HERO\")", "argsKnown": true, "lua": "me:IsTalkedToByHero()", "forgeBinding": "IsTalkedToByHero", "evidence": "native-decompile", "note": "second talk check, runs even after seq 8 handled a talk"},
+    {"seq": 35, "function": "Main", "kind": "call", "native": "acquire; StartMovieSequence; PauseAll(1)", "argsKnown": false, "lua": "NOVI.acquire; begin_cutscene", "forgeBinding": "host-managed|StartMovieSequence", "evidence": "native-decompile", "note": ""},
+    {"seq": 36, "function": "Main", "kind": "branch", "native": "!FoundTeddy && HeroHitMe", "argsKnown": true, "lua": "if not FoundTeddy and HeroHitMe", "forgeBinding": "n/a", "evidence": "native-decompile", "note": "-> PLEA_POST_BEATEN, DoneIntro=1"},
+    {"seq": 37, "function": "Main", "kind": "branch", "native": "DoneIntro && !FoundTeddy && PARENT+0x91 (TeddyRuined)", "argsKnown": true, "lua": "F.get(quest, F.TeddyRuined)", "forgeBinding": "n/a", "evidence": "native-decompile", "note": "-> BAD_FEELING then ClearThingHasInformation(?)"},
+    {"seq": 38, "function": "Main", "kind": "call", "native": "GSI->ClearThingHasInformation(?)", "argsKnown": false, "lua": "quest:ClearThingHasInformation(me)", "forgeBinding": "ClearThingHasInformation", "evidence": "inference", "note": "arg dropped"},
+    {"seq": 39, "function": "Main", "kind": "call", "native": "Speak REPEAT_PLEA (DoneIntro && !FoundTeddy && !TeddyRuined) / REPEAT_FOUND (DoneIntro && FoundTeddy) / LOST_TEDDY + DoneIntro=1 (!DoneIntro)", "argsKnown": true, "lua": "chat()", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": ""},
+    {"seq": 40, "function": "Main", "kind": "cleanup", "native": "PauseAllNonScriptedEntities(0); ~movie", "argsKnown": true, "lua": "end_cutscene", "forgeBinding": "PauseAllNonScriptedEntities", "evidence": "native-decompile", "note": ""},
+    {"seq": 41, "function": "Main", "kind": "branch", "native": "me->MsgIsHitBy(HERO) || (me->MsgIsHitByAnySpecialAbilityFrom(HERO) && !me->MsgIsHitBySpecialAbilityFrom(?, HERO))", "argsKnown": false, "lua": "hero_hit_me()", "forgeBinding": "MsgIsHitByHero|missing|missing", "evidence": "native-decompile", "note": "slots 0x54/0xa8/0xa4; EHeroAbility enum dropped"},
+    {"seq": 42, "function": "Main", "kind": "call", "native": "EntitySetThingAsAllyOfThing(?,?) x2 with GetHero()", "argsKnown": false, "lua": "quest:EntitySetThingAsAllyOfThing(me,hero); (hero,me)", "forgeBinding": "EntitySetThingAsAllyOfThing", "evidence": "inference", "note": "args dropped; both directions is an inference"},
+    {"seq": 43, "function": "Main", "kind": "state-write", "native": "this[0x1f] = 1", "argsKnown": true, "lua": "HeroHitMe = true", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 44, "function": "Main", "kind": "call", "native": "AddBadDeed(PARENT, 2)", "argsKnown": true, "lua": "Deeds.add_bad(quest, me, 2)", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 45, "function": "Main", "kind": "call", "native": "acquire; StartMovieSequence; PauseAll(1); Speak(TEXT_QST_048_TEDDYGIRL_DONT_HIT)+wait; PauseAll(0); ~movie", "argsKnown": true, "lua": "scold_hero()", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": ""},
+    {"seq": 46, "function": "Main", "kind": "wait", "native": "NewScriptFrame + IsTerminating (loop tail)", "argsKnown": true, "lua": "NOVI.frame", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
+    {"seq": 47, "function": "GivenTeddy", "kind": "call", "native": "GSI->TakeObjectFromHero(\"OBJECT_TEDDY_BEAR_UNGIVEABLE\") [vtable+0x1f4]", "argsKnown": true, "lua": "quest:TakeObjectFromHero(TEDDY_OBJECT)", "forgeBinding": "TakeObjectFromHero", "evidence": "native-decompile", "note": "slot 0x1f4 resolved via vtable_slots.tsv"},
+    {"seq": 48, "function": "GivenTeddy", "kind": "state-write", "native": "this[0x1d] = 1", "argsKnown": true, "lua": "FoundTeddy = true", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 49, "function": "GivenTeddy", "kind": "call", "native": "AddGoodDeed(PARENT)", "argsKnown": true, "lua": "Deeds.add_good(quest, me)", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
+    {"seq": 50, "function": "GivenTeddy", "kind": "call", "native": "GSI->ClearThingHasInformation(me)", "argsKnown": true, "lua": "quest:ClearThingHasInformation(me)", "forgeBinding": "ClearThingHasInformation", "evidence": "native-decompile", "note": ""},
+    {"seq": 51, "function": "GivenTeddy", "kind": "state-write", "native": "MASTER+0x54 = \"B\"", "argsKnown": true, "lua": "F.set_master(quest, F.master.TeddySolution, \"B\")", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""}
+  ],
+  "apiGaps": [
+    {"retail": "CScriptThing::MsgIsHitByAnySpecialAbilityFrom(name)", "reason": "not registered in forge_entity_bindings (only MsgIsHitByAnySpecialAbilityFromHero exists; not proven equal)", "luaLocation": "hero_hit_me"},
+    {"retail": "CScriptThing::MsgIsHitBySpecialAbilityFrom(EHeroAbility, name)", "reason": "ability enum dropped by the decompiler; MsgIsHitByHeroSpecialAbility needs the enum", "luaLocation": "hero_hit_me"},
+    {"retail": "IsDistanceBetweenThingsOver(me, hero, 20.0)", "reason": "helper not registered (only IsDistanceBetweenThingsUnder); not approximated", "luaLocation": "teddy_ruined wait loop"},
+    {"retail": "~CScriptGameResourceObjectMovieBase (RAII end of movie)", "reason": "modelled as EndMovieSequence (inference)", "luaLocation": "end_cutscene"},
+    {"retail": "StartScriptingEntity priority (first/second talk, hit branches)", "reason": "priority argument dropped by decompiler", "luaLocation": "NOVI.acquire(..., DEFAULT_PRIORITY)"}
+  ],
+  "uncertainties": [
+    "AddNewConversation args are dropped; lua passes (me) only.",
+    "RemoveThing arg dropped; assumed me (the girl despawns after walking off).",
+    "Second MsgIsPresentedWithItem branch compares item against a dropped operand; read as 'not the teddy'.",
+    "EntitySetThingAsAllyOfThing is called twice with dropped args; both directions assumed.",
+    "F.set_master must exist in fields.lua (brief only lists F.get_master).",
+    "SpeakAndWait is host-blocking so the retail per-frame terminate cleanup inside the speech wait (PauseAllNonScriptedEntities(0)) cannot fire mid-speech.",
+    "Retail also PauseAllNonScriptedEntities(0) on terminate inside the yes/no wait; reproduced via end_cutscene."
+  ],
+  "cleanupPaths": [
+    {"resource": "control", "acquired": "seq 9/22/30/35/45", "releasedOn": ["terminate (function-exit destructors)"], "missingOn": ["normal loop iteration (retail holds the resource across the loop)"]},
+    {"resource": "cutscene(movie+pause)", "acquired": "seq 10/24/26/35/45", "releasedOn": ["normal", "terminate inside yes/no wait", "terminate inside speech wait"], "missingOn": []},
+    {"resource": "conversation", "acquired": "seq 28", "releasedOn": [], "missingOn": ["normal", "terminate"], "note": "retail never removes the TEDDY_RUINED conversation"}
+  ]
+}

@@ -1,0 +1,539 @@
+{
+  "schema": "fable-script-persistence-manifest/0.1",
+  "script": "Q_NewOakValeIntro",
+  "persistedByRetail": [
+    "AttackOver"
+  ],
+  "fields": [
+    {
+      "name": "VictimShake",
+      "type": "bool",
+      "retailOffset": "0x48",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Bully",
+        "NOVI_Victim"
+      ],
+      "readBy": [
+        "NOVI_Victim"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "StopTimeIndex",
+      "type": "int",
+      "retailOffset": "0x4c",
+      "initValue": "0",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [],
+      "readBy": [],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "AttackOver",
+      "type": "bool",
+      "retailOffset": "0x50",
+      "initValue": "false",
+      "survivesSaveLoad": true,
+      "retailPersistence": "OnPersist Transfer<signed char>",
+      "writtenBy": [],
+      "readBy": [],
+      "phasesWhereItMatters": [
+        "init",
+        "main-reload-after-raid",
+        "childhood-free-roam",
+        "attack-transition",
+        "post-attack-arrival",
+        "abort-or-terminate"
+      ]
+    },
+    {
+      "name": "DadFound",
+      "type": "bool",
+      "retailOffset": "0x51",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [],
+      "readBy": [
+        "OVI_DeadFather"
+      ],
+      "phasesWhereItMatters": [
+        "find-dead-father"
+      ]
+    },
+    {
+      "name": "DadFinishedIntro",
+      "type": "bool",
+      "retailOffset": "0x52",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_LiveFather"
+      ],
+      "readBy": [
+        "NOVI_LiveFather"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "DadOfferedRewards",
+      "type": "bool",
+      "retailOffset": "0x53",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [],
+      "readBy": [],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "GoodDeedsPerformed",
+      "type": "int",
+      "retailOffset": "0x54",
+      "initValue": "0",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [],
+      "readBy": [
+        "NOVI_Guard",
+        "NOVI_LiveFather",
+        "NOVI_Villager"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "BadDeedsPerformed",
+      "type": "int",
+      "retailOffset": "0x58",
+      "initValue": "0",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [],
+      "readBy": [
+        "NOVI_Guard",
+        "NOVI_LiveFather",
+        "NOVI_Villager"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "GUIGoodDeedCounter",
+      "type": "int",
+      "retailOffset": "0x5c",
+      "initValue": "nil",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_LiveFather"
+      ],
+      "readBy": [],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "GUIBarrelCounter",
+      "type": "int",
+      "retailOffset": "0x60",
+      "initValue": "nil",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [],
+      "readBy": [],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "GUIBullyHealthCounter",
+      "type": "int",
+      "retailOffset": "0x64",
+      "initValue": "-999",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Bully"
+      ],
+      "readBy": [
+        "NOVI_Bully"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "GuardsDealtWithBadDeeds",
+      "type": "int",
+      "retailOffset": "0x68",
+      "initValue": "0",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Guard"
+      ],
+      "readBy": [
+        "NOVI_Guard"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "BullySubdued",
+      "type": "bool",
+      "retailOffset": "0x6c",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Bully"
+      ],
+      "readBy": [
+        "NOVI_Victim"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "BullyRanOff",
+      "type": "bool",
+      "retailOffset": "0x6d",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Bully"
+      ],
+      "readBy": [
+        "NOVI_Victim"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "GivenHeroTeddy",
+      "type": "bool",
+      "retailOffset": "0x6e",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Bully",
+        "NOVI_Victim"
+      ],
+      "readBy": [
+        "NOVI_Bully",
+        "NOVI_Victim"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "HeroAttackedVictim",
+      "type": "bool",
+      "retailOffset": "0x6f",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Victim"
+      ],
+      "readBy": [
+        "NOVI_Bully",
+        "NOVI_Victim"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "SpokeAboutFindingTeddy",
+      "type": "bool",
+      "retailOffset": "0x70",
+      "initValue": "nil",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Bully"
+      ],
+      "readBy": [
+        "NOVI_TeddyGirl"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "HeroDiscoveredInfidelity",
+      "type": "bool",
+      "retailOffset": "0x71",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_AffairMan"
+      ],
+      "readBy": [
+        "NOVI_AffairWife"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "BarrelManLeftHeroInCharge",
+      "type": "bool",
+      "retailOffset": "0x72",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_BarrelMan"
+      ],
+      "readBy": [
+        "NOVI_BarrelThug"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "BarrelManSpokenToHeroOnReturn",
+      "type": "bool",
+      "retailOffset": "0x73",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_BarrelMan"
+      ],
+      "readBy": [
+        "NOVI_BarrelThug"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "BarrelBrokenInstantaneous",
+      "type": "bool",
+      "retailOffset": "0x74",
+      "initValue": "nil",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Barrel"
+      ],
+      "readBy": [],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "BarrelBrokenPersistent",
+      "type": "bool",
+      "retailOffset": "0x75",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Barrel"
+      ],
+      "readBy": [
+        "NOVI_BarrelMan",
+        "NOVI_BarrelThug"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "BarrelBrokenPos",
+      "type": "string",
+      "retailOffset": "0x76",
+      "initValue": "nil",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Barrel"
+      ],
+      "readBy": [],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "InstructionGiven_Barrels",
+      "type": "bool",
+      "retailOffset": "0x82",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Barrel"
+      ],
+      "readBy": [
+        "NOVI_Barrel"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "ReceiveKiss",
+      "type": "bool",
+      "retailOffset": "0x83",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_AffairMan",
+        "NOVI_AffairWoman"
+      ],
+      "readBy": [
+        "NOVI_AffairWoman"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "ReceiveHug",
+      "type": "bool",
+      "retailOffset": "0x84",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_AffairMan",
+        "NOVI_AffairWoman"
+      ],
+      "readBy": [
+        "NOVI_AffairWoman"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "WarehouseMeetPoint",
+      "type": "string",
+      "retailOffset": "0x85",
+      "initValue": "nil",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_BarrelMan"
+      ],
+      "readBy": [],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "TeddyRuined",
+      "type": "bool",
+      "retailOffset": "0x91",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Bully"
+      ],
+      "readBy": [
+        "NOVI_TeddyGirl"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "GuardsSpokenOnce",
+      "type": "bool",
+      "retailOffset": "0x92",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Guard"
+      ],
+      "readBy": [
+        "NOVI_Guard"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "TalkingToWoman",
+      "type": "bool",
+      "retailOffset": "0x93",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_AffairWoman"
+      ],
+      "readBy": [
+        "NOVI_AffairMan"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "GivenSweets",
+      "type": "bool",
+      "retailOffset": "0x94",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_BookTrader"
+      ],
+      "readBy": [
+        "NOVI_BookTrader"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "GivenTheresaChocs",
+      "type": "bool",
+      "retailOffset": "0x95",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [],
+      "readBy": [],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "VictimComplainsAboutLosingTeddy",
+      "type": "bool",
+      "retailOffset": "0x96",
+      "initValue": "false",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Bully",
+        "NOVI_Victim"
+      ],
+      "readBy": [
+        "NOVI_Bully",
+        "NOVI_Victim"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "lastVillagerSpeechIdx",
+      "type": "int",
+      "retailOffset": "0x98",
+      "initValue": "0",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_Villager"
+      ],
+      "readBy": [
+        "NOVI_Villager"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "TalkIntermittentTimer",
+      "type": "int",
+      "retailOffset": "0x104",
+      "initValue": "nil",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [],
+      "readBy": [
+        "NOVI_Villager"
+      ],
+      "phasesWhereItMatters": [
+        "init"
+      ]
+    },
+    {
+      "name": "WatchTimer",
+      "type": "int",
+      "retailOffset": "0x108",
+      "initValue": "nil",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [],
+      "readBy": [
+        "NOVI_BarrelMan"
+      ],
+      "phasesWhereItMatters": []
+    }
+  ],
+  "masterData": [
+    "TeddySolution (CQ_SunnyvaleMasterData+0x54, written by NOVI_TeddyGirl/NOVI_Bully paths)"
+  ],
+  "note": "Retail persists only AttackOver. Everything else restarts from Init on load; a save during the childhood therefore resumes the childhood from its beginning of state (entities re-run their Init/Main), which is retail behaviour."
+}

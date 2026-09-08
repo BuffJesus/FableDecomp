@@ -1,0 +1,39 @@
+{
+ "__meta__": {
+  "function": "DoMission",
+  "kind": "quest",
+  "expect": [
+   "ActivateQuest"
+  ],
+  "forbid": [
+   "TransitionToTheme",
+   "SetQuestAsCompleted"
+  ],
+  "note": "thread terminated while waiting for the raid: no attack/post-attack calls may run"
+ },
+ "Quest.GetActiveQuestName": [
+  "Q_NewOakValeIntro"
+ ],
+ "Quest.IsRegionLoaded": [
+  true
+ ],
+ "Quest.NewScriptFrame": [
+  true,
+  false
+ ],
+ "Quest.GetStateBool(AttackOver)": [
+  false
+ ],
+ "Quest.GetHero": [
+  {
+   "handle": "hero",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetThingWithScriptName": [
+  {
+   "handle": "HerosOldHouse",
+   "scope": "Entity"
+  }
+ ]
+}

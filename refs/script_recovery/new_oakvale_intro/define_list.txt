@@ -1,0 +1,28 @@
+# Retail entity lifecycle slots read from the vtables stored by each NOVI entity constructor
+# (vtable layout: [0]=deleting dtor [1]=Main [2]=Init [3]=GetParentScript [5]=OnPredicateFail).
+0x00DB86B0 NOVI_LiveFather::Main
+0x00DB97A0 NOVI_Theresa::Main
+0x00DAC4F0 NOVI_Theresa::Init
+0x00DAC760 NOVI_Guard::Main
+0x00DBB310 NOVI_Bully::Main
+0x00DBCD60 NOVI_Victim::Main
+0x00DAEEB0 NOVI_Victim::Init
+0x00DAF080 NOVI_TeddyGirl::Main
+0x00DB09E0 NOVI_AffairMan::Main
+0x00DB1F00 NOVI_AffairWoman::Main
+0x00DB2B10 NOVI_AffairWife::Main
+0x00DB2A70 NOVI_AffairWife::Init
+0x00DB3FA0 NOVI_BookTrader::Main
+0x00DB5330 NOVI_BarrelMan::Main
+0x00DB6C60 NOVI_BarrelThug::Main
+0x00DB8290 OVI_DeadFather::Init
+0x00DB8260 OVI_DeadFather::OnPredicateFail
+0x00DBE890 CQ_NewOakValeIntroScript::WatchBarrels (spawned as "WatchBarrels" from DoMission)
+0x00DBE2E0 CQ_NewOakValeIntroScript::WatchForGotGold (spawned as "WatchForGotGold" from DoMission)
+0x00CDEBB0 shared default entity Init slot
+0x00CDEBC0 shared entity vtable slot 4
+0x00CDEBD0 shared default OnPredicateFail slot
+0x00CDEBE0 shared entity vtable slot 6
+0x00CDBA10 CQ_SunnyvaleMasterData::Init (master data defaults)
+0x00CDBD20 pSunnyvaleDataAlloc_func
+0x00DAC360 NOVI_LiveFather vtable slot 3

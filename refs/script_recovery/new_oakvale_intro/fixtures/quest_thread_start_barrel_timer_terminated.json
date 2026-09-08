@@ -1,0 +1,34 @@
+{
+ "__meta__": {
+  "function": "StartBarrelTimer",
+  "kind": "quest",
+  "expect": [
+   "AddQuestInfoBar"
+  ],
+  "forbid": [
+   "RemoveQuestInfoElement"
+  ],
+  "note": "retail leaves the info bar behind when the thread is terminated mid-watch (documented cleanup gap)"
+ },
+ "Quest.GetStateInt(WatchTimer)": [
+  102
+ ],
+ "Quest.GetTimer": [
+  45
+ ],
+ "Quest.NewScriptFrame": [
+  false
+ ],
+ "Quest.AddQuestInfoBar": [
+  7
+ ],
+ "Quest.GetThingWithScriptName": [
+  {
+   "handle": "M_WHouse_GuardPoint",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetStateBool(BarrelManSpokenToHeroOnReturn)": [
+  false
+ ]
+}

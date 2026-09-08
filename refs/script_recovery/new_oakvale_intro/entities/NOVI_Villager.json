@@ -1,0 +1,121 @@
+{
+  "entity": "NOVI_Villager",
+  "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_Villager",
+  "vtable": "0x012d8678",
+  "functions": {
+    "Init": {"address": "0x00DADF00", "decompileFile": "tu/0x00DADF00_NScript_CQ_NewOakValeIntroScript_CNOVI_Villager_In.c"},
+    "Main": {"address": "0x00DADF80", "decompileFile": "tu/0x00DADF80_NScript_CQ_NewOakValeIntroScript_CNOVI_Villager_Ma.c"},
+    "GetVillagerSpeechIndex": {"address": "0x00DAEBF0", "decompileFile": "tu/0x00DAEBF0_NScript_CQ_NewOakValeIntroScript_CNOVI_Villager_Ge.c", "signature": "long GetVillagerSpeechIndex(long count)"},
+    "QuestInit(vectors)": {"address": "0x00DAADD0", "decompileFile": "tu/0x00DAADD0_Script_Villager_Reputation_Dialog.c", "note": "CQ_NewOakValeIntroScript::Init; fills the eight VillagerSpeech vectors read by Main"}
+  },
+  "localFields": [
+    {"name": "HeroDidHitMe", "offset": "0x1c", "initValue": false, "evidence": "PDB-name; Init: this[0x1c] = 0"}
+  ],
+  "parentFieldsRead": ["BadDeedsPerformed", "GoodDeedsPerformed", "TalkIntermittentTimer", "lastVillagerSpeechIdx", "VillagerSpeechMaleGood", "VillagerSpeechMaleBad", "VillagerSpeechMaleBoth", "VillagerSpeechMaleNeither", "VillagerSpeechFemaleGood", "VillagerSpeechFemaleBad", "VillagerSpeechFemaleBoth", "VillagerSpeechFemaleNeither"],
+  "parentFieldsWritten": ["lastVillagerSpeechIdx", "BadDeedsPerformed/WhichBadDeedsPerformed[2] (via AddBadDeed(PARENT,2))"],
+  "masterDataAccess": [],
+  "textKeys": {
+    "direct": [
+      "TEXT_QST_048_VILLAGER_ATTACKED_MALE",
+      "TEXT_QST_048_VILLAGER_ATTACKED_FEMALE",
+      "TEXT_QST_048_VILLAGER_SPOKEN_TO_MALE",
+      "TEXT_QST_048_VILLAGER_SPOKEN_TO_FEMALE",
+      "TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS_MALE",
+      "TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS_FEMALE"
+    ],
+    "directNote": "SPOKEN_TO / DONE_BAD_DEEDS are built as prefix .. \"_MALE\"|\"_FEMALE\" (CCharString__AppendData) from EntityGetSex(me)==1",
+    "VillagerSpeechMaleGood": {"offset": "0x9c", "keys": ["TEXT_QST_048_VILLAGER_DONE_GOOD_DEEDS_MALE_10", "TEXT_QST_048_VILLAGER_DONE_GOOD_DEEDS_MALE_20", "TEXT_QST_048_VILLAGER_DONE_GOOD_DEEDS_MALE_30", "TEXT_QST_048_VILLAGER_DONE_GOOD_DEEDS_MALE_40", "TEXT_QST_048_VILLAGER_DONE_GOOD_DEEDS_MALE_50", "TEXT_QST_048_VILLAGER_DONE_GOOD_DEEDS_MALE_60"]},
+    "VillagerSpeechMaleBad": {"offset": "0xa8", "keys": ["TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS_MALE_10", "TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS_MALE_20", "TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS_MALE_30", "TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS_MALE_40", "TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS_MALE_50", "TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS_MALE_60"]},
+    "VillagerSpeechMaleBoth": {"offset": "0xb4", "keys": ["TEXT_QST_048_VILLAGER_DONE_BOTH_DEEDS_MALE_10", "TEXT_QST_048_VILLAGER_DONE_BOTH_DEEDS_MALE_20", "TEXT_QST_048_VILLAGER_DONE_BOTH_DEEDS_MALE_30", "TEXT_QST_048_VILLAGER_DONE_BOTH_DEEDS_MALE_40"]},
+    "VillagerSpeechMaleNeither": {"offset": "0xc0", "keys": ["TEXT_QST_048_VILLAGER_DONE_NO_DEEDS_MALE_10", "TEXT_QST_048_VILLAGER_DONE_NO_DEEDS_MALE_20", "TEXT_QST_048_VILLAGER_DONE_NO_DEEDS_MALE_30", "TEXT_QST_048_VILLAGER_DONE_NO_DEEDS_MALE_40", "TEXT_QST_048_VILLAGER_DONE_NO_DEEDS_MALE_50"]},
+    "VillagerSpeechFemaleGood": {"offset": "0xcc", "keys": ["TEXT_QST_048_VILLAGER_DONE_GOOD_DEEDS_FEMALE_10", "TEXT_QST_048_VILLAGER_DONE_GOOD_DEEDS_FEMALE_20", "TEXT_QST_048_VILLAGER_DONE_GOOD_DEEDS_FEMALE_30", "TEXT_QST_048_VILLAGER_DONE_GOOD_DEEDS_FEMALE_40", "TEXT_QST_048_VILLAGER_DONE_GOOD_DEEDS_FEMALE_50", "TEXT_QST_048_VILLAGER_DONE_GOOD_DEEDS_FEMALE_60"]},
+    "VillagerSpeechFemaleBad": {"offset": "0xd8", "keys": ["TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS_FEMALE_10", "TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS_FEMALE_20", "TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS_FEMALE_30", "TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS_FEMALE_40", "TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS_FEMALE_50", "TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS_FEMALE_60"]},
+    "VillagerSpeechFemaleBoth": {"offset": "0xe4", "keys": ["TEXT_QST_048_VILLAGER_DONE_BOTH_DEEDS_FEMALE_10", "TEXT_QST_048_VILLAGER_DONE_BOTH_DEEDS_FEMALE_20", "TEXT_QST_048_VILLAGER_DONE_BOTH_DEEDS_FEMALE_30", "TEXT_QST_048_VILLAGER_DONE_BOTH_DEEDS_FEMALE_40"]},
+    "VillagerSpeechFemaleNeither": {"offset": "0xf0", "keys": ["TEXT_QST_048_VILLAGER_DONE_NO_DEEDS_FEMALE_10", "TEXT_QST_048_VILLAGER_DONE_NO_DEEDS_FEMALE_20", "TEXT_QST_048_VILLAGER_DONE_NO_DEEDS_FEMALE_30", "TEXT_QST_048_VILLAGER_DONE_NO_DEEDS_FEMALE_40", "TEXT_QST_048_VILLAGER_DONE_NO_DEEDS_FEMALE_50"]},
+    "vectorEvidence": "native-decompile of 0x00DAADD0: push_back sequence per vector (end pointer at offset+4 incremented by 4 per key); the 0xd0 (FemaleGood) push_backs after _20 and all later vectors are shown with the CCharString ctor line dropped but the STR literal + end-pointer increment survive.",
+    "vectorDesignNote": "inference: ForgeFSE entity scripts cannot read quest-object std::vector members, so NOVI_Villager.lua mirrors the eight tables as file-level constants."
+  },
+  "objects": [],
+  "markersAndScriptNames": ["SCRIPT_NAME_HERO"],
+  "animations": [],
+  "cutscenes": [
+    {"kind": "movie-sequence", "native": "StartMovieSequence(\"\") + PauseAllNonScriptedEntities(1) ... PauseAllNonScriptedEntities(0) + ~CScriptGameResourceObjectMovieBase", "where": "react_to_hit"}
+  ],
+  "constants": [
+    {"name": "CONTROL_PRIORITY", "value": 4, "source": "StartScriptingEntity(pCVar1, aCStack_34, 4) / (pCVar1, aCStack_24, 4)", "evidence": "native-decompile"},
+    {"name": "SEX_MALE", "value": 1, "source": "EntityGetSex(me) == 1 -> \"_MALE\" / ATTACKED_MALE / Male vectors", "evidence": "native-decompile"},
+    {"name": "ALIVE_HEALTH", "value": 0.0, "source": "_DAT_0122dedc; retail .rdata 0x0122dedc = 0x00000000", "evidence": "retail-rdata (byte read)"},
+    {"name": "SPEAK_METHOD", "value": 1, "source": "_Speak_(res, hero, key, pCVar18=1, pCVar19=0, pCVar20=1, bVar5=false)", "evidence": "native-decompile"},
+    {"name": "EXCLUDED_HIT_ABILITY", "value": 14, "source": "(me->vtbl+0xa4)(0xe, \"SCRIPT_NAME_HERO\") = MsgIsHitBySpecialAbilityFrom", "evidence": "native-decompile"},
+    {"name": "BAD_DEED_VIOLENCE", "value": 2, "source": "AddBadDeed(PARENT, 2)", "evidence": "native-decompile; index 2 == CRIME_VIOLENCE line order in CNOVI_Guard (cross-script-evidence)"},
+    {"name": "MUTTER_CHANCE_ONE_IN", "value": 100, "source": "rand() % 100 == 0", "evidence": "native-decompile"},
+    {"name": "MUTTER_DISTANCE", "value": 5.0, "source": "IsDistanceBetweenThingsUnder(me, GetHero(), 5.0)", "evidence": "native-decompile"},
+    {"name": "MUTTER_TIMER_VALUE", "value": 3, "source": "SetTimer(*(PARENT+0x104), 3)", "evidence": "native-decompile"},
+    {"name": "TIMER_IDLE", "value": 0, "source": "GetTimer(*(PARENT+0x104)) == 0", "evidence": "native-decompile"}
+  ],
+  "phases": [
+    {"id": "idle", "entry": "Main loop top (after one initial frame)", "exit": "each frame", "luaFunction": "Main"},
+    {"id": "react_to_hit", "entry": "hero_hit_me", "exit": "ATTACKED_* line finished, movie closed", "luaFunction": "react_to_hit"},
+    {"id": "answer_hero", "entry": "!hit && MsgIsTalkedToBy(SCRIPT_NAME_HERO)", "exit": "conversation inactive", "luaFunction": "answer_hero"},
+    {"id": "mutter", "entry": "!hit && !talked && GetTimer(TalkIntermittentTimer)==0 && rand()%100==0 && hero within 5.0", "exit": "line queued (not waited on)", "luaFunction": "mutter_about_hero"}
+  ],
+  "operations": [
+    {"seq": 1, "function": "Init", "kind": "state-write", "native": "this[0x1c] = 0  (HeroDidHitMe = false)", "argsKnown": true, "lua": "HeroDidHitMe = false", "forgeBinding": "host-managed", "evidence": "native-decompile + PDB-name"},
+    {"seq": 2, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsDamageable(me, 0)", "argsKnown": true, "lua": "quest:EntitySetAsDamageable(me, false)", "forgeBinding": "EntitySetAsDamageable", "evidence": "native-decompile"},
+    {"seq": 3, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsKillable(me, 0, 0)", "argsKnown": true, "lua": "quest:EntitySetAsKillable(me, false)", "forgeBinding": "EntitySetAsKillable", "evidence": "native-decompile", "note": "retail passes a third arg (0) the FSE binding does not expose"},
+    {"seq": 4, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsToAddToComboMultiplierWhenHit(me, 0)", "argsKnown": true, "lua": "quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)", "forgeBinding": "EntitySetAsToAddToComboMultiplierWhenHit", "evidence": "native-decompile"},
+    {"seq": 5, "function": "Init", "kind": "call", "native": "GSI->EntitySetThingAsAllyOfThing(me, GetHero())", "argsKnown": true, "lua": "quest:EntitySetThingAsAllyOfThing(me, quest:GetHero())", "forgeBinding": "EntitySetThingAsAllyOfThing", "evidence": "native-decompile"},
+
+    {"seq": 6, "function": "Main", "kind": "wait", "native": "GSI->NewScriptFrame(); if (IsTerminating()) return;  (before the loop; preceded by CScriptThing copy / AllocateMapThingUID lifetime helpers)", "argsKnown": true, "lua": "if not NOVI.frame(quest, me) then return end", "forgeBinding": "host-managed", "evidence": "native-decompile"},
+    {"seq": 7, "function": "Main", "kind": "cleanup", "native": "loop top: HasPhysicsMesh/Clear(appuStack_20) = release scripted resource held from the hit branch", "argsKnown": true, "lua": "NOVI.release(quest, me) at the end of react_to_hit", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": "moved from loop top to end of the hit phase; no-op when nothing is held"},
+    {"seq": 8, "function": "Main", "kind": "branch", "native": "hit = (me->vtbl+0x54)(\"SCRIPT_NAME_HERO\") MsgIsHitBy || ((me->vtbl+0xa8)(\"SCRIPT_NAME_HERO\") MsgIsHitByAnySpecialAbilityFrom && !(me->vtbl+0xa4)(0xe, \"SCRIPT_NAME_HERO\") MsgIsHitBySpecialAbilityFrom)", "argsKnown": true, "lua": "hero_hit_me(me)", "forgeBinding": "MsgIsHitByHero + MsgIsHitByAnySpecialAbilityFromHero + MsgIsHitByHeroSpecialAbility(14)", "evidence": "native-decompile + FSE CGameScriptThingVTable slots 0x54/0xA8/0xA4"},
+    {"seq": 9, "function": "Main", "kind": "call", "native": "[hit] GSI->EntitySetThingAsAllyOfThing(me, GetHero()); GSI->EntitySetThingAsAllyOfThing(GetHero(me)...)", "argsKnown": false, "lua": "quest:EntitySetThingAsAllyOfThing(me, hero); quest:EntitySetThingAsAllyOfThing(hero, me)", "forgeBinding": "EntitySetThingAsAllyOfThing", "evidence": "native-decompile", "note": "first call explicit (me,hero); second call's args partly dropped, (hero,me) inferred"},
+    {"seq": 10, "function": "Main", "kind": "call", "native": "[hit] AddBadDeed(*(this+0x14) PARENT, 2)", "argsKnown": true, "lua": "Deeds.add_bad(quest, me, BAD_DEED_VIOLENCE)", "forgeBinding": "host-managed (quest helper 0x00DAEA70)", "evidence": "native-decompile"},
+    {"seq": 11, "function": "Main", "kind": "state-write", "native": "[hit] this[0x1c] = 1  (HeroDidHitMe = true)", "argsKnown": true, "lua": "HeroDidHitMe = true", "forgeBinding": "host-managed", "evidence": "native-decompile + PDB-name"},
+    {"seq": 12, "function": "Main", "kind": "wait", "native": "[hit] while (!StartScriptingEntity(me, res, 4)) { NewScriptFrame; if (IsTerminating) goto LAB_00daea49 }", "argsKnown": true, "lua": "NOVI.acquire(quest, me, CONTROL_PRIORITY)", "forgeBinding": "host-managed", "evidence": "native-decompile"},
+    {"seq": 13, "function": "Main", "kind": "call", "native": "[hit] StartMovieSequence(\"\", &movie); PauseAllNonScriptedEntities(1)", "argsKnown": true, "lua": "quest:StartMovieSequence(); quest:PauseAllNonScriptedEntities(true)", "forgeBinding": "StartMovieSequence + PauseAllNonScriptedEntities", "evidence": "native-decompile"},
+    {"seq": 14, "function": "Main", "kind": "branch", "native": "[hit] if (EntityGetSex(me) == 1) MALE else FEMALE", "argsKnown": true, "lua": "sex_suffix(quest, me)", "forgeBinding": "EntityGetSex", "evidence": "native-decompile"},
+    {"seq": 15, "function": "Main", "kind": "call", "native": "[hit] if (GetHealth(me) > 0) { res._Speak_(GetHero(), \"TEXT_QST_048_VILLAGER_ATTACKED_{MALE|FEMALE}\", 1, 0, 1, false); while (IsPerformingScriptTask) { NewScriptFrame; if (IsTerminating) { Pause(0); ~movie; goto release } } }", "argsKnown": true, "lua": "if quest:GetHealth(me) > ALIVE_HEALTH then me:Speak(hero, key, SPEAK_METHOD) end", "forgeBinding": "GetHealth + Speak", "evidence": "native-decompile"},
+    {"seq": 16, "function": "Main", "kind": "cleanup", "native": "[hit] PauseAllNonScriptedEntities(0); ~CScriptGameResourceObjectMovieBase(movie)", "argsKnown": true, "lua": "quest:PauseAllNonScriptedEntities(false); quest:EndMovieSequence()", "forgeBinding": "PauseAllNonScriptedEntities + EndMovieSequence", "evidence": "native-decompile", "note": "movie destructor mapped to EndMovieSequence (inference)"},
+
+    {"seq": 17, "function": "Main", "kind": "branch", "native": "[!hit] if ((me->vtbl+0x6c)(\"SCRIPT_NAME_HERO\") MsgIsTalkedToBy)", "argsKnown": true, "lua": "elseif me:IsTalkedToByHero()", "forgeBinding": "IsTalkedToByHero", "evidence": "native-decompile + FSE CGameScriptThingVTable slot 0x6C"},
+    {"seq": 18, "function": "Main", "kind": "call", "native": "[talk] suffix = (EntityGetSex(me) == 1) ? \"_MALE\" : \"_FEMALE\"", "argsKnown": true, "lua": "sex_suffix(quest, me)", "forgeBinding": "EntityGetSex", "evidence": "native-decompile"},
+    {"seq": 19, "function": "Main", "kind": "wait", "native": "[talk] while (!StartScriptingEntity(me, res2, 4)) { NewScriptFrame; if (IsTerminating) goto LAB_00daea44 }", "argsKnown": true, "lua": "NOVI.acquire(quest, me, CONTROL_PRIORITY)", "forgeBinding": "host-managed", "evidence": "native-decompile"},
+    {"seq": 20, "function": "Main", "kind": "call", "native": "[talk] GSI->EntitySetFacingAngleTowardsThing(me, GetHero(0))", "argsKnown": true, "lua": "quest:EntitySetFacingAngleTowardsThing(me, hero)", "forgeBinding": "EntitySetFacingAngleTowardsThing", "evidence": "native-decompile"},
+    {"seq": 21, "function": "Main", "kind": "call", "native": "[talk] conv = AddNewConversation(me, 0, 0); AddPersonToConversation(conv, GetHero())", "argsKnown": true, "lua": "quest:AddNewConversation(me, 0, 0); quest:AddPersonToConversation(conv, hero)", "forgeBinding": "AddNewConversation + AddPersonToConversation", "evidence": "native-decompile"},
+    {"seq": 22, "function": "Main", "kind": "branch", "native": "[talk] if (this[0x1c] == 0) SPOKEN_TO else DONE_BAD_DEEDS", "argsKnown": true, "lua": "if not HeroDidHitMe", "forgeBinding": "host-managed", "evidence": "native-decompile + PDB-name"},
+    {"seq": 23, "function": "Main", "kind": "call", "native": "[talk] AddLineToConversation(conv, \"TEXT_QST_048_VILLAGER_SPOKEN_TO\" + suffix | \"TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS\" + suffix, 0, me, GetHero())", "argsKnown": true, "lua": "quest:AddLineToConversation(conv, key .. suffix, me, hero, false)", "forgeBinding": "AddLineToConversation", "evidence": "native-decompile", "note": "retail bool 0 passed as FSE showSubtitle=false (inference)"},
+    {"seq": 24, "function": "Main", "kind": "wait", "native": "[talk] while (IsConversationActive(conv)) { NewScriptFrame; if (IsTerminating) goto LAB_00daea44 }", "argsKnown": true, "lua": "while quest:IsConversationActive(conv) do if not NOVI.frame(...) then release; return false end end", "forgeBinding": "IsConversationActive", "evidence": "native-decompile"},
+    {"seq": 25, "function": "Main", "kind": "cleanup", "native": "[talk] HasPhysicsMesh/Clear(aCStack_24) = release res2; goto LAB_00dae98e", "argsKnown": true, "lua": "NOVI.release(quest, me)", "forgeBinding": "host-managed", "evidence": "native-decompile"},
+
+    {"seq": 26, "function": "Main", "kind": "branch", "native": "[idle] if (GetTimer(*(PARENT+0x104) TalkIntermittentTimer) == 0 && rand() % 100 == 0)", "argsKnown": true, "lua": "quest:GetTimer(timer) ~= TIMER_IDLE / math.random(0, 99) ~= 0 early-outs", "forgeBinding": "GetTimer", "evidence": "native-decompile + PDB-name"},
+    {"seq": 27, "function": "Main", "kind": "branch", "native": "[idle] if (IsDistanceBetweenThingsUnder(me, GetHero(), 5.0))", "argsKnown": true, "lua": "NOVI.hero_within(quest, me, MUTTER_DISTANCE)", "forgeBinding": "IsDistanceBetweenThingsUnder", "evidence": "native-decompile"},
+    {"seq": 28, "function": "Main", "kind": "call", "native": "[mutter] SetTimer(*(PARENT+0x104), 3)", "argsKnown": true, "lua": "quest:SetTimer(timer, MUTTER_TIMER_VALUE)", "forgeBinding": "SetTimer", "evidence": "native-decompile"},
+    {"seq": 29, "function": "Main", "kind": "call", "native": "[mutter] conv = AddNewConversation(me, 0, 0); AddPersonToConversation(conv, GetHero())", "argsKnown": true, "lua": "quest:AddNewConversation / quest:AddPersonToConversation", "forgeBinding": "AddNewConversation + AddPersonToConversation", "evidence": "native-decompile"},
+    {"seq": 30, "function": "Main", "kind": "branch", "native": "[mutter] bad=PARENT+0x58, good=PARENT+0x54: (bad==0&&good>0)->Good; else if (bad<1||good!=0) { (bad<1||good<1)->Neither else Both } else Bad; each with EntityGetSex(me)==1 -> Male vector else Female vector", "argsKnown": true, "lua": "pick_reputation_table(quest, me)", "forgeBinding": "EntityGetSex + host-managed", "evidence": "native-decompile + PDB-name", "note": "vector offsets: MaleGood 0x9c, FemaleGood 0xcc, MaleNeither 0xc0, FemaleNeither 0xf0, MaleBoth 0xb4, FemaleBoth 0xe4, MaleBad 0xa8, FemaleBad 0xd8"},
+    {"seq": 31, "function": "GetVillagerSpeechIndex", "kind": "wait", "native": "do { r = rand() % count; if (r != *(PARENT+0x98)) break; NewScriptFrame; if (IsTerminating) return 0; } ; *(PARENT+0x98) = r; return r", "argsKnown": true, "lua": "get_villager_speech_index(quest, me, #lines)", "forgeBinding": "host-managed", "evidence": "native-decompile + PDB-name (lastVillagerSpeechIdx)", "note": "count = (vector.end - vector.begin) >> 2; the retry yields a frame between rolls; math.random replaces rand()% (inference)"},
+    {"seq": 32, "function": "Main", "kind": "call", "native": "[mutter] key = vector[idx]; AddLineToConversation(conv, key, 0, me, GetHero())  (conversation NOT waited on)", "argsKnown": true, "lua": "quest:AddLineToConversation(conv, lines[index + 1], me, hero, false)", "forgeBinding": "AddLineToConversation", "evidence": "native-decompile"},
+    {"seq": 33, "function": "Main", "kind": "wait", "native": "LAB_00dae98e: GSI->NewScriptFrame(); TERM = IsTerminating(); loop", "argsKnown": true, "lua": "if not NOVI.frame(quest, me) then return end", "forgeBinding": "host-managed", "evidence": "native-decompile"}
+  ],
+  "apiGaps": [
+    {"retail": "quest-object std::vector<CCharString> VillagerSpeech* (PARENT+0x9c..0xf0)", "reason": "ForgeFSE exposes no quest-object vector access to entity scripts; keys mirrored as Lua tables filled from CQ_NewOakValeIntroScript::Init 0x00DAADD0", "luaLocation": "NOVI_Villager.lua top-level VILLAGER_SPEECH_* tables"}
+  ],
+  "uncertainties": [
+    "GetVillagerSpeechIndex uses CRT rand() % count; Lua math.random(0, count-1) is used instead (different generator, same range). Retail loops with one NewScriptFrame per rejected roll; kept.",
+    "Retail AddLineToConversation arg order is (conv, key, bool, speaker, listener); the FSE binding is (conv, key, speaker, listener, showSubtitle?) and the retail 0 is passed as showSubtitle=false (assumption).",
+    "The ability enum 14 (0xe) excluded from the hit test is not named in any available enum table; FSE's MsgIsHitByHealLifeFromHero uses 30, so it is passed as a raw literal via MsgIsHitByHeroSpecialAbility(14).",
+    "The second EntitySetThingAsAllyOfThing in the hit branch has partly dropped args; (hero, me) inferred.",
+    "The movie bracket around the ATTACKED_* line is mapped to quest:StartMovieSequence()/EndMovieSequence() + me:Speak (Speak_Blocking with args (method,false,true,false) identical to retail) rather than me:SpeakAndWait (which opens its own movie).",
+    "The retail resource release for the hit branch happens at the top of the next loop iteration (before the hit test); the Lua releases at the end of react_to_hit, one statement earlier but before any other retail call.",
+    "TalkIntermittentTimer (PARENT+0x104) is a quest-registered timer id shared by all villagers; F.get(quest, F.TalkIntermittentTimer) must return that id. Timer units of SetTimer(id, 3) are not known from the decompile.",
+    "Init's EntitySetAsKillable has a third retail argument (0) that the FSE binding does not expose."
+  ],
+  "cleanupPaths": [
+    {"resource": "control", "acquired": "seq 12", "releasedOn": ["normal (next loop top, seq 7)", "terminate (LAB_00daea49 ~resource)"], "missingOn": []},
+    {"resource": "movie+pause", "acquired": "seq 13", "releasedOn": ["normal (seq 16)", "terminate inside speak wait (PauseAllNonScriptedEntities(0) + ~movie, then LAB_00daea49)"], "missingOn": []},
+    {"resource": "control", "acquired": "seq 19", "releasedOn": ["normal (seq 25)", "terminate (LAB_00daea44/LAB_00daea49 ~resource)"], "missingOn": []},
+    {"resource": "conversation", "acquired": "seq 21", "releasedOn": [], "missingOn": ["normal", "terminate"], "note": "retail waits for IsConversationActive to clear but never calls RemoveConversation"},
+    {"resource": "conversation", "acquired": "seq 29", "releasedOn": [], "missingOn": ["normal", "terminate"], "note": "retail queues the line and never waits or removes; the shared 3-unit timer throttles repeats"},
+    {"resource": "timer", "acquired": "seq 28 (quest-owned TalkIntermittentTimer, set only)", "releasedOn": [], "missingOn": [], "note": "owned and registered by the quest; the villager only reads/sets it"}
+  ]
+}

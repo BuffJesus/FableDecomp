@@ -1,0 +1,46 @@
+{
+  "events": [
+    {
+      "arguments": [
+        "AttackOver"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": {
+        "2": "AttackOver",
+        "3": true
+      },
+      "event": "api-call",
+      "name": "PersistTransferBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "AttackOver",
+        true
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Quest.GetStateBool(AttackOver)": [
+      true
+    ],
+    "Quest.PersistTransferBool": [
+      true
+    ]
+  },
+  "function": "OnPersist",
+  "kind": "quest",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua",
+  "sourceSha256": "912f2c79f6addddac3e77e0b54a1b64452e8a8c55ec348a39fee46e45d71f20e"
+}

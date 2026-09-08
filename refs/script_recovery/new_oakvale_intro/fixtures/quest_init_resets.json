@@ -1,0 +1,25 @@
+{
+ "__meta__": {
+  "function": "Init",
+  "kind": "quest",
+  "expect": [
+   "SetStateBool",
+   "SetStateInt",
+   "RegisterTimer",
+   "SetTimer"
+  ],
+  "note": "Init zeroes the bookkeeping, registers both timers, clears the talk timer"
+ },
+ "Quest.RegisterTimer": [
+  101,
+  102
+ ],
+ "Quest.GetStateInt(TalkIntermittentTimer)": [
+  null,
+  101
+ ],
+ "Quest.GetStateInt(WatchTimer)": [
+  null,
+  102
+ ]
+}

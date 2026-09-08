@@ -1,0 +1,101 @@
+{
+ "__meta__": {
+  "function": "DoMission",
+  "kind": "quest",
+  "expect": [
+   "ActivateQuest",
+   "DeactivateQuest",
+   "SetTimeOfDay",
+   "TransitionToTheme",
+   "SetQuestCardObjective",
+   "EntityTeleportToThing",
+   "SetVillageLimbo",
+   "TakeObjectFromHero",
+   "AddLogbookStoryEntry",
+   "FadeScreenIn",
+   "PlayCutscene",
+   "ResetToDefaultTheme",
+   "StopOverrideMusic",
+   "SetQuestAsCompleted"
+  ],
+  "note": "childhood set up in-frame; AttackOver flips true after three polls, exercising AttackStuff -> PostAttackStuff -> completion in one run"
+ },
+ "Quest.GetActiveQuestName": [
+  "Q_NewOakValeIntro"
+ ],
+ "Quest.IsRegionLoaded": [
+  true
+ ],
+ "Quest.NewScriptFrame": [
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  false
+ ],
+ "Quest.GetStateBool(AttackOver)": [
+  false,
+  false,
+  false,
+  true
+ ],
+ "Quest.GetHero": [
+  {
+   "handle": "hero",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetThingWithScriptName(HerosOldHouse)": [
+  {
+   "handle": "HerosOldHouse",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetThingWithScriptName(M_PostAttackStart)": [
+  {
+   "handle": "M_PostAttackStart",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetAllThingsWithScriptName(M_PostAttackStart)": [
+  [],
+  [
+   {
+    "handle": "M_PostAttackStart",
+    "scope": "Entity"
+   }
+  ]
+ ],
+ "Quest.GetThingWithScriptName(V_OakVale)": [
+  {
+   "handle": "V_OakVale",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.GetThingWithScriptName(MK_OVI_DADTRIGGER)": [
+  {
+   "handle": "MK_OVI_DADTRIGGER",
+   "scope": "Entity"
+  }
+ ],
+ "Quest.IsDistanceBetweenThingsUnder": [
+  false,
+  true
+ ]
+}

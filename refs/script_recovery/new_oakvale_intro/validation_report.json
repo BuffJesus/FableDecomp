@@ -1,0 +1,1402 @@
+{
+  "apiCalls": {
+    "Entity.AcquireControl": [
+      "NewOakValeIntro/common.lua"
+    ],
+    "Entity.ClearAllActions": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua"
+    ],
+    "Entity.ClearCommands": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua"
+    ],
+    "Entity.FollowThing": [
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua"
+    ],
+    "Entity.GetHomePos": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua"
+    ],
+    "Entity.GetPos": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_Barrel.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua"
+    ],
+    "Entity.IsAlive": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua"
+    ],
+    "Entity.IsPerformingScriptTask": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua"
+    ],
+    "Entity.IsTalkedToByHero": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Entity.MoveToPosition": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua"
+    ],
+    "Entity.MoveToThing": [
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua"
+    ],
+    "Entity.MsgIsHitByAnySpecialAbilityFromHero": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Entity.MsgIsHitByHero": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Entity.MsgIsHitByHeroSpecialAbility": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Entity.MsgIsPresentedWithItem": [
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua"
+    ],
+    "Entity.MsgIsTalkedToByHero": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua"
+    ],
+    "Entity.PlayAnimation": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua"
+    ],
+    "Entity.PlayCombatAnimation": [
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua"
+    ],
+    "Entity.PlayLoopingAnimation": [
+      "NewOakValeIntro/Entities/OVI_DeadFather.lua"
+    ],
+    "Entity.ReleaseControl": [
+      "NewOakValeIntro/common.lua"
+    ],
+    "Entity.SetIsPushableByHero": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua"
+    ],
+    "Entity.Speak": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Entity.SpeakAndWait": [
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua"
+    ],
+    "Quest.ActivateQuest": [
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.AddEntityBinding": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.AddItemToContainer": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.AddLineToConversation": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Quest.AddLogbookStoryEntry": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.AddLogbookStoryEntryString": [
+      "NewOakValeIntro/deeds.lua"
+    ],
+    "Quest.AddNewConversation": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Quest.AddPersonToConversation": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Quest.AddQuestInfoBar": [
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.AddQuestInfoCounter": [
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua"
+    ],
+    "Quest.CacheMusicSet": [
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.CameraDefault": [
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.CameraResetToViewBehindHero": [
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.CanThingBe_Seen_ByOtherThing": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua"
+    ],
+    "Quest.ChangeQuestInfoBarColour": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.ClearThingHasInformation": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua"
+    ],
+    "Quest.CreateCreature": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.CreateThread": [
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.DeactivateQuest": [
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.DeactivateQuestLater": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.DeregisterTimer": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
+      "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua"
+    ],
+    "Quest.DisplayGameInfo": [
+      "NewOakValeIntro/common.lua",
+      "NewOakValeIntro/Entities/NOVI_Barrel.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua"
+    ],
+    "Quest.DisplayMoneyBag": [
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.DisplayQuestInfo": [
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua"
+    ],
+    "Quest.DisplayTutorial": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.EndMovieSequence": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Quest.EntityGetSex": [
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Quest.EntitySetAsDamageable": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Quest.EntitySetAsKillable": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.EntitySetAsScared": [
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua"
+    ],
+    "Quest.EntitySetAsToAddToComboMultiplierWhenHit": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Quest.EntitySetAsUseMovementInActions": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua"
+    ],
+    "Quest.EntitySetCutsceneBehaviour": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua"
+    ],
+    "Quest.EntitySetDeedReactionsEnabled": [
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua"
+    ],
+    "Quest.EntitySetFacingAngle": [
+      "NewOakValeIntro/Entities/OVI_DeadFather.lua"
+    ],
+    "Quest.EntitySetFacingAngleTowardsThing": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Quest.EntitySetMaxHealth": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.EntitySetSightRadius": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua"
+    ],
+    "Quest.EntitySetTargetable": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua"
+    ],
+    "Quest.EntitySetThingAsAllyOfThing": [
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Quest.EntitySheatheWeapons": [
+      "NewOakValeIntro/Entities/NOVI_Guard.lua"
+    ],
+    "Quest.EntityTeleportToThing": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/OVI_DeadFather.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.FadeScreenIn": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.FadeScreenOut": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua"
+    ],
+    "Quest.FadeScreenOutUntilNextCallToFadeScreenIn": [
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.FinalizeEntityBindings": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.FixMovieSequenceCamera": [
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.GetActiveQuestName": [
+      "NewOakValeIntro/deeds.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.GetAllThingsWithScriptName": [
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.GetHealth": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Quest.GetHero": [
+      "NewOakValeIntro/common.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.GetHeroGold": [
+      "NewOakValeIntro/deeds.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.GetMasterGameState": [
+      "NewOakValeIntro/fields.lua"
+    ],
+    "Quest.GetStateBool": [
+      "NewOakValeIntro/fields.lua"
+    ],
+    "Quest.GetStateInt": [
+      "NewOakValeIntro/fields.lua"
+    ],
+    "Quest.GetStateString": [
+      "NewOakValeIntro/fields.lua"
+    ],
+    "Quest.GetThingWithScriptName": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/OVI_DeadFather.lua",
+      "NewOakValeIntro/Entities/OVI_DeadFather.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.GetTimer": [
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.GiveHeroGold": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua"
+    ],
+    "Quest.GiveHeroMorality": [
+      "NewOakValeIntro/deeds.lua",
+      "NewOakValeIntro/deeds.lua"
+    ],
+    "Quest.GiveHeroObject": [
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua"
+    ],
+    "Quest.GiveHeroYesNoQuestion": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua"
+    ],
+    "Quest.IsCameraPosOnScreen": [
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua"
+    ],
+    "Quest.IsConversationActive": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Quest.IsDistanceBetweenThingsUnder": [
+      "NewOakValeIntro/common.lua",
+      "NewOakValeIntro/common.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua"
+    ],
+    "Quest.IsHeroControlledByPlayer": [
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.IsObjectInThingsPossession": [
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua"
+    ],
+    "Quest.IsRegionLoaded": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.KickOffQuestStartScreen": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.Log": [
+      "NewOakValeIntro/common.lua"
+    ],
+    "Quest.MiniMapAddMarker": [
+      "NewOakValeIntro/Entities/OVI_DeadFather.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.MiniMapRemoveMarker": [
+      "NewOakValeIntro/Entities/OVI_DeadFather.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.MsgIsGameInfoClickedPast": [
+      "NewOakValeIntro/common.lua",
+      "NewOakValeIntro/Entities/NOVI_Barrel.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua"
+    ],
+    "Quest.MsgIsQuestionAnsweredYesOrNo": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua"
+    ],
+    "Quest.MsgIsTutorialClickedPast": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.NewScriptFrame": [
+      "NewOakValeIntro/common.lua",
+      "NewOakValeIntro/common.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.OpenHouseDoors": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.OverrideAutomaticHouseLocking": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.OverrideMusic": [
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.Pause": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua"
+    ],
+    "Quest.PauseAllNonScriptedEntities": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.PersistTransferBool": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.PlayAVIMovie": [
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua"
+    ],
+    "Quest.PlayCutscene": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.RegisterTimer": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.RemoveQuestInfoElement": [
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.RemoveThing": [
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua"
+    ],
+    "Quest.ResetToDefaultTheme": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.RunCutsceneWithSetup": [
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua"
+    ],
+    "Quest.SetAllSoundsAsMuted": [
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua"
+    ],
+    "Quest.SetCreatureBrain": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua"
+    ],
+    "Quest.SetHeroSleepingAsEnabled": [
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.SetIsPushableByHero": [
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/OVI_DeadFather.lua"
+    ],
+    "Quest.SetMasterGameState": [
+      "NewOakValeIntro/fields.lua"
+    ],
+    "Quest.SetQuestAsCompleted": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.SetQuestCardObjective": [
+      "NewOakValeIntro/deeds.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.SetScriptingStateGroup": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua"
+    ],
+    "Quest.SetStateBool": [
+      "NewOakValeIntro/fields.lua"
+    ],
+    "Quest.SetStateInt": [
+      "NewOakValeIntro/fields.lua"
+    ],
+    "Quest.SetStateString": [
+      "NewOakValeIntro/fields.lua"
+    ],
+    "Quest.SetThingHasInformation": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua"
+    ],
+    "Quest.SetTimeAsStopped": [
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.SetTimeOfDay": [
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.SetTimer": [
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.SetVillageLimbo": [
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.SetWanderCentrePoint": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua"
+    ],
+    "Quest.SetWanderMaxDistance": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua"
+    ],
+    "Quest.SetWanderMinDistance": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua"
+    ],
+    "Quest.StartMovieSequence": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.StopOverrideMusic": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.TakeObjectFromHero": [
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.TransitionToTheme": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.TurnCreatureInto": [
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.UpdateQuestInfoBar": [
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.UpdateQuestInfoCounter": [
+      "NewOakValeIntro/deeds.lua"
+    ]
+  },
+  "errors": [
+    "missing ForgeFSE binding: Entity.MsgIsTalkedToByHero"
+  ],
+  "files": [
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/common.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/deeds.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_AffairMan.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_AffairWife.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_AffairWoman.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_Barrel.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_BookTrader.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_Bully.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_Guard.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_LiveFather.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_Theresa.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_Victim.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/Entities/OVI_DeadFather.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/fields.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/NewOakValeIntro.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "NewOakValeIntro/villager_speech.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "quests.lua"
+    }
+  ],
+  "fixtures": [
+    {
+      "events": 82,
+      "fixture": "quest_domission_attack_transition.json",
+      "function": "DoMission",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 25,
+      "fixture": "quest_domission_terminated_during_childhood.json",
+      "function": "DoMission",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 38,
+      "fixture": "quest_init_resets.json",
+      "function": "Init",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 52,
+      "fixture": "quest_main_fresh_start.json",
+      "function": "Main",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 78,
+      "fixture": "quest_main_reload_after_attack.json",
+      "function": "Main",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 3,
+      "fixture": "quest_onpersist_roundtrip.json",
+      "function": "OnPersist",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 26,
+      "fixture": "quest_thread_manage_core_markers.json",
+      "function": "ManageQuestCoreMarkers",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 6,
+      "fixture": "quest_thread_manage_core_markers_terminated_early.json",
+      "function": "ManageQuestCoreMarkers",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 23,
+      "fixture": "quest_thread_start_barrel_timer.json",
+      "function": "StartBarrelTimer",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 7,
+      "fixture": "quest_thread_start_barrel_timer_terminated.json",
+      "function": "StartBarrelTimer",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 62,
+      "fixture": "quest_thread_watch_barrels.json",
+      "function": "WatchBarrels",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 7,
+      "fixture": "quest_thread_watch_for_got_gold.json",
+      "function": "WatchForGotGold",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    }
+  ],
+  "missingApis": {
+    "Entity.MsgIsTalkedToByHero": [
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua"
+    ]
+  },
+  "registration": {
+    "bindingsInMain": 16,
+    "entities": 16,
+    "quest": "NewOakValeIntro",
+    "questId": 1100
+  },
+  "summary": {
+    "errors": 1,
+    "fixtures": 12,
+    "fixturesPassed": 12,
+    "luaFiles": 22,
+    "missingApis": 1,
+    "syntaxErrors": 0,
+    "unsupportedCallSites": 21,
+    "warnings": 0,
+    "wrongScopeApis": 0
+  },
+  "unsupported": [
+    {
+      "file": "NewOakValeIntro/common.lua",
+      "retail": "RetailName"
+    },
+    {
+      "file": "NewOakValeIntro/common.lua",
+      "retail": "StartScriptingEntity"
+    },
+    {
+      "file": "NewOakValeIntro/common.lua",
+      "retail": "ReleaseScriptingEntity"
+    },
+    {
+      "file": "NewOakValeIntro/deeds.lua",
+      "retail": "GiveHeroMorality(+deed)"
+    },
+    {
+      "file": "NewOakValeIntro/deeds.lua",
+      "retail": "GiveHeroMorality(-deed)"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "retail": "TextEntryExists"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_Barrel.lua",
+      "retail": "IsXbox"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "retail": "CScriptThing::MsgIsHitByAnySpecialAbilityFrom"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "retail": "CScriptThing::MsgIsHitBySpecialAbilityFrom"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "retail": "Pause"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "retail": "CScriptThing::MsgIsHitByAnySpecialAbilityFrom"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "retail": "CScriptThing::MsgIsHitBySpecialAbilityFrom"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "retail": "IsDistanceFromThingToPositionOver"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "retail": "IsDistanceFromThingToPositionOver"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "retail": "SetTimer"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "retail": "IsDistanceFromThingToPositionOver"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "retail": "IsXbox"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "retail": "CScriptThing::MsgIsHitByAnySpecialAbilityFrom"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "retail": "CScriptThing::MsgIsHitBySpecialAbilityFrom"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "retail": "IsDistanceBetweenThingsOver"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "retail": "IsXbox"
+    }
+  ],
+  "warnings": [],
+  "wrongScopeApis": {}
+}
