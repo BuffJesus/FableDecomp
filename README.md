@@ -93,7 +93,7 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,644** |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,648** |
 | Reconstruction | Verified functional or matching C++ | **18,579** (37.48%) |
 | Reconstruction | — of which byte-**identical** C++ | 8,082 (16.30%) |
 | Reconstruction | — of which hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 292 |

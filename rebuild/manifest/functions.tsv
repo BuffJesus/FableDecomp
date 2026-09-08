@@ -4678,7 +4678,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004aecf0	ResetTexture	CFrameData	__thiscall	void	1	CFrameData *	1	yes	accepted									
 004aedf0	GetDefaultVal<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_>	GetDefaultVal<std::list<COpinionTransientOffset,std	__fastcall	list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>	0		1	yes	accepted									
 004aee30	GetDefaultVal<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_>	GetDefaultVal<std::list<COpinionTransientOffset,std	__fastcall	list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>	0		1	yes	accepted									
-004aef50	IsBinary	CPersistContext	__thiscall	bool	1	CPersistContext *	1	yes	accepted									
+004aef50	IsBinary	CPersistContext	__thiscall	bool	1	CPersistContext *	1	yes	accepted						PASS	PASS		D:\Documents\FableTLC\rebuild\src\compiled\00\4a\CPersistContext_IsBinary_004aef50.cpp
 004aefa0	sub_004aefa0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 004af000	sub_004af000	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 004af220	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_004af220.cpp
@@ -35446,7 +35446,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a026f0	Lock	CHandleBasedMemoryPool	__thiscall	void	2	CHandleBasedMemoryPool *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CHandleBasedMemoryPool_Lock_00a026f0.cpp
 00a02710	Unlock	CHandleBasedMemoryPool	__thiscall	void	2	CHandleBasedMemoryPool *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CHandleBasedMemoryPool_Unlock_00a02710.cpp
 00a02730	Defragment	CHandleBasedMemoryPool	__thiscall	void	1	CHandleBasedMemoryPool *	1	yes	accepted									
-00a028b0	InternalSetResource	CHandleBasedMemoryPool	__thiscall	void	3	CHandleBasedMemoryPool *,long,void *	1	yes	accepted									
+00a028b0	InternalSetResource	CHandleBasedMemoryPool	__thiscall	void	3	CHandleBasedMemoryPool *,long,void *	1	yes	accepted						PASS	PASS		D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CHandleBasedMemoryPool_InternalSetResource_00a028b0.cpp
 00a028f0	MoveArea	CHandleBasedMemoryPool	__thiscall	void	3	CHandleBasedMemoryPool *,CHeader *,CHeader *	1	yes	accepted									
 00a02ad0	ValidateResources	CHandleBasedMemoryPool	__thiscall	void	1	CHandleBasedMemoryPool *	1	yes	accepted									
 00a02b30	Free	CHandleBasedMemoryPool	__thiscall	void	2	CHandleBasedMemoryPool *,long	1	yes	accepted									
@@ -37345,7 +37345,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a629c0	CPackedUIntArray	CPackedUIntArray	__thiscall	undefined	1	CPackedUIntArray *	0	yes	accepted									
 00a629d0	~CPackedUIntArray	CPackedUIntArray	__thiscall	void	1	CPackedUIntArray *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CPackedUIntArray_CPackedUIntArray_00a629d0.cpp
 00a629f0	operator[]	CPackedUIntArray	__thiscall	ulong	2	CPackedUIntArray *,ulong	1	yes	accepted									
-00a62a60	Sizeof	CPackedUIntArray	__thiscall	ulong	1	CPackedUIntArray *	1	yes	accepted									
+00a62a60	Sizeof	CPackedUIntArray	__thiscall	ulong	1	CPackedUIntArray *	1	yes	accepted						PASS	PASS		D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CPackedUIntArray_Sizeof_00a62a60.cpp
 00a62ac0	~CPackedUIntArray	CPackedUIntArray	__thiscall	void	1	CPackedUIntArray *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CPackedUIntArray_CPackedUIntArray_00a62ac0.cpp
 00a62ae0	CalculateBias	CPackedUIntArray	__thiscall	ulong	5	CPackedUIntArray *,void *,ulong,long,ulong	1	yes	accepted									
 00a62b70	CountBits	CPackedUIntArray	__thiscall	ulong	5	CPackedUIntArray *,void *,ulong,long,ulong	1	yes	accepted									
@@ -37534,7 +37534,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a69550	InitNumberBox	CPaintMapDialog	__thiscall	void	4	CPaintMapDialog *,CCharString *,CGuiWindowBox *,float	1	yes	accepted									
 00a69590	`vector_deleting_destructor'	CThingTrackNode	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
 00a695c0	CTargetPoint	CTargetPoint	__thiscall	undefined	1	CTargetPoint *	0	yes	accepted									
-00a696d0	Uninitialise	CTextureManager	__thiscall	void	1	CTextureManager *	1	yes	accepted									
+00a696d0	Uninitialise	CTextureManager	__thiscall	void	1	CTextureManager *	1	yes	accepted						PASS	PASS		D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CTextureManager_Uninitialise_00a696d0.cpp
 00a69730	GetPoolIndex	CTextureManager	__thiscall	long	2	CTextureManager *,ulong	1	yes	accepted									
 00a697a0	CreateTexture	CManagedTextureData	__thiscall	bool	5	CManagedTextureData *,ulong,ulong,long,CPixelFormat *	1	yes	accepted									
 00a69810	IsBusy	CManagedTextureData	__thiscall	bool	1	CManagedTextureData *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CManagedTextureData_IsBusy_00a69810.cpp

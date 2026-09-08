@@ -1920,7 +1920,7 @@ CHTG_FreedomFighter	2	1	1	0	0	0	0	0	0	0	0
 CHTG_Guard	5	0	0	0	0	0	0	0	0	0	0
 CHTG_Prisoner	4	1	1	0	0	0	0	0	0	0	0
 CHairCardDef	2	3	3	0	0	3	3	1	2	0	0
-CHandleBasedMemoryPool	42	50	48	0	0	11	11	8	3	0	0
+CHandleBasedMemoryPool	42	50	48	0	0	12	12	8	3	0	0
 CHasNameDef	2	3	3	0	0	3	3	2	1	0	0
 CHealthOverTimeHelper	2	0	0	0	0	0	0	0	0	0	0
 CHeightMap	7	7	6	0	0	0	0	0	0	0	0
@@ -2559,7 +2559,7 @@ CPSCSplineBase	11	9	8	0	0	0	0	0	0	0	0
 CPSCUpdateNormal	21	6	6	0	0	0	0	0	0	0	0
 CPW_NecklaceDiggingSpot	3	1	1	0	0	0	0	0	0	0	0
 CPackedBlockAllocator	0	1	0	0	0	0	0	0	0	0	0
-CPackedUIntArray	8	11	10	0	0	2	2	0	2	0	0
+CPackedUIntArray	8	11	10	0	0	3	3	0	2	0	0
 CPaintMapDialog	43	5	5	0	0	0	0	0	0	0	0
 CPair	0	3	3	0	0	3	3	0	3	0	0
 CParentDefClassBase	9	84	13	0	0	5	5	5	0	0	0
@@ -2592,7 +2592,7 @@ CPerceivedThingDef	2	3	3	0	0	2	2	2	0	0	0
 CPerformanceCounterRegister	2	0	0	0	0	0	0	0	0	0	0
 CPerlinNoise	4	4	4	0	0	0	0	0	0	0	0
 CPermanentBarrier	2	1	1	0	0	0	0	0	0	0	0
-CPersistContext	23	149	140	0	0	10	10	4	6	0	0
+CPersistContext	23	149	140	0	0	11	11	4	6	0	0
 CPersistContextReadSection	0	4	0	0	0	1	1	0	1	0	0
 CPersistContext_TransferableComponent<CIntelligentPointer<CThing>_>	0	5	5	0	0	0	0	0	0	0	0
 CPersistContext_TransferableComponent<CReactionFrequencyTraitsArray>	0	1	1	0	0	0	0	0	0	0	0
@@ -3585,7 +3585,7 @@ CTextContainer	3	8	3	0	0	0	0	0	0	0	0
 CTextEntry	5	3	2	0	0	0	0	0	0	0	0
 CTextSlider	13	7	5	0	0	0	0	0	0	0	0
 CTexture	33	32	29	0	0	14	14	9	3	0	0
-CTextureManager	15	10	9	0	0	1	1	1	0	0	0
+CTextureManager	15	10	9	0	0	2	2	1	0	0	0
 CTextureMorphs	4	4	4	0	0	0	0	0	0	0	0
 CTextureRenderer	0	5	1	0	0	0	0	0	0	0	0
 CTextureReplacementDef	2	5	3	0	0	3	3	1	2	0	0

@@ -980,6 +980,7 @@ COpinionSourceDef	_quarantine/COpinionSourceDef.h	216	16	QUARANTINED	1 conflict(
 COptimisedPrimitive	COptimisedPrimitive.h	160	19	OK	0 retail files
 COracleMinigameDef	COracleMinigameDef.h	92	13	OK	0 retail files
 COverheadDisplayDef	COverheadDisplayDef.h	40	3	OK	0 retail files
+CPackedUIntArray	CPackedUIntArray.h	16	5	OK	1 retail files
 CParentDefClassBase	CParentDefClassBase.h	61	2	OK	1 retail files
 CParticleAttacherDef	_quarantine/CParticleAttacherDef.h	56	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CParticleEmitter	CParticleEmitter.h	376	25	OK	1 retail files
@@ -1183,7 +1184,7 @@ CTeleporterDef	_quarantine/CTeleporterDef.h	52	3	QUARANTINED	2 conflict(s) in 1 
 CTestPos	CTestPos.h	36	7	OK	1 retail files
 CText	CText.h	444	13	OK	0 retail files
 CTexture	CTexture.h	8	3	OK	0 retail files
-CTextureManager	CTextureManager.h	1556	7	OK	0 retail files
+CTextureManager	CTextureManager.h	1556	7	OK	1 retail files; suspect=CTextureManager_Uninitialise_00a696d0.cpp
 CTextureReplacementDef	_quarantine/CTextureReplacementDef.h	56	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CThing	_quarantine/CThing.h	168	24	QUARANTINED	3 conflict(s) in 3 file(s) vs 2 agreeing
 CThingAICreature	CThingAICreature.h	528	24	OK	1 retail files

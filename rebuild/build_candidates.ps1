@@ -130903,6 +130903,34 @@ $catalog = @(
         TestSource = '00/6c/CTCWife_ClearAppearanceChangedNoticed_006cecd0_test.cpp'
         PassPattern = 'WIFE_APPEARANCE_NOTICE_CLEAR PASS'
     }
+    [pscustomobject]@{
+        Address = '00a62a60'
+        Module = 'CPackedUIntArray'
+        Source = '00/a6/CPackedUIntArray_Sizeof_00a62a60.cpp'
+        TestSource = '00/a6/CPackedUIntArray_Sizeof_00a62a60_test.cpp'
+        PassPattern = 'PACKED_UINT_ARRAY_SIZE PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aef50'
+        Module = 'CPersistContext'
+        Source = '00/4a/CPersistContext_IsBinary_004aef50.cpp'
+        TestSource = '00/4a/CPersistContext_IsBinary_004aef50_test.cpp'
+        PassPattern = 'PERSIST_CONTEXT_IS_BINARY PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a696d0'
+        Module = 'CTextureManager'
+        Source = '00/a6/CTextureManager_Uninitialise_00a696d0.cpp'
+        TestSource = '00/a6/CTextureManager_Uninitialise_00a696d0_test.cpp'
+        PassPattern = 'TEXTURE_MANAGER_UNINITIALISE PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a028b0'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a0/CHandleBasedMemoryPool_InternalSetResource_00a028b0.cpp'
+        TestSource = '00/a0/CHandleBasedMemoryPool_InternalSetResource_00a028b0_test.cpp'
+        PassPattern = 'HANDLE_POOL_SET_RESOURCE PASS'
+    }
 )
 
 $requestedAddresses = @(

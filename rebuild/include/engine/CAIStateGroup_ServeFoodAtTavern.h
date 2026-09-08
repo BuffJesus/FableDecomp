@@ -11,7 +11,7 @@
 #pragma pack(push, 1)
 struct CAIStateGroup_ServeFoodAtTavern {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    void*         m_pOwner;                                  // +0x04 retail-only CStateGroupOwner* (CAIStateGroupServeFoodAtTavern_GetBuilding_00902cdc.cpp)
+    void*         m_pOwner;                                  // +0x04 retail-only CStateGroupOwner* (previous header)
     unsigned char _pad_0x08[0x44];                           // +0x08
 };
 #pragma pack(pop)

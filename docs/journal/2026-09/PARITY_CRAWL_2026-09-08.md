@@ -30,6 +30,13 @@ use shared PDB headers. Five `CEnvironment::Peek*` accessors now express named s
 members instead of anonymous `pad[0x...]` structs; the smaller retail state layout is
 isolated in `rebuild/include/fable_environment_retail.h` with compile-time offset checks.
 
-Resume in batch 161 and mark each reviewed address in both crawl tried ledgers before
-generating batch 162. Keep the readable-source rule: semantic/PDB names when supported,
+Batch 162 added four exact matches with behavior fixtures:
+
+- `00A62A60 CPackedUIntArray::Sizeof` — named `Size`/`Bits` fields and an explicit header-plus-packed-storage formula
+- `004AEF50 CPersistContext::IsBinary` — PDB-backed `Mode`; unrecovered enum labels remain numeric rather than speculative
+- `00A696D0 CTextureManager::Uninitialise` — named retail overlay for the donor's larger preallocation block
+- `00A028B0 CHandleBasedMemoryPool::InternalSetResource` — typed handle-array/allocation traversal rather than chained offsets
+
+Resume in the remainder of batch 162 and mark each reviewed address in both crawl tried ledgers before
+generating batch 163. Keep the readable-source rule: semantic/PDB names when supported,
 explicit offset names otherwise, and no landing on a misleading owner or prototype.

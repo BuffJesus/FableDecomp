@@ -114,7 +114,9 @@ CAIStateGroup_ServeFood	0x1c	long	Seat	4	int	f1c	4	AGREE	CAIStateGroupServeFood_
 CAIStateGroup_ServeFood	0x20	float	ServePos_X	4	char	c	36	CONFLICT	CAIStateGroupServeFood_InitStateGroup_00922fa0.cpp
 CAIStateGroup_ServeFood	0x44	long	ServeActionPoint	4	int	f44	4	AGREE	CAIStateGroupServeFood_InitStateGroup_00922fa0.cpp
 CAIStateGroup_ServeFoodAtHome	0x4	unsigned char	_base_0x04	72	CStateGroupOwner*	m_pOwner	4	RETAIL_ONLY	CAIStateGroupServeFoodAtHome_GetBuilding_00902ca7.cpp
+CAIStateGroup_ServeFoodAtHome	0x4	unsigned char	_base_0x04	72	CStateGroupOwner*	m_pOwner	4	RETAIL_ONLY	previous header
 CAIStateGroup_ServeFoodAtTavern	0x4	unsigned char	_base_0x04	72	CStateGroupOwner*	m_pOwner	4	RETAIL_ONLY	CAIStateGroupServeFoodAtTavern_GetBuilding_00902cdc.cpp
+CAIStateGroup_ServeFoodAtTavern	0x4	unsigned char	_base_0x04	72	CStateGroupOwner*	m_pOwner	4	RETAIL_ONLY	previous header
 CAIStateGroup_StandStill	0x0	void*	__vftable	4	int	x	4	AGREE_KIND_SOFT	CAIStateGroupStandStill_Update_0091bcf0.cpp
 CAIStateGroup_TavernServer	0x34	CIntelligentPointer<CThingBuilding>	PPub	8	Sub	sub	4	CONTAINED	CAIStateGroupTavernServer_WanderWithinTavern_00966ad0.cpp
 CAIStateGroup_WifeGiveYouGift	0x14	long	FrameToSpeakNext	4	int	f14	4	AGREE	CAIStateGroupWifeGiveYouGift_InitStateGroup_00925f80.cpp
@@ -819,6 +821,11 @@ COpinionPersonalityDef	size			92	sizeof	GetSizeofClass	84	SIZE_CONFLICT	GetSizeo
 COpinionReactionManagerDef	size			860	sizeof	GetSizeofClass	812	SIZE_CONFLICT	GetSizeofClass
 COpinionReactionMaskDef	size			80	sizeof	GetSizeofClass	72	SIZE_CONFLICT	GetSizeofClass
 COpinionSourceDef	size			216	sizeof	GetSizeofClass	200	SIZE_CONFLICT	GetSizeofClass
+CPackedUIntArray	0x0	void*	PackedInts	4	unsigned long*	PackedInts	4	AGREE	CPackedUIntArray_Sizeof_00a62a60.cpp
+CPackedUIntArray	0x4	unsigned long	Size	4	unsigned long	Size	4	AGREE	CPackedUIntArray_Sizeof_00a62a60.cpp
+CPackedUIntArray	0x8	unsigned char	Bits	1	unsigned char	Bits	1	AGREE	CPackedUIntArray_Sizeof_00a62a60.cpp
+CPackedUIntArray	0x9	unsigned char	_pad_0x09	3	unsigned char	_alignment	3	RETAIL_ONLY	CPackedUIntArray_Sizeof_00a62a60.cpp
+CPackedUIntArray	0xc	unsigned long	Bias	4	unsigned long	Bias	4	AGREE	CPackedUIntArray_Sizeof_00a62a60.cpp
 CParentDefClassBase	0x29	CVectorMap<unsigned_long,CDefClassBase::CSubDefInfo,CKeyPairCompareLess<unsigned_long,CDefClassBase::CSubDefInfo>_>	SubDefInfoMap	20	Sub	field	4	CONTAINED	CParentDefClassBase_GetPSubDefInfoMap_004303e0.cpp
 CParticleAttacherDef	size			56	sizeof	GetSizeofClass	52	SIZE_CONFLICT	GetSizeofClass
 CParticleEmitter	0x8	vector<CCountedPointer<NParticleEngine::CParticleSystem>,std::allocator<CCountedPointer<NParticleEngine::CParticleSystem>_>_>	ParticleSystems	16	CSplineRef*	begin	4	CONTAINED	CParticleEmitter_GetApproximateTotalSplineLength_00aed050.cpp
@@ -1209,6 +1216,9 @@ CTestPos	0xc	unsigned char	_pad_0x0c	4	int	field_c	4	RETAIL_ONLY	CTestPos_Init_0
 CTestPos	0xc	unsigned char	_pad_0x0c	4	long	field_c	4	RETAIL_ONLY	previous header
 CText	0x15c	unsigned char	_pad_0x15c	4	unsigned char	flags	1	RETAIL_ONLY	previous header
 CTexture	0x0	IDirect3DTexture9*	PD3DTexture	4	IRefObj*	obj	4	AGREE	CTexture_GetRefCount_009f9d60.cpp
+CTextureManager	0x4	bool	Initialised	1	bool	Initialised	1	AGREE	CTextureManager_Uninitialise_00a696d0.cpp
+CTextureManager	0x5	unsigned char	_pad_0x05	3	unsigned char	_retailPreallocationState	1483	CONFLICT	CTextureManager_Uninitialise_00a696d0.cpp
+CTextureManager	0x5d0	unsigned long[16]	FailedAllocations	64	void*	TextureBuffer	4	CONTAINED	CTextureManager_Uninitialise_00a696d0.cpp
 CTextureReplacementDef	size			56	sizeof	GetSizeofClass	52	SIZE_CONFLICT	GetSizeofClass
 CThing	0x70	CTCPhysicsBase*	PhysicsTC	4	CLevelObj*	level	4	AGREE	CThing_IsLevelLess_004c7930.cpp
 CThing	0x70	CTCPhysicsBase*	PhysicsTC	4	Inner*	m_inner	4	AGREE	CThing_IsForceNoSerialise_004c7bd0.cpp
