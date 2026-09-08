@@ -12371,3 +12371,7 @@ address	class	file	action	baseline	new_status	behaviour	reason
 00bbbe60	CEngineInternalPrimitiveParticleGroup	CEngineInternalPrimitiveParticleGroup_Update_00bbbe60.cpp	skip				AMBIG_ALIGN
 004ae9d0	CNetworkClient	CNetworkClient_Update_004ae9d0.cpp	applied	MATCH	MATCH	PASS	APPLIED
 00781d80	CTCBoastingPosition	CTCBoastingPosition_IsPositionActivated_00781d80.cpp	applied-manual	MATCH	MATCH	PASS	APPLIED_MANUAL
+005e3e70	CTCQuestCompletionUI	CTCQuestCompletionUI_IsOverridingScreenFade_005e3e70.cpp	skip				QUARANTINED
+009174d0	CAIStateGroup_Clean	CAIStateGroupClean_InitStateGroup_009174d0.cpp	skip				QUARANTINED
+00a1a150	CNavigatorAStar	CNavigatorAStar_Interrupt_00a1a150.cpp	skip				QUARANTINED
+00bc6810	CEngineInternalPrimitiveText	CEngineInternalPrimitiveText_Update_00bc6810.cpp	skip				QUARANTINED

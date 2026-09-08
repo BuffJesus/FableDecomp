@@ -7,7 +7,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 
 ## Current focus (2026-09)
 
-- [ ] Typed shared headers: 2026-09-07 `--all-trusted --compile-check` = 957 compiling headers (257 quarantined); automatic passes plus the parity-gated manual tail have retyped 596 landed TUs onto PDB-named headers (110 manual conversions across twenty-two checkpoints). Both `VTABLE_TYPED` (37→0) and `VIRTUAL_THIS` (54→0) are closed in the live `rebuild/backlog/retype_log.tsv`; the `AMBIG_ALIGN` lane is now under review, with two stale entries recovered in the first pass — `tools/decomp_pipeline/`
+- [ ] Typed shared headers: 2026-09-07 `--all-trusted --compile-check` = 957 compiling headers (257 quarantined); automatic passes plus the parity-gated manual tail have retyped 596 landed TUs onto PDB-named headers (110 manual conversions across twenty-two checkpoints). Both `VTABLE_TYPED` (37→0) and `VIRTUAL_THIS` (54→0) are closed in the live `rebuild/backlog/retype_log.tsv`; the ten-entry `AMBIG_ALIGN` review recovered two, reclassified four quarantined and two missing-field cases, and left two dependent on unnamed donor-layout fields — `tools/decomp_pipeline/`
 - [x] 2026-09-07 Aeon's 12 new Lua ports ingested (20 packages, 71 scripts; foundation audit 15/18) — `docs/scripts/AEON_LUA_PORTS.md`
 - [ ] Port the 12 FSE 6.9.26 bindings LUAGameflow needs into ForgeFSE-retail-shadow; add package→native-name aliases so the new seeds correlate (8/20 today) — `docs/scripts/AEON_LUA_PORTS.md`
 - [ ] Keep the parity crawl moving from `work/crawl_batch155` (ledger 5,693; catalog 18,631 landed) — `docs/pipeline/FULL_DECOMP.md`
