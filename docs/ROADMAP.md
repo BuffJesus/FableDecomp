@@ -1,16 +1,16 @@
 # FableTLC roadmap (single source of truth for "what's done / in flight / next")
 
-Updated 2026-09-07. Checklists only. `[x]` = done with evidence, `[ ]` = open, "(verify)" = status
-unconfirmed. Numbers come from `rebuild/COVERAGE.md` (dashboard generated 2026-08-28). Resume
+Updated 2026-09-08. Checklists only. `[x]` = done with evidence, `[ ]` = open, "(verify)" = status
+unconfirmed. Numbers come from `rebuild/COVERAGE.md` (dashboard generated 2026-09-08). Resume
 instructions live in `docs/HANDOFF.md`; long history in `docs/journal/HANDOFF_ARCHIVE.md`.
 Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,ACTIVE_TASK_LIST}.md`.
 
 ## Current focus (2026-09)
 
 - [ ] Typed shared headers: 2026-09-08 `--all-trusted --compile-check` = 962 compiling headers (261 layout-quarantined plus one compile failure); automatic passes plus the parity-gated manual tail have retyped 656 landed TUs onto PDB-named headers. The latest cleanup converted thirteen more TUs, including five `CEnvironment::Peek*` accessors whose retail/PDB layout delta is now centralized in `fable_environment_retail.h`. `VTABLE_TYPED` (37→0), `VIRTUAL_THIS` (54→0), non-source-failure `PARITY_CHANGED` (7→0), `BEHAV_FAIL` (8→0), source-failure `PARITY_CHANGED` (43→0), and `AMBIG_ALIGN` (10→0) are closed. — `tools/decomp_pipeline/`
-- [x] 2026-09-07 Aeon's 12 new Lua ports ingested (20 packages, 71 scripts; foundation audit 15/18) — `docs/scripts/AEON_LUA_PORTS.md`
-- [ ] Port the 12 FSE 6.9.26 bindings LUAGameflow needs into ForgeFSE-retail-shadow; add package→native-name aliases so the new seeds correlate (8/20 today) — `docs/scripts/AEON_LUA_PORTS.md`
-- [ ] Keep the parity crawl moving through batch 228 (202 readable MATCH/RELOCATION_MATCH landings on 2026-09-08; catalog 18,833 entries) — `docs/pipeline/FULL_DECOMP.md`
+- [x] 2026-09-08 Aeon Lua corpus extended to 22 packages / 74 executable scripts with `GuildMaster` and `LUAGameflowAssistance`; both are disabled `reconstructed-source` shadows and correlate to `V_GuildMaster` / `GameflowAssistance` — `docs/scripts/AEON_LUA_PORTS.md`
+- [ ] Close the ForgeFSE runtime tail used by the recovered corpus (215/230 unique calls callable; 15 missing). Today's new-package blockers are `Entity:Speak` and `Quest:IsHeroControlledByPlayer` — `docs/scripts/FORGEFSE_RUNTIME_SCRIPT_AUDIT.md`
+- [ ] Keep the parity crawl moving past batch 334 (18,860 compiled/behavior-tested; 8,141 exact and 10,675 relocation matches; 393,624 genuine retail bytes matched) — `docs/journal/2026-09/PARITY_CRAWL_2026-09-08.md`
 - [ ] Live-test ForgeFSE-retail-shadow branch `feat/upstream-fse-2026-09-02` (commit `3f417ee`) in-game: CreateThread script + region unload — user-driven, needs Fable open
 - [ ] Merge `feat/script-recovery-marathon` into `main` once CI (`docs-consistency`) is green on the branch
 
@@ -99,8 +99,10 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [x] Aeon's 8 hand-ports ingested (`work/aeon_lua_ports/`: DragonBossFight, GuardianSisterInfo(2), GuardianTrophyDealerInfo, HerosOldHouse, MazeResearch, MeetSister, StatueMaster) as `reconstructed-source` oracles
 - [x] 2026-09-02 upstream FSE 14 bindings + `lua_newthread` threading ported onto canonical `D:\Code\ForgeFSE-retail-shadow` (1000-row table, corpus 111/111 callable); two ABI defects fixed (`FadeOutAndKillEntity`, cutscene arg order)
 - [x] `map-native-helpers` stage shown to be 73% non-semantic (CRT/STL/lifetime) — not a real gate
-- [x] `tools/script_recovery` tests 94/94; foundation audit 17/18
-- [ ] Ingest the 2026-09-06 LUAGameflow batch (12 ports) into `work/aeon_lua_ports/`; extend alias table in both tools
+- [x] `tools/script_recovery` tests 94/94; foundation audit baseline recorded (remaining checks are evidence/runtime gates, not hidden as passes)
+- [x] 2026-09-08 corpus intake contains 22 packages / 74 executable scripts. `GuildMaster` required a documented registry-only staging archive because Aeon's ZIP omitted `FSE/quests.lua`; original member bytes and both archive hashes are retained in `AEON_LUA_PORTS.md`.
+- [x] Curated native aliases now correlate 10 reconstructed registrations, including `GuildMaster` -> `V_GuildMaster` and `LUAGameflowAssistance` -> `GameflowAssistance`.
+- [ ] Resolve the 15-call ForgeFSE runtime tail; specifically add/verify `Entity:Speak` and `Quest:IsHeroControlledByPlayer` before enabling either 2026-09-08 package.
 - [ ] Ghidra anchor-discovery run for `V_StatueMaster` + `Q_DragonBossFight` (`decompile_native_script.py`) — the 18th audit check
 - [ ] Runtime-confirm Aeon's addresses `0x00CBE716`, `0x00CBE87F`, `0x00CBE960` with a live probe
 - [ ] First OUR end-to-end hand reconstruction of one `manual-lua-reconstruction` script against its trace fixtures (0 of 161 converted by us so far)

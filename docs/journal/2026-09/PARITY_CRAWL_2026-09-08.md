@@ -164,3 +164,35 @@ float loads/stores and has no stable return value. Retail overlays document the 
 prefixes before `CPlayer::PlayerModes`, `CMap::ThingUIDCount`, and the three Balverine
 definition fields. All nine pass together under VC7.1. Batches through 227 are reviewed;
 batch 228 is active.
+
+### Batches 228-334: continued typed crawl and script-corpus intake
+
+The crawl continued through batch 334. The refreshed gate now contains 18,860
+compiled and behavior-tested candidates: 8,141 exact matches and 10,675
+relocation matches. Genuine C++ accounts for 14,686 landed manifest entries and
+393,624 matched retail bytes. Batch 335 is generated and active.
+
+The latest typed landings include `C2DBoxI::ExtendToContain`,
+`CTCExplodingObject::SetCountdownTimer`, `CDataOutputStream::Write2DVector`,
+`WordWrap_FindNonWhiteSpaceForward`,
+`CGameScriptThingManager::HasScriptThing`, `CCard::Turn`,
+`C3DCoordI::operator+=`, and `GFSerialiseVectorBinaryOut<float>`. They use
+PDB-named coordinates, vectors, card state, 64-bit script IDs, and typed vector
+ranges; focused fixtures cover their branch, conversion, and serialization
+behavior before parity promotion.
+
+Identity checks remained stricter than name propagation. The crawl rejected
+`CTCTavernGameCardBase::NewGame`, `CTriangleInfo::IsIdentical`,
+`CPlayerManager::PrepareForLoad`, `CPlayer::HasMode`, and long runs of repeated
+`CActionEventShot::Alloc` labels where retail bodies, stack cleanup, member
+offsets, or donor layouts contradicted the proposed owner. Behavior-correct but
+non-parity versions of `CRightHandedSet::GetRight`, the crime-to-guard filter,
+and the mesh-effect smart-pointer accessors remain audit scratch rather than
+inflating the landed totals.
+
+The same checkpoint ingested Aeon's `GuildMaster` and
+`LUAGameflowAssistance` Lua packages as disabled `reconstructed-source`
+shadows. Their native aliases, archive provenance, generated IR, compatibility
+reports, and known missing bindings are documented in
+`docs/scripts/AEON_LUA_PORTS.md`; this intake does not change native parity
+counts or claim Lua/retail equivalence.
