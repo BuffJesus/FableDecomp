@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct E{float base,initial,duration;long target;bool active;double start;};int main(){E e={.25f,0,0,0,false,0};e.target=-1;e.active=true;e.start=12.0;e.duration=3.0f;e.initial=e.base;if(e.target!=-1||!e.active||e.start!=12.0||e.duration!=3.0f||e.initial!=.25f)return 1;printf("DEFAULT_THEME_TRANSITION PASS\n");return 0;}

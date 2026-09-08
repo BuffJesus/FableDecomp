@@ -128,3 +128,21 @@ Manual signature corrections reject the propagated `CWADFile` and `CGraphicDataB
 Batches 208-214 added seven readable retail-parity functions. Exact matches recovered `CPlane::Initialise`, `C2DBoxI::ValidateOrientationAndFlip` (using a readable `SwapLong` helper to preserve retail alias/load order), `CTCBuyableHouse::MovedInNotification` as the PDB-named move-in-day minimum, and `LHHttp2::GetDocumentSize` over non-null PDB `DocumentParts` and `BufferLength`. Relocation matches recovered `CVillagerInteractionsDef::Copy`, `CCarryingDef::Copy`, and packed `CAnimComponentCombatFlourishTargetOffset::TransferBinaryOut`.
 
 The definition and HTTP sources explicitly document retail/debug layout differences instead of renaming offsets: retail's 12-byte vector moves `OverriddenDummyObject`, the definition base shifts the interaction fields, and expanded debug strings/containers move `LHHttp2::DocumentParts`. Repeated camera-mode, navigation-tree, bank-file, input-event, and template labels whose bodies or offsets contradicted their propagated owners were ledgered without promotion. Batches through 214 are reviewed; batch 215 is active.
+
+### Batches 215-220: typed construction, state leaves, and line extents
+
+Batches 215-220 added nine readable retail-parity functions. The exact matches are
+`CTCHeroExperience::ForceSpendableExperienceTo` and the paired
+`C2DLineF::GetLowestX`/`GetHighestX` helpers; the latter retain the original-style
+templated `Minimum`/`Maximum` expressions and compile to every retail byte. Relocation
+matches recover two animation-component allocators as ordinary `new Derived`, the
+transformation-chunk writer, `CTCCrateStack::GetNumCrates`,
+`CTCVillageMember::IsAttachedToVillage`, and the default environment-theme transition.
+
+Every landing uses PDB member identities. Retail overlays explicitly document the
+debug/retail base-size differences for the mesh transform and theme-transition fields.
+Plausible `CGameTimeManager::IsDay` and `CBankFile::GetUnusedSpace` versions were not
+promoted because their generated control flow or register schedule differed from the
+retail oracle. The nine-function combined VC7.1 build passes; 962 of 963 generated
+shared headers compile, with the pre-existing `CGameDefinitionManager` quarantine the
+only failure. Batches through 220 are reviewed; batch 221 is next.

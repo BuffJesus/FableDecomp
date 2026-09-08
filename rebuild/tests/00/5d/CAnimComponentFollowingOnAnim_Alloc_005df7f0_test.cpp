@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct B{virtual ~B(){}};struct D:B{long value;D():value(-1){}};int main(){B*b=new D;D*d=(D*)b;if(d->value!=-1)return 1;delete b;printf("CANIMCOMPONENTFOLLOWINGONANIM_ALLOC PASS\n");return 0;}

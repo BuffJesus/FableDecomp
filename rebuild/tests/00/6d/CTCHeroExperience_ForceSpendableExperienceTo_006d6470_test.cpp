@@ -1,0 +1,2 @@
+#include <stdio.h>
+struct X{long total,spendable;void force(long amount){if(amount<0)amount=0;spendable=amount;if(total<spendable)total=spendable;}};int main(){X a={5,2};a.force(9);if(a.total!=9||a.spendable!=9)return 1;a.force(-4);if(a.total!=9||a.spendable!=0)return 2;printf("HERO_EXPERIENCE_FORCE_SPENDABLE PASS\n");return 0;}

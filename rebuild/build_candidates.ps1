@@ -132100,6 +132100,69 @@ $catalog = @(
         TestSource = '00/83/LHHttp2_GetDocumentSize_0083ea70_test.cpp'
         PassPattern = 'HTTP_DOCUMENT_SIZE PASS'
     }
+    [pscustomobject]@{
+        Address = '00ab9cb0'
+        Module = 'C3DMeshFileTransformationChunk'
+        Source = '00/ab/C3DMeshFileTransformationChunk_WriteToFile_00ab9cb0.cpp'
+        TestSource = '00/ab/C3DMeshFileTransformationChunk_WriteToFile_00ab9cb0_test.cpp'
+        PassPattern = 'MESH_TRANSFORMATION_WRITE PASS'
+    }
+    [pscustomobject]@{
+        Address = '005df7f0'
+        Module = 'CAnimComponentFollowingOnAnim'
+        Source = '00/5d/CAnimComponentFollowingOnAnim_Alloc_005df7f0.cpp'
+        TestSource = '00/5d/CAnimComponentFollowingOnAnim_Alloc_005df7f0_test.cpp'
+        PassPattern = 'CANIMCOMPONENTFOLLOWINGONANIM_ALLOC PASS'
+    }
+    [pscustomobject]@{
+        Address = '005df890'
+        Module = 'CAnimComponentFollowingOnAnimFilter'
+        Source = '00/5d/CAnimComponentFollowingOnAnimFilter_Alloc_005df890.cpp'
+        TestSource = '00/5d/CAnimComponentFollowingOnAnimFilter_Alloc_005df890_test.cpp'
+        PassPattern = 'CANIMCOMPONENTFOLLOWINGONANIMFILTER_ALLOC PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d6470'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_ForceSpendableExperienceTo_006d6470.cpp'
+        TestSource = '00/6d/CTCHeroExperience_ForceSpendableExperienceTo_006d6470_test.cpp'
+        PassPattern = 'HERO_EXPERIENCE_FORCE_SPENDABLE PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b6660'
+        Module = 'CTCCrateStack'
+        Source = '00/7b/CTCCrateStack_GetNumCrates_007b6660.cpp'
+        TestSource = '00/7b/CTCCrateStack_GetNumCrates_007b6660_test.cpp'
+        PassPattern = 'CRATE_STACK_COUNT PASS'
+    }
+    [pscustomobject]@{
+        Address = '00886400'
+        Module = 'CEnvironmentThemePriorityStackEntry'
+        Source = '00/88/CEnvironmentThemePriorityStackEntry_TransitionToDefaultTheme_00886400.cpp'
+        TestSource = '00/88/CEnvironmentThemePriorityStackEntry_TransitionToDefaultTheme_00886400_test.cpp'
+        PassPattern = 'DEFAULT_THEME_TRANSITION PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ee240'
+        Module = 'CTCVillageMember'
+        Source = '00/7e/CTCVillageMember_IsAttachedToVillage_007ee240.cpp'
+        TestSource = '00/7e/CTCVillageMember_IsAttachedToVillage_007ee240_test.cpp'
+        PassPattern = 'VILLAGE_MEMBER_ATTACHED PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a56b80'
+        Module = 'C2DLineF'
+        Source = '00/a5/C2DLineF_GetLowestX_00a56b80.cpp'
+        TestSource = '00/a5/C2DLineF_GetLowestX_00a56b80_test.cpp'
+        PassPattern = 'LINE_LOWEST_X PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a56bb0'
+        Module = 'C2DLineF'
+        Source = '00/a5/C2DLineF_GetHighestX_00a56bb0.cpp'
+        TestSource = '00/a5/C2DLineF_GetHighestX_00a56bb0_test.cpp'
+        PassPattern = 'LINE_HIGHEST_X PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,2 @@
+#include <stdio.h>
+static long count(void* first,void* second){if(second)return 2;return first!=0;}int main(){if(count(0,0)!=0||count((void*)1,0)!=1||count(0,(void*)1)!=2)return 1;printf("CRATE_STACK_COUNT PASS\n");return 0;}

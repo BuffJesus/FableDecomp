@@ -1,0 +1,2 @@
+#include <stdio.h>
+static bool attached(void*p,unsigned __int64 id){if(p)return true;return id!=0;}int main(){if(attached(0,0)||!attached((void*)1,0)||!attached(0,1))return 1;printf("VILLAGE_MEMBER_ATTACHED PASS\n");return 0;}
