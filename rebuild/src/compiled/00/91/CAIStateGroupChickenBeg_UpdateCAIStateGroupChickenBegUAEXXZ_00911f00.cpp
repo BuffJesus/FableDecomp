@@ -1,18 +1,12 @@
-// Byte-exact reconstruction of CAIStateGroup_ChickenBeg::Update @ 0x00911f00
-struct A; struct B; struct C;
+#include "engine/CAIStateGroup_ChickenBeg.h"
 
-// engine callees (this-call modeled as __fastcall, self in ecx)
-A* __fastcall f1(void* self);   // 0x8fcf90
-B* __fastcall f2(A* self);      // 0x449970
-C* __fastcall f3(B* self);      // 0x487dd0
-void __fastcall f4(void* self); // 0x8fcf40
+struct ChickenBegStageA; struct ChickenBegStageB; struct ChickenBegStageC;
+ChickenBegStageA* __fastcall f1(void* stateGroup);
+ChickenBegStageB* __fastcall f2(ChickenBegStageA* stage);
+ChickenBegStageC* __fastcall f3(ChickenBegStageB* stage);
+void __fastcall f4(void* stateGroup);
 
-struct CAIStateGroup_ChickenBeg {
-    virtual void Update();   // default thiscall -> mangles ?Update@...@@UAEXXZ
-};
-
-void CAIStateGroup_ChickenBeg::Update()
-{
-    f3( f2( f1(this) ) );
-    f4(this);
+void __fastcall CAIStateGroup_ChickenBeg_Update(CAIStateGroup_ChickenBeg* stateGroup) {
+    f3(f2(f1(stateGroup)));
+    f4(stateGroup);
 }
