@@ -1,0 +1,622 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/LUAGameflowAssistance/LUAGameflowAssistance.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 32,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 12
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 13
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 48,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "GetStateInt",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferInt",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateInt",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferInt",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateInt",
+          "line": 13
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferInt",
+          "line": 14
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 15
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateInt",
+          "line": 17
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferInt",
+          "line": 18
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 19
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateInt",
+          "line": 21
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferInt",
+          "line": 22
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 23
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateInt",
+          "line": 25
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferInt",
+          "line": 26
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 27
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateInt",
+          "line": 29
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferInt",
+          "line": 30
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 31
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateInt",
+          "line": 33
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferInt",
+          "line": 34
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateInt",
+          "line": 35
+        }
+      ]
+    },
+    {
+      "name": "Tutorial_CombatMultiplier",
+      "parameters": [
+        "quest"
+      ],
+      "line": 84,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "IsPlayerWieldingWeapon",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "IsHeroControlledByPlayer",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "GetPlayerCreatureCombatMultiplier",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 22
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 26
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 27
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 30
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 31
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 36
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 38
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 40
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 45
+        }
+      ]
+    },
+    {
+      "name": "Tutorial_LowHealth",
+      "parameters": [
+        "quest"
+      ],
+      "line": 133,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "IsHeroControlledByPlayer",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHeroHealth",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 28
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 33
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 36
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 45
+        }
+      ]
+    },
+    {
+      "name": "Tutorial_LowMagic",
+      "parameters": [
+        "quest"
+      ],
+      "line": 179,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 12
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "IsHeroControlledByPlayer",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHeroWillEnergyLevel",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 21
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 23
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 24
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 31
+        }
+      ]
+    },
+    {
+      "name": "Tutorial_RenownLevelIncrease",
+      "parameters": [
+        "quest"
+      ],
+      "line": 211,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 5
+        },
+        {
+          "receiver": "quest",
+          "name": "IsHeroControlledByPlayer",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHeroRenownLevel",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateInt",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateInt",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "HeroReceiveMessageFromGuildMaster",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveQuestCardFromGuild",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveQuestCardFromGuild",
+          "line": 19
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveQuestCardFromGuild",
+          "line": 20
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 25
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 242,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "CreateThread",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "CreateThread",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "CreateThread",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "CreateThread",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 11
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "CombatMultFramesSinceChange",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "CombatMultHighestLevel",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "FlourishesOffered",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "FlourishesPerformed",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "HealthWarningsGiven",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "SaveWarningsGiven",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "SavedRenownLevel",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "WillEnergyWarningsGiven",
+      "types": [
+        "int"
+      ],
+      "persisted": true
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_QST_080_HEALTH_CRIT",
+      "TEXT_QST_080_HEALTH_LOW",
+      "TEXT_QST_080_MULT_ADEPT",
+      "TEXT_QST_080_MULT_EXCELLENT",
+      "TEXT_QST_080_MULT_MASTER",
+      "TEXT_QST_080_MULT_PROGRESS",
+      "TEXT_QST_080_MULT_TRY",
+      "TEXT_QST_080_RENOWN_LEVEL_FIVE",
+      "TEXT_QST_080_RENOWN_LEVEL_FOUR",
+      "TEXT_QST_080_RENOWN_LEVEL_ONE",
+      "TEXT_QST_080_RENOWN_LEVEL_SEVEN",
+      "TEXT_QST_080_RENOWN_LEVEL_SIX",
+      "TEXT_QST_080_RENOWN_LEVEL_THREE",
+      "TEXT_QST_080_RENOWN_LEVEL_TWO",
+      "TEXT_QST_080_WILL_LOW"
+    ],
+    "cutscenes": [],
+    "regions": []
+  }
+}

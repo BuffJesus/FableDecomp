@@ -750,5 +750,83 @@
     "code": "partial-persistence",
     "line": 1,
     "message": "State referenced but not persisted: CommentaryTimer, ConversationIndex"
+  },
+  {
+    "package": "GuildMaster",
+    "path": "FSE/GuildMaster/Entities/GuildMasterGameFlow.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 188,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "GuildMaster",
+    "path": "FSE/GuildMaster/Entities/GuildMasterGameFlow.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 201,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "GuildMaster",
+    "path": "FSE/GuildMaster/Entities/GuildMasterGameFlow.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 213,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "GuildMaster",
+    "path": "FSE/GuildMaster/Entities/GuildMasterGameFlow.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 219,
+    "message": "entity API 'Speak' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "LUAGameflowAssistance",
+    "path": "FSE/LUAGameflowAssistance/LUAGameflowAssistance.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 11,
+    "message": "quest API 'IsHeroControlledByPlayer' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "LUAGameflowAssistance",
+    "path": "FSE/LUAGameflowAssistance/LUAGameflowAssistance.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 18,
+    "message": "quest API 'IsHeroControlledByPlayer' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "LUAGameflowAssistance",
+    "path": "FSE/LUAGameflowAssistance/LUAGameflowAssistance.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 17,
+    "message": "quest API 'IsHeroControlledByPlayer' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "LUAGameflowAssistance",
+    "path": "FSE/LUAGameflowAssistance/LUAGameflowAssistance.lua",
+    "severity": "error",
+    "code": "unknown-api",
+    "line": 6,
+    "message": "quest API 'IsHeroControlledByPlayer' is not present in the ForgeFSE manifest"
+  },
+  {
+    "package": "LUAGameflowAssistance",
+    "path": "FSE/LUAGameflowAssistance/LUAGameflowAssistance.lua",
+    "severity": "warning",
+    "code": "no-obvious-yield",
+    "line": 242,
+    "message": "Main has no recognized yield/blocking operation"
+  },
+  {
+    "severity": "error",
+    "code": "duplicate-entity-id",
+    "path": "combined_registry.lua",
+    "message": "Duplicate entity id 99"
   }
 ]

@@ -1,5 +1,22 @@
 # Aeon FSE upstream review — 2026-09-02
 
+## 2026-09-08 GuildMaster and LUAGameflowAssistance intake
+
+Aeon's `GuildMaster.zip` (`SHA-256
+1A6C50045837A07E2ADE224A7155E31F79D14F82427431F35465114B8216BC78`) contained the
+village script and `GuildMasterGameFlow` entity script but no `FSE/quests.lua`.  The recovery
+corpus therefore uses a staging archive that preserves both supplied Lua members byte-for-byte and
+adds only ForgeFSE registration metadata: package id `1029` and entity id `99`, continuing the local
+port-id sequence.  The staging archive hash is
+`EAF9057799CBCEB9CCCAF86AB3AE87A655541B246AA71BF6682FCD761A06564B`; it must not be
+mistaken for Aeon's original archive.
+
+`LUAGameflowAssistance.zip` was complete and was ingested directly (`SHA-256
+2FC2289FA414FCFC5EBC9CB94CBB8E628A910B94ED520473F66FDCFB23A8D7F1`).  Curated aliases map
+the reconstructed package names to the retail registry identities `V_GuildMaster` (`S_VGM`) and
+`GameflowAssistance` (`S_GFA`).  Both remain disabled, shadow-only `reconstructed-source` entries.
+Static intake currently exposes two real ForgeFSE binding gaps used by these ports:
+`Entity:Speak` and `Quest:IsHeroControlledByPlayer`.
 Upstream: `https://github.com/eeeeeAeoN/FableScriptExtender` @ `master`
 (commits dated 2026-08-31 … 2026-09-02). Our fork is `D:\Code\ForgeFSE`
 (no git remote configured; 8 local commits ahead, working tree dirty).

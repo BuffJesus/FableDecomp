@@ -1,0 +1,586 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/GuildMaster/Entities/GuildMasterGameFlow.lua",
+  "kind": "entity",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 13,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "SetThingHasInformation",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsKillable",
+          "line": 7
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsDamageable",
+          "line": 8
+        },
+        {
+          "receiver": "quest",
+          "name": "SetIsPushableByHero",
+          "line": 9
+        },
+        {
+          "receiver": "quest",
+          "name": "SetIsThingForcePushable",
+          "line": 10
+        },
+        {
+          "receiver": "quest",
+          "name": "EntitySetAsUseMovementInActions",
+          "line": 11
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 13
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestCompleted",
+          "line": 32
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 55
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 104
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 123
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateString",
+          "line": 155
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 158
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 159
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 161
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 162
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 164
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 165
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHeroTitle",
+          "line": 167
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 167
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 168
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateString",
+          "line": 174
+        },
+        {
+          "receiver": "quest",
+          "name": "StartMovieSequence",
+          "line": 184
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 185
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 187
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 188
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 191
+        },
+        {
+          "receiver": "quest",
+          "name": "EndMovieSequence",
+          "line": 192
+        },
+        {
+          "receiver": "quest",
+          "name": "StartMovieSequence",
+          "line": 197
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 198
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 200
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 201
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveHeroYesNoQuestion",
+          "line": 204
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 212
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 213
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 215
+        },
+        {
+          "receiver": "quest",
+          "name": "TakeObjectFromHero",
+          "line": 216
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHealth",
+          "line": 218
+        },
+        {
+          "receiver": "me",
+          "name": "Speak",
+          "line": 219
+        },
+        {
+          "receiver": "quest",
+          "name": "PauseAllNonScriptedEntities",
+          "line": 223
+        },
+        {
+          "receiver": "quest",
+          "name": "EndMovieSequence",
+          "line": 224
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "quest",
+        "me"
+      ],
+      "line": 238,
+      "calls": [
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 3
+        },
+        {
+          "receiver": "quest",
+          "name": "GetHero",
+          "line": 6
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 8
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 13
+        },
+        {
+          "receiver": "me",
+          "name": "TakeExclusiveControl",
+          "line": 14
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 17
+        },
+        {
+          "receiver": "quest",
+          "name": "GetStateBool",
+          "line": 18
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 34
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 38
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 39
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 39
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 43
+        },
+        {
+          "receiver": "quest",
+          "name": "GetMasterGameState",
+          "line": 44
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 58
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 61
+        },
+        {
+          "receiver": "quest",
+          "name": "StartCutscene",
+          "line": 62
+        },
+        {
+          "receiver": "quest",
+          "name": "RunCutscene",
+          "line": 63
+        },
+        {
+          "receiver": "quest",
+          "name": "EndCutscene",
+          "line": 64
+        },
+        {
+          "receiver": "me",
+          "name": "AcquireControl",
+          "line": 67
+        },
+        {
+          "receiver": "me",
+          "name": "TakeExclusiveControl",
+          "line": 68
+        },
+        {
+          "receiver": "quest",
+          "name": "SetTeleportingAsActive",
+          "line": 70
+        },
+        {
+          "receiver": "quest",
+          "name": "GiveQuestCardDirectly",
+          "line": 71
+        },
+        {
+          "receiver": "quest",
+          "name": "SetQuestCardObjective",
+          "line": 72
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 74
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateEffectOnThing",
+          "line": 76
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 77
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 80
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 81
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 84
+        },
+        {
+          "receiver": "quest",
+          "name": "IsQuestActive",
+          "line": 90
+        },
+        {
+          "receiver": "quest",
+          "name": "Log",
+          "line": 91
+        },
+        {
+          "receiver": "quest",
+          "name": "RemoveThing",
+          "line": 94
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 99
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapRemoveMarker",
+          "line": 102
+        },
+        {
+          "receiver": "quest",
+          "name": "SetStateBool",
+          "line": 105
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 110
+        },
+        {
+          "receiver": "quest",
+          "name": "CreateEffectOnThing",
+          "line": 112
+        },
+        {
+          "receiver": "quest",
+          "name": "MiniMapAddMarker",
+          "line": 113
+        },
+        {
+          "receiver": "quest",
+          "name": "GetThingWithScriptName",
+          "line": 118
+        },
+        {
+          "receiver": "quest",
+          "name": "IsDistanceBetweenThingsUnder",
+          "line": 123
+        },
+        {
+          "receiver": "quest",
+          "name": "EntityTeleportToThing",
+          "line": 124
+        },
+        {
+          "receiver": "me",
+          "name": "IsTalkedToByHero",
+          "line": 129
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHero",
+          "line": 134
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByAnySpecialAbilityFromHero",
+          "line": 135
+        },
+        {
+          "receiver": "me",
+          "name": "MsgIsHitByHealLifeFromHero",
+          "line": 135
+        },
+        {
+          "receiver": "quest",
+          "name": "NewScriptFrame",
+          "line": 144
+        },
+        {
+          "receiver": "me",
+          "name": "ReleaseControl",
+          "line": 145
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "FocalSitesSetupDone",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "GMDial_1",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "GMDial_2",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "GMDial_3",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "GMDial_4",
+      "types": [
+        "bool"
+      ],
+      "persisted": false
+    },
+    {
+      "name": "LastDialogueSaid",
+      "types": [
+        "string"
+      ],
+      "persisted": false
+    }
+  ],
+  "entityBindings": [],
+  "references": {
+    "textTags": [
+      "TEXT_OBJECT_HERO_ANSWER_NO",
+      "TEXT_OBJECT_HERO_ANSWER_YES",
+      "TEXT_QST_081_ARENA",
+      "TEXT_QST_081_ATTACKED",
+      "TEXT_QST_081_BANDIT_CAMP",
+      "TEXT_QST_081_BANDIT_CAMP_TWINBLADE",
+      "TEXT_QST_081_BEFORE_HOOK_COAST",
+      "TEXT_QST_081_DRAGON_FIGHT_10",
+      "TEXT_QST_081_FINALGRAVEYARD",
+      "TEXT_QST_081_FOCAL_SITES",
+      "TEXT_QST_081_GRAVEYARD",
+      "TEXT_QST_081_HERO_SOULS",
+      "TEXT_QST_081_HERO_SOULS_1ST_SOUL_TALK_TO_THUNDER",
+      "TEXT_QST_081_HERO_SOULS_1ST_SOUL_VISIT_THE_ARENA",
+      "TEXT_QST_081_HERO_SOULS_2ND_SOUL_TALK_TO_BRIAR_GOT_ARENA_SOUL",
+      "TEXT_QST_081_HERO_SOULS_2ND_SOUL_TALK_TO_BRIAR_KILLED_THUNDER",
+      "TEXT_QST_081_HERO_SOULS_2ND_SOUL_VISIT_YOUR_MOTHER",
+      "TEXT_QST_081_HERO_SOULS_3RD_SOUL_TALK_TO_BRIAR",
+      "TEXT_QST_081_HERO_SOULS_3RD_SOUL_TALK_TO_SCYTHE",
+      "TEXT_QST_081_HOOK_COAST",
+      "TEXT_QST_081_INFO_HERO_TITLE",
+      "TEXT_QST_081_INFO_LOG_BOOK",
+      "TEXT_QST_081_INFO_TELEPORTERS",
+      "TEXT_QST_081_INFO_WEAPONS",
+      "TEXT_QST_081_JACK_BOSS_FIGHT",
+      "TEXT_QST_081_MAZE_MEETING",
+      "TEXT_QST_081_MAZE_TELEPORT_TO_WW",
+      "TEXT_QST_081_MEET_SISTER",
+      "TEXT_QST_081_MINION_CLIFFTOP_CHASE",
+      "TEXT_QST_081_ORCHARD_FARM",
+      "TEXT_QST_081_PRISON",
+      "TEXT_QST_081_SECOND_MAZE_MEETING",
+      "TEXT_QST_081_SHIP_SUMMONING",
+      "TEXT_QST_081_THE_ORACLE",
+      "TEXT_QST_081_TRADER_ESCORT",
+      "TEXT_QST_081_TRAINING",
+      "TEXT_QST_081_TROPHY_DEALER",
+      "TEXT_QST_081_WAITING_FOR_BANDIT_CAMP_TWINBLADE",
+      "TEXT_QST_081_WAITING_FOR_FINALGRAVEYARD",
+      "TEXT_QST_081_WAITING_FOR_FOCAL_SITES",
+      "TEXT_QST_081_WAITING_FOR_MCC",
+      "TEXT_QST_081_WAITING_FOR_ORCHARD_FARM",
+      "TEXT_QST_081_WAITING_FOR_TRADER_ESCORT",
+      "TEXT_QST_081_WAITING_FOR_WASP_BOSS",
+      "TEXT_QST_081_WAITING_FOR_WIZARD_BATTLE",
+      "TEXT_QST_081_WAITING_FOR_WIZARD_BATTLE_NO",
+      "TEXT_QST_081_WAITING_FOR_WIZARD_BATTLE_QUESTION_TAKE_CARD",
+      "TEXT_QST_081_WAITING_FOR_WIZARD_BATTLE_YES",
+      "TEXT_QST_081_WASP_BOSS",
+      "TEXT_QST_081_WHITE_BALVERINE_KHG",
+      "TEXT_QST_081_WHITE_BALVERINE_WITCHWOOD",
+      "TEXT_QST_081_WITCHWOOD_POST_TROPHY_DEALER",
+      "TEXT_QST_081_WITCHWOOD_WAITING_FOR_ARENA",
+      "TEXT_QST_081_WIZARD_BATTLE",
+      "TEXT_QUEST_ACTIVATE_FOCAL_SITES_OBJECTIVE_01"
+    ],
+    "cutscenes": [
+      "CS_FOCALSITEINTRO"
+    ],
+    "regions": []
+  }
+}

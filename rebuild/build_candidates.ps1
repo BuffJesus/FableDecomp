@@ -132408,6 +132408,13 @@ $catalog = @(
         TestSource = '00/a1/C3DCoordI_operator_00a13be0_test.cpp'
         PassPattern = 'COORD_ADD_VECTOR PASS'
     }
+    [pscustomobject]@{
+        Address = '0040fd40'
+        Module = '_global'
+        Source = '00/40/global_GFSerialiseVectorBinaryOutfloat_0040fd40.cpp'
+        TestSource = '00/40/global_GFSerialiseVectorBinaryOutfloat_0040fd40_test.cpp'
+        PassPattern = 'SERIALISE_FLOAT_VECTOR PASS'
+    }
 )
 
 $requestedAddresses = @(

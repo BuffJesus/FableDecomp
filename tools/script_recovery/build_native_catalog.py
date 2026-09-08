@@ -25,6 +25,8 @@ ALIASES = {
     "HerosOldHouse": "Q_HerosOldHouse",
     "StatueMaster": "V_StatueMaster",
     "DragonBossFight": "Q_DragonBossFight",
+    "GuildMaster": "V_GuildMaster",
+    "LUAGameflowAssistance": "GameflowAssistance",
 }
 
 

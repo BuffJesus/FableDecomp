@@ -1215,6 +1215,79 @@
           "size": 1026
         }
       ]
+    },
+    {
+      "name": "GuildMaster",
+      "sourceArchive": "D:\\Documents\\FableTLC\\work\\script_import\\GuildMaster.zip",
+      "archiveSha256": "EAF9057799CBCEB9CCCAF86AB3AE87A655541B246AA71BF6682FCD761A06564B",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "GuildMaster",
+          "name": "GuildMaster",
+          "file": "GuildMaster/GuildMaster",
+          "id": 1029,
+          "kind": "script",
+          "entities": [
+            {
+              "name": "GuildMasterGameFlow",
+              "file": "GuildMaster/Entities/GuildMasterGameFlow",
+              "id": 99
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/GuildMaster/Entities/GuildMasterGameFlow.lua",
+          "sha256": "9582C2D6460F61474ECA9D78CD876C7227FA5D9C5E7B01CE593534CD22798FC7",
+          "size": 16784,
+          "ir": "ir/GuildMaster/FSE__GuildMaster__Entities__GuildMasterGameFlow.lua.json",
+          "kind": "entity"
+        },
+        {
+          "path": "FSE/GuildMaster/GuildMaster.lua",
+          "sha256": "7463F5807B86EDE3B79A6E0430E78DC01F5DB36C3C3B36BC43E7D046AEC5195F",
+          "size": 2479,
+          "ir": "ir/GuildMaster/FSE__GuildMaster__GuildMaster.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "69EA6A12759DD48465788168111C5AD6E6C4C49E55FC4066713C033612FAF0F9",
+          "size": 413
+        }
+      ]
+    },
+    {
+      "name": "LUAGameflowAssistance",
+      "sourceArchive": "D:\\Downloads\\LUAGameflowAssistance.zip",
+      "archiveSha256": "2FC2289FA414FCFC5EBC9CB94CBB8E628A910B94ED520473F66FDCFB23A8D7F1",
+      "evidenceLevel": "reconstructed-source",
+      "registry": [
+        {
+          "key": "LUAGameflowAssistance",
+          "name": "LUAGameflowAssistance",
+          "file": "LUAGameflowAssistance/LUAGameflowAssistance",
+          "id": 1028,
+          "kind": "script",
+          "entities": []
+        }
+      ],
+      "files": [
+        {
+          "path": "FSE/LUAGameflowAssistance/LUAGameflowAssistance.lua",
+          "sha256": "2FC848B94C3F05C28A90F524D9E126B1137139358B77B967773EB4151BAB7EBF",
+          "size": 10785,
+          "ir": "ir/LUAGameflowAssistance/FSE__LUAGameflowAssistance__LUAGameflowAssistance.lua.json",
+          "kind": "script"
+        },
+        {
+          "path": "FSE/quests.lua",
+          "sha256": "F48A07FBBB23493B2E75DAF97043C70FFA430B9F65DCA91C64F0A8D7C3EF493A",
+          "size": 337
+        }
+      ]
     }
   ]
 }

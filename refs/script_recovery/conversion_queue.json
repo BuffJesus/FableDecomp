@@ -4,6 +4,19 @@
   "queue": [
     {
       "priority": 0,
+      "name": "GameflowAssistance",
+      "kind": "global",
+      "section": "S_GFA",
+      "allocatorAddress": "0x00CF0640",
+      "seedPackage": "LUAGameflowAssistance",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\GameflowAssistance.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\GameflowAssistance.json",
+      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
+    },
+    {
+      "priority": 0,
       "name": "QS_GuardianSisterInfo",
       "kind": "quest",
       "section": "S_QSGSI",
@@ -78,6 +91,19 @@
       "evidence": "native-operation-ir",
       "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Q_HerosOldHouse.json",
       "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Q_HerosOldHouse.json",
+      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
+    },
+    {
+      "priority": 0,
+      "name": "V_GuildMaster",
+      "kind": "village",
+      "section": "S_VGM",
+      "allocatorAddress": "0x00E92900",
+      "seedPackage": "GuildMaster",
+      "stage": "compare-runtime-trace",
+      "evidence": "native-operation-ir-address-resolved",
+      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_GuildMaster.json",
+      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_GuildMaster.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {
@@ -1148,19 +1174,6 @@
     },
     {
       "priority": 30,
-      "name": "V_GuildMaster",
-      "kind": "village",
-      "section": "S_VGM",
-      "allocatorAddress": "0x00E92900",
-      "seedPackage": "",
-      "stage": "compare-runtime-trace",
-      "evidence": "native-operation-ir-address-resolved",
-      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\V_GuildMaster.json",
-      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\V_GuildMaster.json",
-      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
-    },
-    {
-      "priority": 30,
       "name": "V_HauntedHouse",
       "kind": "village",
       "section": "S_VHH",
@@ -1469,19 +1482,6 @@
       "evidence": "native-operation-ir-address-resolved",
       "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\Gameflow.json",
       "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\Gameflow.json",
-      "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
-    },
-    {
-      "priority": 40,
-      "name": "GameflowAssistance",
-      "kind": "global",
-      "section": "S_GFA",
-      "allocatorAddress": "0x00CF0640",
-      "seedPackage": "",
-      "stage": "compare-runtime-trace",
-      "evidence": "native-operation-ir-address-resolved",
-      "nativeCluster": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_clusters\\GameflowAssistance.json",
-      "nativeOperationIr": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_operation_ir\\GameflowAssistance.json",
       "requiredGates": "typed-decompile;api-map;state-map;persistence-map;static-validate;trace-review"
     },
     {

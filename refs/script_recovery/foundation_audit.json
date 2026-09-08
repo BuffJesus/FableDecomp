@@ -21,10 +21,12 @@
         "OakValeRevisited",
         "Fisherman",
         "TentacleKrakenBossFight",
-        "SummoningTheShip"
+        "SummoningTheShip",
+        "GuildMaster",
+        "LUAGameflowAssistance"
       ],
       "name": "seed packages ingested (one per recovered source dir)",
-      "passed": true
+      "passed": false
     },
     {
       "evidence": [
@@ -47,16 +49,18 @@
         "119E80FEE2BD67232A43BF3EED50A1676C00CB189EBADB5EA27C510959F504EE",
         "02EAF525B4E217BC6E1474145022F6286B81B8E82C0A97EB384F55D7AFF27698",
         "9BB0779CB6937348EA9DA1570696489CCF184EBBD2FB2AC7E3D40B9D7BCEC2E4",
-        "E2C72482E3353190C59B38D29A5990C28C6511E17C22B0BC267F04D13E305F97"
+        "E2C72482E3353190C59B38D29A5990C28C6511E17C22B0BC267F04D13E305F97",
+        "EAF9057799CBCEB9CCCAF86AB3AE87A655541B246AA71BF6682FCD761A06564B",
+        "2FC2289FA414FCFC5EBC9CB94CBB8E628A910B94ED520473F66FDCFB23A8D7F1"
       ],
       "name": "archive provenance hashed",
       "passed": true
     },
     {
       "evidence": {
-        "ir": 71,
-        "registries": 20,
-        "scripts": 71
+        "ir": 74,
+        "registries": 22,
+        "scripts": 74
       },
       "name": "all executable Lua scripts have normalized IR",
       "passed": true
@@ -117,7 +121,17 @@
           [
             "missing",
             "quest",
+            "IsFishingSpotEnabled"
+          ],
+          [
+            "missing",
+            "quest",
             "IsXbox"
+          ],
+          [
+            "missing",
+            "quest",
+            "MsgOnRegionLoaded"
           ],
           [
             "missing",
@@ -128,6 +142,11 @@
             "missing",
             "quest",
             "PrepareQuestsWhenFinalQuestIsCompleted"
+          ],
+          [
+            "missing",
+            "quest",
+            "SetHeroGuideToShowQuestCardsWhenSpokenTo"
           ]
         ],
         "validation": [
@@ -209,6 +228,11 @@
           [
             "missing",
             "quest",
+            "IsHeroControlledByPlayer"
+          ],
+          [
+            "missing",
+            "quest",
             "IsXbox"
           ],
           [
@@ -250,7 +274,7 @@
           "test": 18,
           "village": 44
         },
-        "matchedSeeds": 8,
+        "matchedSeeds": 10,
         "total": 161
       },
       "name": "retail catalog includes non-quest scripts",
@@ -264,8 +288,8 @@
     {
       "evidence": {
         "default": "disabled",
-        "entities": 14,
-        "entries": 22,
+        "entities": 15,
+        "entries": 25,
         "unregisteredScripts": [
           "FSE/DragonBossFight/Entities/DBMinion.lua",
           "FSE/DragonBossFight/Entities/DBSummoner.lua",
@@ -301,7 +325,9 @@
         ],
         "clusters": 161,
         "seedsWithoutAnchors": [
+          "GameflowAssistance",
           "Q_DragonBossFight",
+          "V_GuildMaster",
           "V_StatueMaster"
         ]
       },
@@ -654,13 +680,13 @@
     {
       "evidence": {},
       "name": "all reconstructed parent bindings correlate with native lifecycle evidence",
-      "passed": true
+      "passed": false
     }
   ],
   "schema": "fable-script-recovery-foundation-audit/0.1",
   "summary": {
     "complete": false,
-    "passed": 15,
+    "passed": 13,
     "total": 18
   }
 }

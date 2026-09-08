@@ -209,4 +209,21 @@ Quests = {
         }
     },
 
+    GuildMaster = {
+        name = "GuildMaster",
+        file = "GuildMaster/GuildMaster",
+        id = 1029,
+        entity_scripts = {
+            { name = "GuildMasterGameFlow", file = "GuildMaster/Entities/GuildMasterGameFlow", id = 99 },
+        }
+    },
+
+    LUAGameflowAssistance = {
+        name = "LUAGameflowAssistance",
+        file = "LUAGameflowAssistance/LUAGameflowAssistance",
+        id = 1028,
+        entity_scripts = {
+        }
+    },
+
 }

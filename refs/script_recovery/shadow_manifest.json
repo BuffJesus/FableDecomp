@@ -3,6 +3,18 @@
   "defaultMode": "disabled",
   "entries": [
     {
+      "nativeName": "GameflowAssistance",
+      "nativeSection": "S_GFA",
+      "package": "LUAGameflowAssistance",
+      "luaFile": "LUAGameflowAssistance/LUAGameflowAssistance",
+      "kind": "global",
+      "mode": "shadow",
+      "evidenceLevel": "reconstructed-source",
+      "archiveSha256": "2FC2289FA414FCFC5EBC9CB94CBB8E628A910B94ED520473F66FDCFB23A8D7F1",
+      "mutatingCallsAllowed": false,
+      "saveWritesAllowed": false
+    },
+    {
       "nativeName": "QS_GuardianSisterInfo",
       "nativeSection": "S_QSGSI",
       "package": "GuardianSisterInfo",
@@ -179,6 +191,30 @@
       "mode": "shadow",
       "evidenceLevel": "reconstructed-source",
       "archiveSha256": "DDF2CAC0063024DFEA9CA6D0977A7579DFD136028732C71399107DDB1FF1C61A",
+      "mutatingCallsAllowed": false,
+      "saveWritesAllowed": false
+    },
+    {
+      "nativeName": "V_GuildMaster",
+      "nativeSection": "S_VGM",
+      "package": "GuildMaster",
+      "luaFile": "GuildMaster/GuildMaster",
+      "kind": "village",
+      "mode": "shadow",
+      "evidenceLevel": "reconstructed-source",
+      "archiveSha256": "EAF9057799CBCEB9CCCAF86AB3AE87A655541B246AA71BF6682FCD761A06564B",
+      "mutatingCallsAllowed": false,
+      "saveWritesAllowed": false
+    },
+    {
+      "nativeName": "V_GuildMaster::GuildMasterGameFlow",
+      "nativeSection": "S_VGM",
+      "package": "GuildMaster",
+      "luaFile": "GuildMaster/Entities/GuildMasterGameFlow",
+      "kind": "entity",
+      "mode": "shadow",
+      "evidenceLevel": "reconstructed-source",
+      "archiveSha256": "EAF9057799CBCEB9CCCAF86AB3AE87A655541B246AA71BF6682FCD761A06564B",
       "mutatingCallsAllowed": false,
       "saveWritesAllowed": false
     },

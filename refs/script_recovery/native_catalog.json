@@ -2296,6 +2296,26 @@
       "nativeSection": null,
       "nativeAllocatorAddress": null,
       "identityEvidence": "exact-name"
+    },
+    {
+      "package": "GuildMaster",
+      "reconstructedKey": "GuildMaster",
+      "reconstructedName": "GuildMaster",
+      "nativeName": "V_GuildMaster",
+      "status": "matched",
+      "nativeSection": "S_VGM",
+      "nativeAllocatorAddress": null,
+      "identityEvidence": "curated-alias"
+    },
+    {
+      "package": "LUAGameflowAssistance",
+      "reconstructedKey": "LUAGameflowAssistance",
+      "reconstructedName": "LUAGameflowAssistance",
+      "nativeName": "GameflowAssistance",
+      "status": "matched",
+      "nativeSection": "S_GFA",
+      "nativeAllocatorAddress": null,
+      "identityEvidence": "curated-alias"
     }
   ],
   "summary": {
@@ -2312,6 +2332,6 @@
       "test": 18,
       "village": 44
     },
-    "matchedSeeds": 8
+    "matchedSeeds": 10
   }
 }

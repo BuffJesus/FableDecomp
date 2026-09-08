@@ -1,19 +1,20 @@
 # ForgeFSE seed-script compatibility report
 
-- Scripts with trace templates: **71**
-- API call sites: **3672** across **221** scope/name pairs
-- Missing API names: **20**
+- Scripts with trace templates: **74**
+- API call sites: **3887** across **230** scope/name pairs
+- Missing API names: **21**
 
 ## Missing capabilities
 
 | Priority | API | Occurrences | Consumers |
 |---:|---|---:|---|
-| 60 | `Speak` | 30 | BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua<br>SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua |
+| 102 | `Speak` | 34 | BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua<br>GuildMaster:FSE/GuildMaster/Entities/GuildMasterGameFlow.lua<br>SingingStones:FSE/SingingStones/Entities/ManWithDoorName.lua |
 | 24 | `MsgIsHitBy` | 6 | SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua<br>SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua<br>SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua<br>WaspBoss:FSE/WaspBoss/Entities/HornetDrone.lua |
 | 15 | `MsgIsHitByAnySpecialAbilityFrom` | 5 | SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua<br>SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua<br>SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua |
 | 15 | `MsgIsHitBySpecialAbilityFrom` | 5 | SummoningTheShip:FSE/SummoningTheShip/Entities/FireHeart.lua<br>SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua<br>SummoningTheShip:FSE/SummoningTheShip/Entities/SummonerAttacker.lua |
 | 6 | `AddLogbookTutorialEntry` | 3 | BowerstoneTownLifeIntro:FSE/BowerstoneTownLifeIntro/Entities/BowerstoneIntroGuard.lua<br>Gameflow:FSE/LUAGameflow/LUAGameflow.lua |
 | 4 | `ActivateQuestWithoutLoadingResources` | 2 | Gameflow:FSE/LUAGameflow/LUAGameflow.lua<br>TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua |
+| 4 | `IsHeroControlledByPlayer` | 4 | LUAGameflowAssistance:FSE/LUAGameflowAssistance/LUAGameflowAssistance.lua |
 | 4 | `IsXbox` | 2 | Fisherman:FSE/Fisherman/Entities/Fisherman.lua<br>Gameflow:FSE/LUAGameflow/LUAGameflow.lua |
 | 4 | `MsgOnRegionLoaded` | 2 | BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua<br>RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua |
 | 3 | `GetValidTextEntryNameWithAttitude` | 3 | Fisherman:FSE/Fisherman/Entities/Fisherman.lua |

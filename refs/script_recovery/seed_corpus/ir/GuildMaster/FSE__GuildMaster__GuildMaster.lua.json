@@ -1,0 +1,247 @@
+{
+  "schema": "fable-script-ir/0.1",
+  "sourcePath": "FSE/GuildMaster/GuildMaster.lua",
+  "kind": "script",
+  "evidenceLevel": "reconstructed-source",
+  "functions": [
+    {
+      "name": "Init",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 8,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateString",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 13
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "name": "OnPersist",
+      "parameters": [
+        "questObject",
+        "context"
+      ],
+      "line": 24,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "GetStateString",
+          "line": 5
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferString",
+          "line": 6
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateString",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 9
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 11
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 13
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 14
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 15
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 17
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 18
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 19
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 21
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 22
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 23
+        },
+        {
+          "receiver": "Quest",
+          "name": "GetStateBool",
+          "line": 25
+        },
+        {
+          "receiver": "Quest",
+          "name": "PersistTransferBool",
+          "line": 26
+        },
+        {
+          "receiver": "Quest",
+          "name": "SetStateBool",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "name": "Main",
+      "parameters": [
+        "questObject"
+      ],
+      "line": 52,
+      "calls": [
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 4
+        },
+        {
+          "receiver": "Quest",
+          "name": "AddEntityBinding",
+          "line": 7
+        },
+        {
+          "receiver": "Quest",
+          "name": "FinalizeEntityBindings",
+          "line": 8
+        },
+        {
+          "receiver": "Quest",
+          "name": "Log",
+          "line": 10
+        },
+        {
+          "receiver": "Quest",
+          "name": "NewScriptFrame",
+          "line": 14
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "FocalSitesSetupDone",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "GMDial_1",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "GMDial_2",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "GMDial_3",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "GMDial_4",
+      "types": [
+        "bool"
+      ],
+      "persisted": true
+    },
+    {
+      "name": "LastDialogueSaid",
+      "types": [
+        "string"
+      ],
+      "persisted": true
+    }
+  ],
+  "entityBindings": [
+    {
+      "name": "GuildMasterGameFlow",
+      "script": "GuildMaster/Entities/GuildMasterGameFlow",
+      "line": 58
+    }
+  ],
+  "references": {
+    "textTags": [],
+    "cutscenes": [],
+    "regions": []
+  }
+}

@@ -1,10 +1,10 @@
 # ForgeFSE runtime binding audit
 
-- registeredQuestBindings: **908**
+- registeredQuestBindings: **892**
 - registeredEntityBindings: **92**
-- requiredCalls: **221**
-- callable: **209**
-- missing: **12**
+- requiredCalls: **230**
+- callable: **215**
+- missing: **15**
 - wrongScope: **0**
 
 ## Conversion blockers
@@ -18,10 +18,13 @@
 | missing | Quest | `GetValidTextEntryNameWithAttitude` | 3 | Fisherman:FSE/Fisherman/Entities/Fisherman.lua |
 | missing | Quest | `ActivateMultipleQuestsWithoutLoadingResources` | 2 | Gameflow:FSE/LUAGameflow/LUAGameflow.lua |
 | missing | Quest | `ActivateQuestWithoutLoadingResources` | 2 | Gameflow:FSE/LUAGameflow/LUAGameflow.lua<br>TrophyDealer:FSE/TrophyDealer/TrophyDealer.lua |
+| missing | Quest | `IsFishingSpotEnabled` | 2 | Fisherman:FSE/Fisherman/Entities/Fisherman.lua |
 | missing | Quest | `IsXbox` | 2 | Fisherman:FSE/Fisherman/Entities/Fisherman.lua<br>Gameflow:FSE/LUAGameflow/LUAGameflow.lua |
+| missing | Quest | `MsgOnRegionLoaded` | 2 | BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua<br>RockTrollFirstEncounter:FSE/RockTrollFirstEncounter/RockTrollFirstEncounter.lua |
 | missing | Entity | `GetCurrentStateGroupType` | 1 | SummoningTheShip:FSE/SummoningTheShip/Entities/STS_BriarRose.lua |
 | missing | Entity | `MoveToPosition_NonBlocking` | 1 | BeardyBaldy:FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua |
 | missing | Quest | `PrepareQuestsWhenFinalQuestIsActivated` | 1 | Gameflow:FSE/LUAGameflow/LUAGameflow.lua |
 | missing | Quest | `PrepareQuestsWhenFinalQuestIsCompleted` | 1 | Gameflow:FSE/LUAGameflow/LUAGameflow.lua |
+| missing | Quest | `SetHeroGuideToShowQuestCardsWhenSpokenTo` | 1 | Gameflow:FSE/LUAGameflow/LUAGameflow.lua |
 
 This report reflects names registered in `LuaManager.cpp`; it does not prove native ABI or runtime behavior.
