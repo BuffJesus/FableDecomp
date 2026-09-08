@@ -97,7 +97,7 @@ parity, coverage, and naming reports:
 | Reconstruction | Verified functional or matching C++ | **18,579** (37.48%) |
 | Reconstruction | — of which byte-**identical** C++ | 8,082 (16.30%) |
 | Reconstruction | — of which hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 292 |
-| Readability | Landed sources typed onto shared PDB-named engine headers | 545 |
+| Readability | Landed sources typed onto shared PDB-named engine headers | 548 |
 | Readability | Throwaway local `struct T {...}` declarations remaining | 4,429 |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 43 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 0 |

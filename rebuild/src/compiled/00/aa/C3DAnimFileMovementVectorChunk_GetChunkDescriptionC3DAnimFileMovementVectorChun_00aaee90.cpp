@@ -1,17 +1,9 @@
-// C3DAnimFileMovementVectorChunk::GetChunkDescription  @ 0x00aaee90
-// const virtual returning CCharString by value.
-
-class CCharString {
-public:
-    CCharString(const char* s, int n);
-    void* p;
+#include "engine/C3DAnimFileMovementVectorChunk.h"  // retyped onto the PDB layout; byte parity re-verified
+class CCharString { public: CCharString(const char* text, int length); void* Data; };
+struct C3DAnimFileMovementVectorChunk_Methods : C3DAnimFileMovementVectorChunk {
+    CCharString GetChunkDescription() const;
 };
-
-struct C3DAnimFileMovementVectorChunk {
-    virtual ~C3DAnimFileMovementVectorChunk();
-    virtual CCharString GetChunkDescription() const;
-};
-
-CCharString C3DAnimFileMovementVectorChunk::GetChunkDescription() const {
+CCharString C3DAnimFileMovementVectorChunk_Methods::GetChunkDescription() const
+{
     return CCharString("MovementVector", -1);
 }

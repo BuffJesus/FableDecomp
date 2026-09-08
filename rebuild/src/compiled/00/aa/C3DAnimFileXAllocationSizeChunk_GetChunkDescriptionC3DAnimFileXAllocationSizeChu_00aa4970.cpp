@@ -1,18 +1,9 @@
-// C3DAnimFileXAllocationSizeChunk::GetChunkDescription
-// retail 0x00aa4970 : returns CCharString by value (hidden return buffer),
-// constructs it from a string literal with length -1.
-
-struct CCharString {
-    char* m_data;
-    // ctor(const char*, int) lives at retail 0x99ebf0
-    CCharString(const char* s, int n);
+#include "engine/C3DAnimFileXAllocationSizeChunk.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CCharString { char* Data; CCharString(const char* text, int length); };
+struct C3DAnimFileXAllocationSizeChunk_Methods : C3DAnimFileXAllocationSizeChunk {
+    CCharString GetChunkDescription() const;
 };
-
-struct C3DAnimFileXAllocationSizeChunk {
-    void* vptr;
-    virtual CCharString GetChunkDescription() const;
-};
-
-CCharString C3DAnimFileXAllocationSizeChunk::GetChunkDescription() const {
+CCharString C3DAnimFileXAllocationSizeChunk_Methods::GetChunkDescription() const
+{
     return CCharString("AllocationSize", -1);
 }

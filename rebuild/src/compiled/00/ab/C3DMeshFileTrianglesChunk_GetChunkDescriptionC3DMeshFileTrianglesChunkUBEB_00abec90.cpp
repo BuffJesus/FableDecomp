@@ -1,18 +1,9 @@
-// C3DMeshFileTrianglesChunk::GetChunkDescription
-// retail 0x00abec90 : returns CCharString by value (hidden return buffer),
-// constructs it from a string literal (0x129ed60) with length -1.
-
-struct CCharString {
-    char* m_data;
-    // ctor(const char*, int) lives at retail 0x99ebf0
-    CCharString(const char* s, int n);
+#include "engine/C3DMeshFileTrianglesChunk.h"  // retyped onto the PDB layout; byte parity re-verified
+struct CCharString { char* Data; CCharString(const char* text, int length); };
+struct C3DMeshFileTrianglesChunk_Methods : C3DMeshFileTrianglesChunk {
+    CCharString GetChunkDescription() const;
 };
-
-struct C3DMeshFileTrianglesChunk {
-    void* vptr;
-    virtual CCharString GetChunkDescription() const;
-};
-
-CCharString C3DMeshFileTrianglesChunk::GetChunkDescription() const {
+CCharString C3DMeshFileTrianglesChunk_Methods::GetChunkDescription() const
+{
     return CCharString("Triangles", -1);
 }
