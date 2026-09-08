@@ -1,25 +1,20 @@
-struct SubObj {
-    char pad[0x6c];
-    unsigned char flags; // +0x6c
+#include "engine/CTCPhysicsBase.h"  // retyped onto the PDB layout; byte parity re-verified
+
+struct CPhysicsMeshTypeView {
+    unsigned char _pad_0x00[0x6c];
+    unsigned char Flags;
 };
 
-struct CTCPhysicsBase;
-
-typedef int (__fastcall *SlotFn)(CTCPhysicsBase* self);
-
-struct CTCPhysicsBaseVtbl {
-    char pad[0x174];
-    SlotFn slot174; // +0x174
-};
-
-struct CTCPhysicsBase {
-    CTCPhysicsBaseVtbl* vtbl; // +0x00
-    SubObj* sub;              // +0x04
+typedef int (__fastcall *PhysicsMeshTypeFn)(CTCPhysicsBase* self);
+struct CTCPhysicsBaseVTable {
+    unsigned char _pad_0x000[0x174];
+    PhysicsMeshTypeFn GetPhysicsMeshType;
 };
 
 bool __fastcall IsPhysicsMeshTypeCylinder(CTCPhysicsBase* self)
 {
-    if (self->vtbl->slot174(self) == 0 && (self->sub->flags & 8))
+    if (((CTCPhysicsBaseVTable*)self->__vftable)->GetPhysicsMeshType(self) == 0 &&
+        (((CPhysicsMeshTypeView*)self->sub)->Flags & 8))
         return true;
     return false;
 }

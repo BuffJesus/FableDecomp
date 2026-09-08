@@ -1,26 +1,16 @@
-// CASuspendableProcess::TerminateProcess @ 0x00a4b200
-// Sets the terminate-requested flag, then pumps a virtual until the process
-// is no longer active.
+#include "engine/CASuspendableProcess.h"  // retyped onto the PDB layout; byte parity re-verified
 
-struct CASuspendableProcess;
-
-struct CASuspendableProcessVtbl {
-    void (__fastcall *slot0)(CASuspendableProcess* self);
-    void (__fastcall *Pump)(CASuspendableProcess* self);   // vtable slot 1 (+4)
+struct CASuspendableProcessVTable {
+    void (__fastcall *Slot0)(CASuspendableProcess* self);
+    void (__fastcall *Pump)(CASuspendableProcess* self);
 };
-
-#pragma pack(push,1)
-struct CASuspendableProcess {
-    CASuspendableProcessVtbl* vtbl;   // +0 (4 bytes)
-    unsigned char active;             // +4
-    unsigned char terminateRequested; // +5
-};
-#pragma pack(pop)
 
 void __fastcall TerminateProcess(CASuspendableProcess* self)
 {
-    self->terminateRequested = 1;
-    while (self->active) {
-        self->vtbl->Pump(self);
+    self->StopRunning = true;
+    while (self->Running) {
+        CASuspendableProcessVTable* vtable =
+            (CASuspendableProcessVTable*)self->__vftable;
+        vtable->Pump(self);
     }
 }

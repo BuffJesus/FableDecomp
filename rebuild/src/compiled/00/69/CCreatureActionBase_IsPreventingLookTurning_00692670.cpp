@@ -1,6 +1,7 @@
-struct S; typedef unsigned char (__fastcall* VFn)(S*);
-struct S { VFn* vtbl; };
-bool __fastcall IsPreventingLookTurning(S* self)
+#include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
+typedef unsigned char (__fastcall* PreventLookTurningFn)(CCreatureActionBase*);
+bool __fastcall IsPreventingLookTurning(CCreatureActionBase* self)
 {
-    return self->vtbl[0xC4/4](self) ? true : false;
+    PreventLookTurningFn* vtable = (PreventLookTurningFn*)self->__vftable;
+    return vtable[0xc4 / 4](self) ? true : false;
 }

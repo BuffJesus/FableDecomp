@@ -1,30 +1,21 @@
-// CCreatureActionBase::Update @ 0x006929a0
-struct Sub;
-struct CCreatureActionBase;
+#include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
 
-// vtbl: slot at +0xe0
-struct VT {
-    void (__fastcall *m[64])(void*);
+struct CCreatureActionUpdateTarget;
+struct CCreatureActionBaseVTable {
+    void (__fastcall *Slots[64])(void*);
 };
 
-struct CCreatureActionBase {
-    VT* vtbl;      // +0x00
-    char pad[0x5D];
-    char flag;     // +0x61
-};
-
-// getter at 0xa01b50: __fastcall on (self+8) -> returns Sub*
-extern "C" Sub* __fastcall getSub(void* subself);       // 0xa01b50
-// target at 0x6633a0: void __fastcall on Sub*
-extern "C" void __fastcall runSub(Sub* p);              // 0x6633a0
+extern "C" CCreatureActionUpdateTarget* __fastcall getSub(void* creaturePointer);
+extern "C" void __fastcall runSub(CCreatureActionUpdateTarget* target);
 
 void __fastcall Update(CCreatureActionBase* self)
 {
-    if (self->flag) {
-        char* base = (char*)self + 8;
-        Sub* p = getSub((void*)base);
-        runSub(p);
+    if (self->Finished) {
+        CCreatureActionUpdateTarget* target = getSub((void*)self->PCreature);
+        runSub(target);
     } else {
-        self->vtbl->m[0xe0/4](self);
+        CCreatureActionBaseVTable* vtable =
+            (CCreatureActionBaseVTable*)self->__vftable;
+        vtable->Slots[0xe0 / 4](self);
     }
 }
