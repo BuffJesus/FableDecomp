@@ -1,14 +1,6 @@
-// CScriptThing::IsNull  0x004ab150
-// bool __fastcall CScriptThing::IsNull(void)
-//   ecx = this
-//   inner = this->m4  ([ecx+4])
-//   if (inner == 0) return true;
-//   if (inner->vslot77()) return true;    // call [eax+0x134] => slot 0x134/4 = 77
-//   return false;
+#include "engine/CScriptThing.h"
 
-struct Inner
-{
-    // 77 padding virtuals so IsNullInner lands at vtable slot 77 (offset 0x134)
+struct CScriptThingImplementation {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -28,19 +20,11 @@ struct Inner
     virtual void v64(); virtual void v65(); virtual void v66(); virtual void v67();
     virtual void v68(); virtual void v69(); virtual void v70(); virtual void v71();
     virtual void v72(); virtual void v73(); virtual void v74(); virtual void v75();
-    virtual void v76();
-    virtual bool v77();   // slot 77 -> [vtable+0x134]
+    virtual void v76(); virtual bool IsNull();
 };
 
-struct CScriptThing
-{
-    // vptr occupies +0 (CScriptThing has virtuals)
-    virtual bool IsNull() const;
-    Inner* m4;      // +4
-};
-
-bool CScriptThing::IsNull() const
-{
-    Inner* inner = m4;
-    return inner == 0 || inner->v77();
+struct CScriptThing_Methods : CScriptThing { bool IsNull() const; };
+bool CScriptThing_Methods::IsNull() const {
+    CScriptThingImplementation* implementation = reinterpret_cast<CScriptThingImplementation*>(PImp_Data);
+    return implementation == 0 || implementation->IsNull();
 }
