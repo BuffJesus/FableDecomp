@@ -1,6 +1,6 @@
 # Auto-RE candidate compile gate
 
-Generated: `2026-09-08T08:42:06-06:00`
+Generated: `2026-09-08T09:57:11-06:00`
 
 | Gate | Passing | Total |
 |---|---:|---:|

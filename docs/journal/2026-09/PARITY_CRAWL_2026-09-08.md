@@ -100,3 +100,16 @@ last three use explicit 12-byte retail container overlays where the donor contai
 `CEngine *, C3DBoundingBox *` guesses. Batch 185 is active: the typed navigator position
 accessor passes behavior but remains unlanded at 36 versus 33 bytes, and the propagated
 `PayFines`/callee labels were rejected where their bodies contradict PDB layouts.
+
+Batches 186 through 195 added 68 verified functions. Four are byte-identical readable
+helpers: `CTCHeroRangedAttacks::ResetProjectileTargetingZoomParameter`,
+`GFGet2DDistance`, `NPlayerGui::GFToScreen`, and
+`CTCHeroStats::HasMarriageInState`. Three PDB-owned mesh/animation chunk writers use
+typed `WriteULONG`/`WriteFloat` calls rather than the poisoned `WriteCBYTE` labels.
+`CDrunkennessDef::Transfer` uses the retail `DrunkennessThresholdMult` schema literal
+and a corrected `CPersistContext&` prototype. The remaining sixty functions are
+PDB-owned creature/combat action `Clone` methods recovered as ordinary
+`new Derived(*this)` copy construction with verified retail allocation sizes. Every
+landing passed its focused behavior fixture and selected VC7.1 build; relocation
+matches preserve the allocator, copy-constructor, string, or stream call sites.
+Batch 196 is active and continues the same constructor-verified clone seam.
