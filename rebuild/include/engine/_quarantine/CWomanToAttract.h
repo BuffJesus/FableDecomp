@@ -14,7 +14,7 @@ struct CV_SickChildScript;
 #pragma pack(push, 1)
 struct CWomanToAttract {
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
-    int                     f4;                              // +0x04 retail-only (CWomanToAttract_Init_00a0d390.cpp)
+    int                     f4;                              // +0x04 retail-only int (CWomanToAttract_Init_00a0d390.cpp)
     unsigned char           _pad_0x08[0x4];                  // +0x08
     unsigned char           _pad_0x0c[0x4];                  // +0x0c
     unsigned char           _pad_0x10[0x4];                  // +0x10

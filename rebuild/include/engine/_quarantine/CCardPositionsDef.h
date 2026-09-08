@@ -25,7 +25,7 @@ struct CCardPositionsDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    long          sub;                                       // +0x3c retail-only (CCardPositionsDef_Copy_004ebebc.cpp)
+    long          sub;                                       // +0x3c retail-only SubMember (CCardPositionsDef_Copy_004ebebc.cpp)
     unsigned char Offset[0x10];                              // +0x40 vector<C2DVector,std::allocator<C2DVector>_>
 };
 #pragma pack(pop)

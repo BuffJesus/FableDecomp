@@ -25,7 +25,7 @@ struct CPlayerInventoryDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    long          f0;                                        // +0x3c retail-only (CPlayerInventoryDef_TransferCPlayerInventoryDefUAEXAAVCPersistContex_00467553.cpp)
+    long          f0;                                        // +0x3c retail-only Field (CPlayerInventoryDef_TransferCPlayerInventoryDefUAEXAAVCPersistContex_00467553.cpp)
     unsigned char Slot[0x10];                                // +0x40 vector<long,std::allocator<long>_>
     unsigned char MaxInSlot[0x10];                           // +0x50 vector<long,std::allocator<long>_>
     unsigned char InitialAmount[0x10];                       // +0x60 vector<long,std::allocator<long>_>

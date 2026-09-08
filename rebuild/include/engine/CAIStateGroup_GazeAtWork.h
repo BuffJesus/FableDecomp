@@ -11,7 +11,7 @@
 #pragma pack(push, 1)
 struct CAIStateGroup_GazeAtWork {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    long          f4;                                        // +0x04 retail-only (previous header)
+    long          f4;                                        // +0x04 retail-only long (previous header)
     unsigned char _pad_0x08[0x28];                           // +0x08
 };
 #pragma pack(pop)

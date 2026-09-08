@@ -12,7 +12,7 @@
 struct CCombatAbilityBlockUnarmedAttackDef {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x24];                           // +0x04
-    long          m_member;                                  // +0x28 retail-only (CCombatAbilityBlockUnarmedAttackDef_Copy_00463bdb.cpp)
+    long          m_member;                                  // +0x28 retail-only CMemberDef (CCombatAbilityBlockUnarmedAttackDef_Copy_00463bdb.cpp)
     unsigned char _pad_0x2c[0x30];                           // +0x2c
 };
 #pragma pack(pop)

@@ -3348,8 +3348,8 @@ struct CMouseDX {
     unsigned char         _pad_0x3408[0x4];                  // +0x3408
     unsigned char         _pad_0x340c[0x4];                  // +0x340c
     unsigned char         _pad_0x3410[0x4];                  // +0x3410
-    float                 PositionX;                         // +0x3414 retail-only (CMouseDX_SetPos_00ab4700.cpp)
-    float                 PositionY;                         // +0x3418 retail-only (CMouseDX_SetPos_00ab4700.cpp)
+    float                 PositionX;                         // +0x3414 retail-only float (CMouseDX_SetPos_00ab4700.cpp)
+    float                 PositionY;                         // +0x3418 retail-only float (CMouseDX_SetPos_00ab4700.cpp)
     float                 Pos_X;                             // +0x341c C2DVector::X
     float                 Pos_Y;                             // +0x3420 C2DVector::Y
     IDirectInputDevice8W* DMouse;                            // +0x3424

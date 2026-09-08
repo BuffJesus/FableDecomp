@@ -80,7 +80,7 @@ struct CCreatureAction_UndeadRiseUp {
     unsigned char _pad_0x10c[0x4];                           // +0x10c
     unsigned char _pad_0x110[0x4];                           // +0x110
     unsigned char _pad_0x114[0x4];                           // +0x114
-    unsigned char f;                                         // +0x118 retail-only (previous header)
+    unsigned char f;                                         // +0x118 retail-only unsigned char (previous header)
     unsigned char _pad_0x119[0x3];                           // +0x119
     unsigned char _pad_0x11c[0x4];                           // +0x11c
     unsigned char _pad_0x120[0x4];                           // +0x120

@@ -25,7 +25,7 @@ struct CThunderBattleDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    int           f3c;                                       // +0x3c retail-only (CThunderBattleDef_TransferCThunderBattleDefUAEXAAVCPersistContextZ_004e38e4.cpp)
+    int           f3c;                                       // +0x3c retail-only int (CThunderBattleDef_TransferCThunderBattleDefUAEXAAVCPersistContextZ_004e38e4.cpp)
     long          NumGetHitsBeforeStormAttack;               // +0x40
     long          NumMissesBeforeStormAttack;                // +0x44
     float         LightningDamage;                           // +0x48

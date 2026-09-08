@@ -25,7 +25,7 @@ struct CSimVoicesDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    long          sub;                                       // +0x3c retail-only (CSimVoicesDef_Copy_0046311f.cpp)
+    long          sub;                                       // +0x3c retail-only SubVoices (CSimVoicesDef_Copy_0046311f.cpp)
     unsigned char Entry[0x1c];                               // +0x40 CSimVoice
 };
 #pragma pack(pop)

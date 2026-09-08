@@ -12,7 +12,7 @@
 struct CEngineInternalPrimitiveStaticMeshFromFile {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x8];                            // +0x04
-    long          fc;                                        // +0x0c retail-only (previous header)
+    long          fc;                                        // +0x0c retail-only long (previous header)
     unsigned char _pad_0x10[0x9c];                           // +0x10
 };
 #pragma pack(pop)

@@ -11,13 +11,12 @@
 #pragma pack(push, 1)
 struct CCreatureActionHeroJump {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    int           m04;                                       // +0x04 retail-only (CCreatureActionHeroJump_FrameUpdateCCreatureActionHeroJumpUAEXXZ_0085bad0.cpp)
-    int           m08;                                       // +0x08 retail-only (CCreatureActionHeroJump_FrameUpdateCCreatureActionHeroJumpUAEXXZ_0085bad0.cpp)
-    int           m0c;                                       // +0x0c retail-only (CCreatureActionHeroJump_FrameUpdateCCreatureActionHeroJumpUAEXXZ_0085bad0.cpp)
-    int           f10;                                       // +0x10 retail-only (CCreatureActionHeroJump_IsPreventingNormalMovement_0085b8a0.cpp)
-    int           f1c;                                       // +0x14 retail-only (CCreatureActionHeroJump_IsPreventingNormalMovement_0085b8a0.cpp)
-    int           m18;                                       // +0x18 retail-only (CCreatureActionHeroJump_FrameUpdateCCreatureActionHeroJumpUAEXXZ_0085bad0.cpp)
-    int           m1c;                                       // +0x1c retail-only (CCreatureActionHeroJump_FrameUpdateCCreatureActionHeroJumpUAEXXZ_0085bad0.cpp)
+    int           m04;                                       // +0x04 retail-only int (CCreatureActionHeroJump_FrameUpdateCCreatureActionHeroJumpUAEXXZ_0085bad0.cpp)
+    int           m08;                                       // +0x08 retail-only int (CCreatureActionHeroJump_FrameUpdateCCreatureActionHeroJumpUAEXXZ_0085bad0.cpp)
+    int           m0c;                                       // +0x0c retail-only int (CCreatureActionHeroJump_FrameUpdateCCreatureActionHeroJumpUAEXXZ_0085bad0.cpp)
+    int           f10;                                       // +0x10 retail-only int (CCreatureActionHeroJump_IsPreventingNormalMovement_0085b8a0.cpp)
+    unsigned char p14[0x8];                                  // +0x14 retail-only char (CCreatureActionHeroJump_IsPreventingNormalMovement_0085b8a0.cpp)
+    int           f1c;                                       // +0x1c retail-only int (CCreatureActionHeroJump_IsPreventingNormalMovement_0085b8a0.cpp)
     unsigned char _pad_0x20[0x10c];                          // +0x20
 };
 #pragma pack(pop)
@@ -28,8 +27,7 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionHeroJump, m04) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CCreatureActionHeroJump, m08) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CCreatureActionHeroJump, m0c) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CCreatureActionHeroJump, f10) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CCreatureActionHeroJump, f1c) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CCreatureActionHeroJump, m18) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CCreatureActionHeroJump, m1c) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureActionHeroJump, p14) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CCreatureActionHeroJump, f1c) == 0x1c);
 
 #endif // FABLE_ENGINE_CCREATUREACTIONHEROJUMP_H

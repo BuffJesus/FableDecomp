@@ -11,13 +11,14 @@
 #pragma pack(push, 1)
 struct CCreatureAction_ScorpionRecover {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    long          m8;                                        // +0x04 retail-only (previous header)
-    unsigned char _pad_0x08[0x124];                          // +0x08
+    unsigned char _pad_0x04[0x4];                            // +0x04
+    long          m8;                                        // +0x08 retail-only Member8 (CCreatureActionScorpionRecover_InitialiseCCreatureActionScorpionRecoverUAEXXZ_008c3ee0.cpp)
+    unsigned char _pad_0x0c[0x120];                          // +0x0c
 };
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ScorpionRecover) == 0x12c);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionRecover, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionRecover, m8) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionRecover, m8) == 0x8);
 
 #endif // FABLE_ENGINE_CCREATUREACTION_SCORPIONRECOVER_H

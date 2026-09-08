@@ -101,7 +101,7 @@ struct CText {
     unsigned char    _pad_0x150[0x4];                        // +0x150
     unsigned char    _pad_0x154[0x4];                        // +0x154
     unsigned char    _pad_0x158[0x4];                        // +0x158
-    unsigned char    flags;                                  // +0x15c retail-only (previous header)
+    unsigned char    flags;                                  // +0x15c retail-only unsigned char (previous header)
     unsigned char    _pad_0x15d[0x3];                        // +0x15d
     unsigned char    _pad_0x160[0x4];                        // +0x160
     unsigned char    _pad_0x164[0x4];                        // +0x164

@@ -13,7 +13,7 @@ struct CDefPointeeBase;
 #pragma pack(push, 1)
 struct CTCDoor {
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
-    long             m4;                                     // +0x04 retail-only (previous header)
+    long             m4;                                     // +0x04 retail-only long (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08
     long             Jammed;                                 // +0x0c
     bool             CurrentOpen;                            // +0x10

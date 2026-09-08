@@ -14,8 +14,8 @@ struct CCreatureAction_NymphGetHit {
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
-    long          m_a;                                       // +0x10 retail-only (previous header)
-    long          m_b;                                       // +0x14 retail-only (previous header)
+    long          m_a;                                       // +0x10 retail-only long (previous header)
+    long          m_b;                                       // +0x14 retail-only long (previous header)
     unsigned char _pad_0x18[0x4];                            // +0x18
     unsigned char _pad_0x1c[0x4];                            // +0x1c
     unsigned char _pad_0x20[0x4];                            // +0x20

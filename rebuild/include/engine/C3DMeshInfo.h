@@ -13,8 +13,8 @@ struct CIVCountedPointeeBase;
 #pragma pack(push, 1)
 struct C3DMeshInfo {
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
-    long                   f4;                               // +0x04 retail-only (previous header)
-    long                   idx;                              // +0x08 retail-only (previous header)
+    long                   f4;                               // +0x04 retail-only long (previous header)
+    unsigned char          _pad_0x08[0x4];                   // +0x08
     CIVCountedPointeeBase* MeshData_Object;                  // +0x0c CIVCountedPointer<C3DMeshInfo::CMeshData>::Object
     unsigned char          BoundingBox[0x18];                // +0x10 C3DBoundingBox
     unsigned char          BoundingSphere[0x10];             // +0x28 C3DBoundingSphere
@@ -28,7 +28,6 @@ struct C3DMeshInfo {
 FABLE_STATIC_ASSERT(sizeof(C3DMeshInfo) == 0x60);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, f4) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, idx) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, MeshData_Object) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, BoundingBox) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, BoundingSphere) == 0x28);

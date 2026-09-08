@@ -25,7 +25,7 @@ struct CSpecialAbilitiesTurncoatSpellDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    long          f0;                                        // +0x3c retail-only (CSpecialAbilitiesTurncoatSpellDef_TransferCSpecialAbilitiesTurncoatSpellDefUAEXAAV_00465662.cpp)
+    long          f0;                                        // +0x3c retail-only Field (CSpecialAbilitiesTurncoatSpellDef_TransferCSpecialAbilitiesTurncoatSpellDefUAEXAAV_00465662.cpp)
     unsigned char StaminaCostPerSec[0x10];                   // +0x40 vector<float,std::allocator<float>_>
     unsigned char ResistanceDamagePerSec[0x10];              // +0x50 vector<float,std::allocator<float>_>
     unsigned char TurncoatTime[0x10];                        // +0x60 vector<float,std::allocator<float>_>

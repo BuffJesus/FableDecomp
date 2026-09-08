@@ -32,9 +32,8 @@ struct CEngineInternalPrimitiveStaticMesh {
     unsigned char _pad_0x4c[0x4];                            // +0x4c
     unsigned char _pad_0x50[0x4];                            // +0x50
     unsigned char _pad_0x54[0x4];                            // +0x54
-    long          field58;                                   // +0x58 retail-only (previous header)
-    unsigned char sub;                                       // +0x5c retail-only (previous header)
-    unsigned char _pad_0x5d[0x3];                            // +0x5d
+    long          field58;                                   // +0x58 retail-only long (previous header)
+    unsigned char _pad_0x5c[0x4];                            // +0x5c
     unsigned char _pad_0x60[0x4];                            // +0x60
     unsigned char _pad_0x64[0x4];                            // +0x64
     unsigned char _pad_0x68[0x4];                            // +0x68
@@ -47,7 +46,6 @@ struct CEngineInternalPrimitiveStaticMesh {
 FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveStaticMesh) == 0xac);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveStaticMesh, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveStaticMesh, field58) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveStaticMesh, sub) == 0x5c);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveStaticMesh, ObjectTransform) == 0x70);
 FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveStaticMesh, RenderInfo) == 0xa0);
 

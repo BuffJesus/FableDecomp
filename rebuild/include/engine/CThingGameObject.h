@@ -60,7 +60,7 @@ struct CThingGameObject {
     unsigned char _pad_0xbc[0x4];                            // +0xbc
     unsigned char _pad_0xc0[0x4];                            // +0xc0
     unsigned char _pad_0xc4[0x4];                            // +0xc4
-    unsigned char flags;                                     // +0xc8 retail-only (previous header)
+    unsigned char flags;                                     // +0xc8 retail-only unsigned char (previous header)
     unsigned char _pad_0xc9[0x3];                            // +0xc9
     unsigned char _pad_0xcc[0x4];                            // +0xcc
     unsigned char _pad_0xd0[0x4];                            // +0xd0

@@ -7,7 +7,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 
 ## Current focus (2026-09)
 
-- [ ] Typed shared headers: 2026-09-07 `--all-trusted` = 969 compiling headers (244 quarantined); automatic passes plus the parity-gated manual tail have retyped 583 landed TUs onto PDB-named headers (98 manual conversions across sixteen checkpoints). `VTABLE_TYPED` is closed (37→0); `VIRTUAL_THIS` is down from 54 to 14 in the live `rebuild/backlog/retype_log.tsv` — `tools/decomp_pipeline/`
+- [ ] Typed shared headers: 2026-09-07 `--all-trusted --compile-check` = 957 compiling headers (257 quarantined); automatic passes plus the parity-gated manual tail have retyped 584 landed TUs onto PDB-named headers (99 manual conversions across seventeen checkpoints). `VTABLE_TYPED` is closed (37→0); `VIRTUAL_THIS` is down from 54 to 13 in the live `rebuild/backlog/retype_log.tsv` — `tools/decomp_pipeline/`
 - [x] 2026-09-07 Aeon's 12 new Lua ports ingested (20 packages, 71 scripts; foundation audit 15/18) — `docs/scripts/AEON_LUA_PORTS.md`
 - [ ] Port the 12 FSE 6.9.26 bindings LUAGameflow needs into ForgeFSE-retail-shadow; add package→native-name aliases so the new seeds correlate (8/20 today) — `docs/scripts/AEON_LUA_PORTS.md`
 - [ ] Keep the parity crawl moving from `work/crawl_batch155` (ledger 5,693; catalog 18,631 landed) — `docs/pipeline/FULL_DECOMP.md`
@@ -38,8 +38,8 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [x] 100% mechanically named (49,568/49,568); 99.2% accepted naming quality; 40 names in review tail
 - [x] FSE manifest corrected to 933 functions and propagated to FableForge
 - [x] FSE address map (`refs/script_recovery/fse_address_name_map.json`, 80 addrs, 63 manifest clashes) wired into readiness analyzer
-- [x] 2026-09-07 typed shared headers `rebuild/include/engine/`: 962 compiling headers from the PDB layouts, per-header compile check, quarantine on donor/retail conflict
-- [x] 2026-09-07 automatic and manual parity-gated retyping applied to 583 landed TUs; `VTABLE_TYPED` tail closed (see Current focus for the next skip-reason lane)
+- [x] 2026-09-07 typed shared headers `rebuild/include/engine/`: 957 compiling headers from the PDB layouts, per-header compile check, quarantine on donor/retail conflict
+- [x] 2026-09-07 automatic and manual parity-gated retyping applied to 584 landed TUs; `VTABLE_TYPED` tail closed (see Current focus for the next skip-reason lane)
 - [ ] Bulk `.gdt` import of donor struct layouts into the Ghidra DB (open)
 - [ ] Calling convention known 77.7% -> close the 11,031 unknown-CC functions
 - [ ] Complete prototypes 69.2% -> close the 15,280 incomplete ones

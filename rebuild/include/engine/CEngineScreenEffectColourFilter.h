@@ -12,9 +12,8 @@
 struct CEngineScreenEffectColourFilter {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char enabled;                                   // +0x08 retail-only (previous header)
-    unsigned char field44;                                   // +0x09 retail-only (previous header)
-    unsigned char _pad_0x0a[0x2];                            // +0x0a
+    unsigned char enabled;                                   // +0x08 retail-only unsigned char (previous header)
+    unsigned char _pad_0x09[0x3];                            // +0x09
     bool          ForceColourFilter;                         // +0x0c
     unsigned char _pad_0x0d[0x3];                            // +0x0d
     unsigned char Settings[0x20];                            // +0x10 CEngineColourFilterSettings
@@ -40,7 +39,6 @@ struct CEngineScreenEffectColourFilter {
 FABLE_STATIC_ASSERT(sizeof(CEngineScreenEffectColourFilter) == 0xec);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, enabled) == 0x8);
-FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, field44) == 0x9);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, ForceColourFilter) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, Settings) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectColourFilter, GrayRGBWeights_R) == 0x30);

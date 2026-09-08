@@ -17,12 +17,12 @@ struct _func___cdecl_void_CCharString_ptr;
 #pragma pack(push, 1)
 struct CDefinitionManager {
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
-    long                                m_classArray;        // +0x04 retail-only (previous header)
+    unsigned char                       _pad_0x04[0x4];      // +0x04
     unsigned char                       _pad_0x08[0x4];      // +0x08
     unsigned char                       _pad_0x0c[0x4];      // +0x0c
     unsigned char                       _pad_0x10[0x4];      // +0x10
     unsigned char                       _pad_0x14[0x4];      // +0x14
-    unsigned char                       _pad_0x18[0x4];      // +0x18
+    void*                               m_classArray;        // +0x18 retail-only const CDefClassBase** (CDefinitionManager_GetPDefFromClassIndex_00c96430.cpp)
     unsigned char                       _pad_0x1c[0x4];      // +0x1c
     unsigned char                       _pad_0x20[0x4];      // +0x20
     unsigned char                       _pad_0x24[0x4];      // +0x24
@@ -56,7 +56,7 @@ struct CDefinitionManager {
 
 FABLE_STATIC_ASSERT(sizeof(CDefinitionManager) == 0xf0);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, m_classArray) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, m_classArray) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, PDefTypeDebugInfoMap) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, SymbolPathList) == 0x40);
 FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, CompilePathList) == 0x50);

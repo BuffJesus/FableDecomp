@@ -25,7 +25,7 @@ struct CWhisperBattleDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    long          m3c;                                       // +0x3c retail-only (CWhisperBattleDef_TransferCWhisperBattleDefUAEXAAVCPersistContextZ_004e394f.cpp)
+    long          m3c;                                       // +0x3c retail-only CSubA (CWhisperBattleDef_TransferCWhisperBattleDefUAEXAAVCPersistContextZ_004e394f.cpp)
     long          NumGetHitsBeforeSommersault;               // +0x40
     long          NumPhase2Potions;                          // +0x44
 };

@@ -25,7 +25,7 @@ struct CAppearanceModifierScalingDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    int           fieldA;                                    // +0x3c retail-only (CAppearanceModifierScalingDef_TransferCAppearanceModifierScalingDefUAEXAAVCPer_004784e4.cpp)
+    int           fieldA;                                    // +0x3c retail-only int (CAppearanceModifierScalingDef_TransferCAppearanceModifierScalingDefUAEXAAVCPer_004784e4.cpp)
     float         Attractiveness;                            // +0x40
     float         Scariness;                                 // +0x44
     float         Goodstrength;                              // +0x48

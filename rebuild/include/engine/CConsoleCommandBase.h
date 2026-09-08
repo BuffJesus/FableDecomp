@@ -11,7 +11,7 @@
 #pragma pack(push, 1)
 struct CConsoleCommandBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char m_field4;                                  // +0x04 retail-only (previous header)
+    unsigned char m_field4;                                  // +0x04 retail-only unsigned char (previous header)
     unsigned char _pad_0x05[0x3];                            // +0x05
     unsigned char ParamTypes[0x10];                          // +0x08 CConsoleCommandParameters
 };

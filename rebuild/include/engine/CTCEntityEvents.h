@@ -11,7 +11,7 @@
 #pragma pack(push, 1)
 struct CTCEntityEvents {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    long          sub;                                       // +0x04 retail-only (previous header)
+    long          sub;                                       // +0x04 retail-only long (previous header)
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char Events[0xc];                               // +0x0c list<CCountedPointer<NEntityEvents::CEventBase>,std::allocator<CCountedPointer<NEntityEvents::CEventBase>_>_>
 };

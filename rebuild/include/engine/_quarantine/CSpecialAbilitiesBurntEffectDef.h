@@ -25,7 +25,7 @@ struct CSpecialAbilitiesBurntEffectDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    int           f3c;                                       // +0x3c retail-only (CSpecialAbilitiesBurntEffectDef_TransferCSpecialAbilitiesBurntEffectDefUAEXAAVCP_0046a742.cpp)
+    int           f3c;                                       // +0x3c retail-only int (CSpecialAbilitiesBurntEffectDef_TransferCSpecialAbilitiesBurntEffectDefUAEXAAVCP_0046a742.cpp)
     float         FadeInTimeSecs;                            // +0x40
     float         FadeOutTimeStartSecs;                      // +0x44
     float         FadeOutTimeSecs;                           // +0x48

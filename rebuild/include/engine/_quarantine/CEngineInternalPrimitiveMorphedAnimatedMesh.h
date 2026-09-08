@@ -84,7 +84,7 @@ struct CEngineInternalPrimitiveMorphedAnimatedMesh {
     unsigned char _pad_0x11c[0x4];                           // +0x11c
     unsigned char _pad_0x120[0x4];                           // +0x120
     unsigned char _pad_0x124[0x4];                           // +0x124
-    long          sub;                                       // +0x128 retail-only (CEngineInternalPrimitiveMorphedAnimatedMesh_Update_00bd2b70.cpp)
+    long          sub;                                       // +0x128 retail-only Sub (CEngineInternalPrimitiveMorphedAnimatedMesh_Update_00bd2b70.cpp)
     unsigned char Morph[0x48];                               // +0x12c CEngineInternalPrimitiveMorphInfo
 };
 #pragma pack(pop)

@@ -25,7 +25,7 @@ struct CCardDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    long          m3c;                                       // +0x3c retail-only (CCardDef_TransferCCardDefUAEXAAVCPersistContextZ_004ec0b3.cpp)
+    long          m3c;                                       // +0x3c retail-only CSubA (CCardDef_TransferCCardDefUAEXAAVCPersistContextZ_004ec0b3.cpp)
     long          CardName;                                  // +0x40
     long          CardVal;                                   // +0x44
 };

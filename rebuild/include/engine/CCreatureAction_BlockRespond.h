@@ -12,7 +12,7 @@
 struct CCreatureAction_BlockRespond {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x12d];                          // +0x04
-    unsigned char f;                                         // +0x131 retail-only (previous header)
+    unsigned char f;                                         // +0x131 retail-only unsigned char (previous header)
     unsigned char _pad_0x132[0xa];                           // +0x132
     bool          UseHitPos;                                 // +0x13c
     float         HitPos_X;                                  // +0x13d C3DVector::X

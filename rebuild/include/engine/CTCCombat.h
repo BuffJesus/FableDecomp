@@ -15,7 +15,7 @@ struct CThingCreatureBase;
 #pragma pack(push, 1)
 struct CTCCombat {
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
-    long                obj;                                 // +0x04 retail-only (previous header)
+    long                obj;                                 // +0x04 retail-only long (previous header)
     unsigned char       _pad_0x08[0x4];                      // +0x08
     long                ComboChainPos;                       // +0x0c
     long                ComboChainID;                        // +0x10

@@ -29,7 +29,7 @@ struct C3DAnimation2 {
     unsigned char               _pad_0x24[0x4];              // +0x24
     unsigned char               _pad_0x28[0x4];              // +0x28
     unsigned char               _pad_0x2c[0x4];              // +0x2c
-    long                        sub;                         // +0x30 retail-only (previous header)
+    long                        sub;                         // +0x30 retail-only long (previous header)
     CSimpleMemoryPool*          Allocator_Data;              // +0x34 CCountedPointer<CSimpleMemoryPool>::Data
     CCPPointerInfo*             Allocator_Info;              // +0x38 CCountedPointer<CSimpleMemoryPool>::Info
     CMovableResourceMemoryPool* MemoryPool;                  // +0x3c

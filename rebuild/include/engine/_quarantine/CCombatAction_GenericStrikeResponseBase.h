@@ -81,10 +81,10 @@ struct CCombatAction_GenericStrikeResponseBase {
     unsigned char _pad_0x110[0x4];                           // +0x110
     unsigned char _pad_0x114[0x4];                           // +0x114
     unsigned char _pad_0x118[0x4];                           // +0x118
-    long          hitPos;                                    // +0x11c retail-only (CCombatActionGenericStrikeResponseBase_SetHitPosition_006f56e0.cpp)
+    long          hitPos;                                    // +0x11c retail-only C3DVector (CCombatActionGenericStrikeResponseBase_SetHitPosition_006f56e0.cpp)
     unsigned char _pad_0x120[0x4];                           // +0x120
     unsigned char _pad_0x124[0x4];                           // +0x124
-    long          m_hitDir;                                  // +0x128 retail-only (CCombatActionGenericStrikeResponseBase_SetHitDirection_006f56c0.cpp)
+    long          m_hitDir;                                  // +0x128 retail-only C3DVector (CCombatActionGenericStrikeResponseBase_SetHitDirection_006f56c0.cpp)
     unsigned char PThingThatHit[0x8];                        // +0x12c CIntelligentPointer<CThing_const_>
     float         PointOfHit_X;                              // +0x134 C3DVector::X
     float         PointOfHit_Y;                              // +0x138 C3DVector::Y

@@ -79,9 +79,9 @@ struct CCreatureAction_PlayCombatAnimation {
     unsigned char _pad_0x108[0x4];                           // +0x108
     unsigned char _pad_0x10c[0x4];                           // +0x10c
     unsigned char _pad_0x110[0x4];                           // +0x110
-    unsigned char f;                                         // +0x114 retail-only (previous header)
-    unsigned char f_2;                                       // +0x115 retail-only (previous header)
-    unsigned char f_3;                                       // +0x116 retail-only (previous header)
+    unsigned char f;                                         // +0x114 retail-only unsigned char (previous header)
+    unsigned char f_2;                                       // +0x115 retail-only unsigned char (previous header)
+    unsigned char f_3;                                       // +0x116 retail-only unsigned char (previous header)
     unsigned char _pad_0x117[0x1];                           // +0x117
     unsigned char _pad_0x118[0x4];                           // +0x118
     unsigned char _pad_0x11c[0x4];                           // +0x11c

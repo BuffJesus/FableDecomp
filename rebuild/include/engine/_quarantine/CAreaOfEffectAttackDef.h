@@ -25,7 +25,7 @@ struct CAreaOfEffectAttackDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    int           f3c;                                       // +0x3c retail-only (CAreaOfEffectAttackDef_TransferCAreaOfEffectAttackDefUAEXAAVCPersistCon_004e3f7b.cpp)
+    int           f3c;                                       // +0x3c retail-only int (CAreaOfEffectAttackDef_TransferCAreaOfEffectAttackDefUAEXAAVCPersistCon_004e3f7b.cpp)
     long          TrapIndex;                                 // +0x40
     long          ExplosionIndex;                            // +0x44
     float         ObstructionRadius;                         // +0x48

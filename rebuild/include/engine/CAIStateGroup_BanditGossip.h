@@ -11,9 +11,8 @@
 #pragma pack(push, 1)
 struct CAIStateGroup_BanditGossip {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    long          owner;                                     // +0x04 retail-only (previous header)
-    unsigned char flag;                                      // +0x08 retail-only (previous header)
-    unsigned char _pad_0x09[0x3];                            // +0x09
+    long          owner;                                     // +0x04 retail-only long (previous header)
+    unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
     unsigned char _pad_0x10[0x4];                            // +0x10
     unsigned char _pad_0x14[0x4];                            // +0x14
@@ -28,7 +27,6 @@ struct CAIStateGroup_BanditGossip {
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_BanditGossip) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditGossip, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditGossip, owner) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditGossip, flag) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditGossip, WasCarryingWeapon) == 0x24);
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_BANDITGOSSIP_H

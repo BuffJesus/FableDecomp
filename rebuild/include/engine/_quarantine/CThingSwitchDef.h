@@ -38,7 +38,7 @@ struct CThingSwitchDef {
     unsigned char _pad_0x64[0x4];                            // +0x64
     unsigned char _pad_0x68[0x4];                            // +0x68
     unsigned char _pad_0x6c[0x4];                            // +0x6c
-    int           f70;                                       // +0x70 retail-only (CThingSwitchDef_Copy_004644fa.cpp)
+    int           f70;                                       // +0x70 retail-only int (CThingSwitchDef_Copy_004644fa.cpp)
     unsigned char TriggerType[0x4];                          // +0x74 ESwitchTriggerType
 };
 #pragma pack(pop)

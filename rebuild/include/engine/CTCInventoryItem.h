@@ -14,11 +14,11 @@ struct CTCInventoryBase;
 #pragma pack(push, 1)
 struct CTCInventoryItem {
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
-    long              slot;                                  // +0x04 retail-only (previous header)
-    long              field8;                                // +0x08 retail-only (previous header)
+    long              slot;                                  // +0x04 retail-only long (previous header)
+    long              field8;                                // +0x08 retail-only long (previous header)
     CDefPointeeBase*  PDef_Object;                           // +0x0c CDefPointer<CInventoryItemDef_const_>::Object
     CTCInventoryBase* PInventory;                            // +0x10
-    long              call;                                  // +0x14 retail-only (previous header)
+    long              call;                                  // +0x14 retail-only long (previous header)
     unsigned __int64  InventoryUIDToAttachTo;                // +0x18
     bool              DefaultItem;                           // +0x20
     unsigned char     _pad_0x21[0x7];                        // +0x21

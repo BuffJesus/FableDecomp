@@ -25,7 +25,7 @@ struct CAbilityTrackLevelDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    int           fieldA;                                    // +0x3c retail-only (CAbilityTrackLevelDef_TransferCAbilityTrackLevelDefUAEXAAVCPersistCont_00478827.cpp)
+    int           fieldA;                                    // +0x3c retail-only int (CAbilityTrackLevelDef_TransferCAbilityTrackLevelDefUAEXAAVCPersistCont_00478827.cpp)
     long          ExperienceCost;                            // +0x40
     unsigned char AbilityUnlocked[0x4];                      // +0x44 EHeroAbility
     long          Description;                               // +0x48

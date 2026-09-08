@@ -41,8 +41,8 @@ struct CThingCreatureBase {
     unsigned char           _pad_0x54[0x4];                  // +0x54
     unsigned char           _pad_0x58[0x4];                  // +0x58
     unsigned char           _pad_0x5c[0x4];                  // +0x5c
-    long                    q;                               // +0x60 retail-only (previous header)
-    long                    p;                               // +0x64 retail-only (previous header)
+    long                    q;                               // +0x60 retail-only long (previous header)
+    unsigned char           _pad_0x64[0x4];                  // +0x64
     unsigned char           _pad_0x68[0x4];                  // +0x68
     unsigned char           _pad_0x6c[0x4];                  // +0x6c
     unsigned char           _pad_0x70[0x4];                  // +0x70
@@ -73,7 +73,7 @@ struct CThingCreatureBase {
     unsigned char           _pad_0xd4[0x4];                  // +0xd4
     unsigned char           _pad_0xd8[0x4];                  // +0xd8
     unsigned char           _pad_0xdc[0x4];                  // +0xdc
-    long                    data;                            // +0xe0 retail-only (previous header)
+    long                    data;                            // +0xe0 retail-only long (previous header)
     unsigned char           _pad_0xe4[0x4];                  // +0xe4
     unsigned long           LastMessageEventICreatedID;      // +0xe8
     unsigned char           CombatCollisionDebugGraphics[0x10]; // +0xec vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
@@ -113,7 +113,6 @@ struct CThingCreatureBase {
 FABLE_STATIC_ASSERT(sizeof(CThingCreatureBase) == 0x188);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, q) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, p) == 0x64);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, data) == 0xe0);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, LastMessageEventICreatedID) == 0xe8);
 FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, CombatCollisionDebugGraphics) == 0xec);

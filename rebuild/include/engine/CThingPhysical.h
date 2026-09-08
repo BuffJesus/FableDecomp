@@ -35,8 +35,8 @@ struct CThingPhysical {
     unsigned char _pad_0x58[0x4];                            // +0x58
     unsigned char _pad_0x5c[0x4];                            // +0x5c
     unsigned char _pad_0x60[0x4];                            // +0x60
-    long          f64;                                       // +0x64 retail-only (previous header)
-    long          f9c;                                       // +0x68 retail-only (previous header)
+    long          f64;                                       // +0x64 retail-only long (previous header)
+    unsigned char _pad_0x68[0x4];                            // +0x68
     unsigned char _pad_0x6c[0x4];                            // +0x6c
     unsigned char _pad_0x70[0x4];                            // +0x70
     unsigned char _pad_0x74[0x4];                            // +0x74
@@ -49,7 +49,7 @@ struct CThingPhysical {
     unsigned char _pad_0x90[0x4];                            // +0x90
     unsigned char _pad_0x94[0x4];                            // +0x94
     unsigned char _pad_0x98[0x4];                            // +0x98
-    unsigned char _pad_0x9c[0x4];                            // +0x9c
+    float         f9c;                                       // +0x9c retail-only float (CThingPhysical_SetScale_006a4b80.cpp)
     unsigned char _pad_0xa0[0x4];                            // +0xa0
     unsigned char _pad_0xa4[0x4];                            // +0xa4
     unsigned char HealthOverTimeEffects[0xc];                // +0xa8 list<CThingPhysical::CHealthOverTimeHelper,std::allocator<CThingPhysical::CHealthOverTimeHelper>_>
@@ -66,7 +66,7 @@ struct CThingPhysical {
 FABLE_STATIC_ASSERT(sizeof(CThingPhysical) == 0xd8);
 FABLE_STATIC_ASSERT(offsetof(CThingPhysical, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CThingPhysical, f64) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CThingPhysical, f9c) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CThingPhysical, f9c) == 0x9c);
 FABLE_STATIC_ASSERT(offsetof(CThingPhysical, HealthOverTimeEffects) == 0xa8);
 FABLE_STATIC_ASSERT(offsetof(CThingPhysical, Scale) == 0xb4);
 FABLE_STATIC_ASSERT(offsetof(CThingPhysical, PLastCreator) == 0xb8);

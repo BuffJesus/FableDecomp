@@ -133,7 +133,7 @@ struct CGraphicDataBank {
     unsigned char    _pad_0x1d4[0x4];                        // +0x1d4
     unsigned char    _pad_0x1d8[0x4];                        // +0x1d8
     unsigned char    _pad_0x1dc[0x4];                        // +0x1dc
-    void*            f1e0;                                   // +0x1e0 retail-only (CGraphicDataBank_NotifyEntryRemoved_009fd970.cpp)
+    void*            f1e0;                                   // +0x1e0 retail-only char* (CGraphicDataBank_NotifyEntryRemoved_009fd970.cpp)
     unsigned char    _pad_0x1e4[0x4];                        // +0x1e4
     unsigned char    _pad_0x1e8[0x4];                        // +0x1e8
     unsigned char    _pad_0x1ec[0x4];                        // +0x1ec

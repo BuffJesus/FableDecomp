@@ -851,8 +851,8 @@ struct CJoystickDX {
     unsigned char         _pad_0xd0c[0x4];                   // +0xd0c
     unsigned char         _pad_0xd10[0x4];                   // +0xd10
     unsigned char         _pad_0xd14[0x4];                   // +0xd14
-    long                  f;                                 // +0xd18 retail-only (previous header)
-    long                  f_2;                               // +0xd1c retail-only (previous header)
+    long                  f;                                 // +0xd18 retail-only long (previous header)
+    long                  f_2;                               // +0xd1c retail-only long (previous header)
     float                 XAxis;                             // +0xd20
     float                 YAxis;                             // +0xd24
     float                 XAxis2;                            // +0xd28

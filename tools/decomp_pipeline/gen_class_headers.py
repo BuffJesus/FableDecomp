@@ -510,14 +510,14 @@ def generate(classes: list[str], donor: dict[str, DonorStruct], mf: label_trust.
         # of conflicting files is far more often a mislabelled function than a layout change;
         # the header is emitted and those files are listed so the rewriter skips them.
         quarantine = size_bad or (bad_files and len(bad_files) >= max(1, len(good_files)))
+        status = ("clean" if not bad else
+                  f"{len(bad)} conflict(s) in {len(bad_files)} file(s) vs {len(good_files)} agreeing")
         # Pin: landed files already retyped onto this header include it by path. Quarantining
         # it now would break their build, so it stays in engine/ and the conflict is a note.
         pinned = sum(1 for f in files if f'engine/{cls}.h' in Path(f).read_text(encoding="utf-8", errors="ignore"))
         if pinned and quarantine:
             quarantine = False
             status += f"; PINNED by {pinned} retyped file(s) despite conflicts"
-        status = ("clean" if not bad else
-                  f"{len(bad)} conflict(s) in {len(bad_files)} file(s) vs {len(good_files)} agreeing")
         text = emit_header(cls, d, emitted, fwd, used_n, status)
         named = sum(1 for e in emitted if not e.is_pad and e.kind != "vptr")
         if quarantine:

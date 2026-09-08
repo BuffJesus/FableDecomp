@@ -38,7 +38,7 @@ struct CThingVillageDef {
     unsigned char _pad_0x64[0x4];                            // +0x64
     unsigned char _pad_0x68[0x4];                            // +0x68
     unsigned char _pad_0x6c[0x4];                            // +0x6c
-    int           member70;                                  // +0x70 retail-only (CThingVillageDef_Transfer_00454f5f.cpp)
+    int           member70;                                  // +0x70 retail-only int (CThingVillageDef_Transfer_00454f5f.cpp)
     unsigned char Graphic[0x10];                             // +0x74 CEngineGraphic
 };
 #pragma pack(pop)

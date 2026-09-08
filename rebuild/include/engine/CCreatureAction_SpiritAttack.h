@@ -13,8 +13,8 @@ struct CCreatureAction_SpiritAttack {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
-    long          field10;                                   // +0x0c retail-only (previous header)
-    unsigned char _pad_0x10[0x4];                            // +0x10
+    unsigned char _pad_0x0c[0x4];                            // +0x0c
+    int           field10;                                   // +0x10 retail-only int (CCreatureActionSpiritAttack_InitialiseCCreatureActionSpiritAttackUAEXXZ_008545f0.cpp)
     unsigned char _pad_0x14[0x4];                            // +0x14
     unsigned char _pad_0x18[0x4];                            // +0x18
     unsigned char _pad_0x1c[0x4];                            // +0x1c
@@ -62,7 +62,7 @@ struct CCreatureAction_SpiritAttack {
 
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SpiritAttack) == 0xc4);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritAttack, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritAttack, field10) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritAttack, field10) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritAttack, PTarget) == 0xb4);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritAttack, PParticleEmitter) == 0xbc);
 

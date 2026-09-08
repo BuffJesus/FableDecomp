@@ -25,7 +25,7 @@ struct CBalverineBattleDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    int           fieldA;                                    // +0x3c retail-only (CBalverineBattleDef_TransferCBalverineBattleDefUAEXAAVCPersistContex_004e3c24.cpp)
+    int           fieldA;                                    // +0x3c retail-only int (CBalverineBattleDef_TransferCBalverineBattleDefUAEXAAVCPersistContex_004e3c24.cpp)
     float         SecondsBetweenLunges;                      // +0x40
     float         LungeAttackDamage;                         // +0x44
     float         TimeInTrees;                               // +0x48

@@ -25,7 +25,7 @@ struct CEngineLocalDetailLayerDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    long          m3c;                                       // +0x3c retail-only (CEngineLocalDetailLayerDef_TransferCEngineLocalDetailLayerDefUAEXAAVCPersis_00477cb1.cpp)
+    long          m3c;                                       // +0x3c retail-only SubA (CEngineLocalDetailLayerDef_TransferCEngineLocalDetailLayerDefUAEXAAVCPersis_00477cb1.cpp)
     unsigned char SpacingFromLayer[0x10];                    // +0x40 vector<float,std::allocator<float>_>
     unsigned char Objects[0x10];                             // +0x50 vector<CEngineLocalDetailObjectDef,std::allocator<CEngineLocalDetailObjectDef>_>
 };

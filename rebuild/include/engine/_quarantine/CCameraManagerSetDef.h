@@ -25,7 +25,7 @@ struct CCameraManagerSetDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    int           f3c;                                       // +0x3c retail-only (CCameraManagerSetDef_TransferCCameraManagerSetDefUAEXAAVCPersistConte_00456818.cpp)
+    int           f3c;                                       // +0x3c retail-only int (CCameraManagerSetDef_TransferCCameraManagerSetDefUAEXAAVCPersistConte_00456818.cpp)
     long          CameraManagerMain;                         // +0x40
     long          CameraManagerCombat;                       // +0x44
     long          CameraManagerPCMain;                       // +0x48

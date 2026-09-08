@@ -25,7 +25,7 @@ struct CObjectFamilyDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    long          sub;                                       // +0x3c retail-only (CObjectFamilyDef_Copy_004611d6.cpp)
+    long          sub;                                       // +0x3c retail-only SubDef (CObjectFamilyDef_Copy_004611d6.cpp)
     unsigned char Objects[0x10];                             // +0x40 vector<CObjectFamilyEntry,std::allocator<CObjectFamilyEntry>_>
 };
 #pragma pack(pop)

@@ -25,7 +25,7 @@ struct CSimBuildingDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    int           fieldA;                                    // +0x3c retail-only (CSimBuildingDef_TransferCSimBuildingDefUAEXAAVCPersistContextZ_00459704.cpp)
+    int           fieldA;                                    // +0x3c retail-only int (CSimBuildingDef_TransferCSimBuildingDefUAEXAAVCPersistContextZ_00459704.cpp)
     long          Property;                                  // +0x40
     long          WorkSpaces;                                // +0x44
     long          LiveSpaces;                                // +0x48

@@ -12,8 +12,8 @@
 struct CCreatureAction_SpiritReturnToHero {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0xc];                            // +0x04
-    long          field_10;                                  // +0x10 retail-only (previous header)
-    long          field_14;                                  // +0x14 retail-only (previous header)
+    long          field_10;                                  // +0x10 retail-only long (previous header)
+    long          field_14;                                  // +0x14 retail-only long (previous header)
     unsigned char _pad_0x18[0x9c];                           // +0x18
 };
 #pragma pack(pop)

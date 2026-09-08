@@ -15,7 +15,7 @@ struct CYesNo;
 #pragma pack(push, 1)
 struct CTCInGameMenu {
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
-    long             field4;                                 // +0x04 retail-only (previous header)
+    long             field4;                                 // +0x04 retail-only long (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08
     bool             InGameMenuOpen;                         // +0x0c
     unsigned char    _pad_0x0d[0x3];                         // +0x0d

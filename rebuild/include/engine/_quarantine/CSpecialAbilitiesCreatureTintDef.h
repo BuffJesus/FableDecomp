@@ -25,7 +25,7 @@ struct CSpecialAbilitiesCreatureTintDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    int           fieldA;                                    // +0x3c retail-only (CSpecialAbilitiesCreatureTintDef_TransferCSpecialAbilitiesCreatureTintDefUAEXAAVC_0046a7e0.cpp)
+    int           fieldA;                                    // +0x3c retail-only int (CSpecialAbilitiesCreatureTintDef_TransferCSpecialAbilitiesCreatureTintDefUAEXAAVC_0046a7e0.cpp)
     float         FadeInTimeSecs;                            // +0x40
     float         FadeOutTimeSecs;                           // +0x44
     unsigned char Color[0x10];                               // +0x48 vector<long,std::allocator<long>_>

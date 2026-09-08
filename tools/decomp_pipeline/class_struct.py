@@ -72,6 +72,9 @@ def choose_this_struct(txt, cls):
 THIS_FASTCALL_RE = re.compile(r"__fastcall\s+\w+\s*\(\s*(?:const\s+)?([A-Za-z_]\w*)\s*\*")
 
 PACK1_RE = re.compile(r"#pragma\s+pack\s*\(\s*push\s*,\s*1\s*\)|#pragma\s+pack\s*\(\s*1\s*\)")
+VIRTUAL_METHOD_RE = re.compile(
+    r"\bvirtual\b[^;{}]*\([^;{}]*\)\s*(?:const\s*)?(?:=\s*0\s*)?;"
+)
 
 def is_packed(text, struct_start):
     """True when a `#pragma pack(push,1)` / `pack(1)` is open at struct_start."""
@@ -118,7 +121,11 @@ def parse_struct(body, packed=True):
     non-pad members.  `packed=False` applies VC7.1 natural alignment (align = min(size,4))
     to member offsets and the total; the previous behaviour assumed pack(1) everywhere,
     which mis-offsets every un-packed local struct with mixed member widths."""
-    off = 0
+    # A polymorphic local model has an implicit four-byte VC7.1 vptr even when the
+    # author did not spell a data member for it.  Starting at zero shifted every
+    # recovered field in such structs backward by four bytes.  An explicitly
+    # declared `vtbl` member is still ordinary data and follows this implicit vptr.
+    off = 4 if VIRTUAL_METHOD_RE.search(body) else 0
     fields = []
     max_align = 1
     for m in MEMBER_RE.finditer(body):

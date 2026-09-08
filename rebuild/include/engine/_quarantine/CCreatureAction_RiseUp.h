@@ -79,7 +79,7 @@ struct CCreatureAction_RiseUp {
     unsigned char _pad_0x108[0x4];                           // +0x108
     unsigned char _pad_0x10c[0x4];                           // +0x10c
     unsigned char _pad_0x110[0x4];                           // +0x110
-    unsigned char f;                                         // +0x114 retail-only (CCreatureActionRiseUp_IsToFaceTargetAtStart_0074db70.cpp)
+    unsigned char f;                                         // +0x114 retail-only unsigned char (CCreatureActionRiseUp_IsToFaceTargetAtStart_0074db70.cpp)
     unsigned char _pad_0x115[0x3];                           // +0x115
     unsigned char _pad_0x118[0x4];                           // +0x118
     unsigned char _pad_0x11c[0x4];                           // +0x11c

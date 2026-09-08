@@ -54,7 +54,7 @@ struct CCreatureAction_PerformExpression {
     unsigned char    _pad_0x9c[0x4];                         // +0x9c
     unsigned char    _pad_0xa0[0x4];                         // +0xa0
     unsigned char    _pad_0xa4[0x4];                         // +0xa4
-    long             p;                                      // +0xa8 retail-only (previous header)
+    long             p;                                      // +0xa8 retail-only long (previous header)
     unsigned char    _pad_0xac[0x4];                         // +0xac
     unsigned char    _pad_0xb0[0x4];                         // +0xb0
     CDefPointeeBase* PExpressionDef_Object;                  // +0xb4 CDefPointer<CExpressionDef_const_>::Object

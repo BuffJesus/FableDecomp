@@ -25,7 +25,7 @@ struct CFactionDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    long          a;                                         // +0x3c retail-only (CFactionDef_TransferCFactionDefUAEXAAVCPersistContextZ_004717a1.cpp)
+    long          a;                                         // +0x3c retail-only SubA (CFactionDef_TransferCFactionDefUAEXAAVCPersistContextZ_004717a1.cpp)
     unsigned char EnemyFactions[0x10];                       // +0x40 vector<CCharString,std::allocator<CCharString>_>
     unsigned char AlliedFactions[0x10];                      // +0x50 vector<CCharString,std::allocator<CCharString>_>
 };

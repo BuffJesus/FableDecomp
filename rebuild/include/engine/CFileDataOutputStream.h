@@ -13,7 +13,7 @@ struct CAFile;
 #pragma pack(push, 1)
 struct CFileDataOutputStream {
     void*   __vftable;                                       // +0x00 vptr, or first dword of a flattened base subobject
-    long    field4;                                          // +0x04 retail-only (previous header)
+    long    field4;                                          // +0x04 retail-only long (previous header)
     CAFile* File;                                            // +0x08
 };
 #pragma pack(pop)

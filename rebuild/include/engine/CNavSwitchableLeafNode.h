@@ -14,12 +14,12 @@ struct CNavSwitchableLeafNode {
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x3];                            // +0x0c
-    unsigned char m_disabled;                                // +0x0f retail-only (previous header)
-    unsigned char f_18;                                      // +0x10 retail-only (previous header)
-    unsigned char _pad_0x11[0x3];                            // +0x11
+    unsigned char m_disabled;                                // +0x0f retail-only unsigned char (previous header)
+    unsigned char _pad_0x10[0x4];                            // +0x10
     unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char _pad_0x18[0x4];                            // +0x18
-    unsigned char b1c;                                       // +0x1c retail-only (previous header)
+    unsigned char f_18;                                      // +0x18 retail-only unsigned char (CNavSwitchableLeafNode_HasNeighbours_00a76530.cpp)
+    unsigned char _pad_0x19[0x3];                            // +0x19
+    unsigned char b1c;                                       // +0x1c retail-only unsigned char (previous header)
     unsigned char _pad_0x1d[0x3];                            // +0x1d
     unsigned char UniqueIDsOpen[0x14];                       // +0x20 CVectorMap<unsigned___int64,bool,CKeyPairCompareLess<unsigned___int64,bool>_>
 };
@@ -28,7 +28,7 @@ struct CNavSwitchableLeafNode {
 FABLE_STATIC_ASSERT(sizeof(CNavSwitchableLeafNode) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CNavSwitchableLeafNode, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CNavSwitchableLeafNode, m_disabled) == 0xf);
-FABLE_STATIC_ASSERT(offsetof(CNavSwitchableLeafNode, f_18) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CNavSwitchableLeafNode, f_18) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CNavSwitchableLeafNode, b1c) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CNavSwitchableLeafNode, UniqueIDsOpen) == 0x20);
 

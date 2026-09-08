@@ -25,7 +25,7 @@ struct CSpecialAbilitiesDrainLifeDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    long          f0;                                        // +0x3c retail-only (CSpecialAbilitiesDrainLifeDef_Transfer_004724c2.cpp)
+    long          f0;                                        // +0x3c retail-only Field (CSpecialAbilitiesDrainLifeDef_Transfer_004724c2.cpp)
     unsigned char AmountOfHealthSucked[0x10];                // +0x40 vector<float,std::allocator<float>_>
     unsigned char NumEffects[0x10];                          // +0x50 vector<long,std::allocator<long>_>
     unsigned char SpellRange[0x10];                          // +0x60 vector<float,std::allocator<float>_>

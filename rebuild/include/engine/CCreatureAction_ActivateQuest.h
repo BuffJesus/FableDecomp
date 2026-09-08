@@ -37,7 +37,7 @@ struct CCreatureAction_ActivateQuest {
     unsigned char    _pad_0x58[0x4];                         // +0x58
     unsigned char    _pad_0x5c[0x4];                         // +0x5c
     unsigned char    _pad_0x60[0x3];                         // +0x60
-    unsigned char    f;                                      // +0x63 retail-only (previous header)
+    unsigned char    f;                                      // +0x63 retail-only unsigned char (previous header)
     unsigned char    _pad_0x64[0x4];                         // +0x64
     unsigned char    _pad_0x68[0x4];                         // +0x68
     unsigned char    _pad_0x6c[0x4];                         // +0x6c

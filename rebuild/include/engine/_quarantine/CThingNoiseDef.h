@@ -38,7 +38,7 @@ struct CThingNoiseDef {
     unsigned char _pad_0x64[0x4];                            // +0x64
     unsigned char _pad_0x68[0x4];                            // +0x68
     unsigned char _pad_0x6c[0x4];                            // +0x6c
-    long          member;                                    // +0x70 retail-only (CThingNoiseDef_Copy_00463923.cpp)
+    long          member;                                    // +0x70 retail-only SubMember (CThingNoiseDef_Copy_00463923.cpp)
     unsigned char Noise[0x34];                               // +0x74 CTCNoiseDef
 };
 #pragma pack(pop)

@@ -13,7 +13,7 @@ struct CDefPointeeBase;
 #pragma pack(push, 1)
 struct CTCTargeted {
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
-    long             obj;                                    // +0x04 retail-only (previous header)
+    long             obj;                                    // +0x04 retail-only long (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08
     unsigned long    TargetingFlags;                         // +0x0c
     bool             Targetable;                             // +0x10

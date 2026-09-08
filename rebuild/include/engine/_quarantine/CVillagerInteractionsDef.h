@@ -25,7 +25,7 @@ struct CVillagerInteractionsDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    int           fieldA;                                    // +0x3c retail-only (CVillagerInteractionsDef_TransferCVillagerInteractionsDefUAEXAAVCPersistC_00456f27.cpp)
+    int           fieldA;                                    // +0x3c retail-only int (CVillagerInteractionsDef_TransferCVillagerInteractionsDefUAEXAAVCPersistC_00456f27.cpp)
     long          Animation1_TablePos;                       // +0x40 CDefString::TablePos
     long          Animation2_TablePos;                       // +0x44 CDefString::TablePos
     float         Distance;                                  // +0x48

@@ -20,7 +20,7 @@ struct CCombatSequence_BattleCharge {
     unsigned char _pad_0x1c[0x4];                            // +0x1c
     unsigned char _pad_0x20[0x4];                            // +0x20
     unsigned char _pad_0x24[0x4];                            // +0x24
-    long          f28;                                       // +0x28 retail-only (previous header)
+    long          f28;                                       // +0x28 retail-only long (previous header)
     long          m_frameOfLastUse;                          // +0x2c
 };
 #pragma pack(pop)

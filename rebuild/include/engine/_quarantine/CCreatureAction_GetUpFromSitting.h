@@ -14,8 +14,8 @@ struct CCreatureAction_GetUpFromSitting {
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
-    int           m_a;                                       // +0x10 retail-only (CCreatureActionGetUpFromSitting_OnAnimationLoadedCCreatureActionGetUpFromSitting_008b6530.cpp)
-    int           m_b;                                       // +0x14 retail-only (CCreatureActionGetUpFromSitting_OnAnimationLoadedCCreatureActionGetUpFromSitting_008b6530.cpp)
+    int           m_a;                                       // +0x10 retail-only int (CCreatureActionGetUpFromSitting_OnAnimationLoadedCCreatureActionGetUpFromSitting_008b6530.cpp)
+    int           m_b;                                       // +0x14 retail-only int (CCreatureActionGetUpFromSitting_OnAnimationLoadedCCreatureActionGetUpFromSitting_008b6530.cpp)
     unsigned char _pad_0x18[0x4];                            // +0x18
     unsigned char _pad_0x1c[0x4];                            // +0x1c
     unsigned char _pad_0x20[0x4];                            // +0x20

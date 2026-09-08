@@ -25,7 +25,7 @@ struct CAttackPatternDef {
     unsigned char _pad_0x30[0x4];                            // +0x30
     unsigned char _pad_0x34[0x4];                            // +0x34
     unsigned char _pad_0x38[0x4];                            // +0x38
-    long          sub;                                       // +0x3c retail-only (CAttackPatternDef_Copy_004611a1.cpp)
+    long          sub;                                       // +0x3c retail-only SubDef (CAttackPatternDef_Copy_004611a1.cpp)
     unsigned char AttackPattern[0x10];                       // +0x40 vector<long,std::allocator<long>_>
 };
 #pragma pack(pop)

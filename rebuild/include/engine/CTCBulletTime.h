@@ -14,9 +14,8 @@ struct CEnginePrimitive2DSprite;
 #pragma pack(push, 1)
 struct CTCBulletTime {
     void*                     __vftable;                     // +0x00 vptr, or first dword of a flattened base subobject
-    long                      f4;                            // +0x04 retail-only (previous header)
-    unsigned char             f54;                           // +0x08 retail-only (previous header)
-    unsigned char             _pad_0x09[0x3];                // +0x09
+    long                      f4;                            // +0x04 retail-only long (previous header)
+    unsigned char             _pad_0x08[0x4];                // +0x08
     long                      BulletTimeRemainingTicks;      // +0x0c
     long                      BulletTimeAbilityLevel;        // +0x10
     CEnginePrimitive2DSprite* DisplacementMask;              // +0x14
@@ -41,7 +40,6 @@ struct CTCBulletTime {
 FABLE_STATIC_ASSERT(sizeof(CTCBulletTime) == 0x58);
 FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, f4) == 0x4);
-FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, f54) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, BulletTimeRemainingTicks) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, BulletTimeAbilityLevel) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCBulletTime, DisplacementMask) == 0x14);

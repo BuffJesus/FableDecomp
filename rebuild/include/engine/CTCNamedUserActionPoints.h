@@ -23,7 +23,7 @@ struct CTCNamedUserActionPoints {
     unsigned char _pad_0x28[0x4];                            // +0x28
     unsigned char _pad_0x2c[0x4];                            // +0x2c
     unsigned char _pad_0x30[0x4];                            // +0x30
-    long          arr;                                       // +0x34 retail-only (previous header)
+    long          arr;                                       // +0x34 retail-only long (previous header)
     unsigned char _pad_0x38[0x4];                            // +0x38
     unsigned char Names[0x10];                               // +0x3c vector<CCharString,std::allocator<CCharString>_>
 };

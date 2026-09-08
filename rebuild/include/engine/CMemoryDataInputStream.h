@@ -11,11 +11,11 @@
 #pragma pack(push, 1)
 struct CMemoryDataInputStream {
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
-    long  position;                                          // +0x04 retail-only (previous header)
-    long  sourceLength;                                      // +0x08 retail-only (previous header)
-    long  chunkBase;                                         // +0x0c retail-only (previous header)
-    long  chunkPosition;                                     // +0x10 retail-only (previous header)
-    long  chunkLength;                                       // +0x14 retail-only (previous header)
+    long  position;                                          // +0x04 retail-only long (previous header)
+    long  sourceLength;                                      // +0x08 retail-only long (previous header)
+    long  chunkBase;                                         // +0x0c retail-only long (previous header)
+    long  chunkPosition;                                     // +0x10 retail-only long (previous header)
+    long  chunkLength;                                       // +0x14 retail-only long (previous header)
     void* StreamSource;                                      // +0x18 uchar *
 };
 #pragma pack(pop)

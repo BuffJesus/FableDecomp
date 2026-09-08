@@ -11,7 +11,7 @@
 #pragma pack(push, 1)
 struct CAnimComponentStrikeSpeedMultiplier {
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
-    long  field4;                                            // +0x04 retail-only (CAnimComponentStrikeSpeedMultiplier_Alloc_005df8e0.cpp)
+    long  field4;                                            // +0x04 retail-only ULONG (CAnimComponentStrikeSpeedMultiplier_Alloc_005df8e0.cpp)
     float AnimationSpeedMultiplier;                          // +0x08
 };
 #pragma pack(pop)

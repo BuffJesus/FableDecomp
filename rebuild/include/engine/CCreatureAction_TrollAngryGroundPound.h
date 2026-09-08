@@ -12,7 +12,7 @@
 struct CCreatureAction_TrollAngryGroundPound {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
-    long          sub;                                       // +0x08 retail-only (previous header)
+    long          sub;                                       // +0x08 retail-only long (previous header)
     unsigned char _pad_0x0c[0x120];                          // +0x0c
 };
 #pragma pack(pop)

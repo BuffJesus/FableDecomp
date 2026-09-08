@@ -52,11 +52,11 @@ struct CCreatureAction_PlayAnimation {
     unsigned char _pad_0x9c[0x4];                            // +0x9c
     unsigned char _pad_0xa0[0x4];                            // +0xa0
     unsigned char _pad_0xa4[0x4];                            // +0xa4
-    unsigned char f;                                         // +0xa8 retail-only (previous header)
-    unsigned char f_2;                                       // +0xa9 retail-only (previous header)
+    unsigned char f;                                         // +0xa8 retail-only unsigned char (previous header)
+    unsigned char f_2;                                       // +0xa9 retail-only unsigned char (previous header)
     unsigned char _pad_0xaa[0x2];                            // +0xaa
     unsigned char _pad_0xac[0x4];                            // +0xac
-    unsigned char f_3;                                       // +0xb0 retail-only (previous header)
+    unsigned char f_3;                                       // +0xb0 retail-only unsigned char (previous header)
     unsigned char _pad_0xb1[0x3];                            // +0xb1
     bool          UseAnimationMovement;                      // +0xb4
     bool          UsePhysics;                                // +0xb5

@@ -11,12 +11,12 @@
 #pragma pack(push, 1)
 struct CModeDragonBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    long          holder;                                    // +0x04 retail-only (previous header)
+    long          holder;                                    // +0x04 retail-only long (previous header)
     unsigned char _pad_0x08[0x4];                            // +0x08
     unsigned char _pad_0x0c[0x4];                            // +0x0c
     unsigned char _pad_0x10[0x4];                            // +0x10
     unsigned char _pad_0x14[0x4];                            // +0x14
-    unsigned char active;                                    // +0x18 retail-only (previous header)
+    unsigned char active;                                    // +0x18 retail-only unsigned char (previous header)
     unsigned char _pad_0x19[0x3];                            // +0x19
     unsigned char Filter[0xc];                               // +0x1c CAnimFilterOfGroup
     unsigned char PTarget[0x8];                              // +0x28 CIntelligentPointer<CThing>
