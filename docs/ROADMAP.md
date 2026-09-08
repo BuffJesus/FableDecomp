@@ -10,7 +10,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [ ] Typed shared headers: 2026-09-08 `--all-trusted --compile-check` = 961 compiling headers (261 layout-quarantined plus one compile failure); automatic passes plus the parity-gated manual tail have retyped 656 landed TUs onto PDB-named headers. The latest cleanup converted thirteen more TUs, including five `CEnvironment::Peek*` accessors whose retail/PDB layout delta is now centralized in `fable_environment_retail.h`. `VTABLE_TYPED` (37→0), `VIRTUAL_THIS` (54→0), non-source-failure `PARITY_CHANGED` (7→0), `BEHAV_FAIL` (8→0), source-failure `PARITY_CHANGED` (43→0), and `AMBIG_ALIGN` (10→0) are closed. — `tools/decomp_pipeline/`
 - [x] 2026-09-07 Aeon's 12 new Lua ports ingested (20 packages, 71 scripts; foundation audit 15/18) — `docs/scripts/AEON_LUA_PORTS.md`
 - [ ] Port the 12 FSE 6.9.26 bindings LUAGameflow needs into ForgeFSE-retail-shadow; add package→native-name aliases so the new seeds correlate (8/20 today) — `docs/scripts/AEON_LUA_PORTS.md`
-- [ ] Keep the parity crawl moving through batch 173 (forty-three readable MATCH/RELOCATION_MATCH landings on 2026-09-08; catalog 18,674 entries) — `docs/pipeline/FULL_DECOMP.md`
+- [ ] Keep the parity crawl moving through batch 178 (forty-eight readable MATCH/RELOCATION_MATCH landings on 2026-09-08; catalog 18,679 entries) — `docs/pipeline/FULL_DECOMP.md`
 - [ ] Live-test ForgeFSE-retail-shadow branch `feat/upstream-fse-2026-09-02` (commit `3f417ee`) in-game: CreateThread script + region unload — user-driven, needs Fable open
 - [ ] Merge `feat/script-recovery-marathon` into `main` once CI (`docs-consistency`) is green on the branch
 

@@ -131113,6 +131113,41 @@ $catalog = @(
         TestSource = '00/ac/C3DMeshFileMapChunk_GetChunkDescription_00ac1290_test.cpp'
         PassPattern = 'C3DMESHFILEMAPCHUNK_DESCRIPTION PASS'
     }
+    [pscustomobject]@{
+        Address = '006d6340'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_ApplyPenaltyForDeath_006d6340.cpp'
+        TestSource = '00/6d/CTCHeroExperience_ApplyPenaltyForDeath_006d6340_test.cpp'
+        PassPattern = 'HERO_EXPERIENCE_DEATH_PENALTY PASS'
+    }
+    [pscustomobject]@{
+        Address = '008023c0'
+        Module = 'CTCTargetingPlayer'
+        Source = '00/80/CTCTargetingPlayer_SetAsTargetNextThingInDirection_008023c0.cpp'
+        TestSource = '00/80/CTCTargetingPlayer_SetAsTargetNextThingInDirection_008023c0_test.cpp'
+        PassPattern = 'TARGET_NEXT_DIRECTION PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ea4f0'
+        Module = 'CConsoleCommandLine'
+        Source = '00/9e/CConsoleCommandLine_Reset_009ea4f0.cpp'
+        TestSource = '00/9e/CConsoleCommandLine_Reset_009ea4f0_test.cpp'
+        PassPattern = 'CONSOLE_COMMAND_LINE_RESET PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048da30'
+        Module = 'CFadeInFadeOutBase'
+        Source = '00/48/CFadeInFadeOutBase_IsOpen_0048da30.cpp'
+        TestSource = '00/48/CFadeInFadeOutBase_IsOpen_0048da30_test.cpp'
+        PassPattern = 'FADE_IS_OPEN PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf6410'
+        Module = 'CLandscapeBackgroundLoadTask'
+        Source = '00/bf/CLandscapeBackgroundLoadTask_ReleaseFileBlockLoad_00bf6410.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundLoadTask_ReleaseFileBlockLoad_00bf6410_test.cpp'
+        PassPattern = 'BACKGROUND_LOAD_RELEASE PASS'
+    }
 )
 
 $requestedAddresses = @(

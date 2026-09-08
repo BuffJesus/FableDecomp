@@ -72,3 +72,11 @@ and the RTTI-confirmed `CVertexShaderConstantLayoutEmpty::PeekName` accessor. Ba
 added ten PDB-owned animation/mesh file chunk `GetChunkDescription` virtuals. All thirteen
 pass behavior fixtures and relocation parity. The surrounding generic `GetActionName`
 cluster and register/prototype-conflicting helpers were reviewed but not landed.
+
+Batches 174 through 178 added five more functions. `CTCHeroExperience::ApplyPenaltyForDeath`
+and `CFadeInFadeOutBase::IsOpen` are exact matches using original state names.
+`CTCTargetingPlayer::SetAsTargetNextThingInDirection`, `CConsoleCommandLine::Reset`, and
+`CLandscapeBackgroundLoadTask::ReleaseFileBlockLoad` are relocation matches with typed
+state and independently identified callees. Layout-conflicting landscape, quadric, and
+definition aliases were rejected; the readable `FtoL` model remains unlanded because it
+does not reproduce retail's explicit x87 store sequence.
