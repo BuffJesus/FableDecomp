@@ -1,13 +1,8 @@
-struct CNavSwitchableLeafNode {
-  char pad0[0xf];
-  unsigned char f_0f;
-  char pad1[0x18-0x10];
-  unsigned char f_18;
-};
 
+#include "engine/CNavSwitchableLeafNode.h"  // retyped onto the PDB layout; byte parity re-verified
 bool __fastcall CNavSwitchableLeafNode_HasNeighbours(CNavSwitchableLeafNode* self)
 {
-  if (!self->f_0f)
+  if (!self->m_disabled)
     return self->f_18 != 0;
   return false;
 }
