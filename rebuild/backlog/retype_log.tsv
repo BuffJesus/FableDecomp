@@ -12335,3 +12335,7 @@ address	class	file	action	baseline	new_status	behaviour	reason
 004ab130	CScriptThing	CScriptThing_IsAliveCScriptThingUBENXZ_004ab130.cpp	applied-manual	MATCH	MATCH	PASS	APPLIED_MANUAL
 004ab150	CScriptThing	CScriptThing_IsNullCScriptThingUBENXZ_004ab150.cpp	applied-manual	MATCH	MATCH	PASS	APPLIED_MANUAL
 004fb2e0	CWorldMap	CWorldMap_IsMapChangeable_004fb2e0.cpp	applied-manual	MATCH	MATCH	PASS	APPLIED_MANUAL
+00993e30	CDataOutputStream	CDataOutputStream_WriteEBOOL_00993e30.cpp	applied-manual	MATCH	MATCH	PASS	APPLIED_MANUAL
+00b23990	CEngine	CEngine_Release_00b23990.cpp	applied-manual	MATCH	MATCH	PASS	APPLIED_MANUAL
+00b232e0	CIEngine	CIEngine_Release_00b232e0.cpp	applied-manual	MATCH	MATCH	PASS	APPLIED_MANUAL
+00b5ead0	CEngineScreenEffectRadialBlurRenderer	CEngineScreenEffectRadialBlurRenderer_GetConsoleEnableFunctionNameCEngineScreenEffectR_00b5ead0.cpp	applied-manual	RELOCATION_MATCH	RELOCATION_MATCH	PASS	APPLIED_MANUAL
