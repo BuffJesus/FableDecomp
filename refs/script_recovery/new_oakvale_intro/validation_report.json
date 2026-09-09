@@ -1254,6 +1254,22 @@
       "trace": "match"
     },
     {
+      "events": 31,
+      "fixture": "entity_affair_woman_busy_chat.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 33,
+      "fixture": "entity_affair_woman_hit_reaction.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 5,
       "fixture": "entity_affair_woman_init.json",
       "function": "Init",
@@ -1264,6 +1280,14 @@
     {
       "events": 1,
       "fixture": "entity_affair_woman_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 17,
+      "fixture": "entity_affair_woman_receives_kiss.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1831,8 +1855,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 79,
-    "fixturesPassed": 79,
+    "fixtures": 82,
+    "fixturesPassed": 82,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

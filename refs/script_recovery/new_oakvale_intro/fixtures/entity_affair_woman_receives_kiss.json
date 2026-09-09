@@ -1,0 +1,16 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairWoman.lua","expect":["GetStateBool","IsPerformingScriptTask","PlayAnimation","SetStateBool","ReleaseControl"],"note":"the lover consumes the husband's ReceiveKiss handshake only while idle, plays the retail RECEIVE_KISS animation, clears the flag, and releases main control on termination"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true],
+  "Quest.GetThingWithScriptName(NOVI_AffairWife)":[{"handle":"wife","scope":"Entity"}],
+  "Quest.GetThingWithScriptName(NOVI_AffairMan)":[{"handle":"husband","scope":"Entity"}],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":0,"y":0,"z":0}],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Entity.IsTalkedToByHero":[false],
+  "Quest.GetStateBool(ReceiveKiss)":[true],
+  "Quest.GetStateBool(ReceiveHug)":[false],
+  "Entity.IsPerformingScriptTask":[false],
+  "Quest.IsDistanceBetweenThingsUnder":[false]
+}

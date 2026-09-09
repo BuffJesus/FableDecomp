@@ -1,0 +1,17 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairWoman.lua","expect":["ClearAllActions","ClearCommands","StartMovieSequence","EntitySetFacingAngleTowardsThing","Speak","SetStateBool","EndMovieSequence","ReleaseControl"],"note":"talking to the lover raises TalkingToWoman, clears her actions, faces the hero for BUSY, turns the inferred husband target back toward her, restores the flag/movie state, and releases control"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true,true],
+  "Quest.GetThingWithScriptName(NOVI_AffairWife)":[{"handle":"wife","scope":"Entity"}],
+  "Quest.GetThingWithScriptName(NOVI_AffairMan)":[{"handle":"husband","scope":"Entity"}],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":0,"y":0,"z":0}],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Entity.IsTalkedToByHero":[true],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.GetHealth":[100],
+  "Quest.GetStateBool(ReceiveKiss)":[false],
+  "Quest.GetStateBool(ReceiveHug)":[false],
+  "Quest.IsDistanceBetweenThingsUnder":[false]
+}

@@ -42,7 +42,7 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 79/79 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 82/82 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
@@ -85,6 +85,10 @@ Affair-husband coverage now distinguishes the first near and ranged exchanges: n
 the reversed woman/man `_10` pair and sets `HeroDiscoveredInfidelity`, while ranged distance emits
 the screen-message `_10` pair without discovery. Deterministic random inputs separately verify the
 `ReceiveKiss`/`GIVE_KISS` and `ReceiveHug`/`GIVE_HUG` handshakes.
+Affair-woman coverage consumes and clears the matching `ReceiveKiss` flag, traces a direct-hit
+complaint and first-bad-deed path with the `TalkingToWoman` bracket restored, and verifies the
+`BUSY` talk interaction through action clearing, hero-facing speech, inferred husband-facing
+cleanup, movie teardown, and both nested/main control releases.
 
 The coverage manifest classifies 29 functions as implemented and traced, 17 as implemented
 with uncertain native arguments, 6 as lifecycle/data-only, no API-blocked functions, and

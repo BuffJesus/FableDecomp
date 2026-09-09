@@ -1,0 +1,19 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairWoman.lua","expect":["SetStateBool","StartMovieSequence","Speak","DisplayGameInfo","AddLogbookStoryEntryString","EndMovieSequence","ReleaseControl"],"note":"a direct hero hit raises TalkingToWoman during the complaint, records first violence as a bad deed, restores the flag and movie state, then releases main control on termination"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true,true],
+  "Quest.GetThingWithScriptName(NOVI_AffairWife)":[{"handle":"wife","scope":"Entity"}],
+  "Quest.GetThingWithScriptName(NOVI_AffairMan)":[{"handle":"husband","scope":"Entity"}],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":0,"y":0,"z":0}],
+  "Entity.MsgIsHitByHero":[true],
+  "Quest.GetHealth":[100],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true],
+  "Entity.IsTalkedToByHero":[false],
+  "Quest.GetStateBool(ReceiveKiss)":[false],
+  "Quest.GetStateBool(ReceiveHug)":[false],
+  "Quest.IsDistanceBetweenThingsUnder":[false]
+}

@@ -5,7 +5,7 @@
 | NOVI_AffairWife | Init | 0x00DB2A70 | 9 | `NewOakValeIntro/Entities/NOVI_AffairWife.lua` | entity_affair_wife_init | native-decompile | implemented-and-traced |
 | NOVI_AffairWife | Main | 0x00DB2B10 | 53 | `NewOakValeIntro/Entities/NOVI_AffairWife.lua` | entity_affair_wife_main_terminated, entity_affair_wife_reaches_argument | native-decompile | implemented (uncertain args) |
 | NOVI_AffairWoman | Init | 0x00DB1E80 | 5 | `NewOakValeIntro/Entities/NOVI_AffairWoman.lua` | entity_affair_woman_init | native-decompile | implemented-and-traced |
-| NOVI_AffairWoman | Main | 0x00DB1F00 | 37 | `NewOakValeIntro/Entities/NOVI_AffairWoman.lua` | entity_affair_woman_main_terminated, entity_affair_woman_runs_off | native-decompile | implemented (uncertain args) |
+| NOVI_AffairWoman | Main | 0x00DB1F00 | 37 | `NewOakValeIntro/Entities/NOVI_AffairWoman.lua` | entity_affair_woman_busy_chat, entity_affair_woman_hit_reaction, entity_affair_woman_main_terminated, entity_affair_woman_receives_kiss, entity_affair_woman_runs_off | native-decompile | implemented (uncertain args) |
 | NOVI_Barrel | Init | 0x00CDEBB0 | 0 | `NewOakValeIntro/Entities/NOVI_Barrel.lua` | - | native-decompile | not-applicable (retail body empty / data only) |
 | NOVI_Barrel | Main | 0x00DB7E10 | 8 | `NewOakValeIntro/Entities/NOVI_Barrel.lua` | entity_barrel_main_terminated, entity_barrel_pc_tutorial | native-decompile | implemented-and-traced |
 | NOVI_Barrel | OnPredicateFail | 0x00DB7DB0 | 2 | `NewOakValeIntro/Entities/NOVI_Barrel.lua` | entity_barrel_predicate_fail | native-decompile | implemented-and-traced |

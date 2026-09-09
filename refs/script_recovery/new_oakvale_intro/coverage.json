@@ -73,7 +73,10 @@
       "operations": 37,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
       "fixtures": [
+        "entity_affair_woman_busy_chat",
+        "entity_affair_woman_hit_reaction",
         "entity_affair_woman_main_terminated",
+        "entity_affair_woman_receives_kiss",
         "entity_affair_woman_runs_off"
       ],
       "evidence": "native-decompile",

@@ -1,0 +1,378 @@
+{
+  "events": [
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "NOVI_AffairWife"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NOVI_AffairMan"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHomePos",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetPos",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "TalkingToWoman",
+        true
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "StartMovieSequence",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        true
+      ],
+      "event": "api-call",
+      "name": "PauseAllNonScriptedEntities",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "GetHealth",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        "TEXT_QST_048_AFFAIRWOMAN_ON_HIT",
+        0,
+        false,
+        true,
+        false
+      ],
+      "event": "api-call",
+      "name": "Speak",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsPerformingScriptTask",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "BadDeedsPerformed"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BadDeedsPerformed",
+        1
+      ],
+      "event": "api-call",
+      "name": "SetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NewOakValeIntro: UNSUPPORTED retail call GiveHeroMorality(-deed)"
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GoodDeedsPerformed"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_048_SCRMSG_DID_FIRST_BAD_DEED"
+      ],
+      "event": "api-call",
+      "name": "DisplayGameInfo",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsGameInfoClickedPast",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_LOG_BASICS_MAP"
+      ],
+      "event": "api-call",
+      "name": "AddLogbookStoryEntryString",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "WhichBadDeedsPerformed_2",
+        true
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TalkingToWoman",
+        false
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        false
+      ],
+      "event": "api-call",
+      "name": "PauseAllNonScriptedEntities",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "ReleaseControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "EndMovieSequence",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "ReceiveKiss"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "ReceiveHug"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "wife",
+          "scope": "Entity"
+        },
+        5.0
+      ],
+      "event": "api-call",
+      "name": "IsDistanceBetweenThingsUnder",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "ReleaseControl",
+      "receiver": "me",
+      "scope": "Entity"
+    }
+  ],
+  "fixtures": {
+    "Entity.AcquireControl": [
+      true,
+      true
+    ],
+    "Entity.GetHomePos": [
+      {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    ],
+    "Entity.GetPos": [
+      {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    ],
+    "Entity.IsTalkedToByHero": [
+      false
+    ],
+    "Entity.MsgIsHitByHero": [
+      true
+    ],
+    "Quest.GetHealth": [
+      100
+    ],
+    "Quest.GetHero": [
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetStateBool(ReceiveHug)": [
+      false
+    ],
+    "Quest.GetStateBool(ReceiveKiss)": [
+      false
+    ],
+    "Quest.GetStateInt(BadDeedsPerformed)": [
+      0
+    ],
+    "Quest.GetStateInt(GoodDeedsPerformed)": [
+      0
+    ],
+    "Quest.GetThingWithScriptName(NOVI_AffairMan)": [
+      {
+        "handle": "husband",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetThingWithScriptName(NOVI_AffairWife)": [
+      {
+        "handle": "wife",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.IsDistanceBetweenThingsUnder": [
+      false
+    ],
+    "Quest.MsgIsGameInfoClickedPast": [
+      true
+    ],
+    "Quest.NewScriptFrame": [
+      true,
+      false
+    ]
+  },
+  "function": "Main",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+  "sourceSha256": "85880884e085e3fff57f32070c273b6119a44f1208fab0d5227c4df54bd21519"
+}
