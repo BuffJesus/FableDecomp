@@ -7,7 +7,6 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
-#include "CMatrix3x4.h"
 
 #pragma pack(push, 1)
 struct CEngineInternalPrimitiveStaticMesh {
@@ -39,10 +38,8 @@ struct CEngineInternalPrimitiveStaticMesh {
     unsigned char _pad_0x64[0x4];                            // +0x64
     unsigned char _pad_0x68[0x4];                            // +0x68
     unsigned char _pad_0x6c[0x4];                            // +0x6c
-    CMatrix3x4    ObjectTransform;                           // +0x70
+    unsigned char ObjectTransform[0x30];                     // +0x70 CMatrix3x4
     unsigned char RenderInfo[0xc];                           // +0xa0 CEngineRenderInfoStaticMesh
-
-    bool GetWorldPosition(C3DVector& worldPosition);
 };
 #pragma pack(pop)
 

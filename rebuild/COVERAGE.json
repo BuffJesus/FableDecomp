@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T20:53:31-06:00",
+  "generated_at": "2026-09-08T21:16:37-06:00",
   "catalog_functions": 49568,
   "manifest_rows": 57097,
   "modules": 3433,
@@ -30,7 +30,7 @@
   "landed_using_engine_header": 689,
   "generic_struct_decls": 4410,
   "matched_bytes_genuine": 394217,
-  "engine_headers_generated": 971,
+  "engine_headers_generated": 1019,
   "candidate_integrity_pass": 1066,
   "candidate_host_syntax_pass": 575
 }

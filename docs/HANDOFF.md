@@ -1,9 +1,9 @@
-# Resume here (one page) — updated 2026-09-07
+# Resume here (one page) — updated 2026-09-08
 
 ## State
-- Branch: `feat/script-recovery-marathon` (head `2e038aa`, clean tree, `main` == this head); `main` was fast-forwarded (519 commits) and pushed to `BuffJesus/FableDecomp` on 2026-09-07 — fast-forward it again after each checkpoint. Note: `git add` on this tree takes 1–6 minutes and HANGS if another process is writing under `rebuild/` (or a reserved-name file like `CON` exists); never run it concurrently with the header generator or retype.
+- Shared working branch: `feat/novi-script-recovery`; native parity checkpoints through `39538ff` and subsequent NewOakValeIntro work are present locally. Verify `git status`, `git log`, and the active branch before every checkpoint because the native and script-recovery lanes share this worktree. `main` and remote `feat/script-recovery-marathon` were both at `8d6ce97` before this handoff. Never stage broad paths: commit only explicit files so concurrent `refs/script_recovery/new_oakvale_intro/` work and line-ending-only header changes are preserved.
 - 22 old agent branches are now `archive/*` tags. Root scratch + `CON` removed. `LICENSE`, `CONTRIBUTING.md`, CI `docs-consistency` added.
-- Coverage (2026-08-28 dashboard): 8,082 byte-identical (16.3%), 18,579 functional-or-matching (37.5%) of 49,568; catalog is now 18,631 landed. Regenerate `rebuild/COVERAGE.md` before quoting numbers.
+- Coverage (2026-09-08 dashboard): 8,145 exact and 10,681 relocation matches among 18,870 compiled/behavior-tested candidates; 15,297 landed files are manifest-tracked, including 14,696 genuine sources. Regenerate `rebuild/COVERAGE.md` before quoting later numbers.
 
 ## Open these five first
 1. `docs/ROADMAP.md` — what is done / in flight / next (the only task list)
@@ -14,8 +14,8 @@
 
 ## Active lanes and their resume commands
 - Typed headers: `python tools/decomp_pipeline/gen_class_headers.py --all-trusted` (add `--compile-check`), then `python tools/decomp_pipeline/retype_landed.py --class CGameScriptInterface` (dry run; `--apply` only rewrites files that stay byte-exact). Log: `rebuild/backlog/retype_log.tsv`; headers: `rebuild/include/engine/` (`INDEX.tsv`, `RECONCILE.tsv`, `_quarantine/`).
-- Parity crawl: batches through 227 are reviewed and batch 228 is active in `work/crawl_batch155`; 202 readable functions landed on 2026-09-08. Continue evidence review; do not accept propagated labels where the body contradicts the PDB layout or prototype. Details: `docs/journal/2026-09/PARITY_CRAWL_2026-09-08.md`.
-- Header gate: 963 trusted headers generated; 962 compile, 261 remain layout-quarantined, and `CGameDefinitionManager` remains the single compile quarantine.
+- Parity crawl: batches through 377 are reviewed and ledgered in `work/crawl_batch155`; generate batch 378 next with `next_smallest.py`. Current totals are 18,870 compiled/behavior-tested, 8,145 exact, 10,681 relocation matches, and 394,217 genuine retail bytes matched. Continue evidence review; use PDB names for readability but treat retail offsets, calling conventions, behavior, and bytes as authoritative. Details: `docs/journal/2026-09/PARITY_CRAWL_2026-09-08.md`.
+- Header gate: the 2026-09-08 `--all-trusted --compile-check` wrote and compiled 1,011 generated headers; 267 are layout-quarantined and `CGameDefinitionManager` remains the single additional compile quarantine. Dashboard inventory: 1,019 generated / 268 quarantined.
 - De-bake: `python tools/decomp_pipeline/crawl/bake_families.py` for the live family table; `debake_family.py <template> <genuine.cpp> <prefix> --apply`.
 - Script recovery: `python -m unittest discover -s tools/script_recovery -p 'test_*.py'`; `python tools/script_recovery/verify_foundation.py`; readiness needs `--vtable-slots`, `--interface-catalog`, `--fse-address-map`. Ingest Aeon's 2026-09-06 LUAGameflow batch into `work/aeon_lua_ports/`.
 - ForgeFSE: canonical fork is `D:\Code\ForgeFSE-retail-shadow`, branch `feat/upstream-fse-2026-09-02` (`3f417ee`), untested in-game. `D:\Code\ForgeFSE` is stale.

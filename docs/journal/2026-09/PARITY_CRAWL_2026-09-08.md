@@ -554,3 +554,34 @@ all three components and the true result. The other candidates require device,
 databank, container, or render-resource lifetime dependencies. Totals are now
 18,870 compiled/behavior-tested, 8,145 exact matches, 10,681 relocation
 matches, and 394,217 genuine retail bytes matched. Batch 376 is next.
+
+### Batch 376: context-item vector near-match
+
+Batch 376 is reviewed and ledgered without a landing.
+`CTCInventory::GetContextSensitiveItemButtonIndex` is genuine and proves the
+retail release vector at +0x154/+0x158, versus the donor's named
+`ContextSensitiveItems` at +0x178. Its fixture covers first/middle matches,
+duplicates, misses, and an empty vector, but clean pointer-based source emits
+51 bytes against retail's 64. The temporary retail overlay was removed. Seven
+adjacent `IsAugmentation` labels are also unsafe as unique identities: they
+share a wrapper shape but dispatch to different underlying type predicates.
+The remainder is dominated by destructors and persistence/container helpers.
+Batch 377 is next; totals remain unchanged.
+
+### Batch 377: readable candidates remain dependency-bound
+
+Batch 377 is reviewed and ledgered without a landing. The strongest readable
+candidate, `CTCLook::GetHeadPos`, has a PDB-confirmed cached `C3DVector` at
++0xa5 and retail reads that same unaligned triplet at +0xa1; its alternate path
+also delegates through `PParentCreature`. That is useful evidence of another
+localized retail/donor layout delta, but the class is already quarantined and
+the delegated method and global mode flag are not established well enough to
+publish a truthful retail overlay. `CTCCombat::GetComboMaxStage` depends on a
+combat-definition lookup and ordered-container helper; `CThingBuilding::GetIsAvailableForResidency`
+depends on the building component's flag, resident map, and nested resident
+state; `CTCTalk::SetAsUsingNarrator` depends on narrator ownership and a
+counted-pointer lookup; and `CGroundNavigatorExternalInterface::PeekNavigatorOrientation`
+depends on a creature component and virtual navigator call. The remaining
+entries are STL internals, destructors, navigation copies, or similarly
+unresolved manager chains. No anonymous ABI shims were retained. Batch 378 is
+the exact restart point; comparer totals remain unchanged.
