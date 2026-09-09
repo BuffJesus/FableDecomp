@@ -788,7 +788,7 @@
       "forbids": [],
       "result": "ran",
       "trace": "written",
-      "events": 63
+      "events": 64
     },
     {
       "fixture": "entity_bully_first_intimidation",
@@ -812,7 +812,27 @@
       ],
       "result": "ran",
       "trace": "written",
-      "events": 23
+      "events": 24
+    },
+    {
+      "fixture": "entity_bully_first_talk_then_in_common",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "purpose": "the first talk emits GET_LOST and sets entity-local DoneIntro; on the next loop a teddy possession miss falls through to talk, HeroAttackedVictim selects the one-shot IN_COMMON response, and termination releases control",
+      "expects": [
+        "StartMovieSequence",
+        "PauseAllNonScriptedEntities",
+        "Speak",
+        "EndMovieSequence",
+        "IsObjectInThingsPossession",
+        "MsgIsPresentedWithItem",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 46
     },
     {
       "fixture": "entity_bully_four_hits_run_off",
@@ -942,7 +962,7 @@
       "forbids": [],
       "result": "ran",
       "trace": "written",
-      "events": 18
+      "events": 19
     },
     {
       "fixture": "entity_created_beetle_expires",

@@ -1,0 +1,18 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Bully.lua","expect":["StartMovieSequence","PauseAllNonScriptedEntities","Speak","EndMovieSequence","IsObjectInThingsPossession","MsgIsPresentedWithItem","ReleaseControl"],"note":"the first talk emits GET_LOST and sets entity-local DoneIntro; on the next loop a teddy possession miss falls through to talk, HeroAttackedVictim selects the one-shot IN_COMMON response, and termination releases control"},
+  "Quest.NewScriptFrame":[true,true,false],
+  "Entity.AcquireControl":[true,true,true,true,true],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":0,"y":0,"z":0}],
+  "Quest.GetThingWithScriptName(NOVI_Victim)":[{"handle":"victim","scope":"Entity"}],
+  "Entity.IsTalkedToByHero":[true,true,true],
+  "Quest.IsObjectInThingsPossession":[false],
+  "Entity.MsgIsPresentedWithItem":[false,false],
+  "Quest.GetStateBool(HeroAttackedVictim)":[true],
+  "Quest.GetHealth":[100,100],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Entity.MsgIsHitByHero":[false,false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false,false],
+  "Quest.GetStateInt(TalkIntermittentTimer)":[901,901],
+  "Quest.GetTimer(901)":[1,1]
+}

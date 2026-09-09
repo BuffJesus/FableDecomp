@@ -168,7 +168,7 @@
     "Float constants were read directly from retail Fable.exe .rdata (15.0, 75, 0.0), not from the decompile text."
   ],
   "cleanupPaths": [
-    {"resource": "control", "acquired": "seq 13 / 19 / 24 / 41 / 57", "releasedOn": ["failed initial/loop/refuse/talk acquisition and walk-home termination (Lua release models function-exit destructors)"], "missingOn": ["normal loop termination and multi-actor run-off partial-acquisition exits in the Lua model"], "note": "retail cleanup is destructor-driven; me/hero/victim partial-acquisition unwind order in seq 57 remains unresolved"},
+    {"resource": "control", "acquired": "seq 13 / 19 / 24 / 41 / 57", "releasedOn": ["failed initial/loop/refuse/talk acquisition, walk-home interruption, and loop-tail termination (Lua release models function-exit destructors)"], "missingOn": ["multi-actor run-off partial-acquisition exits in the Lua model"], "note": "retail cleanup is destructor-driven; me/hero/victim partial-acquisition unwind order in seq 57 remains unresolved"},
     {"resource": "movie", "acquired": "seq 25 / 28 / 32 / 42 / 59", "releasedOn": ["normal", "terminate"], "missingOn": [], "note": "PauseAllNonScriptedEntities(0) + dtor on every path incl. LAB_00dbc7cd/LAB_00dbc7ac/LAB_00dbc78b/LAB_00dbc851/LAB_00dbc1c3/LAB_00dbcc00"},
     {"resource": "infobar", "acquired": "seq 52", "releasedOn": ["subdued (seq 56)"], "missingOn": ["terminate", "normal-not-subdued"]},
     {"resource": "conversation", "acquired": "seq 63 / 69", "releasedOn": [], "missingOn": ["normal", "terminate"], "note": "retail never RemoveConversation"},

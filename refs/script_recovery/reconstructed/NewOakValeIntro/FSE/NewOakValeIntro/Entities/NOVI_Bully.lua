@@ -329,7 +329,7 @@ function Main(quest, me)
     if hit == "removed" or hit == false then return end
     quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero())   -- args dropped; target inferred
     if not intimidate(quest, me) then return end
-    if not NOVI.frame(quest, me) then return end
+    if not NOVI.frame(quest, me) then NOVI.release(quest, me); return end
   end
   -- retail never releases the scripted resource, removes the conversations or the info bar on
   -- termination; the movie scope objects unwind via their destructors only.

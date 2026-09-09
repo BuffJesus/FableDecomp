@@ -227,6 +227,7 @@
       "fixtures": [
         "entity_bully_accepts_teddy",
         "entity_bully_first_intimidation",
+        "entity_bully_first_talk_then_in_common",
         "entity_bully_four_hits_run_off",
         "entity_bully_initial_acquire_terminated",
         "entity_bully_loop_acquire_terminated",

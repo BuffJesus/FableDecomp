@@ -1509,7 +1509,7 @@
       "trace": "match"
     },
     {
-      "events": 63,
+      "events": 64,
       "fixture": "entity_bully_accepts_teddy.json",
       "function": "Main",
       "kind": "entity",
@@ -1517,8 +1517,16 @@
       "trace": "match"
     },
     {
-      "events": 23,
+      "events": 24,
       "fixture": "entity_bully_first_intimidation.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 46,
+      "fixture": "entity_bully_first_talk_then_in_common.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1573,7 +1581,7 @@
       "trace": "match"
     },
     {
-      "events": 18,
+      "events": 19,
       "fixture": "entity_bully_walks_home.json",
       "function": "Main",
       "kind": "entity",
@@ -2022,8 +2030,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 103,
-    "fixturesPassed": 103,
+    "fixtures": 104,
+    "fixturesPassed": 104,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,
