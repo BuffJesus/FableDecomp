@@ -1460,7 +1460,7 @@ CEngineInternalPrimitive2DText	1	1	1	0	0	1	1	0	1	0	0
 CEngineInternalPrimitive2DViewport	10	14	13	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveAnimatedMesh	16	16	16	0	0	3	3	1	2	0	0
 CEngineInternalPrimitiveAnimatedMeshFromFile	1	1	1	0	0	1	1	1	0	0	0
-CEngineInternalPrimitiveBase	15	100	98	0	0	94	94	91	3	0	0
+CEngineInternalPrimitiveBase	15	100	98	0	0	95	95	91	4	0	0
 CEngineInternalPrimitiveChanger	16	16	15	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveDecal	4	4	4	0	0	2	2	2	0	0	0
 CEngineInternalPrimitiveFlareSprite	1	1	1	0	0	0	0	0	0	0	0

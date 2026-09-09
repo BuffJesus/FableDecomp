@@ -400,3 +400,41 @@ definition, beyond the PDB's 0xe0-byte `CHeroExperienceDef`, and only one such
 PDB symbol exists. `C3DMeshStats::HasDummyObject` is genuine but remains tied
 to an unresolved ordered-container helper. Batch 364 is next; comparer totals
 remain unchanged.
+
+### Batch 364: GUID copy alignment near-match
+
+Batch 364 is reviewed and ledgered without a landing.
+`CSystemManager::InitGUIDFromName` is PDB-confirmed and writes the named
+16-byte `ApplicationGUID` at +0x0c, truncating longer names and zero-padding
+shorter ones. The fixture covers both cases, but the clean loop emits 59 bytes
+against retail's 61; the difference is two alignment NOPs rather than missing
+behavior. The provisional header was removed instead of adding source noise to
+force padding. The remaining candidates depend on opaque component methods,
+compiler-owned copy/fill helpers, or refcounted slots without a trusted shared
+owner. Batch 365 is next; comparer totals remain unchanged.
+
+### Batch 365: reject misleading vector labels
+
+Batch 365 is reviewed and ledgered without a landing. The two retail routines
+at `0x00a14440` and `0x00a14480` carry propagated `C3DVector::GetScaled`
+labels, but their bodies take no explicit argument, mutate `this`, and perform
+in-place normalization. That contradicts the PDB method, which is `const`,
+takes a `const C3DVector&`, and returns a vector by value, so the labels and
+prototypes are not safe readability evidence. The remaining candidates are
+compiler-owned container helpers or depend on unresolved allocators, globals,
+refcount/vtable ownership, and nested component methods. No anonymous shim or
+invented owner was added. Batch 366 is next; comparer totals remain unchanged.
+
+### Batch 366: primitive fade defaults
+
+`CEngineInternalPrimitiveBase::SetFadeDistanceWithGamePrimitiveDefaults` at
+`0x00b8fd40` is landed as a 61/61-byte relocation match. Its behavior fixture
+covers both the nonpositive input path, which substitutes
+`GamePrimitiveDefaultFadeStart`, and the positive input path. Both then compute
+`MaxDrawDistance` from the named default fade-range ratio. Retail reads those
+two `CEngineDef` settings at +0x4c/+0x50 while the Ego_r PDB places them at
++0x50/+0x54, proving a four-byte prefix contraction; the difference is isolated
+in `CEngineDefRetail` rather than changing the readable donor definition.
+Totals are now 18,868 compiled/behavior-tested, 8,144 exact matches, 10,680
+relocation matches, and 394,092 genuine retail bytes matched. Batch 367 is
+next.

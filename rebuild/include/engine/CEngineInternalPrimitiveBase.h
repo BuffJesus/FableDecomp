@@ -36,6 +36,8 @@ struct CEngineInternalPrimitiveBase {
     void*                         RefPrimitive;              // +0x3c CEngineInternalPrimitiveBase * *
     CEngineInternalPrimitiveBase* NextLayerMask;             // +0x40
     void*                         RefLayerMask;              // +0x44 CEngineInternalPrimitiveBase * *
+
+    void SetFadeDistanceWithGamePrimitiveDefaults(float fadeBeginDistance);
 };
 #pragma pack(pop)
 

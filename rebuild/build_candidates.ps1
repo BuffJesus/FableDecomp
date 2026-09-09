@@ -132464,6 +132464,13 @@ $catalog = @(
         TestSource = '00/b5/CEngineWeatherRenderer_ClipLockedBoxToCamera_00b52120_test.cpp'
         PassPattern = 'LOCKED_WEATHER_BOX PASS'
     }
+    [pscustomobject]@{
+        Address = '00b8fd40'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/b8/CEngineInternalPrimitiveBase_SetFadeDistanceWithGamePrimitiveDefaults_00b8fd40.cpp'
+        TestSource = '00/b8/CEngineInternalPrimitiveBase_SetFadeDistanceWithGamePrimitiveDefaults_00b8fd40_test.cpp'
+        PassPattern = 'FADE_DEFAULTS PASS'
+    }
 )
 
 $requestedAddresses = @(
