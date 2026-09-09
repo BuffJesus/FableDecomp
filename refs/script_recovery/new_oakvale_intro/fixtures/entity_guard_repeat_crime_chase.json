@@ -1,0 +1,21 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Guard.lua","expect":["AddNewConversation","AddLineToConversation","FollowThing","EntitySetCutsceneBehaviour","IsHeroControlledByPlayer","Speak","EndMovieSequence","ReleaseControl"],"note":"a repeat offence makes the guard announce and follow a distant hero, wait for lecture range and player control, then deliver the shortened repeat lecture and crime list"},
+  "Quest.GetStateInt(BadDeedsPerformed)":[2,2,2,2],
+  "Quest.GetStateInt(GuardsDealtWithBadDeeds)":[1,1],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.IsDistanceBetweenThingsUnder":[true,false,false,true],
+  "Entity.AcquireControl":[true,true],
+  "Quest.AddNewConversation":[{"handle":"guard_chase","scope":"Entity"}],
+  "Quest.NewScriptFrame":[true,true,false],
+  "Quest.IsHeroControlledByPlayer":[false,true],
+  "Quest.GetStateBool(GuardsSpokenOnce)":[true],
+  "Quest.GetStateBool(WhichBadDeedsPerformed_0)":[true],
+  "Quest.GetStateBool(WhichBadDeedsPerformed_1)":[false],
+  "Quest.GetStateBool(WhichBadDeedsPerformed_2)":[true],
+  "Quest.GetStateBool(WhichBadDeedsPerformed_3)":[false],
+  "Quest.GetStateBool(WhichBadDeedsPerformed_4)":[false],
+  "Quest.GetHealth":[100,100,100,100],
+  "Entity.IsTalkedToByHero":[false],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false]
+}

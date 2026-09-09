@@ -1447,6 +1447,14 @@
       "trace": "match"
     },
     {
+      "events": 53,
+      "fixture": "entity_guard_first_crime_lecture.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 6,
       "fixture": "entity_guard_idle_terminated.json",
       "function": "Main",
@@ -1458,6 +1466,14 @@
       "events": 9,
       "fixture": "entity_guard_init.json",
       "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 56,
+      "fixture": "entity_guard_repeat_crime_chase.json",
+      "function": "Main",
       "kind": "entity",
       "status": "ran",
       "trace": "match"
@@ -1728,8 +1744,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 66,
-    "fixturesPassed": 66,
+    "fixtures": 68,
+    "fixturesPassed": 68,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

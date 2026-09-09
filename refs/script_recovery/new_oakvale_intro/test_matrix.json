@@ -19,7 +19,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 43
     },
     {
@@ -34,7 +34,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 6
     },
     {
@@ -50,7 +50,7 @@
         "AcquireControl"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 1
     },
     {
@@ -65,7 +65,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 7
     },
     {
@@ -81,7 +81,7 @@
         "AcquireControl"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 1
     },
     {
@@ -101,7 +101,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 66
     },
     {
@@ -116,7 +116,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 5
     },
     {
@@ -132,7 +132,7 @@
         "AcquireControl"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 1
     },
     {
@@ -151,7 +151,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 26
     },
     {
@@ -167,7 +167,7 @@
         "DisplayGameInfo"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 1
     },
     {
@@ -183,7 +183,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 9
     },
     {
@@ -199,7 +199,7 @@
         "SetCreatureBrain"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 1
     },
     {
@@ -215,7 +215,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 12
     },
     {
@@ -231,7 +231,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 4
     },
     {
@@ -246,7 +246,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 3
     },
     {
@@ -262,7 +262,7 @@
         "StartMovieSequence"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 1
     },
     {
@@ -282,7 +282,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 43
     },
     {
@@ -297,7 +297,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 7
     },
     {
@@ -313,7 +313,7 @@
         "AcquireControl"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 1
     },
     {
@@ -331,7 +331,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 18
     },
     {
@@ -350,7 +350,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 31
     },
     {
@@ -369,7 +369,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 63
     },
     {
@@ -384,7 +384,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 8
     },
     {
@@ -400,7 +400,7 @@
         "AcquireControl"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 1
     },
     {
@@ -417,7 +417,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 18
     },
     {
@@ -434,7 +434,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 8
     },
     {
@@ -450,7 +450,7 @@
         "RegisterTimer"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 1
     },
     {
@@ -468,7 +468,7 @@
         "RemoveThing"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 6
     },
     {
@@ -486,7 +486,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 14
     },
     {
@@ -501,7 +501,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 2
     },
     {
@@ -517,7 +517,7 @@
         "AcquireControl"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 1
     },
     {
@@ -537,8 +537,29 @@
         "StartMovieSequence"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 16
+    },
+    {
+      "fixture": "entity_guard_first_crime_lecture",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "purpose": "one unpunished violence deed brings a nearby guard straight into the first full lecture, reads the violence crime line, advances the handled-deed counter, and restores control/movie state",
+      "expects": [
+        "EntitySetThingAsAllyOfThing",
+        "EntitySetCutsceneBehaviour",
+        "SetStateInt",
+        "IsHeroControlledByPlayer",
+        "StartMovieSequence",
+        "Speak",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 53
     },
     {
       "fixture": "entity_guard_idle_terminated",
@@ -555,7 +576,7 @@
         "StartMovieSequence"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 6
     },
     {
@@ -571,8 +592,29 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 9
+    },
+    {
+      "fixture": "entity_guard_repeat_crime_chase",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "purpose": "a repeat offence makes the guard announce and follow a distant hero, wait for lecture range and player control, then deliver the shortened repeat lecture and crime list",
+      "expects": [
+        "AddNewConversation",
+        "AddLineToConversation",
+        "FollowThing",
+        "EntitySetCutsceneBehaviour",
+        "IsHeroControlledByPlayer",
+        "Speak",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 56
     },
     {
       "fixture": "entity_live_father_entry_cleanup",
@@ -588,7 +630,7 @@
         "AcquireControl"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 2
     },
     {
@@ -603,7 +645,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 6
     },
     {
@@ -618,7 +660,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 4
     },
     {
@@ -634,7 +676,7 @@
         "GetThingWithScriptName"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 1
     },
     {
@@ -653,7 +695,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 38
     },
     {
@@ -672,7 +714,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 29
     },
     {
@@ -689,7 +731,7 @@
         "AcquireControl"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 2
     },
     {
@@ -704,7 +746,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 6
     },
     {
@@ -723,7 +765,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 35
     },
     {
@@ -743,7 +785,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 26
     },
     {
@@ -758,7 +800,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 7
     },
     {
@@ -774,7 +816,7 @@
         "AcquireControl"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 1
     },
     {
@@ -794,7 +836,7 @@
         "RunCutsceneWithSetup"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 27
     },
     {
@@ -809,7 +851,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 5
     },
     {
@@ -825,7 +867,7 @@
         "IsTalkedToByHero"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 1
     },
     {
@@ -843,7 +885,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 21
     },
     {
@@ -860,7 +902,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 8
     },
     {
@@ -878,7 +920,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 13
     },
     {
@@ -896,7 +938,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 6
     },
     {
@@ -923,7 +965,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 82
     },
     {
@@ -940,7 +982,7 @@
         "SetQuestAsCompleted"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 25
     },
     {
@@ -957,7 +999,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 38
     },
     {
@@ -979,7 +1021,7 @@
         "SetQuestAsCompleted"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 52
     },
     {
@@ -1001,7 +1043,7 @@
         "KickOffQuestStartScreen"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 78
     },
     {
@@ -1016,7 +1058,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 3
     },
     {
@@ -1035,7 +1077,7 @@
         "EntityTeleportToThing"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 3
     },
     {
@@ -1052,7 +1094,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 26
     },
     {
@@ -1068,7 +1110,7 @@
         "MiniMapRemoveMarker"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 6
     },
     {
@@ -1085,7 +1127,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 23
     },
     {
@@ -1101,7 +1143,7 @@
         "RemoveQuestInfoElement"
       ],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 7
     },
     {
@@ -1118,7 +1160,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 62
     },
     {
@@ -1132,7 +1174,7 @@
       ],
       "forbids": [],
       "result": "ran",
-      "trace": "match",
+      "trace": "written",
       "events": 7
     }
   ],

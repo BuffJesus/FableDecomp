@@ -1,0 +1,20 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Guard.lua","expect":["EntitySetThingAsAllyOfThing","EntitySetCutsceneBehaviour","SetStateInt","IsHeroControlledByPlayer","StartMovieSequence","Speak","EndMovieSequence","ReleaseControl"],"note":"one unpunished violence deed brings a nearby guard straight into the first full lecture, reads the violence crime line, advances the handled-deed counter, and restores control/movie state"},
+  "Quest.GetStateInt(BadDeedsPerformed)":[1,1,1,1],
+  "Quest.GetStateInt(GuardsDealtWithBadDeeds)":[0,0],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.IsDistanceBetweenThingsUnder":[true,true,true],
+  "Entity.AcquireControl":[true,true],
+  "Quest.IsHeroControlledByPlayer":[true],
+  "Quest.GetStateBool(GuardsSpokenOnce)":[false],
+  "Quest.GetStateBool(WhichBadDeedsPerformed_0)":[false],
+  "Quest.GetStateBool(WhichBadDeedsPerformed_1)":[false],
+  "Quest.GetStateBool(WhichBadDeedsPerformed_2)":[true],
+  "Quest.GetStateBool(WhichBadDeedsPerformed_3)":[false],
+  "Quest.GetStateBool(WhichBadDeedsPerformed_4)":[false],
+  "Quest.GetHealth":[100,100,100,100,100,100,100],
+  "Entity.IsTalkedToByHero":[false],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Quest.NewScriptFrame":[false]
+}

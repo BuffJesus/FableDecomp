@@ -269,7 +269,9 @@
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Guard.lua",
       "fixtures": [
         "entity_guard_answers_good_hero",
-        "entity_guard_idle_terminated"
+        "entity_guard_first_crime_lecture",
+        "entity_guard_idle_terminated",
+        "entity_guard_repeat_crime_chase"
       ],
       "evidence": "native-decompile",
       "status": "implemented (uncertain args)"
