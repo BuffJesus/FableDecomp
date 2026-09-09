@@ -1,0 +1,18 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelMan.lua","expect":["SetCreatureBrain","SetWanderCentrePoint","RegisterTimer","MoveToPosition","SetTimer","Speak","FadeScreenOut","Pause","EntityTeleportToThing","ClearThingHasInformation","FadeScreenIn","SetStateBool","DeregisterTimer","EndMovieSequence","ReleaseControl"],"note":"a nearby hero triggers the warehouse favour; the barrel man takes one approach step, hands over the watch, teleports both actors during the fade, starts WatchTimer, and releases control on termination"},
+  "Quest.NewScriptFrame":[true,true,false],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Quest.GetThingWithScriptName(M_WHouse_ManStart)":[{"handle":"man_start","scope":"Entity"}],
+  "Quest.GetThingWithScriptName(M_WHouse_GuardPoint)":[{"handle":"guard_point","scope":"Entity"},{"handle":"guard_point","scope":"Entity"}],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.IsDistanceBetweenThingsUnder":[true],
+  "Entity.AcquireControl":[true],
+  "Quest.RegisterTimer":[900],
+  "Entity.GetPos":[{"x":10,"y":0,"z":0},{"x":0,"y":0,"z":0},{"x":10,"y":0,"z":0},{"x":10,"y":0,"z":0}],
+  "Entity.IsPerformingScriptTask":[false],
+  "Quest.GetHealth":[100],
+  "Quest.GetThingWithScriptName(M_BarrelManHiddenPos)":[{"handle":"hidden_pos","scope":"Entity"}],
+  "Quest.GetStateInt(WatchTimer)":[802]
+}

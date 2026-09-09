@@ -37,7 +37,6 @@
       "NewOakValeIntro/Entities/NOVI_Barrel.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
-      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua"
     ],
     "Entity.IsAlive": [
@@ -1310,6 +1309,14 @@
       "trace": "match"
     },
     {
+      "events": 46,
+      "fixture": "entity_barrel_man_hands_over_warehouse.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 9,
       "fixture": "entity_barrel_man_init.json",
       "function": "Init",
@@ -1863,8 +1870,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 83,
-    "fixturesPassed": 83,
+    "fixtures": 84,
+    "fixturesPassed": 84,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

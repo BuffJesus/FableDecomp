@@ -136,6 +136,7 @@
       "operations": 11,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "fixtures": [
+        "entity_barrel_man_hands_over_warehouse",
         "entity_barrel_man_main_terminated"
       ],
       "evidence": "native-decompile",

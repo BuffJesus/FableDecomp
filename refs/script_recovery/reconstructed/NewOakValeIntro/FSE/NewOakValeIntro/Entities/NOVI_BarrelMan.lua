@@ -73,10 +73,10 @@ local PHASE = {
 }
 
 -- Entity-local retail fields (this+0x1c..0x20), initialised in Init
-local ComplainedAboutStock   -- 0x1c: written in Init only, never read by Main (retail)
-local HeroLetMeDown          -- 0x1d
-local OverheardYet           -- 0x1e
-local MyPhase                -- 0x20 (EMyPhase)
+local ComplainedAboutStock = false               -- 0x1c: written in Init only, never read by Main (retail)
+local HeroLetMeDown = false                       -- 0x1d
+local OverheardYet = false                        -- 0x1e
+local MyPhase = PHASE.AT_WAREHOUSE                -- 0x20 (EMyPhase)
 
 function Init(quest, me)
     quest:SetTimer(F.get(quest, F.WatchTimer), 0)
@@ -90,15 +90,6 @@ function Init(quest, me)
     HeroLetMeDown = false
     OverheardYet = false
     quest:EntitySetSightRadius(me, SIGHT_RADIUS)
-end
-
--- Retail helper IsDistanceFromThingToPositionOver (0x00CBE45C) has no ForgeFSE binding.
--- Reimplemented as plain maths on me:GetPos(); 2D-vs-3D metric of the retail helper is unverified.
-local function distance_over(me, pos, dist)
-    local p = me:GetPos()
-    if p == nil or p.x == nil or pos == nil or pos.x == nil then return false end
-    local dx, dy, dz = p.x - pos.x, p.y - pos.y, (p.z or 0) - (pos.z or 0)
-    return (dx * dx + dy * dy + dz * dz) > dist * dist
 end
 
 local function is_alive(quest, me)
@@ -120,7 +111,7 @@ end
 
 -- Walk (re-issuing MoveToPosition until within ARRIVE_TOLERANCE) exactly as retail does in phases 1/3.
 local function walk_to(quest, me, target)
-    while distance_over(me, target, ARRIVE_TOLERANCE) do
+    while NOVI.distance_from_thing_to_position_over(me, target, ARRIVE_TOLERANCE) do
         if not NOVI.frame(quest, me) then return false end
         me:MoveToPosition(target, MOVE_RADIUS_EXACT, MOVE_TYPE)   -- retail also passes (false, false)
         while me:IsPerformingScriptTask() do
@@ -211,7 +202,7 @@ end
 local function ask_favour_and_leave(quest, me)
     local stepTimer = quest:RegisterTimer()          -- retail scoped CTimer (RegisterTimer/DeregisterTimer)
     local hero = quest:GetHero()
-    while distance_over(me, hero:GetPos(), APPROACH_HERO_DISTANCE) do
+    while NOVI.distance_from_thing_to_position_over(me, hero:GetPos(), APPROACH_HERO_DISTANCE) do
         if not NOVI.frame(quest, me) then quest:DeregisterTimer(stepTimer); return false end
         me:MoveToPosition(hero:GetPos(), APPROACH_HERO_RADIUS, MOVE_TYPE)   -- retail also passes (false, true)
         quest:SetTimer(stepTimer, APPROACH_STEP_SECONDS)

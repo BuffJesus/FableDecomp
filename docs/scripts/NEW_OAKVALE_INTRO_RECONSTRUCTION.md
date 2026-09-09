@@ -42,7 +42,7 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 83/83 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 84/84 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
@@ -81,6 +81,10 @@ Barrel-thug coverage now follows the leave-in-charge wait through marker telepor
 unknown-duration `Pause` audit event, explanation and hero follow, then the first timer-nine
 temptation tier. A second path verifies the returned-barrel-man/broken-barrel `OUTRO` response and
 that its closed nag gate creates no dangling conversation.
+Barrel-man coverage now exercises the warehouse handoff itself: the proximity trigger, one
+timer-bounded approach step, favour speech, fade, hero/worker teleports, 45-second watch timer,
+`BarrelManLeftHeroInCharge` transition, movie cleanup, and final control release. Its entity-local
+fields also carry their proven retail defaults when the mock host invokes `Main` in isolation.
 Affair-husband coverage now distinguishes the first near and ranged exchanges: near range emits
 the reversed woman/man `_10` pair and sets `HeroDiscoveredInfidelity`, while ranged distance emits
 the screen-message `_10` pair without discovery. Deterministic random inputs separately verify the
@@ -102,7 +106,7 @@ that every entity AI branch has been exercised in the game.
 ## Remaining parity limits
 
 Seven executable `NOVI.unsupported` call sites preserve retail intent where ForgeFSE
-does not expose a direct equivalent. The larger API requirements manifest records 65
+does not expose a direct equivalent. The larger API requirements manifest records 66
 blocked semantic requirements or signature differences. No catalogued native function is
 currently classified as wholly or partially API-blocked, but important call-level limits remain:
 entity scripting acquisition/release semantics, morality values loaded from game data,

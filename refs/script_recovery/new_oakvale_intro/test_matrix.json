@@ -271,6 +271,34 @@
       "events": 1
     },
     {
+      "fixture": "entity_barrel_man_hands_over_warehouse",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "purpose": "a nearby hero triggers the warehouse favour; the barrel man takes one approach step, hands over the watch, teleports both actors during the fade, starts WatchTimer, and releases control on termination",
+      "expects": [
+        "SetCreatureBrain",
+        "SetWanderCentrePoint",
+        "RegisterTimer",
+        "MoveToPosition",
+        "SetTimer",
+        "Speak",
+        "FadeScreenOut",
+        "Pause",
+        "EntityTeleportToThing",
+        "ClearThingHasInformation",
+        "FadeScreenIn",
+        "SetStateBool",
+        "DeregisterTimer",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 46
+    },
+    {
       "fixture": "entity_barrel_man_init",
       "function": "Init",
       "kind": "entity",
