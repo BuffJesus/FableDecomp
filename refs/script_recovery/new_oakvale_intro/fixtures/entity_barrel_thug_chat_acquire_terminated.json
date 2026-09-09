@@ -1,0 +1,10 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelThug.lua","expect":["EntityTeleportToThing","FollowThing","StartMovieSequence","PauseAllNonScriptedEntities","AcquireControl","EndMovieSequence","ReleaseControl"],"forbid":["GetTimer"],"note":"after the completed intro, a talk starts its movie before control acquisition as retail does; termination in that acquisition unpauses, ends the movie, releases control, and exits before chat state or nag evaluation"},
+  "Quest.NewScriptFrame":[true],
+  "Entity.AcquireControl":[true,false],
+  "Quest.GetStateBool(BarrelManLeftHeroInCharge)":[true],
+  "Quest.GetThingWithScriptName(M_WHouse_ManStart)":[{"handle":"start_marker","scope":"Entity"}],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.GetHealth":[100],
+  "Entity.IsTalkedToByHero":[true]
+}

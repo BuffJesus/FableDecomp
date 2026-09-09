@@ -1,0 +1,16 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelThug.lua","expect":["FollowThing","EntitySetThingAsAllyOfThing","SetStateInt","DisplayGameInfo","AddLogbookStoryEntryString","StartMovieSequence","AcquireControl","EndMovieSequence","ReleaseControl"],"note":"after intro and nag early-out, a direct hit performs the retail ally/deed writes and opens the movie before action acquisition; termination then closes the movie and releases control without speaking WHY_HIT"},
+  "Quest.NewScriptFrame":[true],
+  "Entity.AcquireControl":[true,false],
+  "Quest.GetStateBool(BarrelManLeftHeroInCharge)":[true],
+  "Quest.GetThingWithScriptName(M_WHouse_ManStart)":[{"handle":"start_marker","scope":"Entity"}],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.GetHealth":[100],
+  "Entity.IsTalkedToByHero":[false],
+  "Quest.GetStateInt(WatchTimer)":[702],
+  "Quest.GetTimer(702)":[0],
+  "Entity.MsgIsHitByHero":[true],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true]
+}

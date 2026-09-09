@@ -89,7 +89,7 @@ end
 
 -- Phase: wait for the barrel man to leave, appear at the marker, explain, follow the hero
 local function intro(quest, me)
-    NOVI.acquire(quest, me, DEFAULT_PRIORITY)
+    if not NOVI.acquire(quest, me, DEFAULT_PRIORITY) then return false end
     while not F.get(quest, F.BarrelManLeftHeroInCharge) do
         if not NOVI.frame(quest, me) then return false end
     end
@@ -107,7 +107,7 @@ end
 -- Phase: hero talks to him
 local function chat(quest, me)
     begin_cutscene(quest)
-    NOVI.acquire(quest, me, DEFAULT_PRIORITY)
+    if not NOVI.acquire(quest, me, DEFAULT_PRIORITY) then end_cutscene(quest); return false end
     local man_back = F.get(quest, F.BarrelManSpokenToHeroOnReturn)
     local broken = F.get(quest, F.BarrelBrokenPersistent)
     if not man_back then
@@ -124,6 +124,7 @@ local function chat(quest, me)
         end
     end
     end_cutscene(quest)
+    return true
 end
 
 local function pick_tier_line(tiers, last_line, timer)
@@ -159,9 +160,10 @@ local function react_to_hit(quest, me)
     quest:EntitySetThingAsAllyOfThing(hero, me)
     Deeds.add_bad(quest, me, BAD_DEED_HIT_ME)
     begin_cutscene(quest)
-    NOVI.acquire(quest, me, ACTION_PRIORITY)
+    if not NOVI.acquire(quest, me, ACTION_PRIORITY) then end_cutscene(quest); return false end
     speak_if_alive(quest, me, TEXT_WHY_HIT)
     end_cutscene(quest)
+    return true
 end
 
 function Main(quest, me)
@@ -171,11 +173,11 @@ function Main(quest, me)
             if not intro(quest, me) then NOVI.release(quest, me); return end
         end
         if me:IsTalkedToByHero() then
-            chat(quest, me)
+            if not chat(quest, me) then NOVI.release(quest, me); return end
         end
         nag(quest, me)
         if hero_hit_me(quest, me) then
-            react_to_hit(quest, me)
+            if not react_to_hit(quest, me) then NOVI.release(quest, me); return end
         end
         if not NOVI.frame(quest, me) then NOVI.release(quest, me); return end
     end

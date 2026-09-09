@@ -1365,9 +1365,33 @@
       "trace": "match"
     },
     {
+      "events": 23,
+      "fixture": "entity_barrel_thug_chat_acquire_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 38,
+      "fixture": "entity_barrel_thug_hit_acquire_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 3,
       "fixture": "entity_barrel_thug_init.json",
       "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 3,
+      "fixture": "entity_barrel_thug_intro_acquire_terminated.json",
+      "function": "Main",
       "kind": "entity",
       "status": "ran",
       "trace": "match"
@@ -1934,8 +1958,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 92,
-    "fixturesPassed": 92,
+    "fixtures": 95,
+    "fixturesPassed": 95,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

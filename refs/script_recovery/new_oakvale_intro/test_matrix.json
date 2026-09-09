@@ -413,6 +413,50 @@
       "events": 4
     },
     {
+      "fixture": "entity_barrel_thug_chat_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "purpose": "after the completed intro, a talk starts its movie before control acquisition as retail does; termination in that acquisition unpauses, ends the movie, releases control, and exits before chat state or nag evaluation",
+      "expects": [
+        "EntityTeleportToThing",
+        "FollowThing",
+        "StartMovieSequence",
+        "PauseAllNonScriptedEntities",
+        "AcquireControl",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "GetTimer"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 23
+    },
+    {
+      "fixture": "entity_barrel_thug_hit_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "purpose": "after intro and nag early-out, a direct hit performs the retail ally/deed writes and opens the movie before action acquisition; termination then closes the movie and releases control without speaking WHY_HIT",
+      "expects": [
+        "FollowThing",
+        "EntitySetThingAsAllyOfThing",
+        "SetStateInt",
+        "DisplayGameInfo",
+        "AddLogbookStoryEntryString",
+        "StartMovieSequence",
+        "AcquireControl",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 38
+    },
+    {
       "fixture": "entity_barrel_thug_init",
       "function": "Init",
       "kind": "entity",
@@ -423,6 +467,26 @@
         "EntitySetAsKillable"
       ],
       "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 3
+    },
+    {
+      "fixture": "entity_barrel_thug_intro_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "purpose": "termination during the intro StartScriptingEntity wait releases control and exits before polling the handoff flag or teleporting the thug",
+      "expects": [
+        "NewScriptFrame",
+        "AcquireControl",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "GetStateBool",
+        "EntityTeleportToThing",
+        "StartMovieSequence"
+      ],
       "result": "ran",
       "trace": "written",
       "events": 3

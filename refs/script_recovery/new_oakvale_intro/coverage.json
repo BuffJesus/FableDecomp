@@ -163,6 +163,9 @@
       "operations": 25,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "fixtures": [
+        "entity_barrel_thug_chat_acquire_terminated",
+        "entity_barrel_thug_hit_acquire_terminated",
+        "entity_barrel_thug_intro_acquire_terminated",
         "entity_barrel_thug_intro_and_first_nag",
         "entity_barrel_thug_main_terminated",
         "entity_barrel_thug_outro_chat",

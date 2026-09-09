@@ -42,7 +42,7 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 92/92 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 95/95 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
@@ -83,7 +83,10 @@ retail actor and `$BRATLINE` mappings, good-deed bookkeeping, `BullyRanOff`, and
 Barrel-thug coverage now follows the leave-in-charge wait through marker teleport, the explicit
 unknown-duration `Pause` audit event, explanation and hero follow, then the first timer-nine
 temptation tier. A second path verifies the returned-barrel-man/broken-barrel `OUTRO` response and
-that its closed nag gate creates no dangling conversation.
+that its closed nag gate creates no dangling conversation. Intro, chat, and hit-action control
+acquisition now propagate termination at their native boundaries; traces verify that intro stops
+before polling/teleport, while chat and hit failures close their already-open movie brackets before
+release, with hit deed writes retained because retail performs them before action acquisition.
 Barrel-man coverage now exercises the warehouse handoff itself: the proximity trigger, one
 timer-bounded approach step, favour speech, fade, hero/worker teleports, 45-second watch timer,
 and `BarrelManLeftHeroInCharge` transition. A complete continuation reaches timer value 15,

@@ -204,22 +204,6 @@
     {
       "arguments": [],
       "event": "api-call",
-      "name": "MsgIsHitByAnySpecialAbilityFromHero",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [
-        14
-      ],
-      "event": "api-call",
-      "name": "MsgIsHitByHeroSpecialAbility",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
       "name": "GetHero",
       "receiver": "quest",
       "scope": "Quest"
@@ -353,28 +337,6 @@
     },
     {
       "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        }
-      ],
-      "event": "api-call",
-      "name": "GetHealth",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        "TEXT_QST_048_BARRELTHUG_WHY_HIT",
-        0
-      ],
-      "event": "api-call",
-      "name": "SpeakAndWait",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [
         false
       ],
       "event": "api-call",
@@ -390,18 +352,6 @@
       "scope": "Quest"
     },
     {
-      "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        }
-      ],
-      "event": "api-call",
-      "name": "NewScriptFrame",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
       "arguments": [],
       "event": "api-call",
       "name": "ReleaseControl",
@@ -411,24 +361,27 @@
   ],
   "fixtures": {
     "Entity.AcquireControl": [
-      true
+      true,
+      false
     ],
     "Entity.IsTalkedToByHero": [
       false
     ],
-    "Entity.MsgIsHitByAnySpecialAbilityFromHero": [
-      true
-    ],
     "Entity.MsgIsHitByHero": [
-      false
-    ],
-    "Entity.MsgIsHitByHeroSpecialAbility(14)": [
-      false
+      true
     ],
     "Quest.GetHealth": [
       100
     ],
     "Quest.GetHero": [
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
       {
         "handle": "hero",
         "scope": "Entity"
@@ -459,8 +412,7 @@
       true
     ],
     "Quest.NewScriptFrame": [
-      true,
-      false
+      true
     ]
   },
   "function": "Main",

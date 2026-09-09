@@ -1637,7 +1637,7 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 5,
-          "native": "StartScriptingEntity(me,res,?) loop",
+          "native": "StartScriptingEntity(me,res,?) loop; termination exits through resource cleanup",
           "evidence": "native-decompile"
         },
         {
@@ -1651,7 +1651,7 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 16,
-          "native": "StartMovieSequence; PauseAll(1); StartScriptingEntity loop",
+          "native": "StartMovieSequence; PauseAll(1); StartScriptingEntity loop; termination closes the movie and releases resources",
           "evidence": "native-decompile"
         },
         {
@@ -2146,7 +2146,8 @@
         "NOVI_BarrelMan#29: case 3",
         "NOVI_BarrelMan#37: thanks branch",
         "NOVI_BarrelMan#77: only reached on termination; the main loop never exits normally",
-        "NOVI_BarrelThug#16: movie starts BEFORE the acquire here",
+        "NOVI_BarrelThug#5: failed intro acquisition must stop before the leave-in-charge wait and teleport",
+        "NOVI_BarrelThug#16: movie starts BEFORE the acquire here, so failure must unpause/end it before Main releases control",
         "NOVI_BookTrader#5: failed host-managed acquisition must stop the iteration before movement or dialogue",
         "NOVI_BookTrader#28: failed acquisition must not play the shout animation or queue its line",
         "NOVI_Bully#13: priority dropped",
@@ -2815,7 +2816,7 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 16,
-          "native": "StartMovieSequence; PauseAll(1); StartScriptingEntity loop",
+          "native": "StartMovieSequence; PauseAll(1); StartScriptingEntity loop; termination closes the movie and releases resources",
           "evidence": "native-decompile"
         },
         {
@@ -2988,7 +2989,7 @@
         "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
         "NOVI_AffairWoman#14: pause argument dropped; true inferred from sibling scripts",
         "NOVI_AffairWoman#23: facing args dropped; me->hero inferred",
-        "NOVI_BarrelThug#16: movie starts BEFORE the acquire here",
+        "NOVI_BarrelThug#16: movie starts BEFORE the acquire here, so failure must unpause/end it before Main releases control",
         "NOVI_BookTrader#13: slot 0x5ec unresolved in vtable_slots.tsv; adjacent 0x5f0 = PauseAllEntities and the (1)/(0) pattern matches PauseAllNonScriptedEntities elsewhere; acquisition termination does not open the movie",
         "NOVI_Theresa#47: no FixMovieSequenceCamera in this block",
         "Q_NewOakValeIntro#42: RunCutsceneMacro_Func has no direct binding; PlayCutscene(name, actors) is the seed-corpus convention for it (cross-script-evidence). Whether PlayCutscene already brackets the movie sequence is unverified."
@@ -6292,6 +6293,7 @@
       "semanticDifferences": [
         "NOVI_AffairWife#20: both argument lists dropped; (me,hero)+(hero,me) inferred",
         "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
+        "NOVI_BarrelThug#26: ally/deed writes and movie start precede action acquisition; speech follows it",
         "NOVI_BookTrader#10: ally args dropped",
         "NOVI_Guard#13: two calls, args dropped; (me,hero)+(hero,me) is an inference from the CNOVI_Villager::Main pattern",
         "NOVI_TeddyGirl#42: args dropped; both directions is an inference",
@@ -7619,6 +7621,7 @@
       "signatureConfidence": "low",
       "semanticDifferences": [
         "NOVI_BarrelThug#11: terminate in wait -> PauseAll(0), ~movie, return",
+        "NOVI_BarrelThug#26: ally/deed writes and movie start precede action acquisition; speech follows it",
         "NOVI_BookTrader#11: hit branch skips the talk branch; acquisition termination must not enter the movie",
         "NOVI_TeddyGirl#19: answer != 1"
       ],

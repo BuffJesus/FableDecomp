@@ -168,167 +168,6 @@
       "scope": "Entity"
     },
     {
-      "arguments": [
-        "WatchTimer"
-      ],
-      "event": "api-call",
-      "name": "GetStateInt",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        702
-      ],
-      "event": "api-call",
-      "name": "GetTimer",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        "BarrelManSpokenToHeroOnReturn"
-      ],
-      "event": "api-call",
-      "name": "GetStateBool",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "MsgIsHitByHero",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "MsgIsHitByAnySpecialAbilityFromHero",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [
-        14
-      ],
-      "event": "api-call",
-      "name": "MsgIsHitByHeroSpecialAbility",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "GetHero",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        },
-        {
-          "handle": "hero",
-          "scope": "Entity"
-        }
-      ],
-      "event": "api-call",
-      "name": "EntitySetThingAsAllyOfThing",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        {
-          "handle": "hero",
-          "scope": "Entity"
-        },
-        {
-          "handle": "me",
-          "scope": "Entity"
-        }
-      ],
-      "event": "api-call",
-      "name": "EntitySetThingAsAllyOfThing",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        "BadDeedsPerformed"
-      ],
-      "event": "api-call",
-      "name": "GetStateInt",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        "BadDeedsPerformed",
-        1
-      ],
-      "event": "api-call",
-      "name": "SetStateInt",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        "NewOakValeIntro: UNSUPPORTED retail call GiveHeroMorality(-deed)"
-      ],
-      "event": "api-call",
-      "name": "Log",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        "GoodDeedsPerformed"
-      ],
-      "event": "api-call",
-      "name": "GetStateInt",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        "TEXT_QST_048_SCRMSG_DID_FIRST_BAD_DEED"
-      ],
-      "event": "api-call",
-      "name": "DisplayGameInfo",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "MsgIsGameInfoClickedPast",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        "TEXT_QST_LOG_BASICS_MAP"
-      ],
-      "event": "api-call",
-      "name": "AddLogbookStoryEntryString",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        "WhichBadDeedsPerformed_2",
-        true
-      ],
-      "event": "api-call",
-      "name": "SetStateBool",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
       "arguments": [],
       "event": "api-call",
       "name": "StartMovieSequence",
@@ -353,28 +192,6 @@
     },
     {
       "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        }
-      ],
-      "event": "api-call",
-      "name": "GetHealth",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        "TEXT_QST_048_BARRELTHUG_WHY_HIT",
-        0
-      ],
-      "event": "api-call",
-      "name": "SpeakAndWait",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [
         false
       ],
       "event": "api-call",
@@ -390,18 +207,6 @@
       "scope": "Quest"
     },
     {
-      "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        }
-      ],
-      "event": "api-call",
-      "name": "NewScriptFrame",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
       "arguments": [],
       "event": "api-call",
       "name": "ReleaseControl",
@@ -411,19 +216,11 @@
   ],
   "fixtures": {
     "Entity.AcquireControl": [
-      true
+      true,
+      false
     ],
     "Entity.IsTalkedToByHero": [
-      false
-    ],
-    "Entity.MsgIsHitByAnySpecialAbilityFromHero": [
       true
-    ],
-    "Entity.MsgIsHitByHero": [
-      false
-    ],
-    "Entity.MsgIsHitByHeroSpecialAbility(14)": [
-      false
     ],
     "Quest.GetHealth": [
       100
@@ -432,19 +229,14 @@
       {
         "handle": "hero",
         "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
       }
     ],
     "Quest.GetStateBool(BarrelManLeftHeroInCharge)": [
       true
-    ],
-    "Quest.GetStateInt(BadDeedsPerformed)": [
-      0
-    ],
-    "Quest.GetStateInt(GoodDeedsPerformed)": [
-      0
-    ],
-    "Quest.GetStateInt(WatchTimer)": [
-      702
     ],
     "Quest.GetThingWithScriptName(M_WHouse_ManStart)": [
       {
@@ -452,15 +244,8 @@
         "scope": "Entity"
       }
     ],
-    "Quest.GetTimer(702)": [
-      0
-    ],
-    "Quest.MsgIsGameInfoClickedPast": [
-      true
-    ],
     "Quest.NewScriptFrame": [
-      true,
-      false
+      true
     ]
   },
   "function": "Main",

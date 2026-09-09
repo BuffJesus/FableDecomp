@@ -1,0 +1,5 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelThug.lua","expect":["NewScriptFrame","AcquireControl","ReleaseControl"],"forbid":["GetStateBool","EntityTeleportToThing","StartMovieSequence"],"note":"termination during the intro StartScriptingEntity wait releases control and exits before polling the handoff flag or teleporting the thug"},
+  "Quest.NewScriptFrame":[true],
+  "Entity.AcquireControl":[false]
+}

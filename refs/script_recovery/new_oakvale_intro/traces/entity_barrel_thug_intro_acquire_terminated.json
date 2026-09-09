@@ -5,43 +5,37 @@
         {
           "handle": "me",
           "scope": "Entity"
-        },
-        false
+        }
       ],
       "event": "api-call",
-      "name": "EntitySetAsDamageable",
+      "name": "NewScriptFrame",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
-      "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        },
-        false
-      ],
+      "arguments": [],
       "event": "api-call",
-      "name": "EntitySetAsKillable",
-      "receiver": "quest",
-      "scope": "Quest"
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
     },
     {
-      "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        },
-        false
-      ],
+      "arguments": [],
       "event": "api-call",
-      "name": "EntitySetAsToAddToComboMultiplierWhenHit",
-      "receiver": "quest",
-      "scope": "Quest"
+      "name": "ReleaseControl",
+      "receiver": "me",
+      "scope": "Entity"
     }
   ],
-  "fixtures": {},
-  "function": "Init",
+  "fixtures": {
+    "Entity.AcquireControl": [
+      false
+    ],
+    "Quest.NewScriptFrame": [
+      true
+    ]
+  },
+  "function": "Main",
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
