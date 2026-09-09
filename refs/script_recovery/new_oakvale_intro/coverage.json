@@ -200,6 +200,7 @@
       "operations": 61,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "fixtures": [
+        "entity_bully_accepts_teddy",
         "entity_bully_main_terminated"
       ],
       "evidence": "native-decompile",
@@ -211,9 +212,11 @@
       "address": "0x00DBCD00",
       "operations": 4,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Bully.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_bully_accepts_teddy"
+      ],
       "evidence": "native-decompile",
-      "status": "implemented-but-untraced"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_CreatedBeetle",
@@ -258,6 +261,7 @@
       "operations": 45,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Guard.lua",
       "fixtures": [
+        "entity_guard_answers_good_hero",
         "entity_guard_idle_terminated"
       ],
       "evidence": "native-decompile",
@@ -306,7 +310,8 @@
       "operations": 41,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "fixtures": [
-        "entity_teddy_girl_main_terminated"
+        "entity_teddy_girl_main_terminated",
+        "entity_teddy_girl_returns_teddy"
       ],
       "evidence": "native-decompile",
       "status": "partially API-blocked"
@@ -317,9 +322,11 @@
       "address": "0x00DB0600",
       "operations": 5,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_teddy_girl_returns_teddy"
+      ],
       "evidence": "native-decompile",
-      "status": "implemented-but-untraced"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_Theresa",
@@ -388,7 +395,8 @@
       "operations": 27,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Villager.lua",
       "fixtures": [
-        "entity_villager_main_terminated"
+        "entity_villager_main_terminated",
+        "entity_villager_male_good_mutter"
       ],
       "evidence": "native-decompile",
       "status": "implemented-but-untraced"
@@ -399,9 +407,11 @@
       "address": "0x00DAEBF0",
       "operations": 1,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Villager.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_villager_male_good_mutter"
+      ],
       "evidence": "native-decompile",
-      "status": "implemented-but-untraced"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_Villager",
@@ -615,8 +625,8 @@
   ],
   "summary": {
     "functions": 52,
-    "implementedAndTraced": 24,
-    "implementedUntraced": 11,
+    "implementedAndTraced": 27,
+    "implementedUntraced": 8,
     "uncertain": 1,
     "apiBlocked": 10,
     "notImplemented": 0,

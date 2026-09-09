@@ -238,6 +238,25 @@
       "events": 1
     },
     {
+      "fixture": "entity_bully_accepts_teddy",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "purpose": "after his first conversation, the bully accepts the teddy, rewards one gold, records TeddyRuined and bad-deed kind 3, then exits on frame termination",
+      "expects": [
+        "GiveHeroYesNoQuestion",
+        "GiveHeroGold",
+        "TakeObjectFromHero",
+        "DisplayGameInfo",
+        "AddLogbookStoryEntryString",
+        "ClearThingHasInformation"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 63
+    },
+    {
       "fixture": "entity_bully_init",
       "function": "Init",
       "kind": "entity",
@@ -369,6 +388,26 @@
       "events": 1
     },
     {
+      "fixture": "entity_guard_answers_good_hero",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "purpose": "with one good deed and no bad deeds, talking to the guard selects the good-hero conversation and exits after the conversation closes",
+      "expects": [
+        "EntitySetFacingAngleTowardsThing",
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "AddLineToConversation",
+        "IsConversationActive"
+      ],
+      "forbids": [
+        "StartMovieSequence"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 16
+    },
+    {
       "fixture": "entity_guard_idle_terminated",
       "function": "Main",
       "kind": "entity",
@@ -466,6 +505,25 @@
       "events": 1
     },
     {
+      "fixture": "entity_teddy_girl_returns_teddy",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "purpose": "hero talks while carrying the teddy, answers yes, receives the first-good-deed flow, and the girl records TeddySolution B",
+      "expects": [
+        "GiveHeroYesNoQuestion",
+        "TakeObjectFromHero",
+        "DisplayGameInfo",
+        "AddLogbookStoryEntryString",
+        "SetMasterGameState",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 38
+    },
+    {
       "fixture": "entity_theresa_entry_cleanup",
       "function": "Main",
       "kind": "entity",
@@ -558,6 +616,24 @@
       "result": "ran",
       "trace": "match",
       "events": 1
+    },
+    {
+      "fixture": "entity_villager_male_good_mutter",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "purpose": "deterministic one-in-100 mutter selects male good-deed line index 2 and records the nonrepeating speech index",
+      "expects": [
+        "random",
+        "SetTimer",
+        "AddNewConversation",
+        "SetStateInt",
+        "AddLineToConversation"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 21
     },
     {
       "fixture": "quest_attack_stuff_section_swap",

@@ -20,6 +20,7 @@ HARNESS = r"""
 TRACE = {}
 FIXTURES = {}
 FIXTURE_POS = {}
+ORIGINAL_MATH_RANDOM = math.random
 
 local function normalize(value, seen)
     local kind = type(value)
@@ -82,6 +83,21 @@ end
 function ConfigureFixtures(fixtures)
     FIXTURES = fixtures
     FIXTURE_POS = {}
+    if FIXTURES["Lua.math.random"] ~= nil then
+        math.random = function(...)
+            local key = "Lua.math.random"
+            table.insert(TRACE, {
+                event = "runtime-call", scope = "Lua", receiver = "math",
+                name = "random", arguments = normalize({...})
+            })
+            local sequence = FIXTURES[key]
+            local position = (FIXTURE_POS[key] or 0) + 1
+            FIXTURE_POS[key] = position
+            return sequence[math.min(position, #sequence)]
+        end
+    else
+        math.random = ORIGINAL_MATH_RANDOM
+    end
 end
 
 function RunLifecycle(function_name, kind, instruction_budget)

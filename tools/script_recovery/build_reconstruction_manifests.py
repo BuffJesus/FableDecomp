@@ -58,7 +58,8 @@ def fixture_covers(entity_kind: str, lua_file: str, function: str, fixture_meta:
                       (entity_kind != "quest" and normalized_source == lua_file))
     trace_passed = (fixture_result.get("status") == "ran" and
                     fixture_result.get("trace") in (None, "match", "written"))
-    return fixture_meta.get("function") == function and source_matches and trace_passed
+    covered_functions = fixture_meta.get("covers", [fixture_meta.get("function")])
+    return function in covered_functions and source_matches and trace_passed
 
 
 def build(evidence_dir: Path, fse_root: Path, lua_manager: Path) -> dict:
@@ -73,7 +74,8 @@ def build(evidence_dir: Path, fse_root: Path, lua_manager: Path) -> dict:
         meta = spec.get("__meta__", {})
         fixtures[path.stem] = {"function": meta.get("function", "Main"), "kind": meta.get("kind", "quest"),
                                "source": meta.get("source"), "note": meta.get("note", ""),
-                               "expect": meta.get("expect", []), "forbid": meta.get("forbid", [])}
+                               "expect": meta.get("expect", []), "forbid": meta.get("forbid", []),
+                               "covers": meta.get("covers", [meta.get("function", "Main")])}
     fixture_status = {f["fixture"].replace(".json", ""): f for f in validation.get("fixtures", [])}
     bindings = extract_bindings(lua_manager) if lua_manager.exists() else set()
     quest_names = {n for s, n in bindings if s == "Quest"}

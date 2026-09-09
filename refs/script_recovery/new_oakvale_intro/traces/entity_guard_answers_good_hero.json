@@ -1,0 +1,228 @@
+{
+  "events": [
+    {
+      "arguments": [
+        "BadDeedsPerformed"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GuardsDealtWithBadDeeds"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntitySetFacingAngleTowardsThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        0,
+        0
+      ],
+      "event": "api-call",
+      "name": "AddNewConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "guard_conversation",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddPersonToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BadDeedsPerformed"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GoodDeedsPerformed"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "guard_conversation",
+          "scope": "Entity"
+        },
+        "TEXT_QST_048_GUARD_ON_TALK_GOOD",
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddLineToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "guard_conversation",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "IsConversationActive",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "guard_conversation",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "IsConversationActive",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByAnySpecialAbilityFromHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Entity.IsTalkedToByHero": [
+      true
+    ],
+    "Entity.MsgIsHitByAnySpecialAbilityFromHero": [
+      false
+    ],
+    "Entity.MsgIsHitByHero": [
+      false
+    ],
+    "Quest.AddNewConversation": [
+      {
+        "handle": "guard_conversation",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetHero": [
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetStateInt(BadDeedsPerformed)": [
+      0
+    ],
+    "Quest.GetStateInt(GoodDeedsPerformed)": [
+      1
+    ],
+    "Quest.GetStateInt(GuardsDealtWithBadDeeds)": [
+      0
+    ],
+    "Quest.IsConversationActive": [
+      true,
+      false
+    ],
+    "Quest.NewScriptFrame": [
+      true,
+      false
+    ]
+  },
+  "function": "Main",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Guard.lua",
+  "sourceSha256": "a9b9d04dfbcd4cdb797cfc9c0766cac95a0eadabf64061f25150c244928e1b6e"
+}

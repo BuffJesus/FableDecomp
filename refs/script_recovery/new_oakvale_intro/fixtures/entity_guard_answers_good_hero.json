@@ -1,0 +1,18 @@
+{
+  "__meta__":{
+    "function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Guard.lua",
+    "expect":["EntitySetFacingAngleTowardsThing","AddNewConversation","AddPersonToConversation","AddLineToConversation","IsConversationActive"],
+    "forbid":["StartMovieSequence"],
+    "note":"with one good deed and no bad deeds, talking to the guard selects the good-hero conversation and exits after the conversation closes"
+  },
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GuardsDealtWithBadDeeds)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[1],
+  "Entity.IsTalkedToByHero":[true],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.AddNewConversation":[{"handle":"guard_conversation","scope":"Entity"}],
+  "Quest.IsConversationActive":[true,false],
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false]
+}

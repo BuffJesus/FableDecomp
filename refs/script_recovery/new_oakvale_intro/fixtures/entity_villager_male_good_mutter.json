@@ -1,0 +1,21 @@
+{
+  "__meta__":{
+    "function":"Main","covers":["Main","GetVillagerSpeechIndex"],"kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Villager.lua",
+    "expect":["random","SetTimer","AddNewConversation","SetStateInt","AddLineToConversation"],
+    "note":"deterministic one-in-100 mutter selects male good-deed line index 2 and records the nonrepeating speech index"
+  },
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Entity.IsTalkedToByHero":[false],
+  "Quest.GetStateInt(TalkIntermittentTimer)":[801],
+  "Quest.GetTimer(801)":[0],
+  "Lua.math.random":[0,2],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.IsDistanceBetweenThingsUnder":[true],
+  "Quest.AddNewConversation":[{"handle":"conversation","scope":"Entity"}],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[2],
+  "Quest.EntityGetSex":[1],
+  "Quest.GetStateInt(lastVillagerSpeechIdx)":[-1]
+}

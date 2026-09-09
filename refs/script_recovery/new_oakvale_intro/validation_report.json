@@ -1309,6 +1309,14 @@
       "trace": "match"
     },
     {
+      "events": 63,
+      "fixture": "entity_bully_accepts_teddy.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 8,
       "fixture": "entity_bully_init.json",
       "function": "Init",
@@ -1373,6 +1381,14 @@
       "trace": "match"
     },
     {
+      "events": 16,
+      "fixture": "entity_guard_answers_good_hero.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 6,
       "fixture": "entity_guard_idle_terminated.json",
       "function": "Main",
@@ -1421,6 +1437,14 @@
       "trace": "match"
     },
     {
+      "events": 38,
+      "fixture": "entity_teddy_girl_returns_teddy.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 2,
       "fixture": "entity_theresa_entry_cleanup.json",
       "function": "Main",
@@ -1463,6 +1487,14 @@
     {
       "events": 1,
       "fixture": "entity_villager_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 21,
+      "fixture": "entity_villager_male_good_mutter.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1590,8 +1622,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 49,
-    "fixturesPassed": 49,
+    "fixtures": 53,
+    "fixturesPassed": 53,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

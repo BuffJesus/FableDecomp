@@ -1,0 +1,410 @@
+{
+  "events": [
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NOVI_Bully"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        "OBJECT_TEDDY_BEAR_UNGIVEABLE"
+      ],
+      "event": "api-call",
+      "name": "IsObjectInThingsPossession",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "StartMovieSequence",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        true
+      ],
+      "event": "api-call",
+      "name": "PauseAllNonScriptedEntities",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "GetHealth",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_048_TEDDYGIRL_LOST_TEDDY",
+        0
+      ],
+      "event": "api-call",
+      "name": "SpeakAndWait",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_048_GIVE_TEDDY_TO_GIRL",
+        "TEXT_OBJECT_HERO_ANSWER_YES",
+        "TEXT_OBJECT_HERO_ANSWER_NO",
+        ""
+      ],
+      "event": "api-call",
+      "name": "GiveHeroYesNoQuestion",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsQuestionAnsweredYesOrNo",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "GetHealth",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_048_TEDDYGIRL_FOUND_TEDDY",
+        0
+      ],
+      "event": "api-call",
+      "name": "SpeakAndWait",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "OBJECT_TEDDY_BEAR_UNGIVEABLE"
+      ],
+      "event": "api-call",
+      "name": "TakeObjectFromHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GoodDeedsPerformed"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GoodDeedsPerformed",
+        1
+      ],
+      "event": "api-call",
+      "name": "SetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NewOakValeIntro: UNSUPPORTED retail call GiveHeroMorality(+deed)"
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BadDeedsPerformed"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_048_SCRMSG_DID_FIRST_GOOD_DEED"
+      ],
+      "event": "api-call",
+      "name": "DisplayGameInfo",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsGameInfoClickedPast",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_LOG_BASICS_MAP"
+      ],
+      "event": "api-call",
+      "name": "AddLogbookStoryEntryString",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHeroGold",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GivenSweets"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetActiveQuestName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "Q_NewOakValeIntro",
+        "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_02",
+        "",
+        ""
+      ],
+      "event": "api-call",
+      "name": "SetQuestCardObjective",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIGoodDeedCounter"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        0,
+        1,
+        -1
+      ],
+      "event": "api-call",
+      "name": "UpdateQuestInfoCounter",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "ClearThingHasInformation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TeddySolution",
+        "B"
+      ],
+      "event": "api-call",
+      "name": "SetMasterGameState",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        false
+      ],
+      "event": "api-call",
+      "name": "PauseAllNonScriptedEntities",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "EndMovieSequence",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "SpokeAboutFindingTeddy"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "NewOakValeIntro: UNSUPPORTED retail call CScriptThing::MsgIsHitByAnySpecialAbilityFrom"
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "ReleaseControl",
+      "receiver": "me",
+      "scope": "Entity"
+    }
+  ],
+  "fixtures": {
+    "Entity.AcquireControl": [
+      true
+    ],
+    "Entity.IsTalkedToByHero": [
+      true,
+      false
+    ],
+    "Quest.GetActiveQuestName": [
+      "Q_NewOakValeIntro"
+    ],
+    "Quest.GetHealth": [
+      100
+    ],
+    "Quest.GetHero": [
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetHeroGold": [
+      0
+    ],
+    "Quest.GetStateBool(GivenSweets)": [
+      false
+    ],
+    "Quest.GetStateInt(BadDeedsPerformed)": [
+      0
+    ],
+    "Quest.GetStateInt(GoodDeedsPerformed)": [
+      0
+    ],
+    "Quest.GetThingWithScriptName(NOVI_Bully)": [
+      {
+        "handle": "bully",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.IsObjectInThingsPossession": [
+      true
+    ],
+    "Quest.MsgIsGameInfoClickedPast": [
+      true
+    ],
+    "Quest.MsgIsQuestionAnsweredYesOrNo": [
+      1
+    ],
+    "Quest.NewScriptFrame": [
+      true,
+      false
+    ]
+  },
+  "function": "Main",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+  "sourceSha256": "c93a5c1f85e560fbc33732de17dcb59345994537dd6550b9cb172e2ac2c771b4"
+}

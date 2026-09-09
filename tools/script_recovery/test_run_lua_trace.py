@@ -47,6 +47,17 @@ class LuaTraceTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "instruction budget exceeded"):
                 run_trace(source, "Main", "quest", {}, instruction_budget=2_000)
 
+    def test_math_random_can_be_driven_deterministically(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "random.lua"
+            source.write_text("function Main(q) q:Record(math.random(0, 99), math.random(0, 5)) end",
+                              encoding="utf-8")
+            trace = run_trace(source, "Main", "quest", {"Lua.math.random": [0, 4]})
+            random_events = [event for event in trace["events"] if event["name"] == "random"]
+            self.assertEqual([event["arguments"] for event in random_events], [[0, 99], [0, 5]])
+            record = next(event for event in trace["events"] if event["name"] == "Record")
+            self.assertEqual(record["arguments"], [0, 4])
+
 
 if __name__ == "__main__":
     unittest.main()

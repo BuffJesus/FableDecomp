@@ -1,0 +1,24 @@
+{
+  "__meta__":{
+    "function":"Main","covers":["Main","GivenTeddy"],"kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Bully.lua",
+    "expect":["GiveHeroYesNoQuestion","GiveHeroGold","TakeObjectFromHero","DisplayGameInfo","AddLogbookStoryEntryString","ClearThingHasInformation"],
+    "note":"after his first conversation, the bully accepts the teddy, rewards one gold, records TeddyRuined and bad-deed kind 3, then exits on frame termination"
+  },
+  "Quest.NewScriptFrame":[true,true,true,false],
+  "Entity.AcquireControl":[true],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Quest.GetThingWithScriptName(NOVI_Victim)":[{"handle":"victim","scope":"Entity"}],
+  "Entity.IsTalkedToByHero":[true,true,false],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.IsObjectInThingsPossession":[true],
+  "Quest.GetHealth":[100],
+  "Quest.MsgIsQuestionAnsweredYesOrNo":[1],
+  "Quest.GetStateBool(VictimComplainsAboutLosingTeddy)":[true,false],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Quest.GetStateInt(TalkIntermittentTimer)":[901],
+  "Quest.GetTimer(901)":[1]
+}

@@ -1,0 +1,21 @@
+{
+  "__meta__":{
+    "function":"Main","covers":["Main","GivenTeddy"],"kind":"entity","source":"NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+    "expect":["GiveHeroYesNoQuestion","TakeObjectFromHero","DisplayGameInfo","AddLogbookStoryEntryString","SetMasterGameState","ReleaseControl"],
+    "note":"hero talks while carrying the teddy, answers yes, receives the first-good-deed flow, and the girl records TeddySolution B"
+  },
+  "Quest.NewScriptFrame":[true,false],
+  "Quest.GetThingWithScriptName(NOVI_Bully)":[{"handle":"bully","scope":"Entity"}],
+  "Entity.IsTalkedToByHero":[true,false],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.IsObjectInThingsPossession":[true],
+  "Entity.AcquireControl":[true],
+  "Quest.GetHealth":[100],
+  "Quest.MsgIsQuestionAnsweredYesOrNo":[1],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true],
+  "Quest.GetHeroGold":[0],
+  "Quest.GetStateBool(GivenSweets)":[false],
+  "Quest.GetActiveQuestName":["Q_NewOakValeIntro"]
+}

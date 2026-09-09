@@ -31,6 +31,12 @@ class ReconstructionCoverageTests(unittest.TestCase):
                      "evidence": "native-decompile", "argsKnown": True}
         self.assertEqual(status_for(operation, set(), False), "implemented-but-untraced")
 
+    def test_public_lifecycle_can_name_executed_private_helper(self):
+        meta = {"function": "Main", "covers": ["Main", "GivenTeddy"],
+                "source": "NewOakValeIntro/Entities/NOVI_Bully.lua"}
+        passed = {"status": "ran", "trace": "match"}
+        self.assertTrue(fixture_covers("entity", meta["source"], "GivenTeddy", meta, passed))
+
 
 if __name__ == "__main__":
     unittest.main()
