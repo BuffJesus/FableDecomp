@@ -1185,6 +1185,11 @@
       "compiles": true,
       "error": null,
       "file": "quests.lua"
+    },
+    {
+      "compiles": true,
+      "error": null,
+      "file": "retail_override.lua"
     }
   ],
   "fixtures": [
@@ -2040,7 +2045,7 @@
     "errors": 0,
     "fixtures": 105,
     "fixturesPassed": 105,
-    "luaFiles": 22,
+    "luaFiles": 23,
     "missingApis": 0,
     "syntaxErrors": 0,
     "unsupportedCallSites": 2,

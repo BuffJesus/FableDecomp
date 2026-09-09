@@ -1,6 +1,22 @@
 # NewOakValeIntro reconstruction handoff
 
-Status: **trace-tested reconstructed port** (shadow-only; not a verified retail port).
+Status: **trace-tested reconstructed port with experimental live allocator override** (playthrough in progress; not yet a verified retail port).
+
+## Live ForgeFSE playtest checkpoint (2026-09-09)
+
+ForgeFSE commit `6a7d719` adds a disabled-by-default, identity-preserving retail allocator hook.
+The first disposable runtime run proved that it matches native `Q_NewOakValeIntro`, preserves the
+retail script record, creates `NewOakValeIntro/NewOakValeIntro` as its Lua host, finalizes all 16
+entity bindings, and registers `StartBarrelTimer`, `WatchBarrels`, `WatchForGotGold`, and
+`ManageQuestCoreMarkers`. Three live entity hosts (`NOVI_Barrel`, `NOVI_TeddyGirl`, and
+`NOVI_AffairMan`) were observed loading before that run ended, with no New Oakvale-local Lua or C++
+exception in the log. This is runtime integration evidence, not an end-to-end playthrough.
+
+`refs/script_recovery/new_oakvale_intro/forgefse_runtime_playtest.json` is generated from the live
+log by `tools/script_recovery/verify_new_oakvale_runtime.py`. The isolated playtest registry at
+`refs/script_recovery/new_oakvale_intro/runtime_playtest/quests.lua` deliberately contains no custom
+quests: replacement is driven by `FSE/retail_override.lua`, so registering a second quest would be a
+dangerous identity collision.
 
 This status is intentionally provisional. A Lua file is not considered retail-correct while
 any operand, call target, argument order, branch, or lifecycle behavior remains marked unknown,

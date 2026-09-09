@@ -1,0 +1,27 @@
+{
+  "schema": "new-oakvale-forgefse-runtime/0.1",
+  "phase": "entity-host-loading",
+  "milestones": {
+    "hookInstalled": true,
+    "overrideArmed": true,
+    "allocatorReplaced": true,
+    "questHostCreated": true,
+    "questInitEntered": true,
+    "questMainEntered": true,
+    "entityBindingsFinalized": true
+  },
+  "entityBindingsDeclared": 16,
+  "entityScriptsLoaded": [
+    "NOVI_TeddyGirl",
+    "NOVI_AffairMan",
+    "NOVI_Barrel"
+  ],
+  "threadsRegistered": [
+    "StartBarrelTimer",
+    "WatchBarrels",
+    "WatchForGotGold",
+    "ManageQuestCoreMarkers"
+  ],
+  "errors": [],
+  "playthroughComplete": false
+}
