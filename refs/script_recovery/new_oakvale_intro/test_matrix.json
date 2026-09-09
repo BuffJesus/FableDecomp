@@ -762,6 +762,31 @@
       "events": 29
     },
     {
+      "fixture": "entity_theresa_accepts_chocolates_and_starts_raid",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "purpose": "Theresa meets a nearby chocolate-carrying hero, accepts the box and removes the live guard, then at the outro marker removes all three HUD elements, runs the outro and raid movie, sets AttackOver, and releases control",
+      "expects": [
+        "PlayCombatAnimation",
+        "RunCutsceneWithSetup",
+        "GiveHeroYesNoQuestion",
+        "RemoveThing",
+        "TakeObjectFromHero",
+        "SetQuestCardObjective",
+        "RemoveQuestInfoElement",
+        "PlayAVIMovie",
+        "FadeScreenOut",
+        "OverrideMusic",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 56
+    },
+    {
       "fixture": "entity_theresa_entry_cleanup",
       "function": "Main",
       "kind": "entity",

@@ -1543,6 +1543,14 @@
       "trace": "match"
     },
     {
+      "events": 56,
+      "fixture": "entity_theresa_accepts_chocolates_and_starts_raid.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 2,
       "fixture": "entity_theresa_entry_cleanup.json",
       "function": "Main",
@@ -1760,8 +1768,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 70,
-    "fixturesPassed": 70,
+    "fixtures": 71,
+    "fixturesPassed": 71,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

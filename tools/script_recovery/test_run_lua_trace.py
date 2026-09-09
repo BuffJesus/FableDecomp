@@ -59,6 +59,19 @@ class LuaTraceTests(unittest.TestCase):
             record = next(event for event in trace["events"] if event["name"] == "Record")
             self.assertEqual(record["arguments"], [0, 4])
 
+    def test_nested_fixture_handles_are_callable_entity_proxies(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "handle_vector.lua"
+            source.write_text(
+                "function Main(q) for _, thing in ipairs(q:GetAll()) do thing:IsAlive() end end",
+                encoding="utf-8")
+            trace = run_trace(source, "Main", "quest", {
+                "Quest.GetAll": [[{"handle": "first"}, {"handle": "second"}]],
+                "Entity.IsAlive": [True, False],
+            })
+            alive_calls = [event for event in trace["events"] if event["name"] == "IsAlive"]
+            self.assertEqual([event["receiver"] for event in alive_calls], ["first", "second"])
+
     def test_novi_pc_platform_and_distance_fallbacks(self):
         with tempfile.TemporaryDirectory() as directory:
             source = Path(directory) / "common_fallbacks.lua"

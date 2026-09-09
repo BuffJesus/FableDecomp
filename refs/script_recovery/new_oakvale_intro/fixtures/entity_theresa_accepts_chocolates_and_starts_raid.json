@@ -1,0 +1,20 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Theresa.lua","expect":["PlayCombatAnimation","RunCutsceneWithSetup","GiveHeroYesNoQuestion","RemoveThing","TakeObjectFromHero","SetQuestCardObjective","RemoveQuestInfoElement","PlayAVIMovie","FadeScreenOut","OverrideMusic","EndMovieSequence","ReleaseControl"],"note":"Theresa meets a nearby chocolate-carrying hero, accepts the box and removes the live guard, then at the outro marker removes all three HUD elements, runs the outro and raid movie, sets AttackOver, and releases control"},
+  "Quest.NewScriptFrame":[true,true],
+  "Quest.GetThingWithScriptName(M_TriggerOutro)":[{"handle":"outro_marker","scope":"Entity"}],
+  "Entity.AcquireControl":[true,true],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.IsDistanceBetweenThingsUnder":[true,true,true],
+  "Quest.IsObjectInThingsPossession":[true],
+  "Quest.GiveHeroYesNoQuestion":[1],
+  "Quest.GetAllThingsWithScriptName(NOVI_Guard)":[[{"handle":"guard","scope":"Entity"}]],
+  "Entity.IsAlive":[true],
+  "Quest.GetActiveQuestName":["Q_NewOakValeIntro"],
+  "Entity.IsTalkedToByHero":[false,false],
+  "Entity.MsgIsPresentedWithItem":[false,false],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Quest.GetStateInt(GUIBullyHealthCounter)":[101],
+  "Quest.GetStateInt(GUIGoodDeedCounter)":[102],
+  "Quest.GetStateInt(GUIBarrelCounter)":[103]
+}

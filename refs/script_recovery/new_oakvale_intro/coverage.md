@@ -28,7 +28,7 @@
 | NOVI_TeddyGirl | Main | 0x00DAF080 | 41 | `NewOakValeIntro/Entities/NOVI_TeddyGirl.lua` | entity_teddy_girl_main_terminated, entity_teddy_girl_returns_teddy, entity_teddy_girl_special_hit | native-decompile | implemented (uncertain args) |
 | NOVI_TeddyGirl | GivenTeddy | 0x00DB0600 | 5 | `NewOakValeIntro/Entities/NOVI_TeddyGirl.lua` | entity_teddy_girl_returns_teddy | native-decompile | implemented-and-traced |
 | NOVI_Theresa | Init | 0x00DAC4F0 | 7 | `NewOakValeIntro/Entities/NOVI_Theresa.lua` | entity_theresa_init | native-decompile | implemented-and-traced |
-| NOVI_Theresa | Main | 0x00DB97A0 | 48 | `NewOakValeIntro/Entities/NOVI_Theresa.lua` | entity_theresa_entry_cleanup | native-decompile | implemented-and-traced |
+| NOVI_Theresa | Main | 0x00DB97A0 | 48 | `NewOakValeIntro/Entities/NOVI_Theresa.lua` | entity_theresa_accepts_chocolates_and_starts_raid, entity_theresa_entry_cleanup | native-decompile | implemented-and-traced |
 | NOVI_Victim | Init | 0x00DAEEB0 | 8 | `NewOakValeIntro/Entities/NOVI_Victim.lua` | entity_victim_init | native-decompile | implemented-and-traced |
 | NOVI_Victim | Main | 0x00DBCD60 | 27 | `NewOakValeIntro/Entities/NOVI_Victim.lua` | entity_victim_first_hero_hit, entity_victim_freed_thanks, entity_victim_main_terminated, entity_victim_repeat_hit_bully_alive | native-decompile | implemented (uncertain args) |
 | NOVI_Villager | Init | 0x00DADF00 | 5 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | entity_villager_init | native-decompile | implemented-and-traced |

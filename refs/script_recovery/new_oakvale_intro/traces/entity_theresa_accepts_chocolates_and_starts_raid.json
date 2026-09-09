@@ -1,0 +1,651 @@
+{
+  "events": [
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "M_TriggerOutro"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "SKIP"
+      ],
+      "event": "api-call",
+      "name": "PlayCombatAnimation",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        5.0
+      ],
+      "event": "api-call",
+      "name": "IsDistanceBetweenThingsUnder",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        5.0
+      ],
+      "event": "api-call",
+      "name": "IsDistanceBetweenThingsUnder",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "StartMovieSequence",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        true
+      ],
+      "event": "api-call",
+      "name": "PauseAllNonScriptedEntities",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        true
+      ],
+      "event": "api-call",
+      "name": "FixMovieSequenceCamera",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": {
+        "1": "CS_OAKVALE_INTRO_THERESA_MEET",
+        "2": {
+          "HERO": {
+            "handle": "hero",
+            "scope": "Entity"
+          },
+          "THER": {
+            "handle": "me",
+            "scope": "Entity"
+          }
+        },
+        "4": false,
+        "5": true,
+        "6": false
+      },
+      "event": "api-call",
+      "name": "RunCutsceneWithSetup",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "OBJECT_CHOCOLATE_BOX_UNGIVEABLE",
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "IsObjectInThingsPossession",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_048_GIVE_CHOCOLATE_BOX",
+        "TEXT_OBJECT_HERO_ANSWER_YES",
+        "TEXT_OBJECT_HERO_ANSWER_NO",
+        ""
+      ],
+      "event": "api-call",
+      "name": "GiveHeroYesNoQuestion",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NOVI_Guard"
+      ],
+      "event": "api-call",
+      "name": "GetAllThingsWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsAlive",
+      "receiver": "guard",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "guard",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "RemoveThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": {
+        "1": "CS_OAKVALE_INTRO_THERESA_MEET_YES",
+        "2": {
+          "HERO": {
+            "handle": "hero",
+            "scope": "Entity"
+          },
+          "THER": {
+            "handle": "me",
+            "scope": "Entity"
+          }
+        },
+        "4": false,
+        "5": true,
+        "6": false
+      },
+      "event": "api-call",
+      "name": "RunCutsceneWithSetup",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GivenTheresaChocs",
+        true
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "OBJECT_CHOCOLATE_BOX_UNGIVEABLE"
+      ],
+      "event": "api-call",
+      "name": "TakeObjectFromHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetActiveQuestName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "Q_NewOakValeIntro",
+        "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_05",
+        "",
+        ""
+      ],
+      "event": "api-call",
+      "name": "SetQuestCardObjective",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "ClearThingHasInformation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        false
+      ],
+      "event": "api-call",
+      "name": "FixMovieSequenceCamera",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        false
+      ],
+      "event": "api-call",
+      "name": "PauseAllNonScriptedEntities",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "EndMovieSequence",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsPresentedWithItem",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsPresentedWithItem",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByAnySpecialAbilityFromHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        {
+          "handle": "outro_marker",
+          "scope": "Entity"
+        },
+        2.0
+      ],
+      "event": "api-call",
+      "name": "IsDistanceBetweenThingsUnder",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        false
+      ],
+      "event": "api-call",
+      "name": "DisplayQuestInfo",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIBullyHealthCounter"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        101
+      ],
+      "event": "api-call",
+      "name": "RemoveQuestInfoElement",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIGoodDeedCounter"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        102
+      ],
+      "event": "api-call",
+      "name": "RemoveQuestInfoElement",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIBarrelCounter"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        103
+      ],
+      "event": "api-call",
+      "name": "RemoveQuestInfoElement",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "StartMovieSequence",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        true
+      ],
+      "event": "api-call",
+      "name": "PauseAllNonScriptedEntities",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": {
+        "1": "CS_OAKVALE_INTRO_THERESA",
+        "2": {
+          "HERO": {
+            "handle": "hero",
+            "scope": "Entity"
+          },
+          "Theresa": {
+            "handle": "me",
+            "scope": "Entity"
+          }
+        },
+        "4": false,
+        "5": true,
+        "6": false
+      },
+      "event": "api-call",
+      "name": "RunCutsceneWithSetup",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "Data\\Video\\1_raid_on_oak_vale_comp.xmv"
+      ],
+      "event": "api-call",
+      "name": "PlayAVIMovie",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        0.5,
+        0.0
+      ],
+      "event": "api-call",
+      "name": "FadeScreenOut",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        25,
+        false,
+        false
+      ],
+      "event": "api-call",
+      "name": "OverrideMusic",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "AttackOver",
+        true
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        false
+      ],
+      "event": "api-call",
+      "name": "PauseAllNonScriptedEntities",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "EndMovieSequence",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "ReleaseControl",
+      "receiver": "me",
+      "scope": "Entity"
+    }
+  ],
+  "fixtures": {
+    "Entity.AcquireControl": [
+      true,
+      true
+    ],
+    "Entity.IsAlive": [
+      true
+    ],
+    "Entity.IsTalkedToByHero": [
+      false,
+      false
+    ],
+    "Entity.MsgIsHitByAnySpecialAbilityFromHero": [
+      false
+    ],
+    "Entity.MsgIsHitByHero": [
+      false
+    ],
+    "Entity.MsgIsPresentedWithItem": [
+      false,
+      false
+    ],
+    "Quest.GetActiveQuestName": [
+      "Q_NewOakValeIntro"
+    ],
+    "Quest.GetAllThingsWithScriptName(NOVI_Guard)": [
+      [
+        {
+          "handle": "guard",
+          "scope": "Entity"
+        }
+      ]
+    ],
+    "Quest.GetHero": [
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetStateInt(GUIBarrelCounter)": [
+      103
+    ],
+    "Quest.GetStateInt(GUIBullyHealthCounter)": [
+      101
+    ],
+    "Quest.GetStateInt(GUIGoodDeedCounter)": [
+      102
+    ],
+    "Quest.GetThingWithScriptName(M_TriggerOutro)": [
+      {
+        "handle": "outro_marker",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GiveHeroYesNoQuestion": [
+      1
+    ],
+    "Quest.IsDistanceBetweenThingsUnder": [
+      true,
+      true,
+      true
+    ],
+    "Quest.IsObjectInThingsPossession": [
+      true
+    ],
+    "Quest.NewScriptFrame": [
+      true,
+      true
+    ]
+  },
+  "function": "Main",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Theresa.lua",
+  "sourceSha256": "39e6d955838072a39e7519699d7d8bba90fe703bff5993e8c636037d3c2b6e5a"
+}

@@ -42,7 +42,7 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 70/70 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 71/71 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
@@ -63,7 +63,12 @@ Live-father coverage now runs the full `CS_OAKVALE_INTRO_FATHER` actor setup thr
 highlighting card and good-deed HUD counter, and separately verifies a two-good-deed gold payout,
 the exact `GetHeroGold() > 3` decision, objective-one fallback, movie cleanup, and final control
 release.
-The supporting trace-tool unit suite has 22/22 passing tests.
+Theresa coverage now connects the nearby-hero meet, accepted chocolate handover, live-guard
+removal, objective update, outro-marker transition, all three HUD removals, outro cutscene, raid
+movie, fade/music change, `AttackOver`, and final control release in one deterministic lifecycle.
+The supporting trace-tool unit suite has 23/23 passing tests. Fixture results now recursively
+materialize entity handles inside returned vectors, so collection APIs such as
+`GetAllThingsWithScriptName` exercise callable entity proxies rather than inert tables.
 
 The coverage manifest classifies 29 functions as implemented and traced, 17 as implemented
 with uncertain native arguments, 6 as lifecycle/data-only, no API-blocked functions, and

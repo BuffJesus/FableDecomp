@@ -45,6 +45,19 @@ local function normalize(value, seen)
 end
 
 local make_proxy
+local function materialize_fixture(value, seen)
+    if type(value) ~= "table" then return value end
+    if value.handle then return make_proxy(value.scope or "Entity", value.handle) end
+    seen = seen or {}
+    if seen[value] then return seen[value] end
+    local result = {}
+    seen[value] = result
+    for key, child in pairs(value) do
+        result[key] = materialize_fixture(child, seen)
+    end
+    return result
+end
+
 make_proxy = function(scope, handle)
     local object = { __trace_scope = scope, __trace_handle = handle }
     return setmetatable(object, {
@@ -71,10 +84,7 @@ make_proxy = function(scope, handle)
                 local position = (FIXTURE_POS[key] or 0) + 1
                 FIXTURE_POS[key] = position
                 local result = sequence[math.min(position, #sequence)]
-                if type(result) == "table" and result.handle then
-                    return make_proxy(result.scope or "Entity", result.handle)
-                end
-                return result
+                return materialize_fixture(result)
             end
         end
     })

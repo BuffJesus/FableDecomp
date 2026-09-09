@@ -359,6 +359,7 @@
       "operations": 48,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Theresa.lua",
       "fixtures": [
+        "entity_theresa_accepts_chocolates_and_starts_raid",
         "entity_theresa_entry_cleanup"
       ],
       "evidence": "native-decompile",
