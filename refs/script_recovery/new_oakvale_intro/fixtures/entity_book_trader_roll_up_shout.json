@@ -1,5 +1,5 @@
 {
-  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["GetTimer","random","IsDistanceBetweenThingsUnder","Log","AddNewConversation","AddPersonToConversation","PlayAnimation","AddLineToConversation","ReleaseControl"],"note":"an expired intermittent timer, winning 1-in-200 roll and nearby hero trigger the roll-up animation/conversation while preserving the unrecovered SetTimer duration as an explicit runtime audit event"},
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["GetTimer","random","IsDistanceBetweenThingsUnder","SetTimer","AddNewConversation","AddPersonToConversation","PlayAnimation","AddLineToConversation","ReleaseControl"],"note":"an expired intermittent timer, winning 1-in-200 roll and nearby hero set TalkIntermittentTimer to the recovered retail value 3 and trigger the roll-up animation/conversation"},
   "Quest.NewScriptFrame":[true,false],
   "Entity.AcquireControl":[true,true],
   "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],

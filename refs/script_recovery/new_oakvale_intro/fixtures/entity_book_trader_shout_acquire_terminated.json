@@ -1,5 +1,5 @@
 {
-  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["Log","AddNewConversation","AddPersonToConversation","AcquireControl","ReleaseControl"],"forbid":["PlayAnimation","AddLineToConversation"],"note":"the eligible roll-up branch preserves the unknown timer audit event and creates its retail conversation before action-control acquisition; termination there exits before animation or line queuing"},
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["SetTimer","AddNewConversation","AddPersonToConversation","AcquireControl","ReleaseControl"],"forbid":["PlayAnimation","AddLineToConversation"],"note":"the eligible roll-up branch sets TalkIntermittentTimer to the recovered retail value 3 and creates its retail conversation before action-control acquisition; termination there exits before animation or line queuing"},
   "Quest.NewScriptFrame":[true],
   "Entity.AcquireControl":[true,false],
   "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],

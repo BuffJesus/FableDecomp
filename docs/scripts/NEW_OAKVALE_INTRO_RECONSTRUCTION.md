@@ -54,7 +54,7 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 104/104 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 105/105 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
@@ -86,9 +86,9 @@ materialize entity handles inside returned vectors, so collection APIs such as
 `GetAllThingsWithScriptName` exercise callable entity proxies rather than inert tables.
 Book-trader coverage now includes the complete first sweets purchase at exactly three gold,
 the retail object/charge operands, objective and `GivenSweets` updates, plus the expired-timer,
-winning-random-roll, nearby-hero ambient shout. The shout trace deliberately records the missing
-`SetTimer` duration as an unsupported runtime event before continuing through its animation and
-conversation line. All four scripted-control acquisition sites now propagate host termination:
+winning-random-roll, nearby-hero ambient shout. Native instructions prove that the shout reads
+`TalkIntermittentTimer` at parent offset `0x104` and resets it to `3`; its traces assert the exact
+`SetTimer` event before the animation and conversation line. All four scripted-control acquisition sites now propagate host termination:
 loop-top failure exits before movement, sale failure before its movie/question, hit-action failure
 after the retail deed writes but before its movie, and shout-action failure after conversation
 creation but before animation or line queuing. Dedicated traces verify each cleanup boundary.
@@ -137,6 +137,9 @@ Villager coverage now joins a direct female-villager hit to the next talk intera
 first violence bad deed, attacked movie line, entity-local `HeroDidHitMe` memory, and female
 done-bad-deeds reproach. A separate female/both-deeds mutter collides with the previous speech
 index, yields the native retry frame, stores the replacement index, and queues the `_40` line.
+Affair-wife idle coverage now proves the equivalent native timer sequence independently: the
+nearby-hero “where's my husband?” branch reads `TalkIntermittentTimer`, writes value `3`, then
+queues its two-person conversation.
 
 The coverage manifest classifies 29 functions as implemented and traced, 17 as implemented
 with uncertain native arguments, 6 as lifecycle/data-only, no API-blocked functions, and
@@ -146,8 +149,8 @@ that every entity AI branch has been exercised in the game.
 
 ## Remaining parity limits
 
-Seven executable `NOVI.unsupported` call sites preserve retail intent where ForgeFSE
-does not expose a direct equivalent. The larger API requirements manifest records 66
+Five executable `NOVI.unsupported` call sites preserve retail intent where ForgeFSE
+does not expose a direct equivalent. The larger API requirements manifest records 63
 blocked semantic requirements or signature differences. No catalogued native function is
 currently classified as wholly or partially API-blocked, but important call-level limits remain:
 entity scripting acquisition/release semantics, morality values loaded from game data,
@@ -155,11 +158,11 @@ special-ability message variants, exact distance-boundary behavior, and some tim
 behavior. ForgeFSE's Windows-only runtime now selects retail PC platform branches explicitly;
 the missing position-distance helper is reconstructed with squared 3D vector math.
 
-The seven explicit sites are two conditional scheduler fallbacks (used only if the registered
+The five explicit sites are two conditional scheduler fallbacks (used only if the registered
 entity `AcquireControl`/`ReleaseControl` methods are unavailable), positive and negative deed
-morality calls whose game-data float is unrecovered, one `Pause`, and two `SetTimer` calls (trader
-shout and bully intimidation) whose retail duration operands were dropped by the decompiler.
-Supplying guessed durations or morality
+morality calls whose game-data float is unrecovered, and one `Pause`. The trader, Bully, and
+AffairWife timer operands formerly listed here are now instruction-level recovered as
+`TalkIntermittentTimer` and value `3`. Supplying guessed morality or pause operands
 would reduce the metric while making the reconstruction less faithful, so these remain runtime
 audit points.
 

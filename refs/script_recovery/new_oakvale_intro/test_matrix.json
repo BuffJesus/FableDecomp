@@ -146,6 +146,30 @@
       "events": 66
     },
     {
+      "fixture": "entity_affair_wife_wheres_husband",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "purpose": "an eligible nearby-hero idle iteration resets the exact TalkIntermittentTimer field to retail value 3 and queues the wife's where-is-my-husband conversation",
+      "expects": [
+        "GetTimer",
+        "random",
+        "IsDistanceBetweenThingsUnder",
+        "SetTimer",
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "AddLineToConversation",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "StartMovieSequence",
+        "SpeakAndWait"
+      ],
+      "result": "not-run",
+      "trace": null,
+      "events": null
+    },
+    {
       "fixture": "entity_affair_woman_busy_chat",
       "function": "Main",
       "kind": "entity",
@@ -671,12 +695,12 @@
       "function": "Main",
       "kind": "entity",
       "source": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
-      "purpose": "an expired intermittent timer, winning 1-in-200 roll and nearby hero trigger the roll-up animation/conversation while preserving the unrecovered SetTimer duration as an explicit runtime audit event",
+      "purpose": "an expired intermittent timer, winning 1-in-200 roll and nearby hero set TalkIntermittentTimer to the recovered retail value 3 and trigger the roll-up animation/conversation",
       "expects": [
         "GetTimer",
         "random",
         "IsDistanceBetweenThingsUnder",
-        "Log",
+        "SetTimer",
         "AddNewConversation",
         "AddPersonToConversation",
         "PlayAnimation",
@@ -736,9 +760,9 @@
       "function": "Main",
       "kind": "entity",
       "source": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
-      "purpose": "the eligible roll-up branch preserves the unknown timer audit event and creates its retail conversation before action-control acquisition; termination there exits before animation or line queuing",
+      "purpose": "the eligible roll-up branch sets TalkIntermittentTimer to the recovered retail value 3 and creates its retail conversation before action-control acquisition; termination there exits before animation or line queuing",
       "expects": [
-        "Log",
+        "SetTimer",
         "AddNewConversation",
         "AddPersonToConversation",
         "AcquireControl",
@@ -808,7 +832,7 @@
         "PlayAnimation"
       ],
       "forbids": [],
-      "result": "expectation-failed",
+      "result": "ran",
       "trace": "written",
       "events": 24
     },

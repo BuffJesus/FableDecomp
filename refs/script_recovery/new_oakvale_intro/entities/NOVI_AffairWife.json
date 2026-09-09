@@ -52,8 +52,8 @@
     {"name": "SPEAK_SELECTION_METHOD", "value": 0, "source": "pCVar27 = 0 before every _Speak_", "evidence": "native-decompile"},
     {"name": "MOVE_RUN", "value": 1, "source": "_MoveToPosition_ 3rd literal 1 line 104; ForgeFSE ENTITY_MOVE_RUN = 1", "evidence": "native-decompile"},
     {"name": "YESNO_ANSWER_YES", "value": 1, "source": "iVar10 == 1 line 299", "evidence": "native-decompile"},
-    {"name": "TIMER_ID_UNKNOWN", "value": 0, "source": "GetTimer()/SetTimer() arguments dropped lines 390/398", "evidence": "unknown"},
-    {"name": "TIMER_VALUE_UNKNOWN", "value": 0, "source": "SetTimer() value dropped line 398", "evidence": "unknown"},
+    {"name": "TIMER_FIELD", "value": "PARENT+0x104 TalkIntermittentTimer", "source": "0x00db32aa-0x00db32bd and 0x00db3317-0x00db332b load PARENT+0x104 for GetTimer/SetTimer", "evidence": "native-disassembly + PDB-name"},
+    {"name": "TIMER_VALUE", "value": 3, "source": "0x00db3328 pushes literal 3 before SetTimer slot 0x164", "evidence": "native-disassembly"},
     {"name": "ZERO_POSITION", "value": "DAT_0143e8e0", "source": "used when the husband pointer is null line 96", "evidence": "native-decompile"},
     {"name": "DAT_01375748", "value": true, "source": ".data byte 0x01 read from retail Fable.exe; 5th bool of every _PlayAnimation_", "evidence": "retail-bytes"}
   ],
@@ -101,9 +101,9 @@
     {"seq": 36, "function": "Main", "kind": "state-write", "native": "GoingForHusband = 1", "argsKnown": true, "lua": "GoingForHusband = true", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
     {"seq": 37, "function": "Main", "kind": "call", "native": "if health>0: res._Speak_(hero, \"TEXT_QST_048_AFFAIR_WIFE_PLEA\")", "argsKnown": true, "lua": "speak_if_alive(quest, me, TEXT_PLEA)", "forgeBinding": "Speak", "evidence": "native-decompile", "note": "answer != 1"},
     {"seq": 38, "function": "Main", "kind": "cleanup", "native": "LAB_00db3293: PauseAllNonScriptedEntities(0); ~MovieBase", "argsKnown": true, "lua": "end_movie", "forgeBinding": "PauseAllNonScriptedEntities|EndMovieSequence", "evidence": "native-decompile", "note": ""},
-    {"seq": 39, "function": "Main", "kind": "branch", "native": "GetTimer() == 0 && (ForceFirstTimeSpeak || rand() % 500 == 0)", "argsKnown": false, "lua": "ask_wheres_husband gate", "forgeBinding": "GetTimer", "evidence": "native-decompile", "note": "timer id dropped"},
+    {"seq": 39, "function": "Main", "kind": "branch", "native": "GetTimer(PARENT+0x104 TalkIntermittentTimer) == 0 && (ForceFirstTimeSpeak || rand() % 500 == 0)", "argsKnown": true, "lua": "ask_wheres_husband gate", "forgeBinding": "GetTimer", "evidence": "native-disassembly + PDB-name", "note": "0x00db32aa-0x00db32bd loads PARENT+0x104 and calls GetTimer slot 0x168"},
     {"seq": 40, "function": "Main", "kind": "branch", "native": "IsDistanceBetweenThingsUnder(me, GetHero(), 5.0)", "argsKnown": true, "lua": "NOVI.hero_within(quest, me, HERO_ASK_DISTANCE)", "forgeBinding": "IsDistanceBetweenThingsUnder", "evidence": "native-decompile", "note": ""},
-    {"seq": 41, "function": "Main", "kind": "call", "native": "GSI->SetTimer(); ForceFirstTimeSpeak = 0", "argsKnown": false, "lua": "quest:SetTimer(TIMER_ID_UNKNOWN, TIMER_VALUE_UNKNOWN); ForceFirstTimeSpeak = false", "forgeBinding": "SetTimer", "evidence": "native-decompile", "note": "both arguments dropped"},
+    {"seq": 41, "function": "Main", "kind": "call", "native": "GSI->SetTimer(PARENT+0x104 TalkIntermittentTimer, 3); ForceFirstTimeSpeak = 0", "argsKnown": true, "lua": "quest:SetTimer(timer, TIMER_VALUE); ForceFirstTimeSpeak = false", "forgeBinding": "SetTimer", "evidence": "native-disassembly + PDB-name", "note": "0x00db3317-0x00db332b loads PARENT+0x104, pushes literal 3, and calls SetTimer slot 0x164"},
     {"seq": 42, "function": "Main", "kind": "call", "native": "conv = AddNewConversation(); AddPersonToConversation(conv, GetHero()); AddLineToConversation(conv, WHERES_HUSBAND, 0, me, GetHero())", "argsKnown": true, "lua": "ask_wheres_husband conversation", "forgeBinding": "AddNewConversation|AddPersonToConversation|AddLineToConversation", "evidence": "native-decompile", "note": "AddNewConversation args dropped"},
     {"seq": 43, "function": "Main", "kind": "wait", "native": "NewScriptFrame + IsTerminating -> loop", "argsKnown": true, "lua": "NOVI.frame at idle loop end", "forgeBinding": "NewScriptFrame", "evidence": "native-decompile", "note": ""},
     {"seq": 44, "function": "Main", "kind": "branch", "native": "running loop: !SaidRunningLine && IsDistanceFromThingToPositionOver(me, me.GetHomePos(), 10.0)", "argsKnown": true, "lua": "NOVI.distance_from_thing_to_position_over in wait_until_husband_reached", "forgeBinding": "GetPos", "evidence": "native-decompile", "note": "squared 3D Lua fallback, exact boundary convention uncertain"},
@@ -127,7 +127,6 @@
     {"seq": 62, "function": "Main", "kind": "cleanup", "native": "LAB_00db3d90 / 3d6a / 3e16: DestroyLocal; ~MovieBase(main resource); return", "argsKnown": true, "lua": "NOVI.release(quest, me) on every return", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": "main resource released by destructor only"}
   ],
   "apiGaps": [
-    {"retail": "GetTimer(id) / SetTimer(id, value)", "reason": "registered, but both retail argument lists are dropped by the decompiler", "luaLocation": "ask_wheres_husband (TIMER_ID_UNKNOWN / TIMER_VALUE_UNKNOWN)"},
     {"retail": "StartScriptingEntity nested priority-4 resources (three distinct resource objects in the argue loop)", "reason": "ForgeFSE scheduling is host-managed", "luaLocation": "react_to_hit / talked_to_by_hero / argue_react_to_hit / argue_talked_to via NOVI.acquire/NOVI.release"},
     {"retail": "EntitySetAsKillable(me, 0, 0) / SetThingHasInformation(me, 0, 1, 0)", "reason": "ForgeFSE bindings expose one bool", "luaLocation": "Init"},
     {"retail": "EntitySetFacingAngleTowardsThing(me, thing, 1)", "reason": "ForgeFSE binding has two parameters; retail third argument 1 not representable", "luaLocation": "argue_react_to_hit / argue_talked_to"},
@@ -137,7 +136,6 @@
     {"retail": "~CScriptGameResourceObjectMovieBase ending the movie sequence", "reason": "implicit destructor behaviour; mapped to explicit EndMovieSequence (inference)", "luaLocation": "end_movie"}
   ],
   "uncertainties": [
-    "GetTimer/SetTimer ids and the timer value are dropped; TIMER_ID_UNKNOWN/TIMER_VALUE_UNKNOWN = 0 make the 'where's my husband' line re-eligible immediately (rand()%500 gate still applies after the first time).",
     "The 15.0 argue distance is read from 0x41700000 leaked into GetHero(); the decompiler's fVar33 values (0.0, 2.0133748e-38) are register garbage.",
     "EntitySetThingAsAllyOfThing argument pairs are dropped in both hit branches; (me, hero) + (hero, me) is inferred.",
     "The facing target after ON_HIT / THANKYOU_SINGLE in the argue loop (&stack0xffffff4c, third arg 1) is inferred to be the hero.",

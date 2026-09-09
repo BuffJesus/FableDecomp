@@ -57,8 +57,7 @@ local HERO_ABILITY_IGNORED_ON_HIT = 14    -- EHeroAbility 0xe literal (confront-
 local SPEAK_SELECTION_METHOD = 0          -- _Speak_ third argument literal 0
 local MOVE_RUN = 1                        -- EScriptEntityMoveType literal 1
 local YESNO_ANSWER_YES = 1                -- MsgIsQuestionAnsweredYesOrNo() == 1
-local TIMER_ID_UNKNOWN = 0                -- unknown: GetTimer()/SetTimer() arguments dropped by the decompiler
-local TIMER_VALUE_UNKNOWN = 0             -- unknown: SetTimer() value dropped by the decompiler
+local TIMER_VALUE = 3                     -- native push 3 at 0x00db3328
 local ZERO_POSITION = { x = 0.0, y = 0.0, z = 0.0 }   -- DAT_0143e8e0: used when the husband thing is missing
 
 -- Entity-local retail fields (this+0x1c..0x1e, PDB names)
@@ -175,10 +174,11 @@ end
 
 -- Phase ASK: timed "where's my husband?" conversation line to a nearby hero.
 local function ask_wheres_husband(quest, me)
-    if quest:GetTimer(TIMER_ID_UNKNOWN) ~= 0 then return end
+    local timer = F.get(quest, F.TalkIntermittentTimer)
+    if quest:GetTimer(timer) ~= 0 then return end
     if not (ForceFirstTimeSpeak or math.random(0, ASK_AGAIN_CHANCE_ONE_IN - 1) == 0) then return end
     if not NOVI.hero_within(quest, me, HERO_ASK_DISTANCE) then return end
-    quest:SetTimer(TIMER_ID_UNKNOWN, TIMER_VALUE_UNKNOWN)
+    quest:SetTimer(timer, TIMER_VALUE)
     ForceFirstTimeSpeak = false
     local hero = quest:GetHero()
     local conv = quest:AddNewConversation(me, false, false)   -- retail args dropped by the decompiler

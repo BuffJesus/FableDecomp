@@ -4599,8 +4599,8 @@
           "script": "NOVI_BookTrader",
           "function": "Main",
           "seq": 25,
-          "native": "GetTimer(?) == 0 && rand() % 200 == 0 && IsDistanceBetweenThingsUnder(me, GetHero(), 20.0)",
-          "evidence": "native-decompile"
+          "native": "GetTimer(PARENT+0x104 TalkIntermittentTimer) == 0 && rand() % 200 == 0 && IsDistanceBetweenThingsUnder(me, GetHero(), 20.0)",
+          "evidence": "native-disassembly + PDB-name"
         },
         {
           "script": "NOVI_Bully",
@@ -4694,7 +4694,7 @@
         "NOVI_AffairWife#48: 15.0f leaked into GetHero(0x41700000); the decompiler shows fVar33 = 0.0 / garbage",
         "NOVI_BarrelMan#36: CanThingBe_Seen arg order (me, hero) vs (hero, me) not recoverable from the decompile",
         "NOVI_BarrelMan#73: CRT rand() replaced by math.random",
-        "NOVI_BookTrader#25: timer id dropped; Lua resolves the registered intermittent timer ID from quest state (inference)",
+        "NOVI_BookTrader#25: 0x00db4ce6-0x00db4cf9 loads PARENT+0x104 and calls GetTimer slot 0x168",
         "NOVI_Guard#22: the first (pre-loop) check's distance register is polluted by the previous call's literal 1; the in-loop re-check uses DAT_013ac840 = 3.0, assumed for both",
         "NOVI_TeddyGirl#27: the 'thing' at &uStack_14c is the NOVI_Bully lookup from seq 7 (inference from the object built at lines 16-22)",
         "NOVI_TeddyGirl#32: slot 0x18 = GetPos; over is the complement of the registered under predicate (equality boundary uncertain)",
@@ -6319,8 +6319,8 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 39,
-          "native": "GetTimer() == 0 && (ForceFirstTimeSpeak || rand() % 500 == 0)",
-          "evidence": "native-decompile"
+          "native": "GetTimer(PARENT+0x104 TalkIntermittentTimer) == 0 && (ForceFirstTimeSpeak || rand() % 500 == 0)",
+          "evidence": "native-disassembly + PDB-name"
         },
         {
           "script": "NOVI_BarrelMan",
@@ -6354,8 +6354,8 @@
           "script": "NOVI_BookTrader",
           "function": "Main",
           "seq": 25,
-          "native": "GetTimer(?) == 0 && rand() % 200 == 0 && IsDistanceBetweenThingsUnder(me, GetHero(), 20.0)",
-          "evidence": "native-decompile"
+          "native": "GetTimer(PARENT+0x104 TalkIntermittentTimer) == 0 && rand() % 200 == 0 && IsDistanceBetweenThingsUnder(me, GetHero(), 20.0)",
+          "evidence": "native-disassembly + PDB-name"
         },
         {
           "script": "NOVI_Bully",
@@ -6395,12 +6395,12 @@
       ],
       "signatureConfidence": "low",
       "semanticDifferences": [
-        "NOVI_AffairWife#39: timer id dropped",
+        "NOVI_AffairWife#39: 0x00db32aa-0x00db32bd loads PARENT+0x104 and calls GetTimer slot 0x168",
         "NOVI_BarrelMan#25: case 2",
         "NOVI_BarrelMan#61: decompile labels the GetPos call GSI->IsXbox because thing slot +0x18 collides with the GSI IsXbox slot; asm proves it is a CScriptThing call",
         "NOVI_BarrelThug#19: timer id dropped; Lua resolves F.WatchTimer's registered ID (inference)",
         "NOVI_BarrelThug#24: skipped when no tier matched (goto LAB_00db7924)",
-        "NOVI_BookTrader#25: timer id dropped; Lua resolves the registered intermittent timer ID from quest state (inference)",
+        "NOVI_BookTrader#25: 0x00db4ce6-0x00db4cf9 loads PARENT+0x104 and calls GetTimer slot 0x168",
         "NOVI_Bully#66: 0x00dbc59b-0x00dbc5ae loads PARENT+0x104 and calls GetTimer slot 0x168",
         "NOVI_CreatedBeetle#3: the second GetTimer call in the decompile has its arg dropped; asm/retail sig GetTimer(long) implies the same timer id",
         "Q_NewOakValeIntro#44: timer id register-passed; WatchTimer (0x108) inferred from the later explicit GetTimer(this+0x108) in the same function"
@@ -6418,8 +6418,8 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 41,
-          "native": "GSI->SetTimer(); ForceFirstTimeSpeak = 0",
-          "evidence": "native-decompile"
+          "native": "GSI->SetTimer(PARENT+0x104 TalkIntermittentTimer, 3); ForceFirstTimeSpeak = 0",
+          "evidence": "native-disassembly + PDB-name"
         },
         {
           "script": "NOVI_BarrelMan",
@@ -6453,8 +6453,8 @@
           "script": "NOVI_BookTrader",
           "function": "Main",
           "seq": 26,
-          "native": "SetTimer(?, ?)",
-          "evidence": "native-decompile"
+          "native": "SetTimer(PARENT+0x104 TalkIntermittentTimer, 3)",
+          "evidence": "native-disassembly + PDB-name"
         },
         {
           "script": "NOVI_Bully",
@@ -6485,34 +6485,17 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
-        "NOVI_AffairWife#41: both arguments dropped",
+        "NOVI_AffairWife#41: 0x00db3317-0x00db332b loads PARENT+0x104, pushes literal 3, and calls SetTimer slot 0x164",
         "NOVI_BarrelMan#19: case 1",
         "NOVI_BarrelMan#61: decompile labels the GetPos call GSI->IsXbox because thing slot +0x18 collides with the GSI IsXbox slot; asm proves it is a CScriptThing call",
-        "NOVI_BookTrader#26: timer identity inferred; duration remains unknown and is not guessed",
+        "NOVI_BookTrader#26: 0x00db4d4c-0x00db4d60 loads PARENT+0x104, pushes literal 3, and calls SetTimer slot 0x164",
         "NOVI_Bully#68: 0x00dbc614-0x00dbc62c loads PARENT+0x104, pushes literal 3, and calls SetTimer slot 0x164",
         "Q_NewOakValeIntro#9: timer ids come from RegisterTimer in the retail constructor @0x00DAAC00; Lua registers them in Init"
       ],
       "fallbackStatus": "direct",
       "blocked": false
-    },
-    {
-      "operation": "GetTimer(id) / SetTimer(id, value)",
-      "proposedForgeCall": null,
-      "bindingExists": false,
-      "bindingScope": null,
-      "nativeEvidence": [
-        {
-          "script": "NOVI_AffairWife",
-          "reason": "registered, but both retail argument lists are dropped by the decompiler",
-          "luaLocation": "ask_wheres_husband (TIMER_ID_UNKNOWN / TIMER_VALUE_UNKNOWN)"
-        }
-      ],
-      "signatureConfidence": "n/a",
-      "semanticDifferences": [],
-      "fallbackStatus": "explicit-gap",
-      "blocked": true
     },
     {
       "operation": "StartScriptingEntity nested priority-4 resources (three distinct resource objects in the argue loop)",
@@ -7882,23 +7865,6 @@
       "semanticDifferences": [],
       "fallbackStatus": "direct",
       "blocked": false
-    },
-    {
-      "operation": "SetTimer(id, value) in the shout branch",
-      "proposedForgeCall": null,
-      "bindingExists": false,
-      "bindingScope": null,
-      "nativeEvidence": [
-        {
-          "script": "NOVI_BookTrader",
-          "reason": "timer identity is inferred as TalkIntermittentTimer; duration remains dropped by the decompiler",
-          "luaLocation": "maybe_shout"
-        }
-      ],
-      "signatureConfidence": "n/a",
-      "semanticDifferences": [],
-      "fallbackStatus": "explicit-gap",
-      "blocked": true
     },
     {
       "operation": "GSI vtable slot 0x5ec(bool)",
