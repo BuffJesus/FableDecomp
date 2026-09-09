@@ -1333,6 +1333,14 @@
       "trace": "match"
     },
     {
+      "events": 82,
+      "fixture": "entity_barrel_man_returns_and_thanks_hero.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 12,
       "fixture": "entity_barrel_pc_tutorial.json",
       "function": "Main",
@@ -1870,8 +1878,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 84,
-    "fixturesPassed": 84,
+    "fixtures": 85,
+    "fixturesPassed": 85,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

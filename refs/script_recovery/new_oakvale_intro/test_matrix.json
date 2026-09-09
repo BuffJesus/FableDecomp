@@ -331,6 +331,32 @@
       "events": 1
     },
     {
+      "fixture": "entity_barrel_man_returns_and_thanks_hero",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "purpose": "after handing over the warehouse, WatchTimer reaches fifteen; the barrel man reappears at the off-screen walk-off marker, returns to his start, sees and thanks the hero, awards the first good deed, restores his normal brain, and releases control",
+      "expects": [
+        "EntityTeleportToThing",
+        "GetTimer",
+        "IsCameraPosOnScreen",
+        "EntitySetCutsceneBehaviour",
+        "EntitySetFacingAngleTowardsThing",
+        "CanThingBe_Seen_ByOtherThing",
+        "Speak",
+        "DisplayGameInfo",
+        "AddLogbookStoryEntryString",
+        "SetQuestCardObjective",
+        "UpdateQuestInfoCounter",
+        "SetCreatureBrain",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 82
+    },
+    {
       "fixture": "entity_barrel_pc_tutorial",
       "function": "Main",
       "kind": "entity",
