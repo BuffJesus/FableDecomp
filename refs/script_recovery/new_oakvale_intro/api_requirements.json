@@ -1097,8 +1097,8 @@
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 35,
-          "native": "GSI->EntitySetAsUseMovementInActions(); GSI->SetIsPushableByHero(copy of me, ?)",
-          "evidence": "inference"
+          "native": "GSI->EntitySetAsUseMovementInActions(me, true); GSI->SetIsPushableByHero(me, true)",
+          "evidence": "asm 0xdb27a3-0xdb27c6"
         },
         {
           "script": "NOVI_BookTrader",
@@ -1152,7 +1152,7 @@
       ],
       "signatureConfidence": "low",
       "semanticDifferences": [
-        "NOVI_AffairWoman#35: both argument lists dropped",
+        "NOVI_AffairWoman#35: each call has a literal push 1; the second receives a by-value copy of ME_THING. Corrects the prior false inference",
         "NOVI_Victim#13: bool args dropped; inferred as undoing Init (scared=false, pushable=true, movement=true)"
       ],
       "fallbackStatus": "direct",
@@ -1203,8 +1203,8 @@
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 35,
-          "native": "GSI->EntitySetAsUseMovementInActions(); GSI->SetIsPushableByHero(copy of me, ?)",
-          "evidence": "inference"
+          "native": "GSI->EntitySetAsUseMovementInActions(me, true); GSI->SetIsPushableByHero(me, true)",
+          "evidence": "asm 0xdb27a3-0xdb27c6"
         },
         {
           "script": "NOVI_BookTrader",
@@ -1238,7 +1238,7 @@
       "signatureConfidence": "low",
       "semanticDifferences": [
         "NOVI_AffairWife#15: pCVar27 = 1 loaded beside the call; target inferred",
-        "NOVI_AffairWoman#35: both argument lists dropped",
+        "NOVI_AffairWoman#35: each call has a literal push 1; the second receives a by-value copy of ME_THING. Corrects the prior false inference",
         "NOVI_Victim#13: bool args dropped; inferred as undoing Init (scared=false, pushable=true, movement=true)"
       ],
       "fallbackStatus": "direct",
@@ -1525,8 +1525,8 @@
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 15,
-          "native": "while(!StartScriptingEntity(me,res2,?)) NewScriptFrame",
-          "evidence": "native-decompile"
+          "native": "while(!StartScriptingEntity(me,res2,4)) NewScriptFrame",
+          "evidence": "asm 0xdb22b8-0xdb230b"
         },
         {
           "script": "NOVI_AffairWoman",
@@ -2139,7 +2139,7 @@
         "NOVI_AffairWife#12: priority dropped; retail repeats the wait loop every iteration",
         "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
         "NOVI_AffairWife#62: main resource released by destructor only",
-        "NOVI_AffairWoman#15: priority dropped in this branch",
+        "NOVI_AffairWoman#15: push 4, nested resource, and ME_THING precede GSI slot 0x20",
         "NOVI_AffairWoman#38: same idiom that precedes every StartScriptingEntity; here no re-acquire follows",
         "NOVI_AffairWoman#41: normal exit of Main",
         "NOVI_Barrel#8: idle forever",
@@ -2395,8 +2395,8 @@
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 12,
-          "native": "me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(?,HERO))",
-          "evidence": "native-decompile"
+          "native": "me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "asm 0xdb217c-0xdb21f2"
         },
         {
           "script": "NOVI_BarrelMan",
@@ -2474,7 +2474,7 @@
         "NOVI_AffairMan#12: CScriptThing vtable slots 0x54/0xa8/0xa4 resolved from retail vtable 0x1238c8c; ability enum dropped here",
         "NOVI_AffairWife#19: idle hit check; ability enum dropped here, 0xe visible at line 511",
         "NOVI_AffairWife#51: line 511 shows the 0xe literal",
-        "NOVI_AffairWoman#12: CScriptThing vtable slots 0x54/0xa8/0xa4 (retail vtable 0x1238c8c)",
+        "NOVI_AffairWoman#12: CScriptThing slots 0x54/0xa8/0xa4; push 0xe at 0xdb21ea directly proves ability 14",
         "NOVI_BarrelMan#51: the ppuVar17 & 1/2/4/8 flag writes are decompiler noise (local bookkeeping of which message was polled)",
         "NOVI_BarrelThug#25: 0xdb7993 explicitly pushes ability 0xe into CScriptThing slot 0xa4",
         "NOVI_BookTrader#9: CScriptThing slots 0x54/0xa8/0xa4 receive SCRIPT_NAME_HERO; 0xdb42ab explicitly pushes ability 0xe",
@@ -2514,8 +2514,8 @@
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 12,
-          "native": "me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(?,HERO))",
-          "evidence": "native-decompile"
+          "native": "me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "asm 0xdb217c-0xdb21f2"
         },
         {
           "script": "NOVI_BarrelMan",
@@ -2593,7 +2593,7 @@
         "NOVI_AffairMan#12: CScriptThing vtable slots 0x54/0xa8/0xa4 resolved from retail vtable 0x1238c8c; ability enum dropped here",
         "NOVI_AffairWife#19: idle hit check; ability enum dropped here, 0xe visible at line 511",
         "NOVI_AffairWife#51: line 511 shows the 0xe literal",
-        "NOVI_AffairWoman#12: CScriptThing vtable slots 0x54/0xa8/0xa4 (retail vtable 0x1238c8c)",
+        "NOVI_AffairWoman#12: CScriptThing slots 0x54/0xa8/0xa4; push 0xe at 0xdb21ea directly proves ability 14",
         "NOVI_BarrelMan#51: the ppuVar17 & 1/2/4/8 flag writes are decompiler noise (local bookkeeping of which message was polled)",
         "NOVI_BarrelThug#25: 0xdb7993 explicitly pushes ability 0xe into CScriptThing slot 0xa4",
         "NOVI_BookTrader#9: CScriptThing slots 0x54/0xa8/0xa4 receive SCRIPT_NAME_HERO; 0xdb42ab explicitly pushes ability 0xe",
@@ -2633,8 +2633,8 @@
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 12,
-          "native": "me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(?,HERO))",
-          "evidence": "native-decompile"
+          "native": "me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "asm 0xdb217c-0xdb21f2"
         },
         {
           "script": "NOVI_BarrelMan",
@@ -2712,7 +2712,7 @@
         "NOVI_AffairMan#12: CScriptThing vtable slots 0x54/0xa8/0xa4 resolved from retail vtable 0x1238c8c; ability enum dropped here",
         "NOVI_AffairWife#19: idle hit check; ability enum dropped here, 0xe visible at line 511",
         "NOVI_AffairWife#51: line 511 shows the 0xe literal",
-        "NOVI_AffairWoman#12: CScriptThing vtable slots 0x54/0xa8/0xa4 (retail vtable 0x1238c8c)",
+        "NOVI_AffairWoman#12: CScriptThing slots 0x54/0xa8/0xa4; push 0xe at 0xdb21ea directly proves ability 14",
         "NOVI_BarrelMan#51: the ppuVar17 & 1/2/4/8 flag writes are decompiler noise (local bookkeeping of which message was polled)",
         "NOVI_BarrelThug#25: 0xdb7993 explicitly pushes ability 0xe into CScriptThing slot 0xa4",
         "NOVI_BookTrader#9: CScriptThing slots 0x54/0xa8/0xa4 receive SCRIPT_NAME_HERO; 0xdb42ab explicitly pushes ability 0xe",
@@ -2773,15 +2773,15 @@
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 14,
-          "native": "GSI->StartMovieSequence(\"\"); GSI->PauseAllNonScriptedEntities()",
-          "evidence": "native-decompile"
+          "native": "GSI->StartMovieSequence(\"\"); GSI->PauseAllNonScriptedEntities(true)",
+          "evidence": "asm 0xdb226c-0xdb22b2"
         },
         {
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 23,
-          "native": "GSI->StartMovieSequence(\"\"); GSI->PauseAllNonScriptedEntities(); GetHero(); GSI->EntitySetFacingAngleTowardsThing()",
-          "evidence": "native-decompile"
+          "native": "GSI->StartMovieSequence(\"\"); GSI->PauseAllNonScriptedEntities(true); GSI->EntitySetFacingAngleTowardsThing(man, GetHero(), false)",
+          "evidence": "asm 0xdb2445-0xdb24a5"
         },
         {
           "script": "NOVI_BarrelMan",
@@ -2993,8 +2993,8 @@
         "NOVI_AffairMan#21: TALK branch",
         "NOVI_AffairWife#27: slot resolved from retail vtable 0x1260f0c; argument dropped, true inferred",
         "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
-        "NOVI_AffairWoman#14: pause argument dropped; true inferred from sibling scripts",
-        "NOVI_AffairWoman#23: facing args dropped; me->hero inferred",
+        "NOVI_AffairWoman#14: push 1 immediately precedes GSI slot 0x5ec",
+        "NOVI_AffairWoman#23: the +0x24 local is the man returned at 0xdb2018-0xdb2027; push 0, GetHero, then that local prove (man, hero, false). Corrects the prior me->hero inference",
         "NOVI_BarrelThug#16: movie starts BEFORE the priority-4 acquire here, so failure must unpause/end it before Main releases control",
         "NOVI_BookTrader#13: acquisition pushes priority 4, resource, and stored ME_THING. Slot 0x5c8 constructs the empty-name movie resource and slot 0x5ec receives true; the same slot's true/false bracketing is PauseAllNonScriptedEntities throughout this quest",
         "NOVI_TeddyGirl#35: failed chat acquisition exits before opening the movie",
@@ -3084,22 +3084,22 @@
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 14,
-          "native": "GSI->StartMovieSequence(\"\"); GSI->PauseAllNonScriptedEntities()",
-          "evidence": "native-decompile"
+          "native": "GSI->StartMovieSequence(\"\"); GSI->PauseAllNonScriptedEntities(true)",
+          "evidence": "asm 0xdb226c-0xdb22b2"
         },
         {
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 19,
-          "native": "GSI->PauseAllNonScriptedEntities(); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "GSI->PauseAllNonScriptedEntities(false); ~MovieBase",
+          "evidence": "asm 0xdb23cf-0xdb23e2 and termination mirror 0xdb26f8-0xdb2710"
         },
         {
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 23,
-          "native": "GSI->StartMovieSequence(\"\"); GSI->PauseAllNonScriptedEntities(); GetHero(); GSI->EntitySetFacingAngleTowardsThing()",
-          "evidence": "native-decompile"
+          "native": "GSI->StartMovieSequence(\"\"); GSI->PauseAllNonScriptedEntities(true); GSI->EntitySetFacingAngleTowardsThing(man, GetHero(), false)",
+          "evidence": "asm 0xdb2445-0xdb24a5"
         },
         {
           "script": "NOVI_AffairWoman",
@@ -3468,9 +3468,9 @@
         "NOVI_AffairWife#25: hit branch skips the talked-to check",
         "NOVI_AffairWife#27: slot resolved from retail vtable 0x1260f0c; argument dropped, true inferred",
         "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
-        "NOVI_AffairWoman#14: pause argument dropped; true inferred from sibling scripts",
+        "NOVI_AffairWoman#14: push 1 immediately precedes GSI slot 0x5ec",
         "NOVI_AffairWoman#19: on termination inside the hit branch TalkingToWoman is left true (retail)",
-        "NOVI_AffairWoman#23: facing args dropped; me->hero inferred",
+        "NOVI_AffairWoman#23: the +0x24 local is the man returned at 0xdb2018-0xdb2027; push 0, GetHero, then that local prove (man, hero, false). Corrects the prior me->hero inference",
         "NOVI_BookTrader#13: acquisition pushes priority 4, resource, and stored ME_THING. Slot 0x5c8 constructs the empty-name movie resource and slot 0x5ec receives true; the same slot's true/false bracketing is PauseAllNonScriptedEntities throughout this quest",
         "NOVI_Bully#27: also executed on the terminate paths inside the scope",
         "NOVI_Guard#30: arg dropped; every exit path calls PauseAllNonScriptedEntities(0), so the entry value is true",
@@ -4095,8 +4095,8 @@
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 19,
-          "native": "GSI->PauseAllNonScriptedEntities(); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "GSI->PauseAllNonScriptedEntities(false); ~MovieBase",
+          "evidence": "asm 0xdb23cf-0xdb23e2 and termination mirror 0xdb26f8-0xdb2710"
         },
         {
           "script": "NOVI_AffairWoman",
@@ -4894,15 +4894,15 @@
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 23,
-          "native": "GSI->StartMovieSequence(\"\"); GSI->PauseAllNonScriptedEntities(); GetHero(); GSI->EntitySetFacingAngleTowardsThing()",
-          "evidence": "native-decompile"
+          "native": "GSI->StartMovieSequence(\"\"); GSI->PauseAllNonScriptedEntities(true); GSI->EntitySetFacingAngleTowardsThing(man, GetHero(), false)",
+          "evidence": "asm 0xdb2445-0xdb24a5"
         },
         {
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 26,
-          "native": "GSI->EntitySetFacingAngleTowardsThing(&stack0xffffff38, me, 0)",
-          "evidence": "inference"
+          "native": "GSI->EntitySetFacingAngleTowardsThing(man, me, false)",
+          "evidence": "asm 0xdb25b4-0xdb25c1"
         },
         {
           "script": "NOVI_BarrelMan",
@@ -5002,8 +5002,8 @@
         "NOVI_AffairMan#41: LAB_00db1593; X/Y are stack copies (&stack0xfffffea8 / &stack0xfffffeb4); identities inferred",
         "NOVI_AffairMan#45: args dropped",
         "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
-        "NOVI_AffairWoman#23: facing args dropped; me->hero inferred",
-        "NOVI_AffairWoman#26: first arg is a stack copy; the man is inferred",
+        "NOVI_AffairWoman#23: the +0x24 local is the man returned at 0xdb2018-0xdb2027; push 0, GetHero, then that local prove (man, hero, false). Corrects the prior me->hero inference",
+        "NOVI_AffairWoman#26: the +0x24 local is the stored man; push 0 and ME_THING prove the full call",
         "NOVI_BarrelMan#34: push 0 precedes GetHero; the returned hero and stored ME_THING (EDI) are then pushed before GSI slot 0x76c, proving (me, hero, false). The binding drops the trailing bool",
         "NOVI_Bully#65: target inferred (hero); could be the victim",
         "NOVI_Victim#12: facing args dropped; bully inferred",
@@ -6612,8 +6612,8 @@
           "script": "NOVI_AffairWoman",
           "function": "Main",
           "seq": 40,
-          "native": "GSI->RemoveThing()",
-          "evidence": "native-decompile"
+          "native": "GSI->RemoveThing(me, false, true)",
+          "evidence": "asm 0xdb2959-0xdb2965"
         },
         {
           "script": "NOVI_Bully",
@@ -6646,7 +6646,7 @@
       ],
       "signatureConfidence": "low",
       "semanticDifferences": [
-        "NOVI_AffairWoman#40: argument dropped; me inferred (she is never seen again)",
+        "NOVI_AffairWoman#40: push 1, push 0, and ME_THING precede GSI slot 0x1b0; the binding exposes only the thing",
         "NOVI_Bully#62: ForgeFSE RemoveThing takes 1 arg; retail (me, 0, 1). Script ends here.",
         "NOVI_CreatedBeetle#4: retail sig RemoveThing(const CScriptThing&, bool, bool); binding takes only the thing. The bare IsTerminating guard is folded into the preceding NOVI.frame",
         "NOVI_TeddyGirl#33: arg dropped; me is the only thing in scope besides wife"

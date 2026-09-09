@@ -105,7 +105,7 @@ end
 local function react_to_hit(quest, me)
     F.set(quest, F.TalkingToWoman, true)
     quest:StartMovieSequence()
-    quest:PauseAllNonScriptedEntities(true)           -- retail argument dropped; inference: true (matches the sibling scripts)
+    quest:PauseAllNonScriptedEntities(true)
     if not NOVI.acquire(quest, me, CUTSCENE_CONTROL_PRIORITY) then end_talk_cutscene(quest, me); return false end
     if not speak_if_alive(quest, me, TEXT_ON_HIT) then end_talk_cutscene(quest, me); return false end
     Deeds.add_bad(quest, me, BAD_DEED_HIT_WOMAN)
@@ -121,11 +121,11 @@ local function talked_to_by_hero(quest, me, man)
     me:ClearCommands()
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
-    quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero())   -- retail args dropped; inference: face the hero
+    quest:EntitySetFacingAngleTowardsThing(man, quest:GetHero())  -- retail (man, hero, false); binding drops false
     if not NOVI.acquire(quest, me, CUTSCENE_CONTROL_PRIORITY) then end_talk_cutscene(quest, me); return false end
     if not speak_if_alive(quest, me, TEXT_BUSY) then end_talk_cutscene(quest, me); return false end
     -- retail EntitySetFacingAngleTowardsThing(<thing>, me, 0): inference — the man is turned back to face her
-    if man then quest:EntitySetFacingAngleTowardsThing(man, me) end
+    if man then quest:EntitySetFacingAngleTowardsThing(man, me) end -- retail trailing false is not exposed
     F.set(quest, F.TalkingToWoman, false)
     end_talk_cutscene(quest, me)
     return true
@@ -146,8 +146,8 @@ end
 -- Phase RUN_OFF: wife arrived — run to the marker, wait until off-screen, remove self. Ends Main.
 local function run_off(quest, me)
     local point = quest:GetThingWithScriptName(SCRIPT_NAME_RUN_OFF_POINT)
-    quest:EntitySetAsUseMovementInActions(me, true)      -- retail args dropped; inference: (me, true) so she can run
-    me:SetIsPushableByHero(false)                        -- retail arg dropped; inference: stays unpushable while fleeing
+    quest:EntitySetAsUseMovementInActions(me, true)
+    me:SetIsPushableByHero(true)                         -- retail restores pushability before she flees
     local target = ZERO_POSITION
     if point then target = point:GetPos() end
     if not move_until_within(quest, me, target, RUN_OFF_ARRIVE_RADIUS, MOVE_RUN) then return false end
