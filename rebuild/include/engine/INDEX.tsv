@@ -39,6 +39,7 @@ C3DMeshFileXUVTangentChunk	C3DMeshFileXUVTangentChunk.h	48	2	OK	0 retail files
 C3DMeshFileXVertexDataChunk	C3DMeshFileXVertexDataChunk.h	80	13	OK	1 retail files
 C3DMeshInfo	C3DMeshInfo.h	96	8	OK	1 retail files
 C3DMeshLODInfo	_quarantine/C3DMeshLODInfo.h	52	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+C3DVector	C3DVector.h	12	3	OK	0 retail files
 CACompressor	CACompressor.h	32	4	OK	0 retail files
 CAFile		0	0	HAND_OWNED	
 CAIBrain	CAIBrain.h	176	18	OK	0 retail files
@@ -763,6 +764,7 @@ CEngineVideoOptionsDef	_quarantine/CEngineVideoOptionsDef.h	124	21	QUARANTINED	1
 CEngineWaterBackgroundSubPatch	CEngineWaterBackgroundSubPatch.h	96	18	OK	1 retail files
 CEngineWaterRenderer	CEngineWaterRenderer.h	1544	77	OK	0 retail files
 CEngineWeatherRenderer	CEngineWeatherRenderer.h	4904	43	OK	0 retail files
+CEngineWeatherSettings	CEngineWeatherSettings.h	1368	78	OK	0 retail files
 CEngineWorldMap	CEngineWorldMap.h	1124	26	OK	0 retail files
 CEntitySoundDef	_quarantine/CEntitySoundDef.h	92	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CEnvironment	CEnvironment.h	6816	26	OK	0 retail files

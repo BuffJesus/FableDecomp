@@ -1631,7 +1631,7 @@ CEngineVideoOptionsDef	2	4	4	0	0	2	2	1	1	0	0
 CEngineWaterBackgroundSubPatch	9	13	10	0	0	1	1	1	0	0	0
 CEngineWaterRenderer	50	49	47	0	0	2	2	2	0	0	0
 CEngineWaterSettings	11	2	1	0	0	0	0	0	0	0	0
-CEngineWeatherRenderer	47	28	27	0	0	3	3	2	1	0	0
+CEngineWeatherRenderer	47	28	27	0	0	4	4	2	2	0	0
 CEngineWeatherSettings	1	1	0	0	0	0	0	0	0	0	0
 CEngineWorldMap	40	23	20	0	0	1	1	1	0	0	0
 CEntity	0	8	0	0	0	0	0	0	0	0	0

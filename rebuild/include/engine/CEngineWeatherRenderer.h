@@ -7,9 +7,12 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#include "C3DVector.h"
+#include "CEngineWeatherSettings.h"
 #include "CWeatherMask.h"
 
 struct CVolumeTexture;
+typedef long EWeatherBoxVisible; // PDB enum; enumerator names are not yet recovered.
 
 #pragma pack(push, 1)
 struct CEngineWeatherRenderer {
@@ -30,10 +33,10 @@ struct CEngineWeatherRenderer {
     unsigned char   MistVertexShader[0x8];                   // +0x100 CVertexShader
     unsigned char   MistPixelShader[0x8];                    // +0x108 CPixelShader
     CVolumeTexture* MistVolumeTexture;                       // +0x110
-    unsigned char   Settings[0x558];                         // +0x114 CEngineWeatherSettings
+    CEngineWeatherSettings Settings;                         // +0x114
     CWeatherMask    WeatherMaskList[3];                      // +0x66c
     long            CurrentMask;                             // +0x780
-    unsigned char   SavedBoxVisibility[0xb64];               // +0x784 EWeatherBoxVisible[729]
+    EWeatherBoxVisible SavedBoxVisibility[729];              // +0x784
     float           OverridenRainStrength;                   // +0x12e8
     bool            RainOverriden;                           // +0x12ec
     unsigned char   _pad_0x12ed[0x3];                        // +0x12ed
@@ -63,6 +66,9 @@ struct CEngineWeatherRenderer {
     unsigned char   DebugBoxColour4[0x4];                    // +0x1324 CRGBColour
 
     void AddWeatherMask(const CWeatherMask& mask, unsigned long flags);
+    EWeatherBoxVisible ClipBoxToCamera(const C3DVector& position, float extent) const;
+    EWeatherBoxVisible ClipLockedBoxToCamera(
+        const C3DVector& position, float extent, long boxIndex);
 };
 #pragma pack(pop)
 

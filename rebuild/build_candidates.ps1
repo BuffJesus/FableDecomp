@@ -132457,6 +132457,13 @@ $catalog = @(
         TestSource = '00/56/CTCInventoryExperience_GetOriginalExperience_0056ea9a_test.cpp'
         PassPattern = 'ORIGINAL_EXPERIENCE PASS'
     }
+    [pscustomobject]@{
+        Address = '00b52120'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_ClipLockedBoxToCamera_00b52120.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_ClipLockedBoxToCamera_00b52120_test.cpp'
+        PassPattern = 'LOCKED_WEATHER_BOX PASS'
+    }
 )
 
 $requestedAddresses = @(

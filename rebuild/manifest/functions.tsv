@@ -41398,7 +41398,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b51f00	StartRaining	CEngineWeatherRenderer	__thiscall	void	2	CEngineWeatherRenderer *,float	1	yes	accepted									
 00b51f60	ClipBoxToCamera	CEngineWeatherRenderer	__thiscall	EWeatherBoxVisible	3	CEngineWeatherRenderer *,C3DVector *,float	1	yes	accepted									
 00b52090	CEngineWeatherRenderer::IsPointInPrecipitation	CEngineWeatherRenderer	unknown	undefined	0		0	yes	accepted									
-00b52120	ClipLockedBoxToCamera	CEngineWeatherRenderer	__thiscall	EWeatherBoxVisible	4	CEngineWeatherRenderer *,C3DVector *,float,long	1	yes	accepted									
+00b52120	ClipLockedBoxToCamera	CEngineWeatherRenderer	__thiscall	EWeatherBoxVisible	4	CEngineWeatherRenderer *,C3DVector *,float,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b5\CEngineWeatherRenderer_ClipLockedBoxToCamera_00b52120.cpp
 00b52160	SetCommonParticleShaderConstants	CEngineWeatherRenderer	__thiscall	void	2	CEngineWeatherRenderer *,long *	1	yes	accepted									
 00b52250	CEnginePrimitiveManagerParticleLineGroup	CEnginePrimitiveManagerParticleLineGroup	__thiscall	undefined	2	CEnginePrimitiveManagerParticleLineGroup *,CArray<CEngineScene*> *	0	yes	accepted									
 00b52870	FadeRainToTarget	CEngineWeatherRenderer	__thiscall	void	2	CEngineWeatherRenderer *,float	1	yes	accepted									

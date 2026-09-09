@@ -331,3 +331,42 @@ promotion.
 Comparer totals are now 18,866 compiled and behavior-tested candidates, 8,144
 exact matches, 10,678 relocation matches, 14,692 genuine landed entries, and
 393,971 genuine matched retail bytes. Batch 359 is next.
+
+### Batches 359-360: owner validation and system-state contraction
+
+Batches 359 and 360 are reviewed and ledgered without another promotion.
+`CEnvironment::SetRainEnabled` writes the PDB-consistent `RainEnabled` byte at
++0x45, but its global subsystem chain and virtual method owner remain unnamed;
+an anonymous vtable shim was rejected. The paired
+`CTCSummonSpell::{Cancel,Resume}ForCutscene` bodies similarly depend on an
+unresolved intelligent-pointer target and status bit rather than a complete
+shared owner. Repeated vector-map and allocator bodies remain compiler-owned
+STL internals, not useful engine-facing reconstructions.
+
+`CSystemManager::SetAsActive` provided further concrete retail/debug evidence.
+Both builds keep `ApplicationActive` at +0x09, while Ego_r places
+`EverBeenActive` and `Restore` at +0xd4/+0xe2 and retail accesses them at
++0xdc/+0xea. A fixture covering first activation, deactivation, and subsequent
+reactivation passes, but the clean named implementation is 58 bytes against
+retail's 60. The provisional overlay was removed and no redundant load or
+padding was introduced. Batch 361 is next; comparer totals remain unchanged.
+
+### Batch 361: locked weather-box cache
+
+Batch 361 landed `CEngineWeatherRenderer::ClipLockedBoxToCamera @ 0x00b52120`
+as a 60-byte relocation match. The PDB layout identifies `Settings + 0x06` as
+`CEngineWeatherSettings::ParticleBoxLocked` and the renderer's +0x784 array as
+`EWeatherBoxVisible SavedBoxVisibility[729]`. Those regions are now represented
+by shared `CEngineWeatherSettings`, `C3DVector`, and visibility types rather
+than byte arrays.
+
+The behavior fixture verifies both paths: an unlocked box delegates to the
+PDB-confirmed `ClipBoxToCamera`, stores its result at the requested index, and
+returns it; once `ParticleBoxLocked` is set, the same call returns the cached
+value without clipping again. Other batch entries were compiler-owned STL
+internals, destructor transfers, or methods whose calls and owners could not
+yet be expressed without opaque pseudo-types.
+
+Comparer totals are now 18,867 compiled and behavior-tested candidates, 8,144
+exact matches, 10,679 relocation matches, 14,693 genuine landed entries, and
+394,031 genuine matched retail bytes. Batch 362 is next.
