@@ -248,3 +248,26 @@ the first 14 bytes of `Graphic`, leaving its two-byte tail untouched.
 After that landing the comparer totals are 18,864 compiled and behavior-tested
 candidates, 8,142 exact matches, 10,678 relocation matches, 14,690 genuine
 landed entries, and 393,852 genuine matched retail bytes. Batch 347 is next.
+
+### Batches 347-350: prototype and layout rejection pass
+
+Batches 347 through 350 are reviewed and ledgered. No candidate cleared both
+the readability and parity gates. This pass rejected several especially
+misleading donor transfers instead of manufacturing fields around them:
+
+- the `GetBulletTimeTicksFromAbilityLevel` body is actually the companion
+  floating-point rounding helper;
+- `CDrawNPCName::IsShowingScreenshotMessage` treats +0x2c as a counter where
+  Ego_r identifies a string-data pointer;
+- the alleged `CViewport::ClearHandle` operates at +0x28, versus the donor's
+  real primitive handle at +0x18c;
+- `CInputManager::UpdateChecksum` writes +0x0c/+0x18/+0x28, while its named
+  donor checksum is at +0x48;
+- the alleged `C3DMeshLODInfo::Sizeof` recursively invokes itself through
+  +0x20/+0x24, which are counted-pointer metadata and async-file-data slots in
+  the PDB layout, not child mesh-LOD nodes.
+
+Two genuine names reached behavior-complete near matches but remain unlanded:
+`CTCLook::IsWithinYZHeadRange` is 55/58 bytes because retail materializes its
+PDB-confirmed `bool` as full EAX, and `CCharString::Truncate` is 60/58 bytes
+despite coherent PDB layout and named callees. Batch 351 is next.
