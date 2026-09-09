@@ -27,7 +27,7 @@ local ALIVE_HEALTH_THRESHOLD = 0.0            -- _DAT_0122dedc (read from retail
 local HEALTH_COUNTER_UNSET = -999             -- PARENT+0x64 sentinel (init value, see quest Init)
 local TEDDY_REWARD_GOLD = 1                   -- GivenTeddy: GiveHeroGold(1)
 local BAD_DEED_TEDDY_TO_BULLY = 3             -- GivenTeddy: AddBadDeed(PARENT, 3)
-local INTIMIDATE_TIMER_VALUE = nil            -- UNKNOWN: SetTimer value dropped by the decompiler; do not guess
+local INTIMIDATE_TIMER_VALUE = 3              -- native push 3 at 0x00dbc629
 local INFO_BAR_MAX = 0                        -- AddQuestInfoBar 2nd immediate (0)
 local INFO_BAR_UNCHANGED = -1.0               -- UpdateQuestInfoBar(handle, remaining, -1.0, -1.0)
 local INFO_BAR_SCALE = 1.0                    -- native push 0x3f800000 at 0x00dbc3eb
@@ -300,7 +300,7 @@ local function intimidate(quest, me)
   if SpokenOnFirstProximity and math.random(0, INTIMIDATE_RAND_MOD - 1) ~= 0 then return true end
   if not (NOVI.hero_within(quest, me, INTIMIDATE_DISTANCE) and HitsTaken == 0) then return true end
   SpokenOnFirstProximity = true
-  NOVI.unsupported(quest, "SetTimer", { timer, INTIMIDATE_TIMER_VALUE })
+  quest:SetTimer(timer, INTIMIDATE_TIMER_VALUE)
   F.set(quest, F.VictimShake, true)
   local conv = quest:AddNewConversation(me, false, false)
   quest:AddPersonToConversation(conv, me)

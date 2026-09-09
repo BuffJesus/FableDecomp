@@ -6361,8 +6361,8 @@
           "script": "NOVI_Bully",
           "function": "Main",
           "seq": 66,
-          "native": "if (GSI->GetTimer(<id>) == 0 && (!this+0x26 || rand() % 75 == 0))",
-          "evidence": "native-decompile (timer id dropped; 75 from DAT_013ac860)"
+          "native": "if (GSI->GetTimer(PARENT+0x104 TalkIntermittentTimer) == 0 && (!this+0x26 || rand() % 75 == 0))",
+          "evidence": "native-disassembly + PDB-name"
         },
         {
           "script": "NOVI_CreatedBeetle",
@@ -6401,7 +6401,7 @@
         "NOVI_BarrelThug#19: timer id dropped; Lua resolves F.WatchTimer's registered ID (inference)",
         "NOVI_BarrelThug#24: skipped when no tier matched (goto LAB_00db7924)",
         "NOVI_BookTrader#25: timer id dropped; Lua resolves the registered intermittent timer ID from quest state (inference)",
-        "NOVI_Bully#66: timer id inferred as PARENT+0x104 TalkIntermittentTimer (NOVI_Villager uses it in the same idiom)",
+        "NOVI_Bully#66: 0x00dbc59b-0x00dbc5ae loads PARENT+0x104 and calls GetTimer slot 0x168",
         "NOVI_CreatedBeetle#3: the second GetTimer call in the decompile has its arg dropped; asm/retail sig GetTimer(long) implies the same timer id",
         "Q_NewOakValeIntro#44: timer id register-passed; WatchTimer (0x108) inferred from the later explicit GetTimer(this+0x108) in the same function"
       ],
@@ -6460,8 +6460,8 @@
           "script": "NOVI_Bully",
           "function": "Main",
           "seq": 68,
-          "native": "this+0x26 SpokenOnFirstProximity = 1; GSI->SetTimer(<id>, <value>); PARENT+0x48 VictimShake = 1",
-          "evidence": "native-decompile + PDB-name"
+          "native": "this+0x26 SpokenOnFirstProximity = 1; GSI->SetTimer(PARENT+0x104 TalkIntermittentTimer, 3); PARENT+0x48 VictimShake = 1",
+          "evidence": "native-disassembly + PDB-name"
         },
         {
           "script": "NOVI_CreatedBeetle",
@@ -6491,7 +6491,7 @@
         "NOVI_BarrelMan#19: case 1",
         "NOVI_BarrelMan#61: decompile labels the GetPos call GSI->IsXbox because thing slot +0x18 collides with the GSI IsXbox slot; asm proves it is a CScriptThing call",
         "NOVI_BookTrader#26: timer identity inferred; duration remains unknown and is not guessed",
-        "NOVI_Bully#68: timer identity inferred; duration remains unknown and is not guessed",
+        "NOVI_Bully#68: 0x00dbc614-0x00dbc62c loads PARENT+0x104, pushes literal 3, and calls SetTimer slot 0x164",
         "Q_NewOakValeIntro#9: timer ids come from RegisterTimer in the retail constructor @0x00DAAC00; Lua registers them in Init"
       ],
       "fallbackStatus": "direct",
@@ -8323,23 +8323,6 @@
       "semanticDifferences": [],
       "fallbackStatus": "direct",
       "blocked": false
-    },
-    {
-      "operation": "SetTimer(id, value) in the intimidation branch",
-      "proposedForgeCall": null,
-      "bindingExists": false,
-      "bindingScope": null,
-      "nativeEvidence": [
-        {
-          "script": "NOVI_Bully",
-          "reason": "timer identity is inferred as TalkIntermittentTimer; duration remains dropped by the decompiler",
-          "luaLocation": "intimidate"
-        }
-      ],
-      "signatureConfidence": "n/a",
-      "semanticDifferences": [],
-      "fallbackStatus": "explicit-gap",
-      "blocked": true
     },
     {
       "operation": "StartScriptingEntity(me, resource, EScriptAIPriority) / resource release",

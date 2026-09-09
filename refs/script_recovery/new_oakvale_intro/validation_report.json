@@ -1002,6 +1002,7 @@
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
       "NewOakValeIntro/Entities/NOVI_Villager.lua",
       "NewOakValeIntro/NewOakValeIntro.lua"
@@ -2035,7 +2036,7 @@
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,
-    "unsupportedCallSites": 7,
+    "unsupportedCallSites": 6,
     "warnings": 0,
     "wrongScopeApis": 0
   },
@@ -2062,10 +2063,6 @@
     },
     {
       "file": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
-      "retail": "SetTimer"
-    },
-    {
-      "file": "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "retail": "SetTimer"
     }
   ],

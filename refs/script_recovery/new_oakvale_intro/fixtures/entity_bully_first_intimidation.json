@@ -1,5 +1,5 @@
 {
-  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Bully.lua","expect":["GetTimer","IsDistanceBetweenThingsUnder","Log","SetStateBool","AddNewConversation","AddPersonToConversation","AddLineToConversation","random","PlayAnimation"],"forbid":["SetTimer"],"note":"the bully's first expired-timer intimidation sets VictimShake, emits numbered line _10 and the deterministic shake-fist animation while exposing the unrecovered SetTimer duration as an audit event rather than guessing zero"},
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Bully.lua","expect":["GetTimer","IsDistanceBetweenThingsUnder","SetTimer","SetStateBool","AddNewConversation","AddPersonToConversation","AddLineToConversation","random","PlayAnimation"],"forbid":[],"note":"the bully's first expired-timer intimidation sets TalkIntermittentTimer to the recovered retail value 3, sets VictimShake, emits numbered line _10 and plays the deterministic shake-fist animation"},
   "Quest.NewScriptFrame":[true,false],
   "Entity.AcquireControl":[true,true],
   "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
