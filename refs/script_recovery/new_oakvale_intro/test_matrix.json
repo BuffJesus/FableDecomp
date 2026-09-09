@@ -1357,6 +1357,26 @@
       "events": 7
     },
     {
+      "fixture": "entity_victim_initial_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "purpose": "termination during the initial StartScriptingEntity wait models the LAB_00dbde21 resource destructor and exits before resolving the bully or entering any behavior branch",
+      "expects": [
+        "NewScriptFrame",
+        "AcquireControl",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "GetThingWithScriptName",
+        "GetStateBool",
+        "StartMovieSequence"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 3
+    },
+    {
       "fixture": "entity_victim_main_terminated",
       "function": "Main",
       "kind": "entity",

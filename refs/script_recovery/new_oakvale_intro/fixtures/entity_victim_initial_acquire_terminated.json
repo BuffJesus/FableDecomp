@@ -1,0 +1,5 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Victim.lua","expect":["NewScriptFrame","AcquireControl","ReleaseControl"],"forbid":["GetThingWithScriptName","GetStateBool","StartMovieSequence"],"note":"termination during the initial StartScriptingEntity wait models the LAB_00dbde21 resource destructor and exits before resolving the bully or entering any behavior branch"},
+  "Quest.NewScriptFrame":[true],
+  "Entity.AcquireControl":[false]
+}

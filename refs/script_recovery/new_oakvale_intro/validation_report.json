@@ -1765,6 +1765,14 @@
       "trace": "match"
     },
     {
+      "events": 3,
+      "fixture": "entity_victim_initial_acquire_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 1,
       "fixture": "entity_victim_main_terminated.json",
       "function": "Main",
@@ -1958,8 +1966,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 95,
-    "fixturesPassed": 95,
+    "fixtures": 96,
+    "fixturesPassed": 96,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

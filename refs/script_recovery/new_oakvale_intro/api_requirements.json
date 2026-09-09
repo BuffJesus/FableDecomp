@@ -2162,6 +2162,7 @@
         "NOVI_Theresa#11: re-acquired every loop iteration",
         "NOVI_Theresa#53: the entity script ends here; no further loop",
         "NOVI_Theresa#55: reached from every exit path",
+        "NOVI_Victim#10: failed initial acquisition exits before the bully lookup; release models the resource destructor at LAB_00dbde21",
         "NOVI_Victim#18: priority 4 visible",
         "NOVI_Villager#7: moved from loop top to end of the hit phase; no-op when nothing is held",
         "NOVI_Villager#30: vector offsets: MaleGood 0x9c, FemaleGood 0xcc, MaleNeither 0xc0, FemaleNeither 0xf0, MaleBoth 0xb4, FemaleBoth 0xe4, MaleBad 0xa8, FemaleBad 0xd8",

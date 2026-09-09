@@ -408,6 +408,7 @@
       "fixtures": [
         "entity_victim_first_hero_hit",
         "entity_victim_freed_thanks",
+        "entity_victim_initial_acquire_terminated",
         "entity_victim_main_terminated",
         "entity_victim_repeat_hit_bully_alive"
       ],

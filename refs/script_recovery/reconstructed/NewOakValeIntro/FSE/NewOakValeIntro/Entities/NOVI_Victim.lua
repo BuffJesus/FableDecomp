@@ -37,8 +37,8 @@ local TEXT = {
 }
 
 -- Entity-local retail fields (this+0x1c..), PDB names
-local DisplayedGameInfo                       -- 0x1c
-local DoneThanks                              -- 0x1d
+local DisplayedGameInfo = false               -- 0x1c
+local DoneThanks = false                      -- 0x1d
 
 function Init(quest, me)
   DoneThanks = false
@@ -217,7 +217,7 @@ end
 
 function Main(quest, me)
   if not NOVI.frame(quest, me) then return end
-  NOVI.acquire(quest, me, ACQUIRE_PRIORITY)
+  if not NOVI.acquire(quest, me, ACQUIRE_PRIORITY) then NOVI.release(quest, me); return end
   local bully = quest:GetThingWithScriptName(BULLY_SCRIPT_NAME)
   while true do
     if not F.get(quest, F.BullySubdued) then

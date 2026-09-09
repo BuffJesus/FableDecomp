@@ -42,7 +42,7 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 95/95 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 96/96 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
@@ -55,7 +55,10 @@ run to her husband through the first retail argument entry,
 path through bad-deed bookkeeping and the `CS_OAKVALEINTRO_BRATHIT` cutscene with its retail
 `HERO` and `BRAT` actor roles.
 It also covers the freed victim's movement/scared-state restoration and thanks/tutorial path,
-plus the later-hit two-speaker exchange without replaying the first-hit cutscene.
+plus the later-hit two-speaker exchange without replaying the first-hit cutscene. Victim-local
+booleans now carry their proven retail defaults for isolated `Main`, and initial control-acquisition
+termination exits through modeled resource release before the bully lookup. Nested victim resource
+unwind ordering remains runtime/disassembly work and is not generalized from the initial gate.
 Guard coverage now includes the complete first-offence violence lecture and the repeat-offence
 path through the distant chase announcement, follow task, lecture-range wait, player-control
 wait, shortened introduction, and multi-crime list.
