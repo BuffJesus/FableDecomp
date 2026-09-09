@@ -1,0 +1,14 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairWife.lua","expect":["GetTimer","random","IsDistanceBetweenThingsUnder","SetTimer","AddNewConversation","AddPersonToConversation","AddLineToConversation","ReleaseControl"],"forbid":["StartMovieSequence","SpeakAndWait"],"note":"an eligible nearby-hero idle iteration resets the exact TalkIntermittentTimer field to retail value 3 and queues the wife's where-is-my-husband conversation"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true,true],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Entity.IsTalkedToByHero":[false],
+  "Quest.GetStateInt(TalkIntermittentTimer)":[777],
+  "Quest.GetTimer(777)":[0],
+  "Lua.math.random":[0],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.IsDistanceBetweenThingsUnder":[true],
+  "Quest.AddNewConversation":[{"handle":"wheres_husband","scope":"Entity"}]
+}
