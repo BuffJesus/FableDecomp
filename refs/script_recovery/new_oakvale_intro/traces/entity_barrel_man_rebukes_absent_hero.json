@@ -587,11 +587,11 @@
     {
       "arguments": [
         {
-          "handle": "me",
+          "handle": "hero",
           "scope": "Entity"
         },
         {
-          "handle": "hero",
+          "handle": "me",
           "scope": "Entity"
         }
       ],
@@ -960,5 +960,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
-  "sourceSha256": "64196d5973296c8befd2d4dd25668856526b0e027d9751b6020de24b032c52eb"
+  "sourceSha256": "cae0f8538ccdbcbc189b5b05f1bcda0d8902a0a946744c3abffe76e4c526adb3"
 }

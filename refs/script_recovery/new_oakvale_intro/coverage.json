@@ -205,7 +205,7 @@
         "entity_book_trader_special_hit"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_Bully",
@@ -682,9 +682,9 @@
   ],
   "summary": {
     "functions": 52,
-    "implementedAndTraced": 35,
+    "implementedAndTraced": 36,
     "implementedUntraced": 0,
-    "uncertain": 11,
+    "uncertain": 10,
     "apiBlocked": 0,
     "notImplemented": 0,
     "notApplicable": 6

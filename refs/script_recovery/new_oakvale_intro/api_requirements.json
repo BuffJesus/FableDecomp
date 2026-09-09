@@ -2259,7 +2259,7 @@
           "function": "Main/ask_favour_and_leave",
           "seq": 64,
           "native": "EntityTeleportToThing(GetHero(), GetThingWithScriptName(\"M_WHouse_GuardPoint\"), false)",
-          "evidence": "native-decompile"
+          "evidence": "asm 0xdb6416-0xdb643f"
         },
         {
           "script": "NOVI_BarrelThug",
@@ -2354,7 +2354,7 @@
         "NOVI_AffairWoman#9: stored in aaStack_94",
         "NOVI_BarrelMan#17: retail never uses this local (re-fetched in the phase-0 talk path)",
         "NOVI_BarrelMan#22: null-thing fallback DAT_0143e8e0 not reproduced (GetPos returns empty table)",
-        "NOVI_BarrelMan#64: decompiler dropped the arg list; hero-as-mover is inferred from the GetHero call feeding the teleport",
+        "NOVI_BarrelMan#64: push 0 is retained across the marker lookup, then the returned guard-point thing is pushed; GetHero is called with no arguments and its result pushed before GSI slot 0x760, proving (hero, guardPoint, false). The binding drops false",
         "NOVI_Bully#18: result register mapping is muddled by the decompiler; used later as BRAT actor / conversation participant (inference)",
         "NOVI_TeddyGirl#7: held for the whole loop",
         "NOVI_Victim#11: result register muddled; used as facing target (inference)",
@@ -2416,8 +2416,8 @@
           "script": "NOVI_BookTrader",
           "function": "Main",
           "seq": 9,
-          "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(?,HERO))",
-          "evidence": "native-decompile + cross-script-evidence"
+          "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "asm 0xdb4234-0xdb42b3"
         },
         {
           "script": "NOVI_Bully",
@@ -2477,7 +2477,7 @@
         "NOVI_AffairWoman#12: CScriptThing vtable slots 0x54/0xa8/0xa4 (retail vtable 0x1238c8c)",
         "NOVI_BarrelMan#51: the ppuVar17 & 1/2/4/8 flag writes are decompiler noise (local bookkeeping of which message was polled)",
         "NOVI_BarrelThug#25: ability 14 inferred from sibling NOVI hit predicates",
-        "NOVI_BookTrader#9: ability 14 inferred from sibling NOVI hit predicates",
+        "NOVI_BookTrader#9: CScriptThing slots 0x54/0xa8/0xa4 receive SCRIPT_NAME_HERO; 0xdb42ab explicitly pushes ability 0xe",
         "NOVI_TeddyGirl#41: slots 0x54/0xa8/0xa4; ability 14 comes from sibling NOVI hit predicates"
       ],
       "fallbackStatus": "direct",
@@ -2535,8 +2535,8 @@
           "script": "NOVI_BookTrader",
           "function": "Main",
           "seq": 9,
-          "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(?,HERO))",
-          "evidence": "native-decompile + cross-script-evidence"
+          "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "asm 0xdb4234-0xdb42b3"
         },
         {
           "script": "NOVI_Bully",
@@ -2596,7 +2596,7 @@
         "NOVI_AffairWoman#12: CScriptThing vtable slots 0x54/0xa8/0xa4 (retail vtable 0x1238c8c)",
         "NOVI_BarrelMan#51: the ppuVar17 & 1/2/4/8 flag writes are decompiler noise (local bookkeeping of which message was polled)",
         "NOVI_BarrelThug#25: ability 14 inferred from sibling NOVI hit predicates",
-        "NOVI_BookTrader#9: ability 14 inferred from sibling NOVI hit predicates",
+        "NOVI_BookTrader#9: CScriptThing slots 0x54/0xa8/0xa4 receive SCRIPT_NAME_HERO; 0xdb42ab explicitly pushes ability 0xe",
         "NOVI_TeddyGirl#41: slots 0x54/0xa8/0xa4; ability 14 comes from sibling NOVI hit predicates"
       ],
       "fallbackStatus": "direct",
@@ -2654,8 +2654,8 @@
           "script": "NOVI_BookTrader",
           "function": "Main",
           "seq": 9,
-          "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(?,HERO))",
-          "evidence": "native-decompile + cross-script-evidence"
+          "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "asm 0xdb4234-0xdb42b3"
         },
         {
           "script": "NOVI_Bully",
@@ -2715,7 +2715,7 @@
         "NOVI_AffairWoman#12: CScriptThing vtable slots 0x54/0xa8/0xa4 (retail vtable 0x1238c8c)",
         "NOVI_BarrelMan#51: the ppuVar17 & 1/2/4/8 flag writes are decompiler noise (local bookkeeping of which message was polled)",
         "NOVI_BarrelThug#25: ability 14 inferred from sibling NOVI hit predicates",
-        "NOVI_BookTrader#9: ability 14 inferred from sibling NOVI hit predicates",
+        "NOVI_BookTrader#9: CScriptThing slots 0x54/0xa8/0xa4 receive SCRIPT_NAME_HERO; 0xdb42ab explicitly pushes ability 0xe",
         "NOVI_TeddyGirl#41: slots 0x54/0xa8/0xa4; ability 14 comes from sibling NOVI hit predicates"
       ],
       "fallbackStatus": "direct",
@@ -2829,8 +2829,8 @@
           "script": "NOVI_BookTrader",
           "function": "Main",
           "seq": 13,
-          "native": "acquire(?); StartMovieSequence; (GSI vtable+0x5ec)(1)",
-          "evidence": "inference"
+          "native": "StartScriptingEntity(me, resource, 4); StartMovieSequence(\"\", movieResource); PauseAllNonScriptedEntities(true)",
+          "evidence": "asm 0xdb4372-0xdb440f + cross-callsite GSI slot map"
         },
         {
           "script": "NOVI_Bully",
@@ -2996,7 +2996,7 @@
         "NOVI_AffairWoman#14: pause argument dropped; true inferred from sibling scripts",
         "NOVI_AffairWoman#23: facing args dropped; me->hero inferred",
         "NOVI_BarrelThug#16: movie starts BEFORE the acquire here, so failure must unpause/end it before Main releases control",
-        "NOVI_BookTrader#13: slot 0x5ec unresolved in vtable_slots.tsv; adjacent 0x5f0 = PauseAllEntities and the (1)/(0) pattern matches PauseAllNonScriptedEntities elsewhere; acquisition termination does not open the movie",
+        "NOVI_BookTrader#13: acquisition pushes priority 4, resource, and stored ME_THING. Slot 0x5c8 constructs the empty-name movie resource and slot 0x5ec receives true; the same slot's true/false bracketing is PauseAllNonScriptedEntities throughout this quest",
         "NOVI_TeddyGirl#35: failed chat acquisition exits before opening the movie",
         "NOVI_Theresa#47: no FixMovieSequenceCamera in this block",
         "Q_NewOakValeIntro#42: RunCutsceneMacro_Func has no direct binding; PlayCutscene(name, actors) is the seed-corpus convention for it (cross-script-evidence). Whether PlayCutscene already brackets the movie sequence is unverified."
@@ -3182,8 +3182,8 @@
           "script": "NOVI_BookTrader",
           "function": "Main",
           "seq": 13,
-          "native": "acquire(?); StartMovieSequence; (GSI vtable+0x5ec)(1)",
-          "evidence": "inference"
+          "native": "StartScriptingEntity(me, resource, 4); StartMovieSequence(\"\", movieResource); PauseAllNonScriptedEntities(true)",
+          "evidence": "asm 0xdb4372-0xdb440f + cross-callsite GSI slot map"
         },
         {
           "script": "NOVI_BookTrader",
@@ -3471,7 +3471,7 @@
         "NOVI_AffairWoman#14: pause argument dropped; true inferred from sibling scripts",
         "NOVI_AffairWoman#19: on termination inside the hit branch TalkingToWoman is left true (retail)",
         "NOVI_AffairWoman#23: facing args dropped; me->hero inferred",
-        "NOVI_BookTrader#13: slot 0x5ec unresolved in vtable_slots.tsv; adjacent 0x5f0 = PauseAllEntities and the (1)/(0) pattern matches PauseAllNonScriptedEntities elsewhere; acquisition termination does not open the movie",
+        "NOVI_BookTrader#13: acquisition pushes priority 4, resource, and stored ME_THING. Slot 0x5c8 constructs the empty-name movie resource and slot 0x5ec receives true; the same slot's true/false bracketing is PauseAllNonScriptedEntities throughout this quest",
         "NOVI_Bully#27: also executed on the terminate paths inside the scope",
         "NOVI_Guard#30: arg dropped; every exit path calls PauseAllNonScriptedEntities(0), so the entry value is true",
         "NOVI_Guard#40: movie object destructor mapped to EndMovieSequence (inference)",
@@ -4578,8 +4578,8 @@
           "script": "NOVI_BarrelMan",
           "function": "Main/judge_hero",
           "seq": 36,
-          "native": "if (CanThingBe_Seen_ByOtherThing(me, hero) || IsDistanceBetweenThingsUnder(me, hero, 10.0)) thanks else where-gone",
-          "evidence": "native-decompile"
+          "native": "if (CanThingBe_Seen_ByOtherThing(hero, me) || IsDistanceBetweenThingsUnder(me, hero, 10.0)) thanks else where-gone",
+          "evidence": "asm 0xdb5a88-0xdb5ab5"
         },
         {
           "script": "NOVI_BarrelMan",
@@ -4692,7 +4692,7 @@
         "NOVI_AffairMan#23: second thing is &stack0xfffffeb8; reading as the wife is an inference from the three reply lines",
         "NOVI_AffairMan#50: IsConversationActive argument dropped; last conversation id kept in uStack_128 (inference)",
         "NOVI_AffairWife#48: 15.0f leaked into GetHero(0x41700000); the decompiler shows fVar33 = 0.0 / garbage",
-        "NOVI_BarrelMan#36: CanThingBe_Seen arg order (me, hero) vs (hero, me) not recoverable from the decompile",
+        "NOVI_BarrelMan#36: visibility pushes stored ME_THING (EDI), obtains and pushes hero, then calls GSI slot 0x9e0: reverse stack order proves (hero, me). The following direct distance helper uses ECX=me, EDX=hero, stack float 10.0",
         "NOVI_BarrelMan#73: CRT rand() replaced by math.random",
         "NOVI_BookTrader#25: 0x00db4ce6-0x00db4cf9 loads PARENT+0x104 and calls GetTimer slot 0x168",
         "NOVI_Guard#22: the first (pre-loop) check's distance register is polluted by the previous call's literal 1; the in-loop re-check uses DAT_013ac840 = 3.0, assumed for both",
@@ -4908,8 +4908,8 @@
           "script": "NOVI_BarrelMan",
           "function": "Main/judge_hero",
           "seq": 34,
-          "native": "GSI->EntitySetFacingAngleTowardsThing(me, GetHero())",
-          "evidence": "native-decompile"
+          "native": "GSI->EntitySetFacingAngleTowardsThing(me, GetHero(), false)",
+          "evidence": "asm 0xdb5a54-0xdb5a61"
         },
         {
           "script": "NOVI_BarrelThug",
@@ -5004,7 +5004,7 @@
         "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
         "NOVI_AffairWoman#23: facing args dropped; me->hero inferred",
         "NOVI_AffairWoman#26: first arg is a stack copy; the man is inferred",
-        "NOVI_BarrelMan#34: retail has a trailing bool, dropped by decompiler",
+        "NOVI_BarrelMan#34: push 0 precedes GetHero; the returned hero and stored ME_THING (EDI) are then pushed before GSI slot 0x76c, proving (me, hero, false). The binding drops the trailing bool",
         "NOVI_Bully#65: target inferred (hero); could be the victim",
         "NOVI_Victim#12: facing args dropped; bully inferred",
         "NOVI_Victim#16: scared value inferred false (re-set to 1 after the plea)",
@@ -5349,8 +5349,8 @@
           "script": "NOVI_BookTrader",
           "function": "Main",
           "seq": 29,
-          "native": "PlayAnimation(\"ST_OPINION_NEUTRAL_SHOUTING_WITH_HANDS_CUPPED\", 0,0,0,1,DAT_01375748,false)",
-          "evidence": "native-decompile"
+          "native": "PlayAnimation(\"ST_OPINION_NEUTRAL_SHOUTING_WITH_HANDS_CUPPED\", false, false, false, true, true, false, false)",
+          "evidence": "asm 0xdb4df2-0xdb4e1f + retail byte 0x01375748=1"
         },
         {
           "script": "NOVI_Bully",
@@ -5364,7 +5364,7 @@
       "semanticDifferences": [
         "NOVI_AffairMan#47: flag mapping to the 2 ForgeFSE optionals unknown",
         "NOVI_AffairWife#49: flags (0,0,0,1,DAT_01375748,0)",
-        "NOVI_BookTrader#29: bool flags unbound",
+        "NOVI_BookTrader#29: the mangled signature has seven bools; reverse push order is false,false,false,true,DAT_01375748,false,false. ForgeFSE does not expose the full flag set",
         "NOVI_Bully#71: non-blocking in retail (no IsPerformingScriptTask wait)"
       ],
       "fallbackStatus": "direct",
@@ -5916,8 +5916,8 @@
           "script": "NOVI_BookTrader",
           "function": "Main",
           "seq": 30,
-          "native": "AddLineToConversation(conv, TEXT_QST_048_TRADER_ROLL_UP, 0, ..., GetHero())",
-          "evidence": "native-decompile"
+          "native": "AddLineToConversation(conv, TEXT_QST_048_TRADER_ROLL_UP, false, me, GetHero())",
+          "evidence": "asm 0xdb4e2d-0xdb4e55"
         },
         {
           "script": "NOVI_Bully",
@@ -5986,7 +5986,7 @@
         "NOVI_AffairWife#60: speaker is the husband thing (&ppuStack_a4)",
         "NOVI_BarrelMan#43: where-gone branch; retail 3rd arg bool=false has no named binding parameter (binding: id,key,speaker,listener,showSubtitle?)",
         "NOVI_BarrelMan#75: never removed by retail",
-        "NOVI_BookTrader#30: speaker arg partially dropped",
+        "NOVI_BookTrader#30: GetHero result is pushed as listener, stored ME_THING (EBP) as speaker, then false, text, and conversation ID (EBX)",
         "NOVI_Bully#63: listeners inferred; conversation never removed (retail)",
         "NOVI_Bully#69: listener thing unknown",
         "NOVI_Guard#19: retail bool arg (0) mapped to FSE trailing showSubtitle optional; mapping of that bool is an inference",
@@ -6223,8 +6223,8 @@
           "script": "NOVI_BookTrader",
           "function": "Main",
           "seq": 10,
-          "native": "EntitySetThingAsAllyOfThing x2 (GetHero); AddBadDeed(PARENT,2)",
-          "evidence": "native-decompile"
+          "native": "EntitySetThingAsAllyOfThing(me, GetHero()); EntitySetThingAsAllyOfThing(GetHero(), me); AddBadDeed(PARENT,2)",
+          "evidence": "asm 0xdb4326-0xdb4357"
         },
         {
           "script": "NOVI_Bully",
@@ -6302,7 +6302,7 @@
         "NOVI_AffairWife#20: both argument lists dropped; (me,hero)+(hero,me) inferred",
         "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
         "NOVI_BarrelThug#26: ally/deed writes and movie start precede action acquisition; speech follows it",
-        "NOVI_BookTrader#10: ally args dropped",
+        "NOVI_BookTrader#10: first call pushes returned hero then stored ME_THING (EBP); second pre-pushes EBP, calls GetHero, then pushes hero, proving reciprocal calls; AddBadDeed pushes 2",
         "NOVI_Guard#13: two calls, args dropped; (me,hero)+(hero,me) is an inference from the CNOVI_Villager::Main pattern",
         "NOVI_TeddyGirl#42: args dropped; both directions is an inference",
         "NOVI_Villager#9: 0x00dae109-0x00dae12f: first call pushes hero then me; second pre-pushes me at 0x00dae124, calls zero-argument GetHero, then pushes the returned hero, proving reciprocal (hero,me) despite the decompiler's dropped stack operand"
@@ -7077,7 +7077,7 @@
           "function": "Main/ask_favour_and_leave",
           "seq": 64,
           "native": "EntityTeleportToThing(GetHero(), GetThingWithScriptName(\"M_WHouse_GuardPoint\"), false)",
-          "evidence": "native-decompile"
+          "evidence": "asm 0xdb6416-0xdb643f"
         },
         {
           "script": "NOVI_BarrelMan",
@@ -7108,9 +7108,9 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
-        "NOVI_BarrelMan#64: decompiler dropped the arg list; hero-as-mover is inferred from the GetHero call feeding the teleport"
+        "NOVI_BarrelMan#64: push 0 is retained across the marker lookup, then the returned guard-point thing is pushed; GetHero is called with no arguments and its result pushed before GSI slot 0x760, proving (hero, guardPoint, false). The binding drops false"
       ],
       "fallbackStatus": "direct",
       "blocked": false
@@ -7165,13 +7165,13 @@
           "script": "NOVI_BarrelMan",
           "function": "Main/judge_hero",
           "seq": 36,
-          "native": "if (CanThingBe_Seen_ByOtherThing(me, hero) || IsDistanceBetweenThingsUnder(me, hero, 10.0)) thanks else where-gone",
-          "evidence": "native-decompile"
+          "native": "if (CanThingBe_Seen_ByOtherThing(hero, me) || IsDistanceBetweenThingsUnder(me, hero, 10.0)) thanks else where-gone",
+          "evidence": "asm 0xdb5a88-0xdb5ab5"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
-        "NOVI_BarrelMan#36: CanThingBe_Seen arg order (me, hero) vs (hero, me) not recoverable from the decompile"
+        "NOVI_BarrelMan#36: visibility pushes stored ME_THING (EDI), obtains and pushes hero, then calls GSI slot 0x9e0: reverse stack order proves (hero, me). The following direct distance helper uses ECX=me, EDX=hero, stack float 10.0"
       ],
       "fallbackStatus": "direct",
       "blocked": false
@@ -7851,15 +7851,15 @@
       "blocked": false
     },
     {
-      "operation": "GSI vtable slot 0x5ec(bool)",
+      "operation": "PlayAnimation(name, bool x7)",
       "proposedForgeCall": null,
       "bindingExists": false,
       "bindingScope": null,
       "nativeEvidence": [
         {
           "script": "NOVI_BookTrader",
-          "reason": "slot not in vtable_slots.tsv; treated as PauseAllNonScriptedEntities (inference)",
-          "luaLocation": "sell_sweets begin/end_cutscene"
+          "reason": "ForgeFSE does not expose the full native animation flag set",
+          "luaLocation": "roll_up"
         }
       ],
       "signatureConfidence": "n/a",

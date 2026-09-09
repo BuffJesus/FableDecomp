@@ -167,7 +167,7 @@ local function judge_hero(quest, me)
     quest:EntitySetFacingAngleTowardsThing(me, hero)
     quest:EntitySetCutsceneBehaviour(me, CUTSCENE_BEHAVIOUR_OFF)
     quest:EntitySetTargetable(me, true)
-    if quest:CanThingBe_Seen_ByOtherThing(me, hero) or NOVI.hero_within(quest, me, SEE_RANGE) then
+    if quest:CanThingBe_Seen_ByOtherThing(hero, me) or NOVI.hero_within(quest, me, SEE_RANGE) then
         if not NOVI.acquire(quest, me, SCRIPT_PRIORITY) then return abort(quest, me) end
         quest:StartMovieSequence()
         quest:PauseAllNonScriptedEntities(true)

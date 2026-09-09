@@ -192,7 +192,7 @@ the per-script `entities` inventories, fixtures, and source-hashed traces.
 
 ## 2026-09-08 restart checkpoint
 
-The zero-unknown audit remains the acceptance gate. There are 115 operation records with
+The zero-unknown audit remains the acceptance gate. There are 107 operation records with
 `argsKnown: false`; passing fixtures do not override those evidence gaps. The quest inventory
 itself is now at zero unknown operations. The remaining queue, in descending order, is:
 
@@ -206,10 +206,8 @@ itself is now at zero unknown operations. The remaining queue, in descending ord
 | `NOVI_TeddyGirl` | 9 |
 | `NOVI_AffairWoman` | 8 |
 | `NOVI_BarrelThug` | 8 |
-| `NOVI_BookTrader` | 5 |
-| `NOVI_BarrelMan` | 3 |
 
-Resume with `NOVI_BarrelMan` before returning to the larger inventories.
+Resume with `NOVI_BarrelThug` before returning to the larger inventories.
 `NOVI_Villager` is now at zero unknown operations: disassembly at
 `0x00DAE109`-`0x00DAE12F` proves its two ally calls are reciprocal `(me, hero)` and `(hero, me)`.
 `NOVI_LiveFather` is also at zero: `0x00DB93CF`-`0x00DB93D8` explicitly pushes its stored
@@ -218,3 +216,9 @@ Resume with `NOVI_BarrelMan` before returning to the larger inventories.
 `0x00DB8476`-`0x00DB84A5` recover all seven animation flags as
 `false, true, false, true, true, false, false`; the retail byte at `0x01375748` is `1`.
 The marker-removal call at `0x00DB84E8`-`0x00DB84EE` explicitly pushes the stored `ME_THING`.
+`NOVI_BarrelMan` is also at zero. Disassembly proves the facing call's trailing flag is false,
+the visibility test is directionally `(hero, barrelMan)` (corrected in Lua), and the favour-path
+teleport is exactly `(hero, guardPoint, false)`.
+`NOVI_BookTrader` is now at zero as well: its hit ability is directly `14`, ally calls are
+reciprocal, control priority is `4`, the full shouting-animation flags are recovered, and the
+roll-up conversation line is `(conversation, text, false, trader, hero)`.
