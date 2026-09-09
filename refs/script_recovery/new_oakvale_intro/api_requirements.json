@@ -1672,14 +1672,14 @@
           "script": "NOVI_BookTrader",
           "function": "Main",
           "seq": 5,
-          "native": "StartScriptingEntity(me,res,3) loop (top of every iteration)",
+          "native": "StartScriptingEntity(me,res,3) loop (top of every iteration); terminating exits through resource cleanup",
           "evidence": "native-decompile"
         },
         {
           "script": "NOVI_BookTrader",
           "function": "Main",
           "seq": 28,
-          "native": "StartScriptingEntity(me,res,4) loop",
+          "native": "StartScriptingEntity(me,res,4) loop; terminating exits through resource cleanup",
           "evidence": "native-decompile"
         },
         {
@@ -2147,6 +2147,8 @@
         "NOVI_BarrelMan#37: thanks branch",
         "NOVI_BarrelMan#77: only reached on termination; the main loop never exits normally",
         "NOVI_BarrelThug#16: movie starts BEFORE the acquire here",
+        "NOVI_BookTrader#5: failed host-managed acquisition must stop the iteration before movement or dialogue",
+        "NOVI_BookTrader#28: failed acquisition must not play the shout animation or queue its line",
         "NOVI_Bully#13: priority dropped",
         "NOVI_Bully#19: re-issued on every loop iteration",
         "NOVI_Bully#57: third acquisition target inferred as the NOVI_Victim thing",
@@ -2987,7 +2989,7 @@
         "NOVI_AffairWoman#14: pause argument dropped; true inferred from sibling scripts",
         "NOVI_AffairWoman#23: facing args dropped; me->hero inferred",
         "NOVI_BarrelThug#16: movie starts BEFORE the acquire here",
-        "NOVI_BookTrader#13: slot 0x5ec unresolved in vtable_slots.tsv; adjacent 0x5f0 = PauseAllEntities and the (1)/(0) pattern matches PauseAllNonScriptedEntities elsewhere",
+        "NOVI_BookTrader#13: slot 0x5ec unresolved in vtable_slots.tsv; adjacent 0x5f0 = PauseAllEntities and the (1)/(0) pattern matches PauseAllNonScriptedEntities elsewhere; acquisition termination does not open the movie",
         "NOVI_Theresa#47: no FixMovieSequenceCamera in this block",
         "Q_NewOakValeIntro#42: RunCutsceneMacro_Func has no direct binding; PlayCutscene(name, actors) is the seed-corpus convention for it (cross-script-evidence). Whether PlayCutscene already brackets the movie sequence is unverified."
       ],
@@ -3461,7 +3463,7 @@
         "NOVI_AffairWoman#14: pause argument dropped; true inferred from sibling scripts",
         "NOVI_AffairWoman#19: on termination inside the hit branch TalkingToWoman is left true (retail)",
         "NOVI_AffairWoman#23: facing args dropped; me->hero inferred",
-        "NOVI_BookTrader#13: slot 0x5ec unresolved in vtable_slots.tsv; adjacent 0x5f0 = PauseAllEntities and the (1)/(0) pattern matches PauseAllNonScriptedEntities elsewhere",
+        "NOVI_BookTrader#13: slot 0x5ec unresolved in vtable_slots.tsv; adjacent 0x5f0 = PauseAllEntities and the (1)/(0) pattern matches PauseAllNonScriptedEntities elsewhere; acquisition termination does not open the movie",
         "NOVI_Bully#27: also executed on the terminate paths inside the scope",
         "NOVI_Guard#30: arg dropped; every exit path calls PauseAllNonScriptedEntities(0), so the entry value is true",
         "NOVI_Guard#40: movie object destructor mapped to EndMovieSequence (inference)",
@@ -7617,7 +7619,7 @@
       "signatureConfidence": "low",
       "semanticDifferences": [
         "NOVI_BarrelThug#11: terminate in wait -> PauseAll(0), ~movie, return",
-        "NOVI_BookTrader#11: hit branch skips the talk branch",
+        "NOVI_BookTrader#11: hit branch skips the talk branch; acquisition termination must not enter the movie",
         "NOVI_TeddyGirl#19: answer != 1"
       ],
       "fallbackStatus": "direct",

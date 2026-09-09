@@ -1405,6 +1405,22 @@
       "trace": "match"
     },
     {
+      "events": 18,
+      "fixture": "entity_book_trader_hit_acquire_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 3,
+      "fixture": "entity_book_trader_idle_acquire_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 7,
       "fixture": "entity_book_trader_init.json",
       "function": "Init",
@@ -1437,8 +1453,24 @@
       "trace": "match"
     },
     {
+      "events": 9,
+      "fixture": "entity_book_trader_sale_acquire_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 32,
       "fixture": "entity_book_trader_sells_sweets.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 18,
+      "fixture": "entity_book_trader_shout_acquire_terminated.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1902,8 +1934,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 88,
-    "fixturesPassed": 88,
+    "fixtures": 92,
+    "fixturesPassed": 92,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

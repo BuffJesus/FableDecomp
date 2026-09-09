@@ -42,7 +42,7 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 88/88 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 92/92 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
@@ -73,7 +73,10 @@ Book-trader coverage now includes the complete first sweets purchase at exactly 
 the retail object/charge operands, objective and `GivenSweets` updates, plus the expired-timer,
 winning-random-roll, nearby-hero ambient shout. The shout trace deliberately records the missing
 `SetTimer` duration as an unsupported runtime event before continuing through its animation and
-conversation line.
+conversation line. All four scripted-control acquisition sites now propagate host termination:
+loop-top failure exits before movement, sale failure before its movie/question, hit-action failure
+after the retail deed writes but before its movie, and shout-action failure after conversation
+creation but before animation or line queuing. Dedicated traces verify each cleanup boundary.
 Bully coverage now includes the first numbered intimidation/`VictimShake` handshake and a complete
 four-hit subdual: health-bar creation and decrements, both non-teddy `BULLYRUN` cutscenes with the
 retail actor and `$BRATLINE` mappings, good-deed bookkeeping, `BullyRanOff`, and entity removal.

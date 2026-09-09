@@ -1,0 +1,5 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["NewScriptFrame","AcquireControl","ReleaseControl"],"forbid":["GetHomePos","StartMovieSequence","AddNewConversation","PlayAnimation"],"note":"termination during the loop-top StartScriptingEntity wait releases the host-managed resource and exits before movement, hit, sale, or shout behavior"},
+  "Quest.NewScriptFrame":[true],
+  "Entity.AcquireControl":[false]
+}

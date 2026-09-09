@@ -1,0 +1,10 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["AcquireControl","GetHomePos","IsTalkedToByHero","ReleaseControl"],"forbid":["StartMovieSequence","GiveHeroYesNoQuestion","SpeakAndWait"],"note":"after loop-top control is acquired, termination during the sale-specific acquisition exits and releases control before opening the movie or asking the sweets question"},
+  "Quest.NewScriptFrame":[true],
+  "Entity.AcquireControl":[true,false],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":0,"y":0,"z":0}],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Entity.IsTalkedToByHero":[true]
+}

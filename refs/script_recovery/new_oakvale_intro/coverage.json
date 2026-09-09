@@ -190,10 +190,14 @@
       "operations": 28,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "fixtures": [
+        "entity_book_trader_hit_acquire_terminated",
+        "entity_book_trader_idle_acquire_terminated",
         "entity_book_trader_main_terminated",
         "entity_book_trader_returns_home",
         "entity_book_trader_roll_up_shout",
+        "entity_book_trader_sale_acquire_terminated",
         "entity_book_trader_sells_sweets",
+        "entity_book_trader_shout_acquire_terminated",
         "entity_book_trader_special_hit"
       ],
       "evidence": "native-decompile",

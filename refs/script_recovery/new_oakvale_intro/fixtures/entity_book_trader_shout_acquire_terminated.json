@@ -1,0 +1,16 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["Log","AddNewConversation","AddPersonToConversation","AcquireControl","ReleaseControl"],"forbid":["PlayAnimation","AddLineToConversation"],"note":"the eligible roll-up branch preserves the unknown timer audit event and creates its retail conversation before action-control acquisition; termination there exits before animation or line queuing"},
+  "Quest.NewScriptFrame":[true],
+  "Entity.AcquireControl":[true,false],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":0,"y":0,"z":0}],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Entity.IsTalkedToByHero":[false],
+  "Quest.GetStateInt(TalkIntermittentTimer)":[901],
+  "Quest.GetTimer(901)":[0],
+  "Lua.math.random":[0],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.IsDistanceBetweenThingsUnder":[true],
+  "Quest.AddNewConversation":[{"handle":"roll_up","scope":"Entity"}]
+}

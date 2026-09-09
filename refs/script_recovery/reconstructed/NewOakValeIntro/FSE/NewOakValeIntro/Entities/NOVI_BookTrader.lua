@@ -110,16 +110,17 @@ local function react_to_hit(quest, me)
     quest:EntitySetThingAsAllyOfThing(me, hero)    -- twice in retail, args dropped
     quest:EntitySetThingAsAllyOfThing(hero, me)
     Deeds.add_bad(quest, me, BAD_DEED_HIT_ME)
-    NOVI.acquire(quest, me, ACTION_PRIORITY)
+    if not NOVI.acquire(quest, me, ACTION_PRIORITY) then return false end
     begin_cutscene(quest)
     speak_if_alive(quest, me, TEXT_ON_HIT)
     face_theresa(quest, me)
     end_cutscene(quest)
+    return true
 end
 
 -- Phase: the sweets sale dialogue
 local function sell_sweets(quest, me)
-    NOVI.acquire(quest, me, DEFAULT_PRIORITY)
+    if not NOVI.acquire(quest, me, DEFAULT_PRIORITY) then return false end
     begin_cutscene(quest)   -- slot 0x5ec(1)/(0) here; inference = PauseAllNonScriptedEntities
     if F.get(quest, F.GivenSweets) then
         speak_if_alive(quest, me, TEXT_INTRO_10)
@@ -167,7 +168,7 @@ local function maybe_shout(quest, me)
     NOVI.unsupported(quest, "SetTimer", { shout_timer, SHOUT_TIMER_VALUE })
     local conv = quest:AddNewConversation(me)   -- retail (me, 0, 0)
     quest:AddPersonToConversation(conv, quest:GetHero())
-    NOVI.acquire(quest, me, ACTION_PRIORITY)
+    if not NOVI.acquire(quest, me, ACTION_PRIORITY) then return false end
     me:PlayAnimation(SHOUT_ANIM)   -- retail bools (0,0,0,1,DAT_01375748,false) unbound
     quest:AddLineToConversation(conv, TEXT_ROLL_UP, me, quest:GetHero())
     return true
@@ -176,16 +177,16 @@ end
 function Main(quest, me)
     if not NOVI.frame(quest, me) then return end
     while true do
-        NOVI.acquire(quest, me, IDLE_PRIORITY)
+        if not NOVI.acquire(quest, me, IDLE_PRIORITY) then NOVI.release(quest, me); return end
         if not return_home(quest, me) then NOVI.release(quest, me); return end
 
         if hero_hit_me(quest, me) then
-            react_to_hit(quest, me)
+            if not react_to_hit(quest, me) then NOVI.release(quest, me); return end
         elseif me:IsTalkedToByHero() then
             if not sell_sweets(quest, me) then NOVI.release(quest, me); return end
         end
 
-        maybe_shout(quest, me)
+        if not maybe_shout(quest, me) then NOVI.release(quest, me); return end
 
         if not NOVI.frame(quest, me) then NOVI.release(quest, me); return end
     end

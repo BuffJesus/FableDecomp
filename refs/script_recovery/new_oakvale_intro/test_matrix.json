@@ -510,6 +510,50 @@
       "events": 43
     },
     {
+      "fixture": "entity_book_trader_hit_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "purpose": "the hit and first violence bad deed occur before the action-specific StartScriptingEntity wait; termination in that wait releases control without entering the hit-reaction movie",
+      "expects": [
+        "EntitySetThingAsAllyOfThing",
+        "SetStateInt",
+        "DisplayGameInfo",
+        "AddLogbookStoryEntryString",
+        "AcquireControl",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "StartMovieSequence",
+        "SpeakAndWait",
+        "EntitySetFacingAngleTowardsThing"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 18
+    },
+    {
+      "fixture": "entity_book_trader_idle_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "purpose": "termination during the loop-top StartScriptingEntity wait releases the host-managed resource and exits before movement, hit, sale, or shout behavior",
+      "expects": [
+        "NewScriptFrame",
+        "AcquireControl",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "GetHomePos",
+        "StartMovieSequence",
+        "AddNewConversation",
+        "PlayAnimation"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 3
+    },
+    {
       "fixture": "entity_book_trader_init",
       "function": "Init",
       "kind": "entity",
@@ -581,6 +625,27 @@
       "events": 22
     },
     {
+      "fixture": "entity_book_trader_sale_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "purpose": "after loop-top control is acquired, termination during the sale-specific acquisition exits and releases control before opening the movie or asking the sweets question",
+      "expects": [
+        "AcquireControl",
+        "GetHomePos",
+        "IsTalkedToByHero",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "StartMovieSequence",
+        "GiveHeroYesNoQuestion",
+        "SpeakAndWait"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 9
+    },
+    {
       "fixture": "entity_book_trader_sells_sweets",
       "function": "Main",
       "kind": "entity",
@@ -601,6 +666,27 @@
       "result": "ran",
       "trace": "written",
       "events": 32
+    },
+    {
+      "fixture": "entity_book_trader_shout_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "purpose": "the eligible roll-up branch preserves the unknown timer audit event and creates its retail conversation before action-control acquisition; termination there exits before animation or line queuing",
+      "expects": [
+        "Log",
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "AcquireControl",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "PlayAnimation",
+        "AddLineToConversation"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 18
     },
     {
       "fixture": "entity_book_trader_special_hit",

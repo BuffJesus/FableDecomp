@@ -1,0 +1,12 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["EntitySetThingAsAllyOfThing","SetStateInt","DisplayGameInfo","AddLogbookStoryEntryString","AcquireControl","ReleaseControl"],"forbid":["StartMovieSequence","SpeakAndWait","EntitySetFacingAngleTowardsThing"],"note":"the hit and first violence bad deed occur before the action-specific StartScriptingEntity wait; termination in that wait releases control without entering the hit-reaction movie"},
+  "Quest.NewScriptFrame":[true],
+  "Entity.AcquireControl":[true,false],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":0,"y":0,"z":0}],
+  "Entity.MsgIsHitByHero":[true],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true]
+}

@@ -65,7 +65,7 @@
     },
     {
       "arguments": [
-        801
+        901
       ],
       "event": "api-call",
       "name": "GetTimer",
@@ -158,55 +158,6 @@
       "scope": "Entity"
     },
     {
-      "arguments": [
-        "ST_OPINION_NEUTRAL_SHOUTING_WITH_HANDS_CUPPED"
-      ],
-      "event": "api-call",
-      "name": "PlayAnimation",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "GetHero",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        {
-          "handle": "roll_up",
-          "scope": "Entity"
-        },
-        "TEXT_QST_048_TRADER_ROLL_UP",
-        {
-          "handle": "me",
-          "scope": "Entity"
-        },
-        {
-          "handle": "hero",
-          "scope": "Entity"
-        }
-      ],
-      "event": "api-call",
-      "name": "AddLineToConversation",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        }
-      ],
-      "event": "api-call",
-      "name": "NewScriptFrame",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
       "arguments": [],
       "event": "api-call",
       "name": "ReleaseControl",
@@ -217,7 +168,7 @@
   "fixtures": {
     "Entity.AcquireControl": [
       true,
-      true
+      false
     ],
     "Entity.GetHomePos": [
       {
@@ -259,24 +210,19 @@
       {
         "handle": "hero",
         "scope": "Entity"
-      },
-      {
-        "handle": "hero",
-        "scope": "Entity"
       }
     ],
     "Quest.GetStateInt(TalkIntermittentTimer)": [
-      801
+      901
     ],
-    "Quest.GetTimer(801)": [
+    "Quest.GetTimer(901)": [
       0
     ],
     "Quest.IsDistanceBetweenThingsUnder": [
       true
     ],
     "Quest.NewScriptFrame": [
-      true,
-      false
+      true
     ]
   },
   "function": "Main",
