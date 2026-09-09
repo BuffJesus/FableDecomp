@@ -1191,6 +1191,14 @@
   ],
   "fixtures": [
     {
+      "events": 43,
+      "fixture": "entity_affair_man_accepts_bribe.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 6,
       "fixture": "entity_affair_man_init.json",
       "function": "Init",
@@ -1241,6 +1249,14 @@
     {
       "events": 1,
       "fixture": "entity_affair_woman_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 26,
+      "fixture": "entity_affair_woman_runs_off.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1688,8 +1704,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 61,
-    "fixturesPassed": 61,
+    "fixtures": 63,
+    "fixturesPassed": 63,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

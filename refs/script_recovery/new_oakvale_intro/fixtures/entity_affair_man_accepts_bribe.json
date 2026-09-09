@@ -1,0 +1,17 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairMan.lua","expect":["GiveHeroYesNoQuestion","GiveHeroGold","DisplayGameInfo","AddLogbookStoryEntryString","ClearThingHasInformation","EndMovieSequence","ReleaseControl"],"note":"the husband asks for silence, receives the hero's yes answer, pays one gold, records the first bad deed, clears his information marker, and cleans up the cutscene"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true,true],
+  "Quest.GetThingWithScriptName(NOVI_AffairWoman)":[{"handle":"lover","scope":"Entity"}],
+  "Quest.GetThingWithScriptName(NOVI_AffairWife)":[{"handle":"wife","scope":"Entity"}],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Entity.IsTalkedToByHero":[true],
+  "Quest.IsDistanceBetweenThingsUnder":[false],
+  "Quest.GetHealth":[100,100],
+  "Entity.IsPerformingScriptTask":[false,false],
+  "Quest.MsgIsQuestionAnsweredYesOrNo":[1],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true]
+}

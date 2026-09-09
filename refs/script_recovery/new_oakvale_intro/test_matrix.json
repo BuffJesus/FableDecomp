@@ -3,6 +3,26 @@
   "script": "Q_NewOakValeIntro",
   "fixtures": [
     {
+      "fixture": "entity_affair_man_accepts_bribe",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "purpose": "the husband asks for silence, receives the hero's yes answer, pays one gold, records the first bad deed, clears his information marker, and cleans up the cutscene",
+      "expects": [
+        "GiveHeroYesNoQuestion",
+        "GiveHeroGold",
+        "DisplayGameInfo",
+        "AddLogbookStoryEntryString",
+        "ClearThingHasInformation",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 43
+    },
+    {
       "fixture": "entity_affair_man_init",
       "function": "Init",
       "kind": "entity",
@@ -114,6 +134,25 @@
       "result": "ran",
       "trace": "written",
       "events": 1
+    },
+    {
+      "fixture": "entity_affair_woman_runs_off",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "purpose": "wife proximity makes the lover run to the retail escape marker, wait until off-screen, remove herself, and release control",
+      "expects": [
+        "AcquireControl",
+        "EntitySetAsUseMovementInActions",
+        "MoveToPosition",
+        "IsCameraPosOnScreen",
+        "RemoveThing",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 26
     },
     {
       "fixture": "entity_barrel_main_terminated",

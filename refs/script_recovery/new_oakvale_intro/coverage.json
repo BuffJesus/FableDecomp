@@ -21,6 +21,7 @@
       "operations": 60,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
       "fixtures": [
+        "entity_affair_man_accepts_bribe",
         "entity_affair_man_main_terminated"
       ],
       "evidence": "native-decompile",
@@ -70,7 +71,8 @@
       "operations": 37,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
       "fixtures": [
-        "entity_affair_woman_main_terminated"
+        "entity_affair_woman_main_terminated",
+        "entity_affair_woman_runs_off"
       ],
       "evidence": "native-decompile",
       "status": "implemented (uncertain args)"

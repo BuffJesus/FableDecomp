@@ -42,14 +42,16 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 61/61 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 63/63 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
 helpers, deterministic villager reputation-line selection, and the bully/trader walk-home
 distance fallback, plus hero-special hit reactions for the teddy girl, book trader, and barrel
-thug. The affair-wife suite also reaches the accepted-affair run to her husband and verifies
-the first retail argument entry, `TEXT_QST_048_AFFAIR_WIFE_WHATS_THIS_10`.
+thug. The affair suite traces the husband's hush-money offer and first-bad-deed bookkeeping,
+the lover's run to the escape marker and off-screen removal, and the wife's accepted-affair
+run to her husband through the first retail argument entry,
+`TEXT_QST_048_AFFAIR_WIFE_WHATS_THIS_10`.
 The supporting trace-tool unit suite has 20/20 passing tests.
 
 The coverage manifest classifies 29 functions as implemented and traced, 17 as implemented
