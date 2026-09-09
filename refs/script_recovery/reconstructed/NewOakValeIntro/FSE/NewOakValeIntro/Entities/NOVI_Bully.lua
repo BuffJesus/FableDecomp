@@ -27,7 +27,7 @@ local ALIVE_HEALTH_THRESHOLD = 0.0            -- _DAT_0122dedc (read from retail
 local HEALTH_COUNTER_UNSET = -999             -- PARENT+0x64 sentinel (init value, see quest Init)
 local TEDDY_REWARD_GOLD = 1                   -- GivenTeddy: GiveHeroGold(1)
 local BAD_DEED_TEDDY_TO_BULLY = 3             -- GivenTeddy: AddBadDeed(PARENT, 3)
-local INTIMIDATE_TIMER_VALUE = 0              -- UNKNOWN: SetTimer value dropped by the decompiler
+local INTIMIDATE_TIMER_VALUE = nil            -- UNKNOWN: SetTimer value dropped by the decompiler; do not guess
 local INFO_BAR_MAX = 0                        -- AddQuestInfoBar 2nd immediate (0)
 local INFO_BAR_UNCHANGED = -1.0               -- UpdateQuestInfoBar(handle, remaining, -1.0, -1.0)
 local INFO_BAR_SCALE = 1.0                    -- UNKNOWN: retail colour/scale args dropped
@@ -66,12 +66,12 @@ local ANSWER_YES = 1                          -- MsgIsQuestionAnsweredYesOrNo() 
 local ANSWER_PENDING = -1                     -- MsgIsQuestionAnsweredYesOrNo() < 0
 
 -- Entity-local retail fields (this+0x1c..), PDB names
-local InitialHealth                           -- 0x1c (long)
-local HitsTaken                               -- 0x20 (long)
-local DoneIntro                               -- 0x24
-local SaidPieceAboutAttackingVictim           -- 0x25
-local SpokenOnFirstProximity                  -- 0x26
-local IntimidateSpeechLoop                    -- 0x28 (long)
+local InitialHealth = INITIAL_HEALTH          -- 0x1c (long)
+local HitsTaken = 0                           -- 0x20 (long)
+local DoneIntro = false                       -- 0x24
+local SaidPieceAboutAttackingVictim = false   -- 0x25
+local SpokenOnFirstProximity = false          -- 0x26
+local IntimidateSpeechLoop = INTIMIDATE_LOOP_START -- 0x28 (long)
 
 function Init(quest, me)
   DoneIntro = false
@@ -298,7 +298,7 @@ local function intimidate(quest, me)
   if SpokenOnFirstProximity and math.random(0, INTIMIDATE_RAND_MOD - 1) ~= 0 then return true end
   if not (NOVI.hero_within(quest, me, INTIMIDATE_DISTANCE) and HitsTaken == 0) then return true end
   SpokenOnFirstProximity = true
-  quest:SetTimer(timer, INTIMIDATE_TIMER_VALUE)
+  NOVI.unsupported(quest, "SetTimer", { timer, INTIMIDATE_TIMER_VALUE })
   F.set(quest, F.VictimShake, true)
   local conv = quest:AddNewConversation(me, false, false)
   quest:AddPersonToConversation(conv, me)

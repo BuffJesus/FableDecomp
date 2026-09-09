@@ -35,47 +35,6 @@
     },
     {
       "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        }
-      ],
-      "event": "api-call",
-      "name": "NewScriptFrame",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        {
-          "x": 0,
-          "y": 0,
-          "z": 0
-        },
-        2.0,
-        0
-      ],
-      "event": "api-call",
-      "name": "MoveToPosition",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "IsPerformingScriptTask",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "GetPos",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [
         "NOVI_Victim"
       ],
       "event": "api-call",
@@ -153,6 +112,120 @@
       "scope": "Quest"
     },
     {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        15.0
+      ],
+      "event": "api-call",
+      "name": "IsDistanceBetweenThingsUnder",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NewOakValeIntro: UNSUPPORTED retail call SetTimer"
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "VictimShake",
+        true
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false,
+        false
+      ],
+      "event": "api-call",
+      "name": "AddNewConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "intimidation",
+          "scope": "Entity"
+        },
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddPersonToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "intimidation",
+          "scope": "Entity"
+        },
+        "TEXT_QST_048_BULLY_SCRMSG_INTIMIDATING_10",
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddLineToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        0,
+        1
+      ],
+      "event": "runtime-call",
+      "name": "random",
+      "receiver": "math",
+      "scope": "Lua"
+    },
+    {
+      "arguments": [
+        "ST_OPINION_DISAPPROVAL_SHAKE_FIST",
+        false
+      ],
+      "event": "api-call",
+      "name": "PlayAnimation",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
       "arguments": [
         {
           "handle": "me",
@@ -167,6 +240,7 @@
   ],
   "fixtures": {
     "Entity.AcquireControl": [
+      true,
       true
     ],
     "Entity.GetHomePos": [
@@ -178,18 +252,10 @@
     ],
     "Entity.GetPos": [
       {
-        "x": 3,
-        "y": 0,
-        "z": 0
-      },
-      {
         "x": 0,
         "y": 0,
         "z": 0
       }
-    ],
-    "Entity.IsPerformingScriptTask": [
-      false
     ],
     "Entity.IsTalkedToByHero": [
       false
@@ -200,7 +266,20 @@
     "Entity.MsgIsHitByHero": [
       false
     ],
+    "Lua.math.random": [
+      0
+    ],
+    "Quest.AddNewConversation": [
+      {
+        "handle": "intimidation",
+        "scope": "Entity"
+      }
+    ],
     "Quest.GetHero": [
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
       {
         "handle": "hero",
         "scope": "Entity"
@@ -216,10 +295,12 @@
       }
     ],
     "Quest.GetTimer(901)": [
-      1
+      0
+    ],
+    "Quest.IsDistanceBetweenThingsUnder": [
+      true
     ],
     "Quest.NewScriptFrame": [
-      true,
       true,
       false
     ]

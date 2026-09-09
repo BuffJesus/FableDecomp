@@ -1,0 +1,17 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Bully.lua","expect":["GetTimer","IsDistanceBetweenThingsUnder","Log","SetStateBool","AddNewConversation","AddPersonToConversation","AddLineToConversation","random","PlayAnimation"],"forbid":["SetTimer"],"note":"the bully's first expired-timer intimidation sets VictimShake, emits numbered line _10 and the deterministic shake-fist animation while exposing the unrecovered SetTimer duration as an audit event rather than guessing zero"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true,true],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":0,"y":0,"z":0}],
+  "Quest.GetThingWithScriptName(NOVI_Victim)":[{"handle":"victim","scope":"Entity"}],
+  "Entity.IsTalkedToByHero":[false],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.GetStateInt(TalkIntermittentTimer)":[901],
+  "Quest.GetTimer(901)":[0],
+  "Quest.IsDistanceBetweenThingsUnder":[true],
+  "Quest.AddNewConversation":[{"handle":"intimidation","scope":"Entity"}],
+  "Lua.math.random":[0]
+}

@@ -417,6 +417,51 @@
       "events": 63
     },
     {
+      "fixture": "entity_bully_first_intimidation",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "purpose": "the bully's first expired-timer intimidation sets VictimShake, emits numbered line _10 and the deterministic shake-fist animation while exposing the unrecovered SetTimer duration as an audit event rather than guessing zero",
+      "expects": [
+        "GetTimer",
+        "IsDistanceBetweenThingsUnder",
+        "Log",
+        "SetStateBool",
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "AddLineToConversation",
+        "random",
+        "PlayAnimation"
+      ],
+      "forbids": [
+        "SetTimer"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 23
+    },
+    {
+      "fixture": "entity_bully_four_hits_run_off",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "purpose": "four direct hero hits create and decrement the bully health bar, set BullySubdued, run both non-teddy BULLYRUN cutscenes with the retail actor/BRATLINE map, award the first good deed, set BullyRanOff, and remove the bully",
+      "expects": [
+        "AddQuestInfoBar",
+        "UpdateQuestInfoBar",
+        "RemoveQuestInfoElement",
+        "RunCutsceneWithSetup",
+        "ClearThingHasInformation",
+        "DisplayGameInfo",
+        "AddLogbookStoryEntryString",
+        "RemoveThing"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 119
+    },
+    {
       "fixture": "entity_bully_init",
       "function": "Init",
       "kind": "entity",

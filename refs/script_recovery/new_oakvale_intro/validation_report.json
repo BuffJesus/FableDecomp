@@ -1003,7 +1003,6 @@
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
-      "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
       "NewOakValeIntro/Entities/NOVI_Villager.lua",
       "NewOakValeIntro/NewOakValeIntro.lua"
@@ -1377,6 +1376,22 @@
     {
       "events": 63,
       "fixture": "entity_bully_accepts_teddy.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 23,
+      "fixture": "entity_bully_first_intimidation.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 119,
+      "fixture": "entity_bully_four_hits_run_off.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1784,12 +1799,12 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 73,
-    "fixturesPassed": 73,
+    "fixtures": 75,
+    "fixturesPassed": 75,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,
-    "unsupportedCallSites": 6,
+    "unsupportedCallSites": 7,
     "warnings": 0,
     "wrongScopeApis": 0
   },
@@ -1816,6 +1831,10 @@
     },
     {
       "file": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "retail": "SetTimer"
+    },
+    {
+      "file": "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "retail": "SetTimer"
     }
   ],

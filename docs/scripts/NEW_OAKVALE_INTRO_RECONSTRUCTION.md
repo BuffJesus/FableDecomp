@@ -42,7 +42,7 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 73/73 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 75/75 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
@@ -74,6 +74,9 @@ the retail object/charge operands, objective and `GivenSweets` updates, plus the
 winning-random-roll, nearby-hero ambient shout. The shout trace deliberately records the missing
 `SetTimer` duration as an unsupported runtime event before continuing through its animation and
 conversation line.
+Bully coverage now includes the first numbered intimidation/`VictimShake` handshake and a complete
+four-hit subdual: health-bar creation and decrements, both non-teddy `BULLYRUN` cutscenes with the
+retail actor and `$BRATLINE` mappings, good-deed bookkeeping, `BullyRanOff`, and entity removal.
 
 The coverage manifest classifies 29 functions as implemented and traced, 17 as implemented
 with uncertain native arguments, 6 as lifecycle/data-only, no API-blocked functions, and
@@ -83,8 +86,8 @@ that every entity AI branch has been exercised in the game.
 
 ## Remaining parity limits
 
-Six executable `NOVI.unsupported` call sites preserve retail intent where ForgeFSE
-does not expose a direct equivalent. The larger API requirements manifest records 64
+Seven executable `NOVI.unsupported` call sites preserve retail intent where ForgeFSE
+does not expose a direct equivalent. The larger API requirements manifest records 65
 blocked semantic requirements or signature differences. No catalogued native function is
 currently classified as wholly or partially API-blocked, but important call-level limits remain:
 entity scripting acquisition/release semantics, morality values loaded from game data,
@@ -92,10 +95,11 @@ special-ability message variants, exact distance-boundary behavior, and some tim
 behavior. ForgeFSE's Windows-only runtime now selects retail PC platform branches explicitly;
 the missing position-distance helper is reconstructed with squared 3D vector math.
 
-The six explicit sites are two conditional scheduler fallbacks (used only if the registered
+The seven explicit sites are two conditional scheduler fallbacks (used only if the registered
 entity `AcquireControl`/`ReleaseControl` methods are unavailable), positive and negative deed
-morality calls whose game-data float is unrecovered, and one `Pause` plus one `SetTimer` whose
-retail duration operands were dropped by the decompiler. Supplying guessed durations or morality
+morality calls whose game-data float is unrecovered, one `Pause`, and two `SetTimer` calls (trader
+shout and bully intimidation) whose retail duration operands were dropped by the decompiler.
+Supplying guessed durations or morality
 would reduce the metric while making the reconstruction less faithful, so these remain runtime
 audit points.
 
