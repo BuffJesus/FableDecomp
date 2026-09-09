@@ -619,7 +619,7 @@
         "quest_thread_start_barrel_timer_terminated"
       ],
       "evidence": "native-decompile (donor label Script_Guard_Duty; pointer stored by Main next to the \"StartBarrelTimer\" name)",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "Q_NewOakValeIntro",
@@ -682,9 +682,9 @@
   ],
   "summary": {
     "functions": 52,
-    "implementedAndTraced": 30,
+    "implementedAndTraced": 31,
     "implementedUntraced": 0,
-    "uncertain": 16,
+    "uncertain": 15,
     "apiBlocked": 0,
     "notImplemented": 0,
     "notApplicable": 6

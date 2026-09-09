@@ -298,8 +298,8 @@ function StartBarrelTimer(questObject)
     end)
     if not armed then return end
 
-    local bar = quest:AddQuestInfoBar(BARREL_WATCH_SECONDS, BARREL_WATCH_SECONDS,
-        NOVI.COLOUR_BLACK, NOVI.COLOUR_BLACK, NOVI.HUD_CLOCK_ICON, "", INFO_BAR_SCALE)
+    local bar = quest:AddQuestInfoBar(0, BARREL_WATCH_SECONDS,
+        NOVI.COLOUR_GREEN, NOVI.COLOUR_GREEN, NOVI.HUD_CLOCK_ICON, "", INFO_BAR_SCALE)
     F.set(quest, F.GUIBarrelCounter, bar)
     local guard_point = quest:GetThingWithScriptName(NOVI.MARKER_WAREHOUSE_GUARD)
 

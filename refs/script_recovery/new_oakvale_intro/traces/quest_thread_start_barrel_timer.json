@@ -36,18 +36,18 @@
     },
     {
       "arguments": [
-        45.0,
+        0,
         45.0,
         {
           "a": 255,
           "b": 0,
-          "g": 0,
+          "g": 255,
           "r": 0
         },
         {
           "a": 255,
           "b": 0,
-          "g": 0,
+          "g": 255,
           "r": 0
         },
         "HUD_CLOCK_ICON",
@@ -309,5 +309,5 @@
   "kind": "quest",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua",
-  "sourceSha256": "5a637cf150e84500afb4ee370555cf410dc17e181a3e2a4fc374d56112b5f62f"
+  "sourceSha256": "541230bebd784775518ebf26c48da9a2696127a33776947b864727749bb65470"
 }

@@ -141,7 +141,7 @@ Affair-wife idle coverage now proves the equivalent native timer sequence indepe
 nearby-hero “where's my husband?” branch reads `TalkIntermittentTimer`, writes value `3`, then
 queues its two-person conversation.
 
-The coverage manifest classifies 30 functions as implemented and traced, 16 as implemented
+The coverage manifest classifies 31 functions as implemented and traced, 15 as implemented
 with uncertain native arguments, 6 as lifecycle/data-only, no API-blocked functions, and
 none as unimplemented. These
 classifications combine native-operation coverage with mock-host traces; they do not mean
@@ -150,7 +150,7 @@ that every entity AI branch has been exercised in the game.
 ## Remaining parity limits
 
 Two executable `NOVI.unsupported` call sites preserve retail intent where ForgeFSE
-does not expose a direct equivalent. The larger API requirements manifest records 60
+does not expose a direct equivalent. The larger API requirements manifest records 59
 blocked semantic requirements or signature differences. No catalogued native function is
 currently classified as wholly or partially API-blocked, but important call-level limits remain:
 entity scripting acquisition/release semantics,
@@ -165,7 +165,9 @@ AffairWife timer operands formerly listed here are now instruction-level recover
 and AffairMan's kiss/hug pause as `0.4`. The installed retail `script.bin` resolves
 `OVI_MoralityChangePerDeed` exactly: entry 597 (`SCRIPT_DEF`) decodes it as `0.001`, distinct
 from entry 0 (`NULLDEF_CScriptDef`) whose default is zero. The port therefore applies `+0.001`
-for good deeds and `-0.001` for bad deeds.
+for good deeds and `-0.001` for bad deeds. StartBarrelTimer's instruction stream also proves
+the initial clock bar is current `0`, max `45`, with opaque green fill and empty colours; both
+timer reads load the `WatchTimer` ID directly from parent offset `+0x108`.
 
 The wife argument loop no longer depends on an unavailable `TextEntryExists` binding. Retail
 headers and the installed English `text.big` index prove `_10`, `_20`, `_30`, and `_40` exist

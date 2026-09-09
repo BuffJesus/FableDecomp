@@ -6384,7 +6384,7 @@
           "function": "StartBarrelTimer",
           "seq": 44,
           "native": "until GetTimer(WatchTimer) > 0",
-          "evidence": "native-decompile"
+          "evidence": "native-disassembly"
         },
         {
           "script": "Q_NewOakValeIntro",
@@ -6404,7 +6404,7 @@
         "NOVI_BookTrader#25: 0x00db4ce6-0x00db4cf9 loads PARENT+0x104 and calls GetTimer slot 0x168",
         "NOVI_Bully#66: 0x00dbc59b-0x00dbc5ae loads PARENT+0x104 and calls GetTimer slot 0x168",
         "NOVI_CreatedBeetle#3: the second GetTimer call in the decompile has its arg dropped; asm/retail sig GetTimer(long) implies the same timer id",
-        "Q_NewOakValeIntro#44: timer id register-passed; WatchTimer (0x108) inferred from the later explicit GetTimer(this+0x108) in the same function"
+        "Q_NewOakValeIntro#44: 0x00db4f7c/0x00db4fad load the timer id directly from parent +0x108 (PDB WatchTimer) before both GetTimer calls"
       ],
       "fallbackStatus": "direct",
       "blocked": false
@@ -8042,14 +8042,14 @@
           "script": "Q_NewOakValeIntro",
           "function": "StartBarrelTimer",
           "seq": 45,
-          "native": "GUIBarrelCounter = AddQuestInfoBar(45.0, 45.0?, colour, colour, \"HUD_CLOCK_ICON\", \"\", 1.0)",
-          "evidence": "native-decompile"
+          "native": "GUIBarrelCounter = AddQuestInfoBar(0, 45.0, opaque green, opaque green, \"HUD_CLOCK_ICON\", \"\", 1.0)",
+          "evidence": "native-disassembly"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
         "NOVI_Bully#52: x86 reverse push order identifies the green object as filledColour and the blue object as emptyColour; CRGBColour RGBA layout is independently corroborated by CPlayerManager::GetMultiplayerColour",
-        "Q_NewOakValeIntro#45: only the 45.0 max, the icon, the empty text and the 1.0 scale are visible; the initial value and the two colour words (built from bl/0xff bytes) are not fully resolved"
+        "Q_NewOakValeIntro#45: 0x00db4ff4-0x00db503b: reverse push order proves scale 1.0, empty text, clock icon, two independently assembled 00 ff 00 ff RGBA colours, current 0 (xor ebx), and max 45.0"
       ],
       "fallbackStatus": "direct",
       "blocked": false
@@ -10297,23 +10297,6 @@
           "script": "Q_NewOakValeIntro",
           "reason": "no direct binding; PlayCutscene is the seed-corpus equivalent",
           "luaLocation": "play_dead_father_scene"
-        }
-      ],
-      "signatureConfidence": "n/a",
-      "semanticDifferences": [],
-      "fallbackStatus": "explicit-gap",
-      "blocked": true
-    },
-    {
-      "operation": "AddQuestInfoBar colour words / initial value",
-      "proposedForgeCall": null,
-      "bindingExists": false,
-      "bindingScope": null,
-      "nativeEvidence": [
-        {
-          "script": "Q_NewOakValeIntro",
-          "reason": "arguments assembled byte-wise in registers; not fully recovered",
-          "luaLocation": "StartBarrelTimer"
         }
       ],
       "signatureConfidence": "n/a",
