@@ -39,7 +39,7 @@
 | OVI_DeadFather | Main | 0x00DB8300 | 9 | `NewOakValeIntro/Entities/OVI_DeadFather.lua` | entity_dead_father_found_cleanup, entity_dead_father_main_terminated | native-decompile | implemented (uncertain args) |
 | OVI_DeadFather | OnPredicateFail | 0x00DB8260 | 0 | `NewOakValeIntro/Entities/OVI_DeadFather.lua` | - | native-decompile | not-applicable (retail body empty / data only) |
 | Q_NewOakValeIntro | RegisterMain | 0x00DAACE0 | 0 | `NewOakValeIntro/NewOakValeIntro.lua` | - | native-decompile | not-applicable (host lifecycle) |
-| Q_NewOakValeIntro | Main | 0x00DABAC0 | 7 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_main_fresh_start, quest_main_reload_after_attack | native-decompile | implemented (uncertain args) |
+| Q_NewOakValeIntro | Main | 0x00DABAC0 | 7 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_main_fresh_start, quest_main_reload_after_attack | native-decompile | implemented-and-traced |
 | Q_NewOakValeIntro | Init | 0x00DAADD0 | 4 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_init_resets | native-decompile | implemented-and-traced |
 | Q_NewOakValeIntro | OnPersist | 0x00DAADA0 | 1 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_onpersist_roundtrip | native-decompile | implemented-and-traced |
 | Q_NewOakValeIntro | DoMission | 0x00DBDE40 | 20 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_domission_attack_transition, quest_domission_terminated_during_childhood | native-decompile + PDB-name | implemented-and-traced |

@@ -141,7 +141,7 @@ Affair-wife idle coverage now proves the equivalent native timer sequence indepe
 nearby-hero “where's my husband?” branch reads `TalkIntermittentTimer`, writes value `3`, then
 queues its two-person conversation.
 
-The coverage manifest classifies 31 functions as implemented and traced, 15 as implemented
+The coverage manifest classifies 32 functions as implemented and traced, 14 as implemented
 with uncertain native arguments, 6 as lifecycle/data-only, no API-blocked functions, and
 none as unimplemented. These
 classifications combine native-operation coverage with mock-host traces; they do not mean
@@ -168,6 +168,8 @@ from entry 0 (`NULLDEF_CScriptDef`) whose default is zero. The port therefore ap
 for good deeds and `-0.001` for bad deeds. StartBarrelTimer's instruction stream also proves
 the initial clock bar is current `0`, max `45`, with opaque green fill and empty colours; both
 timer reads load the `WatchTimer` ID directly from parent offset `+0x108`.
+The reload-only post-attack deactivation delay is likewise exact: `Main` zeroes `EBP` in its
+prologue and passes that unchanged zero to `DeactivateQuest`.
 
 The wife argument loop no longer depends on an unavailable `TextEntryExists` binding. Retail
 headers and the installed English `text.big` index prove `_10`, `_20`, `_30`, and `_40` exist

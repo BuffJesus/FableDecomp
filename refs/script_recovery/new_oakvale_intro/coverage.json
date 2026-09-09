@@ -530,7 +530,7 @@
         "quest_main_reload_after_attack"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "Q_NewOakValeIntro",
@@ -682,9 +682,9 @@
   ],
   "summary": {
     "functions": 52,
-    "implementedAndTraced": 31,
+    "implementedAndTraced": 32,
     "implementedUntraced": 0,
-    "uncertain": 15,
+    "uncertain": 14,
     "apiBlocked": 0,
     "notImplemented": 0,
     "notApplicable": 6

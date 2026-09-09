@@ -9417,8 +9417,8 @@
           "script": "Q_NewOakValeIntro",
           "function": "Main",
           "seq": 4,
-          "native": "if (AttackOver) { if (IsActiveThreadTerminating) return; DeactivateQuest(\"Q__OakValeIntro_PostAttack\", delay=ebp) }",
-          "evidence": "native-decompile"
+          "native": "if (AttackOver) { if (IsActiveThreadTerminating) return; DeactivateQuest(\"Q__OakValeIntro_PostAttack\", 0) }",
+          "evidence": "native-disassembly"
         },
         {
           "script": "Q_NewOakValeIntro",
@@ -9435,9 +9435,9 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
-        "Q_NewOakValeIntro#4: delay register value not proven; 0 assumed (inference). ForgeFSE has no IsActiveThreadTerminating query."
+        "Q_NewOakValeIntro#4: Main zeroes EBP at 0x00dabacd and passes that unchanged zero as the delay at 0x00dac183. ForgeFSE has no IsActiveThreadTerminating query."
       ],
       "fallbackStatus": "direct",
       "blocked": false

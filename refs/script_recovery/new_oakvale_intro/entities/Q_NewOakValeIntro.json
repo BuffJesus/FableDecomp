@@ -77,7 +77,7 @@
     {"seq": 1, "function": "Main", "kind": "call", "native": "AddEntityScriptBinding x16 (NOVI_LiveFather .. OVI_DeadFather)", "argsKnown": true, "lua": "quest:AddEntityBinding(name, file) x16", "forgeBinding": "AddEntityBinding", "evidence": "native-decompile"},
     {"seq": 2, "function": "Main", "kind": "call", "native": "CTCVillage::OnInitialActivate(this) @0x00CB8930", "argsKnown": true, "lua": "(host-managed activation flag; no Lua equivalent)", "forgeBinding": "host-managed", "evidence": "native-decompile"},
     {"seq": 3, "function": "Main", "kind": "call", "native": "GSI->PostAddScriptedEntities()", "argsKnown": true, "lua": "quest:FinalizeEntityBindings()", "forgeBinding": "FinalizeEntityBindings", "evidence": "native-decompile"},
-    {"seq": 4, "function": "Main", "kind": "branch", "native": "if (AttackOver) { if (IsActiveThreadTerminating) return; DeactivateQuest(\"Q__OakValeIntro_PostAttack\", delay=ebp) }", "argsKnown": false, "lua": "if F.get(AttackOver) then quest:DeactivateQuest(SECTION_POST_ATTACK, 0)", "forgeBinding": "DeactivateQuest", "evidence": "native-decompile", "note": "delay register value not proven; 0 assumed (inference). ForgeFSE has no IsActiveThreadTerminating query."},
+    {"seq": 4, "function": "Main", "kind": "branch", "native": "if (AttackOver) { if (IsActiveThreadTerminating) return; DeactivateQuest(\"Q__OakValeIntro_PostAttack\", 0) }", "argsKnown": true, "lua": "if F.get(AttackOver) then quest:DeactivateQuest(SECTION_POST_ATTACK, 0)", "forgeBinding": "DeactivateQuest", "evidence": "native-disassembly", "note": "Main zeroes EBP at 0x00dabacd and passes that unchanged zero as the delay at 0x00dac183. ForgeFSE has no IsActiveThreadTerminating query."},
     {"seq": 5, "function": "Main", "kind": "call", "native": "SetQuestCardObjective(GetActiveQuestName(), TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_01, \"\", \"\")", "argsKnown": true, "lua": "quest:SetQuestCardObjective(...)", "forgeBinding": "SetQuestCardObjective", "evidence": "native-decompile"},
     {"seq": 6, "function": "Main", "kind": "spawn", "native": "CSpawnedFunc(\"StartBarrelTimer\", &StartBarrelTimer)", "argsKnown": true, "lua": "quest:CreateThread(\"StartBarrelTimer\")", "forgeBinding": "CreateThread", "evidence": "native-decompile"},
     {"seq": 7, "function": "Main", "kind": "call", "native": "DoMission()", "argsKnown": true, "lua": "DoMission(quest)", "forgeBinding": "n/a", "evidence": "native-decompile"},
@@ -140,7 +140,6 @@
     {"retail": "CTCVillage::OnInitialActivate", "reason": "engine-side activation bookkeeping, not scriptable", "luaLocation": "Main"}
   ],
   "uncertainties": [
-    "Main's DeactivateQuest delay is a register (ebp); 0 assumed.",
     "ActivateQuest's retail second argument is not visible at either call site.",
     "0x00CBE87F/0x00CBE9EE are labelled by donor names; the logbook reading rests on the repo's AddLogbookStoryEntry seed plus Gameflow's 10/30 story-entry bracket.",
     "PlayCutscene may internally start/stop the movie sequence that retail brackets explicitly; duplicated bracketing is a runtime question."
