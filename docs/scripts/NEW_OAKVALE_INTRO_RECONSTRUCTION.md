@@ -189,3 +189,31 @@ available and recovered scripts contain both thing/object and object/thing call 
 Detailed evidence lives in `refs/script_recovery/new_oakvale_intro/`: `coverage.md`,
 `validation_report.json`, `test_matrix.json`, `persistence_manifest.json`, `state_manifest.json`,
 the per-script `entities` inventories, fixtures, and source-hashed traces.
+
+## 2026-09-08 restart checkpoint
+
+The zero-unknown audit remains the acceptance gate. There are 119 operation records with
+`argsKnown: false`; passing fixtures do not override those evidence gaps. The quest inventory
+itself is now at zero unknown operations. The remaining queue, in descending order, is:
+
+| Inventory | Unknown operations |
+|---|---:|
+| `NOVI_Bully` | 26 |
+| `NOVI_Victim` | 16 |
+| `NOVI_Guard` | 14 |
+| `NOVI_AffairWife` | 14 |
+| `NOVI_AffairMan` | 12 |
+| `NOVI_TeddyGirl` | 9 |
+| `NOVI_AffairWoman` | 8 |
+| `NOVI_BarrelThug` | 8 |
+| `NOVI_BookTrader` | 5 |
+| `NOVI_BarrelMan` | 3 |
+| `OVI_DeadFather` | 2 |
+| `NOVI_Villager` | 1 |
+| `NOVI_LiveFather` | 1 |
+
+Resume with `NOVI_Villager`'s reciprocal `EntitySetThingAsAllyOfThing` call in
+`CNOVI_Villager::Main @ 0x00DADF80`, then clear `NOVI_LiveFather` and `OVI_DeadFather` before
+returning to the larger inventories. The Ghidra project briefly reported a project lock after a
+timed-out headless disassembly command; no Java process remained, so retry the read-only command
+before treating it as a persistent blocker.
