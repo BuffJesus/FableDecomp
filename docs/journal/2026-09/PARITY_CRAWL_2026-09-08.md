@@ -452,3 +452,42 @@ batch is dominated by STL internals, unresolved component/global calls, or
 functions whose transferred label does not fit the body. Totals are now 18,869
 compiled/behavior-tested, 8,144 exact matches, 10,681 relocation matches, and
 394,154 genuine retail bytes matched. Batch 368 is next.
+
+### Batch 368: dependency and prototype rejection pass
+
+Batch 368 is reviewed and ledgered without a landing. `CThingComponentSet::HasDriver`
+depends on the component-set search helper and its nine-byte entry layout;
+the paired `CAIStateGroup_GoToBed` predicates depend on unresolved world-time
+and schedule owners. `CShaderRenderManager::SetViewTransform` is not safe to
+publish from its transferred signature: the retail body copies only 16 bytes
+from a purported `CMatrix3x4` and writes offsets that conflict with the donor
+layout by different amounts, so neither the prototype nor a single retail
+prefix contraction is established. The remaining candidates are STL internals,
+destructors, and virtual/component chains. Batch 369 is next; totals remain
+unchanged.
+
+### Batch 369: parser cursor near-match
+
+Batch 369 is reviewed and ledgered without a landing. `CStringParser::SetStringPos`
+is genuine and confirms that retail places `CursorPos` at +0x1c rather than
+the donor's +0x24. A behavior fixture verifies the position update and quote
+tracking across single quotes, double quotes, and the zero-length prefix, but
+the cleanest source emits 50 bytes against retail's 62. Its provisional cursor
+type and retail overlay were removed rather than keeping a behavior-only
+candidate. The repeated `C3DMeshLODInfo::Sizeof` labels resolve to several
+different dependent object graphs, while the rest require allocator, timing,
+navigation, or destructor dependencies. Batch 370 is next; totals remain
+unchanged.
+
+### Batch 370: primitive-type list ABI trial
+
+Batch 370 is reviewed and ledgered without a landing. The PDB identifies
+`CEnginePrimitiveTypeList` as a 16-byte type inherited from the engine primitive
+enum vector, and `CEnginePrimitiveManagerRepeatedStaticMeshes::GetSupportedTypes`
+appends the confirmed value `0x2a`. Its fixture passes on both growth and
+spare-capacity paths, but the clean `push_back` source emits a 26-byte wrapper
+instead of retail's 62-byte inlined fast path. The provisional type and method
+were removed pending a shared, compiler-faithful container representation.
+The chunk factories require allocation, constructor, vtable, and owner-callback
+chains; the remaining functions have similarly unresolved dependencies.
+Batch 371 is next; totals remain unchanged.
