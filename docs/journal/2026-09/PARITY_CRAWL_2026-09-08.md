@@ -491,3 +491,41 @@ were removed pending a shared, compiler-faithful container representation.
 The chunk factories require allocation, constructor, vtable, and owner-callback
 chains; the remaining functions have similarly unresolved dependencies.
 Batch 371 is next; totals remain unchanged.
+
+### Batch 371: local-detail comparison near-match
+
+Batch 371 is reviewed and ledgered without a landing. The genuine
+`CLocalDetailObjectCollectionType::IsEquivalent` compares the three PDB-named
+mesh bank indexes and all 52 bytes of the named `PlainDataBlock`; its fixture
+covers equality plus scalar and tail-byte mismatches. Clean source emits 65
+bytes against retail's 62-byte intrinsic comparison, so the provisional shared
+type was removed. Most of the batch is the same `CEnginePrimitiveTypeList`
+append family whose clean wrapper failed the preceding batch's parity gate.
+`CTCWife::ClearAllAppearanceChangedNoticed` was rejected because its retail
+writes do not fit the donor field semantics, and the purported
+`CScriptThing::operator==` boundary includes three neighboring math routines.
+Batch 372 is next; totals remain unchanged.
+
+### Batch 372: stopwatch start near-match
+
+Batch 372 is reviewed and ledgered without a landing. `CStopWatch::Start` has
+a clean PDB layout and a fixture that covers both successful and failed
+performance-counter queries, including the `m_bIsRunning` transition. The
+clean source emits 57 bytes against retail's 63 because this compiler pass
+merges the duplicated branch tails; the provisional shared header and refactor
+were removed rather than perturbing source to preserve duplicated epilogues.
+`CTCHeroStats::ResetTrainingStatus`, creature blocking, and level-unload
+handling depend on unresolved component, counted-pointer, or container owners.
+Batch 373 is next; totals remain unchanged.
+
+### Batch 373: component-chain rejection pass
+
+Batch 373 is reviewed and ledgered without a landing. The two
+`CGameScriptThing::SetToKillOnLevelUnload` entries require the script-thing
+wrapper, component lookup, alive-state check, and creature method as a single
+trusted chain. `CGameCameraManager::RemoveBuildingCameraMode` and
+`CTCSpecialAbilities::SetupBulletTime` likewise depend on several unnamed
+global/component calls. `CTCShotDefinitionBase::GetInitialVelocity` has a
+PDB-confirmed name but composes timing, owner lookup, and randomization helpers
+whose owners remain unresolved. Container internals and destructors make up
+the balance. Batch 374 is next; totals remain unchanged.
