@@ -1,6 +1,7 @@
 {
  "__meta__": {
   "function": "DoMission",
+  "covers": ["DoMission", "AttackStuff", "PostAttackStuff"],
   "kind": "quest",
   "expect": [
    "ActivateQuest",

@@ -1,0 +1,6 @@
+{
+  "__meta__":{"function":"AddBadDeed","kind":"quest","expect":["SetStateInt","DisplayGameInfo","AddLogbookStoryEntryString","SetStateBool"],"note":"first bad deed increments state, displays/logs basics, and records bad-deed enum member zero"},
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true]
+}

@@ -20,8 +20,22 @@
 
 local NOVI = require("NewOakValeIntro.common")
 local F = require("NewOakValeIntro.fields")
+local Deeds = require("NewOakValeIntro.deeds")
 
 Quest = nil
+
+-- Native quest methods used synchronously by the entity scripts. Entity modules call the shared
+-- implementation directly; these named entrypoints preserve the retail surface and permit isolated
+-- lifecycle tracing. `which` defaults to the first enum member only for hosts that omit arguments.
+function AddGoodDeed(questObject, me)
+    Quest = questObject or Quest
+    return Deeds.add_good(Quest, me)
+end
+
+function AddBadDeed(questObject, which, me)
+    Quest = questObject or Quest
+    return Deeds.add_bad(Quest, me, which or Deeds.BAD_DEED_BARREL_BROKEN)
+end
 
 -- entity bindings in retail registration order (Main @0x00DABAC0, native-decompile)
 local ENTITY_BINDINGS = {

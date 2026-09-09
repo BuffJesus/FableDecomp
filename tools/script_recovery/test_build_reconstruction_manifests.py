@@ -1,6 +1,10 @@
 import unittest
 
-from tools.script_recovery.build_reconstruction_manifests import fixture_covers, status_for
+from tools.script_recovery.build_reconstruction_manifests import (
+    aggregate_operation_status,
+    fixture_covers,
+    status_for,
+)
 
 
 class ReconstructionCoverageTests(unittest.TestCase):
@@ -36,6 +40,16 @@ class ReconstructionCoverageTests(unittest.TestCase):
                 "source": "NewOakValeIntro/Entities/NOVI_Bully.lua"}
         passed = {"status": "ran", "trace": "match"}
         self.assertTrue(fixture_covers("entity", meta["source"], "GivenTeddy", meta, passed))
+
+    def test_traced_operation_with_uncertain_args_remains_uncertain(self):
+        self.assertEqual(aggregate_operation_status([
+            "implemented-and-traced", "implemented-and-traced (uncertain args)"
+        ]), "implemented (uncertain args)")
+
+    def test_untraced_operation_prevents_function_trace_claim(self):
+        self.assertEqual(aggregate_operation_status([
+            "implemented-and-traced", "implemented-but-untraced"
+        ]), "implemented-but-untraced")
 
 
 if __name__ == "__main__":

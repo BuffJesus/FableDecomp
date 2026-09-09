@@ -636,6 +636,41 @@
       "events": 21
     },
     {
+      "fixture": "quest_add_bad_deed_first",
+      "function": "AddBadDeed",
+      "kind": "quest",
+      "source": null,
+      "purpose": "first bad deed increments state, displays/logs basics, and records bad-deed enum member zero",
+      "expects": [
+        "SetStateInt",
+        "DisplayGameInfo",
+        "AddLogbookStoryEntryString",
+        "SetStateBool"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 8
+    },
+    {
+      "fixture": "quest_add_good_deed_first",
+      "function": "AddGoodDeed",
+      "kind": "quest",
+      "source": null,
+      "purpose": "first good deed increments state, displays/logs basics, and points the underfunded hero toward sweets",
+      "expects": [
+        "SetStateInt",
+        "DisplayGameInfo",
+        "AddLogbookStoryEntryString",
+        "SetQuestCardObjective",
+        "UpdateQuestInfoCounter"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 13
+    },
+    {
       "fixture": "quest_attack_stuff_section_swap",
       "function": "AttackStuff",
       "kind": "quest",

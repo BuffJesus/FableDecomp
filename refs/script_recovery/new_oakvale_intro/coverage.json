@@ -252,7 +252,7 @@
         "entity_guard_init"
       ],
       "evidence": "native-decompile",
-      "status": "implemented-but-untraced"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "NOVI_Guard",
@@ -265,7 +265,7 @@
         "entity_guard_idle_terminated"
       ],
       "evidence": "native-decompile",
-      "status": "implemented-but-untraced"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "NOVI_LiveFather",
@@ -399,7 +399,7 @@
         "entity_villager_male_good_mutter"
       ],
       "evidence": "native-decompile",
-      "status": "implemented-but-untraced"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "NOVI_Villager",
@@ -446,7 +446,7 @@
         "entity_dead_father_main_terminated"
       ],
       "evidence": "native-decompile",
-      "status": "implemented-but-untraced"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "OVI_DeadFather",
@@ -479,7 +479,7 @@
         "quest_main_reload_after_attack"
       ],
       "evidence": "native-decompile",
-      "status": "implemented-but-untraced"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "Q_NewOakValeIntro",
@@ -525,7 +525,8 @@
       "operations": 3,
       "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
       "fixtures": [
-        "quest_attack_stuff_section_swap"
+        "quest_attack_stuff_section_swap",
+        "quest_domission_attack_transition"
       ],
       "evidence": "native-decompile + PDB-name",
       "status": "implemented-and-traced"
@@ -537,10 +538,11 @@
       "operations": 8,
       "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
       "fixtures": [
+        "quest_domission_attack_transition",
         "quest_post_attack_wait_terminated"
       ],
       "evidence": "native-decompile + PDB-name",
-      "status": "implemented-but-untraced"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "Q_NewOakValeIntro",
@@ -566,7 +568,7 @@
         "quest_thread_start_barrel_timer_terminated"
       ],
       "evidence": "native-decompile (donor label Script_Guard_Duty; pointer stored by Main next to the \"StartBarrelTimer\" name)",
-      "status": "implemented-but-untraced"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "Q_NewOakValeIntro",
@@ -598,7 +600,9 @@
       "address": "0x00DB0660",
       "operations": 3,
       "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
-      "fixtures": [],
+      "fixtures": [
+        "quest_add_good_deed_first"
+      ],
       "evidence": "native-decompile + PDB-name",
       "status": "implemented (uncertain args)"
     },
@@ -608,9 +612,11 @@
       "address": "0x00DAEA70",
       "operations": 1,
       "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
-      "fixtures": [],
+      "fixtures": [
+        "quest_add_bad_deed_first"
+      ],
       "evidence": "native-decompile + PDB-name",
-      "status": "implemented-but-untraced"
+      "status": "implemented-and-traced"
     },
     {
       "script": "Q_NewOakValeIntro",
@@ -625,9 +631,9 @@
   ],
   "summary": {
     "functions": 52,
-    "implementedAndTraced": 27,
-    "implementedUntraced": 8,
-    "uncertain": 1,
+    "implementedAndTraced": 28,
+    "implementedUntraced": 0,
+    "uncertain": 8,
     "apiBlocked": 10,
     "notImplemented": 0,
     "notApplicable": 6

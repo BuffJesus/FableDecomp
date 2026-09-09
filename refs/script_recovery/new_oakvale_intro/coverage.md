@@ -20,8 +20,8 @@
 | NOVI_Bully | GivenTeddy | 0x00DBCD00 | 4 | `NewOakValeIntro/Entities/NOVI_Bully.lua` | entity_bully_accepts_teddy | native-decompile | implemented-and-traced |
 | NOVI_CreatedBeetle | Init | 0x00CDEBB0 | 0 | `NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua` | - | native-decompile | not-applicable (retail body empty / data only) |
 | NOVI_CreatedBeetle | Main | 0x00DB80C0 | 5 | `NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua` | entity_created_beetle_expires, entity_created_beetle_main_terminated, entity_created_beetle_timer_terminated | native-decompile | implemented-and-traced |
-| NOVI_Guard | Init | 0x00DAC650 | 9 | `NewOakValeIntro/Entities/NOVI_Guard.lua` | entity_guard_init | native-decompile | implemented-but-untraced |
-| NOVI_Guard | Main | 0x00DAC760 | 45 | `NewOakValeIntro/Entities/NOVI_Guard.lua` | entity_guard_answers_good_hero, entity_guard_idle_terminated | native-decompile | implemented-but-untraced |
+| NOVI_Guard | Init | 0x00DAC650 | 9 | `NewOakValeIntro/Entities/NOVI_Guard.lua` | entity_guard_init | native-decompile | implemented (uncertain args) |
+| NOVI_Guard | Main | 0x00DAC760 | 45 | `NewOakValeIntro/Entities/NOVI_Guard.lua` | entity_guard_answers_good_hero, entity_guard_idle_terminated | native-decompile | implemented (uncertain args) |
 | NOVI_LiveFather | Init | 0x00DAC390 | 7 | `NewOakValeIntro/Entities/NOVI_LiveFather.lua` | entity_live_father_init | native-decompile | implemented-and-traced |
 | NOVI_LiveFather | Main | 0x00DB86B0 | 49 | `NewOakValeIntro/Entities/NOVI_LiveFather.lua` | entity_live_father_entry_cleanup | native-decompile | partially API-blocked |
 | NOVI_TeddyGirl | Init | 0x00DAF000 | 5 | `NewOakValeIntro/Entities/NOVI_TeddyGirl.lua` | entity_teddy_girl_init | native-decompile | implemented-and-traced |
@@ -32,23 +32,23 @@
 | NOVI_Victim | Init | 0x00DAEEB0 | 8 | `NewOakValeIntro/Entities/NOVI_Victim.lua` | entity_victim_init | native-decompile | implemented-and-traced |
 | NOVI_Victim | Main | 0x00DBCD60 | 27 | `NewOakValeIntro/Entities/NOVI_Victim.lua` | entity_victim_main_terminated | native-decompile | partially API-blocked |
 | NOVI_Villager | Init | 0x00DADF00 | 5 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | entity_villager_init | native-decompile | implemented-and-traced |
-| NOVI_Villager | Main | 0x00DADF80 | 27 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | entity_villager_main_terminated, entity_villager_male_good_mutter | native-decompile | implemented-but-untraced |
+| NOVI_Villager | Main | 0x00DADF80 | 27 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | entity_villager_main_terminated, entity_villager_male_good_mutter | native-decompile | implemented (uncertain args) |
 | NOVI_Villager | GetVillagerSpeechIndex | 0x00DAEBF0 | 1 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | entity_villager_male_good_mutter | native-decompile | implemented-and-traced |
 | NOVI_Villager | QuestInit(vectors) | 0x00DAADD0 | 0 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | - | native-decompile | not-applicable (retail body empty / data only) |
 | OVI_DeadFather | Init | 0x00DB8290 | 2 | `NewOakValeIntro/Entities/OVI_DeadFather.lua` | entity_dead_father_init | native-decompile | implemented-and-traced |
-| OVI_DeadFather | Main | 0x00DB8300 | 9 | `NewOakValeIntro/Entities/OVI_DeadFather.lua` | entity_dead_father_found_cleanup, entity_dead_father_main_terminated | native-decompile | implemented-but-untraced |
+| OVI_DeadFather | Main | 0x00DB8300 | 9 | `NewOakValeIntro/Entities/OVI_DeadFather.lua` | entity_dead_father_found_cleanup, entity_dead_father_main_terminated | native-decompile | implemented (uncertain args) |
 | OVI_DeadFather | OnPredicateFail | 0x00DB8260 | 0 | `NewOakValeIntro/Entities/OVI_DeadFather.lua` | - | native-decompile | not-applicable (retail body empty / data only) |
 | Q_NewOakValeIntro | RegisterMain | 0x00DAACE0 | 0 | `NewOakValeIntro/NewOakValeIntro.lua` | - | native-decompile | not-applicable (host lifecycle) |
-| Q_NewOakValeIntro | Main | 0x00DABAC0 | 7 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_main_fresh_start, quest_main_reload_after_attack | native-decompile | implemented-but-untraced |
+| Q_NewOakValeIntro | Main | 0x00DABAC0 | 7 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_main_fresh_start, quest_main_reload_after_attack | native-decompile | implemented (uncertain args) |
 | Q_NewOakValeIntro | Init | 0x00DAADD0 | 4 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_init_resets | native-decompile | implemented-and-traced |
 | Q_NewOakValeIntro | OnPersist | 0x00DAADA0 | 1 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_onpersist_roundtrip | native-decompile | implemented-and-traced |
 | Q_NewOakValeIntro | DoMission | 0x00DBDE40 | 20 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_domission_attack_transition, quest_domission_terminated_during_childhood | native-decompile + PDB-name | implemented-and-traced |
-| Q_NewOakValeIntro | AttackStuff | 0x00DBE3C0 | 3 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_attack_stuff_section_swap | native-decompile + PDB-name | implemented-and-traced |
-| Q_NewOakValeIntro | PostAttackStuff | 0x00DBEB20 | 8 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_post_attack_wait_terminated | native-decompile + PDB-name | implemented-but-untraced |
+| Q_NewOakValeIntro | AttackStuff | 0x00DBE3C0 | 3 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_attack_stuff_section_swap, quest_domission_attack_transition | native-decompile + PDB-name | implemented-and-traced |
+| Q_NewOakValeIntro | PostAttackStuff | 0x00DBEB20 | 8 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_domission_attack_transition, quest_post_attack_wait_terminated | native-decompile + PDB-name | implemented (uncertain args) |
 | Q_NewOakValeIntro | ManageQuestCoreMarkers | 0x00DBE4E0 | 4 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_thread_manage_core_markers, quest_thread_manage_core_markers_terminated_early | native-decompile + PDB-name | implemented-and-traced |
-| Q_NewOakValeIntro | StartBarrelTimer | 0x00DB4F70 | 4 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_thread_start_barrel_timer, quest_thread_start_barrel_timer_terminated | native-decompile (donor label Script_Guard_Duty; pointer stored by Main next to the "StartBarrelTimer" name) | implemented-but-untraced |
+| Q_NewOakValeIntro | StartBarrelTimer | 0x00DB4F70 | 4 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_thread_start_barrel_timer, quest_thread_start_barrel_timer_terminated | native-decompile (donor label Script_Guard_Duty; pointer stored by Main next to the "StartBarrelTimer" name) | implemented (uncertain args) |
 | Q_NewOakValeIntro | WatchBarrels | 0x00DBE890 | 3 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_thread_watch_barrels | native-decompile (LAB_00dbe890 stored next to the "WatchBarrels" name) | implemented-and-traced |
 | Q_NewOakValeIntro | WatchForGotGold | 0x00DBE2E0 | 1 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_thread_watch_for_got_gold | native-decompile (donor label CQ_FireHeartScript::CheckGameEnding; pointer stored next to the "WatchForGotGold" name) | implemented-and-traced |
-| Q_NewOakValeIntro | AddGoodDeed | 0x00DB0660 | 3 | `NewOakValeIntro/NewOakValeIntro.lua` | - | native-decompile + PDB-name | implemented (uncertain args) |
-| Q_NewOakValeIntro | AddBadDeed | 0x00DAEA70 | 1 | `NewOakValeIntro/NewOakValeIntro.lua` | - | native-decompile + PDB-name | implemented-but-untraced |
+| Q_NewOakValeIntro | AddGoodDeed | 0x00DB0660 | 3 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_add_good_deed_first | native-decompile + PDB-name | implemented (uncertain args) |
+| Q_NewOakValeIntro | AddBadDeed | 0x00DAEA70 | 1 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_add_bad_deed_first | native-decompile + PDB-name | implemented-and-traced |
 | Q_NewOakValeIntro | destructor | 0x00DBEFA0 | 0 | `NewOakValeIntro/NewOakValeIntro.lua` | - | native-decompile | not-applicable (host lifecycle) |

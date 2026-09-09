@@ -2,68 +2,89 @@
   "events": [
     {
       "arguments": [
-        "Q__OakValeIntro_PostAttack"
+        "BadDeedsPerformed"
       ],
       "event": "api-call",
-      "name": "ActivateQuest",
+      "name": "GetStateInt",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
       "arguments": [
-        "Q_NewOakValeIntro_PreAttack",
-        0
+        "BadDeedsPerformed",
+        1
       ],
       "event": "api-call",
-      "name": "DeactivateQuest",
+      "name": "SetStateInt",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
       "arguments": [
-        23.0
+        "NewOakValeIntro: UNSUPPORTED retail call GiveHeroMorality(-deed)"
       ],
       "event": "api-call",
-      "name": "SetTimeOfDay",
+      "name": "Log",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
       "arguments": [
-        "ENVIRONMENT_OV_POSTATTACK",
-        0.0
+        "GoodDeedsPerformed"
       ],
       "event": "api-call",
-      "name": "TransitionToTheme",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_048_SCRMSG_DID_FIRST_BAD_DEED"
+      ],
+      "event": "api-call",
+      "name": "DisplayGameInfo",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
       "arguments": [],
       "event": "api-call",
-      "name": "GetActiveQuestName",
+      "name": "MsgIsGameInfoClickedPast",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
       "arguments": [
-        "Q_NewOakValeIntro",
-        "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_06",
-        "",
-        ""
+        "TEXT_QST_LOG_BASICS_MAP"
       ],
       "event": "api-call",
-      "name": "SetQuestCardObjective",
+      "name": "AddLogbookStoryEntryString",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "WhichBadDeedsPerformed_0",
+        true
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
       "receiver": "quest",
       "scope": "Quest"
     }
   ],
   "fixtures": {
-    "Quest.GetActiveQuestName": [
-      "Q_NewOakValeIntro"
+    "Quest.GetStateInt(BadDeedsPerformed)": [
+      0
+    ],
+    "Quest.GetStateInt(GoodDeedsPerformed)": [
+      0
+    ],
+    "Quest.MsgIsGameInfoClickedPast": [
+      true
     ]
   },
-  "function": "AttackStuff",
+  "function": "AddBadDeed",
   "kind": "quest",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua",

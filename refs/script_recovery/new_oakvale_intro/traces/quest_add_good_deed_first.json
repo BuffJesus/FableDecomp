@@ -1,0 +1,149 @@
+{
+  "events": [
+    {
+      "arguments": [
+        "GoodDeedsPerformed"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GoodDeedsPerformed",
+        1
+      ],
+      "event": "api-call",
+      "name": "SetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NewOakValeIntro: UNSUPPORTED retail call GiveHeroMorality(+deed)"
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BadDeedsPerformed"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_048_SCRMSG_DID_FIRST_GOOD_DEED"
+      ],
+      "event": "api-call",
+      "name": "DisplayGameInfo",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsGameInfoClickedPast",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_LOG_BASICS_MAP"
+      ],
+      "event": "api-call",
+      "name": "AddLogbookStoryEntryString",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHeroGold",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GivenSweets"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetActiveQuestName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "Q_NewOakValeIntro",
+        "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_02",
+        "",
+        ""
+      ],
+      "event": "api-call",
+      "name": "SetQuestCardObjective",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIGoodDeedCounter"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        71,
+        1,
+        -1
+      ],
+      "event": "api-call",
+      "name": "UpdateQuestInfoCounter",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Quest.GetActiveQuestName": [
+      "Q_NewOakValeIntro"
+    ],
+    "Quest.GetHeroGold": [
+      0
+    ],
+    "Quest.GetStateBool(GivenSweets)": [
+      false
+    ],
+    "Quest.GetStateInt(BadDeedsPerformed)": [
+      0
+    ],
+    "Quest.GetStateInt(GUIGoodDeedCounter)": [
+      71
+    ],
+    "Quest.GetStateInt(GoodDeedsPerformed)": [
+      0
+    ],
+    "Quest.MsgIsGameInfoClickedPast": [
+      true
+    ]
+  },
+  "function": "AddGoodDeed",
+  "kind": "quest",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua",
+  "sourceSha256": "5a637cf150e84500afb4ee370555cf410dc17e181a3e2a4fc374d56112b5f62f"
+}

@@ -1,0 +1,10 @@
+{
+  "__meta__":{"function":"AddGoodDeed","kind":"quest","expect":["SetStateInt","DisplayGameInfo","AddLogbookStoryEntryString","SetQuestCardObjective","UpdateQuestInfoCounter"],"note":"first good deed increments state, displays/logs basics, and points the underfunded hero toward sweets"},
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true],
+  "Quest.GetHeroGold":[0],
+  "Quest.GetStateBool(GivenSweets)":[false],
+  "Quest.GetActiveQuestName":["Q_NewOakValeIntro"],
+  "Quest.GetStateInt(GUIGoodDeedCounter)":[71]
+}

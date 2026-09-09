@@ -62,6 +62,16 @@ def fixture_covers(entity_kind: str, lua_file: str, function: str, fixture_meta:
     return function in covered_functions and source_matches and trace_passed
 
 
+def aggregate_operation_status(statuses: list[str]) -> str:
+    if any(status == "API-blocked" for status in statuses):
+        return "partially API-blocked"
+    if any("uncertain" in status for status in statuses):
+        return "implemented (uncertain args)"
+    if statuses and all(status == "implemented-and-traced" for status in statuses):
+        return "implemented-and-traced"
+    return "implemented-but-untraced"
+
+
 def build(evidence_dir: Path, fse_root: Path, lua_manager: Path) -> dict:
     entities = {}
     for path in sorted((evidence_dir / "entities").glob("*.json")):
@@ -207,14 +217,7 @@ def build(evidence_dir: Path, fse_root: Path, lua_manager: Path) -> dict:
                 status = "not-implemented"
             else:
                 statuses = [status_for(o, traced_here, name in unsupported_by_file and "unsupported" in str(o.get("forgeBinding", "")).lower()) for o in ops]
-                if any(s == "API-blocked" for s in statuses):
-                    status = "partially API-blocked"
-                elif any(s == "uncertain" for s in statuses):
-                    status = "implemented (uncertain args)"
-                elif all(s == "implemented-and-traced" for s in statuses):
-                    status = "implemented-and-traced"
-                else:
-                    status = "implemented-but-untraced"
+                status = aggregate_operation_status(statuses)
             coverage.append({"script": name, "nativeFunction": fn, "address": addr, "operations": len(ops),
                              "luaLocation": lua_file, "fixtures": covering,
                              "evidence": (meta.get("evidence") if isinstance(meta, dict) else None) or "native-decompile",

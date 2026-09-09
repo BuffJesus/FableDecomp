@@ -1501,6 +1501,22 @@
       "trace": "match"
     },
     {
+      "events": 8,
+      "fixture": "quest_add_bad_deed_first.json",
+      "function": "AddBadDeed",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 13,
+      "fixture": "quest_add_good_deed_first.json",
+      "function": "AddGoodDeed",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 6,
       "fixture": "quest_attack_stuff_section_swap.json",
       "function": "AttackStuff",
@@ -1622,8 +1638,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 53,
-    "fixturesPassed": 53,
+    "fixtures": 55,
+    "fixturesPassed": 55,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,
