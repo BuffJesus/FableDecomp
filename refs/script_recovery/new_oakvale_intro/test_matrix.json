@@ -331,6 +331,30 @@
       "events": 1
     },
     {
+      "fixture": "entity_barrel_man_rebukes_absent_hero",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "purpose": "after the warehouse handoff, the visible primary walk-off marker selects the alternate return point; when the hero is neither visible nor nearby, the barrel man creates the where-gone conversation, reports the unattended warehouse, records the first bad deed, restores his normal brain, and releases control",
+      "expects": [
+        "IsCameraPosOnScreen",
+        "EntityTeleportToThing",
+        "CanThingBe_Seen_ByOtherThing",
+        "IsDistanceBetweenThingsUnder",
+        "AddNewConversation",
+        "AddLineToConversation",
+        "DisplayGameInfo",
+        "AddLogbookStoryEntryString",
+        "SetStateBool",
+        "SetCreatureBrain",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 79
+    },
+    {
       "fixture": "entity_barrel_man_returns_and_thanks_hero",
       "function": "Main",
       "kind": "entity",

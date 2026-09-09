@@ -1333,6 +1333,14 @@
       "trace": "match"
     },
     {
+      "events": 79,
+      "fixture": "entity_barrel_man_rebukes_absent_hero.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 82,
       "fixture": "entity_barrel_man_returns_and_thanks_hero.json",
       "function": "Main",
@@ -1878,8 +1886,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 85,
-    "fixturesPassed": 85,
+    "fixtures": 86,
+    "fixturesPassed": 86,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

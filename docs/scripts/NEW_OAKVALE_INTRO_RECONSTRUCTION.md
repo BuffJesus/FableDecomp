@@ -42,7 +42,7 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 85/85 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 86/86 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
@@ -86,7 +86,10 @@ timer-bounded approach step, favour speech, fade, hero/worker teleports, 45-seco
 and `BarrelManLeftHeroInCharge` transition. A complete continuation reaches timer value 15,
 chooses the off-screen return marker, walks back, sees and thanks the hero, awards the first good
 deed, restores the normal villager brain, and releases control. Its entity-local fields also carry
-their proven retail defaults when the mock host invokes `Main` in isolation.
+their proven retail defaults when the mock host invokes `Main` in isolation. The complementary
+absent-hero continuation selects the alternate marker when the primary return point is on-screen,
+creates the `BARRELMAN_WHERE_GONE` conversation, shows the unattended-warehouse instruction, and
+records first-bad-deed state without taking the visible/nearby hero branch.
 Affair-husband coverage now distinguishes the first near and ranged exchanges: near range emits
 the reversed woman/man `_10` pair and sets `HeroDiscoveredInfidelity`, while ranged distance emits
 the screen-message `_10` pair without discovery. Deterministic random inputs separately verify the

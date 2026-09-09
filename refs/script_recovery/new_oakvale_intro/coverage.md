@@ -10,7 +10,7 @@
 | NOVI_Barrel | Main | 0x00DB7E10 | 8 | `NewOakValeIntro/Entities/NOVI_Barrel.lua` | entity_barrel_main_terminated, entity_barrel_pc_tutorial | native-decompile | implemented-and-traced |
 | NOVI_Barrel | OnPredicateFail | 0x00DB7DB0 | 2 | `NewOakValeIntro/Entities/NOVI_Barrel.lua` | entity_barrel_predicate_fail | native-decompile | implemented-and-traced |
 | NOVI_BarrelMan | Init | 0x00DB5260 | 9 | `NewOakValeIntro/Entities/NOVI_BarrelMan.lua` | entity_barrel_man_init | native-decompile | implemented-and-traced |
-| NOVI_BarrelMan | Main | 0x00DB5330 | 11 | `NewOakValeIntro/Entities/NOVI_BarrelMan.lua` | entity_barrel_man_hands_over_warehouse, entity_barrel_man_main_terminated, entity_barrel_man_returns_and_thanks_hero | native-decompile | implemented-and-traced |
+| NOVI_BarrelMan | Main | 0x00DB5330 | 11 | `NewOakValeIntro/Entities/NOVI_BarrelMan.lua` | entity_barrel_man_hands_over_warehouse, entity_barrel_man_main_terminated, entity_barrel_man_rebukes_absent_hero, entity_barrel_man_returns_and_thanks_hero | native-decompile | implemented-and-traced |
 | NOVI_BarrelThug | Init | 0x00DB6BF0 | 2 | `NewOakValeIntro/Entities/NOVI_BarrelThug.lua` | entity_barrel_thug_init | native-decompile | implemented-and-traced |
 | NOVI_BarrelThug | Main | 0x00DB6C60 | 25 | `NewOakValeIntro/Entities/NOVI_BarrelThug.lua` | entity_barrel_thug_intro_and_first_nag, entity_barrel_thug_main_terminated, entity_barrel_thug_outro_chat, entity_barrel_thug_special_hit | native-decompile | implemented (uncertain args) |
 | NOVI_BookTrader | Init | 0x00DB3F00 | 3 | `NewOakValeIntro/Entities/NOVI_BookTrader.lua` | entity_book_trader_init | native-decompile | implemented-and-traced |
