@@ -162,8 +162,8 @@ local function confronted_with_wife(quest, me)
 end
 
 -- Sub-phase of TALK: first conversation — "will you tell?" yes/no question.
-local function ask_hero_to_keep_quiet(quest, me)
-    quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero())
+local function ask_hero_to_keep_quiet(quest, me, woman)
+    quest:EntitySetFacingAngleTowardsThing(woman, quest:GetHero())
     if not speak_if_alive(quest, me, TEXT_INTRO) then return false end
     F.set(quest, F.HeroDiscoveredInfidelity, true)
     -- retail GiveHeroYesNoQuestion(question, yes, no, "", 1); the trailing 1 has no ForgeFSE parameter
@@ -196,7 +196,7 @@ local function talked_to_by_hero(quest, me, woman, wife)
     if quest:IsDistanceBetweenThingsUnder(me, wife, WIFE_CONFRONT_DISTANCE) then
         ok = confronted_with_wife(quest, me)
     elseif not EncounterOver then
-        ok = ask_hero_to_keep_quiet(quest, me)
+        ok = ask_hero_to_keep_quiet(quest, me, woman)
     else
         ok = speak_if_alive(quest, me, TEXT_SHOO)
     end

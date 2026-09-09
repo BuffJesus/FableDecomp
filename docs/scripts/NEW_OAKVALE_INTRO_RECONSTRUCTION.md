@@ -192,7 +192,7 @@ the per-script `entities` inventories, fixtures, and source-hashed traces.
 
 ## 2026-09-08 restart checkpoint
 
-The zero-unknown audit remains the acceptance gate. There are 91 operation records with
+The zero-unknown audit remains the acceptance gate. There are 70 operation records with
 `argsKnown: false`; passing fixtures do not override those evidence gaps. The quest inventory
 itself is now at zero unknown operations. The remaining queue, in descending order, is:
 
@@ -202,10 +202,8 @@ itself is now at zero unknown operations. The remaining queue, in descending ord
 | `NOVI_Victim` | 16 |
 | `NOVI_Guard` | 14 |
 | `NOVI_AffairWife` | 14 |
-| `NOVI_AffairMan` | 12 |
-| `NOVI_TeddyGirl` | 9 |
 
-Resume with `NOVI_TeddyGirl` before returning to the larger inventories.
+Resume with `NOVI_AffairWife` before returning to the larger inventories.
 `NOVI_Villager` is now at zero unknown operations: disassembly at
 `0x00DAE109`-`0x00DAE12F` proves its two ally calls are reciprocal `(me, hero)` and `(hero, me)`.
 `NOVI_LiveFather` is also at zero: `0x00DB93CF`-`0x00DB93D8` explicitly pushes its stored
@@ -228,3 +226,10 @@ the full movie, pause, acquisition, and speech operands.
 pause true/false, nested control priority `4`, and both full facing calls. It also corrects two
 behavioral inferences: the man (not the woman) faces the hero at the start of the busy exchange,
 and the woman becomes pushable again before fleeing. Her removal is exactly `(me, false, true)`.
+`NOVI_TeddyGirl` is now at zero too. All previously dropped control priorities are directly `4`;
+the non-teddy presentation comparison names `OBJECT_TEDDY_BEAR_UNGIVEABLE`; and the ruined-teddy
+conversation operands, removal flags, information target, hit ability `14`, and reciprocal ally
+calls are all instruction-proven.
+`NOVI_AffairMan` is now at zero as well. Retail stack order proves priority `4`, hit ability `14`,
+all near/ranged conversation participants and speakers, the active-conversation handle, and every
+facing pair. The first encounter required one correction: the woman, not the man, faces the hero.

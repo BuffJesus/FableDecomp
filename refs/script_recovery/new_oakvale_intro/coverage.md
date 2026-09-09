@@ -1,7 +1,7 @@
 | script | native function | address | ops | Lua | fixtures | evidence | status |
 |---|---|---|---:|---|---|---|---|
 | NOVI_AffairMan | Init | 0x00DB0950 | 7 | `NewOakValeIntro/Entities/NOVI_AffairMan.lua` | entity_affair_man_init | native-decompile | implemented-and-traced |
-| NOVI_AffairMan | Main | 0x00DB09E0 | 60 | `NewOakValeIntro/Entities/NOVI_AffairMan.lua` | entity_affair_man_accepts_bribe, entity_affair_man_first_near_exchange, entity_affair_man_first_ranged_exchange, entity_affair_man_main_terminated | native-decompile | implemented (uncertain args) |
+| NOVI_AffairMan | Main | 0x00DB09E0 | 60 | `NewOakValeIntro/Entities/NOVI_AffairMan.lua` | entity_affair_man_accepts_bribe, entity_affair_man_first_near_exchange, entity_affair_man_first_ranged_exchange, entity_affair_man_main_terminated | native-decompile | implemented-and-traced |
 | NOVI_AffairWife | Init | 0x00DB2A70 | 9 | `NewOakValeIntro/Entities/NOVI_AffairWife.lua` | entity_affair_wife_init | native-decompile | implemented-and-traced |
 | NOVI_AffairWife | Main | 0x00DB2B10 | 53 | `NewOakValeIntro/Entities/NOVI_AffairWife.lua` | entity_affair_wife_main_terminated, entity_affair_wife_reaches_argument, entity_affair_wife_wheres_husband | native-decompile | implemented (uncertain args) |
 | NOVI_AffairWoman | Init | 0x00DB1E80 | 5 | `NewOakValeIntro/Entities/NOVI_AffairWoman.lua` | entity_affair_woman_init | native-decompile | implemented-and-traced |
@@ -25,7 +25,7 @@
 | NOVI_LiveFather | Init | 0x00DAC390 | 7 | `NewOakValeIntro/Entities/NOVI_LiveFather.lua` | entity_live_father_init | native-decompile | implemented-and-traced |
 | NOVI_LiveFather | Main | 0x00DB86B0 | 49 | `NewOakValeIntro/Entities/NOVI_LiveFather.lua` | entity_live_father_completes_intro, entity_live_father_entry_cleanup, entity_live_father_pays_good_deeds | native-decompile | implemented-and-traced |
 | NOVI_TeddyGirl | Init | 0x00DAF000 | 5 | `NewOakValeIntro/Entities/NOVI_TeddyGirl.lua` | entity_teddy_girl_init | native-decompile | implemented-and-traced |
-| NOVI_TeddyGirl | Main | 0x00DAF080 | 41 | `NewOakValeIntro/Entities/NOVI_TeddyGirl.lua` | entity_teddy_girl_chat_acquire_terminated, entity_teddy_girl_main_terminated, entity_teddy_girl_offer_acquire_terminated, entity_teddy_girl_returns_teddy, entity_teddy_girl_ruined_acquire_terminated, entity_teddy_girl_scold_acquire_terminated, entity_teddy_girl_special_hit, entity_teddy_girl_teddy_ruined_walkoff | native-decompile | implemented (uncertain args) |
+| NOVI_TeddyGirl | Main | 0x00DAF080 | 41 | `NewOakValeIntro/Entities/NOVI_TeddyGirl.lua` | entity_teddy_girl_chat_acquire_terminated, entity_teddy_girl_main_terminated, entity_teddy_girl_offer_acquire_terminated, entity_teddy_girl_returns_teddy, entity_teddy_girl_ruined_acquire_terminated, entity_teddy_girl_scold_acquire_terminated, entity_teddy_girl_special_hit, entity_teddy_girl_teddy_ruined_walkoff | native-decompile | implemented-and-traced |
 | NOVI_TeddyGirl | GivenTeddy | 0x00DB0600 | 5 | `NewOakValeIntro/Entities/NOVI_TeddyGirl.lua` | entity_teddy_girl_returns_teddy | native-decompile | implemented-and-traced |
 | NOVI_Theresa | Init | 0x00DAC4F0 | 7 | `NewOakValeIntro/Entities/NOVI_Theresa.lua` | entity_theresa_init | native-decompile | implemented-and-traced |
 | NOVI_Theresa | Main | 0x00DB97A0 | 48 | `NewOakValeIntro/Entities/NOVI_Theresa.lua` | entity_theresa_accepts_chocolates_and_starts_raid, entity_theresa_entry_cleanup | native-decompile | implemented-and-traced |

@@ -27,7 +27,7 @@
         "entity_affair_man_main_terminated"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_AffairWife",
@@ -357,7 +357,7 @@
         "entity_teddy_girl_teddy_ruined_walkoff"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_TeddyGirl",
@@ -682,9 +682,9 @@
   ],
   "summary": {
     "functions": 52,
-    "implementedAndTraced": 37,
+    "implementedAndTraced": 39,
     "implementedUntraced": 0,
-    "uncertain": 9,
+    "uncertain": 7,
     "apiBlocked": 0,
     "notImplemented": 0,
     "notApplicable": 6
