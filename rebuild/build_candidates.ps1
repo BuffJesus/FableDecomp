@@ -132478,6 +132478,13 @@ $catalog = @(
         TestSource = '00/57/CTCHeroStats_HasCurrentMarriage_0057ac4b_test.cpp'
         PassPattern = 'CURRENT_MARRIAGE PASS'
     }
+    [pscustomobject]@{
+        Address = '00b9d1e0'
+        Module = 'CEngineInternalPrimitiveStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitiveStaticMesh_GetWorldPosition_00b9d1e0.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitiveStaticMesh_GetWorldPosition_00b9d1e0_test.cpp'
+        PassPattern = 'STATIC_MESH_WORLD_POSITION PASS'
+    }
 )
 
 $requestedAddresses = @(

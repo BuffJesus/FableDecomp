@@ -1489,7 +1489,7 @@ CEngineInternalPrimitiveRepeatedZSprite	4	3	3	0	0	2	2	1	1	0	0
 CEngineInternalPrimitiveShadowedSpotLight	2	2	2	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveSprite	3	3	3	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveSpriteTrail	2	2	2	0	0	0	0	0	0	0	0
-CEngineInternalPrimitiveStaticMesh	13	13	13	0	0	6	6	5	1	0	0
+CEngineInternalPrimitiveStaticMesh	13	13	13	0	0	7	7	6	1	0	0
 CEngineInternalPrimitiveStaticMeshFromFile	1	1	1	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveText	1	1	1	0	0	1	1	0	1	0	0
 CEngineInternalPrimitiveWeaponTrail	1	1	1	0	0	0	0	0	0	0	0

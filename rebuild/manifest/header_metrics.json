@@ -1,15 +1,15 @@
 {
-  "landed_total": 15296,
-  "files_on_disk": 19006,
+  "landed_total": 15297,
+  "files_on_disk": 19007,
   "files_not_in_manifest": 3710,
   "unmanifested_genuine": 3687,
   "unmanifested_naked_asm": 22,
   "unmanifested_emit_bake": 1,
-  "genuine": 14695,
+  "genuine": 14696,
   "naked_asm": 384,
   "emit_bake": 217,
-  "includes_engine_header": 688,
-  "includes_any_header": 2238,
+  "includes_engine_header": 689,
+  "includes_any_header": 2239,
   "generic_struct_decls": 4410,
   "files_with_generic_struct": 3271,
   "gapscan": 3295,
@@ -17,8 +17,8 @@
   "missing_file": 0,
   "asm_bake_verified": 595,
   "asm_bake_matching": 292,
-  "engine_headers_generated": 970,
+  "engine_headers_generated": 971,
   "engine_headers_quarantined": 262,
-  "matched_bytes": 443902,
-  "matched_bytes_genuine": 394154
+  "matched_bytes": 443965,
+  "matched_bytes_genuine": 394217
 }

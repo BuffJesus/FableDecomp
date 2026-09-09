@@ -529,3 +529,28 @@ global/component calls. `CTCShotDefinitionBase::GetInitialVelocity` has a
 PDB-confirmed name but composes timing, owner lookup, and randomization helpers
 whose owners remain unresolved. Container internals and destructors make up
 the balance. Batch 374 is next; totals remain unchanged.
+
+### Batch 374: callback and duplicate-label rejection pass
+
+Batch 374 is reviewed and ledgered without a landing. The paired
+`CCombatSequenceGeneric::OnStart`/`OnStop` routines locate callback records in
+two separate global lists and invoke an optional function with the sequence's
+named context values, but the record/list types are not yet established.
+Three adjacent routines all carry the same
+`CDisplayManager::GetBestCompressedAlphaTextureFormat` label despite testing
+different DXT formats, so the propagated names are not unique function
+identities. `CGameScriptThing::GetCurrentStateGroupType` and navigator memory
+accounting remain dependent on component/container helpers. Batch 375 is next;
+totals remain unchanged.
+
+### Batch 375: static-mesh world position
+
+`CEngineInternalPrimitiveStaticMesh::GetWorldPosition` at `0x00b9d1e0` is
+landed as an exact 63/63-byte match. The new shared `CMatrix3x4` preserves the
+PDB's `E11` through `E43` names, and the primitive's formerly opaque
+`ObjectTransform` is now typed. The implementation returns the matrix
+translation row (`E41`, `E42`, `E43`) through a `C3DVector`; its fixture checks
+all three components and the true result. The other candidates require device,
+databank, container, or render-resource lifetime dependencies. Totals are now
+18,870 compiled/behavior-tested, 8,145 exact matches, 10,681 relocation
+matches, and 394,217 genuine retail bytes matched. Batch 376 is next.
