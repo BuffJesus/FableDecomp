@@ -42,7 +42,7 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 82/82 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 83/83 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
@@ -89,6 +89,9 @@ Affair-woman coverage consumes and clears the matching `ReceiveKiss` flag, trace
 complaint and first-bad-deed path with the `TalkingToWoman` bracket restored, and verifies the
 `BUSY` talk interaction through action clearing, hero-facing speech, inferred husband-facing
 cleanup, movie teardown, and both nested/main control releases.
+Teddy-girl coverage now includes the separate ruined-teddy outcome: the bully-proximity gate,
+`TEDDY_RUINED` conversation, master-data `TeddySolution = "C"`, run toward the affair wife,
+off-screen check, despawn, and final control cleanup.
 
 The coverage manifest classifies 29 functions as implemented and traced, 17 as implemented
 with uncertain native arguments, 6 as lifecycle/data-only, no API-blocked functions, and
@@ -126,7 +129,9 @@ start, reload after attack, attack transition, early termination, persistence, q
 the barrel timer, barrel destruction, and gold acquisition. Game-runtime verification is still
 needed for cutscene/camera behavior, section lifetime swaps, hero morphing, UI rendering and
 timer cadence, entity AI blocking behavior, morality amounts, and unload/reload interruption
-timing.
+timing. Runtime verification should also confirm `IsObjectInThingsPossession` argument conversion:
+native operation order is preserved at each call site, but no local ForgeFSE signature source is
+available and recovered scripts contain both thing/object and object/thing call shapes.
 
 Detailed evidence lives in `refs/script_recovery/new_oakvale_intro/`: `coverage.md`,
 `validation_report.json`, `test_matrix.json`, `persistence_manifest.json`, `state_manifest.json`,

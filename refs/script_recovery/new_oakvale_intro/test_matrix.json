@@ -997,6 +997,27 @@
       "events": 29
     },
     {
+      "fixture": "entity_teddy_girl_teddy_ruined_walkoff",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "purpose": "after the bully announces finding the teddy and approaches within ten units, the girl emits TEDDY_RUINED, records retail TeddySolution C, moves toward the affair wife, despawns once off-screen, and cleans up on loop termination",
+      "expects": [
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "AddLineToConversation",
+        "SetMasterGameState",
+        "MoveToThing",
+        "IsCameraPosOnScreen",
+        "RemoveThing",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 23
+    },
+    {
       "fixture": "entity_theresa_accepts_chocolates_and_starts_raid",
       "function": "Main",
       "kind": "entity",

@@ -1630,6 +1630,14 @@
       "trace": "match"
     },
     {
+      "events": 23,
+      "fixture": "entity_teddy_girl_teddy_ruined_walkoff.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 56,
       "fixture": "entity_theresa_accepts_chocolates_and_starts_raid.json",
       "function": "Main",
@@ -1855,8 +1863,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 82,
-    "fixturesPassed": 82,
+    "fixtures": 83,
+    "fixturesPassed": 83,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

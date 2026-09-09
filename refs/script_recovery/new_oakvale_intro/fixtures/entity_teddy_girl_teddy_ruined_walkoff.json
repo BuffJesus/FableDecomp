@@ -1,0 +1,17 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_TeddyGirl.lua","expect":["AddNewConversation","AddPersonToConversation","AddLineToConversation","SetMasterGameState","MoveToThing","IsCameraPosOnScreen","RemoveThing","ReleaseControl"],"note":"after the bully announces finding the teddy and approaches within ten units, the girl emits TEDDY_RUINED, records retail TeddySolution C, moves toward the affair wife, despawns once off-screen, and cleans up on loop termination"},
+  "Quest.NewScriptFrame":[true,false],
+  "Quest.GetThingWithScriptName(NOVI_Bully)":[{"handle":"bully","scope":"Entity"}],
+  "Entity.IsTalkedToByHero":[false,false],
+  "Entity.MsgIsPresentedWithItem":[false],
+  "Quest.GetStateBool(SpokeAboutFindingTeddy)":[true],
+  "Quest.IsDistanceBetweenThingsUnder":[true],
+  "Quest.AddNewConversation":[{"handle":"ruined_teddy","scope":"Entity"}],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Entity.AcquireControl":[true],
+  "Quest.GetThingWithScriptName(NOVI_AffairWife)":[{"handle":"wife","scope":"Entity"}],
+  "Entity.GetPos":[{"x":20,"y":0,"z":0}],
+  "Quest.IsCameraPosOnScreen":[false],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false]
+}
