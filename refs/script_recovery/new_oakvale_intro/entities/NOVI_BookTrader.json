@@ -52,7 +52,7 @@
     {"seq": 6, "function": "Main", "kind": "branch", "native": "IsDistanceFromThingToPositionOver(me, me->GetHomePos(), 0.1)", "argsKnown": true, "lua": "NOVI.distance_from_thing_to_position_over(me, home, HOME_LEAVE_DISTANCE)", "forgeBinding": "GetPos", "evidence": "native-decompile", "note": "slot 0x1c = GetHomePos; squared 3D Lua fallback"},
     {"seq": 7, "function": "Main", "kind": "wait", "native": "while IsDistanceFromThingToPositionOver(me, home, 2.0): NewScriptFrame; MoveToPosition(home,0,0,0,1,...); wait IsPerformingScriptTask", "argsKnown": true, "lua": "return_home loop using NOVI.distance_from_thing_to_position_over", "forgeBinding": "GetPos|MoveToPosition|IsPerformingScriptTask", "evidence": "native-decompile", "note": "terminate -> return; exact distance boundary convention uncertain"},
     {"seq": 8, "function": "Main", "kind": "call", "native": "EntitySetFacingAngleTowardsThing(me, GetThingWithScriptName(\"NOVI_Theresa\"))", "argsKnown": true, "lua": "face_theresa", "forgeBinding": "EntitySetFacingAngleTowardsThing|GetThingWithScriptName", "evidence": "native-decompile", "note": ""},
-    {"seq": 9, "function": "Main", "kind": "branch", "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(?,HERO))", "argsKnown": false, "lua": "hero_hit_me()", "forgeBinding": "MsgIsHitByHero|missing|missing", "evidence": "native-decompile", "note": ""},
+    {"seq": 9, "function": "Main", "kind": "branch", "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(?,HERO))", "argsKnown": false, "lua": "MsgIsHitByHero() || (MsgIsHitByAnySpecialAbilityFromHero() && !MsgIsHitByHeroSpecialAbility(14))", "forgeBinding": "MsgIsHitByHero|MsgIsHitByAnySpecialAbilityFromHero|MsgIsHitByHeroSpecialAbility", "evidence": "native-decompile + cross-script-evidence", "note": "ability 14 inferred from sibling NOVI hit predicates"},
     {"seq": 10, "function": "Main", "kind": "call", "native": "EntitySetThingAsAllyOfThing x2 (GetHero); AddBadDeed(PARENT,2)", "argsKnown": false, "lua": "react_to_hit", "forgeBinding": "EntitySetThingAsAllyOfThing", "evidence": "native-decompile", "note": "ally args dropped"},
     {"seq": 11, "function": "Main", "kind": "call", "native": "StartScriptingEntity(me,res,4); StartMovieSequence; PauseAll(1); if GetHealth>0 Speak(TEXT_QST_048_TRADER_ON_HIT)+wait; face Theresa; PauseAll(0); ~movie; goto loop tail", "argsKnown": true, "lua": "react_to_hit", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": "hit branch skips the talk branch"},
     {"seq": 12, "function": "Main", "kind": "branch", "native": "me->MsgIsTalkedToBy(HERO)", "argsKnown": true, "lua": "elseif me:IsTalkedToByHero()", "forgeBinding": "IsTalkedToByHero", "evidence": "native-decompile", "note": ""},
@@ -78,11 +78,11 @@
   ],
   "apiGaps": [
     {"retail": "SetTimer(id, value) in the shout branch", "reason": "timer identity is inferred as TalkIntermittentTimer; duration remains dropped by the decompiler", "luaLocation": "maybe_shout"},
-    {"retail": "CScriptThing::MsgIsHitByAnySpecialAbilityFrom / MsgIsHitBySpecialAbilityFrom", "reason": "not registered / enum dropped", "luaLocation": "hero_hit_me"},
     {"retail": "GSI vtable slot 0x5ec(bool)", "reason": "slot not in vtable_slots.tsv; treated as PauseAllNonScriptedEntities (inference)", "luaLocation": "sell_sweets begin/end_cutscene"},
     {"retail": "~CScriptGameResourceObjectMovieBase", "reason": "modelled as EndMovieSequence (inference)", "luaLocation": "end_cutscene"}
   ],
   "uncertainties": [
+    "The dropped special-ability enum is reconstructed as 14 from sibling NOVI hit predicates; hero-specific ForgeFSE bindings replace the generic native calls.",
     "GetTimer id dropped; the registered ID stored in F.TalkIntermittentTimer is chosen because this is an intermittent ambient line (inference).",
     "rand() % 200 reproduced with math.random; retail uses CRT rand().",
     "Slot 0x5ec on the GSI is assumed to be PauseAllNonScriptedEntities.",

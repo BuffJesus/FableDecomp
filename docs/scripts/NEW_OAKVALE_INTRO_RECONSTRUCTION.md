@@ -42,29 +42,37 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 57/57 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 60/60 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
 helpers, deterministic villager reputation-line selection, and the bully/trader walk-home
-distance fallback.
-The supporting trace-tool unit suite has 18/18 passing tests.
+distance fallback, plus hero-special hit reactions for the teddy girl, book trader, and barrel
+thug.
+The supporting trace-tool unit suite has 19/19 passing tests.
 
-The coverage manifest classifies 29 functions as implemented and traced, 6 as partly
-API-blocked, 11 as implemented with uncertain native arguments, 6 as lifecycle/data-only, and
+The coverage manifest classifies 29 functions as implemented and traced, 17 as implemented
+with uncertain native arguments, 6 as lifecycle/data-only, no API-blocked functions, and
 none as unimplemented. These
 classifications combine native-operation coverage with mock-host traces; they do not mean
 that every entity AI branch has been exercised in the game.
 
 ## Remaining parity limits
 
-Fourteen explicit `NOVI.unsupported` call sites preserve retail intent where ForgeFSE
-does not expose a direct equivalent. The larger API requirements manifest records 135
-required call occurrences whose exact retail behavior is API-blocked. Important limits are
+Seven explicit `NOVI.unsupported` call sites preserve retail intent where ForgeFSE
+does not expose a direct equivalent. The larger API requirements manifest records 64
+blocked semantic requirements or signature differences. No catalogued native function is
+currently classified as wholly or partially API-blocked, but important call-level limits remain:
 entity scripting acquisition/release semantics, morality values loaded from game data,
 special-ability message variants, exact distance-boundary behavior, and some timer/pause
 behavior. ForgeFSE's Windows-only runtime now selects retail PC platform branches explicitly;
 the missing position-distance helper is reconstructed with squared 3D vector math.
+
+The wife argument loop no longer depends on an unavailable `TextEntryExists` binding. Retail
+headers and the installed English `text.big` index prove `_10`, `_20`, `_30`, and `_40` exist
+and `_50` does not, so the Lua uses that exact set and wraps to `_10` at the retail boundary.
+BookTrader and BarrelThug timer reads now resolve their registered timer IDs from quest state;
+previous revisions incorrectly passed field descriptor tables to `GetTimer`.
 
 Only `AttackOver` is transferred by the native persistence routine. Mock traces cover fresh
 start, reload after attack, attack transition, early termination, persistence, quest markers,

@@ -24,7 +24,7 @@
         "entity_affair_man_main_terminated"
       ],
       "evidence": "native-decompile",
-      "status": "partially API-blocked"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "NOVI_AffairWife",
@@ -48,7 +48,7 @@
         "entity_affair_wife_main_terminated"
       ],
       "evidence": "native-decompile",
-      "status": "partially API-blocked"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "NOVI_AffairWoman",
@@ -72,7 +72,7 @@
         "entity_affair_woman_main_terminated"
       ],
       "evidence": "native-decompile",
-      "status": "partially API-blocked"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "NOVI_Barrel",
@@ -152,10 +152,11 @@
       "operations": 25,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "fixtures": [
-        "entity_barrel_thug_main_terminated"
+        "entity_barrel_thug_main_terminated",
+        "entity_barrel_thug_special_hit"
       ],
       "evidence": "native-decompile",
-      "status": "partially API-blocked"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "NOVI_BookTrader",
@@ -177,10 +178,11 @@
       "luaLocation": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "fixtures": [
         "entity_book_trader_main_terminated",
-        "entity_book_trader_returns_home"
+        "entity_book_trader_returns_home",
+        "entity_book_trader_special_hit"
       ],
       "evidence": "native-decompile",
-      "status": "partially API-blocked"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "NOVI_Bully",
@@ -313,10 +315,11 @@
       "luaLocation": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "fixtures": [
         "entity_teddy_girl_main_terminated",
-        "entity_teddy_girl_returns_teddy"
+        "entity_teddy_girl_returns_teddy",
+        "entity_teddy_girl_special_hit"
       ],
       "evidence": "native-decompile",
-      "status": "partially API-blocked"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "NOVI_TeddyGirl",
@@ -635,8 +638,8 @@
     "functions": 52,
     "implementedAndTraced": 29,
     "implementedUntraced": 0,
-    "uncertain": 11,
-    "apiBlocked": 6,
+    "uncertain": 17,
+    "apiBlocked": 0,
     "notImplemented": 0,
     "notApplicable": 6
   }

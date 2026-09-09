@@ -80,10 +80,8 @@ end
 
 local function hero_hit_me(quest, me)
     if me:MsgIsHitByHero() then return true end
-    local any = NOVI.unsupported(quest, "CScriptThing::MsgIsHitByAnySpecialAbilityFrom", { HERO_SCRIPT_NAME })
-    if any then
-        local excluded = NOVI.unsupported(quest, "CScriptThing::MsgIsHitBySpecialAbilityFrom", { "<EHeroAbility dropped>", HERO_SCRIPT_NAME })
-        if not excluded then return true end
+    if me:MsgIsHitByAnySpecialAbilityFromHero() then
+        if not me:MsgIsHitByHeroSpecialAbility(14) then return true end
     end
     return false
 end

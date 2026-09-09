@@ -1,0 +1,18 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["MsgIsHitByAnySpecialAbilityFromHero","MsgIsHitByHeroSpecialAbility","DisplayGameInfo","SpeakAndWait","EntitySetFacingAngleTowardsThing","ReleaseControl"],"note":"a non-excluded hero special ability triggers the trader hit reaction, bad deed, movie cleanup, and Theresa-facing reset"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":0,"y":0,"z":0}],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[true],
+  "Entity.MsgIsHitByHeroSpecialAbility(14)":[false],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true],
+  "Quest.GetHealth":[100],
+  "Quest.GetThingWithScriptName(NOVI_Theresa)":[{"handle":"theresa","scope":"Entity"}],
+  "Quest.GetStateInt(TalkIntermittentTimer)":[801],
+  "Quest.GetTimer(801)":[1]
+}

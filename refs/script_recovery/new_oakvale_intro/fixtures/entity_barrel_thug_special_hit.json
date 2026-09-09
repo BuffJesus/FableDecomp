@@ -1,0 +1,18 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelThug.lua","expect":["EntityTeleportToThing","FollowThing","MsgIsHitByAnySpecialAbilityFromHero","MsgIsHitByHeroSpecialAbility","DisplayGameInfo","SpeakAndWait","ReleaseControl"],"note":"after the barrel man leaves, the thug introduces himself and a non-excluded hero special ability triggers his hit reaction and cleanup"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true],
+  "Quest.GetStateBool(BarrelManLeftHeroInCharge)":[true],
+  "Quest.GetThingWithScriptName(M_WHouse_ManStart)":[{"handle":"start_marker","scope":"Entity"}],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.GetHealth":[100],
+  "Entity.IsTalkedToByHero":[false],
+  "Quest.GetStateInt(WatchTimer)":[702],
+  "Quest.GetTimer(702)":[0],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[true],
+  "Entity.MsgIsHitByHeroSpecialAbility(14)":[false],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true]
+}

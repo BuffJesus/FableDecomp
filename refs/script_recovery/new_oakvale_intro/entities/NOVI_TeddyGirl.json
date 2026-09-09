@@ -88,7 +88,7 @@
     {"seq": 38, "function": "Main", "kind": "call", "native": "GSI->ClearThingHasInformation(?)", "argsKnown": false, "lua": "quest:ClearThingHasInformation(me)", "forgeBinding": "ClearThingHasInformation", "evidence": "inference", "note": "arg dropped"},
     {"seq": 39, "function": "Main", "kind": "call", "native": "Speak REPEAT_PLEA (DoneIntro && !FoundTeddy && !TeddyRuined) / REPEAT_FOUND (DoneIntro && FoundTeddy) / LOST_TEDDY + DoneIntro=1 (!DoneIntro)", "argsKnown": true, "lua": "chat()", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": ""},
     {"seq": 40, "function": "Main", "kind": "cleanup", "native": "PauseAllNonScriptedEntities(0); ~movie", "argsKnown": true, "lua": "end_cutscene", "forgeBinding": "PauseAllNonScriptedEntities", "evidence": "native-decompile", "note": ""},
-    {"seq": 41, "function": "Main", "kind": "branch", "native": "me->MsgIsHitBy(HERO) || (me->MsgIsHitByAnySpecialAbilityFrom(HERO) && !me->MsgIsHitBySpecialAbilityFrom(?, HERO))", "argsKnown": false, "lua": "hero_hit_me()", "forgeBinding": "MsgIsHitByHero|missing|missing", "evidence": "native-decompile", "note": "slots 0x54/0xa8/0xa4; EHeroAbility enum dropped"},
+    {"seq": 41, "function": "Main", "kind": "branch", "native": "me->MsgIsHitBy(HERO) || (me->MsgIsHitByAnySpecialAbilityFrom(HERO) && !me->MsgIsHitBySpecialAbilityFrom(?, HERO))", "argsKnown": false, "lua": "MsgIsHitByHero() || (MsgIsHitByAnySpecialAbilityFromHero() && !MsgIsHitByHeroSpecialAbility(14))", "forgeBinding": "MsgIsHitByHero|MsgIsHitByAnySpecialAbilityFromHero|MsgIsHitByHeroSpecialAbility", "evidence": "native-decompile + cross-script-evidence", "note": "slots 0x54/0xa8/0xa4; ability 14 comes from sibling NOVI hit predicates"},
     {"seq": 42, "function": "Main", "kind": "call", "native": "EntitySetThingAsAllyOfThing(?,?) x2 with GetHero()", "argsKnown": false, "lua": "quest:EntitySetThingAsAllyOfThing(me,hero); (hero,me)", "forgeBinding": "EntitySetThingAsAllyOfThing", "evidence": "inference", "note": "args dropped; both directions is an inference"},
     {"seq": 43, "function": "Main", "kind": "state-write", "native": "this[0x1f] = 1", "argsKnown": true, "lua": "HeroHitMe = true", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
     {"seq": 44, "function": "Main", "kind": "call", "native": "AddBadDeed(PARENT, 2)", "argsKnown": true, "lua": "Deeds.add_bad(quest, me, 2)", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
@@ -101,12 +101,11 @@
     {"seq": 51, "function": "GivenTeddy", "kind": "state-write", "native": "MASTER+0x54 = \"B\"", "argsKnown": true, "lua": "F.set_master(quest, F.master.TeddySolution, \"B\")", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""}
   ],
   "apiGaps": [
-    {"retail": "CScriptThing::MsgIsHitByAnySpecialAbilityFrom(name)", "reason": "not registered in forge_entity_bindings (only MsgIsHitByAnySpecialAbilityFromHero exists; not proven equal)", "luaLocation": "hero_hit_me"},
-    {"retail": "CScriptThing::MsgIsHitBySpecialAbilityFrom(EHeroAbility, name)", "reason": "ability enum dropped by the decompiler; MsgIsHitByHeroSpecialAbility needs the enum", "luaLocation": "hero_hit_me"},
     {"retail": "~CScriptGameResourceObjectMovieBase (RAII end of movie)", "reason": "modelled as EndMovieSequence (inference)", "luaLocation": "end_cutscene"},
     {"retail": "StartScriptingEntity priority (first/second talk, hit branches)", "reason": "priority argument dropped by decompiler", "luaLocation": "NOVI.acquire(..., DEFAULT_PRIORITY)"}
   ],
   "uncertainties": [
+    "The dropped special-ability enum is reconstructed as 14 from sibling NOVI hit predicates; hero-specific ForgeFSE bindings replace the generic native calls.",
     "AddNewConversation args are dropped; lua passes (me) only.",
     "RemoveThing arg dropped; assumed me (the girl despawns after walking off).",
     "Second MsgIsPresentedWithItem branch compares item against a dropped operand; read as 'not the teddy'.",

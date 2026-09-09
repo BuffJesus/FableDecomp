@@ -20,8 +20,8 @@ local FOLLOW_DISTANCE     = 1.0     -- DAT_3f800000
 local BAD_DEED_HIT_ME     = 2
 local ACTION_PRIORITY     = 4
 local DEFAULT_PRIORITY    = nil
+local EXCLUDED_HIT_ABILITY = 14   -- sibling NOVI hit predicates pass 0x0e
 local LAST_TIME_INIT      = 9999    -- LastTimeSpoken initial value (Init)
-local NAG_TIMER           = F.WatchTimer   -- GetTimer id dropped by the decompiler (inference)
 
 -- Timer thresholds: line fires when timer < T and LastTimeSpoken > T (timer counts down)
 local TEMPT_TIERS = {
@@ -81,10 +81,8 @@ end
 
 local function hero_hit_me(quest, me)
     if me:MsgIsHitByHero() then return true end
-    local any = NOVI.unsupported(quest, "CScriptThing::MsgIsHitByAnySpecialAbilityFrom", { HERO_SCRIPT_NAME })
-    if any then
-        local excluded = NOVI.unsupported(quest, "CScriptThing::MsgIsHitBySpecialAbilityFrom", { "<EHeroAbility dropped>", HERO_SCRIPT_NAME })
-        if not excluded then return true end
+    if me:MsgIsHitByAnySpecialAbilityFromHero() then
+        if not me:MsgIsHitByHeroSpecialAbility(EXCLUDED_HIT_ABILITY) then return true end
     end
     return false
 end
@@ -138,19 +136,20 @@ end
 
 -- Phase: timed nag lines while the barrel man is away (timer > 0)
 local function nag(quest, me)
-    local timer = quest:GetTimer(NAG_TIMER)
+    local nag_timer = F.get(quest, F.WatchTimer)
+    local timer = quest:GetTimer(nag_timer)
     if F.get(quest, F.BarrelManSpokenToHeroOnReturn) or timer <= 0 then return end
     local conv = quest:AddNewConversation(me)   -- retail args dropped
     quest:AddPersonToConversation(conv, quest:GetHero())
     local line
     if not F.get(quest, F.BarrelBrokenPersistent) then
-        line = pick_tier_line(TEMPT_TIERS, TEXT_TEMPT_70, quest:GetTimer(NAG_TIMER))
+        line = pick_tier_line(TEMPT_TIERS, TEXT_TEMPT_70, quest:GetTimer(nag_timer))
     else
-        line = pick_tier_line(WELLDONE_TIERS, TEXT_WELLDONE_40, quest:GetTimer(NAG_TIMER))
+        line = pick_tier_line(WELLDONE_TIERS, TEXT_WELLDONE_40, quest:GetTimer(nag_timer))
     end
     if line == nil then return end   -- retail skips the LastTimeSpoken update too (conversation left open)
     quest:AddLineToConversation(conv, line, me, quest:GetHero())
-    LastTimeSpoken = quest:GetTimer(NAG_TIMER)
+    LastTimeSpoken = quest:GetTimer(nag_timer)
 end
 
 -- Phase: hero hit him

@@ -32,10 +32,7 @@
     ],
     "Entity.GetPos": [
       "NewOakValeIntro/common.lua",
-      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
-      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
-      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
       "NewOakValeIntro/Entities/NOVI_Barrel.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
@@ -102,9 +99,12 @@
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_Guard.lua",
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "NewOakValeIntro/Entities/NOVI_Theresa.lua",
       "NewOakValeIntro/Entities/NOVI_Victim.lua",
       "NewOakValeIntro/Entities/NOVI_Villager.lua"
@@ -129,9 +129,12 @@
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_Guard.lua",
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "NewOakValeIntro/Entities/NOVI_Theresa.lua",
       "NewOakValeIntro/Entities/NOVI_Victim.lua",
       "NewOakValeIntro/Entities/NOVI_Villager.lua"
@@ -1295,6 +1298,14 @@
       "trace": "match"
     },
     {
+      "events": 43,
+      "fixture": "entity_barrel_thug_special_hit.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 7,
       "fixture": "entity_book_trader_init.json",
       "function": "Init",
@@ -1313,6 +1324,14 @@
     {
       "events": 18,
       "fixture": "entity_book_trader_returns_home.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 31,
+      "fixture": "entity_book_trader_special_hit.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1457,6 +1476,14 @@
     {
       "events": 38,
       "fixture": "entity_teddy_girl_returns_teddy.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 29,
+      "fixture": "entity_teddy_girl_special_hit.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1656,12 +1683,12 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 57,
-    "fixturesPassed": 57,
+    "fixtures": 60,
+    "fixturesPassed": 60,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,
-    "unsupportedCallSites": 14,
+    "unsupportedCallSites": 7,
     "warnings": 0,
     "wrongScopeApis": 0
   },
@@ -1687,40 +1714,12 @@
       "retail": "GiveHeroMorality(-deed)"
     },
     {
-      "file": "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
-      "retail": "TextEntryExists"
-    },
-    {
-      "file": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
-      "retail": "CScriptThing::MsgIsHitByAnySpecialAbilityFrom"
-    },
-    {
-      "file": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
-      "retail": "CScriptThing::MsgIsHitBySpecialAbilityFrom"
-    },
-    {
       "file": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "retail": "Pause"
     },
     {
       "file": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
-      "retail": "CScriptThing::MsgIsHitByAnySpecialAbilityFrom"
-    },
-    {
-      "file": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
-      "retail": "CScriptThing::MsgIsHitBySpecialAbilityFrom"
-    },
-    {
-      "file": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "retail": "SetTimer"
-    },
-    {
-      "file": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
-      "retail": "CScriptThing::MsgIsHitByAnySpecialAbilityFrom"
-    },
-    {
-      "file": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
-      "retail": "CScriptThing::MsgIsHitBySpecialAbilityFrom"
     }
   ],
   "warnings": [],

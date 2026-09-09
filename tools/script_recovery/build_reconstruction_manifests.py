@@ -28,10 +28,42 @@ from audit_forgefse_runtime import extract_bindings  # noqa: E402
 
 EMPTY_RETAIL_BODIES = {"0x00CDEBB0", "0x00CDEBD0", "0x00DB8260"}  # shared empty Init / OnPredicateFail slots
 FIELD_RE = re.compile(r"^F\.(\w+)\s*=\s*key\(\"(\w+)\",\s*(BOOL|INT|STRING),\s*(0x[0-9a-f]+),\s*([^)]*)\)", re.M)
+NO_BINDING_SENTINELS = {"n/a", "n/a (data)", "host-managed", "unknown", "none", "missing"}
 
 
 def load_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def split_forge_bindings(binding: str) -> list[str]:
+    """Split inventory composites without corrupting sentinel values such as ``n/a``."""
+    raw = str(binding or "").strip()
+    if not raw:
+        return []
+    if raw.lower() in NO_BINDING_SENTINELS:
+        return [raw]
+    parts, current, depth = [], [], 0
+    index = 0
+    while index < len(raw):
+        char = raw[index]
+        if char == "(":
+            depth += 1
+        elif char == ")" and depth:
+            depth -= 1
+        is_word_separator = depth == 0 and raw[index:index + 5].lower() == " and "
+        if depth == 0 and (char in "|+/ ," and char != " " or is_word_separator):
+            part = "".join(current).strip()
+            if part:
+                parts.append(part)
+            current = []
+            index += 5 if is_word_separator else 1
+            continue
+        current.append(char)
+        index += 1
+    part = "".join(current).strip()
+    if part:
+        parts.append(part)
+    return parts
 
 
 def status_for(op: dict, traced_functions: set[str], unsupported: bool) -> str:
@@ -112,9 +144,9 @@ def build(evidence_dir: Path, fse_root: Path, lua_manager: Path) -> dict:
         source_function_scope = "quest" if ent.get("kind") == "quest" else "entity"
         for op in ent.get("operations", []):
             binding = str(op.get("forgeBinding", "") or "")
-            for call in [b.strip() for b in re.split(r"[,/]| and ", binding) if b.strip()]:
+            for call in split_forge_bindings(binding):
                 call_name = re.sub(r"\s*\(.*$", "", call)
-                if call_name.lower() in ("n/a", "missing", "host-managed", "unknown", "none", "n/a (data)"):
+                if call_name.lower() in NO_BINDING_SENTINELS:
                     call_name = call
                 key = call_name
                 row = api.setdefault(key, {
@@ -134,13 +166,14 @@ def build(evidence_dir: Path, fse_root: Path, lua_manager: Path) -> dict:
                     row["signatureConfidence"] = "low"
                 if op.get("note"):
                     row["semanticDifferences"].append(f"{name}#{op.get('seq')}: {op['note']}")
-                if "unsupported" in binding.lower() or "missing" in binding.lower():
+                call_lower = call.lower()
+                if "unsupported" in call_lower or "missing" in call_lower:
                     row["fallbackStatus"] = "explicit-gap (NOVI.unsupported)"
                     row["blocked"] = True
-                if "host-managed" in binding.lower():
+                if "host-managed" in call_lower:
                     row["fallbackStatus"] = "host-managed"
                 if not row["bindingExists"] and call_name.lower() not in ("n/a", "n/a (data)", "host-managed", "none"):
-                    row["blocked"] = row["blocked"] or "registered" not in binding
+                    row["blocked"] = row["blocked"] or "registered" not in call_lower
         for gap in ent.get("apiGaps", []):
             key = "GAP:" + str(gap.get("retail"))
             api.setdefault(key, {"operation": gap.get("retail"), "proposedForgeCall": None, "bindingExists": False,

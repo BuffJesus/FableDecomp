@@ -1,0 +1,17 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_TeddyGirl.lua","expect":["MsgIsHitByAnySpecialAbilityFromHero","MsgIsHitByHeroSpecialAbility","EntitySetThingAsAllyOfThing","DisplayGameInfo","SpeakAndWait","ReleaseControl"],"note":"a non-excluded hero special ability triggers the girl hit reaction and first violence bad deed"},
+  "Quest.NewScriptFrame":[true,false],
+  "Quest.GetThingWithScriptName(NOVI_Bully)":[{"handle":"bully","scope":"Entity"}],
+  "Entity.IsTalkedToByHero":[false],
+  "Entity.MsgIsPresentedWithItem":[false],
+  "Quest.GetStateBool(SpokeAboutFindingTeddy)":[false],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[true],
+  "Entity.MsgIsHitByHeroSpecialAbility(14)":[false],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true],
+  "Entity.AcquireControl":[true],
+  "Quest.GetHealth":[100]
+}

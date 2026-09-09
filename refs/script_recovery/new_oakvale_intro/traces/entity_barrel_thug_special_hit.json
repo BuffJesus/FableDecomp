@@ -13,8 +13,24 @@
       "scope": "Quest"
     },
     {
+      "arguments": [],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
       "arguments": [
-        "NOVI_Bully"
+        "BarrelManLeftHeroInCharge"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "M_WHouse_ManStart"
       ],
       "event": "api-call",
       "name": "GetThingWithScriptName",
@@ -22,11 +38,20 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "start_marker",
+          "scope": "Entity"
+        }
+      ],
       "event": "api-call",
-      "name": "IsTalkedToByHero",
-      "receiver": "me",
-      "scope": "Entity"
+      "name": "EntityTeleportToThing",
+      "receiver": "quest",
+      "scope": "Quest"
     },
     {
       "arguments": [],
@@ -38,22 +63,27 @@
     {
       "arguments": [
         {
-          "handle": "hero",
+          "handle": "me",
           "scope": "Entity"
         },
-        "OBJECT_TEDDY_BEAR_UNGIVEABLE"
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        }
       ],
       "event": "api-call",
-      "name": "IsObjectInThingsPossession",
+      "name": "EntitySetFacingAngleTowardsThing",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        "NewOakValeIntro: UNSUPPORTED retail call Pause"
+      ],
       "event": "api-call",
-      "name": "AcquireControl",
-      "receiver": "me",
-      "scope": "Entity"
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
     },
     {
       "arguments": [],
@@ -85,7 +115,7 @@
     },
     {
       "arguments": [
-        "TEXT_QST_048_TEDDYGIRL_LOST_TEDDY",
+        "TEXT_QST_048_BARRELTHUG_EXPLAIN",
         0
       ],
       "event": "api-call",
@@ -94,58 +124,52 @@
       "scope": "Entity"
     },
     {
-      "arguments": [
-        "TEXT_QST_048_GIVE_TEDDY_TO_GIRL",
-        "TEXT_OBJECT_HERO_ANSWER_YES",
-        "TEXT_OBJECT_HERO_ANSWER_NO",
-        ""
-      ],
-      "event": "api-call",
-      "name": "GiveHeroYesNoQuestion",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
       "arguments": [],
       "event": "api-call",
-      "name": "MsgIsQuestionAnsweredYesOrNo",
+      "name": "GetHero",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
       "arguments": [
         {
-          "handle": "me",
+          "handle": "hero",
           "scope": "Entity"
-        }
+        },
+        1.0,
+        true
       ],
       "event": "api-call",
-      "name": "GetHealth",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        "TEXT_QST_048_TEDDYGIRL_FOUND_TEDDY",
-        0
-      ],
-      "event": "api-call",
-      "name": "SpeakAndWait",
+      "name": "FollowThing",
       "receiver": "me",
       "scope": "Entity"
     },
     {
       "arguments": [
-        "OBJECT_TEDDY_BEAR_UNGIVEABLE"
+        false
       ],
       "event": "api-call",
-      "name": "TakeObjectFromHero",
+      "name": "PauseAllNonScriptedEntities",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
+      "arguments": [],
+      "event": "api-call",
+      "name": "EndMovieSequence",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
       "arguments": [
-        "GoodDeedsPerformed"
+        "WatchTimer"
       ],
       "event": "api-call",
       "name": "GetStateInt",
@@ -154,20 +178,81 @@
     },
     {
       "arguments": [
-        "GoodDeedsPerformed",
-        1
+        702
       ],
       "event": "api-call",
-      "name": "SetStateInt",
+      "name": "GetTimer",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
       "arguments": [
-        "NewOakValeIntro: UNSUPPORTED retail call GiveHeroMorality(+deed)"
+        "BarrelManSpokenToHeroOnReturn"
       ],
       "event": "api-call",
-      "name": "Log",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByAnySpecialAbilityFromHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        14
+      ],
+      "event": "api-call",
+      "name": "MsgIsHitByHeroSpecialAbility",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntitySetThingAsAllyOfThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntitySetThingAsAllyOfThing",
       "receiver": "quest",
       "scope": "Quest"
     },
@@ -182,7 +267,35 @@
     },
     {
       "arguments": [
-        "TEXT_QST_048_SCRMSG_DID_FIRST_GOOD_DEED"
+        "BadDeedsPerformed",
+        1
+      ],
+      "event": "api-call",
+      "name": "SetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NewOakValeIntro: UNSUPPORTED retail call GiveHeroMorality(-deed)"
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GoodDeedsPerformed"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_048_SCRMSG_DID_FIRST_BAD_DEED"
       ],
       "event": "api-call",
       "name": "DisplayGameInfo",
@@ -206,59 +319,37 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
-      "event": "api-call",
-      "name": "GetHeroGold",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
       "arguments": [
-        "GivenSweets"
+        "WhichBadDeedsPerformed_2",
+        true
       ],
       "event": "api-call",
-      "name": "GetStateBool",
+      "name": "SetStateBool",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
       "arguments": [],
       "event": "api-call",
-      "name": "GetActiveQuestName",
+      "name": "StartMovieSequence",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
       "arguments": [
-        "Q_NewOakValeIntro",
-        "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_02",
-        "",
-        ""
+        true
       ],
       "event": "api-call",
-      "name": "SetQuestCardObjective",
+      "name": "PauseAllNonScriptedEntities",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
-      "arguments": [
-        "GUIGoodDeedCounter"
-      ],
+      "arguments": [],
       "event": "api-call",
-      "name": "GetStateInt",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        0,
-        1,
-        -1
-      ],
-      "event": "api-call",
-      "name": "UpdateQuestInfoCounter",
-      "receiver": "quest",
-      "scope": "Quest"
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
     },
     {
       "arguments": [
@@ -268,19 +359,19 @@
         }
       ],
       "event": "api-call",
-      "name": "ClearThingHasInformation",
+      "name": "GetHealth",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
       "arguments": [
-        "TeddySolution",
-        "B"
+        "TEXT_QST_048_BARRELTHUG_WHY_HIT",
+        0
       ],
       "event": "api-call",
-      "name": "SetMasterGameState",
-      "receiver": "quest",
-      "scope": "Quest"
+      "name": "SpeakAndWait",
+      "receiver": "me",
+      "scope": "Entity"
     },
     {
       "arguments": [
@@ -297,36 +388,6 @@
       "name": "EndMovieSequence",
       "receiver": "quest",
       "scope": "Quest"
-    },
-    {
-      "arguments": [
-        "SpokeAboutFindingTeddy"
-      ],
-      "event": "api-call",
-      "name": "GetStateBool",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "IsTalkedToByHero",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "MsgIsHitByHero",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "MsgIsHitByAnySpecialAbilityFromHero",
-      "receiver": "me",
-      "scope": "Entity"
     },
     {
       "arguments": [
@@ -353,11 +414,16 @@
       true
     ],
     "Entity.IsTalkedToByHero": [
-      true,
       false
     ],
-    "Quest.GetActiveQuestName": [
-      "Q_NewOakValeIntro"
+    "Entity.MsgIsHitByAnySpecialAbilityFromHero": [
+      true
+    ],
+    "Entity.MsgIsHitByHero": [
+      false
+    ],
+    "Entity.MsgIsHitByHeroSpecialAbility(14)": [
+      false
     ],
     "Quest.GetHealth": [
       100
@@ -368,11 +434,8 @@
         "scope": "Entity"
       }
     ],
-    "Quest.GetHeroGold": [
-      0
-    ],
-    "Quest.GetStateBool(GivenSweets)": [
-      false
+    "Quest.GetStateBool(BarrelManLeftHeroInCharge)": [
+      true
     ],
     "Quest.GetStateInt(BadDeedsPerformed)": [
       0
@@ -380,20 +443,20 @@
     "Quest.GetStateInt(GoodDeedsPerformed)": [
       0
     ],
-    "Quest.GetThingWithScriptName(NOVI_Bully)": [
+    "Quest.GetStateInt(WatchTimer)": [
+      702
+    ],
+    "Quest.GetThingWithScriptName(M_WHouse_ManStart)": [
       {
-        "handle": "bully",
+        "handle": "start_marker",
         "scope": "Entity"
       }
     ],
-    "Quest.IsObjectInThingsPossession": [
-      true
+    "Quest.GetTimer(702)": [
+      0
     ],
     "Quest.MsgIsGameInfoClickedPast": [
       true
-    ],
-    "Quest.MsgIsQuestionAnsweredYesOrNo": [
-      1
     ],
     "Quest.NewScriptFrame": [
       true,
@@ -403,6 +466,6 @@
   "function": "Main",
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
-  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
-  "sourceSha256": "07477d823ea91a3050ae38fd57b0e61c8aa555bc409a3978b4341d0cf0941d73"
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+  "sourceSha256": "da6df1ee59ff55d97cdda9d636800b1f37b5924d79739c35752a21059820eed4"
 }

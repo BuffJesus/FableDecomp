@@ -207,6 +207,26 @@
       "events": 1
     },
     {
+      "fixture": "entity_barrel_thug_special_hit",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "purpose": "after the barrel man leaves, the thug introduces himself and a non-excluded hero special ability triggers his hit reaction and cleanup",
+      "expects": [
+        "EntityTeleportToThing",
+        "FollowThing",
+        "MsgIsHitByAnySpecialAbilityFromHero",
+        "MsgIsHitByHeroSpecialAbility",
+        "DisplayGameInfo",
+        "SpeakAndWait",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 43
+    },
+    {
       "fixture": "entity_book_trader_init",
       "function": "Init",
       "kind": "entity",
@@ -254,6 +274,25 @@
       "result": "ran",
       "trace": "match",
       "events": 18
+    },
+    {
+      "fixture": "entity_book_trader_special_hit",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "purpose": "a non-excluded hero special ability triggers the trader hit reaction, bad deed, movie cleanup, and Theresa-facing reset",
+      "expects": [
+        "MsgIsHitByAnySpecialAbilityFromHero",
+        "MsgIsHitByHeroSpecialAbility",
+        "DisplayGameInfo",
+        "SpeakAndWait",
+        "EntitySetFacingAngleTowardsThing",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 31
     },
     {
       "fixture": "entity_bully_accepts_teddy",
@@ -557,6 +596,25 @@
       "result": "ran",
       "trace": "match",
       "events": 38
+    },
+    {
+      "fixture": "entity_teddy_girl_special_hit",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "purpose": "a non-excluded hero special ability triggers the girl hit reaction and first violence bad deed",
+      "expects": [
+        "MsgIsHitByAnySpecialAbilityFromHero",
+        "MsgIsHitByHeroSpecialAbility",
+        "EntitySetThingAsAllyOfThing",
+        "DisplayGameInfo",
+        "SpeakAndWait",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 29
     },
     {
       "fixture": "entity_theresa_entry_cleanup",

@@ -23,6 +23,7 @@ local WIFE_MOVE_TYPE        = 1      -- EScriptEntityMoveType immediate 1
 local SPEAK_MIN_HEALTH      = 0.0    -- _DAT_0122dedc (retail .rdata = 0.0): speak only while alive
 local SPEECH_METHOD         = 0      -- ETextGroupSelectionMethod immediate 0 on every Speak
 local BAD_DEED_HIT_ME       = 2      -- AddBadDeed(PARENT, 2)
+local EXCLUDED_HIT_ABILITY  = 14     -- sibling NOVI hit predicates pass 0x0e
 local WALK_OFF_PRIORITY     = 4      -- StartScriptingEntity(me, res, 4) before the walk-off
 local DEFAULT_PRIORITY      = nil    -- priority argument dropped by the decompiler elsewhere
 
@@ -91,10 +92,8 @@ end
 local function hero_hit_me(quest, me)
     -- MsgIsHitBy(hero) || (MsgIsHitByAnySpecialAbilityFrom(hero) && !MsgIsHitBySpecialAbilityFrom(<ability>, hero))
     if me:MsgIsHitByHero() then return true end
-    local any = NOVI.unsupported(quest, "CScriptThing::MsgIsHitByAnySpecialAbilityFrom", { HERO_SCRIPT_NAME })
-    if any then
-        local excluded = NOVI.unsupported(quest, "CScriptThing::MsgIsHitBySpecialAbilityFrom", { "<EHeroAbility dropped>", HERO_SCRIPT_NAME })
-        if not excluded then return true end
+    if me:MsgIsHitByAnySpecialAbilityFromHero() then
+        if not me:MsgIsHitByHeroSpecialAbility(EXCLUDED_HIT_ABILITY) then return true end
     end
     return false
 end

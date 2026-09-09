@@ -33,6 +33,11 @@ local TEXT_RUNNING_TO_HUBBY = "TEXT_QST_048_AFFAIR_WIFE_RUNNING_TO_HUBBY"
 local TEXT_THANKYOU_SINGLE = "TEXT_QST_048_AFFAIR_WIFE_THANKYOU_SINGLE"
 local TEXT_WHATS_THIS = "TEXT_QST_048_AFFAIR_WIFE_WHATS_THIS_"       -- + counter (10, 20, ...)
 local TEXT_WHATS_THIS_FALLBACK = "TEXT_QST_048_AFFAIR_WIFE_WHATS_THIS_10"
+-- Proven by the installed English text.big index and retail text headers. `_50` is absent, which is
+-- the condition that makes retail's TextEntryExists check wrap the counter back to `_10`.
+local WHATS_THIS_KEYS = {
+    [10] = true, [20] = true, [30] = true, [40] = true,
+}
 local TEXT_MAN_IN_TROUBLE = "TEXT_QST_048_AFFAIRMAN_IN_TROUBLE"
 
 -- Numeric constants (immediates in the decompile unless noted)
@@ -112,14 +117,6 @@ local function end_movie(quest, me)
     quest:PauseAllNonScriptedEntities(false)
     NOVI.release(quest, me)
     quest:EndMovieSequence()
-end
-
--- Retail static helper IsDistanceFromThingToPositionOver(thing, pos, f) is not bound in ForgeFSE;
--- reimplemented locally as 3D Euclidean distance (inference: the retail metric is not visible).
-local function distance_from_me_to_pos_over(me, pos, limit)
-    local p = me:GetPos()
-    local dx, dy, dz = p.x - pos.x, p.y - pos.y, p.z - pos.z
-    return (dx * dx + dy * dy + dz * dz) > limit * limit
 end
 
 -- Retail: EntitySetThingAsAllyOfThing twice around GetHero() (both argument lists dropped).
@@ -207,7 +204,7 @@ end
 -- Phase RUN wait loop: say the running line once she is 10 from home; wait until within 3 of him.
 local function wait_until_husband_reached(quest, me, man)
     while not quest:IsDistanceBetweenThingsUnder(me, man, HUSBAND_REACHED_DISTANCE) do
-        if not SaidRunningLine and distance_from_me_to_pos_over(me, me:GetHomePos(), RUNNING_LINE_DISTANCE) then
+        if not SaidRunningLine and NOVI.distance_from_thing_to_position_over(me, me:GetHomePos(), RUNNING_LINE_DISTANCE) then
             local conv = quest:AddNewConversation(me, false, false)   -- retail AddNewConversation(me, 0)
             quest:AddLineToConversation(conv, TEXT_RUNNING_TO_HUBBY, me, nil)   -- retail listener is a null CScriptThing
             SaidRunningLine = true
@@ -248,9 +245,7 @@ local function argue_conversation(quest, me, man)
     quest:AddPersonToConversation(conv, man)                      -- retail person dropped; inference: the husband
     whats_this_counter = whats_this_counter + WHATS_THIS_STEP
     local key = TEXT_WHATS_THIS .. tostring(whats_this_counter)
-    -- retail TextEntryExists(key) has no ForgeFSE binding: with the call unsupported (nil) this always
-    -- falls back to the _10 line instead of counting 10, 20, ... up to the last existing entry.
-    local exists = NOVI.unsupported(quest, "TextEntryExists", { key })
+    local exists = WHATS_THIS_KEYS[whats_this_counter] == true
     if not exists then
         whats_this_counter = WHATS_THIS_RESET
         key = TEXT_WHATS_THIS_FALLBACK

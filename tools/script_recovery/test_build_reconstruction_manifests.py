@@ -3,6 +3,7 @@ import unittest
 from tools.script_recovery.build_reconstruction_manifests import (
     aggregate_operation_status,
     fixture_covers,
+    split_forge_bindings,
     status_for,
 )
 
@@ -50,6 +51,14 @@ class ReconstructionCoverageTests(unittest.TestCase):
         self.assertEqual(aggregate_operation_status([
             "implemented-and-traced", "implemented-but-untraced"
         ]), "implemented-but-untraced")
+
+    def test_binding_splitter_preserves_sentinels_and_splits_composites(self):
+        self.assertEqual(split_forge_bindings("n/a"), ["n/a"])
+        self.assertEqual(split_forge_bindings(
+            "GetPos|MoveToPosition + IsPerformingScriptTask / NewScriptFrame"),
+            ["GetPos", "MoveToPosition", "IsPerformingScriptTask", "NewScriptFrame"])
+        self.assertEqual(split_forge_bindings("Speak(hero, key, 0), EndMovieSequence"),
+                         ["Speak(hero, key, 0)", "EndMovieSequence"])
 
 
 if __name__ == "__main__":

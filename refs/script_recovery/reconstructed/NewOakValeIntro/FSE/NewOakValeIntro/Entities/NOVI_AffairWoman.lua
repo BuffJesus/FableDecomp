@@ -80,17 +80,9 @@ local function end_talk_cutscene(quest, me)
     quest:EndMovieSequence()
 end
 
--- Retail static helper IsDistanceFromThingToPositionOver(thing, pos, f) is not bound in ForgeFSE;
--- reimplemented locally as 3D Euclidean distance (inference: the retail metric is not visible).
-local function distance_from_me_to_pos_over(me, pos, limit)
-    local p = me:GetPos()
-    local dx, dy, dz = p.x - pos.x, p.y - pos.y, p.z - pos.z
-    return (dx * dx + dy * dy + dz * dz) > limit * limit
-end
-
 -- Shared move loop: frame, MoveToPosition, wait for the task, re-check distance. Returns false on termination.
 local function move_until_within(quest, me, pos, radius, move_type)
-    while distance_from_me_to_pos_over(me, pos, radius) do
+    while NOVI.distance_from_thing_to_position_over(me, pos, radius) do
         if not NOVI.frame(quest, me) then return false end
         me:MoveToPosition(pos, MOVE_RADIUS, move_type)
         while me:IsPerformingScriptTask() do
@@ -179,7 +171,7 @@ function Main(quest, me)
 
     -- retail: the main scripted resource is only released by its destructor when Main returns
     while true do
-        if distance_from_me_to_pos_over(me, me:GetHomePos(), HOME_LEAVE_TOLERANCE) then
+        if NOVI.distance_from_thing_to_position_over(me, me:GetHomePos(), HOME_LEAVE_TOLERANCE) then
             if not walk_home(quest, me) then NOVI.release(quest, me); return end
         end
         if hit_by_hero(me) then

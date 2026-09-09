@@ -125,14 +125,6 @@ local function end_talk_cutscene(quest, me)
     quest:EndMovieSequence()
 end
 
--- Retail static helper IsDistanceFromThingToPositionOver(thing, pos, f) is not bound in ForgeFSE;
--- reimplemented locally as 3D Euclidean distance (inference: the retail metric is not visible).
-local function distance_from_me_to_pos_over(me, pos, limit)
-    local p = me:GetPos()
-    local dx, dy, dz = p.x - pos.x, p.y - pos.y, p.z - pos.z
-    return (dx * dx + dy * dy + dz * dz) > limit * limit
-end
-
 local function next_badger_index()
     BadgerIndex = BadgerIndex + BADGER_STEP
     if BadgerIndex > BADGER_MAX then
@@ -222,7 +214,7 @@ end
 -- Phase WALK_HOME: retail walks back whenever he is more than 0.1 from his home position.
 local function walk_home(quest, me)
     local home = me:GetHomePos()
-    while distance_from_me_to_pos_over(me, home, HOME_ARRIVE_RADIUS) do
+    while NOVI.distance_from_thing_to_position_over(me, home, HOME_ARRIVE_RADIUS) do
         if not NOVI.frame(quest, me) then return false end
         me:MoveToPosition(home, MOVE_RADIUS, MOVE_WALK)
         while me:IsPerformingScriptTask() do
@@ -304,7 +296,7 @@ local function idle_behaviour(quest, me, woman, wife)
         end
         return true
     end
-    if distance_from_me_to_pos_over(me, me:GetHomePos(), HOME_LEAVE_TOLERANCE) then
+    if NOVI.distance_from_thing_to_position_over(me, me:GetHomePos(), HOME_LEAVE_TOLERANCE) then
         return walk_home(quest, me)
     end
     return affair_at_home(quest, me, woman)
