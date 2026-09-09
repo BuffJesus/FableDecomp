@@ -271,3 +271,17 @@ Two genuine names reached behavior-complete near matches but remain unlanded:
 `CTCLook::IsWithinYZHeadRange` is 55/58 bytes because retail materializes its
 PDB-confirmed `bool` as full EAX, and `CCharString::Truncate` is 60/58 bytes
 despite coherent PDB layout and named callees. Batch 351 is next.
+
+### Batches 351-354: readable near matches and duplicate codegen
+
+Batches 351 through 354 are reviewed and ledgered without lowering the parity
+gate. `CFrameRateSmoother::CalculateSmoothedTime` exposed a coherent retail
+contraction (12-byte array header and no pre-double pad), but the readable loop
+still emits 126/59 bytes. `CThingDrawInformation::SetBarPercentage` passes
+negative, interior, upper, boundary, and NaN fixtures against the PDB-named
+`BarPercentage` field, but its best normal form remains 61/59 bytes.
+
+The second adjacent `CTCPerceiveThing::SetSightRadius` confirms the landed
+sentinel/restore/clamp semantics and shared layouts, yet compiles to the same
+clean 57-byte body against a 59-byte retail duplicate. Artificial padding was
+again rejected. Batch 355 is next; comparer totals remain unchanged.
