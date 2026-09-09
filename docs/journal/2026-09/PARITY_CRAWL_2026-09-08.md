@@ -370,3 +370,33 @@ yet be expressed without opaque pseudo-types.
 Comparer totals are now 18,867 compiled and behavior-tested candidates, 8,144
 exact matches, 10,679 relocation matches, 14,693 genuine landed entries, and
 394,031 genuine matched retail bytes. Batch 362 is next.
+
+### Batch 362: dependency-heavy rejection pass
+
+Batch 362 is reviewed and ledgered without a landing. The short bodies are
+dominated by allocator internals, virtual subsystem calls, or ownership that
+cannot yet be represented with trusted shared types. In particular,
+`C3DAnimationBlendState::GetCombinationBlendCount` depends on a timestamp API
+and a nested animation object whose +0x190 state is not named, while
+`CSubtitleRenderer::IsWaitingForClickPast` crosses into unresolved global input
+state. Script wrappers and inventory methods similarly require virtual slots
+whose owners remain unproven. Batch 363 is next; comparer totals are unchanged.
+
+### Batch 363: retail inventory vectors and rejected duplicate labels
+
+Batch 363 is reviewed and ledgered without a landing. Two genuine PDB-named
+inventory accessors expose additional layout contractions:
+`ReceivedAbilityOrder` moves from debug +0x170 to retail +0x154, while
+`ReceivedExpressionOrder` moves from +0x1f8 to +0x1bc; retail uses 12-byte
+vectors for both. Fixtures confirm that abilities count nonzero entries and
+expressions count positive entries. A raw-pointer overlay compiles to 36 bytes
+instead of retail's 61, however, and this build's compatible `std::vector`
+type is the 16-byte debug layout. Both provisional declarations were removed
+rather than publishing an ABI mismatch.
+
+The paired `CTCHeroExperience::GetSoundRadiusMultiplier` labels were also
+rejected: they index apparent vectors at +0x120/+0x12c in the pointed-to
+definition, beyond the PDB's 0xe0-byte `CHeroExperienceDef`, and only one such
+PDB symbol exists. `C3DMeshStats::HasDummyObject` is genuine but remains tied
+to an unresolved ordered-container helper. Batch 364 is next; comparer totals
+remain unchanged.
