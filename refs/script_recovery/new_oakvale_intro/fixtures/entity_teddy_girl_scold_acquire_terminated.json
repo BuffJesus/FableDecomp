@@ -1,0 +1,14 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_TeddyGirl.lua","expect":["EntitySetThingAsAllyOfThing","SetStateInt","DisplayGameInfo","AddLogbookStoryEntryString","AcquireControl","ReleaseControl"],"forbid":["StartMovieSequence","SpeakAndWait"],"note":"a direct hit sets HeroHitMe and records the first violence bad deed before action acquisition; termination there exits before the DONT_HIT movie and speech"},
+  "Quest.NewScriptFrame":[true],
+  "Quest.GetThingWithScriptName(NOVI_Bully)":[{"handle":"bully","scope":"Entity"}],
+  "Entity.IsTalkedToByHero":[false,false],
+  "Entity.MsgIsPresentedWithItem":[false],
+  "Quest.GetStateBool(SpokeAboutFindingTeddy)":[false],
+  "Entity.MsgIsHitByHero":[true],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true],
+  "Entity.AcquireControl":[false]
+}

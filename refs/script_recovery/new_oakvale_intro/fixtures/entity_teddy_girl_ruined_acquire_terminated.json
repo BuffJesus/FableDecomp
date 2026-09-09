@@ -1,0 +1,12 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_TeddyGirl.lua","expect":["AddNewConversation","AddPersonToConversation","AddLineToConversation","SetMasterGameState","AcquireControl","ReleaseControl"],"forbid":["MoveToThing","RemoveThing"],"note":"the ruined-teddy conversation and retail TeddySolution C write precede walk-off acquisition; termination there exits before wife lookup, movement, or despawn"},
+  "Quest.NewScriptFrame":[true],
+  "Quest.GetThingWithScriptName(NOVI_Bully)":[{"handle":"bully","scope":"Entity"}],
+  "Entity.IsTalkedToByHero":[false],
+  "Entity.MsgIsPresentedWithItem":[false],
+  "Quest.GetStateBool(SpokeAboutFindingTeddy)":[true],
+  "Quest.IsDistanceBetweenThingsUnder":[true],
+  "Quest.AddNewConversation":[{"handle":"ruined_teddy","scope":"Entity"}],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Entity.AcquireControl":[false]
+}

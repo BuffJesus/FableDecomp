@@ -100,7 +100,7 @@ end
 
 -- Phase: hero talks to her while carrying the teddy -> plea + yes/no offer
 local function offer_teddy(quest, me)
-    NOVI.acquire(quest, me, DEFAULT_PRIORITY)
+    if not NOVI.acquire(quest, me, DEFAULT_PRIORITY) then return false end
     begin_cutscene(quest)
     if not DoneIntro then
         if not HeroHitMe then
@@ -129,7 +129,7 @@ end
 -- Phase: hero presents an item to her
 local function receive_item(quest, me, item)
     if item == TEDDY_OBJECT then
-        NOVI.acquire(quest, me, DEFAULT_PRIORITY)
+        if not NOVI.acquire(quest, me, DEFAULT_PRIORITY) then return false end
         DoneIntro = true
         begin_cutscene(quest)
         speak_if_alive(quest, me, TEXT_FOUND_TEDDY)
@@ -137,11 +137,12 @@ local function receive_item(quest, me, item)
         end_cutscene(quest)
     elseif not FoundTeddy then
         -- retail re-polls MsgIsPresentedWithItem and compares the item again (operand dropped; inference: != teddy)
-        NOVI.acquire(quest, me, DEFAULT_PRIORITY)
+        if not NOVI.acquire(quest, me, DEFAULT_PRIORITY) then return false end
         begin_cutscene(quest)
         speak_if_alive(quest, me, TEXT_DONT_WANT)
         end_cutscene(quest)
     end
+    return true
 end
 
 -- Phase: the bully ruined the teddy -> complain and walk off to the affair wife, then despawn
@@ -150,7 +151,7 @@ local function teddy_ruined(quest, me)
     quest:AddPersonToConversation(conv, quest:GetHero())
     quest:AddLineToConversation(conv, TEXT_TEDDY_RUINED, me, quest:GetHero())
     F.set_master(quest, F.master.TeddySolution, "C")
-    NOVI.acquire(quest, me, WALK_OFF_PRIORITY)
+    if not NOVI.acquire(quest, me, WALK_OFF_PRIORITY) then return false end
     local wife = quest:GetThingWithScriptName(WIFE_SCRIPT_NAME)
     me:MoveToThing(wife, WIFE_ARRIVE_RADIUS, WIFE_MOVE_TYPE)   -- retail also passes (false,false,false,true)
     while quest:IsCameraPosOnScreen(me:GetPos()) do
@@ -164,7 +165,7 @@ end
 
 -- Phase: hero talks to her without the teddy
 local function chat(quest, me)
-    NOVI.acquire(quest, me, DEFAULT_PRIORITY)
+    if not NOVI.acquire(quest, me, DEFAULT_PRIORITY) then return false end
     begin_cutscene(quest)
     if not FoundTeddy and HeroHitMe then
         speak_if_alive(quest, me, TEXT_PLEA_POST_BEATEN)
@@ -185,6 +186,7 @@ local function chat(quest, me)
         DoneIntro = true
     end
     end_cutscene(quest)
+    return true
 end
 
 -- Phase: hero hit her
@@ -194,10 +196,11 @@ local function scold_hero(quest, me)
     quest:EntitySetThingAsAllyOfThing(hero, me)
     HeroHitMe = true
     Deeds.add_bad(quest, me, BAD_DEED_HIT_ME)
-    NOVI.acquire(quest, me, DEFAULT_PRIORITY)
+    if not NOVI.acquire(quest, me, DEFAULT_PRIORITY) then return false end
     begin_cutscene(quest)
     speak_if_alive(quest, me, TEXT_DONT_HIT)
     end_cutscene(quest)
+    return true
 end
 
 function Main(quest, me)
@@ -210,7 +213,7 @@ function Main(quest, me)
             if not offer_teddy(quest, me) then NOVI.release(quest, me); return end
         else
             local presented, item = me:MsgIsPresentedWithItem()
-            if presented then receive_item(quest, me, item) end
+            if presented and not receive_item(quest, me, item) then NOVI.release(quest, me); return end
         end
 
         if F.get(quest, F.SpokeAboutFindingTeddy)
@@ -219,11 +222,11 @@ function Main(quest, me)
         end
 
         if me:IsTalkedToByHero() then
-            chat(quest, me)
+            if not chat(quest, me) then NOVI.release(quest, me); return end
         end
 
         if hero_hit_me(quest, me) then
-            scold_hero(quest, me)
+            if not scold_hero(quest, me) then NOVI.release(quest, me); return end
         end
 
         if not NOVI.frame(quest, me) then NOVI.release(quest, me); return end

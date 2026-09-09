@@ -142,94 +142,6 @@
       "scope": "Entity"
     },
     {
-      "arguments": [
-        "NOVI_AffairWife"
-      ],
-      "event": "api-call",
-      "name": "GetThingWithScriptName",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        {
-          "handle": "wife",
-          "scope": "Entity"
-        },
-        3.0,
-        1
-      ],
-      "event": "api-call",
-      "name": "MoveToThing",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "GetPos",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [
-        {
-          "x": 20,
-          "y": 0,
-          "z": 0
-        }
-      ],
-      "event": "api-call",
-      "name": "IsCameraPosOnScreen",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        }
-      ],
-      "event": "api-call",
-      "name": "RemoveThing",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "IsTalkedToByHero",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "MsgIsHitByHero",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "MsgIsHitByAnySpecialAbilityFromHero",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        }
-      ],
-      "event": "api-call",
-      "name": "NewScriptFrame",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
       "arguments": [],
       "event": "api-call",
       "name": "ReleaseControl",
@@ -239,23 +151,9 @@
   ],
   "fixtures": {
     "Entity.AcquireControl": [
-      true
-    ],
-    "Entity.GetPos": [
-      {
-        "x": 20,
-        "y": 0,
-        "z": 0
-      }
+      false
     ],
     "Entity.IsTalkedToByHero": [
-      false,
-      false
-    ],
-    "Entity.MsgIsHitByAnySpecialAbilityFromHero": [
-      false
-    ],
-    "Entity.MsgIsHitByHero": [
       false
     ],
     "Entity.MsgIsPresentedWithItem": [
@@ -280,27 +178,17 @@
     "Quest.GetStateBool(SpokeAboutFindingTeddy)": [
       true
     ],
-    "Quest.GetThingWithScriptName(NOVI_AffairWife)": [
-      {
-        "handle": "wife",
-        "scope": "Entity"
-      }
-    ],
     "Quest.GetThingWithScriptName(NOVI_Bully)": [
       {
         "handle": "bully",
         "scope": "Entity"
       }
     ],
-    "Quest.IsCameraPosOnScreen": [
-      false
-    ],
     "Quest.IsDistanceBetweenThingsUnder": [
       true
     ],
     "Quest.NewScriptFrame": [
-      true,
-      false
+      true
     ]
   },
   "function": "Main",

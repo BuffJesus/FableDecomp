@@ -342,8 +342,12 @@
       "operations": 41,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "fixtures": [
+        "entity_teddy_girl_chat_acquire_terminated",
         "entity_teddy_girl_main_terminated",
+        "entity_teddy_girl_offer_acquire_terminated",
         "entity_teddy_girl_returns_teddy",
+        "entity_teddy_girl_ruined_acquire_terminated",
+        "entity_teddy_girl_scold_acquire_terminated",
         "entity_teddy_girl_special_hit",
         "entity_teddy_girl_teddy_ruined_walkoff"
       ],

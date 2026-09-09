@@ -1,0 +1,9 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_TeddyGirl.lua","expect":["IsObjectInThingsPossession","AcquireControl","ReleaseControl"],"forbid":["StartMovieSequence","GiveHeroYesNoQuestion","GetHealth"],"note":"a hero carrying the teddy triggers the offer branch, but termination during control acquisition exits before the plea movie, speech, or yes/no question"},
+  "Quest.NewScriptFrame":[true],
+  "Quest.GetThingWithScriptName(NOVI_Bully)":[{"handle":"bully","scope":"Entity"}],
+  "Entity.IsTalkedToByHero":[true],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.IsObjectInThingsPossession":[true],
+  "Entity.AcquireControl":[false]
+}

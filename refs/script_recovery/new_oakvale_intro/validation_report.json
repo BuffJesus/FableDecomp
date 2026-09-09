@@ -1677,6 +1677,14 @@
       "trace": "match"
     },
     {
+      "events": 8,
+      "fixture": "entity_teddy_girl_chat_acquire_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 4,
       "fixture": "entity_teddy_girl_init.json",
       "function": "Init",
@@ -1693,8 +1701,32 @@
       "trace": "match"
     },
     {
+      "events": 7,
+      "fixture": "entity_teddy_girl_offer_acquire_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 38,
       "fixture": "entity_teddy_girl_returns_teddy.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 14,
+      "fixture": "entity_teddy_girl_ruined_acquire_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 20,
+      "fixture": "entity_teddy_girl_scold_acquire_terminated.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1966,8 +1998,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 96,
-    "fixturesPassed": 96,
+    "fixtures": 100,
+    "fixturesPassed": 100,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

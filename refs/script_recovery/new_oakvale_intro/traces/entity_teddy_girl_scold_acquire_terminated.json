@@ -61,22 +61,6 @@
     {
       "arguments": [],
       "event": "api-call",
-      "name": "MsgIsHitByAnySpecialAbilityFromHero",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [
-        14
-      ],
-      "event": "api-call",
-      "name": "MsgIsHitByHeroSpecialAbility",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
       "name": "GetHero",
       "receiver": "quest",
       "scope": "Quest"
@@ -195,72 +179,6 @@
     {
       "arguments": [],
       "event": "api-call",
-      "name": "StartMovieSequence",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        true
-      ],
-      "event": "api-call",
-      "name": "PauseAllNonScriptedEntities",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        }
-      ],
-      "event": "api-call",
-      "name": "GetHealth",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        "TEXT_QST_048_TEDDYGIRL_DONT_HIT",
-        0
-      ],
-      "event": "api-call",
-      "name": "SpeakAndWait",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
-      "arguments": [
-        false
-      ],
-      "event": "api-call",
-      "name": "PauseAllNonScriptedEntities",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "EndMovieSequence",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        }
-      ],
-      "event": "api-call",
-      "name": "NewScriptFrame",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
       "name": "ReleaseControl",
       "receiver": "me",
       "scope": "Entity"
@@ -268,25 +186,17 @@
   ],
   "fixtures": {
     "Entity.AcquireControl": [
-      true
+      false
     ],
     "Entity.IsTalkedToByHero": [
+      false,
       false
-    ],
-    "Entity.MsgIsHitByAnySpecialAbilityFromHero": [
-      true
     ],
     "Entity.MsgIsHitByHero": [
-      false
-    ],
-    "Entity.MsgIsHitByHeroSpecialAbility(14)": [
-      false
+      true
     ],
     "Entity.MsgIsPresentedWithItem": [
       false
-    ],
-    "Quest.GetHealth": [
-      100
     ],
     "Quest.GetHero": [
       {
@@ -313,8 +223,7 @@
       true
     ],
     "Quest.NewScriptFrame": [
-      true,
-      false
+      true
     ]
   },
   "function": "Main",

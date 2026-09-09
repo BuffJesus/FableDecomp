@@ -1,0 +1,9 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_TeddyGirl.lua","expect":["IsTalkedToByHero","AcquireControl","ReleaseControl"],"forbid":["StartMovieSequence","GetHealth"],"note":"the second no-teddy talk check enters chat, but failed control acquisition exits before its movie or dialogue"},
+  "Quest.NewScriptFrame":[true],
+  "Quest.GetThingWithScriptName(NOVI_Bully)":[{"handle":"bully","scope":"Entity"}],
+  "Entity.IsTalkedToByHero":[false,true],
+  "Entity.MsgIsPresentedWithItem":[false],
+  "Quest.GetStateBool(SpokeAboutFindingTeddy)":[false],
+  "Entity.AcquireControl":[false]
+}

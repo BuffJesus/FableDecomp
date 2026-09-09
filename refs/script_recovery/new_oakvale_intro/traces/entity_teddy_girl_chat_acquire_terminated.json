@@ -1,0 +1,98 @@
+{
+  "events": [
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NOVI_Bully"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsPresentedWithItem",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "SpokeAboutFindingTeddy"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "ReleaseControl",
+      "receiver": "me",
+      "scope": "Entity"
+    }
+  ],
+  "fixtures": {
+    "Entity.AcquireControl": [
+      false
+    ],
+    "Entity.IsTalkedToByHero": [
+      false,
+      true
+    ],
+    "Entity.MsgIsPresentedWithItem": [
+      false
+    ],
+    "Quest.GetStateBool(SpokeAboutFindingTeddy)": [
+      false
+    ],
+    "Quest.GetThingWithScriptName(NOVI_Bully)": [
+      {
+        "handle": "bully",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.NewScriptFrame": [
+      true
+    ]
+  },
+  "function": "Main",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+  "sourceSha256": "f974c63dd03422742f630bf76edf18fa263143d06e59535d1d86baee8fe58def"
+}

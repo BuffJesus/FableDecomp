@@ -1903,21 +1903,21 @@
           "script": "NOVI_TeddyGirl",
           "function": "Main",
           "seq": 9,
-          "native": "StartScriptingEntity(me,res,?) loop",
+          "native": "StartScriptingEntity(me,res,?) loop; termination exits through resource cleanup",
           "evidence": "native-decompile"
         },
         {
           "script": "NOVI_TeddyGirl",
           "function": "Main",
           "seq": 22,
-          "native": "StartScriptingEntity loop",
+          "native": "StartScriptingEntity loop; termination exits through resource cleanup",
           "evidence": "native-decompile"
         },
         {
           "script": "NOVI_TeddyGirl",
           "function": "Main",
           "seq": 30,
-          "native": "StartScriptingEntity(me, res, 4) loop",
+          "native": "StartScriptingEntity(me, res, 4) loop; termination exits through resource cleanup",
           "evidence": "native-decompile"
         },
         {
@@ -2158,7 +2158,10 @@
         "NOVI_LiveFather#29: re-acquired every loop iteration",
         "NOVI_LiveFather#31: second acquire inside the talk branch",
         "NOVI_LiveFather#56: reached from every exit path",
-        "NOVI_TeddyGirl#9: priority dropped",
+        "NOVI_TeddyGirl#9: priority dropped; failed offer acquisition stops before opening its movie",
+        "NOVI_TeddyGirl#22: both teddy and non-teddy item branches stop before state changes or movie creation",
+        "NOVI_TeddyGirl#30: ruined conversation and TeddySolution=C precede acquisition; wife lookup, movement, and removal follow it",
+        "NOVI_TeddyGirl#35: failed chat acquisition exits before opening the movie",
         "NOVI_Theresa#11: re-acquired every loop iteration",
         "NOVI_Theresa#53: the entity script ends here; no further loop",
         "NOVI_Theresa#55: reached from every exit path",
@@ -2992,6 +2995,7 @@
         "NOVI_AffairWoman#23: facing args dropped; me->hero inferred",
         "NOVI_BarrelThug#16: movie starts BEFORE the acquire here, so failure must unpause/end it before Main releases control",
         "NOVI_BookTrader#13: slot 0x5ec unresolved in vtable_slots.tsv; adjacent 0x5f0 = PauseAllEntities and the (1)/(0) pattern matches PauseAllNonScriptedEntities elsewhere; acquisition termination does not open the movie",
+        "NOVI_TeddyGirl#35: failed chat acquisition exits before opening the movie",
         "NOVI_Theresa#47: no FixMovieSequenceCamera in this block",
         "Q_NewOakValeIntro#42: RunCutsceneMacro_Func has no direct binding; PlayCutscene(name, actors) is the seed-corpus convention for it (cross-script-evidence). Whether PlayCutscene already brackets the movie sequence is unverified."
       ],
@@ -7624,7 +7628,8 @@
         "NOVI_BarrelThug#11: terminate in wait -> PauseAll(0), ~movie, return",
         "NOVI_BarrelThug#26: ally/deed writes and movie start precede action acquisition; speech follows it",
         "NOVI_BookTrader#11: hit branch skips the talk branch; acquisition termination must not enter the movie",
-        "NOVI_TeddyGirl#19: answer != 1"
+        "NOVI_TeddyGirl#19: answer != 1",
+        "NOVI_TeddyGirl#45: HeroHitMe and bad-deed writes precede acquisition; movie and speech follow it"
       ],
       "fallbackStatus": "direct",
       "blocked": false

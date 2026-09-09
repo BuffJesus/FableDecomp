@@ -1156,6 +1156,25 @@
       "events": 28
     },
     {
+      "fixture": "entity_teddy_girl_chat_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "purpose": "the second no-teddy talk check enters chat, but failed control acquisition exits before its movie or dialogue",
+      "expects": [
+        "IsTalkedToByHero",
+        "AcquireControl",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "StartMovieSequence",
+        "GetHealth"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 8
+    },
+    {
       "fixture": "entity_teddy_girl_init",
       "function": "Init",
       "kind": "entity",
@@ -1187,6 +1206,26 @@
       "events": 1
     },
     {
+      "fixture": "entity_teddy_girl_offer_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "purpose": "a hero carrying the teddy triggers the offer branch, but termination during control acquisition exits before the plea movie, speech, or yes/no question",
+      "expects": [
+        "IsObjectInThingsPossession",
+        "AcquireControl",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "StartMovieSequence",
+        "GiveHeroYesNoQuestion",
+        "GetHealth"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 7
+    },
+    {
       "fixture": "entity_teddy_girl_returns_teddy",
       "function": "Main",
       "kind": "entity",
@@ -1204,6 +1243,50 @@
       "result": "ran",
       "trace": "written",
       "events": 38
+    },
+    {
+      "fixture": "entity_teddy_girl_ruined_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "purpose": "the ruined-teddy conversation and retail TeddySolution C write precede walk-off acquisition; termination there exits before wife lookup, movement, or despawn",
+      "expects": [
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "AddLineToConversation",
+        "SetMasterGameState",
+        "AcquireControl",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "MoveToThing",
+        "RemoveThing"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 14
+    },
+    {
+      "fixture": "entity_teddy_girl_scold_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "purpose": "a direct hit sets HeroHitMe and records the first violence bad deed before action acquisition; termination there exits before the DONT_HIT movie and speech",
+      "expects": [
+        "EntitySetThingAsAllyOfThing",
+        "SetStateInt",
+        "DisplayGameInfo",
+        "AddLogbookStoryEntryString",
+        "AcquireControl",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "StartMovieSequence",
+        "SpeakAndWait"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 20
     },
     {
       "fixture": "entity_teddy_girl_special_hit",
