@@ -1,0 +1,16 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelThug.lua","expect":["EntityTeleportToThing","Log","FollowThing","StartMovieSequence","SpeakAndWait","EndMovieSequence","ReleaseControl"],"forbid":["AddNewConversation"],"note":"after the intro, talking to the thug when the barrel man has returned and a barrel was broken selects the retail OUTRO response; the subsequent nag gate exits before creating a conversation"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true,true],
+  "Quest.GetStateBool(BarrelManLeftHeroInCharge)":[true],
+  "Quest.GetThingWithScriptName(M_WHouse_ManStart)":[{"handle":"thug_start","scope":"Entity"}],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.GetHealth":[100,100],
+  "Entity.IsTalkedToByHero":[true],
+  "Quest.GetStateBool(BarrelManSpokenToHeroOnReturn)":[true,true],
+  "Quest.GetStateBool(BarrelBrokenPersistent)":[true],
+  "Quest.GetStateInt(WatchTimer)":[802],
+  "Quest.GetTimer(802)":[10],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false]
+}

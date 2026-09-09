@@ -1,0 +1,17 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelThug.lua","expect":["EntityTeleportToThing","EntitySetFacingAngleTowardsThing","Log","StartMovieSequence","SpeakAndWait","FollowThing","GetTimer","AddNewConversation","AddPersonToConversation","AddLineToConversation","ReleaseControl"],"note":"after waiting for the barrel man to leave, the thug teleports to his start marker, exposes the unknown intro Pause duration, explains and follows the hero, then emits the first countdown temptation line at timer nine"},
+  "Quest.NewScriptFrame":[true,true,false],
+  "Entity.AcquireControl":[true],
+  "Quest.GetStateBool(BarrelManLeftHeroInCharge)":[false,true],
+  "Quest.GetThingWithScriptName(M_WHouse_ManStart)":[{"handle":"thug_start","scope":"Entity"}],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.GetHealth":[100],
+  "Entity.IsTalkedToByHero":[false],
+  "Quest.GetStateInt(WatchTimer)":[802],
+  "Quest.GetTimer(802)":[9,9,9],
+  "Quest.GetStateBool(BarrelManSpokenToHeroOnReturn)":[false],
+  "Quest.GetStateBool(BarrelBrokenPersistent)":[false],
+  "Quest.AddNewConversation":[{"handle":"first_nag","scope":"Entity"}],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false]
+}

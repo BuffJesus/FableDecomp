@@ -250,6 +250,30 @@
       "events": 3
     },
     {
+      "fixture": "entity_barrel_thug_intro_and_first_nag",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "purpose": "after waiting for the barrel man to leave, the thug teleports to his start marker, exposes the unknown intro Pause duration, explains and follows the hero, then emits the first countdown temptation line at timer nine",
+      "expects": [
+        "EntityTeleportToThing",
+        "EntitySetFacingAngleTowardsThing",
+        "Log",
+        "StartMovieSequence",
+        "SpeakAndWait",
+        "FollowThing",
+        "GetTimer",
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "AddLineToConversation",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 34
+    },
+    {
       "fixture": "entity_barrel_thug_main_terminated",
       "function": "Main",
       "kind": "entity",
@@ -264,6 +288,28 @@
       "result": "ran",
       "trace": "written",
       "events": 1
+    },
+    {
+      "fixture": "entity_barrel_thug_outro_chat",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "purpose": "after the intro, talking to the thug when the barrel man has returned and a barrel was broken selects the retail OUTRO response; the subsequent nag gate exits before creating a conversation",
+      "expects": [
+        "EntityTeleportToThing",
+        "Log",
+        "FollowThing",
+        "StartMovieSequence",
+        "SpeakAndWait",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "AddNewConversation"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 33
     },
     {
       "fixture": "entity_barrel_thug_special_hit",

@@ -42,7 +42,7 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 75/75 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 77/77 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
@@ -77,6 +77,10 @@ conversation line.
 Bully coverage now includes the first numbered intimidation/`VictimShake` handshake and a complete
 four-hit subdual: health-bar creation and decrements, both non-teddy `BULLYRUN` cutscenes with the
 retail actor and `$BRATLINE` mappings, good-deed bookkeeping, `BullyRanOff`, and entity removal.
+Barrel-thug coverage now follows the leave-in-charge wait through marker teleport, the explicit
+unknown-duration `Pause` audit event, explanation and hero follow, then the first timer-nine
+temptation tier. A second path verifies the returned-barrel-man/broken-barrel `OUTRO` response and
+that its closed nag gate creates no dangling conversation.
 
 The coverage manifest classifies 29 functions as implemented and traced, 17 as implemented
 with uncertain native arguments, 6 as lifecycle/data-only, no API-blocked functions, and

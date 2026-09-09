@@ -1310,8 +1310,24 @@
       "trace": "match"
     },
     {
+      "events": 34,
+      "fixture": "entity_barrel_thug_intro_and_first_nag.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 1,
       "fixture": "entity_barrel_thug_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 33,
+      "fixture": "entity_barrel_thug_outro_chat.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1799,8 +1815,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 75,
-    "fixturesPassed": 75,
+    "fixtures": 77,
+    "fixturesPassed": 77,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

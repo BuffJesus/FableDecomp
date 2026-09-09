@@ -1,0 +1,417 @@
+{
+  "events": [
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "BarrelManLeftHeroInCharge"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BarrelManLeftHeroInCharge"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "M_WHouse_ManStart"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "thug_start",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntityTeleportToThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntitySetFacingAngleTowardsThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NewOakValeIntro: UNSUPPORTED retail call Pause"
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "StartMovieSequence",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        true
+      ],
+      "event": "api-call",
+      "name": "PauseAllNonScriptedEntities",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "GetHealth",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_048_BARRELTHUG_EXPLAIN",
+        0
+      ],
+      "event": "api-call",
+      "name": "SpeakAndWait",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        1.0,
+        true
+      ],
+      "event": "api-call",
+      "name": "FollowThing",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        false
+      ],
+      "event": "api-call",
+      "name": "PauseAllNonScriptedEntities",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "EndMovieSequence",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "WatchTimer"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        802
+      ],
+      "event": "api-call",
+      "name": "GetTimer",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BarrelManSpokenToHeroOnReturn"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddNewConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "first_nag",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddPersonToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BarrelBrokenPersistent"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        802
+      ],
+      "event": "api-call",
+      "name": "GetTimer",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "first_nag",
+          "scope": "Entity"
+        },
+        "TEXT_QST_048_BARRELTHUG_SCRMSG_TEMPT_10",
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddLineToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        802
+      ],
+      "event": "api-call",
+      "name": "GetTimer",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByAnySpecialAbilityFromHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "ReleaseControl",
+      "receiver": "me",
+      "scope": "Entity"
+    }
+  ],
+  "fixtures": {
+    "Entity.AcquireControl": [
+      true
+    ],
+    "Entity.IsTalkedToByHero": [
+      false
+    ],
+    "Entity.MsgIsHitByAnySpecialAbilityFromHero": [
+      false
+    ],
+    "Entity.MsgIsHitByHero": [
+      false
+    ],
+    "Quest.AddNewConversation": [
+      {
+        "handle": "first_nag",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetHealth": [
+      100
+    ],
+    "Quest.GetHero": [
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetStateBool(BarrelBrokenPersistent)": [
+      false
+    ],
+    "Quest.GetStateBool(BarrelManLeftHeroInCharge)": [
+      false,
+      true
+    ],
+    "Quest.GetStateBool(BarrelManSpokenToHeroOnReturn)": [
+      false
+    ],
+    "Quest.GetStateInt(WatchTimer)": [
+      802
+    ],
+    "Quest.GetThingWithScriptName(M_WHouse_ManStart)": [
+      {
+        "handle": "thug_start",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetTimer(802)": [
+      9,
+      9,
+      9
+    ],
+    "Quest.NewScriptFrame": [
+      true,
+      true,
+      false
+    ]
+  },
+  "function": "Main",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+  "sourceSha256": "da6df1ee59ff55d97cdda9d636800b1f37b5924d79739c35752a21059820eed4"
+}
