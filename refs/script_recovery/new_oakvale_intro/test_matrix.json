@@ -727,6 +727,26 @@
       "events": 35
     },
     {
+      "fixture": "entity_victim_freed_thanks",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "purpose": "after the bully runs off, the victim leaves his scared state, restores ordinary movement, thanks an unhostile hero, shows the PC hitting-friends tutorial, and exits on loop termination",
+      "expects": [
+        "EntitySetAsScared",
+        "SetIsPushableByHero",
+        "EntitySetAsUseMovementInActions",
+        "ClearThingHasInformation",
+        "Speak",
+        "DisplayGameInfo",
+        "EndMovieSequence"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 26
+    },
+    {
       "fixture": "entity_victim_init",
       "function": "Init",
       "kind": "entity",
@@ -756,6 +776,26 @@
       "result": "ran",
       "trace": "match",
       "events": 1
+    },
+    {
+      "fixture": "entity_victim_repeat_hit_bully_alive",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "purpose": "a later hero hit while the bully lives records the generic new bad-deed notice and emits the two-line victim/bully exchange without replaying BRATHIT",
+      "expects": [
+        "EntitySetThingAsAllyOfThing",
+        "DisplayGameInfo",
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "AddLineToConversation"
+      ],
+      "forbids": [
+        "RunCutsceneWithSetup"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 27
     },
     {
       "fixture": "entity_villager_init",

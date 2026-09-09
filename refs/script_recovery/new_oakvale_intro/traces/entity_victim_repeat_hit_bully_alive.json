@@ -1,0 +1,363 @@
+{
+  "events": [
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "NOVI_Bully"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BullySubdued"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "VictimShake"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntitySetThingAsAllyOfThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntitySetThingAsAllyOfThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BadDeedsPerformed"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BadDeedsPerformed",
+        2
+      ],
+      "event": "api-call",
+      "name": "SetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NewOakValeIntro: UNSUPPORTED retail call GiveHeroMorality(-deed)"
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "WhichBadDeedsPerformed_2"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_048_SCRMSG_DID_BAD_DEED"
+      ],
+      "event": "api-call",
+      "name": "DisplayGameInfo",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsGameInfoClickedPast",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "WhichBadDeedsPerformed_2",
+        true
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "HeroAttackedVictim",
+        true
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GivenHeroTeddy"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false,
+        false
+      ],
+      "event": "api-call",
+      "name": "AddNewConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NOVI_Bully"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsAlive",
+      "receiver": "bully",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "evil_bros",
+          "scope": "Entity"
+        },
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddPersonToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "evil_bros",
+          "scope": "Entity"
+        },
+        "TEXT_QST_048_VICTIM_EVIL_BROS",
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "bully",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddLineToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "evil_bros",
+          "scope": "Entity"
+        },
+        "TEXT_QST_048_BULLY_HERO_ATTACKS_VICTIM",
+        {
+          "handle": "bully",
+          "scope": "Entity"
+        },
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddLineToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "VictimComplainsAboutLosingTeddy"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Entity.AcquireControl": [
+      true
+    ],
+    "Entity.IsAlive": [
+      true
+    ],
+    "Entity.IsTalkedToByHero": [
+      false
+    ],
+    "Entity.MsgIsHitByHero": [
+      true
+    ],
+    "Quest.AddNewConversation": [
+      {
+        "handle": "evil_bros",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetHero": [
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetStateBool(BullySubdued)": [
+      false
+    ],
+    "Quest.GetStateBool(GivenHeroTeddy)": [
+      true
+    ],
+    "Quest.GetStateBool(VictimComplainsAboutLosingTeddy)": [
+      false
+    ],
+    "Quest.GetStateBool(VictimShake)": [
+      false
+    ],
+    "Quest.GetStateBool(WhichBadDeedsPerformed_2)": [
+      false
+    ],
+    "Quest.GetStateInt(BadDeedsPerformed)": [
+      1
+    ],
+    "Quest.GetStateInt(GoodDeedsPerformed)": [
+      0
+    ],
+    "Quest.GetThingWithScriptName(NOVI_Bully)": [
+      {
+        "handle": "bully",
+        "scope": "Entity"
+      },
+      {
+        "handle": "bully",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.MsgIsGameInfoClickedPast": [
+      true
+    ],
+    "Quest.NewScriptFrame": [
+      true,
+      false
+    ]
+  },
+  "function": "Main",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Victim.lua",
+  "sourceSha256": "96f297846dcac1976fc8a342b53a3398fd6d168f6b3701e25f08ca6aeb8f8829"
+}

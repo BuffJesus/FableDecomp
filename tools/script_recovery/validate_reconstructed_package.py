@@ -35,28 +35,50 @@ BINDING_RE = re.compile(r"AddEntityBinding\(\s*\"([^\"]+)\"\s*,\s*\"([^\"]+)\"")
 QUEST_RECEIVERS = {"quest", "Quest"}
 
 
-def strip_lua_line_comment(line: str) -> str:
-    """Strip a Lua line comment without mistaking ``--`` inside quotes for one."""
+def strip_lua_comments(source: str) -> str:
+    """Remove Lua line and ``--[[...]]`` comments while preserving quoted strings."""
+    output = []
+    index = 0
     quote = None
     escaped = False
-    for index, char in enumerate(line):
-        if escaped:
-            escaped = False
-        elif quote and char == "\\":
-            escaped = True
-        elif quote and char == quote:
-            quote = None
-        elif not quote and char in {'"', "'"}:
+    while index < len(source):
+        char = source[index]
+        if quote:
+            output.append(char)
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == quote:
+                quote = None
+            index += 1
+            continue
+        if char in {'"', "'"}:
             quote = char
-        elif not quote and char == "-" and line[index:index + 2] == "--":
-            return line[:index]
-    return line
+            output.append(char)
+            index += 1
+            continue
+        if source.startswith("--[[", index):
+            end = source.find("]]", index + 4)
+            comment = source[index:end + 2 if end >= 0 else len(source)]
+            output.extend("\n" for c in comment if c == "\n")
+            index += len(comment)
+            continue
+        if source.startswith("--", index):
+            end = source.find("\n", index + 2)
+            if end < 0:
+                break
+            output.append("\n")
+            index = end + 1
+            continue
+        output.append(char)
+        index += 1
+    return "".join(output)
 
 
 def executable_matches(pattern: re.Pattern, source: str):
-    """Yield regex matches from Lua code, excluding line-comment text."""
-    for line in source.splitlines():
-        yield from pattern.finditer(strip_lua_line_comment(line))
+    """Yield regex matches from Lua code, excluding comment text."""
+    yield from pattern.finditer(strip_lua_comments(source))
 
 
 def lua_compiles(path: Path) -> str | None:

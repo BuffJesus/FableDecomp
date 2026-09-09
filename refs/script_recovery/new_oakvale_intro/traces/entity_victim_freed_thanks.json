@@ -1,0 +1,304 @@
+{
+  "events": [
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "NOVI_Bully"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BullySubdued"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false
+      ],
+      "event": "api-call",
+      "name": "EntitySetAsScared",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BullyRanOff"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        true
+      ],
+      "event": "api-call",
+      "name": "SetIsPushableByHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        true
+      ],
+      "event": "api-call",
+      "name": "EntitySetAsUseMovementInActions",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "ClearThingHasInformation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "BullySubdued"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "StartMovieSequence",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        true
+      ],
+      "event": "api-call",
+      "name": "PauseAllNonScriptedEntities",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "HeroAttackedVictim"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "GetHealth",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        "TEXT_QST_048_VICTIM_THANKS",
+        0
+      ],
+      "event": "api-call",
+      "name": "Speak",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        false
+      ],
+      "event": "api-call",
+      "name": "PauseAllNonScriptedEntities",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "EndMovieSequence",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_048_INSTRUCTION_HITTING_FRIENDS_PC"
+      ],
+      "event": "api-call",
+      "name": "DisplayGameInfo",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsGameInfoClickedPast",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByAnySpecialAbilityFromHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "VictimComplainsAboutLosingTeddy"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Entity.AcquireControl": [
+      true,
+      true
+    ],
+    "Entity.IsTalkedToByHero": [
+      true
+    ],
+    "Entity.MsgIsHitByAnySpecialAbilityFromHero": [
+      false
+    ],
+    "Entity.MsgIsHitByHero": [
+      false
+    ],
+    "Quest.GetHealth": [
+      100
+    ],
+    "Quest.GetHero": [
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetStateBool(BullyRanOff)": [
+      true
+    ],
+    "Quest.GetStateBool(BullySubdued)": [
+      true,
+      true
+    ],
+    "Quest.GetStateBool(HeroAttackedVictim)": [
+      false
+    ],
+    "Quest.GetStateBool(VictimComplainsAboutLosingTeddy)": [
+      false
+    ],
+    "Quest.GetThingWithScriptName(NOVI_Bully)": [
+      {
+        "handle": "bully",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.MsgIsGameInfoClickedPast": [
+      true
+    ],
+    "Quest.NewScriptFrame": [
+      true,
+      false
+    ]
+  },
+  "function": "Main",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Victim.lua",
+  "sourceSha256": "96f297846dcac1976fc8a342b53a3398fd6d168f6b3701e25f08ca6aeb8f8829"
+}

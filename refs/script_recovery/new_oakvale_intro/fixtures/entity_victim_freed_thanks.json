@@ -1,0 +1,16 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Victim.lua","expect":["EntitySetAsScared","SetIsPushableByHero","EntitySetAsUseMovementInActions","ClearThingHasInformation","Speak","DisplayGameInfo","EndMovieSequence"],"note":"after the bully runs off, the victim leaves his scared state, restores ordinary movement, thanks an unhostile hero, shows the PC hitting-friends tutorial, and exits on loop termination"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true,true],
+  "Quest.GetThingWithScriptName(NOVI_Bully)":[{"handle":"bully","scope":"Entity"}],
+  "Quest.GetStateBool(BullySubdued)":[true,true],
+  "Quest.GetStateBool(BullyRanOff)":[true],
+  "Entity.IsTalkedToByHero":[true],
+  "Quest.GetStateBool(HeroAttackedVictim)":[false],
+  "Quest.GetHealth":[100],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.MsgIsGameInfoClickedPast":[true],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Quest.GetStateBool(VictimComplainsAboutLosingTeddy)":[false]
+}

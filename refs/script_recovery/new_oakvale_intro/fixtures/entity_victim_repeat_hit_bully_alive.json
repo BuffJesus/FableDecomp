@@ -1,0 +1,19 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Victim.lua","expect":["EntitySetThingAsAllyOfThing","DisplayGameInfo","AddNewConversation","AddPersonToConversation","AddLineToConversation"],"forbid":["RunCutsceneWithSetup"],"note":"a later hero hit while the bully lives records the generic new bad-deed notice and emits the two-line victim/bully exchange without replaying BRATHIT"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true],
+  "Quest.GetThingWithScriptName(NOVI_Bully)":[{"handle":"bully","scope":"Entity"},{"handle":"bully","scope":"Entity"}],
+  "Quest.GetStateBool(BullySubdued)":[false],
+  "Quest.GetStateBool(VictimShake)":[false],
+  "Entity.IsTalkedToByHero":[false],
+  "Entity.MsgIsHitByHero":[true],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.GetStateInt(BadDeedsPerformed)":[1],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.GetStateBool(WhichBadDeedsPerformed_2)":[false],
+  "Quest.MsgIsGameInfoClickedPast":[true],
+  "Quest.GetStateBool(GivenHeroTeddy)":[true],
+  "Quest.AddNewConversation":[{"handle":"evil_bros","scope":"Entity"}],
+  "Entity.IsAlive":[true],
+  "Quest.GetStateBool(VictimComplainsAboutLosingTeddy)":[false]
+}

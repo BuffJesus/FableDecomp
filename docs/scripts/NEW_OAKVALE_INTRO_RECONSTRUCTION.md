@@ -42,7 +42,7 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 64/64 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 66/66 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
@@ -54,7 +54,9 @@ run to her husband through the first retail argument entry,
 `TEXT_QST_048_AFFAIR_WIFE_WHATS_THIS_10`. The victim suite reaches the first direct hero-hit
 path through bad-deed bookkeeping and the `CS_OAKVALEINTRO_BRATHIT` cutscene with its retail
 `HERO` and `BRAT` actor roles.
-The supporting trace-tool unit suite has 21/21 passing tests.
+It also covers the freed victim's movement/scared-state restoration and thanks/tutorial path,
+plus the later-hit two-speaker exchange without replaying the first-hit cutscene.
+The supporting trace-tool unit suite has 22/22 passing tests.
 
 The coverage manifest classifies 29 functions as implemented and traced, 17 as implemented
 with uncertain native arguments, 6 as lifecycle/data-only, no API-blocked functions, and
@@ -72,6 +74,13 @@ entity scripting acquisition/release semantics, morality values loaded from game
 special-ability message variants, exact distance-boundary behavior, and some timer/pause
 behavior. ForgeFSE's Windows-only runtime now selects retail PC platform branches explicitly;
 the missing position-distance helper is reconstructed with squared 3D vector math.
+
+The six explicit sites are two conditional scheduler fallbacks (used only if the registered
+entity `AcquireControl`/`ReleaseControl` methods are unavailable), positive and negative deed
+morality calls whose game-data float is unrecovered, and one `Pause` plus one `SetTimer` whose
+retail duration operands were dropped by the decompiler. Supplying guessed durations or morality
+would reduce the metric while making the reconstruction less faithful, so these remain runtime
+audit points.
 
 The wife argument loop no longer depends on an unavailable `TextEntryExists` binding. Retail
 headers and the installed English `text.big` index prove `_10`, `_20`, `_30`, and `_40` exist

@@ -20,6 +20,15 @@ class ReconstructedPackageValidationTests(unittest.TestCase):
         self.assertEqual([match.group(1) for match in executable_matches(UNSUPPORTED_RE, source)],
                          ["Before--After"])
 
+    def test_unsupported_inventory_ignores_lua_block_comments(self):
+        source = (
+            '--[[ NOVI.unsupported(quest, "BlockOnly", {})\n'
+            'NOVI.unsupported(quest, "StillBlockOnly", {}) ]]\n'
+            'NOVI.unsupported(quest, "Executable", {})\n'
+        )
+        self.assertEqual([match.group(1) for match in executable_matches(UNSUPPORTED_RE, source)],
+                         ["Executable"])
+
 
 if __name__ == "__main__":
     unittest.main()

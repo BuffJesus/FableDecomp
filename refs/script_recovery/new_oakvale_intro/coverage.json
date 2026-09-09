@@ -380,7 +380,9 @@
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Victim.lua",
       "fixtures": [
         "entity_victim_first_hero_hit",
-        "entity_victim_main_terminated"
+        "entity_victim_freed_thanks",
+        "entity_victim_main_terminated",
+        "entity_victim_repeat_hit_bully_alive"
       ],
       "evidence": "native-decompile",
       "status": "implemented (uncertain args)"

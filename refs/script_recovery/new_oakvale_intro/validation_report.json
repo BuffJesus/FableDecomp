@@ -1535,6 +1535,14 @@
       "trace": "match"
     },
     {
+      "events": 26,
+      "fixture": "entity_victim_freed_thanks.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 7,
       "fixture": "entity_victim_init.json",
       "function": "Init",
@@ -1545,6 +1553,14 @@
     {
       "events": 1,
       "fixture": "entity_victim_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 27,
+      "fixture": "entity_victim_repeat_hit_bully_alive.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1712,8 +1728,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 64,
-    "fixturesPassed": 64,
+    "fixtures": 66,
+    "fixturesPassed": 66,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,
