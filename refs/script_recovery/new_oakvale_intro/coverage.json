@@ -53,7 +53,7 @@
         "entity_affair_wife_wheres_husband"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_AffairWoman",
@@ -285,7 +285,7 @@
         "entity_guard_init"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_Guard",
@@ -300,7 +300,7 @@
         "entity_guard_repeat_crime_chase"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_LiveFather",
@@ -682,9 +682,9 @@
   ],
   "summary": {
     "functions": 52,
-    "implementedAndTraced": 39,
+    "implementedAndTraced": 42,
     "implementedUntraced": 0,
-    "uncertain": 7,
+    "uncertain": 4,
     "apiBlocked": 0,
     "notImplemented": 0,
     "notApplicable": 6

@@ -3,7 +3,7 @@
 | NOVI_AffairMan | Init | 0x00DB0950 | 7 | `NewOakValeIntro/Entities/NOVI_AffairMan.lua` | entity_affair_man_init | native-decompile | implemented-and-traced |
 | NOVI_AffairMan | Main | 0x00DB09E0 | 60 | `NewOakValeIntro/Entities/NOVI_AffairMan.lua` | entity_affair_man_accepts_bribe, entity_affair_man_first_near_exchange, entity_affair_man_first_ranged_exchange, entity_affair_man_main_terminated | native-decompile | implemented-and-traced |
 | NOVI_AffairWife | Init | 0x00DB2A70 | 9 | `NewOakValeIntro/Entities/NOVI_AffairWife.lua` | entity_affair_wife_init | native-decompile | implemented-and-traced |
-| NOVI_AffairWife | Main | 0x00DB2B10 | 53 | `NewOakValeIntro/Entities/NOVI_AffairWife.lua` | entity_affair_wife_main_terminated, entity_affair_wife_reaches_argument, entity_affair_wife_wheres_husband | native-decompile | implemented (uncertain args) |
+| NOVI_AffairWife | Main | 0x00DB2B10 | 53 | `NewOakValeIntro/Entities/NOVI_AffairWife.lua` | entity_affair_wife_main_terminated, entity_affair_wife_reaches_argument, entity_affair_wife_wheres_husband | native-decompile | implemented-and-traced |
 | NOVI_AffairWoman | Init | 0x00DB1E80 | 5 | `NewOakValeIntro/Entities/NOVI_AffairWoman.lua` | entity_affair_woman_init | native-decompile | implemented-and-traced |
 | NOVI_AffairWoman | Main | 0x00DB1F00 | 37 | `NewOakValeIntro/Entities/NOVI_AffairWoman.lua` | entity_affair_woman_busy_chat, entity_affair_woman_hit_reaction, entity_affair_woman_main_terminated, entity_affair_woman_receives_kiss, entity_affair_woman_runs_off | native-decompile | implemented (uncertain args) |
 | NOVI_Barrel | Init | 0x00CDEBB0 | 0 | `NewOakValeIntro/Entities/NOVI_Barrel.lua` | - | native-decompile | not-applicable (retail body empty / data only) |
@@ -20,8 +20,8 @@
 | NOVI_Bully | GivenTeddy | 0x00DBCD00 | 4 | `NewOakValeIntro/Entities/NOVI_Bully.lua` | entity_bully_accepts_teddy | native-decompile | implemented-and-traced |
 | NOVI_CreatedBeetle | Init | 0x00CDEBB0 | 0 | `NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua` | - | native-decompile | not-applicable (retail body empty / data only) |
 | NOVI_CreatedBeetle | Main | 0x00DB80C0 | 5 | `NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua` | entity_created_beetle_expires, entity_created_beetle_main_terminated, entity_created_beetle_timer_terminated | native-decompile | implemented-and-traced |
-| NOVI_Guard | Init | 0x00DAC650 | 9 | `NewOakValeIntro/Entities/NOVI_Guard.lua` | entity_guard_init | native-decompile | implemented (uncertain args) |
-| NOVI_Guard | Main | 0x00DAC760 | 45 | `NewOakValeIntro/Entities/NOVI_Guard.lua` | entity_guard_answers_good_hero, entity_guard_first_crime_lecture, entity_guard_idle_terminated, entity_guard_repeat_crime_chase | native-decompile | implemented (uncertain args) |
+| NOVI_Guard | Init | 0x00DAC650 | 9 | `NewOakValeIntro/Entities/NOVI_Guard.lua` | entity_guard_init | native-decompile | implemented-and-traced |
+| NOVI_Guard | Main | 0x00DAC760 | 45 | `NewOakValeIntro/Entities/NOVI_Guard.lua` | entity_guard_answers_good_hero, entity_guard_first_crime_lecture, entity_guard_idle_terminated, entity_guard_repeat_crime_chase | native-decompile | implemented-and-traced |
 | NOVI_LiveFather | Init | 0x00DAC390 | 7 | `NewOakValeIntro/Entities/NOVI_LiveFather.lua` | entity_live_father_init | native-decompile | implemented-and-traced |
 | NOVI_LiveFather | Main | 0x00DB86B0 | 49 | `NewOakValeIntro/Entities/NOVI_LiveFather.lua` | entity_live_father_completes_intro, entity_live_father_entry_cleanup, entity_live_father_pays_good_deeds | native-decompile | implemented-and-traced |
 | NOVI_TeddyGirl | Init | 0x00DAF000 | 5 | `NewOakValeIntro/Entities/NOVI_TeddyGirl.lua` | entity_teddy_girl_init | native-decompile | implemented-and-traced |

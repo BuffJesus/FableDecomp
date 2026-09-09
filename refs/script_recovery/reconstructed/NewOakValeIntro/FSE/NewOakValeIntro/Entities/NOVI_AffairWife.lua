@@ -47,12 +47,12 @@ local ASK_AGAIN_CHANCE_ONE_IN = 500       -- rand() % 500 == 0 once ForceFirstTi
 local RUN_TO_HUSBAND_RADIUS = 2.0         -- 0x40000000 = 2.0f passed to MoveToPosition
 local HUSBAND_REACHED_DISTANCE = 3.0      -- IsDistanceBetweenThingsUnder(me, man, 3.0)
 local RUNNING_LINE_DISTANCE = 10.0        -- farther than this from home -> say the running line
-local ARGUE_HERO_DISTANCE = 15.0          -- inference: 0x41700000 (15.0f) leaked into the GetHero() call
+local ARGUE_HERO_DISTANCE = 15.0          -- push 0x41700000 before GetHero at 0x00db35d5
 local WHATS_THIS_STEP = 10                -- counter += 10 per argument line
 local WHATS_THIS_RESET = 10               -- counter reset when the text entry is missing
 local BAD_DEED_HIT_WIFE = 2               -- AddBadDeed(PARENT, 2)
 local CUTSCENE_CONTROL_PRIORITY = 4       -- StartScriptingEntity(me, res, 4)
-local MAIN_CONTROL_PRIORITY = 4           -- inference: argument dropped by the decompiler; sibling calls use 4
+local MAIN_CONTROL_PRIORITY = 3           -- StartScriptingEntity push 3 at 0x00db2bbb/0x00db2bec
 local HERO_ABILITY_IGNORED_ON_HIT = 14    -- EHeroAbility 0xe literal (confront-loop hit check)
 local SPEAK_SELECTION_METHOD = 0          -- _Speak_ third argument literal 0
 local MOVE_RUN = 1                        -- EScriptEntityMoveType literal 1
@@ -65,7 +65,7 @@ local GoingForHusband      -- 0x1c
 local ForceFirstTimeSpeak  -- 0x1d
 local SaidRunningLine      -- 0x1e
 local whats_this_counter   -- retail Main stack local (starts 0)
-local last_conversation    -- retail stack local holding the last AddNewConversation id (inference)
+local last_conversation    -- retail [esp+0x84], written by AddNewConversation and passed to IsConversationActive
 
 function Init(quest, me)
     GoingForHusband = false
@@ -215,25 +215,25 @@ local function wait_until_husband_reached(quest, me, man)
 end
 
 -- Sub-phase of ARGUE: hit while arguing.
-local function argue_react_to_hit(quest, me)
+local function argue_react_to_hit(quest, me, man)
     become_hero_ally(quest, me)
     Deeds.add_bad(quest, me, BAD_DEED_HIT_WIFE)
     if not NOVI.acquire(quest, me, CUTSCENE_CONTROL_PRIORITY) then return false end
     begin_movie(quest)
     if not speak_if_alive(quest, me, TEXT_ON_HIT) then end_movie(quest, me); return false end
-    quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero())   -- retail (me, <thing>, 1); inference: the hero
+    quest:EntitySetFacingAngleTowardsThing(me, man) -- retail (me, husband, 1); trailing flag unavailable
     end_movie(quest, me)
     return true
 end
 
 -- Sub-phase of ARGUE: talked to while arguing.
-local function argue_talked_to(quest, me)
+local function argue_talked_to(quest, me, man)
     if not NOVI.acquire(quest, me, CUTSCENE_CONTROL_PRIORITY) then return false end   -- retail priority dropped
     me:ClearAllActions()
     me:ClearCommands()
     begin_movie(quest)
     if not speak_if_alive(quest, me, TEXT_THANKYOU_SINGLE) then end_movie(quest, me); return false end
-    quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero())   -- retail (me, <thing>, 1); inference: the hero
+    quest:EntitySetFacingAngleTowardsThing(me, man) -- retail (me, husband, 1); trailing flag unavailable
     end_movie(quest, me)
     return true
 end
@@ -242,7 +242,7 @@ end
 local function argue_conversation(quest, me, man)
     local conv = quest:AddNewConversation(me, false, false)       -- retail AddNewConversation(me, 0)
     last_conversation = conv
-    quest:AddPersonToConversation(conv, man)                      -- retail person dropped; inference: the husband
+    quest:AddPersonToConversation(conv, man)
     whats_this_counter = whats_this_counter + WHATS_THIS_STEP
     local key = TEXT_WHATS_THIS .. tostring(whats_this_counter)
     local exists = WHATS_THIS_KEYS[whats_this_counter] == true
@@ -250,9 +250,9 @@ local function argue_conversation(quest, me, man)
         whats_this_counter = WHATS_THIS_RESET
         key = TEXT_WHATS_THIS_FALLBACK
     end
-    quest:AddLineToConversation(conv, key, me, nil)               -- retail listener argument dropped
+    quest:AddLineToConversation(conv, key, me, man)
     if math.random(0, 1) == 0 then                                -- rand() & 1 == 0
-        quest:AddLineToConversation(conv, TEXT_MAN_IN_TROUBLE, man, nil)   -- retail listener argument dropped
+        quest:AddLineToConversation(conv, TEXT_MAN_IN_TROUBLE, man, me)
     end
 end
 
@@ -271,10 +271,10 @@ local function argue_with_husband(quest, me, man)
                 if not NOVI.frame(quest, me) then return false end
                 quest:EntitySetFacingAngleTowardsThing(me, man)
                 if hit_by_hero(me) then
-                    if not argue_react_to_hit(quest, me) then return false end
+                    if not argue_react_to_hit(quest, me, man) then return false end
                 end
                 if me:IsTalkedToByHero() then
-                    if not argue_talked_to(quest, me) then return false end
+                    if not argue_talked_to(quest, me, man) then return false end
                 end
                 if not (last_conversation and quest:IsConversationActive(last_conversation)) then   -- retail arg dropped
                     argue_conversation(quest, me, man)

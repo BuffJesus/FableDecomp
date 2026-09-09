@@ -190,9 +190,9 @@ Detailed evidence lives in `refs/script_recovery/new_oakvale_intro/`: `coverage.
 `validation_report.json`, `test_matrix.json`, `persistence_manifest.json`, `state_manifest.json`,
 the per-script `entities` inventories, fixtures, and source-hashed traces.
 
-## 2026-09-08 restart checkpoint
+## 2026-09-09 continuation checkpoint
 
-The zero-unknown audit remains the acceptance gate. There are 70 operation records with
+The zero-unknown audit remains the acceptance gate. There are 42 operation records with
 `argsKnown: false`; passing fixtures do not override those evidence gaps. The quest inventory
 itself is now at zero unknown operations. The remaining queue, in descending order, is:
 
@@ -200,10 +200,8 @@ itself is now at zero unknown operations. The remaining queue, in descending ord
 |---|---:|
 | `NOVI_Bully` | 26 |
 | `NOVI_Victim` | 16 |
-| `NOVI_Guard` | 14 |
-| `NOVI_AffairWife` | 14 |
 
-Resume with `NOVI_AffairWife` before returning to the larger inventories.
+Resume with `NOVI_Victim` before the final `NOVI_Bully` inventory.
 `NOVI_Villager` is now at zero unknown operations: disassembly at
 `0x00DAE109`-`0x00DAE12F` proves its two ally calls are reciprocal `(me, hero)` and `(hero, me)`.
 `NOVI_LiveFather` is also at zero: `0x00DB93CF`-`0x00DB93D8` explicitly pushes its stored
@@ -233,3 +231,11 @@ calls are all instruction-proven.
 `NOVI_AffairMan` is now at zero as well. Retail stack order proves priority `4`, hit ability `14`,
 all near/ranged conversation participants and speakers, the active-conversation handle, and every
 facing pair. The first encounter required one correction: the woman, not the man, faces the hero.
+`NOVI_AffairWife` is now at zero too. The main control acquisition is priority `3` (not `4`), while
+the nested movie acquisitions use `4`; hit ability `14`, reciprocal allies, pause flags, the active
+conversation handle, and all argument-conversation operands are instruction-proven. Retail also
+required three Lua corrections: both post-speech facing calls target her husband, and the wife/man
+conversation lines use each other as listeners rather than null listeners.
+`NOVI_Guard` is now at zero as well. Its Init operands, reciprocal ally pairs, facing flags, both
+priority-`4` acquisitions, pause flags, ability `14`, and all talk-line participants are directly
+recovered. The exit cutscene-behaviour enum required a Lua correction from inferred `0` to retail `2`.

@@ -129,5 +129,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Guard.lua",
-  "sourceSha256": "a9b9d04dfbcd4cdb797cfc9c0766cac95a0eadabf64061f25150c244928e1b6e"
+  "sourceSha256": "eb708e104aec275154f66ef93fc5a5c826a98378f73cc0eb26542aff301cfd23"
 }

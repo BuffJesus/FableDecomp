@@ -782,8 +782,8 @@
           "script": "NOVI_Guard",
           "function": "Init",
           "seq": 1,
-          "native": "GSI->EntitySetAsDamageable(me, 0)",
-          "evidence": "native-decompile"
+          "native": "GSI->EntitySetAsDamageable(me,0)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_LiveFather",
@@ -821,10 +821,10 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
         "NOVI_BarrelThug#2: no SetThingHasInformation here",
-        "NOVI_Guard#1: args dropped; stack slots uStack_c=0/pCStack_10=me read as (me,false); CNOVI_Villager::Init shows the explicit (me,0) form"
+        "NOVI_Guard#1: 0x00dac654-0x00dac65f pushes 0 then ME_THING"
       ],
       "fallbackStatus": "direct",
       "blocked": false
@@ -888,8 +888,8 @@
           "script": "NOVI_Guard",
           "function": "Init",
           "seq": 2,
-          "native": "GSI->EntitySetAsKillable(me, 0, 0)",
-          "evidence": "native-decompile"
+          "native": "GSI->EntitySetAsKillable(me,0,0)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_LiveFather",
@@ -941,7 +941,7 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
         "NOVI_AffairMan#3: ForgeFSE binding has one bool; retail second 0 not representable",
         "NOVI_AffairWife#3: ForgeFSE binding has one bool",
@@ -949,7 +949,7 @@
         "NOVI_BarrelMan#4: retail mangled sig has 2 bools; binding takes 1",
         "NOVI_BarrelThug#2: no SetThingHasInformation here",
         "NOVI_Bully#3: retail has a third arg (0); ForgeFSE binding takes 2",
-        "NOVI_Guard#2: stack slots uStack_14=0,uStack_18=0,pCStack_1c=me",
+        "NOVI_Guard#2: 0x00dac665-0x00dac66f pushes 0, 0, then ME_THING; binding exposes one bool",
         "NOVI_LiveFather#3: retail 3rd arg false; ForgeFSE binding hardcodes true",
         "NOVI_TeddyGirl#3: third retail arg unbound",
         "NOVI_Theresa#3: retail 3rd arg false; ForgeFSE hardcodes true",
@@ -1019,8 +1019,8 @@
           "script": "NOVI_Guard",
           "function": "Init",
           "seq": 3,
-          "native": "GSI->EntitySetAsToAddToComboMultiplierWhenHit(me, 0)",
-          "evidence": "native-decompile"
+          "native": "GSI->EntitySetAsToAddToComboMultiplierWhenHit(me,0)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_LiveFather",
@@ -1058,10 +1058,10 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
         "NOVI_BarrelThug#2: no SetThingHasInformation here",
-        "NOVI_Guard#3: uStack_20=0,pCStack_24=me"
+        "NOVI_Guard#3: 0x00dac675-0x00dac67d pushes 0 then ME_THING"
       ],
       "fallbackStatus": "direct",
       "blocked": false
@@ -1182,8 +1182,8 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 15,
-          "native": "GSI->EntitySetAsUseMovementInActions(me?, 1)",
-          "evidence": "native-decompile"
+          "native": "GSI->EntitySetAsUseMovementInActions(me,1)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
@@ -1237,7 +1237,7 @@
       ],
       "signatureConfidence": "low",
       "semanticDifferences": [
-        "NOVI_AffairWife#15: pCVar27 = 1 loaded beside the call; target inferred",
+        "NOVI_AffairWife#15: 0x00db3454-0x00db345c pushes literal 1 then ME_THING (edi) into GSI slot 0x844",
         "NOVI_AffairWoman#35: each call has a literal push 1; the second receives a by-value copy of ME_THING. Corrects the prior false inference",
         "NOVI_Victim#13: bool args dropped; inferred as undoing Init (scared=false, pushable=true, movement=true)"
       ],
@@ -1476,15 +1476,15 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 12,
-          "native": "loop top: while(!StartScriptingEntity(me,res,?)) NewScriptFrame",
-          "evidence": "native-decompile"
+          "native": "loop top: while(!StartScriptingEntity(me,res,3)) NewScriptFrame",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 22,
-          "native": "while(!StartScriptingEntity(me,res2,?)) NewScriptFrame",
-          "evidence": "native-decompile"
+          "native": "while(!StartScriptingEntity(me,res2,4)) NewScriptFrame",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
@@ -1497,15 +1497,15 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 52,
-          "native": "ally x2; AddBadDeed(PARENT,2); StartScriptingEntity(me,res3,4); StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(ON_HIT); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "ally(me,hero)+ally(hero,me); AddBadDeed(PARENT,2); StartScriptingEntity(me,res3,4); StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(ON_HIT); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 54,
-          "native": "StartScriptingEntity(me,res,?); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "StartScriptingEntity(me,res,4); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
@@ -1798,8 +1798,8 @@
           "script": "NOVI_Guard",
           "function": "Main",
           "seq": 27,
-          "native": "while (!StartScriptingEntity()) { NewScriptFrame; if (IsTerminating) goto release }",
-          "evidence": "native-decompile"
+          "native": "while(!StartScriptingEntity(me,res,4)) NewScriptFrame",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_Guard",
@@ -2136,8 +2136,10 @@
         "NOVI_AffairMan#9: both attempts explicitly push priority 4",
         "NOVI_AffairMan#21: TALK branch",
         "NOVI_AffairMan#67: main resource released by destructor only",
-        "NOVI_AffairWife#12: priority dropped; retail repeats the wait loop every iteration",
-        "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
+        "NOVI_AffairWife#12: 0x00db2bb6-0x00db2bc3 and retry 0x00db2be7-0x00db2bf4",
+        "NOVI_AffairWife#22: 0x00db2d44-0x00db2d51 and retry 0x00db2d6f-0x00db2d7c",
+        "NOVI_AffairWife#52: ability 14 at 0x00db3749; allies 0x00db37c1-0x00db37e7; priority 4 at 0x00db3812/0x00db383d; facing (me, husband, 1) at 0x00db3947-0x00db3954",
+        "NOVI_AffairWife#54: priority 4 at 0x00db39c9/0x00db39f4; facing husband at 0x00db3b13-0x00db3b20",
         "NOVI_AffairWife#62: main resource released by destructor only",
         "NOVI_AffairWoman#15: push 4, nested resource, and ME_THING precede GSI slot 0x20",
         "NOVI_AffairWoman#38: same idiom that precedes every StartScriptingEntity; here no re-acquire follows",
@@ -2155,7 +2157,7 @@
         "NOVI_Bully#24: failed item-refusal acquisition stops before opening its movie",
         "NOVI_Bully#41: failed talk acquisition stops before opening its movie",
         "NOVI_Bully#57: third acquisition target inferred as the NOVI_Victim thing",
-        "NOVI_Guard#27: args dropped; priority 4 assumed as in seq 14",
+        "NOVI_Guard#27: 0x00daca34-0x00daca41 and retry 0x00daca5f-0x00daca6c",
         "NOVI_LiveFather#11: ForgeFSE acquires cutscene actors with SCRIPT_AI_PRIORITY_HIGHEST and no wait loop",
         "NOVI_LiveFather#29: re-acquired every loop iteration",
         "NOVI_LiveFather#31: second acquire inside the talk branch",
@@ -2381,8 +2383,8 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 19,
-          "native": "me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(?,HERO))",
-          "evidence": "native-decompile"
+          "native": "me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
@@ -2430,8 +2432,8 @@
           "script": "NOVI_Guard",
           "function": "Main",
           "seq": 48,
-          "native": "hit = me->vtbl+0x54 MsgIsHitBy(\"SCRIPT_NAME_HERO\") || (me->vtbl+0xa8 MsgIsHitByAnySpecialAbilityFrom(\"SCRIPT_NAME_HERO\") && !me->vtbl+0xa4 MsgIsHitBySpecialAbilityFrom(?, \"SCRIPT_NAME_HERO\"))",
-          "evidence": "native-decompile + FSE CGameScriptThingVTable slots + cross-script-evidence (ability 0xe from CNOVI_Villager::Main)"
+          "native": "hit = MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_LiveFather",
@@ -2472,12 +2474,13 @@
       "signatureConfidence": "low",
       "semanticDifferences": [
         "NOVI_AffairMan#12: push 0xe directly proves ability 14",
-        "NOVI_AffairWife#19: idle hit check; ability enum dropped here, 0xe visible at line 511",
+        "NOVI_AffairWife#19: 0x00db2c15-0x00db2c88; literal 0xe at 0x00db2c80",
         "NOVI_AffairWife#51: line 511 shows the 0xe literal",
         "NOVI_AffairWoman#12: CScriptThing slots 0x54/0xa8/0xa4; push 0xe at 0xdb21ea directly proves ability 14",
         "NOVI_BarrelMan#51: the ppuVar17 & 1/2/4/8 flag writes are decompiler noise (local bookkeeping of which message was polled)",
         "NOVI_BarrelThug#25: 0xdb7993 explicitly pushes ability 0xe into CScriptThing slot 0xa4",
         "NOVI_BookTrader#9: CScriptThing slots 0x54/0xa8/0xa4 receive SCRIPT_NAME_HERO; 0xdb42ab explicitly pushes ability 0xe",
+        "NOVI_Guard#48: 0x00dada6c-0x00dadae3; literal 0xe at 0x00dadadb",
         "NOVI_TeddyGirl#41: push 0xe directly proves ability 14 for slot 0xa4"
       ],
       "fallbackStatus": "direct",
@@ -2500,8 +2503,8 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 19,
-          "native": "me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(?,HERO))",
-          "evidence": "native-decompile"
+          "native": "me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
@@ -2549,8 +2552,8 @@
           "script": "NOVI_Guard",
           "function": "Main",
           "seq": 48,
-          "native": "hit = me->vtbl+0x54 MsgIsHitBy(\"SCRIPT_NAME_HERO\") || (me->vtbl+0xa8 MsgIsHitByAnySpecialAbilityFrom(\"SCRIPT_NAME_HERO\") && !me->vtbl+0xa4 MsgIsHitBySpecialAbilityFrom(?, \"SCRIPT_NAME_HERO\"))",
-          "evidence": "native-decompile + FSE CGameScriptThingVTable slots + cross-script-evidence (ability 0xe from CNOVI_Villager::Main)"
+          "native": "hit = MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_LiveFather",
@@ -2591,12 +2594,13 @@
       "signatureConfidence": "low",
       "semanticDifferences": [
         "NOVI_AffairMan#12: push 0xe directly proves ability 14",
-        "NOVI_AffairWife#19: idle hit check; ability enum dropped here, 0xe visible at line 511",
+        "NOVI_AffairWife#19: 0x00db2c15-0x00db2c88; literal 0xe at 0x00db2c80",
         "NOVI_AffairWife#51: line 511 shows the 0xe literal",
         "NOVI_AffairWoman#12: CScriptThing slots 0x54/0xa8/0xa4; push 0xe at 0xdb21ea directly proves ability 14",
         "NOVI_BarrelMan#51: the ppuVar17 & 1/2/4/8 flag writes are decompiler noise (local bookkeeping of which message was polled)",
         "NOVI_BarrelThug#25: 0xdb7993 explicitly pushes ability 0xe into CScriptThing slot 0xa4",
         "NOVI_BookTrader#9: CScriptThing slots 0x54/0xa8/0xa4 receive SCRIPT_NAME_HERO; 0xdb42ab explicitly pushes ability 0xe",
+        "NOVI_Guard#48: 0x00dada6c-0x00dadae3; literal 0xe at 0x00dadadb",
         "NOVI_TeddyGirl#41: push 0xe directly proves ability 14 for slot 0xa4"
       ],
       "fallbackStatus": "direct",
@@ -2619,8 +2623,8 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 19,
-          "native": "me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(?,HERO))",
-          "evidence": "native-decompile"
+          "native": "me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
@@ -2668,8 +2672,8 @@
           "script": "NOVI_Guard",
           "function": "Main",
           "seq": 48,
-          "native": "hit = me->vtbl+0x54 MsgIsHitBy(\"SCRIPT_NAME_HERO\") || (me->vtbl+0xa8 MsgIsHitByAnySpecialAbilityFrom(\"SCRIPT_NAME_HERO\") && !me->vtbl+0xa4 MsgIsHitBySpecialAbilityFrom(?, \"SCRIPT_NAME_HERO\"))",
-          "evidence": "native-decompile + FSE CGameScriptThingVTable slots + cross-script-evidence (ability 0xe from CNOVI_Villager::Main)"
+          "native": "hit = MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_LiveFather",
@@ -2710,12 +2714,13 @@
       "signatureConfidence": "low",
       "semanticDifferences": [
         "NOVI_AffairMan#12: push 0xe directly proves ability 14",
-        "NOVI_AffairWife#19: idle hit check; ability enum dropped here, 0xe visible at line 511",
+        "NOVI_AffairWife#19: 0x00db2c15-0x00db2c88; literal 0xe at 0x00db2c80",
         "NOVI_AffairWife#51: line 511 shows the 0xe literal",
         "NOVI_AffairWoman#12: CScriptThing slots 0x54/0xa8/0xa4; push 0xe at 0xdb21ea directly proves ability 14",
         "NOVI_BarrelMan#51: the ppuVar17 & 1/2/4/8 flag writes are decompiler noise (local bookkeeping of which message was polled)",
         "NOVI_BarrelThug#25: 0xdb7993 explicitly pushes ability 0xe into CScriptThing slot 0xa4",
         "NOVI_BookTrader#9: CScriptThing slots 0x54/0xa8/0xa4 receive SCRIPT_NAME_HERO; 0xdb42ab explicitly pushes ability 0xe",
+        "NOVI_Guard#48: 0x00dada6c-0x00dadae3; literal 0xe at 0x00dadadb",
         "NOVI_TeddyGirl#41: push 0xe directly proves ability 14 for slot 0xa4"
       ],
       "fallbackStatus": "direct",
@@ -2752,22 +2757,22 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 27,
-          "native": "StartMovieSequence(\"\"); (GSI slot 0x5ec = PauseAllNonScriptedEntities)()",
-          "evidence": "native-decompile"
+          "native": "StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 52,
-          "native": "ally x2; AddBadDeed(PARENT,2); StartScriptingEntity(me,res3,4); StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(ON_HIT); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "ally(me,hero)+ally(hero,me); AddBadDeed(PARENT,2); StartScriptingEntity(me,res3,4); StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(ON_HIT); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 54,
-          "native": "StartScriptingEntity(me,res,?); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "StartScriptingEntity(me,res,4); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWoman",
@@ -2871,8 +2876,8 @@
           "script": "NOVI_Guard",
           "function": "Main",
           "seq": 51,
-          "native": "StartMovieSequence(\"\", &movie); PauseAllNonScriptedEntities(true)",
-          "evidence": "native-decompile"
+          "native": "StartMovieSequence(\"\",&movie); PauseAllNonScriptedEntities(1)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_LiveFather",
@@ -2991,12 +2996,14 @@
       "semanticDifferences": [
         "NOVI_AffairMan#13: HIT branch",
         "NOVI_AffairMan#21: TALK branch",
-        "NOVI_AffairWife#27: slot resolved from retail vtable 0x1260f0c; argument dropped, true inferred",
-        "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
+        "NOVI_AffairWife#27: 0x00db2eda-0x00db2f1f; literal 1 at 0x00db2f17",
+        "NOVI_AffairWife#52: ability 14 at 0x00db3749; allies 0x00db37c1-0x00db37e7; priority 4 at 0x00db3812/0x00db383d; facing (me, husband, 1) at 0x00db3947-0x00db3954",
+        "NOVI_AffairWife#54: priority 4 at 0x00db39c9/0x00db39f4; facing husband at 0x00db3b13-0x00db3b20",
         "NOVI_AffairWoman#14: push 1 immediately precedes GSI slot 0x5ec",
         "NOVI_AffairWoman#23: the +0x24 local is the man returned at 0xdb2018-0xdb2027; push 0, GetHero, then that local prove (man, hero, false). Corrects the prior me->hero inference",
         "NOVI_BarrelThug#16: movie starts BEFORE the priority-4 acquire here, so failure must unpause/end it before Main releases control",
         "NOVI_BookTrader#13: acquisition pushes priority 4, resource, and stored ME_THING. Slot 0x5c8 constructs the empty-name movie resource and slot 0x5ec receives true; the same slot's true/false bracketing is PauseAllNonScriptedEntities throughout this quest",
+        "NOVI_Guard#51: movie setup 0x00dadbeb-0x00dadc2f; literal 1 pushed at 0x00dadc39 before slot 0x5ec",
         "NOVI_TeddyGirl#35: both acquisition attempts explicitly push priority 4; failure exits before opening the movie",
         "NOVI_Theresa#47: no FixMovieSequenceCamera in this block",
         "Q_NewOakValeIntro#42: RunCutsceneMacro_Func has no direct binding; PlayCutscene(name, actors) is the seed-corpus convention for it (cross-script-evidence). Whether PlayCutscene already brackets the movie sequence is unverified."
@@ -3049,15 +3056,15 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 25,
-          "native": "LAB_00db2e83: PauseAllNonScriptedEntities(); ~MovieBase -> LAB_00db32aa",
-          "evidence": "native-decompile"
+          "native": "LAB_00db2e83: PauseAllNonScriptedEntities(0); ~MovieBase -> LAB_00db32aa",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 27,
-          "native": "StartMovieSequence(\"\"); (GSI slot 0x5ec = PauseAllNonScriptedEntities)()",
-          "evidence": "native-decompile"
+          "native": "StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
@@ -3070,15 +3077,15 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 52,
-          "native": "ally x2; AddBadDeed(PARENT,2); StartScriptingEntity(me,res3,4); StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(ON_HIT); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "ally(me,hero)+ally(hero,me); AddBadDeed(PARENT,2); StartScriptingEntity(me,res3,4); StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(ON_HIT); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 54,
-          "native": "StartScriptingEntity(me,res,?); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "StartScriptingEntity(me,res,4); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWoman",
@@ -3252,8 +3259,8 @@
           "script": "NOVI_Guard",
           "function": "Main",
           "seq": 30,
-          "native": "GSI->PauseAllNonScriptedEntities(true)",
-          "evidence": "native-decompile"
+          "native": "GSI->PauseAllNonScriptedEntities(1)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_Guard",
@@ -3266,8 +3273,8 @@
           "script": "NOVI_Guard",
           "function": "Main",
           "seq": 51,
-          "native": "StartMovieSequence(\"\", &movie); PauseAllNonScriptedEntities(true)",
-          "evidence": "native-decompile"
+          "native": "StartMovieSequence(\"\",&movie); PauseAllNonScriptedEntities(1)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_Guard",
@@ -3465,16 +3472,18 @@
         "NOVI_AffairMan#19: movie end via destructor is an inference",
         "NOVI_AffairMan#21: TALK branch",
         "NOVI_AffairMan#42: vtable slot 0x5ec on the GSI copy resolved to PauseAllNonScriptedEntities from retail vtable 0x1260f0c",
-        "NOVI_AffairWife#25: hit branch skips the talked-to check",
-        "NOVI_AffairWife#27: slot resolved from retail vtable 0x1260f0c; argument dropped, true inferred",
-        "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
+        "NOVI_AffairWife#25: 0x00db2e83-0x00db2e8a pushes 0; hit branch skips the talked-to check",
+        "NOVI_AffairWife#27: 0x00db2eda-0x00db2f1f; literal 1 at 0x00db2f17",
+        "NOVI_AffairWife#52: ability 14 at 0x00db3749; allies 0x00db37c1-0x00db37e7; priority 4 at 0x00db3812/0x00db383d; facing (me, husband, 1) at 0x00db3947-0x00db3954",
+        "NOVI_AffairWife#54: priority 4 at 0x00db39c9/0x00db39f4; facing husband at 0x00db3b13-0x00db3b20",
         "NOVI_AffairWoman#14: push 1 immediately precedes GSI slot 0x5ec",
         "NOVI_AffairWoman#19: on termination inside the hit branch TalkingToWoman is left true (retail)",
         "NOVI_AffairWoman#23: the +0x24 local is the man returned at 0xdb2018-0xdb2027; push 0, GetHero, then that local prove (man, hero, false). Corrects the prior me->hero inference",
         "NOVI_BookTrader#13: acquisition pushes priority 4, resource, and stored ME_THING. Slot 0x5c8 constructs the empty-name movie resource and slot 0x5ec receives true; the same slot's true/false bracketing is PauseAllNonScriptedEntities throughout this quest",
         "NOVI_Bully#27: also executed on the terminate paths inside the scope",
-        "NOVI_Guard#30: arg dropped; every exit path calls PauseAllNonScriptedEntities(0), so the entry value is true",
+        "NOVI_Guard#30: literal 1 pushed at 0x00dacb03 before slot 0x5ec",
         "NOVI_Guard#40: movie object destructor mapped to EndMovieSequence (inference)",
+        "NOVI_Guard#51: movie setup 0x00dadbeb-0x00dadc2f; literal 1 pushed at 0x00dadc39 before slot 0x5ec",
         "NOVI_LiveFather#28: hero resource release is host-managed",
         "NOVI_LiveFather#47: same pair on every terminate path inside the talk branch (LAB_00db8d23 / LAB_00db974b)",
         "NOVI_TeddyGirl#20: EndMovieSequence is an inference for the movie dtor",
@@ -3723,15 +3732,15 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 52,
-          "native": "ally x2; AddBadDeed(PARENT,2); StartScriptingEntity(me,res3,4); StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(ON_HIT); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "ally(me,hero)+ally(hero,me); AddBadDeed(PARENT,2); StartScriptingEntity(me,res3,4); StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(ON_HIT); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 54,
-          "native": "StartScriptingEntity(me,res,?); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "StartScriptingEntity(me,res,4); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWoman",
@@ -4033,7 +4042,8 @@
         "NOVI_AffairMan#37: answer != 1",
         "NOVI_AffairMan#40: EncounterOver already set",
         "NOVI_AffairWife#37: answer != 1",
-        "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
+        "NOVI_AffairWife#52: ability 14 at 0x00db3749; allies 0x00db37c1-0x00db37e7; priority 4 at 0x00db3812/0x00db383d; facing (me, husband, 1) at 0x00db3947-0x00db3954",
+        "NOVI_AffairWife#54: priority 4 at 0x00db39c9/0x00db39f4; facing husband at 0x00db3b13-0x00db3b20",
         "NOVI_BarrelMan#40: ForgeFSE Speak blocks host-side; the retail per-frame terminate cleanup is host-managed",
         "NOVI_Bully#26: trailing bool args dropped",
         "NOVI_Guard#34: order in decompile: BARREL_BREAKING(0xfc), DERELICTION_OF_DUTY(0xfd), VIOLENCE(0xfe), TEDDY_TO_BULLY(0xff), CONCEALED_AFFAIR(0x100)",
@@ -4067,8 +4077,8 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 25,
-          "native": "LAB_00db2e83: PauseAllNonScriptedEntities(); ~MovieBase -> LAB_00db32aa",
-          "evidence": "native-decompile"
+          "native": "LAB_00db2e83: PauseAllNonScriptedEntities(0); ~MovieBase -> LAB_00db32aa",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
@@ -4081,15 +4091,15 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 52,
-          "native": "ally x2; AddBadDeed(PARENT,2); StartScriptingEntity(me,res3,4); StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(ON_HIT); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "ally(me,hero)+ally(hero,me); AddBadDeed(PARENT,2); StartScriptingEntity(me,res3,4); StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(ON_HIT); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 54,
-          "native": "StartScriptingEntity(me,res,?); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "StartScriptingEntity(me,res,4); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWoman",
@@ -4271,8 +4281,9 @@
       "semanticDifferences": [
         "NOVI_AffairMan#19: movie end via destructor is an inference",
         "NOVI_AffairMan#42: vtable slot 0x5ec on the GSI copy resolved to PauseAllNonScriptedEntities from retail vtable 0x1260f0c",
-        "NOVI_AffairWife#25: hit branch skips the talked-to check",
-        "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
+        "NOVI_AffairWife#25: 0x00db2e83-0x00db2e8a pushes 0; hit branch skips the talked-to check",
+        "NOVI_AffairWife#52: ability 14 at 0x00db3749; allies 0x00db37c1-0x00db37e7; priority 4 at 0x00db3812/0x00db383d; facing (me, husband, 1) at 0x00db3947-0x00db3954",
+        "NOVI_AffairWife#54: priority 4 at 0x00db39c9/0x00db39f4; facing husband at 0x00db3b13-0x00db3b20",
         "NOVI_AffairWoman#19: on termination inside the hit branch TalkingToWoman is left true (retail)",
         "NOVI_Bully#27: also executed on the terminate paths inside the scope",
         "NOVI_Guard#40: movie object destructor mapped to EndMovieSequence (inference)",
@@ -4435,8 +4446,8 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 54,
-          "native": "StartScriptingEntity(me,res,?); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "StartScriptingEntity(me,res,4); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWoman",
@@ -4446,8 +4457,10 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
-      "semanticDifferences": [],
+      "signatureConfidence": "high",
+      "semanticDifferences": [
+        "NOVI_AffairWife#54: priority 4 at 0x00db39c9/0x00db39f4; facing husband at 0x00db3b13-0x00db3b20"
+      ],
       "fallbackStatus": "direct",
       "blocked": false
     },
@@ -4475,8 +4488,8 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 54,
-          "native": "StartScriptingEntity(me,res,?); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "StartScriptingEntity(me,res,4); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWoman",
@@ -4486,8 +4499,10 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
-      "semanticDifferences": [],
+      "signatureConfidence": "high",
+      "semanticDifferences": [
+        "NOVI_AffairWife#54: priority 4 at 0x00db39c9/0x00db39f4; facing husband at 0x00db3b13-0x00db3b20"
+      ],
       "fallbackStatus": "direct",
       "blocked": false
     },
@@ -4558,7 +4573,7 @@
           "function": "Main",
           "seq": 48,
           "native": "IsDistanceBetweenThingsUnder(me, GetHero(), 15.0)",
-          "evidence": "inference"
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWoman",
@@ -4687,11 +4702,11 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
         "NOVI_AffairMan#23: second thing is &stack0xfffffeb8; reading as the wife is an inference from the three reply lines",
         "NOVI_AffairMan#50: the handle stored at stack +0x40 is pushed directly to GSI slot 0x5c0",
-        "NOVI_AffairWife#48: 15.0f leaked into GetHero(0x41700000); the decompiler shows fVar33 = 0.0 / garbage",
+        "NOVI_AffairWife#48: 0x00db35d0-0x00db35e4 pushes 0x41700000, calls GetHero, then invokes the distance helper on ME_THING (edi)",
         "NOVI_BarrelMan#36: visibility pushes stored ME_THING (EDI), obtains and pushes hero, then calls GSI slot 0x9e0: reverse stack order proves (hero, me). The following direct distance helper uses ECX=me, EDX=hero, stack float 10.0",
         "NOVI_BarrelMan#73: CRT rand() replaced by math.random",
         "NOVI_BookTrader#25: 0x00db4ce6-0x00db4cf9 loads PARENT+0x104 and calls GetTimer slot 0x168",
@@ -4880,15 +4895,15 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 52,
-          "native": "ally x2; AddBadDeed(PARENT,2); StartScriptingEntity(me,res3,4); StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(ON_HIT); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "ally(me,hero)+ally(hero,me); AddBadDeed(PARENT,2); StartScriptingEntity(me,res3,4); StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(ON_HIT); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 54,
-          "native": "StartScriptingEntity(me,res,?); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "StartScriptingEntity(me,res,4); _ClearAllActions_; _ClearCommands_; StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(THANKYOU_SINGLE); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWoman",
@@ -4943,8 +4958,8 @@
           "script": "NOVI_Guard",
           "function": "Main",
           "seq": 16,
-          "native": "GSI->EntitySetFacingAngleTowardsThing(me, GetHero(), ?)",
-          "evidence": "native-decompile"
+          "native": "GSI->EntitySetFacingAngleTowardsThing(me,GetHero(),1)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_Guard",
@@ -4957,8 +4972,8 @@
           "script": "NOVI_Guard",
           "function": "Main",
           "seq": 42,
-          "native": "GSI->EntitySetFacingAngleTowardsThing(me, GetHero())",
-          "evidence": "native-decompile"
+          "native": "GSI->EntitySetFacingAngleTowardsThing(me,GetHero(),0)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_Victim",
@@ -5002,11 +5017,14 @@
         "NOVI_AffairMan#41: +0x20 and +0x2c are the stored woman and wife; both paths push false and ME_THING",
         "NOVI_AffairMan#45: push false, stored wife +0x2c, and ME_THING prove the call",
         "NOVI_AffairMan#62: reciprocal order is explicit and both calls push true, which the binding drops",
-        "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
+        "NOVI_AffairWife#52: ability 14 at 0x00db3749; allies 0x00db37c1-0x00db37e7; priority 4 at 0x00db3812/0x00db383d; facing (me, husband, 1) at 0x00db3947-0x00db3954",
+        "NOVI_AffairWife#54: priority 4 at 0x00db39c9/0x00db39f4; facing husband at 0x00db3b13-0x00db3b20",
         "NOVI_AffairWoman#23: the +0x24 local is the man returned at 0xdb2018-0xdb2027; push 0, GetHero, then that local prove (man, hero, false). Corrects the prior me->hero inference",
         "NOVI_AffairWoman#26: the +0x24 local is the stored man; push 0 and ME_THING prove the full call",
         "NOVI_BarrelMan#34: push 0 precedes GetHero; the returned hero and stored ME_THING (EDI) are then pushed before GSI slot 0x76c, proving (me, hero, false). The binding drops the trailing bool",
         "NOVI_Bully#65: target inferred (hero); could be the victim",
+        "NOVI_Guard#16: 0x00dac8d0-0x00dac8e6; trailing flag 1 is unavailable in the binding",
+        "NOVI_Guard#42: 0x00dad8d6-0x00dad8ec; trailing flag 0 is unavailable in the binding",
         "NOVI_Victim#12: facing args dropped; bully inferred",
         "NOVI_Victim#16: scared value inferred false (re-set to 1 after the plea)",
         "NOVI_Victim#20: facing target inferred (bully); retail has a 3rd arg 0",
@@ -5554,8 +5572,8 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 55,
-          "native": "IsConversationActive() == 0",
-          "evidence": "native-decompile"
+          "native": "IsConversationActive(lastConversation) == 0",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_Guard",
@@ -5572,10 +5590,10 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
         "NOVI_AffairMan#50: the handle stored at stack +0x40 is pushed directly to GSI slot 0x5c0",
-        "NOVI_AffairWife#55: argument dropped; conv id kept in ppStack_5c (inference)"
+        "NOVI_AffairWife#55: 0x00db3b3c-0x00db3b49 pushes [esp+0x84], the slot written with the AddNewConversation result at 0x00db3b83"
       ],
       "fallbackStatus": "direct",
       "blocked": false
@@ -5618,8 +5636,8 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 56,
-          "native": "conv = AddNewConversation(me,0); AddPersonToConversation(conv, &stack0xffffff50)",
-          "evidence": "native-decompile"
+          "native": "conv = AddNewConversation(me,0,0); AddPersonToConversation(conv, husband)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_BarrelMan",
@@ -5712,7 +5730,7 @@
         "NOVI_AffairMan#59: all operands are explicit in reverse push order",
         "NOVI_AffairWife#42: AddNewConversation args dropped",
         "NOVI_AffairWife#45: listener is a freshly constructed null CScriptThing",
-        "NOVI_AffairWife#56: person inferred as the husband",
+        "NOVI_AffairWife#56: 0x00db3b66-0x00db3b8a; [esp+0x30] is the husband output local established at 0x00db3426-0x00db3445",
         "NOVI_BarrelMan#43: where-gone branch; retail 3rd arg bool=false has no named binding parameter (binding: id,key,speaker,listener,showSubtitle?)",
         "NOVI_BarrelMan#75: never removed by retail",
         "NOVI_BarrelThug#20: created BEFORE the tier test and left dangling when no tier matches; pushes prove both false flags, stored ME_THING (EDI), then conversation ID and hero",
@@ -5755,8 +5773,8 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 56,
-          "native": "conv = AddNewConversation(me,0); AddPersonToConversation(conv, &stack0xffffff50)",
-          "evidence": "native-decompile"
+          "native": "conv = AddNewConversation(me,0,0); AddPersonToConversation(conv, husband)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_BarrelThug",
@@ -5834,7 +5852,7 @@
         "NOVI_AffairMan#52: reverse push order proves both calls",
         "NOVI_AffairMan#59: all operands are explicit in reverse push order",
         "NOVI_AffairWife#42: AddNewConversation args dropped",
-        "NOVI_AffairWife#56: person inferred as the husband",
+        "NOVI_AffairWife#56: 0x00db3b66-0x00db3b8a; [esp+0x30] is the husband output local established at 0x00db3426-0x00db3445",
         "NOVI_BarrelThug#20: created BEFORE the tier test and left dangling when no tier matches; pushes prove both false flags, stored ME_THING (EDI), then conversation ID and hero",
         "NOVI_Bully#63: listeners inferred; conversation never removed (retail)",
         "NOVI_Bully#69: listener thing unknown",
@@ -5882,15 +5900,15 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 59,
-          "native": "AddLineToConversation(conv, key, 0, me)",
-          "evidence": "native-decompile"
+          "native": "AddLineToConversation(conv,key,0,me,husband)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 60,
-          "native": "rand() & 1 == 0: AddLineToConversation(conv, \"TEXT_QST_048_AFFAIRMAN_IN_TROUBLE\", 0, man)",
-          "evidence": "native-decompile"
+          "native": "rand() & 1 == 0: AddLineToConversation(conv,\"TEXT_QST_048_AFFAIRMAN_IN_TROUBLE\",0,husband,me)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_BarrelMan",
@@ -5945,8 +5963,8 @@
           "script": "NOVI_Guard",
           "function": "Main",
           "seq": 45,
-          "native": "AddLineToConversation(conv, TEXT_QST_048_GUARD_ON_TALK_{GOOD|NEUTRAL|BAD}, ...GetHero())",
-          "evidence": "native-decompile"
+          "native": "AddLineToConversation(conv,TEXT_QST_048_GUARD_ON_TALK_{GOOD|NEUTRAL|BAD},0,me,hero)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_TeddyGirl",
@@ -5983,8 +6001,8 @@
         "NOVI_AffairMan#59: all operands are explicit in reverse push order",
         "NOVI_AffairWife#42: AddNewConversation args dropped",
         "NOVI_AffairWife#45: listener is a freshly constructed null CScriptThing",
-        "NOVI_AffairWife#59: listener dropped",
-        "NOVI_AffairWife#60: speaker is the husband thing (&ppuStack_a4)",
+        "NOVI_AffairWife#59: 0x00db3c11-0x00db3c24 pushes husband, me, false, key, conversation",
+        "NOVI_AffairWife#60: 0x00db3c2a-0x00db3c6f pushes me, husband, false, text, conversation",
         "NOVI_BarrelMan#43: where-gone branch; retail 3rd arg bool=false has no named binding parameter (binding: id,key,speaker,listener,showSubtitle?)",
         "NOVI_BarrelMan#75: never removed by retail",
         "NOVI_BarrelThug#23: every tier call pushes returned hero as listener, stored ME_THING (EDI) as speaker, false, the selected key, and conversation ID (EBP)",
@@ -5992,7 +6010,7 @@
         "NOVI_Bully#63: listeners inferred; conversation never removed (retail)",
         "NOVI_Bully#69: listener thing unknown",
         "NOVI_Guard#19: retail bool arg (0) mapped to FSE trailing showSubtitle optional; mapping of that bool is an inference",
-        "NOVI_Guard#45: speaker/listener/bool dropped by decompiler",
+        "NOVI_Guard#45: all three branches push hero, me, 0, text, conversation at 0x00dad93e-0x00dad96a, 0x00dad98c-0x00dad9b8, and 0x00dad9d1-0x00dad9fd",
         "NOVI_TeddyGirl#28: reverse push order proves every conversation operand",
         "NOVI_Victim#33: speaker/listener roles inferred from key names; conversation never removed (retail)",
         "NOVI_Villager#23: retail bool 0 passed as FSE showSubtitle=false (inference)"
@@ -6197,15 +6215,15 @@
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 20,
-          "native": "GetHero(); EntitySetThingAsAllyOfThing(); GetHero(); EntitySetThingAsAllyOfThing()",
-          "evidence": "native-decompile"
+          "native": "EntitySetThingAsAllyOfThing(me,hero); EntitySetThingAsAllyOfThing(hero,me)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_AffairWife",
           "function": "Main",
           "seq": 52,
-          "native": "ally x2; AddBadDeed(PARENT,2); StartScriptingEntity(me,res3,4); StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(ON_HIT); EntitySetFacingAngleTowardsThing(me,<thing>,1); PauseAllNonScriptedEntities(0); ~MovieBase",
-          "evidence": "native-decompile"
+          "native": "ally(me,hero)+ally(hero,me); AddBadDeed(PARENT,2); StartScriptingEntity(me,res3,4); StartMovieSequence(\"\"); PauseAllNonScriptedEntities(1); if health>0 Speak(ON_HIT); EntitySetFacingAngleTowardsThing(me,husband,1); PauseAllNonScriptedEntities(0); ~MovieBase",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_BarrelMan",
@@ -6246,15 +6264,15 @@
           "script": "NOVI_Guard",
           "function": "Main",
           "seq": 13,
-          "native": "GSI->GetHero(); GSI->EntitySetThingAsAllyOfThing(); GSI->GetHero(); GSI->EntitySetThingAsAllyOfThing(hero)",
-          "evidence": "native-decompile"
+          "native": "EntitySetThingAsAllyOfThing(me,hero); EntitySetThingAsAllyOfThing(hero,me)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_Guard",
           "function": "Main",
           "seq": 49,
-          "native": "GetHero(); EntitySetThingAsAllyOfThing(); GetHero(); EntitySetThingAsAllyOfThing(hero)",
-          "evidence": "native-decompile"
+          "native": "EntitySetThingAsAllyOfThing(me,hero); EntitySetThingAsAllyOfThing(hero,me)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_LiveFather",
@@ -6301,11 +6319,12 @@
       ],
       "signatureConfidence": "low",
       "semanticDifferences": [
-        "NOVI_AffairWife#20: both argument lists dropped; (me,hero)+(hero,me) inferred",
-        "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
+        "NOVI_AffairWife#20: operand order proven at 0x00db2cf8-0x00db2d1e",
+        "NOVI_AffairWife#52: ability 14 at 0x00db3749; allies 0x00db37c1-0x00db37e7; priority 4 at 0x00db3812/0x00db383d; facing (me, husband, 1) at 0x00db3947-0x00db3954",
         "NOVI_BarrelThug#26: reciprocal ally order, deed 2, empty movie name, pause flags, priority 4, and complete Speak operands are explicit; ally/deed writes and movie start precede action acquisition",
         "NOVI_BookTrader#10: first call pushes returned hero then stored ME_THING (EBP); second pre-pushes EBP, calls GetHero, then pushes hero, proving reciprocal calls; AddBadDeed pushes 2",
-        "NOVI_Guard#13: two calls, args dropped; (me,hero)+(hero,me) is an inference from the CNOVI_Villager::Main pattern",
+        "NOVI_Guard#13: operand order at 0x00dac806-0x00dac834",
+        "NOVI_Guard#49: operand order at 0x00dadb53-0x00dadb81",
         "NOVI_TeddyGirl#42: first call pushes GetHero then ME_THING; second pushes ME_THING then GetHero, proving reciprocal order",
         "NOVI_Villager#9: 0x00dae109-0x00dae12f: first call pushes hero then me; second pre-pushes me at 0x00dae124, calls zero-argument GetHero, then pushes the returned hero, proving reciprocal (hero,me) despite the decompiler's dropped stack operand"
       ],
@@ -7141,19 +7160,22 @@
           "script": "NOVI_Guard",
           "function": "Main",
           "seq": 21,
-          "native": "GSI->EntitySetCutsceneBehaviour(me, 1)",
-          "evidence": "native-decompile + inference"
+          "native": "GSI->EntitySetCutsceneBehaviour(me,1)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_Guard",
           "function": "Main",
           "seq": 23,
-          "native": "GSI->EntitySetCutsceneBehaviour(me, ?)",
-          "evidence": "native-decompile + inference"
+          "native": "GSI->EntitySetCutsceneBehaviour(me,2)",
+          "evidence": "native-disassembly"
         }
       ],
-      "signatureConfidence": "low",
-      "semanticDifferences": [],
+      "signatureConfidence": "high",
+      "semanticDifferences": [
+        "NOVI_Guard#21: 0x00dac976-0x00dac97e pushes 1 then ME_THING",
+        "NOVI_Guard#23: 0x00dac9e7-0x00dac9ef pushes literal 2 then ME_THING; corrected from inferred 0"
+      ],
       "fallbackStatus": "direct",
       "blocked": false
     },

@@ -33,7 +33,7 @@ local SPEAK_METHOD = 0                   -- ETextGroupSelectionMethod literal pa
 -- 0xe literal in the sibling CNOVI_Villager::Main hit test; the Guard decompile dropped the arg.
 local EXCLUDED_HIT_ABILITY = 14
 local CUTSCENE_BEHAVIOUR_ON = 1          -- EntitySetCutsceneBehaviour(me, 1) (register held 0x00000001)
-local CUTSCENE_BEHAVIOUR_OFF = 0         -- inference: second call restores (arg dropped by decompiler)
+local CUTSCENE_BEHAVIOUR_OFF = 2         -- push 2 before GSI slot 0x800 at 0x00dac9ec
 
 -- EBadDeeds index -> crime line (native order of the WhichBadDeedsPerformed[0..4] checks)
 local CRIME_LINES = {
