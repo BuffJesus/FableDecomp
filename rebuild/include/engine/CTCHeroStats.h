@@ -11,6 +11,15 @@
 struct CCharStringData;
 struct CDefPointeeBase;
 
+// The donor PDB exposes the enum type but not its enumerator names.
+enum EMarriageState {
+    MARRIAGE_STATE_NONE = 0,
+    MARRIAGE_STATE_1 = 1,
+    MARRIAGE_STATE_2 = 2,
+    MARRIAGE_STATE_3 = 3,
+    MARRIAGE_STATE_4 = 4
+};
+
 #pragma pack(push, 1)
 struct CTCHeroStats {
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
@@ -134,6 +143,9 @@ struct CTCHeroStats {
     unsigned char    _pad_0x1ed[0x1];                        // +0x1ed
     unsigned char    _pad_0x1ee[0x2];                        // +0x1ee
     unsigned char    Marriages[0xc];                         // +0x1f0 list<CHeroMarriageInfo,std::allocator<CHeroMarriageInfo>_>
+
+    bool HasMarriageInState(EMarriageState state) const;
+    bool HasCurrentMarriage() const;
 };
 #pragma pack(pop)
 

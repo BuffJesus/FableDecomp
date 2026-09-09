@@ -10608,7 +10608,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0057ab6a	GetMaxBoastingCrowdForRenownLevel	CTCHeroStats	__thiscall	long	2	CTCHeroStats *,long	1	yes	accepted									
 0057abd6	GetPMaritalHome	CTCHeroStats	__thiscall	CThingBuilding *	2	CTCHeroStats *,CThingAICreature *	1	yes	accepted									
 0057ac29	HasMarriageInState	CTCHeroStats	__thiscall	bool	2	CTCHeroStats *,EMarriageState	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CTCHeroStats_HasMarriageInState_0057ac29.cpp
-0057ac4b	HasCurrentMarriage	CTCHeroStats	__thiscall	bool	1	CTCHeroStats *	1	yes	accepted									
+0057ac4b	HasCurrentMarriage	CTCHeroStats	__thiscall	bool	1	CTCHeroStats *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CTCHeroStats_HasCurrentMarriage_0057ac4b.cpp
 0057ac89	PeekMarriageInfo	CTCHeroStats	__thiscall	bool	3	CTCHeroStats *,__uint64,CHeroMarriageInfo *	1	yes	accepted									
 0057acc4	GetHeroSexuality	CTCHeroStats	__thiscall	EHeroSexuality	1	CTCHeroStats *	1	yes	accepted									
 0057ad1d	GetNumberOfCurrentSpouses	CTCHeroStats	__thiscall	long	1	CTCHeroStats *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CTCHeroStats_GetNumberOfCurrentSpouses_0057ad1d.cpp

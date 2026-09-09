@@ -438,3 +438,17 @@ in `CEngineDefRetail` rather than changing the readable donor definition.
 Totals are now 18,868 compiled/behavior-tested, 8,144 exact matches, 10,680
 relocation matches, and 394,092 genuine retail bytes matched. Batch 367 is
 next.
+
+### Batch 367: current-marriage state query
+
+`CTCHeroStats::HasCurrentMarriage` at `0x0057ac4b` is landed as a 62/62-byte
+relocation match under the size optimization used by retail. The readable
+implementation asks the adjacent, already exact `HasMarriageInState` helper
+about states 1 through 4 and short-circuits on the first match. Its fixture
+covers both the four-call false path and an early true result. The PDB exposes
+`EMarriageState` but not its enumerator names, so the shared declaration keeps
+honest numbered names instead of inventing semantic labels. The rest of the
+batch is dominated by STL internals, unresolved component/global calls, or
+functions whose transferred label does not fit the body. Totals are now 18,869
+compiled/behavior-tested, 8,144 exact matches, 10,681 relocation matches, and
+394,154 genuine retail bytes matched. Batch 368 is next.

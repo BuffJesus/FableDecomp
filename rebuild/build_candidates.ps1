@@ -132471,6 +132471,13 @@ $catalog = @(
         TestSource = '00/b8/CEngineInternalPrimitiveBase_SetFadeDistanceWithGamePrimitiveDefaults_00b8fd40_test.cpp'
         PassPattern = 'FADE_DEFAULTS PASS'
     }
+    [pscustomobject]@{
+        Address = '0057ac4b'
+        Module = 'CTCHeroStats'
+        Source = '00/57/CTCHeroStats_HasCurrentMarriage_0057ac4b.cpp'
+        TestSource = '00/57/CTCHeroStats_HasCurrentMarriage_0057ac4b_test.cpp'
+        PassPattern = 'CURRENT_MARRIAGE PASS'
+    }
 )
 
 $requestedAddresses = @(

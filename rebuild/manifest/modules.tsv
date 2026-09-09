@@ -3357,7 +3357,7 @@ CTCHeroRangedAttacks	28	19	13	0	0	3	3	2	1	0	0
 CTCHeroReceiveItems	12	5	5	0	0	0	0	0	0	0	0
 CTCHeroRememberCrimes	8	1	1	0	0	0	0	0	0	0	0
 CTCHeroSpecialMovement	9	3	3	0	0	0	0	0	0	0	0
-CTCHeroStats	82	100	77	0	0	17	17	5	12	0	0
+CTCHeroStats	82	100	77	0	0	18	18	5	13	0	0
 CTCHighlightItem	10	4	4	0	0	1	1	0	1	0	0
 CTCHitLocations	15	8	6	0	0	2	2	0	2	0	0
 CTCHitOnCollision	4	1	1	0	0	0	0	0	0	0	0
