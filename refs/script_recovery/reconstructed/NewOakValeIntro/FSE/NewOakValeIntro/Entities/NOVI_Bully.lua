@@ -21,6 +21,7 @@ local INTIMIDATE_LOOP_START = 10              -- Init: this+0x28 = 10
 local INTIMIDATE_LOOP_STEP = 10               -- Main: IntimidateSpeechLoop += 10
 local INTIMIDATE_LOOP_MAX = 40                -- Main: 0x28 < value -> reset
 local HOME_ARRIVE_RADIUS = 2.0                -- Main: IsDistanceFromThingToPositionOver(me, home, 2.0)
+local HOME_MOVE_RADIUS = 0.0                  -- MoveToPosition literal at 0x00dbb48d
 local INTIMIDATE_DISTANCE = 15.0              -- DAT_013ac85c (read from retail .rdata)
 local INTIMIDATE_RAND_MOD = 75                -- DAT_013ac860 (read from retail .rdata)
 local ALIVE_HEALTH_THRESHOLD = 0.0            -- _DAT_0122dedc (read from retail .rdata)
@@ -33,7 +34,7 @@ local INFO_BAR_UNCHANGED = -1.0               -- UpdateQuestInfoBar(handle, rema
 local INFO_BAR_SCALE = 1.0                    -- native push 0x3f800000 at 0x00dbc3eb
 local INFO_BAR_FILLED_COLOUR = { r = 0, g = 255, b = 0, a = 255 }
 local INFO_BAR_EMPTY_COLOUR = { r = 0, g = 0, b = 255, a = 255 }
-local ACQUIRE_PRIORITY = nil                  -- retail EScriptAIPriority dropped; host-managed
+local ACQUIRE_PRIORITY = 4                    -- every retail StartScriptingEntity site pushes 4
 
 local TEDDY_OBJECT = "OBJECT_TEDDY_BEAR_UNGIVEABLE"
 local VICTIM_SCRIPT_NAME = "NOVI_Victim"
@@ -135,8 +136,7 @@ local function walk_home(quest, me)
   local home = me:GetHomePos()
   while NOVI.distance_from_thing_to_position_over(me, home, HOME_ARRIVE_RADIUS) do
     if not NOVI.frame(quest, me) then return false end
-    -- retail MoveToPosition(home, <float>, <EScriptEntityMoveType>, bool, bool); only the position is known
-    me:MoveToPosition(home, HOME_ARRIVE_RADIUS, 0)
+    me:MoveToPosition(home, HOME_MOVE_RADIUS, 0)
     while me:IsPerformingScriptTask() do
       if not NOVI.frame(quest, me) then return false end
     end
@@ -252,7 +252,7 @@ local function run_off(quest, me, victim)
   quest:RunCutsceneWithSetup(CS_BULLYRUN1, actors, flags)
   if not F.get(quest, F.GivenHeroTeddy) then
     quest:RunCutsceneWithSetup(CS_BULLYRUN2, actors, flags)
-    quest:ClearThingHasInformation(me)
+    quest:ClearThingHasInformation(victim)
     F.set(quest, F.GivenHeroTeddy, true)
   else
     quest:RunCutsceneWithSetup(CS_BULLYRUN_DUMMY, actors, flags)
@@ -274,7 +274,6 @@ local function handle_hit(quest, me, victim)
       INFO_BAR_ICON, "", INFO_BAR_SCALE)
     F.set(quest, F.GUIBullyHealthCounter, handle)
   end
-  -- two ally calls with dropped args; NOVI_Villager shows (me, hero) then (hero, me)
   quest:EntitySetThingAsAllyOfThing(me, hero)
   quest:EntitySetThingAsAllyOfThing(hero, me)
   HitsTaken = HitsTaken + 1
@@ -285,16 +284,16 @@ local function handle_hit(quest, me, victim)
     return "removed"
   end
   local conv = quest:AddNewConversation(me, false, false)
-  quest:AddPersonToConversation(conv, me)
-  quest:AddLineToConversation(conv, TEXT.SCRMSG_GET_OFF, me, hero)     -- listener inferred
-  quest:AddLineToConversation(conv, TEXT.VICTIM_REVENGE, me, victim)   -- listener inferred
+  quest:AddPersonToConversation(conv, victim)
+  quest:AddLineToConversation(conv, TEXT.SCRMSG_GET_OFF, me, victim)
+  quest:AddLineToConversation(conv, TEXT.VICTIM_REVENGE, me, victim)
   quest:UpdateQuestInfoBar(F.get(quest, F.GUIBullyHealthCounter), InitialHealth - HitsTaken,
     INFO_BAR_UNCHANGED, INFO_BAR_UNCHANGED)
   return true
 end
 
 -- Phase "intimidate": timer-gated taunt at the victim while no hit has landed yet.
-local function intimidate(quest, me)
+local function intimidate(quest, me, victim)
   local timer = F.get(quest, F.TalkIntermittentTimer)   -- GetTimer/SetTimer id dropped; inference
   if quest:GetTimer(timer) ~= 0 then return true end
   if SpokenOnFirstProximity and math.random(0, INTIMIDATE_RAND_MOD - 1) ~= 0 then return true end
@@ -303,8 +302,8 @@ local function intimidate(quest, me)
   quest:SetTimer(timer, INTIMIDATE_TIMER_VALUE)
   F.set(quest, F.VictimShake, true)
   local conv = quest:AddNewConversation(me, false, false)
-  quest:AddPersonToConversation(conv, me)
-  quest:AddLineToConversation(conv, string.format(TEXT.INTIMIDATING_FMT, IntimidateSpeechLoop), me, me)
+  quest:AddPersonToConversation(conv, victim)
+  quest:AddLineToConversation(conv, string.format(TEXT.INTIMIDATING_FMT, IntimidateSpeechLoop), me, victim)
   IntimidateSpeechLoop = IntimidateSpeechLoop + INTIMIDATE_LOOP_STEP
   if IntimidateSpeechLoop > INTIMIDATE_LOOP_MAX then IntimidateSpeechLoop = INTIMIDATE_LOOP_START end
   -- retail PlayAnimation(anim, 0, 0, 0, 1, true, false): non-blocking
@@ -329,8 +328,8 @@ function Main(quest, me)
     if not handle_talk(quest, me) then NOVI.release(quest, me); return end
     local hit = handle_hit(quest, me, victim)
     if hit == "removed" or hit == false then return end
-    quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero())   -- args dropped; target inferred
-    if not intimidate(quest, me) then return end
+    quest:EntitySetFacingAngleTowardsThing(me, victim)
+    if not intimidate(quest, me, victim) then return end
     if not NOVI.frame(quest, me) then NOVI.release(quest, me); return end
   end
   -- retail never releases the scripted resource, removes the conversations or the info bar on

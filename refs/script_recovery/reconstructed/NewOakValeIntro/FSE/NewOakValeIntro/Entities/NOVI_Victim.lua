@@ -17,7 +17,7 @@ local Deeds = require("NewOakValeIntro.deeds")
 local ALIVE_HEALTH_THRESHOLD = 0.0            -- _DAT_0122dedc (read from retail .rdata)
 local BAD_DEED_HIT_VICTIM = 2                 -- Main: AddBadDeed(PARENT, 2)
 local PLEA_PRIORITY = 4                       -- Main: StartScriptingEntity(me, res, 4) in the plea path
-local ACQUIRE_PRIORITY = nil                  -- other StartScriptingEntity priorities dropped; host-managed
+local ACQUIRE_PRIORITY = 4                    -- every retail StartScriptingEntity site pushes 4
 local SPEAK_SELECTION = 0                     -- ETextGroupSelectionMethod immediate
 local SPEAK_SELECTION_EVIL_BROS = 2           -- Main: Speak(hero, VICTIM_EVIL_BROS, 2, ...)
 
@@ -185,9 +185,9 @@ local function evil_bros_exchange(quest, me)
     end_movie(quest)
     return true
   end
-  quest:AddPersonToConversation(conv, me)                  -- args dropped; person inferred
-  quest:AddLineToConversation(conv, TEXT.EVIL_BROS, me, bully)                 -- args dropped; inferred
-  quest:AddLineToConversation(conv, TEXT.BULLY_HERO_ATTACKS_VICTIM, bully, me) -- retail (conv, key, 0, me, <bully>)
+  quest:AddPersonToConversation(conv, bully)
+  quest:AddLineToConversation(conv, TEXT.EVIL_BROS, me, bully)
+  quest:AddLineToConversation(conv, TEXT.BULLY_HERO_ATTACKS_VICTIM, me, bully)
   return true
 end
 

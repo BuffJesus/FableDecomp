@@ -141,8 +141,8 @@ Affair-wife idle coverage now proves the equivalent native timer sequence indepe
 nearby-hero “where's my husband?” branch reads `TalkIntermittentTimer`, writes value `3`, then
 queues its two-person conversation.
 
-The coverage manifest classifies 32 functions as implemented and traced, 14 as implemented
-with uncertain native arguments, 6 as lifecycle/data-only, no API-blocked functions, and
+The coverage manifest classifies 46 functions as implemented and traced, none with uncertain
+native arguments, 6 as lifecycle/data-only, no API-blocked functions, and
 none as unimplemented. These
 classifications combine native-operation coverage with mock-host traces; they do not mean
 that every entity AI branch has been exercised in the game.
@@ -192,16 +192,9 @@ the per-script `entities` inventories, fixtures, and source-hashed traces.
 
 ## 2026-09-09 continuation checkpoint
 
-The zero-unknown audit remains the acceptance gate. There are 42 operation records with
-`argsKnown: false`; passing fixtures do not override those evidence gaps. The quest inventory
-itself is now at zero unknown operations. The remaining queue, in descending order, is:
+The zero-unknown audit is satisfied: all operation records now have `argsKnown: true`, including
+the quest inventory. Passing fixtures supplement rather than substitute for that native evidence.
 
-| Inventory | Unknown operations |
-|---|---:|
-| `NOVI_Bully` | 26 |
-| `NOVI_Victim` | 16 |
-
-Resume with `NOVI_Victim` before the final `NOVI_Bully` inventory.
 `NOVI_Villager` is now at zero unknown operations: disassembly at
 `0x00DAE109`-`0x00DAE12F` proves its two ally calls are reciprocal `(me, hero)` and `(hero, me)`.
 `NOVI_LiveFather` is also at zero: `0x00DB93CF`-`0x00DB93D8` explicitly pushes its stored
@@ -239,3 +232,12 @@ conversation lines use each other as listeners rather than null listeners.
 `NOVI_Guard` is now at zero as well. Its Init operands, reciprocal ally pairs, facing flags, both
 priority-`4` acquisitions, pause flags, ability `14`, and all talk-line participants are directly
 recovered. The exit cutscene-behaviour enum required a Lua correction from inferred `0` to retail `2`.
+`NOVI_Victim` is now at zero too. Every scripted-control acquisition uses priority `4`; all scared,
+pushable, movement, facing, hit-ability, ally, movie, and speech operands are instruction-proven.
+Retail conversation stack order required correcting the bully participant and both speaker/listener
+pairs in the evil-bros exchange; its misleading second text-key name does not denote the speaker.
+`NOVI_Bully` completes the zero-unknown queue. All scripted-control acquisitions use priority `4`,
+the move command uses radius `0.0` (while `2.0` is only its arrival test), and ability `14`, reciprocal
+allies, cutscene operands, speech flags, animation flags, and information targets are recovered.
+Retail stack locals required correcting every recurring participant/listener and facing target to the
+victim; the run-off information-clear also targets the victim rather than the bully.

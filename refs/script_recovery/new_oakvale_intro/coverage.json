@@ -81,7 +81,7 @@
         "entity_affair_woman_runs_off"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_Barrel",
@@ -237,7 +237,7 @@
         "entity_bully_walks_home"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_Bully",
@@ -422,7 +422,7 @@
         "entity_victim_repeat_hit_bully_alive"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_Villager",
@@ -593,7 +593,7 @@
         "quest_post_attack_wait_terminated"
       ],
       "evidence": "native-decompile + PDB-name",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "Q_NewOakValeIntro",
@@ -682,9 +682,9 @@
   ],
   "summary": {
     "functions": 52,
-    "implementedAndTraced": 42,
+    "implementedAndTraced": 46,
     "implementedUntraced": 0,
-    "uncertain": 4,
+    "uncertain": 0,
     "apiBlocked": 0,
     "notImplemented": 0,
     "notApplicable": 6
