@@ -3370,7 +3370,7 @@ CTCInventory	118	93	90	0	0	3	3	1	2	0	0
 CTCInventoryAbilities	81	100	99	0	0	39	39	24	15	0	0
 CTCInventoryBase	140	135	132	0	0	42	42	37	5	0	0
 CTCInventoryClothing	50	37	37	0	0	4	4	2	2	0	0
-CTCInventoryExperience	84	62	58	0	0	6	6	3	3	0	0
+CTCInventoryExperience	84	62	58	0	0	7	7	4	3	0	0
 CTCInventoryItem	60	103	101	0	0	44	44	3	41	0	0
 CTCInventoryMagic	11	5	4	0	0	1	1	0	1	0	0
 CTCInventoryMap	73	43	41	0	0	0	0	0	0	0	0

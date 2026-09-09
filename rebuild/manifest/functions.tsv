@@ -10383,7 +10383,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0056e866	sub_0056e866	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0056e93d	SaveBefore	SExpSpendUndo	__thiscall	void	2	SExpSpendUndo *,CTCHeroExperience *	1	yes	accepted									
 0056ea4e	GetXString	CTCInventoryExperience	__thiscall	CWideString	2	CTCInventoryExperience *,long	1	yes	accepted									
-0056ea9a	GetOriginalExperience	CTCInventoryExperience	__thiscall	long	2	CTCInventoryExperience *,long	1	yes	accepted									
+0056ea9a	GetOriginalExperience	CTCInventoryExperience	__thiscall	long	2	CTCInventoryExperience *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\56\CTCInventoryExperience_GetOriginalExperience_0056ea9a.cpp
 0056ead6	ExtractParenthesis	CSliderAnimator	__thiscall	CWideString	2	CSliderAnimator *,CText *	1	yes	accepted									
 0056eb48	Update	CSliderAnimator	__thiscall	void	1	CSliderAnimator *	1	yes	accepted									
 0056ec79	CTCInventoryExperience::vfunc_37	CTCInventoryExperience	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				

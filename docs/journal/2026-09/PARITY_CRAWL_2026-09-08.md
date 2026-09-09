@@ -308,3 +308,26 @@ read it.
 The refreshed comparer totals are 18,865 compiled and behavior-tested
 candidates, 8,143 exact matches, 10,678 relocation matches, 14,691 genuine
 landed entries, and 393,911 genuine matched retail bytes. Batch 358 is next.
+
+### Batch 358: original-experience retail overlay
+
+Batch 358 landed `CTCInventoryExperience::GetOriginalExperience @ 0x0056ea9a`
+as an exact 60-byte match. Ego_r names the four source fields `OrigGeneral`,
+`OrigStrength`, `OrigSkill`, and `OrigWill` at +0x1f0..+0x1fc; retail's four
+branches independently prove the same ordered group at +0x1ac..+0x1b8. The
+shared debug layout remains intact, while `CTCInventoryExperienceRetail`
+documents the measured 0x44-byte prefix contraction used by this retail method.
+Its behavior fixture covers all four experience categories and invalid values.
+
+The related `CTCInventory::GetQuickAccessItem` body confirms two adjacent
+12-byte retail vectors at +0x148 and +0x154 and passes its boundary fixture,
+but the readable implementation is 48 bytes against retail's repeated-size
+60-byte form. It remains unlanded rather than forcing redundant volatile
+loads. Generic STL internals, repeated `UpdateShadowScene` transfers that lack
+a clean shared owner, a quarantined `CTCInventoryBase::DeselectAll`, and bodies
+with contradicted propagated prototypes were likewise reviewed without
+promotion.
+
+Comparer totals are now 18,866 compiled and behavior-tested candidates, 8,144
+exact matches, 10,678 relocation matches, 14,692 genuine landed entries, and
+393,971 genuine matched retail bytes. Batch 359 is next.
